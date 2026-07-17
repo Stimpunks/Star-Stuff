@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eternal Sunshine — Stimpunks Zine No. 6</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="starstuff.css">
+<style>
+  :root {
+    --bg:         #0a0a14;
+    --card:       #17111e;
+    --page:       #140f1a;
+    --gold:       #fbbf24;
+    --amber:      #f59e0b;
+    --sun:        #ffcf6b;
+    --rose:       #fb7185;
+    --peach:      #fcd9a8;
+    --cyan:       #22d3ee;
+    --purple:     #a78bfa;
+    --white:      #f9fafb;
+    --secondary:  #e5d8c2;
+    --muted:      #cbb897;
+    --border:     rgba(251,191,36,0.16);
+    --border-dim: rgba(251,191,36,0.08);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--bg);
+    font-family: 'Atkinson Hyperlegible Next', sans-serif;
+    color: var(--white);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Starfield with a warm dawn wash */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(ellipse 120% 60% at 50% 108%, rgba(251,191,36,0.10) 0%, transparent 60%),
+      radial-gradient(1px 1px at 8%  12%, rgba(249,250,251,0.8) 0%, transparent 100%),
+      radial-gradient(1px 1px at 22% 38%, rgba(249,250,251,0.6) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 44% 9%,  rgba(251,191,36,0.9) 0%, transparent 100%),
+      radial-gradient(1px 1px at 61% 68%, rgba(249,250,251,0.7) 0%, transparent 100%),
+      radial-gradient(2px 2px at 74% 28%, rgba(255,207,107,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 84% 54%, rgba(34,211,238,0.6)  0%, transparent 100%),
+      radial-gradient(1px 1px at 91% 79%, rgba(249,250,251,0.8) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 4%  58%, rgba(249,250,251,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 34% 84%, rgba(251,191,36,0.5)  0%, transparent 100%),
+      radial-gradient(1px 1px at 54% 48%, rgba(249,250,251,0.4) 0%, transparent 100%),
+      radial-gradient(2px 2px at 19% 88%, rgba(245,158,11,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 69% 4%,  rgba(249,250,251,0.8) 0%, transparent 100%),
+      radial-gradient(1px 1px at 47% 62%, rgba(34,211,238,0.5)  0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 30% 20%, rgba(251,191,36,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 77% 88%, rgba(249,250,251,0.5) 0%, transparent 100%),
+      radial-gradient(2px 2px at 55% 32%, rgba(251,113,133,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 14% 52%, rgba(249,250,251,0.4) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 88% 20%, rgba(255,207,107,0.5) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .zine-shell { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+
+  .nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2.5rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border); }
+  .nav-brand { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); }
+  .nav-controls { display: flex; gap: 0.5rem; align-items: center; }
+  .nav-btn { background: none; border: 1px solid var(--border); color: var(--secondary); font-family: 'Atkinson Hyperlegible Next', sans-serif; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.15em; padding: 0.4rem 0.85rem; border-radius: 2px; cursor: pointer; transition: all 0.2s ease; text-transform: uppercase; }
+  .nav-btn:hover, .nav-btn.active { background: rgba(251,191,36,0.12); border-color: var(--gold); color: var(--white); }
+  .page-counter { font-size: 0.55rem; font-weight: 700; letter-spacing: 0.2em; color: var(--muted); }
+
+  .spread { display: none; animation: fadeIn 0.45s ease forwards; }
+  .spread.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  .spread-footer { display: flex; justify-content: space-between; align-items: center; padding: 0.9rem 2rem; border-top: 1px solid var(--border-dim); }
+  .spread-footer-left { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; color: var(--muted); }
+  .spread-footer-right { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.2em; color: var(--gold); }
+
+  .interior { background: var(--page); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; min-height: 480px; }
+  .spread-2col { display: grid; grid-template-columns: 1fr 1fr; min-height: 480px; }
+  .spread-left, .spread-right { padding: 3rem 2.5rem; position: relative; }
+  .spread-left { border-right: 1px solid var(--border-dim); }
+  .spread-1col { padding: 3.5rem 3rem; position: relative; }
+
+  .eyebrow { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.45em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.2rem; }
+
+  .spread-heading { font-size: 2rem; font-weight: 300; line-height: 1.15; color: var(--white); margin-bottom: 1.5rem; letter-spacing: -0.01em; }
+  .spread-heading em { font-style: italic; color: var(--gold); }
+  .spread-heading .rose { color: var(--rose); font-style: normal; }
+  .spread-heading .cyan { color: var(--cyan); font-style: normal; }
+
+  .rule { width: 32px; height: 2px; background: var(--gold); margin: 1.2rem 0; border-radius: 1px; }
+
+  .body-text { font-size: 1rem; font-weight: 400; line-height: 1.8; color: var(--secondary); }
+  .body-text p { margin-bottom: 1.1em; }
+  .body-text p:last-child { margin-bottom: 0; }
+  .body-text em { color: var(--white); font-style: italic; }
+  .body-text strong { color: var(--gold); font-weight: 600; font-style: normal; }
+  .body-text .rose { color: var(--rose); font-weight: 600; }
+  .body-text .cyan { color: var(--cyan); font-weight: 600; }
+  .body-text .amber { color: var(--amber); font-weight: 600; }
+
+  .pull-quote { font-size: 1.25rem; font-weight: 300; font-style: italic; line-height: 1.55; color: var(--white); border-left: 2px solid var(--gold); padding-left: 1.2rem; margin: 1.5rem 0; }
+  .pull-quote em { color: var(--gold); font-style: normal; font-weight: 600; }
+  .pull-quote .attr { display: block; font-size: 0.7rem; font-style: normal; letter-spacing: 0.1em; color: var(--muted); margin-top: 0.6rem; }
+
+  /* COVER */
+  .cover-spread {
+    position: relative;
+    min-height: 520px;
+    border-radius: 4px;
+    overflow: hidden;
+    background:
+      radial-gradient(ellipse 100% 55% at 50% 118%, rgba(255,207,107,0.42) 0%, rgba(245,158,11,0.14) 42%, transparent 72%),
+      radial-gradient(ellipse at 22% 14%, rgba(251,113,133,0.16) 0%, transparent 50%),
+      radial-gradient(ellipse at 82% 24%, rgba(251,191,36,0.14) 0%, transparent 45%),
+      var(--card);
+    border: 1px solid var(--border);
+    box-shadow: inset 0 0 90px rgba(251,191,36,0.08);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 3rem;
+  }
+  .cover-sun { position: absolute; left: 50%; bottom: -120px; transform: translateX(-50%); width: 260px; height: 260px; border-radius: 50%; background: radial-gradient(circle, rgba(255,207,107,0.55) 0%, rgba(251,191,36,0.18) 45%, transparent 70%); pointer-events: none; }
+  .cover-corner { position: absolute; top: 2rem; right: 2.5rem; text-align: right; }
+  .cover-corner-num { font-size: 5rem; font-weight: 200; line-height: 1; color: var(--gold); opacity: 0.2; }
+  .cover-corner-label { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.4em; text-transform: uppercase; color: var(--gold); display: block; margin-top: -0.5rem; }
+  .cover-issue { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.5em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; position: relative; }
+  .cover-title-block { margin-bottom: 0.7rem; position: relative; }
+  .cover-eternal  { font-size: clamp(2.8rem,7vw,4.8rem); font-weight: 200; line-height: 1; color: var(--white); letter-spacing: -0.02em; display: block; }
+  .cover-sunshine { font-size: clamp(2.8rem,7vw,4.8rem); font-weight: 700; line-height: 1; display: block; background: linear-gradient(120deg, var(--gold) 0%, var(--sun) 40%, var(--rose) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; letter-spacing: -0.02em; text-shadow: 0 0 40px rgba(255,207,107,0.25); }
+  .cover-refrain { font-size: 0.95rem; font-style: italic; color: var(--peach); margin: 0.6rem 0 0; max-width: 420px; position: relative; }
+  .cover-rule { width: 48px; height: 2px; background: linear-gradient(90deg, var(--gold), transparent); margin: 1.6rem 0 1.2rem; position: relative; }
+  .cover-meta { display: flex; justify-content: space-between; align-items: flex-end; position: relative; }
+  .cover-meta-text { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: var(--muted); line-height: 2; }
+  .cover-ls { font-size: 1.7rem; font-weight: 700; color: var(--gold); text-shadow: 0 0 20px rgba(251,191,36,0.4); }
+
+  /* DIAGRAMS */
+  .diagram-wrap { display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; }
+  .diagram { width: 100%; max-width: 280px; display: block; }
+  .diagram-caption { font-size: 0.55rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); text-align: center; margin-top: 0.9rem; line-height: 1.8; }
+  .annotation { font-size: 0.6rem; letter-spacing: 0.05em; color: var(--amber); text-transform: none; font-weight: 400; }
+
+  /* AFFIRMATIONS */
+  .affirmation-list { display: flex; flex-direction: column; gap: 0; }
+  .affirmation { padding: 1.1rem 0; border-bottom: 1px solid var(--border-dim); }
+  .affirmation:last-child { border-bottom: none; }
+  .affirmation-text { font-size: 1rem; font-weight: 400; color: var(--white); line-height: 1.6; margin-bottom: 0.3rem; }
+  .affirmation-text em { font-style: italic; color: var(--gold); }
+  .affirmation-text .rose { color: var(--rose); font-style: normal; }
+  .affirmation-text .cyan { color: var(--cyan); font-style: normal; }
+  .affirmation-register { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
+
+  /* REFUSALS */
+  .refusals { margin: 0.4rem 0 1.3rem; }
+  .refusal { font-size: 0.9rem; line-height: 1.55; color: var(--secondary); padding: 0.55rem 0; border-bottom: 1px solid var(--border-dim); display: flex; gap: 0.6rem; align-items: baseline; }
+  .refusal:last-child { border-bottom: none; }
+  .refusal-tag { font-size: 0.55rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--rose); flex-shrink: 0; padding-top: 0.15rem; }
+  .refusal em { color: var(--white); font-style: italic; }
+
+  /* TAGLINE BANNER */
+  .tagline-band { margin-top: 1.6rem; padding: 1.3rem 1.5rem; border-radius: 8px; border: 1px solid var(--border); background: radial-gradient(ellipse at 50% 140%, rgba(251,191,36,0.14) 0%, transparent 70%), rgba(251,191,36,0.04); text-align: center; }
+  .tagline-band p { font-size: 1.15rem; font-weight: 600; font-style: italic; line-height: 1.5; color: var(--white); }
+  .tagline-band .sun-mark { color: var(--gold); font-style: normal; }
+
+  /* COLOPHON */
+  .colophon { padding: 3rem; display: flex; flex-direction: column; justify-content: space-between; min-height: 480px; background: radial-gradient(ellipse at 50% 120%, rgba(251,191,36,0.10) 0%, transparent 60%), var(--page); }
+  .colophon-ls-block { border-bottom: 1px solid var(--border-dim); padding-bottom: 1.5rem; margin-bottom: 1.3rem; }
+  .colophon-ls { font-size: 3rem; font-weight: 700; color: var(--gold); text-shadow: 0 0 30px rgba(251,191,36,0.3); display: block; margin-bottom: 0.3rem; letter-spacing: 0.05em; }
+  .colophon-phrase { font-size: 0.875rem; font-style: italic; font-weight: 300; color: var(--secondary); }
+  .colophon-shorthand { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.3rem; }
+  .shorthand-pill { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.1em; padding: 0.25rem 0.75rem; border-radius: 999px; border: 1px solid var(--border); color: var(--muted); background: rgba(251,191,36,0.06); }
+  .shorthand-pill.active { background: rgba(255,207,107,0.14); border-color: rgba(255,207,107,0.4); color: var(--sun); }
+  .series-list { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1.3rem; }
+  .series-item { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.03em; display: flex; gap: 0.7rem; align-items: baseline; line-height: 1.5; }
+  .series-item.current { color: var(--gold); }
+  .series-num { font-size: 0.55rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); flex-shrink: 0; }
+  .series-item.current .series-num { color: var(--gold); }
+  .reflect { border-top: 1px solid var(--border-dim); padding-top: 1.1rem; margin-bottom: 1.3rem; }
+  .reflect-label { font-size: 0.55rem; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.7rem; }
+  .reflect-q { font-size: 0.85rem; font-style: italic; line-height: 1.6; color: var(--secondary); margin-bottom: 0.6rem; }
+  .reflect-q:last-child { margin-bottom: 0; }
+  .colophon-body { font-size: 0.78rem; color: var(--muted); line-height: 1.85; margin-bottom: 1.3rem; }
+  .colophon-footer { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; color: var(--muted); line-height: 2.2; border-top: 1px solid var(--border-dim); padding-top: 1rem; }
+
+  .twinkle { position: fixed; width: 3px; height: 3px; background: var(--gold); border-radius: 50%; box-shadow: 0 0 6px var(--gold); animation: twinkle-anim 3s ease-in-out infinite; pointer-events: none; z-index: 0; }
+  @keyframes twinkle-anim { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.15; transform: scale(0.3); } }
+
+  @media (max-width: 600px) {
+    .spread-2col { grid-template-columns: 1fr; }
+    .spread-left { border-right: none; border-bottom: 1px solid var(--border-dim); }
+    .cover-spread { padding: 2rem; min-height: 400px; }
+    .cover-eternal, .cover-sunshine { font-size: 2.8rem; }
+    .spread-1col, .spread-left, .spread-right { padding: 2rem 1.5rem; }
+    .colophon { padding: 2rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="twinkle" style="top:7%;left:11%;animation-delay:-0.4s"></div>
+<div class="twinkle" style="top:19%;left:83%;animation-delay:-1.3s;background:var(--rose);box-shadow:0 0 6px var(--rose)"></div>
+<div class="twinkle" style="top:52%;left:4%;animation-delay:-2.1s"></div>
+<div class="twinkle" style="top:71%;left:94%;animation-delay:-0.9s;background:var(--cyan);box-shadow:0 0 6px var(--cyan)"></div>
+<div class="twinkle" style="top:88%;left:28%;animation-delay:-1.7s"></div>
+<div class="twinkle" style="top:38%;left:97%;animation-delay:-3.1s;background:var(--sun);box-shadow:0 0 6px var(--sun)"></div>
+
+<div class="zine-shell">
+
+  <nav class="ss-nav" style="--nav-accent:#fbbf24;" aria-label="Star Stuff collection">
+    <a class="ss-nav-home" href="index.html"><span class="ss-star" aria-hidden="true">★</span> stuff</a>
+    <span class="ss-nav-links">
+      <a class="ss-nav-prev" href="underground-zine.html"><span class="ss-nav-arrow" aria-hidden="true">‹</span> <span class="ss-nav-label">Underground</span></a>
+      <a class="ss-nav-next" href="ls-broadside.html"><span class="ss-nav-label">Broadside</span> <span class="ss-nav-arrow" aria-hidden="true">›</span></a>
+    </span>
+  </nav>
+
+  <nav class="nav">
+    <div class="nav-brand">Stimpunks · Zine No. 6</div>
+    <div class="nav-controls">
+      <button class="nav-btn" id="prev-btn" onclick="changePage(-1)">← prev</button>
+      <span class="page-counter" id="page-counter">1 / 6</span>
+      <button class="nav-btn" id="next-btn" onclick="changePage(1)">next →</button>
+    </div>
+  </nav>
+
+  <!-- ════ SPREAD 1: COVER ════ -->
+  <div class="spread active" id="spread-1">
+    <div class="cover-spread">
+      <div class="cover-sun"></div>
+      <div class="cover-corner">
+        <div class="cover-corner-num">6</div>
+        <span class="cover-corner-label">Eternal Sunshine</span>
+      </div>
+      <div class="cover-issue">Stimpunks Foundation · Zine No. 6</div>
+      <div class="cover-title-block">
+        <span class="cover-eternal">Eternal</span>
+        <span class="cover-sunshine">Sunshine</span>
+      </div>
+      <p class="cover-refrain">Authenticity is our eternal sunshine. The Sun is a star. The nearest one. So are you.</p>
+      <div class="cover-rule"></div>
+      <div class="cover-meta">
+        <div class="cover-meta-text">LYSS · ★☀️ · L★S<br>Love You Down<br>To Your Star Stuff<br>open edition</div>
+        <div class="cover-ls">★☀️</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 2: The Sun Is a Star ════ -->
+  <div class="spread" id="spread-2">
+    <div class="interior">
+      <div class="spread-2col">
+        <div class="spread-left">
+          <div class="eyebrow">The nearest star</div>
+          <h2 class="spread-heading">Every warm morning<br>you have ever felt<br>is <em>starlight</em></h2>
+          <div class="rule"></div>
+          <div class="body-text">
+            <p>The Sun is a star. The nearest one. The warmth you feel on your face is not <em>like</em> starlight — it <strong>is</strong> starlight, crossing ninety-three million miles of empty space to land on skin made of older stars.</p>
+            <p>That light left the Sun's surface about eight minutes and twenty seconds ago. But before that, it spent an unimaginably long time — <span class="amber">tens of thousands of years</span> — working its way out from the core, where fusion had just made it, colliding and scattering the whole way up.</p>
+            <p>So the warmth arriving now began its journey before there were cities, before there was writing. <span class="cyan">Eternal sunshine is eternal starlight. It always was.</span></p>
+          </div>
+        </div>
+        <div class="spread-right">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 280 200" xmlns="http://www.w3.org/2000/svg">
+              <!-- Sun glow -->
+              <circle cx="58" cy="100" r="46" fill="rgba(251,191,36,0.06)"/>
+              <circle cx="58" cy="100" r="34" fill="rgba(255,207,107,0.10)" stroke="rgba(251,191,36,0.5)" stroke-width="1.2"/>
+              <!-- rays -->
+              <g stroke="rgba(251,191,36,0.4)" stroke-width="1">
+                <line x1="58" y1="46" x2="58" y2="34"/><line x1="58" y1="154" x2="58" y2="166"/>
+                <line x1="12" y1="100" x2="0" y2="100"/>
+                <line x1="26" y1="62" x2="17" y2="53"/><line x1="90" y1="62" x2="99" y2="53"/>
+                <line x1="26" y1="138" x2="17" y2="147"/><line x1="90" y1="138" x2="99" y2="147"/>
+              </g>
+              <!-- random walk from core to surface -->
+              <path d="M58 100 l10 -6 -7 -9 12 -3 -5 -11 11 2 0 -12 9 6 3 -10" fill="none" stroke="rgba(255,207,107,0.85)" stroke-width="1.3" stroke-linejoin="round"/>
+              <circle cx="58" cy="100" r="4.5" fill="rgba(251,191,36,0.95)"/>
+              <text x="58" y="116" font-family="Atkinson Hyperlegible Next, sans-serif" font-size="7" fill="rgba(255,207,107,0.85)" text-anchor="middle">core</text>
+              <!-- straight ray to Earth -->
+              <line x1="93" y1="88" x2="236" y2="88" stroke="rgba(251,191,36,0.8)" stroke-width="1.4"/>
+              <polyline points="230,84 238,88 230,92" fill="none" stroke="rgba(251,191,36,0.8)" stroke-width="1.4"/>
+              <!-- Earth -->
+              <circle cx="252" cy="88" r="12" fill="rgba(34,211,238,0.14)" stroke="rgba(34,211,238,0.6)" stroke-width="1.2"/>
+              <circle cx="248" cy="85" r="3.5" fill="rgba(74,222,128,0.5)"/>
+              <!-- labels -->
+              <text x="150" y="80" font-family="Atkinson Hyperlegible Next, sans-serif" font-size="8" fill="rgba(251,191,36,0.9)" text-anchor="middle">8 min 20 s</text>
+              <text x="150" y="104" font-family="Atkinson Hyperlegible Next, sans-serif" font-size="7" fill="rgba(203,184,151,0.9)" text-anchor="middle">93 million miles</text>
+              <text x="120" y="150" font-family="Atkinson Hyperlegible Next, sans-serif" font-size="7" fill="rgba(245,158,11,0.85)" text-anchor="middle">core → surface: ~tens of thousands of years</text>
+            </svg>
+            <p class="diagram-caption">
+              the long journey of a sunbeam<br>
+              <span class="annotation">fusion in the core · the slow climb out · the eight-minute crossing</span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Eternal Sunshine · Stimpunks</span>
+        <span class="spread-footer-right">2</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 3: Harvesting Starlight ════ -->
+  <div class="spread" id="spread-3">
+    <div class="interior">
+      <div class="spread-2col">
+        <div class="spread-left">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 240 210" xmlns="http://www.w3.org/2000/svg" style="max-width:230px;">
+              <!-- four protons -->
+              <g>
+                <circle cx="34" cy="52" r="11" fill="rgba(251,113,133,0.15)" stroke="rgba(251,113,133,0.7)" stroke-width="1.1"/>
+                <circle cx="34" cy="92" r="11" fill="rgba(251,113,133,0.15)" stroke="rgba(251,113,133,0.7)" stroke-width="1.1"/>
+                <circle cx="34" cy="132" r="11" fill="rgba(251,113,133,0.15)" stroke="rgba(251,113,133,0.7)" stroke-width="1.1"/>
+                <circle cx="34" cy="172" r="11" fill="rgba(251,113,133,0.15)" stroke="rgba(251,113,133,0.7)" stroke-width="1.1"/>
+                <text x="34" y="55" font-family="Atkinson Hyperlegible Next, sans-serif" font-size="9" fill="rgba(251,113,133,0.9)" text-anchor="middle">H</text>
+                <text x="34" y="95" font-family="Atkinson Hyperlegible Next, sans-serif" font-size="9" fill="rgba(251,113,133,0.9)" text-anchor="middle">H</text>
+                <text x="34" y="135" font-family="Atkinson Hyperlegible Next, sans-serif" font-size="9" fill="rgba(251,113,133,0.9)" text-anchor="middle">H</text>
+                <text x="34" y="175" font-family="Atkinson Hyperlegible Next, sans-serif" font-size="9" fill="rgba(251,113,133,0.9)" text-anchor="middle">H</text>
+              </g>
+              <!-- converging lines -->
+              <g stroke="rgba(203,184,151,0.5)" stroke-width="1" stroke-dasharray="3 2">
+                <line x1="45" y1="52" x2="104" y2="104"/>
+                <line x1="45" y1="92" x2="104" y2="104"/>
+                <line x1="45" y1="132" x2="104" y2="104"/>
+                <line x1="45" y1="172" x2="104" y2="104"/>
+              </g>
+              <!-- helium nucleus -->
+              <circle cx="124" cy="104" r="20" fill="rgba(251,191,36,0.1)" stroke="rgba(251,191,36,0.7)" stroke-width="1.3"/>
+              <circle cx="118" cy="99" r="6" fill="rgba(251,113,133,0.5)"/>
+              <circle cx="130" cy="99" r="6" fill="rgba(251,113,133,0.5)"/>
+              <circle cx="118" cy="111" r="6" fill="rgba(34,211,238,0.5)"/>
+              <circle cx="130" cy="111" r="6" fill="rgba(34,211,238,0.5)"/>
+              <text x="124" y="140" font-family="Atkinson Hyperlegible Next, sans-serif" font-size="9" fill="rgba(251,191,36,0.9)" text-anchor="middle">He</text>
+              <!-- photon wave out -->
+              <path d="M144 96 q8 -8 16 0 q8 8 16 0 q8 -8 16 0 q8 8 16 0" fill="none" stroke="rgba(255,207,107,0.95)" stroke-width="1.6"/>
+              <polyline points="219,90 226,96 219,102" fill="none" stroke="rgba(255,207,107,0.95)" stroke-width="1.6"/>
+              <text x="188" y="82" font-family="Atkinson Hyperlegible Next, sans-serif" font-size="8" fill="rgba(255,207,107,0.95)" text-anchor="middle">light</text>
+            </svg>
+            <p class="diagram-caption">
+              hydrogen into helium, and out comes light<br>
+              <span class="annotation">the proton-proton chain that lights the Sun</span>
+            </p>
+          </div>
+        </div>
+        <div class="spread-right">
+          <div class="eyebrow">Harvesting starlight</div>
+          <h2 class="spread-heading">The same fusion<br>that lights the Sun<br>lights <em>you</em></h2>
+          <div class="rule"></div>
+          <div class="body-text">
+            <p>To be ★stuff is to be made of the same fusion that lights the Sun — forged inside stars, scattered by their deaths, and gathered again into the particular, irreplaceable shape of you.</p>
+            <p>In every color, key, and frequency of neurodiversity. <span class="rose">Autistic, disabled, neurodivergent, queer, here</span> — a way for the Universe to know itself.</p>
+          </div>
+          <div class="pull-quote">
+            We are star stuff, harvesting starlight.
+            <span class="attr">— after Carl Sagan, <em>Cosmos</em></span>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Eternal Sunshine · Stimpunks</span>
+        <span class="spread-footer-right">3</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 4: You Were Never Dim ════ -->
+  <div class="spread" id="spread-4">
+    <div class="interior">
+      <div class="spread-2col">
+        <div class="spread-left">
+          <div class="eyebrow">Brighter days · built together</div>
+          <h2 class="spread-heading">You were never dim.<br>The <em>sky</em> was.</h2>
+          <div class="rule"></div>
+          <div class="body-text">
+            <p>Ariana Grande named an album <em>Eternal Sunshine</em> and a foundation <em>Brighter Days Ahead</em>. We heard our own language in both. The Brighter Days Ahead Foundation directly funds small, grassroots organizations doing care work for communities the world treats as disposable. <span class="amber">We recognize that work. It is our work.</span></p>
+            <p>And we hear the counter-deficit truth folded into the title. The light is already in you. It always was. <strong>Brighter days are not a repair — they are better conditions for light that was always there.</strong></p>
+            <p>You were never dim. The sky was. <span class="rose">We are here to clear it.</span></p>
+          </div>
+        </div>
+        <div class="spread-right">
+          <div class="eyebrow">Because how you're funded says whether you're believed</div>
+          <div class="rule" style="margin-top:0;"></div>
+          <div class="body-text" style="margin-bottom:1.1rem;">
+            <p>To be seen this way — <em>championed, not pitied; trusted, not tested</em> — is rare. No forms to prove worth, no temporal lottery to win. Trust-based giving funds the people closest to the need and cuts the burden, the way disabled communities have practiced all along: <span class="cyan">nothing about us without us.</span></p>
+          </div>
+          <div class="refusals">
+            <div class="refusal"><span class="refusal-tag">Not</span><span>shine brighter and you'll be worthy. <em>The light was never in question.</em></span></div>
+            <div class="refusal"><span class="refusal-tag">Not</span><span>positivity instead of change. Clearing the sky means <em>changing conditions,</em> not moods.</span></div>
+            <div class="refusal"><span class="refusal-tag">Not</span><span>gratitude as the price of support. Being funded should not cost you your <em>dignity.</em></span></div>
+            <div class="refusal"><span class="refusal-tag">Not</span><span>inspiration porn. You are not a lesson for anyone else's <em>comfort.</em></span></div>
+          </div>
+        </div>
+      </div>
+      <div class="tagline-band">
+        <p>Authenticity is our eternal sunshine, and brighter days are built together. <span class="sun-mark">★☀️</span></p>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Eternal Sunshine · Stimpunks</span>
+        <span class="spread-footer-right">4</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 5: Affirmations ════ -->
+  <div class="spread" id="spread-5">
+    <div class="interior">
+      <div class="spread-1col">
+        <div class="eyebrow">Authenticity is our eternal sunshine</div>
+        <h2 class="spread-heading" style="margin-bottom:1.8rem;">The light is<br><em>already in you.</em></h2>
+        <div class="affirmation-list">
+          <div class="affirmation"><p class="affirmation-text">The light is already in you. <em>It always was.</em> Nothing about the sunrise asks you to earn it first — it arrives for stars, and you are made of them.</p><span class="affirmation-register">Counter-deficit · unconditional</span></div>
+          <div class="affirmation"><p class="affirmation-text">Brighter days are not a better <em>you</em>. <span class="rose">They are better conditions for the light that was always there.</span> The repair was never yours to make alone.</p><span class="affirmation-register">Social model · reframe</span></div>
+          <div class="affirmation"><p class="affirmation-text">Championed, not pitied. Trusted, not tested. <em>No worth to prove, no lottery to win.</em> That is not a small kindness — it is the whole argument.</p><span class="affirmation-register">Community voice · direct</span></div>
+          <div class="affirmation"><p class="affirmation-text">Authenticity is our purest freedom. Being fully yourself — <span class="rose">autistic, disabled, neurodivergent, queer, here</span> — is not the thing to fix. It is the light.</p><span class="affirmation-register">Identity · punk</span></div>
+          <div class="affirmation"><p class="affirmation-text">The warmth on your face travelled ninety-three million miles and tens of thousands of years to reach you. <em>You were always worth the whole journey.</em></p><span class="affirmation-register">Cosmological · tender</span></div>
+          <div class="affirmation"><p class="affirmation-text">Eternal sunshine is starlight. So are you. <span class="rose">We love you down to it.</span> LYSS. ★☀️</p><span class="affirmation-register">Community · closing</span></div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Eternal Sunshine · Stimpunks</span>
+        <span class="spread-footer-right">5</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 6: Colophon ════ -->
+  <div class="spread" id="spread-6">
+    <div class="interior">
+      <div class="colophon">
+        <div>
+          <div class="colophon-ls-block">
+            <span class="colophon-ls">★☀️</span>
+            <span class="colophon-phrase">Eternal sunshine is starlight. So are you.</span>
+          </div>
+          <div class="colophon-shorthand">
+            <span class="shorthand-pill">LYDTYSS</span>
+            <span class="shorthand-pill active">LYSS</span>
+            <span class="shorthand-pill">LUSS</span>
+            <span class="shorthand-pill">L★S</span>
+            <span class="shorthand-pill">★stuff</span>
+          </div>
+          <div class="series-list">
+            <div class="series-item"><span class="series-num">No. 1</span> Bone Song — piezoelectric matter &amp; star-forged calcium</div>
+            <div class="series-item"><span class="series-num">No. 2</span> Love You Down To Your Star Stuff — the phrase &amp; the scale</div>
+            <div class="series-item"><span class="series-num">No. 3</span> Neurodiversity Field Guide — the paradigm, plainly stated</div>
+            <div class="series-item"><span class="series-num">No. 4</span> We Are All Star Stuff — voices from the community</div>
+            <div class="series-item"><span class="series-num">No. 5</span> Underground — the mycelial worldview</div>
+            <div class="series-item current"><span class="series-num">No. 6</span> Eternal Sunshine — starlight, warmth &amp; the light in you ← you are here</div>
+          </div>
+          <div class="reflect">
+            <div class="reflect-label">Reflection</div>
+            <p class="reflect-q">When have you been treated as already-light — championed and trusted — rather than as something to fix? What did that make possible?</p>
+            <p class="reflect-q">If you were never dim, what is the sky in your life — the conditions, not the person — that could be cleared, and who would help clear it?</p>
+          </div>
+          <p class="colophon-body">
+            Eternal Sunshine is the sixth zine in the Stimpunks series, adapted from the "Eternal Sunshine" page and the essay "Ariana Grande, Brighter Days Ahead, Stimpunks, and the Future of Philanthropy." It is offered freely, to be printed and folded and handed to someone who needs it.<br><br>
+            The epigraph adapts Carl Sagan's "We are star stuff harvesting sunlight" (Cosmos, 1980) — the ★stuff reading is "starlight." The counter-deficit and trust-based-giving arguments draw on Lydia X.Z. Brown on philanthropy's ableism, Liz Jackson and Alex Haagaard on "temporal lotteries," and the disability-rights principle "nothing about us without us" (Ed Roberts; the South African disability movement). References to Ariana Grande and the Brighter Days Ahead Foundation are factual; the counter-deficit reading is ours. Star Stuff artwork by Rainbow Mosho ("Where We Come From," MoonMars Museum).<br><br>
+            The light is already in you. It always was. Brighter days are built together.
+          </p>
+        </div>
+        <div class="colophon-footer">
+          Stimpunks Foundation · Zine No. 6 · Open Edition<br>
+          Print free · Share freely · LYSS ★☀️<br>
+          stimpunks.org · starstuff.earth
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Eternal Sunshine · Stimpunks</span>
+        <span class="spread-footer-right">6</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  let current = 1;
+  const total = 6;
+
+  function changePage(dir) {
+    const next = current + dir;
+    if (next < 1 || next > total) return;
+    document.getElementById('spread-' + current).classList.remove('active');
+    current = next;
+    document.getElementById('spread-' + current).classList.add('active');
+    document.getElementById('page-counter').textContent = current + ' / ' + total;
+    document.getElementById('prev-btn').style.opacity = current === 1 ? '0.3' : '1';
+    document.getElementById('next-btn').style.opacity = current === total ? '0.3' : '1';
+    document.getElementById('prev-btn').classList.toggle('active', current > 1);
+    document.getElementById('next-btn').classList.toggle('active', current < total);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') changePage(1);
+    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   changePage(-1);
+  });
+
+  document.getElementById('prev-btn').style.opacity = '0.3';
+  document.getElementById('next-btn').classList.add('active');
+</script>
+</body>
+</html>
