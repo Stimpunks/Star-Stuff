@@ -127,6 +127,36 @@ body { background-color: #0a0a14; }
   to   { transform: rotate(360deg); }
 }
 
+/* Site nav (home + next) — inline so the page stays self-contained for WordPress */
+.sp-nav {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 3rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(167,139,250,0.2);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+.sp-nav a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--sp-secondary);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+.sp-nav a:hover { color: var(--sp-purple); }
+.sp-nav .sp-nav-star,
+.sp-nav .sp-nav-arrow { color: var(--sp-purple); }
+@media print { .sp-nav { display: none !important; } }
+
 /* Sections */
 .sp-section {
   margin-bottom: 4rem;
@@ -466,6 +496,11 @@ body { background-color: #0a0a14; }
   <div class="sp-twinkle" style="top:90%;right:4%;background:#4ade80;box-shadow:0 0 6px #4ade80;animation-delay:-3s"></div>
 
   <div class="sp-wrap">
+
+    <nav class="sp-nav" aria-label="Star Stuff collection">
+      <a href="https://starstuff.earth/"><span class="sp-nav-star" aria-hidden="true">★</span> stuff</a>
+      <a href="https://starstuff.earth/bone-song-zine.html">Bone Song <span class="sp-nav-arrow" aria-hidden="true">›</span></a>
+    </nav>
 
     <!-- ═══ MASTHEAD ═══ -->
     <header class="sp-masthead">

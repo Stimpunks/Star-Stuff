@@ -1,0 +1,72 @@
+/* ==========================================================================
+   starstuff.css — shared styles for the Star Stuff collection
+   https://starstuff.earth/
+
+   Currently holds: site navigation (home + prev/next).
+   Each page tints its nav by setting --nav-accent on the .ss-nav element.
+   Design tokens and the starfield still live inline in each page for now.
+   ========================================================================== */
+
+.ss-nav {
+  --nav-accent: #a78bfa;
+  position: relative;
+  z-index: 5;
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0 auto 2rem;
+  padding: 0 0 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 1px solid rgba(167, 139, 250, 0.15);
+  font-family: 'Atkinson Hyperlegible Next', system-ui, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.ss-nav a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: #b8aed0;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+
+.ss-nav a:hover { color: var(--nav-accent); }
+
+.ss-nav a:focus-visible {
+  outline: 2px solid var(--nav-accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.ss-nav-home .ss-star { color: var(--nav-accent); font-weight: 400; }
+
+.ss-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.ss-nav-arrow { color: var(--nav-accent); }
+
+/* Full-bleed pages (no centered content column) need side padding to align
+   with the page's own edge padding. */
+.ss-nav--bleed { padding: 1.5rem 2.5rem 1rem; }
+
+@media (max-width: 600px) {
+  .ss-nav { font-size: 0.6875rem; letter-spacing: 0.1em; gap: 0.5rem; }
+  .ss-nav-links { gap: 0.85rem; }
+  .ss-nav--bleed { padding: 1.25rem 1.5rem 0.85rem; }
+  /* Keep the arrows on small screens; drop the destination labels. */
+  .ss-nav-label { display: none; }
+}
+
+@media print {
+  .ss-nav { display: none !important; }
+}
