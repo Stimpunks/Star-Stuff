@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bone Song — Stimpunks Zine No. 1</title>
+<link href="https://fonts.googleapis.com/css2?family=Boogaloo&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Fraunces:ital,opsz,wght@0,9..144,200..700;1,9..144,200..700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --void: #07070f;
+    --deep: #0c0c1e;
+    --page: #0f101e;
+    --nebula-purple: #7c3aed;
+    --nebula-pink: #db2777;
+    --star-gold: #fbbf24;
+    --star-white: #f0eef8;
+    --nova-cyan: #22d3ee;
+    --cosmic-green: #4ade80;
+    --stardust: #cec9e8;
+    --bone: #e8dfc8;
+    --bone-dim: #a89e80;
+    --ink: #1a1830;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--void);
+    font-family: 'Space Mono', monospace;
+    color: var(--star-white);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── STARFIELD ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 8% 12%, rgba(240,238,248,0.8) 0%, transparent 100%),
+      radial-gradient(1px 1px at 22% 38%, rgba(240,238,248,0.6) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 44% 9%, rgba(251,191,36,0.9) 0%, transparent 100%),
+      radial-gradient(1px 1px at 61% 68%, rgba(240,238,248,0.7) 0%, transparent 100%),
+      radial-gradient(2px 2px at 74% 28%, rgba(240,238,248,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 84% 54%, rgba(34,211,238,0.7) 0%, transparent 100%),
+      radial-gradient(1px 1px at 91% 79%, rgba(240,238,248,0.8) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 4% 58%, rgba(240,238,248,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 34% 84%, rgba(251,191,36,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 54% 48%, rgba(240,238,248,0.4) 0%, transparent 100%),
+      radial-gradient(2px 2px at 19% 88%, rgba(124,58,237,0.7) 0%, transparent 100%),
+      radial-gradient(1px 1px at 69% 4%, rgba(240,238,248,0.8) 0%, transparent 100%),
+      radial-gradient(1px 1px at 47% 62%, rgba(34,211,238,0.5) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 30% 20%, rgba(251,191,36,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 77% 88%, rgba(240,238,248,0.5) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── LAYOUT ── */
+  .zine-shell {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 4rem;
+  }
+
+  /* ── NAV ── */
+  .nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(124,58,237,0.2);
+  }
+  .nav-brand {
+    font-size: 0.6rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: #178397;
+  }
+  .nav-controls {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+  .nav-btn {
+    background: none;
+    border: 1px solid rgba(124,58,237,0.35);
+    color: var(--stardust);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    padding: 0.4rem 0.85rem;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+  }
+  .nav-btn:hover {
+    background: rgba(124,58,237,0.15);
+    border-color: rgba(124,58,237,0.6);
+    color: var(--star-white);
+  }
+  .nav-btn.active {
+    background: rgba(124,58,237,0.25);
+    border-color: var(--nebula-purple);
+    color: var(--star-white);
+  }
+  .page-counter {
+    font-size: 0.55rem;
+    letter-spacing: 0.2em;
+    color: var(--bone-dim);
+  }
+
+  /* ── SPREAD / PAGE SYSTEM ── */
+  .spread {
+    display: none;
+    animation: fadeIn 0.5s ease forwards;
+  }
+  .spread.active { display: block; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── COVER SPREAD ── */
+  .cover-spread {
+    position: relative;
+    min-height: 520px;
+    border-radius: 4px;
+    overflow: hidden;
+    background:
+      radial-gradient(ellipse at 30% 20%, rgba(124,58,237,0.18) 0%, transparent 55%),
+      radial-gradient(ellipse at 75% 75%, rgba(34,211,238,0.12) 0%, transparent 50%),
+      radial-gradient(ellipse at 60% 10%, rgba(219,39,119,0.1) 0%, transparent 40%),
+      var(--deep);
+    border: 1px solid rgba(124,58,237,0.25);
+    box-shadow:
+      inset 0 0 80px rgba(124,58,237,0.08),
+      0 0 0 4px rgba(255,255,255,0.03);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 3rem;
+  }
+
+  /* Bone diagram SVG watermark */
+  .bone-watermark {
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    width: 320px;
+    height: 320px;
+    opacity: 0.06;
+    pointer-events: none;
+  }
+
+  .cover-issue {
+    font-size: 0.6rem;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: #22d3ee;
+    margin-bottom: 1.5rem;
+  }
+
+  .cover-title {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(3.5rem, 10vw, 6rem);
+    line-height: 0.95;
+    color: var(--star-white);
+    letter-spacing: -0.02em;
+    margin-bottom: 0.8rem;
+    text-shadow: 0 0 60px rgba(124,58,237,0.3);
+  }
+
+  .cover-subtitle {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 1rem;
+    color: var(--stardust);
+    opacity: 0.65;
+    margin-bottom: 2rem;
+    max-width: 380px;
+    line-height: 1.6;
+  }
+
+  .cover-rule {
+    width: 48px;
+    height: 1px;
+    background: linear-gradient(90deg, var(--nebula-purple), transparent);
+    margin-bottom: 1.2rem;
+  }
+
+  .cover-meta {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+  }
+  .cover-ls {
+    font-family: 'Boogaloo', cursive;
+    font-size: 1.6rem;
+    color: var(--star-gold);
+    text-shadow: 0 0 20px rgba(251,191,36,0.5);
+    letter-spacing: 0.05em;
+  }
+  .cover-meta-text {
+    font-size: 0.5rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--bone-dim);
+    line-height: 1.8;
+  }
+
+  /* Corner accent */
+  .cover-corner {
+    position: absolute;
+    top: 2rem;
+    right: 2.5rem;
+    text-align: right;
+  }
+  .cover-corner-num {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 5rem;
+    font-weight: 200;
+    line-height: 1;
+    color: var(--nebula-purple);
+    opacity: 0.25;
+  }
+  .cover-corner-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: #945df0;
+    display: block;
+    margin-top: -0.5rem;
+  }
+
+  /* ── INTERIOR SPREADS ── */
+  .interior {
+    background: var(--page);
+    border: 1px solid rgba(124,58,237,0.15);
+    border-radius: 4px;
+    overflow: hidden;
+    min-height: 480px;
+  }
+
+  /* Two-column spread */
+  .spread-2col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 480px;
+  }
+
+  .spread-left, .spread-right {
+    padding: 3rem 2.5rem;
+    position: relative;
+  }
+
+  .spread-left {
+    border-right: 1px solid rgba(124,58,237,0.12);
+  }
+
+  /* Full-bleed single column */
+  .spread-1col {
+    padding: 3.5rem 3rem;
+    position: relative;
+  }
+
+  /* ── TYPOGRAPHY INSIDE SPREADS ── */
+  .zine-eyebrow {
+    font-size: 0.6rem;
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+    color: #1b899f;
+    margin-bottom: 1.2rem;
+  }
+
+  .zine-drop-cap {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 200;
+    font-size: 5.5rem;
+    line-height: 0.85;
+    color: var(--nebula-purple);
+    float: left;
+    margin-right: 0.12em;
+    margin-bottom: -0.1em;
+    opacity: 0.8;
+  }
+
+  .zine-body {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 0.95rem;
+    line-height: 1.85;
+    color: var(--stardust);
+  }
+
+  .zine-body p {
+    margin-bottom: 1.1em;
+  }
+
+  .zine-body p:last-child { margin-bottom: 0; }
+
+  .zine-body em {
+    font-style: italic;
+    color: var(--star-white);
+  }
+
+  .zine-body strong {
+    font-weight: 400;
+    color: var(--nova-cyan);
+    font-style: italic;
+  }
+
+  .zine-body .accent {
+    color: var(--star-gold);
+    font-style: italic;
+  }
+
+  .zine-body .pink {
+    color: #de3a83;
+    font-style: italic;
+  }
+
+  .pull-quote {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 1.35rem;
+    line-height: 1.5;
+    color: var(--star-white);
+    border-left: 2px solid var(--nebula-purple);
+    padding-left: 1.2rem;
+    margin: 1.5rem 0;
+  }
+
+  .pull-quote em {
+    color: var(--star-gold);
+    font-style: normal;
+  }
+
+  /* Spread heading */
+  .spread-heading {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 200;
+    font-size: 2.2rem;
+    line-height: 1.15;
+    color: var(--star-white);
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.01em;
+  }
+
+  .spread-heading em {
+    color: var(--star-gold);
+    font-style: italic;
+  }
+
+  /* Section rule */
+  .section-rule {
+    width: 32px;
+    height: 1px;
+    background: var(--nebula-purple);
+    opacity: 0.4;
+    margin: 1.2rem 0;
+  }
+
+  /* ── DIAGRAM / VISUAL ELEMENTS ── */
+  .bone-diagram {
+    width: 100%;
+    max-width: 260px;
+    margin: 0 auto;
+    display: block;
+    opacity: 0.85;
+  }
+
+  .diagram-caption {
+    font-size: 0.5rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--bone-dim);
+    text-align: center;
+    margin-top: 0.8rem;
+    line-height: 1.7;
+  }
+
+  /* Science annotation style */
+  .annotation {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    color: #1b899f;
+    letter-spacing: 0.1em;
+  }
+
+  /* Full-width poem verse */
+  .verse-block {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 1.05rem;
+    line-height: 2;
+    color: var(--stardust);
+    text-align: center;
+    padding: 1.5rem 2rem;
+  }
+
+  .verse-block .line-accent {
+    color: var(--star-white);
+    font-weight: 400;
+  }
+
+  .verse-block .line-dim {
+    color: #7e7b93;
+    font-size: 0.9rem;
+  }
+
+  /* Colophon / back matter */
+  .colophon {
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 480px;
+    background:
+      radial-gradient(ellipse at 20% 80%, rgba(124,58,237,0.1) 0%, transparent 50%),
+      var(--page);
+  }
+
+  .colophon-top {
+    border-bottom: 1px solid rgba(124,58,237,0.12);
+    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .colophon-ls {
+    font-family: 'Boogaloo', cursive;
+    font-size: 3rem;
+    color: var(--star-gold);
+    text-shadow: 0 0 30px rgba(251,191,36,0.35);
+    letter-spacing: 0.05em;
+    display: block;
+    margin-bottom: 0.3rem;
+  }
+
+  .colophon-phrase {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 0.85rem;
+    color: var(--stardust);
+    opacity: 0.7;
+  }
+
+  .colophon-body {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 0.8rem;
+    color: #7e7b93;
+    line-height: 1.8;
+    flex: 1;
+    margin-bottom: 1.5rem;
+  }
+
+  .colophon-footer {
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #837c68;
+    line-height: 2.2;
+  }
+
+  /* ── TWINKLING STARS ── */
+  .twinkle {
+    position: fixed;
+    width: 3px; height: 3px;
+    background: var(--star-gold);
+    border-radius: 50%;
+    box-shadow: 0 0 6px var(--star-gold);
+    animation: twinkle-anim 3s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 0;
+  }
+  @keyframes twinkle-anim {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.15; transform: scale(0.3); }
+  }
+
+  /* ── SPREAD FOOTER ── */
+  .spread-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.9rem 2.5rem;
+    border-top: 1px solid rgba(124,58,237,0.1);
+  }
+  .spread-footer-left {
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #837c68;
+  }
+  .spread-footer-right {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    color: #945df0;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 600px) {
+    .spread-2col { grid-template-columns: 1fr; }
+    .spread-left { border-right: none; border-bottom: 1px solid rgba(124,58,237,0.12); }
+    .cover-spread { padding: 2rem; min-height: 400px; }
+    .cover-title { font-size: 3.5rem; }
+    .spread-heading { font-size: 1.7rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Twinkling accents -->
+<div class="twinkle" style="top:7%;left:11%;animation-delay:-0.4s"></div>
+<div class="twinkle" style="top:19%;left:83%;animation-delay:-1.3s;background:var(--nova-cyan);box-shadow:0 0 6px var(--nova-cyan)"></div>
+<div class="twinkle" style="top:52%;left:4%;animation-delay:-2.1s"></div>
+<div class="twinkle" style="top:71%;left:94%;animation-delay:-0.9s;background:var(--nebula-pink);box-shadow:0 0 6px var(--nebula-pink)"></div>
+<div class="twinkle" style="top:88%;left:28%;animation-delay:-1.7s"></div>
+<div class="twinkle" style="top:38%;left:97%;animation-delay:-3.1s;background:var(--nova-cyan);box-shadow:0 0 6px var(--nova-cyan)"></div>
+
+<div class="zine-shell">
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-brand">Stimpunks · Zine No. 1</div>
+    <div class="nav-controls">
+      <button class="nav-btn" id="prev-btn" onclick="changePage(-1)">← prev</button>
+      <span class="page-counter" id="page-counter">1 / 6</span>
+      <button class="nav-btn" id="next-btn" onclick="changePage(1)">next →</button>
+    </div>
+  </nav>
+
+  <!-- ════ SPREAD 1: COVER ════ -->
+  <div class="spread active" id="spread-1">
+    <div class="cover-spread">
+      <!-- Bone watermark -->
+      <svg class="bone-watermark" viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="160" cy="160" rx="140" ry="140" fill="none" stroke="rgba(124,58,237,1)" stroke-width="1"/>
+        <ellipse cx="160" cy="160" rx="100" ry="100" fill="none" stroke="rgba(124,58,237,0.7)" stroke-width="0.5" stroke-dasharray="4 4"/>
+        <line x1="20" y1="160" x2="300" y2="160" stroke="rgba(124,58,237,0.5)" stroke-width="0.5"/>
+        <line x1="160" y1="20" x2="160" y2="300" stroke="rgba(124,58,237,0.5)" stroke-width="0.5"/>
+        <!-- Simplified long bone silhouette -->
+        <ellipse cx="160" cy="80" rx="28" ry="22" fill="rgba(124,58,237,0.4)" stroke="none"/>
+        <ellipse cx="160" cy="240" rx="28" ry="22" fill="rgba(124,58,237,0.4)" stroke="none"/>
+        <rect x="151" y="98" width="18" height="124" rx="4" fill="rgba(124,58,237,0.3)" stroke="none"/>
+        <!-- Piezo lines -->
+        <line x1="140" y1="130" x2="180" y2="125" stroke="rgba(34,211,238,0.7)" stroke-width="0.7"/>
+        <line x1="138" y1="145" x2="182" y2="140" stroke="rgba(34,211,238,0.5)" stroke-width="0.5"/>
+        <line x1="140" y1="160" x2="180" y2="155" stroke="rgba(34,211,238,0.7)" stroke-width="0.7"/>
+        <line x1="138" y1="175" x2="182" y2="170" stroke="rgba(34,211,238,0.5)" stroke-width="0.5"/>
+        <line x1="140" y1="190" x2="180" y2="185" stroke="rgba(34,211,238,0.7)" stroke-width="0.7"/>
+      </svg>
+
+      <div class="cover-corner">
+        <div class="cover-corner-num">1</div>
+        <span class="cover-corner-label">Bone Song</span>
+      </div>
+
+      <div class="cover-issue">Stimpunks Foundation · Zine No. 1</div>
+
+      <h1 class="cover-title">Bone<br>Song</h1>
+
+      <p class="cover-subtitle">on piezoelectric matter, star-forged calcium,<br>and the universe that doesn't pathologize its own variation</p>
+
+      <div class="cover-rule"></div>
+
+      <div class="cover-meta">
+        <div class="cover-ls">L★S</div>
+        <div class="cover-meta-text">
+          Love You Down<br>
+          To Your Star Stuff<br>
+          · open edition ·
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 2: Opening — The Bone Fact ════ -->
+  <div class="spread" id="spread-2">
+    <div class="interior">
+      <div class="spread-2col">
+
+        <div class="spread-left">
+          <div class="zine-eyebrow">Yasuda, 1954 — 1957</div>
+          <h2 class="spread-heading">Your bones<br>are <em>electric</em></h2>
+          <div class="section-rule"></div>
+          <div class="zine-body">
+            <p><span class="zine-drop-cap">D</span>r. Iwao Yasuda discovered something extraordinary in the mid-twentieth century: human bone is piezoelectric. Press on it, bend it, move through the world, and it generates voltage.</p>
+            <p>The word comes from the Greek <em>piezein</em> — to squeeze, to press. Squeeze the crystal and it sparks. The crystal, in this case, is you.</p>
+            <p>Collagen and hydroxyapatite — the structural proteins and minerals that make up your skeleton — are arranged in a lattice so precise that mechanical stress becomes electrical signal. <strong>Every step you take is a small current.</strong></p>
+          </div>
+        </div>
+
+        <div class="spread-right" style="display:flex;flex-direction:column;justify-content:center;align-items:center;">
+          <!-- Piezoelectric bone diagram -->
+          <svg class="bone-diagram" viewBox="0 0 200 280" xmlns="http://www.w3.org/2000/svg">
+            <!-- Bone shape -->
+            <ellipse cx="100" cy="44" rx="32" ry="26" fill="none" stroke="rgba(232,223,200,0.4)" stroke-width="1.5"/>
+            <ellipse cx="100" cy="236" rx="32" ry="26" fill="none" stroke="rgba(232,223,200,0.4)" stroke-width="1.5"/>
+            <rect x="88" y="68" width="24" height="144" rx="5" fill="none" stroke="rgba(232,223,200,0.4)" stroke-width="1.5"/>
+            <!-- Collagen fibres (diagonal lines) -->
+            <g opacity="0.3">
+              <line x1="92" y1="80" x2="108" y2="94" stroke="var(--bone)" stroke-width="0.8"/>
+              <line x1="92" y1="96" x2="108" y2="110" stroke="var(--bone)" stroke-width="0.8"/>
+              <line x1="92" y1="112" x2="108" y2="126" stroke="var(--bone)" stroke-width="0.8"/>
+              <line x1="92" y1="128" x2="108" y2="142" stroke="var(--bone)" stroke-width="0.8"/>
+              <line x1="92" y1="144" x2="108" y2="158" stroke="var(--bone)" stroke-width="0.8"/>
+              <line x1="92" y1="160" x2="108" y2="174" stroke="var(--bone)" stroke-width="0.8"/>
+              <line x1="92" y1="176" x2="108" y2="190" stroke="var(--bone)" stroke-width="0.8"/>
+              <line x1="108" y1="80" x2="92" y2="94" stroke="var(--bone)" stroke-width="0.4"/>
+              <line x1="108" y1="110" x2="92" y2="124" stroke="var(--bone)" stroke-width="0.4"/>
+              <line x1="108" y1="140" x2="92" y2="154" stroke="var(--bone)" stroke-width="0.4"/>
+              <line x1="108" y1="170" x2="92" y2="184" stroke="var(--bone)" stroke-width="0.4"/>
+            </g>
+            <!-- Electric field lines -->
+            <g opacity="0.75">
+              <line x1="74" y1="120" x2="62" y2="120" stroke="var(--nova-cyan)" stroke-width="1"/>
+              <polyline points="62,120 56,115 62,120 56,125" fill="none" stroke="var(--nova-cyan)" stroke-width="1"/>
+              <line x1="74" y1="140" x2="62" y2="140" stroke="var(--nova-cyan)" stroke-width="0.7"/>
+              <line x1="74" y1="160" x2="62" y2="160" stroke="var(--nova-cyan)" stroke-width="1"/>
+              <polyline points="62,160 56,155 62,160 56,165" fill="none" stroke="var(--nova-cyan)" stroke-width="1"/>
+              <line x1="126" y1="120" x2="138" y2="120" stroke="var(--nova-cyan)" stroke-width="1"/>
+              <polyline points="138,120 144,115 138,120 144,125" fill="none" stroke="var(--nova-cyan)" stroke-width="1"/>
+              <line x1="126" y1="140" x2="138" y2="140" stroke="var(--nova-cyan)" stroke-width="0.7"/>
+              <line x1="126" y1="160" x2="138" y2="160" stroke="var(--nova-cyan)" stroke-width="1"/>
+              <polyline points="138,160 144,155 138,160 144,165" fill="none" stroke="var(--nova-cyan)" stroke-width="1"/>
+            </g>
+            <!-- Compression force arrows -->
+            <line x1="100" y1="0" x2="100" y2="18" stroke="rgba(251,191,36,0.6)" stroke-width="1.5"/>
+            <polyline points="95,15 100,22 105,15" fill="none" stroke="rgba(251,191,36,0.6)" stroke-width="1.5"/>
+            <line x1="100" y1="258" x2="100" y2="278" stroke="rgba(251,191,36,0.6)" stroke-width="1.5"/>
+            <polyline points="95,261 100,254 105,261" fill="none" stroke="rgba(251,191,36,0.6)" stroke-width="1.5"/>
+            <!-- Labels -->
+            <text x="42" y="124" font-family="Space Mono, monospace" font-size="7" fill="rgba(34,211,238,0.6)" text-anchor="end">+V</text>
+            <text x="158" y="124" font-family="Space Mono, monospace" font-size="7" fill="rgba(34,211,238,0.6)" text-anchor="start">−V</text>
+            <text x="100" y="270" font-family="Space Mono, monospace" font-size="6.5" fill="rgba(251,191,36,0.5)" text-anchor="middle">stress</text>
+          </svg>
+          <p class="diagram-caption">
+            piezoelectric bone under compression<br>
+            <span class="annotation">hydroxyapatite lattice · collagen fibres · voltage potential</span>
+          </p>
+        </div>
+
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Bone Song · Stimpunks</span>
+        <span class="spread-footer-right">2</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 3: Star Stuff — The Cosmic Origin ════ -->
+  <div class="spread" id="spread-3">
+    <div class="interior">
+      <div class="spread-2col">
+
+        <div class="spread-left" style="display:flex;flex-direction:column;justify-content:center;align-items:center;">
+          <!-- Stellar nucleosynthesis diagram -->
+          <svg viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:220px;display:block;opacity:0.85;">
+            <!-- Star glow -->
+            <circle cx="100" cy="100" r="50" fill="none" stroke="rgba(251,191,36,0.1)" stroke-width="30"/>
+            <circle cx="100" cy="100" r="50" fill="rgba(251,191,36,0.06)" stroke="rgba(251,191,36,0.3)" stroke-width="1.5"/>
+            <circle cx="100" cy="100" r="30" fill="rgba(251,191,36,0.1)" stroke="rgba(251,191,36,0.5)" stroke-width="1"/>
+            <!-- Core -->
+            <circle cx="100" cy="100" r="12" fill="rgba(251,191,36,0.5)" stroke="rgba(251,191,36,0.8)" stroke-width="1"/>
+            <!-- Element eruption lines -->
+            <line x1="100" y1="50" x2="100" y2="28" stroke="rgba(232,223,200,0.5)" stroke-width="1" stroke-dasharray="3 2"/>
+            <line x1="136" y1="64" x2="152" y2="50" stroke="rgba(34,211,238,0.5)" stroke-width="1" stroke-dasharray="3 2"/>
+            <line x1="150" y1="100" x2="172" y2="100" stroke="rgba(232,223,200,0.4)" stroke-width="1" stroke-dasharray="3 2"/>
+            <line x1="136" y1="136" x2="152" y2="152" stroke="rgba(74,222,128,0.5)" stroke-width="1" stroke-dasharray="3 2"/>
+            <line x1="100" y1="150" x2="100" y2="172" stroke="rgba(219,39,119,0.5)" stroke-width="1" stroke-dasharray="3 2"/>
+            <line x1="64" y1="136" x2="48" y2="152" stroke="rgba(124,58,237,0.5)" stroke-width="1" stroke-dasharray="3 2"/>
+            <line x1="50" y1="100" x2="28" y2="100" stroke="rgba(232,223,200,0.4)" stroke-width="1" stroke-dasharray="3 2"/>
+            <line x1="64" y1="64" x2="48" y2="50" stroke="rgba(251,191,36,0.5)" stroke-width="1" stroke-dasharray="3 2"/>
+            <!-- Element labels -->
+            <text x="100" y="24" font-family="Space Mono, monospace" font-size="7" fill="rgba(232,223,200,0.7)" text-anchor="middle">Ca</text>
+            <text x="160" y="47" font-family="Space Mono, monospace" font-size="7" fill="rgba(34,211,238,0.7)" text-anchor="middle">Fe</text>
+            <text x="176" y="103" font-family="Space Mono, monospace" font-size="7" fill="rgba(232,223,200,0.6)" text-anchor="start">C</text>
+            <text x="157" y="160" font-family="Space Mono, monospace" font-size="7" fill="rgba(74,222,128,0.7)" text-anchor="middle">Mg</text>
+            <text x="100" y="183" font-family="Space Mono, monospace" font-size="7" fill="rgba(219,39,119,0.7)" text-anchor="middle">P</text>
+            <text x="40" y="160" font-family="Space Mono, monospace" font-size="7" fill="rgba(124,58,237,0.7)" text-anchor="middle">N</text>
+            <text x="20" y="103" font-family="Space Mono, monospace" font-size="7" fill="rgba(232,223,200,0.6)" text-anchor="end">O</text>
+            <text x="38" y="47" font-family="Space Mono, monospace" font-size="7" fill="rgba(251,191,36,0.7)" text-anchor="middle">Si</text>
+            <!-- Center label -->
+            <text x="100" y="104" font-family="Fraunces, serif" font-size="8" fill="rgba(251,191,36,0.9)" text-anchor="middle" font-style="italic">forge</text>
+          </svg>
+          <p class="diagram-caption" style="margin-top:0.8rem;">
+            stellar nucleosynthesis<br>
+            <span class="annotation">elements forged in dying stars · Ca, P, C, N, O</span>
+          </p>
+        </div>
+
+        <div class="spread-right">
+          <div class="zine-eyebrow">Stellar nucleosynthesis</div>
+          <h2 class="spread-heading">Forged in<br>a dying <em>star</em></h2>
+          <div class="section-rule"></div>
+          <div class="zine-body">
+            <p>The calcium in your bones was not born here. It was <em>forged</em> — fused in the nuclear furnace of a star that lived and died billions of years before our sun ignited.</p>
+            <p>When that star collapsed and exploded, it scattered its elements across the galaxy. Over eons, gravity pulled the debris into new configurations. Eventually: a solar system. A planet. <strong>An ocean. A cell. A bone.</strong></p>
+            <p>You are the universe's way of turning its own ash into something that can walk and feel and think about where it came from.</p>
+          </div>
+          <div class="pull-quote">
+            The nitrogen in our DNA, the calcium in our teeth, the iron in our blood — <em>all forged in the interiors of collapsing stars.</em>
+          </div>
+          <div class="annotation" style="margin-top:0.5rem;">— Carl Sagan, Cosmos</div>
+        </div>
+
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Bone Song · Stimpunks</span>
+        <span class="spread-footer-right">3</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 4: The Prose Poem ════ -->
+  <div class="spread" id="spread-4">
+    <div class="interior">
+      <div class="spread-1col">
+        <div class="zine-eyebrow">The poem</div>
+        <div class="verse-block">
+          <p class="line-accent">Your bones are electric.</p>
+          <p>Not metaphorically. Not as a figure of speech<br>borrowed from the poets who came before.</p>
+          <p class="line-accent">Literally. Measurably. Piezoelectric.</p>
+          <p class="line-dim">Press on them and they spark.<br>Move through the world and they sing voltage.</p>
+          <br>
+          <p class="line-accent">Dr. Yasuda knew this.</p>
+          <p class="line-dim">He pressed on the crystal and it answered.<br>The crystal was bone.<br>The bone was yours.</p>
+          <br>
+          <p>The calcium that carries that current<br>was forged in a star that died<br>before our sun was born.</p>
+          <p class="line-accent">You are walking around<br>with stellar ash in your skeleton.</p>
+          <br>
+          <p class="line-dim">The universe doesn't pathologize<br>its own variation.</p>
+          <br>
+          <p>Storms are not disorders.<br>Variation is not deficit.<br>The electric bone that bends differently<br>is still making the signal.</p>
+          <br>
+          <p class="line-accent">We love you down to your star stuff.</p>
+          <p class="line-dim">To the calcium. To the charge.<br>To the exact configuration of atoms<br>that has never existed before<br>and will never exist again.</p>
+          <br>
+          <p><em>L★S.</em></p>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Bone Song · Stimpunks</span>
+        <span class="spread-footer-right">4</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 5: The Neurodiversity Reframe ════ -->
+  <div class="spread" id="spread-5">
+    <div class="interior">
+      <div class="spread-2col">
+
+        <div class="spread-left">
+          <div class="zine-eyebrow">The paradigm</div>
+          <h2 class="spread-heading">The universe<br>doesn't <em>pathologize</em><br>its own variation</h2>
+          <div class="section-rule"></div>
+          <div class="zine-body">
+            <p>The neurodiversity paradigm says: difference is variation, not deficit. It names a lens — one that the DSM cannot offer — in which the full range of human neurological experience is part of the natural distribution, not a deviation from it.</p>
+            <p>A star doesn't diagnose its own magnetosphere. A fault line doesn't pathologize its seismic activity. <strong>Turbulence is how the universe moves energy from one place to another.</strong></p>
+            <p>You were told your signal was noise. <span class="pink">You were told your frequency was wrong.</span></p>
+            <p>But the bone still made its electricity. The calcium still remembered the star.</p>
+          </div>
+        </div>
+
+        <div class="spread-right">
+          <div class="zine-eyebrow">Reclamation</div>
+          <div class="section-rule" style="margin-top:0;"></div>
+          <div class="zine-body" style="margin-bottom:1.5rem;">
+            <p>The punk in Stimpunks is this: we take the diagnostic language back into the lab and ask a different question. Not <em>what is wrong with this person</em> but <em>what did the instrument fail to measure?</em></p>
+            <p>Not <em>why can't they be like everyone else</em> but <em>what is the universe trying to do through this particular configuration of matter?</em></p>
+          </div>
+          <div class="pull-quote" style="border-color:var(--nebula-pink);">
+            Every kind of mind <em>lights up the sky</em> differently. That is not a problem to solve.
+          </div>
+        </div>
+
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Bone Song · Stimpunks</span>
+        <span class="spread-footer-right">5</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 6: Colophon / Back Matter ════ -->
+  <div class="spread" id="spread-6">
+    <div class="interior">
+      <div class="colophon">
+        <div>
+          <div class="colophon-top">
+            <span class="colophon-ls">L★S</span>
+            <span class="colophon-phrase">Love You Down To Your Star Stuff</span>
+          </div>
+          <p class="colophon-body">
+            Bone Song is the first zine in the Stimpunks series. It is offered freely, to be printed and folded and handed to someone who needs it.<br><br>
+            The piezoelectric research cited here draws on Dr. Iwao Yasuda's work from the 1950s, later extended by Dr. Andrew Bassett and colleagues. The cosmological framing draws on Carl Sagan's Cosmos and the broader tradition of stellar nucleosynthesis as popularized science.<br><br>
+            The neurodiversity paradigm language draws on the foundational work of Nick Walker, and the autistic community of InLv — Martijn Dekker, Jim Sinclair, and Autism Network International — who developed these ideas collectively in the 1990s, long before the concept entered academia.<br><br>
+            You are made of star stuff. The universe loves you for it. So do we.
+          </p>
+        </div>
+        <div>
+          <div class="colophon-footer">
+            Stimpunks Foundation · Zine No. 1 · Open Edition<br>
+            Print free · Share freely · L★S<br>
+            stimpunks.org · LYDTYSS · Love You, Star Stuff
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Bone Song · Stimpunks</span>
+        <span class="spread-footer-right">6</span>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /zine-shell -->
+
+<script>
+  let current = 1;
+  const total = 6;
+
+  function changePage(dir) {
+    const next = current + dir;
+    if (next < 1 || next > total) return;
+    document.getElementById('spread-' + current).classList.remove('active');
+    current = next;
+    document.getElementById('spread-' + current).classList.add('active');
+    document.getElementById('page-counter').textContent = current + ' / ' + total;
+    document.getElementById('prev-btn').classList.toggle('active', current > 1);
+    document.getElementById('next-btn').classList.toggle('active', current < total);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // Keyboard nav
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') changePage(1);
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') changePage(-1);
+  });
+
+  // Init button states
+  document.getElementById('prev-btn').style.opacity = '0.3';
+  document.getElementById('next-btn').classList.add('active');
+</script>
+</body>
+</html>

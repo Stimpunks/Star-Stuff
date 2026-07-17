@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Neurodiversity Field Guide — Stimpunks Zine No. 3</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:         #0a0a14;
+    --card:       #0f0f2a;
+    --page:       #0a1a0f;
+    --purple:     #a78bfa;
+    --pink:       #f472b6;
+    --gold:       #fbbf24;
+    --cyan:       #22d3ee;
+    --green:      #4ade80;
+    --green-dim:  #166534;
+    --white:      #f9fafb;
+    --secondary:  #b8d4b8;
+    --muted:      #7aaf7a;
+    --border:     rgba(74,222,128,0.15);
+    --border-dim: rgba(74,222,128,0.08);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--bg);
+    font-family: 'Atkinson Hyperlegible Next', sans-serif;
+    color: var(--white);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 8%  12%, rgba(249,250,251,0.7) 0%, transparent 100%),
+      radial-gradient(1px 1px at 22% 38%, rgba(249,250,251,0.5) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 44% 9%,  rgba(251,191,36,0.8) 0%, transparent 100%),
+      radial-gradient(1px 1px at 61% 68%, rgba(249,250,251,0.6) 0%, transparent 100%),
+      radial-gradient(2px 2px at 74% 28%, rgba(249,250,251,0.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 84% 54%, rgba(74,222,128,0.6)  0%, transparent 100%),
+      radial-gradient(1px 1px at 91% 79%, rgba(249,250,251,0.7) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 4%  58%, rgba(249,250,251,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 34% 84%, rgba(251,191,36,0.4)  0%, transparent 100%),
+      radial-gradient(1px 1px at 54% 48%, rgba(249,250,251,0.3) 0%, transparent 100%),
+      radial-gradient(2px 2px at 19% 88%, rgba(74,222,128,0.5)  0%, transparent 100%),
+      radial-gradient(1px 1px at 69% 4%,  rgba(249,250,251,0.7) 0%, transparent 100%),
+      radial-gradient(1px 1px at 47% 62%, rgba(34,211,238,0.4)  0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 30% 20%, rgba(74,222,128,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 77% 88%, rgba(249,250,251,0.4) 0%, transparent 100%),
+      radial-gradient(2px 2px at 55% 32%, rgba(74,222,128,0.4)  0%, transparent 100%),
+      radial-gradient(1px 1px at 14% 52%, rgba(249,250,251,0.3) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 88% 20%, rgba(74,222,128,0.3) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .zine-shell { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+
+  .nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2.5rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border); }
+  .nav-brand { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.35em; text-transform: uppercase; color: var(--green); }
+  .nav-controls { display: flex; gap: 0.5rem; align-items: center; }
+  .nav-btn { background: none; border: 1px solid var(--border); color: var(--secondary); font-family: 'Atkinson Hyperlegible Next', sans-serif; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.15em; padding: 0.4rem 0.85rem; border-radius: 2px; cursor: pointer; transition: all 0.2s ease; text-transform: uppercase; }
+  .nav-btn:hover, .nav-btn.active { background: rgba(74,222,128,0.1); border-color: var(--green); color: var(--white); }
+  .page-counter { font-size: 0.55rem; font-weight: 700; letter-spacing: 0.2em; color: var(--muted); }
+
+  .spread { display: none; animation: fadeIn 0.45s ease forwards; }
+  .spread.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  .spread-footer { display: flex; justify-content: space-between; align-items: center; padding: 0.9rem 2rem; border-top: 1px solid var(--border-dim); }
+  .spread-footer-left { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; color: var(--muted); }
+  .spread-footer-right { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.2em; color: var(--green); }
+
+  .interior { background: var(--page); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; min-height: 480px; }
+  .spread-2col { display: grid; grid-template-columns: 1fr 1fr; min-height: 480px; }
+  .spread-left, .spread-right { padding: 3rem 2.5rem; position: relative; }
+  .spread-left { border-right: 1px solid var(--border-dim); }
+  .spread-1col { padding: 3.5rem 3rem; position: relative; }
+
+  .eyebrow { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.45em; text-transform: uppercase; color: var(--green); margin-bottom: 1.2rem; }
+
+  .spread-heading { font-size: 2rem; font-weight: 300; line-height: 1.15; color: var(--white); margin-bottom: 1.5rem; letter-spacing: -0.01em; }
+  .spread-heading em  { font-style: italic; color: var(--green); }
+  .spread-heading .gold { color: var(--gold); font-style: normal; }
+  .spread-heading .cyan { color: var(--cyan); font-style: normal; }
+  .spread-heading .pink { color: var(--pink); font-style: normal; }
+
+  .rule { width: 32px; height: 2px; background: var(--green); margin: 1.2rem 0; border-radius: 1px; }
+
+  .body-text { font-size: 1rem; line-height: 1.8; color: var(--secondary); }
+  .body-text p { margin-bottom: 1.1em; }
+  .body-text p:last-child { margin-bottom: 0; }
+  .body-text em     { color: var(--white); font-style: italic; }
+  .body-text strong { color: var(--green); font-weight: 600; font-style: normal; }
+  .body-text .gold  { color: var(--gold);  font-weight: 600; }
+  .body-text .cyan  { color: var(--cyan);  font-weight: 600; }
+  .body-text .pink  { color: var(--pink);  font-weight: 600; }
+  .body-text .purple{ color: var(--purple);font-weight: 600; }
+
+  .pull-quote { font-size: 1.2rem; font-weight: 300; font-style: italic; line-height: 1.55; color: var(--white); border-left: 2px solid var(--green); padding-left: 1.2rem; margin: 1.5rem 0; }
+  .pull-quote em { color: var(--gold); font-style: normal; font-weight: 600; }
+
+  /* COVER */
+  .cover-spread { position: relative; min-height: 520px; border-radius: 4px; overflow: hidden; background: radial-gradient(ellipse at 20% 20%, rgba(74,222,128,0.18) 0%, transparent 50%), radial-gradient(ellipse at 80% 75%, rgba(34,211,238,0.10) 0%, transparent 45%), radial-gradient(ellipse at 50% 50%, rgba(167,139,250,0.07) 0%, transparent 55%), var(--card); border: 1px solid var(--border); box-shadow: inset 0 0 80px rgba(74,222,128,0.04); display: flex; flex-direction: column; justify-content: flex-end; padding: 3rem; }
+  .cover-corner { position: absolute; top: 2rem; right: 2.5rem; text-align: right; }
+  .cover-corner-num { font-size: 5rem; font-weight: 200; line-height: 1; color: var(--green); opacity: 0.15; }
+  .cover-corner-label { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.4em; text-transform: uppercase; color: var(--green); display: block; margin-top: -0.5rem; }
+  .cover-grid { position: absolute; inset: 0; pointer-events: none; opacity: 0.04; background-image: linear-gradient(rgba(74,222,128,1) 1px, transparent 1px), linear-gradient(90deg, rgba(74,222,128,1) 1px, transparent 1px); background-size: 40px 40px; }
+  .cover-issue { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.5em; text-transform: uppercase; color: var(--green); margin-bottom: 1.5rem; }
+  .cover-pretitle { font-size: 0.875rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.5rem; }
+  .cover-title { font-size: clamp(2.4rem, 7vw, 4.2rem); font-weight: 700; line-height: 1; color: var(--white); letter-spacing: -0.02em; margin-bottom: 0.2rem; display: block; }
+  .cover-title-sub { font-size: clamp(2.4rem, 7vw, 4.2rem); font-weight: 200; line-height: 1; letter-spacing: -0.02em; display: block; background: linear-gradient(135deg, var(--green) 0%, var(--cyan) 60%, var(--gold) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 1rem; }
+  .cover-subtitle { font-size: 0.875rem; color: var(--secondary); line-height: 1.6; max-width: 400px; margin-bottom: 2rem; }
+  .cover-rule { width: 48px; height: 2px; background: linear-gradient(90deg, var(--green), transparent); margin: 0 0 1.2rem; }
+  .cover-meta { display: flex; justify-content: space-between; align-items: flex-end; }
+  .cover-meta-text { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: var(--muted); line-height: 2; }
+  .cover-ls { font-size: 1.6rem; font-weight: 700; color: var(--gold); text-shadow: 0 0 20px rgba(251,191,36,0.4); }
+
+  /* COMPARISON TABLE */
+  .compare-table { width: 100%; border-collapse: collapse; margin-top: 0.5rem; }
+  .compare-table th { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; padding: 0.6rem 0.8rem; text-align: left; border-bottom: 2px solid var(--border); }
+  .compare-table th.pathology-head { color: var(--pink); }
+  .compare-table th.neuro-head     { color: var(--green); }
+  .compare-table td { font-size: 0.875rem; color: var(--secondary); padding: 0.65rem 0.8rem; border-bottom: 1px solid var(--border-dim); line-height: 1.5; vertical-align: top; }
+  .compare-table td.pathology-cell { border-right: 1px solid var(--border-dim); }
+  .compare-table tr:last-child td { border-bottom: none; }
+  .compare-table td em { color: var(--white); font-style: normal; font-weight: 600; }
+  .compare-table td.neuro-cell em { color: var(--green); }
+  .compare-table td.pathology-cell em { color: var(--pink); }
+
+  /* DEFINITION BLOCKS */
+  .definition-block { background: rgba(74,222,128,0.06); border: 1px solid var(--border); border-left: 3px solid var(--green); border-radius: 0 8px 8px 0; padding: 1.25rem; margin: 1.2rem 0; }
+  .definition-term { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--green); margin-bottom: 0.5rem; }
+  .definition-text { font-size: 0.9375rem; line-height: 1.75; color: var(--white); }
+  .definition-text em { color: var(--green); font-style: italic; }
+  .attribution { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; color: var(--muted); margin-top: 0.5rem; text-transform: uppercase; }
+
+  /* MYTH/FACT */
+  .mf-list { display: flex; flex-direction: column; gap: 0; }
+  .mf-item { padding: 1rem 0; border-bottom: 1px solid var(--border-dim); }
+  .mf-item:last-child { border-bottom: none; }
+  .mf-myth { font-size: 0.875rem; color: var(--pink); line-height: 1.5; margin-bottom: 0.35rem; display: flex; gap: 0.5rem; align-items: baseline; }
+  .mf-myth-label { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--pink); flex-shrink: 0; padding-top: 0.05rem; }
+  .mf-fact { font-size: 0.9375rem; color: var(--white); line-height: 1.6; display: flex; gap: 0.5rem; align-items: baseline; }
+  .mf-fact-label { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--green); flex-shrink: 0; padding-top: 0.1rem; }
+
+  /* PRINCIPLE CARDS */
+  .principle-list { display: flex; flex-direction: column; gap: 0.75rem; }
+  .principle-card { background: rgba(74,222,128,0.05); border: 1px solid var(--border-dim); border-left: 3px solid var(--principle-color, var(--green)); border-radius: 0 8px 8px 0; padding: 1rem 1.1rem; }
+  .principle-number { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--principle-color, var(--green)); margin-bottom: 0.25rem; }
+  .principle-title { font-size: 1rem; font-weight: 600; color: var(--white); margin-bottom: 0.3rem; line-height: 1.3; }
+  .principle-body { font-size: 0.875rem; color: var(--secondary); line-height: 1.65; }
+  .principle-body em { color: var(--white); font-style: italic; }
+
+  /* LIVED EXPERIENCE */
+  .lived-list { display: flex; flex-direction: column; gap: 0; }
+  .lived-item { padding: 1rem 0; border-bottom: 1px solid var(--border-dim); display: grid; grid-template-columns: 2.5rem 1fr; gap: 0.8rem; align-items: start; }
+  .lived-item:last-child { border-bottom: none; }
+  .lived-icon { font-size: 1.2rem; line-height: 1.4; text-align: center; }
+  .lived-text { font-size: 0.9375rem; color: var(--secondary); line-height: 1.65; }
+  .lived-text strong { color: var(--white); font-weight: 600; }
+  .lived-text em { color: var(--green); font-style: italic; }
+
+  /* COLOPHON */
+  .colophon { padding: 3rem; display: flex; flex-direction: column; justify-content: space-between; min-height: 480px; background: radial-gradient(ellipse at 20% 80%, rgba(74,222,128,0.07) 0%, transparent 50%), var(--page); }
+  .colophon-ls-block { border-bottom: 1px solid var(--border-dim); padding-bottom: 1.5rem; margin-bottom: 1.5rem; }
+  .colophon-ls { font-size: 3rem; font-weight: 700; color: var(--gold); text-shadow: 0 0 30px rgba(251,191,36,0.3); display: block; margin-bottom: 0.3rem; letter-spacing: 0.05em; }
+  .colophon-phrase { font-size: 0.875rem; font-style: italic; font-weight: 300; color: var(--secondary); }
+  .series-list { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1.5rem; }
+  .series-item { font-size: 0.8125rem; font-weight: 700; color: var(--muted); letter-spacing: 0.05em; display: flex; gap: 0.75rem; align-items: baseline; }
+  .series-item.current { color: var(--green); }
+  .series-item.current .series-num { color: var(--green); }
+  .series-num { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); flex-shrink: 0; }
+  .colophon-body { font-size: 0.8rem; color: var(--muted); line-height: 1.85; flex: 1; margin-bottom: 1.5rem; }
+  .colophon-footer { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; color: var(--muted); line-height: 2.2; border-top: 1px solid var(--border-dim); padding-top: 1rem; }
+
+  .twinkle { position: fixed; width: 3px; height: 3px; background: var(--gold); border-radius: 50%; box-shadow: 0 0 6px var(--gold); animation: twinkle-anim 3s ease-in-out infinite; pointer-events: none; z-index: 0; }
+  @keyframes twinkle-anim { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.15; transform: scale(0.3); } }
+
+  @media (max-width: 600px) {
+    .spread-2col { grid-template-columns: 1fr; }
+    .spread-left { border-right: none; border-bottom: 1px solid var(--border-dim); }
+    .cover-spread { padding: 2rem; min-height: 400px; }
+    .cover-title, .cover-title-sub { font-size: 2.4rem; }
+    .spread-1col, .spread-left, .spread-right { padding: 2rem 1.5rem; }
+    .colophon { padding: 2rem 1.5rem; }
+    .compare-table td, .compare-table th { padding: 0.5rem 0.4rem; font-size: 0.8rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="twinkle" style="top:7%;left:11%;animation-delay:-0.4s"></div>
+<div class="twinkle" style="top:19%;left:83%;animation-delay:-1.3s;background:var(--green);box-shadow:0 0 6px var(--green)"></div>
+<div class="twinkle" style="top:52%;left:4%;animation-delay:-2.1s"></div>
+<div class="twinkle" style="top:71%;left:94%;animation-delay:-0.9s;background:var(--cyan);box-shadow:0 0 6px var(--cyan)"></div>
+<div class="twinkle" style="top:88%;left:28%;animation-delay:-1.7s"></div>
+<div class="twinkle" style="top:38%;left:97%;animation-delay:-3.1s;background:var(--green);box-shadow:0 0 6px var(--green)"></div>
+
+<div class="zine-shell">
+
+  <nav class="nav">
+    <div class="nav-brand">Stimpunks · Zine No. 3</div>
+    <div class="nav-controls">
+      <button class="nav-btn" id="prev-btn" onclick="changePage(-1)">← prev</button>
+      <span class="page-counter" id="page-counter">1 / 7</span>
+      <button class="nav-btn active" id="next-btn" onclick="changePage(1)">next →</button>
+    </div>
+  </nav>
+
+  <!-- SPREAD 1 — COVER -->
+  <div class="spread active" id="spread-1">
+    <div class="cover-spread">
+      <div class="cover-grid"></div>
+      <div class="cover-corner">
+        <div class="cover-corner-num">3</div>
+        <span class="cover-corner-label">Field Guide</span>
+      </div>
+      <div class="cover-issue">Stimpunks Foundation · Zine No. 3</div>
+      <div class="cover-pretitle">A field guide to the</div>
+      <span class="cover-title">Neurodiversity</span>
+      <span class="cover-title-sub">Paradigm</span>
+      <p class="cover-subtitle">What the paradigm actually claims. What it means to say variation instead of disorder. Why the universe doesn't pathologize its own variation — and why that matters.</p>
+      <div class="cover-rule"></div>
+      <div class="cover-meta">
+        <div class="cover-meta-text">The paradigm, plainly stated<br>Neurodiversity · InLv · Nick Walker<br>open edition</div>
+        <div class="cover-ls">L★S</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SPREAD 2 — TWO FRAMEWORKS -->
+  <div class="spread" id="spread-2">
+    <div class="interior">
+      <div class="spread-1col">
+        <div class="eyebrow">Two ways of seeing · the same person</div>
+        <h2 class="spread-heading" style="margin-bottom:0.5rem;">Two frameworks.<br>One is a <em>medical model.</em><br>One is a <span class="gold">paradigm.</span></h2>
+        <p style="font-size:0.875rem;color:var(--secondary);line-height:1.6;margin-bottom:1.5rem;">The neurodiversity paradigm doesn't replace medicine. It changes the frame — what counts as a problem, who gets to define it, and what solutions are even on the table. Here are the two frameworks, side by side.</p>
+        <table class="compare-table" aria-label="Pathology paradigm vs neurodiversity paradigm">
+          <thead>
+            <tr>
+              <th class="pathology-head">Pathology Paradigm</th>
+              <th class="neuro-head">Neurodiversity Paradigm</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="pathology-cell">Neurological difference is a <em>disorder</em> — a deviation from normal functioning that needs to be identified and treated.</td>
+              <td class="neuro-cell">Neurological difference is a form of <em>natural variation</em> — one point in the full range of human neurological experience.</td>
+            </tr>
+            <tr>
+              <td class="pathology-cell">The goal is to identify what is <em>wrong</em> with the person and move them closer to a neurotypical standard.</td>
+              <td class="neuro-cell">The goal is to understand the person's actual profile and create conditions where they can <em>thrive as they are</em>.</td>
+            </tr>
+            <tr>
+              <td class="pathology-cell">Difficulty is located <em>inside the person</em> — as a deficit, a symptom, a dysfunction.</td>
+              <td class="neuro-cell">Difficulty is located <em>in the mismatch</em> between the person and their environment — the environment is often the problem.</td>
+            </tr>
+            <tr>
+              <td class="pathology-cell">Success means the person <em>appears more neurotypical</em> — masks better, behaves more normatively.</td>
+              <td class="neuro-cell">Success means the person can <em>live well as themselves</em> — with support that fits their actual needs.</td>
+            </tr>
+            <tr>
+              <td class="pathology-cell">The diagnostic manual defines the <em>standard</em> from which the person has deviated.</td>
+              <td class="neuro-cell">The diagnostic manual is a <em>tool</em> for accessing support — useful but not definitive of who a person is.</td>
+            </tr>
+            <tr>
+              <td class="pathology-cell">The person's way of being in the world is a <em>problem to be solved.</em></td>
+              <td class="neuro-cell">The person's way of being in the world is a <em>valid mode of human existence.</em></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Neurodiversity Field Guide · Stimpunks</span>
+        <span class="spread-footer-right">2</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SPREAD 3 — WHAT NEURODIVERSITY ACTUALLY IS -->
+  <div class="spread" id="spread-3">
+    <div class="interior">
+      <div class="spread-2col">
+        <div class="spread-left">
+          <div class="eyebrow">The word · its history</div>
+          <h2 class="spread-heading">Not a buzzword.<br>A <em>paradigm</em> with<br>a lineage.</h2>
+          <div class="rule"></div>
+          <div class="body-text">
+            <p>The concept of neurodiversity emerged from the autistic community in the 1990s — not from academia, not from clinicians, but from autistic and neurodivergent people describing their own experience and organizing around it.</p>
+            <p>The online community InLv (Independent Living on the Autism Spectrum), founded by Martijn Dekker, was one of the primary spaces where this thinking developed. Jim Sinclair's foundational essay "Don't Mourn For Us" (1993) and the work of Autism Network International laid the groundwork. The ideas were built through collective lived experience.</p>
+            <p>This history matters. The paradigm was not handed down from above. It was <strong>built from the inside</strong> — by the people it describes, from their own understanding of themselves. That is its authority.</p>
+          </div>
+        </div>
+        <div class="spread-right">
+          <div class="eyebrow">The definition · plainly stated</div>
+          <div class="rule" style="margin-top:0;"></div>
+          <div class="definition-block">
+            <div class="definition-term">Neurodiversity (the paradigm)</div>
+            <p class="definition-text">The neurodiversity paradigm holds that neurological variation is a natural and valuable form of human diversity. Neurological differences — including autism, ADHD, dyslexia, and others — are not deficits or disorders to be cured, but <em>natural variations in the human genome</em> that have always been part of the human population.</p>
+            <p class="attribution" style="margin-top:0.75rem;">— after Nick Walker, Neuroqueer Heresies (2021)</p>
+          </div>
+          <div class="definition-block" style="margin-top:0.75rem;border-left-color:var(--cyan);">
+            <div class="definition-term" style="color:var(--cyan);">Neurodivergent</div>
+            <p class="definition-text">Having a brain that diverges from the dominant societal standards of "normal." Not a synonym for disabled — though many neurodivergent people are disabled. A description of neurological difference, not a diagnosis.</p>
+            <p class="attribution" style="margin-top:0.75rem;">— after Nick Walker, Neuroqueer Heresies (2021)</p>
+          </div>
+          <div class="definition-block" style="margin-top:0.75rem;border-left-color:var(--gold);">
+            <div class="definition-term" style="color:var(--gold);">Neurotypical</div>
+            <p class="definition-text">Having a neurological profile that aligns with dominant societal standards of "normal." Not a synonym for healthy or good — a description of one position in the neurological distribution.</p>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Neurodiversity Field Guide · Stimpunks</span>
+        <span class="spread-footer-right">3</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SPREAD 4 — THE DSM AND ITS LIMITS -->
+  <div class="spread" id="spread-4">
+    <div class="interior">
+      <div class="spread-2col">
+        <div class="spread-left">
+          <div class="eyebrow">Diagnosis · what it is and isn't</div>
+          <h2 class="spread-heading">The DSM is<br>a <em>tool.</em><br>Not a <span class="gold">truth.</span></h2>
+          <div class="rule"></div>
+          <div class="body-text">
+            <p>The neurodiversity paradigm is not anti-diagnosis. Diagnoses unlock support, accommodations, language, and community. For many people, getting a diagnosis is a profound relief — finally having a word for what their life has been.</p>
+            <p>What the paradigm disputes is the idea that the DSM defines <em>reality</em> — that the categories it creates are natural kinds rather than constructed tools. Diagnostic criteria are written by committees, revised every decade or so, and shaped by cultural assumptions about what counts as "normal" functioning.</p>
+            <p><span class="gold">The DSM describes what deviates from a norm.</span> The paradigm asks: who sets the norm? Who benefits from it? What gets missed when the instrument is calibrated only to detect deviation?</p>
+          </div>
+        </div>
+        <div class="spread-right">
+          <div class="eyebrow">Common misreadings · corrected</div>
+          <div class="mf-list">
+            <div class="mf-item">
+              <div class="mf-myth"><span class="mf-myth-label">Myth</span> "The neurodiversity paradigm says autism/ADHD isn't real."</div>
+              <div class="mf-fact"><span class="mf-fact-label">Fact</span> The paradigm says neurological differences are real — and that framing them as disorders rather than variations changes what we see and what we do.</div>
+            </div>
+            <div class="mf-item">
+              <div class="mf-myth"><span class="mf-myth-label">Myth</span> "It only applies to people who are 'mildly' affected."</div>
+              <div class="mf-fact"><span class="mf-fact-label">Fact</span> The paradigm applies across the full range of neurological difference — including people with high support needs. Support needs and human value are separate questions.</div>
+            </div>
+            <div class="mf-item">
+              <div class="mf-myth"><span class="mf-myth-label">Myth</span> "Neurodiversity means you can't acknowledge that things are hard."</div>
+              <div class="mf-fact"><span class="mf-fact-label">Fact</span> The paradigm locates difficulty precisely — in the mismatch between a person and their environment, not in the person's existence. That's a more accurate and more useful place to intervene.</div>
+            </div>
+            <div class="mf-item">
+              <div class="mf-myth"><span class="mf-myth-label">Myth</span> "It's just positive spin — trying to make people feel good about deficits."</div>
+              <div class="mf-fact"><span class="mf-fact-label">Fact</span> It's a substantive claim about the nature of neurological variation, grounded in disability theory, lived experience, and increasingly, in neuroscience. The goal is accuracy, not reassurance.</div>
+            </div>
+            <div class="mf-item">
+              <div class="mf-myth"><span class="mf-myth-label">Myth</span> "If we don't call it a disorder, people won't get help."</div>
+              <div class="mf-fact"><span class="mf-fact-label">Fact</span> The paradigm fully supports appropriate support and accommodation — it changes the justification, not the outcome. You don't need to call someone broken to give them what they need.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Neurodiversity Field Guide · Stimpunks</span>
+        <span class="spread-footer-right">4</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SPREAD 5 — VARIATION, NOT DEFICIT -->
+  <div class="spread" id="spread-5">
+    <div class="interior">
+      <div class="spread-2col">
+        <div class="spread-left">
+          <div class="eyebrow">The core reframe</div>
+          <h2 class="spread-heading">The universe<br>doesn't <em>pathologize</em><br>its own variation.</h2>
+          <div class="rule"></div>
+          <div class="body-text">
+            <p>This is not a metaphor borrowed from cosmology for comfort. It is a precise statement about the relationship between variation and value.</p>
+            <p>The universe produces variation at every scale — in stellar types, in orbital mechanics, in the distribution of matter, in the neurological profiles of its most complex structures. <em>No variation in that distribution is intrinsically wrong.</em> The concept of "disorder" requires a norm, and norms are always constructed by someone, for some purpose, from some position.</p>
+            <p><strong>When the calcium in your bones was forged in a dying star, the universe did not ask whether it was being made correctly.</strong> It was matter becoming what matter becomes. Your neurology is the same. It is the universe producing variation — which is what the universe does.</p>
+            <p>The paradigm takes this seriously. It says: <span class="gold">difference is not deficit. Variation is not disorder. The distribution is not a hierarchy.</span></p>
+          </div>
+        </div>
+        <div class="spread-right">
+          <div class="eyebrow">Five principles · the paradigm in practice</div>
+          <div class="principle-list">
+            <div class="principle-card" style="--principle-color: #4ade80;">
+              <div class="principle-number">Principle 01</div>
+              <div class="principle-title">Neurological variation is natural</div>
+              <p class="principle-body">Human neurological profiles exist on a distribution. No point on that distribution is intrinsically correct. Autism, ADHD, dyslexia, and related profiles are not errors — they are positions in a natural range.</p>
+            </div>
+            <div class="principle-card" style="--principle-color: #22d3ee;">
+              <div class="principle-number">Principle 02</div>
+              <div class="principle-title">Disability is often environmental</div>
+              <p class="principle-body">Much of what makes neurodivergence disabling is the mismatch between a person's profile and an environment designed for a narrower range. <em>Change the environment and you change the disability.</em></p>
+            </div>
+            <div class="principle-card" style="--principle-color: #fbbf24;">
+              <div class="principle-number">Principle 03</div>
+              <div class="principle-title">Support needs don't determine worth</div>
+              <p class="principle-body">Having high support needs is not a measure of human value. Every person, regardless of support needs, deserves to have those needs met and to be treated with full dignity.</p>
+            </div>
+            <div class="principle-card" style="--principle-color: #a78bfa;">
+              <div class="principle-number">Principle 04</div>
+              <div class="principle-title">Autistic and neurodivergent people are the experts</div>
+              <p class="principle-body">The people who live a neurological experience have knowledge about it that outside observers don't. The paradigm centers neurodivergent voices — particularly on questions about neurodivergent lives.</p>
+            </div>
+            <div class="principle-card" style="--principle-color: #f472b6;">
+              <div class="principle-number">Principle 05</div>
+              <div class="principle-title">Nothing about us without us</div>
+              <p class="principle-body">Decisions about neurodivergent people should involve neurodivergent people. This applies to research, policy, education, clinical practice, and every other domain that shapes neurodivergent lives.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Neurodiversity Field Guide · Stimpunks</span>
+        <span class="spread-footer-right">5</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SPREAD 6 — WHAT THIS MEANS FOR YOU -->
+  <div class="spread" id="spread-6">
+    <div class="interior">
+      <div class="spread-2col">
+        <div class="spread-left">
+          <div class="eyebrow">The paradigm applied · lived experience</div>
+          <h2 class="spread-heading">What this<br><em>changes</em></h2>
+          <div class="rule"></div>
+          <div class="body-text">
+            <p>The paradigm isn't only theoretical. It has practical consequences for how neurodivergent people understand themselves and how the people around them should respond.</p>
+            <p>When you adopt the neurodiversity paradigm, certain things shift. The question changes from <em>"what is wrong with this person?"</em> to <em>"what does this person need, and what is the environment failing to provide?"</em></p>
+            <p><strong>That shift has consequences.</strong> It changes what interventions look like. It changes what success looks like. It changes whether the goal is making someone appear more normal or helping them live well as who they are.</p>
+            <p>It also changes how neurodivergent people are allowed to understand <span class="gold">themselves</span> — not as broken versions of a normal person, but as one valid configuration of the remarkable variation the universe produces.</p>
+          </div>
+        </div>
+        <div class="spread-right">
+          <div class="eyebrow">Practical implications</div>
+          <div class="lived-list">
+            <div class="lived-item">
+              <div class="lived-icon">🔬</div>
+              <div class="lived-text"><strong>In assessment:</strong> The goal shifts from identifying deficits to mapping a full profile — strengths, challenges, and what environments and supports allow the person to thrive.</div>
+            </div>
+            <div class="lived-item">
+              <div class="lived-icon">🏫</div>
+              <div class="lived-text"><strong>In education:</strong> Accommodation isn't charity — it's the environment doing its job. <em>Universal design benefits everyone.</em> The autistic student asking for written instructions improves outcomes for the whole class.</div>
+            </div>
+            <div class="lived-item">
+              <div class="lived-icon">🩺</div>
+              <div class="lived-text"><strong>In healthcare:</strong> Clinicians learn to ask neurodivergent patients how they experience their symptoms rather than assuming a neurotypical baseline. Sensory needs, communication differences, and masking are taken seriously.</div>
+            </div>
+            <div class="lived-item">
+              <div class="lived-icon">👥</div>
+              <div class="lived-text"><strong>In community:</strong> Stimming is welcome. Atypical communication is met with curiosity, not correction. People are not asked to perform neurotypicality as the price of belonging.</div>
+            </div>
+            <div class="lived-item">
+              <div class="lived-icon">💛</div>
+              <div class="lived-text"><strong>In self-understanding:</strong> You are not a failed version of a normal person. <em>You are a valid configuration of the variation the universe produces.</em> Your neurology belongs here. L★S.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Neurodiversity Field Guide · Stimpunks</span>
+        <span class="spread-footer-right">6</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SPREAD 7 — COLOPHON -->
+  <div class="spread" id="spread-7">
+    <div class="interior">
+      <div class="colophon">
+        <div>
+          <div class="colophon-ls-block">
+            <span class="colophon-ls">L★S</span>
+            <span class="colophon-phrase">Love You Down To Your Star Stuff</span>
+          </div>
+          <div class="series-list">
+            <div class="series-item"><span class="series-num">No. 1</span> Bone Song — on piezoelectric matter &amp; star-forged calcium</div>
+            <div class="series-item"><span class="series-num">No. 2</span> Love You Down To Your Star Stuff — the phrase, the elements, the scale</div>
+            <div class="series-item current"><span class="series-num">No. 3</span> Neurodiversity Field Guide — the paradigm, plainly stated ← you are here</div>
+            <div class="series-item"><span class="series-num">Next</span> We Are All Star Stuff — voices from the community</div>
+          </div>
+          <p class="colophon-body">
+            The Neurodiversity Field Guide is the third zine in the Stimpunks series. It is offered freely, to be printed and folded and handed to someone who needs a clear statement of what the neurodiversity paradigm actually claims.<br><br>
+            The paradigm history draws on the foundational work of Autism Network International, Jim Sinclair's "Don't Mourn For Us" (1993), the autistic community of InLv — Martijn Dekker and others — and Nick Walker's Neuroqueer Heresies (2021). The paradigm was developed by neurodivergent people from their own lived experience, not handed down from clinical or academic authority.<br><br>
+            The disability studies framing draws on the social model of disability and its refinements within the neurodiversity literature. The "nothing about us without us" principle has its roots in the broader disability rights movement.<br><br>
+            The star stuff framing — the universe doesn't pathologize its own variation — connects this paradigm to the cosmological grounding of the full series. Your neurology and the calcium in your bones were made by the same universe. Neither one is wrong.
+          </p>
+        </div>
+        <div class="colophon-footer">
+          Stimpunks Foundation · Zine No. 3 · Open Edition<br>
+          Print free · Share freely · L★S<br>
+          stimpunks.org · star-stuff.netlify.app
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Neurodiversity Field Guide · Stimpunks</span>
+        <span class="spread-footer-right">7</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  let current = 1;
+  const total = 7;
+
+  function changePage(dir) {
+    const next = current + dir;
+    if (next < 1 || next > total) return;
+    document.getElementById('spread-' + current).classList.remove('active');
+    current = next;
+    document.getElementById('spread-' + current).classList.add('active');
+    document.getElementById('page-counter').textContent = current + ' / ' + total;
+    document.getElementById('prev-btn').style.opacity = current === 1 ? '0.3' : '1';
+    document.getElementById('next-btn').style.opacity = current === total ? '0.3' : '1';
+    document.getElementById('prev-btn').classList.toggle('active', current > 1);
+    document.getElementById('next-btn').classList.toggle('active', current < total);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') changePage(1);
+    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   changePage(-1);
+  });
+
+  document.getElementById('prev-btn').style.opacity = '0.3';
+</script>
+</body>
+</html>

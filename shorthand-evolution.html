@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shorthand Evolution: LYDTYSS → L★S — Stimpunks</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:        #0a0a14;
+    --card:      #0f0f2a;
+    --purple:    #a78bfa;
+    --pink:      #f472b6;
+    --gold:      #fbbf24;
+    --cyan:      #22d3ee;
+    --green:     #4ade80;
+    --white:     #f9fafb;
+    --secondary: #b8aed0;
+    --muted:     #c4b5d4;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--bg);
+    font-family: 'Atkinson Hyperlegible Next', sans-serif;
+    color: var(--white);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 7%  13%, rgba(249,250,251,0.7) 0%, transparent 100%),
+      radial-gradient(1px 1px at 21% 37%, rgba(249,250,251,0.5) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 43% 8%,  rgba(251,191,36,0.9)  0%, transparent 100%),
+      radial-gradient(1px 1px at 58% 66%, rgba(249,250,251,0.6) 0%, transparent 100%),
+      radial-gradient(2px 2px at 72% 26%, rgba(249,250,251,0.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 82% 52%, rgba(34,211,238,0.6)  0%, transparent 100%),
+      radial-gradient(1px 1px at 89% 77%, rgba(249,250,251,0.7) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 3%  56%, rgba(249,250,251,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 32% 82%, rgba(251,191,36,0.4)  0%, transparent 100%),
+      radial-gradient(1px 1px at 52% 46%, rgba(249,250,251,0.3) 0%, transparent 100%),
+      radial-gradient(2px 2px at 17% 86%, rgba(167,139,250,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 66% 3%,  rgba(249,250,251,0.7) 0%, transparent 100%),
+      radial-gradient(1px 1px at 45% 60%, rgba(34,211,238,0.4)  0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 27% 17%, rgba(251,191,36,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 75% 85%, rgba(249,250,251,0.4) 0%, transparent 100%),
+      radial-gradient(2px 2px at 53% 30%, rgba(244,114,182,0.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 90% 40%, rgba(249,250,251,0.5) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 12% 68%, rgba(167,139,250,0.4) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .zine-shell { position: relative; z-index: 1; max-width: 920px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+
+  .nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2.5rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(251,191,36,0.2); }
+  .nav-brand { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); }
+  .nav-controls { display: flex; gap: 0.5rem; align-items: center; }
+  .nav-btn { background: none; border: 1px solid rgba(251,191,36,0.2); color: var(--secondary); font-family: 'Atkinson Hyperlegible Next', sans-serif; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.15em; padding: 0.4rem 0.85rem; border-radius: 2px; cursor: pointer; transition: all 0.2s ease; text-transform: uppercase; }
+  .nav-btn:hover, .nav-btn.active { background: rgba(251,191,36,0.1); border-color: var(--gold); color: var(--white); }
+  .page-counter { font-size: 0.55rem; font-weight: 700; letter-spacing: 0.2em; color: var(--muted); }
+
+  .spread { display: none; animation: fadeIn 0.45s ease forwards; }
+  .spread.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+  .spread-footer { display: flex; justify-content: space-between; align-items: center; padding: 0.9rem 2rem; border-top: 1px solid rgba(251,191,36,0.08); }
+  .spread-footer-left { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; color: var(--muted); }
+  .spread-footer-right { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.2em; color: var(--gold); }
+
+  /* COVER */
+  .cover-spread { position: relative; min-height: 520px; border-radius: 4px; overflow: hidden; background: radial-gradient(ellipse at 15% 20%, rgba(167,139,250,0.15) 0%, transparent 45%), radial-gradient(ellipse at 85% 80%, rgba(251,191,36,0.12) 0%, transparent 45%), radial-gradient(ellipse at 50% 50%, rgba(244,114,182,0.06) 0%, transparent 60%), var(--card); border: 1px solid rgba(251,191,36,0.15); display: flex; flex-direction: column; justify-content: flex-end; padding: 3rem; }
+  .cover-eyebrow { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.5em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; }
+  .cover-title { font-size: clamp(1.8rem, 5vw, 3rem); font-weight: 700; line-height: 1.1; color: var(--white); letter-spacing: -0.02em; margin-bottom: 0.3rem; }
+  .cover-title-arrow { color: var(--gold); font-weight: 200; }
+  .cover-title-end { background: linear-gradient(135deg, var(--gold) 0%, var(--pink) 60%, var(--cyan) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .cover-subtitle { font-size: 0.875rem; color: var(--secondary); line-height: 1.65; max-width: 420px; margin-bottom: 2rem; }
+  .cover-rule { width: 48px; height: 2px; background: linear-gradient(90deg, var(--gold), transparent); margin: 0 0 1.2rem; }
+  .cover-meta { display: flex; justify-content: space-between; align-items: flex-end; }
+  .cover-meta-text { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: var(--muted); line-height: 2; }
+  .cover-ls { font-size: 1.6rem; font-weight: 700; color: var(--gold); text-shadow: 0 0 20px rgba(251,191,36,0.4); }
+
+  /* SHORTHAND SPREADS */
+  .sh-spread { border-radius: 4px; overflow: hidden; min-height: auto; position: relative; display: grid; grid-template-rows: 1fr auto; }
+  .sh-body { display: grid; grid-template-columns: 1fr 1fr; min-height: auto; }
+  .sh-left { display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; padding: 3rem 2rem 2rem 3rem; position: relative; border-right: 1px solid rgba(255,255,255,0.06); }
+  .sh-sequence { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.4em; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; }
+  .sh-glyph { font-size: clamp(3.5rem, 12vw, 7rem); font-weight: 900; line-height: 1; letter-spacing: -0.03em; margin-bottom: 1.2rem; display: block; }
+  .sh-expansion { font-size: 0.875rem; font-weight: 400; color: var(--secondary); line-height: 1.6; max-width: 260px; }
+  .sh-expansion em { color: var(--white); font-style: normal; font-weight: 600; }
+  .sh-letters { display: flex; flex-direction: column; gap: 0.15rem; margin-top: 1rem; }
+  .sh-letter-row { display: flex; gap: 0.6rem; align-items: baseline; }
+  .sh-letter { font-size: 1rem; font-weight: 900; min-width: 1.2rem; line-height: 1.4; }
+  .sh-letter-meaning { font-size: 0.75rem; color: var(--secondary); line-height: 1.4; }
+  .sh-letter-meaning em { color: var(--white); font-style: normal; }
+  .sh-right { padding: 3rem 3rem 3rem 2.5rem; display: flex; flex-direction: column; justify-content: flex-start; }
+  .sh-eyebrow { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.45em; text-transform: uppercase; margin-bottom: 1.2rem; }
+  .sh-heading { font-size: 1.4rem; font-weight: 300; line-height: 1.3; color: var(--white); margin-bottom: 1rem; letter-spacing: -0.01em; }
+  .sh-heading em { font-style: italic; }
+  .sh-rule { width: 28px; height: 2px; margin: 0 0 1.1rem; border-radius: 1px; }
+  .sh-body-text { font-size: 0.9375rem; line-height: 1.8; color: var(--secondary); }
+  .sh-body-text p { margin-bottom: 1em; }
+  .sh-body-text p:last-child { margin-bottom: 0; }
+  .sh-body-text em     { color: var(--white); font-style: italic; }
+  .sh-body-text strong { font-weight: 600; font-style: normal; }
+  .sh-usage { margin-top: 1.2rem; padding: 0.9rem 1rem; border-radius: 0 6px 6px 0; border-left: 2px solid; font-size: 0.875rem; line-height: 1.65; color: var(--secondary); }
+  .sh-usage-label { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 0.3rem; }
+
+  /* COLOPHON */
+  .colophon { padding: 3rem; display: flex; flex-direction: column; justify-content: space-between; min-height: 520px; border-radius: 4px; background: radial-gradient(ellipse at 20% 80%, rgba(251,191,36,0.07) 0%, transparent 50%), var(--card); border: 1px solid rgba(251,191,36,0.12); }
+  .colophon-ls-block { border-bottom: 1px solid rgba(251,191,36,0.1); padding-bottom: 1.5rem; margin-bottom: 1.5rem; }
+  .colophon-ls { font-size: 3rem; font-weight: 700; color: var(--gold); text-shadow: 0 0 30px rgba(251,191,36,0.3); display: block; margin-bottom: 0.3rem; letter-spacing: 0.05em; }
+  .colophon-phrase { font-size: 0.875rem; font-style: italic; font-weight: 300; color: var(--secondary); }
+  .evolution-chain { display: flex; flex-direction: column; gap: 0; margin-bottom: 2rem; border: 1px solid rgba(251,191,36,0.1); border-radius: 8px; overflow: hidden; }
+  .ec-row { display: grid; grid-template-columns: 5rem 1fr 4rem; gap: 1rem; padding: 0.85rem 1.2rem; border-bottom: 1px solid rgba(251,191,36,0.08); align-items: center; }
+  .ec-row:last-child { border-bottom: none; }
+  .ec-glyph { font-size: 1.1rem; font-weight: 900; letter-spacing: -0.02em; line-height: 1; }
+  .ec-desc { font-size: 0.8125rem; color: var(--secondary); line-height: 1.5; }
+  .ec-desc strong { color: var(--white); font-weight: 600; }
+  .ec-date { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-align: right; }
+  .colophon-body { font-size: 0.8rem; color: var(--muted); line-height: 1.85; flex: 1; margin-bottom: 1.5rem; }
+  .colophon-footer { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; color: var(--muted); line-height: 2.2; border-top: 1px solid rgba(251,191,36,0.1); padding-top: 1rem; }
+
+  .twinkle { position: fixed; width: 3px; height: 3px; background: var(--gold); border-radius: 50%; box-shadow: 0 0 6px var(--gold); animation: twinkle-anim 3s ease-in-out infinite; pointer-events: none; z-index: 0; }
+  @keyframes twinkle-anim { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.15; transform: scale(0.3); } }
+
+  @media (max-width: 600px) {
+    .sh-body { grid-template-columns: 1fr; }
+    .sh-left { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06); padding: 2rem 1.5rem; }
+    .sh-right { padding: 2rem 1.5rem; }
+    .sh-glyph { font-size: 3.5rem; }
+    .cover-spread { padding: 2rem; min-height: 400px; }
+    .colophon { padding: 2rem 1.5rem; }
+    .ec-row { grid-template-columns: 4rem 1fr; }
+    .ec-date { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="twinkle" style="top:7%;left:11%;animation-delay:-0.4s"></div>
+<div class="twinkle" style="top:19%;left:83%;animation-delay:-1.3s;background:var(--pink);box-shadow:0 0 6px var(--pink)"></div>
+<div class="twinkle" style="top:52%;left:4%;animation-delay:-2.1s"></div>
+<div class="twinkle" style="top:71%;left:94%;animation-delay:-0.9s;background:var(--cyan);box-shadow:0 0 6px var(--cyan)"></div>
+<div class="twinkle" style="top:88%;left:28%;animation-delay:-1.7s"></div>
+<div class="twinkle" style="top:38%;left:97%;animation-delay:-3.1s;background:var(--gold);box-shadow:0 0 6px var(--gold)"></div>
+
+<div class="zine-shell">
+
+  <nav class="nav">
+    <div class="nav-brand">Stimpunks · Shorthand Evolution</div>
+    <div class="nav-controls">
+      <button class="nav-btn" id="prev-btn" onclick="changePage(-1)">← prev</button>
+      <span class="page-counter" id="page-counter">1 / 7</span>
+      <button class="nav-btn active" id="next-btn" onclick="changePage(1)">next →</button>
+    </div>
+  </nav>
+
+  <!-- SPREAD 1 — COVER -->
+  <div class="spread active" id="spread-1">
+    <div class="cover-spread">
+      <div class="cover-eyebrow">Stimpunks Foundation · Typographic · Open Edition</div>
+      <h1 class="cover-title">LYDTYSS<br><span class="cover-title-arrow">→</span><span class="cover-title-end"> L★S</span></h1>
+      <p class="cover-subtitle">How one phrase compressed itself into a glyph. Five shorthands, their etymologies, and what each compression preserved — and what it let go.</p>
+      <div class="cover-rule"></div>
+      <div class="cover-meta">
+        <div class="cover-meta-text">Love You Down To Your Star Stuff<br>Shorthand Evolution · Open edition</div>
+        <div class="cover-ls">L★S</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SPREAD 2 — LYDTYSS -->
+  <div class="spread" id="spread-2">
+    <div class="sh-spread" style="background: radial-gradient(ellipse at 20% 30%, rgba(167,139,250,0.14) 0%, transparent 55%), var(--card); border: 1px solid rgba(167,139,250,0.2);">
+      <div class="sh-body">
+        <div class="sh-left">
+          <div class="sh-sequence">01 of 05 · The origin</div>
+          <span class="sh-glyph" style="background: linear-gradient(135deg, var(--purple) 0%, var(--pink) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">LYDTYSS</span>
+          <p class="sh-expansion">The full phrase, initialed. <em>Love You Down To Your Star Stuff.</em> Every word present. Nothing lost.</p>
+          <div class="sh-letters">
+            <div class="sh-letter-row"><span class="sh-letter" style="color:var(--purple);">L</span><span class="sh-letter-meaning"><em>Love</em></span></div>
+            <div class="sh-letter-row"><span class="sh-letter" style="color:var(--purple);">Y</span><span class="sh-letter-meaning"><em>You</em></span></div>
+            <div class="sh-letter-row"><span class="sh-letter" style="color:var(--secondary);">D</span><span class="sh-letter-meaning">Down</span></div>
+            <div class="sh-letter-row"><span class="sh-letter" style="color:var(--secondary);">T</span><span class="sh-letter-meaning">To</span></div>
+            <div class="sh-letter-row"><span class="sh-letter" style="color:var(--secondary);">Y</span><span class="sh-letter-meaning">Your</span></div>
+            <div class="sh-letter-row"><span class="sh-letter" style="color:var(--purple);">S</span><span class="sh-letter-meaning"><em>Star</em></span></div>
+            <div class="sh-letter-row"><span class="sh-letter" style="color:var(--purple);">S</span><span class="sh-letter-meaning"><em>Stuff</em></span></div>
+          </div>
+        </div>
+        <div class="sh-right">
+          <div class="sh-eyebrow" style="color:var(--purple);">Etymology · LYDTYSS</div>
+          <h2 class="sh-heading">The phrase before<br>it became <em>portable</em></h2>
+          <div class="sh-rule" style="background:var(--purple);"></div>
+          <div class="sh-body-text">
+            <p>LYDTYSS is the full acronym — every word present, nothing compressed, the whole sentence rendered in seven letters. It's the version you type when you want someone to know exactly what you mean before you've established the shorthand.</p>
+            <p>At seven characters it's <strong>already private</strong> — this is a phrase that belongs to a community, spoken in spaces where the full meaning is known. The acronym doesn't explain itself. It assumes shared ground.</p>
+            <p>The weight of the phrase is preserved here: the <em>downward direction</em> (D), the possessive (Y — Your), the movement through scales. Every syllable that earns "star stuff" its landing is still visible.</p>
+          </div>
+          <div class="sh-usage" style="background:rgba(167,139,250,0.06);border-color:var(--purple);">
+            <div class="sh-usage-label" style="color:var(--purple);">How it's used</div>
+            In writing, in channels, in early use — when the phrase was still new and the shorthand hadn't settled yet. The form that remembers all seven words.
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer"><span class="spread-footer-left">Shorthand Evolution · Stimpunks</span><span class="spread-footer-right">2</span></div>
+    </div>
+  </div>
+
+  <!-- SPREAD 3 — LYSS -->
+  <div class="spread" id="spread-3">
+    <div class="sh-spread" style="background: radial-gradient(ellipse at 75% 25%, rgba(34,211,238,0.12) 0%, transparent 50%), radial-gradient(ellipse at 25% 75%, rgba(167,139,250,0.10) 0%, transparent 50%), var(--card); border: 1px solid rgba(34,211,238,0.18);">
+      <div class="sh-body">
+        <div class="sh-left">
+          <div class="sh-sequence">02 of 05 · The first softening</div>
+          <span class="sh-glyph" style="color: var(--cyan);">LYSS</span>
+          <p class="sh-expansion">The first compression. <em>Down To Your</em> dissolves — the structural words, not the emotional ones. What remains: Love, You, Star, Stuff.</p>
+          <div class="sh-letters">
+            <div class="sh-letter-row"><span class="sh-letter" style="color:var(--cyan);">L</span><span class="sh-letter-meaning"><em>Love</em></span></div>
+            <div class="sh-letter-row"><span class="sh-letter" style="color:var(--cyan);">Y</span><span class="sh-letter-meaning"><em>You</em></span></div>
+            <div class="sh-letter-row"><span class="sh-letter" style="color:var(--cyan);">S</span><span class="sh-letter-meaning"><em>Star</em></span></div>
+            <div class="sh-letter-row"><span class="sh-letter" style="color:var(--cyan);">S</span><span class="sh-letter-meaning"><em>Stuff</em></span></div>
+            <div class="sh-letter-row" style="opacity:0.3;margin-top:0.3rem;"><span class="sh-letter" style="color:var(--muted);font-size:0.8rem;">—</span><span class="sh-letter-meaning" style="font-size:0.75rem;">D, T, Y dropped</span></div>
+          </div>
+        </div>
+        <div class="sh-right">
+          <div class="sh-eyebrow" style="color:var(--cyan);">Etymology · LYSS</div>
+          <h2 class="sh-heading">Drop the scaffolding.<br><em>Keep the weight.</em></h2>
+          <div class="sh-rule" style="background:var(--cyan);"></div>
+          <div class="sh-body-text">
+            <p>The compression from LYDTYSS to LYSS removes the three structural words — <em>Down, To, Your</em> — the ones that indicate direction and possession but don't carry the emotional payload.</p>
+            <p>What's preserved: the verb (Love), the subject (You), and the cosmological anchor (Star Stuff). The compression is surgically precise — it removes exactly what can be inferred from context and nothing else.</p>
+            <p>LYSS has <strong>a quality LYDTYSS doesn't</strong>: it's almost speakable. Four letters, one syllable — rhymes with "kiss." It starts to feel like a word rather than an abbreviation.</p>
+          </div>
+          <div class="sh-usage" style="background:rgba(34,211,238,0.05);border-color:var(--cyan);">
+            <div class="sh-usage-label" style="color:var(--cyan);">How it's used</div>
+            In community, between people who know the phrase. Faster to type than LYDTYSS, still readable without explanation. The form that trusts the reader.
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer"><span class="spread-footer-left">Shorthand Evolution · Stimpunks</span><span class="spread-footer-right">3</span></div>
+    </div>
+  </div>
+
+  <!-- SPREAD 4 — LUSS -->
+  <div class="spread" id="spread-4">
+    <div class="sh-spread" style="background: radial-gradient(ellipse at 30% 70%, rgba(74,222,128,0.11) 0%, transparent 50%), radial-gradient(ellipse at 70% 30%, rgba(251,191,36,0.09) 0%, transparent 50%), var(--card); border: 1px solid rgba(74,222,128,0.18);">
+      <div class="sh-body">
+        <div class="sh-left">
+          <div class="sh-sequence">03 of 05 · The warm variant</div>
+          <span class="sh-glyph" style="color: var(--green);">LUSS</span>
+          <p class="sh-expansion">An alternate four-letter compression. The <em>U</em> where the <em>Y</em> was — a different mouth feel, a rounder sound, a different kind of warmth.</p>
+          <div class="sh-letters">
+            <div class="sh-letter-row"><span class="sh-letter" style="color:var(--green);">L</span><span class="sh-letter-meaning"><em>Love</em></span></div>
+            <div class="sh-letter-row"><span class="sh-letter" style="color:var(--green);">U</span><span class="sh-letter-meaning"><em>You</em> (phonetic)</span></div>
+            <div class="sh-letter-row"><span class="sh-letter" style="color:var(--green);">S</span><span class="sh-letter-meaning"><em>Star</em></span></div>
+            <div class="sh-letter-row"><span class="sh-letter" style="color:var(--green);">S</span><span class="sh-letter-meaning"><em>Stuff</em></span></div>
+            <div class="sh-letter-row" style="opacity:0.3;margin-top:0.3rem;"><span class="sh-letter" style="color:var(--muted);font-size:0.8rem;">→</span><span class="sh-letter-meaning" style="font-size:0.75rem;">Y becomes U</span></div>
+          </div>
+        </div>
+        <div class="sh-right">
+          <div class="sh-eyebrow" style="color:var(--green);">Etymology · LUSS</div>
+          <h2 class="sh-heading">One letter changes.<br><em>The sound opens up.</em></h2>
+          <div class="sh-rule" style="background:var(--green);"></div>
+          <div class="sh-body-text">
+            <p>LUSS and LYSS carry the same four words — Love, You, Star, Stuff — but LUSS makes a phonetic substitution: U for Y. The letter U is the phoneme of "you." It sounds like what it represents.</p>
+            <p>That single swap changes the feel of the shorthand. LYSS is clean and consonant-led. <em>LUSS is rounder, warmer, more vowel-forward.</em> It reads more like an embrace than an acronym.</p>
+            <p>LUSS also <strong>sounds better spoken aloud</strong> — "luss" sits in the mouth differently than "liss," closer to "lush" or "love" in its phonaesthetics. Some uses of the shorthand preferred this version for exactly that reason.</p>
+          </div>
+          <div class="sh-usage" style="background:rgba(74,222,128,0.05);border-color:var(--green);">
+            <div class="sh-usage-label" style="color:var(--green);">How it's used</div>
+            A parallel form to LYSS — used by those who preferred the phonetic U, who wanted the shorthand to feel more like the word it stands in for. Both remain valid.
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer"><span class="spread-footer-left">Shorthand Evolution · Stimpunks</span><span class="spread-footer-right">4</span></div>
+    </div>
+  </div>
+
+  <!-- SPREAD 5 — L★S -->
+  <div class="spread" id="spread-5">
+    <div class="sh-spread" style="background: radial-gradient(ellipse at 50% 40%, rgba(251,191,36,0.16) 0%, transparent 55%), radial-gradient(ellipse at 80% 80%, rgba(244,114,182,0.10) 0%, transparent 45%), var(--card); border: 1px solid rgba(251,191,36,0.25);">
+      <div class="sh-body">
+        <div class="sh-left">
+          <div class="sh-sequence">04 of 05 · The breakthrough</div>
+          <span class="sh-glyph" style="color: var(--gold); text-shadow: 0 0 40px rgba(251,191,36,0.4);">L★S</span>
+          <p class="sh-expansion">Three characters. The star does work that letters can't. It holds <em>Love You</em> and <em>Star Stuff</em> simultaneously — and the whole cosmology between them.</p>
+          <div class="sh-letters" style="margin-top:1.2rem;">
+            <div class="sh-letter-row"><span class="sh-letter" style="color:var(--gold);font-size:1.2rem;">L</span><span class="sh-letter-meaning"><em>Love You</em> — the full sentiment compressed</span></div>
+            <div class="sh-letter-row"><span class="sh-letter" style="color:var(--gold);font-size:1.2rem;">★</span><span class="sh-letter-meaning"><em>Down to your</em> — the direction, the depth</span></div>
+            <div class="sh-letter-row"><span class="sh-letter" style="color:var(--gold);font-size:1.2rem;">S</span><span class="sh-letter-meaning"><em>Star Stuff</em> — the cosmological anchor</span></div>
+          </div>
+        </div>
+        <div class="sh-right">
+          <div class="sh-eyebrow" style="color:var(--gold);">Etymology · L★S</div>
+          <h2 class="sh-heading">When a symbol<br><em>earns its place</em></h2>
+          <div class="sh-rule" style="background:var(--gold);"></div>
+          <div class="sh-body-text">
+            <p>The breakthrough in L★S is the star. Not L-S with a separator, not an asterisk standing in for missing letters — <em>★ as semantic content</em>. The star glyph holds the entire middle of the phrase: the direction (down to), the cosmological frame (star), and the thing being loved (stuff).</p>
+            <p>Three characters that can only be read one way by someone who knows the phrase. L and S alone could stand for many things. L★S stands for exactly one thing: <strong>Love You Down To Your Star Stuff</strong>.</p>
+            <p>This is the compression that stuck. It works as an acronym, as a visual mark, and as a cosmological statement — all simultaneously.</p>
+          </div>
+          <div class="sh-usage" style="background:rgba(251,191,36,0.06);border-color:var(--gold);">
+            <div class="sh-usage-label" style="color:var(--gold);">How it's used</div>
+            The primary shorthand. Appears throughout the series, in signatures, in community use. The form that travels — three characters that carry the whole phrase.
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer"><span class="spread-footer-left">Shorthand Evolution · Stimpunks</span><span class="spread-footer-right">5</span></div>
+    </div>
+  </div>
+
+  <!-- SPREAD 6 — ★stuff -->
+  <div class="spread" id="spread-6">
+    <div class="sh-spread" style="background: radial-gradient(ellipse at 30% 30%, rgba(244,114,182,0.13) 0%, transparent 50%), radial-gradient(ellipse at 70% 70%, rgba(167,139,250,0.11) 0%, transparent 50%), var(--card); border: 1px solid rgba(244,114,182,0.2);">
+      <div class="sh-body">
+        <div class="sh-left">
+          <div class="sh-sequence">05 of 05 · The furthest compression</div>
+          <span class="sh-glyph" style="background: linear-gradient(135deg, var(--gold) 0%, var(--pink) 55%, var(--purple) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">★stuff</span>
+          <p class="sh-expansion">The star alone carries the cosmology. <em>★stuff</em> is what everything in the series is made of — and what the love is addressed to.</p>
+          <div class="sh-letters" style="margin-top:1.2rem;">
+            <div class="sh-letter-row">
+              <span class="sh-letter" style="background: linear-gradient(135deg, var(--gold), var(--pink)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-size:1.2rem;">★</span>
+              <span class="sh-letter-meaning"><em>Love You Down To Your Star</em> — everything before the noun</span>
+            </div>
+            <div class="sh-letter-row">
+              <span class="sh-letter" style="color:var(--pink);font-size:1.2rem;">st</span>
+              <span class="sh-letter-meaning" style="padding-top:0.1rem;"><em>stuff</em> — what you are made of</span>
+            </div>
+          </div>
+        </div>
+        <div class="sh-right">
+          <div class="sh-eyebrow" style="color:var(--pink);">Etymology · ★stuff</div>
+          <h2 class="sh-heading">The star takes<br><em>everything else</em></h2>
+          <div class="sh-rule" style="background: linear-gradient(90deg, var(--gold), var(--pink));"></div>
+          <div class="sh-body-text">
+            <p>★stuff is the compression at the limit. A single Unicode glyph followed by a four-letter word. The entire phrase — Love You Down To Your — has been absorbed into the star. All that remains is the noun: <em>stuff</em>.</p>
+            <p>This works because by the time you reach ★stuff, the star is no longer just a decoration. It carries the full semantic weight of the phrase. Anyone who knows L★S reads ★stuff immediately as <strong>"what you are loved down to."</strong></p>
+            <p>★stuff is also the most cosmological form — the star and the matter it produced, standing alone. It's the whole series in two tokens: the stellar origin (★) and the thing that origin became (stuff). Both of which are you.</p>
+          </div>
+          <div class="sh-usage" style="background:rgba(244,114,182,0.05);border-color:var(--pink);">
+            <div class="sh-usage-label" style="color:var(--pink);">How it's used</div>
+            In shorthand, in hashtags, as a tag for the series and its themes. The most compressed form — and the one that most directly names what the whole project is about.
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer"><span class="spread-footer-left">Shorthand Evolution · Stimpunks</span><span class="spread-footer-right">6</span></div>
+    </div>
+  </div>
+
+  <!-- SPREAD 7 — COLOPHON -->
+  <div class="spread" id="spread-7">
+    <div class="colophon">
+      <div>
+        <div class="colophon-ls-block">
+          <span class="colophon-ls">L★S</span>
+          <span class="colophon-phrase">Love You Down To Your Star Stuff</span>
+        </div>
+        <div class="evolution-chain" aria-label="Full shorthand evolution">
+          <div class="ec-row">
+            <span class="ec-glyph" style="color:var(--purple);">LYDTYSS</span>
+            <div class="ec-desc"><strong>Love You Down To Your Star Stuff</strong> — the full acronym, all seven words present</div>
+            <span class="ec-date">Origin</span>
+          </div>
+          <div class="ec-row">
+            <span class="ec-glyph" style="color:var(--cyan);">LYSS</span>
+            <div class="ec-desc"><strong>Love You Star Stuff</strong> — first compression, structural words removed</div>
+            <span class="ec-date">Early use</span>
+          </div>
+          <div class="ec-row">
+            <span class="ec-glyph" style="color:var(--green);">LUSS</span>
+            <div class="ec-desc"><strong>Love U Star Stuff</strong> — phonetic variant, Y becomes U</div>
+            <span class="ec-date">Parallel</span>
+          </div>
+          <div class="ec-row">
+            <span class="ec-glyph" style="color:var(--gold);text-shadow:0 0 12px rgba(251,191,36,0.4);">L★S</span>
+            <div class="ec-desc"><strong>Love ★ Star Stuff</strong> — the star carries the middle, three characters, primary shorthand</div>
+            <span class="ec-date">Primary</span>
+          </div>
+          <div class="ec-row">
+            <span class="ec-glyph" style="background: linear-gradient(135deg, var(--gold), var(--pink)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">★stuff</span>
+            <div class="ec-desc"><strong>★ stuff</strong> — furthest compression, star absorbs the phrase, noun remains</div>
+            <span class="ec-date">Compressed</span>
+          </div>
+        </div>
+        <p class="colophon-body">
+          Shorthand Evolution is a print artifact in the Stimpunks star stuff series. It traces the compression of "Love You Down To Your Star Stuff" from its full acronym form to its most reduced expression — five stages, each preserving the essential and releasing what can be inferred.<br><br>
+          The phrase "Love You Down To Your Star Stuff" is Stimpunks. The star stuff is Sagan's. The star stuff itself belongs to the universe.<br><br>
+          Each shorthand in this artifact is a different answer to the same question: what is the minimum form that carries the full meaning? LYDTYSS answers: all of it. ★stuff answers: the star and the noun. L★S is the form that found the balance between those two answers.
+        </p>
+      </div>
+      <div class="colophon-footer">
+        Stimpunks Foundation · Shorthand Evolution · Open Edition<br>
+        Print free · Share freely · L★S<br>
+        stimpunks.org · star-stuff.netlify.app
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  let current = 1;
+  const total = 7;
+
+  function changePage(dir) {
+    const next = current + dir;
+    if (next < 1 || next > total) return;
+    document.getElementById('spread-' + current).classList.remove('active');
+    current = next;
+    document.getElementById('spread-' + current).classList.add('active');
+    document.getElementById('page-counter').textContent = current + ' / ' + total;
+    document.getElementById('prev-btn').style.opacity = current === 1 ? '0.3' : '1';
+    document.getElementById('next-btn').style.opacity = current === total ? '0.3' : '1';
+    document.getElementById('prev-btn').classList.toggle('active', current > 1);
+    document.getElementById('next-btn').classList.toggle('active', current < total);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') changePage(1);
+    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   changePage(-1);
+  });
+
+  document.getElementById('prev-btn').style.opacity = '0.3';
+</script>
+</body>
+</html>

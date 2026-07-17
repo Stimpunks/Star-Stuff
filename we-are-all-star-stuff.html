@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>We Are All Star Stuff — Call for Contributors · Stimpunks Foundation</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:        #0a0a14;
+    --card:      #0f0f2a;
+    --purple:    #a78bfa;
+    --pink:      #f472b6;
+    --gold:      #fbbf24;
+    --cyan:      #22d3ee;
+    --green:     #4ade80;
+    --white:     #f9fafb;
+    --secondary: #b8aed0;
+    --muted:     #c4b5d4;
+    --border:    rgba(167,139,250,0.15);
+    --border-cyan: rgba(34,211,238,0.2);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--bg);
+    font-family: 'Atkinson Hyperlegible Next', sans-serif;
+    color: var(--white);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 8%  13%, rgba(249,250,251,0.8) 0%, transparent 100%),
+      radial-gradient(1px 1px at 22% 38%, rgba(249,250,251,0.6) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 44% 9%,  rgba(251,191,36,0.9)  0%, transparent 100%),
+      radial-gradient(1px 1px at 61% 68%, rgba(249,250,251,0.7) 0%, transparent 100%),
+      radial-gradient(2px 2px at 74% 28%, rgba(249,250,251,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 84% 54%, rgba(34,211,238,0.7)  0%, transparent 100%),
+      radial-gradient(1px 1px at 91% 79%, rgba(249,250,251,0.8) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 4%  58%, rgba(249,250,251,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 34% 84%, rgba(251,191,36,0.5)  0%, transparent 100%),
+      radial-gradient(1px 1px at 54% 48%, rgba(249,250,251,0.4) 0%, transparent 100%),
+      radial-gradient(2px 2px at 19% 88%, rgba(167,139,250,0.7) 0%, transparent 100%),
+      radial-gradient(1px 1px at 69% 4%,  rgba(249,250,251,0.8) 0%, transparent 100%),
+      radial-gradient(1px 1px at 47% 62%, rgba(34,211,238,0.5)  0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 30% 20%, rgba(251,191,36,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 77% 88%, rgba(249,250,251,0.5) 0%, transparent 100%),
+      radial-gradient(2px 2px at 55% 32%, rgba(244,114,182,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 14% 52%, rgba(249,250,251,0.4) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 88% 20%, rgba(34,211,238,0.4) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .wrap { position: relative; z-index: 1; max-width: 720px; margin: 0 auto; padding: 4rem 2rem 6rem; }
+
+  .back-nav { margin-bottom: 3rem; }
+
+  .back-link { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s ease; display: inline-flex; align-items: center; gap: 0.4rem; }
+  .back-link:hover { color: var(--cyan); }
+
+  .masthead { margin-bottom: 2rem; }
+
+  .masthead-eyebrow { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: var(--cyan); margin-bottom: 1rem; display: block; }
+
+  .masthead-title { font-size: clamp(2.2rem, 6vw, 3.8rem); font-weight: 700; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 0.5rem; }
+  .masthead-title-line1 { color: var(--white); display: block; }
+  .masthead-title-line2 { display: block; background: linear-gradient(135deg, var(--gold) 0%, var(--pink) 50%, var(--cyan) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+  .masthead-series { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-top: 1rem; }
+
+  .status-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(34,211,238,0.08); border: 1px solid var(--border-cyan); border-radius: 999px; padding: 0.4rem 1rem; font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cyan); margin-bottom: 3rem; }
+
+  .status-dot { width: 7px; height: 7px; background: var(--cyan); border-radius: 50%; box-shadow: 0 0 8px var(--cyan); animation: pulse 2s ease-in-out infinite; }
+
+  @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.7); } }
+
+  .rule { width: 40px; height: 2px; background: var(--cyan); margin: 1.5rem 0; border-radius: 1px; }
+
+  .lede { font-size: 1.125rem; font-weight: 400; line-height: 1.75; color: var(--white); margin-bottom: 1.5rem; }
+
+  .body-text { font-size: 1rem; line-height: 1.8; color: var(--secondary); margin-bottom: 1.25rem; }
+  .body-text em { color: var(--white); font-style: italic; }
+  .body-text strong { color: var(--cyan); font-weight: 600; font-style: normal; }
+  .body-text .gold { color: var(--gold); font-weight: 600; }
+
+  .section-heading { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-top: 3rem; margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.75rem; }
+  .section-heading::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+  .prompt-list { display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 0.5rem; }
+
+  .prompt-card { background: var(--card); border: 1px solid var(--border); border-left: 3px solid var(--prompt-color, var(--cyan)); border-radius: 0 8px 8px 0; padding: 1rem 1.25rem; }
+
+  .prompt-text { font-size: 1rem; font-style: italic; color: var(--white); line-height: 1.6; }
+
+  .spec-list { display: flex; flex-direction: column; gap: 0; }
+
+  .spec-item { display: grid; grid-template-columns: 7rem 1fr; gap: 1rem; padding: 0.8rem 0; border-bottom: 1px solid rgba(167,139,250,0.08); align-items: baseline; }
+  .spec-item:last-child { border-bottom: none; }
+
+  .spec-label { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+
+  .spec-value { font-size: 0.9375rem; color: var(--secondary); line-height: 1.6; }
+  .spec-value em { color: var(--white); font-style: normal; }
+  .spec-value strong { color: var(--cyan); font-weight: 600; }
+
+  .anon-note { background: rgba(74,222,128,0.06); border: 1px solid rgba(74,222,128,0.15); border-left: 3px solid var(--green); border-radius: 0 8px 8px 0; padding: 1rem 1.25rem; margin-top: 1.5rem; font-size: 0.9375rem; color: var(--secondary); line-height: 1.65; }
+  .anon-note strong { color: var(--green); font-weight: 600; }
+
+  .cta-block { margin-top: 3.5rem; background: var(--card); border: 1px solid var(--border-cyan); border-radius: 8px; padding: 2rem; text-align: center; }
+
+  .cta-ls { font-size: 2.5rem; font-weight: 700; color: var(--gold); text-shadow: 0 0 30px rgba(251,191,36,0.35); display: block; margin-bottom: 0.5rem; letter-spacing: 0.05em; }
+
+  .cta-phrase { font-size: 0.875rem; font-style: italic; color: var(--secondary); margin-bottom: 1.5rem; display: block; }
+
+  .cta-email { display: inline-block; font-size: 1rem; font-weight: 700; color: var(--cyan); text-decoration: none; letter-spacing: 0.05em; padding: 0.75rem 2rem; border: 1px solid var(--border-cyan); border-radius: 4px; background: rgba(34,211,238,0.07); transition: all 0.2s ease; margin-bottom: 1rem; }
+  .cta-email:hover { background: rgba(34,211,238,0.14); border-color: var(--cyan); box-shadow: 0 0 20px rgba(34,211,238,0.15); }
+
+  .cta-alt { font-size: 0.875rem; color: var(--muted); line-height: 1.6; display: block; }
+  .cta-alt a { color: var(--secondary); text-decoration: none; border-bottom: 1px solid rgba(184,174,208,0.3); transition: color 0.2s ease; }
+  .cta-alt a:hover { color: var(--white); }
+
+  .series-footer { margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+  .series-footer-left { font-size: 0.875rem; color: var(--secondary); line-height: 1.7; }
+  .series-footer-left a { color: var(--cyan); text-decoration: none; }
+  .series-footer-left a:hover { text-decoration: underline; }
+  .series-footer-ls { font-size: 1.8rem; font-weight: 700; color: var(--gold); text-shadow: 0 0 20px rgba(251,191,36,0.35); }
+
+  .twinkle { position: fixed; width: 3px; height: 3px; background: var(--gold); border-radius: 50%; box-shadow: 0 0 6px var(--gold); animation: twinkle-anim 3s ease-in-out infinite; pointer-events: none; z-index: 0; }
+  @keyframes twinkle-anim { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.15; transform: scale(0.3); } }
+
+  @media (max-width: 600px) {
+    .wrap { padding: 2.5rem 1.25rem 4rem; }
+    .spec-item { grid-template-columns: 1fr; gap: 0.25rem; }
+    .series-footer { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<div class="twinkle" style="top:6%;left:10%;animation-delay:-0.4s"></div>
+<div class="twinkle" style="top:18%;left:86%;animation-delay:-1.3s;background:var(--cyan);box-shadow:0 0 6px var(--cyan)"></div>
+<div class="twinkle" style="top:50%;left:3%;animation-delay:-2.1s"></div>
+<div class="twinkle" style="top:72%;left:95%;animation-delay:-0.9s;background:var(--pink);box-shadow:0 0 6px var(--pink)"></div>
+<div class="twinkle" style="top:89%;left:27%;animation-delay:-1.7s"></div>
+<div class="twinkle" style="top:36%;left:97%;animation-delay:-3.1s;background:var(--cyan);box-shadow:0 0 6px var(--cyan)"></div>
+
+<div class="wrap">
+
+  <nav class="back-nav" aria-label="Back to series">
+    <a class="back-link" href="index.html">← ★ stuff series</a>
+  </nav>
+
+  <header class="masthead">
+    <span class="masthead-eyebrow">Stimpunks Foundation · Community Reader</span>
+    <h1 class="masthead-title">
+      <span class="masthead-title-line1">We Are All</span>
+      <span class="masthead-title-line2">Star Stuff</span>
+    </h1>
+    <div class="masthead-series">Zine No. 4 · In progress</div>
+  </header>
+
+  <div class="status-badge">
+    <div class="status-dot" aria-hidden="true"></div>
+    Open call for contributors
+  </div>
+
+  <p class="lede">The first three zines in this series made arguments. This one holds space for something different: the actual voices of the people the series is for.</p>
+
+  <p class="body-text">Zines No. 1, 2, and 3 built the framework — the piezoelectric bones, the cosmology of care, the neurodiversity paradigm. They explained why you are made of star stuff and why that matters. <em>We Are All Star Stuff</em> is the zine that asks: what does that mean to you?</p>
+
+  <p class="body-text">We're collecting short pieces — a few sentences to a few paragraphs — from autistic, ADHD, dyslexic, disabled, and otherwise neurodivergent people, and from the family members, educators, and community members who love them. No expertise required. No particular format. Just your honest answer to the question of what it means to be <span class="gold">loved down to your star stuff</span>, or to love someone that way.</p>
+
+  <div class="rule"></div>
+
+  <p class="body-text">This zine will be offered freely, the same as the rest of the series — print-at-home, shareable, open edition. Every contributor will be credited exactly as they choose: full name, first name only, initials, role, or anonymous.</p>
+
+  <div class="section-heading">Prompts</div>
+
+  <p class="body-text" style="margin-bottom:1.25rem;">You don't need to answer any of these directly — they're starting points, not requirements. Write toward whatever feels true.</p>
+
+  <div class="prompt-list">
+
+    <div class="prompt-card" style="--prompt-color: #fbbf24;">
+      <p class="prompt-text">"When I first encountered the phrase 'Love You Down To Your Star Stuff' — or the idea behind it — something shifted. Here's what shifted, and why."</p>
+    </div>
+
+    <div class="prompt-card" style="--prompt-color: #a78bfa;">
+      <p class="prompt-text">"The neurodiversity paradigm says my neurological difference is variation, not deficit. Here's what that reframe has meant in practice — in my life, my work, my relationships, my sense of myself."</p>
+    </div>
+
+    <div class="prompt-card" style="--prompt-color: #22d3ee;">
+      <p class="prompt-text">"Here's a moment when I felt — or gave — the kind of love that goes all the way in. Past the hard parts. Down to the star stuff."</p>
+    </div>
+
+    <div class="prompt-card" style="--prompt-color: #f472b6;">
+      <p class="prompt-text">"The idea that the universe doesn't pathologize its own variation: here's what that means to me, or what I wish it had meant to someone in my life earlier."</p>
+    </div>
+
+    <div class="prompt-card" style="--prompt-color: #4ade80;">
+      <p class="prompt-text">"Something I want other neurodivergent people — or the people who love them — to know. Anything. L★S."</p>
+    </div>
+
+  </div>
+
+  <div class="section-heading">Format</div>
+
+  <div class="spec-list">
+
+    <div class="spec-item">
+      <span class="spec-label">Length</span>
+      <span class="spec-value">A few sentences to a few paragraphs. <em>No minimum, no hard maximum</em> — but shorter pieces are easier to fit and we'll work with you on longer ones.</span>
+    </div>
+
+    <div class="spec-item">
+      <span class="spec-label">Form</span>
+      <span class="spec-value">Prose, fragment, list, letter, poem — <em>any form that fits what you want to say.</em> Write in your own voice. Formal or casual, both welcome.</span>
+    </div>
+
+    <div class="spec-item">
+      <span class="spec-label">Credit</span>
+      <span class="spec-value">You choose: <em>full name, first name, initials, role ("an autistic parent"), or anonymous.</em> You can also add a brief bio line if you'd like.</span>
+    </div>
+
+    <div class="spec-item">
+      <span class="spec-label">Edits</span>
+      <span class="spec-value">We'll share any edits with you before publication and <strong>won't change your words without your approval.</strong></span>
+    </div>
+
+    <div class="spec-item">
+      <span class="spec-label">Rights</span>
+      <span class="spec-value">You keep all rights to your words. We ask for permission to include your piece in this zine and future print editions of it, nothing more.</span>
+    </div>
+
+    <div class="spec-item">
+      <span class="spec-label">Deadline</span>
+      <span class="spec-value"><em>No hard deadline yet.</em> We'll publish when we have enough voices to fill a zine. Earlier submissions mean earlier inclusion.</span>
+    </div>
+
+  </div>
+
+  <div class="anon-note">
+    <strong>A note on anonymity:</strong> You're welcome to share as much or as little about yourself as you want. You don't need to disclose a diagnosis, a label, or a relationship. If you want to write "someone who has been loved this way" and nothing more, that's a complete and welcome contribution.
+  </div>
+
+  <div class="cta-block">
+    <span class="cta-ls">L★S</span>
+    <span class="cta-phrase">Love You Down To Your Star Stuff</span>
+    <a class="cta-email" href="mailto:stimpunks@stimpunks.org?subject=We%20Are%20All%20Star%20Stuff%20%E2%80%94%20contribution">
+      Send your piece → stimpunks@stimpunks.org
+    </a>
+    <span class="cta-alt">
+      Questions before submitting? Same address.<br>
+      Or reach us through <a href="https://stimpunks.org/contact" target="_blank" rel="noopener">stimpunks.org/contact</a>.
+    </span>
+  </div>
+
+  <footer class="series-footer">
+    <div class="series-footer-left">
+      Part of the <a href="index.html">★ stuff series</a> · Stimpunks Foundation<br>
+      <a href="https://stimpunks.org">stimpunks.org</a> · Print free · Share freely · L★S
+    </div>
+    <span class="series-footer-ls">L★S</span>
+  </footer>
+
+</div>
+</body>
+</html>

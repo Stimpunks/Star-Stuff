@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Love You Down To Your Star Stuff — Stimpunks Zine No. 2</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:        #0a0a14;
+    --card:      #0f0f2a;
+    --page:      #0d0d20;
+    --purple:    #a78bfa;
+    --pink:      #f472b6;
+    --gold:      #fbbf24;
+    --cyan:      #22d3ee;
+    --green:     #4ade80;
+    --white:     #f9fafb;
+    --secondary: #b8aed0;
+    --muted:     #c4b5d4;
+    --border:    rgba(244,114,182,0.15);
+    --border-dim: rgba(244,114,182,0.08);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--bg);
+    font-family: 'Atkinson Hyperlegible Next', sans-serif;
+    color: var(--white);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 8%  12%, rgba(249,250,251,0.8) 0%, transparent 100%),
+      radial-gradient(1px 1px at 22% 38%, rgba(249,250,251,0.6) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 44% 9%,  rgba(251,191,36,0.9) 0%, transparent 100%),
+      radial-gradient(1px 1px at 61% 68%, rgba(249,250,251,0.7) 0%, transparent 100%),
+      radial-gradient(2px 2px at 74% 28%, rgba(249,250,251,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 84% 54%, rgba(34,211,238,0.7)  0%, transparent 100%),
+      radial-gradient(1px 1px at 91% 79%, rgba(249,250,251,0.8) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 4%  58%, rgba(249,250,251,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 34% 84%, rgba(251,191,36,0.5)  0%, transparent 100%),
+      radial-gradient(1px 1px at 54% 48%, rgba(249,250,251,0.4) 0%, transparent 100%),
+      radial-gradient(2px 2px at 19% 88%, rgba(167,139,250,0.7) 0%, transparent 100%),
+      radial-gradient(1px 1px at 69% 4%,  rgba(249,250,251,0.8) 0%, transparent 100%),
+      radial-gradient(1px 1px at 47% 62%, rgba(34,211,238,0.5)  0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 30% 20%, rgba(251,191,36,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 77% 88%, rgba(249,250,251,0.5) 0%, transparent 100%),
+      radial-gradient(2px 2px at 55% 32%, rgba(244,114,182,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 14% 52%, rgba(249,250,251,0.4) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 88% 20%, rgba(244,114,182,0.4) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .zine-shell {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 4rem;
+  }
+
+  .nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-brand {
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--pink);
+  }
+
+  .nav-controls { display: flex; gap: 0.5rem; align-items: center; }
+
+  .nav-btn {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--secondary);
+    font-family: 'Atkinson Hyperlegible Next', sans-serif;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    padding: 0.4rem 0.85rem;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+  }
+
+  .nav-btn:hover, .nav-btn.active {
+    background: rgba(244,114,182,0.1);
+    border-color: var(--pink);
+    color: var(--white);
+  }
+
+  .page-counter {
+    font-size: 0.55rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    color: var(--muted);
+  }
+
+  .spread { display: none; animation: fadeIn 0.45s ease forwards; }
+  .spread.active { display: block; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .spread-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.9rem 2rem;
+    border-top: 1px solid var(--border-dim);
+  }
+
+  .spread-footer-left {
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .spread-footer-right {
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    color: var(--pink);
+  }
+
+  .interior {
+    background: var(--page);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    min-height: 480px;
+  }
+
+  .spread-2col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 480px;
+  }
+
+  .spread-left, .spread-right { padding: 3rem 2.5rem; position: relative; }
+  .spread-left { border-right: 1px solid var(--border-dim); }
+  .spread-1col { padding: 3.5rem 3rem; position: relative; }
+
+  .eyebrow {
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+    color: var(--pink);
+    margin-bottom: 1.2rem;
+  }
+
+  .spread-heading {
+    font-size: 2rem;
+    font-weight: 300;
+    line-height: 1.15;
+    color: var(--white);
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.01em;
+  }
+
+  .spread-heading em { font-style: italic; color: var(--pink); }
+  .spread-heading .gold { color: var(--gold); font-style: normal; }
+  .spread-heading .cyan { color: var(--cyan); font-style: normal; }
+
+  .rule {
+    width: 32px;
+    height: 2px;
+    background: var(--pink);
+    margin: 1.2rem 0;
+    border-radius: 1px;
+  }
+
+  .body-text {
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.8;
+    color: var(--secondary);
+  }
+
+  .body-text p { margin-bottom: 1.1em; }
+  .body-text p:last-child { margin-bottom: 0; }
+  .body-text em { color: var(--white); font-style: italic; }
+  .body-text strong { color: var(--pink); font-weight: 600; font-style: normal; }
+  .body-text .cyan { color: var(--cyan); font-weight: 600; }
+  .body-text .gold { color: var(--gold); font-weight: 600; }
+  .body-text .green { color: var(--green); font-weight: 600; }
+
+  .pull-quote {
+    font-size: 1.25rem;
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.55;
+    color: var(--white);
+    border-left: 2px solid var(--pink);
+    padding-left: 1.2rem;
+    margin: 1.5rem 0;
+  }
+
+  .pull-quote em { color: var(--gold); font-style: normal; font-weight: 600; }
+
+  .cover-spread {
+    position: relative;
+    min-height: 520px;
+    border-radius: 4px;
+    overflow: hidden;
+    background:
+      radial-gradient(ellipse at 25% 15%, rgba(244,114,182,0.22) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 80%, rgba(251,191,36,0.12) 0%, transparent 45%),
+      radial-gradient(ellipse at 55% 50%, rgba(167,139,250,0.10) 0%, transparent 55%),
+      var(--card);
+    border: 1px solid var(--border);
+    box-shadow: inset 0 0 80px rgba(244,114,182,0.05);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 3rem;
+  }
+
+  .cover-corner { position: absolute; top: 2rem; right: 2.5rem; text-align: right; }
+  .cover-corner-num { font-size: 5rem; font-weight: 200; line-height: 1; color: var(--pink); opacity: 0.18; }
+  .cover-corner-label { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.4em; text-transform: uppercase; color: var(--pink); display: block; margin-top: -0.5rem; }
+  .cover-issue { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.5em; text-transform: uppercase; color: var(--pink); margin-bottom: 1.5rem; }
+  .cover-title-block { margin-bottom: 0.6rem; }
+
+  .cover-love    { font-size: clamp(2.8rem,7vw,4.8rem); font-weight: 200; line-height: 1; color: var(--white); letter-spacing: -0.02em; display: block; }
+  .cover-you     { font-size: clamp(2.8rem,7vw,4.8rem); font-weight: 700; line-height: 1; display: block; background: linear-gradient(135deg, var(--gold) 0%, var(--pink) 50%, var(--cyan) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; letter-spacing: -0.02em; }
+  .cover-down    { font-size: clamp(2.8rem,7vw,4.8rem); font-weight: 200; line-height: 1; color: var(--secondary); letter-spacing: -0.02em; display: block; }
+  .cover-to-your { font-size: clamp(2.8rem,7vw,4.8rem); font-weight: 200; line-height: 1; color: var(--white); letter-spacing: -0.02em; display: block; }
+  .cover-star-stuff { font-size: clamp(2.8rem,7vw,4.8rem); font-weight: 700; line-height: 1; color: var(--gold); letter-spacing: -0.02em; display: block; text-shadow: 0 0 40px rgba(251,191,36,0.3); }
+
+  .cover-rule { width: 48px; height: 2px; background: linear-gradient(90deg, var(--pink), transparent); margin: 1.8rem 0 1.2rem; }
+  .cover-meta { display: flex; justify-content: space-between; align-items: flex-end; }
+  .cover-meta-text { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: var(--muted); line-height: 2; }
+  .cover-ls { font-size: 1.6rem; font-weight: 700; color: var(--gold); text-shadow: 0 0 20px rgba(251,191,36,0.4); }
+
+  .element-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 0.5rem; }
+  .element-card { background: rgba(244,114,182,0.05); border: 1px solid var(--border-dim); border-radius: 8px; padding: 1rem; }
+  .element-symbol { font-size: 2rem; font-weight: 700; line-height: 1; color: var(--pink); margin-bottom: 0.1rem; display: block; }
+  .element-symbol.gold { color: var(--gold); }
+  .element-symbol.cyan { color: var(--cyan); }
+  .element-symbol.green { color: var(--green); }
+  .element-symbol.purple { color: var(--purple); }
+  .element-name { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.5rem; display: block; }
+  .element-note { font-size: 0.8125rem; color: var(--secondary); line-height: 1.6; }
+
+  .scale-list { list-style: none; margin-top: 0.5rem; }
+  .scale-item { display: grid; grid-template-columns: 3rem 1fr; gap: 1rem; align-items: start; padding: 0.9rem 0; border-bottom: 1px solid var(--border-dim); }
+  .scale-item:last-child { border-bottom: none; }
+  .scale-level { font-size: 0.55rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--pink); padding-top: 0.15rem; line-height: 1.4; text-align: right; }
+  .scale-level.gold { color: var(--gold); }
+  .scale-level.cyan { color: var(--cyan); }
+  .scale-level.green { color: var(--green); }
+  .scale-level.purple { color: var(--purple); }
+  .scale-body { font-size: 0.875rem; color: var(--secondary); line-height: 1.65; }
+  .scale-body strong { color: var(--white); font-weight: 600; }
+
+  .affirmation-list { display: flex; flex-direction: column; gap: 0; }
+  .affirmation { padding: 1.1rem 0; border-bottom: 1px solid var(--border-dim); }
+  .affirmation:last-child { border-bottom: none; }
+  .affirmation-text { font-size: 1rem; font-weight: 400; color: var(--white); line-height: 1.6; margin-bottom: 0.3rem; }
+  .affirmation-text em { font-style: italic; color: var(--pink); }
+  .affirmation-text .gold { color: var(--gold); font-style: normal; }
+  .affirmation-text .cyan { color: var(--cyan); font-style: normal; }
+  .affirmation-register { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
+
+  .colophon { padding: 3rem; display: flex; flex-direction: column; justify-content: space-between; min-height: 480px; background: radial-gradient(ellipse at 20% 80%, rgba(244,114,182,0.08) 0%, transparent 50%), var(--page); }
+  .colophon-ls-block { border-bottom: 1px solid var(--border-dim); padding-bottom: 1.5rem; margin-bottom: 1.5rem; }
+  .colophon-ls { font-size: 3rem; font-weight: 700; color: var(--gold); text-shadow: 0 0 30px rgba(251,191,36,0.3); display: block; margin-bottom: 0.3rem; letter-spacing: 0.05em; }
+  .colophon-phrase { font-size: 0.875rem; font-style: italic; font-weight: 300; color: var(--secondary); }
+  .colophon-shorthand { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; margin-bottom: 1.5rem; }
+  .shorthand-pill { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.1em; padding: 0.25rem 0.75rem; border-radius: 999px; border: 1px solid var(--border); color: var(--muted); background: rgba(244,114,182,0.06); }
+  .shorthand-pill.active { background: rgba(251,191,36,0.1); border-color: rgba(251,191,36,0.3); color: var(--gold); }
+  .colophon-body { font-size: 0.8rem; color: var(--muted); line-height: 1.85; flex: 1; margin-bottom: 1.5rem; }
+  .colophon-footer { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; color: var(--muted); line-height: 2.2; border-top: 1px solid var(--border-dim); padding-top: 1rem; }
+
+  .twinkle { position: fixed; width: 3px; height: 3px; background: var(--gold); border-radius: 50%; box-shadow: 0 0 6px var(--gold); animation: twinkle-anim 3s ease-in-out infinite; pointer-events: none; z-index: 0; }
+  @keyframes twinkle-anim { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.15; transform: scale(0.3); } }
+
+  @media (max-width: 600px) {
+    .spread-2col { grid-template-columns: 1fr; }
+    .spread-left { border-right: none; border-bottom: 1px solid var(--border-dim); }
+    .cover-spread { padding: 2rem; min-height: 400px; }
+    .cover-love, .cover-you, .cover-down, .cover-to-your, .cover-star-stuff { font-size: 2.8rem; }
+    .spread-1col, .spread-left, .spread-right { padding: 2rem 1.5rem; }
+    .element-grid { grid-template-columns: 1fr; }
+    .colophon { padding: 2rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="twinkle" style="top:7%;left:11%;animation-delay:-0.4s"></div>
+<div class="twinkle" style="top:19%;left:83%;animation-delay:-1.3s;background:var(--pink);box-shadow:0 0 6px var(--pink)"></div>
+<div class="twinkle" style="top:52%;left:4%;animation-delay:-2.1s"></div>
+<div class="twinkle" style="top:71%;left:94%;animation-delay:-0.9s;background:var(--cyan);box-shadow:0 0 6px var(--cyan)"></div>
+<div class="twinkle" style="top:88%;left:28%;animation-delay:-1.7s"></div>
+<div class="twinkle" style="top:38%;left:97%;animation-delay:-3.1s;background:var(--pink);box-shadow:0 0 6px var(--pink)"></div>
+
+<div class="zine-shell">
+
+  <nav class="nav">
+    <div class="nav-brand">Stimpunks · Zine No. 2</div>
+    <div class="nav-controls">
+      <button class="nav-btn" id="prev-btn" onclick="changePage(-1)">← prev</button>
+      <span class="page-counter" id="page-counter">1 / 6</span>
+      <button class="nav-btn active" id="next-btn" onclick="changePage(1)">next →</button>
+    </div>
+  </nav>
+
+  <!-- SPREAD 1 — COVER -->
+  <div class="spread active" id="spread-1">
+    <div class="cover-spread">
+      <div class="cover-corner">
+        <div class="cover-corner-num">2</div>
+        <span class="cover-corner-label">LYDTYSS</span>
+      </div>
+      <div class="cover-issue">Stimpunks Foundation · Zine No. 2</div>
+      <div class="cover-title-block">
+        <span class="cover-love">Love</span>
+        <span class="cover-you">You</span>
+        <span class="cover-down">Down</span>
+        <span class="cover-to-your">To Your</span>
+        <span class="cover-star-stuff">Star Stuff</span>
+      </div>
+      <div class="cover-rule"></div>
+      <div class="cover-meta">
+        <div class="cover-meta-text">LYDTYSS · LYSS · LUSS<br>L★S · ★stuff<br>open edition</div>
+        <div class="cover-ls">L★S</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SPREAD 2 — THE PHRASE -->
+  <div class="spread" id="spread-2">
+    <div class="interior">
+      <div class="spread-2col">
+        <div class="spread-left">
+          <div class="eyebrow">The phrase · its origin</div>
+          <h2 class="spread-heading">What Carl Sagan<br>actually <em>said</em></h2>
+          <div class="rule"></div>
+          <div class="body-text">
+            <p>In 1973, Carl Sagan wrote: <em>"The nitrogen in our DNA, the calcium in our teeth, the iron in our blood, the carbon in our apple pies were made in the interiors of collapsing stars. We are made of star stuff."</em></p>
+            <p>He said it again in Cosmos, in 1980. He said it many times. It was not a metaphor. He meant it literally — that every atom heavier than hydrogen in your body was forged in a stellar interior and scattered across the galaxy when that star died.</p>
+            <p>We are not <em>like</em> stars. We are not <em>inspired by</em> stars. We are <strong>made of them</strong> — their ash, their legacy, their long slow gift to whatever came next.</p>
+          </div>
+        </div>
+        <div class="spread-right">
+          <div class="eyebrow">The phrase · its meaning</div>
+          <div class="pull-quote">To say <em>love you</em> and then say <em>down to your star stuff</em> is to say: I love you at every scale. I love you all the way in.</div>
+          <div class="rule"></div>
+          <div class="body-text">
+            <p>"Love you down to your star stuff" moves in one direction: inward and downward, through skin and blood and bone, through cell and molecule and atom, all the way to the stellar origin of each element. It doesn't stop at the visible.</p>
+            <p>Most love stops at the surface — at behavior, at presentation, at the parts that are easy to love. This phrase names a love that <strong>doesn't stop</strong>. That goes past the parts that are hard, past the parts that are different, past the diagnosis and the accommodation and the sensory profile, all the way to the calcium in the bone — which came from a star.</p>
+            <p>You can't pathologize star stuff. The universe made it. <span class="cyan">The universe doesn't pathologize its own variation.</span></p>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">LYDTYSS · Stimpunks</span>
+        <span class="spread-footer-right">2</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SPREAD 3 — THE ELEMENTS -->
+  <div class="spread" id="spread-3">
+    <div class="interior">
+      <div class="spread-2col">
+        <div class="spread-left">
+          <div class="eyebrow">What you are made of</div>
+          <h2 class="spread-heading">Six elements.<br><em>All of them</em><br><span class="gold">stellar.</span></h2>
+          <div class="rule"></div>
+          <div class="body-text">
+            <p>Every atom in your body heavier than hydrogen has a stellar origin. These are the six that make you most distinctly <em>you</em> — the ones that show up in your bones, your blood, your breath, your brain.</p>
+            <p>None of them were made on Earth. All of them arrived here the same way: scattered by supernovae, gathered by gravity, assembled by time into the improbable configuration that is a human nervous system.</p>
+            <p><strong>Your neurology is as old as the stars.</strong> The particular way your mind works — the frequency, the intensity, the pattern — is built from the same material as everything else the universe has ever made. It belongs here.</p>
+          </div>
+        </div>
+        <div class="spread-right" style="padding-top:2.5rem;">
+          <div class="element-grid">
+            <div class="element-card"><span class="element-symbol">H</span><span class="element-name">Hydrogen</span><p class="element-note">The oldest element. Made in the Big Bang, 13.8 billion years ago. The water in your body. The original.</p></div>
+            <div class="element-card"><span class="element-symbol cyan">C</span><span class="element-name">Carbon</span><p class="element-note">The backbone of every molecule that makes you alive. Forged in red giant stars through triple-alpha fusion.</p></div>
+            <div class="element-card"><span class="element-symbol green">N</span><span class="element-name">Nitrogen</span><p class="element-note">In your DNA. In every protein. Made in massive stars and scattered when they exploded. The language of your cells.</p></div>
+            <div class="element-card"><span class="element-symbol purple">O</span><span class="element-name">Oxygen</span><p class="element-note">65% of your body by mass. Made in massive stars through carbon and neon burning. Every breath is stellar.</p></div>
+            <div class="element-card"><span class="element-symbol gold">Ca</span><span class="element-name">Calcium</span><p class="element-note">Your bones. Your teeth. Your nerve signals. Made in supernovae. The electric bone that Yasuda measured.</p></div>
+            <div class="element-card"><span class="element-symbol" style="color:var(--pink);">Fe</span><span class="element-name">Iron</span><p class="element-note">The iron in your blood. Made only in the most massive stars — those that died in the most spectacular supernovae.</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">LYDTYSS · Stimpunks</span>
+        <span class="spread-footer-right">3</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SPREAD 4 — THE SCALE -->
+  <div class="spread" id="spread-4">
+    <div class="interior">
+      <div class="spread-2col">
+        <div class="spread-left">
+          <div class="eyebrow">What "down to" means</div>
+          <h2 class="spread-heading">Love at<br>every <em>scale</em></h2>
+          <div class="rule"></div>
+          <div class="body-text">
+            <p>The phrase moves through scales. "Down to your star stuff" is a direction — inward, deeper, smaller, older. It names every level at which you can be loved.</p>
+            <p>Most love operates at the level of behavior and personality — the things that are visible, the parts that present themselves to the world. This phrase insists that love go all the way in. Past the mask, past the accommodation, past the things that are hard.</p>
+            <p><strong>Down to your star stuff</strong> means: I see you at the level where there is nothing left to pathologize. At the level of carbon and calcium and iron, you are simply matter that the universe made. And matter that the universe made <em>belongs</em>.</p>
+          </div>
+        </div>
+        <div class="spread-right">
+          <div class="eyebrow">The scales of love</div>
+          <ul class="scale-list" aria-label="Scales from outer to inner">
+            <li class="scale-item"><span class="scale-level cyan">Cosmic</span><div class="scale-body"><strong>The universe</strong> — 13.8 billion years of stellar evolution that produced every atom in your body. This is the outermost frame.</div></li>
+            <li class="scale-item"><span class="scale-level">Community</span><div class="scale-body"><strong>The people around you</strong> — who see your whole self, not just the parts that are easy. Who don't ask you to be less.</div></li>
+            <li class="scale-item"><span class="scale-level gold">The body</span><div class="scale-body"><strong>Your nervous system, your sensory profile, your way of moving through the world</strong> — the parts that get pathologized. Loved here too.</div></li>
+            <li class="scale-item"><span class="scale-level green">The cell</span><div class="scale-body"><strong>The biological substrate</strong> — where your neurology actually lives. The neurons and the synapses. Loved at this level too.</div></li>
+            <li class="scale-item"><span class="scale-level purple">The atom</span><div class="scale-body"><strong>Carbon, nitrogen, oxygen, calcium, iron</strong> — each one a stellar legacy. This is where the phrase lands. This is "star stuff."</div></li>
+            <li class="scale-item"><span class="scale-level" style="color:var(--pink);">The star</span><div class="scale-body"><strong>The origin</strong> — the supernovae that made your elements, billions of years before Earth existed. You have always been here, in one form or another.</div></li>
+          </ul>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">LYDTYSS · Stimpunks</span>
+        <span class="spread-footer-right">4</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SPREAD 5 — AFFIRMATIONS -->
+  <div class="spread" id="spread-5">
+    <div class="interior">
+      <div class="spread-1col">
+        <div class="eyebrow">Direct address · all registers</div>
+        <h2 class="spread-heading" style="margin-bottom:1.8rem;">We love you<br><em>down to your star stuff.</em></h2>
+        <div class="affirmation-list">
+          <div class="affirmation"><p class="affirmation-text">Your neurology is not a deviation from a norm. It is a <em>variation in the distribution</em> — one that the universe produces, that the universe has always produced, that the universe does not pathologize.</p><span class="affirmation-register">Paradigm · reframe</span></div>
+          <div class="affirmation"><p class="affirmation-text">The parts of you that have been called too much, too intense, too sensitive, too focused, too scattered — <span class="gold">those parts are made of the same calcium and iron and carbon as everything else the universe has ever loved into existence.</span></p><span class="affirmation-register">Community voice · direct</span></div>
+          <div class="affirmation"><p class="affirmation-text">You don't have to earn this. The star that made your calcium didn't earn anything. It just <em>fused</em> — under pressure, over billions of years, because that's what it was. You are the result of that. <span class="cyan">You belong here by the same physics.</span></p><span class="affirmation-register">Cosmological · unconditional</span></div>
+          <div class="affirmation"><p class="affirmation-text">L★S means: I love you past the diagnosis. Past the support plan. Past the accommodation. Past the IEP and the 504 and the DSM-5. <em>All the way to the star stuff.</em> Which has always been enough.</p><span class="affirmation-register">Punk · reclamatory</span></div>
+          <div class="affirmation"><p class="affirmation-text">You are not broken matter. You are <span class="gold">stellar matter</span> — forged in conditions of unimaginable pressure and heat, scattered across the galaxy, gathered by gravity into the exact configuration of you. <em>That configuration is not an error.</em></p><span class="affirmation-register">Poetic · cosmological</span></div>
+          <div class="affirmation"><p class="affirmation-text">From the Stimpunks community to you: <em>we see you. We love you. Down to your star stuff.</em> <span class="gold">L★S.</span></p><span class="affirmation-register">Community · closing</span></div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">LYDTYSS · Stimpunks</span>
+        <span class="spread-footer-right">5</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SPREAD 6 — COLOPHON -->
+  <div class="spread" id="spread-6">
+    <div class="interior">
+      <div class="colophon">
+        <div>
+          <div class="colophon-ls-block">
+            <span class="colophon-ls">L★S</span>
+            <span class="colophon-phrase">Love You Down To Your Star Stuff</span>
+          </div>
+          <div class="colophon-shorthand">
+            <span class="shorthand-pill">LYDTYSS</span>
+            <span class="shorthand-pill">LYSS</span>
+            <span class="shorthand-pill">LUSS</span>
+            <span class="shorthand-pill active">L★S</span>
+            <span class="shorthand-pill">★stuff</span>
+          </div>
+          <p class="colophon-body">
+            Love You Down To Your Star Stuff is the second zine in the Stimpunks series. It is offered freely, to be printed and folded and handed to someone who needs it — or to yourself, on the days when the need is yours.<br><br>
+            The cosmological framing draws on Carl Sagan's Cosmos (1980) and The Demon-Haunted World (1995), and the broader tradition of stellar nucleosynthesis science beginning with B²FH (Burbidge, Burbidge, Fowler &amp; Hoyle, 1957).<br><br>
+            The neurodiversity paradigm language draws on Nick Walker's Neuroqueer Heresies (2021), and the foundational work of the autistic community of InLv — Martijn Dekker, Jim Sinclair, and Autism Network International — who developed these ideas collectively in the 1990s, long before the concept entered academia.<br><br>
+            The piezoelectric bone research referenced across the series draws on Dr. Iwao Yasuda's work from the 1950s.<br><br>
+            The phrase "Love You Down To Your Star Stuff" is Stimpunks. The star stuff is Sagan's. The star stuff itself belongs to the universe.
+          </p>
+        </div>
+        <div class="colophon-footer">
+          Stimpunks Foundation · Zine No. 2 · Open Edition<br>
+          Print free · Share freely · L★S<br>
+          stimpunks.org · star-stuff.netlify.app
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">LYDTYSS · Stimpunks</span>
+        <span class="spread-footer-right">6</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  let current = 1;
+  const total = 6;
+
+  function changePage(dir) {
+    const next = current + dir;
+    if (next < 1 || next > total) return;
+    document.getElementById('spread-' + current).classList.remove('active');
+    current = next;
+    document.getElementById('spread-' + current).classList.add('active');
+    document.getElementById('page-counter').textContent = current + ' / ' + total;
+    document.getElementById('prev-btn').style.opacity = current === 1 ? '0.3' : '1';
+    document.getElementById('next-btn').style.opacity = current === total ? '0.3' : '1';
+    document.getElementById('prev-btn').classList.toggle('active', current > 1);
+    document.getElementById('next-btn').classList.toggle('active', current < total);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') changePage(1);
+    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   changePage(-1);
+  });
+
+  document.getElementById('prev-btn').style.opacity = '0.3';
+</script>
+</body>
+</html>

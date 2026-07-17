@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Field Guide to Neurodivergent Constellations — Stimpunks Foundation</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:        #0a0a14;
+    --card:      #0f0f2a;
+    --purple:    #a78bfa;
+    --pink:      #f472b6;
+    --gold:      #fbbf24;
+    --cyan:      #22d3ee;
+    --green:     #4ade80;
+    --white:     #f9fafb;
+    --secondary: #b8aed0;
+    --muted:     #c4b5d4;
+    --border:    rgba(167,139,250,0.15);
+    --surface:   rgba(167,139,250,0.07);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--white);
+    font-family: 'Atkinson Hyperlegible Next', sans-serif;
+    font-size: 1rem;
+    min-height: 100vh;
+  }
+
+  /* ── STARFIELD ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 7%  13%, rgba(249,250,251,0.8) 0%, transparent 100%),
+      radial-gradient(1px 1px at 23% 37%, rgba(249,250,251,0.6) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 43% 8%,  rgba(251,191,36,0.9)  0%, transparent 100%),
+      radial-gradient(1px 1px at 59% 67%, rgba(249,250,251,0.7) 0%, transparent 100%),
+      radial-gradient(2px 2px at 73% 27%, rgba(249,250,251,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 83% 53%, rgba(34,211,238,0.7)  0%, transparent 100%),
+      radial-gradient(1px 1px at 89% 78%, rgba(249,250,251,0.8) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 3% 57%, rgba(249,250,251,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 33% 83%, rgba(251,191,36,0.5)  0%, transparent 100%),
+      radial-gradient(1px 1px at 53% 46%, rgba(249,250,251,0.4) 0%, transparent 100%),
+      radial-gradient(2px 2px at 17% 87%, rgba(167,139,250,0.7) 0%, transparent 100%),
+      radial-gradient(1px 1px at 67% 3%,  rgba(249,250,251,0.8) 0%, transparent 100%),
+      radial-gradient(1px 1px at 46% 61%, rgba(34,211,238,0.5)  0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 28% 18%, rgba(251,191,36,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 76% 86%, rgba(249,250,251,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 91% 42%, rgba(249,250,251,0.6) 0%, transparent 100%),
+      radial-gradient(2px 2px at 55% 22%, rgba(244,114,182,0.5) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── MASTHEAD ── */
+  .masthead {
+    position: relative;
+    z-index: 2;
+    padding: 3rem 2.5rem 2rem;
+    border-bottom: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1rem;
+    align-items: end;
+  }
+
+  .masthead-eyebrow {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--cyan);
+    margin-bottom: 0.6rem;
+  }
+
+  .masthead-title {
+    font-size: clamp(1.6rem, 4vw, 2.8rem);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--white);
+    letter-spacing: -0.01em;
+  }
+
+  .masthead-title em {
+    font-style: italic;
+    background: linear-gradient(135deg, var(--gold) 0%, var(--pink) 50%, var(--cyan) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .masthead-sub {
+    font-size: 0.875rem;
+    color: var(--secondary);
+    margin-top: 0.6rem;
+    line-height: 1.6;
+    max-width: 540px;
+  }
+
+  .masthead-right {
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  .mode-toggle { display: none; }
+
+  .masthead-ls {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 0.05em;
+    display: block;
+    text-align: right;
+    text-shadow: 0 0 18px rgba(251,191,36,0.45);
+  }
+
+  /* ── INTRO BAND ── */
+  .intro-band {
+    position: relative;
+    z-index: 2;
+    padding: 1.5rem 2.5rem;
+    border-bottom: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .intro-note {
+    font-size: 0.875rem;
+    color: var(--secondary);
+    line-height: 1.7;
+  }
+
+  .intro-note strong {
+    font-weight: 700;
+    color: var(--white);
+    display: block;
+    font-size: 0.8125rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.3rem;
+  }
+
+  /* ── CONSTELLATION GRID ── */
+  .field-grid {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 0;
+  }
+
+
+  /* ── CONSTELLATION GRID ── */
+  .field-grid {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 0;
+  }
+
+  /* ── ENTRY CARD ── */
+  .entry {
+    background: var(--card);
+    border-radius: 8px;
+    margin: 0.75rem;
+    padding: 1.25rem;
+    cursor: pointer;
+    transition: background 0.2s ease, box-shadow 0.2s ease;
+    position: relative;
+    border: 1px solid var(--border);
+  }
+
+  .entry:hover {
+    background: rgba(15,15,42,0.98);
+    box-shadow: 0 4px 24px rgba(167,139,250,0.12);
+  }
+
+  .entry.open {
+    background: rgba(15,15,42,0.98);
+    box-shadow: 0 4px 32px rgba(167,139,250,0.15);
+  }
+
+  .entry::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 0;
+    width: 3px;
+    height: calc(100% - 16px);
+    background: var(--entry-color, var(--gold));
+    border-radius: 0 2px 2px 0;
+  }
+
+  .entry-header {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1.2rem;
+    align-items: start;
+    margin-bottom: 1rem;
+  }
+
+  /* SVG constellation diagram */
+  .constellation-svg {
+    width: 90px;
+    height: 90px;
+    flex-shrink: 0;
+  }
+
+  .entry-meta { min-width: 0; }
+
+  .entry-number {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.2rem;
+  }
+
+  .entry-name {
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.1;
+    color: var(--white);
+    margin-bottom: 0.2rem;
+  }
+
+  .entry-traditional {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.4rem;
+  }
+
+  .entry-coords {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--cyan);
+  }
+
+  .entry-brief {
+    font-size: 0.875rem;
+    color: var(--secondary);
+    line-height: 1.65;
+    margin-bottom: 0.8rem;
+  }
+
+  .entry-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 0.7rem;
+  }
+
+  .tag {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    background: rgba(167,139,250,0.06);
+  }
+
+  .entry-expand {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    transition: color 0.2s ease;
+  }
+
+  .entry:hover .entry-expand,
+  .entry.open .entry-expand { color: var(--secondary); }
+
+  .entry-notes {
+    display: none;
+    margin-top: 1.2rem;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--border);
+    animation: fadeIn 0.3s ease forwards;
+  }
+
+  .entry.open .entry-notes { display: block; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .notes-heading {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.7rem;
+  }
+
+  .notes-body {
+    font-size: 1rem;
+    color: var(--secondary);
+    line-height: 1.8;
+    margin-bottom: 1rem;
+  }
+
+  .notes-body p { margin-bottom: 1em; }
+  .notes-body p:last-child { margin-bottom: 0; }
+  .notes-body em { color: var(--white); font-style: italic; }
+  .notes-body strong { color: var(--white); font-weight: 600; font-style: normal; }
+
+  .star-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 0.8rem;
+  }
+
+  .star-table th {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: left;
+    padding: 0.3rem 0.5rem 0.3rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .star-table td {
+    font-size: 0.875rem;
+    color: var(--secondary);
+    padding: 0.4rem 0.5rem 0.4rem 0;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+
+  .star-table td:first-child {
+    color: var(--white);
+    font-weight: 600;
+  }
+
+  .star-table tr:last-child td { border-bottom: none; }
+
+  .ls-coords {
+    margin-top: 1rem;
+    padding: 0.7rem 0.9rem;
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--entry-color, var(--gold));
+    border-radius: 0 8px 8px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(167,139,250,0.05);
+  }
+
+  .ls-coords-label {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .ls-coords-value {
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--entry-color, var(--gold));
+  }
+
+  /* ── FOOTER ── */
+  .guide-footer {
+    position: relative;
+    z-index: 2;
+    padding: 2rem 2.5rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer-text {
+    font-size: 0.875rem;
+    color: var(--secondary);
+    line-height: 1.7;
+    max-width: 480px;
+  }
+
+  .footer-ls {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 0.05em;
+    text-shadow: 0 0 24px rgba(251,191,36,0.4);
+  }
+
+  @media (max-width: 600px) {
+    .masthead { grid-template-columns: 1fr; padding: 2rem 1.5rem 1.5rem; }
+    .masthead-right { text-align: left; }
+    .intro-band { padding: 1.2rem 1.5rem; }
+    .entry { margin: 0.5rem; padding: 1rem; }
+    .field-grid { grid-template-columns: 1fr; }
+    .guide-footer { padding: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── MASTHEAD ── -->
+<header class="masthead">
+  <div>
+    <p class="masthead-eyebrow">Stimpunks Foundation · L★S · Field Guide No. 2</p>
+    <h1 class="masthead-title">A Field Guide to<br><em>Neurodivergent Constellations</em></h1>
+    <p class="masthead-sub">Eight patterns in the sky, renamed for what they actually are. Each one forged in the same stellar furnace as your bones. Each one a different way of being made of stars.</p>
+  </div>
+  <div class="masthead-right">
+    <span class="masthead-ls">L★S</span>
+  </div>
+</header>
+
+<!-- ── INTRO BAND ── -->
+<div class="intro-band">
+  <div class="intro-note">
+    <strong>How to use this guide</strong>
+    Each entry gives the traditional name (what the old charts called it), the reclaimed name, L★S coordinates, brief field notes, and a full observing record. Click any entry to open its full notes.
+  </div>
+  <div class="intro-note">
+    <strong>On renaming</strong>
+    The old names belong to old frameworks — frameworks that measured the sky's variation as error. These names belong to the paradigm that doesn't pathologize its own variation.
+  </div>
+  <div class="intro-note">
+    <strong>On the diagrams</strong>
+    Each diagram shows the actual star positions of the traditional constellation, redrawn with the new pattern made visible. The stars haven't moved. Only the story has changed.
+  </div>
+</div>
+
+<!-- ── FIELD ENTRIES ── -->
+<main class="field-grid" id="grid"></main>
+
+<!-- ── FOOTER ── -->
+<footer class="guide-footer">
+  <p class="footer-text">All constellations are made of the same material — stellar ash, scattered by supernovae, gathered by gravity into the improbable configurations we call bodies and minds. The sky doesn't rank its patterns. Neither do we.</p>
+  <span class="footer-ls">L★S</span>
+</footer>
+
+<script>
+const ENTRIES = [
+  {
+    id: 'stimmer',
+    name: 'The Stimmer',
+    traditional: 'Gemini · The Twins',
+    color: '#e8b84b',
+    coords: { ra: '07h 45m', dec: '+22°', mag: '1.9' },
+    lsCoords: 'RA 07h 45m · DEC +22° · L★S 001',
+    brief: 'Seen for centuries as two identical figures standing side by side. The old charts missed what was actually there: two bodies in constant, purposeful, self-regulating motion. Not mirror images. Not twins. Each one moving exactly as they need to move.',
+    tags: ['self-regulation', 'movement', 'embodiment', 'rhythm'],
+    stars: [
+      { name: 'Castor', meaning: 'The pattern', data: 'α Gem · mag 1.58 · 51 ly' },
+      { name: 'Pollux', meaning: 'The motion', data: 'β Gem · mag 1.14 · 34 ly' },
+      { name: 'Alhena', meaning: 'The signal', data: 'γ Gem · mag 1.93 · 109 ly' },
+      { name: 'Tejat', meaning: 'The return', data: 'μ Gem · mag 2.87 · 230 ly' },
+    ],
+    notes: `Stimming is not a symptom. It is a technology — one of the oldest human technologies, and one of the most sophisticated. The body knows things the diagnostic manual doesn't.
+
+The Stimmer is one of the brightest constellations in the winter sky and one of the most misread. The old charts saw identical twins. The reclaimed chart sees what's actually happening: <em>two bodies in dialogue with themselves and with each other</em>, each one moving in the precise way that keeps the nervous system regulated, present, and intact.
+
+Every culture that has ever watched the sky has found patterns here. Every nervous system that has ever inhabited a body has found its own version of this too. The motion that looks like repetition from the outside is, from the inside, a conversation between the body and the world — one that the body is very good at having, if it's allowed to.
+
+<strong>The Stimmer rises in the northeast in late autumn and is best observed in winter.</strong> At its culmination it stands almost directly overhead for observers in mid-northern latitudes. In clear conditions you can resolve Castor into its six component stars — three binary pairs orbiting one another in a gravitational conversation that has been going on for billions of years. The sky has always done this.`,
+    svgStars: [
+      { x: 45, y: 20, r: 3.2, label: 'Castor' },
+      { x: 60, y: 28, r: 3.5, label: 'Pollux' },
+      { x: 35, y: 42, r: 2.2, label: 'Alhena' },
+      { x: 25, y: 58, r: 2.0, label: '' },
+      { x: 50, y: 50, r: 1.6, label: '' },
+      { x: 65, y: 55, r: 1.8, label: '' },
+      { x: 20, y: 70, r: 1.4, label: 'Tejat' },
+      { x: 40, y: 72, r: 1.5, label: '' },
+      { x: 60, y: 75, r: 1.3, label: '' },
+      { x: 75, y: 68, r: 1.2, label: '' },
+    ],
+    svgLines: [
+      [0,1],[0,2],[2,3],[3,6],[4,5],[4,7],[5,9],[7,8]
+    ]
+  },
+  {
+    id: 'deep-diver',
+    name: 'The Deep Diver',
+    traditional: 'Cetus · The Sea Monster',
+    color: '#3ec6d8',
+    coords: { ra: '01h 44m', dec: '-11°', mag: '2.0' },
+    lsCoords: 'RA 01h 44m · DEC −11° · L★S 002',
+    brief: 'The old charts called it a monster and placed it in the outer dark, at the edge of the maps where the ocean poured off the world. The reclaimed chart calls it what it is: a mind that goes very deep and stays there a long time, because that\'s where the work is.',
+    tags: ['hyperfocus', 'depth', 'immersion', 'monotropism'],
+    stars: [
+      { name: 'Menkar',  meaning: 'The descent', data: 'α Cet · mag 2.53 · 220 ly' },
+      { name: 'Diphda',  meaning: 'The depth',   data: 'β Cet · mag 2.04 · 96 ly' },
+      { name: 'Mira',    meaning: 'The variable', data: 'ο Cet · mag 2-10 · 420 ly' },
+      { name: 'Kaffaljidhma', meaning: 'The return', data: 'γ Cet · mag 3.47 · 82 ly' },
+    ],
+    notes: `Monotropism is the tendency to focus attention deeply on a narrow range of subjects — not a deficit of attention but a <em>different distribution of it</em>. The monotropic mind goes all the way in. It doesn't skim surfaces; it finds the bottom of things.
+
+The old charts made Cetus a monster because the deep sea was where monsters lived. That logic has always been about the map-maker, not the territory. The deep is not monstrous. It is where the interesting things are.
+
+Note Mira, one of the most remarkable stars in the sky — a long-period variable that swings from naked-eye visibility down to binocular range and back again over a period of roughly 332 days. <strong>The Deep Diver contains a star that the instruments say is fluctuating wildly, and that the star would describe as having a rhythm.</strong>
+
+Diphda, the brightest star in this constellation, was used for centuries as a navigational reference. The deep divers of the world have always been navigational resources — if you let them dive.`,
+    svgStars: [
+      { x: 75, y: 18, r: 2.8, label: 'Menkar' },
+      { x: 55, y: 30, r: 2.0, label: '' },
+      { x: 35, y: 28, r: 1.8, label: '' },
+      { x: 20, y: 40, r: 1.6, label: 'Kaffaljidhma' },
+      { x: 40, y: 48, r: 1.5, label: '' },
+      { x: 60, y: 52, r: 1.4, label: 'Mira' },
+      { x: 70, y: 65, r: 2.0, label: '' },
+      { x: 50, y: 72, r: 1.3, label: '' },
+      { x: 25, y: 68, r: 3.2, label: 'Diphda' },
+      { x: 15, y: 55, r: 1.2, label: '' },
+    ],
+    svgLines: [
+      [0,1],[1,2],[2,3],[3,4],[4,5],[5,0],[5,6],[6,7],[7,8],[8,9],[9,3]
+    ]
+  },
+  {
+    id: 'pattern-seeker',
+    name: 'The Pattern Seeker',
+    traditional: 'Virgo · The Maiden',
+    color: '#8b6ee8',
+    coords: { ra: '13h 25m', dec: '-11°', mag: '0.97' },
+    lsCoords: 'RA 13h 25m · DEC −11° · L★S 003',
+    brief: 'The largest constellation in the zodiac, and for good reason: pattern recognition at this scale takes up a lot of sky. The old charts saw a figure holding a sheaf of wheat. The reclaimed chart sees what that figure was doing — finding the signal in the noise, which is what wheat is. Grain selected from grass by someone who noticed.',
+    tags: ['pattern recognition', 'systemizing', 'signal detection', 'classification'],
+    stars: [
+      { name: 'Spica',   meaning: 'The signal',  data: 'α Vir · mag 0.97 · 250 ly' },
+      { name: 'Zavijava', meaning: 'The connection', data: 'β Vir · mag 3.61 · 36 ly' },
+      { name: 'Porrima', meaning: 'The binary',  data: 'γ Vir · mag 2.74 · 38 ly' },
+      { name: 'Auva',    meaning: 'The catalogue', data: 'δ Vir · mag 3.38 · 202 ly' },
+    ],
+    notes: `Pattern seeking is not obsession. It is one of the foundational cognitive capacities of the human species — the one that produced agriculture, mathematics, music theory, taxonomy, and astronomy itself. Every person who has ever looked at the sky and found a pattern in the stars was doing exactly what The Pattern Seeker does, all the time, about everything.
+
+<em>The pathologizing of pattern-seeking is one of the stranger moves of the diagnostic tradition.</em> The same capacity that lets a person memorize every train schedule in the metropolitan area, map the complete ecosystem of a backyard, or hear the harmonic structure in a piece of music is described, in the diagnostic literature, as a "restricted and repetitive" behavior. The frame is the problem, not the capacity.
+
+Spica, this constellation's brightest star, is a binary system — two stars so close together and moving so fast that they've distorted each other into egg shapes. The Pattern Seeker's brightest point is a system that has been <strong>deeply, structurally changed by its relationship with another pattern.</strong>
+
+Porrima is also a binary, famous among double-star observers for its beauty and its long orbital period. Two stars, each completing the other's picture of the sky.`,
+    svgStars: [
+      { x: 70, y: 75, r: 3.8, label: 'Spica' },
+      { x: 20, y: 20, r: 1.8, label: 'Zavijava' },
+      { x: 35, y: 32, r: 2.4, label: 'Porrima' },
+      { x: 50, y: 28, r: 1.6, label: '' },
+      { x: 55, y: 42, r: 1.5, label: 'Auva' },
+      { x: 65, y: 55, r: 2.0, label: '' },
+      { x: 30, y: 50, r: 1.3, label: '' },
+      { x: 15, y: 40, r: 1.4, label: '' },
+      { x: 80, y: 45, r: 1.2, label: '' },
+      { x: 85, y: 60, r: 1.3, label: '' },
+    ],
+    svgLines: [
+      [1,2],[2,3],[3,4],[4,5],[5,0],[2,6],[6,7],[4,8],[8,9],[9,0]
+    ]
+  },
+  {
+    id: 'the-flood',
+    name: 'The Flood',
+    traditional: 'Aquarius · The Water Bearer',
+    color: '#4abf7e',
+    coords: { ra: '22h 05m', dec: '-13°', mag: '2.9' },
+    lsCoords: 'RA 22h 05m · DEC −13° · L★S 004',
+    brief: 'The old charts saw a figure pouring water from a jar — an image of controlled, measured, deliberate giving. The reclaimed chart sees what actually happens when a mind holds too much and the vessel finally tips: not a failure of containment, but a return to equilibrium. The flood is not the disaster. The flood is the water going where it needs to go.',
+    tags: ['emotional intensity', 'overwhelm', 'equilibrium', 'release'],
+    stars: [
+      { name: 'Sadalsuud', meaning: 'The pressure', data: 'β Aqr · mag 2.90 · 610 ly' },
+      { name: 'Sadalmelik', meaning: 'The release', data: 'α Aqr · mag 2.96 · 520 ly' },
+      { name: 'Sadachbia',  meaning: 'The after',   data: 'γ Aqr · mag 3.84 · 158 ly' },
+      { name: 'Skat',       meaning: 'The ground',  data: 'δ Aqr · mag 3.27 · 160 ly' },
+    ],
+    notes: `The diagnostic tradition describes emotional intensity as dysregulation. The word "dysregulation" assumes a correct regulation — a factory setting from which the neurodivergent nervous system has deviated. But <em>a nervous system that feels things deeply is not a miscalibrated nervous system.</em> It is a nervous system doing exactly what nervous systems do, at a higher amplitude.
+
+The Flood is one of the oldest constellations in the sky. In Babylonian astronomy it was associated with the god Ea, who was, among other things, the god of wisdom — a figure who held all the water of the deep and who poured it out when it was needed. The pouring was not a loss of control. It was the wisdom itself.
+
+<strong>Sadalsuud — "the luckiest of the lucky" — was the star that rose with the first rains of spring.</strong> In cultures that depended on rain, this was not merely a meteorological event. It was the world coming back to life. What looks from the outside like the system being overwhelmed is often, from the inside, the system working — bringing the water where it needs to go, at last.`,
+    svgStars: [
+      { x: 40, y: 18, r: 2.8, label: 'Sadalsuud' },
+      { x: 55, y: 30, r: 2.6, label: 'Sadalmelik' },
+      { x: 30, y: 35, r: 1.5, label: '' },
+      { x: 65, y: 45, r: 2.0, label: 'Sadachbia' },
+      { x: 50, y: 52, r: 1.4, label: '' },
+      { x: 35, y: 55, r: 1.3, label: '' },
+      { x: 60, y: 65, r: 2.2, label: 'Skat' },
+      { x: 45, y: 72, r: 1.2, label: '' },
+      { x: 70, y: 78, r: 1.1, label: '' },
+      { x: 25, y: 68, r: 1.3, label: '' },
+    ],
+    svgLines: [
+      [0,1],[0,2],[1,3],[3,4],[4,5],[4,6],[6,7],[7,8],[5,9]
+    ]
+  },
+  {
+    id: 'the-navigator',
+    name: 'The Navigator',
+    traditional: 'Ursa Minor · The Little Bear',
+    color: '#d4892a',
+    coords: { ra: '15h 44m', dec: '+77°', mag: '2.02' },
+    lsCoords: 'RA 15h 44m · DEC +77° · L★S 005',
+    brief: 'The old charts saw a small bear — a diminutive, lesser version of the great bear nearby. The reclaimed chart sees what this constellation actually does: it contains Polaris, the pole star, the fixed point around which the entire sky appears to rotate. The smallest-seeming pattern holds the center.',
+    tags: ['navigation', 'orientation', 'fixed points', 'the unseen anchor'],
+    stars: [
+      { name: 'Polaris',   meaning: 'The fixed point', data: 'α UMi · mag 2.02 · 433 ly' },
+      { name: 'Kochab',    meaning: 'The former pole', data: 'β UMi · mag 2.08 · 131 ly' },
+      { name: 'Pherkad',   meaning: 'The companion',  data: 'γ UMi · mag 3.05 · 480 ly' },
+      { name: 'Yildun',    meaning: 'The direction',  data: 'δ UMi · mag 4.36 · 183 ly' },
+    ],
+    notes: `The Navigator doesn't move the way the other constellations move. While everything else in the sky wheels overhead in great arcs through the night, The Navigator holds still — or appears to. Polaris sits less than one degree from the celestial north pole and has been used for navigation for at least three thousand years.
+
+There are minds that work like this: that provide a fixed reference, a stable orientation point, for everyone around them. They may not be the most dramatic presence in the room. They may not move in the ways the culture expects. <em>But when you need to know which way is north, you look for them.</em>
+
+<strong>Kochab was the pole star before Polaris.</strong> Due to the slow precession of Earth's axis — a wobble that takes about 26,000 years to complete one cycle — the position of true north moves gradually through the sky. In 3000 BCE, Kochab was the star the navigators used. In 14,000 CE, Vega will take the role. The Navigator is a reminder that fixed points are real but not permanent. They hold for as long as they need to hold, and then something else steps in.`,
+    svgStars: [
+      { x: 50, y: 15, r: 2.8, label: 'Polaris' },
+      { x: 75, y: 40, r: 2.6, label: 'Kochab' },
+      { x: 65, y: 55, r: 2.0, label: 'Pherkad' },
+      { x: 50, y: 45, r: 1.4, label: 'Yildun' },
+      { x: 40, y: 55, r: 1.3, label: '' },
+      { x: 30, y: 65, r: 1.4, label: '' },
+      { x: 42, y: 72, r: 1.2, label: '' },
+    ],
+    svgLines: [
+      [0,3],[3,4],[4,5],[5,6],[6,3],[1,2]
+    ]
+  },
+  {
+    id: 'the-bridge',
+    name: 'The Bridge',
+    traditional: 'Ophiuchus · The Serpent Bearer',
+    color: '#d4527a',
+    coords: { ra: '17h 10m', dec: '-3°', mag: '2.07' },
+    lsCoords: 'RA 17h 10m · DEC −03° · L★S 006',
+    brief: 'A figure holding a serpent in two hands, standing astride the celestial equator — one foot in the northern sky, one in the south. The old charts debated for centuries whether this belonged to the zodiac. The reclaimed chart isn\'t interested in whether it belongs. It sees what it is: something that stands between two worlds and holds both.',
+    tags: ['code switching', 'dual citizenship', 'translation', 'the in-between'],
+    stars: [
+      { name: 'Rasalhague', meaning: 'The crossing', data: 'α Oph · mag 2.07 · 47 ly' },
+      { name: 'Sabik',      meaning: 'The bridge',   data: 'η Oph · mag 2.43 · 88 ly' },
+      { name: 'Cebalrai',   meaning: 'The shepherd', data: 'β Oph · mag 2.77 · 82 ly' },
+      { name: 'Yed Prior',  meaning: 'The reach',    data: 'δ Oph · mag 2.73 · 171 ly' },
+    ],
+    notes: `Code switching — the practice of moving between neurological or cultural registers depending on context — is one of the most cognitively demanding things a person can do. It is also, in many neurodivergent lives, not optional. The Bridge has been doing this for as long as it has existed in the sky.
+
+<em>The Bridge stands at the boundary between the northern and southern celestial hemispheres.</em> It touches both and belongs entirely to neither. This is not a failure of belonging. It is a different kind of relationship to the idea of a boundary — one that knows what both sides look like from the outside, which is a knowledge the people on either side rarely have.
+
+The serpent in the old charts — Serpens, split by Ophiuchus into head and tail — is one of the only constellations in the sky that is in two pieces and counted as one. <strong>The Bridge holds something that is divided and keeps it whole</strong> — which is its entire function.
+
+Rasalhague is only 47 light-years away, one of the closer bright stars to Earth. The Bridge is not as distant as it looks. It is practically a neighbor.`,
+    svgStars: [
+      { x: 50, y: 12, r: 2.8, label: 'Rasalhague' },
+      { x: 35, y: 28, r: 1.8, label: 'Cebalrai' },
+      { x: 65, y: 32, r: 1.6, label: '' },
+      { x: 25, y: 45, r: 2.2, label: 'Yed Prior' },
+      { x: 55, y: 48, r: 2.4, label: 'Sabik' },
+      { x: 70, y: 55, r: 1.5, label: '' },
+      { x: 40, y: 62, r: 1.4, label: '' },
+      { x: 60, y: 70, r: 1.3, label: '' },
+      { x: 30, y: 72, r: 1.2, label: '' },
+      { x: 50, y: 78, r: 1.4, label: '' },
+    ],
+    svgLines: [
+      [0,1],[0,2],[1,3],[2,4],[3,6],[4,5],[4,7],[6,8],[7,9]
+    ]
+  },
+  {
+    id: 'the-signal',
+    name: 'The Signal',
+    traditional: 'Cassiopeia · The Queen',
+    color: '#e8b84b',
+    coords: { ra: '01h 09m', dec: '+60°', mag: '2.24' },
+    lsCoords: 'RA 01h 09m · DEC +60° · L★S 007',
+    brief: 'A bright W shape, one of the most recognizable patterns in the northern sky. The old charts saw a queen on her throne — a figure of status and authority. The reclaimed chart sees something that never sets for observers in the northern hemisphere, that is always present, always broadcasting, impossible to miss once you know to look for it.',
+    tags: ['visibility', 'persistence', 'broadcasting', 'the unmissable'],
+    stars: [
+      { name: 'Schedar',  meaning: 'The broadcast', data: 'α Cas · mag 2.24 · 228 ly' },
+      { name: 'Caph',     meaning: 'The hand',      data: 'β Cas · mag 2.28 · 54 ly' },
+      { name: 'Navi',     meaning: 'The navigator',  data: 'γ Cas · mag 1.6-3.0 · 550 ly' },
+      { name: 'Ruchbah',  meaning: 'The knee',      data: 'δ Cas · mag 2.68 · 99 ly' },
+    ],
+    notes: `Cassiopeia is circumpolar from most of the northern hemisphere — it never sets, never dips below the horizon, never disappears. It is simply always there, wheeling around the pole, making its distinctive W (or M, depending on the season) at all hours. <em>You can always find it if you look north.</em>
+
+The Signal is the name for minds that are like this — that are consistently, persistently, obviously themselves, regardless of whether the audience is ready for that level of consistency. There is something the culture calls "too much" that The Signal declines to be less of.
+
+Navi — γ Cassiopeiae — is a variable star, one of the most active in the sky, surrounded by a disk of gas it has thrown off from its own rotation. <strong>It is, in a literal sense, broadcasting itself into the surrounding space.</strong> The astronomers who named it did so in honor of Gus Grissom, one of the original astronauts, who used it as a navigational reference: he spelled his middle name (Ivan) backwards. The Signal has been used for navigation across every era in which humans have looked north.
+
+Caph is only 54 light-years away. Like Polaris, it is close enough that the light reaching your eyes left it within a human lifetime.`,
+    svgStars: [
+      { x: 15, y: 65, r: 2.6, label: 'Caph' },
+      { x: 30, y: 35, r: 2.8, label: 'Schedar' },
+      { x: 50, y: 18, r: 3.2, label: 'Navi' },
+      { x: 68, y: 35, r: 2.4, label: 'Ruchbah' },
+      { x: 82, y: 62, r: 2.0, label: '' },
+    ],
+    svgLines: [
+      [0,1],[1,2],[2,3],[3,4]
+    ]
+  },
+  {
+    id: 'the-forge',
+    name: 'The Forge',
+    traditional: 'Orion · The Hunter',
+    color: '#3ec6d8',
+    coords: { ra: '05h 35m', dec: '+5°', mag: '0.12' },
+    lsCoords: 'RA 05h 35m · DEC +05° · L★S 008',
+    brief: 'The most recognized constellation in the sky. The old charts saw a hunter with a raised club and a belt of three perfect stars. The reclaimed chart sees what is actually at its center: the Great Nebula, a stellar nursery where new stars are being forged right now, out of gas and gravity and the remains of everything that came before.',
+    tags: ['creation', 'making', 'the process', 'what gets made from wreckage'],
+    stars: [
+      { name: 'Rigel',      meaning: 'The new thing', data: 'β Ori · mag 0.12 · 860 ly' },
+      { name: 'Betelgeuse', meaning: 'The almost',    data: 'α Ori · mag 0.5 var · 700 ly' },
+      { name: 'Bellatrix',  meaning: 'The shoulder',  data: 'γ Ori · mag 1.64 · 250 ly' },
+      { name: 'Saiph',      meaning: 'The base',      data: 'κ Ori · mag 2.07 · 650 ly' },
+    ],
+    notes: `The Orion Nebula — M42, the middle "star" in Orion's sword — is a stellar nursery 1,344 light-years away and 24 light-years across. Within it, new stars are being born from collapsing clouds of gas and dust. Some of those stars will have planets. Some of those planets may eventually have bones. Those bones will be piezoelectric. <em>The Forge makes star stuff, right now, while you look at it.</em>
+
+Betelgeuse is a red supergiant — a star so large that if it replaced our sun, it would extend past Jupiter. It is also dying. At some point in the next hundred thousand years (possibly much sooner; possibly last Tuesday, the light just hasn't arrived yet) it will explode in a supernova visible in daylight and scattered its own star stuff across the surrounding parsecs. <strong>The Forge contains a star that is, right now, in the process of becoming the raw material for everything that comes next.</strong>
+
+The three belt stars — Alnitak, Alnilam, Mintaka — are nearly perfectly aligned, which is why they're so striking. The odds of three unrelated stars lining up like that by chance are low; these are all part of the same young star-forming region, born in the same cloud of gas, traveling together through the galaxy. They are not a coincidence. They are a cohort.
+
+This is the constellation to watch when you want to remember that the universe is still making things out of its own wreckage.`,
+    svgStars: [
+      { x: 72, y: 15, r: 3.0, label: 'Betelgeuse' },
+      { x: 28, y: 20, r: 2.4, label: 'Bellatrix' },
+      { x: 30, y: 52, r: 1.8, label: '' },
+      { x: 50, y: 58, r: 1.6, label: '' },
+      { x: 70, y: 55, r: 1.7, label: '' },
+      { x: 22, y: 78, r: 2.2, label: 'Saiph' },
+      { x: 78, y: 80, r: 3.5, label: 'Rigel' },
+      { x: 38, y: 38, r: 1.4, label: '' },
+      { x: 50, y: 40, r: 1.5, label: '' },
+      { x: 62, y: 38, r: 1.4, label: '' },
+    ],
+    svgLines: [
+      [0,1],[0,4],[1,2],[2,3],[3,4],[2,5],[4,6],[7,8],[8,9]
+    ]
+  }
+];
+
+function makeSVG(entry) {
+  const stars = entry.svgStars;
+  const lines = entry.svgLines;
+  const starColor = '#f9fafb';
+  const lineColor = 'rgba(167,139,250,0.3)';
+  const accentColor = entry.color;
+
+  let svg = `<svg viewBox="0 0 100 95" xmlns="http://www.w3.org/2000/svg" class="constellation-svg" aria-hidden="true">`;
+
+  for (const [a, b] of lines) {
+    const s1 = stars[a], s2 = stars[b];
+    svg += `<line x1="${s1.x}" y1="${s1.y}" x2="${s2.x}" y2="${s2.y}" stroke="${lineColor}" stroke-width="0.8" stroke-linecap="round"/>`;
+  }
+
+  for (let i = 0; i < stars.length; i++) {
+    const s = stars[i];
+    if (s.r >= 2.5) {
+      svg += `<circle cx="${s.x}" cy="${s.y}" r="${s.r * 2.4}" fill="${accentColor}" opacity="0.18"/>`;
+    }
+    svg += `<circle cx="${s.x}" cy="${s.y}" r="${s.r}" fill="${starColor}"/>`;
+  }
+
+  svg += `</svg>`;
+  return svg;
+}
+
+function renderGrid() {
+  const grid = document.getElementById('grid');
+  grid.innerHTML = '';
+
+  ENTRIES.forEach((entry, idx) => {
+    const el = document.createElement('article');
+    el.className = 'entry';
+    el.style.setProperty('--entry-color', entry.color);
+    el.setAttribute('aria-expanded', 'false');
+
+    const starRows = entry.stars.map(s =>
+      `<tr><td>${s.name}</td><td>${s.meaning}</td><td>${s.data}</td></tr>`
+    ).join('');
+
+    const tags = entry.tags.map(t => `<span class="tag">${t}</span>`).join('');
+
+    el.innerHTML = `
+      <div class="entry-header">
+        ${makeSVG(entry)}
+        <div class="entry-meta">
+          <div class="entry-number">L★S · ${String(idx+1).padStart(3,'0')}</div>
+          <h2 class="entry-name">${entry.name}</h2>
+          <div class="entry-traditional">formerly · ${entry.traditional}</div>
+          <div class="entry-coords">${entry.coords.ra} · ${entry.coords.dec} · mag ${entry.coords.mag}</div>
+        </div>
+      </div>
+      <p class="entry-brief">${entry.brief}</p>
+      <div class="entry-tags">${tags}</div>
+      <div class="entry-expand">▸ Field notes</div>
+      <div class="entry-notes">
+        <div class="notes-heading">Field notes · ${entry.name}</div>
+        <div class="notes-body">${entry.notes.replace(/\n\n/g,'</p><p>').replace(/^/,'<p>').replace(/$/,'</p>')}</div>
+        <table class="star-table" aria-label="Principal stars of ${entry.name}">
+          <thead><tr><th>Name</th><th>Meaning</th><th>Data</th></tr></thead>
+          <tbody>${starRows}</tbody>
+        </table>
+        <div class="ls-coords">
+          <span class="ls-coords-label">L★S coordinates</span>
+          <span class="ls-coords-value">${entry.lsCoords}</span>
+        </div>
+      </div>
+    `;
+
+    el.addEventListener('click', () => {
+      const isOpen = el.classList.contains('open');
+      el.classList.toggle('open', !isOpen);
+      el.setAttribute('aria-expanded', String(!isOpen));
+      el.querySelector('.entry-expand').textContent = isOpen ? '▸ Field notes' : '▾ Field notes';
+    });
+
+    grid.appendChild(el);
+  });
+}
+
+// Init
+renderGrid();
+</script>
+</body>
+</html>
