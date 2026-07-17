@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>L★S Playlist — Stimpunks Foundation</title>
+<meta name="description" content="Songs in conversation with &ldquo;Love You Down To Your Star Stuff&rdquo; — cosmic, reclamatory, tender, and true. A Stimpunks Foundation playlist with YouTube embeds and Spotify links.">
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="starstuff.css">
+<style>
+  html, body { margin: 0; padding: 0; }
+
+  body {
+    background: #0a0a14;
+    color: #f9fafb;
+    font-family: 'Atkinson Hyperlegible Next', sans-serif;
+    font-size: 1rem;
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 8%  14%, rgba(249,250,251,0.8) 0%, transparent 100%),
+      radial-gradient(1px 1px at 22% 38%, rgba(249,250,251,0.6) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 44% 9%,  rgba(251,191,36,0.9)  0%, transparent 100%),
+      radial-gradient(1px 1px at 60% 68%, rgba(249,250,251,0.7) 0%, transparent 100%),
+      radial-gradient(2px 2px at 74% 28%, rgba(249,250,251,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 84% 54%, rgba(34,211,238,0.7)  0%, transparent 100%),
+      radial-gradient(1px 1px at 90% 79%, rgba(249,250,251,0.8) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 4%  58%, rgba(249,250,251,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 34% 84%, rgba(251,191,36,0.5)  0%, transparent 100%),
+      radial-gradient(1px 1px at 54% 47%, rgba(249,250,251,0.4) 0%, transparent 100%),
+      radial-gradient(2px 2px at 18% 88%, rgba(167,139,250,0.7) 0%, transparent 100%),
+      radial-gradient(1px 1px at 68% 4%,  rgba(249,250,251,0.8) 0%, transparent 100%),
+      radial-gradient(1px 1px at 47% 62%, rgba(34,211,238,0.5)  0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 29% 19%, rgba(251,191,36,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 77% 87%, rgba(249,250,251,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 92% 43%, rgba(249,250,251,0.6) 0%, transparent 100%),
+      radial-gradient(2px 2px at 56% 23%, rgba(244,114,182,0.5) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .pl-wrap { position: relative; z-index: 1; max-width: 1040px; margin: 0 auto; padding: 0 1.5rem 4rem; }
+
+  .twinkle { position: fixed; width: 3px; height: 3px; background: #fbbf24; border-radius: 50%; box-shadow: 0 0 6px #fbbf24; animation: twinkle 3s ease-in-out infinite; pointer-events: none; z-index: 0; }
+  @keyframes twinkle { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.15; transform: scale(0.3); } }
+
+  @media (max-width: 600px) {
+    .pl-wrap { padding: 0 0.75rem 3rem; }
+  }
+
+  /* ==========================================================================
+     L★S Playlist widget — originally authored for a WP custom HTML block.
+     Scoped entirely under .lyss-playlist so it drops cleanly into the page.
+     ========================================================================== */
+  .lyss-playlist{
+    --lp-void:#0a0a14;
+    --lp-card:#0d0d20;
+    --lp-purple:#7c3aed;
+    --lp-pink:#db2777;
+    --lp-gold:#d4a017;
+    --lp-gold-bright:#fbbf24;
+    --lp-white:#f9fafb;
+    --lp-cyan:#22d3ee;
+    --lp-cyan-dim:#5bc8e0;
+    --lp-green:#4ade80;
+    --lp-dust:#c8bfde;
+    --lp-muted:#c4b5d4;
+    --lp-secondary:#b8aed0;
+    --lp-tertiary:#a89ec0;
+    --lp-font:'Atkinson Hyperlegible Next','Atkinson Hyperlegible',sans-serif;
+    font-family:var(--lp-font);
+    background:var(--lp-void);
+    border-radius:12px;
+    padding:2.5rem 2rem 3rem;
+    color:var(--lp-white);
+    overflow:hidden;
+  }
+  .lyss-playlist *{box-sizing:border-box;margin:0;padding:0}
+
+  /* Header */
+  .lyss-playlist .lp-header{text-align:center;margin-bottom:2.5rem}
+  .lyss-playlist .lp-brand{font-family:var(--lp-font);font-size:0.75rem;font-weight:600;letter-spacing:0.35em;text-transform:uppercase;color:var(--lp-cyan-dim);margin-bottom:0.6rem;display:block}
+  .lyss-playlist .lp-title{font-family:var(--lp-font);font-size:clamp(2rem,5vw,3.25rem);font-weight:700;background:linear-gradient(135deg,var(--lp-gold-bright) 0%,var(--lp-pink) 50%,var(--lp-cyan) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.1;margin-bottom:0.5rem}
+  .lyss-playlist .lp-subtitle{font-family:var(--lp-font);font-size:1rem;color:var(--lp-dust);line-height:1.6}
+
+  /* Section labels */
+  .lyss-playlist .lp-section{font-family:var(--lp-font);font-size:0.8125rem;font-weight:700;letter-spacing:0.3em;text-transform:uppercase;color:var(--lp-gold);margin:2rem 0 1rem;padding-bottom:0.5rem;border-bottom:1px solid rgba(212,160,23,0.3);display:block}
+
+  /* Grid */
+  .lyss-playlist .lp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.2rem}
+
+  /* Cards */
+  .lyss-playlist .lp-card{background:var(--lp-card);border-radius:8px;overflow:hidden;border:1px solid rgba(255,255,255,0.07);border-left-width:3px}
+  .lyss-playlist .lp-card.c-purple{border-left-color:var(--lp-purple)}
+  .lyss-playlist .lp-card.c-pink{border-left-color:var(--lp-pink)}
+  .lyss-playlist .lp-card.c-gold{border-left-color:var(--lp-gold-bright)}
+  .lyss-playlist .lp-card.c-cyan{border-left-color:var(--lp-cyan)}
+  .lyss-playlist .lp-card.c-green{border-left-color:var(--lp-green)}
+  .lyss-playlist .lp-card.c-white{border-left-color:rgba(249,250,251,0.4)}
+
+  .lyss-playlist .lp-meta{padding:0.9rem 1rem 0.75rem}
+
+  /* Category tag */
+  .lyss-playlist .lp-cat{font-family:var(--lp-font);font-size:0.75rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:0.35rem;display:block}
+  .lyss-playlist .c-purple .lp-cat{color:#a78bfa}
+  .lyss-playlist .c-pink .lp-cat{color:#f472b6}
+  .lyss-playlist .c-gold .lp-cat{color:var(--lp-gold-bright)}
+  .lyss-playlist .c-cyan .lp-cat{color:var(--lp-cyan)}
+  .lyss-playlist .c-green .lp-cat{color:var(--lp-green)}
+  .lyss-playlist .c-white .lp-cat{color:var(--lp-dust)}
+
+  /* Song title */
+  .lyss-playlist .lp-song{font-family:var(--lp-font);font-size:1.125rem;font-weight:700;color:var(--lp-white);line-height:1.25;margin-bottom:0.2rem}
+
+  /* Artist / year */
+  .lyss-playlist .lp-artist{font-family:var(--lp-font);font-size:0.875rem;font-weight:400;color:var(--lp-secondary);margin-bottom:0.6rem;display:block}
+
+  /* Note */
+  .lyss-playlist .lp-note{font-family:var(--lp-font);font-size:0.9375rem;font-style:italic;color:var(--lp-muted);line-height:1.6}
+
+  /* YouTube embed */
+  .lyss-playlist .lp-yt{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;background:#000}
+  .lyss-playlist .lp-yt iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none}
+
+  /* Spotify link */
+  .lyss-playlist .lp-sp{display:flex;align-items:center;gap:0.5rem;padding:0.6rem 1rem;font-family:var(--lp-font);font-size:0.8125rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--lp-green);text-decoration:none;border-top:1px solid rgba(255,255,255,0.07);transition:background 0.15s}
+  .lyss-playlist .lp-sp:hover{background:rgba(74,222,128,0.08);color:var(--lp-green)}
+  .lyss-playlist .lp-sp svg{width:14px;height:14px;fill:var(--lp-green);flex-shrink:0}
+
+  /* Quick reference list */
+  .lyss-playlist .lp-list{margin-top:2.5rem}
+  .lyss-playlist .lp-list-head{font-family:var(--lp-font);font-size:1.5rem;font-weight:700;color:var(--lp-white);margin-bottom:0.3rem}
+  .lyss-playlist .lp-list-sub{font-family:var(--lp-font);font-size:0.9375rem;font-style:italic;color:var(--lp-secondary);margin-bottom:1.5rem;display:block}
+  .lyss-playlist .lp-ls-section{font-family:var(--lp-font);font-size:0.75rem;font-weight:700;letter-spacing:0.3em;text-transform:uppercase;color:var(--lp-gold);padding-bottom:0.4rem;border-bottom:1px solid rgba(212,160,23,0.25);margin:1.5rem 0 0.6rem;display:block}
+  .lyss-playlist .lp-row{display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:0.75rem;padding:0.6rem 0;border-bottom:1px solid rgba(255,255,255,0.06)}
+  .lyss-playlist .lp-row:last-child{border-bottom:none}
+  .lyss-playlist .lp-row-song{font-family:var(--lp-font);font-size:1rem;font-weight:600;color:var(--lp-white);line-height:1.3}
+  .lyss-playlist .lp-row-artist{font-family:var(--lp-font);font-size:0.8125rem;font-weight:400;color:var(--lp-tertiary);display:block}
+
+  /* Buttons */
+  .lyss-playlist .lp-btn{font-family:var(--lp-font);font-size:0.8125rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;padding:0.3rem 0.6rem;border-radius:4px;white-space:nowrap}
+  .lyss-playlist .lp-btn.yt{color:#ff7070;border:1px solid rgba(255,112,112,0.4)}
+  .lyss-playlist .lp-btn.yt:hover{background:rgba(255,112,112,0.12)}
+  .lyss-playlist .lp-btn.sp{color:var(--lp-green);border:1px solid rgba(74,222,128,0.35)}
+  .lyss-playlist .lp-btn.sp:hover{background:rgba(74,222,128,0.1)}
+
+  /* Footer */
+  .lyss-playlist .lp-footer{text-align:center;margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,0.08)}
+  .lyss-playlist .lp-footer-star{font-family:var(--lp-font);font-size:1.75rem;font-weight:700;background:linear-gradient(135deg,var(--lp-gold-bright),var(--lp-pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;display:block;margin-bottom:0.4rem}
+  .lyss-playlist .lp-footer p{font-family:var(--lp-font);font-size:0.9375rem;color:var(--lp-tertiary);line-height:1.6}
+  .lyss-playlist .lp-footer a{color:var(--lp-cyan-dim);text-decoration:none}
+  .lyss-playlist .lp-footer a:hover{text-decoration:underline}
+</style>
+</head>
+<body>
+
+<div class="twinkle" style="top:6%;left:10%;animation-delay:-0.4s"></div>
+<div class="twinkle" style="top:15%;left:85%;animation-delay:-1.3s;background:var(--lp-cyan,#22d3ee);box-shadow:0 0 6px #22d3ee"></div>
+<div class="twinkle" style="top:48%;left:3%;animation-delay:-2.1s"></div>
+<div class="twinkle" style="top:70%;left:95%;animation-delay:-0.9s;background:#f472b6;box-shadow:0 0 6px #f472b6"></div>
+<div class="twinkle" style="top:88%;left:25%;animation-delay:-1.7s"></div>
+
+<div class="pl-wrap">
+
+  <nav class="ss-nav" style="--nav-accent:#22d3ee;" aria-label="Star Stuff collection">
+    <a class="ss-nav-home" href="index.html"><span class="ss-star" aria-hidden="true">★</span> stuff</a>
+    <span class="ss-nav-links">
+      <a class="ss-nav-prev" href="love-you-down-to-your-star-stuff.html"><span class="ss-nav-arrow" aria-hidden="true">‹</span> <span class="ss-nav-label">The Page</span></a>
+    </span>
+  </nav>
+
+  <div class="lyss-playlist">
+    <div class="lp-header"><span class="lp-brand">Stimpunks Foundation</span><div class="lp-title">L★S Playlist</div><div class="lp-subtitle">Songs in conversation with “Love You Down To Your Star Stuff” — cosmic, reclamatory, tender, and true.</div></div>
+    <span class="lp-section">David Bowie — The Whole Career Is LYDTYSS</span>
+    <div class="lp-grid">
+      <div class="lp-card c-purple"><div class="lp-meta"><span class="lp-cat">Cosmic / Alien</span><div class="lp-song">Space Oddity</div><span class="lp-artist">David Bowie · 1969</span><div class="lp-note">Alienation and the cosmos as both loss and liberation. The feeling of being untethered from Earth as a way of being free.</div></div><div class="lp-yt"><iframe src="https://www.youtube.com/embed/iYYRH4apXDo" title="Space Oddity" allowfullscreen="" loading="lazy"></iframe></div><a class="lp-sp" href="https://open.spotify.com/track/72Z17vmmeQKAg8bptWvpVG" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"></path></svg>Spotify</a></div>
+      <div class="lp-card c-gold"><div class="lp-meta"><span class="lp-cat">Alien Message / Hope</span><div class="lp-song">Starman</div><span class="lp-artist">David Bowie · 1972</span><div class="lp-note">An alien who loves you, waiting in the sky. A message of hope for the kids who don’t fit.</div></div><div class="lp-yt"><iframe src="https://www.youtube.com/embed/rpO1U-nEgRU" title="Starman" allowfullscreen="" loading="lazy"></iframe></div><a class="lp-sp" href="https://open.spotify.com/track/0pQskrTITgmCMyr85tb9qq" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"></path></svg>Spotify</a></div>
+      <div class="lp-card c-pink"><div class="lp-meta"><span class="lp-cat">Stardust as Identity</span><div class="lp-song">Ziggy Stardust</div><span class="lp-artist">David Bowie · 1972</span><div class="lp-note">Stardust as persona, as identity, as something you carry in your name. Difference is not deficit.</div></div><div class="lp-yt"><iframe src="https://www.youtube.com/embed/G8sdsW93ThQ" title="Ziggy Stardust" allowfullscreen="" loading="lazy"></iframe></div><a class="lp-sp" href="https://open.spotify.com/track/5IyL3XOaRPpTgxVjRIAxXU" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"></path></svg>Spotify</a></div>
+      <div class="lp-card c-cyan"><div class="lp-meta"><span class="lp-cat">Stellar Transformation</span><div class="lp-song">★ (Blackstar)</div><span class="lp-artist">David Bowie · 2016</span><div class="lp-note">Bowie’s final album, recorded while dying. Not the bright burning kind. The collapsed kind. Still massive, still present.</div></div><div class="lp-yt"><iframe src="https://www.youtube.com/embed/kszLwBaC4Sw" title="Blackstar" allowfullscreen="" loading="lazy"></iframe></div><a class="lp-sp" href="https://open.spotify.com/track/0Fao855T3klV3REFRFHRF3" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"></path></svg>Spotify</a></div>
+    </div>
+    <span class="lp-section">Cosmic Origin</span>
+    <div class="lp-grid">
+      <div class="lp-card c-gold"><div class="lp-meta"><span class="lp-cat">Countercultural Lineage</span><div class="lp-song">Woodstock</div><span class="lp-artist">Joni Mitchell · 1970</span><div class="lp-note">“We are stardust, we are golden.” Predates Sagan’s popularisation. A call to return to the garden — and to each other.</div></div><div class="lp-yt"><iframe src="https://www.youtube.com/embed/ZzZTSfXcHYI" title="Woodstock" allowfullscreen="" loading="lazy"></iframe></div><a class="lp-sp" href="https://open.spotify.com/track/18o4mqgG9RmPAD8aItmvkO" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"></path></svg>Spotify</a></div>
+      <div class="lp-card c-white"><div class="lp-meta"><span class="lp-cat">We Are All Made of Stars</span><div class="lp-song">We Are All Made of Stars</div><span class="lp-artist">Moby · 2002</span><div class="lp-note">The title says it directly. Moby as astronaut-outsider. Continuous with the Sagan tradition, set to electronica.</div></div><div class="lp-yt"><iframe src="https://www.youtube.com/embed/x1rFAaAKpVc" title="We Are All Made of Stars" allowfullscreen="" loading="lazy"></iframe></div><a class="lp-sp" href="https://open.spotify.com/search/Moby%20We%20Are%20All%20Made%20of%20Stars" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"></path></svg>Spotify</a></div>
+      <div class="lp-card c-cyan"><div class="lp-meta"><span class="lp-cat">Interbeing / Cosmic Surrender</span><div class="lp-song">Across the Universe</div><span class="lp-artist">The Beatles · 1970</span><div class="lp-note">“Limitless undying love which shines around me like a million suns.” NASA beamed it into deep space in 2008.</div></div><div class="lp-yt"><iframe src="https://www.youtube.com/embed/jfVOmE1yoRo" title="Across the Universe" allowfullscreen="" loading="lazy"></iframe></div><a class="lp-sp" href="https://open.spotify.com/track/72Ob0wrObCXgvGYhFs8vip" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"></path></svg>Spotify</a></div>
+      <div class="lp-card c-green"><div class="lp-meta"><span class="lp-cat">Emergence / Patience</span><div class="lp-song">Here Comes the Sun</div><span class="lp-artist">The Beatles · 1969</span><div class="lp-note">Written as relief from a long dark period. Tenderness after endurance. Cosmically patient. “It’s alright.”</div></div><div class="lp-yt"><iframe src="https://www.youtube.com/embed/KQetemT1sWc" title="Here Comes the Sun" allowfullscreen="" loading="lazy"></iframe></div><a class="lp-sp" href="https://open.spotify.com/track/6dGnYIeXmHdcikdzNNDMm2" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"></path></svg>Spotify</a></div>
+      <div class="lp-card c-purple"><div class="lp-meta"><span class="lp-cat">Cosmic Belonging / Visionary</span><div class="lp-song">Saturn</div><span class="lp-artist">Stevie Wonder · 1976</span><div class="lp-note">Explicit cosmic belonging — wonder at existence, longing for a world that matches the soul. “You’ve seen my descent / now watch my rise.”</div></div><div class="lp-yt"><iframe src="https://www.youtube.com/embed/-FvzpOF0nDQ" title="Saturn" allowfullscreen="" loading="lazy"></iframe></div><a class="lp-sp" href="https://open.spotify.com/track/6IuyOlsmt0IdIq0yBIj3dp" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"></path></svg>Spotify</a></div>
+      <div class="lp-card c-pink"><div class="lp-meta"><span class="lp-cat">Brain Damage / Eclipse</span><div class="lp-song">The Dark Side of the Moon</div><span class="lp-artist">Pink Floyd · 1973</span><div class="lp-note">An album about the pressures that make people mad, the moon as darkness and light at once, and the heartbeat that begins and ends it.</div></div><div class="lp-yt"><iframe src="https://www.youtube.com/embed/k9ynZnEBtvw" title="Dark Side of the Moon" allowfullscreen="" loading="lazy"></iframe></div><a class="lp-sp" href="https://open.spotify.com/search/Pink%20Floyd%20Dark%20Side%20of%20the%20Moon" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"></path></svg>Spotify</a></div>
+    </div>
+    <span class="lp-section">Tender / Belonging / Ethereal</span>
+    <div class="lp-grid">
+      <div class="lp-card c-pink"><div class="lp-meta"><span class="lp-cat">Longing / Return</span><div class="lp-song">Somewhere Over the Rainbow / What a Wonderful World</div><span class="lp-artist">Israel Kamakawiwoʻole · 1993</span><div class="lp-note">Longing for a place where you fit, rendered with extraordinary gentleness. Over 1.8 billion views. Longing and gratitude at the same time.</div></div><div class="lp-yt"><iframe src="https://www.youtube.com/embed/V1bFr2SWP1I" title="Somewhere Over the Rainbow" allowfullscreen="" loading="lazy"></iframe></div><a class="lp-sp" href="https://open.spotify.com/search/Israel%20Kamakawiwoole%20Over%20the%20Rainbow" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"></path></svg>Spotify</a></div>
+      <div class="lp-card c-cyan"><div class="lp-meta"><span class="lp-cat">Dream / Fall Back Into Place</span><div class="lp-song">Space Song</div><span class="lp-artist">Beach House · 2015</span><div class="lp-note">“Fall back into place” as a belonging signal. Dreamy, cosmic, intimate. The LYSS register in music.</div></div><div class="lp-yt"><iframe src="https://www.youtube.com/embed/RBtlPT23PTM" title="Space Song" allowfullscreen="" loading="lazy"></iframe></div><a class="lp-sp" href="https://open.spotify.com/track/7H0ya83CMmgFcOhw0UB6ow" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"></path></svg>Spotify</a></div>
+      <div class="lp-card c-purple"><div class="lp-meta"><span class="lp-cat">Wandering / Longing</span><div class="lp-song">Wandering Star</div><span class="lp-artist">Portishead · 1994</span><div class="lp-note">Heavy, searching, unmoored. Feels like the feeling before LYDTYSS arrives.</div></div><div class="lp-yt"><iframe src="https://www.youtube.com/embed/xF4RhDWs2DA" title="Wandering Star" allowfullscreen="" loading="lazy"></iframe></div><a class="lp-sp" href="https://open.spotify.com/search/Portishead%20Wandering%20Star" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"></path></svg>Spotify</a></div>
+      <div class="lp-card c-gold"><div class="lp-meta"><span class="lp-cat">Ethereal / Cosmic Love</span><div class="lp-song">Cosmic Love</div><span class="lp-artist">Florence + the Machine · 2009</span><div class="lp-note">“The stars, the moon, they have all been blown out.” Love as a cosmological event. Florence takes the light from her chest and releases it into the air.</div></div><div class="lp-yt"><iframe src="https://www.youtube.com/embed/2EIeUlvHAiM" title="Cosmic Love" allowfullscreen="" loading="lazy"></iframe></div><a class="lp-sp" href="https://open.spotify.com/search/Florence%20Machine%20Cosmic%20Love" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"></path></svg>Spotify</a></div>
+      <div class="lp-card c-white"><div class="lp-meta"><span class="lp-cat">Dream Pop / Stellar</span><div class="lp-song">Fade Into You</div><span class="lp-artist">Mazzy Star · 1993</span><div class="lp-note">“Fading into you like a supernova in the night sky.” Dissolution as love. Slow, hypnotic, inevitable.</div></div><div class="lp-yt"><iframe src="https://www.youtube.com/embed/ImKY6TZEyrI" title="Fade Into You" allowfullscreen="" loading="lazy"></iframe></div><a class="lp-sp" href="https://open.spotify.com/search/Mazzy%20Star%20Fade%20Into%20You" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"></path></svg>Spotify</a></div>
+      <div class="lp-card c-cyan"><div class="lp-meta"><span class="lp-cat">Ethereal / Dream Pop</span><div class="lp-song">Heaven or Las Vegas</div><span class="lp-artist">Cocteau Twins · 1990</span><div class="lp-note">Elizabeth Fraser’s vocals as a language beyond language. The feeling of being made of something ancient and shimmering.</div></div><div class="lp-yt"><iframe src="https://www.youtube.com/embed/6KnYw4EwYGc" title="Heaven or Las Vegas" allowfullscreen="" loading="lazy"></iframe></div><a class="lp-sp" href="https://open.spotify.com/track/1bwXRScnt3k6vSyVqcKyNj" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"></path></svg>Spotify</a></div>
+    </div>
+    <span class="lp-section">Reclamatory / Affirming</span>
+    <div class="lp-grid">
+      <div class="lp-card c-green"><div class="lp-meta"><span class="lp-cat">Queer / Neurodivergent Affirmation</span><div class="lp-song">Born This Way</div><span class="lp-artist">Lady Gaga · 2011</span><div class="lp-note">Explicit affirmation with cosmological framing. Unconditional love as a starting point, not a reward. LYDTYSS adjacent.</div></div><div class="lp-yt"><iframe src="https://www.youtube.com/embed/wV1FrqwZyKw" title="Born This Way" allowfullscreen="" loading="lazy"></iframe></div><a class="lp-sp" href="https://open.spotify.com/track/6r2BECwMgEoRb5yLfp0Hca" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"></path></svg>Spotify</a></div>
+      <div class="lp-card c-white"><div class="lp-meta"><span class="lp-cat">Comic / Genuinely Cosmological</span><div class="lp-song">Galaxy Song (feat. Stephen Hawking)</div><span class="lp-artist">Monty Python · 2015</span><div class="lp-note">The joke is that the universe is vast and you are small, but the effect is exhilarating. Hawking knocks Brian Cox over and sings it himself.</div></div><div class="lp-yt"><iframe src="https://www.youtube.com/embed/XfcC6FYyL4U" title="Galaxy Song" allowfullscreen="" loading="lazy"></iframe></div><a class="lp-sp" href="https://open.spotify.com/search/Monty%20Python%20Galaxy%20Song%20Hawking" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"></path></svg>Spotify</a></div>
+    </div>
+    <div class="lp-list">
+      <div class="lp-list-head">Full Playlist — Quick Reference</div>
+      <span class="lp-list-sub">For building your Spotify and YouTube playlists manually.</span>
+      <span class="lp-ls-section">David Bowie</span>
+      <div class="lp-row"><div><div class="lp-row-song">Space Oddity</div><span class="lp-row-artist">1969</span></div><a class="lp-btn yt" href="https://www.youtube.com/watch?v=iYYRH4apXDo" target="_blank" rel="noopener">YouTube</a><a class="lp-btn sp" href="https://open.spotify.com/track/72Z17vmmeQKAg8bptWvpVG" target="_blank" rel="noopener">Spotify</a></div>
+      <div class="lp-row"><div><div class="lp-row-song">Starman</div><span class="lp-row-artist">1972</span></div><a class="lp-btn yt" href="https://www.youtube.com/watch?v=rpO1U-nEgRU" target="_blank" rel="noopener">YouTube</a><a class="lp-btn sp" href="https://open.spotify.com/track/0pQskrTITgmCMyr85tb9qq" target="_blank" rel="noopener">Spotify</a></div>
+      <div class="lp-row"><div><div class="lp-row-song">Ziggy Stardust</div><span class="lp-row-artist">1972</span></div><a class="lp-btn yt" href="https://www.youtube.com/watch?v=G8sdsW93ThQ" target="_blank" rel="noopener">YouTube</a><a class="lp-btn sp" href="https://open.spotify.com/track/5IyL3XOaRPpTgxVjRIAxXU" target="_blank" rel="noopener">Spotify</a></div>
+      <div class="lp-row"><div><div class="lp-row-song">★ (Blackstar)</div><span class="lp-row-artist">2016</span></div><a class="lp-btn yt" href="https://www.youtube.com/watch?v=kszLwBaC4Sw" target="_blank" rel="noopener">YouTube</a><a class="lp-btn sp" href="https://open.spotify.com/track/0Fao855T3klV3REFRFHRF3" target="_blank" rel="noopener">Spotify</a></div>
+      <div class="lp-row"><div><div class="lp-row-song">Lazarus</div><span class="lp-row-artist">2016</span></div><a class="lp-btn yt" href="https://www.youtube.com/watch?v=y-JqH1M4Ya8" target="_blank" rel="noopener">YouTube</a><a class="lp-btn sp" href="https://open.spotify.com/search/David%20Bowie%20Lazarus" target="_blank" rel="noopener">Spotify</a></div>
+      <span class="lp-ls-section">Cosmic Origin</span>
+      <div class="lp-row"><div><div class="lp-row-song">Woodstock</div><span class="lp-row-artist">Joni Mitchell · 1970</span></div><a class="lp-btn yt" href="https://www.youtube.com/watch?v=ZzZTSfXcHYI" target="_blank" rel="noopener">YouTube</a><a class="lp-btn sp" href="https://open.spotify.com/track/18o4mqgG9RmPAD8aItmvkO" target="_blank" rel="noopener">Spotify</a></div>
+      <div class="lp-row"><div><div class="lp-row-song">We Are All Made of Stars</div><span class="lp-row-artist">Moby · 2002</span></div><a class="lp-btn yt" href="https://www.youtube.com/watch?v=x1rFAaAKpVc" target="_blank" rel="noopener">YouTube</a><a class="lp-btn sp" href="https://open.spotify.com/search/Moby%20We%20Are%20All%20Made%20of%20Stars" target="_blank" rel="noopener">Spotify</a></div>
+      <div class="lp-row"><div><div class="lp-row-song">Across the Universe</div><span class="lp-row-artist">The Beatles · 1970</span></div><a class="lp-btn yt" href="https://www.youtube.com/watch?v=jfVOmE1yoRo" target="_blank" rel="noopener">YouTube</a><a class="lp-btn sp" href="https://open.spotify.com/track/72Ob0wrObCXgvGYhFs8vip" target="_blank" rel="noopener">Spotify</a></div>
+      <div class="lp-row"><div><div class="lp-row-song">Here Comes the Sun</div><span class="lp-row-artist">The Beatles · 1969</span></div><a class="lp-btn yt" href="https://www.youtube.com/watch?v=KQetemT1sWc" target="_blank" rel="noopener">YouTube</a><a class="lp-btn sp" href="https://open.spotify.com/track/6dGnYIeXmHdcikdzNNDMm2" target="_blank" rel="noopener">Spotify</a></div>
+      <div class="lp-row"><div><div class="lp-row-song">Saturn</div><span class="lp-row-artist">Stevie Wonder · 1976</span></div><a class="lp-btn yt" href="https://www.youtube.com/watch?v=-FvzpOF0nDQ" target="_blank" rel="noopener">YouTube</a><a class="lp-btn sp" href="https://open.spotify.com/track/6IuyOlsmt0IdIq0yBIj3dp" target="_blank" rel="noopener">Spotify</a></div>
+      <div class="lp-row"><div><div class="lp-row-song">The Dark Side of the Moon</div><span class="lp-row-artist">Pink Floyd · 1973</span></div><a class="lp-btn yt" href="https://www.youtube.com/watch?v=k9ynZnEBtvw" target="_blank" rel="noopener">YouTube</a><a class="lp-btn sp" href="https://open.spotify.com/search/Pink%20Floyd%20Dark%20Side%20Moon" target="_blank" rel="noopener">Spotify</a></div>
+      <div class="lp-row"><div><div class="lp-row-song">Shooting Star</div><span class="lp-row-artist">Bob Dylan · 1989</span></div><a class="lp-btn yt" href="https://www.youtube.com/watch?v=bz2D5y8K87I" target="_blank" rel="noopener">YouTube</a><a class="lp-btn sp" href="https://open.spotify.com/search/Bob%20Dylan%20Shooting%20Star" target="_blank" rel="noopener">Spotify</a></div>
+      <span class="lp-ls-section">Tender / Belonging / Ethereal</span>
+      <div class="lp-row"><div><div class="lp-row-song">Somewhere Over the Rainbow / What a Wonderful World</div><span class="lp-row-artist">Israel Kamakawiwoʻole · 1993</span></div><a class="lp-btn yt" href="https://www.youtube.com/watch?v=V1bFr2SWP1I" target="_blank" rel="noopener">YouTube</a><a class="lp-btn sp" href="https://open.spotify.com/search/Israel%20Kamakawiwoole%20Over%20the%20Rainbow" target="_blank" rel="noopener">Spotify</a></div>
+      <div class="lp-row"><div><div class="lp-row-song">Space Song</div><span class="lp-row-artist">Beach House · 2015</span></div><a class="lp-btn yt" href="https://www.youtube.com/watch?v=RBtlPT23PTM" target="_blank" rel="noopener">YouTube</a><a class="lp-btn sp" href="https://open.spotify.com/track/7H0ya83CMmgFcOhw0UB6ow" target="_blank" rel="noopener">Spotify</a></div>
+      <div class="lp-row"><div><div class="lp-row-song">Wandering Star</div><span class="lp-row-artist">Portishead · 1994</span></div><a class="lp-btn yt" href="https://www.youtube.com/watch?v=xF4RhDWs2DA" target="_blank" rel="noopener">YouTube</a><a class="lp-btn sp" href="https://open.spotify.com/search/Portishead%20Wandering%20Star" target="_blank" rel="noopener">Spotify</a></div>
+      <div class="lp-row"><div><div class="lp-row-song">Cosmic Love</div><span class="lp-row-artist">Florence + the Machine · 2009</span></div><a class="lp-btn yt" href="https://www.youtube.com/watch?v=2EIeUlvHAiM" target="_blank" rel="noopener">YouTube</a><a class="lp-btn sp" href="https://open.spotify.com/search/Florence%20Machine%20Cosmic%20Love" target="_blank" rel="noopener">Spotify</a></div>
+      <div class="lp-row"><div><div class="lp-row-song">Fade Into You</div><span class="lp-row-artist">Mazzy Star · 1993</span></div><a class="lp-btn yt" href="https://www.youtube.com/watch?v=ImKY6TZEyrI" target="_blank" rel="noopener">YouTube</a><a class="lp-btn sp" href="https://open.spotify.com/search/Mazzy%20Star%20Fade%20Into%20You" target="_blank" rel="noopener">Spotify</a></div>
+      <div class="lp-row"><div><div class="lp-row-song">Heaven or Las Vegas</div><span class="lp-row-artist">Cocteau Twins · 1990</span></div><a class="lp-btn yt" href="https://www.youtube.com/watch?v=6KnYw4EwYGc" target="_blank" rel="noopener">YouTube</a><a class="lp-btn sp" href="https://open.spotify.com/track/1bwXRScnt3k6vSyVqcKyNj" target="_blank" rel="noopener">Spotify</a></div>
+      <div class="lp-row"><div><div class="lp-row-song">Under Stars</div><span class="lp-row-artist">Brian Eno · 1983</span></div><a class="lp-btn yt" href="https://www.youtube.com/watch?v=b6fOioWZlV0" target="_blank" rel="noopener">YouTube</a><a class="lp-btn sp" href="https://open.spotify.com/track/2iOzx4XrUNl9UiS0SdghEQ" target="_blank" rel="noopener">Spotify</a></div>
+      <div class="lp-row"><div><div class="lp-row-song">On the Nature of Daylight</div><span class="lp-row-artist">Max Richter</span></div><a class="lp-btn yt" href="https://www.youtube.com/results?search_query=Max+Richter+On+the+Nature+of+Daylight" target="_blank" rel="noopener">YouTube</a><a class="lp-btn sp" href="https://open.spotify.com/search/Max%20Richter%20On%20the%20Nature%20of%20Daylight" target="_blank" rel="noopener">Spotify</a></div>
+      <div class="lp-row"><div><div class="lp-row-song">Light From a Dead Star</div><span class="lp-row-artist">Lush · 1994</span></div><a class="lp-btn yt" href="https://www.youtube.com/results?search_query=Lush+Light+From+a+Dead+Star" target="_blank" rel="noopener">YouTube</a><a class="lp-btn sp" href="https://open.spotify.com/search/Lush%20Light%20From%20a%20Dead%20Star" target="_blank" rel="noopener">Spotify</a></div>
+      <div class="lp-row"><div><div class="lp-row-song">Little Fluffy Clouds</div><span class="lp-row-artist">The Orb · 1990</span></div><a class="lp-btn yt" href="https://www.youtube.com/watch?v=8Ecdn5SGT1E" target="_blank" rel="noopener">YouTube</a><a class="lp-btn sp" href="https://open.spotify.com/search/The%20Orb%20Little%20Fluffy%20Clouds" target="_blank" rel="noopener">Spotify</a></div>
+      <span class="lp-ls-section">Reclamatory / Affirming</span>
+      <div class="lp-row"><div><div class="lp-row-song">Born This Way</div><span class="lp-row-artist">Lady Gaga · 2011</span></div><a class="lp-btn yt" href="https://www.youtube.com/watch?v=wV1FrqwZyKw" target="_blank" rel="noopener">YouTube</a><a class="lp-btn sp" href="https://open.spotify.com/track/6r2BECwMgEoRb5yLfp0Hca" target="_blank" rel="noopener">Spotify</a></div>
+      <div class="lp-row"><div><div class="lp-row-song">Galaxy Song (feat. Stephen Hawking)</div><span class="lp-row-artist">Monty Python · 2015</span></div><a class="lp-btn yt" href="https://www.youtube.com/watch?v=XfcC6FYyL4U" target="_blank" rel="noopener">YouTube</a><a class="lp-btn sp" href="https://open.spotify.com/search/Monty%20Python%20Galaxy%20Song%20Hawking" target="_blank" rel="noopener">Spotify</a></div>
+      <div class="lp-row"><div><div class="lp-row-song">Different Drum</div><span class="lp-row-artist">Stone Poneys · 1967</span></div><a class="lp-btn yt" href="https://www.youtube.com/results?search_query=Stone+Poneys+Different+Drum" target="_blank" rel="noopener">YouTube</a><a class="lp-btn sp" href="https://open.spotify.com/search/Stone%20Poneys%20Different%20Drum" target="_blank" rel="noopener">Spotify</a></div>
+      <div class="lp-row"><div><div class="lp-row-song">No One Is Alone</div><span class="lp-row-artist">Sondheim · Into the Woods</span></div><a class="lp-btn yt" href="https://www.youtube.com/results?search_query=Into+the+Woods+No+One+Is+Alone" target="_blank" rel="noopener">YouTube</a><a class="lp-btn sp" href="https://open.spotify.com/search/Into%20the%20Woods%20No%20One%20Is%20Alone" target="_blank" rel="noopener">Spotify</a></div>
+    </div>
+    <div class="lp-footer"><span class="lp-footer-star">L★S</span><p>A playlist in conversation with “Love You Down To Your Star Stuff”<br>Stimpunks Foundation · <a href="https://starstuff.earth">starstuff.earth</a> · <a href="https://stimpunks.org/star-stuff/">stimpunks.org/star-stuff</a></p></div>
+  </div>
+
+</div>
+</body>
+</html>
