@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Star Stuff Manifesto — Stimpunks Foundation</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+<style>
+html, body { margin: 0; padding: 0; }
+body { background-color: #0a0a14; }
+
+.stimpunks-manifesto {
+  --sp-void: #0a0a14;
+  --sp-deep: #0f0f2a;
+  --sp-purple: #a78bfa;
+  --sp-pink: #f472b6;
+  --sp-gold: #fbbf24;
+  --sp-cyan: #22d3ee;
+  --sp-green: #4ade80;
+  --sp-white: #f9fafb;
+  --sp-secondary: #b8aed0;
+  --sp-muted: #c4b5d4;
+
+  background-color: var(--sp-void);
+  color: var(--sp-white);
+  font-family: 'Atkinson Hyperlegible Next', sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
+  overflow-x: hidden;
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Starfield */
+.stimpunks-manifesto::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(1px 1px at 8% 12%, rgba(249,250,251,0.8) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 22% 38%, rgba(251,191,36,0.7) 0%, transparent 100%),
+    radial-gradient(1px 1px at 37% 67%, rgba(249,250,251,0.6) 0%, transparent 100%),
+    radial-gradient(1px 1px at 53% 8%, rgba(34,211,238,0.7) 0%, transparent 100%),
+    radial-gradient(2px 2px at 68% 45%, rgba(249,250,251,0.5) 0%, transparent 100%),
+    radial-gradient(1px 1px at 79% 22%, rgba(167,139,250,0.8) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 91% 73%, rgba(249,250,251,0.7) 0%, transparent 100%),
+    radial-gradient(1px 1px at 15% 82%, rgba(251,191,36,0.5) 0%, transparent 100%),
+    radial-gradient(1px 1px at 44% 91%, rgba(249,250,251,0.6) 0%, transparent 100%),
+    radial-gradient(1px 1px at 62% 55%, rgba(244,114,182,0.6) 0%, transparent 100%),
+    radial-gradient(2px 2px at 85% 9%, rgba(249,250,251,0.8) 0%, transparent 100%),
+    radial-gradient(1px 1px at 3% 50%, rgba(34,211,238,0.5) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 96% 38%, rgba(74,222,128,0.6) 0%, transparent 100%),
+    radial-gradient(1px 1px at 28% 18%, rgba(249,250,251,0.4) 0%, transparent 100%),
+    radial-gradient(1px 1px at 74% 86%, rgba(251,191,36,0.6) 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Layout */
+.sp-wrap {
+  position: relative;
+  z-index: 1;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 5rem 2rem 7rem;
+  box-sizing: border-box;
+}
+
+/* Masthead */
+.sp-masthead {
+  text-align: center;
+  margin-bottom: 5rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid rgba(167,139,250,0.2);
+}
+
+.sp-eyebrow {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--sp-cyan);
+  margin-bottom: 1.5rem;
+}
+
+.sp-title {
+  font-size: clamp(2.8rem, 7vw, 5rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, var(--sp-gold) 0%, var(--sp-pink) 50%, var(--sp-cyan) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1rem;
+}
+
+.sp-subtitle {
+  font-size: 1.125rem;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--sp-secondary);
+  line-height: 1.6;
+  max-width: 520px;
+  margin: 0 auto 2rem;
+}
+
+.sp-lyss-badge {
+  display: inline-block;
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--sp-gold);
+  padding: 0.5rem 1.5rem;
+  border: 1px solid rgba(251,191,36,0.35);
+  border-radius: 999px;
+}
+
+.sp-star-spin {
+  display: inline-block;
+  animation: sp-spin 8s linear infinite;
+}
+
+@keyframes sp-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* Sections */
+.sp-section {
+  margin-bottom: 4rem;
+}
+
+.sp-section-label {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--sp-muted);
+  margin-bottom: 1.25rem;
+  display: block;
+}
+
+.sp-section-heading {
+  font-size: clamp(1.5rem, 3.5vw, 2rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin-bottom: 1.5rem;
+  color: var(--sp-white);
+}
+
+.sp-grad-gold {
+  background: linear-gradient(90deg, var(--sp-gold), var(--sp-pink));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.sp-grad-cyan {
+  background: linear-gradient(90deg, var(--sp-cyan), var(--sp-green));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.sp-grad-purple {
+  background: linear-gradient(90deg, var(--sp-purple), var(--sp-pink));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.sp-body {
+  color: var(--sp-secondary);
+  font-size: 1rem;
+  line-height: 1.8;
+  margin-bottom: 1.25rem;
+}
+
+.sp-body:last-child { margin-bottom: 0; }
+
+/* Cards */
+.sp-card {
+  background: var(--sp-deep);
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.sp-card-purple { border-left: 3px solid var(--sp-purple); }
+.sp-card-pink   { border-left: 3px solid var(--sp-pink); }
+.sp-card-gold   { border-left: 3px solid var(--sp-gold); }
+.sp-card-cyan   { border-left: 3px solid var(--sp-cyan); }
+.sp-card-green  { border-left: 3px solid var(--sp-green); }
+
+.sp-card-label {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.sp-card-purple .sp-card-label { color: var(--sp-purple); }
+.sp-card-pink   .sp-card-label { color: var(--sp-pink); }
+.sp-card-gold   .sp-card-label { color: var(--sp-gold); }
+.sp-card-cyan   .sp-card-label { color: var(--sp-cyan); }
+.sp-card-green  .sp-card-label { color: var(--sp-green); }
+
+.sp-card-body {
+  color: var(--sp-white);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+/* Pullquote */
+.sp-pullquote {
+  border-left: 3px solid var(--sp-pink);
+  background: var(--sp-deep);
+  border-radius: 0 8px 8px 0;
+  padding: 1.5rem 1.75rem;
+  margin: 2.5rem 0;
+}
+
+.sp-pullquote-text {
+  font-size: clamp(1.15rem, 2.5vw, 1.4rem);
+  font-weight: 600;
+  font-style: italic;
+  line-height: 1.55;
+  color: var(--sp-white);
+  margin-bottom: 0.75rem;
+}
+
+.sp-pullquote-attr {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--sp-pink);
+}
+
+/* Science callout */
+.sp-science {
+  background: var(--sp-deep);
+  border: 1px solid rgba(34,211,238,0.2);
+  border-left: 3px solid var(--sp-cyan);
+  border-radius: 8px;
+  padding: 1.5rem 1.25rem;
+  margin: 2rem 0;
+}
+
+.sp-science-eyebrow {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--sp-cyan);
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+.sp-science-text {
+  color: var(--sp-white);
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+.sp-science-text em {
+  color: var(--sp-cyan);
+  font-style: normal;
+  font-weight: 600;
+}
+
+/* Declarations */
+.sp-declarations {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sp-declarations li {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  padding: 1rem 1.25rem;
+  background: var(--sp-deep);
+  border-radius: 8px;
+  margin-bottom: 0.75rem;
+  box-sizing: border-box;
+}
+
+.sp-declarations li:nth-child(1) { border-left: 3px solid var(--sp-gold); }
+.sp-declarations li:nth-child(2) { border-left: 3px solid var(--sp-purple); }
+.sp-declarations li:nth-child(3) { border-left: 3px solid var(--sp-cyan); }
+.sp-declarations li:nth-child(4) { border-left: 3px solid var(--sp-pink); }
+.sp-declarations li:nth-child(5) { border-left: 3px solid var(--sp-green); }
+.sp-declarations li:nth-child(6) { border-left: 3px solid var(--sp-gold); }
+.sp-declarations li:nth-child(7) { border-left: 3px solid var(--sp-purple); }
+.sp-declarations li:nth-child(8) { border-left: 3px solid var(--sp-cyan); }
+
+.sp-decl-num {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--sp-muted);
+  min-width: 1.5rem;
+  padding-top: 0.15rem;
+  letter-spacing: 0.05em;
+  flex-shrink: 0;
+}
+
+.sp-decl-text {
+  color: var(--sp-white);
+  font-size: 1rem;
+  line-height: 1.65;
+  flex: 1;
+}
+
+.sp-decl-text strong {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 0.2rem;
+  color: var(--sp-white);
+}
+
+.sp-decl-text span {
+  font-size: 0.875rem;
+  color: var(--sp-secondary);
+}
+
+/* Divider */
+.sp-divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 3.5rem 0;
+  opacity: 0.3;
+}
+
+.sp-divider::before,
+.sp-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--sp-purple);
+}
+
+.sp-divider-star {
+  color: var(--sp-gold);
+  font-size: 0.9rem;
+}
+
+/* Closing */
+.sp-closing {
+  text-align: center;
+  padding: 3.5rem 2rem;
+  background: var(--sp-deep);
+  border-radius: 8px;
+  border: 1px solid rgba(167,139,250,0.15);
+  border-top: 3px solid var(--sp-purple);
+  margin-top: 3rem;
+  box-sizing: border-box;
+}
+
+.sp-closing-lyss {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.75rem;
+  line-height: 1.1;
+  display: block;
+  color: var(--sp-white);
+}
+
+.sp-closing-lyss .sp-grad-letter {
+  background: linear-gradient(135deg, var(--sp-gold) 0%, var(--sp-pink) 50%, var(--sp-cyan) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.sp-closing-lyss .sp-closing-star {
+  display: inline-block;
+  color: var(--sp-gold);
+  -webkit-text-fill-color: var(--sp-gold);
+  animation: sp-spin 8s linear infinite;
+  text-shadow: 0 0 12px rgba(251,191,36,0.7);
+}
+
+.sp-closing-sub {
+  font-size: 1rem;
+  color: var(--sp-secondary);
+  font-style: italic;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+  display: block;
+}
+
+.sp-closing-stamp {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--sp-muted);
+  display: block;
+}
+
+/* Accent twinkle stars */
+.sp-twinkle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  animation: sp-twinkle 3s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 2;
+}
+
+@keyframes sp-twinkle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.15; transform: scale(0.4); }
+}
+
+/* Science block purple variant */
+.sp-science-purple {
+  border-color: rgba(167,139,250,0.25);
+  border-left-color: var(--sp-purple);
+}
+
+.sp-science-purple .sp-science-eyebrow { color: var(--sp-purple); }
+
+.sp-science-purple .sp-science-text em {
+  color: var(--sp-purple);
+}
+
+/* Pullquote purple variant */
+.sp-pullquote-purple {
+  border-left-color: var(--sp-purple);
+}
+
+.sp-pullquote-purple .sp-pullquote-text {
+  font-style: normal;
+}
+
+.sp-pullquote-purple .sp-pullquote-attr {
+  color: var(--sp-purple);
+}
+
+@media (max-width: 600px) {
+  .sp-wrap { padding: 3rem 1.25rem 5rem; }
+  .sp-masthead { margin-bottom: 3rem; padding-bottom: 2rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="stimpunks-manifesto">
+
+  <!-- Accent twinkle stars -->
+  <div class="sp-twinkle" style="top:2%;left:4%;background:#fbbf24;box-shadow:0 0 6px #fbbf24;animation-delay:-0.4s"></div>
+  <div class="sp-twinkle" style="top:5%;right:3%;background:#22d3ee;box-shadow:0 0 6px #22d3ee;animation-delay:-1.3s"></div>
+  <div class="sp-twinkle" style="top:30%;left:1%;background:#f9fafb;box-shadow:0 0 4px #f9fafb;animation-delay:-2.1s"></div>
+  <div class="sp-twinkle" style="top:55%;right:1%;background:#f472b6;box-shadow:0 0 6px #f472b6;animation-delay:-0.9s"></div>
+  <div class="sp-twinkle" style="top:80%;left:3%;background:#fbbf24;box-shadow:0 0 5px #fbbf24;animation-delay:-1.7s"></div>
+  <div class="sp-twinkle" style="top:90%;right:4%;background:#4ade80;box-shadow:0 0 6px #4ade80;animation-delay:-3s"></div>
+
+  <div class="sp-wrap">
+
+    <!-- ═══ MASTHEAD ═══ -->
+    <header class="sp-masthead">
+      <p class="sp-eyebrow">Stimpunks Foundation</p>
+      <h1 class="sp-title">Star Stuff Manifesto</h1>
+      <p class="sp-subtitle">On the cosmic origins of who we are, the science of how we carry the universe in our bones, and why neurodivergent and disabled people belong — not despite difference, but as difference.</p>
+      <div class="sp-lyss-badge">L<span class="sp-star-spin">★</span>S &nbsp;·&nbsp; Love You, Star Stuff</div>
+    </header>
+
+    <!-- ═══ I · ORIGIN ═══ -->
+    <section class="sp-section" aria-labelledby="sp-origin">
+      <span class="sp-section-label">I · Origin</span>
+      <h2 class="sp-section-heading" id="sp-origin">We are all made of <span class="sp-grad-gold">exploded stars</span></h2>
+
+      <p class="sp-body">Carl Sagan said it plainly: the nitrogen in our DNA, the calcium in our teeth, the iron in our blood — forged in the cores of stars that no longer exist. When those stars exhausted their fuel, they exploded across the cosmos. Their debris became clouds. The clouds collapsed into new systems, new planets, new oceans, new life. You.</p>
+
+      <div class="sp-science">
+        <span class="sp-science-eyebrow">Stellar Nucleosynthesis</span>
+        <p class="sp-science-text">Every atom heavier than hydrogen and helium was manufactured inside a star. Carbon, oxygen, calcium, iron — the building blocks of every human body — were forged under conditions of unimaginable pressure and heat, then scattered across the galaxy when those stars died. <em>We are, in a literal chemical sense, the remnants of stellar death.</em></p>
+      </div>
+
+      <p class="sp-body">This is not metaphor. It is the actual account of where you came from. And it matters — because a cosmology that grounds identity in the violent, generative creativity of the universe is a very different cosmology than one that locates value in conformity, productivity, or neurotypicality.</p>
+    </section>
+
+    <div class="sp-divider"><span class="sp-divider-star">★</span></div>
+
+    <!-- ═══ II · THE BONES ═══ -->
+    <section class="sp-section" aria-labelledby="sp-bones">
+      <span class="sp-section-label">II · The Bones Remember</span>
+      <h2 class="sp-section-heading" id="sp-bones">Your skeleton is <span class="sp-grad-cyan">piezoelectric</span></h2>
+
+      <p class="sp-body">In the 1950s, Japanese orthopedic surgeon Dr. Iwao Yasuda discovered something remarkable: bone is piezoelectric. Under mechanical stress — compression, tension, bending — bone crystal generates its own electrical charge. This is not incidental. It is how bone knows to grow, where to strengthen, how to heal. The skeleton is a living signal processor, converting force into information.</p>
+
+      <div class="sp-science sp-science-purple">
+        <span class="sp-science-eyebrow">Piezoelectricity</span>
+        <p class="sp-science-text">Piezo comes from the Greek <em>piezein</em> — to press, to squeeze. Certain crystalline materials generate an electric charge when subjected to mechanical stress. Hydroxyapatite, the mineral that makes bone rigid, is one of them. Every step you take, every breath, every impact — your bones are generating voltage. Responding. Adapting. Alive.</p>
+      </div>
+
+      <p class="sp-body">We carry the electrical signature of the cosmos not just as metaphor but as mechanism. The universe built into the architecture of our bodies the same responsive-to-pressure principle it uses everywhere: force begets signal, signal begets change, change begets structure. We are responsive systems, not static ones. Every nervous system that processes the world differently is doing what responsive systems do — responding to the particular pressures of a particular life.</p>
+
+      <div class="sp-pullquote">
+        <p class="sp-pullquote-text">"Your bones are piezoelectric. They generate charge under pressure. They respond. They adapt. They remember every load they've carried — and grow stronger at the point of stress. That is not a malfunction. That is the physics of survival written in calcium and light."</p>
+        <p class="sp-pullquote-attr">— Stimpunks Foundation</p>
+      </div>
+    </section>
+
+    <div class="sp-divider"><span class="sp-divider-star">★</span></div>
+
+    <!-- ═══ III · VARIATION ═══ -->
+    <section class="sp-section" aria-labelledby="sp-variation">
+      <span class="sp-section-label">III · The Neurodiversity Paradigm</span>
+      <h2 class="sp-section-heading" id="sp-variation">The universe doesn't pathologize <span class="sp-grad-purple">its own variation</span></h2>
+
+      <p class="sp-body">The neurodiversity paradigm holds that neurological difference is a natural, valuable form of human variation — not a deviation from a healthy norm to be corrected, but a dimension of the diversity that characterizes our species. Autism, ADHD, dyslexia, Tourette's, and the full range of neurological profiles are not disorders in the sense of broken-ness. They are differences in how nervous systems are organized.</p>
+
+      <p class="sp-body">The universe is staggeringly, relentlessly various. Stars range from red dwarfs barely large enough to fuse hydrogen to hypergiants a thousand times the mass of our sun. Galaxies spiral, ellipse, collide, merge, scatter. No two snowflakes, no two fingerprints, no two nervous systems. Variation is not the exception. It is the rule. It is the engine.</p>
+
+      <div class="sp-card sp-card-gold" style="margin:2rem 0;">
+        <p class="sp-card-label">Core Claim</p>
+        <p class="sp-card-body">The same universe that forged every atom in your body also produced the nervous system you inhabit. There is no astrophysics of typicality. There is only the astonishing variety of what the cosmos can make — and we are part of that variety.</p>
+      </div>
+
+      <p class="sp-body">The DSM is a human document written at a particular historical moment to describe patterns of distress and difference through a particular cultural lens. The cosmos has no DSM. Turbulence in fluid dynamics is not a pathology — it is a regime of behavior, one with its own laws, its own beauty, its own utility. The same is true of neurological variation.</p>
+
+      <p class="sp-body">We reframe. Not to deny that neurodivergent and disabled people experience real challenges — many of which are compounded or entirely caused by environments built for a narrow range of bodies and minds — but to insist that the starting point is not deficit. The starting point is this: you came from the same place everything came from. Stars.</p>
+    </section>
+
+    <div class="sp-divider"><span class="sp-divider-star">★</span></div>
+
+    <!-- ═══ IV · LOVE ═══ -->
+    <section class="sp-section" aria-labelledby="sp-love">
+      <span class="sp-section-label">IV · Love You Down to Your Star Stuff</span>
+      <h2 class="sp-section-heading" id="sp-love">What it means to say <span class="sp-grad-gold">L★S</span></h2>
+
+      <p class="sp-body">Love You Down to Your Star Stuff — LYDTYSS, L★S — is not a slogan. It is a position. It is a way of saying: I see you at the level of your constituent matter. I love what you are made of. I love the process that made you. I love the particular, improbable, once-in-a-cosmos arrangement of atoms that is you, right now, reading this.</p>
+
+      <p class="sp-body">This matters in community spaces built for neurodivergent and disabled people because so much of what those community members have been told — by schools, by clinics, by families who meant well — is a story of falling short. Not meeting the threshold. Not reaching the benchmark. Not being the version that fits the space that was already built without them in mind.</p>
+
+      <div class="sp-card sp-card-pink">
+        <p class="sp-card-label">What L★S says back</p>
+        <p class="sp-card-body">The threshold is arbitrary. The benchmark is cultural. The space can change. But you — the specific arrangement of matter and electricity and history and nervous system that is you — you are not a problem to be solved. You are a thing the universe made. We love you for it.</p>
+      </div>
+
+      <p class="sp-body">L★S is also punk. It refuses the frame in which some nervous systems are inherently more valuable than others. It refuses the medicalization of variation without consent. It refuses the premise that the burden of adaptation falls entirely on the person who diverges, rather than on the systems and structures that were built too narrow.</p>
+
+      <p class="sp-body">It is gentle and it is fierce. It is Sagan's wonder and it is community rage at a world that keeps telling neurodivergent and disabled people they are too much, too little, too loud, too still, too slow, too scattered, too focused, too strange. L★S says: we were made by supernovae. We are not too much. We are exactly as much as we are.</p>
+    </section>
+
+    <div class="sp-divider"><span class="sp-divider-star">★</span></div>
+
+    <!-- ═══ V · DECLARATIONS ═══ -->
+    <section class="sp-section" aria-labelledby="sp-declarations">
+      <span class="sp-section-label">V · What We Hold</span>
+      <h2 class="sp-section-heading" id="sp-declarations">Declarations of the <span class="sp-grad-cyan">Star Stuff community</span></h2>
+
+      <ul class="sp-declarations">
+        <li>
+          <div class="sp-decl-num">01</div>
+          <div class="sp-decl-text">
+            <strong>We hold that every person is made of star stuff.</strong>
+            <span>Not metaphorically, but chemically. The iron in your blood was forged in a dying star. This is the baseline of your cosmic belonging, and no diagnosis, no deficit model, no exclusionary system can revoke it.</span>
+          </div>
+        </li>
+        <li>
+          <div class="sp-decl-num">02</div>
+          <div class="sp-decl-text">
+            <strong>We hold that neurological variation is natural variation.</strong>
+            <span>The neurodiversity paradigm is not a denial of challenge. It is a refusal to locate the problem in the person rather than in the mismatch between person and environment.</span>
+          </div>
+        </li>
+        <li>
+          <div class="sp-decl-num">03</div>
+          <div class="sp-decl-text">
+            <strong>We hold that disabled people belong — fully, without asterisk.</strong>
+            <span>Not despite their disabilities, but as people whose full humanity includes their disability experience, and whose knowledge from that experience has value.</span>
+          </div>
+        </li>
+        <li>
+          <div class="sp-decl-num">04</div>
+          <div class="sp-decl-text">
+            <strong>We hold that your bones remember pressure and grow toward strength.</strong>
+            <span>The piezoelectric fact of bone is a reminder that living systems are adaptive. What you have carried has shaped you. That shaping is not damage — it is history, written in calcium.</span>
+          </div>
+        </li>
+        <li>
+          <div class="sp-decl-num">05</div>
+          <div class="sp-decl-text">
+            <strong>We hold that the universe doesn't pathologize its own variation.</strong>
+            <span>There is no correct galaxy, no normative star. The cosmos makes what it makes and none of it is a mistake. We extend this to people.</span>
+          </div>
+        </li>
+        <li>
+          <div class="sp-decl-num">06</div>
+          <div class="sp-decl-text">
+            <strong>We hold that community is a mutual aid structure, not a charity transaction.</strong>
+            <span>We are not here to fix each other. We are here to share resources, to amplify each other's signal, to build environments where more kinds of people can be more fully themselves.</span>
+          </div>
+        </li>
+        <li>
+          <div class="sp-decl-num">07</div>
+          <div class="sp-decl-text">
+            <strong>We hold that love operates at the level of constituent matter.</strong>
+            <span>L★S means: I love you down to the atoms. The specific improbable arrangement. Not a performance of you, not a corrected version — this one, as made, as present, as star-forged.</span>
+          </div>
+        </li>
+        <li>
+          <div class="sp-decl-num">08</div>
+          <div class="sp-decl-text">
+            <strong>We hold that punk and wonder are not opposites.</strong>
+            <span>Rage at injustice and awe at the cosmos coexist. Stimpunks carries both. The same voice that says "we are made of exploded stars" also says "build better systems or we will build them ourselves."</span>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <div class="sp-divider"><span class="sp-divider-star">★</span></div>
+
+    <!-- ═══ VI · PROSE POEM ═══ -->
+    <section class="sp-section" aria-labelledby="sp-poem">
+      <span class="sp-section-label">VI · Carried in the Body</span>
+      <h2 class="sp-section-heading" id="sp-poem">On <span class="sp-grad-purple">piezoelectric bones</span> and the neurodiversity paradigm</h2>
+
+      <p class="sp-body">Your bones are piezoelectric. Under pressure — literal, mechanical pressure — they generate voltage. Hydroxyapatite crystals in compact bone convert compression to charge. This is how bone remodels: stress signals the skeleton to grow where it is needed, to reinforce the places that carry load. It is not damage. It is response. It is the body's oldest and most literal act of knowing.</p>
+
+      <p class="sp-body">Every step is a signal. Every weight you have carried has left its mark — not as fracture, but as architecture. The bone grew denser there. The body remembered.</p>
+
+      <div class="sp-pullquote sp-pullquote-purple">
+        <p class="sp-pullquote-text">"The universe doesn't pathologize its own variation."</p>
+        <p class="sp-pullquote-attr">— Stimpunks Foundation · Star Stuff Manifesto</p>
+      </div>
+
+      <p class="sp-body">Neurodivergent nervous systems process signal differently. They amplify some frequencies and damp others. They notice what the typical processing filter removes. They fatigue under loads that weren't in the design spec — because the design spec was never written with them in mind. This is the social model of disability applied to nervous systems: the problem is not the nervous system. The problem is the mismatch. The too-loud room. The eye contact requirement. The assumption of one right rhythm.</p>
+
+      <p class="sp-body">We carry our cosmology in our bodies: atoms forged in stars, bones that conduct electricity, nervous systems that are — each one — a distinct and unrepeatable way of encountering the world. The universe made all of it. The universe makes all of it still.</p>
+
+      <p class="sp-body">We are not asking for tolerance. We are not asking to be included in a structure built to exclude us, as a favor, on the condition that we approximate the expected shape. We are saying: the structure was wrong about what shapes are possible. We are made of the same stuff as everything. And everything includes us.</p>
+    </section>
+
+    <!-- ═══ CLOSING ═══ -->
+    <div class="sp-closing">
+      <span class="sp-closing-lyss"><span class="sp-grad-letter">L</span><span class="sp-closing-star">★</span><span class="sp-grad-letter">S</span></span>
+      <span class="sp-closing-sub">Love You Down to Your Star Stuff<br>You are made of the universe. You belong to it. It belongs to you.</span>
+      <span class="sp-closing-stamp">Stimpunks Foundation · stimpunks.org</span>
+    </div>
+
+  </div><!-- /sp-wrap -->
+</div><!-- /stimpunks-manifesto -->
+
+</body>
+</html>
