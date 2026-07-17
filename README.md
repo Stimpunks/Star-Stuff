@@ -50,18 +50,14 @@ Everything shares one visual language, tuned for accessibility first:
 
 ## Hosting
 
-These are static files, so the simplest live setup is **GitHub Pages**:
+The collection is live at **[starstuff.earth](https://starstuff.earth/)**, deployed from this repository via **Netlify**. Everything is static with no build step, so Netlify serves the files as-is — pushing to `main` publishes the update.
 
-1. **Settings → Pages**
-2. Source: **Deploy from a branch**, branch `main`, folder `/ (root)`
-3. Save.
+`index.html` is the landing page, and every artifact is reachable at its own path (e.g. `https://starstuff.earth/bone-song-zine.html`).
 
-Within a minute the collection is live at **`https://stimpunks.github.io/Star-Stuff/`**, with `index.html` as the landing page and every artifact reachable at its own URL. Once it's up, set the repo's **website** field (top-right, "About") to that URL so the live version is one click from the code.
-
-To embed a piece in the WordPress site, point an `<iframe>` at its Pages URL:
+To embed a piece elsewhere — such as the WordPress site — point an `<iframe>` at its URL:
 
 ```html
-<iframe src="https://stimpunks.github.io/Star-Stuff/bone-song-zine.html"
+<iframe src="https://starstuff.earth/bone-song-zine.html"
         width="100%" height="900" style="border:none;"
         title="Bone Song — Stimpunks Zine No. 1"></iframe>
 ```
