@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Love You Down To Your Star Stuff — Stimpunks Foundation</title>
+<meta name="description" content="A cosmological argument stated as an act of love. The atoms in your body were forged inside stars that died before Earth existed — not metaphorically, literally. LYDTYSS, LYSS, LUSS, L★S, ★stuff.">
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="starstuff.css">
+<style>
+  :root {
+    --bg:        #0a0a14;
+    --card:      #0f0f2a;
+    --page:      #0d0d20;
+    --purple:    #a78bfa;
+    --pink:      #f472b6;
+    --gold:      #fbbf24;
+    --cyan:      #22d3ee;
+    --green:     #4ade80;
+    --lime:      #9dff20;
+    --white:     #f9fafb;
+    --secondary: #b8aed0;
+    --muted:     #c4b5d4;
+    --stardust:  #e2d9f3;
+    --border:    rgba(167,139,250,0.15);
+    --border-dim:rgba(167,139,250,0.08);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--white);
+    font-family: 'Atkinson Hyperlegible Next', sans-serif;
+    font-size: 1rem;
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 8%  14%, rgba(249,250,251,0.8) 0%, transparent 100%),
+      radial-gradient(1px 1px at 22% 38%, rgba(249,250,251,0.6) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 44% 9%,  rgba(251,191,36,0.9)  0%, transparent 100%),
+      radial-gradient(1px 1px at 60% 68%, rgba(249,250,251,0.7) 0%, transparent 100%),
+      radial-gradient(2px 2px at 74% 28%, rgba(249,250,251,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 84% 54%, rgba(34,211,238,0.7)  0%, transparent 100%),
+      radial-gradient(1px 1px at 90% 79%, rgba(249,250,251,0.8) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 4%  58%, rgba(249,250,251,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 34% 84%, rgba(251,191,36,0.5)  0%, transparent 100%),
+      radial-gradient(1px 1px at 54% 47%, rgba(249,250,251,0.4) 0%, transparent 100%),
+      radial-gradient(2px 2px at 18% 88%, rgba(167,139,250,0.7) 0%, transparent 100%),
+      radial-gradient(1px 1px at 68% 4%,  rgba(249,250,251,0.8) 0%, transparent 100%),
+      radial-gradient(1px 1px at 47% 62%, rgba(34,211,238,0.5)  0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 29% 19%, rgba(251,191,36,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 77% 87%, rgba(249,250,251,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 92% 43%, rgba(249,250,251,0.6) 0%, transparent 100%),
+      radial-gradient(2px 2px at 56% 23%, rgba(244,114,182,0.5) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .lyss-wrap { position: relative; z-index: 1; max-width: 820px; margin: 0 auto; padding: 0 1.5rem 5rem; }
+
+  img { max-width: 100%; height: auto; }
+  a { color: var(--cyan); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* Hero */
+  .hero { text-align: center; padding: 2.5rem 0 1.5rem; }
+  .hero-eyebrow { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; color: var(--cyan); margin-bottom: 1.25rem; }
+  .hero-title { font-size: clamp(2.4rem, 7vw, 4.4rem); font-weight: 800; line-height: 1.05; letter-spacing: -0.02em; background: linear-gradient(135deg, var(--gold) 0%, var(--pink) 50%, var(--cyan) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 1.25rem; }
+  .hero-shorthands { font-size: 1.05rem; color: var(--secondary); line-height: 1.95; }
+  .hero-shorthands strong { color: var(--gold); font-weight: 700; }
+
+  /* Figures */
+  .figure { margin: 2rem auto; text-align: center; }
+  .figure img { border-radius: 12px; border: 1px solid var(--border); }
+  .figure--sn { max-width: 400px; }
+  .figure--mosho { max-width: 560px; }
+  figcaption, .media-caption { font-size: 0.8125rem; color: var(--muted); line-height: 1.7; margin-top: 0.8rem; font-style: italic; }
+
+  .tagline { text-align: center; font-style: italic; font-size: 1.15rem; color: var(--stardust); max-width: 660px; margin: 1.5rem auto; line-height: 1.6; }
+  .tagline em { color: var(--white); }
+
+  /* Headings & text */
+  h2.section { font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 800; letter-spacing: -0.01em; line-height: 1.2; margin: 3.5rem 0 1.25rem; color: var(--white); scroll-margin-top: 1.5rem; }
+  h3.sub { font-size: 1.3rem; font-weight: 700; margin: 2.5rem 0 1rem; color: var(--white); scroll-margin-top: 1.5rem; }
+  h3.sub em { color: var(--purple); font-style: italic; }
+  p { margin-bottom: 1.25rem; color: var(--secondary); }
+  p strong { color: var(--white); font-weight: 700; }
+  p em { color: var(--white); font-style: italic; }
+  .lead { font-size: 1.15rem; color: var(--white); }
+  hr.sep { border: none; border-top: 1px solid var(--border); margin: 2.5rem 0; }
+
+  /* Table of contents */
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 1.5rem 1.75rem; margin: 2rem 0; }
+  .toc h2 { font-size: 0.8125rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; font-weight: 700; }
+  .toc ul { list-style: none; margin: 0; padding: 0; }
+  .toc > ul > li { margin-bottom: 0.45rem; }
+  .toc ul ul { padding-left: 1.25rem; margin-top: 0.35rem; }
+  .toc a { color: var(--secondary); }
+
+  /* Cross-reference callouts */
+  .xref { background: rgba(167,139,250,0.06); border: 1px solid var(--border); border-radius: 8px; padding: 0.9rem 1.1rem; margin: 1rem 0; font-size: 0.95rem; color: var(--secondary); }
+  .xref a { font-weight: 700; }
+
+  /* Shorthand cards */
+  .sh-card { background: var(--card); border-left: 3px solid var(--sh, var(--purple)); border-radius: 0 8px 8px 0; padding: 1.1rem 1.25rem; margin: 1rem 0; }
+  .sh-term { font-weight: 800; font-size: 1.15rem; color: var(--sh, var(--purple)); }
+  .sh-gloss { font-style: italic; color: var(--muted); margin-left: 0.5rem; }
+  .sh-note { display: block; margin-top: 0.4rem; color: var(--secondary); }
+
+  /* Concept cards (Resonance / Belonging) */
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+  .concept-card { background: var(--card); border-left: 3px solid var(--cc, var(--purple)); border-radius: 0 8px 8px 0; padding: 1.25rem; }
+  .concept-eyebrow { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: var(--cc, var(--purple)); margin-bottom: 0.5rem; }
+  .concept-title { font-size: 1.1rem; font-weight: 700; color: var(--white); margin-bottom: 0.4rem; line-height: 1.3; }
+  .concept-tag { font-style: italic; color: var(--muted); margin-bottom: 0.6rem; font-size: 0.95rem; }
+  .concept-body { color: var(--secondary); font-size: 0.95rem; line-height: 1.7; }
+  .stack .concept-card { margin-bottom: 1rem; }
+
+  /* Quotes */
+  .quote { border-left: 3px solid var(--purple); background: var(--card); border-radius: 0 8px 8px 0; padding: 1.25rem 1.5rem; margin: 1.5rem 0; }
+  .quote p { color: var(--stardust); margin-bottom: 0.6rem; }
+  .quote p:last-child { margin-bottom: 0; }
+  .quote .src { font-size: 0.8125rem; color: var(--muted); font-weight: 700; letter-spacing: 0.05em; }
+  .quote .src a { color: var(--muted); }
+
+  .pullquote { text-align: center; margin: 2.5rem auto; max-width: 680px; }
+  .pullquote p { font-size: clamp(1.3rem, 3vw, 1.7rem); font-style: italic; font-weight: 300; color: var(--white); line-height: 1.45; margin-bottom: 0.75rem; }
+  .pullquote cite { font-style: normal; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; font-size: 0.8125rem; color: var(--gold); }
+  .pullquote cite a { color: var(--gold); }
+
+  /* Video embeds */
+  .video { position: relative; width: 100%; margin: 1.5rem 0 0.5rem; border-radius: 8px; overflow: hidden; border: 1px solid var(--border); background: #000; }
+  .video--4x3 { aspect-ratio: 4 / 3; }
+  .video--short { aspect-ratio: 9 / 16; max-width: 340px; margin-left: auto; margin-right: auto; }
+  .video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+  /* Verse */
+  .verse { background: var(--page); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem 1.75rem; margin: 1.75rem 0; font-style: italic; color: var(--stardust); line-height: 1.9; }
+
+  /* Aphorism lists */
+  .aphorisms .cat { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin: 1.75rem 0 0.75rem; }
+  ul.star-list { list-style: none; padding: 0; margin: 0 0 1rem; }
+  ul.star-list li { position: relative; padding-left: 1.6rem; margin-bottom: 0.6rem; color: var(--secondary); line-height: 1.6; }
+  ul.star-list li::before { content: '★'; position: absolute; left: 0; top: 0.05rem; color: var(--marker, var(--gold)); font-size: 0.8rem; }
+
+  /* Plain lists */
+  ul.list { margin: 0 0 1.25rem 1.25rem; }
+  ul.list li { margin-bottom: 0.5rem; color: var(--secondary); line-height: 1.6; }
+  ul.list li em { color: var(--white); font-style: italic; }
+
+  /* Closing + footer */
+  .closing { text-align: center; margin: 3.5rem 0 1rem; }
+  .closing p { color: var(--secondary); }
+  .site-footer { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+  .footer-left { font-size: 0.875rem; color: var(--secondary); line-height: 1.7; }
+  .footer-ls { font-size: 2rem; font-weight: 700; color: var(--gold); letter-spacing: 0.05em; text-shadow: 0 0 24px rgba(251,191,36,0.4); }
+
+  .twinkle { position: fixed; width: 3px; height: 3px; background: var(--gold); border-radius: 50%; box-shadow: 0 0 6px var(--gold); animation: twinkle 3s ease-in-out infinite; pointer-events: none; z-index: 0; }
+  @keyframes twinkle { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.15; transform: scale(0.3); } }
+
+  @media (max-width: 600px) {
+    .lyss-wrap { padding: 0 1.25rem 3.5rem; }
+    .site-footer { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<div class="twinkle" style="top:6%;left:10%;animation-delay:-0.4s"></div>
+<div class="twinkle" style="top:15%;left:85%;animation-delay:-1.3s;background:var(--cyan);box-shadow:0 0 6px var(--cyan)"></div>
+<div class="twinkle" style="top:48%;left:3%;animation-delay:-2.1s"></div>
+<div class="twinkle" style="top:70%;left:95%;animation-delay:-0.9s;background:var(--pink);box-shadow:0 0 6px var(--pink)"></div>
+<div class="twinkle" style="top:88%;left:25%;animation-delay:-1.7s"></div>
+
+<div class="lyss-wrap">
+
+  <nav class="ss-nav" style="--nav-accent:#fbbf24;" aria-label="Star Stuff collection">
+    <a class="ss-nav-home" href="index.html"><span class="ss-star" aria-hidden="true">★</span> stuff</a>
+    <span class="ss-nav-links">
+      <a class="ss-nav-next" href="manifesto.html"><span class="ss-nav-label">Manifesto</span> <span class="ss-nav-arrow" aria-hidden="true">›</span></a>
+    </span>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <p class="hero-eyebrow">Stimpunks Foundation</p>
+    <h1 class="hero-title">Love You Down To Your Star Stuff</h1>
+    <p class="hero-shorthands">
+      Love You Down to Your Star Stuff<br>
+      LYSS (Love You, Star Stuff)<br>
+      <strong>L★S</strong><br>
+      ★stuff<br>
+      You were ★stuff all along.
+    </p>
+  </header>
+
+  <figure class="figure figure--sn">
+    <a href="https://stimpunks.org/philosophy/were-a-double-rainbow-all-the-way/">
+      <img src="35407642044_c29b4f2bd7_3k.jpg" alt="SN 1006: a composite image of a supernova remnant resembling a massive round red-white-and-blue firework against a densely starry sky. A colorful nebula with an electric blue hue and red and yellow highlights fills the center. Recent observations reveal the liberation of elements such as iron once locked inside the star.">
+    </a>
+    <figcaption>
+      <a href="https://chandra.si.edu/photo/2008/sn1006c/">SN 1006: Liberating Star Stuff</a> :: <a href="https://chandra.si.edu/photo/2008/sn1006c/">Chandra :: Photo Album :: SN 1006 :: July 01, 2008</a><br><br>
+      The Cosmos is within us. We are made of star-stuff. We are a way for the Universe to know itself — <em>in every color, key, and frequency of neurodiversity.</em>
+    </figcaption>
+  </figure>
+
+  <!-- TABLE OF CONTENTS -->
+  <nav class="toc" aria-label="Table of contents">
+    <h2>Table of Contents</h2>
+    <ul>
+      <li><a href="#h-the-shorthands">The Shorthands</a></li>
+      <li><a href="#h-the-inspirations">The Inspirations</a></li>
+      <li><a href="#h-we-are-star-stuff-being-autistic-ethodiversity-and-cosmic-connection">We Are Star Stuff: Being Autistic, Ethodiversity and Cosmic Connection</a></li>
+      <li><a href="#h-resonance">Resonance</a></li>
+      <li><a href="#h-belonging-authenticity-amp-radical-inclusivity">Belonging, Authenticity &amp; Radical Inclusivity</a></li>
+      <li><a href="#h-related-concepts">Related Concepts</a>
+        <ul>
+          <li><a href="#h-tat-tvam-asi-advaita-vedanta">Tat tvam asi — Advaita Vedanta</a></li>
+          <li><a href="#h-esho-funi-buddhism">Esho funi — Buddhism</a></li>
+          <li><a href="#h-waḥdat-al-wujud-sufism">Waḥdat al-wujūd — Sufism</a></li>
+          <li><a href="#h-interbeing-thich-nhat-hanh">Interbeing — Thich Nhat Hanh</a></li>
+          <li><a href="#h-brahmacharya-and-the-animacy-of-matter-indigenous-cosmologies">Brahmacharya and the Animacy of Matter — Indigenous Cosmologies</a></li>
+          <li><a href="#h-song-of-myself-walt-whitman">Song of Myself — Walt Whitman</a></li>
+          <li><a href="#h-transcendental-empiricism-deleuze">Transcendental Empiricism — Deleuze</a></li>
+          <li><a href="#h-spinoza-s-pantheism">Spinoza's Pantheism</a></li>
+          <li><a href="#h-a-note-on-this-constellation">A Note on This Constellation</a></li>
+        </ul>
+      </li>
+      <li><a href="#h-the-cosmos-is-within-us">The Cosmos is within us.</a></li>
+      <li><a href="#h-crystal-under-pressure">Crystal Under Pressure</a></li>
+      <li><a href="#h-what-lydtyss-is-not">What LYDTYSS Is Not</a></li>
+      <li><a href="#h-what-lydtyss-is">What LYDTYSS Is</a></li>
+      <li><a href="#h-reflection">Reflection</a></li>
+      <li><a href="#h-community-voices">Community Voices</a></li>
+      <li><a href="#h-l-s-playlist">L★S Playlist</a></li>
+    </ul>
+  </nav>
+
+  <!-- THE SHORTHANDS -->
+  <h2 class="section" id="h-the-shorthands">The Shorthands</h2>
+  <p>LYDTYSS is the full phrase — <em>Love You Down To Your Star Stuff</em> — and it carries everything. But it's a mouthful, and language that lives in community needs forms that fit in a text message, a sticker, a caption, a moment. These are the shorthands we use and what each one carries.</p>
+
+  <div class="sh-card" style="--sh:#a78bfa;">
+    <span class="sh-term">LYDTYSS</span><span class="sh-gloss">Love You Down To Your Star Stuff</span>
+    <span class="sh-note">The source. Use it when you want the full weight of the phrase — in writing, in titles, in contexts where the whole arc matters. It's cumbersome on purpose in the same way a full name is: it holds the complete thing.</span>
+  </div>
+  <div class="sh-card" style="--sh:#f472b6;">
+    <span class="sh-term">LYSS</span><span class="sh-gloss">Love You, Star Stuff</span>
+    <span class="sh-note">The warmest shorthand. Pronounceable — it sounds like a name, like a term of endearment, which is exactly what it is. Use it the way you'd use <em>love you</em> — quick, direct, meant. The comma does quiet work: it addresses you as star stuff directly, not just describes you as containing it.</span>
+  </div>
+  <div class="sh-card" style="--sh:#4ade80;">
+    <span class="sh-term">LUSS</span><span class="sh-gloss">Love U Star Stuff</span>
+    <span class="sh-note">The punk version. The dropped vowel is deliberate — it leans into informal, texty, a little defiant. Where LYSS is tender, LUSS has an edge. Both are correct. Both are true.</span>
+  </div>
+  <div class="sh-card" style="--sh:#fbbf24;">
+    <span class="sh-term">L★S</span><span class="sh-gloss">Love ★ Star Stuff</span>
+    <span class="sh-note">The most visual shorthand. The star does double duty — it is both the symbol of what we're made of and the punctuation that holds love and star stuff together. Works in print, on stickers, as a hashtag, as a signature. The star is load-bearing.</span>
+  </div>
+  <div class="sh-card" style="--sh:#22d3ee;">
+    <span class="sh-term">★stuff</span><span class="sh-gloss">Star Stuff</span>
+    <span class="sh-note">The noun on its own. Use it as an identity, a descriptor, a reclamation. <em>We are ★stuff.</em> It carries the Sagan lineage — the specific weight of that phrase — while making it communal and punk. When you see ★stuff, you are seeing the raw material named directly, without the love clause, because sometimes you just need to name what you are.</span>
+  </div>
+
+  <p>Which register you reach for depends on the moment. LYSS for tenderness. LUSS for solidarity with an edge. L★S when the visual matters. ★stuff when you're naming the thing itself. LYDTYSS when you need the whole phrase to do its full work.</p>
+
+  <div class="xref">Read the <a href="manifesto.html"><strong>Star Stuff Manifesto</strong></a> — the full philosophical and cosmological grounding for LYDTYSS, LYSS, LUSS, L★S, and ★stuff.</div>
+  <div class="xref">Explore the <a href="index.html"><strong>★stuff Playground</strong></a> — zines, broadsides, field guides, and typographic artifacts exploring piezoelectric bones, stellar nucleosynthesis, and the neurodiversity paradigm. Includes the Bone Song prose poem, the Shorthand Evolution print, a Neurodivergent Constellation Field Guide, and an open community reader.</div>
+  <div class="xref">Read <a href="shorthand-evolution.html"><strong>Shorthand Evolution: LYDTYSS → L★S</strong></a> — how one phrase compressed itself into a glyph, with etymologies for all five shorthands and what each compression preserved and let go.</div>
+
+  <!-- THE INSPIRATIONS -->
+  <h2 class="section" id="h-the-inspirations">The Inspirations</h2>
+
+  <div class="pullquote">
+    <p>"The Cosmos is within us. We are made of star-stuff. We are a way for the Universe to know itself."</p>
+    <cite>Carl Sagan</cite>
+  </div>
+
+  <div class="video video--4x3">
+    <iframe src="https://www.youtube.com/embed/tLPkpBN6bEI" title="Carl Sagan – Cosmos: Stars – We Are Their Children" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  </div>
+  <p class="media-caption"><a href="https://www.youtube.com/watch?v=tLPkpBN6bEI">Carl Sagan – Cosmos: Stars – We Are Their Children (YouTube)</a></p>
+
+  <div class="video video--4x3">
+    <iframe src="https://www.youtube.com/embed/LNqqFhFa4dI" title="Carl Sagan: We are star stuff" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  </div>
+  <p class="media-caption"><a href="https://www.youtube.com/watch?v=LNqqFhFa4dI">Carl Sagan: We are star stuff (YouTube)</a></p>
+
+  <div class="quote">
+    <p>We are star stuff. Harvesting starlight. Our lives, our past, and our future are tied to the sun, the moon, and the stars.</p>
+    <p class="src"><a href="https://www.youtube.com/watch?v=LNqqFhFa4dI">Carl Sagan: We are star stuff — YouTube</a></p>
+  </div>
+
+  <div class="quote">
+    <p>My physical body is your physical body, and just as the sun and stars are present in you, they are also present in me. You are not outside of me and I am not outside of you. You are more than just my environment. You are nothing less than myself.</p>
+    <p class="src"><a href="https://emergencemagazine.org/essay/ten-love-letters-to-the-earth/">Ten Love Letters to the Earth – Thich Nhat Hanh</a></p>
+  </div>
+
+  <div class="quote">
+    <p>…we are all made of stars</p>
+    <p class="src"><a href="https://emergencemagazine.org/essay/ten-love-letters-to-the-earth/">Ten Love Letters to the Earth – Thich Nhat Hanh</a></p>
+  </div>
+
+  <div class="quote">
+    <p>The amazing thing is that every atom in your body came from a star that exploded. And the atoms in your left hand probably came from a different star than your right hand. It really is the most poetic thing I know about physics: you are all stardust.</p>
+    <p class="src">Lawrence Krauss</p>
+  </div>
+
+  <div class="video video--short">
+    <iframe src="https://www.youtube.com/embed/yX4Y5rSz2S8" title="Lawrence Krauss: You Are All Stardust" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  </div>
+  <p class="media-caption"><a href="https://www.youtube.com/shorts/yX4Y5rSz2S8">Lawrence Krauss: You Are All Stardust (YouTube)</a></p>
+
+  <div class="quote">
+    <p>The atoms of our bodies are traceable to stars that manufactured them in their cores and exploded these enriched ingredients across our galaxy, billions of years ago. For this reason, we are biologically connected to every other living thing in the world. We are chemically connected to all molecules on Earth. And we are atomically connected to all atoms in the universe. We are not figuratively, but literally stardust.</p>
+    <p class="src">Neil deGrasse Tyson</p>
+  </div>
+
+  <div class="video video--short">
+    <iframe src="https://www.youtube.com/embed/qtw4cy5eSCk" title="Neil deGrasse Tyson: We're Literally Stardust from the Universe" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  </div>
+  <p class="media-caption"><a href="https://www.youtube.com/shorts/qtw4cy5eSCk">Neil deGrasse Tyson: We're Literally Stardust from the Universe (YouTube)</a></p>
+
+  <div class="quote">
+    <p>There is stardust in your veins. We are literally, ultimately children of the stars.</p>
+    <p class="src">Jocelyn Bell Burnell</p>
+  </div>
+
+  <div class="quote">
+    <p>We are stardust, we are golden.</p>
+    <p class="src">Joni Mitchell, "Woodstock," 1969</p>
+  </div>
+
+  <div class="pullquote">
+    <p>There are many different ways of being human.</p>
+    <cite><a href="https://www.youtube.com/watch?v=LNqqFhFa4dI">Carl Sagan: We are star stuff</a></cite>
+  </div>
+
+  <!-- WE ARE STAR STUFF -->
+  <h2 class="section" id="h-we-are-star-stuff-being-autistic-ethodiversity-and-cosmic-connection">We Are Star Stuff: Being Autistic, Ethodiversity and Cosmic Connection</h2>
+  <p>Some phrases arrive as slogans. This one arrived as a realization.</p>
+  <p>The science has been settled for decades: we are, literally, made of star stuff. The six elements essential to life are woven through the Milky Way. A survey of 150,000 stars confirmed that humans and the galaxy share around 97% of the same kinds of atoms. <strong>We are not like the cosmos. We are continuous with it.</strong></p>
+  <p>For neurodivergent and disabled people — people who have spent their lives being told they are too much, not enough, wrong in some fundamental way — that continuity matters differently. <strong>The universe did not make one configuration of matter and call it correct. It made billions of years of variation, explosion, collapse, and emergence.</strong> Every element heavier than hydrogen was forged in violence and became something new. You are part of that lineage.</p>
+  <p>LYDTYSS begins here. Not as comfort, but as cosmological argument: the problem was never you.</p>
+  <p>The following reflection comes from Helen, Co-Creative Director at Stimpunks. Helen wrote it in direct response to first hearing the phrase "Love You Down To Your Star Stuff" — what it opened up, what it confirmed, what it made newly speakable about being Autistic and made of the same matter as everything else.</p>
+
+  <div class="quote">
+    <p>I find it genuinely awe-inspiring to know that the atoms that make up your body, the oxygen in your lungs, the calcium in your bones, the iron in your blood were forged inside stars that died before our planet even existed. Not metaphorically, we are actually, literally, <a href="https://www.amnh.org/exhibitions/permanent/the-universe/stars/a-spectacular-stellar-finale/we-are-stardust">made of stars</a>!</p>
+    <p>A 2017 survey of 150,000 stars confirmed that humans and our galaxy share around 97% of the same kinds of atoms, and that the six elements essential to life — carbon, hydrogen, nitrogen, oxygen, phosphorus, and sulphur — are woven right through the Milky Way (<a href="https://www.space.com/35276-humans-made-of-stardust-galaxy-life-elements.html">Howell, 2017</a>). We are a living part of the cosmos.</p>
+    <p>I have been thinking about this a lot, and what it may mean to us as Autistic people, and it is something that is evolving in conversations within the <a href="https://culturalautismstudiesatyale.space/">CASY Autistic Physics group</a> and my recent collaborative work with <a href="https://stimpunks.org/star-stuff/">Stimpunks</a>. There is something about being made of stardust that resonates far deeper than a scientific fact for me.</p>
+    <p>As an Autistic person, I have always felt that the boundaries between myself and the world are more porous than I was told they should be. Everything feels entangled, I am deeply influenced by my environment in ways that go beyond what neuronormative frameworks tend to account for. <a href="https://autisticrealms.com/monotropism-spiral-time-and-the-rhizome-of-memories/">Time,</a> my past and present merge and move together; <a href="https://autisticrealms.com/mossy-minds-monotropism/">my pull towards moss and mushrooms</a>, and my interest in water, are more than a 'like' or form of regulation or sensory relief, they feel like I am becoming more attuned to something deeper and more essential, something I can only describe as parts of my soul recognising what they actually belong to.</p>
+    <p>The elements in your body right now came into being through some of the most violent events in the universe. The iron in your blood, the calcium in your bones, the oxygen in every breath, were forged in the cores of massive stars and released in supernovae: entire stars compressing their whole lives into a single catastrophic release. In that rupture, what had been locked inside was scattered outward, making things possible that could never have existed before.</p>
+    <p class="src"><a href="https://morerealms.com/we-are-star-stuff-being-autistic-ethodiversity-and-cosmic-connection/">We Are Star Stuff: Being Autistic, Ethodiversity and Cosmic Connection | More Realms</a></p>
+  </div>
+
+  <!-- RESONANCE -->
+  <h2 class="section" id="h-resonance">Resonance</h2>
+  <p>Helen ended with an image of rupture and release: entire stars compressing their whole lives into a single catastrophic event, scattering outward what had been locked inside, making things possible that could never have existed before. She was describing supernovae. <strong>She was also describing what it feels like to finally hear something that names you correctly.</strong></p>
+  <p>That is what resonance is. Not agreement with an idea, but recognition at a level below argument. The cards below trace why "Love You Down To Your Star Stuff" produces that recognition — in neurodivergent people especially, in people who have felt alien their whole lives, in anyone who has been told that the way they move through the world is the problem.</p>
+
+  <div class="card-grid">
+    <div class="concept-card" style="--cc:#22d3ee;">
+      <div class="concept-eyebrow">Cosmology</div>
+      <div class="concept-title">No hierarchy of matter</div>
+      <div class="concept-tag">The cosmos doesn't rank configurations of itself.</div>
+      <div class="concept-body">Carbon in a star core and carbon in a human brain are the same carbon. There is no "wrong kind" of matter in the universe — no deficit, no pathology at the atomic level. For someone measured and found lacking their whole life, this is radically leveling.</div>
+    </div>
+    <div class="concept-card" style="--cc:#a78bfa;">
+      <div class="concept-eyebrow">Language</div>
+      <div class="concept-title">"Down to" does everything</div>
+      <div class="concept-tag">Love that reaches through every layer.</div>
+      <div class="concept-body">"Down to" doesn't say you contain star stuff — it says love travels all the way through diagnosis, difference, difficulty, and keeps going to the atomic substrate. That's not conditional love. It cannot be cancelled by anything on the surface.</div>
+    </div>
+    <div class="concept-card" style="--cc:#f472b6;">
+      <div class="concept-eyebrow">Identity</div>
+      <div class="concept-title">Alien → cosmic</div>
+      <div class="concept-tag">Feels like an outsider? You're looking the wrong direction.</div>
+      <div class="concept-body">Many neurodivergent people describe feeling alien their whole lives. LYDTYSS doesn't correct that feeling — it elevates it. The distance isn't between you and other humans. It's between all of us and the stars we came from. That reframe shifts everything.</div>
+    </div>
+    <div class="concept-card" style="--cc:#fbbf24;">
+      <div class="concept-eyebrow">Narrative</div>
+      <div class="concept-title">Reclamatory cosmology</div>
+      <div class="concept-tag">Sagan's framing as counter-narrative to deficit.</div>
+      <div class="concept-body">"Star stuff" carries Sagan's specific argument: not that humans are small, but that we are continuous with the universe. For people who have internalized a deficit story, this is a direct rewrite. Not a broken version of normal. A particular arrangement of the cosmos looking at itself.</div>
+    </div>
+    <div class="concept-card" style="--cc:#4ade80;">
+      <div class="concept-eyebrow">Philosophy</div>
+      <div class="concept-title">True pluralism</div>
+      <div class="concept-tag">No configuration of star stuff is more star stuff.</div>
+      <div class="concept-body">The phrase doesn't describe a type — it describes a shared origin that holds every variation inside it equally. There's no bell curve in stellar nucleosynthesis. Every possible mind, body, and way of being emerges from the same substrate. The universality is the point.</div>
+    </div>
+    <div class="concept-card" style="--cc:#22d3ee;">
+      <div class="concept-eyebrow">Voice</div>
+      <div class="concept-title">Intimate, not institutional</div>
+      <div class="concept-tag">"Love you" — not an affirmation program.</div>
+      <div class="concept-body">It doesn't say "we affirm your neurodivergent identity" or "your differences are a gift." Just: love you. Down to your most fundamental level. That simplicity can reach people who have built defenses against therapeutic language, because it doesn't sound like a program. It sounds like someone means it.</div>
+    </div>
+  </div>
+  <p class="media-caption" style="text-align:center;">L★S · Stimpunks Foundation · <a href="https://stimpunks.org/star-stuff/">stimpunks.org/star-stuff</a></p>
+
+  <!-- BELONGING -->
+  <h2 class="section" id="h-belonging-authenticity-amp-radical-inclusivity">Belonging, Authenticity &amp; Radical Inclusivity</h2>
+  <p>LYDTYSS is not just a phrase about cosmology. It is a signal — one that tells you this is a place where you do not have to perform your humanity to receive love. Belonging, authenticity, and radical inclusivity are not additions to the star-stuff idea. They are what it means in practice.</p>
+
+  <div class="stack">
+    <div class="concept-card" style="--cc:#a78bfa;">
+      <div class="concept-eyebrow">Belonging</div>
+      <div class="concept-title">A signal that you are home</div>
+      <div class="concept-tag">Belonging is wholeness. It is the experience of being at home in ourselves and in community.</div>
+      <div class="concept-body">When someone who has spent their life feeling alien — too much, too different, not legible to the world around them — hears "Love You Down To Your Star Stuff," something specific happens. The phrase does not ask them to become more acceptable. It says: you are already loved, at the level of your matter. That is a belonging signal. It says: <em>this is a place where you are personally accepted, respected, and valued</em> — not despite your difference, but without condition. <a href="https://stimpunks.org/glossary/belonging/">Belonging at Stimpunks</a> is not a reward for fitting in. It is the starting point.</div>
+    </div>
+    <div class="concept-card" style="--cc:#9dff20;">
+      <div class="concept-eyebrow">Authenticity</div>
+      <div class="concept-title">No masking required — love goes all the way down</div>
+      <div class="concept-tag">Authenticity is our purest freedom. Being true to yourself is not optional — it is the foundation of liberation.</div>
+      <div class="concept-body">For neurodivergent and disabled people, inauthenticity is often a survival strategy. Masking — suppressing stims, flattening emotions, performing normality — is expensive. It consumes cognitive and emotional resources that belong to the person doing the work of being alive. LYDTYSS short-circuits that logic entirely. Love does not travel to the surface performance. It goes <em>down</em> — past diagnosis, past behavior, past legibility — to the atomic substrate. That is what <a href="https://stimpunks.org/philosophy/authenticity-is-our-purest-freedom/">authenticity as our purest freedom</a> means in practice: you do not have to earn it. You already are it.</div>
+    </div>
+    <div class="concept-card" style="--cc:#22d3ee;">
+      <div class="concept-eyebrow">Radical Inclusivity</div>
+      <div class="concept-title">Inclusion grounded in the sole qualification of being</div>
+      <div class="concept-tag">Radical inclusion goes beyond tick-box accommodations. It dismantles systemic barriers and creates neuroqueer spaces where everyone has freedom to embrace cognitive and somatic liberty.</div>
+      <div class="concept-body">Inclusion safety — the first stage of psychological safety — is species-based acceptance: if you have flesh and blood, we accept you. LYDTYSS goes even further. It grounds that acceptance not just in biological fact but in cosmological fact. You are not merely tolerated because you exist. You are <em>loved</em>, because at the level of your matter, you are made of the same stuff as everything else in the universe. That is <a href="https://stimpunks.org/glossary/radical-inclusivity/">radical inclusivity</a> as a cosmological argument: there is no configuration of star stuff that is outside the circle. No mind, no body, no neurotype. The universe did not make exceptions. Neither do we.</div>
+    </div>
+  </div>
+
+  <!-- RELATED CONCEPTS -->
+  <h2 class="section" id="h-related-concepts">Related Concepts</h2>
+  <p>The star-stuff insight — that we are made of the same matter as everything else in the universe, that there is no hierarchy of configurations, that love can reach all the way down to the atomic substrate — is not new. It has arrived independently across cultures, traditions, and centuries, in different vocabularies and for different purposes. What follows is not a claim that these traditions say the same thing. It is an acknowledgment that LYDTYSS is in conversation with something very old.</p>
+
+  <h3 class="sub" id="h-tat-tvam-asi-advaita-vedanta"><em>Tat tvam asi</em> — Advaita Vedanta</h3>
+  <p><em>That thou art.</em> One of the mahāvākyas — the great sayings — of the Upanishads. The teaching is that the self (<em>atman</em>) and the ground of all being (<em>Brahman</em>) are not separate. You are not a fragment of the universe looking at it from outside. You are it, expressing itself in this particular form.</p>
+  <p>Advaita Vedanta, the non-dual school of Hindu philosophy, holds that the infinite diversity of existence is rooted in a single reality — and that each thing, living or not, is a unique manifestation of that one reality. Unique and universal at the same time. No configuration is more real than another. No configuration is outside the whole.</p>
+  <p>The parallel with LYDTYSS: love that goes all the way down to your star stuff is love that reaches the level where you and the cosmos are not separate. It is not love despite your particularity. It is love <em>through</em> your particularity to the universal substrate you share with everything.</p>
+
+  <h3 class="sub" id="h-esho-funi-buddhism"><em>Esho funi</em> — Buddhism</h3>
+  <p><em>Two but not two.</em> The Buddhist principle that life and its environment are inseparable — not identical, but not separate either. The self does not end at the skin. The environment is not something outside the self. At a primal level of existence, there is no boundary between what you are and what surrounds you.</p>
+  <p>This is not a metaphor in Buddhist teaching. It is a description of how existence actually works, obscured by the conventional perception of separation.</p>
+  <p>For neurodivergent people who have always experienced the world as porous — who feel the environment deeply, whose boundaries between self and surroundings are less defended than neurotypical frameworks expect — <em>esho funi</em> offers a framework in which that porousness is not a deficit. It is a more accurate perception of how things are.</p>
+
+  <h3 class="sub" id="h-waḥdat-al-wujud-sufism"><em>Waḥdat al-wujūd</em> — Sufism</h3>
+  <p><em>Unity of Being.</em> The teaching of the 13th century Sufi mystic Ibn Arabi: all existence is a single reality, and apparent multiplicity is the one reality appearing in different forms. The many are not separate from the One. They are the One, taking on particular shapes.</p>
+  <p>Rumi's reed flute — cut from the reed bed, crying for reunion — is one of the most enduring images of this tradition. The longing is not pathology. It is the memory of original unity. The feeling of being cut off, of not belonging, of having come from somewhere else — in this reading, that feeling is not wrong. It is the accurate perception of a genuine separation, and the longing for return is sacred.</p>
+  <p>For people who have spent their lives feeling alien, <em>waḥdat al-wujūd</em> offers a reframe: the alienation is real, but it points toward something, not away from it. You were not wrong to feel the distance. The distance is the distance from the reed bed. LYDTYSS is one way of saying: you were never actually cut off. The universe is still in you. You are still in it.</p>
+
+  <h3 class="sub" id="h-interbeing-thich-nhat-hanh"><em>Interbeing</em> — Thich Nhat Hanh</h3>
+  <p>Thich Nhat Hanh's term for the insight that nothing exists independently — that everything contains everything else, that to look deeply into anything is to find the whole cosmos inside it. A flower contains the cloud that rained on it, the sun that warmed it, the soil that held it, the person who will one day look at it.</p>
+  <p><em>Interbeing</em> is already present on this page in Thich Nhat Hanh's own words: <em>"My physical body is your physical body... You are nothing less than myself."</em> But the concept is worth naming directly: this is not sentiment. It is a systematic account of reality in which the boundaries between self and other, between one being and another, are real but not absolute — permeable at depth.</p>
+  <p>The star-stuff argument is interbeing stated in the language of astrophysics.</p>
+
+  <h3 class="sub" id="h-brahmacharya-and-the-animacy-of-matter-indigenous-cosmologies"><em>Brahmacharya</em> and the Animacy of Matter — Indigenous Cosmologies</h3>
+  <p>Many Indigenous traditions hold that humans are not made <em>from</em> the land, the sky, the stars — they are made <em>of</em> them, in an ongoing relational sense. Not past tense. Not metaphor. The elements do not stop being in relationship with their origins when they become part of a body.</p>
+  <p>Robin Wall Kimmerer, Potawatomi botanist and author of <em>Braiding Sweetgrass</em>, writes of the grammar of animacy — Indigenous languages that treat the living world not as <em>it</em> but as <em>he</em>, <em>she</em>, <em>they</em>. To name something animate is to acknowledge it as a being in relationship with you, not a resource or a backdrop. When that grammar is applied to the elements in your body, the star-stuff argument becomes something warmer and more mutual: the cosmos is not just what you are made of. It is who you are in relationship with.</p>
+
+  <h3 class="sub" id="h-song-of-myself-walt-whitman"><em>Song of Myself</em> — Walt Whitman</h3>
+  <p><em>I am large, I contain multitudes.</em></p>
+  <p>Whitman was writing in a tradition shaped by the Upanishads, filtered through Emerson's transcendentalism, and expressed in the most expansive poetic voice American literature had produced. <em>Song of Myself</em> is a sustained argument that the self is not a fixed, bounded, singular thing — that it contains contradiction, plurality, the whole of humanity, the whole of nature.</p>
+  <p>For neurodivergent people who have been told their multiplicity is a disorder, their contradictions are dysfunction, their way of being too large for the rooms they're given — Whitman's embrace of largeness as the nature of the self, not a deviation from it, is kin to what LYDTYSS is doing. You do not need to resolve your contradictions to deserve love. You are large. You contain multitudes. You are ★stuff.</p>
+
+  <h3 class="sub" id="h-transcendental-empiricism-deleuze"><em>Transcendental Empiricism</em> — Deleuze</h3>
+  <p>Deleuze's transcendental empiricism holds that experience is not filtered through pre-given categories — not sorted and stabilised before it reaches us — but encountered directly, in its raw difference and intensity. Where Kant asked what makes experience possible, Deleuze asked what experience actually <em>is</em> before it gets normalised. The answer: difference, variation, becoming. Not objects with fixed identities, but forces in flux.</p>
+  <p>From this flows a constellation of concepts that Autistic thinkers have found genuinely resonant. The <strong>rhizome</strong> — as opposed to the root or the tree — is a model of connection with no fixed centre, no hierarchy, no single origin point. It spreads laterally, unexpectedly, making connections between heterogeneous things. <strong>The fold</strong> suggests that interiority is not sealed off from exteriority but continuous with it, always turning inside out, always folding deeper. The <strong>line of flight</strong> is a rupture in a fixed system — a movement that escapes the structures meant to contain it. Not destruction, but becoming something the structure couldn't predict.</p>
+  <p>Helen Edgar has spent years exploring why these concepts resonate so specifically with neurodivergent experience. Her work suggests that Deleuzean philosophy does not merely describe neurodivergent minds from the outside — it maps the territory from within. A monotropic person's attention does not move through a tree-like hierarchy of priorities; it spreads rhizomatically, following the pull of a particular interest tunnel through unexpected connections. The fold describes what Helen calls the infinite nature of the bodymind: always a deeper cavern, always more interior to explore. The line of flight is what neuroqueering actually does — a departure from neuronormative structure that is not a failure to conform, but an opening into something new.</p>
+  <p>The connection to LYDTYSS is structural, not decorative. Transcendental empiricism refuses the idea that there is one correct way to process the world. Difference is not a deviation from a norm — it <em>is</em> what exists, at every level of experience. The DSM assumes a tree: a single structure of typical development, from which some people branch incorrectly. Deleuze assumes a rhizome: no trunk, no correct branch, just the spread of actual experience in its heterogeneous reality. LYDTYSS makes the same move. The universe doesn't produce one kind of star, one kind of mind, one kind of knowing. It produces variation. You are one of the variations. You are loved all the way down to that level.</p>
+  <p>For neurodivergent people who have found the rhizome, the fold, and the line of flight before they found the language for them — who have always known their attention moves differently, their time feels differently, their interiors have more caverns than the map shows — Deleuze offers philosophical scaffolding for something already lived.</p>
+  <p><em>The fold is not only a philosophical concept here. It is also the physics of the body described in the <a href="#h-crystal-under-pressure">Crystal Under Pressure</a> section below — piezoelectric bone is literally folded crystalline matter that transduces exterior pressure into interior charge. The boundary between outside force and inside response is not a wall. It is a fold. Deleuze's bodymind and Yasuda's bone are the same argument in different vocabularies: the cosmos outside and the body inside are not separate things, but continuous, folded into each other.</em></p>
+  <p><em>See Helen Edgar's work at <a href="https://autisticrealms.com/?s=deleuze">Autistic Realms</a> — including her explorations of Deleuzean time, the neuroqueering potential of the fold, and the rhizome as a model of Autistic community and belonging.</em></p>
+
+  <h3 class="sub" id="h-spinoza-s-pantheism">Spinoza's Pantheism</h3>
+  <p>Baruch Spinoza, 17th century philosopher, argued that God and nature are one and the same substance — that the finite things of the world are not separate from the whole but expressions of it, like modes or properties of a single infinite being. There is no hierarchy among modes. No configuration of the one substance is more legitimate than another.</p>
+  <p>Spinoza was excommunicated for this. The idea that existence itself is sacred — not a fallen material world separate from a spiritual one, but one continuous substance that is both — was dangerous then. It remains radical now, in any system that ranks human beings by the legitimacy of their minds and bodies.</p>
+  <p>LYDTYSS is, among other things, a Spinozist argument: there is one substance. You are made of it. That is enough.</p>
+
+  <h3 class="sub" id="h-a-note-on-this-constellation">A Note on This Constellation</h3>
+  <p>These traditions differ from each other in profound ways — in their metaphysics, their ethics, their relationship to self and cosmos. This is not a claim that they are saying the same thing, or that LYDTYSS is a synthesis of them.</p>
+  <p>It is a recognition that the intuition underlying LYDTYSS — that at some deep level, the boundaries between self and universe are not absolute, that this has implications for how we treat each other, that no configuration of matter is outside the circle of what deserves love — is one that human beings have kept arriving at, across very different starting points, for a very long time.</p>
+  <p>That is not proof. But it is not nothing.</p>
+
+  <!-- THE COSMOS IS WITHIN US -->
+  <h2 class="section" id="h-the-cosmos-is-within-us">The Cosmos is within us.</h2>
+  <p>The Cosmos is within us. We are made of star-stuff. We are a way for the Universe to know itself — <em>in every color, key, and frequency of neurodiversity.</em></p>
+  <p><a href="https://www.space.com/35276-humans-made-of-stardust-galaxy-life-elements.html">Humans Really Are Made of Stardust, and a New Study Proves It | Space</a></p>
+
+  <div class="aphorisms">
+    <p class="cat" style="color:#22d3ee;">Cosmological / scientific grounding</p>
+    <ul class="star-list" style="--marker:#22d3ee;">
+      <li>We are star-stuff. The Universe does not have one way of knowing. It has as many ways as there are minds.</li>
+      <li>The universe does not make one kind of star. Why would it make one kind of mind?</li>
+      <li>We are not disordered. We are the Universe running different experiments in knowing.</li>
+      <li>Supernovae don't apologize for the mess. Neither should you.</li>
+      <li>Every element heavier than hydrogen was made in violence and became something tender. That's you.</li>
+      <li>The iron in your blood was forged in a dying star. You have been carrying ancient fire your whole life.</li>
+      <li>Stars don't burn the same way. Some collapse. Some expand. Some pulse. All of them are stars.</li>
+      <li>You are not a failed neurotypical. You are a different stellar event.</li>
+      <li>The universe has been running this experiment for 13.8 billion years. Your neurology is not a bug in the latest patch. It is part of the original code.</li>
+      <li>Matter doesn't have a preferred configuration. The universe keeps trying new ones. You are one of the new ones.</li>
+    </ul>
+  </div>
+
+  <div class="xref">Explore <a href="constellation-field-guide.html"><strong>A Field Guide to Neurodivergent Constellations</strong></a> — eight patterns in the sky renamed for what they actually are. The Stimmer, The Deep Diver, The Pattern Seeker, The Flood, The Navigator, The Bridge, The Signal, The Forge — each with diagrams, star data, and full field notes.</div>
+
+  <div class="aphorisms">
+    <p class="cat" style="color:#f472b6;">Reclamatory / punk</p>
+    <ul class="star-list" style="--marker:#f472b6;">
+      <li>★stuff doesn't ask permission to take up space.</li>
+      <li>★stuff doesn't apologize for how it burns.</li>
+      <li>They called it a disorder. The stars called it a frequency.</li>
+      <li>You were never too much. You were just in the wrong atmosphere.</li>
+      <li>97% stardust. 100% done apologizing.</li>
+      <li>We are ★stuff. We are not broken. We are ancient.</li>
+      <li>The DSM is not a star chart.</li>
+      <li>You have been burning since before the diagnosis.</li>
+      <li>Weird is a word small systems use for things they can't contain.</li>
+      <li>They built the room too small and called it your fault for not fitting.</li>
+      <li>The Universe spent 13.8 billion years making you exactly this way. The problem was never you.</li>
+    </ul>
+  </div>
+
+  <div class="aphorisms">
+    <p class="cat" style="color:#fbbf24;">Tender / affirmation</p>
+    <ul class="star-list" style="--marker:#fbbf24;">
+      <li>You are ★stuff that learned to feel loneliness. That is not a flaw. That is what happens when the cosmos gets specific.</li>
+      <li>You are ★stuff that learned to feel everything.</li>
+      <li>The universe made you exquisitely sensitive to it. That is not a disorder. That is intimacy.</li>
+      <li>You are the way this particular corner of the cosmos has chosen to know itself. There is no wrong way to do that.</li>
+      <li>Love you down to your star stuff — past the diagnosis, past the mask, past the years of being told you were too much or not enough. All the way down. LYSS.</li>
+      <li>You don't have to earn the right to be made of stars. You already are.</li>
+      <li>Some of us feel the universe more than others. That's not a problem to solve. That's a gift we were never taught to hold.</li>
+      <li>Your nervous system is not broken. It is exquisitely tuned to things other people learned to stop noticing.</li>
+      <li>Carl Sagan said we are a way for the Universe to know itself. He didn't say there was only one way to know. Monotropic knowing. Hyperconnected knowing. Body-based knowing. Nonspeaking knowing. The Universe is not diminished by our neurology. It is expressed by it.</li>
+      <li>Your bones are electrical generators. Your brain is a different kind of frequency. LYSS.</li>
+      <li>97% ancient stellar explosion. 3% trying to survive a fluorescent-lit room.</li>
+      <li>★stuff, ★stuff burning bright, in monotropic flight.</li>
+    </ul>
+  </div>
+
+  <div class="aphorisms">
+    <p class="cat" style="color:#a78bfa;">Community / plural voice</p>
+    <ul class="star-list" style="--marker:#a78bfa;">
+      <li>We are ★stuff — the ones who stim, the ones who script, the ones who go mute, the ones who feel everything at once.</li>
+      <li>The stimmy ones, the quiet ones, the loud ones, the ones who didn't speak today, the ones who spoke too much — all ★stuff, all the way down.</li>
+      <li>We are ancient. We are not new problems. We have always been here, in every society, every century, every configuration of the cosmos.</li>
+      <li>L★S — because we are not separate from the universe. We are how it keeps experimenting.</li>
+      <li>No two stars burn the same. No two minds should have to.</li>
+      <li>The neurodivergent community is the universe becoming aware of its own variation. LYSS.</li>
+    </ul>
+  </div>
+
+  <div class="aphorisms">
+    <p class="cat" style="color:#4ade80;">Short / sticker-ready</p>
+    <ul class="star-list" style="--marker:#4ade80;">
+      <li>★stuff doesn't burn on command.</li>
+      <li>You were forged, not broken.</li>
+      <li>Ancient light. Different frequency. L★S.</li>
+      <li>The cosmos doesn't pathologize its own turbulence.</li>
+      <li>Born in a supernova. Still here. LYSS.</li>
+      <li>Made of the same 97%. Loved for the other 3%.</li>
+      <li>★stuff: no wrong configuration.</li>
+      <li>You are how the universe knows this.</li>
+    </ul>
+  </div>
+
+  <!-- CRYSTAL UNDER PRESSURE -->
+  <h2 class="section" id="h-crystal-under-pressure">Crystal Under Pressure</h2>
+  <p><em>A prose poem drawing on Dr. Iwao Yasuda's discovery of the piezoelectric properties of bone, the cosmological origins of the elements in our bodies, and the neurodiversity reframe.</em></p>
+  <p>Our bones are not solid. They are piezoelectric crystals — the same principle as quartz watches, microphones, sonar — that generate measurable electricity every time we move. Dr. Iwao Yasuda discovered this in 1957. Our skeleton is not a coat hanger for our muscles. It is a chemical factory, an electrical generator, a living crystal lattice humming with charge.</p>
+  <p>And it is made of star stuff.</p>
+  <p>The phosphorus in those bones — 85% of your body's supply — was forged in a stellar core before Earth existed. The calcium. The magnesium. Scattered by supernovae, gathered by gravity, assembled over billions of years into something that can bend and generate light.</p>
+  <div class="verse">The Cosmos is within us. Our bones are electrical crystals. Our neurons fire in patterns the DSM calls disorder and the stars call weather — solar flares, magnetic storms, plasma eruptions: dynamic systems doing what dynamic systems do, turbulence that belongs, variation that has never needed a diagnosis. We are a way for the Universe to know itself — chaotically, hyperfocusedly, nonlinearly, beautifully. LYSS.</div>
+  <p>The body as fold. The crystal as transducer. Force from outside becomes charge from inside — which is also what Deleuze means by the fold: interiority is not sealed off from exteriority, but continuous with it, always turning inside out, always folding deeper. See <a href="#h-related-concepts">Transcendental Empiricism — Deleuze</a> in Related Concepts, and <a href="https://stimpunks.org/star-stuff/fold-and-crystal/">The Fold and the Crystal</a> for the full exploration.</p>
+  <div class="xref">Read <a href="bone-song-zine.html"><strong>Bone Song</strong></a> — the full prose poem in zine form, with diagrams tracing piezoelectric matter, star-forged calcium, and the universe that doesn't pathologize its own variation.</div>
+
+  <!-- WHAT LYDTYSS IS NOT -->
+  <h2 class="section" id="h-what-lydtyss-is-not">What LYDTYSS Is Not</h2>
+  <div class="quote">
+    <p>Not: <em>your differences are a gift.</em> That puts the burden back on you to be useful enough to deserve love.</p>
+    <p>Not: <em>everything happens for a reason.</em> Your suffering does not need a purpose to be real, or to matter, or to stop.</p>
+    <p>Not: <em>you are special.</em> Star stuff is not rare. It is everything. The phrase is about continuity, not exceptionalism.</p>
+    <p>Not: <em>love you despite your star stuff.</em> The direction matters. Down <em>to</em>. All the way through. Not around.</p>
+    <p>Not: <em>a substitute for structural change.</em> Loving someone cosmologically does not fix inaccessible systems. LYDTYSS knows this. It lives in the register of belonging, not policy. It does not pretend the two are the same.</p>
+  </div>
+  <p>It is not <a href="https://stimpunks.org/glossary/inspiration-exploitation/">inspiration porn</a>. It does not say your suffering has a purpose, or that your neurology is a superpower, or that everything happens for a reason. It does not ask you to reframe your pain as a gift.</p>
+  <p>It is not <a href="https://stimpunks.org/glossary/toxic-positivity/">toxic positivity</a>. It does not say everything is fine. It does not paper over the real costs of living in systems that were not built for you.</p>
+  <p>It is not the "your differences are a gift" framework. That framing puts the burden back on the person — you must justify your existence by being useful, extraordinary, or instructive to neurotypicals. LYDTYSS asks nothing of you in return.</p>
+  <p>It is not conditional. It does not say "love you <em>for</em> your star stuff" — as though the cosmic material is the lovable part and the rest of you is on probation. It says love goes <em>down to</em> that level. The direction matters. It is not a ceiling. It is a floor.</p>
+  <p>It is not a metaphor for being special. Star stuff is not rare. It is everywhere. Every rock, every raindrop, every person who has ever made you feel like you were too much — also star stuff. The phrase is not about being chosen. It is about being continuous with everything that exists.</p>
+  <p>It is not a substitute for structural change. Loving someone down to their star stuff does not fix inaccessible systems, underfunded support, or the violence of forced normalization. The phrase lives in the register of love and community, not policy. It does not pretend otherwise.</p>
+
+  <!-- WHAT LYDTYSS IS -->
+  <h2 class="section" id="h-what-lydtyss-is">What LYDTYSS Is</h2>
+  <p>It is a cosmological argument stated as an act of love.</p>
+  <p>It says: the matter you are made of was forged in stellar cores before Earth existed, scattered by supernovae, gathered by gravity, assembled over billions of years into something that can feel joy and grief and overstimulation in a fluorescent-lit room. That process did not produce a hierarchy. It produced variation. You are one of the variations. You are loved all the way down to that level.</p>
+  <hr class="sep">
+  <p>It is a belonging signal. When you hear it, it means: this is a place where you do not have to perform your humanity to receive care. The love is not conditional on your behavior, your productivity, your legibility, your diagnosis, or your ability to pass. It goes all the way down past all of that to the substrate. You are in.</p>
+  <hr class="sep">
+  <p>It is a refusal. A refusal to accept that there is a correct configuration of human being. A refusal to locate the problem in the person rather than in the systems that were not built for them. A refusal to rank matter.</p>
+  <hr class="sep">
+  <p>It is an affirmation that does not require you to be exceptional. You are not loved because your neurology is a superpower, or because your suffering has produced wisdom, or because you have overcome. You are loved because you exist. Because at the atomic level you are continuous with everything that has ever existed. That is the only qualification. It has never been in question.</p>
+  <hr class="sep">
+  <p>It is a phrase that travels. LYDTYSS in full when you need the whole weight of it. LYSS when you mean it tenderly. LUSS when you mean it with an edge. L★S when the symbol is enough. ★stuff when you are just naming what you are. The phrase scales because the love it describes scales — from the cosmic to the personal, from the philosophical to the text message.</p>
+  <hr class="sep">
+  <p>It is a community practice. Not just something said to individuals but something practiced collectively — in how Stimpunks builds spaces, funds access, holds people, refuses to make belonging conditional. LYDTYSS is the phrase. The practice is what happens when you take it seriously.</p>
+  <hr class="sep">
+  <p>It is, finally, an invitation. To let love reach that far. To stop defending the parts of yourself you have learned to hide. To belong somewhere at the level of your matter, not the level of your performance.</p>
+  <p>Love you down to your star stuff. All the way down. LYSS.</p>
+
+  <div class="xref">Read the <a href="lydtyss-zine.html"><strong>Love You Down To Your Star Stuff Zine</strong></a> — the cosmology of care in six spreads. What Sagan said, what the elements are, what "down to" means as a direction, and affirmations across every register.</div>
+
+  <!-- REFLECTION -->
+  <h2 class="section" id="h-reflection">Reflection</h2>
+  <p><strong>Ancient, Cosmic, Real</strong></p>
+  <p>The star stuff framing positions us as ancient, cosmic, made of real matter.</p>
+  <p>Some prompts that fit that ethos:</p>
+  <ul class="list">
+    <li><em>"You are made of exploded stars. What are you made of, emotionally, today?"</em></li>
+    <li><em>"What in you feels elemental right now — fire, water, pressure, light?"</em></li>
+    <li><em>"Name something you're carrying that's older than you."</em></li>
+    <li><em>"What part of you is still forming?"</em></li>
+    <li><em>"Where did you come from, and where are you going?"</em></li>
+  </ul>
+
+  <p><strong>Belonging</strong></p>
+  <ul class="list">
+    <li>When have you felt personally accepted — not tolerated, not accommodated, but genuinely welcomed as yourself? What made that different from other spaces?</li>
+    <li>Have you ever belonged somewhere only by performing a version of yourself that wasn't quite real? What did that cost you?</li>
+    <li>Belonging is described as wholeness — being at home in yourself <em>and</em> in community. Which of those feels harder right now?</li>
+    <li>What would it mean to belong somewhere the way matter belongs to the universe — not earned, not conditional, just intrinsic?</li>
+    <li>Who in your life has made you feel like you didn't have to explain yourself to be loved?</li>
+  </ul>
+
+  <p><strong>Authenticity</strong></p>
+  <ul class="list">
+    <li>What parts of yourself have you hidden or suppressed in order to survive a space? What would it feel like to stop?</li>
+    <li>Authenticity is described as a precondition for psychological safety, not a luxury. Has there been a moment when you were allowed to be fully yourself and noticed the difference in how you could think, feel, or function?</li>
+    <li>Masking is expensive. What cognitive and emotional bandwidth might become available to you if you didn't have to spend it on performing normalcy?</li>
+    <li>What does your authentic self do, sound like, or need — that the world has most often asked you to hide?</li>
+    <li>If love goes all the way down past performance to your atomic substrate — what would you stop apologizing for?</li>
+  </ul>
+
+  <p><strong>Radical Inclusivity</strong></p>
+  <ul class="list">
+    <li>Radical inclusivity confronts normativity directly — it doesn't just tolerate difference, it dismantles the systems that treat difference as a problem. What norm have you been asked to conform to that you now recognize as arbitrary?</li>
+    <li>Inclusion safety is described as acceptance based on the sole qualification of having flesh and blood. Have you ever been in a space that actually felt that way? What made it possible?</li>
+    <li>The argument here is cosmological: no configuration of star stuff is outside the circle. Does that framing shift anything for you about who deserves care and belonging?</li>
+    <li>Where in your life are you still waiting for permission to exist fully? What is the source of that permission, and is it legitimate?</li>
+    <li>What would it look like to build a space — in your home, your classroom, your community — where no one has to mask to survive?</li>
+  </ul>
+
+  <p><strong>Across all three</strong></p>
+  <ul class="list">
+    <li>LYDTYSS says love reaches all the way down to your star stuff. What is the deepest, most hidden version of yourself that you have not yet let be loved?</li>
+    <li>If belonging, authenticity, and radical inclusivity are not additions to the star-stuff idea but what it means in practice — what does that ask of you as someone who receives that love? What does it ask of you as someone who gives it?</li>
+  </ul>
+
+  <!-- COMMUNITY VOICES -->
+  <h2 class="section" id="h-community-voices">Community Voices</h2>
+  <p><em>This section is growing. We want to hear from you.</em></p>
+  <p>LYDTYSS started as a phrase and became a community practice. What does "Love You Down To Your Star Stuff" mean to you? When did you first hear it, or first feel it? What did it open up, confirm, or make newly speakable?</p>
+  <p>We are collecting short reflections — a sentence, a paragraph, whatever fits — from neurodivergent and disabled community members, allies, educators, and anyone the phrase has reached.</p>
+  <p><strong>To contribute, <a href="https://stimpunks.org/contact/">contact us</a>.</strong></p>
+
+  <!-- PLAYLIST -->
+  <h2 class="section" id="h-l-s-playlist">L★S Playlist</h2>
+  <p>Songs in conversation with Love You Down To Your Star Stuff — cosmic, reclamatory, tender, and true.</p>
+  <p><a href="https://stimpunks.org/star-stuff/playlist/"><strong>★ Open the L★S Playlist →</strong></a></p>
+
+  <hr class="sep">
+
+  <!-- CLOSING -->
+  <div class="closing">
+    <p>This page rests here.<br>You made it to the bottom.<br>We love you for it.<br>Thanks for falling down this rabbit hole with us.</p>
+    <p class="hero-shorthands" style="margin-top:1.5rem;">
+      Love You Down to Your Star Stuff<br>
+      LYSS (Love You, Star Stuff)<br>
+      <strong>L★S</strong><br>
+      ★stuff<br>
+      You were ★stuff all along.
+    </p>
+  </div>
+
+  <figure class="figure figure--mosho">
+    <img src="where-we-come-from-rainbow-mosho.jpg" alt="A cosmic illustration in the style of Van Gogh's The Starry Night, rendered in deep black, swirling cornflower blues, and golden yellow. A large spiral coils inward to a smiling five-pointed star at the center, its surface textured with radiating gold lines, concentric circles, and dense spiral patterns. Smaller curling spirals branch off across the composition. Scattered throughout the star-flecked night sky are cheerful cartoon suns with smiling faces. Signed &quot;Rainbow Mosho&quot; in purple script in the lower right corner.">
+    <figcaption>
+      "Where We Come From" by <a href="https://linktr.ee/rainbowmosho">Rainbow Mosho</a><br>
+      As seen in the <a href="https://www.moonmars.com/museum">MoonMars Museum</a>
+    </figcaption>
+  </figure>
+
+  <footer class="site-footer">
+    <div class="footer-left">
+      Where to next, ★stuff? Return to the <a href="index.html">★ stuff collection</a>.<br>
+      Stimpunks Foundation · <a href="https://starstuff.earth">starstuff.earth</a> · <a href="https://stimpunks.org">stimpunks.org</a> · Print free · Share freely · L★S
+    </div>
+    <span class="footer-ls">L★S</span>
+  </footer>
+
+</div>
+</body>
+</html>
