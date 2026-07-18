@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inclusion Safety — A Star Stuff Creed — Stimpunks Foundation</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="starstuff.css">
+<style>
+  :root {
+    --void:  #07070f;
+    --deep:  #0d0d1a;
+    --page:  #0f0f1c;
+    --violet:#a78bfa;
+    --pink:  #f472b6;
+    --gold:  #fbbf24;
+    --cyan:  #22d3ee;
+    --green: #4ade80;
+    --star-white: #f4f2fb;
+    --stardust:   #d4d0e4;
+    --dim:   #8a86a0;
+    --dim2:  #63607a;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--void);
+    font-family: 'Atkinson Hyperlegible', system-ui, sans-serif;
+    color: var(--star-white);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── STARFIELD ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 8% 12%, rgba(251,191,36,0.8) 0%, transparent 100%),
+      radial-gradient(1px 1px at 22% 38%, rgba(244,244,251,0.6) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 44% 9%, rgba(251,191,36,0.7) 0%, transparent 100%),
+      radial-gradient(1px 1px at 61% 68%, rgba(167,139,250,0.6) 0%, transparent 100%),
+      radial-gradient(2px 2px at 74% 28%, rgba(244,244,251,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 84% 54%, rgba(251,191,36,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 91% 79%, rgba(244,244,251,0.7) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 4% 58%, rgba(251,191,36,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 34% 84%, rgba(244,244,251,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 54% 48%, rgba(167,139,250,0.4) 0%, transparent 100%),
+      radial-gradient(2px 2px at 19% 88%, rgba(251,191,36,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 69% 4%, rgba(244,244,251,0.8) 0%, transparent 100%),
+      radial-gradient(1px 1px at 47% 62%, rgba(251,191,36,0.5) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 30% 20%, rgba(244,244,251,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 77% 88%, rgba(167,139,250,0.5) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .creed-shell { position: relative; z-index: 1; max-width: 720px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+
+  .spectrum-line { height: 2px; border: none; border-radius: 2px; background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); }
+
+  /* ── NAV ── */
+  .nav-brand { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--dim); margin: 1.6rem 0 2.5rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(167,139,250,0.2); }
+
+  /* ── HERO ── */
+  .hero { margin-bottom: 3rem; }
+  .hero-eyebrow { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.4em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.4rem; }
+  .hero-title { font-weight: 700; font-size: clamp(2.6rem, 8vw, 4.4rem); line-height: 1.0; letter-spacing: -0.02em; color: var(--star-white); margin-bottom: 1.3rem; }
+  .hero-title em { font-style: normal; background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .hero-sub { font-size: 1.08rem; line-height: 1.6; color: var(--stardust); max-width: 34rem; }
+  .hero-rule { width: 200px; max-width: 55%; margin-top: 1.8rem; }
+
+  /* ── CREED BODY ── */
+  .stanza { margin: 2.6rem 0; }
+  .lead { font-size: 1.32rem; line-height: 1.55; color: var(--star-white); font-weight: 400; }
+  .lead + .lead { margin-top: 1rem; }
+  .body-text { font-size: 1.02rem; line-height: 1.75; color: var(--stardust); margin-top: 1rem; }
+  .body-text + .body-text { margin-top: 1rem; }
+  .lead .gold, .body-text .gold { color: var(--gold); font-weight: 700; }
+  .lead em, .body-text em { font-style: italic; color: var(--star-white); }
+  .lead strong, .body-text strong { font-weight: 700; color: var(--star-white); }
+
+  .stanza-mark { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--dim2); margin-bottom: 0.9rem; }
+
+  /* ── QUOTES ── */
+  .creed-quote { border-left: 3px solid var(--gold); padding-left: 1.2rem; margin: 1.4rem 0; }
+  .creed-quote p { font-size: 1.12rem; line-height: 1.5; color: var(--star-white); font-weight: 400; }
+  .creed-quote .attr { display: block; font-family: 'Space Mono', monospace; font-size: 0.6rem; font-weight: 400; letter-spacing: 0.05em; color: var(--dim); margin-top: 0.7rem; line-height: 1.6; }
+  .creed-quote.douglass { border-left-color: var(--cyan); }
+
+  /* ── STAR LINE ── */
+  .star-line { text-align: center; font-weight: 700; font-size: clamp(1.8rem, 5vw, 2.8rem); line-height: 1.12; letter-spacing: -0.01em; margin: 3rem 0; }
+  .star-line .spectrum-word { background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+
+  /* ── ONE-BAR CALLOUT ── */
+  .callout { border: 1px solid rgba(244,114,182,0.35); border-left: 3px solid var(--pink); border-radius: 0 6px 6px 0; padding: 1.1rem 1.3rem; margin: 1.6rem 0; background: rgba(244,114,182,0.05); }
+  .callout .callout-label { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--pink); margin-bottom: 0.5rem; }
+  .callout p { font-size: 1rem; line-height: 1.65; color: var(--stardust); }
+  .callout strong { color: var(--star-white); font-weight: 700; }
+
+  /* ── DIVIDER ── */
+  .divider { width: 60px; height: 1px; background: rgba(167,139,250,0.3); border: none; margin: 3rem auto; }
+
+  /* ── COLOPHON ── */
+  .colophon { margin-top: 3.5rem; padding-top: 1.6rem; border-top: 1px solid rgba(167,139,250,0.18); }
+  .colophon-ls { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 1.8rem; color: var(--gold); letter-spacing: 0.05em; display: block; margin-bottom: 0.9rem; }
+  .colophon-body { font-size: 0.78rem; color: var(--dim); line-height: 1.8; }
+  .colophon-body a { color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(251,191,36,0.35); }
+  .colophon-body a:hover { border-bottom-color: var(--gold); }
+  .coda { margin-top: 1.8rem; font-size: 0.95rem; line-height: 1.7; color: var(--stardust); }
+  .coda .spectrum-word { background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; font-weight: 700; }
+  .colophon-footer { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--dim2); line-height: 2.2; margin-top: 1.8rem; }
+
+  @media (max-width: 600px) {
+    .creed-shell { padding: 2rem 1.3rem 3rem; }
+    .lead { font-size: 1.18rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="creed-shell">
+
+  <nav class="ss-nav" style="--nav-accent:#fbbf24;" aria-label="Star Stuff collection">
+    <a class="ss-nav-home" href="index.html"><span class="ss-star" aria-hidden="true">★</span> stuff</a>
+    <span class="ss-nav-links">
+      <a class="ss-nav-prev" href="manifesto.html"><span class="ss-nav-arrow" aria-hidden="true">‹</span> <span class="ss-nav-label">Manifesto</span></a>
+      <a class="ss-nav-next" href="bone-song-zine.html"><span class="ss-nav-label">Bone Song</span> <span class="ss-nav-arrow" aria-hidden="true">›</span></a>
+    </span>
+  </nav>
+
+  <div class="nav-brand">Stimpunks · A Star Stuff Creed</div>
+
+  <!-- ── HERO ── -->
+  <header class="hero">
+    <div class="hero-eyebrow">Stimpunks Foundation · L★S · Inclusion Safety</div>
+    <h1 class="hero-title">Owed,<br>not <em>earned</em>.</h1>
+    <p class="hero-sub">Inclusion safety — the first stage of psychological safety — is not a reward for the worthy. It is the baseline we owe one another simply for being here. This is our creed for it.</p>
+    <hr class="spectrum-line hero-rule">
+  </header>
+
+  <!-- ── STANZA 1 ── -->
+  <section class="stanza">
+    <div class="stanza-mark">i · the whole of it</div>
+    <p class="lead">Here is the whole of it, before anything else: your place among us is not a prize you win. It is yours because you are <span class="gold">here</span>.</p>
+    <div class="creed-quote">
+      <p>"Inclusion safety is not earned but owed. Giving inclusion safety is a moral imperative."</p>
+      <span class="attr">Timothy R. Clark, <em>The 4 Stages of Psychological Safety</em></span>
+    </div>
+  </section>
+
+  <!-- ── STANZA 2 ── -->
+  <section class="stanza">
+    <div class="stanza-mark">ii · worth before worthiness</div>
+    <p class="lead">We will not audition you. Inclusion is a judgment about your <em>worth</em> — which you have, entire, already — not a verdict on your <em>worthiness</em>, which is no one's to weigh at the door.</p>
+    <div class="creed-quote">
+      <p>"Including another human being should be an act of prejudgment based on that person's worth, not an act of judgment based on that person's worthiness."</p>
+      <span class="attr">Timothy R. Clark, <em>The 4 Stages of Psychological Safety</em></span>
+    </div>
+    <p class="body-text">There is no litmus test at this threshold — not your diagnosis, your speech, your output, your history, or how easily others can make sense of you. Worth comes first. Worthiness, if it is ever anyone's business at all, comes long after, and not here.</p>
+  </section>
+
+  <!-- ── STANZA 3 ── -->
+  <section class="stanza">
+    <div class="stanza-mark">iii · be human, be harmless</div>
+    <p class="lead">What does it take to qualify? Two things. <span class="gold">Be human. Be harmless.</span> Meet both and you are in.</p>
+    <p class="body-text">There is exactly one disqualifier at this door, and it is not difference — it is harm. We say the second part out loud, because a welcome that tolerated harm would betray the very people it exists to keep safe.</p>
+    <div class="callout">
+      <div class="callout-label">The one bar</div>
+      <p><strong>Acceptance is owed to everyone. Safety from harm is owed to everyone, too</strong> — and it is the single thing that can cost you your place here. Not your way of being. Only harm.</p>
+    </div>
+  </section>
+
+  <!-- ── STANZA 4 ── -->
+  <section class="stanza">
+    <div class="stanza-mark">iv · the binding thing</div>
+    <p class="lead">Frederick Douglass drew the line for good:</p>
+    <div class="creed-quote douglass">
+      <p>"I know of no rights of race superior to the rights of humanity."</p>
+      <span class="attr">Frederick Douglass</span>
+    </div>
+    <p class="body-text">Read it for every characteristic, not race alone. When we include one another, we set our differences beneath a deeper, common thing — and agree that the common thing matters more.</p>
+  </section>
+
+  <!-- ── STANZA 5 ── -->
+  <section class="stanza">
+    <div class="stanza-mark">v · older than humanity</div>
+    <p class="lead">And here we go one floor deeper than the textbook. The common thing beneath our differences is <em>older than humanity</em>. You, and we, and everyone at this door were made in the same stars — the same hydrogen from the same beginning, the same calcium and iron from the same dying giants.</p>
+    <p class="body-text">Kinship is not a courtesy we extend to you. It is the material you are made of.</p>
+
+    <p class="star-line">You do not have to earn your way in.<br>You were <span class="spectrum-word">★stuff</span> all along.</p>
+
+    <p class="body-text">Belonging here is not conferred; it is <strong>constitutive</strong> — true of you before you arrived, true whether or not anyone ever tells you so. We are only saying out loud what the atoms settled long ago.</p>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ── STANZA 6 ── -->
+  <section class="stanza">
+    <div class="stanza-mark">vi · come in</div>
+    <p class="lead">So: if you have flesh and blood, we accept you. If you are made of stars — and you are — you are already one of us.</p>
+    <p class="lead">Come in. Rest. <span class="gold">You are owed this.</span></p>
+    <p class="body-text">Inclusion is the first of four doors — beyond it lie the freedom to learn, to contribute, and to challenge. But none of them open until this one does. So we hold this one open first, and for everyone.</p>
+  </section>
+
+  <!-- ── COLOPHON ── -->
+  <div class="colophon">
+    <span class="colophon-ls">L★S</span>
+    <p class="colophon-body">
+      A Star Stuff creed on inclusion safety — the first of Timothy R. Clark's four stages of psychological safety. The definitions and the quoted lines are Clark's, from <a href="https://www.leaderfactor.com/4-stages-of-psychological-safety"><em>The 4 Stages of Psychological Safety</em></a> (worth before worthiness; be human and be harmless; the only disqualifier is the threat of harm). Frederick Douglass's line is his own. For the fuller treatment, and how it meets neurodiversity, see Stimpunks' <a href="https://stimpunks.org/glossary/psychological-safety/">Psychological Safety</a>. The move past "common humanity" to common origin — that belonging is constitutive because we are made of the same star stuff — is ours.
+    </p>
+    <p class="coda">
+      This page rests here. You made it to the bottom. You were <span class="spectrum-word">★stuff</span> all along — and you were owed a place the whole time. We love you down to it.
+    </p>
+    <div class="colophon-footer">
+      Stimpunks Foundation · A Star Stuff Creed · Open Edition<br>
+      Share freely · L★S · stimpunks.org · starstuff.earth
+    </div>
+  </div>
+
+</div><!-- /creed-shell -->
+
+</body>
+</html>
