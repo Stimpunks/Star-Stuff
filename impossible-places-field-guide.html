@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Field Guide to Life in Impossible Places — Stimpunks Foundation</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="starstuff.css">
+<style>
+  :root {
+    --bg:        #0a0a14;
+    --card:      #0f0f2a;
+    --purple:    #a78bfa;
+    --pink:      #f472b6;
+    --gold:      #fbbf24;
+    --cyan:      #22d3ee;
+    --green:     #4ade80;
+    --white:     #f9fafb;
+    --secondary: #b8aed0;
+    --muted:     #c4b5d4;
+    --border:    rgba(167,139,250,0.15);
+    --surface:   rgba(167,139,250,0.07);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--white);
+    font-family: 'Atkinson Hyperlegible Next', sans-serif;
+    font-size: 1rem;
+    min-height: 100vh;
+  }
+
+  /* ── STARFIELD ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 7%  13%, rgba(249,250,251,0.8) 0%, transparent 100%),
+      radial-gradient(1px 1px at 23% 37%, rgba(74,222,128,0.6)  0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 43% 8%,  rgba(249,250,251,0.7) 0%, transparent 100%),
+      radial-gradient(1px 1px at 59% 67%, rgba(74,222,128,0.6)  0%, transparent 100%),
+      radial-gradient(2px 2px at 73% 27%, rgba(249,250,251,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 83% 53%, rgba(34,211,238,0.7)  0%, transparent 100%),
+      radial-gradient(1px 1px at 89% 78%, rgba(249,250,251,0.8) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 3% 57%, rgba(249,250,251,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 33% 83%, rgba(74,222,128,0.5)  0%, transparent 100%),
+      radial-gradient(1px 1px at 53% 46%, rgba(249,250,251,0.4) 0%, transparent 100%),
+      radial-gradient(2px 2px at 17% 87%, rgba(167,139,250,0.7) 0%, transparent 100%),
+      radial-gradient(1px 1px at 67% 3%,  rgba(249,250,251,0.8) 0%, transparent 100%),
+      radial-gradient(1px 1px at 46% 61%, rgba(34,211,238,0.5)  0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 28% 18%, rgba(74,222,128,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 76% 86%, rgba(249,250,251,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 91% 42%, rgba(249,250,251,0.6) 0%, transparent 100%),
+      radial-gradient(2px 2px at 55% 22%, rgba(244,114,182,0.5) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── MASTHEAD ── */
+  .masthead {
+    position: relative;
+    z-index: 2;
+    padding: 3rem 2.5rem 2rem;
+    border-bottom: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1rem;
+    align-items: end;
+  }
+
+  .masthead-eyebrow {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 0.6rem;
+  }
+
+  .masthead-title {
+    font-size: clamp(1.6rem, 4vw, 2.8rem);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--white);
+    letter-spacing: -0.01em;
+  }
+
+  .masthead-title em {
+    font-style: italic;
+    background: linear-gradient(135deg, var(--green) 0%, var(--cyan) 50%, var(--purple) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .masthead-sub {
+    font-size: 0.875rem;
+    color: var(--secondary);
+    margin-top: 0.6rem;
+    line-height: 1.6;
+    max-width: 580px;
+  }
+
+  .masthead-right { text-align: right; flex-shrink: 0; }
+
+  .masthead-ls {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 0.05em;
+    display: block;
+    text-align: right;
+    text-shadow: 0 0 18px rgba(251,191,36,0.45);
+  }
+
+  /* ── INTRO BAND ── */
+  .intro-band {
+    position: relative;
+    z-index: 2;
+    padding: 1.5rem 2.5rem;
+    border-bottom: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .intro-note { font-size: 0.875rem; color: var(--secondary); line-height: 1.7; }
+
+  .intro-note strong {
+    font-weight: 700;
+    color: var(--white);
+    display: block;
+    font-size: 0.8125rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.3rem;
+  }
+
+  /* ── GRID ── */
+  .field-grid {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 0;
+  }
+
+  /* ── ENTRY CARD ── */
+  .entry {
+    background: var(--card);
+    border-radius: 8px;
+    margin: 0.75rem;
+    padding: 1.25rem;
+    cursor: pointer;
+    transition: background 0.2s ease, box-shadow 0.2s ease;
+    position: relative;
+    border: 1px solid var(--border);
+  }
+
+  .entry:hover { background: rgba(15,15,42,0.98); box-shadow: 0 4px 24px rgba(167,139,250,0.12); }
+  .entry.open  { background: rgba(15,15,42,0.98); box-shadow: 0 4px 32px rgba(167,139,250,0.15); }
+
+  .entry::before {
+    content: '';
+    position: absolute;
+    top: 8px; left: 0;
+    width: 3px; height: calc(100% - 16px);
+    background: var(--entry-color, var(--green));
+    border-radius: 0 2px 2px 0;
+  }
+
+  .entry-header {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1.2rem;
+    align-items: start;
+    margin-bottom: 1rem;
+  }
+
+  /* SVG fit-range diagram */
+  .fit-svg { width: 88px; height: 90px; flex-shrink: 0; }
+
+  .entry-meta { min-width: 0; }
+
+  .entry-number {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.2rem;
+  }
+
+  .entry-name {
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.1;
+    color: var(--white);
+    margin-bottom: 0.2rem;
+  }
+
+  .entry-traditional {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.4rem;
+  }
+
+  .entry-coords {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--cyan);
+  }
+
+  .entry-brief { font-size: 0.875rem; color: var(--secondary); line-height: 1.65; margin-bottom: 0.8rem; }
+
+  .entry-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.7rem; }
+
+  .tag {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    background: rgba(167,139,250,0.06);
+  }
+
+  .entry-expand {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    transition: color 0.2s ease;
+  }
+
+  .entry:hover .entry-expand,
+  .entry.open .entry-expand { color: var(--secondary); }
+
+  .entry-notes {
+    display: none;
+    margin-top: 1.2rem;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--border);
+    animation: fadeIn 0.3s ease forwards;
+  }
+
+  .entry.open .entry-notes { display: block; }
+
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+
+  .notes-heading {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.7rem;
+  }
+
+  .notes-body { font-size: 1rem; color: var(--secondary); line-height: 1.8; margin-bottom: 1rem; }
+  .notes-body p { margin-bottom: 1em; }
+  .notes-body p:last-child { margin-bottom: 0; }
+  .notes-body em { color: var(--white); font-style: italic; }
+  .notes-body strong { color: var(--white); font-weight: 600; font-style: normal; }
+
+  .star-table { width: 100%; border-collapse: collapse; margin-top: 0.8rem; }
+
+  .star-table th {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: left;
+    padding: 0.3rem 0.5rem 0.3rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .star-table td {
+    font-size: 0.875rem;
+    color: var(--secondary);
+    padding: 0.4rem 0.5rem 0.4rem 0;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+
+  .star-table td:first-child { color: var(--white); font-weight: 600; }
+  .star-table tr:last-child td { border-bottom: none; }
+
+  .ls-coords {
+    margin-top: 1rem;
+    padding: 0.7rem 0.9rem;
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--entry-color, var(--green));
+    border-radius: 0 8px 8px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    background: rgba(167,139,250,0.05);
+  }
+
+  .ls-coords-label {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    flex-shrink: 0;
+  }
+
+  .ls-coords-value {
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    color: var(--entry-color, var(--green));
+    text-align: right;
+  }
+
+  /* ── FOOTER ── */
+  .guide-footer {
+    position: relative;
+    z-index: 2;
+    padding: 2rem 2.5rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer-text { font-size: 0.875rem; color: var(--secondary); line-height: 1.7; max-width: 600px; }
+
+  .footer-ls {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 0.05em;
+    text-shadow: 0 0 24px rgba(251,191,36,0.4);
+  }
+
+  @media (max-width: 600px) {
+    .masthead { grid-template-columns: 1fr; padding: 2rem 1.5rem 1.5rem; }
+    .masthead-right { text-align: left; }
+    .intro-band { padding: 1.2rem 1.5rem; }
+    .entry { margin: 0.5rem; padding: 1rem; }
+    .field-grid { grid-template-columns: 1fr; }
+    .guide-footer { padding: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="ss-nav ss-nav--bleed" style="--nav-accent:#4ade80;" aria-label="Star Stuff collection">
+  <a class="ss-nav-home" href="index.html"><span class="ss-star" aria-hidden="true">★</span> stuff</a>
+  <span class="ss-nav-links">
+    <a class="ss-nav-prev" href="elements-field-guide.html"><span class="ss-nav-arrow" aria-hidden="true">‹</span> <span class="ss-nav-label">The Elements</span></a>
+    <a class="ss-nav-next" href="ls-playlist.html"><span class="ss-nav-label">Playlist</span> <span class="ss-nav-arrow" aria-hidden="true">›</span></a>
+  </span>
+</nav>
+
+<!-- ── MASTHEAD ── -->
+<header class="masthead">
+  <div>
+    <p class="masthead-eyebrow">Stimpunks Foundation · L★S · Field Guide No. 3</p>
+    <h1 class="masthead-title">A Field Guide to<br><em>Life in Impossible Places</em></h1>
+    <p class="masthead-sub">Eight kinds of life thriving where we assume nothing could. The trick is never grit — it's fit. Each entry names the condition as extreme, and never the organism, because the mismatch is the story, and "broken" is usually just the wrong environment.</p>
+  </div>
+  <div class="masthead-right">
+    <span class="masthead-ls">L★S</span>
+  </div>
+</header>
+
+<!-- ── INTRO BAND ── -->
+<div class="intro-band">
+  <div class="intro-note">
+    <strong>How to use this guide</strong>
+    Each entry names the condition, how it reads to us versus to the organism, the strategy behind the fit, key data, and full field notes. Click any entry to open its notes.
+  </div>
+  <div class="intro-note">
+    <strong>On the word "extreme"</strong>
+    Extreme is a comparison, and the thing it compares to is us. To a tardigrade or a salt-loving microbe, home is not extreme — it is simply home. We name the conditions extreme, never the life. Broken systems, not broken organisms.
+  </div>
+  <div class="intro-note">
+    <strong>Not an inspiration</strong>
+    We are not here to marvel at anything "overcoming" its environment. These lives aren't being brave; they fit their place the way you fit yours. Survival by rest, by partnership, by another chemistry is design meeting its context — not grit, and not a lesson you owe anyone.
+  </div>
+</div>
+
+<!-- ── FIELD ENTRIES ── -->
+<main class="field-grid" id="grid"></main>
+
+<!-- ── FOOTER ── -->
+<footer class="guide-footer">
+  <p class="footer-text">Extremophiles are how we decide where life can exist — every one of them widens the map, and the search for life beyond Earth is really a search for their cousins. They are also a standing rebuttal: "too extreme for life" has been wrong every time we've actually checked. The conditions are extreme. The life is just at home. (Some mechanisms here — like radiosynthesis in fungi — are still being studied; where the science is unsettled, we say so.)</p>
+  <span class="footer-ls">L★S</span>
+</footer>
+
+<script>
+const ENTRIES = [
+  {
+    id: 'tardigrade',
+    name: 'The One Who Waits',
+    common: 'Tardigrade',
+    identity: 'Tardigrade · water bear',
+    headline: '−272°C to 150°C · vacuum · at rest',
+    color: '#4ade80',
+    axis: 'Temperature', top: '150°', bottom: '−272°',
+    us: [0.44, 0.55], them: [0.03, 0.97],
+    brief: 'Half a millimetre long, and able to outlast vacuum, radiation, and years without water — not by toughing it out, but by stopping. It dries into a suspended grain called a tun, near-zero metabolism, and waits for conditions to change.',
+    tags: ['dormancy', 'rest is a strategy', 'vacuum', 'the tun'],
+    facts: [
+      { condition: 'Vacuum of space', tous: 'lethal in seconds', tothem: 'survivable, at rest' },
+      { condition: 'Ionizing radiation', tous: '~5 Gy can kill us', tothem: 'tolerates ~1000× that' },
+      { condition: 'Losing all water', tous: 'fatal', tothem: 'the cue to pause' },
+      { condition: 'The method', tous: 'endure, or fail', tothem: 'suspend, and wait' },
+    ],
+    home: 'damp moss & lichen · dormant when dry · L★S 001',
+    notes: `The tardigrade is famous for surviving things that would kill almost anything — the open vacuum of space (it was among the first animals shown to survive it, on an orbital experiment in 2007), radiation at a thousand times a lethal human dose, temperatures near absolute zero. It is usually filed under "toughest animal alive."
+
+But look at <em>how</em>, because the how is the whole point. It does none of this while active and striving. It survives by <strong>drying into a tun</strong> — expelling most of its water, folding down to almost no metabolism, and going still until the world becomes livable again. It doesn't power through. It pauses.
+
+That is worth sitting with. The most durable animal we know of endures by <em>resting</em> — by treating dormancy as a legitimate state of being, not a failure to keep going. Not every survival is a fight. Some is knowing when to stop the clock and wait for a better day.`,
+  },
+  {
+    id: 'lichen',
+    name: 'The Partnership',
+    common: 'Lichen',
+    identity: 'Lichen · fungus + alga',
+    headline: 'bare rock · desiccation · even open space',
+    color: '#5fd0a8',
+    axis: 'Moisture', top: 'soaked', bottom: 'vacuum',
+    us: [0.55, 0.82], them: [0.02, 0.98],
+    brief: 'Not one organism but at least two — a fungus housing an alga or cyanobacterium — living so closely they were mistaken for a single species for centuries. Together they colonize bare rock, and have survived unprotected exposure to space.',
+    tags: ['symbiosis', 'never one thing', 'bare rock', 'interdependence'],
+    facts: [
+      { condition: 'Total drought', tous: 'wilt, then die', tothem: 'dry out, then wait' },
+      { condition: 'Bare rock, no soil', tous: 'nothing to live on', tothem: 'a place to begin' },
+      { condition: 'Open space (vacuum, UV)', tous: 'lethal', tothem: 'survived, in orbital trials' },
+      { condition: 'The method', tous: 'go it alone', tothem: 'never one thing' },
+    ],
+    home: 'rock, bark, tundra · a partnership · L★S 002',
+    notes: `A lichen is not a thing; it is a <em>relationship</em>. A fungus provides structure and water-holding; a photosynthesizing partner — a green alga, a cyanobacterium, sometimes more than one, and often a yeast nobody noticed until recently — provides food. Neither could live on bare rock alone. Together they are one of the toughest, most patient colonizers on Earth.
+
+They tolerate near-total desiccation by simply going dormant when dry, and reviving when wet. In European Space Agency experiments, lichens were bolted to the outside of a spacecraft and exposed to raw space — vacuum, radiation, the works — and came back alive.
+
+This is the point <em>You Were Never One Thing</em> keeps making, written across a rock face: the resilience isn't in any single organism. It's in the partnership. What looks like one hardy individual is a collaboration that decided not to face the impossible alone.`,
+  },
+  {
+    id: 'tubeworms',
+    name: 'The Sunless Economy',
+    common: 'Vent tubeworms',
+    identity: 'Riftia · vent tubeworm',
+    headline: 'no light · crushing pressure · sulfide',
+    color: '#f472b6',
+    axis: 'Sunlight', top: 'full sun', bottom: 'no light',
+    us: [0.5, 1.0], them: [0.0, 0.12],
+    brief: 'Two metres tall, rooted around deep-sea vents in total darkness, with no mouth and no gut. They farm bacteria inside their own bodies that turn the vent\'s toxic chemistry into food — an entire ecosystem that owes nothing to the sun.',
+    tags: ['chemosynthesis', 'the unseen economy', 'deep sea', 'symbiosis'],
+    facts: [
+      { condition: 'No sunlight, ever', tous: 'no food web', tothem: 'no problem' },
+      { condition: 'Toxic hydrogen sulfide', tous: 'poison', tothem: 'fuel (via symbionts)' },
+      { condition: 'Crushing pressure', tous: 'fatal', tothem: 'ambient' },
+      { condition: 'The economy', tous: 'runs on the sun', tothem: 'runs on chemistry' },
+    ],
+    home: 'hydrothermal vents · 2,500 m down · L★S 003',
+    notes: `Until 1977, textbooks agreed that all life ultimately ran on sunlight. Then a submersible reached the Galápagos Rift and found dense gardens of giant tubeworms crowded around hydrothermal vents in total darkness, kilometres below any sunbeam. The rule was simply wrong.
+
+An adult tubeworm has no mouth and no digestive tract. Instead it houses billions of bacteria inside a special organ and feeds them the hydrogen sulfide venting from the seafloor — a compound that is lethal poison to us. The bacteria turn that chemistry into food; the worm's blood-red plume is packed with a special hemoglobin that carries both oxygen and sulfide at once.
+
+<em>An entire thriving economy, running on an energy source and an infrastructure the surface has never seen and does not depend on.</em> Not a lesser life for lacking the sun — a whole different, self-sufficient world, getting on fine in the dark.`,
+  },
+  {
+    id: 'radiotrophic',
+    name: 'The One That Eats the Poison',
+    common: 'Radiotrophic fungi',
+    identity: 'Radiotrophic fungi · Chernobyl',
+    headline: 'grows toward radiation · reactor walls',
+    color: '#a78bfa',
+    axis: 'Radiation', top: 'reactor', bottom: 'background',
+    us: [0.0, 0.12], them: [0.55, 1.0],
+    brief: 'Black, melanin-rich fungi found thriving on the walls of the Chernobyl reactor — and apparently growing toward the radiation. Evidence suggests they use melanin to turn ionizing radiation into usable energy, the way plants use chlorophyll for light.',
+    tags: ['radiotropism', "one's poison, another's food", 'melanin', 'reclamation'],
+    facts: [
+      { condition: 'Reactor-core radiation', tous: 'lethal', tothem: 'apparently, food' },
+      { condition: 'A poisoned exclusion zone', tous: 'uninhabitable', tothem: 'habitat' },
+      { condition: 'Melanin', tous: 'sunscreen', tothem: 'perhaps an energy antenna' },
+      { condition: 'The lesson', tous: "one being's poison —", tothem: "— another's nourishment" },
+    ],
+    home: 'reactor walls, hot soils · the ruins · L★S 004',
+    notes: `Inside one of the most radioactive places humans have ever made, something was growing. Black fungi coat the walls of the Chernobyl reactor, and studies found some strains grow <em>toward</em> radiation sources — a behavior researchers named radiotropism.
+
+The leading hypothesis is <strong>radiosynthesis</strong>: that the fungi use melanin, the same pigment that darkens our skin, to capture ionizing radiation and convert it into chemical energy, roughly the way a leaf uses chlorophyll to capture light. The mechanism is still debated and being studied — but the fungi are unmistakably at home where we cannot go.
+
+The reframe writes itself: <em>what is poison to one living thing can be food to another.</em> "Harmful" is not a property of a place alone; it's a relationship between a place and a body. A ruin to us can be a habitat — even a feast — to someone built differently.`,
+  },
+  {
+    id: 'halophiles',
+    name: 'The Salt Dwellers',
+    common: 'Halophiles',
+    identity: 'Halophiles · Halobacterium',
+    headline: 'saturated brine · 10× seawater',
+    color: '#fbbf24',
+    axis: 'Salinity', top: 'brine', bottom: 'fresh',
+    us: [0.0, 0.15], them: [0.72, 1.0],
+    brief: 'Microbes that need brine so concentrated it would sterilize almost anything else — the Dead Sea, salt flats, the pink evaporation ponds. That vivid pink is not lifeless water. The pink is them, in the millions, exactly where they belong.',
+    tags: ['salt-loving', 'the word "should"', 'brine', 'the pink lakes'],
+    facts: [
+      { condition: 'Saturated brine', tous: 'sterilizing', tothem: 'home' },
+      { condition: 'Losing water to salt', tous: 'desiccation, death', tothem: 'managed, routinely' },
+      { condition: 'A pink dead-looking lake', tous: 'lifeless', tothem: 'crowded (the pink is life)' },
+      { condition: 'The word "should"', tous: '"salt should sterilize"', tothem: 'doing a lot of work' },
+    ],
+    home: 'salt flats, brine pools · the pink water · L★S 005',
+    notes: `Extreme salt kills most life by pulling the water straight out of it. So high-salt places "should" be sterile. That word — <em>should</em> — is doing an enormous amount of quiet work, and halophiles spend their whole lives contradicting it.
+
+They thrive in brine up to ten times saltier than the sea, in the Dead Sea and the salt flats and the industrial evaporation ponds. They balance the osmotic pull by loading their own cells with salts to match, so nothing gets drawn out. The startling pink of those waters — the color that reads to us as chemical and dead — is the organisms themselves, pigment and all, packed in by the million.
+
+<strong>"Should" is a statement about a default, dressed up as a law of nature.</strong> The places we're sure are lifeless are, often, simply full of a life we weren't the measure for.`,
+  },
+  {
+    id: 'thermophiles',
+    name: 'The Gift from the Boiling Spring',
+    common: 'Thermophiles',
+    identity: 'Thermophiles · Thermus aquaticus',
+    headline: 'thrives near boiling · ~70°C optimal',
+    color: '#fb923c',
+    axis: 'Temperature', top: '100°C', bottom: 'cool',
+    us: [0.3, 0.46], them: [0.62, 0.9],
+    brief: 'Microbes at home in near-boiling hot springs — water we could not touch. One of them, pulled from a Yellowstone pool a scientist was told held nothing worth studying, gave molecular biology the enzyme that makes DNA testing possible.',
+    tags: ['heat-loving', 'the margin is foundational', 'hot springs', 'PCR'],
+    facts: [
+      { condition: '~70°C water', tous: 'scalding', tothem: 'optimal' },
+      { condition: 'A hot spring dismissed as barren', tous: 'a curiosity', tothem: 'a goldmine' },
+      { condition: 'Its enzyme, Taq', tous: '—', tothem: 'made PCR possible' },
+      { condition: 'The lesson', tous: 'the margin is fringe', tothem: 'the margin was foundational' },
+    ],
+    home: 'hot springs, geysers · the scalding pools · L★S 006',
+    notes: `Hot springs were long assumed too hostile to bother studying. Then, in the 1960s, Thomas Brock started looking closely at the boiling pools of Yellowstone and found them teeming — including a heat-loving microbe he named <em>Thermus aquaticus</em>, happiest around 70°C.
+
+Decades later, that organism's heat-stable enzyme — Taq polymerase — became the engine of PCR, the technique that copies DNA and underpins modern genetics, forensics, and the tests that tracked a global pandemic. <strong>A creature from a pool everyone had written off turned out to be foundational infrastructure for the whole field.</strong>
+
+There's a pattern here worth naming. The margins — the places and beings the mainstream dismisses as too fringe to matter — are, over and over, exactly where the essential things turn out to have been waiting.`,
+  },
+  {
+    id: 'psychrophiles',
+    name: 'The Clear-Blooded',
+    common: 'Icefish',
+    identity: 'Psychrophiles · Antarctic icefish',
+    headline: '−1.9°C seawater · antifreeze · no hemoglobin',
+    color: '#22d3ee',
+    axis: 'Temperature', top: 'warm', bottom: '−2°C',
+    us: [0.4, 0.62], them: [0.02, 0.28],
+    brief: 'Fish that live in water cold enough to freeze their blood — so they make their own antifreeze. The icefish among them went further and abandoned red blood cells entirely: clear-blooded, a body plan that would be fatal anywhere warmer, and works perfectly here.',
+    tags: ['cold-loving', 'a different body plan', 'antifreeze', 'clear blood'],
+    facts: [
+      { condition: '−1.9°C seawater', tous: 'freezing', tothem: 'comfortable' },
+      { condition: 'Ice forming in the blood', tous: 'fatal', tothem: 'blocked by antifreeze proteins' },
+      { condition: 'No hemoglobin (clear blood)', tous: '"impossible"', tothem: 'works fine, here' },
+      { condition: 'The verdict', tous: 'a broken body plan', tothem: 'a fitted one' },
+    ],
+    home: 'Southern Ocean · under the ice · L★S 007',
+    notes: `The water around Antarctica sits at about −1.9°C, below the point where ordinary blood would freeze solid. The fish that live there make <strong>antifreeze glycoproteins</strong> that bind to tiny ice crystals and stop them growing — a chemistry evolved precisely for a place we'd call unlivable.
+
+The icefish took it even further. They are the only vertebrates known to have <em>no hemoglobin</em> — no red blood cells at all. Their blood runs clear. By any warm-water standard this is a catastrophic defect; a body simply should not be able to do that. But in freezing, oxygen-rich water, with big hearts and oxygen absorbed straight through the skin, it works.
+
+Read cold, the icefish is broken: it's missing the thing every textbook says a vertebrate needs. Read in its own home, it is <em>fitted</em> — a different design for a different world. The deficit was never in the fish. It was in judging it by someone else's conditions.`,
+  },
+  {
+    id: 'endoliths',
+    name: 'The Slow Ones',
+    common: 'Endoliths',
+    identity: 'Endoliths · rock-dwellers',
+    headline: 'inside solid rock · millennia per generation',
+    color: '#c4b5d4',
+    axis: 'Metabolic pace', top: 'fast', bottom: 'millennia',
+    us: [0.6, 0.9], them: [0.0, 0.15],
+    brief: 'Microbes that live inside solid rock, deep underground, on almost no energy — some may take centuries or millennia between generations. Barely metabolizing, easy to mistake for non-living, they are among the best models for where life might hide on Mars.',
+    tags: ['deep biosphere', 'a different tempo', 'inside rock', 'astrobiology'],
+    facts: [
+      { condition: 'Inside solid rock', tous: 'no room for life', tothem: 'pore space enough' },
+      { condition: 'A generation per millennium', tous: 'not really living', tothem: 'fully alive' },
+      { condition: 'Almost no available energy', tous: 'starvation', tothem: 'a workable pace' },
+      { condition: 'The tell', tous: 'too slow to count', tothem: 'time by another clock' },
+    ],
+    home: 'deep crust, rock pores · the slow dark · L★S 008',
+    notes: `Kilometres down, inside what looks like solid stone, life persists in the pore spaces of the rock. With almost no energy and almost no water, these microbes run their chemistry so slowly that some estimates put centuries or even millennia between one generation and the next. Barely ticking over, they can be hard to tell apart from the non-living rock around them.
+
+But slow is not the same as dead. They are metabolizing, repairing, persisting — living, just on a clock scaled to geology instead of to our days. Disability communities have a name for this idea: <em>crip time</em> — time that runs by the body's own pace rather than the factory's. The endoliths keep crip time at a planetary scale.
+
+And it matters far beyond Earth: this quiet, sheltered, ultra-slow way of living is one of the best templates we have for where life could be waiting under the surface of Mars. <strong>A pace we'd dismiss as barely alive may be exactly the pace that survives where nothing fast could.</strong>`,
+  }
+];
+
+function makeSVG(entry) {
+  const c = entry.color;
+  const bx = 42, bw = 12, top = 18, bot = 80, H = bot - top;
+  const y = f => bot - f * H;
+  const cx = bx + bw / 2;
+
+  const tHi = y(entry.them[1]), tLo = y(entry.them[0]);
+  const uHi = y(entry.us[1]),   uLo = y(entry.us[0]);
+  const tMid = (tHi + tLo) / 2, uMid = (uHi + uLo) / 2;
+
+  let s = `<svg viewBox="0 0 90 92" xmlns="http://www.w3.org/2000/svg" class="fit-svg" aria-hidden="true">`;
+  // axis label
+  s += `<text x="45" y="9" text-anchor="middle" font-family="Atkinson Hyperlegible Next, sans-serif" font-size="4.6" letter-spacing="0.4" fill="rgba(196,181,212,0.9)">${entry.axis.toUpperCase()}</text>`;
+  // top / bottom endpoint labels
+  s += `<text x="${cx}" y="15.5" text-anchor="middle" font-family="Atkinson Hyperlegible Next, sans-serif" font-size="4.4" fill="rgba(184,174,208,0.9)">${entry.top}</text>`;
+  s += `<text x="${cx}" y="88" text-anchor="middle" font-family="Atkinson Hyperlegible Next, sans-serif" font-size="4.4" fill="rgba(184,174,208,0.9)">${entry.bottom}</text>`;
+  // track
+  s += `<rect x="${bx}" y="${top}" width="${bw}" height="${H}" rx="6" fill="rgba(167,139,250,0.10)" stroke="rgba(167,139,250,0.25)" stroke-width="0.5"/>`;
+  // them band (accent)
+  s += `<rect x="${bx}" y="${tHi.toFixed(1)}" width="${bw}" height="${(tLo - tHi).toFixed(1)}" rx="5" fill="${c}" opacity="0.85"/>`;
+  // us bracket (muted, left)
+  s += `<rect x="${bx - 11}" y="${uHi.toFixed(1)}" width="5" height="${(uLo - uHi).toFixed(1)}" rx="2" fill="rgba(196,181,212,0.55)"/>`;
+  // labels
+  s += `<text x="${bx - 12}" y="${(uMid + 1.5).toFixed(1)}" text-anchor="end" font-family="Atkinson Hyperlegible Next, sans-serif" font-size="4.6" fill="rgba(196,181,212,0.95)">us</text>`;
+  s += `<text x="${bx + bw + 3}" y="${(tMid + 1.5).toFixed(1)}" text-anchor="start" font-family="Atkinson Hyperlegible Next, sans-serif" font-size="4.6" font-weight="700" fill="${c}">them</text>`;
+  s += `</svg>`;
+  return s;
+}
+
+function renderGrid() {
+  const grid = document.getElementById('grid');
+  grid.innerHTML = '';
+
+  ENTRIES.forEach((entry, idx) => {
+    const el = document.createElement('article');
+    el.className = 'entry';
+    el.style.setProperty('--entry-color', entry.color);
+    el.setAttribute('aria-expanded', 'false');
+
+    const factRows = entry.facts.map(f =>
+      `<tr><td>${f.condition}</td><td>${f.tous}</td><td>${f.tothem}</td></tr>`
+    ).join('');
+
+    const tags = entry.tags.map(t => `<span class="tag">${t}</span>`).join('');
+
+    el.innerHTML = `
+      <div class="entry-header">
+        ${makeSVG(entry)}
+        <div class="entry-meta">
+          <div class="entry-number">L★S · ${String(idx+1).padStart(3,'0')}</div>
+          <h2 class="entry-name">${entry.name}</h2>
+          <div class="entry-traditional">${entry.identity}</div>
+          <div class="entry-coords">${entry.headline}</div>
+        </div>
+      </div>
+      <p class="entry-brief">${entry.brief}</p>
+      <div class="entry-tags">${tags}</div>
+      <div class="entry-expand">▸ Field notes</div>
+      <div class="entry-notes">
+        <div class="notes-heading">Field notes · ${entry.common}</div>
+        <div class="notes-body">${entry.notes.replace(/\n\n/g,'</p><p>').replace(/^/,'<p>').replace(/$/,'</p>')}</div>
+        <table class="star-table" aria-label="How the conditions read for ${entry.common}">
+          <thead><tr><th>Condition</th><th>To us</th><th>To them</th></tr></thead>
+          <tbody>${factRows}</tbody>
+        </table>
+        <div class="ls-coords">
+          <span class="ls-coords-label">Home, not hardship</span>
+          <span class="ls-coords-value">${entry.home}</span>
+        </div>
+      </div>
+    `;
+
+    el.addEventListener('click', () => {
+      const isOpen = el.classList.contains('open');
+      el.classList.toggle('open', !isOpen);
+      el.setAttribute('aria-expanded', String(!isOpen));
+      el.querySelector('.entry-expand').textContent = isOpen ? '▸ Field notes' : '▾ Field notes';
+    });
+
+    grid.appendChild(el);
+  });
+}
+
+renderGrid();
+</script>
+</body>
+</html>
