@@ -52,6 +52,15 @@ Everything shares one visual language, tuned for accessibility first:
 - **Palette:** cosmic dark ground `#0a0a14`, card `#0f0f2a`, with an accent set of purple `#a78bfa`, pink `#f472b6`, gold `#fbbf24`, cyan `#22d3ee`, and green `#4ade80`.
 - **Principles:** full-opacity body text (no faded grays), generous line height, `8px` card radius, a `3px` colored left border as a recurring motif, and a starfield rendered in pure CSS.
 
+### A note on "Cavendish" (naming trap)
+
+Two senses appear in the collection and must never be conflated:
+
+- **Cavendish banana** — the genetic-clone *monoculture*, used as a cautionary tale: uniformity is efficient but brittle, one blight from collapse. *The Universe Runs on Difference* (Zine No. 8) leans on this.
+- **Cavendish Space** — Stimpunks' concept for environments *built for diversity* (caves, campfires, and watering holes for dandelions, tulips, and orchids). It is the **answer** to monoculture, not an example of it.
+
+When writing or editing, keep the banana as the problem and Cavendish Space as the response. Saying "we refuse to build Cavendish Space" is inverted and wrong.
+
 ## Hosting
 
 The collection is live at **[starstuff.earth](https://starstuff.earth/)**, deployed from this repository via **Netlify**. Everything is static with no build step, so Netlify serves the files as-is — pushing to `main` publishes the update.
