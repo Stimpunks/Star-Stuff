@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0a0a14">
+<link rel="canonical" href="https://starstuff.earth/aurora-zine.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta name="description" content="AURORA as a way of being star stuff — the alien who came home by gathering a tribe of Weirdos, not by being cured into fitting. On feeling alien, the mothership, Warriors and Weirdos, refusing the cure, stimming in the open, and the way back to Earth. With embedded performances.">
+<!-- Open Graph / link unfurl -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Star Stuff · Stimpunks Foundation">
+<meta property="og:url" content="https://starstuff.earth/aurora-zine.html">
+<meta property="og:title" content="Warriors and Weirdos">
+<meta property="og:description" content="AURORA as a way of being star stuff — the alien who came home by gathering a tribe of Weirdos, not by being cured into fitting. On feeling alien, the mothership, Warriors and Weirdos, refusing the cure, stimming in the open, and the way back to Earth. With embedded performances.">
+<meta property="og:image" content="https://starstuff.earth/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A rainbow-hued cosmic image — we are all made of star stuff.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Warriors and Weirdos">
+<meta name="twitter:description" content="AURORA as a way of being star stuff — the alien who came home by gathering a tribe of Weirdos. On the mothership, refusing the cure, stimming in the open, and the way back to Earth.">
+<meta name="twitter:image" content="https://starstuff.earth/og-card.jpg">
+<title>Warriors and Weirdos — Stimpunks Zine No. 13</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="starstuff.css">
+<style>
+  :root {
+    --void:  #07070f;
+    --deep:  #0d0d1a;
+    --page:  #0f0f1c;
+    --violet:#a78bfa;
+    --pink:  #f472b6;
+    --gold:  #fbbf24;
+    --cyan:  #22d3ee;
+    --green: #4ade80;
+    --star-white: #f4f2fb;
+    --stardust:   #d4d0e4;
+    --dim:   #8a86a0;
+    --dim2:  #63607a;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--void);
+    font-family: 'Atkinson Hyperlegible', system-ui, sans-serif;
+    color: var(--star-white);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── STARFIELD (aurora: green · cyan · violet) ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 8% 12%, rgba(74,222,128,0.8) 0%, transparent 100%),
+      radial-gradient(1px 1px at 22% 38%, rgba(244,244,251,0.6) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 44% 9%, rgba(34,211,238,0.75) 0%, transparent 100%),
+      radial-gradient(1px 1px at 61% 68%, rgba(167,139,250,0.6) 0%, transparent 100%),
+      radial-gradient(2px 2px at 74% 28%, rgba(244,244,251,0.55) 0%, transparent 100%),
+      radial-gradient(1px 1px at 84% 54%, rgba(74,222,128,0.7) 0%, transparent 100%),
+      radial-gradient(1px 1px at 91% 79%, rgba(244,244,251,0.7) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 4% 58%, rgba(34,211,238,0.55) 0%, transparent 100%),
+      radial-gradient(1px 1px at 34% 84%, rgba(244,244,251,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 54% 48%, rgba(167,139,250,0.4) 0%, transparent 100%),
+      radial-gradient(2px 2px at 19% 88%, rgba(74,222,128,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 69% 4%, rgba(244,244,251,0.8) 0%, transparent 100%),
+      radial-gradient(1px 1px at 47% 62%, rgba(34,211,238,0.5) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 30% 20%, rgba(244,244,251,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 77% 88%, rgba(167,139,250,0.5) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .zine-shell { position: relative; z-index: 1; max-width: 820px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+
+  .spectrum-line { height: 2px; border: none; border-radius: 2px; background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); }
+
+  /* ── NAV ── */
+  .nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2.5rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(167,139,250,0.2); }
+  .nav-brand { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--dim); }
+  .nav-controls { display: flex; gap: 0.5rem; align-items: center; }
+  .nav-btn { background: none; border: 1px solid rgba(74,222,128,0.35); color: var(--stardust); font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.15em; padding: 0.4rem 0.85rem; border-radius: 2px; cursor: pointer; transition: all 0.2s ease; text-transform: uppercase; }
+  .nav-btn:hover { background: rgba(74,222,128,0.15); border-color: rgba(74,222,128,0.6); color: var(--star-white); }
+  .nav-btn.active { background: rgba(74,222,128,0.20); border-color: var(--green); color: var(--star-white); }
+  .page-counter { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.2em; color: var(--dim2); }
+
+  .spread { display: none; animation: fadeIn 0.5s ease forwards; }
+  .spread.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ── COVER ── */
+  .cover-spread {
+    position: relative; min-height: 520px; border-radius: 4px; overflow: hidden;
+    background:
+      radial-gradient(ellipse at 78% 26%, rgba(74,222,128,0.16) 0%, transparent 52%),
+      radial-gradient(ellipse at 22% 22%, rgba(34,211,238,0.11) 0%, transparent 52%),
+      radial-gradient(ellipse at 66% 84%, rgba(167,139,250,0.10) 0%, transparent 52%),
+      radial-gradient(ellipse at 28% 78%, rgba(34,211,238,0.07) 0%, transparent 52%),
+      var(--deep);
+    border: 1px solid rgba(167,139,250,0.25);
+    box-shadow: inset 0 0 80px rgba(74,222,128,0.05), 0 0 0 4px rgba(255,255,255,0.03);
+    display: flex; flex-direction: column; justify-content: flex-end; padding: 3rem;
+  }
+  .cover-motif { position: absolute; top: -10px; right: -20px; width: 340px; height: 340px; opacity: 0.85; pointer-events: none; }
+  .cover-issue { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.5em; text-transform: uppercase; color: var(--green); margin-bottom: 1.5rem; }
+  .cover-title { font-weight: 700; font-size: clamp(2.2rem, 6.4vw, 3.9rem); line-height: 1.03; color: var(--star-white); letter-spacing: -0.02em; margin-bottom: 0.9rem; }
+  .cover-title .spectrum-word { background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .cover-subtitle { font-size: 1rem; color: var(--stardust); opacity: 0.85; margin-bottom: 2rem; max-width: 480px; line-height: 1.55; }
+  .cover-rule { width: 220px; max-width: 60%; margin-bottom: 1.3rem; }
+  .cover-meta { display: flex; gap: 2rem; align-items: center; }
+  .cover-ls { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 1.4rem; color: var(--gold); letter-spacing: 0.05em; }
+  .cover-meta-text { font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--dim2); line-height: 1.9; }
+  .cover-corner { position: absolute; top: 2rem; right: 2.5rem; text-align: right; }
+  .cover-corner-num { font-weight: 700; font-size: 4.5rem; line-height: 1; color: var(--green); opacity: 0.24; }
+  .cover-corner-label { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--cyan); display: block; margin-top: -0.3rem; }
+
+  /* ── INTERIOR ── */
+  .interior { background: var(--page); border: 1px solid rgba(167,139,250,0.15); border-radius: 4px; overflow: hidden; min-height: 480px; }
+  .spread-2col { display: grid; grid-template-columns: 1fr 1fr; min-height: 480px; }
+  .spread-left, .spread-right { padding: 3rem 2.4rem; position: relative; }
+  .spread-left { border-right: 1px solid rgba(167,139,250,0.12); }
+
+  .eyebrow { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--green); margin-bottom: 1.1rem; }
+  .body-text { font-size: 0.98rem; line-height: 1.72; color: var(--stardust); }
+  .body-text p { margin-bottom: 1rem; }
+  .body-text p:last-child { margin-bottom: 0; }
+  .body-text strong { font-weight: 700; color: var(--star-white); }
+  .body-text em { font-style: italic; color: var(--star-white); }
+  .body-text a { color: var(--green); text-decoration: none; border-bottom: 1px solid rgba(74,222,128,0.35); }
+  .body-text a:hover { border-bottom-color: var(--green); color: var(--star-white); }
+  .body-text .violet { color: var(--violet); font-weight: 700; }
+  .body-text .pink { color: var(--pink); font-weight: 700; }
+  .body-text .gold { color: var(--gold); font-weight: 700; }
+  .body-text .cyan { color: var(--cyan); font-weight: 700; }
+  .body-text .green { color: var(--green); font-weight: 700; }
+
+  .spread-heading { font-weight: 700; font-size: 1.9rem; line-height: 1.12; color: var(--star-white); margin-bottom: 1.1rem; letter-spacing: -0.01em; }
+  .spread-heading .spectrum-word { background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .rule { width: 40px; margin: 1rem 0; }
+
+  .pull-quote { font-size: 1.18rem; font-weight: 700; line-height: 1.4; color: var(--star-white); border-left: 3px solid var(--green); padding-left: 1.1rem; margin: 1.4rem 0; }
+  .pull-quote.gold { border-left-color: var(--gold); }
+  .pull-quote.violet { border-left-color: var(--violet); }
+  .pull-quote.cyan { border-left-color: var(--cyan); }
+  .pull-quote.pink { border-left-color: var(--pink); }
+  .pull-quote .attr { display: block; font-family: 'Space Mono', monospace; font-size: 0.6rem; font-weight: 400; letter-spacing: 0.08em; color: var(--dim); margin-top: 0.6rem; }
+
+  /* ── QUOTE BLOCK ── */
+  .blockquote { border-left: 3px solid var(--cyan); padding-left: 1.15rem; margin: 0.4rem 0 1.3rem; }
+  .blockquote p { font-size: 1.05rem; line-height: 1.5; color: var(--star-white); font-weight: 700; margin-bottom: 0.7rem; }
+  .blockquote .attr { font-family: 'Space Mono', monospace; font-size: 0.56rem; letter-spacing: 0.05em; color: var(--dim); line-height: 1.65; display: block; }
+  .formulation { font-size: 1.22rem; font-weight: 700; line-height: 1.32; color: var(--green); margin-top: 1.2rem; }
+
+  /* ── DIAGRAMS / CAPTIONS ── */
+  .diagram-caption { font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim); text-align: center; margin-top: 0.9rem; line-height: 1.9; }
+  .annotation { color: var(--cyan); }
+
+  /* ── VIDEO EMBEDS ── */
+  .video-wrap { display: flex; flex-direction: column; justify-content: center; height: 100%; gap: 1.4rem; }
+  .spread-video { position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 6px; border: 1px solid rgba(167,139,250,0.22); background: #000; }
+  .spread-video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+  /* ── REFUSALS ── */
+  .refusals { margin-top: 1.3rem; }
+  .refusal { font-size: 0.88rem; line-height: 1.5; color: var(--stardust); padding: 0.55rem 0; border-bottom: 1px solid rgba(167,139,250,0.1); display: flex; gap: 0.6rem; align-items: baseline; }
+  .refusal:last-child { border-bottom: none; }
+  .refusal-tag { font-family: 'Space Mono', monospace; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--pink); flex-shrink: 0; padding-top: 0.12rem; }
+  .refusal strong { color: var(--star-white); font-weight: 700; }
+
+  /* ── COLOPHON ── */
+  .colophon { padding: 3rem; display: flex; flex-direction: column; justify-content: space-between; min-height: 480px; background: radial-gradient(ellipse at 82% 18%, rgba(74,222,128,0.08) 0%, transparent 50%), radial-gradient(ellipse at 18% 85%, rgba(167,139,250,0.08) 0%, transparent 50%), var(--page); }
+  .colophon-top { border-bottom: 1px solid rgba(167,139,250,0.14); padding-bottom: 1.3rem; margin-bottom: 1.2rem; }
+  .colophon-ls { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 2.4rem; color: var(--gold); letter-spacing: 0.05em; display: block; margin-bottom: 0.4rem; }
+  .colophon-phrase { font-size: 0.92rem; font-weight: 700; color: var(--stardust); }
+  .series-list { display: flex; flex-direction: column; gap: 0.38rem; margin-bottom: 1.2rem; }
+  .series-item { font-size: 0.72rem; color: var(--dim); letter-spacing: 0.01em; display: flex; gap: 0.7rem; align-items: baseline; line-height: 1.45; }
+  .series-item.current { color: var(--green); font-weight: 700; }
+  .series-num { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim2); flex-shrink: 0; }
+  .series-item.current .series-num { color: var(--green); }
+  .reflect { border-top: 1px solid rgba(167,139,250,0.14); padding-top: 1rem; margin-bottom: 1.2rem; }
+  .reflect-label { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--green); margin-bottom: 0.65rem; }
+  .reflect-q { font-size: 0.86rem; line-height: 1.55; color: var(--stardust); margin-bottom: 0.55rem; }
+  .reflect-q:last-child { margin-bottom: 0; }
+  .colophon-body { font-size: 0.75rem; color: var(--dim); line-height: 1.75; margin-bottom: 1.2rem; }
+  .colophon-body a { color: var(--green); text-decoration: none; border-bottom: 1px solid rgba(74,222,128,0.35); }
+  .colophon-body a:hover { border-bottom-color: var(--green); }
+  .colophon-footer { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--dim); line-height: 2.2; border-top: 1px solid rgba(167,139,250,0.14); padding-top: 1rem; }
+
+  /* ── SPREAD FOOTER ── */
+  .spread-footer { display: flex; justify-content: space-between; align-items: center; padding: 0.9rem 2.4rem; border-top: 1px solid rgba(167,139,250,0.1); }
+  .spread-footer-left { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--dim); }
+  .spread-footer-right { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; color: var(--cyan); }
+
+  .twinkle { position: fixed; width: 3px; height: 3px; border-radius: 50%; animation: twinkle-anim 3s ease-in-out infinite; pointer-events: none; z-index: 0; }
+  @keyframes twinkle-anim { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.15; transform: scale(0.3); } }
+
+  @media (max-width: 600px) {
+    .spread-2col { grid-template-columns: 1fr; }
+    .spread-left { border-right: none; border-bottom: 1px solid rgba(167,139,250,0.12); }
+    .cover-spread { padding: 2rem; min-height: 420px; }
+    .cover-motif { width: 230px; height: 230px; top: -10px; right: -30px; opacity: 0.55; }
+    .cover-title { font-size: 2.15rem; }
+    .spread-heading { font-size: 1.55rem; }
+    .spread-left, .spread-right { padding: 2rem 1.5rem; }
+    .colophon { padding: 2rem 1.5rem; }
+  }
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Warriors and Weirdos","description":"AURORA as a way of being star stuff — the alien who came home by gathering a tribe of Weirdos, not by being cured into fitting. With embedded performances.","image":"https://starstuff.earth/og-card.jpg","url":"https://starstuff.earth/aurora-zine.html","mainEntityOfPage":"https://starstuff.earth/aurora-zine.html","author":{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/"},"publisher":{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/","logo":{"@type":"ImageObject","url":"https://starstuff.earth/og-card.jpg"}},"isPartOf":{"@type":"WebSite","name":"Star Stuff","url":"https://starstuff.earth/"},"about":{"@type":"Person","name":"AURORA (Aurora Aksnes)"}}</script>
+</head>
+<body>
+
+<div class="twinkle" style="top:7%;left:11%;background:var(--green);box-shadow:0 0 6px var(--green);animation-delay:-0.4s"></div>
+<div class="twinkle" style="top:19%;left:83%;background:var(--cyan);box-shadow:0 0 6px var(--cyan);animation-delay:-1.3s"></div>
+<div class="twinkle" style="top:52%;left:4%;background:var(--violet);box-shadow:0 0 6px var(--violet);animation-delay:-2.1s"></div>
+<div class="twinkle" style="top:71%;left:94%;background:var(--green);box-shadow:0 0 6px var(--green);animation-delay:-0.9s"></div>
+<div class="twinkle" style="top:88%;left:28%;background:var(--cyan);box-shadow:0 0 6px var(--cyan);animation-delay:-1.7s"></div>
+<div class="twinkle" style="top:38%;left:97%;background:var(--violet);box-shadow:0 0 6px var(--violet);animation-delay:-3.1s"></div>
+
+<div class="zine-shell">
+
+  <nav class="ss-nav" style="--nav-accent:#4ade80;" aria-label="Star Stuff collection">
+    <a class="ss-nav-home" href="index.html"><span class="ss-star" aria-hidden="true">★</span> stuff</a>
+    <span class="ss-nav-links">
+      <a class="ss-nav-prev" href="bowie-zine.html"><span class="ss-nav-arrow" aria-hidden="true">‹</span> <span class="ss-nav-label">Turn &amp; Face</span></a>
+      <a class="ss-nav-next" href="constellation-field-guide.html"><span class="ss-nav-label">Field Guide</span> <span class="ss-nav-arrow" aria-hidden="true">›</span></a>
+    </span>
+  </nav>
+
+  <nav class="nav">
+    <div class="nav-brand">Stimpunks · Zine No. 13</div>
+    <div class="nav-controls">
+      <button class="nav-btn" id="prev-btn" onclick="changePage(-1)">← prev</button>
+      <span class="page-counter" id="page-counter">1 / 8</span>
+      <button class="nav-btn" id="next-btn" onclick="changePage(1)">next →</button>
+    </div>
+  </nav>
+
+  <!-- ════ SPREAD 1: COVER ════ -->
+  <div class="spread active" id="spread-1">
+    <div class="cover-spread">
+      <svg class="cover-motif" viewBox="0 0 340 340" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <!-- aurora curtains -->
+        <g fill="none" stroke-linecap="round">
+          <path d="M-10 96 Q 80 52 170 92 T 350 88" stroke="rgba(74,222,128,0.45)" stroke-width="11"/>
+          <path d="M-10 120 Q 90 78 180 118 T 350 112" stroke="rgba(34,211,238,0.38)" stroke-width="9"/>
+          <path d="M-10 146 Q 80 108 170 146 T 350 140" stroke="rgba(167,139,250,0.34)" stroke-width="8"/>
+          <path d="M-10 172 Q 96 138 186 172 T 350 166" stroke="rgba(74,222,128,0.22)" stroke-width="6"/>
+        </g>
+        <!-- scattered stars -->
+        <g fill="#f4f2fb">
+          <circle cx="60" cy="46" r="2"/><circle cx="130" cy="30" r="1.6"/><circle cx="214" cy="40" r="2.2"/><circle cx="286" cy="60" r="1.8"/>
+          <circle cx="40" cy="210" r="1.6"/><circle cx="300" cy="200" r="1.8"/>
+        </g>
+        <g fill="rgba(251,191,36,0.9)"><circle cx="250" cy="24" r="2.4"/><circle cx="96" cy="70" r="1.8"/></g>
+        <!-- the tribe: a small gathered constellation of figures -->
+        <g stroke="rgba(34,211,238,0.4)" stroke-width="0.9" fill="none">
+          <path d="M120 250 L150 232 L182 250 L214 234 L150 232 M182 250 L150 280 L120 250 M182 250 L214 234"/>
+        </g>
+        <g fill="#f4f2fb">
+          <circle cx="120" cy="250" r="3"/>
+          <circle cx="150" cy="232" r="4.2"/>
+          <circle cx="182" cy="250" r="3.4"/>
+          <circle cx="214" cy="234" r="2.8"/>
+          <circle cx="150" cy="280" r="3"/>
+        </g>
+        <circle cx="150" cy="232" r="10" fill="rgba(74,222,128,0.16)"/>
+        <circle cx="182" cy="250" r="9" fill="rgba(167,139,250,0.14)"/>
+        <text x="167" y="306" font-family="Space Mono, monospace" font-size="8" letter-spacing="2" fill="rgba(34,211,238,0.7)" text-anchor="middle">a tribe that names itself</text>
+      </svg>
+
+      <div class="cover-corner">
+        <div class="cover-corner-num">13</div>
+        <span class="cover-corner-label">Weirdos</span>
+      </div>
+
+      <div class="cover-issue">Stimpunks Foundation · Zine No. 13</div>
+
+      <h1 class="cover-title">Warriors and<br><span class="spectrum-word">Weirdos</span></h1>
+
+      <p class="cover-subtitle">AURORA as a way of being star stuff — the alien who came home by gathering a tribe of weirdos, not by being cured into fitting</p>
+
+      <hr class="spectrum-line cover-rule">
+
+      <div class="cover-meta">
+        <div class="cover-ls">L★S</div>
+        <div class="cover-meta-text">
+          Love You Down<br>
+          To Your Star Stuff<br>
+          · open edition ·
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 2: A Different Kind of Human ════ -->
+  <div class="spread" id="spread-2">
+    <div class="interior">
+      <div class="spread-2col">
+        <div class="spread-left">
+          <div class="eyebrow">The alien in the room</div>
+          <h2 class="spread-heading">A different kind<br>of <span style="color:var(--cyan)">human</span></h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p>Aurora has said that as a child she always felt like an alien in this world — out of her own body, on the outside of the other kids, that she <em>never really felt like a girl</em>. Many of us know that feeling exactly: told, without words, that we're the wrong kind of human for the room we were born into.</p>
+          </div>
+          <div class="blockquote">
+            <p>When I was young, I used to always feel like an alien in this world.</p>
+            <span class="attr">AURORA</span>
+          </div>
+          <div class="body-text">
+            <p>Her song "A Different Kind of Human" (2019) takes that literally, and kindly — it imagines beings who come to Earth for the ones who don't fit. Difference named as <a href="https://stimpunks.org/glossary/alien/">alien</a>-ness, then turned: not a defect to correct, but evidence you belong somewhere real.</p>
+          </div>
+        </div>
+        <div class="spread-right">
+          <div class="video-wrap">
+            <div>
+              <div class="spread-video">
+                <iframe src="https://www.youtube-nocookie.com/embed/nSqTNfA7JJA" title="AURORA — A Different Kind of Human" loading="lazy" allowfullscreen></iframe>
+              </div>
+              <p class="diagram-caption">
+                &ldquo;A Different Kind of Human&rdquo; · 2019<br>
+                <span class="annotation">they came for the ones who don't fit</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Warriors and Weirdos · Stimpunks</span>
+        <span class="spread-footer-right">2</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 3: Mothership ════ -->
+  <div class="spread" id="spread-3">
+    <div class="interior">
+      <div class="spread-2col">
+        <div class="spread-left">
+          <div class="video-wrap">
+            <div>
+              <div class="spread-video">
+                <iframe src="https://www.youtube-nocookie.com/embed/gGj4VsgrHxA" title="AURORA — Mothership" loading="lazy" allowfullscreen></iframe>
+              </div>
+              <p class="diagram-caption">
+                &ldquo;Mothership&rdquo; · 2019<br>
+                <span class="annotation">a place where you feel more at home</span>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="spread-right">
+          <div class="eyebrow">Come with us</div>
+          <h2 class="spread-heading">The mothership<br>is <span style="color:var(--green)">coming</span></h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p>In Aurora's telling, the aliens don't come to conquer. They come to collect the people this planet was never built for, and carry them somewhere they can finally live together. What they say on arrival is the whole ethic of this zine:</p>
+          </div>
+          <div class="blockquote">
+            <p>Don't be scared, you're okay, you can come with us and you'll be safe.</p>
+            <span class="attr">AURORA · on "A Different Kind of Human"</span>
+          </div>
+          <div class="body-text">
+            <p>That's not escape from the world. It's the promise of a place where difference is the default — a mothership, a free space, a <a href="https://stimpunks.org/philosophy/find-your-people/">people to find</a>. The kind of room we try to build.</p>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Warriors and Weirdos · Stimpunks</span>
+        <span class="spread-footer-right">3</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 4: Warriors and Weirdos ════ -->
+  <div class="spread" id="spread-4">
+    <div class="interior">
+      <div class="spread-2col">
+        <div class="spread-left">
+          <div class="eyebrow">Name your people</div>
+          <h2 class="spread-heading">Warriors and<br><span style="color:var(--green)">weirdos</span></h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p>Aurora's fans have a name for themselves, and she uses it too:</p>
+          </div>
+          <div class="blockquote">
+            <p>We call ourselves Warriors and Weirdos.</p>
+            <span class="attr">AURORA</span>
+          </div>
+          <div class="body-text">
+            <p>It's the whole move in four words. <a href="https://stimpunks.org/glossary/weird/">Weird</a> stops being an insult the moment a people claims it as a name. Warrior stops being about violence and becomes about the daily courage of staying yourself. A tribe that names itself can't be shamed by the old names — and that is what we mean by <a href="https://stimpunks.org/philosophy/find-your-people/">find your people</a>.</p>
+          </div>
+          <div class="pull-quote">Weird is only an insult until a people makes it a name.</div>
+        </div>
+        <div class="spread-right">
+          <div class="video-wrap">
+            <div>
+              <div class="spread-video">
+                <iframe src="https://www.youtube-nocookie.com/embed/4CmcnWQ-754" title="AURORA — Warrior" loading="lazy" allowfullscreen></iframe>
+              </div>
+              <p class="diagram-caption">
+                &ldquo;Warrior&rdquo; · 2016<br>
+                <span class="annotation">the courage to stay yourself</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Warriors and Weirdos · Stimpunks</span>
+        <span class="spread-footer-right">4</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 5: No Cure for Me ════ -->
+  <div class="spread" id="spread-5">
+    <div class="interior">
+      <div class="spread-2col">
+        <div class="spread-left">
+          <div class="video-wrap">
+            <div>
+              <div class="spread-video">
+                <iframe src="https://www.youtube-nocookie.com/embed/K17df81RL9Y" title="AURORA — Cure For Me" loading="lazy" allowfullscreen></iframe>
+              </div>
+              <p class="diagram-caption">
+                &ldquo;Cure for Me&rdquo; · 2021<br>
+                <span class="annotation">there was never anything to fix</span>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="spread-right">
+          <div class="eyebrow">No cure needed</div>
+          <h2 class="spread-heading">There is no<br>cure for <span style="color:var(--cyan)">me</span></h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p>In 2021 Aurora released "Cure for Me," a bright, defiant song written against the idea that people need fixing to be acceptable — written with the harm of conversion "therapy" in mind. In late 2025 she spoke publicly, for the first time, about being <span class="green">neurodivergent</span>: a brain that works differently, a hyperfocus so complete she can <em>forget she has a body</em>.</p>
+            <p>Put those together and you have the whole <a href="https://stimpunks.org/reframe/">reframe</a> in one hook. The difference was never the problem. The demand for a cure was.</p>
+          </div>
+          <div class="refusals">
+            <div class="refusal"><span class="refusal-tag">Not</span><span>a cure. There was <strong>never anything to fix.</strong></span></div>
+            <div class="refusal"><span class="refusal-tag">Not</span><span><a href="https://stimpunks.org/glossary/normal/" style="color:inherit;border-bottom:1px solid rgba(244,114,182,0.4)">normal</a> as the target you must be <strong>smoothed toward.</strong></span></div>
+            <div class="refusal"><span class="refusal-tag">Not</span><span>a label as a verdict — <a href="https://stimpunks.org/glossary/different/" style="color:inherit;border-bottom:1px solid rgba(244,114,182,0.4)">different</a> is <strong>not deficit.</strong></span></div>
+            <div class="refusal"><span class="refusal-tag">Not</span><span>masking as the rent you pay <strong>to be allowed in the room.</strong></span></div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Warriors and Weirdos · Stimpunks</span>
+        <span class="spread-footer-right">5</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 6: Running with the Wolves ════ -->
+  <div class="spread" id="spread-6">
+    <div class="interior">
+      <div class="spread-2col">
+        <div class="spread-left">
+          <div class="eyebrow">Wild on purpose</div>
+          <h2 class="spread-heading">Running with<br>the <span style="color:var(--green)">wolves</span></h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p>Watch Aurora perform and you'll see a body moving on its own terms — hands flapping, feet stamping, a joy that won't hold still. She <a href="https://stimpunks.org/glossary/stim-listening/">stims</a>, openly, on the world's stages, and it reads as freedom, not symptom.</p>
+            <p>"Running with the Wolves" is the sound of that: the <a href="https://stimpunks.org/glossary/wild/">wild</a>, animal, instinctive self let off the leash. We even keep a playlist of it — <em>Stimming with Aurora</em> — because <a href="https://stimpunks.org/happy-flappy/">happy-flappy</a> joy and stim-listening are not things to grow out of.</p>
+          </div>
+          <div class="pull-quote">She stims on the world's stages, and it reads as freedom, not symptom.</div>
+        </div>
+        <div class="spread-right">
+          <div class="video-wrap">
+            <div>
+              <div class="spread-video">
+                <iframe src="https://www.youtube-nocookie.com/embed/2_kQtAmieZw" title="AURORA — Running with the Wolves" loading="lazy" allowfullscreen></iframe>
+              </div>
+              <p class="diagram-caption">
+                &ldquo;Running with the Wolves&rdquo; · 2015<br>
+                <span class="annotation">the body let off the leash</span>
+              </p>
+            </div>
+            <div>
+              <div class="spread-video">
+                <iframe src="https://www.youtube-nocookie.com/embed/videoseries?list=PL4vHAg2MP4X982EMeNJdxjnNNKGcw4tAw" title="Stimming with Aurora — playlist" loading="lazy" allowfullscreen></iframe>
+              </div>
+              <p class="diagram-caption">
+                &ldquo;Stimming with Aurora&rdquo; · our playlist<br>
+                <span class="annotation">stim-listening &amp; happy-flappy joy</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Warriors and Weirdos · Stimpunks</span>
+        <span class="spread-footer-right">6</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 7: Runaway Home ════ -->
+  <div class="spread" id="spread-7">
+    <div class="interior">
+      <div class="spread-2col">
+        <div class="spread-left">
+          <div class="video-wrap">
+            <div>
+              <div class="spread-video">
+                <iframe src="https://www.youtube-nocookie.com/embed/d_HlPboLRL8" title="AURORA — Runaway" loading="lazy" allowfullscreen></iframe>
+              </div>
+              <p class="diagram-caption">
+                &ldquo;Runaway&rdquo; · 2015<br>
+                <span class="annotation">the way back to Earth</span>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="spread-right">
+          <div class="eyebrow">The way home</div>
+          <h2 class="spread-heading">Runaway<br><span class="spectrum-word">home</span></h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p>"Runaway" (2015), the song that opens her whole story, is about leaving — and then realising you want to get home again. Aurora has said the fans and the concerts</p>
+          </div>
+          <div class="blockquote">
+            <p>pulled me back to Earth … and fall in love with humankind again.</p>
+            <span class="attr">AURORA · American Songwriter, on "What Happened To The Heart?"</span>
+          </div>
+          <div class="body-text">
+            <p>That's the shape of belonging we keep pointing at. You can feel like an alien and still be made of the same <a href="https://stimpunks.org/philosophy/keep-on-livin/">star stuff</a> as everyone here. The mothership was never the destination. Each other was.</p>
+          </div>
+          <div class="pull-quote gold">You can feel like an alien and still be made of the same star stuff as everyone here.</div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Warriors and Weirdos · Stimpunks</span>
+        <span class="spread-footer-right">7</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 8: Colophon ════ -->
+  <div class="spread" id="spread-8">
+    <div class="interior">
+      <div class="colophon">
+        <div>
+          <div class="colophon-top">
+            <span class="colophon-ls">L★S</span>
+            <span class="colophon-phrase">You can feel like an alien and still be made of the same star stuff as everyone here. Warriors and Weirdos, all of us.</span>
+          </div>
+          <div class="series-list">
+            <div class="series-item"><span class="series-num">No. 7</span> You Were Never One Thing — the cell as a truce</div>
+            <div class="series-item"><span class="series-num">No. 8</span> The Universe Runs on Difference — variety &amp; the failure of monoculture</div>
+            <div class="series-item"><span class="series-num">No. 9</span> The Lines We Drew — the constructed border &amp; the case for redrawing it</div>
+            <div class="series-item"><span class="series-num">No. 10</span> The Dead Stars Still Reach Us — starlight, ancestry &amp; the work of memory</div>
+            <div class="series-item"><span class="series-num">No. 11</span> Why Difference Comes First — Helen Edgar (guest)</div>
+            <div class="series-item"><span class="series-num">No. 12</span> Turn and Face the Strange — David Bowie</div>
+            <div class="series-item current"><span class="series-num">No. 13</span> Warriors and Weirdos — AURORA, the alien who came home ← you are here</div>
+          </div>
+          <div class="reflect">
+            <div class="reflect-label">Reflection</div>
+            <p class="reflect-q">What did you feel like an alien about, before you found the people who made it a name?</p>
+            <p class="reflect-q">Where are you still being offered a cure you never needed?</p>
+            <p class="reflect-q">What does your body do, freely, when it's finally allowed to?</p>
+          </div>
+          <p class="colophon-body">
+            Warriors and Weirdos is the thirteenth zine in the Stimpunks series, and the one about AURORA (Aurora Aksnes) — read as a way of being star stuff: the alien who came home. We feature, quote, and embed her work <a href="https://stimpunks.org/?s=aurora">across our site</a>, on our pages for <a href="https://stimpunks.org/glossary/alien/">alien</a>, <a href="https://stimpunks.org/philosophy/keep-on-livin/">keep on livin'</a>, <a href="https://stimpunks.org/glossary/stim-listening/">stim-listening</a>, <a href="https://stimpunks.org/happy-flappy/">happy-flappy</a>, <a href="https://stimpunks.org/philosophy/find-your-people/">find your people</a>, <a href="https://stimpunks.org/reframe/">reframe</a>, <a href="https://stimpunks.org/glossary/weird/">weird</a>, <a href="https://stimpunks.org/glossary/different/">different</a>, <a href="https://stimpunks.org/glossary/wild/">wild</a>, <a href="https://stimpunks.org/gender/">gender</a>, and <a href="https://stimpunks.org/glossary/normal/">normal</a>.<br><br>
+            The songs are real and worth naming precisely. "Runaway" and "Running with the Wolves" were released in 2015; "Warrior" is from her debut album <em>All My Demons Greeting Me as a Friend</em> (2016); "Mothership" and "A Different Kind of Human" are from <em>A Different Kind of Human – Step 2</em> (2019); "Cure for Me" (2021) is from <em>The Gods We Can Touch</em> and was written against the idea that people need fixing to be themselves. In November 2025, Aurora spoke publicly for the first time about being neurodivergent; we use her word — <em>neurodivergent</em> — and name no specific diagnosis. "Warriors and Weirdos" is her own name for her fanbase.<br><br>
+            This zine is commentary and celebration. The performances on each spread are embedded from official YouTube uploads, and the <em>Stimming with Aurora</em> playlist is <a href="https://www.youtube.com/playlist?list=PL4vHAg2MP4X982EMeNJdxjnNNKGcw4tAw">ours</a>; the songs, recordings, and quotes are the work of Aurora and her collaborators, and we quote only briefly, with attribution, and reproduce no lyrics or artwork. The alien-invitation and "alien in this world" quotes are from Aurora (the former via her own posts about "A Different Kind of Human," the latter via <a href="https://americansongwriter.com/aurora-what-happened-to-the-heart/">American Songwriter</a>). The reading — Aurora as the alien who came home, difference as direction not deficit — is ours.
+          </p>
+        </div>
+        <div class="colophon-footer">
+          Stimpunks Foundation · Zine No. 13 · Open Edition<br>
+          Print free · Share freely · L★S<br>
+          stimpunks.org · starstuff.earth
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Warriors and Weirdos · Stimpunks</span>
+        <span class="spread-footer-right">8</span>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /zine-shell -->
+
+<script>
+  let current = 1;
+  const total = 8;
+
+  function changePage(dir) {
+    const next = current + dir;
+    if (next < 1 || next > total) return;
+    document.getElementById('spread-' + current).classList.remove('active');
+    current = next;
+    document.getElementById('spread-' + current).classList.add('active');
+    document.getElementById('page-counter').textContent = current + ' / ' + total;
+    document.getElementById('prev-btn').style.opacity = current === 1 ? '0.3' : '1';
+    document.getElementById('next-btn').style.opacity = current === total ? '0.3' : '1';
+    document.getElementById('prev-btn').classList.toggle('active', current > 1);
+    document.getElementById('next-btn').classList.toggle('active', current < total);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') changePage(1);
+    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   changePage(-1);
+  });
+
+  document.getElementById('prev-btn').style.opacity = '0.3';
+  document.getElementById('next-btn').classList.add('active');
+</script>
+</body>
+</html>
