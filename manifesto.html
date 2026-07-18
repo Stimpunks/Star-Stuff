@@ -26,7 +26,7 @@
 <meta name="twitter:image" content="https://starstuff.earth/og-card.jpg">
 <title>Star Stuff Manifesto — Stimpunks Foundation</title>
 <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://starstuff.earth/starstuff.css">
+<link rel="stylesheet" href="starstuff.css">
 <style>
 html, body { margin: 0; padding: 0; }
 body { background-color: #0a0a14; }
@@ -148,48 +148,6 @@ body { background-color: #0a0a14; }
   from { transform: rotate(0deg); }
   to   { transform: rotate(360deg); }
 }
-
-/* Site nav (home + next) — inline so the page stays self-contained for WordPress */
-.sp-nav {
-  position: relative;
-  z-index: 3;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  margin-bottom: 3rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid rgba(167,139,250,0.2);
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-}
-.sp-nav a {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  color: var(--sp-secondary);
-  text-decoration: none;
-  white-space: nowrap;
-  transition: color 0.2s ease;
-}
-.sp-nav a:hover { color: var(--sp-purple); }
-.sp-nav .sp-nav-star,
-.sp-nav .sp-nav-arrow { color: var(--sp-purple); }
-.sp-nav > a::after {
-  content: "home";
-  padding: 0.18em 0.55em;
-  border: 1px solid var(--sp-purple);
-  border-radius: 999px;
-  color: var(--sp-purple);
-  font-size: 0.82em;
-  line-height: 1;
-  letter-spacing: 0.12em;
-  transition: background-color 0.2s ease, color 0.2s ease;
-}
-.sp-nav > a:hover::after { background-color: var(--sp-purple); color: #0a0a14; }
-@media print { .sp-nav { display: none !important; } }
 
 /* Sections */
 .sp-section {
@@ -515,14 +473,6 @@ body { background-color: #0a0a14; }
   .sp-wrap { padding: 3rem 1.25rem 5rem; }
   .sp-masthead { margin-bottom: 3rem; padding-bottom: 2rem; }
 }
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.001ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.001ms !important;
-    scroll-behavior: auto !important;
-  }
-}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Star Stuff Manifesto","description":"On the cosmic origins of who we are, the science of how we carry the universe in our bones, and why neurodivergent and disabled people belong — not despite difference, but as difference.","image":"https://starstuff.earth/og-card.jpg","url":"https://starstuff.earth/manifesto.html","mainEntityOfPage":"https://starstuff.earth/manifesto.html","author":{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/"},"publisher":{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/","logo":{"@type":"ImageObject","url":"https://starstuff.earth/og-card.jpg"}},"isPartOf":{"@type":"WebSite","name":"Star Stuff","url":"https://starstuff.earth/"}}</script>
 </head>
@@ -540,11 +490,11 @@ body { background-color: #0a0a14; }
 
   <div class="sp-wrap">
 
-    <nav class="sp-nav" aria-label="Star Stuff collection">
-      <a href="https://starstuff.earth/"><span class="sp-nav-star" aria-hidden="true">★</span> stuff</a>
-      <span style="display:inline-flex;gap:1.25rem;align-items:center;">
-        <a href="https://starstuff.earth/love-you-down-to-your-star-stuff.html"><span class="sp-nav-arrow" aria-hidden="true">‹</span> Star Stuff</a>
-        <a href="https://starstuff.earth/inclusion-safety-creed.html">Inclusion Safety <span class="sp-nav-arrow" aria-hidden="true">›</span></a>
+    <nav class="ss-nav" style="--nav-accent:#fbbf24;" aria-label="Star Stuff collection">
+      <a class="ss-nav-home" href="index.html"><span class="ss-star" aria-hidden="true">★</span> stuff</a>
+      <span class="ss-nav-links">
+        <a class="ss-nav-prev" href="love-you-down-to-your-star-stuff.html"><span class="ss-nav-arrow" aria-hidden="true">‹</span> <span class="ss-nav-label">Start Here</span></a>
+        <a class="ss-nav-next" href="inclusion-safety-creed.html"><span class="ss-nav-label">Inclusion Safety</span> <span class="ss-nav-arrow" aria-hidden="true">›</span></a>
       </span>
     </nav>
 
