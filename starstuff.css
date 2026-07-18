@@ -47,6 +47,24 @@
 
 .ss-nav-home .ss-star { color: var(--nav-accent); font-weight: 400; }
 
+/* Make "home" explicit and obviously clickable: a small pill after the wordmark. */
+.ss-nav-home::after {
+  content: "home";
+  padding: 0.18em 0.55em;
+  border: 1px solid var(--nav-accent);
+  border-radius: 999px;
+  color: var(--nav-accent);
+  font-size: 0.82em;
+  line-height: 1;
+  letter-spacing: 0.12em;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+.ss-nav-home:hover::after,
+.ss-nav-home:focus-visible::after {
+  background-color: var(--nav-accent);
+  color: #0a0a14;
+}
+
 .ss-nav-links {
   display: flex;
   align-items: center;
