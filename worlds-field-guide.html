@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Field Guide to Worlds That Work by Other Rules — Stimpunks Foundation</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="starstuff.css">
+<style>
+  :root {
+    --bg:        #0a0a14;
+    --card:      #0f0f2a;
+    --purple:    #a78bfa;
+    --pink:      #f472b6;
+    --gold:      #fbbf24;
+    --cyan:      #22d3ee;
+    --green:     #4ade80;
+    --blue:      #5b8def;
+    --white:     #f9fafb;
+    --secondary: #b8aed0;
+    --muted:     #c4b5d4;
+    --border:    rgba(167,139,250,0.15);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--white);
+    font-family: 'Atkinson Hyperlegible Next', sans-serif;
+    font-size: 1rem;
+    min-height: 100vh;
+  }
+
+  /* ── STARFIELD ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 7%  13%, rgba(249,250,251,0.8) 0%, transparent 100%),
+      radial-gradient(1px 1px at 23% 37%, rgba(91,141,239,0.7)  0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 43% 8%,  rgba(249,250,251,0.7) 0%, transparent 100%),
+      radial-gradient(1px 1px at 59% 67%, rgba(34,211,238,0.6)  0%, transparent 100%),
+      radial-gradient(2px 2px at 73% 27%, rgba(249,250,251,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 83% 53%, rgba(91,141,239,0.7)  0%, transparent 100%),
+      radial-gradient(1px 1px at 89% 78%, rgba(249,250,251,0.8) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 3% 57%, rgba(249,250,251,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 33% 83%, rgba(34,211,238,0.5)  0%, transparent 100%),
+      radial-gradient(1px 1px at 53% 46%, rgba(249,250,251,0.4) 0%, transparent 100%),
+      radial-gradient(2px 2px at 17% 87%, rgba(167,139,250,0.7) 0%, transparent 100%),
+      radial-gradient(1px 1px at 67% 3%,  rgba(249,250,251,0.8) 0%, transparent 100%),
+      radial-gradient(1px 1px at 46% 61%, rgba(91,141,239,0.5)  0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 28% 18%, rgba(249,250,251,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 76% 86%, rgba(249,250,251,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 91% 42%, rgba(34,211,238,0.6) 0%, transparent 100%),
+      radial-gradient(2px 2px at 55% 22%, rgba(91,141,239,0.5) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── MASTHEAD ── */
+  .masthead {
+    position: relative; z-index: 2;
+    padding: 3rem 2.5rem 2rem;
+    border-bottom: 1px solid var(--border);
+    display: grid; grid-template-columns: 1fr auto; gap: 1rem; align-items: end;
+  }
+  .masthead-eyebrow { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--blue); margin-bottom: 0.6rem; }
+  .masthead-title { font-size: clamp(1.6rem, 4vw, 2.8rem); font-weight: 300; line-height: 1.1; color: var(--white); letter-spacing: -0.01em; }
+  .masthead-title em { font-style: italic; background: linear-gradient(135deg, var(--blue) 0%, var(--cyan) 50%, var(--purple) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .masthead-sub { font-size: 0.875rem; color: var(--secondary); margin-top: 0.6rem; line-height: 1.6; max-width: 580px; }
+  .masthead-right { text-align: right; flex-shrink: 0; }
+  .masthead-ls { font-size: 1.4rem; font-weight: 700; color: var(--gold); letter-spacing: 0.05em; display: block; text-align: right; text-shadow: 0 0 18px rgba(251,191,36,0.45); }
+
+  /* ── INTRO BAND ── */
+  .intro-band { position: relative; z-index: 2; padding: 1.5rem 2.5rem; border-bottom: 1px solid var(--border); display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.5rem; }
+  .intro-note { font-size: 0.875rem; color: var(--secondary); line-height: 1.7; }
+  .intro-note strong { font-weight: 700; color: var(--white); display: block; font-size: 0.8125rem; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.3rem; }
+
+  /* ── GRID ── */
+  .field-grid { position: relative; z-index: 2; display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 0; }
+
+  /* ── ENTRY CARD ── */
+  .entry { background: var(--card); border-radius: 8px; margin: 0.75rem; padding: 1.25rem; cursor: pointer; transition: background 0.2s ease, box-shadow 0.2s ease; position: relative; border: 1px solid var(--border); }
+  .entry:hover { background: rgba(15,15,42,0.98); box-shadow: 0 4px 24px rgba(167,139,250,0.12); }
+  .entry.open  { background: rgba(15,15,42,0.98); box-shadow: 0 4px 32px rgba(167,139,250,0.15); }
+  .entry::before { content: ''; position: absolute; top: 8px; left: 0; width: 3px; height: calc(100% - 16px); background: var(--entry-color, var(--blue)); border-radius: 0 2px 2px 0; }
+
+  .entry-header { display: grid; grid-template-columns: auto 1fr; gap: 1.2rem; align-items: start; margin-bottom: 1rem; }
+  .world-svg { width: 92px; height: 92px; flex-shrink: 0; }
+  .entry-meta { min-width: 0; }
+  .entry-number { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.2rem; }
+  .entry-name { font-size: 1.25rem; font-weight: 600; line-height: 1.1; color: var(--white); margin-bottom: 0.2rem; }
+  .entry-traditional { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.4rem; }
+  .entry-coords { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.06em; color: var(--cyan); }
+
+  .entry-brief { font-size: 0.875rem; color: var(--secondary); line-height: 1.65; margin-bottom: 0.8rem; }
+  .entry-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.7rem; }
+  .tag { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.2rem 0.6rem; border-radius: 4px; border: 1px solid var(--border); color: var(--muted); background: rgba(167,139,250,0.06); }
+  .entry-expand { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); transition: color 0.2s ease; }
+  .entry:hover .entry-expand, .entry.open .entry-expand { color: var(--secondary); }
+
+  .entry-notes { display: none; margin-top: 1.2rem; padding-top: 1.2rem; border-top: 1px solid var(--border); animation: fadeIn 0.3s ease forwards; }
+  .entry.open .entry-notes { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+
+  .notes-heading { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.7rem; }
+  .notes-body { font-size: 1rem; color: var(--secondary); line-height: 1.8; margin-bottom: 1rem; }
+  .notes-body p { margin-bottom: 1em; }
+  .notes-body p:last-child { margin-bottom: 0; }
+  .notes-body em { color: var(--white); font-style: italic; }
+  .notes-body strong { color: var(--white); font-weight: 600; font-style: normal; }
+
+  .rule-table { width: 100%; border-collapse: collapse; margin-top: 0.8rem; }
+  .rule-table th { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-align: left; padding: 0.3rem 0.5rem 0.3rem 0; border-bottom: 1px solid var(--border); }
+  .rule-table td { font-size: 0.875rem; color: var(--secondary); padding: 0.4rem 0.5rem 0.4rem 0; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .rule-table td:last-child { color: var(--white); font-weight: 600; }
+  .rule-table tr:last-child td { border-bottom: none; }
+
+  .ls-coords { margin-top: 1rem; padding: 0.7rem 0.9rem; border: 1px solid var(--border); border-left: 3px solid var(--entry-color, var(--blue)); border-radius: 0 8px 8px 0; display: flex; justify-content: space-between; align-items: center; gap: 1rem; background: rgba(167,139,250,0.05); }
+  .ls-coords-label { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); flex-shrink: 0; }
+  .ls-coords-value { font-size: 0.875rem; font-weight: 700; letter-spacing: 0.03em; color: var(--entry-color, var(--blue)); text-align: right; }
+
+  /* ── FOOTER ── */
+  .guide-footer { position: relative; z-index: 2; padding: 2rem 2.5rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+  .footer-text { font-size: 0.875rem; color: var(--secondary); line-height: 1.7; max-width: 600px; }
+  .footer-ls { font-size: 2rem; font-weight: 700; color: var(--gold); letter-spacing: 0.05em; text-shadow: 0 0 24px rgba(251,191,36,0.4); }
+
+  @media (max-width: 600px) {
+    .masthead { grid-template-columns: 1fr; padding: 2rem 1.5rem 1.5rem; }
+    .masthead-right { text-align: left; }
+    .intro-band { padding: 1.2rem 1.5rem; }
+    .entry { margin: 0.5rem; padding: 1rem; }
+    .field-grid { grid-template-columns: 1fr; }
+    .guide-footer { padding: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="ss-nav ss-nav--bleed" style="--nav-accent:#5b8def;" aria-label="Star Stuff collection">
+  <a class="ss-nav-home" href="index.html"><span class="ss-star" aria-hidden="true">★</span> stuff</a>
+  <span class="ss-nav-links">
+    <a class="ss-nav-prev" href="impossible-places-field-guide.html"><span class="ss-nav-arrow" aria-hidden="true">‹</span> <span class="ss-nav-label">Impossible Places</span></a>
+    <a class="ss-nav-next" href="ls-playlist.html"><span class="ss-nav-label">Playlist</span> <span class="ss-nav-arrow" aria-hidden="true">›</span></a>
+  </span>
+</nav>
+
+<!-- ── MASTHEAD ── -->
+<header class="masthead">
+  <div>
+    <p class="masthead-eyebrow">Stimpunks Foundation · L★S · Field Guide No. 4</p>
+    <h1 class="masthead-title">A Field Guide to<br><em>Worlds That Work by Other Rules</em></h1>
+    <p class="masthead-sub">Eight worlds in our own solar system that run on rules Earth would call impossible — and thrive on them. Not failed Earths. Other ways for a world to be.</p>
+  </div>
+  <div class="masthead-right">
+    <span class="masthead-ls">L★S</span>
+  </div>
+</header>
+
+<!-- ── INTRO BAND ── -->
+<div class="intro-band">
+  <div class="intro-note">
+    <strong>How to use this guide</strong>
+    Each entry gives the world, the Earth-rule it breaks, the rule it runs on instead, the result, key data, and full field notes. Click any entry to open its notes.
+  </div>
+  <div class="intro-note">
+    <strong>On "other rules"</strong>
+    "Impossible" almost always means "impossible by Earth's defaults." These worlds aren't failed Earths; they run on other physics, other chemistries, other orientations — and thrive. Different rules, not broken rules.
+  </div>
+  <div class="intro-note">
+    <strong>On the diagrams</strong>
+    Each diagram is the world itself, drawn with the feature that defines it — an ocean under ice, a sideways tilt, a plume to space. Same frame each time; each world unmistakably its own.
+  </div>
+</div>
+
+<!-- ── FIELD ENTRIES ── -->
+<main class="field-grid" id="grid"></main>
+
+<!-- ── FOOTER ── -->
+<footer class="guide-footer">
+  <p class="footer-text">"Impossible" is almost always short for "impossible here, by our rules." Every world in this guide keeps running on some other rule — and the sky is full of them. <em>Different rules, not broken rules.</em> (Figures are approximate, and some — like the depth of Europa's ocean — are still being measured.)</p>
+  <span class="footer-ls">L★S</span>
+</footer>
+
+<script>
+const ENTRIES = [
+  {
+    id: 'europa', name: 'The Inner Ocean', identity: 'Europa · moon of Jupiter',
+    coords: 'a global ocean under ~15–25 km of ice', color: '#5cb8e0',
+    brief: 'A quiet, cracked marble of ice on the outside — and underneath, a global ocean of liquid salt water, possibly holding more water than all of Earth\'s seas combined. Kept warm by tides, not sunlight.',
+    tags: ['inner ocean', 'tidal heat', 'under ice', 'maybe life'],
+    facts: [
+      { earth: 'warmth from the Sun', world: 'warmth from tidal flexing', result: 'a warm ocean in the dark' },
+      { earth: 'oceans on the surface', world: 'ocean sealed under ice', result: '~2× Earth\'s water, hidden' },
+      { earth: 'life needs sunlight', world: 'chemistry at the seafloor', result: 'a real candidate for life' },
+    ],
+    home: 'tidal heat, not sunlight · L★S 001',
+    notes: `Europa looks, from outside, like a still, cracked marble of ice. Underneath is one of the most exciting places in the solar system: a global ocean of liquid salt water, kept warm not by sunlight but by the constant tidal flexing of Jupiter's gravity kneading the moon's interior. There may be more water there than in all of Earth's oceans combined.
+
+No sky, no sun — no problem. The warmth comes from within, and the seafloor may host the same kind of chemistry that feeds life around Earth's deep-sea vents. <em>A still surface is not an empty one.</em> Some of the richest worlds keep the whole ocean on the inside.`,
+  },
+  {
+    id: 'titan', name: 'The Other Chemistry', identity: 'Titan · moon of Saturn',
+    coords: 'methane rain · −179°C · thick orange haze', color: '#e0973f',
+    brief: 'Titan runs Earth\'s whole weather system with the labels swapped: clouds, rain, rivers, and seas — of liquid methane, under an orange haze, where water ice is as hard as rock. A world that senses on a different chemistry.',
+    tags: ['methane seas', 'orange haze', 'other chemistry', 'a full water cycle'],
+    facts: [
+      { earth: 'rain is water', world: 'rain is methane', result: 'rivers and seas of hydrocarbons' },
+      { earth: 'a clear blue sky', world: 'a thick orange haze', result: 'a different light to sense by' },
+      { earth: 'water flows, rock is solid', world: 'methane flows, ice is bedrock', result: 'the same cycle, other materials' },
+    ],
+    home: 'methane, not water · L★S 002',
+    notes: `Titan runs Earth's weather system with the labels swapped. It has clouds, rain, rivers, lakes, and seas — but made of liquid methane and ethane, beneath a thick orange haze, at −179°C where water ice is as hard as granite. It is the only place besides Earth we know of with stable liquid on its surface.
+
+It senses and moves through the world on a different chemistry entirely. To call it inhospitable is really just to say it isn't Earth. On its own terms it is complete: a full hydrologic cycle, a landscape carved by flowing liquid, a sky with its own weather. <em>A different medium, a different light, a whole world getting on with it.</em>`,
+  },
+  {
+    id: 'enceladus', name: 'What Has to Come Out', identity: 'Enceladus · moon of Saturn',
+    coords: 'geysers venting to space · ~500 km wide', color: '#7fd8e8',
+    brief: 'A small, bright moon that cannot keep its ocean to itself. From cracks at its south pole it fires plumes of water vapour hundreds of kilometres into space — and that spray is how we learned what its hidden sea contains.',
+    tags: ['plumes', 'hidden ocean', 'expression', 'tasted from space'],
+    facts: [
+      { earth: 'oceans stay put', world: 'ocean vents to space', result: 'plumes hundreds of km high' },
+      { earth: 'gravity holds water down', world: 'jets fire from the south pole', result: 'it supplies a whole ring of Saturn' },
+      { earth: 'you must land to sample', world: 'it sprays its sea outward', result: 'we tasted the ocean by flying through' },
+    ],
+    home: 'venting, not holding · L★S 003',
+    notes: `Enceladus is a small, brilliant-white moon that cannot keep its ocean to itself. From four warm cracks at its south pole — the "tiger stripes" — it fires enormous plumes of water vapour and ice grains hundreds of kilometres up, straight into space, feeding one of Saturn's rings. The Cassini spacecraft flew through the spray and sampled the sea without ever landing.
+
+There's something to love in a world whose inner life simply has to come out — and whose expression turned out to be exactly how we learned what it holds. <em>What it couldn't contain is what let us know it was there.</em>`,
+  },
+  {
+    id: 'uranus', name: 'Another Orientation', identity: 'Uranus · seventh planet',
+    coords: 'axial tilt ~98° · orbiting on its side', color: '#8fe0d6',
+    brief: 'Every other planet spins more or less upright. Uranus is tipped almost completely onto its side, rolling around the Sun like a marble. Not broken — oriented differently, and completing its long orbit perfectly well that way.',
+    tags: ['sideways', 'tilted ~98°', 'rolls, not spins', 'not broken'],
+    facts: [
+      { earth: 'axis near-upright', world: 'axis tipped ~98°', result: 'it orbits on its side' },
+      { earth: 'even days and seasons', world: 'each pole faces the Sun in turn', result: '~42 years of day, then of night' },
+      { earth: 'read as "normal" spin', world: 'a different orientation', result: 'not broken — just tilted' },
+    ],
+    home: 'a sideways axis · L★S 004',
+    notes: `Every other planet spins more or less upright. Uranus is tipped almost completely onto its side — an axial tilt of about 98° — so it rolls around the Sun like a marble instead of spinning like a top. Its poles take turns pointing nearly straight at the Sun, giving each one roughly 42 years of continuous daylight followed by 42 years of night.
+
+It isn't broken; it's oriented differently, and it completes its long orbit perfectly well that way. Most likely knocked sideways by an ancient collision, it simply kept going on a new axis. <em>Same Sun, same orbit — another way of facing it.</em>`,
+  },
+  {
+    id: 'venus', name: 'The World With No Exit', identity: 'Venus · second planet',
+    coords: '~465°C surface · 92× Earth\'s pressure', color: '#e8c24b',
+    brief: 'Nearly Earth\'s twin in size, born next door — but its thick carbon-dioxide air traps heat it can\'t release. A runaway greenhouse near 465°C. The hard part isn\'t the heat; it\'s having nowhere for the pressure to go.',
+    tags: ['runaway greenhouse', 'no release', 'trapped heat', 'the cost of no exit'],
+    facts: [
+      { earth: 'heat warms, then escapes', world: 'heat warms, can\'t escape', result: 'runaway greenhouse, ~465°C' },
+      { earth: 'thin, breathable air', world: 'CO₂ at 92× pressure', result: 'crushing, opaque, molten-hot' },
+      { earth: 'warmth can radiate away', world: 'no way to shed it', result: 'the cost of a world with no exit' },
+    ],
+    home: 'trapped heat, no exit · L★S 005',
+    notes: `Venus and Earth are nearly the same size and were born right next door to each other. But Venus's thick carbon-dioxide atmosphere traps the Sun's heat and can't let it go — a runaway greenhouse that holds the surface near 465°C, hot enough to melt lead, under pressure about ninety times Earth's.
+
+The hard part of Venus isn't the heat itself; it's having no way to release it. We'd read that gently, and at the level of <strong>systems, not selves</strong>: what a world — or a room, or a life — needs isn't only less coming in, but somewhere for the pressure to go. The lesson of Venus is an argument for exits: for relief, for cool-down, for a way out. <em>Systems with no release run away. So build the exit.</em>`,
+  },
+  {
+    id: 'pluto', name: 'The One They Reclassified', identity: 'Pluto · dwarf planet',
+    coords: 'reclassified by vote, 2006 · unchanged', color: '#c2a0d0',
+    brief: 'In 2006 a committee adopted a new definition of "planet," and Pluto — which shares its orbital zone with other icy bodies — was moved to "dwarf planet." Nothing about the world changed. Only the category did.',
+    tags: ['reclassified', 'the line moved', 'same world', '→ The Lines We Drew'],
+    facts: [
+      { earth: 'facts are found', world: 'definitions are decided', result: 'a category is a human choice' },
+      { earth: 'a planet "clears its orbit"', world: 'Pluto shares its zone', result: 'renamed a "dwarf planet"' },
+      { earth: 'reclassified in 2006', world: 'nothing about Pluto moved', result: 'the same world it always was' },
+    ],
+    home: 'the same world, a new label · L★S 006',
+    notes: `In 2006 the International Astronomical Union adopted a three-part definition of "planet." Pluto met two parts but not the third — it hasn't "cleared its orbital neighbourhood," since it shares its region with other icy bodies — and was reclassified as a dwarf planet. Nothing about Pluto changed: same world, same orbit, same slow, heart-shaped plain of frozen nitrogen. Only the category moved.
+
+That's the whole of it, and it rhymes with <em>The Lines We Drew</em>: a definition is a human decision — useful, and revisable — not a fact discovered in the rock. You can redraw the line around something and change nothing about the thing itself. <em>Pluto is exactly what it always was.</em>`,
+  },
+  {
+    id: 'mercury', name: 'Its Own Time', identity: 'Mercury · first planet',
+    coords: '3:2 spin–orbit lock · +430 to −180°C', color: '#b3aabf',
+    brief: 'Mercury keeps its own strange clock — locked in a 3:2 resonance, turning three times on its axis for every two orbits, so a single solar day lasts two of its years. It didn\'t take Earth\'s rhythm; it found its own and keeps it precisely.',
+    tags: ['3:2 resonance', 'its own tempo', 'no atmosphere', 'precise'],
+    facts: [
+      { earth: 'one spin per day', world: '3 spins per 2 orbits', result: 'a solar day longer than its year' },
+      { earth: 'air moderates heat', world: 'almost no atmosphere', result: '+430°C day, −180°C night' },
+      { earth: 'keeps Earth\'s rhythm', world: 'keeps its own resonance', result: 'precise, and entirely its own' },
+    ],
+    home: 'its own 3:2 time · L★S 007',
+    notes: `Mercury keeps its own strange time. It's locked in a 3:2 resonance — three turns on its axis for every two trips around the Sun — so a single solar day there lasts two of its years. With almost no atmosphere to hold heat, its surface swings from about +430°C in sunlight to −180°C in the dark.
+
+It isn't marching to Earth's rhythm, or even the usual planetary one. It settled into a different stable pattern and holds it exactly. <em>A world can run on its own clock, at its own tempo, and be perfectly on time for itself.</em>`,
+  },
+  {
+    id: 'neptune', name: 'Its Own Weather', identity: 'Neptune · eighth planet',
+    coords: 'fastest winds known · ~2,000 km/h', color: '#5b8def',
+    brief: 'The farthest planet, in sunlight so faint you could barely read by it — yet one of the most dynamic worlds we\'ve found. It radiates more heat than it receives and drives the fastest winds in the solar system. It makes its own weather.',
+    tags: ['inner heat', 'fastest winds', 'far from the centre', 'self-powered'],
+    facts: [
+      { earth: 'warmth mostly from the Sun', world: 'warmth mostly from within', result: 'radiates ~2.6× what it receives' },
+      { earth: 'winds up to ~400 km/h', world: 'winds up to ~2,000 km/h', result: 'the fastest winds known' },
+      { earth: 'close to the Sun', world: '~30× farther out', result: 'makes its own weather, far from any centre' },
+    ],
+    home: 'its own inner heat · L★S 008',
+    notes: `Neptune orbits about thirty times farther from the Sun than Earth, in light so faint you could barely read by it — and yet it's one of the most dynamic planets we've found. It radiates more than two and a half times the heat it takes in from the Sun, powered by something in its interior we still don't fully understand, and it drives the fastest winds in the solar system, up to around 2,000 km/h.
+
+Far from any centre, receiving almost nothing, it makes its own warmth and its own weather. <em>Distance from the source turns out to be no barrier to a world generating, from the inside, more than enough.</em>`,
+  }
+];
+
+function makeSVG(entry) {
+  const c = entry.color;
+  let inner = '';
+  switch (entry.id) {
+    case 'europa':
+      inner = `
+        <circle cx="50" cy="50" r="37" fill="${c}" opacity="0.10"/>
+        <circle cx="50" cy="50" r="30" fill="#2c6a86"/>
+        <circle cx="50" cy="50" r="30" fill="none" stroke="#d8eef7" stroke-width="4"/>
+        <path d="M24 44 Q50 50 76 42" stroke="#c77b5a" stroke-width="1.3" fill="none" opacity="0.9"/>
+        <path d="M28 60 Q52 54 74 62" stroke="#c77b5a" stroke-width="1.1" fill="none" opacity="0.8"/>
+        <path d="M40 26 Q46 50 44 74" stroke="#b96f52" stroke-width="1" fill="none" opacity="0.7"/>`;
+      break;
+    case 'titan':
+      inner = `
+        <circle cx="50" cy="50" r="40" fill="none" stroke="${c}" stroke-width="1.4" opacity="0.28"/>
+        <circle cx="50" cy="50" r="35" fill="none" stroke="${c}" stroke-width="2" opacity="0.4"/>
+        <circle cx="50" cy="50" r="30" fill="#c9803e"/>
+        <path d="M22 44 Q50 38 78 44" stroke="#e8c088" stroke-width="1.6" fill="none" opacity="0.7"/>
+        <ellipse cx="52" cy="64" rx="13" ry="5" fill="#4f3320" opacity="0.85"/>`;
+      break;
+    case 'enceladus':
+      inner = `
+        <circle cx="50" cy="46" r="24" fill="#e6f5fa"/>
+        <g stroke="#8fd0e0" stroke-width="1" opacity="0.8">
+          <line x1="44" y1="64" x2="42" y2="70"/><line x1="50" y1="66" x2="50" y2="72"/><line x1="56" y1="64" x2="58" y2="70"/>
+        </g>
+        <g stroke="${c}" stroke-width="1.3" fill="none" opacity="0.85">
+          <line x1="46" y1="68" x2="34" y2="96"/><line x1="50" y1="69" x2="50" y2="98"/><line x1="54" y1="68" x2="66" y2="96"/>
+        </g>
+        <g fill="${c}" opacity="0.8">
+          <circle cx="38" cy="88" r="1.3"/><circle cx="50" cy="90" r="1.3"/><circle cx="62" cy="88" r="1.3"/><circle cx="44" cy="82" r="1"/><circle cx="57" cy="82" r="1"/>
+        </g>`;
+      break;
+    case 'uranus':
+      inner = `
+        <circle cx="50" cy="50" r="34" fill="${c}" opacity="0.10"/>
+        <ellipse cx="50" cy="50" rx="9" ry="42" fill="none" stroke="#d3f0ec" stroke-width="1.6" opacity="0.9"/>
+        <ellipse cx="50" cy="50" rx="5.5" ry="42" fill="none" stroke="#d3f0ec" stroke-width="1" opacity="0.6"/>
+        <circle cx="50" cy="50" r="26" fill="#9fe0d6"/>
+        <line x1="14" y1="55" x2="86" y2="45" stroke="rgba(255,255,255,0.5)" stroke-width="1" stroke-dasharray="3 3"/>
+        <circle cx="14" cy="55" r="2" fill="#ffffff"/><circle cx="86" cy="45" r="2" fill="#ffffff"/>`;
+      break;
+    case 'venus':
+      inner = `
+        <circle cx="50" cy="50" r="36" fill="none" stroke="${c}" stroke-width="9" opacity="0.30"/>
+        <circle cx="50" cy="50" r="25" fill="#e0b64a"/>
+        <path d="M50 50 L66 36" stroke="#fff3d0" stroke-width="1.6" fill="none"/>
+        <path d="M66 36 L58 30" stroke="#fff3d0" stroke-width="1.6" fill="none"/>
+        <path d="M50 50 L36 62" stroke="#fff3d0" stroke-width="1.6" fill="none"/>
+        <path d="M36 62 L42 68" stroke="#fff3d0" stroke-width="1.6" fill="none"/>
+        <path d="M50 50 L64 60" stroke="#fff3d0" stroke-width="1.4" fill="none" opacity="0.8"/>
+        <path d="M64 60 L60 66" stroke="#fff3d0" stroke-width="1.4" fill="none" opacity="0.8"/>`;
+      break;
+    case 'pluto':
+      inner = `
+        <circle cx="50" cy="50" r="36" fill="none" stroke="#9a86b0" stroke-width="1" stroke-dasharray="4 4" opacity="0.9"/>
+        <text x="50" y="18" font-family="Atkinson Hyperlegible Next, sans-serif" font-size="5.5" fill="rgba(154,134,176,0.9)" text-anchor="middle">"planet"?</text>
+        <circle cx="50" cy="52" r="19" fill="#c2a0d0"/>
+        <path d="M44 48 q-4 -6 -8 0 q0 6 8 11 q8 -5 8 -11 q-4 -6 -8 0" fill="#e6d4ee" opacity="0.85" transform="translate(6,4) scale(1.05)"/>`;
+      break;
+    case 'mercury':
+      inner = `
+        <circle cx="50" cy="50" r="28" fill="#b3aabf"/>
+        <g fill="#8f8799" opacity="0.85">
+          <circle cx="42" cy="42" r="4"/><circle cx="60" cy="46" r="3"/><circle cx="52" cy="60" r="3.5"/><circle cx="38" cy="58" r="2.4"/><circle cx="62" cy="60" r="2"/><circle cx="50" cy="40" r="2"/>
+        </g>
+        <g stroke="rgba(255,255,255,0.55)" stroke-width="0.9" fill="none">
+          <path d="M78 34 A 30 30 0 0 1 80 58" stroke-dasharray="2 3"/>
+        </g>
+        <path d="M74 30 l4 2 l-1 4" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="0.9"/>
+        <text x="80" y="74" font-family="Atkinson Hyperlegible Next, sans-serif" font-size="6" fill="rgba(255,255,255,0.6)" text-anchor="middle">3:2</text>`;
+      break;
+    case 'neptune':
+      inner = `
+        <circle cx="44" cy="55" r="16" fill="#8fb4ff" opacity="0.45"/>
+        <circle cx="50" cy="50" r="30" fill="#3f6fd8"/>
+        <path d="M22 42 Q50 47 78 42" stroke="#a8c4ff" stroke-width="1.5" fill="none" opacity="0.7"/>
+        <path d="M20 58 Q50 63 80 58" stroke="#a8c4ff" stroke-width="1.3" fill="none" opacity="0.6"/>
+        <ellipse cx="40" cy="44" rx="7" ry="4.2" fill="#25489a"/>`;
+      break;
+  }
+  return `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="world-svg" aria-hidden="true">${inner}</svg>`;
+}
+
+function renderGrid() {
+  const grid = document.getElementById('grid');
+  grid.innerHTML = '';
+  ENTRIES.forEach((entry, idx) => {
+    const el = document.createElement('article');
+    el.className = 'entry';
+    el.style.setProperty('--entry-color', entry.color);
+    el.setAttribute('aria-expanded', 'false');
+
+    const factRows = entry.facts.map(f =>
+      `<tr><td>${f.earth}</td><td>${f.world}</td><td>${f.result}</td></tr>`
+    ).join('');
+    const tags = entry.tags.map(t => `<span class="tag">${t}</span>`).join('');
+
+    el.innerHTML = `
+      <div class="entry-header">
+        ${makeSVG(entry)}
+        <div class="entry-meta">
+          <div class="entry-number">L★S · ${String(idx+1).padStart(3,'0')}</div>
+          <h2 class="entry-name">${entry.name}</h2>
+          <div class="entry-traditional">${entry.identity}</div>
+          <div class="entry-coords">${entry.coords}</div>
+        </div>
+      </div>
+      <p class="entry-brief">${entry.brief}</p>
+      <div class="entry-tags">${tags}</div>
+      <div class="entry-expand">▸ Field notes</div>
+      <div class="entry-notes">
+        <div class="notes-heading">Field notes · ${entry.identity}</div>
+        <div class="notes-body">${entry.notes.replace(/\n\n/g,'</p><p>').replace(/^/,'<p>').replace(/$/,'</p>')}</div>
+        <table class="rule-table" aria-label="How the rules differ for ${entry.name}">
+          <thead><tr><th>Earth's rule</th><th>Its own rule</th><th>The result</th></tr></thead>
+          <tbody>${factRows}</tbody>
+        </table>
+        <div class="ls-coords">
+          <span class="ls-coords-label">Runs on</span>
+          <span class="ls-coords-value">${entry.home}</span>
+        </div>
+      </div>
+    `;
+
+    el.addEventListener('click', () => {
+      const isOpen = el.classList.contains('open');
+      el.classList.toggle('open', !isOpen);
+      el.setAttribute('aria-expanded', String(!isOpen));
+      el.querySelector('.entry-expand').textContent = isOpen ? '▸ Field notes' : '▾ Field notes';
+    });
+
+    grid.appendChild(el);
+  });
+}
+
+renderGrid();
+</script>
+</body>
+</html>
