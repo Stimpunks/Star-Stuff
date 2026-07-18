@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Universe Runs on Difference — Stimpunks Zine No. 8</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="starstuff.css">
+<style>
+  :root {
+    --void:  #07070f;
+    --deep:  #0d0d1a;
+    --page:  #0f0f1c;
+    --violet:#a78bfa;
+    --pink:  #f472b6;
+    --gold:  #fbbf24;
+    --cyan:  #22d3ee;
+    --green: #4ade80;
+    --star-white: #f4f2fb;
+    --stardust:   #d4d0e4;
+    --dim:   #8a86a0;
+    --dim2:  #63607a;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--void);
+    font-family: 'Atkinson Hyperlegible', system-ui, sans-serif;
+    color: var(--star-white);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── STARFIELD (full spectrum) ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 8% 12%, rgba(167,139,250,0.8) 0%, transparent 100%),
+      radial-gradient(1px 1px at 22% 38%, rgba(244,114,182,0.7) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 44% 9%, rgba(251,191,36,0.7) 0%, transparent 100%),
+      radial-gradient(1px 1px at 61% 68%, rgba(34,211,238,0.7) 0%, transparent 100%),
+      radial-gradient(2px 2px at 74% 28%, rgba(74,222,128,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 84% 54%, rgba(244,244,251,0.7) 0%, transparent 100%),
+      radial-gradient(1px 1px at 91% 79%, rgba(167,139,250,0.8) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 4% 58%, rgba(34,211,238,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 34% 84%, rgba(251,191,36,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 54% 48%, rgba(244,114,182,0.5) 0%, transparent 100%),
+      radial-gradient(2px 2px at 19% 88%, rgba(74,222,128,0.7) 0%, transparent 100%),
+      radial-gradient(1px 1px at 69% 4%, rgba(244,244,251,0.8) 0%, transparent 100%),
+      radial-gradient(1px 1px at 47% 62%, rgba(167,139,250,0.5) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 30% 20%, rgba(34,211,238,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 77% 88%, rgba(244,114,182,0.6) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .zine-shell { position: relative; z-index: 1; max-width: 820px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+
+  .spectrum-line { height: 2px; border: none; border-radius: 2px; background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); }
+
+  /* ── NAV ── */
+  .nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2.5rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(167,139,250,0.2); }
+  .nav-brand { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--dim); }
+  .nav-controls { display: flex; gap: 0.5rem; align-items: center; }
+  .nav-btn { background: none; border: 1px solid rgba(167,139,250,0.35); color: var(--stardust); font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.15em; padding: 0.4rem 0.85rem; border-radius: 2px; cursor: pointer; transition: all 0.2s ease; text-transform: uppercase; }
+  .nav-btn:hover { background: rgba(167,139,250,0.15); border-color: rgba(167,139,250,0.6); color: var(--star-white); }
+  .nav-btn.active { background: rgba(167,139,250,0.22); border-color: var(--violet); color: var(--star-white); }
+  .page-counter { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.2em; color: var(--dim2); }
+
+  .spread { display: none; animation: fadeIn 0.5s ease forwards; }
+  .spread.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ── COVER ── */
+  .cover-spread {
+    position: relative; min-height: 520px; border-radius: 4px; overflow: hidden;
+    background:
+      radial-gradient(ellipse at 22% 20%, rgba(167,139,250,0.16) 0%, transparent 52%),
+      radial-gradient(ellipse at 80% 30%, rgba(244,114,182,0.12) 0%, transparent 50%),
+      radial-gradient(ellipse at 68% 82%, rgba(34,211,238,0.12) 0%, transparent 52%),
+      radial-gradient(ellipse at 30% 78%, rgba(74,222,128,0.10) 0%, transparent 52%),
+      var(--deep);
+    border: 1px solid rgba(167,139,250,0.25);
+    box-shadow: inset 0 0 80px rgba(167,139,250,0.06), 0 0 0 4px rgba(255,255,255,0.03);
+    display: flex; flex-direction: column; justify-content: flex-end; padding: 3rem;
+  }
+  .cover-arc { position: absolute; top: -120px; right: -80px; width: 380px; height: 380px; opacity: 0.5; pointer-events: none; }
+  .cover-issue { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.5em; text-transform: uppercase; color: var(--violet); margin-bottom: 1.5rem; }
+  .cover-title { font-weight: 700; font-size: clamp(2.4rem, 7vw, 4.2rem); line-height: 1.02; color: var(--star-white); letter-spacing: -0.02em; margin-bottom: 0.9rem; }
+  .cover-title .spectrum-word { background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .cover-subtitle { font-size: 1rem; color: var(--stardust); opacity: 0.8; margin-bottom: 2rem; max-width: 430px; line-height: 1.55; }
+  .cover-rule { width: 220px; max-width: 60%; margin-bottom: 1.3rem; }
+  .cover-meta { display: flex; gap: 2rem; align-items: center; }
+  .cover-ls { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 1.4rem; color: var(--gold); letter-spacing: 0.05em; }
+  .cover-meta-text { font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--dim2); line-height: 1.9; }
+  .cover-corner { position: absolute; top: 2rem; right: 2.5rem; text-align: right; }
+  .cover-corner-num { font-weight: 700; font-size: 4.5rem; line-height: 1; color: var(--violet); opacity: 0.22; }
+  .cover-corner-label { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--pink); display: block; margin-top: -0.3rem; }
+
+  /* ── INTERIOR ── */
+  .interior { background: var(--page); border: 1px solid rgba(167,139,250,0.15); border-radius: 4px; overflow: hidden; min-height: 480px; }
+  .spread-2col { display: grid; grid-template-columns: 1fr 1fr; min-height: 480px; }
+  .spread-left, .spread-right { padding: 3rem 2.4rem; position: relative; }
+  .spread-left { border-right: 1px solid rgba(167,139,250,0.12); }
+
+  .eyebrow { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--cyan); margin-bottom: 1.1rem; }
+  .body-text { font-size: 0.98rem; line-height: 1.72; color: var(--stardust); }
+  .body-text p { margin-bottom: 1rem; }
+  .body-text p:last-child { margin-bottom: 0; }
+  .body-text strong { font-weight: 700; color: var(--star-white); }
+  .body-text .violet { color: var(--violet); font-weight: 700; }
+  .body-text .pink { color: var(--pink); font-weight: 700; }
+  .body-text .gold { color: var(--gold); font-weight: 700; }
+  .body-text .cyan { color: var(--cyan); font-weight: 700; }
+  .body-text .green { color: var(--green); font-weight: 700; }
+
+  .spread-heading { font-weight: 700; font-size: 1.9rem; line-height: 1.12; color: var(--star-white); margin-bottom: 1.1rem; letter-spacing: -0.01em; }
+  .spread-heading .spectrum-word { background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .rule { width: 40px; margin: 1rem 0; }
+
+  .pull-quote { font-size: 1.18rem; font-weight: 700; line-height: 1.4; color: var(--star-white); border-left: 3px solid var(--violet); padding-left: 1.1rem; margin: 1.4rem 0; }
+  .pull-quote.pink { border-left-color: var(--pink); }
+  .pull-quote.green { border-left-color: var(--green); }
+  .pull-quote .attr { display: block; font-family: 'Space Mono', monospace; font-size: 0.6rem; font-weight: 400; letter-spacing: 0.08em; color: var(--dim); margin-top: 0.6rem; }
+
+  /* ── DIAGRAMS ── */
+  .diagram-wrap { display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; }
+  .diagram { width: 100%; max-width: 280px; display: block; }
+  .diagram-caption { font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim); text-align: center; margin-top: 0.9rem; line-height: 1.9; }
+  .annotation { color: var(--cyan); }
+
+  /* ── REFUSALS ── */
+  .refusals { margin-top: 1.3rem; }
+  .refusal { font-size: 0.88rem; line-height: 1.5; color: var(--stardust); padding: 0.55rem 0; border-bottom: 1px solid rgba(167,139,250,0.1); display: flex; gap: 0.6rem; align-items: baseline; }
+  .refusal:last-child { border-bottom: none; }
+  .refusal-tag { font-family: 'Space Mono', monospace; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--pink); flex-shrink: 0; padding-top: 0.12rem; }
+  .refusal strong { color: var(--star-white); font-weight: 700; }
+
+  /* ── COLOPHON ── */
+  .colophon { padding: 3rem; display: flex; flex-direction: column; justify-content: space-between; min-height: 480px; background: radial-gradient(ellipse at 82% 18%, rgba(244,114,182,0.08) 0%, transparent 50%), radial-gradient(ellipse at 18% 85%, rgba(34,211,238,0.08) 0%, transparent 50%), var(--page); }
+  .colophon-top { border-bottom: 1px solid rgba(167,139,250,0.14); padding-bottom: 1.3rem; margin-bottom: 1.2rem; }
+  .colophon-ls { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 2.4rem; color: var(--gold); letter-spacing: 0.05em; display: block; margin-bottom: 0.4rem; }
+  .colophon-phrase { font-size: 0.92rem; font-weight: 700; color: var(--stardust); }
+  .series-list { display: flex; flex-direction: column; gap: 0.38rem; margin-bottom: 1.2rem; }
+  .series-item { font-size: 0.72rem; color: var(--dim); letter-spacing: 0.01em; display: flex; gap: 0.7rem; align-items: baseline; line-height: 1.45; }
+  .series-item.current { color: var(--violet); font-weight: 700; }
+  .series-num { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim2); flex-shrink: 0; }
+  .series-item.current .series-num { color: var(--violet); }
+  .reflect { border-top: 1px solid rgba(167,139,250,0.14); padding-top: 1rem; margin-bottom: 1.2rem; }
+  .reflect-label { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--cyan); margin-bottom: 0.65rem; }
+  .reflect-q { font-size: 0.86rem; line-height: 1.55; color: var(--stardust); margin-bottom: 0.55rem; }
+  .reflect-q:last-child { margin-bottom: 0; }
+  .colophon-body { font-size: 0.75rem; color: var(--dim); line-height: 1.75; margin-bottom: 1.2rem; }
+  .colophon-footer { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--dim); line-height: 2.2; border-top: 1px solid rgba(167,139,250,0.14); padding-top: 1rem; }
+
+  /* ── SPREAD FOOTER ── */
+  .spread-footer { display: flex; justify-content: space-between; align-items: center; padding: 0.9rem 2.4rem; border-top: 1px solid rgba(167,139,250,0.1); }
+  .spread-footer-left { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--dim); }
+  .spread-footer-right { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; color: var(--pink); }
+
+  .twinkle { position: fixed; width: 3px; height: 3px; border-radius: 50%; animation: twinkle-anim 3s ease-in-out infinite; pointer-events: none; z-index: 0; }
+  @keyframes twinkle-anim { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.15; transform: scale(0.3); } }
+
+  @media (max-width: 600px) {
+    .spread-2col { grid-template-columns: 1fr; }
+    .spread-left { border-right: none; border-bottom: 1px solid rgba(167,139,250,0.12); }
+    .cover-spread { padding: 2rem; min-height: 420px; }
+    .cover-title { font-size: 2.3rem; }
+    .spread-heading { font-size: 1.55rem; }
+    .spread-left, .spread-right { padding: 2rem 1.5rem; }
+    .colophon { padding: 2rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="twinkle" style="top:7%;left:11%;background:var(--violet);box-shadow:0 0 6px var(--violet);animation-delay:-0.4s"></div>
+<div class="twinkle" style="top:19%;left:83%;background:var(--pink);box-shadow:0 0 6px var(--pink);animation-delay:-1.3s"></div>
+<div class="twinkle" style="top:52%;left:4%;background:var(--cyan);box-shadow:0 0 6px var(--cyan);animation-delay:-2.1s"></div>
+<div class="twinkle" style="top:71%;left:94%;background:var(--green);box-shadow:0 0 6px var(--green);animation-delay:-0.9s"></div>
+<div class="twinkle" style="top:88%;left:28%;background:var(--gold);box-shadow:0 0 6px var(--gold);animation-delay:-1.7s"></div>
+<div class="twinkle" style="top:38%;left:97%;background:var(--violet);box-shadow:0 0 6px var(--violet);animation-delay:-3.1s"></div>
+
+<div class="zine-shell">
+
+  <nav class="ss-nav" style="--nav-accent:#a78bfa;" aria-label="Star Stuff collection">
+    <a class="ss-nav-home" href="index.html"><span class="ss-star" aria-hidden="true">★</span> stuff</a>
+    <span class="ss-nav-links">
+      <a class="ss-nav-prev" href="you-were-never-one-thing-zine.html"><span class="ss-nav-arrow" aria-hidden="true">‹</span> <span class="ss-nav-label">Never One Thing</span></a>
+      <a class="ss-nav-next" href="ls-broadside.html"><span class="ss-nav-label">Broadside</span> <span class="ss-nav-arrow" aria-hidden="true">›</span></a>
+    </span>
+  </nav>
+
+  <nav class="nav">
+    <div class="nav-brand">Stimpunks · Zine No. 8</div>
+    <div class="nav-controls">
+      <button class="nav-btn" id="prev-btn" onclick="changePage(-1)">← prev</button>
+      <span class="page-counter" id="page-counter">1 / 6</span>
+      <button class="nav-btn" id="next-btn" onclick="changePage(1)">next →</button>
+    </div>
+  </nav>
+
+  <!-- ════ SPREAD 1: COVER ════ -->
+  <div class="spread active" id="spread-1">
+    <div class="cover-spread">
+      <svg class="cover-arc" viewBox="0 0 380 380" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <g fill="none" stroke-width="7" stroke-linecap="round">
+          <path d="M40 300 A210 210 0 0 1 340 90" stroke="rgba(167,139,250,0.85)"/>
+          <path d="M52 316 A210 210 0 0 1 356 106" stroke="rgba(244,114,182,0.8)"/>
+          <path d="M64 332 A210 210 0 0 1 372 122" stroke="rgba(251,191,36,0.8)"/>
+          <path d="M76 348 A210 210 0 0 1 388 138" stroke="rgba(34,211,238,0.75)"/>
+          <path d="M88 364 A210 210 0 0 1 404 154" stroke="rgba(74,222,128,0.7)"/>
+        </g>
+      </svg>
+
+      <div class="cover-corner">
+        <div class="cover-corner-num">8</div>
+        <span class="cover-corner-label">Difference</span>
+      </div>
+
+      <div class="cover-issue">Stimpunks Foundation · Zine No. 8</div>
+
+      <h1 class="cover-title">The Universe<br>Runs on<br><span class="spectrum-word">Difference</span></h1>
+
+      <p class="cover-subtitle">on variety, monoculture, and why sameness is the fragile thing</p>
+
+      <hr class="spectrum-line cover-rule">
+
+      <div class="cover-meta">
+        <div class="cover-ls">L★S</div>
+        <div class="cover-meta-text">
+          Love You Down<br>
+          To Your Star Stuff<br>
+          · open edition ·
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 2: A Smooth Universe Is a Dead One ════ -->
+  <div class="spread" id="spread-2">
+    <div class="interior">
+      <div class="spread-2col">
+        <div class="spread-left">
+          <div class="eyebrow">The cosmic scale</div>
+          <h2 class="spread-heading">A smooth universe<br>is a <span style="color:var(--violet)">dead one</span></h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p>The early universe was almost perfectly uniform. Its oldest light — the cosmic microwave background — is smooth to about <strong>one part in a hundred thousand</strong>.</p>
+            <p>Almost. Those faint differences, tiny ripples of denser and thinner, were the seeds. Gravity pulled the denser spots together, and over billions of years they grew into <span class="violet">everything</span>: stars, galaxies, planets, you.</p>
+            <p>A perfectly uniform cosmos would have stayed a featureless fog forever — nothing to see, no one to see it. Structure exists because sameness broke. And the elements you are built from? Difference, forged inside stars.</p>
+          </div>
+        </div>
+        <div class="spread-right">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 280 200" xmlns="http://www.w3.org/2000/svg">
+              <!-- left: near-uniform field -->
+              <rect x="6" y="30" width="110" height="140" rx="4" fill="rgba(167,139,250,0.04)" stroke="rgba(167,139,250,0.4)" stroke-width="1"/>
+              <g fill="rgba(212,208,228,0.5)">
+                <circle cx="26" cy="52" r="1.5"/><circle cx="50" cy="48" r="1.5"/><circle cx="76" cy="54" r="1.5"/><circle cx="98" cy="50" r="1.5"/>
+                <circle cx="22" cy="78" r="1.5"/><circle cx="48" cy="82" r="1.5"/><circle cx="72" cy="76" r="1.5"/><circle cx="96" cy="80" r="1.5"/>
+                <circle cx="28" cy="106" r="1.5"/><circle cx="52" cy="110" r="1.5"/><circle cx="78" cy="104" r="1.5"/><circle cx="100" cy="108" r="1.5"/>
+                <circle cx="24" cy="134" r="1.5"/><circle cx="50" cy="130" r="1.5"/><circle cx="74" cy="136" r="1.5"/><circle cx="98" cy="132" r="1.5"/>
+                <circle cx="34" cy="158" r="1.5"/><circle cx="60" cy="154" r="1.5"/><circle cx="86" cy="158" r="1.5"/>
+              </g>
+              <text x="61" y="22" font-family="Space Mono, monospace" font-size="7" fill="rgba(167,139,250,0.85)" text-anchor="middle">near-uniform</text>
+              <!-- arrow -->
+              <g stroke="rgba(251,191,36,0.9)" stroke-width="1.4" fill="none">
+                <path d="M122 100 L158 100"/>
+                <path d="M150 94 L158 100 L150 106"/>
+              </g>
+              <text x="140" y="90" font-family="Space Mono, monospace" font-size="6" fill="rgba(251,191,36,0.9)" text-anchor="middle">gravity</text>
+              <!-- right: structure -->
+              <rect x="164" y="30" width="110" height="140" rx="4" fill="rgba(34,211,238,0.04)" stroke="rgba(34,211,238,0.4)" stroke-width="1"/>
+              <g stroke="rgba(244,244,251,0.18)" stroke-width="0.7" fill="none">
+                <path d="M196 60 L232 84 L210 120 L246 138 M232 84 L250 60 M210 120 L188 150"/>
+              </g>
+              <g>
+                <circle cx="196" cy="60" r="6" fill="rgba(167,139,250,0.8)"/>
+                <circle cx="232" cy="84" r="9" fill="rgba(244,114,182,0.85)"/>
+                <circle cx="250" cy="60" r="4" fill="rgba(251,191,36,0.8)"/>
+                <circle cx="210" cy="120" r="7" fill="rgba(34,211,238,0.8)"/>
+                <circle cx="246" cy="138" r="5" fill="rgba(74,222,128,0.8)"/>
+                <circle cx="188" cy="150" r="4" fill="rgba(167,139,250,0.7)"/>
+              </g>
+              <text x="219" y="22" font-family="Space Mono, monospace" font-size="7" fill="rgba(34,211,238,0.9)" text-anchor="middle">structure</text>
+            </svg>
+            <p class="diagram-caption">
+              tiny differences → all structure<br>
+              <span class="annotation">a flat cosmos makes nothing</span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Universe Runs on Difference · Stimpunks</span>
+        <span class="spread-footer-right">2</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 3: Sameness Is a Single Point of Failure ════ -->
+  <div class="spread" id="spread-3">
+    <div class="interior">
+      <div class="spread-2col">
+        <div class="spread-left">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 280 220" xmlns="http://www.w3.org/2000/svg">
+              <!-- monoculture row -->
+              <text x="10" y="20" font-family="Space Mono, monospace" font-size="7" fill="rgba(251,191,36,0.9)" text-anchor="start">monoculture</text>
+              <g>
+                <circle cx="26" cy="46" r="9" fill="rgba(251,191,36,0.7)"/>
+                <circle cx="58" cy="46" r="9" fill="rgba(251,191,36,0.7)"/>
+                <circle cx="90" cy="46" r="9" fill="rgba(251,191,36,0.7)"/>
+                <circle cx="122" cy="46" r="9" fill="rgba(251,191,36,0.7)"/>
+                <circle cx="154" cy="46" r="9" fill="rgba(251,191,36,0.7)"/>
+                <circle cx="186" cy="46" r="9" fill="rgba(251,191,36,0.7)"/>
+                <circle cx="218" cy="46" r="9" fill="rgba(251,191,36,0.7)"/>
+              </g>
+              <!-- blight bolt -->
+              <path d="M250 26 L242 48 L250 48 L244 68" fill="none" stroke="rgba(244,114,182,0.95)" stroke-width="1.6" stroke-linejoin="round"/>
+              <text x="250" y="20" font-family="Space Mono, monospace" font-size="6" fill="rgba(244,114,182,0.95)" text-anchor="middle">blight</text>
+              <!-- all struck -->
+              <g stroke="rgba(244,114,182,0.9)" stroke-width="1.6">
+                <path d="M20 40 L32 52 M32 40 L20 52"/>
+                <path d="M52 40 L64 52 M64 40 L52 52"/>
+                <path d="M84 40 L96 52 M96 40 L84 52"/>
+                <path d="M116 40 L128 52 M128 40 L116 52"/>
+                <path d="M148 40 L160 52 M160 40 L148 52"/>
+                <path d="M180 40 L192 52 M192 40 L180 52"/>
+                <path d="M212 40 L224 52 M224 40 L212 52"/>
+              </g>
+              <text x="140" y="76" font-family="Space Mono, monospace" font-size="6.5" fill="rgba(136,134,160,0.95)" text-anchor="middle">one clone · one blight · total collapse</text>
+
+              <line x1="16" y1="104" x2="264" y2="104" stroke="rgba(167,139,250,0.18)" stroke-width="0.7"/>
+
+              <!-- polyculture row -->
+              <text x="10" y="130" font-family="Space Mono, monospace" font-size="7" fill="rgba(74,222,128,0.9)" text-anchor="start">polyculture</text>
+              <g>
+                <circle cx="26" cy="158" r="9" fill="rgba(167,139,250,0.75)"/>
+                <rect x="49" y="149" width="18" height="18" rx="3" fill="rgba(244,114,182,0.75)"/>
+                <circle cx="90" cy="158" r="7" fill="rgba(251,191,36,0.75)"/>
+                <path d="M122 148 L131 166 L113 166 Z" fill="rgba(34,211,238,0.75)"/>
+                <circle cx="154" cy="158" r="9" fill="rgba(74,222,128,0.75)"/>
+                <rect x="177" y="150" width="16" height="16" rx="3" fill="rgba(167,139,250,0.75)"/>
+                <circle cx="218" cy="158" r="7" fill="rgba(34,211,238,0.75)"/>
+              </g>
+              <!-- blight bolt -->
+              <path d="M250 138 L242 160 L250 160 L244 180" fill="none" stroke="rgba(244,114,182,0.95)" stroke-width="1.6" stroke-linejoin="round"/>
+              <!-- only a couple struck -->
+              <g stroke="rgba(244,114,182,0.9)" stroke-width="1.6">
+                <path d="M84 152 L96 164 M96 152 L84 164"/>
+                <path d="M148 152 L160 164 M160 152 L148 164"/>
+              </g>
+              <text x="140" y="196" font-family="Space Mono, monospace" font-size="6.5" fill="rgba(136,134,160,0.95)" text-anchor="middle">many kinds · same blight · it holds</text>
+            </svg>
+            <p class="diagram-caption">
+              variety is the resilient bet<br>
+              <span class="annotation">uniformity is efficient, and brittle</span>
+            </p>
+          </div>
+        </div>
+        <div class="spread-right">
+          <div class="eyebrow">The living scale</div>
+          <h2 class="spread-heading">Sameness is a<br>single point<br>of <span style="color:var(--gold)">failure</span></h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p>Nearly every banana shipped worldwide is a <strong>Cavendish</strong> — a sterile clone, grown from cuttings, all but genetically identical. One vast monoculture.</p>
+            <p>It wasn't always. The export banana was the Gros Michel, until a fungus — Panama disease — <span class="gold">wiped it out commercially by the 1960s</span>. The industry survived only by switching to the Cavendish, which happened to resist that strain. Now a new strain, Tropical Race 4, is spreading, and the Cavendish has no defense. One clone, one blight from collapse.</p>
+            <p>Biodiversity is the opposite bet: ecologists find more varied systems tend to be more resilient — when nothing is identical, no single shock takes it all.</p>
+          </div>
+          <div class="pull-quote green">Monoculture is the engineered thing. We call it Cavendish Space — and we refuse to build it.</div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Universe Runs on Difference · Stimpunks</span>
+        <span class="spread-footer-right">3</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 4: The Spiky Profile ════ -->
+  <div class="spread" id="spread-4">
+    <div class="interior">
+      <div class="spread-2col">
+        <div class="spread-left">
+          <div class="eyebrow">Difference within us</div>
+          <h2 class="spread-heading">The <span style="color:var(--cyan)">spiky</span> profile</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p>Plot a neurodivergent mind's abilities across domains and you get peaks and troughs — the gap between what we're great at and what we struggle with is far wider than average. Damian Milton named the shape: a <strong>spiky profile</strong>. A "neurotypical" profile is flatter, its scores bunched close together.</p>
+            <p>The deficit story reads the troughs as brokenness, measured against a smooth, standard line. But look again. <span class="cyan">The flat line is the Cavendish</span> — the monoculture we were told to match. The spikes are the default state of matter: variety, the thing that actually makes something new.</p>
+            <p>The peaks are real. So are the troughs. As Carol Black writes, our differences are <em>"the genius — and the conscience — of our species."</em></p>
+          </div>
+        </div>
+        <div class="spread-right">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 280 210" xmlns="http://www.w3.org/2000/svg">
+              <!-- axes -->
+              <line x1="34" y1="24" x2="34" y2="168" stroke="rgba(136,134,160,0.6)" stroke-width="1"/>
+              <line x1="34" y1="168" x2="262" y2="168" stroke="rgba(136,134,160,0.6)" stroke-width="1"/>
+              <text x="26" y="96" font-family="Space Mono, monospace" font-size="6" fill="rgba(136,134,160,0.9)" text-anchor="middle" transform="rotate(-90 26 96)">capacity</text>
+              <text x="148" y="184" font-family="Space Mono, monospace" font-size="6" fill="rgba(136,134,160,0.9)" text-anchor="middle">domains / skills</text>
+              <!-- flat "ideal" line -->
+              <line x1="40" y1="104" x2="256" y2="104" stroke="rgba(136,134,160,0.7)" stroke-width="1.3" stroke-dasharray="4 3"/>
+              <text x="256" y="100" font-family="Space Mono, monospace" font-size="5.5" fill="rgba(136,134,160,0.85)" text-anchor="end">the &quot;flat&quot; ideal</text>
+              <!-- spiky line -->
+              <polyline points="44,70 72,150 100,44 128,138 156,60 184,158 212,78 240,120 256,50"
+                        fill="none" stroke="rgba(34,211,238,0.95)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+              <g fill="rgba(34,211,238,1)">
+                <circle cx="44" cy="70" r="2.4"/><circle cx="72" cy="150" r="2.4"/><circle cx="100" cy="44" r="2.4"/><circle cx="128" cy="138" r="2.4"/><circle cx="156" cy="60" r="2.4"/><circle cx="184" cy="158" r="2.4"/><circle cx="212" cy="78" r="2.4"/><circle cx="240" cy="120" r="2.4"/><circle cx="256" cy="50" r="2.4"/>
+              </g>
+              <text x="100" y="36" font-family="Space Mono, monospace" font-size="5.5" fill="rgba(34,211,238,0.95)" text-anchor="middle">peak</text>
+              <text x="184" y="172" font-family="Space Mono, monospace" font-size="5.5" fill="rgba(34,211,238,0.95)" text-anchor="middle">trough</text>
+            </svg>
+            <p class="diagram-caption">
+              peaks and troughs, not a flat line<br>
+              <span class="annotation">the flat profile is the monoculture</span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Universe Runs on Difference · Stimpunks</span>
+        <span class="spread-footer-right">4</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 5: The Gifts We Bring Each Other ════ -->
+  <div class="spread" id="spread-5">
+    <div class="interior">
+      <div class="spread-2col">
+        <div class="spread-left">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 260 230" xmlns="http://www.w3.org/2000/svg">
+              <!-- edges -->
+              <g stroke="rgba(212,208,228,0.28)" stroke-width="1">
+                <line x1="62" y1="52" x2="198" y2="62"/>
+                <line x1="198" y1="62" x2="224" y2="150"/>
+                <line x1="224" y1="150" x2="132" y2="196"/>
+                <line x1="132" y1="196" x2="40" y2="150"/>
+                <line x1="40" y1="150" x2="62" y2="52"/>
+                <line x1="62" y1="52" x2="132" y2="196"/>
+                <line x1="198" y1="62" x2="40" y2="150"/>
+              </g>
+              <!-- nodes -->
+              <circle cx="62" cy="52" r="14" fill="rgba(167,139,250,0.9)"/>
+              <circle cx="198" cy="62" r="14" fill="rgba(244,114,182,0.9)"/>
+              <circle cx="224" cy="150" r="14" fill="rgba(251,191,36,0.9)"/>
+              <circle cx="132" cy="196" r="14" fill="rgba(34,211,238,0.9)"/>
+              <circle cx="40" cy="150" r="14" fill="rgba(74,222,128,0.9)"/>
+              <!-- labels -->
+              <text x="62" y="30" font-family="Space Mono, monospace" font-size="6.5" fill="rgba(167,139,250,0.95)" text-anchor="middle">pattern</text>
+              <text x="216" y="46" font-family="Space Mono, monospace" font-size="6.5" fill="rgba(244,114,182,0.95)" text-anchor="middle">words</text>
+              <text x="242" y="154" font-family="Space Mono, monospace" font-size="6.5" fill="rgba(251,191,36,0.95)" text-anchor="start">care</text>
+              <text x="132" y="220" font-family="Space Mono, monospace" font-size="6.5" fill="rgba(34,211,238,0.95)" text-anchor="middle">systems</text>
+              <text x="18" y="154" font-family="Space Mono, monospace" font-size="6.5" fill="rgba(74,222,128,0.95)" text-anchor="start">focus</text>
+            </svg>
+            <p class="diagram-caption">
+              who's strong where · who you go to<br>
+              <span class="annotation">gaps covered, minds relating</span>
+            </p>
+          </div>
+        </div>
+        <div class="spread-right">
+          <div class="eyebrow">Difference between us</div>
+          <h2 class="spread-heading">The gifts we<br>bring <span style="color:var(--pink)">each other</span></h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p>A <strong>competency network</strong> is a map of the gifts people bring to each other. Everyone is good at different things, has gaps where others are strong — and the network makes it visible: who's strong where, who you go to, who to trust with which kind of question.</p>
+            <p>It isn't ranking. It's fit. My troughs are your peaks; what one of us misses, another catches. A group of different minds builds things no single kind of mind could build alone. As Lori Hogenkamp puts it, that's <span class="pink">"not insurance — that's ecology."</span></p>
+          </div>
+          <div class="refusals">
+            <div class="refusal"><span class="refusal-tag">Not</span><span>a superpower. The troughs are real; support is <strong>not a consolation prize.</strong></span></div>
+            <div class="refusal"><span class="refusal-tag">Not</span><span>"everyone's a little bit neurodivergent." Flattening us into sameness is the <strong>monoculture again.</strong></span></div>
+            <div class="refusal"><span class="refusal-tag">Not</span><span>difference mined for productivity, a <strong>"cognitive-diversity" business case.</strong></span></div>
+            <div class="refusal"><span class="refusal-tag">Not</span><span>difference to be tolerated. There is <strong>no normal to deviate from.</strong></span></div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Universe Runs on Difference · Stimpunks</span>
+        <span class="spread-footer-right">5</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 6: Colophon ════ -->
+  <div class="spread" id="spread-6">
+    <div class="interior">
+      <div class="colophon">
+        <div>
+          <div class="colophon-top">
+            <span class="colophon-ls">L★S</span>
+            <span class="colophon-phrase">The universe runs on difference. So do we — in every color, key, and frequency of neurodiversity.</span>
+          </div>
+          <div class="series-list">
+            <div class="series-item"><span class="series-num">No. 1</span> Bone Song — piezoelectric matter &amp; star-forged calcium</div>
+            <div class="series-item"><span class="series-num">No. 2</span> Love You Down To Your Star Stuff — the phrase &amp; the scale</div>
+            <div class="series-item"><span class="series-num">No. 3</span> Neurodiversity Field Guide — the paradigm, plainly stated</div>
+            <div class="series-item"><span class="series-num">No. 4</span> We Are All Star Stuff — voices from the community</div>
+            <div class="series-item"><span class="series-num">No. 5</span> Underground — the mycelial worldview</div>
+            <div class="series-item"><span class="series-num">No. 6</span> Eternal Sunshine — starlight, warmth &amp; the light in you</div>
+            <div class="series-item"><span class="series-num">No. 7</span> You Were Never One Thing — the cell as a truce</div>
+            <div class="series-item current"><span class="series-num">No. 8</span> The Universe Runs on Difference — variety &amp; the failure of monoculture ← you are here</div>
+          </div>
+          <div class="reflect">
+            <div class="reflect-label">Reflection</div>
+            <p class="reflect-q">Where have you been measured against a flat line — asked to fill your troughs and file down your peaks — and what did it cost?</p>
+            <p class="reflect-q">Who is in your competency network? Whose peaks cover your troughs, and whose troughs do yours cover?</p>
+          </div>
+          <p class="colophon-body">
+            The Universe Runs on Difference is the eighth zine in the Stimpunks series, and the first about systems rather than the body.<br><br>
+            The science is established. The cosmic microwave background is uniform to about one part in 100,000; those faint density differences grew under gravity into all large-scale structure — galaxies, clusters, us (COBE, WMAP, Planck). The Cavendish banana is a sterile clone grown as a near-global monoculture; its predecessor, the Gros Michel, was driven to commercial extinction by Panama disease (Fusarium wilt, Race 1) by the 1960s, and the Cavendish now faces the same fate from Tropical Race 4. Biodiversity is generally associated with greater resilience (the "insurance" effect); the Irish potato famine is the classic monoculture catastrophe.<br><br>
+            The concepts are the community's own: the spiky profile (named by Damian Milton, building on Francesca Happé's work) and the competency network — "a map of the gifts people bring to each other" — drawing on Lori Hogenkamp, the NeurodiVenture model at Autistic Collaboration, Temple Grandin, and adrienne maree brown; Carol Black on cognitive diversity. Cavendish Space is a Stimpunks concept. The reading — that uniformity is the engineered thing and difference is the default — is ours. The elements in you were difference forged in stars.
+          </p>
+        </div>
+        <div class="colophon-footer">
+          Stimpunks Foundation · Zine No. 8 · Open Edition<br>
+          Print free · Share freely · L★S<br>
+          stimpunks.org · starstuff.earth
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Universe Runs on Difference · Stimpunks</span>
+        <span class="spread-footer-right">6</span>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /zine-shell -->
+
+<script>
+  let current = 1;
+  const total = 6;
+
+  function changePage(dir) {
+    const next = current + dir;
+    if (next < 1 || next > total) return;
+    document.getElementById('spread-' + current).classList.remove('active');
+    current = next;
+    document.getElementById('spread-' + current).classList.add('active');
+    document.getElementById('page-counter').textContent = current + ' / ' + total;
+    document.getElementById('prev-btn').style.opacity = current === 1 ? '0.3' : '1';
+    document.getElementById('next-btn').style.opacity = current === total ? '0.3' : '1';
+    document.getElementById('prev-btn').classList.toggle('active', current > 1);
+    document.getElementById('next-btn').classList.toggle('active', current < total);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') changePage(1);
+    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   changePage(-1);
+  });
+
+  document.getElementById('prev-btn').style.opacity = '0.3';
+  document.getElementById('next-btn').classList.add('active');
+</script>
+</body>
+</html>
