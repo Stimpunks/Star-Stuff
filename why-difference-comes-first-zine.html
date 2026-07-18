@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why Difference Comes First — Stimpunks Zine No. 11 — Helen Edgar</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="starstuff.css">
+<style>
+  :root {
+    --void:  #07070f;
+    --deep:  #0d0d1a;
+    --page:  #0f0f1c;
+    --violet:#a78bfa;
+    --pink:  #f472b6;
+    --gold:  #fbbf24;
+    --cyan:  #22d3ee;
+    --green: #4ade80;
+    --star-white: #f4f2fb;
+    --stardust:   #d4d0e4;
+    --dim:   #8a86a0;
+    --dim2:  #63607a;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--void);
+    font-family: 'Atkinson Hyperlegible', system-ui, sans-serif;
+    color: var(--star-white);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── STARFIELD (violet-leaning) ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 8% 12%, rgba(167,139,250,0.85) 0%, transparent 100%),
+      radial-gradient(1px 1px at 22% 38%, rgba(244,244,251,0.6) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 44% 9%, rgba(167,139,250,0.7) 0%, transparent 100%),
+      radial-gradient(1px 1px at 61% 68%, rgba(244,114,182,0.6) 0%, transparent 100%),
+      radial-gradient(2px 2px at 74% 28%, rgba(244,244,251,0.55) 0%, transparent 100%),
+      radial-gradient(1px 1px at 84% 54%, rgba(167,139,250,0.7) 0%, transparent 100%),
+      radial-gradient(1px 1px at 91% 79%, rgba(244,244,251,0.7) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 4% 58%, rgba(167,139,250,0.55) 0%, transparent 100%),
+      radial-gradient(1px 1px at 34% 84%, rgba(244,244,251,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 54% 48%, rgba(34,211,238,0.4) 0%, transparent 100%),
+      radial-gradient(2px 2px at 19% 88%, rgba(167,139,250,0.7) 0%, transparent 100%),
+      radial-gradient(1px 1px at 69% 4%, rgba(244,244,251,0.8) 0%, transparent 100%),
+      radial-gradient(1px 1px at 47% 62%, rgba(167,139,250,0.5) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 30% 20%, rgba(244,244,251,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 77% 88%, rgba(244,114,182,0.5) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .zine-shell { position: relative; z-index: 1; max-width: 820px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+
+  .spectrum-line { height: 2px; border: none; border-radius: 2px; background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); }
+
+  /* ── NAV ── */
+  .nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2.5rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(167,139,250,0.2); }
+  .nav-brand { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--dim); }
+  .nav-controls { display: flex; gap: 0.5rem; align-items: center; }
+  .nav-btn { background: none; border: 1px solid rgba(167,139,250,0.35); color: var(--stardust); font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.15em; padding: 0.4rem 0.85rem; border-radius: 2px; cursor: pointer; transition: all 0.2s ease; text-transform: uppercase; }
+  .nav-btn:hover { background: rgba(167,139,250,0.15); border-color: rgba(167,139,250,0.6); color: var(--star-white); }
+  .nav-btn.active { background: rgba(167,139,250,0.22); border-color: var(--violet); color: var(--star-white); }
+  .page-counter { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.2em; color: var(--dim2); }
+
+  .spread { display: none; animation: fadeIn 0.5s ease forwards; }
+  .spread.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ── COVER ── */
+  .cover-spread {
+    position: relative; min-height: 540px; border-radius: 4px; overflow: hidden;
+    background:
+      radial-gradient(ellipse at 78% 26%, rgba(167,139,250,0.18) 0%, transparent 52%),
+      radial-gradient(ellipse at 20% 22%, rgba(34,211,238,0.10) 0%, transparent 50%),
+      radial-gradient(ellipse at 66% 84%, rgba(244,114,182,0.10) 0%, transparent 52%),
+      radial-gradient(ellipse at 28% 78%, rgba(251,191,36,0.07) 0%, transparent 52%),
+      var(--deep);
+    border: 1px solid rgba(167,139,250,0.25);
+    box-shadow: inset 0 0 80px rgba(167,139,250,0.06), 0 0 0 4px rgba(255,255,255,0.03);
+    display: flex; flex-direction: column; justify-content: flex-end; padding: 3rem;
+  }
+  .cover-motif { position: absolute; top: -10px; right: -20px; width: 330px; height: 330px; opacity: 0.8; pointer-events: none; }
+  .cover-issue { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.42em; text-transform: uppercase; color: var(--violet); margin-bottom: 1.4rem; }
+  .cover-title { font-weight: 700; font-size: clamp(2.3rem, 6.6vw, 4rem); line-height: 1.02; color: var(--star-white); letter-spacing: -0.02em; margin-bottom: 1.1rem; }
+  .cover-title .spectrum-word { background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .cover-subtitle { font-size: 1rem; color: var(--stardust); opacity: 0.9; margin-bottom: 1.6rem; max-width: 460px; line-height: 1.6; font-style: italic; }
+  .cover-rule { width: 220px; max-width: 60%; margin-bottom: 1.2rem; }
+  .cover-byline { font-family: 'Space Mono', monospace; font-size: 0.66rem; letter-spacing: 0.14em; color: var(--gold); margin-bottom: 1.4rem; }
+  .cover-meta { display: flex; gap: 2rem; align-items: center; }
+  .cover-ls { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 1.4rem; color: var(--gold); letter-spacing: 0.05em; }
+  .cover-meta-text { font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--dim2); line-height: 1.9; }
+  .cover-corner { position: absolute; top: 2rem; right: 2.5rem; text-align: right; }
+  .cover-corner-num { font-weight: 700; font-size: 4.5rem; line-height: 1; color: var(--violet); opacity: 0.22; }
+  .cover-corner-label { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--pink); display: block; margin-top: -0.3rem; }
+
+  /* ── INTERIOR (essay) ── */
+  .interior { background: var(--page); border: 1px solid rgba(167,139,250,0.15); border-radius: 4px; overflow: hidden; min-height: 520px; }
+  .spread-essay { padding: 3rem 2.8rem; min-height: 520px; }
+
+  .eyebrow { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--violet); margin-bottom: 1rem; }
+  .spread-heading { font-weight: 700; font-size: 1.8rem; line-height: 1.14; color: var(--star-white); margin-bottom: 1.1rem; letter-spacing: -0.01em; }
+  .spread-heading .spectrum-word { background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .rule { width: 40px; margin: 0.9rem 0 1.3rem; }
+
+  .body-text { font-size: 1.05rem; line-height: 1.78; color: var(--stardust); max-width: 46rem; }
+  .body-text p { margin-bottom: 1rem; }
+  .body-text p:last-child { margin-bottom: 0; }
+  .body-text em { font-style: italic; color: var(--star-white); }
+  .body-text strong { font-weight: 700; color: var(--star-white); }
+  .body-text .ref { color: var(--dim2); font-size: 0.82em; }
+
+  .pull-quote { font-size: 1.24rem; font-weight: 700; line-height: 1.4; color: var(--star-white); border-left: 3px solid var(--violet); padding-left: 1.1rem; margin: 1.6rem 0 0.5rem; max-width: 44rem; }
+  .pull-quote.gold { border-left-color: var(--gold); }
+  .pull-quote.cyan { border-left-color: var(--cyan); }
+
+  .star-line { text-align: center; font-weight: 700; font-size: clamp(1.7rem, 4.5vw, 2.5rem); line-height: 1.15; letter-spacing: -0.01em; margin: 2rem 0; }
+  .star-line .spectrum-word { background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+
+  /* ── DIAGRAMS ── */
+  .diagram-wrap { display: flex; flex-direction: column; align-items: center; margin: 1.8rem 0 0.4rem; }
+  .diagram { width: 100%; max-width: 400px; display: block; }
+  .diagram.wide { max-width: 460px; }
+  .diagram-caption { font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--dim); text-align: center; margin-top: 0.8rem; line-height: 1.9; }
+  .annotation { color: var(--violet); }
+
+  /* ── COLOPHON ── */
+  .colophon { padding: 3rem 2.8rem; min-height: 520px; background: radial-gradient(ellipse at 82% 18%, rgba(167,139,250,0.09) 0%, transparent 50%), radial-gradient(ellipse at 18% 85%, rgba(244,114,182,0.07) 0%, transparent 50%), var(--page); }
+  .colophon-ls { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 2.2rem; color: var(--gold); letter-spacing: 0.05em; display: block; margin-bottom: 0.5rem; }
+  .colophon-credit { font-size: 1rem; line-height: 1.7; color: var(--stardust); margin-bottom: 0.4rem; }
+  .colophon-credit strong { color: var(--star-white); font-weight: 700; }
+  .colophon-guest { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--violet); margin-bottom: 1rem; }
+  .colophon h4 { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--violet); margin: 1.5rem 0 0.6rem; font-weight: 700; }
+  .colophon-body { font-size: 0.82rem; color: var(--dim); line-height: 1.7; }
+  .colophon-body a { color: var(--violet); text-decoration: none; border-bottom: 1px solid rgba(167,139,250,0.35); }
+  .colophon-body a:hover { border-bottom-color: var(--violet); }
+  .refs { margin-top: 0.4rem; }
+  .refs .r { font-size: 0.76rem; line-height: 1.5; color: var(--dim); padding: 0.35rem 0; border-bottom: 1px solid rgba(167,139,250,0.1); text-indent: -1.1rem; padding-left: 1.1rem; }
+  .refs .r:last-child { border-bottom: none; }
+  .refs .r em { color: var(--stardust); font-style: italic; }
+  .refs .r a { color: var(--violet); text-decoration: none; border-bottom: 1px solid rgba(167,139,250,0.3); }
+  .divider { width: 60px; height: 1px; background: rgba(167,139,250,0.3); border: none; margin: 2rem 0; }
+  .series-list { display: flex; flex-direction: column; gap: 0.34rem; margin: 0.6rem 0 0; }
+  .series-item { font-size: 0.7rem; color: var(--dim); display: flex; gap: 0.6rem; align-items: baseline; line-height: 1.4; }
+  .series-item.current { color: var(--violet); font-weight: 700; }
+  .series-num { font-family: 'Space Mono', monospace; font-size: 0.52rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--dim2); flex-shrink: 0; }
+  .series-item.current .series-num { color: var(--violet); }
+  .colophon-footer { font-family: 'Space Mono', monospace; font-size: 0.56rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--dim2); line-height: 2.1; margin-top: 1.8rem; padding-top: 1.2rem; border-top: 1px solid rgba(167,139,250,0.14); }
+
+  /* ── SPREAD FOOTER ── */
+  .spread-footer { display: flex; justify-content: space-between; align-items: center; padding: 0.9rem 2.8rem; border-top: 1px solid rgba(167,139,250,0.1); }
+  .spread-footer-left { font-family: 'Space Mono', monospace; font-size: 0.56rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--dim); }
+  .spread-footer-right { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; color: var(--pink); }
+
+  .twinkle { position: fixed; width: 3px; height: 3px; border-radius: 50%; animation: twinkle-anim 3s ease-in-out infinite; pointer-events: none; z-index: 0; }
+  @keyframes twinkle-anim { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.15; transform: scale(0.3); } }
+
+  @media (max-width: 600px) {
+    .cover-spread { padding: 2rem; min-height: 440px; }
+    .cover-motif { width: 220px; height: 220px; top: -5px; right: -30px; opacity: 0.5; }
+    .cover-title { font-size: 2.2rem; }
+    .spread-heading { font-size: 1.45rem; }
+    .spread-essay, .colophon { padding: 2rem 1.5rem; }
+    .body-text { font-size: 1rem; }
+    .spread-footer { padding: 0.9rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="twinkle" style="top:7%;left:11%;background:var(--violet);box-shadow:0 0 6px var(--violet);animation-delay:-0.4s"></div>
+<div class="twinkle" style="top:19%;left:83%;background:var(--cyan);box-shadow:0 0 6px var(--cyan);animation-delay:-1.3s"></div>
+<div class="twinkle" style="top:52%;left:4%;background:var(--gold);box-shadow:0 0 6px var(--gold);animation-delay:-2.1s"></div>
+<div class="twinkle" style="top:71%;left:94%;background:var(--pink);box-shadow:0 0 6px var(--pink);animation-delay:-0.9s"></div>
+<div class="twinkle" style="top:88%;left:28%;background:var(--violet);box-shadow:0 0 6px var(--violet);animation-delay:-1.7s"></div>
+<div class="twinkle" style="top:38%;left:97%;background:var(--violet);box-shadow:0 0 6px var(--violet);animation-delay:-3.1s"></div>
+
+<div class="zine-shell">
+
+  <nav class="ss-nav" style="--nav-accent:#a78bfa;" aria-label="Star Stuff collection">
+    <a class="ss-nav-home" href="index.html"><span class="ss-star" aria-hidden="true">★</span> stuff</a>
+    <span class="ss-nav-links">
+      <a class="ss-nav-prev" href="the-dead-stars-still-reach-us-zine.html"><span class="ss-nav-arrow" aria-hidden="true">‹</span> <span class="ss-nav-label">The Dead Stars</span></a>
+      <a class="ss-nav-next" href="constellation-field-guide.html"><span class="ss-nav-label">Field Guide</span> <span class="ss-nav-arrow" aria-hidden="true">›</span></a>
+    </span>
+  </nav>
+
+  <nav class="nav">
+    <div class="nav-brand">Stimpunks · Zine No. 11 · Guest</div>
+    <div class="nav-controls">
+      <button class="nav-btn" id="prev-btn" onclick="changePage(-1)">← prev</button>
+      <span class="page-counter" id="page-counter">1 / 10</span>
+      <button class="nav-btn" id="next-btn" onclick="changePage(1)">next →</button>
+    </div>
+  </nav>
+
+  <!-- ════ 1 · COVER ════ -->
+  <div class="spread active" id="spread-1">
+    <div class="cover-spread">
+      <svg class="cover-motif" viewBox="0 0 330 330" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <!-- a constellation of intensities: no grid, varied points, soft relations -->
+        <g stroke="rgba(167,139,250,0.35)" stroke-width="1" fill="none">
+          <path d="M70 60 L130 110 L96 180 L180 150 L250 90 L210 200 L140 240 L96 180 M180 150 L130 110 M250 90 L180 150"/>
+        </g>
+        <g fill="#f4f2fb">
+          <circle cx="70" cy="60" r="2.4"/>
+          <circle cx="130" cy="110" r="5"/>
+          <circle cx="96" cy="180" r="3.4"/>
+          <circle cx="180" cy="150" r="6"/>
+          <circle cx="250" cy="90" r="3"/>
+          <circle cx="210" cy="200" r="4.2"/>
+          <circle cx="140" cy="240" r="2.6"/>
+        </g>
+        <circle cx="130" cy="110" r="13" fill="rgba(167,139,250,0.16)"/>
+        <circle cx="180" cy="150" r="15" fill="rgba(251,191,36,0.14)"/>
+        <circle cx="210" cy="200" r="11" fill="rgba(244,114,182,0.14)"/>
+      </svg>
+
+      <div class="cover-corner">
+        <div class="cover-corner-num">11</div>
+        <span class="cover-corner-label">Guest Zine</span>
+      </div>
+
+      <div class="cover-issue">Stimpunks Foundation · Guest Zine · No. 11</div>
+
+      <h1 class="cover-title">Why Difference<br>Comes <span class="spectrum-word">First</span></h1>
+
+      <p class="cover-subtitle">A few weeks ago I started noticing something. It kept showing up in different places — in physics, in philosophy, in my own life — always the same shape. This is me following that thread.</p>
+
+      <hr class="spectrum-line cover-rule">
+      <div class="cover-byline">Helen Edgar · Autistic Realms · More Realms</div>
+
+      <div class="cover-meta">
+        <div class="cover-ls">L★S</div>
+        <div class="cover-meta-text">
+          Love You Down<br>
+          To Your Star Stuff<br>
+          · guest edition ·
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ 2 · I'm Not a Fixed Thing ════ -->
+  <div class="spread" id="spread-2">
+    <div class="interior">
+      <div class="spread-essay">
+        <div class="eyebrow">Two · I'm not a fixed thing</div>
+        <h2 class="spread-heading">I'm not a<br><span style="color:var(--violet)">fixed thing</span></h2>
+        <hr class="spectrum-line rule">
+        <div class="body-text">
+          <p>A little while back I wrote about something called relational quantum mechanics — a way of thinking about physics where tiny particles don't have fixed qualities all on their own. They only become something in relation to whatever's around them <span class="ref">(Rovelli, 1996)</span>. I'm not a physicist, and I want to say that plainly: I'm not claiming physics proves anything about being Autistic. It's one idea among several, and physicists argue about it.</p>
+          <p>But it landed somewhere real in me. Because that's always been true of how I experience myself — not as a fixed, separate thing moving through the world, but as something that shows up through my relationships and encounters with everything around me <span class="ref">(Edgar, 2026a)</span>. I'm still working through what that means.</p>
+        </div>
+        <div class="pull-quote">A few different fields, working completely separately, at wildly different scales, keep landing on the same shape of idea. That's not proof of anything. But it's not nothing either.</div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Why Difference Comes First · Helen Edgar</span>
+        <span class="spread-footer-right">2</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ 3 · I Keep Starting With the Sky ════ -->
+  <div class="spread" id="spread-3">
+    <div class="interior">
+      <div class="spread-essay">
+        <div class="eyebrow">Three · the sky</div>
+        <h2 class="spread-heading">I keep starting<br>with the <span style="color:var(--cyan)">sky</span></h2>
+        <hr class="spectrum-line rule">
+        <div class="body-text">
+          <p>Here's the biggest version of the same thought. The oldest light we can see is called the cosmic microwave background — it's the afterglow of the Big Bang, and it's almost perfectly smooth. It only varies by about one part in 100,000 across the whole sky. Almost uniform. <em>Almost.</em></p>
+          <p>Those tiny variations — slightly denser here, slightly thinner there — were the seeds of everything. Gravity pulled the denser bits together, and over billions of years they became stars, galaxies, planets, you, me, all of it.</p>
+          <p>If the universe really had been perfectly uniform, it would have stayed a flat, empty fog forever. Nothing to see, no one to see it. Structure only exists because that near-sameness <em>broke</em>.</p>
+        </div>
+        <div class="diagram-wrap">
+          <svg class="diagram" viewBox="0 0 260 150" xmlns="http://www.w3.org/2000/svg">
+            <!-- near-uniform field of faint points -->
+            <g fill="rgba(212,208,228,0.5)">
+              <circle cx="24" cy="26" r="1.4"/><circle cx="58" cy="18" r="1.4"/><circle cx="92" cy="30" r="1.4"/><circle cx="126" cy="20" r="1.4"/><circle cx="160" cy="30" r="1.4"/><circle cx="196" cy="22" r="1.4"/><circle cx="230" cy="28" r="1.4"/>
+              <circle cx="20" cy="60" r="1.4"/><circle cx="54" cy="66" r="1.4"/><circle cx="120" cy="58" r="1.4"/><circle cx="158" cy="66" r="1.4"/><circle cx="228" cy="60" r="1.4"/>
+              <circle cx="30" cy="98" r="1.4"/><circle cx="66" cy="104" r="1.4"/><circle cx="100" cy="96" r="1.4"/><circle cx="196" cy="100" r="1.4"/><circle cx="230" cy="96" r="1.4"/>
+              <circle cx="26" cy="132" r="1.4"/><circle cx="70" cy="128" r="1.4"/><circle cx="150" cy="132" r="1.4"/><circle cx="188" cy="128" r="1.4"/><circle cx="224" cy="132" r="1.4"/>
+            </g>
+            <!-- two slightly denser seeds growing into structure -->
+            <circle cx="92" cy="70" r="16" fill="rgba(167,139,250,0.10)"/>
+            <circle cx="92" cy="70" r="3.4" fill="#a78bfa"/>
+            <g fill="rgba(167,139,250,0.7)">
+              <circle cx="82" cy="62" r="1.8"/><circle cx="102" cy="64" r="1.8"/><circle cx="86" cy="80" r="1.8"/><circle cx="100" cy="80" r="1.8"/>
+            </g>
+            <circle cx="178" cy="86" r="13" fill="rgba(251,191,36,0.10)"/>
+            <circle cx="178" cy="86" r="3" fill="#fbbf24"/>
+            <g fill="rgba(251,191,36,0.7)"><circle cx="170" cy="80" r="1.6"/><circle cx="188" cy="82" r="1.6"/><circle cx="180" cy="96" r="1.6"/></g>
+            <text x="130" y="146" font-family="Space Mono, monospace" font-size="6" fill="rgba(167,139,250,0.9)" text-anchor="middle">the "almost" is where everything comes from</text>
+          </svg>
+          <p class="diagram-caption">almost uniform · not quite<br><span class="annotation">the tiny unevenness seeds the stars</span></p>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Why Difference Comes First · Helen Edgar</span>
+        <span class="spread-footer-right">3</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ 4 · Measured Against a Flat Line ════ -->
+  <div class="spread" id="spread-4">
+    <div class="interior">
+      <div class="spread-essay">
+        <div class="eyebrow">Four · the flat line</div>
+        <h2 class="spread-heading">Measured against<br>a <span style="color:var(--pink)">flat line</span></h2>
+        <hr class="spectrum-line rule">
+        <div class="body-text">
+          <p>I've spent a lot of my life being measured against a flat line. Nobody always said it in those words, but that's what was happening — a standard chart, a "typical" way of communicating or paying attention or experiencing the world, treated as the baseline everyone should be smoothed toward. And me, positioned as the deviation that needed explaining, or fixing, or at least accounting for.</p>
+          <p>So there's something that genuinely steadies me in learning that the universe itself never once managed that trick.</p>
+        </div>
+        <div class="diagram-wrap">
+          <svg class="diagram" viewBox="0 0 260 140" xmlns="http://www.w3.org/2000/svg">
+            <!-- the ungridded field underneath -->
+            <path d="M10 96 C 40 70, 62 118, 92 84 S 150 64, 178 100 S 232 74, 250 92" fill="none" stroke="rgba(167,139,250,0.55)" stroke-width="1.6"/>
+            <path d="M10 112 C 46 96, 70 128, 104 104 S 156 92, 190 118 S 236 100, 250 110" fill="none" stroke="rgba(167,139,250,0.3)" stroke-width="1.2"/>
+            <g fill="rgba(212,208,228,0.55)"><circle cx="40" cy="80" r="1.6"/><circle cx="120" cy="74" r="1.6"/><circle cx="200" cy="86" r="1.6"/><circle cx="80" cy="120" r="1.6"/><circle cx="160" cy="108" r="1.6"/></g>
+            <text x="130" y="132" font-family="Space Mono, monospace" font-size="6" fill="rgba(167,139,250,0.85)" text-anchor="middle">what was already there, moving</text>
+            <!-- the flat baseline imposed over it -->
+            <line x1="10" y1="44" x2="250" y2="44" stroke="rgba(244,114,182,0.95)" stroke-width="2"/>
+            <text x="14" y="36" font-family="Space Mono, monospace" font-size="6.5" fill="rgba(244,114,182,0.95)" text-anchor="start">the "typical" baseline</text>
+            <!-- you, marked as deviation -->
+            <circle cx="196" cy="86" r="3.6" fill="#f4f2fb"/>
+            <line x1="196" y1="46" x2="196" y2="82" stroke="rgba(244,244,251,0.4)" stroke-width="0.8" stroke-dasharray="2 2"/>
+            <text x="204" y="74" font-family="Space Mono, monospace" font-size="5.5" fill="rgba(244,244,251,0.9)" text-anchor="start">you = "deviation"</text>
+          </svg>
+          <p class="diagram-caption">a straight line, laid over what was already moving<br><span class="annotation">the grid comes after the field, not before</span></p>
+        </div>
+        <div class="pull-quote pink">Uniformity was never the achievement. It's the thing that would have stopped everything before it even started.</div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Why Difference Comes First · Helen Edgar</span>
+        <span class="spread-footer-right">4</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ 5 · The Baseline Is the Construct ════ -->
+  <div class="spread" id="spread-5">
+    <div class="interior">
+      <div class="spread-essay">
+        <div class="eyebrow">Five · the construct</div>
+        <h2 class="spread-heading">The baseline is<br>the <span style="color:var(--violet)">construct</span></h2>
+        <hr class="spectrum-line rule">
+        <div class="body-text">
+          <p>The philosopher Gilles Deleuze made a version of this same argument decades before physics gave it new words. He noticed that a lot of Western thinking treats difference as secondary — judged by how much it resembles some ideal, some average, some "normal" category. All of that quietly assumes the baseline came first, and difference is just a deviation from it.</p>
+          <p>Deleuze argued the opposite <span class="ref">(Deleuze, 1994)</span>. The baseline is the thing that got built. Difference is what's actually there, first — and identity is what eventually forms out of it, temporarily and locally, the way a crystal settles out of a solution along cracks that were already there. Nothing gets smoothed into existence. Smoothing is what happens to something afterward — only if a system insists on it.</p>
+        </div>
+        <div class="pull-quote">Nothing gets smoothed into existence. Smoothing is what happens to something afterward — only if a system insists on it.</div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Why Difference Comes First · Helen Edgar</span>
+        <span class="spread-footer-right">5</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ 6 · Smooth Doesn't Mean Flat ════ -->
+  <div class="spread" id="spread-6">
+    <div class="interior">
+      <div class="spread-essay">
+        <div class="eyebrow">Six · smooth ≠ flat</div>
+        <h2 class="spread-heading">Smooth doesn't<br>mean <span style="color:var(--cyan)">flat</span></h2>
+        <hr class="spectrum-line rule">
+        <div class="body-text">
+          <p>I want to be careful here, because it would be easy to hear "smooth" and think of the CMB's flatness — sameness, uniformity. It's actually the opposite.</p>
+          <p>Deleuze talks about something he calls "smooth space" — think of the felt, the desert, the open sea <span class="ref">(Deleuze &amp; Guattari, 1987)</span>. It's full of local, shifting variation. What makes it smooth isn't that nothing's happening — it's that no fixed grid has been laid over it yet. A space that has been measured and divided into standard units, he calls striated instead.</p>
+          <p>That's closer to what I recognise when I try to describe my own attention — my porousness to moss and water, the way time folds back on itself instead of running in a straight line. Not flat. Not gridded. Full of shape that never quite resolves into one measurable thing.</p>
+        </div>
+        <div class="diagram-wrap">
+          <svg class="diagram wide" viewBox="0 0 300 130" xmlns="http://www.w3.org/2000/svg">
+            <!-- smooth (ungridded intensive variation) -->
+            <g fill="none" stroke="rgba(34,211,238,0.7)" stroke-width="1.4">
+              <path d="M20 40 C 50 24, 80 56, 118 38"/>
+              <path d="M18 62 C 52 48, 84 78, 120 60"/>
+              <path d="M22 84 C 50 72, 86 100, 118 82"/>
+              <path d="M20 104 C 54 92, 82 116, 120 102"/>
+            </g>
+            <text x="70" y="122" font-family="Space Mono, monospace" font-size="6.5" fill="rgba(34,211,238,0.9)" text-anchor="middle">SMOOTH · ungridded</text>
+            <!-- divider -->
+            <line x1="150" y1="20" x2="150" y2="112" stroke="rgba(167,139,250,0.25)" stroke-width="0.8" stroke-dasharray="3 3"/>
+            <!-- striated (grid) -->
+            <g stroke="rgba(244,114,182,0.7)" stroke-width="1">
+              <line x1="182" y1="28" x2="282" y2="28"/><line x1="182" y1="52" x2="282" y2="52"/><line x1="182" y1="76" x2="282" y2="76"/><line x1="182" y1="100" x2="282" y2="100"/>
+              <line x1="190" y1="20" x2="190" y2="108"/><line x1="214" y1="20" x2="214" y2="108"/><line x1="238" y1="20" x2="238" y2="108"/><line x1="262" y1="20" x2="262" y2="108"/>
+            </g>
+            <text x="232" y="122" font-family="Space Mono, monospace" font-size="6.5" fill="rgba(244,114,182,0.9)" text-anchor="middle">STRIATED · gridded</text>
+          </svg>
+          <p class="diagram-caption">smooth is not empty · it's ungridded<br><span class="annotation">the fog was neither — a field before either one</span></p>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Why Difference Comes First · Helen Edgar</span>
+        <span class="spread-footer-right">6</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ 7 · What Ethodiversity Means ════ -->
+  <div class="spread" id="spread-7">
+    <div class="interior">
+      <div class="spread-essay">
+        <div class="eyebrow">Seven · ethodiversity</div>
+        <h2 class="spread-heading">What ethodiversity<br><span style="color:var(--green)">means</span></h2>
+        <hr class="spectrum-line rule">
+        <div class="body-text">
+          <p>This is where Ombre Tarragnat's work on ethodiversity has become important to me. Ethodiversity is the variety of ways of being and behaving, across humans and other animals — and Tarragnat is precise about where it actually lives: not inside any one person, but as a property of the relationships between us, the way biodiversity belongs to a whole ecosystem, not to any single creature in it <span class="ref">(Tarragnat, 2025)</span>.</p>
+          <p>Ethonormativity, in her framing, is the unwritten rule about which ways of being are allowed to count as normal in a given room. Put next to Deleuze, I don't think it's a stretch to say ethonormativity simply <em>is</em> that grid — applied to how we're allowed to behave. A fixed grid laid over a field that was already full of variation before the grid ever showed up.</p>
+        </div>
+        <div class="pull-quote green">Ethonormativity simply is that grid — a fixed grid laid over a field that was already full of variation before the grid ever showed up.</div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Why Difference Comes First · Helen Edgar</span>
+        <span class="spread-footer-right">7</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ 8 · A Constellation of Intensities ════ -->
+  <div class="spread" id="spread-8">
+    <div class="interior">
+      <div class="spread-essay">
+        <div class="eyebrow">Eight · a constellation of intensities</div>
+        <h2 class="spread-heading">A constellation<br>of <span class="spectrum-word">intensities</span></h2>
+        <hr class="spectrum-line rule">
+        <div class="body-text">
+          <p>I recognise that grid in every room I've ever masked in — the moment something that was moving gets asked to hold still long enough to be measured. And I recognise its absence, with real gratitude, in the rooms I've helped build since, with the CASY group, with Stimpunks: rhizome spaces, non-hierarchical, no fixed centre, connecting wherever they meet <span class="ref">(Deleuze &amp; Guattari, 1987)</span>.</p>
+          <p>I used to think the shape of my own mind was something like Damian Milton's spiky profile — real peaks and real troughs, at least truer than a flat line <span class="ref">(Milton, 2012)</span>. But a profile still measures. It still needs axes, still has edges. What I actually recognise, when I try to map myself, isn't a chart at all. It's a constellation of intensities: a galaxy, always in relationship with itself, always in motion, never finished <span class="ref">(Edgar, 2026b)</span>. Some stars I've lived in for decades. Others I've only just learned to name. None of them sit on an axis. They just belong to the same sky.</p>
+        </div>
+        <div class="diagram-wrap">
+          <svg class="diagram wide" viewBox="0 0 300 128" xmlns="http://www.w3.org/2000/svg">
+            <!-- panel 1: flat line -->
+            <rect x="8" y="20" width="76" height="72" fill="none" stroke="rgba(167,139,250,0.25)" stroke-width="0.7"/>
+            <line x1="14" y1="60" x2="78" y2="60" stroke="rgba(244,114,182,0.9)" stroke-width="1.8"/>
+            <text x="46" y="106" font-family="Space Mono, monospace" font-size="6" fill="rgba(212,208,228,0.9)" text-anchor="middle">flat line</text>
+            <text x="46" y="116" font-family="Space Mono, monospace" font-size="5" fill="rgba(138,134,160,0.9)" text-anchor="middle">a grid</text>
+            <!-- arrow -->
+            <path d="M90 60 L104 60 M100 56 L104 60 L100 64" fill="none" stroke="rgba(167,139,250,0.6)" stroke-width="1"/>
+            <!-- panel 2: spiky profile -->
+            <rect x="110" y="20" width="76" height="72" fill="none" stroke="rgba(167,139,250,0.25)" stroke-width="0.7"/>
+            <polyline points="116,70 128,40 140,64 152,32 164,58 176,44 182,66" fill="none" stroke="rgba(251,191,36,0.9)" stroke-width="1.6"/>
+            <text x="148" y="106" font-family="Space Mono, monospace" font-size="6" fill="rgba(212,208,228,0.9)" text-anchor="middle">spiky profile</text>
+            <text x="148" y="116" font-family="Space Mono, monospace" font-size="5" fill="rgba(138,134,160,0.9)" text-anchor="middle">still axes, still edges</text>
+            <!-- arrow -->
+            <path d="M192 60 L206 60 M202 56 L206 60 L202 64" fill="none" stroke="rgba(167,139,250,0.6)" stroke-width="1"/>
+            <!-- panel 3: constellation of intensities (no box, no grid) -->
+            <g stroke="rgba(167,139,250,0.3)" stroke-width="0.8" fill="none">
+              <path d="M228 40 L252 30 L276 52 L258 78 L236 66 L252 30 M276 52 L286 40"/>
+            </g>
+            <g fill="#f4f2fb">
+              <circle cx="228" cy="40" r="2"/><circle cx="252" cy="30" r="4.2"/><circle cx="276" cy="52" r="3"/><circle cx="258" cy="78" r="2.4"/><circle cx="236" cy="66" r="3.6"/><circle cx="286" cy="40" r="1.8"/>
+            </g>
+            <circle cx="252" cy="30" r="9" fill="rgba(167,139,250,0.16)"/>
+            <circle cx="236" cy="66" r="8" fill="rgba(251,191,36,0.14)"/>
+            <text x="256" y="106" font-family="Space Mono, monospace" font-size="6" fill="rgba(167,139,250,0.95)" text-anchor="middle">a constellation</text>
+            <text x="256" y="116" font-family="Space Mono, monospace" font-size="5" fill="rgba(138,134,160,0.9)" text-anchor="middle">no axis · in motion</text>
+          </svg>
+          <p class="diagram-caption">flat line → spiky profile → no chart at all<br><span class="annotation">even the spiky profile is still a grid</span></p>
+        </div>
+        <div class="pull-quote">A profile still measures. It still needs axes, still has edges. What I actually recognise, when I try to map myself, isn't a chart at all.</div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Why Difference Comes First · Helen Edgar</span>
+        <span class="spread-footer-right">8</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ 9 · The Universe Doesn't Do Flat Lines ════ -->
+  <div class="spread" id="spread-9">
+    <div class="interior">
+      <div class="spread-essay">
+        <div class="eyebrow">Nine · permission</div>
+        <h2 class="spread-heading">The universe doesn't<br>do <span style="color:var(--gold)">flat lines</span></h2>
+        <hr class="spectrum-line rule">
+        <div class="body-text">
+          <p>I still don't have this fully settled or finished. But every time I follow this thread — from the sky, down through physics and philosophy, into the actual shape of my own attention — I end up in the same place. Not a tidy conclusion. More like a kind of permission.</p>
+        </div>
+        <p class="star-line">The universe doesn't do flat lines.<br>It never really <span class="spectrum-word">tried</span> to.</p>
+        <div class="body-text">
+          <p>It went straight from near-uniform fog to unrepeatable structure, without ever pausing at sameness for its own sake.</p>
+          <p>I think that's worth remembering, gently — the next time any of us is asked to explain why we don't match the line.</p>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Why Difference Comes First · Helen Edgar</span>
+        <span class="spread-footer-right">9</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ 10 · Colophon ════ -->
+  <div class="spread" id="spread-10">
+    <div class="interior">
+      <div class="colophon">
+        <span class="colophon-ls">L★S</span>
+        <div class="colophon-guest">Zine No. 11 · Guest author</div>
+        <p class="colophon-credit">Written by <strong>Helen Edgar</strong>. First published on Autistic Realms and More Realms, and shared with Star Stuff in her own voice.</p>
+
+        <h4>Follow-on reading</h4>
+        <p class="colophon-body">
+          <a href="https://morerealms.com/we-are-made-of-relations-quantum-physics-and-what-it-means-to-be-autistic/">We Are Made of Relations: Quantum Physics and What It Means to Be Autistic</a> (Edgar, 2026a, More Realms), and <a href="https://morerealms.com/my-monotropic-galaxy-a-constellation-of-my-autistic-self/">My Monotropic Galaxy: A Constellation of My Autistic Self</a> (Edgar, 2026b, More Realms).
+        </p>
+
+        <h4>References</h4>
+        <div class="refs">
+          <div class="r">Deleuze, G. (1994). <em>Difference and repetition</em> (P. Patton, Trans.). Columbia University Press. (Original work published 1968)</div>
+          <div class="r">Deleuze, G., &amp; Guattari, F. (1987). <em>A thousand plateaus: Capitalism and schizophrenia</em> (B. Massumi, Trans.). University of Minnesota Press. (Original work published 1980)</div>
+          <div class="r">Edgar, H. (2026a, June 7). We are made of relations: Quantum physics and what it means to be Autistic. <em>More Realms.</em></div>
+          <div class="r">Edgar, H. (2026b, June 16). My monotropic galaxy: A constellation of my Autistic self. <em>More Realms.</em></div>
+          <div class="r">Milton, D. (2012). On the ontological status of autism. <em>Disability &amp; Society, 27</em>(6), 883–887.</div>
+          <div class="r">Rovelli, C. (1996). Relational quantum mechanics. <em>International Journal of Theoretical Physics, 35,</em> 1637–1678.</div>
+          <div class="r">Tarragnat, O. (2025, February 25). What is ethodiversity? <a href="https://ombretarragnat.com/2025/02/25/what-is-ethodiversity/">ombretarragnat.com</a></div>
+        </div>
+
+        <hr class="divider">
+
+        <p class="colophon-body">
+          A guest zine in the Stimpunks Star Stuff series. Where <em>The Universe Runs on Difference</em> (No. 8) is about breadth — variety over monoculture — this one is about difference coming <em>first</em>: the baseline is what gets built. The physics-and-philosophy sourcing, and how it sits beside Nos. 8 and 9, is gathered in <a href="difference-first-frame.html">The Difference-First Frame</a>.
+        </p>
+        <div class="series-list">
+          <div class="series-item"><span class="series-num">No. 8</span> The Universe Runs on Difference</div>
+          <div class="series-item"><span class="series-num">No. 9</span> The Lines We Drew</div>
+          <div class="series-item"><span class="series-num">No. 10</span> The Dead Stars Still Reach Us</div>
+          <div class="series-item current"><span class="series-num">No. 11</span> Why Difference Comes First — Helen Edgar ← you are here</div>
+        </div>
+
+        <div class="colophon-footer">
+          Stimpunks Foundation · Guest Zine No. 11 · © Helen Edgar (Autistic Realms)<br>
+          Shared on Star Stuff with permission · L★S · stimpunks.org · starstuff.earth
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Why Difference Comes First · Helen Edgar</span>
+        <span class="spread-footer-right">10</span>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /zine-shell -->
+
+<script>
+  let current = 1;
+  const total = 10;
+
+  function changePage(dir) {
+    const next = current + dir;
+    if (next < 1 || next > total) return;
+    document.getElementById('spread-' + current).classList.remove('active');
+    current = next;
+    document.getElementById('spread-' + current).classList.add('active');
+    document.getElementById('page-counter').textContent = current + ' / ' + total;
+    document.getElementById('prev-btn').style.opacity = current === 1 ? '0.3' : '1';
+    document.getElementById('next-btn').style.opacity = current === total ? '0.3' : '1';
+    document.getElementById('prev-btn').classList.toggle('active', current > 1);
+    document.getElementById('next-btn').classList.toggle('active', current < total);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') changePage(1);
+    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   changePage(-1);
+  });
+
+  document.getElementById('prev-btn').style.opacity = '0.3';
+  document.getElementById('next-btn').classList.add('active');
+</script>
+</body>
+</html>
