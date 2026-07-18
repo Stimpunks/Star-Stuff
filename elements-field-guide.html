@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Field Guide to the Star Stuff You're Made Of — Stimpunks Foundation</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="starstuff.css">
+<style>
+  :root {
+    --bg:        #0a0a14;
+    --card:      #0f0f2a;
+    --purple:    #a78bfa;
+    --pink:      #f472b6;
+    --gold:      #fbbf24;
+    --cyan:      #22d3ee;
+    --green:     #4ade80;
+    --white:     #f9fafb;
+    --secondary: #b8aed0;
+    --muted:     #c4b5d4;
+    --border:    rgba(167,139,250,0.15);
+    --surface:   rgba(167,139,250,0.07);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--white);
+    font-family: 'Atkinson Hyperlegible Next', sans-serif;
+    font-size: 1rem;
+    min-height: 100vh;
+  }
+
+  /* ── STARFIELD ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 7%  13%, rgba(249,250,251,0.8) 0%, transparent 100%),
+      radial-gradient(1px 1px at 23% 37%, rgba(249,250,251,0.6) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 43% 8%,  rgba(251,191,36,0.9)  0%, transparent 100%),
+      radial-gradient(1px 1px at 59% 67%, rgba(249,250,251,0.7) 0%, transparent 100%),
+      radial-gradient(2px 2px at 73% 27%, rgba(249,250,251,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 83% 53%, rgba(34,211,238,0.7)  0%, transparent 100%),
+      radial-gradient(1px 1px at 89% 78%, rgba(249,250,251,0.8) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 3% 57%, rgba(249,250,251,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 33% 83%, rgba(251,191,36,0.5)  0%, transparent 100%),
+      radial-gradient(1px 1px at 53% 46%, rgba(249,250,251,0.4) 0%, transparent 100%),
+      radial-gradient(2px 2px at 17% 87%, rgba(167,139,250,0.7) 0%, transparent 100%),
+      radial-gradient(1px 1px at 67% 3%,  rgba(249,250,251,0.8) 0%, transparent 100%),
+      radial-gradient(1px 1px at 46% 61%, rgba(34,211,238,0.5)  0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 28% 18%, rgba(251,191,36,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 76% 86%, rgba(249,250,251,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 91% 42%, rgba(249,250,251,0.6) 0%, transparent 100%),
+      radial-gradient(2px 2px at 55% 22%, rgba(244,114,182,0.5) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── MASTHEAD ── */
+  .masthead {
+    position: relative;
+    z-index: 2;
+    padding: 3rem 2.5rem 2rem;
+    border-bottom: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1rem;
+    align-items: end;
+  }
+
+  .masthead-eyebrow {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--cyan);
+    margin-bottom: 0.6rem;
+  }
+
+  .masthead-title {
+    font-size: clamp(1.6rem, 4vw, 2.8rem);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--white);
+    letter-spacing: -0.01em;
+  }
+
+  .masthead-title em {
+    font-style: italic;
+    background: linear-gradient(135deg, var(--gold) 0%, var(--pink) 50%, var(--cyan) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .masthead-sub {
+    font-size: 0.875rem;
+    color: var(--secondary);
+    margin-top: 0.6rem;
+    line-height: 1.6;
+    max-width: 560px;
+  }
+
+  .masthead-right {
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  .masthead-ls {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 0.05em;
+    display: block;
+    text-align: right;
+    text-shadow: 0 0 18px rgba(251,191,36,0.45);
+  }
+
+  /* ── INTRO BAND ── */
+  .intro-band {
+    position: relative;
+    z-index: 2;
+    padding: 1.5rem 2.5rem;
+    border-bottom: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .intro-note {
+    font-size: 0.875rem;
+    color: var(--secondary);
+    line-height: 1.7;
+  }
+
+  .intro-note strong {
+    font-weight: 700;
+    color: var(--white);
+    display: block;
+    font-size: 0.8125rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.3rem;
+  }
+
+  /* ── ELEMENT GRID ── */
+  .field-grid {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 0;
+  }
+
+  /* ── ENTRY CARD ── */
+  .entry {
+    background: var(--card);
+    border-radius: 8px;
+    margin: 0.75rem;
+    padding: 1.25rem;
+    cursor: pointer;
+    transition: background 0.2s ease, box-shadow 0.2s ease;
+    position: relative;
+    border: 1px solid var(--border);
+  }
+
+  .entry:hover {
+    background: rgba(15,15,42,0.98);
+    box-shadow: 0 4px 24px rgba(167,139,250,0.12);
+  }
+
+  .entry.open {
+    background: rgba(15,15,42,0.98);
+    box-shadow: 0 4px 32px rgba(167,139,250,0.15);
+  }
+
+  .entry::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 0;
+    width: 3px;
+    height: calc(100% - 16px);
+    background: var(--entry-color, var(--gold));
+    border-radius: 0 2px 2px 0;
+  }
+
+  .entry-header {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1.2rem;
+    align-items: start;
+    margin-bottom: 1rem;
+  }
+
+  /* SVG atom diagram */
+  .atom-svg {
+    width: 90px;
+    height: 90px;
+    flex-shrink: 0;
+  }
+
+  .entry-meta { min-width: 0; }
+
+  .entry-number {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.2rem;
+  }
+
+  .entry-name {
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.1;
+    color: var(--white);
+    margin-bottom: 0.2rem;
+  }
+
+  .entry-traditional {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.4rem;
+  }
+
+  .entry-coords {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--cyan);
+  }
+
+  .entry-brief {
+    font-size: 0.875rem;
+    color: var(--secondary);
+    line-height: 1.65;
+    margin-bottom: 0.8rem;
+  }
+
+  .entry-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 0.7rem;
+  }
+
+  .tag {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    background: rgba(167,139,250,0.06);
+  }
+
+  .entry-expand {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    transition: color 0.2s ease;
+  }
+
+  .entry:hover .entry-expand,
+  .entry.open .entry-expand { color: var(--secondary); }
+
+  .entry-notes {
+    display: none;
+    margin-top: 1.2rem;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--border);
+    animation: fadeIn 0.3s ease forwards;
+  }
+
+  .entry.open .entry-notes { display: block; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .notes-heading {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.7rem;
+  }
+
+  .notes-body {
+    font-size: 1rem;
+    color: var(--secondary);
+    line-height: 1.8;
+    margin-bottom: 1rem;
+  }
+
+  .notes-body p { margin-bottom: 1em; }
+  .notes-body p:last-child { margin-bottom: 0; }
+  .notes-body em { color: var(--white); font-style: italic; }
+  .notes-body strong { color: var(--white); font-weight: 600; font-style: normal; }
+
+  .star-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 0.8rem;
+  }
+
+  .star-table th {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: left;
+    padding: 0.3rem 0.5rem 0.3rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .star-table td {
+    font-size: 0.875rem;
+    color: var(--secondary);
+    padding: 0.4rem 0.5rem 0.4rem 0;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+
+  .star-table td:first-child {
+    color: var(--white);
+    font-weight: 600;
+  }
+
+  .star-table tr:last-child td { border-bottom: none; }
+
+  .ls-coords {
+    margin-top: 1rem;
+    padding: 0.7rem 0.9rem;
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--entry-color, var(--gold));
+    border-radius: 0 8px 8px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    background: rgba(167,139,250,0.05);
+  }
+
+  .ls-coords-label {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    flex-shrink: 0;
+  }
+
+  .ls-coords-value {
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: var(--entry-color, var(--gold));
+    text-align: right;
+  }
+
+  /* ── FOOTER ── */
+  .guide-footer {
+    position: relative;
+    z-index: 2;
+    padding: 2rem 2.5rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer-text {
+    font-size: 0.875rem;
+    color: var(--secondary);
+    line-height: 1.7;
+    max-width: 560px;
+  }
+
+  .footer-ls {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 0.05em;
+    text-shadow: 0 0 24px rgba(251,191,36,0.4);
+  }
+
+  @media (max-width: 600px) {
+    .masthead { grid-template-columns: 1fr; padding: 2rem 1.5rem 1.5rem; }
+    .masthead-right { text-align: left; }
+    .intro-band { padding: 1.2rem 1.5rem; }
+    .entry { margin: 0.5rem; padding: 1rem; }
+    .field-grid { grid-template-columns: 1fr; }
+    .guide-footer { padding: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="ss-nav ss-nav--bleed" style="--nav-accent:#fbbf24;" aria-label="Star Stuff collection">
+  <a class="ss-nav-home" href="index.html"><span class="ss-star" aria-hidden="true">★</span> stuff</a>
+  <span class="ss-nav-links">
+    <a class="ss-nav-prev" href="constellation-field-guide.html"><span class="ss-nav-arrow" aria-hidden="true">‹</span> <span class="ss-nav-label">Constellations</span></a>
+    <a class="ss-nav-next" href="ls-playlist.html"><span class="ss-nav-label">Playlist</span> <span class="ss-nav-arrow" aria-hidden="true">›</span></a>
+  </span>
+</nav>
+
+<!-- ── MASTHEAD ── -->
+<header class="masthead">
+  <div>
+    <p class="masthead-eyebrow">Stimpunks Foundation · L★S · Field Guide No. 2</p>
+    <h1 class="masthead-title">A Field Guide to<br><em>the Star Stuff You're Made Of</em></h1>
+    <p class="masthead-sub">Eight elements essential to your body, traced to where the universe forged them. A periodic table read as autobiography — every atom a receipt from a star, or from something a star did when it died.</p>
+  </div>
+  <div class="masthead-right">
+    <span class="masthead-ls">L★S</span>
+  </div>
+</header>
+
+<!-- ── INTRO BAND ── -->
+<div class="intro-band">
+  <div class="intro-note">
+    <strong>How to use this guide</strong>
+    Each entry gives the element, where in the cosmos it was forged, the work it does in you, key atomic and bodily data, and full field notes. Click any entry to open its notes.
+  </div>
+  <div class="intro-note">
+    <strong>On origins</strong>
+    Where an element comes from is not trivia — it is your provenance. Hydrogen is from the Big Bang itself; everything heavier was cooked inside stars or flung out when they died. You are a record of stellar events.
+  </div>
+  <div class="intro-note">
+    <strong>On the diagrams</strong>
+    Each diagram is the atom itself — a nucleus ringed by its real electron shells. The heavier the element, the busier the sky around it, and the rarer the event that made it.
+  </div>
+</div>
+
+<!-- ── FIELD ENTRIES ── -->
+<main class="field-grid" id="grid"></main>
+
+<!-- ── FOOTER ── -->
+<footer class="guide-footer">
+  <p class="footer-text">Every atom heavier than hydrogen was forged in a star or its death, scattered across space, and gathered again into you. You are not merely made of star stuff — you are a brief arrangement of it that can look up and read its own ingredients. (Abundances are approximate averages; nucleosynthesis origins overlap and are still being refined.)</p>
+  <span class="footer-ls">L★S</span>
+</footer>
+
+<script>
+const ENTRIES = [
+  {
+    id: 'hydrogen',
+    name: 'The First Light',
+    element: 'Hydrogen',
+    symbol: 'H',
+    z: 1,
+    mass: '1.008',
+    abundance: '~10% of you',
+    color: '#e8b84b',
+    forge: 'the Big Bang · ~13.8 Gyr ago · L★S 001',
+    brief: 'The oldest thing in your body. Nearly all your hydrogen was made in the first minutes of the universe, before there were any stars to make anything. You carry the Big Bang around in every drop of the water you mostly are.',
+    tags: ['oldest', 'water', 'the big bang', 'everywhere'],
+    facts: [
+      { property: 'Origin', meaning: 'the first light', data: 'Big Bang, ~13.8 Gyr' },
+      { property: 'In the body', meaning: 'you are mostly water', data: '~10% by mass' },
+      { property: 'The recipe', meaning: 'the simplest atom', data: '1 proton, 1 electron' },
+      { property: 'Bonds', meaning: 'weak, and everything', data: 'holds water & DNA' },
+    ],
+    shells: [1],
+    notes: `Hydrogen is the one element in you that no star ever made. It condensed out of the cooling universe in the first minutes after the Big Bang and has been around ever since — roughly 13.8 billion years. <em>Every other atom in you is younger.</em>
+
+You are mostly water, and water is mostly hydrogen by count, so the oldest material in the cosmos is also the most intimate. It's in your blood, your cells, the tears on your face. <strong>By sheer number of atoms, you are mostly the early universe.</strong>
+
+The humble hydrogen bond — weak, temporary, endlessly re-formed — is what lets water behave the way it does and lets the two strands of your DNA hold hands and let go. The oldest atom makes the most provisional, most relational bonds. That feels about right.`,
+  },
+  {
+    id: 'oxygen',
+    name: 'The Weight of You',
+    element: 'Oxygen',
+    symbol: 'O',
+    z: 8,
+    mass: '15.999',
+    abundance: '~65% of you',
+    color: '#3ec6d8',
+    forge: 'massive stars · core-collapse supernovae · L★S 002',
+    brief: 'By mass, you are more oxygen than anything else — about two-thirds of you. It was forged deep inside massive stars and scattered when they died. Most of it is not the air you breathe but the water you are built from.',
+    tags: ['most of you', 'breath', 'water', 'massive stars'],
+    facts: [
+      { property: 'Origin', meaning: 'the gift of dying giants', data: 'massive stars & supernovae' },
+      { property: 'In the body', meaning: 'most of your mass', data: '~65% by mass' },
+      { property: 'Where', meaning: 'mostly water, not air', data: 'bound in H₂O' },
+      { property: 'Role', meaning: 'burns your food for fuel', data: 'respiration' },
+    ],
+    shells: [2, 6],
+    notes: `Step on a scale and know that most of the number is oxygen — about 65% of your body mass, the majority of it locked into the water that fills your cells rather than the gas in your lungs.
+
+Oxygen is forged in the hearts of massive stars in the late stages before they die, then blown across space when they explode as supernovae. <em>The most abundant thing in you is a gift from stars that had to die to make it.</em>
+
+So the reframe is simple arithmetic: you are two-thirds inheritance, by weight. Before it was ever your breath, it was starlight's ash, drifting for ages until gravity gathered it into an ocean, and the ocean into you.`,
+  },
+  {
+    id: 'carbon',
+    name: 'The Scaffold',
+    element: 'Carbon',
+    symbol: 'C',
+    z: 6,
+    mass: '12.011',
+    abundance: '~18% of you',
+    color: '#8b6ee8',
+    forge: 'red giants · the triple-alpha process · L★S 003',
+    brief: 'Every large molecule in you hangs on a carbon frame — proteins, fats, sugars, DNA. It is built inside aging stars by a fusion trick so improbable that its discovery reads like the universe leaving a note.',
+    tags: ['backbone', 'the scaffold', 'red giants', "life's frame"],
+    facts: [
+      { property: 'Origin', meaning: 'forged in aging stars', data: 'red giants (triple-alpha)' },
+      { property: 'In the body', meaning: 'the frame of every big molecule', data: '~18% by mass' },
+      { property: 'Bonds', meaning: 'four hands to hold with', data: 'up to 4 bonds' },
+      { property: 'Role', meaning: 'the scaffold of life', data: 'proteins, fats, DNA' },
+    ],
+    shells: [2, 4],
+    notes: `Carbon is the element life is strung on. With four bonds to offer, it links into rings and chains long enough to carry all the information and machinery a body needs — the backbone of proteins, fats, sugars, and DNA alike.
+
+It is made in aging stars by the <em>triple-alpha process</em>, three helium nuclei fusing almost at once. The step is so unlikely that Fred Hoyle famously predicted carbon must have a specific internal resonance to make it work at all — reasoning backward from the fact that carbon-based observers existed to ask the question. The resonance was there.
+
+<strong>The frame you're built on exists because of a coincidence delicate enough to be mistaken for intent.</strong> We won't claim intent. We'll just note that the scaffold holding you up was hard to make, and got made anyway.`,
+  },
+  {
+    id: 'nitrogen',
+    name: 'The Borrowed Letters',
+    element: 'Nitrogen',
+    symbol: 'N',
+    z: 7,
+    mass: '14.007',
+    abundance: '~3% of you',
+    color: '#4abf7e',
+    forge: 'dying stars · the CNO cycle · L★S 004',
+    brief: 'The letters of your genetic code and the links in every protein are held by nitrogen. You breathe it constantly and cannot use one bit of it straight from the air — you get all of it secondhand, through everything you eat.',
+    tags: ['DNA', 'proteins', 'the CNO cycle', 'borrowed'],
+    facts: [
+      { property: 'Origin', meaning: 'cooked in stellar cores', data: 'CNO cycle, dying stars' },
+      { property: 'In the body', meaning: 'code and connective links', data: '~3% by mass' },
+      { property: 'The irony', meaning: 'all around, unusable raw', data: '78% of the air' },
+      { property: 'Role', meaning: 'the bases and the bonds', data: 'DNA & amino acids' },
+    ],
+    shells: [2, 5],
+    notes: `Nitrogen holds your instructions together — the bases that spell your DNA, the bonds that link amino acids into proteins. It is made inside stars through the CNO cycle and released as they age and die.
+
+Here is the strange part: you are breathing nitrogen right now, and you cannot use a single molecule of it. Atmospheric nitrogen is locked in a triple bond too strong for your body to break. <em>It has to be fixed first — by bacteria, by lightning — before any living thing can touch it.</em>
+
+So you get your nitrogen the way you get most things that matter: secondhand, through the food web, through relationship. Even the letters of your code are borrowed from other lives. Nothing about you was assembled alone.`,
+  },
+  {
+    id: 'calcium',
+    name: 'The Bone Note',
+    element: 'Calcium',
+    symbol: 'Ca',
+    z: 20,
+    mass: '40.078',
+    abundance: '~1.5% of you',
+    color: '#d4892a',
+    forge: 'massive stars · supernovae · L★S 005',
+    brief: 'The mineral of your bones and teeth, and the trigger behind every heartbeat and muscle twitch. Forged in massive stars and their explosions — and, being piezoelectric, it turns the daily pressure on your skeleton into a faint electric song.',
+    tags: ['bones', 'heartbeat', 'piezoelectric', 'supernovae'],
+    facts: [
+      { property: 'Origin', meaning: 'made in big stars & their deaths', data: 'massive stars, supernovae' },
+      { property: 'In the body', meaning: 'skeleton, teeth, signals', data: '~1.5% by mass' },
+      { property: 'Piezoelectric', meaning: 'pressure becomes voltage', data: 'bone sings under load' },
+      { property: 'Role', meaning: 'the calcium spark', data: 'heartbeat, muscle, nerve' },
+    ],
+    shells: [2, 8, 8, 2],
+    notes: `This is the element at the center of <em>Bone Song</em>. Most of your calcium is in your skeleton and teeth, but the small fraction moving through your cells is what fires every heartbeat, every muscle contraction, every nerve signal — the "calcium spark" at the base of being animate.
+
+Bone is <strong>piezoelectric</strong>: press on it and it answers with a whisper of voltage. Every step you take, every load your skeleton bears, gets quietly translated into electricity that tells the bone where to grow. You are, faintly and constantly, singing under your own weight.
+
+And the calcium doing all this was forged in massive stars and scattered by supernovae before the Earth formed. The stuff that lets you stand up, and stay standing, is the debris of stellar deaths — tuned, in you, to a frequency you can't hear but never stop making.`,
+  },
+  {
+    id: 'iron',
+    name: 'The Death Rattle',
+    element: 'Iron',
+    symbol: 'Fe',
+    z: 26,
+    mass: '55.845',
+    abundance: '~4 g (trace)',
+    color: '#d4527a',
+    forge: 'the last fusion · supernovae · L★S 006',
+    brief: 'There are only about four grams of iron in you, and they are the reason your blood is red and can carry oxygen. Iron is where a dying star\'s fusion stops paying — the final ash before the collapse. You are lit by that ending.',
+    tags: ['blood', 'oxygen carrier', 'the last fusion', 'supernovae'],
+    facts: [
+      { property: 'Origin', meaning: 'where fusion stops', data: 'massive cores, supernovae' },
+      { property: 'In the body', meaning: 'only a few grams', data: '~4 g total' },
+      { property: 'Role', meaning: 'holds the oxygen', data: 'hemoglobin, red blood' },
+      { property: 'The turn', meaning: 'the end of a star', data: 'iron core → collapse' },
+    ],
+    shells: [2, 8, 14, 2],
+    notes: `Iron is the full stop at the end of a star's life. Fusing lighter elements releases energy — that's what holds a star up against its own gravity — right up until iron. Fuse iron and it <em>costs</em> energy instead. The furnace stalls, the core collapses in less than a second, and the star tears itself apart.
+
+Everything heavier than iron on this list, and most of the iron itself, comes from that catastrophe. <strong>You carry roughly four grams of it</strong> — a small nail's worth — and it is the part of your blood that grips oxygen and ferries it to every cell. The red of a cut is iron catching the light.
+
+So the thing that carries your breath around your body is a star's last exhale: the point where making stopped, and scattering began.`,
+  },
+  {
+    id: 'potassium',
+    name: 'The Spark',
+    element: 'Potassium',
+    symbol: 'K',
+    z: 19,
+    mass: '39.098',
+    abundance: '~0.25% of you',
+    color: '#5aa9e6',
+    forge: 'explosive burning in supernovae · L★S 007',
+    brief: 'Every nerve signal and every heartbeat is potassium and sodium trading places across a membrane. The thought you are having right now is, in part, potassium ions moving. It was cooked in the explosive burning of dying stars.',
+    tags: ['nerve signals', 'the electricity of thought', 'supernovae', 'ions'],
+    facts: [
+      { property: 'Origin', meaning: 'explosive stellar burning', data: 'supernova nucleosynthesis' },
+      { property: 'In the body', meaning: 'the charge across every cell', data: '~0.25% by mass' },
+      { property: 'Role', meaning: 'the action potential', data: 'nerves & heartbeat' },
+      { property: 'Odd fact', meaning: 'you are faintly radioactive', data: 'K-40 decays in you' },
+    ],
+    shells: [2, 8, 8, 1],
+    notes: `Reading this sentence is potassium and sodium ions swapping sides of your neurons' membranes, millions of times a second. Every heartbeat is the same trick in muscle. <em>The electricity of a thought is, quite literally, these atoms in motion.</em>
+
+A tiny fraction of your potassium is potassium-40, which is mildly radioactive. It has been decaying steadily since long before the Earth existed, and a little of it is decaying inside you right now. <strong>You are, very faintly, a radioactive source</strong> — glowing in a register no eye can see.
+
+And it was forged in the explosive burning of dying stars. The current that runs your nerves, the charge behind every thing you have ever felt or decided, was cooked in an explosion and handed down to you as a working spark.`,
+  },
+  {
+    id: 'iodine',
+    name: 'The Rare Catastrophe',
+    element: 'Iodine',
+    symbol: 'I',
+    z: 53,
+    mass: '126.90',
+    abundance: '~15 mg (trace)',
+    color: '#a06cd5',
+    forge: 'neutron-star collisions · the r-process · L★S 008',
+    brief: 'You carry only a pinch of iodine — about 15 to 20 milligrams — but without it your thyroid, and your whole metabolism, stalls. Elements this heavy are forged almost only in the collision of neutron stars: the rarest, most violent events there are.',
+    tags: ['thyroid', 'trace but vital', 'neutron-star mergers', 'the r-process'],
+    facts: [
+      { property: 'Origin', meaning: 'born in cosmic collisions', data: 'neutron-star mergers (r-process)' },
+      { property: 'In the body', meaning: 'a pinch runs everything', data: '~15–20 mg total' },
+      { property: 'Role', meaning: 'sets your tempo', data: 'thyroid hormones' },
+      { property: 'Kin', meaning: 'made the same way', data: 'gold, platinum, uranium' },
+    ],
+    shells: [2, 8, 18, 18, 7],
+    notes: `The heaviest element on this list, and one of the rarest kinds of event made it. To build an atom this big you need the <em>r-process</em> — a flood of free neutrons so intense it can only happen in the most extreme places. The best current evidence, since the neutron-star merger observed in 2017, points to collisions of neutron stars as the main forge.
+
+The same catastrophe that seeds the universe with gold and platinum put the iodine in your thyroid. <strong>You need about a teaspoon over an entire lifetime</strong>, and with too little of it, your metabolism — your growth, your temperature, your tempo — slows to a crawl.
+
+So the rarest inheritance arrives in the smallest amount and quietly sets the pace of the whole body. A pinch of the universe's rarest violence, keeping perfect time inside your throat.`,
+  }
+];
+
+function makeSVG(entry) {
+  const shells = entry.shells;
+  const rings = shells.length;
+  const accent = entry.color;
+  const cx = 50, cy = 50;
+  const shellR = i => rings === 1 ? 24 : 15 + (46 - 15) * (i / (rings - 1));
+
+  let svg = `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="atom-svg" aria-hidden="true">`;
+
+  for (let i = 0; i < rings; i++) {
+    svg += `<circle cx="${cx}" cy="${cy}" r="${shellR(i).toFixed(1)}" fill="none" stroke="rgba(167,139,250,0.28)" stroke-width="0.6"/>`;
+  }
+
+  for (let i = 0; i < rings; i++) {
+    const r = shellR(i);
+    const e = shells[i];
+    const dotR = e > 16 ? 0.8 : (e > 8 ? 1.1 : 1.5);
+    for (let k = 0; k < e; k++) {
+      const ang = -Math.PI / 2 + (2 * Math.PI * k / e) + i * 0.38;
+      const x = cx + r * Math.cos(ang);
+      const y = cy + r * Math.sin(ang);
+      svg += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${dotR}" fill="#f9fafb"/>`;
+    }
+  }
+
+  svg += `<circle cx="${cx}" cy="${cy}" r="13" fill="${accent}" opacity="0.18"/>`;
+  svg += `<circle cx="${cx}" cy="${cy}" r="8" fill="${accent}"/>`;
+  svg += `<text x="${cx}" y="${cy + 2.6}" text-anchor="middle" font-family="Atkinson Hyperlegible Next, sans-serif" font-size="7.5" font-weight="700" fill="#0a0a14">${entry.symbol}</text>`;
+  svg += `</svg>`;
+  return svg;
+}
+
+function renderGrid() {
+  const grid = document.getElementById('grid');
+  grid.innerHTML = '';
+
+  ENTRIES.forEach((entry, idx) => {
+    const el = document.createElement('article');
+    el.className = 'entry';
+    el.style.setProperty('--entry-color', entry.color);
+    el.setAttribute('aria-expanded', 'false');
+
+    const factRows = entry.facts.map(f =>
+      `<tr><td>${f.property}</td><td>${f.meaning}</td><td>${f.data}</td></tr>`
+    ).join('');
+
+    const tags = entry.tags.map(t => `<span class="tag">${t}</span>`).join('');
+
+    el.innerHTML = `
+      <div class="entry-header">
+        ${makeSVG(entry)}
+        <div class="entry-meta">
+          <div class="entry-number">L★S · ${String(idx+1).padStart(3,'0')}</div>
+          <h2 class="entry-name">${entry.name}</h2>
+          <div class="entry-traditional">${entry.element} · ${entry.symbol}</div>
+          <div class="entry-coords">Z ${entry.z} · ${entry.mass} u · ${entry.abundance}</div>
+        </div>
+      </div>
+      <p class="entry-brief">${entry.brief}</p>
+      <div class="entry-tags">${tags}</div>
+      <div class="entry-expand">▸ Field notes</div>
+      <div class="entry-notes">
+        <div class="notes-heading">Field notes · ${entry.element}</div>
+        <div class="notes-body">${entry.notes.replace(/\n\n/g,'</p><p>').replace(/^/,'<p>').replace(/$/,'</p>')}</div>
+        <table class="star-table" aria-label="Facts about ${entry.element}">
+          <thead><tr><th>Property</th><th>Meaning</th><th>Value</th></tr></thead>
+          <tbody>${factRows}</tbody>
+        </table>
+        <div class="ls-coords">
+          <span class="ls-coords-label">Forged in</span>
+          <span class="ls-coords-value">${entry.forge}</span>
+        </div>
+      </div>
+    `;
+
+    el.addEventListener('click', () => {
+      const isOpen = el.classList.contains('open');
+      el.classList.toggle('open', !isOpen);
+      el.setAttribute('aria-expanded', String(!isOpen));
+      el.querySelector('.entry-expand').textContent = isOpen ? '▸ Field notes' : '▾ Field notes';
+    });
+
+    grid.appendChild(el);
+  });
+}
+
+// Init
+renderGrid();
+</script>
+</body>
+</html>
