@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Field Guide to the Ways of Being a Star — Stimpunks Foundation</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="starstuff.css">
+<style>
+  :root {
+    --bg:        #0a0a14;
+    --card:      #0f0f2a;
+    --purple:    #a78bfa;
+    --pink:      #f472b6;
+    --gold:      #fbbf24;
+    --cyan:      #22d3ee;
+    --green:     #4ade80;
+    --white:     #f9fafb;
+    --secondary: #b8aed0;
+    --muted:     #c4b5d4;
+    --border:    rgba(167,139,250,0.15);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--white);
+    font-family: 'Atkinson Hyperlegible Next', sans-serif;
+    font-size: 1rem;
+    min-height: 100vh;
+  }
+
+  /* ── STARFIELD ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 7%  13%, rgba(249,250,251,0.8) 0%, transparent 100%),
+      radial-gradient(1px 1px at 23% 37%, rgba(244,114,182,0.7) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 43% 8%,  rgba(249,250,251,0.7) 0%, transparent 100%),
+      radial-gradient(1px 1px at 59% 67%, rgba(251,191,36,0.6)  0%, transparent 100%),
+      radial-gradient(2px 2px at 73% 27%, rgba(249,250,251,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 83% 53%, rgba(110,168,240,0.7) 0%, transparent 100%),
+      radial-gradient(1px 1px at 89% 78%, rgba(249,250,251,0.8) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 3% 57%, rgba(249,250,251,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 33% 83%, rgba(244,114,182,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 53% 46%, rgba(249,250,251,0.4) 0%, transparent 100%),
+      radial-gradient(2px 2px at 17% 87%, rgba(167,139,250,0.7) 0%, transparent 100%),
+      radial-gradient(1px 1px at 67% 3%,  rgba(249,250,251,0.8) 0%, transparent 100%),
+      radial-gradient(1px 1px at 46% 61%, rgba(251,191,36,0.5)  0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 28% 18%, rgba(249,250,251,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 76% 86%, rgba(110,168,240,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 91% 42%, rgba(244,114,182,0.5) 0%, transparent 100%),
+      radial-gradient(2px 2px at 55% 22%, rgba(251,191,36,0.5) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── MASTHEAD ── */
+  .masthead { position: relative; z-index: 2; padding: 3rem 2.5rem 2rem; border-bottom: 1px solid var(--border); display: grid; grid-template-columns: 1fr auto; gap: 1rem; align-items: end; }
+  .masthead-eyebrow { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--pink); margin-bottom: 0.6rem; }
+  .masthead-title { font-size: clamp(1.6rem, 4vw, 2.8rem); font-weight: 300; line-height: 1.1; color: var(--white); letter-spacing: -0.01em; }
+  .masthead-title em { font-style: italic; background: linear-gradient(135deg, var(--pink) 0%, var(--gold) 50%, var(--cyan) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .masthead-sub { font-size: 0.875rem; color: var(--secondary); margin-top: 0.6rem; line-height: 1.6; max-width: 580px; }
+  .masthead-right { text-align: right; flex-shrink: 0; }
+  .masthead-ls { font-size: 1.4rem; font-weight: 700; color: var(--gold); letter-spacing: 0.05em; display: block; text-align: right; text-shadow: 0 0 18px rgba(251,191,36,0.45); }
+
+  /* ── INTRO BAND ── */
+  .intro-band { position: relative; z-index: 2; padding: 1.5rem 2.5rem; border-bottom: 1px solid var(--border); display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.5rem; }
+  .intro-note { font-size: 0.875rem; color: var(--secondary); line-height: 1.7; }
+  .intro-note strong { font-weight: 700; color: var(--white); display: block; font-size: 0.8125rem; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.3rem; }
+
+  /* ── GRID ── */
+  .field-grid { position: relative; z-index: 2; display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 0; }
+
+  /* ── ENTRY CARD ── */
+  .entry { background: var(--card); border-radius: 8px; margin: 0.75rem; padding: 1.25rem; cursor: pointer; transition: background 0.2s ease, box-shadow 0.2s ease; position: relative; border: 1px solid var(--border); }
+  .entry:hover { background: rgba(15,15,42,0.98); box-shadow: 0 4px 24px rgba(167,139,250,0.12); }
+  .entry.open  { background: rgba(15,15,42,0.98); box-shadow: 0 4px 32px rgba(167,139,250,0.15); }
+  .entry::before { content: ''; position: absolute; top: 8px; left: 0; width: 3px; height: calc(100% - 16px); background: var(--entry-color, var(--pink)); border-radius: 0 2px 2px 0; }
+
+  .entry-header { display: grid; grid-template-columns: auto 1fr; gap: 1.2rem; align-items: start; margin-bottom: 1rem; }
+  .hr-svg { width: 96px; height: 92px; flex-shrink: 0; }
+  .entry-meta { min-width: 0; }
+  .entry-number { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.2rem; }
+  .entry-name { font-size: 1.25rem; font-weight: 600; line-height: 1.1; color: var(--white); margin-bottom: 0.2rem; }
+  .entry-traditional { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.4rem; }
+  .entry-coords { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.06em; color: var(--cyan); }
+
+  .entry-brief { font-size: 0.875rem; color: var(--secondary); line-height: 1.65; margin-bottom: 0.8rem; }
+  .entry-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.7rem; }
+  .tag { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.2rem 0.6rem; border-radius: 4px; border: 1px solid var(--border); color: var(--muted); background: rgba(167,139,250,0.06); }
+  .entry-expand { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); transition: color 0.2s ease; }
+  .entry:hover .entry-expand, .entry.open .entry-expand { color: var(--secondary); }
+
+  .entry-notes { display: none; margin-top: 1.2rem; padding-top: 1.2rem; border-top: 1px solid var(--border); animation: fadeIn 0.3s ease forwards; }
+  .entry.open .entry-notes { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+
+  .notes-heading { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.7rem; }
+  .notes-body { font-size: 1rem; color: var(--secondary); line-height: 1.8; margin-bottom: 1rem; }
+  .notes-body p { margin-bottom: 1em; }
+  .notes-body p:last-child { margin-bottom: 0; }
+  .notes-body em { color: var(--white); font-style: italic; }
+  .notes-body strong { color: var(--white); font-weight: 600; font-style: normal; }
+
+  .rule-table { width: 100%; border-collapse: collapse; margin-top: 0.8rem; }
+  .rule-table th { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-align: left; padding: 0.3rem 0.5rem 0.3rem 0; border-bottom: 1px solid var(--border); }
+  .rule-table td { font-size: 0.875rem; color: var(--secondary); padding: 0.4rem 0.5rem 0.4rem 0; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .rule-table td:first-child { color: var(--white); font-weight: 600; }
+  .rule-table td:last-child { color: var(--white); font-weight: 600; }
+  .rule-table tr:last-child td { border-bottom: none; }
+
+  .ls-coords { margin-top: 1rem; padding: 0.7rem 0.9rem; border: 1px solid var(--border); border-left: 3px solid var(--entry-color, var(--pink)); border-radius: 0 8px 8px 0; display: flex; justify-content: space-between; align-items: center; gap: 1rem; background: rgba(167,139,250,0.05); }
+  .ls-coords-label { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); flex-shrink: 0; }
+  .ls-coords-value { font-size: 0.875rem; font-weight: 700; letter-spacing: 0.03em; color: var(--entry-color, var(--pink)); text-align: right; }
+
+  /* ── FOOTER ── */
+  .guide-footer { position: relative; z-index: 2; padding: 2rem 2.5rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+  .footer-text { font-size: 0.875rem; color: var(--secondary); line-height: 1.7; max-width: 620px; }
+  .footer-ls { font-size: 2rem; font-weight: 700; color: var(--gold); letter-spacing: 0.05em; text-shadow: 0 0 24px rgba(251,191,36,0.4); }
+
+  @media (max-width: 600px) {
+    .masthead { grid-template-columns: 1fr; padding: 2rem 1.5rem 1.5rem; }
+    .masthead-right { text-align: left; }
+    .intro-band { padding: 1.2rem 1.5rem; }
+    .entry { margin: 0.5rem; padding: 1rem; }
+    .field-grid { grid-template-columns: 1fr; }
+    .guide-footer { padding: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="ss-nav ss-nav--bleed" style="--nav-accent:#f472b6;" aria-label="Star Stuff collection">
+  <a class="ss-nav-home" href="index.html"><span class="ss-star" aria-hidden="true">★</span> stuff</a>
+  <span class="ss-nav-links">
+    <a class="ss-nav-prev" href="worlds-field-guide.html"><span class="ss-nav-arrow" aria-hidden="true">‹</span> <span class="ss-nav-label">Worlds</span></a>
+    <a class="ss-nav-next" href="ls-playlist.html"><span class="ss-nav-label">Playlist</span> <span class="ss-nav-arrow" aria-hidden="true">›</span></a>
+  </span>
+</nav>
+
+<!-- ── MASTHEAD ── -->
+<header class="masthead">
+  <div>
+    <p class="masthead-eyebrow">Stimpunks Foundation · L★S · Field Guide No. 5</p>
+    <h1 class="masthead-title">A Field Guide to<br><em>the Ways of Being a Star</em></h1>
+    <p class="masthead-sub">Eight ways to be a star — slow or brilliant, solitary or paired, steady or pulsing, still burning or long past it. Astronomy's own names smuggle in verdicts ("failed star," "dwarf"). The sky doesn't grade. There is no standard star.</p>
+  </div>
+  <div class="masthead-right">
+    <span class="masthead-ls">L★S</span>
+  </div>
+</header>
+
+<!-- ── INTRO BAND ── -->
+<div class="intro-band">
+  <div class="intro-note">
+    <strong>How to use this guide</strong>
+    Each entry gives the kind of star, the trait a deficit label fixes on, what that trait actually is, key data, and full field notes. Click any entry to open its notes.
+  </div>
+  <div class="intro-note">
+    <strong>On the main sequence</strong>
+    Most stars spend their fusing lives on a diagonal band astronomers call the main sequence. It's a phase, not a ranking — and plenty of real stars live on it, above it, below it, or entirely off it. There is no standard star.
+  </div>
+  <div class="intro-note">
+    <strong>On the diagrams</strong>
+    Each diagram is the same star-map — the Hertzsprung–Russell diagram, hot-to-cool across and dim-to-bright up — with this star's way of being lit on it. Same map every time; a different place to stand.
+  </div>
+</div>
+
+<!-- ── FIELD ENTRIES ── -->
+<main class="field-grid" id="grid"></main>
+
+<!-- ── FOOTER ── -->
+<footer class="guide-footer">
+  <p class="footer-text">The Hertzsprung–Russell diagram maps stars by temperature and brightness; the main sequence is the band where they spend most of their fusing lives, not a scale of worth. Some of these ways of being sit right off it — by nature, not by failure. Astronomy named a few of them for what they lack; we'd rather name them for what they are. <em>There is no standard star.</em> (Figures are approximate and rounded.)</p>
+  <span class="footer-ls">L★S</span>
+</footer>
+
+<script>
+const ENTRIES = [
+  {
+    id: 'reddwarf', name: 'The Long Slow Burn', identity: 'Red dwarf · M-type main sequence',
+    coords: '~0.1–0.6 solar masses · lives trillions of yrs', color: '#e0674a',
+    brief: 'The smallest, coolest, dimmest stars that still fuse hydrogen — and by far the most common stars there are. They burn so slowly they outlast every brilliant star, by a margin longer than the universe has yet existed.',
+    tags: ['most common star', 'slow burn', 'trillions of years', 'quiet endures'],
+    facts: [
+      { trait: 'Dim and cool', sounds: 'underpowered', truth: 'sips its fuel for trillions of years' },
+      { trait: 'Small', sounds: 'lesser', truth: 'the most common star in the galaxy' },
+      { trait: 'Slow', sounds: 'unremarkable', truth: 'outlasts every brilliant star' },
+    ],
+    home: 'slow and long, not bright · L★S 001',
+    notes: `Red dwarfs are the smallest, coolest, dimmest stars that still fuse hydrogen — and they are by far the most common stars in the galaxy. Because they burn their fuel so slowly, and mix it so thoroughly, they last almost unimaginably long: many trillions of years, far longer than the current age of the universe. Not one red dwarf has ever died of old age, because there hasn't been time.
+
+Bright, fast, and spectacular is one way to be a star. Dim, slow, and enduring is another — and it's the way most stars actually take. <em>Quiet and long outlasts loud and brief, every single time.</em>`,
+  },
+  {
+    id: 'browndwarf', name: 'The So-Called Failure', identity: 'Brown dwarf · sub-stellar object',
+    coords: '~13–80 Jupiter masses · no sustained fusion', color: '#b0784a',
+    brief: 'Forms like a star but never gathers quite enough mass to sustain hydrogen fusion — so astronomy calls it a "failed star." A strange verdict to hand an object for being exactly what it is.',
+    tags: ['"failed star"', 'below the line', 'a real object', 'named for a lack'],
+    facts: [
+      { trait: 'Never fused hydrogen', sounds: 'a "failed star"', truth: 'a whole legitimate kind of object' },
+      { trait: 'Below the mass line', sounds: "didn't make the cut", truth: 'the line is ours, not nature\u2019s' },
+      { trait: 'Cool and faint', sounds: 'barely a star', truth: 'glows for ages on its own warmth' },
+    ],
+    home: 'below the line we drew · L★S 002',
+    notes: `Brown dwarfs form like stars but never gather quite enough mass to sustain hydrogen fusion in their cores, so astronomers have long called them "failed stars." It's a strange verdict to hand an object for existing exactly as it is. They glow for ages on their own warmth and a little early deuterium fusion, cooling slowly down through the infrared.
+
+The boundary between "star" and "failed star" sits around 8% of the Sun's mass — a real physical threshold, but the word <em>failed</em> is ours, not nature's. Below a line someone drew, a whole legitimate kind of object got named for what it isn't. <em>We'd rather name it for what it is.</em>`,
+  },
+  {
+    id: 'variable', name: 'Energy on Its Own Rhythm', identity: 'Variable star · e.g. Cepheid, Mira',
+    coords: 'brightness cycles · hours to years', color: '#e8b84b',
+    brief: 'A star whose brightness rises and falls on a cycle. Easy to read as a failure to hold steady — but the pulsing is how it works, and in the Cepheids, that very rhythm is how we measured the size of the universe.',
+    tags: ['pulsing', 'not unstable', 'a built-in rhythm', 'measures the cosmos'],
+    facts: [
+      { trait: 'Brightness rises and falls', sounds: "can't hold steady", truth: 'pulses on a reliable cycle' },
+      { trait: 'Never constant', sounds: 'unstable', truth: 'the change is how it works' },
+      { trait: 'Its fluctuation', sounds: 'a defect', truth: 'how we measure the whole universe' },
+    ],
+    home: 'rhythmic, not constant · L★S 003',
+    notes: `Variable stars don't hold a steady brightness; they swell and shrink, brighten and dim, on cycles from hours to years. It would be easy to read that as instability — a failure to keep it together. But the pulsing is not a malfunction. It's how these stars work, a rhythm built into their very structure.
+
+And that rhythm turned out to be one of the most useful things in all of astronomy: Cepheid variables pulse with a period that reveals their true brightness, which let Henrietta Leavitt — and everyone since — measure distances clear across the cosmos. Energy that comes and goes on its own cycle isn't lesser. <em>Here, it's how we learned the size of the universe.</em>`,
+  },
+  {
+    id: 'pulsar', name: 'The Precise Signal', identity: 'Pulsar · rotating neutron star',
+    coords: 'spins up to ~700×/second · ms-precise', color: '#7fd8e8',
+    brief: 'The collapsed core of a dead massive star — a Sun\'s mass in a city-sized sphere — spinning fast and sweeping a beam past us like a lighthouse, with a regularity that rivals atomic clocks.',
+    tags: ['neutron star', 'millisecond precision', 'tiny, dense', 'a galactic clock'],
+    facts: [
+      { trait: 'Tiny and dense', sounds: 'collapsed, spent', truth: 'a city-sized cosmic clock' },
+      { trait: 'Spins wildly', sounds: 'out of control', truth: 'keeps time to the millisecond' },
+      { trait: 'Faint to the eye', sounds: 'insignificant', truth: 'its beam sweeps the galaxy' },
+    ],
+    home: 'precise, not spent · L★S 004',
+    notes: `A pulsar is a neutron star — the collapsed core of a dead massive star, a whole Sun's worth of mass packed into a sphere the size of a city — spinning fast and sweeping a beam of radiation past us like a lighthouse. Some spin over 700 times a second, and their pulses arrive with a regularity that rivals atomic clocks.
+
+Small, dense, easy to overlook, and quietly one of the most precise things in the universe. Astronomers use pulsars to navigate, to test gravity, to hunt for gravitational waves. <em>A tremendous, exact signal in a tiny package the eye would never notice.</em>`,
+  },
+  {
+    id: 'binary', name: 'Never Alone', identity: 'Binary system · two or more stars',
+    coords: '~half of Sun-like stars have a partner', color: '#c88ad0',
+    brief: 'We picture stars as solitary, but roughly half of Sun-like stars — and most massive ones — live bound to a companion, orbiting a shared centre, sometimes trading mass across the gap. Shaped by relationship, not in spite of it.',
+    tags: ['paired', 'relational', 'shared orbit', 'most of the sky'],
+    facts: [
+      { trait: 'Not solitary', sounds: 'dependent', truth: 'most stars live bound to another' },
+      { trait: 'Shares mass and orbit', sounds: 'entangled', truth: 'shaped by relationship, not despite it' },
+      { trait: 'Two, not one', sounds: 'incomplete alone', truth: 'a system, whole together' },
+    ],
+    home: 'relational, not solitary · L★S 005',
+    notes: `We picture stars as solitary points of light, but roughly half of all Sun-like stars — and most massive ones — live bound to at least one companion, orbiting a shared centre of gravity, sometimes trading streams of matter across the space between them. A star's whole life can be shaped by the one it circles.
+
+Being paired isn't a lesser or dependent way to exist; for most stars, it's simply the ordinary one. Identity here is relational — what a star becomes depends on who it's with. <em>Most of the sky was never single.</em>`,
+  },
+  {
+    id: 'redgiant', name: 'A Later Way of Being', identity: 'Red giant · late-life phase',
+    coords: 'what the Sun becomes in ~5 billion yrs', color: '#e8794b',
+    brief: 'When a Sun-like star spends the hydrogen in its core, it doesn\'t fail — it transforms: swelling huge, cooling to deep red, and forging heavier elements it sheds into space to seed new worlds. Change, not decline.',
+    tags: ['transformed', 'off the main sequence', 'forges elements', 'not decline'],
+    facts: [
+      { trait: 'Left the main sequence', sounds: 'past its prime', truth: 'entered a new phase, not a decline' },
+      { trait: 'Swollen and cooler', sounds: 'falling apart', truth: 'forging the elements of new life' },
+      { trait: 'Utterly changed', sounds: 'no longer itself', truth: 'the same star, living differently' },
+    ],
+    home: 'transformed, not declined · L★S 006',
+    notes: `When a Sun-like star exhausts the hydrogen in its core, it doesn't fail — it transforms. It swells enormously, its surface cools to a deep red, and it begins fusing heavier elements, forging carbon and oxygen and shedding them into space where they'll seed new worlds. In about five billion years, this is what our own Sun will become.
+
+It's tempting to call that decline. But the red giant is the same star living a different phase — larger, cooler, and doing some of the most generative work of its whole existence. <em>Aging, here, is not diminishment. It's another way of being — and a fertile one.</em>`,
+  },
+  {
+    id: 'whitedwarf', name: 'The Long Afterward', identity: 'White dwarf · stellar remnant',
+    coords: 'Earth-sized · a teaspoon weighs tonnes', color: '#cfe0f0',
+    brief: 'What remains after a red giant sheds its outer layers: the exposed core, a Sun\'s mass packed into the size of Earth. It fuses nothing anymore — and shines on, on stored heat alone, for billions upon billions of years.',
+    tags: ['remnant', 'stopped fusing', 'still shining', 'an enduring end'],
+    facts: [
+      { trait: 'Stopped fusing', sounds: 'dead', truth: 'shines on for billions of years' },
+      { trait: 'Small and faint', sounds: 'finished', truth: 'the enduring core, cooling slowly' },
+      { trait: 'An end-state', sounds: 'nothing left', truth: 'a quiet, luminous afterward' },
+    ],
+    home: 'enduring, not ended · L★S 007',
+    notes: `After a red giant sheds its outer layers, what remains is a white dwarf: the exposed core, roughly the mass of the Sun packed into the size of the Earth, so dense that a teaspoon of it would weigh tonnes. It no longer fuses anything. And yet it shines — on stored heat alone — for billions upon billions of years as it slowly cools.
+
+We tend to file "stopped working" under "finished." The white dwarf declines the framing. Its fusing life is over, and it goes on glowing longer than most stars ever live: <em>a quiet, luminous afterward that is still, unmistakably, a way of being a star.</em>`,
+  },
+  {
+    id: 'bluegiant', name: 'Bright and Brief', identity: 'Blue giant · O/B-type supergiant',
+    coords: 'tens of solar masses · gone in millions of yrs', color: '#6ea8f0',
+    brief: 'The showpieces — tens of times the Sun\'s mass, blazing hot and staggeringly bright. If brightness were the measure, these would win. But they burn out in a cosmic instant, and they\'re the rarest stars of all.',
+    tags: ['brilliant', 'fast-burning', 'rarest', 'not the standard'],
+    facts: [
+      { trait: 'Blazing and huge', sounds: 'the ideal star', truth: 'one way among many — a costly one' },
+      { trait: 'Burns fast', sounds: 'the best', truth: 'spent in a few million years' },
+      { trait: 'Brilliant', sounds: 'the standard to meet', truth: 'brilliance was never the measure' },
+    ],
+    home: 'one way, not the standard · L★S 008',
+    notes: `Blue giants and supergiants are the showpieces — tens of times the Sun's mass, blazing hot and staggeringly luminous. If brightness were the measure of a star, these would win outright. But they pay for it: they tear through their fuel and live only a few million years, a cosmic instant, before dying as supernovae.
+
+It's worth noticing which way of being a star we're tempted to call the "best" — the brilliant, fast-burning one — and then noticing that it's the rarest and shortest-lived of them all. <em>Brightness was never the measure. It's one way among many, and far from the way most stars go.</em>`,
+  }
+];
+
+function hrFrame() {
+  return `
+    <rect x="20" y="10" width="80" height="78" fill="none" stroke="rgba(167,139,250,0.18)" stroke-width="0.7"/>
+    <line x1="30" y1="20" x2="90" y2="78" stroke="rgba(244,244,251,0.13)" stroke-width="8" stroke-linecap="round"/>
+    <line x1="30" y1="20" x2="90" y2="78" stroke="rgba(244,244,251,0.30)" stroke-width="0.8" stroke-dasharray="1 2"/>
+    <text x="40" y="45" font-family="Atkinson Hyperlegible Next, sans-serif" font-size="4" fill="rgba(196,181,212,0.55)" transform="rotate(44 40 45)">main sequence</text>
+    <text x="22" y="97" font-family="Atkinson Hyperlegible Next, sans-serif" font-size="4.4" fill="rgba(196,181,212,0.8)">hot</text>
+    <text x="98" y="97" font-family="Atkinson Hyperlegible Next, sans-serif" font-size="4.4" fill="rgba(196,181,212,0.8)" text-anchor="end">cool</text>
+    <text x="11" y="49" font-family="Atkinson Hyperlegible Next, sans-serif" font-size="4.2" fill="rgba(196,181,212,0.55)" text-anchor="middle" transform="rotate(-90 11 49)">brightness</text>`;
+}
+
+function dot(x, y, r, c) {
+  return `<circle cx="${x}" cy="${y}" r="${r+5}" fill="${c}" opacity="0.18"/><circle cx="${x}" cy="${y}" r="${r}" fill="${c}"/>`;
+}
+function lbl(x, y, c, anchor, t) {
+  return `<text x="${x}" y="${y}" font-family="Atkinson Hyperlegible Next, sans-serif" font-size="4.6" font-weight="700" fill="${c}" text-anchor="${anchor}">${t}</text>`;
+}
+
+function makeSVG(entry) {
+  const c = entry.color;
+  let mark = '';
+  switch (entry.id) {
+    case 'reddwarf':
+      mark = dot(82, 70, 3, c) + lbl(75, 71, c, 'end', 'red dwarf');
+      break;
+    case 'browndwarf':
+      mark = `<line x1="72" y1="85" x2="99" y2="74" stroke="rgba(255,255,255,0.4)" stroke-width="0.8" stroke-dasharray="2 2"/>`
+        + `<text x="98" y="70" font-family="Atkinson Hyperlegible Next, sans-serif" font-size="3.6" fill="rgba(255,255,255,0.5)" text-anchor="end">fusion limit</text>`
+        + dot(90, 84, 2.4, c) + lbl(85, 90, c, 'end', 'brown dwarf');
+      break;
+    case 'variable':
+      mark = `<rect x="52" y="20" width="12" height="46" rx="3" fill="${c}" opacity="0.12"/>`
+        + dot(58, 40, 3, c) + lbl(58, 16, c, 'middle', 'variable');
+      break;
+    case 'pulsar':
+      mark = `<line x1="30" y1="82" x2="19" y2="74" stroke="${c}" stroke-width="0.9"/><line x1="30" y1="82" x2="41" y2="90" stroke="${c}" stroke-width="0.9"/>`
+        + dot(30, 82, 2.2, c) + lbl(36, 80, c, 'start', 'pulsar');
+      break;
+    case 'binary':
+      mark = `<ellipse cx="56" cy="47" rx="11" ry="4.5" fill="none" stroke="${c}" stroke-width="0.7" opacity="0.6" transform="rotate(38 56 47)"/>`
+        + dot(50, 42, 2.6, c) + dot(63, 53, 2.6, c) + lbl(56, 32, c, 'middle', 'binary');
+      break;
+    case 'redgiant':
+      mark = dot(84, 27, 5, c) + lbl(78, 24, c, 'end', 'red giant');
+      break;
+    case 'whitedwarf':
+      mark = dot(44, 74, 1.8, c) + lbl(49, 76, c, 'start', 'white dwarf');
+      break;
+    case 'bluegiant':
+      mark = dot(33, 17, 5, c) + lbl(40, 15, c, 'start', 'blue giant');
+      break;
+  }
+  return `<svg viewBox="0 0 104 100" xmlns="http://www.w3.org/2000/svg" class="hr-svg" aria-hidden="true">${hrFrame()}${mark}</svg>`;
+}
+
+function renderGrid() {
+  const grid = document.getElementById('grid');
+  grid.innerHTML = '';
+  ENTRIES.forEach((entry, idx) => {
+    const el = document.createElement('article');
+    el.className = 'entry';
+    el.style.setProperty('--entry-color', entry.color);
+    el.setAttribute('aria-expanded', 'false');
+
+    const factRows = entry.facts.map(f =>
+      `<tr><td>${f.trait}</td><td>${f.sounds}</td><td>${f.truth}</td></tr>`
+    ).join('');
+    const tags = entry.tags.map(t => `<span class="tag">${t}</span>`).join('');
+
+    el.innerHTML = `
+      <div class="entry-header">
+        ${makeSVG(entry)}
+        <div class="entry-meta">
+          <div class="entry-number">L★S · ${String(idx+1).padStart(3,'0')}</div>
+          <h2 class="entry-name">${entry.name}</h2>
+          <div class="entry-traditional">${entry.identity}</div>
+          <div class="entry-coords">${entry.coords}</div>
+        </div>
+      </div>
+      <p class="entry-brief">${entry.brief}</p>
+      <div class="entry-tags">${tags}</div>
+      <div class="entry-expand">▸ Field notes</div>
+      <div class="entry-notes">
+        <div class="notes-heading">Field notes · ${entry.identity}</div>
+        <div class="notes-body">${entry.notes.replace(/\n\n/g,'</p><p>').replace(/^/,'<p>').replace(/$/,'</p>')}</div>
+        <table class="rule-table" aria-label="How the label reads versus the reality for ${entry.name}">
+          <thead><tr><th>Trait</th><th>Sounds like</th><th>Actually</th></tr></thead>
+          <tbody>${factRows}</tbody>
+        </table>
+        <div class="ls-coords">
+          <span class="ls-coords-label">Its way</span>
+          <span class="ls-coords-value">${entry.home}</span>
+        </div>
+      </div>
+    `;
+
+    el.addEventListener('click', () => {
+      const isOpen = el.classList.contains('open');
+      el.classList.toggle('open', !isOpen);
+      el.setAttribute('aria-expanded', String(!isOpen));
+      el.querySelector('.entry-expand').textContent = isOpen ? '▸ Field notes' : '▾ Field notes';
+    });
+
+    grid.appendChild(el);
+  });
+}
+
+renderGrid();
+</script>
+</body>
+</html>
