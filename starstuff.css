@@ -88,3 +88,14 @@
 @media print {
   .ss-nav { display: none !important; }
 }
+
+/* Respect the OS "reduce motion" setting: neutralize the starfield twinkle,
+   spinning stars, fade-ins, and smooth-scroll for anyone who asks for less motion. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
