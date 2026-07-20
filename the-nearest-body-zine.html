@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0a0a14">
+<link rel="canonical" href="https://starstuff.earth/the-nearest-body-zine.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta name="description" content="Tides and co-regulation as star stuff. The Moon runs the tide though the Sun out-masses it 27 million times — because nearness beats mass. Co-regulation is gravity: a safe-enough nervous system nearby pulls yours into rhythm, at a distance, without touching. Meerkat mode is a sea that lost its moon; the storm is in the weather, not the water. Broken systems, not broken people.">
+<!-- Open Graph / link unfurl -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Star Stuff · Stimpunks Foundation">
+<meta property="og:url" content="https://starstuff.earth/the-nearest-body-zine.html">
+<meta property="og:title" content="The Nearest Body">
+<meta property="og:description" content="Tides and co-regulation as star stuff. Nearness beats mass; co-regulation is gravity. You are pulled into rhythm by the bodies closest to you — at a distance, without touching.">
+<meta property="og:image" content="https://starstuff.earth/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A rainbow-hued cosmic image — we are all made of star stuff.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Nearest Body">
+<meta name="twitter:description" content="Tides and co-regulation as star stuff. Nearness beats mass; co-regulation is gravity. You are pulled into rhythm by what's near you.">
+<meta name="twitter:image" content="https://starstuff.earth/og-card.jpg">
+<title>The Nearest Body — Stimpunks Zine No. 17</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="starstuff.css">
+<style>
+  :root {
+    --void:  #07070f;
+    --deep:  #0d0d1a;
+    --page:  #0f0f1c;
+    --violet:#a78bfa;
+    --pink:  #f472b6;
+    --gold:  #fbbf24;
+    --cyan:  #22d3ee;
+    --green: #4ade80;
+    --star-white: #f4f2fb;
+    --stardust:   #d4d0e4;
+    --dim:   #8a86a0;
+    --dim2:  #63607a;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--void);
+    font-family: 'Atkinson Hyperlegible', system-ui, sans-serif;
+    color: var(--star-white);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── STARFIELD (cyan · gold · white · violet — water, moonlight, night) ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 8% 12%, rgba(34,211,238,0.85) 0%, transparent 100%),
+      radial-gradient(1px 1px at 22% 38%, rgba(251,191,36,0.7) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 44% 9%, rgba(244,244,251,0.75) 0%, transparent 100%),
+      radial-gradient(1px 1px at 61% 68%, rgba(34,211,238,0.7) 0%, transparent 100%),
+      radial-gradient(2px 2px at 74% 28%, rgba(244,244,251,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 84% 54%, rgba(251,191,36,0.7) 0%, transparent 100%),
+      radial-gradient(1px 1px at 91% 79%, rgba(244,244,251,0.7) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 4% 58%, rgba(34,211,238,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 34% 84%, rgba(244,244,251,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 54% 48%, rgba(167,139,250,0.5) 0%, transparent 100%),
+      radial-gradient(2px 2px at 19% 88%, rgba(34,211,238,0.55) 0%, transparent 100%),
+      radial-gradient(1px 1px at 69% 4%, rgba(244,244,251,0.8) 0%, transparent 100%),
+      radial-gradient(1px 1px at 47% 62%, rgba(34,211,238,0.5) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 30% 20%, rgba(251,191,36,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 77% 88%, rgba(167,139,250,0.5) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .zine-shell { position: relative; z-index: 1; max-width: 820px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+
+  .spectrum-line { height: 2px; border: none; border-radius: 2px; background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); }
+
+  /* ── NAV ── */
+  .nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2.5rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(167,139,250,0.2); }
+  .nav-brand { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--dim); }
+  .nav-controls { display: flex; gap: 0.5rem; align-items: center; }
+  .nav-btn { background: none; border: 1px solid rgba(34,211,238,0.35); color: var(--stardust); font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.15em; padding: 0.4rem 0.85rem; border-radius: 2px; cursor: pointer; transition: all 0.2s ease; text-transform: uppercase; }
+  .nav-btn:hover { background: rgba(34,211,238,0.15); border-color: rgba(34,211,238,0.6); color: var(--star-white); }
+  .nav-btn.active { background: rgba(34,211,238,0.20); border-color: var(--cyan); color: var(--star-white); }
+  .page-counter { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.2em; color: var(--dim2); }
+
+  .spread { display: none; animation: fadeIn 0.5s ease forwards; }
+  .spread.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ── COVER ── */
+  .cover-spread {
+    position: relative; min-height: 520px; border-radius: 4px; overflow: hidden;
+    background:
+      radial-gradient(ellipse at 22% 20%, rgba(34,211,238,0.15) 0%, transparent 52%),
+      radial-gradient(ellipse at 80% 30%, rgba(244,244,251,0.10) 0%, transparent 50%),
+      radial-gradient(ellipse at 68% 82%, rgba(34,211,238,0.11) 0%, transparent 52%),
+      radial-gradient(ellipse at 30% 78%, rgba(167,139,250,0.09) 0%, transparent 52%),
+      var(--deep);
+    border: 1px solid rgba(167,139,250,0.25);
+    box-shadow: inset 0 0 80px rgba(34,211,238,0.06), 0 0 0 4px rgba(255,255,255,0.03);
+    display: flex; flex-direction: column; justify-content: flex-end; padding: 3rem;
+  }
+  .cover-motif { position: absolute; top: -6px; right: -22px; width: 344px; height: 344px; opacity: 0.72; pointer-events: none; }
+  .cover-issue { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.5em; text-transform: uppercase; color: var(--cyan); margin-bottom: 1.5rem; }
+  .cover-title { font-weight: 700; font-size: clamp(2.4rem, 7vw, 4.2rem); line-height: 1.02; color: var(--star-white); letter-spacing: -0.02em; margin-bottom: 0.9rem; }
+  .cover-title .spectrum-word { background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .cover-subtitle { font-size: 1rem; color: var(--stardust); opacity: 0.85; margin-bottom: 2rem; max-width: 470px; line-height: 1.55; }
+  .cover-rule { width: 220px; max-width: 60%; margin-bottom: 1.3rem; }
+  .cover-meta { display: flex; gap: 2rem; align-items: center; }
+  .cover-ls { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 1.4rem; color: var(--gold); letter-spacing: 0.05em; }
+  .cover-meta-text { font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--dim2); line-height: 1.9; }
+  .cover-corner { position: absolute; top: 2rem; right: 2.5rem; text-align: right; }
+  .cover-corner-num { font-weight: 700; font-size: 4.5rem; line-height: 1; color: var(--cyan); opacity: 0.24; }
+  .cover-corner-label { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); display: block; margin-top: -0.3rem; }
+
+  /* ── INTERIOR ── */
+  .interior { background: var(--page); border: 1px solid rgba(167,139,250,0.15); border-radius: 4px; overflow: hidden; min-height: 480px; }
+  .spread-2col { display: grid; grid-template-columns: 1fr 1fr; min-height: 480px; }
+  .spread-left, .spread-right { padding: 3rem 2.4rem; position: relative; }
+  .spread-left { border-right: 1px solid rgba(167,139,250,0.12); }
+
+  .eyebrow { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--cyan); margin-bottom: 1.1rem; }
+  .body-text { font-size: 0.98rem; line-height: 1.72; color: var(--stardust); }
+  .body-text p { margin-bottom: 1rem; }
+  .body-text p:last-child { margin-bottom: 0; }
+  .body-text strong { font-weight: 700; color: var(--star-white); }
+  .body-text em { font-style: italic; color: var(--star-white); }
+  .body-text a { color: var(--cyan); text-decoration: none; border-bottom: 1px solid rgba(34,211,238,0.35); }
+  .body-text a:hover { border-bottom-color: var(--cyan); color: var(--star-white); }
+  .body-text .violet { color: var(--violet); font-weight: 700; }
+  .body-text .pink { color: var(--pink); font-weight: 700; }
+  .body-text .gold { color: var(--gold); font-weight: 700; }
+  .body-text .cyan { color: var(--cyan); font-weight: 700; }
+  .body-text .green { color: var(--green); font-weight: 700; }
+
+  .spread-heading { font-weight: 700; font-size: 1.9rem; line-height: 1.12; color: var(--star-white); margin-bottom: 1.1rem; letter-spacing: -0.01em; }
+  .spread-heading .spectrum-word { background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .rule { width: 40px; margin: 1rem 0; }
+
+  .pull-quote { font-size: 1.18rem; font-weight: 700; line-height: 1.4; color: var(--star-white); border-left: 3px solid var(--cyan); padding-left: 1.1rem; margin: 1.4rem 0; }
+  .pull-quote.pink { border-left-color: var(--pink); }
+  .pull-quote.gold { border-left-color: var(--gold); }
+  .pull-quote.cyan { border-left-color: var(--cyan); }
+  .pull-quote.violet { border-left-color: var(--violet); }
+  .pull-quote .attr { display: block; font-family: 'Space Mono', monospace; font-size: 0.6rem; font-weight: 400; letter-spacing: 0.08em; color: var(--dim); margin-top: 0.6rem; }
+
+  /* ── POEM ── */
+  .poem { font-size: 1.02rem; line-height: 1.9; color: var(--star-white); font-style: italic; }
+  .poem .breath { display: block; }
+
+  /* ── DIAGRAMS ── */
+  .diagram-wrap { display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; }
+  .diagram { width: 100%; max-width: 280px; display: block; }
+  .diagram-caption { font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim); text-align: center; margin-top: 0.9rem; line-height: 1.9; }
+  .annotation { color: var(--cyan); }
+
+  /* ── REFUSALS ── */
+  .refusals { margin-top: 1.3rem; }
+  .refusal { font-size: 0.88rem; line-height: 1.5; color: var(--stardust); padding: 0.55rem 0; border-bottom: 1px solid rgba(167,139,250,0.1); display: flex; gap: 0.6rem; align-items: baseline; }
+  .refusal:last-child { border-bottom: none; }
+  .refusal-tag { font-family: 'Space Mono', monospace; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--pink); flex-shrink: 0; padding-top: 0.12rem; }
+  .refusal strong { color: var(--star-white); font-weight: 700; }
+
+  /* ── COLOPHON ── */
+  .colophon { padding: 3rem; display: flex; flex-direction: column; justify-content: space-between; min-height: 480px; background: radial-gradient(ellipse at 82% 18%, rgba(34,211,238,0.09) 0%, transparent 50%), radial-gradient(ellipse at 18% 85%, rgba(251,191,36,0.07) 0%, transparent 50%), var(--page); }
+  .colophon-top { border-bottom: 1px solid rgba(167,139,250,0.14); padding-bottom: 1.3rem; margin-bottom: 1.2rem; }
+  .colophon-ls { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 2.4rem; color: var(--gold); letter-spacing: 0.05em; display: block; margin-bottom: 0.4rem; }
+  .colophon-phrase { font-size: 0.92rem; font-weight: 700; color: var(--stardust); }
+  .series-list { display: flex; flex-direction: column; gap: 0.38rem; margin-bottom: 1.2rem; }
+  .series-item { font-size: 0.72rem; color: var(--dim); letter-spacing: 0.01em; display: flex; gap: 0.7rem; align-items: baseline; line-height: 1.45; }
+  .series-item.current { color: var(--cyan); font-weight: 700; }
+  .series-num { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim2); flex-shrink: 0; }
+  .series-item.current .series-num { color: var(--cyan); }
+  .reflect { border-top: 1px solid rgba(167,139,250,0.14); padding-top: 1rem; margin-bottom: 1.2rem; }
+  .reflect-label { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--cyan); margin-bottom: 0.65rem; }
+  .reflect-q { font-size: 0.86rem; line-height: 1.55; color: var(--stardust); margin-bottom: 0.55rem; }
+  .reflect-q:last-child { margin-bottom: 0; }
+  .colophon-body { font-size: 0.75rem; color: var(--dim); line-height: 1.75; margin-bottom: 1.2rem; }
+  .colophon-body a { color: var(--cyan); text-decoration: none; border-bottom: 1px solid rgba(34,211,238,0.35); }
+  .colophon-body a:hover { border-bottom-color: var(--cyan); }
+  .colophon-footer { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--dim); line-height: 2.2; border-top: 1px solid rgba(167,139,250,0.14); padding-top: 1rem; }
+
+  /* ── SPREAD FOOTER ── */
+  .spread-footer { display: flex; justify-content: space-between; align-items: center; padding: 0.9rem 2.4rem; border-top: 1px solid rgba(167,139,250,0.1); }
+  .spread-footer-left { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--dim); }
+  .spread-footer-right { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; color: var(--cyan); }
+
+  .twinkle { position: fixed; width: 3px; height: 3px; border-radius: 50%; animation: twinkle-anim 3s ease-in-out infinite; pointer-events: none; z-index: 0; }
+  @keyframes twinkle-anim { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.15; transform: scale(0.3); } }
+
+  @media (max-width: 600px) {
+    .spread-2col { grid-template-columns: 1fr; }
+    .spread-left { border-right: none; border-bottom: 1px solid rgba(167,139,250,0.12); }
+    .cover-spread { padding: 2rem; min-height: 420px; }
+    .cover-motif { width: 224px; height: 224px; top: -4px; right: -26px; opacity: 0.5; }
+    .cover-title { font-size: 2.3rem; }
+    .spread-heading { font-size: 1.55rem; }
+    .spread-left, .spread-right { padding: 2rem 1.5rem; }
+    .colophon { padding: 2rem 1.5rem; }
+  }
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"The Nearest Body","description":"Tides and co-regulation as star stuff. The Moon runs the tide though the Sun out-masses it 27 million times, because nearness beats mass. Co-regulation is gravity: a safe-enough nervous system nearby pulls yours into rhythm, at a distance, without touching. Meerkat mode is a sea that lost its moon; the storm is in the weather, not the water. Broken systems, not broken people.","image":"https://starstuff.earth/og-card.jpg","url":"https://starstuff.earth/the-nearest-body-zine.html","mainEntityOfPage":"https://starstuff.earth/the-nearest-body-zine.html","author":{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/"},"publisher":{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/","logo":{"@type":"ImageObject","url":"https://starstuff.earth/og-card.jpg"}},"isPartOf":{"@type":"WebSite","name":"Star Stuff","url":"https://starstuff.earth/"}}</script>
+</head>
+<body>
+
+<div class="twinkle" style="top:7%;left:11%;background:var(--cyan);box-shadow:0 0 6px var(--cyan);animation-delay:-0.4s"></div>
+<div class="twinkle" style="top:19%;left:83%;background:var(--gold);box-shadow:0 0 6px var(--gold);animation-delay:-1.3s"></div>
+<div class="twinkle" style="top:52%;left:4%;background:var(--star-white);box-shadow:0 0 6px var(--star-white);animation-delay:-2.1s"></div>
+<div class="twinkle" style="top:71%;left:94%;background:var(--cyan);box-shadow:0 0 6px var(--cyan);animation-delay:-0.9s"></div>
+<div class="twinkle" style="top:88%;left:28%;background:var(--gold);box-shadow:0 0 6px var(--gold);animation-delay:-1.7s"></div>
+<div class="twinkle" style="top:38%;left:97%;background:var(--violet);box-shadow:0 0 6px var(--violet);animation-delay:-3.1s"></div>
+
+<div class="zine-shell">
+
+  <nav class="ss-nav" style="--nav-accent:#22d3ee;" aria-label="Star Stuff collection">
+    <a class="ss-nav-home" href="index.html"><span class="ss-star" aria-hidden="true">★</span> stuff</a>
+    <span class="ss-nav-links">
+      <a class="ss-nav-prev" href="minor-worlds-zine.html"><span class="ss-nav-arrow" aria-hidden="true">‹</span> <span class="ss-nav-label">Minor Worlds</span></a>
+      <a class="ss-nav-next" href="constellation-field-guide.html"><span class="ss-nav-label">Field Guide</span> <span class="ss-nav-arrow" aria-hidden="true">›</span></a>
+    </span>
+  </nav>
+
+  <nav class="nav">
+    <div class="nav-brand">Stimpunks · Zine No. 17</div>
+    <div class="nav-controls">
+      <button class="nav-btn" id="prev-btn" onclick="changePage(-1)">← prev</button>
+      <span class="page-counter" id="page-counter">1 / 8</span>
+      <button class="nav-btn" id="next-btn" onclick="changePage(1)">next →</button>
+    </div>
+  </nav>
+
+  <!-- ════ SPREAD 1: COVER ════ -->
+  <div class="spread active" id="spread-1">
+    <div class="cover-spread">
+      <svg class="cover-motif" viewBox="0 0 344 344" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <!-- a water-world stretched into a tidal bulge toward a nearby moon -->
+        <!-- far, faint sun -->
+        <circle cx="300" cy="52" r="20" fill="none" stroke="rgba(251,191,36,0.4)" stroke-width="1.2"/>
+        <g stroke="rgba(251,191,36,0.3)" stroke-width="1"><line x1="300" y1="20" x2="300" y2="10"/><line x1="332" y1="52" x2="342" y2="52"/><line x1="323" y1="29" x2="330" y2="22"/></g>
+        <text x="300" y="90" font-family="Space Mono, monospace" font-size="6" fill="rgba(251,191,36,0.5)" text-anchor="middle">sun · far</text>
+        <!-- ocean planet, bulging toward the moon (left) -->
+        <circle cx="150" cy="190" r="72" fill="rgba(34,211,238,0.10)" stroke="rgba(34,211,238,0.5)" stroke-width="1.4"/>
+        <!-- exaggerated tidal bulge -->
+        <path d="M78 190 q-24 0 -30 0 q10 -30 30 -34 z" fill="rgba(34,211,238,0.28)" stroke="rgba(34,211,238,0.7)" stroke-width="1.2"/>
+        <ellipse cx="150" cy="190" rx="86" ry="60" fill="none" stroke="rgba(34,211,238,0.35)" stroke-width="1" stroke-dasharray="3 5"/>
+        <!-- water lines -->
+        <g stroke="rgba(34,211,238,0.4)" stroke-width="1.1" fill="none">
+          <path d="M108 178 q14 -8 28 0 q14 8 28 0"/>
+          <path d="M104 202 q14 -8 28 0 q14 8 28 0 q14 -8 28 0"/>
+        </g>
+        <!-- the near moon -->
+        <circle cx="46" cy="150" r="18" fill="rgba(244,244,251,0.85)"/>
+        <circle cx="40" cy="145" r="4" fill="rgba(136,134,160,0.5)"/><circle cx="52" cy="156" r="3" fill="rgba(136,134,160,0.4)"/>
+        <text x="46" y="184" font-family="Space Mono, monospace" font-size="6" fill="rgba(244,244,251,0.8)" text-anchor="middle">moon · near</text>
+        <!-- pull lines from moon to bulge -->
+        <g stroke="rgba(244,244,251,0.5)" stroke-width="1" stroke-dasharray="2 3">
+          <line x1="60" y1="156" x2="86" y2="176"/><line x1="62" y1="166" x2="82" y2="192"/>
+        </g>
+        <text x="172" y="300" font-family="Space Mono, monospace" font-size="8" letter-spacing="2" fill="rgba(34,211,238,0.7)" text-anchor="middle">the near body pulls the tide</text>
+      </svg>
+
+      <div class="cover-corner">
+        <div class="cover-corner-num">17</div>
+        <span class="cover-corner-label">Tides</span>
+      </div>
+
+      <div class="cover-issue">Stimpunks Foundation · Zine No. 17</div>
+
+      <h1 class="cover-title">The Nearest <span class="spectrum-word">Body</span></h1>
+
+      <p class="cover-subtitle">on tides, co-regulation, and how the bodies closest to you pull your nervous system into rhythm</p>
+
+      <hr class="spectrum-line cover-rule">
+
+      <div class="cover-meta">
+        <div class="cover-ls">L★S</div>
+        <div class="cover-meta-text">
+          Love You Down<br>
+          To Your Star Stuff<br>
+          · open edition ·
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 2: The Near Body Wins ════ -->
+  <div class="spread" id="spread-2">
+    <div class="interior">
+      <div class="spread-2col">
+        <div class="spread-left">
+          <div class="eyebrow">Tidal force</div>
+          <h2 class="spread-heading">The near<br><span style="color:var(--cyan)">body wins</span></h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p>The tide is the ocean answering to the sky. The Moon pulls hardest on the water directly beneath it, a little less on the rock of the Earth, less still on the far ocean — and that <em>difference</em> in pull, stretched across the planet, lifts a bulge on each side. Two bulges, turning under us: two high tides a day.</p>
+            <p>Here is the strange part. The Sun is <strong>27 million times</strong> more massive than the Moon, and it hauls on the Earth with over 170 times the raw force. Yet the Moon runs the tide. Tidal force falls off not with distance but with distance <em>cubed</em> — so the small, close body overwhelms the vast, far one.</p>
+            <p><span class="cyan">Distance matters more than mass.</span> You are pulled most by what is nearest — not by what is largest.</p>
+          </div>
+          <div class="pull-quote">The Sun is 27 million times heavier. The Moon still owns the tide. Nearness beats mass.</div>
+        </div>
+        <div class="spread-right">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 260 220" xmlns="http://www.w3.org/2000/svg">
+              <!-- far huge faint sun -->
+              <circle cx="30" cy="40" r="26" fill="none" stroke="rgba(251,191,36,0.45)" stroke-width="1.3"/>
+              <g stroke="rgba(251,191,36,0.3)" stroke-width="1"><line x1="30" y1="8" x2="30" y2="0"/><line x1="4" y1="40" x2="-2" y2="40"/></g>
+              <text x="40" y="80" font-family="Space Mono, monospace" font-size="5.4" fill="rgba(251,191,36,0.7)" text-anchor="middle">SUN</text>
+              <text x="40" y="90" font-family="Space Mono, monospace" font-size="4.4" fill="rgba(136,134,160,0.8)" text-anchor="middle">27,000,000× heavier</text>
+              <text x="40" y="99" font-family="Space Mono, monospace" font-size="4.4" fill="rgba(136,134,160,0.8)" text-anchor="middle">far · loses the tide</text>
+              <!-- earth (ocean) with bulge toward moon on the right -->
+              <circle cx="150" cy="140" r="34" fill="rgba(34,211,238,0.10)" stroke="rgba(34,211,238,0.55)" stroke-width="1.3"/>
+              <ellipse cx="150" cy="140" rx="46" ry="30" fill="none" stroke="rgba(34,211,238,0.4)" stroke-width="1" stroke-dasharray="3 4"/>
+              <text x="150" y="192" font-family="Space Mono, monospace" font-size="5.4" fill="rgba(34,211,238,0.8)" text-anchor="middle">the ocean</text>
+              <!-- near small bright moon -->
+              <circle cx="232" cy="140" r="12" fill="rgba(244,244,251,0.85)"/>
+              <text x="232" y="166" font-family="Space Mono, monospace" font-size="5" fill="rgba(244,244,251,0.85)" text-anchor="middle">MOON</text>
+              <text x="232" y="175" font-family="Space Mono, monospace" font-size="4.4" fill="rgba(34,211,238,0.9)" text-anchor="middle">near · wins</text>
+              <!-- pull lines -->
+              <g stroke="rgba(244,244,251,0.55)" stroke-width="1" stroke-dasharray="2 3"><line x1="220" y1="140" x2="196" y2="140"/></g>
+              <text x="130" y="24" font-family="Space Mono, monospace" font-size="6" letter-spacing="1" fill="rgba(34,211,238,0.85)" text-anchor="middle">force ∝ 1 / distance³</text>
+            </svg>
+            <p class="diagram-caption">
+              the small near body wins<br>
+              <span class="annotation">tidal pull falls off as the cube</span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Nearest Body · Stimpunks</span>
+        <span class="spread-footer-right">2</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 3: Co-regulation Is Gravity ════ -->
+  <div class="spread" id="spread-3">
+    <div class="interior">
+      <div class="spread-2col">
+        <div class="spread-left">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 260 220" xmlns="http://www.w3.org/2000/svg">
+              <!-- moon at a distance, sea bulging toward it across empty space -->
+              <circle cx="210" cy="70" r="20" fill="rgba(244,244,251,0.85)"/>
+              <circle cx="204" cy="64" r="4" fill="rgba(136,134,160,0.5)"/><circle cx="216" cy="76" r="3" fill="rgba(136,134,160,0.4)"/>
+              <text x="210" y="104" font-family="Space Mono, monospace" font-size="5.2" fill="rgba(244,244,251,0.85)" text-anchor="middle">a safe-enough body</text>
+              <!-- the sea, bulging up-right toward the moon -->
+              <path d="M30 170 q30 -6 58 -18 q26 -12 50 -34" fill="none" stroke="rgba(34,211,238,0.6)" stroke-width="1.6" stroke-linecap="round"/>
+              <path d="M30 186 q40 -4 74 -18 q30 -12 56 -32" fill="none" stroke="rgba(34,211,238,0.4)" stroke-width="1.3" stroke-linecap="round"/>
+              <text x="70" y="204" font-family="Space Mono, monospace" font-size="5.2" fill="rgba(34,211,238,0.85)" text-anchor="middle">your nervous system</text>
+              <!-- gravity arc across the gap (never touching) -->
+              <path d="M150 118 q30 -20 52 -32" fill="none" stroke="rgba(244,244,251,0.5)" stroke-width="1" stroke-dasharray="2 3"/>
+              <path d="M120 140 q40 -14 74 -46" fill="none" stroke="rgba(244,244,251,0.35)" stroke-width="1" stroke-dasharray="2 3"/>
+              <text x="130" y="128" font-family="Space Mono, monospace" font-size="5" fill="rgba(244,244,251,0.7)" text-anchor="middle">pull across the gap</text>
+            </svg>
+            <p class="diagram-caption">
+              gravity acts at a distance<br>
+              <span class="annotation">the moon never touches the sea</span>
+            </p>
+          </div>
+        </div>
+        <div class="spread-right">
+          <div class="eyebrow">Co-regulation · polyvagal</div>
+          <h2 class="spread-heading">Co-regulation<br>is <span style="color:var(--cyan)">gravity</span></h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p>Now read yourself as the water. <a href="https://stimpunks.org/glossary/co-regulation/">Co-regulation</a> is what it feels like when a safe-enough nervous system comes near: soft gaze, an unhurried voice, a steady heartbeat — and yours begins to fall into time with it. <strong>You don't settle by force of will. You are pulled into rhythm by a nearby body.</strong></p>
+            <p>Polyvagal theory names this the deepest safety signal there is — resonance with another regulated nervous system, letting your body drop into its ventral, social, at-ease state. And gravity crosses a gap. <span class="cyan">Being with</span> someone can be a felt presence, not a hand on the shoulder: a shared game, music in a chat, someone in the next room. Near enough to pull; not so near it overwhelms.</p>
+            <p>You do not have to be touched to be moved.</p>
+          </div>
+          <div class="pull-quote cyan">The moon never touches the sea. It only has to be near enough to pull.</div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Nearest Body · Stimpunks</span>
+        <span class="spread-footer-right">3</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 4: Two High Tides ════ -->
+  <div class="spread" id="spread-4">
+    <div class="interior">
+      <div class="spread-2col">
+        <div class="spread-left">
+          <div class="eyebrow">Spring &amp; neap · parallel presence</div>
+          <h2 class="spread-heading">Two high <span class="spectrum-word">tides</span></h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p>No body of water answers to a single pull. The Sun tugs too — and when Sun and Moon line up, their pulls add into a <span class="cyan">spring tide</span>: high highs, low lows, a deep and easy rhythm. When they sit at right angles, the pulls half-cancel into a <span class="cyan">neap tide</span> — flat, muddled, hard to read.</p>
+            <p>So it is with us. When your people, your places, and your routines are all in safe mode at once, regulation comes easy; everything is pulling the same way. When they pull against each other, you go slack and confused, no tide to speak of.</p>
+            <p>And two bodies can settle into one rhythm without ever merging. The Moon turns once for every orbit, forever showing the Earth a single face — <strong>tidally locked</strong>. That is <a href="https://stimpunks.org/experiences/parallel-presence/">parallel presence</a> and body doubling: two people in one orbit, each a steady face for the other, together and separate at once.</p>
+          </div>
+          <div class="pull-quote">Aligned, the pulls add. Crossed, they cancel. We regulate best when our moons agree.</div>
+        </div>
+        <div class="spread-right">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 260 240" xmlns="http://www.w3.org/2000/svg">
+              <!-- SPRING: sun, earth, moon in a line; big bulge -->
+              <text x="130" y="14" font-family="Space Mono, monospace" font-size="5.4" fill="rgba(34,211,238,0.9)" text-anchor="middle">SPRING · aligned</text>
+              <circle cx="30" cy="44" r="9" fill="rgba(251,191,36,0.7)"/>
+              <ellipse cx="130" cy="44" rx="34" ry="15" fill="none" stroke="rgba(34,211,238,0.75)" stroke-width="1.5"/>
+              <circle cx="130" cy="44" r="12" fill="rgba(34,211,238,0.12)" stroke="rgba(34,211,238,0.5)" stroke-width="1"/>
+              <circle cx="212" cy="44" r="7" fill="rgba(244,244,251,0.85)"/>
+              <text x="130" y="74" font-family="Space Mono, monospace" font-size="4.6" fill="rgba(136,134,160,0.85)" text-anchor="middle">pulls add → big tide</text>
+              <!-- divider -->
+              <line x1="30" y1="96" x2="230" y2="96" stroke="rgba(167,139,250,0.18)" stroke-width="1"/>
+              <!-- NEAP: sun and moon at right angles; small bulge -->
+              <text x="130" y="120" font-family="Space Mono, monospace" font-size="5.4" fill="rgba(34,211,238,0.9)" text-anchor="middle">NEAP · crossed</text>
+              <circle cx="30" cy="168" r="9" fill="rgba(251,191,36,0.7)"/>
+              <circle cx="130" cy="168" r="12" fill="rgba(34,211,238,0.12)" stroke="rgba(34,211,238,0.5)" stroke-width="1"/>
+              <ellipse cx="130" cy="168" rx="20" ry="15" fill="none" stroke="rgba(34,211,238,0.55)" stroke-width="1.3"/>
+              <circle cx="130" cy="214" r="7" fill="rgba(244,244,251,0.85)"/>
+              <text x="188" y="170" font-family="Space Mono, monospace" font-size="4.6" fill="rgba(136,134,160,0.85)" text-anchor="middle">half-cancel</text>
+              <text x="130" y="232" font-family="Space Mono, monospace" font-size="4.6" fill="rgba(136,134,160,0.85)" text-anchor="middle">flat tide</text>
+            </svg>
+            <p class="diagram-caption">
+              aligned moons deepen the tide<br>
+              <span class="annotation">crossed pulls flatten it</span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Nearest Body · Stimpunks</span>
+        <span class="spread-footer-right">4</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 5: When There Is No Moon ════ -->
+  <div class="spread" id="spread-5">
+    <div class="interior">
+      <div class="spread-2col">
+        <div class="spread-left">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 260 240" xmlns="http://www.w3.org/2000/svg">
+              <!-- three sea-states mapped to the polyvagal ladder -->
+              <!-- ventral: rhythmic swell -->
+              <text x="16" y="30" font-family="Space Mono, monospace" font-size="5" fill="rgba(74,222,128,0.9)">VENTRAL · safe</text>
+              <path d="M16 52 q16 -12 32 0 q16 12 32 0 q16 -12 32 0 q16 12 32 0 q16 -12 32 0" fill="none" stroke="rgba(74,222,128,0.8)" stroke-width="1.6" stroke-linecap="round"/>
+              <circle cx="236" cy="46" r="8" fill="rgba(244,244,251,0.85)"/>
+              <text x="236" y="66" font-family="Space Mono, monospace" font-size="4" fill="rgba(244,244,251,0.8)" text-anchor="middle">moon</text>
+              <!-- sympathetic: chaotic chop (meerkat) -->
+              <text x="16" y="112" font-family="Space Mono, monospace" font-size="5" fill="rgba(244,114,182,0.9)">SYMPATHETIC · meerkat</text>
+              <path d="M16 138 l10 -22 l8 30 l10 -34 l9 30 l10 -24 l9 28 l10 -30 l9 26 l10 -20 l9 24 l10 -26" fill="none" stroke="rgba(244,114,182,0.8)" stroke-width="1.4" stroke-linecap="round"/>
+              <text x="180" y="150" font-family="Space Mono, monospace" font-size="4.2" fill="rgba(136,134,160,0.85)" text-anchor="middle">no moon · no rhythm</text>
+              <!-- dorsal: flat, ebbed out -->
+              <text x="16" y="196" font-family="Space Mono, monospace" font-size="5" fill="rgba(167,139,250,0.9)">DORSAL · ebbed flat</text>
+              <line x1="16" y1="216" x2="176" y2="216" stroke="rgba(167,139,250,0.7)" stroke-width="1.4"/>
+              <text x="210" y="219" font-family="Space Mono, monospace" font-size="4.2" fill="rgba(136,134,160,0.85)" text-anchor="middle">gone still</text>
+            </svg>
+            <p class="diagram-caption">
+              swell · chop · flat<br>
+              <span class="annotation">a sea needs a moon to keep time</span>
+            </p>
+          </div>
+        </div>
+        <div class="spread-right">
+          <div class="eyebrow">Meerkat mode</div>
+          <h2 class="spread-heading">When there is<br>no <span style="color:var(--cyan)">moon</span></h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p>Take the moon away and the water doesn't rest — it churns. No steady pull to organize it, so it heaves every direction at once, hunting for anything to lock onto. Autistic and AuDHD folks know this state: <a href="https://stimpunks.org/glossary/meerkat-mode/">meerkat mode</a> — up on the hind legs, scanning for threat, unable to settle or focus, an overwhelmed <a href="https://stimpunks.org/monotropism/">monotropic</a> mind desperate for a hook into flow.</p>
+            <p>It gets misread as clinginess, as over-attachment, as too much need. It is none of those. <strong>It is a nervous system starved of a moon.</strong> The constant reaching for a safe person isn't a flaw in the water — it's a tide with nothing to answer to.</p>
+            <p>You do not settle a churning sea by ordering the waves to stop. <span class="cyan">You restore its moon.</span></p>
+          </div>
+          <div class="pull-quote pink">A churning sea isn't broken. It's a tide that lost its moon.</div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Nearest Body · Stimpunks</span>
+        <span class="spread-footer-right">5</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 6: The Storm Is in the Weather ════ -->
+  <div class="spread" id="spread-6">
+    <div class="interior">
+      <div class="spread-2col">
+        <div class="spread-left">
+          <div class="eyebrow">Ecosystemic distress · ARLES</div>
+          <h2 class="spread-heading">The storm is<br>in the <span style="color:var(--gold)">weather</span></h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p>When the sea won't settle, we go looking for the fault in the water. But water has no weather of its own. The storm comes from the system overhead; the flooding comes from where someone built the seawall too low, dredged the channel, paved the marsh that used to drink the surge.</p>
+            <p>Stimpunks calls this the <a href="https://stimpunks.org/design/ecosystemic-model-of-distress/">ecosystemic model of distress</a>: dysregulation lives in the relationship between a bodymind and its environment, not inside the person. Read <a href="https://stimpunks.org/glossary/arles/">ARLES</a> downward and a failing system points to the environment that made it, the environment to the lived experience it ignored, and down to the attention and the nervous system it never once accounted for.</p>
+            <p><strong>Broken systems, not broken people.</strong></p>
+          </div>
+          <div class="refusals">
+            <div class="refusal"><span class="refusal-tag">Not</span><span>a broken nervous system — <strong>a body of water doing exactly what water does near a storm.</strong></span></div>
+            <div class="refusal"><span class="refusal-tag">Not</span><span>over-attachment or "too needy" — <strong>a tide reaching for the moon it was starved of.</strong></span></div>
+            <div class="refusal"><span class="refusal-tag">Not</span><span>limerence: co-regulation is mutual and safe; limerence is one-sided and uncertain. <strong>Not every strong pull regulates you; some only pull you under.</strong></span></div>
+            <div class="refusal"><span class="refusal-tag">Not</span><span>calm-down-by-willpower — <strong>you settle a sea by restoring its moon, not by scolding the waves.</strong></span></div>
+            <div class="refusal"><span class="refusal-tag">Not</span><span>a fault in the person — <strong>the storm is in the weather and the seawalls.</strong></span></div>
+          </div>
+        </div>
+        <div class="spread-right">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 260 220" xmlns="http://www.w3.org/2000/svg">
+              <!-- storm system + low seawall above; calm-capable water below -->
+              <!-- weather / storm -->
+              <path d="M60 46 q-14 0 -14 14 q-14 2 -10 16 q4 10 18 8 l70 0 q18 2 22 -12 q4 -16 -14 -18 q-4 -14 -20 -12 q-10 -10 -24 -4 q-8 -2 -12 4 z" fill="rgba(136,134,160,0.14)" stroke="rgba(136,134,160,0.55)" stroke-width="1.2"/>
+              <g stroke="rgba(251,191,36,0.85)" stroke-width="1.6"><path d="M92 90 l-8 14 l8 0 l-8 14"/></g>
+              <g stroke="rgba(34,211,238,0.7)" stroke-width="1.2"><line x1="120" y1="92" x2="116" y2="104"/><line x1="136" y1="92" x2="132" y2="104"/><line x1="152" y1="92" x2="148" y2="104"/></g>
+              <text x="150" y="60" font-family="Space Mono, monospace" font-size="5.2" fill="rgba(136,134,160,0.85)" text-anchor="middle">the system</text>
+              <!-- seawall, built too low -->
+              <rect x="196" y="120" width="14" height="40" fill="rgba(167,139,250,0.15)" stroke="rgba(167,139,250,0.6)" stroke-width="1.2"/>
+              <text x="203" y="176" font-family="Space Mono, monospace" font-size="4.2" fill="rgba(167,139,250,0.85)" text-anchor="middle">seawall</text>
+              <!-- water, capable of calm -->
+              <path d="M20 150 q16 -8 32 0 q16 8 32 0 q16 -8 32 0 q16 8 32 0 q16 -8 32 0" fill="none" stroke="rgba(34,211,238,0.6)" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M20 168 q16 -6 32 0 q16 6 32 0 q16 -6 32 0 q16 6 32 0 q16 -6 32 0" fill="none" stroke="rgba(34,211,238,0.4)" stroke-width="1.3" stroke-linecap="round"/>
+              <text x="130" y="204" font-family="Space Mono, monospace" font-size="6" fill="rgba(34,211,238,0.9)" text-anchor="middle">the water is not the problem</text>
+            </svg>
+            <p class="diagram-caption">
+              look up, not down<br>
+              <span class="annotation">broken systems, not broken people</span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Nearest Body · Stimpunks</span>
+        <span class="spread-footer-right">6</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 7: The Tide Table ════ -->
+  <div class="spread" id="spread-7">
+    <div class="interior">
+      <div class="spread-2col">
+        <div class="spread-left">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 260 220" xmlns="http://www.w3.org/2000/svg">
+              <!-- a tide table: a readable, repeating curve with high/low marks -->
+              <line x1="20" y1="110" x2="240" y2="110" stroke="rgba(167,139,250,0.3)" stroke-width="1" stroke-dasharray="2 4"/>
+              <path d="M20 110 q27 -56 54 0 q27 56 54 0 q27 -56 54 0 q27 56 54 0" fill="none" stroke="rgba(34,211,238,0.8)" stroke-width="1.8" stroke-linecap="round"/>
+              <!-- high/low dots -->
+              <circle cx="47" cy="66" r="3" fill="rgba(251,191,36,0.95)"/><circle cx="155" cy="66" r="3" fill="rgba(251,191,36,0.95)"/>
+              <circle cx="101" cy="154" r="3" fill="rgba(167,139,250,0.95)"/><circle cx="209" cy="154" r="3" fill="rgba(167,139,250,0.95)"/>
+              <text x="47" y="56" font-family="Space Mono, monospace" font-size="4.6" fill="rgba(251,191,36,0.9)" text-anchor="middle">high</text>
+              <text x="101" y="172" font-family="Space Mono, monospace" font-size="4.6" fill="rgba(167,139,250,0.9)" text-anchor="middle">low</text>
+              <!-- hour ticks -->
+              <g stroke="rgba(136,134,160,0.5)" stroke-width="1"><line x1="20" y1="188" x2="20" y2="194"/><line x1="74" y1="188" x2="74" y2="194"/><line x1="128" y1="188" x2="128" y2="194"/><line x1="182" y1="188" x2="182" y2="194"/><line x1="236" y1="188" x2="236" y2="194"/></g>
+              <text x="130" y="210" font-family="Space Mono, monospace" font-size="5.4" fill="rgba(34,211,238,0.9)" text-anchor="middle">predictable · and yours</text>
+            </svg>
+            <p class="diagram-caption">
+              read the table, go with it<br>
+              <span class="annotation">every coast keeps its own clock</span>
+            </p>
+          </div>
+        </div>
+        <div class="spread-right">
+          <div class="eyebrow">Regulation-first · chronodiversity</div>
+          <h2 class="spread-heading">The tide <span class="spectrum-word">table</span></h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p>The oldest gift the tide gives is that it can be <em>known</em>. Sailors don't fight the sea; they read the table and go with it. <a href="https://stimpunks.org/patterns/library/regulation-first/">Regulation-first</a> is the same discipline — settle the nervous system before you ask anything of it. Learn your own rhythms; build rooms that publish theirs.</p>
+            <p>And no two tables match. Every coast keeps its own clock; <span class="cyan">chronodiversity</span> means your high tide is not mine — and a world worth living in stops treating one timetable as the only real one.</p>
+          </div>
+          <div class="poem">
+            <span class="breath">Come in with the tide.</span>
+            <span class="breath">You were never meant to hold the ocean still.</span>
+            <span class="breath">Find your moons — the near ones, the safe-enough ones —</span>
+            <span class="breath">and let them pull you into time.</span>
+            <span class="breath">Be a moon for someone.</span>
+            <span class="breath">Let someone be a moon for you.</span>
+            <span class="breath">We rise and fall by what we keep close.</span>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Nearest Body · Stimpunks</span>
+        <span class="spread-footer-right">7</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 8: Colophon ════ -->
+  <div class="spread" id="spread-8">
+    <div class="interior">
+      <div class="colophon">
+        <div>
+          <div class="colophon-top">
+            <span class="colophon-ls">L★S</span>
+            <span class="colophon-phrase">Co-regulation is gravity. You are pulled into rhythm by the bodies nearest you — and nearness beats mass. You do not have to be touched to be moved.</span>
+          </div>
+          <div class="series-list">
+            <div class="series-item"><span class="series-num">No. 11</span> Why Difference Comes First — Helen Edgar (guest)</div>
+            <div class="series-item"><span class="series-num">No. 12</span> Turn and Face the Strange — David Bowie</div>
+            <div class="series-item"><span class="series-num">No. 13</span> Warriors and Weirdos — AURORA, the alien who came home</div>
+            <div class="series-item"><span class="series-num">No. 14</span> The Council of All Beings — multispecies justice &amp; more-than-human kin</div>
+            <div class="series-item"><span class="series-num">No. 15</span> Every Creature's Own Sky — umwelt, attention-worlds &amp; double empathy</div>
+            <div class="series-item"><span class="series-num">No. 16</span> Minor Worlds — niche construction &amp; the building of livable worlds</div>
+            <div class="series-item current"><span class="series-num">No. 17</span> The Nearest Body — tides, co-regulation &amp; being pulled by what's near ← you are here</div>
+          </div>
+          <div class="reflect">
+            <div class="reflect-label">Reflection</div>
+            <p class="reflect-q">Who are your moons — the near, safe-enough bodies that pull you into rhythm?</p>
+            <p class="reflect-q">What does your tide table look like, and who keeps asking you to run on someone else's?</p>
+            <p class="reflect-q">When the water churns, where is the storm actually coming from?</p>
+          </div>
+          <p class="colophon-body">
+            The Nearest Body is the seventeenth zine in the Stimpunks series. After the more-than-human trilogy (Nos. 14–16), it picks the water back up and turns it inward: from a council of beings dissolving into flow, to the single body of water pulled by the bodies nearest it.<br><br>
+            The science is settled and citable. Tides are the ocean answering to the <em>difference</em> in gravity across the Earth, raising a bulge on each side — two high tides a lunar day. The Sun out-masses the Moon roughly 27 million times and out-pulls it more than 170-fold, yet the Moon raises the larger tide, because tide-generating force falls off as the <em>cube</em> of distance rather than the square: distance matters more than mass (<a href="https://oceanservice.noaa.gov/education/tutorial_tides/tides02_cause.html">NOAA Ocean Service</a>; <a href="https://solar-center.stanford.edu/FAQ/Qtides.html">Stanford Solar Center</a>). Aligned Sun and Moon make spring tides; crossed, neap tides. The Moon is tidally locked, turning once per orbit to show one face.<br><br>
+            The reading is Stimpunks' own vocabulary. <a href="https://stimpunks.org/glossary/co-regulation/">Co-regulation</a> — completing the stress cycle with a safe-enough person, and "being with" as felt presence — draws on Trauma Geek (Janae Elisabeth) and Autistic Realms (Helen Edgar); <a href="https://stimpunks.org/glossary/polyvagal-theory/">polyvagal theory</a> is Stephen Porges. <a href="https://stimpunks.org/glossary/meerkat-mode/">Meerkat mode</a> is Tanya Adkin &amp; David Gray-Hammond (Emergent Divergence), carrying <a href="https://stimpunks.org/monotropism/">monotropism</a> from the earlier zines. The <a href="https://stimpunks.org/design/ecosystemic-model-of-distress/">ecosystemic model of distress</a>, <a href="https://stimpunks.org/glossary/arles/">ARLES</a>, <a href="https://stimpunks.org/patterns/library/regulation-first/">regulation-first</a>, and <a href="https://stimpunks.org/experiences/parallel-presence/">parallel presence</a> are the Stimpunks design method. "A body of water" carries Astrida Neimanis's hydrofeminism inward from No. 14; the shadow tide names Dorothy Tennov's limerence only to set it apart.<br><br>
+            Broken systems, not broken people. You were star stuff, pulled into rhythm, all along.
+          </p>
+        </div>
+        <div class="colophon-footer">
+          Stimpunks Foundation · Zine No. 17 · Open Edition<br>
+          Print free · Share freely · L★S<br>
+          stimpunks.org · starstuff.earth
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Nearest Body · Stimpunks</span>
+        <span class="spread-footer-right">8</span>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /zine-shell -->
+
+<script>
+  let current = 1;
+  const total = 8;
+
+  function changePage(dir) {
+    const next = current + dir;
+    if (next < 1 || next > total) return;
+    document.getElementById('spread-' + current).classList.remove('active');
+    current = next;
+    document.getElementById('spread-' + current).classList.add('active');
+    document.getElementById('page-counter').textContent = current + ' / ' + total;
+    document.getElementById('prev-btn').style.opacity = current === 1 ? '0.3' : '1';
+    document.getElementById('next-btn').style.opacity = current === total ? '0.3' : '1';
+    document.getElementById('prev-btn').classList.toggle('active', current > 1);
+    document.getElementById('next-btn').classList.toggle('active', current < total);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') changePage(1);
+    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   changePage(-1);
+  });
+
+  document.getElementById('prev-btn').style.opacity = '0.3';
+  document.getElementById('next-btn').classList.add('active');
+</script>
+<script src="starstuff.js" defer></script>
+</body>
+</html>
