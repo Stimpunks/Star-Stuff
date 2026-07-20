@@ -99,3 +99,34 @@
     scroll-behavior: auto !important;
   }
 }
+
+/* ── Per-spread footer navigation ──
+   Prev / page-number / next controls that starstuff.js injects into each
+   .spread-footer. Colors are deliberately neutral (not accent-tied) so the
+   same rules read correctly across every zine's palette. "next" sits a shade
+   brighter than "prev" because forward is the common direction of travel. */
+.spread-footer-nav {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+}
+.spread-nav-btn {
+  background: none;
+  border: none;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #8a86a0;
+  cursor: pointer;
+  padding: 0.2rem 0;
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+.spread-nav-btn.next { color: #d4d0e4; }
+.spread-nav-btn:hover:not(:disabled) { color: #f4f2fb; }
+.spread-nav-btn:disabled { opacity: 0.25; cursor: default; }
+.spread-nav-btn:focus-visible { outline: 1px solid currentColor; outline-offset: 3px; border-radius: 2px; }
+
+@media (max-width: 600px) {
+  .spread-footer-nav { gap: 0.7rem; }
+}
