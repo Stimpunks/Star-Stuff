@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0a0a14">
+<link rel="canonical" href="https://starstuff.earth/minor-worlds-zine.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta name="description" content="Niche construction as star stuff. Organisms don't just adapt to a fixed world — they build it: the beaver's dam, the spider's web, and passed on as ecological inheritance. Don't fix the mind, change the environment. Stimming is worldmaking; no niche is neutral; and to build a small livable world, together, is the oldest thing matter does.">
+<!-- Open Graph / link unfurl -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Star Stuff · Stimpunks Foundation">
+<meta property="og:url" content="https://starstuff.earth/minor-worlds-zine.html">
+<meta property="og:title" content="Minor Worlds">
+<meta property="og:description" content="Niche construction as star stuff. Organisms don't just adapt to the world — they build it. Don't fix the mind, change the environment. Stimming is worldmaking; no niche is neutral.">
+<meta property="og:image" content="https://starstuff.earth/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A rainbow-hued cosmic image — we are all made of star stuff.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Minor Worlds">
+<meta name="twitter:description" content="Niche construction as star stuff. Organisms build their worlds; don't fix the mind, change the environment. Stimming is worldmaking; no niche is neutral.">
+<meta name="twitter:image" content="https://starstuff.earth/og-card.jpg">
+<title>Minor Worlds — Stimpunks Zine No. 16</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="starstuff.css">
+<style>
+  :root {
+    --void:  #07070f;
+    --deep:  #0d0d1a;
+    --page:  #0f0f1c;
+    --violet:#a78bfa;
+    --pink:  #f472b6;
+    --gold:  #fbbf24;
+    --cyan:  #22d3ee;
+    --green: #4ade80;
+    --star-white: #f4f2fb;
+    --stardust:   #d4d0e4;
+    --dim:   #8a86a0;
+    --dim2:  #63607a;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--void);
+    font-family: 'Atkinson Hyperlegible', system-ui, sans-serif;
+    color: var(--star-white);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── STARFIELD (green · gold · cyan — growth, building, kin) ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 8% 12%, rgba(74,222,128,0.85) 0%, transparent 100%),
+      radial-gradient(1px 1px at 22% 38%, rgba(251,191,36,0.7) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 44% 9%, rgba(244,244,251,0.7) 0%, transparent 100%),
+      radial-gradient(1px 1px at 61% 68%, rgba(74,222,128,0.7) 0%, transparent 100%),
+      radial-gradient(2px 2px at 74% 28%, rgba(34,211,238,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 84% 54%, rgba(251,191,36,0.7) 0%, transparent 100%),
+      radial-gradient(1px 1px at 91% 79%, rgba(244,244,251,0.7) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 4% 58%, rgba(74,222,128,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 34% 84%, rgba(244,244,251,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 54% 48%, rgba(167,139,250,0.5) 0%, transparent 100%),
+      radial-gradient(2px 2px at 19% 88%, rgba(34,211,238,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 69% 4%, rgba(244,244,251,0.8) 0%, transparent 100%),
+      radial-gradient(1px 1px at 47% 62%, rgba(74,222,128,0.5) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 30% 20%, rgba(251,191,36,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 77% 88%, rgba(74,222,128,0.55) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .zine-shell { position: relative; z-index: 1; max-width: 820px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+
+  .spectrum-line { height: 2px; border: none; border-radius: 2px; background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); }
+
+  /* ── NAV ── */
+  .nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2.5rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(167,139,250,0.2); }
+  .nav-brand { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--dim); }
+  .nav-controls { display: flex; gap: 0.5rem; align-items: center; }
+  .nav-btn { background: none; border: 1px solid rgba(74,222,128,0.35); color: var(--stardust); font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.15em; padding: 0.4rem 0.85rem; border-radius: 2px; cursor: pointer; transition: all 0.2s ease; text-transform: uppercase; }
+  .nav-btn:hover { background: rgba(74,222,128,0.15); border-color: rgba(74,222,128,0.6); color: var(--star-white); }
+  .nav-btn.active { background: rgba(74,222,128,0.20); border-color: var(--green); color: var(--star-white); }
+  .page-counter { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.2em; color: var(--dim2); }
+
+  .spread { display: none; animation: fadeIn 0.5s ease forwards; }
+  .spread.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ── COVER ── */
+  .cover-spread {
+    position: relative; min-height: 520px; border-radius: 4px; overflow: hidden;
+    background:
+      radial-gradient(ellipse at 22% 20%, rgba(74,222,128,0.15) 0%, transparent 52%),
+      radial-gradient(ellipse at 80% 30%, rgba(251,191,36,0.10) 0%, transparent 50%),
+      radial-gradient(ellipse at 68% 82%, rgba(34,211,238,0.11) 0%, transparent 52%),
+      radial-gradient(ellipse at 30% 78%, rgba(167,139,250,0.09) 0%, transparent 52%),
+      var(--deep);
+    border: 1px solid rgba(167,139,250,0.25);
+    box-shadow: inset 0 0 80px rgba(74,222,128,0.06), 0 0 0 4px rgba(255,255,255,0.03);
+    display: flex; flex-direction: column; justify-content: flex-end; padding: 3rem;
+  }
+  .cover-motif { position: absolute; top: -6px; right: -22px; width: 344px; height: 344px; opacity: 0.72; pointer-events: none; }
+  .cover-issue { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.5em; text-transform: uppercase; color: var(--green); margin-bottom: 1.5rem; }
+  .cover-title { font-weight: 700; font-size: clamp(2.4rem, 7vw, 4.2rem); line-height: 1.02; color: var(--star-white); letter-spacing: -0.02em; margin-bottom: 0.9rem; }
+  .cover-title .spectrum-word { background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .cover-subtitle { font-size: 1rem; color: var(--stardust); opacity: 0.85; margin-bottom: 2rem; max-width: 470px; line-height: 1.55; }
+  .cover-rule { width: 220px; max-width: 60%; margin-bottom: 1.3rem; }
+  .cover-meta { display: flex; gap: 2rem; align-items: center; }
+  .cover-ls { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 1.4rem; color: var(--gold); letter-spacing: 0.05em; }
+  .cover-meta-text { font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--dim2); line-height: 1.9; }
+  .cover-corner { position: absolute; top: 2rem; right: 2.5rem; text-align: right; }
+  .cover-corner-num { font-weight: 700; font-size: 4.5rem; line-height: 1; color: var(--green); opacity: 0.24; }
+  .cover-corner-label { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); display: block; margin-top: -0.3rem; }
+
+  /* ── INTERIOR ── */
+  .interior { background: var(--page); border: 1px solid rgba(167,139,250,0.15); border-radius: 4px; overflow: hidden; min-height: 480px; }
+  .spread-2col { display: grid; grid-template-columns: 1fr 1fr; min-height: 480px; }
+  .spread-left, .spread-right { padding: 3rem 2.4rem; position: relative; }
+  .spread-left { border-right: 1px solid rgba(167,139,250,0.12); }
+
+  .eyebrow { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--green); margin-bottom: 1.1rem; }
+  .body-text { font-size: 0.98rem; line-height: 1.72; color: var(--stardust); }
+  .body-text p { margin-bottom: 1rem; }
+  .body-text p:last-child { margin-bottom: 0; }
+  .body-text strong { font-weight: 700; color: var(--star-white); }
+  .body-text em { font-style: italic; color: var(--star-white); }
+  .body-text a { color: var(--green); text-decoration: none; border-bottom: 1px solid rgba(74,222,128,0.35); }
+  .body-text a:hover { border-bottom-color: var(--green); color: var(--star-white); }
+  .body-text .violet { color: var(--violet); font-weight: 700; }
+  .body-text .pink { color: var(--pink); font-weight: 700; }
+  .body-text .gold { color: var(--gold); font-weight: 700; }
+  .body-text .cyan { color: var(--cyan); font-weight: 700; }
+  .body-text .green { color: var(--green); font-weight: 700; }
+
+  .spread-heading { font-weight: 700; font-size: 1.9rem; line-height: 1.12; color: var(--star-white); margin-bottom: 1.1rem; letter-spacing: -0.01em; }
+  .spread-heading .spectrum-word { background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .rule { width: 40px; margin: 1rem 0; }
+
+  .pull-quote { font-size: 1.18rem; font-weight: 700; line-height: 1.4; color: var(--star-white); border-left: 3px solid var(--green); padding-left: 1.1rem; margin: 1.4rem 0; }
+  .pull-quote.pink { border-left-color: var(--pink); }
+  .pull-quote.gold { border-left-color: var(--gold); }
+  .pull-quote.cyan { border-left-color: var(--cyan); }
+  .pull-quote.violet { border-left-color: var(--violet); }
+  .pull-quote .attr { display: block; font-family: 'Space Mono', monospace; font-size: 0.6rem; font-weight: 400; letter-spacing: 0.08em; color: var(--dim); margin-top: 0.6rem; }
+
+  /* ── DIAGRAMS ── */
+  .diagram-wrap { display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; }
+  .diagram { width: 100%; max-width: 280px; display: block; }
+  .diagram-caption { font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim); text-align: center; margin-top: 0.9rem; line-height: 1.9; }
+  .annotation { color: var(--green); }
+
+  /* ── REFUSALS ── */
+  .refusals { margin-top: 1.3rem; }
+  .refusal { font-size: 0.88rem; line-height: 1.5; color: var(--stardust); padding: 0.55rem 0; border-bottom: 1px solid rgba(167,139,250,0.1); display: flex; gap: 0.6rem; align-items: baseline; }
+  .refusal:last-child { border-bottom: none; }
+  .refusal-tag { font-family: 'Space Mono', monospace; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--pink); flex-shrink: 0; padding-top: 0.12rem; }
+  .refusal strong { color: var(--star-white); font-weight: 700; }
+
+  /* ── COLOPHON ── */
+  .colophon { padding: 3rem; display: flex; flex-direction: column; justify-content: space-between; min-height: 480px; background: radial-gradient(ellipse at 82% 18%, rgba(74,222,128,0.09) 0%, transparent 50%), radial-gradient(ellipse at 18% 85%, rgba(251,191,36,0.07) 0%, transparent 50%), var(--page); }
+  .colophon-top { border-bottom: 1px solid rgba(167,139,250,0.14); padding-bottom: 1.3rem; margin-bottom: 1.2rem; }
+  .colophon-ls { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 2.4rem; color: var(--gold); letter-spacing: 0.05em; display: block; margin-bottom: 0.4rem; }
+  .colophon-phrase { font-size: 0.92rem; font-weight: 700; color: var(--stardust); }
+  .series-list { display: flex; flex-direction: column; gap: 0.38rem; margin-bottom: 1.2rem; }
+  .series-item { font-size: 0.72rem; color: var(--dim); letter-spacing: 0.01em; display: flex; gap: 0.7rem; align-items: baseline; line-height: 1.45; }
+  .series-item.current { color: var(--green); font-weight: 700; }
+  .series-num { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim2); flex-shrink: 0; }
+  .series-item.current .series-num { color: var(--green); }
+  .reflect { border-top: 1px solid rgba(167,139,250,0.14); padding-top: 1rem; margin-bottom: 1.2rem; }
+  .reflect-label { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--green); margin-bottom: 0.65rem; }
+  .reflect-q { font-size: 0.86rem; line-height: 1.55; color: var(--stardust); margin-bottom: 0.55rem; }
+  .reflect-q:last-child { margin-bottom: 0; }
+  .colophon-body { font-size: 0.75rem; color: var(--dim); line-height: 1.75; margin-bottom: 1.2rem; }
+  .colophon-body a { color: var(--green); text-decoration: none; border-bottom: 1px solid rgba(74,222,128,0.35); }
+  .colophon-body a:hover { border-bottom-color: var(--green); }
+  .colophon-footer { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--dim); line-height: 2.2; border-top: 1px solid rgba(167,139,250,0.14); padding-top: 1rem; }
+
+  /* ── SPREAD FOOTER ── */
+  .spread-footer { display: flex; justify-content: space-between; align-items: center; padding: 0.9rem 2.4rem; border-top: 1px solid rgba(167,139,250,0.1); }
+  .spread-footer-left { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--dim); }
+  .spread-footer-right { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; color: var(--green); }
+
+  .twinkle { position: fixed; width: 3px; height: 3px; border-radius: 50%; animation: twinkle-anim 3s ease-in-out infinite; pointer-events: none; z-index: 0; }
+  @keyframes twinkle-anim { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.15; transform: scale(0.3); } }
+
+  @media (max-width: 600px) {
+    .spread-2col { grid-template-columns: 1fr; }
+    .spread-left { border-right: none; border-bottom: 1px solid rgba(167,139,250,0.12); }
+    .cover-spread { padding: 2rem; min-height: 420px; }
+    .cover-motif { width: 224px; height: 224px; top: -4px; right: -26px; opacity: 0.5; }
+    .cover-title { font-size: 2.3rem; }
+    .spread-heading { font-size: 1.55rem; }
+    .spread-left, .spread-right { padding: 2rem 1.5rem; }
+    .colophon { padding: 2rem 1.5rem; }
+  }
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Minor Worlds","description":"Niche construction as star stuff: organisms don't just adapt to a fixed world, they build it, and pass it on as ecological inheritance. Don't fix the mind, change the environment. Stimming is worldmaking; no niche is neutral; and to build a small livable world, together, is the oldest thing matter does.","image":"https://starstuff.earth/og-card.jpg","url":"https://starstuff.earth/minor-worlds-zine.html","mainEntityOfPage":"https://starstuff.earth/minor-worlds-zine.html","author":{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/"},"publisher":{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/","logo":{"@type":"ImageObject","url":"https://starstuff.earth/og-card.jpg"}},"isPartOf":{"@type":"WebSite","name":"Star Stuff","url":"https://starstuff.earth/"}}</script>
+</head>
+<body>
+
+<div class="twinkle" style="top:7%;left:11%;background:var(--green);box-shadow:0 0 6px var(--green);animation-delay:-0.4s"></div>
+<div class="twinkle" style="top:19%;left:83%;background:var(--gold);box-shadow:0 0 6px var(--gold);animation-delay:-1.3s"></div>
+<div class="twinkle" style="top:52%;left:4%;background:var(--cyan);box-shadow:0 0 6px var(--cyan);animation-delay:-2.1s"></div>
+<div class="twinkle" style="top:71%;left:94%;background:var(--green);box-shadow:0 0 6px var(--green);animation-delay:-0.9s"></div>
+<div class="twinkle" style="top:88%;left:28%;background:var(--gold);box-shadow:0 0 6px var(--gold);animation-delay:-1.7s"></div>
+<div class="twinkle" style="top:38%;left:97%;background:var(--cyan);box-shadow:0 0 6px var(--cyan);animation-delay:-3.1s"></div>
+
+<div class="zine-shell">
+
+  <nav class="ss-nav" style="--nav-accent:#4ade80;" aria-label="Star Stuff collection">
+    <a class="ss-nav-home" href="index.html"><span class="ss-star" aria-hidden="true">★</span> stuff</a>
+    <span class="ss-nav-links">
+      <a class="ss-nav-prev" href="every-creatures-own-sky-zine.html"><span class="ss-nav-arrow" aria-hidden="true">‹</span> <span class="ss-nav-label">Own Sky</span></a>
+      <a class="ss-nav-next" href="constellation-field-guide.html"><span class="ss-nav-label">Field Guide</span> <span class="ss-nav-arrow" aria-hidden="true">›</span></a>
+    </span>
+  </nav>
+
+  <nav class="nav">
+    <div class="nav-brand">Stimpunks · Zine No. 16</div>
+    <div class="nav-controls">
+      <button class="nav-btn" id="prev-btn" onclick="changePage(-1)">← prev</button>
+      <span class="page-counter" id="page-counter">1 / 8</span>
+      <button class="nav-btn" id="next-btn" onclick="changePage(1)">next →</button>
+    </div>
+  </nav>
+
+  <!-- ════ SPREAD 1: COVER ════ -->
+  <div class="spread active" id="spread-1">
+    <div class="cover-spread">
+      <svg class="cover-motif" viewBox="0 0 344 344" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <!-- a beaver's dam turning a stream into a pond, ringed by built things -->
+        <!-- pond behind the dam -->
+        <path d="M40 150 q20 -10 40 0 q20 10 40 0 q20 -10 40 0 q20 10 40 0 q20 -10 40 0" fill="none" stroke="rgba(34,211,238,0.55)" stroke-width="2" stroke-linecap="round"/>
+        <path d="M52 128 q18 -9 36 0 q18 9 36 0 q18 -9 36 0 q18 9 36 0" fill="none" stroke="rgba(34,211,238,0.35)" stroke-width="1.6" stroke-linecap="round"/>
+        <!-- the dam: stacked logs -->
+        <g stroke="rgba(251,191,36,0.9)" stroke-width="5" stroke-linecap="round">
+          <line x1="70" y1="176" x2="150" y2="170"/>
+          <line x1="78" y1="188" x2="158" y2="184"/>
+          <line x1="66" y1="200" x2="146" y2="198"/>
+        </g>
+        <!-- beaver silhouette -->
+        <ellipse cx="196" cy="188" rx="26" ry="17" fill="rgba(74,222,128,0.9)"/>
+        <circle cx="220" cy="180" r="9" fill="rgba(74,222,128,0.9)"/>
+        <path d="M172 194 q-16 4 -22 16 q14 2 24 -6 z" fill="rgba(74,222,128,0.75)"/>
+        <circle cx="223" cy="178" r="1.6" fill="var(--void)"/>
+        <!-- built-things glyphs around -->
+        <!-- web -->
+        <g stroke="rgba(74,222,128,0.6)" stroke-width="1"><line x1="70" y1="60" x2="70" y2="96"/><line x1="52" y1="78" x2="88" y2="78"/><line x1="58" y1="66" x2="82" y2="90"/><line x1="82" y1="66" x2="58" y2="90"/></g>
+        <circle cx="70" cy="78" r="8" fill="none" stroke="rgba(74,222,128,0.6)" stroke-width="1"/>
+        <circle cx="70" cy="78" r="15" fill="none" stroke="rgba(74,222,128,0.4)" stroke-width="1"/>
+        <!-- nest -->
+        <path d="M256 96 q22 -22 44 0 q-6 12 -22 12 q-16 0 -22 -12 z" fill="none" stroke="rgba(251,191,36,0.7)" stroke-width="1.6"/>
+        <circle cx="271" cy="98" r="3" fill="rgba(251,191,36,0.8)"/><circle cx="285" cy="98" r="3" fill="rgba(251,191,36,0.8)"/>
+        <!-- burrow -->
+        <path d="M264 250 a22 22 0 0 1 44 0" fill="none" stroke="rgba(167,139,250,0.6)" stroke-width="1.6"/>
+        <path d="M278 250 a8 8 0 0 1 16 0" fill="rgba(167,139,250,0.15)" stroke="rgba(167,139,250,0.6)" stroke-width="1.2"/>
+        <g fill="#f4f2fb"><circle cx="150" cy="52" r="2"/><circle cx="308" cy="150" r="1.8"/><circle cx="44" cy="250" r="1.6"/></g>
+        <text x="172" y="300" font-family="Space Mono, monospace" font-size="8" letter-spacing="2" fill="rgba(74,222,128,0.7)" text-anchor="middle">life builds the world</text>
+      </svg>
+
+      <div class="cover-corner">
+        <div class="cover-corner-num">16</div>
+        <span class="cover-corner-label">Niche</span>
+      </div>
+
+      <div class="cover-issue">Stimpunks Foundation · Zine No. 16</div>
+
+      <h1 class="cover-title">Minor <span class="spectrum-word">Worlds</span></h1>
+
+      <p class="cover-subtitle">on niche construction, stimming, and how difference doesn't just see a world — it builds one</p>
+
+      <hr class="spectrum-line cover-rule">
+
+      <div class="cover-meta">
+        <div class="cover-ls">L★S</div>
+        <div class="cover-meta-text">
+          Love You Down<br>
+          To Your Star Stuff<br>
+          · open edition ·
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 2: Organisms Are Not Passive ════ -->
+  <div class="spread" id="spread-2">
+    <div class="interior">
+      <div class="spread-2col">
+        <div class="spread-left">
+          <div class="eyebrow">Niche construction</div>
+          <h2 class="spread-heading">Organisms are<br>not <span style="color:var(--green)">passive</span></h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p>Since Darwin, we have pictured the environment as the fixed thing: it sets the test, and organisms adapt or die. But that is only half the loop. The beaver builds a dam and turns a stream into a pond. The spider spins a web; the bird weaves a nest; the earthworm rewrites the chemistry of the soil. <strong>Organisms are not passive. The environment is a product of organisms.</strong></p>
+            <p>Biologists call this <span class="green">niche construction</span> (Odling-Smee, Laland &amp; Feldman), and it runs as a second engine of evolution beside natural selection. It even has its own inheritance: descendants receive not only genes but the <em>world</em> their ancestors built — a beaver born into the pond its grandparents dug.</p>
+            <p>So life does not only drift and sense. It builds — and the built world is handed on.</p>
+          </div>
+          <div class="pull-quote">Evolution has two engines: the genes you inherit, and the world your ancestors built.</div>
+        </div>
+        <div class="spread-right">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 260 220" xmlns="http://www.w3.org/2000/svg">
+              <!-- beaver → dam → pond -->
+              <ellipse cx="52" cy="96" rx="24" ry="15" fill="rgba(74,222,128,0.9)"/>
+              <circle cx="72" cy="89" r="8" fill="rgba(74,222,128,0.9)"/>
+              <path d="M30 100 q-14 4 -20 14 q13 2 22 -6 z" fill="rgba(74,222,128,0.7)"/>
+              <circle cx="75" cy="87" r="1.5" fill="var(--void)"/>
+              <text x="52" y="132" font-family="Space Mono, monospace" font-size="6" fill="rgba(74,222,128,0.95)" text-anchor="middle">the beaver</text>
+              <!-- arrow -->
+              <g stroke="rgba(212,208,228,0.55)" stroke-width="1.4" fill="none">
+                <path d="M98 92 L134 92"/><path d="M127 86 L134 92 L127 98"/>
+              </g>
+              <!-- dam + pond -->
+              <path d="M150 66 q16 -8 32 0 q16 8 32 0 q10 -5 18 0" fill="none" stroke="rgba(34,211,238,0.55)" stroke-width="1.8" stroke-linecap="round"/>
+              <path d="M150 82 q16 -7 32 0 q16 7 32 0 q10 -4 18 0" fill="none" stroke="rgba(34,211,238,0.35)" stroke-width="1.5" stroke-linecap="round"/>
+              <g stroke="rgba(251,191,36,0.9)" stroke-width="4" stroke-linecap="round">
+                <line x1="158" y1="104" x2="222" y2="100"/>
+                <line x1="164" y1="114" x2="228" y2="112"/>
+                <line x1="154" y1="124" x2="218" y2="122"/>
+              </g>
+              <text x="190" y="150" font-family="Space Mono, monospace" font-size="6" fill="rgba(251,191,36,0.9)" text-anchor="middle">dam · pond</text>
+              <text x="130" y="188" font-family="Space Mono, monospace" font-size="6.5" fill="rgba(74,222,128,0.9)" text-anchor="middle">the environment is a</text>
+              <text x="130" y="200" font-family="Space Mono, monospace" font-size="6.5" fill="rgba(74,222,128,0.9)" text-anchor="middle">product of organisms</text>
+            </svg>
+            <p class="diagram-caption">
+              back from the Council, and building<br>
+              <span class="annotation">the world remade, and inherited</span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Minor Worlds · Stimpunks</span>
+        <span class="spread-footer-right">2</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 3: Don't Fix the Head, Change the World ════ -->
+  <div class="spread" id="spread-3">
+    <div class="interior">
+      <div class="spread-2col">
+        <div class="spread-left">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 260 226" xmlns="http://www.w3.org/2000/svg">
+              <!-- path A: force a circle into a square slot -->
+              <rect x="30" y="30" width="52" height="52" rx="3" fill="none" stroke="rgba(244,114,182,0.6)" stroke-width="1.4"/>
+              <circle cx="56" cy="56" r="20" fill="rgba(244,114,182,0.18)" stroke="rgba(244,114,182,0.8)" stroke-width="1.4"/>
+              <g stroke="rgba(244,114,182,0.8)" stroke-width="1.3" fill="none">
+                <path d="M12 56 L26 56"/><path d="M20 51 L26 56 L20 61"/>
+                <path d="M100 56 L86 56"/><path d="M92 51 L86 56 L92 61"/>
+              </g>
+              <text x="150" y="52" font-family="Space Mono, monospace" font-size="7" fill="rgba(244,114,182,0.95)" text-anchor="start">fix the person</text>
+              <text x="150" y="64" font-family="Space Mono, monospace" font-size="5.5" fill="rgba(136,134,160,0.9)" text-anchor="start">bend the mind to the slot</text>
+              <!-- divider -->
+              <line x1="20" y1="118" x2="240" y2="118" stroke="rgba(167,139,250,0.18)" stroke-width="1"/>
+              <!-- path B: reshape the slot to the circle -->
+              <circle cx="56" cy="170" r="26" fill="none" stroke="rgba(74,222,128,0.7)" stroke-width="1.4" stroke-dasharray="4 3"/>
+              <circle cx="56" cy="170" r="20" fill="rgba(74,222,128,0.18)" stroke="rgba(74,222,128,0.85)" stroke-width="1.4"/>
+              <g stroke="rgba(74,222,128,0.85)" stroke-width="1.3" fill="none">
+                <path d="M18 170 L30 170"/><path d="M24 165 L30 170 L24 175"/>
+              </g>
+              <text x="150" y="166" font-family="Space Mono, monospace" font-size="7" fill="rgba(74,222,128,0.95)" text-anchor="start">build the world</text>
+              <text x="150" y="178" font-family="Space Mono, monospace" font-size="5.5" fill="rgba(136,134,160,0.9)" text-anchor="start">shape the room to</text>
+              <text x="150" y="188" font-family="Space Mono, monospace" font-size="5.5" fill="rgba(136,134,160,0.9)" text-anchor="start">the mind</text>
+            </svg>
+            <p class="diagram-caption">
+              two answers to a mind that doesn't fit<br>
+              <span class="annotation">change the room, not the head</span>
+            </p>
+          </div>
+        </div>
+        <div class="spread-right">
+          <div class="eyebrow">Positive niche construction</div>
+          <h2 class="spread-heading">Don't fix the head,<br>change the <span style="color:var(--green)">world</span></h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p>Here is what that means for us. The old model says that when a mind doesn't fit, you fix the mind — make it more like the standard one. Niche construction says the standard was never sacred. As Thomas Armstrong argues, there is no <span class="green">"normal" brain</span> kept in a vat at the Smithsonian for all other brains to be measured against. So stop bending the person. Build the environment.</p>
+            <p>This is not soft metaphor; it is how minds actually work. We ease a too-loud world by acting on it — dimming the light, finding the quiet room, laying the routine down like track. Cognitive science frames it as acting on the world to suit our own states; the plainer version is that <strong>the place itself helps us think.</strong> Cognition is spread across the room we arrange, not sealed in the skull.</p>
+            <p>Change the world, and you change what a mind can do.</p>
+          </div>
+          <div class="pull-quote">Don't bend the mind to fit the room. Build a room the mind can think in.</div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Minor Worlds · Stimpunks</span>
+        <span class="spread-footer-right">3</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 4: Stimming Is Worldmaking ════ -->
+  <div class="spread" id="spread-4">
+    <div class="interior">
+      <div class="spread-2col">
+        <div class="spread-left">
+          <div class="eyebrow">A space of one's own</div>
+          <h2 class="spread-heading">Stimming is<br><span style="color:var(--green)">worldmaking</span></h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p>Watch that building up close. The noise-cancelling headphones. The same walk, the same meal, the song on repeat. The desk set just so; the shelf that holds the whole special interest; the stone turned over and over in a hand. From outside, these get filed as symptoms to manage. From inside, they are <span class="green">worldmaking</span> — the patient assembly of a few stable points a self can stand on.</p>
+            <p>Stimming is niche construction at the scale of a body: movement that tunes the sensory field until it is livable. Ombre Tarragnat calls such movements <em>ontological choreographies</em> — dances that bring a small world into being. One autistic writer describes their nest plainly: <span class="gold">this is my space; it lets me hold one small part of a hard world.</span></p>
+            <p>Own Sky left us inside a soap bubble — whole, but never guaranteed. Here is the reply to that precarity: <strong>we build the bubble ourselves, and we keep on rebuilding it.</strong></p>
+          </div>
+        </div>
+        <div class="spread-right">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 260 224" xmlns="http://www.w3.org/2000/svg">
+              <!-- a built niche: a figure inside a bubble assembled from chosen things -->
+              <circle cx="130" cy="112" r="86" fill="rgba(74,222,128,0.05)" stroke="rgba(74,222,128,0.55)" stroke-width="1.3" stroke-dasharray="5 4"/>
+              <!-- assembly ticks -->
+              <g stroke="rgba(74,222,128,0.5)" stroke-width="1"><line x1="130" y1="26" x2="130" y2="20"/><line x1="216" y1="112" x2="222" y2="112"/><line x1="130" y1="198" x2="130" y2="204"/><line x1="44" y1="112" x2="38" y2="112"/></g>
+              <!-- figure -->
+              <circle cx="130" cy="104" r="12" fill="rgba(244,244,251,0.9)"/>
+              <line x1="130" y1="116" x2="130" y2="146" stroke="rgba(244,244,251,0.9)" stroke-width="2.4"/>
+              <!-- headphones -->
+              <path d="M116 100 a14 14 0 0 1 28 0" fill="none" stroke="rgba(167,139,250,0.9)" stroke-width="2"/>
+              <rect x="112" y="99" width="5" height="9" rx="2" fill="rgba(167,139,250,0.9)"/><rect x="143" y="99" width="5" height="9" rx="2" fill="rgba(167,139,250,0.9)"/>
+              <!-- lamp -->
+              <path d="M74 78 l10 -14 l6 4 z" fill="rgba(251,191,36,0.85)"/><line x1="83" y1="78" x2="83" y2="92" stroke="rgba(251,191,36,0.7)" stroke-width="1.4"/>
+              <!-- plant -->
+              <path d="M186 96 q6 -16 0 -26 q-8 12 0 26 z" fill="rgba(74,222,128,0.85)"/><rect x="181" y="96" width="10" height="10" rx="1.5" fill="rgba(74,222,128,0.5)"/>
+              <!-- shelf / book -->
+              <rect x="150" y="150" width="30" height="16" rx="1.5" fill="none" stroke="rgba(34,211,238,0.8)" stroke-width="1.4"/><line x1="160" y1="150" x2="160" y2="166" stroke="rgba(34,211,238,0.8)" stroke-width="1"/><line x1="170" y1="150" x2="170" y2="166" stroke="rgba(34,211,238,0.8)" stroke-width="1"/>
+              <!-- music note -->
+              <circle cx="84" cy="150" r="4" fill="rgba(244,114,182,0.9)"/><line x1="88" y1="150" x2="88" y2="134" stroke="rgba(244,114,182,0.9)" stroke-width="1.4"/>
+            </svg>
+            <p class="diagram-caption">
+              a world assembled from chosen things<br>
+              <span class="annotation">we build the bubble ourselves</span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Minor Worlds · Stimpunks</span>
+        <span class="spread-footer-right">4</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 5: Minor Worlds ════ -->
+  <div class="spread" id="spread-5">
+    <div class="interior">
+      <div class="spread-2col">
+        <div class="spread-left">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 260 220" xmlns="http://www.w3.org/2000/svg">
+              <!-- one faint Major world behind; many minor worlds networked in front -->
+              <circle cx="130" cy="110" r="92" fill="none" stroke="rgba(136,134,160,0.25)" stroke-width="1" stroke-dasharray="3 5"/>
+              <text x="130" y="30" font-family="Space Mono, monospace" font-size="5.5" fill="rgba(136,134,160,0.6)" text-anchor="middle">the "Major" world</text>
+              <!-- network links -->
+              <g stroke="rgba(74,222,128,0.4)" stroke-width="1">
+                <line x1="78" y1="88" x2="130" y2="118"/><line x1="130" y1="118" x2="186" y2="82"/><line x1="130" y1="118" x2="94" y2="158"/><line x1="130" y1="118" x2="180" y2="150"/><line x1="78" y1="88" x2="94" y2="158"/><line x1="186" y1="82" x2="180" y2="150"/>
+              </g>
+              <!-- minor worlds -->
+              <circle cx="78" cy="88" r="16" fill="rgba(167,139,250,0.14)" stroke="rgba(167,139,250,0.8)" stroke-width="1.3"/>
+              <circle cx="186" cy="82" r="14" fill="rgba(251,191,36,0.14)" stroke="rgba(251,191,36,0.8)" stroke-width="1.3"/>
+              <circle cx="130" cy="118" r="18" fill="rgba(74,222,128,0.16)" stroke="rgba(74,222,128,0.85)" stroke-width="1.4"/>
+              <circle cx="94" cy="158" r="13" fill="rgba(34,211,238,0.14)" stroke="rgba(34,211,238,0.8)" stroke-width="1.3"/>
+              <circle cx="180" cy="150" r="15" fill="rgba(244,114,182,0.14)" stroke="rgba(244,114,182,0.8)" stroke-width="1.3"/>
+              <text x="130" y="206" font-family="Space Mono, monospace" font-size="6.5" fill="rgba(74,222,128,0.9)" text-anchor="middle">small, real, and networked</text>
+            </svg>
+            <p class="diagram-caption">
+              minor worlds, tended and shared<br>
+              <span class="annotation">small is not lesser</span>
+            </p>
+          </div>
+        </div>
+        <div class="spread-right">
+          <div class="eyebrow">Niche communities</div>
+          <h2 class="spread-heading">Minor <span class="spectrum-word">worlds</span></h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p>These worlds are small, and the smallness is the point. A corner, a routine, a fandom, a friendship, a special interest — none of them universal, every one of them real. Erin Manning calls this the <span class="green">minor</span>: not lesser, only not pretending to be the whole.</p>
+            <p>And we build them together. Autistic people all but invented fandom; we assemble niche communities out of necessity and because our ways of being are, frankly, weird (Devon Price). Some grow into <span class="green">NeurodiVentures</span> — non-hierarchical groups run by neurodivergent people for collaborative niche construction, thickening over time into resilient little ecosystems.</p>
+            <p>Small, local, tended by the people who need it — that is not a lesser world. That is a world.</p>
+          </div>
+          <div class="pull-quote">A world doesn't have to be universal to be real. It only has to be built, and shared.</div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Minor Worlds · Stimpunks</span>
+        <span class="spread-footer-right">5</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 6: Whose Niche Is the Default? ════ -->
+  <div class="spread" id="spread-6">
+    <div class="interior">
+      <div class="spread-2col">
+        <div class="spread-left">
+          <div class="eyebrow">Reconstruction, not accommodation</div>
+          <h2 class="spread-heading">Whose niche is<br>the <span style="color:var(--gold)">default</span>?</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p>But not every niche admits that it was built. The hum of fluorescent light, the open-plan clatter, the crowded room — these get called <em>neutral</em>, just the conditions everyone works in. They are nothing of the sort. They are a niche too, <strong>built to suit one kind of mind</strong> and then renamed the default.</p>
+            <p>Kadodia and Krueger call it the <span class="green">epistemic niche</span>: our shared spaces quietly encode whose senses, whose pace, whose ways of knowing count, and reward the people they were built for. Which is why bolting an accommodation onto a hostile room is not the fix. The architecture itself has to change — <strong>reconstruction, not accommodation.</strong></p>
+            <p>There is no neutral sky and no neutral room. And as biodiversity toughens an ecosystem, a wider range of minds toughens a society's knowledge: the default was only ever one niche among the many we could build.</p>
+          </div>
+          <div class="refusals">
+            <div class="refusal"><span class="refusal-tag">Not</span><span>an accommodation bolted onto a hostile room — <strong>reconstruction, not a ramp to nowhere.</strong></span></div>
+            <div class="refusal"><span class="refusal-tag">Not</span><span>a "neutral" default — a default is just <strong>someone's niche, left unmarked.</strong></span></div>
+            <div class="refusal"><span class="refusal-tag">Not</span><span>bending the person to the room — <strong>build a room more minds can think in.</strong></span></div>
+            <div class="refusal"><span class="refusal-tag">Not</span><span>a world you're only allowed to visit — <strong>a world you get to help build.</strong></span></div>
+          </div>
+        </div>
+        <div class="spread-right">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 260 220" xmlns="http://www.w3.org/2000/svg">
+              <!-- a niche labelled NEUTRAL, corner peeled to reveal it was built for one mind -->
+              <rect x="40" y="44" width="180" height="132" rx="4" fill="rgba(136,134,160,0.06)" stroke="rgba(136,134,160,0.5)" stroke-width="1.3"/>
+              <text x="130" y="86" font-family="Space Mono, monospace" font-size="9" letter-spacing="2" fill="rgba(212,208,228,0.85)" text-anchor="middle">NEUTRAL</text>
+              <!-- the "default" contents: fluorescent, noise, crowd -->
+              <g stroke="rgba(136,134,160,0.7)" stroke-width="1.3">
+                <line x1="76" y1="108" x2="104" y2="108"/>
+                <path d="M120 104 q5 -6 10 0 q5 6 10 0" fill="none"/>
+                <circle cx="160" cy="106" r="4" fill="none"/><circle cx="172" cy="106" r="4" fill="none"/><circle cx="184" cy="106" r="4" fill="none"/>
+              </g>
+              <text x="130" y="130" font-family="Space Mono, monospace" font-size="5" fill="rgba(136,134,160,0.8)" text-anchor="middle">light · noise · crowd</text>
+              <!-- peeled corner revealing the truth -->
+              <path d="M220 44 L166 44 L220 98 Z" fill="rgba(74,222,128,0.14)" stroke="rgba(74,222,128,0.8)" stroke-width="1.3"/>
+              <path d="M220 44 L184 44 L220 80 Z" fill="none" stroke="rgba(74,222,128,0.5)" stroke-width="0.8" stroke-dasharray="2 2"/>
+              <text x="204" y="60" font-family="Space Mono, monospace" font-size="4.6" fill="rgba(74,222,128,0.95)" text-anchor="middle" transform="rotate(45 204 60)">built for</text>
+              <text x="211" y="67" font-family="Space Mono, monospace" font-size="4.6" fill="rgba(74,222,128,0.95)" text-anchor="middle" transform="rotate(45 211 67)">one mind</text>
+              <text x="130" y="200" font-family="Space Mono, monospace" font-size="6.5" fill="rgba(74,222,128,0.9)" text-anchor="middle">a default is someone's niche</text>
+            </svg>
+            <p class="diagram-caption">
+              peel back "neutral"<br>
+              <span class="annotation">and find a niche, unmarked</span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Minor Worlds · Stimpunks</span>
+        <span class="spread-footer-right">6</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 7: Worlding Together ════ -->
+  <div class="spread" id="spread-7">
+    <div class="interior">
+      <div class="spread-2col">
+        <div class="spread-left">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 260 220" xmlns="http://www.w3.org/2000/svg">
+              <!-- diverse kin all feeding into a shared built world at centre -->
+              <circle cx="130" cy="110" r="26" fill="rgba(74,222,128,0.12)" stroke="rgba(74,222,128,0.8)" stroke-width="1.4"/>
+              <!-- little built world inside: a small house/nest -->
+              <path d="M118 118 l12 -12 l12 12 z" fill="none" stroke="rgba(74,222,128,0.95)" stroke-width="1.4"/>
+              <rect x="122" y="118" width="16" height="10" fill="none" stroke="rgba(74,222,128,0.95)" stroke-width="1.4"/>
+              <!-- spokes to kin -->
+              <g stroke="rgba(212,208,228,0.4)" stroke-width="1">
+                <line x1="130" y1="84" x2="130" y2="46"/>
+                <line x1="156" y1="110" x2="210" y2="110"/>
+                <line x1="112" y1="132" x2="72" y2="170"/>
+                <line x1="148" y1="132" x2="188" y2="170"/>
+                <line x1="104" y1="110" x2="50" y2="110"/>
+              </g>
+              <!-- kin glyphs -->
+              <circle cx="130" cy="40" r="8" fill="rgba(167,139,250,0.9)"/>
+              <text x="130" y="26" font-family="Space Mono, monospace" font-size="5" fill="rgba(167,139,250,0.9)" text-anchor="middle">human</text>
+              <!-- dog -->
+              <ellipse cx="220" cy="110" rx="11" ry="6" fill="rgba(251,191,36,0.9)"/><circle cx="230" cy="106" r="4" fill="rgba(251,191,36,0.9)"/>
+              <text x="220" y="128" font-family="Space Mono, monospace" font-size="5" fill="rgba(251,191,36,0.9)" text-anchor="middle">dog</text>
+              <!-- plant -->
+              <path d="M60 110 q6 -14 0 -24 q-7 11 0 24 z" fill="rgba(74,222,128,0.9)"/>
+              <text x="46" y="112" font-family="Space Mono, monospace" font-size="5" fill="rgba(74,222,128,0.9)" text-anchor="end">plant</text>
+              <!-- friend -->
+              <circle cx="66" cy="176" r="7" fill="rgba(34,211,238,0.9)"/>
+              <text x="66" y="194" font-family="Space Mono, monospace" font-size="5" fill="rgba(34,211,238,0.9)" text-anchor="middle">kin</text>
+              <!-- tools -->
+              <rect x="182" y="170" width="12" height="12" rx="2" fill="rgba(244,114,182,0.9)"/>
+              <text x="188" y="196" font-family="Space Mono, monospace" font-size="5" fill="rgba(244,114,182,0.9)" text-anchor="middle">tools</text>
+            </svg>
+            <p class="diagram-caption">
+              a niche is always made <em>with</em><br>
+              <span class="annotation">we world each other into being</span>
+            </p>
+          </div>
+        </div>
+        <div class="spread-right">
+          <div class="eyebrow">The oldest work</div>
+          <h2 class="spread-heading">Worlding<br><span style="color:var(--green)">together</span></h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p>The last thing to notice is that we never build alone. A niche is made <em>with</em> — with the people who share the fandom, the dog who sets the shape of the day, the plants on the sill, the tools on the belt. Donna Haraway calls these companion species: we world one another into being.</p>
+            <p>Step back far enough and it is all one story. The beaver's pond, the spider's web, the quiet room, the niche community, the reconstructed school — every one of them is matter arranging itself into a place where life can hold. <span class="green">The universe builds itself into worlds, and it does it through us.</span></p>
+            <p>We are star stuff, building — and to make one small, livable world, together, is the oldest work there is.</p>
+          </div>
+          <div class="pull-quote gold">We are star stuff, building. To make a world is the oldest thing matter does.</div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Minor Worlds · Stimpunks</span>
+        <span class="spread-footer-right">7</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 8: Colophon ════ -->
+  <div class="spread" id="spread-8">
+    <div class="interior">
+      <div class="colophon">
+        <div>
+          <div class="colophon-top">
+            <span class="colophon-ls">L★S</span>
+            <span class="colophon-phrase">We are star stuff, building. No niche is neutral, no world is lesser — and to make one, together, is the oldest thing matter does.</span>
+          </div>
+          <div class="series-list">
+            <div class="series-item"><span class="series-num">No. 10</span> The Dead Stars Still Reach Us — starlight, ancestry &amp; the work of memory</div>
+            <div class="series-item"><span class="series-num">No. 11</span> Why Difference Comes First — Helen Edgar (guest)</div>
+            <div class="series-item"><span class="series-num">No. 12</span> Turn and Face the Strange — David Bowie</div>
+            <div class="series-item"><span class="series-num">No. 13</span> Warriors and Weirdos — AURORA, the alien who came home</div>
+            <div class="series-item"><span class="series-num">No. 14</span> The Council of All Beings — multispecies justice &amp; more-than-human kin</div>
+            <div class="series-item"><span class="series-num">No. 15</span> Every Creature's Own Sky — umwelt, attention-worlds &amp; double empathy</div>
+            <div class="series-item current"><span class="series-num">No. 16</span> Minor Worlds — niche construction &amp; the building of livable worlds ← you are here</div>
+          </div>
+          <div class="reflect">
+            <div class="reflect-label">Reflection</div>
+            <p class="reflect-q">What have you had to build for yourself to make a hard world livable?</p>
+            <p class="reflect-q">Which "neutral" rooms in your life are really built for one kind of mind?</p>
+            <p class="reflect-q">Whose niche gets called the default — and who has to keep visiting instead of building?</p>
+          </div>
+          <p class="colophon-body">
+            Minor Worlds is the sixteenth zine in the Stimpunks series, and the third of a loose trilogy: how we treat other worlds (<a href="the-council-of-all-beings-zine.html">No. 14</a>), how we sense them (<a href="every-creatures-own-sky-zine.html">No. 15</a>), and — here — how we build them. It is the one where the cosmology comes home to the ground the Foundation stands on.<br><br>
+            <a href="https://stimpunks.org/glossary/niche-construction/">Niche construction</a> — organisms remaking their environments, and passing the remade world on as ecological inheritance — is from Odling-Smee, Laland &amp; Feldman (2003), after Lewontin; the beaver, spider, and nest are the textbook cases. Positive niche construction — change the environment, not the child; there is no "normal" brain in a vat — is Thomas Armstrong's (<em>Neurodiversity in the Classroom</em>). That we act on the world to suit our states, and that "the place itself helps us think," draw on active-inference research on autistic cognition and Annie Murphy Paul's <em>The Extended Mind</em>.<br><br>
+            Stimming as worldmaking, and the precarious yet buildable bubble, draw on Ombre Tarragnat (autistic worldings, ontological choreography) and Erin Manning (the minor, autistic perception); the nest that holds "one small part of a hard world" is from Emergent Divergence. Niche communities and fandom are Devon Price (<em>Unmasking Autism</em>) and Steve Silberman (<em>NeuroTribes</em>); NeurodiVentures and collaborative niche construction are Jorn Bettin / Autistic Collaboration. The epistemic niche — "neutral" defaults built for one kind of mind, reconstruction over accommodation — is Kadodia &amp; Krueger (2026). Companion species is Donna Haraway; "matter worlds" is Karen Barad. <a href="https://stimpunks.org/monotropism/">Monotropism</a> carries over from No. 15.<br><br>
+            The reading — that no niche is neutral, no world is lesser, and that building them is the cosmos's oldest work — is ours. You were star stuff, building, all along.
+          </p>
+        </div>
+        <div class="colophon-footer">
+          Stimpunks Foundation · Zine No. 16 · Open Edition<br>
+          Print free · Share freely · L★S<br>
+          stimpunks.org · starstuff.earth
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Minor Worlds · Stimpunks</span>
+        <span class="spread-footer-right">8</span>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /zine-shell -->
+
+<script>
+  let current = 1;
+  const total = 8;
+
+  function changePage(dir) {
+    const next = current + dir;
+    if (next < 1 || next > total) return;
+    document.getElementById('spread-' + current).classList.remove('active');
+    current = next;
+    document.getElementById('spread-' + current).classList.add('active');
+    document.getElementById('page-counter').textContent = current + ' / ' + total;
+    document.getElementById('prev-btn').style.opacity = current === 1 ? '0.3' : '1';
+    document.getElementById('next-btn').style.opacity = current === total ? '0.3' : '1';
+    document.getElementById('prev-btn').classList.toggle('active', current > 1);
+    document.getElementById('next-btn').classList.toggle('active', current < total);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') changePage(1);
+    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   changePage(-1);
+  });
+
+  document.getElementById('prev-btn').style.opacity = '0.3';
+  document.getElementById('next-btn').classList.add('active');
+</script>
+</body>
+</html>
