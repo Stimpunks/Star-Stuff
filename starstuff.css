@@ -2,10 +2,49 @@
    starstuff.css — shared styles for the Star Stuff collection
    https://starstuff.earth/
 
-   Currently holds: site navigation (home + prev/next).
+   Holds: the canonical palette tokens, the site navigation (home + prev/next),
+   the shared starfield twinkle animation, and the injected per-spread footer nav.
+
    Each page tints its nav by setting --nav-accent on the .ss-nav element.
-   Design tokens and the starfield still live inline in each page for now.
+
+   PALETTE: the --sp-* tokens below are the single source of truth for the
+   recurring colors. Each page's inline :root aliases (e.g. --purple, --violet,
+   --void) point at these via var(), so a palette change happens here, once.
+   Page-specific one-off colors still live inline in each page (by design).
+   The themed starfield gradient art also stays inline per page — its per-page
+   tinting (cyan for water, green for aurora, warm-white for bone) is intentional.
    ========================================================================== */
+
+:root {
+  /* Grounds / voids (darkest → card surfaces) */
+  --sp-void:            #0a0a14;
+  --sp-void-deep:       #07070f;
+  --sp-deep:            #0d0d1a;
+  --sp-page:            #0f0f1c;
+  --sp-card:            #0f0f2a;
+  /* Accents */
+  --sp-purple:          #a78bfa;
+  --sp-pink:            #f472b6;
+  --sp-gold:            #fbbf24;
+  --sp-cyan:            #22d3ee;
+  --sp-green:           #4ade80;
+  /* Text / neutrals (brightest → dimmest) */
+  --sp-white:           #f9fafb;
+  --sp-white-soft:      #f4f2fb;
+  --sp-secondary:       #b8aed0;
+  --sp-secondary-soft:  #d4d0e4;
+  --sp-muted:           #c4b5d4;
+  --sp-dim:             #8a86a0;
+  --sp-dim-soft:        #63607a;
+}
+
+/* Shared starfield twinkle. Pages apply this via `animation: twinkle-anim …`
+   on their .twinkle dots; the keyframe used to be copy-pasted into ~25 pages.
+   (manifesto.html keeps its own sp-twinkle — a deliberately deeper fade.) */
+@keyframes twinkle-anim {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: 0.15; transform: scale(0.3); }
+}
 
 .ss-nav {
   --nav-accent: #a78bfa;

@@ -44,9 +44,13 @@ The central phrase compresses through registers, each with a use:
   fonts. Each is reachable at its own path (e.g. `https://starstuff.earth/bone-song-zine.html`).
 - `index.html` is the landing page and entry point.
 - Two shared assets, included by pages via **relative URLs**:
-  - **`starstuff.css`** — shared site navigation (`.ss-nav`) and the injected per-spread footer
-    nav styles. Note: design tokens and the CSS starfield still live **inline in each page**, not
-    in this file (yet).
+  - **`starstuff.css`** — shared site navigation (`.ss-nav`), the injected per-spread footer nav
+    styles, the **canonical palette tokens** (`--sp-*`, the single source of truth for recurring
+    colors), and the shared **`@keyframes twinkle-anim`**. Each page's inline `:root` aliases
+    (`--purple`, `--violet`, `--void`, …) point at the `--sp-*` tokens via `var()`, so a palette
+    change happens here, once. Page-specific one-off colors still live inline per page, and the
+    **themed starfield gradient art stays inline by design** — its per-page tinting (cyan for
+    water, green for aurora, warm-white for bone) is intentional, not duplication.
   - **`starstuff.js`** — shared front-end behavior for paged zines: per-spread footer prev/next
     controls and `#spread-N` deep linking. It is a safe no-op on pages that aren't paged zines
     (i.e. pages lacking a global `changePage()` plus `.spread` / `.spread-footer` elements).
@@ -87,7 +91,9 @@ The central phrase compresses through registers, each with a use:
 
 - **Typeface:** Atkinson Hyperlegible Next (max legibility). *Bone Song* also uses Fraunces and
   Space Mono for editorial voice; the injected footer nav uses Space Mono.
-- **Palette** (define as inline CSS custom properties per page, prefix `--sp-`):
+- **Palette** — the canonical tokens live in `starstuff.css` as `:root { --sp-* }` (single source
+  of truth). Pages alias them inline (e.g. `--purple: var(--sp-purple)`); introduce a new shared
+  color by adding a `--sp-` token there, not by hardcoding a hex across pages:
   - void/ground `#0a0a14`, deep/card `#0f0f2a`
   - purple `#a78bfa`, pink `#f472b6`, gold `#fbbf24`, cyan `#22d3ee`, green `#4ade80`
   - white `#f9fafb`, secondary `#b8aed0`, muted `#c4b5d4`
