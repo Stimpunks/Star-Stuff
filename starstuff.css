@@ -149,7 +149,26 @@
 }
 
 @media print {
+  /* Site + paging chrome never belongs on paper. */
   .ss-nav { display: none !important; }
+  .nav { display: none !important; }             /* paged-zine top prev/next bar */
+  .spread-nav-btn { display: none !important; }  /* injected footer prev/next buttons */
+
+  /* Paged zines show one .spread at a time on screen (.spread.active). For print,
+     reveal every spread and start each on its own sheet, so a single Cmd/Ctrl+P
+     (or "Save as PDF") yields the whole zine instead of just the visible spread.
+     No-op on non-paged pages, which have no .spread elements. */
+  .spread {
+    display: block !important;
+    opacity: 1 !important;
+    animation: none !important;
+    page-break-after: always;
+    break-after: page;
+  }
+  .spread:last-of-type {
+    page-break-after: auto;   /* avoid a trailing blank sheet */
+    break-after: auto;
+  }
 }
 
 /* Respect the OS "reduce motion" setting: neutralize the starfield twinkle,
