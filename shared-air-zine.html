@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0a0a14">
+<link rel="canonical" href="https://starstuff.earth/shared-air-zine.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta name="description" content="The air we share, read through star stuff and solarpunk. There is only one air — a single well-mixed body, forged in stars and exhaled by ancient microbes. Every breath very likely holds atoms once breathed by strangers and by trees across the world; we breathe what plants exhale. Many of us are the canaries of the shared room: sensory sensitivity is an early-warning signal, not a flaw — don't blame the bird, change the air. Habitable, and for whom? Breathable air is a commons, not a private accommodation. Move quietly and plant things.">
+<!-- Open Graph / link unfurl -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Star Stuff · Stimpunks Foundation">
+<meta property="og:url" content="https://starstuff.earth/shared-air-zine.html">
+<meta property="og:title" content="Shared Air">
+<meta property="og:description" content="The air we share, read through star stuff and solarpunk. There is only one air — forged in stars, exhaled by ancient microbes, cycled through every lung and leaf. Many of us are the canaries of the shared room: sensitivity is an early-warning signal, not a flaw. Habitable, and for whom? Breathable air is a commons. Move quietly and plant things.">
+<meta property="og:image" content="https://starstuff.earth/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A rainbow-hued cosmic image — we are all made of star stuff.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Shared Air">
+<meta name="twitter:description" content="The air we share, read through star stuff and solarpunk. One air, forged in stars and remade by life. Many of us are the canaries of the shared room: sensitivity is a signal, not a flaw. Habitable, and for whom? Air is a commons. Move quietly and plant things.">
+<meta name="twitter:image" content="https://starstuff.earth/og-card.jpg">
+<title>Shared Air — Stimpunks Zine No. 24</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="starstuff.css">
+<style>
+  :root {
+    --void:  var(--sp-void-deep);
+    --deep:  var(--sp-deep);
+    --page:  var(--sp-page);
+    --violet:var(--sp-purple);
+    --pink:  var(--sp-pink);
+    --gold:  var(--sp-gold);
+    --cyan:  var(--sp-cyan);
+    --green: var(--sp-green);
+    --star-white: var(--sp-white-soft);
+    --stardust:   var(--sp-secondary-soft);
+    --dim:   var(--sp-dim);
+    --dim2:  var(--sp-dim-soft);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--void);
+    font-family: 'Atkinson Hyperlegible', system-ui, sans-serif;
+    color: var(--star-white);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── STARFIELD (green · gold · white — growth, sun, drifting air) ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 8% 12%, rgba(74,222,128,0.8) 0%, transparent 100%),
+      radial-gradient(1px 1px at 22% 38%, rgba(251,191,36,0.7) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 44% 9%, rgba(74,222,128,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 61% 68%, rgba(244,244,251,0.7) 0%, transparent 100%),
+      radial-gradient(2px 2px at 74% 28%, rgba(251,191,36,0.55) 0%, transparent 100%),
+      radial-gradient(1px 1px at 84% 54%, rgba(74,222,128,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 91% 79%, rgba(244,244,251,0.6) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 4% 58%, rgba(74,222,128,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 34% 84%, rgba(251,191,36,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 54% 48%, rgba(167,139,250,0.45) 0%, transparent 100%),
+      radial-gradient(2px 2px at 19% 88%, rgba(74,222,128,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 69% 4%, rgba(244,244,251,0.8) 0%, transparent 100%),
+      radial-gradient(1px 1px at 47% 62%, rgba(251,191,36,0.5) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 30% 20%, rgba(244,244,251,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 77% 88%, rgba(74,222,128,0.55) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .zine-shell { position: relative; z-index: 1; max-width: 820px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+
+  .spectrum-line { height: 2px; border: none; border-radius: 2px; background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); }
+
+  /* ── NAV ── */
+  .nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2.5rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(167,139,250,0.2); }
+  .nav-brand { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--dim); }
+  .nav-controls { display: flex; gap: 0.5rem; align-items: center; }
+  .nav-btn { background: none; border: 1px solid rgba(74,222,128,0.35); color: var(--stardust); font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.15em; padding: 0.4rem 0.85rem; border-radius: 2px; cursor: pointer; transition: all 0.2s ease; text-transform: uppercase; }
+  .nav-btn:hover { background: rgba(74,222,128,0.15); border-color: rgba(74,222,128,0.6); color: var(--star-white); }
+  .nav-btn.active { background: rgba(74,222,128,0.20); border-color: var(--green); color: var(--star-white); }
+  .page-counter { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.2em; color: var(--dim2); }
+
+  .spread { display: none; animation: fadeIn 0.5s ease forwards; }
+  .spread.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ── COVER ── */
+  .cover-spread {
+    position: relative; min-height: 520px; border-radius: 4px; overflow: hidden;
+    background:
+      radial-gradient(ellipse at 22% 20%, rgba(74,222,128,0.15) 0%, transparent 52%),
+      radial-gradient(ellipse at 80% 26%, rgba(251,191,36,0.13) 0%, transparent 52%),
+      radial-gradient(ellipse at 68% 82%, rgba(74,222,128,0.11) 0%, transparent 52%),
+      radial-gradient(ellipse at 28% 80%, rgba(251,191,36,0.07) 0%, transparent 52%),
+      var(--deep);
+    border: 1px solid rgba(167,139,250,0.25);
+    box-shadow: inset 0 0 80px rgba(74,222,128,0.07), 0 0 0 4px rgba(255,255,255,0.03);
+    display: flex; flex-direction: column; justify-content: flex-end; padding: 3rem;
+  }
+  .cover-motif { position: absolute; top: -6px; right: -18px; width: 340px; height: 340px; opacity: 0.75; pointer-events: none; }
+  .cover-issue { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.5em; text-transform: uppercase; color: var(--green); margin-bottom: 1.5rem; }
+  .cover-title { font-weight: 700; font-size: clamp(2.3rem, 6.6vw, 4rem); line-height: 1.02; color: var(--star-white); letter-spacing: -0.02em; margin-bottom: 0.9rem; }
+  .cover-title .spectrum-word { background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .cover-subtitle { font-size: 1rem; color: var(--stardust); opacity: 0.85; margin-bottom: 2rem; max-width: 470px; line-height: 1.55; }
+  .cover-rule { width: 220px; max-width: 60%; margin-bottom: 1.3rem; }
+  .cover-meta { display: flex; gap: 2rem; align-items: center; }
+  .cover-ls { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 1.4rem; color: var(--gold); letter-spacing: 0.05em; }
+  .cover-meta-text { font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--dim2); line-height: 1.9; }
+  .cover-corner { position: absolute; top: 2rem; right: 2.5rem; text-align: right; }
+  .cover-corner-num { font-weight: 700; font-size: 4.5rem; line-height: 1; color: var(--green); opacity: 0.26; }
+  .cover-corner-label { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); display: block; margin-top: -0.3rem; }
+
+  /* ── INTERIOR ── */
+  .interior { background: var(--page); border: 1px solid rgba(167,139,250,0.15); border-radius: 4px; overflow: hidden; min-height: 480px; }
+  .spread-2col { display: grid; grid-template-columns: 1fr 1fr; min-height: 480px; }
+  .spread-left, .spread-right { padding: 3rem 2.4rem; position: relative; }
+  .spread-left { border-right: 1px solid rgba(167,139,250,0.12); }
+
+  .eyebrow { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--green); margin-bottom: 1.1rem; }
+  .body-text { font-size: 0.98rem; line-height: 1.72; color: var(--stardust); }
+  .body-text p { margin-bottom: 1rem; }
+  .body-text p:last-child { margin-bottom: 0; }
+  .body-text strong { font-weight: 700; color: var(--star-white); }
+  .body-text em { font-style: italic; color: var(--star-white); }
+  .body-text a { color: var(--green); text-decoration: none; border-bottom: 1px solid rgba(74,222,128,0.4); }
+  .body-text a:hover { border-bottom-color: var(--green); color: var(--star-white); }
+  .body-text .violet { color: var(--violet); font-weight: 700; }
+  .body-text .pink { color: var(--pink); font-weight: 700; }
+  .body-text .gold { color: var(--gold); font-weight: 700; }
+  .body-text .cyan { color: var(--cyan); font-weight: 700; }
+  .body-text .green { color: var(--green); font-weight: 700; }
+
+  .spread-heading { font-weight: 700; font-size: 1.9rem; line-height: 1.12; color: var(--star-white); margin-bottom: 1.1rem; letter-spacing: -0.01em; }
+  .spread-heading .spectrum-word { background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .rule { width: 40px; margin: 1rem 0; }
+
+  .pull-quote { font-size: 1.18rem; font-weight: 700; line-height: 1.4; color: var(--star-white); border-left: 3px solid var(--green); padding-left: 1.1rem; margin: 1.4rem 0; }
+  .pull-quote.pink { border-left-color: var(--pink); }
+  .pull-quote.gold { border-left-color: var(--gold); }
+  .pull-quote.violet { border-left-color: var(--violet); }
+  .pull-quote.cyan { border-left-color: var(--cyan); }
+  .pull-quote .attr { display: block; font-family: 'Space Mono', monospace; font-size: 0.6rem; font-weight: 400; letter-spacing: 0.08em; color: var(--dim); margin-top: 0.6rem; }
+
+  /* ── DIAGRAMS ── */
+  .diagram-wrap { display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; }
+  .diagram { width: 100%; max-width: 280px; display: block; }
+  .diagram-caption { font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim); text-align: center; margin-top: 0.9rem; line-height: 1.9; }
+  .annotation { color: var(--green); }
+
+  /* ── REFUSALS ── */
+  .refusals { margin-top: 1.3rem; }
+  .refusal { font-size: 0.88rem; line-height: 1.5; color: var(--stardust); padding: 0.55rem 0; border-bottom: 1px solid rgba(167,139,250,0.1); display: flex; gap: 0.6rem; align-items: baseline; }
+  .refusal:last-child { border-bottom: none; }
+  .refusal-tag { font-family: 'Space Mono', monospace; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--pink); flex-shrink: 0; padding-top: 0.12rem; }
+  .refusal strong { color: var(--star-white); font-weight: 700; }
+
+  /* ── COLOPHON ── */
+  .colophon { padding: 3rem; display: flex; flex-direction: column; justify-content: space-between; min-height: 480px; background: radial-gradient(ellipse at 82% 18%, rgba(251,191,36,0.10) 0%, transparent 50%), radial-gradient(ellipse at 18% 85%, rgba(74,222,128,0.08) 0%, transparent 50%), var(--page); }
+  .colophon-top { border-bottom: 1px solid rgba(167,139,250,0.14); padding-bottom: 1.3rem; margin-bottom: 1.2rem; }
+  .colophon-ls { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 2.4rem; color: var(--gold); letter-spacing: 0.05em; display: block; margin-bottom: 0.4rem; }
+  .colophon-phrase { font-size: 0.92rem; font-weight: 700; color: var(--stardust); }
+  .series-list { display: flex; flex-direction: column; gap: 0.38rem; margin-bottom: 1.2rem; }
+  .series-item { font-size: 0.72rem; color: var(--dim); letter-spacing: 0.01em; display: flex; gap: 0.7rem; align-items: baseline; line-height: 1.45; }
+  .series-item.current { color: var(--green); font-weight: 700; }
+  .series-num { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim2); flex-shrink: 0; }
+  .series-item.current .series-num { color: var(--green); }
+  .reflect { border-top: 1px solid rgba(167,139,250,0.14); padding-top: 1rem; margin-bottom: 1.2rem; }
+  .reflect-label { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--green); margin-bottom: 0.65rem; }
+  .reflect-q { font-size: 0.86rem; line-height: 1.55; color: var(--stardust); margin-bottom: 0.55rem; }
+  .reflect-q:last-child { margin-bottom: 0; }
+  .colophon-body { font-size: 0.75rem; color: var(--dim); line-height: 1.75; margin-bottom: 1.2rem; }
+  .colophon-body a { color: var(--green); text-decoration: none; border-bottom: 1px solid rgba(74,222,128,0.4); }
+  .colophon-body a:hover { border-bottom-color: var(--green); }
+  .colophon-footer { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--dim); line-height: 2.2; border-top: 1px solid rgba(167,139,250,0.14); padding-top: 1rem; }
+
+  /* ── SPREAD FOOTER ── */
+  .spread-footer { display: flex; justify-content: space-between; align-items: center; padding: 0.9rem 2.4rem; border-top: 1px solid rgba(167,139,250,0.1); }
+  .spread-footer-left { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--dim); }
+  .spread-footer-right { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; color: var(--green); }
+
+  .twinkle { position: fixed; width: 3px; height: 3px; border-radius: 50%; animation: twinkle-anim 3s ease-in-out infinite; pointer-events: none; z-index: 0; }
+
+  @media (max-width: 600px) {
+    .spread-2col { grid-template-columns: 1fr; }
+    .spread-left { border-right: none; border-bottom: 1px solid rgba(167,139,250,0.12); }
+    .cover-spread { padding: 2rem; min-height: 420px; }
+    .cover-motif { width: 224px; height: 224px; top: -4px; right: -24px; opacity: 0.5; }
+    .cover-title { font-size: 2.2rem; }
+    .spread-heading { font-size: 1.55rem; }
+    .spread-left, .spread-right { padding: 2rem 1.5rem; }
+    .colophon { padding: 2rem 1.5rem; }
+  }
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Shared Air","description":"The air we share, read through star stuff and solarpunk. There is only one air — a single well-mixed body, forged in stars and exhaled by ancient microbes. Every breath very likely holds atoms once breathed by strangers and by trees across the world; we breathe what plants exhale. Many of us are the canaries of the shared room: sensory sensitivity is an early-warning signal, not a flaw — don't blame the bird, change the air. Habitable, and for whom? Breathable air is a commons, not a private accommodation. Move quietly and plant things.","image":"https://starstuff.earth/og-card.jpg","url":"https://starstuff.earth/shared-air-zine.html","mainEntityOfPage":"https://starstuff.earth/shared-air-zine.html","author":{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/"},"publisher":{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/","logo":{"@type":"ImageObject","url":"https://starstuff.earth/og-card.jpg"}},"isPartOf":{"@type":"WebSite","name":"Star Stuff","url":"https://starstuff.earth/"}}</script>
+</head>
+<body>
+
+<div class="twinkle" style="top:7%;left:11%;background:var(--green);box-shadow:0 0 6px var(--green);animation-delay:-0.4s"></div>
+<div class="twinkle" style="top:19%;left:83%;background:var(--gold);box-shadow:0 0 6px var(--gold);animation-delay:-1.3s"></div>
+<div class="twinkle" style="top:52%;left:4%;background:var(--green);box-shadow:0 0 6px var(--green);animation-delay:-2.1s"></div>
+<div class="twinkle" style="top:71%;left:94%;background:var(--gold);box-shadow:0 0 6px var(--gold);animation-delay:-0.9s"></div>
+<div class="twinkle" style="top:88%;left:28%;background:var(--star-white);box-shadow:0 0 6px var(--star-white);animation-delay:-1.7s"></div>
+<div class="twinkle" style="top:38%;left:97%;background:var(--green);box-shadow:0 0 6px var(--green);animation-delay:-3.1s"></div>
+
+<div class="zine-shell">
+
+  <nav class="ss-nav" style="--nav-accent:#4ade80;" aria-label="Star Stuff collection">
+    <span class="ss-nav-home-group"><a class="ss-nav-home" href="index.html"><span class="ss-star" aria-hidden="true">★</span> stuff</a><a class="ss-nav-about" href="about.html">about</a></span>
+    <span class="ss-nav-links">
+      <a class="ss-nav-prev" href="bodies-of-water-zine.html"><span class="ss-nav-arrow" aria-hidden="true">‹</span> <span class="ss-nav-label">Bodies of Water</span></a>
+      <a class="ss-nav-next" href="constellation-field-guide.html"><span class="ss-nav-label">Field Guide</span> <span class="ss-nav-arrow" aria-hidden="true">›</span></a>
+    </span>
+  </nav>
+
+  <nav class="nav">
+    <div class="nav-brand">Stimpunks · Zine No. 24</div>
+    <div class="nav-controls">
+      <button class="nav-btn" id="prev-btn" onclick="changePage(-1)">← prev</button>
+      <span class="page-counter" id="page-counter">1 / 8</span>
+      <button class="nav-btn" id="next-btn" onclick="changePage(1)">next →</button>
+    </div>
+  </nav>
+
+  <!-- ════ SPREAD 1: COVER ════ -->
+  <div class="spread active" id="spread-1">
+    <div class="cover-spread">
+      <svg class="cover-motif" viewBox="0 0 340 340" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <!-- a sun, breathed around by a shared spiral of air, with leaves and drifting particles -->
+        <!-- sun -->
+        <circle cx="196" cy="128" r="30" fill="rgba(251,191,36,0.18)" stroke="rgba(251,191,36,0.85)" stroke-width="1.8"/>
+        <g stroke="rgba(251,191,36,0.6)" stroke-width="1.4" stroke-linecap="round">
+          <line x1="196" y1="86" x2="196" y2="74"/><line x1="196" y1="182" x2="196" y2="170"/>
+          <line x1="154" y1="128" x2="142" y2="128"/><line x1="250" y1="128" x2="238" y2="128"/>
+          <line x1="166" y1="98" x2="158" y2="90"/><line x1="226" y1="158" x2="234" y2="166"/>
+          <line x1="226" y1="98" x2="234" y2="90"/><line x1="166" y1="158" x2="158" y2="166"/>
+        </g>
+        <!-- shared breath spiral encircling everything -->
+        <path d="M196 128 m0 -76 a76 76 0 1 1 -54 22" fill="none" stroke="rgba(74,222,128,0.55)" stroke-width="1.6" stroke-linecap="round"/>
+        <path d="M196 128 m0 -104 a104 104 0 1 0 74 30" fill="none" stroke="rgba(74,222,128,0.3)" stroke-width="1.3" stroke-linecap="round" stroke-dasharray="3 6"/>
+        <!-- drifting breath particles -->
+        <g fill="rgba(244,244,251,0.8)"><circle cx="96" cy="70" r="2"/><circle cx="120" cy="110" r="1.7"/><circle cx="80" cy="150" r="2"/><circle cx="150" cy="196" r="1.7"/><circle cx="272" cy="196" r="2"/></g>
+        <!-- leaves -->
+        <g fill="rgba(74,222,128,0.7)">
+          <path d="M92 214 q18 -14 34 0 q-16 14 -34 0 z"/>
+          <path d="M228 244 q16 -12 30 0 q-14 12 -30 0 z"/>
+        </g>
+        <g stroke="rgba(74,222,128,0.5)" stroke-width="0.9"><line x1="92" y1="214" x2="126" y2="214"/><line x1="228" y1="244" x2="258" y2="244"/></g>
+        <!-- two small figures sharing air -->
+        <g fill="rgba(167,139,250,0.7)"><circle cx="120" cy="262" r="6"/><circle cx="170" cy="270" r="6"/></g>
+        <path d="M126 262 q22 -10 44 8" fill="none" stroke="rgba(74,222,128,0.5)" stroke-width="1.2" stroke-dasharray="2 3"/>
+        <text x="170" y="316" font-family="Space Mono, monospace" font-size="8" letter-spacing="1.5" fill="rgba(74,222,128,0.8)" text-anchor="middle">we all share air</text>
+      </svg>
+
+      <div class="cover-corner">
+        <div class="cover-corner-num">24</div>
+        <span class="cover-corner-label">Air</span>
+      </div>
+
+      <div class="cover-issue">Stimpunks Foundation · Zine No. 24</div>
+
+      <h1 class="cover-title">Shared <span class="spectrum-word">Air</span></h1>
+
+      <p class="cover-subtitle">on breath, the atmospheric commons, and who gets to breathe</p>
+
+      <hr class="spectrum-line cover-rule">
+
+      <div class="cover-meta">
+        <div class="cover-ls">L★S</div>
+        <div class="cover-meta-text">
+          Love You Down<br>
+          To Your Star Stuff<br>
+          · open edition ·
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 2: One Ocean of Air ════ -->
+  <div class="spread" id="spread-2">
+    <div class="interior">
+      <div class="spread-2col">
+        <div class="spread-left">
+          <div class="eyebrow">The atmosphere</div>
+          <h2 class="spread-heading">One ocean<br>of <span style="color:var(--green)">air</span></h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p>There is only one air. The atmosphere is a single, restless, well-mixed body — no walls inside it, no separate airs for separate people. What you breathe out drifts and spreads, and within a year or two it has circled the whole planet. A breath here becomes a breath everywhere.</p>
+            <p>It mixes so completely that the numbers turn tender. One breath holds something like ten thousand billion billion molecules — so many that, once an old breath has scattered through the sky, your next lungful very likely carries a few atoms once breathed by people long gone, and by strangers on the far side of the Earth right now.</p>
+            <p>We are not sipping from separate cups. We are all drinking from the same sky.</p>
+          </div>
+          <div class="pull-quote">We are all drinking from the same sky.</div>
+        </div>
+        <div class="spread-right">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 260 220" xmlns="http://www.w3.org/2000/svg">
+              <!-- earth with one thin atmosphere, breath circulating globally -->
+              <circle cx="130" cy="112" r="52" fill="rgba(74,222,128,0.10)" stroke="rgba(74,222,128,0.6)" stroke-width="1.2"/>
+              <!-- continents suggestion -->
+              <g fill="rgba(74,222,128,0.35)"><path d="M104 84 q18 -6 30 6 q-4 14 -20 12 q-14 -2 -10 -18 z"/><path d="M132 128 q20 -4 26 10 q-8 16 -24 10 q-8 -12 -2 -20 z"/></g>
+              <!-- one thin atmosphere shell -->
+              <circle cx="130" cy="112" r="62" fill="none" stroke="rgba(34,211,238,0.5)" stroke-width="3"/>
+              <text x="130" y="44" font-family="Space Mono, monospace" font-size="5" fill="rgba(34,211,238,0.85)" text-anchor="middle">one thin shell of air</text>
+              <!-- circulating breath arrows around it -->
+              <g fill="none" stroke="rgba(244,244,251,0.6)" stroke-width="1.2">
+                <path d="M130 40 a72 72 0 0 1 62 40"/><path d="M186 88 l7 -8 l6 9"/>
+                <path d="M192 148 a72 72 0 0 1 -66 44"/><path d="M124 187 l-8 5 l2 -10"/>
+                <path d="M68 148 a72 72 0 0 1 -4 -74"/><path d="M63 78 l1 -10 l8 6"/>
+              </g>
+              <text x="130" y="208" font-family="Space Mono, monospace" font-size="5" fill="rgba(74,222,128,0.85)" text-anchor="middle">a breath here becomes a breath everywhere</text>
+            </svg>
+            <p class="diagram-caption">
+              one connected body of air<br>
+              <span class="annotation">no separate skies</span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Shared Air · Stimpunks</span>
+        <span class="spread-footer-right">2</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 3: What the Trees Exhale ════ -->
+  <div class="spread" id="spread-3">
+    <div class="interior">
+      <div class="spread-2col">
+        <div class="spread-left">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 260 220" xmlns="http://www.w3.org/2000/svg">
+              <!-- the reciprocal breath: person <-> tree, O2/CO2 loop, sun + cyanobacteria -->
+              <!-- sun -->
+              <circle cx="130" cy="30" r="12" fill="rgba(251,191,36,0.22)" stroke="rgba(251,191,36,0.8)" stroke-width="1.3"/>
+              <g stroke="rgba(251,191,36,0.55)" stroke-width="1"><line x1="130" y1="12" x2="130" y2="6"/><line x1="112" y1="30" x2="106" y2="30"/><line x1="148" y1="30" x2="154" y2="30"/></g>
+              <!-- person (left) -->
+              <circle cx="58" cy="118" r="10" fill="rgba(167,139,250,0.85)"/>
+              <line x1="58" y1="128" x2="58" y2="158" stroke="rgba(167,139,250,0.85)" stroke-width="2.6"/>
+              <text x="58" y="176" font-family="Space Mono, monospace" font-size="5" fill="rgba(167,139,250,0.9)" text-anchor="middle">you</text>
+              <!-- tree (right) -->
+              <path d="M202 158 l0 -30" stroke="rgba(74,222,128,0.85)" stroke-width="3"/>
+              <circle cx="202" cy="112" r="20" fill="rgba(74,222,128,0.18)" stroke="rgba(74,222,128,0.8)" stroke-width="1.4"/>
+              <text x="202" y="176" font-family="Space Mono, monospace" font-size="5" fill="rgba(74,222,128,0.9)" text-anchor="middle">tree</text>
+              <!-- exchange loop -->
+              <path d="M74 106 q56 -26 112 0" fill="none" stroke="rgba(34,211,238,0.7)" stroke-width="1.4"/>
+              <path d="M180 106 l8 -3 l-2 9" fill="none" stroke="rgba(34,211,238,0.7)" stroke-width="1.4"/>
+              <text x="130" y="80" font-family="Space Mono, monospace" font-size="5" fill="rgba(34,211,238,0.9)" text-anchor="middle">O₂ →</text>
+              <path d="M186 132 q-56 26 -112 0" fill="none" stroke="rgba(136,134,160,0.7)" stroke-width="1.4"/>
+              <path d="M80 132 l-8 3 l2 -9" fill="none" stroke="rgba(136,134,160,0.7)" stroke-width="1.4"/>
+              <text x="130" y="150" font-family="Space Mono, monospace" font-size="5" fill="rgba(136,134,160,0.9)" text-anchor="middle">← CO₂</text>
+              <text x="130" y="206" font-family="Space Mono, monospace" font-size="5" fill="rgba(74,222,128,0.85)" text-anchor="middle">each breathes what the other breathes out</text>
+            </svg>
+            <p class="diagram-caption">
+              respiration ↔ photosynthesis<br>
+              <span class="annotation">breathing on opposite beats</span>
+            </p>
+          </div>
+        </div>
+        <div class="spread-right">
+          <div class="eyebrow">The reciprocal breath</div>
+          <h2 class="spread-heading">What the trees<br><span style="color:var(--green)">exhale</span></h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p>Your breath is a conversation with the green world. You breathe in oxygen and breathe out carbon; leaves do the mirror image — taking in your carbon, handing back oxygen. Inhale, exhale, inhale: the forest is breathing with you, on the opposite beat.</p>
+            <p>And the oxygen itself is a gift older than animals. For most of Earth's history there was almost none to breathe — until <span class="green">cyanobacteria</span> invented photosynthesis and, across the Great Oxidation Event some 2.4 billion years ago, slowly exhaled an entire breathable sky. Every lungful you take is the exhaust of ancient microbes, kept fresh by every plant since.</p>
+            <p>Follow the atoms back further and they leave the planet: the oxygen and nitrogen in the air were forged in the hearts of stars. You breathe <span class="gold">star stuff</span> that life remade for life.</p>
+          </div>
+          <div class="pull-quote gold">Every breath is the exhaust of ancient life — forged first in stars.</div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Shared Air · Stimpunks</span>
+        <span class="spread-footer-right">3</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 4: Listen to the Canaries ════ -->
+  <div class="spread" id="spread-4">
+    <div class="interior">
+      <div class="spread-2col">
+        <div class="spread-left">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 260 220" xmlns="http://www.w3.org/2000/svg">
+              <!-- who senses the bad air first: canary early, most people late -->
+              <text x="130" y="24" font-family="Space Mono, monospace" font-size="5" fill="rgba(136,134,160,0.85)" text-anchor="middle">who senses the bad air first?</text>
+              <!-- canary -->
+              <ellipse cx="52" cy="86" rx="16" ry="13" fill="rgba(251,191,36,0.85)"/>
+              <circle cx="66" cy="74" r="8" fill="rgba(251,191,36,0.9)"/>
+              <path d="M73 72 l8 2 l-8 3 z" fill="rgba(251,140,36,0.95)"/>
+              <circle cx="67" cy="72" r="1.4" fill="#0f0f2a"/>
+              <path d="M40 92 q-14 4 -20 -2 q10 -2 18 -8 z" fill="rgba(251,191,36,0.7)"/>
+              <g stroke="rgba(251,191,36,0.85)" stroke-width="1.2"><line x1="50" y1="99" x2="50" y2="106"/><line x1="58" y1="99" x2="58" y2="106"/></g>
+              <!-- sensing arcs toward the bad air -->
+              <g fill="none" stroke="rgba(74,222,128,0.6)" stroke-width="1.1"><path d="M82 80 q8 6 0 14"/><path d="M90 74 q13 10 0 26"/></g>
+              <!-- wisp of bad air (right) -->
+              <path d="M212 116 q8 -22 0 -42 q12 12 5 42 z" fill="rgba(244,114,182,0.30)" stroke="rgba(244,114,182,0.65)" stroke-width="1"/>
+              <g fill="rgba(244,114,182,0.4)"><circle cx="198" cy="72" r="2.2"/><circle cx="186" cy="84" r="1.8"/></g>
+              <!-- dose axis: clean -> dangerous -->
+              <line x1="28" y1="164" x2="234" y2="164" stroke="rgba(136,134,160,0.4)" stroke-width="1"/>
+              <text x="30" y="180" font-family="Space Mono, monospace" font-size="4.6" fill="rgba(74,222,128,0.85)" text-anchor="start">clean</text>
+              <text x="232" y="180" font-family="Space Mono, monospace" font-size="4.6" fill="rgba(244,114,182,0.9)" text-anchor="end">dangerous →</text>
+              <!-- canary notices early (low dose) -->
+              <line x1="96" y1="150" x2="96" y2="164" stroke="rgba(251,191,36,0.9)" stroke-width="1.4"/>
+              <circle cx="96" cy="150" r="3.4" fill="rgba(251,191,36,0.95)"/>
+              <text x="96" y="144" font-family="Space Mono, monospace" font-size="4.6" fill="rgba(251,191,36,0.9)" text-anchor="middle">canary</text>
+              <!-- most people notice late (high dose) -->
+              <line x1="188" y1="150" x2="188" y2="164" stroke="rgba(136,134,160,0.8)" stroke-width="1.4"/>
+              <circle cx="188" cy="150" r="3.4" fill="rgba(136,134,160,0.85)"/>
+              <text x="188" y="144" font-family="Space Mono, monospace" font-size="4.6" fill="rgba(136,134,160,0.9)" text-anchor="middle">most people</text>
+              <text x="130" y="204" font-family="Space Mono, monospace" font-size="5" fill="rgba(74,222,128,0.85)" text-anchor="middle">the alarm is information</text>
+            </svg>
+            <p class="diagram-caption">
+              sensitive first · a signal, not a flaw<br>
+              <span class="annotation">read it, don't blame it</span>
+            </p>
+          </div>
+        </div>
+        <div class="spread-right">
+          <div class="eyebrow">Sensory sensitivity</div>
+          <h2 class="spread-heading">Listen to the<br><span style="color:var(--green)">canaries</span></h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p>Miners once carried canaries underground. The little birds felt the bad air — the odourless gas, the thinning oxygen — long before any person could. Not because they were weak, but because they were <em>sensitive</em>: their alarm was information, and it saved lives.</p>
+            <p>Many of us are the canaries of the shared room. We catch the perfume three desks away, the stale unmoved air, the cleaning-chemical sting, the fluorescent hum pressing on the skull. Our discomfort isn't fussiness or fragility — it's an <span class="green">early-warning system</span> telling everyone the air has gone bad.</p>
+            <p>The old mistake is to blame the bird: <em>you're too sensitive.</em> The wiser move is to read the signal and change the air. What's unbearable for the most sensitive is quietly wearing on everyone — so build it breathable for the canaries, and it's breathable for all.</p>
+          </div>
+          <div class="pull-quote green">Don't blame the canary. Change the air.</div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Shared Air · Stimpunks</span>
+        <span class="spread-footer-right">4</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 5: Habitable, and For Whom? ════ -->
+  <div class="spread" id="spread-5">
+    <div class="interior">
+      <div class="spread-2col">
+        <div class="spread-left">
+          <div class="eyebrow">The habitability question</div>
+          <h2 class="spread-heading">Habitable —<br>and for <span style="color:var(--green)">whom</span>?</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p>Shared air is only shared if everyone in it can breathe. So the phrase carries a harder question: <em>habitable, and for whom?</em></p>
+            <p>The same room is not the same for everyone. Fragrance, smoke, dust, idling exhaust, an airborne virus — the load lands unevenly, heaviest on disabled, chronically ill, and racialised people, and on those with the least power to leave. One person's ordinary afternoon is another's asthma attack, migraine, or infection.</p>
+            <p>Too often the fix gets dumped on whoever is harmed: mask alone, sit by the door, send the email that starts <em>"so sorry to be difficult."</em> That's backwards. Breathable air is a <span class="green">commons</span> — a collective responsibility, not a private accommodation one person has to quietly manage.</p>
+          </div>
+          <div class="pull-quote pink">Shared air is only shared if everyone in it can breathe.</div>
+        </div>
+        <div class="spread-right">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 260 220" xmlns="http://www.w3.org/2000/svg">
+              <!-- one room, uneven air: some breathe easy, some struggle -->
+              <rect x="26" y="40" width="208" height="120" rx="4" fill="rgba(167,139,250,0.05)" stroke="rgba(167,139,250,0.4)" stroke-width="1.2"/>
+              <text x="130" y="32" font-family="Space Mono, monospace" font-size="5" fill="rgba(136,134,160,0.85)" text-anchor="middle">the same room</text>
+              <!-- source of bad air -->
+              <path d="M188 132 q6 -18 0 -34 q10 10 4 34 z" fill="rgba(244,114,182,0.35)" stroke="rgba(244,114,182,0.7)" stroke-width="1"/>
+              <g fill="rgba(244,114,182,0.4)"><circle cx="176" cy="86" r="2.4"/><circle cx="164" cy="98" r="2"/><circle cx="150" cy="90" r="1.7"/></g>
+              <text x="196" y="150" font-family="Space Mono, monospace" font-size="4.6" fill="rgba(244,114,182,0.9)" text-anchor="middle">scent · smoke · virus</text>
+              <!-- figures who breathe easy (green) -->
+              <g><circle cx="58" cy="96" r="9" fill="rgba(74,222,128,0.85)"/><line x1="58" y1="105" x2="58" y2="128" stroke="rgba(74,222,128,0.85)" stroke-width="2.4"/></g>
+              <text x="58" y="146" font-family="Space Mono, monospace" font-size="4.6" fill="rgba(74,222,128,0.9)" text-anchor="middle">fine</text>
+              <!-- figure struggling (pink) -->
+              <g><circle cx="120" cy="100" r="9" fill="rgba(244,114,182,0.85)"/><line x1="120" y1="109" x2="120" y2="132" stroke="rgba(244,114,182,0.85)" stroke-width="2.4"/></g>
+              <g stroke="rgba(244,114,182,0.8)" stroke-width="1.2"><path d="M112 90 q8 -6 16 0"/></g>
+              <text x="120" y="150" font-family="Space Mono, monospace" font-size="4.6" fill="rgba(244,114,182,0.9)" text-anchor="middle">can't breathe</text>
+              <text x="130" y="176" font-family="Space Mono, monospace" font-size="5" fill="rgba(136,134,160,0.85)" text-anchor="middle">the burden falls unevenly</text>
+            </svg>
+            <p class="diagram-caption">
+              same room · different air<br>
+              <span class="annotation">habitable, for whom?</span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Shared Air · Stimpunks</span>
+        <span class="spread-footer-right">5</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 6: Move Quietly and Plant Things (solarpunk) ════ -->
+  <div class="spread" id="spread-6">
+    <div class="interior">
+      <div class="spread-2col">
+        <div class="spread-left">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 260 224" xmlns="http://www.w3.org/2000/svg">
+              <!-- solarpunk clean-air infrastructure: window, plant, mask, Corsi-Rosenthal box -->
+              <!-- open window with fresh air -->
+              <rect x="24" y="40" width="52" height="60" rx="2" fill="rgba(34,211,238,0.08)" stroke="rgba(34,211,238,0.6)" stroke-width="1.3"/>
+              <line x1="50" y1="40" x2="50" y2="100" stroke="rgba(34,211,238,0.5)" stroke-width="1"/>
+              <line x1="24" y1="70" x2="76" y2="70" stroke="rgba(34,211,238,0.5)" stroke-width="1"/>
+              <g fill="none" stroke="rgba(74,222,128,0.6)" stroke-width="1.1"><path d="M84 54 q10 6 0 12"/><path d="M84 74 q12 6 0 12"/></g>
+              <text x="50" y="114" font-family="Space Mono, monospace" font-size="4.6" fill="rgba(34,211,238,0.9)" text-anchor="middle">open window</text>
+              <!-- potted plant -->
+              <path d="M110 100 l6 -30 M110 100 l-4 -22 M110 100 l14 -20" stroke="rgba(74,222,128,0.85)" stroke-width="1.6" fill="none"/>
+              <path d="M100 100 l20 0 l-3 16 l-14 0 z" fill="rgba(251,191,36,0.25)" stroke="rgba(251,191,36,0.7)" stroke-width="1.2"/>
+              <text x="110" y="130" font-family="Space Mono, monospace" font-size="4.6" fill="rgba(74,222,128,0.9)" text-anchor="middle">plant</text>
+              <!-- mask -->
+              <path d="M150 66 q12 -8 24 0 q2 12 -12 16 q-14 -4 -12 -16 z" fill="rgba(167,139,250,0.18)" stroke="rgba(167,139,250,0.8)" stroke-width="1.3"/>
+              <path d="M150 68 l-8 -3 M174 68 l8 -3" stroke="rgba(167,139,250,0.7)" stroke-width="1"/>
+              <text x="162" y="98" font-family="Space Mono, monospace" font-size="4.6" fill="rgba(167,139,250,0.9)" text-anchor="middle">mask</text>
+              <!-- Corsi-Rosenthal box (box fan + filters) -->
+              <rect x="196" y="52" width="40" height="44" rx="2" fill="rgba(74,222,128,0.10)" stroke="rgba(74,222,128,0.8)" stroke-width="1.4"/>
+              <circle cx="216" cy="74" r="12" fill="none" stroke="rgba(74,222,128,0.8)" stroke-width="1.2"/>
+              <g stroke="rgba(74,222,128,0.7)" stroke-width="1"><path d="M216 74 l8 -4"/><path d="M216 74 l-6 6"/><path d="M216 74 l2 -9"/></g>
+              <g fill="none" stroke="rgba(244,244,251,0.6)" stroke-width="1.1"><path d="M216 44 l0 -8"/><path d="M210 40 l6 -6 l6 6"/></g>
+              <text x="216" y="112" font-family="Space Mono, monospace" font-size="4.4" fill="rgba(74,222,128,0.9)" text-anchor="middle">CR box</text>
+              <!-- clean air baseline -->
+              <path d="M30 150 q50 -10 100 0 q50 10 100 0" fill="none" stroke="rgba(74,222,128,0.6)" stroke-width="1.4"/>
+              <text x="130" y="170" font-family="Space Mono, monospace" font-size="5" fill="rgba(74,222,128,0.9)" text-anchor="middle">clean air, built and shared</text>
+              <text x="130" y="188" font-family="Space Mono, monospace" font-size="5" fill="rgba(251,191,36,0.9)" text-anchor="middle">infrastructure as resistance</text>
+            </svg>
+            <p class="diagram-caption">
+              window · plant · mask · filter box<br>
+              <span class="annotation">mutual aid you can build</span>
+            </p>
+          </div>
+        </div>
+        <div class="spread-right">
+          <div class="eyebrow">Solarpunk</div>
+          <h2 class="spread-heading">Move quietly<br>and plant <span style="color:var(--green)">things</span></h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p>Here's the hopeful part, and it's buildable. Clean, welcoming air isn't a luxury or a wish — it's <span class="green">infrastructure</span>. Open a window. Add a plant. Wear the mask. Run a <span class="green">Corsi–Rosenthal box</span> — a box fan and a few furnace filters taped into a cube, scrubbing a room's air for the price of a nice dinner. Mutual aid you can build in an afternoon.</p>
+            <p>This is <a href="https://stimpunks.org/glossary/solarpunk/">solarpunk</a>: not "move fast and break things" but <em>move quietly and plant things</em> — a future with a human face and dirt behind its ears, where infrastructure is a form of care and hope is something you assemble, together, out of ordinary parts.</p>
+            <p>We don't make air habitable by asking people to need less. We make it habitable by building better rooms — and sharing the how.</p>
+          </div>
+          <div class="refusals">
+            <div class="refusal"><span class="refusal-tag">Not</span><span>"too sensitive" — <strong>the canary isn't fragile; its alarm is information.</strong></span></div>
+            <div class="refusal"><span class="refusal-tag">Not</span><span>a private accommodation — <strong>habitable air is a commons, and a shared responsibility.</strong></span></div>
+            <div class="refusal"><span class="refusal-tag">Not</span><span>extraction — <strong>we move quietly and plant things; we don't move fast and break lungs.</strong></span></div>
+            <div class="refusal"><span class="refusal-tag">Not</span><span>scarcity — <strong>breathable, welcoming space isn't rationed; it's built and shared.</strong></span></div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Shared Air · Stimpunks</span>
+        <span class="spread-footer-right">6</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 7: The Oldest Breath (star-stuff close) ════ -->
+  <div class="spread" id="spread-7">
+    <div class="interior">
+      <div class="spread-2col">
+        <div class="spread-left">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 260 224" xmlns="http://www.w3.org/2000/svg">
+              <!-- cosmic breath spiral: star -> leaf -> lung -> sky, one loop -->
+              <path d="M130 116 m0 -80 a80 80 0 1 1 -56 24" fill="none" stroke="rgba(167,139,250,0.3)" stroke-width="1.2" stroke-dasharray="3 6"/>
+              <!-- star (top) -->
+              <path d="M130 22 l4 11 l12 0 l-9 7 l3 12 l-10 -7 l-10 7 l3 -12 l-9 -7 l12 0 z" fill="rgba(251,191,36,0.9)"/>
+              <text x="130" y="14" font-family="Space Mono, monospace" font-size="5" fill="rgba(251,191,36,0.9)" text-anchor="middle">forged in stars</text>
+              <!-- leaf (right) -->
+              <path d="M206 96 q20 -14 38 2 q-18 16 -38 -2 z" fill="rgba(74,222,128,0.7)"/>
+              <line x1="206" y1="96" x2="244" y2="98" stroke="rgba(74,222,128,0.5)" stroke-width="0.9"/>
+              <text x="222" y="120" font-family="Space Mono, monospace" font-size="5" fill="rgba(74,222,128,0.9)" text-anchor="middle">leaf</text>
+              <!-- lung / breath (bottom) -->
+              <path d="M116 168 q-14 4 -14 22 q0 12 12 12 q6 0 6 -10 l0 -24 z" fill="rgba(34,211,238,0.16)" stroke="rgba(34,211,238,0.75)" stroke-width="1.2"/>
+              <path d="M144 168 q14 4 14 22 q0 12 -12 12 q-6 0 -6 -10 l0 -24 z" fill="rgba(34,211,238,0.16)" stroke="rgba(34,211,238,0.75)" stroke-width="1.2"/>
+              <line x1="130" y1="158" x2="130" y2="182" stroke="rgba(34,211,238,0.75)" stroke-width="1.4"/>
+              <text x="130" y="216" font-family="Space Mono, monospace" font-size="5" fill="rgba(34,211,238,0.9)" text-anchor="middle">breath</text>
+              <!-- sky particles (left) -->
+              <g fill="rgba(244,244,251,0.7)"><circle cx="52" cy="96" r="2"/><circle cx="40" cy="120" r="1.6"/><circle cx="60" cy="132" r="1.6"/></g>
+              <text x="46" y="82" font-family="Space Mono, monospace" font-size="5" fill="rgba(244,244,251,0.8)" text-anchor="middle">sky</text>
+            </svg>
+            <p class="diagram-caption">
+              star · leaf · lung · sky<br>
+              <span class="annotation">held, then passed on</span>
+            </p>
+          </div>
+        </div>
+        <div class="spread-right">
+          <div class="eyebrow">The oldest breath</div>
+          <h2 class="spread-heading">The oldest<br><span class="spectrum-word">breath</span></h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p>Take one slow breath. The nitrogen in it is nearly as old as the Earth; the oxygen was exhaled by microbes before there were eyes to see them, and by a tree somewhere this morning. The atoms were cooked in stars that died before the Sun was lit. This air has been storm and birdsong and other people's words — and it will be again.</p>
+            <p>You don't own it. You couldn't. You hold each breath for a moment and pass it on — to the person beside you, the tree down the street, a stranger not yet born. Breathing is the quietest proof that we were never separate.</p>
+            <p>So share the air, and make it good. We all breathe the same star stuff, in and out, in common. <strong>Love you down to your star stuff.</strong></p>
+          </div>
+          <div class="pull-quote">You hold each breath for a moment and pass it on. We were never separate.</div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Shared Air · Stimpunks</span>
+        <span class="spread-footer-right">7</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 8: Colophon ════ -->
+  <div class="spread" id="spread-8">
+    <div class="interior">
+      <div class="colophon">
+        <div>
+          <div class="colophon-top">
+            <span class="colophon-ls">L★S</span>
+            <span class="colophon-phrase">There is only one air — old, borrowed, forged in stars and remade by life. Keeping it breathable is something we owe each other, not a favour anyone should have to beg for. Listen to the canaries; change the air.</span>
+          </div>
+          <div class="series-list">
+            <div class="series-item"><span class="series-num">No. 14</span> The Council of All Beings — multispecies justice &amp; more-than-human kin</div>
+            <div class="series-item"><span class="series-num">No. 15</span> Every Creature's Own Sky — umwelt, attention-worlds &amp; double empathy</div>
+            <div class="series-item"><span class="series-num">No. 20</span> The Same Water — phase transitions, fluctuating capacity &amp; changing the conditions</div>
+            <div class="series-item"><span class="series-num">No. 22</span> No One Is the Leader — emergence &amp; the murmuration</div>
+            <div class="series-item"><span class="series-num">No. 23</span> Bodies of Water — hydrofeminism, shared flow &amp; belonging that moves between us</div>
+            <div class="series-item current"><span class="series-num">No. 24</span> Shared Air — breath, the atmospheric commons &amp; who gets to breathe ← you are here</div>
+          </div>
+          <div class="reflect">
+            <div class="reflect-label">Reflection</div>
+            <p class="reflect-q">Whose breath are you holding right now — and who will hold it next?</p>
+            <p class="reflect-q">Where is your most breathable space — a shared-air room, a screen, somewhere else? What makes it so?</p>
+            <p class="reflect-q">In a room you share, who bears the cost of the air — and how could that be carried together?</p>
+          </div>
+          <p class="colophon-body">
+            Shared Air is the twenty-fourth zine in the Stimpunks series, and a companion to <a href="bodies-of-water-zine.html">Bodies of Water</a> (No. 23): water and air, the two commons we can't opt out of.<br><br>
+            The reframe is ours and our kin's: sensory sensitivity as an early-warning signal rather than a flaw — the "miner's canary," long taken up by disabled, chronically ill, and environmental-illness communities who name themselves the canaries of a world whose air has gone bad. It asks the <a href="https://stimpunks.org/glossary/shared-air-space/">shared-air</a> question: habitable, and for whom? The ethos is <a href="https://stimpunks.org/glossary/solarpunk/">solarpunk</a>: adrienne maree brown, <em>Emergent Strategy</em> (2017), on interdependence and collective care; and the Solarpunk Manifesto ("a future with a human face and dirt behind its ears"; "move quietly and plant things"). The science: the atmosphere as a single well-mixed body, and the shared-breath result; the reciprocal carbon–oxygen cycle of respiration and photosynthesis; the Great Oxidation Event, when cyanobacteria first oxygenated the sky (~2.4 billion years ago); the Corsi–Rosenthal box as DIY clean-air mutual aid; and the stellar origin of the oxygen and nitrogen we breathe.<br><br>
+            The star stuff is Carl Sagan's, and the SN 1006 remnant on every Stimpunks page. The reading — that the air is a commons, and every way of breathing together counts — is ours. You were ★stuff, sharing the same old sky, all along.
+          </p>
+        </div>
+        <div class="colophon-footer">
+          Stimpunks Foundation · Zine No. 24 · Open Edition<br>
+          Print freely · Share freely · <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> · L★S<br>
+          stimpunks.org · starstuff.earth
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Shared Air · Stimpunks</span>
+        <span class="spread-footer-right">8</span>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /zine-shell -->
+
+<script>
+  let current = 1;
+  const total = 8;
+
+  function changePage(dir) {
+    const next = current + dir;
+    if (next < 1 || next > total) return;
+    document.getElementById('spread-' + current).classList.remove('active');
+    current = next;
+    document.getElementById('spread-' + current).classList.add('active');
+    document.getElementById('page-counter').textContent = current + ' / ' + total;
+    document.getElementById('prev-btn').style.opacity = current === 1 ? '0.3' : '1';
+    document.getElementById('next-btn').style.opacity = current === total ? '0.3' : '1';
+    document.getElementById('prev-btn').classList.toggle('active', current > 1);
+    document.getElementById('next-btn').classList.toggle('active', current < total);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') changePage(1);
+    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   changePage(-1);
+  });
+
+  document.getElementById('prev-btn').style.opacity = '0.3';
+  document.getElementById('next-btn').classList.add('active');
+</script>
+<script src="starstuff.js" defer></script>
+</body>
+</html>
