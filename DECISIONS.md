@@ -15,8 +15,7 @@ Decisions still to make. Move to **Settled** with a date once resolved.
 - **Extract design tokens + starfield into `starstuff.css`?** They still live inline in every
   page. Moving them to the shared stylesheet single-sources them but breaks each page's total
   self-containment. Decide whether the DRY win is worth the coupling. (Flagged in CLAUDE.md.)
-- **Add a `LICENSE` file?** Intent is an open edition — print free, share freely. CC BY-NC-SA
-  fits, but no `LICENSE` file exists yet. Decide whether to make terms explicit in-repo.
+- _(license decision resolved 2026-07-21 — see Settled)_
 
 ---
 
@@ -25,6 +24,13 @@ Decisions still to make. Move to **Settled** with a date once resolved.
 Decisions already made, with a one-line why. Backfilled from git history — dates are first
 commit evidence, not necessarily when the call was made.
 
+- **2026-07-21 — License: CC BY-SA 4.0, applied to the whole collection.** Dropped the earlier
+  `NC` (commercial use allowed). Chose BY-SA over CC0 so attribution and share-alike hold —
+  credit stays with Stimpunks, and derivatives must stay open, matching the anti-enclosure ethos.
+  Added a full `LICENSE` file and a visible `rel="license"` link in every page footer.
+  Applied as a **blanket** license including guest-authored pieces (Helen Edgar's guest zine,
+  coda, and essay summary), per owner's decision — noting those carry their own `©` notices.
+  CC0 remains a possible future loosening (see Parked).
 - **2026-07-20 — Persistent About in the shared nav.** `ss-nav` carries a home+about pill
   cluster on every page, so the collection's framing is one click away from anywhere.
 - **2026-07-20 — Per-spread footer nav + `#spread-N` deep links.** Paged zines get prev/next
@@ -58,4 +64,6 @@ commit evidence, not necessarily when the call was made.
 
 Ideas deferred, not rejected — revisit later.
 
-- _(none yet)_
+- **Loosen to CC0 later?** BY-SA → CC0 is the easy direction and ours to make as rights holder;
+  the catch is guest-contributed portions, which need each author's sign-off before CC0 (it
+  waives attribution, which BY-SA preserves). Our own work can go CC0 anytime.
