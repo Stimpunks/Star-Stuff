@@ -130,19 +130,22 @@ Two senses appear and must stay distinct:
 Keep the banana as the problem and Cavendish Space as the response. "We refuse to build Cavendish
 Space" is inverted and wrong.
 
-## Reference material (in the Claude.ai project, not this repo)
+## Reference material (`reference/`)
 
-Three academic sources ground the more-than-human / ecological strands of the collection. Use them
-for content accuracy; they are not files in the repo:
+Three academic sources ground the more-than-human / ecological strands of the collection. They live
+in `reference/` in this repo — read them for content accuracy when writing or editing those strands:
 
-- **Ombre Tarragnat**, article in *TRACE* (2025) — critiques anthropocentrism and neuroreductionism
-  in neurodiversity studies and proposes **ethodiversity / ethodivergence** (extending neurodiversity
-  to all beings with a nervous system, via ethology). Basis for the ethodiversity thread in Zine No. 8.
-- **Harms, Joshi & Knauß**, "Designing multispecies role-playing games," *npj Urban Sustainability*
-  (2025) — giving non-human beings a voice ("a folding chair") in planning.
-- **Astrida Neimanis**, "Hydrofeminism: Or, On Becoming a Body of Water" — watery embodiment and
-  more-than-human relation ("we are all bodies of water"). Basis for water-themed pieces
-  (e.g. *The Same Water*, *The Nearest Body*).
+- **`reference/144936ArticleText38818411020250323.pdf`** — **Ombre Tarragnat**, article in *TRACE*
+  (2025). Critiques anthropocentrism and neuroreductionism in neurodiversity studies and proposes
+  **ethodiversity / ethodivergence** (extending neurodiversity to all beings with a nervous system,
+  via ethology). Basis for the ethodiversity thread in Zine No. 8.
+- **`reference/Designing_multispecies_roleplaying_games_From_hum.pdf`** — **Harms, Joshi & Knauß**,
+  "Designing multispecies role-playing games," *npj Urban Sustainability* (2025). Giving non-human
+  beings a voice ("a folding chair") in planning.
+- **`reference/hydrofeminism_or_on_becoming_a_body_of_water.pdf`** — **Astrida Neimanis**,
+  "Hydrofeminism: Or, On Becoming a Body of Water." Watery embodiment and more-than-human relation
+  ("we are all bodies of water"). Basis for water-themed pieces (e.g. *The Same Water*,
+  *The Nearest Body*).
 
 ## Usage / licensing
 
