@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0a0a14">
+<link rel="canonical" href="https://starstuff.earth/the-same-water-zine.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta name="description" content="Fluctuating capacity, read through phase transitions. Water doesn't get gradually stiffer — it flips to ice at a threshold. Same substance, different state, decided by conditions. Why could you do it yesterday and not today? Because capacity is a state, not a trait. Broken thresholds, not broken people — change the conditions, not the substance.">
+<!-- Open Graph / link unfurl -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Star Stuff · Stimpunks Foundation">
+<meta property="og:url" content="https://starstuff.earth/the-same-water-zine.html">
+<meta property="og:title" content="The Same Water">
+<meta property="og:description" content="Fluctuating capacity, read through phase transitions. Ice isn't broken water — it's water somewhere colder. Capacity is a state, not a trait. Broken thresholds, not broken people; change the conditions, not the substance.">
+<meta property="og:image" content="https://starstuff.earth/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A rainbow-hued cosmic image — we are all made of star stuff.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Same Water">
+<meta name="twitter:description" content="Fluctuating capacity through phase transitions. Ice isn't broken water — it's water somewhere colder. Capacity is a state, not a trait. Change the conditions, not the substance.">
+<meta name="twitter:image" content="https://starstuff.earth/og-card.jpg">
+<title>The Same Water — Stimpunks Zine No. 20</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="starstuff.css">
+<style>
+  :root {
+    --void:  #07070f;
+    --deep:  #0d0d1a;
+    --page:  #0f0f1c;
+    --violet:#a78bfa;
+    --pink:  #f472b6;
+    --gold:  #fbbf24;
+    --cyan:  #22d3ee;
+    --green: #4ade80;
+    --star-white: #f4f2fb;
+    --stardust:   #d4d0e4;
+    --dim:   #8a86a0;
+    --dim2:  #63607a;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--void);
+    font-family: 'Atkinson Hyperlegible', system-ui, sans-serif;
+    color: var(--star-white);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── STARFIELD (cyan · white · violet — water, ice, cold light) ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 8% 12%, rgba(34,211,238,0.85) 0%, transparent 100%),
+      radial-gradient(1px 1px at 22% 38%, rgba(244,244,251,0.7) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 44% 9%, rgba(34,211,238,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 61% 68%, rgba(34,211,238,0.7) 0%, transparent 100%),
+      radial-gradient(2px 2px at 74% 28%, rgba(167,139,250,0.55) 0%, transparent 100%),
+      radial-gradient(1px 1px at 84% 54%, rgba(244,244,251,0.7) 0%, transparent 100%),
+      radial-gradient(1px 1px at 91% 79%, rgba(34,211,238,0.6) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 4% 58%, rgba(34,211,238,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 34% 84%, rgba(244,244,251,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 54% 48%, rgba(167,139,250,0.5) 0%, transparent 100%),
+      radial-gradient(2px 2px at 19% 88%, rgba(34,211,238,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 69% 4%, rgba(244,244,251,0.8) 0%, transparent 100%),
+      radial-gradient(1px 1px at 47% 62%, rgba(34,211,238,0.5) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 30% 20%, rgba(244,244,251,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 77% 88%, rgba(34,211,238,0.55) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .zine-shell { position: relative; z-index: 1; max-width: 820px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+
+  .spectrum-line { height: 2px; border: none; border-radius: 2px; background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); }
+
+  /* ── NAV ── */
+  .nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2.5rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(167,139,250,0.2); }
+  .nav-brand { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--dim); }
+  .nav-controls { display: flex; gap: 0.5rem; align-items: center; }
+  .nav-btn { background: none; border: 1px solid rgba(34,211,238,0.35); color: var(--stardust); font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.15em; padding: 0.4rem 0.85rem; border-radius: 2px; cursor: pointer; transition: all 0.2s ease; text-transform: uppercase; }
+  .nav-btn:hover { background: rgba(34,211,238,0.15); border-color: rgba(34,211,238,0.6); color: var(--star-white); }
+  .nav-btn.active { background: rgba(34,211,238,0.20); border-color: var(--cyan); color: var(--star-white); }
+  .page-counter { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.2em; color: var(--dim2); }
+
+  .spread { display: none; animation: fadeIn 0.5s ease forwards; }
+  .spread.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ── COVER ── */
+  .cover-spread {
+    position: relative; min-height: 520px; border-radius: 4px; overflow: hidden;
+    background:
+      radial-gradient(ellipse at 22% 20%, rgba(34,211,238,0.16) 0%, transparent 52%),
+      radial-gradient(ellipse at 80% 30%, rgba(167,139,250,0.10) 0%, transparent 50%),
+      radial-gradient(ellipse at 68% 82%, rgba(34,211,238,0.12) 0%, transparent 52%),
+      radial-gradient(ellipse at 30% 78%, rgba(244,244,251,0.06) 0%, transparent 52%),
+      var(--deep);
+    border: 1px solid rgba(167,139,250,0.25);
+    box-shadow: inset 0 0 80px rgba(34,211,238,0.07), 0 0 0 4px rgba(255,255,255,0.03);
+    display: flex; flex-direction: column; justify-content: flex-end; padding: 3rem;
+  }
+  .cover-motif { position: absolute; top: -6px; right: -18px; width: 340px; height: 340px; opacity: 0.72; pointer-events: none; }
+  .cover-issue { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.5em; text-transform: uppercase; color: var(--cyan); margin-bottom: 1.5rem; }
+  .cover-title { font-weight: 700; font-size: clamp(2.3rem, 6.6vw, 4rem); line-height: 1.02; color: var(--star-white); letter-spacing: -0.02em; margin-bottom: 0.9rem; }
+  .cover-title .spectrum-word { background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .cover-subtitle { font-size: 1rem; color: var(--stardust); opacity: 0.85; margin-bottom: 2rem; max-width: 470px; line-height: 1.55; }
+  .cover-rule { width: 220px; max-width: 60%; margin-bottom: 1.3rem; }
+  .cover-meta { display: flex; gap: 2rem; align-items: center; }
+  .cover-ls { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 1.4rem; color: var(--gold); letter-spacing: 0.05em; }
+  .cover-meta-text { font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--dim2); line-height: 1.9; }
+  .cover-corner { position: absolute; top: 2rem; right: 2.5rem; text-align: right; }
+  .cover-corner-num { font-weight: 700; font-size: 4.5rem; line-height: 1; color: var(--cyan); opacity: 0.26; }
+  .cover-corner-label { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); display: block; margin-top: -0.3rem; }
+
+  /* ── INTERIOR ── */
+  .interior { background: var(--page); border: 1px solid rgba(167,139,250,0.15); border-radius: 4px; overflow: hidden; min-height: 480px; }
+  .spread-2col { display: grid; grid-template-columns: 1fr 1fr; min-height: 480px; }
+  .spread-left, .spread-right { padding: 3rem 2.4rem; position: relative; }
+  .spread-left { border-right: 1px solid rgba(167,139,250,0.12); }
+
+  .eyebrow { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--cyan); margin-bottom: 1.1rem; }
+  .body-text { font-size: 0.98rem; line-height: 1.72; color: var(--stardust); }
+  .body-text p { margin-bottom: 1rem; }
+  .body-text p:last-child { margin-bottom: 0; }
+  .body-text strong { font-weight: 700; color: var(--star-white); }
+  .body-text em { font-style: italic; color: var(--star-white); }
+  .body-text a { color: var(--cyan); text-decoration: none; border-bottom: 1px solid rgba(34,211,238,0.4); }
+  .body-text a:hover { border-bottom-color: var(--cyan); color: var(--star-white); }
+  .body-text .violet { color: var(--violet); font-weight: 700; }
+  .body-text .pink { color: var(--pink); font-weight: 700; }
+  .body-text .gold { color: var(--gold); font-weight: 700; }
+  .body-text .cyan { color: var(--cyan); font-weight: 700; }
+  .body-text .green { color: var(--green); font-weight: 700; }
+
+  .spread-heading { font-weight: 700; font-size: 1.9rem; line-height: 1.12; color: var(--star-white); margin-bottom: 1.1rem; letter-spacing: -0.01em; }
+  .spread-heading .spectrum-word { background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .rule { width: 40px; margin: 1rem 0; }
+
+  .pull-quote { font-size: 1.18rem; font-weight: 700; line-height: 1.4; color: var(--star-white); border-left: 3px solid var(--cyan); padding-left: 1.1rem; margin: 1.4rem 0; }
+  .pull-quote.pink { border-left-color: var(--pink); }
+  .pull-quote.gold { border-left-color: var(--gold); }
+  .pull-quote.violet { border-left-color: var(--violet); }
+  .pull-quote.green { border-left-color: var(--green); }
+  .pull-quote .attr { display: block; font-family: 'Space Mono', monospace; font-size: 0.6rem; font-weight: 400; letter-spacing: 0.08em; color: var(--dim); margin-top: 0.6rem; }
+
+  /* ── DIAGRAMS ── */
+  .diagram-wrap { display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; }
+  .diagram { width: 100%; max-width: 280px; display: block; }
+  .diagram-caption { font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim); text-align: center; margin-top: 0.9rem; line-height: 1.9; }
+  .annotation { color: var(--cyan); }
+
+  /* ── REFUSALS ── */
+  .refusals { margin-top: 1.3rem; }
+  .refusal { font-size: 0.88rem; line-height: 1.5; color: var(--stardust); padding: 0.55rem 0; border-bottom: 1px solid rgba(167,139,250,0.1); display: flex; gap: 0.6rem; align-items: baseline; }
+  .refusal:last-child { border-bottom: none; }
+  .refusal-tag { font-family: 'Space Mono', monospace; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--pink); flex-shrink: 0; padding-top: 0.12rem; }
+  .refusal strong { color: var(--star-white); font-weight: 700; }
+
+  /* ── COLOPHON ── */
+  .colophon { padding: 3rem; display: flex; flex-direction: column; justify-content: space-between; min-height: 480px; background: radial-gradient(ellipse at 82% 18%, rgba(34,211,238,0.10) 0%, transparent 50%), radial-gradient(ellipse at 18% 85%, rgba(167,139,250,0.07) 0%, transparent 50%), var(--page); }
+  .colophon-top { border-bottom: 1px solid rgba(167,139,250,0.14); padding-bottom: 1.3rem; margin-bottom: 1.2rem; }
+  .colophon-ls { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 2.4rem; color: var(--gold); letter-spacing: 0.05em; display: block; margin-bottom: 0.4rem; }
+  .colophon-phrase { font-size: 0.92rem; font-weight: 700; color: var(--stardust); }
+  .series-list { display: flex; flex-direction: column; gap: 0.38rem; margin-bottom: 1.2rem; }
+  .series-item { font-size: 0.72rem; color: var(--dim); letter-spacing: 0.01em; display: flex; gap: 0.7rem; align-items: baseline; line-height: 1.45; }
+  .series-item.current { color: var(--cyan); font-weight: 700; }
+  .series-num { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim2); flex-shrink: 0; }
+  .series-item.current .series-num { color: var(--cyan); }
+  .reflect { border-top: 1px solid rgba(167,139,250,0.14); padding-top: 1rem; margin-bottom: 1.2rem; }
+  .reflect-label { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--cyan); margin-bottom: 0.65rem; }
+  .reflect-q { font-size: 0.86rem; line-height: 1.55; color: var(--stardust); margin-bottom: 0.55rem; }
+  .reflect-q:last-child { margin-bottom: 0; }
+  .colophon-body { font-size: 0.75rem; color: var(--dim); line-height: 1.75; margin-bottom: 1.2rem; }
+  .colophon-body a { color: var(--cyan); text-decoration: none; border-bottom: 1px solid rgba(34,211,238,0.4); }
+  .colophon-body a:hover { border-bottom-color: var(--cyan); }
+  .colophon-footer { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--dim); line-height: 2.2; border-top: 1px solid rgba(167,139,250,0.14); padding-top: 1rem; }
+
+  /* ── SPREAD FOOTER ── */
+  .spread-footer { display: flex; justify-content: space-between; align-items: center; padding: 0.9rem 2.4rem; border-top: 1px solid rgba(167,139,250,0.1); }
+  .spread-footer-left { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--dim); }
+  .spread-footer-right { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; color: var(--cyan); }
+
+  .twinkle { position: fixed; width: 3px; height: 3px; border-radius: 50%; animation: twinkle-anim 3s ease-in-out infinite; pointer-events: none; z-index: 0; }
+  @keyframes twinkle-anim { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.15; transform: scale(0.3); } }
+
+  @media (max-width: 600px) {
+    .spread-2col { grid-template-columns: 1fr; }
+    .spread-left { border-right: none; border-bottom: 1px solid rgba(167,139,250,0.12); }
+    .cover-spread { padding: 2rem; min-height: 420px; }
+    .cover-motif { width: 224px; height: 224px; top: -4px; right: -24px; opacity: 0.5; }
+    .cover-title { font-size: 2.2rem; }
+    .spread-heading { font-size: 1.55rem; }
+    .spread-left, .spread-right { padding: 2rem 1.5rem; }
+    .colophon { padding: 2rem 1.5rem; }
+  }
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"The Same Water","description":"Fluctuating capacity, read through phase transitions. Water doesn't get gradually stiffer — it flips to ice at a threshold. Same substance, different state, decided by conditions. Capacity is a state, not a trait. Broken thresholds, not broken people — change the conditions, not the substance.","image":"https://starstuff.earth/og-card.jpg","url":"https://starstuff.earth/the-same-water-zine.html","mainEntityOfPage":"https://starstuff.earth/the-same-water-zine.html","author":{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/"},"publisher":{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/","logo":{"@type":"ImageObject","url":"https://starstuff.earth/og-card.jpg"}},"isPartOf":{"@type":"WebSite","name":"Star Stuff","url":"https://starstuff.earth/"}}</script>
+</head>
+<body>
+
+<div class="twinkle" style="top:7%;left:11%;background:var(--cyan);box-shadow:0 0 6px var(--cyan);animation-delay:-0.4s"></div>
+<div class="twinkle" style="top:19%;left:83%;background:var(--star-white);box-shadow:0 0 6px var(--star-white);animation-delay:-1.3s"></div>
+<div class="twinkle" style="top:52%;left:4%;background:var(--cyan);box-shadow:0 0 6px var(--cyan);animation-delay:-2.1s"></div>
+<div class="twinkle" style="top:71%;left:94%;background:var(--violet);box-shadow:0 0 6px var(--violet);animation-delay:-0.9s"></div>
+<div class="twinkle" style="top:88%;left:28%;background:var(--cyan);box-shadow:0 0 6px var(--cyan);animation-delay:-1.7s"></div>
+<div class="twinkle" style="top:38%;left:97%;background:var(--star-white);box-shadow:0 0 6px var(--star-white);animation-delay:-3.1s"></div>
+
+<div class="zine-shell">
+
+  <nav class="ss-nav" style="--nav-accent:#22d3ee;" aria-label="Star Stuff collection">
+    <a class="ss-nav-home" href="index.html"><span class="ss-star" aria-hidden="true">★</span> stuff</a>
+    <span class="ss-nav-links">
+      <a class="ss-nav-prev" href="no-universal-now-zine.html"><span class="ss-nav-arrow" aria-hidden="true">‹</span> <span class="ss-nav-label">No Universal Now</span></a>
+      <a class="ss-nav-next" href="constellation-field-guide.html"><span class="ss-nav-label">Field Guide</span> <span class="ss-nav-arrow" aria-hidden="true">›</span></a>
+    </span>
+  </nav>
+
+  <nav class="nav">
+    <div class="nav-brand">Stimpunks · Zine No. 20</div>
+    <div class="nav-controls">
+      <button class="nav-btn" id="prev-btn" onclick="changePage(-1)">← prev</button>
+      <span class="page-counter" id="page-counter">1 / 8</span>
+      <button class="nav-btn" id="next-btn" onclick="changePage(1)">next →</button>
+    </div>
+  </nav>
+
+  <!-- ════ SPREAD 1: COVER ════ -->
+  <div class="spread active" id="spread-1">
+    <div class="cover-spread">
+      <svg class="cover-motif" viewBox="0 0 340 340" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <!-- same molecules, two states, across a boundary -->
+        <!-- boundary line -->
+        <line x1="176" y1="70" x2="176" y2="250" stroke="rgba(167,139,250,0.4)" stroke-width="1.2" stroke-dasharray="3 4"/>
+        <!-- LIQUID side (left): scattered molecules + ripples -->
+        <g fill="rgba(34,211,238,0.85)">
+          <circle cx="70" cy="120" r="5"/><circle cx="108" cy="150" r="5"/><circle cx="64" cy="178" r="5"/>
+          <circle cx="120" cy="196" r="5"/><circle cx="92" cy="224" r="5"/><circle cx="140" cy="128" r="5"/><circle cx="54" cy="150" r="4"/>
+        </g>
+        <path d="M50 250 q22 -10 44 0 q22 10 44 0 q14 -6 28 0" fill="none" stroke="rgba(34,211,238,0.4)" stroke-width="1.4" stroke-linecap="round"/>
+        <text x="100" y="272" font-family="Space Mono, monospace" font-size="7" letter-spacing="1" fill="rgba(34,211,238,0.75)" text-anchor="middle">liquid</text>
+        <!-- ICE side (right): hexagonal lattice of the same molecules -->
+        <g fill="rgba(244,244,251,0.9)">
+          <circle cx="230" cy="130" r="5"/><circle cx="266" cy="130" r="5"/>
+          <circle cx="212" cy="160" r="5"/><circle cx="248" cy="160" r="5"/><circle cx="284" cy="160" r="5"/>
+          <circle cx="230" cy="190" r="5"/><circle cx="266" cy="190" r="5"/>
+        </g>
+        <g stroke="rgba(34,211,238,0.5)" stroke-width="1.1">
+          <line x1="230" y1="130" x2="266" y2="130"/><line x1="230" y1="130" x2="212" y2="160"/><line x1="230" y1="130" x2="248" y2="160"/>
+          <line x1="266" y1="130" x2="248" y2="160"/><line x1="266" y1="130" x2="284" y2="160"/>
+          <line x1="212" y1="160" x2="230" y2="190"/><line x1="248" y1="160" x2="230" y2="190"/><line x1="248" y1="160" x2="266" y2="190"/><line x1="284" y1="160" x2="266" y2="190"/>
+          <line x1="230" y1="190" x2="266" y2="190"/>
+        </g>
+        <text x="248" y="272" font-family="Space Mono, monospace" font-size="7" letter-spacing="1" fill="rgba(244,244,251,0.8)" text-anchor="middle">ice</text>
+        <!-- a couple of stars -->
+        <g fill="#f4f2fb"><circle cx="150" cy="80" r="1.8"/><circle cx="300" cy="96" r="1.6"/><circle cx="44" cy="96" r="1.5"/></g>
+        <text x="176" y="304" font-family="Space Mono, monospace" font-size="8" letter-spacing="2" fill="rgba(34,211,238,0.7)" text-anchor="middle">same molecules · two states</text>
+      </svg>
+
+      <div class="cover-corner">
+        <div class="cover-corner-num">20</div>
+        <span class="cover-corner-label">Water</span>
+      </div>
+
+      <div class="cover-issue">Stimpunks Foundation · Zine No. 20</div>
+
+      <h1 class="cover-title">The Same <span class="spectrum-word">Water</span></h1>
+
+      <p class="cover-subtitle">on phase transitions, fluctuating capacity, and why "you could do it yesterday" was never the point</p>
+
+      <hr class="spectrum-line cover-rule">
+
+      <div class="cover-meta">
+        <div class="cover-ls">L★S</div>
+        <div class="cover-meta-text">
+          Love You Down<br>
+          To Your Star Stuff<br>
+          · open edition ·
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 2: Water Doesn't Get Gradually Stiffer ════ -->
+  <div class="spread" id="spread-2">
+    <div class="interior">
+      <div class="spread-2col">
+        <div class="spread-left">
+          <div class="eyebrow">Phase transitions</div>
+          <h2 class="spread-heading">Water doesn't get<br>gradually <span style="color:var(--cyan)">stiffer</span></h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p>Cool a glass of water and it does not slowly thicken toward solid. It stays liquid, liquid, liquid — and then, at a single temperature, it flips all at once into ice. Not a gradual stiffening; a sudden change of state.</p>
+            <p>It is the same H₂O on both sides — the very same molecules, only rearranged. Physicists call this a <span class="cyan">phase transition</span>: a substance holding steady until a threshold in its conditions is crossed, then reorganising completely — solid, liquid, gas — with nothing added and nothing taken away.</p>
+            <p>Nothing about the water got better or worse. It crossed a line.</p>
+          </div>
+          <div class="pull-quote">Nothing about the water changed. It crossed a line.</div>
+        </div>
+        <div class="spread-right">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 260 220" xmlns="http://www.w3.org/2000/svg">
+              <!-- a step function: liquid holds flat, then a cliff to ice at the threshold -->
+              <line x1="30" y1="40" x2="30" y2="180" stroke="rgba(136,134,160,0.4)" stroke-width="1"/>
+              <line x1="30" y1="180" x2="236" y2="180" stroke="rgba(136,134,160,0.4)" stroke-width="1"/>
+              <text x="18" y="46" font-family="Space Mono, monospace" font-size="5" fill="rgba(136,134,160,0.75)" text-anchor="middle" transform="rotate(-90 18 46)">state</text>
+              <text x="228" y="196" font-family="Space Mono, monospace" font-size="5" fill="rgba(136,134,160,0.75)" text-anchor="end">colder →</text>
+              <!-- liquid flat (high), cliff down at threshold, ice flat (low) -->
+              <polyline points="40,70 132,70" fill="none" stroke="rgba(34,211,238,0.9)" stroke-width="2.2"/>
+              <line x1="132" y1="70" x2="132" y2="150" stroke="rgba(244,244,251,0.85)" stroke-width="2.2" stroke-dasharray="3 3"/>
+              <polyline points="132,150 226,150" fill="none" stroke="rgba(244,244,251,0.85)" stroke-width="2.2"/>
+              <text x="86" y="60" font-family="Space Mono, monospace" font-size="5.4" fill="rgba(34,211,238,0.9)" text-anchor="middle">liquid</text>
+              <text x="180" y="166" font-family="Space Mono, monospace" font-size="5.4" fill="rgba(244,244,251,0.85)" text-anchor="middle">ice</text>
+              <!-- threshold marker -->
+              <circle cx="132" cy="110" r="3.5" fill="rgba(251,191,36,0.95)"/>
+              <text x="132" y="200" font-family="Space Mono, monospace" font-size="5" fill="rgba(251,191,36,0.9)" text-anchor="middle">0°C</text>
+            </svg>
+            <p class="diagram-caption">
+              not a ramp — a cliff<br>
+              <span class="annotation">the flip happens all at once</span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Same Water · Stimpunks</span>
+        <span class="spread-footer-right">2</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 3: The Conditions, Not the Substance ════ -->
+  <div class="spread" id="spread-3">
+    <div class="interior">
+      <div class="spread-2col">
+        <div class="spread-left">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 260 220" xmlns="http://www.w3.org/2000/svg">
+              <!-- a phase diagram: T (x) vs P (y), three regions, a dot crossing a boundary -->
+              <line x1="34" y1="30" x2="34" y2="188" stroke="rgba(136,134,160,0.4)" stroke-width="1"/>
+              <line x1="34" y1="188" x2="234" y2="188" stroke="rgba(136,134,160,0.4)" stroke-width="1"/>
+              <text x="24" y="36" font-family="Space Mono, monospace" font-size="5" fill="rgba(136,134,160,0.75)" text-anchor="middle" transform="rotate(-90 24 36)">pressure</text>
+              <text x="228" y="202" font-family="Space Mono, monospace" font-size="5" fill="rgba(136,134,160,0.75)" text-anchor="end">temperature →</text>
+              <!-- triple point + boundary lines -->
+              <circle cx="112" cy="128" r="3" fill="rgba(251,191,36,0.95)"/>
+              <line x1="112" y1="128" x2="74" y2="44" stroke="rgba(167,139,250,0.6)" stroke-width="1.3"/>
+              <line x1="112" y1="128" x2="196" y2="52" stroke="rgba(167,139,250,0.6)" stroke-width="1.3"/>
+              <line x1="112" y1="128" x2="150" y2="188" stroke="rgba(167,139,250,0.6)" stroke-width="1.3"/>
+              <text x="70" y="90" font-family="Space Mono, monospace" font-size="5.6" fill="rgba(244,244,251,0.85)" text-anchor="middle">solid</text>
+              <text x="168" y="110" font-family="Space Mono, monospace" font-size="5.6" fill="rgba(34,211,238,0.9)" text-anchor="middle">liquid</text>
+              <text x="120" y="172" font-family="Space Mono, monospace" font-size="5.6" fill="rgba(136,134,160,0.85)" text-anchor="middle">gas</text>
+              <!-- a dot crossing the solid-liquid boundary -->
+              <circle cx="104" cy="78" r="4" fill="rgba(244,244,251,0.9)"/>
+              <g stroke="rgba(34,211,238,0.85)" stroke-width="1.3" fill="none"><path d="M108 82 L134 96"/><path d="M127 92 L134 96 L128 101"/></g>
+              <circle cx="138" cy="98" r="4" fill="rgba(34,211,238,0.9)"/>
+            </svg>
+            <p class="diagram-caption">
+              one substance, many states<br>
+              <span class="annotation">the conditions decide</span>
+            </p>
+          </div>
+        </div>
+        <div class="spread-right">
+          <div class="eyebrow">The phase diagram</div>
+          <h2 class="spread-heading">The conditions,<br>not the <span style="color:var(--cyan)">substance</span></h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p>Whether that water shows up as ice, liquid, or steam depends entirely on the conditions around it — temperature and pressure. Scientists chart it on a <span class="cyan">phase diagram</span>: a map with a region for each state and lines where one becomes another.</p>
+            <p>Read it and the point lands quietly. Ice is not defective water; steam is not water trying harder. There is no best state and no failed state — only one substance, and the conditions it happens to be in.</p>
+            <p>So if you want a different state, you change the conditions, not the substance. We <a href="minor-worlds-zine.html">said this once about rooms and minds</a>. Here it is again, about states.</p>
+          </div>
+          <div class="pull-quote">Ice isn't broken water. It's water somewhere colder.</div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Same Water · Stimpunks</span>
+        <span class="spread-footer-right">3</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 4: Why Could You Do It Yesterday? ════ -->
+  <div class="spread" id="spread-4">
+    <div class="interior">
+      <div class="spread-2col">
+        <div class="spread-left">
+          <div class="eyebrow">Fluctuating capacity</div>
+          <h2 class="spread-heading">Why could you do<br>it <span style="color:var(--cyan)">yesterday</span>?</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p>Here is the question so many of us brace for: <em>why could you do it yesterday and not today?</em> However kindly it's meant, it lands like a charge of inconsistency — as if yesterday proved today is a choice.</p>
+            <p>The phase answer is simple. <strong>Capacity is a state, not a trait</strong> — and you were near a boundary. A little less sleep, one extra transition, a degree more noise, and the conditions tip. The same person crosses from managing to not managing, the way the same water crosses from liquid to ice on one degree of difference.</p>
+            <p>Not unreliable. Not lazy. Not putting it on. The same you, in changed conditions.</p>
+          </div>
+          <div class="pull-quote">You are not inconsistent. You were near a boundary.</div>
+        </div>
+        <div class="spread-right">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 260 220" xmlns="http://www.w3.org/2000/svg">
+              <!-- two regions divided by a boundary; a figure just inside 'coping', a small +load nudge tips it over -->
+              <path d="M150 24 q-40 60 0 100 q40 60 0 72" fill="none" stroke="rgba(167,139,250,0.5)" stroke-width="1.4" stroke-dasharray="4 4"/>
+              <text x="80" y="40" font-family="Space Mono, monospace" font-size="5.6" fill="rgba(34,211,238,0.9)" text-anchor="middle">coping</text>
+              <text x="205" y="40" font-family="Space Mono, monospace" font-size="5.6" fill="rgba(244,114,182,0.9)" text-anchor="middle">overload</text>
+              <!-- figure near the boundary, coping side -->
+              <circle cx="110" cy="120" r="12" fill="rgba(34,211,238,0.85)"/>
+              <line x1="110" y1="132" x2="110" y2="152" stroke="rgba(34,211,238,0.85)" stroke-width="2.4"/>
+              <!-- +load nudge -->
+              <g stroke="rgba(244,114,182,0.85)" stroke-width="1.4" fill="none"><path d="M70 120 L96 120"/><path d="M89 115 L96 120 L89 125"/></g>
+              <text x="60" y="112" font-family="Space Mono, monospace" font-size="5" fill="rgba(244,114,182,0.9)" text-anchor="middle">+ load</text>
+              <!-- faint 'tipped' figure on the other side -->
+              <circle cx="196" cy="120" r="12" fill="none" stroke="rgba(244,114,182,0.6)" stroke-width="1.4" stroke-dasharray="3 3"/>
+              <line x1="196" y1="132" x2="196" y2="152" stroke="rgba(244,114,182,0.5)" stroke-width="2" stroke-dasharray="3 3"/>
+              <text x="130" y="196" font-family="Space Mono, monospace" font-size="5" fill="rgba(167,139,250,0.85)" text-anchor="middle">one degree of difference</text>
+            </svg>
+            <p class="diagram-caption">
+              same person, tipped by conditions<br>
+              <span class="annotation">a state, not a trait</span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Same Water · Stimpunks</span>
+        <span class="spread-footer-right">4</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 5: The Hardest Part Is the Crossing ════ -->
+  <div class="spread" id="spread-5">
+    <div class="interior">
+      <div class="spread-2col">
+        <div class="spread-left">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 260 220" xmlns="http://www.w3.org/2000/svg">
+              <!-- calm away from the boundary, turbulent right at it; a doorway on the line -->
+              <line x1="130" y1="26" x2="130" y2="150" stroke="rgba(167,139,250,0.4)" stroke-width="1.2" stroke-dasharray="3 4"/>
+              <!-- calm line on the left -->
+              <path d="M26 96 L92 96" fill="none" stroke="rgba(34,211,238,0.6)" stroke-width="1.6"/>
+              <text x="58" y="84" font-family="Space Mono, monospace" font-size="5" fill="rgba(34,211,238,0.85)" text-anchor="middle">calm</text>
+              <!-- turbulent, wild-swinging right at the boundary -->
+              <path d="M92 96 q6 -34 12 0 q6 34 12 0 q6 -40 12 0 q4 30 6 0" fill="none" stroke="rgba(244,114,182,0.8)" stroke-width="1.6"/>
+              <!-- settling to calm again on the right -->
+              <path d="M152 96 L234 96" fill="none" stroke="rgba(34,211,238,0.6)" stroke-width="1.6"/>
+              <text x="193" y="84" font-family="Space Mono, monospace" font-size="5" fill="rgba(34,211,238,0.85)" text-anchor="middle">calm</text>
+              <!-- doorway on the boundary -->
+              <rect x="120" y="120" width="20" height="34" rx="1.5" fill="none" stroke="rgba(244,244,251,0.6)" stroke-width="1.3"/>
+              <line x1="130" y1="120" x2="130" y2="154" stroke="rgba(244,244,251,0.35)" stroke-width="0.9"/>
+              <text x="130" y="176" font-family="Space Mono, monospace" font-size="5" fill="rgba(244,114,182,0.9)" text-anchor="middle">the crossing</text>
+              <text x="130" y="196" font-family="Space Mono, monospace" font-size="4.6" fill="rgba(136,134,160,0.8)" text-anchor="middle">turbulent right at the edge</text>
+            </svg>
+            <p class="diagram-caption">
+              calm, then the boundary, then calm<br>
+              <span class="annotation">the edge is where it churns</span>
+            </p>
+          </div>
+        </div>
+        <div class="spread-right">
+          <div class="eyebrow">Thresholds</div>
+          <h2 class="spread-heading">The hardest part<br>is the <span style="color:var(--cyan)">crossing</span></h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p>There's a reason the change itself is the hard part. Right at a phase boundary a substance turns turbulent and hypersensitive — tiny nudges cause wild swings, because it's poised between two states at once.</p>
+            <p>That is <a href="https://stimpunks.org/glossary/threshold-anxiety/"><span class="cyan">threshold anxiety</span></a> exactly: the dread that arrives <em>before</em> the crossing, the doorway harder than the room, the first day worse than the term. For a <a href="https://stimpunks.org/monotropism/">monotropic</a> mind a transition means tearing attention out of one deep channel and re-forming it in another — and done suddenly, or piled up, it can pull the mind past what it can hold.</p>
+            <p>So the fix isn't a sturdier person. It's a better crossing — built with warning, with a way back, with time. <strong>Broken thresholds, not broken people.</strong></p>
+          </div>
+          <div class="pull-quote">Broken thresholds, not broken people.</div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Same Water · Stimpunks</span>
+        <span class="spread-footer-right">5</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 6: Held Past the Point, Slow to Return ════ -->
+  <div class="spread" id="spread-6">
+    <div class="interior">
+      <div class="spread-2col">
+        <div class="spread-left">
+          <div class="eyebrow">Weather-bodies</div>
+          <h2 class="spread-heading">Held past the point,<br>slow to <span style="color:var(--cyan)">return</span></h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p>Two more facts, because they name things that get misread. Water can be <span class="cyan">supercooled</span> — held below freezing and still liquid — until one small disturbance crystallises the whole glass in an instant. That is the meltdown after a day that "went fine": not one trivial last straw, but a system kept past its limit, tipping all at once.</p>
+            <p>And near a transition, systems show <span class="cyan">critical slowing down</span> — they take far longer to settle after any knock. It isn't weakness that recovery swells near your edge; it's how systems behave there. Rest and regulation are the work, not a failure to do it.</p>
+            <p>Cynthia Kim calls this fluid adaptation: nothing has been fixed or broken; we hold a pattern, life changes, we lose the handle and find a new one — re-adapting across a lifetime, not regressing. Helen Edgar names us <em>weather-bodies</em>, always sensing and adjusting, and asks the better question: not how to make people more resilient to change, but how to make the <em>climate</em> more liveable.</p>
+          </div>
+          <div class="refusals">
+            <div class="refusal"><span class="refusal-tag">Not</span><span>broken — <strong>the same substance, in colder conditions.</strong></span></div>
+            <div class="refusal"><span class="refusal-tag">Not</span><span>regressing — <strong>re-adapting to a changed climate.</strong></span></div>
+            <div class="refusal"><span class="refusal-tag">Not</span><span>a resilience problem — <strong>a climate problem, and climates can be redesigned.</strong></span></div>
+          </div>
+        </div>
+        <div class="spread-right">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 260 224" xmlns="http://www.w3.org/2000/svg">
+              <!-- supercooled droplet + seed crystal → sudden freeze -->
+              <text x="130" y="20" font-family="Space Mono, monospace" font-size="5" fill="rgba(34,211,238,0.9)" text-anchor="middle">supercooled → one touch → freeze</text>
+              <path d="M70 40 q22 26 22 46 a22 22 0 1 1 -44 0 q0 -20 22 -46 z" fill="rgba(34,211,238,0.10)" stroke="rgba(34,211,238,0.7)" stroke-width="1.4"/>
+              <!-- seed crystal touching -->
+              <g stroke="rgba(244,244,251,0.9)" stroke-width="1.1"><line x1="70" y1="86" x2="70" y2="98"/><line x1="64" y1="92" x2="76" y2="92"/><line x1="66" y1="88" x2="74" y2="96"/><line x1="74" y1="88" x2="66" y2="96"/></g>
+              <!-- freeze radiating -->
+              <g stroke="rgba(244,244,251,0.55)" stroke-width="0.9"><line x1="70" y1="70" x2="58" y2="58"/><line x1="70" y1="70" x2="82" y2="58"/><line x1="70" y1="70" x2="56" y2="74"/><line x1="70" y1="70" x2="84" y2="74"/></g>
+              <!-- recovery curve: dip and slow return, longer near the edge -->
+              <line x1="30" y1="196" x2="234" y2="196" stroke="rgba(136,134,160,0.35)" stroke-width="1"/>
+              <line x1="34" y1="130" x2="34" y2="196" stroke="rgba(136,134,160,0.35)" stroke-width="1"/>
+              <path d="M40 140 L86 140 Q96 140 100 176 Q104 196 150 194 Q210 191 226 150" fill="none" stroke="rgba(167,139,250,0.75)" stroke-width="1.6"/>
+              <text x="150" y="214" font-family="Space Mono, monospace" font-size="5" fill="rgba(167,139,250,0.85)" text-anchor="middle">recovery takes longer near the edge</text>
+            </svg>
+            <p class="diagram-caption">
+              held, then all at once<br>
+              <span class="annotation">rest is the work</span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Same Water · Stimpunks</span>
+        <span class="spread-footer-right">6</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 7: The Same Water (star-stuff close) ════ -->
+  <div class="spread" id="spread-7">
+    <div class="interior">
+      <div class="spread-2col">
+        <div class="spread-left">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 260 220" xmlns="http://www.w3.org/2000/svg">
+              <!-- a cooling arrow through states: hot symmetry → gas → star → ice/you, same dots regrouping -->
+              <g stroke="rgba(34,211,238,0.5)" stroke-width="1.2" fill="none"><path d="M28 150 L232 150"/><path d="M224 145 L232 150 L224 155"/></g>
+              <text x="130" y="172" font-family="Space Mono, monospace" font-size="5" fill="rgba(34,211,238,0.85)" text-anchor="middle">cooling · the universe changing state →</text>
+              <!-- hot symmetric blob -->
+              <circle cx="44" cy="96" r="16" fill="rgba(251,191,36,0.85)"/>
+              <g stroke="rgba(251,191,36,0.6)" stroke-width="1"><line x1="44" y1="72" x2="44" y2="64"/><line x1="44" y1="120" x2="44" y2="128"/><line x1="20" y1="96" x2="12" y2="96"/><line x1="68" y1="96" x2="76" y2="96"/></g>
+              <text x="44" y="52" font-family="Space Mono, monospace" font-size="4.6" fill="rgba(251,191,36,0.9)" text-anchor="middle">one hot symmetry</text>
+              <!-- gas cloud -->
+              <g fill="rgba(136,134,160,0.6)"><circle cx="104" cy="86" r="3"/><circle cx="116" cy="98" r="3"/><circle cx="98" cy="102" r="3"/><circle cx="120" cy="84" r="3"/><circle cx="110" cy="76" r="3"/></g>
+              <text x="110" y="126" font-family="Space Mono, monospace" font-size="4.6" fill="rgba(136,134,160,0.85)" text-anchor="middle">gas</text>
+              <!-- star (collapse) -->
+              <path d="M166 96 l4 11 l12 0 l-9 7 l3 12 l-10 -7 l-10 7 l3 -12 l-9 -7 l12 0 z" fill="rgba(251,191,36,0.9)"/>
+              <text x="168" y="128" font-family="Space Mono, monospace" font-size="4.6" fill="rgba(251,191,36,0.9)" text-anchor="middle">star</text>
+              <!-- ice hex / droplet -->
+              <g fill="rgba(244,244,251,0.9)"><circle cx="214" cy="88" r="3"/><circle cx="226" cy="88" r="3"/><circle cx="208" cy="100" r="3"/><circle cx="220" cy="100" r="3"/><circle cx="232" cy="100" r="3"/></g>
+              <g stroke="rgba(34,211,238,0.5)" stroke-width="0.9"><line x1="214" y1="88" x2="226" y2="88"/><line x1="214" y1="88" x2="208" y2="100"/><line x1="214" y1="88" x2="220" y2="100"/><line x1="226" y1="88" x2="220" y2="100"/><line x1="226" y1="88" x2="232" y2="100"/></g>
+              <text x="220" y="126" font-family="Space Mono, monospace" font-size="4.6" fill="rgba(244,244,251,0.85)" text-anchor="middle">ice · you</text>
+            </svg>
+            <p class="diagram-caption">
+              same stuff, meeting its conditions<br>
+              <span class="annotation">the oldest change there is</span>
+            </p>
+          </div>
+        </div>
+        <div class="spread-right">
+          <div class="eyebrow">The oldest change</div>
+          <h2 class="spread-heading">The same <span class="spectrum-word">water</span></h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p>This is the oldest move there is. The early universe didn't cool smoothly; it changed <em>state</em> — dropping past threshold after threshold, its forces freezing out of a single hot symmetry the way ice forms out of water. A cloud of gas drifts unchanged for ages, then crosses a threshold of density and collapses, all at once, into a star.</p>
+            <p>The same star stuff is plasma, gas, dust, rock, ocean, ice — and us. None of those is the broken version of the others. And the water in you is partly older than the Sun, carried in from the cold of space: it has been vapour and ice and rain and ocean, the same substance every time.</p>
+            <p>So when your state shifts with your conditions, you aren't failing. You're doing the most ancient thing matter knows how to do.</p>
+          </div>
+          <div class="pull-quote">You were never broken. You were only ever water, meeting your conditions.</div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Same Water · Stimpunks</span>
+        <span class="spread-footer-right">7</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 8: Colophon ════ -->
+  <div class="spread" id="spread-8">
+    <div class="interior">
+      <div class="colophon">
+        <div>
+          <div class="colophon-top">
+            <span class="colophon-ls">L★S</span>
+            <span class="colophon-phrase">Ice isn't broken water — it's water somewhere colder. You aren't broken either: the same substance, meeting its conditions. Change the conditions, and the state can change too.</span>
+          </div>
+          <div class="series-list">
+            <div class="series-item"><span class="series-num">No. 14</span> The Council of All Beings — multispecies justice &amp; more-than-human kin</div>
+            <div class="series-item"><span class="series-num">No. 15</span> Every Creature's Own Sky — umwelt, attention-worlds &amp; double empathy</div>
+            <div class="series-item"><span class="series-num">No. 16</span> Minor Worlds — niche construction &amp; the building of livable worlds</div>
+            <div class="series-item"><span class="series-num">No. 17</span> The Nearest Body — tides, co-regulation &amp; being pulled by what's near</div>
+            <div class="series-item"><span class="series-num">No. 18</span> The Garden and the Stars — knowledge gardens, the commons &amp; how star stuff knows itself</div>
+            <div class="series-item"><span class="series-num">No. 19</span> No Universal Now — relativity, crip time &amp; the clock that was never the universe's</div>
+            <div class="series-item current"><span class="series-num">No. 20</span> The Same Water — phase transitions, fluctuating capacity &amp; changing the conditions ← you are here</div>
+          </div>
+          <div class="reflect">
+            <div class="reflect-label">Reflection</div>
+            <p class="reflect-q">What conditions were different on the day you "could do it" and the day you couldn't?</p>
+            <p class="reflect-q">Where have you been supercooled — holding it together right up until one small thing?</p>
+            <p class="reflect-q">What would change if the climate around you, not your resilience, were the thing to fix?</p>
+          </div>
+          <p class="colophon-body">
+            The Same Water is the twentieth zine in the Stimpunks series. It reads fluctuating capacity through the physics of phase transitions, and it extends <a href="minor-worlds-zine.html">Minor Worlds</a> (No. 16): change the conditions, not the substance.<br><br>
+            The science: phase transitions and the phase diagram; latent heat; supercooling and metastability; critical phenomena and critical slowing down; the symmetry-breaking transitions of the cooling early universe; the density threshold (Jeans instability) that collapses gas into stars; and the evidence that much of Earth's water predates the Sun. The lived knowledge is ours and our kin's: Cynthia Kim on autistic regression and fluid adaptation (Musings of an Aspie); Helen Edgar on weather-bodies and autistic weathering (More Realms); and Stimpunks' own <a href="https://stimpunks.org/glossary/threshold-anxiety/">threshold anxiety</a>, with the monotropic split (Tanya Adkin &amp; David Gray-Hammond), autistic inertia, and <a href="https://stimpunks.org/monotropism/">monotropism</a> (Murray, Lesser &amp; Lawson).<br><br>
+            If meltdown, shutdown, or <a href="https://stimpunks.org/burnout/">burnout</a> are close to you right now, be gentle with yourself: rest and regulation are the work, and support is worth reaching for. The star stuff is Carl Sagan's, and the SN 1006 remnant on every Stimpunks page. The reading — that no state is the broken one, and the honest answer to a boundary is to change the conditions — is ours. You were ★stuff, meeting your conditions, all along.
+          </p>
+        </div>
+        <div class="colophon-footer">
+          Stimpunks Foundation · Zine No. 20 · Open Edition<br>
+          Print free · Share freely · L★S<br>
+          stimpunks.org · starstuff.earth
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Same Water · Stimpunks</span>
+        <span class="spread-footer-right">8</span>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /zine-shell -->
+
+<script>
+  let current = 1;
+  const total = 8;
+
+  function changePage(dir) {
+    const next = current + dir;
+    if (next < 1 || next > total) return;
+    document.getElementById('spread-' + current).classList.remove('active');
+    current = next;
+    document.getElementById('spread-' + current).classList.add('active');
+    document.getElementById('page-counter').textContent = current + ' / ' + total;
+    document.getElementById('prev-btn').style.opacity = current === 1 ? '0.3' : '1';
+    document.getElementById('next-btn').style.opacity = current === total ? '0.3' : '1';
+    document.getElementById('prev-btn').classList.toggle('active', current > 1);
+    document.getElementById('next-btn').classList.toggle('active', current < total);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') changePage(1);
+    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   changePage(-1);
+  });
+
+  document.getElementById('prev-btn').style.opacity = '0.3';
+  document.getElementById('next-btn').classList.add('active');
+</script>
+<script src="starstuff.js" defer></script>
+</body>
+</html>
