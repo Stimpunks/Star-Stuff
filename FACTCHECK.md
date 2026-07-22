@@ -71,7 +71,7 @@ Date format YYYY-MM-DD. "Checked" = a full attribution + key-claim pass was done
 | 4 | We Are All Star Stuff | — | pending first check | |
 | 5 | Underground | — | pending first check | |
 | 6 | Eternal Sunshine | — | pending first check | |
-| 7 | You Were Never One Thing | — | pending first check | endosymbiosis (Margulis); mitochondria — verify on next pass |
+| 7 | You Were Never One Thing | 2026-07-22 | VERIFIED | Endosymbiosis / mitochondria (own DNA, ribosomes, fission); chloroplasts (separate endosymbiosis); gut ~38T bacteria vs ~30T human cells (Sender, Fuchs & Milo, 2016); serial endosymbiotic theory — Lynn Margulis (as Lynn Sagan), "On the Origin of Mitosing Cells" (1967), reviving Mereschkowsky & Wallin; alphaproteobacterial origin, archaeal host. Timing honestly hedged as debated. No corrections. |
 | 8 | The Universe Runs on Difference | — | pending first check | |
 | 9 | The Lines We Drew | — | pending first check | |
 | 9b | The Difference-First Frame (backing material) | — | pending first check | |
@@ -81,12 +81,12 @@ Date format YYYY-MM-DD. "Checked" = a full attribution + key-claim pass was done
 | 13 | Warriors and Weirdos (Aurora) | — | pending first check | |
 | 14 | The Council of All Beings | 2026-07-22 | VERIFIED | Council ritual (Joanna Macy & John Seed) confirmed; multispecies role-play + the "Speaking as a River" guide and Artmann's human-nature-partnership principles (Harms et al., 2025); ethodiversity (Ombre Tarragnat, extending Adolfo Cordero-Rivera); Despret; von Uexküll (Umwelt); Whanganui River / Te Awa Tupua legal personhood (NZ, 2017); Neimanis. No corrections. |
 | 15 | Every Creature's Own Sky | 2026-07-22 | VERIFIED | von Uexküll (tick Umwelt); Nagel ("What Is It Like to Be a Bat?", 1974); mantis shrimp (12+ photoreceptor types), star-nosed mole, magnetoreception; monotropism (Murray, Lesser & Lawson 2005); Milton (double empathy, 2012); Despret. No corrections. |
-| 16 | Minor Worlds | — | pending first check | niche construction — verify |
-| 17 | The Nearest Body | — | pending first check | tides/co-regulation science |
+| 16 | Minor Worlds | 2026-07-22 | VERIFIED | Niche construction (Odling-Smee, Laland & Feldman, 2003) + ecological inheritance; Thomas Armstrong ("no normal brain at the Smithsonian"); Erin Manning (the minor, *The Minor Gesture*, 2016); Kadodia & Krueger, "Epistemic Injustice, Niche Construction, and Neurodiversity" (*Philosophical Psychology*, 2026) — "epistemic niche" confirmed; Haraway (companion species / worlding). PLAUSIBLE idea-attributions: Devon Price, Tarragnat ("ontological choreographies"). No corrections. |
+| 17 | The Nearest Body | 2026-07-22 | VERIFIED (1 caveat) | Tidal physics confirmed: Sun ~27M× the Moon's mass and ~180× the raw force, yet the Moon dominates because tidal force ∝ 1/distance³; spring/neap tides; tidal locking. Co-regulation / interpersonal synchrony well-supported. **Caveat:** the piece states **polyvagal theory** (Porges) affirmatively — polyvagal's specific evolutionary/physiological claims are scientifically contested; the co-regulation phenomenon holds regardless. Consider a light hedge (see Open items). No text corrections yet. |
 | 18 | The Garden and the Stars | — | pending first check | |
 | 19 | No Universal Now | 2026-07-22 | CORRECTED → VERIFIED | Fixed crip-time origin: Zola & Gill were among the first to *document* it in disability studies, not coin it (per Kafer, who notes neither defined the term) — reworded "named it" in the spread and colophon. Verified: Einstein/GPS relativity, railway/factory standard time (Galison; E.P. Thompson, 1967), Kafer (*Feminist, Queer, Crip*), Marta Rose (spiral time), Helen Edgar (felt time), Bergson (durée), Samuels ("Six Ways of Looking at Crip Time," 2017), Eliot (*Four Quartets*). |
-| 20 | The Same Water | — | pending first check | phase-transition physics; Cynthia Kim; Tarragnat |
-| 21 | Not a Line | — | pending first check | spectrum/constellation (Dwyer; Edgar) |
+| 20 | The Same Water | 2026-07-22 | VERIFIED | Phase transitions / phase diagram / supercooling / critical slowing down; early-universe symmetry breaking; Jeans-instability star formation; water older than the Sun — all confirmed. PLAUSIBLE idea-attributions: Cynthia Kim ("fluid adaptation," *Musings of an Aspie*), Ombre Tarragnat ("weather-bodies," *Sextant*, 2024). Threshold anxiety (house) + monotropism (Murray, Lesser & Lawson). No corrections. |
+| 21 | Not a Line | 2026-07-22 | VERIFIED | Stellar spectroscopy (each element's line fingerprint) confirmed; functioning-labels critique; the spiky profile; Patrick Dwyer's "autism constellation" confirmed (autisticscholar.com); Helen Edgar's "constellation of intensities" + felt-time framing (direct quote, her own words). No corrections. |
 | 22 | No One Is the Leader | 2026-07-22 | VERIFIED | Ballerini / STARFLAG project (2008, each starling tracks ~6–7 topological neighbours); Anderson ("More Is Different," *Science*, 1972); CMB density ripples → cosmic web (structure formation); NeurodiVentures / competency networks. No corrections. |
 | 23 | Bodies of Water | 2026-07-22 | VERIFIED | Neimanis (*Hydrofeminism*; *Bodies of Water*), Alaimo (transcorporeality), gestationality, ~60% water, monotropism (Murray, Lesser & Lawson 2005), Autistic Realms shared/collective flow (Edgar), water older than the Sun — all confirmed. No corrections. |
 | 24 | Shared Air | 2026-07-22 | CORRECTED → VERIFIED | Fixed solarpunk attribution: "a future with a human face and dirt behind its ears" is **Adam Flynn**, *Solarpunk: Notes toward a manifesto* (2014); "move quietly and plant things" is a movement slogan (**Andrew Dana Hudson**), not the manifesto. Verified: Great Oxidation Event (~2.4 Gya), stellar O/N, Corsi–Rosenthal box, brown *Emergent Strategy* (2017). Shared-air space coinage → Helen Edgar & Ryan Boren. |
@@ -122,8 +122,16 @@ Date format YYYY-MM-DD. "Checked" = a full attribution + key-claim pass was done
   `PLAUSIBLE`).
 - Helen to add a reciprocal "companion piece → Field Guide" link on the *Monotropa uniflora and
   Monotropism* post at morerealms.com (outside this repo).
-- Continue rolling first-check passes on the pending zines and field guides above, prioritising the
-  most attribution-dense. Checked so far: Nos. 23–26, Field Guide 6 (first batch); Nos. 14, 15, 19,
-  22 (second batch). Suggested next batch: You Were Never One Thing (7, endosymbiosis / Margulis),
-  Not a Line (21, Dwyer / Edgar), The Same Water (20, Cynthia Kim / Tarragnat), Minor Worlds (16),
-  The Nearest Body (17).
+- **The Nearest Body (17):** polyvagal theory (Porges) is presented affirmatively. Its specific
+  evolutionary/physiological claims are scientifically contested, though the co-regulation
+  phenomenon it's used to describe is well-supported by other work (interpersonal physiological
+  synchrony; social baseline theory). Consider a light hedge to match the house "note contested
+  points" standard — decision pending.
+- Primary-confirm the `PLAUSIBLE` idea-attributions where practical (Cynthia Kim's "fluid
+  adaptation"; Tarragnat's "weather-bodies" / "ontological choreographies"; Devon Price; Thomas
+  Armstrong's Smithsonian line).
+- Continue rolling first-check passes on the pending pieces. **Checked so far (14 of 40):** Nos.
+  23–26 + Field Guide 6 (batch 1); Nos. 14, 15, 19, 22 (batch 2); Nos. 7, 16, 17, 20, 21 (batch 3).
+  Suggested next batch: Bone Song (1), The Dead Stars Still Reach Us (10), The Garden and the Stars
+  (18), The Universe Runs on Difference (8), Why Difference Comes First (11), and the remaining
+  field guides (1–5).
