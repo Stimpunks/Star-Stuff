@@ -130,6 +130,37 @@ Two senses appear and must stay distinct:
 Keep the banana as the problem and Cavendish Space as the response. "We refuse to build Cavendish
 Space" is inverted and wrong.
 
+## Fact-checking & attribution
+
+Every piece makes factual claims — scientific findings and attributed quotes/ideas. Getting
+them right matters more than shipping fast, and you must record that you checked. See
+**`FACTCHECK.md`** for the full guidelines and the per-piece ledger; the rules in brief:
+
+- **Trace every quotation to a primary source** (the book, essay, paper, or talk) and cite
+  author + title + year. Never attribute from memory.
+- **Aggregators and summaries are leads, not citations.** Quote sites (Goodreads, BrainyQuote),
+  Wikipedia, our own stimpunks.org glossary, and your own WebFetch/WebSearch *summaries* cannot
+  be the final authority for a quote or attribution — confirm against the primary source.
+  (The "inescapable network of mutuality" line was shipped misattributed to Baldwin when it is
+  Martin Luther King Jr., *Letter from Birmingham Jail*, 1963 — because a secondary summary was
+  trusted. Don't repeat this.)
+- Distinguish a **direct quote** (verbatim, in quotation marks, verifiable) from a **paraphrase**
+  (a characterization of an idea). Never dress a paraphrase as a quote.
+- Attribute **coinages** to their originator precisely (shared-air space / shared-signal space →
+  Helen Edgar; neuro-anarchy → Katie Munday & David Gray-Hammond; monotropism → Murray, Lesser &
+  Lawson 2005).
+- **Ground scientific claims** in well-established, primary/authoritative sources; flag figures as
+  approximate; keep the house honesty (no naturalistic fallacy; note fragility and contested
+  points — "a rhyme, not a proof").
+- If you cannot verify before shipping: cut it, downgrade it to a clearly-marked paraphrase, or
+  hold the piece. Do not ship an unverified claim as fact.
+- **Status vocabulary:** `VERIFIED` (primary source confirmed) · `PLAUSIBLE` (idea sound, exact
+  wording/citation not primary-confirmed) · `CORRECTED` · `REMOVED`.
+- **Before shipping any piece:** list every quotation, named attribution, and key scientific
+  claim; verify each; fix what's wrong; then log the check in `FACTCHECK.md` (piece, date, status,
+  open items). **Periodically:** re-check pieces on a rolling basis, and when one source is found
+  wrong, re-check its siblings for the same error.
+
 ## Reference material (`reference/`)
 
 Three academic sources ground the more-than-human / ecological strands of the collection. They live
