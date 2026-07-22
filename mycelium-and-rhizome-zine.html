@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0a0a14">
+<link rel="canonical" href="https://starstuff.earth/mycelium-and-rhizome-zine.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta name="description" content="How neurodivergent knowledge and community grow, read through star stuff — no trunk, no center, many doors. A tree has one trunk and a chain of command; a rhizome (Deleuze & Guattari) has no root to ask permission of, so you can enter anywhere. A mycelium carries what's needed to wherever it's needed, thickening the paths that help. The cosmic web, a slime mold, and a neuron share the shape: not a pyramid, a web. The Autistic Rhizome and neuro-anarchy (Gray-Hammond, Munday, Edgar) are us organizing the way the universe does. Decentralization isn't disorder — it's the oldest structure there is.">
+<!-- Open Graph / link unfurl -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Star Stuff · Stimpunks Foundation">
+<meta property="og:url" content="https://starstuff.earth/mycelium-and-rhizome-zine.html">
+<meta property="og:title" content="A Mycelium and a Rhizome">
+<meta property="og:description" content="How neurodivergent knowledge and community grow — no trunk, no center, many doors. A rhizome (Deleuze & Guattari) with no root to ask permission of, fed by a mycelium that carries what's needed to wherever it's needed. The cosmic web, a slime mold, and a neuron share the shape: not a pyramid, a web. The Autistic Rhizome and neuro-anarchy are us organizing the way the universe does.">
+<meta property="og:image" content="https://starstuff.earth/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A rainbow-hued cosmic image — we are all made of star stuff.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="A Mycelium and a Rhizome">
+<meta name="twitter:description" content="How neurodivergent knowledge grows — no trunk, no center, many doors. A rhizome fed by a mycelium. The cosmic web, a slime mold, and a neuron share the shape: not a pyramid, a web. The Autistic Rhizome is us organizing the way the universe does. Decentralization isn't disorder — it's the oldest structure there is.">
+<meta name="twitter:image" content="https://starstuff.earth/og-card.jpg">
+<title>A Mycelium and a Rhizome — Stimpunks Zine No. 26</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="starstuff.css">
+<style>
+  :root {
+    --void:  var(--sp-void-deep);
+    --deep:  var(--sp-deep);
+    --page:  var(--sp-page);
+    --violet:var(--sp-purple);
+    --pink:  var(--sp-pink);
+    --gold:  var(--sp-gold);
+    --cyan:  var(--sp-cyan);
+    --green: var(--sp-green);
+    --star-white: var(--sp-white-soft);
+    --stardust:   var(--sp-secondary-soft);
+    --dim:   var(--sp-dim);
+    --dim2:  var(--sp-dim-soft);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--void);
+    font-family: 'Atkinson Hyperlegible', system-ui, sans-serif;
+    color: var(--star-white);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── STARFIELD (magenta · gold · white — spores, nodes, filament glow) ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 8% 12%, rgba(244,114,182,0.85) 0%, transparent 100%),
+      radial-gradient(1px 1px at 22% 38%, rgba(251,191,36,0.7) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 44% 9%, rgba(244,114,182,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 61% 68%, rgba(244,244,251,0.7) 0%, transparent 100%),
+      radial-gradient(2px 2px at 74% 28%, rgba(251,191,36,0.55) 0%, transparent 100%),
+      radial-gradient(1px 1px at 84% 54%, rgba(244,114,182,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 91% 79%, rgba(251,191,36,0.6) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 4% 58%, rgba(244,114,182,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 34% 84%, rgba(251,191,36,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 54% 48%, rgba(167,139,250,0.45) 0%, transparent 100%),
+      radial-gradient(2px 2px at 19% 88%, rgba(244,114,182,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 69% 4%, rgba(244,244,251,0.8) 0%, transparent 100%),
+      radial-gradient(1px 1px at 47% 62%, rgba(251,191,36,0.5) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 30% 20%, rgba(244,244,251,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 77% 88%, rgba(244,114,182,0.55) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .zine-shell { position: relative; z-index: 1; max-width: 820px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+
+  .spectrum-line { height: 2px; border: none; border-radius: 2px; background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); }
+
+  /* ── NAV ── */
+  .nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2.5rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(167,139,250,0.2); }
+  .nav-brand { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--dim); }
+  .nav-controls { display: flex; gap: 0.5rem; align-items: center; }
+  .nav-btn { background: none; border: 1px solid rgba(244,114,182,0.35); color: var(--stardust); font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.15em; padding: 0.4rem 0.85rem; border-radius: 2px; cursor: pointer; transition: all 0.2s ease; text-transform: uppercase; }
+  .nav-btn:hover { background: rgba(244,114,182,0.15); border-color: rgba(244,114,182,0.6); color: var(--star-white); }
+  .nav-btn.active { background: rgba(244,114,182,0.20); border-color: var(--pink); color: var(--star-white); }
+  .page-counter { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.2em; color: var(--dim2); }
+
+  .spread { display: none; animation: fadeIn 0.5s ease forwards; }
+  .spread.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ── COVER ── */
+  .cover-spread {
+    position: relative; min-height: 520px; border-radius: 4px; overflow: hidden;
+    background:
+      radial-gradient(ellipse at 22% 20%, rgba(244,114,182,0.16) 0%, transparent 52%),
+      radial-gradient(ellipse at 80% 26%, rgba(251,191,36,0.13) 0%, transparent 52%),
+      radial-gradient(ellipse at 68% 82%, rgba(244,114,182,0.11) 0%, transparent 52%),
+      radial-gradient(ellipse at 28% 80%, rgba(251,191,36,0.07) 0%, transparent 52%),
+      var(--deep);
+    border: 1px solid rgba(167,139,250,0.25);
+    box-shadow: inset 0 0 80px rgba(244,114,182,0.08), 0 0 0 4px rgba(255,255,255,0.03);
+    display: flex; flex-direction: column; justify-content: flex-end; padding: 3rem;
+  }
+  .cover-motif { position: absolute; top: -6px; right: -18px; width: 340px; height: 340px; opacity: 0.75; pointer-events: none; }
+  .cover-issue { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.5em; text-transform: uppercase; color: var(--pink); margin-bottom: 1.5rem; }
+  .cover-title { font-weight: 700; font-size: clamp(2rem, 5.6vw, 3.4rem); line-height: 1.04; color: var(--star-white); letter-spacing: -0.02em; margin-bottom: 0.9rem; }
+  .cover-title .spectrum-word { background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .cover-subtitle { font-size: 1rem; color: var(--stardust); opacity: 0.85; margin-bottom: 2rem; max-width: 470px; line-height: 1.55; }
+  .cover-rule { width: 220px; max-width: 60%; margin-bottom: 1.3rem; }
+  .cover-meta { display: flex; gap: 2rem; align-items: center; }
+  .cover-ls { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 1.4rem; color: var(--gold); letter-spacing: 0.05em; }
+  .cover-meta-text { font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--dim2); line-height: 1.9; }
+  .cover-corner { position: absolute; top: 2rem; right: 2.5rem; text-align: right; }
+  .cover-corner-num { font-weight: 700; font-size: 4.5rem; line-height: 1; color: var(--pink); opacity: 0.26; }
+  .cover-corner-label { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); display: block; margin-top: -0.3rem; }
+
+  /* ── INTERIOR ── */
+  .interior { background: var(--page); border: 1px solid rgba(167,139,250,0.15); border-radius: 4px; overflow: hidden; min-height: 480px; }
+  .spread-2col { display: grid; grid-template-columns: 1fr 1fr; min-height: 480px; }
+  .spread-left, .spread-right { padding: 3rem 2.4rem; position: relative; }
+  .spread-left { border-right: 1px solid rgba(167,139,250,0.12); }
+
+  .eyebrow { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--pink); margin-bottom: 1.1rem; }
+  .body-text { font-size: 0.98rem; line-height: 1.72; color: var(--stardust); }
+  .body-text p { margin-bottom: 1rem; }
+  .body-text p:last-child { margin-bottom: 0; }
+  .body-text strong { font-weight: 700; color: var(--star-white); }
+  .body-text em { font-style: italic; color: var(--star-white); }
+  .body-text a { color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(251,191,36,0.4); }
+  .body-text a:hover { border-bottom-color: var(--gold); color: var(--star-white); }
+  .body-text .violet { color: var(--violet); font-weight: 700; }
+  .body-text .pink { color: var(--pink); font-weight: 700; }
+  .body-text .gold { color: var(--gold); font-weight: 700; }
+  .body-text .cyan { color: var(--cyan); font-weight: 700; }
+  .body-text .green { color: var(--green); font-weight: 700; }
+
+  .spread-heading { font-weight: 700; font-size: 1.9rem; line-height: 1.12; color: var(--star-white); margin-bottom: 1.1rem; letter-spacing: -0.01em; }
+  .spread-heading .spectrum-word { background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .rule { width: 40px; margin: 1rem 0; }
+
+  .pull-quote { font-size: 1.18rem; font-weight: 700; line-height: 1.4; color: var(--star-white); border-left: 3px solid var(--pink); padding-left: 1.1rem; margin: 1.4rem 0; }
+  .pull-quote.gold { border-left-color: var(--gold); }
+  .pull-quote.violet { border-left-color: var(--violet); }
+  .pull-quote.cyan { border-left-color: var(--cyan); }
+  .pull-quote.green { border-left-color: var(--green); }
+  .pull-quote .attr { display: block; font-family: 'Space Mono', monospace; font-size: 0.6rem; font-weight: 400; letter-spacing: 0.08em; color: var(--dim); margin-top: 0.6rem; }
+
+  /* ── DIAGRAMS ── */
+  .diagram-wrap { display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; }
+  .diagram { width: 100%; max-width: 280px; display: block; }
+  .diagram-caption { font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim); text-align: center; margin-top: 0.9rem; line-height: 1.9; }
+  .annotation { color: var(--gold); }
+
+  /* ── REFUSALS ── */
+  .refusals { margin-top: 1.3rem; }
+  .refusal { font-size: 0.88rem; line-height: 1.5; color: var(--stardust); padding: 0.55rem 0; border-bottom: 1px solid rgba(167,139,250,0.1); display: flex; gap: 0.6rem; align-items: baseline; }
+  .refusal:last-child { border-bottom: none; }
+  .refusal-tag { font-family: 'Space Mono', monospace; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); flex-shrink: 0; padding-top: 0.12rem; }
+  .refusal strong { color: var(--star-white); font-weight: 700; }
+
+  /* ── COLOPHON ── */
+  .colophon { padding: 3rem; display: flex; flex-direction: column; justify-content: space-between; min-height: 480px; background: radial-gradient(ellipse at 82% 18%, rgba(251,191,36,0.10) 0%, transparent 50%), radial-gradient(ellipse at 18% 85%, rgba(244,114,182,0.09) 0%, transparent 50%), var(--page); }
+  .colophon-top { border-bottom: 1px solid rgba(167,139,250,0.14); padding-bottom: 1.3rem; margin-bottom: 1.2rem; }
+  .colophon-ls { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 2.4rem; color: var(--gold); letter-spacing: 0.05em; display: block; margin-bottom: 0.4rem; }
+  .colophon-phrase { font-size: 0.92rem; font-weight: 700; color: var(--stardust); }
+  .series-list { display: flex; flex-direction: column; gap: 0.38rem; margin-bottom: 1.2rem; }
+  .series-item { font-size: 0.72rem; color: var(--dim); letter-spacing: 0.01em; display: flex; gap: 0.7rem; align-items: baseline; line-height: 1.45; }
+  .series-item.current { color: var(--pink); font-weight: 700; }
+  .series-num { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim2); flex-shrink: 0; }
+  .series-item.current .series-num { color: var(--pink); }
+  .reflect { border-top: 1px solid rgba(167,139,250,0.14); padding-top: 1rem; margin-bottom: 1.2rem; }
+  .reflect-label { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--pink); margin-bottom: 0.65rem; }
+  .reflect-q { font-size: 0.86rem; line-height: 1.55; color: var(--stardust); margin-bottom: 0.55rem; }
+  .reflect-q:last-child { margin-bottom: 0; }
+  .colophon-body { font-size: 0.75rem; color: var(--dim); line-height: 1.75; margin-bottom: 1.2rem; }
+  .colophon-body a { color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(251,191,36,0.4); }
+  .colophon-body a:hover { border-bottom-color: var(--gold); }
+  .colophon-footer { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--dim); line-height: 2.2; border-top: 1px solid rgba(167,139,250,0.14); padding-top: 1rem; }
+
+  /* ── SPREAD FOOTER ── */
+  .spread-footer { display: flex; justify-content: space-between; align-items: center; padding: 0.9rem 2.4rem; border-top: 1px solid rgba(167,139,250,0.1); }
+  .spread-footer-left { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--dim); }
+  .spread-footer-right { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; color: var(--pink); }
+
+  .twinkle { position: fixed; width: 3px; height: 3px; border-radius: 50%; animation: twinkle-anim 3s ease-in-out infinite; pointer-events: none; z-index: 0; }
+
+  @media (max-width: 600px) {
+    .spread-2col { grid-template-columns: 1fr; }
+    .spread-left { border-right: none; border-bottom: 1px solid rgba(167,139,250,0.12); }
+    .cover-spread { padding: 2rem; min-height: 420px; }
+    .cover-motif { width: 224px; height: 224px; top: -4px; right: -24px; opacity: 0.5; }
+    .cover-title { font-size: 1.85rem; }
+    .spread-heading { font-size: 1.55rem; }
+    .spread-left, .spread-right { padding: 2rem 1.5rem; }
+    .colophon { padding: 2rem 1.5rem; }
+  }
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"A Mycelium and a Rhizome","description":"How neurodivergent knowledge and community grow, read through star stuff — no trunk, no center, many doors. A rhizome (Deleuze & Guattari) with no root to ask permission of, fed by a mycelium that carries what's needed to wherever it's needed. The cosmic web, a slime mold, and a neuron share the shape: not a pyramid, a web. The Autistic Rhizome and neuro-anarchy (Gray-Hammond, Munday, Edgar) are us organizing the way the universe does. Decentralization isn't disorder — it's the oldest structure there is.","image":"https://starstuff.earth/og-card.jpg","url":"https://starstuff.earth/mycelium-and-rhizome-zine.html","mainEntityOfPage":"https://starstuff.earth/mycelium-and-rhizome-zine.html","author":{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/"},"publisher":{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/","logo":{"@type":"ImageObject","url":"https://starstuff.earth/og-card.jpg"}},"isPartOf":{"@type":"WebSite","name":"Star Stuff","url":"https://starstuff.earth/"}}</script>
+</head>
+<body>
+
+<div class="twinkle" style="top:7%;left:11%;background:var(--pink);box-shadow:0 0 6px var(--pink);animation-delay:-0.4s"></div>
+<div class="twinkle" style="top:19%;left:83%;background:var(--gold);box-shadow:0 0 6px var(--gold);animation-delay:-1.3s"></div>
+<div class="twinkle" style="top:52%;left:4%;background:var(--pink);box-shadow:0 0 6px var(--pink);animation-delay:-2.1s"></div>
+<div class="twinkle" style="top:71%;left:94%;background:var(--gold);box-shadow:0 0 6px var(--gold);animation-delay:-0.9s"></div>
+<div class="twinkle" style="top:88%;left:28%;background:var(--star-white);box-shadow:0 0 6px var(--star-white);animation-delay:-1.7s"></div>
+<div class="twinkle" style="top:38%;left:97%;background:var(--pink);box-shadow:0 0 6px var(--pink);animation-delay:-3.1s"></div>
+
+<div class="zine-shell">
+
+  <nav class="ss-nav" style="--nav-accent:#f472b6;" aria-label="Star Stuff collection">
+    <span class="ss-nav-home-group"><a class="ss-nav-home" href="index.html"><span class="ss-star" aria-hidden="true">★</span> stuff</a><a class="ss-nav-about" href="about.html">about</a></span>
+    <span class="ss-nav-links">
+      <a class="ss-nav-prev" href="shared-signal-zine.html"><span class="ss-nav-arrow" aria-hidden="true">‹</span> <span class="ss-nav-label">Shared Signal</span></a>
+      <a class="ss-nav-next" href="constellation-field-guide.html"><span class="ss-nav-label">Field Guide</span> <span class="ss-nav-arrow" aria-hidden="true">›</span></a>
+    </span>
+  </nav>
+
+  <nav class="nav">
+    <div class="nav-brand">Stimpunks · Zine No. 26</div>
+    <div class="nav-controls">
+      <button class="nav-btn" id="prev-btn" onclick="changePage(-1)">← prev</button>
+      <span class="page-counter" id="page-counter">1 / 8</span>
+      <button class="nav-btn" id="next-btn" onclick="changePage(1)">next →</button>
+    </div>
+  </nav>
+
+  <!-- ════ SPREAD 1: COVER ════ -->
+  <div class="spread active" id="spread-1">
+    <div class="cover-spread">
+      <svg class="cover-motif" viewBox="0 0 340 340" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <!-- a filament web: gold nodes strung on magenta threads, no center; spores + a mushroom hint below -->
+        <g fill="none" stroke="rgba(244,114,182,0.5)" stroke-width="1.3" stroke-linecap="round">
+          <path d="M96 84 q40 -6 78 20"/><path d="M96 84 q-20 44 6 84"/><path d="M174 104 q46 4 54 56"/>
+          <path d="M102 168 q54 12 126 -12"/><path d="M174 104 q-34 40 -66 66"/><path d="M96 84 q52 40 132 60"/>
+          <path d="M228 160 q-30 40 8 78"/><path d="M108 234 q60 6 128 -20"/>
+        </g>
+        <!-- nodes -->
+        <g fill="rgba(251,191,36,0.9)">
+          <circle cx="96" cy="84" r="8"/><circle cx="174" cy="104" r="8"/><circle cx="228" cy="160" r="7"/>
+          <circle cx="108" cy="234" r="6"/><circle cx="236" cy="238" r="6"/><circle cx="60" cy="150" r="5"/>
+        </g>
+        <!-- faint spores drifting -->
+        <g fill="rgba(244,244,251,0.7)"><circle cx="132" cy="60" r="1.8"/><circle cx="206" cy="70" r="1.6"/><circle cx="70" cy="210" r="1.6"/><circle cx="196" cy="200" r="1.5"/></g>
+        <!-- stars -->
+        <g fill="#f4f2fb"><circle cx="56" cy="66" r="1.6"/><circle cx="300" cy="96" r="1.5"/><circle cx="300" cy="286" r="1.6"/></g>
+        <text x="170" y="308" font-family="Space Mono, monospace" font-size="8" letter-spacing="1.5" fill="rgba(244,114,182,0.8)" text-anchor="middle">no trunk · no center</text>
+      </svg>
+
+      <div class="cover-corner">
+        <div class="cover-corner-num">26</div>
+        <span class="cover-corner-label">Network</span>
+      </div>
+
+      <div class="cover-issue">Stimpunks Foundation · Zine No. 26</div>
+
+      <h1 class="cover-title">A Mycelium and<br>a <span class="spectrum-word">Rhizome</span></h1>
+
+      <p class="cover-subtitle">how neurodivergent knowledge grows: no trunk, no center, many doors</p>
+
+      <hr class="spectrum-line cover-rule">
+
+      <div class="cover-meta">
+        <div class="cover-ls">L★S</div>
+        <div class="cover-meta-text">
+          Love You Down<br>
+          To Your Star Stuff<br>
+          · open edition ·
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 2: Not a Tree ════ -->
+  <div class="spread" id="spread-2">
+    <div class="interior">
+      <div class="spread-2col">
+        <div class="spread-left">
+          <div class="eyebrow">The rhizome</div>
+          <h2 class="spread-heading">Not a<br><span style="color:var(--pink)">tree</span></h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p>The usual picture of knowledge is a tree. One trunk, a few big branches, everything ranked and traceable back to a single root. To learn it you climb; to belong you find your place on the chart. Miss a branch and you're lost.</p>
+            <p>Deleuze and Guattari offered another shape: the <span class="pink">rhizome</span>. Picture ginger root, or crabgrass, or fungal thread — no trunk, no first cause, no top. Any point can connect to any other. It is "a model perpetually in construction or collapsing," they wrote: a <em>map</em> you can enter from any edge, not a <em>tree</em> you must climb from the base.</p>
+            <p>Cut a rhizome and it doesn't die — it regrows from anywhere. There is no root to ask permission of, because there is no root.</p>
+          </div>
+          <div class="pull-quote">A map you can enter from any edge — not a tree you must climb from the base.</div>
+        </div>
+        <div class="spread-right">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 260 220" xmlns="http://www.w3.org/2000/svg">
+              <!-- tree (hierarchy) vs rhizome (network) -->
+              <text x="64" y="24" font-family="Space Mono, monospace" font-size="5" fill="rgba(136,134,160,0.85)" text-anchor="middle">tree</text>
+              <!-- tree: single root, ranked branches -->
+              <g stroke="rgba(136,134,160,0.7)" stroke-width="1.4" fill="none">
+                <line x1="64" y1="150" x2="64" y2="70"/>
+                <line x1="64" y1="96" x2="40" y2="72"/><line x1="64" y1="96" x2="88" y2="72"/>
+                <line x1="64" y1="120" x2="44" y2="102"/><line x1="64" y1="120" x2="84" y2="102"/>
+              </g>
+              <circle cx="64" cy="64" r="5" fill="rgba(136,134,160,0.85)"/>
+              <g fill="rgba(136,134,160,0.7)"><circle cx="40" cy="70" r="3.4"/><circle cx="88" cy="70" r="3.4"/><circle cx="44" cy="100" r="3.4"/><circle cx="84" cy="100" r="3.4"/></g>
+              <circle cx="64" cy="152" r="4.5" fill="rgba(244,114,182,0.5)"/>
+              <text x="64" y="168" font-family="Space Mono, monospace" font-size="4.6" fill="rgba(136,134,160,0.85)" text-anchor="middle">one root · a top</text>
+              <!-- divider -->
+              <line x1="130" y1="40" x2="130" y2="176" stroke="rgba(167,139,250,0.3)" stroke-width="1" stroke-dasharray="3 4"/>
+              <!-- rhizome: lateral net, no top -->
+              <text x="196" y="24" font-family="Space Mono, monospace" font-size="5" fill="rgba(244,114,182,0.9)" text-anchor="middle">rhizome</text>
+              <g stroke="rgba(244,114,182,0.6)" stroke-width="1.3" fill="none">
+                <path d="M164 70 q30 8 48 -2"/><path d="M164 70 q-6 34 14 54"/><path d="M212 68 q20 30 -2 58"/>
+                <path d="M178 124 q34 8 32 -4"/><path d="M164 70 q40 30 46 54"/><path d="M178 124 q-14 20 6 40"/>
+              </g>
+              <g fill="rgba(251,191,36,0.9)"><circle cx="164" cy="70" r="5"/><circle cx="212" cy="68" r="5"/><circle cx="178" cy="124" r="5"/><circle cx="210" cy="126" r="5"/><circle cx="184" cy="164" r="4.5"/></g>
+              <text x="196" y="184" font-family="Space Mono, monospace" font-size="4.6" fill="rgba(244,114,182,0.9)" text-anchor="middle">any point to any point</text>
+            </svg>
+            <p class="diagram-caption">
+              hierarchy vs network<br>
+              <span class="annotation">no root, no top</span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">A Mycelium and a Rhizome · Stimpunks</span>
+        <span class="spread-footer-right">2</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 3: Many Doors ════ -->
+  <div class="spread" id="spread-3">
+    <div class="interior">
+      <div class="spread-2col">
+        <div class="spread-left">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 260 220" xmlns="http://www.w3.org/2000/svg">
+              <!-- a knowledge web with many entry arrows from the edges -->
+              <text x="130" y="22" font-family="Space Mono, monospace" font-size="5" fill="rgba(136,134,160,0.85)" text-anchor="middle">enter anywhere</text>
+              <!-- internal lateral links -->
+              <g stroke="rgba(244,114,182,0.55)" stroke-width="1.2" fill="none">
+                <path d="M96 88 q40 -8 70 10"/><path d="M96 88 q-2 40 26 58"/><path d="M166 98 q20 30 -6 54"/><path d="M122 146 q40 4 44 -6"/>
+              </g>
+              <g fill="rgba(251,191,36,0.9)"><circle cx="96" cy="88" r="6"/><circle cx="166" cy="98" r="6"/><circle cx="122" cy="146" r="6"/><circle cx="160" cy="152" r="5.5"/></g>
+              <g font-family="Space Mono, monospace" font-size="4.6" fill="rgba(200,196,224,0.95)">
+                <text x="96" y="82" text-anchor="middle">spiky</text>
+                <text x="176" y="94" text-anchor="middle">mono-</text><text x="176" y="101" text-anchor="middle">tropism</text>
+                <text x="122" y="160" text-anchor="middle">deep attn</text>
+              </g>
+              <!-- entry arrows from edges -->
+              <g stroke="rgba(34,211,238,0.7)" stroke-width="1.2" fill="none">
+                <path d="M20 60 L84 84"/><path d="M78 80 L84 84 L76 88"/>
+                <path d="M240 66 L174 94"/><path d="M181 90 L174 94 L179 100"/>
+                <path d="M28 176 L114 150"/><path d="M107 146 L114 150 L109 156"/>
+              </g>
+              <g font-family="Space Mono, monospace" font-size="4.4" fill="rgba(34,211,238,0.9)">
+                <text x="18" y="54" text-anchor="start">a word that fit</text>
+                <text x="242" y="60" text-anchor="end">burnout</text>
+                <text x="20" y="188" text-anchor="start">a classroom problem</text>
+              </g>
+            </svg>
+            <p class="diagram-caption">
+              no prerequisite · no gatekeeper<br>
+              <span class="annotation">every door opens onto the whole</span>
+            </p>
+          </div>
+        </div>
+        <div class="spread-right">
+          <div class="eyebrow">Entry points</div>
+          <h2 class="spread-heading">Many<br><span style="color:var(--pink)">doors</span></h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p>Because there's no beginning, there's no wrong place to start. Neurodivergent knowledge is a rhizome you enter wherever your life opens a door. Come in at <span class="pink">Spiky Profiles</span> and you might follow a thread to <span class="pink">Monotropism</span>, and on to <span class="pink">Deep Attention</span> — or arrive from the far side entirely, through burnout, or a word that finally fit, or a problem in a classroom.</p>
+            <p>No prerequisite. No gatekeeper checking you read the introduction first. No "you're not ready for this yet." The map has as many doors as there are people, and every door opens onto the whole.</p>
+            <p>This matters most for minds that were told they'd learned things in the wrong order, or hadn't earned the next rung. In a rhizome there are no rungs — only the next connection that makes sense to you.</p>
+          </div>
+          <div class="pull-quote gold">No prerequisite. No gatekeeper. As many doors as there are people.</div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">A Mycelium and a Rhizome · Stimpunks</span>
+        <span class="spread-footer-right">3</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 4: The Mycelium Moves ════ -->
+  <div class="spread" id="spread-4">
+    <div class="interior">
+      <div class="spread-2col">
+        <div class="spread-left">
+          <div class="eyebrow">The network flows</div>
+          <h2 class="spread-heading">The mycelium<br><span style="color:var(--pink)">moves</span></h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p>A rhizome is the shape; a mycelium is the <em>life in it</em>. Underground, fungal threads lace whole forests together — the <a href="underground-zine.html">"wood wide web"</a> (Simard) — shuttling sugar, water, and warning signals between trees that never touch, feeding a seedling in the shade from a parent in the sun.</p>
+            <p>And the network is not fixed. Where a path is useful, traffic <span class="pink">thickens</span> it; where it isn't, it quietly fades. A slime mold — one cell, no brain, no boss — grows across a map of scattered food and settles into almost exactly the rail network human engineers drew for Tokyo (Tero et al., 2010). Decentralised, and still smart.</p>
+            <p>That's how care and knowledge move through our communities too: not issued from a head office, but flowing along the threads to wherever they're needed, strengthening whatever works.</p>
+          </div>
+          <div class="pull-quote">Not issued from a head office — flowing along the threads to wherever it's needed.</div>
+        </div>
+        <div class="spread-right">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 260 220" xmlns="http://www.w3.org/2000/svg">
+              <!-- mycelial flow: strong thick paths, thin fading paths, nutrient to a seedling -->
+              <text x="130" y="22" font-family="Space Mono, monospace" font-size="5" fill="rgba(136,134,160,0.85)" text-anchor="middle">the network learns</text>
+              <!-- source node (sun-fed) -->
+              <circle cx="52" cy="70" r="9" fill="rgba(251,191,36,0.9)"/>
+              <text x="52" y="52" font-family="Space Mono, monospace" font-size="4.6" fill="rgba(251,191,36,0.9)" text-anchor="middle">plenty</text>
+              <!-- thick strong path to seedling -->
+              <path d="M60 76 q60 30 120 40" fill="none" stroke="rgba(244,114,182,0.85)" stroke-width="4" stroke-linecap="round"/>
+              <!-- medium path -->
+              <path d="M58 78 q40 44 78 78" fill="none" stroke="rgba(244,114,182,0.55)" stroke-width="2" stroke-linecap="round"/>
+              <!-- thin fading paths -->
+              <path d="M60 66 q50 -10 96 -6" fill="none" stroke="rgba(136,134,160,0.4)" stroke-width="1" stroke-dasharray="2 5"/>
+              <path d="M56 80 q20 40 6 74" fill="none" stroke="rgba(136,134,160,0.4)" stroke-width="1" stroke-dasharray="2 5"/>
+              <!-- flowing nutrient dots on the strong path -->
+              <g fill="rgba(251,191,36,0.9)"><circle cx="96" cy="92" r="2.2"/><circle cx="128" cy="102" r="2.2"/><circle cx="158" cy="110" r="2.2"/></g>
+              <!-- seedling in shade -->
+              <path d="M186 124 l0 -16 M186 118 l-7 -6 M186 118 l7 -6" stroke="rgba(74,222,128,0.85)" stroke-width="1.6" fill="none"/>
+              <circle cx="186" cy="128" r="6" fill="rgba(74,222,128,0.35)" stroke="rgba(74,222,128,0.8)" stroke-width="1.1"/>
+              <text x="186" y="146" font-family="Space Mono, monospace" font-size="4.6" fill="rgba(74,222,128,0.9)" text-anchor="middle">fed in the shade</text>
+              <text x="130" y="196" font-family="Space Mono, monospace" font-size="4.6" fill="rgba(244,114,182,0.9)" text-anchor="middle">strong paths thicken · weak paths fade</text>
+            </svg>
+            <p class="diagram-caption">
+              flow · redistribute · adapt<br>
+              <span class="annotation">smart without a boss</span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">A Mycelium and a Rhizome · Stimpunks</span>
+        <span class="spread-footer-right">4</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 5: The Same Shape Everywhere ════ -->
+  <div class="spread" id="spread-5">
+    <div class="interior">
+      <div class="spread-2col">
+        <div class="spread-left">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 260 220" xmlns="http://www.w3.org/2000/svg">
+              <!-- three panels: cosmic web, mycelium, neuron — the same shape -->
+              <text x="130" y="22" font-family="Space Mono, monospace" font-size="5" fill="rgba(136,134,160,0.85)" text-anchor="middle">same shape, different scale</text>
+              <!-- panel 1: cosmic web -->
+              <g stroke="rgba(167,139,250,0.6)" stroke-width="1.1" fill="none">
+                <path d="M24 60 q18 14 36 6 M40 90 q16 -20 20 -24 M46 66 q-10 20 -8 34"/>
+              </g>
+              <g fill="rgba(251,191,36,0.85)"><circle cx="24" cy="60" r="2.6"/><circle cx="60" cy="66" r="2.6"/><circle cx="40" cy="90" r="2.2"/><circle cx="60" cy="42" r="2"/></g>
+              <text x="44" y="112" font-family="Space Mono, monospace" font-size="4.4" fill="rgba(167,139,250,0.9)" text-anchor="middle">cosmic web</text>
+              <!-- panel 2: mycelium -->
+              <g stroke="rgba(244,114,182,0.6)" stroke-width="1.1" fill="none">
+                <path d="M108 54 q20 10 34 2 M116 50 q6 24 -2 40 M142 56 q-8 22 2 34"/>
+              </g>
+              <g fill="rgba(251,191,36,0.85)"><circle cx="108" cy="54" r="2.6"/><circle cx="142" cy="56" r="2.6"/><circle cx="114" cy="90" r="2.2"/><circle cx="144" cy="90" r="2"/></g>
+              <text x="128" y="112" font-family="Space Mono, monospace" font-size="4.4" fill="rgba(244,114,182,0.9)" text-anchor="middle">mycelium</text>
+              <!-- panel 3: neuron -->
+              <g stroke="rgba(34,211,238,0.6)" stroke-width="1.1" fill="none">
+                <path d="M196 66 l22 -10 M196 66 l20 14 M196 66 l-8 -14 M196 66 l-10 16 M218 56 l10 -6 M216 80 l8 8"/>
+              </g>
+              <circle cx="196" cy="66" r="6" fill="rgba(34,211,238,0.3)" stroke="rgba(34,211,238,0.8)" stroke-width="1.1"/>
+              <text x="206" y="112" font-family="Space Mono, monospace" font-size="4.4" fill="rgba(34,211,238,0.9)" text-anchor="middle">neuron</text>
+              <!-- baseline: they rhyme -->
+              <line x1="24" y1="140" x2="236" y2="140" stroke="rgba(167,139,250,0.25)" stroke-width="1" stroke-dasharray="3 4"/>
+              <text x="130" y="164" font-family="Space Mono, monospace" font-size="5" fill="rgba(251,191,36,0.9)" text-anchor="middle">not a pyramid — a web</text>
+              <text x="130" y="182" font-family="Space Mono, monospace" font-size="4.6" fill="rgba(136,134,160,0.85)" text-anchor="middle">supercluster · mushroom · synapse</text>
+            </svg>
+            <p class="diagram-caption">
+              read the captions to tell them apart<br>
+              <span class="annotation">the universe's favourite shape</span>
+            </p>
+          </div>
+        </div>
+        <div class="spread-right">
+          <div class="eyebrow">Every scale</div>
+          <h2 class="spread-heading">The same shape<br><span style="color:var(--pink)">everywhere</span></h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p>Zoom all the way out and the shape returns. The <span class="pink">cosmic web</span> — the largest structure there is — is galaxies strung like dew along vast filaments of dark matter, with great voids between and no center anywhere. Matter drifts down the strands to the bright knots where filaments cross.</p>
+            <p>Set a slice of the cosmic web beside a mycelial mat, beside a slime mold, beside a single neuron, and you have to read the captions to tell them apart. The universe keeps reaching for the same answer: not a pyramid, a web.</p>
+            <p>So when we build without a throne at the top, we aren't failing to organise. We're organising the way the universe does at every scale. Decentralisation isn't disorder — it's the oldest structure there is.</p>
+          </div>
+          <div class="pull-quote violet">Not a pyramid. A web. The oldest structure there is.</div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">A Mycelium and a Rhizome · Stimpunks</span>
+        <span class="spread-footer-right">5</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 6: The Autistic Rhizome ════ -->
+  <div class="spread" id="spread-6">
+    <div class="interior">
+      <div class="spread-2col">
+        <div class="spread-left">
+          <div class="eyebrow">Neuro-anarchy</div>
+          <h2 class="spread-heading">The Autistic<br><span style="color:var(--pink)">Rhizome</span></h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p>We are already building this. David Gray-Hammond and Katie Munday name it <span class="pink">neuro-anarchy</span>: "the decentralisation of hierarchy as it pertains to neurocultures." The <span class="pink">Autistic Rhizome</span> is "a network with no single point of origin. No part of the network depends upon the existence of another."</p>
+            <p>No advocates ranked above followers, no advancing by how much you know — we meet as equals, held together by a do-no-harm ethic instead of a chain of command. Helen Edgar maps the same ground: <a href="shared-signal-zine.html">watering holes</a> and Discords alive at 2am, belonging you don't have to earn.</p>
+            <p>Lose any one node and the network lives on, because nothing depends on a center. That isn't fragility waiting for a leader. It's resilience by design — a community shaped like the minds it's made of.</p>
+          </div>
+          <div class="refusals">
+            <div class="refusal"><span class="refusal-tag">Not</span><span>a tree — <strong>no trunk, and no root to ask permission of.</strong></span></div>
+            <div class="refusal"><span class="refusal-tag">Not</span><span>a ladder — <strong>no one advances by rank or "knowledge level"; we meet as equals.</strong></span></div>
+            <div class="refusal"><span class="refusal-tag">Not</span><span>waiting for a leader — <strong>decentralisation is the design, not a defect.</strong></span></div>
+            <div class="refusal"><span class="refusal-tag">Not</span><span>chaos — <strong>a rhizome has structure; it just isn't a pyramid.</strong></span></div>
+            <div class="refusal"><span class="refusal-tag">Not</span><span>built <em>for</em> us by others — <strong>by and for; we grow our own soil.</strong></span></div>
+          </div>
+        </div>
+        <div class="spread-right">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 260 220" xmlns="http://www.w3.org/2000/svg">
+              <!-- many community nodes loosely interlinked, no central hub; one removed, network intact -->
+              <text x="130" y="22" font-family="Space Mono, monospace" font-size="5" fill="rgba(136,134,160,0.85)" text-anchor="middle">no center to lose</text>
+              <g stroke="rgba(244,114,182,0.55)" stroke-width="1.2" fill="none">
+                <path d="M60 60 q40 -6 78 8"/><path d="M60 60 q-6 40 18 62"/><path d="M138 68 q40 10 44 52"/>
+                <path d="M78 122 q46 6 60 -2"/><path d="M138 68 q-30 34 -60 54"/><path d="M182 120 q-30 30 -44 44"/>
+                <path d="M60 60 q60 44 78 60"/>
+              </g>
+              <!-- nodes (communities) -->
+              <g fill="rgba(251,191,36,0.9)">
+                <circle cx="60" cy="60" r="7"/><circle cx="138" cy="68" r="7"/><circle cx="78" cy="122" r="6.5"/>
+                <circle cx="182" cy="120" r="6.5"/><circle cx="138" cy="164" r="6"/>
+              </g>
+              <!-- one removed node (greyed, X) -->
+              <circle cx="205" cy="66" r="7" fill="none" stroke="rgba(136,134,160,0.5)" stroke-width="1.2" stroke-dasharray="2 3"/>
+              <g stroke="rgba(136,134,160,0.6)" stroke-width="1.1"><line x1="200" y1="61" x2="210" y2="71"/><line x1="210" y1="61" x2="200" y2="71"/></g>
+              <text x="205" y="86" font-family="Space Mono, monospace" font-size="4.4" fill="rgba(136,134,160,0.85)" text-anchor="middle">one lost</text>
+              <text x="130" y="196" font-family="Space Mono, monospace" font-size="4.6" fill="rgba(244,114,182,0.9)" text-anchor="middle">the network holds · equals, not ranks</text>
+            </svg>
+            <p class="diagram-caption">
+              autonomous · interconnected<br>
+              <span class="annotation">resilience by design</span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">A Mycelium and a Rhizome · Stimpunks</span>
+        <span class="spread-footer-right">6</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 7: Where It Meets the Ground ════ -->
+  <div class="spread" id="spread-7">
+    <div class="interior">
+      <div class="spread-2col">
+        <div class="spread-left">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 260 224" xmlns="http://www.w3.org/2000/svg">
+              <!-- the network rooting into ground, nodes becoming little rooms/environments -->
+              <text x="130" y="22" font-family="Space Mono, monospace" font-size="5" fill="rgba(136,134,160,0.85)" text-anchor="middle">where the map touches soil</text>
+              <!-- upper network -->
+              <g stroke="rgba(244,114,182,0.55)" stroke-width="1.2" fill="none">
+                <path d="M70 54 q50 -6 96 6"/><path d="M110 46 q6 24 0 40"/><path d="M166 60 q-30 20 -50 30"/>
+              </g>
+              <g fill="rgba(251,191,36,0.9)"><circle cx="70" cy="54" r="5.5"/><circle cx="110" cy="46" r="5.5"/><circle cx="166" cy="60" r="5.5"/></g>
+              <!-- soil line -->
+              <line x1="20" y1="120" x2="240" y2="120" stroke="rgba(183,166,136,0.5)" stroke-width="1.2"/>
+              <text x="234" y="116" font-family="Space Mono, monospace" font-size="4.4" fill="rgba(183,166,136,0.9)" text-anchor="end">soil</text>
+              <!-- threads rooting down into little rooms -->
+              <g stroke="rgba(244,114,182,0.5)" stroke-width="1.1" fill="none">
+                <path d="M70 60 q-6 40 -6 56"/><path d="M110 52 q4 40 4 64"/><path d="M166 66 q6 34 6 50"/>
+              </g>
+              <!-- rooms / environments (Cavendish Space) -->
+              <g fill="rgba(74,222,128,0.14)" stroke="rgba(74,222,128,0.7)" stroke-width="1.1">
+                <rect x="46" y="140" width="36" height="30" rx="3"/>
+                <rect x="96" y="146" width="36" height="30" rx="3"/>
+                <rect x="152" y="140" width="36" height="30" rx="3"/>
+              </g>
+              <!-- a seedling in one room -->
+              <path d="M114 166 l0 -12 M114 158 l-5 -4 M114 158 l5 -4" stroke="rgba(74,222,128,0.9)" stroke-width="1.4" fill="none"/>
+              <text x="130" y="196" font-family="Space Mono, monospace" font-size="4.6" fill="rgba(74,222,128,0.9)" text-anchor="middle">patterns become environments</text>
+              <text x="130" y="212" font-family="Space Mono, monospace" font-size="4.6" fill="rgba(251,191,36,0.9)" text-anchor="middle">Cavendish Space</text>
+            </svg>
+            <p class="diagram-caption">
+              ideas → experiments → rooms<br>
+              <span class="annotation">grow the soil</span>
+            </p>
+          </div>
+        </div>
+        <div class="spread-right">
+          <div class="eyebrow">Cavendish Space</div>
+          <h2 class="spread-heading">Where it meets<br>the <span style="color:var(--pink)">ground</span></h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p>A map is only worth something where it touches soil. <a href="https://stimpunks.org/glossary/cavendish-space/">Cavendish Space</a> is where the rhizome and the mycelium meet reality: where ideas become experiments, patterns become environments, and a concept like <em>Regulation First</em> becomes an actual room someone can breathe in.</p>
+            <p>We've been below before — <a href="underground-zine.html">Underground</a> (No. 5) followed the mycelium into the dark, and <a href="no-one-is-the-leader-zine.html">No One Is the Leader</a> (No. 22) watched the flock turn without a captain. This is the map that ties them: a knowledge and a culture with no trunk, fed by threads that carry what we know to whoever needs it next.</p>
+            <p>So don't look for the person in charge. Find the nearest thread, and pull. Add a door. Thicken a path. Feed a seedling in the shade. <strong>Love you down to your star stuff — every node of it.</strong></p>
+          </div>
+          <div class="pull-quote gold">Don't look for the person in charge. Find the nearest thread, and pull.</div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">A Mycelium and a Rhizome · Stimpunks</span>
+        <span class="spread-footer-right">7</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 8: Colophon ════ -->
+  <div class="spread" id="spread-8">
+    <div class="interior">
+      <div class="colophon">
+        <div>
+          <div class="colophon-top">
+            <span class="colophon-ls">L★S</span>
+            <span class="colophon-phrase">A tree has one trunk and a chain of command. Neurodivergent knowledge and community grow the other way — a rhizome with no root to ask permission of, fed by a mycelium that carries what we know to whoever needs it next. No center to lose. Structure without a throne.</span>
+          </div>
+          <div class="series-list">
+            <div class="series-item"><span class="series-num">No. 5</span> Underground — the mycelial worldview, decomposition &amp; the quiet dark</div>
+            <div class="series-item"><span class="series-num">No. 18</span> The Garden and the Stars — knowledge gardens &amp; the commons</div>
+            <div class="series-item"><span class="series-num">No. 21</span> Not a Line — the spectrum as constellation, not a ladder</div>
+            <div class="series-item"><span class="series-num">No. 22</span> No One Is the Leader — emergence &amp; the murmuration</div>
+            <div class="series-item"><span class="series-num">No. 25</span> Shared Signal — signal, distance &amp; the Autistic Rhizome online</div>
+            <div class="series-item current"><span class="series-num">No. 26</span> A Mycelium and a Rhizome — how neurodivergent knowledge grows: no trunk, no center ← you are here</div>
+          </div>
+          <div class="reflect">
+            <div class="reflect-label">Reflection</div>
+            <p class="reflect-q">Which door did you come in through — and who held it open?</p>
+            <p class="reflect-q">Where have you seen care flow along the threads to whoever needed it, with no one in charge?</p>
+            <p class="reflect-q">What path could you thicken, or what new door could you add, this week?</p>
+          </div>
+          <p class="colophon-body">
+            A Mycelium and a Rhizome is the twenty-sixth zine in the Stimpunks series. It maps how neurodivergent knowledge and community grow — a rhizome (structure) fed by a mycelium (flow) — and grounds them where they meet reality, in Cavendish Space. It's the map that ties <a href="underground-zine.html">Underground</a> (No. 5) to <a href="no-one-is-the-leader-zine.html">No One Is the Leader</a> (No. 22).<br><br>
+            The philosophy: Gilles Deleuze &amp; Félix Guattari, <em>A Thousand Plateaus</em> (1980) — the rhizome as a map, not a tracing, "perpetually in construction or collapsing." The culture: David Gray-Hammond and Katie Munday on neuro-anarchy and the Autistic Rhizome ("a network with no single point of origin"), and <a href="https://autisticrealms.com/the-autistic-rhizome-community-liminal-spaces-belonging/">Helen Edgar</a>'s Autistic Rhizome and online watering holes. The framing draws on Stimpunks' own <a href="https://stimpunks.org/rhizome-mycelium/">A Mycelium and a Rhizome</a> and <a href="https://stimpunks.org/glossary/cavendish-space/">Cavendish Space</a>, with its pattern language — Spiky Profiles, Monotropism, Deep Attention, Regulation First, Environment Fit. The science: mycorrhizal networks and the "wood wide web" (Suzanne Simard); the decentralised problem-solving of the slime mold <em>Physarum polycephalum</em>, which reproduced the Tokyo rail network (Tero et al., 2010); and the cosmic web of dark-matter filaments — the universe's largest structure, and a rhizome at the grandest scale.<br><br>
+            The star stuff is Carl Sagan's, and the SN 1006 remnant on every Stimpunks page. The reading — that decentralisation is not disorder but the oldest structure there is — is ours. You were ★stuff, strung on the web with everything else, all along.
+          </p>
+        </div>
+        <div class="colophon-footer">
+          Stimpunks Foundation · Zine No. 26 · Open Edition<br>
+          Print freely · Share freely · <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> · L★S<br>
+          stimpunks.org · starstuff.earth
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">A Mycelium and a Rhizome · Stimpunks</span>
+        <span class="spread-footer-right">8</span>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /zine-shell -->
+
+<script>
+  let current = 1;
+  const total = 8;
+
+  function changePage(dir) {
+    const next = current + dir;
+    if (next < 1 || next > total) return;
+    document.getElementById('spread-' + current).classList.remove('active');
+    current = next;
+    document.getElementById('spread-' + current).classList.add('active');
+    document.getElementById('page-counter').textContent = current + ' / ' + total;
+    document.getElementById('prev-btn').style.opacity = current === 1 ? '0.3' : '1';
+    document.getElementById('next-btn').style.opacity = current === total ? '0.3' : '1';
+    document.getElementById('prev-btn').classList.toggle('active', current > 1);
+    document.getElementById('next-btn').classList.toggle('active', current < total);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') changePage(1);
+    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   changePage(-1);
+  });
+
+  document.getElementById('prev-btn').style.opacity = '0.3';
+  document.getElementById('next-btn').classList.add('active');
+</script>
+<script src="starstuff.js" defer></script>
+</body>
+</html>
