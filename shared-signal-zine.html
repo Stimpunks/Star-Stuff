@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0a0a14">
+<link rel="canonical" href="https://starstuff.earth/shared-signal-zine.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta name="description" content="Connection carried across distance, read through star stuff. The electromagnetic spectrum is one continuous field — radio and starlight are the same phenomenon at different wavelengths — and the same physics that carries a voice call carries a star's light. Shared-signal space (a term coined by Helen Edgar) is the counterpart to shared-air space: a voice, a message, a synthesised sentence, carrying the rhythm over distance — thinner, but real. Text and AAC aren't a fallback but the clearer channel. Aversion to the phone is information, not fragility. No channel is the master channel; signal is a form of presence.">
+<!-- Open Graph / link unfurl -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Star Stuff · Stimpunks Foundation">
+<meta property="og:url" content="https://starstuff.earth/shared-signal-zine.html">
+<meta property="og:title" content="Shared Signal">
+<meta property="og:description" content="Connection carried across distance, read through star stuff. The EM spectrum is one field — radio and starlight, the same phenomenon. Shared-signal space (coined by Helen Edgar) is the counterpart to shared-air space: voice, text, AAC carrying the rhythm over distance — thinner, but real. Text isn't a fallback but the clearer channel. No channel is the master channel; signal is a form of presence.">
+<meta property="og:image" content="https://starstuff.earth/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A rainbow-hued cosmic image — we are all made of star stuff.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Shared Signal">
+<meta name="twitter:description" content="Connection carried across distance. The EM spectrum is one field — radio and starlight, the same thing. Shared-signal space (Helen Edgar) is the counterpart to shared-air space: voice, text, AAC carrying the rhythm over distance — thinner, but real. No channel sits at the top; signal is a form of presence.">
+<meta name="twitter:image" content="https://starstuff.earth/og-card.jpg">
+<title>Shared Signal — Stimpunks Zine No. 25</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="starstuff.css">
+<style>
+  :root {
+    --void:  var(--sp-void-deep);
+    --deep:  var(--sp-deep);
+    --page:  var(--sp-page);
+    --violet:var(--sp-purple);
+    --pink:  var(--sp-pink);
+    --gold:  var(--sp-gold);
+    --cyan:  var(--sp-cyan);
+    --green: var(--sp-green);
+    --star-white: var(--sp-white-soft);
+    --stardust:   var(--sp-secondary-soft);
+    --dim:   var(--sp-dim);
+    --dim2:  var(--sp-dim-soft);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--void);
+    font-family: 'Atkinson Hyperlegible', system-ui, sans-serif;
+    color: var(--star-white);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── STARFIELD (violet · cyan · white — carrier waves, night radio, spectrum) ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 8% 12%, rgba(167,139,250,0.85) 0%, transparent 100%),
+      radial-gradient(1px 1px at 22% 38%, rgba(34,211,238,0.7) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 44% 9%, rgba(167,139,250,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 61% 68%, rgba(244,244,251,0.7) 0%, transparent 100%),
+      radial-gradient(2px 2px at 74% 28%, rgba(34,211,238,0.55) 0%, transparent 100%),
+      radial-gradient(1px 1px at 84% 54%, rgba(167,139,250,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 91% 79%, rgba(34,211,238,0.6) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 4% 58%, rgba(167,139,250,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 34% 84%, rgba(34,211,238,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 54% 48%, rgba(244,114,182,0.45) 0%, transparent 100%),
+      radial-gradient(2px 2px at 19% 88%, rgba(167,139,250,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 69% 4%, rgba(244,244,251,0.8) 0%, transparent 100%),
+      radial-gradient(1px 1px at 47% 62%, rgba(34,211,238,0.5) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 30% 20%, rgba(244,244,251,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 77% 88%, rgba(167,139,250,0.55) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .zine-shell { position: relative; z-index: 1; max-width: 820px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+
+  .spectrum-line { height: 2px; border: none; border-radius: 2px; background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); }
+
+  /* ── NAV ── */
+  .nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2.5rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(167,139,250,0.2); }
+  .nav-brand { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--dim); }
+  .nav-controls { display: flex; gap: 0.5rem; align-items: center; }
+  .nav-btn { background: none; border: 1px solid rgba(167,139,250,0.35); color: var(--stardust); font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.15em; padding: 0.4rem 0.85rem; border-radius: 2px; cursor: pointer; transition: all 0.2s ease; text-transform: uppercase; }
+  .nav-btn:hover { background: rgba(167,139,250,0.15); border-color: rgba(167,139,250,0.6); color: var(--star-white); }
+  .nav-btn.active { background: rgba(167,139,250,0.20); border-color: var(--violet); color: var(--star-white); }
+  .page-counter { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.2em; color: var(--dim2); }
+
+  .spread { display: none; animation: fadeIn 0.5s ease forwards; }
+  .spread.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ── COVER ── */
+  .cover-spread {
+    position: relative; min-height: 520px; border-radius: 4px; overflow: hidden;
+    background:
+      radial-gradient(ellipse at 22% 20%, rgba(167,139,250,0.16) 0%, transparent 52%),
+      radial-gradient(ellipse at 80% 26%, rgba(34,211,238,0.13) 0%, transparent 52%),
+      radial-gradient(ellipse at 68% 82%, rgba(167,139,250,0.11) 0%, transparent 52%),
+      radial-gradient(ellipse at 28% 80%, rgba(34,211,238,0.07) 0%, transparent 52%),
+      var(--deep);
+    border: 1px solid rgba(167,139,250,0.25);
+    box-shadow: inset 0 0 80px rgba(167,139,250,0.08), 0 0 0 4px rgba(255,255,255,0.03);
+    display: flex; flex-direction: column; justify-content: flex-end; padding: 3rem;
+  }
+  .cover-motif { position: absolute; top: -6px; right: -18px; width: 340px; height: 340px; opacity: 0.75; pointer-events: none; }
+  .cover-issue { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.5em; text-transform: uppercase; color: var(--violet); margin-bottom: 1.5rem; }
+  .cover-title { font-weight: 700; font-size: clamp(2.3rem, 6.6vw, 4rem); line-height: 1.02; color: var(--star-white); letter-spacing: -0.02em; margin-bottom: 0.9rem; }
+  .cover-title .spectrum-word { background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .cover-subtitle { font-size: 1rem; color: var(--stardust); opacity: 0.85; margin-bottom: 2rem; max-width: 470px; line-height: 1.55; }
+  .cover-rule { width: 220px; max-width: 60%; margin-bottom: 1.3rem; }
+  .cover-meta { display: flex; gap: 2rem; align-items: center; }
+  .cover-ls { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 1.4rem; color: var(--gold); letter-spacing: 0.05em; }
+  .cover-meta-text { font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--dim2); line-height: 1.9; }
+  .cover-corner { position: absolute; top: 2rem; right: 2.5rem; text-align: right; }
+  .cover-corner-num { font-weight: 700; font-size: 4.5rem; line-height: 1; color: var(--violet); opacity: 0.26; }
+  .cover-corner-label { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--cyan); display: block; margin-top: -0.3rem; }
+
+  /* ── INTERIOR ── */
+  .interior { background: var(--page); border: 1px solid rgba(167,139,250,0.15); border-radius: 4px; overflow: hidden; min-height: 480px; }
+  .spread-2col { display: grid; grid-template-columns: 1fr 1fr; min-height: 480px; }
+  .spread-left, .spread-right { padding: 3rem 2.4rem; position: relative; }
+  .spread-left { border-right: 1px solid rgba(167,139,250,0.12); }
+
+  .eyebrow { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--violet); margin-bottom: 1.1rem; }
+  .body-text { font-size: 0.98rem; line-height: 1.72; color: var(--stardust); }
+  .body-text p { margin-bottom: 1rem; }
+  .body-text p:last-child { margin-bottom: 0; }
+  .body-text strong { font-weight: 700; color: var(--star-white); }
+  .body-text em { font-style: italic; color: var(--star-white); }
+  .body-text a { color: var(--cyan); text-decoration: none; border-bottom: 1px solid rgba(34,211,238,0.4); }
+  .body-text a:hover { border-bottom-color: var(--cyan); color: var(--star-white); }
+  .body-text .violet { color: var(--violet); font-weight: 700; }
+  .body-text .pink { color: var(--pink); font-weight: 700; }
+  .body-text .gold { color: var(--gold); font-weight: 700; }
+  .body-text .cyan { color: var(--cyan); font-weight: 700; }
+  .body-text .green { color: var(--green); font-weight: 700; }
+
+  .spread-heading { font-weight: 700; font-size: 1.9rem; line-height: 1.12; color: var(--star-white); margin-bottom: 1.1rem; letter-spacing: -0.01em; }
+  .spread-heading .spectrum-word { background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .rule { width: 40px; margin: 1rem 0; }
+
+  .pull-quote { font-size: 1.18rem; font-weight: 700; line-height: 1.4; color: var(--star-white); border-left: 3px solid var(--violet); padding-left: 1.1rem; margin: 1.4rem 0; }
+  .pull-quote.pink { border-left-color: var(--pink); }
+  .pull-quote.gold { border-left-color: var(--gold); }
+  .pull-quote.cyan { border-left-color: var(--cyan); }
+  .pull-quote.green { border-left-color: var(--green); }
+  .pull-quote .attr { display: block; font-family: 'Space Mono', monospace; font-size: 0.6rem; font-weight: 400; letter-spacing: 0.08em; color: var(--dim); margin-top: 0.6rem; }
+
+  /* ── DIAGRAMS ── */
+  .diagram-wrap { display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; }
+  .diagram { width: 100%; max-width: 280px; display: block; }
+  .diagram-caption { font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim); text-align: center; margin-top: 0.9rem; line-height: 1.9; }
+  .annotation { color: var(--cyan); }
+
+  /* ── REFUSALS ── */
+  .refusals { margin-top: 1.3rem; }
+  .refusal { font-size: 0.88rem; line-height: 1.5; color: var(--stardust); padding: 0.55rem 0; border-bottom: 1px solid rgba(167,139,250,0.1); display: flex; gap: 0.6rem; align-items: baseline; }
+  .refusal:last-child { border-bottom: none; }
+  .refusal-tag { font-family: 'Space Mono', monospace; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--pink); flex-shrink: 0; padding-top: 0.12rem; }
+  .refusal strong { color: var(--star-white); font-weight: 700; }
+
+  /* ── COLOPHON ── */
+  .colophon { padding: 3rem; display: flex; flex-direction: column; justify-content: space-between; min-height: 480px; background: radial-gradient(ellipse at 82% 18%, rgba(34,211,238,0.10) 0%, transparent 50%), radial-gradient(ellipse at 18% 85%, rgba(167,139,250,0.09) 0%, transparent 50%), var(--page); }
+  .colophon-top { border-bottom: 1px solid rgba(167,139,250,0.14); padding-bottom: 1.3rem; margin-bottom: 1.2rem; }
+  .colophon-ls { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 2.4rem; color: var(--gold); letter-spacing: 0.05em; display: block; margin-bottom: 0.4rem; }
+  .colophon-phrase { font-size: 0.92rem; font-weight: 700; color: var(--stardust); }
+  .series-list { display: flex; flex-direction: column; gap: 0.38rem; margin-bottom: 1.2rem; }
+  .series-item { font-size: 0.72rem; color: var(--dim); letter-spacing: 0.01em; display: flex; gap: 0.7rem; align-items: baseline; line-height: 1.45; }
+  .series-item.current { color: var(--violet); font-weight: 700; }
+  .series-num { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim2); flex-shrink: 0; }
+  .series-item.current .series-num { color: var(--violet); }
+  .reflect { border-top: 1px solid rgba(167,139,250,0.14); padding-top: 1rem; margin-bottom: 1.2rem; }
+  .reflect-label { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--violet); margin-bottom: 0.65rem; }
+  .reflect-q { font-size: 0.86rem; line-height: 1.55; color: var(--stardust); margin-bottom: 0.55rem; }
+  .reflect-q:last-child { margin-bottom: 0; }
+  .colophon-body { font-size: 0.75rem; color: var(--dim); line-height: 1.75; margin-bottom: 1.2rem; }
+  .colophon-body a { color: var(--cyan); text-decoration: none; border-bottom: 1px solid rgba(34,211,238,0.4); }
+  .colophon-body a:hover { border-bottom-color: var(--cyan); }
+  .colophon-footer { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--dim); line-height: 2.2; border-top: 1px solid rgba(167,139,250,0.14); padding-top: 1rem; }
+
+  /* ── SPREAD FOOTER ── */
+  .spread-footer { display: flex; justify-content: space-between; align-items: center; padding: 0.9rem 2.4rem; border-top: 1px solid rgba(167,139,250,0.1); }
+  .spread-footer-left { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--dim); }
+  .spread-footer-right { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; color: var(--violet); }
+
+  .twinkle { position: fixed; width: 3px; height: 3px; border-radius: 50%; animation: twinkle-anim 3s ease-in-out infinite; pointer-events: none; z-index: 0; }
+
+  @media (max-width: 600px) {
+    .spread-2col { grid-template-columns: 1fr; }
+    .spread-left { border-right: none; border-bottom: 1px solid rgba(167,139,250,0.12); }
+    .cover-spread { padding: 2rem; min-height: 420px; }
+    .cover-motif { width: 224px; height: 224px; top: -4px; right: -24px; opacity: 0.5; }
+    .cover-title { font-size: 2.2rem; }
+    .spread-heading { font-size: 1.55rem; }
+    .spread-left, .spread-right { padding: 2rem 1.5rem; }
+    .colophon { padding: 2rem 1.5rem; }
+  }
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Shared Signal","description":"Connection carried across distance, read through star stuff. The electromagnetic spectrum is one continuous field — radio and starlight are the same phenomenon at different wavelengths — and the same physics that carries a voice call carries a star's light. Shared-signal space (a term coined by Helen Edgar) is the counterpart to shared-air space: a voice, a message, a synthesised sentence, carrying the rhythm over distance — thinner, but real. Text and AAC aren't a fallback but the clearer channel. No channel is the master channel; signal is a form of presence.","image":"https://starstuff.earth/og-card.jpg","url":"https://starstuff.earth/shared-signal-zine.html","mainEntityOfPage":"https://starstuff.earth/shared-signal-zine.html","author":{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/"},"publisher":{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/","logo":{"@type":"ImageObject","url":"https://starstuff.earth/og-card.jpg"}},"isPartOf":{"@type":"WebSite","name":"Star Stuff","url":"https://starstuff.earth/"}}</script>
+</head>
+<body>
+
+<div class="twinkle" style="top:7%;left:11%;background:var(--violet);box-shadow:0 0 6px var(--violet);animation-delay:-0.4s"></div>
+<div class="twinkle" style="top:19%;left:83%;background:var(--cyan);box-shadow:0 0 6px var(--cyan);animation-delay:-1.3s"></div>
+<div class="twinkle" style="top:52%;left:4%;background:var(--violet);box-shadow:0 0 6px var(--violet);animation-delay:-2.1s"></div>
+<div class="twinkle" style="top:71%;left:94%;background:var(--cyan);box-shadow:0 0 6px var(--cyan);animation-delay:-0.9s"></div>
+<div class="twinkle" style="top:88%;left:28%;background:var(--star-white);box-shadow:0 0 6px var(--star-white);animation-delay:-1.7s"></div>
+<div class="twinkle" style="top:38%;left:97%;background:var(--violet);box-shadow:0 0 6px var(--violet);animation-delay:-3.1s"></div>
+
+<div class="zine-shell">
+
+  <nav class="ss-nav" style="--nav-accent:#a78bfa;" aria-label="Star Stuff collection">
+    <span class="ss-nav-home-group"><a class="ss-nav-home" href="index.html"><span class="ss-star" aria-hidden="true">★</span> stuff</a><a class="ss-nav-about" href="about.html">about</a></span>
+    <span class="ss-nav-links">
+      <a class="ss-nav-prev" href="shared-air-zine.html"><span class="ss-nav-arrow" aria-hidden="true">‹</span> <span class="ss-nav-label">Shared Air</span></a>
+      <a class="ss-nav-next" href="constellation-field-guide.html"><span class="ss-nav-label">Field Guide</span> <span class="ss-nav-arrow" aria-hidden="true">›</span></a>
+    </span>
+  </nav>
+
+  <nav class="nav">
+    <div class="nav-brand">Stimpunks · Zine No. 25</div>
+    <div class="nav-controls">
+      <button class="nav-btn" id="prev-btn" onclick="changePage(-1)">← prev</button>
+      <span class="page-counter" id="page-counter">1 / 9</span>
+      <button class="nav-btn" id="next-btn" onclick="changePage(1)">next →</button>
+    </div>
+  </nav>
+
+  <!-- ════ SPREAD 1: COVER ════ -->
+  <div class="spread active" id="spread-1">
+    <div class="cover-spread">
+      <svg class="cover-motif" viewBox="0 0 340 340" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <!-- two nodes reaching each other across distance, signal arcs + a carried waveform -->
+        <!-- expanding signal arcs from the left node -->
+        <g fill="none" stroke="rgba(167,139,250,0.5)" stroke-width="1.5" stroke-linecap="round">
+          <path d="M104 150 a26 26 0 0 1 0 40"/>
+          <path d="M104 140 a40 50 0 0 1 0 60"/>
+          <path d="M104 128 a56 68 0 0 1 0 84" stroke="rgba(167,139,250,0.3)"/>
+        </g>
+        <!-- left node -->
+        <circle cx="96" cy="170" r="12" fill="rgba(167,139,250,0.85)"/>
+        <!-- right node -->
+        <circle cx="256" cy="150" r="12" fill="rgba(34,211,238,0.85)"/>
+        <!-- expanding arcs into the right node -->
+        <g fill="none" stroke="rgba(34,211,238,0.5)" stroke-width="1.5" stroke-linecap="round">
+          <path d="M248 130 a26 26 0 0 0 0 40"/>
+          <path d="M248 120 a40 50 0 0 0 0 60"/>
+        </g>
+        <!-- the carried waveform between them -->
+        <path d="M108 168 q12 -22 24 0 q12 22 24 0 q12 -22 24 0 q12 22 24 0 q12 -22 24 0" fill="none" stroke="rgba(244,244,251,0.75)" stroke-width="1.6" stroke-linecap="round"/>
+        <!-- a small spectrum bar (radio → light, one field) -->
+        <rect x="96" y="238" width="160" height="7" rx="3.5" fill="url(#specgrad)"/>
+        <defs>
+          <linearGradient id="specgrad" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#a78bfa"/><stop offset="0.5" stop-color="#f472b6"/>
+            <stop offset="0.72" stop-color="#fbbf24"/><stop offset="1" stop-color="#22d3ee"/>
+          </linearGradient>
+        </defs>
+        <text x="96" y="260" font-family="Space Mono, monospace" font-size="6" letter-spacing="1" fill="rgba(167,139,250,0.8)" text-anchor="start">radio</text>
+        <text x="256" y="260" font-family="Space Mono, monospace" font-size="6" letter-spacing="1" fill="rgba(34,211,238,0.85)" text-anchor="end">light</text>
+        <!-- stars -->
+        <g fill="#f4f2fb"><circle cx="58" cy="70" r="1.7"/><circle cx="300" cy="88" r="1.5"/><circle cx="300" cy="296" r="1.6"/><circle cx="52" cy="300" r="1.5"/></g>
+        <text x="176" y="300" font-family="Space Mono, monospace" font-size="8" letter-spacing="1.5" fill="rgba(167,139,250,0.8)" text-anchor="middle">carried across the dark</text>
+      </svg>
+
+      <div class="cover-corner">
+        <div class="cover-corner-num">25</div>
+        <span class="cover-corner-label">Signal</span>
+      </div>
+
+      <div class="cover-issue">Stimpunks Foundation · Zine No. 25</div>
+
+      <h1 class="cover-title">Shared <span class="spectrum-word">Signal</span></h1>
+
+      <p class="cover-subtitle">on distance, the clearer channel, and the rhythm we carry when we can't share a room</p>
+
+      <hr class="spectrum-line cover-rule">
+
+      <div class="cover-meta">
+        <div class="cover-ls">L★S</div>
+        <div class="cover-meta-text">
+          Love You Down<br>
+          To Your Star Stuff<br>
+          · open edition ·
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 2: One Field of Signal ════ -->
+  <div class="spread" id="spread-2">
+    <div class="interior">
+      <div class="spread-2col">
+        <div class="spread-left">
+          <div class="eyebrow">The spectrum</div>
+          <h2 class="spread-heading">One field<br>of <span style="color:var(--violet)">signal</span></h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p>Tune a radio, warm your hands at a fire, catch a sunburn, sit for an X-ray — every time, you are using the same single thing. Radio waves, microwaves, infrared, visible light, ultraviolet, X-rays, gamma rays are not different substances. They are one <span class="violet">electromagnetic field</span>, vibrating at different speeds. Radio is only light too slow and long for our eyes; colour is just the signal our eyes happen to catch.</p>
+            <p>So there is no ladder of realness running from "in person" at the top down to "mere signal." There is one continuous spectrum, and we live our whole lives inside it. The voice on a call and the light off a face across a table are the same phenomenon, cut at different wavelengths.</p>
+            <p>One field. No separate signals — no more than there are separate airs.</p>
+          </div>
+          <div class="pull-quote">Radio and starlight are the same thing, cut at different wavelengths.</div>
+        </div>
+        <div class="spread-right">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 260 220" xmlns="http://www.w3.org/2000/svg">
+              <!-- the one continuous EM spectrum with familiar markers -->
+              <text x="130" y="26" font-family="Space Mono, monospace" font-size="5" fill="rgba(136,134,160,0.85)" text-anchor="middle">one continuous field</text>
+              <rect x="24" y="60" width="212" height="16" rx="8" fill="url(#emgrad)"/>
+              <defs>
+                <linearGradient id="emgrad" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0" stop-color="#a78bfa"/><stop offset="0.4" stop-color="#f472b6"/>
+                  <stop offset="0.62" stop-color="#fbbf24"/><stop offset="0.82" stop-color="#4ade80"/><stop offset="1" stop-color="#22d3ee"/>
+                </linearGradient>
+              </defs>
+              <!-- wavelength note -->
+              <text x="26" y="52" font-family="Space Mono, monospace" font-size="4.6" fill="rgba(167,139,250,0.85)" text-anchor="start">long / slow</text>
+              <text x="234" y="52" font-family="Space Mono, monospace" font-size="4.6" fill="rgba(34,211,238,0.85)" text-anchor="end">short / fast</text>
+              <!-- markers -->
+              <g stroke="rgba(244,244,251,0.7)" stroke-width="1">
+                <line x1="48" y1="76" x2="48" y2="92"/><line x1="104" y1="76" x2="104" y2="92"/>
+                <line x1="150" y1="76" x2="150" y2="92"/><line x1="210" y1="76" x2="210" y2="92"/>
+              </g>
+              <g font-family="Space Mono, monospace" font-size="4.6" fill="rgba(200,196,224,0.9)" text-anchor="middle">
+                <text x="48" y="104">radio</text><text x="48" y="112">· your call</text>
+                <text x="104" y="104">infrared</text><text x="104" y="112">· fire</text>
+                <text x="150" y="104">visible</text><text x="150" y="112">· a face</text>
+                <text x="210" y="104">X / γ</text><text x="210" y="112">· a scan</text>
+              </g>
+              <!-- a waveform lengthening to shortening beneath -->
+              <path d="M28 150 q14 -20 28 0 q14 20 28 0 q10 -18 20 0 q10 18 20 0 q7 -16 14 0 q7 16 14 0 q5 -14 10 0 q5 14 10 0 q4 -12 8 0 q4 12 8 0" fill="none" stroke="rgba(167,139,250,0.7)" stroke-width="1.4"/>
+              <text x="130" y="184" font-family="Space Mono, monospace" font-size="5" fill="rgba(34,211,238,0.9)" text-anchor="middle">same wave · different wavelength</text>
+            </svg>
+            <p class="diagram-caption">
+              radio · fire · colour · a scan<br>
+              <span class="annotation">one spectrum, end to end</span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Shared Signal · Stimpunks</span>
+        <span class="spread-footer-right">2</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 3: The Reciprocal Signal ════ -->
+  <div class="spread" id="spread-3">
+    <div class="interior">
+      <div class="spread-2col">
+        <div class="spread-left">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 260 220" xmlns="http://www.w3.org/2000/svg">
+              <!-- encode -> send -> decode: a voice folded onto a carrier and read back -->
+              <text x="130" y="24" font-family="Space Mono, monospace" font-size="5" fill="rgba(136,134,160,0.85)" text-anchor="middle">encode → send → decode</text>
+              <!-- sender -->
+              <circle cx="42" cy="96" r="11" fill="rgba(167,139,250,0.85)"/>
+              <line x1="42" y1="107" x2="42" y2="132" stroke="rgba(167,139,250,0.85)" stroke-width="2.4"/>
+              <text x="42" y="150" font-family="Space Mono, monospace" font-size="4.6" fill="rgba(167,139,250,0.9)" text-anchor="middle">encode</text>
+              <!-- receiver -->
+              <circle cx="218" cy="96" r="11" fill="rgba(34,211,238,0.85)"/>
+              <line x1="218" y1="107" x2="218" y2="132" stroke="rgba(34,211,238,0.85)" stroke-width="2.4"/>
+              <text x="218" y="150" font-family="Space Mono, monospace" font-size="4.6" fill="rgba(34,211,238,0.9)" text-anchor="middle">decode</text>
+              <!-- carrier wave carrying a modulated signal across -->
+              <path d="M58 96 q6 -14 12 0 q6 14 12 0 q6 -18 12 0 q6 18 12 0 q6 -12 12 0 q6 12 12 0 q6 -16 12 0 q6 16 12 0 q6 -13 12 0 q6 13 12 0 q6 -15 12 0 q6 15 12 0" fill="none" stroke="rgba(244,244,251,0.75)" stroke-width="1.5"/>
+              <!-- direction arrow -->
+              <path d="M196 78 l8 -3 l-2 9" fill="none" stroke="rgba(34,211,238,0.7)" stroke-width="1.3"/>
+              <text x="130" y="176" font-family="Space Mono, monospace" font-size="5" fill="rgba(167,139,250,0.85)" text-anchor="middle">a voice, folded onto a wave</text>
+              <text x="130" y="194" font-family="Space Mono, monospace" font-size="4.6" fill="rgba(136,134,160,0.85)" text-anchor="middle">the mirror of exhale &amp; inhale</text>
+            </svg>
+            <p class="diagram-caption">
+              transmit · receive<br>
+              <span class="annotation">breath, timestamped and sent</span>
+            </p>
+          </div>
+        </div>
+        <div class="spread-right">
+          <div class="eyebrow">Transmit · receive</div>
+          <h2 class="spread-heading">The reciprocal<br><span style="color:var(--violet)">signal</span></h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p>Every signal is a two-sided act, the way every breath is. One body <span class="violet">encodes</span> — folds a voice, a word, a feeling onto a wave — and another <span class="violet">decodes</span> it back into meaning. Transmit and receive: the mirror of exhale and inhale.</p>
+            <p>And what rides the wave is more than information. Voice carries breath — the pace of a sentence, the pause before a hard word, the exhale under a laugh, sent unedited. <em>A voice note is breath, timestamped and sent.</em> You aren't only receiving data; you're receiving someone's nervous system, encoded in sound.</p>
+            <p>The physics doesn't care how far. The same law that carries your voice to a friend across the country carries a star's light across the galaxy. Encode, send, decode — it is how the universe has always passed itself along.</p>
+          </div>
+          <div class="pull-quote cyan">A voice note is breath — timestamped, and sent.</div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Shared Signal · Stimpunks</span>
+        <span class="spread-footer-right">3</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 4: Shared-Signal Space ════ -->
+  <div class="spread" id="spread-4">
+    <div class="interior">
+      <div class="spread-2col">
+        <div class="spread-left">
+          <div class="eyebrow">A term Helen coined</div>
+          <h2 class="spread-heading">Shared-signal<br><span style="color:var(--violet)">space</span></h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p><a href="shared-air-zine.html">Shared-air space</a> is the room — proximity, breath, nervous systems settling into one another's rhythm. It needed a counterpart. Not a lesser one.</p>
+            <p>Helen Edgar named it: <span class="violet">shared-signal space</span> — connection carried on a signal instead of on the air of a room. A call, a message, a voice note, a synthesised voice: the rhythm still crosses, only now over distance.</p>
+            <p>Does it really carry? Measurably, yes — with an honest caveat. The tone and pace of a voice cue safety below awareness (Porges, 2011), and that cueing doesn't stop at the edge of a screen; two people's heart-rhythms even fall into sync across a video call, though <em>weaker</em> than in the same room (Streuber et al., 2026). Distance <span class="cyan">thins</span> the channel. It does not empty it. A thinner channel is still a channel — and for many of us it is where regulation and honest connection come easiest.</p>
+          </div>
+          <div class="pull-quote">Distance thins the channel. It does not empty it.</div>
+        </div>
+        <div class="spread-right">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 260 220" xmlns="http://www.w3.org/2000/svg">
+              <!-- two people apart; signal between; two rhythms syncing, one slightly damped -->
+              <text x="130" y="24" font-family="Space Mono, monospace" font-size="5" fill="rgba(136,134,160,0.85)" text-anchor="middle">co-regulation, carried</text>
+              <!-- left person -->
+              <circle cx="40" cy="76" r="11" fill="rgba(167,139,250,0.85)"/>
+              <line x1="40" y1="87" x2="40" y2="112" stroke="rgba(167,139,250,0.85)" stroke-width="2.4"/>
+              <!-- right person -->
+              <circle cx="220" cy="76" r="11" fill="rgba(34,211,238,0.85)"/>
+              <line x1="220" y1="87" x2="220" y2="112" stroke="rgba(34,211,238,0.85)" stroke-width="2.4"/>
+              <!-- distance gap -->
+              <line x1="70" y1="76" x2="190" y2="76" stroke="rgba(136,134,160,0.35)" stroke-width="1" stroke-dasharray="3 4"/>
+              <!-- signal arcs across -->
+              <g fill="none" stroke="rgba(244,244,251,0.55)" stroke-width="1.2"><path d="M62 68 q68 -22 136 0"/></g>
+              <!-- full-strength rhythm (near) vs thinned rhythm (far) -->
+              <path d="M40 150 q7 -14 14 0 q7 14 14 0 q7 -14 14 0" fill="none" stroke="rgba(167,139,250,0.8)" stroke-width="1.6"/>
+              <text x="61" y="176" font-family="Space Mono, monospace" font-size="4.4" fill="rgba(167,139,250,0.85)" text-anchor="middle">in the room</text>
+              <path d="M150 150 q7 -7 14 0 q7 7 14 0 q7 -7 14 0" fill="none" stroke="rgba(34,211,238,0.8)" stroke-width="1.6"/>
+              <text x="185" y="176" font-family="Space Mono, monospace" font-size="4.4" fill="rgba(34,211,238,0.85)" text-anchor="middle">over signal</text>
+              <text x="130" y="196" font-family="Space Mono, monospace" font-size="5" fill="rgba(136,134,160,0.85)" text-anchor="middle">thinner amplitude · same rhythm</text>
+            </svg>
+            <p class="diagram-caption">
+              the rhythm still crosses<br>
+              <span class="annotation">thinner, but real</span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Shared Signal · Stimpunks</span>
+        <span class="spread-footer-right">4</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 5: The Clearer Channel ════ -->
+  <div class="spread" id="spread-5">
+    <div class="interior">
+      <div class="spread-2col">
+        <div class="spread-left">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 260 220" xmlns="http://www.w3.org/2000/svg">
+              <!-- two channels: live speech (crowded, real-time) vs text/AAC (spaced, with a saved record) -->
+              <!-- live speech -->
+              <text x="66" y="26" font-family="Space Mono, monospace" font-size="5" fill="rgba(244,114,182,0.9)" text-anchor="middle">live speech</text>
+              <rect x="26" y="36" width="80" height="150" rx="4" fill="rgba(244,114,182,0.05)" stroke="rgba(244,114,182,0.4)" stroke-width="1.1"/>
+              <g fill="rgba(244,114,182,0.55)">
+                <circle cx="46" cy="60" r="3"/><circle cx="66" cy="58" r="3"/><circle cx="86" cy="62" r="3"/>
+                <circle cx="52" cy="78" r="3"/><circle cx="78" cy="76" r="3"/><circle cx="64" cy="70" r="3"/>
+                <circle cx="44" cy="96" r="3"/><circle cx="72" cy="94" r="3"/><circle cx="88" cy="90" r="3"/>
+              </g>
+              <text x="66" y="126" font-family="Space Mono, monospace" font-size="4.4" fill="rgba(244,114,182,0.9)" text-anchor="middle">reply now</text>
+              <text x="66" y="136" font-family="Space Mono, monospace" font-size="4.4" fill="rgba(244,114,182,0.9)" text-anchor="middle">tone, live</text>
+              <text x="66" y="146" font-family="Space Mono, monospace" font-size="4.4" fill="rgba(244,114,182,0.9)" text-anchor="middle">no record</text>
+              <text x="66" y="156" font-family="Space Mono, monospace" font-size="4.4" fill="rgba(244,114,182,0.9)" text-anchor="middle">all at once</text>
+              <!-- text/AAC -->
+              <text x="194" y="26" font-family="Space Mono, monospace" font-size="5" fill="rgba(167,139,250,0.9)" text-anchor="middle">text · AAC</text>
+              <rect x="154" y="36" width="80" height="150" rx="4" fill="rgba(167,139,250,0.05)" stroke="rgba(167,139,250,0.5)" stroke-width="1.1"/>
+              <g fill="rgba(167,139,250,0.7)"><circle cx="170" cy="60" r="3"/><circle cx="186" cy="60" r="3"/></g>
+              <text x="210" y="63" font-family="Space Mono, monospace" font-size="4.4" fill="rgba(34,211,238,0.9)" text-anchor="start">…</text>
+              <text x="194" y="86" font-family="Space Mono, monospace" font-size="4.4" fill="rgba(34,211,238,0.9)" text-anchor="middle">thinking time</text>
+              <g stroke="rgba(167,139,250,0.5)" stroke-width="1"><line x1="166" y1="104" x2="222" y2="104"/><line x1="166" y1="118" x2="222" y2="118"/><line x1="166" y1="132" x2="206" y2="132"/></g>
+              <text x="194" y="152" font-family="Space Mono, monospace" font-size="4.4" fill="rgba(167,139,250,0.9)" text-anchor="middle">a saved record</text>
+              <text x="194" y="168" font-family="Space Mono, monospace" font-size="4.4" fill="rgba(167,139,250,0.9)" text-anchor="middle">reread · revise</text>
+            </svg>
+            <p class="diagram-caption">
+              thinking time · a record · fewer demands<br>
+              <span class="annotation">the thought, let through</span>
+            </p>
+          </div>
+        </div>
+        <div class="spread-right">
+          <div class="eyebrow">Text &amp; AAC</div>
+          <h2 class="spread-heading">The clearer<br><span style="color:var(--violet)">channel</span></h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p>For many Autistic people, the written word isn't a downgrade from speech — it's the channel that finally lets the thought through. Text takes away the real-time crush: no instant reply owed, no tone to decode on the fly, no face to read while hunting for words. A message can be drafted, reread, and fixed before it's sent, so what lands is closer to what was meant.</p>
+            <p>The largest survey of Autistic adults' own preferences found phone calls ranked last, again and again, and written channels near the top — for four steady reasons: thinking time, structure, fewer sensory demands, and a record to return to (Howard &amp; Sedgewick, 2021).</p>
+            <p>The same is true, and truer, of <span class="violet">AAC</span>. Symbol boards, letterboards, text-to-speech run through the written channel, not the spoken one. For non-speaking and minimally speaking people, AAC isn't a workaround bolted onto "real" communication. It <em>is</em> the real communication.</p>
+          </div>
+          <div class="pull-quote cyan">Not a fallback from speech. For many of us, the version that finally lets the thought through.</div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Shared Signal · Stimpunks</span>
+        <span class="spread-footer-right">5</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 6: Listen to the Phone-Averse ════ -->
+  <div class="spread" id="spread-6">
+    <div class="interior">
+      <div class="spread-2col">
+        <div class="spread-left">
+          <div class="eyebrow">Anything but the phone</div>
+          <h2 class="spread-heading">Listen to the<br><span style="color:var(--violet)">phone-averse</span></h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p>"Anything but the phone!" is such a common Autistic refrain that researchers made it their title (Howard &amp; Sedgewick, 2021). The live call asks for everything at once — instant response, tone read in real time, no record, no pause — and gives the least room to think.</p>
+            <p>Dread of that channel isn't rudeness or fragility, any more than <a href="shared-air-zine.html">the canary's alarm</a> was weakness. It's <span class="violet">information</span>: a signal that this channel is costly, and that a better one exists. Offer the text option and watch who suddenly comes through clearly.</p>
+            <p>The fix isn't to toughen people up for phone calls. It's to stop treating one demanding channel as the toll for being reachable at all. Ask how someone would rather be reached — then reach them there.</p>
+          </div>
+          <div class="pull-quote">Aversion to a demanding channel is information, not fragility.</div>
+        </div>
+        <div class="spread-right">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 260 220" xmlns="http://www.w3.org/2000/svg">
+              <!-- demand meter: phone maxed, text low; a body easing when switched -->
+              <text x="130" y="24" font-family="Space Mono, monospace" font-size="5" fill="rgba(136,134,160,0.85)" text-anchor="middle">how much a channel asks at once</text>
+              <!-- phone bar (high) -->
+              <text x="60" y="46" font-family="Space Mono, monospace" font-size="5" fill="rgba(244,114,182,0.9)" text-anchor="middle">phone call</text>
+              <rect x="40" y="54" width="40" height="104" rx="3" fill="rgba(244,114,182,0.14)" stroke="rgba(244,114,182,0.5)" stroke-width="1"/>
+              <rect x="40" y="60" width="40" height="98" rx="3" fill="rgba(244,114,182,0.55)"/>
+              <text x="60" y="172" font-family="Space Mono, monospace" font-size="4.4" fill="rgba(244,114,182,0.9)" text-anchor="middle">instant · tone · no pause</text>
+              <!-- text bar (low) -->
+              <text x="200" y="46" font-family="Space Mono, monospace" font-size="5" fill="rgba(167,139,250,0.9)" text-anchor="middle">text</text>
+              <rect x="180" y="54" width="40" height="104" rx="3" fill="rgba(167,139,250,0.12)" stroke="rgba(167,139,250,0.5)" stroke-width="1"/>
+              <rect x="180" y="126" width="40" height="32" rx="3" fill="rgba(167,139,250,0.6)"/>
+              <text x="200" y="172" font-family="Space Mono, monospace" font-size="4.4" fill="rgba(167,139,250,0.9)" text-anchor="middle">paced · quiet · saved</text>
+              <!-- easing arrow -->
+              <g stroke="rgba(34,211,238,0.7)" stroke-width="1.3" fill="none"><path d="M92 100 L168 100"/><path d="M161 95 L168 100 L161 105"/></g>
+              <text x="130" y="196" font-family="Space Mono, monospace" font-size="5" fill="rgba(34,211,238,0.9)" text-anchor="middle">offer the other channel</text>
+            </svg>
+            <p class="diagram-caption">
+              the aversion is a signal<br>
+              <span class="annotation">reach people where they come through</span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Shared Signal · Stimpunks</span>
+        <span class="spread-footer-right">6</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 7: Build Your Own Watering Hole ════ -->
+  <div class="spread" id="spread-7">
+    <div class="interior">
+      <div class="spread-2col">
+        <div class="spread-left">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 260 224" xmlns="http://www.w3.org/2000/svg">
+              <!-- a rhizome: sideways network with watering-hole pools; no ladder on top -->
+              <text x="130" y="22" font-family="Space Mono, monospace" font-size="5" fill="rgba(136,134,160,0.85)" text-anchor="middle">no ladder — a rhizome</text>
+              <!-- crossed-out ladder (top-left, faint) -->
+              <g stroke="rgba(136,134,160,0.4)" stroke-width="1"><line x1="34" y1="40" x2="34" y2="72"/><line x1="46" y1="40" x2="46" y2="72"/><line x1="34" y1="48" x2="46" y2="48"/><line x1="34" y1="58" x2="46" y2="58"/><line x1="34" y1="68" x2="46" y2="68"/></g>
+              <line x1="30" y1="70" x2="50" y2="42" stroke="rgba(244,114,182,0.8)" stroke-width="1.6"/>
+              <!-- rhizome edges -->
+              <g stroke="rgba(167,139,250,0.55)" stroke-width="1.2" fill="none">
+                <path d="M96 96 q30 -18 64 4"/><path d="M96 96 q-14 34 8 60"/><path d="M160 100 q34 6 40 44"/>
+                <path d="M104 156 q40 8 96 -12"/><path d="M160 100 q-30 30 -56 56"/><path d="M96 96 q40 30 104 48"/>
+              </g>
+              <!-- nodes -->
+              <g fill="rgba(167,139,250,0.85)"><circle cx="96" cy="96" r="7"/><circle cx="160" cy="100" r="7"/><circle cx="104" cy="156" r="6"/><circle cx="200" cy="144" r="6"/></g>
+              <!-- watering-hole pools -->
+              <ellipse cx="130" cy="196" rx="42" ry="12" fill="rgba(34,211,238,0.16)" stroke="rgba(34,211,238,0.7)" stroke-width="1.3"/>
+              <ellipse cx="216" cy="188" rx="20" ry="7" fill="rgba(34,211,238,0.12)" stroke="rgba(34,211,238,0.6)" stroke-width="1.1"/>
+              <text x="130" y="216" font-family="Space Mono, monospace" font-size="4.6" fill="rgba(34,211,238,0.9)" text-anchor="middle">watering holes · come &amp; go</text>
+            </svg>
+            <p class="diagram-caption">
+              sideways &amp; underground<br>
+              <span class="annotation">lurking counts</span>
+            </p>
+          </div>
+        </div>
+        <div class="spread-right">
+          <div class="eyebrow">Reachable, and for whom?</div>
+          <h2 class="spread-heading">Build your own<br><span style="color:var(--violet)">watering hole</span></h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p>First the justice question, the twin of Shared Air's: <em>reachable, and for whom?</em> A signal life runs on data plans, devices, batteries, and platforms built by other people. When those cost too much or lock us out, "just message me" quietly excludes. Communication access is a <span class="violet">commons</span>, not a favour.</p>
+            <p>So we build. The <a href="https://autisticrealms.com/the-autistic-rhizome-community-liminal-spaces-belonging/">Autistic Rhizome</a> (Edgar, 2026) spreads sideways and underground — no ladder, no single correct path: a Discord alive at 2am, a thread reopened after three years as if no time had passed, a reply to a stranger that becomes a friendship. Online spaces work as <a href="https://stimpunks.org/glossary/cavendish-space/">watering holes</a> — loosely held, come-and-go, where presence alone can sustain connection. Lurking counts. One reply after months counts.</p>
+            <p>Nobody handed us these rooms. We made them, and we keep them — infrastructure as mutual aid, in whatever medium lets us breathe.</p>
+          </div>
+          <div class="refusals">
+            <div class="refusal"><span class="refusal-tag">Not</span><span>a fallback for when the room isn't available — <strong>a mode of connection, not a workaround.</strong></span></div>
+            <div class="refusal"><span class="refusal-tag">Not</span><span>less true for being thinner — <strong>a thinner signal still carries a real rhythm.</strong></span></div>
+            <div class="refusal"><span class="refusal-tag">Not</span><span>ranked beneath presence — <strong>signal is a form of presence.</strong></span></div>
+            <div class="refusal"><span class="refusal-tag">Not</span><span>always spoken — <strong>written and AAC words carry understanding too, sometimes better.</strong></span></div>
+            <div class="refusal"><span class="refusal-tag">Not</span><span>a lesser community for having no address — <strong>a watering hole doesn't need a building.</strong></span></div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Shared Signal · Stimpunks</span>
+        <span class="spread-footer-right">7</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 8: The Oldest Signal (star-stuff close) ════ -->
+  <div class="spread" id="spread-8">
+    <div class="interior">
+      <div class="spread-2col">
+        <div class="spread-left">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 260 224" xmlns="http://www.w3.org/2000/svg">
+              <!-- a star (gone) whose light still reaches an eye; parallel: a voice reaching across distance -->
+              <text x="130" y="22" font-family="Space Mono, monospace" font-size="5" fill="rgba(136,134,160,0.85)" text-anchor="middle">the reaching outlives the reach</text>
+              <!-- star, faded (gone) -->
+              <path d="M44 64 l4 11 l12 0 l-9 7 l3 12 l-10 -7 l-10 7 l3 -12 l-9 -7 l12 0 z" fill="rgba(251,191,36,0.4)" stroke="rgba(251,191,36,0.6)" stroke-width="0.8"/>
+              <text x="44" y="44" font-family="Space Mono, monospace" font-size="4.4" fill="rgba(251,191,36,0.85)" text-anchor="middle">already gone</text>
+              <!-- light traveling to an eye -->
+              <path d="M60 78 q60 20 120 26" fill="none" stroke="rgba(244,244,251,0.6)" stroke-width="1.3"/>
+              <path d="M172 100 l8 3 l-6 6" fill="none" stroke="rgba(244,244,251,0.6)" stroke-width="1.3"/>
+              <!-- eye -->
+              <path d="M196 104 q12 -10 24 0 q-12 10 -24 0 z" fill="none" stroke="rgba(34,211,238,0.8)" stroke-width="1.3"/>
+              <circle cx="208" cy="104" r="3.2" fill="rgba(34,211,238,0.85)"/>
+              <text x="208" y="124" font-family="Space Mono, monospace" font-size="4.4" fill="rgba(34,211,238,0.9)" text-anchor="middle">still arrives</text>
+              <!-- parallel below: two people, a voice-wave crossing -->
+              <circle cx="52" cy="176" r="10" fill="rgba(167,139,250,0.85)"/>
+              <circle cx="208" cy="176" r="10" fill="rgba(34,211,238,0.85)"/>
+              <path d="M66 176 q8 -12 16 0 q8 12 16 0 q8 -12 16 0 q8 12 16 0 q8 -12 16 0 q8 12 16 0" fill="none" stroke="rgba(167,139,250,0.7)" stroke-width="1.4"/>
+              <text x="130" y="206" font-family="Space Mono, monospace" font-size="5" fill="rgba(167,139,250,0.85)" text-anchor="middle">a voice, across the gap touch can't cross</text>
+            </svg>
+            <p class="diagram-caption">
+              light outlives the star<br>
+              <span class="annotation">presence, sent ahead of the body</span>
+            </p>
+          </div>
+        </div>
+        <div class="spread-right">
+          <div class="eyebrow">The oldest signal</div>
+          <h2 class="spread-heading">The oldest<br><span class="spectrum-word">signal</span></h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p>Look up. Every star you see is a signal that outran its source — light that left so long ago that some of those stars are already gone. We wrote a whole zine about it: <a href="the-dead-stars-still-reach-us-zine.html">the dead stars still reach us</a>. The reaching is real even when the one who sent it is out of reach.</p>
+            <p>That is the deepest thing a signal does: it lets connection cross a gap that touch cannot. The same physics that carries a dead star's light to your eye carries your voice to someone alive but far away. Presence, sent ahead of the body.</p>
+            <p>So no channel is the master channel — not voice, not video, not text, not breath. Connection is built <em>between</em> two people, in whatever medium lets both of them be understood (Milton, 2012). Shared air, shared signal: two real ways to hold each other's rhythm. <strong>Love you down to your star stuff — across any distance.</strong></p>
+          </div>
+          <div class="pull-quote">Signal lets connection cross a gap that touch cannot.</div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Shared Signal · Stimpunks</span>
+        <span class="spread-footer-right">8</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 9: Colophon ════ -->
+  <div class="spread" id="spread-9">
+    <div class="interior">
+      <div class="colophon">
+        <div>
+          <div class="colophon-top">
+            <span class="colophon-ls">L★S</span>
+            <span class="colophon-phrase">Shared-air space is the room; shared-signal space is everywhere else we reach each other — a voice, a word, a synthesised sentence, carried on a signal instead of the air. Thinner, and real. No mode sits at the top.</span>
+          </div>
+          <div class="series-list">
+            <div class="series-item"><span class="series-num">No. 10</span> The Dead Stars Still Reach Us — light-travel time &amp; reaching across the gap</div>
+            <div class="series-item"><span class="series-num">No. 15</span> Every Creature's Own Sky — umwelt, attention-worlds &amp; double empathy</div>
+            <div class="series-item"><span class="series-num">No. 17</span> The Nearest Body — tides, co-regulation &amp; being pulled by what's near</div>
+            <div class="series-item"><span class="series-num">No. 22</span> No One Is the Leader — emergence, the murmuration &amp; the rhizome</div>
+            <div class="series-item"><span class="series-num">No. 24</span> Shared Air — breath, co-regulation &amp; the air we hold in common</div>
+            <div class="series-item current"><span class="series-num">No. 25</span> Shared Signal — signal, distance &amp; no channel at the top ← you are here</div>
+          </div>
+          <div class="reflect">
+            <div class="reflect-label">Reflection</div>
+            <p class="reflect-q">Which channel finally lets your thought through — and does the world offer it to you, or make you fight for it?</p>
+            <p class="reflect-q">Where is your watering hole — the come-and-go place where presence alone is enough?</p>
+            <p class="reflect-q">Who do you keep reaching across distance, and what carries the rhythm between you?</p>
+          </div>
+          <p class="colophon-body">
+            Shared Signal is the twenty-fifth zine in the Stimpunks series, and a companion to <a href="shared-air-zine.html">Shared Air</a> (No. 24): breath and signal, two ways of holding each other's rhythm.<br><br>
+            <strong style="color:var(--stardust);font-weight:400">Shared-signal space</strong> is a term coined by Helen Edgar, as the counterpart to shared-air space: connection carried through signal rather than proximity, with no channel ranked master. This zine grows from a draft by Helen Edgar and Ryan Boren. The thinking and evidence: Helen Edgar's <a href="https://autisticrealms.com/the-autistic-rhizome-community-liminal-spaces-belonging/">Autistic Rhizome</a> (2026), on sideways, underground community and online watering holes; Howard &amp; Sedgewick (2021), "Anything but the phone!", on Autistic communication-mode preferences; Stephen Porges (2011) on neuroception and vocal prosody; Streuber et al. (2026) on physiological synchrony across face-to-face, video, and VR; Damian Milton (2012), the double empathy problem; and Deleuze &amp; Guattari (1987) on the rhizome. The physics: the electromagnetic spectrum as one continuous field — radio and light the same phenomenon at different wavelengths — and the light-travel time that lets a dead star still reach us.<br><br>
+            The star stuff is Carl Sagan's, and the SN 1006 remnant on every Stimpunks page. The reading — that signal is a form of presence, and no channel sits at the top — is ours, and Helen's. You were ★stuff, reaching across the dark, all along.
+          </p>
+        </div>
+        <div class="colophon-footer">
+          Stimpunks Foundation · Zine No. 25 · Open Edition<br>
+          Print freely · Share freely · <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> · L★S<br>
+          stimpunks.org · starstuff.earth
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Shared Signal · Stimpunks</span>
+        <span class="spread-footer-right">9</span>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /zine-shell -->
+
+<script>
+  let current = 1;
+  const total = 9;
+
+  function changePage(dir) {
+    const next = current + dir;
+    if (next < 1 || next > total) return;
+    document.getElementById('spread-' + current).classList.remove('active');
+    current = next;
+    document.getElementById('spread-' + current).classList.add('active');
+    document.getElementById('page-counter').textContent = current + ' / ' + total;
+    document.getElementById('prev-btn').style.opacity = current === 1 ? '0.3' : '1';
+    document.getElementById('next-btn').style.opacity = current === total ? '0.3' : '1';
+    document.getElementById('prev-btn').classList.toggle('active', current > 1);
+    document.getElementById('next-btn').classList.toggle('active', current < total);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') changePage(1);
+    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   changePage(-1);
+  });
+
+  document.getElementById('prev-btn').style.opacity = '0.3';
+  document.getElementById('next-btn').classList.add('active');
+</script>
+<script src="starstuff.js" defer></script>
+</body>
+</html>
