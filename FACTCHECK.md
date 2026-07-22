@@ -79,15 +79,15 @@ Date format YYYY-MM-DD. "Checked" = a full attribution + key-claim pass was done
 | 11 | Why Difference Comes First (Helen Edgar) | — | pending first check | |
 | 12 | Turn and Face the Strange (Bowie) | — | pending first check | song/lyric attributions — check carefully |
 | 13 | Warriors and Weirdos (Aurora) | — | pending first check | |
-| 14 | The Council of All Beings | — | pending first check | Joanna Macy attribution — verify |
-| 15 | Every Creature's Own Sky | — | pending first check | umwelt (von Uexküll); double empathy (Milton 2012) |
+| 14 | The Council of All Beings | 2026-07-22 | VERIFIED | Council ritual (Joanna Macy & John Seed) confirmed; multispecies role-play + the "Speaking as a River" guide and Artmann's human-nature-partnership principles (Harms et al., 2025); ethodiversity (Ombre Tarragnat, extending Adolfo Cordero-Rivera); Despret; von Uexküll (Umwelt); Whanganui River / Te Awa Tupua legal personhood (NZ, 2017); Neimanis. No corrections. |
+| 15 | Every Creature's Own Sky | 2026-07-22 | VERIFIED | von Uexküll (tick Umwelt); Nagel ("What Is It Like to Be a Bat?", 1974); mantis shrimp (12+ photoreceptor types), star-nosed mole, magnetoreception; monotropism (Murray, Lesser & Lawson 2005); Milton (double empathy, 2012); Despret. No corrections. |
 | 16 | Minor Worlds | — | pending first check | niche construction — verify |
 | 17 | The Nearest Body | — | pending first check | tides/co-regulation science |
 | 18 | The Garden and the Stars | — | pending first check | |
-| 19 | No Universal Now | — | pending first check | relativity; crip time (Kafer, Samuels, Price) — verify |
+| 19 | No Universal Now | 2026-07-22 | CORRECTED → VERIFIED | Fixed crip-time origin: Zola & Gill were among the first to *document* it in disability studies, not coin it (per Kafer, who notes neither defined the term) — reworded "named it" in the spread and colophon. Verified: Einstein/GPS relativity, railway/factory standard time (Galison; E.P. Thompson, 1967), Kafer (*Feminist, Queer, Crip*), Marta Rose (spiral time), Helen Edgar (felt time), Bergson (durée), Samuels ("Six Ways of Looking at Crip Time," 2017), Eliot (*Four Quartets*). |
 | 20 | The Same Water | — | pending first check | phase-transition physics; Cynthia Kim; Tarragnat |
 | 21 | Not a Line | — | pending first check | spectrum/constellation (Dwyer; Edgar) |
-| 22 | No One Is the Leader | — | pending first check | Anderson "More Is Different" (1972); Ballerini/STARFLAG — verify |
+| 22 | No One Is the Leader | 2026-07-22 | VERIFIED | Ballerini / STARFLAG project (2008, each starling tracks ~6–7 topological neighbours); Anderson ("More Is Different," *Science*, 1972); CMB density ripples → cosmic web (structure formation); NeurodiVentures / competency networks. No corrections. |
 | 23 | Bodies of Water | 2026-07-22 | VERIFIED | Neimanis (*Hydrofeminism*; *Bodies of Water*), Alaimo (transcorporeality), gestationality, ~60% water, monotropism (Murray, Lesser & Lawson 2005), Autistic Realms shared/collective flow (Edgar), water older than the Sun — all confirmed. No corrections. |
 | 24 | Shared Air | 2026-07-22 | CORRECTED → VERIFIED | Fixed solarpunk attribution: "a future with a human face and dirt behind its ears" is **Adam Flynn**, *Solarpunk: Notes toward a manifesto* (2014); "move quietly and plant things" is a movement slogan (**Andrew Dana Hudson**), not the manifesto. Verified: Great Oxidation Event (~2.4 Gya), stellar O/N, Corsi–Rosenthal box, brown *Emergent Strategy* (2017). Shared-air space coinage → Helen Edgar & Ryan Boren. |
 | 25 | Shared Signal | 2026-07-22 | CORRECTED → VERIFIED | Fixed Streuber et al. (2026, *Scientific Reports*): the study found VR remote synchrony **comparable to** face-to-face — earlier text wrongly said "weaker over video." Verified: Porges (2011), Howard & Sedgewick (2021, "Anything but the phone!"), Milton (2012), Deleuze & Guattari (1987), Edgar (*Autistic Rhizome*, 2026), EM-spectrum physics. Coinage → Helen Edgar. |
@@ -123,4 +123,7 @@ Date format YYYY-MM-DD. "Checked" = a full attribution + key-claim pass was done
 - Helen to add a reciprocal "companion piece → Field Guide" link on the *Monotropa uniflora and
   Monotropism* post at morerealms.com (outside this repo).
 - Continue rolling first-check passes on the pending zines and field guides above, prioritising the
-  most attribution-dense.
+  most attribution-dense. Checked so far: Nos. 23–26, Field Guide 6 (first batch); Nos. 14, 15, 19,
+  22 (second batch). Suggested next batch: You Were Never One Thing (7, endosymbiosis / Margulis),
+  Not a Line (21, Dwyer / Edgar), The Same Water (20, Cynthia Kim / Tarragnat), Minor Worlds (16),
+  The Nearest Body (17).
