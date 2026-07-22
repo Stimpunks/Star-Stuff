@@ -82,7 +82,7 @@ Date format YYYY-MM-DD. "Checked" = a full attribution + key-claim pass was done
 | 14 | The Council of All Beings | 2026-07-22 | VERIFIED | Council ritual (Joanna Macy & John Seed) confirmed; multispecies role-play + the "Speaking as a River" guide and Artmann's human-nature-partnership principles (Harms et al., 2025); ethodiversity (Ombre Tarragnat, extending Adolfo Cordero-Rivera); Despret; von Uexküll (Umwelt); Whanganui River / Te Awa Tupua legal personhood (NZ, 2017); Neimanis. No corrections. |
 | 15 | Every Creature's Own Sky | 2026-07-22 | VERIFIED | von Uexküll (tick Umwelt); Nagel ("What Is It Like to Be a Bat?", 1974); mantis shrimp (12+ photoreceptor types), star-nosed mole, magnetoreception; monotropism (Murray, Lesser & Lawson 2005); Milton (double empathy, 2012); Despret. No corrections. |
 | 16 | Minor Worlds | 2026-07-22 | VERIFIED | Niche construction (Odling-Smee, Laland & Feldman, 2003) + ecological inheritance; Thomas Armstrong ("no normal brain at the Smithsonian"); Erin Manning (the minor, *The Minor Gesture*, 2016); Kadodia & Krueger, "Epistemic Injustice, Niche Construction, and Neurodiversity" (*Philosophical Psychology*, 2026) — "epistemic niche" confirmed; Haraway (companion species / worlding). PLAUSIBLE idea-attributions: Devon Price, Tarragnat ("ontological choreographies"). No corrections. |
-| 17 | The Nearest Body | 2026-07-22 | VERIFIED (1 caveat) | Tidal physics confirmed: Sun ~27M× the Moon's mass and ~180× the raw force, yet the Moon dominates because tidal force ∝ 1/distance³; spring/neap tides; tidal locking. Co-regulation / interpersonal synchrony well-supported. **Caveat:** the piece states **polyvagal theory** (Porges) affirmatively — polyvagal's specific evolutionary/physiological claims are scientifically contested; the co-regulation phenomenon holds regardless. Consider a light hedge (see Open items). No text corrections yet. |
+| 17 | The Nearest Body | 2026-07-22 | CORRECTED → VERIFIED | Tidal physics confirmed: Sun ~27M× the Moon's mass and ~180× the raw force, yet the Moon dominates because tidal force ∝ 1/distance³; spring/neap tides; tidal locking. Co-regulation / interpersonal synchrony well-supported. **Fixed:** hedged the affirmative **polyvagal theory** (Porges) claim in the spread and colophon — noted it's an influential but scientifically contested framework, while the co-regulation phenomenon it describes holds regardless. |
 | 18 | The Garden and the Stars | — | pending first check | |
 | 19 | No Universal Now | 2026-07-22 | CORRECTED → VERIFIED | Fixed crip-time origin: Zola & Gill were among the first to *document* it in disability studies, not coin it (per Kafer, who notes neither defined the term) — reworded "named it" in the spread and colophon. Verified: Einstein/GPS relativity, railway/factory standard time (Galison; E.P. Thompson, 1967), Kafer (*Feminist, Queer, Crip*), Marta Rose (spiral time), Helen Edgar (felt time), Bergson (durée), Samuels ("Six Ways of Looking at Crip Time," 2017), Eliot (*Four Quartets*). |
 | 20 | The Same Water | 2026-07-22 | VERIFIED | Phase transitions / phase diagram / supercooling / critical slowing down; early-universe symmetry breaking; Jeans-instability star formation; water older than the Sun — all confirmed. PLAUSIBLE idea-attributions: Cynthia Kim ("fluid adaptation," *Musings of an Aspie*), Ombre Tarragnat ("weather-bodies," *Sextant*, 2024). Threshold anxiety (house) + monotropism (Murray, Lesser & Lawson). No corrections. |
@@ -122,11 +122,9 @@ Date format YYYY-MM-DD. "Checked" = a full attribution + key-claim pass was done
   `PLAUSIBLE`).
 - Helen to add a reciprocal "companion piece → Field Guide" link on the *Monotropa uniflora and
   Monotropism* post at morerealms.com (outside this repo).
-- **The Nearest Body (17):** polyvagal theory (Porges) is presented affirmatively. Its specific
-  evolutionary/physiological claims are scientifically contested, though the co-regulation
-  phenomenon it's used to describe is well-supported by other work (interpersonal physiological
-  synchrony; social baseline theory). Consider a light hedge to match the house "note contested
-  points" standard — decision pending.
+- ~~The Nearest Body (17): hedge the affirmative polyvagal-theory framing.~~ **Done 2026-07-22** —
+  the spread and colophon now note polyvagal is an influential but scientifically contested
+  framework, while the co-regulation phenomenon it describes is well-supported independently.
 - Primary-confirm the `PLAUSIBLE` idea-attributions where practical (Cynthia Kim's "fluid
   adaptation"; Tarragnat's "weather-bodies" / "ontological choreographies"; Devon Price; Thomas
   Armstrong's Smithsonian line).
