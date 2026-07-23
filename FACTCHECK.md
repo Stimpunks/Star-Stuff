@@ -97,11 +97,11 @@ Date format YYYY-MM-DD. "Checked" = a full attribution + key-claim pass was done
 
 | No. | Piece | Checked | Status | Notes / open items |
 |----|-------|---------|--------|--------------------|
-| 1 | Neurodivergent Constellations | — | pending first check | |
-| 2 | The Star Stuff You're Made Of | — | pending first check | element/nucleosynthesis figures |
-| 3 | Life in Impossible Places | — | pending first check | extremophile biology |
-| 4 | Worlds That Work by Other Rules | — | pending first check | |
-| 5 | The Ways of Being a Star | — | pending first check | H–R diagram; stellar figures (already flagged approximate) |
+| 1 | Neurodivergent Constellations | 2026-07-22 | VERIFIED | Star data spot-checked across entries (Gemini, Cetus, Virgo, Aquarius) — magnitudes & distances accurate (Castor a sextuple system; Mira ~332-day period). The constellation renamings are interpretive, not factual astronomy claims. No corrections. |
+| 2 | The Star Stuff You're Made Of | 2026-07-22 | VERIFIED | All 8 elements' body-abundances and forge sites confirmed: H (Big Bang), O & Ca (massive stars / core-collapse SNe), C (red-giant triple-alpha; Hoyle resonance), N (CNO), Fe (last fusion → SNe), K (explosive burning), I (r-process / neutron-star mergers). No corrections. |
+| 3 | Life in Impossible Places | 2026-07-22 | VERIFIED | Extremophiles confirmed: tardigrade (space 2007; ~1000× human-lethal radiation; the tun), lichen (ESA orbital trials), Riftia (1977 Galápagos Rift, chemosynthesis), radiotrophic fungi (Chernobyl), halophiles, Thermus aquaticus (~70°C), Antarctic icefish (no haemoglobin, antifreeze), endoliths. No corrections. |
+| 4 | Worlds That Work by Other Rules | 2026-07-22 | VERIFIED | Solar-system facts confirmed: Europa (subsurface ocean, ~2× Earth's water), Titan (methane cycle, −179°C), Enceladus (~504 km, plumes feeding the E ring), Uranus (~98° tilt), Venus (~465°C, ~92 bar), Pluto (IAU 2006), Mercury (3:2 spin–orbit), Neptune (~2,000 km/h winds). No corrections. |
+| 5 | The Ways of Being a Star | 2026-07-22 | VERIFIED | Stellar types confirmed: red-dwarf longevity; brown dwarf (~13–80 M_Jup, ~8% solar-mass fusion limit); Cepheids & Henrietta Leavitt's period–luminosity law; pulsars (to ~700/s); ~half of Sun-like stars paired; red giant, white dwarf, blue giant. Figures flagged approximate in-text. No corrections. |
 | 6 | Symbioses | 2026-07-22 | CORRECTED → VERIFIED | Helen Edgar fact-check applied. Fixed MLK/Baldwin misattribution (King, *Letter from Birmingham Jail*, 1963). Cited Kropotkin (*Mutual Aid*, 1902), Margulis (*Microcosmos*, 1986), Spade (*Mutual Aid*, 2020), Kafai ("cripped, queered, decolonial survival work," *Crip Kinship*, 2021), Piepzna-Samarasinha ("revolutionary love without charity," *Care Work*, 2018). Added Monotropa uniflora as the honest asymmetrical (myco-heterotroph) case + cross-link to Edgar's *Monotropa uniflora and Monotropism*. Biology of all 12 partnerships confirmed. Mingus & Talila A. Lewis: `PLAUSIBLE` — paraphrase attributions consistent with their published work; exact citable source not primary-confirmed this pass. |
 
 ### Other pieces (non-numbered)
@@ -130,9 +130,10 @@ Date format YYYY-MM-DD. "Checked" = a full attribution + key-claim pass was done
   Thomas Armstrong's Smithsonian line; **Carol Black's "the genius — and the conscience — of our
   species" and Lori Hogenkamp's "not insurance — that's ecology" (No. 8)**; the exact wording of the
   Cara Page & Erica Woodland passage (No. 10, p. 32 — book confirmed).
-- Continue rolling first-check passes on the pending pieces. **Checked so far (19 of 40):** Nos.
+- Continue rolling first-check passes on the pending pieces. **Checked so far (24 of 40):** Nos.
   23–26 + Field Guide 6 (batch 1); Nos. 14, 15, 19, 22 (batch 2); Nos. 7, 16, 17, 20, 21 (batch 3);
-  Nos. 1, 8, 10, 11, 18 (batch 4). Suggested next batch: the remaining field guides (1–5), then the
-  remaining zines — LYDTYSS (2), Neurodiversity Field Guide (3), We Are All Star Stuff (4), Eternal
-  Sunshine (6), The Lines We Drew (9) + Difference-First Frame (9b), Turn and Face the Strange (12),
-  Warriors and Weirdos (13) — and the non-numbered pieces.
+  Nos. 1, 8, 10, 11, 18 (batch 4); Field Guides 1–5 (batch 5). Remaining: the zines — LYDTYSS (2),
+  Neurodiversity Field Guide (3), We Are All Star Stuff (4), Eternal Sunshine (6), The Lines We Drew
+  (9) + Difference-First Frame (9b), Turn and Face the Strange (12), Warriors and Weirdos (13) — and
+  the non-numbered pieces (Manifesto, Inclusion Safety Creed, LYDTYSS page, L★S Broadside, L★S
+  Playlist, Shorthand Evolution).
