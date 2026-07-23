@@ -65,25 +65,25 @@ Date format YYYY-MM-DD. "Checked" = a full attribution + key-claim pass was done
 
 | No. | Piece | Checked | Status | Notes / open items |
 |----|-------|---------|--------|--------------------|
-| 1 | Bone Song | — | pending first check | |
+| 1 | Bone Song | 2026-07-22 | CORRECTED → VERIFIED | **Fixed a misquotation:** the Carl Sagan / *Cosmos* pull-quote read "…the iron in our blood — all forged in the interiors of collapsing stars," altering his words. Restored verbatim: "…the iron in our blood, the carbon in our apple pies were made in the interiors of collapsing stars." Verified: bone piezoelectricity (Fukada & Yasuda, 1957; extended by C.A.L. Bassett); stellar nucleosynthesis; neurodiversity paradigm (Nick Walker; InLv — Dekker, Sinclair, ANI). |
 | 2 | Love You Down To Your Star Stuff (LYDTYSS) | — | pending first check | |
 | 3 | Neurodiversity Field Guide | — | pending first check | |
 | 4 | We Are All Star Stuff | — | pending first check | |
 | 5 | Underground | — | pending first check | |
 | 6 | Eternal Sunshine | — | pending first check | |
 | 7 | You Were Never One Thing | 2026-07-22 | VERIFIED | Endosymbiosis / mitochondria (own DNA, ribosomes, fission); chloroplasts (separate endosymbiosis); gut ~38T bacteria vs ~30T human cells (Sender, Fuchs & Milo, 2016); serial endosymbiotic theory — Lynn Margulis (as Lynn Sagan), "On the Origin of Mitosing Cells" (1967), reviving Mereschkowsky & Wallin; alphaproteobacterial origin, archaeal host. Timing honestly hedged as debated. No corrections. |
-| 8 | The Universe Runs on Difference | — | pending first check | |
+| 8 | The Universe Runs on Difference | 2026-07-22 | VERIFIED (1 open) | CMB uniform to ~1 part in 100,000 → structure (COBE/WMAP/Planck); Cavendish/Gros Michel/Panama disease + Tropical Race 4; biodiversity–resilience; spiky profile (Milton, building on Happé); ethodiversity (Cordero-Rivera → Tarragnat); Cavendish Space (Stimpunks). **Open:** the Carol Black quote ("the genius — and the conscience — of our species") and the Lori Hogenkamp quote ("not insurance — that's ecology") are `PLAUSIBLE` — attributions likely correct but not primary-confirmed this pass (top lead was our own blog). No text change. |
 | 9 | The Lines We Drew | — | pending first check | |
 | 9b | The Difference-First Frame (backing material) | — | pending first check | |
-| 10 | The Dead Stars Still Reach Us | — | pending first check | |
-| 11 | Why Difference Comes First (Helen Edgar) | — | pending first check | |
+| 10 | The Dead Stars Still Reach Us | 2026-07-22 | VERIFIED | Light-travel time (honestly corrects the "stars you see are already dead" myth); SN 1006 (~7,200 ly, spring 1006 CE); Betelgeuse (~550 ly, approx.); Highlander Folk School (Horton 1932; Septima Clark; Rosa Parks 1955; Ella Baker; Bernice Robinson; Aldon Morris's "movement halfway house"; Nico Slate's 2022 Highlander histories). Direct quotes credited: Ira Socol; Cara Page & Erica Woodland (*Healing Justice Lineages*, 2023, p. 32 — book verified, wording `PLAUSIBLE`); Yunkaporta ("deep time"). No corrections. |
+| 11 | Why Difference Comes First (Helen Edgar) | 2026-07-22 | VERIFIED | Guest zine with a full APA reference list — exemplary. All confirmed: Rovelli (relational QM, 1996), Deleuze (*Difference and Repetition*, 1968/1994), Deleuze & Guattari (*A Thousand Plateaus*, 1980/1987), Chapman (*Empire of Normality*, 2023), Tarragnat (ethodiversity, 2025), Edgar (2026a/b, More Realms), CMB uniformity. No corrections. |
 | 12 | Turn and Face the Strange (Bowie) | — | pending first check | song/lyric attributions — check carefully |
 | 13 | Warriors and Weirdos (Aurora) | — | pending first check | |
 | 14 | The Council of All Beings | 2026-07-22 | VERIFIED | Council ritual (Joanna Macy & John Seed) confirmed; multispecies role-play + the "Speaking as a River" guide and Artmann's human-nature-partnership principles (Harms et al., 2025); ethodiversity (Ombre Tarragnat, extending Adolfo Cordero-Rivera); Despret; von Uexküll (Umwelt); Whanganui River / Te Awa Tupua legal personhood (NZ, 2017); Neimanis. No corrections. |
 | 15 | Every Creature's Own Sky | 2026-07-22 | VERIFIED | von Uexküll (tick Umwelt); Nagel ("What Is It Like to Be a Bat?", 1974); mantis shrimp (12+ photoreceptor types), star-nosed mole, magnetoreception; monotropism (Murray, Lesser & Lawson 2005); Milton (double empathy, 2012); Despret. No corrections. |
 | 16 | Minor Worlds | 2026-07-22 | VERIFIED | Niche construction (Odling-Smee, Laland & Feldman, 2003) + ecological inheritance; Thomas Armstrong ("no normal brain at the Smithsonian"); Erin Manning (the minor, *The Minor Gesture*, 2016); Kadodia & Krueger, "Epistemic Injustice, Niche Construction, and Neurodiversity" (*Philosophical Psychology*, 2026) — "epistemic niche" confirmed; Haraway (companion species / worlding). PLAUSIBLE idea-attributions: Devon Price, Tarragnat ("ontological choreographies"). No corrections. |
 | 17 | The Nearest Body | 2026-07-22 | CORRECTED → VERIFIED | Tidal physics confirmed: Sun ~27M× the Moon's mass and ~180× the raw force, yet the Moon dominates because tidal force ∝ 1/distance³; spring/neap tides; tidal locking. Co-regulation / interpersonal synchrony well-supported. **Fixed:** hedged the affirmative **polyvagal theory** (Porges) claim in the spread and colophon — noted it's an influential but scientifically contested framework, while the co-regulation phenomenon it describes holds regardless. |
-| 18 | The Garden and the Stars | — | pending first check | |
+| 18 | The Garden and the Stars | 2026-07-22 | VERIFIED | Digital gardening — Mike Caulfield ("The Garden and the Stream," 2015), Maggie Appleton; Vannevar Bush's memex ("As We May Think," 1945); Mark Bernstein (hypertext gardens); Borges ("The Garden of Forking Paths"); Elinor Ostrom (commons); Sagan ("a way for the cosmos to know itself"); SN 1006 / "liberating iron" (NASA phrasing, `PLAUSIBLE`); Deleuze & Guattari (rhizome). No corrections. |
 | 19 | No Universal Now | 2026-07-22 | CORRECTED → VERIFIED | Fixed crip-time origin: Zola & Gill were among the first to *document* it in disability studies, not coin it (per Kafer, who notes neither defined the term) — reworded "named it" in the spread and colophon. Verified: Einstein/GPS relativity, railway/factory standard time (Galison; E.P. Thompson, 1967), Kafer (*Feminist, Queer, Crip*), Marta Rose (spiral time), Helen Edgar (felt time), Bergson (durée), Samuels ("Six Ways of Looking at Crip Time," 2017), Eliot (*Four Quartets*). |
 | 20 | The Same Water | 2026-07-22 | VERIFIED | Phase transitions / phase diagram / supercooling / critical slowing down; early-universe symmetry breaking; Jeans-instability star formation; water older than the Sun — all confirmed. PLAUSIBLE idea-attributions: Cynthia Kim ("fluid adaptation," *Musings of an Aspie*), Ombre Tarragnat ("weather-bodies," *Sextant*, 2024). Threshold anxiety (house) + monotropism (Murray, Lesser & Lawson). No corrections. |
 | 21 | Not a Line | 2026-07-22 | VERIFIED | Stellar spectroscopy (each element's line fingerprint) confirmed; functioning-labels critique; the spiky profile; Patrick Dwyer's "autism constellation" confirmed (autisticscholar.com); Helen Edgar's "constellation of intensities" + felt-time framing (direct quote, her own words). No corrections. |
@@ -125,11 +125,14 @@ Date format YYYY-MM-DD. "Checked" = a full attribution + key-claim pass was done
 - ~~The Nearest Body (17): hedge the affirmative polyvagal-theory framing.~~ **Done 2026-07-22** —
   the spread and colophon now note polyvagal is an influential but scientifically contested
   framework, while the co-regulation phenomenon it describes is well-supported independently.
-- Primary-confirm the `PLAUSIBLE` idea-attributions where practical (Cynthia Kim's "fluid
-  adaptation"; Tarragnat's "weather-bodies" / "ontological choreographies"; Devon Price; Thomas
-  Armstrong's Smithsonian line).
-- Continue rolling first-check passes on the pending pieces. **Checked so far (14 of 40):** Nos.
-  23–26 + Field Guide 6 (batch 1); Nos. 14, 15, 19, 22 (batch 2); Nos. 7, 16, 17, 20, 21 (batch 3).
-  Suggested next batch: Bone Song (1), The Dead Stars Still Reach Us (10), The Garden and the Stars
-  (18), The Universe Runs on Difference (8), Why Difference Comes First (11), and the remaining
-  field guides (1–5).
+- Primary-confirm the `PLAUSIBLE` idea-attributions / direct quotes where practical: Cynthia Kim's
+  "fluid adaptation"; Tarragnat's "weather-bodies" / "ontological choreographies"; Devon Price;
+  Thomas Armstrong's Smithsonian line; **Carol Black's "the genius — and the conscience — of our
+  species" and Lori Hogenkamp's "not insurance — that's ecology" (No. 8)**; the exact wording of the
+  Cara Page & Erica Woodland passage (No. 10, p. 32 — book confirmed).
+- Continue rolling first-check passes on the pending pieces. **Checked so far (19 of 40):** Nos.
+  23–26 + Field Guide 6 (batch 1); Nos. 14, 15, 19, 22 (batch 2); Nos. 7, 16, 17, 20, 21 (batch 3);
+  Nos. 1, 8, 10, 11, 18 (batch 4). Suggested next batch: the remaining field guides (1–5), then the
+  remaining zines — LYDTYSS (2), Neurodiversity Field Guide (3), We Are All Star Stuff (4), Eternal
+  Sunshine (6), The Lines We Drew (9) + Difference-First Frame (9b), Turn and Face the Strange (12),
+  Warriors and Weirdos (13) — and the non-numbered pieces.
