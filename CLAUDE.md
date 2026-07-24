@@ -108,6 +108,11 @@ The central phrase compresses through registers, each with a use:
 - **Refer to neurodivergent and disabled people in the first-person plural — we / us / our — not
   third person (they/them/their).** We write from within the community, not about it. Second person
   (you / your) is fine when directly addressing the reader.
+- **Always capitalize the "A" in Autistic.** Write *Autistic* (and *Autistics*) as an identity
+  term throughout all prose — headings, body, colophons, card descriptions, and meta/OG/Twitter
+  descriptions. Exceptions, left unchanged: URLs, slugs and in-page anchors (`id="…"`,
+  `href="#…"`), and verbatim work/quote titles. This rule is about *Autistic* specifically — leave
+  *autism* lowercase.
 - Tone braids **wonder and punk**: Sagan-esque awe alongside community rage at systems built too
   narrow. Gentle and fierce at once.
 - Ground claims in real science and cite real sources. Existing pieces lean on stellar

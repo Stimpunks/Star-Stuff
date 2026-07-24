@@ -81,7 +81,7 @@ Open edition. **Print free. Share freely.** These artifacts are made to be repro
 
 ## Lineage & credits
 
-The neurodiversity paradigm language draws on the foundational work of Nick Walker and on the autistic community of InLv — Martijn Dekker, Jim Sinclair, and Autism Network International — who developed these ideas collectively in the 1990s, before the concept entered academia. The piezoelectric research traces to Dr. Iwao Yasuda (1950s), later extended by Dr. Andrew Bassett and colleagues. The cosmological framing draws on Carl Sagan's *Cosmos* and the broader popular tradition of stellar nucleosynthesis.
+The neurodiversity paradigm language draws on the foundational work of Nick Walker and on the Autistic community of InLv — Martijn Dekker, Jim Sinclair, and Autism Network International — who developed these ideas collectively in the 1990s, before the concept entered academia. The piezoelectric research traces to Dr. Iwao Yasuda (1950s), later extended by Dr. Andrew Bassett and colleagues. The cosmological framing draws on Carl Sagan's *Cosmos* and the broader popular tradition of stellar nucleosynthesis.
 
 *You are made of star stuff. The universe loves you for it. So do we.*
 
