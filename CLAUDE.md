@@ -135,6 +135,16 @@ Two senses appear and must stay distinct:
 Keep the banana as the problem and Cavendish Space as the response. "We refuse to build Cavendish
 Space" is inverted and wrong.
 
+### The "wood wide web" trap (hedge, don't assert)
+
+Mycorrhizal symbiosis — fungus and plant root trading minerals for sugar — is settled science and
+ours to use freely. The *forest-wide* story is not: Karst, Jones & Hoeksema (*Nature Ecology &
+Evolution* 7, 2023) find the prevalence of common mycorrhizal networks and their benefit to
+seedlings insufficiently supported, and find no published evidence that elder trees preferentially
+feed their own offspring through them. It rhymes beautifully with mutual aid, which is exactly why
+it slipped past us in three pieces. When writing *Underground* (5), *A Mycelium and a Rhizome* (26),
+or *Symbioses* (FG 6): keep the kinship, name the contested part, don't assert the wiring.
+
 ## Fact-checking & attribution
 
 Every piece makes factual claims — scientific findings and attributed quotes/ideas. Getting
