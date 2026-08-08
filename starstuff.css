@@ -35,7 +35,13 @@
   --sp-secondary-soft:  #d4d0e4;
   --sp-muted:           #c4b5d4;
   --sp-dim:             #8a86a0;
-  --sp-dim-soft:        #63607a;
+  /* Lifted 2026-08-08 from #63607a, which was 3.27:1 on --sp-void and 3.11:1 on
+     --sp-card — under the 4.5:1 WCAG AA floor for normal text. It styles page
+     counters, series numbers, colophons and refs at 0.5–0.55rem, so it is small
+     text and gets no large-text exemption. Same CIELAB hue and chroma (h 296,
+     C* 16), L* raised 41.9 -> 53.5: now 4.97:1 on --sp-void and 4.73:1 on the
+     lightest ground, --sp-card, while staying visibly below --sp-dim. */
+  --sp-dim-soft:        #807d98;
 }
 
 /* Shared starfield twinkle. Pages apply this via `animation: twinkle-anim …`

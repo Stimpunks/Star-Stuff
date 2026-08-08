@@ -26,7 +26,7 @@
 <meta name="twitter:image" content="https://starstuff.earth/og-card.jpg">
 <title>L★S Broadside — Stimpunks Foundation</title>
 <link href="https://fonts.googleapis.com/css2?family=Boogaloo&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Fraunces:ital,opsz,wght@0,9..144,200..900;1,9..144,200..900&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="starstuff.css">
 <style>
   :root {
@@ -40,6 +40,12 @@
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  /* This page styled no links at all, so the two CC BY-SA links fell back to the
+     browser's dark-scheme default (#9e9eff) — 2.11:1 against the verso's near-black.
+     Inheriting the surrounding colour keeps them at their parent's passing contrast
+     on both the cream face and the dark verso; the underline carries the affordance. */
+  .face a, .verso a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
 
   body {
     background: #2a2830;
@@ -375,7 +381,8 @@
     font-size: 0.55rem;
     letter-spacing: 0.4em;
     text-transform: uppercase;
-    color: rgba(245,240,232,0.5);
+    /* Was rgba(245,240,232,0.5); solid equivalent, 4.69:1 on --ink. */
+    color: #7f7c7f;
   }
 
   .verso-ls {
@@ -447,7 +454,8 @@
     font-style: italic;
     font-weight: 300;
     font-size: 0.78rem;
-    color: rgba(245,240,232,0.45);
+    /* Was rgba(245,240,232,0.45) — 4.13:1, under AA. Solid, 4.69:1. */
+    color: #7f7c7f;
     line-height: 1.7;
     max-width: 340px;
   }
@@ -457,7 +465,8 @@
     font-size: 0.48rem;
     letter-spacing: 0.25em;
     text-transform: uppercase;
-    color: rgba(245,240,232,0.28);
+    /* Was rgba(245,240,232,0.28) — 2.30:1. Solid, 4.69:1. */
+    color: #7f7c7f;
     text-align: right;
     line-height: 2;
   }
@@ -468,7 +477,9 @@
     font-size: 0.48rem;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.2);
+    /* Was rgba(255,255,255,0.2) — 1.92:1 once composited, and alpha-faded text
+       is the one thing this design system explicitly refuses. Solid, 4.64:1. */
+    color: #929195;
     text-align: center;
   }
 

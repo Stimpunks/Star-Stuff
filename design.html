@@ -25,7 +25,7 @@
 <meta name="twitter:description" content="One typeface chosen for legibility, five accents at near-uniform lightness, body text at 18.84:1. Accessibility-first, printable, and credited.">
 <meta name="twitter:image" content="https://starstuff.earth/og-card.jpg">
 <title>Design System — Star Stuff — Stimpunks Foundation</title>
-<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..900;1,200..900&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="starstuff.css">
 <style>
   :root {
@@ -271,8 +271,9 @@
     <p>Two other faces earn their place. <strong>Space Mono</strong> carries every eyebrow, label, page counter, and colophon — a monospace voice for the machinery around the text, deliberately unlike the prose so it never competes with it. <strong>Fraunces</strong> appears where a piece needs an editorial register rather than a documentary one; <em>Bone Song</em>, <em>Underground</em>, and <em>You Were Never One Thing</em> are set in it with Space Mono, and use no Atkinson at all.</p>
 
     <div class="callout callout--gold">
-      <div class="callout-label">An honest note on the specimen</div>
-      <p>The collection is mid-migration between two versions of the face. Of 47 pages, <strong>18 load Atkinson Hyperlegible Next</strong> (the 2025 release, which adds five weights, a variable format, and support for over 150 languages), <strong>26 load the original Atkinson Hyperlegible</strong>, and <strong>3</strong> — the Fraunces-set trio above — load neither. Next is the direction; the back catalogue hasn't been swept yet. This page is set in Next.</p>
+      <div class="callout-label">The migration, and the bug it uncovered</div>
+      <p>The collection ran on two versions of the face for a while: 18 pages on <strong>Atkinson Hyperlegible Next</strong> (the 2025 release, which adds five weights, a variable format, and support for over 150 languages), 26 still on the original, and 3 — the Fraunces-set trio above — on neither. All 44 Atkinson pages now load Next. Switching cost nothing in layout: the same measuring string set at 16px came out 286.97px before and 286.78px after, and across 126 measured text blocks not one changed height, width, or line count.</p>
+      <p>The sweep turned up something worse than a split. Every page requesting Next asked Google Fonts for a <code>200..900</code> weight range — but Next only publishes <strong>200–800</strong>, so the request returned <strong>HTTP 400</strong> and no <code>@font-face</code> rule at all. Those pages had been quietly falling back to <code>system-ui</code> for every visitor who didn't happen to have the font installed locally, which is to say almost all of them. A typeface picked specifically because it was drawn for readers the standard face fails was not reaching those readers. Corrected to <code>200..800</code>; the woff2 now actually downloads.</p>
     </div>
 
     <h2 class="section">Palette</h2>
@@ -307,14 +308,15 @@
       <div class="sw"><div class="sw-chip" style="background:#c4b5d4"></div><div class="sw-meta"><div class="sw-tok">--sp-muted</div><div class="sw-hex">#c4b5d4</div><div class="sw-num">L* 75.8 · 10.23:1</div></div></div>
       <div class="sw"><div class="sw-chip" style="background:#b8aed0"></div><div class="sw-meta"><div class="sw-tok">--sp-secondary</div><div class="sw-hex">#b8aed0</div><div class="sw-num">L* 72.9 · 9.38:1</div></div></div>
       <div class="sw"><div class="sw-chip" style="background:#8a86a0"></div><div class="sw-meta"><div class="sw-tok">--sp-dim</div><div class="sw-hex">#8a86a0</div><div class="sw-num">L* 57.1 · 5.62:1</div></div></div>
-      <div class="sw"><div class="sw-chip" style="background:#63607a"></div><div class="sw-meta"><div class="sw-tok">--sp-dim-soft</div><div class="sw-hex">#63607a</div><div class="sw-num">L* 41.9 · 3.27:1</div></div></div>
+      <div class="sw"><div class="sw-chip" style="background:#807d98"></div><div class="sw-meta"><div class="sw-tok">--sp-dim-soft</div><div class="sw-hex">#807d98</div><div class="sw-num">L* 53.5 · 4.97:1</div></div></div>
     </div>
 
-    <p>Note what the ladder does <em>not</em> do: it never dips below full opacity to make text quieter. "Muted" here means a different hue at high contrast, not the same hue at 60% alpha. Every value above clears WCAG AA for body text against <code>--sp-void</code> except the last one.</p>
+    <p>Note what the ladder does <em>not</em> do: it never dips below full opacity to make text quieter. "Muted" here means a different hue at high contrast, not the same hue at 60% alpha. Every value above clears WCAG AA for body text against <code>--sp-void</code> — the dimmest by the smallest margin, and only after being lifted for exactly that reason.</p>
 
     <div class="callout callout--warn">
-      <div class="callout-label">Known gap</div>
-      <p><code>--sp-dim-soft</code> (<code>#63607a</code>) lands at <strong>3.27:1</strong> — below the 4.5:1 AA threshold for normal text. It's used for colophon footers and disabled-state controls, which is the least harmful place for it, but a system that publishes its contrast numbers should publish the one that fails too. It should be lifted.</p>
+      <div class="callout-label">The one that failed, and what it cost to fix</div>
+      <p><code>--sp-dim-soft</code> used to be <code>#63607a</code> — <strong>3.27:1</strong>, under the 4.5:1 AA floor. It styles page counters, series numbers, colophons and refs at 0.5–0.55rem, so it is small text and gets no large-text exemption; publishing a contrast table with that in it was the thing that made it obvious. Raised to <code>#807d98</code>: same CIELAB hue and chroma, L* 41.9 → 53.5, now <strong>4.97:1</strong> on the void and 4.73:1 on the lightest ground, still visibly softer than <code>--sp-dim</code>.</p>
+      <p>Auditing every text element against its <em>own</em> composited background then turned up four more: an accent pink on a tinted card that came to 4.43:1, three runs of alpha-faded cream on the broadside — the exact "faded gray" this system claims to refuse — and two links left unstyled, falling back to the browser's default blue at 2.11:1 on near-black. All fixed. <strong>All 47 pages now pass AA on screen.</strong></p>
     </div>
 
     <h2 class="section">Palette lineage</h2>

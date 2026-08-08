@@ -25,7 +25,7 @@
 <meta name="twitter:description" content="What changed and when: every piece as it was added, every substantial revision, and every fact-check and attribution audit — including our own errors and their corrections.">
 <meta name="twitter:image" content="https://starstuff.earth/og-card.jpg">
 <title>Changelog — Star Stuff — Stimpunks Foundation</title>
-<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="starstuff.css">
 <style>
   :root {
@@ -47,7 +47,7 @@
 
   html, body {
     background: var(--void);
-    font-family: 'Atkinson Hyperlegible', system-ui, sans-serif;
+    font-family: 'Atkinson Hyperlegible Next', system-ui, sans-serif;
     color: var(--star-white);
     min-height: 100vh;
     overflow-x: hidden;
@@ -259,6 +259,30 @@
         <p>Only this changelog was correct. The <a href="ls-broadside.html">L★S broadside</a> was half-right: its front prints as designed, but its reverse carried the whole poem in cream on near-black and vanished too.</p>
         <p>Fixed in <code>starstuff.css</code>, which is where the token architecture finally paid for itself: because every page aliases the <code>--sp-*</code> tokens, inverting them once inside <code>@media print</code> turned the whole collection to ink on paper. Diagrams needed separate handling — SVG paints with <code>fill</code> and <code>stroke</code>, which a text color never touches — and a handful of pages that hardcode their colors instead of aliasing tokens carry small overrides of their own. The spectrum rule keeps its color as a 2px sliver. <strong>All 47 pages now print legibly</strong>, verified twice: computed text contrast against white for every text element, and pixel sampling of the rendered sheets.</p>
         <p>The lesson is written into the design page: a stated principle nobody measures is a wish.</p>
+      </div>
+    </div>
+
+    <div class="entry entry--site">
+      <div class="entry-head"><span class="tag tag--site">Site</span><span class="entry-name">The Manifesto had been publishing with its own title invisible</span></div>
+      <div class="entry-body">
+        <p>Writing the design page turned up a bug on <a href="manifesto.html">the Manifesto</a> that had been live and unnoticed. Its stylesheet re-declared nine palette tokens as <code>--sp-gold: var(--sp-gold)</code> and so on — a custom property that refers to itself is a cycle, so all nine resolved to nothing. Every <code>color: var(--sp-gold)</code> on the page silently inherited white, which is why the Manifesto had been rendering essentially monochrome: three distinct text colours on the whole page instead of nine.</p>
+        <p>Worse, the gradient headings kept <code>-webkit-text-fill-color: transparent</code> while losing the gradient that was supposed to show through it. That made <strong>nine runs of text completely invisible</strong> — among them the words <em>&ldquo;exploded stars,&rdquo;</em> <em>&ldquo;piezoelectric,&rdquo;</em> <em>&ldquo;its own variation,&rdquo;</em> both letters of the L★S mark, and the page's own <code>&lt;h1&gt;</code>: <strong>&ldquo;Star Stuff Manifesto.&rdquo;</strong> The headline read &ldquo;We are all made of&rdquo; and simply stopped. The tokens were already inherited from the shared stylesheet and never needed re-declaring; removing the nine cyclic lines restored the whole page.</p>
+      </div>
+    </div>
+
+    <div class="entry entry--site">
+      <div class="entry-head"><span class="tag tag--site">Site</span><span class="entry-name">A broken font URL meant most visitors never saw Atkinson Hyperlegible</span></div>
+      <div class="entry-body">
+        <p>The collection was split across two versions of its typeface — 26 pages on the original Atkinson Hyperlegible, 18 on Atkinson Hyperlegible Next. All 44 Atkinson pages are now on Next. The switch cost nothing in layout: the same string at 16px measured 286.97px before and 286.78px after, and across 126 measured text blocks not one changed height, width, or line count.</p>
+        <p>The sweep uncovered a worse problem. Every page requesting Next asked Google Fonts for a <code>200..900</code> weight range, but Next publishes <strong>200–800</strong>. The request returned <strong>HTTP 400 and no <code>@font-face</code> rules at all</strong>, so those pages fell back to <code>system-ui</code> for every visitor without the font already installed — which is very nearly everyone. A typeface chosen precisely because it was drawn for readers the standard face fails had not been reaching them. It went unnoticed because the font <em>is</em> installed on the machine where these pages get built, so it looked right here and nowhere else. Corrected to <code>200..800</code>, verified by confirming the woff2 now downloads. All four of the collection's Google Fonts URLs were re-checked; the rest were fine.</p>
+      </div>
+    </div>
+
+    <div class="entry entry--site">
+      <div class="entry-head"><span class="tag tag--site">Site</span><span class="entry-name">Seven contrast failures found and fixed; every page now passes AA</span></div>
+      <div class="entry-body">
+        <p>Publishing the palette's contrast numbers made the worst one impossible to ignore. <code>--sp-dim-soft</code> was <code>#63607a</code> — 3.27:1, under the 4.5:1 AA floor, and used for page counters, series numbers and colophons at 0.5–0.55rem, so squarely small text. Raised to <code>#807d98</code>, holding the same hue and chroma: 4.97:1, and still visibly softer than <code>--sp-dim</code>.</p>
+        <p>Auditing every text element against its <em>own</em> composited background — not against the page ground — found six more: an accent pink that came to 4.43:1 once the tinted card beneath it was accounted for (two field guides); three runs of alpha-faded cream on the <a href="ls-broadside.html">broadside</a>, which is exactly the &ldquo;faded gray&rdquo; this design system says it refuses, now solid; and two <code>CC BY-SA</code> links left entirely unstyled, falling back to the browser's default blue at 2.11:1 against near-black. One zine also hardcoded its dimmest tone instead of aliasing the shared token, so the lift hadn't reached it; it aliases now. <strong>All 47 pages pass WCAG AA on screen.</strong></p>
       </div>
     </div>
   </section>

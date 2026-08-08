@@ -42,7 +42,10 @@
     --star-white: #f0eef8;
     --stardust:   #d8cfe4;
     --dim:   #8a7f9c;
-    --dim2:  #6f6683;
+    /* Was #6f6683 — 3.64:1 behind the 0.5rem page counters, series numbers and
+       cover meta, under the 4.5:1 AA floor. Aliasing the shared token instead of
+       hardcoding means the next palette fix reaches this page too. */
+    --dim2:  var(--sp-dim-soft);
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }

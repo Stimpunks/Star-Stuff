@@ -93,6 +93,14 @@ The central phrase compresses through registers, each with a use:
 
 ## Design system
 
+- **Font URLs must be verified, not assumed.** Atkinson Hyperlegible Next publishes weights
+  **200–800** on Google Fonts. The correct request is
+  `family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800`. Asking for `200..900`
+  returns **HTTP 400 with zero `@font-face` rules**, so every visitor silently falls back to
+  `system-ui` — and you will not notice locally if the font is installed on your machine, which is
+  exactly how it shipped unnoticed. After changing any Google Fonts URL, `curl` it and confirm
+  `@font-face` blocks come back; better, load the page and check the woff2 actually downloads.
+  (Fraunces legitimately uses `200..900` — the range is per-family.)
 - **Typeface:** Atkinson Hyperlegible Next (max legibility). *Bone Song* also uses Fraunces and
   Space Mono for editorial voice; the injected footer nav uses Space Mono.
 - **Palette** — the canonical tokens live in `starstuff.css` as `:root { --sp-* }` (single source

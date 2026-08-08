@@ -25,23 +25,24 @@
 <meta name="twitter:description" content="On the cosmic origins of who we are, the science of how we carry the universe in our bones, and why neurodivergent and disabled people belong — not despite difference, but as difference. Six sections and eight declarations.">
 <meta name="twitter:image" content="https://starstuff.earth/og-card.jpg">
 <title>Star Stuff Manifesto — Stimpunks Foundation</title>
-<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="starstuff.css">
 <style>
 html, body { margin: 0; padding: 0; }
 body { background-color: #0a0a14; }
 
 .stimpunks-manifesto {
-  --sp-void: var(--sp-void);
+  /* This block used to re-declare --sp-void, --sp-purple, --sp-pink, --sp-gold,
+     --sp-cyan, --sp-green, --sp-white, --sp-secondary and --sp-muted as
+     `--sp-x: var(--sp-x)`. A custom property that references itself on the same
+     element is a cycle, so all nine became invalid at computed-value time and
+     resolved to nothing — which meant every `color: var(--sp-gold)` on this page
+     silently inherited white, and every gradient heading lost its background
+     while keeping `-webkit-text-fill-color: transparent`, rendering nine runs of
+     text — including this page's own <h1> — completely invisible. The tokens are
+     already inherited from starstuff.css; they never needed re-declaring.
+     Only the genuine alias below (deep -> card) is kept. */
   --sp-deep: var(--sp-card);
-  --sp-purple: var(--sp-purple);
-  --sp-pink: var(--sp-pink);
-  --sp-gold: var(--sp-gold);
-  --sp-cyan: var(--sp-cyan);
-  --sp-green: var(--sp-green);
-  --sp-white: var(--sp-white);
-  --sp-secondary: var(--sp-secondary);
-  --sp-muted: var(--sp-muted);
 
   background-color: var(--sp-void);
   color: var(--sp-white);
