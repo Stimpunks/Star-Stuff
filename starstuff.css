@@ -351,6 +351,33 @@ a.ss-cobrand.ss-cobrand:focus-visible { text-decoration-color: currentColor; }
     page-break-after: auto;   /* avoid a trailing blank sheet */
     break-after: auto;
   }
+
+  /* ── Field guides: the field notes ARE the guide ──
+     Each entry keeps its notes collapsed behind a click (.entry.open). On paper
+     there is nothing to click, so every printed field guide carried only the
+     short briefs and dropped every note — silently, which is the worst way for
+     a page to be wrong. Reveal them all, drop the affordance that no longer
+     does anything, and keep each entry on a single sheet.
+
+     `!important` because each guide's own inline sheet loads *after* this one
+     and sets `.entry-notes { display: none }`. The fade-in is neutralized too:
+     it is an `animation … forwards` starting at opacity 0, and an animation
+     that never runs would otherwise leave the notes revealed but invisible —
+     the same class of bug as the blank pages this whole print block exists for.
+
+     Scoped by .field-grid so changelog.html, which reuses .entry for a very
+     different thing (and has no notes), is untouched. */
+  .field-grid .entry-notes {
+    display: block !important;
+    opacity: 1 !important;
+    animation: none !important;
+  }
+  .field-grid .entry-expand { display: none !important; }
+  .field-grid .entry {
+    cursor: auto;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
 }
 
 /* Respect the OS "reduce motion" setting: neutralize the starfield twinkle,
