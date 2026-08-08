@@ -126,6 +126,7 @@ Date format YYYY-MM-DD. "Checked" = a full attribution + key-claim pass was done
 | L★S Broadside | — | pending first check | |
 | L★S Playlist | — | pending first check | track/credit attributions |
 | Shorthand Evolution | — | pending first check | |
+| Changelog | 2026-08-08 | VERIFIED (derivative) | Newly authored, backfilled from the full commit history. Makes no new factual claims of its own — every science claim, quotation and attribution it names is a restatement of a correction already logged in this ledger, and each entry was traced to the commit that made it (dates, piece numbers, and the wording of each correction cross-checked against both `git log` and the rows above). Counts verified against the repo rather than asserted: 17 artifacts on launch day (2026-07-17); 13 HTML pages touched by the repo-wide *Autistic* capitalization; 14 pieces across fact-check passes 2–4. Named sources appearing on the page — Sagan (*Cosmos*, 1980, ch. 9), Kobayashi, Karakas & Lugaro (2020), Walker, Asasumasu (2000), Dekker/InLv (1996), Charlton (1998), King (*Letter from Birmingham Jail*, 1963), Flynn (2014), Hudson, Streuber et al. (2026), Karst, Jones & Hoeksema (2023), Barad (2007), Rose, Tarragnat (*Sextant*, 2024), Eliot, Rovelli, Dwyer (2021), Zola & Gill / Kafer, Porges, Cordero-Rivera, Chapman, Chaney, Gauss→Quetelet→Galton — all carry the same status here as in their source rows. Keeps the house hedges (polyvagal contested; relational QM "one reading, not settled"; the forest-wide mycorrhizal story unsupported). |
 
 ## Open items
 

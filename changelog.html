@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0a0a14">
+<link rel="canonical" href="https://starstuff.earth/changelog.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta name="description" content="What changed and when in the Star Stuff collection — every zine and field guide as it was added, every substantial revision, and every fact-check and attribution audit, including the errors we found in our own work and how we fixed them.">
+<!-- Open Graph / link unfurl -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Star Stuff · Stimpunks Foundation">
+<meta property="og:url" content="https://starstuff.earth/changelog.html">
+<meta property="og:title" content="Changelog — Star Stuff">
+<meta property="og:description" content="What changed and when: every zine and field guide as it was added, every substantial revision, and every fact-check and attribution audit — including the errors we found in our own work and how we fixed them.">
+<meta property="og:image" content="https://starstuff.earth/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A rainbow-hued cosmic image — we are all made of star stuff.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Changelog — Star Stuff">
+<meta name="twitter:description" content="What changed and when: every piece as it was added, every substantial revision, and every fact-check and attribution audit — including our own errors and their corrections.">
+<meta name="twitter:image" content="https://starstuff.earth/og-card.jpg">
+<title>Changelog — Star Stuff — Stimpunks Foundation</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="starstuff.css">
+<style>
+  :root {
+    --void:  var(--sp-void-deep);
+    --deep:  var(--sp-deep);
+    --page:  var(--sp-page);
+    --violet:var(--sp-purple);
+    --pink:  var(--sp-pink);
+    --gold:  var(--sp-gold);
+    --cyan:  var(--sp-cyan);
+    --green: var(--sp-green);
+    --star-white: var(--sp-white-soft);
+    --stardust:   var(--sp-secondary-soft);
+    --dim:   var(--sp-dim);
+    --dim2:  var(--sp-dim-soft);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--void);
+    font-family: 'Atkinson Hyperlegible', system-ui, sans-serif;
+    color: var(--star-white);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 8% 12%, rgba(251,191,36,0.85) 0%, transparent 100%),
+      radial-gradient(1px 1px at 22% 38%, rgba(244,244,251,0.6) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 44% 9%, rgba(244,114,182,0.7) 0%, transparent 100%),
+      radial-gradient(1px 1px at 61% 68%, rgba(34,211,238,0.6) 0%, transparent 100%),
+      radial-gradient(2px 2px at 74% 28%, rgba(167,139,250,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 84% 54%, rgba(74,222,128,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 91% 79%, rgba(244,244,251,0.7) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 4% 58%, rgba(251,191,36,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 34% 84%, rgba(244,244,251,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 54% 48%, rgba(244,114,182,0.4) 0%, transparent 100%),
+      radial-gradient(2px 2px at 19% 88%, rgba(167,139,250,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 69% 4%, rgba(244,244,251,0.8) 0%, transparent 100%),
+      radial-gradient(1px 1px at 47% 62%, rgba(34,211,238,0.5) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 30% 20%, rgba(74,222,128,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 77% 88%, rgba(251,191,36,0.55) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .doc-shell { position: relative; z-index: 1; max-width: 760px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+
+  .spectrum-line { height: 2px; border: none; border-radius: 2px; background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); }
+
+  .nav-brand { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--dim); margin: 1.6rem 0 2.5rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(167,139,250,0.2); }
+
+  .hero { margin-bottom: 2.2rem; }
+  .hero-eyebrow { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.36em; text-transform: uppercase; color: var(--cyan); margin-bottom: 1.3rem; }
+  .hero-title { font-weight: 700; font-size: clamp(2.1rem, 6vw, 3.4rem); line-height: 1.05; letter-spacing: -0.02em; color: var(--star-white); margin-bottom: 1.1rem; }
+  .hero-title em { font-style: normal; background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .hero-sub { font-size: 1.02rem; line-height: 1.6; color: var(--stardust); max-width: 38rem; }
+  .hero-rule { width: 200px; max-width: 55%; margin-top: 1.6rem; }
+
+  .body-text { font-size: 1.02rem; line-height: 1.75; color: var(--stardust); }
+  .body-text p { margin-top: 1rem; }
+  .body-text em { font-style: italic; color: var(--star-white); }
+  .body-text strong { font-weight: 700; color: var(--star-white); }
+  a { color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(251,191,36,0.35); }
+  a:hover { border-bottom-color: var(--gold); }
+  .ss-nav a { border-bottom: none; }
+
+  .callout { border: 1px solid rgba(34,211,238,0.32); border-left: 3px solid var(--cyan); border-radius: 0 6px 6px 0; padding: 1.1rem 1.3rem; margin: 1.8rem 0; background: rgba(34,211,238,0.05); }
+  .callout .callout-label { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--cyan); margin-bottom: 0.5rem; }
+  .callout p { font-size: 0.96rem; line-height: 1.7; color: var(--stardust); }
+  .callout p + p { margin-top: 0.8rem; }
+  .callout strong { color: var(--star-white); font-weight: 700; }
+
+  /* --- tag legend --- */
+  .legend { display: flex; flex-wrap: wrap; gap: 0.55rem 0.7rem; margin: 1.9rem 0 0.6rem; }
+
+  /* --- tags --- */
+  .tag {
+    display: inline-block;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.55rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.55rem;
+    border-radius: 3px;
+    border: 1px solid var(--tag-color, var(--dim));
+    color: var(--tag-color, var(--dim));
+    background: rgba(255,255,255,0.02);
+    white-space: nowrap;
+  }
+  .tag--new       { --tag-color: var(--gold); }
+  .tag--updated   { --tag-color: var(--cyan); }
+  .tag--factcheck { --tag-color: var(--green); }
+  .tag--site      { --tag-color: var(--violet); }
+
+  /* --- timeline --- */
+  .release { margin-top: 3rem; padding-top: 1.6rem; border-top: 1px solid rgba(167,139,250,0.16); }
+  .release:first-of-type { border-top: none; }
+
+  .release-date { font-family: 'Space Mono', monospace; font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); }
+  .release-title { font-weight: 700; font-size: 1.32rem; line-height: 1.25; color: var(--star-white); margin-top: 0.4rem; letter-spacing: -0.01em; }
+  .release-note { font-size: 0.98rem; line-height: 1.7; color: var(--stardust); margin-top: 0.7rem; }
+
+  .entry { border-left: 3px solid var(--entry-color, var(--dim2)); padding-left: 1.1rem; margin-top: 1.5rem; }
+  .entry-head { display: flex; align-items: baseline; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 0.45rem; }
+  .entry-name { font-weight: 700; font-size: 1.02rem; line-height: 1.35; color: var(--star-white); }
+  .entry-body { font-size: 0.97rem; line-height: 1.72; color: var(--stardust); }
+  .entry-body p + p { margin-top: 0.7rem; }
+  .entry-body ul { list-style: none; margin-top: 0.55rem; }
+  .entry-body li { position: relative; padding-left: 1.1rem; margin-top: 0.45rem; }
+  .entry-body li::before { content: '★'; position: absolute; left: 0; color: var(--entry-color, var(--dim)); font-size: 0.72rem; top: 0.28rem; }
+
+  .entry--new       { --entry-color: var(--gold); }
+  .entry--updated   { --entry-color: var(--cyan); }
+  .entry--factcheck { --entry-color: var(--green); }
+  .entry--site      { --entry-color: var(--violet); }
+
+  .start-link { display: inline-block; margin-top: 2.2rem; font-family: 'Space Mono', monospace; font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); text-decoration: none; border: 1px solid rgba(251,191,36,0.4); border-radius: 3px; padding: 0.6rem 1.1rem; transition: all 0.2s ease; }
+  .start-link:hover { background: rgba(251,191,36,0.12); border-color: var(--gold); color: var(--star-white); }
+
+  .colophon-footer { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--dim2); line-height: 2.2; margin-top: 3rem; padding-top: 1.4rem; border-top: 1px solid rgba(167,139,250,0.14); }
+  .colophon-footer a { color: var(--dim); border-bottom: 1px solid rgba(167,139,250,0.2); }
+  .colophon-footer a:hover { color: var(--stardust); }
+
+  @media (max-width: 600px) {
+    .doc-shell { padding: 2rem 1.3rem 3rem; }
+    .entry { padding-left: 0.9rem; }
+  }
+
+  @media print {
+    body::before { display: none; }
+    html, body { background: #fff; color: #111; }
+    .doc-shell { max-width: 100%; }
+    .hero-title, .entry-name, .release-title, .body-text strong, .callout strong { color: #111; }
+    .hero-title em { -webkit-text-fill-color: #111; color: #111; background: none; }
+    .body-text, .entry-body, .release-note, .hero-sub, .callout p { color: #222; }
+    a { color: #111; border-bottom: none; }
+    /* Accent colors are unreadable on white: the tag chips and date labels are
+       meaningful text, so print them dark and let the border carry the shape. */
+    .tag { color: #111; border-color: #555; background: none; }
+    .release-date, .callout .callout-label, .hero-eyebrow, .nav-brand { color: #333; }
+    .entry { border-left-color: #999; }
+    .entry-body li::before { color: #555; }
+    .callout { border-color: #999; border-left-color: #555; background: none; }
+    .legend, .start-link { display: none; }
+    .release { page-break-inside: avoid; }
+    .entry { page-break-inside: avoid; }
+    .colophon-footer, .colophon-footer a { color: #444; }
+  }
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Changelog — Star Stuff","description":"What changed and when in the Star Stuff collection: every zine and field guide as it was added, every substantial revision, and every fact-check and attribution audit, including corrections to our own errors.","url":"https://starstuff.earth/changelog.html","inLanguage":"en","isPartOf":{"@type":"WebSite","name":"Star Stuff","url":"https://starstuff.earth/"},"publisher":{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/","logo":{"@type":"ImageObject","url":"https://starstuff.earth/og-card.jpg"}},"license":"https://creativecommons.org/licenses/by-sa/4.0/"}</script>
+</head>
+<body>
+
+<div class="doc-shell">
+
+  <nav class="ss-nav" style="--nav-accent:#22d3ee;" aria-label="Star Stuff collection">
+    <span class="ss-nav-home-group">
+      <a class="ss-nav-home" href="index.html"><span class="ss-star" aria-hidden="true">★</span> stuff</a>
+      <a class="ss-nav-about" href="about.html">about</a>
+    </span>
+  </nav>
+
+  <div class="nav-brand">Stimpunks · Star Stuff Changelog</div>
+
+  <header class="hero">
+    <div class="hero-eyebrow">Stimpunks Foundation · What Changed, and When</div>
+    <h1 class="hero-title"><em>Changelog</em></h1>
+    <p class="hero-sub">Every piece as it arrived, every substantial revision, and every fact-check — corrections included. These are living documents, and a living document should show its work.</p>
+    <hr class="spectrum-line hero-rule">
+  </header>
+
+  <div class="body-text">
+
+    <p>This log is backfilled from the collection's full commit history and kept up from here. It records three kinds of change: <strong>pieces added</strong>, <strong>pieces substantially revised</strong>, and <strong>fact-check and attribution audits</strong> — including the errors we found in our own work and exactly how we fixed them. Small typo passes and styling tweaks are left out; anything that changes what a piece <em>claims</em> is in.</p>
+
+    <div class="callout">
+      <div class="callout-label">Why publish our corrections</div>
+      <p>We braid real science with ideas credited to named thinkers, so the facts and the attributions have to be right. We're human, and we've gotten things wrong — a paraphrase dressed as a Sagan quote, a Martin Luther King Jr. line credited to Baldwin, a forest-wide fungal network asserted as settled fact because it rhymed so well with mutual aid. Naming those in public is part of the method, not an embarrassment to bury.</p>
+      <p>The working guidelines and the full per-piece ledger live in <a href="https://github.com/Stimpunks/Star-Stuff/blob/main/FACTCHECK.md">FACTCHECK.md</a>. If you spot an error, <a href="https://github.com/Stimpunks/Star-Stuff/issues">open an issue</a> or reach us at <a href="https://stimpunks.org">stimpunks.org</a>. <strong>Corrections are mutual aid.</strong></p>
+    </div>
+
+    <div class="legend" aria-hidden="true">
+      <span class="tag tag--new">New piece</span>
+      <span class="tag tag--updated">Revised</span>
+      <span class="tag tag--factcheck">Fact-check</span>
+      <span class="tag tag--site">Site</span>
+    </div>
+
+  </div>
+
+  <!-- ================= 2026-08-08 ================= -->
+  <section class="release" id="2026-08-08" aria-labelledby="h-2026-08-08">
+    <div class="release-date">2026 · August 8</div>
+    <h2 class="release-title" id="h-2026-08-08">This page</h2>
+    <div class="entry entry--new">
+      <div class="entry-head"><span class="tag tag--new">New piece</span><span class="entry-name">A public changelog, backfilled to day one</span></div>
+      <div class="entry-body"><p>The corrections were already being logged — in a per-piece ledger in the repository, where you'd have to go looking for them. That's not really publishing them. This page reads the collection's whole history back out in the open: every piece as it arrived, every substantial revision, and every audit, with the errors named. Backfilled from all 121 commits, from launch day forward.</p></div>
+    </div>
+    <div class="entry entry--site">
+      <div class="entry-head"><span class="tag tag--site">Site</span><span class="entry-name">Logging made part of shipping</span></div>
+      <div class="entry-body"><p>A changelog only tells the truth if it's kept. Adding an entry is now a written step in the house conventions and in the routine that ships a zine — alongside the fact-check itself, not after it.</p></div>
+    </div>
+  </section>
+
+  <!-- ================= 2026-08-03 ================= -->
+  <section class="release" id="2026-08-03" aria-labelledby="h-2026-08-03">
+    <div class="release-date">2026 · August 3</div>
+    <h2 class="release-title" id="h-2026-08-03">Fact-check pass 6, and a metaphor that flattered us</h2>
+    <p class="release-note">The sixth rolling audit reached the earliest zines — and one correction rippled outward into three other pieces.</p>
+
+    <div class="entry entry--factcheck">
+      <div class="entry-head"><span class="tag tag--factcheck">Fact-check</span><span class="entry-name">Zines 2–6 audited; four corrections</span></div>
+      <div class="entry-body">
+        <ul>
+          <li><a href="lydtyss-zine.html">Love You Down To Your Star Stuff</a> (No. 2): the &ldquo;nitrogen in our DNA … carbon in our apple pies&rdquo; passage was dated <strong>1973</strong>; it is <em>Cosmos</em> (1980), ch. 9. Both Sagan wordings — the 1973 <em>Cosmic Connection</em> and the 1980 <em>Cosmos</em> — are now given, in order. Two nucleosynthesis overclaims fixed against Kobayashi, Karakas &amp; Lugaro (2020): iron is not made &ldquo;only in the most massive stars&rdquo; (roughly half comes from Type Ia supernovae), and nitrogen is not only from massive stars (roughly half is shed by low- and intermediate-mass AGB stars).</li>
+          <li><a href="neurodiversity-field-guide-zine.html">Neurodiversity Field Guide</a> (No. 3): neurodiversity had been defined as &ldquo;natural variations in the human genome&rdquo; and credited &ldquo;after Nick Walker.&rdquo; That framing is not his and narrows the paradigm — rewritten to Walker's own definition, plus his point that neurodivergence can be innate <em>or</em> produced by experience. Added the missing coinage: <strong>neurodivergent</strong> / <strong>neurodivergence</strong> were coined by <strong>Kassiane Asasumasu</strong> (2000). InLv corrected to <em>Independent Living on the Autistic Spectrum</em>, founded by Martijn Dekker in 1996. Added Charlton, <em>Nothing About Us Without Us</em> (1998).</li>
+          <li><a href="eternal-sunshine-zine.html">Eternal Sunshine</a> (No. 6): a paraphrase was dressed as a quote. &ldquo;We are star stuff harvesting sunlight&rdquo; is not a sentence in <em>Cosmos</em> — it compresses two separate ones. The colophon now says the epigraph is ours and quotes the real sentences with their chapter.</li>
+          <li><a href="underground-zine.html">Underground</a> (No. 5) and <a href="we-are-all-star-stuff.html">We Are All Star Stuff</a> (No. 4) otherwise verified.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="entry entry--factcheck">
+      <div class="entry-head"><span class="tag tag--factcheck">Fact-check</span><span class="entry-name">The &ldquo;wood wide web&rdquo; hedged across four places</span></div>
+      <div class="entry-body">
+        <p>Mycorrhizal trade between fungus and plant root is settled science. The <em>forest-wide</em> story — trees wired together, elder trees feeding shaded seedlings — is not: Karst, Jones &amp; Hoeksema (<em>Nature Ecology &amp; Evolution</em> 7, 2023) find the prevalence of common mycorrhizal networks and their benefit to seedlings insufficiently supported, and find no published evidence that mature trees preferentially provision their own offspring.</p>
+        <p>It had shipped as fact in three pieces, because it rhymes beautifully with mutual aid — which is exactly why it needed more scrutiny, not less. <a href="underground-zine.html">Underground</a> (No. 5), <a href="mycelium-and-rhizome-zine.html">A Mycelium and a Rhizome</a> (No. 26), <a href="symbioses-field-guide.html">A Field Guide to Symbioses</a> (Field Guide No. 6), and the Symbioses blurb on the front page now lead with the settled root-to-fungus trade and name the contested part outright. The kinship stays; the overclaim goes. A new standing rule went into the guidelines: <em>beware the science that flatters the metaphor.</em></p>
+      </div>
+    </div>
+
+    <div class="entry entry--site">
+      <div class="entry-head"><span class="tag tag--site">Site</span><span class="entry-name">Retired address cleared from three colophons</span></div>
+      <div class="entry-body"><p>Zines No. 2 and No. 3 and <a href="shorthand-evolution.html">Shorthand Evolution</a> still printed the old <code>star-stuff.netlify.app</code> address. All now read <strong>starstuff.earth</strong>.</p></div>
+    </div>
+  </section>
+
+  <!-- ================= 2026-08-02 ================= -->
+  <section class="release" id="2026-08-02" aria-labelledby="h-2026-08-02">
+    <div class="release-date">2026 · August 2</div>
+    <h2 class="release-title" id="h-2026-08-02">Workflow, written down</h2>
+    <div class="entry entry--site">
+      <div class="entry-head"><span class="tag tag--site">Site</span><span class="entry-name">The house process became repeatable tooling</span></div>
+      <div class="entry-body"><p>Four working routines that had lived in habit are now written into the repo: proposing a zine from a source, shipping one end to end (render check, index and sitemap wiring, prev/next nav, fact-check log), crediting a coinage to its true originator across every page it appears on, and reviewing open decisions. No reader-facing change — but the fact-check step is now structurally hard to skip.</p></div>
+    </div>
+  </section>
+
+  <!-- ================= 2026-07-27 ================= -->
+  <section class="release" id="2026-07-27" aria-labelledby="h-2026-07-27">
+    <div class="release-date">2026 · July 27</div>
+    <h2 class="release-title" id="h-2026-07-27">A coinage returned to its author</h2>
+    <div class="entry entry--factcheck">
+      <div class="entry-head"><span class="tag tag--factcheck">Fact-check</span><span class="entry-name">&ldquo;Intradependence&rdquo; credited to Karen Barad</span></div>
+      <div class="entry-body"><p><a href="only-in-relation-zine.html">Only in Relation</a> (No. 29) credited <em>intradependence</em> to Helen Edgar. It isn't hers — she takes it from <strong>Karen Barad</strong>'s relational ontology (<em>Meeting the Universe Halfway</em>, 2007, on <em>intra-action</em>). Corrected in the zine, its colophon, and its card on the front page.</p></div>
+    </div>
+  </section>
+
+  <!-- ================= 2026-07-26 ================= -->
+  <section class="release" id="2026-07-26" aria-labelledby="h-2026-07-26">
+    <div class="release-date">2026 · July 26</div>
+    <h2 class="release-title" id="h-2026-07-26">Zine No. 29 — Only in Relation</h2>
+    <div class="entry entry--new">
+      <div class="entry-head"><span class="tag tag--new">New piece</span><span class="entry-name"><a href="only-in-relation-zine.html">Only in Relation</a></span></div>
+      <div class="entry-body"><p>Relational quantum physics as an argument about selves: a particle's properties are not held privately but exist in relation, and neither are ours. Developed <em>after</em> Helen Edgar's essay <em>We Are Made of Relations: Quantum Physics and What It Means to Be Autistic</em> (More Realms, 2026) — a house adaptation into the paged-zine form, credited as such. Rovelli's relational interpretation is flagged in-zine as one reading, not settled physics.</p></div>
+    </div>
+  </section>
+
+  <!-- ================= 2026-07-24 ================= -->
+  <section class="release" id="2026-07-24" aria-labelledby="h-2026-07-24">
+    <div class="release-date">2026 · July 24</div>
+    <h2 class="release-title" id="h-2026-07-24">Wyrd &amp; Weird, and a capital A</h2>
+    <div class="entry entry--new">
+      <div class="entry-head"><span class="tag tag--new">New piece</span><span class="entry-name"><a href="wyrd-and-weird-zine.html">Zine No. 28 — Wyrd &amp; Weird</a></span></div>
+      <div class="entry-body"><p>A guest zine by <strong>Helen Edgar</strong> (Autistic Realms), rehoused in the house paged-zine style with her text and her own sources note preserved: <em>wyrd</em> from Old English <em>weorþan</em>, &ldquo;to become&rdquo; — fate as something still in the making, and the long road from the Norns through Holinshed to <em>Macbeth</em>'s Weird Sisters. A &ldquo;threads already running&rdquo; spread was added the same day, bringing it to nine.</p></div>
+    </div>
+    <div class="entry entry--site">
+      <div class="entry-head"><span class="tag tag--site">Site</span><span class="entry-name">Autistic capitalized as an identity term, repo-wide</span></div>
+      <div class="entry-body"><p><em>Autistic</em> now carries its capital A everywhere it names an identity — across thirteen pages, in headings, body, colophons, and card and social descriptions. Left lowercase: <em>autism</em>, URLs, anchors, and verbatim work titles. Recorded as house style so it stays that way.</p></div>
+    </div>
+    <div class="entry entry--updated">
+      <div class="entry-head"><span class="tag tag--updated">Revised</span><span class="entry-name"><a href="every-nervous-system-zine.html">Every Nervous System</a></span></div>
+      <div class="entry-body"><p>&ldquo;Change the room&rdquo; became &ldquo;change the environment&rdquo; — the claim is about every setting, not only the ones with walls.</p></div>
+    </div>
+  </section>
+
+  <!-- ================= 2026-07-23 ================= -->
+  <section class="release" id="2026-07-23" aria-labelledby="h-2026-07-23">
+    <div class="release-date">2026 · July 23</div>
+    <h2 class="release-title" id="h-2026-07-23">More-than-human neurodiversity</h2>
+    <div class="entry entry--new">
+      <div class="entry-head"><span class="tag tag--new">New piece</span><span class="entry-name"><a href="every-nervous-system-zine.html">Zine No. 27 — Every Nervous System</a></span></div>
+      <div class="entry-body"><p>Neurodiversity extended past our own species, and animality reclaimed rather than fled. Built on Ombre Tarragnat's published essays on <em>ethodiversity</em> and <em>bestialisation</em>, with thesis-level claims marked explicitly as their stated position rather than settled consensus.</p></div>
+    </div>
+    <div class="entry entry--new">
+      <div class="entry-head"><span class="tag tag--new">New piece</span><span class="entry-name"><a href="nervous-systems-field-guide.html">Field Guide No. 7 — A Field Guide to Nervous Systems</a></span></div>
+      <div class="entry-body"><p>The companion catalogue: the octopus with two-thirds of its neurons in its arms, the elephant's overwhelmingly cerebellar 257 billion, corvid forebrain density, <em>C. elegans</em>'s 302 neurons and first complete connectome, the star-nosed mole's 25,000 touch organs. Many ways to be a mind, none of them the standard.</p></div>
+    </div>
+    <div class="entry entry--factcheck">
+      <div class="entry-head"><span class="tag tag--factcheck">Fact-check</span><span class="entry-name">Pass 5 — Field Guides 1–5, all verified</span></div>
+      <div class="entry-body"><p>Star data, body-element abundances and forge sites, extremophiles, solar-system facts, and stellar types spot-checked across <a href="constellation-field-guide.html">Neurodivergent Constellations</a>, <a href="elements-field-guide.html">The Star Stuff You're Made Of</a>, <a href="impossible-places-field-guide.html">Life in Impossible Places</a>, <a href="worlds-field-guide.html">Worlds That Work by Other Rules</a>, and <a href="ways-of-being-a-star-field-guide.html">The Ways of Being a Star</a>. No corrections needed.</p></div>
+    </div>
+  </section>
+
+  <!-- ================= 2026-07-22 ================= -->
+  <section class="release" id="2026-07-22" aria-labelledby="h-2026-07-22">
+    <div class="release-date">2026 · July 22</div>
+    <h2 class="release-title" id="h-2026-07-22">Three new pieces — and fact-checking became a standing practice</h2>
+    <p class="release-note">The busiest day of verification in the collection's history: a written guideline, a public ledger, and four audit passes in a row.</p>
+
+    <div class="entry entry--new">
+      <div class="entry-head"><span class="tag tag--new">New piece</span><span class="entry-name"><a href="shared-signal-zine.html">Zine No. 25 — Shared Signal</a></span></div>
+      <div class="entry-body"><p>Shared-signal space and the electromagnetic spectrum: connection carried on channels other than a face in a room. Coinage credited to <strong>Helen Edgar</strong>.</p></div>
+    </div>
+    <div class="entry entry--new">
+      <div class="entry-head"><span class="tag tag--new">New piece</span><span class="entry-name"><a href="mycelium-and-rhizome-zine.html">Zine No. 26 — A Mycelium and a Rhizome</a></span></div>
+      <div class="entry-body"><p>Decentralized knowledge and the Autistic Rhizome — no head, no center, entry from any point.</p></div>
+    </div>
+    <div class="entry entry--new">
+      <div class="entry-head"><span class="tag tag--new">New piece</span><span class="entry-name"><a href="symbioses-field-guide.html">Field Guide No. 6 — A Field Guide to Symbioses</a></span></div>
+      <div class="entry-body"><p>Twelve partnerships: mutual aid written into biology, from Kropotkin through Margulis to Spade. <strong>Helen Edgar</strong>'s fact-check was applied on arrival, and <em>Monotropa uniflora</em> added as the honest asymmetrical case — the one that takes without repaying, and belongs anyway.</p></div>
+    </div>
+
+    <div class="entry entry--factcheck">
+      <div class="entry-head"><span class="tag tag--factcheck">Fact-check</span><span class="entry-name">A written standard and a public ledger</span></div>
+      <div class="entry-body">
+        <p>Fact-checking stopped being a habit and became a rule: primary sources only; aggregators, quote sites, encyclopedias and search summaries are leads, never citations; a direct quote is never a dressed-up paraphrase; coinages get their originator precisely. Every piece now carries a status — <em>verified</em>, <em>plausible</em>, <em>corrected</em>, or <em>removed</em> — in a per-piece ledger, and a standing <a href="about.html#sources">Sources &amp; corrections</a> note went onto the front page and the About page. Not a beta banner that comes down; a permanent invitation.</p>
+        <p>The first pass found two attribution errors, both corrected: in <a href="shared-air-zine.html">Shared Air</a>, &ldquo;a future with a human face and dirt behind its ears&rdquo; is <strong>Adam Flynn</strong>, <em>Solarpunk: Notes toward a manifesto</em> (2014), and &ldquo;move quietly and plant things&rdquo; is a movement slogan (Andrew Dana Hudson), not the manifesto; in <a href="shared-signal-zine.html">Shared Signal</a>, Streuber et al. (2026) found remote synchrony in VR <strong>comparable to</strong> face-to-face — we had written &ldquo;weaker over video.&rdquo;</p>
+      </div>
+    </div>
+
+    <div class="entry entry--factcheck">
+      <div class="entry-head"><span class="tag tag--factcheck">Fact-check</span><span class="entry-name">Symbioses — a line given back to Dr. King</span></div>
+      <div class="entry-body"><p>&ldquo;We are caught in an inescapable network of mutuality&rdquo; shipped credited to <strong>Baldwin</strong>. It is <strong>Martin Luther King Jr.</strong>, <em>Letter from Birmingham Jail</em> (1963). The error came from trusting a secondary summary; Helen Edgar's fact-check caught it. This is the correction that produced the aggregators-are-leads-not-citations rule.</p></div>
+    </div>
+
+    <div class="entry entry--factcheck">
+      <div class="entry-head"><span class="tag tag--factcheck">Fact-check</span><span class="entry-name">Passes 2, 3 and 4 — fourteen more pieces audited</span></div>
+      <div class="entry-body">
+        <ul>
+          <li><strong>Pass 2</strong> — <a href="the-council-of-all-beings-zine.html">Council of All Beings</a> (14), <a href="every-creatures-own-sky-zine.html">Every Creature's Own Sky</a> (15), <a href="no-universal-now-zine.html">No Universal Now</a> (19), <a href="no-one-is-the-leader-zine.html">No One Is the Leader</a> (22). <em>Corrected:</em> Zola and Gill were among the first to <em>document</em> crip time in disability studies, not to coin it — &ldquo;named it&rdquo; reworded.</li>
+          <li><strong>Pass 3</strong> — <a href="you-were-never-one-thing-zine.html">You Were Never One Thing</a> (7), <a href="minor-worlds-zine.html">Minor Worlds</a> (16), <a href="the-nearest-body-zine.html">The Nearest Body</a> (17), <a href="the-same-water-zine.html">The Same Water</a> (20), <a href="not-a-line-zine.html">Not a Line</a> (21). <em>Corrected:</em> The Nearest Body's affirmative <strong>polyvagal theory</strong> framing was hedged — it is influential but scientifically contested, while the co-regulation it describes is well-supported on its own.</li>
+          <li><strong>Pass 4</strong> — <a href="bone-song-zine.html">Bone Song</a> (1), <a href="the-universe-runs-on-difference-zine.html">The Universe Runs on Difference</a> (8), <a href="the-dead-stars-still-reach-us-zine.html">The Dead Stars Still Reach Us</a> (10), <a href="why-difference-comes-first-zine.html">Why Difference Comes First</a> (11), <a href="the-garden-and-the-stars-zine.html">The Garden and the Stars</a> (18). <em>Corrected:</em> Bone Song's Sagan pull-quote had been altered mid-sentence; the verbatim <em>Cosmos</em> wording is restored.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 2026-07-21 ================= -->
+  <section class="release" id="2026-07-21" aria-labelledby="h-2026-07-21">
+    <div class="release-date">2026 · July 21</div>
+    <h2 class="release-title" id="h-2026-07-21">The commons, made explicit</h2>
+    <div class="entry entry--new">
+      <div class="entry-head"><span class="tag tag--new">New piece</span><span class="entry-name">Zines No. 22–24</span></div>
+      <div class="entry-body">
+        <ul>
+          <li><a href="no-one-is-the-leader-zine.html">No One Is the Leader</a> (22) — emergence and the murmuration: each starling tracks six or seven neighbours, and the flock has no one in charge.</li>
+          <li><a href="bodies-of-water-zine.html">Bodies of Water</a> (23) — hydrofeminism, shared flow, and belonging, after Neimanis.</li>
+          <li><a href="shared-air-zine.html">Shared Air</a> (24) — the atmospheric commons, the canary, and solarpunk. Reworked the same day to ground shared-air space physically in the co-regulation spread.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="entry entry--factcheck">
+      <div class="entry-head"><span class="tag tag--factcheck">Fact-check</span><span class="entry-name">Four coinages traced to their originators</span></div>
+      <div class="entry-body">
+        <ul>
+          <li><strong>Spiral time</strong> → <strong>Marta Rose</strong>. Helen Edgar keeps <em>felt time</em>, which is hers.</li>
+          <li><strong>Weather-bodies</strong> → <strong>Ombre Tarragnat</strong> (<em>Sextant</em>, 2024).</li>
+          <li><strong>Autistic weathering</strong> → <strong>Ombre Tarragnat</strong>; Helen Edgar carries it into Autistic experience.</li>
+          <li>A coda's closing line credited to <strong>T. S. Eliot</strong>, <em>Four Quartets</em>.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="entry entry--site">
+      <div class="entry-head"><span class="tag tag--site">Site</span><span class="entry-name">A license, a decisions log, and honest printing</span></div>
+      <div class="entry-body">
+        <ul>
+          <li>The whole collection is licensed <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> — print freely, share freely, in writing at last.</li>
+          <li>Print styles reworked so a paged zine prints and exports to PDF as a <em>complete</em> document, not just the spread on screen. These are made to be printed and handed to people.</li>
+          <li>The palette and the starfield twinkle were centralized into one shared stylesheet, so a color change happens once rather than in roughly twenty-five pages.</li>
+          <li>A decisions log seeded from history, recording what's settled and what's still open.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 2026-07-20 ================= -->
+  <section class="release" id="2026-07-20" aria-labelledby="h-2026-07-20">
+    <div class="release-date">2026 · July 20</div>
+    <h2 class="release-title" id="h-2026-07-20">Eight zines, and a front door</h2>
+    <p class="release-note">The collection roughly doubled — the umwelt trilogy, crip time, fluctuating capacity, and the end of the severity scale.</p>
+    <div class="entry entry--new">
+      <div class="entry-head"><span class="tag tag--new">New piece</span><span class="entry-name">Zines No. 14–21</span></div>
+      <div class="entry-body">
+        <ul>
+          <li><a href="the-council-of-all-beings-zine.html">The Council of All Beings</a> (14) — multispecies justice and more-than-human governance; a folding chair pulled up for the beings without a vote.</li>
+          <li><a href="every-creatures-own-sky-zine.html">Every Creature's Own Sky</a> (15) — the umwelt, monotropism, and the double empathy problem.</li>
+          <li><a href="minor-worlds-zine.html">Minor Worlds</a> (16) — niche construction and worldmaking, completing the treat / sense / build trilogy.</li>
+          <li><a href="the-nearest-body-zine.html">The Nearest Body</a> (17) — tides and co-regulation: the Sun is far more massive, and the Moon still runs the water.</li>
+          <li><a href="the-garden-and-the-stars-zine.html">The Garden and the Stars</a> (18) — knowledge gardening as star stuff.</li>
+          <li><a href="no-universal-now-zine.html">No Universal Now</a> (19) — crip time by way of relativity, with a guest coda by Helen Edgar.</li>
+          <li><a href="the-same-water-zine.html">The Same Water</a> (20) — fluctuating capacity read through phase transitions.</li>
+          <li><a href="not-a-line-zine.html">Not a Line</a> (21) — the spectrum as spectroscopic fingerprint, not severity scale. After Helen Edgar and Patrick Dwyer.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="entry entry--new">
+      <div class="entry-head"><span class="tag tag--new">New piece</span><span class="entry-name"><a href="about.html">About Star Stuff</a></span></div>
+      <div class="entry-body"><p>The shortest version of the whole idea, and the method behind it: begin from settled science, read it as an argument about belonging, say so when a source is contested. A <em>Start Here</em> card on the front page, then a permanent <em>about</em> pill in the navigation of every page.</p></div>
+    </div>
+    <div class="entry entry--updated">
+      <div class="entry-head"><span class="tag tag--updated">Revised</span><span class="entry-name">Three pieces deepened by their sources</span></div>
+      <div class="entry-body">
+        <ul>
+          <li><a href="the-council-of-all-beings-zine.html">Council of All Beings</a> gained a hydrofeminist coda spread by <strong>Helen Edgar</strong>, and dropped a closing line that framed us as hosts with &ldquo;our own table.&rdquo;</li>
+          <li><a href="every-creatures-own-sky-zine.html">Every Creature's Own Sky</a> integrated Tarragnat's reframing of the umwelt as <em>precarious</em> rather than sealed, with a beat on power and precarity.</li>
+          <li><a href="not-a-line-zine.html">Not a Line</a>'s colophon traced the constellation metaphor's lineage — Arnold, Murray, Milton, Hearst — via Dwyer (2021) and Milton/Edgar correspondence.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="entry entry--site">
+      <div class="entry-head"><span class="tag tag--site">Site</span><span class="entry-name">Spread-level navigation and deep links</span></div>
+      <div class="entry-body"><p>Paged zines got prev/next controls in each spread footer, so you can move without scrolling back to the top — and every spread got a shareable <code>#spread-N</code> address, so you can hand someone the one page you meant.</p></div>
+    </div>
+  </section>
+
+  <!-- ================= 2026-07-18 ================= -->
+  <section class="release" id="2026-07-18" aria-labelledby="h-2026-07-18">
+    <div class="release-date">2026 · July 18</div>
+    <h2 class="release-title" id="h-2026-07-18">Guest voices, and the plumbing</h2>
+    <div class="entry entry--new">
+      <div class="entry-head"><span class="tag tag--new">New piece</span><span class="entry-name">Three field guides, a creed, and three zines</span></div>
+      <div class="entry-body">
+        <ul>
+          <li><a href="impossible-places-field-guide.html">Field Guide No. 3 — Life in Impossible Places</a>: tardigrades, lichen in orbit, tube worms at the vents. Life doesn't ask permission about conditions.</li>
+          <li><a href="worlds-field-guide.html">Field Guide No. 4 — Worlds That Work by Other Rules</a>, and <a href="ways-of-being-a-star-field-guide.html">Field Guide No. 5 — The Ways of Being a Star</a>.</li>
+          <li><a href="inclusion-safety-creed.html">Inclusion Safety: Owed, Not Earned</a> — the first stage of psychological safety, made into a creed. Worth before worthiness.</li>
+          <li><a href="why-difference-comes-first-zine.html">Zine No. 11 — Why Difference Comes First</a>: a guest zine by <strong>Helen Edgar</strong>, with a full reference list. Revised twice more the same day with her updated text.</li>
+          <li><a href="difference-first-frame.html">The Difference-First Frame</a> — backing material for anyone who asks why difference gets to be the starting point. Deliberately outside the reading chain.</li>
+          <li><a href="bowie-zine.html">Zine No. 12 — Turn and Face the Strange</a> and <a href="aurora-zine.html">Zine No. 13 — Warriors and Weirdos</a>: Bowie and AURORA, with performances embedded in place of diagrams.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="entry entry--factcheck">
+      <div class="entry-head"><span class="tag tag--factcheck">Fact-check</span><span class="entry-name">The Difference-First Frame, sourced properly</span></div>
+      <div class="entry-body"><p>Renamed from a working title and credited to Helen Edgar's essay outright. A Milton citation fixed, an attribution moved from Webster to Edgar, Tarragnat's own citation adopted, and Barad marked plainly as a Stimpunks addition rather than something the source said. Ombre Tarragnat referred to with <em>they/them</em> throughout.</p></div>
+    </div>
+    <div class="entry entry--site">
+      <div class="entry-head"><span class="tag tag--site">Site</span><span class="entry-name">Shared stylesheet, link previews, and accessibility groundwork</span></div>
+      <div class="entry-body">
+        <ul>
+          <li>One shared stylesheet introduced, replacing per-page copies of the same navigation and utilities.</li>
+          <li>Open Graph and Twitter card metadata across every page, with a 1200&times;630 card image, so a shared link unfurls properly.</li>
+          <li>Favicon, sitemap, robots.txt, canonical URLs, and structured data with proper descriptions.</li>
+          <li><strong>Reduced-motion support</strong>: the starfield twinkle, spins, fades and smooth scrolling all stand down when your system asks them to.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 2026-07-17 ================= -->
+  <section class="release" id="2026-07-17" aria-labelledby="h-2026-07-17">
+    <div class="release-date">2026 · July 17</div>
+    <h2 class="release-title" id="h-2026-07-17">Day one — the collection goes up</h2>
+    <p class="release-note">Star Stuff opened with seven artifacts and finished the day with seventeen.</p>
+    <div class="entry entry--new">
+      <div class="entry-head"><span class="tag tag--new">New piece</span><span class="entry-name">The founding set</span></div>
+      <div class="entry-body">
+        <ul>
+          <li><a href="bone-song-zine.html">Zine No. 1 — Bone Song</a>: piezoelectric bone, star-forged calcium, and a universe that doesn't pathologize its own variation.</li>
+          <li><a href="lydtyss-zine.html">Zine No. 2 — Love You Down To Your Star Stuff</a>, <a href="neurodiversity-field-guide-zine.html">Zine No. 3 — Neurodiversity Field Guide</a>, and <a href="we-are-all-star-stuff.html">Zine No. 4 — We Are All Star Stuff</a> (an open call for contributors).</li>
+          <li><a href="constellation-field-guide.html">Field Guide No. 1 — Neurodivergent Constellations</a>.</li>
+          <li><a href="ls-broadside.html">The L★S Broadside</a> — two-sided, print-ready, risograph-inspired — and <a href="shorthand-evolution.html">Shorthand Evolution</a>, on how one phrase compressed itself into a glyph.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="entry entry--new">
+      <div class="entry-head"><span class="tag tag--new">New piece</span><span class="entry-name">Added over the rest of the day</span></div>
+      <div class="entry-body">
+        <ul>
+          <li><a href="manifesto.html">The Star Stuff Manifesto</a> — six sections, eight declarations — and <a href="love-you-down-to-your-star-stuff.html">the LYDTYSS page</a> in full long form.</li>
+          <li><a href="ls-playlist.html">The L★S Playlist</a>, songs in conversation with the phrase.</li>
+          <li><a href="underground-zine.html">Underground</a> (5), the mycelial below to Bone Song's above; <a href="eternal-sunshine-zine.html">Eternal Sunshine</a> (6); <a href="you-were-never-one-thing-zine.html">You Were Never One Thing</a> (7), on endosymbiosis and the self that was always a collective; <a href="the-universe-runs-on-difference-zine.html">The Universe Runs on Difference</a> (8); <a href="the-lines-we-drew-zine.html">The Lines We Drew</a> (9); <a href="the-dead-stars-still-reach-us-zine.html">The Dead Stars Still Reach Us</a> (10).</li>
+          <li><a href="elements-field-guide.html">Field Guide No. 2 — The Star Stuff You're Made Of</a>.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="entry entry--updated">
+      <div class="entry-head"><span class="tag tag--updated">Revised</span><span class="entry-name">Same-day corrections and deepenings</span></div>
+      <div class="entry-body">
+        <ul>
+          <li><a href="the-universe-runs-on-difference-zine.html">The Universe Runs on Difference</a>: an <strong>inverted reference fixed</strong> — <em>Cavendish Space</em> is our answer to monoculture, not the monoculture. The clone banana is the cautionary tale; the space built for difference is the response. A note went into the repo guidance so the two never get conflated again, plus a disambiguation in the spiky-profile spread. <em>Ethodiversity</em> was then added as a capstone spread and its nesting corrected — biodiversity contains ethodiversity contains neurodiversity — crediting Cordero-Rivera by way of Tarragnat.</li>
+          <li><a href="the-lines-we-drew-zine.html">The Lines We Drew</a>: colophon expanded with the full Gauss → Quetelet → Galton lineage, plus Chapman's <em>Empire of Normality</em>, Weird Pride's &ldquo;Weird vs. Normal,&rdquo; and Chaney's <em>Am I Normal?</em></li>
+          <li><a href="eternal-sunshine-zine.html">Eternal Sunshine</a>: the funding and philanthropy angle dropped from the zine, affirmations and colophon; new tagline — <em>the light was always yours, the sky was in the way.</em></li>
+          <li><a href="you-were-never-one-thing-zine.html">You Were Never One Thing</a>: a &ldquo;not a diagnosis / not broken&rdquo; refusal added, to hold the piece away from pathology-paradigm readings.</li>
+          <li>The constellation guide's number corrected from No. 2 to No. 1.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="entry entry--site">
+      <div class="entry-head"><span class="tag tag--site">Site</span><span class="entry-name">A home, and a reading order</span></div>
+      <div class="entry-body"><p>The site moved to its own address, <strong>starstuff.earth</strong>. Shared navigation chained the artifacts into a reading order with prev/next links and a route home from anywhere. The front page gained &ldquo;Where We Come From&rdquo; by <a href="https://linktr.ee/rainbowmosho">Rainbow Mosho</a> as featured artwork, a plain-language explanation of what star stuff means, and a link to the source repository — the whole collection has been readable and forkable from the start.</p></div>
+    </div>
+  </section>
+
+  <div class="body-text">
+    <a class="start-link" href="index.html">Browse the collection →</a>
+
+    <div class="colophon-footer">
+      Stimpunks Foundation · <a href="https://starstuff.earth">starstuff.earth</a> · <a href="https://stimpunks.org">stimpunks.org</a> · <a href="https://github.com/Stimpunks/Star-Stuff">Source on GitHub</a><br>
+      Print freely · Share freely · <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> · L★S · You were ★stuff all along
+    </div>
+  </div>
+
+</div><!-- /doc-shell -->
+
+</body>
+</html>

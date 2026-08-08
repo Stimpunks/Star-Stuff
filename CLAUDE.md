@@ -56,6 +56,10 @@ The central phrase compresses through registers, each with a use:
     (i.e. pages lacking a global `changePage()` plus `.spread` / `.spread-footer` elements).
 - Supporting files: `favicon.svg`, `og-card.jpg`, shared cosmic image
   `35407642044_c29b4f2bd7_3k.jpg`, `robots.txt`, `sitemap.xml`.
+- `changelog.html` is the **public changelog**, live at https://starstuff.earth/changelog (Netlify
+  serves clean URLs, so the `.html` file answers at both paths; keep internal links, canonical, and
+  the sitemap on `changelog.html` like every other page). It is the reader-facing companion to
+  `FACTCHECK.md` — see *Fact-checking & attribution* below for what to log there.
 
 ### Page conventions (treat every page this way)
 
@@ -175,6 +179,11 @@ them right matters more than shipping fast, and you must record that you checked
   claim; verify each; fix what's wrong; then log the check in `FACTCHECK.md` (piece, date, status,
   open items). **Periodically:** re-check pieces on a rolling basis, and when one source is found
   wrong, re-check its siblings for the same error.
+- **Then log it publicly** in `changelog.html`, newest date section first. Three things earn an
+  entry — a piece added, a piece substantially revised, or a fact-check/attribution audit —
+  and typo or styling passes don't. **Name corrections plainly:** what we got wrong, what's
+  right, who caught it. Publishing our own errors is the point of the page, not an embarrassment
+  to bury. The `ship-zine` skill holds the markup conventions.
 
 ## Reference material (`reference/`)
 
