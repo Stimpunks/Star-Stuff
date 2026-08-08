@@ -100,6 +100,7 @@ The sections below mirror the ordering on `index.html`, which is the canonical i
 | `shorthand-evolution.html` | **Shorthand Evolution: LYDTYSS → L★S** | How one phrase compressed itself into a glyph. Five shorthands with their etymologies, and what each compression preserved and let go. |
 | `difference-first-frame.html` | **The Difference-First Frame** *(backing material)* | A summary of Helen Edgar's essay "Why Difference Comes First," held for anyone who asks why difference gets to be the starting point. A resonant frame, not a proof — deliberately outside the reading chain. |
 | `changelog.html` | **What Changed, and When** *(public changelog)* | Every piece as it arrived, every substantial revision, and every fact-check and attribution audit — including the errors we found in our own work and how we fixed them. Live at [starstuff.earth/changelog](https://starstuff.earth/changelog). |
+| `design.html` | **The Design System** *(reference)* | The visual language with its numbers and its receipts: the typeface and why it was chosen, the `--sp-*` palette with every token's CIELAB lightness and contrast ratio, the palette's honest lineage (began as Solarized, kept the method, none of the colors), the principles and the refusals — and the one contrast value that still fails. Live at [starstuff.earth/design](https://starstuff.earth/design). |
 
 ### Shared assets & repo files
 
@@ -124,6 +125,33 @@ Everything shares one visual language, tuned for accessibility first:
 - **Palette:** the canonical tokens live in [`starstuff.css`](starstuff.css) as `:root { --sp-* }` — the single source of truth for every recurring color (cosmic dark ground, card, and the purple / pink / gold / cyan / green accent set). Pages alias them inline (`--purple: var(--sp-purple)`), so a palette change happens in one place. Introduce a new shared color by adding a `--sp-` token there, not by hardcoding a hex across pages. Page-specific one-off colors stay inline, as does the themed starfield gradient art — its per-page tinting is intentional.
 - **Principles:** full-opacity body text (no faded grays), generous line height, `8px` card radius, a `3px` colored left border as a recurring motif, and a starfield rendered in pure CSS.
 - **Accessibility:** `starstuff.css` honors `prefers-reduced-motion` and hides navigation in `@media print`. Every artifact stays keyboard-navigable and print-friendly — they're meant to be printed and handed to people.
+- **Print:** the whole collection inverts to ink on paper. Browsers leave *Background graphics* off by default, so a light-on-dark page that keeps its screen colors prints blank — which is exactly what 44 of 46 pages did until 2026-08-08. The shared stylesheet now redefines the `--sp-*` tokens inside `@media print`, so one change inverts every page that aliases them; SVG `fill`/`stroke` are inverted separately because `color` doesn't reach them, and the few pages that hardcode colors carry small print overrides of their own. **If you add a page, print it before you ship it** — and see [`design.html`](design.html) for the full account.
+
+The whole system is documented, with its numbers, at **[starstuff.earth/design](https://starstuff.earth/design)** ([`design.html`](design.html)).
+
+### Palette lineage (credit where it's due)
+
+The palette began as a [Solarized](https://ethanschoonover.com/solarized/) dark variant — before this
+repo existed, so git holds no record of it — and **none of Solarized's values survive**. The accents
+are Tailwind CSS v3's 400-weight ramp (`--sp-purple` is violet-400, `--sp-pink` pink-400,
+`--sp-gold` amber-400, `--sp-cyan` cyan-400, `--sp-green` green-400, `--sp-white` gray-50) sitting on
+a violet-cast near-black of our own (`#0a0a14`, not a Tailwind color).
+
+What we kept is Ethan Schoonover's **method**:
+
+- a small, fixed, *named* accent set used as semantic tokens rather than ad-hoc color — which is
+  exactly what `--sp-*` is for;
+- those accents held at near-uniform lightness, so swapping one doesn't change the weight of a page
+  (ours cluster at CIELAB L\* 64.6–80.7; Solarized's at L\* 49.1–60.1);
+- a ground that refuses pure black and carries a hue cast (Solarized's `#002b36` leans cyan, our
+  `#0a0a14` leans violet);
+- warm cream rather than white for paper — `--paper: #f5f0e8` in the broadside, `--bone: #e8dfc8` in
+  *Bone Song*, both a close cousin of Solarized's base3 `#fdf6e3`.
+
+What we threw out is his central move. Solarized deliberately *reduces* brightness contrast; we push
+it up hard. Body text here runs **18.84:1** where Solarized dark runs **4.75:1**. "Full-opacity body
+text (no faded grays)" is a direct repudiation of the scheme it started from — accessibility-first
+won the argument. Credit for the discipline, not the colors.
 
 ### A note on "Cavendish" (naming trap)
 

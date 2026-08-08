@@ -149,6 +149,109 @@
 }
 
 @media print {
+  /* ── Ink on paper ──
+     The screen palette is light-on-dark, and browsers leave "Background graphics"
+     off by default — so a page that carries its screen colors onto paper sends
+     near-white text to a white sheet and prints blank. Because every page aliases
+     the --sp-* tokens (--star-white: var(--sp-white-soft), and so on), redefining
+     the tokens here inverts the whole collection in one place.
+
+     Accents become ink too: each one is meaningful *as text* somewhere (eyebrows,
+     labels, page counters, links) and every one of them is unreadable on white at
+     its screen value — gold #fbbf24 on white is 1.6:1. Decoration that should keep
+     its color is re-declared below with print-color-adjust: exact, which does
+     survive the Background-graphics checkbox.
+
+     A handful of pages hardcode a text color instead of aliasing a token; those
+     carry their own small print override inline. */
+  :root {
+    /* Grounds → paper */
+    --sp-void:            #ffffff;
+    --sp-void-deep:       #ffffff;
+    --sp-deep:            #ffffff;
+    --sp-page:            #ffffff;
+    --sp-card:            #ffffff;
+    /* Text / neutrals → ink, keeping the three-step hierarchy */
+    --sp-white:           #111111;
+    --sp-white-soft:      #111111;
+    --sp-secondary:       #222222;
+    --sp-secondary-soft:  #222222;
+    --sp-muted:           #222222;
+    --sp-dim:             #444444;
+    --sp-dim-soft:        #444444;
+    /* Accents → ink */
+    --sp-purple:          #111111;
+    --sp-pink:            #111111;
+    --sp-gold:            #111111;
+    --sp-cyan:            #111111;
+    --sp-green:           #111111;
+  }
+
+  /* Pages declare color-scheme: dark, which makes the *browser's* default text
+     color white. Any element whose own color rule is missing — or invalid, as on
+     manifesto.html, where the inline :root aliases are self-referential and so
+     resolve to nothing — then inherits white and prints invisible. Forcing the
+     light scheme gives those elements a dark default to fall back to. */
+  html { color-scheme: light !important; }
+  html, body { background: #ffffff !important; }
+
+  /* Everything is ink on paper. This is deliberately blunt, and the bluntness is
+     the point: accent text reaches the page through too many routes to enumerate
+     — tokens, literal hexes in page CSS, inline style attributes on individual
+     elements, and custom properties set inline on an ancestor and read by a
+     normal rule. Inline declarations outrank ordinary author rules, so only
+     !important reaches them all. Chasing the class names instead meant a growing
+     list of page-specific selectors in the shared sheet, and a new zine could
+     always reintroduce the bug. Two ink levels keep some hierarchy.
+
+     Nothing that carries text keeps a dark background in print, so forcing every
+     color to ink cannot hide anything: the print-color-adjust exceptions below
+     are empty decorative elements. */
+  body, body * { color: #222222 !important; }
+  h1, h2, h3, h4, h5, h6, strong, b { color: #111111 !important; }
+
+  /* Starfields, twinkles, and glows don't survive the trip to paper. */
+  body::before,
+  body::after,
+  .twinkle,
+  .sp-twinkle { display: none !important; }
+
+  /* The one piece of color worth the toner: the spectrum rule is the palette
+     introducing itself, and it's a 2px sliver. Re-declared with literal hexes
+     because the tokens above are now ink. */
+  .spectrum-line {
+    background: linear-gradient(90deg, #a78bfa, #f472b6, #fbbf24, #22d3ee, #4ade80) !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Gradient-clipped headings fall back to ink; without this the text stays
+     transparent and the heading prints as a blank line. */
+  .hero-title em,
+  .gradient-text {
+    background: none !important;
+    -webkit-text-fill-color: #111111 !important;
+    color: #111111 !important;
+  }
+
+  /* Links: keep them identifiable by underline, not by an unreadable accent. */
+  a { color: #111111 !important; }
+
+  /* ── SVG diagrams ──
+     The diagrams are content, not ornament, and SVG paints with fill/stroke —
+     which `color` above does not touch. Labels and line art are light because
+     they were drawn against a dark ground, so both invert here. Shape fills are
+     matched on the specific light literals used in the markup rather than
+     blanket-inverted, because a few shapes fill with the ground color on purpose
+     (to punch a hole in a diagram) and must stay white. */
+  svg text { fill: #222222 !important; }
+  svg [stroke]:not([stroke="none"]) { stroke: #444444 !important; }
+  svg [fill="#f4f2fb"],
+  svg [fill="#f9fafb"],
+  svg [fill="#ffffff"],
+  svg [fill="#fff"],
+  svg [fill="#fbbf24"] { fill: #333333 !important; }
+
   /* Site + paging chrome never belongs on paper. */
   .ss-nav { display: none !important; }
   .nav { display: none !important; }             /* paged-zine top prev/next bar */

@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0a0a14">
+<link rel="canonical" href="https://starstuff.earth/design.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta name="description" content="The Star Stuff design system: Atkinson Hyperlegible, a five-accent palette on a violet-cast near-black, full-opacity body text at 18.84:1, and a starfield in pure CSS. Built accessibility-first, printable, and credited — including what it borrowed from Solarized and what it deliberately threw out.">
+<!-- Open Graph / link unfurl -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Star Stuff · Stimpunks Foundation">
+<meta property="og:url" content="https://starstuff.earth/design.html">
+<meta property="og:title" content="The Star Stuff Design System">
+<meta property="og:description" content="One typeface chosen for legibility, five accents held at near-uniform lightness, and body text at 18.84:1 — a design system that reads its own values as an argument about access.">
+<meta property="og:image" content="https://starstuff.earth/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A rainbow-hued cosmic image — we are all made of star stuff.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Star Stuff Design System">
+<meta name="twitter:description" content="One typeface chosen for legibility, five accents at near-uniform lightness, body text at 18.84:1. Accessibility-first, printable, and credited.">
+<meta name="twitter:image" content="https://starstuff.earth/og-card.jpg">
+<title>Design System — Star Stuff — Stimpunks Foundation</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..900;1,200..900&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="starstuff.css">
+<style>
+  :root {
+    --void:  var(--sp-void-deep);
+    --deep:  var(--sp-deep);
+    --card:  var(--sp-card);
+    --violet:var(--sp-purple);
+    --pink:  var(--sp-pink);
+    --gold:  var(--sp-gold);
+    --cyan:  var(--sp-cyan);
+    --green: var(--sp-green);
+    /* One knob for this page's tint. The nav, the index card, and every
+       accent role below read from it. Green keeps Design distinct from
+       About (gold) and Changelog (cyan). */
+    --accent:var(--sp-green);
+    --star-white: var(--sp-white-soft);
+    --stardust:   var(--sp-secondary-soft);
+    --dim:   var(--sp-dim);
+    --dim2:  var(--sp-dim-soft);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--void);
+    font-family: 'Atkinson Hyperlegible Next', system-ui, sans-serif;
+    color: var(--star-white);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 8% 12%, rgba(251,191,36,0.85) 0%, transparent 100%),
+      radial-gradient(1px 1px at 22% 38%, rgba(244,244,251,0.6) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 44% 9%, rgba(244,114,182,0.7) 0%, transparent 100%),
+      radial-gradient(1px 1px at 61% 68%, rgba(34,211,238,0.6) 0%, transparent 100%),
+      radial-gradient(2px 2px at 74% 28%, rgba(167,139,250,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 84% 54%, rgba(74,222,128,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 91% 79%, rgba(244,244,251,0.7) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 4% 58%, rgba(251,191,36,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 34% 84%, rgba(244,244,251,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 54% 48%, rgba(244,114,182,0.4) 0%, transparent 100%),
+      radial-gradient(2px 2px at 19% 88%, rgba(167,139,250,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 69% 4%, rgba(244,244,251,0.8) 0%, transparent 100%),
+      radial-gradient(1px 1px at 47% 62%, rgba(34,211,238,0.5) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 30% 20%, rgba(74,222,128,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 77% 88%, rgba(251,191,36,0.55) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .doc-shell { position: relative; z-index: 1; max-width: 760px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+
+  .spectrum-line { height: 2px; border: none; border-radius: 2px; background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); }
+
+  .nav-brand { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--dim); margin: 1.6rem 0 2.5rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(167,139,250,0.2); }
+
+  .hero { margin-bottom: 2.5rem; }
+  .hero-eyebrow { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.36em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.3rem; }
+  .hero-title { font-weight: 700; font-size: clamp(2.1rem, 6vw, 3.4rem); line-height: 1.05; letter-spacing: -0.02em; color: var(--star-white); margin-bottom: 1.1rem; }
+  .hero-title em { font-style: normal; background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .hero-sub { font-size: 1.02rem; line-height: 1.6; color: var(--stardust); max-width: 38rem; }
+  .hero-rule { width: 200px; max-width: 55%; margin-top: 1.6rem; }
+
+  h2.section { font-weight: 700; font-size: 1.4rem; line-height: 1.2; color: var(--star-white); margin: 3rem 0 0.5rem; letter-spacing: -0.01em; }
+  h3.sub { font-weight: 700; font-size: 1.05rem; line-height: 1.3; color: var(--star-white); margin: 1.9rem 0 0.3rem; }
+  .body-text { font-size: 1.02rem; line-height: 1.75; color: var(--stardust); }
+  .body-text p { margin-top: 1rem; }
+  .body-text em { font-style: italic; color: var(--star-white); }
+  .body-text strong { font-weight: 700; color: var(--star-white); }
+  .body-text a { color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(251,191,36,0.35); }
+  .body-text a:hover { border-bottom-color: var(--gold); }
+  .body-text ul { margin: 0.9rem 0 0 1.1rem; }
+  .body-text li { margin-top: 0.5rem; padding-left: 0.2rem; }
+  code { font-family: 'Space Mono', monospace; font-size: 0.86em; color: var(--accent); }
+
+  .claim { font-size: 1.22rem; font-weight: 700; line-height: 1.4; color: var(--star-white); border-left: 3px solid var(--accent); padding-left: 1.1rem; margin: 1.4rem 0; }
+
+  /* ── Palette swatches ── */
+  /* 120px lets the two five-token rows (grounds, accents) sit five-across at
+     full width, so each set reads as one row rather than 4 + 1 orphan. */
+  .swatches { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 0.7rem; margin: 1.4rem 0 0.6rem; }
+  .sw { border-radius: 8px; overflow: hidden; border: 1px solid rgba(167,139,250,0.18); background: var(--card); }
+  .sw-chip { height: 62px; }
+  .sw-meta { padding: 0.55rem 0.65rem 0.6rem; font-family: 'Space Mono', monospace; }
+  .sw-tok { font-size: 0.6rem; letter-spacing: 0.06em; color: var(--star-white); word-break: break-all; }
+  .sw-hex { font-size: 0.62rem; color: var(--stardust); margin-top: 0.2rem; text-transform: uppercase; }
+  .sw-num { font-size: 0.55rem; color: var(--dim); margin-top: 0.25rem; letter-spacing: 0.04em; }
+
+  /* ── Data table ── */
+  .tbl-wrap { overflow-x: auto; margin: 1.3rem 0 0.4rem; }
+  table { border-collapse: collapse; width: 100%; min-width: 420px; font-size: 0.88rem; }
+  caption { text-align: left; font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); padding-bottom: 0.7rem; }
+  th, td { text-align: left; padding: 0.5rem 0.8rem 0.5rem 0; border-bottom: 1px solid rgba(167,139,250,0.14); }
+  th { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--dim); font-weight: 400; }
+  td { color: var(--stardust); }
+  td.mono, th.num, td.num { font-family: 'Space Mono', monospace; }
+  td.num, th.num { text-align: right; padding-right: 0; }
+  td strong { color: var(--star-white); }
+  .pass { color: var(--green); font-weight: 700; }
+  .fail { color: var(--pink); font-weight: 700; }
+
+  /* ── Type specimen ── */
+  .specimen { border-left: 3px solid var(--violet); padding: 0.2rem 0 0.2rem 1.1rem; margin: 1.2rem 0; }
+  .specimen-label { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dim); margin-bottom: 0.45rem; }
+  .sp-lg { font-size: 1.7rem; font-weight: 700; line-height: 1.15; color: var(--star-white); letter-spacing: -0.01em; }
+  .sp-body { font-size: 1rem; line-height: 1.75; color: var(--stardust); }
+  .sp-mono { font-family: 'Space Mono', monospace; font-size: 0.8rem; letter-spacing: 0.05em; color: var(--stardust); }
+  .sp-confuse { font-size: 1.45rem; font-weight: 700; color: var(--star-white); letter-spacing: 0.06em; }
+  .sp-confuse span { color: var(--gold); }
+
+  /* ── Callouts ── */
+  .callout { border: 1px solid rgba(74,222,128,0.32); border-left: 3px solid var(--accent); border-radius: 0 6px 6px 0; padding: 1.1rem 1.3rem; margin: 1.7rem 0; background: rgba(74,222,128,0.05); }
+  .callout .callout-label { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; }
+  .callout p { font-size: 0.96rem; line-height: 1.7; color: var(--stardust); }
+  .callout p + p { margin-top: 0.8rem; }
+  .callout strong { color: var(--star-white); font-weight: 700; }
+  .callout--warn { border-color: rgba(244,114,182,0.32); border-left-color: var(--pink); background: rgba(244,114,182,0.05); }
+  .callout--warn .callout-label { color: var(--pink); }
+  .callout--gold { border-color: rgba(251,191,36,0.32); border-left-color: var(--gold); background: rgba(251,191,36,0.05); }
+  .callout--gold .callout-label { color: var(--gold); }
+
+  /* ── Refusals ── */
+  .refusals { margin: 1.5rem 0 0.5rem; }
+  .refusals .callout-label { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--pink); margin-bottom: 0.6rem; }
+  .refusals li { list-style: none; position: relative; padding-left: 1.5rem; margin-top: 0.55rem; color: var(--stardust); line-height: 1.65; }
+  .refusals li::before { content: '✕'; position: absolute; left: 0; color: var(--pink); font-weight: 700; }
+  .refusals ul { margin: 0; }
+
+  /* ── Motif demo ── */
+  .motif { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 0.9rem; margin: 1.3rem 0 0.4rem; }
+  .motif-card { background: var(--card); border-radius: 8px; border-left: 3px solid var(--gold); padding: 0.95rem 1.1rem; }
+  .motif-card .m-label { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.35rem; }
+  .motif-card p { font-size: 0.9rem; line-height: 1.6; color: var(--stardust); }
+
+  .colophon-footer { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--dim); line-height: 2.2; margin-top: 3.2rem; padding-top: 1.4rem; border-top: 1px solid rgba(167,139,250,0.14); }
+  .colophon-footer a { color: var(--stardust); text-decoration: none; border-bottom: 1px solid rgba(167,139,250,0.2); }
+  .colophon-footer a:hover { color: var(--star-white); }
+
+  @media (max-width: 600px) {
+    .doc-shell { padding: 2rem 1.3rem 3rem; }
+    .swatches { grid-template-columns: repeat(auto-fit, minmax(104px, 1fr)); }
+  }
+
+  /* ── Print: invert to ink on paper ──
+     The screen palette is light-on-dark, and browsers omit background graphics
+     by default — so a page that prints its screen colors prints blank. This page
+     practices what it preaches: on paper it becomes dark ink on white. */
+  @media print {
+    body::before { display: none; }
+    html, body { background: #fff; color: #111; }
+    .doc-shell { max-width: 100%; padding: 0; }
+    .hero-title, h2.section, h3.sub, .claim, .sp-lg, .sp-confuse, td strong,
+    .callout strong, .body-text strong, .body-text em { color: #111; }
+    .hero-title em { -webkit-text-fill-color: #111; color: #111; background: none; }
+    .body-text, .body-text p, .body-text li, .hero-sub, .callout p, td,
+    .sp-body, .sp-mono, .motif-card p, .refusals li { color: #222; }
+    .nav-brand, .hero-eyebrow, .specimen-label, .m-label,
+    caption, th, .sw-num, .colophon-footer { color: #444; }
+    /* The tinted variants set their label color with a two-class selector, so
+       match that specificity or the pink/gold survives onto paper at ~2.3:1. */
+    .callout .callout-label,
+    .callout--warn .callout-label,
+    .callout--gold .callout-label,
+    .refusals .callout-label { color: #444; }
+    .sw-tok { color: #111; }
+    .sw-hex { color: #333; }
+    .refusals li::before { color: #111; }
+    .body-text a, .colophon-footer a { color: #111; border-bottom: none; }
+    /* Accent-colored text is unreadable on white; keep the shape, darken the ink. */
+    code, .sp-confuse span, .pass, .fail { color: #111; }
+    .callout, .callout--warn, .callout--gold { background: none; border-color: #999; border-left-color: #444; }
+    .specimen { border-left-color: #999; }
+    .motif-card { background: none; border: 1px solid #ccc; border-left: 3px solid #444; }
+    .sw { border-color: #ccc; }
+    .sw-chip { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .spectrum-line { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .colophon-footer { border-top-color: #ccc; }
+    h2.section { page-break-after: avoid; break-after: avoid; }
+    .swatches, .tbl-wrap, .callout, .specimen { page-break-inside: avoid; break-inside: avoid; }
+  }
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"The Star Stuff Design System","description":"The design system behind the Star Stuff collection: Atkinson Hyperlegible, a five-accent palette on a violet-cast near-black, full-opacity body text at 18.84:1, a pure-CSS starfield, and an honest accounting of what it borrowed from Solarized.","image":"https://starstuff.earth/og-card.jpg","url":"https://starstuff.earth/design.html","mainEntityOfPage":"https://starstuff.earth/design.html","author":{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/"},"publisher":{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/","logo":{"@type":"ImageObject","url":"https://starstuff.earth/og-card.jpg"}},"isPartOf":{"@type":"WebSite","name":"Star Stuff","url":"https://starstuff.earth/"},"license":"https://creativecommons.org/licenses/by-sa/4.0/"}</script>
+</head>
+<body>
+
+<div class="doc-shell">
+
+  <!-- Meta pages (about, changelog, design) sit outside the reading chain, so the
+       nav carries the home group only — matching changelog.html. -->
+  <nav class="ss-nav" style="--nav-accent:#4ade80;" aria-label="Star Stuff collection">
+    <span class="ss-nav-home-group">
+      <a class="ss-nav-home" href="index.html"><span class="ss-star" aria-hidden="true">★</span> stuff</a>
+      <a class="ss-nav-about" href="about.html">about</a>
+    </span>
+  </nav>
+
+  <div class="nav-brand">Stimpunks · Star Stuff Design System</div>
+
+  <header class="hero">
+    <div class="hero-eyebrow">Stimpunks Foundation · How It's Built</div>
+    <h1 class="hero-title">The <em>Design System</em></h1>
+    <p class="hero-sub">One typeface chosen for legibility, five accents held at near-uniform lightness, and body text that never fades. The visual language of this collection is itself an argument about access — so here it is, with its numbers and its receipts.</p>
+    <hr class="spectrum-line hero-rule">
+  </header>
+
+  <div class="body-text">
+
+    <p>Every artifact here is a <strong>single self-contained HTML file</strong> with no dependencies beyond Google web fonts — no build step, no framework, no JavaScript required to read a word. That constraint is the first design decision, and most of the others follow from it. A zine should be one file you can save, print, fork, or hand to someone.</p>
+
+    <p class="claim">Accessibility isn't a layer applied at the end. It is the thing that decides the palette.</p>
+
+    <h2 class="section">Typeface</h2>
+
+    <p>The collection sets its prose in <a href="https://www.brailleinstitute.org/freefont/">Atkinson Hyperlegible</a>, released free by the Braille Institute in 2019 and named for its founder, J. Robert Atkinson. It was drawn for readers with low vision, and its whole argument is <em>letterform distinction</em> — making characters that are commonly confused resolve differently from each other rather than merely look handsome together.</p>
+
+    <div class="specimen">
+      <div class="specimen-label">The disambiguation problem</div>
+      <div class="sp-confuse">I l 1 | &nbsp; <span>0 O o</span> &nbsp; r n m &nbsp; <span>a e s</span></div>
+    </div>
+
+    <p>Look at the tail on the lowercase <code>l</code>, the slashless but narrowed <code>0</code>, the distinct apertures on <code>a</code>, <code>e</code>, and <code>s</code>. In a face built for elegance these converge; here they are deliberately pulled apart. For a collection about not being sorted into a norm, a typeface designed by and for people the standard face failed is not a neutral choice.</p>
+
+    <div class="specimen">
+      <div class="specimen-label">Display · Atkinson Hyperlegible Next Bold</div>
+      <div class="sp-lg">The universe doesn't pathologize its own variation.</div>
+    </div>
+
+    <div class="specimen">
+      <div class="specimen-label">Body · Atkinson Hyperlegible, 1.02rem / 1.75</div>
+      <p class="sp-body">Every atom heavier than hydrogen was forged inside a star. The calcium in your bones and the iron in your blood came from stars that died before the Earth existed.</p>
+    </div>
+
+    <div class="specimen">
+      <div class="specimen-label">Labels &amp; counters · Space Mono</div>
+      <div class="sp-mono">STIMPUNKS FOUNDATION · ZINE NO. 1 · SPREAD 3 / 7</div>
+    </div>
+
+    <p>Two other faces earn their place. <strong>Space Mono</strong> carries every eyebrow, label, page counter, and colophon — a monospace voice for the machinery around the text, deliberately unlike the prose so it never competes with it. <strong>Fraunces</strong> appears where a piece needs an editorial register rather than a documentary one; <em>Bone Song</em>, <em>Underground</em>, and <em>You Were Never One Thing</em> are set in it with Space Mono, and use no Atkinson at all.</p>
+
+    <div class="callout callout--gold">
+      <div class="callout-label">An honest note on the specimen</div>
+      <p>The collection is mid-migration between two versions of the face. Of 47 pages, <strong>18 load Atkinson Hyperlegible Next</strong> (the 2025 release, which adds five weights, a variable format, and support for over 150 languages), <strong>26 load the original Atkinson Hyperlegible</strong>, and <strong>3</strong> — the Fraunces-set trio above — load neither. Next is the direction; the back catalogue hasn't been swept yet. This page is set in Next.</p>
+    </div>
+
+    <h2 class="section">Palette</h2>
+
+    <p>The canonical tokens live in <code>starstuff.css</code> as <code>:root { --sp-* }</code> — one source of truth for every recurring color. Each page aliases them inline (<code>--purple: var(--sp-purple)</code>), so a palette change happens in one place instead of forty-seven. A new shared color means a new <code>--sp-</code> token, never a hex pasted across pages.</p>
+
+    <h3 class="sub">Grounds</h3>
+    <div class="swatches">
+      <div class="sw"><div class="sw-chip" style="background:#07070f"></div><div class="sw-meta"><div class="sw-tok">--sp-void-deep</div><div class="sw-hex">#07070f</div><div class="sw-num">L* 2.1</div></div></div>
+      <div class="sw"><div class="sw-chip" style="background:#0a0a14"></div><div class="sw-meta"><div class="sw-tok">--sp-void</div><div class="sw-hex">#0a0a14</div><div class="sw-num">L* 3.0</div></div></div>
+      <div class="sw"><div class="sw-chip" style="background:#0d0d1a"></div><div class="sw-meta"><div class="sw-tok">--sp-deep</div><div class="sw-hex">#0d0d1a</div><div class="sw-num">L* 4.0</div></div></div>
+      <div class="sw"><div class="sw-chip" style="background:#0f0f1c"></div><div class="sw-meta"><div class="sw-tok">--sp-page</div><div class="sw-hex">#0f0f1c</div><div class="sw-num">L* 4.8</div></div></div>
+      <div class="sw"><div class="sw-chip" style="background:#0f0f2a"></div><div class="sw-meta"><div class="sw-tok">--sp-card</div><div class="sw-hex">#0f0f2a</div><div class="sw-num">L* 5.5</div></div></div>
+    </div>
+    <p>None of them is black. Each carries a violet cast — <code>#0a0a14</code> sits at hue 290° in CIELAB — so the ground reads as night rather than as absence. <code>--sp-card</code> is the most saturated of the five, which is what makes a card lift off the page without a border or a shadow doing the work.</p>
+
+    <h3 class="sub">Accents</h3>
+    <div class="swatches">
+      <div class="sw"><div class="sw-chip" style="background:#a78bfa"></div><div class="sw-meta"><div class="sw-tok">--sp-purple</div><div class="sw-hex">#a78bfa</div><div class="sw-num">L* 64.6 · 7.24:1</div></div></div>
+      <div class="sw"><div class="sw-chip" style="background:#f472b6"></div><div class="sw-meta"><div class="sw-tok">--sp-pink</div><div class="sw-hex">#f472b6</div><div class="sw-num">L* 65.5 · 7.44:1</div></div></div>
+      <div class="sw"><div class="sw-chip" style="background:#fbbf24"></div><div class="sw-meta"><div class="sw-tok">--sp-gold</div><div class="sw-hex">#fbbf24</div><div class="sw-num">L* 80.7 · 11.80:1</div></div></div>
+      <div class="sw"><div class="sw-chip" style="background:#22d3ee"></div><div class="sw-meta"><div class="sw-tok">--sp-cyan</div><div class="sw-hex">#22d3ee</div><div class="sw-num">L* 77.9 · 10.90:1</div></div></div>
+      <div class="sw"><div class="sw-chip" style="background:#4ade80"></div><div class="sw-meta"><div class="sw-tok">--sp-green</div><div class="sw-hex">#4ade80</div><div class="sw-num">L* 79.2 · 11.30:1</div></div></div>
+    </div>
+    <p>Five accents, all of them clustered between <strong>L* 64.6 and 80.7</strong> — a spread of 16 points across the whole set. That tight band is the discipline: any accent can replace any other on a given page without changing how heavy the page feels. It's why each zine can be tinted differently (cyan for water, green for aurora, gold for bone) and still be recognizably the same collection. The lowest-contrast accent on the darkest ground still clears <strong>7.2:1</strong>.</p>
+
+    <h3 class="sub">Text &amp; neutrals</h3>
+    <div class="swatches">
+      <div class="sw"><div class="sw-chip" style="background:#f9fafb"></div><div class="sw-meta"><div class="sw-tok">--sp-white</div><div class="sw-hex">#f9fafb</div><div class="sw-num">L* 98.2 · 18.84:1</div></div></div>
+      <div class="sw"><div class="sw-chip" style="background:#f4f2fb"></div><div class="sw-meta"><div class="sw-tok">--sp-white-soft</div><div class="sw-hex">#f4f2fb</div><div class="sw-num">L* 95.9 · 17.76:1</div></div></div>
+      <div class="sw"><div class="sw-chip" style="background:#d4d0e4"></div><div class="sw-meta"><div class="sw-tok">--sp-secondary-soft</div><div class="sw-hex">#d4d0e4</div><div class="sw-num">L* 84.3 · 13.07:1</div></div></div>
+      <div class="sw"><div class="sw-chip" style="background:#c4b5d4"></div><div class="sw-meta"><div class="sw-tok">--sp-muted</div><div class="sw-hex">#c4b5d4</div><div class="sw-num">L* 75.8 · 10.23:1</div></div></div>
+      <div class="sw"><div class="sw-chip" style="background:#b8aed0"></div><div class="sw-meta"><div class="sw-tok">--sp-secondary</div><div class="sw-hex">#b8aed0</div><div class="sw-num">L* 72.9 · 9.38:1</div></div></div>
+      <div class="sw"><div class="sw-chip" style="background:#8a86a0"></div><div class="sw-meta"><div class="sw-tok">--sp-dim</div><div class="sw-hex">#8a86a0</div><div class="sw-num">L* 57.1 · 5.62:1</div></div></div>
+      <div class="sw"><div class="sw-chip" style="background:#63607a"></div><div class="sw-meta"><div class="sw-tok">--sp-dim-soft</div><div class="sw-hex">#63607a</div><div class="sw-num">L* 41.9 · 3.27:1</div></div></div>
+    </div>
+
+    <p>Note what the ladder does <em>not</em> do: it never dips below full opacity to make text quieter. "Muted" here means a different hue at high contrast, not the same hue at 60% alpha. Every value above clears WCAG AA for body text against <code>--sp-void</code> except the last one.</p>
+
+    <div class="callout callout--warn">
+      <div class="callout-label">Known gap</div>
+      <p><code>--sp-dim-soft</code> (<code>#63607a</code>) lands at <strong>3.27:1</strong> — below the 4.5:1 AA threshold for normal text. It's used for colophon footers and disabled-state controls, which is the least harmful place for it, but a system that publishes its contrast numbers should publish the one that fails too. It should be lifted.</p>
+    </div>
+
+    <h2 class="section">Palette lineage</h2>
+
+    <p>The palette began as a <a href="https://ethanschoonover.com/solarized/">Solarized</a> dark variant. That happened before this repository existed, so there's no commit to point at — and it matters less than it sounds, because <strong>none of Solarized's sixteen values survive anywhere in the collection.</strong> The accents are Tailwind CSS v3's 400-weight ramp, exactly: <code>--sp-purple</code> is violet-400, <code>--sp-pink</code> is pink-400, <code>--sp-gold</code> is amber-400, <code>--sp-cyan</code> is cyan-400, <code>--sp-green</code> is green-400, <code>--sp-white</code> is gray-50. The grounds are ours; no Tailwind gray is that violet.</p>
+
+    <p>What we kept from Ethan Schoonover is the <strong>method</strong>, and it's worth naming precisely because the method is the valuable part:</p>
+
+    <ul>
+      <li>A small, fixed, <em>named</em> accent set used as semantic tokens rather than color picked per occasion. <code>--sp-*</code> is that idea.</li>
+      <li>Accents pinned to a narrow lightness band, so substitution doesn't disturb the page. Ours sit at L* 64.6–80.7; Solarized's at L* 49.1–60.1.</li>
+      <li>A ground that refuses pure black and commits to a hue. Solarized's <code>#002b36</code> leans cyan at hue 230°; our <code>#0a0a14</code> leans violet at 290°.</li>
+      <li>Warm cream instead of white for paper — <code>--paper: #f5f0e8</code> in the broadside, <code>--bone: #e8dfc8</code> in <em>Bone Song</em>, both close cousins of Solarized's base3 <code>#fdf6e3</code>.</li>
+    </ul>
+
+    <p>And then we threw out its central move. Solarized's stated goal is to <em>reduce</em> brightness contrast while keeping hue separation. We push contrast as high as it goes:</p>
+
+    <div class="tbl-wrap">
+      <table>
+        <caption>Body text against its own ground</caption>
+        <thead>
+          <tr><th>Scheme</th><th>Text</th><th>Ground</th><th class="num">Contrast</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Star Stuff</strong></td><td class="mono">#f9fafb</td><td class="mono">#0a0a14</td><td class="num"><span class="pass">18.84:1</span></td></tr>
+          <tr><td>Solarized dark</td><td class="mono">#839496</td><td class="mono">#002b36</td><td class="num"><span class="fail">4.75:1</span></td></tr>
+          <tr><td>Solarized dark (emphasis)</td><td class="mono">#93a1a1</td><td class="mono">#073642</td><td class="num"><span class="fail">4.86:1</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>"Full-opacity body text, no faded grays" is a direct repudiation of the scheme this palette started from. A low-contrast colorscheme is a lovely thing in a code editor at 2am and the wrong thing entirely for a document meant to be readable by people with low vision, printed on a cheap printer, and handed across a table. Accessibility-first won the argument. <strong>Credit Solarized for the discipline, not for the colors.</strong></p>
+
+    <h2 class="section">Principles</h2>
+
+    <div class="motif">
+      <div class="motif-card"><div class="m-label">Full opacity</div><p>Text is never dimmed with alpha to signal hierarchy. Hierarchy comes from size, weight, and hue at full strength.</p></div>
+      <div class="motif-card"><div class="m-label">Generous leading</div><p>Body copy runs 1.75 line-height. Long measure is capped around 36–38rem so lines stay trackable.</p></div>
+      <div class="motif-card"><div class="m-label">8px radius</div><p>Cards round at 8px — soft enough to read as an object, tight enough to stay documentary.</p></div>
+      <div class="motif-card"><div class="m-label">3px left border</div><p>A colored left rule marks anything set apart: claims, callouts, specimens, cards. The system's most reused gesture.</p></div>
+      <div class="motif-card"><div class="m-label">Pure-CSS starfield</div><p>Stars are layered <code>radial-gradient</code> stops on <code>body::before</code>, plus a few absolutely-positioned twinkling dots. No images, no canvas.</p></div>
+      <div class="motif-card"><div class="m-label">Spectrum rule</div><p>A 2px gradient through all five accents, used once per page as a signature — the palette introducing itself.</p></div>
+    </div>
+
+    <h3 class="sub">Motion, and the option to refuse it</h3>
+    <p>The starfield twinkles from one shared <code>@keyframes twinkle-anim</code> in <code>starstuff.css</code> — it used to be copy-pasted into some twenty-five pages. Anyone whose system asks for less motion gets none: a global <code>prefers-reduced-motion</code> block collapses every animation and transition to 0.001ms and disables smooth scrolling, across every page at once. Motion here is decoration, and decoration must be declinable.</p>
+
+    <h3 class="sub">The refusals</h3>
+    <div class="refusals">
+      <div class="callout-label">Not:</div>
+      <ul>
+        <li>Not low-contrast because low-contrast looks sophisticated.</li>
+        <li>Not gray text on gray backgrounds to signal "secondary."</li>
+        <li>Not a framework, a build step, or a bundle to read one page of prose.</li>
+        <li>Not a design system that can't survive being printed in black and white.</li>
+        <li>Not accessibility as a compliance checkbox added after the visual design was settled.</li>
+      </ul>
+    </div>
+
+    <h2 class="section">Print</h2>
+
+    <p>These are meant to be printed and handed to people, so paper is a first-class target rather than an afterthought. <code>starstuff.css</code> strips the site navigation and paging chrome from every printed page — that chrome is never content.</p>
+
+    <p>On paper the whole collection inverts: white sheet, near-black type, decoration dropped. Because every page aliases the <code>--sp-*</code> tokens, the shared stylesheet inverts them once inside <code>@media print</code> and all forty-seven pages follow. Accents become ink there too — gold <code>#fbbf24</code> on white is 1.6:1, so an accent that carries meaning as text has to give up its color to stay readable. The one exception is the spectrum rule, a 2px sliver kept in full color with <code>print-color-adjust: exact</code>, which survives the browser's background-graphics setting. Diagrams inherit the same treatment: SVG paints with <code>fill</code> and <code>stroke</code> rather than <code>color</code>, so labels and line art are inverted separately — the diagrams are content here, not ornament.</p>
+
+    <p>Paged zines also turn inside out for paper. On screen a zine shows one <code>.spread</code> at a time; a single Cmd/Ctrl+P reveals every spread and starts each on its own sheet, so you get the whole zine rather than the visible page.</p>
+
+    <div class="callout callout--warn">
+      <div class="callout-label">This was broken until it wasn't</div>
+      <p>Worth recording plainly, because the failure is more instructive than the fix. Browsers leave "Background graphics" off by default. For most of this collection's life, no page inverted its colors for print — so a light-on-dark zine sent near-white type to a white sheet and <strong>printed blank</strong>. Measured with print media emulated, <strong>44 of 46 pages printed illegibly</strong>. On one, no pixel anywhere on the sheet was darker than mid-gray. The <em>Bone Song</em> poem — a piece built to be printed and handed to someone — came out as an empty page.</p>
+      <p>Only the <a href="changelog.html">changelog</a> was correct. The <a href="ls-broadside.html">L★S broadside</a> was half-right: its recto prints as designed, but its verso carried the poem in cream on near-black and vanished too. All forty-seven pages now print legibly, verified two ways — computed text contrast against white for every text element, and pixel sampling of the rendered sheet. <strong>A stated principle nobody measures is a wish.</strong></p>
+    </div>
+
+    <h2 class="section">Shared assets</h2>
+
+    <div class="tbl-wrap">
+      <table>
+        <caption>What every page pulls in</caption>
+        <thead><tr><th>File</th><th>Carries</th></tr></thead>
+        <tbody>
+          <tr><td class="mono"><strong>starstuff.css</strong></td><td>The <code>--sp-*</code> palette tokens, the <code>.ss-nav</code> site navigation, the shared twinkle keyframe, the reduced-motion block, the print rules, and the injected spread-footer nav styles.</td></tr>
+          <tr><td class="mono"><strong>starstuff.js</strong></td><td>Per-spread prev/next controls and <code>#spread-N</code> deep linking for paged zines. A safe no-op on any page that isn't one.</td></tr>
+          <tr><td class="mono"><strong>favicon.svg</strong></td><td>The L★S mark.</td></tr>
+          <tr><td class="mono"><strong>og-card.jpg</strong></td><td>The 1200×630 link-unfurl card shared by every page.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>Everything is linked by relative URL, which is what lets any page be saved, moved, or served from a subdirectory without breaking. Each page tints the shared nav by setting one custom property — <code>--nav-accent</code> — on the nav element, which is the whole theming API.</p>
+
+    <div class="callout">
+      <div class="callout-label">Reuse it</div>
+      <p>This system is <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>, like everything else here. Take the tokens, take the contrast floor, take the refusals. If you build something with it, the only ask is that you keep it free and pass it on. <strong>Solidarity, not charity.</strong></p>
+    </div>
+
+    <p>Every correction to this page, and to every piece in the collection, gets published in the <a href="changelog.html">changelog</a> — our own errors included.</p>
+
+    <div class="colophon-footer">
+      Stimpunks Foundation · <a href="https://starstuff.earth">starstuff.earth</a> · <a href="about.html">About</a> · <a href="changelog.html">Changelog</a> · <a href="https://stimpunks.org">stimpunks.org</a><br>
+      Print freely · Share freely · <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> · L★S · You were ★stuff all along
+    </div>
+
+  </div>
+
+</div><!-- /doc-shell -->
+
+</body>
+</html>

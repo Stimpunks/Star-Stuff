@@ -225,7 +225,8 @@
   <!-- ================= 2026-08-08 ================= -->
   <section class="release" id="2026-08-08" aria-labelledby="h-2026-08-08">
     <div class="release-date">2026 · August 8</div>
-    <h2 class="release-title" id="h-2026-08-08">This page</h2>
+    <h2 class="release-title" id="h-2026-08-08">This page, a design system, and pages that actually print</h2>
+    <p class="release-note">Two things went up, and one long-standing failure came to light: for most of this collection's life, almost none of it printed.</p>
     <div class="entry entry--new">
       <div class="entry-head"><span class="tag tag--new">New piece</span><span class="entry-name">A public changelog, backfilled to day one</span></div>
       <div class="entry-body"><p>The corrections were already being logged — in a per-piece ledger in the repository, where you'd have to go looking for them. That's not really publishing them. This page reads the collection's whole history back out in the open: every piece as it arrived, every substantial revision, and every audit, with the errors named. Backfilled from all 121 commits, from launch day forward.</p></div>
@@ -233,6 +234,32 @@
     <div class="entry entry--site">
       <div class="entry-head"><span class="tag tag--site">Site</span><span class="entry-name">Logging made part of shipping</span></div>
       <div class="entry-body"><p>A changelog only tells the truth if it's kept. Adding an entry is now a written step in the house conventions and in the routine that ships a zine — alongside the fact-check itself, not after it.</p></div>
+    </div>
+
+    <div class="entry entry--new">
+      <div class="entry-head"><span class="tag tag--new">New piece</span><span class="entry-name">The Design System, with its numbers and its receipts</span></div>
+      <div class="entry-body">
+        <p><a href="design.html">design.html</a> documents the visual language the whole collection shares: <a href="https://www.brailleinstitute.org/freefont/">Atkinson Hyperlegible</a>, chosen because it was drawn for readers the standard face failed; the <code>--sp-*</code> palette tokens and why they live in one file; five accents held within 16 points of each other in CIELAB lightness; and body text at 18.84:1, because full opacity is the house rule rather than a preference.</p>
+        <p>It publishes the contrast value that <em>fails</em>, too: <code>--sp-dim-soft</code> (<code>#63607a</code>) lands at 3.27:1, under the 4.5:1 needed for normal text. It's used for colophon footers and disabled controls — the least harmful place for it — but a page that prints its own contrast numbers should print that one as well.</p>
+      </div>
+    </div>
+
+    <div class="entry entry--factcheck">
+      <div class="entry-head"><span class="tag tag--factcheck">Fact-check</span><span class="entry-name">The palette's lineage, traced: Solarized got credited for the method, not the colors</span></div>
+      <div class="entry-body">
+        <p>The palette was remembered as having started life as a <a href="https://ethanschoonover.com/solarized/">Solarized</a> dark variant. Checking it: <strong>not one of Solarized's sixteen values appears anywhere in the collection</strong>, and no commit or file mentions it — the change predates this repository, so there is nothing to point at. The accents are <strong>Tailwind CSS v3's 400-weight ramp</strong>, exact, confirmed against <code>tailwindlabs/tailwindcss</code> v3.4.17 <code>src/public/colors.js</code>: violet-400, pink-400, amber-400, cyan-400, green-400, gray-50. The near-black grounds are ours.</p>
+        <p>So the credit is now stated precisely, in the README and on the design page: Solarized for the <em>method</em> — a small fixed set of named accents at near-uniform lightness, a ground that refuses pure black, warm cream instead of white for paper — and not for a single color. The one thing we did with it was invert its central move: Solarized deliberately reduces brightness contrast, and our body text runs 18.84:1 where Solarized dark runs 4.75:1. Attribution from memory is exactly the habit the guidelines warn about, even when the memory turns out to be roughly right.</p>
+      </div>
+    </div>
+
+    <div class="entry entry--site">
+      <div class="entry-head"><span class="tag tag--site">Site</span><span class="entry-name">44 of 46 pages printed blank — every page now prints</span></div>
+      <div class="entry-body">
+        <p>&ldquo;Print freely&rdquo; is on every page in this collection, and it turns out we had never measured it. Browsers leave <em>Background graphics</em> switched off by default, and no page inverted its colors for print — so a light-on-dark zine sent near-white type to a white sheet. Measured with print media emulated across every text element, <strong>44 of 46 pages printed illegibly</strong>. On one, no pixel anywhere on the sheet came out darker than mid-gray. The <a href="bone-song-zine.html">Bone Song</a> poem — a piece made to be printed and handed to someone — came out an empty page.</p>
+        <p>Only this changelog was correct. The <a href="ls-broadside.html">L★S broadside</a> was half-right: its front prints as designed, but its reverse carried the whole poem in cream on near-black and vanished too.</p>
+        <p>Fixed in <code>starstuff.css</code>, which is where the token architecture finally paid for itself: because every page aliases the <code>--sp-*</code> tokens, inverting them once inside <code>@media print</code> turned the whole collection to ink on paper. Diagrams needed separate handling — SVG paints with <code>fill</code> and <code>stroke</code>, which a text color never touches — and a handful of pages that hardcode their colors instead of aliasing tokens carry small overrides of their own. The spectrum rule keeps its color as a 2px sliver. <strong>All 47 pages now print legibly</strong>, verified twice: computed text contrast against white for every text element, and pixel sampling of the rendered sheets.</p>
+        <p>The lesson is written into the design page: a stated principle nobody measures is a wish.</p>
+      </div>
     </div>
   </section>
 

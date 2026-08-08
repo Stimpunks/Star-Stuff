@@ -101,11 +101,28 @@ The central phrase compresses through registers, each with a use:
   - void/ground `#0a0a14`, deep/card `#0f0f2a`
   - purple `#a78bfa`, pink `#f472b6`, gold `#fbbf24`, cyan `#22d3ee`, green `#4ade80`
   - white `#f9fafb`, secondary `#b8aed0`, muted `#c4b5d4`
+- **Palette lineage** — the accents are **Tailwind CSS v3's 400 ramp** (violet/pink/amber/cyan/
+  green-400, gray-50), verified against `tailwindlabs/tailwindcss` v3.4.17 `src/public/colors.js`.
+  They are exact; don't "correct" or round them. The palette *began* as a Solarized dark variant
+  pre-git, and **no Solarized value remains** — cite Solarized for the method (named accent set at
+  near-uniform lightness, non-black hue-cast ground, warm cream paper), never for the colors, and
+  never imply a traceable derivation. Our contrast is the *opposite* of Solarized's goal: 18.84:1
+  body text vs. its 4.75:1. See README → *Palette lineage* and `design.html`.
 - **Principles:** full-opacity body text (no faded grays), generous line height, `8px` card
   radius, a recurring `3px` colored left border, and a pure-CSS starfield.
 - **Accessibility first.** `starstuff.css` already honors `prefers-reduced-motion` (neutralizes
   twinkle/spin/fade/smooth-scroll) and hides nav in `@media print`. Keep artifacts
   keyboard-navigable and print-friendly — they're meant to be printed and handed to people.
+- **Print is not optional, and it is not free.** Browsers leave *Background graphics* off by
+  default, so a light-on-dark page that carries its screen colors to paper **prints blank**. This
+  silently broke 44 of 46 pages until 2026-08-08. `starstuff.css` now inverts the `--sp-*` tokens
+  inside `@media print`, so **a new page gets this for free only if it aliases the tokens**
+  (`--star-white: var(--sp-white-soft)`) rather than hardcoding hexes. If a page hardcodes colors,
+  it needs its own small `@media print` override — see the ones in `bone-song-zine.html` and
+  `ls-broadside.html`. SVG diagrams paint with `fill`/`stroke`, which `color` never reaches, and are
+  handled separately in the shared sheet. **Verify, don't assume:** emulate print media and check
+  computed text color against white, or render the sheet and sample pixels. A stated principle
+  nobody measures is a wish. Full account: `design.html`.
 
 ## Voice & editorial conventions
 

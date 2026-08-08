@@ -540,6 +540,19 @@
     .cover-title { font-size: 3.5rem; }
     .spread-heading { font-size: 1.7rem; }
   }
+
+  /* Print: this page hardcodes its text colors instead of aliasing --sp-* tokens,
+     so the shared inversion in starstuff.css can't reach them. Override at the
+     root and everything built on these tokens follows, diagram strokes included. */
+  @media print {
+    :root {
+      --deep: #ffffff; --page: #ffffff;
+      --star-white: #111111; --stardust: #222222;
+      --bone: #111111;          /* SVG diagram strokes -> dark lines on paper */
+      --bone-dim: #444444;
+      --nebula-purple: #111111; --nebula-pink: #111111;
+    }
+  }
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Bone Song","description":"On piezoelectric matter, star-forged calcium, and the universe that doesn't pathologize its own variation.","image":"https://starstuff.earth/og-card.jpg","url":"https://starstuff.earth/bone-song-zine.html","mainEntityOfPage":"https://starstuff.earth/bone-song-zine.html","author":{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/"},"publisher":{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/","logo":{"@type":"ImageObject","url":"https://starstuff.earth/og-card.jpg"}},"isPartOf":{"@type":"WebSite","name":"Star Stuff","url":"https://starstuff.earth/"}}</script>
 </head>

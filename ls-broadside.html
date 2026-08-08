@@ -480,6 +480,21 @@
     .side { display: block !important; }
     .face { page-break-after: always; }
     .print-hint { display: none; }
+
+    /* The recto prints as designed — dark ink on cream. The verso does not: it's
+       cream type on a near-black ground, and with background graphics off (the
+       browser default) the whole Bone Song poem went to paper invisible. Invert it. */
+    .verso { background: none !important; }
+    .verso::before, .verso::after { display: none !important; }
+    .poem-line,
+    .poem-line.em,
+    .poem-line.strong,
+    .poem-line.accent { color: #111111 !important; }
+    .verso-ls { color: #111111 !important; }
+    .verso-label,
+    .verso-footer-text,
+    .verso-footer-meta { color: #444444 !important; }
+    .poem-break { background: #cccccc !important; }
   }
 
   @media (max-width: 500px) {
