@@ -93,11 +93,14 @@ const EXTRACT = String.raw`(() => {
     return squash(clone.textContent);
   };
 
+  /* Headings go through textOf too, not raw textContent: cover titles are
+     routinely broken with <br>, so "Where it meets<br>the ground" would become
+     the result title "Where it meetsthe ground". */
   const headingOf = (el) =>
-    squash(
-      (el.querySelector(
+    textOf(
+      el.querySelector(
         'h1,h2,h3,.spread-heading,.cover-title,.section-heading,.entry-name,.release-title,.card-title'
-      ) || {}).textContent
+      )
     );
 
   const records = [];
@@ -118,7 +121,7 @@ const EXTRACT = String.raw`(() => {
   const entries = [...document.querySelectorAll('.entry[id], article.entry, .fg-entry[id]')];
   if (entries.length >= 3) {
     for (const e of entries) {
-      const name = squash((e.querySelector('.entry-name, .entry-title, h2, h3') || {}).textContent);
+      const name = textOf(e.querySelector('.entry-name, .entry-title, h2, h3'));
       push(e.id ? '#' + e.id : '', name, textOf(e));
     }
     if (records.length) return JSON.stringify({ title: document.title, records });
@@ -151,12 +154,13 @@ const EXTRACT = String.raw`(() => {
          "top of page" everywhere else. */
   const HEAD = 'h1,h2,h3';
   if (records.length < 3) {
-    const heads = [...main.querySelectorAll(HEAD)].filter((h) => squash(h.textContent));
+    const heads = [...main.querySelectorAll(HEAD)].filter((h) => textOf(h));
     if (heads.length >= 3) {
       records.length = 0;
       heads.forEach((h, i) => {
         const stop = heads[i + 1];
-        const parts = [squash(h.textContent)];
+        const headText = textOf(h);
+        const parts = [headText];
         /* Collect siblings after the heading until the next heading. Headings are
            not always siblings of their prose, so climb to a common depth first. */
         let node = h;
@@ -166,7 +170,7 @@ const EXTRACT = String.raw`(() => {
           if (n.matches && n.matches(HEAD)) break;
           parts.push(textOf(n));
         }
-        const heading = squash(h.textContent);
+        const heading = headText;
         const frag = h.id
           ? '#' + h.id
           : '#:~:text=' + encodeURIComponent(heading.split(/\s+/).slice(0, 8).join(' '));
