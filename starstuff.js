@@ -154,10 +154,80 @@
     if (initial) goToSpread(initial);
   }
 
+  /* =================================================================
+     3) Deep linking to field-guide entries  (#entry-slug)
+
+     The field guides render their entries from JS data and keep each entry's
+     "Field notes" collapsed behind `.entry.open`. A link straight to an entry
+     therefore used to land on a closed card, with the text the reader was sent
+     for still hidden — which is exactly what a search result does. So when the
+     URL points at an entry, open it as well as scroll to it.
+
+     The entries do not exist at DOMContentLoaded on every guide (they are built
+     by each page's own script, and script order varies), so if the target is not
+     there yet we watch briefly for it to appear rather than guessing at a delay.
+
+     Safe elsewhere: changelog.html also uses `.entry`, but those carry no
+     .entry-notes, and openEntry() declines anything without one.
+     ================================================================= */
+
+  function openEntry(el) {
+    if (!el || !el.classList || !el.classList.contains('entry')) return false;
+    if (!el.querySelector('.entry-notes')) return false;   // not a collapsible guide entry
+    if (!el.classList.contains('open')) {
+      el.classList.add('open');
+      el.setAttribute('aria-expanded', 'true');
+      var label = el.querySelector('.entry-expand');
+      // Match the arrow the page's own click handler would have set.
+      if (label) label.textContent = '▾ Field notes';
+    }
+    return true;
+  }
+
+  function entryFromHash() {
+    var hash = window.location.hash || '';
+    if (hash.length < 2) return null;
+    if (/^#spread-\d+$/.test(hash)) return null;           // handled above
+    var id;
+    try { id = decodeURIComponent(hash.slice(1)); } catch (e) { id = hash.slice(1); }
+    return document.getElementById(id);
+  }
+
+  function revealHashEntry() {
+    var el = entryFromHash();
+    if (!openEntry(el)) return false;
+    // Scroll after expanding, so the target lands correctly with the notes open.
+    if (el.scrollIntoView) el.scrollIntoView({ block: 'start' });
+    return true;
+  }
+
+  function setupEntryDeepLinks() {
+    window.addEventListener('hashchange', revealHashEntry);
+
+    if (!window.location.hash) return;
+    if (revealHashEntry()) return;
+    if (typeof window.MutationObserver !== 'function') return;
+
+    // The grid has not been built yet — wait for it, then give up quietly.
+    var done = false;
+    var observer = new MutationObserver(function () {
+      if (done) return;
+      if (revealHashEntry()) {
+        done = true;
+        observer.disconnect();
+      }
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
+    setTimeout(function () {
+      if (!done) { done = true; observer.disconnect(); }
+    }, 3000);
+  }
+
   /* ---------- init ---------- */
   function init() {
     buildFooterNav();
     setupDeepLinks();
+    setupEntryDeepLinks();
   }
 
   if (document.readyState === 'loading') {

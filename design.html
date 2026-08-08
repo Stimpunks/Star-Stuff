@@ -224,6 +224,7 @@
     <span class="ss-nav-home-group">
       <a class="ss-nav-home" href="index.html"><span class="ss-star" aria-hidden="true">★</span> stuff</a>
       <a class="ss-nav-about" href="about.html">about</a>
+      <a class="ss-nav-search" href="search.html">search</a>
     </span>
   </nav>
 
@@ -242,7 +243,7 @@
 
     <p class="claim">Accessibility isn't a layer applied at the end. It is the thing that decides the palette.</p>
 
-    <h2 class="section">Typeface</h2>
+    <h2 class="section" id="typeface">Typeface</h2>
 
     <p>The collection sets its prose in <a href="https://www.brailleinstitute.org/freefont/">Atkinson Hyperlegible</a>, released free by the Braille Institute in 2019 and named for its founder, J. Robert Atkinson. It was drawn for readers with low vision, and its whole argument is <em>letterform distinction</em> — making characters that are commonly confused resolve differently from each other rather than merely look handsome together.</p>
 
@@ -276,11 +277,11 @@
       <p>The sweep turned up something worse than a split. Every page requesting Next asked Google Fonts for a <code>200..900</code> weight range — but Next only publishes <strong>200–800</strong>, so the request returned <strong>HTTP 400</strong> and no <code>@font-face</code> rule at all. Those pages had been quietly falling back to <code>system-ui</code> for every visitor who didn't happen to have the font installed locally, which is to say almost all of them. A typeface picked specifically because it was drawn for readers the standard face fails was not reaching those readers. Corrected to <code>200..800</code>; the woff2 now actually downloads.</p>
     </div>
 
-    <h2 class="section">Palette</h2>
+    <h2 class="section" id="palette">Palette</h2>
 
     <p>The canonical tokens live in <code>starstuff.css</code> as <code>:root { --sp-* }</code> — one source of truth for every recurring color. Each page aliases them inline (<code>--purple: var(--sp-purple)</code>), so a palette change happens in one place instead of forty-seven. A new shared color means a new <code>--sp-</code> token, never a hex pasted across pages.</p>
 
-    <h3 class="sub">Grounds</h3>
+    <h3 class="sub" id="grounds">Grounds</h3>
     <div class="swatches">
       <div class="sw"><div class="sw-chip" style="background:#07070f"></div><div class="sw-meta"><div class="sw-tok">--sp-void-deep</div><div class="sw-hex">#07070f</div><div class="sw-num">L* 2.1</div></div></div>
       <div class="sw"><div class="sw-chip" style="background:#0a0a14"></div><div class="sw-meta"><div class="sw-tok">--sp-void</div><div class="sw-hex">#0a0a14</div><div class="sw-num">L* 3.0</div></div></div>
@@ -290,7 +291,7 @@
     </div>
     <p>None of them is black. Each carries a violet cast — <code>#0a0a14</code> sits at hue 290° in CIELAB — so the ground reads as night rather than as absence. <code>--sp-card</code> is the most saturated of the five, which is what makes a card lift off the page without a border or a shadow doing the work.</p>
 
-    <h3 class="sub">Accents</h3>
+    <h3 class="sub" id="accents">Accents</h3>
     <div class="swatches">
       <div class="sw"><div class="sw-chip" style="background:#a78bfa"></div><div class="sw-meta"><div class="sw-tok">--sp-purple</div><div class="sw-hex">#a78bfa</div><div class="sw-num">L* 64.6 · 7.24:1</div></div></div>
       <div class="sw"><div class="sw-chip" style="background:#f472b6"></div><div class="sw-meta"><div class="sw-tok">--sp-pink</div><div class="sw-hex">#f472b6</div><div class="sw-num">L* 65.5 · 7.44:1</div></div></div>
@@ -300,7 +301,7 @@
     </div>
     <p>Five accents, all of them clustered between <strong>L* 64.6 and 80.7</strong> — a spread of 16 points across the whole set. That tight band is the discipline: any accent can replace any other on a given page without changing how heavy the page feels. It's why each zine can be tinted differently (cyan for water, green for aurora, gold for bone) and still be recognizably the same collection. The lowest-contrast accent on the darkest ground still clears <strong>7.2:1</strong>.</p>
 
-    <h3 class="sub">Text &amp; neutrals</h3>
+    <h3 class="sub" id="text-amp-neutrals">Text &amp; neutrals</h3>
     <div class="swatches">
       <div class="sw"><div class="sw-chip" style="background:#f9fafb"></div><div class="sw-meta"><div class="sw-tok">--sp-white</div><div class="sw-hex">#f9fafb</div><div class="sw-num">L* 98.2 · 18.84:1</div></div></div>
       <div class="sw"><div class="sw-chip" style="background:#f4f2fb"></div><div class="sw-meta"><div class="sw-tok">--sp-white-soft</div><div class="sw-hex">#f4f2fb</div><div class="sw-num">L* 95.9 · 17.76:1</div></div></div>
@@ -319,7 +320,7 @@
       <p>Auditing every text element against its <em>own</em> composited background then turned up four more: an accent pink on a tinted card that came to 4.43:1, three runs of alpha-faded cream on the broadside — the exact "faded gray" this system claims to refuse — and two links left unstyled, falling back to the browser's default blue at 2.11:1 on near-black. All fixed. <strong>All 47 pages now pass AA on screen.</strong></p>
     </div>
 
-    <h2 class="section">Palette lineage</h2>
+    <h2 class="section" id="palette-lineage">Palette lineage</h2>
 
     <p>The palette began as a <a href="https://ethanschoonover.com/solarized/">Solarized</a> dark variant. That happened before this repository existed, so there's no commit to point at — and it matters less than it sounds, because <strong>none of Solarized's sixteen values survive anywhere in the collection.</strong> The accents are Tailwind CSS v3's 400-weight ramp, exactly: <code>--sp-purple</code> is violet-400, <code>--sp-pink</code> is pink-400, <code>--sp-gold</code> is amber-400, <code>--sp-cyan</code> is cyan-400, <code>--sp-green</code> is green-400, <code>--sp-white</code> is gray-50. The grounds are ours; no Tailwind gray is that violet.</p>
 
@@ -350,7 +351,7 @@
 
     <p>"Full-opacity body text, no faded grays" is a direct repudiation of the scheme this palette started from. A low-contrast colorscheme is a lovely thing in a code editor at 2am and the wrong thing entirely for a document meant to be readable by people with low vision, printed on a cheap printer, and handed across a table. Accessibility-first won the argument. <strong>Credit Solarized for the discipline, not for the colors.</strong></p>
 
-    <h2 class="section">Principles</h2>
+    <h2 class="section" id="principles">Principles</h2>
 
     <div class="motif">
       <div class="motif-card"><div class="m-label">Full opacity</div><p>Text is never dimmed with alpha to signal hierarchy. Hierarchy comes from size, weight, and hue at full strength.</p></div>
@@ -361,10 +362,10 @@
       <div class="motif-card"><div class="m-label">Spectrum rule</div><p>A 2px gradient through all five accents, used once per page as a signature — the palette introducing itself.</p></div>
     </div>
 
-    <h3 class="sub">Motion, and the option to refuse it</h3>
+    <h3 class="sub" id="motion-and-the-option-to-refuse-it">Motion, and the option to refuse it</h3>
     <p>The starfield twinkles from one shared <code>@keyframes twinkle-anim</code> in <code>starstuff.css</code> — it used to be copy-pasted into some twenty-five pages. Anyone whose system asks for less motion gets none: a global <code>prefers-reduced-motion</code> block collapses every animation and transition to 0.001ms and disables smooth scrolling, across every page at once. Motion here is decoration, and decoration must be declinable.</p>
 
-    <h3 class="sub">The refusals</h3>
+    <h3 class="sub" id="the-refusals">The refusals</h3>
     <div class="refusals">
       <div class="callout-label">Not:</div>
       <ul>
@@ -376,7 +377,7 @@
       </ul>
     </div>
 
-    <h2 class="section">Print</h2>
+    <h2 class="section" id="print">Print</h2>
 
     <p>These are meant to be printed and handed to people, so paper is a first-class target rather than an afterthought. <code>starstuff.css</code> strips the site navigation and paging chrome from every printed page — that chrome is never content.</p>
 
@@ -390,7 +391,7 @@
       <p>Only the <a href="changelog.html">changelog</a> was correct. The <a href="ls-broadside.html">L★S broadside</a> was half-right: its recto prints as designed, but its verso carried the poem in cream on near-black and vanished too. All forty-seven pages now print legibly, verified two ways — computed text contrast against white for every text element, and pixel sampling of the rendered sheet. <strong>A stated principle nobody measures is a wish.</strong></p>
     </div>
 
-    <h2 class="section">Shared assets</h2>
+    <h2 class="section" id="shared-assets">Shared assets</h2>
 
     <div class="tbl-wrap">
       <table>

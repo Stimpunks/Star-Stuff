@@ -100,6 +100,7 @@ The sections below mirror the ordering on `index.html`, which is the canonical i
 | `shorthand-evolution.html` | **Shorthand Evolution: LYDTYSS → L★S** | How one phrase compressed itself into a glyph. Five shorthands with their etymologies, and what each compression preserved and let go. |
 | `difference-first-frame.html` | **The Difference-First Frame** *(backing material)* | A summary of Helen Edgar's essay "Why Difference Comes First," held for anyone who asks why difference gets to be the starting point. A resonant frame, not a proof — deliberately outside the reading chain. |
 | `changelog.html` | **What Changed, and When** *(public changelog)* | Every piece as it arrived, every substantial revision, and every fact-check and attribution audit — including the errors we found in our own work and how we fixed them. Live at [starstuff.earth/changelog](https://starstuff.earth/changelog). |
+| `search.html` | **Search** *(tool)* | Client-side search across the whole collection, down to the individual zine spread and field-guide entry. No dependencies and no server — the index is a committed JSON file and the query never leaves your browser. Live at [starstuff.earth/search](https://starstuff.earth/search). |
 | `design.html` | **The Design System** *(reference)* | The visual language with its numbers and its receipts: the typeface and why it was chosen, the `--sp-*` palette with every token's CIELAB lightness and contrast ratio, the palette's honest lineage (began as Solarized, kept the method, none of the colors), the principles and the refusals — and the one contrast value that still fails. Live at [starstuff.earth/design](https://starstuff.earth/design). |
 
 ### Shared assets & repo files
@@ -112,6 +113,8 @@ The sections below mirror the ordering on `index.html`, which is the canonical i
 | `35407642044_c29b4f2bd7_3k.jpg` | [SN 1006: Liberating Star Stuff](https://chandra.si.edu/photo/2008/sn1006c/) — Chandra X-ray Observatory photo album, 1 July 2008. Used on `love-you-down-to-your-star-stuff.html`. |
 | `og-card.jpg`, `favicon.svg` | Social card (1200×630) and site icon. |
 | `robots.txt`, `sitemap.xml` | Crawl and index files. Add every new page to the sitemap. |
+| `search-index.json` | The committed search index — 425 records covering every spread and field-guide entry. **Regenerate with `node tools/build-search-index.mjs` whenever page text changes**, and commit it. |
+| `tools/build-search-index.mjs` | Builds the above. A local dev tool, not a build step — Netlify never runs it. Needs headless Chrome, because the field guides render their entries from JS and much zine text is hidden until paged to, so the index has to come from rendered DOM rather than HTML source. |
 | `FACTCHECK.md` | The per-piece fact-check ledger and the verification guidelines behind it — the working companion to the public `changelog.html`. |
 | `DECISIONS.md` | Open and settled decisions about the collection. |
 | `CLAUDE.md` | Working guidance for Claude Code in this repository. |

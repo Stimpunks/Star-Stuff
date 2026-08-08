@@ -18,11 +18,20 @@ Ryan's shorthand for "finish and publish." Scope depends on what changed.
 3. **Fact-check + ledger.** Verify any factual claims and coinages (see the `credit-source`
    skill), then add/update the zine's entry in `FACTCHECK.md` (claims → sources → credits).
 4. **Log it publicly.** Add an entry to `changelog.html` (see *Changelog* below).
+5. **Rebuild the search index.** Any change to page *text* makes `search-index.json` stale —
+   new pieces become unfindable and old results point at spreads that moved:
+
+   ```bash
+   node tools/build-search-index.mjs
+   ```
+
+   Commit the regenerated JSON with the rest. `--check` exits non-zero if it's stale.
 5. **Commit & push.** `git add` the touched files; commit with a descriptive heredoc message;
    `git push`.
 
 ## Small edit (fast path)
 Fact-check the touched claims → log it in `changelog.html` if it changes what a piece *claims*
+→ **rebuild the search index if any page text changed** (`node tools/build-search-index.mjs`)
 → `git add` → commit → `git push`. Don't re-propose or widen scope.
 
 ## Changelog
@@ -49,5 +58,10 @@ passes do not.
   remote", that's infra (Netlify can't clone the repo), **not** a code bug — flag it to Ryan
   to reconnect the repo / deploy key rather than editing files.
 - Keep the browser-paged view and the `@media print` / `@page` rules in `starstuff.css` in sync.
+- **Print before shipping.** Browsers omit background graphics by default, so a page that
+  doesn't invert for print goes to paper blank. New pages get the inversion free *only* if they
+  alias the `--sp-*` tokens rather than hardcoding hexes.
+- **`search-index.json` is generated, never hand-edited.** If it conflicts in a merge, rerun
+  the generator rather than resolving the JSON by hand.
 
 _Draft scaffolded from session history — refine against the repo's actual conventions._

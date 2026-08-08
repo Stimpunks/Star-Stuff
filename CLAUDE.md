@@ -91,6 +91,41 @@ The central phrase compresses through registers, each with a use:
   and structure spreads as `.spread` (with a `.spread.active`), each with a `.spread-footer`
   containing a `.spread-footer-right` page counter. IDs run `spread-1..N` in document order.
 
+## Search (`search.html` + `search-index.json`)
+
+Client-side search over the whole collection. No dependencies, no server, no
+tracking — the query never leaves the reader's browser.
+
+- **`search-index.json` is a committed build artifact, and it goes stale.** Regenerate it
+  whenever page *text* changes and commit it alongside:
+
+  ```bash
+  node tools/build-search-index.mjs          # rewrites search-index.json
+  node tools/build-search-index.mjs --check  # non-zero exit if stale; writes nothing
+  ```
+
+  This is now a step in the `ship-zine` routine, next to the changelog entry. A stale index
+  means new pieces are unfindable and old results point at spreads that moved.
+- **The generator needs headless Chrome, and that is not incidental.** You cannot index this
+  site from its HTML source: the field guides build their entries from JS object literals, and
+  much of the zine text sits in spreads that are `display:none` until paged to. The script
+  loads each page, lets it render, and reads `textContent` — `innerText` skips anything not
+  currently laid out, which on `constellation-field-guide.html` alone drops ~89% of the words.
+  It strips `<script>`/`<style>` and the repeating nav chrome, and pads block boundaries so
+  `…a taker.` + `There's…` doesn't index as `taker.There's`.
+- **Netlify does not run it.** Still no build step; the script is a local dev tool.
+- **Granularity is the point.** One record per zine spread (`#spread-N`) and per field-guide
+  entry (`#entry-slug`), so a result lands on the passage rather than the top of a long page.
+  Pages that are a flat run of headings are chunked per heading, falling back to a
+  `#:~:text=` fragment where a heading has no `id`.
+- `starstuff.js` opens a deep-linked field-guide entry (they render collapsed), so a result
+  doesn't land on a closed card with the matched text still hidden.
+- **Don't add `cache: 'force-cache'` to the index fetch.** It pins the first copy a visitor
+  ever loaded, so they keep querying a stale index forever. Plain `fetch` lets Netlify's ETag
+  revalidate.
+- Every page reaches search through the `.ss-nav-search` pill in the nav cluster; `index.html`
+  has no `.ss-nav`, so it carries its own `.masthead-search` link.
+
 ## Design system
 
 - **Font URLs must be verified, not assumed.** Atkinson Hyperlegible Next publishes weights

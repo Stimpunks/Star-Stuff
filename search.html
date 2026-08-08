@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0a0a14">
+<link rel="canonical" href="https://starstuff.earth/search.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta name="description" content="Search the Star Stuff collection — every zine, field guide, and broadside, down to the individual spread. Runs entirely in your browser: no server, no tracking, no queries leaving your device.">
+<!-- Open Graph / link unfurl -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Star Stuff · Stimpunks Foundation">
+<meta property="og:url" content="https://starstuff.earth/search.html">
+<meta property="og:title" content="Search Star Stuff">
+<meta property="og:description" content="Search every zine, field guide, and broadside in the collection, down to the individual spread. Runs entirely in your browser — no queries leave your device.">
+<meta property="og:image" content="https://starstuff.earth/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A rainbow-hued cosmic image — we are all made of star stuff.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Search Star Stuff">
+<meta name="twitter:description" content="Search every zine, field guide, and broadside, down to the individual spread. Runs entirely in your browser.">
+<meta name="twitter:image" content="https://starstuff.earth/og-card.jpg">
+<title>Search — Star Stuff — Stimpunks Foundation</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="starstuff.css">
+<style>
+  :root {
+    --void:  var(--sp-void-deep);
+    --card:  var(--sp-card);
+    --violet:var(--sp-purple);
+    --pink:  var(--sp-pink);
+    --gold:  var(--sp-gold);
+    --cyan:  var(--sp-cyan);
+    --green: var(--sp-green);
+    /* One knob for this page's tint. Violet keeps Search distinct from About
+       (gold), Changelog (cyan) and Design (green). */
+    --accent: var(--sp-purple);
+    --star-white: var(--sp-white-soft);
+    --stardust:   var(--sp-secondary-soft);
+    --dim:   var(--sp-dim);
+    --dim2:  var(--sp-dim-soft);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--void);
+    font-family: 'Atkinson Hyperlegible Next', system-ui, sans-serif;
+    color: var(--star-white);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 8% 12%, rgba(251,191,36,0.85) 0%, transparent 100%),
+      radial-gradient(1px 1px at 22% 38%, rgba(244,244,251,0.6) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 44% 9%, rgba(244,114,182,0.7) 0%, transparent 100%),
+      radial-gradient(1px 1px at 61% 68%, rgba(34,211,238,0.6) 0%, transparent 100%),
+      radial-gradient(2px 2px at 74% 28%, rgba(167,139,250,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 84% 54%, rgba(74,222,128,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 91% 79%, rgba(244,244,251,0.7) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 4% 58%, rgba(251,191,36,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 34% 84%, rgba(244,244,251,0.6) 0%, transparent 100%),
+      radial-gradient(2px 2px at 19% 88%, rgba(167,139,250,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 69% 4%, rgba(244,244,251,0.8) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 30% 20%, rgba(74,222,128,0.5) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .doc-shell { position: relative; z-index: 1; max-width: 760px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+
+  .spectrum-line { height: 2px; border: none; border-radius: 2px; background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); }
+
+  .nav-brand { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--dim); margin: 1.6rem 0 2.5rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(167,139,250,0.2); }
+
+  .hero { margin-bottom: 2rem; }
+  .hero-eyebrow { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.36em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.3rem; }
+  .hero-title { font-weight: 700; font-size: clamp(2.1rem, 6vw, 3.4rem); line-height: 1.05; letter-spacing: -0.02em; color: var(--star-white); margin-bottom: 1.1rem; }
+  .hero-title em { font-style: normal; background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .hero-sub { font-size: 1.02rem; line-height: 1.6; color: var(--stardust); max-width: 38rem; }
+  .hero-rule { width: 200px; max-width: 55%; margin-top: 1.6rem; }
+
+  /* ── The search field ── */
+  .search-form { margin: 2rem 0 0.4rem; }
+  .search-label { display: block; font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.6rem; }
+  .search-row { display: flex; gap: 0.6rem; align-items: stretch; }
+  #q {
+    flex: 1;
+    background: var(--card);
+    border: 1px solid rgba(167,139,250,0.35);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 6px 6px 0;
+    color: var(--star-white);
+    font-family: 'Atkinson Hyperlegible Next', system-ui, sans-serif;
+    font-size: 1.05rem;
+    padding: 0.8rem 0.95rem;
+    min-width: 0;
+  }
+  #q::placeholder { color: var(--dim); opacity: 1; }
+  #q:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .search-clear {
+    background: none;
+    border: 1px solid rgba(167,139,250,0.35);
+    border-radius: 4px;
+    color: var(--stardust);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 0 1rem;
+    cursor: pointer;
+  }
+  .search-clear:hover { color: var(--star-white); border-color: var(--accent); }
+  .search-clear:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .status { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim); min-height: 1.4em; margin-bottom: 1.6rem; }
+
+  .hints { font-size: 0.92rem; line-height: 1.7; color: var(--stardust); margin-bottom: 2rem; }
+  .hints .try { display: inline-flex; flex-wrap: wrap; gap: 0.45rem; margin-top: 0.6rem; }
+  .hints button {
+    background: none;
+    border: 1px solid rgba(167,139,250,0.3);
+    border-radius: 999px;
+    color: var(--stardust);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.12em;
+    padding: 0.3rem 0.75rem;
+    cursor: pointer;
+  }
+  .hints button:hover { color: var(--star-white); border-color: var(--accent); }
+  .hints button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  /* ── Results ── */
+  .results { list-style: none; }
+  .results li { margin-bottom: 0.9rem; }
+  .hit {
+    display: block;
+    background: var(--card);
+    border: 1px solid rgba(167,139,250,0.16);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 8px 8px 0;
+    padding: 0.9rem 1.1rem;
+    text-decoration: none;
+    color: inherit;
+  }
+  .hit:hover, .hit:focus-visible { border-color: var(--accent); background: #131330; }
+  .hit:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .hit-where { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dim); margin-bottom: 0.35rem; }
+  .hit-title { font-weight: 700; font-size: 1.02rem; line-height: 1.3; color: var(--star-white); margin-bottom: 0.3rem; }
+  .hit-snip { font-size: 0.92rem; line-height: 1.65; color: var(--stardust); }
+  .hit-snip mark { background: rgba(251,191,36,0.22); color: var(--gold); font-weight: 700; padding: 0 0.1em; border-radius: 2px; }
+
+  .empty { font-size: 1rem; line-height: 1.7; color: var(--stardust); }
+  .empty strong { color: var(--star-white); }
+
+  .colophon-footer { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--dim); line-height: 2.2; margin-top: 3rem; padding-top: 1.4rem; border-top: 1px solid rgba(167,139,250,0.14); }
+  .colophon-footer a { color: var(--stardust); text-decoration: none; border-bottom: 1px solid rgba(167,139,250,0.2); }
+  .colophon-footer a:hover { color: var(--star-white); }
+
+  @media (max-width: 600px) {
+    .doc-shell { padding: 2rem 1.3rem 3rem; }
+    .search-row { flex-direction: column; }
+    .search-clear { padding: 0.6rem 1rem; }
+  }
+
+  /* Print: the field and the suggestion chips are controls, not content. Whatever
+     results are on screen print as a plain list — handy for taking a set of
+     references to the photocopier. Colours come from the shared sheet's inversion. */
+  @media print {
+    .search-form, .hints, .search-clear { display: none !important; }
+    .hit { border: 1px solid #ccc !important; border-left: 3px solid #444 !important; background: none !important; }
+    .hit-snip mark { background: none !important; font-weight: 700; }
+    .results li { page-break-inside: avoid; break-inside: avoid; }
+  }
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SearchResultsPage","name":"Search Star Stuff","description":"Search every zine, field guide and broadside in the Star Stuff collection, down to the individual spread. Runs entirely in the browser.","url":"https://starstuff.earth/search.html","isPartOf":{"@type":"WebSite","name":"Star Stuff","url":"https://starstuff.earth/"},"publisher":{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/","logo":{"@type":"ImageObject","url":"https://starstuff.earth/og-card.jpg"}}}</script>
+</head>
+<body>
+
+<div class="doc-shell">
+
+  <nav class="ss-nav" style="--nav-accent:#a78bfa;" aria-label="Star Stuff collection">
+    <span class="ss-nav-home-group">
+      <a class="ss-nav-home" href="index.html"><span class="ss-star" aria-hidden="true">★</span> stuff</a>
+      <a class="ss-nav-about" href="about.html">about</a>
+      <a class="ss-nav-search" href="search.html">search</a>
+    </span>
+  </nav>
+
+  <div class="nav-brand">Stimpunks · Search Star Stuff</div>
+
+  <header class="hero">
+    <div class="hero-eyebrow">Stimpunks Foundation · Find Anything</div>
+    <h1 class="hero-title">Search <em>Star Stuff</em></h1>
+    <p class="hero-sub">Every zine, field guide, and broadside — searchable down to the individual spread, so a result takes you to the page it's actually on. It runs entirely in your browser: nothing you type here leaves your device.</p>
+    <hr class="spectrum-line hero-rule">
+  </header>
+
+  <form class="search-form" role="search" onsubmit="return false;">
+    <label class="search-label" for="q">Search the collection</label>
+    <div class="search-row">
+      <input id="q" type="search" name="q" autocomplete="off" autocapitalize="none"
+             spellcheck="false" placeholder="monotropism, piezoelectric, Cavendish Space…"
+             aria-describedby="status">
+      <button class="search-clear" type="button" id="clear">Clear</button>
+    </div>
+  </form>
+
+  <p class="status" id="status" role="status" aria-live="polite"></p>
+
+  <div class="hints" id="hints">
+    <p>Searches match whole and partial words across every spread. Try:</p>
+    <span class="try">
+      <button type="button" data-q="monotropism">monotropism</button>
+      <button type="button" data-q="piezoelectric">piezoelectric</button>
+      <button type="button" data-q="Cavendish Space">Cavendish Space</button>
+      <button type="button" data-q="double empathy">double empathy</button>
+      <button type="button" data-q="Asasumasu">Asasumasu</button>
+      <button type="button" data-q="hydrofeminism">hydrofeminism</button>
+      <button type="button" data-q="crip time">crip time</button>
+    </span>
+  </div>
+
+  <ul class="results" id="results" aria-labelledby="status"></ul>
+
+  <div class="colophon-footer">
+    Stimpunks Foundation · <a href="https://starstuff.earth">starstuff.earth</a> · <a href="about.html">About</a> · <a href="design.html">Design</a> · <a href="changelog.html">Changelog</a><br>
+    Print freely · Share freely · <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> · L★S
+  </div>
+
+</div><!-- /doc-shell -->
+
+<script>
+(function () {
+  'use strict';
+
+  var qEl = document.getElementById('q');
+  var statusEl = document.getElementById('status');
+  var resultsEl = document.getElementById('results');
+  var hintsEl = document.getElementById('hints');
+  var clearEl = document.getElementById('clear');
+
+  var index = null;      // { pages: [[file, title]], recs: [[pageIdx, frag, heading, text]] }
+  var loading = null;    // in-flight promise, so racing keystrokes fetch once
+  var MAX = 40;
+
+  /* Fold case and accents so "Knauss" finds "Knauß"'s neighbours and "Rasalhague"
+     finds "Rās al-Ḥawwāʾ" — the star names in the field guides carry macrons and
+     dots. This deliberately does NOT use normalize('NFD'): decomposing "ü" into
+     "u" + a combining mark makes the folded string longer than the original, and
+     the snippet code finds a match offset in the folded text and then slices the
+     *raw* text at it. One accented character upstream and every snippet on the
+     page would be cut a character short. So the fold is strictly 1:1. */
+  var FOLD_FROM = 'àáâãäåçèéêëìíîïñòóôõöùúûüýÿāēīōūǎḥśṣṭḍžğşł';
+  var FOLD_TO   = 'aaaaaaceeeeiiiinooooouuuuyyaeiouahsstdzgsl';
+  function fold(s) {
+    s = s || '';
+    var out = '';
+    for (var i = 0; i < s.length; i++) {
+      var ch = s[i];
+      var lower = ch.toLowerCase();
+      if (lower.length !== 1) lower = ch;   // e.g. 'İ' lowercases to two chars
+      var j = FOLD_FROM.indexOf(lower);
+      out += j === -1 ? lower : FOLD_TO[j];
+    }
+    return out;
+  }
+  function escapeHtml(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+
+  /* The index is ~170KB gzipped, so it is fetched on first use rather than on
+     page load — someone who lands here and leaves pays nothing. */
+  function loadIndex() {
+    if (index) return Promise.resolve(index);
+    if (loading) return loading;
+    setStatus('Loading the index…');
+    /* Deliberately NOT cache:'force-cache'. That pins the first copy a visitor
+       ever fetched, so anyone who searched once would keep querying a stale index
+       after new zines shipped — results pointing at spreads that had moved, and
+       new pieces missing entirely. Plain fetch lets Netlify's ETag revalidate:
+       one conditional request, a 304 in the common case. */
+    loading = fetch('search-index.json')
+      .then(function (r) {
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        return r.json();
+      })
+      .then(function (data) {
+        index = data;
+        /* Pre-fold once. Searching 425 records per keystroke is trivial; folding
+           480,000 characters per keystroke is not. */
+        index.recs.forEach(function (r) {
+          r[4] = fold(r[3]);
+          r[5] = fold(r[2] + ' ' + index.pages[r[0]][1]);
+        });
+        return index;
+      })
+      .catch(function (err) {
+        loading = null;
+        setStatus('Could not load the search index (' + err.message + ').');
+        resultsEl.innerHTML =
+          '<li class="empty">The index failed to load, so search is unavailable right now. ' +
+          'You can still browse everything from the <a href="index.html">front page</a>, ' +
+          'and every piece is a single self-contained page you can search with your ' +
+          "browser's own Find (Cmd/Ctrl+F).</li>";
+        throw err;
+      });
+    return loading;
+  }
+
+  function setStatus(t) { statusEl.textContent = t; }
+
+  function score(rec, tokens, phrase) {
+    var body = rec[4], head = rec[5], s = 0;
+    for (var i = 0; i < tokens.length; i++) {
+      var t = tokens[i];
+      var inHead = head.indexOf(t) !== -1;
+      var at = body.indexOf(t);
+      if (at === -1 && !inHead) return 0;          // every token must appear somewhere
+      if (inHead) s += 12;
+      if (at !== -1) {
+        s += 4;
+        /* Whole-word hits beat hits inside a longer word. */
+        var re = new RegExp('\\b' + t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g');
+        var m = body.match(re);
+        if (m) s += Math.min(m.length, 6) * 2;
+      }
+    }
+    if (phrase && body.indexOf(phrase) !== -1) s += 25;   // exact phrase
+    if (phrase && head.indexOf(phrase) !== -1) s += 40;
+    return s;
+  }
+
+  function snippet(rec, tokens, phrase) {
+    var raw = rec[3], body = rec[4];
+    var needle = (phrase && body.indexOf(phrase) !== -1) ? phrase : null;
+    var at = -1;
+    if (needle) at = body.indexOf(needle);
+    if (at === -1) {
+      for (var i = 0; i < tokens.length; i++) {
+        at = body.indexOf(tokens[i]);
+        if (at !== -1) { needle = tokens[i]; break; }
+      }
+    }
+    if (at === -1) { at = 0; needle = ''; }
+    var start = Math.max(0, at - 90);
+    var end = Math.min(raw.length, at + (needle.length || 0) + 150);
+    /* Don't cut mid-word at the edges. */
+    if (start > 0) { var sp = raw.indexOf(' ', start); if (sp > -1 && sp < at) start = sp + 1; }
+    if (end < raw.length) { var sp2 = raw.lastIndexOf(' ', end); if (sp2 > at) end = sp2; }
+    var text = (start > 0 ? '…' : '') + raw.slice(start, end) + (end < raw.length ? '…' : '');
+
+    /* Highlight every token, on the escaped string, matching case-insensitively
+       and accent-insensitively via the folded copy's offsets. */
+    var out = escapeHtml(text);
+    var marks = tokens.slice();
+    if (phrase) marks.unshift(phrase);
+    marks.forEach(function (t) {
+      if (!t) return;
+      var re = new RegExp('(' + t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi');
+      out = out.replace(re, function (m, g1, off, whole) {
+        /* Don't wrap inside an existing tag or entity. */
+        var before = whole.slice(0, off);
+        if (/<[^>]*$/.test(before) || /&[^;]*$/.test(before)) return m;
+        return '<mark>' + g1 + '</mark>';
+      });
+    });
+    return out;
+  }
+
+  function label(file, frag) {
+    var pretty = file.replace(/\.html$/, '');
+    if (/^#spread-(\d+)$/.test(frag)) return pretty + ' · spread ' + frag.match(/\d+/)[0];
+    return pretty;
+  }
+
+  function render(query) {
+    var folded = fold(query).trim();
+    var tokens = folded.split(/\s+/).filter(function (t) { return t.length >= 2; });
+    if (!tokens.length) {
+      resultsEl.innerHTML = '';
+      hintsEl.hidden = false;
+      setStatus('');
+      return;
+    }
+    hintsEl.hidden = true;
+    var phrase = tokens.length > 1 ? folded : null;
+
+    var hits = [];
+    for (var i = 0; i < index.recs.length; i++) {
+      var s = score(index.recs[i], tokens, phrase);
+      if (s > 0) hits.push([s, index.recs[i]]);
+    }
+    hits.sort(function (a, b) { return b[0] - a[0]; });
+
+    if (!hits.length) {
+      resultsEl.innerHTML =
+        '<li class="empty">No matches for <strong>' + escapeHtml(query) + '</strong>. ' +
+        'Try a single distinctive word — a name, a coinage, a phrase from a poem. ' +
+        'Every token has to appear somewhere in the same spread, so fewer words find more.</li>';
+      setStatus('0 results');
+      return;
+    }
+
+    var shown = hits.slice(0, MAX);
+    var html = '';
+    for (var j = 0; j < shown.length; j++) {
+      var rec = shown[j][1];
+      var page = index.pages[rec[0]];
+      var href = page[0] + (rec[1] || '');
+      var title = rec[2] || page[1];
+      html +=
+        '<li><a class="hit" href="' + escapeHtml(href) + '">' +
+        '<div class="hit-where">' + escapeHtml(label(page[0], rec[1] || '')) + '</div>' +
+        '<div class="hit-title">' + escapeHtml(title) + '</div>' +
+        '<div class="hit-snip">' + snippet(rec, tokens, phrase) + '</div>' +
+        '</a></li>';
+    }
+    resultsEl.innerHTML = html;
+    setStatus(
+      hits.length + (hits.length === 1 ? ' result' : ' results') +
+      (hits.length > MAX ? ' · showing the top ' + MAX : '')
+    );
+  }
+
+  var timer = null;
+  function onInput() {
+    var v = qEl.value;
+    /* Keep the query in the URL so a search is linkable and survives reload. */
+    var url = v ? 'search.html?q=' + encodeURIComponent(v) : 'search.html';
+    history.replaceState(null, '', url);
+    clearTimeout(timer);
+    if (!v.trim()) { render(''); return; }
+    timer = setTimeout(function () {
+      loadIndex().then(function () { render(qEl.value); }).catch(function () {});
+    }, 120);
+  }
+
+  qEl.addEventListener('input', onInput);
+
+  clearEl.addEventListener('click', function () {
+    qEl.value = '';
+    onInput();
+    qEl.focus();
+  });
+
+  qEl.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') { qEl.value = ''; onInput(); return; }
+    if (e.key === 'ArrowDown') {
+      var first = resultsEl.querySelector('.hit');
+      if (first) { e.preventDefault(); first.focus(); }
+    }
+  });
+
+  /* Arrow keys walk the result list; typing anything jumps back to the field. */
+  resultsEl.addEventListener('keydown', function (e) {
+    var links = [].slice.call(resultsEl.querySelectorAll('.hit'));
+    var i = links.indexOf(document.activeElement);
+    if (i === -1) return;
+    if (e.key === 'ArrowDown' && i < links.length - 1) { e.preventDefault(); links[i + 1].focus(); }
+    else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      if (i === 0) qEl.focus(); else links[i - 1].focus();
+    }
+  });
+
+  hintsEl.addEventListener('click', function (e) {
+    var b = e.target.closest('button[data-q]');
+    if (!b) return;
+    qEl.value = b.getAttribute('data-q');
+    qEl.focus();
+    onInput();
+  });
+
+  /* Deep link: /search.html?q=… runs the search on load. */
+  var initial = new URLSearchParams(location.search).get('q');
+  if (initial) {
+    qEl.value = initial;
+    loadIndex().then(function () { render(initial); }).catch(function () {});
+  }
+  qEl.focus({ preventScroll: true });
+})();
+</script>
+
+</body>
+</html>

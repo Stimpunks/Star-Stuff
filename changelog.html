@@ -191,6 +191,7 @@
     <span class="ss-nav-home-group">
       <a class="ss-nav-home" href="index.html"><span class="ss-star" aria-hidden="true">★</span> stuff</a>
       <a class="ss-nav-about" href="about.html">about</a>
+      <a class="ss-nav-search" href="search.html">search</a>
     </span>
   </nav>
 
@@ -275,6 +276,15 @@
       <div class="entry-body">
         <p>The collection was split across two versions of its typeface — 26 pages on the original Atkinson Hyperlegible, 18 on Atkinson Hyperlegible Next. All 44 Atkinson pages are now on Next. The switch cost nothing in layout: the same string at 16px measured 286.97px before and 286.78px after, and across 126 measured text blocks not one changed height, width, or line count.</p>
         <p>The sweep uncovered a worse problem. Every page requesting Next asked Google Fonts for a <code>200..900</code> weight range, but Next publishes <strong>200–800</strong>. The request returned <strong>HTTP 400 and no <code>@font-face</code> rules at all</strong>, so those pages fell back to <code>system-ui</code> for every visitor without the font already installed — which is very nearly everyone. A typeface chosen precisely because it was drawn for readers the standard face fails had not been reaching them. It went unnoticed because the font <em>is</em> installed on the machine where these pages get built, so it looked right here and nowhere else. Corrected to <code>200..800</code>, verified by confirming the woff2 now downloads. All four of the collection's Google Fonts URLs were re-checked; the rest were fine.</p>
+      </div>
+    </div>
+
+    <div class="entry entry--new">
+      <div class="entry-head"><span class="tag tag--new">New piece</span><span class="entry-name">The collection is searchable</span></div>
+      <div class="entry-body">
+        <p><a href="search.html">Search</a> covers every zine, field guide and broadside — <strong>425 records</strong> across 47 pages, one per zine spread and one per field-guide entry, so a result opens the passage rather than dumping you at the top of a long page. It runs entirely in your browser: no server, no dependencies, no analytics, and nothing you type leaves your device. There's a <em>search</em> pill in the nav on every page.</p>
+        <p>Two things about this collection made it more interesting than it sounds. The field guides build their entries from data in JavaScript rather than writing them into the HTML, and most zine text sits in spreads that are hidden until you page to them — so the index can't be built by reading the HTML source. It's generated from each page as a browser actually renders it. On the constellation guide, the naive approach would have captured 4,910 characters where the real content is 42,785.</p>
+        <p>The other thing: field-guide entries keep their notes collapsed, so a link straight to one used to land on a closed card with the matched text still hidden. Entries now carry real ids and open when linked, which makes all seventy of them individually shareable — useful well beyond search.</p>
       </div>
     </div>
 
