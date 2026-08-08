@@ -5,7 +5,8 @@ Guidance for Claude Code working in this repository.
 ## What this project is
 
 **Star Stuff** (live at **https://starstuff.earth/**) is a collection of printable, shareable
-web artifacts from the **Stimpunks Foundation** — a family of self-contained HTML zines, field
+web artifacts — an official collaboration between the **Stimpunks Foundation** and **More Realms**
+(https://morerealms.com/), Helen Edgar's site. It is a family of self-contained HTML zines, field
 guides, and broadsides built around one idea, stated as an act of love: *the universe doesn't
 pathologize its own variation.*
 
@@ -85,11 +86,44 @@ The central phrase compresses through registers, each with a use:
   Full-bleed pages add `ss-nav--bleed` for edge padding. Use `.ss-nav-label` for destination
   names (auto-hidden on narrow screens; arrows remain).
 - Include full head metadata like the existing pages: canonical URL, description, Open Graph +
-  Twitter card tags pointing at `og-card.jpg` (1200×630), and JSON-LD `Article` schema attributing
-  Stimpunks Foundation.
+  Twitter card tags pointing at `og-card.jpg` (1200×630), and JSON-LD `Article` schema. Two fixed
+  values: `og:site_name` is `Star Stuff · Stimpunks Foundation × More Realms`, and `publisher` is an
+  **array of both organizations** — Stimpunks Foundation (`https://stimpunks.org/`, with the
+  `og-card.jpg` logo) then More Realms (`https://morerealms.com/`). See *Co-branding* below.
 - Paged zines: include `<script src="starstuff.js"></script>`, expose a global `changePage(dir)`,
   and structure spreads as `.spread` (with a `.spread.active`), each with a `.spread-footer`
   containing a `.spread-footer-right` page counter. IDs run `spread-1..N` in document order.
+
+### Co-branding (Stimpunks Foundation × More Realms)
+
+The site is a collaboration, and every page says so. **Stimpunks always comes first, and the two
+carry equal weight** — never shrink one to a courtesy mention. Three forms, and no fourth:
+
+| Form | Where it goes |
+|------|---------------|
+| `Stimpunks Foundation × More Realms` | colophon footers, `.hero-eyebrow` / `.masthead-eyebrow`, `og:site_name`, JSON-LD `publisher` |
+| `Stimpunks × More Realms` | tight monospace slots — `.nav-brand`, `.cover-issue`, index `.card-series` |
+| `stimpunks.org · morerealms.com · starstuff.earth` | the URL trio in colophon footers |
+
+- **`×` is the collaboration mark and only that.** `·` stays the house separator, so don't write
+  the pairing with a `·` — it disappears into the surrounding list.
+- Link both names with the shared **`.ss-cobrand`** class (`starstuff.css`), which makes them
+  inherit the surrounding color and take a faint underline, so the pair reads as one mark instead
+  of two highlighted links. Its selector is deliberately over-specific (`a.ss-cobrand.ss-cobrand:link`,
+  0-3-1) because this sheet loads *before* each page's inline `<style>` — a page rule at 0-2-1
+  silently won and stripped the underline on `ls-playlist.html`. Don't "simplify" it back.
+- **Covers and print-first sheets carry the pairing as plain text** (`.cover-issue`,
+  `ls-broadside.html`, `manifesto.html`'s closing stamp) — no links, because tracked-out uppercase
+  underlines read badly and these are artifacts meant for paper.
+- **The running per-spread foot (`.spread-footer-left`) stays `Title · Stimpunks`.** It is a short
+  running mark, not an attribution block, and at 0.28em tracking the full pairing measures 455px
+  in a ~280px slot. Left deliberately; don't "fix" it without re-measuring.
+- **Per-piece credit stays exact underneath the co-branding.** Where a zine is Helen Edgar's, it
+  is hers and says so (Nos. 11, 28, 30 in her own voice; No. 29 developed after her essay). The
+  masthead is shared; authorship is not.
+- **`<title>`**: site-level pages end `— Stimpunks × More Realms` (short form, to stay scannable in
+  a tab and a search result). A zine's `— Stimpunks Zine No. N` is a *series designation*, not an
+  org attribution, and stays as it is.
 
 ## Search (`search.html` + `search-index.json`)
 

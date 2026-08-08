@@ -165,12 +165,60 @@
    with the page's own edge padding. */
 .ss-nav--bleed { padding: 1.5rem 2.5rem 1rem; }
 
+/* ==========================================================================
+   CO-BRANDING — Stimpunks Foundation × More Realms
+   Star Stuff is a collaboration between the Stimpunks Foundation and Helen
+   Edgar's More Realms. Both names appear together wherever the collection
+   attributes itself, Stimpunks first and both at equal weight.
+
+   Forms, so the pairing stays consistent:
+     full   Stimpunks Foundation × More Realms   colophons, eyebrows,
+                                                 og:site_name, JSON-LD publisher
+     short  Stimpunks × More Realms              tight mono slots — the zine
+                                                 brand line, covers, index cards
+     urls   stimpunks.org · morerealms.com · starstuff.earth
+   "×" is the collaboration mark and only ever that; "·" stays the house
+   separator. Covers and other print-first sheets carry the pairing as plain
+   text; everywhere else both names link out via .ss-cobrand.
+
+   The pair should read as one mark, not two highlighted links, so it inherits
+   the surrounding color and takes a faint underline instead.
+
+   The selector is deliberately over-specific. This sheet loads *before* each
+   page's inline <style>, so a page rule of equal specificity wins on order, and
+   the pages style their links at whatever specificity the local markup needed —
+   `.colophon-footer a` is 0-1-1, but ls-playlist.html has
+   `.lyss-playlist .lp-footer a` at 0-2-1, which tied with a plain
+   `a.ss-cobrand:link` and silently stripped the underline (measured, not
+   guessed). Doubling the class plus :link/:visited puts this at 0-3-1: above
+   any two-class page rule, still overridable by a page that means to. Cheaper
+   than !important, which would take the pair out of a page's hands entirely.
+   ========================================================================== */
+a.ss-cobrand.ss-cobrand:link,
+a.ss-cobrand.ss-cobrand:visited {
+  color: inherit;
+  border-bottom: 0;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-decoration-color: rgba(167, 139, 250, 0.5);
+  text-underline-offset: 0.24em;
+}
+
+a.ss-cobrand.ss-cobrand:hover,
+a.ss-cobrand.ss-cobrand:focus-visible { text-decoration-color: currentColor; }
+
 @media (max-width: 600px) {
   .ss-nav { font-size: 0.6875rem; letter-spacing: 0.1em; gap: 0.5rem; }
   .ss-nav-links { gap: 0.85rem; }
   .ss-nav--bleed { padding: 1.25rem 1.5rem 0.85rem; }
   /* Keep the arrows on small screens; drop the destination labels. */
   .ss-nav-label { display: none; }
+
+  /* The zine brand line now carries both organizations and shares its row with
+     the page controls. Give it back the room by loosening the wide display
+     tracking; `.nav .nav-brand` (0-2-0) clears each zine's own `.nav-brand`
+     rule (0-1-0), which sets 0.35em. */
+  .nav .nav-brand { letter-spacing: 0.16em; }
 }
 
 @media print {
@@ -261,6 +309,12 @@
 
   /* Links: keep them identifiable by underline, not by an unreadable accent. */
   a { color: #111111 !important; }
+
+  /* The co-brand pair underlines itself in faint violet on screen, which lands on
+     paper as a nearly invisible line. text-decoration-color is not a background,
+     so it prints — it just needs to be ink. */
+  a.ss-cobrand.ss-cobrand:link,
+  a.ss-cobrand.ss-cobrand:visited { text-decoration-color: #444444; }
 
   /* ── SVG diagrams ──
      The diagrams are content, not ornament, and SVG paints with fill/stroke —

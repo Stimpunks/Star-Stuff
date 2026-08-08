@@ -1,6 +1,7 @@
 # Star Stuff
 
-**A collection of printable, shareable web artifacts from [Stimpunks Foundation](https://stimpunks.org/star-stuff/).**
+**A collection of printable, shareable web artifacts — a collaboration between
+[Stimpunks Foundation](https://stimpunks.org/star-stuff/) and [More Realms](https://morerealms.com/).**
 
 *Love You Down To Your Star Stuff.*
 
@@ -13,6 +14,33 @@
 The framing braids two threads together. From Carl Sagan's cosmology: the calcium in your bones, the nitrogen in your DNA, the iron in your blood were all forged inside dying stars — you are, literally, star stuff. From Dr. Iwao Yasuda's 1950s discovery: bone is *piezoelectric*, a crystalline lattice that turns pressure into electrical charge, so your skeleton is quietly generating voltage with every step. Put those together under the neurodiversity paradigm and you get the through-line of the whole collection — that difference is variation, not deficit, and that a cosmos which doesn't rank its own patterns is the right scale at which to think about human minds.
 
 Each piece here is a single HTML file with no build step and no dependencies beyond web fonts. They're made to be read on screen, embedded, or printed and handed to someone who needs one.
+
+## Stimpunks Foundation × More Realms
+
+*Star Stuff* is an official collaboration between the **Stimpunks Foundation** — a 501(c)(3)
+nonprofit built by and for neurodivergent and disabled people, and the knowledge garden this
+collection flowers from — and **[More Realms](https://morerealms.com/)**, Helen Edgar's
+speculative companion to her [Autistic Realms](https://autisticrealms.com/). Helen's writing is
+one of the collection's sources and much of its weather: *Why Difference Comes First*, *We Are
+Made of Relations*, *My Monotropic Galaxy*, the shared-air and shared-signal coinages, and the
+constellation reading of the spiky profile all arrived here from her two sites. Three zines
+(Nos. 11, 28, 30) are hers outright; No. 29 was developed after her essay; her work is named and
+cited across much of the rest.
+
+Both organizations appear together wherever the collection attributes itself — Stimpunks first,
+equal weight — in three fixed forms:
+
+| Form | Where |
+|------|-------|
+| `Stimpunks Foundation × More Realms` | colophons, page eyebrows, `og:site_name`, JSON-LD `publisher` |
+| `Stimpunks × More Realms` | tight monospace slots — the zine brand line, covers, index cards |
+| `stimpunks.org · morerealms.com · starstuff.earth` | the URL trio in colophon footers |
+
+`×` is the collaboration mark and nothing else; `·` stays the house separator. Both names link
+out via the shared `.ss-cobrand` class in `starstuff.css`, which makes them inherit the
+surrounding color so the pair reads as one mark. Covers and print-first sheets carry the pairing
+as plain text. Per-piece credits stay exact underneath the co-branding: where a piece is Helen's,
+it says so and it is hers.
 
 ## The shorthand
 
