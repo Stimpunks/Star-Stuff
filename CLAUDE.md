@@ -159,6 +159,22 @@ tracking — the query never leaves the reader's browser.
   entry (`#entry-slug`), so a result lands on the passage rather than the top of a long page.
   Pages that are a flat run of headings are chunked per heading, falling back to a
   `#:~:text=` fragment where a heading has no `id`.
+- **Coverage is checked, not assumed.** The generic chunker matches a page's repeating unit
+  (`section`, `.card`, `.entry`, `.scale`, `.lp-card`), and a page whose repeating unit holds
+  almost none of its prose used to sail through: `about.html` has exactly three `.scale` blocks, so
+  a `records.length < 3` gate saw "3 records, fine" and shipped **12% of the page**. Fixed
+  2026-08-08 by measuring instead of counting — each page's records are compared against
+  `textOf(main)`, and below **`COVERAGE_FLOOR` (0.9)** the extractor re-segments by heading, then
+  appends a remainder record for anything still unclaimed. The run now prints a coverage
+  percentage per page and a warning list at the end, because *a page that indexes 12% of itself
+  looks exactly like a healthy one if all you print is the record count.* **If a new page reports
+  under 100%, give it real headings or add its container to the chunk selector — don't ignore it.**
+- **Duplicate presentations get stripped, not indexed twice.** `ls-playlist.html` lists every song
+  as a `.lp-card` (with the note explaining it) *and* again as a flat `.lp-row` link list; the rows
+  are in `CHROME_SEL`. The co-brand eyebrows (`.nav-brand`, `.hero-eyebrow`, `.masthead-eyebrow`,
+  `.cover-issue`) are stripped for the same reason — the pairing is on all 51 pages, so as an
+  indexed string it carried no information. Colophons keep it, and that's correct: they hold the
+  sources and credits, and `search.html` scores heading and repeat matches above one incidental hit.
 - `starstuff.js` opens a deep-linked field-guide entry (they render collapsed), so a result
   doesn't land on a closed card with the matched text still hidden.
 - **Don't add `cache: 'force-cache'` to the index fetch.** It pins the first copy a visitor

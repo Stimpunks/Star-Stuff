@@ -60,11 +60,33 @@ const EXTRACT = String.raw`(() => {
 
   /* Chrome that repeats on every page would otherwise be indexed 400+ times and
      match every query. Also drop script/style: we read textContent, so their
-     source would come through as words. */
+     source would come through as words.
+
+     The brand lines were added to this list on 2026-08-08, when co-branding put
+     "Stimpunks Foundation × More Realms" into the eyebrow of all 51 pages, and a
+     string on every page is noise by definition. Their page-specific tails
+     ("· Field Guide No. 1") go too, which is a small loss — document.title still
+     carries the piece's number.
+
+     This does not make the pair rare: colophons carry it as well, and colophons
+     stay indexed because they hold the sources, credits and licence. About 42
+     records still contain it, which is fine — search.html scores heading matches
+     and repeat hits above a single incidental one, so the pieces that actually
+     discuss More Realms still sort to the top. Stripping the eyebrows removes the
+     duplication that carried no information; it doesn't pretend to remove the
+     phrase. */
   const CHROME_SEL = [
     'script', 'style', 'noscript', 'template',
     '.ss-nav', '.nav', '.spread-footer-nav', '.spread-nav-btn',
     '.twinkle', '.sp-twinkle', '.controls', '.print-hint',
+    '.nav-brand', '.hero-eyebrow', '.masthead-eyebrow', '.cover-issue',
+    /* ls-playlist.html renders its songs twice: once as .lp-card, with the note
+       saying why the song is here, and again as a flat .lp-row list headed "for
+       building your Spotify and YouTube playlists manually" — same songs, same
+       artists, same links, no prose. Indexing both put every song title in two
+       records, one of which was 50 characters of nothing but the title. The cards
+       are the content; the rows are a link list. */
+    '.lp-row',
   ].join(',');
 
   /* Blocks that sit flush against each other in the source concatenate under
@@ -99,7 +121,8 @@ const EXTRACT = String.raw`(() => {
   const headingOf = (el) =>
     textOf(
       el.querySelector(
-        'h1,h2,h3,.spread-heading,.cover-title,.section-heading,.entry-name,.release-title,.card-title'
+        'h1,h2,h3,.spread-heading,.cover-title,.section-heading,.entry-name,' +
+          '.release-title,.card-title,.stanza-mark,.lp-song'
       )
     );
 
@@ -132,55 +155,144 @@ const EXTRACT = String.raw`(() => {
   const main =
     document.querySelector('main, .doc-shell, .wrap, .stimpunks-manifesto, .sp-wrap') ||
     document.body;
+  /* .lp-card, not .lp-row — see the CHROME_SEL note. Matching the row indexed 26
+     records averaging 50 characters and left 84% of the playlist unfindable. */
   const chunks = [
-    ...main.querySelectorAll('section, article, .card, .entry, .sp-section, .scale, .lp-row'),
+    ...main.querySelectorAll('section, article, .card, .entry, .sp-section, .scale, .lp-card'),
   ];
   const seen = new Set();
+  const kept = [];
   for (const c of chunks) {
     /* Skip a chunk whose text is already covered by an ancestor chunk. */
     if (chunks.some((o) => o !== c && o.contains(c))) continue;
     const t = textOf(c);
     if (seen.has(t)) continue;
     seen.add(t);
+    const before = records.length;
     push(c.id ? '#' + c.id : '', headingOf(c), t);
+    if (records.length > before) kept.push(c);
   }
 
-  /* 3b. Pages built as a flat run of headings and paragraphs — no sections at
-         all — would otherwise become one enormous record, so a match anywhere
-         would dump the reader at the top of a 40,000-character page. Walk the
-         heading run instead and cut a record at each one. Where the heading has
-         no id to link to, fall back to a text fragment (#:~:text=), which
-         scrolls and highlights in Chrome, Edge and Safari and degrades to
-         "top of page" everywhere else. */
+  /* 3b. Segment by heading instead, when the chunker didn't actually cover the
+         page. Two different failures land here:
+
+         (a) A page that is a flat run of headings and paragraphs with no
+             section/card elements at all produces no chunks, and would become one
+             enormous record where a match anywhere dumps the reader at the top of
+             a 40,000-character page.
+
+         (b) A page whose chunk selectors match a few elements that hold almost
+             none of its prose. about.html has exactly three .scale blocks, so the
+             old records.length < 3 gate saw "3 records, good enough" and shipped
+             12% of the page — the entire collaboration section, the method, the
+             callouts and the sources note were unsearchable for the life of the
+             index. Counting records cannot detect that; only measuring coverage
+             can. Hence COVERAGE_FLOOR, checked against textOf(main).
+
+         Where the heading has no id to link to, fall back to a text fragment
+         (#:~:text=), which scrolls and highlights in Chrome, Edge and Safari and
+         degrades to "top of page" everywhere else. */
   const HEAD = 'h1,h2,h3';
-  if (records.length < 3) {
-    const heads = [...main.querySelectorAll(HEAD)].filter((h) => textOf(h));
-    if (heads.length >= 3) {
+  /* 0.9, not something laxer: ls-playlist.html sat at 88% with its whole
+     introduction and colophon uncovered, and that is exactly the kind of gap
+     nobody notices. The remainder path below only ever appends text no record
+     claimed, so a higher floor cannot double-index anything. */
+  const COVERAGE_FLOOR = 0.9;
+
+  /* Assign every word in root to the nearest preceding heading, so the page is
+     covered exactly once with no gaps.
+
+     This walks text nodes rather than collecting each heading's following
+     siblings, and that is the whole point: prose in a different subtree from its
+     heading belongs to no heading's sibling list. On about.html the <h1> lives in
+     <header class="hero"> while the intro paragraphs live in the next-door
+     <div class="body-text">, so a sibling walk from the h1 ran out of siblings
+     inside <header> and silently dropped ~1,100 characters. Document order
+     doesn't care about subtrees. */
+  const segmentByHeading = (root) => {
+    const clone = root.cloneNode(true);
+    clone.querySelectorAll(CHROME_SEL).forEach((n) => n.remove());
+    clone.querySelectorAll(BLOCK_SEL).forEach((n) => {
+      n.parentNode && n.parentNode.insertBefore(document.createTextNode(' '), n);
+      n.appendChild(document.createTextNode(' '));
+    });
+
+    const out = [];
+    /* The lead segment holds anything before the first heading. It takes the
+       page's own heading as its title, and is dropped by the length filter when
+       it is only an eyebrow. */
+    let cur = { frag: '', heading: headingOf(root), parts: [] };
+    const flush = () => {
+      const text = squash(cur.parts.join(' '));
+      if (text.length >= 40) out.push({ frag: cur.frag, heading: squash(cur.heading), text });
+    };
+
+    const walker = document.createTreeWalker(
+      clone,
+      NodeFilter.SHOW_ELEMENT | NodeFilter.SHOW_TEXT
+    );
+    for (let n = walker.nextNode(); n; n = walker.nextNode()) {
+      if (n.nodeType === 1) {
+        if (!n.matches(HEAD)) continue;
+        const h = squash(n.textContent);
+        if (!h) continue;
+        flush();
+        /* Start the segment empty — the walker is about to descend into this
+           heading's own text nodes, which the branch below collects. Seeding
+           parts with h here would index the heading twice. */
+        cur = {
+          frag: n.id
+            ? '#' + n.id
+            : '#:~:text=' + encodeURIComponent(h.split(/\s+/).slice(0, 8).join(' ')),
+          heading: h,
+          parts: [],
+        };
+      } else {
+        cur.parts.push(n.textContent);
+      }
+    }
+    flush();
+    return out;
+  };
+
+  const mainLen = textOf(main).length;
+  const coverageOf = () =>
+    mainLen ? records.reduce((a, r) => a + r.text.length, 0) / mainLen : 1;
+
+  if (records.length < 3 || coverageOf() < COVERAGE_FLOOR) {
+    const segs = segmentByHeading(main);
+    /* Only swap if the segmenter actually did better — a page with one heading
+       and no sections is still better served by the whole-page fallback below. */
+    const segLen = segs.reduce((a, r) => a + r.text.length, 0);
+    if (segs.length >= 2 && (!mainLen || segLen / mainLen > coverageOf())) {
       records.length = 0;
-      heads.forEach((h, i) => {
-        const stop = heads[i + 1];
-        const headText = textOf(h);
-        const parts = [headText];
-        /* Collect siblings after the heading until the next heading. Headings are
-           not always siblings of their prose, so climb to a common depth first. */
-        let node = h;
-        while (node && node.parentElement !== main && !node.nextElementSibling) node = node.parentElement;
-        for (let n = node && node.nextElementSibling; n; n = n.nextElementSibling) {
-          if (stop && (n === stop || n.contains(stop))) break;
-          if (n.matches && n.matches(HEAD)) break;
-          parts.push(textOf(n));
-        }
-        const heading = headText;
-        const frag = h.id
-          ? '#' + h.id
-          : '#:~:text=' + encodeURIComponent(heading.split(/\s+/).slice(0, 8).join(' '));
-        push(frag, heading, squash(parts.join(' ')));
-      });
+      records.push(...segs);
+      kept.length = 0;
     }
   }
 
+  /* 3c. Remainder. A chunk selector matches a page's repeating unit, not the
+         prose around it, and heading segmentation can't rescue a page that has
+         no headings to segment on. inclusion-safety-creed.html is both: six
+         <section class="stanza"> blocks are 72% of it and a single <h1>, so its
+         opening lines and its closing quotes belonged to no record at all.
+         Index whatever no chunk claimed, as one more record, rather than losing
+         it. Marking the originals and deleting them from a clone is what keeps
+         this exact — no guessing, and no text counted twice. */
+  if (kept.length && coverageOf() < COVERAGE_FLOOR) {
+    kept.forEach((c) => c.setAttribute('data-ss-chunk', ''));
+    const rest = main.cloneNode(true);
+    rest.querySelectorAll('[data-ss-chunk]').forEach((n) => n.remove());
+    kept.forEach((c) => c.removeAttribute('data-ss-chunk'));
+    push('', headingOf(main), textOf(rest));
+  }
+
   if (!records.length) push('', headingOf(main), textOf(main));
-  return JSON.stringify({ title: document.title, records });
+  return JSON.stringify({
+    title: document.title,
+    records,
+    coverage: mainLen ? Math.round(coverageOf() * 100) : 100,
+  });
 })()`;
 
 /* ─── minimal CDP client ─────────────────────────────────────────────────────── */
@@ -244,6 +356,7 @@ async function main() {
 
   const pages = [];
   const recs = [];
+  const thin = [];
   try {
     for (const f of files) {
       const out = await withPage(`file://${path.join(ROOT, f)}`, async (send) => {
@@ -254,7 +367,14 @@ async function main() {
       });
       const pi = pages.push([f, out.title]) - 1;
       for (const rec of out.records) recs.push([pi, rec.frag, rec.heading, rec.text]);
-      process.stdout.write(`  ${f.padEnd(44)} ${String(out.records.length).padStart(3)} records\n`);
+      /* Print coverage on every line, not just when it's bad. A page that indexes
+         12% of itself looks exactly like a healthy one if all you print is the
+         record count — that is how about.html stayed broken. */
+      const cov = out.coverage ?? 100;
+      if (cov < 90) thin.push([f, cov]);
+      process.stdout.write(
+        `  ${f.padEnd(44)} ${String(out.records.length).padStart(3)} records  ${String(cov).padStart(3)}%\n`
+      );
     }
   } finally {
     chrome.kill();
@@ -269,6 +389,14 @@ async function main() {
       json.length / 1024
     ).toFixed(0)} KB raw`
   );
+
+  if (thin.length) {
+    console.log(
+      `\n${thin.length} page(s) under 90% coverage — text on these is only partly findable:`
+    );
+    for (const [f, c] of thin.sort((a, b) => a[1] - b[1])) console.log(`  ${String(c).padStart(3)}%  ${f}`);
+    console.log('  Add a chunk selector for the page\'s own layout, or give it real headings.');
+  }
 
   if (CHECK) {
     const old = fs.existsSync(OUT) ? fs.readFileSync(OUT, 'utf8') : '';
