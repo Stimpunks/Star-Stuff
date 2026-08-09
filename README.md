@@ -3,7 +3,7 @@
 **A collection of printable, shareable web artifacts — a collaboration between
 [Stimpunks Foundation](https://stimpunks.org/star-stuff/) and [More Realms](https://morerealms.com/).**
 
-*Love You Down To Your Star Stuff.*
+*Love You Down To Your Star Stuff.* · *Cosmic Connections.*
 
 ---
 
@@ -41,6 +41,20 @@ out via the shared `.ss-cobrand` class in `starstuff.css`, which makes them inhe
 surrounding color so the pair reads as one mark. Covers and print-first sheets carry the pairing
 as plain text. Per-piece credits stay exact underneath the co-branding: where a piece is Helen's,
 it says so and it is hers.
+
+## Cosmic Connections
+
+The site's second tagline, Helen Edgar's phrase, with the argument at
+[`cosmic-connections.html`](cosmic-connections.html). Two lineages are already inside it: **James
+Burke's *Connections*** (BBC, first broadcast 1978), whose method is to follow a thread across
+centuries and disciplines rather than narrate breakthroughs, and **Carl Sagan's *The Cosmic
+Connection*** (1973), where "we are made of star-stuff" first reached print. The page maps what
+travels between the three sites in both directions, and grounds the method in Stimpunks' own
+[emergence](https://stimpunks.org/glossary/emergence/),
+[iteration](https://stimpunks.org/glossary/iteration/) and
+[interdisciplinary learning](https://stimpunks.org/glossary/interdisciplinary-learning/), plus
+Kirby Ferguson's *Everything Is a Remix* (2010–2012) — credited by name, which the house had not
+been doing.
 
 ## The shorthand
 

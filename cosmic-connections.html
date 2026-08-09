@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0a0a14">
+<link rel="canonical" href="https://starstuff.earth/cosmic-connections.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta name="description" content="Cosmic Connections: how Stimpunks, More Realms, and Star Stuff work as one interconnected, interdisciplinary, iterative web — after James Burke's Connections and Carl Sagan's The Cosmic Connection. Emergence over hierarchy, links over folders, and nothing coming from nowhere.">
+<!-- Open Graph / link unfurl -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Star Stuff · Stimpunks Foundation × More Realms">
+<meta property="og:url" content="https://starstuff.earth/cosmic-connections.html">
+<meta property="og:title" content="Cosmic Connections">
+<meta property="og:description" content="Three sites, one web. How Stimpunks, More Realms, and Star Stuff connect — interdisciplinary, iterative, emergent — and why the connections are the content.">
+<meta property="og:image" content="https://starstuff.earth/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A rainbow-hued cosmic image — we are all made of star stuff.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Cosmic Connections">
+<meta name="twitter:description" content="Three sites, one web. Interdisciplinary, iterative, emergent — after James Burke's Connections and Sagan's The Cosmic Connection. The connections are the content.">
+<meta name="twitter:image" content="https://starstuff.earth/og-card.jpg">
+<title>Cosmic Connections — Star Stuff — Stimpunks × More Realms</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="starstuff.css">
+<style>
+  :root {
+    --void:  var(--sp-void-deep);
+    --deep:  var(--sp-deep);
+    --card:  var(--sp-card);
+    --violet:var(--sp-purple);
+    --pink:  var(--sp-pink);
+    --gold:  var(--sp-gold);
+    --cyan:  var(--sp-cyan);
+    --green: var(--sp-green);
+    /* One knob for this page's tint, as on design.html. Cyan keeps Cosmic
+       Connections distinct from About (gold) and Design (green) in the
+       Start Here row. */
+    --accent:var(--sp-cyan);
+    --star-white: var(--sp-white-soft);
+    --stardust:   var(--sp-secondary-soft);
+    --dim:   var(--sp-dim);
+    --dim2:  var(--sp-dim-soft);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--void);
+    font-family: 'Atkinson Hyperlegible Next', system-ui, sans-serif;
+    color: var(--star-white);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Starfield, tinted cyan for this page — see starstuff.css on why the
+     gradient art stays inline and per-page. */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 9% 13%, rgba(34,211,238,0.8) 0%, transparent 100%),
+      radial-gradient(1px 1px at 23% 37%, rgba(244,244,251,0.6) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 45% 8%, rgba(167,139,250,0.7) 0%, transparent 100%),
+      radial-gradient(1px 1px at 62% 67%, rgba(34,211,238,0.6) 0%, transparent 100%),
+      radial-gradient(2px 2px at 75% 27%, rgba(244,114,182,0.55) 0%, transparent 100%),
+      radial-gradient(1px 1px at 85% 55%, rgba(74,222,128,0.55) 0%, transparent 100%),
+      radial-gradient(1px 1px at 92% 78%, rgba(244,244,251,0.7) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 5% 59%, rgba(251,191,36,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 35% 85%, rgba(244,244,251,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 55% 47%, rgba(34,211,238,0.45) 0%, transparent 100%),
+      radial-gradient(2px 2px at 18% 87%, rgba(167,139,250,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 70% 5%, rgba(244,244,251,0.8) 0%, transparent 100%),
+      radial-gradient(1px 1px at 48% 63%, rgba(34,211,238,0.5) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 31% 19%, rgba(74,222,128,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 78% 89%, rgba(251,191,36,0.5) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .doc-shell { position: relative; z-index: 1; max-width: 760px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+
+  .spectrum-line { height: 2px; border: none; border-radius: 2px; background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); }
+
+  .nav-brand { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--dim); margin: 1.6rem 0 2.5rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(167,139,250,0.2); }
+
+  .hero { margin-bottom: 2.5rem; }
+  .hero-eyebrow { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.36em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.3rem; }
+  .hero-title { font-weight: 700; font-size: clamp(2.1rem, 6vw, 3.4rem); line-height: 1.05; letter-spacing: -0.02em; color: var(--star-white); margin-bottom: 1.1rem; }
+  .hero-title em { font-style: normal; background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .hero-sub { font-size: 1.02rem; line-height: 1.6; color: var(--stardust); max-width: 38rem; }
+  .hero-rule { width: 200px; max-width: 55%; margin-top: 1.6rem; }
+
+  h2.section { font-weight: 700; font-size: 1.4rem; line-height: 1.2; color: var(--star-white); margin: 2.8rem 0 0.5rem; letter-spacing: -0.01em; }
+  h3.sub { font-weight: 700; font-size: 1.08rem; line-height: 1.3; color: var(--star-white); margin: 2rem 0 0.3rem; }
+
+  .body-text { font-size: 1.02rem; line-height: 1.75; color: var(--stardust); }
+  .body-text p { margin-top: 1rem; }
+  .body-text em { font-style: italic; color: var(--star-white); }
+  .body-text strong { font-weight: 700; color: var(--star-white); }
+  .body-text a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(34,211,238,0.38); }
+  .body-text a:hover { border-bottom-color: var(--accent); }
+  .body-text ul { margin: 0.9rem 0 0 1.1rem; }
+  .body-text li { margin-top: 0.5rem; padding-left: 0.2rem; color: var(--stardust); line-height: 1.7; }
+
+  .claim { font-size: 1.22rem; font-weight: 700; line-height: 1.4; color: var(--star-white); border-left: 3px solid var(--accent); padding-left: 1.1rem; margin: 1.4rem 0; }
+
+  .pull { font-size: 1.06rem; line-height: 1.6; color: var(--star-white); border-left: 3px solid var(--violet); padding-left: 1.1rem; margin: 1.4rem 0; }
+  .pull .attr { display: block; margin-top: 0.5rem; font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim); }
+
+  .callout { border: 1px solid rgba(34,211,238,0.32); border-left: 3px solid var(--accent); border-radius: 0 6px 6px 0; padding: 1.1rem 1.3rem; margin: 1.6rem 0; background: rgba(34,211,238,0.05); }
+  .callout .callout-label { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; }
+  .callout p { font-size: 0.96rem; line-height: 1.7; color: var(--stardust); }
+  .callout p + p { margin-top: 0.8rem; }
+  .callout strong { color: var(--star-white); font-weight: 700; }
+  .callout--gold { border-color: rgba(251,191,36,0.32); border-left-color: var(--gold); background: rgba(251,191,36,0.05); }
+  .callout--gold .callout-label { color: var(--gold); }
+
+  .refusals { margin: 1.5rem 0 0.5rem; }
+  .refusals .callout-label { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--pink); margin-bottom: 0.6rem; }
+  .refusals ul { margin: 0; }
+  .refusals li { list-style: none; position: relative; padding-left: 1.5rem; margin-top: 0.55rem; color: var(--stardust); line-height: 1.65; }
+  .refusals li::before { content: '✕'; position: absolute; left: 0; color: var(--pink); font-weight: 700; }
+
+  /* ── Diagrams ── */
+  .fig { margin: 1.8rem 0 0.6rem; }
+  .fig svg { display: block; width: 100%; height: auto; }
+  .fig figcaption { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--dim); margin-top: 0.7rem; line-height: 1.7; }
+
+  /* ── Table ── */
+  .tbl-wrap { overflow-x: auto; margin: 1.3rem 0 0.4rem; }
+  table { border-collapse: collapse; width: 100%; min-width: 460px; font-size: 0.88rem; }
+  caption { text-align: left; font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); padding-bottom: 0.7rem; }
+  th, td { text-align: left; vertical-align: top; padding: 0.55rem 0.8rem 0.55rem 0; border-bottom: 1px solid rgba(167,139,250,0.14); }
+  th { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--dim); font-weight: 400; }
+  td { color: var(--stardust); }
+  td strong { color: var(--star-white); }
+
+  .tbl-wrap, .callout, .refusals, .fig { page-break-inside: avoid; break-inside: avoid; }
+
+  .start-link { display: inline-block; margin-top: 1.5rem; font-family: 'Space Mono', monospace; font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); text-decoration: none; border: 1px solid rgba(34,211,238,0.42); border-radius: 3px; padding: 0.6rem 1.1rem; transition: all 0.2s ease; }
+  .start-link:hover { background: rgba(34,211,238,0.12); border-color: var(--accent); color: var(--star-white); }
+
+  .colophon-footer { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--dim2); line-height: 2.2; margin-top: 3rem; padding-top: 1.4rem; border-top: 1px solid rgba(167,139,250,0.14); }
+  .colophon-footer a { color: var(--dim); text-decoration: none; border-bottom: 1px solid rgba(167,139,250,0.2); }
+  .colophon-footer a:hover { color: var(--stardust); }
+
+  .refs { font-size: 0.8rem; line-height: 1.85; color: var(--dim); margin-top: 2rem; padding-top: 1.2rem; border-top: 1px solid rgba(167,139,250,0.14); }
+  .refs a { color: var(--dim); border-bottom: 1px solid rgba(167,139,250,0.2); text-decoration: none; word-break: break-word; }
+  .refs a:hover { color: var(--stardust); }
+  .refs strong { color: var(--stardust); font-weight: 400; }
+
+  @media (max-width: 600px) {
+    .doc-shell { padding: 2rem 1.3rem 3rem; }
+  }
+
+  /* Print: this page aliases the --sp-* tokens, so the shared sheet inverts most
+     of it for free. These are the few roles that name a color of their own. */
+  @media print {
+    body::before { display: none; }
+    .hero-title, h2.section, h3.sub, .claim, .pull, td strong,
+    .callout strong, .body-text strong, .body-text em { color: #111; }
+    .body-text li, .hero-sub, .callout p, td, .refusals li { color: #222; }
+    th, caption, .fig figcaption, .pull .attr, .colophon-footer, .refs { color: #444; }
+    /* .callout and .refusals set their label color with a two-class selector,
+       so match that specificity or the accent survives onto paper at ~2:1. */
+    .callout .callout-label,
+    .callout--gold .callout-label,
+    .refusals .callout-label { color: #444; }
+    .refusals li::before { color: #111; }
+    .callout, .callout--gold { background: none; border-color: #999; border-left-color: #444; }
+    .start-link { display: none; }
+  }
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Cosmic Connections","description":"How Stimpunks, More Realms, and Star Stuff work as one interconnected, interdisciplinary, iterative web — after James Burke's Connections and Carl Sagan's The Cosmic Connection. Emergence over hierarchy, links over folders, and nothing coming from nowhere.","image":"https://starstuff.earth/og-card.jpg","url":"https://starstuff.earth/cosmic-connections.html","mainEntityOfPage":"https://starstuff.earth/cosmic-connections.html","author":{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/"},"publisher":[{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/","logo":{"@type":"ImageObject","url":"https://starstuff.earth/og-card.jpg"}},{"@type":"Organization","name":"More Realms","url":"https://morerealms.com/"}],"isPartOf":{"@type":"WebSite","name":"Star Stuff","url":"https://starstuff.earth/"},"license":"https://creativecommons.org/licenses/by-sa/4.0/"}</script>
+</head>
+<body>
+
+<div class="doc-shell">
+
+  <!-- Start Here / meta pages sit outside the artifact reading chain, so the nav
+       carries the home group only — matching about.html and design.html. -->
+  <nav class="ss-nav" style="--nav-accent:#22d3ee;" aria-label="Star Stuff collection">
+    <span class="ss-nav-home-group">
+      <a class="ss-nav-home" href="index.html"><span class="ss-star" aria-hidden="true">★</span> stuff</a>
+      <a class="ss-nav-about" href="about.html">about</a>
+      <a class="ss-nav-search" href="search.html">search</a>
+    </span>
+  </nav>
+
+  <div class="nav-brand"><a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks</a> × <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a> · Cosmic Connections</div>
+
+  <header class="hero">
+    <div class="hero-eyebrow"><a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks Foundation</a> × <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a> · How It Connects</div>
+    <h1 class="hero-title">Cosmic <em>Connections</em></h1>
+    <p class="hero-sub">Three sites, one web. Nothing here was arrived at in a straight line, and none of it is anybody's alone. This is the page about the links — what travels between Stimpunks, More Realms, and Star Stuff, and why the connections are the content rather than the packaging.</p>
+    <hr class="spectrum-line hero-rule">
+  </header>
+
+  <div class="body-text">
+
+    <p><strong>Cosmic Connections</strong> is <a href="https://morerealms.com/">Helen Edgar</a>'s phrase for what this collection is doing, and it landed because it was already carrying two histories.</p>
+
+    <p>The first is <a href="https://en.wikipedia.org/wiki/Connections_(British_TV_series)"><em>Connections</em></a>, James Burke's BBC series, first broadcast in 1978. <strong>Ryan Boren</strong> grew up on it, and a good deal of how this collection thinks came from watching it young. Its method is the opposite of the tidy march of great men and eureka moments: Burke's argument is that you cannot understand any piece of the modern world in isolation, because the thing you are holding was assembled out of centuries of unrelated people solving unrelated problems for reasons of their own — profit, boredom, war, faith — none of them aiming at the outcome they produced. An episode starts somewhere medieval and arrives, by way of eight things that have no obvious business with each other, at the object on your desk. Burke went on making the argument across three more series, in 1994, 1997, and 2023.</p>
+
+    <p>The second is <em>The Cosmic Connection: An Extraterrestrial Perspective</em>, Carl Sagan's 1973 book — the one where he first put the line in print that this whole collection runs on: <em>we are made of star-stuff.</em> Sagan's connection was between our bodies and the interiors of dead stars. Burke's was between a stirrup and a computer. They turn out to be the same move made at different scales: follow the thread, and the thing that looked separate turns out to be continuous with everything around it.</p>
+
+    <p class="claim">Connection isn't a metaphor we apply to the material. It is how the material got made — and how we make it.</p>
+
+    <h2 class="section" id="three-sites">Three sites, one web</h2>
+
+    <p>There are three places, and they do different work. Calling them a collaboration is accurate but too flat; what actually happens is traffic.</p>
+
+    <figure class="fig">
+      <svg viewBox="0 0 660 330" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig1-title fig1-desc">
+        <title id="fig1-title">The three sites and what travels between them</title>
+        <desc id="fig1-desc">Stimpunks, More Realms, and Star Stuff drawn as three nodes of one web. Stimpunks sends glossary, patterns, and design method; More Realms sends essays, coinages, and speculative framing; Star Stuff sends both of them back finished, printable, citable artifacts. Every arrow runs in both directions.</desc>
+
+        <!-- edges, drawn first so nodes sit on top -->
+        <g fill="none" stroke-width="1.4">
+          <path d="M150 96 L510 96" stroke="rgba(167,139,250,0.55)"/>
+          <path d="M132 124 L318 236" stroke="rgba(34,211,238,0.55)"/>
+          <path d="M528 124 L342 236" stroke="rgba(74,222,128,0.55)"/>
+        </g>
+
+        <!-- edge labels. No ↔ / ↕ glyphs: the bidirectionality is stated in words
+             below and in the caption, and a bare arrow glyph is read aloud as
+             "left right arrow" without adding anything a sighted reader needs. -->
+        <g font-family="Space Mono, monospace" font-size="10" fill="rgba(212,208,228,0.92)" text-anchor="middle">
+          <text x="330" y="86">coinages · citations · corrections</text>
+          <text x="150" y="186">glossary</text>
+          <text x="150" y="200">patterns</text>
+          <text x="150" y="214">design method</text>
+          <text x="512" y="186">essays</text>
+          <text x="512" y="200">speculative framing</text>
+          <text x="512" y="214">felt time · relations</text>
+        </g>
+
+        <!-- nodes -->
+        <g>
+          <rect x="34" y="70" width="116" height="54" rx="6" fill="none" stroke="#22d3ee" stroke-width="1.6"/>
+          <text x="92" y="94" font-family="Space Mono, monospace" font-size="11" fill="#22d3ee" text-anchor="middle">STIMPUNKS</text>
+          <text x="92" y="112" font-family="Space Mono, monospace" font-size="9" fill="rgba(212,208,228,0.92)" text-anchor="middle">the garden</text>
+
+          <rect x="510" y="70" width="120" height="54" rx="6" fill="none" stroke="#4ade80" stroke-width="1.6"/>
+          <text x="570" y="94" font-family="Space Mono, monospace" font-size="11" fill="#4ade80" text-anchor="middle">MORE REALMS</text>
+          <text x="570" y="112" font-family="Space Mono, monospace" font-size="9" fill="rgba(212,208,228,0.92)" text-anchor="middle">the wandering</text>
+
+          <rect x="264" y="236" width="132" height="58" rx="6" fill="none" stroke="#fbbf24" stroke-width="1.6"/>
+          <text x="330" y="260" font-family="Space Mono, monospace" font-size="11" fill="#fbbf24" text-anchor="middle">STAR STUFF</text>
+          <text x="330" y="278" font-family="Space Mono, monospace" font-size="9" fill="rgba(212,208,228,0.92)" text-anchor="middle">the flowering</text>
+        </g>
+
+        <text x="330" y="320" font-family="Space Mono, monospace" font-size="9" fill="rgba(212,208,228,0.8)" text-anchor="middle">no source, no downstream — every edge runs both ways</text>
+      </svg>
+      <figcaption>Figure 1 · Not a pipeline with an origin and an output. A web, where each site is upstream of the other two.</figcaption>
+    </figure>
+
+    <div class="tbl-wrap">
+      <table>
+        <caption>What actually travels, with receipts</caption>
+        <thead>
+          <tr><th>From</th><th>What moves</th><th>Where it landed</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>More Realms</strong><br>&amp; Autistic Realms</td>
+            <td>Essays, coinages, and the speculative framing — <em>Why Difference Comes First</em>, <em>We Are Made of Relations</em>, <em>My Monotropic Galaxy</em>, the constellation reading of the spiky profile, felt time, shared-air and shared-signal space</td>
+            <td><a href="why-difference-comes-first-zine.html">No. 11</a> and the <a href="difference-first-frame.html">Difference-First Frame</a>; <a href="not-a-line-zine.html">No. 21</a>; <a href="shared-air-zine.html">No. 24</a> and <a href="shared-signal-zine.html">No. 25</a>; <a href="only-in-relation-zine.html">No. 29</a>; <a href="wyrd-and-weird-zine.html">No. 28</a> and <a href="always-migrating-zine.html">No. 30</a> in her own voice</td>
+          </tr>
+          <tr>
+            <td><strong>Stimpunks</strong><br>the knowledge garden</td>
+            <td>Glossary, pattern library, and design method — monotropism, crip time, co-regulation, meerkat mode, ARLES, the ecosystemic model of distress, Cavendish Space, regulation-first</td>
+            <td><a href="the-nearest-body-zine.html">No. 17</a> reads almost entirely out of the glossary; <a href="the-universe-runs-on-difference-zine.html">No. 8</a> turns on Cavendish Space; <a href="no-universal-now-zine.html">No. 19</a> on crip time. Nearly every zine links a term back out.</td>
+          </tr>
+          <tr>
+            <td><strong>Star Stuff</strong><br>this site</td>
+            <td>Finished artifacts — printable, citable, forkable — plus the fact-checks that go back and correct the sources they came from</td>
+            <td>The <a href="symbioses-field-guide.html#monotropa">ghost pipe entry</a> pairs with Helen's <a href="https://morerealms.com/monotropa-uniflora-and-monotropism/">Monotropa uniflora and Monotropism</a>; <a href="migrating-field-guide.html">Field Guide No. 8</a> is the companion catalogue to her <a href="always-migrating-zine.html">No. 30</a>; every correction lands in the public <a href="changelog.html">changelog</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>The Symbioses row is the one that shows the shape best. Helen wrote about <em>Monotropa uniflora</em> — the ghost pipe, which grows no chlorophyll and takes all its carbon second-hand from fungi — as a botanical expression of being monotropic. <em>Monotropa</em> means <em>one turn</em>: the same root as <a href="https://stimpunks.org/monotropism/">monotropism</a>, the Autistic attention style named by Murray, Lesser and Lawson in 2005. A plant name from Linnaean botany, an attention theory from Autistic researchers, and a mutual-aid ethic about receiving without shame, all sitting on one etymology. Nobody planned that. It was found by following a link.</p>
+
+    <h2 class="section" id="emergence">Why links, and not folders</h2>
+
+    <p>Stimpunks has kept its knowledge as a web of small linked pieces rather than a hierarchy of folders, on the argument that <a href="https://stimpunks.org/2024/08/24/the-emergent-power-of-a-web-of-notes-with-links/">a web of notes with links between them is far more useful than a fixed hierarchical system</a> — the design principle underneath both Tim Berners-Lee's original proposal for the web and Niklas Luhmann's card-index practice. The payoff is not tidiness. It's that <strong>connecting notes makes higher-level concepts appear that nobody wrote down</strong>, and connecting those makes larger categories appear in turn. The categories are outputs, not inputs.</p>
+
+    <p>That is <a href="https://stimpunks.org/glossary/emergence/">emergence</a>, which Stimpunks glosses as the way complex systems and patterns arise out of a multiplicity of relatively simple interactions. It is the same principle physics states as <em>more is different</em> — that a large enough collection of parts obeys laws you cannot read off the parts themselves — and the same one adrienne maree brown builds organizing practice from in <em>Emergent Strategy</em>: small actions and connections create complex systems.</p>
+
+    <figure class="fig">
+      <svg viewBox="0 0 660 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig2-title fig2-desc">
+        <title id="fig2-title">Link density and emergence</title>
+        <desc id="fig2-desc">Three panels. In the first, eight notes sit unconnected in a grid — a filing system. In the second, a few links appear between them. In the third, the links are dense enough that a higher-level concept, drawn as a ring around a cluster, has formed without anyone writing it.</desc>
+
+        <!-- panel 1: isolated -->
+        <g>
+          <text x="100" y="20" font-family="Space Mono, monospace" font-size="9" fill="rgba(212,208,228,0.92)" text-anchor="middle">FILED</text>
+          <g fill="rgba(212,208,228,0.85)">
+            <circle cx="50" cy="60" r="4"/><circle cx="100" cy="60" r="4"/><circle cx="150" cy="60" r="4"/>
+            <circle cx="50" cy="110" r="4"/><circle cx="100" cy="110" r="4"/><circle cx="150" cy="110" r="4"/>
+            <circle cx="75" cy="160" r="4"/><circle cx="125" cy="160" r="4"/>
+          </g>
+          <text x="100" y="200" font-family="Space Mono, monospace" font-size="9" fill="rgba(212,208,228,0.8)" text-anchor="middle">eight notes, no edges</text>
+        </g>
+
+        <!-- panel 2: some links -->
+        <g>
+          <text x="330" y="20" font-family="Space Mono, monospace" font-size="9" fill="rgba(212,208,228,0.92)" text-anchor="middle">LINKED</text>
+          <g fill="none" stroke="rgba(34,211,238,0.6)" stroke-width="1.2">
+            <path d="M280 60 L330 60"/><path d="M330 60 L380 110"/><path d="M280 110 L330 110"/><path d="M305 160 L280 110"/>
+          </g>
+          <g fill="rgba(212,208,228,0.85)">
+            <circle cx="280" cy="60" r="4"/><circle cx="330" cy="60" r="4"/><circle cx="380" cy="60" r="4"/>
+            <circle cx="280" cy="110" r="4"/><circle cx="330" cy="110" r="4"/><circle cx="380" cy="110" r="4"/>
+            <circle cx="305" cy="160" r="4"/><circle cx="355" cy="160" r="4"/>
+          </g>
+          <text x="330" y="200" font-family="Space Mono, monospace" font-size="9" fill="rgba(212,208,228,0.8)" text-anchor="middle">edges start doing the work</text>
+        </g>
+
+        <!-- panel 3: emergent concept -->
+        <g>
+          <text x="560" y="20" font-family="Space Mono, monospace" font-size="9" fill="rgba(212,208,228,0.92)" text-anchor="middle">EMERGENT</text>
+          <ellipse cx="560" cy="108" rx="76" ry="66" fill="none" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="4 3"/>
+          <g fill="none" stroke="rgba(34,211,238,0.7)" stroke-width="1.2">
+            <path d="M510 60 L560 60"/><path d="M560 60 L610 60"/><path d="M510 60 L560 110"/><path d="M560 60 L610 110"/>
+            <path d="M510 110 L560 110"/><path d="M560 110 L610 110"/><path d="M535 160 L510 110"/><path d="M585 160 L610 110"/>
+            <path d="M535 160 L585 160"/><path d="M560 110 L535 160"/>
+          </g>
+          <g fill="rgba(212,208,228,0.85)">
+            <circle cx="510" cy="60" r="4"/><circle cx="560" cy="60" r="4"/><circle cx="610" cy="60" r="4"/>
+            <circle cx="510" cy="110" r="4"/><circle cx="560" cy="110" r="4"/><circle cx="610" cy="110" r="4"/>
+            <circle cx="535" cy="160" r="4"/><circle cx="585" cy="160" r="4"/>
+          </g>
+          <text x="560" y="200" font-family="Space Mono, monospace" font-size="9" fill="#fbbf24" text-anchor="middle">a concept nobody wrote</text>
+        </g>
+      </svg>
+      <figcaption>Figure 2 · The dashed ring is the point. It is not a folder somebody made; it is a pattern that appeared once the links got dense enough, and it can be named afterward.</figcaption>
+    </figure>
+
+    <p>This is why the collection is built the way it is — every zine cross-linking its siblings, every term linking back out to the glossary, <a href="search.html">search</a> that indexes down to the individual spread rather than the page. The link density <em>is</em> the argument. A collection where each piece sat in its own folder would make all the same claims and none of the same connections.</p>
+
+    <h2 class="section" id="iteration">Accumulated, not authored</h2>
+
+    <p>The part of Burke that stuck hardest is the timescale. His chains run for centuries, and no single link in them is a breakthrough. Each is a small competent adjustment by someone who could not have known what it would join up with. Progress in <em>Connections</em> is not a person; it's an accumulation.</p>
+
+    <p>Stimpunks calls this <a href="https://stimpunks.org/glossary/iteration/">iteration</a> and treats it as the working method rather than a phase: as Cornelius Minor puts it, <em>learning is a series of iterations</em> — not linear, and needing deliberate room made for revision and failure. Which is also why this site publishes its own errors. The <a href="changelog.html">changelog</a> and the <a href="https://github.com/Stimpunks/Star-Stuff/blob/main/FACTCHECK.md">fact-check ledger</a> are the iteration made visible: what we got wrong, what's right, who caught it. A living document that never shows a correction is just a document making a claim about itself.</p>
+
+    <div class="callout callout--gold">
+      <div class="callout-label">Everything is a remix</div>
+      <p>The phrase is <strong>Kirby Ferguson</strong>'s, from his video series <em>Everything Is a Remix</em> (2010–2012, with a fifth part in 2023) — the argument that copying, transforming and combining is not a failure of originality but the mechanism of creativity itself.</p>
+      <p>Stimpunks' <a href="https://stimpunks.org/about/license/">license page</a> puts the same thing in the house register: &ldquo;Nothing comes from nowhere. Punk understood this. So did bricoleurs, rhizome thinkers, and every neurodivergent kid who built something strange and new out of whatever was at hand.&rdquo; That is why everything here is <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> and made to be printed, forked and passed on. A collection that argued for interdependence and then locked its own doors would be arguing against itself.</p>
+    </div>
+
+    <h3 class="sub" id="the-refusals">The refusals</h3>
+    <div class="refusals">
+      <div class="callout-label">Not:</div>
+      <ul>
+        <li>Not a genealogy of geniuses. Burke's whole point is that nobody in the chain saw the end of it, and we are not adding ourselves to a lineage of great minds.</li>
+        <li>Not &ldquo;everything is connected&rdquo; as mysticism. Specific links, named and checkable, or it doesn't go on the page.</li>
+        <li>Not interdisciplinary as tourism — borrowing a physics word for its glamour and leaving the physics behind.</li>
+        <li>Not connection as extraction. Crediting the source is the connection; taking the idea and dropping the name is the opposite of one.</li>
+        <li>Not a shared masthead standing in for a shared byline. Where a piece is Helen's, it is hers and says so.</li>
+      </ul>
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">Held honestly</div>
+      <p>Emergence is a real property of complex systems, and the physics of <em>more is different</em> is well established. It does not follow that any particular web of notes will produce insight, that our three sites are a complex adaptive system in the technical sense, or that link-density guarantees anything. Burke's chains are also a storyteller's selection: he picks the path that arrives somewhere, and the unchosen paths that went nowhere don't get an episode.</p>
+      <p>We are noticing a rhyme between how knowledge accumulates and how we work, and using it as a method. <strong>That's a good reason to link generously. It isn't a proof.</strong></p>
+    </div>
+
+    <p>So: follow the links. Read a zine, hit a term you don't know, land in the glossary, come back by a different door than you left. That route through the material is not a failure to organize it. It's the thing itself — and it's why Helen's phrase fits. We are made of star stuff, and so is everything we made this out of.</p>
+
+    <a class="start-link" href="index.html">Browse the collection →</a>
+
+    <div class="refs">
+      <strong>Sources.</strong>
+      Burke, J. (1978). <em>Connections</em> [TV series]. BBC. First broadcast 1978; continued as <em>Connections<sup>2</sup></em> (1994), <em>Connections<sup>3</sup></em> (1997) and <em>Connections with James Burke</em> (2023). Burke's thesis is paraphrased here, not quoted.<br>
+      Sagan, C. (1973). <em>The Cosmic Connection: An Extraterrestrial Perspective.</em> Anchor Press/Doubleday. (&ldquo;We are made of star-stuff,&rdquo; pp. 189–190; the <em>Cosmos</em> ch. 9 restatement is traced in <a href="love-you-down-to-your-star-stuff.html">LYDTYSS</a>.)<br>
+      Ferguson, K. (2010–2012, 2023). <em>Everything Is a Remix</em> [video series]. <a href="https://www.everythingisaremix.info/">everythingisaremix.info</a><br>
+      Anderson, P. W. (1972). More is different. <em>Science</em>, 177(4047), 393–396.<br>
+      brown, a. m. (2017). <em>Emergent Strategy: Shaping Change, Changing Worlds.</em> AK Press.<br>
+      Murray, D., Lesser, M., &amp; Lawson, W. (2005). Attention, monotropism and the diagnostic criteria for autism. <em>Autism</em>, 9(2), 139–156.<br>
+      Minor, C. — &ldquo;Learning is a series of iterations,&rdquo; quoted in Stimpunks, <a href="https://stimpunks.org/glossary/iteration/">Iteration</a>.<br>
+      Obolensky, N. — emergence definition, quoted in Stimpunks, <a href="https://stimpunks.org/glossary/emergence/">Emergence</a>.<br>
+      Stimpunks Foundation. <a href="https://stimpunks.org/2024/08/24/the-emergent-power-of-a-web-of-notes-with-links/">The emergent power of a web of notes with links</a> (2024); <a href="https://stimpunks.org/glossary/interdisciplinary-learning/">Interdisciplinary learning</a>; <a href="https://stimpunks.org/about/license/">License</a>.<br>
+      Edgar, H. <a href="https://morerealms.com/monotropa-uniflora-and-monotropism/">Monotropa uniflora and Monotropism</a>. <em>More Realms.</em><br>
+      Web-as-web design lineage: Berners-Lee's 1989 proposal and Luhmann's Zettelkasten, both by way of the Stimpunks post above.
+    </div>
+
+    <div class="colophon-footer">
+      <a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks Foundation</a> × <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a> · <a href="https://starstuff.earth">starstuff.earth</a> · <a href="about.html">About</a> · <a href="changelog.html">Changelog</a> · <a href="https://stimpunks.org">stimpunks.org</a> · <a href="https://morerealms.com">morerealms.com</a><br>
+      Print freely · Share freely · <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> · L★S · Nothing comes from nowhere
+    </div>
+
+  </div>
+
+</div><!-- /doc-shell -->
+
+</body>
+</html>

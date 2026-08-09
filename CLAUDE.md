@@ -15,6 +15,13 @@ dying stars — you are, literally, star stuff) and Dr. Iwao Yasuda's 1950s find
 *piezoelectric* (your skeleton turns pressure into charge). Read through the neurodiversity
 paradigm, the through-line is that difference is variation, not deficit.
 
+**Tagline: *Cosmic Connections*** — Helen Edgar's phrase, on the `index.html` masthead
+(`.masthead-tagline`, plain text under the wordmark) with the argument at
+`cosmic-connections.html`, filed in *Start Here*. It names the house method: interdisciplinary,
+iterative, emergent, built out of each other's work. Two lineages sit inside it — James Burke's
+*Connections* (BBC, 1978) and Carl Sagan's *The Cosmic Connection* (1973) — and both must stay
+credited wherever the phrase is explained. Don't reword the tagline; it is a brand element.
+
 The central phrase compresses through registers, each with a use:
 
 | Form | Register | Use |
