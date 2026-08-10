@@ -17,6 +17,9 @@ Ryan's shorthand for "finish and publish." Scope depends on what changed.
    - Fix `ss-nav-prev` / `ss-nav-next` `href`s on the neighbouring zines so the ring stays intact.
 3. **Fact-check + ledger.** Verify any factual claims and coinages (see the `credit-source`
    skill), then add/update the zine's entry in `FACTCHECK.md` (claims → sources → credits).
+   If a check found an error living **outside this repo** — in SKS or on stimpunks.org — record
+   those paths in the ledger as `Open` rather than fixing them from here, and say so in the
+   changelog rather than waiting to announce the error alongside its fix.
 4. **Log it publicly.** Add an entry to `changelog.html` (see *Changelog* below).
 5. **Rebuild the search index.** Any change to page *text* makes `search-index.json` stale —
    new pieces become unfindable and old results point at spreads that moved:
