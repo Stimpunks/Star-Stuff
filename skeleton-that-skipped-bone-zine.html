@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0a0a14">
+<link rel="canonical" href="https://starstuff.earth/skeleton-that-skipped-bone-zine.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta name="description" content="A companion and a counter-song to Bone Song. Sharks are vertebrates with no true bone — a skeleton of cartilage, stiffened by thousands of mineral tiles called tesserae. And the evidence now says they did not fail to invent bone: their ancestors had it, and the lineage let it go. Minjinia turgenensis, an Early Devonian fish described by Brazeau and colleagues in 2020, preserves endochondral bone, which makes the shark's bonelessness derived rather than primitive. Then the other half: because sharks were said not to get cancer, their cartilage was ground into pills. Ostrander and colleagues found 42 documented chondrichthyan tumours across at least 21 species; a randomised trial found no benefit to survival or quality of life. A body read as a cure gets harvested. A rhyme, not a proof.">
+<!-- Open Graph / link unfurl -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Star Stuff · Stimpunks Foundation × More Realms">
+<meta property="og:url" content="https://starstuff.earth/skeleton-that-skipped-bone-zine.html">
+<meta property="og:title" content="The Skeleton That Skipped Bone">
+<meta property="og:description" content="Sharks have no true bone — and the evidence says they didn't fail to invent it, they let it go. Then someone decided their cartilage was a cure, and it wasn't. A body read as a cure gets harvested.">
+<meta property="og:image" content="https://starstuff.earth/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A rainbow-hued cosmic image — we are all made of star stuff.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Skeleton That Skipped Bone">
+<meta name="twitter:description" content="A vertebrate with no bone, running 400 million years. Not a failure to invent one — a lineage that let it go. And the cure myth that got them harvested for it.">
+<meta name="twitter:image" content="https://starstuff.earth/og-card.jpg">
+<title>The Skeleton That Skipped Bone — Stimpunks Zine No. 32</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="starstuff.css">
+<style>
+  :root {
+    --void:  var(--sp-void-deep);
+    --deep:  var(--sp-deep);
+    --page:  var(--sp-page);
+    --violet:var(--sp-purple);
+    --pink:  var(--sp-pink);
+    --gold:  var(--sp-gold);
+    --cyan:  var(--sp-cyan);
+    --green: var(--sp-green);
+    --ember: #c1653a;
+    --accent: var(--sp-cyan);          /* this zine's identity accent — cold water, cartilage, depth */
+    --star-white: var(--sp-white-soft);
+    --stardust:   var(--sp-secondary-soft);
+    --dim:   var(--sp-dim);
+    --dim2:  var(--sp-dim-soft);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--void);
+    font-family: 'Atkinson Hyperlegible Next', system-ui, sans-serif;
+    color: var(--star-white);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── STARFIELD (cyan · violet · white — cold water, and the light that doesn't reach it) ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 11% 17%, rgba(34,211,238,0.75) 0%, transparent 100%),
+      radial-gradient(1px 1px at 27% 33%, rgba(167,139,250,0.6) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 44% 9%, rgba(34,211,238,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 61% 68%, rgba(244,244,251,0.7) 0%, transparent 100%),
+      radial-gradient(2px 2px at 78% 24%, rgba(34,211,238,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 88% 55%, rgba(167,139,250,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 94% 83%, rgba(34,211,238,0.55) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 6% 62%, rgba(34,211,238,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 35% 88%, rgba(167,139,250,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 53% 44%, rgba(244,244,251,0.5) 0%, transparent 100%),
+      radial-gradient(2px 2px at 20% 91%, rgba(34,211,238,0.55) 0%, transparent 100%),
+      radial-gradient(1px 1px at 69% 6%, rgba(244,244,251,0.8) 0%, transparent 100%),
+      radial-gradient(1px 1px at 46% 61%, rgba(34,211,238,0.45) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 31% 21%, rgba(244,244,251,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 81% 92%, rgba(167,139,250,0.5) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .zine-shell { position: relative; z-index: 1; max-width: 820px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+
+  .spectrum-line { height: 2px; border: none; border-radius: 2px; background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); }
+
+  /* ── NAV ── */
+  .nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2.5rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(167,139,250,0.2); }
+  .nav-brand { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--dim); }
+  .nav-controls { display: flex; gap: 0.5rem; align-items: center; }
+  .nav-btn { background: none; border: 1px solid rgba(34,211,238,0.35); color: var(--stardust); font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.15em; padding: 0.4rem 0.85rem; border-radius: 2px; cursor: pointer; transition: all 0.2s ease; text-transform: uppercase; }
+  .nav-btn:hover { background: rgba(34,211,238,0.15); border-color: rgba(34,211,238,0.6); color: var(--star-white); }
+  .nav-btn.active { background: rgba(34,211,238,0.20); border-color: var(--accent); color: var(--star-white); }
+  .page-counter { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.2em; color: var(--dim2); }
+
+  .spread { display: none; animation: fadeIn 0.5s ease forwards; }
+  .spread.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ── COVER ── */
+  .cover-spread {
+    position: relative; min-height: 520px; border-radius: 4px; overflow: hidden;
+    background:
+      radial-gradient(ellipse at 22% 20%, rgba(34,211,238,0.15) 0%, transparent 52%),
+      radial-gradient(ellipse at 80% 26%, rgba(167,139,250,0.12) 0%, transparent 52%),
+      radial-gradient(ellipse at 68% 82%, rgba(34,211,238,0.10) 0%, transparent 52%),
+      radial-gradient(ellipse at 28% 80%, rgba(167,139,250,0.08) 0%, transparent 52%),
+      var(--deep);
+    border: 1px solid rgba(167,139,250,0.25);
+    box-shadow: inset 0 0 80px rgba(34,211,238,0.07), 0 0 0 4px rgba(255,255,255,0.03);
+    display: flex; flex-direction: column; justify-content: flex-end; padding: 3rem;
+  }
+  .cover-motif { position: absolute; top: -4px; right: -14px; width: 340px; height: 340px; opacity: 0.8; pointer-events: none; }
+  .cover-issue { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.5em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.5rem; }
+  .cover-title { font-weight: 700; font-size: clamp(2.1rem, 6vw, 3.5rem); line-height: 1.02; color: var(--star-white); letter-spacing: -0.01em; margin-bottom: 0.9rem; }
+  .cover-title .amp { color: var(--accent); font-style: italic; }
+  .cover-subtitle { font-size: 1rem; color: var(--stardust); opacity: 0.85; margin-bottom: 1.5rem; max-width: 470px; line-height: 1.55; }
+  .cover-byline { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.14em; color: var(--dim); margin-bottom: 1.8rem; }
+  .cover-byline strong { color: var(--stardust); font-weight: 700; }
+  .cover-rule { width: 220px; max-width: 60%; margin-bottom: 1.3rem; }
+  .cover-meta { display: flex; gap: 2rem; align-items: center; }
+  .cover-ls { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 1.4rem; color: var(--accent); letter-spacing: 0.05em; }
+  .cover-meta-text { font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--dim2); line-height: 1.9; }
+  .cover-corner { position: absolute; top: 2rem; right: 2.5rem; text-align: right; }
+  .cover-corner-num { font-weight: 700; font-size: 4.5rem; line-height: 1; color: var(--accent); opacity: 0.24; }
+  .cover-corner-label { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--violet); display: block; margin-top: -0.3rem; }
+
+  /* ── INTERIOR ── */
+  .interior { background: var(--page); border: 1px solid rgba(167,139,250,0.15); border-radius: 4px; overflow: hidden; min-height: 480px; }
+  .spread-2col { display: grid; grid-template-columns: 1fr 1fr; min-height: 480px; }
+  .spread-left, .spread-right { padding: 3rem 2.4rem; position: relative; }
+  .spread-left { border-right: 1px solid rgba(167,139,250,0.12); }
+
+  /* Stacked spreads: one measure-capped column with the figure beneath, for spreads whose
+     prose runs long. A half-width text column 1,200px tall facing ~300px of art leaves a
+     hole in the page; see No. 30. */
+  .spread-2col.stacked { display: flex; flex-direction: column; }
+  .spread-2col.stacked > .spread-left,
+  .spread-2col.stacked > .spread-right { border-right: none; }
+  .spread-2col.stacked > .col-diagram { order: 2; padding-top: 0; }
+  /* Centre the measure with padding rather than auto margins on each child, so
+     left-aligned marks — the 40px rule under the heading — stay on the text's
+     left edge instead of floating to the middle of the spread. */
+  .spread-2col.stacked > .col-text { padding-left: max(2.4rem, calc((100% - 32rem) / 2)); padding-right: max(2.4rem, calc((100% - 32rem) / 2)); }
+  .spread-2col.stacked .diagram-wrap { height: auto; }
+  .spread-2col.stacked .diagram { max-width: 360px; }
+
+  .eyebrow { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.1rem; }
+  .body-text { font-size: 0.98rem; line-height: 1.72; color: var(--stardust); }
+  .body-text p { margin-bottom: 1rem; }
+  .body-text p:last-child { margin-bottom: 0; }
+  .body-text strong { font-weight: 700; color: var(--star-white); }
+  .body-text em { font-style: italic; color: var(--star-white); }
+  .body-text a { color: var(--violet); text-decoration: none; border-bottom: 1px solid rgba(167,139,250,0.4); }
+  .body-text a:hover { border-bottom-color: var(--violet); color: var(--star-white); }
+  .body-text .violet { color: var(--violet); font-weight: 700; }
+  .body-text .pink { color: var(--pink); font-weight: 700; }
+  .body-text .gold { color: var(--gold); font-weight: 700; }
+  .body-text .cyan { color: var(--cyan); font-weight: 700; }
+  .body-text .green { color: var(--green); font-weight: 700; }
+  .body-text .dim { color: var(--dim); }
+  .body-text .lede { font-size: 1.08rem; color: var(--star-white); }
+
+  .spread-heading { font-weight: 700; font-size: 1.9rem; line-height: 1.12; color: var(--star-white); margin-bottom: 1.1rem; letter-spacing: -0.01em; }
+  .spread-heading .spectrum-word { background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .rule { width: 40px; margin: 1rem 0; }
+
+  .pull-quote { font-size: 1.18rem; font-weight: 700; line-height: 1.4; color: var(--star-white); border-left: 3px solid var(--accent); padding-left: 1.1rem; margin: 1.4rem 0; font-style: italic; }
+  .pull-quote.violet { border-left-color: var(--violet); }
+  .pull-quote.pink { border-left-color: var(--pink); }
+  .pull-quote.gold { border-left-color: var(--gold); }
+  .pull-quote .attr { display: block; font-family: 'Space Mono', monospace; font-size: 0.6rem; font-weight: 400; font-style: normal; letter-spacing: 0.08em; color: var(--dim); margin-top: 0.6rem; }
+
+  .callout { margin: 1.3rem 0; padding: 1rem 1.15rem; background: rgba(34,211,238,0.06); border: 1px solid rgba(34,211,238,0.22); border-radius: 4px; font-size: 1rem; font-style: italic; color: var(--star-white); line-height: 1.55; }
+  .callout .attr { display: block; font-family: 'Space Mono', monospace; font-size: 0.58rem; font-style: normal; letter-spacing: 0.06em; color: var(--dim); margin-top: 0.5rem; }
+
+  /* ── THE TALLY (claimed / documented) ── */
+  .tally { display: flex; gap: 1rem; margin: 1.4rem 0; }
+  .tally-cell { flex: 1; padding: 0.9rem 1rem; border-radius: 4px; border: 1px solid rgba(167,139,250,0.18); background: rgba(255,255,255,0.02); }
+  .tally-cell.gained { border-color: rgba(34,211,238,0.3); background: rgba(34,211,238,0.05); }
+  .tally-cell.lost { border-color: rgba(193,101,58,0.35); background: rgba(193,101,58,0.06); }
+  .tally-num { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 1.9rem; line-height: 1; color: var(--accent); }
+  .tally-cell.lost .tally-num { color: var(--ember); }
+  .tally-label { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dim); margin-top: 0.45rem; line-height: 1.7; }
+
+  /* ── DIAGRAMS ── */
+  .diagram-wrap { display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; }
+  .diagram { width: 100%; max-width: 280px; display: block; }
+  .diagram-caption { font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim); text-align: center; margin-top: 0.9rem; line-height: 1.9; }
+  .annotation { color: var(--accent); }
+
+  /* ── REFUSALS ── */
+  .refusals { margin-top: 1.3rem; }
+  .refusal { font-size: 0.88rem; line-height: 1.5; color: var(--stardust); padding: 0.55rem 0; border-bottom: 1px solid rgba(167,139,250,0.1); display: flex; gap: 0.6rem; align-items: baseline; }
+  .refusal:last-child { border-bottom: none; }
+  .refusal-tag { font-family: 'Space Mono', monospace; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ember); flex-shrink: 0; padding-top: 0.12rem; }
+  .refusal strong { color: var(--star-white); font-weight: 700; }
+
+  /* ── COLOPHON ── */
+  .colophon { padding: 3rem; display: flex; flex-direction: column; justify-content: space-between; min-height: 480px; background: radial-gradient(ellipse at 82% 18%, rgba(34,211,238,0.10) 0%, transparent 50%), radial-gradient(ellipse at 18% 85%, rgba(167,139,250,0.07) 0%, transparent 50%), var(--page); }
+  .colophon-top { border-bottom: 1px solid rgba(167,139,250,0.14); padding-bottom: 1.3rem; margin-bottom: 1.2rem; }
+  .colophon-ls { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 2.4rem; color: var(--accent); letter-spacing: 0.05em; display: block; margin-bottom: 0.4rem; }
+  .colophon-phrase { font-size: 0.98rem; font-weight: 700; font-style: italic; color: var(--stardust); }
+  .series-list { display: flex; flex-direction: column; gap: 0.38rem; margin-bottom: 1.2rem; }
+  .series-item { font-size: 0.72rem; color: var(--dim); letter-spacing: 0.01em; display: flex; gap: 0.7rem; align-items: baseline; line-height: 1.45; }
+  .series-item.current { color: var(--accent); font-weight: 700; }
+  .series-num { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim2); flex-shrink: 0; }
+  .series-item.current .series-num { color: var(--accent); }
+  .reflect { border-top: 1px solid rgba(167,139,250,0.14); padding-top: 1rem; margin-bottom: 1.2rem; }
+  .reflect-label { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.65rem; }
+  .reflect-q { font-size: 0.86rem; line-height: 1.55; color: var(--stardust); margin-bottom: 0.55rem; font-style: italic; }
+  .reflect-q:last-child { margin-bottom: 0; }
+  .colophon-body { font-size: 0.75rem; color: var(--dim); line-height: 1.75; margin-bottom: 1.2rem; }
+  .colophon-body a { color: var(--violet); text-decoration: none; border-bottom: 1px solid rgba(167,139,250,0.4); }
+  .colophon-body a:hover { border-bottom-color: var(--violet); }
+  .colophon-footer { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--dim); line-height: 2.2; border-top: 1px solid rgba(167,139,250,0.14); padding-top: 1rem; }
+
+  /* ── SPREAD FOOTER ── */
+  .spread-footer { display: flex; justify-content: space-between; align-items: center; padding: 0.9rem 2.4rem; border-top: 1px solid rgba(167,139,250,0.1); }
+  .spread-footer-left { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--dim); }
+  .spread-footer-right { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; color: var(--accent); }
+
+  .twinkle { position: fixed; width: 3px; height: 3px; border-radius: 50%; animation: twinkle-anim 3s ease-in-out infinite; pointer-events: none; z-index: 0; }
+
+  @media (max-width: 600px) {
+    .spread-2col { grid-template-columns: 1fr; }
+    .spread-left { border-right: none; border-bottom: 1px solid rgba(167,139,250,0.12); }
+    .spread-2col.stacked > .spread-left { border-bottom: none; }
+    /* The centred-measure padding above outranks the shared mobile padding by
+       specificity, so restate it here or these spreads sit inset from the rest. */
+    .spread-2col.stacked > .col-text { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .cover-spread { padding: 2rem; min-height: 420px; }
+    .cover-motif { width: 224px; height: 224px; top: -4px; right: -24px; opacity: 0.5; }
+    .cover-title { font-size: 2rem; }
+    .spread-heading { font-size: 1.55rem; }
+    .spread-left, .spread-right { padding: 2rem 1.5rem; }
+    .colophon { padding: 2rem 1.5rem; }
+    .tally { flex-direction: column; gap: 0.7rem; }
+  }
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"The Skeleton That Skipped Bone","description":"A companion and a counter-song to Bone Song. Sharks, rays and chimaeras are vertebrates without true bone: a skeleton of cartilage stiffened by thousands of mineralised tiles called tesserae, described in the primary literature by Dean and Summers (Zoology, 2006). The chondrichthyan fossil record reaches back to the early Silurian, roughly 440 million years, though the earliest traces are scales and teeth rather than skeletons. And the bonelessness is not a failure to invent bone: Brazeau and colleagues (Nature Ecology & Evolution, 2020) describe endochondral bone in Minjinia turgenensis, an Early Devonian placoderm-grade fish, supporting the view that chondrichthyans descend from bony-skeletoned ancestors and lost it — a derived condition, not a primitive one. The zine then follows what was done with that skeleton: shark cartilage was marketed as a cancer cure on the premise that sharks do not get cancer. Ostrander and colleagues (Cancer Research, 2004) documented 42 chondrichthyan tumours across at least 21 species in nine families and seven orders, at least 15 malignant; Loprinzi and colleagues (Cancer, 2005) ran a randomised trial and found no difference in survival or quality of life. A body read as a cure gets harvested. A rhyme, not a proof.","image":"https://starstuff.earth/og-card.jpg","url":"https://starstuff.earth/skeleton-that-skipped-bone-zine.html","mainEntityOfPage":"https://starstuff.earth/skeleton-that-skipped-bone-zine.html","publisher":[{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/","logo":{"@type":"ImageObject","url":"https://starstuff.earth/og-card.jpg"}},{"@type":"Organization","name":"More Realms","url":"https://morerealms.com/"}],"isPartOf":{"@type":"WebSite","name":"Star Stuff","url":"https://starstuff.earth/"}}</script>
+</head>
+<body>
+
+<div class="twinkle" style="top:9%;left:14%;background:var(--cyan);box-shadow:0 0 6px var(--cyan);animation-delay:-0.5s"></div>
+<div class="twinkle" style="top:23%;left:87%;background:var(--violet);box-shadow:0 0 6px var(--violet);animation-delay:-1.4s"></div>
+<div class="twinkle" style="top:56%;left:6%;background:var(--cyan);box-shadow:0 0 6px var(--cyan);animation-delay:-2.2s"></div>
+<div class="twinkle" style="top:75%;left:94%;background:var(--cyan);box-shadow:0 0 6px var(--cyan);animation-delay:-0.8s"></div>
+<div class="twinkle" style="top:88%;left:29%;background:var(--star-white);box-shadow:0 0 6px var(--star-white);animation-delay:-1.9s"></div>
+<div class="twinkle" style="top:39%;left:97%;background:var(--violet);box-shadow:0 0 6px var(--violet);animation-delay:-3.0s"></div>
+
+<div class="zine-shell">
+
+  <nav class="ss-nav" style="--nav-accent:#22d3ee;" aria-label="Star Stuff collection">
+    <span class="ss-nav-home-group"><a class="ss-nav-home" href="index.html"><span class="ss-star" aria-hidden="true">★</span> stuff</a><a class="ss-nav-about" href="about.html">about</a>
+      <a class="ss-nav-search" href="search.html">search</a></span>
+    <span class="ss-nav-links">
+      <a class="ss-nav-prev" href="five-times-a-crab-zine.html"><span class="ss-nav-arrow" aria-hidden="true">‹</span> <span class="ss-nav-label">Five Times a Crab</span></a>
+      <a class="ss-nav-next" href="the-ick-is-a-border-zine.html"><span class="ss-nav-label">The Ick Is a Border</span> <span class="ss-nav-arrow" aria-hidden="true">›</span></a>
+    </span>
+  </nav>
+
+  <nav class="nav">
+    <div class="nav-brand"><a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks</a> × <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a> · Zine No. 32</div>
+    <div class="nav-controls">
+      <button class="nav-btn" id="prev-btn" onclick="changePage(-1)">← prev</button>
+      <span class="page-counter" id="page-counter">1 / 12</span>
+      <button class="nav-btn" id="next-btn" onclick="changePage(1)">next →</button>
+    </div>
+  </nav>
+
+  <!-- ════ SPREAD 1: COVER ════ -->
+  <div class="spread active" id="spread-1">
+    <div class="cover-spread">
+      <svg class="cover-motif" viewBox="0 0 340 340" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <!-- A shark in profile, its axis drawn as tesserae — the mineral tiles that stiffen
+             cartilage — instead of a bony spine.
+
+             Two constraints are load-bearing here, and both were learned the hard way.
+             (1) PLACEMENT. The .cover-corner numeral sits at viewBox x≈194–280, y≈40–110,
+             and the "Zine No. 32" eyebrow starts at y≈172. An earlier version ran to y=195
+             and put the shark's belly straight through the eyebrow. The art is therefore
+             boxed into x 8–180, y 22–145 — check both edges if you touch the transform.
+             (2) IT HAS TO READ AS A SHARK. The first draft had a symmetric tail, a stubby
+             mid-body dorsal and no pectorals, and read unmistakably as a tuna — on a zine
+             for a reader whose special interest is sharks, which is the one audience certain
+             to notice. What fixes it is the heterocercal tail (upper lobe much longer than
+             the lower), the tall raked first dorsal, and pectorals swept down and back. -->
+        <g transform="translate(43,71) scale(0.84)">
+          <!-- body: fusiform with a BLUNT conical snout. An earlier version ran the nose out
+               to a sharp point and the whole thing read as a marlin. -->
+          <path d="M6 -11 Q 48 -21 92 -18 Q 124 -14 142 0 Q 124 14 92 18 Q 48 21 6 11 Z"
+                fill="rgba(34,211,238,0.13)" stroke="rgba(34,211,238,0.85)" stroke-width="2" stroke-linejoin="round"/>
+          <!-- heterocercal tail: a LONG THIN upper lobe over a short lower one. Drawn with a
+               deep notch — a shallower one filled in as a solid fan and read as fletching. -->
+          <path d="M6 -11 L -42 -46 L -10 -8 L -22 20 L 6 11 Z"
+                fill="rgba(34,211,238,0.18)" stroke="rgba(34,211,238,0.85)" stroke-width="2" stroke-linejoin="round"/>
+          <!-- first dorsal: the tall raked triangle everyone recognises. Proportionally the
+               single most load-bearing mark on this drawing — undersize it and the whole
+               silhouette drops back to "generic fish". -->
+          <path d="M96 -18 L 74 -58 L 58 -20 Z" fill="rgba(34,211,238,0.18)" stroke="rgba(34,211,238,0.85)" stroke-width="2" stroke-linejoin="round"/>
+          <!-- second dorsal: small and set well back, near the peduncle -->
+          <path d="M32 -17 L 26 -29 L 20 -16 Z" fill="rgba(34,211,238,0.18)" stroke="rgba(34,211,238,0.85)" stroke-width="1.5" stroke-linejoin="round"/>
+          <!-- pectoral fin: long and swept well clear of the belly — after the dorsal, this
+               is the feature that says "shark" rather than "fish" -->
+          <path d="M116 12 L 66 52 L 92 17 Z" fill="rgba(34,211,238,0.18)" stroke="rgba(34,211,238,0.85)" stroke-width="2" stroke-linejoin="round"/>
+          <!-- pelvic fin -->
+          <path d="M50 19 L 38 35 L 30 18 Z" fill="rgba(34,211,238,0.18)" stroke="rgba(34,211,238,0.85)" stroke-width="1.5" stroke-linejoin="round"/>
+          <!-- five gill slits -->
+          <g stroke="rgba(34,211,238,0.7)" stroke-width="1.4" fill="none" stroke-linecap="round">
+            <path d="M104 -14 q-3 14 0 28"/><path d="M110 -13 q-3 13 0 26"/><path d="M116 -12 q-3 12 0 24"/>
+            <path d="M122 -11 q-3 11 0 22"/><path d="M128 -9 q-3 9 0 18"/>
+          </g>
+          <!-- eye -->
+          <circle cx="132" cy="-5" r="3.1" fill="rgba(10,10,20,0.9)" stroke="rgba(34,211,238,0.95)" stroke-width="1.3"/>
+          <!-- THE AXIS: tesserae, not vertebrae — mineral tiles laid edge to edge -->
+          <g fill="rgba(251,191,36,0.55)" stroke="rgba(251,191,36,0.95)" stroke-width="0.9">
+            <rect x="22" y="-4" width="8" height="8" rx="1"/><rect x="33" y="-4" width="8" height="8" rx="1"/>
+            <rect x="44" y="-4" width="8" height="8" rx="1"/><rect x="55" y="-4" width="8" height="8" rx="1"/>
+            <rect x="66" y="-4" width="8" height="8" rx="1"/><rect x="77" y="-4" width="8" height="8" rx="1"/>
+            <rect x="88" y="-4" width="8" height="8" rx="1"/><rect x="99" y="-4" width="8" height="8" rx="1"/>
+          </g>
+        </g>
+        <text x="8" y="128" font-family="Space Mono, monospace" font-size="9.5" letter-spacing="1.3" fill="rgba(251,191,36,0.95)">tiles, not vertebrae</text>
+        <text x="8" y="144" font-family="Space Mono, monospace" font-size="9.5" letter-spacing="1.3" fill="rgba(34,211,238,0.95)">no bone · 400+ Myr</text>
+      </svg>
+
+      <div class="cover-corner">
+        <div class="cover-corner-num">32</div>
+        <span class="cover-corner-label">Cartilage</span>
+      </div>
+
+      <div class="cover-issue">Stimpunks × More Realms · Zine No. 32</div>
+
+      <h1 class="cover-title">The Skeleton<br>That <span class="amp">Skipped</span> Bone</h1>
+
+      <p class="cover-subtitle">sharks, tesserae, and what happens to a body once somebody decides it's a cure</p>
+
+      <p class="cover-byline">a counter-song to <strong>Bone Song</strong> · read in the primary literature</p>
+
+      <hr class="spectrum-line cover-rule">
+
+      <div class="cover-meta">
+        <div class="cover-ls">L★S</div>
+        <div class="cover-meta-text">
+          Love You Down<br>
+          To Your Star Stuff<br>
+          · open edition ·
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 2: The skeleton you were promised ════ -->
+  <div class="spread" id="spread-2">
+    <div class="interior">
+      <div class="spread-2col">
+        <div class="spread-left">
+          <div class="eyebrow">Where we started</div>
+          <h2 class="spread-heading">The skeleton<br>you were <span style="color:var(--gold)">promised</span></h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">This whole collection opens with a bone.</p>
+            <p><a href="bone-song-zine.html">Bone Song</a> starts where you'd expect: your calcium was forged in stars, and the skeleton it built is <span class="gold">piezoelectric</span>. Press on it and it makes voltage. <strong>Iwao Yasuda</strong> found that in the 1950s. Your bones are listening to how you move.</p>
+            <p>That's the founding image here. Star-forged mineral, laid down in a living lattice, humming quietly under load.</p>
+            <p>And then the ocean says: <em>sure. Or don't.</em></p>
+            <p>There is a whole class of vertebrates — sharks, rays, skates, the strange deep chimaeras — that never turns up to the bone. Same phylum. Same backbone-having club. <strong>No true bone anywhere in the body.</strong></p>
+            <p class="dim">Not a lesser version of yours. A different answer to the same question, and it has been working for a very long time.</p>
+          </div>
+        </div>
+        <div class="spread-right">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 260 214" xmlns="http://www.w3.org/2000/svg">
+              <text x="130" y="14" font-family="Space Mono, monospace" font-size="5" fill="rgba(156,152,178,0.95)" text-anchor="middle">two vertebrates, two skeletons</text>
+              <!-- ours -->
+              <text x="66" y="34" font-family="Space Mono, monospace" font-size="4.8" fill="rgba(251,191,36,0.95)" text-anchor="middle">us</text>
+              <rect x="46" y="46" width="40" height="72" rx="6" fill="rgba(251,191,36,0.10)" stroke="rgba(251,191,36,0.85)" stroke-width="1.5"/>
+              <!-- lattice inside -->
+              <g stroke="rgba(251,191,36,0.6)" stroke-width="0.8">
+                <line x1="46" y1="64" x2="86" y2="64"/><line x1="46" y1="82" x2="86" y2="82"/><line x1="46" y1="100" x2="86" y2="100"/>
+                <line x1="60" y1="46" x2="60" y2="118"/><line x1="72" y1="46" x2="72" y2="118"/>
+              </g>
+              <text x="66" y="132" font-family="Space Mono, monospace" font-size="4.2" fill="rgba(156,152,178,0.95)" text-anchor="middle">mineralised bone</text>
+              <!-- charge marks -->
+              <text x="66" y="150" font-family="Space Mono, monospace" font-size="4.2" fill="rgba(251,191,36,0.95)" text-anchor="middle">press → voltage</text>
+              <g stroke="rgba(251,191,36,0.9)" stroke-width="1.2" fill="none" stroke-linecap="round">
+                <path d="M56 158 l6 8 l-4 0 l6 8"/>
+              </g>
+              <text x="66" y="188" font-family="Space Mono, monospace" font-size="4.2" fill="rgba(251,191,36,0.95)" text-anchor="middle">piezoelectric</text>
+              <line x1="130" y1="30" x2="130" y2="196" stroke="rgba(136,134,160,0.3)" stroke-width="1" stroke-dasharray="3 3"/>
+              <!-- shark -->
+              <text x="194" y="34" font-family="Space Mono, monospace" font-size="4.8" fill="rgba(34,211,238,0.95)" text-anchor="middle">shark</text>
+              <rect x="174" y="46" width="40" height="72" rx="6" fill="rgba(34,211,238,0.10)" stroke="rgba(34,211,238,0.85)" stroke-width="1.5"/>
+              <!-- tesserae skin over a soft core -->
+              <g fill="rgba(34,211,238,0.35)" stroke="rgba(34,211,238,0.9)" stroke-width="0.6">
+                <rect x="177" y="49" width="7" height="7" rx="1"/><rect x="186" y="49" width="7" height="7" rx="1"/>
+                <rect x="195" y="49" width="7" height="7" rx="1"/><rect x="204" y="49" width="7" height="7" rx="1"/>
+                <rect x="177" y="108" width="7" height="7" rx="1"/><rect x="186" y="108" width="7" height="7" rx="1"/>
+                <rect x="195" y="108" width="7" height="7" rx="1"/><rect x="204" y="108" width="7" height="7" rx="1"/>
+              </g>
+              <text x="194" y="86" font-family="Space Mono, monospace" font-size="4" fill="rgba(156,152,178,0.95)" text-anchor="middle">soft core</text>
+              <text x="194" y="132" font-family="Space Mono, monospace" font-size="4.2" fill="rgba(156,152,178,0.95)" text-anchor="middle">cartilage + tiles</text>
+              <text x="194" y="150" font-family="Space Mono, monospace" font-size="4.2" fill="rgba(34,211,238,0.95)" text-anchor="middle">bends, then springs</text>
+              <text x="194" y="188" font-family="Space Mono, monospace" font-size="4.2" fill="rgba(34,211,238,0.95)" text-anchor="middle">no true bone</text>
+              <text x="130" y="208" font-family="Space Mono, monospace" font-size="4.6" fill="rgba(156,152,178,0.95)" text-anchor="middle">both are vertebrates · neither is the draft</text>
+            </svg>
+            <p class="diagram-caption">
+              same club, different build<br>
+              <span class="annotation">yasuda 1954–1957 · dean &amp; summers 2006</span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Skipped Bone · Stimpunks</span>
+        <span class="spread-footer-right">2</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 3: What's in there instead ════ -->
+  <div class="spread" id="spread-3">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">What's in there instead</div>
+          <h2 class="spread-heading">A mosaic<br>where the <span style="color:var(--accent)">bone</span> would be</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">"Cartilaginous" makes it sound floppy. It isn't.</p>
+            <p>A shark's skeleton is cartilage with a mineral crust laid over it — thousands of small blocks, packed edge to edge like paving, sitting on top of an uncalcified core. The blocks are called <span class="cyan">tesserae</span>, from the word for mosaic tiles, and that is exactly what they look like.</p>
+            <p><strong>Mason Dean</strong> and <strong>Adam Summers</strong>, reviewing the tissue in 2006, describe a skeleton whose mineralisation comes in distinct types — areolar, globular, prismatic — arranged differently depending on the animal's age, its species, where in the body you're looking, and <em>how it feeds</em>. The skeleton is tuned to the life.</p>
+            <p>And the design does something bone can't. A tiled surface over a soft core bends further before it breaks, then springs back. It's lighter than bone. It doesn't need marrow cavities or a blood supply threaded all the way through.</p>
+            <p>None of that is a workaround. It's a different set of trade-offs, chosen — over deep time — by an enormous number of successful animals.</p>
+          </div>
+          <div class="callout">
+            You were taught one skeleton and told it was <em>the</em> skeleton. There are others, and they are not rough drafts.
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 260 176" xmlns="http://www.w3.org/2000/svg">
+              <text x="130" y="14" font-family="Space Mono, monospace" font-size="5" fill="rgba(156,152,178,0.95)" text-anchor="middle">tessellated cartilage, in section</text>
+              <!-- the soft core -->
+              <rect x="34" y="72" width="192" height="42" rx="8" fill="rgba(34,211,238,0.10)" stroke="rgba(34,211,238,0.55)" stroke-width="1.3"/>
+              <text x="130" y="97" font-family="Space Mono, monospace" font-size="5.4" fill="rgba(156,152,178,0.95)" text-anchor="middle">uncalcified cartilage core</text>
+              <!-- tesserae crust, top -->
+              <g fill="rgba(251,191,36,0.5)" stroke="rgba(251,191,36,0.95)" stroke-width="0.9">
+                <rect x="36" y="60" width="14" height="11" rx="1.5"/><rect x="52" y="60" width="14" height="11" rx="1.5"/>
+                <rect x="68" y="60" width="14" height="11" rx="1.5"/><rect x="84" y="60" width="14" height="11" rx="1.5"/>
+                <rect x="100" y="60" width="14" height="11" rx="1.5"/><rect x="116" y="60" width="14" height="11" rx="1.5"/>
+                <rect x="132" y="60" width="14" height="11" rx="1.5"/><rect x="148" y="60" width="14" height="11" rx="1.5"/>
+                <rect x="164" y="60" width="14" height="11" rx="1.5"/><rect x="180" y="60" width="14" height="11" rx="1.5"/>
+                <rect x="196" y="60" width="14" height="11" rx="1.5"/>
+              </g>
+              <!-- tesserae crust, bottom -->
+              <g fill="rgba(251,191,36,0.5)" stroke="rgba(251,191,36,0.95)" stroke-width="0.9">
+                <rect x="36" y="115" width="14" height="11" rx="1.5"/><rect x="52" y="115" width="14" height="11" rx="1.5"/>
+                <rect x="68" y="115" width="14" height="11" rx="1.5"/><rect x="84" y="115" width="14" height="11" rx="1.5"/>
+                <rect x="100" y="115" width="14" height="11" rx="1.5"/><rect x="116" y="115" width="14" height="11" rx="1.5"/>
+                <rect x="132" y="115" width="14" height="11" rx="1.5"/><rect x="148" y="115" width="14" height="11" rx="1.5"/>
+                <rect x="164" y="115" width="14" height="11" rx="1.5"/><rect x="180" y="115" width="14" height="11" rx="1.5"/>
+                <rect x="196" y="115" width="14" height="11" rx="1.5"/>
+              </g>
+              <text x="130" y="48" font-family="Space Mono, monospace" font-size="4.6" fill="rgba(251,191,36,0.95)" text-anchor="middle">tesserae — mineral tiles, laid edge to edge</text>
+              <!-- the gaps do the work -->
+              <g stroke="rgba(34,211,238,0.9)" stroke-width="1.1" fill="none" stroke-linecap="round">
+                <path d="M50 34 q80 -14 160 0"/>
+                <path d="M204 34 l6 -3 M204 34 l5 4"/>
+              </g>
+              <text x="130" y="28" font-family="Space Mono, monospace" font-size="4.4" fill="rgba(34,211,238,0.95)" text-anchor="middle">the seams between tiles are where it flexes</text>
+              <text x="130" y="146" font-family="Space Mono, monospace" font-size="4.6" fill="rgba(34,211,238,0.95)" text-anchor="middle">stiff enough to bite · springy enough to swim</text>
+              <text x="130" y="166" font-family="Space Mono, monospace" font-size="4.2" fill="rgba(156,152,178,0.95)" text-anchor="middle">areolar · globular · prismatic — three ways to mineralise</text>
+            </svg>
+            <p class="diagram-caption">
+              dean &amp; summers 2006 · <em>zoology</em><br>
+              <span class="annotation">a mosaic, tuned to the life it carries</span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Skipped Bone · Stimpunks</span>
+        <span class="spread-footer-right">3</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 4: THE HINGE — they had it and let it go ════ -->
+  <div class="spread" id="spread-4">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The part that changes the story</div>
+          <h2 class="spread-heading">They didn't miss it.<br>They <span style="color:var(--gold)">let it go</span></h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">For most of a century the shark was taught as the before picture.</p>
+            <p>Cartilage first, bone later — sharks as a living snapshot of the stage vertebrates passed through on the way to becoming us. Primitive. Ancestral. <em>Not there yet.</em></p>
+            <p>The fossils stopped cooperating. In 2020 <strong>Martin Brazeau</strong> and colleagues described <span class="gold">Minjinia turgenensis</span>, an Early Devonian fish from Mongolia on the placoderm grade — close to the common ancestry of all jawed vertebrates — and it is full of <strong>endochondral bone</strong>. The kind sharks don't have.</p>
+            <p>Which flips the sequence. If the shared ancestor already had bone, then the shark's bonelessness isn't something it never got round to. <strong>It is something its lineage gave up.</strong> A derived condition. A loss.</p>
+            <p>We have run into this exact shape before, one zine ago. The crab body plan was <a href="five-times-a-crab-zine.html">gained five times and lost seven</a> — leaving turned out to be the commoner event. Here it is again in the skeleton: <em>subtraction is not the same as never having arrived.</em></p>
+            <p class="dim">And whatever they traded away, they have been fine. The chondrichthyan record runs back to the early Silurian — call it 440 million years, on scales and teeth at first. Four mass extinctions. Still here.</p>
+          </div>
+          <div class="pull-quote gold">The animal you were told hadn't got there yet had been there, and chose otherwise.</div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 260 208" xmlns="http://www.w3.org/2000/svg">
+              <!-- Left-to-right, because the claim is about sequence. An early sketch drew a
+                   conventional tree with the shark on a lower branch, which is precisely the
+                   picture the spread is arguing against — a low branch reads as "earlier,"
+                   and the whole point is that it isn't. -->
+              <text x="130" y="14" font-family="Space Mono, monospace" font-size="5" fill="rgba(156,152,178,0.95)" text-anchor="middle">who had bone, and when</text>
+              <!-- ancestor -->
+              <rect x="14" y="86" width="66" height="34" rx="5" fill="rgba(251,191,36,0.12)" stroke="rgba(251,191,36,0.9)" stroke-width="1.5"/>
+              <text x="47" y="100" font-family="Space Mono, monospace" font-size="5" fill="rgba(244,244,251,0.95)" text-anchor="middle">shared</text>
+              <text x="47" y="110" font-family="Space Mono, monospace" font-size="5" fill="rgba(244,244,251,0.95)" text-anchor="middle">ancestor</text>
+              <text x="47" y="76" font-family="Space Mono, monospace" font-size="4.4" fill="rgba(251,191,36,0.95)" text-anchor="middle">HAS BONE</text>
+              <text x="47" y="134" font-family="Space Mono, monospace" font-size="4" fill="rgba(156,152,178,0.95)" text-anchor="middle">Minjinia turgenensis</text>
+              <text x="47" y="142" font-family="Space Mono, monospace" font-size="4" fill="rgba(156,152,178,0.95)" text-anchor="middle">early Devonian</text>
+              <!-- split -->
+              <g stroke="rgba(136,134,160,0.65)" stroke-width="1.4" fill="none">
+                <path d="M80 103 L108 103"/>
+                <path d="M108 103 L108 56 L152 56"/>
+                <path d="M108 103 L108 150 L152 150"/>
+              </g>
+              <!-- upper: kept it -->
+              <rect x="152" y="42" width="94" height="28" rx="5" fill="rgba(251,191,36,0.10)" stroke="rgba(251,191,36,0.75)" stroke-width="1.3"/>
+              <text x="199" y="60" font-family="Space Mono, monospace" font-size="5" fill="rgba(244,244,251,0.95)" text-anchor="middle">bony fishes → us</text>
+              <text x="199" y="82" font-family="Space Mono, monospace" font-size="4.4" fill="rgba(251,191,36,0.95)" text-anchor="middle">kept the bone</text>
+              <!-- lower: let it go -->
+              <rect x="152" y="136" width="94" height="28" rx="5" fill="rgba(34,211,238,0.10)" stroke="rgba(34,211,238,0.85)" stroke-width="1.3"/>
+              <text x="199" y="154" font-family="Space Mono, monospace" font-size="5" fill="rgba(244,244,251,0.95)" text-anchor="middle">sharks &amp; rays</text>
+              <text x="199" y="178" font-family="Space Mono, monospace" font-size="4.4" fill="rgba(34,211,238,0.95)" text-anchor="middle">let the bone go</text>
+              <!-- the subtraction mark on the lower branch -->
+              <g stroke="rgba(214,124,80,1)" stroke-width="2.2" stroke-linecap="round">
+                <line x1="124" y1="144" x2="138" y2="156"/><line x1="138" y1="144" x2="124" y2="156"/>
+              </g>
+              <text x="131" y="170" font-family="Space Mono, monospace" font-size="4" fill="rgba(214,124,80,1)" text-anchor="middle">loss</text>
+              <line x1="20" y1="192" x2="240" y2="192" stroke="rgba(136,134,160,0.3)" stroke-width="1"/>
+              <text x="130" y="204" font-family="Space Mono, monospace" font-size="4.8" fill="rgba(34,211,238,0.95)" text-anchor="middle">derived, not primitive · brazeau et al. 2020</text>
+            </svg>
+            <p class="diagram-caption">
+              <em>nature ecology &amp; evolution</em>, 2020<br>
+              <span class="annotation">the before picture was never before</span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Skipped Bone · Stimpunks</span>
+        <span class="spread-footer-right">4</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 5: The word doing the damage ════ -->
+  <div class="spread" id="spread-5">
+    <div class="interior">
+      <div class="spread-2col">
+        <div class="spread-left">
+          <div class="eyebrow">The word doing the damage</div>
+          <h2 class="spread-heading">"Primitive"<br>is a <span style="color:var(--ember)">verdict</span></h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p>Watch how it works. <em>Primitive</em> has a technical meaning — a trait resembling an ancestral state — and it carries a second meaning it never declares: <strong>unfinished. lesser. earlier on the way to better.</strong></p>
+            <p>Both meanings ride in the same word. So a real observation ("this trait resembles the ancestral condition") arrives already sentenced.</p>
+            <p>And here the technical meaning was <em>also wrong</em>. The shark skeleton isn't ancestral. It's a later change. The word was carrying a verdict it hadn't earned, about a fact that wasn't a fact.</p>
+            <p>Our <a href="nervous-systems-field-guide.html">field guide to nervous systems</a> flagged the same habit in neuroscience — jellyfish nets called <em>primitive</em>, worm brains called <em>simple</em>. Same move, different tissue.</p>
+            <p>It's the move that gets made about us, too. <span class="violet">Low-functioning.</span> <span class="violet">Developmentally delayed.</span> <span class="violet">Behind.</span> Every one of them a measurement with a destination smuggled inside it, and the destination is always somebody else.</p>
+          </div>
+        </div>
+        <div class="spread-right">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 260 218" xmlns="http://www.w3.org/2000/svg">
+              <text x="130" y="14" font-family="Space Mono, monospace" font-size="5" fill="rgba(156,152,178,0.95)" text-anchor="middle">one word, two cargoes</text>
+              <!-- the word -->
+              <rect x="76" y="28" width="108" height="26" rx="4" fill="rgba(193,101,58,0.12)" stroke="rgba(193,101,58,0.9)" stroke-width="1.5"/>
+              <text x="130" y="45" font-family="Space Mono, monospace" font-size="7" fill="rgba(244,244,251,0.95)" text-anchor="middle">"primitive"</text>
+              <!-- two arrows down -->
+              <g stroke="rgba(136,134,160,0.6)" stroke-width="1.3" fill="none" stroke-linecap="round">
+                <path d="M104 56 L70 82 M70 82 l7 -1 M70 82 l1 -7"/>
+                <path d="M156 56 L190 82 M190 82 l-7 -1 M190 82 l-1 -7"/>
+              </g>
+              <!-- declared -->
+              <rect x="16" y="86" width="98" height="48" rx="4" fill="rgba(34,211,238,0.08)" stroke="rgba(34,211,238,0.7)" stroke-width="1.2"/>
+              <text x="65" y="100" font-family="Space Mono, monospace" font-size="4.6" fill="rgba(34,211,238,0.95)" text-anchor="middle">what it declares</text>
+              <text x="65" y="114" font-family="Space Mono, monospace" font-size="4.4" fill="rgba(156,152,178,0.95)" text-anchor="middle">resembles the</text>
+              <text x="65" y="123" font-family="Space Mono, monospace" font-size="4.4" fill="rgba(156,152,178,0.95)" text-anchor="middle">ancestral state</text>
+              <!-- smuggled -->
+              <rect x="146" y="86" width="98" height="48" rx="4" fill="rgba(193,101,58,0.10)" stroke="rgba(193,101,58,0.85)" stroke-width="1.2"/>
+              <text x="195" y="100" font-family="Space Mono, monospace" font-size="4.6" fill="rgba(214,124,80,1)" text-anchor="middle">what it smuggles</text>
+              <text x="195" y="114" font-family="Space Mono, monospace" font-size="4.4" fill="rgba(156,152,178,0.95)" text-anchor="middle">unfinished ·</text>
+              <text x="195" y="123" font-family="Space Mono, monospace" font-size="4.4" fill="rgba(156,152,178,0.95)" text-anchor="middle">lesser · behind</text>
+              <!-- and in this case -->
+              <line x1="20" y1="150" x2="240" y2="150" stroke="rgba(136,134,160,0.3)" stroke-width="1"/>
+              <text x="130" y="166" font-family="Space Mono, monospace" font-size="4.8" fill="rgba(156,152,178,0.95)" text-anchor="middle">and for the shark skeleton:</text>
+              <text x="130" y="182" font-family="Space Mono, monospace" font-size="5.4" fill="rgba(214,124,80,1)" text-anchor="middle">the declared meaning was false too</text>
+              <text x="130" y="204" font-family="Space Mono, monospace" font-size="4.6" fill="rgba(34,211,238,0.95)" text-anchor="middle">a sentence, passed before the evidence</text>
+            </svg>
+            <p class="diagram-caption">
+              the verdict inside the description<br>
+              <span class="annotation">low-functioning · delayed · behind</span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Skipped Bone · Stimpunks</span>
+        <span class="spread-footer-right">5</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 6: Then someone decided it was a cure ════ -->
+  <div class="spread" id="spread-6">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The turn</div>
+          <h2 class="spread-heading">Then someone decided<br>it was a <span style="color:var(--pink)">cure</span></h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Here is what happened next to the skeleton we've just spent five pages admiring.</p>
+            <p>Somewhere along the way a claim got loose: <em>sharks don't get cancer.</em> Cartilage has no blood vessels of its own; tumours need a blood supply to grow; therefore — the reasoning went — a shark must be carrying something that stops them. Grind it up. Take it as a powder.</p>
+            <p>It became an industry. Capsules, powders, whole shelves of them, sold to people who had just been given the worst news of their lives and were looking anywhere at all.</p>
+            <p>Notice the shape of the claim, because it is the important part. <strong>The animal is no longer an animal.</strong> Once you've decided a body contains the answer to <em>your</em> problem, the body stops being a life with its own reasons and becomes a supply.</p>
+            <p class="dim">And then there's the small matter of whether it was true.</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 260 168" xmlns="http://www.w3.org/2000/svg">
+              <text x="130" y="14" font-family="Space Mono, monospace" font-size="5" fill="rgba(156,152,178,0.95)" text-anchor="middle">the chain of reasoning</text>
+              <!-- step 1 -->
+              <rect x="10" y="34" width="66" height="40" rx="4" fill="rgba(34,211,238,0.08)" stroke="rgba(34,211,238,0.7)" stroke-width="1.2"/>
+              <text x="43" y="50" font-family="Space Mono, monospace" font-size="4.4" fill="rgba(156,152,178,0.95)" text-anchor="middle">cartilage has</text>
+              <text x="43" y="59" font-family="Space Mono, monospace" font-size="4.4" fill="rgba(156,152,178,0.95)" text-anchor="middle">no vessels</text>
+              <text x="43" y="68" font-family="Space Mono, monospace" font-size="4.2" fill="rgba(34,211,238,0.9)" text-anchor="middle">true</text>
+              <!-- step 2 -->
+              <rect x="97" y="34" width="66" height="40" rx="4" fill="rgba(251,191,36,0.08)" stroke="rgba(251,191,36,0.7)" stroke-width="1.2"/>
+              <text x="130" y="50" font-family="Space Mono, monospace" font-size="4.4" fill="rgba(156,152,178,0.95)" text-anchor="middle">so sharks</text>
+              <text x="130" y="59" font-family="Space Mono, monospace" font-size="4.4" fill="rgba(156,152,178,0.95)" text-anchor="middle">don't get cancer</text>
+              <text x="130" y="68" font-family="Space Mono, monospace" font-size="4.2" fill="rgba(214,124,80,1)" text-anchor="middle">false</text>
+              <!-- step 3 -->
+              <rect x="184" y="34" width="66" height="40" rx="4" fill="rgba(193,101,58,0.10)" stroke="rgba(193,101,58,0.8)" stroke-width="1.2"/>
+              <text x="217" y="50" font-family="Space Mono, monospace" font-size="4.4" fill="rgba(156,152,178,0.95)" text-anchor="middle">so grind them</text>
+              <text x="217" y="59" font-family="Space Mono, monospace" font-size="4.4" fill="rgba(156,152,178,0.95)" text-anchor="middle">into pills</text>
+              <text x="217" y="68" font-family="Space Mono, monospace" font-size="4.2" fill="rgba(214,124,80,1)" text-anchor="middle">didn't work</text>
+              <!-- arrows -->
+              <g stroke="rgba(136,134,160,0.6)" stroke-width="1.3" fill="none" stroke-linecap="round">
+                <path d="M78 54 L95 54 M89 50 l6 4 l-6 4"/>
+                <path d="M165 54 L182 54 M176 50 l6 4 l-6 4"/>
+              </g>
+              <!-- the break -->
+              <g stroke="rgba(214,124,80,1)" stroke-width="2" stroke-linecap="round">
+                <line x1="80" y1="86" x2="80" y2="98"/>
+                <line x1="74" y1="98" x2="86" y2="98"/>
+              </g>
+              <text x="130" y="112" font-family="Space Mono, monospace" font-size="4.8" fill="rgba(214,124,80,1)" text-anchor="middle">one true premise does not carry a conclusion</text>
+              <line x1="20" y1="126" x2="240" y2="126" stroke="rgba(136,134,160,0.3)" stroke-width="1"/>
+              <text x="130" y="142" font-family="Space Mono, monospace" font-size="5" fill="rgba(244,114,182,0.95)" text-anchor="middle">a body that contains an answer</text>
+              <text x="130" y="156" font-family="Space Mono, monospace" font-size="5" fill="rgba(244,114,182,0.95)" text-anchor="middle">stops being read as a life</text>
+            </svg>
+            <p class="diagram-caption">
+              the premise, the leap, the shelf<br>
+              <span class="annotation">an animal becomes a supply</span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Skipped Bone · Stimpunks</span>
+        <span class="spread-footer-right">6</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 7: Sharks get cancer ════ -->
+  <div class="spread" id="spread-7">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The record</div>
+          <h2 class="spread-heading">Sharks<br>get <span style="color:var(--ember)">cancer</span></h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">They always did. Somebody just had to go and count.</p>
+            <p>In 2004 <strong>Gary Ostrander</strong> and colleagues went through the literature and the Registry of Tumors in Lower Animals and found <span class="gold">42 documented tumours</span> in cartilaginous fishes — across at least <strong>21 species</strong>, in nine families and seven orders. Twenty-four in sharks, sixteen in skates and rays, two in chimaeras.</p>
+            <p>Tumours of the nervous system, the gut, the skin, the blood-forming tissue, the reproductive organs, the endocrine system — and of the <em>skeleton itself</em>. At least fifteen were malignant, invading normal tissue. Their paper's title says the quiet part: <em>Shark Cartilage, Cancer and the Growing Threat of Pseudoscience.</em></p>
+            <p>Then it was tested properly. <strong>Charles Loprinzi</strong> and colleagues ran a randomised trial in patients with advanced cancer and reported in 2005: <strong>no difference in survival, no difference in quality of life</strong>, and side effects bad enough that people struggled to keep taking it.</p>
+            <p>So: the premise was false, the product did nothing, and the animals were killed anyway.</p>
+          </div>
+          <div class="tally">
+            <div class="tally-cell lost">
+              <div class="tally-num">42</div>
+              <div class="tally-label">documented tumours<br>≥ 21 species · 7 orders</div>
+            </div>
+            <div class="tally-cell gained">
+              <div class="tally-num">0</div>
+              <div class="tally-label">benefit to survival<br>or quality of life</div>
+            </div>
+          </div>
+          <div class="callout">
+            The claim was never checked because it was <em>useful</em>. That is usually the reason.
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 260 170" xmlns="http://www.w3.org/2000/svg">
+              <text x="130" y="14" font-family="Space Mono, monospace" font-size="5" fill="rgba(156,152,178,0.95)" text-anchor="middle">42 tumours, by group</text>
+              <!-- sharks: 24 -->
+              <text x="16" y="38" font-family="Space Mono, monospace" font-size="4.6" fill="rgba(156,152,178,0.95)">sharks</text>
+              <g fill="rgba(193,101,58,0.7)" stroke="rgba(214,124,80,1)" stroke-width="0.6">
+                <rect x="60" y="31" width="6" height="9" rx="1"/><rect x="68" y="31" width="6" height="9" rx="1"/><rect x="76" y="31" width="6" height="9" rx="1"/>
+                <rect x="84" y="31" width="6" height="9" rx="1"/><rect x="92" y="31" width="6" height="9" rx="1"/><rect x="100" y="31" width="6" height="9" rx="1"/>
+                <rect x="108" y="31" width="6" height="9" rx="1"/><rect x="116" y="31" width="6" height="9" rx="1"/><rect x="124" y="31" width="6" height="9" rx="1"/>
+                <rect x="132" y="31" width="6" height="9" rx="1"/><rect x="140" y="31" width="6" height="9" rx="1"/><rect x="148" y="31" width="6" height="9" rx="1"/>
+                <rect x="156" y="31" width="6" height="9" rx="1"/><rect x="164" y="31" width="6" height="9" rx="1"/><rect x="172" y="31" width="6" height="9" rx="1"/>
+                <rect x="180" y="31" width="6" height="9" rx="1"/><rect x="188" y="31" width="6" height="9" rx="1"/><rect x="196" y="31" width="6" height="9" rx="1"/>
+                <rect x="204" y="31" width="6" height="9" rx="1"/><rect x="212" y="31" width="6" height="9" rx="1"/><rect x="220" y="31" width="6" height="9" rx="1"/>
+                <rect x="228" y="31" width="6" height="9" rx="1"/><rect x="236" y="31" width="6" height="9" rx="1"/><rect x="244" y="31" width="6" height="9" rx="1"/>
+              </g>
+              <text x="16" y="48" font-family="Space Mono, monospace" font-size="4.6" fill="rgba(214,124,80,1)">24</text>
+              <!-- rays: 16 -->
+              <text x="16" y="72" font-family="Space Mono, monospace" font-size="4.6" fill="rgba(156,152,178,0.95)">skates</text>
+              <text x="16" y="80" font-family="Space Mono, monospace" font-size="4.6" fill="rgba(156,152,178,0.95)">&amp; rays</text>
+              <g fill="rgba(193,101,58,0.7)" stroke="rgba(214,124,80,1)" stroke-width="0.6">
+                <rect x="60" y="67" width="6" height="9" rx="1"/><rect x="68" y="67" width="6" height="9" rx="1"/><rect x="76" y="67" width="6" height="9" rx="1"/>
+                <rect x="84" y="67" width="6" height="9" rx="1"/><rect x="92" y="67" width="6" height="9" rx="1"/><rect x="100" y="67" width="6" height="9" rx="1"/>
+                <rect x="108" y="67" width="6" height="9" rx="1"/><rect x="116" y="67" width="6" height="9" rx="1"/><rect x="124" y="67" width="6" height="9" rx="1"/>
+                <rect x="132" y="67" width="6" height="9" rx="1"/><rect x="140" y="67" width="6" height="9" rx="1"/><rect x="148" y="67" width="6" height="9" rx="1"/>
+                <rect x="156" y="67" width="6" height="9" rx="1"/><rect x="164" y="67" width="6" height="9" rx="1"/><rect x="172" y="67" width="6" height="9" rx="1"/>
+                <rect x="180" y="67" width="6" height="9" rx="1"/>
+              </g>
+              <text x="16" y="88" font-family="Space Mono, monospace" font-size="4.6" fill="rgba(214,124,80,1)">16</text>
+              <!-- chimaeras: 2 -->
+              <text x="16" y="108" font-family="Space Mono, monospace" font-size="4.6" fill="rgba(156,152,178,0.95)">chimaeras</text>
+              <g fill="rgba(193,101,58,0.7)" stroke="rgba(214,124,80,1)" stroke-width="0.6">
+                <rect x="60" y="103" width="6" height="9" rx="1"/><rect x="68" y="103" width="6" height="9" rx="1"/>
+              </g>
+              <text x="16" y="116" font-family="Space Mono, monospace" font-size="4.6" fill="rgba(214,124,80,1)">2</text>
+              <line x1="16" y1="128" x2="244" y2="128" stroke="rgba(136,134,160,0.3)" stroke-width="1"/>
+              <text x="130" y="142" font-family="Space Mono, monospace" font-size="4.8" fill="rgba(214,124,80,1)" text-anchor="middle">at least 15 malignant · invading normal tissue</text>
+              <text x="130" y="160" font-family="Space Mono, monospace" font-size="4.8" fill="rgba(34,211,238,0.95)" text-anchor="middle">ostrander et al. 2004 · cancer research</text>
+            </svg>
+            <p class="diagram-caption">
+              the count that was there all along<br>
+              <span class="annotation">nobody had asked</span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Skipped Bone · Stimpunks</span>
+        <span class="spread-footer-right">7</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 8: A body read as a cure ════ -->
+  <div class="spread" id="spread-8">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The pattern underneath</div>
+          <h2 class="spread-heading">A body read as a cure<br>gets <span style="color:var(--pink)">harvested</span></h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">This is the sentence the zine exists for, so here it is plainly.</p>
+            <p>The shark was not harmed because anyone hated it. It was harmed because somebody decided its body <em>contained something useful</em>, and once that decision is made, everything else follows without anyone needing to be cruel on purpose.</p>
+            <p>You stop asking what the animal is doing with its own skeleton. You start asking what the skeleton can do for you. And then you go and get it.</p>
+            <p><strong>It is the same operation when it's aimed at people.</strong> We know this frame very well:</p>
+            <p>the search for the cause, so there can be a cure. The interest in Autistic people that arrives only as <em>what are they good at, could we use that.</em> The inspiration story where a disabled life is raw material for somebody else's lesson. The research funding that goes to prevention rather than to the things we've actually asked for.</p>
+            <p>All of it starts the same way — <em>not with hatred, with usefulness.</em> A body is read for what can be extracted, and the reading feels like appreciation right up until the moment it costs you something.</p>
+          </div>
+          <div class="pull-quote pink">Being valued for what can be taken out of you is not the same as being valued.</div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 260 194" xmlns="http://www.w3.org/2000/svg">
+              <text x="130" y="14" font-family="Space Mono, monospace" font-size="5" fill="rgba(156,152,178,0.95)" text-anchor="middle">two ways of looking at the same body</text>
+              <!-- LEFT: extraction -->
+              <text x="66" y="34" font-family="Space Mono, monospace" font-size="4.8" fill="rgba(214,124,80,1)" text-anchor="middle">read for what's in it</text>
+              <circle cx="66" cy="78" r="26" fill="rgba(193,101,58,0.10)" stroke="rgba(193,101,58,0.8)" stroke-width="1.4"/>
+              <!-- arrows pulling outward -->
+              <g stroke="rgba(214,124,80,1)" stroke-width="1.4" fill="none" stroke-linecap="round">
+                <path d="M66 56 L66 42 M62 47 l4 -5 l4 5"/>
+                <path d="M88 78 L102 78 M97 74 l5 4 l-5 4"/>
+                <path d="M66 100 L66 114 M62 109 l4 5 l4 -5"/>
+                <path d="M44 78 L30 78 M35 74 l-5 4 l5 4"/>
+              </g>
+              <circle cx="66" cy="78" r="6" fill="rgba(251,191,36,0.5)" stroke="rgba(251,191,36,0.95)" stroke-width="1.1"/>
+              <text x="66" y="130" font-family="Space Mono, monospace" font-size="4.2" fill="rgba(156,152,178,0.95)" text-anchor="middle">the useful part</text>
+              <text x="66" y="139" font-family="Space Mono, monospace" font-size="4.2" fill="rgba(156,152,178,0.95)" text-anchor="middle">leaves the body</text>
+              <text x="66" y="156" font-family="Space Mono, monospace" font-size="4.4" fill="rgba(214,124,80,1)" text-anchor="middle">supply</text>
+              <line x1="130" y1="30" x2="130" y2="164" stroke="rgba(136,134,160,0.3)" stroke-width="1" stroke-dasharray="3 3"/>
+              <!-- RIGHT: relation -->
+              <text x="194" y="34" font-family="Space Mono, monospace" font-size="4.8" fill="rgba(34,211,238,0.95)" text-anchor="middle">read as a life</text>
+              <circle cx="194" cy="78" r="26" fill="rgba(34,211,238,0.10)" stroke="rgba(34,211,238,0.85)" stroke-width="1.4"/>
+              <!-- arrows circulating, staying in -->
+              <g stroke="rgba(34,211,238,0.9)" stroke-width="1.3" fill="none" stroke-linecap="round">
+                <path d="M194 60 q16 12 0 24 q-16 -12 0 -24"/>
+                <path d="M176 78 q12 -14 24 -2"/>
+              </g>
+              <circle cx="194" cy="78" r="6" fill="rgba(34,211,238,0.45)" stroke="rgba(34,211,238,0.95)" stroke-width="1.1"/>
+              <text x="194" y="130" font-family="Space Mono, monospace" font-size="4.2" fill="rgba(156,152,178,0.95)" text-anchor="middle">the useful part</text>
+              <text x="194" y="139" font-family="Space Mono, monospace" font-size="4.2" fill="rgba(156,152,178,0.95)" text-anchor="middle">is doing a job here</text>
+              <text x="194" y="156" font-family="Space Mono, monospace" font-size="4.4" fill="rgba(34,211,238,0.95)" text-anchor="middle">a life</text>
+              <line x1="20" y1="174" x2="240" y2="174" stroke="rgba(136,134,160,0.3)" stroke-width="1"/>
+              <text x="130" y="188" font-family="Space Mono, monospace" font-size="4.8" fill="rgba(244,114,182,0.95)" text-anchor="middle">the difference is not kindness · it is direction</text>
+            </svg>
+            <p class="diagram-caption">
+              extraction begins as appreciation<br>
+              <span class="annotation">and then it comes to collect</span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Skipped Bone · Stimpunks</span>
+        <span class="spread-footer-right">8</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 9: What the skeleton is actually for ════ -->
+  <div class="spread" id="spread-9">
+    <div class="interior">
+      <div class="spread-2col">
+        <div class="spread-left">
+          <div class="eyebrow">Back to the animal</div>
+          <h2 class="spread-heading">What the skeleton<br>is actually <span style="color:var(--accent)">for</span></h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p>It's for the shark.</p>
+            <p>That's the whole answer, and it's worth sitting with, because it is the answer that got skipped.</p>
+            <p>The tiled cartilage is doing a job every second of that animal's life. It holds a jaw that has to bite without shattering. It carries a body through water with the springy recoil that makes the swimming cheap. It grows with the animal, tuned — species by species, region by region, feeding style by feeding style — to the exact loads that particular life puts on it.</p>
+            <p>It is not a message to us. It is not a resource with an animal wrapped round it. It is a body, solving the problem of being that body, in a way that has held up across four mass extinctions.</p>
+            <p><strong>Your skeleton is doing the same thing.</strong> Yasuda's finding wasn't that your bones are useful to somebody — it's that they're <em>listening</em>, minute by minute, to the life you are actually living.</p>
+            <p class="dim">Two different mineral answers. Both of them the same star-forged calcium. Neither of them owed to anyone.</p>
+          </div>
+        </div>
+        <div class="spread-right">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 260 200" xmlns="http://www.w3.org/2000/svg">
+              <text x="130" y="14" font-family="Space Mono, monospace" font-size="5" fill="rgba(156,152,178,0.95)" text-anchor="middle">one element, two skeletons</text>
+              <!-- the star -->
+              <g transform="translate(130,44)">
+                <circle cx="0" cy="0" r="13" fill="rgba(251,191,36,0.18)" stroke="rgba(251,191,36,0.9)" stroke-width="1.4"/>
+                <g stroke="rgba(251,191,36,0.8)" stroke-width="1.1" stroke-linecap="round">
+                  <path d="M0 -20 L0 -16"/><path d="M0 16 L0 20"/><path d="M-20 0 L-16 0"/><path d="M16 0 L20 0"/>
+                  <path d="M-14 -14 L-11 -11"/><path d="M14 -14 L11 -11"/><path d="M-14 14 L-11 11"/><path d="M14 14 L11 11"/>
+                </g>
+              </g>
+              <text x="130" y="76" font-family="Space Mono, monospace" font-size="4.6" fill="rgba(251,191,36,0.95)" text-anchor="middle">calcium · forged in stars</text>
+              <!-- split -->
+              <g stroke="rgba(136,134,160,0.6)" stroke-width="1.3" fill="none">
+                <path d="M130 82 L130 96"/>
+                <path d="M130 96 L66 96 L66 112"/>
+                <path d="M130 96 L194 96 L194 112"/>
+              </g>
+              <!-- bone -->
+              <rect x="40" y="112" width="52" height="34" rx="4" fill="rgba(251,191,36,0.10)" stroke="rgba(251,191,36,0.85)" stroke-width="1.3"/>
+              <g stroke="rgba(251,191,36,0.55)" stroke-width="0.7">
+                <line x1="40" y1="124" x2="92" y2="124"/><line x1="40" y1="135" x2="92" y2="135"/>
+                <line x1="57" y1="112" x2="57" y2="146"/><line x1="75" y1="112" x2="75" y2="146"/>
+              </g>
+              <text x="66" y="158" font-family="Space Mono, monospace" font-size="4.4" fill="rgba(251,191,36,0.95)" text-anchor="middle">bone</text>
+              <text x="66" y="170" font-family="Space Mono, monospace" font-size="4" fill="rgba(156,152,178,0.95)" text-anchor="middle">makes voltage</text>
+              <text x="66" y="178" font-family="Space Mono, monospace" font-size="4" fill="rgba(156,152,178,0.95)" text-anchor="middle">under load</text>
+              <!-- tesserae -->
+              <rect x="168" y="112" width="52" height="34" rx="4" fill="rgba(34,211,238,0.10)" stroke="rgba(34,211,238,0.85)" stroke-width="1.3"/>
+              <g fill="rgba(34,211,238,0.4)" stroke="rgba(34,211,238,0.9)" stroke-width="0.5">
+                <rect x="172" y="116" width="8" height="8" rx="1"/><rect x="182" y="116" width="8" height="8" rx="1"/>
+                <rect x="192" y="116" width="8" height="8" rx="1"/><rect x="202" y="116" width="8" height="8" rx="1"/>
+                <rect x="172" y="134" width="8" height="8" rx="1"/><rect x="182" y="134" width="8" height="8" rx="1"/>
+                <rect x="192" y="134" width="8" height="8" rx="1"/><rect x="202" y="134" width="8" height="8" rx="1"/>
+              </g>
+              <text x="194" y="158" font-family="Space Mono, monospace" font-size="4.4" fill="rgba(34,211,238,0.95)" text-anchor="middle">tesserae</text>
+              <text x="194" y="170" font-family="Space Mono, monospace" font-size="4" fill="rgba(156,152,178,0.95)" text-anchor="middle">bends, then</text>
+              <text x="194" y="178" font-family="Space Mono, monospace" font-size="4" fill="rgba(156,152,178,0.95)" text-anchor="middle">springs back</text>
+              <text x="130" y="196" font-family="Space Mono, monospace" font-size="4.8" fill="rgba(34,211,238,0.95)" text-anchor="middle">each one for the body that's wearing it</text>
+            </svg>
+            <p class="diagram-caption">
+              the same element, twice<br>
+              <span class="annotation">neither of them owed to anyone</span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Skipped Bone · Stimpunks</span>
+        <span class="spread-footer-right">9</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 10: What we are not saying ════ -->
+  <div class="spread" id="spread-10">
+    <div class="interior">
+      <div class="spread-2col">
+        <div class="spread-left">
+          <div class="eyebrow">Held with care</div>
+          <h2 class="spread-heading">What we are<br><span style="color:var(--accent)">not</span> saying</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p>There are several wrong turns available here, and a few of them are flattering. Naming them.</p>
+          </div>
+          <div class="refusals">
+            <div class="refusal"><span class="refusal-tag">Not</span><span><strong>sharks are better.</strong> We're not swapping which skeleton wins. Bone is extraordinary. Tesserae are extraordinary. There is no podium.</span></div>
+            <div class="refusal"><span class="refusal-tag">Not</span><span><strong>losing a trait is secretly superior.</strong> "They gave up bone" is a fact about history, not a moral. Loss isn't noble. It's just not the failure it was read as.</span></div>
+            <div class="refusal"><span class="refusal-tag">Not</span><span><strong>medicine is the enemy.</strong> The people who counted the tumours and ran the trial <em>are</em> the medicine. Pseudoscience is what failed the patients here, and it failed the sharks too.</span></div>
+            <div class="refusal"><span class="refusal-tag">Not</span><span><strong>anyone who took the pills was a fool.</strong> They were frightened people who had been lied to by an industry. The blame sits with whoever sold it.</span></div>
+            <div class="refusal"><span class="refusal-tag">Not</span><span><strong>disabled people are like sharks.</strong> We are not making anyone an animal metaphor. The shared thing is the <em>frame</em> — a body read for what can be taken out of it — not the bodies.</span></div>
+            <div class="refusal"><span class="refusal-tag">Not</span><span><strong>biology proving a politics.</strong> A rhyme, not a proof. That vertebrates built two skeletons is not <em>why</em> difference deserves welcome — it would deserve welcome in a universe that only ever made one.</span></div>
+          </div>
+        </div>
+        <div class="spread-right">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 260 190" xmlns="http://www.w3.org/2000/svg">
+              <text x="130" y="14" font-family="Space Mono, monospace" font-size="5" fill="rgba(156,152,178,0.95)" text-anchor="middle">what we are not building</text>
+              <!-- NOT: a podium -->
+              <text x="64" y="32" font-family="Space Mono, monospace" font-size="4.6" fill="rgba(214,124,80,1)" text-anchor="middle">not a podium</text>
+              <g fill="rgba(136,134,160,0.18)" stroke="rgba(136,134,160,0.5)" stroke-width="1.1">
+                <rect x="38" y="66" width="20" height="44"/>
+                <rect x="58" y="52" width="20" height="58"/>
+                <rect x="78" y="78" width="20" height="32"/>
+              </g>
+              <circle cx="68" cy="44" r="5" fill="rgba(34,211,238,0.5)" stroke="rgba(34,211,238,0.9)" stroke-width="1"/>
+              <circle cx="48" cy="58" r="5" fill="rgba(251,191,36,0.45)" stroke="rgba(251,191,36,0.9)" stroke-width="1"/>
+              <circle cx="88" cy="70" r="5" fill="rgba(167,139,250,0.45)" stroke="rgba(167,139,250,0.9)" stroke-width="1"/>
+              <g stroke="rgba(214,124,80,1)" stroke-width="2.4" stroke-linecap="round">
+                <line x1="30" y1="38" x2="106" y2="118"/><line x1="106" y1="38" x2="30" y2="118"/>
+              </g>
+              <line x1="130" y1="28" x2="130" y2="124" stroke="rgba(136,134,160,0.3)" stroke-width="1" stroke-dasharray="3 3"/>
+              <!-- THIS: side by side -->
+              <text x="196" y="32" font-family="Space Mono, monospace" font-size="4.6" fill="rgba(34,211,238,0.95)" text-anchor="middle">side by side</text>
+              <line x1="152" y1="86" x2="244" y2="86" stroke="rgba(34,211,238,0.75)" stroke-width="1.6"/>
+              <circle cx="168" cy="76" r="7" fill="rgba(251,191,36,0.45)" stroke="rgba(251,191,36,0.9)" stroke-width="1.1"/>
+              <circle cx="196" cy="76" r="7" fill="rgba(34,211,238,0.45)" stroke="rgba(34,211,238,0.9)" stroke-width="1.1"/>
+              <circle cx="224" cy="76" r="7" fill="rgba(167,139,250,0.4)" stroke="rgba(167,139,250,0.9)" stroke-width="1.1"/>
+              <text x="168" y="102" font-family="Space Mono, monospace" font-size="3.9" fill="rgba(156,152,178,0.95)" text-anchor="middle">bone</text>
+              <text x="196" y="102" font-family="Space Mono, monospace" font-size="3.9" fill="rgba(156,152,178,0.95)" text-anchor="middle">tesserae</text>
+              <text x="224" y="102" font-family="Space Mono, monospace" font-size="3.9" fill="rgba(156,152,178,0.95)" text-anchor="middle">others</text>
+              <text x="196" y="118" font-family="Space Mono, monospace" font-size="4.2" fill="rgba(156,152,178,0.95)" text-anchor="middle">no ranks</text>
+              <line x1="20" y1="140" x2="240" y2="140" stroke="rgba(136,134,160,0.3)" stroke-width="1"/>
+              <text x="130" y="156" font-family="Space Mono, monospace" font-size="5" fill="rgba(34,211,238,0.95)" text-anchor="middle">a rhyme, not a proof</text>
+              <text x="130" y="176" font-family="Space Mono, monospace" font-size="4.4" fill="rgba(156,152,178,0.95)" text-anchor="middle">the universe doesn't pathologize its own variation</text>
+            </svg>
+            <p class="diagram-caption">
+              no podium, no ranks<br>
+              <span class="annotation">two answers, both standing</span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Skipped Bone · Stimpunks</span>
+        <span class="spread-footer-right">10</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 11: Closer to home ════ -->
+  <div class="spread" id="spread-11">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Closer to home</div>
+          <h2 class="spread-heading">You don't owe anyone<br>a <span style="color:var(--accent)">reason</span></h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Everything in this zine turns on one question, and it's a question that gets asked about people constantly.</p>
+            <p><em>What is it for?</em></p>
+            <p>Asked of a shark's skeleton, it produced a shelf of pills that didn't work and a lot of dead animals. Asked of a person, it produces the same shape: <span class="violet">what are you good for, what does your difference get us, where's the upside.</span></p>
+            <p>You've probably been handed the flattering version. <em>Autistic people are so detail-oriented — brilliant for quality assurance.</em> It sounds like praise. It's a receipt. It says the welcome is conditional on the yield, and quietly hands you the bill if the yield stops.</p>
+            <p>So here is the plain form of the refusal, which is the same one we'd make on the shark's behalf if it could be bothered to care what we think:</p>
+            <p><strong>The skeleton is for the animal. Your mind is for you.</strong> Not a resource. Not a lesson. Not a supply. A body doing the work of being itself, which is the only justification anything in this universe has ever had, and it has always been enough.</p>
+            <p class="dim">Four hundred million years of no bone at all, and nobody down there is apologising.</p>
+          </div>
+          <div class="pull-quote">The tiles aren't a rough draft of a spine. You aren't a rough draft of anyone.</div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 260 176" xmlns="http://www.w3.org/2000/svg">
+              <text x="130" y="14" font-family="Space Mono, monospace" font-size="5" fill="rgba(156,152,178,0.95)" text-anchor="middle">the question, and the better question</text>
+              <!-- the extractive question -->
+              <rect x="22" y="30" width="216" height="30" rx="4" fill="rgba(193,101,58,0.10)" stroke="rgba(193,101,58,0.8)" stroke-width="1.3"/>
+              <text x="130" y="49" font-family="Space Mono, monospace" font-size="7" fill="rgba(244,244,251,0.95)" text-anchor="middle">"what is it for?"</text>
+              <text x="130" y="72" font-family="Space Mono, monospace" font-size="4.4" fill="rgba(214,124,80,1)" text-anchor="middle">answers that follow: supply · yield · upside · cure</text>
+              <!-- swap -->
+              <g stroke="rgba(136,134,160,0.6)" stroke-width="1.3" fill="none" stroke-linecap="round">
+                <path d="M130 82 L130 96 M126 91 l4 5 l4 -5"/>
+              </g>
+              <!-- the better question -->
+              <rect x="22" y="102" width="216" height="30" rx="4" fill="rgba(34,211,238,0.10)" stroke="rgba(34,211,238,0.85)" stroke-width="1.4"/>
+              <text x="130" y="121" font-family="Space Mono, monospace" font-size="7" fill="rgba(244,244,251,0.95)" text-anchor="middle">"what is it doing?"</text>
+              <text x="130" y="144" font-family="Space Mono, monospace" font-size="4.4" fill="rgba(34,211,238,0.95)" text-anchor="middle">answers that follow: living · holding · swimming · being</text>
+              <line x1="30" y1="156" x2="230" y2="156" stroke="rgba(136,134,160,0.3)" stroke-width="1"/>
+              <text x="130" y="170" font-family="Space Mono, monospace" font-size="4.8" fill="rgba(244,114,182,0.95)" text-anchor="middle">one asks for a receipt · one just looks</text>
+            </svg>
+            <p class="diagram-caption">
+              change the question<br>
+              <span class="annotation">and the whole shelf empties</span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Skipped Bone · Stimpunks</span>
+        <span class="spread-footer-right">11</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 12: Colophon ════ -->
+  <div class="spread" id="spread-12">
+    <div class="interior">
+      <div class="colophon">
+        <div>
+          <div class="colophon-top">
+            <span class="colophon-ls">L★S</span>
+            <span class="colophon-phrase">They had bone, and let it go. Four hundred million years, and nobody down there is apologising.</span>
+          </div>
+          <div class="series-list">
+            <div class="series-item"><span class="series-num">No. 1</span> Bone Song — piezoelectric bone &amp; star-forged calcium</div>
+            <div class="series-item"><span class="series-num">No. 9</span> The Lines We Drew — the invention of "normal" &amp; the constructed line</div>
+            <div class="series-item"><span class="series-num">No. 27</span> Every Nervous System — more-than-human neurodiversity &amp; reclaiming animality</div>
+            <div class="series-item"><span class="series-num">No. 31</span> Five Times a Crab, Seven Times Not — convergence, attractors &amp; terrain</div>
+            <div class="series-item current"><span class="series-num">No. 32</span> The Skeleton That Skipped Bone — cartilage, loss &amp; the cure frame ← you are here</div>
+            <div class="series-item"><span class="series-num">FG 5</span> A Field Guide to Nervous Systems — eleven ways to have one</div>
+          </div>
+          <div class="reflect">
+            <div class="reflect-label">A thread to follow</div>
+            <p class="reflect-q">Where have you been praised for what could be extracted from you rather than for being there?</p>
+            <p class="reflect-q">Which word in your paperwork carries a verdict it never declares?</p>
+            <p class="reflect-q">What would change if the question were <em>what is it doing</em> instead of <em>what is it for</em>?</p>
+          </div>
+          <p class="colophon-body">
+            The Skeleton That Skipped Bone is Zine No. 32 in the Stimpunks Star Stuff series, and a deliberate companion and counter-song to <a href="bone-song-zine.html">Bone Song</a> (1) — which opens this collection on piezoelectric bone, and which this zine answers with a vertebrate that has none. It is also a second visit to the argument in <a href="five-times-a-crab-zine.html">Five Times a Crab, Seven Times Not</a> (31): that a lineage <em>leaving</em> a trait is a different fact from a lineage never having arrived at it. It extends the naming of buried verdicts begun in <a href="nervous-systems-field-guide.html">A Field Guide to Nervous Systems</a> (FG 5) and <a href="the-lines-we-drew-zine.html">The Lines We Drew</a> (9). It was written for a young person in our community whose special interest is sharks. It is theirs.<br><br>
+            <strong style="color:var(--stardust);font-weight:400">Sources &amp; notes.</strong> On the tissue: Dean, M. N. &amp; Summers, A. P. (2006). Mineralized cartilage in the skeleton of chondrichthyan fishes. <em>Zoology</em>, 109(2), 164–168 — source of the tessellated-cartilage description, the tesserae overlying an uncalcified core, and the three calcification types (areolar, globular, prismatic) varying with age, species, body region and feeding behaviour. On the loss of bone: Brazeau, M. D., Giles, S., Dearden, R. P., Jerve, A., Ariunchimeg, Y., Zorig, E., Sansom, R., Guillerme, T. &amp; Castiello, M. (2020). Endochondral bone in an Early Devonian 'placoderm' from Mongolia. <em>Nature Ecology &amp; Evolution</em>, 4, 1477–1484 — describing <em>Minjinia turgenensis</em> and supporting a phylogenetically deeper origin of endochondral bone, with its absence in chondrichthyans as a secondary condition. On the age of the group: the chondrichthyan fossil record reaches the early Silurian (~440 Ma), though the earliest material is scales and teeth rather than skeletons; <em>Doliodus problematicus</em> (Early Devonian, Canada) is the oldest known largely intact shark. On the cure claim: Ostrander, G. K., Cheng, K. C., Wolf, J. C. &amp; Wolfe, M. J. (2004). Shark cartilage, cancer and the growing threat of pseudoscience. <em>Cancer Research</em>, 64(23), 8485–8491 — source of the 42 documented chondrichthyan tumours across at least 21 species in nine families and seven orders (24 sharks, 16 skates or rays, 2 chimaeroids), of the affected organ systems including the skeleton, and of the at-least-15 malignant count. Loprinzi, C. L., Levitt, R., Barton, D. L., Sloan, J. A., Atherton, P. J., Smith, D. J. et al. (2005). Evaluation of shark cartilage in patients with advanced cancer: A North Central Cancer Treatment Group trial. <em>Cancer</em>, 104(1), 176–182 — no difference in overall survival or quality of life, with adverse effects driving poor compliance. Piezoelectric bone is <strong style="color:var(--stardust);font-weight:400">Iwao Yasuda</strong>'s (1954–1957), as set out in <a href="bone-song-zine.html">Bone Song</a>.<br><br>
+            <strong style="color:var(--stardust);font-weight:400">Held honestly.</strong> The secondary-loss reading of the chondrichthyan skeleton is the direction the current evidence points, and it is a live area rather than a closed one — Brazeau and colleagues present <em>Minjinia</em> as reviving and supporting that view, not as settling it. "No true bone" means no endochondral bone: chondrichthyans do mineralise, extensively, and the tesserae are real mineral; some rays carry bone-like tissue in dermal denticles and thorns, which is an active question in the literature. The <em>reasons</em> a lineage would shed bone are not established here and we have not claimed any. We have not put a number on how many sharks the cartilage trade killed, because we could not verify one in a primary source; what is documented is that the premise was false and the product did not work. And the ethics do not come from the biology. That the universe built more than one skeleton is not <em>why</em> a person deserves welcome — as <a href="about.html">about.html</a> puts it, we are noticing a rhyme, not collecting a proof.<br><br>
+            The star stuff is Carl Sagan's, and the SN 1006 remnant on every Stimpunks page. Calcium from a dying star, spent two ways. The universe doesn't pathologize its own variation.
+          </p>
+        </div>
+        <div class="colophon-footer">
+          <a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks Foundation</a> × <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a> · Zine No. 32<br>
+          Shared on Star Stuff · Print freely · Share freely · <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> · L★S<br>
+          stimpunks.org · morerealms.com · starstuff.earth
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Skipped Bone · Stimpunks</span>
+        <span class="spread-footer-right">12</span>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /zine-shell -->
+
+<script>
+  let current = 1;
+  const total = 12;
+
+  function changePage(dir) {
+    const next = current + dir;
+    if (next < 1 || next > total) return;
+    document.getElementById('spread-' + current).classList.remove('active');
+    current = next;
+    document.getElementById('spread-' + current).classList.add('active');
+    document.getElementById('page-counter').textContent = current + ' / ' + total;
+    document.getElementById('prev-btn').style.opacity = current === 1 ? '0.3' : '1';
+    document.getElementById('next-btn').style.opacity = current === total ? '0.3' : '1';
+    document.getElementById('prev-btn').classList.toggle('active', current > 1);
+    document.getElementById('next-btn').classList.toggle('active', current < total);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') changePage(1);
+    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   changePage(-1);
+  });
+
+  document.getElementById('prev-btn').style.opacity = '0.3';
+  document.getElementById('next-btn').classList.add('active');
+</script>
+<script src="starstuff.js" defer></script>
+</body>
+</html>
