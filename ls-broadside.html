@@ -4,52 +4,76 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<meta name="color-scheme" content="dark">
+<meta name="color-scheme" content="light">
 <meta name="theme-color" content="#0a0a14">
 <link rel="canonical" href="https://starstuff.earth/ls-broadside.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<meta name="description" content="Two-sided single sheet. L★S large on the face, full Bone Song poem on the reverse. Risograph-inspired, print-ready. Toggle between sides and print from your browser.">
+<meta name="description" content="L★S Broadside — a two-sided single sheet. L★S large on the face, the full Bone Song poem on the reverse. Designed for paper: one physical sheet, duplexed, on A4 or US Letter. Print it, pin it up, hand it to someone.">
 <!-- Open Graph / link unfurl -->
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Star Stuff · Stimpunks Foundation × More Realms">
 <meta property="og:url" content="https://starstuff.earth/ls-broadside.html">
 <meta property="og:title" content="L★S Broadside">
-<meta property="og:description" content="Two-sided single sheet. L★S large on the face, full Bone Song poem on the reverse. Risograph-inspired, print-ready. Toggle between sides and print from your browser.">
+<meta property="og:description" content="Two-sided single sheet. L★S large on the face, the full Bone Song poem on the reverse. Print-ready on A4 or US Letter.">
 <meta property="og:image" content="https://starstuff.earth/og-card.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="A rainbow-hued cosmic image — we are all made of star stuff.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="L★S Broadside">
-<meta name="twitter:description" content="Two-sided single sheet. L★S large on the face, full Bone Song poem on the reverse. Risograph-inspired, print-ready.">
+<meta name="twitter:description" content="Two-sided single sheet. L★S large on the face, the full Bone Song poem on the reverse. Print-ready on A4 or Letter.">
 <meta name="twitter:image" content="https://starstuff.earth/og-card.jpg">
 <title>L★S Broadside — Stimpunks × More Realms</title>
-<link href="https://fonts.googleapis.com/css2?family=Boogaloo&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Fraunces:ital,opsz,wght@0,9..144,200..900;1,9..144,200..900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="starstuff.css">
 <style>
+  /* ═══════════════════════════════════════════════════════════════════════════
+     PAPER-FIRST SHEET. Sibling of six-ways-broadside.html — keep the two in step.
+
+     These are the only artifacts here designed in the medium they are for.
+     Everything else on the site is light-on-dark and gets inverted for print by
+     starstuff.css; a broadside is made to be printed and handed to someone, so it
+     is ink on white in BOTH media and the screen view is a preview of the sheet.
+
+     Why the riso treatment went (measured, 2026-08-11): the cream stock was a
+     background-color and the halftone a background-image, and browsers leave
+     "Background graphics" off by default — so neither ever reached paper. The gold
+     misregistration shadow behind the L★S DID print, because it is text, at
+     1.84:1 on white: a faint smudge. The reader got the flaw of the effect and
+     none of its charm. The dark verso was worse — cream type on near-black, which
+     printed as a blank sheet unless the reader had found the checkbox.
+
+     TYPEFACE. Atkinson Hyperlegible Next throughout, Space Mono for labels and
+     chrome. Boogaloo went too: at 150pt its hand-lettered irregularity read as a
+     damaged letterform rather than character — the L's angled foot was taken for
+     a clipping bug. Fraunces is gone from both
+     broadsides: it is a high-contrast display serif whose hairlines are the first
+     thing to drop out of a photocopy or a tired laser printer, which is most of a
+     broadside's life, and Atkinson was drawn by the Braille Institute for exactly
+     this. Before this change the sheet loaded Atkinson and rendered 0% of its
+     characters in it.
+
+     SIZE. 190 × 259 mm with 9 mm page margins — inside both A4 (192 × 279 box)
+     and US Letter (198 × 261). Two sides, no third page, either country.
+     ═══════════════════════════════════════════════════════════════════════════ */
+
   :root {
-    --ink:       #0e0c1a;
-    --paper:     #f5f0e8;
-    --paper-dim: #e8e2d0;
-    --riso-gold: #e8a820;
-    --riso-blue: #1a3a8f;
-    --riso-dark: #0e0c1a;
-    --accent:    #c8380a;
+    --sheet:  #ffffff;
+    --ink:    #111111;   /* 18.1:1 on white */
+    --ink-2:  #333333;   /* 12.6:1 */
+    --ink-3:  #555555;   /*  7.5:1 — small print, credits */
+    --spot:   #92400e;   /*  7.1:1 — the house gold, darkened for paper */
+    --spot-2: #5b21b6;   /*  8.8:1 — the house violet, darkened for paper */
+    --rule:   #d4d0dc;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
-  /* This page styled no links at all, so the two CC BY-SA links fell back to the
-     browser's dark-scheme default (#9e9eff) — 2.11:1 against the verso's near-black.
-     Inheriting the surrounding colour keeps them at their parent's passing contrast
-     on both the cream face and the dark verso; the underline carries the affordance. */
-  .face a, .verso a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
-
   body {
     background: #2a2830;
-    font-family: 'Space Mono', monospace;
+    font-family: 'Atkinson Hyperlegible Next', system-ui, sans-serif;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -57,480 +81,138 @@
     padding: 2rem 1rem 3rem;
   }
 
-  /* ── CONTROLS ── */
-  .controls {
-    display: flex;
-    gap: 0.75rem;
-    margin-bottom: 1.5rem;
-    align-items: center;
-  }
-
+  /* ── CONTROLS (screen only) ── */
+  .controls { display: flex; gap: 0.75rem; margin-bottom: 1.5rem; align-items: center; flex-wrap: wrap; justify-content: center; }
   .ctrl-btn {
-    background: none;
-    border: 1px solid rgba(255,255,255,0.2);
-    color: rgba(255,255,255,0.6);
-    font-family: 'Space Mono', monospace;
-    font-size: 0.6rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    padding: 0.5rem 1.1rem;
-    border-radius: 2px;
-    cursor: pointer;
+    background: none; border: 1px solid rgba(255,255,255,0.28); color: #d6d5da;
+    font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em;
+    text-transform: uppercase; padding: 0.5rem 1.1rem; border-radius: 2px; cursor: pointer;
     transition: all 0.2s ease;
   }
-  .ctrl-btn:hover {
-    background: rgba(255,255,255,0.08);
-    color: rgba(255,255,255,0.9);
-    border-color: rgba(255,255,255,0.4);
-  }
-  .ctrl-btn.active {
-    background: rgba(255,255,255,0.12);
-    color: #fff;
-    border-color: rgba(255,255,255,0.5);
-  }
-  .ctrl-sep {
-    width: 1px;
-    height: 20px;
-    background: rgba(255,255,255,0.15);
-  }
-  .ctrl-label {
-    font-size: 0.5rem;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    /* Was rgba(255,255,255,0.3) — 2.66:1 on the body ground. Solid, 4.64:1,
-       matching .print-hint below. */
-    color: #929195;
-  }
+  .ctrl-btn:hover { background: rgba(255,255,255,0.1); color: #fff; border-color: rgba(255,255,255,0.5); }
+  .ctrl-btn.active { background: rgba(255,255,255,0.14); color: #fff; border-color: rgba(255,255,255,0.55); }
+  .ctrl-sep { width: 1px; height: 20px; background: rgba(255,255,255,0.18); }
+  /* Solid, not alpha: alpha-faded text is what this design system refuses. */
+  .ctrl-label { font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.25em; text-transform: uppercase; color: #929195; }
 
-  /* ── BROADSIDE SHEET ── */
-  .broadside {
-    width: min(680px, 100%);
-    position: relative;
+  /* ── THE SHEET ── */
+  .sheet {
+    width: 190mm; max-width: 100%; min-height: 259mm;
+    background: var(--sheet); color: var(--ink);
+    padding: 11mm 12mm 9mm;
+    display: none; flex-direction: column; position: relative;
+    /* Registration bar is a BORDER, not a background: borders survive the
+       Background-graphics checkbox, backgrounds do not. */
+    border-top: 3mm solid var(--spot);
+    print-color-adjust: exact; -webkit-print-color-adjust: exact;
   }
+  .sheet.visible { display: flex; }
+  .sheet--b { border-top-color: var(--spot-2); }
 
-  .side {
-    display: none;
-    animation: reveal 0.4s ease forwards;
-  }
-  .side.visible { display: block; }
+  /* ── Masthead ── */
+  .mast { display: flex; justify-content: space-between; align-items: flex-start; gap: 6mm; padding-bottom: 3mm; border-bottom: 0.6mm solid var(--ink); }
+  .mast-org { font-family: 'Space Mono', monospace; font-size: 6pt; letter-spacing: 0.3em; text-transform: uppercase; color: var(--ink-2); line-height: 1.9; }
+  .mast-org strong { display: block; font-size: 7pt; letter-spacing: 0.22em; color: var(--ink); }
+  .mast-side { font-family: 'Space Mono', monospace; font-size: 6pt; letter-spacing: 0.24em; text-transform: uppercase; color: var(--spot); text-align: right; line-height: 1.9; white-space: nowrap; }
+  .sheet--b .mast-side { color: var(--spot-2); }
 
-  @keyframes reveal {
-    from { opacity: 0; transform: translateY(6px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
+  /* ── Face: the mark ── */
+  .ls-block { text-align: center; flex: 1; display: flex; flex-direction: column; justify-content: center; }
+  .ls-mark { font-weight: 800; font-size: 132pt; line-height: 1.02; color: var(--ink); letter-spacing: -0.015em; display: block; }
+  /* The star is DRAWN, not typed. Atkinson has no U+2605 — measured: it renders
+     the character at exactly the generic-serif advance width (200px at 200px
+     type, against a real 108-vs-122 difference on 'L'), i.e. the glyph was
+     coming from whatever font the reader's system happened to supply. For a
+     logotype on a sheet meant to print identically everywhere that is not good
+     enough. Regular five-pointed star, inner radius 0.382 of outer, filled
+     currentColor so it inherits the mark's ink. */
+  .star { display: inline-block; width: 0.80em; height: 0.80em; vertical-align: -0.045em; margin: 0 0.06em; fill: currentColor; }
 
-  /* ── SIDE A: THE FACE ── */
-  .face {
-    background: var(--paper);
-    position: relative;
-    overflow: hidden;
-    /* Portrait broadside proportions — roughly 11×17 letter-press ratio */
-    padding: 0;
-  }
+  .tagline { font-size: 20pt; font-weight: 300; font-style: italic; color: var(--spot); margin-top: 5mm; line-height: 1.3; }
 
-  /* Risograph texture overlay — halftone dots via CSS */
-  .face::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image:
-      radial-gradient(circle, rgba(14,12,26,0.06) 1px, transparent 1px);
-    background-size: 4px 4px;
-    pointer-events: none;
-    z-index: 10;
-  }
+  /* Epigraph. Wording checked before it was set, because this quote is exactly
+     the shape mode 01 warns about — see too-good-to-check.html. Every external
+     source consulted gives "cosmos"; none gives "Universe". Our own ledger has
+     "a way for the cosmos to know itself" VERIFIED for Zine No. 18, which prints
+     it correctly, while love-you-down-to-your-star-stuff.html (5×) and
+     eternal-sunshine-zine.html (1×) print "Universe" and are unchecked. The
+     often-quoted third sentence, "The Cosmos is within us", is NOT set here: it
+     could not be confirmed against the book, whose text is lending-restricted.
+     Cut rather than shipped unverified. */
+  .epigraph { max-width: 150mm; margin: 8mm auto 0; text-align: center; }
+  .epigraph p { font-size: 12pt; font-style: italic; line-height: 1.45; color: var(--ink-2); }
+  .epigraph cite { display: block; font-family: 'Space Mono', monospace; font-style: normal; font-size: 6.5pt; letter-spacing: 0.22em; text-transform: uppercase; color: var(--spot); margin-top: 3mm; }
 
-  /* Registration mark bleed — riso misprint feel */
-  .face::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 6px;
-    background: var(--riso-gold);
-    opacity: 0.7;
-    z-index: 5;
-  }
+  .face-rule { height: 0.9mm; background: var(--ink); margin: 6mm 0 0; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
 
-  .face-inner {
-    padding: 3.5rem 3rem 3rem;
-    position: relative;
-    z-index: 2;
-  }
+  .pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 9mm; margin-top: 7mm; margin-bottom: 4mm; }
+  .pillar { border-left: 0.8mm solid var(--spot); padding-left: 3.5mm; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+  .pillar b { display: block; font-family: 'Space Mono', monospace; font-size: 7pt; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--spot); margin-bottom: 2.4mm; }
+  .pillar span { display: block; font-size: 11pt; line-height: 1.5; color: var(--ink-2); }
 
-  /* Top strip */
-  .face-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 2.5rem;
-    padding-bottom: 1rem;
-    border-bottom: 2px solid var(--ink);
-  }
+  /* ── Verso: the poem ── */
+  .poem { display: grid; grid-template-columns: 1fr 1fr; gap: 6mm 10mm; margin-top: 7mm; }
+  .stanza { margin-bottom: 5mm; }
+  .line { display: block; font-size: 11pt; line-height: 1.62; color: var(--ink-2); }
+  .line.em { color: var(--ink); font-style: italic; font-weight: 500; }
+  .line.accent { color: var(--spot-2); font-style: italic; font-weight: 500; }
+  .line.strong { color: var(--ink); font-weight: 700; }
+  .poem-break { height: 0.3mm; background: var(--rule); margin: 5mm 0; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+  .line.sign { font-weight: 800; font-size: 19pt; color: var(--ink); font-style: normal; letter-spacing: 0.02em; }
 
-  .face-org {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.55rem;
-    letter-spacing: 0.4em;
-    text-transform: uppercase;
-    color: var(--ink);
-    line-height: 1.8;
-  }
+  .sources { margin-top: 5mm; padding-top: 4mm; border-top: 0.6mm solid var(--ink); }
+  .sources-head { font-family: 'Space Mono', monospace; font-size: 7pt; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: var(--spot-2); margin-bottom: 2.6mm; }
+  .sources p { font-size: 9pt; line-height: 1.55; color: var(--ink-2); }
 
-  .face-org strong {
-    display: block;
-    font-size: 0.7rem;
-    letter-spacing: 0.3em;
-  }
+  /* ── Foot ── */
+  .foot { margin-top: auto; padding-top: 3mm; border-top: 0.6mm solid var(--ink); display: flex; justify-content: space-between; align-items: flex-end; gap: 6mm; }
+  .foot-left { font-family: 'Space Mono', monospace; font-size: 6pt; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-3); line-height: 1.95; }
+  .foot-left a { color: var(--ink-3); }
+  .foot-right { font-weight: 800; font-size: 15pt; color: var(--spot); text-align: right; line-height: 1.1; white-space: nowrap; }
+  .sheet--b .foot-right { color: var(--spot-2); }
 
-  .face-riso-mark {
-    display: flex;
-    gap: 4px;
-    align-items: center;
-    padding-top: 2px;
-  }
+  .print-hint { margin-top: 1.2rem; font-family: 'Space Mono', monospace; font-size: 0.48rem; letter-spacing: 0.2em; text-transform: uppercase; color: #929195; text-align: center; }
 
-  .riso-dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    opacity: 0.7;
-  }
+  /* ── PRINT ──
+     9 mm margins, not 10: at 10 the Letter box is 259.4 mm against a 259 mm sheet,
+     and 0.4 mm of slack was thin enough that sub-pixel rounding tipped it onto a
+     third page. Verified by printing to PDF and counting. */
+  @page { size: auto; margin: 9mm; }
 
-  /* Giant L★S */
-  .face-ls-block {
-    text-align: center;
-    margin: 1rem 0 0.5rem;
-    position: relative;
-  }
-
-  .face-ls {
-    font-family: 'Boogaloo', cursive;
-    font-size: clamp(7rem, 22vw, 14rem);
-    line-height: 0.88;
-    color: var(--ink);
-    letter-spacing: -0.02em;
-    display: block;
-    position: relative;
-  }
-
-  /* Gold ink second pass — riso misalignment effect */
-  .face-ls-shadow {
-    font-family: 'Boogaloo', cursive;
-    font-size: clamp(7rem, 22vw, 14rem);
-    line-height: 0.88;
-    color: var(--riso-gold);
-    letter-spacing: -0.02em;
-    display: block;
-    position: absolute;
-    top: 4px;
-    left: 3px;
-    z-index: -1;
-    width: 100%;
-    text-align: center;
-  }
-
-  .face-ls-wrap {
-    position: relative;
-    display: inline-block;
-  }
-
-  .face-tagline {
-    font-family: 'Fraunces', serif;
-    font-style: italic;
-    font-weight: 300;
-    font-size: clamp(1rem, 3vw, 1.5rem);
-    color: var(--ink);
-    text-align: center;
-    margin-top: 1.2rem;
-    letter-spacing: 0.02em;
-    line-height: 1.3;
-  }
-
-  /* Thick rule */
-  .face-rule {
-    height: 3px;
-    background: var(--ink);
-    margin: 2rem 0 1.5rem;
-  }
-
-  .face-rule-gold {
-    height: 1px;
-    background: var(--riso-gold);
-    margin-top: -2px;
-    opacity: 0.8;
-  }
-
-  /* Bottom manifesto strip */
-  .face-bottom {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 1.5rem;
-    margin-top: 1.5rem;
-  }
-
-  .face-pillar {
-    font-family: 'Fraunces', serif;
-    font-weight: 400;
-    font-size: 0.82rem;
-    color: var(--ink);
-    line-height: 1.55;
-    font-style: italic;
-  }
-
-  .face-pillar strong {
-    font-style: normal;
-    font-weight: 700;
-    display: block;
-    font-size: 0.65rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--riso-blue);
-    margin-bottom: 0.3rem;
-    font-family: 'Space Mono', monospace;
-  }
-
-  /* Footer band */
-  .face-footer {
-    margin-top: 2.5rem;
-    padding-top: 1rem;
-    border-top: 2px solid var(--ink);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .face-footer-left {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.5rem;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    /* Was var(--ink) at opacity 0.55 — 4.14:1 on cream and 3.67:1 on paper, a
-       near-miss on both. Solid #5c5b63 is 5.46:1 and 6.19:1. The nested CC
-       link inherits this, so it is fixed by the same change. */
-    color: #5c5b63;
-    line-height: 1.9;
-  }
-
-  .face-footer-right {
-    font-family: 'Boogaloo', cursive;
-    font-size: 1.4rem;
-    color: var(--riso-gold);
-    letter-spacing: 0.05em;
-  }
-
-  /* Vertical side text. Was rotate(90deg) with white-space:nowrap, which keeps
-     the element's wide layout box and spins it about its own centre — so
-     `right: 0.9rem` put the stamp 265px from the right edge, straight through
-     the giant L★S, the tagline and a pillar. writing-mode gives a genuinely
-     narrow, tall box that sits in the gutter. Same fix as six-ways-broadside. */
-  .face-side-text {
-    position: absolute;
-    right: 0.7rem;
-    top: 50%;
-    transform: translateY(-50%);
-    writing-mode: vertical-rl;
-    font-size: 0.4rem;
-    letter-spacing: 0.4em;
-    text-transform: uppercase;
-    /* Was var(--ink) at opacity 0.25 — 1.75:1 on cream, 1.68:1 on paper, and
-       alpha-faded text is what this design system refuses. Solid #63626a is
-       4.87:1 on cream and 5.52:1 on white. Same value as six-ways-broadside. */
-    color: #63626a;
-    white-space: nowrap;
-    font-family: 'Space Mono', monospace;
-    z-index: 3;
-  }
-
-  /* ── SIDE B: THE POEM ── */
-  .verso {
-    background: var(--ink);
-    position: relative;
-    overflow: hidden;
-  }
-
-  /* Gold top bar */
-  .verso::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 6px;
-    background: var(--riso-gold);
-    opacity: 0.8;
-    z-index: 5;
-  }
-
-  /* Halftone dots — dark on dark */
-  .verso::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image:
-      radial-gradient(circle, rgba(255,255,255,0.03) 1px, transparent 1px);
-    background-size: 5px 5px;
-    pointer-events: none;
-    z-index: 1;
-  }
-
-  .verso-inner {
-    padding: 3.5rem 3rem 3rem;
-    position: relative;
-    z-index: 2;
-  }
-
-  .verso-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    margin-bottom: 2rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid rgba(245,240,232,0.15);
-  }
-
-  .verso-label {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.55rem;
-    letter-spacing: 0.4em;
-    text-transform: uppercase;
-    /* Was rgba(245,240,232,0.5); solid equivalent, 4.69:1 on --ink. */
-    color: #7f7c7f;
-  }
-
-  .verso-ls {
-    font-family: 'Boogaloo', cursive;
-    font-size: 1.6rem;
-    color: var(--riso-gold);
-    letter-spacing: 0.05em;
-  }
-
-  /* Two-column poem layout */
-  .verso-poem {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem 3rem;
-    margin-bottom: 2rem;
-  }
-
-  .poem-col {}
-
-  .poem-stanza {
-    margin-bottom: 1.6rem;
-  }
-
-  .poem-line {
-    font-family: 'Fraunces', serif;
-    font-weight: 300;
-    font-size: 0.88rem;
-    line-height: 1.75;
-    color: rgba(245,240,232,0.85);
-    display: block;
-  }
-
-  .poem-line.em {
-    color: #f5f0e8;
-    font-style: italic;
-    font-weight: 400;
-  }
-
-  .poem-line.accent {
-    color: var(--riso-gold);
-    font-style: italic;
-    font-weight: 400;
-  }
-
-  .poem-line.strong {
-    color: #f5f0e8;
-    font-weight: 500;
-    font-style: normal;
-  }
-
-  /* Section break */
-  .poem-break {
-    height: 1px;
-    background: rgba(245,240,232,0.12);
-    margin: 1.4rem 0;
-  }
-
-  /* Verso footer */
-  .verso-footer {
-    padding-top: 1.5rem;
-    border-top: 1px solid rgba(245,240,232,0.15);
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-  }
-
-  .verso-footer-text {
-    font-family: 'Fraunces', serif;
-    font-style: italic;
-    font-weight: 300;
-    font-size: 0.78rem;
-    /* Was rgba(245,240,232,0.45) — 4.13:1, under AA. Solid, 4.69:1. */
-    color: #7f7c7f;
-    line-height: 1.7;
-    max-width: 340px;
-  }
-
-  .verso-footer-meta {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.48rem;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    /* Was rgba(245,240,232,0.28) — 2.30:1. Solid, 4.69:1. */
-    color: #7f7c7f;
-    text-align: right;
-    line-height: 2;
-  }
-
-  /* Print hint */
-  .print-hint {
-    margin-top: 1.2rem;
-    font-size: 0.48rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    /* Was rgba(255,255,255,0.2) — 1.92:1 once composited, and alpha-faded text
-       is the one thing this design system explicitly refuses. Solid, 4.64:1. */
-    color: #929195;
-    text-align: center;
-  }
-
-  /* ── PRINT STYLES ── */
   @media print {
-    body { background: none; padding: 0; }
-    .controls { display: none; }
-    .broadside { width: 100%; }
-    .side { display: block !important; }
-    .face { page-break-after: always; }
-    .print-hint { display: none; }
-
-    /* The recto prints as designed — dark ink on cream. The verso does not: it's
-       cream type on a near-black ground, and with background graphics off (the
-       browser default) the whole Bone Song poem went to paper invisible. Invert it. */
-    .verso { background: none !important; }
-    .verso::before, .verso::after { display: none !important; }
-    .poem-line,
-    .poem-line.em,
-    .poem-line.strong,
-    .poem-line.accent { color: #111111 !important; }
-    .verso-ls { color: #111111 !important; }
-    .verso-label,
-    .verso-footer-text,
-    .verso-footer-meta { color: #444444 !important; }
-    .poem-break { background: #cccccc !important; }
+    body { background: none; padding: 0; display: block; min-height: 0; }
+    .controls, .print-hint { display: none; }
+    .sheet { display: flex !important; width: 100%; min-height: 0; height: 259mm; padding: 0; border-top-width: 3mm; }
+    .sheet--a { page-break-after: always; break-after: page; }
+    .mast { padding-top: 6mm; }
+    .stanza, .pillar { page-break-inside: avoid; break-inside: avoid; }
   }
 
-  @media (max-width: 500px) {
-    .face-bottom { grid-template-columns: 1fr; gap: 1rem; }
-    .verso-poem { grid-template-columns: 1fr; gap: 0; }
-    .face-inner, .verso-inner { padding: 2rem 1.5rem 1.5rem; }
+  /* Breakpoint sits BELOW the narrowest printed page box (A4 at 9 mm margins is
+     192 mm = 726 px). At a higher value the reflow matches *on paper* — print
+     media queries resolve against the page box, not the screen — and the sheet
+     prints as one long column instead of the card that was designed. */
+  @media (max-width: 700px) {
+    .sheet { width: 100%; min-height: 0; padding: 8mm 6mm; }
+    .pillars, .poem { grid-template-columns: 1fr; gap: 5mm; }
+    .ls-mark { font-size: 64pt; }
+    .tagline { font-size: 13pt; }
+    .ls-block { flex: none; margin-top: 8mm; }
+    .face-rule { margin-top: 8mm; }
+    .foot { flex-direction: column; align-items: flex-start; gap: 3mm; }
+    .foot-right { text-align: left; }
   }
 </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"L★S Broadside","description":"A two-sided, print-ready single sheet: L★S on the face, the full Bone Song poem on the reverse.","image":"https://starstuff.earth/og-card.jpg","url":"https://starstuff.earth/ls-broadside.html","mainEntityOfPage":"https://starstuff.earth/ls-broadside.html","author":{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/"},"publisher":[{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/","logo":{"@type":"ImageObject","url":"https://starstuff.earth/og-card.jpg"}},{"@type":"Organization","name":"More Realms","url":"https://morerealms.com/"}],"isPartOf":{"@type":"WebSite","name":"Star Stuff","url":"https://starstuff.earth/"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"L★S Broadside","description":"A two-sided, print-ready single sheet: L★S on the face, the full Bone Song poem on the reverse. Designed for paper — one sheet, duplexed, on A4 or US Letter.","image":"https://starstuff.earth/og-card.jpg","url":"https://starstuff.earth/ls-broadside.html","mainEntityOfPage":"https://starstuff.earth/ls-broadside.html","author":{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/"},"publisher":[{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/","logo":{"@type":"ImageObject","url":"https://starstuff.earth/og-card.jpg"}},{"@type":"Organization","name":"More Realms","url":"https://morerealms.com/"}],"isPartOf":{"@type":"WebSite","name":"Star Stuff","url":"https://starstuff.earth/"},"license":"https://creativecommons.org/licenses/by-sa/4.0/"}</script>
 </head>
 <body>
 
-<nav class="ss-nav" style="--nav-accent:#fbbf24; max-width:680px;" aria-label="Star Stuff collection">
-  <span class="ss-nav-home-group"><a class="ss-nav-home" href="index.html"><span class="ss-star" aria-hidden="true">★</span> stuff</a><a class="ss-nav-about" href="about.html">about</a>
-      <a class="ss-nav-search" href="search.html">search</a></span>
+<nav class="ss-nav" style="--nav-accent:#fbbf24; max-width:190mm;" aria-label="Star Stuff collection">
+  <span class="ss-nav-home-group">
+    <a class="ss-nav-home" href="index.html"><span class="ss-star" aria-hidden="true">★</span> stuff</a>
+    <a class="ss-nav-about" href="about.html">about</a>
+    <a class="ss-nav-search" href="search.html">search</a>
+  </span>
   <span class="ss-nav-links">
     <a class="ss-nav-prev" href="ls-playlist.html"><span class="ss-nav-arrow" aria-hidden="true">&lsaquo;</span> <span class="ss-nav-label">Playlist</span></a>
     <a class="ss-nav-next" href="six-ways-broadside.html"><span class="ss-nav-label">Six Ways</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
@@ -545,165 +227,150 @@
   <button class="ctrl-btn" onclick="window.print()">Print ↗</button>
 </div>
 
-<div class="broadside">
+<!-- ════ SIDE A ════ -->
+<div class="sheet sheet--a visible" id="side-a">
 
-  <!-- ════ SIDE A: FACE ════ -->
-  <div class="side visible" id="side-a">
-    <div class="face">
-      <div class="face-side-text">Stimpunks Foundation × More Realms · Open Edition · Print Freely · Share Freely</div>
+  <div class="mast">
+    <div class="mast-org">
+      <strong>Stimpunks Foundation × More Realms</strong>
+      neurodivergent &amp; disabled community
+    </div>
+    <div class="mast-side">Broadside · Open edition<br>Side A of B</div>
+  </div>
 
-      <div class="face-inner">
+  <div class="ls-block">
+    <span class="ls-mark" role="img" aria-label="L★S">L<svg class="star" viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M50 0 61.2 34.5 97.6 34.5 68.2 55.9 79.4 90.5 50 69.1 20.6 90.5 31.8 55.9 2.4 34.5 38.8 34.5Z"/></svg>S</span>
+    <p class="tagline">Love You Down To Your Star Stuff</p>
 
-        <div class="face-header">
-          <div class="face-org">
-            <strong>Stimpunks Foundation × More Realms</strong>
-            neurodivergent &amp; disabled community<br>
-            broadside · open edition
-          </div>
-          <div class="face-riso-mark">
-            <div class="riso-dot" style="background:#e8a820;"></div>
-            <div class="riso-dot" style="background:#1a3a8f;"></div>
-            <div class="riso-dot" style="background:#0e0c1a;"></div>
-          </div>
-        </div>
+    <blockquote class="epigraph">
+      <p>&ldquo;We are made of star-stuff.<br>We are a way for the cosmos to know itself.&rdquo;</p>
+      <cite>Carl Sagan · Cosmos, 1980</cite>
+    </blockquote>
+  </div>
 
-        <div class="face-ls-block">
-          <div class="face-ls-wrap">
-            <span class="face-ls-shadow" aria-hidden="true">L★S</span>
-            <span class="face-ls">L★S</span>
-          </div>
-        </div>
+  <div class="face-rule"></div>
 
-        <p class="face-tagline">Love You Down To Your Star Stuff</p>
-
-        <div class="face-rule"></div>
-        <div class="face-rule-gold"></div>
-
-        <div class="face-bottom">
-          <div class="face-pillar">
-            <strong>The bone</strong>
-            Your skeleton is piezoelectric. Press on it and it generates voltage. You are, literally, electric.
-          </div>
-          <div class="face-pillar">
-            <strong>The star</strong>
-            The calcium in your bones was forged in a dying star billions of years before our sun was born.
-          </div>
-          <div class="face-pillar">
-            <strong>The paradigm</strong>
-            The universe doesn't pathologize its own variation. Neither do we.
-          </div>
-        </div>
-
-        <div class="face-footer">
-          <div class="face-footer-left">
-            stimpunks.org<br>
-            see reverse for full text<br>
-            print freely · share freely · <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
-          </div>
-          <div class="face-footer-right">L★S</div>
-        </div>
-
-      </div>
+  <div class="pillars">
+    <div class="pillar">
+      <b>The bone</b>
+      <span>Your skeleton is piezoelectric. Press on it and it generates voltage. You are, literally, electric.</span>
+    </div>
+    <div class="pillar">
+      <b>The star</b>
+      <span>The calcium in your bones was forged in a dying star billions of years before our sun was born.</span>
+    </div>
+    <div class="pillar">
+      <b>The paradigm</b>
+      <span>The universe doesn't pathologize its own variation. Neither do we.</span>
     </div>
   </div>
 
-  <!-- ════ SIDE B: POEM ════ -->
-  <div class="side" id="side-b">
-    <div class="verso">
-      <div class="verso-inner">
-
-        <div class="verso-header">
-          <div class="verso-label">Bone Song · Full Text · Stimpunks × More Realms</div>
-          <div class="verso-ls">L★S</div>
-        </div>
-
-        <div class="verso-poem">
-
-          <div class="poem-col">
-            <div class="poem-stanza">
-              <span class="poem-line accent">Your bones are electric.</span>
-              <span class="poem-line">Not metaphorically.</span>
-              <span class="poem-line">Not as a figure of speech</span>
-              <span class="poem-line">borrowed from the poets</span>
-              <span class="poem-line">who came before.</span>
-            </div>
-            <div class="poem-stanza">
-              <span class="poem-line strong">Literally. Measurably. Piezoelectric.</span>
-            </div>
-            <div class="poem-stanza">
-              <span class="poem-line">Press on them and they spark.</span>
-              <span class="poem-line">Move through the world</span>
-              <span class="poem-line">and they sing voltage.</span>
-            </div>
-            <div class="poem-break"></div>
-            <div class="poem-stanza">
-              <span class="poem-line accent">Dr. Yasuda knew this.</span>
-              <span class="poem-line">He pressed on the crystal</span>
-              <span class="poem-line">and it answered.</span>
-              <span class="poem-line">The crystal was bone.</span>
-              <span class="poem-line">The bone was yours.</span>
-            </div>
-            <div class="poem-break"></div>
-            <div class="poem-stanza">
-              <span class="poem-line">The calcium that carries that current</span>
-              <span class="poem-line">was forged in a star that died</span>
-              <span class="poem-line">before our sun was born.</span>
-            </div>
-            <div class="poem-stanza">
-              <span class="poem-line accent">You are walking around</span>
-              <span class="poem-line accent">with stellar ash in your skeleton.</span>
-            </div>
-          </div>
-
-          <div class="poem-col">
-            <div class="poem-stanza">
-              <span class="poem-line em">The universe doesn't pathologize</span>
-              <span class="poem-line em">its own variation.</span>
-            </div>
-            <div class="poem-break"></div>
-            <div class="poem-stanza">
-              <span class="poem-line">Storms are not disorders.</span>
-              <span class="poem-line">Variation is not deficit.</span>
-              <span class="poem-line">The electric bone that bends differently</span>
-              <span class="poem-line">is still making the signal.</span>
-            </div>
-            <div class="poem-break"></div>
-            <div class="poem-stanza">
-              <span class="poem-line accent">We love you down to your star stuff.</span>
-            </div>
-            <div class="poem-stanza">
-              <span class="poem-line">To the calcium. To the charge.</span>
-              <span class="poem-line">To the exact configuration of atoms</span>
-              <span class="poem-line">that has never existed before</span>
-              <span class="poem-line">and will never exist again.</span>
-            </div>
-            <div class="poem-break"></div>
-            <div class="poem-stanza">
-              <span class="poem-line em" style="font-size:1.15rem;line-height:1.4;">L★S.</span>
-            </div>
-          </div>
-
-        </div>
-
-        <div class="verso-footer">
-          <div class="verso-footer-text">
-            The piezoelectric research draws on Dr. Iwao Yasuda's work from the 1950s. The cosmological framing draws on Carl Sagan's Cosmos. The neurodiversity paradigm language draws on Nick Walker and the Autistic community of InLv — Martijn Dekker, Jim Sinclair, and Autism Network International.
-          </div>
-          <div class="verso-footer-meta">
-            Stimpunks Foundation × More Realms<br>
-            Zine No. 1 · Broadside<br>
-            stimpunks.org · morerealms.com<br>
-            print freely · share freely · <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
-          </div>
-        </div>
-
-      </div>
+  <div class="foot">
+    <div class="foot-left">
+      stimpunks.org · morerealms.com<br>
+      full text of the poem on the reverse<br>
+      print freely · share freely · <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
     </div>
+    <div class="foot-right" role="img" aria-label="L★S">L<svg class="star" viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M50 0 61.2 34.5 97.6 34.5 68.2 55.9 79.4 90.5 50 69.1 20.6 90.5 31.8 55.9 2.4 34.5 38.8 34.5Z"/></svg>S</div>
   </div>
 
 </div>
 
-<p class="print-hint">Print both sides · fold or pin · share freely</p>
+<!-- ════ SIDE B ════ -->
+<div class="sheet sheet--b" id="side-b">
+
+  <div class="mast">
+    <div class="mast-org">
+      <strong>Bone Song · full text</strong>
+      Stimpunks Foundation × More Realms
+    </div>
+    <div class="mast-side">Broadside · Open edition<br>Side B of B</div>
+  </div>
+
+  <div class="poem">
+
+    <div>
+      <div class="stanza">
+        <span class="line accent">Your bones are electric.</span>
+        <span class="line">Not metaphorically.</span>
+        <span class="line">Not as a figure of speech</span>
+        <span class="line">borrowed from the poets</span>
+        <span class="line">who came before.</span>
+      </div>
+      <div class="stanza">
+        <span class="line strong">Literally. Measurably. Piezoelectric.</span>
+      </div>
+      <div class="stanza">
+        <span class="line">Press on them and they spark.</span>
+        <span class="line">Move through the world</span>
+        <span class="line">and they sing voltage.</span>
+      </div>
+      <div class="poem-break"></div>
+      <div class="stanza">
+        <span class="line accent">Dr. Yasuda knew this.</span>
+        <span class="line">He pressed on the crystal</span>
+        <span class="line">and it answered.</span>
+        <span class="line">The crystal was bone.</span>
+        <span class="line">The bone was yours.</span>
+      </div>
+      <div class="poem-break"></div>
+      <div class="stanza">
+        <span class="line">The calcium that carries that current</span>
+        <span class="line">was forged in a star that died</span>
+        <span class="line">before our sun was born.</span>
+      </div>
+      <div class="stanza">
+        <span class="line accent">You are walking around</span>
+        <span class="line accent">with stellar ash in your skeleton.</span>
+      </div>
+    </div>
+
+    <div>
+      <div class="stanza">
+        <span class="line em">The universe doesn't pathologize</span>
+        <span class="line em">its own variation.</span>
+      </div>
+      <div class="poem-break"></div>
+      <div class="stanza">
+        <span class="line">Storms are not disorders.</span>
+        <span class="line">Variation is not deficit.</span>
+        <span class="line">The electric bone that bends differently</span>
+        <span class="line">is still making the signal.</span>
+      </div>
+      <div class="poem-break"></div>
+      <div class="stanza">
+        <span class="line accent">We love you down to your star stuff.</span>
+      </div>
+      <div class="stanza">
+        <span class="line">To the calcium. To the charge.</span>
+        <span class="line">To the exact configuration of atoms</span>
+        <span class="line">that has never existed before</span>
+        <span class="line">and will never exist again.</span>
+      </div>
+      <div class="stanza">
+        <span class="line sign" role="img" aria-label="L★S.">L<svg class="star" viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M50 0 61.2 34.5 97.6 34.5 68.2 55.9 79.4 90.5 50 69.1 20.6 90.5 31.8 55.9 2.4 34.5 38.8 34.5Z"/></svg>S.</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="sources">
+    <div class="sources-head">Where this comes from</div>
+    <p>The piezoelectricity of bone was measured by <strong>Eiichi Fukada</strong> and <strong>Iwao Yasuda</strong>, <em>On the Piezoelectric Effect of Bone</em> (1957), and extended by C.&nbsp;A.&nbsp;L.&nbsp;Bassett. The effect is <em>collagen's</em> — its fibres are arranged without a centre of symmetry and generate charge when sheared. The cosmological framing draws on Carl Sagan, <em>Cosmos</em> (1980). The neurodiversity paradigm language draws on Nick Walker and the Autistic community of InLv — Martijn Dekker, Jim Sinclair, and Autism Network International.</p>
+  </div>
+
+  <div class="foot">
+    <div class="foot-left">
+      starstuff.earth · stimpunks.org · morerealms.com<br>
+      Bone Song is Zine No. 1 · starstuff.earth/bone-song-zine<br>
+      print freely · share freely · <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
+    </div>
+    <div class="foot-right" role="img" aria-label="L★S">L<svg class="star" viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M50 0 61.2 34.5 97.6 34.5 68.2 55.9 79.4 90.5 50 69.1 20.6 90.5 31.8 55.9 2.4 34.5 38.8 34.5Z"/></svg>S</div>
+  </div>
+
+</div>
+
+<p class="print-hint">One sheet · print double-sided · pin it up · share freely</p>
 
 <script>
   function showSide(side) {
