@@ -418,6 +418,24 @@ a.ss-cobrand.ss-cobrand:focus-visible { text-decoration-color: currentColor; }
 .spread-nav-btn:disabled { opacity: 0.25; cursor: default; }
 .spread-nav-btn:focus-visible { outline: 1px solid currentColor; outline-offset: 3px; border-radius: 2px; }
 
+/* ── Paged-zine top nav bar: the same disabled state, honestly ──
+   Each zine styles its own .nav-btn inline, and every one of them used to *fake*
+   the disabled look with `style.opacity = '0.3'` while the button stayed enabled,
+   clickable and in the tab order. So a reader on spread 1 could tab to "prev" and
+   press it to no effect, and the faded label measured 2.02:1 — a real contrast
+   failure, because WCAG only exempts controls that are actually inactive. The
+   zines now set `disabled` (matching what starstuff.js already does for the
+   injected footer buttons) and this rule carries the look.
+
+   Deliberately over-specific at 0-3-0: this sheet loads *before* each zine's
+   inline <style>, so a page's own `.nav-btn:hover` / `.nav-btn.active` at 0-2-0
+   would otherwise win on later-wins and re-brighten a disabled button. Same
+   reasoning as .ss-cobrand — don't "simplify" it back. */
+.nav-btn.nav-btn:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
 @media (max-width: 600px) {
   .spread-footer-nav { gap: 0.7rem; }
 }
