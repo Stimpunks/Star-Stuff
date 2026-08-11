@@ -12,6 +12,67 @@ only tracks **choices** — what we decided, and what we still have to.
 
 Decisions still to make. Move to **Settled** with a date once resolved.
 
+- _(collections + numbering resolved 2026-08-11 — see Settled)_
+- **Promote "Science and wonder and the beautiful diversity of being" to the masthead too?**
+  Shipped 2026-08-11 as the **Collections section lede** on `index.html`, where its three clauses
+  name the three largest collections. Still open whether it also belongs in `.masthead-sub`.
+  "Cosmic Connections" stays the tagline either way — Helen's phrase, fixed brand element.
+- **Per-piece collection badges?** A reader landing on a zine from search has no on-page signal
+  which collection it belongs to. Deliberately skipped in the 2026-08-11 pass: the `.cover-issue`
+  slot is tracked-out uppercase in a tight measure (the documented 455px-in-280px trap), so it
+  needs measuring before anything is added, and the prev/next chain plus the collection pages
+  already carry the browse story. Revisit if readers ask "where am I?"
+- ~~**Sort the collection into named collections.**~~ **Settled 2026-08-11.** Retained below for
+  the reasoning, which is the part worth keeping.
+  - **Renumber? Decided: no.** The number records *when a piece was made*; the collection
+    records *what it is*. Keep them orthogonal. Renumbering would (a) falsify `changelog.html`,
+    which has dated public entries naming numbers — this site publishes its own corrections, so it
+    cannot quietly rewrite its own history; (b) break the `FACTCHECK.md` ledger, which is a table
+    keyed by number with cross-references *by number* in the prose ("counter-song to Bone Song (1)",
+    "same shape of fact as No. 31's decarcinization"); (c) invalidate every external reference,
+    including Helen's essays on More Realms — slugs are stable, but a number quoted in prose has no
+    redirect. Chronological numbering is also the *evidence* that the categories emerged rather than
+    being imposed, which is the claim `cosmic-connections.html` makes.
+  - **Collections are pages, not folders.** `cosmic-connections.html` commits to "the categories are
+    outputs, not inputs" — links over folders. That is an argument *for* naming these now: 35 zines
+    were written with no folders, and the clusters were observed afterward. Give each collection a
+    real landing page that lists its members and says why they belong together — a note that links,
+    not a directory. Also required for findability: `tools/build-search-index.mjs` strips
+    `.card-series` and `.cover-issue` as chrome, so a collection name placed only in those slots
+    would be **unsearchable**.
+  - **Proposed five collections + the Field Guides as an untouched series (all 35 zines assigned):**
+    - **Star Stuff** — the founding register: one settled, checkable fact, followed honestly,
+      already contains the belonging claim. 1, 2, 6, 7, 8, 9, 10, 17, 19, 20, 21, 23, 24, 25,
+      plus the proposed new physics set. Note 17/19/20/21/25 read as "later drift" by date but are
+      squarely in the founding register by mechanism (tidal force ∝ 1/d³, relativistic clocks,
+      phase transitions, real spectra, the EM field). Keeps the declared 23–24–25 triptych intact.
+    - **Star Gazing** (Helen's name) — experimental, neuroqueer, wonder-forward; possibility rather
+      than proof. 11 (the hinge), 22, 26, 28, 29, 30, plus any superposition/scintillation pieces.
+    - **More Than Human** — Umwelt, multispecies, ethodiversity; the de-anthropocentrized strand.
+      5, 14, 15, 16, 27. Keeps 14–15–16, which No. 16 itself calls "a loose trilogy," contiguous.
+    - **Kin** — citation-dense natural history and psychology with a neurodivergence moral: our
+      relatives, and the reflexes that make us disown them. 31, 32, 33, 34, 35. Sibling to Field
+      Guides 9/10/11. **Do not name this "Ways of Being"** — it collides with Field Guide No. 5,
+      *A Field Guide to the Ways of Being a Star*.
+    - **Stars We Grew Up On** — culture and icon; owns the star-as-celebrity pun instead of letting
+      it read as drift. 12, 13, plus `ls-playlist.html` and `ls-broadside.html`.
+  - **Three "zines" are not reading-collection essays** and should move out of the numbered essay
+    run (numbers retained): **3** Neurodiversity Field Guide is a paradigm primer → Foundations;
+    **4** We Are All Star Stuff is an open call for contributors → Start Here / Take Part;
+    **18** The Garden and the Stars is a self-portrait of the project → Foundations/Notes, sibling
+    to `cosmic-connections.html`.
+  - **No "For Fun" collection.** A bin labelled for fun implicitly labels the rest homework, and —
+    the real risk — creates the one place where the verify-everything standard could quietly relax.
+    Fun is distributed: it is already the whole point of Stars We Grew Up On and of Kin.
+  - **Open sub-question:** whether prev/next is rewritten to follow collection order (makes the
+    collections real for a reader navigating by footer nav; ~54 files, scriptable) or left in
+    chronological order (cheaper, but "next" keeps crossing collections).
+- **Promote "Science and wonder and the beautiful diversity of being" to the front page?**
+  Ryan's phrase, endorsed by Helen. Recommendation: **yes, but as the intro lede, not the tagline** —
+  "Cosmic Connections" is Helen's and is a fixed brand element per CLAUDE.md. The phrase's three
+  clauses already map onto the three largest proposed collections (science → Star Stuff, wonder →
+  Star Gazing, the beautiful diversity of being → More Than Human + Kin), which makes it the
+  natural lede *for the collections section* rather than a replacement masthead tagline.
 - **Extract design tokens + starfield into `starstuff.css`?** They still live inline in every
   page. Moving them to the shared stylesheet single-sources them but breaks each page's total
   self-containment. Decide whether the DRY win is worth the coupling. (Flagged in CLAUDE.md.)
@@ -24,6 +85,22 @@ Decisions still to make. Move to **Settled** with a date once resolved.
 Decisions already made, with a one-line why. Backfilled from git history — dates are first
 commit evidence, not necessarily when the call was made.
 
+- **2026-08-11 — Five collections, and no renumbering.** The 35 zines are sorted into **Star Stuff**
+  (founding register), **Star Gazing** (Helen's name; experimental/neuroqueer), **More Than Human**
+  (de-anthropocentrized), **Kin** (natural history), and **Stars We Grew Up On** (culture) — plus the
+  Field Guides, untouched as their own series. Membership is by **register, not chronology**, which
+  moved Nos. 17, 19, 20, 21 and 25 into the founding collection where they read as later drift by
+  date. Nos. 3, 4 and 18 left the essay run entirely (paradigm primer → Foundations, open call →
+  Start Here, project self-portrait → Foundations), keeping their numbers. **Numbers were not
+  touched**: the number says *when*, the collection says *what*, and renumbering would have
+  falsified the dated public changelog, broken the number-keyed `FACTCHECK.md` cross-references, and
+  invalidated every reference in prose, which has no redirect. Each collection is a **page, not a
+  folder** — a note that links, so the taxonomy stays inside the web rather than above it, per
+  `cosmic-connections.html`. The prev/next chain was rewritten to follow collection order (57 pages,
+  verified). Rejected along the way: a **"For Fun" collection** — a bin labelled for fun implicitly
+  labels everything else homework, and would become the one place the verify-everything standard
+  could relax; the fun is distributed instead, and *Stars We Grew Up On* says so on its face. Also
+  rejected: **"Ways of Being"** as the name for Kin, which collides with Field Guide No. 5.
 - **2026-07-21 — License: CC BY-SA 4.0, applied to the whole collection.** Dropped the earlier
   `NC` (commercial use allowed). Chose BY-SA over CC0 so attribution and share-alike hold —
   credit stays with Stimpunks, and derivatives must stay open, matching the anti-enclosure ethos.

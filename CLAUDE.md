@@ -101,6 +101,48 @@ The central phrase compresses through registers, each with a use:
   and structure spreads as `.spread` (with a `.spread.active`), each with a `.spread-footer`
   containing a `.spread-footer-right` page counter. IDs run `spread-1..N` in document order.
 
+### Collections (five, plus the Field Guides)
+
+The zines are sorted into five **collections**, each with its own landing page
+(`collection-*.html`) linked from the `index.html` *Collections* section. Settled 2026-08-11 — see
+`DECISIONS.md` for the full reasoning.
+
+| Collection | Register | Members (zine numbers) |
+|------------|----------|------------------------|
+| **Star Stuff** | One settled, checkable fact, followed honestly, already contains the belonging claim | 1, 2, 6, 7, 8, 9, 10, 17, 19, 20, 21, 23, 24, 25 |
+| **Star Gazing** | Experimental, neuroqueer, wonder-forward — possibility, not proof | 11, 22, 26, 28, 29, 30 |
+| **More Than Human** | Umwelt, multispecies, ethodiversity; de-anthropocentrized | 5, 14, 15, 16, 27 |
+| **Kin** | Citation-dense natural history with a neurodivergence moral | 31, 32, 33, 34, 35 |
+| **Stars We Grew Up On** | Culture and icon; owns the star-as-celebrity sense | 12, 13 (+ playlist, broadside in spirit) |
+
+- **The number says *when*. The collection says *what*. Never renumber.** Numbers are chronological
+  and load-bearing elsewhere: `changelog.html` has dated public entries naming them, `FACTCHECK.md`
+  is keyed by number *and* cross-references by number, and prose references have no redirect.
+  Numbers inside a collection therefore run **non-contiguously (1, 2, 6, 7…), and that gap is
+  information** — don't "fix" it. A new zine takes the next number in sequence and joins whichever
+  collection fits its register.
+- **Membership is by register, not by date.** Nos. 17, 19, 20, 21 and 25 are in *Star Stuff* despite
+  being made much later, because in each the physics is still doing the argumentative work. Ask
+  "is the fact carrying the claim?", not "when was this made?"
+- **Collections are pages, not folders** — a note that links, listing members and arguing for why
+  they belong together. This keeps faith with `cosmic-connections.html`: the categories are outputs,
+  not inputs. They were observed *after* 35 zines had accumulated with no folders at all.
+- **Three numbered pieces are deliberately outside the collections**: No. 3 (paradigm primer) and
+  No. 18 (self-portrait of the project) sit in *Foundations*; No. 4 (open call for contributors)
+  sits in *Start Here*. They keep their numbers.
+- **Collection names in `.card-series` / `.cover-issue` are invisible to search** —
+  `tools/build-search-index.mjs` strips both as chrome. The collection pages are what make the
+  names findable; don't rely on a badge slot for discoverability.
+- **`Kin` must not be renamed "Ways of Being"** — it collides with Field Guide No. 5, *A Field Guide
+  to the Ways of Being a Star*.
+- **There is deliberately no "For Fun" collection.** A bin labelled for fun implicitly labels
+  everything else homework, and would become the one place the verify-everything standard could
+  quietly relax. The fun is distributed; *Stars We Grew Up On* states this on the page.
+- The **prev/next chain follows collection order**: each collection page precedes its members, and
+  members run in ascending number within the collection. 57 pages, `love-you-down-to-your-star-stuff.html`
+  → `shorthand-evolution.html`. `about.html`, `cosmic-connections.html` and `difference-first-frame.html`
+  stay outside the chain by decision.
+
 ### Co-branding (Stimpunks Foundation × More Realms)
 
 The site is a collaboration, and every page says so. **Stimpunks always comes first, and the two
