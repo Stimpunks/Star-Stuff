@@ -185,6 +185,7 @@ tracking — the query never leaves the reader's browser.
   ```bash
   node tools/build-search-index.mjs          # rewrites search-index.json
   node tools/build-search-index.mjs --check  # non-zero exit if stale; writes nothing
+  node tools/build-search-index.mjs --force  # write even if a page lost records
   ```
 
   This is now a step in the `ship-zine` routine, next to the changelog entry. A stale index
@@ -196,6 +197,23 @@ tracking — the query never leaves the reader's browser.
   currently laid out, which on `constellation-field-guide.html` alone drops ~89% of the words.
   It strips `<script>`/`<style>` and the repeating nav chrome, and pads block boundaries so
   `…a taker.` + `There's…` doesn't index as `taker.There's`.
+- **The build waits on a condition, never on a clock — don't put a sleep back.** It used to wait
+  a flat 1300ms after `Page.enable` and then read the DOM, which makes every run a race. It lost
+  that race on 2026-08-11: one build emitted **629 records / 936,594 chars** where the builds
+  either side gave **637 / 951,741** — eight records and 15KB gone, **exit code 0, no warning** —
+  and `--check` byte-compares, so it reported STALE seconds after the generator had written the
+  file. Now it waits for `readyState: complete` plus the page's own text length holding steady
+  across two samples, then **extracts twice and requires the two reads to agree**; that agreement
+  is the only thing that actually proves nothing was read mid-render. A page that won't stabilise
+  is a hard error, not a quiet truncation. Deliberately **not** gated on `document.fonts`: we read
+  `textContent`, so webfonts can't change a character we capture, and gating on them hung the run
+  for nine minutes when a Google Fonts request never resolved. The gate also made it *faster*
+  (~56s, against 66 × 1.3s of dead sleep).
+- **A page that loses all its records aborts the write.** The damage case was never a wrong index,
+  it was a *silently truncated* one, and a repo-wide 1.25% dip is far too small for a global
+  threshold to see — so the check is **per page**, against the committed index. Any page whose
+  record count drops is printed; a page dropping to **zero** exits non-zero and refuses to
+  overwrite. Deleting content legitimately trips this, which is what `--force` is for.
 - **Netlify does not run it.** Still no build step; the script is a local dev tool.
 - **Granularity is the point.** One record per zine spread (`#spread-N`) and per field-guide
   entry (`#entry-slug`), so a result lands on the passage rather than the top of a long page.

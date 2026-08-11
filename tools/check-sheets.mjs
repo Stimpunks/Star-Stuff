@@ -55,7 +55,12 @@ import { spawn } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 
 const REPO = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const PORT = 9411;
+/* 9411 is build-search-index.mjs and 9412 is check-contrast.mjs. This must not
+   collide with either: the gates get run back-to-back in the ship routine, and a
+   shared port means one tool can attach to the browser another is still shutting
+   down. That is not theoretical — it happened on the first sequential run of all
+   three, and the index build came back with a page holding zero records. */
+const PORT = 9413;
 
 /* A4 is the narrower paper, Letter the shorter one. A sheet has to clear both. */
 const PAPERS = {

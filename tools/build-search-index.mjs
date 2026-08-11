@@ -19,9 +19,26 @@
  * Because we read textContent, we must first strip <script> and <style> from the
  * clone we read, or the field guides' own source code lands in the index.
  *
+ * WHY THE READINESS GATE IS NOT A SLEEP
+ * This used to wait a flat 1300ms after Page.enable and then read the DOM, which
+ * makes every build a race against a stopwatch. It lost that race in the wild on
+ * 2026-08-11: one run emitted 629 records and 936,594 chars where the runs either
+ * side of it gave 637 and 951,741 — eight records and 15KB gone, exit code 0, no
+ * warning. A build that silently drops a page looks exactly like a healthy one,
+ * which is the same failure the coverage percentage was added to catch. It also
+ * made --check useless: it byte-compares, so it would report STALE seconds after
+ * the generator itself had written the file.
+ *
+ * So the wait is now a condition, not a duration: document.readyState complete,
+ * webfonts settled, and the page's own text length identical on two consecutive
+ * samples. Then the extraction is run TWICE and the results must agree — the one
+ * thing that actually proves we did not read mid-render — and a page that keeps
+ * disagreeing is a hard error rather than a quiet truncation.
+ *
  * USAGE
  *   node tools/build-search-index.mjs            # writes ../search-index.json
  *   node tools/build-search-index.mjs --check    # verify freshness, write nothing
+ *   node tools/build-search-index.mjs --force    # write even if a page lost records
  *
  * Requires: Google Chrome installed. Node 22+ (uses the global WebSocket).
  */
@@ -35,6 +52,45 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = path.join(ROOT, 'search-index.json');
 const PORT = 9411;
 const CHECK = process.argv.includes('--check');
+const FORCE = process.argv.includes('--force');
+
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+/* Wait until the page has stopped changing, rather than until a timer expires.
+   Returns false if it never settles, so the caller can say so.
+
+   Deliberately NOT waiting on document.fonts: we read textContent, so webfonts
+   cannot change a single character we capture — and gating on them made the run
+   hang, because a Google Fonts request that never resolves leaves fonts.status
+   at 'loading' forever. Waiting on something that cannot affect the output is
+   how a correctness gate turns into a nine-minute stall. */
+const SETTLE_PROBE = `(() => JSON.stringify({
+  ready: document.readyState,
+  len: document.body ? document.body.textContent.length : 0,
+}))()`;
+
+/* tries × every is a ceiling, not a cost: settle() returns the moment the page
+   holds still, so a fast page pays two probes. The ceiling is generous (~5s)
+   because the heaviest field guides occasionally ran past a 2.4s budget on a
+   loaded machine, and a page that hits the ceiling gets reported rather than
+   silently trusted. */
+async function settle(send, { tries = 60, every = 80 } = {}) {
+  let last = -1;
+  let steady = 0;
+  for (let i = 0; i < tries; i++) {
+    const r = JSON.parse(
+      (await send('Runtime.evaluate', { expression: SETTLE_PROBE, returnByValue: true })).result.value
+    );
+    const quiet = r.ready === 'complete' && r.len > 0 && r.len === last;
+    steady = quiet ? steady + 1 : 0;
+    /* Two consecutive identical samples, not one: a page that is still building
+       its entries can hold a length for a single tick between appends. */
+    if (steady >= 2) return true;
+    last = r.len;
+    await sleep(every);
+  }
+  return false;
+}
 
 const CHROME = [
   '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
@@ -357,13 +413,35 @@ async function main() {
   const pages = [];
   const recs = [];
   const thin = [];
+  const unsettled = [];
   try {
     for (const f of files) {
       const out = await withPage(`file://${path.join(ROOT, f)}`, async (send) => {
         await send('Page.enable');
-        await new Promise((r) => setTimeout(r, 1300)); // let client-rendered guides paint
-        const r = await send('Runtime.evaluate', { expression: EXTRACT, returnByValue: true });
-        return JSON.parse(r.result.value);
+        const settled = await settle(send);
+
+        /* Extract twice and require agreement. The settle() gate says the page
+           has stopped growing; this says the thing we actually captured is the
+           same thing twice. Only the second is proof, and it is what turns a
+           silent 8-record loss into a retry. */
+        const grab = async () =>
+          (await send('Runtime.evaluate', { expression: EXTRACT, returnByValue: true })).result.value;
+
+        let a = await grab();
+        for (let attempt = 0; attempt < 3; attempt++) {
+          const b = await grab();
+          if (a === b) {
+            if (!settled) unsettled.push(f); // captured cleanly, but it never quiesced — say so
+            return JSON.parse(a);
+          }
+          await sleep(400);
+          a = b;
+        }
+        throw new Error(
+          `${f}: extraction never stabilised across repeated reads — the page is still ` +
+            `changing after settle(). Indexing it now would write whatever half-built ` +
+            `state we happened to catch.`
+        );
       });
       const pi = pages.push([f, out.title]) - 1;
       for (const rec of out.records) recs.push([pi, rec.frag, rec.heading, rec.text]);
@@ -398,13 +476,66 @@ async function main() {
     console.log('  Add a chunk selector for the page\'s own layout, or give it real headings.');
   }
 
+  if (unsettled.length) {
+    console.log(
+      `\n${unsettled.length} page(s) never went quiet before extraction, though the reads agreed:`
+    );
+    for (const f of unsettled) console.log(`  ${f}`);
+    console.log('  Check for an animation or a timer that keeps mutating text.');
+  }
+
+  /* Per-page regression guard. The failure that actually hurt was a build that
+     dropped records and exited 0, and a repo-wide 1.25% dip is far too small for
+     a global threshold to notice — so compare page by page against the committed
+     index. Deleting content legitimately trips this; that is what --force is for. */
+  const prev = fs.existsSync(OUT) ? JSON.parse(fs.readFileSync(OUT, 'utf8')) : null;
+  const regressions = [];
+  if (prev?.pages && prev?.recs) {
+    const count = (ix) => {
+      const m = new Map();
+      ix.recs.forEach((r) => {
+        const f = ix.pages[r[0]][0];
+        m.set(f, (m.get(f) || 0) + 1);
+      });
+      return m;
+    };
+    const before = count(prev);
+    const after = count({ pages, recs });
+    for (const [f, n] of before) {
+      const now = after.get(f) ?? 0;
+      if (now < n) regressions.push([f, n, now]);
+    }
+  }
+
+  if (regressions.length) {
+    const gone = regressions.filter(([, , now]) => now === 0);
+    console.log(`\n${regressions.length} page(s) produced FEWER records than the committed index:`);
+    for (const [f, was, now] of regressions) console.log(`  ${f.padEnd(44)} ${was} → ${now}`);
+    if (gone.length && !FORCE) {
+      console.error(
+        `\n${gone.length} page(s) produced NO records at all. That is what a failed render looks ` +
+          `like, not an edit.` +
+          (CHECK
+            ? `\nNot treating this build as authoritative. Re-run without --check to see it again.`
+            : `\nRefusing to overwrite a good index with it. If the text really was deleted, ` +
+              `re-run with --force.`)
+      );
+      process.exit(1);
+    }
+    console.log('  If you deleted that text, this is expected. If you did not, re-run before committing.');
+  }
+
   if (CHECK) {
     const old = fs.existsSync(OUT) ? fs.readFileSync(OUT, 'utf8') : '';
     if (old.trim() === json.trim()) {
       console.log('search-index.json is up to date.');
       process.exit(0);
     }
-    console.error('search-index.json is STALE — run: node tools/build-search-index.mjs');
+    console.error(
+      'search-index.json is STALE — run: node tools/build-search-index.mjs\n' +
+        '(If nothing changed on any page, this build disagreed with the committed one, which\n' +
+        'means a page rendered differently. Re-run; a second disagreement is a real bug.)'
+    );
     process.exit(1);
   }
 
