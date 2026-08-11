@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0a0a14">
+<link rel="canonical" href="https://starstuff.earth/too-good-to-check.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta name="description" content="Too Good to Check: how a story gets smoother than the science, and what reading the primary source puts back. Six ways a fact goes wrong — the quote nobody said, the number that went stale, the story told backwards, the credit that drifted, the press release instead of the paper, and the finding that flatters you — with seventeen worked corrections from Star Stuff's own ledger, including the ones we shipped and had to fix.">
+<!-- Open Graph / link unfurl -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Star Stuff · Stimpunks Foundation × More Realms">
+<meta property="og:url" content="https://starstuff.earth/too-good-to-check.html">
+<meta property="og:title" content="Too Good to Check">
+<meta property="og:description" content="How a story gets smoother than the science. Six ways a fact goes wrong, seventeen worked corrections — including our own — and why the primary source for an Autistic life is an Autistic person.">
+<meta property="og:image" content="https://starstuff.earth/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A rainbow-hued cosmic image — we are all made of star stuff.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Too Good to Check">
+<meta name="twitter:description" content="Popular science misconceptions, our own published errors, and what happens when you go back to the paper. Six failure modes and seventeen receipts.">
+<meta name="twitter:image" content="https://starstuff.earth/og-card.jpg">
+<title>Too Good to Check — Star Stuff — Stimpunks × More Realms</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="starstuff.css">
+<style>
+  :root {
+    --void:  var(--sp-void-deep);
+    --deep:  var(--sp-deep);
+    --card:  var(--sp-card);
+    --violet:var(--sp-purple);
+    --pink:  var(--sp-pink);
+    --gold:  var(--sp-gold);
+    --cyan:  var(--sp-cyan);
+    --green: var(--sp-green);
+    /* One knob for this page's tint, as on design.html and cosmic-connections.html.
+       Pink keeps this distinct from About (gold), Design (green) and Cosmic
+       Connections (cyan), and reads as the correction register rather than the
+       wonder one. The refusals block below is therefore violet, not the house
+       pink, so the two don't collide on the same page. */
+    --accent:var(--sp-pink);
+    --star-white: var(--sp-white-soft);
+    --stardust:   var(--sp-secondary-soft);
+    --dim:   var(--sp-dim);
+    --dim2:  var(--sp-dim-soft);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--void);
+    font-family: 'Atkinson Hyperlegible Next', system-ui, sans-serif;
+    color: var(--star-white);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Starfield, tinted pink for this page — see starstuff.css on why the
+     gradient art stays inline and per-page. */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 11% 16%, rgba(244,114,182,0.75) 0%, transparent 100%),
+      radial-gradient(1px 1px at 27% 41%, rgba(244,244,251,0.6) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 43% 9%, rgba(167,139,250,0.7) 0%, transparent 100%),
+      radial-gradient(1px 1px at 64% 71%, rgba(244,114,182,0.55) 0%, transparent 100%),
+      radial-gradient(2px 2px at 79% 24%, rgba(34,211,238,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 88% 58%, rgba(74,222,128,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 94% 81%, rgba(244,244,251,0.7) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 6% 62%, rgba(251,191,36,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 33% 88%, rgba(244,244,251,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 57% 44%, rgba(244,114,182,0.45) 0%, transparent 100%),
+      radial-gradient(2px 2px at 20% 84%, rgba(167,139,250,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 72% 6%, rgba(244,244,251,0.8) 0%, transparent 100%),
+      radial-gradient(1px 1px at 50% 65%, rgba(244,114,182,0.45) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 36% 22%, rgba(74,222,128,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 82% 92%, rgba(251,191,36,0.5) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .doc-shell { position: relative; z-index: 1; max-width: 760px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+
+  .spectrum-line { height: 2px; border: none; border-radius: 2px; background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); }
+
+  .nav-brand { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--dim); margin: 1.6rem 0 2.5rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(167,139,250,0.2); }
+
+  .hero { margin-bottom: 2.5rem; }
+  .hero-eyebrow { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.36em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.3rem; }
+  .hero-title { font-weight: 700; font-size: clamp(2.1rem, 6vw, 3.4rem); line-height: 1.05; letter-spacing: -0.02em; color: var(--star-white); margin-bottom: 1.1rem; }
+  .hero-title em { font-style: normal; background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .hero-sub { font-size: 1.02rem; line-height: 1.6; color: var(--stardust); max-width: 38rem; }
+  .hero-rule { width: 200px; max-width: 55%; margin-top: 1.6rem; }
+
+  h2.section { font-weight: 700; font-size: 1.4rem; line-height: 1.2; color: var(--star-white); margin: 2.8rem 0 0.5rem; letter-spacing: -0.01em; }
+  h3.sub { font-weight: 700; font-size: 1.08rem; line-height: 1.3; color: var(--star-white); margin: 2rem 0 0.3rem; }
+  h3.sub .mode-num { font-family: 'Space Mono', monospace; font-size: 0.72rem; letter-spacing: 0.14em; color: var(--accent); margin-right: 0.5rem; }
+
+  .body-text { font-size: 1.02rem; line-height: 1.75; color: var(--stardust); }
+  .body-text p { margin-top: 1rem; }
+  .body-text em { font-style: italic; color: var(--star-white); }
+  .body-text strong { font-weight: 700; color: var(--star-white); }
+  .body-text a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(244,114,182,0.4); }
+  .body-text a:hover { border-bottom-color: var(--accent); }
+  .body-text ul { margin: 0.9rem 0 0 1.1rem; }
+  .body-text li { margin-top: 0.5rem; padding-left: 0.2rem; color: var(--stardust); line-height: 1.7; }
+
+  .claim { font-size: 1.22rem; font-weight: 700; line-height: 1.4; color: var(--star-white); border-left: 3px solid var(--accent); padding-left: 1.1rem; margin: 1.4rem 0; }
+
+  .pull { font-size: 1.06rem; line-height: 1.6; color: var(--star-white); border-left: 3px solid var(--violet); padding-left: 1.1rem; margin: 1.4rem 0; }
+  .pull .attr { display: block; margin-top: 0.5rem; font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim); }
+
+  /* The tell: one line per failure mode, the thing that gives it away. */
+  .tell { font-family: 'Space Mono', monospace; font-size: 0.78rem; line-height: 1.65; color: var(--star-white); border-left: 3px solid var(--gold); padding-left: 1.1rem; margin: 1.1rem 0 0; }
+  .tell span { color: var(--gold); letter-spacing: 0.16em; text-transform: uppercase; font-size: 0.58rem; display: block; margin-bottom: 0.35rem; }
+
+  .callout { border: 1px solid rgba(244,114,182,0.32); border-left: 3px solid var(--accent); border-radius: 0 6px 6px 0; padding: 1.1rem 1.3rem; margin: 1.6rem 0; background: rgba(244,114,182,0.05); }
+  .callout .callout-label { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; }
+  .callout p { font-size: 0.96rem; line-height: 1.7; color: var(--stardust); }
+  .callout p + p { margin-top: 0.8rem; }
+  .callout strong { color: var(--star-white); font-weight: 700; }
+  .callout--gold { border-color: rgba(251,191,36,0.32); border-left-color: var(--gold); background: rgba(251,191,36,0.05); }
+  .callout--gold .callout-label { color: var(--gold); }
+
+  .refusals { margin: 1.5rem 0 0.5rem; }
+  .refusals .callout-label { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--violet); margin-bottom: 0.6rem; }
+  .refusals ul { margin: 0; }
+  .refusals li { list-style: none; position: relative; padding-left: 1.5rem; margin-top: 0.55rem; color: var(--stardust); line-height: 1.65; }
+  .refusals li::before { content: '✕'; position: absolute; left: 0; color: var(--violet); font-weight: 700; }
+
+  /* ── Diagrams ── */
+  .fig { margin: 1.8rem 0 0.6rem; }
+  .fig svg { display: block; width: 100%; height: auto; }
+  .fig figcaption { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--dim); margin-top: 0.7rem; line-height: 1.7; }
+
+  /* ── Table ── */
+  .tbl-wrap { overflow-x: auto; margin: 1.3rem 0 0.4rem; }
+  table { border-collapse: collapse; width: 100%; min-width: 520px; font-size: 0.88rem; }
+  caption { text-align: left; font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); padding-bottom: 0.7rem; }
+  th, td { text-align: left; vertical-align: top; padding: 0.6rem 0.8rem 0.6rem 0; border-bottom: 1px solid rgba(167,139,250,0.14); }
+  th { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--dim); font-weight: 400; }
+  td { color: var(--stardust); }
+  td strong { color: var(--star-white); }
+  td a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(244,114,182,0.35); }
+  .where { font-family: 'Space Mono', monospace; font-size: 0.72rem; white-space: nowrap; }
+
+  .tbl-wrap, .callout, .refusals, .fig, .tell { page-break-inside: avoid; break-inside: avoid; }
+
+  .start-link { display: inline-block; margin-top: 1.5rem; font-family: 'Space Mono', monospace; font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); text-decoration: none; border: 1px solid rgba(244,114,182,0.45); border-radius: 3px; padding: 0.6rem 1.1rem; transition: all 0.2s ease; }
+  .start-link:hover { background: rgba(244,114,182,0.12); border-color: var(--accent); color: var(--star-white); }
+
+  .colophon-footer { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--dim2); line-height: 2.2; margin-top: 3rem; padding-top: 1.4rem; border-top: 1px solid rgba(167,139,250,0.14); }
+  .colophon-footer a { color: var(--dim); text-decoration: none; border-bottom: 1px solid rgba(167,139,250,0.2); }
+  .colophon-footer a:hover { color: var(--stardust); }
+
+  .refs { font-size: 0.8rem; line-height: 1.85; color: var(--dim); margin-top: 2rem; padding-top: 1.2rem; border-top: 1px solid rgba(167,139,250,0.14); }
+  .refs a { color: var(--dim); border-bottom: 1px solid rgba(167,139,250,0.2); text-decoration: none; word-break: break-word; }
+  .refs a:hover { color: var(--stardust); }
+  .refs strong { color: var(--stardust); font-weight: 400; }
+
+  @media (max-width: 600px) {
+    .doc-shell { padding: 2rem 1.3rem 3rem; }
+  }
+
+  /* Print: this page aliases the --sp-* tokens, so the shared sheet inverts most
+     of it for free. These are the few roles that name a color of their own. */
+  @media print {
+    body::before { display: none; }
+    .hero-title, h2.section, h3.sub, .claim, .pull, .tell, td strong,
+    .callout strong, .body-text strong, .body-text em { color: #111; }
+    .body-text li, .hero-sub, .callout p, td, .refusals li { color: #222; }
+    th, caption, .fig figcaption, .pull .attr, .colophon-footer, .refs,
+    .tell span, h3.sub .mode-num { color: #444; }
+    /* .callout and .refusals set their label color with a two-class selector,
+       so match that specificity or the accent survives onto paper at ~2:1. */
+    .callout .callout-label,
+    .callout--gold .callout-label,
+    .refusals .callout-label { color: #444; }
+    .refusals li::before { color: #111; }
+    .callout, .callout--gold { background: none; border-color: #999; border-left-color: #444; }
+    .start-link { display: none; }
+  }
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Too Good to Check","description":"How a story gets smoother than the science, and what reading the primary source puts back. Six ways a fact goes wrong, with seventeen worked corrections from Star Stuff's own fact-check ledger — including the errors we published and had to fix.","image":"https://starstuff.earth/og-card.jpg","url":"https://starstuff.earth/too-good-to-check.html","mainEntityOfPage":"https://starstuff.earth/too-good-to-check.html","author":{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/"},"publisher":[{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/","logo":{"@type":"ImageObject","url":"https://starstuff.earth/og-card.jpg"}},{"@type":"Organization","name":"More Realms","url":"https://morerealms.com/"}],"isPartOf":{"@type":"WebSite","name":"Star Stuff","url":"https://starstuff.earth/"},"license":"https://creativecommons.org/licenses/by-sa/4.0/"}</script>
+</head>
+<body>
+
+<div class="doc-shell">
+
+  <nav class="ss-nav" style="--nav-accent:#f472b6;" aria-label="Star Stuff collection">
+    <span class="ss-nav-home-group">
+      <a class="ss-nav-home" href="index.html"><span class="ss-star" aria-hidden="true">★</span> stuff</a>
+      <a class="ss-nav-about" href="about.html">about</a>
+      <a class="ss-nav-search" href="search.html">search</a>
+    </span>
+    <span class="ss-nav-links">
+      <a class="ss-nav-prev" href="inclusion-safety-creed.html"><span class="ss-nav-arrow" aria-hidden="true">‹</span> <span class="ss-nav-label">Inclusion Safety</span></a>
+      <a class="ss-nav-next" href="we-are-all-star-stuff.html"><span class="ss-nav-label">We Are All Star Stuff</span> <span class="ss-nav-arrow" aria-hidden="true">›</span></a>
+    </span>
+  </nav>
+
+  <div class="nav-brand"><a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks</a> × <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a> · Too Good to Check</div>
+
+  <header class="hero">
+    <div class="hero-eyebrow"><a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks Foundation</a> × <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a> · Foundations</div>
+    <h1 class="hero-title">Too Good to <em>Check</em></h1>
+    <p class="hero-sub">How a story gets smoother than the science, and what reading the primary source puts back. Six ways a fact goes wrong, and seventeen worked corrections — most of them ours, published, dated, and fixed in public.</p>
+    <hr class="spectrum-line hero-rule">
+  </header>
+
+  <div class="body-text">
+
+    <p>Everybody knows the forest is wired together. Fungal threads under the soil, trees trading sugar and warnings across a shared network, an old tree in the sunlight feeding a seedling stuck in the shade. It is one of the loveliest facts of the last thirty years, and we put it in three pieces without checking it.</p>
+
+    <p>We should not have. In 2023, Karst, Jones and Hoeksema went through the citation record and found the evidence insufficient that these common mycorrhizal networks are widespread in forests, insufficient that transfer through them reliably helps seedlings, and — this is the part that stung — <strong>no published evidence at all</strong> that mature trees preferentially feed their own offspring. The trade between a root and its fungus is settled science and always was. The forest-wide story is a different claim, and it had been growing by citation rather than by evidence.</p>
+
+    <p>We corrected it on <a href="changelog.html">3 August 2026</a>, across <a href="underground-zine.html">No. 5</a>, <a href="mycelium-and-rhizome-zine.html">No. 26</a>, and <a href="symbioses-field-guide.html">Field Guide No. 6</a>. And the reason it got past us is not that we were careless. It is that <em>it rhymed with everything we believe</em>. A collection arguing for interdependence and mutual aid met a finding that said the forest is a mutual-aid society, and did not ask it a single hard question.</p>
+
+    <p class="claim">A story that fits gets less scrutiny, which is exactly when it needs more.</p>
+
+    <p>This page is about that failure and its relatives. It is written from inside the problem rather than above it: nearly every example below is one <em>we</em> shipped, or nearly shipped, and had to go back and fix. That is the only honest place to write it from. It is also the reader-facing front door to our <a href="https://github.com/Stimpunks/Star-Stuff/blob/main/FACTCHECK.md">fact-check ledger</a> and our <a href="changelog.html">public changelog</a>, which have been quietly accumulating this material for a year.</p>
+
+    <h2 class="section" id="why-smooth">Why the smooth version wins</h2>
+
+    <p>Misconceptions do not spread because people are stupid. They spread because <strong>the retellable version out-competes the accurate one</strong>, and the competition is not close.</p>
+
+    <p>A paper is hedged, conditional, and boring on purpose. It says <em>in this system, under these conditions, we observed</em>. The retelling drops the conditions, because the conditions are what make it hard to remember. Each hop smooths a little more: the hedge goes, then the sample size, then the species, then the name of the person who found it. What arrives at the other end is a clean sentence that anyone can repeat and nobody can source.</p>
+
+    <p>The trap underneath is that <strong>repetition feels like verification</strong>. When you have met a claim in six places, it has the texture of a well-established fact — but if all six were downstream of the same press release, you have met it once, six times. Our own house rule exists because of this: aggregators and summaries are <em>leads, not citations</em>. A quote site, an encyclopedia, our own glossary, an AI summary — any of them can point you at a source. None of them can be one.</p>
+
+    <figure class="fig">
+      <svg viewBox="0 0 660 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig1-title fig1-desc">
+        <title id="fig1-title">The citation trail, and the hop that never happens</title>
+        <desc id="fig1-desc">A left-to-right chain of five boxes: the paper, the press release, the popular article, the summary, and our page. Arrows run rightward between them. Only the first arrow touches the evidence; the rest copy the copy. A dashed arc runs from our page all the way back to the paper, labelled as the one hop that actually checks anything.</desc>
+
+        <!-- Forward chain. Arrowheads drawn explicitly rather than left as bare
+             segments: the caption talks about arrows and about one of them
+             running the other way, so direction has to be visible on the page. -->
+        <g fill="none" stroke="rgba(196,181,212,0.55)" stroke-width="1.3">
+          <path d="M112 74 L134 74"/>
+          <path d="M242 74 L264 74"/>
+          <path d="M372 74 L394 74"/>
+          <path d="M502 74 L524 74"/>
+          <path d="M128 69 L134 74 L128 79"/>
+          <path d="M258 69 L264 74 L258 79"/>
+          <path d="M388 69 L394 74 L388 79"/>
+          <path d="M518 69 L524 74 L518 79"/>
+        </g>
+
+        <!-- nodes -->
+        <g>
+          <rect x="8" y="50" width="104" height="48" rx="6" fill="none" stroke="#4ade80" stroke-width="1.6"/>
+          <text x="60" y="70" font-family="Space Mono, monospace" font-size="10" fill="#4ade80" text-anchor="middle">THE PAPER</text>
+          <text x="60" y="86" font-family="Space Mono, monospace" font-size="8.5" fill="rgba(196,181,212,0.95)" text-anchor="middle">hedged, dated</text>
+
+          <rect x="138" y="50" width="104" height="48" rx="6" fill="none" stroke="rgba(196,181,212,0.6)" stroke-width="1.4"/>
+          <text x="190" y="70" font-family="Space Mono, monospace" font-size="10" fill="rgba(196,181,212,0.95)" text-anchor="middle">PRESS RELEASE</text>
+          <text x="190" y="86" font-family="Space Mono, monospace" font-size="8.5" fill="rgba(196,181,212,0.95)" text-anchor="middle">hedge drops</text>
+
+          <rect x="268" y="50" width="104" height="48" rx="6" fill="none" stroke="rgba(196,181,212,0.6)" stroke-width="1.4"/>
+          <text x="320" y="70" font-family="Space Mono, monospace" font-size="10" fill="rgba(196,181,212,0.95)" text-anchor="middle">THE ARTICLE</text>
+          <text x="320" y="86" font-family="Space Mono, monospace" font-size="8.5" fill="rgba(196,181,212,0.95)" text-anchor="middle">verb gets livelier</text>
+
+          <rect x="398" y="50" width="104" height="48" rx="6" fill="none" stroke="rgba(196,181,212,0.6)" stroke-width="1.4"/>
+          <text x="450" y="70" font-family="Space Mono, monospace" font-size="10" fill="rgba(196,181,212,0.95)" text-anchor="middle">THE SUMMARY</text>
+          <text x="450" y="86" font-family="Space Mono, monospace" font-size="8.5" fill="rgba(196,181,212,0.95)" text-anchor="middle">name falls off</text>
+
+          <rect x="528" y="50" width="118" height="48" rx="6" fill="none" stroke="#f472b6" stroke-width="1.6"/>
+          <text x="587" y="70" font-family="Space Mono, monospace" font-size="10" fill="#f472b6" text-anchor="middle">YOUR PAGE</text>
+          <text x="587" y="86" font-family="Space Mono, monospace" font-size="8.5" fill="rgba(196,181,212,0.95)" text-anchor="middle">stated as fact</text>
+        </g>
+
+        <text x="330" y="28" font-family="Space Mono, monospace" font-size="9" fill="rgba(196,181,212,0.95)" text-anchor="middle">four hops. only the first one ever touched the evidence.</text>
+
+        <!-- The return hop. Its arrowhead is solid while the arc is dashed —
+             the hop is the one that rarely happens, but where it lands is not
+             in doubt. -->
+        <path d="M587 106 C 587 190, 60 190, 60 112" fill="none" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="5 4"/>
+        <path d="M55 119 L60 111 L65 119" fill="none" stroke="#fbbf24" stroke-width="1.5"/>
+        <text x="330" y="184" font-family="Space Mono, monospace" font-size="10" fill="#fbbf24" text-anchor="middle">THE ONE HOP THAT CHECKS ANYTHING</text>
+        <text x="330" y="222" font-family="Space Mono, monospace" font-size="9" fill="rgba(196,181,212,0.95)" text-anchor="middle">meeting a claim in six places is not six confirmations</text>
+        <text x="330" y="236" font-family="Space Mono, monospace" font-size="9" fill="rgba(196,181,212,0.95)" text-anchor="middle">if all six are downstream of the same release</text>
+      </svg>
+      <figcaption>Figure 1 · Every arrow feels like corroboration from inside the chain. Only the dashed one leaves it.</figcaption>
+    </figure>
+
+    <h2 class="section" id="six-ways">Six ways a fact goes wrong</h2>
+
+    <p>Sorting a year of our own corrections, they fall into six shapes. The value of a taxonomy over a list of trivia is that you can point it at a claim nobody has written about yet — including one of your own.</p>
+
+    <h3 class="sub" id="mode-quote"><span class="mode-num">01</span>The quote nobody said</h3>
+
+    <p>The most quotable version of a thought is usually not the one a person actually produced, because people speak in clauses and circumlocutions and the culture files off the corners afterwards. What circulates is a compression — accurate in spirit, unfindable in the text.</p>
+
+    <p><em>&ldquo;We are star stuff harvesting sunlight&rdquo;</em> is Sagan's most-shared line and he never wrote it. Searching all thirteen chapters of <em>Cosmos</em> turns up two real sentences in chapter 9 — &ldquo;Farming is simply the methodical harvesting of sunlight, using plants as grudging intermediaries. We are, almost all of us, solar-powered&rdquo; and, separately, &ldquo;We are made of starstuff&rdquo; — which the internet welded into something better than either. We had it in <a href="eternal-sunshine-zine.html">No. 6</a> inside quotation marks with a citation. It is now marked as ours, with his two real sentences printed underneath.</p>
+
+    <p>Brian Eno's definition of <em>scenius</em> has the same shape. The version everywhere — including in five places in <a href="https://stimpunks.org/">our own knowledge garden</a> — reads &ldquo;the intelligence and <em>the</em> intuition of a whole cultural scene… the communal form of the concept of <em>the</em> genius.&rdquo; That wording entered circulation through Kevin Kelly in 2008. Eno's own sentence, in <em>A Year with Swollen Appendices</em> (1996), does not have those articles in it. A small difference, and it means the line has been quoted as his for eighteen years in a form he did not write.</p>
+
+    <p>And sometimes the wrong name is on it. <em>&ldquo;We are caught in an inescapable network of mutuality&rdquo;</em> shipped in our <a href="symbioses-field-guide.html">Symbioses</a> field guide credited to James Baldwin. It is Martin Luther King Jr., <em>Letter from Birmingham Jail</em>, 1963. <strong>Helen Edgar</strong> caught it.</p>
+
+    <div class="tell"><span>The tell</span>It is more quotable than anything anyone says out loud. Search the actual book, not the web.</div>
+
+    <h3 class="sub" id="mode-number"><span class="mode-num">02</span>The number that went stale</h3>
+
+    <p>A measurement can be wrong simply by being old. The literature moves; museum placards, planetarium scripts and popular astronomy do not, and the superseded value keeps circulating for decades with nothing to mark it as expired.</p>
+
+    <p><a href="the-lines-we-drew-zine.html">No. 9</a> built a whole spread on Orion's Belt being an accident of sightline — Alnitak about 740 light-years out, Mintaka 690, Alnilam nearly 2,000, one star three times farther than its neighbours. Those are Hipparcos-era parallaxes, and Hipparcos measured bright, distant, multiple O and B stars badly. Current values from VLTI interferometry and Gaia put all three at essentially one depth, around 1,240–1,260 light-years, all of them in the Orion OB1b association. They are not a coincidence. They are siblings from one cloud.</p>
+
+    <p>Two things should have caught it sooner, and both are worth stealing as habits. The zine's own colophon cited an astronomy-picture-of-the-day page that gives the three as a group at about 1,500 light-years and never supported our figures — <strong>we cited a source we had not read closely</strong>. And <a href="constellation-field-guide.html">Field Guide No. 1</a>, the companion piece, already said it correctly. The collection had been contradicting itself in public for weeks.</p>
+
+    <div class="tell"><span>The tell</span>You can find the figure repeated everywhere and dated nowhere. Check the source you cited actually gives your number.</div>
+
+    <h3 class="sub" id="mode-backwards"><span class="mode-num">03</span>The story told backwards</h3>
+
+    <p>Sometimes the facts survive the retelling and the <em>emphasis</em> does not, which inverts the meaning while leaving every individual sentence defensible.</p>
+
+    <p>Everybody knows everything evolves into a crab. The paper behind that meme — Wolfe, Luque and Bracken-Grissom, 2021 — does say the crab-like body plan has arisen at least five times. It also says it has been <strong>lost at least seven times</strong>, that the reasons for the repetition &ldquo;remain a mystery,&rdquo; and that the authors do not know whether they are looking at true convergence or at deep homology. Three facts that cut against the meme, none of which travel with it. <a href="five-times-a-crab-zine.html">No. 31</a> is built on the ones that got left behind.</p>
+
+    <p>Same shape in <a href="skeleton-that-skipped-bone-zine.html">No. 32</a>: the shark's cartilage skeleton is routinely called primitive, as though bone had not been invented yet. <em>Minjinia turgenensis</em>, described in 2020, preserves endochondral bone deeper in the tree — so the chondrichthyan condition is a <strong>secondary loss</strong>. Derived, not primitive. The textbook reading is upside down, and the loaded word turns out to be factually wrong as well as rude.</p>
+
+    <p>And in <a href="everywhere-that-turtles-go-zine.html">No. 35</a>: the turtle shell is not armour that evolved for protection. Broadened ribs came first as an adaptation for digging, and Lyson and colleagues note they &ldquo;provide little protection&rdquo; while costing the animal in locomotion and breathing. The protection is an exaptation — a later use for a structure built for something else.</p>
+
+    <div class="tell"><span>The tell</span>The paper's own hedge is missing, and every fact that complicates the punchline dropped out together.</div>
+
+    <h3 class="sub" id="mode-credit"><span class="mode-num">04</span>The credit that drifted</h3>
+
+    <p>Attribution decays toward tidiness. A collective becomes a founder; a documenter becomes a coiner; the person with the most citable book absorbs the idea of everyone around them. This one matters more than the others, because it is not only inaccurate — it takes something from people.</p>
+
+    <p>The clearest case is in our own field. <em>Neurodiversity was coined by Judy Singer in 1998</em> is repeated everywhere, including in places that should know better. Botha, Chapman, Giwa Onaiwu, Kapp, Stannard Ashley and Walker published the correction in <em>Autism</em> in 2024: the concept was <strong>developed collectively</strong> by the online Autistic community, and reached print in 1997 and 1998 through the journalist Harvey Blume, who attributed it to that community. <em>Neurodivergent</em> is Kassiane Asasumasu's, from 2000. The <em>pathology paradigm</em> is Nick Walker's, not Robert Chapman's, who works with the term. <em>Crip time</em> was documented by Zola and Gill, not coined by them. We had two of those wrong in <a href="the-lines-we-drew-zine.html">No. 9</a> and <a href="no-universal-now-zine.html">No. 19</a>.</p>
+
+    <p>It happens outside our field too, in both directions. Galton did not coin <em>eugenics</em> in <em>Hereditary Genius</em> (1869); he coined it in <em>Inquiries into Human Faculty</em> (1883), in a footnote. &ldquo;Dirt is matter out of place&rdquo; is credited to Mary Douglas so reliably that it reads as hers, and it appears unreferenced in <em>Purity and Danger</em>; the earliest instance we could locate is an 1853 address by Lord Palmerston. &ldquo;Turtles all the way down&rdquo; is attributed to William James, whose 1882 essay uses <em>rocks</em>; the turtle punchline was attached to him in a 1967 doctoral thesis.</p>
+
+    <div class="tell"><span>The tell</span>One name sits where a community was, or a famous name sits where an obscure one belongs.</div>
+
+    <h3 class="sub" id="mode-press"><span class="mode-num">05</span>The press release, not the paper</h3>
+
+    <p>Between the finding and the public there is a layer whose job is to make the finding interesting, and it is very good at its job. Its output is not a lie; it is a livelier verb.</p>
+
+    <p>While building <a href="the-layer-we-call-essential-zine.html">No. 36</a> we nearly used the story of the bottlenose dolphin that <em>adopted</em> a sperm whale calf. The paper — Wilson and Krause, 2013 — reports &ldquo;repeated non-agonistic interactions.&rdquo; <strong>&ldquo;Adopted&rdquo; is the press's word, not the researchers'.</strong> And the explanation everyone repeats, that the dolphin had been harassed by its own kind, is a researcher's suggestion to reporters, not a finding in the paper. The zine says the motive is unknown, because it is.</p>
+
+    <p>The costly version of this mode is shark cartilage. A popular book, a market, and decades of belief that sharks don't get cancer — against 42 documented tumours across at least 21 chondrichthyan species, and a clinical trial that found no difference in survival or quality of life. A false premise, industrialised.</p>
+
+    <div class="tell"><span>The tell</span>The vivid verb is doing the work. Find the abstract and see which word the authors chose.</div>
+
+    <h3 class="sub" id="mode-flatters"><span class="mode-num">06</span>The finding that flatters you</h3>
+
+    <p>The last one is the wood wide web, and it is the dangerous one, because the others are accidents and this one is an appetite.</p>
+
+    <p>Our worst instance was not a fact we imported but an argument we made. <a href="the-ick-is-a-border-zine.html">No. 33</a> argued that disgust is learned — a claim that suited us, since the zine is about how revulsion gets recruited into prejudice. <strong>Helen Edgar</strong>, who taught children with profound and multiple learning disabilities for twenty years, said plainly that this was wrong: pre-term babies have an ick without any capacity to have been taught one. She was right, and Rozin's own framework already carried the distinction we had collapsed. <em>Distaste</em> is chemosensory rejection, present at birth — Steiner's 1973 work found anencephalic newborns produce the gustofacial response, so it cannot be an opinion. <em>Disgust</em> proper is ideational and contamination-sensitive, and that is the only kind our argument was ever about.</p>
+
+    <p>We added a spread rather than a footnote, because as published a reader with sensory processing differences could reasonably have understood the zine to be telling them their aversions were prejudice to get over. Aimed at our own community, that would have done harm. And Helen's underlying point is the better framing and now sits in the zine's voice: <em>we are not blank slates — that is the whole point of star stuff. We have history in us.</em> A response conserved across species and present before birth <strong>is</strong> that history. We had been arguing against this collection's founding premise without noticing.</p>
+
+    <div class="tell"><span>The tell</span>You wanted it to be true before you read it. That is the moment to slow down, not speed up.</div>
+
+    <figure class="fig">
+      <svg viewBox="0 0 660 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig2-title fig2-desc">
+        <title id="fig2-title">Six failure modes and their tells</title>
+        <desc id="fig2-desc">A reference card of six boxes in two columns. One: the quote nobody said — more quotable than real speech. Two: the number that went stale — repeated everywhere, dated nowhere. Three: the story told backwards — the paper's hedge is missing. Four: the credit that drifted — one name where a community was. Five: the press release not the paper — the verb is livelier than the finding. Six: the finding that flatters you — you wanted it to be true before you read it.</desc>
+
+        <g stroke-width="1.4" fill="none">
+          <rect x="6" y="14" width="316" height="80" rx="6" stroke="#f472b6"/>
+          <rect x="338" y="14" width="316" height="80" rx="6" stroke="#a78bfa"/>
+          <rect x="6" y="106" width="316" height="80" rx="6" stroke="#22d3ee"/>
+          <rect x="338" y="106" width="316" height="80" rx="6" stroke="#4ade80"/>
+          <rect x="6" y="198" width="316" height="80" rx="6" stroke="#fbbf24"/>
+          <rect x="338" y="198" width="316" height="80" rx="6" stroke="#f472b6"/>
+        </g>
+
+        <g font-family="Space Mono, monospace" font-size="10.5">
+          <text x="22" y="40" fill="#f472b6">01 · THE QUOTE NOBODY SAID</text>
+          <text x="354" y="40" fill="#a78bfa">02 · THE NUMBER THAT WENT STALE</text>
+          <text x="22" y="132" fill="#22d3ee">03 · THE STORY TOLD BACKWARDS</text>
+          <text x="354" y="132" fill="#4ade80">04 · THE CREDIT THAT DRIFTED</text>
+          <text x="22" y="224" fill="#fbbf24">05 · THE PRESS RELEASE, NOT THE PAPER</text>
+          <text x="354" y="224" fill="#f472b6">06 · THE FINDING THAT FLATTERS YOU</text>
+        </g>
+
+        <g font-family="Space Mono, monospace" font-size="9" fill="rgba(196,181,212,0.95)">
+          <text x="22" y="62">more quotable than anything anyone</text>
+          <text x="22" y="76">says out loud — search the actual book</text>
+
+          <text x="354" y="62">repeated everywhere, dated nowhere —</text>
+          <text x="354" y="76">check your cited source gives your number</text>
+
+          <text x="22" y="154">the paper's own hedge is missing, and</text>
+          <text x="22" y="168">every complicating fact left with it</text>
+
+          <text x="354" y="154">one name where a community was, or a</text>
+          <text x="354" y="168">famous name where an obscure one belongs</text>
+
+          <text x="22" y="246">the vivid verb is doing the work — find</text>
+          <text x="22" y="260">which word the authors actually chose</text>
+
+          <text x="354" y="246">you wanted it to be true before you read</text>
+          <text x="354" y="260">it — slow down here, don't speed up</text>
+        </g>
+      </svg>
+      <figcaption>Figure 2 · Point these at a claim nobody has written about yet, including one of your own.</figcaption>
+    </figure>
+
+    <h2 class="section" id="what-works">What actually works</h2>
+
+    <p>None of this needs a laboratory. It needs a handful of stubborn habits, each of which we adopted because something went wrong without it.</p>
+
+    <ul>
+      <li><strong>Trace it to the primary.</strong> The book, the paper, the essay, the talk. Not a quote site, not an encyclopedia, not our own glossary, not a search summary. Those are leads.</li>
+      <li><strong>Cite the source you actually read.</strong> The Orion error survived because a colophon named a page that never said what we said. If you have not opened it, it does not go in the references.</li>
+      <li><strong>Read your own siblings.</strong> Field Guide No. 1 had the belt right while No. 9 had it wrong. Before shipping, check what the collection has already claimed about the same thing.</li>
+      <li><strong>When one source falls, re-check its relatives.</strong> One 2023 paper on mycorrhizal networks meant re-opening three pieces, not one. Errors travel with their quotes.</li>
+      <li><strong>Distinguish a quote from a paraphrase.</strong> Verbatim and in quotation marks, or in your own words with the idea attributed. Never dress the second as the first.</li>
+      <li><strong>Say what is still open.</strong> &ldquo;This is the leading hypothesis, not a settled result&rdquo; costs one sentence and is the difference between a claim and an overclaim.</li>
+      <li><strong>Log the correction in public, with a date and a name.</strong> A living document that never shows a correction is just a document making a claim about itself.</li>
+      <li><strong>Measure rather than assume.</strong> The same discipline applies to the artifact and not only to its facts — we discovered 44 of our pages printed blank because &ldquo;prints fine&rdquo; had been a belief and not a measurement. A stated principle nobody checks is a wish.</li>
+    </ul>
+
+    <h2 class="section" id="not-your-own-research">Not &ldquo;do your own research&rdquo;</h2>
+
+    <p>There is a version of everything above that curdles, and it is worth naming precisely, because it wears the same clothes. &ldquo;Go to the primary source&rdquo; is one short step from &ldquo;do your own research,&rdquo; a phrase that has been thoroughly captured and now mostly means <em>trust no one who knows more than you</em>.</p>
+
+    <p>The difference is not attitude, it is direction. Tracing a claim <strong>moves toward the evidence</strong> and ends somewhere checkable, with a citation you can hand to someone else. The captured version moves away from it and ends in a place where nothing can be checked at all, because every institution that could check it has been disqualified in advance. One of them can be wrong and be shown to be wrong. The other cannot, which is the whole appeal.</p>
+
+    <p>Debunking has its own failure mode, and it is the mirror image of the one this page is about. Carol Black's essay <em><a href="https://carolblack.org/science-fiction">Science / Fiction</a></em> describes it exactly: the reverse strategy of asserting &ldquo;there is scientific consensus where there is no such thing, that an open, ongoing area of scientific inquiry has reached a settled conclusion,&rdquo; and that anyone disagreeing is &ldquo;as irrational and &lsquo;anti-science&rsquo; as a climate denier.&rdquo; Her worked example is the wave of LEARNING STYLES ARE A MYTH headlines, which take a narrow experimental result about one simplistic model and inflate it into a verdict on how human beings learn. <strong>A debunking can be a misconception.</strong> The <em>Myth!</em> headline is as smooth and as retellable as the thing it debunks, which should make you just as suspicious of it.</p>
+
+    <h3 class="sub" id="the-refusals">The refusals</h3>
+    <div class="refusals">
+      <div class="callout-label">Not:</div>
+      <ul>
+        <li>Not &ldquo;do your own research.&rdquo; Tracing a claim toward its evidence is the opposite move from refusing everyone who has any.</li>
+        <li>Not science literacy as a gate. Nobody owes anybody a reading list before they are allowed to speak about their own life.</li>
+        <li>Not the pleasure of the debunk. If correcting people feels good, that is the appetite from mode six wearing a lab coat.</li>
+        <li>Not contempt for the people who repeat the story. We repeated it. In three pieces.</li>
+        <li>Not a claim to be finished. This page will need corrections, and the ledger it links to has open items in it today.</li>
+        <li>Not certainty as the goal. The goal is knowing which things we have checked and which we haven't, and saying so out loud.</li>
+      </ul>
+    </div>
+
+    <h2 class="section" id="primary-source-for-a-life">The primary source for a life</h2>
+
+    <p>Here is why a fact-checking page belongs in a collection about belonging.</p>
+
+    <p>The deficit story told about neurodivergent and disabled people has exactly the citation structure described above. It is smooth, endlessly retellable, and repeated until repetition passes for evidence. Its hedges have fallen off. Its credit has drifted onto the people who wrote about us rather than the people who are us. And it flatters the teller, which is why it gets so little scrutiny from the people doing the telling.</p>
+
+    <p><em>Autistic people lack empathy</em> is the wood wide web of our field: a claim that grew by citation, and that Damian Milton's <a href="https://stimpunks.org/glossary/double-empathy-problem/">double empathy problem</a> (2012) corrected by going back and looking — the breakdown is mutual, a difference in shared understanding between two parties rather than a deficit in one of them. <em>Neurodiversity was coined by one author in 1998</em> is the credit that drifted, and it took a 2024 paper by six researchers to put a community's name back on its own idea.</p>
+
+    <p class="claim">The primary source for an Autistic life is an Autistic person.</p>
+
+    <p>That is not a metaphor and it is not a softening. It is the same rule as the rest of this page, applied where it costs something. Miranda Fricker's <em>testimonial injustice</em> names what happens when it is broken — a speaker's account is discounted because of who is speaking — and disability studies has had the shorter version since long before the philosophy arrived: <a href="https://stimpunks.org/glossary/nothing-about-us-without-us/">nothing about us without us</a>. Going to the source, here, means asking the person, and then believing the answer enough to let it change what you were going to write.</p>
+
+    <p>Which is precisely what happened with the disgust zine. The correction came from a member of our own community with two decades of direct experience, arriving after publication, contradicting the argument we had just made. That is a primary source. We rewrote the piece.</p>
+
+    <h2 class="section" id="tending">Tending the garden</h2>
+
+    <p><a href="the-garden-and-the-stars-zine.html">No. 18</a> describes this project as a knowledge garden: evergreen, cross-linked, grown rather than filed. Gardens have weeds. The interesting property of a garden is not that nothing unwanted grows in it — it is that <strong>someone walks the beds</strong>, and a bed nobody walks looks perfectly healthy from the path right up until it isn't.</p>
+
+    <p>So the corrections run both ways, which is the <a href="cosmic-connections.html">cosmic connections</a> point. Checking the scenius quote for <a href="five-times-a-crab-zine.html">No. 31</a> found the altered wording in five places on <a href="https://stimpunks.org/">stimpunks.org</a> and in none of them the sentence Eno wrote — an error discovered here that has to be fixed upstream. Fact-checking one of Helen's zines surfaced a citation-year discrepancy that neither site can settle alone. This traffic is the part that makes a web of sites worth more than three sites.</p>
+
+    <p>Two places hold the record. The <a href="https://github.com/Stimpunks/Star-Stuff/blob/main/FACTCHECK.md">fact-check ledger</a> is the working file — every piece, every check, every open item, in the detail needed to re-derive a decision a year later. The <a href="changelog.html">changelog</a> is the public version: what we got wrong, what's right, who caught it. Neither is an embarrassment to be managed. They are the only thing that makes the rest of the collection worth believing.</p>
+
+    <div class="tbl-wrap">
+      <table>
+        <caption>Seventeen receipts · the story, the primary, and where we fixed it</caption>
+        <thead>
+          <tr><th>Everybody knows…</th><th>What the primary says</th><th>Fixed in</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>The forest is wired together</strong>, elders feeding shaded seedlings through the fungal network</td>
+            <td>Root-to-fungus trade is settled. The forest-wide network's prevalence and its seedling benefit are insufficiently supported, and there is <em>no</em> published evidence elders preferentially provision their own offspring (Karst, Jones &amp; Hoeksema, 2023)</td>
+            <td class="where"><a href="underground-zine.html">No. 5</a>, <a href="mycelium-and-rhizome-zine.html">No. 26</a>, <a href="symbioses-field-guide.html">FG 6</a></td>
+          </tr>
+          <tr>
+            <td><strong>Sagan wrote &ldquo;we are star stuff harvesting sunlight&rdquo;</strong></td>
+            <td>Not in <em>Cosmos</em>. Chapter 9 has &ldquo;Farming is simply the methodical harvesting of sunlight…&rdquo; and, separately, &ldquo;We are made of starstuff.&rdquo; The one-liner is a compression of two sentences</td>
+            <td class="where"><a href="eternal-sunshine-zine.html">No. 6</a></td>
+          </tr>
+          <tr>
+            <td><strong>Orion's Belt is a line-of-sight accident</strong>, one star nearly three times farther than the others</td>
+            <td>Those are Hipparcos figures for stars Hipparcos measured badly. VLTI and Gaia put all three at ~1,240–1,260 ly, all in Orion OB1b — siblings from one cloud</td>
+            <td class="where"><a href="the-lines-we-drew-zine.html">No. 9</a></td>
+          </tr>
+          <tr>
+            <td><strong>&ldquo;An inescapable network of mutuality&rdquo; is Baldwin</strong></td>
+            <td>Martin Luther King Jr., <em>Letter from Birmingham Jail</em> (1963). Caught by Helen Edgar</td>
+            <td class="where"><a href="symbioses-field-guide.html">FG 6</a></td>
+          </tr>
+          <tr>
+            <td><strong>Eno defined scenius as &ldquo;the intelligence and the intuition of a whole cultural scene&rdquo;</strong></td>
+            <td>That wording is Kevin Kelly's rendering (2008). Eno's own sentence, in <em>A Year with Swollen Appendices</em> (1996), runs without those articles</td>
+            <td class="where"><a href="five-times-a-crab-zine.html">No. 31</a></td>
+          </tr>
+          <tr>
+            <td><strong>Neurodiversity was coined by Judy Singer in 1998</strong></td>
+            <td>Developed collectively by the online Autistic community; reached print via Harvey Blume in 1997–98, who credited that community (Botha, Chapman, Giwa Onaiwu, Kapp, Stannard Ashley &amp; Walker, 2024). <em>Neurodivergent</em> is Kassiane Asasumasu's (2000)</td>
+            <td class="where"><a href="the-lines-we-drew-zine.html">No. 9</a>, <a href="neurodiversity-field-guide-zine.html">No. 3</a></td>
+          </tr>
+          <tr>
+            <td><strong>The pathology paradigm is Robert Chapman's term</strong></td>
+            <td>Nick Walker coined it — &ldquo;Throw Away the Master's Tools&rdquo; (written 2011, published 2012). Chapman works with it</td>
+            <td class="where"><a href="the-lines-we-drew-zine.html">No. 9</a></td>
+          </tr>
+          <tr>
+            <td><strong>Crip time was coined by Zola and Gill</strong></td>
+            <td>They were among the first to <em>document</em> it in disability studies; per Kafer, neither defined the term</td>
+            <td class="where"><a href="no-universal-now-zine.html">No. 19</a></td>
+          </tr>
+          <tr>
+            <td><strong>Galton coined <em>eugenics</em> in Hereditary Genius (1869)</strong></td>
+            <td><em>Inquiries into Human Faculty and Its Development</em> (1883), in a footnote to the introduction</td>
+            <td class="where"><a href="the-lines-we-drew-zine.html">No. 9</a></td>
+          </tr>
+          <tr>
+            <td><strong>Everything evolves into a crab</strong></td>
+            <td>Carcinization arose at least five times and was <em>lost</em> at least seven; the authors say the reasons &ldquo;remain a mystery&rdquo; and do not know whether it is convergence or deep homology (Wolfe, Luque &amp; Bracken-Grissom, 2021)</td>
+            <td class="where"><a href="five-times-a-crab-zine.html">No. 31</a></td>
+          </tr>
+          <tr>
+            <td><strong>Sharks don't get cancer, and their cartilage might treat ours</strong></td>
+            <td>42 documented tumours across at least 21 chondrichthyan species (Ostrander et al., 2004); the clinical trial found no difference in survival or quality of life (Loprinzi et al., 2005)</td>
+            <td class="where"><a href="skeleton-that-skipped-bone-zine.html">No. 32</a></td>
+          </tr>
+          <tr>
+            <td><strong>The shark's cartilage skeleton is primitive</strong></td>
+            <td><em>Minjinia turgenensis</em> preserves endochondral bone deeper in the tree; the chondrichthyan condition is a <em>secondary loss</em>. Derived, not primitive (Brazeau et al., 2020)</td>
+            <td class="where"><a href="skeleton-that-skipped-bone-zine.html">No. 32</a></td>
+          </tr>
+          <tr>
+            <td><strong>&ldquo;Dirt is matter out of place&rdquo; is Mary Douglas's coinage</strong></td>
+            <td>Unreferenced in <em>Purity and Danger</em> (1966); credited in later editions to Chesterfield without a source. Earliest located instance: an 1853 address by Lord Palmerston</td>
+            <td class="where"><a href="the-ick-is-a-border-zine.html">No. 33</a></td>
+          </tr>
+          <tr>
+            <td><strong>A turtle's shoulder blade sits inside its ribcage</strong></td>
+            <td>The scapula remains <em>anterior</em> to the first dorsal rib; it is enclosed by the shell, which includes dermal bone beyond the ribcage (Lyson &amp; Joyce, 2012). A drafted spread was cut rather than hedged</td>
+            <td class="where"><a href="everywhere-that-turtles-go-zine.html">No. 35</a></td>
+          </tr>
+          <tr>
+            <td><strong>&ldquo;Turtles all the way down&rdquo; is William James</strong></td>
+            <td>James's 1882 essay uses <em>rocks</em>. The turtle version was attached to him in a 1967 doctoral thesis; earliest located printed instance, 1854</td>
+            <td class="where"><a href="everywhere-that-turtles-go-zine.html">No. 35</a></td>
+          </tr>
+          <tr>
+            <td><strong>A dolphin adopted a sperm whale calf, probably after being bullied</strong></td>
+            <td>The paper reports &ldquo;non-agonistic interactions.&rdquo; &ldquo;Adopted&rdquo; is the press's word; the harassment explanation was a suggestion to reporters, not a finding (Wilson &amp; Krause, 2013)</td>
+            <td class="where"><a href="the-layer-we-call-essential-zine.html">No. 36</a></td>
+          </tr>
+          <tr>
+            <td><strong>Disgust is learned</strong> — ours, and wrong as we stated it</td>
+            <td><em>Distaste</em> is present at birth: anencephalic newborns produce the gustofacial response (Steiner, 1973), so it cannot be an opinion. Only ideational <em>disgust</em> is substantially learned. Caught by Helen Edgar; the zine gained a spread</td>
+            <td class="where"><a href="the-ick-is-a-border-zine.html">No. 33</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">Held honestly</div>
+      <p>This is our ledger, not a survey of science communication. These are not the seventeen most important misconceptions in circulation — they are seventeen we can show our full working on, which is a different and much narrower claim. A page about verification has no business asserting anything it hasn't verified.</p>
+      <p>Several rows rest on findings that are themselves live rather than closed. The secondary-loss reading of the chondrichthyan skeleton is where current evidence points, not a settled matter. Rozin and Fallon's is one theory of disgust among several, and that some disgust tracks real pathogen risk is not disputed. Karst and colleagues' paper is an argued position in an active dispute, not a final verdict — <strong>which is exactly the hedge the popular version dropped, so we are not dropping it in the other direction either.</strong></p>
+      <p>And the ledger has open items right now. A Carol Black quotation in <a href="the-universe-runs-on-difference-zine.html">No. 8</a> is marked <em>plausible</em> rather than verified. A Deleuze line reaching <a href="only-in-relation-zine.html">No. 29</a> by way of a paywalled article still needs primary confirmation. Five instances of the altered Eno wording remain live on stimpunks.org. <strong>Publishing the open items is part of the method, not a lapse in it.</strong></p>
+    </div>
+
+    <p>None of this makes us reliable. It makes us <em>checkable</em>, which is the only thing anyone can honestly offer. Read the receipts, follow them back, and tell us where we're wrong — <a href="https://github.com/Stimpunks/Star-Stuff/issues">open an issue</a> or write to us. Two of the corrections on this page exist because somebody did.</p>
+
+    <p>The forest is not wired together the way we wanted it to be. Fungus and root still trade, nine in ten land plants still depend on the arrangement, and the ordinary version is astonishing on its own. That is usually how it goes. <strong>The real thing was rarely the thing that needed improving.</strong></p>
+
+    <a class="start-link" href="changelog.html">Read the corrections log →</a>
+
+    <div class="refs">
+      <strong>Sources.</strong>
+      Karst, J., Jones, M. D., &amp; Hoeksema, J. D. (2023). Positive citation bias and overinterpreted results lead to misinformation on common mycorrhizal networks in forests. <em>Nature Ecology &amp; Evolution</em>, 7, 501–511.<br>
+      Sagan, C. (1980). <em>Cosmos</em>, ch. 9. Random House. (Both real sentences traced in <a href="eternal-sunshine-zine.html">No. 6</a>; the compression is not his.)<br>
+      Oplištilová, A., Brož, M., Hummel, C. A., Harmanec, P., &amp; Barlow, M. (2025). VLTI observations of the Orion Belt stars: I. ε Orionis. <em>Astronomy &amp; Astrophysics</em>, 704, A204. With Gaia DR3 for Mintaka.<br>
+      King, M. L., Jr. (1963). <em>Letter from Birmingham Jail.</em><br>
+      Eno, B. (1996). <em>A Year with Swollen Appendices.</em> Faber. (Letter to Dave Stewart, in the appendices.) Cf. Kelly, K. (2008). <a href="https://kk.org/thetechnium/scenius-or-comm/">Scenius, or Communal Genius</a>. <em>The Technium.</em><br>
+      Botha, M., Chapman, R., Giwa Onaiwu, M., Kapp, S. K., Stannard Ashley, A., &amp; Walker, N. (2024). The neurodiversity concept was developed collectively: An overdue correction on the origins of neurodiversity theory. <em>Autism</em>, 28(6), 1591–1594.<br>
+      Walker, N. (2012/2021). Throw Away the Master's Tools: Liberating Ourselves from the Pathology Paradigm. In <em>Loud Hands: Autistic People, Speaking</em>; collected in <em>Neuroqueer Heresies</em>.<br>
+      Milton, D. (2012). On the ontological status of autism: the &lsquo;double empathy problem&rsquo;. <em>Disability &amp; Society</em>, 27(6), 883–887.<br>
+      Fricker, M. (2007). <em>Epistemic Injustice: Power and the Ethics of Knowing.</em> Oxford University Press.<br>
+      Charlton, J. I. (1998). <em>Nothing About Us Without Us: Disability Oppression and Empowerment.</em> University of California Press.<br>
+      Galton, F. (1883). <em>Inquiries into Human Faculty and Its Development.</em> Macmillan. (The coinage is in a footnote to the introduction.)<br>
+      Wolfe, J. M., Luque, J., &amp; Bracken-Grissom, H. D. (2021). How to become a crab: Phenotypic constraints on a recurring body plan. <em>BioEssays</em>, 43(5), 2100020.<br>
+      Brazeau, M. D., et al. (2020). Endochondral bone in an Early Devonian &lsquo;placoderm&rsquo; from Mongolia. <em>Nature Ecology &amp; Evolution</em>, 4, 1477–1484.<br>
+      Ostrander, G. K., Cheng, K. C., Wolf, J. C., &amp; Wolfe, M. J. (2004). Shark cartilage, cancer and the growing threat of pseudoscience. <em>Cancer Research</em>, 64(23), 8485–8491. Loprinzi, C. L., et al. (2005). Evaluation of shark cartilage in patients with advanced cancer. <em>Cancer</em>, 104(1), 176–182.<br>
+      Lyson, T. R., &amp; Joyce, W. G. (2012). Evolution of the turtle bauplan: the topological relationship of the scapula relative to the ribcage. <em>Biology Letters</em>, 8(6), 1028–1031. Lyson, T. R., et al. (2016). Fossorial origin of the turtle shell. <em>Current Biology</em>, 26(14), 1887–1894.<br>
+      Wilson, A. D. M., &amp; Krause, J. (2013). Repeated non-agonistic interactions between a bottlenose dolphin and sperm whales in Azorean waters. <em>Aquatic Mammals</em>, 39(1), 89–96.<br>
+      Rozin, P., &amp; Fallon, A. E. (1987). A perspective on disgust. <em>Psychological Review</em>, 94(1), 23–41. Steiner, J. E. (1973). The gustofacial response: observation on normal and anencephalic newborn infants.<br>
+      Black, C. <a href="https://carolblack.org/science-fiction">Science / Fiction: &lsquo;Evidence-based&rsquo; education, scientific racism, &amp; how learning styles became a myth</a>. carolblack.org. (Quoted verbatim; the page carries no publication date.)<br>
+      <strong>On the title.</strong> &ldquo;Too good to check&rdquo; is a journalism maxim of unestablished origin, widely repeated and variously attributed. We use it unattributed, which is the only honest option available and a small demonstration of mode one.<br>
+      <strong>Full working</strong> for every row: the <a href="https://github.com/Stimpunks/Star-Stuff/blob/main/FACTCHECK.md">fact-check ledger</a>, keyed by piece number, and the public <a href="changelog.html">changelog</a>.
+    </div>
+
+    <div class="colophon-footer">
+      <a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks Foundation</a> × <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a> · <a href="https://starstuff.earth">starstuff.earth</a> · <a href="about.html">About</a> · <a href="changelog.html">Changelog</a> · <a href="https://stimpunks.org">stimpunks.org</a> · <a href="https://morerealms.com">morerealms.com</a><br>
+      Corrections credited to <strong>Helen Edgar</strong> (Baldwin/King; distaste and disgust) · Print freely · Share freely · <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> · L★S · Checkable, not infallible
+    </div>
+
+  </div>
+
+</div><!-- /doc-shell -->
+
+</body>
+</html>
