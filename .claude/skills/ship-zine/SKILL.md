@@ -29,12 +29,25 @@ Ryan's shorthand for "finish and publish." Scope depends on what changed.
    ```
 
    Commit the regenerated JSON with the rest. `--check` exits non-zero if it's stale.
-5. **Commit & push.** `git add` the touched files; commit with a descriptive heredoc message;
+6. **Measure contrast, on screen and on paper.** Don't assert that it prints — measure it:
+
+   ```bash
+   node tools/check-contrast.mjs --check <the-changed-pages>.html
+   ```
+
+   Composites every text element — and every SVG label, since `color` never reaches `fill` —
+   against its real background, on screen and under print emulation. `--check` exits non-zero on
+   any failure. Run it on the changed pages at minimum; bare, it sweeps the whole repo. If it
+   reports a failure, fix the page, or say plainly in the report that you're shipping a known one.
+   `CLAUDE.md` → *Contrast & print checking* explains each tier of the output.
+7. **Commit & push.** `git add` the touched files; commit with a descriptive heredoc message;
    `git push`.
 
 ## Small edit (fast path)
 Fact-check the touched claims → log it in `changelog.html` if it changes what a piece *claims*
 → **rebuild the search index if any page text changed** (`node tools/build-search-index.mjs`)
+→ **check contrast if you touched a color, an opacity, or an SVG label**
+(`node tools/check-contrast.mjs --check <page>.html`)
 → `git add` → commit → `git push`. Don't re-propose or widen scope.
 
 ## Changelog

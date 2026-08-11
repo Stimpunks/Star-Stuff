@@ -225,6 +225,59 @@ tracking — the query never leaves the reader's browser.
 - Every page reaches search through the `.ss-nav-search` pill in the nav cluster; `index.html`
   has no `.ss-nav`, so it carries its own `.masthead-search` link.
 
+## Contrast & print checking (`tools/check-contrast.mjs`)
+
+The second browser harness in `tools/`, and the thing that makes *Print is not optional* and
+*Verify, don't assume* (below) enforceable instead of re-derived. It was written three times as a
+throwaway scratchpad script before it was committed; a check that has to be rebuilt from scratch
+is a check nobody runs.
+
+```bash
+node tools/check-contrast.mjs                      # every *.html in the repo root
+node tools/check-contrast.mjs bone-song-zine.html  # just these
+node tools/check-contrast.mjs --check              # exit non-zero on any failure
+```
+
+- **`--check` is the gating mode**, matching `build-search-index.mjs`'s convention — that's the
+  form for the `ship-zine` routine. A plain run always exits 0 so an informational pass doesn't
+  read as a crash.
+- **It prints a line per page, pass or fail**, with the count of elements actually measured. Same
+  lesson as the search-index coverage percentage: when the only output is *it worked*, a page that
+  measured 8% of itself is indistinguishable from a clean one.
+- **Text is composited against its real ancestor background stack**, not against the token you
+  assume applies — a card at `rgba(15,15,42,0.6)` inside a panel inside the void is none of those
+  three colors. Element `opacity` folds into the text alpha, because opacity is what the reader
+  sees. Thresholds are WCAG AA: 4.5:1, or 3.0:1 at ≥24px (≥18.66px when bold).
+- **SVG `text`/`tspan` fills get their own pass**, because `color` never reaches `fill` and the CSS
+  pass is structurally blind to diagrams — 226 failing labels across 27 pages hid there until
+  commit `bf317cd`. Two things that pass encodes, both near-misses in that commit:
+  - **Composite the shapes actually painted behind the glyphs.** Labels are often dark ink on a
+    bright accent disc, which is correct (`elements-field-guide.html` had it right first). A probe
+    that only knew the page ground called all 8 of that page's element symbols 1.05:1, and
+    "fixing" them would have erased every symbol.
+  - **Only shapes earlier in document order count** (SVG paints in order), and only
+    `rect`/`circle`/`ellipse` — a `<path>` bounding box claims area the path never paints, so
+    trusting it would invent backgrounds and mask real failures.
+- **The print pass models paper, not print emulation.** `Emulation.setEmulatedMedia` applies the
+  print stylesheet but still paints backgrounds; a real reader's sheet has none, which is the whole
+  reason 44 pages printed blank. So the gating print number composites against the bare white sheet,
+  honoring a background only where the page asked with `print-color-adjust: exact`. SVG fills are
+  content and do print, so diagram shapes still count. The other way round — backgrounds painted,
+  as if the reader ticked the box — is reported as a separate `+bg` warning tier, which is where a
+  page hardcoding a dark background instead of aliasing `--sp-card` shows up.
+- **Screen measurement reveals every spread and entry first** (`.spread.active`, `.entry.open`),
+  then *undoes it* before the print pass. Without the reveal, a 12-spread zine reports on spread 1
+  and looks spotless. Without the undo, the tool measures a state no reader ever gets: the print
+  stylesheet reveals `.spread` and `.field-grid .entry-notes` itself, and nothing adds `.open`
+  when printing — leaving the class on invented 257 print failures on `elements-field-guide.html`
+  alone.
+- **What it cannot measure, it says.** Gradient-clipped headings (`background-clip: text`) and
+  labels over a gradient have no single pair of colors to compare, and are listed for checking by
+  eye rather than skipped silently. Disabled prev/next buttons are exempt under WCAG 1.4.3
+  (inactive UI components) — exempt *and counted*, so the exemption stays visible.
+- **It is a local dev tool. Netlify does not run it**, same as the search index. Requires Chrome
+  and Node 22+.
+
 ## Design system
 
 - **Font URLs must be verified, not assumed.** Atkinson Hyperlegible Next publishes weights
@@ -262,9 +315,9 @@ tracking — the query never leaves the reader's browser.
   (`--star-white: var(--sp-white-soft)`) rather than hardcoding hexes. If a page hardcodes colors,
   it needs its own small `@media print` override — see the ones in `bone-song-zine.html` and
   `ls-broadside.html`. SVG diagrams paint with `fill`/`stroke`, which `color` never reaches, and are
-  handled separately in the shared sheet. **Verify, don't assume:** emulate print media and check
-  computed text color against white, or render the sheet and sample pixels. A stated principle
-  nobody measures is a wish. Full account: `design.html`.
+  handled separately in the shared sheet. **Verify, don't assume:** run
+  `node tools/check-contrast.mjs --check`, which measures both media for you — see *Contrast &
+  print checking* above. A stated principle nobody measures is a wish. Full account: `design.html`.
 
 ## Voice & editorial conventions
 
