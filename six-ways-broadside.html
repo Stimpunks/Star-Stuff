@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0a0a14">
+<link rel="canonical" href="https://starstuff.earth/six-ways-broadside.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta name="description" content="Six Ways a Fact Goes Wrong — a two-sided, print-ready single sheet for checking a claim. The six failure modes and their tells on the face; the habits, five of our own published errors, and the refusals on the reverse. Risograph-inspired, pin it above a desk. Companion to the essay Too Good to Check.">
+<!-- Open Graph / link unfurl -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Star Stuff · Stimpunks Foundation × More Realms">
+<meta property="og:url" content="https://starstuff.earth/six-ways-broadside.html">
+<meta property="og:title" content="Six Ways a Fact Goes Wrong — Broadside">
+<meta property="og:description" content="A two-sided single sheet for checking a claim. Six failure modes and their tells on the face; the habits, five of our own errors, and the refusals on the reverse. Print-ready.">
+<meta property="og:image" content="https://starstuff.earth/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A rainbow-hued cosmic image — we are all made of star stuff.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Six Ways a Fact Goes Wrong — Broadside">
+<meta name="twitter:description" content="A field card for checking a claim. Six failure modes, their tells, and what to do instead. Two-sided single sheet, print-ready.">
+<meta name="twitter:image" content="https://starstuff.earth/og-card.jpg">
+<title>Six Ways a Fact Goes Wrong — Broadside — Stimpunks × More Realms</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Fraunces:ital,opsz,wght@0,9..144,200..900;1,9..144,200..900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="starstuff.css">
+<style>
+  :root {
+    --ink:       #0e0c1a;
+    --paper:     #f5f0e8;
+    --paper-dim: #e8e2d0;
+    --riso-gold: #e8a820;
+    --riso-blue: #1a3a8f;
+    --accent:    #c8380a;
+    /* Solid dim for the dark verso — 4.69:1 on --ink. Same value ls-broadside
+       landed on after its alpha-faded text failed AA; alpha-faded body text is
+       the one thing this design system explicitly refuses. */
+    --verso-dim: #7f7c7f;
+  }
+
+  /* Colour discipline for this sheet, worked out before the type was set:
+     --riso-gold is 1.84:1 on cream, so on the face it is a REGISTRATION BAR
+     AND RULE ONLY, never text. Face text is --ink (17.1:1), --riso-blue
+     (9.0:1), or --accent (4.6:1 — used only at large sizes, where the bar is
+     3.0:1, so it keeps real headroom). On the dark verso the gold inverts to
+     9.3:1 and carries text happily. */
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  .face a, .verso a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+
+  body {
+    background: #2a2830;
+    font-family: 'Space Mono', monospace;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1rem 3rem;
+  }
+
+  /* ── CONTROLS ── */
+  .controls { display: flex; gap: 0.75rem; margin-bottom: 1.5rem; align-items: center; flex-wrap: wrap; justify-content: center; }
+  .ctrl-btn {
+    background: none;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.6);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 0.5rem 1.1rem;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .ctrl-btn:hover { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.9); border-color: rgba(255,255,255,0.4); }
+  .ctrl-btn.active { background: rgba(255,255,255,0.12); color: #fff; border-color: rgba(255,255,255,0.5); }
+  .ctrl-sep { width: 1px; height: 20px; background: rgba(255,255,255,0.15); }
+  /* Was rgba(255,255,255,0.3) — 2.66:1 on the body ground. Solid, 4.64:1;
+     the same value ls-broadside settled on for its print hint. */
+  .ctrl-label { font-size: 0.5rem; letter-spacing: 0.25em; text-transform: uppercase; color: #929195; }
+
+  /* ── SHEET ── */
+  .broadside { width: min(680px, 100%); position: relative; }
+  .side { display: none; animation: reveal 0.4s ease forwards; }
+  .side.visible { display: block; }
+  @keyframes reveal { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ── SIDE A: THE FACE ── */
+  .face { background: var(--paper); position: relative; overflow: hidden; }
+
+  /* Risograph halftone */
+  .face::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(14,12,26,0.06) 1px, transparent 1px);
+    background-size: 4px 4px;
+    pointer-events: none;
+    z-index: 10;
+  }
+  /* Registration bleed */
+  .face::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 6px;
+    background: var(--accent);
+    opacity: 0.85;
+    z-index: 5;
+  }
+
+  .face-inner { padding: 3.5rem 3rem 3rem; position: relative; z-index: 2; }
+
+  .face-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--ink);
+  }
+  .face-org { font-size: 0.55rem; letter-spacing: 0.4em; text-transform: uppercase; color: var(--ink); line-height: 1.8; }
+  .face-org strong { display: block; font-size: 0.7rem; letter-spacing: 0.3em; }
+  .face-riso-mark { display: flex; gap: 4px; align-items: center; padding-top: 2px; }
+  .riso-dot { width: 12px; height: 12px; border-radius: 50%; opacity: 0.75; }
+
+  .face-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 800;
+    font-size: clamp(2.4rem, 8vw, 4rem);
+    line-height: 0.95;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+    margin: 0.6rem 0 0.9rem;
+    text-transform: uppercase;
+  }
+  .face-title em { font-style: normal; color: var(--accent); }
+
+  .face-standfirst {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(0.95rem, 2.6vw, 1.2rem);
+    color: var(--ink);
+    line-height: 1.45;
+    max-width: 30rem;
+  }
+
+  .face-rule { height: 3px; background: var(--ink); margin: 1.6rem 0 0; }
+  .face-rule-gold { height: 1px; background: var(--riso-gold); margin-top: -1px; opacity: 0.9; }
+
+  /* Six modes */
+  .modes { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem 2.2rem; margin-top: 1.6rem; }
+
+  .mode { border-left: 3px solid var(--riso-blue); padding-left: 0.85rem; }
+  .mode:nth-child(6) { border-left-color: var(--accent); }
+
+  .mode-num {
+    font-family: 'Fraunces', serif;
+    font-weight: 800;
+    font-size: 1.5rem;
+    line-height: 1;
+    color: var(--accent);
+    display: block;
+  }
+  .mode-name {
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin: 0.3rem 0 0.45rem;
+    line-height: 1.5;
+  }
+  .mode-desc {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 0.78rem;
+    line-height: 1.5;
+    color: var(--ink);
+  }
+  .mode-tell, .mode-do { font-size: 0.6rem; line-height: 1.55; margin-top: 0.5rem; color: var(--ink); }
+  .mode-tell b, .mode-do b {
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--riso-blue);
+    font-size: 0.55rem;
+  }
+
+  .face-footer {
+    margin-top: 2.2rem;
+    padding-top: 1rem;
+    border-top: 2px solid var(--ink);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 1.5rem;
+  }
+  .face-footer-left { font-size: 0.5rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--ink); opacity: 0.7; line-height: 1.9; }
+  .face-footer-right {
+    font-family: 'Fraunces', serif;
+    font-weight: 800;
+    font-size: 1.15rem;
+    color: var(--accent);
+    text-align: right;
+    line-height: 1.2;
+    white-space: nowrap;
+  }
+
+  /* Edge stamp. Uses writing-mode rather than rotate(90deg): a rotated
+     white-space:nowrap box keeps its wide layout box and spins about its own
+     centre, so `right: 0.9rem` lands the text down the middle of the sheet —
+     it ran straight through the 02/04 column on the first pass. In vertical-rl
+     the box is genuinely narrow and tall, so it sits in the gutter as intended. */
+  .face-side-text {
+    position: absolute;
+    right: 0.7rem;
+    top: 50%;
+    transform: translateY(-50%);
+    writing-mode: vertical-rl;
+    font-size: 0.4rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    /* Solid, not var(--ink) at low opacity: alpha-faded text is the one thing
+       this design system explicitly refuses, and 0.32 measured 2.1:1 on cream
+       and 1.98:1 on paper. #63626a is 4.87:1 on cream and 5.52:1 on white. */
+    color: #63626a;
+    white-space: nowrap;
+    z-index: 3;
+  }
+
+  /* ── SIDE B: THE VERSO ── */
+  .verso { background: var(--ink); position: relative; overflow: hidden; }
+  .verso::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 6px; background: var(--riso-gold); opacity: 0.85; z-index: 5; }
+  .verso::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 5px 5px;
+    pointer-events: none;
+    z-index: 1;
+  }
+  .verso-inner { padding: 3.5rem 3rem 3rem; position: relative; z-index: 2; }
+
+  .verso-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 1.8rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(245,240,232,0.18);
+    gap: 1rem;
+  }
+  .verso-label { font-size: 0.55rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--verso-dim); line-height: 1.9; }
+  .verso-mark { font-family: 'Fraunces', serif; font-weight: 800; font-size: 1.3rem; color: var(--riso-gold); white-space: nowrap; }
+
+  .verso-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem 2.6rem; }
+
+  .col-head {
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--riso-gold);
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.8rem;
+    border-bottom: 1px solid rgba(232,168,32,0.35);
+  }
+
+  .habit { margin-bottom: 0.75rem; }
+  .habit b { display: block; font-size: 0.66rem; font-weight: 700; color: #f5f0e8; line-height: 1.5; }
+  .habit span { font-family: 'Fraunces', serif; font-weight: 300; font-size: 0.74rem; line-height: 1.5; color: #d9d4cc; display: block; margin-top: 0.1rem; }
+
+  .receipt { margin-bottom: 0.85rem; }
+  .receipt b { display: block; font-family: 'Fraunces', serif; font-style: italic; font-weight: 400; font-size: 0.78rem; color: var(--riso-gold); line-height: 1.45; }
+  .receipt span { font-size: 0.62rem; line-height: 1.6; color: #d9d4cc; display: block; margin-top: 0.2rem; }
+
+  .verso-refusals { margin-top: 1.6rem; padding-top: 1.2rem; border-top: 1px solid rgba(245,240,232,0.18); }
+  .verso-refusals .col-head { color: #f5f0e8; border-bottom-color: rgba(245,240,232,0.25); }
+  .refusal { font-size: 0.64rem; line-height: 1.6; color: #d9d4cc; margin-top: 0.45rem; padding-left: 1.2rem; position: relative; }
+  .refusal::before { content: '✕'; position: absolute; left: 0; color: var(--riso-gold); font-weight: 700; }
+
+  .verso-close {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.45;
+    color: #f5f0e8;
+    margin-top: 1.4rem;
+    padding-left: 1rem;
+    border-left: 3px solid var(--riso-gold);
+  }
+
+  .verso-footer {
+    margin-top: 1.8rem;
+    padding-top: 1.2rem;
+    border-top: 1px solid rgba(245,240,232,0.18);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 1.5rem;
+  }
+  .verso-footer-text { font-family: 'Fraunces', serif; font-style: italic; font-weight: 300; font-size: 0.74rem; color: var(--verso-dim); line-height: 1.7; max-width: 340px; }
+  .verso-footer-meta { font-size: 0.48rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--verso-dim); text-align: right; line-height: 2; }
+
+  .print-hint { margin-top: 1.2rem; font-size: 0.48rem; letter-spacing: 0.2em; text-transform: uppercase; color: #929195; text-align: center; }
+
+  /* ── PRINT ── */
+  @media print {
+    body { background: none; padding: 0; }
+    .controls { display: none; }
+    .broadside { width: 100%; }
+    .side { display: block !important; }
+    .face { page-break-after: always; }
+    .print-hint { display: none; }
+
+    /* The face prints as designed — dark ink on cream. The verso does not: it is
+       cream type on near-black, and with background graphics off (the browser
+       default) the whole reverse goes to paper invisible. Invert it, exactly as
+       ls-broadside.html does. */
+    .verso { background: none !important; }
+    .verso::before, .verso::after { display: none !important; }
+    .verso-mark, .verso-close, .habit b, .receipt b { color: #111111 !important; }
+    .habit span, .receipt span, .refusal { color: #222222 !important; }
+    .col-head { color: #111111 !important; border-bottom-color: #999999 !important; }
+    .verso-refusals .col-head { color: #111111 !important; }
+    .verso-label, .verso-footer-text, .verso-footer-meta { color: #444444 !important; }
+    .refusal::before { color: #111111 !important; }
+    .verso-close { border-left-color: #444444 !important; }
+    .verso-header, .verso-refusals, .verso-footer { border-color: #999999 !important; }
+    .mode, .habit, .receipt, .refusal { page-break-inside: avoid; break-inside: avoid; }
+  }
+
+  @media (max-width: 560px) {
+    .modes { grid-template-columns: 1fr; gap: 1.2rem; }
+    .verso-cols { grid-template-columns: 1fr; gap: 1.4rem; }
+    .face-inner, .verso-inner { padding: 2rem 1.5rem 1.5rem; }
+    .face-footer, .verso-footer { flex-direction: column; align-items: flex-start; gap: 0.8rem; }
+    .face-footer-right, .verso-footer-meta { text-align: left; }
+  }
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Six Ways a Fact Goes Wrong — Broadside","description":"A two-sided, print-ready single sheet for checking a claim: six failure modes and their tells on the face; the habits, five of our own published errors, and the refusals on the reverse. Companion to the essay Too Good to Check.","image":"https://starstuff.earth/og-card.jpg","url":"https://starstuff.earth/six-ways-broadside.html","mainEntityOfPage":"https://starstuff.earth/six-ways-broadside.html","author":{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/"},"publisher":[{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/","logo":{"@type":"ImageObject","url":"https://starstuff.earth/og-card.jpg"}},{"@type":"Organization","name":"More Realms","url":"https://morerealms.com/"}],"isPartOf":{"@type":"WebSite","name":"Star Stuff","url":"https://starstuff.earth/"},"license":"https://creativecommons.org/licenses/by-sa/4.0/"}</script>
+</head>
+<body>
+
+<nav class="ss-nav" style="--nav-accent:#f472b6; max-width:680px;" aria-label="Star Stuff collection">
+  <span class="ss-nav-home-group">
+    <a class="ss-nav-home" href="index.html"><span class="ss-star" aria-hidden="true">★</span> stuff</a>
+    <a class="ss-nav-about" href="about.html">about</a>
+    <a class="ss-nav-search" href="search.html">search</a>
+  </span>
+  <span class="ss-nav-links">
+    <a class="ss-nav-prev" href="ls-broadside.html"><span class="ss-nav-arrow" aria-hidden="true">&lsaquo;</span> <span class="ss-nav-label">L★S Broadside</span></a>
+    <a class="ss-nav-next" href="shorthand-evolution.html"><span class="ss-nav-label">Shorthand</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
+  </span>
+</nav>
+
+<div class="controls">
+  <span class="ctrl-label">Side</span>
+  <button class="ctrl-btn active" id="btn-a" onclick="showSide('a')">A — The Six</button>
+  <button class="ctrl-btn" id="btn-b" onclick="showSide('b')">B — What to Do</button>
+  <div class="ctrl-sep"></div>
+  <button class="ctrl-btn" onclick="window.print()">Print ↗</button>
+</div>
+
+<div class="broadside">
+
+  <!-- ════ SIDE A: THE SIX ════ -->
+  <div class="side visible" id="side-a">
+    <div class="face">
+      <div class="face-side-text">Stimpunks Foundation × More Realms · Open Edition · Print Freely · Share Freely</div>
+
+      <div class="face-inner">
+
+        <div class="face-header">
+          <div class="face-org">
+            <strong>Stimpunks Foundation × More Realms</strong>
+            a field card for checking a claim<br>
+            broadside · open edition
+          </div>
+          <div class="face-riso-mark">
+            <div class="riso-dot" style="background:#c8380a;"></div>
+            <div class="riso-dot" style="background:#1a3a8f;"></div>
+            <div class="riso-dot" style="background:#0e0c1a;"></div>
+          </div>
+        </div>
+
+        <h1 class="face-title">Six Ways<br>a Fact <em>Goes Wrong</em></h1>
+
+        <p class="face-standfirst">A story that fits gets less scrutiny, which is exactly when it needs more. These are the six shapes the failure takes, and the tell that gives each one away.</p>
+
+        <div class="face-rule"></div>
+        <div class="face-rule-gold"></div>
+
+        <div class="modes">
+
+          <div class="mode">
+            <span class="mode-num">01</span>
+            <div class="mode-name">The quote nobody said</div>
+            <p class="mode-desc">The most quotable version of a thought is rarely the one a person produced. What circulates is a compression — true in spirit, absent from the text.</p>
+            <p class="mode-tell"><b>Tell</b> More quotable than anything anyone says out loud.</p>
+            <p class="mode-do"><b>Do</b> Search the actual book.</p>
+          </div>
+
+          <div class="mode">
+            <span class="mode-num">02</span>
+            <div class="mode-name">The number that went stale</div>
+            <p class="mode-desc">Measurements get superseded. The old value keeps circulating in museum copy and popular science for decades with nothing marking it expired.</p>
+            <p class="mode-tell"><b>Tell</b> Repeated everywhere, dated nowhere.</p>
+            <p class="mode-do"><b>Do</b> Check the source you cited gives your number.</p>
+          </div>
+
+          <div class="mode">
+            <span class="mode-num">03</span>
+            <div class="mode-name">The story told backwards</div>
+            <p class="mode-desc">The facts survive the retelling and the emphasis doesn't, so the meaning inverts while every single sentence stays defensible.</p>
+            <p class="mode-tell"><b>Tell</b> The paper's own hedge is missing.</p>
+            <p class="mode-do"><b>Do</b> Read what the authors said they don't know.</p>
+          </div>
+
+          <div class="mode">
+            <span class="mode-num">04</span>
+            <div class="mode-name">The credit that drifted</div>
+            <p class="mode-desc">Attribution decays toward tidiness. A collective becomes a founder, a documenter becomes a coiner, and the citable name absorbs everyone around it.</p>
+            <p class="mode-tell"><b>Tell</b> One name where a community was.</p>
+            <p class="mode-do"><b>Do</b> Find the first printed instance, not the famous one.</p>
+          </div>
+
+          <div class="mode">
+            <span class="mode-num">05</span>
+            <div class="mode-name">The press release, not the paper</div>
+            <p class="mode-desc">Between the finding and the public sits a layer whose job is to make it interesting. Its output isn't a lie. It's a livelier verb.</p>
+            <p class="mode-tell"><b>Tell</b> The vivid verb is doing the work.</p>
+            <p class="mode-do"><b>Do</b> Open the abstract. See which word the authors chose.</p>
+          </div>
+
+          <div class="mode">
+            <span class="mode-num">06</span>
+            <div class="mode-name">The finding that flatters you</div>
+            <p class="mode-desc">The other five are accidents. This one is an appetite — and it is the only one that will find you rather than the other way round.</p>
+            <p class="mode-tell"><b>Tell</b> You wanted it true before you read it.</p>
+            <p class="mode-do"><b>Do</b> Slow down here. Don't speed up.</p>
+          </div>
+
+        </div>
+
+        <div class="face-footer">
+          <div class="face-footer-left">
+            the argument, seventeen worked corrections<br>
+            and every source: starstuff.earth/too-good-to-check<br>
+            print freely · share freely · <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
+          </div>
+          <div class="face-footer-right">See<br>reverse</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SIDE B: WHAT TO DO ════ -->
+  <div class="side" id="side-b">
+    <div class="verso">
+      <div class="verso-inner">
+
+        <div class="verso-header">
+          <div class="verso-label">What to do instead · reverse<br>Stimpunks × More Realms</div>
+          <div class="verso-mark">L★S</div>
+        </div>
+
+        <div class="verso-cols">
+
+          <div>
+            <div class="col-head">The habits</div>
+
+            <div class="habit"><b>Trace it to the primary.</b><span>The book, the paper, the talk. Aggregators and summaries are leads, not citations.</span></div>
+            <div class="habit"><b>Cite the source you actually read.</b><span>If you haven't opened it, it doesn't go in the references.</span></div>
+            <div class="habit"><b>Read your own siblings.</b><span>Check what you've already claimed about the same thing.</span></div>
+            <div class="habit"><b>When one source falls, re-check its relatives.</b><span>Errors travel with their quotes.</span></div>
+            <div class="habit"><b>Quote or paraphrase — never dress one as the other.</b><span>Verbatim and in marks, or in your own words with the idea attributed.</span></div>
+            <div class="habit"><b>Say what's still open.</b><span>&ldquo;Leading hypothesis, not a settled result&rdquo; costs one sentence.</span></div>
+            <div class="habit"><b>Log the correction in public.</b><span>With a date, and the name of whoever caught it.</span></div>
+            <div class="habit"><b>Measure rather than assume.</b><span>A stated principle nobody checks is a wish.</span></div>
+          </div>
+
+          <div>
+            <div class="col-head">Five we got wrong</div>
+
+            <div class="receipt"><b>The forest is wired together.</b><span>Elders feeding shaded seedlings through the fungal network — in three of our pieces. Karst, Jones &amp; Hoeksema (2023) find <em>no</em> published evidence for the elder-feeds-offspring claim. Mode 06.</span></div>
+            <div class="receipt"><b>&ldquo;We are star stuff harvesting sunlight.&rdquo;</b><span>Sagan never wrote it. Two real sentences in <em>Cosmos</em> ch. 9, welded into a better one. Mode 01.</span></div>
+            <div class="receipt"><b>Orion's Belt is scattered in depth.</b><span>Hipparcos figures for stars Hipparcos measured badly. VLTI and Gaia put all three at one depth — siblings from one cloud. Mode 02.</span></div>
+            <div class="receipt"><b>Neurodiversity was coined by one author in 1998.</b><span>Developed collectively by the online Autistic community; reached print via Harvey Blume, who said so (Botha et al., 2024). Mode 04.</span></div>
+            <div class="receipt"><b>Disgust is learned.</b><span>Ours, and wrong as we stated it. Distaste is present at birth. Caught by <strong>Helen Edgar</strong>; the zine gained a spread. Mode 06.</span></div>
+          </div>
+
+        </div>
+
+        <div class="verso-refusals">
+          <div class="col-head">Not:</div>
+          <p class="refusal">Not &ldquo;do your own research.&rdquo; Tracing a claim moves <em>toward</em> the evidence and ends somewhere checkable. That phrase moves away from it and ends where nothing can be checked at all.</p>
+          <p class="refusal">Not science literacy as a gate. Nobody owes anybody a reading list before they're allowed to speak about their own life.</p>
+          <p class="refusal">Not the pleasure of the debunk. A <em>Myth!</em> headline is exactly as smooth and retellable as the thing it debunks.</p>
+          <p class="refusal">Not contempt for the people who repeat the story. We repeated it. In three pieces.</p>
+        </div>
+
+        <p class="verso-close">The real thing was rarely the thing that needed improving.</p>
+
+        <div class="verso-footer">
+          <div class="verso-footer-text">
+            The face and this reverse condense the essay <em>Too Good to Check</em>, which carries seventeen worked corrections, the full argument, and every source — including the ones still open.
+          </div>
+          <div class="verso-footer-meta">
+            Stimpunks Foundation × More Realms<br>
+            Broadside · Open edition<br>
+            starstuff.earth/too-good-to-check<br>
+            print freely · share freely · <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<p class="print-hint">Print both sides · pin it up · share freely</p>
+
+<script>
+  function showSide(side) {
+    document.getElementById('side-a').classList.toggle('visible', side === 'a');
+    document.getElementById('side-b').classList.toggle('visible', side === 'b');
+    document.getElementById('btn-a').classList.toggle('active', side === 'a');
+    document.getElementById('btn-b').classList.toggle('active', side === 'b');
+  }
+</script>
+</body>
+</html>
