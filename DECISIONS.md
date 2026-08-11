@@ -13,6 +13,32 @@ only tracks **choices** — what we decided, and what we still have to.
 Decisions still to make. Move to **Settled** with a date once resolved.
 
 - _(collections + numbering resolved 2026-08-11 — see Settled)_
+- **No. 37 *The Cloud Phase* — blocked on asking Helen, 2026-08-11.** Proposed and scoped; not
+  built. Everything below is decided *except* the credit, which needs her word first.
+  - **Direction settled.** Title **The Cloud Phase** — astronomy's own term for the last stage of a
+    supernova remnant (Romano, Behrendt & Burkert, *ApJ* 965, 168, 2024), which already reads as a
+    life stage. Collection **Star Stuff** (the fact carries the claim). Nine spreads.
+  - **The spine is Murray (2011), *ApJ* 729, 133**, not the 2024 paper: εGMC 0.002–0.2,
+    luminosity-weighted mean **0.08**; GMC lifetimes **27 ± 12 Myr**. So ~92% of a molecular cloud
+    never becomes a star, and the cloud stage lasts tens of millions of years. *The refusal to
+    rush the metaphor to resolution is not editorial restraint here — it is what the data says.*
+    The in-between is the majority condition and the long one.
+  - **Romano et al. is a marked proposal, not the spine.** It is the best image in the piece — the
+    remnant's cold shell *implodes back inward* and settles into a chemically enriched cloud of
+    10³–10⁴ M☉, "an attractive, novel pathway for supernova induced star and planet formation" —
+    and it is a 2024 simulation, not consensus. Hedge it in place on spread 2, wood-wide-web style.
+    If it is ever overturned, the zine's centre does not move.
+  - **Ask Helen before building.** Two of the twenty constellations in *My Monotropic Galaxy*
+    (More Realms, 2026) are load-bearing here — **Supernova Remnant** (#2, explicitly the *after*
+    of burnout) and **Emergence Point** (#20) — and she already has **two nebulae** in that index,
+    Tunnelling Nebula (#4) and Limerence Nebula (#18). A nebula zine walks into her naming, not
+    near it. Default credit is house-authored **"after Helen Edgar"** (the No. 29 shape); if she
+    would rather write it, it becomes a guest zine in her voice and spreads 6–8 change.
+  - **Do not re-argue No. 20 *The Same Water*.** It already owns weather-bodies, fluid adaptation,
+    and "capacity is a state, not a trait" — and the Jeans instability. No. 37's distinct territory
+    is **duration**: the in-between as the majority state, not a threshold crossing.
+  - **Spent elsewhere, don't repeat:** "failed star" (Field Guide No. 5, brown dwarfs as the
+    named-for-a-lack case); SN 1006 as seed-head (No. 18); Orion as nursery (Constellation FG).
 - **Promote "Science and wonder and the beautiful diversity of being" to the masthead too?**
   Shipped 2026-08-11 as the **Collections section lede** on `index.html`, where its three clauses
   name the three largest collections. Still open whether it also belongs in `.masthead-sub`.
