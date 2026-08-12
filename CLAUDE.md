@@ -114,11 +114,14 @@ The central phrase compresses through registers, each with a use:
   and structure spreads as `.spread` (with a `.spread.active`), each with a `.spread-footer`
   containing a `.spread-footer-right` page counter. IDs run `spread-1..N` in document order.
 
-### Collections (eight pages, on two different axes)
+### Collections (eleven pages, in three kinds)
 
-Eight **collection** landing pages (`collection-*.html`), each linked from the `index.html`
-*Collections* section. The five register collections were settled 2026-08-11 — see `DECISIONS.md`
-for the full reasoning; Print and Sound followed on the 11th, Field Guides on the 12th.
+Eleven **collection** landing pages (`collection-*.html`). **Every section of `index.html` has
+one** — that is the invariant now, so *a new index section owes a collection page*, and a new
+collection page owes a `.collection-intro` on the index carrying its accent and an
+`About this collection →` link. The five register collections were settled 2026-08-11 — see
+`DECISIONS.md` for the reasoning; Print and Sound followed the same day, Field Guides on the 12th,
+and Start Here, Foundations and Notes &amp; Rationale later on the 12th.
 
 **Five sort by register** — what kind of argument a piece is making:
 
@@ -139,6 +142,20 @@ that disclosure is the convention, so a fourth off-register collection must carr
 | **Print** | **medium** — paper | 5 broadsides + 1 typographic sheet |
 | **Sound** | **medium** — audio | 3 racks, 90 cards / 86 distinct songs |
 
+**Three are not sorted at all** — they are the site's own furniture, and the pieces in them were
+never candidates for a register. Don't try to fold these into either table:
+
+| Collection | What it is | Members |
+|------------|-----------|---------|
+| **Start Here** | the ways in | `about`, `love-you-down-to-your-star-stuff`, `cosmic-connections`, No. 4 — three doors in, one out |
+| **Foundations** | what the rest presupposes | `manifesto`, `inclusion-safety-creed`, `too-good-to-check`, No. 3, No. 18 |
+| **Notes & Rationale** | the working papers | `changelog`, `design`, `print-design`, `difference-first-frame` |
+
+- **Notes & Rationale is the only collection page outside the prev/next chain**, because all four
+  of its members are. Threading a changelog or a design system into a reading sequence would put a
+  maintenance document between two zines. Its `.ss-nav` therefore carries **only the home group**,
+  no prev/next — the same shape `about.html` and `cosmic-connections.html` use. If a future
+  collection's members all sit off the chain, copy that shape rather than inventing a link.
 - **Field Guides sort by form, and that cuts across register on purpose.** FG 2 is settled physics
   and FG 1 is frank invention, and they are the same kind of object. Six of the eleven arrive
   independently at *there is no standard {star, nervous system, migration, shark, turtle, tortoise}*
@@ -161,9 +178,12 @@ that disclosure is the convention, so a fourth off-register collection must carr
 - **Collections are pages, not folders** — a note that links, listing members and arguing for why
   they belong together. This keeps faith with `cosmic-connections.html`: the categories are outputs,
   not inputs. They were observed *after* 35 zines had accumulated with no folders at all.
-- **Three numbered pieces are deliberately outside the collections**: No. 3 (paradigm primer) and
-  No. 18 (self-portrait of the project) sit in *Foundations*; No. 4 (open call for contributors)
-  sits in *Start Here*. They keep their numbers.
+- **Three numbered pieces are deliberately outside the *register* collections**: No. 3 (paradigm
+  primer) and No. 18 (self-portrait of the project) sit in [*Foundations*](collection-foundations.html);
+  No. 4 (open call for contributors) sits in [*Start Here*](collection-start-here.html). They keep
+  their numbers — this is the sharpest case of *the number says when, the collection says what*
+  disagreeing, and both collection pages explain it on their face rather than leaving it to look
+  like an oversight.
 - **Collection names in `.card-series` / `.cover-issue` are invisible to search** —
   `tools/build-search-index.mjs` strips both as chrome. The collection pages are what make the
   names findable; don't rely on a badge slot for discoverability.
@@ -173,9 +193,11 @@ that disclosure is the convention, so a fourth off-register collection must carr
   everything else homework, and would become the one place the verify-everything standard could
   quietly relax. The fun is distributed; *Stars We Grew Up On* states this on the page.
 - The **prev/next chain follows collection order**: each collection page precedes its members, and
-  members run in ascending number within the collection. **68 pages** as of 2026-08-12,
-  `love-you-down-to-your-star-stuff.html` → `shorthand-evolution.html`. `about.html`,
-  `cosmic-connections.html` and `difference-first-frame.html` stay outside the chain by decision.
+  members run in ascending number within the collection. **70 pages** as of 2026-08-12,
+  `collection-start-here.html` → `shorthand-evolution.html`. Outside the chain by decision:
+  `about.html` and `cosmic-connections.html`, plus **all of Notes &amp; Rationale** — `changelog.html`,
+  `design.html`, `print-design.html`, `difference-first-frame.html` and `collection-notes.html`.
+  (`index.html` and `search.html` are utility pages and were never in it.)
   **Don't trust that number — measure it**, and check `prev` and `next` agree in both directions;
   inserting a page means editing its two neighbours, and a one-sided edit leaves a chain that walks
   forward correctly and breaks going back:
@@ -273,7 +295,7 @@ tracking — the query never leaves the reader's browser.
 - **Duplicate presentations get stripped, not indexed twice.** `ls-playlist.html` lists every song
   as a `.lp-card` (with the note explaining it) *and* again as a flat `.lp-row` link list; the rows
   are in `CHROME_SEL`. The co-brand eyebrows (`.nav-brand`, `.hero-eyebrow`, `.masthead-eyebrow`,
-  `.cover-issue`) are stripped for the same reason — the pairing is on all 76 pages, so as an
+  `.cover-issue`) are stripped for the same reason — the pairing is on all 79 pages, so as an
   indexed string it carried no information. Colophons keep it, and that's correct: they hold the
   sources and credits, and `search.html` scores heading and repeat matches above one incidental hit.
 - `starstuff.js` opens a deep-linked field-guide entry (they render collapsed), so a result
@@ -357,7 +379,7 @@ node tools/check-markup.mjs --check               # exit non-zero on any failure
   by the time a DOM exists the parser has already repaired it, and
   `document.querySelectorAll('a a')` on the broken page returns **zero**. The evidence survives
   only in the source text. That also makes it the fastest gate here — no Chrome, no dependencies,
-  76 pages and 49,000 tags in about 0.3s.
+  79 pages and 50,000 tags in about 0.3s.
 - **Three faults, each one silent:** nested interactive elements (`<a>`/`<button>` inside each
   other — the parser closes the outer, so everything after falls out of its wrapper); a block
   element inside a `<p>` (auto-closes the paragraph part-way through); and **duplicate `id`**,
@@ -385,6 +407,26 @@ themselves "a two-sided single sheet" while `ls-broadside.html` printed as **3 s
 2 on A4**; nothing in the repo could see it. Local dev tool, Chrome and Node 22+, and it uses its
 own debugging port on purpose — sharing one with the index generator let a build attach to a
 browser another tool was shutting down.
+
+## The sitemap has no gate — check it by hand
+
+`sitemap.xml` is hand-maintained, and **nothing verifies it.** The four tools above check markup,
+contrast, sheet fitting and the search index; none of them opens the sitemap, so an omission there
+is invisible to every gate and to the eye. On 2026-08-12 that turned out to mean
+`the-nearest-body-zine.html` — a live Star Stuff zine, linked from the index and sitting in the
+reading chain — had **never been in it**, uncrawlable since it shipped on 20 July; and
+`six-ways-broadside.html` was listed **twice**. Both were found only because a new page was being
+added and the file got audited on the way past.
+
+So when you touch `sitemap.xml`, run the whole comparison rather than just eyeballing your own
+addition. It costs nothing:
+
+```bash
+node -e "const fs=require('fs');const xml=fs.readFileSync('sitemap.xml','utf8');const sm=[...xml.matchAll(/starstuff\.earth\/([^<]*)</g)].map(m=>m[1]).filter(Boolean);const files=fs.readdirSync('.').filter(f=>f.endsWith('.html'));console.log('missing:',files.filter(f=>f!=='index.html'&&!sm.includes(f)).join(', ')||'none');console.log('dupes:',sm.filter((u,i)=>sm.indexOf(u)!==i).join(', ')||'none');console.log('stale:',sm.filter(u=>!fs.existsSync(u)).join(', ')||'none');"
+```
+
+`index.html` is expected to be absent — it is covered by the bare `https://starstuff.earth/` entry.
+Everything else should report `none`. If this keeps finding things, it should become a fifth tool.
 
 ## Design system
 

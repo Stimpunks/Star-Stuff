@@ -111,6 +111,32 @@ Decisions still to make. Move to **Settled** with a date once resolved.
 Decisions already made, with a one-line why. Backfilled from git history — dates are first
 commit evidence, not necessarily when the call was made.
 
+- **2026-08-12 — Every section of the index gets a collection page, and that is now the rule.**
+  Ryan's call: a section with only a heading and a grid has nowhere to elaborate, and the three
+  without pages — *Start Here*, *Foundations*, *Notes &amp; Rationale* — were the parts of the site
+  that most needed explaining and were explaining themselves least. Eleven collection pages now,
+  one per section, and **the invariant runs both ways**: a new index section owes a collection page,
+  and a new collection page owes a `.collection-intro` on the index. **This also settles that
+  collections come in three kinds, not two** — five sort by register, three sort off it (Print and
+  Sound by medium, Field Guides by form), and these three sort by nothing at all: they are the
+  site's own furniture, and their contents were never candidates for a register. **Rejected: a
+  twelfth page for the *Collections* container heading.** Its lede already does that work and
+  `cosmic-connections.html` is the standing argument for why categories exist; a collection page
+  about a heading is the folder-shaped move this site keeps refusing.
+- **2026-08-12 — Notes &amp; Rationale sits outside the reading chain, collection page included.**
+  All four of its members already did, so threading its landing page in would have produced a chain
+  entry whose every destination is unreachable by prev/next. A changelog is consulted, not read in
+  sequence, and putting a maintenance document between two zines implies an order nobody wants. It
+  is the only collection page off the chain and its `.ss-nav` carries **only the home group** — the
+  shape `about.html` and `cosmic-connections.html` already use. *Being off the path is not the same
+  as being buried*: it is reached from the index, the nav, search, and the pages that cite it.
+- **2026-08-12 — The chain head was regrouped to actually follow collection order.** Adding the two
+  new chain pages exposed a tangle that had been there a while: `we-are-all-star-stuff.html`, a
+  *Start Here* piece, sat between `too-good-to-check.html` and `neurodiversity-field-guide-zine.html`
+  — squarely inside the *Foundations* run. The documented rule always said each collection page
+  precedes its members; the head now does. **70 pages, traced in both directions, zero mismatches.**
+  Also settled by doing: **`sitemap.xml` gets audited whole, not per-addition** — that pass found a
+  live zine that had never been listed and a broadside listed twice, neither visible to any gate.
 - **2026-08-12 — Field Guides become the eighth collection page, sorted by *form*.** The 2026-08-11
   entry below left the Field Guides "untouched as their own series," which was right at the time and
   is now superseded: eleven guides had accumulated with no landing page, so the only thing arguing
