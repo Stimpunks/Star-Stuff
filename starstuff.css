@@ -280,8 +280,20 @@ a.ss-cobrand.ss-cobrand:focus-visible { text-decoration-color: currentColor; }
      Nothing that carries text keeps a dark background in print, so forcing every
      color to ink cannot hide anything: the print-color-adjust exceptions below
      are empty decorative elements. */
-  body, body * { color: #222222 !important; }
-  h1, h2, h3, h4, h5, h6, strong, b { color: #111111 !important; }
+  /* -webkit-text-fill-color alongside color, and it is not redundant: where a
+     heading paints itself with a clipped gradient (background-clip: text plus
+     -webkit-text-fill-color: transparent) the fill property wins over `color`
+     outright, so forcing color to ink left the glyphs transparent and the line
+     printed BLANK. Backgrounds don't paint on paper either, so nothing filled
+     them back in. This is the house wordmark on index.html, every .spectrum-word
+     and .flock-word in the zines, and the whole manifesto title — 196 elements
+     across 40 pages, every one of them silent.
+
+     check-contrast.mjs cannot catch this by design: gradient-clipped text has no
+     single pair of colors to compare, so it lists these as "unmeasured — check
+     by eye" rather than guessing. It was telling us to look. */
+  body, body * { color: #222222 !important; -webkit-text-fill-color: #222222 !important; }
+  h1, h2, h3, h4, h5, h6, strong, b { color: #111111 !important; -webkit-text-fill-color: #111111 !important; }
 
   /* Starfields, twinkles, and glows don't survive the trip to paper. */
   body::before,

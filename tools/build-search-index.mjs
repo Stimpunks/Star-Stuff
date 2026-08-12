@@ -143,6 +143,12 @@ const EXTRACT = String.raw`(() => {
        records, one of which was 50 characters of nothing but the title. The cards
        are the content; the rows are a link list. */
     '.lp-row',
+    /* index.html's jump strip repeats all twelve section names as pills, and
+       every one of those names is already indexed as the heading of the section
+       it points at. Indexing the strip too would put "Kin" and "Field Guides"
+       in a second record that is nothing but a list of the other eleven — the
+       same duplicate-presentation problem as .lp-row above. */
+    '.masthead-toc',
   ].join(',');
 
   /* Blocks that sit flush against each other in the source concatenate under

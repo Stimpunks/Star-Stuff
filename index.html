@@ -80,7 +80,11 @@
 
   .masthead { text-align: center; margin-bottom: 4rem; }
   .masthead-eyebrow { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: var(--cyan); margin-bottom: 1rem; display: block; }
-  .masthead-title { font-size: clamp(3rem, 8vw, 5.5rem); font-weight: 700; line-height: 1; letter-spacing: -0.02em; background: linear-gradient(135deg, var(--gold) 0%, var(--pink) 50%, var(--cyan) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 1rem; display: block; }
+  /* An <h1>, not a styled span — the wordmark is the page's title, and until it
+     became one this page had no headings at all, so a screen reader's headings
+     list came back empty. margin is zeroed explicitly because an h1 brings its
+     own. */
+  .masthead-title { font-size: clamp(3rem, 8vw, 5.5rem); font-weight: 700; line-height: 1; letter-spacing: -0.02em; background: linear-gradient(135deg, var(--gold) 0%, var(--pink) 50%, var(--cyan) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin: 0 0 1rem; display: block; }
   /* Tagline, Helen Edgar's phrase — sits between the wordmark and the
      description, the one slot in the masthead a tagline belongs in. Plain text,
      not a link: the Start Here card and the intro sentence are the routes to
@@ -92,6 +96,31 @@
   .masthead-search { display: inline-block; font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; color: var(--cyan); padding: 0.4rem 1.2rem; border: 1px solid rgba(34,211,238,0.4); border-radius: 999px; text-decoration: none; margin-left: 0.5rem; transition: background 0.2s ease, color 0.2s ease; }
   .masthead-search:hover, .masthead-search:focus-visible { background: rgba(34,211,238,0.14); color: var(--white); border-color: var(--cyan); }
   .masthead-ls { display: inline-block; font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; color: var(--muted); padding: 0.4rem 1.2rem; border: 1px solid var(--border); border-radius: 999px; }
+
+  /* Jump strip — the page's own table of contents.
+     Twelve sections and, until now, no way to reach one: the section labels were
+     <span>s with no ids, so there was no anchor to link to, nothing in a screen
+     reader's headings list, and no way to hand anyone a link to Field Guides.
+     They are <h2 id>s now, and this is the visible route to them.
+
+     Two tiers, because a flat twelve reads as noise: the seven top-level
+     sections, then the five collections, each tinted with the same --sec-accent
+     its heading and rule already carry — so the pill you press and the row you
+     land on are the same color, and the jump confirms itself. */
+  /* 900px, not the 820 this started at: tier one measures 802px laid out on a
+     single line, and a 18px margin is one font fallback away from wrapping to a
+     ragged second row. The wrap is 1100 wide, so the headroom is free. */
+  .masthead-toc { margin: 2rem auto 0; max-width: 900px; }
+  .masthead-toc ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; }
+  .masthead-toc ul + ul { margin-top: 0.6rem; }
+  .masthead-toc a { display: block; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--secondary); text-decoration: none; padding: 0.3rem 0.85rem; border: 1px solid var(--border); border-radius: 999px; transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease; }
+  .masthead-toc a:hover, .masthead-toc a:focus-visible { color: var(--white); border-color: var(--muted); background: rgba(167,139,250,0.12); }
+  /* Second tier tints the label only, exactly as .section-heading--collection
+     does. The accent belongs on the text; five tinted borders at this size read
+     as competing outlines. Hover keeps the accent rather than washing to white,
+     so the color mapping survives the interaction that uses it. */
+  .masthead-toc-collections a { color: var(--toc-accent, var(--secondary)); }
+  .masthead-toc-collections a:hover, .masthead-toc-collections a:focus-visible { color: var(--toc-accent, var(--white)); border-color: var(--toc-accent, var(--muted)); background: rgba(167,139,250,0.12); }
 
   /* Featured artwork */
   .hero-art { max-width: 600px; margin: 0 auto 4.5rem; text-align: center; }
@@ -112,7 +141,10 @@
 
   .section-heading { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; margin-top: 3.5rem; }
   .section-heading:first-of-type { margin-top: 0; }
-  .section-label { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
+  /* An <h2>, styled to look exactly as it did as a <span> — hence the explicit
+     margin: 0 and the font-size that overrides the browser default. The
+     scroll-margin keeps a jumped-to heading off the very top of the viewport. */
+  .section-label { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); white-space: nowrap; margin: 0; scroll-margin-top: 2rem; }
   .section-rule { flex: 1; height: 1px; background: var(--border); }
 
   .section-heading--collection .section-label { color: var(--sec-accent, var(--muted)); }
@@ -164,6 +196,19 @@
     .wrap { padding: 2.5rem 1.25rem 3rem; }
     .artifact-grid { grid-template-columns: 1fr; }
     .site-footer { flex-direction: column; }
+    /* Twelve pills wrap to a lot of rows on a phone, and the strip sits above
+       the featured artwork. Tighten the tracking and padding rather than drop
+       tier two: on the narrowest screen the scroll it saves is worth the most. */
+    .masthead-toc { margin-top: 1.5rem; }
+    .masthead-toc ul { gap: 0.4rem; }
+    .masthead-toc a { letter-spacing: 0.1em; padding: 0.28rem 0.65rem; }
+  }
+
+  /* The jump strip is site chrome pointing at fragments, which mean nothing on
+     paper — the same reason starstuff.css hides .ss-nav in print. The printed
+     page keeps its section headings in order, which is the paper equivalent. */
+  @media print {
+    .masthead-toc { display: none !important; }
   }
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://starstuff.earth/#website","name":"Star Stuff","alternateName":"Love You Down To Your Star Stuff","url":"https://starstuff.earth/","description":"Zines and field guides on the science of belonging — we are made of star stuff.","publisher":[{"@id":"https://stimpunks.org/#org"},{"@id":"https://morerealms.com/#org"}]},{"@type":"Organization","@id":"https://stimpunks.org/#org","name":"Stimpunks Foundation","url":"https://stimpunks.org/","logo":{"@type":"ImageObject","url":"https://starstuff.earth/og-card.jpg"}},{"@type":"Organization","@id":"https://morerealms.com/#org","name":"More Realms","url":"https://morerealms.com/"}]}</script>
@@ -181,11 +226,30 @@
 
   <div class="masthead">
     <span class="masthead-eyebrow"><a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks Foundation</a> × <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a></span>
-    <span class="masthead-title">★ stuff</span>
+    <h1 class="masthead-title">★ stuff</h1>
     <span class="masthead-tagline">Cosmic Connections</span>
     <p class="masthead-sub">A collection of artifacts exploring piezoelectric bones, stellar nucleosynthesis, and the neurodiversity paradigm. We love you down to your star stuff.</p>
     <span class="masthead-ls">L★S · Love You Down To Your Star Stuff</span>
     <a class="masthead-search" href="search.html">Search ⌕</a>
+
+    <nav class="masthead-toc" aria-label="Jump to a section">
+      <ul>
+        <li><a href="#start-here">Start Here</a></li>
+        <li><a href="#foundations">Foundations</a></li>
+        <li><a href="#collections">Collections</a></li>
+        <li><a href="#field-guides">Field Guides</a></li>
+        <li><a href="#sound">Sound</a></li>
+        <li><a href="#print">Print</a></li>
+        <li><a href="#notes">Notes</a></li>
+      </ul>
+      <ul class="masthead-toc-collections" aria-label="Collections">
+        <li><a href="#star-stuff" style="--toc-accent:#fbbf24;">Star Stuff</a></li>
+        <li><a href="#star-gazing" style="--toc-accent:#a78bfa;">Star Gazing</a></li>
+        <li><a href="#more-than-human" style="--toc-accent:#4ade80;">More Than Human</a></li>
+        <li><a href="#kin" style="--toc-accent:#22d3ee;">Kin</a></li>
+        <li><a href="#stars-we-grew-up-on" style="--toc-accent:#f472b6;">Stars We Grew Up On</a></li>
+      </ul>
+    </nav>
   </div>
 
   <!-- FEATURED ARTWORK -->
@@ -202,7 +266,7 @@
 
   <!-- START HERE -->
   <div class="section-heading">
-    <span class="section-label">Start Here</span>
+    <h2 class="section-label" id="start-here">Start Here</h2>
     <div class="section-rule"></div>
   </div>
   <div class="artifact-grid">
@@ -243,7 +307,7 @@
 
   <!-- FOUNDATIONS -->
   <div class="section-heading">
-    <span class="section-label">Foundations</span>
+    <h2 class="section-label" id="foundations">Foundations</h2>
     <div class="section-rule"></div>
   </div>
   <div class="artifact-grid">
@@ -292,7 +356,7 @@
 
   <!-- COLLECTIONS -->
   <div class="section-heading">
-    <span class="section-label">Collections</span>
+    <h2 class="section-label" id="collections">Collections</h2>
     <div class="section-rule"></div>
   </div>
 
@@ -300,7 +364,7 @@
 
   <!-- COLLECTION · STAR STUFF -->
   <div class="section-heading section-heading--collection" style="--sec-accent:#fbbf24;">
-    <span class="section-label">Star Stuff</span>
+    <h2 class="section-label" id="star-stuff">Star Stuff</h2>
     <div class="section-rule"></div>
   </div>
   <p class="collection-intro" style="--sec-accent:#fbbf24;">The founding register: one settled, checkable fact, followed honestly, already contains the claim about belonging. Membership here is decided by mechanism, not by date. <a href="collection-star-stuff.html">About this collection →</a></p>
@@ -423,7 +487,7 @@
 
   <!-- COLLECTION · STAR GAZING -->
   <div class="section-heading section-heading--collection" style="--sec-accent:#a78bfa;">
-    <span class="section-label">Star Gazing</span>
+    <h2 class="section-label" id="star-gazing">Star Gazing</h2>
     <div class="section-rule"></div>
   </div>
   <p class="collection-intro" style="--sec-accent:#a78bfa;">Named by Helen Edgar — awe-inspiring and not definite, possibilities of thought. Where philosophy of difference, relation and becoming does the work the settled fact does elsewhere. <a href="collection-star-gazing.html">About this collection →</a></p>
@@ -482,7 +546,7 @@
 
   <!-- COLLECTION · MORE THAN HUMAN -->
   <div class="section-heading section-heading--collection" style="--sec-accent:#4ade80;">
-    <span class="section-label">More Than Human</span>
+    <h2 class="section-label" id="more-than-human">More Than Human</h2>
     <div class="section-rule"></div>
   </div>
   <p class="collection-intro" style="--sec-accent:#4ade80;">Neurodiversity, de-anthropocentrized: biodiversity contains ethodiversity contains neurodiversity. Umwelt, multispecies councils, niche construction, nervous systems nothing like ours. <a href="collection-more-than-human.html">About this collection →</a></p>
@@ -533,7 +597,7 @@
 
   <!-- COLLECTION · KIN -->
   <div class="section-heading section-heading--collection" style="--sec-accent:#22d3ee;">
-    <span class="section-label">Kin</span>
+    <h2 class="section-label" id="kin">Kin</h2>
     <div class="section-rule"></div>
   </div>
   <p class="collection-intro" style="--sec-accent:#22d3ee;">Careful natural history read against the primary literature — our relatives, and the reflex that makes us disown them. <a href="collection-kin.html">About this collection →</a></p>
@@ -592,7 +656,7 @@
 
   <!-- COLLECTION · STARS WE GREW UP ON -->
   <div class="section-heading section-heading--collection" style="--sec-accent:#f472b6;">
-    <span class="section-label">Stars We Grew Up On</span>
+    <h2 class="section-label" id="stars-we-grew-up-on">Stars We Grew Up On</h2>
     <div class="section-rule"></div>
   </div>
   <p class="collection-intro" style="--sec-accent:#f472b6;">The other kind of star. Icons who made weird into a way of being — and the place where the fun is loudest. <a href="collection-stars-we-grew-up-on.html">About this collection →</a></p>
@@ -619,7 +683,7 @@
 
   <!-- FIELD GUIDES -->
   <div class="section-heading">
-    <span class="section-label">Field Guides</span>
+    <h2 class="section-label" id="field-guides">Field Guides</h2>
     <div class="section-rule"></div>
   </div>
 
@@ -717,7 +781,7 @@
 
   <!-- SOUND -->
   <div class="section-heading">
-    <span class="section-label">Sound</span>
+    <h2 class="section-label" id="sound">Sound</h2>
     <div class="section-rule"></div>
   </div>
 
@@ -753,7 +817,7 @@
 
   <!-- PRINT -->
   <div class="section-heading">
-    <span class="section-label">Print</span>
+    <h2 class="section-label" id="print">Print</h2>
     <div class="section-rule"></div>
   </div>
 
@@ -813,7 +877,7 @@
 
   <!-- NOTES & RATIONALE -->
   <div class="section-heading">
-    <span class="section-label">Notes &amp; Rationale</span>
+    <h2 class="section-label" id="notes">Notes &amp; Rationale</h2>
     <div class="section-rule"></div>
   </div>
 
