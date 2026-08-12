@@ -12,7 +12,20 @@ only tracks **choices** — what we decided, and what we still have to.
 
 Decisions still to make. Move to **Settled** with a date once resolved.
 
-- **A twelfth collection for Burke-style chains — deferred on purpose, 2026-08-12.** Ryan proposed
+- ~~**A twelfth collection for Burke-style chains — deferred on purpose.**~~ **Settled 2026-08-12,
+  the same day, once the second chain arrived** — built as *How We Got Here*. Retained below for the
+  reasoning, and see Settled for why the deferral was reversed rather than waited out.
+- **Deliberate repetition across formats is house practice — settled 2026-08-12, by Ryan.** The same
+  quotes, facts and stories are presented in **different formats, modalities and storylines** on
+  purpose, across stimpunks.org and here; there is more than one way to tell the same story, and
+  finding a fact already covered is not a reason to drop a piece. **The rule I had been applying was
+  too strict and is now narrowed:** *don't duplicate an argument in the same format* — two zines
+  making the same case the same way — but **revisiting a fact in a new form is the point, not a
+  collision.** The existing "do not re-argue No. 20 / No. 9" notes still stand as written, because
+  they are about a *specific zine's territory within the same format*, not a ban on the subject. In
+  practice: check for prior art to find the companion and the better primary source, not to veto.
+- _(the chain-collection entry that follows was resolved 2026-08-12 — kept for its reasoning)_
+- **A twelfth collection for Burke-style chains — proposed 2026-08-12, built the same day.** Ryan proposed
   a *Connections*-inspired collection: pieces that run from a Star Stuff science fact through a
   series of connections, some of them leaping, to a neurodiversity fact or lived experience, with
   a moral at the end. **Chain #1 shipped the same day** — No. 38 *Eight Tenths of a Second*,
@@ -174,6 +187,31 @@ Decisions still to make. Move to **Settled** with a date once resolved.
 Decisions already made, with a one-line why. Backfilled from git history — dates are first
 commit evidence, not necessarily when the call was made.
 
+- **2026-08-12 — *How We Got Here* is the twelfth collection, built at two members, reversing a
+  deferral made the same morning.** The deferral said wait for two or three chains because
+  *collections are outputs, not inputs*. **The reversal is not an abandonment of that principle; it
+  is the principle being satisfied.** No. 38 was built with no collection in view, the chain form was
+  noticed afterward, and the name came from the title of the paper underneath No. 39 — that is a form
+  observed in finished work, which is exactly what the principle asks for. **The argument that
+  actually decided it was a precedent I had missed: *Stars We Grew Up On* has carried two numbered
+  zines since 2026-08-11.** Two is the existing floor, not a shortcut, so "wait for three" was a
+  number I had invented rather than one the site uses. The forcing function was smaller and sharper:
+  No. 39's spread 2 says *"Their paper is called 'How did we get here.' So is this collection"* — so
+  shipping without the page would have published a live artifact pointing at nothing. **Rejected:
+  rewording that line to avoid creating the collection** — the sentence is the best thing on the
+  spread, and rewording it to dodge a filing decision is the tail wagging the dog. **Sorts by form,
+  the fourth off-register collection**, so it carries the disclosure convention on its own face like
+  Field Guides, Print and Sound. Both zines moved out of their interim *Star Stuff* filing; chain
+  regrouped to 74 pages, verified in both directions; Star Stuff back to its original 14.
+- **2026-08-12 — The joint notation is a How We Got Here convention, not a house-wide one.** The
+  open question from this morning, answered by the second chain rather than by argument: keep
+  `documented` / `contested` / `leap` inside the chain collection. **It earned its keep on No. 39 in
+  a way that settles the case — the source paper grades its own joints**, hedging the load-bearing
+  link with *"likely"* and *"no association is made explicit in any of the literature we reviewed,"*
+  so the zine's tag is reading the historians' own caution back out rather than imposing a scheme.
+  That is what the notation is for. **The reason not to generalise it stands unchanged: the tags only
+  carry information while the mix is real.** Six documented, three contested, one leap. Tag
+  everything and they become decoration — which is the failure mode the device exists to prevent.
 - **2026-08-12 — The sitemap audit becomes the fifth tool, `tools/check-sitemap.mjs`.** It was
   written into `CLAUDE.md` earlier the same day as a throwaway snippet with the condition *"if this
   keeps finding things, it should become a fifth tool."* It had already found two, so it graduated

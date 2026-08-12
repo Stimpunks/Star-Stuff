@@ -99,7 +99,7 @@ The central phrase compresses through registers, each with a use:
   <a class="ss-nav-collection" href="collection-kin.html"><span class="ss-nav-collection-label">Collection</span> <span class="ss-nav-collection-name">Kin</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
   ```
 
-  All 66 members have one; the 11 collection pages, `index.html` and `search.html` do not. **A new
+  All 68 members have one; the 12 collection pages, `index.html` and `search.html` do not. **A new
   piece needs its badge and its collection page's card in the same pass** — the page→collection map
   is derived from `<a class="card" href="…">` on the collection pages, so a card that is missing
   makes the badge underivable. It sits **inside** the nav deliberately: that is what gives it the
@@ -129,14 +129,15 @@ The central phrase compresses through registers, each with a use:
   and structure spreads as `.spread` (with a `.spread.active`), each with a `.spread-footer`
   containing a `.spread-footer-right` page counter. IDs run `spread-1..N` in document order.
 
-### Collections (eleven pages, in three kinds)
+### Collections (twelve pages, in three kinds)
 
-Eleven **collection** landing pages (`collection-*.html`). **Every section of `index.html` has
+Twelve **collection** landing pages (`collection-*.html`). **Every section of `index.html` has
 one** — that is the invariant now, so *a new index section owes a collection page*, and a new
 collection page owes a `.collection-intro` on the index carrying its accent and an
 `About this collection →` link. The five register collections were settled 2026-08-11 — see
 `DECISIONS.md` for the reasoning; Print and Sound followed the same day, Field Guides on the 12th,
-and Start Here, Foundations and Notes &amp; Rationale later on the 12th.
+and Start Here, Foundations and Notes &amp; Rationale later on the 12th. **How We Got Here** joined
+on the 12th as the twelfth, at two members — see *the two-member floor* below.
 
 **Five sort by register** — what kind of argument a piece is making:
 
@@ -148,14 +149,29 @@ and Start Here, Foundations and Notes &amp; Rationale later on the 12th.
 | **Kin** | Citation-dense natural history with a neurodivergence moral | 31, 32, 33, 34, 35, 36 |
 | **Stars We Grew Up On** | Culture and icon; owns the star-as-celebrity sense | 12, 13 (+ playlist, broadside in spirit) |
 
-**Three do not**, and each says so on its own face rather than letting it read as an oversight —
-that disclosure is the convention, so a fourth off-register collection must carry it too:
+**Four do not**, and each says so on its own face rather than letting it read as an oversight —
+that disclosure is the convention, and **How We Got Here duly carries it too**:
 
 | Collection | Axis | Members |
 |------------|------|---------|
 | **Field Guides** | **form** — a catalogue of same-shaped entries, none ranked | Field Guides 1–11 (114 entries; 119 cards counting the five *turtles people made*, which FG 10 deliberately does not file as entries) |
+| **How We Got Here** | **form** — a Burke chain, one link per spread, joints marked | 38, 39 |
 | **Print** | **medium** — paper | 5 broadsides + 1 typographic sheet |
 | **Sound** | **medium** — audio | 4 racks, 121 cards / 117 distinct songs |
+
+- **How We Got Here has its own convention, and it is the point of the collection: every joint in
+  a chain is marked `documented`, `contested` or `leap`** — in the prose *and* in the line style of
+  the running spine at the foot of each spread. A Burke chain is built to feel inevitable, which
+  collides head-on with *verify, don't assume*; the notation is how the form carries its own
+  epistemics instead of a footnote doing it. **The tags only mean anything if the mix is real** —
+  No. 38 runs six documented, three contested and one leap, with its own founding anecdote among the
+  contested. Don't let a chain reach its conclusion across three leaps, and don't promote the
+  notation to pieces outside this collection without a reason; see `DECISIONS.md`.
+- **The two-member floor.** This collection was deliberately deferred when No. 38 shipped, on the
+  *collections are outputs, not inputs* principle, and created the same day No. 39 arrived with the
+  same shape. Two is the floor, not a shortcut — *Stars We Grew Up On* has carried two numbered
+  zines since 2026-08-11. What earns a collection page is a **form observed in finished work**,
+  never a folder opened in advance.
 
 **Three are not sorted at all** — they are the site's own furniture, and the pieces in them were
 never candidates for a register. Don't try to fold these into either table:
@@ -212,7 +228,7 @@ never candidates for a register. Don't try to fold these into either table:
   everything else homework, and would become the one place the verify-everything standard could
   quietly relax. The fun is distributed; *Stars We Grew Up On* states this on the page.
 - The **prev/next chain follows collection order**: each collection page precedes its members, and
-  members run in ascending number within the collection. **71 pages** as of 2026-08-12,
+  members run in ascending number within the collection. **74 pages** as of 2026-08-12,
   `collection-start-here.html` → `shorthand-evolution.html`. Outside the chain by decision:
   `about.html` and `cosmic-connections.html`, plus **all of Notes &amp; Rationale** — `changelog.html`,
   `design.html`, `print-design.html`, `difference-first-frame.html` and `collection-notes.html`.
