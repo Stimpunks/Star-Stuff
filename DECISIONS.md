@@ -108,6 +108,19 @@ Decisions still to make. Move to **Settled** with a date once resolved.
 Decisions already made, with a one-line why. Backfilled from git history — dates are first
 commit evidence, not necessarily when the call was made.
 
+- **2026-08-12 — The sitemap audit becomes the fifth tool, `tools/check-sitemap.mjs`.** It was
+  written into `CLAUDE.md` earlier the same day as a throwaway snippet with the condition *"if this
+  keeps finding things, it should become a fifth tool."* It had already found two, so it graduated
+  the same day rather than waiting for a third. Seven checks, all one question — does the sitemap
+  agree with the filesystem: missing, stale, duplicate, off-site `loc`, malformed structure, the
+  bare root entry, and `lastmod` sanity. Regression-tested against the **real** pre-fix file at
+  commit `e13a96b` rather than only synthetics, which is the standard `check-markup.mjs` set.
+  **Rejected: checking `lastmod` against git history.** It is the obvious eighth check and it would
+  have poisoned the tool — the collection-badge pass touched 66 pages without changing a word, so a
+  git comparison would have flagged all 66 as stale and invited bumping dates that should not move.
+  *A check whose first run emits 66 warnings nobody should act on is a check that gets ignored, and
+  then so are its real findings.* Whether an edit earns a new `lastmod` stays an editorial call.
+  Also rejected: gating on `priority`/`changefreq`, which Google states it ignores.
 - **2026-08-12 — Per-piece collection badges: built, on their own row inside `.ss-nav`.** Every one
   of the 66 collection members now carries `Collection · <Name> ›` linking to its collection page,
   because most readers arrive at a zine from search rather than from the index and had no on-page

@@ -51,7 +51,19 @@ Ryan's shorthand for "finish and publish." Scope depends on what changed.
    parser close the outer element early — it took a card grid apart on a live page while contrast,
    the search index and the eye of the person who wrote it all passed. **Baseline is 0**, so any
    failure here is yours and should be fixed rather than noted.
-8. **If you touched a broadside, check it still fits the paper.**
+8. **Check the sitemap.** Also browser-free and instant, and it must be run whenever a page is
+   added, renamed or removed:
+
+   ```bash
+   node tools/check-sitemap.mjs --check
+   ```
+
+   Audits the whole file rather than just your addition: missing entries, stale ones, duplicates,
+   off-site `loc`s, malformed structure, the bare root entry `index.html` depends on, and `lastmod`
+   sanity. **Baseline is 0.** It exists because a live zine sat unlisted for three weeks and a
+   broadside was listed twice, and no other gate could see either — the four page-level checks all
+   pass on a page that the sitemap has simply never heard of.
+9. **If you touched a broadside, check it still fits the paper.**
 
    ```bash
    node tools/check-sheets.mjs --check
@@ -60,7 +72,7 @@ Ryan's shorthand for "finish and publish." Scope depends on what changed.
    Prints each sheet at US Letter *and* A4 and counts pages, and separately measures overflow —
    a fixed-height sheet that overruns is clipped, not paginated, so a clean page count can still
    hide a cut-off line. Only applies to pages with an `@page` rule.
-9. **Commit & push.** `git add` the touched files; commit with a descriptive heredoc message;
+10. **Commit & push.** `git add` the touched files; commit with a descriptive heredoc message;
    `git push`.
 
 ## Small edit (fast path)

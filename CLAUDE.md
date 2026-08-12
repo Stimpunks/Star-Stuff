@@ -380,7 +380,7 @@ node tools/check-contrast.mjs --check              # exit non-zero on any failur
 
 ## Markup checking (`tools/check-markup.mjs`)
 
-The fourth gate, and the only one that never opens a browser.
+The fourth gate. It and `check-sitemap.mjs` are the two that never open a browser.
 
 ```bash
 node tools/check-markup.mjs                       # every *.html in the repo root
@@ -427,25 +427,43 @@ themselves "a two-sided single sheet" while `ls-broadside.html` printed as **3 s
 own debugging port on purpose — sharing one with the index generator let a build attach to a
 browser another tool was shutting down.
 
-## The sitemap has no gate — check it by hand
+## Sitemap checking (`tools/check-sitemap.mjs`)
 
-`sitemap.xml` is hand-maintained, and **nothing verifies it.** The four tools above check markup,
-contrast, sheet fitting and the search index; none of them opens the sitemap, so an omission there
-is invisible to every gate and to the eye. On 2026-08-12 that turned out to mean
-`the-nearest-body-zine.html` — a live Star Stuff zine, linked from the index and sitting in the
-reading chain — had **never been in it**, uncrawlable since it shipped on 20 July; and
-`six-ways-broadside.html` was listed **twice**. Both were found only because a new page was being
-added and the file got audited on the way past.
-
-So when you touch `sitemap.xml`, run the whole comparison rather than just eyeballing your own
-addition. It costs nothing:
+The fifth gate, promoted from a throwaway snippet on 2026-08-12 because it kept finding things.
 
 ```bash
-node -e "const fs=require('fs');const xml=fs.readFileSync('sitemap.xml','utf8');const sm=[...xml.matchAll(/starstuff\.earth\/([^<]*)</g)].map(m=>m[1]).filter(Boolean);const files=fs.readdirSync('.').filter(f=>f.endsWith('.html'));console.log('missing:',files.filter(f=>f!=='index.html'&&!sm.includes(f)).join(', ')||'none');console.log('dupes:',sm.filter((u,i)=>sm.indexOf(u)!==i).join(', ')||'none');console.log('stale:',sm.filter(u=>!fs.existsSync(u)).join(', ')||'none');"
+node tools/check-sitemap.mjs               # audit sitemap.xml
+node tools/check-sitemap.mjs --check       # exit non-zero on any problem
+node tools/check-sitemap.mjs path/to.xml   # audit a different file
 ```
 
-`index.html` is expected to be absent — it is covered by the bare `https://starstuff.earth/` entry.
-Everything else should report `none`. If this keeps finding things, it should become a fifth tool.
+- **It exists because `sitemap.xml` is hand-maintained and nothing looked at it.** The other four
+  gates each examine a *page*; none opens the sitemap, so a page could be entirely absent and every
+  check still passed. Nothing on the live site looks wrong either, which is why the two faults it
+  was built from survived so long: `the-nearest-body-zine.html` had **never been listed** — a live
+  zine, linked from the index, in the reading chain, uncrawlable since 20 July — and
+  `six-ways-broadside.html` was listed **twice**. Both were found by a person happening to audit the
+  file while adding a page, not by any check.
+- **Seven checks, all forms of one question** — *does the sitemap agree with the filesystem?*
+  missing entries, stale entries (file gone), duplicates, off-site or non-https `loc`, malformed
+  structure (unbalanced `<url>`, no `<urlset>`, a `<url>` with no `<loc>`), the **bare root entry**
+  (`index.html` is deliberately unlisted and relies on it, so its absence would be a hole the
+  "missing" check is designed not to see), and `lastmod` sanity — present, `YYYY-MM-DD`, a real
+  date, not in the future.
+- **It deliberately does not check `lastmod` against git**, and that restraint is the interesting
+  part. A repo-wide chrome change — the collection-badge pass touched 66 pages without altering a
+  word — would mark every one of those dates "stale" and invite bumping them, telling crawlers to
+  re-fetch 66 pages that did not meaningfully change. **A check whose first run emits 66 warnings
+  nobody should act on is a check that gets ignored, and then so are its real findings.** Whether an
+  edit earns a new `lastmod` is an editorial call and stays with the person making it. It also
+  ignores `priority` and `changefreq` (Google says it ignores both) and never touches the network.
+- **The bar for an eighth check** is the same as `check-markup.mjs`'s: a discrepancy between what
+  the sitemap claims and what the site is, invisible to a person reading the file.
+- **Regression-tested against the real fault**, not just synthetics: run against `sitemap.xml` as it
+  stood at commit `e13a96b` it reports the missing zine and the duplicated broadside. Seven
+  synthetic faults were each confirmed to fire, and the decoys that must *not* fire — the bare root
+  entry, the `index.html` exemption, a `lastmod` of exactly today — pass clean.
+- No Chrome, no dependencies, like `check-markup.mjs`. Local dev tool; Netlify does not run it.
 
 ## Design system
 

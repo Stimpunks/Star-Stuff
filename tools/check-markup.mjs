@@ -19,7 +19,9 @@
  * dark.
  *
  * WHY THIS IS A SOURCE CHECK AND NOT A DOM CHECK — the important part
- * Its two siblings both drive headless Chrome, and this one deliberately does not.
+ * Three of its siblings drive headless Chrome, and this one deliberately does not.
+ * (check-sitemap.mjs is the other browser-free gate, for the same reason: the
+ * evidence it needs is in a file, not in a rendered page.)
  * You cannot find this fault in a DOM: by the time there is a DOM, the parser has
  * already repaired the damage. Query `document.querySelectorAll('a a')` on the
  * broken page and you get **zero results** — not because the markup was fine, but
