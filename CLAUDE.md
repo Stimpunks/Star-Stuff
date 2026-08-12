@@ -155,7 +155,7 @@ that disclosure is the convention, so a fourth off-register collection must carr
 |------------|------|---------|
 | **Field Guides** | **form** — a catalogue of same-shaped entries, none ranked | Field Guides 1–11 (114 entries; 119 cards counting the five *turtles people made*, which FG 10 deliberately does not file as entries) |
 | **Print** | **medium** — paper | 5 broadsides + 1 typographic sheet |
-| **Sound** | **medium** — audio | 3 racks, 90 cards / 86 distinct songs |
+| **Sound** | **medium** — audio | 4 racks, 121 cards / 117 distinct songs |
 
 **Three are not sorted at all** — they are the site's own furniture, and the pieces in them were
 never candidates for a register. Don't try to fold these into either table:
@@ -212,7 +212,7 @@ never candidates for a register. Don't try to fold these into either table:
   everything else homework, and would become the one place the verify-everything standard could
   quietly relax. The fun is distributed; *Stars We Grew Up On* states this on the page.
 - The **prev/next chain follows collection order**: each collection page precedes its members, and
-  members run in ascending number within the collection. **70 pages** as of 2026-08-12,
+  members run in ascending number within the collection. **71 pages** as of 2026-08-12,
   `collection-start-here.html` → `shorthand-evolution.html`. Outside the chain by decision:
   `about.html` and `cosmic-connections.html`, plus **all of Notes &amp; Rationale** — `changelog.html`,
   `design.html`, `print-design.html`, `difference-first-frame.html` and `collection-notes.html`.
