@@ -155,7 +155,7 @@ that disclosure is the convention, and **How We Got Here duly carries it too**:
 | Collection | Axis | Members |
 |------------|------|---------|
 | **Field Guides** | **form** — a catalogue of same-shaped entries, none ranked | Field Guides 1–11 (114 entries; 119 cards counting the five *turtles people made*, which FG 10 deliberately does not file as entries) |
-| **How We Got Here** | **form** — a Burke chain, one link per spread, joints marked | 38, 39, 40 |
+| **How We Got Here** | **form** — a Burke chain, one link per spread, joints marked | 38, 39, 40, 41 |
 | **Print** | **medium** — paper | 5 broadsides + 1 typographic sheet |
 | **Sound** | **medium** — audio | 4 racks, 121 cards / 117 distinct songs |
 
@@ -427,16 +427,23 @@ node tools/check-markup.mjs --check               # exit non-zero on any failure
   `document.querySelectorAll('a a')` on the broken page returns **zero**. The evidence survives
   only in the source text. That also makes it the fastest gate here — no Chrome, no dependencies,
   79 pages and 50,000 tags in about 0.3s.
-- **Three faults, each one silent:** nested interactive elements (`<a>`/`<button>` inside each
+- **Four faults, each one silent:** nested interactive elements (`<a>`/`<button>` inside each
   other — the parser closes the outer, so everything after falls out of its wrapper); a block
   element inside a `<p>` (auto-closes the paragraph part-way through); and **duplicate `id`**,
   which matters here more than most sites because this one runs on fragments — `#spread-N`,
   `#entry-slug`, `starstuff.js`'s deep-link opener, every `search-index.json` record, and the
   `aria-labelledby` wiring in `changelog.html`. A duplicate doesn't error; it just sends a reader
-  to the wrong passage.
+  to the wrong passage. And, added 2026-08-12, **`.ss-nav` outside the content shell** — the one
+  house-convention check in the file. Put the nav outside `.zine-shell`/`.doc-shell` and the header
+  runs full-bleed while the page beneath it stays in its 820px column. **It shipped live on Nos. 38
+  and 39, was reintroduced on No. 40 and repeated on No. 41 — four times, twice after being
+  "fixed"** — which is what a convention with no gate behind it is worth. Pages with no shell
+  (broadsides, playlists) are exempt by design.
 - **It is not a validator and shouldn't grow into one.** It ignores unclosed tags, attribute
-  syntax, and everything else browsers recover from harmlessly. The bar for adding a fourth check
-  is that the browser silently hands the reader a different document than the source describes.
+  syntax, and everything else browsers recover from harmlessly. The bar for adding a fifth check
+  is that the browser silently hands the reader a different document than the source describes —
+  or, as with the nav check, that a structural fault is invisible to *every* other gate and has
+  recurred often enough to prove that remembering is not a control.
 - **The baseline is 0, unlike the contrast tool.** A clean tree passes, so `--check` is a real ship
   gate rather than an informational sweep. It was regression-tested against the actual broken file
   from git history, and against decoys that must *not* fire — an `a a` CSS selector, a nested

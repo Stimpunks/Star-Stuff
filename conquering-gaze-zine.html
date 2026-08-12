@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0a0a14">
+<link rel="canonical" href="https://starstuff.earth/conquering-gaze-zine.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta name="description" content="For two centuries the strongest argument against a moving Earth was that the stars showed no parallax — good reasoning from good data, defeated by an instrument that was lying. In 1838 Friedrich Bessel measured 61 Cygni's parallax at 0.3136 arcseconds from Königsberg, and the method carries the whole argument: the baseline is the observer's own displacement. No position, no baseline, no depth. A view from nowhere cannot measure distance even in principle. Every rung of the cosmic distance ladder above parallax is calibrated by the one below, and rung two was built by Henrietta Swan Leavitt, a Harvard computer paid by the hour and not permitted to observe, whose period–luminosity law was published under her director's name. Donna Haraway named the fantasy in 1988: the god trick of seeing everything from nowhere, a conquering gaze that makes the unmarked category claim the power to see and not be seen. Her actual claim is the one usually lost — the moral is simple: only partial perspective promises objective vision — and she is equally hostile to relativism, which is a way of being nowhere while claiming to be everywhere equally. Then WEIRD samples, research done on us rather than with us, and the correction, which is not to remove the observer but to publish their coordinates. The fourth chain in How We Got Here.">
+<!-- Open Graph / link unfurl -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Star Stuff · Stimpunks Foundation × More Realms">
+<meta property="og:url" content="https://starstuff.earth/conquering-gaze-zine.html">
+<meta property="og:title" content="A Conquering Gaze from Nowhere">
+<meta property="og:description" content="You only get depth by moving. A view from nowhere has no baseline, and cannot measure distance even in principle — which turns out to be true of more than stars.">
+<meta property="og:image" content="https://starstuff.earth/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A rainbow-hued cosmic image — we are all made of star stuff.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="A Conquering Gaze from Nowhere">
+<meta name="twitter:description" content="Parallax, positionality, and the research done on us. Haraway's actual claim: only partial perspective promises objective vision.">
+<meta name="twitter:image" content="https://starstuff.earth/og-card.jpg">
+<title>A Conquering Gaze from Nowhere — Stimpunks Zine No. 41</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="starstuff.css">
+<style>
+  :root {
+    --void:  var(--sp-void-deep);
+    --deep:  var(--sp-deep);
+    --page:  var(--sp-page);
+    --violet:var(--sp-purple);
+    --pink:  var(--sp-pink);
+    --gold:  var(--sp-gold);
+    --cyan:  var(--sp-cyan);
+    --green: var(--sp-green);
+    --ember: #c1653a;
+    --accent: var(--sp-pink);          /* this zine's identity accent — the marked body, the located observer */
+    --star-white: var(--sp-white-soft);
+    --stardust:   var(--sp-secondary-soft);
+    --dim:   var(--sp-dim);
+    --dim2:  var(--sp-dim-soft);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--void);
+    font-family: 'Atkinson Hyperlegible Next', system-ui, sans-serif;
+    color: var(--star-white);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── STARFIELD (pink · white · violet — a sky you are looking at from somewhere) ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 11% 14%, rgba(244,114,182,0.70) 0%, transparent 100%),
+      radial-gradient(1px 1px at 27% 34%, rgba(244,244,251,0.62) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 44% 9%, rgba(244,114,182,0.56) 0%, transparent 100%),
+      radial-gradient(1px 1px at 61% 66%, rgba(244,244,251,0.68) 0%, transparent 100%),
+      radial-gradient(2px 2px at 78% 24%, rgba(167,139,250,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 88% 52%, rgba(244,114,182,0.56) 0%, transparent 100%),
+      radial-gradient(1px 1px at 94% 81%, rgba(244,244,251,0.6) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 6% 60%, rgba(244,114,182,0.55) 0%, transparent 100%),
+      radial-gradient(1px 1px at 35% 86%, rgba(244,244,251,0.55) 0%, transparent 100%),
+      radial-gradient(1px 1px at 53% 44%, rgba(167,139,250,0.48) 0%, transparent 100%),
+      radial-gradient(2px 2px at 20% 89%, rgba(244,114,182,0.52) 0%, transparent 100%),
+      radial-gradient(1px 1px at 71% 6%, rgba(244,244,251,0.78) 0%, transparent 100%),
+      radial-gradient(1px 1px at 46% 61%, rgba(244,114,182,0.45) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 31% 19%, rgba(244,244,251,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 81% 90%, rgba(167,139,250,0.48) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .zine-shell { position: relative; z-index: 1; max-width: 820px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+
+  .spectrum-line { height: 2px; border: none; border-radius: 2px; background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); }
+
+  /* ── NAV ── */
+  .nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2.5rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(244,114,182,0.2); }
+  .nav-brand { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--dim); }
+  .nav-controls { display: flex; gap: 0.5rem; align-items: center; }
+  .nav-btn { background: none; border: 1px solid rgba(244,114,182,0.35); color: var(--stardust); font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.15em; padding: 0.4rem 0.85rem; border-radius: 2px; cursor: pointer; transition: all 0.2s ease; text-transform: uppercase; }
+  .nav-btn:hover { background: rgba(244,114,182,0.15); border-color: rgba(244,114,182,0.6); color: var(--star-white); }
+  .nav-btn.active { background: rgba(244,114,182,0.20); border-color: var(--accent); color: var(--star-white); }
+  .page-counter { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.2em; color: var(--dim2); }
+
+  .spread { display: none; animation: fadeIn 0.5s ease forwards; }
+  .spread.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ── COVER ── */
+  .cover-spread {
+    position: relative; min-height: 520px; border-radius: 4px; overflow: hidden;
+    background:
+      radial-gradient(ellipse at 22% 20%, rgba(244,114,182,0.14) 0%, transparent 52%),
+      radial-gradient(ellipse at 80% 26%, rgba(167,139,250,0.12) 0%, transparent 52%),
+      radial-gradient(ellipse at 68% 82%, rgba(244,114,182,0.10) 0%, transparent 52%),
+      radial-gradient(ellipse at 28% 80%, rgba(167,139,250,0.08) 0%, transparent 52%),
+      var(--deep);
+    border: 1px solid rgba(167,139,250,0.25);
+    box-shadow: inset 0 0 80px rgba(244,114,182,0.07), 0 0 0 4px rgba(255,255,255,0.03);
+    display: flex; flex-direction: column; justify-content: flex-end; padding: 3rem;
+  }
+  .cover-motif { position: absolute; top: -4px; right: -14px; width: 340px; height: 340px; opacity: 0.8; pointer-events: none; }
+  .cover-issue { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.5em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.5rem; }
+  .cover-title { font-weight: 700; font-size: clamp(1.9rem, 5.2vw, 3rem); line-height: 1.04; color: var(--star-white); letter-spacing: -0.01em; margin-bottom: 0.9rem; }
+  .cover-title .amp { color: var(--accent); font-style: italic; }
+  .cover-subtitle { font-size: 1rem; color: var(--stardust); opacity: 0.85; margin-bottom: 1.5rem; max-width: 470px; line-height: 1.55; }
+  .cover-byline { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.14em; color: var(--dim); margin-bottom: 1.8rem; }
+  .cover-byline strong { color: var(--stardust); font-weight: 700; }
+  .cover-rule { width: 220px; max-width: 60%; margin-bottom: 1.3rem; }
+  .cover-meta { display: flex; gap: 2rem; align-items: center; }
+  .cover-ls { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 1.4rem; color: var(--accent); letter-spacing: 0.05em; }
+  .cover-meta-text { font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--dim2); line-height: 1.9; }
+  .cover-corner { position: absolute; top: 2rem; right: 2.5rem; text-align: right; }
+  .cover-corner-num { font-weight: 700; font-size: 4.5rem; line-height: 1; color: var(--accent); opacity: 0.24; }
+  .cover-corner-label { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--violet); display: block; margin-top: -0.3rem; }
+
+  /* ── INTERIOR ── */
+  .interior { background: var(--page); border: 1px solid rgba(167,139,250,0.15); border-radius: 4px; overflow: hidden; min-height: 480px; }
+  .spread-2col { display: grid; grid-template-columns: 1fr 1fr; min-height: 480px; }
+  .spread-left, .spread-right { padding: 3rem 2.4rem; position: relative; }
+  .spread-left { border-right: 1px solid rgba(167,139,250,0.12); }
+
+  .spread-2col.stacked { display: flex; flex-direction: column; }
+  .spread-2col.stacked > .spread-left,
+  .spread-2col.stacked > .spread-right { border-right: none; }
+  .spread-2col.stacked > .col-diagram { order: 2; padding-top: 0; }
+  .spread-2col.stacked > .col-text { padding-left: max(2.4rem, calc((100% - 32rem) / 2)); padding-right: max(2.4rem, calc((100% - 32rem) / 2)); }
+  .spread-2col.stacked .diagram-wrap { height: auto; }
+  .spread-2col.stacked .diagram { max-width: 380px; }
+
+  .eyebrow { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.1rem; }
+  .body-text { font-size: 0.98rem; line-height: 1.72; color: var(--stardust); }
+  .body-text p { margin-bottom: 1rem; }
+  .body-text p:last-child { margin-bottom: 0; }
+  .body-text strong { font-weight: 700; color: var(--star-white); }
+  .body-text em { font-style: italic; color: var(--star-white); }
+  .body-text a { color: var(--violet); text-decoration: none; border-bottom: 1px solid rgba(167,139,250,0.4); }
+  .body-text a:hover { border-bottom-color: var(--violet); color: var(--star-white); }
+  .body-text .violet { color: var(--violet); font-weight: 700; }
+  .body-text .pink { color: var(--pink); font-weight: 700; }
+  .body-text .gold { color: var(--gold); font-weight: 700; }
+  .body-text .cyan { color: var(--cyan); font-weight: 700; }
+  .body-text .green { color: var(--green); font-weight: 700; }
+  .body-text .dim { color: var(--dim); }
+  .body-text .lede { font-size: 1.08rem; color: var(--star-white); }
+
+  .spread-heading { font-weight: 700; font-size: 1.9rem; line-height: 1.12; color: var(--star-white); margin-bottom: 1.1rem; letter-spacing: -0.01em; margin-top: 0; scroll-margin-top: 5rem; }
+  .spread-heading .spectrum-word { background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .rule { width: 40px; margin: 1rem 0; }
+
+  .pull-quote { font-size: 1.18rem; font-weight: 700; line-height: 1.4; color: var(--star-white); border-left: 3px solid var(--accent); padding-left: 1.1rem; margin: 1.4rem 0; font-style: italic; }
+  .pull-quote.violet { border-left-color: var(--violet); }
+  .pull-quote.cyan { border-left-color: var(--cyan); }
+  .pull-quote.gold { border-left-color: var(--gold); }
+  .pull-quote.green { border-left-color: var(--green); }
+  .pull-quote .attr { display: block; font-family: 'Space Mono', monospace; font-size: 0.6rem; font-weight: 400; font-style: normal; letter-spacing: 0.08em; color: var(--dim); margin-top: 0.6rem; }
+
+  .callout { margin: 1.3rem 0; padding: 1rem 1.15rem; background: rgba(244,114,182,0.06); border: 1px solid rgba(244,114,182,0.22); border-radius: 4px; font-size: 1rem; font-style: italic; color: var(--star-white); line-height: 1.55; }
+  .callout .attr { display: block; font-family: 'Space Mono', monospace; font-size: 0.58rem; font-style: normal; letter-spacing: 0.06em; color: var(--dim); margin-top: 0.5rem; }
+
+  /* ── THE JOINT TAG (the How We Got Here convention, fourth outing) ── */
+  .joint { display: inline-flex; align-items: baseline; gap: 0.4rem; font-family: 'Space Mono', monospace; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; padding: 0.16rem 0.5rem; border-radius: 2px; white-space: nowrap; vertical-align: 0.12em; }
+  .joint::before { content: ''; width: 16px; height: 0; border-top-width: 2px; align-self: center; }
+  .joint-documented { color: var(--green); background: rgba(74,222,128,0.10); border: 1px solid rgba(74,222,128,0.32); }
+  .joint-documented::before { border-top-style: solid; border-top-color: var(--green); }
+  .joint-contested  { color: var(--gold); background: rgba(251,191,36,0.10); border: 1px solid rgba(251,191,36,0.32); }
+  .joint-contested::before { border-top-style: dashed; border-top-color: var(--gold); }
+  .joint-leap       { color: var(--pink); background: rgba(244,114,182,0.10); border: 1px solid rgba(244,114,182,0.32); }
+  .joint-leap::before { border-top-style: dotted; border-top-color: var(--pink); }
+
+  .joint-note { font-size: 0.84rem; line-height: 1.6; color: var(--dim); border-left: 2px solid rgba(167,139,250,0.28); padding-left: 0.9rem; margin: 1.1rem 0; }
+  .joint-note strong { color: var(--stardust); font-weight: 700; }
+
+  /* ── THE RUNNING SPINE ──
+     A single rail this time, with a bracket under its first two nodes marked BASELINE — because
+     that is the argument: two positions, and only then depth. The other three chains used two
+     rails (merging at the end, merging in the middle, never merging); this one has nothing to
+     merge, and the shape should say so. Node names are not text in the SVG — the spine repeats
+     on thirteen spreads. See CHROME_SEL in tools/build-search-index.mjs. */
+  .spine { border-top: 1px solid rgba(167,139,250,0.12); padding: 1.1rem 2.4rem 0.2rem; }
+  .spine svg { width: 100%; max-width: 620px; margin: 0 auto; display: block; overflow: visible; }
+  .spine-label { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); text-align: center; margin-top: 0.5rem; }
+  .spine-node { fill: var(--sp-dim); }
+  .spine-node.live { fill: var(--accent); }
+  .spine-ring { fill: none; stroke: var(--accent); stroke-width: 1.6; }
+  .spine-track { fill: none; stroke-width: 1.6; stroke-linecap: round; }
+  .spine-track.documented { stroke: rgba(74,222,128,0.55); }
+  .spine-track.contested  { stroke: rgba(251,191,36,0.6); stroke-dasharray: 6 4; }
+  .spine-track.leap       { stroke: rgba(244,114,182,0.6); stroke-dasharray: 1.5 4; }
+  .spine-raillabel { font-family: 'Space Mono', monospace; font-size: 7px; letter-spacing: 0.18em; text-transform: uppercase; fill: var(--sp-dim); }
+
+  /* ── DIAGRAMS ── */
+  .diagram-wrap { display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; }
+  .diagram { width: 100%; max-width: 300px; display: block; }
+  .diagram-caption { font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim); text-align: center; margin-top: 0.9rem; line-height: 1.9; }
+
+  /* ── THE TALLY ── */
+  .tally { display: flex; gap: 1rem; margin: 1.4rem 0; }
+  .tally-cell { flex: 1; padding: 0.9rem 1rem; border-radius: 4px; border: 1px solid rgba(167,139,250,0.18); background: rgba(255,255,255,0.02); }
+  .tally-cell.gained { border-color: rgba(74,222,128,0.3); background: rgba(74,222,128,0.05); }
+  .tally-cell.lost { border-color: rgba(244,114,182,0.3); background: rgba(244,114,182,0.05); }
+  .tally-num { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 1.5rem; line-height: 1; color: var(--green); }
+  .tally-cell.lost .tally-num { color: var(--pink); }
+  .tally-label { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dim); margin-top: 0.45rem; line-height: 1.7; }
+
+  /* ── THE LEDGER (three erasures) ── */
+  .ledger { width: 100%; border-collapse: collapse; margin: 1.3rem 0; font-size: 0.84rem; }
+  .ledger th { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--stardust); text-align: left; padding: 0.5rem 0.6rem; border-bottom: 1px solid rgba(244,114,182,0.3); font-weight: 700; }
+  .ledger td { padding: 0.6rem; border-bottom: 1px solid rgba(167,139,250,0.1); color: var(--stardust); line-height: 1.5; vertical-align: top; }
+  .ledger td.who { color: var(--star-white); font-weight: 700; white-space: nowrap; }
+
+  /* ── REFUSALS ── */
+  .refusals { margin-top: 1.3rem; }
+  .refusal { font-size: 0.88rem; line-height: 1.5; color: var(--stardust); padding: 0.55rem 0; border-bottom: 1px solid rgba(167,139,250,0.1); display: flex; gap: 0.6rem; align-items: baseline; }
+  .refusal:last-child { border-bottom: none; }
+  .refusal-tag { font-family: 'Space Mono', monospace; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ember); flex-shrink: 0; padding-top: 0.12rem; }
+  .refusal strong { color: var(--star-white); font-weight: 700; }
+
+  /* ── COLOPHON ── */
+  .colophon { padding: 3rem; display: flex; flex-direction: column; justify-content: space-between; min-height: 480px; background: radial-gradient(ellipse at 82% 18%, rgba(244,114,182,0.10) 0%, transparent 50%), radial-gradient(ellipse at 18% 85%, rgba(167,139,250,0.07) 0%, transparent 50%), var(--page); }
+  .colophon-top { border-bottom: 1px solid rgba(167,139,250,0.14); padding-bottom: 1.3rem; margin-bottom: 1.2rem; }
+  .colophon-ls { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 2.4rem; color: var(--accent); letter-spacing: 0.05em; display: block; margin-bottom: 0.4rem; }
+  .colophon-phrase { font-size: 0.98rem; font-weight: 700; font-style: italic; color: var(--stardust); }
+  .series-list { display: flex; flex-direction: column; gap: 0.38rem; margin-bottom: 1.2rem; }
+  .series-item { font-size: 0.72rem; color: var(--dim); letter-spacing: 0.01em; display: flex; gap: 0.7rem; align-items: baseline; line-height: 1.45; }
+  .series-item.current { color: var(--accent); font-weight: 700; }
+  .series-num { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim2); flex-shrink: 0; }
+  .series-item.current .series-num { color: var(--accent); }
+  .reflect { border-top: 1px solid rgba(167,139,250,0.14); padding-top: 1rem; margin-bottom: 1.2rem; }
+  .reflect-label { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.65rem; }
+  .reflect-q { font-size: 0.86rem; line-height: 1.55; color: var(--stardust); margin-bottom: 0.55rem; font-style: italic; }
+  .reflect-q:last-child { margin-bottom: 0; }
+  .colophon-body { font-size: 0.75rem; color: var(--dim); line-height: 1.75; margin-bottom: 1.2rem; }
+  .colophon-body a { color: var(--violet); text-decoration: none; border-bottom: 1px solid rgba(167,139,250,0.4); }
+  .colophon-body a:hover { border-bottom-color: var(--violet); }
+  .colophon-h { font-family: 'Space Mono', monospace; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: var(--stardust); margin: 1rem 0 0.4rem; scroll-margin-top: 5rem; }
+  .colophon-footer { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--dim); line-height: 2.2; border-top: 1px solid rgba(167,139,250,0.14); padding-top: 1rem; }
+
+  /* ── SPREAD FOOTER ── */
+  .spread-footer { display: flex; justify-content: space-between; align-items: center; padding: 0.9rem 2.4rem; border-top: 1px solid rgba(167,139,250,0.1); }
+  .spread-footer-left { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--dim); }
+  .spread-footer-right { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; color: var(--accent); }
+
+  .twinkle { position: fixed; width: 3px; height: 3px; border-radius: 50%; animation: twinkle-anim 3s ease-in-out infinite; pointer-events: none; z-index: 0; }
+
+  @media (max-width: 600px) {
+    .spread-2col { grid-template-columns: 1fr; }
+    .spread-left { border-right: none; border-bottom: 1px solid rgba(167,139,250,0.12); }
+    .spread-2col.stacked > .spread-left { border-bottom: none; }
+    .spread-2col.stacked > .col-text { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .cover-spread { padding: 2rem; min-height: 420px; }
+    .cover-motif { width: 224px; height: 224px; top: -4px; right: -24px; opacity: 0.5; }
+    .cover-title { font-size: 1.75rem; }
+    .spread-heading { font-size: 1.55rem; }
+    .spread-left, .spread-right { padding: 2rem 1.5rem; }
+    .colophon { padding: 2rem 1.5rem; }
+    .spine { padding: 1rem 1.5rem 0.2rem; }
+    .tally { flex-direction: column; gap: 0.7rem; }
+    .ledger { font-size: 0.76rem; }
+    .ledger th, .ledger td { padding: 0.4rem 0.35rem; }
+  }
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"A Conquering Gaze from Nowhere","description":"For roughly two centuries after Copernicus, the strongest argument against a moving Earth was the absence of stellar parallax: if the Earth orbits, nearby stars should shift against distant ones across six months, and no observer could see it. The reasoning was valid and the observations were careful; the conclusion was wrong, because the stars are far further away than anyone had allowed and because telescopic star discs were an instrumental artefact rather than real size. In 1838 Friedrich Bessel, working at Königsberg with a Fraunhofer heliometer, published a parallax for 61 Cygni of 0.3136 arcseconds — about 10.4 light years, against a modern value near 11.4 — narrowly ahead of Thomas Henderson on Alpha Centauri and Friedrich Struve on Vega. The method is the argument: the baseline is the observer's own displacement across Earth's orbit, so a viewpoint with no location has no baseline, no parallax and therefore no depth. It is the same Bessel who, at the same observatory, established the personal equation, where each observer's systematic difference is published as a constant and corrected for rather than trained away. Every rung of the cosmic distance ladder above parallax is calibrated by the rung beneath it, and the second rung is the period–luminosity relation found by Henrietta Swan Leavitt, employed at Harvard College Observatory as a 'computer', paid by the hour and not permitted to direct her own research; her result appeared in Harvard College Observatory Circular 173 (1912) under Edward Pickering's name, opening with the note that the statement had been prepared by Miss Leavitt. Donna Haraway named the fantasy in 'Situated Knowledges: The Science Question in Feminism and the Privilege of Partial Perspective', Feminist Studies 14(3), 1988: the god trick of seeing everything from nowhere, a conquering gaze that makes the unmarked category claim the power to see and not be seen, to represent while escaping representation. Her positive claim is usually lost — the moral is simple: only partial perspective promises objective vision — and she is equally hostile to relativism, which she calls a way of being nowhere while claiming to be everywhere equally, naming relativism and totalisation both as god tricks. The chain closes on WEIRD sampling (Henrich, Heine and Norenzayan, Behavioral and Brain Sciences 33, 2010: 96% of samples from Western industrialised nations, 68% from the United States, from countries holding 12% of the world's population), on research conducted on autistic people rather than with them, and on the correction, which is not to remove the observer but to publish their coordinates. The fourth chain in How We Got Here.","image":"https://starstuff.earth/og-card.jpg","url":"https://starstuff.earth/conquering-gaze-zine.html","mainEntityOfPage":"https://starstuff.earth/conquering-gaze-zine.html","publisher":[{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/","logo":{"@type":"ImageObject","url":"https://starstuff.earth/og-card.jpg"}},{"@type":"Organization","name":"More Realms","url":"https://morerealms.com/"}],"isPartOf":{"@type":"WebSite","name":"Star Stuff","url":"https://starstuff.earth/"}}</script>
+</head>
+<body>
+
+<div class="twinkle" style="top:10%;left:13%;background:var(--pink);box-shadow:0 0 6px var(--pink);animation-delay:-0.5s"></div>
+<div class="twinkle" style="top:22%;left:86%;background:var(--star-white);box-shadow:0 0 6px var(--star-white);animation-delay:-1.4s"></div>
+<div class="twinkle" style="top:55%;left:5%;background:var(--pink);box-shadow:0 0 6px var(--pink);animation-delay:-2.2s"></div>
+<div class="twinkle" style="top:74%;left:93%;background:var(--violet);box-shadow:0 0 6px var(--violet);animation-delay:-0.8s"></div>
+<div class="twinkle" style="top:89%;left:28%;background:var(--star-white);box-shadow:0 0 6px var(--star-white);animation-delay:-1.9s"></div>
+<div class="twinkle" style="top:38%;left:96%;background:var(--pink);box-shadow:0 0 6px var(--pink);animation-delay:-3.0s"></div>
+
+
+<div class="zine-shell">
+
+  <nav class="ss-nav" style="--nav-accent:#f472b6;" aria-label="Star Stuff collection">
+    <span class="ss-nav-home-group"><a class="ss-nav-home" href="index.html"><span class="ss-star" aria-hidden="true">★</span> stuff</a><a class="ss-nav-about" href="about.html">about</a>
+      <a class="ss-nav-search" href="search.html">search</a></span>
+    <span class="ss-nav-links">
+      <a class="ss-nav-prev" href="five-sigma-zine.html"><span class="ss-nav-arrow" aria-hidden="true">&lsaquo;</span> <span class="ss-nav-label">Five Sigma</span></a>
+      <a class="ss-nav-next" href="collection-star-gazing.html"><span class="ss-nav-label">Star Gazing</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
+    </span>
+    <a class="ss-nav-collection" href="collection-how-we-got-here.html"><span class="ss-nav-collection-label">Collection</span> <span class="ss-nav-collection-name">How We Got Here</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
+  </nav>
+
+  <nav class="nav">
+    <div class="nav-brand"><a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks</a> × <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a> · Zine No. 41</div>
+    <div class="nav-controls">
+      <button class="nav-btn" id="prev-btn" onclick="changePage(-1)">← prev</button>
+      <span class="page-counter" id="page-counter">1 / 15</span>
+      <button class="nav-btn" id="next-btn" onclick="changePage(1)">next →</button>
+    </div>
+  </nav>
+
+  <!-- ════ SPREAD 1: COVER ════ -->
+  <div class="spread active" id="spread-1">
+    <div class="cover-spread">
+      <svg class="cover-motif" viewBox="0 0 340 340" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <!-- A parallax triangle: two observing positions six months apart, sight-lines to a near
+             star, and the angle between them. Held in the UPPER THIRD of the box — the cover is
+             520px and the title sits at its foot, so anything past y≈240 in this viewBox lands
+             on the words. Measured on No. 38; the constraint is real. -->
+        <g transform="translate(16,30) scale(0.78)">
+          <!-- the distant background stars -->
+          <circle cx="46" cy="28" r="1.8" fill="rgba(244,244,251,0.45)"/>
+          <circle cx="120" cy="18" r="1.6" fill="rgba(244,244,251,0.4)"/>
+          <circle cx="196" cy="34" r="1.8" fill="rgba(244,244,251,0.45)"/>
+          <!-- the near star, seen twice -->
+          <circle cx="104" cy="60" r="4.4" fill="var(--pink)"/>
+          <circle cx="132" cy="60" r="4.4" fill="none" stroke="rgba(244,114,182,0.55)" stroke-width="1.3" stroke-dasharray="2 2"/>
+          <!-- sight lines from the two positions -->
+          <path d="M40 196 L104 60" fill="none" stroke="rgba(244,114,182,0.55)" stroke-width="1.2"/>
+          <path d="M196 196 L132 60" fill="none" stroke="rgba(244,114,182,0.4)" stroke-width="1.2" stroke-dasharray="5 4"/>
+          <!-- the two observing positions -->
+          <circle cx="40" cy="196" r="5" fill="var(--violet)"/>
+          <circle cx="196" cy="196" r="5" fill="none" stroke="var(--violet)" stroke-width="1.4" stroke-dasharray="2 2"/>
+          <!-- the baseline -->
+          <path d="M40 210 L40 218 L196 218 L196 210" fill="none" stroke="rgba(167,139,250,0.75)" stroke-width="1.3"/>
+          <text x="118" y="236" text-anchor="middle" font-family="Space Mono, monospace" font-size="10" font-weight="700" letter-spacing="0.8" fill="var(--violet)">baseline</text>
+        </g>
+      </svg>
+      <div class="cover-corner">
+        <div class="cover-corner-num">41</div>
+        <span class="cover-corner-label">Chain</span>
+      </div>
+      <div class="cover-issue">Stimpunks × More Realms · Zine No. 41</div>
+      <h1 class="cover-title">A Conquering Gaze <span class="amp">from</span> Nowhere</h1>
+      <p class="cover-subtitle">parallax, positionality, and the research done on us</p>
+      <div class="cover-byline">Every joint marked <strong>documented</strong> · <strong>contested</strong> · <strong>leap</strong></div>
+      <hr class="spectrum-line cover-rule">
+      <div class="cover-meta">
+        <span class="cover-ls">L★S</span>
+        <div class="cover-meta-text">Love You Down To Your Star Stuff<br>open edition · print freely</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 2: the objection that was right ════ -->
+  <div class="spread" id="spread-2">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">1543–1838 · the long objection</div>
+          <h2 class="spread-heading" id="the-objection-that-was-good">The objection that was <span class="spectrum-word">perfectly good</span></h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">If the Earth really moves around the Sun, then over six months your viewpoint shifts by the whole width of that orbit — and nearby stars should visibly slide against the distant ones.</p>
+            <p>They don't. Not to the naked eye, not to Tycho Brahe's superb instruments, not to anyone for nearly three hundred years after Copernicus. <strong>So the Earth does not move.</strong></p>
+            <p>That was not stupidity. It was <span class="pink">valid reasoning from careful data</span>, and it is the strongest empirical objection the heliocentric model ever faced. The answer — the stars are simply much, much further away than that — sounded like special pleading, because the distances required were, by the standards of the time, absurd.</p>
+            <p>And there was a second trap underneath, which is the part that should make anyone nervous. Through a telescope, stars show small discs. Take those discs as real and you can compute a physical size — and at the distances parallax would require, stars come out grotesquely, impossibly enormous. Tycho ran that calculation and rejected the conclusion.</p>
+            <div class="pull-quote">The discs were not there. They are an artefact of light passing through a finite aperture — the instrument drawing its own signature on the sky and handing it back as data.<span class="attr">the trap under the trap</span></div>
+            <p>So the chain opens on a failure with three parts, all of them still with us: <strong>absence of evidence read as evidence of absence</strong>; a conclusion rejected because its implications felt too large; and <span class="gold">an instrument's own artefact mistaken for a property of the thing observed.</span></p>
+            <p>What eventually broke it was not a better argument. It was somebody measuring the shift.</p>
+            <p><span class="joint joint-documented">documented</span> &nbsp;the missing parallax → Bessel</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 180" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig1-title fig1-desc">
+              <title id="fig1-title">The shift nobody could see</title>
+              <desc id="fig1-desc">Two observing positions at either end of Earth's orbit, with sight lines to a near star that barely changes its apparent place against the background stars. The angle is marked as too small to detect.</desc>
+              <g fill="rgba(244,244,251,0.4)">
+                <circle cx="60" cy="24" r="1.8"/><circle cx="150" cy="16" r="1.6"/><circle cx="240" cy="28" r="1.8"/>
+              </g>
+              <circle cx="146" cy="52" r="4" fill="var(--pink)"/>
+              <circle cx="156" cy="52" r="4" fill="none" stroke="rgba(244,114,182,0.5)" stroke-width="1.2" stroke-dasharray="2 2"/>
+              <path d="M60 138 L146 52" fill="none" stroke="rgba(244,114,182,0.5)" stroke-width="1.1"/>
+              <path d="M240 138 L156 52" fill="none" stroke="rgba(244,114,182,0.35)" stroke-width="1.1" stroke-dasharray="4 4"/>
+              <circle cx="60" cy="138" r="4.4" fill="var(--violet)"/>
+              <circle cx="240" cy="138" r="4.4" fill="none" stroke="var(--violet)" stroke-width="1.3" stroke-dasharray="2 2"/>
+              <text x="60" y="156" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" fill="var(--violet)">January</text>
+              <text x="240" y="156" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" fill="var(--violet)">July</text>
+              <path d="M146 44 L156 44" stroke="var(--gold)" stroke-width="1.2"/>
+              <text x="151" y="38" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" fill="var(--gold)">the shift</text>
+              <text x="150" y="174" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="1" fill="var(--sp-secondary)">too small to see for 300 years</text>
+            </svg>
+            <div class="diagram-caption">Figure 1 · real, and undetectable</div>
+          </div>
+        </div>
+      </div>
+      <div class="spine">
+        <svg viewBox="0 0 620 66" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain, with 1 — the missing parallax live. A single rail, with a baseline marked under its first two joints.">
+          <path class="spine-track documented" d="M90 32 H132"/><path class="spine-track documented" d="M132 32 H174"/><path class="spine-track documented" d="M174 32 H216"/><path class="spine-track documented" d="M216 32 H258"/><path class="spine-track documented" d="M258 32 H300"/><path class="spine-track documented" d="M300 32 H342"/><path class="spine-track documented" d="M342 32 H384"/><path class="spine-track contested" d="M384 32 H426"/><path class="spine-track documented" d="M426 32 H468"/><path class="spine-track documented" d="M468 32 H510"/><path class="spine-track documented" d="M510 32 H552"/><path class="spine-track contested" d="M552 32 H594"/><path d="M90 44 L90 50 L132 50 L132 44" fill="none" stroke="rgba(167,139,250,0.6)" stroke-width="1.1"/><text class="spine-raillabel" x="111" y="60" text-anchor="middle">baseline</text><text class="spine-raillabel" x="0" y="35">the chain</text><g class="spine-node"><circle cx="132" cy="32" r="3.4"/><circle cx="174" cy="32" r="3.4"/><circle cx="216" cy="32" r="3.4"/><circle cx="258" cy="32" r="3.4"/><circle cx="300" cy="32" r="3.4"/><circle cx="342" cy="32" r="3.4"/><circle cx="384" cy="32" r="3.4"/><circle cx="426" cy="32" r="3.4"/><circle cx="468" cy="32" r="3.4"/><circle cx="510" cy="32" r="3.4"/><circle cx="552" cy="32" r="3.4"/><circle cx="594" cy="32" r="3.4"/></g><circle class="spine-node live" cx="90" cy="32" r="4.6"/><circle class="spine-ring" cx="90" cy="32" r="9"/>
+        </svg>
+        <div class="spine-label">1 · the missing parallax</div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Conquering Gaze · Stimpunks</span>
+        <span class="spread-footer-right">2</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 3: Königsberg 1838 ════ -->
+  <div class="spread" id="spread-3">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Königsberg · 1838</div>
+          <h2 class="spread-heading" id="konigsberg-1838">Somebody measured the shift</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede"><strong>Friedrich Bessel</strong> picked 61 Cygni because it moved. Not much — but its motion across the sky was unusually fast, and fast usually means near.</p>
+            <p>With a Fraunhofer heliometer, on every clear night he could get, he tracked it against two neighbouring stars. In 1838 he published the result: a parallax of <span class="pink">0.3136 arcseconds</span>.</p>
+            <p>That is an angle it is worth trying to feel. <strong>A two-centimetre coin, seen from thirteen kilometres away.</strong> That is the entire wobble on which the first known distance to a star was built. It gave about <em>10.4 light years</em>; the modern figure is near 11.4.</p>
+            <p>He was narrowly first. Thomas Henderson had Alpha Centauri and Friedrich Struve had Vega at almost the same moment. <span class="dim">Three people, three stars, one method, within months.</span></p>
+            <div class="callout">Three hundred years of "we looked and saw nothing" ended the moment the instrument got good enough to see a coin at thirteen kilometres. The stars had been moving the whole time.<span class="attr">what actually settles an argument</span></div>
+            <p>And here is the detail this collection has to stop and mark. <strong>Bessel did this at Königsberg</strong> — the same man, at the same observatory, who established the <a href="eight-tenths-of-a-second-zine.html">personal equation</a>: the finding that observers differ from one another systematically, and that the right response is to publish a constant for each of them and correct the data rather than correct the observer.</p>
+            <p>Twice, from opposite directions, the same person demonstrated that <span class="violet">knowledge requires a located, particular observer.</span> Once by needing their displacement. Once by needing their difference.</p>
+            <p><span class="joint joint-documented">documented</span> &nbsp;the measurement → what the method implies</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 176" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig2-title fig2-desc">
+              <title id="fig2-title">Nought point three one three six arcseconds</title>
+              <desc id="fig2-desc">A coin drawn at one end of a long dimension line and an eye at the other, thirteen kilometres apart, illustrating the size of the angle Bessel measured.</desc>
+              <circle cx="34" cy="60" r="9" fill="none" stroke="var(--pink)" stroke-width="1.5"/>
+              <text x="34" y="84" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" fill="var(--pink)">2 cm</text>
+              <path d="M52 60 H250" stroke="rgba(167,139,250,0.45)" stroke-width="1.1" stroke-dasharray="5 4"/>
+              <path d="M244 55 L252 60 L244 65" fill="none" stroke="rgba(167,139,250,0.6)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+              <ellipse cx="266" cy="60" rx="10" ry="6" fill="none" stroke="var(--violet)" stroke-width="1.4"/>
+              <circle cx="266" cy="60" r="2.4" fill="var(--violet)"/>
+              <text x="151" y="48" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.5" letter-spacing="0.8" fill="var(--sp-secondary)">13 kilometres</text>
+              <text x="150" y="112" text-anchor="middle" font-family="Space Mono, monospace" font-size="13" font-weight="700" letter-spacing="0.4" fill="var(--pink)">0.3136&Prime;</text>
+              <text x="150" y="132" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.5" letter-spacing="0.8" fill="var(--sp-secondary)">61 Cygni · Bessel 1838</text>
+              <text x="150" y="152" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="1" fill="var(--sp-dim)">≈ 10.4 light years</text>
+              <text x="150" y="168" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="1" fill="var(--sp-dim)">modern value ≈ 11.4</text>
+            </svg>
+            <div class="diagram-caption">Figure 2 · the whole wobble</div>
+          </div>
+        </div>
+      </div>
+      <div class="spine">
+        <svg viewBox="0 0 620 66" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain, with 2 — Bessel — 61 Cygni live. A single rail, with a baseline marked under its first two joints.">
+          <path class="spine-track documented" d="M90 32 H132"/><path class="spine-track documented" d="M132 32 H174"/><path class="spine-track documented" d="M174 32 H216"/><path class="spine-track documented" d="M216 32 H258"/><path class="spine-track documented" d="M258 32 H300"/><path class="spine-track documented" d="M300 32 H342"/><path class="spine-track documented" d="M342 32 H384"/><path class="spine-track contested" d="M384 32 H426"/><path class="spine-track documented" d="M426 32 H468"/><path class="spine-track documented" d="M468 32 H510"/><path class="spine-track documented" d="M510 32 H552"/><path class="spine-track contested" d="M552 32 H594"/><path d="M90 44 L90 50 L132 50 L132 44" fill="none" stroke="rgba(167,139,250,0.6)" stroke-width="1.1"/><text class="spine-raillabel" x="111" y="60" text-anchor="middle">baseline</text><text class="spine-raillabel" x="0" y="35">the chain</text><g class="spine-node"><circle cx="90" cy="32" r="3.4"/><circle cx="174" cy="32" r="3.4"/><circle cx="216" cy="32" r="3.4"/><circle cx="258" cy="32" r="3.4"/><circle cx="300" cy="32" r="3.4"/><circle cx="342" cy="32" r="3.4"/><circle cx="384" cy="32" r="3.4"/><circle cx="426" cy="32" r="3.4"/><circle cx="468" cy="32" r="3.4"/><circle cx="510" cy="32" r="3.4"/><circle cx="552" cy="32" r="3.4"/><circle cx="594" cy="32" r="3.4"/></g><circle class="spine-node live" cx="132" cy="32" r="4.6"/><circle class="spine-ring" cx="132" cy="32" r="9"/>
+        </svg>
+        <div class="spine-label">2 · Bessel · 61 Cygni</div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Conquering Gaze · Stimpunks</span>
+        <span class="spread-footer-right">3</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 4: no parallax without a place ════ -->
+  <div class="spread" id="spread-4">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The geometry · and what it forbids</div>
+          <h2 class="spread-heading" id="no-baseline-no-depth">No baseline, no depth</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Strip parallax down to what it actually is, because the whole zine is in the geometry.</p>
+            <p>You look at a star. You wait six months, which carries you to the far side of Earth's orbit. You look again. The star appears to have moved a little against the far background, and from that angle and the width of your orbit you get the distance.</p>
+            <p><strong>The width of your orbit is called the baseline.</strong> It is not a nuisance in the measurement, not a source of error to be minimised, not contamination from the observer's situation.</p>
+            <div class="pull-quote">The observer's displacement <em>is</em> the instrument. Take it away and you have not made the measurement purer. You have made it impossible.<span class="attr">the sentence this zine turns on</span></div>
+            <p>Consider what a genuine view from nowhere would be. No location, therefore no second location, therefore <span class="pink">no baseline, no angle, no distance.</span> An observer at no position sees a flat sky and cannot tell a nearby star from a far one. Not "with difficulty." <em>At all.</em> The god's-eye view is, in the one domain where we can check it exactly, <strong>the blindest possible position.</strong></p>
+            <p>And the reverse holds too, which is the constructive half. <span class="violet">The more your positions differ, the better your measurement gets.</span> That is why space astrometry beats ground-based: a wider, better-known baseline. Difference between viewpoints is not noise to be averaged out. It is signal, and it is the only signal there is.</p>
+            <p><span class="joint joint-documented">documented</span> &nbsp;parallax → the whole distance ladder</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 186" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig3-title fig3-desc">
+              <title id="fig3-title">Two positions, and none</title>
+              <desc id="fig3-desc">On the left, two observing positions with a baseline between them yield an angle and a distance. On the right, a single point with no baseline yields a flat sky and no distance at all.</desc>
+              <text x="72" y="18" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.5" letter-spacing="1" fill="var(--violet)">from somewhere</text>
+              <circle cx="72" cy="44" r="4" fill="var(--pink)"/>
+              <path d="M30 108 L72 44 L114 108" fill="none" stroke="rgba(244,114,182,0.55)" stroke-width="1.2"/>
+              <circle cx="30" cy="108" r="4" fill="var(--violet)"/>
+              <circle cx="114" cy="108" r="4" fill="var(--violet)"/>
+              <path d="M30 120 L30 126 L114 126 L114 120" fill="none" stroke="rgba(167,139,250,0.7)" stroke-width="1.2"/>
+              <text x="72" y="140" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" fill="var(--violet)">baseline</text>
+              <text x="72" y="160" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.5" font-weight="700" fill="var(--green)">→ distance</text>
+              <line x1="150" y1="14" x2="150" y2="170" stroke="rgba(167,139,250,0.25)" stroke-width="1" stroke-dasharray="4 4"/>
+              <text x="226" y="18" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.5" letter-spacing="1" fill="var(--gold)">from nowhere</text>
+              <g fill="rgba(244,114,182,0.55)">
+                <circle cx="192" cy="44" r="3"/><circle cx="226" cy="44" r="3"/><circle cx="260" cy="44" r="3"/>
+              </g>
+              <text x="226" y="62" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--sp-dim)">all equally far</text>
+              <circle cx="226" cy="108" r="4" fill="none" stroke="var(--gold)" stroke-width="1.3" stroke-dasharray="2 2"/>
+              <path d="M226 104 L192 50 M226 104 L226 50 M226 104 L260 50" fill="none" stroke="rgba(251,191,36,0.35)" stroke-width="1"/>
+              <text x="226" y="140" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" fill="var(--gold)">no baseline</text>
+              <text x="226" y="160" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.5" font-weight="700" fill="var(--pink)">→ nothing</text>
+              <text x="150" y="182" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="1.2" fill="var(--sp-dim)">the view from nowhere is the blind one</text>
+            </svg>
+            <div class="diagram-caption">Figure 3 · position as instrument</div>
+          </div>
+        </div>
+      </div>
+      <div class="spine">
+        <svg viewBox="0 0 620 66" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain, with 3 — the baseline live. A single rail, with a baseline marked under its first two joints.">
+          <path class="spine-track documented" d="M90 32 H132"/><path class="spine-track documented" d="M132 32 H174"/><path class="spine-track documented" d="M174 32 H216"/><path class="spine-track documented" d="M216 32 H258"/><path class="spine-track documented" d="M258 32 H300"/><path class="spine-track documented" d="M300 32 H342"/><path class="spine-track documented" d="M342 32 H384"/><path class="spine-track contested" d="M384 32 H426"/><path class="spine-track documented" d="M426 32 H468"/><path class="spine-track documented" d="M468 32 H510"/><path class="spine-track documented" d="M510 32 H552"/><path class="spine-track contested" d="M552 32 H594"/><path d="M90 44 L90 50 L132 50 L132 44" fill="none" stroke="rgba(167,139,250,0.6)" stroke-width="1.1"/><text class="spine-raillabel" x="111" y="60" text-anchor="middle">baseline</text><text class="spine-raillabel" x="0" y="35">the chain</text><g class="spine-node"><circle cx="90" cy="32" r="3.4"/><circle cx="132" cy="32" r="3.4"/><circle cx="216" cy="32" r="3.4"/><circle cx="258" cy="32" r="3.4"/><circle cx="300" cy="32" r="3.4"/><circle cx="342" cy="32" r="3.4"/><circle cx="384" cy="32" r="3.4"/><circle cx="426" cy="32" r="3.4"/><circle cx="468" cy="32" r="3.4"/><circle cx="510" cy="32" r="3.4"/><circle cx="552" cy="32" r="3.4"/><circle cx="594" cy="32" r="3.4"/></g><circle class="spine-node live" cx="174" cy="32" r="4.6"/><circle class="spine-ring" cx="174" cy="32" r="9"/>
+        </svg>
+        <div class="spine-label">3 · the baseline</div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Conquering Gaze · Stimpunks</span>
+        <span class="spread-footer-right">4</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 5: the ladder ════ -->
+  <div class="spread" id="spread-5">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Everything above it</div>
+          <h2 class="spread-heading" id="the-ladder">Everything rests on the bottom rung</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Parallax only reaches so far. Past that, astronomy does something audacious: it builds a ladder, and calibrates each rung against the one below.</p>
+            <p><strong>Rung one is geometry</strong> — parallax, an observer moving, no assumptions required.</p>
+            <p><strong>Rung two is the period–luminosity relation.</strong> Certain variable stars pulse at a rate that tracks their true brightness, so if you can read the period you know the intrinsic luminosity, and comparing that to how bright it looks gives distance. Calibrated by rung one.</p>
+            <p><strong>Rung three</strong> reaches further still with exploding stars of standardisable brightness. Calibrated by rung two. And so on out to the expansion of the universe itself.</p>
+            <div class="pull-quote violet">Every distance in cosmology — every one — is ultimately anchored to somebody standing in a particular place and moving to another.<span class="attr">what the ladder is bolted to</span></div>
+            <p>Which means the ladder inherits the bottom rung's fate. <span class="gold">Move the calibration and every rung above it moves.</span> This is not hypothetical: recalibrations of the variable-star rung have historically resedimented the entire extragalactic distance scale, and disagreements about that calibration sit near the centre of live arguments about the expansion rate today.</p>
+            <p>Hold that structure, because the rest of the zine is about a different ladder with the same property. <strong>When the bottom rung is a person in a position, and you have pretended there is no person and no position, everything built on top inherits the error and none of it knows.</strong></p>
+            <p><span class="joint joint-documented">documented</span> &nbsp;rung two → who built it</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 190" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig4-title fig4-desc">
+              <title id="fig4-title">The distance ladder</title>
+              <desc id="fig4-desc">Four stacked rungs — parallax, period-luminosity, standard candles, and cosmic expansion — each labelled as calibrated by the rung below, with the bottom rung marked geometry, an observer moving.</desc>
+              <g>
+                <rect x="26" y="18" width="248" height="26" rx="3" fill="rgba(167,139,250,0.05)" stroke="rgba(167,139,250,0.28)" stroke-width="1"/>
+                <text x="38" y="35" font-family="Space Mono, monospace" font-size="7.5" fill="var(--sp-secondary)">cosmic expansion</text>
+                <rect x="26" y="52" width="248" height="26" rx="3" fill="rgba(167,139,250,0.05)" stroke="rgba(167,139,250,0.28)" stroke-width="1"/>
+                <text x="38" y="69" font-family="Space Mono, monospace" font-size="7.5" fill="var(--sp-secondary)">exploding stars</text>
+                <rect x="26" y="86" width="248" height="26" rx="3" fill="rgba(244,114,182,0.07)" stroke="rgba(244,114,182,0.35)" stroke-width="1.1"/>
+                <text x="38" y="103" font-family="Space Mono, monospace" font-size="7.5" fill="var(--pink)">period–luminosity</text>
+                <rect x="26" y="120" width="248" height="30" rx="3" fill="rgba(74,222,128,0.07)" stroke="rgba(74,222,128,0.4)" stroke-width="1.3"/>
+                <text x="38" y="133" font-family="Space Mono, monospace" font-size="7.5" fill="var(--green)">parallax · geometry</text>
+                <text x="38" y="145" font-family="Space Mono, monospace" font-size="6.5" fill="var(--green)">an observer, moving</text>
+              </g>
+              <g stroke="rgba(167,139,250,0.4)" stroke-width="1.1" fill="none">
+                <path d="M282 120 L282 100"/><path d="M282 86 L282 66"/><path d="M282 52 L282 32"/>
+              </g>
+              <g fill="none" stroke="rgba(167,139,250,0.55)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M278 106 L282 100 L286 106"/><path d="M278 72 L282 66 L286 72"/><path d="M278 38 L282 32 L286 38"/>
+              </g>
+              <text x="150" y="172" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.5" letter-spacing="0.8" fill="var(--sp-secondary)">each rung calibrated by the one below</text>
+              <text x="150" y="186" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="1.2" fill="var(--sp-dim)">move the bottom and everything moves</text>
+            </svg>
+            <div class="diagram-caption">Figure 4 · anchored to a located observer</div>
+          </div>
+        </div>
+      </div>
+      <div class="spine">
+        <svg viewBox="0 0 620 66" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain, with 4 — the ladder live. A single rail, with a baseline marked under its first two joints.">
+          <path class="spine-track documented" d="M90 32 H132"/><path class="spine-track documented" d="M132 32 H174"/><path class="spine-track documented" d="M174 32 H216"/><path class="spine-track documented" d="M216 32 H258"/><path class="spine-track documented" d="M258 32 H300"/><path class="spine-track documented" d="M300 32 H342"/><path class="spine-track documented" d="M342 32 H384"/><path class="spine-track contested" d="M384 32 H426"/><path class="spine-track documented" d="M426 32 H468"/><path class="spine-track documented" d="M468 32 H510"/><path class="spine-track documented" d="M510 32 H552"/><path class="spine-track contested" d="M552 32 H594"/><path d="M90 44 L90 50 L132 50 L132 44" fill="none" stroke="rgba(167,139,250,0.6)" stroke-width="1.1"/><text class="spine-raillabel" x="111" y="60" text-anchor="middle">baseline</text><text class="spine-raillabel" x="0" y="35">the chain</text><g class="spine-node"><circle cx="90" cy="32" r="3.4"/><circle cx="132" cy="32" r="3.4"/><circle cx="174" cy="32" r="3.4"/><circle cx="258" cy="32" r="3.4"/><circle cx="300" cy="32" r="3.4"/><circle cx="342" cy="32" r="3.4"/><circle cx="384" cy="32" r="3.4"/><circle cx="426" cy="32" r="3.4"/><circle cx="468" cy="32" r="3.4"/><circle cx="510" cy="32" r="3.4"/><circle cx="552" cy="32" r="3.4"/><circle cx="594" cy="32" r="3.4"/></g><circle class="spine-node live" cx="216" cy="32" r="4.6"/><circle class="spine-ring" cx="216" cy="32" r="9"/>
+        </svg>
+        <div class="spine-label">4 · the ladder</div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Conquering Gaze · Stimpunks</span>
+        <span class="spread-footer-right">5</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 6: Leavitt ════ -->
+  <div class="spread" id="spread-6">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Harvard College Observatory · 1895–1912</div>
+          <h2 class="spread-heading" id="not-permitted-to-observe">The woman not permitted to observe</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Rung two of the ladder — the one everything above it stands on — was built by a person who was not allowed to use the telescope.</p>
+            <p><strong>Henrietta Swan Leavitt</strong> joined Harvard College Observatory in 1895 as one of the women hired as <em>computers</em>: paid by the hour, assigned tasks rather than choosing them, employed to measure photographic plates that men had exposed.</p>
+            <p>On those plates she found and measured the periods of roughly <span class="pink">1,700 variable stars</span> in the Magellanic Clouds. And she noticed the thing nobody had: because everything in the Small Magellanic Cloud sits at essentially the same distance from us, differences in <em>apparent</em> brightness there are differences in <em>actual</em> brightness. That single observation converts a pattern into a ruler.</p>
+            <p>The result — the period–luminosity relation, the Leavitt Law — appeared in <em>Harvard College Observatory Circular 173</em> in 1912, titled "Periods of 25 Variable Stars in the Small Magellanic Cloud."</p>
+            <div class="callout">It was published under the name of the observatory's director, Edward Pickering. It opens by noting that the statement <strong>"has been prepared by Miss Leavitt."</strong><span class="attr">HCO Circular 173, 1912</span></div>
+            <p>Prepared by. The measurement of the universe rests on rung two, and rung two is credited in a subordinate clause.</p>
+            <p>Now put that next to the argument of the last three spreads. Parallax says knowledge requires an observer in a position. <strong>Leavitt was denied the position of observer and made the discovery anyway</strong> — from a chair, with a magnifying glass, on somebody else's plates. <span class="violet">She had a standpoint. The institution simply declined to record that it was hers.</span></p>
+            <p><span class="joint joint-documented">documented</span> &nbsp;this erasure → the pattern</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 178" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig5-title fig5-desc">
+              <title id="fig5-title">Who is at the telescope and who is at the plates</title>
+              <desc id="fig5-desc">A telescope with a named observer beside it, and a desk of photographic plates where the discovery was actually made, with the credit line reading prepared by Miss Leavitt.</desc>
+              <g stroke="rgba(167,139,250,0.5)" stroke-width="1.4" fill="none">
+                <path d="M42 88 L78 46"/><path d="M36 92 L48 84"/><path d="M60 96 L60 122"/><path d="M46 122 H74"/>
+              </g>
+              <circle cx="82" cy="42" r="5" fill="none" stroke="rgba(167,139,250,0.6)" stroke-width="1.3"/>
+              <text x="60" y="140" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" fill="var(--violet)">the observer</text>
+              <text x="60" y="152" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--sp-dim)">named on the paper</text>
+              <line x1="150" y1="20" x2="150" y2="164" stroke="rgba(167,139,250,0.25)" stroke-width="1" stroke-dasharray="4 4"/>
+              <g fill="none" stroke="rgba(244,114,182,0.55)" stroke-width="1.2">
+                <rect x="188" y="44" width="34" height="26" rx="2"/>
+                <rect x="196" y="54" width="34" height="26" rx="2"/>
+                <rect x="204" y="64" width="34" height="26" rx="2"/>
+              </g>
+              <circle cx="252" cy="98" r="7" fill="none" stroke="var(--pink)" stroke-width="1.3"/>
+              <path d="M257 103 L264 110" stroke="var(--pink)" stroke-width="1.4" stroke-linecap="round"/>
+              <text x="222" y="130" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" fill="var(--pink)">the plates</text>
+              <text x="222" y="142" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--sp-dim)">where the law was found</text>
+              <text x="150" y="172" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.5" font-weight="700" letter-spacing="0.6" fill="var(--sp-secondary)">&ldquo;has been prepared by Miss Leavitt&rdquo;</text>
+            </svg>
+            <div class="diagram-caption">Figure 5 · rung two, in a subordinate clause</div>
+          </div>
+        </div>
+      </div>
+      <div class="spine">
+        <svg viewBox="0 0 620 66" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain, with 5 — Leavitt — rung two live. A single rail, with a baseline marked under its first two joints.">
+          <path class="spine-track documented" d="M90 32 H132"/><path class="spine-track documented" d="M132 32 H174"/><path class="spine-track documented" d="M174 32 H216"/><path class="spine-track documented" d="M216 32 H258"/><path class="spine-track documented" d="M258 32 H300"/><path class="spine-track documented" d="M300 32 H342"/><path class="spine-track documented" d="M342 32 H384"/><path class="spine-track contested" d="M384 32 H426"/><path class="spine-track documented" d="M426 32 H468"/><path class="spine-track documented" d="M468 32 H510"/><path class="spine-track documented" d="M510 32 H552"/><path class="spine-track contested" d="M552 32 H594"/><path d="M90 44 L90 50 L132 50 L132 44" fill="none" stroke="rgba(167,139,250,0.6)" stroke-width="1.1"/><text class="spine-raillabel" x="111" y="60" text-anchor="middle">baseline</text><text class="spine-raillabel" x="0" y="35">the chain</text><g class="spine-node"><circle cx="90" cy="32" r="3.4"/><circle cx="132" cy="32" r="3.4"/><circle cx="174" cy="32" r="3.4"/><circle cx="216" cy="32" r="3.4"/><circle cx="300" cy="32" r="3.4"/><circle cx="342" cy="32" r="3.4"/><circle cx="384" cy="32" r="3.4"/><circle cx="426" cy="32" r="3.4"/><circle cx="468" cy="32" r="3.4"/><circle cx="510" cy="32" r="3.4"/><circle cx="552" cy="32" r="3.4"/><circle cx="594" cy="32" r="3.4"/></g><circle class="spine-node live" cx="258" cy="32" r="4.6"/><circle class="spine-ring" cx="258" cy="32" r="9"/>
+        </svg>
+        <div class="spine-label">5 · Leavitt · rung two</div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Conquering Gaze · Stimpunks</span>
+        <span class="spread-footer-right">6</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 7: three chains, three women ════ -->
+  <div class="spread" id="spread-7">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Stepping out of the chain</div>
+          <h2 class="spread-heading" id="three-chains-three-women">Three chains, three women, three bylines</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">This collection did not set out to keep writing this sentence. It is the third time, and at three it stops being an anecdote.</p>
+            <table class="ledger">
+              <thead><tr><th>Who</th><th>What she did</th><th>What the record says</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td class="who">Cretyl Mills</td>
+                  <td>Carried the multi-year experiment that finally demonstrated airborne tuberculosis transmission — and contracted TB doing it</td>
+                  <td>&ldquo;Not pictured.&rdquo; Her name survives in a subordinate clause of a history paper</td>
+                </tr>
+                <tr>
+                  <td class="who">Mildred Wells</td>
+                  <td>Co-worker on the physics that established how respiratory droplets behave — the 100 µm threshold</td>
+                  <td>&ldquo;Not pictured.&rdquo; The work is remembered under her husband's name alone</td>
+                </tr>
+                <tr>
+                  <td class="who">Henrietta Leavitt</td>
+                  <td>Found the period–luminosity relation — rung two of the cosmic distance ladder</td>
+                  <td>Published under her director's name: &ldquo;has been prepared by Miss Leavitt&rdquo;</td>
+                </tr>
+              </tbody>
+            </table>
+            <p>Two of those come from <a href="five-microns-zine.html">No. 39</a>; one is on the previous spread. We were not looking for them. <strong>They turned up because chains make you read the primary sources, and the primary sources say who was actually in the room.</strong></p>
+            <p>And this is not a detour from the argument — it <em>is</em> the argument, one turn further in. The god trick does not merely hide the observer. <span class="pink">It decides which observers are permitted to exist in the record.</span> The unmarked category gets the byline; the marked body gets the subordinate clause and does the work.</p>
+            <div class="joint-note"><strong>Held carefully.</strong> Three cases is a pattern in this collection, not a demonstrated law about science. We are not claiming a mechanism that produced all three, and we have not gone looking for counter-examples — chains that turned up no such erasure would not have prompted a spread. What is documented is each case; the reading across them is ours, and this note is here so the reading cannot be mistaken for the evidence.</div>
+            <p><span class="joint joint-documented">documented</span> &nbsp;the three cases → Haraway's name for it</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 168" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig6-title fig6-desc">
+              <title id="fig6-title">Three chains, one shape</title>
+              <desc id="fig6-desc">Three horizontal chains, each ending in a byline box, with a smaller unnamed figure beneath each box doing the work.</desc>
+              <g font-family="Space Mono, monospace" font-size="6.5">
+                <text x="16" y="30" fill="var(--sp-dim)">No. 39</text>
+                <text x="16" y="76" fill="var(--sp-dim)">No. 39</text>
+                <text x="16" y="122" fill="var(--sp-dim)">No. 41</text>
+              </g>
+              <g stroke="rgba(167,139,250,0.4)" stroke-width="1.2" fill="none">
+                <path d="M58 26 H180"/><path d="M58 72 H180"/><path d="M58 118 H180"/>
+              </g>
+              <g fill="rgba(167,139,250,0.55)">
+                <circle cx="80" cy="26" r="2.6"/><circle cx="112" cy="26" r="2.6"/><circle cx="144" cy="26" r="2.6"/>
+                <circle cx="80" cy="72" r="2.6"/><circle cx="112" cy="72" r="2.6"/><circle cx="144" cy="72" r="2.6"/>
+                <circle cx="80" cy="118" r="2.6"/><circle cx="112" cy="118" r="2.6"/><circle cx="144" cy="118" r="2.6"/>
+              </g>
+              <g fill="none" stroke="rgba(167,139,250,0.5)" stroke-width="1.2">
+                <rect x="186" y="16" width="52" height="20" rx="2"/>
+                <rect x="186" y="62" width="52" height="20" rx="2"/>
+                <rect x="186" y="108" width="52" height="20" rx="2"/>
+              </g>
+              <g font-family="Space Mono, monospace" font-size="6" fill="var(--sp-secondary)" text-anchor="middle">
+                <text x="212" y="30">byline</text><text x="212" y="76">byline</text><text x="212" y="122">byline</text>
+              </g>
+              <g fill="none" stroke="var(--pink)" stroke-width="1.3" stroke-dasharray="2 2">
+                <circle cx="262" cy="26" r="7"/><circle cx="262" cy="72" r="7"/><circle cx="262" cy="118" r="7"/>
+              </g>
+              <g font-family="Space Mono, monospace" font-size="6" fill="var(--pink)" text-anchor="middle">
+                <text x="262" y="44">Mills</text><text x="262" y="90">Wells</text><text x="262" y="136">Leavitt</text>
+              </g>
+              <text x="150" y="160" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="1.2" fill="var(--sp-secondary)">did the work · outside the box</text>
+            </svg>
+            <div class="diagram-caption">Figure 6 · a pattern, not a coincidence</div>
+          </div>
+        </div>
+      </div>
+      <div class="spine">
+        <svg viewBox="0 0 620 66" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain, with 6 — three erasures live. A single rail, with a baseline marked under its first two joints.">
+          <path class="spine-track documented" d="M90 32 H132"/><path class="spine-track documented" d="M132 32 H174"/><path class="spine-track documented" d="M174 32 H216"/><path class="spine-track documented" d="M216 32 H258"/><path class="spine-track documented" d="M258 32 H300"/><path class="spine-track documented" d="M300 32 H342"/><path class="spine-track documented" d="M342 32 H384"/><path class="spine-track contested" d="M384 32 H426"/><path class="spine-track documented" d="M426 32 H468"/><path class="spine-track documented" d="M468 32 H510"/><path class="spine-track documented" d="M510 32 H552"/><path class="spine-track contested" d="M552 32 H594"/><path d="M90 44 L90 50 L132 50 L132 44" fill="none" stroke="rgba(167,139,250,0.6)" stroke-width="1.1"/><text class="spine-raillabel" x="111" y="60" text-anchor="middle">baseline</text><text class="spine-raillabel" x="0" y="35">the chain</text><g class="spine-node"><circle cx="90" cy="32" r="3.4"/><circle cx="132" cy="32" r="3.4"/><circle cx="174" cy="32" r="3.4"/><circle cx="216" cy="32" r="3.4"/><circle cx="258" cy="32" r="3.4"/><circle cx="342" cy="32" r="3.4"/><circle cx="384" cy="32" r="3.4"/><circle cx="426" cy="32" r="3.4"/><circle cx="468" cy="32" r="3.4"/><circle cx="510" cy="32" r="3.4"/><circle cx="552" cy="32" r="3.4"/><circle cx="594" cy="32" r="3.4"/></g><circle class="spine-node live" cx="300" cy="32" r="4.6"/><circle class="spine-ring" cx="300" cy="32" r="9"/>
+        </svg>
+        <div class="spine-label">6 · three erasures</div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Conquering Gaze · Stimpunks</span>
+        <span class="spread-footer-right">7</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 8: Haraway names it ════ -->
+  <div class="spread" id="spread-8">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">1988 · the name for it</div>
+          <h2 class="spread-heading" id="the-god-trick">The god trick</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">In 1988 <strong>Donna Haraway</strong> gave the fantasy its name, in an essay about vision, and about who gets to be looked at.</p>
+            <div class="callout">"I would like to insist on the embodied nature of all vision and so reclaim the sensory system that has been used to signify a leap out of the marked body and into <strong>a conquering gaze from nowhere</strong>. This is the gaze that mythically inscribes all the marked bodies, that makes the unmarked category claim the power to see and not be seen, to represent while escaping representation."<span class="attr">Haraway, "Situated Knowledges," <em>Feminist Studies</em> 14(3), 1988, p. 581</span></div>
+            <p>Read the mechanism slowly, because it is precise. There are <span class="pink">marked bodies</span> — visible, particular, available for study. And there is an <span class="violet">unmarked category</span>, which is not neutral but simply <em>unexamined</em>: it holds the power <em>to see and not be seen</em>, to describe others while never appearing in the description.</p>
+            <p>Haraway calls the whole manoeuvre a <strong>god trick</strong> — "the god trick of seeing everything from nowhere" — and is blunt about its status: <em>"that view of infinite vision is an illusion, a god trick."</em></p>
+            <p>She is not describing something exotic. She is describing the default voice of a methods section: <em>subjects were observed</em>. Observed by whom, from where, with what stake in the result? The sentence is constructed so the question cannot be asked.</p>
+            <p>And note where the essay is set, because it is not incidental. Haraway's examples are <span class="gold">satellites, space probes, planetary imaging, the &ldquo;brilliant space platforms of the powerful.&rdquo;</span> She even quotes a magazine's epigraph on the infinitesimal: <em>&ldquo;The stuff of stars has come alive.&rdquo;</em> The critique of the view from nowhere was written, from the start, in the vocabulary of looking at the sky.</p>
+            <p><span class="joint joint-documented">documented</span> &nbsp;the god trick → her positive claim</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 172" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig7-title fig7-desc">
+              <title id="fig7-title">Marked and unmarked</title>
+              <desc id="fig7-desc">An eye at the top, drawn without a body and without a position, looking down at three marked figures who are fully rendered and labelled as available for study.</desc>
+              <ellipse cx="150" cy="34" rx="22" ry="13" fill="none" stroke="rgba(167,139,250,0.5)" stroke-width="1.4" stroke-dasharray="4 3"/>
+              <circle cx="150" cy="34" r="5" fill="rgba(167,139,250,0.6)"/>
+              <text x="150" y="18" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" fill="var(--violet)">unmarked · no position</text>
+              <g stroke="rgba(167,139,250,0.3)" stroke-width="1" fill="none">
+                <path d="M138 46 L74 104"/><path d="M150 48 L150 104"/><path d="M162 46 L226 104"/>
+              </g>
+              <g fill="none" stroke="var(--pink)" stroke-width="1.4">
+                <circle cx="74" cy="116" r="9"/><circle cx="150" cy="116" r="9"/><circle cx="226" cy="116" r="9"/>
+              </g>
+              <g fill="rgba(244,114,182,0.35)">
+                <circle cx="74" cy="116" r="4"/><circle cx="150" cy="116" r="4"/><circle cx="226" cy="116" r="4"/>
+              </g>
+              <text x="150" y="146" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" fill="var(--pink)">marked bodies · fully visible</text>
+              <text x="150" y="166" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="1" fill="var(--sp-secondary)">to represent while escaping representation</text>
+            </svg>
+            <div class="diagram-caption">Figure 7 · the power to see and not be seen</div>
+          </div>
+        </div>
+      </div>
+      <div class="spine">
+        <svg viewBox="0 0 620 66" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain, with 7 — the god trick live. A single rail, with a baseline marked under its first two joints.">
+          <path class="spine-track documented" d="M90 32 H132"/><path class="spine-track documented" d="M132 32 H174"/><path class="spine-track documented" d="M174 32 H216"/><path class="spine-track documented" d="M216 32 H258"/><path class="spine-track documented" d="M258 32 H300"/><path class="spine-track documented" d="M300 32 H342"/><path class="spine-track documented" d="M342 32 H384"/><path class="spine-track contested" d="M384 32 H426"/><path class="spine-track documented" d="M426 32 H468"/><path class="spine-track documented" d="M468 32 H510"/><path class="spine-track documented" d="M510 32 H552"/><path class="spine-track contested" d="M552 32 H594"/><path d="M90 44 L90 50 L132 50 L132 44" fill="none" stroke="rgba(167,139,250,0.6)" stroke-width="1.1"/><text class="spine-raillabel" x="111" y="60" text-anchor="middle">baseline</text><text class="spine-raillabel" x="0" y="35">the chain</text><g class="spine-node"><circle cx="90" cy="32" r="3.4"/><circle cx="132" cy="32" r="3.4"/><circle cx="174" cy="32" r="3.4"/><circle cx="216" cy="32" r="3.4"/><circle cx="258" cy="32" r="3.4"/><circle cx="300" cy="32" r="3.4"/><circle cx="384" cy="32" r="3.4"/><circle cx="426" cy="32" r="3.4"/><circle cx="468" cy="32" r="3.4"/><circle cx="510" cy="32" r="3.4"/><circle cx="552" cy="32" r="3.4"/><circle cx="594" cy="32" r="3.4"/></g><circle class="spine-node live" cx="342" cy="32" r="4.6"/><circle class="spine-ring" cx="342" cy="32" r="9"/>
+        </svg>
+        <div class="spine-label">7 · the god trick</div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Conquering Gaze · Stimpunks</span>
+        <span class="spread-footer-right">8</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 9: only partial perspective ════ -->
+  <div class="spread" id="spread-9">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The line that usually gets dropped</div>
+          <h2 class="spread-heading" id="only-partial-perspective">"Only partial perspective promises objective vision"</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Haraway is routinely read as an opponent of objectivity. She is the opposite, and she says so in a sentence she flags as the moral of the essay.</p>
+            <div class="callout">"The moral is simple: <strong>only partial perspective promises objective vision.</strong> … Feminist objectivity is about limited location and situated knowledge, not about transcendence and splitting of subject and object. It allows us to become answerable for what we learn how to see."<span class="attr">Haraway, 1988, p. 583</span></div>
+            <p>Not <em>objectivity is impossible</em>. Not <em>all views are equal</em>. <strong>Partiality is the precondition of objectivity</strong> — and what you gain by having a location is the ability to be <em>answerable</em>, which a view from nowhere structurally cannot be. You cannot check the work of an observer with no address.</p>
+            <p>Now set that beside the geometry from spread four.</p>
+            <div class="tally">
+              <div class="tally-cell gained"><div class="tally-num">parallax</div><div class="tally-label">no position →<br>no baseline → no depth</div></div>
+              <div class="tally-cell gained"><div class="tally-num">situated</div><div class="tally-label">no location →<br>no accountability → no objectivity</div></div>
+            </div>
+            <p>They are the same claim in two vocabularies. In astronomy it is a theorem you can check with trigonometry: <span class="violet">the measurement is constituted by the observer's position, and pretending otherwise destroys the measurement.</span> In epistemology it is an argument. The astronomy does not prove the epistemology — but it does demonstrate that the shape of the claim is not mystical, because there is at least one domain where it is exactly, boringly true.</p>
+            <div class="joint-note"><strong>Marked contested, and here is what is contested.</strong> Haraway never mentions parallax, and we are not claiming she had it in mind. The parallel is ours. What makes it more than a pun is that both claims have the same structure — <em>position is not a contaminant of the measurement, it is a component of it</em> — and that Haraway independently reaches for astronomical imagery throughout. What it is <em>not</em> is a proof: a theorem in trigonometry cannot settle an argument in epistemology, and if this spread reads as though it does, it has overstepped.</div>
+            <p><span class="joint joint-contested">contested</span> &nbsp;parallax → situated knowledges</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 176" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig8-title fig8-desc">
+              <title id="fig8-title">The same shape, twice</title>
+              <desc id="fig8-desc">Two parallel three-step arguments — one in geometry ending at distance, one in epistemology ending at objectivity — both beginning from having a position.</desc>
+              <text x="76" y="20" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.5" letter-spacing="1" fill="var(--green)">geometry</text>
+              <g font-family="Space Mono, monospace" font-size="7" fill="var(--sp-secondary)" text-anchor="middle">
+                <text x="76" y="46">a position</text>
+                <text x="76" y="76">a baseline</text>
+                <text x="76" y="106">depth</text>
+              </g>
+              <g stroke="rgba(74,222,128,0.5)" stroke-width="1.2" fill="none" stroke-linecap="round">
+                <path d="M76 54 L76 66"/><path d="M76 84 L76 96"/>
+                <path d="M72 62 L76 68 L80 62"/><path d="M72 92 L76 98 L80 92"/>
+              </g>
+              <text x="76" y="130" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.5" font-weight="700" fill="var(--green)">measurable</text>
+              <line x1="150" y1="14" x2="150" y2="150" stroke="rgba(167,139,250,0.25)" stroke-width="1" stroke-dasharray="4 4"/>
+              <text x="224" y="20" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.5" letter-spacing="1" fill="var(--violet)">epistemology</text>
+              <g font-family="Space Mono, monospace" font-size="7" fill="var(--sp-secondary)" text-anchor="middle">
+                <text x="224" y="46">a location</text>
+                <text x="224" y="76">answerable</text>
+                <text x="224" y="106">checkable</text>
+              </g>
+              <g stroke="rgba(167,139,250,0.5)" stroke-width="1.2" fill="none" stroke-linecap="round">
+                <path d="M224 54 L224 66"/><path d="M224 84 L224 96"/>
+                <path d="M220 62 L224 68 L228 62"/><path d="M220 92 L224 98 L228 92"/>
+              </g>
+              <text x="224" y="130" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.5" font-weight="700" fill="var(--violet)">objective</text>
+              <text x="150" y="168" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="1.2" fill="var(--gold)">same shape · one is a theorem, one an argument</text>
+            </svg>
+            <div class="diagram-caption">Figure 8 · a rhyme, and we mark it as one</div>
+          </div>
+        </div>
+      </div>
+      <div class="spine">
+        <svg viewBox="0 0 620 66" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain, with 8 — partial perspective live. A single rail, with a baseline marked under its first two joints.">
+          <path class="spine-track documented" d="M90 32 H132"/><path class="spine-track documented" d="M132 32 H174"/><path class="spine-track documented" d="M174 32 H216"/><path class="spine-track documented" d="M216 32 H258"/><path class="spine-track documented" d="M258 32 H300"/><path class="spine-track documented" d="M300 32 H342"/><path class="spine-track documented" d="M342 32 H384"/><path class="spine-track contested" d="M384 32 H426"/><path class="spine-track documented" d="M426 32 H468"/><path class="spine-track documented" d="M468 32 H510"/><path class="spine-track documented" d="M510 32 H552"/><path class="spine-track contested" d="M552 32 H594"/><path d="M90 44 L90 50 L132 50 L132 44" fill="none" stroke="rgba(167,139,250,0.6)" stroke-width="1.1"/><text class="spine-raillabel" x="111" y="60" text-anchor="middle">baseline</text><text class="spine-raillabel" x="0" y="35">the chain</text><g class="spine-node"><circle cx="90" cy="32" r="3.4"/><circle cx="132" cy="32" r="3.4"/><circle cx="174" cy="32" r="3.4"/><circle cx="216" cy="32" r="3.4"/><circle cx="258" cy="32" r="3.4"/><circle cx="300" cy="32" r="3.4"/><circle cx="342" cy="32" r="3.4"/><circle cx="426" cy="32" r="3.4"/><circle cx="468" cy="32" r="3.4"/><circle cx="510" cy="32" r="3.4"/><circle cx="552" cy="32" r="3.4"/><circle cx="594" cy="32" r="3.4"/></g><circle class="spine-node live" cx="384" cy="32" r="4.6"/><circle class="spine-ring" cx="384" cy="32" r="9"/>
+        </svg>
+        <div class="spine-label">8 · partial perspective</div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Conquering Gaze · Stimpunks</span>
+        <span class="spread-footer-right">9</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 10: she refuses relativism ════ -->
+  <div class="spread" id="spread-10">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The guard rail · in her own words</div>
+          <h2 class="spread-heading" id="relativism-is-also-a-god-trick">Relativism is also a god trick</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">The obvious misreading of everything so far is <em>therefore all views are equally valid</em>. Haraway blocks that exit herself, in the same essay, and more sharply than her critics do.</p>
+            <div class="callout">"<strong>Relativism is a way of being nowhere while claiming to be everywhere equally.</strong> The 'equality' of positioning is a denial of responsibility and critical inquiry. Relativism is the perfect mirror twin of totalization in the ideologies of objectivity; both deny the stakes in location, embodiment, and partial perspective; both make it impossible to see well. <strong>Relativism and totalization are both 'god tricks'</strong> promising vision from everywhere and nowhere equally and fully."<span class="attr">Haraway, 1988, p. 584</span></div>
+            <p>That is as complete a refusal of "it's all subjective" as anyone has written, and it comes from the person the phrase is most often blamed on.</p>
+            <p>The geometry says the same thing, and it is worth spelling out because it is not obvious. Two well-known positions give you a distance. <span class="pink">Infinitely many positions, none of them recorded, give you nothing at all</span> — you cannot form a baseline out of viewpoints you refuse to specify. Relativism is not many baselines. It is <em>the refusal to state one</em>, which is the same epistemic position as the view from nowhere wearing different clothes.</p>
+            <p>She is equally careful about the standpoints of the subjugated, which she says are <em>preferred</em> but explicitly <strong>not "innocent"</strong>: they are preferred "because in principle they are least likely to allow denial of the critical and interpretive core of all knowledge," and they remain subject to critical re-examination like any other. And: <em>"not just any partial perspective will do."</em></p>
+            <p><span class="joint joint-documented">documented</span> &nbsp;the guard rail → what happens without it</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 172" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig9-title fig9-desc">
+              <title id="fig9-title">Two positions, no positions, all positions</title>
+              <desc id="fig9-desc">Three panels: two stated positions give a distance; no position gives nothing; and unlimited unstated positions also give nothing, labelled as the mirror twin.</desc>
+              <text x="50" y="18" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--green)">two, stated</text>
+              <circle cx="34" cy="70" r="3.4" fill="var(--green)"/><circle cx="66" cy="70" r="3.4" fill="var(--green)"/>
+              <path d="M34 70 L50 34 L66 70" fill="none" stroke="rgba(74,222,128,0.55)" stroke-width="1.2"/>
+              <circle cx="50" cy="34" r="3" fill="var(--pink)"/>
+              <text x="50" y="92" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" font-weight="700" fill="var(--green)">depth</text>
+              <text x="150" y="18" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--gold)">none</text>
+              <circle cx="150" cy="70" r="3.4" fill="none" stroke="var(--gold)" stroke-width="1.2" stroke-dasharray="2 2"/>
+              <circle cx="150" cy="34" r="3" fill="rgba(244,114,182,0.5)"/>
+              <text x="150" y="92" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" font-weight="700" fill="var(--gold)">nothing</text>
+              <text x="250" y="18" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--gold)">all, unstated</text>
+              <g fill="none" stroke="rgba(251,191,36,0.4)" stroke-width="1" stroke-dasharray="2 2">
+                <circle cx="228" cy="70" r="2.6"/><circle cx="240" cy="74" r="2.6"/><circle cx="252" cy="68" r="2.6"/><circle cx="264" cy="74" r="2.6"/><circle cx="272" cy="66" r="2.6"/>
+              </g>
+              <circle cx="250" cy="34" r="3" fill="rgba(244,114,182,0.5)"/>
+              <text x="250" y="92" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" font-weight="700" fill="var(--gold)">nothing</text>
+              <path d="M150 108 H250" stroke="rgba(251,191,36,0.5)" stroke-width="1.2" stroke-dasharray="5 4"/>
+              <text x="200" y="124" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" fill="var(--gold)">mirror twins</text>
+              <text x="150" y="152" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.5" letter-spacing="0.8" fill="var(--sp-secondary)">relativism is not many baselines</text>
+              <text x="150" y="166" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="1" fill="var(--sp-dim)">it is refusing to state one</text>
+            </svg>
+            <div class="diagram-caption">Figure 9 · the exit she closes herself</div>
+          </div>
+        </div>
+      </div>
+      <div class="spine">
+        <svg viewBox="0 0 620 66" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain, with 9 — the guard rail live. A single rail, with a baseline marked under its first two joints.">
+          <path class="spine-track documented" d="M90 32 H132"/><path class="spine-track documented" d="M132 32 H174"/><path class="spine-track documented" d="M174 32 H216"/><path class="spine-track documented" d="M216 32 H258"/><path class="spine-track documented" d="M258 32 H300"/><path class="spine-track documented" d="M300 32 H342"/><path class="spine-track documented" d="M342 32 H384"/><path class="spine-track contested" d="M384 32 H426"/><path class="spine-track documented" d="M426 32 H468"/><path class="spine-track documented" d="M468 32 H510"/><path class="spine-track documented" d="M510 32 H552"/><path class="spine-track contested" d="M552 32 H594"/><path d="M90 44 L90 50 L132 50 L132 44" fill="none" stroke="rgba(167,139,250,0.6)" stroke-width="1.1"/><text class="spine-raillabel" x="111" y="60" text-anchor="middle">baseline</text><text class="spine-raillabel" x="0" y="35">the chain</text><g class="spine-node"><circle cx="90" cy="32" r="3.4"/><circle cx="132" cy="32" r="3.4"/><circle cx="174" cy="32" r="3.4"/><circle cx="216" cy="32" r="3.4"/><circle cx="258" cy="32" r="3.4"/><circle cx="300" cy="32" r="3.4"/><circle cx="342" cy="32" r="3.4"/><circle cx="384" cy="32" r="3.4"/><circle cx="468" cy="32" r="3.4"/><circle cx="510" cy="32" r="3.4"/><circle cx="552" cy="32" r="3.4"/><circle cx="594" cy="32" r="3.4"/></g><circle class="spine-node live" cx="426" cy="32" r="4.6"/><circle class="spine-ring" cx="426" cy="32" r="9"/>
+        </svg>
+        <div class="spine-label">9 · the guard rail</div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Conquering Gaze · Stimpunks</span>
+        <span class="spread-footer-right">10</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 11: WEIRD ════ -->
+  <div class="spread" id="spread-11">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">2010 · the unmarked sample</div>
+          <h2 class="spread-heading" id="the-unmarked-sample">The unmarked sample</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Here is the god trick with numbers on it.</p>
+            <p>In 2010, Henrich, Heine and Norenzayan asked a question nobody had bothered to ask systematically: <em>who are the people in the studies?</em> The answer, across the top journals of the behavioural sciences:</p>
+            <div class="tally">
+              <div class="tally-cell lost"><div class="tally-num">96%</div><div class="tally-label">of samples from<br>Western industrialised nations</div></div>
+              <div class="tally-cell lost"><div class="tally-num">68%</div><div class="tally-label">of subjects<br>from the United States</div></div>
+              <div class="tally-cell"><div class="tally-num">12%</div><div class="tally-label">share of world population<br>those countries hold</div></div>
+            </div>
+            <p>They named the sample <strong>WEIRD</strong> — Western, Educated, Industrialised, Rich, Democratic — and made the finding that turns it from awkward into serious: on many measures these subjects are not merely unrepresentative but <span class="pink">frequent outliers</span> compared with the rest of the species.</p>
+            <p>Notice what the problem actually is, because "unrepresentative sample" undersells it. The results were not published as <em>facts about American undergraduates</em>. They were published as <strong>facts about human beings</strong> — the population went unstated because the researchers' own position was the unmarked category.</p>
+            <div class="pull-quote">A methods section that does not say where you are standing is not neutral. It is a claim to be standing nowhere, and it is always false.<span class="attr">the god trick, operationalised</span></div>
+            <p>And this is the ladder problem again, exactly. <span class="violet">Rung one was a narrow, unstated sample. Everything built on top inherited it, and none of it knew.</span></p>
+            <p><span class="joint joint-documented">documented</span> &nbsp;unstated samples → research done on us</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 174" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig10-title fig10-desc">
+              <title id="fig10-title">Who is in the studies</title>
+              <desc id="fig10-desc">A bar showing 96 percent of samples drawn from countries holding 12 percent of world population, with the claim generalised to all humans.</desc>
+              <text x="16" y="22" font-family="Space Mono, monospace" font-size="7" letter-spacing="0.8" fill="var(--sp-secondary)">where the subjects come from</text>
+              <rect x="16" y="32" width="268" height="18" rx="2" fill="rgba(167,139,250,0.1)" stroke="rgba(167,139,250,0.3)" stroke-width="1"/>
+              <rect x="16" y="32" width="257" height="18" rx="2" fill="rgba(244,114,182,0.4)"/>
+              <text x="140" y="45" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.5" font-weight="700" fill="var(--sp-white-soft)">96% Western industrialised</text>
+              <text x="16" y="76" font-family="Space Mono, monospace" font-size="7" letter-spacing="0.8" fill="var(--sp-secondary)">share of world population</text>
+              <rect x="16" y="86" width="268" height="18" rx="2" fill="rgba(167,139,250,0.1)" stroke="rgba(167,139,250,0.3)" stroke-width="1"/>
+              <rect x="16" y="86" width="32" height="18" rx="2" fill="rgba(74,222,128,0.45)"/>
+              <text x="58" y="99" font-family="Space Mono, monospace" font-size="7.5" font-weight="700" fill="var(--green)">12%</text>
+              <path d="M150 112 L150 130" stroke="rgba(251,191,36,0.6)" stroke-width="1.3"/>
+              <path d="M145 124 L150 132 L155 124" fill="none" stroke="rgba(251,191,36,0.7)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+              <rect x="76" y="136" width="148" height="24" rx="3" fill="rgba(251,191,36,0.08)" stroke="rgba(251,191,36,0.4)" stroke-width="1.2"/>
+              <text x="150" y="151" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.5" fill="var(--gold)">reported as &ldquo;human behaviour&rdquo;</text>
+            </svg>
+            <div class="diagram-caption">Figure 10 · rung one, unstated</div>
+          </div>
+        </div>
+      </div>
+      <div class="spine">
+        <svg viewBox="0 0 620 66" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain, with 10 — WEIRD live. A single rail, with a baseline marked under its first two joints.">
+          <path class="spine-track documented" d="M90 32 H132"/><path class="spine-track documented" d="M132 32 H174"/><path class="spine-track documented" d="M174 32 H216"/><path class="spine-track documented" d="M216 32 H258"/><path class="spine-track documented" d="M258 32 H300"/><path class="spine-track documented" d="M300 32 H342"/><path class="spine-track documented" d="M342 32 H384"/><path class="spine-track contested" d="M384 32 H426"/><path class="spine-track documented" d="M426 32 H468"/><path class="spine-track documented" d="M468 32 H510"/><path class="spine-track documented" d="M510 32 H552"/><path class="spine-track contested" d="M552 32 H594"/><path d="M90 44 L90 50 L132 50 L132 44" fill="none" stroke="rgba(167,139,250,0.6)" stroke-width="1.1"/><text class="spine-raillabel" x="111" y="60" text-anchor="middle">baseline</text><text class="spine-raillabel" x="0" y="35">the chain</text><g class="spine-node"><circle cx="90" cy="32" r="3.4"/><circle cx="132" cy="32" r="3.4"/><circle cx="174" cy="32" r="3.4"/><circle cx="216" cy="32" r="3.4"/><circle cx="258" cy="32" r="3.4"/><circle cx="300" cy="32" r="3.4"/><circle cx="342" cy="32" r="3.4"/><circle cx="384" cy="32" r="3.4"/><circle cx="426" cy="32" r="3.4"/><circle cx="510" cy="32" r="3.4"/><circle cx="552" cy="32" r="3.4"/><circle cx="594" cy="32" r="3.4"/></g><circle class="spine-node live" cx="468" cy="32" r="4.6"/><circle class="spine-ring" cx="468" cy="32" r="9"/>
+        </svg>
+        <div class="spine-label">10 · WEIRD</div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Conquering Gaze · Stimpunks</span>
+        <span class="spread-footer-right">11</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 12: research on rather than with ════ -->
+  <div class="spread" id="spread-12">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Where it lands on us</div>
+          <h2 class="spread-heading" id="research-done-on-us">Research done <em>on</em> us</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Autism research is close to a controlled experiment in what the god trick costs, because for most of its history the observers and the observed were disjoint sets.</p>
+            <p>Look at what that arrangement produced, using findings this collection has already walked. <strong>Outcome measures chosen from outside:</strong> the endpoint inherited from 1987 was <em>indistinguishability</em> — how much like everyone else the child seemed — a target nobody standing on the inside would have written down (<a href="eight-tenths-of-a-second-zine.html">No. 38</a>). <strong>Harms not measured:</strong> 150 intervention studies, 11 mentioning adverse events (<a href="five-sigma-zine.html">No. 40</a>). You do not ask about harms you cannot imagine, and you cannot imagine harms you have never been on the receiving end of.</p>
+            <p>And the finding that only exists because somebody moved. <strong>Damian Milton's double empathy problem</strong> (2012) reframes the communication breakdown between Autistic and non-Autistic people as <span class="pink">mutual and relational</span> — a mismatch between two positions rather than a deficit inside one of them.</p>
+            <div class="pull-quote violet">That is a parallax result. It is invisible from one position and obvious from two, and getting it required an Autistic researcher — an observer at the other end of the baseline.<span class="attr">why the sample includes the analyst</span></div>
+            <p>Decades of research described the deficit as a property of the Autistic person, the way Tycho described stellar discs as a property of the stars. In both cases the finding was <span class="gold">partly an artefact of the apparatus</span> — and in both cases you could only see that by observing from somewhere else.</p>
+            <p>Which is what participatory research is <em>for</em>. Not courtesy, and not a legitimacy ritual. <strong>A second position on the baseline</strong>, which is the only way anyone has ever measured depth.</p>
+            <p><span class="joint joint-documented">documented</span> &nbsp;the failures → what the correction actually is</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 178" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig11-title fig11-desc">
+              <title id="fig11-title">One position and two</title>
+              <desc id="fig11-desc">From one position the gap between two people is read as a deficit located in one of them; from two positions the same gap is visible as mutual, sitting between them.</desc>
+              <text x="76" y="18" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="0.8" fill="var(--gold)">one position</text>
+              <circle cx="44" cy="56" r="9" fill="none" stroke="rgba(167,139,250,0.6)" stroke-width="1.3"/>
+              <circle cx="108" cy="56" r="9" fill="none" stroke="var(--pink)" stroke-width="1.3"/>
+              <path d="M56 56 H96" stroke="rgba(251,191,36,0.6)" stroke-width="1.2" stroke-dasharray="3 3"/>
+              <path d="M108 68 L108 84" stroke="rgba(251,191,36,0.6)" stroke-width="1.2"/>
+              <text x="108" y="96" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--gold)">&ldquo;the deficit&rdquo;</text>
+              <text x="108" y="107" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--sp-dim)">located in one</text>
+              <line x1="150" y1="14" x2="150" y2="150" stroke="rgba(167,139,250,0.25)" stroke-width="1" stroke-dasharray="4 4"/>
+              <text x="224" y="18" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="0.8" fill="var(--green)">two positions</text>
+              <circle cx="192" cy="56" r="9" fill="none" stroke="rgba(167,139,250,0.6)" stroke-width="1.3"/>
+              <circle cx="256" cy="56" r="9" fill="none" stroke="var(--pink)" stroke-width="1.3"/>
+              <path d="M204 56 H244" stroke="rgba(74,222,128,0.7)" stroke-width="1.4"/>
+              <path d="M224 68 L224 84" stroke="rgba(74,222,128,0.7)" stroke-width="1.2"/>
+              <text x="224" y="96" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--green)">the gap is mutual</text>
+              <text x="224" y="107" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--sp-dim)">it sits between</text>
+              <text x="150" y="140" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.5" letter-spacing="0.8" fill="var(--sp-secondary)">same people · same gap</text>
+              <text x="150" y="164" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="1.2" fill="var(--sp-dim)">only the number of observers changed</text>
+            </svg>
+            <div class="diagram-caption">Figure 11 · double empathy as a parallax result</div>
+          </div>
+        </div>
+      </div>
+      <div class="spine">
+        <svg viewBox="0 0 620 66" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain, with 11 — research done on us live. A single rail, with a baseline marked under its first two joints.">
+          <path class="spine-track documented" d="M90 32 H132"/><path class="spine-track documented" d="M132 32 H174"/><path class="spine-track documented" d="M174 32 H216"/><path class="spine-track documented" d="M216 32 H258"/><path class="spine-track documented" d="M258 32 H300"/><path class="spine-track documented" d="M300 32 H342"/><path class="spine-track documented" d="M342 32 H384"/><path class="spine-track contested" d="M384 32 H426"/><path class="spine-track documented" d="M426 32 H468"/><path class="spine-track documented" d="M468 32 H510"/><path class="spine-track documented" d="M510 32 H552"/><path class="spine-track contested" d="M552 32 H594"/><path d="M90 44 L90 50 L132 50 L132 44" fill="none" stroke="rgba(167,139,250,0.6)" stroke-width="1.1"/><text class="spine-raillabel" x="111" y="60" text-anchor="middle">baseline</text><text class="spine-raillabel" x="0" y="35">the chain</text><g class="spine-node"><circle cx="90" cy="32" r="3.4"/><circle cx="132" cy="32" r="3.4"/><circle cx="174" cy="32" r="3.4"/><circle cx="216" cy="32" r="3.4"/><circle cx="258" cy="32" r="3.4"/><circle cx="300" cy="32" r="3.4"/><circle cx="342" cy="32" r="3.4"/><circle cx="384" cy="32" r="3.4"/><circle cx="426" cy="32" r="3.4"/><circle cx="468" cy="32" r="3.4"/><circle cx="552" cy="32" r="3.4"/><circle cx="594" cy="32" r="3.4"/></g><circle class="spine-node live" cx="510" cy="32" r="4.6"/><circle class="spine-ring" cx="510" cy="32" r="9"/>
+        </svg>
+        <div class="spine-label">11 · research done on us</div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Conquering Gaze · Stimpunks</span>
+        <span class="spread-footer-right">12</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 13: published coordinates ════ -->
+  <div class="spread" id="spread-13">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The correction</div>
+          <h2 class="spread-heading" id="publish-your-coordinates">Publish your coordinates</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Two exits are closed. You cannot remove the observer — that destroys the measurement. You cannot declare all views equal — Haraway refuses it, and so does the geometry.</p>
+            <p>What is left is the answer <strong>Bessel gave twice</strong>, and it is embarrassingly practical: <span class="violet">state where you are standing, and publish the constant.</span></p>
+            <p>In 1838 that meant recording the baseline: which two points the observation was made from, how far apart, how accurately known. In the personal equation it meant recording the observer: <em>this one runs 0.2 seconds late, here is the number, correct the data and keep the person.</em></p>
+            <p>The research equivalents are unglamorous and already invented:</p>
+            <div class="callout">Say who the sample was, in the claim and not only in the appendix. Say who the researchers were and what they had at stake. Put people with the experience in the design, not the debrief. Choose outcome measures with the people who will be measured. Report harms. Name the coordinates the work was done from.<span class="attr">the baseline, in a methods section</span></div>
+            <p>Every one of those is usually filed under ethics or inclusion. <strong>They belong under <em>method</em>.</strong> A positionality statement is not a confession or a disclaimer — <span class="pink">it is a published baseline</span>, and it does the same job Bessel's constants did: it makes the reading correctable by somebody who was not there.</p>
+            <p>And it is the reason "nothing about us without us" is an epistemic claim before it is a political one. A study of us that contains none of us has <em>one</em> position. Whatever else is wrong with it, it cannot measure depth.</p>
+            <div class="joint-note"><strong>Marked contested.</strong> The synthesis is ours: Bessel did not think of the personal equation as a template for research ethics, and Haraway does not cite him. What we are claiming is a shared form — <em>make the observer's position explicit and correctable rather than invisible or irrelevant</em> — not a historical descent. And the practical claim underneath, that participatory methods produce better findings rather than only fairer process, is an empirical question that deserves its own evidence and does not get to lean on the analogy.</div>
+            <p><span class="joint joint-contested">contested</span> &nbsp;the personal equation → research practice</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 176" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig12-title fig12-desc">
+              <title id="fig12-title">Two answers from one man</title>
+              <desc id="fig12-desc">Bessel's two results side by side: parallax, where the observer's displacement is published as a baseline, and the personal equation, where the observer's difference is published as a constant.</desc>
+              <text x="150" y="18" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.5" letter-spacing="1" fill="var(--violet)">Königsberg · both times</text>
+              <rect x="16" y="32" width="126" height="66" rx="4" fill="rgba(167,139,250,0.06)" stroke="rgba(167,139,250,0.35)" stroke-width="1.2"/>
+              <text x="79" y="50" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" fill="var(--violet)">1838 · parallax</text>
+              <circle cx="56" cy="76" r="3.4" fill="var(--violet)"/><circle cx="102" cy="76" r="3.4" fill="var(--violet)"/>
+              <path d="M56 84 L56 88 L102 88 L102 84" fill="none" stroke="rgba(167,139,250,0.7)" stroke-width="1.1"/>
+              <text x="79" y="66" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--sp-dim)">publish the baseline</text>
+              <rect x="158" y="32" width="126" height="66" rx="4" fill="rgba(244,114,182,0.06)" stroke="rgba(244,114,182,0.35)" stroke-width="1.2"/>
+              <text x="221" y="50" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" fill="var(--pink)">personal equation</text>
+              <text x="221" y="66" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--sp-dim)">publish the constant</text>
+              <g font-family="Space Mono, monospace" font-size="6.5" fill="var(--pink)">
+                <text x="184" y="82">+0.2 s</text><text x="228" y="82">−0.1 s</text>
+              </g>
+              <path d="M150 104 L150 120" stroke="rgba(167,139,250,0.5)" stroke-width="1.2"/>
+              <rect x="52" y="124" width="196" height="26" rx="3" fill="rgba(74,222,128,0.07)" stroke="rgba(74,222,128,0.4)" stroke-width="1.2"/>
+              <text x="150" y="141" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.5" font-weight="700" fill="var(--green)">correctable by someone not there</text>
+              <text x="150" y="168" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="1.2" fill="var(--sp-dim)">keep the observer · state the position</text>
+            </svg>
+            <div class="diagram-caption">Figure 12 · the same answer, twice</div>
+          </div>
+        </div>
+      </div>
+      <div class="spine">
+        <svg viewBox="0 0 620 66" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain, with 12 — publish the coordinates live. A single rail, with a baseline marked under its first two joints.">
+          <path class="spine-track documented" d="M90 32 H132"/><path class="spine-track documented" d="M132 32 H174"/><path class="spine-track documented" d="M174 32 H216"/><path class="spine-track documented" d="M216 32 H258"/><path class="spine-track documented" d="M258 32 H300"/><path class="spine-track documented" d="M300 32 H342"/><path class="spine-track documented" d="M342 32 H384"/><path class="spine-track contested" d="M384 32 H426"/><path class="spine-track documented" d="M426 32 H468"/><path class="spine-track documented" d="M468 32 H510"/><path class="spine-track documented" d="M510 32 H552"/><path class="spine-track contested" d="M552 32 H594"/><path d="M90 44 L90 50 L132 50 L132 44" fill="none" stroke="rgba(167,139,250,0.6)" stroke-width="1.1"/><text class="spine-raillabel" x="111" y="60" text-anchor="middle">baseline</text><text class="spine-raillabel" x="0" y="35">the chain</text><g class="spine-node"><circle cx="90" cy="32" r="3.4"/><circle cx="132" cy="32" r="3.4"/><circle cx="174" cy="32" r="3.4"/><circle cx="216" cy="32" r="3.4"/><circle cx="258" cy="32" r="3.4"/><circle cx="300" cy="32" r="3.4"/><circle cx="342" cy="32" r="3.4"/><circle cx="384" cy="32" r="3.4"/><circle cx="426" cy="32" r="3.4"/><circle cx="468" cy="32" r="3.4"/><circle cx="510" cy="32" r="3.4"/><circle cx="594" cy="32" r="3.4"/></g><circle class="spine-node live" cx="552" cy="32" r="4.6"/><circle class="spine-ring" cx="552" cy="32" r="9"/>
+        </svg>
+        <div class="spine-label">12 · publish the coordinates</div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Conquering Gaze · Stimpunks</span>
+        <span class="spread-footer-right">13</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 14: the turn ════ -->
+  <div class="spread" id="spread-14">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The turn</div>
+          <h2 class="spread-heading" id="the-sky-is-not-flat">The sky <span class="spectrum-word">is not flat</span></h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">There is a real answer to how far away 61 Cygni is. It is about 11.4 light years, and nothing in this zine softens that.</p>
+            <p>We got it by knowing exactly where somebody was standing, twice, six months apart, and by publishing both positions so anyone could check. <strong>The precision came from the situatedness. It did not survive despite it.</strong></p>
+            <p>So this is not an argument that science is only perspective, and it cannot be turned into one without contradicting both halves of its evidence — the geometry says a position is required, and Haraway says relativism is a god trick. <span class="violet">The view from nowhere is not too rigorous. It is not rigorous enough</span>, because it has thrown away the one thing that makes a measurement checkable: a stated place to have made it from.</p>
+            <div class="pull-quote violet">Objectivity is not the absence of a position. It is a position you have written down, so that someone standing elsewhere can correct you.<span class="attr">what the chain arrives at</span></div>
+            <p>And nobody built this road on purpose. Tycho was doing his best with an instrument that lied to him. Pickering ran an observatory whose employment practices he had not invented. The researchers in the WEIRD survey were using the subjects who were available. <strong>Each did competent work from an unexamined position — which is exactly the failure the whole chain describes, performed by the people describing it.</strong></p>
+            <p>Which is the hopeful part, and the reason this collection keeps writing chains instead of villains. An unexamined position is not a moral defect. <em>It is a missing line in the methods section.</em> Those can be written.</p>
+            <div class="refusals">
+              <div class="refusal"><span class="refusal-tag">Not:</span><span><strong>that all perspectives are equal.</strong> Haraway calls that a god trick in the same essay, and the geometry agrees: unstated positions give you nothing. Two known baselines beat infinite unrecorded ones.</span></div>
+              <div class="refusal"><span class="refusal-tag">Not:</span><span><strong>that lived experience is automatically right.</strong> Haraway is explicit that subjugated standpoints are "not 'innocent' positions" and stay open to critical examination. Preferred is not the same as unquestionable.</span></div>
+              <div class="refusal"><span class="refusal-tag">Not:</span><span><strong>that parallax proves any of this.</strong> A theorem in trigonometry cannot settle epistemology. It shows the shape of the claim is real in at least one place. We marked that joint contested.</span></div>
+              <div class="refusal"><span class="refusal-tag">Not:</span><span><strong>an attack on measurement.</strong> The zine's hero is a man who measured a coin at thirteen kilometres and published his baseline.</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 192" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig13-title fig13-desc">
+              <title id="fig13-title">The whole chain, complete</title>
+              <desc id="fig13-desc">The full single-rail chain from the missing parallax to published coordinates, with a baseline bracket under its first two nodes and a legend giving eleven documented joints, two contested and no leaps.</desc>
+              <path d="M20 46 H244" fill="none" stroke="rgba(74,222,128,0.6)" stroke-width="1.6"/>
+              <path d="M164 46 H188" fill="none" stroke="rgba(251,191,36,0.8)" stroke-width="1.8" stroke-dasharray="6 4"/>
+              <path d="M244 46 H268" fill="none" stroke="rgba(251,191,36,0.8)" stroke-width="1.8" stroke-dasharray="6 4"/>
+              <g fill="var(--sp-dim)">
+                <circle cx="20" cy="46" r="3"/><circle cx="44" cy="46" r="3"/><circle cx="68" cy="46" r="3"/><circle cx="92" cy="46" r="3"/><circle cx="116" cy="46" r="3"/><circle cx="140" cy="46" r="3"/><circle cx="164" cy="46" r="3"/><circle cx="188" cy="46" r="3"/><circle cx="212" cy="46" r="3"/><circle cx="244" cy="46" r="3"/>
+              </g>
+              <circle cx="268" cy="46" r="4.6" fill="var(--pink)"/>
+              <path d="M20 58 L20 64 L44 64 L44 58" fill="none" stroke="rgba(167,139,250,0.7)" stroke-width="1.2"/>
+              <text x="32" y="78" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" letter-spacing="0.6" fill="var(--violet)">baseline</text>
+              <text x="20" y="34" font-family="Space Mono, monospace" font-size="6.5" letter-spacing="0.6" fill="var(--sp-dim)">1543</text>
+              <text x="268" y="34" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" letter-spacing="0.6" fill="var(--pink)">now</text>
+              <g font-family="Space Mono, monospace" font-size="7" letter-spacing="0.6">
+                <path d="M22 116 H50" fill="none" stroke="rgba(74,222,128,0.7)" stroke-width="1.6"/>
+                <text x="58" y="119" fill="var(--green)">documented · 10</text>
+                <path d="M22 138 H50" fill="none" stroke="rgba(251,191,36,0.8)" stroke-width="1.6" stroke-dasharray="6 4"/>
+                <text x="58" y="141" fill="var(--gold)">contested · 2</text>
+                <path d="M22 160 H50" fill="none" stroke="rgba(244,114,182,0.5)" stroke-width="1.6" stroke-dasharray="1.5 4"/>
+                <text x="58" y="163" fill="var(--pink)">leap · 0</text>
+              </g>
+              <text x="150" y="186" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" letter-spacing="0.8" fill="var(--sp-secondary)">second chain running with no leaps — see the colophon</text>
+            </svg>
+            <div class="diagram-caption">Figure 13 · one rail, one baseline</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Conquering Gaze · Stimpunks</span>
+        <span class="spread-footer-right">14</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 15: COLOPHON ════ -->
+  <div class="spread" id="spread-15">
+    <div class="interior">
+      <div class="colophon">
+        <div>
+          <div class="colophon-top">
+            <span class="colophon-ls">L★S</span>
+            <p class="colophon-phrase">You only get depth by moving. Say where you moved from.</p>
+          </div>
+
+          <div class="series-list">
+            <div class="series-item"><span class="series-num">No. 38</span> Eight Tenths of a Second — Bessel, and the observer kept</div>
+            <div class="series-item"><span class="series-num">No. 39</span> Five Microns — a number that answered a different question</div>
+            <div class="series-item"><span class="series-num">No. 40</span> Five Sigma — how much evidence is enough</div>
+            <div class="series-item current"><span class="series-num">No. 41</span> A Conquering Gaze from Nowhere — parallax and positionality ← you are here</div>
+          </div>
+
+          <div class="reflect">
+            <div class="reflect-label">Reflection</div>
+            <p class="reflect-q">Where have you been described by someone who never said where they were standing?</p>
+            <p class="reflect-q">What in your field is treated as a property of the thing observed, and is actually a signature of the instrument?</p>
+            <p class="reflect-q">Whose second position would change what your work can see — and what would it take to have them on the baseline rather than in the sample?</p>
+            <p class="reflect-q">What are your coordinates? Could someone standing elsewhere correct you with them?</p>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="colophon-h" id="sources">Sources</h3>
+          <div class="colophon-body">
+            <p><strong>Haraway, read at the primary.</strong> Donna Haraway, "Situated Knowledges: The Science Question in Feminism and the Privilege of Partial Perspective," <em>Feminist Studies</em> <strong>14</strong>(3), Autumn 1988, 575–599. Every quotation here is verbatim from pages 581–585 of the article itself: the conquering gaze and the unmarked category claiming "the power to see and not be seen, to represent while escaping representation" (581); "the god trick of seeing everything from nowhere" (581) and "that view of infinite vision is an illusion, a god trick" (582); "The moral is simple: only partial perspective promises objective vision" and "Feminist objectivity is about limited location and situated knowledge … It allows us to become answerable for what we learn how to see" (583); "Relativism is a way of being nowhere while claiming to be everywhere equally," "Relativism is the perfect mirror twin of totalization," "Relativism and totalization are both 'god tricks'," and the standpoints of the subjugated as "not 'innocent' positions" (584); "not just any partial perspective will do" (585). Her astronomical imagery — the "brilliant space platforms of the powerful" (583) and the epigraph "The stuff of stars has come alive" (582) — is quoted from that text and is not our embellishment.</p>
+            <p><strong>Parallax.</strong> Friedrich Bessel's 1838 parallax for 61 Cygni of <strong>0.3136″</strong>, measured at Königsberg with a Fraunhofer heliometer and giving roughly 10.4 light years against a modern value near 11.4; Thomas Henderson (Alpha Centauri) and Friedrich Struve (Vega) reached comparable results within months. The "two-centimetre coin at thirteen kilometres" is our own arithmetic from that angle, and is approximate. The pre-Bessel objection from absent parallax, and the star-size problem arising from spurious telescopic discs, are given qualitatively; the discs are a diffraction artefact of a finite aperture.</p>
+            <p><strong>The ladder and Leavitt.</strong> Henrietta Swan Leavitt joined Harvard College Observatory in 1895 as one of its women "computers," measuring plates; she found and measured periods for roughly 1,700 variables in the Magellanic Clouds. The period–luminosity relation appeared as "Periods of 25 Variable Stars in the Small Magellanic Cloud," <em>Harvard College Observatory Circular</em> <strong>173</strong> (1912), issued under director Edward Pickering's name and opening with the statement that it <em>"has been prepared by Miss Leavitt."</em> The distance-ladder description is given structurally rather than with figures; the remark that recalibrating the variable-star rung has historically moved the whole extragalactic scale is stated qualitatively and is <strong>not primary-sourced here</strong>.</p>
+            <p><strong>WEIRD.</strong> Joseph Henrich, Steven J. Heine &amp; Ara Norenzayan, "The weirdest people in the world?", <em>Behavioral and Brain Sciences</em> <strong>33</strong>(2–3), 2010, 61–83 — 96% of samples from Western industrialised nations, 68% of subjects from the United States, from countries holding about 12% of the world's population, and the finding that such subjects are frequent outliers on many measures.</p>
+            <p><strong>Double empathy</strong> is Damian Milton, "On the ontological status of autism: the 'double empathy problem'," <em>Disability &amp; Society</em> <strong>27</strong>(6), 2012, 883–887, already carried elsewhere in this collection. The framing of this zine comes from <a href="https://stimpunks.org/2023/04/01/conquering-gaze-from-nowhere-meritocracy-myths-marked-bodies-and-spoiled-identities/">Conquering Gaze from Nowhere</a> at Stimpunks; Haraway and the physics were traced to their own primaries here rather than carried across. Cretyl Mills and Mildred Wells are as recorded in <a href="five-microns-zine.html">No. 39</a>.</p>
+            <p><strong>Held honestly.</strong> Two joints are marked <strong>contested</strong> and argued in place rather than hedged: the parallax-to-situated-knowledges parallel on spread 9 (Haraway never mentions parallax; the analogy is ours, and a theorem cannot settle an epistemology), and the personal-equation-to-research-practice synthesis on spread 13. The <strong>three-erasures</strong> reading on spread 7 documents each case individually; treating them as a pattern is our interpretation, and we have not searched for counter-examples — the spread says so on its face. <strong>This chain again contains no <em>leap</em> joints</strong> — 10 documented, 2 contested — which is now <strong>two chains running</strong>. Worth watching rather than celebrating: if the weakest tag never fires, that may say more about which subjects we choose than about how carefully we argue them.</p>
+          </div>
+          <div class="colophon-footer">
+            <a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks Foundation</a> × <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a><br>
+            stimpunks.org · morerealms.com · starstuff.earth<br>
+            <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> · open edition · print freely
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Conquering Gaze · Stimpunks</span>
+        <span class="spread-footer-right">15</span>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /zine-shell -->
+
+<script>
+  let current = 1;
+  const total = 15;
+
+  function changePage(dir) {
+    const next = current + dir;
+    if (next < 1 || next > total) return;
+    document.getElementById('spread-' + current).classList.remove('active');
+    current = next;
+    document.getElementById('spread-' + current).classList.add('active');
+    document.getElementById('page-counter').textContent = current + ' / ' + total;
+    document.getElementById('prev-btn').disabled = current === 1;
+    document.getElementById('next-btn').disabled = current === total;
+    document.getElementById('prev-btn').classList.toggle('active', current > 1);
+    document.getElementById('next-btn').classList.toggle('active', current < total);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') changePage(1);
+    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   changePage(-1);
+  });
+
+  document.getElementById('prev-btn').disabled = true;
+  document.getElementById('next-btn').classList.add('active');
+</script>
+<script src="starstuff.js" defer></script>
+</body>
+</html>

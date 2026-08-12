@@ -240,6 +240,26 @@ for (const file of targets) {
     }
   }
 
+  // ── ss-nav outside the content shell ──
+  // The one check here that is a house convention rather than a parser repair, and it
+  // earned its place the hard way: this shipped live on No. 38 and No. 39, then was
+  // reintroduced on No. 40 and repeated on No. 41 — four times, twice after being fixed.
+  // A page's `.ss-nav` belongs inside the centred content shell. Put it outside and the
+  // header runs the full width of the window while everything beneath it sits in an
+  // 820px column: flush to both edges, unpadded, misaligned with its own page. Nothing
+  // else can see it. Contrast passes (the text is legible), the tag tree is valid, the
+  // sitemap and chain checks never look at layout, and a DOM query finds a perfectly
+  // well-formed nav — it is simply in the wrong parent. Pages with no shell at all
+  // (broadsides, playlists, full-bleed sheets) are exempt by design.
+  const shellAt = src.search(/<div class="[a-z-]*-shell"/);
+  const navAt = src.indexOf('<nav class="ss-nav"');
+  if (shellAt !== -1 && navAt !== -1 && navAt < shellAt) {
+    const line = src.slice(0, navAt).split('\n').length;
+    problems.push(
+      `<nav class="ss-nav"> at line ${line} sits outside the content shell — the header will run full-bleed while the page below it stays in its column`
+    );
+  }
+
   scannedTags += tagCount;
   scannedIds += ids.size;
 
@@ -266,7 +286,7 @@ if (totalProblems) {
       : '\nRun with --check to make this gate a ship.'
   );
 } else {
-  console.log('PASS — no nested interactive elements, no blocks inside paragraphs, no duplicate ids.');
+  console.log('PASS — no nested interactive elements, no blocks inside paragraphs, no duplicate ids,\n       no nav outside its content shell.');
 }
 
 process.exit(gating && totalProblems ? 1 : 0);
