@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0a0a14">
+<link rel="canonical" href="https://starstuff.earth/aurora-playlist.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Open Graph / link unfurl -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Star Stuff · Stimpunks Foundation × More Realms">
+<meta property="og:url" content="https://starstuff.earth/aurora-playlist.html">
+<meta property="og:title" content="Stimming and Belonging with AURORA">
+<meta property="og:description" content="Twenty-eight performances, weighted toward live, and the physics of the light she is named after. The aurora's green line is a forbidden transition that waits three-quarters of a second and only completes where nothing crowds it. The companion playlist to Warriors and Weirdos, Zine No. 13.">
+<meta property="og:image" content="https://starstuff.earth/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A rainbow-hued cosmic image — we are all made of star stuff.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Stimming and Belonging with AURORA">
+<meta name="twitter:description" content="Twenty-eight performances and the physics of the light she is named after — a forbidden transition that only completes where nothing crowds it.">
+<meta name="twitter:image" content="https://starstuff.earth/og-card.jpg">
+<title>Stimming and Belonging with AURORA — Stimpunks × More Realms</title>
+<meta name="description" content="Twenty-eight AURORA performances, weighted toward live, and the physics of the light she is named after. The aurora's green line is a forbidden transition that waits three-quarters of a second and only completes where nothing crowds it. The companion playlist to Warriors and Weirdos, Zine No. 13.">
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="starstuff.css">
+<style>
+  html, body { margin: 0; padding: 0; }
+
+  :root {
+    --void: var(--sp-void);
+    --card: var(--sp-card);
+    --purple: var(--sp-purple);
+    --pink: var(--sp-pink);
+    --gold: var(--sp-gold);
+    --cyan: var(--sp-cyan);
+    --green: var(--sp-green);
+    --star-white: var(--sp-white);
+    --secondary: var(--sp-secondary);
+    --muted: var(--sp-muted);
+    --dim: var(--sp-dim-soft);
+  }
+
+  body {
+    background: var(--void);
+    color: var(--star-white);
+    font-family: 'Atkinson Hyperlegible Next', sans-serif;
+    font-size: 1rem;
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+
+  /* Starfield tinted green and cyan — auroral, per the house convention that
+     each page tints its own field. Inline by design; see CLAUDE.md. */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 8%  14%, rgba(249,250,251,0.8) 0%, transparent 100%),
+      radial-gradient(1px 1px at 22% 38%, rgba(74,222,128,0.7) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 44% 9%,  rgba(34,211,238,0.85) 0%, transparent 100%),
+      radial-gradient(1px 1px at 60% 68%, rgba(249,250,251,0.7) 0%, transparent 100%),
+      radial-gradient(2px 2px at 74% 28%, rgba(74,222,128,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 84% 54%, rgba(34,211,238,0.7)  0%, transparent 100%),
+      radial-gradient(1px 1px at 90% 79%, rgba(249,250,251,0.8) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 4%  58%, rgba(249,250,251,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 34% 84%, rgba(74,222,128,0.55) 0%, transparent 100%),
+      radial-gradient(1px 1px at 54% 47%, rgba(249,250,251,0.4) 0%, transparent 100%),
+      radial-gradient(2px 2px at 18% 88%, rgba(167,139,250,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 68% 4%,  rgba(249,250,251,0.8) 0%, transparent 100%),
+      radial-gradient(1px 1px at 47% 62%, rgba(34,211,238,0.5)  0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 29% 19%, rgba(74,222,128,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 77% 87%, rgba(249,250,251,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 92% 43%, rgba(249,250,251,0.6) 0%, transparent 100%),
+      radial-gradient(2px 2px at 56% 23%, rgba(244,114,182,0.45) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .pl-wrap { position: relative; z-index: 1; max-width: 1040px; margin: 0 auto; padding: 4rem 1.5rem 4rem; }
+  .twinkle { position: fixed; width: 3px; height: 3px; background: var(--green); border-radius: 50%; box-shadow: 0 0 6px #4ade80; animation: twinkle-anim 3s ease-in-out infinite; pointer-events: none; z-index: 0; }
+
+  @media (max-width: 600px) { .pl-wrap { padding: 2.5rem 0.75rem 3rem; } }
+
+  /* ==========================================================================
+     Essay — same scaffolding as joyful-sound-playlist.html so the two
+     essay-first Sound pages read as a pair.
+     ========================================================================== */
+  .es { max-width: 43rem; margin: 0 auto; }
+  .es-hd { text-align: center; margin-bottom: 3rem; }
+  .es-brand { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.35em; text-transform: uppercase; color: var(--cyan); margin-bottom: 0.7rem; display: block; }
+  .es-title { font-size: clamp(2rem, 5.4vw, 3.25rem); font-weight: 800; line-height: 1.06; margin: 0 0 0.6rem; background: linear-gradient(135deg, var(--green) 0%, var(--cyan) 52%, var(--purple) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .es-sub { font-size: 1.0625rem; color: var(--muted); line-height: 1.65; margin: 0 auto; max-width: 34rem; }
+  .es-kicker { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; color: var(--green); margin-top: 1.2rem; display: block; }
+
+  .es section { margin: 0 0 3.25rem; }
+  .es h2 { font-size: clamp(1.35rem, 3.4vw, 1.85rem); font-weight: 700; line-height: 1.25; color: var(--star-white); margin: 0 0 0.35rem; }
+  .es .es-num { display: block; font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.32em; text-transform: uppercase; color: var(--green); margin-bottom: 0.5rem; }
+  .es p { margin: 0 0 1rem; color: var(--star-white); }
+  .es p.es-lede { font-size: 1.125rem; color: var(--secondary); }
+  .es a { color: var(--cyan); }
+  .es strong { color: var(--star-white); font-weight: 700; }
+  .es em { color: var(--muted); }
+
+  .es-pull { border-left: 3px solid var(--green); background: rgba(15,15,42,0.6); border-radius: 0 8px 8px 0; padding: 1rem 1.25rem; margin: 1.5rem 0; }
+  .es-pull p { margin: 0 0 0.4rem; font-size: 1.0625rem; }
+  .es-pull p:last-child { margin: 0; }
+  .es-cite { display: block; font-size: 0.8125rem; color: var(--muted); font-style: normal; }
+
+  .es-note { border-left: 3px solid var(--gold); background: rgba(15,15,42,0.6); border-radius: 0 8px 8px 0; padding: 1rem 1.25rem; margin: 1.5rem 0; }
+  .es-note p { margin: 0 0 0.6rem; font-size: 0.9688rem; }
+  .es-note p:last-child { margin: 0; }
+  .es-note .es-note-hd { font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: 0.35rem; }
+
+  .es-fig { margin: 2rem 0; background: rgba(15,15,42,0.6); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 1.25rem 1rem 1rem; }
+  .es-fig svg { display: block; width: 100%; height: auto; }
+  .es-fig figcaption { font-size: 0.875rem; color: var(--muted); line-height: 1.6; margin-top: 0.85rem; }
+
+  .es-refuse { border-left: 3px solid var(--purple); background: rgba(15,15,42,0.6); border-radius: 0 8px 8px 0; padding: 1.1rem 1.25rem; margin: 1.5rem 0 0; }
+  .es-refuse ul { margin: 0; padding-left: 1.1rem; }
+  .es-refuse li { margin-bottom: 0.6rem; color: var(--star-white); }
+  .es-refuse li:last-child { margin-bottom: 0; }
+
+  /* ==========================================================================
+     Playlist rack — the shared .lyss-playlist widget, as on both sibling pages.
+     ========================================================================== */
+  .lyss-playlist{
+    --lp-void:var(--sp-void);
+    /* Aliased, never a literal hex: a hardcoded card ground survives
+       @media print and puts darkened print ink on a dark card. */
+    --lp-card:var(--sp-card);
+    --lp-purple:#7c3aed;
+    --lp-pink:#db2777;
+    --lp-gold:#d4a017;
+    --lp-gold-bright:var(--sp-gold);
+    --lp-white:var(--sp-white);
+    --lp-cyan:var(--sp-cyan);
+    --lp-cyan-dim:#5bc8e0;
+    --lp-green:var(--sp-green);
+    --lp-dust:#c8bfde;
+    --lp-muted:var(--sp-muted);
+    --lp-secondary:var(--sp-secondary);
+    --lp-tertiary:#a89ec0;
+    --lp-font:'Atkinson Hyperlegible Next','Atkinson Hyperlegible',sans-serif;
+    font-family:var(--lp-font);
+    background:var(--lp-void);
+    border-radius:12px;
+    padding:2.5rem 0 1rem;
+    color:var(--lp-white);
+    margin-top:1rem;
+  }
+  .lyss-playlist .lp-section{font-size:0.8125rem;font-weight:700;letter-spacing:0.3em;text-transform:uppercase;color:var(--lp-gold);margin:2.5rem 0 1rem;padding-bottom:0.5rem;border-bottom:1px solid rgba(212,160,23,0.3);display:block}
+  .lyss-playlist > .lp-head:first-child .lp-section{margin-top:0}
+  .lyss-playlist .lp-sectionnote{font-size:0.9375rem;font-style:italic;color:var(--lp-muted);line-height:1.6;margin:-0.4rem 0 1.1rem}
+  .lyss-playlist .lp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.2rem}
+  .lyss-playlist .lp-card{background:var(--lp-card);border-radius:8px;overflow:hidden;border:1px solid rgba(255,255,255,0.07);border-left-width:3px}
+  .lyss-playlist .lp-card.c-purple{border-left-color:var(--lp-purple)}
+  .lyss-playlist .lp-card.c-pink{border-left-color:var(--lp-pink)}
+  .lyss-playlist .lp-card.c-gold{border-left-color:var(--lp-gold-bright)}
+  .lyss-playlist .lp-card.c-cyan{border-left-color:var(--lp-cyan)}
+  .lyss-playlist .lp-card.c-green{border-left-color:var(--lp-green)}
+  .lyss-playlist .lp-card.c-white{border-left-color:rgba(249,250,251,0.4)}
+  .lyss-playlist .lp-meta{padding:0.9rem 1rem 0.75rem}
+  .lyss-playlist .lp-cat{font-size:0.75rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:0.35rem;display:block}
+  .lyss-playlist .c-purple .lp-cat{color:#a78bfa}
+  .lyss-playlist .c-pink .lp-cat{color:#f472b6}
+  .lyss-playlist .c-gold .lp-cat{color:var(--lp-gold-bright)}
+  .lyss-playlist .c-cyan .lp-cat{color:var(--lp-cyan)}
+  .lyss-playlist .c-green .lp-cat{color:var(--lp-green)}
+  .lyss-playlist .c-white .lp-cat{color:var(--lp-dust)}
+  .lyss-playlist .lp-song{font-size:1.125rem;font-weight:700;color:var(--lp-white);line-height:1.25;margin-bottom:0.2rem}
+  .lyss-playlist .lp-artist{font-size:0.875rem;font-weight:400;color:var(--lp-secondary);margin-bottom:0.6rem;display:block}
+  .lyss-playlist .lp-note{font-size:0.9375rem;font-style:italic;color:var(--lp-muted);line-height:1.6;margin:0}
+  .lyss-playlist .lp-yt{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;background:#000}
+  .lyss-playlist .lp-yt iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none}
+
+  .lp-listen { margin-top: 3rem; }
+  .lp-listen .lp-section { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin: 0 0 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid rgba(251,191,36,0.3); display: block; }
+  .lp-listen .lp-sectionnote { font-size: 0.9375rem; font-style: italic; color: var(--muted); line-height: 1.6; margin: 0 0 1.1rem; }
+  .lp-listen .lp-embed { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; background: #000; border-radius: 12px; }
+  .lp-listen .lp-embed iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+  .lp-listen .lp-links { margin-top: 0.9rem; font-size: 0.9375rem; color: var(--muted); }
+  .lp-listen .lp-links a { color: var(--cyan); }
+
+  .lp-footer{text-align:center;margin-top:3rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,0.08)}
+  .lp-footer-star{font-size:1.75rem;font-weight:700;background:linear-gradient(135deg,var(--green),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;display:block;margin-bottom:0.4rem}
+  .lp-footer p{font-size:0.9375rem;color:var(--secondary);line-height:1.6;margin:0 0 0.6rem}
+  .lp-footer a{color:var(--cyan)}
+  .lp-sources{max-width:43rem;margin:2.5rem auto 0;font-size:0.875rem;color:var(--secondary);line-height:1.65}
+  .lp-sources h3{font-size:0.6875rem;font-weight:700;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);margin:0 0 0.6rem}
+  .lp-sources p{margin:0 0 0.6rem}
+  .lp-sources a{color:var(--cyan)}
+
+  @media print {
+    .lyss-playlist { --lp-dust: #222222; --lp-gold: #111111; --lp-cyan-dim: #111111; }
+    .lyss-playlist .lp-cat,
+    .lyss-playlist .lp-section,
+    .lyss-playlist .lp-sectionnote { color: #222222 !important; }
+    .lyss-playlist .c-purple .lp-cat { color: #3b1e91 !important; }
+    .lyss-playlist .c-pink .lp-cat { color: #8a1247 !important; }
+    .lyss-playlist .c-gold .lp-cat { color: #6b4a00 !important; }
+    .lyss-playlist .c-cyan .lp-cat { color: #0b5567 !important; }
+    .lyss-playlist .c-green .lp-cat { color: #14602f !important; }
+    .lyss-playlist .lp-yt, .lp-listen .lp-embed { display: none; }
+    .es-fig, .es-pull, .es-note, .es-refuse { background: none !important; }
+  }
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Stimming and Belonging with AURORA","description":"Twenty-eight AURORA performances and the physics of the light she is named after — a forbidden transition that only completes where nothing crowds it.","image":"https://starstuff.earth/og-card.jpg","url":"https://starstuff.earth/aurora-playlist.html","mainEntityOfPage":"https://starstuff.earth/aurora-playlist.html","author":{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/"},"publisher":[{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/","logo":{"@type":"ImageObject","url":"https://starstuff.earth/og-card.jpg"}},{"@type":"Organization","name":"More Realms","url":"https://morerealms.com/"}],"isPartOf":{"@type":"WebSite","name":"Star Stuff","url":"https://starstuff.earth/"}}</script>
+</head>
+<body>
+
+<div class="twinkle" style="top:6%;left:10%;animation-delay:-0.4s"></div>
+<div class="twinkle" style="top:15%;left:85%;animation-delay:-1.3s;background:#22d3ee;box-shadow:0 0 6px #22d3ee"></div>
+<div class="twinkle" style="top:48%;left:3%;animation-delay:-2.1s"></div>
+<div class="twinkle" style="top:70%;left:95%;animation-delay:-0.9s;background:#a78bfa;box-shadow:0 0 6px #a78bfa"></div>
+<div class="twinkle" style="top:88%;left:25%;animation-delay:-1.7s"></div>
+
+<div class="pl-wrap">
+
+  <nav class="ss-nav" style="--nav-accent:#4ade80;" aria-label="Star Stuff collection">
+    <span class="ss-nav-home-group"><a class="ss-nav-home" href="index.html"><span class="ss-star" aria-hidden="true">★</span> stuff</a><a class="ss-nav-about" href="about.html">about</a>
+      <a class="ss-nav-search" href="search.html">search</a></span>
+    <span class="ss-nav-links">
+      <a class="ss-nav-prev" href="joyful-sound-playlist.html"><span class="ss-nav-arrow" aria-hidden="true">&lsaquo;</span> <span class="ss-nav-label">A Joyful Sound</span></a>
+      <a class="ss-nav-next" href="collection-print.html"><span class="ss-nav-label">Print</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
+    </span>
+  </nav>
+
+<main>
+
+  <section class="es-hd" id="masthead">
+    <span class="es-brand"><a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks Foundation</a> × <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a></span>
+    <h1 class="es-title">Stimming and Belonging with AURORA</h1>
+    <p class="es-sub">Twenty-eight performances, weighted toward live — because the argument is the body — and the physics of the light she shares a name with. The companion rack to <a href="aurora-zine.html">Warriors and Weirdos</a>, Zine No. 13.</p>
+    <span class="es-kicker">Playlist &amp; essay · Sound</span>
+  </section>
+
+  <div class="es">
+
+    <section id="the-video-that-shocked-her">
+      <span class="es-num">One</span>
+      <h2>She watched herself back, and did not change a thing</h2>
+      <p class="es-lede">Asked about the way she moves on stage, AURORA gave one of the more useful answers anybody has given about a body in public.</p>
+      <div class="es-pull">
+        <p>The first time I saw myself playing live&hellip; on a video was kind of a terrifying. I didn't know that I looked like I was doing an exorcism or having a heart attack while performing live&hellip; but I can't really do anything about it. I'm a very emotional person, and I guess when you have songs with lots of emotions&hellip; I have to use everything I got to sing those songs, and I have lots of things to work with.</p>
+        <span class="es-cite">AURORA, in the <a href="https://www.youtube.com/watch?v=fDVwakM7MxQ">Red Bull session</a> for &ldquo;Conqueror.&rdquo; Lightly condensed from her spoken answer; ellipses mark cuts.</span>
+      </div>
+      <p>Read that again for the order of events. <strong>She saw it. She was shocked by it. She kept it.</strong> Not because she reframed it into something admirable, and not because someone reassured her — she says plainly that she can't do anything about it, and then, in the same breath, that she needs it. The movement is not decoration laid over the singing. It is part of how the singing happens. <em>I have to use everything I got.</em></p>
+      <p>Anyone who has been told to keep their hands still knows how rare that sentence is. The usual sequence runs the other way: you catch sight of yourself, you feel the shock, and you spend the next twenty years editing.</p>
+
+      <div class="es-note">
+        <span class="es-note-hd">Whose word is which</span>
+        <p><strong>She calls it emotion. We are the ones calling it stimming, and that distinction belongs on the page rather than buried in it.</strong> AURORA has spoken publicly about being neurodivergent, using that word; she has not, as far as we can find, described her stage movement as stimming, and we are not going to put the term in her mouth.</p>
+        <p>What we are saying is narrower and, we think, still worth saying: <strong>a great many of us watch her move and recognise something</strong> — the whole body recruited, the motion arriving with the feeling rather than after it, the flat refusal to hold still for the comfort of onlookers. The recognition is ours. The title of this page describes what her work does for us, not a claim about what is happening inside her.</p>
+      </div>
+    </section>
+
+    <section id="what-the-lights-are-doing">
+      <span class="es-num">Two</span>
+      <h2>What the light she is named after is actually doing</h2>
+      <p class="es-lede">The aurora takes its name from the Roman goddess of the dawn. So does she. That is a coincidence and we are going to make nothing of it — but the coincidence points at a piece of physics that turns out to be about exactly this.</p>
+      <p>Here is the part everyone knows: charged particles from the Sun spiral down the magnetic field into the upper atmosphere and the sky lights up. Here is the part that matters. <strong>The colour is not the Sun's.</strong> The solar wind delivers energy and nothing else; what you actually see is an oxygen atom, having been knocked into an excited state, dropping back down and releasing a photon at the one wavelength its own structure permits. The famous green is <strong>557.7 nm</strong>, and that number is not a property of the Sun or of the wind or of the weather. It is atomic oxygen's own line. <strong>Energy came from outside. The colour is the atom's.</strong></p>
+      <p>Now the part that stopped us. That green line is a <strong>forbidden transition</strong>.</p>
+
+      <figure class="es-fig">
+        <svg viewBox="0 0 700 300" role="img" aria-labelledby="fig-t fig-d">
+          <title id="fig-t">Atomic oxygen's auroral transitions, and the altitudes at which each is seen</title>
+          <desc id="fig-d">On the left, three energy levels of atomic oxygen: the 1S state at the top, the 1D state below it, and the 3P ground state at the bottom. A green arrow from 1S to 1D is labelled 557.7 nanometres with a lifetime of about 0.7 seconds; a red arrow from 1D to 3P is labelled 630.0 nanometres with a lifetime of about 110 seconds. Both are marked forbidden. On the right, an altitude scale showing red emission above roughly 150 kilometres, green emission between roughly 100 and 150 kilometres, and below that a crowded region labelled collisionally quenched where neither completes.</desc>
+          <!-- energy levels -->
+          <text x="14" y="20" fill="#f9fafb" font-family="'Atkinson Hyperlegible Next',sans-serif" font-size="14" font-weight="700">Atomic oxygen</text>
+          <line x1="14" y1="52" x2="150" y2="52" stroke="#4ade80" stroke-width="3"/>
+          <text x="158" y="57" fill="#f9fafb" font-family="'Atkinson Hyperlegible Next',sans-serif" font-size="14" font-weight="700">¹S</text>
+          <line x1="14" y1="150" x2="150" y2="150" stroke="#f472b6" stroke-width="3"/>
+          <text x="158" y="155" fill="#f9fafb" font-family="'Atkinson Hyperlegible Next',sans-serif" font-size="14" font-weight="700">¹D</text>
+          <line x1="14" y1="250" x2="150" y2="250" stroke="#b8aed0" stroke-width="3"/>
+          <text x="158" y="255" fill="#f9fafb" font-family="'Atkinson Hyperlegible Next',sans-serif" font-size="14" font-weight="700">³P  <tspan fill="#c4b5d4" font-weight="400" font-size="12.5">ground state</tspan></text>
+          <!-- green transition -->
+          <line x1="60" y1="56" x2="60" y2="144" stroke="#4ade80" stroke-width="2.5"/>
+          <path d="M60 148 l -5 -10 h 10 z" fill="#4ade80"/>
+          <text x="72" y="92" fill="#4ade80" font-family="'Atkinson Hyperlegible Next',sans-serif" font-size="13.5" font-weight="700">557.7 nm · green</text>
+          <text x="72" y="110" fill="#c4b5d4" font-family="'Atkinson Hyperlegible Next',sans-serif" font-size="12.5">forbidden · waits ~0.7 s</text>
+          <!-- red transition -->
+          <line x1="60" y1="154" x2="60" y2="244" stroke="#f472b6" stroke-width="2.5"/>
+          <path d="M60 248 l -5 -10 h 10 z" fill="#f472b6"/>
+          <text x="72" y="192" fill="#f472b6" font-family="'Atkinson Hyperlegible Next',sans-serif" font-size="13.5" font-weight="700">630.0 nm · red</text>
+          <text x="72" y="210" fill="#c4b5d4" font-family="'Atkinson Hyperlegible Next',sans-serif" font-size="12.5">forbidden · waits ~110 s</text>
+          <!-- altitude column -->
+          <text x="392" y="20" fill="#f9fafb" font-family="'Atkinson Hyperlegible Next',sans-serif" font-size="14" font-weight="700">Where it completes</text>
+          <rect x="392" y="36" width="230" height="70" fill="rgba(244,114,182,0.16)"/>
+          <text x="404" y="62" fill="#f472b6" font-family="'Atkinson Hyperlegible Next',sans-serif" font-size="13" font-weight="700">red</text>
+          <text x="404" y="82" fill="#c4b5d4" font-family="'Atkinson Hyperlegible Next',sans-serif" font-size="12.5">above ~150 km — thin enough</text>
+          <text x="404" y="98" fill="#c4b5d4" font-family="'Atkinson Hyperlegible Next',sans-serif" font-size="12.5">to wait out 110 seconds</text>
+          <rect x="392" y="112" width="230" height="66" fill="rgba(74,222,128,0.16)"/>
+          <text x="404" y="138" fill="#4ade80" font-family="'Atkinson Hyperlegible Next',sans-serif" font-size="13" font-weight="700">green</text>
+          <text x="404" y="158" fill="#c4b5d4" font-family="'Atkinson Hyperlegible Next',sans-serif" font-size="12.5">~100–150 km</text>
+          <rect x="392" y="184" width="230" height="76" fill="rgba(249,250,251,0.07)"/>
+          <text x="404" y="210" fill="#f9fafb" font-family="'Atkinson Hyperlegible Next',sans-serif" font-size="13" font-weight="700">below that: nothing</text>
+          <text x="404" y="230" fill="#c4b5d4" font-family="'Atkinson Hyperlegible Next',sans-serif" font-size="12.5">too crowded — a collision takes</text>
+          <text x="404" y="246" fill="#c4b5d4" font-family="'Atkinson Hyperlegible Next',sans-serif" font-size="12.5">the energy before it can emit</text>
+          <!-- Kept short deliberately: the fuller caveat ran past the 700-unit
+               viewBox and was clipped on screen. It lives in the colophon. -->
+          <text x="392" y="286" fill="#807d98" font-family="'Atkinson Hyperlegible Next',sans-serif" font-size="12">Altitudes approximate.</text>
+        </svg>
+        <figcaption>&ldquo;Forbidden&rdquo; is a term of art. It does not mean impossible — it means the transition breaks the electric-dipole selection rules, so it happens <em>slowly</em>. An allowed transition is over in nanoseconds. The oxygen ¹S state sits for about <strong>0.7 seconds</strong> before it releases the green photon, and the ¹D state waits about <strong>110 seconds</strong> for the red.</figcaption>
+      </figure>
+
+      <p>And that waiting is why altitude decides the colour. Low down, the air is crowded: long before the atom can complete its slow release, something collides with it and takes the energy away instead. Physicists call it <strong>collisional quenching</strong>, which is as bleak a phrase as it sounds. The green shows between roughly 100 and 150 km. The red needs to be higher still, because <em>110 seconds</em> of undisturbed waiting is not available anywhere denser.</p>
+      <div class="es-pull">
+        <p>The most famous light in the sky is a slow release that the rules call forbidden, and it only completes where nothing crowds it.</p>
+        <span class="es-cite">Both halves matter. The label was never a verdict on whether it could happen. And the room is what decides whether it does.</span>
+      </div>
+      <p>We are not going to spell out the analogy. You can see it. What we will say is what the physics licenses and what it doesn't: <strong>&ldquo;forbidden&rdquo; is a description of a ruleset, not of a possibility</strong> — the sky does it constantly — and <strong>whether a slow thing gets to finish depends on the density of what surrounds it</strong>, which is an argument about rooms rather than about atoms.</p>
+      <div class="es-note">
+        <span class="es-note-hd">A rhyme, not a proof</span>
+        <p>Oxygen has no stake in any of this. Selection rules are not social rules, and quenching is not a metaphor for a classroom — the word is doing a specific job about collision cross-sections and it does not transfer. Nothing about the 557.7 nm line obliges anyone to make room for anyone. <strong>We are noticing that the sky's best-known trick has the same shape as the thing we keep asking for, and noticing is the whole of the claim.</strong></p>
+      </div>
+    </section>
+
+    <section id="stim-listening">
+      <span class="es-num">Three</span>
+      <h2>The same song, again, and again</h2>
+      <p class="es-lede">There is a word for the other half of this, and it is ours rather than the industry's. <strong>Stim listening</strong> — listening repetitively to a single song, album or playlist — was coined by <strong>Jim Irion</strong>, who describes using it to start work and to hold focus.</p>
+      <p>It is the listening practice almost nobody designs for. Streaming services are built to move you along: the next track, the fresh recommendation, the endless lateral drift. Plenty of us want the opposite, and want it for good reasons — the same song forty times because the fortieth is doing something the first could not, because repetition is regulation, because you have found an <strong>auditory samefood</strong> and samefoods are not a phase.</p>
+      <p>AURORA's catalogue takes this unusually well, and the rack below is arranged for it rather than against it: the same song appears more than once in different rooms, because <em>Conqueror</em> at a Red Bull session and <em>Conqueror</em> on late-night American television are not the same event, and running them back to back is a legitimate way to listen.</p>
+      <p>Ryan keeps a YouTube playlist called <a href="https://www.youtube.com/playlist?list=PL4vHAg2MP4X982EMeNJdxjnNNKGcw4tAw"><em>Stimming with Aurora</em></a>, and it is worth noticing what is in it: <strong>almost nothing but live performances.</strong> Not the studio versions, not the official videos — the sessions, the radio spots, the concerts. That is not an accident of collecting. When the body is the argument, you need the footage where the body is.</p>
+    </section>
+
+    <section id="a-people-that-names-itself">
+      <span class="es-num">Four</span>
+      <h2>Queendom, and a people that names itself</h2>
+      <p class="es-lede">The belonging half of this page is argued at length in <a href="aurora-zine.html">Warriors and Weirdos</a>, so we will not repeat it here. One thing is worth restating, because it is the mechanism.</p>
+      <p><em>Queendom</em> (2018) does not describe a place that exists. It describes one being declared — a country announced for everybody the existing countries had no room for, which is a different act from asking to be let into somewhere already standing. And her audience did the corresponding thing from the other direction: they took a name. <strong>Weird stops working as an insult at the exact moment a people picks it up and uses it as an address.</strong></p>
+      <p>That is the same move the word <em>stimpunk</em> makes, and <em>crip</em>, and <em>mad</em>, and <em>neuroqueer</em>. It is also why the reclamation is never available to bystanders: the word only turns when the people it was used against are the ones turning it.</p>
+    </section>
+
+    <section id="no-cure">
+      <span class="es-num">Five</span>
+      <h2>No cure, and the wounds nobody can see</h2>
+      <p class="es-lede">Two of her songs do work this collection keeps needing, and they do it from opposite ends.</p>
+      <p><em>Cure for Me</em> (2021) takes the brightest, most danceable arrangement on the record and puts it underneath a refusal — which is the correct setting for that refusal, because the demand for a cure is usually delivered warmly, by people who are sure they are helping. <em>Invisible Wounds</em> (2024) goes the other way and stays with the part that does not photograph: the injury nobody can see is still an injury, and the absence of a visible mark has never been evidence of anything except the limits of looking.</p>
+      <p>Between them sits the practical fact that every access conversation eventually runs into. <strong>What can't be seen still has to be believed.</strong></p>
+    </section>
+
+    <section id="what-we-refuse">
+      <span class="es-num">Six</span>
+      <h2>What this page refuses</h2>
+      <p class="es-lede">A page about a beloved performer's body carries specific risks, and it is better to name them than to hope nobody notices.</p>
+      <div class="es-refuse">
+        <ul>
+          <li><strong>Not a diagnosis.</strong> AURORA has said she is neurodivergent and we use her word, exactly as <a href="aurora-zine.html">Zine No. 13</a> does. Aggregator and SEO pages have begun attaching specific conditions to her name; we are not repeating them, and neither should anyone citing this page.</li>
+          <li><strong>Not her art explained by her brain.</strong> &ldquo;She makes music like that <em>because</em> she is neurodivergent&rdquo; sounds like appreciation and works like a reduction — it turns a body of deliberate craft into a symptom with a soundtrack.</li>
+          <li><strong>Not stimming attributed to her.</strong> She describes emotion. We describe recognition. Those are different sentences and this page keeps them apart.</li>
+          <li><strong>Not inspiration.</strong> She is not evidence that being different works out fine if you have enough talent. Most of us are not going to be given a stage, and the argument for making room cannot depend on the person in the room turning out to be extraordinary.</li>
+          <li><strong>Not stimming as acceptable only when it is beautiful.</strong> This is the one that matters most here. Her movement is celebrated because it is on a stage, set to music, and lovely to watch. <strong>The same body doing the same thing in a classroom gets a behaviour plan, and a child who flaps in a supermarket gets stared at by people who would applaud this.</strong> If the movement is only permitted once it has been made into art, nothing has actually been conceded.</li>
+          <li><strong>Not physics as permission.</strong> The aurora does not authorise anything. It is a rhyme, and it is fenced as one above.</li>
+        </ul>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="lyss-playlist">
+
+    <section class="lp-head">
+      <span class="lp-section">One — Watch the body</span>
+      <p class="lp-sectionnote">Live, because that is where the argument is. Most of these come straight from Ryan's own <em>Stimming with Aurora</em> playlist.</p>
+    </section>
+    <div class="lp-grid">
+      <div class="lp-card c-green"><div class="lp-meta"><span class="lp-cat">The one with the quote</span><div class="lp-song">Conqueror</div><span class="lp-artist">Red Bull session · song 2016</span><p class="lp-note">The session this page's opening quotation comes from — she describes seeing herself on video for the first time, being shocked, and carrying on regardless. Watch it knowing that, and the performance changes.</p></div><div class="lp-yt"><iframe src="https://www.youtube-nocookie.com/embed/fDVwakM7MxQ" title="AURORA — Conqueror, Red Bull session" allowfullscreen loading="lazy"></iframe></div></div>
+      <div class="lp-card c-cyan"><div class="lp-meta"><span class="lp-cat">Same song, other room</span><div class="lp-song">Conqueror — The Tonight Show</div><span class="lp-artist">Live with Jimmy Fallon · song 2016</span><p class="lp-note">The same song on American network television, with the cameras and the band and the studio audience. Run it straight after the Red Bull session; nothing has been sanded down.</p></div><div class="lp-yt"><iframe src="https://www.youtube-nocookie.com/embed/IwNoXFgg8lo" title="AURORA — Conqueror, live on The Tonight Show" allowfullscreen loading="lazy"></iframe></div></div>
+      <div class="lp-card c-purple"><div class="lp-meta"><span class="lp-cat">Off the leash</span><div class="lp-song">Running With The Wolves</div><span class="lp-artist">Pandora Sessions · song 2015</span><p class="lp-note">The song Zine No. 13 uses for the wild, instinctive self, performed in a small room where you can see her feet. Stamping, not choreography.</p></div><div class="lp-yt"><iframe src="https://www.youtube-nocookie.com/embed/5skBr_96dPc" title="AURORA — Running With The Wolves, Pandora Sessions" allowfullscreen loading="lazy"></iframe></div></div>
+      <div class="lp-card c-gold"><div class="lp-meta"><span class="lp-cat">Radio session</span><div class="lp-song">Warrior — Like A Version</div><span class="lp-artist">triple j · song 2016</span><p class="lp-note">Australian radio, live to air, no place to hide. <em>Warrior</em> is the courage-to-stay-yourself song, and this is it delivered in a room designed for scrutiny.</p></div><div class="lp-yt"><iframe src="https://www.youtube-nocookie.com/embed/lAUu5EGivfA" title="AURORA — Warrior, live for Like A Version" allowfullscreen loading="lazy"></iframe></div></div>
+      <div class="lp-card c-pink"><div class="lp-meta"><span class="lp-cat">Full set</span><div class="lp-song">Full Performance (Live on KEXP)</div><span class="lp-artist">KEXP</span><p class="lp-note">A whole session rather than a single. The long form is the point — you can watch the movement build across songs instead of catching it in a three-minute clip.</p></div><div class="lp-yt"><iframe src="https://www.youtube-nocookie.com/embed/P_XguuxLo10" title="AURORA — full performance, live on KEXP" allowfullscreen loading="lazy"></iframe></div></div>
+      <div class="lp-card c-white"><div class="lp-meta"><span class="lp-cat">Small and close</span><div class="lp-song">Tiny Desk Concert</div><span class="lp-artist">NPR Music</span><p class="lp-note">The format that strips everything: an office, no lights, an audience of colleagues at arm's length. Nothing about how she moves depends on the stage being large.</p></div><div class="lp-yt"><iframe src="https://www.youtube-nocookie.com/embed/evBgLWQwAFA" title="AURORA — NPR Music Tiny Desk Concert" allowfullscreen loading="lazy"></iframe></div></div>
+    </div>
+
+    <section class="lp-head">
+      <span class="lp-section">Two — Excited from outside, the colour is yours</span>
+      <p class="lp-sectionnote">The wild, animal, earthbound songs — where the energy arrives from somewhere else and what comes out is characteristic of the material.</p>
+    </section>
+    <div class="lp-grid">
+      <div class="lp-card c-green"><div class="lp-meta"><span class="lp-cat">The animal self</span><div class="lp-song">Animal</div><span class="lp-artist">AURORA · 2019</span><p class="lp-note">From <em>A Different Kind of Human – Step 2</em>. The instinctive body claimed rather than apologised for, at a volume the earlier records didn't reach for.</p></div><div class="lp-yt"><iframe src="https://www.youtube-nocookie.com/embed/3DIT8Y3LC6M" title="AURORA — Animal" allowfullscreen loading="lazy"></iframe></div></div>
+      <div class="lp-card c-cyan"><div class="lp-meta"><span class="lp-cat">Too far, allegedly</span><div class="lp-song">I Went Too Far</div><span class="lp-artist">Live on the Honda Stage · song 2016</span><p class="lp-note">A title that is an accusation, sung by someone declining it. Live, so you can watch her go exactly as far as the song requires.</p></div><div class="lp-yt"><iframe src="https://www.youtube-nocookie.com/embed/Y2AqeH1GPs4" title="AURORA — I Went Too Far, live on the Honda Stage" allowfullscreen loading="lazy"></iframe></div></div>
+      <div class="lp-card c-gold"><div class="lp-meta"><span class="lp-cat">Earth, addressed</span><div class="lp-song">The Seed</div><span class="lp-artist">AURORA · 2019</span><p class="lp-note">Her most direct environmental song, and one of the few that refuses the comfortable ending. You cannot eat money; the arithmetic is not complicated.</p></div><div class="lp-yt"><iframe src="https://www.youtube-nocookie.com/embed/_Mc_OM5oNA8" title="AURORA — The Seed" allowfullscreen loading="lazy"></iframe></div></div>
+      <div class="lp-card c-purple"><div class="lp-meta"><span class="lp-cat">Small tremors</span><div class="lp-song">Gentle Earthquakes</div><span class="lp-artist">AURORA · 2018</span><p class="lp-note">From <em>Infections of a Different Kind – Step 1</em>. A title that holds the whole idea of an upheaval that arrives quietly and moves everything anyway.</p></div><div class="lp-yt"><iframe src="https://www.youtube-nocookie.com/embed/7B19B0PUE4Y" title="AURORA — Gentle Earthquakes" allowfullscreen loading="lazy"></iframe></div></div>
+    </div>
+
+    <section class="lp-head">
+      <span class="lp-section">Three — Stim-listening</span>
+      <p class="lp-sectionnote">The ones that reward the fortieth play. Put one on repeat; that is a use, not a malfunction.</p>
+    </section>
+    <div class="lp-grid">
+      <div class="lp-card c-cyan"><div class="lp-meta"><span class="lp-cat">Where it starts</span><div class="lp-song">Runaway</div><span class="lp-artist">AURORA · 2015</span><p class="lp-note">The song that opens her whole story — written young, about leaving, and then about wanting to get home. It has not worn out in a decade of being played on repeat, which is the actual test.</p></div><div class="lp-yt"><iframe src="https://www.youtube-nocookie.com/embed/d_HlPboLRL8" title="AURORA — Runaway" allowfullscreen loading="lazy"></iframe></div></div>
+      <div class="lp-card c-white"><div class="lp-meta"><span class="lp-cat">Carried elsewhere</span><div class="lp-song">Through The Eyes Of A Child</div><span class="lp-artist">AURORA · 2016</span><p class="lp-note">A quiet song from the debut that found an enormous second audience through television. Built for repetition — almost nothing happens in it, deliberately.</p></div><div class="lp-yt"><iframe src="https://www.youtube-nocookie.com/embed/sK6jRNl83tY" title="AURORA — Through The Eyes Of A Child" allowfullscreen loading="lazy"></iframe></div></div>
+      <div class="lp-card c-purple"><div class="lp-meta"><span class="lp-cat">Quiet as an event</span><div class="lp-song">It Happened Quiet</div><span class="lp-artist">AURORA · 2018</span><p class="lp-note">The loudest thing on the record is how little noise it makes. A samefood in the exact sense — you can put it on for a month and keep finding the room bigger than you left it.</p></div><div class="lp-yt"><iframe src="https://www.youtube-nocookie.com/embed/0b1BkqJFJeg" title="AURORA — It Happened Quiet" allowfullscreen loading="lazy"></iframe></div></div>
+      <div class="lp-card c-pink"><div class="lp-meta"><span class="lp-cat">Love, without the ache</span><div class="lp-song">Exist For Love</div><span class="lp-artist">AURORA · 2020</span><p class="lp-note">Released into the first pandemic summer, and unusual in her catalogue for being uncomplicatedly tender. Kept here because regulation is not always achieved by intensity.</p></div><div class="lp-yt"><iframe src="https://www.youtube-nocookie.com/embed/7YDkrJaiCrw" title="AURORA — Exist For Love" allowfullscreen loading="lazy"></iframe></div></div>
+      <div class="lp-card c-gold"><div class="lp-meta"><span class="lp-cat">Live, unannounced</span><div class="lp-song">Forgotten Love</div><span class="lp-artist">Live in Brazil · song 2018</span><p class="lp-note">Filmed by a newspaper rather than a label, which is why it looks like this. The gap between an official video and someone simply pointing a camera is itself informative.</p></div><div class="lp-yt"><iframe src="https://www.youtube-nocookie.com/embed/OLJQrXitrro" title="AURORA — Forgotten Love, live in Brazil" allowfullscreen loading="lazy"></iframe></div></div>
+    </div>
+
+    <section class="lp-head">
+      <span class="lp-section">Four — A people that names itself</span>
+      <p class="lp-sectionnote">Declaring a country rather than applying for a visa to somebody else's.</p>
+    </section>
+    <div class="lp-grid">
+      <div class="lp-card c-pink"><div class="lp-meta"><span class="lp-cat">The declaration</span><div class="lp-song">Queendom</div><span class="lp-artist">AURORA · 2018</span><p class="lp-note">Not a request to be admitted somewhere existing — the announcement of a place with different membership rules, made for the people the existing places had no room for.</p></div><div class="lp-yt"><iframe src="https://www.youtube-nocookie.com/embed/wULeXeQkqd0" title="AURORA — Queendom, official video" allowfullscreen loading="lazy"></iframe></div></div>
+      <div class="lp-card c-cyan"><div class="lp-meta"><span class="lp-cat">Stripped back</span><div class="lp-song">Queendom — Loustic Sessions</div><span class="lp-artist">Loustic Sessions · song 2018</span><p class="lp-note">The same declaration with the production removed. It survives the reduction, which is a decent test of whether a song meant it.</p></div><div class="lp-yt"><iframe src="https://www.youtube-nocookie.com/embed/uM8Wqfv5Jw8" title="AURORA — Queendom, Loustic Sessions" allowfullscreen loading="lazy"></iframe></div></div>
+      <div class="lp-card c-green"><div class="lp-meta"><span class="lp-cat">They came for the ones who don't fit</span><div class="lp-song">A Different Kind Of Human</div><span class="lp-artist">AURORA · 2019</span><p class="lp-note">Alien-ness taken literally and then turned kindly: not a defect to correct, but evidence you belong somewhere real. The spine of Zine No. 13.</p></div><div class="lp-yt"><iframe src="https://www.youtube-nocookie.com/embed/i5fn2akuRCQ" title="AURORA — A Different Kind Of Human" allowfullscreen loading="lazy"></iframe></div></div>
+      <div class="lp-card c-purple"><div class="lp-meta"><span class="lp-cat">Come with us</span><div class="lp-song">Mothership</div><span class="lp-artist">AURORA · 2019</span><p class="lp-note">In her telling the aliens don't conquer — they collect the people this planet was never built for. A free space with the difference set as the default rather than the exception.</p></div><div class="lp-yt"><iframe src="https://www.youtube-nocookie.com/embed/gGj4VsgrHxA" title="AURORA — Mothership" allowfullscreen loading="lazy"></iframe></div></div>
+      <div class="lp-card c-gold"><div class="lp-meta"><span class="lp-cat">Letting it in</span><div class="lp-song">Giving In To The Love</div><span class="lp-artist">AURORA · 2021</span><p class="lp-note">From <em>The Gods We Can Touch</em>. Belonging framed as something you have to stop resisting, which is closer to most people's experience of it than the welcome-mat version.</p></div><div class="lp-yt"><iframe src="https://www.youtube-nocookie.com/embed/QrC8yyp32wY" title="AURORA — Giving In To The Love" allowfullscreen loading="lazy"></iframe></div></div>
+    </div>
+
+    <section class="lp-head">
+      <span class="lp-section">Five — No cure, and the wounds nobody can see</span>
+      <p class="lp-sectionnote">The refusal, and the part that doesn't photograph.</p>
+    </section>
+    <div class="lp-grid">
+      <div class="lp-card c-gold"><div class="lp-meta"><span class="lp-cat">Nothing to fix</span><div class="lp-song">Cure For Me</div><span class="lp-artist">AURORA · 2021</span><p class="lp-note">Written against the idea that people need fixing to be acceptable, with conversion &ldquo;therapy&rdquo; in view — and set to the brightest arrangement on the record, because the demand for a cure is usually delivered warmly.</p></div><div class="lp-yt"><iframe src="https://www.youtube-nocookie.com/embed/K17df81RL9Y" title="AURORA — Cure For Me" allowfullscreen loading="lazy"></iframe></div></div>
+      <div class="lp-card c-pink"><div class="lp-meta"><span class="lp-cat">Believed without proof</span><div class="lp-song">Invisible Wounds</div><span class="lp-artist">AURORA · 2024</span><p class="lp-note">The injury nobody can see is still an injury. Every access conversation eventually arrives here, usually at the point where someone asks for documentation.</p></div><div class="lp-yt"><iframe src="https://www.youtube-nocookie.com/embed/Ty-mxGDbDAQ" title="AURORA — Invisible Wounds" allowfullscreen loading="lazy"></iframe></div></div>
+      <div class="lp-card c-purple"><div class="lp-meta"><span class="lp-cat">Head against heart</span><div class="lp-song">The Conflict Of The Mind</div><span class="lp-artist">AURORA · 2024</span><p class="lp-note">From <em>What Happened to the Heart?</em> — the argument a mind conducts with itself, which is a different thing from being conflicted about a decision.</p></div><div class="lp-yt"><iframe src="https://www.youtube-nocookie.com/embed/7TF91Zk8L5w" title="AURORA — The Conflict Of The Mind" allowfullscreen loading="lazy"></iframe></div></div>
+      <div class="lp-card c-cyan"><div class="lp-meta"><span class="lp-cat">The border of the body</span><div class="lp-song">Some Type Of Skin</div><span class="lp-artist">AURORA · 2024</span><p class="lp-note">What you grow to survive contact, and what it costs to grow it. Masking has a physical vocabulary and this song uses it.</p></div><div class="lp-yt"><iframe src="https://www.youtube-nocookie.com/embed/iMfQoZUrn4M" title="AURORA — Some Type Of Skin" allowfullscreen loading="lazy"></iframe></div></div>
+      <div class="lp-card c-white"><div class="lp-meta"><span class="lp-cat">No king required</span><div class="lp-song">A Soul With No King</div><span class="lp-artist">Live on KEXP · song 2024</span><p class="lp-note">Ungoverned rather than lost — a distinction the people doing the governing rarely accept. Live, so the body is in it.</p></div><div class="lp-yt"><iframe src="https://www.youtube-nocookie.com/embed/BgZsRaqDzKs" title="AURORA — A Soul With No King, live on KEXP" allowfullscreen loading="lazy"></iframe></div></div>
+    </div>
+
+    <section class="lp-head">
+      <span class="lp-section">Six — Back to Earth</span>
+      <p class="lp-sectionnote">The mothership was never the destination. Each other was.</p>
+    </section>
+    <div class="lp-grid">
+      <div class="lp-card c-green"><div class="lp-meta"><span class="lp-cat">It will be</span><div class="lp-song">To Be Alright</div><span class="lp-artist">AURORA · 2024</span><p class="lp-note">Reassurance that does not pretend the difficulty was imaginary, which is the only kind worth having. Notice how much of the record had to happen first.</p></div><div class="lp-yt"><iframe src="https://www.youtube-nocookie.com/embed/xr2m9z0qnqk" title="AURORA — To Be Alright" allowfullscreen loading="lazy"></iframe></div></div>
+      <div class="lp-card c-cyan"><div class="lp-meta"><span class="lp-cat">The way home</span><div class="lp-song">Runaway — Honda Stage</div><span class="lp-artist">Live · song 2015</span><p class="lp-note">The first song again, live, years later. She has said the fans and the concerts pulled her back to Earth — this is roughly what that looks like from the outside.</p></div><div class="lp-yt"><iframe src="https://www.youtube-nocookie.com/embed/DB5USH8Vr1w" title="AURORA — Runaway, live on the Honda Stage" allowfullscreen loading="lazy"></iframe></div></div>
+      <div class="lp-card c-white"><div class="lp-meta"><span class="lp-cat">One more room</span><div class="lp-song">Live at Paste Studio, NYC</div><span class="lp-artist">Paste Magazine</span><p class="lp-note">A last session for the road. If you have got this far, you already know what to watch for, and it is not the singing.</p></div><div class="lp-yt"><iframe src="https://www.youtube-nocookie.com/embed/sHRljIHnLSI" title="AURORA at Paste Studio NYC" allowfullscreen loading="lazy"></iframe></div></div>
+    </div>
+
+  </div>
+
+  <section class="lp-listen" id="listen">
+    <span class="lp-section">Listen — the whole playlist</span>
+    <p class="lp-sectionnote"><em>Stimming with Aurora</em> is Ryan's own YouTube playlist, and it is almost entirely live performances. That is the thesis of this page in the form of a collection: when the body is the argument, you need the footage where the body is.</p>
+    <div class="lp-embed"><iframe src="https://www.youtube-nocookie.com/embed/videoseries?list=PL4vHAg2MP4X982EMeNJdxjnNNKGcw4tAw" title="Stimming with Aurora — playlist" allowfullscreen loading="lazy"></iframe></div>
+    <p class="lp-links">Open it on <a href="https://www.youtube.com/playlist?list=PL4vHAg2MP4X982EMeNJdxjnNNKGcw4tAw" target="_blank" rel="noopener">YouTube</a>. The companion zine is <a href="aurora-zine.html">Warriors and Weirdos</a> (No. 13); the other racks on this shelf are <a href="joyful-sound-playlist.html">It Take a Joyful Sound</a> and the <a href="ls-playlist.html">L★S Playlist</a>.</p>
+  </section>
+
+  <section class="lp-sources" id="sources">
+    <h3>Sources &amp; credits</h3>
+    <p><strong>AURORA.</strong> The opening quotation is from the <a href="https://www.youtube.com/watch?v=fDVwakM7MxQ">Red Bull session</a> for &ldquo;Conqueror,&rdquo; lightly condensed from her spoken answer with ellipses marking the cuts; nothing has been added or reordered. AURORA has spoken publicly about being neurodivergent and we use her word, naming no diagnosis — see <a href="aurora-zine.html">Zine No. 13</a>. Release years were checked against release databases rather than recalled: <em>Runaway</em> and <em>Running With The Wolves</em> 2015; <em>Conqueror</em>, <em>Warrior</em>, <em>I Went Too Far</em> and <em>Through The Eyes Of A Child</em> 2016 (<em>All My Demons Greeting Me as a Friend</em>); <em>Queendom</em>, <em>It Happened Quiet</em>, <em>Forgotten Love</em> and <em>Gentle Earthquakes</em> 2018 (<em>Infections of a Different Kind – Step 1</em>); <em>Animal</em>, <em>The Seed</em>, <em>A Different Kind Of Human</em> and <em>Mothership</em> 2019 (<em>Step 2</em>); <em>Exist For Love</em> 2020; <em>Cure For Me</em> and <em>Giving In To The Love</em> 2021 (<em>The Gods We Can Touch</em>); <em>Invisible Wounds</em>, <em>The Conflict Of The Mind</em>, <em>Some Type Of Skin</em>, <em>A Soul With No King</em> and <em>To Be Alright</em> 2024 (<em>What Happened to the Heart?</em>). Where a card names a session rather than a release, the year given is the song's.</p>
+    <p><strong>The aurora.</strong> Atomic oxygen's green line at 557.7 nm is the ¹S → ¹D transition, upper-state lifetime ≈0.7 s; the red line at 630.0 nm is ¹D → ³P, lifetime ≈110 s. Both are forbidden under the electric-dipole selection rules — <em>forbidden</em> meaning slow, not impossible. Collisional quenching removes the energy before emission at lower altitudes, so the green appears at roughly 100–150 km and the red only above ~150 km, occasionally much higher. Checked against atmospheric-optics and auroral-spectroscopy sources; altitudes are approximate and given as such. <em>Aurora</em> is the Roman goddess of the dawn, and the lights carry her name; we make no more of the coincidence with the artist's name than that.</p>
+    <p><strong>Stim listening</strong> is <strong>Jim Irion</strong>'s coinage — listening repetitively to a single song, album or playlist — and is documented on the Stimpunks <a href="https://stimpunks.org/glossary/stim-listening/">stim-listening</a> glossary page along with <em>samefoods</em>. <em>Stimming with Aurora</em> is Ryan Boren's playlist.</p>
+    <p><strong>A note on the notes.</strong> No lyrics are reproduced anywhere on this page — every card describes its song instead, matching <a href="aurora-zine.html">Zine No. 13</a>, which reproduces no lyrics or artwork either. The songs, recordings and performances are the work of AURORA and her collaborators; the readings are ours. Embeds use <code>youtube-nocookie.com</code>, as the zine does.</p>
+  </section>
+
+  <section class="lp-footer" id="colophon">
+    <span class="lp-footer-star">L★S</span>
+    <p>Forbidden only means slow. It still finishes, given room.<br>
+    <a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks Foundation</a> × <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a> · <a href="https://stimpunks.org/">stimpunks.org</a> · <a href="https://morerealms.com/">morerealms.com</a> · <a href="https://starstuff.earth">starstuff.earth</a></p>
+  </section>
+
+</main>
+
+</div>
+</body>
+</html>

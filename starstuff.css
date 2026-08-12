@@ -323,7 +323,12 @@ a.ss-cobrand.ss-cobrand:focus-visible { text-decoration-color: currentColor; }
      matched on the specific light literals used in the markup rather than
      blanket-inverted, because a few shapes fill with the ground color on purpose
      (to punch a hole in a diagram) and must stay white. */
-  svg text { fill: #222222 !important; }
+  /* `tspan` as well as `text`: a tspan carrying its own fill attribute is not
+     covered by a rule targeting its parent — the attribute applies to the tspan
+     itself, so the !important on `text` never reaches it. Found 2026-08-11 when
+     a "ground state" tspan on aurora-playlist.html measured 1.93:1 on paper
+     while every sibling label in the same diagram inverted correctly. */
+  svg text, svg tspan { fill: #222222 !important; }
   svg [stroke]:not([stroke="none"]) { stroke: #444444 !important; }
   svg [fill="#f4f2fb"],
   svg [fill="#f9fafb"],
