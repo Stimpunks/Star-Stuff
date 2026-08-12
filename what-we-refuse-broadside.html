@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#0a0a14">
+<link rel="canonical" href="https://starstuff.earth/what-we-refuse-broadside.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta name="description" content="What We Refuse — a two-sided single sheet collecting the refusals that recur across the Star Stuff collection, with the count of pieces each appears in. Six recurring refusals on the face; what each one protects, how a refusal works, and the one we aim at ourselves on the reverse. Designed for paper: one physical sheet, duplexed, on A4 or US Letter.">
+<!-- Open Graph / link unfurl -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Star Stuff · Stimpunks Foundation × More Realms">
+<meta property="og:url" content="https://starstuff.earth/what-we-refuse-broadside.html">
+<meta property="og:title" content="What We Refuse — Broadside">
+<meta property="og:description" content="Every piece here names the traps it won't fall into. Set them side by side and the same refusals keep returning. Six recurring refusals on the face; what each protects on the reverse. Prints on A4 or Letter.">
+<meta property="og:image" content="https://starstuff.earth/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A rainbow-hued cosmic image — we are all made of star stuff.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="What We Refuse — Broadside">
+<meta name="twitter:description" content="The refusals that recur across the collection, counted. What each one protects on the reverse. One sheet, two sides, A4 or Letter.">
+<meta name="twitter:image" content="https://starstuff.earth/og-card.jpg">
+<title>What We Refuse — Broadside — Stimpunks × More Realms</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="starstuff.css">
+<style>
+  /* ═══════════════════════════════════════════════════════════════════════════
+     PAPER-FIRST SHEET. Fourth of the broadsides — sibling of ls-broadside.html,
+     six-ways-broadside.html and owed-not-earned-broadside.html. Keep them in step.
+
+     WHAT THIS SHEET IS. Nearly every piece in the collection ends with a "Not:"
+     block naming the traps it refuses. This sheet is what you get when you lay all
+     of them side by side: the same refusals keep coming back, and the count of how
+     many pieces carry each one is the finding. It is an artifact OF the method, in
+     the same way six-ways-broadside.html is — not a sheet about a topic.
+
+     THE COUNTS ARE MEASURED, NOT ESTIMATED. Every number on side A was produced by
+     grepping the repository for the refusal's distinctive phrasing across the
+     pieces (excluding index, search, changelog, collection and design pages, which
+     restate rather than argue). "A rhyme, not a proof" — nine pieces. "Not anyone's
+     metaphor" and its variants — nine. "Superpower" — five. Three other families
+     recur too thinly to carry a number honestly, so they are given WITHOUT one
+     rather than rounded up. If you add or remove a refusal, re-run the count before
+     changing a figure here: a printed number nobody re-measures is exactly the
+     stale figure that six-ways-broadside.html calls mode 02.
+
+     SIZE. 190 × 259 mm with 9 mm page margins — inside both A4 (192 × 279 box) and
+     US Letter (198 × 261). Two sides, no third page, either country.
+
+     SPOT COLOUR. Pink for the face — the ✕ colour, the punk register — and green
+     for the verso, which is the affirmative side. The colour carries the argument
+     of the sheet: refusals on one face, what survives them on the other. Both are
+     house hues darkened until they clear AA on white, declared literally rather
+     than aliased (starstuff.css flattens the --sp-* accents to #111111 in print on
+     purpose) and forced through with print-color-adjust: exact.
+     ═══════════════════════════════════════════════════════════════════════════ */
+
+  :root {
+    --sheet:  #ffffff;
+    --ink:    #111111;   /* 18.1:1 on white */
+    --ink-2:  #333333;   /* 12.6:1 — secondary prose */
+    --ink-3:  #555555;   /*  7.5:1 — small print, credits */
+    --spot:   #9d174d;   /*  7.9:1 — house pink, darkened for paper */
+    --spot-2: #166534;   /*  7.1:1 — house green, darkened for paper */
+    --rule:   #d4d0dc;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #2a2830;
+    font-family: 'Atkinson Hyperlegible Next', system-ui, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1rem 3rem;
+  }
+
+  /* ── CONTROLS (screen only) ── */
+  .controls { display: flex; gap: 0.75rem; margin-bottom: 1.5rem; align-items: center; flex-wrap: wrap; justify-content: center; }
+  .ctrl-btn {
+    background: none;
+    border: 1px solid rgba(255,255,255,0.28);
+    color: #d6d5da;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 0.5rem 1.1rem;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .ctrl-btn:hover { background: rgba(255,255,255,0.1); color: #fff; border-color: rgba(255,255,255,0.5); }
+  .ctrl-btn.active { background: rgba(255,255,255,0.14); color: #fff; border-color: rgba(255,255,255,0.55); }
+  .ctrl-sep { width: 1px; height: 20px; background: rgba(255,255,255,0.18); }
+  /* Solid, not alpha: alpha-faded text is what this design system refuses. */
+  .ctrl-label { font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.25em; text-transform: uppercase; color: #929195; }
+
+  /* ── THE SHEET ── */
+  .sheet {
+    width: 190mm;
+    max-width: 100%;
+    min-height: 259mm;
+    background: var(--sheet);
+    color: var(--ink);
+    padding: 11mm 12mm 9mm;
+    display: none;
+    flex-direction: column;
+    position: relative;
+    /* Registration bar is a BORDER, not a background: borders survive the
+       Background-graphics checkbox, backgrounds do not. */
+    border-top: 3mm solid var(--spot);
+    print-color-adjust: exact; -webkit-print-color-adjust: exact;
+  }
+  .sheet.visible { display: flex; }
+  .sheet--b { border-top-color: var(--spot-2); }
+
+  /* ── Masthead ── */
+  .mast { display: flex; justify-content: space-between; align-items: flex-start; gap: 6mm; padding-bottom: 3mm; border-bottom: 0.6mm solid var(--ink); }
+  .mast-org { font-family: 'Space Mono', monospace; font-size: 6pt; letter-spacing: 0.3em; text-transform: uppercase; color: var(--ink-2); line-height: 1.9; }
+  .mast-org strong { display: block; font-size: 7pt; letter-spacing: 0.22em; color: var(--ink); }
+  .mast-side { font-family: 'Space Mono', monospace; font-size: 6pt; letter-spacing: 0.24em; text-transform: uppercase; color: var(--spot); text-align: right; line-height: 1.9; white-space: nowrap; }
+  .sheet--b .mast-side { color: var(--spot-2); }
+
+  /* ── Face title ── */
+  .title {
+    font-weight: 800;
+    font-size: 34pt;
+    line-height: 0.98;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    margin-top: 6mm;
+  }
+  .title em { font-style: normal; color: var(--spot); }
+  .standfirst {
+    font-style: italic;
+    font-weight: 300;
+    font-size: 12pt;
+    line-height: 1.45;
+    color: var(--ink-2);
+    margin-top: 4.5mm;
+    max-width: 155mm;
+  }
+  .title-rule { height: 0.8mm; background: var(--ink); margin-top: 6mm; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+
+  /* ── The six refusals ── */
+  .refusals-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8mm 9mm; margin-top: 7mm; }
+  .ref { border-left: 0.8mm solid var(--spot); padding-left: 3.5mm; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+  .ref-head { display: flex; align-items: baseline; justify-content: space-between; gap: 3mm; }
+  /* The ✕ is a glyph in the label, not a ::before on a paragraph — it has to
+     survive being read aloud by a screen reader as part of the refusal, and an
+     inserted-content mark is inconsistently announced. */
+  .ref-name { font-weight: 800; font-size: 13.5pt; line-height: 1.14; color: var(--ink); letter-spacing: -0.01em; }
+  .ref-count { font-family: 'Space Mono', monospace; font-size: 6.6pt; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--spot); white-space: nowrap; }
+  .ref-desc { font-size: 10.5pt; line-height: 1.46; color: var(--ink-2); margin-top: 2.4mm; }
+  .ref-where { font-family: 'Space Mono', monospace; font-size: 7pt; line-height: 1.6; color: var(--ink-3); margin-top: 2.2mm; }
+
+  /* ── Reverse ── */
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 6mm 9mm; margin-top: 7mm; }
+  .col-head { font-family: 'Space Mono', monospace; font-size: 8pt; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: var(--spot-2); padding-bottom: 2.2mm; margin-bottom: 4mm; border-bottom: 0.4mm solid var(--rule); print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+
+  .left { margin-bottom: 3.4mm; }
+  .left b { display: block; font-family: 'Space Mono', monospace; font-size: 8pt; font-weight: 700; color: var(--ink); line-height: 1.5; }
+  .left span { display: block; font-size: 10.5pt; line-height: 1.45; color: var(--ink-2); margin-top: 1.2mm; }
+
+  .note { margin-bottom: 4.2mm; }
+  .note b { display: block; font-style: italic; font-weight: 600; font-size: 10.5pt; color: var(--spot-2); line-height: 1.35; }
+  .note span { display: block; font-family: 'Space Mono', monospace; font-size: 7.6pt; line-height: 1.6; color: var(--ink-2); margin-top: 1.4mm; }
+
+  .ourselves { margin-top: 5mm; padding-top: 4mm; border-top: 0.6mm solid var(--ink); }
+  .ourselves p { font-size: 10.5pt; line-height: 1.45; color: var(--ink-2); margin-top: 2mm; }
+  .ourselves strong { color: var(--ink); }
+
+  .close {
+    font-style: italic;
+    font-weight: 500;
+    font-size: 14pt;
+    line-height: 1.32;
+    color: var(--ink);
+    margin-top: 5mm;
+    padding-left: 4mm;
+    border-left: 0.8mm solid var(--spot-2);
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  /* ── Foot ── */
+  .foot { margin-top: auto; padding-top: 3mm; border-top: 0.6mm solid var(--ink); display: flex; justify-content: space-between; align-items: flex-end; gap: 6mm; }
+  .foot-left { font-family: 'Space Mono', monospace; font-size: 6pt; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-3); line-height: 1.95; }
+  .foot-left a { color: var(--ink-3); }
+  .foot-right { font-weight: 800; font-size: 13pt; color: var(--spot); text-align: right; line-height: 1.2; white-space: nowrap; }
+  .sheet--b .foot-right { color: var(--spot-2); }
+
+  /* The star is DRAWN, not typed. Atkinson has no U+2605, so a typed ★ comes from
+     whatever font the reader's system happens to supply — not good enough for a
+     logotype on a sheet meant to print identically everywhere. */
+  .star { display: inline-block; width: 0.80em; height: 0.80em; vertical-align: -0.045em; margin: 0 0.06em; fill: currentColor; }
+
+  .print-hint { margin-top: 1.2rem; font-family: 'Space Mono', monospace; font-size: 0.48rem; letter-spacing: 0.2em; text-transform: uppercase; color: #929195; text-align: center; }
+
+  /* ── PRINT ── */
+  @page { size: auto; margin: 9mm; }
+
+  @media print {
+    body { background: none; padding: 0; display: block; min-height: 0; }
+    .controls, .print-hint { display: none; }
+    .sheet { display: flex !important; width: 100%; min-height: 0; height: 259mm; padding: 0; border-top-width: 3mm; }
+    .sheet--a { page-break-after: always; break-after: page; }
+    .mast { padding-top: 6mm; }
+    .ref, .left, .note { page-break-inside: avoid; break-inside: avoid; }
+  }
+
+  /* Breakpoint sits BELOW the narrowest printed page box (A4 at 9mm margins is
+     192mm = 726px). Print media queries resolve against the page box, not the
+     screen, so a breakpoint above that reflows on paper. */
+  @media (max-width: 700px) {
+    .sheet { width: 100%; min-height: 0; padding: 8mm 6mm; }
+    .refusals-grid, .cols { grid-template-columns: 1fr; }
+    .title { font-size: 26pt; }
+    .ref-head { flex-direction: column; align-items: flex-start; gap: 1.5mm; }
+    .foot { flex-direction: column; align-items: flex-start; gap: 3mm; }
+    .foot-right { text-align: left; }
+  }
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"What We Refuse — Broadside","description":"A two-sided, print-ready single sheet collecting the refusals that recur across the Star Stuff collection, with the measured count of pieces each appears in. Six recurring refusals on the face; what each one protects, how a refusal works, and the one aimed at ourselves on the reverse. Designed for paper — one sheet, duplexed, on A4 or US Letter.","image":"https://starstuff.earth/og-card.jpg","url":"https://starstuff.earth/what-we-refuse-broadside.html","mainEntityOfPage":"https://starstuff.earth/what-we-refuse-broadside.html","author":{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/"},"publisher":[{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/","logo":{"@type":"ImageObject","url":"https://starstuff.earth/og-card.jpg"}},{"@type":"Organization","name":"More Realms","url":"https://morerealms.com/"}],"isPartOf":{"@type":"WebSite","name":"Star Stuff","url":"https://starstuff.earth/"},"license":"https://creativecommons.org/licenses/by-sa/4.0/"}</script>
+</head>
+<body>
+
+<nav class="ss-nav" style="--nav-accent:#f472b6; max-width:190mm;" aria-label="Star Stuff collection">
+  <span class="ss-nav-home-group">
+    <a class="ss-nav-home" href="index.html"><span class="ss-star" aria-hidden="true">★</span> stuff</a>
+    <a class="ss-nav-about" href="about.html">about</a>
+    <a class="ss-nav-search" href="search.html">search</a>
+  </span>
+  <span class="ss-nav-links">
+    <a class="ss-nav-prev" href="owed-not-earned-broadside.html"><span class="ss-nav-arrow" aria-hidden="true">&lsaquo;</span> <span class="ss-nav-label">Owed, Not Earned</span></a>
+    <a class="ss-nav-next" href="the-same-water-broadside.html"><span class="ss-nav-label">The Same Water</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
+  </span>
+</nav>
+
+<div class="controls">
+  <span class="ctrl-label">Side</span>
+  <button class="ctrl-btn active" id="btn-a" onclick="showSide('a')">A — The Refusals</button>
+  <button class="ctrl-btn" id="btn-b" onclick="showSide('b')">B — What's Left</button>
+  <div class="ctrl-sep"></div>
+  <button class="ctrl-btn" onclick="window.print()">Print ↗</button>
+</div>
+
+<!-- ════ SIDE A ════ -->
+<div class="sheet sheet--a visible" id="side-a">
+
+  <div class="mast">
+    <div class="mast-org">
+      <strong>Stimpunks Foundation × More Realms</strong>
+      the traps we name on purpose
+    </div>
+    <div class="mast-side">Broadside · Open edition<br>Side A of B</div>
+  </div>
+
+  <h1 class="title">What We<br><em>Refuse</em></h1>
+
+  <p class="standfirst">Nearly every piece we publish ends by naming the traps it won't fall into. Lay them side by side and the same refusals keep coming back — and how often each returns is the finding, not the decoration.</p>
+
+  <div class="title-rule"></div>
+
+  <div class="refusals-grid">
+
+    <div class="ref">
+      <div class="ref-head">
+        <div class="ref-name">✕&ensp;A rhyme, not a proof</div>
+        <div class="ref-count">9 pieces</div>
+      </div>
+      <p class="ref-desc">That a pattern recurs in nature is not why difference deserves welcome. It would deserve welcome in a universe that made exactly one shape. Deriving an ought from an is is a fallacy we would rather name than commit.</p>
+      <p class="ref-where">Crabs · sharks · turtles · whales · the deep sea · the fungal network · relational physics</p>
+    </div>
+
+    <div class="ref">
+      <div class="ref-head">
+        <div class="ref-name">✕&ensp;Not anyone's metaphor</div>
+        <div class="ref-count">9 pieces</div>
+      </div>
+      <p class="ref-desc">We are not making anyone an animal, and we are not borrowing a creature to stand in for a person. Where a piece uses one, the shared thing is the <em>frame</em> — a body read for what can be taken out of it — never the bodies.</p>
+      <p class="ref-where">Strongest where the animal is most useful to us</p>
+    </div>
+
+    <div class="ref">
+      <div class="ref-head">
+        <div class="ref-name">✕&ensp;Not a superpower</div>
+        <div class="ref-count">5 pieces</div>
+      </div>
+      <p class="ref-desc">The troughs are real and support is not a consolation prize. A gift narrative is still a ledger — it just pays out before it charges. Nobody has to be extraordinary to be owed a place.</p>
+      <p class="ref-where">And not inspiration: you are not a lesson for anyone's comfort</p>
+    </div>
+
+    <div class="ref">
+      <div class="ref-head">
+        <div class="ref-name">✕&ensp;Not extraction</div>
+        <div class="ref-count">recurring</div>
+      </div>
+      <p class="ref-desc">Usefulness in disguise — difference mined for productivity, the &ldquo;cognitive diversity&rdquo; business case, &ldquo;ecosystem services&rdquo; putting the service provider back at the centre. Being valuable is not the same as being welcome.</p>
+      <p class="ref-where">The frame our more-than-human pieces watch hardest for</p>
+    </div>
+
+    <div class="ref">
+      <div class="ref-head">
+        <div class="ref-name">✕&ensp;Not flattened into sameness</div>
+        <div class="ref-count">recurring</div>
+      </div>
+      <p class="ref-desc">&ldquo;Everyone's a little bit neurodivergent&rdquo; is the monoculture again, wearing a kinder face. And there is no normal to deviate from in the first place, so there is nothing here to be a deviation of.</p>
+      <p class="ref-where">Belonging never asks you to lose your shape</p>
+    </div>
+
+    <div class="ref">
+      <div class="ref-head">
+        <div class="ref-name">✕&ensp;Not the person bent to the room</div>
+        <div class="ref-count">recurring</div>
+      </div>
+      <p class="ref-desc">Not an accommodation bolted onto a hostile room — a ramp to nowhere. Build a room more minds can think in. Broken thresholds, not broken people; change the conditions, not the substance.</p>
+      <p class="ref-where">And never a reason to withhold support while we wait</p>
+    </div>
+
+  </div>
+
+  <div class="foot">
+    <div class="foot-left">
+      every piece, and every refusal in full:<br>
+      starstuff.earth<br>
+      print freely · share freely · <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
+    </div>
+    <div class="foot-right">See<br>reverse</div>
+  </div>
+
+</div>
+
+<!-- ════ SIDE B ════ -->
+<div class="sheet sheet--b" id="side-b">
+
+  <div class="mast">
+    <div class="mast-org">
+      <strong>Stimpunks Foundation × More Realms</strong>
+      what the refusals are protecting
+    </div>
+    <div class="mast-side">Broadside · Open edition<br>Side B of B</div>
+  </div>
+
+  <div class="cols">
+
+    <div>
+      <div class="col-head">What's left</div>
+      <div class="left"><b>Belonging is constitutive.</b><span>Not conferred. True of you before you arrived, and true whether or not anyone ever tells you so.</span></div>
+      <div class="left"><b>Difference is variation, not deficit.</b><span>The universe doesn't pathologize its own variation. Neither do we.</span></div>
+      <div class="left"><b>The troughs are real.</b><span>Support isn't a consolation prize for failing to be exceptional. It's the point.</span></div>
+      <div class="left"><b>Change the conditions, not the substance.</b><span>Ice isn't broken water. It's water somewhere colder.</span></div>
+      <div class="left"><b>Kinship is material.</b><span>The same hydrogen from the same beginning; the same calcium from the same dying giants. Not a courtesy we extend.</span></div>
+      <div class="left"><b>Credit stays where it was earned.</b><span>A collective is not a founder. A documenter is not a coiner.</span></div>
+    </div>
+
+    <div>
+      <div class="col-head">How a refusal works</div>
+      <div class="note"><b>A refusal is not a mood.</b><span>Each one names a specific move the piece could make and won't — and it is placed exactly where that piece is most tempted to make it. A refusal parked somewhere safe is decoration.</span></div>
+      <div class="note"><b>They are load-bearing.</b><span>Take &ldquo;a rhyme, not a proof&rdquo; out of the natural-history pieces and what's left is an argument that biology licenses a politics. That is a fallacy, and it has been aimed at us far more often than for us.</span></div>
+      <div class="note"><b>The most-repeated one points inward.</b><span>Nine pieces carry the same sentence because nine pieces reach for the same shortcut. The count isn't a boast about our standards — it's a measurement of our appetite.</span></div>
+      <div class="note"><b>Refusing is not the same as debunking.</b><span>A refusal closes a move we might make. It doesn't score a point off anyone who made it, and the pleasure of the debunk is its own trap.</span></div>
+    </div>
+
+  </div>
+
+  <div class="ourselves">
+    <div class="col-head">And: we notice we are doing it too</div>
+    <p><strong>The Layer We Call Essential</strong> spends eleven spreads using cetacean minds as material for a human argument, and says so in its own refusals set: <em>their minds are not evidence for our politics first — they are theirs first.</em></p>
+    <p>That is the shape of the honest version. Not a claim to have escaped the trap, but a note, in the piece itself, saying where we are still standing in it.</p>
+  </div>
+
+  <p class="close">The refusals are the part we would most like to skip. That is how we know where they go.</p>
+
+  <div class="foot">
+    <div class="foot-left">
+      the collection, and how we check ourselves:<br>
+      starstuff.earth/too-good-to-check · stimpunks.org · morerealms.com<br>
+      print freely · share freely · <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
+    </div>
+    <div class="foot-right" role="img" aria-label="L★S">L<svg class="star" viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M50 0 61.2 34.5 97.6 34.5 68.2 55.9 79.4 90.5 50 69.1 20.6 90.5 31.8 55.9 2.4 34.5 38.8 34.5Z"/></svg>S</div>
+  </div>
+
+</div>
+
+<p class="print-hint">One sheet · print double-sided · pin it up · share freely</p>
+
+<script>
+  function showSide(side) {
+    document.getElementById('side-a').classList.toggle('visible', side === 'a');
+    document.getElementById('side-b').classList.toggle('visible', side === 'b');
+    document.getElementById('btn-a').classList.toggle('active', side === 'a');
+    document.getElementById('btn-b').classList.toggle('active', side === 'b');
+  }
+</script>
+</body>
+</html>

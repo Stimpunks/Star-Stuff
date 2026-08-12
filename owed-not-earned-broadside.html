@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#0a0a14">
+<link rel="canonical" href="https://starstuff.earth/owed-not-earned-broadside.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta name="description" content="Owed, Not Earned — a two-sided single sheet for the door. Inclusion safety is not a reward for the worthy; it is the baseline we owe one another for being here. The one bar and the qualification on the face; the full creed, the sources, and the four doors on the reverse. Designed for paper: one physical sheet, duplexed, on A4 or US Letter.">
+<!-- Open Graph / link unfurl -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Star Stuff · Stimpunks Foundation × More Realms">
+<meta property="og:url" content="https://starstuff.earth/owed-not-earned-broadside.html">
+<meta property="og:title" content="Owed, Not Earned — Broadside">
+<meta property="og:description" content="A sheet for the door. Inclusion safety is owed, not earned — be human, be harmless, and you are in. The one bar on the face; the full creed and its sources on the reverse. Prints on A4 or Letter.">
+<meta property="og:image" content="https://starstuff.earth/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A rainbow-hued cosmic image — we are all made of star stuff.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Owed, Not Earned — Broadside">
+<meta name="twitter:description" content="Inclusion safety is owed, not earned. Be human, be harmless. One sheet, two sides, A4 or Letter — made to pin at a door.">
+<meta name="twitter:image" content="https://starstuff.earth/og-card.jpg">
+<title>Owed, Not Earned — Broadside — Stimpunks × More Realms</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="starstuff.css">
+<style>
+  /* ═══════════════════════════════════════════════════════════════════════════
+     PAPER-FIRST SHEET. Third of the broadsides — sibling of ls-broadside.html and
+     six-ways-broadside.html. Keep all of them in step.
+
+     These are the only artifacts here designed in the medium they are actually
+     for. Everything else on the site is light-on-dark and gets inverted for print
+     by starstuff.css. A broadside is made to be printed and handed to someone —
+     or pinned at a door, which is this one's whole job — so it is drawn as ink on
+     white in BOTH media and the screen view is simply a preview of the sheet.
+
+     SIZE. 190 × 259 mm with 9 mm page margins — inside both A4 (192 × 279 box)
+     and US Letter (198 × 261). Two sides, no third page, either country. The 9 mm
+     rather than 10 is deliberate: at 10 mm the Letter box is 259.4 mm against a
+     259 mm sheet, and that 0.4 mm of slack let sub-pixel rounding tip it onto a
+     third page.
+
+     TYPEFACE. Atkinson Hyperlegible Next throughout, Space Mono for labels and
+     chrome — drawn by the Braille Institute for letterform distinction at exactly
+     the sizes this card uses. No display serif: hairlines are the first thing to
+     drop out of a photocopy or a tired laser printer, which is most of a
+     broadside's life, and a sheet pinned by a door gets photocopied more than most.
+
+     SPOT COLOUR is an explicit exception to a house rule. starstuff.css's print
+     block flattens all five --sp-* accents to #111111 on purpose — print is
+     monochrome by default. These sheets keep two spot inks, declared literally
+     rather than aliased (the screen accents are 1.6–2.7:1 on white and unusable
+     as paper ink) and forced through with print-color-adjust: exact. Green for the
+     face and gold for the verso, both house hues darkened until they clear AA on
+     white — and both chosen so this sheet is tellable from its siblings in a stack,
+     which is the registration bar's real job.
+     ═══════════════════════════════════════════════════════════════════════════ */
+
+  :root {
+    --sheet:  #ffffff;
+    --ink:    #111111;   /* 18.1:1 on white */
+    --ink-2:  #333333;   /* 12.6:1 — secondary prose */
+    --ink-3:  #555555;   /*  7.5:1 — small print, credits */
+    --spot:   #166534;   /*  7.1:1 — house green, darkened for paper */
+    --spot-2: #92400e;   /*  7.1:1 — house gold, darkened for paper */
+    --rule:   #d4d0dc;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #2a2830;
+    font-family: 'Atkinson Hyperlegible Next', system-ui, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1rem 3rem;
+  }
+
+  /* ── CONTROLS (screen only) ── */
+  .controls { display: flex; gap: 0.75rem; margin-bottom: 1.5rem; align-items: center; flex-wrap: wrap; justify-content: center; }
+  .ctrl-btn {
+    background: none;
+    border: 1px solid rgba(255,255,255,0.28);
+    color: #d6d5da;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 0.5rem 1.1rem;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .ctrl-btn:hover { background: rgba(255,255,255,0.1); color: #fff; border-color: rgba(255,255,255,0.5); }
+  .ctrl-btn.active { background: rgba(255,255,255,0.14); color: #fff; border-color: rgba(255,255,255,0.55); }
+  .ctrl-sep { width: 1px; height: 20px; background: rgba(255,255,255,0.18); }
+  /* Solid, not alpha: alpha-faded text is what this design system refuses. */
+  .ctrl-label { font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.25em; text-transform: uppercase; color: #929195; }
+
+  /* ── THE SHEET ── */
+  .sheet {
+    width: 190mm;
+    max-width: 100%;
+    min-height: 259mm;
+    background: var(--sheet);
+    color: var(--ink);
+    padding: 11mm 12mm 9mm;
+    display: none;
+    flex-direction: column;
+    position: relative;
+    /* Registration bar is a BORDER, not a background: borders survive the
+       Background-graphics checkbox, backgrounds do not. */
+    border-top: 3mm solid var(--spot);
+    print-color-adjust: exact; -webkit-print-color-adjust: exact;
+  }
+  .sheet.visible { display: flex; }
+  .sheet--b { border-top-color: var(--spot-2); }
+
+  /* ── Masthead ── */
+  .mast { display: flex; justify-content: space-between; align-items: flex-start; gap: 6mm; padding-bottom: 3mm; border-bottom: 0.6mm solid var(--ink); }
+  .mast-org { font-family: 'Space Mono', monospace; font-size: 6pt; letter-spacing: 0.3em; text-transform: uppercase; color: var(--ink-2); line-height: 1.9; }
+  .mast-org strong { display: block; font-size: 7pt; letter-spacing: 0.22em; color: var(--ink); }
+  .mast-side { font-family: 'Space Mono', monospace; font-size: 6pt; letter-spacing: 0.24em; text-transform: uppercase; color: var(--spot); text-align: right; line-height: 1.9; white-space: nowrap; }
+  .sheet--b .mast-side { color: var(--spot-2); }
+
+  /* ── Face title ── */
+  .title {
+    font-weight: 800;
+    font-size: 34pt;
+    line-height: 0.98;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    margin-top: 6mm;
+  }
+  .title em { font-style: normal; color: var(--spot); }
+  .standfirst {
+    font-style: italic;
+    font-weight: 300;
+    font-size: 12pt;
+    line-height: 1.45;
+    color: var(--ink-2);
+    margin-top: 4.5mm;
+    max-width: 150mm;
+  }
+  .title-rule { height: 0.8mm; background: var(--ink); margin-top: 6mm; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+
+  /* ── The qualification: this sheet's whole reason to exist, and the thing a
+     reader should be able to take in from across a room. ── */
+  .qual { margin-top: 8mm; text-align: center; }
+  .qual-line {
+    font-weight: 800;
+    font-size: 40pt;
+    line-height: 1.04;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+  .qual-line em { font-style: normal; color: var(--spot); }
+  .qual-sub { font-family: 'Space Mono', monospace; font-size: 8pt; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-2); margin-top: 4mm; line-height: 1.8; }
+
+  /* ── The three bars ── */
+  .bars { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 7mm; margin-top: 9mm; }
+  .bar { border-left: 0.8mm solid var(--spot); padding-left: 3.5mm; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+  .bar:nth-child(3) { border-left-color: var(--spot-2); }
+  .bar-num { font-weight: 800; font-size: 17pt; line-height: 1; color: var(--spot); display: block; }
+  .bar:nth-child(3) .bar-num { color: var(--spot-2); }
+  .bar-name { font-family: 'Space Mono', monospace; font-size: 8pt; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; color: var(--ink); margin: 2mm 0 2.4mm; line-height: 1.5; }
+  .bar-desc { font-size: 10.5pt; line-height: 1.46; color: var(--ink-2); }
+
+  /* ── Quotation ── */
+  .quote { margin-top: 8mm; padding-left: 4mm; border-left: 0.8mm solid var(--spot); print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+  .quote p { font-style: italic; font-weight: 500; font-size: 13pt; line-height: 1.38; color: var(--ink); }
+  .quote cite { display: block; font-family: 'Space Mono', monospace; font-style: normal; font-size: 7pt; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-3); margin-top: 2.6mm; line-height: 1.7; }
+  .sheet--b .quote { border-left-color: var(--spot-2); }
+
+  /* ── Reverse ── */
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 6mm 9mm; margin-top: 7mm; }
+  .col-head { font-family: 'Space Mono', monospace; font-size: 8pt; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: var(--spot-2); padding-bottom: 2.2mm; margin-bottom: 4mm; border-bottom: 0.4mm solid var(--rule); print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+
+  .mv { margin-bottom: 4.2mm; }
+  .mv b { display: block; font-family: 'Space Mono', monospace; font-size: 7.4pt; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--spot-2); line-height: 1.6; }
+  .mv span { display: block; font-size: 10.5pt; line-height: 1.45; color: var(--ink-2); margin-top: 1.2mm; }
+  .mv em { font-style: italic; color: var(--ink); font-weight: 600; }
+
+  .doors { margin-top: 5mm; padding-top: 4mm; border-top: 0.6mm solid var(--ink); }
+  .doors p { font-size: 10.5pt; line-height: 1.45; color: var(--ink-2); }
+  .doors strong { color: var(--ink); }
+
+  .close {
+    font-style: italic;
+    font-weight: 500;
+    font-size: 14pt;
+    line-height: 1.32;
+    color: var(--ink);
+    margin-top: 5mm;
+    padding-left: 4mm;
+    border-left: 0.8mm solid var(--spot-2);
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .sources { margin-top: 5mm; font-family: 'Space Mono', monospace; font-size: 7.2pt; line-height: 1.7; color: var(--ink-2); }
+  .sources em { font-style: italic; }
+
+  /* ── Foot ── */
+  .foot { margin-top: auto; padding-top: 3mm; border-top: 0.6mm solid var(--ink); display: flex; justify-content: space-between; align-items: flex-end; gap: 6mm; }
+  .foot-left { font-family: 'Space Mono', monospace; font-size: 6pt; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-3); line-height: 1.95; }
+  .foot-left a { color: var(--ink-3); }
+  .foot-right { font-weight: 800; font-size: 13pt; color: var(--spot); text-align: right; line-height: 1.2; white-space: nowrap; }
+  .sheet--b .foot-right { color: var(--spot-2); }
+
+  /* The star is DRAWN, not typed. Atkinson has no U+2605, so a typed ★ comes from
+     whatever font the reader's system happens to supply — not good enough for a
+     logotype on a sheet meant to print identically everywhere. Regular five-pointed
+     star, inner radius 0.382 of outer, filled currentColor. */
+  .star { display: inline-block; width: 0.80em; height: 0.80em; vertical-align: -0.045em; margin: 0 0.06em; fill: currentColor; }
+
+  .print-hint { margin-top: 1.2rem; font-family: 'Space Mono', monospace; font-size: 0.48rem; letter-spacing: 0.2em; text-transform: uppercase; color: #929195; text-align: center; }
+
+  /* ── PRINT ── */
+  @page { size: auto; margin: 9mm; }
+
+  @media print {
+    body { background: none; padding: 0; display: block; min-height: 0; }
+    .controls, .print-hint { display: none; }
+    .sheet { display: flex !important; width: 100%; min-height: 0; height: 259mm; padding: 0; border-top-width: 3mm; }
+    .sheet--a { page-break-after: always; break-after: page; }
+    .mast { padding-top: 6mm; }
+    .bar, .mv, .quote { page-break-inside: avoid; break-inside: avoid; }
+  }
+
+  /* Breakpoint sits BELOW the narrowest printed page box (A4 at 9mm margins is
+     192mm = 726px). Print media queries resolve against the page box, not the
+     screen, so a breakpoint above that reflows on paper — which silently clipped
+     side B on an earlier sibling. Anything at or above 700px gets the full card,
+     which includes every sheet of paper this prints on. */
+  @media (max-width: 700px) {
+    .sheet { width: 100%; min-height: 0; padding: 8mm 6mm; }
+    .bars, .cols { grid-template-columns: 1fr; }
+    .title { font-size: 26pt; }
+    .qual-line { font-size: 28pt; }
+    .foot { flex-direction: column; align-items: flex-start; gap: 3mm; }
+    .foot-right { text-align: left; }
+  }
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Owed, Not Earned — Broadside","description":"A two-sided, print-ready single sheet for the door. Inclusion safety is not a reward for the worthy; it is the baseline we owe one another for being here. The one bar and the qualification on the face; the full creed, its sources, and the four doors on the reverse. Designed for paper — one sheet, duplexed, on A4 or US Letter. Companion to the creed Inclusion Safety: Owed, Not Earned.","image":"https://starstuff.earth/og-card.jpg","url":"https://starstuff.earth/owed-not-earned-broadside.html","mainEntityOfPage":"https://starstuff.earth/owed-not-earned-broadside.html","author":{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/"},"publisher":[{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/","logo":{"@type":"ImageObject","url":"https://starstuff.earth/og-card.jpg"}},{"@type":"Organization","name":"More Realms","url":"https://morerealms.com/"}],"isPartOf":{"@type":"WebSite","name":"Star Stuff","url":"https://starstuff.earth/"},"license":"https://creativecommons.org/licenses/by-sa/4.0/"}</script>
+</head>
+<body>
+
+<nav class="ss-nav" style="--nav-accent:#4ade80; max-width:190mm;" aria-label="Star Stuff collection">
+  <span class="ss-nav-home-group">
+    <a class="ss-nav-home" href="index.html"><span class="ss-star" aria-hidden="true">★</span> stuff</a>
+    <a class="ss-nav-about" href="about.html">about</a>
+    <a class="ss-nav-search" href="search.html">search</a>
+  </span>
+  <span class="ss-nav-links">
+    <a class="ss-nav-prev" href="six-ways-broadside.html"><span class="ss-nav-arrow" aria-hidden="true">&lsaquo;</span> <span class="ss-nav-label">Six Ways</span></a>
+    <a class="ss-nav-next" href="what-we-refuse-broadside.html"><span class="ss-nav-label">What We Refuse</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
+  </span>
+</nav>
+
+<div class="controls">
+  <span class="ctrl-label">Side</span>
+  <button class="ctrl-btn active" id="btn-a" onclick="showSide('a')">A — The Door</button>
+  <button class="ctrl-btn" id="btn-b" onclick="showSide('b')">B — The Creed</button>
+  <div class="ctrl-sep"></div>
+  <button class="ctrl-btn" onclick="window.print()">Print ↗</button>
+</div>
+
+<!-- ════ SIDE A ════ -->
+<div class="sheet sheet--a visible" id="side-a">
+
+  <div class="mast">
+    <div class="mast-org">
+      <strong>Stimpunks Foundation × More Realms</strong>
+      a creed for the door
+    </div>
+    <div class="mast-side">Broadside · Open edition<br>Side A of B</div>
+  </div>
+
+  <h1 class="title">Owed,<br>Not <em>Earned</em></h1>
+
+  <p class="standfirst">Inclusion safety is the first stage of psychological safety. It is not a reward for the worthy, and not a prize you win. It is the baseline we owe one another simply for being here.</p>
+
+  <div class="title-rule"></div>
+
+  <div class="qual">
+    <p class="qual-line">Be human.<br><em>Be harmless.</em></p>
+    <p class="qual-sub">Meet both and you are in · that is the whole qualification</p>
+  </div>
+
+  <div class="bars">
+
+    <div class="bar">
+      <span class="bar-num">01</span>
+      <div class="bar-name">No litmus test</div>
+      <p class="bar-desc">Not your diagnosis, your speech, your output, your history, or how easily others can make sense of you. There is no audition at this threshold.</p>
+    </div>
+
+    <div class="bar">
+      <span class="bar-num">02</span>
+      <div class="bar-name">Worth, not worthiness</div>
+      <p class="bar-desc">Worth is a thing you have, entire, already. Worthiness is no one's to weigh at the door — and if it is ever anyone's business, it is not here.</p>
+    </div>
+
+    <div class="bar">
+      <span class="bar-num">03</span>
+      <div class="bar-name">The one disqualifier</div>
+      <p class="bar-desc">Acceptance is owed to everyone. So is safety from harm — and harm is the single thing that can cost you your place. Not your way of being. Only harm.</p>
+    </div>
+
+  </div>
+
+  <div class="quote">
+    <p>&ldquo;Inclusion safety is not earned but owed. Every human has title to it as a nonnegotiable right.&rdquo;</p>
+    <cite>Timothy R. Clark · The 4 Stages of Psychological Safety, 2020 · Stage 1</cite>
+  </div>
+
+  <div class="foot">
+    <div class="foot-left">
+      the full creed:<br>
+      starstuff.earth/inclusion-safety-creed<br>
+      print freely · share freely · <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
+    </div>
+    <div class="foot-right">See<br>reverse</div>
+  </div>
+
+</div>
+
+<!-- ════ SIDE B ════ -->
+<div class="sheet sheet--b" id="side-b">
+
+  <div class="mast">
+    <div class="mast-org">
+      <strong>Stimpunks Foundation × More Realms</strong>
+      the whole of it
+    </div>
+    <div class="mast-side">Broadside · Open edition<br>Side B of B</div>
+  </div>
+
+  <div class="cols">
+
+    <div>
+      <div class="col-head">The creed</div>
+
+      <div class="mv"><b>i · the whole of it</b><span>Here is the whole of it, before anything else: your place among us is not a prize you win. <em>It is yours because you are here.</em></span></div>
+
+      <div class="mv"><b>ii · worth before worthiness</b><span>We will not audition you. Inclusion is a judgment about your worth — which you have, entire, already — not a verdict on your worthiness, which is no one's to weigh at the door.</span></div>
+
+      <div class="mv"><b>iii · be human, be harmless</b><span>What does it take to qualify? Two things. Meet both and you are in. We say the second part out loud, because a welcome that tolerated harm would betray the very people it exists to keep safe.</span></div>
+
+      <div class="mv"><b>iv · the binding thing</b><span>Read Douglass for every characteristic, not race alone. When we include one another, we set our differences beneath a deeper, common thing — and agree that the common thing matters more.</span></div>
+    </div>
+
+    <div>
+      <div class="col-head">&nbsp;</div>
+
+      <div class="mv"><b>v · older than humanity</b><span>The common thing beneath our differences is older than humanity. You, and we, and everyone at this door were made in the same stars — the same hydrogen from the same beginning, the same calcium and iron from the same dying giants. <em>Kinship is not a courtesy we extend to you. It is the material you are made of.</em></span></div>
+
+      <div class="mv"><b>vi · come in</b><span>So: if you have flesh and blood, we accept you. If you are made of stars — and you are — you are already one of us. <em>Come in. Rest. You are owed this.</em></span></div>
+
+      <div class="quote">
+        <p>&ldquo;I know of no rights of race superior to the rights of humanity.&rdquo;</p>
+        <cite>Frederick Douglass · Our Composite Nationality · Boston, 7 December 1869</cite>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="doors">
+    <div class="col-head">The four doors</div>
+    <p>Inclusion is the first of four. Beyond it lie the freedom <strong>to learn</strong>, <strong>to contribute</strong>, and <strong>to challenge the status quo</strong> — but none of them open until this one does. So we hold this one open first, and for everyone.</p>
+  </div>
+
+  <p class="close">You do not have to earn your way in. You were ★stuff all along.</p>
+
+  <div class="sources">
+    The four stages, the definitions, and the quoted lines are <strong>Timothy R. Clark</strong>'s, from <em>The 4 Stages of Psychological Safety: Defining the Path to Inclusion and Innovation</em> (Berrett-Koehler, 2020) — the inclusion-safety material is Stage 1, including &ldquo;if you have flesh and blood, we accept you,&rdquo; the worth-before-worthiness distinction, and <em>be human and harmless</em> as the qualification. Frederick Douglass's line is his own, from <em>Our Composite Nationality</em>, delivered in Boston on 7 December 1869 (the Library of Congress manuscript is catalogued 1867). The move past common humanity to common <em>origin</em> — that belonging is constitutive because we are made of the same star stuff — is ours.
+  </div>
+
+  <div class="foot">
+    <div class="foot-left">
+      the full creed and every source:<br>
+      starstuff.earth/inclusion-safety-creed · stimpunks.org · morerealms.com<br>
+      print freely · share freely · <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
+    </div>
+    <div class="foot-right" role="img" aria-label="L★S">L<svg class="star" viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M50 0 61.2 34.5 97.6 34.5 68.2 55.9 79.4 90.5 50 69.1 20.6 90.5 31.8 55.9 2.4 34.5 38.8 34.5Z"/></svg>S</div>
+  </div>
+
+</div>
+
+<p class="print-hint">One sheet · print double-sided · pin it at the door · share freely</p>
+
+<script>
+  function showSide(side) {
+    document.getElementById('side-a').classList.toggle('visible', side === 'a');
+    document.getElementById('side-b').classList.toggle('visible', side === 'b');
+    document.getElementById('btn-a').classList.toggle('active', side === 'a');
+    document.getElementById('btn-b').classList.toggle('active', side === 'b');
+  }
+</script>
+</body>
+</html>
