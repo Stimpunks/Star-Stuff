@@ -296,6 +296,55 @@ node tools/check-contrast.mjs --check              # exit non-zero on any failur
 - **It is a local dev tool. Netlify does not run it**, same as the search index. Requires Chrome
   and Node 22+.
 
+## Markup checking (`tools/check-markup.mjs`)
+
+The fourth gate, and the only one that never opens a browser.
+
+```bash
+node tools/check-markup.mjs                       # every *.html in the repo root
+node tools/check-markup.mjs collection-print.html # just these
+node tools/check-markup.mjs --check               # exit non-zero on any failure
+```
+
+- **It exists because of a fault every other check passed.** `collection-print.html` shipped with
+  four `<a>` elements nested inside the `<a class="card">` wrapper. Anchors cannot nest, so the
+  parser closed the outer anchor early and each card came apart on the live page — bordered box
+  ending three lines in, description orphaned, the footer tag and arrow floating in empty space.
+  Contrast passed it (the text *was* legible), the search index passed it (all the words *were*
+  there), `check-sheets` doesn't apply to a screen page. A human noticed a button sitting alone.
+- **It reads source, not the DOM, and that is the whole design.** You cannot find this in a DOM:
+  by the time a DOM exists the parser has already repaired it, and
+  `document.querySelectorAll('a a')` on the broken page returns **zero**. The evidence survives
+  only in the source text. That also makes it the fastest gate here — no Chrome, no dependencies,
+  71 pages and 45,000 tags in about 0.3s.
+- **Three faults, each one silent:** nested interactive elements (`<a>`/`<button>` inside each
+  other — the parser closes the outer, so everything after falls out of its wrapper); a block
+  element inside a `<p>` (auto-closes the paragraph part-way through); and **duplicate `id`**,
+  which matters here more than most sites because this one runs on fragments — `#spread-N`,
+  `#entry-slug`, `starstuff.js`'s deep-link opener, every `search-index.json` record, and the
+  `aria-labelledby` wiring in `changelog.html`. A duplicate doesn't error; it just sends a reader
+  to the wrong passage.
+- **It is not a validator and shouldn't grow into one.** It ignores unclosed tags, attribute
+  syntax, and everything else browsers recover from harmlessly. The bar for adding a fourth check
+  is that the browser silently hands the reader a different document than the source describes.
+- **The baseline is 0, unlike the contrast tool.** A clean tree passes, so `--check` is a real ship
+  gate rather than an informational sweep. It was regression-tested against the actual broken file
+  from git history, and against decoys that must *not* fire — an `a a` CSS selector, a nested
+  anchor inside a JS string, and a `>` inside an attribute value.
+
+## Sheet fitting (`tools/check-sheets.mjs`)
+
+Does a paper-first sheet actually land on the paper? Run it on any broadside before shipping:
+`node tools/check-sheets.mjs --check`. It prints each sheet to PDF at **both** US Letter and A4 and
+counts pages, *and* separately measures content height against the box — because a fixed-height
+sheet whose content overruns does not paginate, it is silently **clipped**, so a clean page count
+can still hide a cut-off final line. It measures at the real page-box width (~726px), not a desktop
+viewport, because print media queries resolve against the page box. Both original broadsides called
+themselves "a two-sided single sheet" while `ls-broadside.html` printed as **3 sides on Letter and
+2 on A4**; nothing in the repo could see it. Local dev tool, Chrome and Node 22+, and it uses its
+own debugging port on purpose — sharing one with the index generator let a build attach to a
+browser another tool was shutting down.
+
 ## Design system
 
 - **Font URLs must be verified, not assumed.** Atkinson Hyperlegible Next publishes weights

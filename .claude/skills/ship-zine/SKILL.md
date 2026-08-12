@@ -40,7 +40,27 @@ Ryan's shorthand for "finish and publish." Scope depends on what changed.
    any failure. Run it on the changed pages at minimum; bare, it sweeps the whole repo. If it
    reports a failure, fix the page, or say plainly in the report that you're shipping a known one.
    `CLAUDE.md` → *Contrast & print checking* explains each tier of the output.
-7. **Commit & push.** `git add` the touched files; commit with a descriptive heredoc message;
+7. **Check the markup.** Cheapest gate here — no browser, no dependencies, ~0.3s for the repo:
+
+   ```bash
+   node tools/check-markup.mjs --check
+   ```
+
+   Catches the faults the browser silently repairs, which is why nothing else sees them: nested
+   `<a>`/`<button>`, a block element inside a `<p>`, and duplicate `id`s. A nested anchor makes the
+   parser close the outer element early — it took a card grid apart on a live page while contrast,
+   the search index and the eye of the person who wrote it all passed. **Baseline is 0**, so any
+   failure here is yours and should be fixed rather than noted.
+8. **If you touched a broadside, check it still fits the paper.**
+
+   ```bash
+   node tools/check-sheets.mjs --check
+   ```
+
+   Prints each sheet at US Letter *and* A4 and counts pages, and separately measures overflow —
+   a fixed-height sheet that overruns is clipped, not paginated, so a clean page count can still
+   hide a cut-off line. Only applies to pages with an `@page` rule.
+9. **Commit & push.** `git add` the touched files; commit with a descriptive heredoc message;
    `git push`.
 
 ## Small edit (fast path)
@@ -48,6 +68,8 @@ Fact-check the touched claims → log it in `changelog.html` if it changes what 
 → **rebuild the search index if any page text changed** (`node tools/build-search-index.mjs`)
 → **check contrast if you touched a color, an opacity, or an SVG label**
 (`node tools/check-contrast.mjs --check <page>.html`)
+→ **always run `node tools/check-markup.mjs --check`** — it costs 0.3s, needs no browser, and its
+baseline is 0, so there is no reason to skip it on any edit that touched HTML
 → `git add` → commit → `git push`. Don't re-propose or widen scope.
 
 ## Changelog
