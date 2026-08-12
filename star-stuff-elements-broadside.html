@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#0a0a14">
+<link rel="canonical" href="https://starstuff.earth/star-stuff-elements-broadside.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta name="description" content="The Star Stuff You're Made Of — a two-sided single sheet. Eight elements essential to your body on the face, each traced to where the universe forged them; the five forges on the reverse, from the Big Bang to neutron-star mergers, with the sources. Designed for paper: one physical sheet, duplexed, on A4 or US Letter. Companion to Field Guide No. 2.">
+<!-- Open Graph / link unfurl -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Star Stuff · Stimpunks Foundation × More Realms">
+<meta property="og:url" content="https://starstuff.earth/star-stuff-elements-broadside.html">
+<meta property="og:title" content="The Star Stuff You're Made Of — Broadside">
+<meta property="og:description" content="Eight elements, traced to their forges: hydrogen from the Big Bang, carbon from red giants, oxygen and calcium from massive stars, iron from two kinds of supernova, iodine from colliding neutron stars. Prints on A4 or Letter.">
+<meta property="og:image" content="https://starstuff.earth/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A rainbow-hued cosmic image — we are all made of star stuff.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Star Stuff You're Made Of — Broadside">
+<meta name="twitter:description" content="Eight elements and the five forges that made them. One sheet, two sides, A4 or Letter — for a wall.">
+<meta name="twitter:image" content="https://starstuff.earth/og-card.jpg">
+<title>The Star Stuff You're Made Of — Broadside — Stimpunks × More Realms</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="starstuff.css">
+<style>
+  /* ═══════════════════════════════════════════════════════════════════════════
+     PAPER-FIRST SHEET. Eighth of the broadsides. See print-design.html for the
+     full specification and the reasoning behind every number in it.
+
+     WHAT THIS SHEET IS. The hand-out companion to Field Guide No. 2 — and the one
+     in the rack most likely to end up on a wall rather than in a hand. It was held
+     back twice for exactly that reason: "a kid's bedroom wall" is a *placement*,
+     not a moment, and rule three asks for a moment. It ships because the moment is
+     nameable after all — you want to give someone the fact that they are made of
+     star stuff, and you want them to be able to check it. The face is the gift; the
+     verso is the checking. A poster would stop after the face.
+
+     THE IRON ENTRY IS A CORRECTION, NOT A RESTATEMENT. Field Guide No. 2 said
+     "most of the iron itself" comes from core-collapse supernovae. That is the same
+     overclaim the ledger corrected in Zine No. 2 on 2026-08-03 against Kobayashi,
+     Karakas & Lugaro (ApJ 900:179, 2020) — roughly HALF of iron comes from Type Ia
+     supernovae, exploding white dwarfs, not from core collapse. The 2026-08-09
+     sibling sweep was targeted at one other claim and never reached this guide. The
+     guide was fixed before this sheet was drawn, and this sheet carries the
+     corrected version: iron has two parents. Do not simplify that panel back to
+     "supernovae" alone — the two-deaths fact is the whole point of the entry.
+
+     ELEMENT ORDER IS THE GUIDE'S, NOT SORTED. H, O, C, N, Ca, Fe, K, I is the
+     order Field Guide No. 2 uses. It is narrative rather than by abundance or by
+     atomic number, and re-sorting it would be an editorial change to the parent
+     dressed as a layout decision.
+
+     SIZE. 190 × 259 mm with 9 mm page margins — inside both A4 (192 × 279 box) and
+     US Letter (198 × 261). Two sides, no third page, either country.
+
+     SPOT COLOUR. Gold for the face (the forge) and pink for the verso (the
+     catastrophes — core collapse, Type Ia, and the neutron-star mergers that make
+     the iodine). Gold-face/pink-verso is an unused pair; with five house hues and
+     eight sheets, faces repeat and the pair is what tells sheets apart in a stack.
+     Do not add a sixth hue: the palette is five accents and that is a house rule.
+     ═══════════════════════════════════════════════════════════════════════════ */
+
+  :root {
+    --sheet:  #ffffff;
+    --ink:    #111111;   /* 18.1:1 on white */
+    --ink-2:  #333333;   /* 12.6:1 — secondary prose */
+    --ink-3:  #555555;   /*  7.5:1 — small print, credits */
+    --spot:   #92400e;   /*  7.1:1 — house gold, darkened for paper */
+    --spot-2: #9d174d;   /*  7.9:1 — house pink, darkened for paper */
+    --rule:   #d4d0dc;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #2a2830;
+    font-family: 'Atkinson Hyperlegible Next', system-ui, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1rem 3rem;
+  }
+
+  /* ── CONTROLS (screen only) ── */
+  .controls { display: flex; gap: 0.75rem; margin-bottom: 1.5rem; align-items: center; flex-wrap: wrap; justify-content: center; }
+  .ctrl-btn {
+    background: none;
+    border: 1px solid rgba(255,255,255,0.28);
+    color: #d6d5da;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 0.5rem 1.1rem;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .ctrl-btn:hover { background: rgba(255,255,255,0.1); color: #fff; border-color: rgba(255,255,255,0.5); }
+  .ctrl-btn.active { background: rgba(255,255,255,0.14); color: #fff; border-color: rgba(255,255,255,0.55); }
+  .ctrl-sep { width: 1px; height: 20px; background: rgba(255,255,255,0.18); }
+  /* Solid, not alpha: alpha-faded text is what this design system refuses. */
+  .ctrl-label { font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.25em; text-transform: uppercase; color: #929195; }
+
+  /* ── THE SHEET ── */
+  .sheet {
+    width: 190mm;
+    max-width: 100%;
+    min-height: 259mm;
+    background: var(--sheet);
+    color: var(--ink);
+    padding: 11mm 12mm 9mm;
+    display: none;
+    flex-direction: column;
+    position: relative;
+    /* Registration bar is a BORDER, not a background: borders survive the
+       Background-graphics checkbox, backgrounds do not. */
+    border-top: 3mm solid var(--spot);
+    print-color-adjust: exact; -webkit-print-color-adjust: exact;
+  }
+  .sheet.visible { display: flex; }
+  .sheet--b { border-top-color: var(--spot-2); }
+
+  /* ── Masthead ── */
+  .mast { display: flex; justify-content: space-between; align-items: flex-start; gap: 6mm; padding-bottom: 3mm; border-bottom: 0.6mm solid var(--ink); }
+  .mast-org { font-family: 'Space Mono', monospace; font-size: 6pt; letter-spacing: 0.3em; text-transform: uppercase; color: var(--ink-2); line-height: 1.9; }
+  .mast-org strong { display: block; font-size: 7pt; letter-spacing: 0.22em; color: var(--ink); }
+  .mast-side { font-family: 'Space Mono', monospace; font-size: 6pt; letter-spacing: 0.24em; text-transform: uppercase; color: var(--spot); text-align: right; line-height: 1.9; white-space: nowrap; }
+  .sheet--b .mast-side { color: var(--spot-2); }
+
+  /* ── Face title ── */
+  .title {
+    font-weight: 800;
+    font-size: 30pt;
+    line-height: 0.98;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    margin-top: 5mm;
+  }
+  .title em { font-style: normal; color: var(--spot); }
+  .standfirst {
+    font-style: italic;
+    font-weight: 300;
+    font-size: 11.5pt;
+    line-height: 1.44;
+    color: var(--ink-2);
+    margin-top: 4mm;
+    max-width: 158mm;
+  }
+  .title-rule { height: 0.8mm; background: var(--ink); margin-top: 4.5mm; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+
+  /* ── The eight. A 4×2 chart: this is the pin-up half of the sheet, so the
+     symbol has to carry from across a room and everything else supports it. ── */
+  .table { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4mm 4mm; margin-top: 5mm; }
+  .el { border: 0.4mm solid var(--rule); border-top: 1.2mm solid var(--spot); padding: 2.6mm 2.6mm 3mm; display: flex; flex-direction: column; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+  .el--heavy { border-top-color: var(--spot-2); }
+  .el-top { display: flex; align-items: baseline; justify-content: space-between; gap: 1.5mm; }
+  .el-sym { font-weight: 800; font-size: 25pt; line-height: 1; color: var(--ink); letter-spacing: -0.02em; }
+  .el-z { font-family: 'Space Mono', monospace; font-size: 6.4pt; color: var(--ink-3); }
+  .el-name { font-family: 'Space Mono', monospace; font-size: 6.8pt; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--spot); margin-top: 1.6mm; line-height: 1.4; }
+  .el--heavy .el-name { color: var(--spot-2); }
+  .el-house { font-style: italic; font-weight: 600; font-size: 9.5pt; color: var(--ink); margin-top: 1.4mm; line-height: 1.2; }
+  .el-abund { font-family: 'Space Mono', monospace; font-size: 7pt; color: var(--ink-2); margin-top: 1.6mm; }
+  .el-forge { font-size: 8.4pt; line-height: 1.34; color: var(--ink-2); margin-top: 1.6mm; }
+
+  /* ── Reverse ── */
+  .forges { margin-top: 4mm; }
+  .forge { border-left: 0.8mm solid var(--spot-2); padding-left: 3.5mm; margin-bottom: 3.6mm; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+  .forge-head { display: flex; align-items: baseline; justify-content: space-between; gap: 3mm; }
+  .forge-name { font-family: 'Space Mono', monospace; font-size: 7.6pt; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--spot-2); line-height: 1.5; }
+  .forge-who { font-weight: 800; font-size: 11pt; color: var(--ink); white-space: nowrap; }
+  .forge-desc { font-size: 10pt; line-height: 1.44; color: var(--ink-2); margin-top: 1.4mm; }
+
+  .col-head { font-family: 'Space Mono', monospace; font-size: 8pt; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: var(--spot-2); padding-bottom: 2.2mm; margin-bottom: 3.4mm; border-bottom: 0.4mm solid var(--rule); print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+
+  .refusals { margin-top: 3mm; padding-top: 2.5mm; border-top: 0.6mm solid var(--ink); }
+  .refusal { font-family: 'Space Mono', monospace; font-size: 7.6pt; line-height: 1.55; color: var(--ink-2); margin-top: 2mm; padding-left: 5mm; position: relative; }
+  .refusal::before { content: '✕'; position: absolute; left: 0; color: var(--spot-2); font-weight: 700; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+
+  .close {
+    font-style: italic;
+    font-weight: 500;
+    font-size: 13pt;
+    line-height: 1.32;
+    color: var(--ink);
+    margin-top: 3mm;
+    padding-left: 4mm;
+    border-left: 0.8mm solid var(--spot-2);
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .sources { margin-top: 2.5mm; font-family: 'Space Mono', monospace; font-size: 7pt; line-height: 1.55; color: var(--ink-2); }
+  .sources em { font-style: italic; }
+
+  /* ── Foot ── */
+  .foot { margin-top: auto; padding-top: 3mm; border-top: 0.6mm solid var(--ink); display: flex; justify-content: space-between; align-items: flex-end; gap: 6mm; }
+  .foot-left { font-family: 'Space Mono', monospace; font-size: 6pt; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-3); line-height: 1.95; }
+  .foot-left a { color: var(--ink-3); }
+  .foot-right { font-weight: 800; font-size: 13pt; color: var(--spot); text-align: right; line-height: 1.2; white-space: nowrap; }
+  .sheet--b .foot-right { color: var(--spot-2); }
+
+  /* The star is DRAWN, not typed. Atkinson has no U+2605, so a typed ★ comes from
+     whatever font the reader's system happens to supply — not good enough for a
+     logotype on a sheet meant to print identically everywhere. */
+  .star { display: inline-block; width: 0.80em; height: 0.80em; vertical-align: -0.045em; margin: 0 0.06em; fill: currentColor; }
+
+  .print-hint { margin-top: 1.2rem; font-family: 'Space Mono', monospace; font-size: 0.48rem; letter-spacing: 0.2em; text-transform: uppercase; color: #929195; text-align: center; }
+
+  /* ── PRINT ── */
+  @page { size: auto; margin: 9mm; }
+
+  @media print {
+    body { background: none; padding: 0; display: block; min-height: 0; }
+    .controls, .print-hint { display: none; }
+    .sheet { display: flex !important; width: 100%; min-height: 0; height: 259mm; padding: 0; border-top-width: 3mm; }
+    .sheet--a { page-break-after: always; break-after: page; }
+    .mast { padding-top: 6mm; }
+    .el, .forge { page-break-inside: avoid; break-inside: avoid; }
+  }
+
+  /* Breakpoint sits BELOW the narrowest printed page box (A4 at 9mm margins is
+     192mm = 726px). Print media queries resolve against the page box, not the
+     screen, so a breakpoint above that reflows on paper. */
+  @media (max-width: 700px) {
+    .sheet { width: 100%; min-height: 0; padding: 8mm 6mm; }
+    .table { grid-template-columns: repeat(2, 1fr); }
+    .title { font-size: 24pt; }
+    .foot { flex-direction: column; align-items: flex-start; gap: 3mm; }
+    .foot-right { text-align: left; }
+  }
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"The Star Stuff You're Made Of — Broadside","description":"A two-sided, print-ready single sheet. Eight elements essential to your body on the face, each traced to where the universe forged them; the five forges on the reverse, from the Big Bang to neutron-star mergers, with the sources. Designed for paper — one sheet, duplexed, on A4 or US Letter. Companion to Field Guide No. 2.","image":"https://starstuff.earth/og-card.jpg","url":"https://starstuff.earth/star-stuff-elements-broadside.html","mainEntityOfPage":"https://starstuff.earth/star-stuff-elements-broadside.html","author":{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/"},"publisher":[{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/","logo":{"@type":"ImageObject","url":"https://starstuff.earth/og-card.jpg"}},{"@type":"Organization","name":"More Realms","url":"https://morerealms.com/"}],"isPartOf":{"@type":"WebSite","name":"Star Stuff","url":"https://starstuff.earth/"},"license":"https://creativecommons.org/licenses/by-sa/4.0/"}</script>
+</head>
+<body>
+
+<nav class="ss-nav" style="--nav-accent:#fbbf24; max-width:190mm;" aria-label="Star Stuff collection">
+  <span class="ss-nav-home-group">
+    <a class="ss-nav-home" href="index.html"><span class="ss-star" aria-hidden="true">★</span> stuff</a>
+    <a class="ss-nav-about" href="about.html">about</a>
+    <a class="ss-nav-search" href="search.html">search</a>
+  </span>
+  <span class="ss-nav-links">
+    <a class="ss-nav-prev" href="better-get-used-to-it-broadside.html"><span class="ss-nav-arrow" aria-hidden="true">&lsaquo;</span> <span class="ss-nav-label">Better Get Used To It</span></a>
+    <a class="ss-nav-next" href="shorthand-evolution.html"><span class="ss-nav-label">Shorthand</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
+  </span>
+</nav>
+
+<div class="controls">
+  <span class="ctrl-label">Side</span>
+  <button class="ctrl-btn active" id="btn-a" onclick="showSide('a')">A — The Eight</button>
+  <button class="ctrl-btn" id="btn-b" onclick="showSide('b')">B — The Forges</button>
+  <div class="ctrl-sep"></div>
+  <button class="ctrl-btn" onclick="window.print()">Print ↗</button>
+</div>
+
+<!-- ════ SIDE A ════ -->
+<div class="sheet sheet--a visible" id="side-a">
+
+  <div class="mast">
+    <div class="mast-org">
+      <strong>Stimpunks Foundation × More Realms</strong>
+      the periodic table, read as autobiography
+    </div>
+    <div class="mast-side">Broadside · Open edition<br>Side A of B</div>
+  </div>
+
+  <h1 class="title">The Star Stuff<br><em>You're Made Of</em></h1>
+
+  <p class="standfirst">Eight elements essential to your body, traced to where the universe forged them. Almost every atom heavier than helium was made in stars and their deaths — and none of it was made for you, which is somehow the better story.</p>
+
+  <div class="title-rule"></div>
+
+  <div class="table">
+
+    <div class="el">
+      <div class="el-top"><span class="el-sym">H</span><span class="el-z">Z 1</span></div>
+      <div class="el-name">Hydrogen</div>
+      <div class="el-house">The First Light</div>
+      <div class="el-abund">~10% of you</div>
+      <p class="el-forge">The Big Bang, ~13.8 billion years ago. No star ever made it — every other atom in you is younger.</p>
+    </div>
+
+    <div class="el">
+      <div class="el-top"><span class="el-sym">O</span><span class="el-z">Z 8</span></div>
+      <div class="el-name">Oxygen</div>
+      <div class="el-house">The Weight of You</div>
+      <div class="el-abund">~65% of you</div>
+      <p class="el-forge">Massive stars, scattered by core-collapse supernovae. Mostly the water you're built from, not the air.</p>
+    </div>
+
+    <div class="el">
+      <div class="el-top"><span class="el-sym">C</span><span class="el-z">Z 6</span></div>
+      <div class="el-name">Carbon</div>
+      <div class="el-house">The Scaffold</div>
+      <div class="el-abund">~18% of you</div>
+      <p class="el-forge">Aging stars, by the triple-alpha process — three helium nuclei fusing almost at once.</p>
+    </div>
+
+    <div class="el">
+      <div class="el-top"><span class="el-sym">N</span><span class="el-z">Z 7</span></div>
+      <div class="el-name">Nitrogen</div>
+      <div class="el-house">The Borrowed Letters</div>
+      <div class="el-abund">~3% of you</div>
+      <p class="el-forge">Dying stars, via the CNO cycle. You breathe it constantly and can't use a molecule of it raw.</p>
+    </div>
+
+    <div class="el">
+      <div class="el-top"><span class="el-sym">Ca</span><span class="el-z">Z 20</span></div>
+      <div class="el-name">Calcium</div>
+      <div class="el-house">The Bone Note</div>
+      <div class="el-abund">~1.5% of you</div>
+      <p class="el-forge">Massive stars and their supernovae. Your skeleton, and the spark behind every heartbeat.</p>
+    </div>
+
+    <div class="el el--heavy">
+      <div class="el-top"><span class="el-sym">Fe</span><span class="el-z">Z 26</span></div>
+      <div class="el-name">Iron</div>
+      <div class="el-house">The Death Rattle</div>
+      <div class="el-abund">~4 g · trace</div>
+      <p class="el-forge">Two kinds of stellar death: roughly half from core-collapse supernovae, half from Type&nbsp;Ia.</p>
+    </div>
+
+    <div class="el">
+      <div class="el-top"><span class="el-sym">K</span><span class="el-z">Z 19</span></div>
+      <div class="el-name">Potassium</div>
+      <div class="el-house">The Spark</div>
+      <div class="el-abund">~0.25% of you</div>
+      <p class="el-forge">Explosive burning in supernovae. Every nerve signal you have ever had. A little of it is radioactive.</p>
+    </div>
+
+    <div class="el el--heavy">
+      <div class="el-top"><span class="el-sym">I</span><span class="el-z">Z 53</span></div>
+      <div class="el-name">Iodine</div>
+      <div class="el-house">The Rare Catastrophe</div>
+      <div class="el-abund">~15–20 mg · trace</div>
+      <p class="el-forge">Colliding neutron stars, by the r-process. The same event that makes gold and platinum.</p>
+    </div>
+
+  </div>
+
+  <div class="foot">
+    <div class="foot-left">
+      all eight in full, with atom diagrams and field notes:<br>
+      starstuff.earth/elements-field-guide · Field Guide No. 2<br>
+      print freely · share freely · <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
+    </div>
+    <div class="foot-right">See<br>reverse</div>
+  </div>
+
+</div>
+
+<!-- ════ SIDE B ════ -->
+<div class="sheet sheet--b" id="side-b">
+
+  <div class="mast">
+    <div class="mast-org">
+      <strong>Stimpunks Foundation × More Realms</strong>
+      five forges, and what came out of each
+    </div>
+    <div class="mast-side">Broadside · Open edition<br>Side B of B</div>
+  </div>
+
+  <div class="forges">
+    <div class="col-head">Where each of them was made</div>
+
+    <div class="forge">
+      <div class="forge-head"><div class="forge-name">The Big Bang · ~13.8 Gyr</div><div class="forge-who">H</div></div>
+      <p class="forge-desc">Hydrogen condensed out of the cooling universe in the first minutes, before there were any stars to make anything. By sheer number of atoms you are mostly the early universe — it is in your blood, your cells, the tears on your face.</p>
+    </div>
+
+    <div class="forge">
+      <div class="forge-head"><div class="forge-name">Aging stars · red giants</div><div class="forge-who">C&ensp;N</div></div>
+      <p class="forge-desc">Carbon is built by the triple-alpha process, a step so unlikely that Fred Hoyle predicted carbon must have a specific internal resonance for it to work at all — reasoning backward from the fact that carbon-based observers existed to ask. The resonance was there. Nitrogen comes from the CNO cycle in stars as they age and die.</p>
+    </div>
+
+    <div class="forge">
+      <div class="forge-head"><div class="forge-name">Massive stars · core collapse</div><div class="forge-who">O&ensp;Ca&ensp;K</div></div>
+      <p class="forge-desc">Fusing lighter elements releases energy, which is what holds a star up against its own gravity — right up until iron. Fuse iron and it <em>costs</em> energy. The furnace stalls, the core collapses in under a second, and the star tears itself apart, scattering what it made.</p>
+    </div>
+
+    <div class="forge">
+      <div class="forge-head"><div class="forge-name">Type Ia · exploding white dwarfs</div><div class="forge-who">Fe</div></div>
+      <p class="forge-desc">The half of the story that usually gets left out. Iron has two parents: roughly half is scattered by the core-collapse deaths above, and roughly half by white dwarfs that pull in enough matter from a companion to detonate. The four grams in your blood came from both.</p>
+    </div>
+
+    <div class="forge">
+      <div class="forge-head"><div class="forge-name">Neutron-star mergers · r-process</div><div class="forge-who">I</div></div>
+      <p class="forge-desc">To build an atom this heavy you need a flood of free neutrons so intense it can only happen in the most extreme places. Since the merger observed in 2017, the best evidence points to colliding neutron stars. The same catastrophe that seeds the universe with gold put the iodine in your thyroid.</p>
+    </div>
+  </div>
+
+  <div class="refusals">
+    <div class="col-head">Not:</div>
+    <p class="refusal">Not a compliment, and not a distinction. Everyone is made of this. It is a baseline, not a badge — which is the entire point of printing it.</p>
+    <p class="refusal">Not a proof. A rhyme. The atoms do not owe us a conclusion about belonging; it would deserve defending in a universe made of one element.</p>
+    <p class="refusal">Not ownership. You hold these atoms for a while. They were other things first, and will be again.</p>
+  </div>
+
+  <p class="close">None of it was made for you. It was made, and scattered, and you are what the scattering settled into.</p>
+
+  <div class="sources">
+    Body abundances and forge sites follow <strong>Field Guide No. 2</strong>, whose sources are listed there. Stellar nucleosynthesis traces to <strong>Burbidge, Burbidge, Fowler &amp; Hoyle</strong>, &ldquo;Synthesis of the Elements in Stars,&rdquo; <em>Reviews of Modern Physics</em> (1957). <strong>The iron split is a correction, made for this sheet:</strong> the field guide said most iron comes from core collapse; roughly half comes from Type Ia supernovae, per <strong>Kobayashi, Karakas &amp; Lugaro</strong>, &ldquo;The Origin of Elements from Carbon to Uranium,&rdquo; <em>ApJ</em> 900:179 (2020) — the same primary that corrected Zine No. 2. The guide has been fixed to match. Percentages are approximate and by mass. The r-process attribution rests on the 2017 neutron-star merger and is the current best evidence rather than a closed question.
+  </div>
+
+  <div class="foot">
+    <div class="foot-left">
+      the full field guide and every source:<br>
+      starstuff.earth/elements-field-guide · stimpunks.org · morerealms.com<br>
+      print freely · share freely · <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
+    </div>
+    <div class="foot-right" role="img" aria-label="L★S">L<svg class="star" viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M50 0 61.2 34.5 97.6 34.5 68.2 55.9 79.4 90.5 50 69.1 20.6 90.5 31.8 55.9 2.4 34.5 38.8 34.5Z"/></svg>S</div>
+  </div>
+
+</div>
+
+<p class="print-hint">One sheet · print double-sided · put it on a wall · share freely</p>
+
+<script>
+  function showSide(side) {
+    document.getElementById('side-a').classList.toggle('visible', side === 'a');
+    document.getElementById('side-b').classList.toggle('visible', side === 'b');
+    document.getElementById('btn-a').classList.toggle('active', side === 'a');
+    document.getElementById('btn-b').classList.toggle('active', side === 'b');
+  }
+</script>
+</body>
+</html>
