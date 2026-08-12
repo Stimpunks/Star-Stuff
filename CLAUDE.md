@@ -92,6 +92,21 @@ The central phrase compresses through registers, each with a use:
 
   Full-bleed pages add `ss-nav--bleed` for edge padding. Use `.ss-nav-label` for destination
   names (auto-hidden on narrow screens; arrows remain).
+- **Every collection member carries a `.ss-nav-collection` badge**, the last child of `.ss-nav`,
+  answering *where am I?* for the reader who arrived from search rather than the index:
+
+  ```html
+  <a class="ss-nav-collection" href="collection-kin.html"><span class="ss-nav-collection-label">Collection</span> <span class="ss-nav-collection-name">Kin</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
+  ```
+
+  All 66 members have one; the 11 collection pages, `index.html` and `search.html` do not. **A new
+  piece needs its badge and its collection page's card in the same pass** — the page→collection map
+  is derived from `<a class="card" href="…">` on the collection pages, so a card that is missing
+  makes the badge underivable. It sits **inside** the nav deliberately: that is what gives it the
+  print hide and the `CHROME_SEL` strip for free, and the strip is required — see *Search* below on
+  why collection names must not become a discoverability crutch. It takes its own row
+  (`flex-basis:100%`), which is measured, not stylistic; the reasoning and the rejected
+  alternatives are in `DECISIONS.md`.
 - Include full head metadata like the existing pages: canonical URL, description, Open Graph +
   Twitter card tags pointing at `og-card.jpg` (1200×630), and JSON-LD `Article` schema. Two fixed
   values: `og:site_name` is `Star Stuff · Stimpunks Foundation × More Realms`, and `publisher` is an
@@ -184,9 +199,13 @@ never candidates for a register. Don't try to fold these into either table:
   their numbers — this is the sharpest case of *the number says when, the collection says what*
   disagreeing, and both collection pages explain it on their face rather than leaving it to look
   like an oversight.
-- **Collection names in `.card-series` / `.cover-issue` are invisible to search** —
-  `tools/build-search-index.mjs` strips both as chrome. The collection pages are what make the
-  names findable; don't rely on a badge slot for discoverability.
+- **Collection names in `.card-series` / `.cover-issue` / `.ss-nav-collection` are invisible to
+  search** — `tools/build-search-index.mjs` strips all three as chrome. The collection pages are
+  what make the names findable; don't rely on a badge slot for discoverability. The per-piece badge
+  added on 2026-08-12 changed nothing here **by design**: it lives inside `.ss-nav`, so it is
+  stripped with the rest of the nav, and rebuilding the index after adding it to 66 pages produced
+  a **byte-identical** `search-index.json`. That is the check — if adding a badge-like element ever
+  moves the index, it is being indexed 66 times and should be in `CHROME_SEL`.
 - **`Kin` must not be renamed "Ways of Being"** — it collides with Field Guide No. 5, *A Field Guide
   to the Ways of Being a Star*.
 - **There is deliberately no "For Fun" collection.** A bin labelled for fun implicitly labels

@@ -165,6 +165,53 @@
    with the page's own edge padding. */
 .ss-nav--bleed { padding: 1.5rem 2.5rem 1rem; }
 
+/* ── Per-piece collection badge ──
+   "Where am I?" for a reader who landed cold from search, which is how most
+   people arrive at a zine. The prev/next chain and the collection pages carry
+   the browse story once you are oriented; this is the signal that orients you.
+
+   It takes its OWN ROW rather than competing for the nav's horizontal space,
+   and that is measured rather than assumed. A badge inserted as a middle flex
+   child overflowed the nav on most member pages at 390px — worst case 408px of
+   content in a 342px nav — and on bowie-zine it overflowed at 1280px too,
+   because "Stars We Grew Up On" is nineteen characters of tracked-out
+   uppercase. Wrapping *conditionally* is worse than a dedicated row: with
+   flex-wrap, an item that doesn't fit takes every following item down with it,
+   so the prev/next group would jump lines unpredictably by page. flex-basis:100%
+   plus order:2 is deterministic — one row, every page, every width, no
+   per-name special-casing and nothing to re-measure when a collection is added.
+
+   Inside .ss-nav on purpose, not after it. It inherits two behaviours that way:
+   the @media print hide (a fragment-linking badge is useless on paper) and the
+   CHROME_SEL strip in build-search-index.mjs. That second one matters — a badge
+   repeating one of eleven collection names across 66 pages would add no
+   information to the index, and CLAUDE.md is explicit that the collection pages,
+   not a badge slot, are what make the names findable. */
+.ss-nav { flex-wrap: wrap; }
+
+.ss-nav a.ss-nav-collection {
+  flex-basis: 100%;
+  order: 2;
+  display: flex;
+  align-items: baseline;
+  gap: 0.5em;
+  margin-top: 0.9rem;
+  font-size: 0.84em;
+}
+
+/* The label inherits .ss-nav a's #b8aed0 rather than taking --sp-dim, and is
+   set apart by WEIGHT and tracking instead of by dimness. Measured: at
+   --sp-dim (#8a86a0) and 10.1px it came to 4.15:1 on ls-broadside.html, whose
+   ground is rgb(42,40,48) rather than the void — under the 4.5:1 floor for
+   small text. Dimness is not available as a hierarchy tool at this size once a
+   page carries a lighter ground than the tokens assume; weight is, and it
+   costs no contrast. */
+.ss-nav-collection-label { letter-spacing: 0.2em; font-weight: 400; }
+.ss-nav-collection-name { color: var(--nav-accent); }
+
+.ss-nav a.ss-nav-collection:hover .ss-nav-collection-name,
+.ss-nav a.ss-nav-collection:focus-visible .ss-nav-collection-name { text-decoration: underline; text-underline-offset: 0.3em; }
+
 /* ==========================================================================
    CO-BRANDING — Stimpunks Foundation × More Realms
    Star Stuff is a collaboration between the Stimpunks Foundation and Helen

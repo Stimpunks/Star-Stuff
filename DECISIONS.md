@@ -43,11 +43,8 @@ Decisions still to make. Move to **Settled** with a date once resolved.
   Shipped 2026-08-11 as the **Collections section lede** on `index.html`, where its three clauses
   name the three largest collections. Still open whether it also belongs in `.masthead-sub`.
   "Cosmic Connections" stays the tagline either way — Helen's phrase, fixed brand element.
-- **Per-piece collection badges?** A reader landing on a zine from search has no on-page signal
-  which collection it belongs to. Deliberately skipped in the 2026-08-11 pass: the `.cover-issue`
-  slot is tracked-out uppercase in a tight measure (the documented 455px-in-280px trap), so it
-  needs measuring before anything is added, and the prev/next chain plus the collection pages
-  already carry the browse story. Revisit if readers ask "where am I?"
+- ~~**Per-piece collection badges?**~~ **Settled 2026-08-12** — built, after the measurement the
+  deferral asked for. See below; the caution turned out to be justified.
 - ~~**Sort the collection into named collections.**~~ **Settled 2026-08-11.** Retained below for
   the reasoning, which is the part worth keeping.
   - **Renumber? Decided: no.** The number records *when a piece was made*; the collection
@@ -111,6 +108,35 @@ Decisions still to make. Move to **Settled** with a date once resolved.
 Decisions already made, with a one-line why. Backfilled from git history — dates are first
 commit evidence, not necessarily when the call was made.
 
+- **2026-08-12 — Per-piece collection badges: built, on their own row inside `.ss-nav`.** Every one
+  of the 66 collection members now carries `Collection · <Name> ›` linking to its collection page,
+  because most readers arrive at a zine from search rather than from the index and had no on-page
+  answer to *where am I?* **The deferral's caution was right, and measuring proved it rather than
+  vindicating a hunch.** The obvious design — a badge as a middle flex child of the nav — was
+  prototyped and measured on all 66 pages at 390px and 1280px: it **overflowed the nav on most pages
+  at mobile width** (worst case 408px of content in a 342px nav) and overflowed on `bowie-zine.html`
+  even at 1280px, because *Stars We Grew Up On* is nineteen characters of tracked-out uppercase.
+  **Rejected: conditional wrapping** (`flex-wrap` with no basis) — an item that doesn't fit drags
+  every following item onto the next line, so prev/next would jump rows unpredictably from page to
+  page. **Rejected: hiding the badge on mobile**, the way `.ss-nav-label` drops — mobile is exactly
+  where a cold arrival needs orienting, so that removes the feature for the readers it is for.
+  Settled on `flex-basis: 100%; order: 2` — a dedicated row, deterministic at every width, nothing
+  to re-measure when a collection is added. Verified: 66 pages, zero spill, zero horizontal
+  scroll, every badge on its own row.
+- **2026-08-12 — The badge lives *inside* `.ss-nav`, and that placement is load-bearing.** It could
+  have gone after the nav, but inside it inherits two behaviours for free: the `@media print` hide
+  (a badge linking to a collection page is useless on paper) and the `CHROME_SEL` strip in
+  `build-search-index.mjs`. The second is the important one — `CLAUDE.md` is explicit that the
+  collection pages, not a badge slot, are what make collection names findable, and a badge
+  repeating one of eleven names across 66 pages would have added noise to every record. Confirmed
+  by rebuilding: `search-index.json` came back **byte-identical**.
+- **2026-08-12 — Dimness is not a hierarchy tool at 10px.** The badge's `Collection` label first
+  used `--sp-dim` (#8a86a0) to sit quieter than the collection name. It measured **4.15:1 on
+  `ls-broadside.html`**, whose ground is rgb(42,40,48) rather than the void — under the 4.5:1 floor
+  for small text, and caught only because the contrast tool runs on every page rather than a
+  representative one. It now inherits `.ss-nav a`'s #b8aed0 and is set apart by **weight** (400
+  against the nav's 700) plus tracking. General rule: on a site where pages carry their own grounds,
+  reach for weight and tracking before dimness at small sizes — they cost no contrast.
 - **2026-08-12 — Every section of the index gets a collection page, and that is now the rule.**
   Ryan's call: a section with only a heading and a grid has nowhere to elaborate, and the three
   without pages — *Start Here*, *Foundations*, *Notes &amp; Rationale* — were the parts of the site
