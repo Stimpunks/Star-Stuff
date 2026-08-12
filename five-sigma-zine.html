@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0a0a14">
+<link rel="canonical" href="https://starstuff.earth/five-sigma-zine.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta name="description" content="Particle physics will not use the word discovery below five sigma — a p-value of 3 × 10⁻⁷, about one in three and a half million. Louis Lyons, who wrote the paper on why, argues the threshold should not even be uniform: he grades it by degree of surprise, impact, look-elsewhere effect and systematics, and his own table puts supersymmetry at 7σ and faster-than-light neutrinos above 8σ. Meanwhile the threshold used across psychology and education is p = 0.05 — about 2σ — which Ronald Fisher chose in 1925 with the word convenient. The gap between them is roughly 170,000× in tolerated false-positive rate. This zine runs Lyons' four dials honestly on the question of whether an intervention should be applied to a child, finds the answer somewhere past 7σ, and then finds the systematics column empty: Bottema-Beutel, Crowley, Sandbank and Woynaroski reviewed 150 intervention studies for young Autistic children and found 11 that mentioned adverse events at all. Not an argument against science — an argument against scientism, which is the aesthetics of science without its discipline. The third chain in How We Got Here, and the first with no leaps in it.">
+<!-- Open Graph / link unfurl -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Star Stuff · Stimpunks Foundation × More Realms">
+<meta property="og:url" content="https://starstuff.earth/five-sigma-zine.html">
+<meta property="og:title" content="Five Sigma">
+<meta property="og:description" content="Physics demands one-in-3.5-million odds before saying a particle exists. We use one-in-twenty before deciding a child must be changed. How much evidence is enough?">
+<meta property="og:image" content="https://starstuff.earth/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A rainbow-hued cosmic image — we are all made of star stuff.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Five Sigma">
+<meta name="twitter:description" content="5σ to announce a particle. 2σ to change a childhood. A 170,000-fold gap, and the column where the harms should be is empty.">
+<meta name="twitter:image" content="https://starstuff.earth/og-card.jpg">
+<title>Five Sigma — Stimpunks Zine No. 40</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="starstuff.css">
+<style>
+  :root {
+    --void:  var(--sp-void-deep);
+    --deep:  var(--sp-deep);
+    --page:  var(--sp-page);
+    --violet:var(--sp-purple);
+    --pink:  var(--sp-pink);
+    --gold:  var(--sp-gold);
+    --cyan:  var(--sp-cyan);
+    --green: var(--sp-green);
+    --ember: #c1653a;
+    --accent: var(--sp-purple);        /* this zine's identity accent — the measured, the uncertain */
+    --star-white: var(--sp-white-soft);
+    --stardust:   var(--sp-secondary-soft);
+    --dim:   var(--sp-dim);
+    --dim2:  var(--sp-dim-soft);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--void);
+    font-family: 'Atkinson Hyperlegible Next', system-ui, sans-serif;
+    color: var(--star-white);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── STARFIELD (violet · white · gold — a detector's noise, and the one real signal) ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 10% 15%, rgba(167,139,250,0.72) 0%, transparent 100%),
+      radial-gradient(1px 1px at 26% 35%, rgba(244,244,251,0.6) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 44% 8%, rgba(167,139,250,0.58) 0%, transparent 100%),
+      radial-gradient(1px 1px at 61% 66%, rgba(244,244,251,0.68) 0%, transparent 100%),
+      radial-gradient(2px 2px at 78% 24%, rgba(251,191,36,0.45) 0%, transparent 100%),
+      radial-gradient(1px 1px at 88% 52%, rgba(167,139,250,0.58) 0%, transparent 100%),
+      radial-gradient(1px 1px at 94% 81%, rgba(167,139,250,0.52) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 6% 60%, rgba(244,244,251,0.58) 0%, transparent 100%),
+      radial-gradient(1px 1px at 35% 86%, rgba(167,139,250,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 53% 44%, rgba(244,244,251,0.5) 0%, transparent 100%),
+      radial-gradient(2px 2px at 20% 89%, rgba(167,139,250,0.55) 0%, transparent 100%),
+      radial-gradient(1px 1px at 71% 6%, rgba(244,244,251,0.78) 0%, transparent 100%),
+      radial-gradient(1px 1px at 46% 61%, rgba(167,139,250,0.45) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 31% 19%, rgba(244,244,251,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 81% 90%, rgba(251,191,36,0.4) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .zine-shell { position: relative; z-index: 1; max-width: 820px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+
+  .spectrum-line { height: 2px; border: none; border-radius: 2px; background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); }
+
+  /* ── NAV ── */
+  .nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2.5rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(167,139,250,0.2); }
+  .nav-brand { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--dim); }
+  .nav-controls { display: flex; gap: 0.5rem; align-items: center; }
+  .nav-btn { background: none; border: 1px solid rgba(167,139,250,0.35); color: var(--stardust); font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.15em; padding: 0.4rem 0.85rem; border-radius: 2px; cursor: pointer; transition: all 0.2s ease; text-transform: uppercase; }
+  .nav-btn:hover { background: rgba(167,139,250,0.15); border-color: rgba(167,139,250,0.6); color: var(--star-white); }
+  .nav-btn.active { background: rgba(167,139,250,0.20); border-color: var(--accent); color: var(--star-white); }
+  .page-counter { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.2em; color: var(--dim2); }
+
+  .spread { display: none; animation: fadeIn 0.5s ease forwards; }
+  .spread.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ── COVER ── */
+  .cover-spread {
+    position: relative; min-height: 520px; border-radius: 4px; overflow: hidden;
+    background:
+      radial-gradient(ellipse at 22% 20%, rgba(167,139,250,0.15) 0%, transparent 52%),
+      radial-gradient(ellipse at 80% 26%, rgba(251,191,36,0.10) 0%, transparent 52%),
+      radial-gradient(ellipse at 68% 82%, rgba(167,139,250,0.10) 0%, transparent 52%),
+      radial-gradient(ellipse at 28% 80%, rgba(244,114,182,0.07) 0%, transparent 52%),
+      var(--deep);
+    border: 1px solid rgba(167,139,250,0.25);
+    box-shadow: inset 0 0 80px rgba(167,139,250,0.07), 0 0 0 4px rgba(255,255,255,0.03);
+    display: flex; flex-direction: column; justify-content: flex-end; padding: 3rem;
+  }
+  .cover-motif { position: absolute; top: -4px; right: -14px; width: 340px; height: 340px; opacity: 0.8; pointer-events: none; }
+  .cover-issue { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.5em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.5rem; }
+  .cover-title { font-weight: 700; font-size: clamp(2.1rem, 6vw, 3.5rem); line-height: 1.02; color: var(--star-white); letter-spacing: -0.01em; margin-bottom: 0.9rem; }
+  .cover-title .amp { color: var(--accent); font-style: italic; }
+  .cover-subtitle { font-size: 1rem; color: var(--stardust); opacity: 0.85; margin-bottom: 1.5rem; max-width: 470px; line-height: 1.55; }
+  .cover-byline { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.14em; color: var(--dim); margin-bottom: 1.8rem; }
+  .cover-byline strong { color: var(--stardust); font-weight: 700; }
+  .cover-rule { width: 220px; max-width: 60%; margin-bottom: 1.3rem; }
+  .cover-meta { display: flex; gap: 2rem; align-items: center; }
+  .cover-ls { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 1.4rem; color: var(--accent); letter-spacing: 0.05em; }
+  .cover-meta-text { font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--dim2); line-height: 1.9; }
+  .cover-corner { position: absolute; top: 2rem; right: 2.5rem; text-align: right; }
+  .cover-corner-num { font-weight: 700; font-size: 4.5rem; line-height: 1; color: var(--accent); opacity: 0.24; }
+  .cover-corner-label { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); display: block; margin-top: -0.3rem; }
+
+  /* ── INTERIOR ── */
+  .interior { background: var(--page); border: 1px solid rgba(167,139,250,0.15); border-radius: 4px; overflow: hidden; min-height: 480px; }
+  .spread-2col { display: grid; grid-template-columns: 1fr 1fr; min-height: 480px; }
+  .spread-left, .spread-right { padding: 3rem 2.4rem; position: relative; }
+  .spread-left { border-right: 1px solid rgba(167,139,250,0.12); }
+
+  .spread-2col.stacked { display: flex; flex-direction: column; }
+  .spread-2col.stacked > .spread-left,
+  .spread-2col.stacked > .spread-right { border-right: none; }
+  .spread-2col.stacked > .col-diagram { order: 2; padding-top: 0; }
+  .spread-2col.stacked > .col-text { padding-left: max(2.4rem, calc((100% - 32rem) / 2)); padding-right: max(2.4rem, calc((100% - 32rem) / 2)); }
+  .spread-2col.stacked .diagram-wrap { height: auto; }
+  .spread-2col.stacked .diagram { max-width: 380px; }
+
+  .eyebrow { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.1rem; }
+  .body-text { font-size: 0.98rem; line-height: 1.72; color: var(--stardust); }
+  .body-text p { margin-bottom: 1rem; }
+  .body-text p:last-child { margin-bottom: 0; }
+  .body-text strong { font-weight: 700; color: var(--star-white); }
+  .body-text em { font-style: italic; color: var(--star-white); }
+  .body-text a { color: var(--violet); text-decoration: none; border-bottom: 1px solid rgba(167,139,250,0.4); }
+  .body-text a:hover { border-bottom-color: var(--violet); color: var(--star-white); }
+  .body-text .violet { color: var(--violet); font-weight: 700; }
+  .body-text .pink { color: var(--pink); font-weight: 700; }
+  .body-text .gold { color: var(--gold); font-weight: 700; }
+  .body-text .cyan { color: var(--cyan); font-weight: 700; }
+  .body-text .green { color: var(--green); font-weight: 700; }
+  .body-text .dim { color: var(--dim); }
+  .body-text .lede { font-size: 1.08rem; color: var(--star-white); }
+
+  .spread-heading { font-weight: 700; font-size: 1.9rem; line-height: 1.12; color: var(--star-white); margin-bottom: 1.1rem; letter-spacing: -0.01em; margin-top: 0; scroll-margin-top: 5rem; }
+  .spread-heading .spectrum-word { background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .rule { width: 40px; margin: 1rem 0; }
+
+  .pull-quote { font-size: 1.18rem; font-weight: 700; line-height: 1.4; color: var(--star-white); border-left: 3px solid var(--accent); padding-left: 1.1rem; margin: 1.4rem 0; font-style: italic; }
+  .pull-quote.violet { border-left-color: var(--violet); }
+  .pull-quote.cyan { border-left-color: var(--cyan); }
+  .pull-quote.gold { border-left-color: var(--gold); }
+  .pull-quote.green { border-left-color: var(--green); }
+  .pull-quote .attr { display: block; font-family: 'Space Mono', monospace; font-size: 0.6rem; font-weight: 400; font-style: normal; letter-spacing: 0.08em; color: var(--dim); margin-top: 0.6rem; }
+
+  .callout { margin: 1.3rem 0; padding: 1rem 1.15rem; background: rgba(167,139,250,0.06); border: 1px solid rgba(167,139,250,0.22); border-radius: 4px; font-size: 1rem; font-style: italic; color: var(--star-white); line-height: 1.55; }
+  .callout .attr { display: block; font-family: 'Space Mono', monospace; font-size: 0.58rem; font-style: normal; letter-spacing: 0.06em; color: var(--dim); margin-top: 0.5rem; }
+
+  /* ── THE JOINT TAG (the How We Got Here convention, third outing) ──
+     This chain has NO leap joints, which is itself a finding rather than a tidy result: every
+     gap in it is measured and published, not inferred. Reporting that is exactly what the
+     notation is for — see the legend on the final diagram, which prints the zero. */
+  .joint { display: inline-flex; align-items: baseline; gap: 0.4rem; font-family: 'Space Mono', monospace; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; padding: 0.16rem 0.5rem; border-radius: 2px; white-space: nowrap; vertical-align: 0.12em; }
+  .joint::before { content: ''; width: 16px; height: 0; border-top-width: 2px; align-self: center; }
+  .joint-documented { color: var(--green); background: rgba(74,222,128,0.10); border: 1px solid rgba(74,222,128,0.32); }
+  .joint-documented::before { border-top-style: solid; border-top-color: var(--green); }
+  .joint-contested  { color: var(--gold); background: rgba(251,191,36,0.10); border: 1px solid rgba(251,191,36,0.32); }
+  .joint-contested::before { border-top-style: dashed; border-top-color: var(--gold); }
+  .joint-leap       { color: var(--pink); background: rgba(244,114,182,0.10); border: 1px solid rgba(244,114,182,0.32); }
+  .joint-leap::before { border-top-style: dotted; border-top-color: var(--pink); }
+
+  .joint-note { font-size: 0.84rem; line-height: 1.6; color: var(--dim); border-left: 2px solid rgba(167,139,250,0.28); padding-left: 0.9rem; margin: 1.1rem 0; }
+  .joint-note strong { color: var(--stardust); font-weight: 700; }
+
+  /* ── THE RUNNING SPINE ──
+     Two rails that NEVER meet — which is this chain's whole argument, and the deliberate
+     inverse of No. 39, where the merge was the fault. Here the fault is that the transfer
+     never happened: one dashed rung, marked contested, is the only thing between them.
+     Node names are not text in the SVG; the spine repeats on fourteen spreads and fourteen
+     copies of eleven names would land in fourteen search records. See CHROME_SEL in
+     tools/build-search-index.mjs. */
+  .spine { border-top: 1px solid rgba(167,139,250,0.12); padding: 1.1rem 2.4rem 0.2rem; }
+  .spine svg { width: 100%; max-width: 620px; margin: 0 auto; display: block; overflow: visible; }
+  .spine-label { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); text-align: center; margin-top: 0.5rem; }
+  .spine-node { fill: var(--sp-dim); }
+  .spine-node.live { fill: var(--accent); }
+  .spine-ring { fill: none; stroke: var(--accent); stroke-width: 1.6; }
+  .spine-track { fill: none; stroke-width: 1.6; stroke-linecap: round; }
+  .spine-track.documented { stroke: rgba(74,222,128,0.55); }
+  .spine-track.contested  { stroke: rgba(251,191,36,0.6); stroke-dasharray: 6 4; }
+  .spine-track.leap       { stroke: rgba(244,114,182,0.6); stroke-dasharray: 1.5 4; }
+  .spine-raillabel { font-family: 'Space Mono', monospace; font-size: 7px; letter-spacing: 0.18em; text-transform: uppercase; fill: var(--sp-dim); }
+
+  /* ── DIAGRAMS ── */
+  .diagram-wrap { display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; }
+  .diagram { width: 100%; max-width: 300px; display: block; }
+  .diagram-caption { font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim); text-align: center; margin-top: 0.9rem; line-height: 1.9; }
+
+  /* ── THE DIALS TABLE ── */
+  .dials { width: 100%; border-collapse: collapse; margin: 1.3rem 0; font-size: 0.82rem; }
+  .dials caption { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dim); text-align: left; padding-bottom: 0.6rem; }
+  .dials th { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--stardust); text-align: left; padding: 0.5rem 0.6rem; border-bottom: 1px solid rgba(167,139,250,0.28); font-weight: 700; }
+  .dials td { padding: 0.5rem 0.6rem; border-bottom: 1px solid rgba(167,139,250,0.1); color: var(--stardust); line-height: 1.45; }
+  .dials td.sig { font-family: 'Space Mono', monospace; font-weight: 700; color: var(--accent); white-space: nowrap; }
+  .dials tr.ours td { background: rgba(251,191,36,0.07); color: var(--star-white); }
+  .dials tr.ours td.sig { color: var(--gold); }
+  .dials tr.ours td strong { color: var(--star-white); }
+
+  /* ── THE TALLY ── */
+  .tally { display: flex; gap: 1rem; margin: 1.4rem 0; }
+  .tally-cell { flex: 1; padding: 0.9rem 1rem; border-radius: 4px; border: 1px solid rgba(167,139,250,0.18); background: rgba(255,255,255,0.02); }
+  .tally-cell.gained { border-color: rgba(74,222,128,0.3); background: rgba(74,222,128,0.05); }
+  .tally-cell.lost { border-color: rgba(244,114,182,0.3); background: rgba(244,114,182,0.05); }
+  .tally-num { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 1.5rem; line-height: 1; color: var(--green); }
+  .tally-cell.lost .tally-num { color: var(--pink); }
+  .tally-label { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dim); margin-top: 0.45rem; line-height: 1.7; }
+
+  /* ── REFUSALS ── */
+  .refusals { margin-top: 1.3rem; }
+  .refusal { font-size: 0.88rem; line-height: 1.5; color: var(--stardust); padding: 0.55rem 0; border-bottom: 1px solid rgba(167,139,250,0.1); display: flex; gap: 0.6rem; align-items: baseline; }
+  .refusal:last-child { border-bottom: none; }
+  .refusal-tag { font-family: 'Space Mono', monospace; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ember); flex-shrink: 0; padding-top: 0.12rem; }
+  .refusal strong { color: var(--star-white); font-weight: 700; }
+
+  /* ── COLOPHON ── */
+  .colophon { padding: 3rem; display: flex; flex-direction: column; justify-content: space-between; min-height: 480px; background: radial-gradient(ellipse at 82% 18%, rgba(167,139,250,0.10) 0%, transparent 50%), radial-gradient(ellipse at 18% 85%, rgba(251,191,36,0.06) 0%, transparent 50%), var(--page); }
+  .colophon-top { border-bottom: 1px solid rgba(167,139,250,0.14); padding-bottom: 1.3rem; margin-bottom: 1.2rem; }
+  .colophon-ls { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 2.4rem; color: var(--accent); letter-spacing: 0.05em; display: block; margin-bottom: 0.4rem; }
+  .colophon-phrase { font-size: 0.98rem; font-weight: 700; font-style: italic; color: var(--stardust); }
+  .series-list { display: flex; flex-direction: column; gap: 0.38rem; margin-bottom: 1.2rem; }
+  .series-item { font-size: 0.72rem; color: var(--dim); letter-spacing: 0.01em; display: flex; gap: 0.7rem; align-items: baseline; line-height: 1.45; }
+  .series-item.current { color: var(--accent); font-weight: 700; }
+  .series-num { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim2); flex-shrink: 0; }
+  .series-item.current .series-num { color: var(--accent); }
+  .reflect { border-top: 1px solid rgba(167,139,250,0.14); padding-top: 1rem; margin-bottom: 1.2rem; }
+  .reflect-label { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.65rem; }
+  .reflect-q { font-size: 0.86rem; line-height: 1.55; color: var(--stardust); margin-bottom: 0.55rem; font-style: italic; }
+  .reflect-q:last-child { margin-bottom: 0; }
+  .colophon-body { font-size: 0.75rem; color: var(--dim); line-height: 1.75; margin-bottom: 1.2rem; }
+  .colophon-body a { color: var(--violet); text-decoration: none; border-bottom: 1px solid rgba(167,139,250,0.4); }
+  .colophon-body a:hover { border-bottom-color: var(--violet); }
+  .colophon-h { font-family: 'Space Mono', monospace; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: var(--stardust); margin: 1rem 0 0.4rem; scroll-margin-top: 5rem; }
+  .colophon-footer { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--dim); line-height: 2.2; border-top: 1px solid rgba(167,139,250,0.14); padding-top: 1rem; }
+
+  /* ── SPREAD FOOTER ── */
+  .spread-footer { display: flex; justify-content: space-between; align-items: center; padding: 0.9rem 2.4rem; border-top: 1px solid rgba(167,139,250,0.1); }
+  .spread-footer-left { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--dim); }
+  .spread-footer-right { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; color: var(--accent); }
+
+  .twinkle { position: fixed; width: 3px; height: 3px; border-radius: 50%; animation: twinkle-anim 3s ease-in-out infinite; pointer-events: none; z-index: 0; }
+
+  @media (max-width: 600px) {
+    .spread-2col { grid-template-columns: 1fr; }
+    .spread-left { border-right: none; border-bottom: 1px solid rgba(167,139,250,0.12); }
+    .spread-2col.stacked > .spread-left { border-bottom: none; }
+    .spread-2col.stacked > .col-text { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .cover-spread { padding: 2rem; min-height: 420px; }
+    .cover-motif { width: 224px; height: 224px; top: -4px; right: -24px; opacity: 0.5; }
+    .cover-title { font-size: 2rem; }
+    .spread-heading { font-size: 1.55rem; }
+    .spread-left, .spread-right { padding: 2rem 1.5rem; }
+    .colophon { padding: 2rem 1.5rem; }
+    .spine { padding: 1rem 1.5rem 0.2rem; }
+    .tally { flex-direction: column; gap: 0.7rem; }
+    .dials { font-size: 0.74rem; }
+    .dials th, .dials td { padding: 0.4rem 0.35rem; }
+  }
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Five Sigma","description":"Particle physics will not allow the word 'discovery' below five standard deviations. Louis Lyons, 'Discovering the Significance of 5 sigma' (arXiv:1310.1284, 2013): the convention is that the chance of background alone producing a fluctuation at least as large as the observed effect corresponds to the area beyond 5σ in one tail of a normalised Gaussian, a p-value no larger than 3 × 10⁻⁷. The reason is empirical rather than principled — in the past many 'phenomena' at 3 or 4σ went away when more data were collected — and Lyons argues the threshold should not even be uniform, grading required significance by degree of surprise, impact, the look-elsewhere effect, and systematic uncertainty. His own table assigns 5σ to the Higgs, 3σ to single top production, 7σ to supersymmetry and gravitational waves, and above 8σ to superluminal neutrinos. He also prints the statisticians' objection that the criterion is not sensible at all. Against this stands p = 0.05, roughly 2σ, which Ronald Fisher chose in Statistical Methods for Research Workers (1925) with the words 'it is convenient to take this point as a limit in judging whether a deviation is to be considered significant or not' — a gap of about 170,000-fold in tolerated false-positive rate. Running Lyons' four dials honestly on the claim that an intervention should be applied to a child returns a figure well above 7σ, and the systematics column turns out to be empty: Bottema-Beutel, Crowley, Sandbank and Woynaroski, 'Adverse event reporting in intervention research for young autistic children' (Autism 25(2), 2021, 322–335), reviewed 150 reports and found only 11 that mentioned adverse events. Macnamara and Burgoyne (Psychological Bulletin, 2023) find growth mindset interventions across 63 studies and 97,672 participants compromised by publication bias, financial incentive and internal validity threats, with higher-quality studies less likely to show benefit. This is not an argument against science but against scientism — the aesthetics of science without its discipline. The third chain in How We Got Here, and the first containing no leap joints.","image":"https://starstuff.earth/og-card.jpg","url":"https://starstuff.earth/five-sigma-zine.html","mainEntityOfPage":"https://starstuff.earth/five-sigma-zine.html","publisher":[{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/","logo":{"@type":"ImageObject","url":"https://starstuff.earth/og-card.jpg"}},{"@type":"Organization","name":"More Realms","url":"https://morerealms.com/"}],"isPartOf":{"@type":"WebSite","name":"Star Stuff","url":"https://starstuff.earth/"}}</script>
+</head>
+<body>
+
+<div class="twinkle" style="top:10%;left:13%;background:var(--violet);box-shadow:0 0 6px var(--violet);animation-delay:-0.5s"></div>
+<div class="twinkle" style="top:22%;left:86%;background:var(--star-white);box-shadow:0 0 6px var(--star-white);animation-delay:-1.4s"></div>
+<div class="twinkle" style="top:55%;left:5%;background:var(--violet);box-shadow:0 0 6px var(--violet);animation-delay:-2.2s"></div>
+<div class="twinkle" style="top:74%;left:93%;background:var(--gold);box-shadow:0 0 6px var(--gold);animation-delay:-0.8s"></div>
+<div class="twinkle" style="top:89%;left:28%;background:var(--star-white);box-shadow:0 0 6px var(--star-white);animation-delay:-1.9s"></div>
+<div class="twinkle" style="top:38%;left:96%;background:var(--violet);box-shadow:0 0 6px var(--violet);animation-delay:-3.0s"></div>
+
+<nav class="ss-nav" style="--nav-accent:#a78bfa;" aria-label="Star Stuff collection">
+  <span class="ss-nav-home-group"><a class="ss-nav-home" href="index.html"><span class="ss-star" aria-hidden="true">★</span> stuff</a><a class="ss-nav-about" href="about.html">about</a>
+    <a class="ss-nav-search" href="search.html">search</a></span>
+  <span class="ss-nav-links">
+    <a class="ss-nav-prev" href="five-microns-zine.html"><span class="ss-nav-arrow" aria-hidden="true">&lsaquo;</span> <span class="ss-nav-label">Five Microns</span></a>
+    <a class="ss-nav-next" href="collection-star-gazing.html"><span class="ss-nav-label">Star Gazing</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
+  </span>
+  <a class="ss-nav-collection" href="collection-how-we-got-here.html"><span class="ss-nav-collection-label">Collection</span> <span class="ss-nav-collection-name">How We Got Here</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
+</nav>
+
+<div class="zine-shell">
+
+  <nav class="nav">
+    <div class="nav-brand"><a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks</a> × <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a> · Zine No. 40</div>
+    <div class="nav-controls">
+      <button class="nav-btn" id="prev-btn" onclick="changePage(-1)">← prev</button>
+      <span class="page-counter" id="page-counter">1 / 16</span>
+      <button class="nav-btn" id="next-btn" onclick="changePage(1)">next →</button>
+    </div>
+  </nav>
+
+  <!-- ════ SPREAD 1: COVER ════ -->
+  <div class="spread active" id="spread-1">
+    <div class="cover-spread">
+      <svg class="cover-motif" viewBox="0 0 340 340" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <!-- A normal curve with the 5σ tail marked, and a second, much fatter tail at 2σ.
+             Art stays in the UPPER THIRD of the box: the cover is 520px and the title sits at
+             its foot, so anything past y≈240 in this viewBox lands on the words. Measured on
+             No. 38; the constraint is real, don't re-learn it. -->
+        <g transform="translate(14,32) scale(0.80)">
+          <!-- baseline -->
+          <line x1="14" y1="176" x2="214" y2="176" stroke="rgba(167,139,250,0.35)" stroke-width="1.1"/>
+          <!-- the gaussian -->
+          <path d="M18 176 C60 176 66 44 114 44 C162 44 168 176 210 176" fill="none" stroke="rgba(244,244,251,0.6)" stroke-width="1.6"/>
+          <!-- 2 sigma cut -->
+          <line x1="168" y1="176" x2="168" y2="86" stroke="var(--gold)" stroke-width="1.4" stroke-dasharray="5 4"/>
+          <text x="172" y="80" font-family="Space Mono, monospace" font-size="10" font-weight="700" fill="var(--gold)">2σ</text>
+          <!-- 5 sigma cut, way out -->
+          <line x1="206" y1="176" x2="206" y2="126" stroke="var(--violet)" stroke-width="1.4"/>
+          <text x="200" y="120" text-anchor="end" font-family="Space Mono, monospace" font-size="10" font-weight="700" fill="var(--violet)">5σ</text>
+          <!-- p-values -->
+          <text x="168" y="200" text-anchor="middle" font-family="Space Mono, monospace" font-size="8" letter-spacing="0.4" fill="var(--gold)">p = 0.05</text>
+          <text x="206" y="216" text-anchor="middle" font-family="Space Mono, monospace" font-size="8" letter-spacing="0.4" fill="var(--violet)">3×10⁻⁷</text>
+          <text x="110" y="236" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.5" letter-spacing="1.2" fill="var(--sp-secondary)">one of these is for children</text>
+        </g>
+      </svg>
+      <div class="cover-corner">
+        <div class="cover-corner-num">40</div>
+        <span class="cover-corner-label">Chain</span>
+      </div>
+      <div class="cover-issue">Stimpunks × More Realms · Zine No. 40</div>
+      <h1 class="cover-title">Five <span class="amp">Sigma</span></h1>
+      <p class="cover-subtitle">how much evidence is enough before you do something to a child</p>
+      <div class="cover-byline">Every joint marked <strong>documented</strong> · <strong>contested</strong> · <strong>leap</strong></div>
+      <hr class="spectrum-line cover-rule">
+      <div class="cover-meta">
+        <span class="cover-ls">L★S</span>
+        <div class="cover-meta-text">Love You Down To Your Star Stuff<br>open edition · print freely</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 2: 4 July 2012 ════ -->
+  <div class="spread" id="spread-2">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">CERN · 4 July 2012</div>
+          <h2 class="spread-heading" id="the-word-they-would-not-say">The word they would not say</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">For years, physicists at the LHC had a bump in their data where the Higgs boson should be. They would not call it a discovery, and the reason was a number.</p>
+            <p>The convention is exact, and Louis Lyons — who wrote the paper on where it came from — states it plainly:</p>
+            <div class="callout">"It has become the convention in Particle Physics that in order to claim a discovery of some form of New Physics, the chance of just the background having a statistical fluctuation at least as large as the observed effect is equivalent to the area beyond 5σ in one tail of a normalised Gaussian distribution, or smaller; i.e. the <em>p</em>-value is no larger than 3 × 10⁻⁷."<span class="attr">Louis Lyons, "Discovering the Significance of 5σ," arXiv:1310.1284, October 2013</span></div>
+            <p>Three in ten million. About <strong>one chance in three and a half million</strong> that the background alone could have thrown up something this big.</p>
+            <p>And the discipline is enforced socially, not just statistically. Lyons notes that <em>journals are very reluctant to allow the word 'discovery' to appear in the title, abstract or conclusions of a paper, unless the p-value is that small.</em></p>
+            <p>Hold that beside a fact about what was at stake. If the physicists had been wrong, <span class="violet">the universe would have been unaffected.</span> No particle would have suffered. The cost of a false claim was a retraction and some embarrassment.</p>
+            <p>They set the bar at one in three and a half million anyway.</p>
+            <p><span class="joint joint-documented">documented</span> &nbsp;the convention → why 5 and not 3</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 186" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig1-title fig1-desc">
+              <title id="fig1-title">Where five sigma sits</title>
+              <desc id="fig1-desc">A normal distribution with the region beyond two sigma shaded and labelled p equals 0.05, and the region beyond five sigma marked far out in the tail and labelled three times ten to the minus seven.</desc>
+              <line x1="16" y1="132" x2="286" y2="132" stroke="rgba(167,139,250,0.4)" stroke-width="1.1"/>
+              <path d="M22 132 C80 132 88 30 150 30 C212 30 220 132 278 132" fill="none" stroke="rgba(244,244,251,0.6)" stroke-width="1.6"/>
+              <path d="M214 132 C238 128 252 120 278 132 Z" fill="rgba(251,191,36,0.35)"/>
+              <line x1="214" y1="132" x2="214" y2="60" stroke="var(--gold)" stroke-width="1.3" stroke-dasharray="5 4"/>
+              <text x="214" y="52" text-anchor="middle" font-family="Space Mono, monospace" font-size="9" font-weight="700" fill="var(--gold)">2σ</text>
+              <text x="222" y="150" font-family="Space Mono, monospace" font-size="7.5" fill="var(--gold)">p = 0.05</text>
+              <line x1="272" y1="132" x2="272" y2="96" stroke="var(--violet)" stroke-width="1.5"/>
+              <text x="272" y="88" text-anchor="middle" font-family="Space Mono, monospace" font-size="9" font-weight="700" fill="var(--violet)">5σ</text>
+              <text x="286" y="166" text-anchor="end" font-family="Space Mono, monospace" font-size="7.5" fill="var(--violet)">3 × 10⁻⁷</text>
+              <text x="90" y="166" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="1" fill="var(--sp-dim)">one in 3,500,000</text>
+              <text x="150" y="182" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="1.2" fill="var(--sp-secondary)">before you may say &ldquo;discovery&rdquo;</text>
+            </svg>
+            <div class="diagram-caption">Figure 1 · the tail, and the far tail</div>
+          </div>
+        </div>
+      </div>
+      <div class="spine">
+        <svg viewBox="0 0 620 66" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain, with 1 — the Higgs — 5σ live. Two rails, physics and the human sciences, joined only by one dashed rung.">
+          <path class="spine-track documented" d="M80 18 H145"/><path class="spine-track documented" d="M145 18 H210"/><path class="spine-track documented" d="M210 18 H275"/><path class="spine-track documented" d="M275 18 H340"/><path class="spine-track documented" d="M340 18 H405"/><path class="spine-track documented" d="M145 54 H250"/><path class="spine-track documented" d="M250 54 H405"/><path class="spine-track documented" d="M405 54 H520"/><path class="spine-track contested" d="M405 25 V47"/><text class="spine-raillabel" x="0" y="21">physics</text><text class="spine-raillabel" x="0" y="57">human sci</text><g class="spine-node"><circle cx="145" cy="18" r="3.4"/><circle cx="210" cy="18" r="3.4"/><circle cx="275" cy="18" r="3.4"/><circle cx="340" cy="18" r="3.4"/><circle cx="405" cy="18" r="3.4"/><circle cx="145" cy="54" r="3.4"/><circle cx="250" cy="54" r="3.4"/><circle cx="405" cy="54" r="3.4"/><circle cx="520" cy="54" r="3.4"/></g><g class="spine-node live"><circle cx="80" cy="18" r="4.6"/></g><circle class="spine-ring" cx="80" cy="18" r="9"/>
+        </svg>
+        <div class="spine-label">1 · the Higgs · 5σ</div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Five Sigma · Stimpunks</span>
+        <span class="spread-footer-right">2</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 3: why 5 and not 3 ════ -->
+  <div class="spread" id="spread-3">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The reason · empirical, not principled</div>
+          <h2 class="spread-heading" id="a-field-that-kept-being-wrong">A field that kept being wrong</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">The 5σ bar was not derived from theory. It was set because the field kept announcing things that turned out not to exist.</p>
+            <div class="callout">"In the past there have been many 'phenomena' that corresponded to 3 or 4σ effects that have gone away when more data were collected. The 5σ criterion is designed to reduce the number of such false claims."<span class="attr">Lyons, 2013 — the first argument he lists</span></div>
+            <p>Read that as an institutional confession. Three sigma is already odds of about one in a thousand. Four sigma is about one in sixteen thousand. <strong>Physics found that even those were producing claims that evaporated</strong>, and so raised its own bar against its own enthusiasm.</p>
+            <p>That is the move worth stealing. Not the specific number — <span class="violet">the willingness to notice your field's error rate and respond by making your own life harder.</span></p>
+            <p>And it went further. Lyons prints, in his own paper, the objection that the whole thing is unsound:</p>
+            <div class="pull-quote violet">"Statisticians who hear about the 5σ criterion are very skeptical about it being sensible."<span class="attr">Lyons, 2013 — quoted by the man defending the criterion</span></div>
+            <p>He does not bury that. He states it, gives the statisticians' reasoning — that probability distributions rarely describe reality accurately that far out in the tails — and then concedes: <em>"Thus the Statisticians' criticism may well be valid."</em></p>
+            <p><strong>A field that publishes the case against its own gold standard is doing science.</strong> Keep hold of that sentence; the last third of this zine is about what it looks like when a field does not.</p>
+            <p><span class="joint joint-documented">documented</span> &nbsp;false claims → the look-elsewhere effect</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 176" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig2-title fig2-desc">
+              <title id="fig2-title">Claims that evaporated</title>
+              <desc id="fig2-desc">A row of signals at three and four sigma, most of them fading to nothing as more data arrives, with the threshold moved rightward to five sigma in response.</desc>
+              <text x="16" y="22" font-family="Space Mono, monospace" font-size="7.5" letter-spacing="1" fill="var(--sp-dim)">announced at 3–4σ</text>
+              <g>
+                <circle cx="34" cy="48" r="5" fill="rgba(244,114,182,0.8)"/>
+                <circle cx="74" cy="48" r="5" fill="rgba(244,114,182,0.8)"/>
+                <circle cx="114" cy="48" r="5" fill="rgba(244,114,182,0.8)"/>
+                <circle cx="154" cy="48" r="5" fill="rgba(244,114,182,0.8)"/>
+                <circle cx="194" cy="48" r="5" fill="rgba(244,114,182,0.8)"/>
+                <circle cx="234" cy="48" r="5" fill="rgba(74,222,128,0.85)"/>
+              </g>
+              <g stroke="rgba(167,139,250,0.35)" stroke-width="1.1" fill="none">
+                <path d="M34 58 L34 88"/><path d="M74 58 L74 88"/><path d="M114 58 L114 88"/><path d="M154 58 L154 88"/><path d="M194 58 L194 88"/><path d="M234 58 L234 88"/>
+              </g>
+              <text x="16" y="110" font-family="Space Mono, monospace" font-size="7.5" letter-spacing="1" fill="var(--sp-dim)">after more data</text>
+              <g fill="none" stroke="rgba(244,114,182,0.5)" stroke-width="1.3" stroke-dasharray="2 3">
+                <circle cx="34" cy="126" r="4.5"/><circle cx="74" cy="126" r="4.5"/><circle cx="114" cy="126" r="4.5"/><circle cx="154" cy="126" r="4.5"/><circle cx="194" cy="126" r="4.5"/>
+              </g>
+              <circle cx="234" cy="126" r="5.5" fill="var(--green)"/>
+              <text x="150" y="158" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.5" letter-spacing="0.8" fill="var(--violet)">so the field raised its own bar</text>
+              <text x="150" y="171" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="1.2" fill="var(--sp-dim)">against its own enthusiasm</text>
+            </svg>
+            <div class="diagram-caption">Figure 2 · an institutional confession</div>
+          </div>
+        </div>
+      </div>
+      <div class="spine">
+        <svg viewBox="0 0 620 66" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain, with 2 — why 5, not 3 live. Two rails, physics and the human sciences, joined only by one dashed rung.">
+          <path class="spine-track documented" d="M80 18 H145"/><path class="spine-track documented" d="M145 18 H210"/><path class="spine-track documented" d="M210 18 H275"/><path class="spine-track documented" d="M275 18 H340"/><path class="spine-track documented" d="M340 18 H405"/><path class="spine-track documented" d="M145 54 H250"/><path class="spine-track documented" d="M250 54 H405"/><path class="spine-track documented" d="M405 54 H520"/><path class="spine-track contested" d="M405 25 V47"/><text class="spine-raillabel" x="0" y="21">physics</text><text class="spine-raillabel" x="0" y="57">human sci</text><g class="spine-node"><circle cx="80" cy="18" r="3.4"/><circle cx="210" cy="18" r="3.4"/><circle cx="275" cy="18" r="3.4"/><circle cx="340" cy="18" r="3.4"/><circle cx="405" cy="18" r="3.4"/><circle cx="145" cy="54" r="3.4"/><circle cx="250" cy="54" r="3.4"/><circle cx="405" cy="54" r="3.4"/><circle cx="520" cy="54" r="3.4"/></g><g class="spine-node live"><circle cx="145" cy="18" r="4.6"/></g><circle class="spine-ring" cx="145" cy="18" r="9"/>
+        </svg>
+        <div class="spine-label">2 · why 5, not 3</div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Five Sigma · Stimpunks</span>
+        <span class="spread-footer-right">3</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 4: the look-elsewhere effect ════ -->
+  <div class="spread" id="spread-4">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Dial one · multiplicity</div>
+          <h2 class="spread-heading" id="the-look-elsewhere-effect">The look-elsewhere effect</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Search a wide enough space and something improbable will turn up <em>somewhere</em>. That is not a discovery. That is arithmetic.</p>
+            <p>Physics has a name and a correction for this. The <span class="violet">local <em>p</em>-value</span> asks how unlikely a fluctuation this big is <em>at the mass where you found it</em>. The <span class="violet">global <em>p</em>-value</span> asks how unlikely it is <em>anywhere you were looking</em> — and it is always larger, sometimes enormously so.</p>
+            <p>The correction depends on how honestly you define "anywhere," and Lyons enumerates the choices: any reasonable mass, anywhere in the current analysis, or anywhere in analyses by anyone in the whole collaboration. Then this:</p>
+            <div class="callout">"It is clearly important to decide in advance of the analysis what procedure will be used; and to specify in any publication exactly how the global <em>p</em>-values are defined."<span class="attr">Lyons, 2013</span></div>
+            <p><strong>That is pre-registration</strong>, argued as ordinary practice, in a physics note, in 2013 — while psychology was still discovering it needed the idea.</p>
+            <p>Now count the search space on the other side. Thousands of researchers, hundreds of candidate interventions, dozens of outcome measures each, decades of trials, and a publication system that prints the positives. <span class="gold">The look-elsewhere effect there is not a correction term. It is the dominant feature of the landscape.</span></p>
+            <p>And almost nobody applies it.</p>
+            <p><span class="joint joint-documented">documented</span> &nbsp;multiplicity → extraordinary claims</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 178" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig3-title fig3-desc">
+              <title id="fig3-title">Local versus global</title>
+              <desc id="fig3-desc">A wide noisy spectrum with one tall peak. An arrow marked local asks how unlikely the peak is at that point; an arrow marked global asks how unlikely such a peak is anywhere across the whole spectrum.</desc>
+              <path d="M16 120 L28 112 L38 122 L50 106 L62 118 L74 110 L86 122 L98 108 L110 118 L122 100 L134 116 L146 46 L158 114 L170 104 L182 120 L194 108 L206 118 L218 104 L230 120 L242 110 L254 118 L266 106 L282 118" fill="none" stroke="rgba(244,244,251,0.5)" stroke-width="1.3" stroke-linejoin="round"/>
+              <line x1="16" y1="132" x2="286" y2="132" stroke="rgba(167,139,250,0.35)" stroke-width="1"/>
+              <circle cx="146" cy="46" r="4" fill="var(--violet)"/>
+              <path d="M146 34 L146 22" stroke="var(--violet)" stroke-width="1.2"/>
+              <text x="146" y="16" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.5" fill="var(--violet)">local: unlikely here</text>
+              <path d="M20 150 H282" stroke="var(--gold)" stroke-width="1.2"/>
+              <path d="M26 145 L18 150 L26 155 M276 145 L284 150 L276 155" fill="none" stroke="var(--gold)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+              <text x="150" y="170" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.5" fill="var(--gold)">global: expected somewhere</text>
+            </svg>
+            <div class="diagram-caption">Figure 3 · the same peak, two questions</div>
+          </div>
+        </div>
+      </div>
+      <div class="spine">
+        <svg viewBox="0 0 620 66" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain, with 3 — look elsewhere live. Two rails, physics and the human sciences, joined only by one dashed rung.">
+          <path class="spine-track documented" d="M80 18 H145"/><path class="spine-track documented" d="M145 18 H210"/><path class="spine-track documented" d="M210 18 H275"/><path class="spine-track documented" d="M275 18 H340"/><path class="spine-track documented" d="M340 18 H405"/><path class="spine-track documented" d="M145 54 H250"/><path class="spine-track documented" d="M250 54 H405"/><path class="spine-track documented" d="M405 54 H520"/><path class="spine-track contested" d="M405 25 V47"/><text class="spine-raillabel" x="0" y="21">physics</text><text class="spine-raillabel" x="0" y="57">human sci</text><g class="spine-node"><circle cx="80" cy="18" r="3.4"/><circle cx="145" cy="18" r="3.4"/><circle cx="275" cy="18" r="3.4"/><circle cx="340" cy="18" r="3.4"/><circle cx="405" cy="18" r="3.4"/><circle cx="145" cy="54" r="3.4"/><circle cx="250" cy="54" r="3.4"/><circle cx="405" cy="54" r="3.4"/><circle cx="520" cy="54" r="3.4"/></g><g class="spine-node live"><circle cx="210" cy="18" r="4.6"/></g><circle class="spine-ring" cx="210" cy="18" r="9"/>
+        </svg>
+        <div class="spine-label">3 · look elsewhere</div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Five Sigma · Stimpunks</span>
+        <span class="spread-footer-right">4</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 5: extraordinary claims ════ -->
+  <div class="spread" id="spread-5">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Dial two · degree of surprise</div>
+          <h2 class="spread-heading" id="extraordinary-claims">Extraordinary claims</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">How much evidence you need depends on what you are claiming. Physics builds this in deliberately, and calls it the subconscious Bayes' factor.</p>
+            <p>The reasoning is straightforward once stated. The evidence in front of you multiplies your <em>prior</em> belief; it does not replace it. So a result that would be convincing for an expected effect is not convincing for an impossible one.</p>
+            <div class="callout">"even if the likelihood ratio favours H₁, we would still prefer H₀ if our prior belief in H₁ was very low. An example would be that, in order to claim that we had discovered energy non-conservation in proton-proton collisions at the LHC, we would require extremely strong evidence from the data because our prior belief in energy non-conservation is very low."<span class="attr">Lyons, 2013</span></div>
+            <p>He is explicit that this is a Bayesian argument sitting inside a frequentist practice, and defends it anyway:</p>
+            <div class="pull-quote violet">"this type of reasoning does and should play a role in requiring a high standard of evidence before we reject well-established theories. There is sense to the oft-quoted maxim 'Extraordinary claims require extraordinary evidence'."<span class="attr">Lyons, 2013</span></div>
+            <p>So hold the question open, because the whole zine turns on it. <strong>Is it an ordinary claim or an extraordinary one to say that a standardised intervention, delivered to wildly heterogeneous children, produces a durable improvement in their lives?</strong></p>
+            <p>Physics would want to know your prior. Ours, after a century of this collection's <a href="eight-tenths-of-a-second-zine.html">first chain</a>, is not high.</p>
+            <p><span class="joint joint-documented">documented</span> &nbsp;priors → systematics</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 176" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig4-title fig4-desc">
+              <title id="fig4-title">Evidence multiplies the prior</title>
+              <desc id="fig4-desc">Two identical bars of evidence applied to two different priors: a high prior reaches the threshold, a very low prior does not.</desc>
+              <text x="76" y="20" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.5" letter-spacing="0.8" fill="var(--green)">expected effect</text>
+              <rect x="26" y="34" width="100" height="14" rx="2" fill="rgba(74,222,128,0.25)" stroke="rgba(74,222,128,0.5)" stroke-width="1"/>
+              <text x="30" y="45" font-family="Space Mono, monospace" font-size="6.5" fill="var(--green)">prior</text>
+              <rect x="26" y="54" width="62" height="14" rx="2" fill="rgba(167,139,250,0.3)" stroke="rgba(167,139,250,0.55)" stroke-width="1"/>
+              <text x="30" y="65" font-family="Space Mono, monospace" font-size="6.5" fill="var(--sp-white-soft)">evidence</text>
+              <text x="76" y="88" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.5" font-weight="700" fill="var(--green)">→ believed</text>
+              <line x1="150" y1="14" x2="150" y2="162" stroke="rgba(167,139,250,0.25)" stroke-width="1" stroke-dasharray="4 4"/>
+              <text x="224" y="20" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.5" letter-spacing="0.8" fill="var(--pink)">extraordinary claim</text>
+              <rect x="174" y="34" width="16" height="14" rx="2" fill="rgba(244,114,182,0.2)" stroke="rgba(244,114,182,0.45)" stroke-width="1"/>
+              <text x="196" y="45" font-family="Space Mono, monospace" font-size="6.5" fill="var(--pink)">tiny prior</text>
+              <rect x="174" y="54" width="62" height="14" rx="2" fill="rgba(167,139,250,0.3)" stroke="rgba(167,139,250,0.55)" stroke-width="1"/>
+              <text x="178" y="65" font-family="Space Mono, monospace" font-size="6.5" fill="var(--sp-white-soft)">same evidence</text>
+              <text x="224" y="88" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.5" font-weight="700" fill="var(--pink)">→ not yet</text>
+              <text x="150" y="122" text-anchor="middle" font-family="Space Mono, monospace" font-size="8" letter-spacing="0.6" fill="var(--sp-secondary)">the bar moves with the claim</text>
+              <text x="150" y="146" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="1.2" fill="var(--sp-dim)">so: how surprising is</text>
+              <text x="150" y="158" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="1.2" fill="var(--sp-dim)">&ldquo;this will fix the child&rdquo;?</text>
+            </svg>
+            <div class="diagram-caption">Figure 4 · dial two</div>
+          </div>
+        </div>
+      </div>
+      <div class="spine">
+        <svg viewBox="0 0 620 66" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain, with 4 — degree of surprise live. Two rails, physics and the human sciences, joined only by one dashed rung.">
+          <path class="spine-track documented" d="M80 18 H145"/><path class="spine-track documented" d="M145 18 H210"/><path class="spine-track documented" d="M210 18 H275"/><path class="spine-track documented" d="M275 18 H340"/><path class="spine-track documented" d="M340 18 H405"/><path class="spine-track documented" d="M145 54 H250"/><path class="spine-track documented" d="M250 54 H405"/><path class="spine-track documented" d="M405 54 H520"/><path class="spine-track contested" d="M405 25 V47"/><text class="spine-raillabel" x="0" y="21">physics</text><text class="spine-raillabel" x="0" y="57">human sci</text><g class="spine-node"><circle cx="80" cy="18" r="3.4"/><circle cx="145" cy="18" r="3.4"/><circle cx="210" cy="18" r="3.4"/><circle cx="340" cy="18" r="3.4"/><circle cx="405" cy="18" r="3.4"/><circle cx="145" cy="54" r="3.4"/><circle cx="250" cy="54" r="3.4"/><circle cx="405" cy="54" r="3.4"/><circle cx="520" cy="54" r="3.4"/></g><g class="spine-node live"><circle cx="275" cy="18" r="4.6"/></g><circle class="spine-ring" cx="275" cy="18" r="9"/>
+        </svg>
+        <div class="spine-label">4 · degree of surprise</div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Five Sigma · Stimpunks</span>
+        <span class="spread-footer-right">5</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 6: systematics ════ -->
+  <div class="spread" id="spread-6">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Dial three · the errors you cannot count</div>
+          <h2 class="spread-heading" id="systematics">The errors you cannot count</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Statistical error is the part you can compute from your sample. <strong>Systematic error is everything else</strong> — the miscalibrated instrument, the selection you did not notice, the assumption baked into the model.</p>
+            <p>It is much harder to estimate, and physics treats that difficulty as a first-class problem rather than a footnote. Lyons puts a number on the exposure:</p>
+            <div class="callout">"a 5σ claim should be reduced to merely 2.5σ if the systematic uncertainties had been underestimated by a factor of 2; this corresponds to the <em>p</em>-value increasing from 3 × 10⁻⁷ by a dramatic factor of 2 × 10⁴."<span class="attr">Lyons, 2013</span></div>
+            <p>Read that twice. <strong>Being wrong by a factor of two about your unmeasured errors turns a one-in-3.5-million result into a one-in-eighty result.</strong> The entire distance between "discovery" and "shrug" is inside a factor of two on the thing you did not measure.</p>
+            <p>And Lyons is clear that the honest response is to model the uncertainty, not to paper over it with a bigger number:</p>
+            <div class="pull-quote violet">"It is far better to have a procedure which allows in some way for uncertain systematics than to raise the significance level for all experiments as a way of coping with this."<span class="attr">Lyons, 2013</span></div>
+            <p>Keep that factor of 2 × 10⁴ in your hand for the next few spreads. It is the answer to a question this zine is going to ask about a literature that <span class="gold">does not measure its harms at all</span> — because you cannot underestimate a systematic by a factor of two if you never put a number on it in the first place.</p>
+            <p><span class="joint joint-documented">documented</span> &nbsp;the four dials → Lyons' table</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 172" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig5-title fig5-desc">
+              <title id="fig5-title">A factor of two</title>
+              <desc id="fig5-desc">A five sigma result collapsing to two point five sigma when systematic uncertainty is doubled, with the p-value rising by twenty thousand times.</desc>
+              <text x="60" y="26" text-anchor="middle" font-family="Space Mono, monospace" font-size="9" font-weight="700" fill="var(--violet)">5σ</text>
+              <text x="60" y="42" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" fill="var(--sp-dim)">3 × 10⁻⁷</text>
+              <rect x="30" y="54" width="60" height="72" rx="3" fill="rgba(167,139,250,0.18)" stroke="rgba(167,139,250,0.5)" stroke-width="1.2"/>
+              <path d="M104 90 H180" stroke="var(--gold)" stroke-width="1.4"/>
+              <path d="M172 84 L182 90 L172 96" fill="none" stroke="var(--gold)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+              <text x="142" y="80" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" fill="var(--gold)">systematics</text>
+              <text x="142" y="108" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" fill="var(--gold)">× 2</text>
+              <text x="238" y="26" text-anchor="middle" font-family="Space Mono, monospace" font-size="9" font-weight="700" fill="var(--pink)">2.5σ</text>
+              <text x="238" y="42" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" fill="var(--sp-dim)">≈ 0.006</text>
+              <rect x="216" y="90" width="44" height="36" rx="3" fill="rgba(244,114,182,0.15)" stroke="rgba(244,114,182,0.45)" stroke-width="1.2"/>
+              <text x="150" y="150" text-anchor="middle" font-family="Space Mono, monospace" font-size="8" font-weight="700" letter-spacing="0.6" fill="var(--sp-white-soft)">p-value up 20,000×</text>
+              <text x="150" y="166" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="1.2" fill="var(--sp-dim)">from one unmeasured thing</text>
+            </svg>
+            <div class="diagram-caption">Figure 5 · dial three</div>
+          </div>
+        </div>
+      </div>
+      <div class="spine">
+        <svg viewBox="0 0 620 66" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain, with 5 — systematics live. Two rails, physics and the human sciences, joined only by one dashed rung.">
+          <path class="spine-track documented" d="M80 18 H145"/><path class="spine-track documented" d="M145 18 H210"/><path class="spine-track documented" d="M210 18 H275"/><path class="spine-track documented" d="M275 18 H340"/><path class="spine-track documented" d="M340 18 H405"/><path class="spine-track documented" d="M145 54 H250"/><path class="spine-track documented" d="M250 54 H405"/><path class="spine-track documented" d="M405 54 H520"/><path class="spine-track contested" d="M405 25 V47"/><text class="spine-raillabel" x="0" y="21">physics</text><text class="spine-raillabel" x="0" y="57">human sci</text><g class="spine-node"><circle cx="80" cy="18" r="3.4"/><circle cx="145" cy="18" r="3.4"/><circle cx="210" cy="18" r="3.4"/><circle cx="275" cy="18" r="3.4"/><circle cx="405" cy="18" r="3.4"/><circle cx="145" cy="54" r="3.4"/><circle cx="250" cy="54" r="3.4"/><circle cx="405" cy="54" r="3.4"/><circle cx="520" cy="54" r="3.4"/></g><g class="spine-node live"><circle cx="340" cy="18" r="4.6"/></g><circle class="spine-ring" cx="340" cy="18" r="9"/>
+        </svg>
+        <div class="spine-label">5 · systematics</div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Five Sigma · Stimpunks</span>
+        <span class="spread-footer-right">6</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 7: Lyons' table — the centre ════ -->
+  <div class="spread" id="spread-7">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The centre of this zine · Lyons, Table 1</div>
+          <h2 class="spread-heading" id="the-threshold-is-not-one-number">The threshold is <span class="spectrum-word">not one number</span></h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Here is the part almost nobody outside physics knows, and it is the reason this zine exists. Lyons does not merely explain 5σ. <strong>He argues against using it uniformly</strong> — and publishes a table of what different claims should require instead.</p>
+            <p>His section heading is literally <em>"Why not 5σ?"</em>, and it opens: <em>"There are several reasons why it is not sensible to use a uniform criterion of 5σ for all searches for new physics."</em></p>
+            <p>The dials are the ones we have just walked: <strong>degree of surprise, impact, look-elsewhere effect, systematics.</strong> Turn them, and the required significance moves:</p>
+            <table class="dials">
+              <caption>after Lyons 2013, Table 1 — selected rows</caption>
+              <thead><tr><th>Search</th><th>Surprise</th><th>Impact</th><th class="sig">σ</th></tr></thead>
+              <tbody>
+                <tr><td>Single top</td><td>No</td><td>Low</td><td class="sig">3</td></tr>
+                <tr><td>Higgs</td><td>Medium</td><td>Very high</td><td class="sig">5</td></tr>
+                <tr><td>Dark matter (direct)</td><td>Medium</td><td>High</td><td class="sig">5</td></tr>
+                <tr><td>Supersymmetry</td><td>Yes</td><td>Very high</td><td class="sig">7</td></tr>
+                <tr><td>Gravitational waves</td><td>No</td><td>High</td><td class="sig">7</td></tr>
+                <tr><td>Neutrinos faster than light</td><td>Enormous</td><td>Enormous</td><td class="sig">&gt;8</td></tr>
+              </tbody>
+            </table>
+            <p>Single top gets <strong>3σ</strong> — predicted by theory, no surprise, low impact, no look-elsewhere problem. Gravitational waves get <strong>7σ</strong> despite being unsurprising, because the search space is enormous. Superluminal neutrinos get <strong>more than 8σ</strong>, because the claim would break causality.</p>
+            <p>And Lyons is careful about the status of his own numbers:</p>
+            <div class="callout">"The spirit of these numbers is to provoke discussion of this issue (rather than being a rigid set of rules), by suggesting a graded set of significance levels for different types of experiments."<span class="attr">Lyons, 2013</span></div>
+            <p><strong>This is a worked-out theory of how much evidence is enough</strong>, calibrated to what you are claiming and what it would cost to be wrong. It exists. It is short, readable and free.</p>
+            <p><span class="joint joint-documented">documented</span> &nbsp;the graded table, as published</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 190" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig6-title fig6-desc">
+              <title id="fig6-title">Four dials</title>
+              <desc id="fig6-desc">Four labelled dials — surprise, impact, look elsewhere, systematics — feeding into a single output marked required sigma, which ranges from three to more than eight.</desc>
+              <g font-family="Space Mono, monospace" font-size="7" fill="var(--sp-secondary)">
+                <circle cx="46" cy="34" r="14" fill="none" stroke="rgba(167,139,250,0.5)" stroke-width="1.3"/><path d="M46 34 L52 24" stroke="var(--violet)" stroke-width="1.5" stroke-linecap="round"/><text x="46" y="60" text-anchor="middle">surprise</text>
+                <circle cx="46" cy="96" r="14" fill="none" stroke="rgba(167,139,250,0.5)" stroke-width="1.3"/><path d="M46 96 L56 92" stroke="var(--violet)" stroke-width="1.5" stroke-linecap="round"/><text x="46" y="122" text-anchor="middle">impact</text>
+                <circle cx="120" cy="34" r="14" fill="none" stroke="rgba(167,139,250,0.5)" stroke-width="1.3"/><path d="M120 34 L112 25" stroke="var(--violet)" stroke-width="1.5" stroke-linecap="round"/><text x="120" y="60" text-anchor="middle">look-elsewhere</text>
+                <circle cx="120" cy="96" r="14" fill="none" stroke="rgba(167,139,250,0.5)" stroke-width="1.3"/><path d="M120 96 L128 105" stroke="var(--violet)" stroke-width="1.5" stroke-linecap="round"/><text x="120" y="122" text-anchor="middle">systematics</text>
+              </g>
+              <path d="M64 34 Q170 34 194 60 M64 96 Q170 96 194 72 M138 34 Q180 40 194 62 M138 96 Q180 90 194 70" fill="none" stroke="rgba(167,139,250,0.35)" stroke-width="1"/>
+              <rect x="196" y="46" width="84" height="42" rx="4" fill="rgba(167,139,250,0.1)" stroke="rgba(167,139,250,0.5)" stroke-width="1.3"/>
+              <text x="238" y="64" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" fill="var(--sp-secondary)">required</text>
+              <text x="238" y="80" text-anchor="middle" font-family="Space Mono, monospace" font-size="12" font-weight="700" fill="var(--violet)">σ</text>
+              <line x1="196" y1="112" x2="280" y2="112" stroke="rgba(167,139,250,0.4)" stroke-width="1"/>
+              <g font-family="Space Mono, monospace" font-size="7" fill="var(--sp-dim)">
+                <text x="196" y="126">3</text><text x="238" y="126" text-anchor="middle">5</text><text x="280" y="126" text-anchor="end">8+</text>
+              </g>
+              <text x="150" y="156" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.5" letter-spacing="0.8" fill="var(--sp-secondary)">a theory of how much is enough</text>
+              <text x="150" y="176" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="1.2" fill="var(--sp-dim)">short · readable · free</text>
+            </svg>
+            <div class="diagram-caption">Figure 6 · the instrument, before we borrow it</div>
+          </div>
+        </div>
+      </div>
+      <div class="spine">
+        <svg viewBox="0 0 620 66" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain, with 6 — the graded table live. Two rails, physics and the human sciences, joined only by one dashed rung.">
+          <path class="spine-track documented" d="M80 18 H145"/><path class="spine-track documented" d="M145 18 H210"/><path class="spine-track documented" d="M210 18 H275"/><path class="spine-track documented" d="M275 18 H340"/><path class="spine-track documented" d="M340 18 H405"/><path class="spine-track documented" d="M145 54 H250"/><path class="spine-track documented" d="M250 54 H405"/><path class="spine-track documented" d="M405 54 H520"/><path class="spine-track contested" d="M405 25 V47"/><text class="spine-raillabel" x="0" y="21">physics</text><text class="spine-raillabel" x="0" y="57">human sci</text><g class="spine-node"><circle cx="80" cy="18" r="3.4"/><circle cx="145" cy="18" r="3.4"/><circle cx="210" cy="18" r="3.4"/><circle cx="275" cy="18" r="3.4"/><circle cx="340" cy="18" r="3.4"/><circle cx="145" cy="54" r="3.4"/><circle cx="250" cy="54" r="3.4"/><circle cx="405" cy="54" r="3.4"/><circle cx="520" cy="54" r="3.4"/></g><g class="spine-node live"><circle cx="405" cy="18" r="4.6"/></g><circle class="spine-ring" cx="405" cy="18" r="9"/>
+        </svg>
+        <div class="spine-label">6 · the graded table</div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Five Sigma · Stimpunks</span>
+        <span class="spread-footer-right">7</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 8: Fisher, 1925 ════ -->
+  <div class="spread" id="spread-8">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The other rail · 1925</div>
+          <h2 class="spread-heading" id="convenient">Convenient</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">There is a second number in the world, and almost every claim ever made about a child rests on it.</p>
+            <p>In <em>Statistical Methods for Research Workers</em> (1925), Ronald Fisher wrote the sentence that set it:</p>
+            <div class="callout">"The value for which P=0.05, or 1 in 20 is 1.96 or nearly 2; it is convenient to take this point as a limit in judging whether a deviation is to be considered significant or not."<span class="attr">R. A. Fisher, <em>Statistical Methods for Research Workers</em>, 1925</span></div>
+            <p>Two things in that sentence deserve a much longer look than they get.</p>
+            <p><strong>First: "convenient."</strong> Not derived, not calibrated, not justified by an error-rate analysis. A working statistician picking a round number because the arithmetic was tidy and the tables were printable. He said so.</p>
+            <p><strong>Second: "1.96, or nearly 2."</strong> The most consequential threshold in the human sciences is, in the units this zine has been using all along, <span class="gold">two sigma</span>.</p>
+            <p>Physics looked at 3σ and 4σ results, watched them evaporate, and moved <em>up</em>. The human sciences settled at 2σ and stayed for a hundred years.</p>
+            <div class="pull-quote gold">One field treated its threshold as a hypothesis about its own reliability and kept testing it. The other treated a convenience as a law.<span class="attr">the two rails, and they never meet</span></div>
+            <p>It is worth saying that Fisher himself did not intend a bright line — he treated significance as one input to judgement, and elsewhere used other levels. <strong>The hardening is not his fault.</strong> But it hardened, and it hardened into the gate that decides what gets published, funded, mandated, and done.</p>
+            <p><span class="joint joint-documented">documented</span> &nbsp;Fisher's convenience → the hardened rule</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 168" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig7-title fig7-desc">
+              <title id="fig7-title">Two thresholds, two directions</title>
+              <desc id="fig7-desc">A timeline where the physics threshold moves upward from three sigma to five sigma while the human sciences threshold stays flat at just under two sigma from 1925 to the present.</desc>
+              <line x1="26" y1="140" x2="284" y2="140" stroke="rgba(167,139,250,0.35)" stroke-width="1.1"/>
+              <text x="26" y="156" font-family="Space Mono, monospace" font-size="7" fill="var(--sp-dim)">1925</text>
+              <text x="284" y="156" text-anchor="end" font-family="Space Mono, monospace" font-size="7" fill="var(--sp-dim)">now</text>
+              <path d="M30 96 L120 96 L150 62 L284 62" fill="none" stroke="var(--violet)" stroke-width="1.8"/>
+              <circle cx="284" cy="62" r="4" fill="var(--violet)"/>
+              <text x="278" y="52" text-anchor="end" font-family="Space Mono, monospace" font-size="8" font-weight="700" fill="var(--violet)">5σ</text>
+              <text x="34" y="90" font-family="Space Mono, monospace" font-size="7" fill="var(--violet)">physics</text>
+              <path d="M30 120 L284 120" fill="none" stroke="var(--gold)" stroke-width="1.8"/>
+              <circle cx="284" cy="120" r="4" fill="var(--gold)"/>
+              <text x="278" y="112" text-anchor="end" font-family="Space Mono, monospace" font-size="8" font-weight="700" fill="var(--gold)">1.96σ</text>
+              <text x="34" y="132" font-family="Space Mono, monospace" font-size="7" fill="var(--gold)">everything about people</text>
+              <text x="150" y="24" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.5" letter-spacing="0.8" fill="var(--sp-secondary)">one bar moved. one did not.</text>
+              <text x="150" y="40" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="1" fill="var(--sp-dim)">&ldquo;it is convenient to take this point&rdquo;</text>
+            </svg>
+            <div class="diagram-caption">Figure 7 · a hundred years apart</div>
+          </div>
+        </div>
+      </div>
+      <div class="spine">
+        <svg viewBox="0 0 620 66" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain, with the other rail — Fisher 1925 live. Two rails, physics and the human sciences, joined only by one dashed rung.">
+          <path class="spine-track documented" d="M80 18 H145"/><path class="spine-track documented" d="M145 18 H210"/><path class="spine-track documented" d="M210 18 H275"/><path class="spine-track documented" d="M275 18 H340"/><path class="spine-track documented" d="M340 18 H405"/><path class="spine-track documented" d="M145 54 H250"/><path class="spine-track documented" d="M250 54 H405"/><path class="spine-track documented" d="M405 54 H520"/><path class="spine-track contested" d="M405 25 V47"/><text class="spine-raillabel" x="0" y="21">physics</text><text class="spine-raillabel" x="0" y="57">human sci</text><g class="spine-node"><circle cx="80" cy="18" r="3.4"/><circle cx="145" cy="18" r="3.4"/><circle cx="210" cy="18" r="3.4"/><circle cx="275" cy="18" r="3.4"/><circle cx="340" cy="18" r="3.4"/><circle cx="405" cy="18" r="3.4"/><circle cx="250" cy="54" r="3.4"/><circle cx="405" cy="54" r="3.4"/><circle cx="520" cy="54" r="3.4"/></g><g class="spine-node live"><circle cx="145" cy="54" r="4.6"/></g><circle class="spine-ring" cx="145" cy="54" r="9"/>
+        </svg>
+        <div class="spine-label">the other rail · Fisher 1925</div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Five Sigma · Stimpunks</span>
+        <span class="spread-footer-right">8</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 9: the gap ════ -->
+  <div class="spread" id="spread-9">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The distance between the rails</div>
+          <h2 class="spread-heading" id="a-hundred-and-seventy-thousand">About a hundred and seventy thousand</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Put the two numbers side by side and divide.</p>
+            <div class="tally">
+              <div class="tally-cell"><div class="tally-num">3×10⁻⁷</div><div class="tally-label">5σ · to say<br>a particle exists</div></div>
+              <div class="tally-cell lost"><div class="tally-num">0.05</div><div class="tally-label">≈2σ · to say<br>a child must change</div></div>
+            </div>
+            <p>The ratio is about <strong class="violet">170,000</strong>. That is the factor by which one field is more willing to be wrong than the other — and it points the wrong way.</p>
+            <p>Because now ask what a false positive costs on each side.</p>
+            <p><strong>Physics gets it wrong:</strong> a paper is retracted. A conference is awkward. More data is collected. The particle was never there and never minded either way. <em>The universe is not altered by our having been mistaken about it.</em></p>
+            <p><strong>We get it wrong:</strong> a child spends forty hours a week for years being trained out of behaviours that were regulating them. A reader is drilled on phonics while the thing that was actually hard goes unexamined. A teenager is told their problem is insufficient grit. <span class="gold">And there is no more data to collect, because the childhood already happened.</span></p>
+            <div class="pull-quote">Physics demands more evidence to say a thing <em>exists</em> than we demand to say a child must be <em>changed</em>. The asymmetry is not subtle, and it runs backwards.<span class="attr">the argument of this zine, in one</span></div>
+            <p>You cannot un-apply an intervention to a childhood. There is no revision, no fuller dataset, no second run at ages four to nine. <strong>Irreversibility is a property of the claim</strong>, and it belongs on the dial marked <em>impact</em>.</p>
+            <p><span class="joint joint-documented">documented</span> &nbsp;the two thresholds, and their ratio</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 180" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig8-title fig8-desc">
+              <title id="fig8-title">The cost of being wrong</title>
+              <desc id="fig8-desc">Two columns. Physics: a wrong claim leads to a retraction and more data, and the particle is unaffected. Us: a wrong claim leads to years of a childhood, with no more data available.</desc>
+              <text x="74" y="20" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.5" letter-spacing="1" fill="var(--violet)">physics is wrong</text>
+              <g font-family="Space Mono, monospace" font-size="7" fill="var(--sp-secondary)">
+                <text x="74" y="44" text-anchor="middle">retraction</text>
+                <text x="74" y="62" text-anchor="middle">more data</text>
+                <text x="74" y="80" text-anchor="middle">corrected</text>
+              </g>
+              <path d="M74 90 L74 108" stroke="rgba(74,222,128,0.6)" stroke-width="1.3"/>
+              <circle cx="74" cy="118" r="9" fill="none" stroke="var(--green)" stroke-width="1.4"/>
+              <path d="M69 118 L73 122 L80 114" fill="none" stroke="var(--green)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <text x="74" y="142" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--sp-dim)">the particle</text>
+              <text x="74" y="153" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--sp-dim)">never minded</text>
+              <line x1="150" y1="14" x2="150" y2="166" stroke="rgba(167,139,250,0.25)" stroke-width="1" stroke-dasharray="4 4"/>
+              <text x="226" y="20" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.5" letter-spacing="1" fill="var(--pink)">we are wrong</text>
+              <g font-family="Space Mono, monospace" font-size="7" fill="var(--sp-secondary)">
+                <text x="226" y="44" text-anchor="middle">40 hrs / week</text>
+                <text x="226" y="62" text-anchor="middle">for years</text>
+                <text x="226" y="80" text-anchor="middle">ages 2–9</text>
+              </g>
+              <path d="M226 90 L226 108" stroke="rgba(244,114,182,0.6)" stroke-width="1.3"/>
+              <circle cx="226" cy="118" r="9" fill="none" stroke="var(--pink)" stroke-width="1.4" stroke-dasharray="2 2"/>
+              <text x="226" y="142" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--pink)">no more data</text>
+              <text x="226" y="153" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--pink)">to collect</text>
+              <text x="150" y="176" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="1.2" fill="var(--sp-dim)">the strict standard is on the reversible one</text>
+            </svg>
+            <div class="diagram-caption">Figure 8 · the asymmetry, running backwards</div>
+          </div>
+        </div>
+      </div>
+      <div class="spine">
+        <svg viewBox="0 0 620 66" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain, with the gap — 170,000× live. Two rails, physics and the human sciences, joined only by one dashed rung.">
+          <path class="spine-track documented" d="M80 18 H145"/><path class="spine-track documented" d="M145 18 H210"/><path class="spine-track documented" d="M210 18 H275"/><path class="spine-track documented" d="M275 18 H340"/><path class="spine-track documented" d="M340 18 H405"/><path class="spine-track documented" d="M145 54 H250"/><path class="spine-track documented" d="M250 54 H405"/><path class="spine-track documented" d="M405 54 H520"/><path class="spine-track contested" d="M405 25 V47"/><text class="spine-raillabel" x="0" y="21">physics</text><text class="spine-raillabel" x="0" y="57">human sci</text><g class="spine-node"><circle cx="80" cy="18" r="3.4"/><circle cx="145" cy="18" r="3.4"/><circle cx="210" cy="18" r="3.4"/><circle cx="275" cy="18" r="3.4"/><circle cx="340" cy="18" r="3.4"/><circle cx="405" cy="18" r="3.4"/><circle cx="145" cy="54" r="3.4"/><circle cx="405" cy="54" r="3.4"/><circle cx="520" cy="54" r="3.4"/></g><g class="spine-node live"><circle cx="250" cy="54" r="4.6"/></g><circle class="spine-ring" cx="250" cy="54" r="9"/>
+        </svg>
+        <div class="spine-label">the gap · 170,000×</div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Five Sigma · Stimpunks</span>
+        <span class="spread-footer-right">9</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 10: run the dials ════ -->
+  <div class="spread" id="spread-10">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Our move, not his</div>
+          <h2 class="spread-heading" id="run-the-dials-on-a-child">Run the dials on a child</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Lyons built an instrument for deciding how much evidence a claim needs. Let us point it somewhere he did not, and be honest that we are the ones pointing it.</p>
+            <p>The claim: <em>this intervention should be delivered to this child, intensively, for years, during the years in which they are becoming a person.</em> Turn the four dials.</p>
+            <table class="dials">
+              <caption>the same four columns, one new row</caption>
+              <thead><tr><th>Dial</th><th>Setting</th><th>Why</th></tr></thead>
+              <tbody>
+                <tr><td>Surprise</td><td>High</td><td>That one protocol produces durable gains across radically heterogeneous minds is a strong claim, not a modest one</td></tr>
+                <tr><td>Impact</td><td>Enormous</td><td>Years of a childhood, and irreversible — there is no second run</td></tr>
+                <tr><td>Look-elsewhere</td><td>Enormous</td><td>Thousands of studies, dozens of outcome measures each, decades, and a literature that prints positives</td></tr>
+                <tr><td>Systematics</td><td>Enormous</td><td>Unblinded delivery, outcomes often rated by the people delivering or paying for the intervention</td></tr>
+                <tr class="ours"><td colspan="2"><strong>By Lyons' own table</strong></td><td class="sig"><strong>≫ 7σ</strong></td></tr>
+                <tr class="ours"><td colspan="2"><strong>What is actually required</strong></td><td class="sig"><strong>1.96σ</strong></td></tr>
+              </tbody>
+            </table>
+            <p>Every one of those settings is at or above the level Lyons assigns to <strong>supersymmetry</strong> — a claim he thinks needs 7σ. Nothing here is stretched to get there. <em>Enormous look-elsewhere</em> and <em>enormous impact</em> are simply what the situation is.</p>
+            <div class="joint-note"><strong>Marked contested, and here is precisely what is contested.</strong> Lyons was writing about detectors, and would not necessarily endorse this transfer. What we claim is narrower than "physics standards should govern education": it is that <strong>surprise, impact, multiplicity and unmeasured error are properties of <em>evidence</em>, not properties of physics</strong>, and that a field which has thought hard about all four has something to lend a field that has not. The transfer is arguable. The next spread argues the other side of it, at full strength, because a chain that only argues its own case is the thing this collection exists to refuse.</div>
+            <p><span class="joint joint-contested">contested</span> &nbsp;physics' evidentiary framework → human interventions</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 176" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig9-title fig9-desc">
+              <title id="fig9-title">All four dials at maximum</title>
+              <desc id="fig9-desc">The same four dials from the earlier figure, now all turned to maximum, feeding an output far past five sigma — beside a much lower marker showing the significance actually required.</desc>
+              <g font-family="Space Mono, monospace" font-size="7" fill="var(--sp-secondary)">
+                <circle cx="46" cy="32" r="13" fill="none" stroke="rgba(251,191,36,0.55)" stroke-width="1.3"/><path d="M46 32 L55 24" stroke="var(--gold)" stroke-width="1.6" stroke-linecap="round"/><text x="46" y="56" text-anchor="middle">surprise</text>
+                <circle cx="46" cy="92" r="13" fill="none" stroke="rgba(251,191,36,0.55)" stroke-width="1.3"/><path d="M46 92 L55 84" stroke="var(--gold)" stroke-width="1.6" stroke-linecap="round"/><text x="46" y="116" text-anchor="middle">impact</text>
+                <circle cx="114" cy="32" r="13" fill="none" stroke="rgba(251,191,36,0.55)" stroke-width="1.3"/><path d="M114 32 L123 24" stroke="var(--gold)" stroke-width="1.6" stroke-linecap="round"/><text x="114" y="56" text-anchor="middle">look-elsewhere</text>
+                <circle cx="114" cy="92" r="13" fill="none" stroke="rgba(251,191,36,0.55)" stroke-width="1.3"/><path d="M114 92 L123 84" stroke="var(--gold)" stroke-width="1.6" stroke-linecap="round"/><text x="114" y="116" text-anchor="middle">systematics</text>
+              </g>
+              <path d="M62 32 Q170 34 190 58 M62 92 Q170 90 190 66 M132 32 Q176 40 190 60 M132 92 Q176 86 190 64" fill="none" stroke="rgba(251,191,36,0.35)" stroke-width="1"/>
+              <line x1="196" y1="30" x2="196" y2="104" stroke="rgba(167,139,250,0.4)" stroke-width="1.1"/>
+              <g font-family="Space Mono, monospace" font-size="7" fill="var(--sp-dim)">
+                <text x="204" y="34">8σ</text><text x="204" y="52">7σ</text><text x="204" y="70">5σ</text><text x="204" y="88">3σ</text><text x="204" y="104">2σ</text>
+              </g>
+              <circle cx="196" cy="46" r="5" fill="var(--gold)"/>
+              <text x="232" y="49" font-family="Space Mono, monospace" font-size="7" fill="var(--gold)">required</text>
+              <circle cx="196" cy="104" r="5" fill="var(--pink)"/>
+              <text x="232" y="107" font-family="Space Mono, monospace" font-size="7" fill="var(--pink)">used</text>
+              <path d="M196 52 L196 98" stroke="rgba(244,114,182,0.5)" stroke-width="1.2" stroke-dasharray="3 3"/>
+              <text x="150" y="150" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.5" letter-spacing="0.8" fill="var(--sp-secondary)">the gap is the whole subject</text>
+              <text x="150" y="168" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="1.2" fill="var(--sp-dim)">and this transfer is ours, not Lyons'</text>
+            </svg>
+            <div class="diagram-caption">Figure 9 · borrowed instrument, new target</div>
+          </div>
+        </div>
+      </div>
+      <div class="spine">
+        <svg viewBox="0 0 620 66" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain, with the transfer that never happened live. Two rails, physics and the human sciences, joined only by one dashed rung.">
+          <path class="spine-track documented" d="M80 18 H145"/><path class="spine-track documented" d="M145 18 H210"/><path class="spine-track documented" d="M210 18 H275"/><path class="spine-track documented" d="M275 18 H340"/><path class="spine-track documented" d="M340 18 H405"/><path class="spine-track documented" d="M145 54 H250"/><path class="spine-track documented" d="M250 54 H405"/><path class="spine-track documented" d="M405 54 H520"/><path class="spine-track contested" d="M405 25 V47"/><text class="spine-raillabel" x="0" y="21">physics</text><text class="spine-raillabel" x="0" y="57">human sci</text><g class="spine-node"><circle cx="80" cy="18" r="3.4"/><circle cx="145" cy="18" r="3.4"/><circle cx="210" cy="18" r="3.4"/><circle cx="275" cy="18" r="3.4"/><circle cx="340" cy="18" r="3.4"/><circle cx="145" cy="54" r="3.4"/><circle cx="250" cy="54" r="3.4"/><circle cx="520" cy="54" r="3.4"/></g><g class="spine-node live"><circle cx="405" cy="18" r="5"/><circle cx="405" cy="54" r="5"/></g><circle class="spine-ring" cx="405" cy="36" r="11"/>
+        </svg>
+        <div class="spine-label">the transfer that never happened</div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Five Sigma · Stimpunks</span>
+        <span class="spread-footer-right">10</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 11: where the analogy breaks ════ -->
+  <div class="spread" id="spread-11">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The objection · at full strength</div>
+          <h2 class="spread-heading" id="where-this-analogy-breaks">Where this analogy breaks</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">The previous spread is the most persuasive thing in this zine, which is exactly why it gets a spread arguing against it. Here is the case we would have to answer.</p>
+            <p><strong>One: physics is asking a different kind of question.</strong> A 5σ threshold is for an <em>existence</em> claim — is the particle there at all? Most claims about interventions are about <em>effect size</em> in a system where something is already happening. "Does this exist" and "how much does this help" are not the same question and do not obviously take the same machinery.</p>
+            <p><strong>Two: the null hypothesis is not neutral.</strong> In physics, "no new particle" is a genuine, costless default. With a distressed child there is no null option — <em>doing nothing is also an intervention</em>, with its own risks, and a threshold so high that nothing ever clears it is a decision to do nothing, made by arithmetic and disguised as rigour.</p>
+            <p><strong>Three: physics has repeatable identical trials.</strong> Every proton collision is like every other. No two children are, and demanding particle-physics certainty about heterogeneous humans could be a demand that can never in principle be met — which would make it a rhetorical device, not a standard.</p>
+            <p><strong>Four: the cost of a false negative is real too.</strong> Withholding genuine support from a child who needed it is also a harm, and it is one that a very high evidential bar produces systematically.</p>
+            <div class="pull-quote gold">All four objections are good. Here is what they do not touch.<span class="attr">the answer</span></div>
+            <p>None of them argues for <strong>1.96σ</strong>. Every one of them is a reason the threshold should be <em>thought about</em> — which is Lyons' actual position, and the opposite of an unexamined convenience inherited from 1925. Objection two is the strongest, and it cuts <em>toward</em> our argument as much as against it: if doing nothing is also an intervention, then <em>it needs an evidence base too</em>, and the ecosystemic answer — change the conditions, not the child — is the option that keeps getting scored as "nothing."</p>
+            <p>And none of the four explains the finding on the next spread, which is not about thresholds at all.</p>
+            <p><span class="joint joint-documented">documented</span> &nbsp;the objections, and what they leave standing</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 176" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig10-title fig10-desc">
+              <title id="fig10-title">What the objections reach</title>
+              <desc id="fig10-desc">Four objections drawn as arrows striking a band marked "how high should the bar be" but none of them reaching a lower band marked 1.96 sigma, unexamined since 1925.</desc>
+              <g font-family="Space Mono, monospace" font-size="6.5" fill="var(--sp-secondary)">
+                <text x="16" y="26">existence vs effect</text>
+                <text x="16" y="46">no neutral null</text>
+                <text x="16" y="66">no identical trials</text>
+                <text x="16" y="86">false negatives</text>
+              </g>
+              <g stroke="rgba(251,191,36,0.6)" stroke-width="1.2" fill="none">
+                <path d="M104 22 L176 48"/><path d="M96 42 L176 54"/><path d="M104 62 L176 60"/><path d="M100 82 L176 66"/>
+              </g>
+              <rect x="180" y="36" width="104" height="42" rx="4" fill="rgba(251,191,36,0.10)" stroke="rgba(251,191,36,0.45)" stroke-width="1.2"/>
+              <text x="232" y="54" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" fill="var(--gold)">how high</text>
+              <text x="232" y="68" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" fill="var(--gold)">should it be?</text>
+              <rect x="180" y="112" width="104" height="42" rx="4" fill="rgba(244,114,182,0.07)" stroke="rgba(244,114,182,0.4)" stroke-width="1.2" stroke-dasharray="5 4"/>
+              <text x="232" y="130" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.5" font-weight="700" fill="var(--pink)">1.96σ</text>
+              <text x="232" y="144" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--pink)">unexamined since 1925</text>
+              <text x="96" y="134" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="0.8" fill="var(--sp-dim)">no objection</text>
+              <text x="96" y="146" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="0.8" fill="var(--sp-dim)">reaches down here</text>
+              <text x="150" y="170" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="1.2" fill="var(--sp-secondary)">they argue for thinking · not for 0.05</text>
+            </svg>
+            <div class="diagram-caption">Figure 10 · the strongest case against us</div>
+          </div>
+        </div>
+      </div>
+      <div class="spine">
+        <svg viewBox="0 0 620 66" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain, with the objection — argued in place live. Two rails, physics and the human sciences, joined only by one dashed rung.">
+          <path class="spine-track documented" d="M80 18 H145"/><path class="spine-track documented" d="M145 18 H210"/><path class="spine-track documented" d="M210 18 H275"/><path class="spine-track documented" d="M275 18 H340"/><path class="spine-track documented" d="M340 18 H405"/><path class="spine-track documented" d="M145 54 H250"/><path class="spine-track documented" d="M250 54 H405"/><path class="spine-track documented" d="M405 54 H520"/><path class="spine-track contested" d="M405 25 V47"/><text class="spine-raillabel" x="0" y="21">physics</text><text class="spine-raillabel" x="0" y="57">human sci</text><g class="spine-node"><circle cx="80" cy="18" r="3.4"/><circle cx="145" cy="18" r="3.4"/><circle cx="210" cy="18" r="3.4"/><circle cx="275" cy="18" r="3.4"/><circle cx="340" cy="18" r="3.4"/><circle cx="145" cy="54" r="3.4"/><circle cx="250" cy="54" r="3.4"/><circle cx="520" cy="54" r="3.4"/></g><g class="spine-node live"><circle cx="405" cy="18" r="5"/><circle cx="405" cy="54" r="5"/></g><circle class="spine-ring" cx="405" cy="36" r="11"/>
+        </svg>
+        <div class="spine-label">the objection · argued in place</div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Five Sigma · Stimpunks</span>
+        <span class="spread-footer-right">11</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 12: the empty column ════ -->
+  <div class="spread" id="spread-12">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The finding that is not about thresholds</div>
+          <h2 class="spread-heading" id="the-column-is-empty">The column is empty</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Everything so far has been an argument about where to set a bar. This is not that. This is about a column that has nothing in it at all.</p>
+            <p>Bottema-Beutel, Crowley, Sandbank and Woynaroski reviewed <strong>150 reports</strong> of group-design, non-pharmacological intervention studies for young Autistic children, and asked a simple question: <em>did the study report whether anyone was harmed?</em></p>
+            <div class="tally">
+              <div class="tally-cell"><div class="tally-num">150</div><div class="tally-label">intervention<br>studies reviewed</div></div>
+              <div class="tally-cell lost"><div class="tally-num">11</div><div class="tally-label">mentioned adverse<br>events at all</div></div>
+            </div>
+            <p>Eleven. Out of a hundred and fifty. And of the 54 studies that gave reasons for participants withdrawing, ten reported reasons that <em>could be categorised as adverse events</em>, and twelve more were described too vaguely to tell.</p>
+            <p>Go back to spread six and the factor of 2 × 10⁴. Lyons showed what happens to a 5σ claim when you underestimate your systematic uncertainty by a factor of two.</p>
+            <div class="pull-quote">You cannot underestimate a systematic by a factor of two if you never assigned it a number. <strong>An unmeasured harm does not enter the calculation as a large uncertainty. It enters as a zero.</strong><span class="attr">why this spread is not an argument about thresholds</span></div>
+            <p>A drug trial that did not record adverse events would not be a weak trial; it would not be a trial. In physics, an analysis that omitted its dominant systematic would not be a marginal result; it would be unpublishable. Here it was <span class="gold">the overwhelming majority of the literature</span>, and that literature is what "evidence-based" points at.</p>
+            <p>The same group later put the point in a title: <em>Evidence-b(i)ased practice: selective and inadequate reporting in early childhood autism intervention research</em>.</p>
+            <p><span class="joint joint-documented">documented</span> &nbsp;the reporting gap → what gets called evidence-based</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 186" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig11-title fig11-desc">
+              <title id="fig11-title">One hundred and fifty studies</title>
+              <desc id="fig11-desc">A grid of 150 marks, of which 11 are highlighted as having mentioned adverse events and 139 are left blank.</desc>
+              <g id="grid"></g>
+              <text x="150" y="16" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.5" letter-spacing="1" fill="var(--sp-secondary)">150 intervention studies</text>
+              <g fill="rgba(167,139,250,0.28)">
+                <rect x="20" y="26" width="8" height="8" rx="1"/><rect x="38" y="26" width="8" height="8" rx="1"/><rect x="56" y="26" width="8" height="8" rx="1"/><rect x="74" y="26" width="8" height="8" rx="1"/><rect x="92" y="26" width="8" height="8" rx="1"/><rect x="110" y="26" width="8" height="8" rx="1"/><rect x="128" y="26" width="8" height="8" rx="1"/><rect x="146" y="26" width="8" height="8" rx="1"/><rect x="164" y="26" width="8" height="8" rx="1"/><rect x="182" y="26" width="8" height="8" rx="1"/><rect x="200" y="26" width="8" height="8" rx="1"/><rect x="218" y="26" width="8" height="8" rx="1"/><rect x="236" y="26" width="8" height="8" rx="1"/><rect x="254" y="26" width="8" height="8" rx="1"/><rect x="272" y="26" width="8" height="8" rx="1"/>
+                <rect x="20" y="44" width="8" height="8" rx="1"/><rect x="38" y="44" width="8" height="8" rx="1"/><rect x="56" y="44" width="8" height="8" rx="1"/><rect x="74" y="44" width="8" height="8" rx="1"/><rect x="92" y="44" width="8" height="8" rx="1"/><rect x="110" y="44" width="8" height="8" rx="1"/><rect x="128" y="44" width="8" height="8" rx="1"/><rect x="146" y="44" width="8" height="8" rx="1"/><rect x="164" y="44" width="8" height="8" rx="1"/><rect x="182" y="44" width="8" height="8" rx="1"/><rect x="200" y="44" width="8" height="8" rx="1"/><rect x="218" y="44" width="8" height="8" rx="1"/><rect x="236" y="44" width="8" height="8" rx="1"/><rect x="254" y="44" width="8" height="8" rx="1"/><rect x="272" y="44" width="8" height="8" rx="1"/>
+                <rect x="20" y="62" width="8" height="8" rx="1"/><rect x="38" y="62" width="8" height="8" rx="1"/><rect x="56" y="62" width="8" height="8" rx="1"/><rect x="74" y="62" width="8" height="8" rx="1"/><rect x="92" y="62" width="8" height="8" rx="1"/><rect x="110" y="62" width="8" height="8" rx="1"/><rect x="128" y="62" width="8" height="8" rx="1"/><rect x="146" y="62" width="8" height="8" rx="1"/><rect x="164" y="62" width="8" height="8" rx="1"/><rect x="182" y="62" width="8" height="8" rx="1"/><rect x="200" y="62" width="8" height="8" rx="1"/><rect x="218" y="62" width="8" height="8" rx="1"/><rect x="236" y="62" width="8" height="8" rx="1"/><rect x="254" y="62" width="8" height="8" rx="1"/><rect x="272" y="62" width="8" height="8" rx="1"/>
+                <rect x="20" y="80" width="8" height="8" rx="1"/><rect x="38" y="80" width="8" height="8" rx="1"/><rect x="56" y="80" width="8" height="8" rx="1"/><rect x="74" y="80" width="8" height="8" rx="1"/><rect x="92" y="80" width="8" height="8" rx="1"/><rect x="110" y="80" width="8" height="8" rx="1"/><rect x="128" y="80" width="8" height="8" rx="1"/><rect x="146" y="80" width="8" height="8" rx="1"/><rect x="164" y="80" width="8" height="8" rx="1"/><rect x="182" y="80" width="8" height="8" rx="1"/><rect x="200" y="80" width="8" height="8" rx="1"/><rect x="218" y="80" width="8" height="8" rx="1"/><rect x="236" y="80" width="8" height="8" rx="1"/><rect x="254" y="80" width="8" height="8" rx="1"/><rect x="272" y="80" width="8" height="8" rx="1"/>
+                <rect x="20" y="98" width="8" height="8" rx="1"/><rect x="38" y="98" width="8" height="8" rx="1"/><rect x="56" y="98" width="8" height="8" rx="1"/><rect x="74" y="98" width="8" height="8" rx="1"/><rect x="92" y="98" width="8" height="8" rx="1"/><rect x="110" y="98" width="8" height="8" rx="1"/><rect x="128" y="98" width="8" height="8" rx="1"/><rect x="146" y="98" width="8" height="8" rx="1"/><rect x="164" y="98" width="8" height="8" rx="1"/><rect x="182" y="98" width="8" height="8" rx="1"/><rect x="200" y="98" width="8" height="8" rx="1"/><rect x="218" y="98" width="8" height="8" rx="1"/><rect x="236" y="98" width="8" height="8" rx="1"/><rect x="254" y="98" width="8" height="8" rx="1"/><rect x="272" y="98" width="8" height="8" rx="1"/>
+                <rect x="20" y="116" width="8" height="8" rx="1"/><rect x="38" y="116" width="8" height="8" rx="1"/><rect x="56" y="116" width="8" height="8" rx="1"/><rect x="74" y="116" width="8" height="8" rx="1"/><rect x="92" y="116" width="8" height="8" rx="1"/><rect x="110" y="116" width="8" height="8" rx="1"/><rect x="128" y="116" width="8" height="8" rx="1"/><rect x="146" y="116" width="8" height="8" rx="1"/><rect x="164" y="116" width="8" height="8" rx="1"/><rect x="182" y="116" width="8" height="8" rx="1"/><rect x="200" y="116" width="8" height="8" rx="1"/><rect x="218" y="116" width="8" height="8" rx="1"/><rect x="236" y="116" width="8" height="8" rx="1"/><rect x="254" y="116" width="8" height="8" rx="1"/><rect x="272" y="116" width="8" height="8" rx="1"/>
+                <rect x="20" y="134" width="8" height="8" rx="1"/><rect x="38" y="134" width="8" height="8" rx="1"/><rect x="56" y="134" width="8" height="8" rx="1"/><rect x="74" y="134" width="8" height="8" rx="1"/><rect x="92" y="134" width="8" height="8" rx="1"/><rect x="110" y="134" width="8" height="8" rx="1"/><rect x="128" y="134" width="8" height="8" rx="1"/><rect x="146" y="134" width="8" height="8" rx="1"/><rect x="164" y="134" width="8" height="8" rx="1"/><rect x="182" y="134" width="8" height="8" rx="1"/><rect x="200" y="134" width="8" height="8" rx="1"/><rect x="218" y="134" width="8" height="8" rx="1"/><rect x="236" y="134" width="8" height="8" rx="1"/><rect x="254" y="134" width="8" height="8" rx="1"/><rect x="272" y="134" width="8" height="8" rx="1"/>
+                <rect x="20" y="152" width="8" height="8" rx="1"/><rect x="38" y="152" width="8" height="8" rx="1"/><rect x="56" y="152" width="8" height="8" rx="1"/><rect x="74" y="152" width="8" height="8" rx="1"/><rect x="92" y="152" width="8" height="8" rx="1"/><rect x="110" y="152" width="8" height="8" rx="1"/><rect x="128" y="152" width="8" height="8" rx="1"/><rect x="146" y="152" width="8" height="8" rx="1"/><rect x="164" y="152" width="8" height="8" rx="1"/><rect x="182" y="152" width="8" height="8" rx="1"/><rect x="200" y="152" width="8" height="8" rx="1"/><rect x="218" y="152" width="8" height="8" rx="1"/><rect x="236" y="152" width="8" height="8" rx="1"/><rect x="254" y="152" width="8" height="8" rx="1"/><rect x="272" y="152" width="8" height="8" rx="1"/>
+                <rect x="20" y="170" width="8" height="8" rx="1"/><rect x="38" y="170" width="8" height="8" rx="1"/><rect x="56" y="170" width="8" height="8" rx="1"/><rect x="74" y="170" width="8" height="8" rx="1"/><rect x="92" y="170" width="8" height="8" rx="1"/><rect x="110" y="170" width="8" height="8" rx="1"/><rect x="128" y="170" width="8" height="8" rx="1"/><rect x="146" y="170" width="8" height="8" rx="1"/><rect x="164" y="170" width="8" height="8" rx="1"/><rect x="182" y="170" width="8" height="8" rx="1"/><rect x="200" y="170" width="8" height="8" rx="1"/><rect x="218" y="170" width="8" height="8" rx="1"/><rect x="236" y="170" width="8" height="8" rx="1"/><rect x="254" y="170" width="8" height="8" rx="1"/><rect x="272" y="170" width="8" height="8" rx="1"/>
+              </g>
+              <g fill="var(--gold)">
+                <rect x="20" y="26" width="8" height="8" rx="1"/><rect x="38" y="26" width="8" height="8" rx="1"/><rect x="56" y="26" width="8" height="8" rx="1"/><rect x="74" y="26" width="8" height="8" rx="1"/><rect x="92" y="26" width="8" height="8" rx="1"/><rect x="110" y="26" width="8" height="8" rx="1"/><rect x="128" y="26" width="8" height="8" rx="1"/><rect x="146" y="26" width="8" height="8" rx="1"/><rect x="164" y="26" width="8" height="8" rx="1"/><rect x="182" y="26" width="8" height="8" rx="1"/><rect x="200" y="26" width="8" height="8" rx="1"/>
+              </g>
+            </svg>
+            <div class="diagram-caption">Figure 11 · gold = reported harms at all</div>
+          </div>
+        </div>
+      </div>
+      <div class="spine">
+        <svg viewBox="0 0 620 66" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain, with the empty column — 150 / 11 live. Two rails, physics and the human sciences, joined only by one dashed rung.">
+          <path class="spine-track documented" d="M80 18 H145"/><path class="spine-track documented" d="M145 18 H210"/><path class="spine-track documented" d="M210 18 H275"/><path class="spine-track documented" d="M275 18 H340"/><path class="spine-track documented" d="M340 18 H405"/><path class="spine-track documented" d="M145 54 H250"/><path class="spine-track documented" d="M250 54 H405"/><path class="spine-track documented" d="M405 54 H520"/><path class="spine-track contested" d="M405 25 V47"/><text class="spine-raillabel" x="0" y="21">physics</text><text class="spine-raillabel" x="0" y="57">human sci</text><g class="spine-node"><circle cx="80" cy="18" r="3.4"/><circle cx="145" cy="18" r="3.4"/><circle cx="210" cy="18" r="3.4"/><circle cx="275" cy="18" r="3.4"/><circle cx="340" cy="18" r="3.4"/><circle cx="405" cy="18" r="3.4"/><circle cx="145" cy="54" r="3.4"/><circle cx="250" cy="54" r="3.4"/><circle cx="520" cy="54" r="3.4"/></g><g class="spine-node live"><circle cx="405" cy="54" r="4.6"/></g><circle class="spine-ring" cx="405" cy="54" r="9"/>
+        </svg>
+        <div class="spine-label">the empty column · 150 / 11</div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Five Sigma · Stimpunks</span>
+        <span class="spread-footer-right">12</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 13: three interventions ════ -->
+  <div class="spread" id="spread-13">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Three interventions · one standard</div>
+          <h2 class="spread-heading" id="three-interventions">Three interventions, and all of them compulsory for somebody</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">It is not one literature. The same evidentiary standard is doing the same work in three places at once.</p>
+            <p><strong>Behavioural intervention.</strong> The literature reviewed above — where the harms column is largely blank, and where the outcome measure inherited from <a href="eight-tenths-of-a-second-zine.html">1987</a> was indistinguishability.</p>
+            <p><strong>Growth mindset.</strong> Macnamara and Burgoyne meta-analysed <strong>63 studies, 97,672 participants</strong>, and reported evidence of publication bias, evidence that authors with a financial incentive to find positive effects were more likely to report them, and major threats to internal validity. Their finding on quality is the one to hold: <span class="gold">higher-quality studies were <em>less</em> likely to show a benefit.</span> That is the signature of an effect that is not there.</p>
+            <p><strong>The Science of Reading.</strong> Presented as settled science and legislated in state after state, while reading researchers point out that the case rests on <em>a small number of concepts taken from a few simple, dated studies</em> (Seidenberg), and that the movement's certainty outruns its evidence.</p>
+            <div class="pull-quote gold">Three interventions. None of them near 5σ. All of them mandatory for children who did not consent and cannot opt out.<span class="attr">the compulsory part is the part that changes the maths</span></div>
+            <p>That last clause is where the evidentiary argument becomes an ethical one. A weak finding published in a journal harms nobody. <strong>A weak finding written into a state statute is applied to every child in the state.</strong> The look-elsewhere effect made the finding; the legislature made it compulsory; and the child has no standing in either process.</p>
+            <p>This is what <a href="https://stimpunks.org/2023/11/22/on-the-problems-with-science-of-reading/">measuring the surface, badly</a> produces. Not merely a wrong answer — a wrong answer with the force of policy behind it, and the word <em>science</em> on the front.</p>
+            <p><span class="joint joint-documented">documented</span> &nbsp;three evidence bases → the same standard</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 180" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig12-title fig12-desc">
+              <title id="fig12-title">Three interventions against the scale</title>
+              <desc id="fig12-desc">A significance scale from two to eight sigma. Behavioural intervention, growth mindset and the science of reading all sit at the low end near two sigma, far below the five sigma line and the seven sigma marker for what the dials require.</desc>
+              <line x1="40" y1="150" x2="284" y2="150" stroke="rgba(167,139,250,0.4)" stroke-width="1.1"/>
+              <g font-family="Space Mono, monospace" font-size="7" fill="var(--sp-dim)">
+                <text x="46" y="166">2σ</text><text x="122" y="166">4σ</text><text x="190" y="166">5σ</text><text x="258" y="166">7σ</text>
+              </g>
+              <line x1="190" y1="40" x2="190" y2="150" stroke="rgba(167,139,250,0.55)" stroke-width="1.3"/>
+              <text x="190" y="32" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" fill="var(--violet)">physics floor</text>
+              <line x1="258" y1="56" x2="258" y2="150" stroke="rgba(251,191,36,0.6)" stroke-width="1.3" stroke-dasharray="5 4"/>
+              <text x="258" y="48" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" fill="var(--gold)">the dials say</text>
+              <g>
+                <circle cx="50" cy="66" r="5" fill="var(--pink)"/><text x="62" y="69" font-family="Space Mono, monospace" font-size="7" fill="var(--sp-secondary)">behavioural intervention</text>
+                <circle cx="48" cy="94" r="5" fill="var(--pink)"/><text x="60" y="97" font-family="Space Mono, monospace" font-size="7" fill="var(--sp-secondary)">growth mindset</text>
+                <circle cx="52" cy="122" r="5" fill="var(--pink)"/><text x="64" y="125" font-family="Space Mono, monospace" font-size="7" fill="var(--sp-secondary)">science of reading</text>
+              </g>
+              <text x="150" y="14" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="1" fill="var(--sp-dim)">all three are compulsory for somebody</text>
+            </svg>
+            <div class="diagram-caption">Figure 12 · the scale, with everything on it</div>
+          </div>
+        </div>
+      </div>
+      <div class="spine">
+        <svg viewBox="0 0 620 66" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain, with three interventions live. Two rails, physics and the human sciences, joined only by one dashed rung.">
+          <path class="spine-track documented" d="M80 18 H145"/><path class="spine-track documented" d="M145 18 H210"/><path class="spine-track documented" d="M210 18 H275"/><path class="spine-track documented" d="M275 18 H340"/><path class="spine-track documented" d="M340 18 H405"/><path class="spine-track documented" d="M145 54 H250"/><path class="spine-track documented" d="M250 54 H405"/><path class="spine-track documented" d="M405 54 H520"/><path class="spine-track contested" d="M405 25 V47"/><text class="spine-raillabel" x="0" y="21">physics</text><text class="spine-raillabel" x="0" y="57">human sci</text><g class="spine-node"><circle cx="80" cy="18" r="3.4"/><circle cx="145" cy="18" r="3.4"/><circle cx="210" cy="18" r="3.4"/><circle cx="275" cy="18" r="3.4"/><circle cx="340" cy="18" r="3.4"/><circle cx="405" cy="18" r="3.4"/><circle cx="145" cy="54" r="3.4"/><circle cx="250" cy="54" r="3.4"/><circle cx="520" cy="54" r="3.4"/></g><g class="spine-node live"><circle cx="405" cy="54" r="4.6"/></g><circle class="spine-ring" cx="405" cy="54" r="9"/>
+        </svg>
+        <div class="spine-label">three interventions</div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Five Sigma · Stimpunks</span>
+        <span class="spread-footer-right">13</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 14: scientism ════ -->
+  <div class="spread" id="spread-14">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The name for it</div>
+          <h2 class="spread-heading" id="scientism">Scientism is not too much science</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">There is a word for using the authority of science without the discipline of science, and it is not <em>science</em>.</p>
+            <p><strong>Scientism</strong> is the aesthetics: the p-value, the effect size, the phrase <em>evidence-based</em>, the citation, the graph. What it leaves behind is the practice — pre-registration, blinding, adverse-event reporting, replication, publishing your nulls, printing the case against your own standard, and calibrating your threshold to what you are claiming and what being wrong would cost.</p>
+            <div class="pull-quote violet">Every device in the first half of this zine is <em>science protecting itself from its own enthusiasm.</em> Scientism keeps the enthusiasm and discards the protection.<span class="attr">the distinction the whole collection runs on</span></div>
+            <p>And it has a characteristic victim, which is why this argument belongs to us and not only to methodologists. When a field claims scientific authority while ignoring inconvenient findings and lived experience, the people who <em>have</em> the inconvenient experience are not merely disbelieved — <strong>they are disbelieved on scientific grounds</strong>, which is a much harder thing to answer.</p>
+            <p>That is <span class="violet">epistemic injustice</span> (Fricker), and Robert Chapman has traced how it operates specifically against neurodivergent people: our testimony about our own lives arrives already discounted, because the apparatus has spoken.</p>
+            <p>We have watched this happen twice already in this collection. In <a href="the-lines-we-drew-zine.html">No. 9</a> the border between disorder and difference is redrawn by committee while the people either side of it stay the same. In <a href="five-microns-zine.html">No. 39</a> people asking about the air are told they are catastrophising, by institutions resting on a number nobody had checked.</p>
+            <p><strong>Same shape every time.</strong> The tools of science, pointed at human beings, used to flatten exactly the variation that the science elsewhere insists is real.</p>
+            <p><span class="joint joint-contested">contested</span> &nbsp;the evidentiary gap → epistemic injustice</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 184" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig13-title fig13-desc">
+              <title id="fig13-title">What gets kept and what gets dropped</title>
+              <desc id="fig13-desc">Two columns. Kept: p-values, effect sizes, the phrase evidence-based, citations. Dropped: pre-registration, blinding, adverse event reporting, replication, published nulls, calibrated thresholds.</desc>
+              <text x="70" y="20" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.5" letter-spacing="1" fill="var(--gold)">kept</text>
+              <g font-family="Space Mono, monospace" font-size="7" fill="var(--sp-secondary)" text-anchor="middle">
+                <text x="70" y="42">p-values</text>
+                <text x="70" y="60">effect sizes</text>
+                <text x="70" y="78">&ldquo;evidence-based&rdquo;</text>
+                <text x="70" y="96">citations</text>
+                <text x="70" y="114">graphs</text>
+              </g>
+              <line x1="150" y1="14" x2="150" y2="168" stroke="rgba(167,139,250,0.25)" stroke-width="1" stroke-dasharray="4 4"/>
+              <text x="228" y="20" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.5" letter-spacing="1" fill="var(--pink)">dropped</text>
+              <g font-family="Space Mono, monospace" font-size="7" fill="var(--sp-dim)" text-anchor="middle">
+                <text x="228" y="42">pre-registration</text>
+                <text x="228" y="60">blinding</text>
+                <text x="228" y="78">harm reporting</text>
+                <text x="228" y="96">replication</text>
+                <text x="228" y="114">published nulls</text>
+                <text x="228" y="132">calibrated bar</text>
+              </g>
+              <g stroke="rgba(244,114,182,0.4)" stroke-width="1" stroke-linecap="round">
+                <path d="M186 39 L270 45"/><path d="M186 57 L270 63"/><path d="M186 75 L270 81"/><path d="M186 93 L270 99"/><path d="M186 111 L270 117"/><path d="M186 129 L270 135"/>
+              </g>
+              <text x="150" y="164" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.5" letter-spacing="0.8" fill="var(--sp-secondary)">the discipline was the science</text>
+              <text x="150" y="178" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="1.2" fill="var(--sp-dim)">the rest was the look of it</text>
+            </svg>
+            <div class="diagram-caption">Figure 13 · the aesthetics, without the practice</div>
+          </div>
+        </div>
+      </div>
+      <div class="spine">
+        <svg viewBox="0 0 620 66" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain, with what it costs — epistemic injustice live. Two rails, physics and the human sciences, joined only by one dashed rung.">
+          <path class="spine-track documented" d="M80 18 H145"/><path class="spine-track documented" d="M145 18 H210"/><path class="spine-track documented" d="M210 18 H275"/><path class="spine-track documented" d="M275 18 H340"/><path class="spine-track documented" d="M340 18 H405"/><path class="spine-track documented" d="M145 54 H250"/><path class="spine-track documented" d="M250 54 H405"/><path class="spine-track documented" d="M405 54 H520"/><path class="spine-track contested" d="M405 25 V47"/><text class="spine-raillabel" x="0" y="21">physics</text><text class="spine-raillabel" x="0" y="57">human sci</text><g class="spine-node"><circle cx="80" cy="18" r="3.4"/><circle cx="145" cy="18" r="3.4"/><circle cx="210" cy="18" r="3.4"/><circle cx="275" cy="18" r="3.4"/><circle cx="340" cy="18" r="3.4"/><circle cx="405" cy="18" r="3.4"/><circle cx="145" cy="54" r="3.4"/><circle cx="250" cy="54" r="3.4"/><circle cx="405" cy="54" r="3.4"/></g><g class="spine-node live"><circle cx="520" cy="54" r="4.6"/></g><circle class="spine-ring" cx="520" cy="54" r="9"/>
+        </svg>
+        <div class="spine-label">what it costs · epistemic injustice</div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Five Sigma · Stimpunks</span>
+        <span class="spread-footer-right">14</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 15: the turn ════ -->
+  <div class="spread" id="spread-15">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The turn</div>
+          <h2 class="spread-heading" id="we-are-asking-for-more-science">We are asking for <span class="spectrum-word">more</span> science, not less</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Everything in this zine is borrowed from physicists. That is the point, and it is worth being unmistakable about it.</p>
+            <p>We did not arrive with a philosophical objection to measurement. <strong>We arrived with a physicist's own paper</strong>, and asked why the standard it describes — calibrate your threshold to how surprising the claim is, how much impact it carries, how wide you searched, and how badly you understand your own errors — stops at the laboratory door.</p>
+            <p>Eugenics and behaviourism did not fail because they were too scientific. They failed because they took real mathematics — a curve for observational error, a law of effect measured honestly in cats — and <span class="violet">applied it to human beings without the discipline that made it work in the first place</span>. That is the whole subject of this collection.</p>
+            <div class="pull-quote violet">Reclaiming science from scientism is not a retreat from evidence. It is a demand for the parts that got left behind: the harms column, the pre-registration, the null result, the published objection to your own gold standard.<span class="attr">what How We Got Here is for</span></div>
+            <p>And there is a version of this that is not a complaint but a design. <strong>Set the bar by what it costs to be wrong.</strong> Where an intervention is reversible, low-stakes and chosen, a modest evidence base is fine. Where it is compulsory, intensive, delivered during childhood and impossible to undo, ask for something closer to what you would want before announcing a particle — and until you have it, <em>change the conditions rather than the child</em>, which is the option that has been scored as "no intervention" this whole time.</p>
+            <p>That is not anti-scientific. <strong>A field that raised its own bar because its own results kept evaporating would recognise it immediately.</strong></p>
+            <div class="refusals">
+              <div class="refusal"><span class="refusal-tag">Not:</span><span><strong>that statistics are the enemy.</strong> The best material in this zine is a statistics paper. The enemy is a threshold nobody has examined since 1925 doing work nobody chose it for.</span></div>
+              <div class="refusal"><span class="refusal-tag">Not:</span><span><strong>that 5σ should govern education.</strong> We ran physics' dials on a human question and marked that transfer contested, then spent a spread arguing against ourselves. The claim is that the dials exist and nobody turns them.</span></div>
+              <div class="refusal"><span class="refusal-tag">Not:</span><span><strong>that doing nothing is safe.</strong> Withholding real support is a harm too. That is an argument for measuring both columns, not for leaving one blank.</span></div>
+              <div class="refusal"><span class="refusal-tag">Not:</span><span><strong>a proof.</strong> A chain — eleven documented joints and two contested, and <em>no leaps at all</em>. That is unusual here, and it is not tidiness: every gap in this one is published and counted rather than inferred.</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 196" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig14-title fig14-desc">
+              <title id="fig14-title">The whole chain, complete</title>
+              <desc id="fig14-desc">The full two-rail chain: a physics rail building a graded standard, a human sciences rail running from Fisher to compulsory intervention, and a single dashed rung between them marked the transfer that never happened. A legend gives nine documented joints, one contested, and zero leaps.</desc>
+              <path d="M20 40 H60 M60 40 H100 M100 40 H140 M140 40 H180 M180 40 H220" fill="none" stroke="rgba(74,222,128,0.6)" stroke-width="1.6"/>
+              <g fill="var(--sp-dim)"><circle cx="20" cy="40" r="3"/><circle cx="60" cy="40" r="3"/><circle cx="100" cy="40" r="3"/><circle cx="140" cy="40" r="3"/><circle cx="180" cy="40" r="3"/></g>
+              <circle cx="220" cy="40" r="4.6" fill="var(--violet)"/>
+              <text x="20" y="28" font-family="Space Mono, monospace" font-size="6.5" letter-spacing="0.8" fill="var(--violet)">physics · builds a graded standard</text>
+              <path d="M60 108 H120 M120 108 H180 M180 108 H240 M240 108 H280" fill="none" stroke="rgba(74,222,128,0.6)" stroke-width="1.6"/>
+              <g fill="var(--sp-dim)"><circle cx="60" cy="108" r="3"/><circle cx="120" cy="108" r="3"/><circle cx="180" cy="108" r="3"/><circle cx="240" cy="108" r="3"/></g>
+              <circle cx="280" cy="108" r="4.6" fill="var(--pink)"/>
+              <text x="60" y="124" font-family="Space Mono, monospace" font-size="6.5" letter-spacing="0.8" fill="var(--gold)">Fisher 1925 · → compulsory</text>
+              <path d="M220 46 L228 100" fill="none" stroke="rgba(251,191,36,0.8)" stroke-width="1.6" stroke-dasharray="6 4"/>
+              <text x="252" y="76" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--gold)">the transfer</text>
+              <text x="252" y="87" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--gold)">that never happened</text>
+              <g font-family="Space Mono, monospace" font-size="7" letter-spacing="0.6">
+                <path d="M22 150 H50" fill="none" stroke="rgba(74,222,128,0.7)" stroke-width="1.6"/>
+                <text x="58" y="153" fill="var(--green)">documented · 11</text>
+                <path d="M22 168 H50" fill="none" stroke="rgba(251,191,36,0.8)" stroke-width="1.6" stroke-dasharray="6 4"/>
+                <text x="58" y="171" fill="var(--gold)">contested · 2</text>
+                <path d="M22 186 H50" fill="none" stroke="rgba(244,114,182,0.45)" stroke-width="1.6" stroke-dasharray="1.5 4"/>
+                <text x="58" y="189" fill="var(--pink)">leap · 0 — and that is a finding</text>
+              </g>
+            </svg>
+            <div class="diagram-caption">Figure 14 · two rails, one rung, no leaps</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Five Sigma · Stimpunks</span>
+        <span class="spread-footer-right">15</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 16: COLOPHON ════ -->
+  <div class="spread" id="spread-16">
+    <div class="interior">
+      <div class="colophon">
+        <div>
+          <div class="colophon-top">
+            <span class="colophon-ls">L★S</span>
+            <p class="colophon-phrase">Set the bar by what it costs to be wrong. Then look at who is standing under it.</p>
+          </div>
+
+          <div class="series-list">
+            <div class="series-item"><span class="series-num">No. 9</span> The Lines We Drew — the constructed border, and epistemic injustice</div>
+            <div class="series-item"><span class="series-num">No. 38</span> Eight Tenths of a Second — an instrument with no endpoint</div>
+            <div class="series-item"><span class="series-num">No. 39</span> Five Microns — a number that answered a different question</div>
+            <div class="series-item current"><span class="series-num">No. 40</span> Five Sigma — how much evidence is enough ← you are here</div>
+          </div>
+
+          <div class="reflect">
+            <div class="reflect-label">Reflection</div>
+            <p class="reflect-q">What was decided about you on evidence nobody showed you?</p>
+            <p class="reflect-q">Where in your work does a threshold operate that no one has examined — and who chose it, and when?</p>
+            <p class="reflect-q">If the harms column were compulsory, which practices around you would still be called evidence-based?</p>
+            <p class="reflect-q">What would you need to know before doing something irreversible to a child? Write the number down.</p>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="colophon-h" id="sources">Sources</h3>
+          <div class="colophon-body">
+            <p><strong>The spine is one paper, read at the primary:</strong> Louis Lyons, <em>"Discovering the Significance of 5σ,"</em> arXiv:1310.1284v1, 4 October 2013 (Blackett Lab., Imperial College, and Particle Physics, Oxford). Every quotation on spreads 2–7 is verbatim from it: the definition of the convention and its <em>p</em>-value of 3 × 10⁻⁷; journals' reluctance to permit the word "discovery"; the History argument about 3σ and 4σ effects that "have gone away when more data were collected"; the statisticians' scepticism and Lyons' concession that it "may well be valid"; the look-elsewhere effect and the instruction to "decide in advance of the analysis what procedure will be used"; the subconscious Bayes' factor, the energy non-conservation example, and "Extraordinary claims require extraordinary evidence"; the systematics arithmetic (5σ → 2.5σ on a factor-of-2 underestimate, <em>p</em> rising by 2 × 10⁴); "There are several reasons why it is not sensible to use a uniform criterion of 5σ"; and Table 1, from which the σ values quoted for single top (3), the Higgs (5), direct dark matter (5), SUSY (7), gravitational waves (7) and superluminal neutrinos (&gt;8) are taken, along with his note that their spirit "is to provoke discussion … rather than being a rigid set of rules."</p>
+            <p><strong>The other threshold.</strong> R. A. Fisher, <em>Statistical Methods for Research Workers</em> (1925): "The value for which P=0.05, or 1 in 20 is 1.96 or nearly 2; it is convenient to take this point as a limit in judging whether a deviation is to be considered significant or not." The ~170,000× figure is simply 0.05 ÷ (3 × 10⁻⁷), and is stated as approximate because both thresholds are conventions rather than exact quantities.</p>
+            <p><strong>The empty column.</strong> Kristen Bottema-Beutel, Shannon Crowley, Micheal Sandbank &amp; Tiffany G. Woynaroski, "Adverse event reporting in intervention research for young autistic children," <em>Autism</em> 25(2), 2021, 322–335 — 150 reports of group-design non-pharmacological intervention studies; 11 mentioned adverse events; of 54 reporting reasons for withdrawal, 10 gave reasons categorisable as adverse events and 12 were too vague to classify. The follow-on title quoted is Micheal Sandbank, Kristen Bottema-Beutel, Ya-Cing Syu, Nicolette Caldwell, Jacob I. Feldman &amp; Tiffany Woynaroski, "Evidence-b(i)ased practice: Selective and inadequate reporting in early childhood autism intervention research," <em>Autism</em>, 2024.</p>
+            <p><strong>Growth mindset.</strong> Brooke N. Macnamara &amp; Alexander P. Burgoyne, "Do growth mindset interventions impact students' academic achievement? A systematic review and meta-analysis with recommendations for best practices," <em>Psychological Bulletin</em> (2023; online first 3 November 2022) — 63 studies, N = 97,672; publication bias, authors with financial incentives more likely to report positive effects, major threats to internal validity, and higher-quality studies less likely to show benefit.</p>
+            <p><strong>Scientism and the surface.</strong> <a href="https://stimpunks.org/2023/11/22/on-the-problems-with-science-of-reading/">On the Problems with Science of Reading</a> at Stimpunks, which supplies both the framing and the phrase <em>measuring the surface, badly</em> (from the Stimpunks glossary entry on behaviorism); Mark S. Seidenberg on the science of reading resting on "a small number of concepts taken from a few simple, dated studies." <em>Epistemic injustice</em> is Miranda Fricker, <em>Epistemic Injustice: Power and the Ethics of Knowing</em> (2007); its application to neurodivergent people here follows Robert Chapman, "Neurodiversity, epistemic injustice, and the good human life," <em>Journal of Social Philosophy</em> (2022). <em>Pathology paradigm</em>, where it is implied, remains Nick Walker's.</p>
+            <p><strong>Held honestly.</strong> Spread 10 applies Lyons' framework to a question he did not write about; it is marked <strong>contested</strong> and spread 11 argues the case against it rather than hedging in a footnote. The dial settings on spread 10 are our judgements, not measurements, and are presented as such. The Higgs narrative on spread 2 is context around Lyons' own text rather than a separate cited source. <strong>This chain contains no <em>leap</em> joints</strong> — eleven documented, two contested — which is unusual for the form and is reported rather than smoothed: every gap in it is published and counted, not inferred.</p>
+          </div>
+          <div class="colophon-footer">
+            <a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks Foundation</a> × <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a><br>
+            stimpunks.org · morerealms.com · starstuff.earth<br>
+            <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> · open edition · print freely
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Five Sigma · Stimpunks</span>
+        <span class="spread-footer-right">16</span>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /zine-shell -->
+
+<script>
+  let current = 1;
+  const total = 16;
+
+  function changePage(dir) {
+    const next = current + dir;
+    if (next < 1 || next > total) return;
+    document.getElementById('spread-' + current).classList.remove('active');
+    current = next;
+    document.getElementById('spread-' + current).classList.add('active');
+    document.getElementById('page-counter').textContent = current + ' / ' + total;
+    document.getElementById('prev-btn').disabled = current === 1;
+    document.getElementById('next-btn').disabled = current === total;
+    document.getElementById('prev-btn').classList.toggle('active', current > 1);
+    document.getElementById('next-btn').classList.toggle('active', current < total);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') changePage(1);
+    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   changePage(-1);
+  });
+
+  document.getElementById('prev-btn').disabled = true;
+  document.getElementById('next-btn').classList.add('active');
+</script>
+<script src="starstuff.js" defer></script>
+</body>
+</html>

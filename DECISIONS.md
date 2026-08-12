@@ -187,6 +187,26 @@ Decisions still to make. Move to **Settled** with a date once resolved.
 Decisions already made, with a one-line why. Backfilled from git history — dates are first
 commit evidence, not necessarily when the call was made.
 
+- **2026-08-12 — The chains have a stated motive: reclaim science from what wears its clothes.**
+  Ryan's framing, now on the collection page's face and in `CLAUDE.md` rather than living only in
+  chat: **eugenics and behaviorism took good physics and misapplied it to human beings.** Three
+  things get mistaken for science and are its opposite — pseudo-science, **scientism** (authority
+  kept, practice dropped), and the **smoothed popular retelling** that files off hedges because the
+  tidy version travels further. **The operational consequence, and the reason this is a decision and
+  not a mission statement: a chain here is never an argument against evidence.** If a draft reads as
+  anti-science, it has gone wrong and needs rewriting toward *the parts that got left behind* — the
+  harms column, the pre-registration, the published null. No. 40 argues this outright, which is why
+  its spine is a physicist's own paper rather than a critique of physics.
+- **2026-08-12 — Read the primary, and treat automated summaries as adversarial.** Already house
+  rule for *citations*; promoted here to a rule about **arguments**, because No. 40 nearly shipped
+  inverted. The WebFetch summary of Lyons (arXiv:1310.1284) reported that he "does not argue the
+  threshold should vary by experiment." His abstract asks whether "a more nuanced criterion might be
+  better" and §3 is headed *"Why not 5σ?"* — the summary stated the precise opposite of the thesis,
+  in confident prose, with plausible quote-shaped paraphrases attached. Reading the six-page PDF
+  caught it. **Note the shape: a smoothed retelling of a paper about why smoothed thresholds are
+  dangerous.** The generalisation is not "summaries are sometimes wrong" but *a summary is most
+  likely to invert a source precisely where the source is making a counterintuitive argument* —
+  which is exactly the kind of source worth building a zine on. Logged in `FACTCHECK.md` under 40.
 - **2026-08-12 — *How We Got Here* is the twelfth collection, built at two members, reversing a
   deferral made the same morning.** The deferral said wait for two or three chains because
   *collections are outputs, not inputs*. **The reversal is not an abandonment of that principle; it

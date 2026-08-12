@@ -155,10 +155,22 @@ that disclosure is the convention, and **How We Got Here duly carries it too**:
 | Collection | Axis | Members |
 |------------|------|---------|
 | **Field Guides** | **form** — a catalogue of same-shaped entries, none ranked | Field Guides 1–11 (114 entries; 119 cards counting the five *turtles people made*, which FG 10 deliberately does not file as entries) |
-| **How We Got Here** | **form** — a Burke chain, one link per spread, joints marked | 38, 39 |
+| **How We Got Here** | **form** — a Burke chain, one link per spread, joints marked | 38, 39, 40 |
 | **Print** | **medium** — paper | 5 broadsides + 1 typographic sheet |
 | **Sound** | **medium** — audio | 4 racks, 121 cards / 117 distinct songs |
 
+- **Why the chains exist — reclaim science from the things that wear its clothes.** Ryan's framing,
+  2026-08-12, and it is the collection's motive rather than a theme: **eugenics and behaviorism took
+  good physics and misapplied it to human beings.** Three things get mistaken for science and are its
+  opposite — **pseudo-science** (none of the method), **scientism** (the authority kept, the practice
+  dropped: the *p*-value and "evidence-based" without pre-registration, blinding, reported harms or
+  published nulls), and the **smoothed popular retelling** that files off every hedge because the
+  tidy version travels further. Pointed at people, these flatten exactly the variation the science
+  elsewhere insists is real, and they *[measure the surface, badly](https://stimpunks.org/2023/11/22/on-the-problems-with-science-of-reading/)*
+  — producing epistemic injustice with a citation attached, which is much harder to answer than a
+  plain insult. **So a chain here is never an argument against evidence; it is an argument for the
+  parts left behind.** If a draft starts reading as anti-science, it has gone wrong. Stated on the
+  collection page's face, and No. 40 is the piece that argues it outright.
 - **How We Got Here has its own convention, and it is the point of the collection: every joint in
   a chain is marked `documented`, `contested` or `leap`** — in the prose *and* in the line style of
   the running spine at the foot of each spread. A Burke chain is built to feel inevitable, which
