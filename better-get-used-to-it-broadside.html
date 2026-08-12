@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#0a0a14">
+<link rel="canonical" href="https://starstuff.earth/better-get-used-to-it-broadside.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta name="description" content="Better Get Used To It — a two-sided single sheet for the meeting where someone says the real world won't wait. BGUTI, named by Alfie Kohn in 2005, and why hardship now is not preparation; on the reverse, the Greenland shark and the bill attached to slowness, the social model turn, what to ask instead, and the refusals that keep it from inverting. Designed for paper: one sheet, duplexed, A4 or US Letter. Companion to Zine No. 34.">
+<!-- Open Graph / link unfurl -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Star Stuff · Stimpunks Foundation × More Realms">
+<meta property="og:url" content="https://starstuff.earth/better-get-used-to-it-broadside.html">
+<meta property="og:title" content="Better Get Used To It — Broadside">
+<meta property="og:description" content="Hardship now is not preparation. BGUTI named and refused, with Alfie Kohn's own sentences — and on the reverse, why you cannot tell whether a pace is a problem by looking at the creature. Prints on A4 or Letter.">
+<meta property="og:image" content="https://starstuff.earth/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A rainbow-hued cosmic image — we are all made of star stuff.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Better Get Used To It — Broadside">
+<meta name="twitter:description" content="Hardship now is not preparation. BGUTI named and refused. One sheet, two sides, A4 or Letter.">
+<meta name="twitter:image" content="https://starstuff.earth/og-card.jpg">
+<title>Better Get Used To It — Broadside — Stimpunks × More Realms</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="starstuff.css">
+<style>
+  /* ═══════════════════════════════════════════════════════════════════════════
+     PAPER-FIRST SHEET. Seventh of the broadsides. See print-design.html for the
+     full specification and the reasoning behind every number in it.
+
+     WHAT THIS SHEET IS. The hand-out companion to Zine No. 34. Its moment is the
+     meeting — the IEP, the review, the staffroom — where someone says "the real
+     world won't wait" and the conversation is expected to stop there.
+
+     THE TITLE IS THE DOCTRINE, IN QUOTATION MARKS, ON PURPOSE. A sheet whose face
+     reads "The real world won't wait" without marking is a sheet that appears to
+     agree with it from across a room, which is precisely the distance a broadside
+     is read from. So the face names the doctrine as a quoted thing and refutes it
+     in the largest type on the page. Do not remove the quote marks.
+
+     THE STRUCTURAL SAFEGUARD IS INHERITED AND MUST NOT BE REORDERED. No. 34 puts
+     its conservation alarm — a species that takes ~156 years to reproduce cannot
+     replace what we kill — BEFORE any application to people, so that the cost of
+     slowness is established before its consolations. This sheet does the same:
+     side B opens with the bill, not the moral. Reordering it would turn the sheet
+     into the slow-is-beautiful poster No. 34 explicitly says it is most at risk of
+     becoming, and the zine's own refusals set exists to prevent.
+
+     THE REFUSALS ARE LOAD-BEARING, NOT DECORATION. Two of them in particular are
+     what stop this sheet inverting: "not slow is better" and "not a reason to skip
+     support." If a future revision needs space, take it from anywhere else.
+
+     SIZE. 190 × 259 mm with 9 mm page margins — inside both A4 (192 × 279 box) and
+     US Letter (198 × 261). Two sides, no third page, either country.
+
+     SPOT COLOUR. Violet for the face (No. 34's own accent, and the paradigm
+     register) and cyan for the verso (the shark's water). With five house hues and
+     seven sheets, faces repeat; the *pair* is what tells sheets apart in a stack,
+     and violet-face/cyan-verso is unused — the-same-water-broadside.html is the
+     mirror, cyan face over violet verso. Do not add a sixth hue: the palette is
+     five accents and that is a house rule.
+     ═══════════════════════════════════════════════════════════════════════════ */
+
+  :root {
+    --sheet:  #ffffff;
+    --ink:    #111111;   /* 18.1:1 on white */
+    --ink-2:  #333333;   /* 12.6:1 — secondary prose */
+    --ink-3:  #555555;   /*  7.5:1 — small print, credits */
+    --spot:   #5b21b6;   /*  9.0:1 — house violet, darkened for paper */
+    --spot-2: #164e63;   /*  9.1:1 — house cyan, darkened for paper */
+    --rule:   #d4d0dc;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #2a2830;
+    font-family: 'Atkinson Hyperlegible Next', system-ui, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1rem 3rem;
+  }
+
+  /* ── CONTROLS (screen only) ── */
+  .controls { display: flex; gap: 0.75rem; margin-bottom: 1.5rem; align-items: center; flex-wrap: wrap; justify-content: center; }
+  .ctrl-btn {
+    background: none;
+    border: 1px solid rgba(255,255,255,0.28);
+    color: #d6d5da;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 0.5rem 1.1rem;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .ctrl-btn:hover { background: rgba(255,255,255,0.1); color: #fff; border-color: rgba(255,255,255,0.5); }
+  .ctrl-btn.active { background: rgba(255,255,255,0.14); color: #fff; border-color: rgba(255,255,255,0.55); }
+  .ctrl-sep { width: 1px; height: 20px; background: rgba(255,255,255,0.18); }
+  /* Solid, not alpha: alpha-faded text is what this design system refuses. */
+  .ctrl-label { font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.25em; text-transform: uppercase; color: #929195; }
+
+  /* ── THE SHEET ── */
+  .sheet {
+    width: 190mm;
+    max-width: 100%;
+    min-height: 259mm;
+    background: var(--sheet);
+    color: var(--ink);
+    padding: 11mm 12mm 9mm;
+    display: none;
+    flex-direction: column;
+    position: relative;
+    /* Registration bar is a BORDER, not a background: borders survive the
+       Background-graphics checkbox, backgrounds do not. */
+    border-top: 3mm solid var(--spot);
+    print-color-adjust: exact; -webkit-print-color-adjust: exact;
+  }
+  .sheet.visible { display: flex; }
+  .sheet--b { border-top-color: var(--spot-2); }
+
+  /* ── Masthead ── */
+  .mast { display: flex; justify-content: space-between; align-items: flex-start; gap: 6mm; padding-bottom: 3mm; border-bottom: 0.6mm solid var(--ink); }
+  .mast-org { font-family: 'Space Mono', monospace; font-size: 6pt; letter-spacing: 0.3em; text-transform: uppercase; color: var(--ink-2); line-height: 1.9; }
+  .mast-org strong { display: block; font-size: 7pt; letter-spacing: 0.22em; color: var(--ink); }
+  .mast-side { font-family: 'Space Mono', monospace; font-size: 6pt; letter-spacing: 0.24em; text-transform: uppercase; color: var(--spot); text-align: right; line-height: 1.9; white-space: nowrap; }
+  .sheet--b .mast-side { color: var(--spot-2); }
+
+  /* ── Face title ── */
+  .title {
+    font-weight: 800;
+    font-size: 32pt;
+    line-height: 0.98;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    margin-top: 5mm;
+  }
+  .title em { font-style: normal; color: var(--spot); }
+  .standfirst {
+    font-style: italic;
+    font-weight: 300;
+    font-size: 11.5pt;
+    line-height: 1.44;
+    color: var(--ink-2);
+    margin-top: 4mm;
+    max-width: 158mm;
+  }
+  .title-rule { height: 0.8mm; background: var(--ink); margin-top: 5mm; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+
+  /* ── The claim ── */
+  .claim { margin-top: 4.5mm; text-align: center; }
+  .claim-line {
+    font-weight: 800;
+    font-size: 31pt;
+    line-height: 1.06;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+  .claim-line em { font-style: normal; color: var(--spot); }
+  .claim-sub { font-family: 'Space Mono', monospace; font-size: 8pt; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-2); margin-top: 3mm; line-height: 1.8; }
+
+  /* ── Panels ── */
+  .panels { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 7mm; margin-top: 4mm; }
+  .panel { border-left: 0.8mm solid var(--spot); padding-left: 3.5mm; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+  .panel:nth-child(3) { border-left-color: var(--spot-2); }
+  .panel-name { font-family: 'Space Mono', monospace; font-size: 7.4pt; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--spot); margin-bottom: 2.2mm; line-height: 1.5; }
+  .panel:nth-child(3) .panel-name { color: var(--spot-2); }
+  .panel-desc { font-size: 10pt; line-height: 1.45; color: var(--ink-2); }
+
+  /* ── Quotation ── */
+  .quote { margin-top: 4.5mm; padding-left: 4mm; border-left: 0.8mm solid var(--spot); print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+  .quote p { font-style: italic; font-weight: 500; font-size: 12.5pt; line-height: 1.34; color: var(--ink); }
+  .quote cite { display: block; font-family: 'Space Mono', monospace; font-style: normal; font-size: 6.8pt; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-3); margin-top: 2.2mm; line-height: 1.7; }
+
+  /* ── Reverse ── */
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 5mm 9mm; margin-top: 4mm; }
+  .col-head { font-family: 'Space Mono', monospace; font-size: 8pt; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: var(--spot-2); padding-bottom: 2.2mm; margin-bottom: 4mm; border-bottom: 0.4mm solid var(--rule); print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+
+  .item { margin-bottom: 2.3mm; }
+  .item b { display: block; font-family: 'Space Mono', monospace; font-size: 8pt; font-weight: 700; color: var(--ink); line-height: 1.5; }
+  .item span { display: block; font-size: 10pt; line-height: 1.45; color: var(--ink-2); margin-top: 1.1mm; }
+
+  .say { margin-bottom: 2mm; }
+  .say b { display: block; font-style: italic; font-weight: 600; font-size: 10pt; color: var(--spot-2); line-height: 1.3; }
+  .say span { display: block; font-family: 'Space Mono', monospace; font-size: 7.4pt; line-height: 1.5; color: var(--ink-2); margin-top: 0.9mm; }
+
+  .refusals { margin-top: 2.5mm; padding-top: 2mm; border-top: 0.6mm solid var(--ink); }
+  .refusal { font-family: 'Space Mono', monospace; font-size: 7.6pt; line-height: 1.55; color: var(--ink-2); margin-top: 2mm; padding-left: 5mm; position: relative; }
+  .refusal::before { content: '✕'; position: absolute; left: 0; color: var(--spot-2); font-weight: 700; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+
+  .close {
+    font-style: italic;
+    font-weight: 500;
+    font-size: 13pt;
+    line-height: 1.32;
+    color: var(--ink);
+    margin-top: 2.5mm;
+    padding-left: 4mm;
+    border-left: 0.8mm solid var(--spot-2);
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .sources { margin-top: 2.5mm; font-family: 'Space Mono', monospace; font-size: 7pt; line-height: 1.55; color: var(--ink-2); }
+  .sources em { font-style: italic; }
+
+  /* ── Foot ── */
+  .foot { margin-top: auto; padding-top: 3mm; border-top: 0.6mm solid var(--ink); display: flex; justify-content: space-between; align-items: flex-end; gap: 6mm; }
+  .foot-left { font-family: 'Space Mono', monospace; font-size: 6pt; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-3); line-height: 1.95; }
+  .foot-left a { color: var(--ink-3); }
+  .foot-right { font-weight: 800; font-size: 13pt; color: var(--spot); text-align: right; line-height: 1.2; white-space: nowrap; }
+  .sheet--b .foot-right { color: var(--spot-2); }
+
+  /* The star is DRAWN, not typed. Atkinson has no U+2605, so a typed ★ comes from
+     whatever font the reader's system happens to supply — not good enough for a
+     logotype on a sheet meant to print identically everywhere. */
+  .star { display: inline-block; width: 0.80em; height: 0.80em; vertical-align: -0.045em; margin: 0 0.06em; fill: currentColor; }
+
+  .print-hint { margin-top: 1.2rem; font-family: 'Space Mono', monospace; font-size: 0.48rem; letter-spacing: 0.2em; text-transform: uppercase; color: #929195; text-align: center; }
+
+  /* ── PRINT ── */
+  @page { size: auto; margin: 9mm; }
+
+  @media print {
+    body { background: none; padding: 0; display: block; min-height: 0; }
+    .controls, .print-hint { display: none; }
+    .sheet { display: flex !important; width: 100%; min-height: 0; height: 259mm; padding: 0; border-top-width: 3mm; }
+    .sheet--a { page-break-after: always; break-after: page; }
+    .mast { padding-top: 6mm; }
+    .panel, .item, .say, .quote { page-break-inside: avoid; break-inside: avoid; }
+  }
+
+  /* Breakpoint sits BELOW the narrowest printed page box (A4 at 9mm margins is
+     192mm = 726px). Print media queries resolve against the page box, not the
+     screen, so a breakpoint above that reflows on paper. */
+  @media (max-width: 700px) {
+    .sheet { width: 100%; min-height: 0; padding: 8mm 6mm; }
+    .panels, .cols { grid-template-columns: 1fr; }
+    .title { font-size: 25pt; }
+    .claim-line { font-size: 22pt; }
+    .foot { flex-direction: column; align-items: flex-start; gap: 3mm; }
+    .foot-right { text-align: left; }
+  }
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Better Get Used To It — Broadside","description":"A two-sided, print-ready single sheet for the meeting where someone says the real world won't wait. BGUTI, named by Alfie Kohn in 2005, and why hardship now is not preparation; on the reverse, the Greenland shark and the bill attached to slowness, the social model turn, what to ask instead, and the refusals that keep it from inverting. Designed for paper — one sheet, duplexed, on A4 or US Letter. Companion to Zine No. 34.","image":"https://starstuff.earth/og-card.jpg","url":"https://starstuff.earth/better-get-used-to-it-broadside.html","mainEntityOfPage":"https://starstuff.earth/better-get-used-to-it-broadside.html","author":{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/"},"publisher":[{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/","logo":{"@type":"ImageObject","url":"https://starstuff.earth/og-card.jpg"}},{"@type":"Organization","name":"More Realms","url":"https://morerealms.com/"}],"isPartOf":{"@type":"WebSite","name":"Star Stuff","url":"https://starstuff.earth/"},"license":"https://creativecommons.org/licenses/by-sa/4.0/"}</script>
+</head>
+<body>
+
+<nav class="ss-nav" style="--nav-accent:#a78bfa; max-width:190mm;" aria-label="Star Stuff collection">
+  <span class="ss-nav-home-group">
+    <a class="ss-nav-home" href="index.html"><span class="ss-star" aria-hidden="true">★</span> stuff</a>
+    <a class="ss-nav-about" href="about.html">about</a>
+    <a class="ss-nav-search" href="search.html">search</a>
+  </span>
+  <span class="ss-nav-links">
+    <a class="ss-nav-prev" href="shared-air-broadside.html"><span class="ss-nav-arrow" aria-hidden="true">&lsaquo;</span> <span class="ss-nav-label">Shared Air</span></a>
+    <a class="ss-nav-next" href="shorthand-evolution.html"><span class="ss-nav-label">Shorthand</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
+  </span>
+</nav>
+
+<div class="controls">
+  <span class="ctrl-label">Side</span>
+  <button class="ctrl-btn active" id="btn-a" onclick="showSide('a')">A — The Doctrine</button>
+  <button class="ctrl-btn" id="btn-b" onclick="showSide('b')">B — The Water</button>
+  <div class="ctrl-sep"></div>
+  <button class="ctrl-btn" onclick="window.print()">Print ↗</button>
+</div>
+
+<!-- ════ SIDE A ════ -->
+<div class="sheet sheet--a visible" id="side-a">
+
+  <div class="mast">
+    <div class="mast-org">
+      <strong>Stimpunks Foundation × More Realms</strong>
+      for the meeting where someone says the real world won't wait
+    </div>
+    <div class="mast-side">Broadside · Open edition<br>Side A of B</div>
+  </div>
+
+  <h1 class="title">&ldquo;Better Get<br><em>Used To It&rdquo;</em></h1>
+
+  <p class="standfirst">Ask for a slower pace and you will meet one answer so often that it has an acronym. Homework young because there's homework later. Grades young because there are grades eventually. No accommodation at school because the real world won't accommodate you. The logic never changes: life will be hard later, so hardship now is preparation.</p>
+
+  <div class="title-rule"></div>
+
+  <div class="claim">
+    <p class="claim-line">Hardship now is<br><em>not preparation.</em></p>
+    <p class="claim-sub">BGUTI · named by Alfie Kohn, 2005 · early adversity is not a vaccine</p>
+  </div>
+
+  <div class="panels">
+
+    <div class="panel">
+      <div class="panel-name">It has to ignore them</div>
+      <p class="panel-desc">The argument treats the timetable as the fixed thing and the child as the adjustable one. But children arrive at things at genuinely different rates — so &ldquo;everyone gets this at this age&rdquo; guarantees some are handed what they cannot yet use. BGUTI doesn't overlook developmental difference by accident. <em>It cannot survive noticing it.</em></p>
+    </div>
+
+    <div class="panel">
+      <div class="panel-name">And it isn't true</div>
+      <p class="panel-desc">Kohn again, and it is exact: <em>people don't really get better at coping with unhappiness because they were deliberately made unhappy when they were young.</em> Early adversity is not a vaccine. It mostly teaches you that adults will do this to you.</p>
+    </div>
+
+    <div class="panel">
+      <div class="panel-name">Where it does its worst</div>
+      <p class="panel-desc">Behaviorism watches compliance and reaches for consequences, so it has no way to represent a child who needs longer. Needing longer shows up as refusing; refusing gets a consequence. The consequence never changes the pace. <em>It only adds fear to it.</em></p>
+    </div>
+
+  </div>
+
+  <div class="quote">
+    <p>&ldquo;Almost by definition, the BGUTI defense ignores developmental differences.&rdquo;</p>
+    <cite>Alfie Kohn · &ldquo;Getting Hit on the Head Lessons&rdquo; · Education Week · 7 September 2005</cite>
+  </div>
+
+  <div class="foot">
+    <div class="foot-left">
+      the full argument and every source:<br>
+      starstuff.earth/two-hundred-years-zine · Zine No. 34<br>
+      print freely · share freely · <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
+    </div>
+    <div class="foot-right">See<br>reverse</div>
+  </div>
+
+</div>
+
+<!-- ════ SIDE B ════ -->
+<div class="sheet sheet--b" id="side-b">
+
+  <div class="mast">
+    <div class="mast-org">
+      <strong>Stimpunks Foundation × More Realms</strong>
+      look at the water, not the creature
+    </div>
+    <div class="mast-side">Broadside · Open edition<br>Side B of B</div>
+  </div>
+
+  <div class="cols">
+
+    <div>
+      <div class="col-head">The animal, and its bill</div>
+
+      <div class="item"><b>272 years, and 156 to grow up.</b><span>The Greenland shark lives in water near freezing and grows less than a centimetre a year. Nielsen and colleagues dated 28 of them in <em>Science</em> in 2016: a life span of at least 272 years, the largest animal at 392 ± 120, and age at maturity of at least 156 ± 22 — inferred from body length, not observed.</span></div>
+
+      <div class="item"><b>And that is not a superpower.</b><span>A species that takes 156 years to reproduce even once has almost no capacity to replace losses. They were hunted in very large numbers and still turn up in trawls. The IUCN lists them as <strong>Vulnerable</strong>. <em>Slowness is a strategy with a bill attached</em> — superbly fitted to an ocean that held still, nearly defenceless against one that changes in decades.</span></div>
+
+      <div class="item"><b>So look at the water.</b><span>A ruined cornea is a disaster in bright water and nothing at 400 metres. A 156-year childhood works in an ocean that holds still and is fatal in one full of trawlers. None of those outcomes is a fact about the shark. <em>You cannot tell whether a pace is a problem by looking at the creature — you have to look at the water.</em></span></div>
+    </div>
+
+    <div>
+      <div class="col-head">What to ask instead</div>
+
+      <div class="say"><b>Not &ldquo;how do we get this child up to speed?&rdquo;</b><span>But: what is this environment demanding, who chose that, and what would it cost to stop?</span></div>
+      <div class="say"><b>Name the model.</b><span>The social model of disability distinguishes a body's condition from the disabling produced by environments built as though that condition didn't exist. Stairs disable a wheelchair user. The pace of a school day disables a kid who needs longer.</span></div>
+      <div class="say"><b>Ask for the design change, not the indulgence.</b><span>Slow pedagogy — unhurried time, room to revisit, the present treated as though it counted. Not a kindness extended to slow children; a change that stops manufacturing failure.</span></div>
+      <div class="say"><b>Change the water <em>and</em> hold the person.</b><span>Naming the environment is not a reason to leave anyone without help while the world gets redesigned.</span></div>
+    </div>
+
+  </div>
+
+  <div class="refusals">
+    <div class="col-head">Not:</div>
+    <p class="refusal">Not slow is better. See the bill, above. It's a set of trade-offs, and some are brutal.</p>
+    <p class="refusal">Not everyone just needs more time. Sometimes it's a different route, a support, a tool, or dropping the demand. &ldquo;Go slower&rdquo; is one accommodation, not the answer.</p>
+    <p class="refusal">Not &ldquo;but the real world won't wait.&rdquo; Sometimes true, and still no licence for BGUTI — and the real world is also built, also by someone, also changeable.</p>
+    <p class="refusal">Not a reason to skip support. Naming the environment must never leave anyone without help while we wait for it to change.</p>
+    <p class="refusal">Not biology proving a politics. A rhyme, not a proof — a person's pace would deserve respect in an ocean where everything moved at one speed.</p>
+  </div>
+
+  <p class="close">We don’t prepare students for a world of potential oppression by oppressing them.</p>
+
+  <div class="sources">
+    <strong>BGUTI</strong> is <strong>Alfie Kohn</strong>'s, from &ldquo;Getting Hit on the Head Lessons,&rdquo; <em>Education Week</em>, 7 September 2005; both quotations on the face are verbatim. The blunter line on this side is <strong>Stimpunks'</strong> own, marked as ours. The shark: <strong>Nielsen et al.</strong> (2016), <em>Science</em> 353(6300), 702&ndash;704 — figures carry real uncertainty and are given as the paper gives them, and the conservation concern is the authors' own. The <strong>social model of disability</strong> is the British disabled people's movement's — UPIAS (1976) — named by <strong>Mike Oliver</strong>. <strong>Slow pedagogy</strong> follows <strong>Alison Clark</strong>, <em>Slow Knowledge and the Unhurried Child</em>.
+  </div>
+
+  <div class="foot">
+    <div class="foot-left">
+      the full zine and every source:<br>
+      starstuff.earth/two-hundred-years-zine · stimpunks.org · morerealms.com<br>
+      print freely · share freely · <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
+    </div>
+    <div class="foot-right" role="img" aria-label="L★S">L<svg class="star" viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M50 0 61.2 34.5 97.6 34.5 68.2 55.9 79.4 90.5 50 69.1 20.6 90.5 31.8 55.9 2.4 34.5 38.8 34.5Z"/></svg>S</div>
+  </div>
+
+</div>
+
+<p class="print-hint">One sheet · print double-sided · take it to the meeting · share freely</p>
+
+<script>
+  function showSide(side) {
+    document.getElementById('side-a').classList.toggle('visible', side === 'a');
+    document.getElementById('side-b').classList.toggle('visible', side === 'b');
+    document.getElementById('btn-a').classList.toggle('active', side === 'a');
+    document.getElementById('btn-b').classList.toggle('active', side === 'b');
+  }
+</script>
+</body>
+</html>
