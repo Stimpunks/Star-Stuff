@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0a0a14">
+<link rel="canonical" href="https://starstuff.earth/print-design.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta name="description" content="How the broadsides are built, and why every number is what it is: 190 × 259 mm as the intersection of A4 and US Letter, 9 mm margins rather than 10, ink on white in both media because browsers omit background graphics, borders instead of backgrounds, two spot inks darkened until they clear AA on white, and the three tools that measure it. Plus what the tools cannot see.">
+<!-- Open Graph / link unfurl -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Star Stuff &middot; Stimpunks Foundation &times; More Realms">
+<meta property="og:url" content="https://starstuff.earth/print-design.html">
+<meta property="og:title" content="Designing for Paper &mdash; how the broadsides are built">
+<meta property="og:description" content="Every number, with the mistake that produced it. 190 × 259 mm, 9 mm margins, ink on white in both media, two spot inks that clear AA — and the three tools that measure it, plus what none of them can see.">
+<meta property="og:image" content="https://starstuff.earth/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A rainbow-hued cosmic image — we are all made of star stuff.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Designing for Paper &mdash; how the broadsides are built">
+<meta name="twitter:description" content="Every number, with the mistake that produced it. The broadside spec, the two spot inks, the three gates — and what none of them can see.">
+<meta name="twitter:image" content="https://starstuff.earth/og-card.jpg">
+<title>Designing for Paper — Print Design — Stimpunks × More Realms</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="starstuff.css">
+<style>
+  :root {
+    --void:  var(--sp-void-deep);
+    --deep:  var(--sp-deep);
+    --page:  var(--sp-page);
+    --violet:var(--sp-purple);
+    --pink:  var(--sp-pink);
+    --gold:  var(--sp-gold);
+    --cyan:  var(--sp-cyan);
+    --green: var(--sp-green);
+    --star-white: var(--sp-white-soft);
+    --stardust:   var(--sp-secondary-soft);
+    --dim:   var(--sp-dim);
+    --dim2:  var(--sp-dim-soft);
+    --card:  var(--sp-deep);
+    --border: rgba(167,139,250,0.18);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--void);
+    font-family: 'Atkinson Hyperlegible Next', system-ui, sans-serif;
+    color: var(--star-white);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 8% 12%, rgba(251,191,36,0.7) 0%, transparent 100%),
+      radial-gradient(1px 1px at 22% 38%, rgba(244,244,251,0.6) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 44% 9%, rgba(251,191,36,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 61% 68%, rgba(34,211,238,0.6) 0%, transparent 100%),
+      radial-gradient(2px 2px at 74% 28%, rgba(244,244,251,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 84% 54%, rgba(167,139,250,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 91% 79%, rgba(244,244,251,0.7) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 4% 58%, rgba(251,191,36,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 34% 84%, rgba(244,244,251,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 54% 48%, rgba(244,114,182,0.4) 0%, transparent 100%),
+      radial-gradient(2px 2px at 19% 88%, rgba(167,139,250,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 69% 4%, rgba(244,244,251,0.8) 0%, transparent 100%),
+      radial-gradient(1px 1px at 47% 62%, rgba(74,222,128,0.5) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 30% 20%, rgba(244,244,251,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 77% 88%, rgba(34,211,238,0.5) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .doc-shell { position: relative; z-index: 1; max-width: 860px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+
+  .spectrum-line { height: 2px; border: none; border-radius: 2px; background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); }
+
+  .nav-brand { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--dim); margin: 1.6rem 0 2.5rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(167,139,250,0.2); }
+
+  .hero { margin-bottom: 2.5rem; }
+  .hero-eyebrow { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.36em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.3rem; }
+  .hero-title { font-weight: 700; font-size: clamp(2.1rem, 6vw, 3.4rem); line-height: 1.05; letter-spacing: -0.02em; color: var(--star-white); margin-bottom: 1.1rem; }
+  .hero-title em { font-style: normal; background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .hero-count { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--dim); margin-bottom: 0.9rem; }
+  .hero-sub { font-size: 1.08rem; line-height: 1.65; color: var(--stardust); max-width: 38rem; }
+  .hero-rule { width: 200px; max-width: 55%; margin-top: 1.6rem; }
+
+  h2.section { font-weight: 700; font-size: 1.4rem; line-height: 1.2; color: var(--star-white); margin: 2.6rem 0 0.5rem; letter-spacing: -0.01em; }
+  h3.sub { font-family: 'Space Mono', monospace; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin: 1.8rem 0 0.4rem; }
+  .body-text { font-size: 1.02rem; line-height: 1.75; color: var(--stardust); }
+  .body-text p { margin-top: 1rem; }
+  .body-text em { font-style: italic; color: var(--star-white); }
+  .body-text strong { font-weight: 700; color: var(--star-white); }
+  .body-text a { color: var(--gold); text-decoration: none; border-bottom: 1px solid currentColor; }
+  .body-text a:hover { border-bottom-width: 2px; }
+  .body-text code { font-family: 'Space Mono', monospace; font-size: 0.88em; color: var(--star-white); }
+
+  /* Spec table. The numbers are the argument, so they get a table rather than a
+     paragraph — a reader checking one should be able to find it. */
+  .spec { width: 100%; border-collapse: collapse; margin-top: 1.4rem; font-size: 0.95rem; }
+  .spec th, .spec td { text-align: left; padding: 0.7rem 0.8rem 0.7rem 0; border-bottom: 1px solid var(--border); vertical-align: top; line-height: 1.6; }
+  .spec th { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 700; padding-right: 1.4rem; width: 30%; }
+  .spec td { color: var(--stardust); }
+  .spec strong { color: var(--star-white); }
+  .spec-wrap { overflow-x: auto; }
+
+  /* Ink swatches, shown on white because that is the substrate they are measured
+     against. The ratio beside each is against this white, not against the page. */
+  .inks { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 0.7rem; margin-top: 1.4rem; }
+  .ink { display: flex; align-items: center; gap: 0.8rem; background: #ffffff; border-radius: 6px; padding: 0.7rem 0.9rem; }
+  .ink-chip { width: 2.2rem; height: 2.2rem; border-radius: 4px; flex: none; }
+  .ink-meta { font-family: 'Space Mono', monospace; font-size: 0.66rem; line-height: 1.7; color: #333333; }
+  .ink-meta b { display: block; font-size: 0.72rem; color: #111111; }
+
+  .tool { border-left: 3px solid var(--cyan); padding: 0.1rem 0 0.1rem 1.1rem; margin-top: 1.6rem; }
+  .tool-name { font-family: 'Space Mono', monospace; font-size: 0.78rem; font-weight: 700; color: var(--cyan); letter-spacing: 0.04em; }
+  .tool p { margin-top: 0.5rem; }
+
+  .callout { border: 1px solid rgba(251,191,36,0.32); border-left: 3px solid var(--gold); border-radius: 0 6px 6px 0; padding: 1.1rem 1.3rem; margin: 2rem 0 0; background: rgba(251,191,36,0.05); }
+  .callout .callout-label { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem; }
+  .callout p { font-size: 0.96rem; line-height: 1.7; color: var(--stardust); }
+  .callout p + p { margin-top: 0.7rem; }
+  .callout strong { color: var(--star-white); font-weight: 700; }
+
+  .colophon-footer { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--dim2); line-height: 2.2; margin-top: 3rem; padding-top: 1.4rem; border-top: 1px solid rgba(167,139,250,0.14); }
+  .colophon-footer a { color: inherit; }
+
+  @media (max-width: 600px) {
+    .doc-shell { padding: 2rem 1.3rem 3rem; }
+    .inks { grid-template-columns: 1fr; }
+    .spec th, .spec td { display: block; width: auto; padding-right: 0; }
+    .spec th { border-bottom: none; padding-bottom: 0.2rem; }
+  }
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Designing for Paper — how the broadsides are built","description":"The broadside specification with the reasoning behind each number: 190 × 259 mm as the intersection of A4 and US Letter, 9 mm margins rather than 10, ink on white in both media because browsers omit background graphics, borders instead of backgrounds, two spot inks darkened until they clear AA on white, and the three tools that measure it — plus what none of them can see.","image":"https://starstuff.earth/og-card.jpg","url":"https://starstuff.earth/print-design.html","mainEntityOfPage":"https://starstuff.earth/print-design.html","author":{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/"},"publisher":[{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/","logo":{"@type":"ImageObject","url":"https://starstuff.earth/og-card.jpg"}},{"@type":"Organization","name":"More Realms","url":"https://morerealms.com/"}],"isPartOf":{"@type":"WebSite","name":"Star Stuff","url":"https://starstuff.earth/"},"license":"https://creativecommons.org/licenses/by-sa/4.0/"}</script>
+</head>
+<body>
+
+<div class="doc-shell">
+
+  <nav class="ss-nav" style="--nav-accent:#fbbf24;" aria-label="Star Stuff collection">
+    <span class="ss-nav-home-group"><a class="ss-nav-home" href="index.html"><span class="ss-star" aria-hidden="true">★</span> stuff</a><a class="ss-nav-about" href="about.html">about</a>
+      <a class="ss-nav-search" href="search.html">search</a></span>
+  </nav>
+
+  <div class="nav-brand"><a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks</a> &times; <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a> &middot; Notes &middot; Print Design</div>
+
+  <header class="hero">
+    <div class="hero-eyebrow"><a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks Foundation</a> &times; <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a> &middot; Rationale</div>
+    <h1 class="hero-title">Designing for <em>Paper</em></h1>
+    <div class="hero-count">Notes &amp; Rationale &middot; how the broadsides are built</div>
+    <p class="hero-sub">Every number here was arrived at by printing something and finding out it was wrong. This page is the working — the spec, the inks, the gates, and the faults that no gate can see.</p>
+    <hr class="spectrum-line hero-rule">
+  </header>
+
+  <div class="body-text">
+
+    <p>Backing material for the <a href="collection-print.html">Print collection</a>, which argues <em>what</em> earns a sheet. This one covers <em>how</em> a sheet is made, and is deliberately outside the reading chain — it is reference, not a stop on the tour. For the site-wide visual language, see <a href="design.html">The Design System</a>; this page is only about the artifacts made for paper.</p>
+
+    <h2 class="section">The format</h2>
+    <p>One fixed specification for every sheet. The point of a fixed format is that five different arguments come off the printer as the same object — a rack, not a pile — and that a reader in any country gets the same artifact from the same file.</p>
+
+    <div class="spec-wrap">
+    <table class="spec">
+      <tr>
+        <th>190 × 259 mm</th>
+        <td>The intersection of A4 and US Letter. At 9 mm page margins, A4 gives a box of 192 × 279 mm and Letter gives 198 × 261 — so a sheet inside <strong>both</strong> is one file that prints uncropped in either country, with no &ldquo;US version&rdquo; to maintain and get out of sync.</td>
+      </tr>
+      <tr>
+        <th>9 mm margins, not 10</th>
+        <td>At 10 mm the Letter box is 259.4 mm against a 259 mm sheet. That 0.4 mm of slack was thin enough for sub-pixel rounding to tip the whole thing onto <strong>a third page</strong>. Found by printing to PDF and counting, not by reading the arithmetic — the arithmetic said it fit.</td>
+      </tr>
+      <tr>
+        <th>Two sides, A and B</th>
+        <td>Side A is the face; side B does the work. Enforced structurally: each side is a <code>.sheet</code> element with <code>page-break-after</code> on the first, so the file is two printed sides or it is broken.</td>
+      </tr>
+      <tr>
+        <th>Breakpoint below 700 px</th>
+        <td>The one that looks like a screen concern and isn't. <strong>Print media queries resolve against the page box, not the screen</strong> — and the narrowest real page box here is A4 less its margins, 192 mm, or about 726 px. A mobile breakpoint set at 820 px was therefore matching <em>on paper</em>, collapsing a two-column card into one 190 mm column at roughly 95 characters a line, long enough that side B overran and was silently clipped.</td>
+      </tr>
+    </table>
+    </div>
+
+    <h2 class="section">Ink on white, in both media</h2>
+    <p>The rest of the site is light on dark, and <code>starstuff.css</code> inverts it inside <code>@media print</code> so a zine survives being printed. The broadsides never enter that machinery: they are drawn as ink on white on screen <em>and</em> on paper, so what you see in a browser is a preview of the sheet rather than a different design that will be converted later.</p>
+    <p>The reason is blunt. <strong>Browsers leave <em>Background graphics</em> off by default</strong>, so a light-on-dark page reaches paper blank — which is exactly what happened to 44 of the 46 pages on this site until somebody measured it. A broadside cannot depend on a reader finding a checkbox in a print dialog, because the whole premise is that it gets handed to people and photocopied by people who never saw the web page at all.</p>
+
+    <h3 class="sub">Borders, not backgrounds</h3>
+    <p>Same constraint, one level down. The registration bar across the top of each sheet is a <code>border-top</code>, not a background — because borders survive that checkbox and background colours do not. An earlier design put the cream stock in a <code>background-color</code> and a halftone in a <code>background-image</code>, and neither ever reached paper. What <em>did</em> print was the gold misregistration shadow, because it happened to be text: at 1.84:1 on white, a faint smudge. The reader got the flaw of the effect and none of its charm.</p>
+
+    <h2 class="section">Type</h2>
+    <p><strong>Atkinson Hyperlegible Next throughout</strong>, with Space Mono for labels and chrome. Atkinson was drawn by the Braille Institute for letterform distinction at exactly the small sizes a hand-out uses — the 6–9 pt range where a broadside does most of its work.</p>
+    <p><strong>No display serif.</strong> Fraunces was inherited from the earlier risograph costume and went with it. It is <em>Bone Song</em>'s editorial voice, not a broadside's, and more to the point it is a high-contrast serif whose hairlines are the first thing to drop out of a photocopy or a tired laser printer — which is most of a broadside's life. Worth recording that before this was fixed, the sheets <em>loaded</em> Atkinson and rendered 0% of their characters in it.</p>
+    <p><strong>The star is drawn, not typed.</strong> Atkinson has no <code>U+2605</code>, so a typed ★ silently comes from whatever font the reader's system happens to supply — measurably so: the character rendered at exactly the generic-serif advance width. For a logotype on a sheet meant to print identically everywhere, that is not good enough, so the L★S mark is an SVG path with an inner radius 0.382 of the outer, filled <code>currentColor</code> so it inherits the surrounding ink.</p>
+
+    <h2 class="section">Two spot inks</h2>
+    <p>An explicit exception to a house rule. <code>starstuff.css</code> flattens all five accents to near-black inside <code>@media print</code> <em>on purpose</em> — print is monochrome by default here. The broadsides keep two colours each, declared as literal hex rather than aliased to the <code>--sp-*</code> tokens, and forced through with <code>print-color-adjust: exact</code>.</p>
+    <p>They have to be declared literally because <strong>the screen accents measure 1.6–2.7:1 on white</strong> and are unusable as paper ink. So each is the house hue darkened until it clears WCAG AA on white, and each sheet takes a different pair — which means the bar across the top tells you which sheet you are holding when five of them are face-down in a stack. That is the registration bar's real job.</p>
+
+    <div class="inks">
+      <div class="ink"><span class="ink-chip" style="background:#92400e;"></span><span class="ink-meta"><b>Gold &middot; #92400e</b>7.1:1 &middot; L★S face</span></div>
+      <div class="ink"><span class="ink-chip" style="background:#5b21b6;"></span><span class="ink-meta"><b>Violet &middot; #5b21b6</b>9.0:1 &middot; Six Ways face</span></div>
+      <div class="ink"><span class="ink-chip" style="background:#9d174d;"></span><span class="ink-meta"><b>Pink &middot; #9d174d</b>7.9:1 &middot; What We Refuse face</span></div>
+      <div class="ink"><span class="ink-chip" style="background:#166534;"></span><span class="ink-meta"><b>Green &middot; #166534</b>7.1:1 &middot; Owed, Not Earned face</span></div>
+      <div class="ink"><span class="ink-chip" style="background:#164e63;"></span><span class="ink-meta"><b>Cyan &middot; #164e63</b>9.1:1 &middot; The Same Water face</span></div>
+    </div>
+
+    <h2 class="section">What we check, and how</h2>
+    <p>For about a year, both of the original broadsides said &ldquo;two-sided single sheet&rdquo; in their own copy, and both were lying. Measured by printing to PDF and counting pages: <strong>the L★S sheet came out as three sides on US Letter and two on A4</strong> — a different physical object depending on the reader's country — and <em>Six Ways</em> came out as four sides on both. Nothing in the repository could see it, because the checks that existed measured whether ink was legible, not whether it landed on the page.</p>
+    <p>Three committed tools now run before a sheet ships. Each exists because something shipped broken in a way the others could not detect.</p>
+
+    <div class="tool">
+      <div class="tool-name">tools/check-sheets.mjs</div>
+      <p>Prints each sheet at both paper sizes and counts pages, <em>and</em> separately measures content height against the box. The separate measurement is the subtle part: a fixed-height sheet whose content overruns does not paginate — it is silently <strong>clipped</strong> — so a clean page count can still hide a cut-off final line. It measures at the real page-box width rather than a desktop viewport, for the breakpoint reason above.</p>
+    </div>
+
+    <div class="tool">
+      <div class="tool-name">tools/check-contrast.mjs</div>
+      <p>Composites every text element against its <em>real</em> ancestor background stack, on screen and under print emulation, at WCAG AA. It runs a separate pass for SVG <code>text</code> fills, because <code>color</code> never reaches <code>fill</code> and a CSS-only pass is structurally blind to diagrams. The print pass composites against the bare white sheet rather than trusting emulated print media, which still paints backgrounds a real reader will not get.</p>
+    </div>
+
+    <div class="tool">
+      <div class="tool-name">tools/check-markup.mjs</div>
+      <p>Reads source rather than the DOM, and that is the design: it catches markup the browser silently rewrites — nested <code>&lt;a&gt;</code> or <code>&lt;button&gt;</code>, a block element inside a <code>&lt;p&gt;</code>, duplicate <code>id</code>s. You cannot find these in a DOM, because by the time a DOM exists the parser has already repaired the nesting and the evidence is gone.</p>
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">What the tools cannot see</div>
+      <p>All three measure something real, and all three have been walked past. Kept here as a standing caveat rather than a solved problem:</p>
+      <p><strong>A label can be perfectly legible and still unreadable.</strong> The figure on <em>The Same Water</em> passed the contrast check on all seven of its labels while one of them sat directly on top of the line it was labelling. Colour was fine. Position was not, and nothing measures position.</p>
+      <p><strong>A decorative element can lie across the artwork.</strong> The rotated edge stamp on the L★S sheet had been printing 265 px from the right edge — straight through the giant L★S, the tagline and one of the three pillars — on the live page, for as long as that sheet existed. Every check passed it.</p>
+      <p><strong>A structurally broken page can measure clean.</strong> Four nested anchors took the Print collection's card grid apart: boxes ending early, descriptions orphaned, footers floating in space. Contrast passed it because the text <em>was</em> legible; the search index passed it because the words <em>were</em> all there. <code>check-markup.mjs</code> exists because of that one, and its own limits are the same shape.</p>
+      <p>The rule this leaves us with: <strong>run the gates, then look at the thing.</strong> The gates catch what they were built to catch, and the next fault will be of a kind nobody has written a gate for yet.</p>
+    </div>
+
+    <h2 class="section">Take it and reuse it</h2>
+    <p>The whole specification is four numbers and two rules: <strong>190 × 259 mm at 9 mm margins</strong>, ink on white in both media, borders rather than backgrounds for anything that must survive to paper, and two inks darkened until they clear AA on white. Everything else is editorial.</p>
+    <p>The sheets are <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>, the tools are in <code>tools/</code>, and the whole repository is public. If you make broadsides for your own community with this, that is the intended outcome, not a tolerated one — and you will not need our colours, only the method.</p>
+
+    <div class="colophon-footer">
+      <a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks Foundation</a> &times; <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a> &middot; Print Design &middot; L★S<br>
+      Backing material &middot; deliberately outside the reading chain &middot; see also <a href="collection-print.html">the Print collection</a> and <a href="design.html">the Design System</a><br>
+      stimpunks.org &middot; morerealms.com &middot; starstuff.earth &middot; <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
+    </div>
+  </div>
+
+</div><!-- /doc-shell -->
+
+</body>
+</html>
