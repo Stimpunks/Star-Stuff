@@ -111,6 +111,33 @@ Decisions still to make. Move to **Settled** with a date once resolved.
 Decisions already made, with a one-line why. Backfilled from git history — dates are first
 commit evidence, not necessarily when the call was made.
 
+- **2026-08-12 — Field Guides become the eighth collection page, sorted by *form*.** The 2026-08-11
+  entry below left the Field Guides "untouched as their own series," which was right at the time and
+  is now superseded: eleven guides had accumulated with no landing page, so the only thing arguing
+  for them as a set was the index. They get `collection-field-guides.html`, and **the axis is form,
+  not register** — a catalogue of same-shaped entries, each standing alone, none ranked. That was
+  the whole reason they resisted the register sort: FG 2 is settled physics and FG 1 is frank
+  invention, and they are plainly the same kind of object. **This makes the two-axis structure
+  explicit** — five collections sort by register; Print and Sound sort by medium; Field Guides sort
+  by form. Eight pages, two axes, and `CLAUDE.md` now says so rather than presenting five as the
+  shape. **The disclosure is the convention, not the exception:** Print stated its odd axis on its
+  own face rather than letting it read as an oversight, Sound repeated it, Field Guides repeats it
+  again — so a fourth off-register collection inherits the obligation. Chain rewritten to 68 pages,
+  measured in both directions rather than counted.
+- **2026-08-12 — A subject that cannot take the apparatus gets a different card, not a smaller one.**
+  Promoted from a one-off in Field Guide No. 10 to a standing rule, because it is the sharpest thing
+  the catalogue form has learned about itself. That guide holds twelve animals and then five
+  *turtles people made* — Turtle Island, *ao*, Kurma, Great A'Tuin, and a Larrakia Star Dreaming it
+  cites rather than retells — in a separate section, with a dashed border and **no reframe table**.
+  The reason is not decorative: the reframe table is a machine for correcting a mistaken verdict,
+  and running "sounds like / actually" over somebody's cosmology would be obscene. **Rejected: filing
+  them as ordinary entries**, which would have produced a tidier page and a much worse one. The
+  format difference is doing the argument's work, so it has to survive any future tidying pass.
+- **2026-08-12 — Print both numbers when a count is ambiguous.** The Field Guides page says **114
+  entries and 119 cards**, the gap being the five made turtles that are deliberately not entries —
+  the same move Sound already makes with 90 cards / 86 distinct songs. Settled as a house habit
+  rather than a per-page choice: where a collection can be counted two defensible ways, print both
+  and say what the difference is, instead of rounding the awkward one away.
 - **2026-08-11 — Five collections, and no renumbering.** The 35 zines are sorted into **Star Stuff**
   (founding register), **Star Gazing** (Helen's name; experimental/neuroqueer), **More Than Human**
   (de-anthropocentrized), **Kin** (natural history), and **Stars We Grew Up On** (culture) — plus the
