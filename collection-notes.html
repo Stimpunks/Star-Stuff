@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0a0a14">
+<link rel="canonical" href="https://starstuff.earth/collection-notes.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta name="description" content="The Notes &amp; Rationale collection — the working material, published on purpose. The public error log, two design systems including what the tools cannot see, and the backing material for why difference gets to come first. The whole section sits outside the reading chain, which is the point.">
+<!-- Open Graph / link unfurl -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Star Stuff &middot; Stimpunks Foundation &times; More Realms">
+<meta property="og:url" content="https://starstuff.earth/collection-notes.html">
+<meta property="og:title" content="Notes &amp; Rationale &mdash; a Star Stuff collection">
+<meta property="og:description" content="The working material, published on purpose: the public error log, two design systems, and the backing material for why difference comes first.">
+<meta property="og:image" content="https://starstuff.earth/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A rainbow-hued cosmic image — we are all made of star stuff.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Notes &amp; Rationale &mdash; a Star Stuff collection">
+<meta name="twitter:description" content="The working material, published on purpose — including every error we have caught in our own work.">
+<meta name="twitter:image" content="https://starstuff.earth/og-card.jpg">
+<title>Notes &amp; Rationale — a Star Stuff collection — Stimpunks × More Realms</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="starstuff.css">
+<style>
+  :root {
+    --void:  var(--sp-void-deep);
+    --deep:  var(--sp-deep);
+    --page:  var(--sp-page);
+    --violet:var(--sp-purple);
+    --pink:  var(--sp-pink);
+    --gold:  var(--sp-gold);
+    --cyan:  var(--sp-cyan);
+    --green: var(--sp-green);
+    --star-white: var(--sp-white-soft);
+    --stardust:   var(--sp-secondary-soft);
+    --dim:   var(--sp-dim);
+    --dim2:  var(--sp-dim-soft);
+    --card:  var(--sp-deep);
+    --border: rgba(34,211,238,0.18);
+    --accent: var(--sp-cyan);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--void);
+    font-family: 'Atkinson Hyperlegible Next', system-ui, sans-serif;
+    color: var(--star-white);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 8% 12%, rgba(34,211,238,0.8) 0%, transparent 100%),
+      radial-gradient(1px 1px at 22% 38%, rgba(244,244,251,0.6) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 44% 9%, rgba(251,191,36,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 61% 68%, rgba(34,211,238,0.6) 0%, transparent 100%),
+      radial-gradient(2px 2px at 74% 28%, rgba(244,244,251,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 84% 54%, rgba(167,139,250,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 91% 79%, rgba(244,244,251,0.7) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 4% 58%, rgba(74,222,128,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 34% 84%, rgba(244,244,251,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 54% 48%, rgba(244,114,182,0.4) 0%, transparent 100%),
+      radial-gradient(2px 2px at 19% 88%, rgba(34,211,238,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 69% 4%, rgba(244,244,251,0.8) 0%, transparent 100%),
+      radial-gradient(1px 1px at 47% 62%, rgba(74,222,128,0.5) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 30% 20%, rgba(244,244,251,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 77% 88%, rgba(34,211,238,0.5) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .doc-shell { position: relative; z-index: 1; max-width: 860px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+
+  .spectrum-line { height: 2px; border: none; border-radius: 2px; background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); }
+
+  .nav-brand { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--dim); margin: 1.6rem 0 2.5rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(34,211,238,0.2); }
+
+  .hero { margin-bottom: 2.5rem; }
+  .hero-eyebrow { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.36em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.3rem; }
+  .hero-title { font-weight: 700; font-size: clamp(2.1rem, 6vw, 3.4rem); line-height: 1.05; letter-spacing: -0.02em; color: var(--star-white); margin-bottom: 1.1rem; }
+  .hero-title em { font-style: normal; background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .hero-count { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--dim); margin-bottom: 0.9rem; }
+  .hero-sub { font-size: 1.08rem; line-height: 1.65; color: var(--stardust); max-width: 38rem; }
+  .hero-rule { width: 200px; max-width: 55%; margin-top: 1.6rem; }
+
+  h2.section { font-weight: 700; font-size: 1.4rem; line-height: 1.2; color: var(--star-white); margin: 2.6rem 0 0.5rem; letter-spacing: -0.01em; }
+  .body-text { font-size: 1.02rem; line-height: 1.75; color: var(--stardust); }
+  .body-text p { margin-top: 1rem; }
+  .body-text em { font-style: italic; color: var(--star-white); }
+  .body-text strong { font-weight: 700; color: var(--star-white); }
+  .body-text a { color: var(--accent); text-decoration: none; border-bottom: 1px solid currentColor; }
+  .body-text a:hover { border-bottom-width: 2px; }
+
+  /* The gradient of publication. A labelled list, because these are places on
+     a scale rather than steps in a process. */
+  .tiers { list-style: none; margin-top: 1.4rem; }
+  .tiers li { position: relative; padding-left: 1.2rem; margin-top: 0.9rem; }
+  .tiers li::before { content: ''; position: absolute; left: 0; top: 0.62em; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); }
+  .tiers b { color: var(--star-white); font-weight: 700; }
+
+  .refusals { border: 1px solid rgba(244,114,182,0.32); border-left: 3px solid var(--pink); border-radius: 0 6px 6px 0; padding: 1.1rem 1.3rem; margin: 2rem 0 0; background: rgba(244,114,182,0.05); }
+  .refusals .refusals-label { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--pink); margin-bottom: 0.5rem; }
+  .refusals p { font-size: 0.96rem; line-height: 1.7; color: var(--stardust); }
+  .refusals p + p { margin-top: 0.7rem; }
+  .refusals strong { color: var(--star-white); font-weight: 700; }
+  .refusals a { color: var(--pink); text-decoration: none; border-bottom: 1px solid rgba(244,114,182,0.4); }
+
+  .artifact-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
+
+  .card { background: var(--card); border-radius: 8px; border: 1px solid var(--border); padding: 1.25rem; position: relative; text-decoration: none; color: inherit; display: flex; flex-direction: column; transition: box-shadow 0.2s ease, background 0.2s ease, transform 0.2s ease; }
+  .card:hover { background: #131330; box-shadow: 0 4px 28px rgba(34,211,238,0.14); transform: translateY(-2px); }
+  .card::before { content: ''; position: absolute; top: 8px; left: 0; width: 3px; height: calc(100% - 16px); background: var(--card-color, var(--accent)); border-radius: 0 2px 2px 0; }
+
+  .card-number { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dim); margin-bottom: 0.5rem; }
+  .card-title { font-size: 1.25rem; font-weight: 600; color: var(--star-white); line-height: 1.2; margin-bottom: 0.4rem; }
+  .card-series { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--card-color, var(--accent)); margin-bottom: 0.75rem; }
+  .card-moment { font-family: 'Space Mono', monospace; font-size: 0.68rem; line-height: 1.7; color: var(--star-white); margin-bottom: 0.7rem; padding-left: 0.7rem; border-left: 2px solid var(--card-color, var(--accent)); }
+  .card-desc { font-size: 0.875rem; color: var(--stardust); line-height: 1.65; flex: 1; margin-bottom: 1.25rem; }
+  .card-footer { display: flex; justify-content: space-between; align-items: center; padding-top: 0.9rem; border-top: 1px solid var(--border); }
+  .card-tag { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dim); background: rgba(34,211,238,0.08); border: 1px solid var(--border); border-radius: 4px; padding: 0.2rem 0.6rem; }
+  .card-arrow { font-size: 0.875rem; color: var(--card-color, var(--accent)); font-weight: 700; transition: transform 0.2s ease; }
+  .card:hover .card-arrow { transform: translateX(3px); }
+
+  .colophon-footer { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--dim2); line-height: 2.2; margin-top: 3rem; padding-top: 1.4rem; border-top: 1px solid rgba(34,211,238,0.14); }
+  .colophon-footer a { color: inherit; }
+
+  @media (max-width: 600px) {
+    .doc-shell { padding: 2rem 1.3rem 3rem; }
+    .artifact-grid { grid-template-columns: 1fr; }
+  }
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Notes & Rationale — a Star Stuff collection","description":"The Notes & Rationale collection — the working material, published on purpose: the public error log, two design systems including what the tools cannot see, and the backing material for why difference comes first.","url":"https://starstuff.earth/collection-notes.html","mainEntityOfPage":"https://starstuff.earth/collection-notes.html","image":"https://starstuff.earth/og-card.jpg","isPartOf":{"@type":"WebSite","name":"Star Stuff","url":"https://starstuff.earth/"},"publisher":[{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/","logo":{"@type":"ImageObject","url":"https://starstuff.earth/og-card.jpg"}},{"@type":"Organization","name":"More Realms","url":"https://morerealms.com/"}],"hasPart":[{"@type":"WebPage","name":"What Changed, and When","url":"https://starstuff.earth/changelog.html"},{"@type":"WebPage","name":"The Design System","url":"https://starstuff.earth/design.html"},{"@type":"WebPage","name":"Designing for Paper","url":"https://starstuff.earth/print-design.html"},{"@type":"WebPage","name":"The Difference-First Frame","url":"https://starstuff.earth/difference-first-frame.html"}]}</script>
+</head>
+<body>
+
+<div class="doc-shell">
+
+  <!-- Home-group only, no prev/next: this collection and all four of its members
+       sit outside the reading chain by decision, the same as about.html and
+       cosmic-connections.html. A chain link here would lead somewhere the
+       members cannot be reached from. -->
+  <nav class="ss-nav" style="--nav-accent:#22d3ee;" aria-label="Star Stuff collection">
+    <span class="ss-nav-home-group"><a class="ss-nav-home" href="index.html"><span class="ss-star" aria-hidden="true">★</span> stuff</a><a class="ss-nav-about" href="about.html">about</a>
+      <a class="ss-nav-search" href="search.html">search</a></span>
+  </nav>
+
+  <div class="nav-brand"><a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks</a> &times; <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a> &middot; Collection &middot; Notes &amp; Rationale</div>
+
+  <header class="hero">
+    <div class="hero-eyebrow"><a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks Foundation</a> &times; <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a> &middot; Working Papers</div>
+    <h1 class="hero-title">We Left the <em>Workings</em> In</h1>
+    <div class="hero-count">A Star Stuff collection &middot; four working papers</div>
+    <p class="hero-sub">The apparatus, published on purpose: what changed and when, every error we caught in our own work, how the pages are built for screen and for paper, and what the measuring tools still cannot see.</p>
+    <hr class="spectrum-line hero-rule">
+  </header>
+
+  <div class="body-text">
+
+    <h2 class="section">Why publish the apparatus at all</h2>
+    <p>Most projects keep this material in a drawer. Ours is in the open for one reason, and it is a consistency argument rather than a virtue: <strong>a site that spends this much time telling you to check the primary source cannot then ask you to take its own work on trust.</strong></p>
+    <p><a href="too-good-to-check.html">Too Good to Check</a>, over in <a href="collection-foundations.html">Foundations</a>, names six ways a fact goes wrong here. That essay is only worth anything if there is visible evidence of the checking actually happening — a dated record of what we got wrong, what is right, and who caught it. Otherwise it is a page about rigour, which is the cheapest kind of page there is.</p>
+    <p>So this collection is the receipts. It is also, frankly, the part most likely to be useful to someone building something of their own: the design system and the print rules are the accumulated results of getting it wrong first, and they are <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA</a> like everything else.</p>
+
+    <h2 class="section">Published, and not</h2>
+    <p>There is a gradient here rather than a wall, and it is worth naming since this page is where a reader would wonder:</p>
+
+    <ul class="tiers">
+      <li><b>On the site.</b> The four pages below. The <a href="changelog.html">changelog</a> also answers at <code>/changelog</code>, because it is the one people link to.</li>
+      <li><b>In the repository, public but not a page.</b> <code>FACTCHECK.md</code> — the full per-piece ledger, keyed by number, with every status and open item. Linked from the changelog for anyone who wants the long version.</li>
+      <li><b>In the repository, deliberately a working doc.</b> <code>DECISIONS.md</code> says on its own face that it is not published — it's for us. It tracks choices made and choices still open, in a register that would be misleading as a public statement.</li>
+    </ul>
+
+    <p><strong>Nothing here is hidden; some of it is simply not a page.</strong> The line is about what has been written for a reader versus what is still shop talk, not about what we are willing to show.</p>
+  </div>
+
+  <div class="artifact-grid">
+
+    <a class="card" href="changelog.html" style="--card-color: #f472b6;">
+      <div class="card-number">Changelog</div>
+      <div class="card-title">What Changed, and When</div>
+      <div class="card-series">Notes &middot; the public error log</div>
+      <p class="card-moment">Publishing our own errors is the method, not an embarrassment.</p>
+      <p class="card-desc">Every zine and field guide as it was added, every substantial revision, and every fact-check and attribution audit — <strong>including the errors we found in our own work and exactly how we fixed them</strong>. A Martin Luther King Jr. line we credited to Baldwin. A paraphrase dressed as a Sagan quote. A forest-wide fungal network asserted as settled because it rhymed so well with mutual aid. Corrections are named plainly, with who caught them.</p>
+      <div class="card-footer"><span class="card-tag">Dated, newest first</span><span class="card-arrow">&rarr;</span></div>
+    </a>
+
+    <a class="card" href="design.html" style="--card-color: #a78bfa;">
+      <div class="card-number">Design</div>
+      <div class="card-title">The Design System</div>
+      <div class="card-series">Notes &middot; how the screen works</div>
+      <p class="card-moment">Accessibility-first, printable, and credited.</p>
+      <p class="card-desc">Atkinson Hyperlegible, a five-accent palette on a violet-cast near-black, full-opacity body text at <strong>18.84:1</strong>, and a starfield in pure CSS. Includes the lineage done honestly: what the palette borrowed from Solarized is the <em>method</em> — a named accent set at near-uniform lightness on a non-black ground — and none of the actual values, which are Tailwind's 400 ramp. Our contrast target is the opposite of Solarized's.</p>
+      <div class="card-footer"><span class="card-tag">Tokens &amp; rationale</span><span class="card-arrow">&rarr;</span></div>
+    </a>
+
+    <a class="card" href="print-design.html" style="--card-color: #fbbf24;">
+      <div class="card-number">Design</div>
+      <div class="card-title">Designing for Paper</div>
+      <div class="card-series">Notes &middot; how the paper works</div>
+      <p class="card-moment">Every number on the page, and why it is that number.</p>
+      <p class="card-desc"><strong>190 × 259 mm</strong> as the intersection of A4 and US Letter, so one sheet prints uncropped on either. Nine-millimetre margins rather than ten, because at ten the Letter box measures 259.4 mm against a 259 mm sheet and that sub-pixel overflow produced a silent third page. Ink on white in both media, because browsers omit background graphics by default. Borders instead of backgrounds; two spot inks darkened until they clear AA on white. <em>And a section on what the tools cannot see.</em></p>
+      <div class="card-footer"><span class="card-tag">Measured, not assumed</span><span class="card-arrow">&rarr;</span></div>
+    </a>
+
+    <a class="card" href="difference-first-frame.html" style="--card-color: #4ade80;">
+      <div class="card-number">Backing Material</div>
+      <div class="card-title">The Difference-First Frame</div>
+      <div class="card-series">Notes &middot; the frame behind the frame</div>
+      <p class="card-moment">A resonant frame, not a proof — and it says so.</p>
+      <p class="card-desc">A summary of Helen Edgar's essay <em>Why Difference Comes First</em>, held here for anyone who asks why difference gets to be the starting point rather than a deviation from a norm: the cosmic microwave background needing tiny perturbations to make any structure at all, Deleuze on difference before identity, relational quantum mechanics, and ethodiversity. Kept as backing material rather than promoted to a zine, precisely because it is a resonance across four fields and not an argument any one of them makes.</p>
+      <div class="card-footer"><span class="card-tag">After Helen Edgar</span><span class="card-arrow">&rarr;</span></div>
+    </a>
+
+  </div>
+
+  <div class="body-text">
+
+    <h2 class="section">Why this whole section is off the reading chain</h2>
+    <p>Nearly every page in the collection is linked into a single prev/next reading order — seventy of them, running from <a href="collection-start-here.html">Start Here</a> through to the last broadside. <strong>All four pages above sit outside it, and so does this one</strong> — the only collection page that does.</p>
+    <p>That is deliberate and it follows from what these are. A changelog is something you consult when you want to know whether a claim moved; a design system is something you open when you are building. Threading them into a reading sequence would put a maintenance document between two zines and imply an order nobody wants. <a href="about.html">About</a> and <a href="cosmic-connections.html">Cosmic Connections</a> are off the chain for the same reason.</p>
+    <p>So they are reached the way reference material should be: from <a href="index.html">the front page</a>, from the nav, from <a href="search.html">search</a>, and from the pages that cite them. <em>Being off the path is not the same as being buried.</em></p>
+
+    <div class="refusals">
+      <div class="refusals-label">Not</div>
+      <p><strong>Not a disclaimer page.</strong> Nothing here is hedging the rest of the site. The changelog exists because the claims are meant to be checkable, which is the opposite of a caveat.</p>
+      <p><strong>Not a completeness claim.</strong> The changelog records the errors we <em>found</em>. It cannot record the ones still sitting in a page nobody has re-read — and the ledger keeps an open-items list precisely because that set is never empty.</p>
+      <p><strong>Not process theatre.</strong> These pages exist because they get used: the print rules came out of forty-four pages that printed blank, and the design system out of a contrast audit that found real failures. A document that recorded no failures would not be worth the file.</p>
+      <p><strong>Not the interesting part.</strong> If you have limited attention today, spend it on <a href="collection-star-stuff.html">a zine</a>. This collection will still be here, and it is written for the person who has already read something and wants to know how it was made or whether it has changed.</p>
+    </div>
+
+    <div class="colophon-footer">
+      <a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks Foundation</a> &times; <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a> &middot; Notes &amp; Rationale &middot; L&#9733;S<br>
+      A collection, not a folder &middot; four working papers &middot; all of them off the reading chain, on purpose<br>
+      The ethic these serve: <a href="too-good-to-check.html">Too Good to Check</a> &middot; in <a href="collection-foundations.html">Foundations</a><br>
+      stimpunks.org &middot; morerealms.com &middot; starstuff.earth &middot; <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
+    </div>
+  </div>
+
+</div><!-- /doc-shell -->
+
+</body>
+</html>
