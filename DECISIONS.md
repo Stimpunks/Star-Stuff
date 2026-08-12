@@ -12,6 +12,72 @@ only tracks **choices** — what we decided, and what we still have to.
 
 Decisions still to make. Move to **Settled** with a date once resolved.
 
+- **A twelfth collection for Burke-style chains — deferred on purpose, 2026-08-12.** Ryan proposed
+  a *Connections*-inspired collection: pieces that run from a Star Stuff science fact through a
+  series of connections, some of them leaping, to a neurodiversity fact or lived experience, with
+  a moral at the end. **Chain #1 shipped the same day** — No. 38 *Eight Tenths of a Second*,
+  Greenwich 1796 → the personal equation → Wundt/Cattell → Thorndike → Kelly → Pressey → Skinner
+  → Lovaas → the dashboard, with a second rail from Galton through Kraepelin to the DSM. The form
+  is settled and working. **The collection is not being created yet, and the reason is the
+  project's own commitment.**
+  - **Wait for two or three chains, then let the page follow.** `cosmic-connections.html` argues
+    that "the categories are outputs, not inputs," and the 2026-08-11 entry below treats the fact
+    that 35 zines accumulated with no folders as the *evidence* for that claim. Field Guides waited
+    until eleven existed. A collection created empty and then filled is the folder-shaped move this
+    site keeps refusing — and *a collection about emergence that was imposed rather than emerged
+    refutes itself on its own masthead.*
+  - **Rejected: the working name "Emergent Connections."** Two collisions, either one fatal.
+    (1) **"Cosmic Connections" is Helen Edgar's phrase and a fixed brand element** — the masthead
+    tagline *and* the house-method page; a collection called *Emergent Connections* reads as a
+    variant of it. (2) `cosmic-connections.html` **already glosses *emergence* as the site-wide
+    principle** (more is different, Luhmann, adrienne maree brown), so naming one collection
+    Emergent implicitly says the other eleven are not — **the exact trap that killed "For Fun."**
+  - **Working name: *How We Got Here*.** Names the *form* — a causal chain arriving at the present
+    — rather than borrowing the site's own vocabulary. At 15 characters it is shorter than *Stars
+    We Grew Up On* (19), which was the badge-overflow worst case measured on 2026-08-12, so the
+    nav badge needs no re-measurement. Also considered: *The Long Chain*, *One Thing Led*.
+    **Rejected: *Trigger Effect*** — borrowing the title of Burke's first episode is a step past
+    homage.
+  - **The axis would be *form*, not register**, like Field Guides — which means it inherits the
+    disclosure obligation settled on 2026-08-12: an off-register collection **says so on its own
+    face** rather than letting the odd axis read as an oversight.
+  - **Interim filing, and what moves it.** No. 38 sits in **Star Stuff**, and it is not a clean
+    fit: that register is *one* settled checkable fact followed honestly, and a chain is many facts
+    followed a long way, where the through-line is contingency rather than the fact itself. It was
+    filed there because a badge needs a real collection page, and the badge and the
+    `collection-star-stuff.html` card went in the same pass per the invariant. **The third chain is
+    the trigger to revisit.**
+  - **Chain placement follows the documented rule, not thematic adjacency.** No. 38 wants to sit
+    beside No. 9, and doesn't: members run in ascending number within their collection, so it lands
+    after No. 25 — `shared-signal-zine.html` → No. 38 → `collection-star-gazing.html`.
+  - **Do not re-argue No. 9.** *The Lines We Drew* owns astronomy's error curve → Quetelet →
+    Galton → eugenics, and that leg is `CORRECTED → VERIFIED` in `FACTCHECK.md`. No. 38 compresses
+    it to one handoff spread and starts where 9 stops. Same discipline as the No. 20 note below.
+- **Does the documented / contested / leap notation become a house convention?** Open, 2026-08-12.
+  Introduced in No. 38, where each of the ten joints is tagged in the prose *and* encoded in the
+  running chain spine's line style (solid / dashed / dotted). It exists because a Burke chain is
+  built to feel inevitable, which is in direct tension with verify-everything — so the form carries
+  the epistemics instead of a footnote doing it. It is the FG 10 lesson (*the format difference is
+  the argument*) pointed at evidence rather than at subject matter.
+  - **The case for generalising it:** the collection already hedges in prose in several places
+    (the wood-wide-web trap, the relational-QM leg of the Difference-First Frame, "a rhyme, not a
+    proof"), and those hedges are invisible unless you read the paragraph they sit in.
+  - **The case against:** the notation earned its keep on No. 38 because **the mix was real — six
+    documented, three contested, one leap, with the chain's own founding anecdote among the
+    contested ones.** *If everything gets a tag, the tags stop carrying information*, and the
+    device degrades into the decoration it was built to avoid. Recommend holding it as a
+    chain-specific device until a non-chain piece genuinely needs it.
+- **Open in `FACTCHECK.md` and not resolvable from here:** the contested first joint of No. 38
+  rests on **Matthew D. Lund, "'A Vitious Way of Observing': Kinnebrook and the Prehistory of the
+  Personal Equation," *Isis* 116(3), 2025**, which returned HTTP 403 at the publisher, PhilArchive
+  and Rowan Digital Works. **The paper has not been read at the primary**, the zine says so in place
+  on spread 2 and in its colophon, and the joint is marked contested on the strength of the paper's
+  existence and title rather than on a search summary of its argument. Replace that note once the
+  PDF is in hand. Also open, and outside this repo: the two corrections No. 38 makes to
+  [The Road to Neuronormative Domination](https://stimpunks.org/2024/05/10/the-road-to-neuronormative-domination-thorndike-won-dewey-lost-skinner-won-papert-lost/)
+  on stimpunks.org — Cubberley's factory sentence is *Public School Administration* (1916), p. 338,
+  not a 1905 dissertation; and Thorndike did not develop multiple-choice testing, Kelly did in 1914.
+  Both are published in `changelog.html` now rather than held until the source is fixed.
 - _(collections + numbering resolved 2026-08-11 — see Settled)_
 - **No. 37 *The Cloud Phase* — blocked on asking Helen, 2026-08-11.** Proposed and scoped; not
   built. Everything below is decided *except* the credit, which needs her word first.
