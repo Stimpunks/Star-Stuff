@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#0a0a14">
+<link rel="canonical" href="https://starstuff.earth/shared-air-broadside.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta name="description" content="Shared Air — a two-sided single sheet for the room where someone can't breathe easy. Don't blame the canary, change the air: one air with no walls in it, shared-air space, and the habitability question on the face; what to build, what to say and what not to say on the reverse. Designed for paper: one physical sheet, duplexed, on A4 or US Letter. Companion to Zine No. 24.">
+<!-- Open Graph / link unfurl -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Star Stuff · Stimpunks Foundation × More Realms">
+<meta property="og:url" content="https://starstuff.earth/shared-air-broadside.html">
+<meta property="og:title" content="Shared Air — Broadside">
+<meta property="og:description" content="Don't blame the canary. Change the air. A hand-out sheet on breath held in common, sensory sensitivity as early warning, and breathable air as a commons — with what to build and what to say on the reverse. Prints on A4 or Letter.">
+<meta property="og:image" content="https://starstuff.earth/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A rainbow-hued cosmic image — we are all made of star stuff.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Shared Air — Broadside">
+<meta name="twitter:description" content="Don't blame the canary. Change the air. One sheet, two sides, A4 or Letter — what to build and what to say.">
+<meta name="twitter:image" content="https://starstuff.earth/og-card.jpg">
+<title>Shared Air — Broadside — Stimpunks × More Realms</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="starstuff.css">
+<style>
+  /* ═══════════════════════════════════════════════════════════════════════════
+     PAPER-FIRST SHEET. Sixth of the broadsides. Siblings: ls-broadside.html,
+     six-ways-broadside.html, owed-not-earned-broadside.html,
+     what-we-refuse-broadside.html, the-same-water-broadside.html. Keep them in
+     step, and see print-design.html for the full specification and its reasoning.
+
+     WHAT THIS SHEET IS. The hand-out companion to Zine No. 24. Its moment is the
+     one where somebody is asking for a window opened, a fragrance-free room, or a
+     filter running — and is being told they are too sensitive. So the face carries
+     one claim (don't blame the canary, change the air) and the reverse is the only
+     verso in the rack that is mostly *actionable*: what to build, what to say, and
+     what not to say.
+
+     WHY THE VERSO STOPS SHORT OF A BUILD GUIDE, deliberately. The Corsi–Rosenthal
+     box is described here exactly as No. 24 describes it — a box fan and a few
+     furnace filters taped into a cube — and NO further. No filter counts, no MERV
+     ratings, no assembly steps. Two reasons, and both should hold if someone later
+     wants to "finish" this panel. First, rule one: a broadside compresses its
+     parent and invents no claim the parent never made, and No. 24 does not carry a
+     build guide. Second, and more practically: this is a sheet people act on, so a
+     specification that is slightly wrong on paper is worse than one that is absent,
+     and it cannot be corrected once it is on a wall. What the sheet does add — one
+     credit, checked at the primary — is that the design is Richard Corsi's and Jim
+     Rosenthal's, from 2020, and was deliberately never patented. That last fact is
+     load-bearing for the argument rather than decorative: the instructions being
+     free is the whole mutual-aid point, and it is confirmed on Rosenthal's own site.
+
+     SIZE. 190 × 259 mm with 9 mm page margins — inside both A4 (192 × 279 box) and
+     US Letter (198 × 261). Two sides, no third page, either country.
+
+     SPOT COLOUR. Cyan for the face (air) and green for the verso (the buildable,
+     solarpunk half — move quietly and plant things). NOTE for whoever adds sheet
+     seven: with five house hues and six sheets, faces now necessarily repeat — this
+     face shares cyan with the-same-water-broadside.html. The *pair* is still unique,
+     and the pair is what tells sheets apart in a stack. Do not introduce a sixth
+     hue to dodge this; the palette is five accents and that is a house rule.
+     ═══════════════════════════════════════════════════════════════════════════ */
+
+  :root {
+    --sheet:  #ffffff;
+    --ink:    #111111;   /* 18.1:1 on white */
+    --ink-2:  #333333;   /* 12.6:1 — secondary prose */
+    --ink-3:  #555555;   /*  7.5:1 — small print, credits */
+    --spot:   #164e63;   /*  9.1:1 — house cyan, darkened for paper */
+    --spot-2: #166534;   /*  7.1:1 — house green, darkened for paper */
+    --rule:   #d4d0dc;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #2a2830;
+    font-family: 'Atkinson Hyperlegible Next', system-ui, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1rem 3rem;
+  }
+
+  /* ── CONTROLS (screen only) ── */
+  .controls { display: flex; gap: 0.75rem; margin-bottom: 1.5rem; align-items: center; flex-wrap: wrap; justify-content: center; }
+  .ctrl-btn {
+    background: none;
+    border: 1px solid rgba(255,255,255,0.28);
+    color: #d6d5da;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 0.5rem 1.1rem;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .ctrl-btn:hover { background: rgba(255,255,255,0.1); color: #fff; border-color: rgba(255,255,255,0.5); }
+  .ctrl-btn.active { background: rgba(255,255,255,0.14); color: #fff; border-color: rgba(255,255,255,0.55); }
+  .ctrl-sep { width: 1px; height: 20px; background: rgba(255,255,255,0.18); }
+  /* Solid, not alpha: alpha-faded text is what this design system refuses. */
+  .ctrl-label { font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.25em; text-transform: uppercase; color: #929195; }
+
+  /* ── THE SHEET ── */
+  .sheet {
+    width: 190mm;
+    max-width: 100%;
+    min-height: 259mm;
+    background: var(--sheet);
+    color: var(--ink);
+    padding: 11mm 12mm 9mm;
+    display: none;
+    flex-direction: column;
+    position: relative;
+    /* Registration bar is a BORDER, not a background: borders survive the
+       Background-graphics checkbox, backgrounds do not. */
+    border-top: 3mm solid var(--spot);
+    print-color-adjust: exact; -webkit-print-color-adjust: exact;
+  }
+  .sheet.visible { display: flex; }
+  .sheet--b { border-top-color: var(--spot-2); }
+
+  /* ── Masthead ── */
+  .mast { display: flex; justify-content: space-between; align-items: flex-start; gap: 6mm; padding-bottom: 3mm; border-bottom: 0.6mm solid var(--ink); }
+  .mast-org { font-family: 'Space Mono', monospace; font-size: 6pt; letter-spacing: 0.3em; text-transform: uppercase; color: var(--ink-2); line-height: 1.9; }
+  .mast-org strong { display: block; font-size: 7pt; letter-spacing: 0.22em; color: var(--ink); }
+  .mast-side { font-family: 'Space Mono', monospace; font-size: 6pt; letter-spacing: 0.24em; text-transform: uppercase; color: var(--spot); text-align: right; line-height: 1.9; white-space: nowrap; }
+  .sheet--b .mast-side { color: var(--spot-2); }
+
+  /* ── Face title ── */
+  .title {
+    font-weight: 800;
+    font-size: 34pt;
+    line-height: 0.98;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    margin-top: 6mm;
+  }
+  .title em { font-style: normal; color: var(--spot); }
+  .standfirst {
+    font-style: italic;
+    font-weight: 300;
+    font-size: 12pt;
+    line-height: 1.45;
+    color: var(--ink-2);
+    margin-top: 4.5mm;
+    max-width: 155mm;
+  }
+  .title-rule { height: 0.8mm; background: var(--ink); margin-top: 6mm; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+
+  /* ── The claim ── */
+  .claim { margin-top: 4.5mm; text-align: center; }
+  .claim-line {
+    font-weight: 800;
+    font-size: 33pt;
+    line-height: 1.06;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+  .claim-line em { font-style: normal; color: var(--spot); }
+  .claim-sub { font-family: 'Space Mono', monospace; font-size: 8pt; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-2); margin-top: 3.5mm; line-height: 1.8; }
+
+  /* ── Panels ── */
+  .panels { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 7mm; margin-top: 5mm; }
+  .panel { border-left: 0.8mm solid var(--spot); padding-left: 3.5mm; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+  .panel:nth-child(3) { border-left-color: var(--spot-2); }
+  .panel-name { font-family: 'Space Mono', monospace; font-size: 7.4pt; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--spot); margin-bottom: 2.2mm; line-height: 1.5; }
+  .panel:nth-child(3) .panel-name { color: var(--spot-2); }
+  .panel-desc { font-size: 10.5pt; line-height: 1.46; color: var(--ink-2); }
+
+  /* ── Quotation ── */
+  .quote { margin-top: 4.5mm; padding-left: 4mm; border-left: 0.8mm solid var(--spot); print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+  .quote p { font-style: italic; font-weight: 500; font-size: 14pt; line-height: 1.34; color: var(--ink); }
+
+  /* ── Reverse ── */
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 6mm 9mm; margin-top: 5mm; }
+  .col-head { font-family: 'Space Mono', monospace; font-size: 8pt; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: var(--spot-2); padding-bottom: 2.2mm; margin-bottom: 4mm; border-bottom: 0.4mm solid var(--rule); print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+
+  .build { margin-bottom: 2.6mm; }
+  .build b { display: block; font-family: 'Space Mono', monospace; font-size: 8pt; font-weight: 700; color: var(--ink); line-height: 1.5; }
+  .build span { display: block; font-size: 10.5pt; line-height: 1.45; color: var(--ink-2); margin-top: 1.2mm; }
+
+  .say { margin-bottom: 1.7mm; }
+  .say b { display: block; font-style: italic; font-weight: 600; font-size: 10pt; color: var(--spot-2); line-height: 1.3; }
+  .say span { display: block; font-family: 'Space Mono', monospace; font-size: 7.4pt; line-height: 1.5; color: var(--ink-2); margin-top: 0.9mm; }
+
+  .refusals { margin-top: 3mm; padding-top: 2.5mm; border-top: 0.6mm solid var(--ink); }
+  .refusal { font-family: 'Space Mono', monospace; font-size: 8pt; line-height: 1.6; color: var(--ink-2); margin-top: 2.2mm; padding-left: 5mm; position: relative; }
+  .refusal::before { content: '✕'; position: absolute; left: 0; color: var(--spot-2); font-weight: 700; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+
+  .close {
+    font-style: italic;
+    font-weight: 500;
+    font-size: 14pt;
+    line-height: 1.32;
+    color: var(--ink);
+    margin-top: 3mm;
+    padding-left: 4mm;
+    border-left: 0.8mm solid var(--spot-2);
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .sources { margin-top: 3mm; font-family: 'Space Mono', monospace; font-size: 7.2pt; line-height: 1.6; color: var(--ink-2); }
+  .sources em { font-style: italic; }
+
+  /* ── Foot ── */
+  .foot { margin-top: auto; padding-top: 3mm; border-top: 0.6mm solid var(--ink); display: flex; justify-content: space-between; align-items: flex-end; gap: 6mm; }
+  .foot-left { font-family: 'Space Mono', monospace; font-size: 6pt; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-3); line-height: 1.95; }
+  .foot-left a { color: var(--ink-3); }
+  .foot-right { font-weight: 800; font-size: 13pt; color: var(--spot); text-align: right; line-height: 1.2; white-space: nowrap; }
+  .sheet--b .foot-right { color: var(--spot-2); }
+
+  /* The star is DRAWN, not typed. Atkinson has no U+2605, so a typed ★ comes from
+     whatever font the reader's system happens to supply — not good enough for a
+     logotype on a sheet meant to print identically everywhere. */
+  .star { display: inline-block; width: 0.80em; height: 0.80em; vertical-align: -0.045em; margin: 0 0.06em; fill: currentColor; }
+
+  .print-hint { margin-top: 1.2rem; font-family: 'Space Mono', monospace; font-size: 0.48rem; letter-spacing: 0.2em; text-transform: uppercase; color: #929195; text-align: center; }
+
+  /* ── PRINT ── */
+  @page { size: auto; margin: 9mm; }
+
+  @media print {
+    body { background: none; padding: 0; display: block; min-height: 0; }
+    .controls, .print-hint { display: none; }
+    .sheet { display: flex !important; width: 100%; min-height: 0; height: 259mm; padding: 0; border-top-width: 3mm; }
+    .sheet--a { page-break-after: always; break-after: page; }
+    .mast { padding-top: 6mm; }
+    .panel, .build, .say { page-break-inside: avoid; break-inside: avoid; }
+  }
+
+  /* Breakpoint sits BELOW the narrowest printed page box (A4 at 9mm margins is
+     192mm = 726px). Print media queries resolve against the page box, not the
+     screen, so a breakpoint above that reflows on paper. */
+  @media (max-width: 700px) {
+    .sheet { width: 100%; min-height: 0; padding: 8mm 6mm; }
+    .panels, .cols { grid-template-columns: 1fr; }
+    .title { font-size: 26pt; }
+    .claim-line { font-size: 23pt; }
+    .foot { flex-direction: column; align-items: flex-start; gap: 3mm; }
+    .foot-right { text-align: left; }
+  }
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Shared Air — Broadside","description":"A two-sided, print-ready single sheet for the room where someone can't breathe easy. Don't blame the canary, change the air: one air with no walls in it, shared-air space and co-regulation, and the habitability question on the face; what to build, what to say and what not to say on the reverse. Designed for paper — one sheet, duplexed, on A4 or US Letter. Companion to Zine No. 24.","image":"https://starstuff.earth/og-card.jpg","url":"https://starstuff.earth/shared-air-broadside.html","mainEntityOfPage":"https://starstuff.earth/shared-air-broadside.html","author":{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/"},"publisher":[{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/","logo":{"@type":"ImageObject","url":"https://starstuff.earth/og-card.jpg"}},{"@type":"Organization","name":"More Realms","url":"https://morerealms.com/"}],"isPartOf":{"@type":"WebSite","name":"Star Stuff","url":"https://starstuff.earth/"},"license":"https://creativecommons.org/licenses/by-sa/4.0/"}</script>
+</head>
+<body>
+
+<nav class="ss-nav" style="--nav-accent:#4ade80; max-width:190mm;" aria-label="Star Stuff collection">
+  <span class="ss-nav-home-group">
+    <a class="ss-nav-home" href="index.html"><span class="ss-star" aria-hidden="true">★</span> stuff</a>
+    <a class="ss-nav-about" href="about.html">about</a>
+    <a class="ss-nav-search" href="search.html">search</a>
+  </span>
+  <span class="ss-nav-links">
+    <a class="ss-nav-prev" href="the-same-water-broadside.html"><span class="ss-nav-arrow" aria-hidden="true">&lsaquo;</span> <span class="ss-nav-label">The Same Water</span></a>
+    <a class="ss-nav-next" href="shorthand-evolution.html"><span class="ss-nav-label">Shorthand</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
+  </span>
+</nav>
+
+<div class="controls">
+  <span class="ctrl-label">Side</span>
+  <button class="ctrl-btn active" id="btn-a" onclick="showSide('a')">A — The Canary</button>
+  <button class="ctrl-btn" id="btn-b" onclick="showSide('b')">B — What to Build</button>
+  <div class="ctrl-sep"></div>
+  <button class="ctrl-btn" onclick="window.print()">Print ↗</button>
+</div>
+
+<!-- ════ SIDE A ════ -->
+<div class="sheet sheet--a visible" id="side-a">
+
+  <div class="mast">
+    <div class="mast-org">
+      <strong>Stimpunks Foundation × More Realms</strong>
+      for the room where someone can't breathe easy
+    </div>
+    <div class="mast-side">Broadside · Open edition<br>Side A of B</div>
+  </div>
+
+  <h1 class="title">Shared<br><em>Air</em></h1>
+
+  <p class="standfirst">There is only one air — a single, restless, well-mixed body with no walls inside it. What you breathe out drifts and spreads, and within a year or two it has circled the whole planet. We are not sipping from separate cups.</p>
+
+  <div class="title-rule"></div>
+
+  <div class="claim">
+    <p class="claim-line">Don't blame the canary.<br><em>Change the air.</em></p>
+    <p class="claim-sub">the bird isn't fragile · its alarm is information</p>
+  </div>
+
+  <div class="panels">
+
+    <div class="panel">
+      <div class="panel-name">One air</div>
+      <p class="panel-desc">One breath holds something like ten thousand billion billion molecules. Once an old breath has scattered through the sky, your next lungful very likely carries atoms breathed by strangers on the far side of the Earth — and by people long gone.</p>
+    </div>
+
+    <div class="panel">
+      <div class="panel-name">Shared-air space</div>
+      <p class="panel-desc">To share a room is to trade breath. Nervous systems in the same space read one another and settle into a shared rhythm — a calm body slows your breathing, a braced one quickens it. Good air makes room to regulate.</p>
+    </div>
+
+    <div class="panel">
+      <div class="panel-name">Habitable, for whom?</div>
+      <p class="panel-desc">The same room is not the same for everyone. Fragrance, smoke, dust, exhaust, an airborne virus — the load lands unevenly, heaviest on those with the least power to leave. One person's ordinary afternoon is another's asthma attack.</p>
+    </div>
+
+  </div>
+
+  <div class="quote">
+    <p>&ldquo;What's unbearable for the most sensitive is quietly wearing on everyone. Build it breathable for the canaries, and it's breathable for all.&rdquo;</p>
+  </div>
+
+  <div class="foot">
+    <div class="foot-left">
+      the full argument and every source:<br>
+      starstuff.earth/shared-air-zine · Zine No. 24<br>
+      print freely · share freely · <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
+    </div>
+    <div class="foot-right">See<br>reverse</div>
+  </div>
+
+</div>
+
+<!-- ════ SIDE B ════ -->
+<div class="sheet sheet--b" id="side-b">
+
+  <div class="mast">
+    <div class="mast-org">
+      <strong>Stimpunks Foundation × More Realms</strong>
+      what to build, and what to say
+    </div>
+    <div class="mast-side">Broadside · Open edition<br>Side B of B</div>
+  </div>
+
+  <div class="cols">
+
+    <div>
+      <div class="col-head">Build it</div>
+
+      <div class="build"><b>Open a window.</b><span>The cheapest intervention there is, and among the most effective. Air that moves is air that dilutes.</span></div>
+
+      <div class="build"><b>Add a plant.</b><span>Not because one pot filters a room, but because the green world breathes on the opposite beat to you — and a room people want to be in is half the work.</span></div>
+
+      <div class="build"><b>Wear the mask.</b><span>Yours protects the room as well as you. It is a thing you do <em>for</em> the people in it.</span></div>
+
+      <div class="build"><b>Run a Corsi&ndash;Rosenthal box.</b><span>A box fan and a few furnace filters taped into a cube, scrubbing a room's air for the price of a nice dinner. Conceived by <strong>Richard Corsi</strong> and first built by <strong>Jim Rosenthal</strong> in 2020, and deliberately never patented — the instructions are free, which is the whole point. Look them up; thousands of people have built one.</span></div>
+
+      <div class="build"><b>Then say so, out loud.</b><span>Air you have made breathable is only shared if people know it is safe to come in.</span></div>
+    </div>
+
+    <div>
+      <div class="col-head">What to say</div>
+      <div class="say"><b>&ldquo;Can we open a window?&rdquo;</b><span>Asked of the room, not apologised for.</span></div>
+      <div class="say"><b>&ldquo;This is a fragrance-free space.&rdquo;</b><span>A property of the room — not a favour to one person in it.</span></div>
+      <div class="say"><b>&ldquo;There's a filter running in the corner.&rdquo;</b><span>Infrastructure, stated plainly, so nobody has to ask.</span></div>
+      <div class="say"><b>&ldquo;What would make this room breathable for you?&rdquo;</b><span>And then change the room.</span></div>
+
+      <div class="col-head" style="margin-top:4mm;">What not to say</div>
+      <div class="say"><b>&ldquo;You're too sensitive.&rdquo;</b><span>The old mistake, and the one this sheet exists for. Blaming the bird.</span></div>
+      <div class="say"><b>&ldquo;Nobody else has a problem.&rdquo;</b><span>The load lands unevenly. That is the finding, not the rebuttal.</span></div>
+      <div class="say"><b>&ldquo;Just sit by the door.&rdquo;</b><span>That is the fix dumped on whoever is being harmed.</span></div>
+    </div>
+
+  </div>
+
+  <div class="refusals">
+    <div class="col-head">Not:</div>
+    <p class="refusal">Not &ldquo;too sensitive&rdquo; — the canary isn't fragile; its alarm is information.</p>
+    <p class="refusal">Not a private accommodation — habitable air is a commons, and a shared responsibility.</p>
+    <p class="refusal">Not extraction — we move quietly and plant things; we don't move fast and break lungs.</p>
+    <p class="refusal">Not scarcity — breathable, welcoming space isn't rationed; it's built and shared.</p>
+  </div>
+
+  <p class="close">Shared air is only shared if everyone in it can breathe.</p>
+
+  <div class="sources">
+    The science is standard: the atmosphere as a single well-mixed body; the reciprocal carbon&ndash;oxygen cycle of respiration and photosynthesis; the Great Oxidation Event, when cyanobacteria first oxygenated the sky (~2.4 billion years ago); and the stellar origin of the oxygen and nitrogen we breathe. <em>Shared-air space</em> is a term coined by <strong>Helen Edgar and Ryan Boren</strong>. The <strong>Corsi&ndash;Rosenthal box</strong> was conceived by Richard Corsi and first built and tested by Jim Rosenthal in 2020; it is unpatented and freely shared. The ethos is <em>solarpunk</em>: adrienne maree brown, <em>Emergent Strategy</em> (2017); Adam Flynn, &ldquo;Solarpunk: Notes toward a manifesto&rdquo; (2014); and the movement slogan &ldquo;move quietly and plant things&rdquo; (Andrew Dana Hudson). The miner's canary has long been taken up by disabled, chronically ill and environmental-illness communities naming themselves the canaries of a world whose air has gone bad.
+  </div>
+
+  <div class="foot">
+    <div class="foot-left">
+      the full zine and every source:<br>
+      starstuff.earth/shared-air-zine · stimpunks.org · morerealms.com<br>
+      print freely · share freely · <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
+    </div>
+    <div class="foot-right" role="img" aria-label="L★S">L<svg class="star" viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M50 0 61.2 34.5 97.6 34.5 68.2 55.9 79.4 90.5 50 69.1 20.6 90.5 31.8 55.9 2.4 34.5 38.8 34.5Z"/></svg>S</div>
+  </div>
+
+</div>
+
+<p class="print-hint">One sheet · print double-sided · pin it by the door · share freely</p>
+
+<script>
+  function showSide(side) {
+    document.getElementById('side-a').classList.toggle('visible', side === 'a');
+    document.getElementById('side-b').classList.toggle('visible', side === 'b');
+    document.getElementById('btn-a').classList.toggle('active', side === 'a');
+    document.getElementById('btn-b').classList.toggle('active', side === 'b');
+  }
+</script>
+</body>
+</html>
