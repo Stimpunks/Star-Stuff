@@ -97,23 +97,57 @@ The central phrase compresses through registers, each with a use:
   values: `og:site_name` is `Star Stuff · Stimpunks Foundation × More Realms`, and `publisher` is an
   **array of both organizations** — Stimpunks Foundation (`https://stimpunks.org/`, with the
   `og-card.jpg` logo) then More Realms (`https://morerealms.com/`). See *Co-branding* below.
+- **Use real headings, with ids.** A section label must be an `<h1>`/`<h2>`, not a styled `<span>`
+  — a screen reader's headings rotor *is* the table of contents, and `index.html` shipped with
+  **zero heading elements** until 2026-08-12, so that list came back empty on the landing page of
+  an accessibility-first site. Nothing on it could be deep-linked either. The house classes already
+  set size, weight, tracking and color, so the swap is a tag change plus `margin: 0` and a
+  `scroll-margin-top`. `tools/check-markup.mjs` guards the ids for duplicates; nothing guards their
+  existence, so this is on you.
+- `index.html` carries a **`.masthead-toc` jump strip** — two tiers, seven top-level sections then
+  the five register collections, each tinted with the same `--sec-accent` its heading and rule
+  carry. **A new top-level section on the index needs a pill here**, and the strip is in
+  `CHROME_SEL` (its names are already indexed as the headings they point at) and hidden in
+  `@media print` (fragments mean nothing on paper, and the hardcoded accents would land at 1.6:1
+  on white).
 - Paged zines: include `<script src="starstuff.js"></script>`, expose a global `changePage(dir)`,
   and structure spreads as `.spread` (with a `.spread.active`), each with a `.spread-footer`
   containing a `.spread-footer-right` page counter. IDs run `spread-1..N` in document order.
 
-### Collections (five, plus the Field Guides)
+### Collections (eight pages, on two different axes)
 
-The zines are sorted into five **collections**, each with its own landing page
-(`collection-*.html`) linked from the `index.html` *Collections* section. Settled 2026-08-11 — see
-`DECISIONS.md` for the full reasoning.
+Eight **collection** landing pages (`collection-*.html`), each linked from the `index.html`
+*Collections* section. The five register collections were settled 2026-08-11 — see `DECISIONS.md`
+for the full reasoning; Print and Sound followed on the 11th, Field Guides on the 12th.
+
+**Five sort by register** — what kind of argument a piece is making:
 
 | Collection | Register | Members (zine numbers) |
 |------------|----------|------------------------|
 | **Star Stuff** | One settled, checkable fact, followed honestly, already contains the belonging claim | 1, 2, 6, 7, 8, 9, 10, 17, 19, 20, 21, 23, 24, 25 |
 | **Star Gazing** | Experimental, neuroqueer, wonder-forward — possibility, not proof | 11, 22, 26, 28, 29, 30 |
 | **More Than Human** | Umwelt, multispecies, ethodiversity; de-anthropocentrized | 5, 14, 15, 16, 27 |
-| **Kin** | Citation-dense natural history with a neurodivergence moral | 31, 32, 33, 34, 35 |
+| **Kin** | Citation-dense natural history with a neurodivergence moral | 31, 32, 33, 34, 35, 36 |
 | **Stars We Grew Up On** | Culture and icon; owns the star-as-celebrity sense | 12, 13 (+ playlist, broadside in spirit) |
+
+**Three do not**, and each says so on its own face rather than letting it read as an oversight —
+that disclosure is the convention, so a fourth off-register collection must carry it too:
+
+| Collection | Axis | Members |
+|------------|------|---------|
+| **Field Guides** | **form** — a catalogue of same-shaped entries, none ranked | Field Guides 1–11 (114 entries; 119 cards counting the five *turtles people made*, which FG 10 deliberately does not file as entries) |
+| **Print** | **medium** — paper | 5 broadsides + 1 typographic sheet |
+| **Sound** | **medium** — audio | 3 racks, 90 cards / 86 distinct songs |
+
+- **Field Guides sort by form, and that cuts across register on purpose.** FG 2 is settled physics
+  and FG 1 is frank invention, and they are the same kind of object. Six of the eleven arrive
+  independently at *there is no standard {star, nervous system, migration, shark, turtle, tortoise}*
+  — verify by grep before restating the count, it grows.
+- **Where the form stops is load-bearing.** FG 10 keeps five *turtles people made* in a separate
+  section with a dashed border and **no reframe table**, because that table corrects a mistaken
+  verdict and running "sounds like / actually" over somebody's cosmology would be obscene. *The
+  format difference is the argument.* Standing rule: a subject that cannot take the apparatus gets
+  a different card, not a smaller one.
 
 - **The number says *when*. The collection says *what*. Never renumber.** Numbers are chronological
   and load-bearing elsewhere: `changelog.html` has dated public entries naming them, `FACTCHECK.md`
@@ -139,9 +173,16 @@ The zines are sorted into five **collections**, each with its own landing page
   everything else homework, and would become the one place the verify-everything standard could
   quietly relax. The fun is distributed; *Stars We Grew Up On* states this on the page.
 - The **prev/next chain follows collection order**: each collection page precedes its members, and
-  members run in ascending number within the collection. 57 pages, `love-you-down-to-your-star-stuff.html`
-  → `shorthand-evolution.html`. `about.html`, `cosmic-connections.html` and `difference-first-frame.html`
-  stay outside the chain by decision.
+  members run in ascending number within the collection. **68 pages** as of 2026-08-12,
+  `love-you-down-to-your-star-stuff.html` → `shorthand-evolution.html`. `about.html`,
+  `cosmic-connections.html` and `difference-first-frame.html` stay outside the chain by decision.
+  **Don't trust that number — measure it**, and check `prev` and `next` agree in both directions;
+  inserting a page means editing its two neighbours, and a one-sided edit leaves a chain that walks
+  forward correctly and breaks going back:
+
+  ```bash
+  node -e "const fs=require('fs');const nx={},pv={};for(const f of fs.readdirSync('.').filter(f=>f.endsWith('.html'))){const s=fs.readFileSync(f,'utf8');let m=s.match(/ss-nav-next\"[^>]*href=\"([^\"]+)\"/);if(m)nx[f]=m[1];m=s.match(/ss-nav-prev\"[^>]*href=\"([^\"]+)\"/);if(m)pv[f]=m[1];}let c='love-you-down-to-your-star-stuff.html',ch=[],seen=new Set();while(c&&!seen.has(c)){seen.add(c);ch.push(c);c=nx[c];}console.log('chain',ch.length,'· mismatches',ch.filter((c,i)=>i>0&&pv[c]!==ch[i-1]).join(',')||'none','· missing',ch.filter(c=>!fs.existsSync(c)).join(',')||'none');"
+  ```
 
 ### Co-branding (Stimpunks Foundation × More Realms)
 
@@ -232,7 +273,7 @@ tracking — the query never leaves the reader's browser.
 - **Duplicate presentations get stripped, not indexed twice.** `ls-playlist.html` lists every song
   as a `.lp-card` (with the note explaining it) *and* again as a flat `.lp-row` link list; the rows
   are in `CHROME_SEL`. The co-brand eyebrows (`.nav-brand`, `.hero-eyebrow`, `.masthead-eyebrow`,
-  `.cover-issue`) are stripped for the same reason — the pairing is on all 51 pages, so as an
+  `.cover-issue`) are stripped for the same reason — the pairing is on all 76 pages, so as an
   indexed string it carried no information. Colophons keep it, and that's correct: they hold the
   sources and credits, and `search.html` scores heading and repeat matches above one incidental hit.
 - `starstuff.js` opens a deep-linked field-guide entry (they render collapsed), so a result
@@ -316,7 +357,7 @@ node tools/check-markup.mjs --check               # exit non-zero on any failure
   by the time a DOM exists the parser has already repaired it, and
   `document.querySelectorAll('a a')` on the broken page returns **zero**. The evidence survives
   only in the source text. That also makes it the fastest gate here — no Chrome, no dependencies,
-  71 pages and 45,000 tags in about 0.3s.
+  76 pages and 49,000 tags in about 0.3s.
 - **Three faults, each one silent:** nested interactive elements (`<a>`/`<button>` inside each
   other — the parser closes the outer, so everything after falls out of its wrapper); a block
   element inside a `<p>` (auto-closes the paragraph part-way through); and **duplicate `id`**,
@@ -385,6 +426,22 @@ browser another tool was shutting down.
   handled separately in the shared sheet. **Verify, don't assume:** run
   `node tools/check-contrast.mjs --check`, which measures both media for you — see *Contrast &
   print checking* above. A stated principle nobody measures is a wish. Full account: `design.html`.
+- **Gradient-clipped headings are the second way to print blank, and the token inversion does not
+  fix them.** A heading painted with `background-clip: text` plus
+  `-webkit-text-fill-color: transparent` takes its color from the *fill* property, which beats
+  `color` outright — so forcing every color to ink left the glyphs transparent, and since
+  backgrounds don't paint on paper nothing filled them back in. **90 elements across 45 pages**
+  printed blank this way until 2026-08-12, including the `★ stuff` wordmark (the front page printed
+  untitled), every `.spectrum-word` and `.flock-word`, and the whole manifesto title. The shared
+  print block now sets `-webkit-text-fill-color` alongside `color` in both blunt rules, so a new
+  page gets it free; **don't add page-specific selectors for this** — the block's own comment argues
+  for chasing the mechanism instead, and this is why.
+- **`check-contrast.mjs` cannot see that fault, and says so.** Gradient-clipped text has no single
+  pair of colors to compare, so it is listed as **"unmeasured — check by eye"** rather than guessed
+  at. That list ran 196 entries and was being read as a footnote. *A tool reporting "I can't check
+  this" is reporting a gap, not clearing it* — when the unmeasured list grows, look. The narrow
+  question it can't ask is "which elements compute a transparent fill under print media?", which is
+  a short CDP probe against `Emulation.setEmulatedMedia {media:'print'}`.
 
 ## Voice & editorial conventions
 
