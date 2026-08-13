@@ -66,7 +66,10 @@ Decisions still to make. Move to **Settled** with a date once resolved.
   - **Do not re-argue No. 9.** *The Lines We Drew* owns astronomy's error curve → Quetelet →
     Galton → eugenics, and that leg is `CORRECTED → VERIFIED` in `FACTCHECK.md`. No. 38 compresses
     it to one handoff spread and starts where 9 stops. Same discipline as the No. 20 note below.
-- **Does the documented / contested / leap notation become a house convention?** Open, 2026-08-12.
+- ~~**Does the documented / contested / leap notation become a house convention?**~~ **Settled
+  2026-08-12 — kept to the chain collection.** See Settled. Retained here only to note what closed
+  it: No. 42 fired a `leap` after two chains without one, so the tag is doing work rather than
+  decorating. Running tally across the five chains: **43 documented, 12 contested, 4 leaps.**
   Introduced in No. 38, where each of the ten joints is tagged in the prose *and* encoded in the
   running chain spine's line style (solid / dashed / dotted). It exists because a Burke chain is
   built to feel inevitable, which is in direct tension with verify-everything — so the form carries
