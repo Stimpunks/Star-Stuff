@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0a0a14">
+<link rel="canonical" href="https://starstuff.earth/elimination-of-waste-zine.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta name="description" content="In 1824 Sadi Carnot proved that a heat engine has a hard, provable ceiling on its efficiency, and that waste heat is not an engineering failure but a requirement — you cannot convert all of it, ever, with any working substance. He reached that result from caloric theory, which was wrong; Clausius and Kelvin supplied the formula later. Then the word escaped. Frederick Taylor's Principles of Scientific Management appeared in 1911, and one month after his American Magazine series ended a school board member told the NEA that scientific management held a message for every teacher — and that if teachers did not raise their efficiency voluntarily, the business world would force them to. By 1916 Ellwood Cubberley's standard school-administration textbook was listing what schools must adopt from the factory: continuous measurement of production, and the elimination of waste in manufacture. The hinge is that one word. In thermodynamics waste is mandatory and provably so; in management it became the target. This chain runs from Carnot to the productivity dashboard and ends at spoon theory, and it spends a full spread arguing against itself, because the seductive version — stars are inefficient, therefore rest is fine — is a naturalistic fallacy and is marked as this chain's leap. The sixth chain in How We Got Here.">
+<!-- Open Graph / link unfurl -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Star Stuff · Stimpunks Foundation × More Realms">
+<meta property="og:url" content="https://starstuff.earth/elimination-of-waste-zine.html">
+<meta property="og:title" content="The Elimination of Waste">
+<meta property="og:description" content="Thermodynamics proved that waste is mandatory. Then the word efficiency left the engine room without its ceiling, and arrived in a school.">
+<meta property="og:image" content="https://starstuff.earth/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A rainbow-hued cosmic image — we are all made of star stuff.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Elimination of Waste">
+<meta name="twitter:description" content="A word that meant one thing in a steam engine and another in a school. Carnot proved a ceiling; management inherited the word without it.">
+<meta name="twitter:image" content="https://starstuff.earth/og-card.jpg">
+<title>The Elimination of Waste — Stimpunks Zine No. 43</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="starstuff.css">
+<style>
+  :root {
+    --void:  var(--sp-void-deep);
+    --deep:  var(--sp-deep);
+    --page:  var(--sp-page);
+    --violet:var(--sp-purple);
+    --pink:  var(--sp-pink);
+    --gold:  var(--sp-gold);
+    --cyan:  var(--sp-cyan);
+    --green: var(--sp-green);
+    --ember: #c1653a;
+    --accent: var(--sp-cyan);          /* this zine's identity accent — the cold reservoir, where the waste goes */
+    --star-white: var(--sp-white-soft);
+    --stardust:   var(--sp-secondary-soft);
+    --dim:   var(--sp-dim);
+    --dim2:  var(--sp-dim-soft);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--void);
+    font-family: 'Atkinson Hyperlegible Next', system-ui, sans-serif;
+    color: var(--star-white);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── STARFIELD (cyan · gold · white — cold reservoir, hot reservoir, and the sky between) ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 11% 15%, rgba(34,211,238,0.68) 0%, transparent 100%),
+      radial-gradient(1px 1px at 27% 34%, rgba(244,244,251,0.6) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 44% 8%, rgba(251,191,36,0.45) 0%, transparent 100%),
+      radial-gradient(1px 1px at 61% 66%, rgba(244,244,251,0.66) 0%, transparent 100%),
+      radial-gradient(2px 2px at 78% 24%, rgba(34,211,238,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 88% 52%, rgba(34,211,238,0.55) 0%, transparent 100%),
+      radial-gradient(1px 1px at 94% 81%, rgba(251,191,36,0.4) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 6% 60%, rgba(244,244,251,0.56) 0%, transparent 100%),
+      radial-gradient(1px 1px at 35% 86%, rgba(34,211,238,0.48) 0%, transparent 100%),
+      radial-gradient(1px 1px at 53% 44%, rgba(244,244,251,0.5) 0%, transparent 100%),
+      radial-gradient(2px 2px at 20% 89%, rgba(34,211,238,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 71% 6%, rgba(244,244,251,0.76) 0%, transparent 100%),
+      radial-gradient(1px 1px at 46% 61%, rgba(34,211,238,0.42) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 31% 19%, rgba(244,244,251,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 81% 90%, rgba(251,191,36,0.42) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .zine-shell { position: relative; z-index: 1; max-width: 820px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+
+  .spectrum-line { height: 2px; border: none; border-radius: 2px; background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); }
+
+  /* ── NAV ── */
+  .nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2.5rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(34,211,238,0.2); }
+  .nav-brand { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--dim); }
+  .nav-controls { display: flex; gap: 0.5rem; align-items: center; }
+  .nav-btn { background: none; border: 1px solid rgba(34,211,238,0.35); color: var(--stardust); font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.15em; padding: 0.4rem 0.85rem; border-radius: 2px; cursor: pointer; transition: all 0.2s ease; text-transform: uppercase; }
+  .nav-btn:hover { background: rgba(34,211,238,0.15); border-color: rgba(34,211,238,0.6); color: var(--star-white); }
+  .nav-btn.active { background: rgba(34,211,238,0.20); border-color: var(--accent); color: var(--star-white); }
+  .page-counter { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.2em; color: var(--dim2); }
+
+  .spread { display: none; animation: fadeIn 0.5s ease forwards; }
+  .spread.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ── COVER ── */
+  .cover-spread {
+    position: relative; min-height: 520px; border-radius: 4px; overflow: hidden;
+    background:
+      radial-gradient(ellipse at 22% 20%, rgba(251,191,36,0.12) 0%, transparent 52%),
+      radial-gradient(ellipse at 80% 26%, rgba(34,211,238,0.13) 0%, transparent 52%),
+      radial-gradient(ellipse at 68% 82%, rgba(34,211,238,0.09) 0%, transparent 52%),
+      radial-gradient(ellipse at 28% 80%, rgba(167,139,250,0.07) 0%, transparent 52%),
+      var(--deep);
+    border: 1px solid rgba(167,139,250,0.25);
+    box-shadow: inset 0 0 80px rgba(34,211,238,0.06), 0 0 0 4px rgba(255,255,255,0.03);
+    display: flex; flex-direction: column; justify-content: flex-end; padding: 3rem;
+  }
+  .cover-motif { position: absolute; top: -4px; right: -14px; width: 340px; height: 340px; opacity: 0.8; pointer-events: none; }
+  .cover-issue { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.5em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.5rem; }
+  .cover-title { font-weight: 700; font-size: clamp(2rem, 5.6vw, 3.2rem); line-height: 1.03; color: var(--star-white); letter-spacing: -0.01em; margin-bottom: 0.9rem; }
+  .cover-title .amp { color: var(--accent); font-style: italic; }
+  .cover-subtitle { font-size: 1rem; color: var(--stardust); opacity: 0.85; margin-bottom: 1.5rem; max-width: 470px; line-height: 1.55; }
+  .cover-byline { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.14em; color: var(--dim); margin-bottom: 1.8rem; }
+  .cover-byline strong { color: var(--stardust); font-weight: 700; }
+  .cover-rule { width: 220px; max-width: 60%; margin-bottom: 1.3rem; }
+  .cover-meta { display: flex; gap: 2rem; align-items: center; }
+  .cover-ls { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 1.4rem; color: var(--accent); letter-spacing: 0.05em; }
+  .cover-meta-text { font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--dim2); line-height: 1.9; }
+  .cover-corner { position: absolute; top: 2rem; right: 2.5rem; text-align: right; }
+  .cover-corner-num { font-weight: 700; font-size: 4.5rem; line-height: 1; color: var(--accent); opacity: 0.24; }
+  .cover-corner-label { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--violet); display: block; margin-top: -0.3rem; }
+
+  /* ── INTERIOR ── */
+  .interior { background: var(--page); border: 1px solid rgba(167,139,250,0.15); border-radius: 4px; overflow: hidden; min-height: 480px; }
+  .spread-2col { display: grid; grid-template-columns: 1fr 1fr; min-height: 480px; }
+  .spread-left, .spread-right { padding: 3rem 2.4rem; position: relative; }
+  .spread-left { border-right: 1px solid rgba(167,139,250,0.12); }
+
+  .spread-2col.stacked { display: flex; flex-direction: column; }
+  .spread-2col.stacked > .spread-left,
+  .spread-2col.stacked > .spread-right { border-right: none; }
+  .spread-2col.stacked > .col-diagram { order: 2; padding-top: 0; }
+  .spread-2col.stacked > .col-text { padding-left: max(2.4rem, calc((100% - 32rem) / 2)); padding-right: max(2.4rem, calc((100% - 32rem) / 2)); }
+  .spread-2col.stacked .diagram-wrap { height: auto; }
+  .spread-2col.stacked .diagram { max-width: 380px; }
+
+  .eyebrow { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.1rem; }
+  .body-text { font-size: 0.98rem; line-height: 1.72; color: var(--stardust); }
+  .body-text p { margin-bottom: 1rem; }
+  .body-text p:last-child { margin-bottom: 0; }
+  .body-text strong { font-weight: 700; color: var(--star-white); }
+  .body-text em { font-style: italic; color: var(--star-white); }
+  .body-text a { color: var(--violet); text-decoration: none; border-bottom: 1px solid rgba(167,139,250,0.4); }
+  .body-text a:hover { border-bottom-color: var(--violet); color: var(--star-white); }
+  .body-text .violet { color: var(--violet); font-weight: 700; }
+  .body-text .pink { color: var(--pink); font-weight: 700; }
+  .body-text .gold { color: var(--gold); font-weight: 700; }
+  .body-text .cyan { color: var(--cyan); font-weight: 700; }
+  .body-text .green { color: var(--green); font-weight: 700; }
+  .body-text .dim { color: var(--dim); }
+  .body-text .lede { font-size: 1.08rem; color: var(--star-white); }
+
+  .spread-heading { font-weight: 700; font-size: 1.9rem; line-height: 1.12; color: var(--star-white); margin-bottom: 1.1rem; letter-spacing: -0.01em; margin-top: 0; scroll-margin-top: 5rem; }
+  .spread-heading .spectrum-word { background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .rule { width: 40px; margin: 1rem 0; }
+
+  .pull-quote { font-size: 1.18rem; font-weight: 700; line-height: 1.4; color: var(--star-white); border-left: 3px solid var(--accent); padding-left: 1.1rem; margin: 1.4rem 0; font-style: italic; }
+  .pull-quote.violet { border-left-color: var(--violet); }
+  .pull-quote.cyan { border-left-color: var(--cyan); }
+  .pull-quote.gold { border-left-color: var(--gold); }
+  .pull-quote.green { border-left-color: var(--green); }
+  .pull-quote.pink { border-left-color: var(--pink); }
+  .pull-quote .attr { display: block; font-family: 'Space Mono', monospace; font-size: 0.6rem; font-weight: 400; font-style: normal; letter-spacing: 0.08em; color: var(--dim); margin-top: 0.6rem; }
+
+  .callout { margin: 1.3rem 0; padding: 1rem 1.15rem; background: rgba(34,211,238,0.06); border: 1px solid rgba(34,211,238,0.22); border-radius: 4px; font-size: 1rem; font-style: italic; color: var(--star-white); line-height: 1.55; }
+  .callout .attr { display: block; font-family: 'Space Mono', monospace; font-size: 0.58rem; font-style: normal; letter-spacing: 0.06em; color: var(--dim); margin-top: 0.5rem; }
+
+  /* ── THE JOINT TAG (the How We Got Here convention, sixth outing) ── */
+  .joint { display: inline-flex; align-items: baseline; gap: 0.4rem; font-family: 'Space Mono', monospace; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; padding: 0.16rem 0.5rem; border-radius: 2px; white-space: nowrap; vertical-align: 0.12em; }
+  .joint::before { content: ''; width: 16px; height: 0; border-top-width: 2px; align-self: center; }
+  .joint-documented { color: var(--green); background: rgba(74,222,128,0.10); border: 1px solid rgba(74,222,128,0.32); }
+  .joint-documented::before { border-top-style: solid; border-top-color: var(--green); }
+  .joint-contested  { color: var(--gold); background: rgba(251,191,36,0.10); border: 1px solid rgba(251,191,36,0.32); }
+  .joint-contested::before { border-top-style: dashed; border-top-color: var(--gold); }
+  .joint-leap       { color: var(--pink); background: rgba(244,114,182,0.10); border: 1px solid rgba(244,114,182,0.32); }
+  .joint-leap::before { border-top-style: dotted; border-top-color: var(--pink); }
+
+  .joint-note { font-size: 0.84rem; line-height: 1.6; color: var(--dim); border-left: 2px solid rgba(167,139,250,0.28); padding-left: 0.9rem; margin: 1.1rem 0; }
+  .joint-note strong { color: var(--stardust); font-weight: 700; }
+
+  /* ── THE RUNNING SPINE ──
+     A ceiling, and a chain that crosses it. The first four chains used rail geometry; this one
+     uses a bound: the physics nodes sit under a dashed line that is provable, and the moment the
+     word "efficiency" leaves the engine room the chain rises through that line and runs along
+     the top, unbounded, for the rest of its length. The crossing is the contested joint.
+     Node names are not text in the SVG — the spine repeats on twelve spreads. See CHROME_SEL
+     in tools/build-search-index.mjs. */
+  .spine { border-top: 1px solid rgba(167,139,250,0.12); padding: 1.1rem 2.4rem 0.2rem; }
+  .spine svg { width: 100%; max-width: 620px; margin: 0 auto; display: block; overflow: visible; }
+  .spine-label { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); text-align: center; margin-top: 0.5rem; }
+  .spine-node { fill: var(--sp-dim); }
+  .spine-node.live { fill: var(--accent); }
+  .spine-ring { fill: none; stroke: var(--accent); stroke-width: 1.6; }
+  .spine-track { fill: none; stroke-width: 1.6; stroke-linecap: round; }
+  .spine-track.documented { stroke: rgba(74,222,128,0.55); }
+  .spine-track.contested  { stroke: rgba(251,191,36,0.6); stroke-dasharray: 6 4; }
+  .spine-track.leap       { stroke: rgba(244,114,182,0.6); stroke-dasharray: 1.5 4; }
+  .spine-ceiling { fill: none; stroke: rgba(244,244,251,0.4); stroke-width: 1.2; stroke-dasharray: 5 4; }
+  .spine-raillabel { font-family: 'Space Mono', monospace; font-size: 7px; letter-spacing: 0.18em; text-transform: uppercase; fill: var(--sp-dim); }
+
+  /* ── DIAGRAMS ── */
+  .diagram-wrap { display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; }
+  .diagram { width: 100%; max-width: 300px; display: block; }
+  .diagram-caption { font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim); text-align: center; margin-top: 0.9rem; line-height: 1.9; }
+
+  /* ── THE TALLY ── */
+  .tally { display: flex; gap: 1rem; margin: 1.4rem 0; }
+  .tally-cell { flex: 1; padding: 0.9rem 1rem; border-radius: 4px; border: 1px solid rgba(167,139,250,0.18); background: rgba(255,255,255,0.02); }
+  .tally-cell.gained { border-color: rgba(74,222,128,0.3); background: rgba(74,222,128,0.05); }
+  .tally-cell.lost { border-color: rgba(244,114,182,0.3); background: rgba(244,114,182,0.05); }
+  .tally-num { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 1.5rem; line-height: 1; color: var(--green); }
+  .tally-cell.lost .tally-num { color: var(--pink); }
+  .tally-label { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dim); margin-top: 0.45rem; line-height: 1.7; }
+
+  /* ── THE WORD, TWO COLUMNS ── */
+  .twoword { width: 100%; border-collapse: collapse; margin: 1.3rem 0; font-size: 0.86rem; }
+  .twoword th { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.14em; text-transform: uppercase; text-align: left; padding: 0.5rem 0.6rem; border-bottom: 1px solid rgba(167,139,250,0.28); font-weight: 700; }
+  .twoword th.hot { color: var(--gold); }
+  .twoword th.cold { color: var(--cyan); }
+  .twoword td { padding: 0.55rem 0.6rem; border-bottom: 1px solid rgba(167,139,250,0.1); color: var(--stardust); line-height: 1.5; vertical-align: top; }
+  .twoword td strong { color: var(--star-white); font-weight: 700; }
+
+  /* ── REFUSALS ── */
+  .refusals { margin-top: 1.3rem; }
+  .refusal { font-size: 0.88rem; line-height: 1.5; color: var(--stardust); padding: 0.55rem 0; border-bottom: 1px solid rgba(167,139,250,0.1); display: flex; gap: 0.6rem; align-items: baseline; }
+  .refusal:last-child { border-bottom: none; }
+  .refusal-tag { font-family: 'Space Mono', monospace; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ember); flex-shrink: 0; padding-top: 0.12rem; }
+  .refusal strong { color: var(--star-white); font-weight: 700; }
+
+  /* ── COLOPHON ── */
+  .colophon { padding: 3rem; display: flex; flex-direction: column; justify-content: space-between; min-height: 480px; background: radial-gradient(ellipse at 82% 18%, rgba(34,211,238,0.09) 0%, transparent 50%), radial-gradient(ellipse at 18% 85%, rgba(251,191,36,0.06) 0%, transparent 50%), var(--page); }
+  .colophon-top { border-bottom: 1px solid rgba(167,139,250,0.14); padding-bottom: 1.3rem; margin-bottom: 1.2rem; }
+  .colophon-ls { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 2.4rem; color: var(--accent); letter-spacing: 0.05em; display: block; margin-bottom: 0.4rem; }
+  .colophon-phrase { font-size: 0.98rem; font-weight: 700; font-style: italic; color: var(--stardust); }
+  .series-list { display: flex; flex-direction: column; gap: 0.38rem; margin-bottom: 1.2rem; }
+  .series-item { font-size: 0.72rem; color: var(--dim); letter-spacing: 0.01em; display: flex; gap: 0.7rem; align-items: baseline; line-height: 1.45; }
+  .series-item.current { color: var(--accent); font-weight: 700; }
+  .series-num { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim2); flex-shrink: 0; }
+  .series-item.current .series-num { color: var(--accent); }
+  .reflect { border-top: 1px solid rgba(167,139,250,0.14); padding-top: 1rem; margin-bottom: 1.2rem; }
+  .reflect-label { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.65rem; }
+  .reflect-q { font-size: 0.86rem; line-height: 1.55; color: var(--stardust); margin-bottom: 0.55rem; font-style: italic; }
+  .reflect-q:last-child { margin-bottom: 0; }
+  .colophon-body { font-size: 0.75rem; color: var(--dim); line-height: 1.75; margin-bottom: 1.2rem; }
+  .colophon-body a { color: var(--violet); text-decoration: none; border-bottom: 1px solid rgba(167,139,250,0.4); }
+  .colophon-body a:hover { border-bottom-color: var(--violet); }
+  .colophon-h { font-family: 'Space Mono', monospace; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: var(--stardust); margin: 1rem 0 0.4rem; scroll-margin-top: 5rem; }
+  .colophon-footer { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--dim); line-height: 2.2; border-top: 1px solid rgba(167,139,250,0.14); padding-top: 1rem; }
+
+  /* ── SPREAD FOOTER ── */
+  .spread-footer { display: flex; justify-content: space-between; align-items: center; padding: 0.9rem 2.4rem; border-top: 1px solid rgba(167,139,250,0.1); }
+  .spread-footer-left { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--dim); }
+  .spread-footer-right { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; color: var(--accent); }
+
+  .twinkle { position: fixed; width: 3px; height: 3px; border-radius: 50%; animation: twinkle-anim 3s ease-in-out infinite; pointer-events: none; z-index: 0; }
+
+  @media (max-width: 600px) {
+    .spread-2col { grid-template-columns: 1fr; }
+    .spread-left { border-right: none; border-bottom: 1px solid rgba(167,139,250,0.12); }
+    .spread-2col.stacked > .spread-left { border-bottom: none; }
+    .spread-2col.stacked > .col-text { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .cover-spread { padding: 2rem; min-height: 420px; }
+    .cover-motif { width: 224px; height: 224px; top: -4px; right: -24px; opacity: 0.5; }
+    .cover-title { font-size: 1.85rem; }
+    .spread-heading { font-size: 1.55rem; }
+    .spread-left, .spread-right { padding: 2rem 1.5rem; }
+    .colophon { padding: 2rem 1.5rem; }
+    .spine { padding: 1rem 1.5rem 0.2rem; }
+    .tally { flex-direction: column; gap: 0.7rem; }
+    .twoword { font-size: 0.78rem; }
+    .twoword th, .twoword td { padding: 0.4rem 0.35rem; }
+  }
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"The Elimination of Waste","description":"In 1824 Sadi Carnot published Réflexions sur la puissance motrice du feu, establishing that the motive power of heat is independent of the working substance and fixed solely by the temperatures between which heat is transferred — a hard, provable ceiling on the efficiency of any heat engine, and with it the result that waste heat is not an engineering failure but a requirement. He reached it from caloric theory, treating heat as a conserved fluid, which was wrong; Clausius and Kelvin later rejected caloric, incorporated Joule's work on energy conservation and supplied the modern formulation, so the familiar Carnot efficiency names a result of layered authorship. Then the word left the engine room. Frederick Taylor's Principles of Scientific Management appeared in 1911, and Raymond Callahan's Education and the Cult of Efficiency (1962) documents what followed: in July 1911, one month after Taylor's American Magazine series concluded, a school board member from Allegheny, Pennsylvania told the National Education Association that the two words electrifying the industrial world contained a message for every teacher, and that if teachers did not voluntarily increase their efficiency the business world would force them to. By 1916 Ellwood Cubberley's Public School Administration was listing what schools must take from the factory: good tools, specialized machinery, continuous measurement of production to see if it is according to specifications, the elimination of waste in manufacture, and a large variety in the output. The hinge is that one word. In thermodynamics waste is mandatory and provably so; in scientific management it became the thing to remove. In 1912 an educator complained that teachers were curiously protected in inefficiency, and Callahan's own aside about Taylor's pig-iron handler asks whether Schmidt would have agreed that experimental science had reduced his fatigue — nobody asked him. The chain closes on spoon theory (Christine Miserandino, 2003) and spends a full spread arguing against itself, because the seductive version — stars are inefficient, therefore rest is fine — is a naturalistic fallacy, is not what this zine claims, and is marked as its leap. The sixth chain in How We Got Here.","image":"https://starstuff.earth/og-card.jpg","url":"https://starstuff.earth/elimination-of-waste-zine.html","mainEntityOfPage":"https://starstuff.earth/elimination-of-waste-zine.html","publisher":[{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/","logo":{"@type":"ImageObject","url":"https://starstuff.earth/og-card.jpg"}},{"@type":"Organization","name":"More Realms","url":"https://morerealms.com/"}],"isPartOf":{"@type":"WebSite","name":"Star Stuff","url":"https://starstuff.earth/"}}</script>
+</head>
+<body>
+
+<div class="twinkle" style="top:10%;left:13%;background:var(--cyan);box-shadow:0 0 6px var(--cyan);animation-delay:-0.5s"></div>
+<div class="twinkle" style="top:22%;left:86%;background:var(--star-white);box-shadow:0 0 6px var(--star-white);animation-delay:-1.4s"></div>
+<div class="twinkle" style="top:55%;left:5%;background:var(--cyan);box-shadow:0 0 6px var(--cyan);animation-delay:-2.2s"></div>
+<div class="twinkle" style="top:74%;left:93%;background:var(--gold);box-shadow:0 0 6px var(--gold);animation-delay:-0.8s"></div>
+<div class="twinkle" style="top:89%;left:28%;background:var(--star-white);box-shadow:0 0 6px var(--star-white);animation-delay:-1.9s"></div>
+<div class="twinkle" style="top:38%;left:96%;background:var(--cyan);box-shadow:0 0 6px var(--cyan);animation-delay:-3.0s"></div>
+
+<div class="zine-shell">
+
+  <nav class="ss-nav" style="--nav-accent:#22d3ee;" aria-label="Star Stuff collection">
+    <span class="ss-nav-home-group"><a class="ss-nav-home" href="index.html"><span class="ss-star" aria-hidden="true">★</span> stuff</a><a class="ss-nav-about" href="about.html">about</a>
+      <a class="ss-nav-search" href="search.html">search</a></span>
+    <span class="ss-nav-links">
+      <a class="ss-nav-prev" href="look-for-the-air-zine.html"><span class="ss-nav-arrow" aria-hidden="true">&lsaquo;</span> <span class="ss-nav-label">Look for the Air</span></a>
+      <a class="ss-nav-next" href="collection-star-gazing.html"><span class="ss-nav-label">Star Gazing</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
+    </span>
+    <a class="ss-nav-collection" href="collection-how-we-got-here.html"><span class="ss-nav-collection-label">Collection</span> <span class="ss-nav-collection-name">How We Got Here</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
+  </nav>
+
+  <nav class="nav">
+    <div class="nav-brand"><a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks</a> × <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a> · Zine No. 43</div>
+    <div class="nav-controls">
+      <button class="nav-btn" id="prev-btn" onclick="changePage(-1)">← prev</button>
+      <span class="page-counter" id="page-counter">1 / 15</span>
+      <button class="nav-btn" id="next-btn" onclick="changePage(1)">next →</button>
+    </div>
+  </nav>
+
+  <!-- ════ SPREAD 1: COVER ════ -->
+  <div class="spread active" id="spread-1">
+    <div class="cover-spread">
+      <svg class="cover-motif" viewBox="0 0 340 340" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <!-- A heat engine as Carnot drew the problem: a hot reservoir, work taken off, and the
+             rest going irreducibly to the cold one. The cold arrow is the fat one on purpose.
+             Art held in the UPPER THIRD of the box — the cover is 520px and the title sits at
+             its foot, so anything past y≈240 in this viewBox lands on the words. -->
+        <g transform="translate(18,30) scale(0.78)">
+          <rect x="26" y="10" width="176" height="30" rx="4" fill="rgba(251,191,36,0.18)" stroke="rgba(251,191,36,0.6)" stroke-width="1.4"/>
+          <text x="114" y="30" text-anchor="middle" font-family="Space Mono, monospace" font-size="11" letter-spacing="1" fill="var(--gold)">HOT</text>
+          <path d="M114 40 L114 74" stroke="rgba(251,191,36,0.7)" stroke-width="9" stroke-linecap="butt"/>
+          <circle cx="114" cy="96" r="22" fill="none" stroke="rgba(244,244,251,0.55)" stroke-width="1.6"/>
+          <text x="114" y="100" text-anchor="middle" font-family="Space Mono, monospace" font-size="10" fill="rgba(244,244,251,0.8)">W</text>
+          <path d="M136 96 L186 96" stroke="rgba(244,244,251,0.6)" stroke-width="3.5" stroke-linecap="round"/>
+          <text x="196" y="99" font-family="Space Mono, monospace" font-size="9" letter-spacing="0.6" fill="rgba(244,244,251,0.7)">work</text>
+          <path d="M114 118 L114 152" stroke="rgba(34,211,238,0.75)" stroke-width="14" stroke-linecap="butt"/>
+          <rect x="26" y="152" width="176" height="30" rx="4" fill="rgba(34,211,238,0.16)" stroke="rgba(34,211,238,0.6)" stroke-width="1.4"/>
+          <text x="114" y="172" text-anchor="middle" font-family="Space Mono, monospace" font-size="11" letter-spacing="1" fill="var(--cyan)">COLD</text>
+          <text x="114" y="206" text-anchor="middle" font-family="Space Mono, monospace" font-size="9.5" letter-spacing="0.8" fill="var(--cyan)">this arrow cannot be zero</text>
+          <text x="114" y="228" text-anchor="middle" font-family="Space Mono, monospace" font-size="8" letter-spacing="1.2" fill="var(--sp-secondary)">Carnot proved it in 1824</text>
+        </g>
+      </svg>
+      <div class="cover-corner">
+        <div class="cover-corner-num" aria-hidden="true">43</div>
+        <span class="cover-corner-label">Chain</span>
+      </div>
+      <div class="cover-issue">Stimpunks × More Realms · Zine No. 43</div>
+      <h1 class="cover-title">The Elimination <span class="amp">of</span> Waste</h1>
+      <p class="cover-subtitle">on a word that meant one thing in a steam engine and another in a school</p>
+      <div class="cover-byline">Every joint marked <strong>documented</strong> · <strong>contested</strong> · <strong>leap</strong></div>
+      <hr class="spectrum-line cover-rule">
+      <div class="cover-meta">
+        <span class="cover-ls">L★S</span>
+        <div class="cover-meta-text">Love You Down To Your Star Stuff<br>open edition · print freely</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 2: Carnot ════ -->
+  <div class="spread" id="spread-2">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Paris · 1824</div>
+          <h2 class="spread-heading" id="a-ceiling-nobody-can-lift">A ceiling nobody can lift</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">At twenty-eight, <strong>Sadi Carnot</strong> published a short book about steam engines that turned out to be about the limits of the universe.</p>
+            <p>The question was practical: how good can an engine get? Engineers assumed it depended on cleverness — better valves, better steam, a better working fluid. Carnot proved it doesn't.</p>
+            <div class="callout">"The motive power of heat is independent of the agents employed to realize it; its quantity is fixed solely by the temperatures of the bodies between which is effected, finally, the transfer of the caloric."<span class="attr">Sadi Carnot, <em>Réflexions sur la puissance motrice du feu</em>, 1824</span></div>
+            <p>Read what that forecloses. <span class="cyan">No working substance helps.</span> No mechanism helps. The maximum is set by the two temperatures you have and nothing else, and no engineer who ever lives will beat it.</p>
+            <p>It is one of the strangest results in physics: a <strong>ceiling on human ingenuity</strong>, derived in advance, that applies to machines nobody had invented yet.</p>
+            <div class="joint-note"><strong>And he got it from a theory that was wrong.</strong> Carnot worked inside <em>caloric</em> — heat as an indestructible fluid that flows from hot to cold, conserved like water falling through a mill. That picture is false; heat is energy, not substance. Clausius rejected caloric, folded in Joule's work on energy conservation, and Kelvin supplied the absolute temperature scale — and only then did the familiar formula appear. So <strong>"Carnot derived the efficiency equation" is a smoothed retelling</strong>: the result has layered authorship, and its author reached it by reasoning correctly about something that does not exist. We mark that joint contested for the same reason <a href="conquering-gaze-zine.html">No. 41</a> marked the Leaning Tower.</div>
+            <p><span class="joint joint-contested">contested</span> &nbsp;Carnot's theorem → the second law</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 180" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig1-title fig1-desc">
+              <title id="fig1-title">The ceiling is set by two temperatures</title>
+              <desc id="fig1-desc">A curve showing maximum efficiency rising as the temperature difference grows, with a hard line at one hundred percent that the curve approaches but never reaches.</desc>
+              <line x1="40" y1="30" x2="40" y2="132" stroke="rgba(167,139,250,0.4)" stroke-width="1.1"/>
+              <line x1="40" y1="132" x2="278" y2="132" stroke="rgba(167,139,250,0.4)" stroke-width="1.1"/>
+              <line x1="40" y1="36" x2="278" y2="36" stroke="rgba(244,244,251,0.45)" stroke-width="1.3" stroke-dasharray="5 4"/>
+              <text x="278" y="28" text-anchor="end" font-family="Space Mono, monospace" font-size="7.5" fill="rgba(244,244,251,0.8)">100% · unreachable</text>
+              <path d="M46 128 Q140 96 272 52" fill="none" stroke="var(--cyan)" stroke-width="1.8"/>
+              <text x="150" y="152" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.5" fill="var(--sp-dim)">temperature difference →</text>
+              <text x="22" y="88" font-family="Space Mono, monospace" font-size="7.5" fill="var(--sp-dim)" transform="rotate(-90 22 88)">max efficiency</text>
+              <text x="150" y="172" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="1.2" fill="var(--sp-secondary)">no cleverness moves this curve</text>
+            </svg>
+            <div class="diagram-caption">Figure 1 · a bound, derived in advance</div>
+          </div>
+        </div>
+      </div>
+      <div class="spine">
+        <svg viewBox="0 0 620 78" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain, with 1 — Carnot — 1824 live. Physics nodes sit below a provable ceiling; the chain crosses it where the word escapes and runs unbounded above.">
+          <path class="spine-ceiling" d="M14 32 H606"/><text class="spine-raillabel" x="14" y="28">the ceiling — provable</text><path class="spine-track contested" d="M60 52 H125"/><path class="spine-track documented" d="M125 52 H190"/><path class="spine-track documented" d="M190 52 H228"/><path class="spine-track contested" d="M228 52 Q258 52 264 20"/><path class="spine-track documented" d="M268 14 H318"/><path class="spine-track documented" d="M318 14 H368"/><path class="spine-track documented" d="M368 14 H418"/><path class="spine-track documented" d="M418 14 H468"/><path class="spine-track documented" d="M468 14 H518"/><path class="spine-track contested" d="M518 14 H558"/><path class="spine-track leap" d="M558 14 H588"/><path class="spine-track documented" d="M588 14 H612"/><text class="spine-raillabel" x="14" y="72">bounded</text><g class="spine-node"><circle cx="125" cy="52" r="3.4"/><circle cx="190" cy="52" r="3.4"/><circle cx="268" cy="14" r="3.4"/><circle cx="318" cy="14" r="3.4"/><circle cx="368" cy="14" r="3.4"/><circle cx="418" cy="14" r="3.4"/><circle cx="468" cy="14" r="3.4"/><circle cx="518" cy="14" r="3.4"/><circle cx="558" cy="14" r="3.4"/><circle cx="588" cy="14" r="3.4"/><circle cx="612" cy="14" r="3.4"/></g><circle class="spine-node live" cx="60" cy="52" r="4.6"/><circle class="spine-ring" cx="60" cy="52" r="9"/>
+        </svg>
+        <div class="spine-label">1 · Carnot · 1824</div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Elimination of Waste · Stimpunks</span>
+        <span class="spread-footer-right">2</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 3: waste is mandatory ════ -->
+  <div class="spread" id="spread-3">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The second law · what it actually says</div>
+          <h2 class="spread-heading" id="waste-is-not-a-failure">Waste is not a failure. It is the fee.</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Here is the part that matters for everything downstream, and it is worth saying slowly because the ordinary use of the word gets it exactly backwards.</p>
+            <p>An engine takes heat from something hot, converts <em>some</em> of it to work, and dumps the rest into something cold. <strong>That last step is not sloppiness.</strong> It is not a sign that the engineering isn't finished. Without a cold reservoir to dump into, <span class="cyan">the engine does not run at all.</span></p>
+            <p>The waste is not the price of doing it badly. It is the price of doing it.</p>
+            <div class="pull-quote cyan">A cycle that claims to waste nothing is either measured wrong, lying, or consuming itself.<span class="attr">the second law, stated rudely</span></div>
+            <p>So "eliminate all waste" is not an ambitious engineering goal that we have not yet reached. In thermodynamics it is a <strong>category error</strong> — a request for a machine that is forbidden, in the way a perpetual motion machine is forbidden. Engineers know this. It is not controversial, contested, or new. It has been settled for two centuries.</p>
+            <p>Hold on to the shape of that sentence: <em>the thing being demanded is not merely hard, it is the one outcome the physics rules out.</em> Ten spreads from now somebody is going to demand it of a teacher.</p>
+            <p><span class="joint joint-documented">documented</span> &nbsp;the second law → what a star does with it</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 184" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig2-title fig2-desc">
+              <title id="fig2-title">Two engines</title>
+              <desc id="fig2-desc">A working engine with heat in, some work out, and a wide arrow of waste heat to the cold reservoir. Beside it, an engine with no waste arrow, labelled forbidden, not merely difficult.</desc>
+              <text x="74" y="18" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="0.8" fill="var(--green)">real</text>
+              <path d="M74 26 L74 52" stroke="rgba(251,191,36,0.7)" stroke-width="7"/>
+              <circle cx="74" cy="72" r="16" fill="none" stroke="rgba(244,244,251,0.5)" stroke-width="1.4"/>
+              <path d="M90 72 L120 72" stroke="rgba(244,244,251,0.6)" stroke-width="3"/>
+              <text x="124" y="75" font-family="Space Mono, monospace" font-size="6.5" fill="var(--sp-secondary)">work</text>
+              <path d="M74 88 L74 118" stroke="rgba(34,211,238,0.75)" stroke-width="11"/>
+              <rect x="40" y="118" width="68" height="18" rx="3" fill="rgba(34,211,238,0.14)" stroke="rgba(34,211,238,0.5)" stroke-width="1.1"/>
+              <text x="74" y="131" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--cyan)">cold</text>
+              <text x="74" y="154" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--green)">runs</text>
+              <line x1="150" y1="14" x2="150" y2="168" stroke="rgba(167,139,250,0.25)" stroke-width="1" stroke-dasharray="4 4"/>
+              <text x="226" y="18" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="0.8" fill="var(--pink)">demanded</text>
+              <path d="M226 26 L226 52" stroke="rgba(251,191,36,0.7)" stroke-width="7"/>
+              <circle cx="226" cy="72" r="16" fill="none" stroke="rgba(244,244,251,0.5)" stroke-width="1.4"/>
+              <path d="M242 72 L272 72" stroke="rgba(244,244,251,0.6)" stroke-width="6"/>
+              <text x="276" y="75" font-family="Space Mono, monospace" font-size="6.5" fill="var(--sp-secondary)">all</text>
+              <path d="M226 88 L226 112" stroke="rgba(244,114,182,0.35)" stroke-width="1.3" stroke-dasharray="2 3"/>
+              <text x="226" y="126" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--pink)">no waste</text>
+              <text x="226" y="154" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" font-weight="700" fill="var(--pink)">forbidden</text>
+              <text x="150" y="180" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="1.2" fill="var(--sp-dim)">not &ldquo;not yet&rdquo; — ruled out</text>
+            </svg>
+            <div class="diagram-caption">Figure 2 · the fee, and the machine that refuses to pay it</div>
+          </div>
+        </div>
+      </div>
+      <div class="spine">
+        <svg viewBox="0 0 620 78" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain, with 2 — waste is mandatory live. Physics nodes sit below a provable ceiling; the chain crosses it where the word escapes and runs unbounded above.">
+          <path class="spine-ceiling" d="M14 32 H606"/><text class="spine-raillabel" x="14" y="28">the ceiling — provable</text><path class="spine-track contested" d="M60 52 H125"/><path class="spine-track documented" d="M125 52 H190"/><path class="spine-track documented" d="M190 52 H228"/><path class="spine-track contested" d="M228 52 Q258 52 264 20"/><path class="spine-track documented" d="M268 14 H318"/><path class="spine-track documented" d="M318 14 H368"/><path class="spine-track documented" d="M368 14 H418"/><path class="spine-track documented" d="M418 14 H468"/><path class="spine-track documented" d="M468 14 H518"/><path class="spine-track contested" d="M518 14 H558"/><path class="spine-track leap" d="M558 14 H588"/><path class="spine-track documented" d="M588 14 H612"/><text class="spine-raillabel" x="14" y="72">bounded</text><g class="spine-node"><circle cx="60" cy="52" r="3.4"/><circle cx="190" cy="52" r="3.4"/><circle cx="268" cy="14" r="3.4"/><circle cx="318" cy="14" r="3.4"/><circle cx="368" cy="14" r="3.4"/><circle cx="418" cy="14" r="3.4"/><circle cx="468" cy="14" r="3.4"/><circle cx="518" cy="14" r="3.4"/><circle cx="558" cy="14" r="3.4"/><circle cx="588" cy="14" r="3.4"/><circle cx="612" cy="14" r="3.4"/></g><circle class="spine-node live" cx="125" cy="52" r="4.6"/><circle class="spine-ring" cx="125" cy="52" r="9"/>
+        </svg>
+        <div class="spine-label">2 · waste is mandatory</div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Elimination of Waste · Stimpunks</span>
+        <span class="spread-footer-right">3</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 4: the Sun ════ -->
+  <div class="spread" id="spread-4">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The nearest star</div>
+          <h2 class="spread-heading" id="under-one-percent">Under one percent, for ten billion years</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">The Sun fuses hydrogen into helium, and in doing so converts about <strong class="gold">0.7% of the rest mass</strong> involved into energy. The other 99.3% stays mass.</p>
+            <p>By any engineering standard that is a poor conversion. And it is the most consequential energy process in your life: it made the carbon in you, it drives the weather, it is the reason there is a biosphere at all.</p>
+            <p>It has also been running for <span class="cyan">about five billion years</span> and has roughly that long left.</p>
+            <p>Notice what the Sun is <em>not</em> doing. It is not maximising output. A star sits in <strong>hydrostatic equilibrium</strong> — the outward push of radiation balanced against the inward pull of its own weight — and that balance is a <em>self-regulating</em> arrangement, not an optimisation. Speed the fusion up and the core expands and cools, which slows the fusion down. The thermostat is the structure.</p>
+            <div class="pull-quote gold">The stars that burn hottest and brightest are the ones that die soonest. The most massive can exhaust themselves in a few million years — a rounding error beside the Sun.<span class="attr">output and duration are traded, not stacked</span></div>
+            <p>So the sky offers a genuinely useful fact, and it is narrower than the one you might want it to offer. <strong>Sustained output and maximal output are different objectives, and systems that achieve the second rarely achieve the first.</strong></p>
+            <p>That is an observation about stars. What it licenses about people is the subject of spread twelve, and of spread thirteen, where we argue against ourselves.</p>
+            <p><span class="joint joint-documented">documented</span> &nbsp;the physics → the word leaving it</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 180" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig3-title fig3-desc">
+              <title id="fig3-title">Brightness against lifetime</title>
+              <desc id="fig3-desc">A falling curve: the more luminous the star, the shorter its life. A massive star sits top-left with a few million years; the Sun sits low-right with about ten billion.</desc>
+              <line x1="44" y1="26" x2="44" y2="128" stroke="rgba(167,139,250,0.4)" stroke-width="1.1"/>
+              <line x1="44" y1="128" x2="276" y2="128" stroke="rgba(167,139,250,0.4)" stroke-width="1.1"/>
+              <path d="M56 36 Q120 92 266 118" fill="none" stroke="var(--gold)" stroke-width="1.8"/>
+              <circle cx="60" cy="40" r="5" fill="var(--gold)"/>
+              <text x="72" y="38" font-family="Space Mono, monospace" font-size="6.5" fill="var(--gold)">massive star</text>
+              <text x="72" y="49" font-family="Space Mono, monospace" font-size="6.5" fill="var(--sp-dim)">a few million years</text>
+              <circle cx="252" cy="116" r="4.5" fill="var(--cyan)"/>
+              <text x="244" y="106" text-anchor="end" font-family="Space Mono, monospace" font-size="6.5" fill="var(--cyan)">the Sun</text>
+              <text x="244" y="117" text-anchor="end" font-family="Space Mono, monospace" font-size="6.5" fill="var(--sp-dim)">~10 billion</text>
+              <text x="24" y="80" font-family="Space Mono, monospace" font-size="7" fill="var(--sp-dim)" transform="rotate(-90 24 80)">output</text>
+              <text x="160" y="148" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" fill="var(--sp-dim)">lifetime →</text>
+              <text x="150" y="170" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="1.2" fill="var(--sp-secondary)">a trade, not a ladder</text>
+            </svg>
+            <div class="diagram-caption">Figure 3 · what stars actually optimise for</div>
+          </div>
+        </div>
+      </div>
+      <div class="spine">
+        <svg viewBox="0 0 620 78" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain, with 3 — the Sun — 0.7% live. Physics nodes sit below a provable ceiling; the chain crosses it where the word escapes and runs unbounded above.">
+          <path class="spine-ceiling" d="M14 32 H606"/><text class="spine-raillabel" x="14" y="28">the ceiling — provable</text><path class="spine-track contested" d="M60 52 H125"/><path class="spine-track documented" d="M125 52 H190"/><path class="spine-track documented" d="M190 52 H228"/><path class="spine-track contested" d="M228 52 Q258 52 264 20"/><path class="spine-track documented" d="M268 14 H318"/><path class="spine-track documented" d="M318 14 H368"/><path class="spine-track documented" d="M368 14 H418"/><path class="spine-track documented" d="M418 14 H468"/><path class="spine-track documented" d="M468 14 H518"/><path class="spine-track contested" d="M518 14 H558"/><path class="spine-track leap" d="M558 14 H588"/><path class="spine-track documented" d="M588 14 H612"/><text class="spine-raillabel" x="14" y="72">bounded</text><g class="spine-node"><circle cx="60" cy="52" r="3.4"/><circle cx="125" cy="52" r="3.4"/><circle cx="268" cy="14" r="3.4"/><circle cx="318" cy="14" r="3.4"/><circle cx="368" cy="14" r="3.4"/><circle cx="418" cy="14" r="3.4"/><circle cx="468" cy="14" r="3.4"/><circle cx="518" cy="14" r="3.4"/><circle cx="558" cy="14" r="3.4"/><circle cx="588" cy="14" r="3.4"/><circle cx="612" cy="14" r="3.4"/></g><circle class="spine-node live" cx="190" cy="52" r="4.6"/><circle class="spine-ring" cx="190" cy="52" r="9"/>
+        </svg>
+        <div class="spine-label">3 · the Sun · 0.7%</div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Elimination of Waste · Stimpunks</span>
+        <span class="spread-footer-right">4</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 5: the word escapes ════ -->
+  <div class="spread" id="spread-5">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The crossing</div>
+          <h2 class="spread-heading" id="the-word-leaves-the-engine-room">The word leaves the engine room</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">In thermodynamics, <em>efficiency</em> is a ratio with a numerator, a denominator and a proven maximum. Outside it, the word travels alone.</p>
+            <p>What gets left behind in the move is not the arithmetic. It is <strong>the ceiling</strong> — and with the ceiling goes the whole meaning of the word, because a bounded quantity and an unbounded virtue are not the same kind of thing at all.</p>
+            <table class="twoword">
+              <thead><tr><th class="hot">in an engine</th><th class="cold">as a virtue</th></tr></thead>
+              <tbody>
+                <tr><td>a <strong>ratio</strong> of two measured quantities</td><td>a <strong>direction</strong>: more is better, always</td></tr>
+                <tr><td>has a <strong>proven maximum</strong></td><td>has <strong>no ceiling</strong> — you can always be asked for more</td></tr>
+                <tr><td>waste is <strong>required</strong></td><td>waste is <strong>the enemy</strong></td></tr>
+                <tr><td>the limit is set by <strong>physics</strong></td><td>the limit is set by <strong>whoever is asking</strong></td></tr>
+              </tbody>
+            </table>
+            <p>That last row is the one to sit with. Once efficiency is a virtue rather than a ratio, <span class="gold">there is no measurement that can ever discharge the demand.</span> No number is enough, because no number is the maximum. The person being measured cannot pass.</p>
+            <div class="joint-note"><strong>Marked contested, and here is exactly what.</strong> That the word acquired enormous prestige from engineering in this period is not in doubt. Whether Taylor and his followers took it <em>specifically</em> from thermodynamics — as opposed to from general industrial usage, from accounting, or from the surrounding vocabulary of mechanics — is a genuine question in the history of ideas, and we have not resolved it. What is documented is what they did with it, which is the next six spreads.</div>
+            <p><span class="joint joint-contested">contested</span> &nbsp;thermodynamic efficiency → efficiency as a virtue</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 176" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig4-title fig4-desc">
+              <title id="fig4-title">The ceiling left behind</title>
+              <desc id="fig4-desc">A bounded scale with a hard maximum on the left, and an open-ended arrow with no maximum on the right, joined by a dashed line marked the crossing.</desc>
+              <text x="70" y="20" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="0.8" fill="var(--cyan)">bounded</text>
+              <line x1="70" y1="34" x2="70" y2="124" stroke="rgba(34,211,238,0.6)" stroke-width="1.6"/>
+              <line x1="52" y1="34" x2="88" y2="34" stroke="rgba(244,244,251,0.7)" stroke-width="2"/>
+              <text x="94" y="37" font-family="Space Mono, monospace" font-size="6.5" fill="rgba(244,244,251,0.8)">max</text>
+              <circle cx="70" cy="92" r="4" fill="var(--cyan)"/>
+              <text x="70" y="142" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--sp-dim)">you can pass</text>
+              <path d="M104 78 L182 78" stroke="rgba(251,191,36,0.6)" stroke-width="1.3" stroke-dasharray="5 4"/>
+              <text x="143" y="70" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--gold)">the crossing</text>
+              <text x="228" y="20" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="0.8" fill="var(--pink)">unbounded</text>
+              <line x1="228" y1="30" x2="228" y2="124" stroke="rgba(244,114,182,0.6)" stroke-width="1.6"/>
+              <path d="M223 36 L228 26 L233 36" fill="none" stroke="rgba(244,114,182,0.7)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="228" cy="92" r="4" fill="var(--pink)"/>
+              <text x="228" y="142" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--pink)">you cannot</text>
+              <text x="150" y="166" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="1.2" fill="var(--sp-secondary)">the arithmetic survived · the ceiling did not</text>
+            </svg>
+            <div class="diagram-caption">Figure 4 · what the word lost in transit</div>
+          </div>
+        </div>
+      </div>
+      <div class="spine">
+        <svg viewBox="0 0 620 78" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain, with 4 — the word escapes live. Physics nodes sit below a provable ceiling; the chain crosses it where the word escapes and runs unbounded above.">
+          <path class="spine-ceiling" d="M14 32 H606"/><text class="spine-raillabel" x="14" y="28">the ceiling — provable</text><path class="spine-track contested" d="M60 52 H125"/><path class="spine-track documented" d="M125 52 H190"/><path class="spine-track documented" d="M190 52 H228"/><path class="spine-track contested" d="M228 52 Q258 52 264 20"/><path class="spine-track documented" d="M268 14 H318"/><path class="spine-track documented" d="M318 14 H368"/><path class="spine-track documented" d="M368 14 H418"/><path class="spine-track documented" d="M418 14 H468"/><path class="spine-track documented" d="M468 14 H518"/><path class="spine-track contested" d="M518 14 H558"/><path class="spine-track leap" d="M558 14 H588"/><path class="spine-track documented" d="M588 14 H612"/><text class="spine-raillabel" x="14" y="72">bounded</text><g class="spine-node"><circle cx="60" cy="52" r="3.4"/><circle cx="125" cy="52" r="3.4"/><circle cx="190" cy="52" r="3.4"/><circle cx="318" cy="14" r="3.4"/><circle cx="368" cy="14" r="3.4"/><circle cx="418" cy="14" r="3.4"/><circle cx="468" cy="14" r="3.4"/><circle cx="518" cy="14" r="3.4"/><circle cx="558" cy="14" r="3.4"/><circle cx="588" cy="14" r="3.4"/><circle cx="612" cy="14" r="3.4"/></g><circle class="spine-node live" cx="268" cy="14" r="4.6"/><circle class="spine-ring" cx="268" cy="14" r="9"/>
+        </svg>
+        <div class="spine-label">4 · the word escapes</div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Elimination of Waste · Stimpunks</span>
+        <span class="spread-footer-right">5</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 6: Taylor ════ -->
+  <div class="spread" id="spread-6">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">1911 · the stopwatch</div>
+          <h2 class="spread-heading" id="taylor">Taylor, and a man called Schmidt</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede"><strong>Frederick Winslow Taylor</strong> published <em>The Principles of Scientific Management</em> in 1911, having serialised the argument in the <em>American Magazine</em> through that spring.</p>
+            <p>The method: take a job, break it into motions, time each motion, discard the ones that don't contribute, and prescribe the remainder as the one correct way to work. The stopwatch is the instrument, and the worker's own account of the job is explicitly <span class="gold">not evidence.</span></p>
+            <p>His most-repeated demonstration involved a pig-iron handler at Bethlehem Steel whom he called <strong>Schmidt</strong>, loading iron onto railcars. Under Taylor's prescribed regime of work and rest intervals, output rose sharply.</p>
+            <p>The story was told, and retold, and it did more work than any argument. Here it is arriving in a newspaper editorial that Cubberley would later quote approvingly in a textbook for school administrators:</p>
+            <div class="callout">"Lately we have had a striking demonstration of what experimental science can do by reducing the motions in laying brick and <strong>the fatigue in handling pig iron</strong>. It can hardly be pretended that scientific efficiency is of less consequence in the schools."<span class="attr">Editorial, <em>Springfield Republican</em>, 1912, as quoted in Cubberley, <em>Public School Administration</em> (1916)</span></div>
+            <p>Note the move in that sentence, because the whole chain turns on it. <em>Bricklaying and pig iron have been optimised — therefore schools should be.</em> The premise is a factory floor. The conclusion is a classroom. Nothing in between is argued.</p>
+            <p>And hold on to <span class="cyan">"the fatigue in handling pig iron."</span> We come back to it, and to the question nobody asked, on spread ten.</p>
+            <p><span class="joint joint-documented">documented</span> &nbsp;Taylor's series → the NEA, one month later</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 172" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig5-title fig5-desc">
+              <title id="fig5-title">What the stopwatch records</title>
+              <desc id="fig5-desc">A job broken into timed motions, with a column of what is measured and a greyed-out column of what is not: the worker's own account, fatigue, and whether the job is bearable.</desc>
+              <text x="76" y="20" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="0.8" fill="var(--green)">recorded</text>
+              <g font-family="Space Mono, monospace" font-size="6.5" fill="var(--sp-secondary)">
+                <text x="26" y="42">motion 1 · 4.2s</text>
+                <text x="26" y="58">motion 2 · 1.8s</text>
+                <text x="26" y="74">motion 3 · 6.1s</text>
+                <text x="26" y="90">tons / day</text>
+                <text x="26" y="106">rest interval</text>
+              </g>
+              <line x1="150" y1="14" x2="150" y2="150" stroke="rgba(167,139,250,0.25)" stroke-width="1" stroke-dasharray="4 4"/>
+              <text x="226" y="20" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="0.8" fill="var(--pink)">not recorded</text>
+              <g font-family="Space Mono, monospace" font-size="6.5" fill="var(--sp-dim)">
+                <text x="176" y="42">how it felt</text>
+                <text x="176" y="58">whether he agreed</text>
+                <text x="176" y="74">what it cost him</text>
+                <text x="176" y="90">what he wanted</text>
+                <text x="176" y="106">the next day</text>
+              </g>
+              <text x="150" y="140" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.5" letter-spacing="0.8" fill="var(--sp-secondary)">the worker's account is not evidence</text>
+              <text x="150" y="162" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="1.2" fill="var(--sp-dim)">that was the method, not an oversight</text>
+            </svg>
+            <div class="diagram-caption">Figure 5 · two columns, one of them empty</div>
+          </div>
+        </div>
+      </div>
+      <div class="spine">
+        <svg viewBox="0 0 620 78" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain, with 5 — Taylor — 1911 live. Physics nodes sit below a provable ceiling; the chain crosses it where the word escapes and runs unbounded above.">
+          <path class="spine-ceiling" d="M14 32 H606"/><text class="spine-raillabel" x="14" y="28">the ceiling — provable</text><path class="spine-track contested" d="M60 52 H125"/><path class="spine-track documented" d="M125 52 H190"/><path class="spine-track documented" d="M190 52 H228"/><path class="spine-track contested" d="M228 52 Q258 52 264 20"/><path class="spine-track documented" d="M268 14 H318"/><path class="spine-track documented" d="M318 14 H368"/><path class="spine-track documented" d="M368 14 H418"/><path class="spine-track documented" d="M418 14 H468"/><path class="spine-track documented" d="M468 14 H518"/><path class="spine-track contested" d="M518 14 H558"/><path class="spine-track leap" d="M558 14 H588"/><path class="spine-track documented" d="M588 14 H612"/><text class="spine-raillabel" x="14" y="72">bounded</text><g class="spine-node"><circle cx="60" cy="52" r="3.4"/><circle cx="125" cy="52" r="3.4"/><circle cx="190" cy="52" r="3.4"/><circle cx="268" cy="14" r="3.4"/><circle cx="368" cy="14" r="3.4"/><circle cx="418" cy="14" r="3.4"/><circle cx="468" cy="14" r="3.4"/><circle cx="518" cy="14" r="3.4"/><circle cx="558" cy="14" r="3.4"/><circle cx="588" cy="14" r="3.4"/><circle cx="612" cy="14" r="3.4"/></g><circle class="spine-node live" cx="318" cy="14" r="4.6"/><circle class="spine-ring" cx="318" cy="14" r="9"/>
+        </svg>
+        <div class="spine-label">5 · Taylor · 1911</div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Elimination of Waste · Stimpunks</span>
+        <span class="spread-footer-right">6</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 7: one month later ════ -->
+  <div class="spread" id="spread-7">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">July 1911 · one month later</div>
+          <h2 class="spread-heading" id="or-the-business-world-will">"Or the business world will force them to"</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">The gap between Taylor's factory and the American classroom was about four weeks.</p>
+            <p>Raymond Callahan reconstructed it in <em>Education and the Cult of Efficiency</em> (1962), and the detail is precise enough to date:</p>
+            <div class="callout">"In July of 1911, for example, a month after Taylor's series of articles was completed in the <em>American Magazine</em>, a school board member from Allegheny, Pennsylvania told the N.E.A. that the two words which were 'electrifying the industrial world — scientific management' contained a 'message' for every teacher, and near the end of his speech he indicated that <strong>if teachers did not voluntarily take steps to increase their efficiency the business world would force them to do so</strong>."<span class="attr">Callahan, <em>Education and the Cult of Efficiency</em>, 1962, ch. 5, citing <em>N.E.A. Proceedings</em> p. 723</span></div>
+            <p>Read the structure of that. It is not an argument that scientific management would help children learn. There is no claim about learning in it at all. It is <span class="pink">a warning about who holds the power</span>, delivered to teachers, one month after the method appeared in a magazine.</p>
+            <p>Callahan's word for what followed is <em>mania</em>. Efficiency procedures were applied, in his summary, "to classroom learning and to teachers, to the program of studies, to the organization of the schools, to administrative functions, and to entire school systems," most of it before 1916 and most of it hung on <strong>"the magic words 'scientific management'."</strong></p>
+            <p>By 1915 nine efficiency bureaus had been established in large cities, and a <em>National Society of Efficiency Men</em> was formed. One weary superintendent complained to the NEA that there were so many efficiency engineers running handcars through the schoolhouses that grade teachers could hardly turn around without butting into two or three of them.</p>
+            <p><span class="joint joint-documented">documented</span> &nbsp;the NEA speech → the textbook</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 168" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig6-title fig6-desc">
+              <title id="fig6-title">Four weeks</title>
+              <desc id="fig6-desc">A short timeline from Taylor's magazine series ending in June 1911 to the NEA speech in July 1911, with the gap marked one month.</desc>
+              <line x1="40" y1="76" x2="266" y2="76" stroke="rgba(167,139,250,0.4)" stroke-width="1.2"/>
+              <circle cx="70" cy="76" r="5.5" fill="var(--gold)"/>
+              <text x="70" y="58" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" fill="var(--gold)">June 1911</text>
+              <text x="70" y="98" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--sp-dim)">Taylor's series</text>
+              <text x="70" y="109" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--sp-dim)">concludes</text>
+              <circle cx="230" cy="76" r="5.5" fill="var(--pink)"/>
+              <text x="230" y="58" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" fill="var(--pink)">July 1911</text>
+              <text x="230" y="98" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--sp-dim)">the NEA</text>
+              <text x="230" y="109" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--sp-dim)">is told</text>
+              <path d="M78 130 L222 130" stroke="rgba(34,211,238,0.6)" stroke-width="1.2"/>
+              <path d="M84 125 L76 130 L84 135 M216 125 L224 130 L216 135" fill="none" stroke="rgba(34,211,238,0.7)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+              <text x="150" y="148" text-anchor="middle" font-family="Space Mono, monospace" font-size="8" font-weight="700" letter-spacing="0.8" fill="var(--cyan)">one month</text>
+              <text x="150" y="164" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="1" fill="var(--sp-dim)">factory floor → classroom</text>
+            </svg>
+            <div class="diagram-caption">Figure 6 · the shortest joint in the chain</div>
+          </div>
+        </div>
+      </div>
+      <div class="spine">
+        <svg viewBox="0 0 620 78" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain, with 6 — the NEA — July 1911 live. Physics nodes sit below a provable ceiling; the chain crosses it where the word escapes and runs unbounded above.">
+          <path class="spine-ceiling" d="M14 32 H606"/><text class="spine-raillabel" x="14" y="28">the ceiling — provable</text><path class="spine-track contested" d="M60 52 H125"/><path class="spine-track documented" d="M125 52 H190"/><path class="spine-track documented" d="M190 52 H228"/><path class="spine-track contested" d="M228 52 Q258 52 264 20"/><path class="spine-track documented" d="M268 14 H318"/><path class="spine-track documented" d="M318 14 H368"/><path class="spine-track documented" d="M368 14 H418"/><path class="spine-track documented" d="M418 14 H468"/><path class="spine-track documented" d="M468 14 H518"/><path class="spine-track contested" d="M518 14 H558"/><path class="spine-track leap" d="M558 14 H588"/><path class="spine-track documented" d="M588 14 H612"/><text class="spine-raillabel" x="14" y="72">bounded</text><g class="spine-node"><circle cx="60" cy="52" r="3.4"/><circle cx="125" cy="52" r="3.4"/><circle cx="190" cy="52" r="3.4"/><circle cx="268" cy="14" r="3.4"/><circle cx="318" cy="14" r="3.4"/><circle cx="418" cy="14" r="3.4"/><circle cx="468" cy="14" r="3.4"/><circle cx="518" cy="14" r="3.4"/><circle cx="558" cy="14" r="3.4"/><circle cx="588" cy="14" r="3.4"/><circle cx="612" cy="14" r="3.4"/></g><circle class="spine-node live" cx="368" cy="14" r="4.6"/><circle class="spine-ring" cx="368" cy="14" r="9"/>
+        </svg>
+        <div class="spine-label">6 · the NEA · July 1911</div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Elimination of Waste · Stimpunks</span>
+        <span class="spread-footer-right">7</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 8: the phrase arrives ════ -->
+  <div class="spread" id="spread-8">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">1916 · the phrase, in a school</div>
+          <h2 class="spread-heading" id="the-elimination-of-waste">"The elimination <span class="spectrum-word">of waste</span>"</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Ellwood Cubberley's <em>Public School Administration</em> (1916) was, in George Counts' judgement, the most widely read and influential book on school administration of its generation. Here is what it told a generation of superintendents that schools are.</p>
+            <div class="callout">"Our schools are, in a sense, <strong>factories</strong> in which the raw products (children) are to be shaped and fashioned into products to meet the various demands of life. The specifications for manufacturing come from the demands of twentieth-century civilization, and it is the business of the school to build its pupils according to the specifications laid down. This demands good tools, specialized machinery, continuous measurement of production to see if it is according to specifications, <strong>the elimination of waste in manufacture</strong>, and a large variety in the output."<span class="attr">Ellwood P. Cubberley, <em>Public School Administration</em> (1916), pp. 337–38</span></div>
+            <p>There it is. <span class="cyan">The elimination of waste in manufacture.</span></p>
+            <p>Ninety-two years after Carnot proved that waste cannot be eliminated from any process that does work, the phrase arrives in a book about children, as a <strong>specification</strong>.</p>
+            <p>And the borrowing is not metaphorical decoration. Read the sentence again — <em>good tools, specialized machinery, continuous measurement of production, the elimination of waste</em>. That is an inventory of a factory, transposed item by item, with children entered as raw product and no term left over for anything a child might be that a billet of steel is not.</p>
+            <div class="pull-quote">In the domain the word came from, the elimination of waste is not a difficult goal. It is the one thing that is provably impossible.<span class="attr">the hinge of this zine</span></div>
+            <p>Nobody noticed. There is no reason they would have: the word arrived without its ceiling <a href="#the-word-leaves-the-engine-room">three spreads ago</a>, and a word without a ceiling is just an exhortation.</p>
+            <p><span class="joint joint-documented">documented</span> &nbsp;the specification → what it asked of teachers</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 180" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig7-title fig7-desc">
+              <title id="fig7-title">The inventory, transposed</title>
+              <desc id="fig7-desc">A two-column mapping from factory terms to school terms: raw product to children, specifications to demands of civilization, measurement of production to testing, and elimination of waste to itself, unchanged.</desc>
+              <text x="70" y="20" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="0.8" fill="var(--gold)">factory</text>
+              <text x="230" y="20" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="0.8" fill="var(--cyan)">school</text>
+              <g font-family="Space Mono, monospace" font-size="6.5" fill="var(--sp-secondary)" text-anchor="middle">
+                <text x="70" y="44">raw product</text><text x="230" y="44">children</text>
+                <text x="70" y="70">specifications</text><text x="230" y="70">&ldquo;demands of life&rdquo;</text>
+                <text x="70" y="96">measure output</text><text x="230" y="96">testing</text>
+                <text x="70" y="122">specialized machinery</text><text x="230" y="122">the curriculum</text>
+              </g>
+              <g stroke="rgba(167,139,250,0.35)" stroke-width="1" fill="none">
+                <path d="M120 41 H180"/><path d="M124 67 H176"/><path d="M120 93 H180"/><path d="M132 119 H176"/>
+              </g>
+              <rect x="40" y="138" width="220" height="26" rx="3" fill="rgba(244,114,182,0.07)" stroke="rgba(244,114,182,0.4)" stroke-width="1.2"/>
+              <text x="150" y="155" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.5" font-weight="700" fill="var(--pink)">&ldquo;the elimination of waste&rdquo;</text>
+              <text x="150" y="176" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" letter-spacing="0.8" fill="var(--sp-dim)">carried across untranslated</text>
+            </svg>
+            <div class="diagram-caption">Figure 7 · one term needed no translating</div>
+          </div>
+        </div>
+      </div>
+      <div class="spine">
+        <svg viewBox="0 0 620 78" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain, with 7 — Cubberley — 1916 live. Physics nodes sit below a provable ceiling; the chain crosses it where the word escapes and runs unbounded above.">
+          <path class="spine-ceiling" d="M14 32 H606"/><text class="spine-raillabel" x="14" y="28">the ceiling — provable</text><path class="spine-track contested" d="M60 52 H125"/><path class="spine-track documented" d="M125 52 H190"/><path class="spine-track documented" d="M190 52 H228"/><path class="spine-track contested" d="M228 52 Q258 52 264 20"/><path class="spine-track documented" d="M268 14 H318"/><path class="spine-track documented" d="M318 14 H368"/><path class="spine-track documented" d="M368 14 H418"/><path class="spine-track documented" d="M418 14 H468"/><path class="spine-track documented" d="M468 14 H518"/><path class="spine-track contested" d="M518 14 H558"/><path class="spine-track leap" d="M558 14 H588"/><path class="spine-track documented" d="M588 14 H612"/><text class="spine-raillabel" x="14" y="72">bounded</text><g class="spine-node"><circle cx="60" cy="52" r="3.4"/><circle cx="125" cy="52" r="3.4"/><circle cx="190" cy="52" r="3.4"/><circle cx="268" cy="14" r="3.4"/><circle cx="318" cy="14" r="3.4"/><circle cx="368" cy="14" r="3.4"/><circle cx="468" cy="14" r="3.4"/><circle cx="518" cy="14" r="3.4"/><circle cx="558" cy="14" r="3.4"/><circle cx="588" cy="14" r="3.4"/><circle cx="612" cy="14" r="3.4"/></g><circle class="spine-node live" cx="418" cy="14" r="4.6"/><circle class="spine-ring" cx="418" cy="14" r="9"/>
+        </svg>
+        <div class="spine-label">7 · Cubberley · 1916</div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Elimination of Waste · Stimpunks</span>
+        <span class="spread-footer-right">8</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 9: curiously protected ════ -->
+  <div class="spread" id="spread-9">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">October 1912 · from inside the profession</div>
+          <h2 class="spread-heading" id="curiously-protected">"We are curiously protected in inefficiency"</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">The most striking documents in Callahan's account are not the ones written by business. They are the ones written by educators, about themselves.</p>
+            <p>Theodore C. Mitchell, giving the presidential address to the Schoolmasters Association of New York and Vicinity, reached for the accounting of the railroads:</p>
+            <div class="callout">"bear in mind that four places of decimals are charged against many railroad engineers for coal, water, lubricating oil, and <strong>waste</strong>. Time and energy lost in a hundred ways rapidly mount up to vast accounts on the wrong side of the recitation ledger."<span class="attr">Theodore C. Mitchell, presidential address, October 1912</span></div>
+            <p>He went on to itemise. Time should not be wasted scolding pupils, nor lost while students borrow pencils or paper — teachers should carry a well-stocked satchel from room to room. No time wasted calling the roll. He counted four minutes of idle time when pupils are sent to the blackboard one by one.</p>
+            <p>Then the sentence that this spread is named for. The old ideal of <em>"cultured ease in the classroom, of drawingroom quiet and refinement"</em> had to go, replaced by <em>timesaving</em> — and teachers, he said, ought to learn to "speed up" as the factories had. Because unlike other professions, teachers are not constantly watched by critical adult eyes, their mistakes not punished immediately:</p>
+            <div class="pull-quote pink">"We are curiously protected in inefficiency."<span class="attr">an educator, in 1912, complaining that schools were not yet harsh enough</span></div>
+            <p>That is a man arguing that the problem with teaching is that nobody is standing over you with a stopwatch. <strong>The demand had been so completely internalised, within a year of arriving, that it no longer needed to be imposed from outside.</strong></p>
+            <p><span class="joint joint-documented">documented</span> &nbsp;internalised inside a year → who was never asked</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 168" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig8-title fig8-desc">
+              <title id="fig8-title">The recitation ledger</title>
+              <desc id="fig8-desc">A ledger page ruled into columns for coal, water, oil and waste, with the last column relabelled as the classroom minute.</desc>
+              <rect x="34" y="24" width="232" height="106" rx="3" fill="rgba(255,255,255,0.02)" stroke="rgba(167,139,250,0.35)" stroke-width="1.1"/>
+              <g stroke="rgba(167,139,250,0.22)" stroke-width="1">
+                <path d="M92 24 V130"/><path d="M150 24 V130"/><path d="M208 24 V130"/>
+                <path d="M34 46 H266"/><path d="M34 68 H266"/><path d="M34 90 H266"/><path d="M34 112 H266"/>
+              </g>
+              <g font-family="Space Mono, monospace" font-size="6" fill="var(--sp-dim)" text-anchor="middle">
+                <text x="63" y="39">coal</text><text x="121" y="39">water</text><text x="179" y="39">oil</text><text x="237" y="39">waste</text>
+              </g>
+              <g font-family="Space Mono, monospace" font-size="6" fill="var(--sp-secondary)" text-anchor="middle">
+                <text x="63" y="61">0.0042</text><text x="121" y="61">0.0117</text><text x="179" y="61">0.0008</text><text x="237" y="61">0.0031</text>
+                <text x="63" y="83">0.0039</text><text x="121" y="83">0.0121</text><text x="179" y="83">0.0009</text><text x="237" y="83">0.0028</text>
+              </g>
+              <text x="237" y="105" text-anchor="middle" font-family="Space Mono, monospace" font-size="6" fill="var(--pink)">4 min</text>
+              <text x="237" y="124" text-anchor="middle" font-family="Space Mono, monospace" font-size="6" fill="var(--pink)">idle</text>
+              <text x="150" y="150" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.5" letter-spacing="0.8" fill="var(--sp-secondary)">four decimal places, for a classroom</text>
+              <text x="150" y="164" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="1" fill="var(--sp-dim)">proposed from inside the profession</text>
+            </svg>
+            <div class="diagram-caption">Figure 8 · the wrong side of the ledger</div>
+          </div>
+        </div>
+      </div>
+      <div class="spine">
+        <svg viewBox="0 0 620 78" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain, with 8 — internalised — 1912 live. Physics nodes sit below a provable ceiling; the chain crosses it where the word escapes and runs unbounded above.">
+          <path class="spine-ceiling" d="M14 32 H606"/><text class="spine-raillabel" x="14" y="28">the ceiling — provable</text><path class="spine-track contested" d="M60 52 H125"/><path class="spine-track documented" d="M125 52 H190"/><path class="spine-track documented" d="M190 52 H228"/><path class="spine-track contested" d="M228 52 Q258 52 264 20"/><path class="spine-track documented" d="M268 14 H318"/><path class="spine-track documented" d="M318 14 H368"/><path class="spine-track documented" d="M368 14 H418"/><path class="spine-track documented" d="M418 14 H468"/><path class="spine-track documented" d="M468 14 H518"/><path class="spine-track contested" d="M518 14 H558"/><path class="spine-track leap" d="M558 14 H588"/><path class="spine-track documented" d="M588 14 H612"/><text class="spine-raillabel" x="14" y="72">bounded</text><g class="spine-node"><circle cx="60" cy="52" r="3.4"/><circle cx="125" cy="52" r="3.4"/><circle cx="190" cy="52" r="3.4"/><circle cx="268" cy="14" r="3.4"/><circle cx="318" cy="14" r="3.4"/><circle cx="368" cy="14" r="3.4"/><circle cx="418" cy="14" r="3.4"/><circle cx="518" cy="14" r="3.4"/><circle cx="558" cy="14" r="3.4"/><circle cx="588" cy="14" r="3.4"/><circle cx="612" cy="14" r="3.4"/></g><circle class="spine-node live" cx="468" cy="14" r="4.6"/><circle class="spine-ring" cx="468" cy="14" r="9"/>
+        </svg>
+        <div class="spine-label">8 · internalised · 1912</div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Elimination of Waste · Stimpunks</span>
+        <span class="spread-footer-right">9</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 10: Schmidt's fatigue ════ -->
+  <div class="spread" id="spread-10">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The question nobody asked</div>
+          <h2 class="spread-heading" id="schmidts-fatigue">Would Schmidt have agreed?</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">The 1912 editorial praised experimental science for "reducing the fatigue in handling pig iron." Cubberley reprinted it in a textbook. Superintendents read it. Nobody, in any of that, asked the man who handled the pig iron.</p>
+            <p>Callahan noticed. In the middle of a dense chapter of institutional history he stops, and puts this in parentheses:</p>
+            <div class="callout">"(Incidentally, one wonders whether Schmidt would have agreed that experimental science had 'reduced his fatigue' in handling pig iron.)"<span class="attr">Raymond E. Callahan, <em>Education and the Cult of Efficiency</em>, 1962</span></div>
+            <p>It is an aside. It is also the entire argument of this collection, written in 1962 by a historian of education, in brackets.</p>
+            <p><strong>The claim was about Schmidt's body, and Schmidt's testimony was not part of the evidence.</strong> His fatigue was declared reduced by people measuring tonnage. He was in the room, doing the thing being measured, and his account of it appears nowhere.</p>
+            <p>We have written this sentence before. <a href="five-sigma-zine.html">No. 40</a> found 150 intervention studies of Autistic children and eleven that mentioned harms at all. <a href="conquering-gaze-zine.html">No. 41</a> found the observers who were never permitted to be observers. <span class="violet">The shape recurs because it is the same shape: an efficiency claim made about a body, validated by an output measure, with the body's own report excluded by method rather than by accident.</span></p>
+            <p>And the fatigue is where the ceiling would have been, if the word had brought it. Fatigue <em>is</em> the waste heat. It is the term Carnot proved you cannot drive to zero — carried across into the school and the office as the one line item everybody agreed to eliminate.</p>
+            <p><span class="joint joint-documented">documented</span> &nbsp;the missing testimony → the descendants</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 176" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig9-title fig9-desc">
+              <title id="fig9-title">Who was asked</title>
+              <desc id="fig9-desc">A chain of people who repeated the claim about reduced fatigue — the engineer, the editorial, the textbook, the superintendent — with the worker drawn to one side, unconnected.</desc>
+              <g fill="none" stroke="rgba(167,139,250,0.5)" stroke-width="1.3">
+                <circle cx="46" cy="48" r="10"/><circle cx="112" cy="48" r="10"/><circle cx="178" cy="48" r="10"/><circle cx="244" cy="48" r="10"/>
+              </g>
+              <g stroke="rgba(167,139,250,0.4)" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M58 48 H100"/><path d="M94 44 L102 48 L94 52"/>
+                <path d="M124 48 H166"/><path d="M160 44 L168 48 L160 52"/>
+                <path d="M190 48 H232"/><path d="M226 44 L234 48 L226 52"/>
+              </g>
+              <g font-family="Space Mono, monospace" font-size="6" fill="var(--sp-secondary)" text-anchor="middle">
+                <text x="46" y="72">engineer</text><text x="112" y="72">editorial</text><text x="178" y="72">textbook</text><text x="244" y="72">superintendent</text>
+              </g>
+              <text x="150" y="92" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--sp-dim)">&ldquo;fatigue reduced&rdquo;</text>
+              <circle cx="150" cy="126" r="12" fill="none" stroke="var(--pink)" stroke-width="1.5" stroke-dasharray="3 3"/>
+              <text x="150" y="152" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" fill="var(--pink)">Schmidt</text>
+              <text x="150" y="168" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" letter-spacing="0.8" fill="var(--sp-dim)">no line connects to him</text>
+            </svg>
+            <div class="diagram-caption">Figure 9 · the claim, and its subject</div>
+          </div>
+        </div>
+      </div>
+      <div class="spine">
+        <svg viewBox="0 0 620 78" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain, with 9 — Schmidt's fatigue live. Physics nodes sit below a provable ceiling; the chain crosses it where the word escapes and runs unbounded above.">
+          <path class="spine-ceiling" d="M14 32 H606"/><text class="spine-raillabel" x="14" y="28">the ceiling — provable</text><path class="spine-track contested" d="M60 52 H125"/><path class="spine-track documented" d="M125 52 H190"/><path class="spine-track documented" d="M190 52 H228"/><path class="spine-track contested" d="M228 52 Q258 52 264 20"/><path class="spine-track documented" d="M268 14 H318"/><path class="spine-track documented" d="M318 14 H368"/><path class="spine-track documented" d="M368 14 H418"/><path class="spine-track documented" d="M418 14 H468"/><path class="spine-track documented" d="M468 14 H518"/><path class="spine-track contested" d="M518 14 H558"/><path class="spine-track leap" d="M558 14 H588"/><path class="spine-track documented" d="M588 14 H612"/><text class="spine-raillabel" x="14" y="72">bounded</text><g class="spine-node"><circle cx="60" cy="52" r="3.4"/><circle cx="125" cy="52" r="3.4"/><circle cx="190" cy="52" r="3.4"/><circle cx="268" cy="14" r="3.4"/><circle cx="318" cy="14" r="3.4"/><circle cx="368" cy="14" r="3.4"/><circle cx="418" cy="14" r="3.4"/><circle cx="468" cy="14" r="3.4"/><circle cx="558" cy="14" r="3.4"/><circle cx="588" cy="14" r="3.4"/><circle cx="612" cy="14" r="3.4"/></g><circle class="spine-node live" cx="518" cy="14" r="4.6"/><circle class="spine-ring" cx="518" cy="14" r="9"/>
+        </svg>
+        <div class="spine-label">9 · Schmidt's fatigue</div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Elimination of Waste · Stimpunks</span>
+        <span class="spread-footer-right">10</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 11: descendants ════ -->
+  <div class="spread" id="spread-11">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Now · the descendants</div>
+          <h2 class="spread-heading" id="the-ledger-never-closed">The ledger never closed</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Mitchell wanted four decimal places against the classroom minute. He got rather more than he asked for.</p>
+            <p>Time-on-task. Minutes of instruction. Utilisation rates. Productivity dashboards, keystroke counts, activity status, the little green dot. Step goals and sleep scores. <strong>Every one of these is the recitation ledger, and every one of them is finer-grained than a 1912 schoolmaster could have dreamed.</strong></p>
+            <p>What has not changed in a hundred and ten years is the crucial thing: <span class="pink">none of them has a maximum.</span> There is no score at which the ledger balances and the demand is discharged. That is not a design flaw — it is what the word became when it left the engine room without its ceiling.</p>
+            <p>And there is a genuinely modern turn of the screw. Because the metric is unbounded and always visible, the person being measured now runs the accounting <em>themselves</em>. Mitchell had to argue that teachers were "curiously protected in inefficiency." Nobody has to argue it now. <strong>The stopwatch is in your pocket and you bought it.</strong></p>
+            <div class="joint-note"><strong>Marked contested.</strong> That today's productivity instruments <em>resemble</em> Taylor's, and inherit his framing, is plain — and Callahan's chain from Taylor to the schools is documented. That there is a continuous line of descent from the 1911 stopwatch to a specific piece of software on your phone is a much stronger claim than we can make, and we are not making it. Institutional habit, competition, cheap sensors and the ordinary appeal of a number all did work here. What we claim is a shared <em>logic</em>, not a genealogy.</div>
+            <p><span class="joint joint-contested">contested</span> &nbsp;the ledger → the modern dashboard</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 172" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig10-title fig10-desc">
+              <title id="fig10-title">A gauge with no maximum</title>
+              <desc id="fig10-desc">A progress bar with no right-hand end, running off the edge of the frame, with a marker labelled you are here and no marker labelled enough.</desc>
+              <rect x="24" y="60" width="250" height="20" rx="10" fill="none" stroke="rgba(167,139,250,0.4)" stroke-width="1.2"/>
+              <rect x="24" y="60" width="150" height="20" rx="10" fill="rgba(34,211,238,0.3)"/>
+              <path d="M274 60 L292 60 M274 80 L292 80" stroke="rgba(167,139,250,0.4)" stroke-width="1.2" stroke-dasharray="3 3"/>
+              <text x="174" y="50" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--cyan)">you are here</text>
+              <path d="M174 54 L174 60" stroke="var(--cyan)" stroke-width="1.2"/>
+              <text x="150" y="104" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" fill="var(--sp-dim)">where &ldquo;enough&rdquo; would be:</text>
+              <text x="150" y="120" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.5" font-weight="700" fill="var(--pink)">— no such mark —</text>
+              <text x="150" y="146" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.5" letter-spacing="0.8" fill="var(--sp-secondary)">an engine gauge has a redline</text>
+              <text x="150" y="162" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="1" fill="var(--sp-dim)">this one has an arrow</text>
+            </svg>
+            <div class="diagram-caption">Figure 10 · the missing redline</div>
+          </div>
+        </div>
+      </div>
+      <div class="spine">
+        <svg viewBox="0 0 620 78" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain, with 10 — the dashboard live. Physics nodes sit below a provable ceiling; the chain crosses it where the word escapes and runs unbounded above.">
+          <path class="spine-ceiling" d="M14 32 H606"/><text class="spine-raillabel" x="14" y="28">the ceiling — provable</text><path class="spine-track contested" d="M60 52 H125"/><path class="spine-track documented" d="M125 52 H190"/><path class="spine-track documented" d="M190 52 H228"/><path class="spine-track contested" d="M228 52 Q258 52 264 20"/><path class="spine-track documented" d="M268 14 H318"/><path class="spine-track documented" d="M318 14 H368"/><path class="spine-track documented" d="M368 14 H418"/><path class="spine-track documented" d="M418 14 H468"/><path class="spine-track documented" d="M468 14 H518"/><path class="spine-track contested" d="M518 14 H558"/><path class="spine-track leap" d="M558 14 H588"/><path class="spine-track documented" d="M588 14 H612"/><text class="spine-raillabel" x="14" y="72">bounded</text><g class="spine-node"><circle cx="60" cy="52" r="3.4"/><circle cx="125" cy="52" r="3.4"/><circle cx="190" cy="52" r="3.4"/><circle cx="268" cy="14" r="3.4"/><circle cx="318" cy="14" r="3.4"/><circle cx="368" cy="14" r="3.4"/><circle cx="418" cy="14" r="3.4"/><circle cx="468" cy="14" r="3.4"/><circle cx="518" cy="14" r="3.4"/><circle cx="588" cy="14" r="3.4"/><circle cx="612" cy="14" r="3.4"/></g><circle class="spine-node live" cx="558" cy="14" r="4.6"/><circle class="spine-ring" cx="558" cy="14" r="9"/>
+        </svg>
+        <div class="spine-label">10 · the dashboard</div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Elimination of Waste · Stimpunks</span>
+        <span class="spread-footer-right">11</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 12: the remainder ════ -->
+  <div class="spread" id="spread-12">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">2003 · a diner, and a handful of spoons</div>
+          <h2 class="spread-heading" id="the-remainder">The remainder</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">In 2003, in a diner, <strong>Christine Miserandino</strong>'s friend asked what it was actually like to live with lupus. She looked around, gathered up the spoons from the table and the nearby tables, and handed them over.</p>
+            <p>You get a finite number each day. Showering costs one. Getting dressed costs one. Cooking, working, a conversation — each has a price, and when they are gone they are gone, and tomorrow's allocation is not larger because you spent today's well.</p>
+            <p><strong>Spoon theory</strong> spread because it did in one gesture what years of explaining had not: it made a budget visible.</p>
+            <div class="pull-quote cyan">The efficiency ledger has no line for the remainder. Spoon theory is nothing but the remainder — it is an accounting in which what a day <em>costs you</em> is the primary quantity rather than the omitted one.<span class="attr">the two ledgers, side by side</span></div>
+            <p>And it is an accounting invented by the person being measured, which is the whole difference. Schmidt's fatigue was declared reduced by people counting tons. Miserandino counted the spoons herself, and handed them to somebody else so they could see the arithmetic.</p>
+            <p>So: rest is not the absence of work, and it is not the reward for work. In a system that does work, <span class="cyan">the remainder is a structural feature</span>, and a plan that has no line for it is not an ambitious plan. It is an incomplete one.</p>
+            <div class="joint-note"><strong>Marked leap — and this is the one to distrust.</strong> The sentence you can feel forming is <em>the second law proves rest is mandatory</em>. It does not. You are not a Carnot engine; thermodynamics sets no productivity ceiling for a person, and human fatigue is not waste heat in any but a poetic sense. If this zine ended by deriving your right to rest from physics, it would be doing precisely what it spent nine spreads condemning — <strong>borrowing authority from a domain that never granted it.</strong> The next spread argues that at full strength, because it is the objection we most deserve.</div>
+            <p><span class="joint joint-leap">leap</span> &nbsp;thermodynamic waste → human rest</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 176" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig11-title fig11-desc">
+              <title id="fig11-title">Two ledgers</title>
+              <desc id="fig11-desc">The efficiency ledger lists output and has no row for cost to the person. The spoon ledger lists the cost of each activity as its primary column.</desc>
+              <text x="72" y="18" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="0.8" fill="var(--gold)">the efficiency ledger</text>
+              <g font-family="Space Mono, monospace" font-size="6.5" fill="var(--sp-secondary)">
+                <text x="20" y="40">output</text><text x="124" y="40" text-anchor="end">↑</text>
+                <text x="20" y="58">minutes used</text><text x="124" y="58" text-anchor="end">↓</text>
+                <text x="20" y="76">waste</text><text x="124" y="76" text-anchor="end">↓</text>
+              </g>
+              <text x="20" y="98" font-family="Space Mono, monospace" font-size="6.5" fill="var(--pink)">cost to the person</text>
+              <text x="124" y="98" text-anchor="end" font-family="Space Mono, monospace" font-size="6.5" fill="var(--pink)">—</text>
+              <line x1="150" y1="14" x2="150" y2="150" stroke="rgba(167,139,250,0.25)" stroke-width="1" stroke-dasharray="4 4"/>
+              <text x="226" y="18" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="0.8" fill="var(--cyan)">the spoon ledger</text>
+              <g font-family="Space Mono, monospace" font-size="6.5" fill="var(--sp-secondary)">
+                <text x="170" y="40">shower</text><text x="278" y="40" text-anchor="end">1</text>
+                <text x="170" y="58">dressed</text><text x="278" y="58" text-anchor="end">1</text>
+                <text x="170" y="76">work</text><text x="278" y="76" text-anchor="end">4</text>
+                <text x="170" y="94">a conversation</text><text x="278" y="94" text-anchor="end">1</text>
+              </g>
+              <line x1="170" y1="102" x2="278" y2="102" stroke="rgba(34,211,238,0.4)" stroke-width="1"/>
+              <text x="170" y="118" font-family="Space Mono, monospace" font-size="6.5" fill="var(--cyan)">left</text>
+              <text x="278" y="118" text-anchor="end" font-family="Space Mono, monospace" font-size="6.5" font-weight="700" fill="var(--cyan)">5</text>
+              <text x="150" y="146" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.5" letter-spacing="0.8" fill="var(--sp-secondary)">same day · different primary quantity</text>
+              <text x="150" y="168" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="1" fill="var(--sp-dim)">one of them was written by the person</text>
+            </svg>
+            <div class="diagram-caption">Figure 11 · who holds the pen</div>
+          </div>
+        </div>
+      </div>
+      <div class="spine">
+        <svg viewBox="0 0 620 78" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain, with 11 — the remainder — leap live. Physics nodes sit below a provable ceiling; the chain crosses it where the word escapes and runs unbounded above.">
+          <path class="spine-ceiling" d="M14 32 H606"/><text class="spine-raillabel" x="14" y="28">the ceiling — provable</text><path class="spine-track contested" d="M60 52 H125"/><path class="spine-track documented" d="M125 52 H190"/><path class="spine-track documented" d="M190 52 H228"/><path class="spine-track contested" d="M228 52 Q258 52 264 20"/><path class="spine-track documented" d="M268 14 H318"/><path class="spine-track documented" d="M318 14 H368"/><path class="spine-track documented" d="M368 14 H418"/><path class="spine-track documented" d="M418 14 H468"/><path class="spine-track documented" d="M468 14 H518"/><path class="spine-track contested" d="M518 14 H558"/><path class="spine-track leap" d="M558 14 H588"/><path class="spine-track documented" d="M588 14 H612"/><text class="spine-raillabel" x="14" y="72">bounded</text><g class="spine-node"><circle cx="60" cy="52" r="3.4"/><circle cx="125" cy="52" r="3.4"/><circle cx="190" cy="52" r="3.4"/><circle cx="268" cy="14" r="3.4"/><circle cx="318" cy="14" r="3.4"/><circle cx="368" cy="14" r="3.4"/><circle cx="418" cy="14" r="3.4"/><circle cx="468" cy="14" r="3.4"/><circle cx="518" cy="14" r="3.4"/><circle cx="558" cy="14" r="3.4"/><circle cx="612" cy="14" r="3.4"/></g><circle class="spine-node live" cx="588" cy="14" r="4.6"/><circle class="spine-ring" cx="588" cy="14" r="9"/>
+        </svg>
+        <div class="spine-label">11 · the remainder · leap</div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Elimination of Waste · Stimpunks</span>
+        <span class="spread-footer-right">12</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 13: the objection ════ -->
+  <div class="spread" id="spread-13">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The objection · at full strength</div>
+          <h2 class="spread-heading" id="this-argument-should-not-need-physics">This argument should not need physics at all</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Here is the case against the previous spread, made as well as we can make it, because we think it is largely right.</p>
+            <p><strong>One: you are not a heat engine.</strong> The second law governs closed systems and cyclic processes; a person is neither. Fatigue is not waste heat, spoons are not joules, and the resemblance between "the remainder" in thermodynamics and "the remainder" in a day is a resemblance between two uses of an English word. <em>Nothing in Carnot bounds a human being's output.</em></p>
+            <p><strong>Two: this is the exact move we condemned.</strong> Nine spreads of this zine describe people borrowing prestige from physics to settle a question physics had no view on. If we finish by borrowing prestige from physics to settle a question about rest, we have not diagnosed the disease. We have caught it.</p>
+            <p><strong>Three: rest needs no derivation.</strong> The case for rest is that people are not instruments, that a life is not an output, and that the burden of proof was never on the tired. Those claims are ethical and they are strong, and routing them through a nineteenth-century steam-engine theorem makes them <em>weaker</em>, not stronger — it implies they were waiting on a physicist's permission.</p>
+            <div class="pull-quote green">If you take one thing from this zine, take the history and leave the analogy. The history is documented. The analogy is decoration, and it is decoration on a load-bearing wall.<span class="attr">what the leap tag is for</span></div>
+            <p>So what survives all three objections? Something narrower, and enough. <strong>The word <em>efficiency</em> arrived in the human domain carrying borrowed authority from a domain where it was bounded, and it arrived without the bound.</strong> That is a claim about a word and its warrant, and it is documented in Callahan chapter and verse.</p>
+            <p>Whether you should rest is not a question for thermodynamics. But whether "eliminate all waste" is a serious demand or an incoherent one — that question <em>was</em> settled, in 1824, in the language the demand was borrowed from.</p>
+            <p><span class="joint joint-documented">documented</span> &nbsp;the objections → what survives them</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 176" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig12-title fig12-desc">
+              <title id="fig12-title">What survives the objections</title>
+              <desc id="fig12-desc">Three objections striking out the physics-to-rest analogy, leaving intact a smaller claim about the word efficiency arriving without its ceiling.</desc>
+              <g font-family="Space Mono, monospace" font-size="6.5" fill="var(--sp-secondary)">
+                <text x="16" y="28">not a heat engine</text>
+                <text x="16" y="48">borrows what we condemn</text>
+                <text x="16" y="68">rest needs no proof</text>
+              </g>
+              <g stroke="rgba(74,222,128,0.6)" stroke-width="1.2" fill="none">
+                <path d="M120 24 L180 44"/><path d="M126 44 L180 50"/><path d="M120 64 L180 56"/>
+              </g>
+              <rect x="184" y="30" width="102" height="42" rx="4" fill="rgba(244,114,182,0.06)" stroke="rgba(244,114,182,0.4)" stroke-width="1.2" stroke-dasharray="4 3"/>
+              <text x="235" y="48" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--pink)">physics → rest</text>
+              <text x="235" y="62" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--pink)">struck out</text>
+              <line x1="20" y1="94" x2="280" y2="94" stroke="rgba(167,139,250,0.25)" stroke-width="1" stroke-dasharray="4 4"/>
+              <rect x="34" y="106" width="232" height="42" rx="4" fill="rgba(74,222,128,0.07)" stroke="rgba(74,222,128,0.45)" stroke-width="1.3"/>
+              <text x="150" y="122" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--green)">the word arrived without its ceiling</text>
+              <text x="150" y="138" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--green)">documented, chapter and verse</text>
+              <text x="150" y="168" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="1" fill="var(--sp-dim)">smaller, and it holds</text>
+            </svg>
+            <div class="diagram-caption">Figure 12 · arguing ourselves down</div>
+          </div>
+        </div>
+      </div>
+      <div class="spine">
+        <svg viewBox="0 0 620 78" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain, with 12 — the objection live. Physics nodes sit below a provable ceiling; the chain crosses it where the word escapes and runs unbounded above.">
+          <path class="spine-ceiling" d="M14 32 H606"/><text class="spine-raillabel" x="14" y="28">the ceiling — provable</text><path class="spine-track contested" d="M60 52 H125"/><path class="spine-track documented" d="M125 52 H190"/><path class="spine-track documented" d="M190 52 H228"/><path class="spine-track contested" d="M228 52 Q258 52 264 20"/><path class="spine-track documented" d="M268 14 H318"/><path class="spine-track documented" d="M318 14 H368"/><path class="spine-track documented" d="M368 14 H418"/><path class="spine-track documented" d="M418 14 H468"/><path class="spine-track documented" d="M468 14 H518"/><path class="spine-track contested" d="M518 14 H558"/><path class="spine-track leap" d="M558 14 H588"/><path class="spine-track documented" d="M588 14 H612"/><text class="spine-raillabel" x="14" y="72">bounded</text><g class="spine-node"><circle cx="60" cy="52" r="3.4"/><circle cx="125" cy="52" r="3.4"/><circle cx="190" cy="52" r="3.4"/><circle cx="268" cy="14" r="3.4"/><circle cx="318" cy="14" r="3.4"/><circle cx="368" cy="14" r="3.4"/><circle cx="418" cy="14" r="3.4"/><circle cx="468" cy="14" r="3.4"/><circle cx="518" cy="14" r="3.4"/><circle cx="558" cy="14" r="3.4"/><circle cx="588" cy="14" r="3.4"/></g><circle class="spine-node live" cx="612" cy="14" r="4.6"/><circle class="spine-ring" cx="612" cy="14" r="9"/>
+        </svg>
+        <div class="spine-label">12 · the objection</div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Elimination of Waste · Stimpunks</span>
+        <span class="spread-footer-right">13</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 14: the turn ════ -->
+  <div class="spread" id="spread-14">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The turn</div>
+          <h2 class="spread-heading" id="ask-what-the-ceiling-is">Ask what <span class="spectrum-word">the ceiling</span> is</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Every serious measure of efficiency ever written down has a maximum. That is what makes it a measure rather than a mood.</p>
+            <p>Carnot's has one, provably. An engine's gauge has a redline. A budget has a bottom. <strong>A demand with no ceiling is not a high standard — it is not a standard at all</strong>, because nothing can satisfy it and therefore nothing counts as having met it.</p>
+            <p>So the useful question, whenever the word turns up, is short and rude: <span class="cyan">what is the maximum, and how would we know we had reached it?</span> If there is an answer, you are talking about efficiency. If there isn't, you are talking about obedience with a technical vocabulary.</p>
+            <div class="pull-quote cyan">"The elimination of waste in manufacture." In the physics that phrase was borrowed from, it names the one outcome that cannot happen. In a school, it became a specification for children.<span class="attr">1824 · 1916</span></div>
+            <p>And nobody authored this road either. Carnot was solving a problem about steam. Taylor believed he was ending a wasteful war between workers and owners. The Allegheny school board member thought he was warning teachers of something real. Cubberley thought he was professionalising a field. Mitchell thought he was raising his own standards. <strong>Each did competent local work, and the word travelled without the one thing that made it meaningful.</strong></p>
+            <p>Which is, again, the hopeful part. <em>A missing ceiling can be restored by asking for it.</em> That is a question anybody can put in a meeting, and it costs nothing.</p>
+            <div class="refusals">
+              <div class="refusal"><span class="refusal-tag">Not:</span><span><strong>that efficiency is bad.</strong> It is a real, useful, bounded quantity, and the person who proved it had a ceiling is the hero of this zine. What we object to is the version with the ceiling filed off.</span></div>
+              <div class="refusal"><span class="refusal-tag">Not:</span><span><strong>that thermodynamics justifies rest.</strong> It does not, we spent a whole spread saying so, and the joint is tagged a leap. Rest needs no derivation from physics and is weakened by one.</span></div>
+              <div class="refusal"><span class="refusal-tag">Not:</span><span><strong>that measurement is the enemy.</strong> Carnot measured. Mitchell's error was not counting; it was counting a thing with no maximum and calling the result a standard.</span></div>
+              <div class="refusal"><span class="refusal-tag">Not:</span><span><strong>a genealogy of the dashboard.</strong> Taylor to the schools is documented. Taylor to the app on your phone is a shared logic, not a proven line of descent, and we marked it contested.</span></div>
+              <div class="refusal"><span class="refusal-tag">Not:</span><span><strong>a proof.</strong> A chain — eight documented joints, three contested, one leap, and the leap is the one you most want to keep.</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 192" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig13-title fig13-desc">
+              <title id="fig13-title">The whole chain, complete</title>
+              <desc id="fig13-desc">The chain running below a dashed ceiling line while it is in physics, then crossing that line at the point where the word escapes and continuing above it, unbounded, with a legend of joint strengths.</desc>
+              <line x1="18" y1="44" x2="284" y2="44" stroke="rgba(244,244,251,0.4)" stroke-width="1.2" stroke-dasharray="5 4"/>
+              <text x="284" y="36" text-anchor="end" font-family="Space Mono, monospace" font-size="6.5" fill="rgba(244,244,251,0.75)">the ceiling · provable</text>
+              <path d="M22 76 H62" fill="none" stroke="rgba(251,191,36,0.8)" stroke-width="1.7" stroke-dasharray="6 4"/>
+              <path d="M62 76 H104" fill="none" stroke="rgba(74,222,128,0.6)" stroke-width="1.6"/>
+              <path d="M104 76 Q140 76 152 30" fill="none" stroke="rgba(251,191,36,0.8)" stroke-width="1.7" stroke-dasharray="6 4"/>
+              <path d="M152 30 H196" fill="none" stroke="rgba(74,222,128,0.6)" stroke-width="1.6"/>
+              <path d="M196 30 H240" fill="none" stroke="rgba(74,222,128,0.6)" stroke-width="1.6"/>
+              <path d="M240 30 H262" fill="none" stroke="rgba(251,191,36,0.8)" stroke-width="1.7" stroke-dasharray="6 4"/>
+              <path d="M262 30 H288" fill="none" stroke="rgba(244,114,182,0.8)" stroke-width="1.8" stroke-dasharray="1.5 4"/>
+              <g fill="var(--sp-dim)">
+                <circle cx="22" cy="76" r="3"/><circle cx="62" cy="76" r="3"/><circle cx="104" cy="76" r="3"/>
+                <circle cx="152" cy="30" r="3"/><circle cx="196" cy="30" r="3"/><circle cx="240" cy="30" r="3"/><circle cx="262" cy="30" r="3"/>
+              </g>
+              <text x="22" y="94" font-family="Space Mono, monospace" font-size="6.5" fill="var(--cyan)">1824 · bounded</text>
+              <text x="288" y="20" text-anchor="end" font-family="Space Mono, monospace" font-size="6.5" fill="var(--pink)">now · unbounded</text>
+              <text x="118" y="106" font-family="Space Mono, monospace" font-size="6.5" fill="var(--gold)">the word crosses</text>
+              <g font-family="Space Mono, monospace" font-size="7" letter-spacing="0.6">
+                <path d="M22 130 H50" fill="none" stroke="rgba(74,222,128,0.7)" stroke-width="1.6"/>
+                <text x="58" y="133" fill="var(--green)">documented · 8</text>
+                <path d="M22 152 H50" fill="none" stroke="rgba(251,191,36,0.8)" stroke-width="1.6" stroke-dasharray="6 4"/>
+                <text x="58" y="155" fill="var(--gold)">contested · 3</text>
+                <path d="M22 174 H50" fill="none" stroke="rgba(244,114,182,0.8)" stroke-width="1.6" stroke-dasharray="1.5 4"/>
+                <text x="58" y="177" fill="var(--pink)">leap · 1 — argued against on spread 13</text>
+              </g>
+            </svg>
+            <div class="diagram-caption">Figure 13 · a chain that crosses its own ceiling</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Elimination of Waste · Stimpunks</span>
+        <span class="spread-footer-right">14</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 15: COLOPHON ════ -->
+  <div class="spread" id="spread-15">
+    <div class="interior">
+      <div class="colophon">
+        <div>
+          <div class="colophon-top">
+            <span class="colophon-ls">L★S</span>
+            <p class="colophon-phrase">Ask what the ceiling is. If there isn't one, it was never a measurement.</p>
+          </div>
+
+          <div class="series-list">
+            <div class="series-item"><span class="series-num">No. 38</span> Eight Tenths of a Second — the apparatus, and how it reached the classroom</div>
+            <div class="series-item"><span class="series-num">No. 40</span> Five Sigma — how much evidence is enough</div>
+            <div class="series-item"><span class="series-num">No. 42</span> Look for the Air — disposition, deleted and reinstalled</div>
+            <div class="series-item current"><span class="series-num">No. 43</span> The Elimination of Waste — a bounded word, unbounded ← you are here</div>
+          </div>
+
+          <div class="reflect">
+            <div class="reflect-label">Reflection</div>
+            <p class="reflect-q">What are you being measured on that has no maximum?</p>
+            <p class="reflect-q">Where in your work is fatigue treated as a line item to be driven toward zero?</p>
+            <p class="reflect-q">Who wrote the ledger you are being kept in, and were you asked?</p>
+            <p class="reflect-q">What would it take to put the question in the room — <em>what is the ceiling, and how would we know we had reached it?</em></p>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="colophon-h" id="sources">Sources</h3>
+          <div class="colophon-body">
+            <p><strong>The middle of this chain is one book, read at the primary.</strong> Raymond E. Callahan, <em>Education and the Cult of Efficiency</em> (University of Chicago Press, 1962), chapter 5, "The Educational Efficiency Experts in Action." Verbatim from it: the July 1911 NEA speech, one month after Taylor's <em>American Magazine</em> series concluded, in which a school board member from Allegheny said the words "electrifying the industrial world — scientific management" held a message for every teacher and that "if teachers did not voluntarily take steps to increase their efficiency the business world would force them to do so" (citing <em>N.E.A. Proceedings</em>, p. 723); Callahan's summary that efficiency procedures were applied "to classroom learning and to teachers, to the program of studies, to the organization of the schools, to administrative functions, and to entire school systems" under "the magic words 'scientific management'"; Superintendent J. M. Greenwood's complaint about efficiency engineers running handcars through the schoolhouses (<em>N.E.A. Proceedings</em>, 1914, p. 117); the 1912 <em>Springfield Republican</em> editorial on "the fatigue in handling pig iron," quoted by Cubberley; Theodore C. Mitchell's October 1912 presidential address to the Schoolmasters Association of New York and Vicinity, including the railroad ledger, the four minutes of idle time, and <strong>"We are curiously protected in inefficiency"</strong>; and Callahan's own parenthesis, <em>"(Incidentally, one wonders whether Schmidt would have agreed that experimental science had 'reduced his fatigue' in handling pig iron.)"</em></p>
+            <p><strong>Cubberley.</strong> Ellwood P. Cubberley, <em>Public School Administration</em> (Boston, 1916), pp. 337–38 for the factory passage quoted in full, as reproduced by Callahan. George S. Counts' description of it as the most widely read and influential book on school administration of its generation is from <em>The Social Composition of Boards of Education</em> (1927), p. 84, via Callahan. <a href="eight-tenths-of-a-second-zine.html">No. 38</a> cites this passage at p. 338; Callahan's citation of pp. 337–38 covers the fuller passage printed here.</p>
+            <p><strong>Carnot.</strong> Sadi Carnot, <em>Réflexions sur la puissance motrice du feu et sur les machines propres à développer cette puissance</em> (1824). The quoted statement — that the motive power of heat is independent of the agents employed and fixed solely by the temperatures between which the transfer is effected — is his. <strong>Marked contested on the page:</strong> Carnot reasoned inside caloric theory, treating heat as a conserved fluid, which is false; Clausius rejected caloric and incorporated Joule's energy conservation, and Kelvin supplied the absolute scale, so the familiar "Carnot efficiency" names a result of layered authorship. "Carnot derived the efficiency formula" is a smoothed retelling, and is one of two smoothed retellings this collection has now caught in a founding anecdote — the other is the Leaning Tower in <a href="conquering-gaze-zine.html">No. 41</a>.</p>
+            <p><strong>Taylor.</strong> Frederick Winslow Taylor, <em>The Principles of Scientific Management</em> (1911), serialised in the <em>American Magazine</em> earlier that year. The pig-iron demonstration and the worker called Schmidt are Taylor's own, and are <strong>described here rather than quoted from Taylor</strong> — we worked from Callahan's account and the contemporaneous editorial, not from Taylor's text, and flag that as open.</p>
+            <p><strong>The Sun.</strong> Roughly 0.7% of rest mass converted in hydrogen fusion; hydrostatic equilibrium as a self-regulating balance; the inverse relation between stellar luminosity and lifetime. Given qualitatively and <strong>not primary-sourced here</strong>.</p>
+            <p><strong>Spoon theory</strong> is Christine Miserandino, "The Spoon Theory," butyoudontlooksick.com, 2003, written after explaining life with lupus to a friend in a diner using the spoons from the table.</p>
+            <p><strong>Held honestly.</strong> Three joints <strong>contested</strong> and argued in place: Carnot's layered authorship; whether the word <em>efficiency</em> was taken specifically from thermodynamics rather than from general industrial usage (unresolved, and the spread says so); and the descent from the 1912 recitation ledger to modern productivity instruments, where we claim a shared logic and explicitly not a genealogy. <strong>One joint is a leap</strong> — thermodynamic waste to human rest, spread 12 — and <strong>spread 13 is a full spread arguing against it</strong>: you are not a heat engine, deriving rest from physics is the exact move this zine condemns, and rest needs no derivation. What survives is narrower and documented: the word arrived in the human domain carrying borrowed authority from a domain where it was bounded, and it arrived without the bound.</p>
+          </div>
+          <div class="colophon-footer">
+            <a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks Foundation</a> × <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a><br>
+            stimpunks.org · morerealms.com · starstuff.earth<br>
+            <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> · open edition · print freely
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Elimination of Waste · Stimpunks</span>
+        <span class="spread-footer-right">15</span>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /zine-shell -->
+
+<script>
+  let current = 1;
+  const total = 15;
+
+  function changePage(dir) {
+    const next = current + dir;
+    if (next < 1 || next > total) return;
+    document.getElementById('spread-' + current).classList.remove('active');
+    current = next;
+    document.getElementById('spread-' + current).classList.add('active');
+    document.getElementById('page-counter').textContent = current + ' / ' + total;
+    document.getElementById('prev-btn').disabled = current === 1;
+    document.getElementById('next-btn').disabled = current === total;
+    document.getElementById('prev-btn').classList.toggle('active', current > 1);
+    document.getElementById('next-btn').classList.toggle('active', current < total);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') changePage(1);
+    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   changePage(-1);
+  });
+
+  document.getElementById('prev-btn').disabled = true;
+  document.getElementById('next-btn').classList.add('active');
+</script>
+<script src="starstuff.js" defer></script>
+</body>
+</html>
