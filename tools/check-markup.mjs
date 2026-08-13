@@ -50,9 +50,15 @@
  *    `aria-labelledby`. A duplicated id does not error; it silently sends a reader
  *    to the first match, which may not be the passage the search result promised.
  *
+ * 4. `.ss-nav` OUTSIDE THE CONTENT SHELL — the first house-convention check, and it
+ *    earned its place by shipping four times. See the comment at the code below.
+ *
+ * 5. THE COLLECTION BADGE — the second, added 2026-08-13 after four pages were found
+ *    without one. See the comment at the code below for why no other gate can see it.
+ *
  * WHAT IT DOES NOT DO
  * It is not a validator and does not try to be. It does not check unclosed tags,
- * attribute syntax, or anything the browser recovers from harmlessly. Three faults,
+ * attribute syntax, or anything the browser recovers from harmlessly. Five faults,
  * chosen because each one silently changes what the reader gets.
  *
  * USAGE
@@ -158,7 +164,7 @@ function* tags(src) {
     const selfClosed = raw.trimEnd().endsWith('/');
 
     if (name) {
-      yield { name, closing, selfClosed, raw, line: lineAt(lt) };
+      yield { name, closing, selfClosed, raw, line: lineAt(lt), index: lt };
 
       // Skip raw-text element bodies wholesale.
       if (!closing && !selfClosed && (name === 'script' || name === 'style')) {
@@ -173,10 +179,64 @@ function* tags(src) {
   }
 }
 
+/* ── the collection map ──────────────────────────────────────────────────────
+   Derived from the collection pages, never from a list kept in this file. That is
+   not tidiness: the site already treats those `<a class="card">` hrefs as the source
+   of truth for membership, so a list here would be a second answer to the same
+   question, free to drift from the first. It also means the check inherits the
+   invariant CLAUDE.md states — a new piece needs its badge AND its card in the same
+   pass — rather than restating half of it.
+
+   Read for every run, including a single-page one, because you cannot tell whether
+   one page needs a badge without knowing what cards it. Twelve small files. */
+const COLLECTION_RE = /^collection-[a-z0-9-]+\.html$/;
+
+/* Both sides of the name comparison come out of HTML source, so both arrive escaped
+   ("Notes &amp; Rationale"). Decoding both is belt-and-braces — comparing raw would
+   work today — but it means a future page written with a literal `&` still matches. */
+const decode = (s) =>
+  s.replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"').replace(/&#39;|&apos;/g, "'").replace(/&nbsp;/g, ' ');
+
+const collectionFiles = fs.readdirSync(REPO).filter((f) => COLLECTION_RE.test(f)).sort();
+const cardedBy = new Map(); // member page -> [collection file, …]
+const collectionName = new Map(); // collection file -> display name
+
+for (const cf of collectionFiles) {
+  const src = fs.readFileSync(path.join(REPO, cf), 'utf8');
+
+  /* The canonical name, taken from the collection page's own <title>, which runs
+     "NAME — a Star Stuff collection — …" on all twelve. Deriving it from the
+     filename instead looks tempting and is wrong: collection-notes.html is
+     "Notes & Rationale", so the filename would manufacture a mismatch on a page
+     that is perfectly correct. If the title format ever changes, the name check
+     for that collection quietly stands down rather than failing all its members —
+     an unverifiable claim is not a failing one. */
+  const t = src.match(/<title>\s*([^<]*?)\s+—\s+a Star Stuff collection/i);
+  if (t) collectionName.set(cf, decode(t[1]).trim());
+
+  for (const m of src.matchAll(/<a[^>]*\bclass="card"[^>]*\bhref="([^"#]+)/g)) {
+    const target = m[1];
+    if (!cardedBy.has(target)) cardedBy.set(target, []);
+    if (!cardedBy.get(target).includes(cf)) cardedBy.get(target).push(cf);
+  }
+}
+
+/* Pages that carry no badge by decision. Deliberately an explicit, short list rather
+   than a rule like "anything without a card", for the reason the contrast tool keeps
+   its exemption list explicit: an exemption should be a decision somebody wrote down,
+   not a mechanism a page can fall into by accident. index.html and search.html are
+   utility pages; a collection page does not badge itself. Adding to this list should
+   feel like a decision, because it is one. */
+const NO_BADGE = new Set(['index.html', 'search.html']);
+const exempt = (f) => NO_BADGE.has(f) || COLLECTION_RE.test(f);
+
 let totalProblems = 0;
 let pagesWithProblems = 0;
 let scannedTags = 0;
 let scannedIds = 0;
+let memberPages = 0;
+let badgesSeen = 0;
 
 for (const file of targets) {
   const full = path.join(REPO, file);
@@ -192,6 +252,15 @@ for (const file of targets) {
   let openP = 0;
   let tagCount = 0;
   const ids = new Map();
+
+  /* The `.ss-nav` span, tracked here rather than by string search so that a nested
+     <nav> cannot end it early — zines carry a second `<nav class="nav">` further
+     down the page, and matching the first `</nav>` after the opening tag would be
+     right only by luck. Depth-counted, so it is right on purpose. */
+  let navDepth = 0;
+  let ssNavStart = -1;
+  let ssNavEnd = -1;
+  const badges = [];
 
   for (const t of tags(src)) {
     tagCount++;
@@ -212,6 +281,28 @@ for (const file of targets) {
     }
 
     if (VOID.has(t.name) || t.selfClosed) continue;
+
+    // ── locate the .ss-nav span, and any collection badge, for the checks below ──
+    if (t.name === 'nav') {
+      if (!t.closing) {
+        if (navDepth === 0 && /class="[^"]*\bss-nav\b/.test(t.raw)) ssNavStart = t.index;
+        navDepth++;
+      } else {
+        navDepth = Math.max(0, navDepth - 1);
+        if (navDepth === 0 && ssNavStart !== -1 && ssNavEnd === -1) ssNavEnd = t.index;
+      }
+    }
+    /* Collected from the tag walk, not by scanning the source, so a badge quoted in a
+       <script> string or sitting in a commented-out block is not mistaken for a real
+       one — the same reason the nested-anchor check lives here. */
+    if (t.name === 'a' && !t.closing && /class="[^"]*\bss-nav-collection(?![-\w])/.test(t.raw)) {
+      badges.push({
+        href: (t.raw.match(/\bhref="([^"]*)"/) || [])[1] || '',
+        line: t.line,
+        index: t.index,
+        inNav: ssNavStart !== -1 && ssNavEnd === -1,
+      });
+    }
 
     if (!t.closing) {
       // ── nested interactive ──
@@ -252,13 +343,89 @@ for (const file of targets) {
   // well-formed nav — it is simply in the wrong parent. Pages with no shell at all
   // (broadsides, playlists, full-bleed sheets) are exempt by design.
   const shellAt = src.search(/<div class="[a-z-]*-shell"/);
-  const navAt = src.indexOf('<nav class="ss-nav"');
-  if (shellAt !== -1 && navAt !== -1 && navAt < shellAt) {
-    const line = src.slice(0, navAt).split('\n').length;
+  /* Uses the nav located by the tag walk above rather than an exact `<nav class="ss-nav"`
+     string match. The string match was blind to the 11 pages written
+     `class="ss-nav ss-nav--bleed"` — harmless so far, since none of them has a shell,
+     but a full-bleed page that later grows one would have been exempted by a quirk of
+     how its class attribute was spelled. */
+  if (shellAt !== -1 && ssNavStart !== -1 && ssNavStart < shellAt) {
+    const line = src.slice(0, ssNavStart).split('\n').length;
     problems.push(
       `<nav class="ss-nav"> at line ${line} sits outside the content shell — the header will run full-bleed while the page below it stays in its column`
     );
   }
+
+  // ── the collection badge ──
+  // The second house-convention check, and the fault it is built from was found the same
+  // way as the first: by a person, not by a gate. Four pages — three Print broadsides and
+  // the Bowie rack — shipped with no `.ss-nav-collection` badge, so a reader landing from
+  // a search result had nothing answering "where am I?".
+  //
+  // None of the other five gates can see this, and one of them provably cannot. The badge
+  // lives inside `.ss-nav`, which `build-search-index.mjs` strips as chrome — adding it to
+  // 66 pages left search-index.json *byte-identical*, which is exactly the property that
+  // makes the index blind to its absence. Contrast measures the text that is there and has
+  // no opinion about text that is missing; check-sheets is about paper; check-sitemap reads
+  // the sitemap, where a badgeless page is listed as happily as any other; and the markup
+  // itself is perfectly well-formed. A missing badge is a hole in the shape of nothing.
+  //
+  // Both directions matter, so both are checked. A member page must carry the badge; an
+  // exempt page must not; and a page that no collection cards is reported too, because the
+  // map is derived from those cards — an uncarded page cannot be checked for a badge at all,
+  // and silence there would be the check quietly excusing the exact pass CLAUDE.md says to
+  // do in one go.
+  const cards = cardedBy.get(file) || [];
+  const badge = badges[0];
+
+  if (badges.length > 1) {
+    problems.push(
+      `${badges.length} collection badges (lines ${badges.map((b) => b.line).join(', ')}) — a page belongs to one collection and says so once`
+    );
+  }
+
+  if (exempt(file)) {
+    if (badge) {
+      problems.push(
+        `collection badge at line ${badge.line} on a page that carries none by decision — index, search and the collection pages themselves are outside the scheme`
+      );
+    }
+  } else if (!cards.length) {
+    problems.push(
+      `no collection page cards this page — membership is derived from <a class="card"> hrefs, so until one links here the badge cannot be derived or checked. Add the card and the badge in the same pass`
+    );
+  } else if (!badge) {
+    const name = collectionName.get(cards[0]) || cards[0];
+    problems.push(
+      `no collection badge — this page is carded by ${cards[0]} (${name}), so a reader arriving from search has no way back to its collection. Add it as the last child of <nav class="ss-nav">`
+    );
+  } else {
+    if (!badge.inNav) {
+      problems.push(
+        `collection badge at line ${badge.line} sits outside <nav class="ss-nav"> — inside the nav is what gives it the print hide and the search-index chrome strip, so out here it prints on paper and gets indexed on every page that has one`
+      );
+    }
+    if (!cards.includes(badge.href)) {
+      problems.push(
+        `collection badge at line ${badge.line} points at "${badge.href}", but this page is carded by ${cards.join(', ')} — the badge and the card disagree about where this piece belongs`
+      );
+    } else {
+      /* Name against the collection page's own title. Catches the copy-paste that
+         updates the href and leaves the label, which reads to a reader as a badge
+         naming one collection and leading to another. */
+      const want = collectionName.get(badge.href);
+      const m = src.slice(badge.index, ssNavEnd === -1 ? src.length : ssNavEnd)
+        .match(/class="ss-nav-collection-name"[^>]*>([^<]*)</);
+      const got = m && decode(m[1]).trim();
+      if (want && got && want !== got) {
+        problems.push(
+          `collection badge at line ${badge.line} is labelled "${got}" but links to ${badge.href}, which calls itself "${want}"`
+        );
+      }
+    }
+  }
+
+  if (!exempt(file)) memberPages++;
+  if (badge) badgesSeen++;
 
   scannedTags += tagCount;
   scannedIds += ids.size;
@@ -273,8 +440,12 @@ for (const file of targets) {
   if (problems.length) pagesWithProblems++;
 }
 
+/* Badge coverage is reported as a count, for the reason every other tool here reports
+   what it measured: 76 of 76 is a fact somebody can check, where "no problems" is a
+   claim that reads identically whether the map was built or came back empty. */
 console.log(
-  `\n${targets.length} page(s) · ${scannedTags.toLocaleString()} tags · ${scannedIds.toLocaleString()} ids · ${totalProblems} problem(s)`
+  `\n${targets.length} page(s) · ${scannedTags.toLocaleString()} tags · ${scannedIds.toLocaleString()} ids · ` +
+    `${badgesSeen}/${memberPages} collection badges across ${collectionFiles.length} collections · ${totalProblems} problem(s)`
 );
 
 if (totalProblems) {
@@ -286,7 +457,11 @@ if (totalProblems) {
       : '\nRun with --check to make this gate a ship.'
   );
 } else {
-  console.log('PASS — no nested interactive elements, no blocks inside paragraphs, no duplicate ids,\n       no nav outside its content shell.');
+  console.log(
+    'PASS — no nested interactive elements, no blocks inside paragraphs, no duplicate ids,\n' +
+      '       no nav outside its content shell, every collection member badged to the\n' +
+      '       collection that cards it.'
+  );
 }
 
 process.exit(gating && totalProblems ? 1 : 0);

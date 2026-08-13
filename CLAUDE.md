@@ -99,10 +99,13 @@ The central phrase compresses through registers, each with a use:
   <a class="ss-nav-collection" href="collection-kin.html"><span class="ss-nav-collection-label">Collection</span> <span class="ss-nav-collection-name">Kin</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
   ```
 
-  All 71 members have one; the 12 collection pages, `index.html` and `search.html` do not. **A new
+  All 76 members have one; the 12 collection pages, `index.html` and `search.html` do not. **A new
   piece needs its badge and its collection page's card in the same pass** — the page→collection map
   is derived from `<a class="card" href="…">` on the collection pages, so a card that is missing
-  makes the badge underivable. It sits **inside** the nav deliberately: that is what gives it the
+  makes the badge underivable. **`tools/check-markup.mjs` enforces all of this as of 2026-08-13**
+  — both directions, plus the badge's placement, target and label — so don't rely on remembering
+  it; four pages went without a badge until a reader noticed. It sits **inside** the nav
+  deliberately: that is what gives it the
   print hide and the `CHROME_SEL` strip for free, and the strip is required — see *Search* below on
   why collection names must not become a discoverability crutch. It takes its own row
   (`flex-basis:100%`), which is measured, not stylistic; the reasoning and the rejected
@@ -491,7 +494,7 @@ node tools/check-markup.mjs --check               # exit non-zero on any failure
   `document.querySelectorAll('a a')` on the broken page returns **zero**. The evidence survives
   only in the source text. That also makes it the fastest gate here — no Chrome, no dependencies,
   79 pages and 50,000 tags in about 0.3s.
-- **Four faults, each one silent:** nested interactive elements (`<a>`/`<button>` inside each
+- **Five faults, each one silent:** nested interactive elements (`<a>`/`<button>` inside each
   other — the parser closes the outer, so everything after falls out of its wrapper); a block
   element inside a `<p>` (auto-closes the paragraph part-way through); and **duplicate `id`**,
   which matters here more than most sites because this one runs on fragments — `#spread-N`,
@@ -503,11 +506,23 @@ node tools/check-markup.mjs --check               # exit non-zero on any failure
   and 39, was reintroduced on No. 40 and repeated on No. 41 — four times, twice after being
   "fixed"** — which is what a convention with no gate behind it is worth. Pages with no shell
   (broadsides, playlists) are exempt by design.
+- **The fifth is the collection badge, added 2026-08-13**, and it is the second house-convention
+  check — added after three Print broadsides and the Bowie rack were found without one, again by a
+  person rather than a gate. It checks both directions: a member page carries the badge, an exempt
+  page (`index.html`, `search.html`, the collection pages) does not, the badge sits **inside**
+  `.ss-nav`, and its `href` *and* its label agree with the collection page that actually cards it.
+  A page **no collection cards** is reported too — membership is derived from those cards, so an
+  uncarded page can't be checked at all, and staying silent would excuse exactly the same-pass rule
+  above. **No other gate can see any of this, and one provably cannot:** the badge is stripped as
+  chrome by `build-search-index.mjs`, which is why adding it to 66 pages left `search-index.json`
+  byte-identical — the property that makes the index blind to its absence. The map is built from
+  the collection pages' own `<a class="card">` hrefs and the names from their `<title>`s, never
+  from a list kept in the tool, so there is no second answer free to drift from the first.
 - **It is not a validator and shouldn't grow into one.** It ignores unclosed tags, attribute
-  syntax, and everything else browsers recover from harmlessly. The bar for adding a fifth check
+  syntax, and everything else browsers recover from harmlessly. The bar for adding a sixth check
   is that the browser silently hands the reader a different document than the source describes —
-  or, as with the nav check, that a structural fault is invisible to *every* other gate and has
-  recurred often enough to prove that remembering is not a control.
+  or, as with the nav and badge checks, that a structural fault is invisible to *every* other gate
+  and has recurred often enough to prove that remembering is not a control.
 - **The baseline is 0.** A clean tree passes, so `--check` is a real ship
   gate rather than an informational sweep. (This was the distinction from `check-contrast.mjs`
   until 2026-08-13, when that one reached zero too — all five gates now hold at 0.) It was
