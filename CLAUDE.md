@@ -372,6 +372,22 @@ node tools/check-contrast.mjs --check              # exit non-zero on any failur
 - **It prints a line per page, pass or fail**, with the count of elements actually measured. Same
   lesson as the search-index coverage percentage: when the only output is *it worked*, a page that
   measured 8% of itself is indistinguishable from a clean one.
+- **A page it could not measure reads `UNREAD`, never `ok`, and gates separately.** The tool's own
+  worst failure mode is the one it was built to catch: zero failures out of zero elements is a page
+  nobody looked at, and among 79 lines it looked exactly like a passing one. **The baseline being
+  deliberately non-zero (110 as of 2026-08-13) makes this worse here than anywhere else** — a page
+  silently dropping to zero removes its failures from the total, so the number goes *down* and reads
+  as an improvement. Unmeasured pages are therefore counted apart from the failure total and reported
+  in their own block; under `--check` they exit non-zero on their own, before contrast is considered.
+- **The wait is a condition, not a clock.** It was `sleep(1300)` with the comment *"let the
+  client-rendered field guides paint"* — a guess. It now waits for `readyState: complete` plus a text
+  length steady across two samples, exactly as `build-search-index.mjs` does, and a page that never
+  settles is reported `UNREAD` rather than measured half-rendered. **Measured before changing it:**
+  three runs over the three heaviest field guides gave identical counts, so the sleep was not
+  currently losing the race. It is insurance, not a bug fix — but the search-index builder lost this
+  same race *on local files* (629 records against 637, exit 0, no warning), so "local is fast enough"
+  is already disproven in this repo for a heavier operation. Neither tool aborts the sweep on a bad
+  page; abandoning 49 remaining pages to report one is a worse trade.
 - **Text is composited against its real ancestor background stack**, not against the token you
   assume applies — a card at `rgba(15,15,42,0.6)` inside a panel inside the void is none of those
   three colors. Element `opacity` folds into the text alpha, because opacity is what the reader

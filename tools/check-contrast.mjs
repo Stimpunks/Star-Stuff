@@ -483,6 +483,42 @@ function evaluated(msg, what) {
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
+/**
+ * Wait on a CONDITION, never on a clock.
+ *
+ * This was `await sleep(1300)` with the comment "let the client-rendered field
+ * guides paint", which is a guess dressed as a wait. `build-search-index.mjs`,
+ * two files away, already lost exactly this race **on local files**: one build
+ * emitted 629 records where the builds either side gave 637 — eight records gone,
+ * exit code 0, no warning. Whatever protects that script protects this one.
+ *
+ * Measured before changing it: three runs over the three heaviest client-rendered
+ * field guides returned identical counts every time, so the sleep was not
+ * currently losing. This is insurance against the day a page gets heavier, not a
+ * fix for a live fault.
+ *
+ * Returns the settled text length, 0 for a genuinely empty document, or null if
+ * it never settled. It does NOT throw: this tool sweeps 79 pages, and aborting at
+ * page 30 to report one bad page would throw away the other 49 results.
+ */
+async function settle(send) {
+  let last = -1;
+  for (let i = 0; i < 100; i++) {
+    const p = evaluated(
+      await send('Runtime.evaluate', {
+        expression:
+          'JSON.stringify({r:document.readyState,n:document.body?document.body.textContent.length:0})',
+        returnByValue: true,
+      }),
+      'readiness probe'
+    );
+    if (p.r === 'complete' && p.n === last) return p.n;
+    last = p.n;
+    await sleep(150);
+  }
+  return null;
+}
+
 function resolveTargets() {
   const args = process.argv.slice(2).filter((a) => !a.startsWith('--'));
   if (!args.length) {
@@ -529,6 +565,12 @@ async function main() {
   }
 
   const results = [];
+  /* Pages that were not validly measured — a page that never settled, or one that
+     settled with zero text elements. Kept apart from `results` on purpose: these
+     are not contrast findings, they are the absence of a measurement, and this
+     repo's baseline is ~100 known failures, so a zero-measure page folded into
+     that total would move it DOWN and read as an improvement. */
+  const unread = [];
   try {
     for (const f of files) {
       const out = await withPage(`file://${path.join(ROOT, f)}`, async (send) => {
@@ -539,7 +581,7 @@ async function main() {
           deviceScaleFactor: 1,
           mobile: false,
         });
-        await sleep(1300); // let the client-rendered field guides paint
+        const settledChars = await settle(send);
 
         /* Screen: reveal the spreads and entries first, or spread 1 of 12 is the
            whole measurement. */
@@ -564,10 +606,26 @@ async function main() {
           'print+backgrounds measure'
         );
         await send('Emulation.setEmulatedMedia', { media: '' });
-        return { screen, print, printBg };
+        return { screen, print, printBg, settledChars };
       });
 
       results.push([f, out]);
+
+      /* The silent-pass class this whole tool exists to prevent, applied to
+         itself: zero failures out of zero elements is not a clean page, it is a
+         page nobody looked at, and in a 79-line list it looks like every other
+         passing line. */
+      const measuredHere = out.screen.checkedCss + out.screen.checkedSvg;
+      let notMeasured = true;
+      if (out.settledChars === null) {
+        unread.push([f, 'never settled — readyState/text length still changing after 15s']);
+      } else if (measuredHere === 0) {
+        unread.push([f, out.settledChars === 0
+          ? 'loaded with no text at all'
+          : 'measured 0 text elements despite having text — check the reveal step']);
+      } else {
+        notMeasured = false;
+      }
 
       /* Print a line for every page, pass or fail. The search-index script learned
          this the hard way: when the only output is "it worked", a page indexing 12%
@@ -577,7 +635,7 @@ async function main() {
       const bad = s.fails.length + p.fails.length;
       const un = s.unmeasured.length + p.unmeasured.length;
       process.stdout.write(
-        `  ${f.padEnd(42)} ${bad ? 'FAIL' : 'ok  '}` +
+        `  ${f.padEnd(42)} ${notMeasured ? 'UNREAD' : bad ? 'FAIL  ' : 'ok    '}` +
           `  screen ${String(s.fails.length).padStart(3)}/${String(s.checkedCss + s.checkedSvg).padEnd(4)}` +
           `  print ${String(p.fails.length).padStart(3)}/${String(p.checkedCss + p.checkedSvg).padEnd(4)}` +
           `  svg ${String(s.checkedSvg).padStart(3)}` +
@@ -657,8 +715,25 @@ async function main() {
     );
   }
 
+  /* Reported in its own block, above the summary, never mixed into the failure
+     count. An unmeasured page is a broken RUN, not a bad page. */
+  if (unread.length) {
+    console.error(
+      `\n${unread.length} page(s) WERE NOT MEASURED. Nothing below counts for these:`
+    );
+    for (const [f, why] of unread) console.error(`  ${f.padEnd(42)} ${why}`);
+    console.error(
+      'A page that measures nothing reports zero failures, which is indistinguishable\n' +
+        'from a clean page in every other line of this output.'
+    );
+  }
+
   const failures = screenFails + printFails;
   if (CHECK) {
+    if (unread.length) {
+      console.error(`\nFAIL — ${unread.length} page(s) not measured; the run is incomplete.`);
+      process.exit(1);
+    }
     if (failures) {
       console.error(`\nFAIL — ${failures} element(s) under WCAG AA (4.5:1, or 3.0:1 for large text).`);
       process.exit(1);
