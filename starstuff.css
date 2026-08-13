@@ -387,7 +387,13 @@ a.ss-cobrand.ss-cobrand:focus-visible { text-decoration-color: currentColor; }
      itself, so the !important on `text` never reaches it. Found 2026-08-11 when
      a "ground state" tspan on aurora-playlist.html measured 1.93:1 on paper
      while every sibling label in the same diagram inverted correctly. */
-  svg text, svg tspan { fill: #222222 !important; }
+  /* #111111, not the #222222 that body text takes: a diagram label is often set on
+     a *coloured* shape that survives print because it is content, not a background —
+     the element discs on elements-field-guide.html are the case. #222 on the C, Fe
+     and I discs measured 4.16–4.24:1, under AA by a hair, while the same ink on the
+     bare sheet is 15.9:1. Darkening the label is the fix that reaches every such
+     shape at once; darkening each disc would chase them one at a time. */
+  svg text, svg tspan { fill: #111111 !important; }
   svg [stroke]:not([stroke="none"]) { stroke: #444444 !important; }
   svg [fill="#f4f2fb"],
   svg [fill="#f9fafb"],

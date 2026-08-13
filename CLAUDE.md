@@ -372,13 +372,18 @@ node tools/check-contrast.mjs --check              # exit non-zero on any failur
 - **It prints a line per page, pass or fail**, with the count of elements actually measured. Same
   lesson as the search-index coverage percentage: when the only output is *it worked*, a page that
   measured 8% of itself is indistinguishable from a clean one.
+- **The baseline is 0 as of 2026-08-13, and `--check` is a real ship gate.** It was 110 that
+  morning; the last of them were cleared the same day — see *What the sweep to zero settled* below
+  for the four rulings, because each one is a precedent, not a one-off edit. Keep it at zero. A
+  green gate that has to be read past to find the real number stops being read.
 - **A page it could not measure reads `UNREAD`, never `ok`, and gates separately.** The tool's own
   worst failure mode is the one it was built to catch: zero failures out of zero elements is a page
-  nobody looked at, and among 79 lines it looked exactly like a passing one. **The baseline being
-  deliberately non-zero (110 as of 2026-08-13) makes this worse here than anywhere else** — a page
-  silently dropping to zero removes its failures from the total, so the number goes *down* and reads
-  as an improvement. Unmeasured pages are therefore counted apart from the failure total and reported
+  nobody looked at, and among 89 lines it looked exactly like a passing one. A page silently
+  dropping out removes its failures from the total, so the number goes *down* and reads as an
+  improvement — which is why unmeasured pages are counted apart from the failure total and reported
   in their own block; under `--check` they exit non-zero on their own, before contrast is considered.
+  This mattered more when the baseline was non-zero, but it is not baseline-dependent: at a baseline
+  of 0 a page that measures nothing still passes silently.
 - **The wait is a condition, not a clock.** It was `sleep(1300)` with the comment *"let the
   client-rendered field guides paint"* — a guess. It now waits for `readyState: complete` plus a text
   length steady across two samples, exactly as `build-search-index.mjs` does, and a page that never
@@ -417,10 +422,53 @@ node tools/check-contrast.mjs --check              # exit non-zero on any failur
   alone.
 - **What it cannot measure, it says.** Gradient-clipped headings (`background-clip: text`) and
   labels over a gradient have no single pair of colors to compare, and are listed for checking by
-  eye rather than skipped silently. Disabled prev/next buttons are exempt under WCAG 1.4.3
-  (inactive UI components) — exempt *and counted*, so the exemption stays visible.
+  eye rather than skipped silently. Two exemptions exist, on their own lines and **counted**, never
+  summed together — disabled prev/next buttons (inactive UI components) and the cover watermark
+  numeral (below), both under WCAG 1.4.3. Two allowances added up read as one small concession;
+  kept apart, a number that grows is a number somebody can question.
 - **It is a local dev tool. Netlify does not run it**, same as the search index. Requires Chrome
   and Node 22+.
+
+### What the sweep to zero settled (2026-08-13)
+
+Four rulings, each a precedent for the next page rather than a one-off edit. The common thread:
+**`opacity` was doing the work that colour should have been doing.** Every one of these was a
+designer reaching for a fade to say *this is subordinate*, and a fade is the one way to say it
+that also makes the text unreadable.
+
+- **Opacity is not a hierarchy tool, and the house rule already said so.** *Full-opacity body text*
+  is in the design system; the failures were the places it had quietly lapsed. `manifesto.html`'s
+  `.sp-divider` faded a whole flex row to 0.3, dragging the ★ down with the two hairlines it was
+  meant to dim — the fade now sits on the `::before`/`::after` rules, which are non-text decoration.
+  `shorthand-evolution.html` had two annotation rows at inline `opacity:0.3`. `bone-song-zine.html`
+  faded its drop cap to 0.8 — a drop cap is the paragraph's first letter, so it is body text.
+  **Rules, hairlines and shapes can whisper. Glyphs cannot.** If something must recede, give it a
+  quieter *colour* (`--sp-muted` against `--sp-white`), not a lower alpha.
+- **A caption inside a decorative motif is still text.** The `.cover-motif` SVGs run at
+  `opacity: 0.7–0.75`, and a violet or pink *400* label cannot reach 4.5:1 through that veil —
+  even at `fill` alpha 1.0 violet tops out at 4.46:1. The fix is to step the *label* one rung up
+  the same Tailwind ramp (400 → 300: `#a78bfa`→`#c4b5fd`, `#f472b6`→`#f9a8d4`), which lands ~5.7:1
+  and stays inside the documented palette lineage. **Do not raise the motif's own opacity** — that
+  is the artwork, and it is tuned.
+- **Print ink is `#111111` for SVG labels, `#222222` for body text, and the difference is load-bearing.**
+  A diagram label often sits on a *coloured shape that survives print because it is content*, not a
+  background — the element discs on `elements-field-guide.html`. `#222` on the C, Fe and I discs
+  measured 4.16–4.24:1, under AA by a hair, while the same ink on bare paper is 15.9:1. Darkening
+  the label in `starstuff.css` reaches every such shape at once; darkening each disc chases them
+  one at a time and misses the next one.
+- **The one decorative exemption: `.cover-corner-num`.** The ghosted numeral on 40 zine covers
+  restates a number printed at full contrast two lines below it in `.cover-issue` ("Zine No. 30").
+  It is a watermark, not a label. Reaching 3:1 would need opacity 0.44–0.57 against the 0.15–0.26
+  it carries — **a different cover, not a fixed one.** So it is exempt under WCAG 1.4.3 *pure
+  decoration*, with two constraints that make the claim honest and are the bar for any future
+  exemption:
+  - **The selector list in the tool is explicit and short.** There is deliberately no
+    "anything `aria-hidden`" rule, because that would let a future failure disappear by adding an
+    attribute — the exemption must be a decision somebody wrote down, not a mechanism to fall into.
+  - **An element must *also* be `aria-hidden` to qualify.** Text a screen reader still announces is
+    not decoration, so the claim has to be true in the markup before the tool will honour it. All
+    40 numerals were marked in the same pass, which also stopped screen readers announcing a bare
+    "30" before the title.
 
 ## Markup checking (`tools/check-markup.mjs`)
 
@@ -460,8 +508,10 @@ node tools/check-markup.mjs --check               # exit non-zero on any failure
   is that the browser silently hands the reader a different document than the source describes —
   or, as with the nav check, that a structural fault is invisible to *every* other gate and has
   recurred often enough to prove that remembering is not a control.
-- **The baseline is 0, unlike the contrast tool.** A clean tree passes, so `--check` is a real ship
-  gate rather than an informational sweep. It was regression-tested against the actual broken file
+- **The baseline is 0.** A clean tree passes, so `--check` is a real ship
+  gate rather than an informational sweep. (This was the distinction from `check-contrast.mjs`
+  until 2026-08-13, when that one reached zero too — all five gates now hold at 0.) It was
+  regression-tested against the actual broken file
   from git history, and against decoys that must *not* fire — an `a a` CSS selector, a nested
   anchor inside a JS string, and a `>` inside an attribute value.
 

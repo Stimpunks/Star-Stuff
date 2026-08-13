@@ -311,11 +311,13 @@
     font-weight: 200;
     font-size: 5.5rem;
     line-height: 0.85;
-    color: var(--nebula-purple);
+    /* A drop cap is the paragraph's first letter, so it is body text and takes the
+       house full-opacity rule. #7c3aed under opacity 0.8 measured 2.52:1 against the
+       card; at full strength it only reaches 3.31:1, so step one up the violet ramp. */
+    color: #8b5cf6;
     float: left;
     margin-right: 0.12em;
     margin-bottom: -0.1em;
-    opacity: 0.8;
   }
 
   .zine-body {
@@ -610,7 +612,7 @@
       </svg>
 
       <div class="cover-corner">
-        <div class="cover-corner-num">1</div>
+        <div class="cover-corner-num" aria-hidden="true">1</div>
         <span class="cover-corner-label">Bone Song</span>
       </div>
 
@@ -720,7 +722,7 @@
             <circle cx="100" cy="100" r="50" fill="rgba(251,191,36,0.06)" stroke="rgba(251,191,36,0.3)" stroke-width="1.5"/>
             <circle cx="100" cy="100" r="30" fill="rgba(251,191,36,0.1)" stroke="rgba(251,191,36,0.5)" stroke-width="1"/>
             <!-- Core -->
-            <circle cx="100" cy="100" r="12" fill="rgba(251,191,36,0.5)" stroke="rgba(251,191,36,0.8)" stroke-width="1"/>
+            <circle cx="100" cy="100" r="12" fill="rgba(251,191,36,0.85)" stroke="rgba(251,191,36,1)" stroke-width="1"/>
             <!-- Element eruption lines -->
             <line x1="100" y1="50" x2="100" y2="28" stroke="rgba(232,223,200,0.5)" stroke-width="1" stroke-dasharray="3 2"/>
             <line x1="136" y1="64" x2="152" y2="50" stroke="rgba(34,211,238,0.5)" stroke-width="1" stroke-dasharray="3 2"/>
@@ -740,7 +742,9 @@
             <text x="20" y="103" font-family="Space Mono, monospace" font-size="7" fill="rgba(232,223,200,0.95)" text-anchor="end">O</text>
             <text x="38" y="47" font-family="Space Mono, monospace" font-size="7" fill="rgba(251,191,36,0.95)" text-anchor="middle">Si</text>
             <!-- Center label -->
-            <!-- dark on the gold forge shape: gold-on-gold was 2.47:1 -->
+            <!-- Dark on the gold forge shape: gold-on-gold was 2.47:1. The core disc
+                 carries the word, so it must be bright enough to be paper — at 0.5
+                 the ink read 3.34:1, below the 4.5:1 this label's size needs. -->
             <text x="100" y="104" font-family="Fraunces, serif" font-size="8" fill="#0a0a14" text-anchor="middle" font-style="italic">forge</text>
           </svg>
           <p class="diagram-caption" style="margin-top:0.8rem;">

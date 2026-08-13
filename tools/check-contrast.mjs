@@ -264,9 +264,28 @@ const MEASURE = String.raw`((mode) => {
      the control is off. Exempt, but counted, so the exemption stays visible. */
   const inactive = (el) => !!el.closest(':disabled, [disabled], [aria-disabled="true"]');
 
+  /* WCAG 1.4.3 also exempts text that is "pure decoration" — serving only an aesthetic
+     purpose, conveying no information. Exactly one thing here qualifies: the ghosted
+     numeral in the corner of a zine cover, which restates a number printed in full at
+     normal contrast two lines below it in .cover-issue ("Zine No. 30"). It is a
+     watermark, not a label, and raising it to 3:1 would need opacity 0.44–0.57 against
+     the 0.15–0.26 it carries — a different cover, not a fixed one.
+
+     Two deliberate constraints, because a decorative exemption is the easiest kind to
+     abuse:
+       · The selector list is explicit and short. There is no "anything aria-hidden"
+         rule — that would let a future failure disappear by adding an attribute.
+       · An element must ALSO be aria-hidden to qualify. Text a screen reader still
+         announces is not decoration, so the claim has to be true in the markup before
+         the tool will honour it.
+     Counted apart from inactive controls and reported on its own line. */
+  const DECORATIVE = '.cover-corner-num';
+  const decorativeEl = (el) =>
+    el.matches(DECORATIVE) && el.closest('[aria-hidden="true"]') !== null;
+
   const fails = [];
   const unmeasured = [];
-  let checkedCss = 0, checkedSvg = 0, overImage = 0, exempt = 0;
+  let checkedCss = 0, checkedSvg = 0, overImage = 0, exempt = 0, decorative = 0;
 
   const record = (kind, el, text, fg, bg, px, weight, note) => {
     const need = needFor(px, weight);
@@ -299,6 +318,7 @@ const MEASURE = String.raw`((mode) => {
     const cs = getComputedStyle(el);
     if (invisible(el, cs)) continue;
     if (inactive(el)) { exempt++; continue; }
+    if (decorativeEl(el)) { decorative++; continue; }
 
     /* Gradient-clipped headings (.gradient-text, .hero-title em) paint their glyphs
        from a background image through -webkit-text-fill-color: transparent. There
@@ -423,7 +443,7 @@ const MEASURE = String.raw`((mode) => {
     }
   }
 
-  return JSON.stringify({ mode, fails, unmeasured, checkedCss, checkedSvg, overImage, exempt });
+  return JSON.stringify({ mode, fails, unmeasured, checkedCss, checkedSvg, overImage, exempt, decorative });
 })`;
 
 /* ─── minimal CDP client ──────────────────────────────────────────────────────
@@ -664,6 +684,7 @@ async function main() {
   const unmeasured = tot('unmeasured', 'screen') + tot('unmeasured', 'print');
   const overImage = sum('overImage', 'screen') + sum('overImage', 'print');
   const exempt = sum('exempt', 'screen') + sum('exempt', 'print');
+  const decorative = sum('decorative', 'screen') + sum('decorative', 'print');
   const bgWarn = results.filter(([, o]) => o.printBg.fails.length);
 
   console.log(
@@ -674,6 +695,15 @@ async function main() {
   if (exempt) {
     console.log(
       `${exempt} inactive-control element(s) exempt under WCAG 1.4.3 (disabled prev/next buttons).`
+    );
+  }
+  /* Its own line, never folded into the one above. Two exemptions summed together
+     read as one small allowance; kept apart, a number that grows is a number that
+     can be questioned. */
+  if (decorative) {
+    console.log(
+      `${decorative} decorative element(s) exempt under WCAG 1.4.3 (aria-hidden cover ` +
+        `watermark numerals — the issue number is stated at full contrast in .cover-issue).`
     );
   }
 

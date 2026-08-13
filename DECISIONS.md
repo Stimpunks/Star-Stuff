@@ -187,6 +187,42 @@ Decisions still to make. Move to **Settled** with a date once resolved.
 Decisions already made, with a one-line why. Backfilled from git history — dates are first
 commit evidence, not necessarily when the call was made.
 
+- **2026-08-13 — `opacity` is not a hierarchy tool anywhere, on anything that carries glyphs.**
+  The generalization of the 2026-08-12 note below, which found dimness failing at 10px; sweeping
+  `check-contrast.mjs` to zero found the same mistake in four more shapes and no other kind of
+  cause worth naming. `.sp-divider` at `0.3` faded a whole flex row, taking its ★ down with the
+  hairlines it meant to dim; two `sh-letter-row`s carried inline `opacity:0.3`; `.zine-drop-cap`
+  sat at `0.8`, which is body text wearing a flourish. **Settled: the fade goes on the
+  `::before`/`::after` rule, the shape, or the artwork — never on a box containing text. If
+  something must recede, change its colour.** The design system already said *full-opacity body
+  text*; these were lapses, not exceptions, and there is now a gate that says so.
+- **2026-08-13 — A caption inside decorative cover art is still text, and the artwork is not the
+  thing to adjust.** `.cover-motif` runs at `opacity: 0.7–0.75`, through which violet-400 tops out
+  at **4.46:1** even at `fill` alpha 1.0. Two ways out: raise the motif (retunes artwork tuned per
+  page) or lighten the label. **Settled on stepping the label one rung up the same Tailwind ramp,
+  400 → 300** — `#a78bfa`→`#c4b5fd`, `#f472b6`→`#f9a8d4`, landing ~5.7:1 and staying inside the
+  documented palette lineage rather than inventing a colour. Applies to the seven captions that
+  failed; the cyan/gold/green ones already clear the veil and were left alone.
+- **2026-08-13 — Print ink splits: `#111111` for SVG labels, `#222222` for body text.** Not a
+  rounding of the same decision. A diagram label frequently sits on a *coloured shape that prints
+  because it is content* — the element discs on `elements-field-guide.html` put `#222` at
+  **4.16–4.24:1**, under AA by a hair, while that ink on bare paper is 15.9:1. **Settled: fix it
+  once in `starstuff.css` at the label**, which reaches every such shape, rather than darkening
+  each disc, which handles today's three and not the fourth one somebody draws next month.
+- **2026-08-13 — One decorative exemption exists (`.cover-corner-num`), and claiming it costs
+  something.** The ghosted numeral on 40 covers restates a number set at full contrast two lines
+  below it in `.cover-issue`; it is a watermark. Reaching 3:1 needs `opacity` **0.44–0.57** against
+  the 0.15–0.26 it carries — a different cover, not a fixed one. Exempt under WCAG 1.4.3 *pure
+  decoration*. **Rejected: an "anything `aria-hidden` is decorative" rule** — that turns the
+  exemption into a mechanism any future failure can fall into by adding an attribute. Settled on an
+  explicit one-item selector list **plus** a requirement that the element also be `aria-hidden`, so
+  the decoration claim has to be true in the markup before the tool honours it. Reported on its own
+  line and counted, never summed with the inactive-control exemption: *two allowances added together
+  read as one small concession; kept apart, a number that grows can be questioned.*
+- **2026-08-13 — `check-contrast.mjs` holds at a baseline of 0, like the other four gates.** It ran
+  at 110 from the day it was written, which made it a tool you read *past*. That is the same failure
+  mode as the 196-entry "check by eye" list that sat unread while 90 headings printed blank. **A
+  gate with a non-zero baseline is a gate that stops being read, and then so are its new findings.**
 - **2026-08-12 — The chains have a stated motive: reclaim science from what wears its clothes.**
   Ryan's framing, now on the collection page's face and in `CLAUDE.md` rather than living only in
   chat: **eugenics and behaviorism took good physics and misapplied it to human beings.** Three
