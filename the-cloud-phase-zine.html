@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0a0a14">
+<link rel="canonical" href="https://starstuff.earth/the-cloud-phase-zine.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta name="description" content="Astronomy has a name for the last stage of a supernova remnant, and it is not the end — it is the cloud phase. Romano, Behrendt &amp; Burkert (2024) find the remnant's cold shell falls back inward and settles as a chemically enriched cloud. SN 1987A condensed at least 0.2 solar masses of new dust inside its own wreckage. And Murray (2011) measured what clouds actually do: even in the Milky Way's most productive star-forming clouds, ninety-two percent of the cloud never becomes a star, and a cloud lasts 27 ± 12 million years. So the in-between is not the short part — it is the majority state, by mass and by duration. After Helen Edgar. Not a promise that the cloud becomes a star.">
+<!-- Open Graph / link unfurl -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Star Stuff · Stimpunks Foundation × More Realms">
+<meta property="og:url" content="https://starstuff.earth/the-cloud-phase-zine.html">
+<meta property="og:title" content="The Cloud Phase">
+<meta property="og:description" content="The last stage of a supernova remnant has a name, and the name is the cloud phase. Ninety-two percent of a molecular cloud never becomes a star, and the cloud lasts tens of millions of years. The in-between is not the short part — it is the majority condition. After Helen Edgar.">
+<meta property="og:image" content="https://starstuff.earth/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A rainbow-hued cosmic image — we are all made of star stuff.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Cloud Phase">
+<meta name="twitter:description" content="Astronomy's own name for a remnant's last stage. Ninety-two percent of a cloud never becomes a star, and the cloud phase lasts tens of millions of years. The in-between is the majority state, not the wait. After Helen Edgar.">
+<meta name="twitter:image" content="https://starstuff.earth/og-card.jpg">
+<title>The Cloud Phase — Stimpunks Zine No. 45</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="starstuff.css">
+<style>
+  :root {
+    --void:  var(--sp-void-deep);
+    --deep:  var(--sp-deep);
+    --page:  var(--sp-page);
+    --violet:var(--sp-purple);
+    --pink:  var(--sp-pink);
+    --gold:  var(--sp-gold);
+    --cyan:  var(--sp-cyan);
+    --green: var(--sp-green);
+    --ember: #c1653a;
+    --accent: var(--sp-purple);        /* this zine's identity accent — the cloud, cold and dusty */
+    --star-white: var(--sp-white-soft);
+    --stardust:   var(--sp-secondary-soft);
+    --dim:   var(--sp-dim);
+    --dim2:  var(--sp-dim-soft);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--void);
+    font-family: 'Atkinson Hyperlegible Next', system-ui, sans-serif;
+    color: var(--star-white);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── STARFIELD (violet · gold · white — a cloud with a few stars behind it) ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 10% 15%, rgba(167,139,250,0.7) 0%, transparent 100%),
+      radial-gradient(1px 1px at 26% 37%, rgba(244,244,251,0.6) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 47% 8%, rgba(251,191,36,0.46) 0%, transparent 100%),
+      radial-gradient(1px 1px at 62% 66%, rgba(244,244,251,0.62) 0%, transparent 100%),
+      radial-gradient(2px 2px at 77% 24%, rgba(167,139,250,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 88% 53%, rgba(251,191,36,0.44) 0%, transparent 100%),
+      radial-gradient(1px 1px at 94% 81%, rgba(167,139,250,0.5) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 6% 60%, rgba(244,244,251,0.54) 0%, transparent 100%),
+      radial-gradient(1px 1px at 35% 86%, rgba(167,139,250,0.46) 0%, transparent 100%),
+      radial-gradient(1px 1px at 54% 45%, rgba(251,191,36,0.4) 0%, transparent 100%),
+      radial-gradient(2px 2px at 20% 89%, rgba(167,139,250,0.48) 0%, transparent 100%),
+      radial-gradient(1px 1px at 71% 6%, rgba(244,244,251,0.74) 0%, transparent 100%),
+      radial-gradient(1px 1px at 44% 61%, rgba(167,139,250,0.42) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 31% 19%, rgba(244,244,251,0.48) 0%, transparent 100%),
+      radial-gradient(1px 1px at 83% 90%, rgba(251,191,36,0.4) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .zine-shell { position: relative; z-index: 1; max-width: 820px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+
+  .spectrum-line { height: 2px; border: none; border-radius: 2px; background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); }
+
+  /* ── NAV ── */
+  .nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2.5rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(167,139,250,0.2); }
+  .nav-brand { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--dim); }
+  .nav-controls { display: flex; gap: 0.5rem; align-items: center; }
+  .nav-btn { background: none; border: 1px solid rgba(167,139,250,0.35); color: var(--stardust); font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.15em; padding: 0.4rem 0.85rem; border-radius: 2px; cursor: pointer; transition: all 0.2s ease; text-transform: uppercase; }
+  .nav-btn:hover { background: rgba(167,139,250,0.15); border-color: rgba(167,139,250,0.6); color: var(--star-white); }
+  .nav-btn.active { background: rgba(167,139,250,0.20); border-color: var(--accent); color: var(--star-white); }
+  .page-counter { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.2em; color: var(--dim2); }
+
+  .spread { display: none; animation: fadeIn 0.5s ease forwards; }
+  .spread.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ── COVER ── */
+  .cover-spread {
+    position: relative; min-height: 520px; border-radius: 4px; overflow: hidden;
+    background:
+      radial-gradient(ellipse at 24% 22%, rgba(167,139,250,0.14) 0%, transparent 52%),
+      radial-gradient(ellipse at 78% 26%, rgba(251,191,36,0.09) 0%, transparent 52%),
+      radial-gradient(ellipse at 66% 82%, rgba(167,139,250,0.10) 0%, transparent 52%),
+      radial-gradient(ellipse at 26% 80%, rgba(34,211,238,0.07) 0%, transparent 52%),
+      var(--deep);
+    border: 1px solid rgba(167,139,250,0.25);
+    box-shadow: inset 0 0 80px rgba(167,139,250,0.07), 0 0 0 4px rgba(255,255,255,0.03);
+    display: flex; flex-direction: column; justify-content: flex-end; padding: 3rem;
+  }
+  .cover-motif { position: absolute; top: -4px; right: -14px; width: 340px; height: 340px; opacity: 0.8; pointer-events: none; }
+  .cover-issue { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.5em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.5rem; }
+  .cover-title { font-weight: 700; font-size: clamp(2.2rem, 6.4vw, 3.8rem); line-height: 1.03; color: var(--star-white); letter-spacing: -0.01em; margin-bottom: 0.9rem; }
+  .cover-title .amp { color: var(--accent); font-style: italic; }
+  .cover-subtitle { font-size: 1rem; color: var(--stardust); opacity: 0.85; margin-bottom: 1.5rem; max-width: 470px; line-height: 1.55; }
+  .cover-byline { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.14em; color: var(--dim); margin-bottom: 1.8rem; }
+  .cover-byline strong { color: var(--stardust); font-weight: 700; }
+  .cover-rule { width: 220px; max-width: 60%; margin-bottom: 1.3rem; }
+  .cover-meta { display: flex; gap: 2rem; align-items: center; }
+  .cover-ls { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 1.4rem; color: var(--gold); letter-spacing: 0.05em; }
+  .cover-meta-text { font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--dim2); line-height: 1.9; }
+  .cover-corner { position: absolute; top: 2rem; right: 2.5rem; text-align: right; }
+  .cover-corner-num { font-weight: 700; font-size: 4.5rem; line-height: 1; color: var(--accent); opacity: 0.24; }
+  .cover-corner-label { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); display: block; margin-top: -0.3rem; }
+
+  /* ── INTERIOR ── */
+  .interior { background: var(--page); border: 1px solid rgba(167,139,250,0.15); border-radius: 4px; overflow: hidden; min-height: 480px; }
+  .spread-2col { display: grid; grid-template-columns: 1fr 1fr; min-height: 480px; }
+  .spread-left, .spread-right { padding: 3rem 2.4rem; position: relative; }
+  .spread-left { border-right: 1px solid rgba(167,139,250,0.12); }
+
+  .spread-2col.stacked { display: flex; flex-direction: column; }
+  .spread-2col.stacked > .spread-left,
+  .spread-2col.stacked > .spread-right { border-right: none; }
+  .spread-2col.stacked > .col-diagram { order: 2; padding-top: 0; }
+  .spread-2col.stacked > .col-text { padding-left: max(2.4rem, calc((100% - 32rem) / 2)); padding-right: max(2.4rem, calc((100% - 32rem) / 2)); }
+  .spread-2col.stacked .diagram-wrap { height: auto; }
+  .spread-2col.stacked .diagram { max-width: 380px; }
+
+  .eyebrow { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.1rem; }
+  .body-text { font-size: 0.98rem; line-height: 1.72; color: var(--stardust); }
+  .body-text p { margin-bottom: 1rem; }
+  .body-text p:last-child { margin-bottom: 0; }
+  .body-text strong { font-weight: 700; color: var(--star-white); }
+  .body-text em { font-style: italic; color: var(--star-white); }
+  .body-text a { color: var(--violet); text-decoration: none; border-bottom: 1px solid rgba(167,139,250,0.4); }
+  .body-text a:hover { border-bottom-color: var(--violet); color: var(--star-white); }
+  .body-text .violet { color: var(--violet); font-weight: 700; }
+  .body-text .pink { color: var(--pink); font-weight: 700; }
+  .body-text .gold { color: var(--gold); font-weight: 700; }
+  .body-text .cyan { color: var(--cyan); font-weight: 700; }
+  .body-text .green { color: var(--green); font-weight: 700; }
+  .body-text .lede { font-size: 1.08rem; color: var(--star-white); }
+
+  .spread-heading { font-weight: 700; font-size: 1.9rem; line-height: 1.12; color: var(--star-white); margin-bottom: 1.1rem; letter-spacing: -0.01em; margin-top: 0; scroll-margin-top: 5rem; }
+  .spread-heading .spectrum-word { background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .rule { width: 40px; margin: 1rem 0; }
+
+  .pull-quote { font-size: 1.18rem; font-weight: 700; line-height: 1.4; color: var(--star-white); border-left: 3px solid var(--accent); padding-left: 1.1rem; margin: 1.4rem 0; font-style: italic; }
+  .pull-quote.violet { border-left-color: var(--violet); }
+  .pull-quote.cyan { border-left-color: var(--cyan); }
+  .pull-quote.gold { border-left-color: var(--gold); }
+  .pull-quote.pink { border-left-color: var(--pink); }
+  .pull-quote .attr { display: block; font-family: 'Space Mono', monospace; font-size: 0.6rem; font-weight: 400; font-style: normal; letter-spacing: 0.08em; color: var(--dim); margin-top: 0.6rem; }
+
+  .callout { margin: 1.3rem 0; padding: 1rem 1.15rem; background: rgba(167,139,250,0.07); border: 1px solid rgba(167,139,250,0.24); border-radius: 4px; font-size: 1rem; font-style: italic; color: var(--star-white); line-height: 1.55; }
+  .callout .attr { display: block; font-family: 'Space Mono', monospace; font-size: 0.58rem; font-style: normal; letter-spacing: 0.06em; color: var(--dim); margin-top: 0.5rem; }
+
+  .note { font-size: 0.84rem; line-height: 1.6; color: var(--dim); border-left: 2px solid rgba(251,191,36,0.4); padding-left: 0.9rem; margin: 1.1rem 0; }
+  .note strong { color: var(--stardust); font-weight: 700; }
+
+  /* ── THE STAGES TABLE ── */
+  .trades { width: 100%; border-collapse: collapse; margin: 1.3rem 0; font-size: 0.84rem; }
+  .trades caption { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dim); text-align: left; padding-bottom: 0.6rem; }
+  .trades th { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--stardust); text-align: left; padding: 0.5rem 0.6rem; border-bottom: 1px solid rgba(167,139,250,0.34); font-weight: 700; }
+  .trades td { padding: 0.55rem 0.6rem; border-bottom: 1px solid rgba(167,139,250,0.1); color: var(--stardust); line-height: 1.5; vertical-align: top; }
+  .trades td.keeps { color: var(--violet); font-weight: 700; }
+  .trades td.loses { color: var(--gold); font-weight: 700; }
+
+  /* ── DIAGRAMS ── */
+  .diagram-wrap { display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; }
+  .diagram { width: 100%; max-width: 300px; display: block; }
+  .diagram-caption { font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim); text-align: center; margin-top: 0.9rem; line-height: 1.9; }
+
+  /* ── REFUSALS ── */
+  .refusals { margin-top: 1.3rem; }
+  .refusal { font-size: 0.88rem; line-height: 1.5; color: var(--stardust); padding: 0.55rem 0; border-bottom: 1px solid rgba(167,139,250,0.1); display: flex; gap: 0.6rem; align-items: baseline; }
+  .refusal:last-child { border-bottom: none; }
+  .refusal-tag { font-family: 'Space Mono', monospace; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ember); flex-shrink: 0; padding-top: 0.12rem; }
+  .refusal strong { color: var(--star-white); font-weight: 700; }
+
+  /* ── COLOPHON ── */
+  .colophon { padding: 3rem; display: flex; flex-direction: column; justify-content: space-between; min-height: 480px; background: radial-gradient(ellipse at 82% 18%, rgba(167,139,250,0.10) 0%, transparent 50%), radial-gradient(ellipse at 18% 85%, rgba(251,191,36,0.06) 0%, transparent 50%), var(--page); }
+  .colophon-top { border-bottom: 1px solid rgba(167,139,250,0.14); padding-bottom: 1.3rem; margin-bottom: 1.2rem; }
+  .colophon-ls { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 2.4rem; color: var(--gold); letter-spacing: 0.05em; display: block; margin-bottom: 0.4rem; }
+  .colophon-phrase { font-size: 0.98rem; font-weight: 700; font-style: italic; color: var(--stardust); }
+  .series-list { display: flex; flex-direction: column; gap: 0.38rem; margin-bottom: 1.2rem; }
+  .series-item { font-size: 0.72rem; color: var(--dim); letter-spacing: 0.01em; display: flex; gap: 0.7rem; align-items: baseline; line-height: 1.45; }
+  .series-item.current { color: var(--accent); font-weight: 700; }
+  .series-num { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim2); flex-shrink: 0; }
+  .series-item.current .series-num { color: var(--accent); }
+  .reflect { border-top: 1px solid rgba(167,139,250,0.14); padding-top: 1rem; margin-bottom: 1.2rem; }
+  .reflect-label { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.65rem; }
+  .reflect-q { font-size: 0.86rem; line-height: 1.55; color: var(--stardust); margin-bottom: 0.55rem; font-style: italic; }
+  .reflect-q:last-child { margin-bottom: 0; }
+  .colophon-body { font-size: 0.75rem; color: var(--dim); line-height: 1.75; margin-bottom: 1.2rem; }
+  .colophon-body a { color: var(--violet); text-decoration: none; border-bottom: 1px solid rgba(167,139,250,0.4); }
+  .colophon-body a:hover { border-bottom-color: var(--violet); }
+  .colophon-h { font-family: 'Space Mono', monospace; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: var(--stardust); margin: 1rem 0 0.4rem; scroll-margin-top: 5rem; }
+  .colophon-footer { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--dim); line-height: 2.2; border-top: 1px solid rgba(167,139,250,0.14); padding-top: 1rem; }
+
+  /* ── SPREAD FOOTER ── */
+  .spread-footer { display: flex; justify-content: space-between; align-items: center; padding: 0.9rem 2.4rem; border-top: 1px solid rgba(167,139,250,0.1); }
+  .spread-footer-left { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--dim); }
+  .spread-footer-right { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; color: var(--accent); }
+
+  .twinkle { position: fixed; width: 3px; height: 3px; border-radius: 50%; animation: twinkle-anim 3s ease-in-out infinite; pointer-events: none; z-index: 0; }
+
+  @media (max-width: 600px) {
+    .spread-2col { grid-template-columns: 1fr; }
+    .spread-left { border-right: none; border-bottom: 1px solid rgba(167,139,250,0.12); }
+    .spread-2col.stacked > .spread-left { border-bottom: none; }
+    .spread-2col.stacked > .col-text { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .cover-spread { padding: 2rem; min-height: 420px; }
+    .cover-motif { width: 224px; height: 224px; top: -4px; right: -24px; opacity: 0.5; }
+    .cover-title { font-size: 2rem; }
+    .spread-heading { font-size: 1.55rem; }
+    .spread-left, .spread-right { padding: 2rem 1.5rem; }
+    .colophon { padding: 2rem 1.5rem; }
+    .trades { font-size: 0.76rem; }
+    .trades th, .trades td { padding: 0.4rem 0.35rem; }
+  }
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"The Cloud Phase","description":"Astronomy has a name for the last stage of a supernova remnant, and the name is the cloud phase. Leonard Romano, Manuel Behrendt and Andreas Burkert (ApJ 965, 168, 2024) subdivide a remnant's radiative phase into four stages — pressure-driven snowplow, momentum-conserving snowplow, implosion, and a final cloud phase in which the infalling gas settles as a chemically enriched central overdensity that can reach ten thousand solar masses and become self-gravitating within a few million years. That is a 2024 simulation and is held here as proposed rather than settled. The zine's weight sits on an observation instead: Norman Murray (ApJ 729, 133, 2011) measured star formation efficiency in the Milky Way's most luminous star-forming complexes at an ionizing-luminosity-weighted mean of 0.08, against a Galactic average of 0.005 — so even in the most productive clouds, ninety-two percent never becomes a star, and galaxy-wide the figure is closer to ninety-nine and a half. A giant molecular cloud lasts 27 plus or minus 12 million years. Meanwhile SN 1987A condensed at least 0.2 solar masses of new dust inside its own ejecta. The turn: the in-between is not the short part. It is the majority state, by mass and by duration, and the bright episode is the exception that ends it. Read alongside Helen Edgar's Supernova Remnant and Emergence Point from My Monotropic Galaxy, her gloss on the body without organs as a soft loosening of pressure, and Ombre Tarragnat's ethodiversity. Closes on aluminium-26 in the Allende meteorite: something nearby and freshly dead was in our birth cloud, and which star it was remains openly contested. Not a promise that the cloud becomes a star.","image":"https://starstuff.earth/og-card.jpg","url":"https://starstuff.earth/the-cloud-phase-zine.html","mainEntityOfPage":"https://starstuff.earth/the-cloud-phase-zine.html","author":{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/"},"contributor":[{"@type":"Person","name":"Helen Edgar","url":"https://morerealms.com/"}],"publisher":[{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/","logo":{"@type":"ImageObject","url":"https://starstuff.earth/og-card.jpg"}},{"@type":"Organization","name":"More Realms","url":"https://morerealms.com/"}],"isPartOf":{"@type":"WebSite","name":"Star Stuff","url":"https://starstuff.earth/"}}</script>
+</head>
+<body>
+
+<div class="twinkle" style="top:9%;left:13%;background:var(--violet);box-shadow:0 0 6px var(--violet);animation-delay:-0.6s"></div>
+<div class="twinkle" style="top:22%;left:86%;background:var(--star-white);box-shadow:0 0 6px var(--star-white);animation-delay:-1.5s"></div>
+<div class="twinkle" style="top:53%;left:5%;background:var(--gold);box-shadow:0 0 6px var(--gold);animation-delay:-2.3s"></div>
+<div class="twinkle" style="top:74%;left:93%;background:var(--violet);box-shadow:0 0 6px var(--violet);animation-delay:-0.9s"></div>
+<div class="twinkle" style="top:87%;left:30%;background:var(--star-white);box-shadow:0 0 6px var(--star-white);animation-delay:-1.8s"></div>
+<div class="twinkle" style="top:40%;left:96%;background:var(--violet);box-shadow:0 0 6px var(--violet);animation-delay:-3.1s"></div>
+
+<div class="zine-shell">
+
+  <nav class="ss-nav" style="--nav-accent:#a78bfa;" aria-label="Star Stuff collection">
+    <span class="ss-nav-home-group"><a class="ss-nav-home" href="index.html"><span class="ss-star" aria-hidden="true">★</span> stuff</a><a class="ss-nav-about" href="about.html">about</a>
+      <a class="ss-nav-search" href="search.html">search</a></span>
+    <span class="ss-nav-links">
+      <a class="ss-nav-prev" href="cannot-flatten-a-sphere-zine.html"><span class="ss-nav-arrow" aria-hidden="true">&lsaquo;</span> <span class="ss-nav-label">Cannot Flatten a Sphere</span></a>
+      <a class="ss-nav-next" href="collection-how-we-got-here.html"><span class="ss-nav-label">How We Got Here</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
+    </span>
+    <a class="ss-nav-collection" href="collection-star-stuff.html"><span class="ss-nav-collection-label">Collection</span> <span class="ss-nav-collection-name">Star Stuff</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
+  </nav>
+
+  <nav class="nav">
+    <div class="nav-brand"><a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks</a> × <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a> · Zine No. 45</div>
+    <div class="nav-controls">
+      <button class="nav-btn" id="prev-btn" onclick="changePage(-1)">← prev</button>
+      <span class="page-counter" id="page-counter">1 / 11</span>
+      <button class="nav-btn" id="next-btn" onclick="changePage(1)">next →</button>
+    </div>
+  </nav>
+
+  <!-- ════ SPREAD 1: COVER ════ -->
+  <div class="spread active" id="spread-1">
+    <div class="cover-spread">
+      <svg class="cover-motif" viewBox="0 0 340 340" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <!-- An expanded shell with inward arrows, settling to a dense speckled cloud at centre.
+             Art held in the UPPER THIRD — the cover is 520px and the title sits at its foot, so
+             anything past y≈240 in this viewBox lands on the words. -->
+        <g transform="translate(0,2) scale(0.88)">
+          <!-- the old shell, thinning -->
+          <circle cx="150" cy="104" r="88" fill="none" stroke="rgba(167,139,250,0.30)" stroke-width="1" stroke-dasharray="5 6"/>
+          <circle cx="150" cy="104" r="70" fill="none" stroke="rgba(167,139,250,0.55)" stroke-width="1.6"/>
+          <!-- inward arrows: it falls back in -->
+          <g stroke="rgba(251,191,36,0.85)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M150 40 L150 66"/><path d="M144 58 L150 66 L156 58"/>
+            <path d="M214 104 L188 104"/><path d="M196 98 L188 104 L196 110"/>
+            <path d="M150 168 L150 142"/><path d="M144 150 L150 142 L156 150"/>
+            <path d="M86 104 L112 104"/><path d="M104 98 L112 104 L104 110"/>
+          </g>
+          <!-- the settling cloud -->
+          <circle cx="150" cy="104" r="30" fill="rgba(167,139,250,0.16)" stroke="rgba(167,139,250,0.5)" stroke-width="1"/>
+          <circle cx="150" cy="104" r="18" fill="rgba(167,139,250,0.26)"/>
+          <g fill="rgba(244,244,251,0.75)">
+            <circle cx="143" cy="98" r="1.5"/><circle cx="157" cy="101" r="1.3"/><circle cx="150" cy="111" r="1.6"/>
+            <circle cx="139" cy="109" r="1.2"/><circle cx="160" cy="110" r="1.1"/><circle cx="152" cy="94" r="1.2"/>
+          </g>
+          <text x="150" y="190" text-anchor="middle" font-family="Space Mono, monospace" font-size="10.5" letter-spacing="1" fill="#c4b5fd">it falls back in</text>
+        </g>
+      </svg>
+      <div class="cover-corner">
+        <div class="cover-corner-num" aria-hidden="true">45</div>
+        <span class="cover-corner-label">Star Stuff</span>
+      </div>
+      <div class="cover-issue">Stimpunks × More Realms · Zine No. 45</div>
+      <h1 class="cover-title">The <span class="amp">Cloud</span> Phase</h1>
+      <p class="cover-subtitle">on the last stage of a supernova remnant, and how long the in-between actually lasts</p>
+      <div class="cover-byline">after <strong>Helen Edgar</strong> · a cloud, not a waiting room</div>
+      <hr class="spectrum-line cover-rule">
+      <div class="cover-meta">
+        <span class="cover-ls">L★S</span>
+        <div class="cover-meta-text">Love You Down To Your Star Stuff<br>open edition · print freely</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 2: the name ════ -->
+  <div class="spread" id="spread-2">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The cloud phase</div>
+          <h2 class="spread-heading" id="astronomy-already-named-it">Astronomy already named it</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">A big star does not simply stop. It explodes, and what is left is called a <strong>remnant</strong> — the star's own material, thrown outward at thousands of kilometres a second.</p>
+            <p>The version most of us were handed ends about one step past that. The shell expands, thins, cools, and <em>disperses into the interstellar medium</em>. Fade out. The star is finished, and the sentence is finished with it.</p>
+            <p>But the physics runs further than the sentence does, and there is another word waiting at the end of it.</p>
+            <p>In 2024 Leonard Romano, Manuel Behrendt and Andreas Burkert followed remnants through their long cold decline in three-dimensional simulation. They found the late evolution divides into four stages — and the one at the end they call <span class="violet">the cloud phase</span>.</p>
+            <div class="pull-quote">Not the end phase. Not the dispersal phase. The <em>cloud</em> phase — a named, described, modelled stage of a remnant's life.<span class="attr">Romano, Behrendt &amp; Burkert · ApJ 965, 168 · 2024</span></div>
+            <p>That is the whole reason this zine exists. We did not go looking for a metaphor and bend the astronomy to fit it. <strong>The astronomers got there first and wrote the word down.</strong> What is left of a dead star is understood as a cloud, studied as a cloud, and given a stage of its own in the literature.</p>
+            <div class="note"><strong>Held as proposed, not as settled.</strong> Romano et&nbsp;al. is a 2024 hydrodynamic simulation study, not textbook consensus, and the four-stage subdivision is their result. It may be revised. We are flagging that here, in place, the way this collection flags the <a href="mycelium-and-rhizome-zine.html">wood wide web</a> — and nothing later in this zine leans on it. The argumentative weight sits on <a href="#most-of-a-cloud">spread five</a>, which is an observation.</div>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 174" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig1-title fig1-desc">
+              <title id="fig1-title">Where the usual story stops</title>
+              <desc id="fig1-desc">A remnant's life shown as four boxes — free expansion, Sedov-Taylor, radiative, cloud phase. A marker shows the popular account ending after the third box, while the literature carries on to the fourth.</desc>
+              <g font-family="Space Mono, monospace" font-size="6.5" text-anchor="middle">
+                <rect x="12" y="52" width="58" height="30" rx="2" fill="rgba(167,139,250,0.06)" stroke="rgba(167,139,250,0.42)" stroke-width="1.1"/>
+                <text x="41" y="66" fill="var(--sp-secondary)">free</text><text x="41" y="76" fill="var(--sp-secondary)">expansion</text>
+                <rect x="76" y="52" width="58" height="30" rx="2" fill="rgba(167,139,250,0.06)" stroke="rgba(167,139,250,0.42)" stroke-width="1.1"/>
+                <text x="105" y="66" fill="var(--sp-secondary)">Sedov–</text><text x="105" y="76" fill="var(--sp-secondary)">Taylor</text>
+                <rect x="140" y="52" width="58" height="30" rx="2" fill="rgba(167,139,250,0.06)" stroke="rgba(167,139,250,0.42)" stroke-width="1.1"/>
+                <text x="169" y="70" fill="var(--sp-secondary)">radiative</text>
+                <rect x="204" y="52" width="70" height="30" rx="2" fill="rgba(167,139,250,0.20)" stroke="rgba(167,139,250,0.85)" stroke-width="1.6"/>
+                <text x="239" y="66" fill="#c4b5fd">cloud</text><text x="239" y="76" fill="#c4b5fd">phase</text>
+              </g>
+              <g stroke="rgba(167,139,250,0.5)" stroke-width="1.1" fill="none">
+                <path d="M70 67 H76"/><path d="M134 67 H140"/><path d="M198 67 H204"/>
+              </g>
+              <path d="M12 36 H198" stroke="rgba(251,191,36,0.6)" stroke-width="1.2"/>
+              <path d="M198 32 L198 40" stroke="rgba(251,191,36,0.6)" stroke-width="1.2"/>
+              <text x="105" y="28" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" fill="var(--gold)">where the retelling stops</text>
+              <path d="M204 100 H274" stroke="rgba(167,139,250,0.7)" stroke-width="1.2"/>
+              <text x="239" y="114" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" fill="#c4b5fd">and it keeps going</text>
+              <text x="150" y="142" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.5" letter-spacing="0.8" fill="var(--sp-secondary)">the last stage has a name</text>
+              <text x="150" y="158" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="1.2" fill="var(--sp-dim)">Romano et al., 2024 · proposed</text>
+            </svg>
+            <div class="diagram-caption">Figure 1 · the word at the end of the sentence</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Cloud Phase · Stimpunks</span>
+        <span class="spread-footer-right">2</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 3: it falls back in ════ -->
+  <div class="spread" id="spread-3">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">It falls back in</div>
+          <h2 class="spread-heading" id="the-shell-comes-back">The shell comes back</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">The intuitive picture of a remnant is a bubble that just keeps growing until it is too thin to see. Outward, all the way down.</p>
+            <p>That is not what the simulations do at the end. Romano and colleagues find four stages inside the radiative phase:</p>
+            <table class="trades">
+              <caption>the radiative phase, subdivided</caption>
+              <thead><tr><th>stage</th><th>what happens</th></tr></thead>
+              <tbody>
+                <tr><td class="keeps">pressure-driven snowplow</td><td>the hot, overpressured bubble inside is evacuated and pushed into the cold shell</td></tr>
+                <tr><td class="keeps">momentum-conserving snowplow</td><td>nothing is driving it any more; the shell coasts and broadens</td></tr>
+                <tr><td class="loses">implosion</td><td>cold material from the back of the shell floods into the central vacuum</td></tr>
+                <tr><td class="loses">cloud phase</td><td>the infalling gas settles as a central, compact overdensity</td></tr>
+              </tbody>
+            </table>
+            <p>The third stage is the turn. Once the shell is no longer being pushed from behind, and the pressure inside has fallen to match the pressure of the medium outside, <strong>nothing is holding the cavity open.</strong> So the remnant falls back into itself.</p>
+            <div class="pull-quote gold">The collapse inward is not the failure of the expansion. It is the next thing the remnant does.<span class="attr">stage three of four</span></div>
+            <p>And what settles in the middle is not thin leftover. In these simulations it is <span class="violet">highly chemically enriched</span>, can reach a thousand to ten thousand solar masses, and can become self-gravitating within a few million years — which the authors call an attractive, novel pathway for supernova-induced star and planet formation.</p>
+            <p>The timescales are long. The implosion takes a few hundred thousand to a few million years to launch. The cloud takes a few million to about ten million more to form. <span class="gold">Nothing here is quick, and nothing here is idle.</span></p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 186" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig2-title fig2-desc">
+              <title id="fig2-title">Out, then in</title>
+              <desc id="fig2-desc">Three panels showing a remnant shell driven outward, then coasting and broadening, then imploding inward to leave a dense cloud at the centre.</desc>
+              <g font-family="Space Mono, monospace" font-size="6.5" text-anchor="middle">
+                <!-- 1 · small shell, driven outward -->
+                <circle cx="50" cy="60" r="17" fill="none" stroke="rgba(167,139,250,0.75)" stroke-width="2.2"/>
+                <g stroke="rgba(167,139,250,0.75)" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M50 39 L50 27"/><path d="M46 32 L50 27 L54 32"/>
+                  <path d="M71 60 L83 60"/><path d="M78 56 L83 60 L78 64"/>
+                  <path d="M50 81 L50 93"/><path d="M46 88 L50 93 L54 88"/>
+                  <path d="M29 60 L17 60"/><path d="M22 56 L17 60 L22 64"/>
+                </g>
+                <text x="50" y="116" fill="var(--sp-secondary)">driven out</text>
+                <!-- 2 · larger, thicker, coasting -->
+                <circle cx="150" cy="60" r="31" fill="none" stroke="rgba(167,139,250,0.30)" stroke-width="9"/>
+                <circle cx="150" cy="60" r="31" fill="none" stroke="rgba(167,139,250,0.55)" stroke-width="1"/>
+                <text x="150" y="116" fill="var(--sp-secondary)">coasting,</text><text x="150" y="126" fill="var(--sp-secondary)">broadening</text>
+                <!-- 3 · the shell's old position, ghosted; gas falling to a dense core -->
+                <circle cx="250" cy="60" r="31" fill="none" stroke="rgba(167,139,250,0.20)" stroke-width="1" stroke-dasharray="4 5"/>
+                <g stroke="rgba(251,191,36,0.95)" stroke-width="1.3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M250 33 L250 46"/><path d="M246 41 L250 46 L254 41"/>
+                  <path d="M277 60 L264 60"/><path d="M269 56 L264 60 L269 64"/>
+                  <path d="M250 87 L250 74"/><path d="M246 79 L250 74 L254 79"/>
+                  <path d="M223 60 L236 60"/><path d="M231 56 L236 60 L231 64"/>
+                </g>
+                <circle cx="250" cy="60" r="9" fill="rgba(167,139,250,0.55)" stroke="rgba(167,139,250,0.9)" stroke-width="1"/>
+                <text x="250" y="116" fill="#c4b5fd">implodes,</text><text x="250" y="126" fill="#c4b5fd">settles</text>
+              </g>
+              <text x="150" y="152" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="0.6" fill="var(--sp-secondary)">1,000-10,000 solar masses</text>
+              <text x="150" y="164" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="0.6" fill="var(--sp-secondary)">self-gravitating in a few Myr</text>
+              <text x="150" y="178" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="1.2" fill="var(--sp-dim)">simulated, 2024 · not yet consensus</text>
+            </svg>
+            <div class="diagram-caption">Figure 2 · the remnant returns to itself</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Cloud Phase · Stimpunks</span>
+        <span class="spread-footer-right">3</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 4: the debris makes new material ════ -->
+  <div class="spread" id="spread-4">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The debris makes new material</div>
+          <h2 class="spread-heading" id="grains-that-did-not-exist">Grains that did not exist before</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">On 23 February 1987 a star exploded in the Large Magellanic Cloud, close enough to see with the naked eye. It was the nearest supernova since 1604, and we have been watching it continuously ever since.</p>
+            <p>In 2014 ALMA resolved the millimetre emission from the middle of that remnant and measured what was sitting there: <span class="violet">at least 0.2 solar masses of dust</span> — the largest mass then measured in any supernova remnant — concentrated at the centre, in the cold inner ejecta, not yet reached by the reverse shock. Later work with <em>Herschel</em> and further ALMA data puts the cold dust nearer half a solar mass.</p>
+            <p>Here is the part worth sitting with. <strong>That dust is new.</strong> Silicate and carbon grains condensed out of the cooling wreckage, assembled from atoms forged in the star's last seconds and in the explosion itself. Before the star died, that material did not exist in that form anywhere.</p>
+            <div class="pull-quote">The debris field is not where things end up. It is where the next material gets made — not after the wreckage, but in it.<span class="attr">SN 1987A, thirty-odd years in</span></div>
+            <p>Dust is not incidental, either. It is what lets a cloud cool, what shields molecules from starlight, what eventually accretes into rock. <span class="gold">The grains in your bones were made in places like this.</span> Some fraction of them, in something's ejecta, in some galaxy's slow afterwards.</p>
+            <div class="note"><strong>What is contested here.</strong> The ≥0.2 M☉ measurement is the firm floor; the total, the composition, and the timing are still argued. Sarangi &amp; Cherchneff and Dwek &amp; Arendt find silicate-dominated dust forming early; Wesson et&nbsp;al. find carbon-dominated dust forming mostly after day 1500. And how much of it survives the reverse shock over the coming millennia is genuinely open. We are using the floor, not the ceiling.</div>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 170" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig3-title fig3-desc">
+              <title id="fig3-title">Atoms into grains, inside the wreckage</title>
+              <desc id="fig3-desc">Loose atoms on the left, an arrow marked cooling ejecta, and condensed dust grains on the right, with the measured mass of at least two tenths of a solar mass.</desc>
+              <g fill="rgba(251,191,36,0.9)">
+                <circle cx="22" cy="38" r="2"/><circle cx="44" cy="54" r="2"/><circle cx="30" cy="70" r="2"/>
+                <circle cx="56" cy="34" r="2"/><circle cx="64" cy="72" r="2"/><circle cx="40" cy="88" r="2"/>
+                <circle cx="18" cy="56" r="2"/><circle cx="60" cy="52" r="2"/>
+              </g>
+              <text x="42" y="112" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--gold)">free atoms</text>
+              <text x="42" y="122" text-anchor="middle" font-family="Space Mono, monospace" font-size="6" fill="var(--sp-dim)">C, O, Si, Mg, Fe</text>
+              <g stroke="rgba(167,139,250,0.75)" stroke-width="1.3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M92 60 H162"/><path d="M154 54 L162 60 L154 66"/>
+              </g>
+              <text x="127" y="48" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="#c4b5fd">cooling ejecta</text>
+              <text x="127" y="78" text-anchor="middle" font-family="Space Mono, monospace" font-size="6" fill="var(--sp-dim)">it condenses</text>
+              <g fill="rgba(167,139,250,0.85)">
+                <circle cx="200" cy="46" r="5"/><circle cx="224" cy="62" r="6.5"/><circle cx="248" cy="42" r="4.5"/>
+                <circle cx="212" cy="80" r="5.5"/><circle cx="244" cy="76" r="5"/><circle cx="266" cy="60" r="4"/>
+              </g>
+              <text x="230" y="112" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="#c4b5fd">solid grains</text>
+              <text x="230" y="122" text-anchor="middle" font-family="Space Mono, monospace" font-size="6" fill="var(--sp-dim)">≥ 0.2 M☉ measured</text>
+              <text x="150" y="146" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.5" letter-spacing="0.8" fill="var(--sp-secondary)">new material, made in the aftermath</text>
+              <text x="150" y="162" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="1.2" fill="var(--sp-dim)">Indebetouw et al., ALMA, 2014</text>
+            </svg>
+            <div class="diagram-caption">Figure 3 · a foundry, not a scrapyard</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Cloud Phase · Stimpunks</span>
+        <span class="spread-footer-right">4</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 5: ninety-two percent ════ -->
+  <div class="spread" id="spread-5">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Ninety-two percent stays cloud</div>
+          <h2 class="spread-heading" id="most-of-a-cloud">Most of a cloud <span class="spectrum-word">never</span> becomes a star</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">This is the middle of the argument, and it is not a simulation. It is a measurement.</p>
+            <p>In 2011 Norman Murray took the thirteen most luminous free-free radio sources in the Galaxy — responsible for a third of the Milky Way's free-free emission — matched them to their host giant molecular clouds, and asked how much of each cloud had actually been turned into stars.</p>
+            <p>The star formation efficiency ran from 0.002 to 0.2, with an ionizing-luminosity-weighted average of <span class="violet">0.08</span>.</p>
+            <p>Eight percent. In the <em>most vigorously star-forming clouds in the Galaxy</em> — the bright ones, the ones you would pick deliberately if you wanted star formation to look efficient — <strong>ninety-two percent of the cloud does not become a star.</strong></p>
+            <p>And that is the flattering figure. Murray gives the Galactic average efficiency as 0.005.</p>
+            <div class="pull-quote">Ninety-two percent is the number from the clouds chosen for being the most productive. Galaxy-wide, more than ninety-nine percent of a molecular cloud stays cloud.<span class="attr">Murray · ApJ 729, 133 · 2011</span></div>
+            <p>Read that as a shortfall and you have read it wrong. <span class="gold">There is no rate the cloud is failing to hit.</span> Nobody set a target. There is no efficient cloud somewhere, meeting expectations, against which these are underperforming.</p>
+            <p>Ninety-two percent is not what the cloud failed to do. <strong>It is what a cloud is.</strong></p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 164" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig4-title fig4-desc">
+              <title id="fig4-title">What a cloud turns into</title>
+              <desc id="fig4-desc">Two bars. The first, for the Milky Way's most productive clouds, shows eight percent becoming stars and ninety-two percent staying cloud. The second, the Galactic average, shows half a percent becoming stars.</desc>
+              <text x="12" y="26" font-family="Space Mono, monospace" font-size="6.5" fill="var(--sp-secondary)">the most productive clouds</text>
+              <rect x="12" y="34" width="276" height="26" rx="2" fill="rgba(167,139,250,0.18)" stroke="rgba(167,139,250,0.5)" stroke-width="1"/>
+              <rect x="12" y="34" width="22" height="26" rx="2" fill="rgba(251,191,36,0.85)"/>
+              <text x="52" y="51" font-family="Space Mono, monospace" font-size="7" fill="var(--gold)">8%</text>
+              <text x="270" y="51" text-anchor="end" font-family="Space Mono, monospace" font-size="7" fill="#c4b5fd">92% stays cloud</text>
+              <text x="12" y="86" font-family="Space Mono, monospace" font-size="6.5" fill="var(--sp-secondary)">the Galactic average</text>
+              <rect x="12" y="94" width="276" height="26" rx="2" fill="rgba(167,139,250,0.18)" stroke="rgba(167,139,250,0.5)" stroke-width="1"/>
+              <rect x="12" y="94" width="2" height="26" fill="rgba(251,191,36,0.9)"/>
+              <text x="24" y="111" font-family="Space Mono, monospace" font-size="7" fill="var(--gold)">0.5%</text>
+              <text x="270" y="111" text-anchor="end" font-family="Space Mono, monospace" font-size="7" fill="#c4b5fd">99.5% stays cloud</text>
+              <text x="150" y="142" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.5" letter-spacing="0.8" fill="var(--sp-secondary)">gold is the part that lights</text>
+              <text x="150" y="156" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="1.2" fill="var(--sp-dim)">Murray, ApJ 729, 133, 2011</text>
+            </svg>
+            <div class="diagram-caption">Figure 4 · the argumentative centre</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Cloud Phase · Stimpunks</span>
+        <span class="spread-footer-right">5</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 6: the turn ════ -->
+  <div class="spread" id="spread-6">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">So the in-between is not the short part</div>
+          <h2 class="spread-heading" id="the-long-condition">The long condition</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">The same paper measures the other half of it: how long a giant molecular cloud lasts.</p>
+            <p><span class="violet">27 ± 12 million years</span>, at the mean mass of that sample — a bit less than three free-fall times.</p>
+            <p>Tens of millions of years of being a cloud. And the bright episode inside that span is short, late, and terminal: Murray finds the luminous clusters in his sample are actively tearing their host clouds apart. <strong>The star formation does not crown the cloud's life. It ends it.</strong></p>
+            <p>So the arithmetic runs the opposite way from the story we get told. Put the two measurements side by side and the shape is unmistakable:</p>
+            <div class="pull-quote violet">The bright part is brief and it destroys the cloud. The cloud part is long, and it is nearly all of what there is.<span class="attr">two numbers from one paper</span></div>
+            <p>Which means the in-between is not the gap between the real states. <strong>It is the majority state — by mass, and by duration</strong> — and the luminous thing is the exception that terminates it.</p>
+            <p>We are not offering that as consolation, and it would be a weaker piece if we were. <span class="gold">It is simply what the measurements say.</span> The refusal to rush this to a bright resolution is not editorial restraint. It is the data.</p>
+            <div class="note"><strong>A discrepancy worth naming.</strong> The arXiv preprint of Murray (2011) gives cloud lifetimes as 17 ± 4 Myr and &ldquo;about two free-fall times&rdquo;; the published <em>ApJ</em> version says 27 ± 12 Myr and &ldquo;a bit less than three.&rdquo; We cite the published paper, which is the version of record — and we are telling you the preprint disagrees, because you may go and find it.</div>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig5-title fig5-desc">
+              <title id="fig5-title">How long each part lasts</title>
+              <desc id="fig5-desc">A timeline of about twenty-seven million years, nearly all of it marked cloud, with a short bright band at the end marked stars form and disrupt the cloud.</desc>
+              <rect x="12" y="42" width="240" height="24" rx="2" fill="rgba(167,139,250,0.22)" stroke="rgba(167,139,250,0.5)" stroke-width="1"/>
+              <rect x="230" y="42" width="22" height="24" rx="2" fill="rgba(251,191,36,0.85)"/>
+              <text x="120" y="58" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.5" fill="#c4b5fd">cloud</text>
+              <g stroke="rgba(167,139,250,0.5)" stroke-width="1" fill="none">
+                <path d="M12 74 V80 H252 V74"/>
+              </g>
+              <text x="132" y="94" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" fill="var(--sp-secondary)">27 ± 12 Myr</text>
+              <g stroke="rgba(251,191,36,0.8)" stroke-width="1" fill="none">
+                <path d="M241 34 V24 H276"/>
+              </g>
+              <text x="276" y="20" text-anchor="end" font-family="Space Mono, monospace" font-size="6.5" fill="var(--gold)">stars form —</text>
+              <text x="276" y="30" text-anchor="end" font-family="Space Mono, monospace" font-size="6.5" fill="var(--gold)">and disrupt it</text>
+              <text x="150" y="120" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.5" letter-spacing="0.8" fill="var(--sp-secondary)">the in-between is the long part</text>
+              <text x="150" y="136" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="1" fill="var(--sp-dim)">and the bright part is what ends it</text>
+              <text x="150" y="152" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="1.2" fill="var(--sp-dim)">Murray, 2011</text>
+            </svg>
+            <div class="diagram-caption">Figure 5 · duration, to scale</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Cloud Phase · Stimpunks</span>
+        <span class="spread-footer-right">6</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 7: re-assembly ════ -->
+  <div class="spread" id="spread-7">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Remnants entangled in new ways</div>
+          <h2 class="spread-heading" id="re-assembly-not-return">Re-assembly, not return</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Helen Edgar names this stage from the inside, and she named it before we went looking for the physics.</p>
+            <p>In <a href="https://morerealms.com/my-monotropic-galaxy-a-constellation-of-my-autistic-self/"><em>My Monotropic Galaxy</em></a> (More Realms, June 2026) she maps twenty constellations of her own Autistic self. The second one is <span class="violet">Supernova Remnant</span>, and it is burnout.</p>
+            <div class="callout">The Supernova Remnant in my galaxy is like a new way of becoming that emerges after burnout, remnants of my old self entangled in new ways of being.<span class="attr">Helen Edgar · My Monotropic Galaxy · More Realms, 2026</span></div>
+            <p>She is precise about the direction of travel: <em>&ldquo;Each significant burnout has remade me and formed new constellations.&rdquo;</em> Remade. Not restored, not repaired, not returned.</p>
+            <p>The third part of her burnout series makes the word carry weight — <a href="https://morerealms.com/autistic-burnout-recovery-as-ecological-re-assembly/"><em>Autistic Burnout Recovery as Ecological Re-assembly</em></a> — where recovery is the rebuilding of relational and attentional systems rather than a journey back to a previous configuration.</p>
+            <p>Which is exactly what a remnant does. <strong>The material persists; the arrangement does not.</strong> Every atom is still there, and not one of them is where it was, and the thing they now compose is not the star.</p>
+            <div class="pull-quote violet">Nothing goes back. That is not the tragedy of the remnant — it is the mechanism by which anything else is possible.<span class="attr">the physics agreeing with the account</span></div>
+            <p>So when we are asked to <em>come back</em> — the same output, the same tolerances, the same mask, the same person we were before we broke — we are being asked for a return that the physics of the thing does not contain. There is no configuration to go back to. There is only what assembles next, out of the same material, differently.</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 162" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig6-title fig6-desc">
+              <title id="fig6-title">Return versus re-assembly</title>
+              <desc id="fig6-desc">Two paths from a scattered set of points. One loops back to the original arrangement and is marked not available. The other goes forward to a different arrangement of the same points and is marked what actually happens.</desc>
+              <g fill="rgba(167,139,250,0.85)">
+                <circle cx="30" cy="40" r="3"/><circle cx="46" cy="58" r="3"/><circle cx="22" cy="62" r="3"/><circle cx="44" cy="34" r="3"/>
+              </g>
+              <text x="34" y="86" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--sp-secondary)">the material</text>
+              <g stroke="rgba(244,114,182,0.55)" stroke-width="1.2" fill="none" stroke-dasharray="4 4" stroke-linecap="round">
+                <path d="M62 34 Q112 8 162 34"/>
+              </g>
+              <g stroke="rgba(244,114,182,0.7)" stroke-width="1.4" fill="none" stroke-linecap="round">
+                <path d="M104 12 L116 24"/><path d="M116 12 L104 24"/>
+              </g>
+              <text x="112" y="48" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--pink)">back to how it was</text>
+              <g stroke="rgba(167,139,250,0.8)" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M62 72 H196"/><path d="M188 66 L196 72 L188 78"/>
+              </g>
+              <text x="128" y="90" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="#c4b5fd">forward, rearranged</text>
+              <g fill="rgba(167,139,250,0.85)">
+                <circle cx="232" cy="48" r="3"/><circle cx="256" cy="42" r="3"/><circle cx="244" cy="70" r="3"/><circle cx="268" cy="64" r="3"/>
+              </g>
+              <g stroke="rgba(167,139,250,0.35)" stroke-width="0.9">
+                <line x1="232" y1="48" x2="256" y2="42"/><line x1="256" y1="42" x2="268" y2="64"/><line x1="268" y1="64" x2="244" y2="70"/><line x1="244" y1="70" x2="232" y2="48"/>
+              </g>
+              <text x="250" y="90" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="#c4b5fd">new constellation</text>
+              <text x="150" y="122" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.5" letter-spacing="0.8" fill="var(--sp-secondary)">same atoms · different arrangement</text>
+              <text x="150" y="138" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="1" fill="var(--sp-dim)">recovery is re-assembly, not return</text>
+              <text x="150" y="154" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="1.2" fill="var(--sp-dim)">after Helen Edgar, 2026</text>
+            </svg>
+            <div class="diagram-caption">Figure 6 · the arrangement is what changed</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Cloud Phase · Stimpunks</span>
+        <span class="spread-footer-right">7</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 8: relational ════ -->
+  <div class="spread" id="spread-8">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">A soft loosening of pressure</div>
+          <h2 class="spread-heading" id="it-reorganises-to-what-is-around-it">It reorganises to what is around it</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Reading Deleuze and Guattari's <em>body without organs</em> through Autistic experience, Helen Edgar glosses deterritorialisation in six words.</p>
+            <div class="callout">a soft loosening of pressure, a step away from expectations<span class="attr">Helen Edgar · Neuroqueering Relational Ecologies: Autistic Weathering and the Body without Organs · More Realms, March 2026</span></div>
+            <p>In the same piece: <em>&ldquo;attentional resources redistribute in order to survive.&rdquo;</em> The familiar routes into engagement stop working, and other ways of regulating and relating become available in their place. <span class="violet">Reorganisation, not damage.</span></p>
+            <p>A cloud does this too — and, crucially, it does it <strong>relationally</strong>.</p>
+            <p>What a cloud does next is not set by anything internal to it. It is set by the gravity of what is nearby, the radiation falling on it, the pressure of the medium it sits in, the winds and explosions of its neighbours. Romano's remnant implodes at a precise and entirely external moment: <span class="gold">when the pressure inside finally matches the pressure outside.</span> The trigger is the surroundings.</p>
+            <p>Ombre Tarragnat's <em>ethodiversity</em> extends the same reading past our own species — the diversity of ways living beings perceive and engage their environments — and Helen reads Autistic experience through what Tarragnat calls <em>weather-bodies</em>: shaped by a total climate that is sensory, social, technological and ecological at once.</p>
+            <div class="pull-quote gold">A cloud does not decide to collapse. It is collapsed upon — by gravity, by radiation, by the neighbours. If you want to know what it will do, read the field it is in.<span class="attr">relational, not internal</span></div>
+            <p>So the honest question when one of us reorganises is not <em>what is wrong with them.</em> It is <strong>what is the pressure, and where is it coming from.</strong> To read the reorganisation as an individual deficit is to read the cloud with the field deleted — and the field is the entire explanation.</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 168" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig7-title fig7-desc">
+              <title id="fig7-title">The trigger is outside</title>
+              <desc id="fig7-desc">A cloud at the centre with four external influences pushing on it — gravity of neighbours, radiation, ambient pressure, and winds — with a note that the collapse begins when inside pressure equals outside pressure.</desc>
+              <circle cx="150" cy="72" r="30" fill="rgba(167,139,250,0.18)" stroke="rgba(167,139,250,0.55)" stroke-width="1.2"/>
+              <g fill="rgba(244,244,251,0.6)">
+                <circle cx="142" cy="66" r="1.4"/><circle cx="158" cy="70" r="1.2"/><circle cx="150" cy="80" r="1.5"/><circle cx="140" cy="79" r="1.1"/>
+              </g>
+              <g stroke="rgba(251,191,36,0.8)" stroke-width="1.3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M150 24 L150 38"/><path d="M146 33 L150 38 L154 33"/>
+                <path d="M216 72 L200 72"/><path d="M205 68 L200 72 L205 76"/>
+                <path d="M150 120 L150 106"/><path d="M146 111 L150 106 L154 111"/>
+                <path d="M84 72 L100 72"/><path d="M95 68 L100 72 L95 76"/>
+              </g>
+              <g font-family="Space Mono, monospace" font-size="6" fill="var(--gold)" text-anchor="middle">
+                <text x="150" y="18">gravity of neighbours</text>
+                <text x="252" y="74">radiation</text>
+                <text x="150" y="132">ambient pressure</text>
+                <text x="48" y="74">winds</text>
+              </g>
+              <text x="150" y="152" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.5" letter-spacing="0.8" fill="var(--sp-secondary)">it moves when the outside says so</text>
+              <text x="150" y="164" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" letter-spacing="1" fill="var(--sp-dim)">implosion begins at P inside = P outside</text>
+            </svg>
+            <div class="diagram-caption">Figure 7 · read the field, not the object</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Cloud Phase · Stimpunks</span>
+        <span class="spread-footer-right">8</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 9: not a waiting room ════ -->
+  <div class="spread" id="spread-9">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Arriving in its own time</div>
+          <h2 class="spread-heading" id="not-a-waiting-room">Not a waiting room</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">The twentieth and last constellation in Helen Edgar's galaxy is <span class="violet">Emergence Point</span>.</p>
+            <div class="callout">what surfaces from the liminal depths of my monotropic bodymind when something is finally ready to surface. It is the crest of an invisible process, trusted rather than forced, arriving in its own time, on its own terms.<span class="attr">Helen Edgar · My Monotropic Galaxy · More Realms, 2026</span></div>
+            <p><strong>Now the care, because this is where a piece like this usually goes wrong.</strong></p>
+            <p>It would be easy to run that together with the astronomy and land somewhere warm: <em>the cloud becomes a star, so hold on, your star is coming.</em></p>
+            <p>We are not saying that, and <a href="#most-of-a-cloud">spread five</a> forbids it. <span class="gold">Most of the mass never lights.</span> Ninety-two percent — or ninety-nine and a half — of a cloud is not quietly gestating anything. It is a cloud, at rest, cold and structured and enormous, for tens of millions of years, and that is a complete and finished description of it.</p>
+            <p>The claim we are actually making is smaller, and it holds:</p>
+            <div class="pull-quote">The cloud is a real state, not a waiting room.<span class="attr">the whole zine, on one line</span></div>
+            <p>A waiting room is defined by what happens next; nothing in it is the point. A molecular cloud is defined by what it <em>is</em> — cold, dense, dusty, chemically rich, gravitationally structured, and among the most massive objects in the galaxy's disk. It is not a lesser version of a star. <strong>It is a cloud, and a cloud is a thing to be.</strong></p>
+            <p>And if something does surface, it surfaces on its own timescale — millions of years for a cloud, and whatever it is for you. Neither timescale takes instruction, and neither one owes anybody an arrival.</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 158" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig8-title fig8-desc">
+              <title id="fig8-title">A state, not a stage on the way somewhere</title>
+              <desc id="fig8-desc">A cloud drawn as a complete object with its properties labelled — cold, dense, dusty, chemically rich, massive — beside a crossed-out label reading waiting room.</desc>
+              <ellipse cx="104" cy="66" rx="66" ry="42" fill="rgba(167,139,250,0.16)" stroke="rgba(167,139,250,0.5)" stroke-width="1.2"/>
+              <g fill="rgba(244,244,251,0.62)">
+                <circle cx="80" cy="54" r="1.5"/><circle cx="112" cy="50" r="1.3"/><circle cx="98" cy="72" r="1.6"/>
+                <circle cx="128" cy="70" r="1.2"/><circle cx="72" cy="78" r="1.4"/><circle cx="116" cy="86" r="1.2"/>
+              </g>
+              <g font-family="Space Mono, monospace" font-size="6" fill="#c4b5fd" text-anchor="middle">
+                <text x="104" y="20">cold · dense · dusty</text>
+                <text x="104" y="122">chemically rich · massive</text>
+              </g>
+              <g stroke="rgba(244,114,182,0.5)" stroke-width="1.1" fill="none" stroke-dasharray="4 4">
+                <rect x="196" y="44" width="88" height="44" rx="2"/>
+              </g>
+              <text x="240" y="70" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" fill="var(--pink)">waiting room</text>
+              <g stroke="rgba(244,114,182,0.8)" stroke-width="1.5" stroke-linecap="round">
+                <line x1="200" y1="48" x2="280" y2="84"/><line x1="280" y1="48" x2="200" y2="84"/>
+              </g>
+              <text x="150" y="144" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.5" letter-spacing="0.8" fill="var(--sp-secondary)">complete as it stands</text>
+              <text x="150" y="156" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" letter-spacing="1" fill="var(--sp-dim)">no arrival is owed</text>
+            </svg>
+            <div class="diagram-caption">Figure 8 · defined by what it is</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Cloud Phase · Stimpunks</span>
+        <span class="spread-footer-right">9</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 10: the close ════ -->
+  <div class="spread" id="spread-10">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">What seeded us is unsettled</div>
+          <h2 class="spread-heading" id="something-freshly-dead">Something nearby was <span class="spectrum-word">freshly dead</span></h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Our own solar system began in a cloud, and there is a fingerprint of what was in it.</p>
+            <p>In 1976 Typhoon Lee, Dimitri Papanastassiou and Gerald Wasserburg found an excess of magnesium-26 in calcium–aluminium-rich inclusions in the Allende meteorite — the decay product of <span class="violet">aluminium-26</span>, which has a half-life of about 717,000 years.</p>
+            <p>That half-life is the entire argument. <sup>26</sup>Al is made in massive stars. For its decay product to be locked into the oldest solids in the solar system in that quantity, <em>live</em> <sup>26</sup>Al had to arrive in our birth cloud within a few half-lives of those solids forming. <strong>Something nearby, and freshly dead, was in the material we are made of.</strong></p>
+            <p>Fifty years on, <em>which</em> something is openly contested:</p>
+            <table class="trades">
+              <caption>candidate sources — none settled</caption>
+              <thead><tr><th>candidate</th><th>the problem it solves, and the one it leaves</th></tr></thead>
+              <tbody>
+                <tr><td class="keeps">a nearby supernova</td><td>the classic account; makes <sup>26</sup>Al readily — but should have delivered plenty of <sup>60</sup>Fe with it</td></tr>
+                <tr><td class="keeps">a massive star's wind</td><td>a Wolf–Rayet star sheds <sup>26</sup>Al from its outer layers <em>before</em> exploding, keeping <sup>60</sup>Fe locked inside</td></tr>
+                <tr><td class="keeps">ordinary enrichment</td><td>no triggering event at all; the accumulated ash of countless earlier stars in the interstellar medium</td></tr>
+              </tbody>
+            </table>
+            <p>Tang and Dauphas measured the early solar system's <sup>60</sup>Fe in 2012 and found it steady and low — around 1 × 10<sup>−8</sup> relative to <sup>56</sup>Fe. A nearby supernova should have brought both isotopes. <span class="gold">The missing iron is why a wind is now a serious contender.</span></p>
+            <p>That dead stars' material is in us is not in doubt. Which star, and by what route, is not settled — <strong>and we are not going to pick one to make the ending tidier.</strong> The contested part gets its name, out loud, on the last page.</p>
+            <div class="refusals">
+              <div class="refusal"><span class="refusal-tag">Not:</span><span><strong>burnout as a secret gift.</strong> Nothing here says the collapse was good for us, or that we needed it. A supernova is a catastrophe for the star. What follows is not a reward for it.</span></div>
+              <div class="refusal"><span class="refusal-tag">Not:</span><span><strong>the phoenix.</strong> That bird comes back as itself. A remnant does not — the material persists and the arrangement does not, and pretending otherwise is how people get asked to be who they were.</span></div>
+              <div class="refusal"><span class="refusal-tag">Not:</span><span><strong>a promise that the cloud becomes a star.</strong> Ninety-two percent of it doesn't, and galaxy-wide it is more than ninety-nine. We will not sell the odds as an assurance.</span></div>
+              <div class="refusal"><span class="refusal-tag">Not:</span><span><strong>an argument for rushing to the bright thing.</strong> The bright part is short and it disrupts the cloud. Wanting it sooner is wanting the end sooner.</span></div>
+              <div class="refusal"><span class="refusal-tag">Not:</span><span><strong>reorganisation read as individual deficit.</strong> The trigger is the surroundings. A cloud collapses because of the field it is in, and so does a person; ask what the pressure is before you diagnose the thing under it.</span></div>
+              <div class="refusal"><span class="refusal-tag">Not:</span><span><strong>one triggering supernova, asserted.</strong> We would like to end on a single dead star that made us. The evidence does not support naming it, so we haven't.</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 176" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig9-title fig9-desc">
+              <title id="fig9-title">A fingerprint with no signature</title>
+              <desc id="fig9-desc">Three candidate sources — supernova, Wolf-Rayet wind, general enrichment — all pointing at the birth cloud, which leads to aluminium-26 in Allende. A question mark marks which source is unresolved.</desc>
+              <g font-family="Space Mono, monospace" font-size="6" fill="var(--sp-secondary)" text-anchor="middle">
+                <text x="34" y="24">supernova</text>
+                <text x="34" y="70">W-R wind</text>
+                <text x="34" y="116">slow enrichment</text>
+              </g>
+              <g stroke="rgba(167,139,250,0.5)" stroke-width="1.1" fill="none" stroke-dasharray="4 4" stroke-linecap="round">
+                <path d="M74 20 Q112 20 128 58"/>
+                <path d="M74 66 H124"/>
+                <path d="M74 112 Q112 112 128 76"/>
+              </g>
+              <text x="102" y="94" text-anchor="middle" font-family="Space Mono, monospace" font-size="12" fill="var(--gold)">?</text>
+              <ellipse cx="158" cy="67" rx="33" ry="24" fill="rgba(167,139,250,0.18)" stroke="rgba(167,139,250,0.5)" stroke-width="1.1"/>
+              <text x="158" y="64" text-anchor="middle" font-family="Space Mono, monospace" font-size="6" fill="#c4b5fd">our birth</text>
+              <text x="158" y="74" text-anchor="middle" font-family="Space Mono, monospace" font-size="6" fill="#c4b5fd">cloud</text>
+              <g stroke="rgba(167,139,250,0.8)" stroke-width="1.3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M193 67 H224"/><path d="M218 62 L224 67 L218 72"/>
+              </g>
+              <rect x="228" y="52" width="64" height="30" rx="2" fill="rgba(251,191,36,0.14)" stroke="rgba(251,191,36,0.6)" stroke-width="1.1"/>
+              <text x="260" y="65" text-anchor="middle" font-family="Space Mono, monospace" font-size="6" fill="var(--gold)">Allende</text>
+              <text x="260" y="75" text-anchor="middle" font-family="Space Mono, monospace" font-size="5.6" fill="var(--gold)">Al-26 &#8594; Mg-26</text>
+              <text x="150" y="142" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.5" letter-spacing="0.8" fill="var(--sp-secondary)">the delivery is certain</text>
+              <text x="150" y="156" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="1" fill="var(--sp-dim)">the sender is not</text>
+              <text x="150" y="170" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="1.2" fill="var(--sp-dim)">Lee et al. 1976 · still open</text>
+            </svg>
+            <div class="diagram-caption">Figure 9 · name the contested part</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Cloud Phase · Stimpunks</span>
+        <span class="spread-footer-right">10</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 11: COLOPHON ════ -->
+  <div class="spread" id="spread-11">
+    <div class="interior">
+      <div class="colophon">
+        <div>
+          <div class="colophon-top">
+            <span class="colophon-ls">L★S</span>
+            <p class="colophon-phrase">The cloud is a real state, not a waiting room.</p>
+          </div>
+
+          <div class="series-list">
+            <div class="series-item"><span class="series-num">No. 20</span> The Same Water — capacity is a state, not a trait</div>
+            <div class="series-item"><span class="series-num">No. 21</span> Not a Line — a spectrum is a fingerprint, not a ladder</div>
+            <div class="series-item"><span class="series-num">No. 29</span> Only in Relation — what a thing is, it is in relation</div>
+            <div class="series-item"><span class="series-num">No. 44</span> You Cannot Flatten a Sphere — what a summary must throw away</div>
+            <div class="series-item current"><span class="series-num">No. 45</span> The Cloud Phase — the in-between is the majority state ← you are here</div>
+          </div>
+
+          <div class="reflect">
+            <div class="reflect-label">Reflection</div>
+            <p class="reflect-q">What are you currently treating as the wait, that is actually most of your life by duration?</p>
+            <p class="reflect-q">Who is asking you to return, and to which arrangement — one that still exists, or one that doesn't?</p>
+            <p class="reflect-q">If you read your last reorganisation as a response to a field rather than a fault in you: what was the pressure, and where was it coming from?</p>
+            <p class="reflect-q">What would it change to be a cloud on purpose — cold, dusty, structured, enormous, owing nobody an arrival?</p>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="colophon-h" id="sources">Sources</h3>
+          <div class="colophon-body">
+            <p><strong>The cloud phase.</strong> Leonard E. C. Romano, Manuel Behrendt &amp; Andreas Burkert, &ldquo;Cloud Formation by Supernova Implosion,&rdquo; <em>The Astrophysical Journal</em> 965, 168 (2024), <a href="https://doi.org/10.3847/1538-4357/ad2c05">doi:10.3847/1538-4357/ad2c05</a>. Three-dimensional hydrodynamic simulations across n<sub>H,ISM</sub> ∈ [0.1, 100] cm<sup>−3</sup> and E<sub>SN</sub> ∈ [1, 14] × 10<sup>51</sup> erg. The four radiative stages, the implosion, the cloud masses of 10<sup>3</sup>–10<sup>4</sup> M<sub>☉</sub> and the quoted phrase about &ldquo;an attractive, novel pathway&rdquo; are theirs. <strong>Held as proposed, not settled</strong>, and flagged in place on spread two — this is one simulation study, and the rest of the zine does not rest on it.</p>
+            <p><strong>The spine.</strong> Norman Murray, &ldquo;Star Formation Efficiencies and Lifetimes of Giant Molecular Clouds in the Milky Way,&rdquo; <em>ApJ</em> 729, 133 (2011). ε<sub>GMC</sub> from 0.002 to 0.2, ionizing-luminosity-weighted average 0.08, against a Galactic average of 0.005; GMC lifetimes 27 ± 12 Myr, a bit less than three free-fall times. <strong>The published version is cited deliberately:</strong> the arXiv preprint (1007.3270) gives 17 ± 4 Myr and &ldquo;about two free-fall times,&rdquo; and we say so on spread six rather than letting a reader find the discrepancy alone. The 92% and 99.5% figures are ours, obtained by subtracting the stated efficiencies from one; the paper does not phrase them that way.</p>
+            <p><strong>Two different clouds, joined honestly.</strong> Murray measures <em>giant</em> molecular clouds (10<sup>4</sup>–10<sup>6</sup> M<sub>☉</sub>); Romano's remnant produces a smaller compact cloud. They are not the same object, and this zine does not claim they are. The link is a claim about clouds as a class — that being a cloud is a long, ordinary, mostly-terminal condition — and it is Murray's observation, not Romano's simulation, that carries it.</p>
+            <p><strong>SN 1987A.</strong> R. Indebetouw, M. Matsuura, E. Dwek, G. Zanardo, M. J. Barlow et&nbsp;al., &ldquo;Dust Production and Particle Acceleration in Supernova 1987A Revealed with ALMA,&rdquo; <em>ApJL</em> 782, L2 (2014): &gt; 0.2 M<sub>☉</sub> of dust in the inner ejecta, then the largest mass measured in a supernova remnant. <em>Herschel</em> and later ALMA work (Matsuura et&nbsp;al.) put the cold dust nearer 0.5 M<sub>☉</sub>. Composition and timing are contested — Sarangi &amp; Cherchneff (2015) and Dwek &amp; Arendt (2015) find silicates forming early; Wesson et&nbsp;al. (2015) find carbon forming late — and survival through the reverse shock is open. <strong>The floor is cited, not the ceiling.</strong> The remnant's four evolutionary stages (free expansion, Sedov–Taylor, radiative, merging) are given from standard references rather than from a primary source we have read.</p>
+            <p><strong>Aluminium-26.</strong> T. Lee, D. A. Papanastassiou &amp; G. J. Wasserburg, &ldquo;Demonstration of <sup>26</sup>Mg excess in Allende and evidence for <sup>26</sup>Al,&rdquo; <em>Geophysical Research Letters</em> 3 (1976). Half-life ≈ 717 kyr, given as approximate. The competing sources — a nearby core-collapse supernova, a Wolf–Rayet wind, or long-term interstellar enrichment — are all live; H. Tang &amp; N. Dauphas (2012) measured the early solar system's initial <sup>60</sup>Fe/<sup>56</sup>Fe at (1.01 ± 0.27) × 10<sup>−8</sup>, low and steady, which is the principal difficulty for the supernova account and the reason the wind hypothesis is taken seriously. <strong>No source is asserted here.</strong> The Lee et&nbsp;al. paper and the Tang &amp; Dauphas figure are taken from the secondary literature that reports them and are flagged as not read at the primary.</p>
+            <h3 class="colophon-h" id="after-helen-edgar">After Helen Edgar</h3>
+            <p>This is a house zine written <strong>after</strong> Helen Edgar, in the shape of <a href="only-in-relation-zine.html">No. 29</a> — hers is the frame and the naming; the astronomy and the argument are ours, and any error in them is ours too. Three pieces are load-bearing. <a href="https://morerealms.com/my-monotropic-galaxy-a-constellation-of-my-autistic-self/"><em>My Monotropic Galaxy: A Constellation of My Autistic Self</em></a> (More Realms, 16 June 2026), where <strong>Supernova Remnant</strong> is the second of twenty constellations and <strong>Emergence Point</strong> the twentieth — both quoted verbatim, both hers. <a href="https://morerealms.com/autistic-burnout-recovery-as-ecological-re-assembly/"><em>Autistic Burnout Recovery as Ecological Re-assembly</em></a> (More Realms, March 2026), Part 3 of her burnout series, for re-assembly rather than return. And <a href="https://morerealms.com/neuroqueering-relational-ecologies-autistic-weathering-and-the-body-without-organs/"><em>Neuroqueering Relational Ecologies: Autistic Weathering and the Body without Organs</em></a> (More Realms, March 2026), for &ldquo;a soft loosening of pressure&rdquo; and for the reading of Ombre Tarragnat's <em>ethodiversity</em> and weather-bodies. <strong>Her galaxy already holds two nebulae</strong> — Tunnelling Nebula and Limerence Nebula — so this zine deliberately stays with <em>cloud</em> and does not walk into her naming.</p>
+            <p><strong>Ethodiversity.</strong> Ombre Tarragnat, in <em>TRACE</em> (2025), extending the neurodiversity paradigm to all beings with a nervous system by way of ethology. Used here as Helen uses it, for the total climate a body is read within.</p>
+            <p><strong>What this piece deliberately does not re-argue.</strong> <a href="the-same-water-zine.html">No. 20 <em>The Same Water</em></a> already owns weather-bodies, fluid adaptation, and <em>capacity is a state, not a trait</em>. This zine's distinct territory is <strong>duration</strong> — the in-between as the majority condition rather than a threshold to cross. <em>Failed star</em> belongs to <a href="ways-of-being-a-star-field-guide.html">Field Guide No. 5</a>, and is not reused.</p>
+          </div>
+          <div class="colophon-footer">
+            <a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks Foundation</a> × <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a><br>
+            stimpunks.org · morerealms.com · starstuff.earth<br>
+            <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> · open edition · print freely
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Cloud Phase · Stimpunks</span>
+        <span class="spread-footer-right">11</span>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /zine-shell -->
+
+<script>
+  let current = 1;
+  const total = 11;
+
+  function changePage(dir) {
+    const next = current + dir;
+    if (next < 1 || next > total) return;
+    document.getElementById('spread-' + current).classList.remove('active');
+    current = next;
+    document.getElementById('spread-' + current).classList.add('active');
+    document.getElementById('page-counter').textContent = current + ' / ' + total;
+    document.getElementById('prev-btn').disabled = current === 1;
+    document.getElementById('next-btn').disabled = current === total;
+    document.getElementById('prev-btn').classList.toggle('active', current > 1);
+    document.getElementById('next-btn').classList.toggle('active', current < total);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') changePage(1);
+    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   changePage(-1);
+  });
+
+  document.getElementById('prev-btn').disabled = true;
+  document.getElementById('next-btn').classList.add('active');
+</script>
+<script src="starstuff.js" defer></script>
+</body>
+</html>

@@ -95,32 +95,11 @@ Decisions still to make. Move to **Settled** with a date once resolved.
   not a 1905 dissertation; and Thorndike did not develop multiple-choice testing, Kelly did in 1914.
   Both are published in `changelog.html` now rather than held until the source is fixed.
 - _(collections + numbering resolved 2026-08-11 — see Settled)_
-- **No. 37 *The Cloud Phase* — blocked on asking Helen, 2026-08-11.** Proposed and scoped; not
-  built. Everything below is decided *except* the credit, which needs her word first.
-  - **Direction settled.** Title **The Cloud Phase** — astronomy's own term for the last stage of a
-    supernova remnant (Romano, Behrendt & Burkert, *ApJ* 965, 168, 2024), which already reads as a
-    life stage. Collection **Star Stuff** (the fact carries the claim). Nine spreads.
-  - **The spine is Murray (2011), *ApJ* 729, 133**, not the 2024 paper: εGMC 0.002–0.2,
-    luminosity-weighted mean **0.08**; GMC lifetimes **27 ± 12 Myr**. So ~92% of a molecular cloud
-    never becomes a star, and the cloud stage lasts tens of millions of years. *The refusal to
-    rush the metaphor to resolution is not editorial restraint here — it is what the data says.*
-    The in-between is the majority condition and the long one.
-  - **Romano et al. is a marked proposal, not the spine.** It is the best image in the piece — the
-    remnant's cold shell *implodes back inward* and settles into a chemically enriched cloud of
-    10³–10⁴ M☉, "an attractive, novel pathway for supernova induced star and planet formation" —
-    and it is a 2024 simulation, not consensus. Hedge it in place on spread 2, wood-wide-web style.
-    If it is ever overturned, the zine's centre does not move.
-  - **Ask Helen before building.** Two of the twenty constellations in *My Monotropic Galaxy*
-    (More Realms, 2026) are load-bearing here — **Supernova Remnant** (#2, explicitly the *after*
-    of burnout) and **Emergence Point** (#20) — and she already has **two nebulae** in that index,
-    Tunnelling Nebula (#4) and Limerence Nebula (#18). A nebula zine walks into her naming, not
-    near it. Default credit is house-authored **"after Helen Edgar"** (the No. 29 shape); if she
-    would rather write it, it becomes a guest zine in her voice and spreads 6–8 change.
-  - **Do not re-argue No. 20 *The Same Water*.** It already owns weather-bodies, fluid adaptation,
-    and "capacity is a state, not a trait" — and the Jeans instability. No. 37's distinct territory
-    is **duration**: the in-between as the majority state, not a threshold crossing.
-  - **Spent elsewhere, don't repeat:** "failed star" (Field Guide No. 5, brown dwarfs as the
-    named-for-a-lack case); SN 1006 as seed-head (No. 18); Orion as nursery (Constellation FG).
+- ~~**No. 37 *The Cloud Phase* — blocked on asking Helen.**~~ **Settled 2026-08-13 — built and
+  shipped as No. 45.** See Settled. Retained here only to note what closed it: Ryan chose the
+  documented default rather than waiting, so it is a **house zine "after Helen Edgar,"** the No. 29
+  shape. The number moved 37 → 45 because seven pieces shipped while it sat — *the number says
+  when*, and that gap is the rule working, not a renumbering.
 - **Promote "Science and wonder and the beautiful diversity of being" to the masthead too?**
   Shipped 2026-08-11 as the **Collections section lede** on `index.html`, where its three clauses
   name the three largest collections. Still open whether it also belongs in `.masthead-sub`.
@@ -186,6 +165,52 @@ Decisions still to make. Move to **Settled** with a date once resolved.
 ---
 
 ## Settled
+
+- ~~**No. 37 *The Cloud Phase* — blocked on asking Helen, 2026-08-11.**~~ **Settled 2026-08-13.**
+  Built as **No. 45**, eleven spreads, nine diagrams, filed in **Star Stuff**. Everything scoped in
+  the original proposal survived the build; what follows is what the build settled, added, or
+  changed, because those are the parts a future editor cannot reconstruct from the page.
+  - **The credit question closed by choosing the documented default, not by waiting.** The proposal
+    named two paths — house zine *after Helen Edgar* (the No. 29 shape), or a guest zine in her
+    voice with spreads 6–8 rewritten. Ryan took the first. The two load-bearing constellations from
+    *My Monotropic Galaxy* — **Supernova Remnant** (#2) and **Emergence Point** (#20) — are quoted
+    verbatim and attributed on the page, and the colophon says in plain words that hers is the frame
+    and the naming while the astronomy and the argument are ours. **The nebula constraint held:** her
+    galaxy already carries Tunnelling Nebula (#4) and Limerence Nebula (#18), so the piece stays with
+    *cloud* throughout and never reaches for *nebula*.
+  - **The number moved 37 → 45, and that is the numbering rule doing its job.** Nos. 38–44 shipped
+    during the fifteen days this sat open. A piece takes the next number *when it is made*, so the
+    proposal's number was never reserved. Nothing was renumbered.
+  - **Murray's preprint and published paper disagree, and the zine prints the disagreement.**
+    Discovered during the build: arXiv:1007.3270v1 gives GMC lifetimes of **17 ± 4 Myr** ("about two
+    free-fall times"), the published *ApJ* 729, 133 gives **27 ± 12 Myr** ("a bit less than three").
+    There is only one arXiv version, so the preprint was never updated. The proposal's 27 ± 12 was
+    right. **We cite the published paper and disclose the gap on spread six** rather than only in
+    `FACTCHECK.md`, because the free copy is the one a checking reader will reach first. Logged in
+    Open items there so a later pass does not "correct" us to the preprint.
+  - **Two different clouds, and the zine says so.** Murray measures *giant* molecular clouds
+    (10⁴–10⁶ M☉); Romano's remnant settles into a smaller compact cloud (10³–10⁴ M☉). They are not
+    the same object. The colophon states this outright and states which of the two carries the
+    claim — **the observation, not the simulation.** This was the sharpest risk in the piece: the
+    two papers rhyme so well that eliding them would have been easy and would have been the
+    smoothed-retelling failure this collection exists to refuse.
+  - **Romano et al. hedged in place, as proposed.** Spread 2 carries the marked note; the argument
+    is built so that if the four-stage subdivision is overturned, nothing in the zine's centre moves.
+  - **The 92% is stated as the flattering number, not the headline.** Murray's 0.08 is weighted to
+    the *most luminous* complexes; the Galactic average is 0.005. So the zine prints both and says
+    the honest galaxy-wide figure is nearer **99.5%**. Publishing the number that makes our own case
+    *more* strongly, and labelling the smaller one as the cherry-picked one, is the house standard
+    here — the argument does not need the flattering figure, so it does not lean on it.
+  - **The ending is left contested on purpose, and the refusal is on the page.** ²⁶Al in Allende
+    proves something nearby and freshly dead was in our birth cloud; *which* star — supernova,
+    Wolf–Rayet wind, or no single event — is open fifty years on. Naming one would have given the
+    zine a tidier close, and "not one triggering supernova, asserted" is one of its six refusals.
+  - **Spread 9 is the load-bearing one and it argues against the obvious reading.** *Emergence Point*
+    plus the astronomy invites *hold on, your star is coming*; the numbers on spread 5 forbid it.
+    The claim the zine actually makes is the smaller one: **the cloud is a real state, not a waiting
+    room.** If a future edit softens that spread toward reassurance, it has broken the piece.
+  - **Held, as proposed:** No. 20 *The Same Water* is not re-argued (its territory is capacity;
+    this one's is **duration**), and "failed star" stays with Field Guide No. 5.
 
 Decisions already made, with a one-line why. Backfilled from git history — dates are first
 commit evidence, not necessarily when the call was made.
