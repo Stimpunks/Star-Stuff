@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0a0a14">
+<link rel="canonical" href="https://starstuff.earth/the-shadow-is-bigger-zine.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta name="description" content="Nobody has photographed a black hole. A black hole emits nothing, so there is no picture to take. What the Event Horizon Telescope released in 2019 and 2022 is a shadow — a dark circle in a ring of light that came close and got bent. And the shadow is bigger than the thing casting it: for a non-spinning black hole the horizon sits at 2GM/c² and the dark circle at 3√3 GM/c², a ratio of about 2.6, because gravity magnifies the darkness. Eight telescopes at six sites from Spain to the South Pole, 3.5 petabytes recorded to hard drives and flown out, four imaging teams kept blind to each other so hope could not draw the picture. M87*'s ring measured 42 microarcseconds — an orange, on the Moon. Sagittarius A* was harder because its gas orbits in about thirty minutes, so the subject moves while the shutter is open. The turn: some things are known only by their effect on everything around them, and what people see of an unmet need is the disruption, not the need — systematically bigger than the thing casting it. And the guardrail: unseeable is not unreal, and it is not a blank cheque either. A rhyme, not a proof.">
+<!-- Open Graph / link unfurl -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Star Stuff · Stimpunks Foundation × More Realms">
+<meta property="og:url" content="https://starstuff.earth/the-shadow-is-bigger-zine.html">
+<meta property="og:title" content="The Shadow Is Bigger Than the Thing">
+<meta property="og:description" content="Nobody photographed a black hole. You can only see what bends around it — and the darkness it casts is about 2.6 times wider than the object casting it.">
+<meta property="og:image" content="https://starstuff.earth/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A rainbow-hued cosmic image — we are all made of star stuff.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Shadow Is Bigger Than the Thing">
+<meta name="twitter:description" content="Eight telescopes, six sites, 3.5 petabytes, and one dark circle that is wider than the object that made it.">
+<meta name="twitter:image" content="https://starstuff.earth/og-card.jpg">
+<title>The Shadow Is Bigger Than the Thing — Stimpunks Zine No. 48</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="starstuff.css">
+<style>
+  :root {
+    --void:  var(--sp-void-deep);
+    --deep:  var(--sp-deep);
+    --page:  var(--sp-page);
+    --violet:var(--sp-purple);
+    --pink:  var(--sp-pink);
+    --gold:  var(--sp-gold);
+    --cyan:  var(--sp-cyan);
+    --green: var(--sp-green);
+    --ember: #c1653a;
+    --accent: var(--sp-gold);          /* this zine's identity accent — the ring is orange because the gas is hot */
+    --star-white: var(--sp-white-soft);
+    --stardust:   var(--sp-secondary-soft);
+    --dim:   var(--sp-dim);
+    --dim2:  var(--sp-dim-soft);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--void);
+    font-family: 'Atkinson Hyperlegible Next', system-ui, sans-serif;
+    color: var(--star-white);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── STARFIELD (gold · white · violet — hot gas against the dark) ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 13% 18%, rgba(251,191,36,0.62) 0%, transparent 100%),
+      radial-gradient(1px 1px at 27% 37%, rgba(244,244,251,0.6) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 46% 11%, rgba(251,191,36,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 61% 63%, rgba(244,244,251,0.66) 0%, transparent 100%),
+      radial-gradient(2px 2px at 78% 25%, rgba(251,191,36,0.46) 0%, transparent 100%),
+      radial-gradient(1px 1px at 88% 53%, rgba(167,139,250,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 94% 78%, rgba(251,191,36,0.5) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 8% 57%, rgba(244,244,251,0.56) 0%, transparent 100%),
+      radial-gradient(1px 1px at 35% 87%, rgba(251,191,36,0.44) 0%, transparent 100%),
+      radial-gradient(1px 1px at 53% 45%, rgba(167,139,250,0.46) 0%, transparent 100%),
+      radial-gradient(2px 2px at 20% 86%, rgba(251,191,36,0.48) 0%, transparent 100%),
+      radial-gradient(1px 1px at 71% 9%, rgba(244,244,251,0.76) 0%, transparent 100%),
+      radial-gradient(1px 1px at 44% 62%, rgba(251,191,36,0.4) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 33% 20%, rgba(244,244,251,0.48) 0%, transparent 100%),
+      radial-gradient(1px 1px at 83% 88%, rgba(167,139,250,0.46) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .zine-shell { position: relative; z-index: 1; max-width: 820px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+
+  .spectrum-line { height: 2px; border: none; border-radius: 2px; background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); }
+
+  /* ── NAV ── */
+  .nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2.5rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(251,191,36,0.2); }
+  .nav-brand { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--dim); }
+  .nav-controls { display: flex; gap: 0.5rem; align-items: center; }
+  .nav-btn { background: none; border: 1px solid rgba(251,191,36,0.35); color: var(--stardust); font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.15em; padding: 0.4rem 0.85rem; border-radius: 2px; cursor: pointer; transition: all 0.2s ease; text-transform: uppercase; }
+  .nav-btn:hover { background: rgba(251,191,36,0.15); border-color: rgba(251,191,36,0.6); color: var(--star-white); }
+  .nav-btn.active { background: rgba(251,191,36,0.20); border-color: var(--accent); color: var(--star-white); }
+  .page-counter { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.2em; color: var(--dim2); }
+
+  .spread { display: none; animation: fadeIn 0.5s ease forwards; }
+  .spread.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ── COVER ── */
+  .cover-spread {
+    position: relative; min-height: 520px; border-radius: 4px; overflow: hidden;
+    background:
+      radial-gradient(ellipse at 24% 22%, rgba(251,191,36,0.12) 0%, transparent 52%),
+      radial-gradient(ellipse at 80% 26%, rgba(193,101,58,0.12) 0%, transparent 52%),
+      radial-gradient(ellipse at 68% 82%, rgba(251,191,36,0.08) 0%, transparent 52%),
+      radial-gradient(ellipse at 28% 80%, rgba(167,139,250,0.07) 0%, transparent 52%),
+      var(--deep);
+    border: 1px solid rgba(167,139,250,0.25);
+    box-shadow: inset 0 0 80px rgba(251,191,36,0.06), 0 0 0 4px rgba(255,255,255,0.03);
+    display: flex; flex-direction: column; justify-content: flex-end; padding: 3rem;
+  }
+  .cover-motif { position: absolute; top: -4px; right: -14px; width: 340px; height: 340px; opacity: 0.8; pointer-events: none; }
+  .cover-issue { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.5em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.5rem; }
+  .cover-title { font-weight: 700; font-size: clamp(1.9rem, 5.2vw, 3rem); line-height: 1.03; color: var(--star-white); letter-spacing: -0.01em; margin-bottom: 0.9rem; }
+  .cover-title .amp { color: var(--accent); font-style: italic; }
+  .cover-subtitle { font-size: 1rem; color: var(--stardust); opacity: 0.85; margin-bottom: 1.5rem; max-width: 470px; line-height: 1.55; }
+  .cover-byline { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.14em; color: var(--dim); margin-bottom: 1.8rem; }
+  .cover-byline strong { color: var(--stardust); font-weight: 700; }
+  .cover-rule { width: 220px; max-width: 60%; margin-bottom: 1.3rem; }
+  .cover-meta { display: flex; gap: 2rem; align-items: center; }
+  .cover-ls { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 1.4rem; color: var(--accent); letter-spacing: 0.05em; }
+  .cover-meta-text { font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--dim2); line-height: 1.9; }
+  .cover-corner { position: absolute; top: 2rem; right: 2.5rem; text-align: right; }
+  .cover-corner-num { font-weight: 700; font-size: 4.5rem; line-height: 1; color: var(--accent); opacity: 0.22; }
+  .cover-corner-label { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--violet); display: block; margin-top: -0.3rem; }
+
+  /* ── INTERIOR ── */
+  .interior { background: var(--page); border: 1px solid rgba(167,139,250,0.15); border-radius: 4px; overflow: hidden; min-height: 480px; }
+  .spread-2col { display: grid; grid-template-columns: 1fr 1fr; min-height: 480px; }
+  .spread-left, .spread-right { padding: 3rem 2.4rem; position: relative; }
+  .spread-left { border-right: 1px solid rgba(167,139,250,0.12); }
+
+  .spread-2col.stacked { display: flex; flex-direction: column; }
+  .spread-2col.stacked > .spread-left,
+  .spread-2col.stacked > .spread-right { border-right: none; }
+  .spread-2col.stacked > .col-diagram { order: 2; padding-top: 0; }
+  .spread-2col.stacked > .col-text { padding-left: max(2.4rem, calc((100% - 32rem) / 2)); padding-right: max(2.4rem, calc((100% - 32rem) / 2)); }
+  .spread-2col.stacked .diagram-wrap { height: auto; }
+  .spread-2col.stacked .diagram { max-width: 380px; }
+
+  .eyebrow { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.1rem; }
+  .body-text { font-size: 0.98rem; line-height: 1.72; color: var(--stardust); }
+  .body-text p { margin-bottom: 1rem; }
+  .body-text p:last-child { margin-bottom: 0; }
+  .body-text strong { font-weight: 700; color: var(--star-white); }
+  .body-text em { font-style: italic; color: var(--star-white); }
+  .body-text a { color: var(--violet); text-decoration: none; border-bottom: 1px solid rgba(167,139,250,0.4); }
+  .body-text a:hover { border-bottom-color: var(--violet); color: var(--star-white); }
+  .body-text .violet { color: var(--violet); font-weight: 700; }
+  .body-text .pink { color: var(--pink); font-weight: 700; }
+  .body-text .gold { color: var(--gold); font-weight: 700; }
+  .body-text .cyan { color: var(--cyan); font-weight: 700; }
+  .body-text .green { color: var(--green); font-weight: 700; }
+  .body-text .dim { color: var(--dim); }
+  .body-text .lede { font-size: 1.08rem; color: var(--star-white); }
+
+  .spread-heading { font-weight: 700; font-size: 1.9rem; line-height: 1.12; color: var(--star-white); margin-bottom: 1.1rem; letter-spacing: -0.01em; margin-top: 0; scroll-margin-top: 5rem; }
+  .spread-heading .spectrum-word { background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .rule { width: 40px; margin: 1rem 0; }
+
+  .pull-quote { font-size: 1.18rem; font-weight: 700; line-height: 1.4; color: var(--star-white); border-left: 3px solid var(--accent); padding-left: 1.1rem; margin: 1.4rem 0; font-style: italic; }
+  .pull-quote.violet { border-left-color: var(--violet); }
+  .pull-quote.cyan { border-left-color: var(--cyan); }
+  .pull-quote.gold { border-left-color: var(--gold); }
+  .pull-quote.pink { border-left-color: var(--pink); }
+  .pull-quote.green { border-left-color: var(--green); }
+  .pull-quote .attr { display: block; font-family: 'Space Mono', monospace; font-size: 0.6rem; font-weight: 400; font-style: normal; letter-spacing: 0.08em; color: var(--dim); margin-top: 0.6rem; }
+
+  .callout { margin: 1.3rem 0; padding: 1rem 1.15rem; background: rgba(251,191,36,0.06); border: 1px solid rgba(251,191,36,0.22); border-radius: 4px; font-size: 1rem; font-style: italic; color: var(--star-white); line-height: 1.55; }
+  .callout .attr { display: block; font-family: 'Space Mono', monospace; font-size: 0.58rem; font-style: normal; letter-spacing: 0.06em; color: var(--dim); margin-top: 0.5rem; }
+
+  .note { font-size: 0.84rem; line-height: 1.6; color: var(--dim); border-left: 2px solid rgba(167,139,250,0.28); padding-left: 0.9rem; margin: 1.1rem 0; }
+  .note strong { color: var(--stardust); font-weight: 700; }
+
+  /* ── THE SCALE TABLE (radii, in units of GM/c²) ── */
+  .trades { width: 100%; border-collapse: collapse; margin: 1.3rem 0; font-size: 0.84rem; }
+  .trades caption { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dim); text-align: left; padding-bottom: 0.6rem; }
+  .trades th { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--stardust); text-align: left; padding: 0.5rem 0.6rem; border-bottom: 1px solid rgba(251,191,36,0.28); font-weight: 700; }
+  .trades td { padding: 0.55rem 0.6rem; border-bottom: 1px solid rgba(167,139,250,0.1); color: var(--stardust); line-height: 1.5; vertical-align: top; }
+  .trades td.keeps { color: var(--gold); font-weight: 700; font-family: 'Space Mono', monospace; }
+  .trades td.loses { color: var(--pink); }
+
+  /* ── DIAGRAMS ── */
+  .diagram-wrap { display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; }
+  .diagram { width: 100%; max-width: 300px; display: block; }
+  .diagram-caption { font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim); text-align: center; margin-top: 0.9rem; line-height: 1.9; }
+
+  /* ── REFUSALS ── */
+  .refusals { margin-top: 1.3rem; }
+  .refusal { font-size: 0.88rem; line-height: 1.5; color: var(--stardust); padding: 0.55rem 0; border-bottom: 1px solid rgba(167,139,250,0.1); display: flex; gap: 0.6rem; align-items: baseline; }
+  .refusal:last-child { border-bottom: none; }
+  .refusal-tag { font-family: 'Space Mono', monospace; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ember); flex-shrink: 0; padding-top: 0.12rem; }
+  .refusal strong { color: var(--star-white); font-weight: 700; }
+
+  /* ── COLOPHON ── */
+  .colophon { padding: 3rem; display: flex; flex-direction: column; justify-content: space-between; min-height: 480px; background: radial-gradient(ellipse at 82% 18%, rgba(251,191,36,0.09) 0%, transparent 50%), radial-gradient(ellipse at 18% 85%, rgba(167,139,250,0.07) 0%, transparent 50%), var(--page); }
+  .colophon-top { border-bottom: 1px solid rgba(167,139,250,0.14); padding-bottom: 1.3rem; margin-bottom: 1.2rem; }
+  .colophon-ls { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 2.4rem; color: var(--accent); letter-spacing: 0.05em; display: block; margin-bottom: 0.4rem; }
+  .colophon-phrase { font-size: 0.98rem; font-weight: 700; font-style: italic; color: var(--stardust); }
+  .series-list { display: flex; flex-direction: column; gap: 0.38rem; margin-bottom: 1.2rem; }
+  .series-item { font-size: 0.72rem; color: var(--dim); letter-spacing: 0.01em; display: flex; gap: 0.7rem; align-items: baseline; line-height: 1.45; }
+  .series-item.current { color: var(--accent); font-weight: 700; }
+  .series-num { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim2); flex-shrink: 0; }
+  .series-item.current .series-num { color: var(--accent); }
+  .reflect { border-top: 1px solid rgba(167,139,250,0.14); padding-top: 1rem; margin-bottom: 1.2rem; }
+  .reflect-label { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.65rem; }
+  .reflect-q { font-size: 0.86rem; line-height: 1.55; color: var(--stardust); margin-bottom: 0.55rem; font-style: italic; }
+  .reflect-q:last-child { margin-bottom: 0; }
+  .colophon-body { font-size: 0.75rem; color: var(--dim); line-height: 1.75; margin-bottom: 1.2rem; }
+  .colophon-body a { color: var(--violet); text-decoration: none; border-bottom: 1px solid rgba(167,139,250,0.4); }
+  .colophon-body a:hover { border-bottom-color: var(--violet); }
+  .colophon-h { font-family: 'Space Mono', monospace; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: var(--stardust); margin: 1rem 0 0.4rem; scroll-margin-top: 5rem; }
+  .colophon-footer { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--dim); line-height: 2.2; border-top: 1px solid rgba(167,139,250,0.14); padding-top: 1rem; }
+
+  /* ── SPREAD FOOTER ── */
+  .spread-footer { display: flex; justify-content: space-between; align-items: center; padding: 0.9rem 2.4rem; border-top: 1px solid rgba(167,139,250,0.1); }
+  .spread-footer-left { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--dim); }
+  .spread-footer-right { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; color: var(--accent); }
+
+  .twinkle { position: fixed; width: 3px; height: 3px; border-radius: 50%; animation: twinkle-anim 3s ease-in-out infinite; pointer-events: none; z-index: 0; }
+
+  @media (max-width: 600px) {
+    .spread-2col { grid-template-columns: 1fr; }
+    .spread-left { border-right: none; border-bottom: 1px solid rgba(167,139,250,0.12); }
+    .spread-2col.stacked > .spread-left { border-bottom: none; }
+    .spread-2col.stacked > .col-text { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .cover-spread { padding: 2rem; min-height: 420px; }
+    .cover-motif { width: 224px; height: 224px; top: -4px; right: -24px; opacity: 0.5; }
+    .cover-title { font-size: 1.75rem; }
+    .spread-heading { font-size: 1.55rem; }
+    .spread-left, .spread-right { padding: 2rem 1.5rem; }
+    .colophon { padding: 2rem 1.5rem; }
+    .trades { font-size: 0.76rem; }
+    .trades th, .trades td { padding: 0.4rem 0.35rem; }
+  }
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"The Shadow Is Bigger Than the Thing","description":"A black hole emits nothing, so nobody has photographed one and nobody will. What the Event Horizon Telescope released on 10 April 2019 for M87* and on 12 May 2022 for Sagittarius A* is a shadow: a dark region ringed by light that passed close to the black hole and was bent around it. The geometry is exact. For a non-spinning black hole the event horizon sits at 2GM/c² and the boundary of the shadow at 3√3 GM/c², so the dark circle an observer sees is about 2.598 times wider than the object casting it, because gravitational bending magnifies the darkness. The shadow's angular size depends only weakly on spin and viewing angle — the half opening angle of a Kerr shadow stays at 5 plus or minus 0.2 GM over Dc squared, a spread of about four percent — which is what makes it a usable test of the geometry rather than a measurement of orientation. The instrument was the Earth: eight radio telescopes at six sites in Arizona, Chile, Hawai'i, Mexico, Spain and the South Pole, observing at 1.3 mm over 5 to 11 April 2017, recording roughly 3.5 petabytes to helium-filled hard drives that were flown to two correlators. Four imaging teams worked blind to one another using both CLEAN and regularized maximum likelihood methods, so that no team's expectation could shape the result. M87*'s ring measured 42 plus or minus 3 microarcseconds, implying a mass of 6.5 plus or minus 0.7 billion suns. Sagittarius A*, about four million solar masses at roughly 27,000 light years, gave a ring of 51.8 plus or minus 2.3 microarcseconds and was far harder to image because its innermost stable orbit takes about thirty minutes against roughly thirty days for M87*, so the source changes while the observation is being made. The zine then turns: some things are known only through their effect on everything around them, and what observers see of an unmet access need is the disruption rather than the need itself, systematically larger than its cause. The guardrail is stated plainly: unseeable is not unreal, and it is not a licence for any claim either, since the EHT constrained what it could not photograph to within a few percent. A rhyme, not a proof.","image":"https://starstuff.earth/og-card.jpg","url":"https://starstuff.earth/the-shadow-is-bigger-zine.html","mainEntityOfPage":"https://starstuff.earth/the-shadow-is-bigger-zine.html","publisher":[{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/","logo":{"@type":"ImageObject","url":"https://starstuff.earth/og-card.jpg"}},{"@type":"Organization","name":"More Realms","url":"https://morerealms.com/"}],"isPartOf":{"@type":"WebSite","name":"Star Stuff","url":"https://starstuff.earth/"}}</script>
+</head>
+<body>
+
+<div class="twinkle" style="top:12%;left:15%;background:var(--gold);box-shadow:0 0 6px var(--gold);animation-delay:-0.5s"></div>
+<div class="twinkle" style="top:24%;left:86%;background:var(--star-white);box-shadow:0 0 6px var(--star-white);animation-delay:-1.4s"></div>
+<div class="twinkle" style="top:55%;left:7%;background:var(--gold);box-shadow:0 0 6px var(--gold);animation-delay:-2.2s"></div>
+<div class="twinkle" style="top:76%;left:91%;background:var(--violet);box-shadow:0 0 6px var(--violet);animation-delay:-0.8s"></div>
+<div class="twinkle" style="top:87%;left:30%;background:var(--star-white);box-shadow:0 0 6px var(--star-white);animation-delay:-1.9s"></div>
+<div class="twinkle" style="top:40%;left:94%;background:var(--gold);box-shadow:0 0 6px var(--gold);animation-delay:-3.0s"></div>
+
+<div class="zine-shell">
+
+  <nav class="ss-nav" style="--nav-accent:#fbbf24;" aria-label="Star Stuff collection">
+    <span class="ss-nav-home-group"><a class="ss-nav-home" href="index.html"><span class="ss-star" aria-hidden="true">★</span> stuff</a><a class="ss-nav-about" href="about.html">about</a>
+      <a class="ss-nav-search" href="search.html">search</a></span>
+    <span class="ss-nav-links">
+      <a class="ss-nav-prev" href="companion-stars-zine.html"><span class="ss-nav-arrow" aria-hidden="true">&lsaquo;</span> <span class="ss-nav-label">Companion Stars</span></a>
+      <a class="ss-nav-next" href="collection-how-we-got-here.html"><span class="ss-nav-label">How We Got Here</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
+    </span>
+    <a class="ss-nav-collection" href="collection-star-stuff.html"><span class="ss-nav-collection-label">Collection</span> <span class="ss-nav-collection-name">Star Stuff</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
+  </nav>
+
+  <nav class="nav">
+    <div class="nav-brand"><a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks</a> × <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a> · Zine No. 48</div>
+    <div class="nav-controls">
+      <button class="nav-btn" id="prev-btn" onclick="changePage(-1)">← prev</button>
+      <span class="page-counter" id="page-counter">1 / 12</span>
+      <button class="nav-btn" id="next-btn" onclick="changePage(1)">next →</button>
+    </div>
+  </nav>
+
+  <!-- ════ SPREAD 1: COVER ════ -->
+  <div class="spread active" id="spread-1">
+    <div class="cover-spread">
+      <svg class="cover-motif" viewBox="0 0 340 340" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <!-- The whole argument, drawn once: a bright ring, a dark circle inside it, and a smaller
+             dashed circle inside THAT which is the actual horizon. The gap between the dashed
+             circle and the dark edge IS the zine's title. Radii are to scale in units of GM/c²
+             at 8.4px per unit: horizon 2 → 16.8, photon sphere 3 → 25.2, shadow 3√3 → 43.6.
+             Art held in the UPPER THIRD — the cover is 520px and the title sits at its foot, so
+             anything past y≈240 in this viewBox lands on the words. -->
+        <g transform="translate(66,44)">
+          <!-- the glowing ring: light that came close and got bent around -->
+          <circle cx="86" cy="86" r="52" fill="none" stroke="rgba(251,191,36,0.20)" stroke-width="17"/>
+          <circle cx="86" cy="86" r="52" fill="none" stroke="rgba(251,191,36,0.75)" stroke-width="4"/>
+          <!-- the shadow: the dark region, radius 3√3 -->
+          <circle cx="86" cy="86" r="43.6" fill="rgba(6,6,14,0.92)" stroke="rgba(251,191,36,0.35)" stroke-width="1"/>
+          <!-- the horizon: radius 2, dashed, markedly smaller -->
+          <circle cx="86" cy="86" r="16.8" fill="none" stroke="rgba(167,139,250,0.85)" stroke-width="1.4" stroke-dasharray="4 3"/>
+          <!-- the measured gap -->
+          <path d="M86 86 L129.6 86" stroke="rgba(252,211,77,0.6)" stroke-width="1" stroke-dasharray="2 2"/>
+          <!-- The label stack sits BELOW the ring's midline on purpose. At y=70/90/106 it ran
+               through the .cover-corner block (the ghosted 48 and its "Star Stuff" label) and the
+               bottom label landed on the .cover-issue line. Measured, not guessed — no gate in the
+               repo can see a text collision. -->
+          <text x="140" y="90" font-family="Space Mono, monospace" font-size="9.5" letter-spacing="0.5" fill="#c4b5fd">the horizon</text>
+          <text x="140" y="110" font-family="Space Mono, monospace" font-size="9.5" letter-spacing="0.5" fill="#fcd34d">the shadow</text>
+          <text x="140" y="126" font-family="Space Mono, monospace" font-size="9" letter-spacing="0.5" fill="#fcd34d">2.6× wider</text>
+          <!-- A "nobody took this picture" caption used to sit at y=168 here. At render size it
+               ran straight through the cover title — the cover is 520px and the title sits at its
+               foot. The subtitle already says it. Removed rather than nudged. -->
+        </g>
+      </svg>
+      <div class="cover-corner">
+        <div class="cover-corner-num" aria-hidden="true">48</div>
+        <span class="cover-corner-label">Star Stuff</span>
+      </div>
+      <div class="cover-issue">Stimpunks × More Realms · Zine No. 48</div>
+      <h1 class="cover-title">The Shadow Is <span class="amp">Bigger</span> Than the Thing</h1>
+      <p class="cover-subtitle">on the black hole nobody photographed, and what can only be known by its effect on everything else</p>
+      <div class="cover-byline">Eight telescopes · <strong>six sites</strong> · 3.5 petabytes · one dark circle · a rhyme, not a proof</div>
+      <hr class="spectrum-line cover-rule">
+      <div class="cover-meta">
+        <span class="cover-ls">L★S</span>
+        <div class="cover-meta-text">Love You Down To Your Star Stuff<br>open edition · print freely</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 2: there is no photograph ════ -->
+  <div class="spread" id="spread-2">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The honest problem</div>
+          <h2 class="spread-heading" id="nobody-photographed-it">Nobody has photographed a black hole</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Start with the thing everyone gets wrong, including most of the headlines in April 2019.</p>
+            <p>A camera works by catching light that left the subject. That is the whole mechanism — the apple sends photons at your eye, and you see an apple.</p>
+            <p><strong>A black hole sends nothing.</strong> Not a little. Not faintly. The event horizon is the surface where the geometry has tipped so far that every path leading outward has stopped existing; there is no direction that is <em>away</em>. Light does not struggle out slowly. It does not get out.</p>
+            <p>So the ordinary way of knowing about a thing is simply unavailable, and no better camera will fix it. This is not a limit of our instruments. <span class="gold">It is a fact about what the object is.</span></p>
+            <div class="pull-quote">There is no picture of a black hole and there never will be. What exists is a picture of everything else, arranged by one.<span class="attr">the situation, stated plainly</span></div>
+            <p>Which sounds like the end of the enquiry, and is instead the beginning of it. Because a thing that emits nothing still <em>does</em> a great deal — to gas, to stars, to the paths of passing light — and all of that is visible.</p>
+            <p>The rest of this zine is about what you can learn from the second-best option, and about the one number that makes it dangerous.</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 172" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig1-title fig1-desc">
+              <title id="fig1-title">Why the ordinary method fails</title>
+              <desc id="fig1-desc">On the left, an apple sending light rays out to an eye, labelled this is how seeing works. On the right, a black disc with arrows that stop at its edge, labelled nothing leaves.</desc>
+              <circle cx="46" cy="56" r="14" fill="rgba(74,222,128,0.18)" stroke="rgba(74,222,128,0.6)" stroke-width="1.2"/>
+              <g stroke="var(--green)" stroke-width="1.2" stroke-linecap="round">
+                <path d="M60 50 L104 40"/><path d="M60 56 L104 56"/><path d="M60 62 L104 72"/>
+              </g>
+              <path d="M112 56 m-9,0 a9,9 0 1,0 18,0 a9,9 0 1,0 -18,0" fill="none" stroke="rgba(74,222,128,0.6)" stroke-width="1.2"/>
+              <circle cx="112" cy="56" r="3.4" fill="var(--green)"/>
+              <text x="80" y="96" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--green)">light leaves · you see</text>
+              <line x1="150" y1="16" x2="150" y2="132" stroke="rgba(167,139,250,0.25)" stroke-width="1" stroke-dasharray="4 4"/>
+              <circle cx="212" cy="56" r="21" fill="#06060e" stroke="rgba(251,191,36,0.5)" stroke-width="1.2"/>
+              <g stroke="var(--gold)" stroke-width="1.2" stroke-linecap="round">
+                <path d="M212 56 L212 40"/><path d="M212 56 L228 48"/><path d="M212 56 L196 48"/>
+              </g>
+              <g stroke="var(--pink)" stroke-width="1.5" stroke-linecap="round">
+                <path d="M206 32 L218 20"/><path d="M218 32 L206 20"/>
+              </g>
+              <text x="212" y="96" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--gold)">nothing leaves</text>
+              <text x="212" y="108" text-anchor="middle" font-family="Space Mono, monospace" font-size="6" fill="var(--pink)">no outward direction exists</text>
+              <text x="150" y="152" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.5" letter-spacing="0.8" fill="var(--sp-secondary)">a better camera does not help here</text>
+              <text x="150" y="166" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="1.2" fill="var(--sp-dim)">the limit is the object, not the lens</text>
+            </svg>
+            <div class="diagram-caption">Figure 1 · why there is no photograph</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Shadow Is Bigger · Stimpunks</span>
+        <span class="spread-footer-right">2</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 3: what you can see ════ -->
+  <div class="spread" id="spread-3">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The second-best option</div>
+          <h2 class="spread-heading" id="only-what-bends">Only what bends around it</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Gas falling toward a black hole does not go quietly. It compresses, shears against itself, and gets hot enough to shine — so the object that emits nothing is generally surrounded by something that emits a great deal.</p>
+            <p>Now put that glow behind a lens made of gravity. Light travelling near a massive body does not go straight; its path bends, and the closer it passes the harder it bends. At a particular radius the bending becomes exactly enough to <span class="gold">curve a beam right around into a circle</span> — the <strong>photon sphere</strong>, at three <em>GM/c²</em> from the centre. Light there is orbiting.</p>
+            <p>So what arrives at a telescope on Earth sorts itself into two kinds. Light that passed far enough out escaped and reached you. Light that came in closer than the critical approach spiralled in and never left.</p>
+            <p>The result is a <strong>bright ring around a dark middle</strong> — and the dark middle is not an object. It is the set of directions in which any light you might have received went into the hole instead.</p>
+            <div class="pull-quote gold">You are not looking at a black hole. You are looking at the shape of a hole in everything else.<span class="attr">what the image actually is</span></div>
+            <p>The astronomers' word for that dark middle is the <strong>shadow</strong>, and the word is well chosen — a shadow is defined entirely by what it happens to, never by itself.</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 176" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig2-title fig2-desc">
+              <title id="fig2-title">Three light paths</title>
+              <desc id="fig2-desc">Three beams pass a black hole at different distances: the far one bends slightly and escapes, the middle one loops around and escapes, the near one spirals in and is captured.</desc>
+              <circle cx="150" cy="88" r="15" fill="#06060e" stroke="rgba(251,191,36,0.45)" stroke-width="1"/>
+              <circle cx="150" cy="88" r="23" fill="none" stroke="rgba(251,191,36,0.3)" stroke-width="0.9" stroke-dasharray="3 3"/>
+              <!-- far pass: gentle bend, escapes -->
+              <path d="M16 26 C90 26 210 34 286 20" fill="none" stroke="var(--green)" stroke-width="1.4"/>
+              <text x="286" y="14" text-anchor="end" font-family="Space Mono, monospace" font-size="6" fill="var(--green)">escapes</text>
+              <!-- close pass: strong bend, loops, escapes -->
+              <path d="M16 60 C86 60 112 56 130 74 C144 88 138 108 122 112 C104 116 96 100 112 88 C134 72 210 66 286 84" fill="none" stroke="var(--gold)" stroke-width="1.4"/>
+              <text x="286" y="78" text-anchor="end" font-family="Space Mono, monospace" font-size="6" fill="var(--gold)">bent right around</text>
+              <!-- capture: spirals in -->
+              <path d="M16 128 C80 128 118 126 138 116 C154 108 158 98 152 94" fill="none" stroke="var(--pink)" stroke-width="1.4"/>
+              <circle cx="152" cy="94" r="2.2" fill="var(--pink)"/>
+              <text x="16" y="146" font-family="Space Mono, monospace" font-size="6" fill="var(--pink)">captured · never arrives</text>
+              <text x="150" y="164" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="0.8" fill="var(--sp-secondary)">the dark patch is the directions that failed</text>
+              <text x="150" y="174" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" letter-spacing="1" fill="var(--sp-dim)">dashed circle · the photon sphere at 3 GM/c²</text>
+            </svg>
+            <div class="diagram-caption">Figure 2 · what reaches you, and what doesn't</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Shadow Is Bigger · Stimpunks</span>
+        <span class="spread-footer-right">3</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 4: the number ════ -->
+  <div class="spread" id="spread-4">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">3√3 against 2</div>
+          <h2 class="spread-heading" id="the-shadow-is-bigger">The shadow is bigger than the thing</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Here is the fact this zine is built on, and it is a piece of exact geometry rather than an impression.</p>
+            <p>For a non-spinning black hole, all the relevant radii can be written in one unit — <em>GM/c²</em>, which is just the object's mass expressed as a length:</p>
+            <table class="trades">
+              <caption>radii, for a non-spinning black hole, in units of GM/c²</caption>
+              <thead><tr><th>radius</th><th>what sits there</th></tr></thead>
+              <tbody>
+                <tr><td class="keeps">2</td><td>the <strong>event horizon</strong> — the actual boundary of the actual object</td></tr>
+                <tr><td class="keeps">3</td><td>the <strong>photon sphere</strong>, where light can orbit</td></tr>
+                <tr><td class="keeps">3√3 ≈ 5.196</td><td>the edge of the <strong>shadow</strong> — what a distant observer sees</td></tr>
+              </tbody>
+            </table>
+            <p>Divide the last by the first. <span class="gold">3√3 / 2 ≈ 2.598.</span></p>
+            <p>The dark circle in the picture is about <strong>two and a half times wider</strong> than the object casting it. Gravity does not merely hide the black hole; it <em>magnifies the hiding</em>, throwing the darkness outward well past the horizon's true edge.</p>
+            <div class="pull-quote gold">The shadow overstates its cause by a factor of about 2.6 — and it does so consistently, which is the only reason anyone can work backwards from it.<span class="attr">the number the whole piece turns on</span></div>
+            <p>One more thing makes this usable, and it is close to a fluke. Real black holes spin, and spin drags spacetime around with it — so you would expect the shadow's size to depend on how fast it turns and how it is tilted toward you.</p>
+            <p>It barely does. Across the whole range of spins and viewing angles, the shadow's angular radius stays at <span class="violet">5 ± 0.2 <em>GM/Dc²</em></span> — a spread of about four percent, with the non-spinning case (3√3 ≈ 5.196) sitting near the top of it.</p>
+            <p>That near-constancy is a quirk of the equations rather than a principle, and it is what turns a dark smudge into a measurement: if the shadow's size is fixed by mass over distance and almost nothing else, then measuring it <strong>tests the geometry itself.</strong></p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 184" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig3-title fig3-desc">
+              <title id="fig3-title">Horizon, photon sphere, shadow — to scale</title>
+              <desc id="fig3-desc">Three concentric circles drawn to scale in units of GM over c squared: the event horizon at radius two, the photon sphere at three, and the shadow edge at three root three, about five point two. The shadow is about two point six times the width of the horizon.</desc>
+              <!-- to scale: 9.6 px per GM/c². horizon 2→19.2, photon 3→28.8, shadow 5.196→49.9 -->
+              <circle cx="96" cy="86" r="49.9" fill="rgba(6,6,14,0.85)" stroke="var(--gold)" stroke-width="1.5"/>
+              <circle cx="96" cy="86" r="28.8" fill="none" stroke="rgba(251,191,36,0.45)" stroke-width="1" stroke-dasharray="3 3"/>
+              <circle cx="96" cy="86" r="19.2" fill="rgba(167,139,250,0.14)" stroke="var(--violet)" stroke-width="1.5"/>
+              <!-- radius callouts -->
+              <path d="M96 86 L115.2 86" stroke="var(--violet)" stroke-width="1.2"/>
+              <path d="M96 86 L96 36.1" stroke="var(--gold)" stroke-width="1.2" stroke-dasharray="2 2"/>
+              <text x="96" y="30" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" fill="var(--gold)">3√3</text>
+              <g font-family="Space Mono, monospace" font-size="6.5">
+                <path d="M158 60 H186" stroke="var(--gold)" stroke-width="1.2"/>
+                <text x="192" y="63" fill="var(--gold)">shadow · 5.196</text>
+                <path d="M158 84 H186" stroke="rgba(251,191,36,0.45)" stroke-width="1" stroke-dasharray="3 3"/>
+                <text x="192" y="87" fill="var(--sp-secondary)">photon sphere · 3</text>
+                <path d="M158 108 H186" stroke="var(--violet)" stroke-width="1.2"/>
+                <text x="192" y="111" fill="var(--violet)">horizon · 2</text>
+              </g>
+              <text x="150" y="152" text-anchor="middle" font-family="Space Mono, monospace" font-size="8" font-weight="700" letter-spacing="0.8" fill="var(--gold)">3√3 / 2 = 2.598</text>
+              <text x="150" y="166" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="0.8" fill="var(--sp-secondary)">drawn to scale · the gap is the whole point</text>
+              <text x="150" y="180" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" letter-spacing="1" fill="var(--sp-dim)">the violet circle is the real object</text>
+            </svg>
+            <div class="diagram-caption">Figure 3 · the object, and the darkness it throws</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Shadow Is Bigger · Stimpunks</span>
+        <span class="spread-footer-right">4</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 5: M87* ════ -->
+  <div class="spread" id="spread-5">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">10 April 2019 · M87*</div>
+          <h2 class="spread-heading" id="forty-two-microarcseconds">Forty-two microarcseconds</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">The first one they got was not the nearest. It was the one whose shadow happened to be biggest in our sky.</p>
+            <p>M87* sits at the heart of a giant elliptical galaxy about 55 million light years away, and it is <em>enormous</em> — the ring measurement implies a mass of <span class="gold">6.5 ± 0.7 billion suns</span>. Distance shrinks it; size restores it. The two nearly cancel, and what is left is a ring <strong>42 ± 3 microarcseconds</strong> across.</p>
+            <p>A microarcsecond is a millionth of a second of arc, and a second of arc is already a 3,600th of a degree. Put it in terms of a thing:</p>
+            <div class="callout">Forty-two microarcseconds is roughly the angle subtended by an orange, sitting on the Moon.<span class="attr">our own arithmetic — see the sources note</span></div>
+            <p>Nothing on Earth resolves that. A telescope's sharpness is set by the wavelength it works at divided by the width of the dish, and to see 42 µas at the 1.3 mm the hot gas shines at, the dish would have to be about as wide as the planet.</p>
+            <p>So they used the planet. That is spread seven.</p>
+            <p>The image released on 10 April 2019 came from data taken two years earlier, over six nights in April 2017 — <span class="violet">the gap is not delay, it is the checking.</span> And what the checking looked like is the next spread, because it is the most quietly admirable thing in the whole story.</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 168" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig4-title fig4-desc">
+              <title id="fig4-title">How small forty-two microarcseconds is</title>
+              <desc id="fig4-desc">The Earth and the Moon with a small fruit drawn on the lunar surface, indicating that an object roughly eight centimetres across at the Moon's distance subtends the same angle as the M87 ring.</desc>
+              <circle cx="42" cy="88" r="20" fill="rgba(34,211,238,0.14)" stroke="rgba(34,211,238,0.6)" stroke-width="1.2"/>
+              <text x="42" y="126" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--cyan)">Earth</text>
+              <path d="M66 84 L214 60" stroke="rgba(167,139,250,0.4)" stroke-width="1" stroke-dasharray="4 3"/>
+              <path d="M66 92 L214 68" stroke="rgba(167,139,250,0.4)" stroke-width="1" stroke-dasharray="4 3"/>
+              <circle cx="238" cy="64" r="15" fill="rgba(244,244,251,0.1)" stroke="rgba(244,244,251,0.5)" stroke-width="1.1"/>
+              <circle cx="228" cy="54" r="2.6" fill="var(--gold)"/>
+              <text x="238" y="98" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--sp-secondary)">Moon</text>
+              <path d="M228 46 L250 30" stroke="var(--gold)" stroke-width="1"/>
+              <text x="254" y="27" font-family="Space Mono, monospace" font-size="6" fill="var(--gold)">~8 cm</text>
+              <text x="140" y="126" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" fill="var(--violet)">42 µas</text>
+              <text x="150" y="148" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.5" letter-spacing="0.8" fill="var(--sp-secondary)">an orange, on the Moon</text>
+              <text x="150" y="162" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" letter-spacing="1" fill="var(--sp-dim)">not to scale · the angle is the point</text>
+            </svg>
+            <div class="diagram-caption">Figure 4 · the size of the problem</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Shadow Is Bigger · Stimpunks</span>
+        <span class="spread-footer-right">5</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 6: four teams, blind ════ -->
+  <div class="spread" id="spread-6">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The discipline</div>
+          <h2 class="spread-heading" id="four-teams-blind">Four teams who weren't allowed to talk</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Here is the awkward part of the method, and the reason the result is trustworthy.</p>
+            <p>An array of separate telescopes does not record a picture. It records how much the incoming waves agree between each <em>pair</em> of dishes — a scatter of measurements across a plane, with enormous gaps where no pair happens to sit. Getting from that to an image means <strong>filling in what was never measured</strong>, and there are infinitely many images consistent with the data.</p>
+            <p>So the choice of method is doing real work. And every person involved knew exactly what general relativity predicted they should find.</p>
+            <p>That is the classic way to fool yourself, and they took it seriously. The collaboration split into <span class="gold">four imaging teams, each kept blind to the other three</span>, working with two quite different families of algorithm — the long-established CLEAN and the newer regularized maximum likelihood.</p>
+            <div class="callout">Four groups, forbidden to compare notes, using different mathematics, all produced a ring of about the same size in about the same place.<span class="attr">First M87 EHT Results IV, 2019</span></div>
+            <p>The blinding is not bureaucracy. It is the only available answer to a question nobody can answer about themselves: <em>did I find this, or did I draw it?</em></p>
+            <p>This is the same instinct as the five-sigma rule in <a href="five-sigma-zine.html">No. 39</a> and the whole of <a href="too-good-to-check.html">Too Good to Check</a>. <strong>Wanting a result is not a disqualification. Failing to build a guard against wanting it is.</strong></p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 178" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig5-title fig5-desc">
+              <title id="fig5-title">Four blind reconstructions</title>
+              <desc id="fig5-desc">One set of sparse data feeds four separated imaging teams with no lines between them, and each returns a ring of similar size and position.</desc>
+              <rect x="112" y="10" width="76" height="26" rx="3" fill="rgba(167,139,250,0.1)" stroke="rgba(167,139,250,0.5)" stroke-width="1.1"/>
+              <text x="150" y="27" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--violet)">the same data</text>
+              <g stroke="rgba(167,139,250,0.45)" stroke-width="1.1" fill="none">
+                <path d="M126 36 L46 62"/><path d="M140 36 L114 62"/><path d="M160 36 L186 62"/><path d="M174 36 L254 62"/>
+              </g>
+              <g>
+                <circle cx="46" cy="86" r="19" fill="rgba(6,6,14,0.6)" stroke="rgba(251,191,36,0.25)" stroke-width="7"/>
+                <circle cx="114" cy="86" r="19" fill="rgba(6,6,14,0.6)" stroke="rgba(251,191,36,0.25)" stroke-width="7"/>
+                <circle cx="186" cy="86" r="19" fill="rgba(6,6,14,0.6)" stroke="rgba(251,191,36,0.25)" stroke-width="7"/>
+                <circle cx="254" cy="86" r="19" fill="rgba(6,6,14,0.6)" stroke="rgba(251,191,36,0.25)" stroke-width="7"/>
+              </g>
+              <g font-family="Space Mono, monospace" font-size="6" fill="var(--sp-secondary)" text-anchor="middle">
+                <text x="46" y="122">team 1</text><text x="114" y="122">team 2</text><text x="186" y="122">team 3</text><text x="254" y="122">team 4</text>
+              </g>
+              <path d="M66 140 H234" stroke="rgba(244,114,182,0.5)" stroke-width="1.1" stroke-dasharray="4 3"/>
+              <g stroke="rgba(244,114,182,0.8)" stroke-width="1.4" stroke-linecap="round">
+                <path d="M144 134 L156 146"/><path d="M156 134 L144 146"/>
+              </g>
+              <text x="150" y="160" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--pink)">no comparing notes</text>
+              <text x="150" y="174" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="1" fill="var(--sp-dim)">agreement only counts if it was not arranged</text>
+            </svg>
+            <div class="diagram-caption">Figure 5 · a guard against yourself</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Shadow Is Bigger · Stimpunks</span>
+        <span class="spread-footer-right">6</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 7: the instrument ════ -->
+  <div class="spread" id="spread-7">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">April 2017 · six sites</div>
+          <h2 class="spread-heading" id="a-telescope-the-size-of-a-planet">A telescope the size of a planet</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">You cannot build a dish the width of the Earth. You can, it turns out, use the Earth.</p>
+            <p>Eight radio telescopes at <strong>six sites</strong> — Arizona, Mexico, Hawai'i, Chile's Atacama, the Sierra Nevada in Spain, and the South Pole — pointed at the same patch of sky on the same nights and recorded what arrived, each stamped against an atomic clock.</p>
+            <p>Nothing was combined at the time. There is no network that could carry it: the array wrote roughly <span class="gold">350 terabytes per telescope per day</span>, about <strong>3.5 petabytes</strong> in all, onto racks of helium-filled hard drives. The drives were then <em>flown</em> to two correlator supercomputers and played back against each other, and only there did the separate recordings become one instrument.</p>
+            <div class="note"><strong>The South Pole's drives could not leave.</strong> No aircraft flies out of Amundsen–Scott through the Antarctic winter. That station's share of the observation sat on a shelf at the bottom of the world until the season turned — the picture was waiting on the weather, which is a very old condition for astronomy to be in.</div>
+            <p>Consider what this instrument is. Its aperture is a planet. Its resolution comes not from any one dish being good but from the dishes being <span class="violet">far apart, and knowing precisely how far</span>. No site saw the ring. No site could have. The image exists only in the relationship between them.</p>
+            <div class="pull-quote violet">Nobody saw it alone, and no part of the instrument was capable of seeing it alone. The seeing happened between them.<span class="attr">what an interferometer is</span></div>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 176" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig6-title fig6-desc">
+              <title id="fig6-title">The Earth as one aperture</title>
+              <desc id="fig6-desc">A globe with six marked observing sites, and lines joining every pair of sites, labelled the aperture is the distance between them.</desc>
+              <circle cx="150" cy="82" r="58" fill="rgba(34,211,238,0.06)" stroke="rgba(34,211,238,0.4)" stroke-width="1.2"/>
+              <g fill="none" stroke="rgba(34,211,238,0.2)" stroke-width="0.9">
+                <ellipse cx="150" cy="82" rx="58" ry="20"/><ellipse cx="150" cy="82" rx="20" ry="58"/>
+              </g>
+              <g stroke="rgba(251,191,36,0.35)" stroke-width="0.8">
+                <path d="M112 44 L196 58"/><path d="M112 44 L104 92"/><path d="M112 44 L168 118"/><path d="M112 44 L150 140"/>
+                <path d="M196 58 L104 92"/><path d="M196 58 L168 118"/><path d="M196 58 L150 140"/>
+                <path d="M104 92 L168 118"/><path d="M104 92 L150 140"/><path d="M168 118 L150 140"/>
+                <path d="M112 44 L188 96"/><path d="M188 96 L104 92"/><path d="M188 96 L150 140"/>
+              </g>
+              <g fill="var(--gold)">
+                <circle cx="112" cy="44" r="3.2"/><circle cx="196" cy="58" r="3.2"/><circle cx="104" cy="92" r="3.2"/>
+                <circle cx="188" cy="96" r="3.2"/><circle cx="168" cy="118" r="3.2"/><circle cx="150" cy="140" r="3.2"/>
+              </g>
+              <text x="150" y="156" text-anchor="middle" font-family="Space Mono, monospace" font-size="6" fill="var(--gold)">South Pole</text>
+              <text x="150" y="170" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="0.8" fill="var(--sp-secondary)">the aperture is the distance between them</text>
+            </svg>
+            <div class="diagram-caption">Figure 6 · eight dishes, one instrument</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Shadow Is Bigger · Stimpunks</span>
+        <span class="spread-footer-right">7</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 8: Sgr A* ════ -->
+  <div class="spread" id="spread-8">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">12 May 2022 · Sagittarius A*</div>
+          <h2 class="spread-heading" id="the-subject-that-wont-hold-still">The subject that won't hold still</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Three years after M87*, the same array released the one at home: <strong>Sagittarius A*</strong>, about four million solar masses, roughly 27,000 light years away, at the centre of our own galaxy.</p>
+            <p>Its ring came out at <span class="gold">51.8 ± 2.3 microarcseconds</span> — slightly larger in our sky than M87*'s, because although it is around 1,600 times less massive it is also vastly closer.</p>
+            <p>It should have been the easy one. It was much the harder one, for a reason that is worth sitting with.</p>
+            <p>Everything near a black hole orbits on a clock set by its mass, and a small black hole runs fast. The innermost stable orbit around M87* takes something like <span class="violet">thirty days</span> to go round. The same orbit around Sagittarius A* takes about <span class="pink">thirty minutes</span>.</p>
+            <div class="pull-quote pink">M87* holds a pose for a month. Sagittarius A* rearranges itself several times over a single night's observing.<span class="attr">why the near one was the hard one</span></div>
+            <p>An interferometer builds its image out of the Earth's own rotation, sweeping the pairs of telescopes across the sky over hours. That method assumes the subject is <em>the same subject</em> from the first hour to the last. For Sagittarius A* it plainly wasn't, and the methods had to be rebuilt to cope with a source that changes while you are still looking.</p>
+            <p><strong>Being nearer did not make it easier to see.</strong> It made it faster, and fast is its own kind of invisible.</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 172" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig7-title fig7-desc">
+              <title id="fig7-title">Two clocks</title>
+              <desc id="fig7-desc">M87 star with an inner orbit period of about thirty days beside Sagittarius A star with an inner orbit period of about thirty minutes, against a bar marking one night of observing.</desc>
+              <circle cx="70" cy="52" r="13" fill="#06060e" stroke="rgba(251,191,36,0.5)" stroke-width="1.2"/>
+              <ellipse cx="70" cy="52" rx="30" ry="11" fill="none" stroke="rgba(167,139,250,0.6)" stroke-width="1.2"/>
+              <circle cx="100" cy="52" r="3" fill="var(--violet)"/>
+              <text x="70" y="86" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--violet)">M87*</text>
+              <text x="70" y="98" text-anchor="middle" font-family="Space Mono, monospace" font-size="6" fill="var(--sp-secondary)">inner orbit ~30 days</text>
+              <line x1="150" y1="16" x2="150" y2="112" stroke="rgba(167,139,250,0.25)" stroke-width="1" stroke-dasharray="4 4"/>
+              <circle cx="228" cy="52" r="13" fill="#06060e" stroke="rgba(251,191,36,0.5)" stroke-width="1.2"/>
+              <ellipse cx="228" cy="52" rx="30" ry="11" fill="none" stroke="rgba(244,114,182,0.6)" stroke-width="1.2"/>
+              <g fill="var(--pink)">
+                <circle cx="258" cy="52" r="3"/><circle cx="243" cy="61" r="2.2"/><circle cx="213" cy="61" r="2.2"/><circle cx="198" cy="52" r="2.2"/><circle cx="213" cy="43" r="2.2"/>
+              </g>
+              <text x="228" y="86" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--pink)">Sgr A*</text>
+              <text x="228" y="98" text-anchor="middle" font-family="Space Mono, monospace" font-size="6" fill="var(--sp-secondary)">inner orbit ~30 min</text>
+              <rect x="46" y="122" width="208" height="14" rx="2" fill="rgba(34,211,238,0.08)" stroke="rgba(34,211,238,0.45)" stroke-width="1"/>
+              <text x="150" y="132" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--cyan)">one night of observing</text>
+              <text x="150" y="154" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="0.8" fill="var(--sp-secondary)">one of these sits still for the exposure</text>
+              <text x="150" y="168" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" letter-spacing="1" fill="var(--sp-dim)">the near one is the fast one</text>
+            </svg>
+            <div class="diagram-caption">Figure 7 · why closer was harder</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Shadow Is Bigger · Stimpunks</span>
+        <span class="spread-footer-right">8</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 9: the turn ════ -->
+  <div class="spread" id="spread-9">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The turn</div>
+          <h2 class="spread-heading" id="known-by-its-effect">Known by the <span class="spectrum-word">orbit</span> it puts things into</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Everything anyone knows about a black hole is a fact about something else.</p>
+            <p>The heat of the gas. The bending of the light. The orbits of stars whipping around the galactic centre. The width of the dark patch. Not one of those is a measurement <em>of</em> the object; every one is a measurement of what the object does to its neighbourhood — and together they pin it down to within a few percent.</p>
+            <p>This is not an exotic epistemic situation. It is an extremely ordinary one, and most of us live inside it.</p>
+            <div class="callout">Monotropism is not visible. What is visible is where the attention went, and what it cost to pull it away. Pain is not visible. A sensory environment is not visible — only what someone does to survive it. You cannot point a camera at an access need.<span class="attr">the same shape, at human scale</span></div>
+            <p>And the response this usually gets is the one the EHT refused: <em>if it can't be seen, treat it as absent.</em> Every unphotographable thing in a person's life gets met with that sentence in some form — <span class="pink">you don't look Autistic, you seem fine, you managed last week.</span></p>
+            <p>The astronomers had a far stronger version of the problem — a thing that emits <strong>literally nothing</strong>, not merely something inconvenient to observe — and they did not conclude it was absent. They built an instrument out of a planet and measured what bends around it.</p>
+            <div class="pull-quote gold">The absence of a photograph was never evidence of an absent thing. It was a fact about cameras.<span class="attr">the turn, in one line</span></div>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 168" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig8-title fig8-desc">
+              <title id="fig8-title">Inferring the unseen centre</title>
+              <desc id="fig8-desc">An empty dashed circle at the centre with several orbits and bent paths curving around it, each labelled as something measurable, showing that the centre is known only from what surrounds it.</desc>
+              <circle cx="150" cy="76" r="17" fill="none" stroke="rgba(167,139,250,0.5)" stroke-width="1.2" stroke-dasharray="3 3"/>
+              <text x="150" y="71" text-anchor="middle" font-family="Space Mono, monospace" font-size="5.5" fill="var(--violet)">never</text>
+              <text x="150" y="83" text-anchor="middle" font-family="Space Mono, monospace" font-size="5.5" fill="var(--violet)">seen</text>
+              <ellipse cx="150" cy="76" rx="62" ry="28" fill="none" stroke="rgba(251,191,36,0.5)" stroke-width="1.1"/>
+              <ellipse cx="150" cy="76" rx="34" ry="54" fill="none" stroke="rgba(34,211,238,0.5)" stroke-width="1.1"/>
+              <path d="M18 24 C74 30 96 46 118 62" fill="none" stroke="rgba(74,222,128,0.6)" stroke-width="1.2"/>
+              <path d="M282 128 C226 122 204 106 182 90" fill="none" stroke="rgba(74,222,128,0.6)" stroke-width="1.2"/>
+              <circle cx="212" cy="76" r="3" fill="var(--gold)"/>
+              <circle cx="150" cy="22" r="3" fill="var(--cyan)"/>
+              <g font-family="Space Mono, monospace" font-size="6">
+                <text x="220" y="70" fill="var(--gold)">orbits</text>
+                <text x="150" y="14" text-anchor="middle" fill="var(--cyan)">stellar motion</text>
+                <text x="16" y="18" fill="var(--green)">bent light</text>
+                <text x="284" y="140" text-anchor="end" fill="var(--green)">bent light</text>
+              </g>
+              <text x="150" y="152" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="0.8" fill="var(--sp-secondary)">every arrow is a measurement of something else</text>
+              <text x="150" y="164" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" letter-spacing="1" fill="var(--sp-dim)">and together they locate the centre</text>
+            </svg>
+            <div class="diagram-caption">Figure 8 · knowing by the surroundings</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Shadow Is Bigger · Stimpunks</span>
+        <span class="spread-footer-right">9</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 10: the uncomfortable half ════ -->
+  <div class="spread" id="spread-10">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The uncomfortable half</div>
+          <h2 class="spread-heading" id="the-shadow-overstates">And the shadow overstates it</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Most versions of this argument stop at the previous spread, on the warm note. This one doesn't, because the physics has a second half and the second half is the useful one.</p>
+            <p>Go back to the number. The dark circle is not the same size as the object. It is about <span class="gold">2.6 times wider</span>. Measure the black hole by its shadow and forget the factor, and you will conclude it is two and a half times the thing it is.</p>
+            <p>Now carry that across, carefully.</p>
+            <p>What an observer sees of an unmet need is almost never the need. It is the <strong>disruption</strong> — the shutdown, the meltdown, the missed deadline, the sudden absence, the job that ended badly, the reply that came out wrong. Those are real, and they are genuinely caused by the thing. They are also <span class="pink">systematically bigger than it.</span></p>
+            <p>They are bigger because they include everything that had to bend. Years of compensating, the effort of masking, the accumulated cost of a hundred small accommodations made privately and never counted. All of that is bent light. None of it is the horizon.</p>
+            <div class="pull-quote pink">What people see of an unmet need is the disruption, not the need — and the disruption is the larger object.<span class="attr">the second half of the geometry</span></div>
+            <p>Two things follow, and they cut in opposite directions, which is how you know it isn't a slogan.</p>
+            <p><strong>For anyone doing the observing:</strong> do not size the need by the disruption. You are looking at magnified darkness. The person is not as large a problem as the wreckage suggests, and treating the wreckage as the measurement is how support plans get built for a person who does not exist.</p>
+            <p><strong>And for anyone being observed:</strong> the disruption is not the measure of you either. It was inflated on the way out — by the bending, by the years, by an environment that made a small thing throw a long shadow.</p>
+            <p>In physics the magnification is exactly 3√3/2 and you can divide it out. <span class="violet">In a life there is no such factor</span>, which is precisely why you ask the person rather than measuring their shadow.</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 180" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig9-title fig9-desc">
+              <title id="fig9-title">The magnification, applied</title>
+              <desc id="fig9-desc">A small circle labelled the need beside the much wider dark circle it casts, labelled what is observed, with the intervening space labelled years of bending and accumulated cost.</desc>
+              <circle cx="96" cy="80" r="48" fill="rgba(6,6,14,0.85)" stroke="var(--pink)" stroke-width="1.4"/>
+              <circle cx="96" cy="80" r="18.5" fill="rgba(167,139,250,0.16)" stroke="var(--violet)" stroke-width="1.5"/>
+              <!-- The label sits OUTSIDE the dark disc deliberately. Inside, it was print ink on a
+                   hardcoded dark SVG fill — which survives print because SVG fills are content —
+                   and measured 1.76:1. A leader line costs nothing; a legible label is not optional. -->
+              <path d="M96 61.5 L96 28" stroke="var(--violet)" stroke-width="1" stroke-dasharray="2 2"/>
+              <text x="96" y="22" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--violet)">the need</text>
+              <path d="M114.5 80 L144 80" stroke="rgba(252,211,77,0.7)" stroke-width="1" stroke-dasharray="2 2"/>
+              <g font-family="Space Mono, monospace" font-size="6.5">
+                <path d="M158 56 H184" stroke="var(--pink)" stroke-width="1.3"/>
+                <text x="190" y="59" fill="var(--pink)">what is observed</text>
+                <path d="M158 80 H184" stroke="var(--violet)" stroke-width="1.3"/>
+                <text x="190" y="83" fill="var(--violet)">what is there</text>
+              </g>
+              <text x="190" y="106" font-family="Space Mono, monospace" font-size="6" fill="var(--sp-secondary)">between them:</text>
+              <text x="190" y="117" font-family="Space Mono, monospace" font-size="6" fill="var(--sp-secondary)">years of bending</text>
+              <text x="150" y="150" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.5" letter-spacing="0.8" fill="var(--gold)">the darkness is magnified · the object is not</text>
+              <text x="150" y="164" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="0.8" fill="var(--sp-secondary)">in physics the factor is 3√3 / 2</text>
+              <text x="150" y="176" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" letter-spacing="1" fill="var(--sp-dim)">in a life there is no factor · so ask</text>
+            </svg>
+            <div class="diagram-caption">Figure 9 · magnified darkness</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Shadow Is Bigger · Stimpunks</span>
+        <span class="spread-footer-right">10</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 11: the guardrail ════ -->
+  <div class="spread" id="spread-11">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The guardrail</div>
+          <h2 class="spread-heading" id="unseeable-is-not-a-blank-cheque">Unseeable is not a blank cheque</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">There is a comfortable misreading of everything above, and it needs closing off on the page rather than in a footnote.</p>
+            <p>The misreading is: <em>since it can't be photographed, no claim about it can be checked, so any claim will do.</em> That is not what happened here, and the EHT is its refutation.</p>
+            <p>They could not see the thing. They measured it anyway — Sagittarius A*'s ring at <span class="gold">51.8 ± 2.3 microarcseconds</span>, matching what general relativity predicts for an object of about four million solar masses at that distance, to within a few percent. <strong>Not being able to see something is not the same as not being able to know anything about it.</strong> It only means the evidence arrives sideways.</p>
+            <p>So the claim this zine actually makes is narrow, and it is worth saying in one sentence: <span class="violet">an unphotographable thing can still be measured, argued about, constrained, and got wrong.</span></p>
+            <p>Which is also the honest version of the human half. Self-report is not magic and it is not beyond question; it is the instrument available, and like every instrument it is checked against consequences, against other people's accounts, against what happens next. Asking is not a lowering of standards. <strong>It is the measurement.</strong></p>
+            <div class="refusals">
+              <div class="refusal"><span class="refusal-tag">Not:</span><span><strong>that anyone is a black hole.</strong> That reading is right there — devouring, dark, pulling everything in — and we refuse it flatly. Nothing in this zine is a description of a person. The black hole is the <em>observation problem</em>, not the human being.</span></div>
+              <div class="refusal"><span class="refusal-tag">Not:</span><span><strong>that being invisible is romantic.</strong> It is a measurement failure, and it costs people diagnoses, benefits, jobs and belief. There is nothing beautiful about going unseen; the beautiful thing is the eight telescopes.</span></div>
+              <div class="refusal"><span class="refusal-tag">Not:</span><span><strong>that "you can't see it" settles anything.</strong> Three and a half petabytes on hard drives, flown off a continent, exist because a collaboration declined that sentence.</span></div>
+              <div class="refusal"><span class="refusal-tag">Not:</span><span><strong>a proof about people.</strong> Spreads nine and ten are a <em>rhyme</em>. The geometry is exact and checkable; the analogy is neither, and it licenses nothing on its own. A rhyme, not a proof.</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 168" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig10-title fig10-desc">
+              <title id="fig10-title">Unmeasured is not unconstrained</title>
+              <desc id="fig10-desc">A wide band labelled anything goes is crossed out, beside a narrow band labelled fifty one point eight plus or minus two point three microarcseconds, showing that an unseen thing was still tightly constrained.</desc>
+              <text x="76" y="24" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" letter-spacing="0.8" fill="var(--pink)">the misreading</text>
+              <rect x="18" y="36" width="116" height="34" rx="3" fill="rgba(244,114,182,0.06)" stroke="rgba(244,114,182,0.45)" stroke-width="1.2" stroke-dasharray="4 3"/>
+              <text x="76" y="57" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--pink)">anything goes</text>
+              <g stroke="rgba(244,114,182,0.75)" stroke-width="1.4">
+                <path d="M24 40 L128 66"/><path d="M128 40 L24 66"/>
+              </g>
+              <text x="76" y="88" text-anchor="middle" font-family="Space Mono, monospace" font-size="6" fill="var(--sp-dim)">not what happened</text>
+              <line x1="150" y1="18" x2="150" y2="118" stroke="rgba(167,139,250,0.25)" stroke-width="1" stroke-dasharray="4 4"/>
+              <text x="224" y="24" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" letter-spacing="0.8" fill="var(--gold)">what happened</text>
+              <path d="M170 53 H278" stroke="rgba(251,191,36,0.4)" stroke-width="1"/>
+              <rect x="212" y="46" width="24" height="14" rx="2" fill="rgba(251,191,36,0.25)" stroke="var(--gold)" stroke-width="1.2"/>
+              <path d="M212 44 L212 62 M236 44 L236 62" stroke="var(--gold)" stroke-width="1.3"/>
+              <text x="224" y="78" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--gold)">51.8 ± 2.3 µas</text>
+              <text x="224" y="90" text-anchor="middle" font-family="Space Mono, monospace" font-size="6" fill="var(--sp-secondary)">never seen · tightly pinned</text>
+              <text x="150" y="134" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.5" letter-spacing="0.8" fill="var(--sp-secondary)">the evidence arrived sideways</text>
+              <text x="150" y="150" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="0.8" fill="var(--sp-secondary)">it still arrived</text>
+              <text x="150" y="164" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" letter-spacing="1" fill="var(--sp-dim)">asking is not a lower standard</text>
+            </svg>
+            <div class="diagram-caption">Figure 10 · constrained without a photograph</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Shadow Is Bigger · Stimpunks</span>
+        <span class="spread-footer-right">11</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 12: COLOPHON ════ -->
+  <div class="spread" id="spread-12">
+    <div class="interior">
+      <div class="colophon">
+        <div>
+          <div class="colophon-top">
+            <span class="colophon-ls">L★S</span>
+            <p class="colophon-phrase">The absence of a photograph was never evidence of an absent thing.</p>
+          </div>
+
+          <div class="series-list">
+            <div class="series-item"><span class="series-num">No. 10</span> The Dead Stars Still Reach Us — what arrives late, and still arrives</div>
+            <div class="series-item"><span class="series-num">No. 25</span> Shared Signal — one continuous field, carrying connection across distance</div>
+            <div class="series-item"><span class="series-num">No. 39</span> Five Sigma — the bar a discipline sets against wanting the answer</div>
+            <div class="series-item"><span class="series-num">No. 44</span> You Cannot Flatten a Sphere — what a summary must throw away</div>
+            <div class="series-item current"><span class="series-num">No. 48</span> The Shadow Is Bigger Than the Thing — known only by its effect ← you are here</div>
+          </div>
+
+          <div class="reflect">
+            <div class="reflect-label">Reflection</div>
+            <p class="reflect-q">What do people see of you that is really the bending — the accumulated cost — rather than the thing itself?</p>
+            <p class="reflect-q">Whose size have you estimated from the disruption, without dividing out the years?</p>
+            <p class="reflect-q">Where in your life has "I can't see it" been treated as "it isn't there"?</p>
+            <p class="reflect-q">What would it take to build the instrument instead — to measure what bends, rather than waiting for a photograph that cannot exist?</p>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="colophon-h" id="sources">Sources</h3>
+          <div class="colophon-body">
+            <p><strong>The images.</strong> Event Horizon Telescope Collaboration, "First M87 Event Horizon Telescope Results. I. The Shadow of the Supermassive Black Hole," <em>The Astrophysical Journal Letters</em> 875, L1 (2019) — an asymmetric bright emission ring of diameter <strong>42 ± 3 µas</strong> around a central brightness depression, and a central mass of <strong>(6.5 ± 0.7) × 10⁹ M☉</strong>, observed at 1.3 mm. The blind-imaging procedure is in Paper IV of the same series (<em>ApJL</em> 875, L4): four teams, each blind to the others, using both CLEAN and regularized maximum likelihood, "to avoid shared human bias." Sagittarius A* figures — ring <strong>51.8 ± 2.3 µas</strong>, roughly four million solar masses at about 27,000 light years — are from EHT Collaboration, "First Sagittarius A* Event Horizon Telescope Results. I.," <em>ApJL</em> 930, L12 (2022), released 12 May 2022.</p>
+            <p><strong>The geometry.</strong> For a Schwarzschild (non-spinning) black hole the event horizon lies at <em>r</em> = 2<em>GM/c²</em>, the photon sphere at 3<em>GM/c²</em>, and the shadow's apparent radius to a distant observer at 3√3 <em>GM/c²</em> ≈ 5.196 <em>GM/c²</em>. The ratio quoted throughout, 3√3/2 ≈ 2.598, is that arithmetic. The <strong>weak dependence of shadow size on spin and inclination</strong> is from Dimitrios Psaltis, Feryal Özel, Chi-Kwan Chan &amp; Daniel P. Marrone, "A General Relativistic Null Hypothesis Test with Event Horizon Telescope Observations of the Black-Hole Shadow in Sgr A*," <em>The Astrophysical Journal</em> 814, 115 (2015), whose abstract states that the half opening angle of a Kerr black-hole shadow "is always equal to (5 ± 0.2) <em>GM/Dc²</em>" — the ~4% figure used on spread 4. <strong>Corrected during the check:</strong> an earlier draft attributed this to <em>Physical Review Letters</em> 116, 031101 (2016), which is a different paper, by Johannsen et al. The <em>mechanism</em> usually given for the near-constancy — a cancellation between frame-dragging and the quadrupole structure of the Kerr metric — was <strong>not confirmed in a primary source and is therefore not asserted on the page</strong>; the zine states the measured constancy and calls it a quirk of the equations, which is what we can stand behind.</p>
+            <p><strong>The instrument.</strong> The April 2017 campaign observed on four days between 5 and 11 April with eight radio telescopes at six geographic sites — Arizona, Chile, Hawai'i, Mexico, Spain and the South Pole — recording roughly 350 TB per telescope per day, about <strong>3.5 PB</strong> in total, to helium-filled hard drives shipped to two correlators. The Antarctic drives could not be flown out until the austral winter ended. Figures from the EHT collaboration's own data-processing paper (<em>ApJL</em> 875, L3) and ESO's release <em>eso1907</em>, which also gives the collaboration size as more than 200 researchers across 13 stakeholder institutes.</p>
+            <p><strong>The orbital clocks.</strong> The innermost stable circular orbit takes roughly <strong>thirty minutes</strong> around Sagittarius A* and roughly <strong>thirty days</strong> around M87*, which is why the nearer source was the harder one to image and why static-source imaging assumptions had to be reformulated for it. <strong>Given as approximate</strong>; the dynamical timescales quoted in the EHT literature span about 4–56 minutes for Sgr A* and about 5–61 days for M87*.</p>
+            <p><strong>Our own arithmetic, flagged as such.</strong> The "orange on the Moon" comparison is ours, not the collaboration's: 42 µas is 2.04 × 10⁻¹⁰ radians, which at the Moon's mean distance of about 384,400 km subtends roughly <strong>7.8 cm</strong>. We have used our own figure rather than repeating any of the widely-circulated comparisons, none of which we could trace to a primary statement.</p>
+            <p><strong>What this zine deliberately does not do.</strong> It does not use Hawking radiation, the no-hair theorem, the information paradox, or the singularity — each is a real and interesting subject, and none of them is the observation problem this piece is about. It does not use tidal forces, which <a href="the-nearest-body-zine.html">No. 10</a> already spends, or the relativity of simultaneity, which belongs to <a href="no-universal-now-zine.html">No. 11</a>. <strong>No claim is made that the geometry proves anything about people:</strong> spreads 9 and 10 are an analogy and the zine says so on its own face. A rhyme, not a proof.</p>
+            <p><strong>Origin.</strong> Written at the request of a community member, through the open call at <a href="we-are-all-star-stuff.html">We Are All Star Stuff</a>.</p>
+          </div>
+          <div class="colophon-footer">
+            <a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks Foundation</a> × <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a><br>
+            stimpunks.org · morerealms.com · starstuff.earth<br>
+            <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> · open edition · print freely
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Shadow Is Bigger · Stimpunks</span>
+        <span class="spread-footer-right">12</span>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /zine-shell -->
+
+<script>
+  let current = 1;
+  const total = 12;
+
+  function changePage(dir) {
+    const next = current + dir;
+    if (next < 1 || next > total) return;
+    document.getElementById('spread-' + current).classList.remove('active');
+    current = next;
+    document.getElementById('spread-' + current).classList.add('active');
+    document.getElementById('page-counter').textContent = current + ' / ' + total;
+    document.getElementById('prev-btn').disabled = current === 1;
+    document.getElementById('next-btn').disabled = current === total;
+    document.getElementById('prev-btn').classList.toggle('active', current > 1);
+    document.getElementById('next-btn').classList.toggle('active', current < total);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') changePage(1);
+    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   changePage(-1);
+  });
+
+  document.getElementById('prev-btn').disabled = true;
+  document.getElementById('next-btn').classList.add('active');
+</script>
+<script src="starstuff.js" defer></script>
+</body>
+</html>
