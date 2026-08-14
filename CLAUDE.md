@@ -159,7 +159,7 @@ that disclosure is the convention, and **How We Got Here duly carries it too**:
 |------------|------|---------|
 | **Field Guides** | **form** — a catalogue of same-shaped entries, none ranked | Field Guides 1–12 (134 entries; 139 cards counting the five *turtles people made*, which FG 10 deliberately does not file as entries) |
 | **How We Got Here** | **form** — a Burke chain, one link per spread, joints marked | 38, 39, 40, 41, 42, 43 |
-| **Print** | **medium** — paper | 5 broadsides + 1 typographic sheet |
+| **Print** | **medium** — paper | 8 broadsides + 2 that are not broadsides (a typographic specimen, and a blank sheet) |
 | **Sound** | **medium** — audio | 4 racks, 121 cards / 117 distinct songs |
 
 - **Why the chains exist — reclaim science from the things that wear its clothes.** Ryan's framing,
