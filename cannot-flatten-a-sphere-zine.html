@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0a0a14">
+<link rel="canonical" href="https://starstuff.earth/cannot-flatten-a-sphere-zine.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta name="description" content="In 1827 Gauss proved the Theorema Egregium: the curvature of a surface is intrinsic, so you can bend paper into a cylinder or a cone but never onto a sphere. Wrapping an orange in paper is not a skill problem — it is forbidden. The consequence is that no flat map of the world can preserve everything at once, and every projection must sacrifice area, angle, distance or direction. Mercator chose angle, in 1569, so that a constant compass bearing would be a straight line; it is superb for navigation and it swells Greenland to the apparent size of Africa, which is roughly fourteen times larger. The map does not say what it chose. Then Tissot's answer, from 1859: you cannot remove the distortion, but you can draw it — a grid of ellipses showing exactly what this projection did to this place. This zine follows that theorem to the single number: an IQ, a support level, a functioning label, each a projection of a many-dimensional person onto one axis. The theorem guarantees information was lost. The number never says which. So ask what the summary was optimised for and you learn who it was made for — and if you must summarise, publish the indicatrix. A rhyme, not a proof.">
+<!-- Open Graph / link unfurl -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Star Stuff · Stimpunks Foundation × More Realms">
+<meta property="og:url" content="https://starstuff.earth/cannot-flatten-a-sphere-zine.html">
+<meta property="og:title" content="You Cannot Flatten a Sphere">
+<meta property="og:description" content="Gauss proved that no flat map can preserve everything. Every projection chooses what to sacrifice — and never says so on its face. Then somebody does it to a person.">
+<meta property="og:image" content="https://starstuff.earth/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A rainbow-hued cosmic image — we are all made of star stuff.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="You Cannot Flatten a Sphere">
+<meta name="twitter:description" content="A theorem from 1827, a map from 1569, and what a single number has to throw away to be a single number.">
+<meta name="twitter:image" content="https://starstuff.earth/og-card.jpg">
+<title>You Cannot Flatten a Sphere — Stimpunks Zine No. 44</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="starstuff.css">
+<style>
+  :root {
+    --void:  var(--sp-void-deep);
+    --deep:  var(--sp-deep);
+    --page:  var(--sp-page);
+    --violet:var(--sp-purple);
+    --pink:  var(--sp-pink);
+    --gold:  var(--sp-gold);
+    --cyan:  var(--sp-cyan);
+    --green: var(--sp-green);
+    --ember: #c1653a;
+    --accent: var(--sp-green);         /* this zine's identity accent — the globe, and the ground it stands for */
+    --star-white: var(--sp-white-soft);
+    --stardust:   var(--sp-secondary-soft);
+    --dim:   var(--sp-dim);
+    --dim2:  var(--sp-dim-soft);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--void);
+    font-family: 'Atkinson Hyperlegible Next', system-ui, sans-serif;
+    color: var(--star-white);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── STARFIELD (green · cyan · white — a world seen from off it) ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 12% 16%, rgba(74,222,128,0.66) 0%, transparent 100%),
+      radial-gradient(1px 1px at 28% 35%, rgba(244,244,251,0.6) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 45% 9%, rgba(34,211,238,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 60% 65%, rgba(244,244,251,0.66) 0%, transparent 100%),
+      radial-gradient(2px 2px at 79% 23%, rgba(74,222,128,0.48) 0%, transparent 100%),
+      radial-gradient(1px 1px at 89% 51%, rgba(34,211,238,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 95% 80%, rgba(74,222,128,0.5) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 7% 59%, rgba(244,244,251,0.56) 0%, transparent 100%),
+      radial-gradient(1px 1px at 36% 85%, rgba(74,222,128,0.46) 0%, transparent 100%),
+      radial-gradient(1px 1px at 52% 43%, rgba(34,211,238,0.46) 0%, transparent 100%),
+      radial-gradient(2px 2px at 21% 88%, rgba(74,222,128,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 72% 7%, rgba(244,244,251,0.76) 0%, transparent 100%),
+      radial-gradient(1px 1px at 45% 60%, rgba(74,222,128,0.42) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 32% 18%, rgba(244,244,251,0.48) 0%, transparent 100%),
+      radial-gradient(1px 1px at 82% 89%, rgba(34,211,238,0.46) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .zine-shell { position: relative; z-index: 1; max-width: 820px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+
+  .spectrum-line { height: 2px; border: none; border-radius: 2px; background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); }
+
+  /* ── NAV ── */
+  .nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2.5rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(74,222,128,0.2); }
+  .nav-brand { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--dim); }
+  .nav-controls { display: flex; gap: 0.5rem; align-items: center; }
+  .nav-btn { background: none; border: 1px solid rgba(74,222,128,0.35); color: var(--stardust); font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.15em; padding: 0.4rem 0.85rem; border-radius: 2px; cursor: pointer; transition: all 0.2s ease; text-transform: uppercase; }
+  .nav-btn:hover { background: rgba(74,222,128,0.15); border-color: rgba(74,222,128,0.6); color: var(--star-white); }
+  .nav-btn.active { background: rgba(74,222,128,0.20); border-color: var(--accent); color: var(--star-white); }
+  .page-counter { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.2em; color: var(--dim2); }
+
+  .spread { display: none; animation: fadeIn 0.5s ease forwards; }
+  .spread.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ── COVER ── */
+  .cover-spread {
+    position: relative; min-height: 520px; border-radius: 4px; overflow: hidden;
+    background:
+      radial-gradient(ellipse at 22% 20%, rgba(74,222,128,0.13) 0%, transparent 52%),
+      radial-gradient(ellipse at 80% 26%, rgba(34,211,238,0.12) 0%, transparent 52%),
+      radial-gradient(ellipse at 68% 82%, rgba(74,222,128,0.09) 0%, transparent 52%),
+      radial-gradient(ellipse at 28% 80%, rgba(167,139,250,0.07) 0%, transparent 52%),
+      var(--deep);
+    border: 1px solid rgba(167,139,250,0.25);
+    box-shadow: inset 0 0 80px rgba(74,222,128,0.06), 0 0 0 4px rgba(255,255,255,0.03);
+    display: flex; flex-direction: column; justify-content: flex-end; padding: 3rem;
+  }
+  .cover-motif { position: absolute; top: -4px; right: -14px; width: 340px; height: 340px; opacity: 0.8; pointer-events: none; }
+  .cover-issue { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.5em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.5rem; }
+  .cover-title { font-weight: 700; font-size: clamp(2rem, 5.6vw, 3.2rem); line-height: 1.03; color: var(--star-white); letter-spacing: -0.01em; margin-bottom: 0.9rem; }
+  .cover-title .amp { color: var(--accent); font-style: italic; }
+  .cover-subtitle { font-size: 1rem; color: var(--stardust); opacity: 0.85; margin-bottom: 1.5rem; max-width: 470px; line-height: 1.55; }
+  .cover-byline { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.14em; color: var(--dim); margin-bottom: 1.8rem; }
+  .cover-byline strong { color: var(--stardust); font-weight: 700; }
+  .cover-rule { width: 220px; max-width: 60%; margin-bottom: 1.3rem; }
+  .cover-meta { display: flex; gap: 2rem; align-items: center; }
+  .cover-ls { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 1.4rem; color: var(--accent); letter-spacing: 0.05em; }
+  .cover-meta-text { font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--dim2); line-height: 1.9; }
+  .cover-corner { position: absolute; top: 2rem; right: 2.5rem; text-align: right; }
+  .cover-corner-num { font-weight: 700; font-size: 4.5rem; line-height: 1; color: var(--accent); opacity: 0.24; }
+  .cover-corner-label { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--violet); display: block; margin-top: -0.3rem; }
+
+  /* ── INTERIOR ── */
+  .interior { background: var(--page); border: 1px solid rgba(167,139,250,0.15); border-radius: 4px; overflow: hidden; min-height: 480px; }
+  .spread-2col { display: grid; grid-template-columns: 1fr 1fr; min-height: 480px; }
+  .spread-left, .spread-right { padding: 3rem 2.4rem; position: relative; }
+  .spread-left { border-right: 1px solid rgba(167,139,250,0.12); }
+
+  .spread-2col.stacked { display: flex; flex-direction: column; }
+  .spread-2col.stacked > .spread-left,
+  .spread-2col.stacked > .spread-right { border-right: none; }
+  .spread-2col.stacked > .col-diagram { order: 2; padding-top: 0; }
+  .spread-2col.stacked > .col-text { padding-left: max(2.4rem, calc((100% - 32rem) / 2)); padding-right: max(2.4rem, calc((100% - 32rem) / 2)); }
+  .spread-2col.stacked .diagram-wrap { height: auto; }
+  .spread-2col.stacked .diagram { max-width: 380px; }
+
+  .eyebrow { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.1rem; }
+  .body-text { font-size: 0.98rem; line-height: 1.72; color: var(--stardust); }
+  .body-text p { margin-bottom: 1rem; }
+  .body-text p:last-child { margin-bottom: 0; }
+  .body-text strong { font-weight: 700; color: var(--star-white); }
+  .body-text em { font-style: italic; color: var(--star-white); }
+  .body-text a { color: var(--violet); text-decoration: none; border-bottom: 1px solid rgba(167,139,250,0.4); }
+  .body-text a:hover { border-bottom-color: var(--violet); color: var(--star-white); }
+  .body-text .violet { color: var(--violet); font-weight: 700; }
+  .body-text .pink { color: var(--pink); font-weight: 700; }
+  .body-text .gold { color: var(--gold); font-weight: 700; }
+  .body-text .cyan { color: var(--cyan); font-weight: 700; }
+  .body-text .green { color: var(--green); font-weight: 700; }
+  .body-text .dim { color: var(--dim); }
+  .body-text .lede { font-size: 1.08rem; color: var(--star-white); }
+
+  .spread-heading { font-weight: 700; font-size: 1.9rem; line-height: 1.12; color: var(--star-white); margin-bottom: 1.1rem; letter-spacing: -0.01em; margin-top: 0; scroll-margin-top: 5rem; }
+  .spread-heading .spectrum-word { background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .rule { width: 40px; margin: 1rem 0; }
+
+  .pull-quote { font-size: 1.18rem; font-weight: 700; line-height: 1.4; color: var(--star-white); border-left: 3px solid var(--accent); padding-left: 1.1rem; margin: 1.4rem 0; font-style: italic; }
+  .pull-quote.violet { border-left-color: var(--violet); }
+  .pull-quote.cyan { border-left-color: var(--cyan); }
+  .pull-quote.gold { border-left-color: var(--gold); }
+  .pull-quote.pink { border-left-color: var(--pink); }
+  .pull-quote .attr { display: block; font-family: 'Space Mono', monospace; font-size: 0.6rem; font-weight: 400; font-style: normal; letter-spacing: 0.08em; color: var(--dim); margin-top: 0.6rem; }
+
+  .callout { margin: 1.3rem 0; padding: 1rem 1.15rem; background: rgba(74,222,128,0.06); border: 1px solid rgba(74,222,128,0.22); border-radius: 4px; font-size: 1rem; font-style: italic; color: var(--star-white); line-height: 1.55; }
+  .callout .attr { display: block; font-family: 'Space Mono', monospace; font-size: 0.58rem; font-style: normal; letter-spacing: 0.06em; color: var(--dim); margin-top: 0.5rem; }
+
+  .note { font-size: 0.84rem; line-height: 1.6; color: var(--dim); border-left: 2px solid rgba(167,139,250,0.28); padding-left: 0.9rem; margin: 1.1rem 0; }
+  .note strong { color: var(--stardust); font-weight: 700; }
+
+  /* ── THE TRADE-OFF TABLE ── */
+  .trades { width: 100%; border-collapse: collapse; margin: 1.3rem 0; font-size: 0.84rem; }
+  .trades caption { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dim); text-align: left; padding-bottom: 0.6rem; }
+  .trades th { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--stardust); text-align: left; padding: 0.5rem 0.6rem; border-bottom: 1px solid rgba(74,222,128,0.28); font-weight: 700; }
+  .trades td { padding: 0.55rem 0.6rem; border-bottom: 1px solid rgba(167,139,250,0.1); color: var(--stardust); line-height: 1.5; vertical-align: top; }
+  .trades td.keeps { color: var(--green); font-weight: 700; }
+  .trades td.loses { color: var(--pink); }
+
+  /* ── DIAGRAMS ── */
+  .diagram-wrap { display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; }
+  .diagram { width: 100%; max-width: 300px; display: block; }
+  .diagram-caption { font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim); text-align: center; margin-top: 0.9rem; line-height: 1.9; }
+
+  /* ── THE PROFILE BARS ── */
+  .profile { margin: 1.3rem 0; }
+  .prow { display: flex; align-items: center; gap: 0.7rem; padding: 0.28rem 0; }
+  .plabel { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--stardust); width: 6.6rem; flex-shrink: 0; text-align: right; }
+  .ptrack { flex: 1; height: 11px; background: rgba(167,139,250,0.1); border-radius: 6px; overflow: hidden; }
+  .pfill { height: 100%; border-radius: 6px; background: var(--accent); }
+
+  /* ── REFUSALS ── */
+  .refusals { margin-top: 1.3rem; }
+  .refusal { font-size: 0.88rem; line-height: 1.5; color: var(--stardust); padding: 0.55rem 0; border-bottom: 1px solid rgba(167,139,250,0.1); display: flex; gap: 0.6rem; align-items: baseline; }
+  .refusal:last-child { border-bottom: none; }
+  .refusal-tag { font-family: 'Space Mono', monospace; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ember); flex-shrink: 0; padding-top: 0.12rem; }
+  .refusal strong { color: var(--star-white); font-weight: 700; }
+
+  /* ── COLOPHON ── */
+  .colophon { padding: 3rem; display: flex; flex-direction: column; justify-content: space-between; min-height: 480px; background: radial-gradient(ellipse at 82% 18%, rgba(74,222,128,0.09) 0%, transparent 50%), radial-gradient(ellipse at 18% 85%, rgba(167,139,250,0.07) 0%, transparent 50%), var(--page); }
+  .colophon-top { border-bottom: 1px solid rgba(167,139,250,0.14); padding-bottom: 1.3rem; margin-bottom: 1.2rem; }
+  .colophon-ls { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 2.4rem; color: var(--accent); letter-spacing: 0.05em; display: block; margin-bottom: 0.4rem; }
+  .colophon-phrase { font-size: 0.98rem; font-weight: 700; font-style: italic; color: var(--stardust); }
+  .series-list { display: flex; flex-direction: column; gap: 0.38rem; margin-bottom: 1.2rem; }
+  .series-item { font-size: 0.72rem; color: var(--dim); letter-spacing: 0.01em; display: flex; gap: 0.7rem; align-items: baseline; line-height: 1.45; }
+  .series-item.current { color: var(--accent); font-weight: 700; }
+  .series-num { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim2); flex-shrink: 0; }
+  .series-item.current .series-num { color: var(--accent); }
+  .reflect { border-top: 1px solid rgba(167,139,250,0.14); padding-top: 1rem; margin-bottom: 1.2rem; }
+  .reflect-label { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.65rem; }
+  .reflect-q { font-size: 0.86rem; line-height: 1.55; color: var(--stardust); margin-bottom: 0.55rem; font-style: italic; }
+  .reflect-q:last-child { margin-bottom: 0; }
+  .colophon-body { font-size: 0.75rem; color: var(--dim); line-height: 1.75; margin-bottom: 1.2rem; }
+  .colophon-body a { color: var(--violet); text-decoration: none; border-bottom: 1px solid rgba(167,139,250,0.4); }
+  .colophon-body a:hover { border-bottom-color: var(--violet); }
+  .colophon-h { font-family: 'Space Mono', monospace; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: var(--stardust); margin: 1rem 0 0.4rem; scroll-margin-top: 5rem; }
+  .colophon-footer { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--dim); line-height: 2.2; border-top: 1px solid rgba(167,139,250,0.14); padding-top: 1rem; }
+
+  /* ── SPREAD FOOTER ── */
+  .spread-footer { display: flex; justify-content: space-between; align-items: center; padding: 0.9rem 2.4rem; border-top: 1px solid rgba(167,139,250,0.1); }
+  .spread-footer-left { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--dim); }
+  .spread-footer-right { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; color: var(--accent); }
+
+  .twinkle { position: fixed; width: 3px; height: 3px; border-radius: 50%; animation: twinkle-anim 3s ease-in-out infinite; pointer-events: none; z-index: 0; }
+
+  @media (max-width: 600px) {
+    .spread-2col { grid-template-columns: 1fr; }
+    .spread-left { border-right: none; border-bottom: 1px solid rgba(167,139,250,0.12); }
+    .spread-2col.stacked > .spread-left { border-bottom: none; }
+    .spread-2col.stacked > .col-text { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .cover-spread { padding: 2rem; min-height: 420px; }
+    .cover-motif { width: 224px; height: 224px; top: -4px; right: -24px; opacity: 0.5; }
+    .cover-title { font-size: 1.85rem; }
+    .spread-heading { font-size: 1.55rem; }
+    .spread-left, .spread-right { padding: 2rem 1.5rem; }
+    .colophon { padding: 2rem 1.5rem; }
+    .trades { font-size: 0.76rem; }
+    .trades th, .trades td { padding: 0.4rem 0.35rem; }
+    .plabel { width: 5rem; font-size: 0.52rem; }
+  }
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"You Cannot Flatten a Sphere","description":"In 1827 Carl Friedrich Gauss published the Theorema Egregium in Disquisitiones generales circa superficies curvas: the Gaussian curvature of a surface is intrinsic, preserved under any bending that does not stretch. A flat sheet has zero curvature and a sphere does not, so no bending will ever wrap paper smoothly around an orange, and no flat map of the world can preserve all distances at once. This is a theorem rather than a limitation of technique. The same result explains why folding a slice of pizza stops it flopping: curving it one way forces it to stay straight the other. The consequence for maps is that every projection must sacrifice something — area, angle, distance or direction — and the choice is never neutral. Gerardus Mercator's 1569 projection preserves angles so that a line of constant compass bearing is straight, which is superb for navigation and swells Greenland to the apparent size of Africa, a continent roughly fourteen times larger; the map does not state what it chose. The Gall–Peters controversy of 1973 made the argument public and messy, and there is no undistorted map to retreat to. Nicolas Auguste Tissot's answer, from 1859 and popularised in his 1881 Mémoire sur la représentation des surfaces, is the indicatrix: you cannot remove the distortion, but you can draw it, as a grid of ellipses showing exactly what a projection has done at each point. This zine follows the theorem to the single number — an IQ score, a DSM-5 support level, a functioning label — each a projection of a many-dimensional person onto one axis. The theorem guarantees that information was necessarily lost; the number never records which. Ask what a summary was optimised for and you learn who it was made for, as Mercator was made for sailors. And if you must summarise, publish the indicatrix. A rhyme, not a proof.","image":"https://starstuff.earth/og-card.jpg","url":"https://starstuff.earth/cannot-flatten-a-sphere-zine.html","mainEntityOfPage":"https://starstuff.earth/cannot-flatten-a-sphere-zine.html","publisher":[{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/","logo":{"@type":"ImageObject","url":"https://starstuff.earth/og-card.jpg"}},{"@type":"Organization","name":"More Realms","url":"https://morerealms.com/"}],"isPartOf":{"@type":"WebSite","name":"Star Stuff","url":"https://starstuff.earth/"}}</script>
+</head>
+<body>
+
+<div class="twinkle" style="top:11%;left:14%;background:var(--green);box-shadow:0 0 6px var(--green);animation-delay:-0.5s"></div>
+<div class="twinkle" style="top:23%;left:85%;background:var(--star-white);box-shadow:0 0 6px var(--star-white);animation-delay:-1.4s"></div>
+<div class="twinkle" style="top:54%;left:6%;background:var(--green);box-shadow:0 0 6px var(--green);animation-delay:-2.2s"></div>
+<div class="twinkle" style="top:75%;left:92%;background:var(--cyan);box-shadow:0 0 6px var(--cyan);animation-delay:-0.8s"></div>
+<div class="twinkle" style="top:88%;left:29%;background:var(--star-white);box-shadow:0 0 6px var(--star-white);animation-delay:-1.9s"></div>
+<div class="twinkle" style="top:39%;left:95%;background:var(--green);box-shadow:0 0 6px var(--green);animation-delay:-3.0s"></div>
+
+<div class="zine-shell">
+
+  <nav class="ss-nav" style="--nav-accent:#4ade80;" aria-label="Star Stuff collection">
+    <span class="ss-nav-home-group"><a class="ss-nav-home" href="index.html"><span class="ss-star" aria-hidden="true">★</span> stuff</a><a class="ss-nav-about" href="about.html">about</a>
+      <a class="ss-nav-search" href="search.html">search</a></span>
+    <span class="ss-nav-links">
+      <a class="ss-nav-prev" href="shared-signal-zine.html"><span class="ss-nav-arrow" aria-hidden="true">&lsaquo;</span> <span class="ss-nav-label">Shared Signal</span></a>
+      <a class="ss-nav-next" href="collection-how-we-got-here.html"><span class="ss-nav-label">How We Got Here</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
+    </span>
+    <a class="ss-nav-collection" href="collection-star-stuff.html"><span class="ss-nav-collection-label">Collection</span> <span class="ss-nav-collection-name">Star Stuff</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
+  </nav>
+
+  <nav class="nav">
+    <div class="nav-brand"><a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks</a> × <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a> · Zine No. 44</div>
+    <div class="nav-controls">
+      <button class="nav-btn" id="prev-btn" onclick="changePage(-1)">← prev</button>
+      <span class="page-counter" id="page-counter">1 / 12</span>
+      <button class="nav-btn" id="next-btn" onclick="changePage(1)">next →</button>
+    </div>
+  </nav>
+
+  <!-- ════ SPREAD 1: COVER ════ -->
+  <div class="spread active" id="spread-1">
+    <div class="cover-spread">
+      <svg class="cover-motif" viewBox="0 0 340 340" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <!-- A sphere with a graticule, and a flat sheet beneath it that cannot be made to fit:
+             the sheet's grid tears open toward the edges. Art held in the UPPER THIRD of the box
+             — the cover is 520px and the title sits at its foot, so anything past y≈240 in this
+             viewBox lands on the words. -->
+        <g transform="translate(18,26) scale(0.80)">
+          <circle cx="112" cy="70" r="56" fill="rgba(74,222,128,0.07)" stroke="rgba(74,222,128,0.55)" stroke-width="1.5"/>
+          <g fill="none" stroke="rgba(74,222,128,0.4)" stroke-width="1">
+            <ellipse cx="112" cy="70" rx="56" ry="19"/>
+            <ellipse cx="112" cy="70" rx="56" ry="38"/>
+            <ellipse cx="112" cy="70" rx="19" ry="56"/>
+            <ellipse cx="112" cy="70" rx="38" ry="56"/>
+          </g>
+          <path d="M112 138 L112 158" stroke="rgba(167,139,250,0.5)" stroke-width="1.2" stroke-dasharray="4 4"/>
+          <!-- the flat sheet, torn -->
+          <path d="M30 172 L194 172 L188 214 L36 214 Z" fill="rgba(255,255,255,0.03)" stroke="rgba(244,244,251,0.4)" stroke-width="1.2"/>
+          <g fill="none" stroke="rgba(244,244,251,0.22)" stroke-width="0.9">
+            <path d="M71 172 L74 214"/><path d="M112 172 L112 214"/><path d="M153 172 L150 214"/>
+            <path d="M32 186 L191 186"/><path d="M34 200 L189 200"/>
+          </g>
+          <g stroke="rgba(244,114,182,0.8)" stroke-width="1.6" fill="none" stroke-linecap="round">
+            <path d="M30 172 L44 190 L30 206"/>
+            <path d="M194 172 L180 190 L192 206"/>
+          </g>
+          <text x="112" y="238" text-anchor="middle" font-family="Space Mono, monospace" font-size="9.5" letter-spacing="1" fill="var(--pink)">it will not lie flat</text>
+        </g>
+      </svg>
+      <div class="cover-corner">
+        <div class="cover-corner-num" aria-hidden="true">44</div>
+        <span class="cover-corner-label">Star Stuff</span>
+      </div>
+      <div class="cover-issue">Stimpunks × More Realms · Zine No. 44</div>
+      <h1 class="cover-title">You Cannot <span class="amp">Flatten</span> a Sphere</h1>
+      <p class="cover-subtitle">on curvature, map projections, and what a single number has to throw away</p>
+      <div class="cover-byline">A theorem from <strong>1827</strong> · a map from <strong>1569</strong> · a rhyme, not a proof</div>
+      <hr class="spectrum-line cover-rule">
+      <div class="cover-meta">
+        <span class="cover-ls">L★S</span>
+        <div class="cover-meta-text">Love You Down To Your Star Stuff<br>open edition · print freely</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 2: the theorem ════ -->
+  <div class="spread" id="spread-2">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Göttingen · 1827</div>
+          <h2 class="spread-heading" id="a-theorem-about-paper">A theorem about paper</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Take a sheet of paper and try to wrap it smoothly around an orange. It creases. It always creases, and no amount of care prevents it.</p>
+            <p>That is not clumsiness. It is <strong>forbidden</strong>, and Carl Friedrich Gauss proved it.</p>
+            <p>His result was so pleasing he called it the <em>Theorema Egregium</em> — the remarkable theorem. It says that a surface's <span class="green">curvature is intrinsic</span>: it belongs to the surface itself, not to how the surface happens to sit in space, and no bending that avoids stretching can change it.</p>
+            <p>A flat sheet has curvature zero. Roll it into a tube — still zero, which is why that works. Roll it into a cone — still zero, which is why that works too. <strong>A sphere's curvature is not zero</strong>, and no bending will get you there. To wrap the orange you must stretch, tear, or crumple.</p>
+            <div class="pull-quote">The paper is not failing you. You are asking it to have a different geometry than it has.<span class="attr">Theorema Egregium, in a kitchen</span></div>
+            <p>You have used this theorem today without noticing. <span class="cyan">Fold a slice of pizza lengthways and the tip stops drooping.</span> By giving it curvature in one direction you have forced it — by Gauss's theorem — to stay straight in the other. The fold is not stiffening the crust. It is a proof, held in one hand.</p>
+            <p>Everything in this zine follows from that one fact, so it is worth being clear about its status: <strong>this is not a rule of thumb, an approximation, or a limit of current technique.</strong> It is a theorem. It was true before anyone made a map and it will be true after the last one is thrown away.</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 178" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig1-title fig1-desc">
+              <title id="fig1-title">What paper can and cannot become</title>
+              <desc id="fig1-desc">A flat sheet, a cylinder and a cone are all marked curvature zero and allowed. A sphere is marked curvature positive and not allowed.</desc>
+              <g font-family="Space Mono, monospace" font-size="6.5" text-anchor="middle">
+                <rect x="20" y="30" width="44" height="34" rx="2" fill="rgba(74,222,128,0.06)" stroke="rgba(74,222,128,0.5)" stroke-width="1.2"/>
+                <text x="42" y="80" fill="var(--green)">sheet</text><text x="42" y="91" fill="var(--sp-dim)">K = 0</text>
+                <path d="M92 30 q10 6 0 12 v22 q10 6 0 12" fill="none" stroke="rgba(74,222,128,0.5)" stroke-width="1.2"/>
+                <path d="M92 30 h34 q10 6 0 12 v22 q10 6 0 12 h-34" fill="rgba(74,222,128,0.06)" stroke="rgba(74,222,128,0.5)" stroke-width="1.2"/>
+                <text x="110" y="91" fill="var(--sp-dim)">K = 0</text><text x="110" y="80" fill="var(--green)">tube</text>
+                <path d="M182 28 L200 64 L164 64 Z" fill="rgba(74,222,128,0.06)" stroke="rgba(74,222,128,0.5)" stroke-width="1.2"/>
+                <ellipse cx="182" cy="64" rx="18" ry="5" fill="none" stroke="rgba(74,222,128,0.5)" stroke-width="1.2"/>
+                <text x="182" y="80" fill="var(--green)">cone</text><text x="182" y="91" fill="var(--sp-dim)">K = 0</text>
+                <circle cx="252" cy="46" r="19" fill="rgba(244,114,182,0.07)" stroke="rgba(244,114,182,0.6)" stroke-width="1.3"/>
+                <ellipse cx="252" cy="46" rx="19" ry="7" fill="none" stroke="rgba(244,114,182,0.4)" stroke-width="0.9"/>
+                <text x="252" y="80" fill="var(--pink)">sphere</text><text x="252" y="91" fill="var(--pink)">K &gt; 0</text>
+              </g>
+              <path d="M20 112 H208" stroke="rgba(74,222,128,0.5)" stroke-width="1.2"/>
+              <text x="114" y="128" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" fill="var(--green)">bend freely between these</text>
+              <path d="M224 104 L280 104" stroke="rgba(244,114,182,0.6)" stroke-width="1.2" stroke-dasharray="3 3"/>
+              <path d="M232 98 L224 104 L232 110" fill="none" stroke="rgba(244,114,182,0.7)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+              <text x="252" y="128" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" fill="var(--pink)">never here</text>
+              <text x="150" y="158" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.5" letter-spacing="0.8" fill="var(--sp-secondary)">bending is free · stretching is not</text>
+              <text x="150" y="172" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="1.2" fill="var(--sp-dim)">Gauss, 1827</text>
+            </svg>
+            <div class="diagram-caption">Figure 1 · the remarkable theorem</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Cannot Flatten a Sphere · Stimpunks</span>
+        <span class="spread-footer-right">2</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 3: every map lies ════ -->
+  <div class="spread" id="spread-3">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The consequence</div>
+          <h2 class="spread-heading" id="every-flat-map-lies">Therefore every flat map lies</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">The Earth is roughly a sphere. A map is flat. By the theorem, <strong>no map can preserve everything</strong> — not as a practical difficulty, but as a matter of proof.</p>
+            <p>So every projection ever drawn has had to choose. The properties on offer are:</p>
+            <table class="trades">
+              <caption>what a projection can preserve — never all at once</caption>
+              <thead><tr><th>property</th><th>what it means</th></tr></thead>
+              <tbody>
+                <tr><td class="keeps">area</td><td>a country's size on the page is proportional to its size on the ground</td></tr>
+                <tr><td class="keeps">angle</td><td>shapes are locally true; a bearing on the map is a bearing in the world</td></tr>
+                <tr><td class="keeps">distance</td><td>the scale bar means what it says, everywhere</td></tr>
+                <tr><td class="keeps">direction</td><td>the line to a place points at that place</td></tr>
+              </tbody>
+            </table>
+            <p>You may have some. You may never have all. <span class="pink">Preserve area and you must warp shape; preserve shape and you must warp area.</span> The theorem does not care how good your mathematics is.</p>
+            <p>This is worth stating carefully because the ordinary complaint about maps is that they are <em>inaccurate</em>, as though a better cartographer might fix it. That is not the situation.</p>
+            <div class="pull-quote green">There is no undistorted map, waiting to be drawn by someone more careful. There is only the question of <em>which</em> distortion, chosen by someone, for something.<span class="attr">the whole zine, on one line</span></div>
+            <p>Which means every map you have ever read was the answer to a question — <strong>and the map does not tell you what the question was.</strong></p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 176" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig2-title fig2-desc">
+              <title id="fig2-title">Pick some, never all</title>
+              <desc id="fig2-desc">Four properties — area, angle, distance, direction — around a centre marked one flat map, with only some connected at a time.</desc>
+              <circle cx="150" cy="84" r="26" fill="rgba(74,222,128,0.07)" stroke="rgba(74,222,128,0.45)" stroke-width="1.3"/>
+              <text x="150" y="82" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--green)">one flat</text>
+              <text x="150" y="93" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--green)">map</text>
+              <g font-family="Space Mono, monospace" font-size="6.5" fill="var(--sp-secondary)" text-anchor="middle">
+                <text x="150" y="26">area</text>
+                <text x="272" y="87">angle</text>
+                <text x="150" y="152">distance</text>
+                <text x="34" y="87">direction</text>
+              </g>
+              <g stroke="rgba(74,222,128,0.55)" stroke-width="1.3" fill="none">
+                <path d="M150 34 L150 58"/>
+                <path d="M176 84 L246 84"/>
+              </g>
+              <g stroke="rgba(244,114,182,0.5)" stroke-width="1.3" fill="none" stroke-dasharray="3 3">
+                <path d="M150 110 L150 138"/>
+                <path d="M124 84 L58 84"/>
+              </g>
+              <text x="150" y="170" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="1" fill="var(--sp-dim)">solid = kept · dashed = sacrificed</text>
+            </svg>
+            <div class="diagram-caption">Figure 2 · a choice, not a shortcoming</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Cannot Flatten a Sphere · Stimpunks</span>
+        <span class="spread-footer-right">3</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 4: Mercator chose ════ -->
+  <div class="spread" id="spread-4">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">1569 · the choice nobody reads</div>
+          <h2 class="spread-heading" id="mercator-chose">Mercator chose, and never said so</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Gerardus Mercator published his world map in 1569 with a specific job in mind: getting a ship where it was going.</p>
+            <p>His projection preserves <strong>angle</strong>. That has one glorious consequence for a navigator — <span class="green">a course of constant compass bearing is a straight line on the paper.</span> You lay a ruler between here and there, read the angle, hold that heading, and you arrive. For four centuries of sail, this was worth almost any price.</p>
+            <p>The price was area, and it grows without limit toward the poles. On a Mercator, <span class="pink">Greenland looks about the size of Africa.</span> Africa is roughly <strong>fourteen times larger</strong>.</p>
+            <p>Now the part that matters, and it is not that Mercator was wrong. Mercator was <em>right</em>, for sailors. The trouble is what happened next.</p>
+            <div class="pull-quote pink">The map went up on classroom walls, where nobody was navigating anything — and it does not carry a note saying "angles kept, areas sacrificed, drawn for people crossing oceans."<span class="attr">the choice becomes invisible</span></div>
+            <p>A projection is a decision about what matters. Once it is printed, the decision looks like <em>the world</em>. Generations grew up with a picture in which the tropics are small and the high latitudes enormous, and no one told them a trade had been made on their behalf, or by whom, or for what.</p>
+            <p><strong>The distortion is not the scandal. The silence is.</strong></p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 182" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig3-title fig3-desc">
+              <title id="fig3-title">Greenland and Africa</title>
+              <desc id="fig3-desc">Two shapes shown at the size a Mercator map gives them, roughly equal, beside their true relative areas, where Africa is about fourteen times larger.</desc>
+              <text x="76" y="18" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="0.8" fill="var(--gold)">on a Mercator</text>
+              <path d="M56 32 q22 -6 30 10 q8 18 -6 30 q-18 12 -28 -4 q-10 -18 4 -36 Z" fill="rgba(34,211,238,0.25)" stroke="rgba(34,211,238,0.6)" stroke-width="1.1"/>
+              <text x="70" y="86" text-anchor="middle" font-family="Space Mono, monospace" font-size="6" fill="var(--cyan)">Greenland</text>
+              <path d="M60 100 q26 -8 34 12 q10 24 -8 34 q-22 14 -32 -6 q-12 -22 6 -40 Z" fill="rgba(74,222,128,0.25)" stroke="rgba(74,222,128,0.6)" stroke-width="1.1"/>
+              <text x="74" y="160" text-anchor="middle" font-family="Space Mono, monospace" font-size="6" fill="var(--green)">Africa</text>
+              <line x1="150" y1="14" x2="150" y2="168" stroke="rgba(167,139,250,0.25)" stroke-width="1" stroke-dasharray="4 4"/>
+              <text x="226" y="18" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="0.8" fill="var(--green)">in fact</text>
+              <path d="M178 34 q6 -2 8 3 q2 5 -2 8 q-5 3 -7 -1 q-3 -5 1 -10 Z" fill="rgba(34,211,238,0.25)" stroke="rgba(34,211,238,0.6)" stroke-width="1"/>
+              <text x="182" y="58" text-anchor="middle" font-family="Space Mono, monospace" font-size="6" fill="var(--cyan)">Greenland</text>
+              <path d="M204 40 q44 -14 58 20 q16 40 -14 58 q-38 24 -54 -10 q-20 -38 10 -68 Z" fill="rgba(74,222,128,0.25)" stroke="rgba(74,222,128,0.6)" stroke-width="1.1"/>
+              <text x="230" y="150" text-anchor="middle" font-family="Space Mono, monospace" font-size="6" fill="var(--green)">Africa · ~14×</text>
+              <text x="150" y="178" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="1" fill="var(--sp-secondary)">the map is not lying · it is answering another question</text>
+            </svg>
+            <div class="diagram-caption">Figure 3 · what angle costs</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Cannot Flatten a Sphere · Stimpunks</span>
+        <span class="spread-footer-right">4</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 5: the argument about which lie ════ -->
+  <div class="spread" id="spread-5">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">1973 · the argument gets loud</div>
+          <h2 class="spread-heading" id="which-lie">The argument about which lie</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">In 1973 Arno Peters presented a world map that preserved <strong>area</strong>, and argued that the familiar one had been quietly shrinking most of the world's people for four hundred years.</p>
+            <p>On his map every country occupies its true share of the page. Africa is vast, as it is. The high latitudes shrink back to size. Shapes, in exchange, are stretched — countries near the equator pull long and thin.</p>
+            <p>It became a public fight, and it is worth telling honestly, because the tidy version of this story is wrong in both directions.</p>
+            <div class="note"><strong>What the tidy version leaves out.</strong> Peters presented the projection as his own; an equivalent had been published by <strong>James Gall</strong> in 1855, which is why it is usually called Gall–Peters now. He also made claims about the map's accuracy that cartographers could not accept, and the professional response was sharp — partly on those technical grounds and partly, it is fair to say, because an outsider was making a political argument about their craft. <em>He was right that the choice was political and had gone unexamined. He was not right about everything else.</em></div>
+            <p>And here is the part that survives the mess. Both sides were arguing about <span class="green">which distortion to accept</span>, because the theorem left them nothing else to argue about. There was never an option on the table that distorted nothing.</p>
+            <div class="pull-quote green">You cannot win this fight by being more accurate. You can only win it by being explicit — and then arguing about the choice in the open.<span class="attr">what a proof leaves you</span></div>
+            <p>Which is the useful lesson, and it generalises far past maps: when reduction is <em>forced</em>, the honest move is not a better reduction. It is to say what you gave up.</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 168" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig4-title fig4-desc">
+              <title id="fig4-title">Two answers, no neutral one</title>
+              <desc id="fig4-desc">Two map rectangles labelled keeps angle and keeps area, with a third position marked keeps everything crossed out as impossible.</desc>
+              <rect x="18" y="28" width="112" height="56" rx="2" fill="rgba(251,191,36,0.06)" stroke="rgba(251,191,36,0.5)" stroke-width="1.2"/>
+              <text x="74" y="52" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--gold)">keeps angle</text>
+              <text x="74" y="66" text-anchor="middle" font-family="Space Mono, monospace" font-size="6" fill="var(--sp-dim)">loses area</text>
+              <rect x="170" y="28" width="112" height="56" rx="2" fill="rgba(74,222,128,0.06)" stroke="rgba(74,222,128,0.5)" stroke-width="1.2"/>
+              <text x="226" y="52" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--green)">keeps area</text>
+              <text x="226" y="66" text-anchor="middle" font-family="Space Mono, monospace" font-size="6" fill="var(--sp-dim)">loses shape</text>
+              <rect x="94" y="102" width="112" height="40" rx="2" fill="none" stroke="rgba(244,114,182,0.45)" stroke-width="1.2" stroke-dasharray="4 3"/>
+              <text x="150" y="120" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--pink)">keeps everything</text>
+              <g stroke="rgba(244,114,182,0.7)" stroke-width="1.4">
+                <path d="M100 106 L200 138"/><path d="M200 106 L100 138"/>
+              </g>
+              <text x="150" y="160" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="1" fill="var(--sp-secondary)">the third option is not unbuilt · it is ruled out</text>
+            </svg>
+            <div class="diagram-caption">Figure 4 · nothing neutral to retreat to</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Cannot Flatten a Sphere · Stimpunks</span>
+        <span class="spread-footer-right">5</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 6: Tissot ════ -->
+  <div class="spread" id="spread-6">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">1859 · the honest instrument</div>
+          <h2 class="spread-heading" id="tissots-answer">Tissot's answer: <span class="spectrum-word">draw the damage</span></h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Nicolas Auguste Tissot could not remove the distortion. Nobody can. So in 1859 he did the next thing, which turns out to be better.</p>
+            <p>Imagine a tiny circle drawn on the globe. Project it onto the flat map and it will not come out a circle — it comes out an <strong>ellipse</strong>, squashed and turned by exactly however much that projection mangles that spot.</p>
+            <p>So: draw that ellipse. Draw one at every intersection of the grid. Now the map <span class="green">carries its own error bars on its face</span> — you can see at a glance where shapes are true, where areas swell, and by how much.</p>
+            <p>It is called <strong>Tissot's indicatrix</strong>, and it is one of the most quietly radical instruments in the history of representation, because of what it concedes and what it refuses in the same gesture.</p>
+            <div class="callout">It concedes that the map is distorted — completely, unfixably, everywhere. It refuses to let that distortion be invisible.<span class="attr">Tissot, 1859; popularised in his <em>Mémoire</em>, 1881</span></div>
+            <p>Notice this is <em>not</em> humility about whether the map is useful. A Mercator with indicatrices on it is still a Mercator, still gets your ship home, still hangs on the wall. What has changed is that the reader can now see the price.</p>
+            <p>Hold that shape — <span class="cyan">the summary, and the record of what the summary cost</span> — because the rest of this zine is about a domain where we do the first half and have almost entirely refused the second.</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 176" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig5-title fig5-desc">
+              <title id="fig5-title">Tissot's indicatrix</title>
+              <desc id="fig5-desc">A grid of ellipses across a map: circular near the equator, increasingly enlarged and stretched toward the top, showing where and how much the projection distorts.</desc>
+              <rect x="20" y="20" width="260" height="112" rx="2" fill="rgba(255,255,255,0.02)" stroke="rgba(167,139,250,0.3)" stroke-width="1"/>
+              <g fill="none" stroke="rgba(74,222,128,0.65)" stroke-width="1.2">
+                <ellipse cx="52" cy="36" rx="15" ry="11"/><ellipse cx="110" cy="36" rx="15" ry="11"/><ellipse cx="168" cy="36" rx="15" ry="11"/><ellipse cx="226" cy="36" rx="15" ry="11"/>
+                <ellipse cx="52" cy="72" rx="10" ry="8.5"/><ellipse cx="110" cy="72" rx="10" ry="8.5"/><ellipse cx="168" cy="72" rx="10" ry="8.5"/><ellipse cx="226" cy="72" rx="10" ry="8.5"/>
+                <ellipse cx="52" cy="108" rx="7" ry="7"/><ellipse cx="110" cy="108" rx="7" ry="7"/><ellipse cx="168" cy="108" rx="7" ry="7"/><ellipse cx="226" cy="108" rx="7" ry="7"/>
+              </g>
+              <text x="288" y="40" text-anchor="end" font-family="Space Mono, monospace" font-size="6" fill="var(--pink)">swollen</text>
+              <text x="288" y="112" text-anchor="end" font-family="Space Mono, monospace" font-size="6" fill="var(--green)">true</text>
+              <text x="150" y="152" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.5" letter-spacing="0.8" fill="var(--sp-secondary)">every circle was the same size on the globe</text>
+              <text x="150" y="168" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="1" fill="var(--sp-dim)">the map now says what it did</text>
+            </svg>
+            <div class="diagram-caption">Figure 5 · error bars, for a picture</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Cannot Flatten a Sphere · Stimpunks</span>
+        <span class="spread-footer-right">6</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 7: now do it to a person ════ -->
+  <div class="spread" id="spread-7">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The turn</div>
+          <h2 class="spread-heading" id="now-do-it-to-a-person">Now do it to a person</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">A person is not a sphere. But a person is <strong>many-dimensional</strong>, and that is the property the theorem is actually about.</p>
+            <p>Here is a partial list of axes along which one human being varies, none of which reduces to any other:</p>
+            <div class="profile">
+              <div class="prow"><span class="plabel">sensory</span><span class="ptrack"><span class="pfill" style="width:82%"></span></span></div>
+              <div class="prow"><span class="plabel">social</span><span class="ptrack"><span class="pfill" style="width:34%"></span></span></div>
+              <div class="prow"><span class="plabel">language</span><span class="ptrack"><span class="pfill" style="width:71%"></span></span></div>
+              <div class="prow"><span class="plabel">motor</span><span class="ptrack"><span class="pfill" style="width:26%"></span></span></div>
+              <div class="prow"><span class="plabel">memory</span><span class="ptrack"><span class="pfill" style="width:88%"></span></span></div>
+              <div class="prow"><span class="plabel">energy</span><span class="ptrack"><span class="pfill" style="width:19%"></span></span></div>
+              <div class="prow"><span class="plabel">regulation</span><span class="ptrack"><span class="pfill" style="width:45%"></span></span></div>
+            </div>
+            <p>And every one of those bars moves — by the day, by the room, by how much sleep there was, by whether the lights are humming. <span class="green">This is not a fixed shape. It is a shape in weather.</span></p>
+            <p><a href="not-a-line-zine.html">No. 21</a> already showed why this is not a line, and made the case with spectra: a spectrum is a fingerprint, not a ladder. That argument is not repeated here.</p>
+            <p><strong>This zine asks the next question.</strong> Granted it is many-dimensional — what happens, exactly and provably, when somebody flattens it to one number anyway?</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 180" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig6-title fig6-desc">
+              <title id="fig6-title">A shape in many dimensions</title>
+              <desc id="fig6-desc">A seven-axis radar plot with an irregular jagged outline, redrawn faintly a second time to show how much it shifts on another day.</desc>
+              <g stroke="rgba(167,139,250,0.28)" stroke-width="0.9" fill="none">
+                <circle cx="150" cy="84" r="60"/><circle cx="150" cy="84" r="40"/><circle cx="150" cy="84" r="20"/>
+                <path d="M150 84 L150 24 M150 84 L197 60 M150 84 L208 101 M150 84 L172 141 M150 84 L128 141 M150 84 L92 101 M150 84 L103 60"/>
+              </g>
+              <path d="M150 35 L186 66 L184 106 L163 122 L131 119 L104 96 L119 62 Z" fill="rgba(74,222,128,0.18)" stroke="var(--green)" stroke-width="1.5"/>
+              <path d="M150 47 L178 71 L172 112 L155 128 L136 112 L112 92 L126 70 Z" fill="none" stroke="rgba(74,222,128,0.4)" stroke-width="1.2" stroke-dasharray="4 3"/>
+              <text x="150" y="160" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.5" letter-spacing="0.8" fill="var(--green)">solid: today &nbsp;·&nbsp; dashed: a different day</text>
+              <text x="150" y="174" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="1" fill="var(--sp-dim)">same person, both times</text>
+            </svg>
+            <div class="diagram-caption">Figure 6 · a shape in weather</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Cannot Flatten a Sphere · Stimpunks</span>
+        <span class="spread-footer-right">7</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 8: the single number ════ -->
+  <div class="spread" id="spread-8">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The projection</div>
+          <h2 class="spread-heading" id="the-single-number">The single number</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">An IQ score. A support level. A functioning label. Each takes that many-axis shape and returns one value.</p>
+            <p>That operation has a name, and it is not a metaphor: it is a <strong>projection</strong>. Exactly like flattening a globe onto paper, it maps something of higher dimension onto something of lower dimension — and exactly like flattening a globe, <span class="pink">it cannot be done without loss.</span> Not "in practice." At all.</p>
+            <p>So the theorem tells us three things about every such number, before we know anything about the person:</p>
+            <div class="callout"><strong>One:</strong> information was destroyed, necessarily. <strong>Two:</strong> which information was destroyed depended on a choice. <strong>Three:</strong> the number does not record what that choice was.<span class="attr">what a projection is</span></div>
+            <p>Look at the shape from the last spread and ask what one number could possibly do with it. Take the mean? Then a person with two ferocious peaks and five troughs scores the same as somebody flat across the middle, and those are <em>not the same life</em>. Take the minimum? The maximum? Each answers a different question, and each throws away a different six-sevenths of the picture.</p>
+            <p>And here is what makes it worse than a map. <span class="cyan">A Mercator at least keeps every place on it.</span> Greenland is distorted but it is <em>there</em>. A single-number summary of a person does not distort the other dimensions — <strong>it deletes them.</strong> There is nowhere on the score for the sensory axis to be wrong. It simply is not represented.</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 178" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig7-title fig7-desc">
+              <title id="fig7-title">Seven axes to one</title>
+              <desc id="fig7-desc">A seven-sided profile shape collapsing through an arrow onto a single point on a one-dimensional line, with the other six dimensions shown falling away.</desc>
+              <path d="M74 30 L104 54 L102 88 L84 102 L58 100 L36 80 L48 52 Z" fill="rgba(74,222,128,0.18)" stroke="var(--green)" stroke-width="1.4"/>
+              <text x="70" y="122" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--green)">7 dimensions</text>
+              <path d="M118 66 L166 66" stroke="rgba(167,139,250,0.6)" stroke-width="1.4"/>
+              <path d="M158 60 L168 66 L158 72" fill="none" stroke="rgba(167,139,250,0.7)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+              <text x="142" y="56" text-anchor="middle" font-family="Space Mono, monospace" font-size="6" fill="var(--violet)">project</text>
+              <line x1="182" y1="66" x2="282" y2="66" stroke="rgba(167,139,250,0.5)" stroke-width="1.2"/>
+              <circle cx="236" cy="66" r="5" fill="var(--pink)"/>
+              <text x="236" y="86" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.5" font-weight="700" fill="var(--pink)">one number</text>
+              <g stroke="rgba(244,114,182,0.4)" stroke-width="1" stroke-dasharray="2 3" fill="none">
+                <path d="M196 100 L188 130"/><path d="M212 100 L206 132"/><path d="M228 102 L226 134"/><path d="M244 102 L248 134"/><path d="M260 100 L268 132"/><path d="M276 98 L286 128"/>
+              </g>
+              <text x="236" y="150" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--pink)">six axes: not distorted</text>
+              <text x="236" y="162" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" font-weight="700" fill="var(--pink)">absent</text>
+              <text x="150" y="176" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" letter-spacing="0.8" fill="var(--sp-dim)">worse than a map: nothing is kept badly</text>
+            </svg>
+            <div class="diagram-caption">Figure 7 · deletion, not distortion</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Cannot Flatten a Sphere · Stimpunks</span>
+        <span class="spread-footer-right">8</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 9: for whose navigation ════ -->
+  <div class="spread" id="spread-9">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The useful question</div>
+          <h2 class="spread-heading" id="for-whose-navigation">For whose navigation?</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Mercator kept angles because his readers were crossing oceans. Every projection is optimised for somebody's journey, and you can read the somebody off the choice.</p>
+            <p>So put the question to the summaries that get applied to us. <strong>What was this optimised for — and therefore, who is it for?</strong></p>
+            <table class="trades">
+              <caption>read the choice, find the user</caption>
+              <thead><tr><th>the summary</th><th>optimised for</th></tr></thead>
+              <tbody>
+                <tr><td class="keeps">Mercator</td><td>holding a compass bearing &mdash; <em>for sailors</em></td></tr>
+                <tr><td class="keeps">a support level</td><td>allocating a fixed budget across a caseload &mdash; <em>for the system</em></td></tr>
+                <tr><td class="keeps">a functioning label</td><td>deciding quickly who gets in and who doesn't &mdash; <em>for the gate</em></td></tr>
+                <tr><td class="keeps">a single test score</td><td>ranking many people on one page &mdash; <em>for whoever is sorting</em></td></tr>
+              </tbody>
+            </table>
+            <p>None of these is villainous. A budget really does have to be allocated; a service really does have to decide. <span class="green">Projections are not crimes. They are tools with users.</span></p>
+            <p>But notice what is common to the bottom three rows: <strong>the person being summarised is not the user.</strong> The dimensions kept are the ones the institution needs to navigate by. The dimensions deleted are the ones only the person needs.</p>
+            <div class="pull-quote">Ask what a measure preserves and you learn who was holding the pen. That is not cynicism — it is just reading the projection.<span class="attr">the question this zine leaves you with</span></div>
+            <p>And when your own map is drawn for somebody else's journey, the sensation is very specific and very familiar: <em>the thing you most needed represented is the thing that isn't on it.</em></p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 168" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig8-title fig8-desc">
+              <title id="fig8-title">Whose journey</title>
+              <desc id="fig8-desc">A map with a route drawn across it and a figure standing off to one side, labelled the person summarised, not the person navigating.</desc>
+              <rect x="20" y="26" width="180" height="94" rx="2" fill="rgba(255,255,255,0.02)" stroke="rgba(167,139,250,0.3)" stroke-width="1"/>
+              <path d="M36 104 L82 74 L128 84 L184 44" fill="none" stroke="var(--green)" stroke-width="1.6"/>
+              <circle cx="36" cy="104" r="3.4" fill="var(--green)"/><circle cx="184" cy="44" r="3.4" fill="var(--green)"/>
+              <text x="110" y="136" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--green)">optimised for this route</text>
+              <circle cx="252" cy="62" r="11" fill="none" stroke="var(--pink)" stroke-width="1.4"/>
+              <path d="M252 74 L252 92 M244 100 L252 92 L260 100" fill="none" stroke="var(--pink)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+              <text x="252" y="120" text-anchor="middle" font-family="Space Mono, monospace" font-size="6" fill="var(--pink)">summarised</text>
+              <text x="252" y="132" text-anchor="middle" font-family="Space Mono, monospace" font-size="6" fill="var(--pink)">not navigating</text>
+              <text x="150" y="160" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="1" fill="var(--sp-secondary)">the kept dimensions belong to the user</text>
+            </svg>
+            <div class="diagram-caption">Figure 8 · optimised for whom</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Cannot Flatten a Sphere · Stimpunks</span>
+        <span class="spread-footer-right">9</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 10: publish the indicatrix ════ -->
+  <div class="spread" id="spread-10">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">What to actually do</div>
+          <h2 class="spread-heading" id="publish-the-indicatrix">Publish the indicatrix</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">The theorem does not say <em>never summarise</em>. Cartographers did not respond to Gauss by refusing to make maps. That would have been useless, and nobody would have got anywhere.</p>
+            <p>They responded by making the distortion <strong>visible</strong>. That is the whole move, and it transfers.</p>
+            <p>So: if a number must be produced — and sometimes one must, because budgets and services and doors are real — then <span class="green">produce the distortion alongside it.</span></p>
+            <div class="callout">Say which dimensions this figure was built from, and which it dropped. Say what it was optimised for, and for whose use. Say how much it moves between a good day and a bad one. Attach the profile, not just the summary — and let the person who was measured write on it.<span class="attr">an indicatrix, for a person</span></div>
+            <p>None of this is exotic. Every one of those is ordinary practice somewhere already: error bars, confidence intervals, a methods section, a "nothing about us without us" review. <strong>We know how to do this. We simply do not do it here.</strong></p>
+            <p>And the standard objection — <em>that's more complicated than a number</em> — is exactly the objection Tissot faced, and it is answered the same way. Yes. It is more complicated. <span class="cyan">The simplicity of the bare number was never real; it was purchased by hiding the complication, and the person carrying that complication is still carrying it whether or not it is printed.</span></p>
+            <p>A number with its indicatrix is a usable map. A number without one is a Mercator with the legend torn off, handed to somebody who was told it is the world.</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 176" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig9-title fig9-desc">
+              <title id="fig9-title">A number, and its indicatrix</title>
+              <desc id="fig9-desc">A bare score on the left. On the right, the same score accompanied by the profile it came from, the range it moves across, and a note of what it was optimised for.</desc>
+              <text x="62" y="20" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" letter-spacing="0.8" fill="var(--pink)">as issued</text>
+              <rect x="30" y="30" width="64" height="42" rx="3" fill="rgba(244,114,182,0.06)" stroke="rgba(244,114,182,0.4)" stroke-width="1.2"/>
+              <text x="62" y="57" text-anchor="middle" font-family="Space Mono, monospace" font-size="13" font-weight="700" fill="var(--pink)">Level 2</text>
+              <text x="62" y="92" text-anchor="middle" font-family="Space Mono, monospace" font-size="6" fill="var(--sp-dim)">no legend</text>
+              <line x1="132" y1="14" x2="132" y2="150" stroke="rgba(167,139,250,0.25)" stroke-width="1" stroke-dasharray="4 4"/>
+              <text x="214" y="20" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" letter-spacing="0.8" fill="var(--green)">with its indicatrix</text>
+              <rect x="152" y="30" width="52" height="26" rx="3" fill="rgba(74,222,128,0.08)" stroke="rgba(74,222,128,0.45)" stroke-width="1.2"/>
+              <text x="178" y="48" text-anchor="middle" font-family="Space Mono, monospace" font-size="9" font-weight="700" fill="var(--green)">Level 2</text>
+              <g stroke="rgba(74,222,128,0.5)" stroke-width="4" stroke-linecap="round">
+                <path d="M218 36 h10"/><path d="M218 44 h22"/><path d="M218 52 h6"/><path d="M218 60 h18"/>
+              </g>
+              <text x="178" y="76" text-anchor="middle" font-family="Space Mono, monospace" font-size="6" fill="var(--sp-secondary)">from 7 axes</text>
+              <path d="M152 92 H276" stroke="rgba(74,222,128,0.4)" stroke-width="1"/>
+              <path d="M176 88 L176 96 M244 88 L244 96" stroke="var(--green)" stroke-width="1.3"/>
+              <text x="210" y="108" text-anchor="middle" font-family="Space Mono, monospace" font-size="6" fill="var(--green)">range across days</text>
+              <text x="214" y="126" text-anchor="middle" font-family="Space Mono, monospace" font-size="6" fill="var(--sp-secondary)">built for: budget allocation</text>
+              <text x="214" y="138" text-anchor="middle" font-family="Space Mono, monospace" font-size="6" fill="var(--sp-secondary)">reviewed by: the person</text>
+              <text x="150" y="166" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="1" fill="var(--sp-dim)">same number · now readable</text>
+            </svg>
+            <div class="diagram-caption">Figure 9 · the legend, restored</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Cannot Flatten a Sphere · Stimpunks</span>
+        <span class="spread-footer-right">10</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 11: the turn ════ -->
+  <div class="spread" id="spread-11">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The close</div>
+          <h2 class="spread-heading" id="no-edges-no-corners">A globe has <span class="spectrum-word">no edges</span></h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Here is the last thing the theorem gives us, and it is the gentlest.</p>
+            <p>On a sphere there is no edge and no corner. <strong>There is no margin.</strong> Every point has exactly as much sphere around it as every other; no place is peripheral, because peripheral is a property of flat things with borders.</p>
+            <p>The margins arrive with the projection. <span class="pink">The edge of the map is not a feature of the world</span> — it is where the cartographer decided to cut, and every world map has one, and somebody always ends up split down it or shoved to the rim.</p>
+            <div class="pull-quote green">Being at the edge of the map was never information about you. It was information about where the map was cut, and who was holding the scissors.<span class="attr">what curvature actually implies</span></div>
+            <p>So when a summary puts you at the far end of a scale — the low end, the difficult end, the end that gets the shorter appointment — that position is a fact about the projection. It is not a fact about the sphere.</p>
+            <p>And the sphere is the real object. The map is the thing we made because we needed something that would fold into a pocket.</p>
+            <div class="refusals">
+              <div class="refusal"><span class="refusal-tag">Not:</span><span><strong>that maps are bad.</strong> A map is how anybody gets anywhere. Tissot did not stop making maps; he made them say what they had done.</span></div>
+              <div class="refusal"><span class="refusal-tag">Not:</span><span><strong>that summarising is always wrong.</strong> Sometimes one number is genuinely needed. The objection is to a number that conceals which dimensions it dropped, and for whose convenience.</span></div>
+              <div class="refusal"><span class="refusal-tag">Not:</span><span><strong>that there is a neutral measure to switch to.</strong> There isn't, and looking for one wastes the argument. That is what the theorem forecloses.</span></div>
+              <div class="refusal"><span class="refusal-tag">Not:</span><span><strong>a proof about people.</strong> Gauss proved something about surfaces. Everything after spread six is a <em>rhyme</em> — it shows the shape of the claim is real somewhere it can be checked exactly, and it licenses nothing on its own.</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 180" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig10-title fig10-desc">
+              <title id="fig10-title">Where the edge comes from</title>
+              <desc id="fig10-desc">A globe with a point marked on it, shown with no edge anywhere; beside it the same point sitting at the extreme rim of a flat rectangular map, with the cut line marked as a choice.</desc>
+              <circle cx="74" cy="70" r="44" fill="rgba(74,222,128,0.06)" stroke="rgba(74,222,128,0.5)" stroke-width="1.3"/>
+              <g fill="none" stroke="rgba(74,222,128,0.28)" stroke-width="0.9">
+                <ellipse cx="74" cy="70" rx="44" ry="15"/><ellipse cx="74" cy="70" rx="15" ry="44"/>
+              </g>
+              <circle cx="98" cy="46" r="4" fill="var(--pink)"/>
+              <text x="74" y="130" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--green)">no edge anywhere</text>
+              <text x="74" y="142" text-anchor="middle" font-family="Space Mono, monospace" font-size="6" fill="var(--sp-dim)">every point central</text>
+              <rect x="164" y="34" width="118" height="72" rx="2" fill="rgba(255,255,255,0.02)" stroke="rgba(167,139,250,0.35)" stroke-width="1"/>
+              <path d="M164 34 L164 106" stroke="var(--gold)" stroke-width="1.6" stroke-dasharray="4 3"/>
+              <text x="160" y="26" text-anchor="middle" font-family="Space Mono, monospace" font-size="6" fill="var(--gold)">the cut</text>
+              <circle cx="168" cy="52" r="4" fill="var(--pink)"/>
+              <text x="223" y="130" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--pink)">now at the margin</text>
+              <text x="223" y="142" text-anchor="middle" font-family="Space Mono, monospace" font-size="6" fill="var(--sp-dim)">same point, same world</text>
+              <text x="150" y="170" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="1" fill="var(--sp-secondary)">the margin was made, not found</text>
+            </svg>
+            <div class="diagram-caption">Figure 10 · who held the scissors</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Cannot Flatten a Sphere · Stimpunks</span>
+        <span class="spread-footer-right">11</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 12: COLOPHON ════ -->
+  <div class="spread" id="spread-12">
+    <div class="interior">
+      <div class="colophon">
+        <div>
+          <div class="colophon-top">
+            <span class="colophon-ls">L★S</span>
+            <p class="colophon-phrase">Being at the edge of the map was never information about you.</p>
+          </div>
+
+          <div class="series-list">
+            <div class="series-item"><span class="series-num">No. 9</span> The Lines We Drew — the constructed border, and who holds the pen</div>
+            <div class="series-item"><span class="series-num">No. 21</span> Not a Line — a spectrum is a fingerprint, not a ladder</div>
+            <div class="series-item"><span class="series-num">No. 25</span> Shared Signal — connection carried across distance</div>
+            <div class="series-item current"><span class="series-num">No. 44</span> You Cannot Flatten a Sphere — what a summary must throw away ← you are here</div>
+          </div>
+
+          <div class="reflect">
+            <div class="reflect-label">Reflection</div>
+            <p class="reflect-q">Which number about you is doing the most work, and which dimensions did it have to delete to exist?</p>
+            <p class="reflect-q">What was that number optimised for — and whose journey does it serve?</p>
+            <p class="reflect-q">If you could attach one indicatrix to it, what would you want the reader to see?</p>
+            <p class="reflect-q">Where have you been treated as peripheral, when the edge was a decision somebody made about where to cut?</p>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="colophon-h" id="sources">Sources</h3>
+          <div class="colophon-body">
+            <p><strong>The theorem.</strong> Carl Friedrich Gauss, <em>Disquisitiones generales circa superficies curvas</em> (1827), in which the <em>Theorema Egregium</em> establishes that Gaussian curvature is intrinsic — preserved by any bending that does not stretch the surface. The consequence used throughout: a plane has zero Gaussian curvature and a sphere does not, so no isometric map exists between them, and therefore no flat map of a globe preserves all distances. Cylinders and cones are developable (zero curvature), which is why paper takes those shapes and not a sphere. The folded-pizza illustration is a standard consequence of the same theorem. <strong>Given from the standard mathematical statement rather than quoted from Gauss's Latin</strong>, which we have not read at source.</p>
+            <p><strong>Mercator.</strong> Gerardus Mercator's world map of 1569 is conformal: it preserves angles locally, so a rhumb line — a course of constant compass bearing — is a straight line on the chart, which is what made it valuable for navigation. Area distortion increases with latitude. The Greenland/Africa comparison uses approximate areas of about 2.2 and 30.4 million km², a ratio near fourteen; <strong>stated as approximate</strong>.</p>
+            <p><strong>The controversy.</strong> Arno Peters promoted an equal-area world projection from 1973; an equivalent had been published by James Gall in 1855, and it is now usually called Gall–Peters. Peters made accuracy claims that professional cartographers rejected, and the dispute was both technical and political. <strong>This is summarised from general reference rather than from the primary literature of the dispute, and is flagged open</strong> — the zine states the shape of the argument rather than adjudicating it.</p>
+            <p><strong>Tissot.</strong> Nicolas Auguste Tissot introduced the indicatrix in 1859, popularising it with <em>Mémoire sur la représentation des surfaces et les projections des cartes géographiques</em> (1881). An infinitesimal circle on the globe projects to an ellipse whose shape and size record the local angular and areal distortion; plotting them across a map displays where and how much a projection distorts.</p>
+            <p><strong>The neurodiversity half.</strong> <a href="not-a-line-zine.html">No. 21 <em>Not a Line</em></a> carries the argument that a spectrum is a fingerprint rather than a severity scale, after Helen Edgar and Patrick Dwyer, and this zine deliberately does not restate it — the question here is what a <em>reduction</em> costs, not what shape the thing is. DSM-5 support levels and functioning labels are referred to descriptively. <strong>No claim is made that Gauss's theorem proves anything about people:</strong> spreads 7 onward are an analogy, and the piece says so on its own final spread. A rhyme, not a proof.</p>
+            <p><strong>Why this is not a chain.</strong> It was proposed for <a href="collection-how-we-got-here.html">How We Got Here</a> and rejected for it. Every chain in that collection has a <em>documented handoff</em> between its physics and its endpoint — Bessel's apparatus reached the classroom, Wells's number became the guideline, Carnot's word arrived in Cubberley's textbook. Nothing in the history of IQ or functioning labels descends from the <em>Theorema Egregium</em>; nobody carried it there. In a chain that missing handoff would be a single leap joint carrying the whole argument, which that collection's own rules forbid. In the Star Stuff register — one settled, checkable fact followed honestly — an analogy is the form rather than a defect. <em>(A genuine chain does exist nearby: Gauss's least squares → Pearson's 1901 principal components → Spearman's g → IQ, where the reduction really is a projection and the descent is documented. It overlaps No. 9's territory and is not built.)</em></p>
+          </div>
+          <div class="colophon-footer">
+            <a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks Foundation</a> × <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a><br>
+            stimpunks.org · morerealms.com · starstuff.earth<br>
+            <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> · open edition · print freely
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Cannot Flatten a Sphere · Stimpunks</span>
+        <span class="spread-footer-right">12</span>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /zine-shell -->
+
+<script>
+  let current = 1;
+  const total = 12;
+
+  function changePage(dir) {
+    const next = current + dir;
+    if (next < 1 || next > total) return;
+    document.getElementById('spread-' + current).classList.remove('active');
+    current = next;
+    document.getElementById('spread-' + current).classList.add('active');
+    document.getElementById('page-counter').textContent = current + ' / ' + total;
+    document.getElementById('prev-btn').disabled = current === 1;
+    document.getElementById('next-btn').disabled = current === total;
+    document.getElementById('prev-btn').classList.toggle('active', current > 1);
+    document.getElementById('next-btn').classList.toggle('active', current < total);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') changePage(1);
+    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   changePage(-1);
+  });
+
+  document.getElementById('prev-btn').disabled = true;
+  document.getElementById('next-btn').classList.add('active');
+</script>
+<script src="starstuff.js" defer></script>
+</body>
+</html>
