@@ -24,8 +24,9 @@ speculative companion to her [Autistic Realms](https://autisticrealms.com/). Hel
 one of the collection's sources and much of its weather: *Why Difference Comes First*, *We Are
 Made of Relations*, *My Monotropic Galaxy*, the shared-air and shared-signal coinages, and the
 constellation reading of the spiky profile all arrived here from her two sites. Three zines
-(Nos. 11, 28, 30) are hers outright; No. 29 was developed after her essay; her work is named and
-cited across much of the rest.
+(Nos. 11, 28, 30) and Field Guide No. 12 are hers outright; Nos. 29 and 45 were developed after
+her essays, and No. 19 closes on a coda of hers; her work is named and cited across much of the
+rest.
 
 Both organizations appear together wherever the collection attributes itself — Stimpunks first,
 equal weight — in three fixed forms:
@@ -70,15 +71,57 @@ The project's central phrase compresses through several registers, each with its
 
 ## The artifacts
 
-The sections below mirror the ordering on `index.html`, which is the canonical index. Each piece's number, title, and framing come from the page itself.
+Each piece's number, title, and framing come from the page itself. `index.html` is the canonical
+index, where these same pieces are grouped by collection rather than by kind.
+
+**The number records *when* a piece was made; the collection records *what* it is.** Numbers are
+chronological and load-bearing — the changelog, `FACTCHECK.md`, and prose references all key off
+them — so they run non-contiguously inside any collection, and that gap is information rather than
+a mistake. **Nothing is ever renumbered.** (There is no No. 37: the number was held for a piece
+that shipped later as No. 45.)
+
+Counts here are measured, not remembered. At the time of writing that is **95 HTML pages** — 81
+collection members, the 12 collection pages, plus `index.html` and `search.html`, which belong to
+no collection. Re-derive rather than trust it:
+
+```bash
+node tools/check-markup.mjs --check
+```
+
+Its last line reports the page total, and the member count and collection count it derived from the
+collection pages' own cards.
+
+### Collections
+
+Twelve landing pages, one per section of `index.html`. A collection is a **page, not a folder** — a
+note that links, listing its members and arguing for why they belong together. They were observed
+*after* thirty-five zines had accumulated with no folders at all, which keeps faith with
+`cosmic-connections.html`: the categories are outputs, not inputs. Five sort by **register** (what
+kind of argument a piece is making), four sort off register and say so on their own face, and three
+are the site's own furniture.
+
+| File | Collection | Sorted by |
+|------|------------|-----------|
+| `collection-star-stuff.html` | **Star Stuff** | *Register* — one settled, checkable fact, followed honestly, already contains the belonging claim. |
+| `collection-star-gazing.html` | **Star Gazing** | *Register* — experimental, neuroqueer, wonder-forward; possibility rather than proof. Named by Helen Edgar. |
+| `collection-more-than-human.html` | **More Than Human** | *Register* — Umwelt, multispecies, ethodiversity; neurodiversity de-anthropocentrized. |
+| `collection-kin.html` | **Kin** | *Register* — citation-dense natural history with a neurodivergence moral. |
+| `collection-stars-we-grew-up-on.html` | **Stars We Grew Up On** | *Register* — culture and icon; owns the star-as-celebrity sense, and the place the fun is loudest. |
+| `collection-field-guides.html` | **Field Guides** | *Form* — a catalogue of same-shaped entries, none of them ranked. Cuts across register on purpose. |
+| `collection-how-we-got-here.html` | **How We Got Here** | *Form* — a Burke chain, one link per spread, every joint marked `documented`, `contested` or `leap`. |
+| `collection-print.html` | **Print** | *Medium* — paper. Sheets that happen to have a web page, not web pages that will print. |
+| `collection-sound.html` | **Sound** | *Medium* — audio. The one collection that points at other people's work. |
+| `collection-start-here.html` | **Start Here** | *Unsorted* — the ways in. Three doors in and one door out. |
+| `collection-foundations.html` | **Foundations** | *Unsorted* — what the rest of the site presupposes rather than argues. |
+| `collection-notes.html` | **Notes & Rationale** | *Unsorted* — the working papers. The only collection page outside the reading chain, because all four of its members are. |
 
 ### Start here
 
 | File | Piece | What it is |
 |------|-------|------------|
-| `index.html` | **Star Stuff** | Landing page and entry point — every artifact, grouped and described. |
 | `about.html` | **What Star Stuff Is** | The shortest version of the whole idea: what these pieces are, how they read settled science as an argument about belonging, and why they're written in the first person plural. |
 | `love-you-down-to-your-star-stuff.html` | **Love You Down To Your Star Stuff** *(the page)* | The whole thing in long form — Sagan and the settled science, the five shorthands, the video inspirations, the Resonance and Belonging cards, related traditions across cultures, the *Crystal Under Pressure* prose poem, and what LYDTYSS is and is not. |
+| `cosmic-connections.html` | **How It All Connects** | The house method, and the argument behind the site's second tagline: what travels between Stimpunks, More Realms and Star Stuff — essays becoming zines, glossary becoming argument, corrections going back out — after James Burke's *Connections* (1978) and Sagan's *The Cosmic Connection* (1973). Why a web of linked notes produces concepts nobody wrote. Deliberately outside the reading chain. |
 
 ### Foundations
 
@@ -86,8 +129,14 @@ The sections below mirror the ordering on `index.html`, which is the canonical i
 |------|-------|------------|
 | `manifesto.html` | **Star Stuff Manifesto** *(founding document)* | On our cosmic origins, the science of how we carry the universe in our bones, and why neurodivergent and disabled people belong — not despite difference, but as difference. Six sections and eight declarations. |
 | `inclusion-safety-creed.html` | **Inclusion Safety: Owed, Not Earned** *(a creed)* | The first stage of psychological safety as a creed: inclusion is owed, not earned — worth before worthiness, harm the only disqualifier. Where Timothy Clark grounds it in common humanity, this goes a floor deeper — you were ★stuff all along, so belonging is constitutive, not conferred. |
+| `too-good-to-check.html` | **Too Good to Check** *(the checking ethic)* | How a story gets smoother than the science, and what reading the primary source puts back. Six ways a fact goes wrong — the quote nobody said, the number that went stale, the story told backwards, the credit that drifted, the press release instead of the paper, and the finding that flatters you — with seventeen worked corrections, most of them errors we published and had to fix. Why "go to the primary" is the opposite move from "do your own research," and why the primary source for an Autistic life is an Autistic person. |
 
 ### Zines
+
+In number order, which is the order they were made. Three of them are filed elsewhere on the site
+and keep their numbers regardless — Nos. 3 and 18 in *Foundations*, No. 4 in *Start Here* — which is
+the sharpest case of the number and the collection disagreeing. Both collection pages explain it on
+their face rather than leaving it to look like an oversight.
 
 | File | Piece | What it is |
 |------|-------|------------|
@@ -120,6 +169,22 @@ The sections below mirror the ordering on `index.html`, which is the canonical i
 | `every-nervous-system-zine.html` | **Every Nervous System** *(Zine No. 27)* | More-than-human neurodiversity, following Ombre Tarragnat's ethodiversity. There is no standard nervous system — and since we are pathologized by being animalized, the liberation is to reclaim animality as kin. |
 | `wyrd-and-weird-zine.html` | **Wyrd & Weird** *(Zine No. 28 · guest)* | A guest zine by Helen Edgar (Autistic Realms) on the old word for fate and the newer word we made of it. Wyrd meant *becoming*; Autistic and disabled communities have run the drift from insult back to name — etymologically honest, not just cheek. |
 | `only-in-relation-zine.html` | **Only in Relation** *(Zine No. 29 · guest)* | Relational quantum physics and what it means to be Autistic, developed after Helen Edgar's essay "We Are Made of Relations." Barad's intra-action and intradependence, the double empathy problem living in the relation rather than one mind, and ARLES. A rhyme, not a proof. |
+| `always-migrating-zine.html` | **Always Migrating** *(Zine No. 30 · guest)* | A guest zine by Helen Edgar (Autistic Realms), written after Brigit Anna McNeill's migration workshop. Every migrating body is made of matter that already migrated once, so migration was never a metaphor borrowed from animals; a bird reads the Earth's faint field through a pair of electron spins that stay linked; and the restlessness that builds before anything is decided is monotropism's gravity. Closes past the spiky profile — not a chart, a constellation of intensities. |
+| `five-times-a-crab-zine.html` | **Five Times a Crab, Seven Times Not** *(Zine No. 31)* | Convergent evolution read against the primary literature. The crab body plan evolved at least five times and was *lost* at least seven, and the reasons for the recurrence remain a mystery — so a basin is not a destiny. Nature's attractor permits the millions who never roll in; engineered systems write the attractor into the rules. |
+| `skeleton-that-skipped-bone-zine.html` | **The Skeleton That Skipped Bone** *(Zine No. 32)* | A counter-song to *Bone Song*, written for a young person in our community whose special interest is sharks. A vertebrate skeleton with no true bone at all — and a 2020 finding that makes the shark's bonelessness a loss rather than a failure to arrive, which exposes the verdict buried in the word *primitive*. Then what happened when a body was read as a cure. |
+| `the-ick-is-a-border-zine.html` | **The Ick Is a Border** *(Zine No. 33)* | Disgust feels like a fact about the animal and is a fact about the frame. Bone-eating worms, anglerfish males who gave up telling self from not-self in order to stay joined, and a whale fall richer than any other hard surface down there — then the same reflex firing at feeding tubes, stimming and AAC. Nobody is guilty of a flinch; everyone is answerable for the two seconds after. |
+| `two-hundred-years-zine.html` | **Two Hundred Years Before You're Grown** *(Zine No. 34)* | The Greenland shark is not mature until about 156 and lives at least 272 years, so *late* turns out to be a comparison rather than a measurement — the ruler was always the variable. Not a slow-is-beautiful zine: an animal needing a century and a half to reproduce cannot recover from pressure arriving in decades. The social model of disability, stated in fish. |
+| `everywhere-that-turtles-go-zine.html` | **Everywhere That Turtles Go** *(Zine No. 35)* | A Star Dreaming that "goes everywhere that turtles go" reads like a figure of speech and is actually a range map, so we checked it — roughly 357 species on every continent but Antarctica, including a dry Pilbara riverbed. The shell began as a digging adaptation rather than armour, and the price was the ordinary way of breathing. |
+| `the-layer-we-call-essential-zine.html` | **The Layer We Call Essential** *(Zine No. 36)* | The long-finned pilot whale's neocortex holds roughly 37.2 billion neurons — the first animal ever counted above us — and the same paper concludes that absolute neuron number doesn't explain human cognition. The yardstick came back against us and the ranking survived, because it was never resting on the count. Difference read as deficit, conducted by neuroscientists, about whales. |
+| `eight-tenths-of-a-second-zine.html` | **Eight Tenths of a Second** *(Zine No. 38)* | The first Burke-style chain here: an assistant dismissed in 1796 for marking star transits eight tenths of a second late, and astronomy's answer — the personal equation, publishing a constant per observer and *keeping* the observer. Follows the measuring apparatus out of the observatory to a table with a child at it. Every joint marked documented, contested or leap; accommodation is the older answer. |
+| `five-microns-zine.html` | **Five Microns** *(Zine No. 39)* | How a number nobody wrote became doctrine. Wells put the boundary between droplets that fall and droplets that linger at 100 micrometres and never wrote 5; the 5 µm figure came from a different question — which particles reach the deepest lung — and the two were fused in 1951. Meanwhile Flügge's team had grown colonies nine metres from a sneeze in the 1890s and recommended ventilation. |
+| `five-sigma-zine.html` | **Five Sigma** *(Zine No. 40)* | How much evidence is enough before you do something to a child? Particle physics won't say *discovery* below five sigma; *p* = 0.05 was chosen in 1925 with the word *convenient*. The gap is roughly 170,000×, and the asymmetry runs backwards — then the systematics column turns out empty, because 150 intervention studies produced 11 that mentioned adverse events at all. Not an argument against science; an argument against scientism. |
+| `conquering-gaze-zine.html` | **A Conquering Gaze from Nowhere** *(Zine No. 41)* | Bessel measured 61 Cygni in 1838 using the observer's own displacement as the baseline — so a view from nowhere has no baseline, no angle and no depth, which makes it the blindest available position rather than the most authoritative. Haraway named it the god trick; the correction is neither removing the observer nor declaring all views equal, but publishing your coordinates. Stops to name the three women who did the work and lost the byline. |
+| `look-for-the-air-zine.html` | **Look for the Air** *(Zine No. 42)* | Aristotle explained falling by what a thing *is*, and every prediction checks out — because everyday observation happens in air. In 1971 a hammer and a feather landed together in the lunar vacuum, on film: the difference was never in the feather. This chain argues that mindset marketing runs that two-thousand-year move backwards on children, and that the dashboard completes it — fields for effort, focus and behaviour points, and no field for the room. |
+| `elimination-of-waste-zine.html` | **The Elimination of Waste** *(Zine No. 43)* | Carnot proved in 1824 that waste heat is not sloppiness but the fee — an engine with nowhere to dump it does not run at all. Then the phrase left the engine room and shed the ceiling, arriving by 1916 in a textbook about schoolchildren as a specification. Ends at spoon theory, then spends a whole spread arguing that this argument should not need physics at all. |
+| `cannot-flatten-a-sphere-zine.html` | **You Cannot Flatten a Sphere** *(Zine No. 44)* | Gauss's *Theorema Egregium* (1827): curvature is intrinsic, so no flat map of a curved thing can preserve everything and every projection must sacrifice something — and never says what it chose. An IQ score or a support level is literally a projection, and worse than a Mercator, which keeps every place badly, because a single number deletes the other dimensions instead. If you must summarise, publish the indicatrix. |
+| `the-cloud-phase-zine.html` | **The Cloud Phase** *(Zine No. 45)* | The story of a dead star usually ends one step past the explosion, but the physics runs further — to a *cloud phase*, the remnant falling back into itself and settling as an enriched cloud (held as proposed, flagged in place). The firmer claim is the measurement: star formation efficiency averages 0.08 in the Galaxy's brightest complexes, so the in-between is the majority state, not the wait between the real ones. Written after Helen Edgar. |
+| `companion-stars-zine.html` | **Companion Stars** *(Zine No. 46)* | Astronomy's own working word for the people who orbit close — with a correction first, because *most stars are in binaries* is not so: most stars are single (Lada, 2006). So this one won't tell you everybody has their people; it says that where the binding is real, here is exactly what it is — a barycentre lying in neither star, wide pairs where both keep their shape, and mutual gravity as the only requirement, which means no companion star has to earn it. |
 
 ### Field guides
 
@@ -132,18 +197,60 @@ The sections below mirror the ordering on `index.html`, which is the canonical i
 | `ways-of-being-a-star-field-guide.html` | **A Field Guide to the Ways of Being a Star** *(Field Guide No. 5)* | Eight ways to be a star, each mapped on the Hertzsprung–Russell diagram. Astronomy's own names hide verdicts ("failed" brown dwarf); the sky doesn't grade. |
 | `symbioses-field-guide.html` | **A Field Guide to Symbioses** *(Field Guide No. 6)* | Twelve partnerships across the tree of life, read as mutual aid — including the honest one-way case, the ghost pipe. What biology has always done, disability-justice communities name and practice: care webs and spoon shares. Solidarity, not charity. |
 | `nervous-systems-field-guide.html` | **A Field Guide to Nervous Systems** *(Field Guide No. 7)* | Eleven ways to have a nervous system — the companion catalogue to *Every Nervous System* (Zine No. 27). Neuroscience hides verdicts in its words; the animal kingdom keeps no standard nervous system. |
+| `migrating-field-guide.html` | **A Field Guide to the Ways of Migrating** *(Field Guide No. 8)* | Fifteen ways of migrating — the companion catalogue to *Always Migrating* (Zine No. 30). Almost nothing does the long straight line, and the *largest* migration on Earth is a few hundred metres straight up, every night, in the dark. At the centre is partial migration, where one population holds both migrants and residents: variation within a population isn't the anomaly, it's the mechanism. |
+| `shark-field-guide.html` | **A Field Guide to Being a Shark** *(Field Guide No. 9)* | Twelve ways to be a shark, written for a young person in our community whose special interest is sharks — one clade, one body plan, four hundred million years, and almost nothing holding still inside it. Two entries are here because of a *phrase* rather than an animal: the great hammerhead's head does not sharpen its electrosense, and nothing alive is a living fossil. There is no standard shark. |
+| `turtle-field-guide.html` | **A Field Guide to Being a Turtle** *(Field Guide No. 10)* | Twelve ways to be a turtle, and five turtles people made — the companion catalogue to *Everywhere That Turtles Go* (No. 35). Nearly every entry is something a turtle is supposed to have and doesn't. The Arrau was filed as a silent animal until somebody brought a hydrophone: 2,122 recorded sounds, hatchlings calling from inside the egg — *the silence was ours*. The five turtles people made get a deliberately different card and no reframe table. |
+| `tortoise-field-guide.html` | **A Field Guide to Being a Tortoise** *(Field Guide No. 11)* | Twelve land tortoises, opening where it has to: on 15 September 1968, when Zond 5 carried two Soviet steppe tortoises around the far side of the Moon and brought them back alive, two months before Apollo 8 carried any human. Four entries are marked unfinished, because their endings are decisions rather than facts. |
+| `monotropic-galaxy-field-guide.html` | **My Monotropic Galaxy** *(Field Guide No. 12 · guest)* | A guest guide by Helen Edgar (Autistic Realms), and the first whose subject is a person: twenty named features of her own Autistic life over a deep-field image, in her words and at her numbers. It carries no "sounds like / actually" table, and that is the argument rather than an omission — that table corrects a verdict somebody handed down, and there is no verdict in these twenty to correct. Ends where she ends: draw your own. |
 
-### Sound, print, and notes
+### Sound
 
 | File | Piece | What it is |
 |------|-------|------------|
 | `ls-playlist.html` | **L★S Playlist** | Twenty-six songs in conversation with "Love You Down To Your Star Stuff" — cosmic, reclamatory, tender, and true — with YouTube embeds and Spotify links. |
-| `ls-broadside.html` | **L★S Broadside** | Two-sided single sheet, risograph-inspired and print-ready: L★S large on the face, the full *Bone Song* poem on the reverse. Toggle sides and print from the browser. |
+| `joyful-sound-playlist.html` | **It Take a Joyful Sound** | The loud companion to the L★S Playlist, and the one that argues first: *Punky Reggae Party* and Rock Against Racism as a guest list for an alliance that didn't exist until it was read out — which is what *neurodiversity* did too. Then the physics, because sound needs matter and distortion is difference deliberately added. Thirty-six songs, and the honest part: a loud room is itself an access barrier. |
+| `aurora-playlist.html` | **Stimming and Belonging with AURORA** | The companion rack to *Warriors and Weirdos* (No. 13), weighted toward live performance because the argument is the body. The aurora's famous green is oxygen's own forbidden line — a slow release that only completes where nothing crowds it. Twenty-eight performances, and it says plainly that she calls it emotion and we are the ones calling it stimming. |
+| `bowie-playlist.html` | **Nobody Got His Eyes Right** | Thirty-one songs from *Space Oddity* to *I Can't Give Everything Away*, and the one fact everybody repeats about that face, which is wrong: both irises were the same colour, and a 1962 injury left one pupil unable to close — anisocoria, not heterochromia. The 2016 "constellation" isn't one either. Both errors round up into something more elegant, which is *Too Good to Check* with a soundtrack. |
+
+### Print
+
+Sheets made for paper rather than for a screen — one physical sheet, two sides, printing uncropped
+on A4 *or* US Letter. See [`print-design.html`](print-design.html) for how the numbers were arrived
+at, and `tools/check-sheets.mjs` for the gate that keeps them honest.
+
+| File | Piece | What it is |
+|------|-------|------------|
+| `ls-broadside.html` | **L★S Broadside** | Two-sided single sheet, risograph-inspired and print-ready: L★S large on the face with Sagan's line and the three pillars, the full *Bone Song* poem on the reverse. Toggle sides and print from the browser. |
+| `six-ways-broadside.html` | **Six Ways a Fact Goes Wrong** | A field card for checking a claim, and the hand-out companion to *Too Good to Check*: the six failure modes and the tell that gives each one away on the face; the habits, five of our own published errors, and the refusals on the reverse. |
+| `owed-not-earned-broadside.html` | **Owed, Not Earned** | A sheet for the door, and the hand-out companion to the *Inclusion Safety* creed. Be human, be harmless; no litmus test, and one disqualifier, which is harm rather than difference. The full creed, Clark and Douglass, and the four doors on the reverse. |
+| `what-we-refuse-broadside.html` | **What We Refuse** | Nearly every piece here ends by naming the traps it won't fall into, so this sheet collects the six recurring refusals and *counts* them — with the measured number of pieces each appears in, what each one protects, and the one we aim at ourselves. |
+| `the-same-water-broadside.html` | **The Same Water** | For the day you can't do what you did last week — the hand-out companion to Zine No. 20. Capacity is a state, not a trait, and the flip is a cliff rather than a ramp: supercooling, critical slowing down, threshold anxiety, and plain lists of what to ask for and what not to say. |
+| `shared-air-broadside.html` | **Shared Air** | For the room where someone can't breathe easy — the hand-out companion to Zine No. 24. *Don't blame the canary; change the air.* The most actionable reverse in the rack: open a window, add a plant, wear the mask, run a Corsi–Rosenthal box, then what to say and what not to say. |
+| `better-get-used-to-it-broadside.html` | **Better Get Used To It** | For the meeting where someone says *the real world won't wait* — the hand-out companion to Zine No. 34. BGUTI, named by Alfie Kohn in 2005, and why hardship now is not preparation. Keeps the zine's own safeguard: the Greenland shark's 156-year childhood, and the bill attached to it, come before any application to people. |
+| `star-stuff-elements-broadside.html` | **The Star Stuff You're Made Of** | The periodic table read as autobiography, and the sheet most likely to end up on a wall — the hand-out companion to Field Guide No. 2. Eight elements with their house names and their forges, and a correction on the reverse: iron has two parents. |
+| `constellation-sheet.html` | **The Constellation Sheet** | Eighty stars, nothing joined, and a title with a gap in it: *My \_\_\_\_\_\_ Galaxy*. Field Guide No. 12 ends by asking you to draw your own constellations and the site gave you nothing to draw on — this is that gap, closed. The only sheet in the rack that compresses nothing, because it is a surface; the stars are SVG circles rather than the CSS starfield, because browsers omit background graphics and a blank sheet with no stars on it is a mistake rather than a blank sheet. |
 | `shorthand-evolution.html` | **Shorthand Evolution: LYDTYSS → L★S** | How one phrase compressed itself into a glyph. Five shorthands with their etymologies, and what each compression preserved and let go. |
-| `difference-first-frame.html` | **The Difference-First Frame** *(backing material)* | A summary of Helen Edgar's essay "Why Difference Comes First," held for anyone who asks why difference gets to be the starting point. A resonant frame, not a proof — deliberately outside the reading chain. |
+
+### Notes & rationale
+
+All four sit outside the reading chain by decision — threading a changelog or a design system into a
+reading sequence would put a maintenance document between two zines.
+
+| File | Piece | What it is |
+|------|-------|------------|
 | `changelog.html` | **What Changed, and When** *(public changelog)* | Every piece as it arrived, every substantial revision, and every fact-check and attribution audit — including the errors we found in our own work and how we fixed them. Live at [starstuff.earth/changelog](https://starstuff.earth/changelog). |
+| `design.html` | **The Design System** *(reference)* | The visual language with its numbers and its receipts: the typeface and why it was chosen, the `--sp-*` palette with every token's CIELAB lightness and contrast ratio, the palette's honest lineage (began as Solarized, kept the method, none of the colors), and the principles and the refusals. Live at [starstuff.earth/design](https://starstuff.earth/design). |
+| `print-design.html` | **Designing for Paper** *(rationale)* | The working behind the print rack, where every number was arrived at by printing something and finding out it was wrong: 190 × 259 mm as the intersection of A4 and US Letter, 9 mm margins rather than 10 because 0.4 mm of slack tipped a sheet onto a third page, ink on white in both media because browsers omit background graphics, borders instead of backgrounds, and five house hues darkened until they clear AA on white. Plus the gates that measure it — and a standing list of the faults none of them can see. |
+| `difference-first-frame.html` | **The Difference-First Frame** *(backing material)* | A summary of Helen Edgar's essay "Why Difference Comes First," held for anyone who asks why difference gets to be the starting point. A resonant frame, not a proof. |
+
+### Utility pages
+
+Neither belongs to a collection, and neither is in the reading chain.
+
+| File | Piece | What it is |
+|------|-------|------------|
+| `index.html` | **Star Stuff** | Landing page and entry point — every artifact, grouped and described. Also the only page with no `.ss-nav`; it carries its own masthead jump strip and search link instead. |
 | `search.html` | **Search** *(tool)* | Client-side search across the whole collection, down to the individual zine spread and field-guide entry. No dependencies and no server — the index is a committed JSON file and the query never leaves your browser. Live at [starstuff.earth/search](https://starstuff.earth/search). |
-| `design.html` | **The Design System** *(reference)* | The visual language with its numbers and its receipts: the typeface and why it was chosen, the `--sp-*` palette with every token's CIELAB lightness and contrast ratio, the palette's honest lineage (began as Solarized, kept the method, none of the colors), the principles and the refusals — and the one contrast value that still fails. Live at [starstuff.earth/design](https://starstuff.earth/design). |
 
 ### Shared assets & repo files
 
@@ -155,8 +262,12 @@ The sections below mirror the ordering on `index.html`, which is the canonical i
 | `35407642044_c29b4f2bd7_3k.jpg` | [SN 1006: Liberating Star Stuff](https://chandra.si.edu/photo/2008/sn1006c/) — Chandra X-ray Observatory photo album, 1 July 2008. Used on `love-you-down-to-your-star-stuff.html`. |
 | `og-card.jpg`, `favicon.svg` | Social card (1200×630) and site icon. |
 | `robots.txt`, `sitemap.xml` | Crawl and index files. Add every new page to the sitemap. |
-| `search-index.json` | The committed search index — 425 records covering every spread and field-guide entry. **Regenerate with `node tools/build-search-index.mjs` whenever page text changes**, and commit it. |
+| `search-index.json` | The committed search index — roughly a thousand records, one per zine spread and per field-guide entry, covering every page but `search.html` itself. **Regenerate with `node tools/build-search-index.mjs` whenever page text changes**, and commit it; `--check` exits non-zero if it's stale and prints the exact totals. |
 | `tools/build-search-index.mjs` | Builds the above. A local dev tool, not a build step — Netlify never runs it. Needs headless Chrome, because the field guides render their entries from JS and much zine text is hidden until paged to, so the index has to come from rendered DOM rather than HTML source. |
+| `tools/check-contrast.mjs` | Measures every text element against its real composited ancestor background, on screen *and* against bare white paper, plus SVG `fill` labels the CSS pass can't see. **Baseline 0** since 2026-08-13, so `--check` is a ship gate. What it can't measure — gradient-clipped text — it lists rather than skips. |
+| `tools/check-markup.mjs` | Reads *source*, not the DOM, because the faults it catches are ones the parser silently repairs: nested anchors, blocks inside paragraphs, duplicate `id`s, a `.ss-nav` outside its content shell, and a collection badge that disagrees with the collection actually carding the page. No Chrome, no dependencies, ~0.3s. |
+| `tools/check-sheets.mjs` | Prints each paper-first sheet to PDF at both US Letter and A4 and counts pages, *and* measures content height against the box — because a fixed-height sheet that overruns doesn't paginate, it clips. |
+| `tools/check-sitemap.mjs` | Audits `sitemap.xml` against the filesystem — missing, stale and duplicate entries, off-site or non-https `loc`, malformed structure, the bare root entry, and `lastmod` sanity. Nothing else here opens the sitemap, so a page could be absent and every other gate still pass. |
 | `FACTCHECK.md` | The per-piece fact-check ledger and the verification guidelines behind it — the working companion to the public `changelog.html`. |
 | `DECISIONS.md` | Open and settled decisions about the collection. |
 | `CLAUDE.md` | Working guidance for Claude Code in this repository. |
@@ -166,11 +277,11 @@ The sections below mirror the ordering on `index.html`, which is the canonical i
 
 Everything shares one visual language, tuned for accessibility first:
 
-- **Typeface:** [Atkinson Hyperlegible Next](https://fonts.google.com/specimen/Atkinson+Hyperlegible+Next) — released free by the Braille Institute, named for its founder J. Robert Atkinson, and drawn for letterform distinction so readers with low vision can tell confusable characters apart. All 44 Atkinson pages are on Next as of 2026-08-08 (the other 3 are the Fraunces-set trio: *Bone Song*, *Underground*, *You Were Never One Thing*). **The Google Fonts request must be `wght@0,200..800;1,200..800`** — Next publishes 200–800, and asking for `200..900` returns HTTP 400 with no `@font-face`, silently falling every visitor back to `system-ui`. That shipped unnoticed for weeks; if you touch a font URL, `curl` it and confirm you get `@font-face` blocks back.
+- **Typeface:** [Atkinson Hyperlegible Next](https://fonts.google.com/specimen/Atkinson+Hyperlegible+Next) — released free by the Braille Institute, named for its founder J. Robert Atkinson, and drawn for letterform distinction so readers with low vision can tell confusable characters apart. Every page has been on Next since 2026-08-08 except the Fraunces-set trio — *Bone Song*, *Underground*, and *You Were Never One Thing* — which don't request Atkinson at all (`grep -L "Atkinson+Hyperlegible+Next" *.html` should return exactly those three). **The Google Fonts request must be `wght@0,200..800;1,200..800`** — Next publishes 200–800, and asking for `200..900` returns HTTP 400 with no `@font-face`, silently falling every visitor back to `system-ui`. That shipped unnoticed for weeks; if you touch a font URL, `curl` it and confirm you get `@font-face` blocks back.
 - **Palette:** the canonical tokens live in [`starstuff.css`](starstuff.css) as `:root { --sp-* }` — the single source of truth for every recurring color (cosmic dark ground, card, and the purple / pink / gold / cyan / green accent set). Pages alias them inline (`--purple: var(--sp-purple)`), so a palette change happens in one place. Introduce a new shared color by adding a `--sp-` token there, not by hardcoding a hex across pages. Page-specific one-off colors stay inline, as does the themed starfield gradient art — its per-page tinting is intentional.
 - **Principles:** full-opacity body text (no faded grays), generous line height, `8px` card radius, a `3px` colored left border as a recurring motif, and a starfield rendered in pure CSS.
 - **Accessibility:** `starstuff.css` honors `prefers-reduced-motion` and hides navigation in `@media print`. Every artifact stays keyboard-navigable and print-friendly — they're meant to be printed and handed to people.
-- **Print:** the whole collection inverts to ink on paper. Browsers leave *Background graphics* off by default, so a light-on-dark page that keeps its screen colors prints blank — which is exactly what 44 of 46 pages did until 2026-08-08. The shared stylesheet now redefines the `--sp-*` tokens inside `@media print`, so one change inverts every page that aliases them; SVG `fill`/`stroke` are inverted separately because `color` doesn't reach them, and the few pages that hardcode colors carry small print overrides of their own. **If you add a page, print it before you ship it** — and see [`design.html`](design.html) for the full account.
+- **Print:** the whole collection inverts to ink on paper. Browsers leave *Background graphics* off by default, so a light-on-dark page that keeps its screen colors prints blank — which is exactly what 44 of 46 pages did until 2026-08-08. The shared stylesheet now redefines the `--sp-*` tokens inside `@media print`, so one change inverts every page that aliases them; SVG `fill`/`stroke` are inverted separately because `color` doesn't reach them, and the few pages that hardcode colors carry small print overrides of their own. **If you add a page, print it before you ship it** — `node tools/check-contrast.mjs --check` measures both media for you and has held at zero failures since 2026-08-13, so a failure is yours. See [`design.html`](design.html) for the full account and [`print-design.html`](print-design.html) for the paper-first sheets.
 
 The whole system is documented, with its numbers, at **[starstuff.earth/design](https://starstuff.earth/design)** ([`design.html`](design.html)).
 
