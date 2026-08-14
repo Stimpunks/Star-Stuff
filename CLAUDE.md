@@ -157,7 +157,7 @@ that disclosure is the convention, and **How We Got Here duly carries it too**:
 
 | Collection | Axis | Members |
 |------------|------|---------|
-| **Field Guides** | **form** — a catalogue of same-shaped entries, none ranked | Field Guides 1–11 (114 entries; 119 cards counting the five *turtles people made*, which FG 10 deliberately does not file as entries) |
+| **Field Guides** | **form** — a catalogue of same-shaped entries, none ranked | Field Guides 1–12 (134 entries; 139 cards counting the five *turtles people made*, which FG 10 deliberately does not file as entries) |
 | **How We Got Here** | **form** — a Burke chain, one link per spread, joints marked | 38, 39, 40, 41, 42, 43 |
 | **Print** | **medium** — paper | 5 broadsides + 1 typographic sheet |
 | **Sound** | **medium** — audio | 4 racks, 121 cards / 117 distinct songs |
@@ -203,8 +203,9 @@ never candidates for a register. Don't try to fold these into either table:
   no prev/next — the same shape `about.html` and `cosmic-connections.html` use. If a future
   collection's members all sit off the chain, copy that shape rather than inventing a link.
 - **Field Guides sort by form, and that cuts across register on purpose.** FG 2 is settled physics
-  and FG 1 is frank invention, and they are the same kind of object. Six of the eleven arrive
-  independently at *there is no standard {star, nervous system, migration, shark, turtle, tortoise}*
+  and FG 1 is frank invention, and they are the same kind of object. Seven of the twelve arrive
+  independently at *there is no standard {star, nervous system, migration, shark, turtle, tortoise,
+  galaxy}*
   — verify by grep before restating the count, it grows.
 - **Where the form stops is load-bearing.** FG 10 keeps five *turtles people made* in a separate
   section with a dashed border and **no reframe table**, because that table corrects a mistaken
