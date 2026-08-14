@@ -84,7 +84,7 @@ No. 45, leaving a gap; `out-of-order-zine.html` went back and occupied it, so it
 number here that is **not** a date — it is younger than No. 46. It marks itself `leap` for that,
 and every other gap in the sequence stays empty.
 
-Counts here are measured, not remembered. At the time of writing that is **98 HTML pages** — 83
+Counts here are measured, not remembered. At the time of writing that is **99 HTML pages** — 84
 collection members, the 13 collection pages, plus `index.html` and `search.html`, which belong to
 no collection. Re-derive rather than trust it:
 
@@ -211,6 +211,7 @@ their face rather than leaving it to look like an oversight.
 | `turtle-field-guide.html` | **A Field Guide to Being a Turtle** *(Field Guide No. 10)* | Twelve ways to be a turtle, and five turtles people made — the companion catalogue to *Everywhere That Turtles Go* (No. 35). Nearly every entry is something a turtle is supposed to have and doesn't. The Arrau was filed as a silent animal until somebody brought a hydrophone: 2,122 recorded sounds, hatchlings calling from inside the egg — *the silence was ours*. The five turtles people made get a deliberately different card and no reframe table. |
 | `tortoise-field-guide.html` | **A Field Guide to Being a Tortoise** *(Field Guide No. 11)* | Twelve land tortoises, opening where it has to: on 15 September 1968, when Zond 5 carried two Soviet steppe tortoises around the far side of the Moon and brought them back alive, two months before Apollo 8 carried any human. Four entries are marked unfinished, because their endings are decisions rather than facts. |
 | `monotropic-galaxy-field-guide.html` | **My Monotropic Galaxy** *(Field Guide No. 12 · guest)* | A guest guide by Helen Edgar (Autistic Realms), and the first whose subject is a person: twenty named features of her own Autistic life over a deep-field image, in her words and at her numbers. It carries no "sounds like / actually" table, and that is the argument rather than an omission — that table corrects a verdict somebody handed down, and there is no verdict in these twenty to correct. Ends where she ends: draw your own. |
+| `watching-animals-field-guide.html` | **A Field Guide to Watching Animals** *(Field Guide No. 13 · easter egg)* | The companion catalogue to No. 47, and the watching list the animal writing came out of. Sixteen animals, each with a *True Facts* video and field notes from the primary literature; twelve pair with a piece already here and link back. The reframe table corrects the popular verdict on the **animal**, never anything in the videos — because No. 47 argues the series issues no verdicts — and the aye-aye entry deliberately has no row aimed at a belief. Nothing loads until you press play. Filed in Easter Eggs, not Field Guides. |
 
 ### Sound
 
