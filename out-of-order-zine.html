@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0a0a14">
+<link rel="canonical" href="https://starstuff.earth/out-of-order-zine.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta name="description" content="There was never a No. 37. The number was held for a piece waiting on a question, seven zines shipped past it, and it came back as No. 45 — so the gap is a receipt, not an accident. An apology to a number, and three famous 37s that are not what they seem: 37 °C, which Wunderlich averaged in 1868 and which is no longer true; the 37% of any search you should spend looking and not choosing; and the number people reach for when asked to be random. We refuse to solder them together. This page is younger than No. 46 and says so.">
+<!-- Open Graph / link unfurl -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Star Stuff · Stimpunks Foundation × More Realms">
+<meta property="og:url" content="https://starstuff.earth/out-of-order-zine.html">
+<meta property="og:title" content="Out of Order">
+<meta property="og:description" content="An apology to the number 37, which we held and never used. Your temperature is not 37. The optimal time to stop looking is 37% of the way through. And this page is younger than No. 46, which its own number denies.">
+<meta property="og:image" content="https://starstuff.earth/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A rainbow-hued cosmic image — we are all made of star stuff.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Out of Order">
+<meta name="twitter:description" content="The one gap in our numbering, annotated. Three famous 37s, none of them what you were told, and a page that admits it arrived after No. 46.">
+<meta name="twitter:image" content="https://starstuff.earth/og-card.jpg">
+<title>Out of Order — Stimpunks Zine No. 37</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="starstuff.css">
+<style>
+  :root {
+    --void:  var(--sp-void-deep);
+    --deep:  var(--sp-deep);
+    --page:  var(--sp-page);
+    --violet:var(--sp-purple);
+    --pink:  var(--sp-pink);
+    --gold:  var(--sp-gold);
+    --cyan:  var(--sp-cyan);
+    --green: var(--sp-green);
+    --ember: #c1653a;
+    --accent: var(--sp-gold);          /* this zine's identity accent — gold, the colour of a reserved sign */
+    --star-white: var(--sp-white-soft);
+    --stardust:   var(--sp-secondary-soft);
+    --dim:   var(--sp-dim);
+    --dim2:  var(--sp-dim-soft);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--void);
+    font-family: 'Atkinson Hyperlegible Next', system-ui, sans-serif;
+    color: var(--star-white);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── STARFIELD (gold · white · cyan — one deliberate gap in the upper middle) ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 9% 14%, rgba(251,191,36,0.60) 0%, transparent 100%),
+      radial-gradient(1px 1px at 12% 17%, rgba(244,244,251,0.5) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 24% 8%, rgba(251,191,36,0.46) 0%, transparent 100%),
+      radial-gradient(1px 1px at 61% 62%, rgba(244,244,251,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 64% 66%, rgba(251,191,36,0.5) 0%, transparent 100%),
+      radial-gradient(2px 2px at 80% 23%, rgba(251,191,36,0.46) 0%, transparent 100%),
+      radial-gradient(1px 1px at 89% 50%, rgba(34,211,238,0.42) 0%, transparent 100%),
+      radial-gradient(1px 1px at 94% 78%, rgba(251,191,36,0.48) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 6% 57%, rgba(244,244,251,0.52) 0%, transparent 100%),
+      radial-gradient(1px 1px at 31% 83%, rgba(251,191,36,0.44) 0%, transparent 100%),
+      radial-gradient(1px 1px at 34% 86%, rgba(244,244,251,0.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 52% 42%, rgba(34,211,238,0.38) 0%, transparent 100%),
+      radial-gradient(2px 2px at 19% 87%, rgba(251,191,36,0.46) 0%, transparent 100%),
+      radial-gradient(1px 1px at 74% 6%, rgba(244,244,251,0.7) 0%, transparent 100%),
+      radial-gradient(1px 1px at 86% 89%, rgba(251,191,36,0.38) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .zine-shell { position: relative; z-index: 1; max-width: 820px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+
+  .spectrum-line { height: 2px; border: none; border-radius: 2px; background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); }
+
+  /* ── NAV ── */
+  .nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2.5rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(251,191,36,0.2); }
+  .nav-brand { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--dim); }
+  .nav-controls { display: flex; gap: 0.5rem; align-items: center; }
+  .nav-btn { background: none; border: 1px solid rgba(251,191,36,0.35); color: var(--stardust); font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.15em; padding: 0.4rem 0.85rem; border-radius: 2px; cursor: pointer; transition: all 0.2s ease; text-transform: uppercase; }
+  .nav-btn:hover { background: rgba(251,191,36,0.15); border-color: rgba(251,191,36,0.6); color: var(--star-white); }
+  .nav-btn.active { background: rgba(251,191,36,0.20); border-color: var(--accent); color: var(--star-white); }
+  .page-counter { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.2em; color: var(--dim2); }
+
+  .spread { display: none; animation: fadeIn 0.5s ease forwards; }
+  .spread.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ── COVER ── */
+  .cover-spread {
+    position: relative; min-height: 520px; border-radius: 4px; overflow: hidden;
+    background:
+      radial-gradient(ellipse at 24% 22%, rgba(251,191,36,0.12) 0%, transparent 52%),
+      radial-gradient(ellipse at 78% 26%, rgba(34,211,238,0.07) 0%, transparent 52%),
+      radial-gradient(ellipse at 66% 82%, rgba(251,191,36,0.09) 0%, transparent 52%),
+      radial-gradient(ellipse at 26% 80%, rgba(167,139,250,0.07) 0%, transparent 52%),
+      var(--deep);
+    border: 1px solid rgba(251,191,36,0.25);
+    box-shadow: inset 0 0 80px rgba(251,191,36,0.06), 0 0 0 4px rgba(255,255,255,0.03);
+    display: flex; flex-direction: column; justify-content: flex-end; padding: 3rem;
+  }
+  .cover-motif { position: absolute; top: -4px; right: -14px; width: 340px; height: 340px; opacity: 0.8; pointer-events: none; }
+  .cover-issue { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.5em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.5rem; }
+  .cover-title { font-weight: 700; font-size: clamp(2.2rem, 6.4vw, 3.8rem); line-height: 1.03; color: var(--star-white); letter-spacing: -0.01em; margin-bottom: 0.9rem; }
+  .cover-title .amp { color: var(--accent); font-style: italic; }
+  .cover-subtitle { font-size: 1rem; color: var(--stardust); opacity: 0.85; margin-bottom: 1.5rem; max-width: 470px; line-height: 1.55; }
+  .cover-byline { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.14em; color: var(--dim); margin-bottom: 1.8rem; }
+  .cover-byline strong { color: var(--stardust); font-weight: 700; }
+  .cover-rule { width: 220px; max-width: 60%; margin-bottom: 1.3rem; }
+  .cover-meta { display: flex; gap: 2rem; align-items: center; }
+  .cover-ls { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 1.4rem; color: var(--gold); letter-spacing: 0.05em; }
+  .cover-meta-text { font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--dim2); line-height: 1.9; }
+  .cover-corner { position: absolute; top: 2rem; right: 2.5rem; text-align: right; }
+  .cover-corner-num { font-weight: 700; font-size: 4.5rem; line-height: 1; color: var(--accent); opacity: 0.24; }
+  .cover-corner-label { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); display: block; margin-top: -0.3rem; }
+
+  /* ── INTERIOR ── */
+  .interior { background: var(--page); border: 1px solid rgba(251,191,36,0.15); border-radius: 4px; overflow: hidden; min-height: 480px; }
+  .spread-2col { display: grid; grid-template-columns: 1fr 1fr; min-height: 480px; }
+  .spread-left, .spread-right { padding: 3rem 2.4rem; position: relative; }
+  .spread-left { border-right: 1px solid rgba(251,191,36,0.12); }
+
+  .spread-2col.stacked { display: flex; flex-direction: column; }
+  .spread-2col.stacked > .spread-left,
+  .spread-2col.stacked > .spread-right { border-right: none; }
+  .spread-2col.stacked > .col-diagram { order: 2; padding-top: 0; }
+  .spread-2col.stacked > .col-text { padding-left: max(2.4rem, calc((100% - 32rem) / 2)); padding-right: max(2.4rem, calc((100% - 32rem) / 2)); }
+  .spread-2col.stacked .diagram-wrap { height: auto; }
+  .spread-2col.stacked .diagram { max-width: 380px; }
+
+  .eyebrow { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.1rem; }
+  .body-text { font-size: 0.98rem; line-height: 1.72; color: var(--stardust); }
+  .body-text p { margin-bottom: 1rem; }
+  .body-text p:last-child { margin-bottom: 0; }
+  .body-text strong { font-weight: 700; color: var(--star-white); }
+  .body-text em { font-style: italic; color: var(--star-white); }
+  .body-text a { color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(251,191,36,0.4); }
+  .body-text a:hover { border-bottom-color: var(--gold); color: var(--star-white); }
+  .body-text .violet { color: var(--violet); font-weight: 700; }
+  .body-text .pink { color: var(--pink); font-weight: 700; }
+  .body-text .gold { color: var(--gold); font-weight: 700; }
+  .body-text .cyan { color: var(--cyan); font-weight: 700; }
+  .body-text .green { color: var(--green); font-weight: 700; }
+  .body-text .lede { font-size: 1.08rem; color: var(--star-white); }
+
+  .spread-heading { font-weight: 700; font-size: 1.9rem; line-height: 1.12; color: var(--star-white); margin-bottom: 1.1rem; letter-spacing: -0.01em; margin-top: 0; scroll-margin-top: 5rem; }
+  .spread-heading .spectrum-word { background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .rule { width: 40px; margin: 1rem 0; }
+
+  .pull-quote { font-size: 1.18rem; font-weight: 700; line-height: 1.4; color: var(--star-white); border-left: 3px solid var(--accent); padding-left: 1.1rem; margin: 1.4rem 0; font-style: italic; }
+  .pull-quote.violet { border-left-color: var(--violet); }
+  .pull-quote.cyan { border-left-color: var(--cyan); }
+  .pull-quote.gold { border-left-color: var(--gold); }
+  .pull-quote.pink { border-left-color: var(--pink); }
+  .pull-quote .attr { display: block; font-family: 'Space Mono', monospace; font-size: 0.6rem; font-weight: 400; font-style: normal; letter-spacing: 0.08em; color: var(--dim); margin-top: 0.6rem; }
+
+  .callout { margin: 1.3rem 0; padding: 1rem 1.15rem; background: rgba(251,191,36,0.07); border: 1px solid rgba(251,191,36,0.24); border-radius: 4px; font-size: 1rem; font-style: italic; color: var(--star-white); line-height: 1.55; }
+  .callout .attr { display: block; font-family: 'Space Mono', monospace; font-size: 0.58rem; font-style: normal; letter-spacing: 0.06em; color: var(--dim); margin-top: 0.5rem; }
+
+  .note { font-size: 0.84rem; line-height: 1.6; color: var(--dim); border-left: 2px solid rgba(34,211,238,0.4); padding-left: 0.9rem; margin: 1.1rem 0; }
+  .note strong { color: var(--stardust); font-weight: 700; }
+
+  /* ── JOINT TAG ──
+     Borrowed from How We Got Here for exactly two claims: the survey on spread 7
+     and this page's own number on spread 8. The notation belongs to that collection
+     and is not promoted lightly — the reason it is here is that the number in the
+     corner is the weakest thing on the page, and a piece about its own honesty
+     cannot leave its weakest claim unmarked.
+
+     Colours are that collection's own — gold for contested, pink for leap, each on a
+     10% wash of its own hue — so a reader who knows the notation recognises it on
+     sight. Not `--ember`: that is the refusal-set colour, and it measures 4.78:1 on
+     bare `--page` but only 4.43:1 once a tinted callout lifts the ground under it. */
+  .joint { display: flex; gap: 0.7rem; align-items: baseline; margin: 1.3rem 0; padding: 0.8rem 1rem; border-radius: 4px; }
+  .joint-tag { font-family: 'Space Mono', monospace; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; flex-shrink: 0; padding-top: 0.15rem; }
+  .joint-body { font-size: 0.86rem; line-height: 1.6; color: var(--stardust); }
+  .joint-body strong { color: var(--star-white); font-weight: 700; }
+  .joint--contested { background: rgba(251,191,36,0.10); border: 1px solid rgba(251,191,36,0.32); }
+  .joint--contested .joint-tag { color: var(--gold); }
+  .joint--leap { background: rgba(244,114,182,0.10); border: 1px solid rgba(244,114,182,0.32); }
+  .joint--leap .joint-tag { color: var(--pink); }
+
+  /* ── TABLES ── */
+  .trades { width: 100%; border-collapse: collapse; margin: 1.3rem 0; font-size: 0.84rem; }
+  .trades caption { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dim); text-align: left; padding-bottom: 0.6rem; }
+  .trades th { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--stardust); text-align: left; padding: 0.5rem 0.6rem; border-bottom: 1px solid rgba(251,191,36,0.34); font-weight: 700; }
+  .trades td { padding: 0.55rem 0.6rem; border-bottom: 1px solid rgba(251,191,36,0.1); color: var(--stardust); line-height: 1.5; vertical-align: top; }
+  .trades td.keeps { color: var(--gold); font-weight: 700; }
+  .trades td.loses { color: var(--cyan); font-weight: 700; }
+
+  /* ── DIAGRAMS ── */
+  .diagram-wrap { display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; }
+  .diagram { width: 100%; max-width: 300px; display: block; }
+  .diagram-caption { font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim); text-align: center; margin-top: 0.9rem; line-height: 1.9; }
+
+  /* ── REFUSALS ── */
+  .refusals { margin-top: 1.3rem; }
+  .refusal { font-size: 0.88rem; line-height: 1.5; color: var(--stardust); padding: 0.55rem 0; border-bottom: 1px solid rgba(251,191,36,0.1); display: flex; gap: 0.6rem; align-items: baseline; }
+  .refusal:last-child { border-bottom: none; }
+  .refusal-tag { font-family: 'Space Mono', monospace; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ember); flex-shrink: 0; padding-top: 0.12rem; }
+  .refusal strong { color: var(--star-white); font-weight: 700; }
+
+  /* ── COLOPHON ── */
+  .colophon { padding: 3rem; display: flex; flex-direction: column; justify-content: space-between; min-height: 480px; background: radial-gradient(ellipse at 82% 18%, rgba(251,191,36,0.09) 0%, transparent 50%), radial-gradient(ellipse at 18% 85%, rgba(34,211,238,0.06) 0%, transparent 50%), var(--page); }
+  .colophon-top { border-bottom: 1px solid rgba(251,191,36,0.14); padding-bottom: 1.3rem; margin-bottom: 1.2rem; }
+  .colophon-ls { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 2.4rem; color: var(--gold); letter-spacing: 0.05em; display: block; margin-bottom: 0.4rem; }
+  .colophon-phrase { font-size: 0.98rem; font-weight: 700; font-style: italic; color: var(--stardust); }
+  .series-list { display: flex; flex-direction: column; gap: 0.38rem; margin-bottom: 1.2rem; }
+  .series-item { font-size: 0.72rem; color: var(--dim); letter-spacing: 0.01em; display: flex; gap: 0.7rem; align-items: baseline; line-height: 1.45; }
+  .series-item.current { color: var(--accent); font-weight: 700; }
+  .series-num { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim2); flex-shrink: 0; }
+  .series-item.current .series-num { color: var(--accent); }
+  .reflect { border-top: 1px solid rgba(251,191,36,0.14); padding-top: 1rem; margin-bottom: 1.2rem; }
+  .reflect-label { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.65rem; }
+  .reflect-q { font-size: 0.86rem; line-height: 1.55; color: var(--stardust); margin-bottom: 0.55rem; font-style: italic; }
+  .reflect-q:last-child { margin-bottom: 0; }
+  .colophon-body { font-size: 0.75rem; color: var(--dim); line-height: 1.75; margin-bottom: 1.2rem; }
+  .colophon-body a { color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(251,191,36,0.4); }
+  .colophon-body a:hover { border-bottom-color: var(--gold); }
+  .colophon-h { font-family: 'Space Mono', monospace; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: var(--stardust); margin: 1rem 0 0.4rem; scroll-margin-top: 5rem; }
+  .colophon-footer { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--dim); line-height: 2.2; border-top: 1px solid rgba(251,191,36,0.14); padding-top: 1rem; }
+
+  /* ── SPREAD FOOTER ── */
+  .spread-footer { display: flex; justify-content: space-between; align-items: center; padding: 0.9rem 2.4rem; border-top: 1px solid rgba(251,191,36,0.1); }
+  .spread-footer-left { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--dim); }
+  .spread-footer-right { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; color: var(--accent); }
+
+  .twinkle { position: fixed; width: 3px; height: 3px; border-radius: 50%; animation: twinkle-anim 3s ease-in-out infinite; pointer-events: none; z-index: 0; }
+
+  @media (max-width: 600px) {
+    .spread-2col { grid-template-columns: 1fr; }
+    .spread-left { border-right: none; border-bottom: 1px solid rgba(251,191,36,0.12); }
+    .spread-2col.stacked > .spread-left { border-bottom: none; }
+    .spread-2col.stacked > .col-text { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .cover-spread { padding: 2rem; min-height: 420px; }
+    .cover-motif { width: 224px; height: 224px; top: -4px; right: -24px; opacity: 0.5; }
+    .cover-title { font-size: 2rem; }
+    .spread-heading { font-size: 1.55rem; }
+    .spread-left, .spread-right { padding: 2rem 1.5rem; }
+    .colophon { padding: 2rem 1.5rem; }
+    .trades { font-size: 0.76rem; }
+    .trades th, .trades td { padding: 0.4rem 0.35rem; }
+  }
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Out of Order","description":"There was never a No. 37 in this collection. The number was held in August 2026 for a zine waiting on a question, seven pieces shipped past it while it sat, and it arrived as No. 45 — so the gap in the numbering is a receipt for a question asked rather than assumed. This page is an apology to the number, and it corrects its own premise on the second spread: we did not skip 37 by accident, and saying we had would have been the smoothed retelling this collection exists to refuse. Then three famous 37s that are not what they seem. Carl Wunderlich averaged over a million axillary readings from about 25,000 patients in Das Verhalten der Eigenwaerme in Krankheiten (Leipzig, 1868) and published 37 degrees Celsius as the physiological point; Protsiv, Ley, Lankester, Hastie and Parsonnet (eLife 9:e49555, 2020) find mean body temperature has fallen monotonically by 0.03 degrees per birth decade, 0.59 degrees in men between the 1800s and 1997 and 0.32 degrees in women between 1890 and 1997, putting the modern mean nearer 36.6. The optimal stopping rule for a sequential search says reject the first 1 over e, about 36.8 percent, of the options and then take the first one better than everything seen, which finds the best candidate about 37 percent of the time whether there are one hundred options or one hundred million; the 1 over e law was proved by F. Thomas Bruss in 1984, the problem was posed by Merrill Flood in 1949 and first published by Martin Gardner in Scientific American in February 1960, and Thomas Ferguson asked who solved it in Statistical Science in 1989. And 37 is the number people reach for when asked to pick a random one, which is held here as a plausible finding from an unrefereed survey rather than as a fact. The zine refuses to solder the three together, because a coincidence dressed as a mechanism is the fault it was built to name. Also the honest arithmetic: 37 is the twelfth prime, reverses to 73 which is the twenty-first, is the third star number and the fourth centered hexagonal number, gives 111 when tripled, and is the exact value of g(5) in Waring's problem, proved by Chen Jingrun in 1964. A rhyme, not a proof.","image":"https://starstuff.earth/og-card.jpg","url":"https://starstuff.earth/out-of-order-zine.html","mainEntityOfPage":"https://starstuff.earth/out-of-order-zine.html","author":{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/"},"publisher":[{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/","logo":{"@type":"ImageObject","url":"https://starstuff.earth/og-card.jpg"}},{"@type":"Organization","name":"More Realms","url":"https://morerealms.com/"}],"isPartOf":{"@type":"WebSite","name":"Star Stuff","url":"https://starstuff.earth/"}}</script>
+</head>
+<body>
+
+<div class="twinkle" style="top:10%;left:12%;background:var(--gold);box-shadow:0 0 6px var(--gold);animation-delay:-0.6s"></div>
+<div class="twinkle" style="top:21%;left:87%;background:var(--star-white);box-shadow:0 0 6px var(--star-white);animation-delay:-1.5s"></div>
+<div class="twinkle" style="top:54%;left:6%;background:var(--gold);box-shadow:0 0 6px var(--gold);animation-delay:-2.3s"></div>
+<div class="twinkle" style="top:73%;left:92%;background:var(--cyan);box-shadow:0 0 6px var(--cyan);animation-delay:-0.9s"></div>
+<div class="twinkle" style="top:86%;left:31%;background:var(--star-white);box-shadow:0 0 6px var(--star-white);animation-delay:-1.8s"></div>
+<div class="twinkle" style="top:41%;left:95%;background:var(--gold);box-shadow:0 0 6px var(--gold);animation-delay:-3.1s"></div>
+
+<div class="zine-shell">
+
+  <nav class="ss-nav" style="--nav-accent:#fbbf24;" aria-label="Star Stuff collection">
+    <span class="ss-nav-home-group"><a class="ss-nav-home" href="index.html"><span class="ss-star" aria-hidden="true">★</span> stuff</a><a class="ss-nav-about" href="about.html">about</a>
+      <a class="ss-nav-search" href="search.html">search</a></span>
+    <a class="ss-nav-collection" href="collection-easter-eggs.html"><span class="ss-nav-collection-label">Collection</span> <span class="ss-nav-collection-name">Easter Eggs</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
+  </nav>
+
+  <nav class="nav">
+    <div class="nav-brand"><a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks</a> × <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a> · Zine No. 37</div>
+    <div class="nav-controls">
+      <button class="nav-btn" id="prev-btn" onclick="changePage(-1)">← prev</button>
+      <span class="page-counter" id="page-counter">1 / 9</span>
+      <button class="nav-btn" id="next-btn" onclick="changePage(1)">next →</button>
+    </div>
+  </nav>
+
+  <!-- ════ SPREAD 1: COVER ════ -->
+  <div class="spread active" id="spread-1">
+    <div class="cover-spread">
+      <svg class="cover-motif" viewBox="0 0 340 340" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <!-- A run of numbers with one empty socket, and an arrow curving back into it from
+             beyond the end. Art held in the UPPER THIRD — the cover is 520px and the title
+             sits at its foot, so anything past y≈240 in this viewBox lands on the words.
+             Label colour is amber-300 (#fcd34d) rather than the accent amber-400: this
+             group renders at opacity 0.8, and stepping one rung up the ramp is the
+             documented remedy for a caption inside a faded motif. -->
+        <g transform="translate(0,10) scale(0.88)">
+          <!-- the sockets: filled, filled, EMPTY, filled, filled -->
+          <g fill="none" stroke="rgba(251,191,36,0.5)" stroke-width="1.2">
+            <rect x="52" y="86" width="26" height="30" rx="3"/>
+            <rect x="86" y="86" width="26" height="30" rx="3"/>
+            <rect x="154" y="86" width="26" height="30" rx="3"/>
+            <rect x="188" y="86" width="26" height="30" rx="3"/>
+          </g>
+          <!-- the vacancy, dashed and unfilled -->
+          <rect x="120" y="86" width="26" height="30" rx="3" fill="none" stroke="rgba(251,191,36,0.9)" stroke-width="1.5" stroke-dasharray="4 4"/>
+          <!-- the arrow coming back from past the end, into the vacancy -->
+          <path d="M226 130 C 226 168, 133 172, 133 122" fill="none" stroke="rgba(34,211,238,0.75)" stroke-width="1.4" stroke-dasharray="5 5"/>
+          <path d="M129 127 L133 118 L137 127" fill="none" stroke="rgba(34,211,238,0.9)" stroke-width="1.4" stroke-linecap="round"/>
+          <text x="133" y="107" text-anchor="middle" font-family="Space Mono, monospace" font-size="13" font-weight="700" fill="#fcd34d">37</text>
+          <text x="133" y="196" text-anchor="middle" font-family="Space Mono, monospace" font-size="10.5" letter-spacing="1" fill="#fcd34d">filed late, on purpose</text>
+        </g>
+      </svg>
+      <div class="cover-corner">
+        <div class="cover-corner-num" aria-hidden="true">37</div>
+        <span class="cover-corner-label">Easter Eggs</span>
+      </div>
+      <div class="cover-issue">Stimpunks × More Realms · Zine No. 37</div>
+      <h1 class="cover-title">Out of <span class="amp">Order</span></h1>
+      <p class="cover-subtitle">an apology to a number we held and never used — and three famous 37s that are not what you were told</p>
+      <div class="cover-byline">this zine is <strong>younger than No. 46</strong> and says so on spread eight</div>
+      <hr class="spectrum-line cover-rule">
+      <div class="cover-meta">
+        <span class="cover-ls">L★S</span>
+        <div class="cover-meta-text">Love You Down To Your Star Stuff<br>open edition · print freely</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 2: the gap ════ -->
+  <div class="spread" id="spread-2">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The receipt</div>
+          <h2 class="spread-heading" id="there-was-never-a-no-37">There was never a No. 37</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Count the zines on this site and you will find a hole. Nos. 36 and 38 sit next to each other with nothing in between. This is the page about the hole, and it has to start by correcting itself.</p>
+            <p><strong>We were going to tell you we skipped it by accident.</strong> That is not what happened, and it took about four minutes of reading our own notes to find out — which is roughly how long the check always takes, and roughly how often it gets skipped.</p>
+            <p>What actually happened: on 11 August 2026 a zine about the last stage of a supernova remnant was drafted and given the next number in the sequence, No. 37. Then it stopped, because it leaned on <span class="gold">Helen Edgar's</span> writing closely enough that the honest thing was to ask her before building it. So it waited. And while it waited, <strong>seven other pieces were finished and took the next seven numbers.</strong> When it was finally built on 13 August it was No. 45 — <a href="the-cloud-phase-zine.html"><em>The Cloud Phase</em></a>.</p>
+            <p>Our own decision log is blunt about what that means:</p>
+            <div class="callout">The number moved 37 → 45 because seven pieces shipped while it sat — <em>the number says when</em>, and that gap is the rule working, not a renumbering.<span class="attr">DECISIONS.md · 13 August 2026</span></div>
+            <p>So 37 is not a mistake. It is a <strong>receipt for a question asked rather than assumed</strong>. Which is a much better thing to find in your numbering than a tidy unbroken run, and it is why this page fills the slot without pretending to repair it.</p>
+            <div class="note"><strong>Why the false version mattered enough to catch.</strong> &ldquo;We lost track and skipped one&rdquo; is a smoother story than &ldquo;we deferred a piece to ask someone, and the sequence recorded the wait.&rdquo; Smoother stories travel further, which is exactly the failure <a href="too-good-to-check.html"><em>Too Good to Check</em></a> catalogues and <a href="six-ways-broadside.html">the broadside</a> hands out on a card. Shipping it here would have been this house committing its own named fault, in a piece about honesty, for a joke.</div>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 168" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig1-title fig1-desc">
+              <title id="fig1-title">How 37 became 45</title>
+              <desc id="fig1-desc">A row of numbered sockets running 36 to 46 with 37 left empty and dashed. An arrow runs from the empty socket forward across the seven filled ones numbered 38 to 44 and lands on 45, labelled seven pieces shipped while it waited.</desc>
+              <!-- Every number from 36 to 46 is present. An earlier draft omitted 44, which left a
+                   visual gap implying that number was also unused — and contradicted this figure's
+                   own "seven pieces" label, since the seven are exactly 38 through 44. Sockets are
+                   evenly spaced at 22px from x=14, so the only gap in the row is the real one. -->
+              <g font-family="Space Mono, monospace" font-size="6.5" fill="var(--sp-secondary)">
+                <text x="14" y="34">36</text>
+                <text x="36" y="34">37</text>
+                <text x="58" y="34">38</text>
+                <text x="80" y="34">39</text>
+                <text x="102" y="34">40</text>
+                <text x="124" y="34">41</text>
+                <text x="146" y="34">42</text>
+                <text x="168" y="34">43</text>
+                <text x="190" y="34">44</text>
+                <text x="212" y="34">45</text>
+                <text x="234" y="34">46</text>
+              </g>
+              <g fill="none" stroke="rgba(251,191,36,0.55)" stroke-width="1">
+                <rect x="11" y="40" width="17" height="14" rx="2"/>
+                <rect x="55" y="40" width="17" height="14" rx="2"/>
+                <rect x="77" y="40" width="17" height="14" rx="2"/>
+                <rect x="99" y="40" width="17" height="14" rx="2"/>
+                <rect x="121" y="40" width="17" height="14" rx="2"/>
+                <rect x="143" y="40" width="17" height="14" rx="2"/>
+                <rect x="165" y="40" width="17" height="14" rx="2"/>
+                <rect x="187" y="40" width="17" height="14" rx="2"/>
+                <rect x="231" y="40" width="17" height="14" rx="2"/>
+              </g>
+              <rect x="33" y="40" width="17" height="14" rx="2" fill="none" stroke="rgba(251,191,36,0.95)" stroke-width="1.4" stroke-dasharray="3 3"/>
+              <rect x="209" y="40" width="17" height="14" rx="2" fill="rgba(34,211,238,0.22)" stroke="rgba(34,211,238,0.9)" stroke-width="1.4"/>
+              <path d="M41 60 C 41 84, 217 84, 217 60" fill="none" stroke="rgba(34,211,238,0.7)" stroke-width="1.1" stroke-dasharray="4 4"/>
+              <path d="M213 65 L217 56 L221 65" fill="none" stroke="rgba(34,211,238,0.9)" stroke-width="1.1" stroke-linecap="round"/>
+              <text x="129" y="100" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="#67e8f9">seven pieces shipped while it waited</text>
+              <text x="41" y="120" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.3" fill="var(--gold)">held</text>
+              <text x="217" y="120" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.3" fill="#67e8f9">built</text>
+              <text x="150" y="142" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.5" letter-spacing="0.8" fill="var(--sp-secondary)">the gap is not a lost zine</text>
+              <text x="150" y="156" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="1" fill="var(--gold)">it is a question being asked</text>
+            </svg>
+            <div class="diagram-caption">Figure 1 · the sequence recording a wait</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Out of Order · Stimpunks</span>
+        <span class="spread-footer-right">2</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 3: 37 °C ════ -->
+  <div class="spread" id="spread-3">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The famous one</div>
+          <h2 class="spread-heading" id="your-temperature-is-not-37">Your temperature is <span class="spectrum-word">not 37</span></h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">The most famous 37 in the world is a body temperature, and it is out of date by about a century and a half.</p>
+            <p>It comes from one man with a very long thermometer. <strong>Carl Reinhold August Wunderlich</strong> published <em>Das Verhalten der Eigenwärme in Krankheiten</em> in Leipzig in 1868, reporting over a million readings from roughly <span class="gold">25,000 patients</span>. His instrument was about a foot long and had to sit in the armpit for twenty minutes. The mean of that vast, patient, hand-tallied dataset was <span class="gold">37 °C</span> — 98.6 °F — and he called it the physiological point.</p>
+            <p>It was a fine number. It is no longer our number. In 2020 Myroslava Protsiv and colleagues put three American datasets spanning 157 years side by side and found body temperature has been falling the whole time, <strong>monotonically, by about 0.03 °C per birth decade</strong>:</p>
+            <table class="trades">
+              <caption>decline in mean body temperature by birth cohort</caption>
+              <thead><tr><th>cohort</th><th>span</th><th>change</th></tr></thead>
+              <tbody>
+                <tr><td class="keeps">men</td><td>born 1800 → 1997</td><td class="loses">−0.59 °C</td></tr>
+                <tr><td class="keeps">women</td><td>born 1890 → 1997</td><td class="loses">−0.32 °C</td></tr>
+                <tr><td class="keeps">both</td><td>per birth decade</td><td class="loses">−0.03 °C</td></tr>
+              </tbody>
+            </table>
+            <p>Modern adult oral means land nearer <span class="cyan">36.6 °C</span>. So 37 is not wrong the way a typo is wrong — it is an <strong>accurate 1868 average that got promoted to a constant</strong> and then quietly stopped describing anybody.</p>
+            <div class="pull-quote gold">Nobody lied. A number was measured carefully, published honestly, and then outlived the population it was measured on — and kept being taught.<span class="attr">the failure mode, without a villain</span></div>
+            <p>Our own field card calls this one <em>the number that went stale</em>, and it is the third of <a href="six-ways-broadside.html">six ways a fact goes wrong</a>. Worth sitting with, because it is the failure mode with no bad actor in it at all: the only way to catch it is to go back and measure again.</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 162" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig2-title fig2-desc">
+              <title id="fig2-title">A canonical number going stale</title>
+              <desc id="fig2-desc">A declining line from thirty-seven degrees at eighteen sixty-eight down toward thirty-six point six today, with a flat dashed line held at thirty-seven labelled still taught.</desc>
+              <path d="M40 116 H262" stroke="rgba(251,191,36,0.3)" stroke-width="0.9"/>
+              <path d="M40 24 V116" stroke="rgba(251,191,36,0.3)" stroke-width="0.9"/>
+              <text x="34" y="34" text-anchor="end" font-family="Space Mono, monospace" font-size="6" fill="var(--sp-dim)">37.0</text>
+              <text x="34" y="100" text-anchor="end" font-family="Space Mono, monospace" font-size="6" fill="var(--sp-dim)">36.5</text>
+              <text x="40" y="128" font-family="Space Mono, monospace" font-size="6" fill="var(--sp-dim)">1868</text>
+              <text x="262" y="128" text-anchor="end" font-family="Space Mono, monospace" font-size="6" fill="var(--sp-dim)">now</text>
+              <!-- what is still taught -->
+              <path d="M44 30 H258" stroke="rgba(251,191,36,0.85)" stroke-width="1.3" stroke-dasharray="4 4"/>
+              <text x="150" y="24" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.3" fill="var(--gold)">still taught</text>
+              <!-- what the measurements do -->
+              <path d="M44 32 C 110 48, 190 72, 258 86" fill="none" stroke="rgba(34,211,238,0.9)" stroke-width="1.5"/>
+              <circle cx="44" cy="32" r="2.4" fill="rgba(251,191,36,0.95)"/>
+              <circle cx="258" cy="86" r="2.4" fill="rgba(34,211,238,0.95)"/>
+              <text x="252" y="78" text-anchor="end" font-family="Space Mono, monospace" font-size="6.3" fill="#67e8f9">measured</text>
+              <text x="150" y="146" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.5" letter-spacing="0.8" fill="var(--sp-secondary)">an average that outlived its population</text>
+              <text x="150" y="158" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" letter-spacing="1.2" fill="var(--sp-dim)">Wunderlich 1868 · Protsiv et al. 2020</text>
+            </svg>
+            <div class="diagram-caption">Figure 2 · the gap between taught and measured</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Out of Order · Stimpunks</span>
+        <span class="spread-footer-right">3</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 4: the 37% rule ════ -->
+  <div class="spread" id="spread-4">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">How long to look</div>
+          <h2 class="spread-heading" id="spend-37-percent-not-choosing">Spend 37% not choosing</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">There is a second 37, and this one is a theorem. It answers a question everybody actually has: <em>how long should I keep looking before I commit?</em></p>
+            <p>Set it up strictly. Options arrive one at a time, you can rank the ones you have seen, and every decision is final — no going back to number three. The optimal strategy has a shape that is not obvious: <strong>look at the first 1/e of them and reject every one</strong>, however good, then take the first option after that which beats everything you have seen.</p>
+            <p>1/e is <span class="gold">0.368</span>. Roughly <span class="gold">37%</span>. And the payoff is the strange part:</p>
+            <div class="pull-quote gold">It finds the single best option about 37% of the time — whether there are a hundred options or a hundred million.<span class="attr">the 1/e law of best choice</span></div>
+            <p>The number does not decay with scale. A third of a very long search is a lot of looking, and it is still the right amount.</p>
+            <p>Which is where this zine's own subject walks back in. <a href="the-cloud-phase-zine.html"><em>The Cloud Phase</em></a> spent its looking time. It could have been built on 11 August with an assumption in it; instead it sat while a question went out, and the sequence recorded the waiting as an absence. <strong>The number of the wait, and the fraction of any search you are supposed to spend not choosing, are the same 37.</strong></p>
+            <div class="note"><strong>And that is a coincidence.</strong> A delightful one, sitting right at the centre of this piece, with nothing behind it. The next spread is about not pretending otherwise — because this is exactly the moment a zine reaches for a mechanism it does not have.</div>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 156" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig3-title fig3-desc">
+              <title id="fig3-title">The optimal stopping rule</title>
+              <desc id="fig3-desc">A horizontal bar divided at thirty-seven percent. The first portion is labelled look and reject everything; the remainder is labelled take the first one better than all of those. A note says it wins about thirty-seven percent of the time at any scale.</desc>
+              <rect x="24" y="34" width="94" height="22" rx="2" fill="rgba(251,191,36,0.28)" stroke="rgba(251,191,36,0.85)" stroke-width="1.2"/>
+              <rect x="118" y="34" width="158" height="22" rx="2" fill="rgba(34,211,238,0.16)" stroke="rgba(34,211,238,0.75)" stroke-width="1.2"/>
+              <text x="71" y="48" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--gold)">look, reject all</text>
+              <text x="197" y="48" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="#67e8f9">take first that beats them</text>
+              <path d="M118 62 V72" stroke="rgba(251,191,36,0.8)" stroke-width="1.1"/>
+              <text x="118" y="84" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" font-weight="700" fill="var(--gold)">37%</text>
+              <text x="118" y="95" text-anchor="middle" font-family="Space Mono, monospace" font-size="6" fill="var(--sp-dim)">1/e = 0.368</text>
+              <text x="24" y="30" font-family="Space Mono, monospace" font-size="6" fill="var(--sp-dim)">start</text>
+              <text x="276" y="30" text-anchor="end" font-family="Space Mono, monospace" font-size="6" fill="var(--sp-dim)">end</text>
+              <text x="150" y="118" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.5" letter-spacing="0.8" fill="var(--sp-secondary)">wins about 37% of the time</text>
+              <text x="150" y="132" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="1" fill="var(--gold)">at 100 options or 100 million</text>
+              <text x="150" y="148" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" letter-spacing="1.2" fill="var(--sp-dim)">1/e law · Bruss 1984</text>
+            </svg>
+            <div class="diagram-caption">Figure 3 · the looking is not wasted time</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Out of Order · Stimpunks</span>
+        <span class="spread-footer-right">4</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 5: the refusal ════ -->
+  <div class="spread" id="spread-5">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Three unrelated 37s</div>
+          <h2 class="spread-heading" id="we-will-not-solder-these-together">We will not solder these together</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Here is the trap this whole zine is walking toward, and it is the most fun thing about the number, which is precisely why it is dangerous.</p>
+            <p>Three 37s in a row. A body temperature. An optimal stopping fraction. And the number people apparently reach for when told to be random. Lay them beside each other and something in the head starts reaching for a <em>because</em> — as if the brain picks 37 <em>because</em> of something to do with 1/e, or as if 37 recurs because 37 is somehow special.</p>
+            <p><strong>They are not connected.</strong> Not loosely, not deeply, not at all:</p>
+            <table class="trades">
+              <caption>what each 37 actually is</caption>
+              <thead><tr><th>the 37</th><th>what kind of thing</th></tr></thead>
+              <tbody>
+                <tr><td class="keeps">37 °C</td><td>a 19th-century arithmetic mean of armpits, in one unit</td></tr>
+                <tr><td class="keeps">37%</td><td>1/e, rounded — a limit, in no unit at all</td></tr>
+                <tr><td class="keeps">&ldquo;pick 37&rdquo;</td><td>a fact about people, in a base-ten range of 1–100</td></tr>
+              </tbody>
+            </table>
+            <p>The 37 in the temperature is a decimal accident of the Celsius scale — in Fahrenheit the same fact is 98.6, and the coincidence evaporates. The 37 in the stopping rule is 36.79 rounded, and it is a <em>percentage</em>, not a count. The 37 people pick only exists because somebody offered them 1 to 100.</p>
+            <div class="pull-quote pink">A coincidence dressed as a mechanism is not a small mistake. It is the specific move that lets a real finding get pointed at people, and it is why this collection exists.<span class="attr">the fault this piece was built to name</span></div>
+            <p>This is the same shape as <a href="five-sigma-zine.html"><em>Five Sigma</em></a>'s complaint: keeping the authority of a number while dropping the practice that earned it. And it is why the joke here stops short of a punchline. <strong>Three 37s is a nice thing to notice and nothing to conclude from.</strong> We are allowed to enjoy it. We are not allowed to explain it.</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 164" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig4-title fig4-desc">
+              <title id="fig4-title">Three unrelated thirty-sevens</title>
+              <desc id="fig4-desc">Three separate boxes labelled thirty-seven degrees, thirty-seven percent, and pick thirty-seven. The arrows that would connect them are drawn and struck through, with a note that no mechanism links them.</desc>
+              <g fill="none" stroke="rgba(251,191,36,0.7)" stroke-width="1.2">
+                <rect x="14" y="30" width="70" height="30" rx="3"/>
+                <rect x="114" y="30" width="70" height="30" rx="3"/>
+                <rect x="214" y="30" width="70" height="30" rx="3"/>
+              </g>
+              <g font-family="Space Mono, monospace" font-size="7" font-weight="700" fill="var(--gold)" text-anchor="middle">
+                <text x="49" y="43">37 °C</text>
+                <text x="149" y="43">37 %</text>
+                <text x="249" y="43">&ldquo;37&rdquo;</text>
+              </g>
+              <g font-family="Space Mono, monospace" font-size="5.6" fill="var(--sp-dim)" text-anchor="middle">
+                <text x="49" y="54">a mean</text>
+                <text x="149" y="54">a limit</text>
+                <text x="249" y="54">a habit</text>
+              </g>
+              <!-- the connections the popular telling wants, drawn and refused -->
+              <g stroke="rgba(138,134,160,0.7)" stroke-width="1.1" stroke-dasharray="4 4">
+                <path d="M84 45 H114"/><path d="M184 45 H214"/>
+              </g>
+              <!-- Strikes sized to the arrow runs, not to the boxes: an X that overshoots
+                   its arrow reads as decoration rather than as a deletion. -->
+              <g stroke="rgba(244,114,182,0.85)" stroke-width="1.3" stroke-linecap="round">
+                <path d="M93 38 L105 52"/><path d="M105 38 L93 52"/>
+                <path d="M193 38 L205 52"/><path d="M205 38 L193 52"/>
+              </g>
+              <text x="150" y="82" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="#f9a8d4">no mechanism here</text>
+              <path d="M30 96 H270" stroke="rgba(251,191,36,0.25)" stroke-width="0.9"/>
+              <text x="150" y="114" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.3" fill="var(--sp-secondary)">37 °C is 98.6 in Fahrenheit</text>
+              <text x="150" y="126" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.3" fill="var(--sp-secondary)">37% is 36.79 rounded</text>
+              <text x="150" y="146" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.5" letter-spacing="0.8" fill="var(--gold)">enjoy it · do not explain it</text>
+              <text x="150" y="158" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" letter-spacing="1.2" fill="var(--sp-dim)">the units do not even match</text>
+            </svg>
+            <div class="diagram-caption">Figure 4 · the arrows we are not drawing</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Out of Order · Stimpunks</span>
+        <span class="spread-footer-right">5</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 6: the arithmetic ════ -->
+  <div class="spread" id="spread-6">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The genuinely lovely part</div>
+          <h2 class="spread-heading" id="thirty-seven-honestly">Thirty-seven, honestly</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Strip out the coincidences and the number is still worth the apology. All of the following is checkable on paper in a couple of minutes, which is the nicest property a fact can have.</p>
+            <p>It is the <span class="gold">12th prime</span>. Reverse the digits and you get <span class="cyan">73</span>, which is also prime — and which is the <span class="cyan">21st</span>. The digits of the number reverse, and so do the digits of its position. That is not deep. It is just very pleasing, and it is exact.</p>
+            <p>It is the <strong>third star number</strong>: 6<em>n</em>(<em>n</em>−1)+1 gives 1, 13, <span class="gold">37</span>, <span class="cyan">73</span> — so 37 and 73 are consecutive star numbers as well as digit reversals of one another. Which means a site built entirely out of starfields skipped the star number. It is also the fourth centered hexagonal number, 3<em>n</em>(<em>n</em>−1)+1: 1, 7, 19, 37.</p>
+            <p>Triple it and you get <span class="gold">111</span>, because 111 = 3 × 37. So 37 × 6 = 222, 37 × 9 = 333, and so on up — a repdigit machine hiding in a prime.</p>
+            <p>And the biggest one: <strong>every positive whole number, without exception, is a sum of at most 37 fifth powers.</strong> Thirty-seven is exactly enough and no smaller number will do. That is the value of <em>g</em>(5) in Waring's problem, and <span class="gold">Chen Jingrun</span> nailed it down in 1964.</p>
+            <div class="pull-quote cyan">Every number there has ever been, or will be, is thirty-seven fifth powers or fewer. It is a strange thing to be the exact size of.<span class="attr">g(5) = 37</span></div>
+            <p>None of this makes 37 special in a way that means anything about anybody. It just makes it good company — which is all we promised it.</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 172" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig5-title fig5-desc">
+              <title id="fig5-title">Thirty-seven and seventy-three</title>
+              <desc id="fig5-desc">Thirty-seven shown as the twelfth prime and seventy-three as the twenty-first, with arrows noting that both the digits and the positions are reversals of each other, above a six-pointed star outline marking thirty-seven as the third star number.</desc>
+              <g fill="none" stroke="rgba(251,191,36,0.7)" stroke-width="1.2">
+                <rect x="42" y="24" width="62" height="26" rx="3"/>
+              </g>
+              <g fill="none" stroke="rgba(34,211,238,0.7)" stroke-width="1.2">
+                <rect x="196" y="24" width="62" height="26" rx="3"/>
+              </g>
+              <text x="73" y="42" text-anchor="middle" font-family="Space Mono, monospace" font-size="10" font-weight="700" fill="var(--gold)">37</text>
+              <text x="227" y="42" text-anchor="middle" font-family="Space Mono, monospace" font-size="10" font-weight="700" fill="#67e8f9">73</text>
+              <text x="73" y="62" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.3" fill="var(--sp-secondary)">12th prime</text>
+              <text x="227" y="62" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.3" fill="var(--sp-secondary)">21st prime</text>
+              <path d="M108 32 H192" stroke="rgba(251,191,36,0.6)" stroke-width="1" stroke-dasharray="4 4"/>
+              <text x="150" y="29" text-anchor="middle" font-family="Space Mono, monospace" font-size="5.8" fill="var(--gold)">digits reverse</text>
+              <path d="M108 58 H192" stroke="rgba(34,211,238,0.6)" stroke-width="1" stroke-dasharray="4 4"/>
+              <text x="150" y="55" text-anchor="middle" font-family="Space Mono, monospace" font-size="5.8" fill="#67e8f9">so do the positions</text>
+              <!-- A six-pointed star OUTLINE, not a dot count: it marks 37 as the third star
+                   number without claiming to enumerate it, because a figure that miscounts
+                   its own dots is a diagram that means the wrong thing. -->
+              <g transform="translate(150,110)">
+                <path d="M0 -26 L7.5 -13 L22.5 -13 L15 0 L22.5 13 L7.5 13 L0 26 L-7.5 13 L-22.5 13 L-15 0 L-22.5 -13 L-7.5 -13 Z"
+                      fill="rgba(251,191,36,0.10)" stroke="rgba(251,191,36,0.8)" stroke-width="1.2" stroke-linejoin="round"/>
+                <text x="0" y="4" text-anchor="middle" font-family="Space Mono, monospace" font-size="8" font-weight="700" fill="var(--gold)">37</text>
+              </g>
+              <text x="150" y="150" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--sp-secondary)">3rd star number · 6n(n−1)+1</text>
+              <text x="150" y="164" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="1" fill="var(--gold)">and 73 is the 4th</text>
+            </svg>
+            <div class="diagram-caption">Figure 5 · a mirror that goes all the way down</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Out of Order · Stimpunks</span>
+        <span class="spread-footer-right">6</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 7: what people pick ════ -->
+  <div class="spread" id="spread-7">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Held loosely on purpose</div>
+          <h2 class="spread-heading" id="the-number-people-reach-for">The number people reach for</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">The third 37 is the one everybody wants to be true, and it is the one this zine holds at arm's length — which is the honest thing to do and also, awkwardly, the whole point of the site.</p>
+            <p>Ask a lot of people to pick a random number from 1 to 100 and the answers are not flat. They avoid round numbers, avoid the ends, avoid the exact middle, avoid repeated digits — and they pile up on a few odd, prime-looking numbers. In a survey of roughly <span class="gold">200,000 responses</span> run by <strong>Veritasium</strong>, 37 and 73 came out near the top, close to tied.</p>
+            <p>We like this a great deal. We are still going to say what it is:</p>
+            <div class="joint joint--contested">
+              <span class="joint-tag">Contested</span>
+              <span class="joint-body"><strong>A large, self-published survey, not a refereed finding.</strong> The data is real and the effect is plausible, but we have not read a peer-reviewed paper reporting it, and every account of it we could reach is secondary. It is on this spread as <em>somebody's experiment</em>, never as a law about human beings.</span>
+            </div>
+            <p>What the result would mean, if it holds, is nicer than the number anyway. <strong>Primes feel random to us because nothing divides them</strong> — no pattern to catch the eye, so the mind reads &ldquo;no structure&rdquo; and offers it up as randomness. But primes are the most rigidly determined objects in arithmetic. There is nothing arbitrary about 37 whatsoever.</p>
+            <div class="pull-quote gold">So the thing we reach for when we want to be unpredictable is one of the least arbitrary things there is. That is a fact about us, not about the number.<span class="attr">if the finding holds</span></div>
+            <p>Which is a familiar shape here. Something gets called disordered, or random, or arbitrary, because the person looking cannot see the rule it is running on. <a href="the-lines-we-drew-zine.html"><em>The Lines We Drew</em></a> has the long version.</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 158" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig6-title fig6-desc">
+              <title id="fig6-title">What people avoid when asked to be random</title>
+              <desc id="fig6-desc">A row of categories people avoid when picking a random number — round numbers, the two ends, the exact middle, repeated digits — leaving odd prime-looking numbers, with thirty-seven and seventy-three marked as the peaks.</desc>
+              <g font-family="Space Mono, monospace" font-size="6.5" fill="var(--sp-dim)">
+                <text x="18" y="26">round numbers</text>
+                <text x="18" y="44">the two ends</text>
+                <text x="18" y="62">the exact middle</text>
+                <text x="18" y="80">repeated digits</text>
+              </g>
+              <!-- Strike lengths sized per word: Space Mono advances ~0.6em, so at 6.5px a
+                   character is ~3.9px. Text starts at x=18; a rule runs 15 → 18 + 3.9n + 3. -->
+              <g stroke="rgba(244,114,182,0.75)" stroke-width="1.1" stroke-linecap="round">
+                <path d="M15 23.8 H72"/><path d="M15 41.8 H69"/><path d="M15 59.8 H86"/><path d="M15 77.8 H80"/>
+              </g>
+              <path d="M150 18 V88" stroke="rgba(251,191,36,0.3)" stroke-width="0.9" stroke-dasharray="4 4"/>
+              <text x="222" y="34" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.3" fill="var(--sp-secondary)">what is left:</text>
+              <text x="222" y="50" text-anchor="middle" font-family="Space Mono, monospace" font-size="8" font-weight="700" fill="var(--gold)">37</text>
+              <text x="222" y="66" text-anchor="middle" font-family="Space Mono, monospace" font-size="8" font-weight="700" fill="#67e8f9">73</text>
+              <text x="222" y="80" text-anchor="middle" font-family="Space Mono, monospace" font-size="5.8" fill="var(--sp-dim)">near-tied peaks</text>
+              <text x="150" y="112" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.5" letter-spacing="0.8" fill="var(--sp-secondary)">a prime feels random to us</text>
+              <text x="150" y="126" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="1" fill="var(--gold)">because nothing divides it</text>
+              <text x="150" y="146" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" letter-spacing="1.2" fill="var(--sp-dim)">unrefereed survey · held as contested</text>
+            </svg>
+            <div class="diagram-caption">Figure 6 · the least arbitrary thing we reach for</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Out of Order · Stimpunks</span>
+        <span class="spread-footer-right">7</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 8: the paradox + refusals ════ -->
+  <div class="spread" id="spread-8">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Filed late</div>
+          <h2 class="spread-heading" id="this-page-is-younger-than-no-46">This page is younger than No. 46</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Now the part where this zine has to be honest about itself, because everything above was built on a rule it is currently breaking.</p>
+            <p>On this site, <strong>the number records <em>when</em></strong>. That is load-bearing and stated everywhere: the changelog is dated by number, the fact-check ledger is keyed by number, and pieces cite each other by number with no redirects. It is the reason the gap at 37 was information in the first place.</p>
+            <p>And this page has 37 in the corner while being newer than No. 46. <span class="gold">Its own number is the least reliable claim on it.</span></p>
+            <div class="joint joint--leap">
+              <span class="joint-tag">Leap</span>
+              <span class="joint-body"><strong>The number in the corner is not a date.</strong> Every other number on this site is. This one is a slot we went back and occupied, so the sequence now reads as though this arrived between Nos. 36 and 38, and it did not. Marked with <a href="collection-how-we-got-here.html">How We Got Here</a>'s notation, borrowed for exactly one claim, because a piece about our own honesty cannot leave its weakest link unlabelled.</span>
+            </div>
+            <p>Which is the oldest joke in time travel and also its actual structure: go back to repair the past and the repair becomes part of the past you were trying to fix. There is no version of this page that fills the gap <em>and</em> leaves the record of the gap intact. Filling it is a small act of vandalism against our own archive, and the only honest way to do it is in writing, on the page, where you can see the seam.</p>
+            <p>So the gap is not gone. It has a building on it now, with a plaque explaining that the lot was empty for a reason.</p>
+            <div class="pull-quote gold">The sequence has a hole in it, and the sequence still works. Nothing about you needs to be contiguous in order to count.<span class="attr">the only thing this zine actually wants to say</span></div>
+            <div class="refusals">
+              <div class="refusal"><span class="refusal-tag">Not:</span><span><strong>an accident.</strong> We did not lose track of a number. It was held for a question, and we corrected our own premise on <a href="#there-was-never-a-no-37">spread two</a> rather than ship the better story.</span></div>
+              <div class="refusal"><span class="refusal-tag">Not:</span><span><strong>a claim that 37 is a special number.</strong> Every integer is interesting if you go looking. We went looking on purpose and said so.</span></div>
+              <div class="refusal"><span class="refusal-tag">Not:</span><span><strong>three connected facts.</strong> A temperature, a fraction and a habit. Different units, different kinds of object, no mechanism. <a href="#we-will-not-solder-these-together">Spread five</a> exists to refuse the connection this piece most wants to make.</span></div>
+              <div class="refusal"><span class="refusal-tag">Not:</span><span><strong>a renumbering.</strong> Nothing was moved to make room. No. 45 stays No. 45, and every existing citation still resolves. This piece took a vacancy, not somebody's seat.</span></div>
+              <div class="refusal"><span class="refusal-tag">Not:</span><span><strong>a licence to backfill.</strong> One page occupies one deliberate gap and marks itself. If this becomes a habit the numbers stop meaning <em>when</em>, and then the archive stops being evidence.</span></div>
+              <div class="refusal"><span class="refusal-tag">Not:</span><span><strong>mistakes being secretly good.</strong> Some omissions cost people things. This one cost nobody anything, which is exactly why it is safe to be funny about — and that distinction is the whole of it.</span></div>
+              <div class="refusal"><span class="refusal-tag">Not:</span><span><strong>a lesson about you drawn from arithmetic.</strong> Numbers do not know about us. Where this page sets a gap in a sequence beside a gap in a life, it is noticing a shape. A rhyme, not a proof.</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig7-title fig7-desc">
+              <title id="fig7-title">A number that is not a date</title>
+              <desc id="fig7-desc">A timeline of build dates running left to right past forty-three, forty-four, forty-five and forty-six, with this page placed last in time but drawn with an arrow pointing back to the slot numbered thirty-seven, marked as a leap.</desc>
+              <path d="M20 62 H280" stroke="rgba(251,191,36,0.35)" stroke-width="0.9"/>
+              <text x="20" y="76" font-family="Space Mono, monospace" font-size="6" fill="var(--sp-dim)">built earlier</text>
+              <text x="280" y="76" text-anchor="end" font-family="Space Mono, monospace" font-size="6" fill="var(--sp-dim)">built later</text>
+              <g font-family="Space Mono, monospace" font-size="6.3" fill="var(--sp-secondary)" text-anchor="middle">
+                <text x="76" y="52">43</text>
+                <text x="126" y="52">44</text>
+                <text x="176" y="52">45</text>
+                <text x="226" y="52">46</text>
+              </g>
+              <g fill="rgba(251,191,36,0.9)">
+                <circle cx="76" cy="62" r="2.6"/><circle cx="126" cy="62" r="2.6"/>
+                <circle cx="176" cy="62" r="2.6"/><circle cx="226" cy="62" r="2.6"/>
+              </g>
+              <!-- this page: last in time, numbered as though first -->
+              <circle cx="266" cy="62" r="3.4" fill="rgba(34,211,238,0.95)"/>
+              <text x="266" y="52" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.3" fill="#67e8f9">this</text>
+              <path d="M266 74 C 266 106, 44 108, 44 74" fill="none" stroke="rgba(34,211,238,0.75)" stroke-width="1.2" stroke-dasharray="4 4"/>
+              <path d="M40 79 L44 70 L48 79" fill="none" stroke="rgba(34,211,238,0.9)" stroke-width="1.2" stroke-linecap="round"/>
+              <rect x="33" y="40" width="22" height="16" rx="2" fill="none" stroke="rgba(34,211,238,0.9)" stroke-width="1.3" stroke-dasharray="3 3"/>
+              <text x="44" y="52" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.3" font-weight="700" fill="#67e8f9">37</text>
+              <text x="150" y="124" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="#f9a8d4">the number is not a date here</text>
+              <text x="150" y="142" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.5" letter-spacing="0.8" fill="var(--sp-secondary)">marked leap · exactly once</text>
+              <text x="150" y="155" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" letter-spacing="1.2" fill="var(--sp-dim)">you can see the seam on purpose</text>
+            </svg>
+            <div class="diagram-caption">Figure 7 · the one claim we could not verify</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Out of Order · Stimpunks</span>
+        <span class="spread-footer-right">8</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 9: COLOPHON ════ -->
+  <div class="spread" id="spread-9">
+    <div class="interior">
+      <div class="colophon">
+        <div>
+          <div class="colophon-top">
+            <span class="colophon-ls">L★S</span>
+            <p class="colophon-phrase">The sequence has a hole in it, and the sequence still works.</p>
+          </div>
+
+          <div class="series-list">
+            <div class="series-item"><span class="series-num">No. 9</span> The Lines We Drew — a human-made line is ours to redraw</div>
+            <div class="series-item"><span class="series-num">No. 40</span> Five Sigma — the authority kept, the practice dropped</div>
+            <div class="series-item"><span class="series-num">No. 45</span> The Cloud Phase — the piece this number was held for</div>
+            <div class="series-item"><span class="series-num">No. 46</span> Companion Stars — and this one is older than the page you are on</div>
+            <div class="series-item current"><span class="series-num">No. 37</span> Out of Order — the gap, annotated ← you are here</div>
+          </div>
+
+          <div class="reflect">
+            <div class="reflect-label">Reflection</div>
+            <p class="reflect-q">Which gap in your own record is a receipt for a question you asked, rather than something you dropped?</p>
+            <p class="reflect-q">Where are you still running on a number somebody measured accurately a very long time ago?</p>
+            <p class="reflect-q">What have you called random lately, when what you meant was that you couldn't see the rule it was running on?</p>
+            <p class="reflect-q">How much of your current search have you spent looking, and are you still allowed to be looking?</p>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="colophon-h" id="sources">Sources</h3>
+          <div class="colophon-body">
+            <p><strong>Body temperature.</strong> C. A. Wunderlich, <em>Das Verhalten der Eigenwärme in Krankheiten</em> (Leipzig: Otto Wigand, 1868; English translation, New Sydenham Society, 1871) — over a million axillary readings from roughly 25,000 patients, mean 37 °C / 98.6 °F, taken with a foot-long thermometer over about twenty minutes per reading. Myroslava Protsiv, Catherine Ley, Joanna Lankester, Trevor Hastie &amp; Julie Parsonnet, &ldquo;Decreasing human body temperature in the United States since the Industrial Revolution,&rdquo; <em>eLife</em> 9:e49555 (2020) — mean body temperature has decreased monotonically by 0.03 °C per birth decade; −0.59 °C in men born 1800–1997 and −0.32 °C in women born 1890–1997; modern adult means nearer 36.6 °C. <strong>One discrepancy we are not smoothing:</strong> Protsiv et&nbsp;al. date Wunderlich's establishment of the figure to 1851, while the book that carries it is 1868. We cite the book by its own date and flag the difference rather than picking one silently.</p>
+            <p><strong>Optimal stopping.</strong> The 1/e law of best choice was proved by F. Thomas Bruss, &ldquo;A unified approach to a class of best choice problems with an unknown number of options,&rdquo; <em>Annals of Probability</em> (1984). The problem is generally traced to Merrill M. Flood (1949) and first reached print in Martin Gardner's <em>Scientific American</em> column of February 1960; Thomas S. Ferguson, &ldquo;Who solved the secretary problem?&rdquo;, <em>Statistical Science</em> 4 (1989), is the standard account of its tangled attribution. 1/e = 0.3679 to four places. <strong>We have not read Bruss or Flood in the original</strong>; the statement of the rule and its 1/e success probability are taken from standard reference treatments and phrased to match what they say was proved.</p>
+            <p><strong>The arithmetic.</strong> 37 is the 12th prime and 73 the 21st; both are prime and each is the other's digit reversal. Star numbers are 6<em>n</em>(<em>n</em>−1)+1 — 1, 13, 37, 73 — so 37 is the third and 73 the fourth; centered hexagonal numbers are 3<em>n</em>(<em>n</em>−1)+1 — 1, 7, 19, 37 — so 37 is the fourth. 111 = 3 × 37, which is what generates the repdigits. Every one of these is verifiable by hand in a minute, and we checked them that way rather than citing them.</p>
+            <p><strong>Waring's problem.</strong> <em>g</em>(5) = 37 — every positive integer is the sum of at most 37 fifth powers, and 37 is the least such bound. Proved by <strong>Chen Jingrun</strong> in 1964, completing the large-integer case by the Hardy–Littlewood circle method with the small cases verified directly. <strong>Primary paper not read</strong>; the attribution and date are from standard histories of the problem and are stated no more strongly than those sources do.</p>
+            <p><strong>The number people pick.</strong> A survey of roughly 200,000 responses run by <strong>Veritasium</strong>, in which 37 and 73 emerged as the most-chosen &ldquo;random&rdquo; numbers from 1 to 100. Marked <em>contested</em> on <a href="#the-number-people-reach-for">spread seven</a> and in <a href="changelog.html">the changelog</a>: it is a large self-published experiment rather than a refereed finding, every account of it we could reach is secondary, and it appears here as somebody's experiment rather than as an established fact about people. If it is ever properly published we will upgrade the note; if it fails to replicate we will say that instead.</p>
+            <p><strong>Our own numbering.</strong> The account on <a href="#there-was-never-a-no-37">spread two</a> is from this repository's own <code>DECISIONS.md</code>, quoted verbatim, and from the dated entries in <a href="changelog.html">the changelog</a>. No. 37 was assigned to <em>The Cloud Phase</em> on 11 August 2026, held pending a question to Helen Edgar, and built on 13 August as <a href="the-cloud-phase-zine.html">No. 45</a>.</p>
+            <h3 class="colophon-h" id="what-this-page-costs">What this page costs, stated plainly</h3>
+            <p>Filling a deliberate gap is not free. Before this zine existed, the absence of a No. 37 was itself evidence — you could count the sequence and find the place where somebody chose to ask rather than assume. That evidence is now covered by a page. We think the trade is worth it because the page says so out loud, on its cover and on <a href="#this-page-is-younger-than-no-46">spread eight</a>, and because the original record survives in <code>DECISIONS.md</code> and the changelog where it always was. <strong>It should not happen twice.</strong> Every other gap in the numbering is information, and the next one stays empty.</p>
+            <h3 class="colophon-h" id="a-rhyme-not-a-proof">A rhyme, not a proof</h3>
+            <p>Nothing in arithmetic knows anything about us. Where this page puts a gap in a sequence beside a gap in a life, or a stale average beside a stale verdict, it is noticing a shape that turns up in both — never claiming the first demonstrates the second. The one thing here that is genuinely about people is the bit we marked contested.</p>
+          </div>
+          <div class="colophon-footer">
+            <a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks Foundation</a> × <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a><br>
+            stimpunks.org · morerealms.com · starstuff.earth<br>
+            <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> · open edition · print freely
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Out of Order · Stimpunks</span>
+        <span class="spread-footer-right">9</span>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /zine-shell -->
+
+<script>
+  let current = 1;
+  const total = 9;
+
+  function changePage(dir) {
+    const next = current + dir;
+    if (next < 1 || next > total) return;
+    document.getElementById('spread-' + current).classList.remove('active');
+    current = next;
+    document.getElementById('spread-' + current).classList.add('active');
+    document.getElementById('page-counter').textContent = current + ' / ' + total;
+    document.getElementById('prev-btn').disabled = current === 1;
+    document.getElementById('next-btn').disabled = current === total;
+    document.getElementById('prev-btn').classList.toggle('active', current > 1);
+    document.getElementById('next-btn').classList.toggle('active', current < total);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') changePage(1);
+    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   changePage(-1);
+  });
+
+  document.getElementById('prev-btn').disabled = true;
+  document.getElementById('next-btn').classList.add('active');
+</script>
+<script src="starstuff.js" defer></script>
+</body>
+</html>

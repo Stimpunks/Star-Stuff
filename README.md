@@ -77,11 +77,15 @@ index, where these same pieces are grouped by collection rather than by kind.
 **The number records *when* a piece was made; the collection records *what* it is.** Numbers are
 chronological and load-bearing — the changelog, `FACTCHECK.md`, and prose references all key off
 them — so they run non-contiguously inside any collection, and that gap is information rather than
-a mistake. **Nothing is ever renumbered.** (There is no No. 37: the number was held for a piece
-that shipped later as No. 45.)
+a mistake. **Nothing is ever renumbered.**
 
-Counts here are measured, not remembered. At the time of writing that is **95 HTML pages** — 81
-collection members, the 12 collection pages, plus `index.html` and `search.html`, which belong to
+The one exception is signed on its own face. No. 37 was held for a piece that shipped later as
+No. 45, leaving a gap; `out-of-order-zine.html` went back and occupied it, so it is the single
+number here that is **not** a date — it is younger than No. 46. It marks itself `leap` for that,
+and every other gap in the sequence stays empty.
+
+Counts here are measured, not remembered. At the time of writing that is **97 HTML pages** — 82
+collection members, the 13 collection pages, plus `index.html` and `search.html`, which belong to
 no collection. Re-derive rather than trust it:
 
 ```bash
@@ -93,7 +97,8 @@ collection pages' own cards.
 
 ### Collections
 
-Twelve landing pages, one per section of `index.html`. A collection is a **page, not a folder** — a
+Thirteen landing pages, one per section of `index.html` **plus one deliberately unlisted**. A
+collection is a **page, not a folder** — a
 note that links, listing its members and arguing for why they belong together. They were observed
 *after* thirty-five zines had accumulated with no folders at all, which keeps faith with
 `cosmic-connections.html`: the categories are outputs, not inputs. Five sort by **register** (what
@@ -113,7 +118,8 @@ are the site's own furniture.
 | `collection-sound.html` | **Sound** | *Medium* — audio. The one collection that points at other people's work. |
 | `collection-start-here.html` | **Start Here** | *Unsorted* — the ways in. Three doors in and one door out. |
 | `collection-foundations.html` | **Foundations** | *Unsorted* — what the rest of the site presupposes rather than argues. |
-| `collection-notes.html` | **Notes & Rationale** | *Unsorted* — the working papers. The only collection page outside the reading chain, because all four of its members are. |
+| `collection-notes.html` | **Notes & Rationale** | *Unsorted* — the working papers. Outside the reading chain, because all four of its members are. |
+| `collection-easter-eggs.html` | **Easter Eggs** | *Unsorted* — real pieces kept off the front page, reachable by a small door or by search. The only collection with **no section on the index**, and the only one created below the two-member floor; it explains both on its own face. |
 
 ### Start here
 
@@ -176,6 +182,7 @@ their face rather than leaving it to look like an oversight.
 | `two-hundred-years-zine.html` | **Two Hundred Years Before You're Grown** *(Zine No. 34)* | The Greenland shark is not mature until about 156 and lives at least 272 years, so *late* turns out to be a comparison rather than a measurement — the ruler was always the variable. Not a slow-is-beautiful zine: an animal needing a century and a half to reproduce cannot recover from pressure arriving in decades. The social model of disability, stated in fish. |
 | `everywhere-that-turtles-go-zine.html` | **Everywhere That Turtles Go** *(Zine No. 35)* | A Star Dreaming that "goes everywhere that turtles go" reads like a figure of speech and is actually a range map, so we checked it — roughly 357 species on every continent but Antarctica, including a dry Pilbara riverbed. The shell began as a digging adaptation rather than armour, and the price was the ordinary way of breathing. |
 | `the-layer-we-call-essential-zine.html` | **The Layer We Call Essential** *(Zine No. 36)* | The long-finned pilot whale's neocortex holds roughly 37.2 billion neurons — the first animal ever counted above us — and the same paper concludes that absolute neuron number doesn't explain human cognition. The yardstick came back against us and the ranking survived, because it was never resting on the count. Difference read as deficit, conducted by neuroscientists, about whales. |
+| `out-of-order-zine.html` | **Out of Order** *(Zine No. 37 · easter egg)* | The one gap in the numbering, annotated by a page that admits it doesn't belong there. No. 37 was held so a question could go to Helen Edgar rather than be assumed, and arrived two days later as No. 45 — so the gap was a receipt, not a slip, and the zine corrects its own commissioning premise on spread two. Then three famous 37s: Wunderlich's 37 °C, averaged in 1868 and now about 0.4 °C out of date; the 37% of any search you should spend looking and refusing everything; and the number people reach for when told to be random, marked *contested*. It refuses to connect them, because a coincidence dressed as a mechanism is the fault this site was built to name. Not in the index grid — the doors are a bare `37` and an egg in the footer link row, both labelled. |
 | `eight-tenths-of-a-second-zine.html` | **Eight Tenths of a Second** *(Zine No. 38)* | The first Burke-style chain here: an assistant dismissed in 1796 for marking star transits eight tenths of a second late, and astronomy's answer — the personal equation, publishing a constant per observer and *keeping* the observer. Follows the measuring apparatus out of the observatory to a table with a child at it. Every joint marked documented, contested or leap; accommodation is the older answer. |
 | `five-microns-zine.html` | **Five Microns** *(Zine No. 39)* | How a number nobody wrote became doctrine. Wells put the boundary between droplets that fall and droplets that linger at 100 micrometres and never wrote 5; the 5 µm figure came from a different question — which particles reach the deepest lung — and the two were fused in 1951. Meanwhile Flügge's team had grown colonies nine metres from a sneeze in the 1890s and recommended ventilation. |
 | `five-sigma-zine.html` | **Five Sigma** *(Zine No. 40)* | How much evidence is enough before you do something to a child? Particle physics won't say *discovery* below five sigma; *p* = 0.05 was chosen in 1925 with the word *convenient*. The gap is roughly 170,000×, and the asymmetry runs backwards — then the systematics column turns out empty, because 150 intervention studies produced 11 that mentioned adverse events at all. Not an argument against science; an argument against scientism. |

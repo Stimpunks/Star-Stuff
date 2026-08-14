@@ -166,6 +166,53 @@ Decisions still to make. Move to **Settled** with a date once resolved.
 
 ## Settled
 
+- **Fill the No. 37 gap with an easter egg, and open an *Easter Eggs* collection to hold it —
+  settled 2026-08-14, by Ryan.** Three decisions in one, and each bends a rule that was argued for,
+  so all three are recorded rather than left to look like drift.
+  - **The premise was corrected before the build, not after.** The brief was *"we accidentally
+    skipped No. 37, so here is an apology to the number."* We did not skip it: this file says, four
+    entries down, that 37 was assigned to *The Cloud Phase*, held pending a question to Helen, and
+    shipped as No. 45 — *"the number says when, and that gap is the rule working, not a
+    renumbering."* Building on the false version would have been the smoothed retelling
+    `too-good-to-check.html` names, committed by us, in a piece about honesty. So **spread 2 is the
+    correction**, and the true story turned out to be the better one — because the number of the
+    wait and the fraction of any search you should spend not choosing are the same 37.
+  - **The number is out of chronological order, and the page says so instead of hiding it.**
+    No. 37 is younger than No. 46, which contradicts *the number says when* — the invariant this
+    whole site's citations rest on. Rejected: filling it silently (makes the sequence lie and
+    overwrites the record this file keeps) and leaving it unnumbered (loses the point). Chosen:
+    occupy the slot and **mark it `leap`** in *How We Got Here*'s notation, borrowed for exactly one
+    claim on the grounds that a piece about its own honesty cannot leave its weakest claim
+    unlabelled. **This is a one-off.** Every other gap in the numbering stays empty; the colophon
+    says so on the page, and if backfilling becomes a habit the numbers stop meaning *when* and the
+    archive stops being evidence.
+  - **The two-member floor was deliberately set aside, and this is the record of it.** *How We Got
+    Here* was deferred at one member and created only when a second arrived with the same shape,
+    because collections are outputs, not inputs — a form **observed in finished work**, never a
+    folder opened in advance. `collection-easter-eggs.html` is a folder opened in advance, at one
+    member, on the expectation of more. **Why we took the trade:** the alternative was a
+    hand-written single-file exemption inside `check-markup.mjs`, because Ryan's first choice was a
+    badge pointing at Notes with no card anywhere, which that gate reports twice over — a page no
+    collection cards, and a badge it therefore cannot validate. **A collection page is visible and a
+    tool exemption is not.** Between a convention bent in public and a gate quietly narrowed, the
+    first is the safer mistake, and it needed no tool change at all: membership derives from the
+    collection page's own cards, so all five gates passed unmodified. The collection page states
+    both exceptions on its own face, per the house habit for the collections that don't sort by
+    register.
+  - **It is also the first collection with no section on `index.html`**, which inverts the standing
+    invariant that every index section owes a collection page and every collection page owes an
+    index intro. Nothing in the tooling enforces that parity — verified, the map is built from
+    collection-page cards and never from the index — so this cost nothing mechanically, but it is a
+    new precedent and belongs here. **Two doors, both in the index footer link row**, where they
+    read as boilerplate: a bare `37` to the zine, and an egg emoji to the collection (Ryan added the
+    second so the collection is reachable without going through the zine's badge). Both carry
+    `aria-label`s — an egg only sighted readers can find is an exclusion, not an egg — which also
+    means the emoji is never the accessible name.
+  - **Not hidden from the tooling, on purpose.** The egg is in `sitemap.xml`, in
+    `search-index.json` (9 records, 100% coverage), and inside every gate. A page the gates cannot
+    see is a page that rots. Discretion is a matter of where the link is, never of what the checks
+    can reach.
+
 - ~~**No. 37 *The Cloud Phase* — blocked on asking Helen, 2026-08-11.**~~ **Settled 2026-08-13.**
   Built as **No. 45**, eleven spreads, nine diagrams, filed in **Star Stuff**. Everything scoped in
   the original proposal survived the build; what follows is what the build settled, added, or

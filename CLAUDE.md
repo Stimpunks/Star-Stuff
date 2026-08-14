@@ -99,7 +99,7 @@ The central phrase compresses through registers, each with a use:
   <a class="ss-nav-collection" href="collection-kin.html"><span class="ss-nav-collection-label">Collection</span> <span class="ss-nav-collection-name">Kin</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
   ```
 
-  All 76 members have one; the 12 collection pages, `index.html` and `search.html` do not. **A new
+  All 82 members have one; the 13 collection pages, `index.html` and `search.html` do not. **A new
   piece needs its badge and its collection page's card in the same pass** — the page→collection map
   is derived from `<a class="card" href="…">` on the collection pages, so a card that is missing
   makes the badge underivable. **`tools/check-markup.mjs` enforces all of this as of 2026-08-13**
@@ -132,15 +132,28 @@ The central phrase compresses through registers, each with a use:
   and structure spreads as `.spread` (with a `.spread.active`), each with a `.spread-footer`
   containing a `.spread-footer-right` page counter. IDs run `spread-1..N` in document order.
 
-### Collections (twelve pages, in three kinds)
+### Collections (thirteen pages, in three kinds plus one exception)
 
-Twelve **collection** landing pages (`collection-*.html`). **Every section of `index.html` has
-one** — that is the invariant now, so *a new index section owes a collection page*, and a new
+Thirteen **collection** landing pages (`collection-*.html`). **Every section of `index.html` has
+one** — that is the invariant, so *a new index section owes a collection page*, and a new
 collection page owes a `.collection-intro` on the index carrying its accent and an
 `About this collection →` link. The five register collections were settled 2026-08-11 — see
 `DECISIONS.md` for the reasoning; Print and Sound followed the same day, Field Guides on the 12th,
 and Start Here, Foundations and Notes &amp; Rationale later on the 12th. **How We Got Here** joined
 on the 12th as the twelfth, at two members — see *the two-member floor* below.
+
+- **`collection-easter-eggs.html` is the one exception, and it inverts that invariant on purpose
+  (2026-08-14).** It has **no section on the index** — that absence is the entire mechanism, since a
+  listed egg is not off the path. Nothing in the tooling enforces index↔collection parity (the
+  membership map is built from collection-page cards, never from the index), so this costs nothing
+  mechanically, but **don't generalise it**: every other collection still owes its index section.
+  It also **broke the two-member floor at one member**, which is recorded with its reasoning in
+  `DECISIONS.md` rather than left to look like drift. The trade it bought: the alternative was a
+  hand-written single-file exemption inside `check-markup.mjs`, and **a collection page is visible
+  where a tool exemption is not.** An egg is *not a lower standard* — same sourcing, same grading,
+  same `FACTCHECK.md` row, same changelog entry, same five gates. Only the door moves. And eggs stay
+  inside `sitemap.xml`, `search-index.json` and every gate, because a page the checks cannot see is
+  a page that rots.
 
 **Five sort by register** — what kind of argument a piece is making:
 
@@ -217,7 +230,11 @@ never candidates for a register. Don't try to fold these into either table:
   and load-bearing elsewhere: `changelog.html` has dated public entries naming them, `FACTCHECK.md`
   is keyed by number *and* cross-references by number, and prose references have no redirect.
   Numbers inside a collection therefore run **non-contiguously (1, 2, 6, 7…), and that gap is
-  information** — don't "fix" it. A new zine takes the next number in sequence and joins whichever
+  information** — don't "fix" it. **The single exception is No. 37**, which went back and occupied
+  the one gap on 2026-08-14 and is therefore the only number here that is not a date: it is younger
+  than No. 46, says so on its cover, and marks itself `leap` on spread 8. That was a deliberate
+  one-off with its cost stated on the page — **every other gap stays empty**, and backfilling a
+  second one would make the numbers stop meaning *when*. A new zine takes the next number in sequence and joins whichever
   collection fits its register.
 - **Membership is by register, not by date.** Nos. 17, 19, 20, 21 and 25 are in *Star Stuff* despite
   being made much later, because in each the physics is still doing the argumentative work. Ask
@@ -244,10 +261,12 @@ never candidates for a register. Don't try to fold these into either table:
   everything else homework, and would become the one place the verify-everything standard could
   quietly relax. The fun is distributed; *Stars We Grew Up On* states this on the page.
 - The **prev/next chain follows collection order**: each collection page precedes its members, and
-  members run in ascending number within the collection. **80 pages** as of 2026-08-12,
+  members run in ascending number within the collection. **86 pages** as of 2026-08-14,
   `collection-start-here.html` → `shorthand-evolution.html`. Outside the chain by decision:
-  `about.html` and `cosmic-connections.html`, plus **all of Notes &amp; Rationale** — `changelog.html`,
-  `design.html`, `print-design.html`, `difference-first-frame.html` and `collection-notes.html`.
+  `about.html` and `cosmic-connections.html`; **all of Notes &amp; Rationale** — `changelog.html`,
+  `design.html`, `print-design.html`, `difference-first-frame.html` and `collection-notes.html`;
+  and **all of Easter Eggs** — `collection-easter-eggs.html` and `out-of-order-zine.html`, because a
+  chain link would walk a reader into an egg by accident and stop it being one.
   (`index.html` and `search.html` are utility pages and were never in it.)
   **Don't trust that number — measure it**, and check `prev` and `next` agree in both directions;
   inserting a page means editing its two neighbours, and a one-sided edit leaves a chain that walks
