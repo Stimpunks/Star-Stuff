@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0a0a14">
+<link rel="canonical" href="https://starstuff.earth/companion-stars-zine.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta name="description" content="A star sharing a system with another star already has a name: a companion star. But the popular version of that fact is wrong — Lada (2006) finds two-thirds of stellar systems in the Galactic disk are single, and multiplicity is a steep function of mass. So this is not a promise that everyone has their people. Where stars are bound, Sirius A and B orbit a centre belonging to neither; too close and they deform each other; far apart, both keep their shape. And at three bodies the mathematics changes outright — Bruns, Poincaré and Sundman — so no body's path can be solved alone. After Helen Edgar and David Gray-Hammond. A rhyme, not a proof.">
+<!-- Open Graph / link unfurl -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Star Stuff · Stimpunks Foundation × More Realms">
+<meta property="og:url" content="https://starstuff.earth/companion-stars-zine.html">
+<meta property="og:title" content="Companion Stars">
+<meta property="og:description" content="Most stars are single — so this is not a promise that everyone has their people. But where stars are bound, no one of them has a path you can solve alone. Sirius, the three-body problem, and what the mathematics will not let you do. After Helen Edgar and David Gray-Hammond.">
+<meta property="og:image" content="https://starstuff.earth/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A rainbow-hued cosmic image — we are all made of star stuff.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Companion Stars">
+<meta name="twitter:description" content="Astronomy's own word for a star bound to another. Most stars are single, so we are not promising you anyone. But where the binding is real, no path can be solved alone. After Helen Edgar and David Gray-Hammond.">
+<meta name="twitter:image" content="https://starstuff.earth/og-card.jpg">
+<title>Companion Stars — Stimpunks Zine No. 46</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="starstuff.css">
+<style>
+  :root {
+    --void:  var(--sp-void-deep);
+    --deep:  var(--sp-deep);
+    --page:  var(--sp-page);
+    --violet:var(--sp-purple);
+    --pink:  var(--sp-pink);
+    --gold:  var(--sp-gold);
+    --cyan:  var(--sp-cyan);
+    --green: var(--sp-green);
+    --ember: #c1653a;
+    --accent: var(--sp-cyan);          /* this zine's identity accent — the binding, cool and mutual */
+    --star-white: var(--sp-white-soft);
+    --stardust:   var(--sp-secondary-soft);
+    --dim:   var(--sp-dim);
+    --dim2:  var(--sp-dim-soft);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--void);
+    font-family: 'Atkinson Hyperlegible Next', system-ui, sans-serif;
+    color: var(--star-white);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── STARFIELD (cyan · white · gold — pairs and near-pairs) ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 11% 16%, rgba(34,211,238,0.62) 0%, transparent 100%),
+      radial-gradient(1px 1px at 13% 18%, rgba(244,244,251,0.5) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 46% 9%, rgba(251,191,36,0.44) 0%, transparent 100%),
+      radial-gradient(1px 1px at 63% 64%, rgba(244,244,251,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 65% 67%, rgba(34,211,238,0.5) 0%, transparent 100%),
+      radial-gradient(2px 2px at 78% 25%, rgba(34,211,238,0.46) 0%, transparent 100%),
+      radial-gradient(1px 1px at 88% 52%, rgba(251,191,36,0.42) 0%, transparent 100%),
+      radial-gradient(1px 1px at 93% 80%, rgba(34,211,238,0.48) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 7% 59%, rgba(244,244,251,0.52) 0%, transparent 100%),
+      radial-gradient(1px 1px at 34% 85%, rgba(34,211,238,0.44) 0%, transparent 100%),
+      radial-gradient(1px 1px at 36% 87%, rgba(244,244,251,0.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 54% 44%, rgba(251,191,36,0.38) 0%, transparent 100%),
+      radial-gradient(2px 2px at 21% 88%, rgba(34,211,238,0.46) 0%, transparent 100%),
+      radial-gradient(1px 1px at 72% 7%, rgba(244,244,251,0.7) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 30% 20%, rgba(244,244,251,0.46) 0%, transparent 100%),
+      radial-gradient(1px 1px at 84% 90%, rgba(251,191,36,0.38) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .zine-shell { position: relative; z-index: 1; max-width: 820px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+
+  .spectrum-line { height: 2px; border: none; border-radius: 2px; background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); }
+
+  /* ── NAV ── */
+  .nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2.5rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(34,211,238,0.2); }
+  .nav-brand { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--dim); }
+  .nav-controls { display: flex; gap: 0.5rem; align-items: center; }
+  .nav-btn { background: none; border: 1px solid rgba(34,211,238,0.35); color: var(--stardust); font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.15em; padding: 0.4rem 0.85rem; border-radius: 2px; cursor: pointer; transition: all 0.2s ease; text-transform: uppercase; }
+  .nav-btn:hover { background: rgba(34,211,238,0.15); border-color: rgba(34,211,238,0.6); color: var(--star-white); }
+  .nav-btn.active { background: rgba(34,211,238,0.20); border-color: var(--accent); color: var(--star-white); }
+  .page-counter { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.2em; color: var(--dim2); }
+
+  .spread { display: none; animation: fadeIn 0.5s ease forwards; }
+  .spread.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ── COVER ── */
+  .cover-spread {
+    position: relative; min-height: 520px; border-radius: 4px; overflow: hidden;
+    background:
+      radial-gradient(ellipse at 24% 22%, rgba(34,211,238,0.13) 0%, transparent 52%),
+      radial-gradient(ellipse at 78% 26%, rgba(251,191,36,0.08) 0%, transparent 52%),
+      radial-gradient(ellipse at 66% 82%, rgba(34,211,238,0.10) 0%, transparent 52%),
+      radial-gradient(ellipse at 26% 80%, rgba(167,139,250,0.07) 0%, transparent 52%),
+      var(--deep);
+    border: 1px solid rgba(34,211,238,0.25);
+    box-shadow: inset 0 0 80px rgba(34,211,238,0.06), 0 0 0 4px rgba(255,255,255,0.03);
+    display: flex; flex-direction: column; justify-content: flex-end; padding: 3rem;
+  }
+  .cover-motif { position: absolute; top: -4px; right: -14px; width: 340px; height: 340px; opacity: 0.8; pointer-events: none; }
+  .cover-issue { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.5em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.5rem; }
+  .cover-title { font-weight: 700; font-size: clamp(2.2rem, 6.4vw, 3.8rem); line-height: 1.03; color: var(--star-white); letter-spacing: -0.01em; margin-bottom: 0.9rem; }
+  .cover-title .amp { color: var(--accent); font-style: italic; }
+  .cover-subtitle { font-size: 1rem; color: var(--stardust); opacity: 0.85; margin-bottom: 1.5rem; max-width: 470px; line-height: 1.55; }
+  .cover-byline { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.14em; color: var(--dim); margin-bottom: 1.8rem; }
+  .cover-byline strong { color: var(--stardust); font-weight: 700; }
+  .cover-rule { width: 220px; max-width: 60%; margin-bottom: 1.3rem; }
+  .cover-meta { display: flex; gap: 2rem; align-items: center; }
+  .cover-ls { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 1.4rem; color: var(--gold); letter-spacing: 0.05em; }
+  .cover-meta-text { font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--dim2); line-height: 1.9; }
+  .cover-corner { position: absolute; top: 2rem; right: 2.5rem; text-align: right; }
+  .cover-corner-num { font-weight: 700; font-size: 4.5rem; line-height: 1; color: var(--accent); opacity: 0.24; }
+  .cover-corner-label { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); display: block; margin-top: -0.3rem; }
+
+  /* ── INTERIOR ── */
+  .interior { background: var(--page); border: 1px solid rgba(34,211,238,0.15); border-radius: 4px; overflow: hidden; min-height: 480px; }
+  .spread-2col { display: grid; grid-template-columns: 1fr 1fr; min-height: 480px; }
+  .spread-left, .spread-right { padding: 3rem 2.4rem; position: relative; }
+  .spread-left { border-right: 1px solid rgba(34,211,238,0.12); }
+
+  .spread-2col.stacked { display: flex; flex-direction: column; }
+  .spread-2col.stacked > .spread-left,
+  .spread-2col.stacked > .spread-right { border-right: none; }
+  .spread-2col.stacked > .col-diagram { order: 2; padding-top: 0; }
+  .spread-2col.stacked > .col-text { padding-left: max(2.4rem, calc((100% - 32rem) / 2)); padding-right: max(2.4rem, calc((100% - 32rem) / 2)); }
+  .spread-2col.stacked .diagram-wrap { height: auto; }
+  .spread-2col.stacked .diagram { max-width: 380px; }
+
+  .eyebrow { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.1rem; }
+  .body-text { font-size: 0.98rem; line-height: 1.72; color: var(--stardust); }
+  .body-text p { margin-bottom: 1rem; }
+  .body-text p:last-child { margin-bottom: 0; }
+  .body-text strong { font-weight: 700; color: var(--star-white); }
+  .body-text em { font-style: italic; color: var(--star-white); }
+  .body-text a { color: var(--cyan); text-decoration: none; border-bottom: 1px solid rgba(34,211,238,0.4); }
+  .body-text a:hover { border-bottom-color: var(--cyan); color: var(--star-white); }
+  .body-text .violet { color: var(--violet); font-weight: 700; }
+  .body-text .pink { color: var(--pink); font-weight: 700; }
+  .body-text .gold { color: var(--gold); font-weight: 700; }
+  .body-text .cyan { color: var(--cyan); font-weight: 700; }
+  .body-text .green { color: var(--green); font-weight: 700; }
+  .body-text .lede { font-size: 1.08rem; color: var(--star-white); }
+
+  .spread-heading { font-weight: 700; font-size: 1.9rem; line-height: 1.12; color: var(--star-white); margin-bottom: 1.1rem; letter-spacing: -0.01em; margin-top: 0; scroll-margin-top: 5rem; }
+  .spread-heading .spectrum-word { background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .rule { width: 40px; margin: 1rem 0; }
+
+  .pull-quote { font-size: 1.18rem; font-weight: 700; line-height: 1.4; color: var(--star-white); border-left: 3px solid var(--accent); padding-left: 1.1rem; margin: 1.4rem 0; font-style: italic; }
+  .pull-quote.violet { border-left-color: var(--violet); }
+  .pull-quote.cyan { border-left-color: var(--cyan); }
+  .pull-quote.gold { border-left-color: var(--gold); }
+  .pull-quote.pink { border-left-color: var(--pink); }
+  .pull-quote .attr { display: block; font-family: 'Space Mono', monospace; font-size: 0.6rem; font-weight: 400; font-style: normal; letter-spacing: 0.08em; color: var(--dim); margin-top: 0.6rem; }
+
+  .callout { margin: 1.3rem 0; padding: 1rem 1.15rem; background: rgba(34,211,238,0.07); border: 1px solid rgba(34,211,238,0.24); border-radius: 4px; font-size: 1rem; font-style: italic; color: var(--star-white); line-height: 1.55; }
+  .callout .attr { display: block; font-family: 'Space Mono', monospace; font-size: 0.58rem; font-style: normal; letter-spacing: 0.06em; color: var(--dim); margin-top: 0.5rem; }
+
+  .note { font-size: 0.84rem; line-height: 1.6; color: var(--dim); border-left: 2px solid rgba(251,191,36,0.4); padding-left: 0.9rem; margin: 1.1rem 0; }
+  .note strong { color: var(--stardust); font-weight: 700; }
+
+  /* ── TABLES ── */
+  .trades { width: 100%; border-collapse: collapse; margin: 1.3rem 0; font-size: 0.84rem; }
+  .trades caption { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dim); text-align: left; padding-bottom: 0.6rem; }
+  .trades th { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--stardust); text-align: left; padding: 0.5rem 0.6rem; border-bottom: 1px solid rgba(34,211,238,0.34); font-weight: 700; }
+  .trades td { padding: 0.55rem 0.6rem; border-bottom: 1px solid rgba(34,211,238,0.1); color: var(--stardust); line-height: 1.5; vertical-align: top; }
+  .trades td.keeps { color: var(--cyan); font-weight: 700; }
+  .trades td.loses { color: var(--gold); font-weight: 700; }
+
+  /* ── DIAGRAMS ── */
+  .diagram-wrap { display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; }
+  .diagram { width: 100%; max-width: 300px; display: block; }
+  .diagram-caption { font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim); text-align: center; margin-top: 0.9rem; line-height: 1.9; }
+
+  /* ── REFUSALS ── */
+  .refusals { margin-top: 1.3rem; }
+  .refusal { font-size: 0.88rem; line-height: 1.5; color: var(--stardust); padding: 0.55rem 0; border-bottom: 1px solid rgba(34,211,238,0.1); display: flex; gap: 0.6rem; align-items: baseline; }
+  .refusal:last-child { border-bottom: none; }
+  .refusal-tag { font-family: 'Space Mono', monospace; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ember); flex-shrink: 0; padding-top: 0.12rem; }
+  .refusal strong { color: var(--star-white); font-weight: 700; }
+
+  /* ── COLOPHON ── */
+  .colophon { padding: 3rem; display: flex; flex-direction: column; justify-content: space-between; min-height: 480px; background: radial-gradient(ellipse at 82% 18%, rgba(34,211,238,0.09) 0%, transparent 50%), radial-gradient(ellipse at 18% 85%, rgba(251,191,36,0.06) 0%, transparent 50%), var(--page); }
+  .colophon-top { border-bottom: 1px solid rgba(34,211,238,0.14); padding-bottom: 1.3rem; margin-bottom: 1.2rem; }
+  .colophon-ls { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 2.4rem; color: var(--gold); letter-spacing: 0.05em; display: block; margin-bottom: 0.4rem; }
+  .colophon-phrase { font-size: 0.98rem; font-weight: 700; font-style: italic; color: var(--stardust); }
+  .series-list { display: flex; flex-direction: column; gap: 0.38rem; margin-bottom: 1.2rem; }
+  .series-item { font-size: 0.72rem; color: var(--dim); letter-spacing: 0.01em; display: flex; gap: 0.7rem; align-items: baseline; line-height: 1.45; }
+  .series-item.current { color: var(--accent); font-weight: 700; }
+  .series-num { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim2); flex-shrink: 0; }
+  .series-item.current .series-num { color: var(--accent); }
+  .reflect { border-top: 1px solid rgba(34,211,238,0.14); padding-top: 1rem; margin-bottom: 1.2rem; }
+  .reflect-label { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.65rem; }
+  .reflect-q { font-size: 0.86rem; line-height: 1.55; color: var(--stardust); margin-bottom: 0.55rem; font-style: italic; }
+  .reflect-q:last-child { margin-bottom: 0; }
+  .colophon-body { font-size: 0.75rem; color: var(--dim); line-height: 1.75; margin-bottom: 1.2rem; }
+  .colophon-body a { color: var(--cyan); text-decoration: none; border-bottom: 1px solid rgba(34,211,238,0.4); }
+  .colophon-body a:hover { border-bottom-color: var(--cyan); }
+  .colophon-h { font-family: 'Space Mono', monospace; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: var(--stardust); margin: 1rem 0 0.4rem; scroll-margin-top: 5rem; }
+  .colophon-footer { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--dim); line-height: 2.2; border-top: 1px solid rgba(34,211,238,0.14); padding-top: 1rem; }
+
+  /* ── SPREAD FOOTER ── */
+  .spread-footer { display: flex; justify-content: space-between; align-items: center; padding: 0.9rem 2.4rem; border-top: 1px solid rgba(34,211,238,0.1); }
+  .spread-footer-left { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--dim); }
+  .spread-footer-right { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; color: var(--accent); }
+
+  .twinkle { position: fixed; width: 3px; height: 3px; border-radius: 50%; animation: twinkle-anim 3s ease-in-out infinite; pointer-events: none; z-index: 0; }
+
+  @media (max-width: 600px) {
+    .spread-2col { grid-template-columns: 1fr; }
+    .spread-left { border-right: none; border-bottom: 1px solid rgba(34,211,238,0.12); }
+    .spread-2col.stacked > .spread-left { border-bottom: none; }
+    .spread-2col.stacked > .col-text { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .cover-spread { padding: 2rem; min-height: 420px; }
+    .cover-motif { width: 224px; height: 224px; top: -4px; right: -24px; opacity: 0.5; }
+    .cover-title { font-size: 2rem; }
+    .spread-heading { font-size: 1.55rem; }
+    .spread-left, .spread-right { padding: 2rem 1.5rem; }
+    .colophon { padding: 2rem 1.5rem; }
+    .trades { font-size: 0.76rem; }
+    .trades th, .trades td { padding: 0.4rem 0.35rem; }
+  }
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Companion Stars","description":"A star sharing a system with another star already has a name in astronomy: a companion star. The popular version of that fact is wrong, and this zine opens by saying so — Charles Lada (ApJ 640, L63, 2006) finds that two-thirds of main-sequence stellar systems in the Galactic disk are single, because multiplicity is a steep function of primary mass: roughly 26 percent for M dwarfs (Duchêne and Kraus 2013), 44 plus or minus 2 percent for solar-type stars (Raghavan et al. 2010), and near total for the most massive. So the piece refuses to promise anyone their people. Where stars are bound, Sirius A and Sirius B orbit a shared centre belonging to neither, over 50.13 years, with dynamical masses of 2.063 and 1.018 solar masses (Bond et al., ApJ 840, 70, 2017) — equal binding, unequal motion. Too close and companions deform each other into ellipsoids and teardrops and dumbbells; the wide pairs, out to a parsec and orbital periods reaching a hundred million years, are the ones where both keep their shape. Then the turn: at three gravitating bodies the mathematics changes outright. Bruns (1887) showed no further algebraic integrals exist, Poincaré (1890) none that are single-valued analytic, and Sundman's 1912 convergent series is unusable in practice — so the paths are computed step by step, together, and no single body's path can be solved alone. Read alongside Helen Edgar's Companion Stars, Rhizome Array and Mycelial Stars from My Monotropic Galaxy, and David Gray-Hammond's Chaotic Self and Autistic Rhizome. A rhyme, not a proof.","image":"https://starstuff.earth/og-card.jpg","url":"https://starstuff.earth/companion-stars-zine.html","mainEntityOfPage":"https://starstuff.earth/companion-stars-zine.html","author":{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/"},"contributor":[{"@type":"Person","name":"Helen Edgar","url":"https://morerealms.com/"},{"@type":"Person","name":"David Gray-Hammond","url":"https://neurohubcommunity.org/"}],"publisher":[{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/","logo":{"@type":"ImageObject","url":"https://starstuff.earth/og-card.jpg"}},{"@type":"Organization","name":"More Realms","url":"https://morerealms.com/"}],"isPartOf":{"@type":"WebSite","name":"Star Stuff","url":"https://starstuff.earth/"}}</script>
+</head>
+<body>
+
+<div class="twinkle" style="top:10%;left:12%;background:var(--cyan);box-shadow:0 0 6px var(--cyan);animation-delay:-0.6s"></div>
+<div class="twinkle" style="top:21%;left:87%;background:var(--star-white);box-shadow:0 0 6px var(--star-white);animation-delay:-1.5s"></div>
+<div class="twinkle" style="top:54%;left:6%;background:var(--gold);box-shadow:0 0 6px var(--gold);animation-delay:-2.3s"></div>
+<div class="twinkle" style="top:73%;left:92%;background:var(--cyan);box-shadow:0 0 6px var(--cyan);animation-delay:-0.9s"></div>
+<div class="twinkle" style="top:86%;left:31%;background:var(--star-white);box-shadow:0 0 6px var(--star-white);animation-delay:-1.8s"></div>
+<div class="twinkle" style="top:41%;left:95%;background:var(--cyan);box-shadow:0 0 6px var(--cyan);animation-delay:-3.1s"></div>
+
+<div class="zine-shell">
+
+  <nav class="ss-nav" style="--nav-accent:#22d3ee;" aria-label="Star Stuff collection">
+    <span class="ss-nav-home-group"><a class="ss-nav-home" href="index.html"><span class="ss-star" aria-hidden="true">★</span> stuff</a><a class="ss-nav-about" href="about.html">about</a>
+      <a class="ss-nav-search" href="search.html">search</a></span>
+    <span class="ss-nav-links">
+      <a class="ss-nav-prev" href="the-cloud-phase-zine.html"><span class="ss-nav-arrow" aria-hidden="true">&lsaquo;</span> <span class="ss-nav-label">The Cloud Phase</span></a>
+      <a class="ss-nav-next" href="collection-how-we-got-here.html"><span class="ss-nav-label">How We Got Here</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
+    </span>
+    <a class="ss-nav-collection" href="collection-star-stuff.html"><span class="ss-nav-collection-label">Collection</span> <span class="ss-nav-collection-name">Star Stuff</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
+  </nav>
+
+  <nav class="nav">
+    <div class="nav-brand"><a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks</a> × <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a> · Zine No. 46</div>
+    <div class="nav-controls">
+      <button class="nav-btn" id="prev-btn" onclick="changePage(-1)">← prev</button>
+      <span class="page-counter" id="page-counter">1 / 9</span>
+      <button class="nav-btn" id="next-btn" onclick="changePage(1)">next →</button>
+    </div>
+  </nav>
+
+  <!-- ════ SPREAD 1: COVER ════ -->
+  <div class="spread active" id="spread-1">
+    <div class="cover-spread">
+      <svg class="cover-motif" viewBox="0 0 340 340" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <!-- Two stars on their own ellipses about a shared centre, the smaller one on the wider path.
+             Art held in the UPPER THIRD — the cover is 520px and the title sits at its foot, so
+             anything past y≈240 in this viewBox lands on the words. -->
+        <g transform="translate(0,4) scale(0.88)">
+          <!-- the two orbits about the barycentre -->
+          <ellipse cx="150" cy="104" rx="34" ry="22" fill="none" stroke="rgba(34,211,238,0.55)" stroke-width="1.3"/>
+          <ellipse cx="150" cy="104" rx="70" ry="45" fill="none" stroke="rgba(34,211,238,0.30)" stroke-width="1.1" stroke-dasharray="5 6"/>
+          <!-- the shared centre, belonging to neither -->
+          <g stroke="rgba(251,191,36,0.9)" stroke-width="1.6" stroke-linecap="round">
+            <path d="M144 104 H156"/><path d="M150 98 V110"/>
+          </g>
+          <!-- the heavier star, on the tighter path -->
+          <circle cx="184" cy="104" r="9" fill="rgba(244,244,251,0.9)"/>
+          <!-- the lighter star, opposite, on the wider path -->
+          <circle cx="80" cy="104" r="5.5" fill="rgba(34,211,238,0.95)"/>
+          <text x="150" y="190" text-anchor="middle" font-family="Space Mono, monospace" font-size="10.5" letter-spacing="1" fill="#67e8f9">a centre belonging to neither</text>
+        </g>
+      </svg>
+      <div class="cover-corner">
+        <div class="cover-corner-num" aria-hidden="true">46</div>
+        <span class="cover-corner-label">Star Stuff</span>
+      </div>
+      <div class="cover-issue">Stimpunks × More Realms · Zine No. 46</div>
+      <h1 class="cover-title"><span class="amp">Companion</span> Stars</h1>
+      <p class="cover-subtitle">on gravitational binding, the three-body problem, and why no one's path can be solved alone</p>
+      <div class="cover-byline">after <strong>Helen Edgar</strong> &amp; <strong>David Gray-Hammond</strong> · most stars are single, and we will say so first</div>
+      <hr class="spectrum-line cover-rule">
+      <div class="cover-meta">
+        <span class="cover-ls">L★S</span>
+        <div class="cover-meta-text">Love You Down To Your Star Stuff<br>open edition · print freely</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 2: astronomy already had the word ════ -->
+  <div class="spread" id="spread-2">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Companion star</div>
+          <h2 class="spread-heading" id="astronomy-already-had-the-word">Astronomy already had the word</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">A star that shares a system with another star has a name, and the name is a <strong>companion star</strong>. Astronomers needed the word for their own reasons, long before it was any use to us.</p>
+            <p>It is not a borrowed term or a softened one. It is the working vocabulary of stellar astronomy — the second body in a bound system, the one whose gravity you have to account for if you want the first one's motion to make any sense at all.</p>
+            <p>Helen Edgar's galaxy already holds it. In <a href="https://morerealms.com/my-monotropic-galaxy-a-constellation-of-my-autistic-self/"><em>My Monotropic Galaxy</em></a> (More Realms, June 2026) she maps twenty constellations of her own Autistic self, and the thirteenth is <span class="cyan">Companion Stars</span>.</p>
+            <div class="callout">Companion Stars are the people who orbit close, who understand penguin pebbling, and the Neurodivergent Love Locutions. Those who don't need me to perform and who just &lsquo;get it&rsquo;.<span class="attr">Helen Edgar · My Monotropic Galaxy · More Realms, 2026</span></div>
+            <p>Note the plural. Not <em>the person</em> — <em>the people</em>. This zine follows that plural outward, from one bond to a whole community, and the astronomy does the same thing on its own: two bodies, then three, and at three something changes that changes everything after it.</p>
+            <p>But first there is a fact to get straight, <strong>because the popular version of it is wrong</strong> — and this collection exists partly to take science back from the smoothed retelling.</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 150" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig1-title fig1-desc">
+              <title id="fig1-title">Where the word comes from</title>
+              <desc id="fig1-desc">A bright primary star with a smaller companion beside it, joined by a line marked gravitationally bound, over a caption noting the term is astronomy's own.</desc>
+              <circle cx="104" cy="56" r="16" fill="rgba(244,244,251,0.9)"/>
+              <circle cx="200" cy="56" r="8" fill="rgba(34,211,238,0.95)"/>
+              <g stroke="rgba(251,191,36,0.75)" stroke-width="1.2" fill="none" stroke-dasharray="4 4">
+                <path d="M124 56 H190"/>
+              </g>
+              <text x="157" y="44" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--gold)">gravitationally bound</text>
+              <text x="104" y="90" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" fill="var(--sp-secondary)">primary</text>
+              <text x="200" y="90" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" fill="#67e8f9">companion</text>
+              <text x="150" y="118" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.5" letter-spacing="0.8" fill="var(--sp-secondary)">not a borrowed word</text>
+              <text x="150" y="134" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="1.2" fill="var(--sp-dim)">standard stellar astronomy</text>
+            </svg>
+            <div class="diagram-caption">Figure 1 · the term is already theirs</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Companion Stars · Stimpunks</span>
+        <span class="spread-footer-right">2</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 3: most stars are single ════ -->
+  <div class="spread" id="spread-3">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The correction goes first</div>
+          <h2 class="spread-heading" id="most-stars-are-single">Most stars are <span class="spectrum-word">single</span></h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">You have almost certainly met the line <em>most stars are in binaries — the Sun is the odd one out.</em> It is repeated constantly, and it is not what the measurements say.</p>
+            <p>In 2006 Charles Lada put the binary statistics next to the stellar mass function and published the result as his title: <span class="cyan">most stars are single</span>. Two-thirds of main-sequence stellar systems in the Galactic disk are composed of a single star.</p>
+            <p>The reason is arithmetic rather than romance. Multiplicity climbs steeply with mass, and the galaxy is overwhelmingly made of the small end:</p>
+            <table class="trades">
+              <caption>fraction with at least one stellar companion</caption>
+              <thead><tr><th>primary</th><th>multiplicity</th><th>source</th></tr></thead>
+              <tbody>
+                <tr><td class="keeps">M dwarfs</td><td class="loses">~26%</td><td>Duchêne &amp; Kraus, 2013</td></tr>
+                <tr><td class="keeps">solar-type (F6–K3)</td><td class="loses">44 ± 2%</td><td>Raghavan et&nbsp;al., 2010</td></tr>
+                <tr><td class="keeps">the most massive</td><td class="loses">near total</td><td>Duchêne &amp; Kraus, 2013</td></tr>
+              </tbody>
+            </table>
+            <p>M dwarfs are the majority of stars by a wide margin, and about three-quarters of them are alone. The big ones almost all have someone; there are hardly any big ones.</p>
+            <div class="pull-quote gold">So we are not going to tell you that everybody has their people. The sky does not say that, and saying it anyway would be the kind of comfort that costs somebody else something.<span class="attr">the refusal this zine is built on</span></div>
+            <p>Which leaves a smaller claim, and it holds all the way down: <strong>where the binding is real, it is real physics</strong> — measurable, long-lasting, and structured in a way worth looking at closely. That is the zine. Not <em>you will be found</em>. Just: <em>here is exactly what being bound is, and what it isn't.</em></p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 158" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig2-title fig2-desc">
+              <title id="fig2-title">Multiplicity climbs with mass</title>
+              <desc id="fig2-desc">Three horizontal bars. M dwarfs about twenty-six percent, solar-type forty-four percent, the most massive near total — with a note that M dwarfs are most of the galaxy, so two-thirds of systems are single.</desc>
+              <text x="12" y="34" font-family="Space Mono, monospace" font-size="6.5" fill="var(--sp-secondary)">M dwarfs</text>
+              <rect x="84" y="26" width="39" height="12" rx="2" fill="rgba(34,211,238,0.75)"/>
+              <text x="129" y="35" font-family="Space Mono, monospace" font-size="6.5" fill="#67e8f9">26%</text>
+              <text x="12" y="60" font-family="Space Mono, monospace" font-size="6.5" fill="var(--sp-secondary)">Sun-like</text>
+              <rect x="84" y="52" width="66" height="12" rx="2" fill="rgba(34,211,238,0.75)"/>
+              <text x="156" y="61" font-family="Space Mono, monospace" font-size="6.5" fill="#67e8f9">44%</text>
+              <text x="12" y="86" font-family="Space Mono, monospace" font-size="6.5" fill="var(--sp-secondary)">most massive</text>
+              <rect x="84" y="78" width="150" height="12" rx="2" fill="rgba(251,191,36,0.85)"/>
+              <text x="240" y="87" font-family="Space Mono, monospace" font-size="6.5" fill="var(--gold)">near all</text>
+              <path d="M84 98 H234" stroke="rgba(34,211,238,0.3)" stroke-width="0.9"/>
+              <text x="84" y="110" font-family="Space Mono, monospace" font-size="6" fill="var(--sp-dim)">0%</text>
+              <text x="234" y="110" text-anchor="end" font-family="Space Mono, monospace" font-size="6" fill="var(--sp-dim)">100%</text>
+              <text x="150" y="130" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.5" letter-spacing="0.8" fill="var(--sp-secondary)">and the galaxy is mostly M dwarfs</text>
+              <text x="150" y="144" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="1" fill="var(--gold)">so 2 in 3 systems are single</text>
+              <text x="150" y="156" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" letter-spacing="1.2" fill="var(--sp-dim)">Lada 2006 · Raghavan 2010 · D&amp;K 2013</text>
+            </svg>
+            <div class="diagram-caption">Figure 2 · the fact, unsmoothed</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Companion Stars · Stimpunks</span>
+        <span class="spread-footer-right">3</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 4: the shared centre ════ -->
+  <div class="spread" id="spread-4">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Neither one circles the other</div>
+          <h2 class="spread-heading" id="a-centre-belonging-to-neither">A centre belonging to neither</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Two bound stars do not have one sitting still while the other goes round it. Both move, about a point between them called the <strong>barycentre</strong>, which is not located in either star.</p>
+            <p>Sirius is the worked example, and it is the brightest star in our sky. Howard Bond and colleagues combined two decades of Hubble imaging with photographic plates and nearly 2,300 measurements going back to the nineteenth century, and pinned the orbit down: Sirius A and its white-dwarf companion Sirius B trace their paths in <span class="cyan">50.13 years</span>, with dynamical masses of 2.063 ± 0.023 and 1.018 ± 0.011 solar masses.</p>
+            <p>Now the part that keeps this honest. <strong>Equal binding is not equal motion.</strong> The barycentre sits nearer the heavier star, so Sirius A moves in a small ellipse and Sirius B in one about twice as wide. The heavier body is displaced less.</p>
+            <div class="pull-quote cyan">What is symmetric is the <em>force</em>. Each pulls on the other exactly as hard. What is asymmetric is how far each one has to move — and neither of them gets to stand still.<span class="attr">Newton's third law, in an orbit</span></div>
+            <p>That distinction is worth keeping. A relation can be genuinely mutual and still ask more travel of one party than the other, and pretending otherwise is how the person doing more of the moving ends up told they are imagining it. The pull is equal. The displacement is not. <span class="gold">Both are facts about the same system.</span></p>
+            <div class="note"><strong>Why it took 2,300 measurements.</strong> One orbit is fifty years, so no single astronomer's career covers many of them. Bond et&nbsp;al. are drawing on other people's observations from before anyone alive was born. Some things can only be known collectively, across generations — which is not a metaphor here, it is the method section.</div>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 176" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig3-title fig3-desc">
+              <title id="fig3-title">Both stars orbit a shared centre</title>
+              <desc id="fig3-desc">Sirius A on a small ellipse and Sirius B on an ellipse about twice as wide, both about a marked barycentre that lies in neither star, with an orbital period of fifty point one three years.</desc>
+              <ellipse cx="150" cy="72" rx="30" ry="20" fill="none" stroke="rgba(244,244,251,0.6)" stroke-width="1.3"/>
+              <ellipse cx="150" cy="72" rx="61" ry="40" fill="none" stroke="rgba(34,211,238,0.5)" stroke-width="1.1" stroke-dasharray="5 5"/>
+              <g stroke="rgba(251,191,36,0.95)" stroke-width="1.5" stroke-linecap="round">
+                <path d="M144 72 H156"/><path d="M150 66 V78"/>
+              </g>
+              <circle cx="180" cy="72" r="9" fill="rgba(244,244,251,0.92)"/>
+              <circle cx="89" cy="72" r="5" fill="rgba(34,211,238,0.95)"/>
+              <g stroke="rgba(251,191,36,0.6)" stroke-width="0.9" fill="none">
+                <path d="M150 60 V40"/>
+              </g>
+              <text x="150" y="34" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--gold)">barycentre — in neither star</text>
+              <g stroke="rgba(244,244,251,0.45)" stroke-width="0.9" fill="none">
+                <path d="M187 80 L214 100"/>
+              </g>
+              <text x="216" y="106" font-family="Space Mono, monospace" font-size="6.3" fill="var(--sp-secondary)">A · 2.06 M&#9737;</text>
+              <text x="216" y="115" font-family="Space Mono, monospace" font-size="6.3" fill="var(--sp-secondary)">small ellipse</text>
+              <g stroke="rgba(34,211,238,0.45)" stroke-width="0.9" fill="none">
+                <path d="M85 79 L60 100"/>
+              </g>
+              <text x="14" y="106" font-family="Space Mono, monospace" font-size="6.3" fill="#67e8f9">B · 1.02 M&#9737;</text>
+              <text x="14" y="115" font-family="Space Mono, monospace" font-size="6.3" fill="#67e8f9">wide ellipse</text>
+              <text x="150" y="140" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.5" letter-spacing="0.8" fill="var(--sp-secondary)">equal pull · unequal travel</text>
+              <text x="150" y="154" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="1" fill="var(--sp-dim)">one orbit: 50.13 years</text>
+              <text x="150" y="168" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" letter-spacing="1.2" fill="var(--sp-dim)">Bond et al., ApJ 840, 70, 2017</text>
+            </svg>
+            <div class="diagram-caption">Figure 3 · the point that is in neither of them</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Companion Stars · Stimpunks</span>
+        <span class="spread-footer-right">4</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 5: proximity deforms ════ -->
+  <div class="spread" id="spread-5">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Distance is doing work</div>
+          <h2 class="spread-heading" id="close-enough-and-you-deform">Close enough and you deform each other</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Here is where a warmer piece would say <em>and neither star has to change shape to stay in relation.</em> That is not true, and the way it fails is the most useful thing in this zine.</p>
+            <p>Bring two stars close and they stop being spheres. Tidal forces stretch each one along the line joining them — the same effect that raises Earth's ocean tides, scaled up until it is the shape of the star itself. Astronomers see it directly: the brightness of a close pair rises and falls as those stretched shapes turn, which is why the effect has its own name, <em>ellipsoidal variability</em>.</p>
+            <p>Push closer still and the deformation runs to its conclusion:</p>
+            <table class="trades">
+              <caption>what proximity does to a star's shape</caption>
+              <thead><tr><th>separation</th><th>shape</th></tr></thead>
+              <tbody>
+                <tr><td class="keeps">wide</td><td>both stay round; each evolves as if alone</td></tr>
+                <tr><td class="loses">close</td><td>stretched into ellipsoids, brightness varying as they turn</td></tr>
+                <tr><td class="loses">closer</td><td>drawn to a teardrop, its point aimed at the other star</td></tr>
+                <tr><td class="loses">touching</td><td>a shared envelope, dumbbell-shaped — matter crossing between them</td></tr>
+              </tbody>
+            </table>
+            <p>At the last stage the star can no longer hold its own outer material: it spills across to its companion, and what each one becomes is rewritten by the transfer. <span class="gold">Proximity is not automatically good for a star.</span></p>
+            <div class="pull-quote pink">Being bound does not deform you. Being bound <em>too closely</em> deforms you — and the star cannot choose its separation. We can.<span class="attr">the only part of this we get a say in</span></div>
+            <p>And the far end of the range is enormous. Gaia has resolved over a million bound pairs out to separations of a parsec, with orbital periods running to a hundred million years. <strong>Those stars are genuinely companions</strong> — held by mutual gravity, one orbit longer than the entire history of flowering plants — and each of them keeps its own shape completely. Distance does not weaken the binding. It only stops the binding from being the thing that reshapes you.</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 168" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig4-title fig4-desc">
+              <title id="fig4-title">Separation and shape</title>
+              <desc id="fig4-desc">Three pairs of stars. A touching pair forming a dumbbell, a close pair stretched into teardrops, and a wide pair of two perfect spheres, labelled as the only case where both keep their shape.</desc>
+              <!-- touching: two overlapping filled discs read as one dumbbell envelope; the
+                   inner cores show it is still two stars. Fill only — an outline here draws the
+                   internal arcs and the silhouette stops reading as a shared envelope. -->
+              <g fill="rgba(244,114,182,0.8)">
+                <circle cx="29" cy="46" r="12"/><circle cx="51" cy="46" r="12"/>
+              </g>
+              <g fill="rgba(15,15,42,0.85)">
+                <circle cx="29" cy="46" r="3"/><circle cx="51" cy="46" r="3"/>
+              </g>
+              <text x="40" y="82" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.3" fill="var(--pink)">touching</text>
+              <text x="40" y="92" text-anchor="middle" font-family="Space Mono, monospace" font-size="6" fill="var(--sp-dim)">one envelope</text>
+              <!-- close: stretched along the joining line, and nearly meeting -->
+              <g fill="rgba(251,191,36,0.85)">
+                <ellipse cx="132" cy="46" rx="16" ry="10"/><ellipse cx="169" cy="46" rx="16" ry="10"/>
+              </g>
+              <text x="150" y="82" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.3" fill="var(--gold)">close</text>
+              <text x="150" y="92" text-anchor="middle" font-family="Space Mono, monospace" font-size="6" fill="var(--sp-dim)">stretched</text>
+              <!-- wide: round, and far enough apart that the gap is the point -->
+              <g fill="rgba(34,211,238,0.85)">
+                <circle cx="232" cy="46" r="11"/><circle cx="278" cy="46" r="8"/>
+              </g>
+              <text x="255" y="82" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.3" fill="#67e8f9">wide</text>
+              <text x="255" y="92" text-anchor="middle" font-family="Space Mono, monospace" font-size="6" fill="var(--sp-dim)">both round</text>
+              <path d="M12 106 H288" stroke="rgba(34,211,238,0.28)" stroke-width="0.9"/>
+              <text x="12" y="118" font-family="Space Mono, monospace" font-size="6" fill="var(--sp-dim)">closer</text>
+              <text x="288" y="118" text-anchor="end" font-family="Space Mono, monospace" font-size="6" fill="var(--sp-dim)">farther</text>
+              <text x="150" y="138" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.5" letter-spacing="0.8" fill="var(--sp-secondary)">still bound at every separation</text>
+              <text x="150" y="152" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="1" fill="#67e8f9">only the wide pairs keep their shape</text>
+              <text x="150" y="164" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" letter-spacing="1.2" fill="var(--sp-dim)">schematic · not to scale</text>
+            </svg>
+            <div class="diagram-caption">Figure 4 · the cost is proximity, not the bond</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Companion Stars · Stimpunks</span>
+        <span class="spread-footer-right">5</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 6: the three-body turn ════ -->
+  <div class="spread" id="spread-6">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">At three, the mathematics changes</div>
+          <h2 class="spread-heading" id="no-path-solved-alone">No path can be <span class="spectrum-word">solved alone</span></h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">This is the argumentative centre, and it is not an interpretation. It is a set of theorems.</p>
+            <p>With two gravitating bodies you can write the solution down. Newton did. Give the positions and velocities now, and there is a formula that returns them for any time you like, exactly, forever.</p>
+            <p>Add a third body and that stops being available. Not because it is hard — because it was <em>proved</em> not to be there:</p>
+            <table class="trades">
+              <caption>what was actually shown</caption>
+              <thead><tr><th>who</th><th>result</th></tr></thead>
+              <tbody>
+                <tr><td class="keeps">Bruns, 1887</td><td>beyond the ten classical conserved quantities, the three-body equations admit no further integrals that are algebraic in the coordinates and their derivatives</td></tr>
+                <tr><td class="keeps">Poincaré, 1890</td><td>and none that are single-valued analytic functions either — the stronger closure, and the one that ended the search</td></tr>
+                <tr><td class="loses">Sundman, 1912</td><td>a convergent series solution does exist (non-zero angular momentum, no triple collision) — and converges so slowly it is useless for computation or for understanding</td></tr>
+              </tbody>
+            </table>
+            <p>So astronomers integrate these systems numerically: step the whole configuration forward a little, recompute every force, step again. <strong>There is no shortcut, and there is no way to do one body at a time.</strong></p>
+            <div class="pull-quote">You cannot solve for one body's path on its own and add the others afterward. The paths exist only as a solution to the whole system, together, at once.<span class="attr">the sentence the zine turns on</span></div>
+            <p>The same work is where <span class="cyan">chaos</span> was found. Poincaré discovered that arbitrarily small differences in the starting conditions can lead to completely different outcomes later — and the crucial part, the part the popular word destroys: <strong>nothing is random.</strong> Every rule is exact and fully known. The system is deterministic and still unpredictable far out. Those are compatible, and holding them together is the whole idea.</p>
+            <div class="note"><strong>What this does not say.</strong> It does not say the bodies stop being distinct — each keeps its own mass and its own light. It says their <em>trajectories</em> are not separable. That is a claim about dynamics and prediction, not about what a thing fundamentally is; the ontological version belongs to <a href="only-in-relation-zine.html">No. 29</a> and is not being re-argued here.</div>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 176" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig5-title fig5-desc">
+              <title id="fig5-title">Two bodies solve; three do not</title>
+              <desc id="fig5-desc">On the left, two bodies on a single clean closed ellipse marked solvable exactly. On the right, three bodies whose two nearly identical starting paths diverge widely, marked step by step, no formula.</desc>
+              <text x="70" y="18" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" fill="var(--sp-secondary)">two bodies</text>
+              <ellipse cx="70" cy="62" rx="46" ry="28" fill="none" stroke="rgba(34,211,238,0.8)" stroke-width="1.4"/>
+              <circle cx="70" cy="62" r="5" fill="rgba(244,244,251,0.9)"/>
+              <circle cx="116" cy="62" r="3.5" fill="rgba(34,211,238,0.95)"/>
+              <text x="70" y="108" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.3" fill="#67e8f9">one closed curve</text>
+              <text x="70" y="118" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.3" fill="#67e8f9">solved exactly</text>
+              <path d="M150 22 V126" stroke="rgba(34,211,238,0.25)" stroke-width="0.9" stroke-dasharray="4 4"/>
+              <text x="228" y="18" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" fill="var(--sp-secondary)">three bodies</text>
+              <g fill="none" stroke-width="1.3" stroke-linecap="round">
+                <path d="M172 62 C190 34 216 88 238 50 C252 26 268 58 282 40" stroke="rgba(251,191,36,0.85)"/>
+                <path d="M172 64 C190 38 214 78 232 78 C250 78 260 100 278 96" stroke="rgba(244,114,182,0.8)" stroke-dasharray="3 3"/>
+              </g>
+              <circle cx="172" cy="63" r="3" fill="rgba(244,244,251,0.9)"/>
+              <text x="228" y="118" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.3" fill="var(--gold)">two near-identical starts</text>
+              <text x="228" y="128" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.3" fill="var(--gold)">step by step, no formula</text>
+              <text x="150" y="150" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.5" letter-spacing="0.8" fill="var(--sp-secondary)">exact rules · unpredictable far out</text>
+              <text x="150" y="164" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="1" fill="var(--sp-dim)">deterministic, not random</text>
+              <text x="150" y="174" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" letter-spacing="1.2" fill="var(--sp-dim)">Bruns 1887 · Poincaré 1890 · Sundman 1912</text>
+            </svg>
+            <div class="diagram-caption">Figure 5 · the shortcut that was proved absent</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Companion Stars · Stimpunks</span>
+        <span class="spread-footer-right">6</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 7: two names this community already has ════ -->
+  <div class="spread" id="spread-7">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The Chaotic Self &amp; the Autistic Rhizome</div>
+          <h2 class="spread-heading" id="two-names-we-already-have">Two names we already have</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">This community named both halves of that spread before we went near the astronomy, and the naming is David Gray-Hammond's.</p>
+            <p>Writing with Katie Munday, he describes the <span class="cyan">Chaotic Self</span> as <em>&ldquo;our sense of Self being a fluid and moving entity, constantly changing and reshaping as we receive new information and interact with the environment&rdquo;</em> — and, on why the change does not run backwards: <em>&ldquo;You can't unqueer a queer mind.&rdquo;</em></p>
+            <p>That is a claim from lived experience, not from physics, and it should stay that way. But it names the same shape the theorems name: a self that is rule-governed and still not walked back, still not predicted far out.</p>
+            <p>His <span class="cyan">Autistic Rhizome</span> is the community version — <em>&ldquo;communities that exist of networks with no single point of origin. They are interlinked but not dependent on one another for their existence&rdquo;</em> — and the two ideas meet exactly where this zine does: as one of us changes, <em>&ldquo;the relational change with our immediate environment transfers the process onwards to the rest of our community in somewhat of an unpredictable manner.&rdquo;</em></p>
+            <p>Helen's galaxy holds the matching constellations, the ninth and the sixth:</p>
+            <div class="callout">Rhizome Array is the Autistic community itself — non-hierarchical, constantly connecting with other people and forming new communities and nodes. Creating something together that none of us could make alone.<span class="attr">Helen Edgar · My Monotropic Galaxy · constellation #9</span></div>
+            <div class="callout">Mycelial Stars represent the underground networks of connection that sustain the neurodivergent community of Autistic researchers, advocates, writers, families, and educators. It is our community network of care and interdependence, all growing toward each other in ways that don't follow a straight line or a hierarchy. The foundation of mutual aid, care and well-being.<span class="attr">Helen Edgar · My Monotropic Galaxy · constellation #6</span></div>
+            <p><strong>Now the honest part, which we are not smoothing.</strong> A rhizome and a bound system are describing different things, and both are true:</p>
+            <table class="trades">
+              <caption>two true statements that do not cancel</caption>
+              <thead><tr><th>the rhizome says</th><th>the three-body physics says</th></tr></thead>
+              <tbody>
+                <tr><td>no node's existence depends on another, so cutting one tie does not collapse the network</td><td>while bodies <em>are</em> bound, their paths cannot be worked out apart from each other</td></tr>
+                <tr><td class="keeps">resilience</td><td class="loses">non-separability</td></tr>
+              </tbody>
+            </table>
+            <p>A network can be resilient in exactly Gray-Hammond's sense and any cluster inside it can still be behaving exactly as spread six describes, at the same moment. <span class="gold">Neither claim needs the other to be weakened.</span></p>
+            <div class="note"><strong>A rhyme, not a proof.</strong> Chaos in dynamics and chaos in identity are not the same claim, and this zine does not argue that one demonstrates the other. Gravity does not know anything about us. What is being offered is a shape that shows up in both places, and a vocabulary this community built for itself first.</div>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 172" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig6-title fig6-desc">
+              <title id="fig6-title">Resilience and non-separability, side by side</title>
+              <desc id="fig6-desc">On the left, a rhizome of linked nodes with one tie cut and the network intact. On the right, three bound bodies with mutual arrows, labelled as paths that cannot be worked out apart.</desc>
+              <text x="70" y="18" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" fill="var(--sp-secondary)">the rhizome</text>
+              <g stroke="rgba(34,211,238,0.55)" stroke-width="1">
+                <line x1="30" y1="42" x2="66" y2="34"/><line x1="66" y1="34" x2="104" y2="52"/>
+                <line x1="30" y1="42" x2="46" y2="76"/><line x1="46" y1="76" x2="88" y2="86"/>
+                <line x1="88" y1="86" x2="104" y2="52"/><line x1="66" y1="34" x2="46" y2="76"/>
+              </g>
+              <g stroke="rgba(244,114,182,0.75)" stroke-width="1" stroke-dasharray="3 3">
+                <line x1="88" y1="86" x2="112" y2="100"/>
+              </g>
+              <g stroke="rgba(244,114,182,0.9)" stroke-width="1.3" stroke-linecap="round">
+                <path d="M96 90 L106 100"/><path d="M106 90 L96 100"/>
+              </g>
+              <g fill="rgba(34,211,238,0.9)">
+                <circle cx="30" cy="42" r="4"/><circle cx="66" cy="34" r="4"/><circle cx="104" cy="52" r="4"/>
+                <circle cx="46" cy="76" r="4"/><circle cx="88" cy="86" r="4"/>
+              </g>
+              <text x="60" y="126" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.3" fill="#67e8f9">cut one tie —</text>
+              <text x="60" y="136" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.3" fill="#67e8f9">the network holds</text>
+              <path d="M150 22 V140" stroke="rgba(34,211,238,0.25)" stroke-width="0.9" stroke-dasharray="4 4"/>
+              <text x="228" y="18" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" fill="var(--sp-secondary)">the bound three</text>
+              <g stroke="rgba(251,191,36,0.7)" stroke-width="1" fill="none">
+                <path d="M204 42 L252 42"/><path d="M204 42 L228 84"/><path d="M252 42 L228 84"/>
+              </g>
+              <g fill="rgba(251,191,36,0.95)">
+                <circle cx="204" cy="42" r="5"/><circle cx="252" cy="42" r="5"/><circle cx="228" cy="84" r="5"/>
+              </g>
+              <text x="228" y="126" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.3" fill="var(--gold)">no one path</text>
+              <text x="228" y="136" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.3" fill="var(--gold)">solvable apart</text>
+              <text x="150" y="158" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.5" letter-spacing="0.8" fill="var(--sp-secondary)">resilience · and non-separability</text>
+              <text x="150" y="170" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="1" fill="var(--sp-dim)">both true at once</text>
+            </svg>
+            <div class="diagram-caption">Figure 6 · two claims, neither cancelling</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Companion Stars · Stimpunks</span>
+        <span class="spread-footer-right">7</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 8: the close + refusals ════ -->
+  <div class="spread" id="spread-8">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">What the binding is made of</div>
+          <h2 class="spread-heading" id="nothing-but-mutual-gravity">Nothing but mutual gravity</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Strip a bound system down to what actually holds it, and there is one item on the list.</p>
+            <p>No agreement. No shared origin — many wide pairs formed apart and were captured, or drifted from a cluster that has long since dissolved. No requirement of similarity: Sirius A is a bright main-sequence star and Sirius B is the burnt core of one that died first. No maintenance, no renegotiation, no performance. <span class="cyan">Mutual gravity, and that is the whole of it.</span></p>
+            <p>And it does not fall off with familiarity. It falls off with distance, and even at a parsec it is still there, still doing the one thing it does.</p>
+            <div class="pull-quote cyan">The binding asks nothing of either star except that it have mass. There is no version of a companion star that has to earn it.<span class="attr">what gravity does not ask for</span></div>
+            <p>That is the claim, kept small enough to be true. Not that you will be found — <a href="#most-stars-are-single">spread three</a> forbids it. Not that closeness is safe — <a href="#close-enough-and-you-deform">spread five</a> forbids that too. Only this: <strong>where the binding exists, it is made of nothing that can be revoked for underperformance</strong>, and where three or more of us are in it, no one of our paths was ever the kind of thing you could work out alone.</p>
+            <div class="refusals">
+              <div class="refusal"><span class="refusal-tag">Not:</span><span><strong>a promise that everyone has their people.</strong> Two-thirds of stellar systems are single. We opened with that on purpose, and we are not walking it back at the end.</span></div>
+              <div class="refusal"><span class="refusal-tag">Not:</span><span><strong>a claim that closeness is automatically good.</strong> Close companions deform each other into ellipsoids and teardrops and finally take each other's material. Distance is what lets both keep their shape.</span></div>
+              <div class="refusal"><span class="refusal-tag">Not:</span><span><strong>a claim that being single is a lesser state.</strong> It is the majority state, and a single star is a complete description of a star. Nothing here reads solitude as a shortfall.</span></div>
+              <div class="refusal"><span class="refusal-tag">Not:</span><span><strong>the individual dissolving into the group.</strong> Every star in a bound system keeps its own mass and its own light. What is inseparable is the paths, not the bodies.</span></div>
+              <div class="refusal"><span class="refusal-tag">Not:</span><span><strong>chaos theory proving anything about the Chaotic Self.</strong> Chaos in dynamics and chaos in identity are different claims. They rhyme; a rhyme is not a proof.</span></div>
+              <div class="refusal"><span class="refusal-tag">Not:</span><span><strong>&ldquo;unpredictable&rdquo; meaning random.</strong> Every rule in a three-body system is exact and known. Determinism and unpredictability sit together, and flattening that is how the word gets misused against us.</span></div>
+              <div class="refusal"><span class="refusal-tag">Not:</span><span><strong>an obligation.</strong> The physics describes what mutual dependence looks like where it exists. It does not say anybody owes it to you, or you to them.</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 158" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig7-title fig7-desc">
+              <title id="fig7-title">What holds a bound system</title>
+              <desc id="fig7-desc">A short list of things gravity does not require — agreement, similarity, shared origin, upkeep, performance — all crossed out, beside a single remaining item: mass.</desc>
+              <g font-family="Space Mono, monospace" font-size="6.5" fill="var(--sp-dim)">
+                <text x="16" y="26">agreement</text>
+                <text x="16" y="44">similarity</text>
+                <text x="16" y="62">shared origin</text>
+                <text x="16" y="80">upkeep</text>
+                <text x="16" y="98">performance</text>
+              </g>
+              <!-- Strike lengths are sized to each word: Space Mono advances ~0.6em, so at 6.5px
+                   a character is ~3.9px. Text starts at x=16; each rule runs 13 → 16 + 3.9n + 3.
+                   A strike that overshoots its word reads as a rule, not a deletion. -->
+              <g stroke="rgba(244,114,182,0.75)" stroke-width="1.1" stroke-linecap="round">
+                <path d="M13 23.8 H54"/><path d="M13 41.8 H58"/><path d="M13 59.8 H70"/><path d="M13 77.8 H42"/><path d="M13 95.8 H62"/>
+              </g>
+              <path d="M136 20 V104" stroke="rgba(34,211,238,0.3)" stroke-width="0.9" stroke-dasharray="4 4"/>
+              <circle cx="212" cy="58" r="18" fill="rgba(34,211,238,0.22)" stroke="rgba(34,211,238,0.8)" stroke-width="1.3"/>
+              <text x="212" y="61" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.5" fill="#67e8f9">mass</text>
+              <text x="212" y="92" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.3" fill="var(--sp-secondary)">the entire requirement</text>
+              <text x="150" y="128" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.5" letter-spacing="0.8" fill="var(--sp-secondary)">nothing here can be revoked</text>
+              <text x="150" y="142" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="1" fill="var(--sp-dim)">for underperformance</text>
+            </svg>
+            <div class="diagram-caption">Figure 7 · the list is one item long</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Companion Stars · Stimpunks</span>
+        <span class="spread-footer-right">8</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 9: COLOPHON ════ -->
+  <div class="spread" id="spread-9">
+    <div class="interior">
+      <div class="colophon">
+        <div>
+          <div class="colophon-top">
+            <span class="colophon-ls">L★S</span>
+            <p class="colophon-phrase">No one's path was ever the kind of thing you could solve alone.</p>
+          </div>
+
+          <div class="series-list">
+            <div class="series-item"><span class="series-num">No. 24</span> Shared Air — one continuous field, no edge between us</div>
+            <div class="series-item"><span class="series-num">No. 26</span> A Mycelium and a Rhizome — no trunk, no centre, many doors</div>
+            <div class="series-item"><span class="series-num">No. 29</span> Only in Relation — what a thing is, it is in relation</div>
+            <div class="series-item"><span class="series-num">No. 45</span> The Cloud Phase — the in-between is the majority state</div>
+            <div class="series-item current"><span class="series-num">No. 46</span> Companion Stars — no path can be solved alone ← you are here</div>
+          </div>
+
+          <div class="reflect">
+            <div class="reflect-label">Reflection</div>
+            <p class="reflect-q">Where is your path actually being worked out together with other people, rather than decided alone and compared afterward?</p>
+            <p class="reflect-q">Which of your bonds is at the separation that lets you keep your shape — and is there one that is closer than it should be?</p>
+            <p class="reflect-q">Where has a change in you carried onward to people you're connected to in a way neither of you could have predicted?</p>
+            <p class="reflect-q">Who is doing more of the moving in a relation you both call equal, and what would it take to say so out loud?</p>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="colophon-h" id="sources">Sources</h3>
+          <div class="colophon-body">
+            <p><strong>Most stars are single.</strong> Charles J. Lada, &ldquo;Stellar Multiplicity and the Initial Mass Function: Most Stars Are Single,&rdquo; <em>ApJ</em> 640, L63 (2006) — two-thirds of main-sequence stellar systems in the Galactic disk are single, because the mass function peaks among M dwarfs and multiplicity climbs with primary mass. Deepak Raghavan et&nbsp;al., &ldquo;A Survey of Stellar Families: Multiplicity of Solar-Type Stars,&rdquo; <em>ApJS</em> 190, 1 (2010) — 44 ± 2% of 454 F6–K3 primaries are in multiple systems. Gaspard Duchêne &amp; Adam Kraus, &ldquo;Stellar Multiplicity,&rdquo; <em>Annual Review of Astronomy and Astrophysics</em> 51, 269 (2013) — the review: ~26% for M dwarfs, 40–50% for A–K, near-total at the top of the mass range, with multiplicity a steep function of primary mass. <strong>This correction is the reason the zine opens where it does</strong>, and it applies to our own back catalogue too — see the note below.</p>
+            <p><strong>Sirius.</strong> Howard E. Bond, Gail H. Schaefer, Ronald L. Gilliland et&nbsp;al., &ldquo;The Sirius System and Its Astrophysical Puzzles: Hubble Space Telescope and Ground-based Astrometry,&rdquo; <em>ApJ</em> 840, 70 (2017) — two decades of HST imaging plus photographic and historical measurements back to the nineteenth century; orbital period 50.13 yr; dynamical masses 2.063 ± 0.023 and 1.018 ± 0.011 M<sub>☉</sub>. The ratio of the two ellipse sizes follows from those masses and is ours, not a quoted figure.</p>
+            <p><strong>Tidal distortion and wide pairs.</strong> Ellipsoidal variability, Roche-lobe geometry, teardrop and contact configurations, and mass transfer in close binaries are standard close-binary astrophysics, given here from review literature rather than from a primary source we have read; the shapes in Figure 4 are labelled schematic. The wide end is Kareem El-Badry, Hans-Walter Rix &amp; Tyler Heintz, &ldquo;A million binaries from <em>Gaia</em> eDR3,&rdquo; <em>MNRAS</em> 506, 2269 (2021) — 1.3 million high-confidence pairs within 1 kpc, projected separations from a few au to 1 pc, with orbital periods reaching ~10<sup>8</sup> yr. &ldquo;Longer than the entire history of flowering plants&rdquo; compares that period against the ~130 Myr angiosperm fossil record and is our comparison, not theirs.</p>
+            <p><strong>The three-body problem.</strong> Heinrich Bruns (1887) showed the equations admit no first integrals beyond the classical ten that are algebraic in the coordinates and their derivatives; Henri Poincaré (<em>Acta Mathematica</em> 13, 1890) extended this to integrals expressible as single-valued analytic functions, and the same work is where sensitive dependence on initial conditions — later called chaos — was first identified. Karl F. Sundman (<em>Acta Mathematica</em> 36, 1912) gave a convergent series solution, valid for non-zero angular momentum and thus excluding triple collision, whose convergence is far too slow to be usable for computation or qualitative analysis. <strong>Primary sources are in German and French and we have not read them</strong>; the statements above are taken from standard mathematical reference works and are phrased to match what those works say was proved, which is narrower than &ldquo;the three-body problem has no solution.&rdquo;</p>
+            <h3 class="colophon-h" id="after-helen-edgar-and-david-gray-hammond">After Helen Edgar &amp; David Gray-Hammond</h3>
+            <p>This is a house zine written <strong>after</strong> two people, in the shape of <a href="only-in-relation-zine.html">No. 29</a> and <a href="the-cloud-phase-zine.html">No. 45</a> — theirs is the frame and the naming; the astronomy and the argument are ours, and any error in them is ours too.</p>
+            <p><strong>Helen Edgar</strong>, <a href="https://morerealms.com/my-monotropic-galaxy-a-constellation-of-my-autistic-self/"><em>My Monotropic Galaxy: A Constellation of My Autistic Self</em></a> (More Realms, June 2026), where <strong>Companion Stars</strong> is the thirteenth of twenty constellations, <strong>Rhizome Array</strong> the ninth and <strong>Mycelial Stars</strong> the sixth — all quoted verbatim, all hers. Her galaxy also holds <em>Gravity Well</em> and <em>Dark Matter Field</em>, which this zine deliberately leaves alone rather than spending two of her namings in one piece.</p>
+            <p><strong>David Gray-Hammond</strong>, whose coinages carry spread seven and are used here with his agreement. The <strong>Chaotic Self</strong> and <strong>neuro-anarchy</strong>: Katie Munday &amp; David Gray-Hammond, <a href="https://neurohubcommunity.org/2023/04/04/neuroqueer-neuro-anarchy-and-the-chaotic-self/"><em>Neuroqueer: Neuro-anarchy and the Chaotic Self</em></a> (NeuroHub Community, 4 April 2023) — <em>neuro-anarchy</em> is Munday and Gray-Hammond's jointly, and both quotations on spread seven are from this piece. The <strong>Autistic Rhizome</strong>: David Gray-Hammond, <a href="https://neurohubcommunity.org/2023/04/30/reclaiming-neurofuturism-rhizomatic-communities-and-the-chaotic-self/"><em>Reclaiming Neurofuturism: Rhizomatic Communities and the Chaotic Self</em></a> (NeuroHub Community, 30 April 2023), building on Deleuze &amp; Guattari's rhizome (<em>A Thousand Plateaus</em>, 1980) as <a href="mycelium-and-rhizome-zine.html">No. 26</a> already does. Helen Edgar's own writing on the Autistic Rhizome and its watering holes runs alongside his.</p>
+            <h3 class="colophon-h" id="what-this-does-not-re-argue">What this deliberately does not re-argue</h3>
+            <p><a href="only-in-relation-zine.html">No. 29 <em>Only in Relation</em></a> owns Karen Barad's <em>intra-action</em> and <em>intradependence</em> — relation before relata, an ontological claim. This zine's territory is narrower and different: <strong>separability</strong>, which is about whether a trajectory can be computed alone, not about what a thing fundamentally is. Spread six says so in place rather than letting the two blur. <a href="mycelium-and-rhizome-zine.html">No. 26</a> owns the rhizome and neuro-anarchy as its subject; here the rhizome appears only where it meets the physics. <a href="ways-of-being-a-star-field-guide.html">Field Guide No. 5</a> holds <em>Never Alone</em>, whose overstated claim this zine's spread three corrects — see the <a href="changelog.html">changelog</a>.</p>
+            <p><strong>A rhyme, not a proof.</strong> The mathematics of gravitating bodies is exact and knows nothing about us. Where this zine puts a physical fact beside a lived one, it is noticing a shape that appears in both, and saying so — never claiming that the first demonstrates the second.</p>
+          </div>
+          <div class="colophon-footer">
+            <a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks Foundation</a> × <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a><br>
+            stimpunks.org · morerealms.com · starstuff.earth<br>
+            <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> · open edition · print freely
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Companion Stars · Stimpunks</span>
+        <span class="spread-footer-right">9</span>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /zine-shell -->
+
+<script>
+  let current = 1;
+  const total = 9;
+
+  function changePage(dir) {
+    const next = current + dir;
+    if (next < 1 || next > total) return;
+    document.getElementById('spread-' + current).classList.remove('active');
+    current = next;
+    document.getElementById('spread-' + current).classList.add('active');
+    document.getElementById('page-counter').textContent = current + ' / ' + total;
+    document.getElementById('prev-btn').disabled = current === 1;
+    document.getElementById('next-btn').disabled = current === total;
+    document.getElementById('prev-btn').classList.toggle('active', current > 1);
+    document.getElementById('next-btn').classList.toggle('active', current < total);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') changePage(1);
+    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   changePage(-1);
+  });
+
+  document.getElementById('prev-btn').disabled = true;
+  document.getElementById('next-btn').classList.add('active');
+</script>
+<script src="starstuff.js" defer></script>
+</body>
+</html>
