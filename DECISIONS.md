@@ -166,6 +166,26 @@ Decisions still to make. Move to **Settled** with a date once resolved.
 
 ## Settled
 
+- **Credit Ze Frank's *True Facts* as an influence, as No. 47 in *Easter Eggs* — settled
+  2026-08-14, by Ryan.** The *Kin* collection and the animal field guides came out of watching the
+  series with a young person in our community; his name was nowhere in the repo. Four calls, all
+  Ryan's: numbered zine rather than an unnumbered credit page (same standing as anything else,
+  because the debt is real); **Easter Eggs rather than the front page**, because the register
+  genuinely does not port and a credit that dodges that is worth less than none; the **anonymous
+  form kept** for his son, matching what Nos. 32 and 34 and FG 9 already say and keeping a named
+  minor off a public page; and **no outreach** — it credits published work and quotes published
+  interviews, so it is ordinary credit, not collaboration, and the page says three times that Ze
+  Frank has no involvement and was not asked.
+  - **Two source corrections before the build.** The quote came to us via Nettleton's personal site,
+    which is a **reprint** — the primary is *U.S. Catholic* 86:7 (July 2021), and that is what we
+    cite. And **"a kind of Mister Rogers of the internet for grown-ups" is Nettleton's line, not
+    Frank's**, so it is credited to her as description rather than allowed to read as
+    self-description. Both are the standing rule working: aggregators and reprints are leads.
+  - **The floor reached two members the same day, and that vindicates nothing.** The point of the
+    two-member floor is that a collection page has to be *earned* rather than guessed at; getting
+    the guess right is luck, not method. The collection page says so in those words rather than
+    quietly treating the second egg as retrospective justification.
+
 - **Fill the No. 37 gap with an easter egg, and open an *Easter Eggs* collection to hold it —
   settled 2026-08-14, by Ryan.** Three decisions in one, and each bends a rule that was argued for,
   so all three are recorded rather than left to look like drift.

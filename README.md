@@ -84,7 +84,7 @@ No. 45, leaving a gap; `out-of-order-zine.html` went back and occupied it, so it
 number here that is **not** a date — it is younger than No. 46. It marks itself `leap` for that,
 and every other gap in the sequence stays empty.
 
-Counts here are measured, not remembered. At the time of writing that is **97 HTML pages** — 82
+Counts here are measured, not remembered. At the time of writing that is **98 HTML pages** — 83
 collection members, the 13 collection pages, plus `index.html` and `search.html`, which belong to
 no collection. Re-derive rather than trust it:
 
@@ -119,7 +119,7 @@ are the site's own furniture.
 | `collection-start-here.html` | **Start Here** | *Unsorted* — the ways in. Three doors in and one door out. |
 | `collection-foundations.html` | **Foundations** | *Unsorted* — what the rest of the site presupposes rather than argues. |
 | `collection-notes.html` | **Notes & Rationale** | *Unsorted* — the working papers. Outside the reading chain, because all four of its members are. |
-| `collection-easter-eggs.html` | **Easter Eggs** | *Unsorted* — real pieces kept off the front page, reachable by a small door or by search. The only collection with **no section on the index**, and the only one created below the two-member floor; it explains both on its own face. |
+| `collection-easter-eggs.html` | **Easter Eggs** | *Unsorted* — real pieces kept off the front page, reachable by two small footer doors or by search. The only collection with **no section on the index**, and the only one created below the two-member floor; it explains both on its own face. |
 
 ### Start here
 
@@ -192,6 +192,8 @@ their face rather than leaving it to look like an oversight.
 | `cannot-flatten-a-sphere-zine.html` | **You Cannot Flatten a Sphere** *(Zine No. 44)* | Gauss's *Theorema Egregium* (1827): curvature is intrinsic, so no flat map of a curved thing can preserve everything and every projection must sacrifice something — and never says what it chose. An IQ score or a support level is literally a projection, and worse than a Mercator, which keeps every place badly, because a single number deletes the other dimensions instead. If you must summarise, publish the indicatrix. |
 | `the-cloud-phase-zine.html` | **The Cloud Phase** *(Zine No. 45)* | The story of a dead star usually ends one step past the explosion, but the physics runs further — to a *cloud phase*, the remnant falling back into itself and settling as an enriched cloud (held as proposed, flagged in place). The firmer claim is the measurement: star formation efficiency averages 0.08 in the Galaxy's brightest complexes, so the in-between is the majority state, not the wait between the real ones. Written after Helen Edgar. |
 | `companion-stars-zine.html` | **Companion Stars** *(Zine No. 46)* | Astronomy's own working word for the people who orbit close — with a correction first, because *most stars are in binaries* is not so: most stars are single (Lada, 2006). So this one won't tell you everybody has their people; it says that where the binding is real, here is exactly what it is — a barycentre lying in neither star, wide pairs where both keep their shape, and mutual gravity as the only requirement, which means no companion star has to earn it. |
+
+| `true-facts-zine.html` | **True Facts About True Facts** *(Zine No. 47 · easter egg)* | A credit the animal zines never paid. Nos. 32 and 34, Field Guide No. 9 and the wider *Kin* collection came out of watching Ze Frank's *True Facts* with a young person in our community whose special interest is sharks — and his name appeared nowhere in this repository until now, because the citation habit points at claims rather than causes. What we took is narrower than "it makes science fun": the comedy lands on the narrator, on human expectation, on language, never on the organism for being defective. *Ridiculous is not deficient.* Plus the series' unusual arc toward better sourcing, and the origin story nobody checked — three incompatible published versions, resolved as far as upload dates allow and marked contested where it isn't. He has no involvement and we did not ask. |
 
 ### Field guides
 

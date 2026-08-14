@@ -99,7 +99,7 @@ The central phrase compresses through registers, each with a use:
   <a class="ss-nav-collection" href="collection-kin.html"><span class="ss-nav-collection-label">Collection</span> <span class="ss-nav-collection-name">Kin</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
   ```
 
-  All 82 members have one; the 13 collection pages, `index.html` and `search.html` do not. **A new
+  All 83 members have one; the 13 collection pages, `index.html` and `search.html` do not. **A new
   piece needs its badge and its collection page's card in the same pass** — the page→collection map
   is derived from `<a class="card" href="…">` on the collection pages, so a card that is missing
   makes the badge underivable. **`tools/check-markup.mjs` enforces all of this as of 2026-08-13**
@@ -265,8 +265,9 @@ never candidates for a register. Don't try to fold these into either table:
   `collection-start-here.html` → `shorthand-evolution.html`. Outside the chain by decision:
   `about.html` and `cosmic-connections.html`; **all of Notes &amp; Rationale** — `changelog.html`,
   `design.html`, `print-design.html`, `difference-first-frame.html` and `collection-notes.html`;
-  and **all of Easter Eggs** — `collection-easter-eggs.html` and `out-of-order-zine.html`, because a
-  chain link would walk a reader into an egg by accident and stop it being one.
+  and **all of Easter Eggs** — `collection-easter-eggs.html`, `out-of-order-zine.html` and
+  `true-facts-zine.html`, because a chain link would walk a reader into an egg by accident and stop
+  it being one.
   (`index.html` and `search.html` are utility pages and were never in it.)
   **Don't trust that number — measure it**, and check `prev` and `next` agree in both directions;
   inserting a page means editing its two neighbours, and a one-sided edit leaves a chain that walks
