@@ -46,7 +46,12 @@ const NODES = [
   { s: 15, y: '2009',  rail: 'inst',  joint: 'documented', t: 'whose call it was' },
   { s: 16, y: 'now',   rail: 'inst',  joint: 'documented', t: 'obstruction as payload' },
   { s: 17, y: '',      rail: 'turn',  joint: 'leap',       t: 'do not wait for the alignment' },
+  { s: 19, y: '1972',  rail: 'turn',  joint: 'documented', t: 'somebody poured it themselves' },
 ];
+
+// Spreads that display an existing node rather than introducing one: the payoff spread
+// elaborates the leap, and the guardrail comments on the last node. Keyed spread -> node's `s`.
+const REUSE = { 18: 17, 20: 19 };
 
 const X0 = 64, X1 = 578, W = 620, H = 84;
 const RAIL = { light: 26, inst: 58, turn: 8 };
@@ -73,7 +78,8 @@ function edges(upto) {
 }
 
 function spine(live) {
-  const i = NODES.findIndex(n => n.s === live);
+  const key = REUSE[live] ?? live;
+  const i = NODES.findIndex(n => n.s === key);
   const n = NODES[i];
   const dots = NODES.map((m, j) => {
     if (j === i) return '';
@@ -96,12 +102,24 @@ function spine(live) {
   ].join('');
 }
 
-const file = process.argv[2];
+const args = process.argv.slice(2);
+const rebuild = args.includes('--rebuild');
+const file = args.find(a => !a.startsWith('--'));
 let html = fs.readFileSync(file, 'utf8');
 let count = 0;
-html = html.replace(/<!--SPINE:(\d+)-->/g, (_, s) => { count++; return spine(+s); });
+
+if (rebuild) {
+  // Re-emit every spine in place. The spread number is read from the .spread-footer-right that
+  // follows the spine block, so the mapping cannot drift out of step with the page.
+  html = html.replace(
+    /(<div class="spine">)[\s\S]*?(<\/div>\s*<div class="spread-footer">[\s\S]*?<span class="spread-footer-right">(\d+)<)/g,
+    (_, open, rest, n) => { count++; return open + spine(+n) + rest; });
+} else {
+  html = html.replace(/<!--SPINE:(\d+)-->/g, (_, s2) => { count++; return spine(+s2); });
+}
+
 fs.writeFileSync(file, html);
-console.log(`injected ${count} spine(s) · ${NODES.length} nodes · ` +
+console.log(`${rebuild ? 'rebuilt' : 'injected'} ${count} spine(s) · ${NODES.length} nodes · ` +
   `${NODES.filter(n => n.joint === 'documented').length} documented, ` +
   `${NODES.filter(n => n.joint === 'contested').length} contested, ` +
   `${NODES.filter(n => n.joint === 'leap').length} leap`);
