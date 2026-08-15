@@ -761,6 +761,32 @@ feed their own offspring through them. It rhymes beautifully with mutual aid, wh
 it slipped past us in three pieces. When writing *Underground* (5), *A Mycelium and a Rhizome* (26),
 or *Symbioses* (FG 6): keep the kinship, name the contested part, don't assert the wiring.
 
+### The "masthead" trap (this project's signature phrase is LYDTYSS)
+
+**The site's signature phrase is *Love You Down To Your Star Stuff*** — 35 pages carry it, in the
+five registers tabulated above. **The masthead tagline on `index.html` is *Cosmic Connections*.**
+Neither of those is "You are made of star stuff. The universe loves you for it."
+
+That sentence appears on the live site **once**: in the colophon of `bone-song-zine.html`, Zine
+No. 1 — and there it is immediately followed by **"So do we."**, which repairs it. On 2026-08-14
+No. 49 quoted it, called it *"our masthead"*, **dropped the three-word repair**, and built a
+closing argument against the remainder. Ryan caught it the next day. Both halves were wrong: it is
+a colophon on one zine, and the sentence had already corrected itself.
+
+- **Why it matters, not just that it is inaccurate.** *The universe loves you for it* commits the
+  naturalistic fallacy in its grammar — the universe is the subject doing the loving, and *for it*
+  makes the star stuff the **reason**. **LYDTYSS has neither defect:** the implied subject is *we*,
+  and *down to* measures how far the loving **reaches** rather than why it is given. The star stuff
+  is the **extent** of the claim, not its warrant. *Down to is not because of.*
+- **This file is how the error happened.** The sentence was a sign-off here and in `README.md`,
+  and it got absorbed as house voice and promoted to site-wide doctrine without anyone checking a
+  single page. Both sign-offs are now LYDTYSS. **Don't restore the old one** — and treat anything
+  in these working notes as a lead about the site rather than a fact about it, the same way
+  aggregators are treated for quotations.
+- **`bone-song-zine.html` is deliberately unchanged.** It repairs itself in the next breath, the
+  essay quotes it in full as the sentence that got it wrong, and deleting the evidence would be the
+  opposite of what `changelog.html` is for. Full argument: `a-promise-not-a-finding.html`.
+
 ## Fact-checking & attribution
 
 Every piece makes factual claims — scientific findings and attributed quotes/ideas. Getting
@@ -820,4 +846,4 @@ Open edition — print free, share freely. If making reuse terms explicit, a Cre
 (e.g. CC BY-NC-SA) fits the intent; there is no `LICENSE` file yet.
 
 ---
-*You are made of star stuff. The universe loves you for it. So do we.* **L★S**
+*Love you down to your star stuff.* **L★S**
