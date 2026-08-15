@@ -172,7 +172,7 @@ that disclosure is the convention, and **How We Got Here duly carries it too**:
 |------------|------|---------|
 | **Field Guides** | **form** — a catalogue of same-shaped entries, none ranked | Field Guides 1–12 (134 entries; 139 cards counting the five *turtles people made*, which FG 10 deliberately does not file as entries) |
 | **How We Got Here** | **form** — a Burke chain, one link per spread, joints marked | 38, 39, 40, 41, 42, 43, 50 |
-| **Print** | **medium** — paper | 8 broadsides + 2 that are not broadsides (a typographic specimen, and a blank sheet) |
+| **Print** | **medium** — paper | 9 broadsides + 2 that are not broadsides (a typographic specimen, and a blank sheet) |
 | **Sound** | **medium** — audio | 4 racks, 121 cards / 117 distinct songs |
 
 - **Why the chains exist — reclaim science from the things that wear its clothes.** Ryan's framing,
@@ -261,7 +261,7 @@ never candidates for a register. Don't try to fold these into either table:
   everything else homework, and would become the one place the verify-everything standard could
   quietly relax. The fun is distributed; *Stars We Grew Up On* states this on the page.
 - The **prev/next chain follows collection order**: each collection page precedes its members, and
-  members run in ascending number within the collection. **89 pages** as of 2026-08-15,
+  members run in ascending number within the collection. **94 pages** as of 2026-08-15,
   `collection-start-here.html` → `shorthand-evolution.html`. Outside the chain by decision:
   `about.html` and `cosmic-connections.html`; **all of Notes &amp; Rationale** — `changelog.html`,
   `design.html`, `print-design.html`, `difference-first-frame.html` and `collection-notes.html`;

@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#0a0a14">
+<link rel="canonical" href="https://starstuff.earth/not-a-line-broadside.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta name="description" content="Not a Line — a functioning-labels field card, two-sided on a single sheet. The spiky profile drawn, and five phrases with what each one actually does, on the face. What to say instead, the spectroscopy fact, and the constellation of intensities on the reverse. Refusing the severity line is not refusing that some of us need far more support: no rank, and all the care. Designed for paper — A4 or US Letter. Compresses Zine No. 21, after Patrick Dwyer and Helen Edgar.">
+<!-- Open Graph / link unfurl -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Star Stuff · Stimpunks Foundation × More Realms">
+<meta property="og:url" content="https://starstuff.earth/not-a-line-broadside.html">
+<meta property="og:title" content="Not a Line — Broadside">
+<meta property="og:description" content="The sheet you hand across the table when someone is about to say &quot;mild,&quot; &quot;high-functioning,&quot; or &quot;low support needs.&quot; The spiky profile drawn and five phrases with what they do; what to say instead on the reverse. Prints on A4 or Letter.">
+<meta property="og:image" content="https://starstuff.earth/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A rainbow-hued cosmic image — we are all made of star stuff.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Not a Line — Broadside">
+<meta name="twitter:description" content="A functioning-labels field card. What &quot;mild,&quot; &quot;high-functioning&quot; and &quot;low support needs&quot; actually do — and what to say instead. One sheet, two sides, A4 or Letter.">
+<meta name="twitter:image" content="https://starstuff.earth/og-card.jpg">
+<title>Not a Line — Broadside — Stimpunks × More Realms</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="starstuff.css">
+<style>
+  /* ═══════════════════════════════════════════════════════════════════════════
+     PAPER-FIRST SHEET. Ninth of the broadsides — sibling of ls-broadside.html,
+     six-ways-, owed-not-earned-, what-we-refuse-, the-same-water-, shared-air-,
+     better-get-used-to-it- and star-stuff-elements-broadside.html. Keep them all
+     in step; the whole point of a fixed format is that nine different arguments
+     come off the printer as the same object.
+
+     SIZE. 190 × 259 mm with 9 mm page margins — inside both A4 (192 × 279 box)
+     and US Letter (198 × 261). Two sides, no third page, either country.
+
+     TYPEFACE. Atkinson Hyperlegible Next throughout, Space Mono for labels and
+     chrome. No display serif: hairlines are the first thing to drop out of a
+     photocopy, which is most of a broadside's life — and this one is built to be
+     photocopied, because its moment is a table with several people at it.
+
+     SPOT COLOUR. Pink (No. 21's own accent) for the face, cyan for the verso,
+     both house hues darkened until they clear AA on white, declared literally
+     rather than aliased and forced through with print-color-adjust: exact. The
+     pink/cyan pair is unused elsewhere in the rack, which is the registration
+     bar's real job — telling this sheet from its siblings in a stack.
+
+     ONE DESIGN NOTE THAT IS AN ARGUMENT. The spiky profile is drawn on the FACE,
+     grid and baseline and all, even though the sheet's whole position is that a
+     better chart is still a chart. That is deliberate: this sheet meets a reader
+     where the conversation already is. Nearly everyone reaching for it has met
+     the spiky profile and thinks it is the answer. You cannot refuse a picture
+     you have not shown. The grid is dropped on the reverse, where the
+     constellation is — the sequence face → verso IS the argument.
+     ═══════════════════════════════════════════════════════════════════════════ */
+
+  :root {
+    --sheet:  #ffffff;
+    --ink:    #111111;   /* 18.1:1 on white */
+    --ink-2:  #333333;   /* 12.6:1 — secondary prose */
+    --ink-3:  #555555;   /*  7.5:1 — small print, credits */
+    --spot:   #9d174d;   /*  7.9:1 — house pink, darkened for paper */
+    --spot-2: #164e63;   /*  9.1:1 — house cyan, darkened for paper */
+    --rule:   #d4d0dc;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #2a2830;
+    font-family: 'Atkinson Hyperlegible Next', system-ui, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1rem 3rem;
+  }
+
+  /* ── CONTROLS (screen only) ── */
+  .controls { display: flex; gap: 0.75rem; margin-bottom: 1.5rem; align-items: center; flex-wrap: wrap; justify-content: center; }
+  .ctrl-btn {
+    background: none;
+    border: 1px solid rgba(255,255,255,0.28);
+    color: #d6d5da;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 0.5rem 1.1rem;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .ctrl-btn:hover { background: rgba(255,255,255,0.1); color: #fff; border-color: rgba(255,255,255,0.5); }
+  .ctrl-btn.active { background: rgba(255,255,255,0.14); color: #fff; border-color: rgba(255,255,255,0.55); }
+  .ctrl-sep { width: 1px; height: 20px; background: rgba(255,255,255,0.18); }
+  /* Solid, not alpha: alpha-faded text is what this design system refuses. */
+  .ctrl-label { font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.25em; text-transform: uppercase; color: #929195; }
+
+  /* ── THE SHEET ── */
+  .sheet {
+    width: 190mm;
+    max-width: 100%;
+    min-height: 259mm;
+    background: var(--sheet);
+    color: var(--ink);
+    padding: 11mm 12mm 9mm;
+    display: none;
+    flex-direction: column;
+    position: relative;
+    /* Registration bar is a BORDER, not a background: borders survive the
+       Background-graphics checkbox, backgrounds do not. */
+    border-top: 3mm solid var(--spot);
+    print-color-adjust: exact; -webkit-print-color-adjust: exact;
+  }
+  .sheet.visible { display: flex; }
+  .sheet--b { border-top-color: var(--spot-2); }
+
+  /* ── Masthead ── */
+  .mast { display: flex; justify-content: space-between; align-items: flex-start; gap: 6mm; padding-bottom: 3mm; border-bottom: 0.6mm solid var(--ink); }
+  .mast-org { font-family: 'Space Mono', monospace; font-size: 6pt; letter-spacing: 0.3em; text-transform: uppercase; color: var(--ink-2); line-height: 1.9; }
+  .mast-org strong { display: block; font-size: 7pt; letter-spacing: 0.22em; color: var(--ink); }
+  .mast-side { font-family: 'Space Mono', monospace; font-size: 6pt; letter-spacing: 0.24em; text-transform: uppercase; color: var(--spot); text-align: right; line-height: 1.9; white-space: nowrap; }
+  .sheet--b .mast-side { color: var(--spot-2); }
+
+  /* ── Face title ── */
+  .title {
+    font-weight: 800;
+    font-size: 40pt;
+    line-height: 0.98;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    margin-top: 5mm;
+  }
+  .title em { font-style: normal; color: var(--spot); }
+  .standfirst {
+    font-style: italic;
+    font-weight: 300;
+    font-size: 11.5pt;
+    line-height: 1.42;
+    color: var(--ink-2);
+    margin-top: 3mm;
+    max-width: 158mm;
+  }
+  .standfirst strong { font-style: normal; font-weight: 700; color: var(--ink); }
+  .title-rule { height: 0.8mm; background: var(--ink); margin-top: 5mm; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+
+  /* ── The figure: the spiky profile, drawn to be refused ── */
+  .figure { margin-top: 5mm; }
+  .figure svg { display: block; width: 100%; height: auto; }
+  .fig-note { font-size: 9.6pt; line-height: 1.44; color: var(--ink-2); margin-top: 3mm; }
+  .fig-note strong { color: var(--ink); font-weight: 700; }
+
+  /* ── The phrase table: each phrase, and what it actually does ── */
+  .phrases { margin-top: 5mm; border-top: 0.6mm solid var(--ink); }
+  .phrase {
+    display: grid;
+    grid-template-columns: 48mm 1fr;
+    gap: 6mm;
+    padding: 2.3mm 0;
+    border-bottom: 0.4mm solid var(--rule);
+    align-items: baseline;
+  }
+  .phrase-term { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 9.4pt; line-height: 1.4; color: var(--spot); }
+  .phrase-does { font-size: 9.8pt; line-height: 1.4; color: var(--ink-2); }
+  .phrase-does b { color: var(--ink); font-weight: 700; }
+
+  /* ── Reverse ── */
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 5mm 9mm; margin-top: 4mm; }
+  .col-head { font-family: 'Space Mono', monospace; font-size: 8pt; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: var(--spot-2); padding-bottom: 2.2mm; margin-bottom: 3.5mm; border-bottom: 0.4mm solid var(--rule); print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+
+  /* Swap: instead of X, say Y. */
+  .swap { margin-bottom: 2.2mm; }
+  .swap b { display: block; font-family: 'Space Mono', monospace; font-size: 7pt; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); line-height: 1.45; }
+  .swap i { display: block; font-style: italic; font-weight: 700; font-size: 10pt; color: var(--spot-2); line-height: 1.28; margin-top: 0.7mm; }
+  .swap span { display: block; font-size: 9.2pt; line-height: 1.38; color: var(--ink-2); margin-top: 0.9mm; }
+  .swap em { font-style: italic; color: var(--ink); }
+
+  /* Movements on the right column */
+  .mv { margin-bottom: 2.4mm; }
+  .mv b { display: block; font-family: 'Space Mono', monospace; font-size: 7.2pt; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--spot-2); line-height: 1.55; }
+  .mv span { display: block; font-size: 9.4pt; line-height: 1.4; color: var(--ink-2); margin-top: 1mm; }
+  .mv em { font-style: italic; color: var(--ink); font-weight: 600; }
+
+  .quote { margin-top: 3mm; padding-left: 4mm; border-left: 0.8mm solid var(--spot-2); print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+  .quote p { font-style: italic; font-weight: 500; font-size: 10.5pt; line-height: 1.32; color: var(--ink); }
+  .quote cite { display: block; font-family: 'Space Mono', monospace; font-style: normal; font-size: 6.8pt; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-3); margin-top: 2.2mm; line-height: 1.65; }
+
+  /* The guardrail. This block is the reason the sheet is safe to hand to a
+     commissioner as well as to a friend, and it is not decoration.
+     There is deliberately no "Not:" refusals block under it, which is a
+     departure from most sheets in the rack: on THIS one the face already is a
+     refusals list — five phrases, each with the thing it does — so a second
+     block would have restated the front of the sheet in smaller type, at the
+     cost of the guardrail's room to breathe. */
+  .care { margin-top: 3mm; padding-top: 2.5mm; border-top: 0.6mm solid var(--ink); }
+  .care p { font-size: 9.5pt; line-height: 1.38; color: var(--ink-2); }
+  .care strong { color: var(--ink); font-weight: 700; }
+
+  .close {
+    font-style: italic;
+    font-weight: 500;
+    font-size: 11.5pt;
+    line-height: 1.26;
+    color: var(--ink);
+    margin-top: 3mm;
+    padding-left: 4mm;
+    border-left: 0.8mm solid var(--spot);
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .sources { margin-top: 2.5mm; font-family: 'Space Mono', monospace; font-size: 6.4pt; line-height: 1.46; color: var(--ink-2); }
+  .sources em { font-style: italic; }
+
+  /* ── Foot ── */
+  .foot { margin-top: auto; padding-top: 3mm; border-top: 0.6mm solid var(--ink); display: flex; justify-content: space-between; align-items: flex-end; gap: 6mm; }
+  .foot-left { font-family: 'Space Mono', monospace; font-size: 6pt; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-3); line-height: 1.95; }
+  .foot-left a { color: var(--ink-3); }
+  .foot-right { font-weight: 800; font-size: 13pt; color: var(--spot); text-align: right; line-height: 1.2; white-space: nowrap; }
+  .sheet--b .foot-right { color: var(--spot-2); }
+
+  /* The star is DRAWN, not typed. Atkinson has no U+2605, so a typed ★ comes from
+     whatever font the reader's system happens to supply — not good enough for a
+     logotype on a sheet meant to print identically everywhere. Regular five-pointed
+     star, inner radius 0.382 of outer, filled currentColor. */
+  .star { display: inline-block; width: 0.80em; height: 0.80em; vertical-align: -0.045em; margin: 0 0.06em; fill: currentColor; }
+
+  .print-hint { margin-top: 1.2rem; font-family: 'Space Mono', monospace; font-size: 0.48rem; letter-spacing: 0.2em; text-transform: uppercase; color: #929195; text-align: center; }
+
+  /* ── PRINT ── */
+  @page { size: auto; margin: 9mm; }
+
+  @media print {
+    body { background: none; padding: 0; display: block; min-height: 0; }
+    .controls, .print-hint { display: none; }
+    .sheet { display: flex !important; width: 100%; min-height: 0; height: 259mm; padding: 0; border-top-width: 3mm; }
+    .sheet--a { page-break-after: always; break-after: page; }
+    .mast { padding-top: 6mm; }
+    .phrase, .swap, .mv, .quote { page-break-inside: avoid; break-inside: avoid; }
+  }
+
+  /* Breakpoint sits BELOW the narrowest printed page box (A4 at 9mm margins is
+     192mm = 726px). Print media queries resolve against the page box, not the
+     screen, so a breakpoint above that reflows on paper — which silently clipped
+     side B on an earlier sibling. */
+  @media (max-width: 700px) {
+    .sheet { width: 100%; min-height: 0; padding: 8mm 6mm; }
+    .cols { grid-template-columns: 1fr; }
+    .phrase { grid-template-columns: 1fr; gap: 1.5mm; }
+    .title { font-size: 28pt; }
+    .foot { flex-direction: column; align-items: flex-start; gap: 3mm; }
+    .foot-right { text-align: left; }
+  }
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Not a Line — Broadside","description":"A two-sided, print-ready single sheet: the functioning-labels field card you hand across the table when someone is about to say \"mild,\" \"high-functioning,\" or \"low support needs.\" The spiky profile drawn, and five phrases with what each one actually does, on the face. What to say instead, the spectroscopy fact, and Helen Edgar's constellation of intensities on the reverse — with the guardrail that refusing the severity line is not refusing that some of us need far more support. Designed for paper — one sheet, duplexed, on A4 or US Letter. Compresses Zine No. 21, Not a Line.","image":"https://starstuff.earth/og-card.jpg","url":"https://starstuff.earth/not-a-line-broadside.html","mainEntityOfPage":"https://starstuff.earth/not-a-line-broadside.html","author":{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/"},"contributor":[{"@type":"Person","name":"Helen Edgar","url":"https://autisticrealms.com/"},{"@type":"Person","name":"Patrick Dwyer","url":"https://www.autisticscholar.com/"}],"publisher":[{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/","logo":{"@type":"ImageObject","url":"https://starstuff.earth/og-card.jpg"}},{"@type":"Organization","name":"More Realms","url":"https://morerealms.com/"}],"isPartOf":{"@type":"WebSite","name":"Star Stuff","url":"https://starstuff.earth/"},"license":"https://creativecommons.org/licenses/by-sa/4.0/"}</script>
+</head>
+<body>
+
+<nav class="ss-nav" style="--nav-accent:#f472b6; max-width:190mm;" aria-label="Star Stuff collection">
+  <span class="ss-nav-home-group">
+    <a class="ss-nav-home" href="index.html"><span class="ss-star" aria-hidden="true">★</span> stuff</a>
+    <a class="ss-nav-about" href="about.html">about</a>
+    <a class="ss-nav-search" href="search.html">search</a>
+  </span>
+  <span class="ss-nav-links">
+    <a class="ss-nav-prev" href="star-stuff-elements-broadside.html"><span class="ss-nav-arrow" aria-hidden="true">&lsaquo;</span> <span class="ss-nav-label">The Star Stuff You're Made Of</span></a>
+    <a class="ss-nav-next" href="constellation-sheet.html"><span class="ss-nav-label">The Constellation Sheet</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
+  </span>
+  <a class="ss-nav-collection" href="collection-print.html"><span class="ss-nav-collection-label">Collection</span> <span class="ss-nav-collection-name">Print</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
+</nav>
+
+<div class="controls">
+  <span class="ctrl-label">Side</span>
+  <button class="ctrl-btn active" id="btn-a" onclick="showSide('a')">A — The Words</button>
+  <button class="ctrl-btn" id="btn-b" onclick="showSide('b')">B — What To Say Instead</button>
+  <div class="ctrl-sep"></div>
+  <button class="ctrl-btn" onclick="window.print()">Print ↗</button>
+</div>
+
+<!-- ════ SIDE A ════ -->
+<div class="sheet sheet--a visible" id="side-a">
+
+  <div class="mast">
+    <div class="mast-org">
+      <strong>Stimpunks Foundation × More Realms</strong>
+      a field card for the table
+    </div>
+    <div class="mast-side">Broadside · Open edition<br>Side A of B</div>
+  </div>
+
+  <h1 class="title">Not a <em>Line</em></h1>
+
+  <p class="standfirst">A spectrum was never a severity scale. Split a star's light and you get a <strong>fingerprint</strong> — the pattern of lines that tells you what it is made of, with no high end and no low end. Before anyone reaches for <em>mild</em>, <em>high-functioning</em>, or <em>low support needs</em>: here is what those words actually do.</p>
+
+  <div class="title-rule"></div>
+
+  <div class="figure">
+    <svg viewBox="0 0 480 138" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig-title fig-desc">
+      <title id="fig-title">The spiky profile</title>
+      <desc id="fig-desc">A faint grid with a dashed horizontal baseline labelled "expected baseline". A jagged line crosses it, rising far above in speech, motor and social and falling far below in sensory, memory and planning — one person, one day, measured against a flat expectation.</desc>
+
+      <!-- The plot stops at x=404 so the baseline's label can sit in its own
+           margin. Drawn inside the grid it landed on the profile line between
+           social and planning — which no gate here can see: check-overlap
+           measures text against text, and text crossing artwork is explicitly
+           outside what it will report. Caught by eye, at render size. -->
+
+      <!-- faint grid -->
+      <g stroke="#d4d0dc" stroke-width="0.8">
+        <line x1="30" y1="22" x2="404" y2="22"/>
+        <line x1="30" y1="46" x2="404" y2="46"/>
+        <line x1="30" y1="94" x2="404" y2="94"/>
+        <line x1="30" y1="118" x2="404" y2="118"/>
+        <line x1="90"  y1="18" x2="90"  y2="118"/>
+        <line x1="158" y1="18" x2="158" y2="118"/>
+        <line x1="226" y1="18" x2="226" y2="118"/>
+        <line x1="294" y1="18" x2="294" y2="118"/>
+        <line x1="362" y1="18" x2="362" y2="118"/>
+      </g>
+
+      <!-- the baseline: neuronormativity, drawn as the thing it is -->
+      <line x1="30" y1="70" x2="404" y2="70" stroke="#9d174d" stroke-width="1.4" stroke-dasharray="5 4"/>
+      <g font-family="Space Mono, monospace" font-size="8" fill="#9d174d" text-anchor="start">
+        <text x="412" y="67">expected</text>
+        <text x="412" y="79">baseline</text>
+      </g>
+
+      <!-- the profile -->
+      <polyline points="52,30 122,102 192,40 262,110 332,52 396,88" fill="none" stroke="#164e63" stroke-width="2.4"/>
+      <g fill="#164e63">
+        <circle cx="52"  cy="30"  r="3.4"/>
+        <circle cx="122" cy="102" r="3.4"/>
+        <circle cx="192" cy="40"  r="3.4"/>
+        <circle cx="262" cy="110" r="3.4"/>
+        <circle cx="332" cy="52"  r="3.4"/>
+        <circle cx="396" cy="88"  r="3.4"/>
+      </g>
+
+      <!-- domains -->
+      <g font-family="Space Mono, monospace" font-size="8" fill="#333333" text-anchor="middle">
+        <text x="52"  y="132">speech</text>
+        <text x="122" y="132">sensory</text>
+        <text x="192" y="132">motor</text>
+        <text x="262" y="132">memory</text>
+        <text x="332" y="132">social</text>
+        <text x="396" y="132">planning</text>
+      </g>
+    </svg>
+    <p class="fig-note">This is the <strong>spiky profile</strong> — Damian Milton's, building on Francesca Happé — and it already beats what most people mean by <em>spectrum</em>: nobody is uniformly mild or uniformly severe. But look at what it keeps. <strong>A better chart is still a chart</strong>, drawn against a flat expected baseline, frozen at one moment of assessment. The reverse drops the grid.</p>
+  </div>
+
+  <div class="phrases">
+
+    <div class="phrase">
+      <div class="phrase-term">&ldquo;Mild&rdquo;</div>
+      <div class="phrase-does">Reports how much your difference costs <b>the person describing it</b> — and is usually written down on a good day, in a quiet room, about someone who was masking hard to be there at all.</div>
+    </div>
+
+    <div class="phrase">
+      <div class="phrase-term">&ldquo;High-functioning&rdquo;</div>
+      <div class="phrase-does">Heard as a compliment, used as a refusal. It reads coping in one domain as proof that <b>no support is needed in any other</b>, and then withdraws it. The people it describes are the ones told they are <em>not disabled enough</em>.</div>
+    </div>
+
+    <div class="phrase">
+      <div class="phrase-term">&ldquo;Low-functioning&rdquo;<br>&ldquo;severe&rdquo;</div>
+      <div class="phrase-does">Moves you from the person a decision is <em>about</em> to the object it is made <em>on</em>. It presumes incompetence everywhere on the strength of the places you struggle — and it is how someone becomes <b>too disabled to be trusted with their own choices</b>.</div>
+    </div>
+
+    <div class="phrase">
+      <div class="phrase-term">&ldquo;Low support needs&rdquo;<br>&ldquo;Level 1, 2, 3&rdquo;</div>
+      <div class="phrase-does">Newer words on the same single axis. <b>Renaming the rungs does not remove the ladder.</b> Support needs are plural and specific, and they move by day, room and domain — one number cannot carry them, and the number is what gets budgeted.</div>
+    </div>
+
+    <div class="phrase">
+      <div class="phrase-term">&ldquo;A little bit on<br>the spectrum&rdquo;</div>
+      <div class="phrase-does">Treats the spectrum as a quantity of a thing. It never was one. <b>A fingerprint has no volume knob</b> — and neither does anyone at this table.</div>
+    </div>
+
+  </div>
+
+  <div class="foot">
+    <div class="foot-left">
+      the argument in full:<br>
+      starstuff.earth/not-a-line-zine · Zine No. 21<br>
+      print freely · share freely · <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
+    </div>
+    <div class="foot-right">See<br>reverse</div>
+  </div>
+
+</div>
+
+<!-- ════ SIDE B ════ -->
+<div class="sheet sheet--b" id="side-b">
+
+  <div class="mast">
+    <div class="mast-org">
+      <strong>Stimpunks Foundation × More Realms</strong>
+      what to say instead
+    </div>
+    <div class="mast-side">Broadside · Open edition<br>Side B of B</div>
+  </div>
+
+  <div class="cols">
+
+    <div>
+      <div class="col-head">Say this instead</div>
+
+      <div class="swap">
+        <b>instead of mild / severe</b>
+        <i>Name the domain, and the day.</i>
+        <span>&ldquo;Speech is harder after two o'clock.&rdquo; &ldquo;Crowds cost more than deadlines.&rdquo; Both are <em>checkable</em>, and both can change. A severity level is neither.</span>
+      </div>
+
+      <div class="swap">
+        <b>instead of high-functioning</b>
+        <i>Name the support — and keep it.</i>
+        <span>&ldquo;Needs instructions in writing, and a door that closes.&rdquo; Managing in one room is not evidence against need in another; it is often the <em>cost</em> of the room.</span>
+      </div>
+
+      <div class="swap">
+        <b>instead of low-functioning</b>
+        <i>Ask the person.</i>
+        <span>Not speaking is not not thinking. Presume competence, find the channel, and wait longer than feels comfortable before deciding there was no answer.</span>
+      </div>
+
+      <div class="swap">
+        <b>instead of levels &amp; support tiers</b>
+        <i>A list, not a level.</i>
+        <span>What support, where, when, how much, and who decides when it changes. Every one of those is answerable. <em>&ldquo;Level 2&rdquo; answers none of them</em>, and it is the thing that gets budgeted.</span>
+      </div>
+
+      <div class="swap">
+        <b>instead of a little bit on the spectrum</b>
+        <i>Autistic. Or not.</i>
+        <span>The spectrum is what you are made of, not how much of it you have. And if what you meant was &ldquo;everyone has traits&rdquo; — everyone does, and that is not what a diagnosis names.</span>
+      </div>
+    </div>
+
+    <div>
+      <div class="col-head">Where the word came from</div>
+
+      <div class="mv">
+        <b>a spectrum is a fingerprint</b>
+        <span>Split white light and you get every wavelength at once — none higher, none lower. Now split a <em>star's</em> light: threaded through it are fine dark lines, and every element signs its own exact pattern of them. Fraunhofer mapped the lines; Kirchhoff and Bunsen worked out what they meant. It is still the only way we know what the stars are made of. A spectrum does not rank a star — <em>it tells you what the star is made of.</em> The word meant fingerprint. We heard ladder.</span>
+      </div>
+
+      <div class="mv">
+        <b>a constellation, not a chart</b>
+        <span>Patrick Dwyer offers a different figure — an <em>autism constellation</em>: not a point on a scale but many stars in many positions, each of us a different arrangement. Helen Edgar carries it further, to a <em>constellation of intensities</em>: an interdependent, monotropic galaxy of sensory, cognitive and relational ways of being, in ever-shifting relation. No axis. No baseline. <strong>No norm star.</strong> A constellation coheres into a figure only from where you happen to stand.</span>
+      </div>
+
+      <div class="quote">
+        <p>&ldquo;always in motion, always connecting, always becoming &mdash; never fixed, never finished.&rdquo;</p>
+        <cite>Helen Edgar · The Constellation of Intensities: Neuroqueering the Spiky Profile · Autistic Realms, 2026</cite>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="care">
+    <div class="col-head">Held with care</div>
+    <p>Refusing the line is <strong>not</strong> refusing that some of us need far more support than others. Functioning labels do harm <em>precisely because they gatekeep it</em> — sorting people into not disabled enough to qualify, or too disabled to be consulted. The honest replacement for a label was never a better label. It is naming the specific support each of us actually needs, and then providing it. <strong>No rank, and all the care.</strong></p>
+  </div>
+
+  <p class="close">You are not a point on a line. You are a whole spectrum &mdash; and a constellation no one has ever seen before.</p>
+
+  <div class="sources">
+    The spine of this sheet &mdash; <em>line &rarr; spiky profile &rarr; constellation</em> &mdash; is <strong>Patrick Dwyer</strong>'s &ldquo;The Autism Constellation&rdquo; (<em>Autistic Scholar</em>, 2020) and <strong>Helen Edgar</strong>'s &ldquo;The Constellation of Intensities: Neuroqueering the Spiky Profile&rdquo; (<em>Autistic Realms</em>, 2026); the quoted line is Helen's own. The metaphor is older than either essay and belongs to the Autistic community: Dwyer notes in a 2021 update that he did not coin it &mdash; <strong>Caroline Hearst</strong> had built a physical autism-constellation model and shown it at events, and in correspondence with Helen Edgar, <strong>Damian Milton</strong> credits <strong>Larry Arnold</strong> as the first he knows of to use &ldquo;constellation&rdquo; in place of &ldquo;spectrum,&rdquo; with Milton and the late <strong>Dinah Murray</strong> discussing similar concepts. A sheet against ranking people should not erase the people whose idea this is. The <em>spiky profile</em> is Milton's, building on <strong>Francesca Happé</strong>; <em>monotropism</em> is Murray, Lesser &amp; Lawson (2005). The functioning-labels critique is the community's &mdash; Ollibean, the Autistic Self Advocacy Network, &ldquo;Words That Wound&rdquo; (NeuroHub Community). The science: dispersion (Newton) and spectral lines (Fraunhofer; Kirchhoff &amp; Bunsen). Compresses <em>Not a Line</em>, Zine No. 21, where every claim here is argued at length with its sources attached.
+  </div>
+
+  <div class="foot">
+    <div class="foot-left">
+      the argument in full, and every source:<br>
+      starstuff.earth/not-a-line-zine · stimpunks.org · morerealms.com<br>
+      print freely · share freely · <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
+    </div>
+    <div class="foot-right" role="img" aria-label="L★S">L<svg class="star" viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M50 0 61.2 34.5 97.6 34.5 68.2 55.9 79.4 90.5 50 69.1 20.6 90.5 31.8 55.9 2.4 34.5 38.8 34.5Z"/></svg>S</div>
+  </div>
+
+</div>
+
+<p class="print-hint">One sheet · print double-sided · carry it to the meeting · share freely</p>
+
+<script>
+  function showSide(side) {
+    document.getElementById('side-a').classList.toggle('visible', side === 'a');
+    document.getElementById('side-b').classList.toggle('visible', side === 'b');
+    document.getElementById('btn-a').classList.toggle('active', side === 'a');
+    document.getElementById('btn-b').classList.toggle('active', side === 'b');
+  }
+</script>
+</body>
+</html>
