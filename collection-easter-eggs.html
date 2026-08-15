@@ -133,9 +133,34 @@
   .colophon-footer { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--dim2); line-height: 2.2; margin-top: 3rem; padding-top: 1.4rem; border-top: 1px solid rgba(251,191,36,0.14); }
   .colophon-footer a { color: inherit; }
 
+  /* ── CODA: The Turtle Moves ── */
+  .coda { margin-top: 3.6rem; padding-top: 2.2rem; border-top: 1px solid rgba(251,191,36,0.16); }
+  .coda-svg { display: block; width: 100%; max-width: 460px; margin: 1.8rem auto 0; }
+  .coda-figcap { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dim); text-align: center; margin-top: 1.1rem; line-height: 1.9; }
+  .turtle-quote { font-size: 1.12rem; line-height: 1.62; font-style: italic; font-weight: 700; color: var(--star-white); border-left: 3px solid var(--accent); padding-left: 1.2rem; margin: 2.2rem 0 0; }
+  .turtle-quote em { font-style: italic; }
+  .turtle-quote cite { display: block; font-family: 'Space Mono', monospace; font-size: 0.62rem; font-style: normal; font-weight: 400; letter-spacing: 0.08em; color: var(--dim); margin-top: 0.85rem; }
+  .turtle-quote cite em { font-style: italic; }
+
   @media (max-width: 600px) {
     .doc-shell { padding: 2rem 1.3rem 3rem; }
     .artifact-grid { grid-template-columns: 1fr; }
+    .turtle-quote { font-size: 1rem; }
+  }
+
+  /* The drawing is line art on a dark ground. The shared print block turns every
+     stroke to #444 and every SVG label to #111, but it only inverts a short list of
+     *light* fill literals — so the shapes that fill with the page ground to occlude
+     what is behind them (the disc over the stars, each elephant over its neighbour)
+     would print as solid dark blobs. They are holes, not objects, so on paper they
+     become white and the drawing prints as the outline it already is. */
+  @media print {
+    .coda-svg .occ { fill: #ffffff !important; }
+    /* The shared print block flattens every stroke to #444, which is right for a
+       diagram and wrong for this drawing: the far legs are dimmer than the near pair
+       on screen precisely so each elephant reads as having depth, and on paper all
+       four collapsed into one dark slab. Measured on a print render before adding it. */
+    .coda-svg .leg-far path { stroke: #999999 !important; }
   }
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Easter Eggs — a Star Stuff collection","description":"The Easter Eggs collection — real pieces kept off the front page on purpose, reachable by a small door in the index footer or by searching. The only collection with no section on the index, and the only one created below the two-member floor; both are explained on the page. Five eggs: No. 37 Out of Order, No. 47 True Facts About True Facts, No. 49 One Atom of Justice, Field Guide No. 13 A Field Guide to Watching Animals, and The Hatchery.","url":"https://starstuff.earth/collection-easter-eggs.html","mainEntityOfPage":"https://starstuff.earth/collection-easter-eggs.html","image":"https://starstuff.earth/og-card.jpg","isPartOf":{"@type":"WebSite","name":"Star Stuff","url":"https://starstuff.earth/"},"publisher":[{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/","logo":{"@type":"ImageObject","url":"https://starstuff.earth/og-card.jpg"}},{"@type":"Organization","name":"More Realms","url":"https://morerealms.com/"}],"hasPart":[{"@type":"WebPage","name":"Out of Order","url":"https://starstuff.earth/out-of-order-zine.html"},{"@type":"WebPage","name":"True Facts About True Facts","url":"https://starstuff.earth/true-facts-zine.html"},{"@type":"WebPage","name":"A Field Guide to Watching Animals","url":"https://starstuff.earth/watching-animals-field-guide.html"},{"@type":"WebPage","name":"The Hatchery — twelve cosmic eggs","url":"https://starstuff.earth/hatchery.html"},{"@type":"WebPage","name":"One Atom of Justice","url":"https://starstuff.earth/one-atom-of-justice-zine.html"}]}</script>
@@ -166,7 +191,7 @@
   <div class="body-text">
 
     <h2 class="section" id="what-an-egg-is-here">What an egg is here</h2>
-    <p>An easter egg on this site is <strong>not a lower standard</strong>. Every piece filed here carries the same requirements as any other: sources traced to primaries, claims graded, a logged entry in <code>FACTCHECK.md</code>, a dated line in the <a href="changelog.html">changelog</a>, and a clean pass through all five checking gates. If a piece could not survive that, it would not be an egg. It would just be sloppy, and being tucked away would make it worse rather than better.</p>
+    <p>An easter egg on this site is <strong>not a lower standard</strong>. Every piece filed here carries the same requirements as any other: sources traced to primaries, claims graded, a logged entry in <code>FACTCHECK.md</code>, a dated line in the <a href="changelog.html">changelog</a>, and a clean pass through all six checking gates. If a piece could not survive that, it would not be an egg. It would just be sloppy, and being tucked away would make it worse rather than better.</p>
     <p>What makes it an egg is only <em>where the door is</em>. These pieces are about the site rather than about the world — its numbering, its own mistakes, its furniture. Putting them in the index grid would ask every first-time reader to care about our internals before they had read anything. So they sit one step off the path, for the reader who is already looking closely.</p>
 
     <h2 class="section" id="two-conventions-this-page-breaks">Two conventions this page breaks, on purpose</h2>
@@ -245,6 +270,166 @@
     </a>
 
   </div>
+
+  <section class="coda body-text">
+
+    <h2 class="section" id="the-turtle-moves">The Turtle Moves</h2>
+
+    <figure>
+      <svg class="coda-svg" viewBox="0 0 480 378" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="atuin-title atuin-desc">
+        <title id="atuin-title">Great A'Tuin, the four elephants, and the Disc</title>
+        <desc id="atuin-desc">A line drawing of Terry Pratchett's Discworld: an enormous sea turtle swimming through space, four elephants standing on its shell, and a flat disc resting on their backs with a spire at its centre and water falling off its rim. Labelled The Turtle Moves.</desc>
+
+        <!-- Stars, kept clear of the disc (x 70–410, y 71–133) and of the Hub spire. -->
+        <g fill="rgba(244,244,251,0.85)">
+          <circle cx="40" cy="28" r="1.4"/><circle cx="140" cy="22" r="1.6"/>
+          <circle cx="300" cy="30" r="1.2"/><circle cx="420" cy="44" r="1"/>
+          <circle cx="28" cy="92" r="1.3"/><circle cx="452" cy="86" r="1.2"/>
+          <circle cx="18" cy="152" r="1"/><circle cx="462" cy="162" r="1.2"/>
+        </g>
+        <g fill="rgba(251,191,36,0.8)">
+          <circle cx="86" cy="52" r="1"/><circle cx="360" cy="18" r="1.4"/>
+          <circle cx="36" cy="196" r="1"/><circle cx="450" cy="212" r="1.1"/>
+        </g>
+
+        <!-- ── THE DISC ──
+             Two ellipses 8px apart: the lower one reads as the rim seen edge-on, the
+             upper as the world's surface. Both occlude, so the starfield stops at the
+             disc rather than showing through it. -->
+        <ellipse class="occ" cx="240" cy="106" rx="170" ry="27" fill="var(--void)" stroke="rgba(251,191,36,0.7)" stroke-width="1.4"/>
+        <ellipse class="occ" cx="240" cy="98" rx="170" ry="26" fill="var(--deep)" stroke="rgba(251,191,36,0.95)" stroke-width="1.6"/>
+        <!-- Cori Celesti at the Hub -->
+        <path d="M240 96 L232 54 L240 40 L248 54 Z" fill="rgba(244,244,251,0.18)" stroke="rgba(244,244,251,0.8)" stroke-width="1.2" stroke-linejoin="round"/>
+        <!-- the Circle Sea, and a coastline -->
+        <ellipse cx="204" cy="100" rx="34" ry="8" fill="none" stroke="rgba(34,211,238,0.55)" stroke-width="1"/>
+        <path d="M284 92 q 26 5 44 13" fill="none" stroke="rgba(74,222,128,0.45)" stroke-width="1"/>
+        <!-- the rimfall, going over the edge -->
+        <g stroke="rgba(34,211,238,0.5)" stroke-width="1.1" stroke-linecap="round" stroke-dasharray="3 4">
+          <path d="M84 120 V152"/><path d="M94 122 V147"/>
+          <path d="M386 122 V147"/><path d="M396 120 V152"/>
+        </g>
+
+        <!-- ── THE FOUR ELEPHANTS ──
+             Feet sit on the carapace curve M62 246 Q 240 130 418 246, solved at each x:
+             178 and 302 → 195.1, 218 and 262 → 189.0. Backs meet the disc underside,
+             which sits at 131.1 and 132.8 at those same x — so the outer pair are 64
+             tall and the inner pair 56, the whole difference being leg. On a domed shell
+             the outer animals stand lower and more leg shows; a uniform height left them
+             hanging in mid-air with a 12px gap under the disc.
+             Draw order is the other half of it. Head and trunk go down FIRST and the
+             body is painted over them, so the head reads as protruding from a shoulder
+             rather than as a second oval parked alongside — then the ear lands last, on
+             the seam, which is where an elephant wears it. Legs are two near and two far
+             at different weights, grouped fore and aft with a gap between: four evenly
+             spaced posts of one width read as a millipede, and merged into a slab. -->
+        <g id="elephants">
+          <g transform="translate(178,195.1)">
+            <ellipse class="occ" cx="-22" cy="-50" rx="10" ry="12" fill="var(--void)" stroke="rgba(251,191,36,0.85)" stroke-width="1.4"/>
+            <path class="occ" d="M-30 -44 q -6 11 -3 21 q 3 7 8 4 q -4 -6 -4 -12 q 0 -8 4 -13 z" fill="var(--void)" stroke="rgba(251,191,36,0.85)" stroke-width="1.3" stroke-linejoin="round"/>
+            <path d="M-29 -38 q -6 4 -9 3" fill="none" stroke="rgba(244,244,251,0.9)" stroke-width="1.7" stroke-linecap="round"/>
+            <circle cx="-25" cy="-53" r="1.4" fill="rgba(244,244,251,0.95)"/>
+            <g class="leg-far" stroke="rgba(251,191,36,0.45)" stroke-width="3.5" stroke-linecap="round">
+              <path d="M-2 -34 V-3"/><path d="M10 -34 V-3"/>
+            </g>
+            <rect class="occ" x="-12" y="-64" width="30" height="30" rx="9" fill="var(--void)" stroke="rgba(251,191,36,0.85)" stroke-width="1.4"/>
+            <path d="M18 -60 q 5 6 2 13" fill="none" stroke="rgba(251,191,36,0.75)" stroke-width="1.5" stroke-linecap="round"/>
+            <g stroke="rgba(251,191,36,0.9)" stroke-width="4.5" stroke-linecap="round">
+              <path d="M-6 -34 V-1"/><path d="M14 -34 V-1"/>
+            </g>
+            <ellipse cx="-7" cy="-51" rx="7" ry="9" fill="rgba(251,191,36,0.16)" stroke="rgba(251,191,36,0.8)" stroke-width="1.2"/>
+          </g>
+          <g transform="translate(218,189.0)">
+            <ellipse class="occ" cx="-22" cy="-42" rx="10" ry="12" fill="var(--void)" stroke="rgba(251,191,36,0.85)" stroke-width="1.4"/>
+            <path class="occ" d="M-30 -36 q -6 11 -3 21 q 3 7 8 4 q -4 -6 -4 -12 q 0 -8 4 -13 z" fill="var(--void)" stroke="rgba(251,191,36,0.85)" stroke-width="1.3" stroke-linejoin="round"/>
+            <path d="M-29 -30 q -6 4 -9 3" fill="none" stroke="rgba(244,244,251,0.9)" stroke-width="1.7" stroke-linecap="round"/>
+            <circle cx="-25" cy="-45" r="1.4" fill="rgba(244,244,251,0.95)"/>
+            <g class="leg-far" stroke="rgba(251,191,36,0.45)" stroke-width="3.5" stroke-linecap="round">
+              <path d="M-2 -26 V-3"/><path d="M10 -26 V-3"/>
+            </g>
+            <rect class="occ" x="-12" y="-56" width="30" height="30" rx="9" fill="var(--void)" stroke="rgba(251,191,36,0.85)" stroke-width="1.4"/>
+            <path d="M18 -52 q 5 6 2 13" fill="none" stroke="rgba(251,191,36,0.75)" stroke-width="1.5" stroke-linecap="round"/>
+            <g stroke="rgba(251,191,36,0.9)" stroke-width="4.5" stroke-linecap="round">
+              <path d="M-6 -26 V-1"/><path d="M14 -26 V-1"/>
+            </g>
+            <ellipse cx="-7" cy="-43" rx="7" ry="9" fill="rgba(251,191,36,0.16)" stroke="rgba(251,191,36,0.8)" stroke-width="1.2"/>
+          </g>
+          <g transform="translate(262,189.0) scale(-1,1)">
+            <ellipse class="occ" cx="-22" cy="-42" rx="10" ry="12" fill="var(--void)" stroke="rgba(251,191,36,0.85)" stroke-width="1.4"/>
+            <path class="occ" d="M-30 -36 q -6 11 -3 21 q 3 7 8 4 q -4 -6 -4 -12 q 0 -8 4 -13 z" fill="var(--void)" stroke="rgba(251,191,36,0.85)" stroke-width="1.3" stroke-linejoin="round"/>
+            <path d="M-29 -30 q -6 4 -9 3" fill="none" stroke="rgba(244,244,251,0.9)" stroke-width="1.7" stroke-linecap="round"/>
+            <circle cx="-25" cy="-45" r="1.4" fill="rgba(244,244,251,0.95)"/>
+            <g class="leg-far" stroke="rgba(251,191,36,0.45)" stroke-width="3.5" stroke-linecap="round">
+              <path d="M-2 -26 V-3"/><path d="M10 -26 V-3"/>
+            </g>
+            <rect class="occ" x="-12" y="-56" width="30" height="30" rx="9" fill="var(--void)" stroke="rgba(251,191,36,0.85)" stroke-width="1.4"/>
+            <path d="M18 -52 q 5 6 2 13" fill="none" stroke="rgba(251,191,36,0.75)" stroke-width="1.5" stroke-linecap="round"/>
+            <g stroke="rgba(251,191,36,0.9)" stroke-width="4.5" stroke-linecap="round">
+              <path d="M-6 -26 V-1"/><path d="M14 -26 V-1"/>
+            </g>
+            <ellipse cx="-7" cy="-43" rx="7" ry="9" fill="rgba(251,191,36,0.16)" stroke="rgba(251,191,36,0.8)" stroke-width="1.2"/>
+          </g>
+          <g transform="translate(302,195.1) scale(-1,1)">
+            <ellipse class="occ" cx="-22" cy="-50" rx="10" ry="12" fill="var(--void)" stroke="rgba(251,191,36,0.85)" stroke-width="1.4"/>
+            <path class="occ" d="M-30 -44 q -6 11 -3 21 q 3 7 8 4 q -4 -6 -4 -12 q 0 -8 4 -13 z" fill="var(--void)" stroke="rgba(251,191,36,0.85)" stroke-width="1.3" stroke-linejoin="round"/>
+            <path d="M-29 -38 q -6 4 -9 3" fill="none" stroke="rgba(244,244,251,0.9)" stroke-width="1.7" stroke-linecap="round"/>
+            <circle cx="-25" cy="-53" r="1.4" fill="rgba(244,244,251,0.95)"/>
+            <g class="leg-far" stroke="rgba(251,191,36,0.45)" stroke-width="3.5" stroke-linecap="round">
+              <path d="M-2 -34 V-3"/><path d="M10 -34 V-3"/>
+            </g>
+            <rect class="occ" x="-12" y="-64" width="30" height="30" rx="9" fill="var(--void)" stroke="rgba(251,191,36,0.85)" stroke-width="1.4"/>
+            <path d="M18 -60 q 5 6 2 13" fill="none" stroke="rgba(251,191,36,0.75)" stroke-width="1.5" stroke-linecap="round"/>
+            <g stroke="rgba(251,191,36,0.9)" stroke-width="4.5" stroke-linecap="round">
+              <path d="M-6 -34 V-1"/><path d="M14 -34 V-1"/>
+            </g>
+            <ellipse cx="-7" cy="-51" rx="7" ry="9" fill="rgba(251,191,36,0.16)" stroke="rgba(251,191,36,0.8)" stroke-width="1.2"/>
+          </g>
+        </g>
+
+        <!-- ── GREAT A'TUIN ──
+             One silhouette, not two: an earlier pass drew a wide body ellipse *and* a
+             shell lens and the outlines fought into a muddle. The shell is the body's
+             top, the belly curve closes it underneath, the flippers are filled paddles.
+             Head and tail are drawn before the shell so it overlaps them, which removes
+             the rectangular notch a butt-joined neck left behind. Deliberately only two
+             flippers: a far pair was drawn and cut, because at this size it read as a
+             fifth and sixth limb floating loose rather than as the far side of the
+             animal. Two flippers, a head and a tail is the whole turtle. -->
+        <path class="occ" d="M92 230 q -32 -6 -52 5 q -16 9 -16 18 q 1 10 15 12 q 24 4 53 -9 z" fill="var(--void)" stroke="rgba(251,191,36,0.95)" stroke-width="1.7" stroke-linejoin="round"/>
+        <circle cx="33" cy="242" r="2.6" fill="rgba(244,244,251,0.95)"/>
+        <path d="M26 254 q 10 4 19 1" fill="none" stroke="rgba(251,191,36,0.7)" stroke-width="1.2" stroke-linecap="round"/>
+        <path class="occ" d="M404 246 q 24 0 38 11 q -16 5 -30 -1 z" fill="var(--void)" stroke="rgba(251,191,36,0.75)" stroke-width="1.5" stroke-linejoin="round"/>
+        <path class="occ" d="M66 246 Q 240 300 414 246 Z" fill="var(--void)" stroke="rgba(251,191,36,0.6)" stroke-width="1.4"/>
+        <path class="occ" d="M62 246 Q 240 130 418 246 Q 240 262 62 246 Z" fill="var(--deep)" stroke="rgba(251,191,36,0.95)" stroke-width="1.9" stroke-linejoin="round"/>
+        <path d="M108 238 Q 240 160 372 238" fill="none" stroke="rgba(251,191,36,0.38)" stroke-width="0.9"/>
+        <g stroke="rgba(251,191,36,0.38)" stroke-width="0.9" fill="none">
+          <path d="M136 220 L134 243"/><path d="M188 196 L187 247"/>
+          <path d="M240 188 L240 250"/><path d="M292 196 L293 247"/>
+          <path d="M344 220 L346 243"/>
+        </g>
+        <g fill="var(--deep)" stroke="rgba(251,191,36,0.95)" stroke-width="1.6" stroke-linejoin="round">
+          <path class="occ" d="M134 256 q -32 14 -50 34 q -6 9 3 10 q 15 1 31 -14 q 13 -12 19 -24 z"/>
+          <path class="occ" d="M350 256 q 32 14 50 34 q 6 9 -3 10 q -15 1 -31 -14 q -13 -12 -19 -24 z"/>
+        </g>
+
+        <text x="240" y="326" text-anchor="middle" font-family="Space Mono, monospace" font-size="11" letter-spacing="3" fill="var(--gold)">GREAT A'TUIN</text>
+        <text x="240" y="341" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.8" letter-spacing="0.4" fill="var(--stardust)">berilia &middot; tubul &middot; great t'phon &middot; jerakeen</text>
+        <text x="240" y="367" text-anchor="middle" font-family="Space Mono, monospace" font-size="14" font-weight="700" letter-spacing="4" fill="var(--gold)">THE TURTLE MOVES</text>
+      </svg>
+      <figcaption class="coda-figcap">Great A'Tuin, the four elephants, and the Disc &middot; drawn for this page</figcaption>
+    </figure>
+
+    <blockquote class="turtle-quote">
+      <p>&ldquo;Mountains rise and fall, and under them the Turtle swims onward. Men live and die, and the Turtle Moves. Empires grow and crumble, and the Turtle Moves. Gods come and go, and still the Turtle Moves. The Turtle <em>Moves</em>.&rdquo;</p>
+      <cite>Didactylos, in Terry Pratchett's <em>Small Gods</em> (1992)</cite>
+    </blockquote>
+
+    <p><em>Small Gods</em> is a book about an institution that kept every instrument of belief and mislaid the thing itself &mdash; a church with an enormous apparatus and a god reduced to a tortoise nobody can hear. The Turtle in it is not a doctrine. It is <strong>the thing that goes on being the case whether or not anyone believes it</strong>, and the heresy that gets people tortured is the flat refusal to stop saying so.</p>
+
+    <p>Asked whether it is <em>really</em> true, Didactylos does not argue. He says the Turtle exists, that this will go on happening either way, and then the three words the whole book has been walking toward: <strong>&ldquo;It is real.&rdquo;</strong> That is why the passage sits at the foot of this collection rather than anywhere else. <a href="collection-easter-eggs.html#what-an-egg-is-here">The eggs are the pages about our own furniture</a> &mdash; our numbering, our mistakes, where our method came from &mdash; and this is the sentence underneath all of it. <a href="one-atom-of-justice-zine.html">No. 49</a> spends eleven spreads conceding that the universe contains no atom of justice and that our masthead is a promise rather than a finding. The Turtle is the other half of that, and the half we never get to choose: <strong>some things are simply so, and go on being so through every empire that would rather they weren't.</strong></p>
+
+    <p><strong>One correction the drawing owes, because this is the kind of page that owes them.</strong> A turtle carrying elephants carrying the world is <em>not</em> Hindu cosmology, though it is endlessly repeated as such. The stack appears in John Locke's <em>Essay Concerning Human Understanding</em> (1690) as a story about &ldquo;an Indian,&rdquo; and Bertrand Russell repeats it in 1927; scholarship on the epics and major Puranas finds <strong>no world-upholding elephant in them at all</strong>, and Kurma is a pivot for churning rather than a world-bearer &mdash; which <a href="everywhere-that-turtles-go-zine.html">No. 35</a> already says. So what Pratchett is riffing on is a <em>European</em> joke about India, not anyone's scripture. This drawing is therefore a novelist's invention drawn as a novelist's invention, and it is deliberately not filed beside <a href="turtle-field-guide.html">the five turtles people made</a>. They are not the same turtle, and that is the connection.</p>
+
+  </section>
 
   <div class="colophon-footer">
     <a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks Foundation</a> &times; <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a><br>
