@@ -99,7 +99,7 @@ The central phrase compresses through registers, each with a use:
   <a class="ss-nav-collection" href="collection-kin.html"><span class="ss-nav-collection-label">Collection</span> <span class="ss-nav-collection-name">Kin</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
   ```
 
-  All 84 members have one; the 13 collection pages, `index.html` and `search.html` do not. **A new
+  All 90 members have one; the 13 collection pages, `index.html` and `search.html` do not. **A new
   piece needs its badge and its collection page's card in the same pass** — the page→collection map
   is derived from `<a class="card" href="…">` on the collection pages, so a card that is missing
   makes the badge underivable. **`tools/check-markup.mjs` enforces all of this as of 2026-08-13**
@@ -171,7 +171,7 @@ that disclosure is the convention, and **How We Got Here duly carries it too**:
 | Collection | Axis | Members |
 |------------|------|---------|
 | **Field Guides** | **form** — a catalogue of same-shaped entries, none ranked | Field Guides 1–12 (134 entries; 139 cards counting the five *turtles people made*, which FG 10 deliberately does not file as entries) |
-| **How We Got Here** | **form** — a Burke chain, one link per spread, joints marked | 38, 39, 40, 41, 42, 43 |
+| **How We Got Here** | **form** — a Burke chain, one link per spread, joints marked | 38, 39, 40, 41, 42, 43, 50 |
 | **Print** | **medium** — paper | 8 broadsides + 2 that are not broadsides (a typographic specimen, and a blank sheet) |
 | **Sound** | **medium** — audio | 4 racks, 121 cards / 117 distinct songs |
 
@@ -261,7 +261,7 @@ never candidates for a register. Don't try to fold these into either table:
   everything else homework, and would become the one place the verify-everything standard could
   quietly relax. The fun is distributed; *Stars We Grew Up On* states this on the page.
 - The **prev/next chain follows collection order**: each collection page precedes its members, and
-  members run in ascending number within the collection. **86 pages** as of 2026-08-14,
+  members run in ascending number within the collection. **89 pages** as of 2026-08-15,
   `collection-start-here.html` → `shorthand-evolution.html`. Outside the chain by decision:
   `about.html` and `cosmic-connections.html`; **all of Notes &amp; Rationale** — `changelog.html`,
   `design.html`, `print-design.html`, `difference-first-frame.html` and `collection-notes.html`;
