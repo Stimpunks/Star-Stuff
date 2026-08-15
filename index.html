@@ -198,7 +198,15 @@
      at 14px, wedged between "CC BY-SA 4.0" and "L★S", nobody read it as a
      door. It gets its own row and 104px instead. The drawing is The Spiky
      Shell; the sheet of alternatives is at hatchery.html. */
-  .footer-egg { flex-basis: 100%; display: flex; flex-direction: column; align-items: center; gap: 0.55rem; margin-top: 2.4rem; text-decoration: none; }
+  /* Two doors now, so they share one centred row rather than each claiming
+     flex-basis:100% and stacking into a tall column of drawings at the foot of
+     the page. They are deliberately NOT the same size: the egg at 104px is the
+     door to the *collection*, Esmx at 88px is the door to one piece inside it,
+     and equal weight would make the reader choose between two identical-looking
+     invitations. align-items:flex-end keeps both labels on one baseline while
+     the drawings differ in height. */
+  .footer-doors { flex-basis: 100%; display: flex; justify-content: center; align-items: flex-end; gap: clamp(2rem, 8vw, 4.5rem); margin-top: 2.4rem; flex-wrap: wrap; }
+  .footer-egg { display: flex; flex-direction: column; align-items: center; gap: 0.55rem; text-decoration: none; }
   .footer-egg-art { width: 104px; height: auto; display: block; overflow: visible; }
   /* Transform on the lifted cap only, so the bowl stays put and the egg
      reads as opening rather than sliding. */
@@ -220,7 +228,28 @@
      to a collection means nothing on a sheet, and the shell's #0f0f2a fill
      is an SVG fill — content, so it prints — which would put a navy blob
      under the credits for no reader benefit. */
-  @media print { .footer-egg { display: none !important; } }
+  @media print { .footer-doors { display: none !important; } }
+
+  /* ── The second door: Esmx ────────────────────────────────────────────
+     Esmx the Porkypine is the Stimpunks mascot, by Kaya Oldaker, CC BY-SA
+     4.0 — this is our variant of it, and the credit is on quillery.html
+     where the drawings live. The mane is the hover: the tips lift and drift,
+     which is what Esmx's design does anyway ("the spikes trail off and
+     separate, as if they are made of energy"), so the motion is the
+     character rather than an effect applied to it. */
+  .footer-esmx { display: flex; flex-direction: column; align-items: center; gap: 0.55rem; text-decoration: none; }
+  .footer-esmx-art { width: 88px; height: auto; display: block; overflow: visible; }
+  .footer-esmx-mane { transition: transform 0.35s ease; transform-origin: 96px 90px; }
+  .footer-esmx:hover .footer-esmx-mane,
+  .footer-esmx:focus-visible .footer-esmx-mane { transform: rotate(-5deg) translate(6px, -5px); }
+  .footer-esmx-label { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--muted); }
+  .footer-esmx:hover .footer-esmx-label,
+  .footer-esmx:focus-visible .footer-esmx-label { color: var(--pink); text-decoration: underline; text-underline-offset: 0.4em; }
+  .footer-esmx:focus-visible { outline: 2px solid var(--pink); outline-offset: 8px; border-radius: 8px; }
+  @media (prefers-reduced-motion: reduce) {
+    .footer-esmx-mane { transition: none; }
+    .footer-esmx:hover .footer-esmx-mane, .footer-esmx:focus-visible .footer-esmx-mane { transform: none; }
+  }
 
   .twinkle { position: fixed; width: 3px; height: 3px; background: var(--gold); border-radius: 50%; box-shadow: 0 0 6px var(--gold); animation: twinkle-anim 3s ease-in-out infinite; pointer-events: none; z-index: 0; }
 
@@ -1161,6 +1190,7 @@
     </div>
     <span class="footer-ls">L★S</span>
 
+    <div class="footer-doors">
     <a class="footer-egg" href="collection-easter-eggs.html">
       <svg class="footer-egg-art" viewBox="0 0 100 132" aria-hidden="true" focusable="false">
         <defs>
@@ -1187,6 +1217,50 @@
       </svg>
       <span class="footer-egg-label">Easter Eggs</span>
     </a>
+
+    <!-- Esmx the Porkypine, the Stimpunks mascot — Kaya Oldaker's, CC BY-SA 4.0.
+         Our variant of it; the full credit and the other seven live on the page
+         this links to. Drawn in Esmx's own coordinate space (0–200 across,
+         0–205 down) with the mane rising above the crown into negative y, which
+         is why the viewBox starts at -25. -->
+    <a class="footer-esmx" href="quillery.html">
+      <svg class="footer-esmx-art" viewBox="40 -25 200 245" aria-hidden="true" focusable="false"
+           style="--fur:#49b092;--fur-d:#2f6f5e;--skin:#fcdddd;--skin-d:#eec3c8;--paw:#be7272;--paw-d:#8f5555">
+        <g class="footer-esmx-mane">
+          <path d="M70 90 C72 40 92 4 122 -12 C118 34 106 62 96 84 Z" fill="#f472b6" opacity=".95"/>
+          <path d="M84 96 C94 52 128 20 172 6 C152 40 124 66 104 90 Z" fill="#fbbf24" opacity=".9"/>
+          <path d="M96 104 C114 74 158 48 206 42 C178 66 138 88 112 100 Z" fill="#22d3ee" opacity=".85"/>
+        </g>
+        <path d="M64 48 C50 34 46 16 58 9 C71 4 82 20 80 40 Z" fill="var(--fur)" stroke="var(--fur-d)" stroke-width="2.6" stroke-linejoin="round"/>
+        <path d="M67 42 C57 31 55 19 62 15 C71 13 76 24 75 38 Z" fill="var(--paw)"/>
+        <path d="M136 46 C146 39 150 33 150 27 L141 23 L148 14 C146 10 143 8 140 8 C127 4 117 20 119 39 Z" fill="var(--fur)" stroke="var(--fur-d)" stroke-width="2.6" stroke-linejoin="round"/>
+        <path d="M133 40 C140 33 143 28 143 25 L137 22 L141 16 C134 15 124 24 125 37 Z" fill="var(--paw)"/>
+        <path d="M100 16 C126 18 149 38 150 68 C151 98 129 116 100 116 C71 116 49 98 50 68 C51 38 74 18 100 16 Z" fill="var(--fur)" stroke="var(--fur-d)" stroke-width="2.8" stroke-linejoin="round"/>
+        <path d="M100 27 C106 47 138 50 139 74 C140 98 122 110 100 110 C78 110 60 98 61 74 C62 50 94 47 100 27 Z" fill="var(--skin)"/>
+        <ellipse cx="100" cy="91" rx="30" ry="17" fill="var(--skin-d)" opacity=".38"/>
+        <ellipse cx="80" cy="72" rx="6.4" ry="9" fill="#121212"/>
+        <ellipse cx="118" cy="70" rx="7.8" ry="10.8" fill="#121212"/>
+        <circle cx="82" cy="67" r="2.2" fill="#ffffff"/>
+        <circle cx="120.5" cy="64.5" r="2.6" fill="#ffffff"/>
+        <ellipse cx="100" cy="93" rx="14.5" ry="10.5" fill="var(--paw)"/>
+        <ellipse cx="93.5" cy="93" rx="2.7" ry="4" fill="var(--paw-d)"/>
+        <ellipse cx="106.5" cy="93" rx="2.7" ry="4" fill="var(--paw-d)"/>
+        <path d="M49 33 C47 37 46 40 46 43" fill="none" stroke="#c9c9d4" stroke-width="1.7" stroke-linecap="round"/>
+        <rect x="42" y="42" width="7" height="10" rx="1.6" fill="#c9c9d4"/>
+        <path d="M100 112 C116 112 127 124 129 143 C131 162 126 176 122 181 L78 181 C74 176 69 162 71 143 C73 124 84 112 100 112 Z" fill="var(--fur)" stroke="var(--fur-d)" stroke-width="2.8" stroke-linejoin="round"/>
+        <ellipse cx="100" cy="150" rx="19" ry="24" fill="var(--skin)"/>
+        <path d="M74 128 C64 136 58 150 58 159" fill="none" stroke="var(--fur)" stroke-width="11.5" stroke-linecap="round"/>
+        <path d="M126 128 C136 136 142 150 142 159" fill="none" stroke="var(--fur)" stroke-width="11.5" stroke-linecap="round"/>
+        <ellipse cx="57" cy="164" rx="6.2" ry="7.8" fill="var(--paw)" transform="rotate(-14 57 164)"/>
+        <ellipse cx="143" cy="164" rx="6.2" ry="7.8" fill="var(--paw)" transform="rotate(14 143 164)"/>
+        <path d="M88 178 V190" stroke="var(--paw)" stroke-width="9" stroke-linecap="round"/>
+        <path d="M112 178 V190" stroke="var(--paw)" stroke-width="9" stroke-linecap="round"/>
+        <ellipse cx="86" cy="193" rx="10" ry="6.2" fill="var(--paw)"/>
+        <ellipse cx="114" cy="193" rx="10" ry="6.2" fill="var(--paw)"/>
+      </svg>
+      <span class="footer-esmx-label">The Quillery</span>
+    </a>
+    </div>
   </footer>
 
 </div>
