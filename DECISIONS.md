@@ -517,3 +517,17 @@ Ideas deferred, not rejected — revisit later.
 - **Loosen to CC0 later?** BY-SA → CC0 is the easy direction and ours to make as rights holder;
   the catch is guest-contributed portions, which need each author's sign-off before CC0 (it
   waives attribution, which BY-SA preserves). Our own work can go CC0 anytime.
+
+- **The lunar calendar chain — a *How We Got Here* candidate, parked 2026-08-15.** Ryan chose it
+  as a follow-on when No. 53 was scoped: the phases zine ships first, the chain comes later. The
+  spine: **29.53 days will not divide 365.24 days**, and every calendar humans have built is a
+  patch over that refusal which we then treat as natural. Meton of Athens, 432 BCE — 19 years ≈
+  235 synodic months. The Easter computus. The Gregorian reform of 1582. The leap-year fudge.
+  **Why it is a chain and not a zine:** it is one link per spread with joints that genuinely
+  differ in strength, which is the *How We Got Here* form rather than the single-fact form No. 53
+  uses — and No. 53 deliberately declines to half-tell it (spread 10 names the ratio and stops,
+  and the colophon says why). **It also sits next to the collection's motive** — the smoothed
+  popular retelling of *why we have leap years* is exactly the kind of tidy story that files off
+  the hedges. Nearest sibling already shipped: **No. 50**, *The Sky Was Not Regular Enough*,
+  which is the **second** standard-vs-world piece; check it before starting so the chain does not
+  re-walk the leap-second argument.
