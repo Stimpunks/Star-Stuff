@@ -190,6 +190,38 @@
   .footer-left a:hover { text-decoration: underline; }
   .footer-ls { font-size: 2rem; font-weight: 700; color: var(--gold); letter-spacing: 0.05em; text-shadow: 0 0 24px rgba(251,191,36,0.4); }
 
+  /* ── The small door ───────────────────────────────────────────────────
+     The Easter Eggs collection is the one collection with no section on
+     this page — that absence is the whole mechanism, since a listed egg is
+     not off the path. So it needs a way in that is findable without being
+     a heading, and an emoji in the middle of a run of credits was not it:
+     at 14px, wedged between "CC BY-SA 4.0" and "L★S", nobody read it as a
+     door. It gets its own row and 104px instead. The drawing is The Spiky
+     Shell; the sheet of alternatives is at hatchery.html. */
+  .footer-egg { flex-basis: 100%; display: flex; flex-direction: column; align-items: center; gap: 0.55rem; margin-top: 2.4rem; text-decoration: none; }
+  .footer-egg-art { width: 104px; height: auto; display: block; overflow: visible; }
+  /* Transform on the lifted cap only, so the bowl stays put and the egg
+     reads as opening rather than sliding. */
+  .footer-egg-cap { transition: transform 0.35s ease; }
+  .footer-egg:hover .footer-egg-cap,
+  .footer-egg:focus-visible .footer-egg-cap { transform: translate(1.5px, -13px) rotate(-7deg); transform-origin: 50px 40px; }
+  .footer-egg-halo { opacity: 0.7; transition: opacity 0.35s ease; }
+  .footer-egg:hover .footer-egg-halo,
+  .footer-egg:focus-visible .footer-egg-halo { opacity: 1; }
+  .footer-egg-label { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--muted); }
+  .footer-egg:hover .footer-egg-label,
+  .footer-egg:focus-visible .footer-egg-label { color: var(--gold); text-decoration: underline; text-underline-offset: 0.4em; }
+  .footer-egg:focus-visible { outline: 2px solid var(--gold); outline-offset: 8px; border-radius: 8px; }
+  @media (prefers-reduced-motion: reduce) {
+    .footer-egg-cap, .footer-egg-halo { transition: none; }
+    .footer-egg:hover .footer-egg-cap, .footer-egg:focus-visible .footer-egg-cap { transform: translate(1.5px, -7px) rotate(-4deg); }
+  }
+  /* Hidden on paper, with the nav and the jump strip. A fragment-free link
+     to a collection means nothing on a sheet, and the shell's #0f0f2a fill
+     is an SVG fill — content, so it prints — which would put a navy blob
+     under the credits for no reader benefit. */
+  @media print { .footer-egg { display: none !important; } }
+
   .twinkle { position: fixed; width: 3px; height: 3px; background: var(--gold); border-radius: 50%; box-shadow: 0 0 6px var(--gold); animation: twinkle-anim 3s ease-in-out infinite; pointer-events: none; z-index: 0; }
 
   @media (max-width: 600px) {
@@ -1070,9 +1102,36 @@
     <div class="footer-left">
       We verify every source &amp; attribution — these are living documents, and we welcome <a href="about.html#sources">corrections</a>. See what's changed in the <a href="changelog.html">changelog</a>.<br>
       <a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks Foundation</a> × <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a> · <a href="https://starstuff.earth">starstuff.earth</a><br>
-      <a href="about.html">About</a> · <a href="search.html">Search</a> · <a href="design.html">Design</a> · <a href="changelog.html">Changelog</a> · <a href="https://stimpunks.org">stimpunks.org</a> · <a href="https://morerealms.com">morerealms.com</a> · <a href="https://github.com/Stimpunks/Star-Stuff">Source on GitHub</a> · Print freely · Share freely · <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> · <a href="out-of-order-zine.html" aria-label="Zine No. 37, Out of Order — the one gap in our numbering, annotated">37</a> <a href="collection-easter-eggs.html" aria-label="Easter Eggs — a Star Stuff collection">🥚</a> · L★S
+      <a href="about.html">About</a> · <a href="search.html">Search</a> · <a href="design.html">Design</a> · <a href="changelog.html">Changelog</a> · <a href="https://stimpunks.org">stimpunks.org</a> · <a href="https://morerealms.com">morerealms.com</a> · <a href="https://github.com/Stimpunks/Star-Stuff">Source on GitHub</a> · Print freely · Share freely · <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> · <a href="out-of-order-zine.html" aria-label="Zine No. 37, Out of Order — the one gap in our numbering, annotated">37</a> · L★S
     </div>
     <span class="footer-ls">L★S</span>
+
+    <a class="footer-egg" href="collection-easter-eggs.html">
+      <svg class="footer-egg-art" viewBox="0 0 100 132" aria-hidden="true" focusable="false">
+        <defs>
+          <clipPath id="fe-upper"><polygon points="0,-20 100,-20 100,62 88,62 76,48 66,74 58,54 48,66 40,44 30,70 22,50 12,64 0,60"/></clipPath>
+          <clipPath id="fe-lower"><polygon points="0,60 12,64 22,50 30,70 40,44 48,66 58,54 66,74 76,48 88,62 100,62 100,150 0,150"/></clipPath>
+          <radialGradient id="fe-glow" cx="50%" cy="52%" r="52%">
+            <stop offset="0%" stop-color="#fbbf24" stop-opacity=".5"/><stop offset="100%" stop-color="#fbbf24" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <ellipse class="footer-egg-halo" cx="50" cy="64" rx="44" ry="22" fill="url(#fe-glow)"/>
+        <g clip-path="url(#fe-lower)">
+          <path class="footer-egg-fill" d="M50 8C66 8 80 30 84 56C88 82 74 124 50 124C26 124 12 82 16 56C20 30 34 8 50 8Z" fill="#0f0f2a" stroke="#fbbf24" stroke-width="2.6" stroke-linejoin="round"/>
+          <circle cx="36" cy="86" r="2.1" fill="#a78bfa"/><circle cx="58" cy="78" r="1.5" fill="#22d3ee"/>
+          <circle cx="66" cy="98" r="2.4" fill="#f472b6"/><circle cx="44" cy="106" r="1.5" fill="#4ade80"/>
+          <circle cx="52" cy="93" r="1.1" fill="#f9fafb"/><circle cx="29" cy="99" r="1.2" fill="#fbbf24"/>
+        </g>
+        <g class="footer-egg-cap" transform="translate(1.5 -7) rotate(-4 50 40)">
+          <g clip-path="url(#fe-upper)">
+            <path class="footer-egg-fill" d="M50 8C66 8 80 30 84 56C88 82 74 124 50 124C26 124 12 82 16 56C20 30 34 8 50 8Z" fill="#0f0f2a" stroke="#fbbf24" stroke-width="2.6" stroke-linejoin="round"/>
+          </g>
+          <polyline points="16,62 22,50 30,70 40,44 48,66 58,54 66,74 76,48 84,60" fill="none" stroke="#fbbf24" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+        </g>
+        <polyline points="16,62 22,50 30,70 40,44 48,66 58,54 66,74 76,48 84,60" fill="none" stroke="#fbbf24" stroke-width="2.6" stroke-opacity=".5" stroke-linejoin="round" stroke-linecap="round"/>
+      </svg>
+      <span class="footer-egg-label">Easter Eggs</span>
+    </a>
   </footer>
 
 </div>
