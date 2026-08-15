@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0a0a14">
+<link rel="canonical" href="https://starstuff.earth/one-atom-of-justice-zine.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta name="description" content="A credit to Terry Pratchett, and the fact-check that credit turned up. Discworld is already load-bearing at Stimpunks — First Sight and Second Thoughts is our method, quoted from Wintersmith and never named as such — but two of the three ideas we took from the Science of Discworld books are not Pratchett's at all. Those books alternate: his Discworld chapters, Ian Stewart and Jack Cohen's science chapters. Pan narrans sits in the science half, and lies-to-children is Cohen and Stewart's from five years earlier. Then Death's challenge, aimed at us: grind the universe down and show me one atom of justice. There isn't one. Our tagline is a promise we make, not a fact we found.">
+<!-- Open Graph / link unfurl -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Star Stuff &middot; Stimpunks Foundation &times; More Realms">
+<meta property="og:url" content="https://starstuff.earth/one-atom-of-justice-zine.html">
+<meta property="og:title" content="One Atom of Justice">
+<meta property="og:description" content="Crediting Terry Pratchett — and finding that two of the three ideas we borrowed have the wrong name on them. Then Death's challenge, aimed at our own tagline.">
+<meta property="og:image" content="https://starstuff.earth/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A rainbow-hued cosmic image — we are all made of star stuff.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="One Atom of Justice">
+<meta name="twitter:description" content="Grind the universe down and show me one atom of justice. There isn't one — and our tagline is a promise, not a finding.">
+<meta name="twitter:image" content="https://starstuff.earth/og-card.jpg">
+<title>One Atom of Justice — Stimpunks Zine No. 49</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="starstuff.css">
+<style>
+  :root {
+    --void:  var(--sp-void-deep);
+    --deep:  var(--sp-deep);
+    --page:  var(--sp-page);
+    --violet:var(--sp-purple);
+    --pink:  var(--sp-pink);
+    --gold:  var(--sp-gold);
+    --cyan:  var(--sp-cyan);
+    --green: var(--sp-green);
+    --ember: #c1653a;
+    --accent: var(--sp-purple);        /* this zine's identity accent — violet, unused by the other eggs */
+    --star-white: var(--sp-white-soft);
+    --stardust:   var(--sp-secondary-soft);
+    --dim:   var(--sp-dim);
+    --dim2:  var(--sp-dim-soft);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--void);
+    font-family: 'Atkinson Hyperlegible Next', system-ui, sans-serif;
+    color: var(--star-white);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── STARFIELD (violet · white · gold) ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 9% 14%, rgba(167,139,250,0.62) 0%, transparent 100%),
+      radial-gradient(1px 1px at 12% 17%, rgba(244,244,251,0.5) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 27% 7%, rgba(251,191,36,0.42) 0%, transparent 100%),
+      radial-gradient(1px 1px at 61% 64%, rgba(244,244,251,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 64% 67%, rgba(167,139,250,0.5) 0%, transparent 100%),
+      radial-gradient(2px 2px at 80% 23%, rgba(167,139,250,0.46) 0%, transparent 100%),
+      radial-gradient(1px 1px at 87% 52%, rgba(251,191,36,0.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 92% 78%, rgba(167,139,250,0.48) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 6% 59%, rgba(244,244,251,0.52) 0%, transparent 100%),
+      radial-gradient(1px 1px at 34% 85%, rgba(167,139,250,0.44) 0%, transparent 100%),
+      radial-gradient(1px 1px at 37% 88%, rgba(244,244,251,0.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 52% 42%, rgba(251,191,36,0.36) 0%, transparent 100%),
+      radial-gradient(2px 2px at 21% 89%, rgba(167,139,250,0.46) 0%, transparent 100%),
+      radial-gradient(1px 1px at 74% 5%, rgba(244,244,251,0.7) 0%, transparent 100%),
+      radial-gradient(1px 1px at 86% 91%, rgba(167,139,250,0.38) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .zine-shell { position: relative; z-index: 1; max-width: 820px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+
+  .spectrum-line { height: 2px; border: none; border-radius: 2px; background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); }
+
+  /* ── NAV ── */
+  .nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2.5rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(167,139,250,0.2); }
+  .nav-brand { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--dim); }
+  .nav-controls { display: flex; gap: 0.5rem; align-items: center; }
+  .nav-btn { background: none; border: 1px solid rgba(167,139,250,0.35); color: var(--stardust); font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.15em; padding: 0.4rem 0.85rem; border-radius: 2px; cursor: pointer; transition: all 0.2s ease; text-transform: uppercase; }
+  .nav-btn:hover { background: rgba(167,139,250,0.15); border-color: rgba(167,139,250,0.6); color: var(--star-white); }
+  .nav-btn.active { background: rgba(167,139,250,0.20); border-color: var(--accent); color: var(--star-white); }
+  .page-counter { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.2em; color: var(--dim2); }
+
+  .spread { display: none; animation: fadeIn 0.5s ease forwards; }
+  .spread.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ── COVER ── */
+  .cover-spread {
+    position: relative; min-height: 520px; border-radius: 4px; overflow: hidden;
+    background:
+      radial-gradient(ellipse at 24% 22%, rgba(167,139,250,0.13) 0%, transparent 52%),
+      radial-gradient(ellipse at 78% 26%, rgba(251,191,36,0.07) 0%, transparent 52%),
+      radial-gradient(ellipse at 66% 82%, rgba(167,139,250,0.09) 0%, transparent 52%),
+      radial-gradient(ellipse at 26% 80%, rgba(34,211,238,0.06) 0%, transparent 52%),
+      var(--deep);
+    border: 1px solid rgba(167,139,250,0.25);
+    box-shadow: inset 0 0 80px rgba(167,139,250,0.06), 0 0 0 4px rgba(255,255,255,0.03);
+    display: flex; flex-direction: column; justify-content: flex-end; padding: 3rem;
+  }
+  .cover-motif { position: absolute; top: -4px; right: -14px; width: 340px; height: 340px; opacity: 0.8; pointer-events: none; }
+  .cover-issue { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.5em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.5rem; }
+  .cover-title { font-weight: 700; font-size: clamp(2.1rem, 5.6vw, 3.4rem); line-height: 1.06; color: var(--star-white); letter-spacing: -0.01em; margin-bottom: 0.9rem; text-wrap: balance; }
+  .cover-title .amp { color: var(--accent); font-style: italic; }
+  .cover-subtitle { font-size: 1rem; color: var(--stardust); margin-bottom: 1.5rem; max-width: 470px; line-height: 1.55; }
+  .cover-byline { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.14em; color: var(--dim); margin-bottom: 1.8rem; }
+  .cover-byline strong { color: var(--stardust); font-weight: 700; }
+  .cover-rule { width: 220px; max-width: 60%; margin-bottom: 1.3rem; }
+  .cover-meta { display: flex; gap: 2rem; align-items: center; }
+  .cover-ls { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 1.4rem; color: var(--gold); letter-spacing: 0.05em; }
+  .cover-meta-text { font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--dim2); line-height: 1.9; }
+  .cover-corner { position: absolute; top: 2rem; right: 2.5rem; text-align: right; }
+  .cover-corner-num { font-weight: 700; font-size: 4.5rem; line-height: 1; color: var(--accent); opacity: 0.22; }
+  .cover-corner-label { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); display: block; margin-top: -0.3rem; }
+
+  /* ── INTERIOR ── */
+  .interior { background: var(--page); border: 1px solid rgba(167,139,250,0.15); border-radius: 4px; overflow: hidden; min-height: 480px; }
+  .spread-2col { display: grid; grid-template-columns: 1fr 1fr; min-height: 480px; }
+  .spread-left, .spread-right { padding: 3rem 2.4rem; position: relative; }
+  .spread-left { border-right: 1px solid rgba(167,139,250,0.12); }
+
+  .spread-2col.stacked { display: flex; flex-direction: column; }
+  .spread-2col.stacked > .spread-left,
+  .spread-2col.stacked > .spread-right { border-right: none; }
+  .spread-2col.stacked > .col-diagram { order: 2; padding-top: 0; }
+  .spread-2col.stacked > .col-text { padding-left: max(2.4rem, calc((100% - 32rem) / 2)); padding-right: max(2.4rem, calc((100% - 32rem) / 2)); }
+  .spread-2col.stacked .diagram-wrap { height: auto; }
+  .spread-2col.stacked .diagram { max-width: 380px; }
+
+  .eyebrow { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.1rem; }
+  .body-text { font-size: 0.98rem; line-height: 1.72; color: var(--stardust); }
+  .body-text p { margin-bottom: 1rem; }
+  .body-text p:last-child { margin-bottom: 0; }
+  .body-text strong { font-weight: 700; color: var(--star-white); }
+  .body-text em { font-style: italic; color: var(--star-white); }
+  .body-text a { color: var(--violet); text-decoration: none; border-bottom: 1px solid rgba(167,139,250,0.4); }
+  .body-text a:hover { border-bottom-color: var(--violet); color: var(--star-white); }
+  .body-text .violet { color: var(--violet); font-weight: 700; }
+  .body-text .pink { color: var(--pink); font-weight: 700; }
+  .body-text .gold { color: var(--gold); font-weight: 700; }
+  .body-text .cyan { color: var(--cyan); font-weight: 700; }
+  .body-text .green { color: var(--green); font-weight: 700; }
+  .body-text .lede { font-size: 1.08rem; color: var(--star-white); }
+
+  .spread-heading { font-weight: 700; font-size: 1.9rem; line-height: 1.12; color: var(--star-white); margin-bottom: 1.1rem; letter-spacing: -0.01em; margin-top: 0; scroll-margin-top: 5rem; }
+  .spread-heading .spectrum-word { background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .rule { width: 40px; margin: 1rem 0; }
+
+  .pull-quote { font-size: 1.18rem; font-weight: 700; line-height: 1.4; color: var(--star-white); border-left: 3px solid var(--accent); padding-left: 1.1rem; margin: 1.4rem 0; font-style: italic; }
+  .pull-quote.violet { border-left-color: var(--violet); }
+  .pull-quote.cyan { border-left-color: var(--cyan); }
+  .pull-quote.gold { border-left-color: var(--gold); }
+  .pull-quote.pink { border-left-color: var(--pink); }
+  .pull-quote .attr { display: block; font-family: 'Space Mono', monospace; font-size: 0.6rem; font-weight: 400; font-style: normal; letter-spacing: 0.08em; color: var(--dim); margin-top: 0.6rem; }
+
+  .callout { margin: 1.3rem 0; padding: 1rem 1.15rem; background: rgba(167,139,250,0.08); border: 1px solid rgba(167,139,250,0.26); border-radius: 4px; font-size: 1rem; font-style: italic; color: var(--star-white); line-height: 1.55; }
+  .callout .attr { display: block; font-family: 'Space Mono', monospace; font-size: 0.58rem; font-style: normal; letter-spacing: 0.06em; color: var(--dim); margin-top: 0.5rem; }
+
+  /* Death speaks in capitals in the novels. That is typography carrying characterisation,
+     so the quotation keeps it rather than tidying it into sentence case — see the colophon
+     note on which wording circulates and why. */
+  .deathspeech { font-family: 'Space Mono', monospace; font-size: 0.86rem; line-height: 1.85; letter-spacing: 0.04em; color: var(--star-white); background: rgba(167,139,250,0.07); border: 1px solid rgba(167,139,250,0.28); border-radius: 4px; padding: 1.05rem 1.2rem; margin: 1.3rem 0; }
+  .deathspeech em { font-style: italic; color: var(--gold); }
+  /* Narration and Susan's dialogue interleave with Death's speech in the novel, set in
+     ordinary roman type against his capitals. Keeping that contrast is the reason the
+     quotation is a styled block rather than a plain blockquote. */
+  .deathspeech .narr { font-family: 'Atkinson Hyperlegible Next', system-ui, sans-serif; letter-spacing: 0; color: var(--stardust); }
+  .deathspeech .attr { display: block; font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.06em; text-transform: none; color: var(--dim); margin-top: 0.7rem; }
+  .deathspeech .attr em { color: inherit; }
+
+  .note { font-size: 0.84rem; line-height: 1.6; color: var(--dim); border-left: 2px solid rgba(251,191,36,0.4); padding-left: 0.9rem; margin: 1.1rem 0; }
+  .note strong { color: var(--stardust); font-weight: 700; }
+
+  /* ── JOINT TAG ──
+     How We Got Here's notation, borrowed for the two claims on this page that are not
+     settled: the authorship of one passage, and which wording of Death's speech is the
+     novel's. Colours are that collection's own — gold for contested — so a reader who
+     knows the notation recognises it. */
+  .joint { display: flex; gap: 0.7rem; align-items: baseline; margin: 1.3rem 0; padding: 0.8rem 1rem; border-radius: 4px; }
+  .joint-tag { font-family: 'Space Mono', monospace; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; flex-shrink: 0; padding-top: 0.15rem; }
+  .joint-body { font-size: 0.86rem; line-height: 1.6; color: var(--stardust); }
+  .joint-body strong { color: var(--star-white); font-weight: 700; }
+  .joint--contested { background: rgba(251,191,36,0.10); border: 1px solid rgba(251,191,36,0.32); }
+  .joint--contested .joint-tag { color: var(--gold); }
+
+  /* ── TABLES ── */
+  .trades { width: 100%; border-collapse: collapse; margin: 1.3rem 0; font-size: 0.84rem; }
+  .trades caption { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dim); text-align: left; padding-bottom: 0.6rem; }
+  .trades th { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--stardust); text-align: left; padding: 0.5rem 0.6rem; border-bottom: 1px solid rgba(167,139,250,0.34); font-weight: 700; }
+  .trades td { padding: 0.55rem 0.6rem; border-bottom: 1px solid rgba(167,139,250,0.1); color: var(--stardust); line-height: 1.5; vertical-align: top; }
+  .trades td.keeps { color: var(--green); font-weight: 700; }
+  .trades td.loses { color: var(--gold); font-weight: 700; }
+  .trades td.his   { color: var(--violet); font-weight: 700; }
+
+  /* ── CODE ── */
+  .codeblock { font-family: 'Space Mono', monospace; font-size: 0.78rem; line-height: 1.9; color: var(--star-white); background: rgba(167,139,250,0.07); border: 1px solid rgba(167,139,250,0.26); border-radius: 4px; padding: 0.9rem 1.1rem; margin: 1.2rem 0; overflow-x: auto; }
+  .codeblock .k { color: var(--gold); }
+
+  /* ── DIAGRAMS ── */
+  .diagram-wrap { display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; }
+  .diagram { width: 100%; max-width: 300px; display: block; }
+  .diagram-caption { font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim); text-align: center; margin-top: 0.9rem; line-height: 1.9; }
+
+  /* ── REFUSALS ── */
+  .refusals { margin-top: 1.3rem; }
+  .refusal { font-size: 0.88rem; line-height: 1.5; color: var(--stardust); padding: 0.55rem 0; border-bottom: 1px solid rgba(167,139,250,0.1); display: flex; gap: 0.6rem; align-items: baseline; }
+  .refusal:last-child { border-bottom: none; }
+  .refusal-tag { font-family: 'Space Mono', monospace; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ember); flex-shrink: 0; padding-top: 0.12rem; }
+  .refusal strong { color: var(--star-white); font-weight: 700; }
+
+  /* ── COLOPHON ── */
+  .colophon { padding: 3rem; display: flex; flex-direction: column; justify-content: space-between; min-height: 480px; background: radial-gradient(ellipse at 82% 18%, rgba(167,139,250,0.09) 0%, transparent 50%), radial-gradient(ellipse at 18% 85%, rgba(251,191,36,0.06) 0%, transparent 50%), var(--page); }
+  .colophon-top { border-bottom: 1px solid rgba(167,139,250,0.14); padding-bottom: 1.3rem; margin-bottom: 1.2rem; }
+  .colophon-ls { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 2.4rem; color: var(--gold); letter-spacing: 0.05em; display: block; margin-bottom: 0.4rem; }
+  .colophon-phrase { font-size: 0.98rem; font-weight: 700; font-style: italic; color: var(--stardust); }
+  .series-list { display: flex; flex-direction: column; gap: 0.38rem; margin-bottom: 1.2rem; }
+  .series-item { font-size: 0.72rem; color: var(--dim); letter-spacing: 0.01em; display: flex; gap: 0.7rem; align-items: baseline; line-height: 1.45; }
+  .series-item.current { color: var(--accent); font-weight: 700; }
+  .series-num { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim2); flex-shrink: 0; }
+  .series-item.current .series-num { color: var(--accent); }
+  .reflect { border-top: 1px solid rgba(167,139,250,0.14); padding-top: 1rem; margin-bottom: 1.2rem; }
+  .reflect-label { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.65rem; }
+  .reflect-q { font-size: 0.86rem; line-height: 1.55; color: var(--stardust); margin-bottom: 0.55rem; font-style: italic; }
+  .reflect-q:last-child { margin-bottom: 0; }
+  .colophon-body { font-size: 0.75rem; color: var(--dim); line-height: 1.75; margin-bottom: 1.2rem; }
+  .colophon-body a { color: var(--violet); text-decoration: none; border-bottom: 1px solid rgba(167,139,250,0.4); }
+  .colophon-body a:hover { border-bottom-color: var(--violet); }
+  .colophon-h { font-family: 'Space Mono', monospace; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: var(--stardust); margin: 1rem 0 0.4rem; scroll-margin-top: 5rem; }
+  .colophon-footer { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--dim); line-height: 2.2; border-top: 1px solid rgba(167,139,250,0.14); padding-top: 1rem; }
+
+  /* ── SPREAD FOOTER ── */
+  .spread-footer { display: flex; justify-content: space-between; align-items: center; padding: 0.9rem 2.4rem; border-top: 1px solid rgba(167,139,250,0.1); }
+  .spread-footer-left { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--dim); }
+  .spread-footer-right { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; color: var(--accent); }
+
+  .twinkle { position: fixed; width: 3px; height: 3px; border-radius: 50%; animation: twinkle-anim 3s ease-in-out infinite; pointer-events: none; z-index: 0; }
+
+  @media (max-width: 600px) {
+    .spread-2col { grid-template-columns: 1fr; }
+    .spread-left { border-right: none; border-bottom: 1px solid rgba(167,139,250,0.12); }
+    .spread-2col.stacked > .spread-left { border-bottom: none; }
+    .spread-2col.stacked > .col-text { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .cover-spread { padding: 2rem; min-height: 420px; }
+    .cover-motif { width: 224px; height: 224px; top: -4px; right: -24px; opacity: 0.5; }
+    .cover-title { font-size: 2rem; }
+    .spread-heading { font-size: 1.55rem; }
+    .spread-left, .spread-right { padding: 2rem 1.5rem; }
+    .colophon { padding: 2rem 1.5rem; }
+    .trades { font-size: 0.76rem; }
+    .trades th, .trades td { padding: 0.4rem 0.35rem; }
+    .deathspeech { font-size: 0.78rem; }
+  }
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"One Atom of Justice","description":"A credit to Terry Pratchett, and the fact-check that paying it turned up. Discworld is already load-bearing across Stimpunks and Star Stuff — First Sight and Second Thoughts, quoted from Wintersmith on the philosophy page, is this project's working method and has never been named as its source; Miss Level's mutual aid from A Hat Full of Sky carries another page; the neurodiversity-punk hedgehog mascot is named for Esmeralda Weatherwax; Great A'Tuin and the Didactylos passage from Small Gods are already in Zine No. 35 and Field Guide No. 10. But two of the three ideas this site took from the Science of Discworld books are not Pratchett's. Those books alternate — Pratchett's Discworld narrative chapters and Ian Stewart and Jack Cohen's science chapters — and Pan narrans, the storytelling chimpanzee, sits in the science half of The Globe (2002), while lies-to-children is Cohen and Stewart's from The Collapse of Chaos (1994) and Figments of Reality (1997), five years before The Science of Discworld carried it to a wide audience. Quote aggregators file all of it under Pratchett alone. Narrativium is genuinely his. The zine then turns lies-to-children on this site's own simplifications, credits First Sight and Second Thoughts as the method actually in use, reads the Industrial Revolution novels as asking who a technology costs, and explains the clacks overhead and the X-Clacks-Overhead GNU Terry Pratchett header this site now sends. It closes on Death's challenge in Hogfather, quoted verbatim from the novel: grind the universe down and show me one atom of justice. There is not one, which is exactly this site's problem, since nucleosynthesis does not entail that anyone is loved. Death's own answer braids back into lies-to-children from the fiction side — the little lies are practice for the big ones, justice, mercy and duty — and the zine logs a second correction found while checking it, namely that the version of the passage circulating online, including in Stimpunks' own commonplace book and Becoming glossary entry, is sourced to a quote aggregator and to the 2006 television adaptation and drops the small capitals and italics the novel sets Death's dialogue in. The tagline is a promise we make, not a fact we found. Terry Pratchett's estate has no involvement and was not asked. A rhyme, not a proof.","image":"https://starstuff.earth/og-card.jpg","url":"https://starstuff.earth/one-atom-of-justice-zine.html","mainEntityOfPage":"https://starstuff.earth/one-atom-of-justice-zine.html","author":{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/"},"publisher":[{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/","logo":{"@type":"ImageObject","url":"https://starstuff.earth/og-card.jpg"}},{"@type":"Organization","name":"More Realms","url":"https://morerealms.com/"}],"isPartOf":{"@type":"WebSite","name":"Star Stuff","url":"https://starstuff.earth/"}}</script>
+</head>
+<body>
+
+<div class="twinkle" style="top:12%;left:12%;background:var(--violet);box-shadow:0 0 6px var(--violet);animation-delay:-0.6s"></div>
+<div class="twinkle" style="top:23%;left:87%;background:var(--star-white);box-shadow:0 0 6px var(--star-white);animation-delay:-1.5s"></div>
+<div class="twinkle" style="top:54%;left:6%;background:var(--gold);box-shadow:0 0 6px var(--gold);animation-delay:-2.3s"></div>
+<div class="twinkle" style="top:75%;left:92%;background:var(--violet);box-shadow:0 0 6px var(--violet);animation-delay:-0.9s"></div>
+<div class="twinkle" style="top:86%;left:31%;background:var(--star-white);box-shadow:0 0 6px var(--star-white);animation-delay:-1.8s"></div>
+<div class="twinkle" style="top:41%;left:95%;background:var(--violet);box-shadow:0 0 6px var(--violet);animation-delay:-3.1s"></div>
+
+<div class="zine-shell">
+
+  <nav class="ss-nav" style="--nav-accent:#a78bfa;" aria-label="Star Stuff collection">
+    <span class="ss-nav-home-group"><a class="ss-nav-home" href="index.html"><span class="ss-star" aria-hidden="true">★</span> stuff</a><a class="ss-nav-about" href="about.html">about</a>
+      <a class="ss-nav-search" href="search.html">search</a></span>
+    <a class="ss-nav-collection" href="collection-easter-eggs.html"><span class="ss-nav-collection-label">Collection</span> <span class="ss-nav-collection-name">Easter Eggs</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
+  </nav>
+
+  <nav class="nav">
+    <div class="nav-brand"><a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks</a> &times; <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a> &middot; Zine No. 49</div>
+    <div class="nav-controls">
+      <button class="nav-btn" id="prev-btn" onclick="changePage(-1)">&larr; prev</button>
+      <span class="page-counter" id="page-counter">1 / 11</span>
+      <button class="nav-btn" id="next-btn" onclick="changePage(1)">next &rarr;</button>
+    </div>
+  </nav>
+
+  <!-- ════ SPREAD 1: COVER ════ -->
+  <div class="spread active" id="spread-1">
+    <div class="cover-spread">
+      <svg class="cover-motif" viewBox="0 0 340 340" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <!-- Death's challenge as a diagram: the universe goes into the sieve, powder comes
+             out, and the one thing you were looking for is not in it.
+             Art held in the UPPER THIRD — the cover is 520px and the title sits at its foot,
+             so anything past y≈240 in this viewBox lands on the words. At scale 0.8 that
+             caps the group at y≈170.
+             Label colour is violet-300 (#c4b5fd) rather than the accent violet-400: this
+             group renders at opacity 0.8, and stepping one rung up the ramp is the
+             documented remedy for a caption inside a faded motif. -->
+        <g transform="translate(-10,4) scale(0.8)">
+          <!-- the universe, going in -->
+          <g fill="rgba(244,244,251,0.85)">
+            <circle cx="112" cy="26" r="2.2"/><circle cx="140" cy="16" r="1.6"/>
+            <circle cx="168" cy="28" r="2.6"/><circle cx="196" cy="18" r="1.7"/>
+            <circle cx="126" cy="44" r="1.5"/><circle cx="182" cy="46" r="1.9"/>
+            <circle cx="154" cy="34" r="1.4"/>
+          </g>
+          <g stroke="rgba(167,139,250,0.5)" stroke-width="1.1" stroke-linecap="round">
+            <path d="M118 54 V66"/><path d="M154 52 V66"/><path d="M190 54 V66"/>
+          </g>
+          <!-- the sieve -->
+          <path d="M74 74 L234 74 L196 106 L112 106 Z" fill="none" stroke="rgba(167,139,250,0.85)" stroke-width="1.6"/>
+          <g stroke="rgba(167,139,250,0.55)" stroke-width="0.9">
+            <path d="M92 90 H216"/><path d="M104 98 H204"/>
+          </g>
+          <!-- the finest powder, coming out -->
+          <g fill="rgba(251,191,36,0.75)">
+            <circle cx="132" cy="120" r="1"/><circle cx="146" cy="128" r="0.9"/>
+            <circle cx="160" cy="118" r="1.1"/><circle cx="174" cy="130" r="0.9"/>
+            <circle cx="152" cy="140" r="1"/><circle cx="168" cy="146" r="0.85"/>
+            <circle cx="138" cy="148" r="0.8"/>
+          </g>
+          <!-- and the thing that is not there -->
+          <circle cx="154" cy="172" r="13" fill="none" stroke="rgba(244,114,182,0.7)" stroke-width="1.2" stroke-dasharray="3 4"/>
+          <text x="154" y="196" text-anchor="middle" font-family="Space Mono, monospace" font-size="11" letter-spacing="1" fill="#c4b5fd">no atom of justice</text>
+        </g>
+      </svg>
+      <div class="cover-corner">
+        <div class="cover-corner-num" aria-hidden="true">49</div>
+        <span class="cover-corner-label">Easter Eggs</span>
+      </div>
+      <div class="cover-issue">Stimpunks &times; More Realms &middot; Zine No. 49</div>
+      <h1 class="cover-title">One Atom of <span class="amp">Justice</span></h1>
+      <p class="cover-subtitle">on a debt to Terry Pratchett, two ideas with the wrong name on them, and the objection our whole tagline has to survive</p>
+      <div class="cover-byline">after <strong>Terry Pratchett</strong>'s Discworld &middot; and <strong>Ian Stewart</strong> and <strong>Jack Cohen</strong>, who wrote the science half</div>
+      <hr class="spectrum-line cover-rule">
+      <div class="cover-meta">
+        <span class="cover-ls">L★S</span>
+        <div class="cover-meta-text">Love You Down To Your Star Stuff<br>open edition &middot; print freely</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 2: the debt ════ -->
+  <div class="spread" id="spread-2">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The credit</div>
+          <h2 class="spread-heading" id="already-load-bearing">Already load-bearing, never named</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">We have cited Terry Pratchett three times, always as fiction, always as one turtle among several. What we never said is that his witches taught us how to work.</p>
+            <p>The visible debt is small and correctly filed. <a href="everywhere-that-turtles-go-zine.html">No. 35</a> puts <strong>Great A'Tuin</strong> beside Turtle Island, <em>ao</em> and Kurma and says plainly they are not the same turtle; <a href="turtle-field-guide.html">Field Guide No. 10</a> keeps A'Tuin in the <em>turtles people made</em> section with no reframe table, because you do not run a &ldquo;sounds like / actually&rdquo; column over somebody's cosmology. That is all sound. It is also not the debt.</p>
+            <p>The real one is at <a href="https://stimpunks.org/philosophy/if-i-dont-help-them-who-will/">Stimpunks</a>, and it has been sitting there in plain sight:</p>
+            <div class="callout">First Sight and Second Thoughts, that's what a witch had to rely on: First Sight to see what's really there, and Second Thoughts to watch the First Thoughts to check that they were thinking right.<span class="attr">Terry Pratchett, <em>Wintersmith</em> (2006) — quoted on stimpunks.org since 2024</span></div>
+            <p><span class="violet">That is this project's method.</span> Not a resemblance to it — the thing itself, described better than we have ever managed. <a href="#first-sight-second-thoughts">Spread six</a> takes it apart properly. And it is not alone: Miss Level's <em>&ldquo;I store it in other people&rdquo;</em> carries our mutual-aid page, the <strong>neurodiversity-punk hedgehog mascot is named for Esmeralda Weatherwax</strong>, and the Librarian is in the Library. Four load-bearing borrowings, none of them ever credited as <em>where the method came from</em>.</p>
+            <div class="pull-quote">The citation habit points at claims. It does not point at the book that taught you how to hold a claim.<span class="attr">the same fault <a href="true-facts-zine.html">No. 47</a> found, in a different room</span></div>
+            <p>So this page is the credit. And in the course of writing it we went to check the quotations, the way we always do, and <strong>two of the three ideas turned out to have the wrong name on them.</strong> That is the next spread, and it is not a gotcha — it is the ordinary result of doing what this site says it does.</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 176" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig1-title fig1-desc">
+              <title id="fig1-title">Four borrowings, one uncredited kind</title>
+              <desc id="fig1-desc">Four Discworld borrowings already in use across Stimpunks and Star Stuff: Great A'Tuin cited as fiction, Miss Level's mutual aid, the hedgehog mascot named for Granny Weatherwax, and First Sight and Second Thoughts. The first three are credited as content; the fourth was being used as method and was never named as a source.</desc>
+              <text x="150" y="16" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.6" fill="var(--violet)">borrowed from Discworld</text>
+              <g fill="none" stroke="rgba(167,139,250,0.6)" stroke-width="1.1">
+                <rect x="24" y="28" width="252" height="18" rx="2"/>
+                <rect x="24" y="52" width="252" height="18" rx="2"/>
+                <rect x="24" y="76" width="252" height="18" rx="2"/>
+              </g>
+              <g font-family="Space Mono, monospace" font-size="6.2" fill="var(--sp-secondary)">
+                <text x="34" y="40">Great A'Tuin — cited as fiction</text>
+                <text x="34" y="64">&ldquo;I store it in other people&rdquo; — cited</text>
+                <text x="34" y="88">Esmx the hedgehog — named for Esme</text>
+              </g>
+              <g font-family="Space Mono, monospace" font-size="5.6" fill="var(--green)" text-anchor="end">
+                <text x="268" y="40">ok</text><text x="268" y="64">ok</text><text x="268" y="88">ok</text>
+              </g>
+              <rect x="24" y="100" width="252" height="20" rx="2" fill="rgba(251,191,36,0.12)" stroke="rgba(251,191,36,0.8)" stroke-width="1.3"/>
+              <text x="34" y="113" font-family="Space Mono, monospace" font-size="6.2" fill="var(--gold)">First Sight &amp; Second Thoughts</text>
+              <text x="268" y="113" text-anchor="end" font-family="Space Mono, monospace" font-size="5.6" fill="var(--gold)">method</text>
+              <path d="M20 130 H280" stroke="rgba(167,139,250,0.22)" stroke-width="0.9"/>
+              <text x="150" y="146" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.4" letter-spacing="0.8" fill="var(--sp-secondary)">three were quoted as content</text>
+              <text x="150" y="160" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="1" fill="var(--gold)">the fourth was being used as method</text>
+              <text x="150" y="173" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.3" letter-spacing="1.2" fill="var(--sp-dim)">and never named as a source</text>
+            </svg>
+            <div class="diagram-caption">Figure 1 · the borrowing that did not look like one</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">One Atom of Justice · Stimpunks</span>
+        <span class="spread-footer-right">2</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 3: the misattribution ════ -->
+  <div class="spread" id="spread-3">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The fact-check this page owes</div>
+          <h2 class="spread-heading" id="the-wrong-name-on-it">Two of the three have the <span class="spectrum-word">wrong name</span> on them</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">The <em>Science of Discworld</em> books are the ones this site actually learned from. They are also the ones whose authorship almost everybody, including us, gets wrong.</p>
+            <p>They are <strong>co-authored</strong>: Terry Pratchett with the mathematician <span class="cyan">Ian Stewart</span> and the reproductive biologist <span class="cyan">Jack Cohen</span>. And they are not co-authored in the blurred way that phrase usually means. <strong>The chapters alternate.</strong> The odd-numbered chapters are Pratchett's Discworld narrative — the wizards of Unseen University, who have accidentally made a universe in a jar. The even-numbered chapters are Stewart and Cohen's science, addressed straight to the reader about our universe.</p>
+            <p>Now look at where the ideas we took actually sit.</p>
+            <table class="trades">
+              <caption>whose idea is it?</caption>
+              <thead><tr><th>the idea</th><th>which half</th><th>whose</th></tr></thead>
+              <tbody>
+                <tr><td>narrativium</td><td>Discworld narrative</td><td class="his">Pratchett</td></tr>
+                <tr><td><em>Pan narrans</em>, the storytelling chimpanzee</td><td>science chapters</td><td class="keeps">Stewart &amp; Cohen</td></tr>
+                <tr><td>lies-to-children</td><td>science chapters &mdash; and five years earlier</td><td class="keeps">Cohen &amp; Stewart</td></tr>
+              </tbody>
+            </table>
+            <p>The quote you have seen shared is <em>&ldquo;We are the storytelling chimpanzee&rdquo;</em> — attributed, everywhere, to Terry Pratchett. It comes from the science half of <em>The Globe</em>. So does the passage about thinking critically and not accepting the word of authority. <span class="gold">The aggregators file both under the name that sells.</span></p>
+            <div class="joint joint--contested">
+              <span class="joint-tag">contested</span>
+              <span class="joint-body"><strong>We could not reach either passage in the book.</strong> Every route we tried ended at a quote aggregator, which this house treats as a lead and never as a citation — the rule we wrote after shipping a Baldwin misattribution that was really Martin Luther King Jr. So: the <em>structure</em> is verified and the <em>inference</em> from it is ours. Which sentence sits on which page stays open until somebody opens the book. See the colophon.</span>
+            </div>
+            <p>None of this is a complaint about Pratchett, who put both names on both covers. It is about what happens to a citation once it leaves the book — and it is the same mechanism <a href="too-good-to-check.html">Too Good to Check</a> catalogues. <strong>A collaborator gets sanded off because one name travels further.</strong></p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <!-- Geometry measured at render size (max-width 380px), after a first pass
+                 clipped the "narrativium" label off the left edge and left the two
+                 convergence arrows not meeting anything. Annotations now hang outside
+                 their own column: narrativium below the left stack (which ends at y=90),
+                 the two science coinages to the right of the right stack, which ends at
+                 x=220 and leaves 80px of viewBox for a 5px label. -->
+            <svg class="diagram" viewBox="0 0 300 190" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig2-title fig2-desc">
+              <title id="fig2-title">Alternating chapters, and where the ideas sit</title>
+              <desc id="fig2-desc">Two staggered columns of chapters. The left column is Pratchett's Discworld narrative and holds narrativium. The right column is Stewart and Cohen's science chapters and holds Pan narrans and lies-to-children. Below, arrows from both columns converge on a single box: one name on the quote.</desc>
+              <text x="65" y="13" text-anchor="middle" font-family="Space Mono, monospace" font-size="5.8" fill="var(--violet)">Pratchett</text>
+              <text x="185" y="13" text-anchor="middle" font-family="Space Mono, monospace" font-size="5.8" fill="var(--cyan)">Stewart &amp; Cohen</text>
+              <g fill="none" stroke="rgba(167,139,250,0.75)" stroke-width="1.1">
+                <rect x="30" y="20" width="70" height="14" rx="2"/>
+                <rect x="30" y="48" width="70" height="14" rx="2"/>
+                <rect x="30" y="76" width="70" height="14" rx="2"/>
+              </g>
+              <g fill="none" stroke="rgba(34,211,238,0.75)" stroke-width="1.1">
+                <rect x="150" y="34" width="70" height="14" rx="2"/>
+                <rect x="150" y="62" width="70" height="14" rx="2"/>
+                <rect x="150" y="90" width="70" height="14" rx="2"/>
+              </g>
+              <g font-family="Space Mono, monospace" font-size="5.2" text-anchor="middle">
+                <text x="65" y="29.5" fill="var(--violet)">Discworld</text>
+                <text x="65" y="57.5" fill="var(--violet)">Discworld</text>
+                <text x="65" y="85.5" fill="var(--violet)">Discworld</text>
+                <text x="185" y="43.5" fill="var(--cyan)">science</text>
+                <text x="185" y="71.5" fill="var(--cyan)">science</text>
+                <text x="185" y="99.5" fill="var(--cyan)">science</text>
+              </g>
+              <path d="M65 90 V99" stroke="rgba(167,139,250,0.5)" stroke-width="0.9"/>
+              <text x="65" y="108" text-anchor="middle" font-family="Space Mono, monospace" font-size="5" fill="var(--sp-dim)">narrativium</text>
+              <g stroke="rgba(34,211,238,0.5)" stroke-width="0.9">
+                <path d="M220 69 H226"/><path d="M220 97 H226"/>
+              </g>
+              <text x="229" y="71" font-family="Space Mono, monospace" font-size="5" fill="var(--sp-dim)">Pan narrans</text>
+              <text x="229" y="99" font-family="Space Mono, monospace" font-size="5" fill="var(--sp-dim)">lies-to-children</text>
+              <path d="M20 122 H280" stroke="rgba(167,139,250,0.22)" stroke-width="0.9"/>
+              <path d="M65 128 C 65 140, 110 142, 128 142" fill="none" stroke="rgba(251,191,36,0.8)" stroke-width="1.2"/>
+              <path d="M185 128 C 185 140, 190 142, 172 142" fill="none" stroke="rgba(251,191,36,0.8)" stroke-width="1.2"/>
+              <path d="M123 138 L128 142 L123 146" fill="none" stroke="rgba(251,191,36,0.95)" stroke-width="1.2"/>
+              <path d="M177 138 L172 142 L177 146" fill="none" stroke="rgba(251,191,36,0.95)" stroke-width="1.2"/>
+              <rect x="106" y="150" width="88" height="17" rx="3" fill="rgba(251,191,36,0.14)" stroke="rgba(251,191,36,0.85)" stroke-width="1.3"/>
+              <text x="150" y="161" text-anchor="middle" font-family="Space Mono, monospace" font-size="5.8" fill="var(--gold)">one name on it</text>
+              <text x="150" y="180" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.6" letter-spacing="0.8" fill="var(--sp-secondary)">chapter placement verified</text>
+              <text x="150" y="189" text-anchor="middle" font-family="Space Mono, monospace" font-size="6" letter-spacing="1" fill="var(--sp-dim)">sentence placement still open</text>
+            </svg>
+            <div class="diagram-caption">Figure 2 · two authors go in, one name comes out</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">One Atom of Justice · Stimpunks</span>
+        <span class="spread-footer-right">3</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 4: two lineages ════ -->
+  <div class="spread" id="spread-4">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Two lineages, one book</div>
+          <h2 class="spread-heading" id="narrativium-is-his">Narrativium is his. Lies-to-children is not.</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Both coinages arrive in the same 1999 book. They come from opposite directions and have completely different parentage, and keeping them straight is the whole job of this spread.</p>
+            <p><span class="violet">Narrativium</span> is Pratchett's, and it is a joke with a knife in it. On the Disc it is an actual element — the substance that makes stories happen, so that the millionth-to-one chance works and the third son succeeds. It is built as <strong>a parody of phlogiston</strong>, the imaginary fire-stuff that eighteenth-century chemistry invented to explain burning and then had to abandon. The joke: we invent a substance to explain a pattern we have noticed, and sometimes the substance is fictional and the pattern is real.</p>
+            <p><span class="cyan">Lies-to-children</span> is not his at all. Jack Cohen and Ian Stewart had been working the idea for years before Discworld carried it anywhere:</p>
+            <table class="trades">
+              <caption>where lies-to-children actually comes from</caption>
+              <thead><tr><th>year</th><th>book</th><th>what happens</th></tr></thead>
+              <tbody>
+                <tr><td class="keeps">1994</td><td><em>The Collapse of Chaos</em></td><td>Cohen &amp; Stewart discuss the thing: cultural lore passed on in a form that is sufficient but not completely true</td></tr>
+                <tr><td class="keeps">1997</td><td><em>Figments of Reality</em></td><td>elaborated, and the term used for the difficulty of reducing complex ideas for teaching</td></tr>
+                <tr><td class="his">1999</td><td><em>The Science of Discworld</em></td><td>reaches a mass audience — with a novelist's name on the spine</td></tr>
+              </tbody>
+            </table>
+            <p>A lie-to-children is the thing your physics teacher does when they tell you electrons orbit the nucleus like planets. It is false. It is also <strong>the only way to get you to the next rung</strong>, and the honest version of the practice says so out loud: <em>this is a ladder, and you are not at the top of it.</em></p>
+            <div class="pull-quote cyan">Every one of these zines is a lie-to-children. That is not the confession it sounds like — it is the job. The question is only whether we admit the next rung exists.<span class="attr">which is the next spread</span></div>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 168" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig3-title fig3-desc">
+              <title id="fig3-title">Two lineages converging on 1999</title>
+              <desc id="fig3-desc">Two tracks. The upper track is Pratchett's Discworld, arriving with narrativium, coined as a parody of phlogiston. The lower track runs from Cohen and Stewart's Collapse of Chaos in 1994 through Figments of Reality in 1997, carrying lies-to-children. Both meet at The Science of Discworld in 1999.</desc>
+              <text x="16" y="30" font-family="Space Mono, monospace" font-size="5.8" fill="var(--violet)">Pratchett</text>
+              <text x="16" y="98" font-family="Space Mono, monospace" font-size="5.8" fill="var(--cyan)">Cohen &amp; Stewart</text>
+              <path d="M16 40 H206" stroke="rgba(167,139,250,0.7)" stroke-width="1.3"/>
+              <path d="M16 108 H206" stroke="rgba(34,211,238,0.7)" stroke-width="1.3"/>
+              <g fill="rgba(34,211,238,0.95)">
+                <circle cx="60" cy="108" r="2.6"/><circle cx="128" cy="108" r="2.6"/>
+              </g>
+              <circle cx="128" cy="40" r="2.6" fill="rgba(167,139,250,0.95)"/>
+              <g font-family="Space Mono, monospace" font-size="5.5" text-anchor="middle">
+                <text x="60" y="122" fill="var(--cyan)">1994</text>
+                <text x="128" y="122" fill="var(--cyan)">1997</text>
+              </g>
+              <text x="60" y="132" text-anchor="middle" font-family="Space Mono, monospace" font-size="5" fill="var(--sp-dim)">Collapse</text>
+              <text x="128" y="132" text-anchor="middle" font-family="Space Mono, monospace" font-size="5" fill="var(--sp-dim)">Figments</text>
+              <text x="128" y="32" text-anchor="middle" font-family="Space Mono, monospace" font-size="5" fill="var(--sp-dim)">narrativium</text>
+              <path d="M206 40 C 224 40, 230 62, 232 70" fill="none" stroke="rgba(167,139,250,0.7)" stroke-width="1.2"/>
+              <path d="M206 108 C 224 108, 230 86, 232 78" fill="none" stroke="rgba(34,211,238,0.7)" stroke-width="1.2"/>
+              <rect x="212" y="64" width="72" height="20" rx="3" fill="rgba(251,191,36,0.12)" stroke="rgba(251,191,36,0.8)" stroke-width="1.3"/>
+              <text x="248" y="77" text-anchor="middle" font-family="Space Mono, monospace" font-size="6" fill="var(--gold)">1999</text>
+              <path d="M20 144 H280" stroke="rgba(167,139,250,0.22)" stroke-width="0.9"/>
+              <text x="150" y="158" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.2" letter-spacing="0.8" fill="var(--sp-secondary)">one book, two parentages</text>
+              <text x="150" y="167" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.2" letter-spacing="1.2" fill="var(--gold)">only one of them is Pratchett's</text>
+            </svg>
+            <div class="diagram-caption">Figure 3 · the ladder was already five years old</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">One Atom of Justice · Stimpunks</span>
+        <span class="spread-footer-right">4</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 5: turned on us ════ -->
+  <div class="spread" id="spread-5">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Turned around</div>
+          <h2 class="spread-heading" id="every-zine-is-a-ladder">Every zine here is a ladder</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">If a lie-to-children is a simplification that gets you to the next rung, then this entire site is made of them, and pretending otherwise would be the actual dishonesty.</p>
+            <p>We say <em>the atoms in your body were forged in dying stars</em>. That is a lie-to-children. Hydrogen is primordial; a good deal of the rest arrives from stellar winds, neutron star mergers and cosmic ray spallation, and &ldquo;dying stars&rdquo; is a serviceable rung that is not the top one. We say <em>bone is piezoelectric</em> — and had to correct ourselves twice, because it is the <strong>collagen</strong> and not the mineral. We drew a spiky profile and then <a href="the-lines-we-drew-zine.html">refused our own chart</a>.</p>
+            <p>So what separates a lie-to-children from the thing this site was built to fight? <span class="gold">One property, and it is the only one.</span></p>
+            <table class="trades">
+              <caption>same simplification, two practices</caption>
+              <thead><tr><th>lie-to-children</th><th>smoothed retelling</th></tr></thead>
+              <tbody>
+                <tr><td class="keeps">says it is a rung</td><td class="loses">presents itself as the top</td></tr>
+                <tr><td class="keeps">names what it left out</td><td class="loses">files off the hedges because the tidy version travels</td></tr>
+                <tr><td class="keeps">survives being climbed past</td><td class="loses">collapses when you check</td></tr>
+              </tbody>
+            </table>
+            <p>Which is why the apparatus around here looks the way it does. <strong>&ldquo;A rhyme, not a proof&rdquo;</strong> appears at the foot of piece after piece, and it is doing exactly this work: it marks the rung. So does the <a href="mycelium-and-rhizome-zine.html">wood-wide-web hedge</a>, where the mycorrhizal symbiosis is ours to use and the forest-wide story is not. So does <a href="turtle-field-guide.html">Field Guide No. 10</a> refusing to put a reframe table over somebody's cosmology.</p>
+            <div class="pull-quote gold">The ladder is not the problem. The ladder with the top rung painted on is the problem.<span class="attr">what <a href="collection-how-we-got-here.html">How We Got Here</a> is for</span></div>
+            <p>Cohen and Stewart's word for the next stage is the one we keep failing to earn: after lies-to-children come <em>lies-to-adults</em>, which are the simplifications you are handed once you can be trusted with the fact that they are simplifications. That is the register this site is trying to write in.</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 166" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig4-title fig4-desc">
+              <title id="fig4-title">A ladder with the top rung admitted, and one without</title>
+              <desc id="fig4-desc">Two ladders side by side. The left ladder has three rungs and a dashed fourth rung above marked as further up, labelled honest. The right ladder has three rungs and a solid cap painted across the top marked as the end, labelled smoothed.</desc>
+              <text x="76" y="16" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.2" fill="var(--green)">lie-to-children</text>
+              <text x="222" y="16" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.2" fill="var(--gold)">smoothed retelling</text>
+              <g stroke="rgba(74,222,128,0.7)" stroke-width="1.2">
+                <path d="M52 108 V34"/><path d="M100 108 V34"/>
+                <path d="M52 100 H100"/><path d="M52 80 H100"/><path d="M52 60 H100"/>
+              </g>
+              <path d="M52 40 H100" stroke="rgba(74,222,128,0.6)" stroke-width="1.2" stroke-dasharray="4 4"/>
+              <text x="76" y="30" text-anchor="middle" font-family="Space Mono, monospace" font-size="5.4" fill="var(--green)">further up</text>
+              <g stroke="rgba(251,191,36,0.7)" stroke-width="1.2">
+                <path d="M198 108 V44"/><path d="M246 108 V44"/>
+                <path d="M198 100 H246"/><path d="M198 80 H246"/><path d="M198 60 H246"/>
+              </g>
+              <path d="M192 44 H252" stroke="rgba(244,114,182,0.9)" stroke-width="2"/>
+              <text x="222" y="34" text-anchor="middle" font-family="Space Mono, monospace" font-size="5.4" fill="var(--pink)">&ldquo;that's all of it&rdquo;</text>
+              <path d="M150 26 V118" stroke="rgba(167,139,250,0.22)" stroke-width="0.9" stroke-dasharray="4 4"/>
+              <path d="M20 126 H280" stroke="rgba(167,139,250,0.22)" stroke-width="0.9"/>
+              <text x="150" y="142" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.2" letter-spacing="0.8" fill="var(--sp-secondary)">same rungs, different top</text>
+              <text x="150" y="154" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.4" letter-spacing="1" fill="var(--green)">&ldquo;a rhyme, not a proof&rdquo; is a rung marker</text>
+              <text x="150" y="164" text-anchor="middle" font-family="Space Mono, monospace" font-size="6" letter-spacing="1.2" fill="var(--sp-dim)">that is the whole difference</text>
+            </svg>
+            <div class="diagram-caption">Figure 4 · one of these can be climbed past</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">One Atom of Justice · Stimpunks</span>
+        <span class="spread-footer-right">5</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 6: First Sight and Second Thoughts ════ -->
+  <div class="spread" id="spread-6">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The method, credited</div>
+          <h2 class="spread-heading" id="first-sight-second-thoughts">First Sight and Second Thoughts</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Here is the debt paid properly. Everything this site does procedurally is a witch's two-part discipline, and Pratchett named both halves better than our documentation does.</p>
+            <p><span class="violet">First Sight is seeing what is actually in front of you</span> — not what you expected, not what the story says should be there. It is harder than it sounds, because the expectation arrives first and feels like observation. Our whole <a href="collection-field-guides.html">Field Guides</a> collection is First Sight as a form: seven of the twelve arrive independently at <em>there is no standard one of these</em>, which is what you find when you go and look instead of consulting the type specimen in your head.</p>
+            <p>It is also what the corrections look like. The <strong>mantis shrimp</strong> has sixteen photoreceptor classes and the famous claim collapses on contact with the literature — they discriminate wavelengths <em>worse</em> than we do. The <strong>wood wide web</strong> rhymes so beautifully with mutual aid that it got past us in three pieces before Karst, Jones and Hoeksema's 2023 review made us go back. <span class="gold">First Sight is not scepticism. It is the refusal to let a lovely pattern do your looking for you.</span></p>
+            <p><span class="cyan">Second Thoughts are the thoughts that watch the first ones.</span> Not doubt — <em>supervision</em>. And this is the half that machinery can actually carry, which is the only reason this site has any:</p>
+            <table class="trades">
+              <caption>Second Thoughts, as installed</caption>
+              <thead><tr><th>the first thought</th><th>what watches it</th></tr></thead>
+              <tbody>
+                <tr><td>&ldquo;this quote is obviously by&hellip;&rdquo;</td><td class="keeps"><code>FACTCHECK.md</code>, and the primary-source rule</td></tr>
+                <tr><td>&ldquo;the page looks fine&rdquo;</td><td class="keeps">five gates that measure instead of glancing</td></tr>
+                <tr><td>&ldquo;we got that right, surely&rdquo;</td><td class="keeps">a <a href="changelog.html">changelog that publishes our errors</a></td></tr>
+              </tbody>
+            </table>
+            <p>That last one is the Second Thought that costs something. <strong>Publishing your own corrections is not a virtue display; it is the only way the first thoughts ever get supervised in public.</strong> A witch checks her own thinking where somebody can see her do it.</p>
+            <div class="pull-quote violet">We built the apparatus first and found the name for it afterwards, in a children's book about a girl learning to be a witch. That is embarrassing in exactly the way this collection likes.<span class="attr">why this page exists</span></div>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 172" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig5-title fig5-desc">
+              <title id="fig5-title">First Sight and Second Thoughts as a loop</title>
+              <desc id="fig5-desc">The world feeds into First Sight, which is seeing what is really there rather than what was expected. First Sight feeds a first thought. Second Thoughts watch that first thought and loop back to correct it. Examples are given: the mantis shrimp and the wood wide web for First Sight, and the changelog and the five gates for Second Thoughts.</desc>
+              <rect x="112" y="16" width="76" height="17" rx="3" fill="none" stroke="rgba(244,244,251,0.6)" stroke-width="1.1"/>
+              <text x="150" y="28" text-anchor="middle" font-family="Space Mono, monospace" font-size="6" fill="var(--sp-secondary)">what is there</text>
+              <path d="M150 33 V46" stroke="rgba(167,139,250,0.6)" stroke-width="1.1"/>
+              <rect x="98" y="46" width="104" height="19" rx="3" fill="rgba(167,139,250,0.12)" stroke="rgba(167,139,250,0.85)" stroke-width="1.3"/>
+              <text x="150" y="59" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.2" fill="var(--violet)">First Sight</text>
+              <path d="M150 65 V80" stroke="rgba(167,139,250,0.6)" stroke-width="1.1"/>
+              <rect x="106" y="80" width="88" height="18" rx="3" fill="none" stroke="rgba(251,191,36,0.7)" stroke-width="1.1" stroke-dasharray="4 4"/>
+              <text x="150" y="92" text-anchor="middle" font-family="Space Mono, monospace" font-size="6" fill="var(--gold)">a first thought</text>
+              <rect x="98" y="112" width="104" height="19" rx="3" fill="rgba(34,211,238,0.12)" stroke="rgba(34,211,238,0.85)" stroke-width="1.3"/>
+              <text x="150" y="125" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.2" fill="var(--cyan)">Second Thoughts</text>
+              <path d="M150 98 V112" stroke="rgba(34,211,238,0.6)" stroke-width="1.1"/>
+              <path d="M98 121 C 66 121, 66 89, 92 89" fill="none" stroke="rgba(34,211,238,0.7)" stroke-width="1.1"/>
+              <path d="M97 85 L92 89 L97 93" fill="none" stroke="rgba(34,211,238,0.9)" stroke-width="1.1"/>
+              <g font-family="Space Mono, monospace" font-size="5" fill="var(--sp-dim)">
+                <text x="208" y="53">mantis shrimp</text>
+                <text x="208" y="62">wood wide web</text>
+                <text x="208" y="119">the changelog</text>
+                <text x="208" y="128">five gates</text>
+              </g>
+              <path d="M20 142 H280" stroke="rgba(167,139,250,0.22)" stroke-width="0.9"/>
+              <text x="150" y="156" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.2" letter-spacing="0.8" fill="var(--sp-secondary)">the second half is the one you can build</text>
+              <text x="150" y="168" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.3" letter-spacing="1.2" fill="var(--violet)">Wintersmith, 2006</text>
+            </svg>
+            <div class="diagram-caption">Figure 5 · a discipline in two halves</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">One Atom of Justice · Stimpunks</span>
+        <span class="spread-footer-right">6</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 7: the Industrial Revolution books ════ -->
+  <div class="spread" id="spread-7">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The Industrial Revolution books</div>
+          <h2 class="spread-heading" id="who-does-it-cost">A technology arrives. <span class="spectrum-word">Who pays?</span></h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">There is a run of Discworld novels that all do the same trick: drop one modern innovation into a medieval city and then refuse to look away from the bill.</p>
+            <p>The pattern is consistent enough to be a method. <em>Moving Pictures</em> gets cinema. <em>The Truth</em> gets the printing press and the newspaper. <em>Going Postal</em> gets the post — stamps, a network, a man made to run it. <em>Making Money</em> gets paper currency and modern banking. <em>Raising Steam</em> gets the railway. In each, the innovation genuinely works, genuinely delights, and genuinely costs somebody something, <strong>and the book stays in the room for the third part.</strong></p>
+            <p>That third part is rare. The default technology story has two acts — the invention, and the wonder — and stops before the bill arrives. <span class="gold">Pratchett's have three</span>, and the third is always about who was standing where the thing landed: the clacks workers on the towers, the golems who are property, the engravers whose craft the press makes worthless, the people the railway timetable now owns.</p>
+            <div class="pull-quote gold">The question is never &ldquo;does it work?&rdquo; It works. That is what makes the question interesting.<span class="attr">the shape of an Industrial Revolution book</span></div>
+            <p>Which lands squarely on <a href="https://stimpunks.org/glossary/techno-solutionism/">techno-solutionism</a> and on the <a href="https://stimpunks.org/glossary/luddite-sensibilities/">Luddite Sensibilities</a> Stimpunks argues for — and it is worth being precise, because the word gets used as an insult by people who do not know what it means. <strong>The Luddites were not against machines.</strong> They were skilled workers objecting to a specific arrangement in which the machine's gains went one way and its costs went another. They broke the frames of the employers cutting wages and left the others alone. That is not technophobia. That is a question about distribution, asked with a hammer.</p>
+            <p>It is also the question this site keeps asking about a different set of machines. An assessment instrument works. A behaviour protocol works, for some value of works. <em>Who pays?</em> is the question <a href="collection-how-we-got-here.html">How We Got Here</a> exists to keep open, and Pratchett was running the experiment in a fantasy city for thirty years.</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 174" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig6-title fig6-desc">
+              <title id="fig6-title">Two acts or three</title>
+              <desc id="fig6-desc">The default technology story runs invention then wonder and stops. The Industrial Revolution novels add a third act asking who pays, with examples: the clacks workers, the golems who are property, the engravers the press displaced, and the people the timetable owns.</desc>
+              <text x="150" y="15" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.2" fill="var(--sp-dim)">the default story</text>
+              <g fill="none" stroke="rgba(138,134,160,0.7)" stroke-width="1.1">
+                <rect x="52" y="22" width="76" height="16" rx="2"/>
+                <rect x="146" y="22" width="76" height="16" rx="2"/>
+              </g>
+              <text x="90" y="33" text-anchor="middle" font-family="Space Mono, monospace" font-size="5.6" fill="var(--sp-secondary)">invention</text>
+              <text x="184" y="33" text-anchor="middle" font-family="Space Mono, monospace" font-size="5.6" fill="var(--sp-secondary)">wonder</text>
+              <path d="M228 30 H248" stroke="rgba(138,134,160,0.5)" stroke-width="1" stroke-dasharray="3 3"/>
+              <text x="264" y="32" text-anchor="middle" font-family="Space Mono, monospace" font-size="5.4" fill="var(--sp-dim)">stop</text>
+              <path d="M20 50 H280" stroke="rgba(167,139,250,0.22)" stroke-width="0.9"/>
+              <text x="150" y="66" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.2" fill="var(--violet)">what Pratchett does</text>
+              <g fill="none" stroke="rgba(167,139,250,0.7)" stroke-width="1.1">
+                <rect x="20" y="74" width="60" height="16" rx="2"/>
+                <rect x="90" y="74" width="60" height="16" rx="2"/>
+              </g>
+              <rect x="160" y="74" width="82" height="16" rx="2" fill="rgba(251,191,36,0.14)" stroke="rgba(251,191,36,0.85)" stroke-width="1.3"/>
+              <text x="50" y="85" text-anchor="middle" font-family="Space Mono, monospace" font-size="5.6" fill="var(--sp-secondary)">invention</text>
+              <text x="120" y="85" text-anchor="middle" font-family="Space Mono, monospace" font-size="5.6" fill="var(--sp-secondary)">wonder</text>
+              <text x="201" y="85" text-anchor="middle" font-family="Space Mono, monospace" font-size="5.8" fill="var(--gold)">who pays?</text>
+              <g stroke="rgba(251,191,36,0.5)" stroke-width="0.9">
+                <path d="M201 90 V98"/><path d="M60 98 H262"/>
+                <path d="M60 98 V104"/><path d="M128 98 V104"/><path d="M196 98 V104"/><path d="M262 98 V104"/>
+              </g>
+              <g font-family="Space Mono, monospace" font-size="5" fill="var(--sp-dim)" text-anchor="middle">
+                <text x="60" y="114">clacks crew</text>
+                <text x="128" y="114">golems</text>
+                <text x="196" y="114">engravers</text>
+                <text x="262" y="114">timetabled</text>
+              </g>
+              <path d="M20 128 H280" stroke="rgba(167,139,250,0.22)" stroke-width="0.9"/>
+              <text x="150" y="144" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.2" letter-spacing="0.8" fill="var(--sp-secondary)">it works. that is what makes it interesting</text>
+              <text x="150" y="158" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.6" letter-spacing="1" fill="var(--gold)">the Luddites broke some frames, not all</text>
+              <text x="150" y="170" text-anchor="middle" font-family="Space Mono, monospace" font-size="6" letter-spacing="1.2" fill="var(--sp-dim)">a question about distribution</text>
+            </svg>
+            <div class="diagram-caption">Figure 6 · the act most stories skip</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">One Atom of Justice · Stimpunks</span>
+        <span class="spread-footer-right">7</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 8: GNU ════ -->
+  <div class="spread" id="spread-8">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The clacks</div>
+          <h2 class="spread-heading" id="gnu">GNU</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">In <em>Going Postal</em> there is a semaphore network across the continent — towers, shutters, a code, and crews who live up there. Early in the book a young man named John Dearheart dies on one.</p>
+            <p>His father puts his name into the <strong>Overhead</strong> — the working channel the towers use to talk to each other, which no customer ever sees — with three letters in front of it. <span class="violet">G</span>: send it on. <span class="violet">N</span>: do not log it. <span class="violet">U</span>: at the end of the line, turn it around and send it back. <strong>GNU John Dearheart</strong>, up and down the towers, indefinitely, for as long as the network stands.</p>
+            <div class="callout">A man's not dead while his name is still spoken.<span class="attr">Terry Pratchett, <em>Going Postal</em> (2004) — see the colophon on wording</span></div>
+            <p>Pratchett died on <span class="gold">12 March 2015</span>. Within days, readers on the Discworld subreddit proposed doing the obvious thing to the network we actually have: put him in the Overhead. An HTTP response header, invisible in the page, carried on every request, logged by nobody, meaning nothing to any browser:</p>
+            <div class="codeblock"><span class="k">X-Clacks-Overhead</span>: GNU Terry Pratchett</div>
+            <p><strong>As of today, this site sends it.</strong> Every page you load from <code>starstuff.earth</code> carries that header. You can see it in your browser's network panel, under response headers, on this page or any other. It does nothing. That is the point — it is the exact structural joke, an unlogged message that costs one line of config and turns around at the end of the line.</p>
+            <div class="joint joint--contested">
+              <span class="joint-tag">stated plainly</span>
+              <span class="joint-body"><strong>This is a fan convention, not Pratchett's instruction.</strong> He did not ask for it, his estate did not originate it, and nobody should read the header as endorsement by anyone. It is a thing readers started doing in March 2015 because the book gave them a shape for grief and no better one has turned up since.</span>
+            </div>
+            <p>It also belongs in <a href="collection-easter-eggs.html">this collection</a> more exactly than anything else here. An easter egg on this site is a real piece behind a small door — and the smallest door we have is a header nobody has to read.</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 168" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig7-title fig7-desc">
+              <title id="fig7-title">GNU, turning around at the end of the line</title>
+              <desc id="fig7-desc">A row of clacks towers. A message travels left to right along the top, marked G for pass it on and N for not logged, then U turns it around at the last tower and it travels back along the bottom, repeating indefinitely.</desc>
+              <g stroke="rgba(167,139,250,0.75)" stroke-width="1.2" fill="none">
+                <path d="M34 96 V64 M26 96 H42"/><path d="M100 96 V64 M92 96 H108"/>
+                <path d="M166 96 V64 M158 96 H174"/><path d="M232 96 V64 M224 96 H240"/>
+              </g>
+              <g fill="rgba(167,139,250,0.55)">
+                <rect x="28" y="60" width="12" height="8"/><rect x="94" y="60" width="12" height="8"/>
+                <rect x="160" y="60" width="12" height="8"/><rect x="226" y="60" width="12" height="8"/>
+              </g>
+              <path d="M40 50 H226" stroke="rgba(251,191,36,0.85)" stroke-width="1.3"/>
+              <path d="M221 46 L226 50 L221 54" fill="none" stroke="rgba(251,191,36,0.95)" stroke-width="1.3"/>
+              <path d="M232 50 C 250 50, 250 112, 232 112" fill="none" stroke="rgba(251,191,36,0.85)" stroke-width="1.3"/>
+              <path d="M226 112 H40" stroke="rgba(251,191,36,0.85)" stroke-width="1.3"/>
+              <path d="M45 108 L40 112 L45 116" fill="none" stroke="rgba(251,191,36,0.95)" stroke-width="1.3"/>
+              <path d="M34 112 C 18 112, 18 50, 34 50" fill="none" stroke="rgba(251,191,36,0.5)" stroke-width="1.1" stroke-dasharray="3 3"/>
+              <text x="130" y="44" text-anchor="middle" font-family="Space Mono, monospace" font-size="6" fill="var(--gold)">GNU John Dearheart</text>
+              <text x="264" y="84" text-anchor="middle" font-family="Space Mono, monospace" font-size="5.6" fill="var(--gold)">U</text>
+              <text x="130" y="126" text-anchor="middle" font-family="Space Mono, monospace" font-size="5.4" fill="var(--sp-dim)">and back again</text>
+              <g font-family="Space Mono, monospace" font-size="5.2" fill="var(--sp-secondary)">
+                <text x="20" y="20">G — pass it on</text>
+                <text x="20" y="30">N — not logged</text>
+              </g>
+              <path d="M20 136 H280" stroke="rgba(167,139,250,0.22)" stroke-width="0.9"/>
+              <text x="150" y="150" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.2" letter-spacing="0.8" fill="var(--sp-secondary)">this site now sends the header</text>
+              <text x="150" y="163" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.2" letter-spacing="1.2" fill="var(--violet)">a fan convention, not his instruction</text>
+            </svg>
+            <div class="diagram-caption">Figure 7 · the smallest door on this site</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">One Atom of Justice · Stimpunks</span>
+        <span class="spread-footer-right">8</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 9: the embuggerance ════ -->
+  <div class="spread" id="spread-9">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Posterior cortical atrophy</div>
+          <h2 class="spread-heading" id="the-embuggerance">The embuggerance</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">In December 2007, at fifty-nine, Pratchett announced that he had posterior cortical atrophy. He gave it a word of his own almost immediately, and the word was not <em>battle</em> or <em>journey</em>.</p>
+            <p>PCA is a rare presentation of Alzheimer's disease that attacks from the back of the brain forward. Because those posterior regions do visual and spatial processing, <strong>it takes the seeing before it takes the remembering</strong> — reading, judging where things are, recognising what your eyes are pointed at. It typically arrives earlier than typical Alzheimer's, in the mid-fifties or early sixties, which is exactly where it found him.</p>
+            <p>He called it an <span class="gold">embuggerance</span>. A nuisance of an unusually total kind. Something in the way.</p>
+            <div class="pull-quote violet">Not a battle he was losing. Not a lesson. A thing that was in the way, named accurately, out loud, by the person it was in the way of.<span class="attr">why the word matters here</span></div>
+            <p>Then he kept writing, by changing the method rather than the ambition: dictating to his assistant <strong>Rob Wilkins</strong>, and using speech-recognition software. He was knighted in <span class="violet">2009</span>. He went on publishing until he died on 12 March 2015.</p>
+            <p>We are putting this in because <a href="https://stimpunks.org/">Stimpunks</a> is a disability organisation and this is what accommodation actually looks like from inside: <strong>the output was never the thing that had to change.</strong> The interface did. Dictation is not a lesser way of writing a book; it is a way of writing a book. That is the entire argument of the disability rights movement, demonstrated at length by a man producing novels while his occipital lobe went.</p>
+            <div class="note"><strong>What we are not doing with this.</strong> Not treating his diagnosis as inspiration, not describing him as brave for having a disease, and not diagnosing him with anything he did not name himself — including anything on our own side of the neurodivergence line. He told us what he had. That is the only source we need or should want.</div>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig8-title fig8-desc">
+              <title id="fig8-title">The method changed, the ambition did not</title>
+              <desc id="fig8-desc">Two rows. Before the diagnosis: typing, leading to novels. After: dictation and speech recognition software, leading to novels. The output box is identical in both rows; only the interface differs.</desc>
+              <text x="150" y="15" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.2" fill="var(--sp-dim)">2007 &rarr; 2015</text>
+              <g font-family="Space Mono, monospace" font-size="5.6" fill="var(--sp-secondary)">
+                <text x="20" y="42">before</text>
+                <text x="20" y="88">after</text>
+              </g>
+              <rect x="62" y="30" width="76" height="18" rx="3" fill="none" stroke="rgba(167,139,250,0.7)" stroke-width="1.1"/>
+              <text x="100" y="42" text-anchor="middle" font-family="Space Mono, monospace" font-size="5.8" fill="var(--violet)">typing</text>
+              <path d="M138 39 H166" stroke="rgba(167,139,250,0.6)" stroke-width="1.1"/>
+              <path d="M161 35 L166 39 L161 43" fill="none" stroke="rgba(167,139,250,0.9)" stroke-width="1.1"/>
+              <rect x="166" y="30" width="82" height="18" rx="3" fill="rgba(74,222,128,0.12)" stroke="rgba(74,222,128,0.85)" stroke-width="1.3"/>
+              <text x="207" y="42" text-anchor="middle" font-family="Space Mono, monospace" font-size="5.8" fill="var(--green)">novels</text>
+              <rect x="62" y="66" width="76" height="18" rx="3" fill="none" stroke="rgba(34,211,238,0.75)" stroke-width="1.1"/>
+              <text x="100" y="78" text-anchor="middle" font-family="Space Mono, monospace" font-size="5.4" fill="var(--cyan)">dictation</text>
+              <rect x="62" y="88" width="76" height="18" rx="3" fill="none" stroke="rgba(34,211,238,0.75)" stroke-width="1.1"/>
+              <text x="100" y="100" text-anchor="middle" font-family="Space Mono, monospace" font-size="5" fill="var(--cyan)">speech software</text>
+              <path d="M138 87 H166" stroke="rgba(34,211,238,0.6)" stroke-width="1.1"/>
+              <path d="M161 83 L166 87 L161 91" fill="none" stroke="rgba(34,211,238,0.9)" stroke-width="1.1"/>
+              <rect x="166" y="78" width="82" height="18" rx="3" fill="rgba(74,222,128,0.12)" stroke="rgba(74,222,128,0.85)" stroke-width="1.3"/>
+              <text x="207" y="90" text-anchor="middle" font-family="Space Mono, monospace" font-size="5.8" fill="var(--green)">novels</text>
+              <path d="M20 118 H280" stroke="rgba(167,139,250,0.22)" stroke-width="0.9"/>
+              <text x="150" y="134" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.2" letter-spacing="0.8" fill="var(--sp-secondary)">the right-hand box never changed</text>
+              <text x="150" y="147" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.4" letter-spacing="1" fill="var(--gold)">that is what an accommodation is</text>
+              <text x="150" y="158" text-anchor="middle" font-family="Space Mono, monospace" font-size="5.8" letter-spacing="1.2" fill="var(--sp-dim)">not a lesser way of writing a book</text>
+            </svg>
+            <div class="diagram-caption">Figure 8 · the interface, not the ambition</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">One Atom of Justice · Stimpunks</span>
+        <span class="spread-footer-right">9</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 10: one atom of justice ════ -->
+  <div class="spread" id="spread-10">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Death's challenge</div>
+          <h2 class="spread-heading" id="one-atom-of-justice">One atom of justice</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Now the objection. In <em>Hogfather</em>, Death is explaining to his granddaughter why humans need to believe in things like the Hogfather. Susan pushes back — and he says the hardest thing anyone has said to this website.</p>
+            <div class="deathspeech">YOU THINK SO? THEN TAKE THE UNIVERSE AND GRIND IT DOWN TO THE FINEST POWDER AND SIEVE IT THROUGH THE FINEST SIEVE AND THEN <em>SHOW</em> ME ONE ATOM OF JUSTICE, ONE MOLECULE OF MERCY. AND YET&mdash;<span class="narr">Death waved a hand.</span> AND YET YOU ACT AS IF THERE IS SOME IDEAL ORDER IN THE WORLD, AS IF THERE IS SOME&hairsp;.&hairsp;.&hairsp;. SOME <em>RIGHTNESS</em> IN THE UNIVERSE BY WHICH IT MAY BE JUDGED.<span class="attr">Death, in <em>Hogfather</em> (1996), verbatim &mdash; the capitals and the two italics are the novel's own. Checked against the book, not an aggregator.</span></div>
+            <p>Read our masthead against that. <em>You are made of star stuff. The universe loves you for it.</em> The first sentence is nucleosynthesis and it is true. <span class="gold">The second sentence is not in the atoms.</span> You can grind this entire site down — every citation, every field guide, every carefully sourced figure — and sieve it, and there will be no molecule of <em>and therefore you belong</em> in the powder.</p>
+            <p>We know. It is written into the house rules: <strong>no naturalistic fallacy</strong>, and the line that closes <a href="everywhere-that-turtles-go-zine.html">No. 35</a> — <em>that variation persists in nature is not why difference deserves welcome.</em> The physics does not entail the love. It never did. Anyone who tells you the universe validates your existence because carbon is common is selling you the same trick the eugenicists sold, with a nicer conclusion attached.</p>
+            <p>So what is the second sentence doing there? Pratchett's answer arrives a few lines <em>earlier</em> in the same conversation, and it is <a href="#narrativium-is-his">the ladder from spread four</a> in the novelist's half of the shop:</p>
+            <div class="deathspeech">YES. AS PRACTICE. YOU HAVE TO START OUT LEARNING TO BELIEVE THE <em>LITTLE</em> LIES.<br><span class="narr">&ldquo;So we can believe the big ones?&rdquo;</span><br>YES. JUSTICE. MERCY. DUTY. THAT SORT OF THING.<span class="attr">Death and Susan, <em>Hogfather</em> (1996), verbatim</span></div>
+            <p><span class="violet">That is lies-to-children, arrived at from the fiction side.</span> Cohen and Stewart's ladder gets you from planetary electrons to quantum mechanics. Death's gets you from the tooth fairy to <strong>justice, mercy, duty</strong> — the big lies, which are not found in the powder either, and which exist anyway because enough people practised on the small ones and then acted as if the big ones were real.</p>
+            <p>Susan makes exactly our objection — <em>&ldquo;people have</em> got <em>to believe that, or what's the</em> point—&rdquo; — and Death's reply is three words long and closes the argument:</p>
+            <div class="deathspeech">MY POINT EXACTLY.<span class="attr">Death, <em>Hogfather</em> (1996)</span></div>
+            <p>The point is not that it is out there. <strong>The point is that it has got to be believed.</strong> And a few lines later he says the other half, helping her onto the horse:</p>
+            <div class="deathspeech">NO. YOU NEED TO BELIEVE IN THINGS THAT AREN'T TRUE. HOW ELSE CAN THEY <em>BECOME</em>?<span class="attr">Death, <em>Hogfather</em> (1996) &mdash; quoted at Stimpunks under <em>Becoming</em>, where the capitals and the italic on <em>become</em> had been lost</span></div>
+            <p><em>How else can they become.</em> Not a consolation — <strong>a construction schedule.</strong> Justice is not a discovery, it is a thing being built, and belief is the scaffolding you stand on while you build it. That is the same grammar as the falling angel meeting the rising ape: we are the animal that is <em>on its way somewhere</em>, in both directions at once, and the meeting place is made of things we decided to mean.</p>
+            <p>And there is one more beat, which could have been written for this site specifically. Death points out that stars explode and worlds collide and there is almost nowhere in the universe a human can survive — <em>and yet you believe that a bed is a normal thing.</em> He calls it the most amazing talent, and then, being Death, calls it <span class="gold">a very special kind of stupidity</span>. <strong>Both of those are correct at once, which is the register this entire project is written in.</strong></p>
+            <div class="pull-quote">So: the tagline is a promise we make, not a fact we found. That is a stronger thing to be, not a weaker one. A fact you found could turn out otherwise. A promise is only broken if we break it.<span class="attr">what this whole site is, said accurately</span></div>
+            <p><strong>Love you down to your star stuff</strong> is therefore an act, not an observation. The star stuff is the checkable half and it is genuinely, gorgeously true. The love is ours, and we are putting it there on purpose, and it will hold exactly as long as we keep holding it. <span class="violet">Which is the only kind of justice there has ever been.</span></p>
+            <div class="refusals">
+              <div class="refusal"><span class="refusal-tag">Not:</span><span><strong>authorised, endorsed, or anything to do with the Pratchett estate.</strong> They have no involvement in this page, were not asked, and have not seen it. Every reading here is ours and so is every error.</span></div>
+              <div class="refusal"><span class="refusal-tag">Not:</span><span><strong>a claim that Pratchett was neurodivergent.</strong> He named one condition and we take him at his word on it. Diagnosing the dead in order to recruit them is a thing done <em>to</em> us often enough that we are not going to do it to anybody else.</span></div>
+              <div class="refusal"><span class="refusal-tag">Not:</span><span><strong>an argument that fiction beats evidence.</strong> The opposite. <a href="collection-how-we-got-here.html">This whole collection</a> exists to reclaim science from the things that wear its clothes, and Pratchett is on that side — the <em>Science of Discworld</em> books are a sustained argument for the practice, not against it.</span></div>
+              <div class="refusal"><span class="refusal-tag">Not:</span><span><strong>&ldquo;believe whatever you like.&rdquo;</strong> The little lies are practice for justice and mercy, not for anything you fancy. A belief that has to become true is under an obligation the moment you hold it, and most comfortable beliefs are not.</span></div>
+              <div class="refusal"><span class="refusal-tag">Not:</span><span><strong>a retreat from the citations.</strong> Everything checkable on this site is still checked, and this page found three attribution errors while being written. Saying the love is a promise does not soften a single figure.</span></div>
+              <div class="refusal"><span class="refusal-tag">Not:</span><span><strong>a claim on grief that isn't ours.</strong> Millions of people loved this writer. We are one small project saying where four of our habits came from.</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 176" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig9-title fig9-desc">
+              <title id="fig9-title">What survives the sieve, and what is added</title>
+              <desc id="fig9-desc">Star stuff passes through a sieve and is confirmed as checkable. Justice, mercy and the claim that you are loved do not pass through the sieve. They are shown instead being placed on the far side by hand, labelled promised rather than found.</desc>
+              <text x="76" y="16" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.2" fill="var(--cyan)">into the sieve</text>
+              <text x="224" y="16" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.2" fill="var(--gold)">put there by us</text>
+              <path d="M150 24 V150" stroke="rgba(167,139,250,0.25)" stroke-width="0.9" stroke-dasharray="4 4"/>
+              <path d="M28 34 L124 34 L104 56 L48 56 Z" fill="none" stroke="rgba(34,211,238,0.85)" stroke-width="1.4"/>
+              <g stroke="rgba(34,211,238,0.5)" stroke-width="0.8">
+                <path d="M40 46 H112"/>
+              </g>
+              <g font-family="Space Mono, monospace" font-size="5.4" fill="var(--sp-secondary)" text-anchor="middle">
+                <text x="76" y="30">star stuff</text>
+              </g>
+              <g fill="rgba(34,211,238,0.85)">
+                <circle cx="62" cy="68" r="1.2"/><circle cx="76" cy="76" r="1.1"/>
+                <circle cx="90" cy="68" r="1.3"/><circle cx="70" cy="86" r="1"/>
+                <circle cx="84" cy="90" r="1.1"/>
+              </g>
+              <rect x="34" y="100" width="84" height="18" rx="3" fill="rgba(34,211,238,0.12)" stroke="rgba(34,211,238,0.85)" stroke-width="1.2"/>
+              <text x="76" y="112" text-anchor="middle" font-family="Space Mono, monospace" font-size="5.6" fill="var(--cyan)">checkable</text>
+              <g font-family="Space Mono, monospace" font-size="5.4" fill="var(--sp-dim)" text-anchor="middle">
+                <text x="224" y="36">justice</text>
+                <text x="224" y="48">mercy</text>
+                <text x="224" y="60">&ldquo;you are loved&rdquo;</text>
+              </g>
+              <g stroke="rgba(244,114,182,0.7)" stroke-width="1" stroke-dasharray="3 3" fill="none">
+                <rect x="188" y="26" width="72" height="42" rx="3"/>
+              </g>
+              <path d="M224 68 V96" stroke="rgba(251,191,36,0.8)" stroke-width="1.2"/>
+              <path d="M220 91 L224 96 L228 91" fill="none" stroke="rgba(251,191,36,0.95)" stroke-width="1.2"/>
+              <rect x="182" y="100" width="84" height="18" rx="3" fill="rgba(251,191,36,0.14)" stroke="rgba(251,191,36,0.85)" stroke-width="1.2"/>
+              <text x="224" y="112" text-anchor="middle" font-family="Space Mono, monospace" font-size="5.6" fill="var(--gold)">promised</text>
+              <path d="M20 132 H280" stroke="rgba(167,139,250,0.22)" stroke-width="0.9"/>
+              <text x="150" y="148" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.2" letter-spacing="0.8" fill="var(--sp-secondary)">no atom of justice in the powder</text>
+              <text x="150" y="161" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.6" letter-spacing="1" fill="var(--gold)">so we put it there and keep it there</text>
+              <text x="150" y="173" text-anchor="middle" font-family="Space Mono, monospace" font-size="6" letter-spacing="1.2" fill="var(--violet)">a promise is only broken if we break it</text>
+            </svg>
+            <div class="diagram-caption">Figure 9 · one half is found, one half is kept</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">One Atom of Justice · Stimpunks</span>
+        <span class="spread-footer-right">10</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 11: COLOPHON ════ -->
+  <div class="spread" id="spread-11">
+    <div class="interior">
+      <div class="colophon">
+        <div>
+          <div class="colophon-top">
+            <span class="colophon-ls">L★S</span>
+            <p class="colophon-phrase">There is no atom of justice in the powder. So we put it there, and we keep putting it there, and that is the whole job.</p>
+          </div>
+
+          <div class="series-list">
+            <div class="series-item"><span class="series-num">No. 35</span> Everywhere That Turtles Go — where Great A'Tuin already is</div>
+            <div class="series-item"><span class="series-num">FG 10</span> A Field Guide to Turtles — turtles people made, no reframe table</div>
+            <div class="series-item"><span class="series-num">No. 40</span> reclaiming science from the things that wear its clothes</div>
+            <div class="series-item"><span class="series-num">No. 37</span> Out of Order — the first egg</div>
+            <div class="series-item"><span class="series-num">No. 47</span> True Facts About True Facts — the other credit paid late</div>
+            <div class="series-item current"><span class="series-num">No. 49</span> One Atom of Justice — the method, credited ← you are here</div>
+          </div>
+
+          <div class="reflect">
+            <div class="reflect-label">Reflection</div>
+            <p class="reflect-q">What do you already do, every day, that you learned from a story and never credited as a source?</p>
+            <p class="reflect-q">Which of your beliefs are you holding as findings when they are actually promises — and would they be stronger the other way round?</p>
+            <p class="reflect-q">Whose name got sanded off the thing you quoted, because one collaborator's travels further?</p>
+            <p class="reflect-q">When a technology arrives where you work, who is standing where it lands?</p>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="colophon-h" id="sources">Sources &amp; notes</h3>
+          <div class="colophon-body">
+            <p><strong>The Science of Discworld books.</strong> Terry Pratchett, <strong>Ian Stewart</strong> and <strong>Jack Cohen</strong>, <em>The Science of Discworld</em> (Ebury Press, 1999) and <em>The Science of Discworld II: The Globe</em> (Ebury Press, 2002). <strong>The alternating structure is the verified fact this page turns on</strong>: odd-numbered chapters carry the Discworld narrative, even-numbered chapters the science exposition, with Stewart and Cohen the science writers of the partnership. <em>Pan narrans</em>, the storytelling chimpanzee proposed against <em>Homo sapiens</em>, is from the science material of <em>The Globe</em>.</p>
+            <p><strong>Lies-to-children.</strong> Jack Cohen and Ian Stewart, <em>The Collapse of Chaos</em> (1994), where the idea appears as cultural lore transmitted in a form sufficient but not wholly true; elaborated in <em>Figments of Reality: The Evolution of the Curious Mind</em> (1997) as the difficulty of reducing complex concepts for teaching; carried to a mass readership by <em>The Science of Discworld</em> in 1999. <strong>Narrativium</strong>, by contrast, is Pratchett's own, from the Discworld side, and is built as a parody of phlogiston.</p>
+            <p><strong>Open, and marked contested on <a href="#the-wrong-name-on-it">spread three</a>.</strong> We could not reach the &ldquo;think critically about what you are told&rdquo; passage, or the exact <em>Pan narrans</em> sentence, in the books themselves — every route ended at a quote aggregator, which this house treats as a lead and never as a citation. So the chapter <em>structure</em> is verified and our inference that these passages sit in the science half is <strong>ours, and open</strong>. Anyone with the books to hand can close it, and we will log the answer either way.</p>
+            <p><strong>Death's speech.</strong> <em>Hogfather</em> (1996). <strong>Verified against the book.</strong> Every passage on <a href="#one-atom-of-justice">spread ten</a> is quoted verbatim from the novel, including the small capitals Death's dialogue is set in and the italics on <em>show</em>, <em>little</em>, <em>rightness</em> and <em>become</em>. <strong>And a correction it turned up, which is the reason this note is long:</strong> the version of these lines circulating online — including <em>in our own commonplace book and in the</em> <a href="https://stimpunks.org/glossary/becoming/">Becoming</a> <em>glossary entry at stimpunks.org</em> — is cited to Goodreads and to a clip of the <strong>2006 Sky television adaptation</strong>, and it silently drops the capitals and the italics. Those are not decoration: the capitals are how Pratchett writes Death for forty-one books, and <em>become</em> is italicised because the whole argument rests on that one word. We had the right author, the right novel and the wrong typography, sourced to an aggregator and a screen adaptation. This is the same fault <a href="everywhere-that-turtles-go-zine.html">No. 35</a> caught in its own Didactylos passage; there, as here, it closed only because <strong>Ryan opened the book</strong> — on 14 August 2026, while this page was being written, which is why the page changed shape between draft and publication. The stimpunks.org entries still need the same fix and that is now logged.</p>
+            <p><strong>Wintersmith and A Hat Full of Sky.</strong> The First Sight and Second Thoughts passage is from <em>Wintersmith</em> (2006) and has been quoted at <a href="https://stimpunks.org/philosophy/if-i-dont-help-them-who-will/">stimpunks.org</a> since 2024; Miss Level's &ldquo;I store it in other people&rdquo; and &ldquo;If I don't help them, who will?&rdquo; are from <em>A Hat Full of Sky</em> (2004), pp. 116–117, cited there to the HarperCollins edition. Both were already sourced on our own site and are used here as they stand.</p>
+            <p><strong>The clacks.</strong> <em>Going Postal</em> (Doubleday, 2004). John Dearheart, the Overhead, and G / N / U — pass it on, do not log it, turn it around at the end of the line. <strong>Wording note:</strong> &ldquo;A man's not dead while his name is still spoken&rdquo; is given here in the form recorded by the Discworld reference wiki; the variant &ldquo;a man is not dead&hellip;&rdquo; circulates widely, and we have <strong>not</strong> confirmed either against the novel. Treat the wording as open and the substance as sound. The <code>X-Clacks-Overhead: GNU Terry Pratchett</code> header was proposed by readers on the Discworld subreddit in <strong>March 2015</strong>, after Pratchett's death on the 12th, and spread widely enough to be covered by the BBC. <strong>It is a fan convention and not his instruction or his estate's.</strong> This site began sending it on 14 August 2026, from a Netlify <code>_headers</code> file.</p>
+            <p><strong>Biography.</strong> Born 28 April 1948; died 12 March 2015. Posterior cortical atrophy announced <strong>December 2007</strong>, at 59; &ldquo;embuggerance&rdquo; is his own word, given in a radio interview. PCA is a rare, typically early-onset presentation of Alzheimer's disease affecting posterior regions — visual and spatial processing — before memory. He continued to write by dictating to his assistant <strong>Rob Wilkins</strong> and by using speech-recognition software. Knighted 2009. <strong>Taken from reference sources rather than from primary documents</strong>, and used here only for dates, the diagnosis he announced himself, and working method.</p>
+            <p><strong>The Industrial Revolution novels.</strong> <em>Moving Pictures</em> (cinema), <em>The Truth</em> (the printing press and the newspaper), <em>Going Postal</em> (the post and the stamp), <em>Making Money</em> (paper currency and banking), <em>Raising Steam</em> (the railway). Reference sources describe the pattern as introducing a modern innovation into the setting; <strong>the three-act reading on <a href="#who-does-it-cost">spread seven</a> — invention, wonder, and then who pays — is ours</strong>, offered as a reading of a body of work and not as a finding. On the Luddites: they were skilled textile workers targeting specific employers' machinery over wages and conditions, not machinery as such — a distinction <a href="https://stimpunks.org/glossary/luddite-sensibilities/">Luddite Sensibilities</a> is built on.</p>
+            <h3 class="colophon-h" id="what-this-is-not">What this page is, and is not</h3>
+            <p>It is a <strong>credit and an appreciation, written entirely by us</strong>. <strong>Terry Pratchett's estate has no involvement, was not consulted, and has not seen it.</strong> Nothing here should be read as authorisation or endorsement — including the header on <a href="#gnu">spread eight</a>, which is a reader convention this site has chosen to join.</p>
+            <p><strong>One thing we have deliberately left out.</strong> Pratchett spent his last years as a prominent advocate for assisted dying, including the 2011 documentary <em>Choosing to Die</em>. That is a genuinely contested matter within disability communities — including ours, including among people who love his books — and it deserves either its own carefully sourced piece or nothing at all. It does not deserve a paragraph on the way past. So it has one here, saying that, and no more.</p>
+            <p>It sits in <a href="collection-easter-eggs.html">Easter Eggs</a> because it is a page about our own furniture: where our method came from, and what our own tagline can and cannot claim. An egg here is <strong>not a lower standard</strong> — same sourcing, same grading, same ledger row, same gates. It is just not in the grid.</p>
+            <h3 class="colophon-h" id="a-rhyme-not-a-proof">A rhyme, not a proof</h3>
+            <p>A comic fantasy novel is not evidence for a paradigm of human variation, and Death is a character. Where this page sets his challenge against our masthead, it is because the challenge is <em>correct</em> and we would rather answer it in public than hope nobody asks. The star stuff is real and checked. The love is ours, deliberately added, and held on purpose. <strong>GNU Terry Pratchett.</strong></p>
+          </div>
+          <div class="colophon-footer">
+            <a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks Foundation</a> &times; <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a><br>
+            stimpunks.org &middot; morerealms.com &middot; starstuff.earth<br>
+            <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> &middot; open edition &middot; print freely
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">One Atom of Justice · Stimpunks</span>
+        <span class="spread-footer-right">11</span>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /zine-shell -->
+
+<script>
+  let current = 1;
+  const total = 11;
+
+  function changePage(dir) {
+    const next = current + dir;
+    if (next < 1 || next > total) return;
+    document.getElementById('spread-' + current).classList.remove('active');
+    current = next;
+    document.getElementById('spread-' + current).classList.add('active');
+    document.getElementById('page-counter').textContent = current + ' / ' + total;
+    document.getElementById('prev-btn').disabled = current === 1;
+    document.getElementById('next-btn').disabled = current === total;
+    document.getElementById('prev-btn').classList.toggle('active', current > 1);
+    document.getElementById('next-btn').classList.toggle('active', current < total);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') changePage(1);
+    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   changePage(-1);
+  });
+
+  document.getElementById('prev-btn').disabled = true;
+  document.getElementById('next-btn').classList.add('active');
+</script>
+<script src="starstuff.js" defer></script>
+</body>
+</html>
