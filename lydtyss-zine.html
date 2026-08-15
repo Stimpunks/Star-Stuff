@@ -289,7 +289,11 @@
   .element-note { font-size: 0.8125rem; color: var(--secondary); line-height: 1.6; }
 
   .scale-list { list-style: none; margin-top: 0.5rem; }
-  .scale-item { display: grid; grid-template-columns: 3rem 1fr; gap: 1rem; align-items: start; padding: 0.9rem 0; border-bottom: 1px solid var(--border-dim); }
+  /* 4.5rem, not 3rem: every other label is two words and wraps, but COMMUNITY is one
+     unbreakable word measuring 66.5px tracked out, so at 3rem (48px) it overflowed its
+     own column and its last letters sat on top of "The people around you". 4.5rem is
+     72px — the widest label plus a little. */
+  .scale-item { display: grid; grid-template-columns: 4.5rem 1fr; gap: 1rem; align-items: start; padding: 0.9rem 0; border-bottom: 1px solid var(--border-dim); }
   .scale-item:last-child { border-bottom: none; }
   .scale-level { font-size: 0.55rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--pink); padding-top: 0.15rem; line-height: 1.4; text-align: right; }
   .scale-level.gold { color: var(--gold); }

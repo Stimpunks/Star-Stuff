@@ -151,7 +151,7 @@ on the 12th as the twelfth, at two members — see *the two-member floor* below.
   `DECISIONS.md` rather than left to look like drift. The trade it bought: the alternative was a
   hand-written single-file exemption inside `check-markup.mjs`, and **a collection page is visible
   where a tool exemption is not.** An egg is *not a lower standard* — same sourcing, same grading,
-  same `FACTCHECK.md` row, same changelog entry, same five gates. Only the door moves. And eggs stay
+  same `FACTCHECK.md` row, same changelog entry, same six gates. Only the door moves. And eggs stay
   inside `sitemap.xml`, `search-index.json` and every gate, because a page the checks cannot see is
   a page that rots.
 
@@ -546,7 +546,7 @@ node tools/check-markup.mjs --check               # exit non-zero on any failure
   and has recurred often enough to prove that remembering is not a control.
 - **The baseline is 0.** A clean tree passes, so `--check` is a real ship
   gate rather than an informational sweep. (This was the distinction from `check-contrast.mjs`
-  until 2026-08-13, when that one reached zero too — all five gates now hold at 0.) It was
+  until 2026-08-13, when that one reached zero too — all six gates now hold at 0.) It was
   regression-tested against the actual broken file
   from git history, and against decoys that must *not* fire — an `a a` CSS selector, a nested
   anchor inside a JS string, and a `>` inside an attribute value.
@@ -574,7 +574,7 @@ node tools/check-sitemap.mjs --check       # exit non-zero on any problem
 node tools/check-sitemap.mjs path/to.xml   # audit a different file
 ```
 
-- **It exists because `sitemap.xml` is hand-maintained and nothing looked at it.** The other four
+- **It exists because `sitemap.xml` is hand-maintained and nothing looked at it.** The other
   gates each examine a *page*; none opens the sitemap, so a page could be entirely absent and every
   check still passed. Nothing on the live site looks wrong either, which is why the two faults it
   was built from survived so long: `the-nearest-body-zine.html` had **never been listed** — a live
@@ -601,6 +601,66 @@ node tools/check-sitemap.mjs path/to.xml   # audit a different file
   synthetic faults were each confirmed to fire, and the decoys that must *not* fire — the bare root
   entry, the `index.html` exemption, a `lastmod` of exactly today — pass clean.
 - No Chrome, no dependencies, like `check-markup.mjs`. Local dev tool; Netlify does not run it.
+
+## Text collision checking (`tools/check-overlap.mjs`)
+
+The sixth gate, added 2026-08-14. The other five ask *what colour is it*, *what shape is the tag
+tree*, *does it fit the paper*, *is it in the sitemap*. This one asks **where is it**, which nothing
+here had ever measured.
+
+```bash
+node tools/check-overlap.mjs                     # every *.html in the repo root
+node tools/check-overlap.mjs the-lines-we-drew-zine.html   # just these
+node tools/check-overlap.mjs --check             # exit non-zero on any collision
+node tools/check-overlap.mjs --verbose           # every finding, not the first 8
+```
+
+- **It exists because No. 48 shipped with three text collisions and all five gates passed it.** The
+  cover motif's caption ran through `.cover-title`; the motif label stack ran through
+  `.cover-corner`, and after a first over-correction through `.cover-issue`; and Figure 8's two-line
+  *never / seen* label overlapped itself. Each was found by a person looking at a screenshot. **None
+  of the five was wrong to pass** — a collision is not a colour, not a tag tree, not a word, not a
+  page count, and the pages were legible, well-formed, fully indexed and correctly listed.
+  `the-shadow-is-bigger-zine.html` even carries a source comment warning that *anything past y≈240
+  in this viewBox lands on the words*, which is the tell: **a comment is a note, not a control.**
+- **Inked extent, not the element box — this is the whole design.** The throwaway prototype compared
+  `getBoundingClientRect()` of block elements and drowned in false positives, because `.cover-issue`
+  is a full-width block whose text stops far short of its right edge. Its "ignore boxes wider than
+  92% of the host" filter is a proxy for the real question and not a good one — `.cover-issue`
+  measures 87%, so it stayed. Now every HTML **text node** goes through a `Range` and
+  `getClientRects()`, which ends exactly where the glyphs end. Text nodes rather than elements also
+  kills the other guaranteed false positive for free: a `<span>` inside a `<p>` always overlaps its
+  parent's box, but their text nodes are disjoint.
+- **Line boxes are not ink, and half-leading is space a neighbour may use.** `.cover-corner-label`
+  tucks under `.cover-corner-num` with `margin-top:-0.3rem` on all 40 covers and is perfectly
+  correct; trust the line box and all 40 fail. Each rect is shrunk to `INK_RATIO × font-size`
+  centred in the line box, and `MIN_OVERLAP` then requires a real intersection **in both axes**,
+  scaled to the smaller type — 2px is a catastrophe at 5.5px and nothing at 72px. The model is
+  deliberately generous: it can only under-report, and **an under-reported collision still has a
+  human to catch it, where an over-reported one is a gate nobody reads.**
+- **It also reports `clipped`** — text outside an `overflow:hidden` ancestor, or outside its own
+  `<svg>` viewport (a viewBox'd `<svg>` clips by UA default). `CLIP_TOL` is a fraction of the type
+  size, not a pixel count, because `getBBox` reports the *advance* box including side bearings —
+  empty space no ink occupies. It sits **between two measured cases**, not at a guessed number:
+  `the-lines-we-drew-zine.html` lost **0.86em** off "light-years" and the reader got *"ight-years"*,
+  while `why-difference-comes-first-zine.html` had **0.22em** of a closing quote's bearing past the
+  edge with the glyph intact.
+- **The baseline is 0, and getting there found seven pre-existing faults — none of them false
+  positives.** Four covers (Nos. 30, 27, 19, 17) had a motif caption rendered on top of the gradient
+  title word, *the same fault as No. 48 and undetected in shipped work*; `lydtyss-zine.html` had
+  COMMUNITY — the one unbreakable label — overflowing its 3rem grid column onto the body text; plus
+  the two clip cases above. **A gate whose first honest run finds seven real defects is the argument
+  for the gate.**
+- **Regression-tested against reconstructed real states, not only synthetics.** No. 48 landed in a
+  single commit, so its broken states are not in git — but the page's own comments record the exact
+  coordinates, so faults 1 and 2 rebuild precisely (`y=168`; `y=70/90/106`) and both fire, naming
+  the right elements. Fault 3's original spacing is unrecoverable; the label fires at ≤3 units of
+  separation and is clean at 4, where the x-height ink genuinely clears. Decoys confirmed silent.
+- **What it does not measure, on purpose.** Print (paper is a different layout; `check-sheets.mjs`
+  owns page fitting). One viewport, 1280×900, matching `check-contrast.mjs` — a collision that only
+  happens at 380px is real and this will not see it. And **text over non-text**: a label crossing a
+  line or an arrowhead is a legibility judgement about artwork, and still needs eyes at render size.
+- 102 pages in ~47s. Chrome and Node 22+; local dev tool, Netlify does not run it.
 
 ## Design system
 
