@@ -1,0 +1,40 @@
+# Netlify redirect rules.
+#
+# One job: send the .netlify.app hostname to the custom domain.
+#
+# Netlify did not do this on its own. On 2026-08-15 all of these answered HTTP 200
+# with the same ETag — byte-identical documents at four addresses:
+#
+#   https://star-stuff.netlify.app/design
+#   https://star-stuff.netlify.app/design.html
+#   https://starstuff.earth/design
+#   https://starstuff.earth/design.html
+#
+# 110 pages × 4 = 440 crawlable URLs for 110 documents, and search engines split a
+# page's ranking signals across duplicates rather than picking a winner. In the 30
+# days to 2026-08-15, google.com sent 35 referrals against 15,049 pageviews — near
+# zero for a site with a maintained sitemap, real headings and JSON-LD throughout.
+# The duplication is the most likely reason the technical SEO is returning nothing.
+#
+# It also fixes an inbound link. stimpunks.org's /star-stuff/ hub — in their main
+# nav under Learn, and our single best referrer — links star-stuff.netlify.app, not
+# starstuff.earth. Those readers now land on the canonical host. Better still, get
+# the links themselves updated; this is the safety net, not the fix.
+#
+# The `!` is required. Without it a redirect only fires when no file exists at the
+# path, and a file exists at every one of these paths, so every rule would be dead.
+#
+# WHAT THIS DELIBERATELY DOES NOT DO: canonicalize /design.html -> /design (or the
+# reverse) on starstuff.earth. Netlify serves both forms itself and its Pretty URLs
+# post-processing can redirect between them; a rule pointing the other way would
+# make an infinite loop and take the whole site down. The house convention already
+# settles this the safe way — sitemap.xml, every internal link and every
+# <link rel="canonical"> say `.html`, which is the standard mechanism for exactly
+# this and needs no redirect. Leave it alone.
+#
+# This consolidates the URL surface. It will not make the pageview count smaller —
+# a crawler hitting the old host now gets a 301 and follows it, which is still two
+# log entries. The point is that Google finally sees one page instead of four.
+
+https://star-stuff.netlify.app/*  https://starstuff.earth/:splat  301!
+http://star-stuff.netlify.app/*   https://starstuff.earth/:splat  301!
