@@ -434,11 +434,36 @@ tracking — the query never leaves the reader's browser.
   almost none of its prose used to sail through: `about.html` has exactly three `.scale` blocks, so
   a `records.length < 3` gate saw "3 records, fine" and shipped **12% of the page**. Fixed
   2026-08-08 by measuring instead of counting — each page's records are compared against
-  `textOf(main)`, and below **`COVERAGE_FLOOR` (0.9)** the extractor re-segments by heading, then
-  appends a remainder record for anything still unclaimed. The run now prints a coverage
+  `textOf(main)`, and below **`COVERAGE_FLOOR` (0.9)** the extractor re-segments by heading. The run
+  now prints a coverage
   percentage per page and a warning list at the end, because *a page that indexes 12% of itself
   looks exactly like a healthy one if all you print is the record count.* **If a new page reports
   under 100%, give it real headings or add its container to the chunk selector — don't ignore it.**
+- **The remainder record is NOT gated on coverage, and the floor must never be put back in front of
+  it (fixed 2026-08-17).** Step 3c indexes whatever no chunk claimed. It used to run only below
+  `COVERAGE_FLOOR`, which reads like a sensible rescue rule and is **the `about.html` mistake above
+  wearing a higher number**: a percentage is a ratio, and what 3c protects is an *absolute quantity
+  of prose*. The bigger a page's repeating unit grows, the more text the same percentage hides — so
+  the gate leaked worst on the pages that scored **best**, and as a cliff rather than a slope:
+  `collection-star-stuff.html` 93% / 2,532 chars, `index.html` 97% / 4,484, `changelog.html` 100% /
+  1,422. **8,438 characters unfindable on the three highest-scoring pages on the site**, including
+  every `.collection-intro` blurb on the front page and the whole curatorial argument on a
+  collection page — which is the one thing a collection page is *for*. The tell is that the other
+  twelve collection pages were fine: they sit at 20–84%, so they drop through 3b and always had
+  their intros indexed. **Star Stuff crossed 90% only by growing to the largest card grid here, so
+  the page was penalised for succeeding**, and Kin (84%) and Star Gazing (79%) were next in line.
+  Un-gating costs nothing it was protecting — 3c can only append text no record claimed, so it can
+  never double-index — and `push()`'s 40-char minimum is the right filter because it measures the
+  prose, not the ratio. The leftover is segmented by heading where it has headings (so the front
+  page's section intros land on `#collections`, `#field-guides`, …), falling back to one lump, which
+  is what `inclusion-safety-creed.html` still correctly gets. **The floor keeps its job in 3b**,
+  where it chooses between two ways of covering a page; it has no business gating a path that only
+  ever adds.
+- **All thirteen collection pages carry `id`s on their `h2.section` headings** (46 added
+  2026-08-17; `collection-easter-eggs.html` already had them, and its id +
+  `scroll-margin-top: 5rem` pairing is the pattern). Without them a search result can only
+  deep-link by `#:~:text=` guess. **A new collection page owes its headings ids** — nothing gates
+  this, and twelve pages went without them.
 - **Duplicate presentations get stripped, not indexed twice.** `ls-playlist.html` lists every song
   as a `.lp-card` (with the note explaining it) *and* again as a flat `.lp-row` link list; the rows
   are in `CHROME_SEL`. The co-brand eyebrows (`.nav-brand`, `.hero-eyebrow`, `.masthead-eyebrow`,

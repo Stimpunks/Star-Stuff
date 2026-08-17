@@ -338,15 +338,50 @@ const EXTRACT = String.raw`(() => {
          no headings to segment on. inclusion-safety-creed.html is both: six
          <section class="stanza"> blocks are 72% of it and a single <h1>, so its
          opening lines and its closing quotes belonged to no record at all.
-         Index whatever no chunk claimed, as one more record, rather than losing
-         it. Marking the originals and deleting them from a clone is what keeps
-         this exact — no guessing, and no text counted twice. */
-  if (kept.length && coverageOf() < COVERAGE_FLOOR) {
+         Index whatever no chunk claimed rather than losing it. Marking the
+         originals and deleting them from a clone is what keeps this exact — no
+         guessing, and no text counted twice.
+
+         NOT GATED ON COVERAGE, and that is the point (fixed 2026-08-17).
+         This used to run only when coverage fell under COVERAGE_FLOOR, which
+         reads as a sensible "rescue the badly-covered pages" rule and is in
+         fact the about.html mistake wearing a higher number. A percentage is a
+         ratio; the thing this path protects is an absolute quantity of prose.
+         The bigger a page's repeating unit grows, the more prose the same
+         percentage hides — so the gate leaked worst on the pages that looked
+         healthiest, and it leaked as a cliff rather than a slope:
+
+           collection-star-stuff.html  93%  2,532 chars  the curatorial argument
+           index.html                  97%  4,484 chars  the .collection-intro blocks
+           changelog.html             100%  1,422 chars  the intro and colophon
+
+         8,438 characters, unfindable, on the three best-scoring pages on the
+         site. collection-star-stuff.html is the tell: its twelve sibling
+         collection pages sit at 20–84%, so they drop through 3b and get their
+         intros indexed. Star Stuff crossed 90% only by *growing* to 23 cards —
+         the largest grid here — so the page was penalised for succeeding, and
+         Kin (84%) and Star Gazing (79%) were queued up to lose theirs next.
+         The floor stays where it is for 3b, which chooses between two ways of
+         covering a page; it has no business gating a path that can only ever
+         add text nobody claimed. push()'s own 40-char minimum is the right
+         filter, because it measures the prose instead of the ratio.
+
+         Segment the remainder by heading where it has headings to segment on.
+         One lump was fine for inclusion-safety-creed.html, whose stray text is
+         an opening and a closing around a single <h1>, and wrong for index.html,
+         where the remainder is thirteen section intros interleaved between the
+         card grids — as a lump they become one 4.4KB record that deep-links
+         nowhere, and as segments they land on #collections and #field-guides,
+         which is what those ids are for. Falls back to the lump below two
+         segments, so the creed keeps the record it already had. */
+  if (kept.length) {
     kept.forEach((c) => c.setAttribute('data-ss-chunk', ''));
     const rest = main.cloneNode(true);
     rest.querySelectorAll('[data-ss-chunk]').forEach((n) => n.remove());
     kept.forEach((c) => c.removeAttribute('data-ss-chunk'));
-    push('', headingOf(main), textOf(rest));
+    const restSegs = segmentByHeading(rest);
+    if (restSegs.length >= 2) records.push(...restSegs);
+    else push('', headingOf(main), textOf(rest));
   }
 
   if (!records.length) push('', headingOf(main), textOf(main));
