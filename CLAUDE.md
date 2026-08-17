@@ -99,7 +99,8 @@ The central phrase compresses through registers, each with a use:
   <a class="ss-nav-collection" href="collection-kin.html"><span class="ss-nav-collection-label">Collection</span> <span class="ss-nav-collection-name">Kin</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
   ```
 
-  All 90 members have one; the 13 collection pages, `index.html` and `search.html` do not. **A new
+  All 101 members have one; the 13 collection pages, `index.html` and `search.html` do not (101 +
+  13 + 2 = the 116 pages in the repo root). **A new
   piece needs its badge and its collection page's card in the same pass** — the page→collection map
   is derived from `<a class="card" href="…">` on the collection pages, so a card that is missing
   makes the badge underivable. **`tools/check-markup.mjs` enforces all of this as of 2026-08-13**
@@ -122,9 +123,11 @@ The central phrase compresses through registers, each with a use:
   set size, weight, tracking and color, so the swap is a tag change plus `margin: 0` and a
   `scroll-margin-top`. `tools/check-markup.mjs` guards the ids for duplicates; nothing guards their
   existence, so this is on you.
-- `index.html` carries a **`.masthead-toc` jump strip** — two tiers, seven top-level sections then
-  the five register collections, each tinted with the same `--sec-accent` its heading and rule
-  carry. **A new top-level section on the index needs a pill here**, and the strip is in
+- `index.html` carries a **`.masthead-toc` jump strip** — two `<ul>` tiers, thirteen pills: seven
+  top-level sections (Start Here, Foundations, Collections, Field Guides, Sound, Print, Notes) then
+  the six that get their own grid section — the five register collections plus **How We Got Here**,
+  which joined the lower tier rather than the upper one. Each is tinted with the same `--sec-accent`
+  its heading and rule carry. **A new top-level section on the index needs a pill here**, and the strip is in
   `CHROME_SEL` (its names are already indexed as the headings they point at) and hidden in
   `@media print` (fragments mean nothing on paper, and the hardcoded accents would land at 1.6:1
   on white).
@@ -159,7 +162,7 @@ on the 12th as the twelfth, at two members — see *the two-member floor* below.
 
 | Collection | Register | Members (zine numbers) |
 |------------|----------|------------------------|
-| **Star Stuff** | One settled, checkable fact, followed honestly, already contains the belonging claim | 1, 2, 6, 7, 8, 9, 10, 17, 19, 20, 21, 23, 24, 25, 44 |
+| **Star Stuff** | One settled, checkable fact, followed honestly, already contains the belonging claim | 1, 2, 6, 7, 8, 9, 10, 17, 19, 20, 21, 23, 24, 25, 44, 45, 46, 48, 51, 53, 54, 55 (22 — the largest collection by some way) |
 | **Star Gazing** | Experimental, neuroqueer, wonder-forward — possibility, not proof | 11, 22, 26, 28, 29, 30 |
 | **More Than Human** | Umwelt, multispecies, ethodiversity; de-anthropocentrized | 5, 14, 15, 16, 27 |
 | **Kin** | Citation-dense natural history with a neurodivergence moral | 31, 32, 33, 34, 35, 36 |
@@ -170,10 +173,10 @@ that disclosure is the convention, and **How We Got Here duly carries it too**:
 
 | Collection | Axis | Members |
 |------------|------|---------|
-| **Field Guides** | **form** — a catalogue of same-shaped entries, none ranked | Field Guides 1–12 (134 entries; 139 cards counting the five *turtles people made*, which FG 10 deliberately does not file as entries) |
-| **How We Got Here** | **form** — a Burke chain, one link per spread, joints marked | 38, 39, 40, 41, 42, 43, 50 |
+| **Field Guides** | **form** — a catalogue of same-shaped entries, none ranked | Field Guides 1–12, 14, 15 — 14 guides, **159 entries; 166 cards.** FG 13 is *not* here: it is the egg, `watching-animals-field-guide.html`. The seven cards that are deliberately **not** entries are the five *turtles people made* (FG 10), the octopus settlements (FG 14) and the rooms people build (FG 15) |
+| **How We Got Here** | **form** — a Burke chain, one link per spread, joints marked | 38, 39, 40, 41, 42, 43, 50, 52, 56 (9 chains) |
 | **Print** | **medium** — paper | 9 broadsides + 2 that are not broadsides (a typographic specimen, and a blank sheet) |
-| **Sound** | **medium** — audio | 4 racks, 121 cards / 117 distinct songs |
+| **Sound** | **medium** — audio | 4 racks, 121 cards / **111** distinct songs |
 
 - **Why the chains exist — reclaim science from the things that wear its clothes.** Ryan's framing,
   2026-08-12, and it is the collection's motive rather than a theme: **eugenics and behaviorism took
@@ -207,7 +210,7 @@ never candidates for a register. Don't try to fold these into either table:
 | Collection | What it is | Members |
 |------------|-----------|---------|
 | **Start Here** | the ways in | `about`, `love-you-down-to-your-star-stuff`, `cosmic-connections`, No. 4 — three doors in, one out |
-| **Foundations** | what the rest presupposes | `manifesto`, `inclusion-safety-creed`, `too-good-to-check`, No. 3, No. 18 |
+| **Foundations** | what the rest presupposes | `manifesto`, `inclusion-safety-creed`, `too-good-to-check`, `who-is-holding-the-candle`, `a-promise-not-a-finding`, `starlight`, No. 3, No. 18 (8) |
 | **Notes & Rationale** | the working papers | `changelog`, `design`, `print-design`, `difference-first-frame` |
 
 - **Notes & Rationale is the only collection page outside the prev/next chain**, because all four
@@ -216,10 +219,13 @@ never candidates for a register. Don't try to fold these into either table:
   no prev/next — the same shape `about.html` and `cosmic-connections.html` use. If a future
   collection's members all sit off the chain, copy that shape rather than inventing a link.
 - **Field Guides sort by form, and that cuts across register on purpose.** FG 2 is settled physics
-  and FG 1 is frank invention, and they are the same kind of object. Seven of the twelve arrive
+  and FG 1 is frank invention, and they are the same kind of object. Nine of the fourteen arrive
   independently at *there is no standard {star, nervous system, migration, shark, turtle, tortoise,
-  galaxy}*
-  — verify by grep before restating the count, it grows.
+  galaxy, amount of company, nest}*
+  — verify by grep before restating the count, it grows:
+  `grep -l "no standard" *-field-guide.html | grep -v watching-animals` (the exclusion matters —
+  a tenth sits in the egg, FG 13: *there is no standard way to be interested in an animal*, and it is
+  not in this collection, so it is not in the count).
 - **Where the form stops is load-bearing.** FG 10 keeps five *turtles people made* in a separate
   section with a dashed border and **no reframe table**, because that table corrects a mistaken
   verdict and running "sounds like / actually" over somebody's cosmology would be obscene. *The
@@ -242,11 +248,12 @@ never candidates for a register. Don't try to fold these into either table:
 - **Collections are pages, not folders** — a note that links, listing members and arguing for why
   they belong together. This keeps faith with `cosmic-connections.html`: the categories are outputs,
   not inputs. They were observed *after* 35 zines had accumulated with no folders at all.
-- **Three numbered pieces are deliberately outside the *register* collections**: No. 3 (paradigm
+- **Six numbered pieces are deliberately outside the *register* collections**: No. 3 (paradigm
   primer) and No. 18 (self-portrait of the project) sit in [*Foundations*](collection-foundations.html);
-  No. 4 (open call for contributors) sits in [*Start Here*](collection-start-here.html). They keep
+  No. 4 (open call for contributors) sits in [*Start Here*](collection-start-here.html); and
+  Nos. 37, 47 and 49 sit in [*Easter Eggs*](collection-easter-eggs.html). They keep
   their numbers — this is the sharpest case of *the number says when, the collection says what*
-  disagreeing, and both collection pages explain it on their face rather than leaving it to look
+  disagreeing, and each collection page explains it on its face rather than leaving it to look
   like an oversight.
 - **Collection names in `.card-series` / `.cover-issue` / `.ss-nav-collection` are invisible to
   search** — `tools/build-search-index.mjs` strips all three as chrome. The collection pages are
@@ -261,21 +268,68 @@ never candidates for a register. Don't try to fold these into either table:
   everything else homework, and would become the one place the verify-everything standard could
   quietly relax. The fun is distributed; *Stars We Grew Up On* states this on the page.
 - The **prev/next chain follows collection order**: each collection page precedes its members, and
-  members run in ascending number within the collection. **94 pages** as of 2026-08-15,
-  `collection-start-here.html` → `shorthand-evolution.html`. Outside the chain by decision:
-  `about.html` and `cosmic-connections.html`; **all of Notes &amp; Rationale** — `changelog.html`,
-  `design.html`, `print-design.html`, `difference-first-frame.html` and `collection-notes.html`;
-  and **all of Easter Eggs** — `collection-easter-eggs.html`, `out-of-order-zine.html`,
-  `true-facts-zine.html` and `watching-animals-field-guide.html`, because a chain link would walk a
-  reader into an egg by accident and stop it being one.
-  (`index.html` and `search.html` are utility pages and were never in it.)
+  members run in ascending number within the collection. **100 pages** as of 2026-08-17,
+  `collection-start-here.html` → `shorthand-evolution.html`. **16 pages sit outside it, and every
+  one is a decision:** `about.html` and `cosmic-connections.html`; **all of Notes &amp; Rationale** —
+  `changelog.html`, `design.html`, `print-design.html`, `difference-first-frame.html` and
+  `collection-notes.html`; and **all of Easter Eggs** — `collection-easter-eggs.html`,
+  `out-of-order-zine.html`, `true-facts-zine.html`, `watching-animals-field-guide.html`,
+  `hatchery.html`, `quillery.html` and `one-atom-of-justice-zine.html`, because a chain link would
+  walk a reader into an egg by accident and stop it being one.
+  (`index.html` and `search.html` are utility pages and were never in it, which makes
+  100 + 16 = 116.)
   **Don't trust that number — measure it**, and check `prev` and `next` agree in both directions;
   inserting a page means editing its two neighbours, and a one-sided edit leaves a chain that walks
   forward correctly and breaks going back:
 
   ```bash
-  node -e "const fs=require('fs');const nx={},pv={};for(const f of fs.readdirSync('.').filter(f=>f.endsWith('.html'))){const s=fs.readFileSync(f,'utf8');let m=s.match(/ss-nav-next\"[^>]*href=\"([^\"]+)\"/);if(m)nx[f]=m[1];m=s.match(/ss-nav-prev\"[^>]*href=\"([^\"]+)\"/);if(m)pv[f]=m[1];}let c='love-you-down-to-your-star-stuff.html',ch=[],seen=new Set();while(c&&!seen.has(c)){seen.add(c);ch.push(c);c=nx[c];}console.log('chain',ch.length,'· mismatches',ch.filter((c,i)=>i>0&&pv[c]!==ch[i-1]).join(',')||'none','· missing',ch.filter(c=>!fs.existsSync(c)).join(',')||'none');"
+  node -e "const fs=require('fs');const nx={},pv={};for(const f of fs.readdirSync('.').filter(f=>f.endsWith('.html'))){const s=fs.readFileSync(f,'utf8');let m=s.match(/ss-nav-next\"[^>]*href=\"([^\"]+)\"/);if(m)nx[f]=m[1];m=s.match(/ss-nav-prev\"[^>]*href=\"([^\"]+)\"/);if(m)pv[f]=m[1];}let c='collection-start-here.html',ch=[],seen=new Set();while(c&&!seen.has(c)){seen.add(c);ch.push(c);c=nx[c];}console.log('chain',ch.length,'· mismatches',ch.filter((c,i)=>i>0&&pv[c]!==ch[i-1]).join(',')||'none','· missing',ch.filter(c=>!fs.existsSync(c)).join(',')||'none');"
   ```
+
+### Every count above goes stale, and nothing can see it
+
+**This is the one section of this file with a measured failure rate.** On 2026-08-17 a sweep found
+**~24 wrong counts across seven collection pages** and a dozen more in here — Star Stuff said 15 with
+22 cards, Field Guides said "thirteen guides, 146 entries" against 14 and 159, the chain said 94 when
+it ran 100. One had been wrong since the day it shipped: *How We Got Here* opened a paragraph "No. 45
+is the most lopsided chain here" when No. 45 is *The Cloud Phase*, in Star Stuff, not a chain at all.
+
+**Why they rot:** the six gates measure colour, tag structure, position, paper, sitemap and index
+coverage. **Not one of them can read a number written out in prose.** So treat every figure in this
+file and on every collection page as a **lead, not a fact** — the same standing rule this repo
+applies to aggregators — and re-derive it. These are the derivations behind the numbers above:
+
+```bash
+ls collection-*.html | wc -l                                   # collection pages (13)
+node tools/check-markup.mjs | tail -4                          # pages, tags, badged members, collections
+grep -c '<a class="card"' collection-NAME.html                  # one collection's members
+git show <commit>:collection-field-guides.html | grep -c 'class="card"'   # what a count WAS, for historical claims
+```
+
+Two that need more than a grep, both learned the hard way:
+
+- **Field-guide entries are built from JS object literals**, so the source cannot be counted and the
+  schema differs per guide. Count the **anchored records in `search-index.json`** (one per entry,
+  which is what the rendered DOM produced) and subtract the cards a guide deliberately does not file
+  as entries — currently seven. That gives 166 cards / 159 entries.
+- **Chain joints over-count with a naive grep**, because `build-the-eclipse-zine.html` uses the tags
+  inline in prose. The discriminator is the tag **opening its own paragraph**:
+  `<p(?: class="joint-line")?><span class="joint joint-(documented|contested|leap)"`. That method
+  reproduces both the collection page's totals and each zine's own card figures — validate any new
+  counting method the same way before trusting it.
+
+**And a count is never in one place.** Field Guides was printing its figures in the `.hero-count`,
+the body prose, the `meta` description, the `og:` and `twitter:` cards, the JSON-LD *and* the
+colophon line — so a link unfurl and a search result were both quoting a total the page had outgrown.
+Residuals drift twice over: "four of the thirteen are companion catalogues… the other seven stand
+alone" had both halves wrong, and 4 + 7 hadn't equalled the total for two additions. Grep the number
+you are changing, not the sentence.
+
+**Some numbers here are historical and must be left alone.** "After 35 zines had accumulated with no
+folders at all", "Field Guides waited until there were eleven of them", "44 of 46 pages printed
+blank", "90 elements across 45 pages", the "66 pages" of the badge pass, "40 numerals that existed
+then" — these record a past state and are the evidence for a rule. Read the sentence's tense, and
+check the creating commit, before you touch a number in it.
 
 ### Co-branding (Stimpunks Foundation × More Realms)
 
@@ -366,7 +420,7 @@ tracking — the query never leaves the reader's browser.
 - **Duplicate presentations get stripped, not indexed twice.** `ls-playlist.html` lists every song
   as a `.lp-card` (with the note explaining it) *and* again as a flat `.lp-row` link list; the rows
   are in `CHROME_SEL`. The co-brand eyebrows (`.nav-brand`, `.hero-eyebrow`, `.masthead-eyebrow`,
-  `.cover-issue`) are stripped for the same reason — the pairing is on all 79 pages, so as an
+  `.cover-issue`) are stripped for the same reason — the pairing is on all 101 collection members, so as an
   indexed string it carried no information. Colophons keep it, and that's correct: they hold the
   sources and credits, and `search.html` scores heading and repeat matches above one incidental hit.
 - `starstuff.js` opens a deep-linked field-guide entry (they render collapsed), so a result
@@ -480,7 +534,7 @@ that also makes the text unreadable.
   measured 4.16–4.24:1, under AA by a hair, while the same ink on bare paper is 15.9:1. Darkening
   the label in `starstuff.css` reaches every such shape at once; darkening each disc chases them
   one at a time and misses the next one.
-- **The one decorative exemption: `.cover-corner-num`.** The ghosted numeral on 40 zine covers
+- **The one decorative exemption: `.cover-corner-num`.** The ghosted numeral on 55 zine covers
   restates a number printed at full contrast two lines below it in `.cover-issue` ("Zine No. 30").
   It is a watermark, not a label. Reaching 3:1 would need opacity 0.44–0.57 against the 0.15–0.26
   it carries — **a different cover, not a fixed one.** So it is exempt under WCAG 1.4.3 *pure
@@ -491,8 +545,10 @@ that also makes the text unreadable.
     attribute — the exemption must be a decision somebody wrote down, not a mechanism to fall into.
   - **An element must *also* be `aria-hidden` to qualify.** Text a screen reader still announces is
     not decoration, so the claim has to be true in the markup before the tool will honour it. All
-    40 numerals were marked in the same pass, which also stopped screen readers announcing a bare
-    "30" before the title.
+    40 numerals that existed then were marked in the same pass, which also stopped screen readers
+    announcing a bare "30" before the title. **Every cover added since has carried it** — the count
+    is 55 now, and the day one ships without `aria-hidden` the exemption stops applying to it and
+    `check-contrast.mjs` will fail the page rather than wave it through.
 
 ## Markup checking (`tools/check-markup.mjs`)
 
@@ -514,7 +570,7 @@ node tools/check-markup.mjs --check               # exit non-zero on any failure
   by the time a DOM exists the parser has already repaired it, and
   `document.querySelectorAll('a a')` on the broken page returns **zero**. The evidence survives
   only in the source text. That also makes it the fastest gate here — no Chrome, no dependencies,
-  79 pages and 50,000 tags in about 0.3s.
+  116 pages and 97,000 tags in about 0.25s.
 - **Five faults, each one silent:** nested interactive elements (`<a>`/`<button>` inside each
   other — the parser closes the outer, so everything after falls out of its wrapper); a block
   element inside a `<p>` (auto-closes the paragraph part-way through); and **duplicate `id`**,
@@ -632,8 +688,8 @@ node tools/check-overlap.mjs --verbose           # every finding, not the first 
   kills the other guaranteed false positive for free: a `<span>` inside a `<p>` always overlaps its
   parent's box, but their text nodes are disjoint.
 - **Line boxes are not ink, and half-leading is space a neighbour may use.** `.cover-corner-label`
-  tucks under `.cover-corner-num` with `margin-top:-0.3rem` on all 40 covers and is perfectly
-  correct; trust the line box and all 40 fail. Each rect is shrunk to `INK_RATIO × font-size`
+  tucks under `.cover-corner-num` with `margin-top:-0.3rem` on all 55 covers and is perfectly
+  correct; trust the line box and all 55 fail. Each rect is shrunk to `INK_RATIO × font-size`
   centred in the line box, and `MIN_OVERLAP` then requires a real intersection **in both axes**,
   scaled to the smaller type — 2px is a catastrophe at 5.5px and nothing at 72px. The model is
   deliberately generous: it can only under-report, and **an under-reported collision still has a
@@ -660,7 +716,7 @@ node tools/check-overlap.mjs --verbose           # every finding, not the first 
   owns page fitting). One viewport, 1280×900, matching `check-contrast.mjs` — a collision that only
   happens at 380px is real and this will not see it. And **text over non-text**: a label crossing a
   line or an arrowhead is a legibility judgement about artwork, and still needs eyes at render size.
-- 102 pages in ~47s. Chrome and Node 22+; local dev tool, Netlify does not run it.
+- 116 pages in ~2 min. Chrome and Node 22+; local dev tool, Netlify does not run it.
 
 ## Design system
 
@@ -763,8 +819,11 @@ or *Symbioses* (FG 6): keep the kinship, name the contested part, don't assert t
 
 ### The "masthead" trap (this project's signature phrase is LYDTYSS)
 
-**The site's signature phrase is *Love You Down To Your Star Stuff*** — 35 pages carry it, in the
-five registers tabulated above. **The masthead tagline on `index.html` is *Cosmic Connections*.**
+**The site's signature phrase is *Love You Down To Your Star Stuff*** — **54 pages** carry it in
+full or as *LYDTYSS* (52 and 16 respectively, overlapping), and the **L★S** mark reaches 111. The
+other registers are rarer and deliberately so: *LYSS* on 8 pages, *LUSS* on 7. Measure before
+restating — `grep -lEi 'Love [Yy]ou [Dd]own [Tt]o [Yy]our [Ss]tar [Ss]tuff|LYDTYSS' *.html | wc -l`.
+**The masthead tagline on `index.html` is *Cosmic Connections*.**
 Neither of those is "You are made of star stuff. The universe loves you for it."
 
 That sentence appears on the live site **once**: in the colophon of `bone-song-zine.html`, Zine
