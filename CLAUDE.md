@@ -99,8 +99,8 @@ The central phrase compresses through registers, each with a use:
   <a class="ss-nav-collection" href="collection-kin.html"><span class="ss-nav-collection-label">Collection</span> <span class="ss-nav-collection-name">Kin</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
   ```
 
-  All 102 members have one; the 13 collection pages, `index.html` and `search.html` do not (102 +
-  13 + 2 = the 117 pages in the repo root). **A new
+  All 103 members have one; the 13 collection pages, `index.html` and `search.html` do not (103 +
+  13 + 2 = the 118 pages in the repo root). **A new
   piece needs its badge and its collection page's card in the same pass** — the page→collection map
   is derived from `<a class="card" href="…">` on the collection pages, so a card that is missing
   makes the badge underivable. **`tools/check-markup.mjs` enforces all of this as of 2026-08-13**
@@ -173,7 +173,7 @@ that disclosure is the convention, and **How We Got Here duly carries it too**:
 
 | Collection | Axis | Members |
 |------------|------|---------|
-| **Field Guides** | **form** — a catalogue of same-shaped entries, none ranked | Field Guides 1–12, 14, 15 — 14 guides, **159 entries; 166 cards.** FG 13 is *not* here: it is the egg, `watching-animals-field-guide.html`. The seven cards that are deliberately **not** entries are the five *turtles people made* (FG 10), the octopus settlements (FG 14) and the rooms people build (FG 15) |
+| **Field Guides** | **form** — a catalogue of same-shaped entries, none ranked | Field Guides 1–12, 14, 15, 16 — 15 guides, **174 entries; 182 cards.** FG 13 is *not* here: it is the egg, `watching-animals-field-guide.html`. The eight cards that are deliberately **not** entries are the five *turtles people made* (FG 10), the octopus settlements (FG 14), the rooms people build (FG 15) and the egg-crack accounts (FG 16) |
 | **How We Got Here** | **form** — a Burke chain, one link per spread, joints marked | 38, 39, 40, 41, 42, 43, 50, 52, 56 (9 chains) |
 | **Print** | **medium** — paper | 9 broadsides + 2 that are not broadsides (a typographic specimen, and a blank sheet) |
 | **Sound** | **medium** — audio | 4 racks, 121 cards / **111** distinct songs |
@@ -219,9 +219,9 @@ never candidates for a register. Don't try to fold these into either table:
   no prev/next — the same shape `about.html` and `cosmic-connections.html` use. If a future
   collection's members all sit off the chain, copy that shape rather than inventing a link.
 - **Field Guides sort by form, and that cuts across register on purpose.** FG 2 is settled physics
-  and FG 1 is frank invention, and they are the same kind of object. Nine of the fourteen arrive
+  and FG 1 is frank invention, and they are the same kind of object. Ten of the fifteen arrive
   independently at *there is no standard {star, nervous system, migration, shark, turtle, tortoise,
-  galaxy, amount of company, nest}*
+  galaxy, amount of company, nest, egg}*
   — verify by grep before restating the count, it grows:
   `grep -l "no standard" *-field-guide.html | grep -v watching-animals` (the exclusion matters —
   a tenth sits in the egg, FG 13: *there is no standard way to be interested in an animal*, and it is
@@ -268,7 +268,7 @@ never candidates for a register. Don't try to fold these into either table:
   everything else homework, and would become the one place the verify-everything standard could
   quietly relax. The fun is distributed; *Stars We Grew Up On* states this on the page.
 - The **prev/next chain follows collection order**: each collection page precedes its members, and
-  members run in ascending number within the collection. **101 pages** as of 2026-08-17,
+  members run in ascending number within the collection. **102 pages** as of 2026-08-17,
   `collection-start-here.html` → `shorthand-evolution.html`. **16 pages sit outside it, and every
   one is a decision:** `about.html` and `cosmic-connections.html`; **all of Notes &amp; Rationale** —
   `changelog.html`, `design.html`, `print-design.html`, `difference-first-frame.html` and
@@ -277,7 +277,7 @@ never candidates for a register. Don't try to fold these into either table:
   `hatchery.html`, `quillery.html` and `one-atom-of-justice-zine.html`, because a chain link would
   walk a reader into an egg by accident and stop it being one.
   (`index.html` and `search.html` are utility pages and were never in it, which makes
-  101 + 16 = 117.)
+  102 + 16 = 118.)
   **Don't trust that number — measure it**, and check `prev` and `next` agree in both directions;
   inserting a page means editing its two neighbours, and a one-sided edit leaves a chain that walks
   forward correctly and breaks going back:
@@ -311,7 +311,7 @@ Two that need more than a grep, both learned the hard way:
 - **Field-guide entries are built from JS object literals**, so the source cannot be counted and the
   schema differs per guide. Count the **anchored records in `search-index.json`** (one per entry,
   which is what the rendered DOM produced) and subtract the cards a guide deliberately does not file
-  as entries — currently seven. That gives 166 cards / 159 entries.
+  as entries — currently eight. That gives 182 cards / 174 entries.
 - **Chain joints over-count with a naive grep**, because `build-the-eclipse-zine.html` uses the tags
   inline in prose. The discriminator is the tag **opening its own paragraph**:
   `<p(?: class="joint-line")?><span class="joint joint-(documented|contested|leap)"`. That method
@@ -326,12 +326,26 @@ alone" had both halves wrong, and 4 + 7 hadn't equalled the total for two additi
 you are changing, not the sentence.
 
 **And a derived count can be wrong even when the arithmetic is right.** That companion figure is now
-**six and eight** — not because the sum was recomputed but because the *category* was too narrow.
-It was derived from the four cards carrying `companion to No. N` in `.card-series`, while
+**eight and seven** — and each time it has moved it was the *category* that was wrong, never the sum.
+It was first derived from the four cards carrying `companion to No. N` in `.card-series`, while
 `nests-field-guide.html` and `being-alone-field-guide.html` name their companion zine in their own
 colophons and had no marker. **A count read off markers is only as honest as the markers**, and no
 gate checks that a page which *says* it is a companion is marked as one. Settled 2026-08-17 by Ryan;
 reasoning and the rejected seventh-check option are in `DECISIONS.md`.
+
+**The same fault had a survivor, found the same day while adding FG 16.** Re-deriving the figure by
+grepping colophons rather than trusting the markers turned up `monotropic-galaxy-field-guide.html`,
+whose colophon names two companion zines — *The Cloud Phase* (No. 45) and *Companion Stars* (No. 46)
+— against a `.card-series` reading only `Guest guide · 20 entries`. So the six-and-eight settled
+on the 17th was itself a marker-derived undercount: the honest figures were **seven and seven**
+before FG 16 and are **eight and seven** after it. Its marker has been added. **The lesson is
+narrower and worse than "markers rot":** the *fix* for a marker-derived count was applied to the two
+pages that prompted it and not swept across the rest, so the corrected count inherited the original
+defect. When a category turns out to be too narrow, re-derive the whole set — patching the instances
+that were noticed reproduces the bug with a fresher date on it. Derive with
+`grep -loiE 'companion to' *-field-guide.html`, then check each hit has a marker; note that
+`tortoise-field-guide.html` is companion to a *guide* rather than a zine and is counted separately
+on the collection page's own face.
 
 **Some numbers here are historical and must be left alone.** "After 35 zines had accumulated with no
 folders at all", "Field Guides waited until there were eleven of them", "44 of 46 pages printed
@@ -428,7 +442,7 @@ tracking — the query never leaves the reader's browser.
 - **Duplicate presentations get stripped, not indexed twice.** `ls-playlist.html` lists every song
   as a `.lp-card` (with the note explaining it) *and* again as a flat `.lp-row` link list; the rows
   are in `CHROME_SEL`. The co-brand eyebrows (`.nav-brand`, `.hero-eyebrow`, `.masthead-eyebrow`,
-  `.cover-issue`) are stripped for the same reason — the pairing is on all 102 collection members, so as an
+  `.cover-issue`) are stripped for the same reason — the pairing is on all 103 collection members, so as an
   indexed string it carried no information. Colophons keep it, and that's correct: they hold the
   sources and credits, and `search.html` scores heading and repeat matches above one incidental hit.
 - `starstuff.js` opens a deep-linked field-guide entry (they render collapsed), so a result
@@ -578,7 +592,7 @@ node tools/check-markup.mjs --check               # exit non-zero on any failure
   by the time a DOM exists the parser has already repaired it, and
   `document.querySelectorAll('a a')` on the broken page returns **zero**. The evidence survives
   only in the source text. That also makes it the fastest gate here — no Chrome, no dependencies,
-  117 pages and 98,000 tags in about 0.25s.
+  118 pages and 99,000 tags in about 0.25s.
 - **Five faults, each one silent:** nested interactive elements (`<a>`/`<button>` inside each
   other — the parser closes the outer, so everything after falls out of its wrapper); a block
   element inside a `<p>` (auto-closes the paragraph part-way through); and **duplicate `id`**,
@@ -724,7 +738,7 @@ node tools/check-overlap.mjs --verbose           # every finding, not the first 
   owns page fitting). One viewport, 1280×900, matching `check-contrast.mjs` — a collision that only
   happens at 380px is real and this will not see it. And **text over non-text**: a label crossing a
   line or an arrowhead is a legibility judgement about artwork, and still needs eyes at render size.
-- 117 pages in ~2 min. Chrome and Node 22+; local dev tool, Netlify does not run it.
+- 118 pages in ~2 min. Chrome and Node 22+; local dev tool, Netlify does not run it.
 
 ## Design system
 
