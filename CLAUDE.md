@@ -325,6 +325,14 @@ Residuals drift twice over: "four of the thirteen are companion catalogues… th
 alone" had both halves wrong, and 4 + 7 hadn't equalled the total for two additions. Grep the number
 you are changing, not the sentence.
 
+**And a derived count can be wrong even when the arithmetic is right.** That companion figure is now
+**six and eight** — not because the sum was recomputed but because the *category* was too narrow.
+It was derived from the four cards carrying `companion to No. N` in `.card-series`, while
+`nests-field-guide.html` and `being-alone-field-guide.html` name their companion zine in their own
+colophons and had no marker. **A count read off markers is only as honest as the markers**, and no
+gate checks that a page which *says* it is a companion is marked as one. Settled 2026-08-17 by Ryan;
+reasoning and the rejected seventh-check option are in `DECISIONS.md`.
+
 **Some numbers here are historical and must be left alone.** "After 35 zines had accumulated with no
 folders at all", "Field Guides waited until there were eleven of them", "44 of 46 pages printed
 blank", "90 elements across 45 pages", the "66 pages" of the badge pass, "40 numerals that existed

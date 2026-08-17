@@ -166,6 +166,31 @@ Decisions still to make. Move to **Settled** with a date once resolved.
 
 ## Settled
 
+- **Widen *companion catalogue* to six of the fourteen Field Guides, and mark the two on their
+  cards — settled 2026-08-17, by Ryan.** The collection page recognised four, and the category was
+  never written down anywhere: it was *derived* from the four cards carrying a `companion to No. N`
+  line in `.card-series`. But **`nests-field-guide.html` and `being-alone-field-guide.html` both
+  name their companion zine in their own colophons** (Nos. 55 and 54) and neither card had the
+  marker, so the count was narrower than the site's own pages. Ryan's call: count them. Six of
+  fourteen, eight standing alone, and both cards now carry the marker.
+  - **The lesson is about the mechanism, not the number.** A count derived from markers is only as
+    honest as the markers, and nothing checks that a guide which *says* it is a companion is marked
+    as one. This is the same class of fault as the collection badge before `check-markup.mjs` grew
+    its badge check — a house convention with no gate behind it. **Not proposing a seventh check:**
+    the bar in CLAUDE.md is that the browser hands the reader a different document than the source
+    describes, or that a structural fault is invisible to every gate *and* has recurred. This has
+    happened once, and the fix is a marker, not a tool.
+  - **The addition is not free, and the page says what it costs.** The first four guides were built
+    because a zine **overflowed** — the argument had to drop cases and the catalogue took them.
+    *Nests* runs the other way: it hands the weaver **back** to No. 55 in one card rather than
+    re-running an argument that zine already made properly, and its last card exists because of what
+    No. 55 says about the observer in the doorway. Rather than stretch one definition over both
+    directions silently, the page names the difference in its own paragraph — *a companion can be
+    the piece that knows when to stop.*
+  - **The two cards traded their card counts for the marker**, going from `12 entries · 13 cards` to
+    `12 + 1 · companion to No. 54`, which is the notation FG 10 already used (`12 + 5`). Same
+    information, one slot, and consistent with the four it now joins.
+
 - **Credit Ze Frank's *True Facts* as an influence, as No. 47 in *Easter Eggs* — settled
   2026-08-14, by Ryan.** The *Kin* collection and the animal field guides came out of watching the
   series with a young person in our community; his name was nowhere in the repo. Four calls, all
