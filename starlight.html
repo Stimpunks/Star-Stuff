@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0a0a14">
+<link rel="canonical" href="https://starstuff.earth/starlight.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta name="description" content="Starlight: making in the open, in the shine of the cosmic latte. Average the light of 200,000 galaxies and you get a warm off-white someone named cosmic latte — and the first answer was pale turquoise, wrong because of a white point, and corrected in public by the astronomers who got it wrong. That is the argument for an open repository, lit in the colour we borrowed. This essay states plainly what is public here (the pages, the ledger, the errors, the reasoning, the checking) and what deliberately is not (your search query). It gives a high-level account of the six automated gates — what each one asks, what shipped broken to create it, and what it structurally cannot see — and of the division of labour behind them: machines hold ground, people take it. Every gate here was written after a person found the fault. Includes the first plain statement of how generative AI is used on this site, what it is never allowed to do, and why the house rule against smoothed retellings is the reason the gates exist at all.">
+<!-- Open Graph / link unfurl -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Star Stuff &middot; Stimpunks Foundation &times; More Realms">
+<meta property="og:url" content="https://starstuff.earth/starlight.html">
+<meta property="og:title" content="Starlight">
+<meta property="og:description" content="Making in the open, in the shine of the cosmic latte. The average colour of starlight is a published correction — and that is the whole argument for an open repository.">
+<meta property="og:image" content="https://starstuff.earth/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A rainbow-hued cosmic image — we are all made of star stuff.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Starlight">
+<meta name="twitter:description" content="The colour of the universe is an erratum. Six gates, 2,850 lines, and the one half of the method that can never be automated.">
+<meta name="twitter:image" content="https://starstuff.earth/og-card.jpg">
+<title>Starlight: Making in the Open in the Shine of the Cosmic Latte — Star Stuff — Stimpunks × More Realms</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="starstuff.css">
+<style>
+  :root {
+    --void:  var(--sp-void-deep);
+    --deep:  var(--sp-deep);
+    --card:  var(--sp-card);
+    --violet:var(--sp-purple);
+    --pink:  var(--sp-pink);
+    --gold:  var(--sp-gold);
+    --cyan:  var(--sp-cyan);
+    --green: var(--sp-green);
+    --star-white: var(--sp-white-soft);
+    --stardust:   var(--sp-secondary-soft);
+    --dim:   var(--sp-dim);
+    --dim2:  var(--sp-dim-soft);
+
+    /* ── Cosmic latte ──
+       #FFF8E7 is the sRGB value that circulates for the average colour of the
+       light in the 2dF survey volume. It is the page's accent rather than one of
+       the five house hues, and that is the argument rather than a decoration:
+       this page is about working in the light, so its highlights are the colour
+       of the light. Deliberately NOT promoted to a --sp-* token in starstuff.css
+       — the house rule there is for colours that recur across pages, and this one
+       is load-bearing on exactly one. Being page-local also means it needs its own
+       print override below, which a token would have got for free.
+
+       Accessibility note, since it is a near-white on a near-black: latte lands at
+       roughly 19:1 on --sp-void-deep, so it clears AA and AAA comfortably. It is
+       close in lightness to --star-white though, so links never rely on the hue
+       alone — every one of them carries an underline. */
+    --latte: #FFF8E7;
+    --accent: var(--latte);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--void);
+    font-family: 'Atkinson Hyperlegible Next', system-ui, sans-serif;
+    color: var(--star-white);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Starfield, tinted warm — see starstuff.css on why the gradient art stays
+     inline and per-page. Latte, ivory and a little gold, with two cool stars left
+     in so it reads as a sky rather than a filter. */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 11% 15%, rgba(255,248,231,0.85) 0%, transparent 100%),
+      radial-gradient(1px 1px at 27% 41%, rgba(255,248,231,0.6) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 46% 9%, rgba(251,191,36,0.55) 0%, transparent 100%),
+      radial-gradient(1px 1px at 63% 70%, rgba(255,248,231,0.65) 0%, transparent 100%),
+      radial-gradient(2px 2px at 79% 24%, rgba(255,248,231,0.7) 0%, transparent 100%),
+      radial-gradient(1px 1px at 88% 57%, rgba(34,211,238,0.45) 0%, transparent 100%),
+      radial-gradient(1px 1px at 94% 81%, rgba(255,248,231,0.7) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 6% 61%, rgba(251,191,36,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 33% 88%, rgba(255,248,231,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 57% 44%, rgba(255,248,231,0.45) 0%, transparent 100%),
+      radial-gradient(2px 2px at 20% 84%, rgba(255,248,231,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 72% 6%, rgba(255,248,231,0.8) 0%, transparent 100%),
+      radial-gradient(1px 1px at 50% 65%, rgba(167,139,250,0.42) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 36% 22%, rgba(255,248,231,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 82% 92%, rgba(255,248,231,0.5) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* The shine. A single fixed wash of latte from above the fold, so the page reads
+     as lit rather than merely dark. Static — nothing here for prefers-reduced-motion
+     to neutralise — and hidden in print along with the starfield. */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(120% 55% at 50% -12%, rgba(255,248,231,0.085) 0%, rgba(255,248,231,0.03) 45%, transparent 72%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .doc-shell { position: relative; z-index: 1; max-width: 760px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+
+  .spectrum-line { height: 2px; border: none; border-radius: 2px; background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); }
+
+  .nav-brand { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--dim); margin: 1.6rem 0 2.5rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(255,248,231,0.22); }
+
+  .hero { margin-bottom: 2.5rem; }
+  .hero-eyebrow { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.36em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.3rem; }
+  .hero-title { font-weight: 700; font-size: clamp(2.1rem, 6vw, 3.4rem); line-height: 1.05; letter-spacing: -0.02em; color: var(--star-white); margin-bottom: 0.7rem; }
+  .hero-title em { font-style: normal; background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .hero-kicker { font-size: 1.1rem; line-height: 1.45; font-style: italic; color: var(--latte); margin-bottom: 1rem; }
+  .hero-sub { font-size: 1.02rem; line-height: 1.6; color: var(--stardust); max-width: 38rem; }
+  .hero-rule { width: 200px; max-width: 55%; margin-top: 1.6rem; }
+
+  h2.section { font-weight: 700; font-size: 1.4rem; line-height: 1.2; color: var(--star-white); margin: 2.8rem 0 0.5rem; letter-spacing: -0.01em; scroll-margin-top: 5rem; }
+  h3.sub { font-weight: 700; font-size: 1.08rem; line-height: 1.3; color: var(--star-white); margin: 2rem 0 0.3rem; scroll-margin-top: 5rem; }
+
+  .body-text { font-size: 1.02rem; line-height: 1.75; color: var(--stardust); }
+  .body-text p { margin-top: 1rem; }
+  .body-text em { font-style: italic; color: var(--star-white); }
+  .body-text strong { font-weight: 700; color: var(--star-white); }
+  .body-text a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(255,248,231,0.45); }
+  .body-text a:hover { border-bottom-color: var(--accent); }
+  .body-text ul { margin: 0.9rem 0 0 1.1rem; }
+  .body-text li { margin-top: 0.5rem; padding-left: 0.2rem; color: var(--stardust); line-height: 1.7; }
+  .body-text code { font-family: 'Space Mono', monospace; font-size: 0.9em; color: var(--star-white); }
+
+  .claim { font-size: 1.22rem; font-weight: 700; line-height: 1.4; color: var(--star-white); border-left: 3px solid var(--accent); padding-left: 1.1rem; margin: 1.4rem 0; }
+
+  /* Quoted primary sources take cyan here, as on the two neighbouring essays:
+     these are borrowed, and borrowed things should not wear the page's colour. */
+  .pull { font-size: 1.06rem; line-height: 1.65; color: var(--star-white); border-left: 3px solid var(--cyan); padding-left: 1.1rem; margin: 1.5rem 0; }
+  .pull p + p { margin-top: 0.8rem; }
+  .pull .attr { display: block; margin-top: 0.6rem; font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim); line-height: 1.9; }
+
+  .callout { border: 1px solid rgba(255,248,231,0.3); border-left: 3px solid var(--accent); border-radius: 0 6px 6px 0; padding: 1.1rem 1.3rem; margin: 1.6rem 0; background: rgba(255,248,231,0.045); }
+  .callout .callout-label { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; }
+  .callout p { font-size: 0.96rem; line-height: 1.7; color: var(--stardust); }
+  .callout p + p { margin-top: 0.8rem; }
+  .callout strong { color: var(--star-white); font-weight: 700; }
+  .callout--cyan { border-color: rgba(34,211,238,0.32); border-left-color: var(--cyan); background: rgba(34,211,238,0.05); }
+  .callout--cyan .callout-label { color: var(--cyan); }
+
+  .refusals { margin: 1.5rem 0 0.5rem; }
+  .refusals .callout-label { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--pink); margin-bottom: 0.6rem; }
+  .refusals ul { margin: 0; }
+  .refusals li { list-style: none; position: relative; padding-left: 1.5rem; margin-top: 0.55rem; color: var(--stardust); line-height: 1.65; }
+  .refusals li::before { content: '✕'; position: absolute; left: 0; color: var(--pink); font-weight: 700; }
+
+  /* ── Diagrams ── */
+  .fig { margin: 1.8rem 0 0.6rem; }
+  .fig svg { display: block; width: 100%; height: auto; }
+  .fig figcaption { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--dim); margin-top: 0.7rem; line-height: 1.7; }
+
+  /* ── Tables ── */
+  .tbl-wrap { overflow-x: auto; margin: 1.3rem 0 0.4rem; }
+  table { border-collapse: collapse; width: 100%; min-width: 560px; font-size: 0.88rem; }
+  caption { text-align: left; font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); padding-bottom: 0.7rem; }
+  th, td { text-align: left; vertical-align: top; padding: 0.6rem 0.8rem 0.6rem 0; border-bottom: 1px solid rgba(255,248,231,0.16); }
+  th { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--dim); font-weight: 400; }
+  td { color: var(--stardust); }
+  td strong { color: var(--star-white); }
+  td code { font-family: 'Space Mono', monospace; font-size: 0.88em; color: var(--star-white); }
+
+  .tbl-wrap, .callout, .refusals, .fig, .pull { page-break-inside: avoid; break-inside: avoid; }
+
+  .start-link { display: inline-block; margin-top: 1.5rem; font-family: 'Space Mono', monospace; font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); text-decoration: none; border: 1px solid rgba(255,248,231,0.45); border-radius: 3px; padding: 0.6rem 1.1rem; transition: all 0.2s ease; }
+  .start-link:hover { background: rgba(255,248,231,0.12); border-color: var(--accent); color: var(--star-white); }
+
+  .colophon-footer { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--dim2); line-height: 2.2; margin-top: 3rem; padding-top: 1.4rem; border-top: 1px solid rgba(255,248,231,0.16); }
+  .colophon-footer a { color: var(--dim); text-decoration: none; border-bottom: 1px solid rgba(255,248,231,0.22); }
+  .colophon-footer a:hover { color: var(--stardust); }
+
+  .refs { font-size: 0.8rem; line-height: 1.85; color: var(--dim); margin-top: 2rem; padding-top: 1.2rem; border-top: 1px solid rgba(255,248,231,0.16); }
+  .refs a { color: var(--dim); border-bottom: 1px solid rgba(255,248,231,0.22); text-decoration: none; word-break: break-word; }
+  .refs a:hover { color: var(--stardust); }
+  .refs strong { color: var(--stardust); font-weight: 400; }
+  .refs p + p { margin-top: 0.7rem; }
+
+  @media (max-width: 600px) {
+    .doc-shell { padding: 2rem 1.3rem 3rem; }
+  }
+
+  /* Print: this page aliases the --sp-* tokens, so the shared sheet inverts most of
+     it for free. What it cannot invert is --latte, which is a literal near-white
+     and would print as nothing at all — so every role that names it is re-declared
+     here in ink. The two colour swatches in Figure 1 are the exception: their fills
+     are the subject of the figure, they are SVG (content, so they print), and their
+     labels sit inside them in near-black, which stays legible whether or not the
+     reader's browser paints the fill. */
+  @media print {
+    body::before, body::after { display: none; }
+    .hero-title, .hero-kicker, h2.section, h3.sub, .claim, .pull, td strong,
+    .callout strong, .body-text strong, .body-text em { color: #111; }
+    .body-text li, .hero-sub, .callout p, td, .refusals li { color: #222; }
+    th, caption, .fig figcaption, .pull .attr, .colophon-footer, .refs { color: #444; }
+    /* .callout and .refusals set their label colour with a two-class selector, so
+       match that specificity or the accent survives onto paper at ~1.1:1. */
+    .callout .callout-label,
+    .callout--cyan .callout-label,
+    .refusals .callout-label { color: #444; }
+    .refusals li::before { color: #111; }
+    .callout, .callout--cyan { background: none; border-color: #999; border-left-color: #444; }
+    .claim { border-left-color: #444; }
+    .nav-brand, .colophon-footer, .refs, th, td { border-color: #ccc; }
+    .start-link { display: none; }
+  }
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Starlight: Making in the Open in the Shine of the Cosmic Latte","description":"Average the light of 200,000 galaxies from the 2dF Galaxy Redshift Survey and you get a warm off-white that a Washington Post reader named cosmic latte. The first published answer was pale turquoise — wrong because the colour-conversion software assumed a reddish white point — and the astronomers announced the correction themselves within weeks. The most-shared fact about the colour of the universe is therefore an erratum, and it is conditional on the observer, which is the whole argument for working in the open. This essay states what is public in this project (the repository, the fact-check ledger, the errors, the design reasoning, the checking tools, the search index) and the one thing deliberately kept private (the reader's search query, which never leaves their browser). It then gives a high-level account of the six automated gates that guard the site — contrast and print, markup, text collision, sheet fitting, sitemap and search coverage — naming for each what it asks, what shipped broken to create it, and what it structurally cannot see, along with the operating rules those failures produced: measure rather than count, wait on a condition rather than a clock, report an unmeasured page as UNREAD rather than as passing, and keep every baseline at zero. Finally it states plainly, for the first time on this site, how generative AI is used here and what it is never permitted to do — including why the house rule against smoothed retellings is the reason the gates exist, since smoothing is precisely what a language model is a machine for. The division of labour: machines hold ground, people take it. Every gate in the repository was written after a person found the fault.","image":"https://starstuff.earth/og-card.jpg","url":"https://starstuff.earth/starlight.html","mainEntityOfPage":"https://starstuff.earth/starlight.html","author":{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/"},"publisher":[{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/","logo":{"@type":"ImageObject","url":"https://starstuff.earth/og-card.jpg"}},{"@type":"Organization","name":"More Realms","url":"https://morerealms.com/"}],"isPartOf":{"@type":"WebSite","name":"Star Stuff","url":"https://starstuff.earth/"},"license":"https://creativecommons.org/licenses/by-sa/4.0/"}</script>
+</head>
+<body>
+
+<div class="doc-shell">
+
+  <nav class="ss-nav" style="--nav-accent:#FFF8E7;" aria-label="Star Stuff collection">
+    <span class="ss-nav-home-group">
+      <a class="ss-nav-home" href="index.html"><span class="ss-star" aria-hidden="true">★</span> stuff</a>
+      <a class="ss-nav-about" href="about.html">about</a>
+      <a class="ss-nav-search" href="search.html">search</a>
+    </span>
+    <span class="ss-nav-links">
+      <a class="ss-nav-prev" href="a-promise-not-a-finding.html"><span class="ss-nav-arrow" aria-hidden="true">&lsaquo;</span> <span class="ss-nav-label">A Promise, Not a Finding</span></a>
+      <a class="ss-nav-next" href="neurodiversity-field-guide-zine.html"><span class="ss-nav-label">Neurodiversity</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
+    </span>
+    <a class="ss-nav-collection" href="collection-foundations.html"><span class="ss-nav-collection-label">Collection</span> <span class="ss-nav-collection-name">Foundations</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
+  </nav>
+
+  <div class="nav-brand"><a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks</a> &times; <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a> &middot; Starlight</div>
+
+  <header class="hero">
+    <div class="hero-eyebrow"><a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks Foundation</a> &times; <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a> &middot; Foundations</div>
+    <h1 class="hero-title">Star<em>light</em></h1>
+    <p class="hero-kicker">Making in the open, in the shine of the cosmic latte</p>
+    <p class="hero-sub">This repository is public &mdash; every page, every tool, every error. The reason is one sentence of Brandeis's, and one colour that had to be corrected in public before anybody could use it.</p>
+    <hr class="spectrum-line hero-rule">
+  </header>
+
+  <div class="body-text">
+
+    <p>Average the light of two hundred thousand galaxies and you get a colour. It is a warm off-white, and somebody reading the newspaper over a coffee named it <strong>cosmic latte</strong>.</p>
+
+    <p>That is the fact this page is named after, and it is not the interesting half. The interesting half is that <strong>the first answer was wrong, and the astronomers said so out loud.</strong></p>
+
+    <h2 class="section" id="a-correction">The colour of the universe is a correction</h2>
+
+    <p>The colour was never the point. Ivan Baldry, Karl Glazebrook and the 2dF Galaxy Redshift Survey team were measuring the <em>cosmic spectrum</em> &mdash; the volume-averaged light of present-day galaxies &mdash; to constrain how fast the universe used to make stars. What colour that spectrum would look like to a human eye was a <strong>footnote</strong>. Footnote 3, to be exact, and you can still read the original on arXiv:</p>
+
+    <div class="pull">
+      <p>&ldquo;Integrating these through the cosmic spectrum we have computed RGB values of 0.269, 0.388, 0.342. This corresponds to a blue-green color, the closest match in standard RGB color lists&hellip; is &lsquo;pale turquoise&rsquo;.&rdquo;</p>
+      <span class="attr">Baldry, Glazebrook et al. &middot; astro-ph/0110676 &middot; footnote 3, as posted</span>
+    </div>
+
+    <p>It travelled. <em>The universe is turquoise</em> is a lovely sentence and it went everywhere, which is how it reached Rochester, New York, and the desks of people who do colour for a living. They spotted the problem in the arithmetic that turns a spectrum into a colour: the software had been handed the wrong <strong>white point</strong>.</p>
+
+    <p>A white point is the colour your eye has decided counts as white, and it is not a property of the light being measured &mdash; it is a property of <em>where you are standing</em>. Tungsten bulbs push it yellow. A monitor pushes it blue. The program had been set to a reddish white, and anything measured against a reddish white looks green by comparison. The galaxies had not moved. The observer had.</p>
+
+    <p>Within weeks the team put out the correction themselves. Two sentences from Glazebrook in that announcement are the reason this page exists:</p>
+
+    <div class="pull">
+      <p>&ldquo;It's our fault for not taking the color science seriously enough. I'm very embarrassed.&rdquo;</p>
+      <p>&ldquo;I don't like being wrong, but once I found out I was, I knew I had to get the word out.&rdquo;</p>
+      <span class="attr">Karl Glazebrook &middot; Johns Hopkins University announcement, 13 March 2002</span>
+    </div>
+
+    <p>Corrected, the colour is a beige-white. NASA's <em>Astronomy Picture of the Day</em> describes it with a care worth stealing: <strong>&ldquo;a conditionally perceived shade of beige.&rdquo;</strong> Not <em>is</em> beige. <em>Conditionally perceived</em> as beige &mdash; by an eye, adapted to a particular dark, standing somewhere.</p>
+
+    <p>Then they ran a naming contest. <em>Skyvory</em> and <em>univeige</em> were among the entries. <strong>Cosmic latte</strong> won.</p>
+
+    <figure class="fig">
+      <svg viewBox="0 0 660 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig1-title fig1-desc">
+        <title id="fig1-title">The same spectrum, before and after the white point was corrected</title>
+        <desc id="fig1-desc">Two colour swatches side by side. On the left, the colour as first announced in January 2002: a pale turquoise, labelled with the paper's computed RGB values of 0.269, 0.388 and 0.342, and its footnote's name, pale turquoise. An arrow runs from left to right labelled "white point corrected", noting that the software had assumed a reddish white and that the galaxies did not move, the observer did. On the right, the colour as published in March 2002: a warm off-white, hex FFF8E7, named cosmic latte. Beneath both: same spectrum, same two hundred thousand galaxies, different observer.</desc>
+
+        <text x="330" y="16" font-family="Space Mono, monospace" font-size="9" fill="rgba(212,208,228,0.95)" text-anchor="middle">one spectrum, two white points</text>
+
+        <!-- left: the retracted colour -->
+        <text x="128" y="44" font-family="Space Mono, monospace" font-size="9.5" fill="rgba(212,208,228,0.95)" text-anchor="middle">announced &middot; jan 2002</text>
+        <rect x="38" y="56" width="180" height="86" rx="6" fill="#afeeee" stroke="#d4d0e4" stroke-width="1.5"/>
+        <text x="128" y="94" font-family="Space Mono, monospace" font-size="12" fill="#0a0a14" text-anchor="middle">pale turquoise</text>
+        <text x="128" y="116" font-family="Space Mono, monospace" font-size="9" fill="#0a0a14" text-anchor="middle">rgb 0.269 0.388 0.342</text>
+        <text x="128" y="164" font-family="Space Mono, monospace" font-size="8.5" fill="rgba(212,208,228,0.95)" text-anchor="middle">footnote 3, still on the preprint</text>
+
+        <!-- the correction -->
+        <path d="M240 99 H408" stroke="#FFF8E7" stroke-width="1.6"/>
+        <path d="M400 93 L408 99 L400 105" fill="none" stroke="#FFF8E7" stroke-width="1.6"/>
+        <text x="324" y="86" font-family="Space Mono, monospace" font-size="9" fill="#FFF8E7" text-anchor="middle">white point corrected</text>
+        <text x="324" y="122" font-family="Space Mono, monospace" font-size="8" fill="rgba(212,208,228,0.95)" text-anchor="middle">the software assumed</text>
+        <text x="324" y="136" font-family="Space Mono, monospace" font-size="8" fill="rgba(212,208,228,0.95)" text-anchor="middle">a reddish white</text>
+
+        <!-- right: the published colour -->
+        <text x="532" y="44" font-family="Space Mono, monospace" font-size="9.5" fill="rgba(212,208,228,0.95)" text-anchor="middle">published &middot; mar 2002</text>
+        <rect x="442" y="56" width="180" height="86" rx="6" fill="#fff8e7" stroke="#d4d0e4" stroke-width="1.5"/>
+        <text x="532" y="94" font-family="Space Mono, monospace" font-size="12" fill="#0a0a14" text-anchor="middle">cosmic latte</text>
+        <text x="532" y="116" font-family="Space Mono, monospace" font-size="9" fill="#0a0a14" text-anchor="middle">#fff8e7</text>
+        <text x="532" y="164" font-family="Space Mono, monospace" font-size="8.5" fill="rgba(212,208,228,0.95)" text-anchor="middle">the correction, in public</text>
+
+        <line x1="38" y1="204" x2="622" y2="204" stroke="rgba(255,248,231,0.3)" stroke-width="1"/>
+        <text x="330" y="230" font-family="Space Mono, monospace" font-size="10.5" fill="rgba(212,208,228,0.95)" text-anchor="middle">same spectrum. same 200,000 galaxies.</text>
+        <text x="330" y="254" font-family="Space Mono, monospace" font-size="10.5" fill="#FFF8E7" text-anchor="middle">the galaxies did not move. the observer did.</text>
+        <text x="330" y="282" font-family="Space Mono, monospace" font-size="8.5" fill="rgba(212,208,228,0.95)" text-anchor="middle">a colour is a relation between light and somebody looking at it</text>
+      </svg>
+      <figcaption>Figure 1 &middot; the retracted colour and the published one, and the knob between them</figcaption>
+    </figure>
+
+    <div class="callout">
+      <div class="callout-label">Marking the rung</div>
+      <p><strong>#FFF8E7 is not a constant of nature.</strong> It is one sRGB rendering of a colour that only exists relative to an observer &mdash; which is the same thing the astronomers said, in the words &ldquo;conditionally perceived.&rdquo; The sample is around two hundred thousand galaxies in one survey's volume, not every star there is. And the colour <em>moves</em>: APOD notes the cosmic spectrum has grown much less blue over the past ten billion years as redder stars became more common.</p>
+      <p>We are painting this page in it anyway, and saying all of that out loud, because <a href="a-promise-not-a-finding.html">a simplification is honest exactly where it marks where it stops</a>.</p>
+    </div>
+
+    <p>So the most-shared fact about the colour of the universe is <strong>an erratum</strong>. The reason anyone can trust the number is that the people who got it wrong put the correction where the mistake had been, under their own names, before the journal version went out. It cost Glazebrook an afternoon of being embarrassed in public and it bought everyone since a usable answer.</p>
+
+    <div class="claim">That is the entire argument for working in the open, and it happens to be lit in the exact colour we are borrowing.</div>
+
+    <h2 class="section" id="sunlight">&ldquo;Sunlight is said to be the best of disinfectants&rdquo;</h2>
+
+    <p>The line everybody quotes is Louis D. Brandeis's, from a Harper's Weekly essay of 20 December 1913 that became chapter five of <em>Other People's Money and How the Bankers Use It</em>. Two things go missing every time it is repeated, and both are worth having back.</p>
+
+    <div class="pull">
+      <p>&ldquo;Publicity is justly commended as a remedy for social and industrial diseases. Sunlight is said to be the best of disinfectants; electric light the most efficient policeman.&rdquo;</p>
+      <span class="attr">Louis D. Brandeis &middot; &ldquo;What Publicity Can Do&rdquo; &middot; Harper's Weekly, 20 December 1913</span>
+    </div>
+
+    <p>The first missing piece is the second clause. <strong>Sunlight and electric light are doing two different jobs</strong> &mdash; one kills what is already there, the other deters what would otherwise arrive. A public changelog is sunlight: it cleans up what we already got wrong. A public repository is the electric light: it changes what we are willing to write in the first place, because somebody can read the diff.</p>
+
+    <p>The second missing piece is smaller and, for a project with a <a href="too-good-to-check.html">fact-checking ethic</a>, more interesting. Brandeis did not write <em>sunlight is the best of disinfectants</em>. He wrote <strong>&ldquo;is said to be.&rdquo;</strong> He was passing on a proverb and marking it as one. The most quoted sentence in the literature of transparency is itself hedged by its author, and the hedge is the first thing a century of quoting filed off.</p>
+
+    <h2 class="section" id="in-nouns">What &ldquo;open&rdquo; means here, in nouns</h2>
+
+    <p>Open is a word that survives being meant loosely, so here it is as a list of things that exist and can be checked. Every one of these is in the same public git repository as the pages themselves, at the same commit.</p>
+
+    <div class="tbl-wrap">
+      <table>
+        <caption>the artifact, and where its working is kept</caption>
+        <thead><tr><th>what you can read</th><th>where the working is</th></tr></thead>
+        <tbody>
+          <tr><td><strong>115 pages</strong> &mdash; zines, field guides, broadsides, essays</td><td>the repository, and every revision of every one of them</td></tr>
+          <tr><td><strong>the claims</strong></td><td><code>FACTCHECK.md</code> &mdash; 114 pieces logged, 122 items <code>VERIFIED</code>, 24 <code>CORRECTED</code>, 19 <code>PLAUSIBLE</code>, 1 <code>REMOVED</code></td></tr>
+          <tr><td><strong>the errors</strong></td><td><a href="changelog.html">the changelog</a> &mdash; 21 dated releases, 169 entries, <strong>50 of them fact-checks</strong>, each naming what was wrong, what is right, and who caught it</td></tr>
+          <tr><td><strong>the reasoning</strong></td><td><code>DECISIONS.md</code>, plus <a href="design.html">the design system</a> and <a href="print-design.html">the print rationale</a> as public pages</td></tr>
+          <tr><td><strong>the checking</strong></td><td><code>tools/</code> &mdash; six gates, about 2,850 lines, runnable by anyone with a browser and Node</td></tr>
+          <tr><td><strong>the search</strong></td><td><code>search-index.json</code>, a committed build artifact &mdash; 1,270 records across 114 pages</td></tr>
+          <tr><td><strong>the licence</strong></td><td>CC BY-SA 4.0. Print it, copy it, hand it to somebody</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p><strong>One thing is deliberately closed, and it belongs in the same list.</strong> <a href="search.html">Search</a> runs entirely in your browser against that committed index. There is no server to send a query to, no analytics on it, and no log of it anywhere. We are open about our work; we are not curious about yours. Openness that only ever flows one way &mdash; institutions private, readers observed &mdash; is the ordinary arrangement, and inverting it is the point.</p>
+
+    <h2 class="section" id="the-machines">The machines</h2>
+
+    <p>Six automated gates check this site. None of them was planned. <strong>Every one exists because something shipped broken and a person found it</strong> &mdash; which turns out to be the most important sentence in this section, and we will come back to it.</p>
+
+    <div class="tbl-wrap">
+      <table>
+        <caption>six gates &middot; what each asks, and what made it necessary</caption>
+        <thead><tr><th>the gate</th><th>the question</th><th>the fault that created it</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>contrast</strong><br><code>check-contrast.mjs</code></td>
+            <td><em>What colour is it &mdash; on screen, and on paper?</em></td>
+            <td>Browsers leave <em>background graphics</em> off by default, so a light-on-dark page prints blank. <strong>44 of 46 pages did.</strong> Nobody noticed until somebody pressed print.</td>
+          </tr>
+          <tr>
+            <td><strong>markup</strong><br><code>check-markup.mjs</code></td>
+            <td><em>What shape is the tag tree?</em></td>
+            <td>Four links nested inside a link on a collection page. Anchors cannot nest, so the parser closed the outer one early and the cards came apart on the live site.</td>
+          </tr>
+          <tr>
+            <td><strong>collision</strong><br><code>check-overlap.mjs</code></td>
+            <td><em>Where is it?</em></td>
+            <td>One zine shipped with three pieces of text sitting on top of other text. <strong>All five other gates passed it</strong>, and none of them was wrong to.</td>
+          </tr>
+          <tr>
+            <td><strong>sheets</strong><br><code>check-sheets.mjs</code></td>
+            <td><em>Does it fit the paper?</em></td>
+            <td>A broadside describing itself on its own face as &ldquo;a two-sided single sheet&rdquo; printed as three sides on US Letter.</td>
+          </tr>
+          <tr>
+            <td><strong>sitemap</strong><br><code>check-sitemap.mjs</code></td>
+            <td><em>Does the sitemap agree with the filesystem?</em></td>
+            <td>A live zine, linked from the front page, that had <strong>never been listed</strong> &mdash; uncrawlable for weeks &mdash; and a broadside listed twice.</td>
+          </tr>
+          <tr>
+            <td><strong>search index</strong><br><code>build-search-index.mjs</code></td>
+            <td><em>Is every word findable?</em></td>
+            <td>A page whose text was indexed at <strong>12%</strong> and which passed the coverage check, because the check counted records instead of measuring words.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>The gates are only half the story. What each failure taught is the other half, and those lessons are now the operating rules of this repository.</p>
+
+    <h3 class="sub" id="measure">Measure, don't count</h3>
+
+    <p>The search indexer used to check its own work by counting records: <em>did this page produce at least as many chunks as it has sections?</em> <a href="about.html">One page</a> has exactly three of the blocks it was chunking on, produced three records, and shipped <strong>12% of its own text</strong> into the index looking perfectly healthy. Now every page's records are measured against that page's actual words, and anything under 90% gets re-segmented and a remainder record appended. The run prints a percentage per page, because <em>a page that indexes an eighth of itself looks exactly like a clean one if all you print is a count.</em></p>
+
+    <h3 class="sub" id="condition">Wait on a condition, never a clock</h3>
+
+    <p>Two of these tools drive a headless browser, and both used to wait a flat 1.3 seconds for a page to render before reading it. That makes every run a race. On 11 August the indexer lost it: one build produced <strong>629 records where the builds either side produced 637</strong> &mdash; eight records and fifteen kilobytes of text gone, with <strong>exit code 0 and no warning.</strong> Now both tools wait for the page to stop changing, then read it twice and require the two reads to agree, and a page that never settles is a hard error rather than a quiet truncation. Removing the sleep also made the whole run faster, which is the usual reward for replacing a guess with a question.</p>
+
+    <h3 class="sub" id="unread">A tool's worst failure is the page it didn't look at</h3>
+
+    <p>Zero failures out of zero elements measured looks exactly like a clean page. Worse: when a page silently drops out of a sweep, its failures leave the total, so <strong>the number goes down and reads as progress.</strong> So the contrast checker reports any page it could not measure as <code>UNREAD</code>, never as <code>ok</code>, counts those separately from the failures, and fails on them on their own terms before contrast is even considered.</p>
+
+    <p>The same instinct runs through the rest. Where a check genuinely cannot answer &mdash; a heading painted with a clipped gradient has no single pair of colours to compare &mdash; it says <em>unmeasured, check by eye</em> rather than guessing. <strong>A tool reporting &ldquo;I can't check this&rdquo; is reporting a gap, not clearing it.</strong> That list once ran to <strong>196 entries</strong> and was being read as a footnote &mdash; while <strong>90 elements across 45 pages</strong> printed invisibly, including the site's own wordmark, so the front page came off the printer with no title on it. The tool had been saying <em>look here</em> the whole time.</p>
+
+    <h3 class="sub" id="baseline">Keep every baseline at zero</h3>
+
+    <p>All six gates sit at a baseline of zero, and that is a maintenance decision rather than a compliment to the code. The contrast gate stood at <strong>110 failures</strong> on the morning of 13 August and was cleared that day. A gate that reports &ldquo;110, same as yesterday&rdquo; requires a human to remember yesterday's number; a gate at zero requires nothing. <em>A green number you have to read past stops being read.</em></p>
+
+    <p>Two more rules earned the same way. <strong>A check that has to be rebuilt is a check nobody runs</strong> &mdash; the contrast tool was written three separate times as a throwaway scratch script before anyone committed it. And <strong>a comment is a note, not a control</strong>: one zine's source carries a warning that anything drawn past a certain coordinate lands on the words. The warning was accurate, it was correct, it was right there, and it did not stop the next page from doing it. That is the whole difference between documentation and a gate.</p>
+
+    <h3 class="sub" id="first-run">The first honest run is the argument for the gate</h3>
+
+    <p>The collision checker's first real run over the finished site found <strong>seven pre-existing defects nobody had seen</strong> &mdash; four covers with a caption printed over the title, an unbreakable label overflowing its column onto the body text, and a shipped page where a reader was being shown <em>&ldquo;ight-years.&rdquo;</em> None of these was subtle. All of them had been live for weeks, on a site with five other automated checks and a fact-check ledger, being read by people.</p>
+
+    <h2 class="section" id="division">What machines are good at, and what they are not</h2>
+
+    <p>There is a name for the method these gates implement, and it is not ours. <a href="a-promise-not-a-finding.html">The previous essay</a> takes it from Terry Pratchett: <strong>First Sight</strong> is seeing what is actually in front of you rather than what you expected; <strong>Second Thoughts</strong> are the thoughts that watch the first ones. Not doubt &mdash; supervision.</p>
+
+    <div class="claim">Second Thoughts can be built. First Sight cannot.</div>
+
+    <p>Which is the honest shape of every tool in <code>tools/</code>. Look again at the table above and notice what it is a list of: <strong>six faults that a person found first.</strong> Not one gate anticipated the fault that created it. The sequence is always the same, and it does not reverse.</p>
+
+    <figure class="fig">
+      <svg viewBox="0 0 660 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig2-title fig2-desc">
+        <title id="fig2-title">How every gate in this repository came to exist</title>
+        <desc id="fig2-desc">Four steps in a row. First, a fault ships and nothing sees it. Second, a person notices — marked as the only step that cannot be automated. Third, a gate is written. Fourth, the gate holds that ground on every run afterwards. A return arrow runs from the fourth step back to the second, labelled: attention freed for the next thing nobody has noticed yet. Beneath: machines hold ground, people take it.</desc>
+
+        <g font-family="Space Mono, monospace" text-anchor="middle">
+          <rect x="14" y="40" width="140" height="64" rx="6" fill="none" stroke="rgba(212,208,228,0.55)" stroke-width="1.4" stroke-dasharray="5 4"/>
+          <text x="84" y="66" font-size="10" fill="rgba(212,208,228,0.95)">a fault ships</text>
+          <text x="84" y="86" font-size="8.5" fill="rgba(212,208,228,0.95)">nothing sees it</text>
+
+          <rect x="176" y="40" width="140" height="64" rx="6" fill="none" stroke="#FFF8E7" stroke-width="2"/>
+          <text x="246" y="66" font-size="10" fill="#FFF8E7">a person notices</text>
+          <text x="246" y="86" font-size="8.5" fill="rgba(212,208,228,0.95)">first sight</text>
+
+          <rect x="338" y="40" width="140" height="64" rx="6" fill="none" stroke="rgba(34,211,238,0.75)" stroke-width="1.4"/>
+          <text x="408" y="66" font-size="10" fill="#22d3ee">a gate is written</text>
+          <text x="408" y="86" font-size="8.5" fill="rgba(212,208,228,0.95)">second thoughts</text>
+
+          <rect x="500" y="40" width="146" height="64" rx="6" fill="none" stroke="rgba(34,211,238,0.75)" stroke-width="1.4"/>
+          <text x="573" y="66" font-size="10" fill="#22d3ee">it holds that ground</text>
+          <text x="573" y="86" font-size="8.5" fill="rgba(212,208,228,0.95)">every run, forever</text>
+        </g>
+
+        <g stroke="rgba(212,208,228,0.7)" stroke-width="1.4" fill="none">
+          <path d="M156 72 H172"/><path d="M166 67 L172 72 L166 77"/>
+          <path d="M318 72 H334"/><path d="M328 67 L334 72 L328 77"/>
+          <path d="M480 72 H496"/><path d="M490 67 L496 72 L490 77"/>
+        </g>
+
+        <!-- the return: freed attention goes back to looking -->
+        <g stroke="#FFF8E7" stroke-width="1.4" fill="none">
+          <path d="M573 112 V142 H246 V116"/>
+          <path d="M241 122 L246 116 L251 122"/>
+        </g>
+        <text x="410" y="158" font-family="Space Mono, monospace" font-size="8.5" fill="#FFF8E7" text-anchor="middle">attention freed for the next thing nobody has noticed yet</text>
+
+        <line x1="14" y1="186" x2="646" y2="186" stroke="rgba(255,248,231,0.3)" stroke-width="1"/>
+        <text x="330" y="212" font-family="Space Mono, monospace" font-size="11" fill="rgba(212,208,228,0.95)" text-anchor="middle">machines hold ground.</text>
+        <text x="330" y="234" font-family="Space Mono, monospace" font-size="11" fill="#FFF8E7" text-anchor="middle">people take it.</text>
+      </svg>
+      <figcaption>Figure 2 &middot; the order the six gates were actually built in, without exception</figcaption>
+    </figure>
+
+    <p>This is not a modest framing of automation. It is a precise one, and it is what makes the machines worth having: a gate never has to notice the same thing twice, which means the noticing can move on. Two thousand eight hundred and fifty lines of checking code is two thousand eight hundred and fifty lines of attention that nobody has to spend again.</p>
+
+    <div class="tbl-wrap">
+      <table>
+        <caption>the division of labour, stated honestly</caption>
+        <thead><tr><th>what a machine is good at</th><th>what it structurally cannot do</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Exhaustive.</strong> 115 pages, 94,718 tags, 1,648 ids, 1,270 index records &mdash; every one, every run</td><td><strong>Notice that a beautiful pattern is doing your looking for you.</strong> The wood-wide-web story got past us in three separate pieces because it rhymed so well with mutual aid</td></tr>
+          <tr><td><strong>Indifferent.</strong> It does not care how much you love a finding, or how long the draft took</td><td><strong>Decide a subject cannot take the apparatus.</strong> <a href="turtle-field-guide.html">Field Guide No. 10</a> keeps five <em>turtles people made</em> out of the correction table, because running &ldquo;sounds like / actually&rdquo; over somebody's cosmology would be obscene</td></tr>
+          <tr><td><strong>Tireless.</strong> A repo-wide sweep can touch 66 pages in one pass and check all of them</td><td><strong>Be embarrassed.</strong> Which is what Glazebrook was, and it is the mechanism &mdash; the correction was published by the feeling, not by the arithmetic</td></tr>
+          <tr><td><strong>Repeatable.</strong> The same question, asked identically, on every commit</td><td><strong>Decide what is worth making at all</strong>, or who it is for, or what this project owes the people in it</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 class="section" id="ai">Generative AI, said plainly</h2>
+
+    <p>This is the first page on this site to state it, which is itself a small failure of the openness it is arguing for. <strong>Generative AI facilitates a great deal of the work here</strong> &mdash; drafting, the gates and their output, index and sitemap maintenance, the ledger, source legwork, and the sweeps that touch every page at once. Star Stuff is, among other things, an experiment in whether that can be done in service to accessibility, accuracy and transparency rather than at their expense.</p>
+
+    <p>So, in nouns, on both sides.</p>
+
+    <div class="tbl-wrap">
+      <table>
+        <caption>what it does here, and what it is never allowed to do</caption>
+        <thead><tr><th>does</th><th>does not</th></tr></thead>
+        <tbody>
+          <tr><td>Draft, revise, and build pages against a written house style</td><td>Decide what is worth making, or what this project believes</td></tr>
+          <tr><td>Run and extend the six gates; rebuild the search index; keep the sitemap and the chain honest</td><td>Stand as a citation for anything, ever</td></tr>
+          <tr><td>Do the legwork of finding primaries &mdash; fetch the paper, grep the out-of-copyright book, pull the preprint</td><td><strong>Be the last check on a quotation.</strong> A person reads the primary before it ships</td></tr>
+          <tr><td>Maintain <code>FACTCHECK.md</code> and write the public changelog entries, including the ones about its own errors</td><td>Be trusted about anything it merely <em>recalls</em></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>The rules constraining it are the ordinary house rules, applied without an exemption: <strong>aggregators are leads, not citations</strong>; a quotation is traced to the book, essay, paper or talk; a paraphrase is never dressed as a quote; the check is logged before the piece ships. With one addition that exists specifically because of the machine &mdash; <strong>your own summary is an aggregator.</strong> A model's account of a source is a secondary source about that source, and it is not exempt from the rule just because it is the thing writing the sentence.</p>
+
+    <div class="callout callout--cyan">
+      <div class="callout-label">Why the rule is shaped that way</div>
+      <p><a href="collection-how-we-got-here.html">One collection here</a> exists to separate science from three things that wear its clothes: pseudo-science, scientism, and <strong>the smoothed popular retelling</strong> &mdash; the version with every hedge filed off, because the tidy version travels further.</p>
+      <p>A language model is, structurally, <strong>a machine for producing the third one</strong>: the fluent, confident, average account, at scale. That is an odd thing to build a fact-checked site with, and the answer is not to trust it more carefully. It is to make everything it produces answerable to something that is not it &mdash; a primary source, a gate that measures, and a person who reads the paper. <em>The smoothing is exactly why the machinery had to be built.</em></p>
+    </div>
+
+    <p>And the mechanism has already failed here, in a way worth publishing. This repository keeps a working-notes file that tells the AI how the site works. A sign-off sentence in <em>those notes</em> got absorbed as house voice, promoted to &ldquo;our masthead,&rdquo; and shipped in a zine &mdash; where it was quoted with the three words that repaired it removed, and then argued against. It had never been the masthead. It was a colophon on one zine, and it had corrected itself in the next breath. <strong>Ryan Boren caught it</strong>, and both the essay and the notes now say the same thing: <em>context is not evidence.</em> Working notes are a lead about the site, exactly like any other aggregator.</p>
+
+    <p>That is one of three attribution errors published in the last week alone. Another credited five neurodivergent love locutions to a single person on the strength of a citation chain that led, at every step, <strong>back to our own pages</strong> &mdash; a closed loop with no primary at the bottom of it, in which the aggregator being over-trusted was us. The third credited an organisation where it owed a person: <a href="https://stimpunks.org/2023/06/18/lone-wolfing-the-joys-of-autistic-solitude/">Betsy Selvam's</a> byline was on the essay the whole time. Each is in <a href="changelog.html">the changelog</a> with what was wrong, what is right, and who caught it. None was caught by a gate.</p>
+
+    <h2 class="section" id="public-entity">A public entity</h2>
+
+    <p>There is a reason a foundation whose subject is learning builds in the open rather than merely publishing when finished. Seymour Papert and Idit Harel gave it a name: <strong>constructionism</strong>, which takes constructivism's idea of learning as building knowledge structures and adds one condition.</p>
+
+    <div class="pull">
+      <p>&ldquo;&hellip;this happens especially felicitously in a context where the learner is consciously engaged in constructing a public entity, whether it's a sand castle on the beach or a theory of the universe.&rdquo;</p>
+      <span class="attr">Seymour Papert &amp; Idit Harel &middot; &ldquo;Situating Constructionism,&rdquo; in Constructionism, 1991</span>
+    </div>
+
+    <p><strong>A public entity.</strong> Not a finished one &mdash; a public one, while it is being made. That condition is the whole of this page: the repository, the ledger, the tools, the errata and the changelog are not documentation of the learning, they <em>are</em> it. It is what <a href="https://stimpunks.org/space/">the Stimpunks Learning Space</a> practices, and this site is the foundation eating its own cooking rather than recommending a recipe.</p>
+
+    <p>And it is why the errors are the most valuable thing in the repository. A private error log teaches one person, once. <a href="changelog.html">Fifty published fact-checks</a> are a curriculum &mdash; in what a closed citation loop looks like, in how a hedge goes missing, in why the tidiest version of a story is the one to distrust. We would not have any of that if we had waited to be right.</p>
+
+    <div class="claim">A knowledge garden is how star stuff comes to know itself. It cannot do that behind a login.</div>
+
+    <p>Which lands where <a href="the-garden-and-the-stars-zine.html">the self-portrait</a> already had it, and where <a href="who-is-holding-the-candle.html">the essay before last</a> put the observer: there is no view from nowhere, only an unstated view from somewhere. The astronomers' white point makes that literal. <strong>Every measurement carries an observer, and the honest thing to do with an observer is name them and show your working</strong> &mdash; which is the same reason the changelog says who caught each error, and the same reason this page says how it was made.</p>
+
+    <div class="refusals">
+      <div class="callout-label">Not:</div>
+      <ul>
+        <li><strong>Not a claim that open equals accountable.</strong> Publishing a correction does not un-publish the error. People read the misattributed quote, printed the blank page, followed the citation loop. Sunlight disinfects; it does not undo.</li>
+        <li><strong>Not a claim that the gates make the site correct.</strong> Six gates at zero, 122 verified items, and we shipped three attribution errors last week. The gates measure colour, structure, position, paper, coverage and completeness. <strong>None of them can read.</strong></li>
+        <li><strong>Not an argument that transparency substitutes for structure.</strong> Brandeis was arguing for publicity <em>alongside</em> regulation, not instead of it, and the sentence is regularly quoted by people who want the first without the second.</li>
+        <li><strong>Not an advertisement for AI.</strong> The honest summary is that a language model is a smoothing machine pointed at a project built to resist smoothing, and it earns its place here only under constraints that a human maintains and enforces. Take the constraints away and you get a fluent, confident, well-formatted version of exactly what this site exists to argue against.</li>
+        <li><strong>Not a claim that the machines caught the interesting things.</strong> Every gate here is downstream of a person noticing. The gate's value is that the noticing never has to happen twice &mdash; not that it happened at all.</li>
+        <li><strong>Not open-washing.</strong> Open is a licence, a repository, a runnable toolchain and a published error log, or it is a word in a footer. If any of the four goes away, so does the claim.</li>
+        <li><strong>Not everything.</strong> Your search query is yours and never leaves your browser, and there is no personal data in this repository. Open about the work is not the same as open about the people, and the second one is somebody else's business model.</li>
+      </ul>
+    </div>
+
+    <h2 class="section" id="shorter">The shorter version</h2>
+
+    <p>The average colour of the light in this universe is a warm off-white, and the first published value for it was wrong. It got fixed because two astronomers put their own erratum where their mistake had been, and because colour scientists who had nothing to do with the paper could see enough of the working to spot the flaw in it.</p>
+
+    <p>That is the arrangement we are copying. The pages, the tools, the reasoning, the ledger and the errors are all in one public place, at the same commit, under a licence that lets you take them. The machines here are second thoughts made durable &mdash; they hold ground that a person already took, so the person can go and look at something new. And the looking is still ours, because it has to be.</p>
+
+    <div class="claim">Sunlight is said to be the best of disinfectants. We work by the light of a colour that had to be corrected &mdash; in public, by the people who got it wrong, with everything shown.</div>
+
+    <p><a class="start-link" href="changelog.html">Everything we got wrong &rarr;</a></p>
+
+    <div class="refs">
+      <p><strong>The colour.</strong> <strong>I. K. Baldry, K. Glazebrook</strong> et al. (the 2dFGRS team), &ldquo;The 2dF Galaxy Redshift Survey: constraints on cosmic star-formation history from the cosmic spectrum,&rdquo; <em>Astrophysical Journal</em> <strong>569</strong>:582 (2002). The &ldquo;pale turquoise&rdquo; footnote is quoted verbatim from footnote 3 of the preprint, <a href="https://arxiv.org/abs/astro-ph/0110676">arXiv:astro-ph/0110676</a>, which still carries the uncorrected value &mdash; the correction was announced publicly before the journal version appeared. Glazebrook's two quotations, the white-point explanation and the Munsell Color Science Laboratory's role are from the <strong>Johns Hopkins University announcement of 13 March 2002</strong>, &ldquo;Color of the Universe Corrected by Astronomers&rdquo;; this is an institutional release rather than a paper, and is cited as such. <strong>&ldquo;A conditionally perceived shade of beige,&rdquo;</strong> the 200,000-galaxy figure, the ten-billion-year drift and the naming contest are from <a href="https://apod.nasa.gov/apod/ap020702.html">NASA's Astronomy Picture of the Day, 2 July 2002</a>. The naming of &ldquo;cosmic latte&rdquo; by a <em>Washington Post</em> reader is widely reported but has not been confirmed at a primary source here, so the person is described and not named.</p>
+      <p><strong>The rest.</strong> <strong>Louis D. Brandeis</strong>, &ldquo;What Publicity Can Do,&rdquo; <em>Harper's Weekly</em>, 20 December 1913, collected as chapter V of <em>Other People's Money and How the Bankers Use It</em> (1914) &mdash; quoted from the full text of the book, including the second clause and the &ldquo;is said to be.&rdquo; <strong>Seymour Papert &amp; Idit Harel</strong>, &ldquo;Situating Constructionism,&rdquo; the introduction to <em>Constructionism</em> (Ablex, 1991), quoted verbatim from the essay. <strong>Terry Pratchett</strong>, <em>Wintersmith</em> (2006), for First Sight and Second Thoughts &mdash; the argument is worked in <a href="a-promise-not-a-finding.html">A Promise, Not a Finding</a> and credited there. <a href="https://stimpunks.org/space/">The Stimpunks Learning Space</a> for constructionism and experiential learning in practice.</p>
+      <p><strong>The numbers.</strong> Every figure about this repository &mdash; 115 pages, 94,718 tags, 1,648 ids, 1,270 search records across 114 pages, 114 ledger rows, 21 dated changelog releases and 169 entries of which 50 are fact-checks, roughly 2,850 lines across the six gates &mdash; was measured from the repository on <strong>17 August 2026</strong>, at the commit that added this page, by running the tools named above. They will drift, and this page is not the place they are kept current &mdash; the commands that produce them are in the repository, which is the point.</p>
+    </div>
+
+    <div class="colophon-footer">
+      <a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks Foundation</a> &times; <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a><br>
+      stimpunks.org &middot; morerealms.com &middot; starstuff.earth<br>
+      <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> &middot; open edition &middot; print freely
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+</html>
