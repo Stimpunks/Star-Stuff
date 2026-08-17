@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0a0a14">
+<link rel="canonical" href="https://starstuff.earth/noise-floor-zine.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta name="description" content="In July 1928, Physical Review volume 32 carried the measurement and the explanation back to back: J. B. Johnson on pages 97-109, H. Nyquist on pages 110-113, whose first footnote reads 'See preceding paper.' Every conductor above absolute zero generates noise, the available power in a band is kTB, and Nyquist derived it from the second law of thermodynamics — a silent resistor would be a perpetual-motion machine. In 1948 Shannon's Theorem 17 turned that floor into a limit on meaning: capacity is W log((P+N)/N), and it is not possible to transmit faster by any encoding system without errors. You cannot filter your way to clarity. So engineering stopped trying to delete the floor and started changing its terms — cool it, shield it, narrow the band. Which is exactly what Arno Penzias and Robert Wilson did at Holmdel with a maser at 4.2 K and a helium-cooled reference load, and why the 3.5 plus or minus 1.0 K they could not account for turned out to be the cosmic microwave background. The pigeons are in Wilson's Nobel lecture, and what he actually wrote is that evicting them 'obtained only a small reduction in antenna temperature.' Meanwhile ANSI/ASA S12.60 sets classrooms a 35 dBA background limit because speech intelligibility is a signal-to-noise problem, Wilkins 1989 found headaches more than halved when 100 Hz fluorescent flicker was removed, and Kim and de Dear 2013 found sound privacy the single largest source of office dissatisfaction. Rosas-Perez's 2026 Heriot-Watt thesis Disabling Acoustics then supplies the finding that breaks the analogy rather than confirming it: no habituation, but an accumulation effect. Thermal noise is stationary; the measured human pattern is cumulative. A resistor never gets tired of being warm. The ninth chain zine in the How We Got Here form, with every joint marked documented, contested or leap.">
+<!-- Open Graph / link unfurl -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Star Stuff · Stimpunks Foundation × More Realms">
+<meta property="og:url" content="https://starstuff.earth/noise-floor-zine.html">
+<meta property="og:title" content="The Noise Floor">
+<meta property="og:description" content="The most important discovery in modern cosmology arrived as noise two engineers spent ten months trying to get rid of. Every receiver has a floor. No design removes it. And still we tell people to tune it out.">
+<meta property="og:image" content="https://starstuff.earth/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A rainbow-hued cosmic image — we are all made of star stuff.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Noise Floor">
+<meta name="twitter:description" content="kTB. Every conductor above absolute zero hisses, and removing it would break the second law. On floors that are not defects — and the rooms we build as if noise were free.">
+<meta name="twitter:image" content="https://starstuff.earth/og-card.jpg">
+<title>The Noise Floor — Stimpunks Zine No. 56</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="starstuff.css">
+<style>
+  :root {
+    --void:  var(--sp-void-deep);
+    --deep:  var(--sp-deep);
+    --page:  var(--sp-page);
+    --violet:var(--sp-purple);
+    --pink:  var(--sp-pink);
+    --gold:  var(--sp-gold);
+    --cyan:  var(--sp-cyan);
+    --green: var(--sp-green);
+    --ember: #c1653a;
+    --accent: var(--sp-cyan);          /* this zine's identity accent — the cold end of the receiver */
+    --star-white: var(--sp-white-soft);
+    --stardust:   var(--sp-secondary-soft);
+    --dim:   var(--sp-dim);
+    --dim2:  var(--sp-dim-soft);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--void);
+    font-family: 'Atkinson Hyperlegible Next', system-ui, sans-serif;
+    color: var(--star-white);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── STARFIELD (cyan · white · violet — the sky the horn was pointed at) ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 11% 17%, rgba(34,211,238,0.62) 0%, transparent 100%),
+      radial-gradient(1px 1px at 27% 34%, rgba(244,244,251,0.64) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 41% 9%, rgba(34,211,238,0.52) 0%, transparent 100%),
+      radial-gradient(1px 1px at 56% 61%, rgba(244,244,251,0.66) 0%, transparent 100%),
+      radial-gradient(2px 2px at 75% 23%, rgba(34,211,238,0.46) 0%, transparent 100%),
+      radial-gradient(1px 1px at 87% 47%, rgba(167,139,250,0.50) 0%, transparent 100%),
+      radial-gradient(1px 1px at 93% 76%, rgba(34,211,238,0.50) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 7% 59%, rgba(244,244,251,0.56) 0%, transparent 100%),
+      radial-gradient(1px 1px at 33% 81%, rgba(34,211,238,0.46) 0%, transparent 100%),
+      radial-gradient(1px 1px at 49% 39%, rgba(167,139,250,0.46) 0%, transparent 100%),
+      radial-gradient(2px 2px at 20% 88%, rgba(34,211,238,0.50) 0%, transparent 100%),
+      radial-gradient(1px 1px at 68% 7%, rgba(244,244,251,0.76) 0%, transparent 100%),
+      radial-gradient(1px 1px at 44% 56%, rgba(34,211,238,0.42) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 31% 15%, rgba(244,244,251,0.46) 0%, transparent 100%),
+      radial-gradient(1px 1px at 81% 86%, rgba(167,139,250,0.46) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .zine-shell { position: relative; z-index: 1; max-width: 820px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+
+  .spectrum-line { height: 2px; border: none; border-radius: 2px; background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); }
+
+  /* ── NAV ── */
+  .nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2.5rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(34,211,238,0.22); }
+  .nav-brand { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--dim); }
+  .nav-controls { display: flex; gap: 0.5rem; align-items: center; }
+  .nav-btn { background: none; border: 1px solid rgba(34,211,238,0.35); color: var(--stardust); font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.15em; padding: 0.4rem 0.85rem; border-radius: 2px; cursor: pointer; transition: all 0.2s ease; text-transform: uppercase; }
+  .nav-btn:hover { background: rgba(34,211,238,0.15); border-color: rgba(34,211,238,0.6); color: var(--star-white); }
+  .nav-btn.active { background: rgba(34,211,238,0.20); border-color: var(--accent); color: var(--star-white); }
+  .page-counter { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.2em; color: var(--dim2); }
+
+  .spread { display: none; animation: fadeIn 0.5s ease forwards; }
+  .spread.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ── COVER ── */
+  .cover-spread {
+    position: relative; min-height: 520px; border-radius: 4px; overflow: hidden;
+    background:
+      radial-gradient(ellipse at 24% 22%, rgba(34,211,238,0.14) 0%, transparent 52%),
+      radial-gradient(ellipse at 80% 26%, rgba(167,139,250,0.10) 0%, transparent 52%),
+      radial-gradient(ellipse at 68% 82%, rgba(34,211,238,0.08) 0%, transparent 52%),
+      radial-gradient(ellipse at 28% 80%, rgba(244,114,182,0.06) 0%, transparent 52%),
+      var(--deep);
+    border: 1px solid rgba(34,211,238,0.25);
+    box-shadow: inset 0 0 80px rgba(34,211,238,0.07), 0 0 0 4px rgba(255,255,255,0.03);
+    display: flex; flex-direction: column; justify-content: flex-end; padding: 3rem;
+  }
+  .cover-motif { position: absolute; top: -4px; right: -14px; width: 340px; height: 340px; opacity: 0.75; pointer-events: none; }
+  .cover-issue { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.5em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.5rem; }
+  .cover-title { font-weight: 700; font-size: clamp(2rem, 5.4vw, 3.2rem); line-height: 1.04; color: var(--star-white); letter-spacing: -0.01em; margin-bottom: 0.9rem; }
+  .cover-title .amp { color: var(--accent); font-style: italic; }
+  .cover-subtitle { font-size: 1rem; color: var(--stardust); opacity: 0.85; margin-bottom: 1.5rem; max-width: 470px; line-height: 1.55; }
+  .cover-byline { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.14em; color: var(--dim); margin-bottom: 1.8rem; }
+  .cover-byline strong { color: var(--stardust); font-weight: 700; }
+  .cover-rule { width: 220px; max-width: 60%; margin-bottom: 1.3rem; }
+  .cover-meta { display: flex; gap: 2rem; align-items: center; }
+  .cover-ls { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 1.4rem; color: var(--accent); letter-spacing: 0.05em; }
+  .cover-meta-text { font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--dim2); line-height: 1.9; }
+  .cover-corner { position: absolute; top: 2rem; right: 2.5rem; text-align: right; }
+  .cover-corner-num { font-weight: 700; font-size: 4.5rem; line-height: 1; color: var(--accent); opacity: 0.24; }
+  .cover-corner-label { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--cyan); display: block; margin-top: -0.3rem; }
+
+  /* ── INTERIOR ── */
+  .interior { background: var(--page); border: 1px solid rgba(34,211,238,0.15); border-radius: 4px; overflow: hidden; min-height: 480px; }
+  .spread-2col { display: grid; grid-template-columns: 1fr 1fr; min-height: 480px; }
+  .spread-left, .spread-right { padding: 3rem 2.4rem; position: relative; }
+  .spread-left { border-right: 1px solid rgba(34,211,238,0.12); }
+
+  .spread-2col.stacked { display: flex; flex-direction: column; }
+  .spread-2col.stacked > .spread-left,
+  .spread-2col.stacked > .spread-right { border-right: none; }
+  .spread-2col.stacked > .col-diagram { order: 2; padding-top: 0; }
+  .spread-2col.stacked > .col-text { padding-left: max(2.4rem, calc((100% - 32rem) / 2)); padding-right: max(2.4rem, calc((100% - 32rem) / 2)); }
+  .spread-2col.stacked .diagram-wrap { height: auto; }
+  .spread-2col.stacked .diagram { max-width: 380px; }
+
+  .eyebrow { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.1rem; }
+  .body-text { font-size: 0.98rem; line-height: 1.72; color: var(--stardust); }
+  .body-text p { margin-bottom: 1rem; }
+  .body-text p:last-child { margin-bottom: 0; }
+  .body-text strong { font-weight: 700; color: var(--star-white); }
+  .body-text em { font-style: italic; color: var(--star-white); }
+  .body-text a { color: var(--cyan); text-decoration: none; border-bottom: 1px solid rgba(34,211,238,0.4); }
+  .body-text a:hover { border-bottom-color: var(--cyan); color: var(--star-white); }
+  .body-text .violet { color: var(--violet); font-weight: 700; }
+  .body-text .pink { color: var(--pink); font-weight: 700; }
+  .body-text .gold { color: var(--gold); font-weight: 700; }
+  .body-text .cyan { color: var(--cyan); font-weight: 700; }
+  .body-text .green { color: var(--green); font-weight: 700; }
+  .body-text .dim { color: var(--dim); }
+  .body-text .lede { font-size: 1.08rem; color: var(--star-white); }
+  .body-text .num { font-family: 'Space Mono', monospace; font-weight: 700; color: var(--accent); letter-spacing: -0.01em; }
+
+  .spread-heading { font-weight: 700; font-size: 1.9rem; line-height: 1.12; color: var(--star-white); margin-bottom: 1.1rem; letter-spacing: -0.01em; margin-top: 0; scroll-margin-top: 5rem; }
+  .spread-heading .spectrum-word { background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .rule { width: 40px; margin: 1rem 0; }
+
+  .pull-quote { font-size: 1.18rem; font-weight: 700; line-height: 1.4; color: var(--star-white); border-left: 3px solid var(--accent); padding-left: 1.1rem; margin: 1.4rem 0; font-style: italic; }
+  .pull-quote.violet { border-left-color: var(--violet); }
+  .pull-quote.cyan { border-left-color: var(--cyan); }
+  .pull-quote.gold { border-left-color: var(--gold); }
+  .pull-quote .attr { display: block; font-family: 'Space Mono', monospace; font-size: 0.6rem; font-weight: 400; font-style: normal; letter-spacing: 0.08em; color: var(--dim); margin-top: 0.6rem; }
+
+  .callout { margin: 1.3rem 0; padding: 1rem 1.15rem; background: rgba(34,211,238,0.07); border: 1px solid rgba(34,211,238,0.24); border-radius: 4px; font-size: 1rem; font-style: italic; color: var(--star-white); line-height: 1.55; }
+  .callout .attr { display: block; font-family: 'Space Mono', monospace; font-size: 0.58rem; font-style: normal; letter-spacing: 0.06em; color: var(--dim); margin-top: 0.5rem; }
+
+  /* ── THE JOINT TAG (No. 38's convention, ninth outing) ──
+     Every link claimed at one of three strengths, said in place. This chain runs documented for
+     ten rungs because the rail is journals with page numbers — Physical Review 32, the Bell System
+     Technical Journal, Astrophysical Journal 142, an ANSI standard — and then spends its last two
+     joints admitting what a floor in a circuit does NOT prove about a person. The whole weight
+     sits on those two marked joints, which is the honest shape when the physics is airtight and
+     the transfer is not. */
+  .joint { display: inline-flex; align-items: baseline; gap: 0.4rem; font-family: 'Space Mono', monospace; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; padding: 0.16rem 0.5rem; border-radius: 2px; white-space: nowrap; vertical-align: 0.12em; }
+  .joint::before { content: ''; width: 16px; height: 0; border-top-width: 2px; align-self: center; }
+  .joint-documented { color: var(--green); background: rgba(74,222,128,0.10); border: 1px solid rgba(74,222,128,0.32); }
+  .joint-documented::before { border-top-style: solid; border-top-color: var(--green); }
+  .joint-contested  { color: var(--gold); background: rgba(251,191,36,0.10); border: 1px solid rgba(251,191,36,0.32); }
+  .joint-contested::before { border-top-style: dashed; border-top-color: var(--gold); }
+  .joint-leap       { color: var(--pink); background: rgba(244,114,182,0.10); border: 1px solid rgba(244,114,182,0.32); }
+  .joint-leap::before { border-top-style: dotted; border-top-color: var(--pink); }
+
+  .joint-note { font-size: 0.84rem; line-height: 1.6; color: var(--dim); border-left: 2px solid rgba(34,211,238,0.28); padding-left: 0.9rem; margin: 1.1rem 0; }
+  .joint-note strong { color: var(--stardust); font-weight: 700; }
+
+  /* ── THE RUNNING SPINE ──
+     The rail IS the noise floor: a jagged trace that never reaches the dashed 0 K line beneath it.
+     Jagged where the claim is a MEASUREMENT; smooth where it is an ARGUMENT — the contested and
+     leap segments are straight because they are reasoning, not readings.
+
+     This is SCHEMATIC, and says so. No. 50's spine plotted real TAI−UTC data, and the difference
+     matters: a spine that looks like a plot and isn't one would be the exact vice this collection
+     was built against. Geometry generated, not hand-drawn — see FACTCHECK.md.
+
+     .spine-track.sky is deliberately outside the documented/contested/leap vocabulary, following
+     No. 50's .earth: the excess at rung 9 is not a claim about a joint, it is the universe, and
+     giving it a notation colour would say the cosmos had an epistemic status. */
+  .spine { border-top: 1px solid rgba(34,211,238,0.12); padding: 1.1rem 2.4rem 0.2rem; }
+  .spine svg { width: 100%; max-width: 620px; margin: 0 auto; display: block; overflow: visible; }
+  .spine-label { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); text-align: center; margin-top: 0.5rem; }
+  .spine-node { fill: var(--sp-dim); }
+  .spine-node.live { fill: var(--accent); }
+  .spine-ring { fill: none; stroke: var(--accent); stroke-width: 1.6; }
+  .spine-track { fill: none; stroke-width: 1.6; stroke-linecap: round; }
+  .spine-track.documented { stroke: rgba(74,222,128,0.55); }
+  .spine-track.contested  { stroke: rgba(251,191,36,0.6); stroke-dasharray: 6 4; }
+  .spine-track.leap       { stroke: rgba(244,114,182,0.6); stroke-dasharray: 1.5 4; }
+  .spine-track.zero       { stroke: rgba(244,244,251,0.26); stroke-width: 1; stroke-dasharray: 4 4; }
+  .spine-track.sky        { stroke: rgba(244,244,251,0.40); stroke-width: 1.2; }
+  .spine-raillabel { font-family: 'Space Mono', monospace; font-size: 7px; letter-spacing: 0.18em; text-transform: uppercase; fill: var(--sp-dim); }
+
+  /* ── DIAGRAMS ── */
+  .diagram-wrap { display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; }
+  .diagram { width: 100%; max-width: 300px; display: block; }
+  .diagram-caption { font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim); text-align: center; margin-top: 0.9rem; line-height: 1.9; }
+  .annotation { color: var(--accent); }
+
+  /* ── THE ELIMINATION LIST ── */
+  .checks { margin: 1.3rem 0; }
+  .check { display: flex; gap: 0.75rem; align-items: baseline; font-size: 0.86rem; line-height: 1.5; color: var(--stardust); padding: 0.5rem 0; border-bottom: 1px solid rgba(34,211,238,0.1); }
+  .check:last-child { border-bottom: none; }
+  .check-mark { font-family: 'Space Mono', monospace; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.1em; color: var(--green); flex-shrink: 0; padding-top: 0.1rem; }
+  .check-result { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.1em; color: var(--dim); margin-left: auto; flex-shrink: 0; padding-left: 0.6rem; }
+
+  /* ── THE THREE MOVES ── */
+  .moves { display: flex; gap: 1rem; margin: 1.4rem 0; }
+  .move { flex: 1; padding: 0.9rem 1rem; border-radius: 4px; border: 1px solid rgba(34,211,238,0.22); background: rgba(34,211,238,0.05); }
+  .move-term { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 0.95rem; line-height: 1; color: var(--accent); }
+  .move-label { font-size: 0.78rem; color: var(--stardust); margin-top: 0.5rem; line-height: 1.5; }
+
+  /* ── REFUSALS ── */
+  .refusals { margin-top: 1.3rem; }
+  .refusal { font-size: 0.88rem; line-height: 1.5; color: var(--stardust); padding: 0.55rem 0; border-bottom: 1px solid rgba(34,211,238,0.1); display: flex; gap: 0.6rem; align-items: baseline; }
+  .refusal:last-child { border-bottom: none; }
+  .refusal-tag { font-family: 'Space Mono', monospace; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ember); flex-shrink: 0; padding-top: 0.12rem; }
+  .refusal strong { color: var(--star-white); font-weight: 700; }
+
+  /* ── COLOPHON ── */
+  .colophon { padding: 3rem; display: flex; flex-direction: column; justify-content: space-between; min-height: 480px; background: radial-gradient(ellipse at 82% 18%, rgba(34,211,238,0.10) 0%, transparent 50%), radial-gradient(ellipse at 18% 85%, rgba(167,139,250,0.06) 0%, transparent 50%), var(--page); }
+  .colophon-top { border-bottom: 1px solid rgba(34,211,238,0.14); padding-bottom: 1.3rem; margin-bottom: 1.2rem; }
+  .colophon-ls { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 2.4rem; color: var(--accent); letter-spacing: 0.05em; display: block; margin-bottom: 0.4rem; }
+  .colophon-phrase { font-size: 0.98rem; font-weight: 700; font-style: italic; color: var(--stardust); }
+  .series-list { display: flex; flex-direction: column; gap: 0.38rem; margin-bottom: 1.2rem; }
+  .series-item { font-size: 0.72rem; color: var(--dim); letter-spacing: 0.01em; display: flex; gap: 0.7rem; align-items: baseline; line-height: 1.45; }
+  .series-item.current { color: var(--accent); font-weight: 700; }
+  .series-num { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim2); flex-shrink: 0; }
+  .series-item.current .series-num { color: var(--accent); }
+  .reflect { border-top: 1px solid rgba(34,211,238,0.14); padding-top: 1rem; margin-bottom: 1.2rem; }
+  .reflect-label { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.65rem; }
+  .reflect-q { font-size: 0.86rem; line-height: 1.55; color: var(--stardust); margin-bottom: 0.55rem; font-style: italic; }
+  .reflect-q:last-child { margin-bottom: 0; }
+  .colophon-body { font-size: 0.75rem; color: var(--dim); line-height: 1.75; margin-bottom: 1.2rem; }
+  .colophon-body a { color: var(--cyan); text-decoration: none; border-bottom: 1px solid rgba(34,211,238,0.4); }
+  .colophon-body a:hover { border-bottom-color: var(--cyan); }
+  .colophon-h { font-family: 'Space Mono', monospace; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: var(--stardust); margin: 1rem 0 0.4rem; scroll-margin-top: 5rem; }
+  .colophon-footer { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--dim); line-height: 2.2; border-top: 1px solid rgba(34,211,238,0.14); padding-top: 1rem; }
+
+  /* ── SPREAD FOOTER ── */
+  .spread-footer { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 0.9rem 2.4rem; border-top: 1px solid rgba(34,211,238,0.1); }
+  .spread-footer-left { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--dim); }
+  .spread-footer-right { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; color: var(--accent); flex-shrink: 0; }
+
+  .twinkle { position: fixed; width: 3px; height: 3px; border-radius: 50%; animation: twinkle-anim 3s ease-in-out infinite; pointer-events: none; z-index: 0; }
+
+  @media (max-width: 600px) {
+    .spread-2col { grid-template-columns: 1fr; }
+    .spread-left { border-right: none; border-bottom: 1px solid rgba(34,211,238,0.12); }
+    .spread-2col.stacked > .spread-left { border-bottom: none; }
+    .spread-2col.stacked > .col-text { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .cover-spread { padding: 2rem; min-height: 420px; }
+    .cover-motif { width: 214px; height: 214px; top: -4px; right: -24px; opacity: 0.45; }
+    .cover-title { font-size: 1.85rem; }
+    .spread-heading { font-size: 1.55rem; }
+    .spread-left, .spread-right { padding: 2rem 1.5rem; }
+    .colophon { padding: 2rem 1.5rem; }
+    .spine { padding: 1rem 1.5rem 0.2rem; }
+    .moves { flex-direction: column; gap: 0.7rem; }
+    .spread-footer { padding: 0.9rem 1.5rem; }
+    .spread-footer-left { letter-spacing: 0.12em; }
+  }
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"The Noise Floor","description":"A chain zine on thermal noise, information and the rooms we build. In July 1928 Physical Review volume 32 printed the measurement and the explanation back to back: J. B. Johnson, 'Thermal Agitation of Electricity in Conductors,' pages 97-109, and H. Nyquist, 'Thermal Agitation of Electric Charge in Conductors,' pages 110-113, whose first footnote reads in full 'See preceding paper.' Nyquist concluded that the electromotive force due to thermal agitation in conductors is a universal function of frequency, resistance and temperature and of these variables only, noting that no assumption had been made as to the nature of the conductors — one may be made of silver and the other of lead, or one may be metallic and the other electrolytic — and derived the available power in a frequency interval as kT per unit bandwidth, from the second law of thermodynamics. A conductor that did not hiss would permit a perpetual-motion machine of the second kind. In 1948 Claude Shannon, in 'A Mathematical Theory of Communication' (Bell System Technical Journal 27), gave Theorem 17: the capacity of a channel of band W perturbed by white thermal noise power N when the average transmitter power is limited to P is C = W log((P+N)/N), and it is not possible to transmit at a higher rate by any encoding system without a definite positive frequency of errors. Engineering therefore stopped trying to delete the floor and began changing its terms — cooling, shielding, and narrowing bandwidth. Arno Penzias and Robert Wilson did exactly that at Crawford Hill, Holmdel, with a travelling-wave maser cooled by liquid helium and a helium-cooled reference termination, and reported in 'A Measurement of Excess Antenna Temperature at 4080 Mc/s' (Astrophysical Journal 142, 419-421, 1965) a remaining unaccounted-for antenna temperature of 3.5 plus or minus 1.0 K, isotropic, unpolarized and free from seasonal variations across July 1964 to April 1965. It was the cosmic microwave background, and Dicke, Peebles, Roll and Wilkinson explained it on pages 414-419 of the same volume — the 1928 adjacency repeated in reverse. Wilson's 1978 Nobel lecture records the pigeons, and records that evicting them obtained only a small reduction in antenna temperature. The zine then turns to rooms: ANSI/ASA S12.60 limits classroom background noise to 35 dBA and reverberation to 0.6 s because speech intelligibility is treated as a signal-to-noise problem requiring about 15 dB; Wilkins, Nimmo-Smith, Slater and Bedocs (Lighting Research and Technology 21, 1989) found headaches and eyestrain more than halved when 100 Hz fluorescent modulation of 43-49 percent was replaced by high-frequency ballasts under 7 percent; Kim and de Dear (Journal of Environmental Psychology, 2013) found sound privacy the largest source of office dissatisfaction. The transfer to Autistic auditory experience is marked contested and the closing analogy is marked leap, because a thermal floor and a perceptual capacity are not the same quantity. Remington and Fairnie, 'A sound advantage: increased auditory capacity in autism' (Cognition 166, 459-465, 2017), carries the endpoint, alongside Maria del Carmen Rosas-Perez's doctoral thesis Disabling Acoustics (Heriot-Watt, 2026), in which no Autistic respondent among 311 noise-sensitive participants reported finding it easy to filter out background sound, and whose finding of no habituation but an accumulation effect is where the zine says the circuit analogy breaks: thermal noise is stationary, human sensory load is cumulative. Her thematic analysis names the dismissal her participants reported since childhood as sensory gaslighting. Srinivasan's TRACE framework (2026) supplies the closing observation that Penzias and Wilson published a noise budget as a matter of routine while physical-health research involving Autistic adults still rarely reports the lighting or the noise in the room. The ninth chain zine in the How We Got Here form, with every joint marked documented, contested or leap.","image":"https://starstuff.earth/og-card.jpg","url":"https://starstuff.earth/noise-floor-zine.html","mainEntityOfPage":"https://starstuff.earth/noise-floor-zine.html","publisher":[{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/","logo":{"@type":"ImageObject","url":"https://starstuff.earth/og-card.jpg"}},{"@type":"Organization","name":"More Realms","url":"https://morerealms.com/"}],"isPartOf":{"@type":"WebSite","name":"Star Stuff","url":"https://starstuff.earth/"}}</script>
+</head>
+<body>
+
+<div class="twinkle" style="top:11%;left:14%;background:var(--cyan);box-shadow:0 0 6px var(--cyan);animation-delay:-0.5s"></div>
+<div class="twinkle" style="top:24%;left:87%;background:var(--star-white);box-shadow:0 0 6px var(--star-white);animation-delay:-1.4s"></div>
+<div class="twinkle" style="top:55%;left:6%;background:var(--cyan);box-shadow:0 0 6px var(--cyan);animation-delay:-2.2s"></div>
+<div class="twinkle" style="top:76%;left:92%;background:var(--cyan);box-shadow:0 0 6px var(--cyan);animation-delay:-0.8s"></div>
+<div class="twinkle" style="top:88%;left:27%;background:var(--violet);box-shadow:0 0 6px var(--violet);animation-delay:-1.9s"></div>
+<div class="twinkle" style="top:37%;left:95%;background:var(--star-white);box-shadow:0 0 6px var(--star-white);animation-delay:-3.0s"></div>
+
+<div class="zine-shell">
+
+  <nav class="ss-nav" style="--nav-accent:#22d3ee;" aria-label="Star Stuff collection">
+    <span class="ss-nav-home-group"><a class="ss-nav-home" href="index.html"><span class="ss-star" aria-hidden="true">★</span> stuff</a><a class="ss-nav-about" href="about.html">about</a>
+      <a class="ss-nav-search" href="search.html">search</a></span>
+    <span class="ss-nav-links">
+      <a class="ss-nav-prev" href="build-the-eclipse-zine.html"><span class="ss-nav-arrow" aria-hidden="true">&lsaquo;</span> <span class="ss-nav-label">We Learned to Build the Eclipse</span></a>
+      <a class="ss-nav-next" href="collection-star-gazing.html"><span class="ss-nav-label">Star Gazing</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
+    </span>
+    <a class="ss-nav-collection" href="collection-how-we-got-here.html"><span class="ss-nav-collection-label">Collection</span> <span class="ss-nav-collection-name">How We Got Here</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
+  </nav>
+
+  <nav class="nav">
+    <div class="nav-brand"><a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks</a> × <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a> · Zine No. 56</div>
+    <div class="nav-controls">
+      <button class="nav-btn" id="prev-btn" onclick="changePage(-1)">← prev</button>
+      <span class="page-counter" id="page-counter">1 / 15</span>
+      <button class="nav-btn" id="next-btn" onclick="changePage(1)">next →</button>
+    </div>
+  </nav>
+
+  <!-- ════ SPREAD 1: COVER ════ -->
+  <div class="spread active" id="spread-1">
+    <div class="cover-spread">
+      <!-- Motif: the horn's arcs, and a noise trace that never touches the zero line beneath it.
+           All art kept above y≈240 — the title sits below it, and Nos. 38, 48 and four covers
+           found by check-overlap.mjs all shipped with a motif running through the words. -->
+      <svg class="cover-motif" viewBox="0 0 340 340" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M96 60 L262 26 L262 174 L96 140 Z" fill="none" stroke="rgba(34,211,238,0.20)" stroke-width="1"/>
+        <path d="M124 74 L262 46 L262 154 L124 126 Z" fill="none" stroke="rgba(34,211,238,0.14)" stroke-width="1"/>
+        <path d="M152 88 L262 66 L262 134 L152 112 Z" fill="none" stroke="rgba(34,211,238,0.10)" stroke-width="1"/>
+        <circle cx="96" cy="100" r="4" fill="rgba(34,211,238,0.55)"/>
+        <path d="M62 232 L68 220 L74 240 L80 222 L86 238 L92 221 L98 239 L104 223 L110 237 L116 220 L122 240 L128 222 L134 238 L140 221 L146 239 L152 223 L158 237 L164 220 L170 240 L176 222 L182 238 L188 221 L194 239 L200 223 L206 237 L212 220 L218 240 L224 222 L230 238 L236 221 L242 239 L248 223 L254 237 L260 224 L266 236 L272 226"
+              fill="none" stroke="rgba(34,211,238,0.60)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <line x1="58" y1="262" x2="276" y2="262" stroke="rgba(244,244,251,0.28)" stroke-width="1" stroke-dasharray="5 5"/>
+        <circle cx="167" cy="230" r="3.2" fill="rgba(34,211,238,0.8)"/>
+      </svg>
+      <div class="cover-corner">
+        <div class="cover-corner-num" aria-hidden="true">56</div>
+        <span class="cover-corner-label">Chain</span>
+      </div>
+      <div class="cover-issue">Stimpunks × More Realms · Zine No. 56</div>
+      <h1 class="cover-title">The Noise <span class="amp">Floor</span></h1>
+      <p class="cover-subtitle">every receiver has one, no design removes it, and the biggest discovery in modern cosmology arrived as noise two engineers spent ten months trying to get rid of</p>
+      <div class="cover-byline">Every joint marked <strong>documented</strong> · <strong>contested</strong> · <strong>leap</strong></div>
+      <hr class="spectrum-line cover-rule">
+      <div class="cover-meta">
+        <span class="cover-ls">L★S</span>
+        <div class="cover-meta-text">Love You Down To Your Star Stuff<br>open edition · print freely</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 2: 1928, twice ════ -->
+  <div class="spread" id="spread-2">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Physical Review 32 · July 1928</div>
+          <h2 class="spread-heading" id="published-back-to-back">Published back to back</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">One volume of one journal, in one month, carried the measurement and the explanation — <strong>on facing pages.</strong></p>
+            <p><strong>J. B. Johnson</strong>, "Thermal Agitation of Electricity in Conductors," pages <span class="num">97–109</span>. He had put a vacuum-tube amplifier on a resistor and found a hiss that would not go away, in every conductor he tried, scaling with temperature.</p>
+            <p><strong>H. Nyquist</strong>, "Thermal Agitation of Electric Charge in Conductors," pages <span class="num">110–113</span>. Four pages. His first footnote is three words long.</p>
+            <div class="callout">"See preceding paper."<span class="attr">Nyquist 1928, footnote 1, in full</span></div>
+            <p>Both worked for the same telephone company, on the same problem, from the two ends. Johnson had a number nobody could explain. Nyquist explained it from thermodynamics and statistical mechanics, and the two agreed.</p>
+            <p>Remember this shape. <em>It happens again in this chain, thirty-seven years later, running the other way.</em></p>
+            <p><span class="joint joint-documented">documented</span> &nbsp;a measurement → its explanation, same volume</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 132" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig1-title fig1-desc">
+              <title id="fig1-title">One volume, two papers</title>
+              <desc id="fig1-desc">Two adjacent blocks representing pages 97 to 109 and pages 110 to 113 of Physical Review volume 32, the first labelled the measurement and the second the explanation.</desc>
+              <rect x="24" y="30" width="118" height="58" rx="3" fill="rgba(34,211,238,0.10)" stroke="var(--sp-cyan)" stroke-width="1.3"/>
+              <rect x="150" y="30" width="60" height="58" rx="3" fill="rgba(167,139,250,0.10)" stroke="var(--sp-purple)" stroke-width="1.3"/>
+              <text x="83" y="54" text-anchor="middle" font-family="Space Mono, monospace" font-size="9" font-weight="700" fill="var(--sp-cyan)">97–109</text>
+              <text x="83" y="70" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" fill="var(--sp-secondary)">Johnson</text>
+              <text x="180" y="54" text-anchor="middle" font-family="Space Mono, monospace" font-size="9" font-weight="700" fill="var(--sp-purple)">110–113</text>
+              <text x="180" y="70" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" fill="var(--sp-secondary)">Nyquist</text>
+              <text x="83" y="22" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" letter-spacing="0.8" fill="var(--sp-dim)">the measurement</text>
+              <text x="180" y="22" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" letter-spacing="0.8" fill="var(--sp-dim)">the theory</text>
+              <path d="M150 100 L142 100" stroke="var(--sp-cyan)" stroke-width="1.2" marker-end="url(#a56)"/>
+              <defs><marker id="a56" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="var(--sp-cyan)"/></marker></defs>
+              <text x="222" y="103" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--sp-dim)">"see preceding"</text>
+              <text x="150" y="126" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" letter-spacing="0.9" fill="var(--sp-dim)">Physical Review · volume 32 · July 1928</text>
+            </svg>
+            <div class="diagram-caption">Figure 1 · the fact and its reason, four pages apart</div>
+          </div>
+        </div>
+      </div>
+      <div class="spine">
+        <svg viewBox="0 0 620 80" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain drawn as a noise floor: a jagged trace that never reaches the dashed zero-kelvin line beneath it, jagged where the claim is measured and smooth where it is argued. Live: Johnson and Nyquist, 1928.">
+          <path class="spine-track zero" d="M56 70 H580"/><path class="spine-track documented" d="M60 52 L64 47.8 L68 56.2 L72 47.8 L76 56.2 L80 47.8 L84 56.2 L88 47.8 L92 56.2 L96 47.8 L100 56.2 L104 47.8 L108 56.2 L112 47.8 L116 56.2 L120 47.8 L124 56.2 L128 47.8 L132 56.2 L136 47.8 L140 56.2 L144 47.8 L148 56.2 L152 47.8 L156 56.2 L160 47.8 L164 56.2 L168 47.8 L172 56.2 L176 47.8 L180 56.2 L184 47.8 L188 56.2 L192 47.8 L196 56.2 L200 47.8 L204 56.2 L208 47.8 L212 56.2 L216 47.8 L220 56.2 L224 47.8 L228 56.2 L232 47.8 L236 56.2 L240 47.8 L244 56.2 L248 47.8 L252 56.2 L256 47.8 L260 56.2 L264 47.8 L268 56.2 L272 47.8 L276 56.2 L280 47.8 L284 56.2 L288 47.8 L292 56.2 L296 47.8 L300 56.2 L304 47.8 L308 56.2 L312 47.8 L316 56.2 L320 47.8 L324 56.2 L328 47.8 L332 56.2 L336 47.8 L340 56.2 L344 47.8 L348 56.2 L352 47.8 L356 56.2 L360 47.8 L364 56.2 L368 47.8 L372 56.2 L376 47.8 L380 56.2 L384 47.8 L388 56.2 L392 47.8 L396 56.2 L400 47.8 L404 56.2 L408 47.8 L412 56.2 L416 47.8 L420 56.2 L424 47.8 L428 56.2 L432 47.8 L436 56.2 L440 47.8 L444 56.2 L446 52"/><path class="spine-track contested" d="M446 52 H486"/><path class="spine-track leap" d="M486 52 H526"/><path class="spine-track documented" d="M526 52 H580"/><path class="spine-track sky" d="M386 52 V34"/><circle class="spine-node" cx="386" cy="31" r="2.6" fill="rgba(244,244,251,0.55)"/><text class="spine-raillabel" x="0" y="55">floor</text><text class="spine-raillabel" x="0" y="73">0 K</text><g class="spine-node"><circle cx="106" cy="52" r="3.4"/><circle cx="146" cy="52" r="3.4"/><circle cx="186" cy="52" r="3.4"/><circle cx="226" cy="52" r="3.4"/><circle cx="266" cy="52" r="3.4"/><circle cx="306" cy="52" r="3.4"/><circle cx="346" cy="52" r="3.4"/><circle cx="386" cy="52" r="3.4"/><circle cx="426" cy="52" r="3.4"/><circle cx="466" cy="52" r="3.4"/><circle cx="506" cy="52" r="3.4"/><circle cx="546" cy="52" r="3.4"/></g><g class="spine-node live"><circle cx="66" cy="52" r="4.6"/></g><circle class="spine-ring" cx="66" cy="52" r="8"/>
+        </svg>
+        <div class="spine-label">1 · Johnson and Nyquist · 1928</div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Noise Floor · Stimpunks</span>
+        <span class="spread-footer-right">2</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 3: kT dν ════ -->
+  <div class="spread" id="spread-3">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">the formula · and what is not in it</div>
+          <h2 class="spread-heading" id="temperature-resistance-frequency-and-nothing-else">Temperature, resistance, frequency — and nothing else</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Nyquist's conclusion is worth quoting at its full width, because the last four words are the whole thing.</p>
+            <div class="callout">"the electromotive force due to thermal agitation in conductors is a universal function of frequency, resistance and temperature <strong>and of these variables only</strong>"<span class="attr">Nyquist 1928, p. 111</span></div>
+            <p>Not the metal. Not the wire's history, its purity, its manufacture, how much it cost or who made it. He says so outright: "no assumption has been made as to the nature of the two conductors. One may be made of silver and the other of lead, or one may be metallic and the other electrolytic."</p>
+            <p>And the power, in a band: <em>"The average power, transferred from each conductor to the line in the frequency interval <span class="num">dν</span> … is therefore <span class="num">kT dν</span>."</em> Integrate over a bandwidth <span class="num">B</span> and you have the sentence people quote without the paper: <strong>kTB</strong>. In volts across a resistor <span class="num">R</span>, his equation (1): <span class="num">E² = 4RkT</span> per unit bandwidth.</p>
+            <p>So the floor is not a fault in a component. <strong>It is a property of being warm.</strong> Every resistor above absolute zero has one, the good ones and the bad ones alike, and there is no version you can buy that doesn't.</p>
+            <p><span class="joint joint-documented">documented</span> &nbsp;the hiss → a universal quantity</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 138" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig2-title fig2-desc">
+              <title id="fig2-title">Noise power against temperature</title>
+              <desc id="fig2-desc">A straight line rising from the origin, showing available noise power proportional to absolute temperature; the origin is marked absolute zero and labelled unreachable.</desc>
+              <line x1="40" y1="112" x2="272" y2="112" stroke="rgba(34,211,238,0.4)" stroke-width="1"/>
+              <line x1="40" y1="112" x2="40" y2="22" stroke="rgba(34,211,238,0.4)" stroke-width="1"/>
+              <path d="M40 112 L248 34" fill="none" stroke="var(--sp-cyan)" stroke-width="1.8" stroke-linecap="round"/>
+              <circle cx="40" cy="112" r="3.4" fill="var(--sp-pink)"/>
+              <text x="46" y="128" font-family="Space Mono, monospace" font-size="6.5" letter-spacing="0.6" fill="var(--sp-pink)">0 K · unreachable</text>
+              <text x="272" y="128" text-anchor="end" font-family="Space Mono, monospace" font-size="6.5" letter-spacing="0.6" fill="var(--sp-dim)">temperature →</text>
+              <text x="24" y="30" font-family="Space Mono, monospace" font-size="6.5" letter-spacing="0.6" fill="var(--sp-dim)" transform="rotate(-90 24 30)">noise power</text>
+              <text x="196" y="52" font-family="Space Mono, monospace" font-size="11" font-weight="700" fill="var(--sp-cyan)">kTB</text>
+              <text x="150" y="86" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--sp-secondary)">no offset · no floor below the floor</text>
+            </svg>
+            <div class="diagram-caption">Figure 2 · the only way to zero is a temperature nobody reaches</div>
+          </div>
+        </div>
+      </div>
+      <div class="spine">
+        <svg viewBox="0 0 620 80" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain drawn as a noise floor that never reaches zero kelvin. Live: kTB, the universal formula.">
+          <path class="spine-track zero" d="M56 70 H580"/><path class="spine-track documented" d="M60 52 L64 47.8 L68 56.2 L72 47.8 L76 56.2 L80 47.8 L84 56.2 L88 47.8 L92 56.2 L96 47.8 L100 56.2 L104 47.8 L108 56.2 L112 47.8 L116 56.2 L120 47.8 L124 56.2 L128 47.8 L132 56.2 L136 47.8 L140 56.2 L144 47.8 L148 56.2 L152 47.8 L156 56.2 L160 47.8 L164 56.2 L168 47.8 L172 56.2 L176 47.8 L180 56.2 L184 47.8 L188 56.2 L192 47.8 L196 56.2 L200 47.8 L204 56.2 L208 47.8 L212 56.2 L216 47.8 L220 56.2 L224 47.8 L228 56.2 L232 47.8 L236 56.2 L240 47.8 L244 56.2 L248 47.8 L252 56.2 L256 47.8 L260 56.2 L264 47.8 L268 56.2 L272 47.8 L276 56.2 L280 47.8 L284 56.2 L288 47.8 L292 56.2 L296 47.8 L300 56.2 L304 47.8 L308 56.2 L312 47.8 L316 56.2 L320 47.8 L324 56.2 L328 47.8 L332 56.2 L336 47.8 L340 56.2 L344 47.8 L348 56.2 L352 47.8 L356 56.2 L360 47.8 L364 56.2 L368 47.8 L372 56.2 L376 47.8 L380 56.2 L384 47.8 L388 56.2 L392 47.8 L396 56.2 L400 47.8 L404 56.2 L408 47.8 L412 56.2 L416 47.8 L420 56.2 L424 47.8 L428 56.2 L432 47.8 L436 56.2 L440 47.8 L444 56.2 L446 52"/><path class="spine-track contested" d="M446 52 H486"/><path class="spine-track leap" d="M486 52 H526"/><path class="spine-track documented" d="M526 52 H580"/><path class="spine-track sky" d="M386 52 V34"/><circle class="spine-node" cx="386" cy="31" r="2.6" fill="rgba(244,244,251,0.55)"/><text class="spine-raillabel" x="0" y="55">floor</text><text class="spine-raillabel" x="0" y="73">0 K</text><g class="spine-node"><circle cx="66" cy="52" r="3.4"/><circle cx="146" cy="52" r="3.4"/><circle cx="186" cy="52" r="3.4"/><circle cx="226" cy="52" r="3.4"/><circle cx="266" cy="52" r="3.4"/><circle cx="306" cy="52" r="3.4"/><circle cx="346" cy="52" r="3.4"/><circle cx="386" cy="52" r="3.4"/><circle cx="426" cy="52" r="3.4"/><circle cx="466" cy="52" r="3.4"/><circle cx="506" cy="52" r="3.4"/><circle cx="546" cy="52" r="3.4"/></g><g class="spine-node live"><circle cx="106" cy="52" r="4.6"/></g><circle class="spine-ring" cx="106" cy="52" r="8"/>
+        </svg>
+        <div class="spine-label">2 · kTB · a property of being warm</div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Noise Floor · Stimpunks</span>
+        <span class="spread-footer-right">3</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 4: the second law ════ -->
+  <div class="spread" id="spread-4">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">why it cannot be engineered away</div>
+          <h2 class="spread-heading" id="a-silent-resistor-would-be-a-perpetual-motion-machine">A silent resistor would be a perpetual-motion machine</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Nyquist did not measure the floor. He <em>deduced</em> it — and the thing he deduced it from is the second law of thermodynamics.</p>
+            <p>The argument fits in a paragraph. Wire two resistors together, both at the same temperature. Each one's thermal agitation drives a current through the other, so each heats the other, and at equal temperature the two flows must be exactly equal — otherwise heat moves from one body to another of the same temperature, for free.</p>
+            <p>Now suppose that were only true <em>overall</em>, and that in some narrow band of frequencies one conductor gave more than it got. Nyquist's move: put a resonant circuit between them, tuned to that band. Now more power flows one way than the other, and heat has moved from one body to another at the same temperature with no work done. <strong>The second law says no.</strong></p>
+            <div class="callout">So the hiss is not permitted, it is <em>required</em>. Build a conductor that doesn't do it and you have built a machine that violates thermodynamics.<span class="attr">what "you can't remove it" actually means</span></div>
+            <p>This matters for everything after. The floor is not an unsolved problem. It is not waiting on a better material or a bigger budget. <strong>It is the same law that says you cannot un-stir the milk from the tea</strong> — and nobody files that under insufficient effort.</p>
+            <p><span class="joint joint-documented">documented</span> &nbsp;the second law → the floor is compulsory</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 128" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig3-title fig3-desc">
+              <title id="fig3-title">Two resistors at the same temperature</title>
+              <desc id="fig3-desc">Two resistors connected in a loop, with arrows showing equal power flowing in each direction, labelled as required by the second law of thermodynamics.</desc>
+              <rect x="34" y="44" width="26" height="46" rx="3" fill="none" stroke="var(--sp-cyan)" stroke-width="1.5"/>
+              <rect x="240" y="44" width="26" height="46" rx="3" fill="none" stroke="var(--sp-cyan)" stroke-width="1.5"/>
+              <text x="47" y="36" text-anchor="middle" font-family="Space Mono, monospace" font-size="8" font-weight="700" fill="var(--sp-cyan)">R</text>
+              <text x="253" y="36" text-anchor="middle" font-family="Space Mono, monospace" font-size="8" font-weight="700" fill="var(--sp-cyan)">R</text>
+              <line x1="60" y1="56" x2="240" y2="56" stroke="rgba(34,211,238,0.35)" stroke-width="1"/>
+              <line x1="60" y1="78" x2="240" y2="78" stroke="rgba(34,211,238,0.35)" stroke-width="1"/>
+              <path d="M108 56 H164" stroke="var(--sp-green)" stroke-width="1.5" marker-end="url(#b56)"/>
+              <path d="M192 78 H136" stroke="var(--sp-green)" stroke-width="1.5" marker-end="url(#b56)"/>
+              <defs><marker id="b56" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="var(--sp-green)"/></marker></defs>
+              <text x="150" y="102" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" fill="var(--sp-secondary)">same T · equal both ways</text>
+              <text x="150" y="118" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" letter-spacing="0.7" fill="var(--sp-dim)">in every band, or the second law breaks</text>
+            </svg>
+            <div class="diagram-caption">Figure 3 · the floor, argued rather than measured</div>
+          </div>
+        </div>
+      </div>
+      <div class="spine">
+        <svg viewBox="0 0 620 80" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain drawn as a noise floor that never reaches zero kelvin. Live: the second law makes the floor compulsory.">
+          <path class="spine-track zero" d="M56 70 H580"/><path class="spine-track documented" d="M60 52 L64 47.8 L68 56.2 L72 47.8 L76 56.2 L80 47.8 L84 56.2 L88 47.8 L92 56.2 L96 47.8 L100 56.2 L104 47.8 L108 56.2 L112 47.8 L116 56.2 L120 47.8 L124 56.2 L128 47.8 L132 56.2 L136 47.8 L140 56.2 L144 47.8 L148 56.2 L152 47.8 L156 56.2 L160 47.8 L164 56.2 L168 47.8 L172 56.2 L176 47.8 L180 56.2 L184 47.8 L188 56.2 L192 47.8 L196 56.2 L200 47.8 L204 56.2 L208 47.8 L212 56.2 L216 47.8 L220 56.2 L224 47.8 L228 56.2 L232 47.8 L236 56.2 L240 47.8 L244 56.2 L248 47.8 L252 56.2 L256 47.8 L260 56.2 L264 47.8 L268 56.2 L272 47.8 L276 56.2 L280 47.8 L284 56.2 L288 47.8 L292 56.2 L296 47.8 L300 56.2 L304 47.8 L308 56.2 L312 47.8 L316 56.2 L320 47.8 L324 56.2 L328 47.8 L332 56.2 L336 47.8 L340 56.2 L344 47.8 L348 56.2 L352 47.8 L356 56.2 L360 47.8 L364 56.2 L368 47.8 L372 56.2 L376 47.8 L380 56.2 L384 47.8 L388 56.2 L392 47.8 L396 56.2 L400 47.8 L404 56.2 L408 47.8 L412 56.2 L416 47.8 L420 56.2 L424 47.8 L428 56.2 L432 47.8 L436 56.2 L440 47.8 L444 56.2 L446 52"/><path class="spine-track contested" d="M446 52 H486"/><path class="spine-track leap" d="M486 52 H526"/><path class="spine-track documented" d="M526 52 H580"/><path class="spine-track sky" d="M386 52 V34"/><circle class="spine-node" cx="386" cy="31" r="2.6" fill="rgba(244,244,251,0.55)"/><text class="spine-raillabel" x="0" y="55">floor</text><text class="spine-raillabel" x="0" y="73">0 K</text><g class="spine-node"><circle cx="66" cy="52" r="3.4"/><circle cx="106" cy="52" r="3.4"/><circle cx="186" cy="52" r="3.4"/><circle cx="226" cy="52" r="3.4"/><circle cx="266" cy="52" r="3.4"/><circle cx="306" cy="52" r="3.4"/><circle cx="346" cy="52" r="3.4"/><circle cx="386" cy="52" r="3.4"/><circle cx="426" cy="52" r="3.4"/><circle cx="466" cy="52" r="3.4"/><circle cx="506" cy="52" r="3.4"/><circle cx="546" cy="52" r="3.4"/></g><g class="spine-node live"><circle cx="146" cy="52" r="4.6"/></g><circle class="spine-ring" cx="146" cy="52" r="8"/>
+        </svg>
+        <div class="spine-label">3 · the second law · not a shortfall</div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Noise Floor · Stimpunks</span>
+        <span class="spread-footer-right">4</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 5: Shannon ════ -->
+  <div class="spread" id="spread-5">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Bell System Technical Journal · 1948</div>
+          <h2 class="spread-heading" id="then-the-floor-became-a-limit-on-meaning">Then the floor became a limit on <span class="spectrum-word">meaning</span></h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Twenty years on, in the same laboratory's journal, <strong>Claude Shannon</strong> took that floor and worked out what it costs you in <em>understanding</em>.</p>
+            <div class="callout">"The capacity of a channel of band <span class="num">W</span> perturbed by white thermal noise power <span class="num">N</span> when the average transmitter power is limited to <span class="num">P</span> is given by <span class="num">C = W log (P+N)/N</span>"<span class="attr">Shannon 1948, Theorem 17 — note "thermal", note it is the same N</span></div>
+            <p>Rearranged the way it is usually written: <strong>C = B log₂(1 + S/N)</strong>. And then the sentence that closes the door:</p>
+            <p><em>"It is not possible to transmit at a higher rate by any encoding system without a definite positive frequency of errors."</em></p>
+            <p>Not "we haven't found a way yet." <span class="gold">Any encoding system.</span> No cleverer code, no sharper filter, no more careful listening gets you past it. The noise is in the channel, so it is in the message, and the most you can ever do is <strong>trade</strong> — more power, more bandwidth, more time, fewer bits.</p>
+            <p><strong>You cannot filter your way to clarity.</strong> That is a theorem, and it is the hinge of this whole zine.</p>
+            <p><span class="joint joint-documented">documented</span> &nbsp;thermal noise → a hard ceiling on communication</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <!-- viewBox is 146 tall, not 138, and the axis label sits a full row BELOW the
+                 ×2/×4/×8 ticks. At a shared y=124 the "×8" tick and "signal power →" overlapped
+                 by 10×7px — caught by check-overlap.mjs, which is the gate that exists because
+                 four shipped covers had the same class of fault. Keep the two rows apart. -->
+            <svg class="diagram" viewBox="0 0 300 146" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig4-title fig4-desc">
+              <title id="fig4-title">Capacity against signal-to-noise ratio</title>
+              <desc id="fig4-desc">A logarithmic curve rising steeply then flattening, showing that each doubling of signal power buys a smaller and smaller gain in capacity.</desc>
+              <line x1="40" y1="110" x2="272" y2="110" stroke="rgba(34,211,238,0.4)" stroke-width="1"/>
+              <line x1="40" y1="110" x2="40" y2="22" stroke="rgba(34,211,238,0.4)" stroke-width="1"/>
+              <path d="M40 110 C74 62, 116 44, 160 36 C204 29, 240 26, 268 24" fill="none" stroke="var(--sp-cyan)" stroke-width="1.8" stroke-linecap="round"/>
+              <g stroke="rgba(251,191,36,0.55)" stroke-width="1" stroke-dasharray="3 3">
+                <line x1="86" y1="110" x2="86" y2="55"/>
+                <line x1="160" y1="110" x2="160" y2="36"/>
+                <line x1="234" y1="110" x2="234" y2="27"/>
+              </g>
+              <text x="86" y="122" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--sp-gold)">×2</text>
+              <text x="160" y="122" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--sp-gold)">×4</text>
+              <text x="234" y="122" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--sp-gold)">×8</text>
+              <text x="272" y="138" text-anchor="end" font-family="Space Mono, monospace" font-size="6.5" letter-spacing="0.6" fill="var(--sp-dim)">signal power →</text>
+              <text x="24" y="34" font-family="Space Mono, monospace" font-size="6.5" letter-spacing="0.6" fill="var(--sp-dim)" transform="rotate(-90 24 34)">capacity</text>
+            </svg>
+            <!-- The "shouting louder buys less each time" gloss was inside the plot and sat across
+                 the ×4 tick line. check-overlap.mjs passed it and was right to: it does not measure
+                 text over NON-text, and says so. Caught by eye at render size; moved to the caption
+                 rather than nudged, because there is no clear space inside this plot for it. -->
+            <div class="diagram-caption">Figure 4 · each doubling buys less than the last · the curve bends, and never turns vertical</div>
+          </div>
+        </div>
+      </div>
+      <div class="spine">
+        <svg viewBox="0 0 620 80" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain drawn as a noise floor that never reaches zero kelvin. Live: Shannon's Theorem 17, 1948.">
+          <path class="spine-track zero" d="M56 70 H580"/><path class="spine-track documented" d="M60 52 L64 47.8 L68 56.2 L72 47.8 L76 56.2 L80 47.8 L84 56.2 L88 47.8 L92 56.2 L96 47.8 L100 56.2 L104 47.8 L108 56.2 L112 47.8 L116 56.2 L120 47.8 L124 56.2 L128 47.8 L132 56.2 L136 47.8 L140 56.2 L144 47.8 L148 56.2 L152 47.8 L156 56.2 L160 47.8 L164 56.2 L168 47.8 L172 56.2 L176 47.8 L180 56.2 L184 47.8 L188 56.2 L192 47.8 L196 56.2 L200 47.8 L204 56.2 L208 47.8 L212 56.2 L216 47.8 L220 56.2 L224 47.8 L228 56.2 L232 47.8 L236 56.2 L240 47.8 L244 56.2 L248 47.8 L252 56.2 L256 47.8 L260 56.2 L264 47.8 L268 56.2 L272 47.8 L276 56.2 L280 47.8 L284 56.2 L288 47.8 L292 56.2 L296 47.8 L300 56.2 L304 47.8 L308 56.2 L312 47.8 L316 56.2 L320 47.8 L324 56.2 L328 47.8 L332 56.2 L336 47.8 L340 56.2 L344 47.8 L348 56.2 L352 47.8 L356 56.2 L360 47.8 L364 56.2 L368 47.8 L372 56.2 L376 47.8 L380 56.2 L384 47.8 L388 56.2 L392 47.8 L396 56.2 L400 47.8 L404 56.2 L408 47.8 L412 56.2 L416 47.8 L420 56.2 L424 47.8 L428 56.2 L432 47.8 L436 56.2 L440 47.8 L444 56.2 L446 52"/><path class="spine-track contested" d="M446 52 H486"/><path class="spine-track leap" d="M486 52 H526"/><path class="spine-track documented" d="M526 52 H580"/><path class="spine-track sky" d="M386 52 V34"/><circle class="spine-node" cx="386" cy="31" r="2.6" fill="rgba(244,244,251,0.55)"/><text class="spine-raillabel" x="0" y="55">floor</text><text class="spine-raillabel" x="0" y="73">0 K</text><g class="spine-node"><circle cx="66" cy="52" r="3.4"/><circle cx="106" cy="52" r="3.4"/><circle cx="146" cy="52" r="3.4"/><circle cx="226" cy="52" r="3.4"/><circle cx="266" cy="52" r="3.4"/><circle cx="306" cy="52" r="3.4"/><circle cx="346" cy="52" r="3.4"/><circle cx="386" cy="52" r="3.4"/><circle cx="426" cy="52" r="3.4"/><circle cx="466" cy="52" r="3.4"/><circle cx="506" cy="52" r="3.4"/><circle cx="546" cy="52" r="3.4"/></g><g class="spine-node live"><circle cx="186" cy="52" r="4.6"/></g><circle class="spine-ring" cx="186" cy="52" r="8"/>
+        </svg>
+        <div class="spine-label">4 · Shannon · you cannot filter your way to clarity</div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Noise Floor · Stimpunks</span>
+        <span class="spread-footer-right">5</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 6: design around it ════ -->
+  <div class="spread" id="spread-6">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">what engineering did next</div>
+          <h2 class="spread-heading" id="so-they-stopped-trying-to-delete-it">So they stopped trying to delete it</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Here is the part that gets skipped, and it is the most useful part. Once the floor was proved compulsory, <strong>the entire profession changed the question.</strong></p>
+            <p>Nobody spent the next fifty years hunting for a resistor that doesn't hiss. They read the formula and noticed it has three handles on it, and every one of them is a thing you do to the <em>situation</em> rather than to the signal.</p>
+            <div class="moves">
+              <div class="move"><div class="move-term">cool it</div><div class="move-label">the noise is <span class="cyan">kT</span>. Drop T and the floor drops with it — which is why the best receivers live in liquid helium.</div></div>
+              <div class="move"><div class="move-term">shield it</div><div class="move-label">the thermal floor is compulsory; everyone <em>else's</em> noise is not. Keep it out and only the floor is left.</div></div>
+              <div class="move"><div class="move-term">narrow it</div><div class="move-label">the noise is <span class="cyan">kTB</span>. Listen to less of the spectrum and you admit less of the hiss.</div></div>
+            </div>
+            <p>Notice what none of these is. None of them asks the signal to try harder, and none of them asks the receiver to be better than physics. <strong>All three change the conditions the listening happens in.</strong></p>
+            <div class="callout">The floor stayed exactly where it was. What moved was everything around it.<span class="attr">the sentence this zine is walking toward</span></div>
+            <p><span class="joint joint-documented">documented</span> &nbsp;a compulsory floor → design around it</p>
+          </div>
+        </div>
+      </div>
+      <div class="spine">
+        <svg viewBox="0 0 620 80" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain drawn as a noise floor that never reaches zero kelvin. Live: cool it, shield it, narrow the band.">
+          <path class="spine-track zero" d="M56 70 H580"/><path class="spine-track documented" d="M60 52 L64 47.8 L68 56.2 L72 47.8 L76 56.2 L80 47.8 L84 56.2 L88 47.8 L92 56.2 L96 47.8 L100 56.2 L104 47.8 L108 56.2 L112 47.8 L116 56.2 L120 47.8 L124 56.2 L128 47.8 L132 56.2 L136 47.8 L140 56.2 L144 47.8 L148 56.2 L152 47.8 L156 56.2 L160 47.8 L164 56.2 L168 47.8 L172 56.2 L176 47.8 L180 56.2 L184 47.8 L188 56.2 L192 47.8 L196 56.2 L200 47.8 L204 56.2 L208 47.8 L212 56.2 L216 47.8 L220 56.2 L224 47.8 L228 56.2 L232 47.8 L236 56.2 L240 47.8 L244 56.2 L248 47.8 L252 56.2 L256 47.8 L260 56.2 L264 47.8 L268 56.2 L272 47.8 L276 56.2 L280 47.8 L284 56.2 L288 47.8 L292 56.2 L296 47.8 L300 56.2 L304 47.8 L308 56.2 L312 47.8 L316 56.2 L320 47.8 L324 56.2 L328 47.8 L332 56.2 L336 47.8 L340 56.2 L344 47.8 L348 56.2 L352 47.8 L356 56.2 L360 47.8 L364 56.2 L368 47.8 L372 56.2 L376 47.8 L380 56.2 L384 47.8 L388 56.2 L392 47.8 L396 56.2 L400 47.8 L404 56.2 L408 47.8 L412 56.2 L416 47.8 L420 56.2 L424 47.8 L428 56.2 L432 47.8 L436 56.2 L440 47.8 L444 56.2 L446 52"/><path class="spine-track contested" d="M446 52 H486"/><path class="spine-track leap" d="M486 52 H526"/><path class="spine-track documented" d="M526 52 H580"/><path class="spine-track sky" d="M386 52 V34"/><circle class="spine-node" cx="386" cy="31" r="2.6" fill="rgba(244,244,251,0.55)"/><text class="spine-raillabel" x="0" y="55">floor</text><text class="spine-raillabel" x="0" y="73">0 K</text><g class="spine-node"><circle cx="66" cy="52" r="3.4"/><circle cx="106" cy="52" r="3.4"/><circle cx="146" cy="52" r="3.4"/><circle cx="186" cy="52" r="3.4"/><circle cx="266" cy="52" r="3.4"/><circle cx="306" cy="52" r="3.4"/><circle cx="346" cy="52" r="3.4"/><circle cx="386" cy="52" r="3.4"/><circle cx="426" cy="52" r="3.4"/><circle cx="466" cy="52" r="3.4"/><circle cx="506" cy="52" r="3.4"/><circle cx="546" cy="52" r="3.4"/></g><g class="spine-node live"><circle cx="226" cy="52" r="4.6"/></g><circle class="spine-ring" cx="226" cy="52" r="8"/>
+        </svg>
+        <div class="spine-label">5 · cool it · shield it · narrow it</div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Noise Floor · Stimpunks</span>
+        <span class="spread-footer-right">6</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 7: the quietest receiver ════ -->
+  <div class="spread" id="spread-7">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Crawford Hill · Holmdel, New Jersey · 1964</div>
+          <h2 class="spread-heading" id="two-engineers-built-the-quietest-receiver-in-the-world">Two engineers built the quietest receiver in the world</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Every one of those three moves, in one instrument, pointed at the sky.</p>
+            <p><strong>Arno Penzias</strong> and <strong>Robert Wilson</strong> had a twenty-foot horn-reflector antenna and a radiometer built to be quieter than anything else on Earth. A travelling-wave maser — the lowest-noise amplifier then made — <span class="cyan">cooled by liquid helium to 4.2 K or less</span>. A comparison switch of 0.027 dB loss. And a reference termination that was itself a microwave absorber sitting in liquid helium, twenty litres of it, good for about twenty hours a fill.</p>
+            <p>They were not looking for the beginning of the universe. They were doing careful radio astronomy, and Wilson states the reason for all that helium plainly in his Nobel lecture:</p>
+            <div class="callout">"A fundamental limit to the sensitivity of a radiometer is the fluctuation in the power level of this noise."<span class="attr">R. W. Wilson, Nobel lecture, 8 December 1978</span></div>
+            <p>Read that against Nyquist and it is the same sentence in a different decade. <strong>They lowered their own floor on purpose</strong>, as far as money and cryogenics allowed, precisely so that anything still left over would have to be real.</p>
+            <p><em>Something was still left over.</em></p>
+            <p><span class="joint joint-documented">documented</span> &nbsp;design around the floor → an instrument that can see past it</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 132" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig5-title fig5-desc">
+              <title id="fig5-title">The switched radiometer</title>
+              <desc id="fig5-desc">A horn antenna and a helium-cooled reference load feeding a switch, which feeds a maser amplifier; the instrument compares the sky against a known cold source.</desc>
+              <path d="M18 26 L74 44 L74 76 L18 94 Z" fill="rgba(34,211,238,0.08)" stroke="var(--sp-cyan)" stroke-width="1.3"/>
+              <text x="46" y="18" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" letter-spacing="0.6" fill="var(--sp-dim)">the sky</text>
+              <line x1="74" y1="48" x2="128" y2="48" stroke="rgba(34,211,238,0.5)" stroke-width="1.2"/>
+              <rect x="70" y="94" width="52" height="24" rx="3" fill="rgba(167,139,250,0.10)" stroke="var(--sp-purple)" stroke-width="1.2"/>
+              <text x="96" y="110" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--sp-purple)">4.2 K load</text>
+              <line x1="122" y1="106" x2="140" y2="106" stroke="rgba(167,139,250,0.5)" stroke-width="1.2"/>
+              <circle cx="150" cy="76" r="12" fill="none" stroke="var(--sp-cyan)" stroke-width="1.3"/>
+              <text x="150" y="79" text-anchor="middle" font-family="Space Mono, monospace" font-size="6" fill="var(--sp-cyan)">sw</text>
+              <line x1="128" y1="48" x2="150" y2="64" stroke="rgba(34,211,238,0.5)" stroke-width="1.2"/>
+              <line x1="140" y1="106" x2="150" y2="88" stroke="rgba(167,139,250,0.5)" stroke-width="1.2"/>
+              <line x1="162" y1="76" x2="196" y2="76" stroke="rgba(34,211,238,0.5)" stroke-width="1.2"/>
+              <rect x="196" y="60" width="72" height="32" rx="3" fill="rgba(34,211,238,0.10)" stroke="var(--sp-cyan)" stroke-width="1.3"/>
+              <text x="232" y="74" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" font-weight="700" fill="var(--sp-cyan)">maser</text>
+              <text x="232" y="86" text-anchor="middle" font-family="Space Mono, monospace" font-size="6" fill="var(--sp-secondary)">4.2 K</text>
+              <text x="150" y="128" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" letter-spacing="0.7" fill="var(--sp-dim)">compare the sky against a known cold thing</text>
+            </svg>
+            <div class="diagram-caption">Figure 5 · a floor lowered deliberately, so a remainder would mean something</div>
+          </div>
+        </div>
+      </div>
+      <div class="spine">
+        <svg viewBox="0 0 620 80" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain drawn as a noise floor that never reaches zero kelvin. Live: the helium-cooled radiometer at Holmdel, 1964.">
+          <path class="spine-track zero" d="M56 70 H580"/><path class="spine-track documented" d="M60 52 L64 47.8 L68 56.2 L72 47.8 L76 56.2 L80 47.8 L84 56.2 L88 47.8 L92 56.2 L96 47.8 L100 56.2 L104 47.8 L108 56.2 L112 47.8 L116 56.2 L120 47.8 L124 56.2 L128 47.8 L132 56.2 L136 47.8 L140 56.2 L144 47.8 L148 56.2 L152 47.8 L156 56.2 L160 47.8 L164 56.2 L168 47.8 L172 56.2 L176 47.8 L180 56.2 L184 47.8 L188 56.2 L192 47.8 L196 56.2 L200 47.8 L204 56.2 L208 47.8 L212 56.2 L216 47.8 L220 56.2 L224 47.8 L228 56.2 L232 47.8 L236 56.2 L240 47.8 L244 56.2 L248 47.8 L252 56.2 L256 47.8 L260 56.2 L264 47.8 L268 56.2 L272 47.8 L276 56.2 L280 47.8 L284 56.2 L288 47.8 L292 56.2 L296 47.8 L300 56.2 L304 47.8 L308 56.2 L312 47.8 L316 56.2 L320 47.8 L324 56.2 L328 47.8 L332 56.2 L336 47.8 L340 56.2 L344 47.8 L348 56.2 L352 47.8 L356 56.2 L360 47.8 L364 56.2 L368 47.8 L372 56.2 L376 47.8 L380 56.2 L384 47.8 L388 56.2 L392 47.8 L396 56.2 L400 47.8 L404 56.2 L408 47.8 L412 56.2 L416 47.8 L420 56.2 L424 47.8 L428 56.2 L432 47.8 L436 56.2 L440 47.8 L444 56.2 L446 52"/><path class="spine-track contested" d="M446 52 H486"/><path class="spine-track leap" d="M486 52 H526"/><path class="spine-track documented" d="M526 52 H580"/><path class="spine-track sky" d="M386 52 V34"/><circle class="spine-node" cx="386" cy="31" r="2.6" fill="rgba(244,244,251,0.55)"/><text class="spine-raillabel" x="0" y="55">floor</text><text class="spine-raillabel" x="0" y="73">0 K</text><g class="spine-node"><circle cx="66" cy="52" r="3.4"/><circle cx="106" cy="52" r="3.4"/><circle cx="146" cy="52" r="3.4"/><circle cx="186" cy="52" r="3.4"/><circle cx="226" cy="52" r="3.4"/><circle cx="306" cy="52" r="3.4"/><circle cx="346" cy="52" r="3.4"/><circle cx="386" cy="52" r="3.4"/><circle cx="426" cy="52" r="3.4"/><circle cx="466" cy="52" r="3.4"/><circle cx="506" cy="52" r="3.4"/><circle cx="546" cy="52" r="3.4"/></g><g class="spine-node live"><circle cx="266" cy="52" r="4.6"/></g><circle class="spine-ring" cx="266" cy="52" r="8"/>
+        </svg>
+        <div class="spine-label">6 · the quietest receiver · 1964</div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Noise Floor · Stimpunks</span>
+        <span class="spread-footer-right">7</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 8: the pigeons ════ -->
+  <div class="spread" id="spread-8">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">the famous part · as he actually wrote it</div>
+          <h2 class="spread-heading" id="the-pigeons-barely-helped">The pigeons barely helped</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">You have probably heard this story. It is almost always told wrong, and the correction is better than the version that travels.</p>
+            <p>The retelling makes the pigeons the punchline — two men chasing a mysterious hiss, cleaning out the birds, and <em>there</em> is the universe. Here is what Wilson actually wrote:</p>
+            <div class="callout">"A pair of pigeons was roosting up in the small part of the horn where it enters the warm cab. They had covered the inside with a white material familiar to all city dwellers. We evicted the pigeons and cleaned up their mess, <strong>but obtained only a small reduction in antenna temperature.</strong>"<span class="attr">R. W. Wilson, Nobel lecture, 1978</span></div>
+            <p>The pigeons were not the answer and they were not the suspense. They were <span class="gold">one item on a list of things that did not work</span>, and the sentence keeps going into the part nobody quotes.</p>
+            <p>Two smaller repairs while we are here. The famous phrase <em>"white dielectric material"</em> is not in the lecture — Wilson wrote "a white material familiar to all city dwellers," which is funnier. And the pigeons are not in the 1965 paper at all; they arrive thirteen years later, in the Nobel lecture. <strong>The story is true. It is just not from where people think, and it does not say what people think.</strong></p>
+            <p><span class="joint joint-documented">documented</span> &nbsp;the obvious explanation → eliminated, floor unmoved</p>
+          </div>
+        </div>
+      </div>
+      <div class="spine">
+        <svg viewBox="0 0 620 80" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain drawn as a noise floor that never reaches zero kelvin. Live: the pigeons evicted, and the antenna temperature barely moved.">
+          <path class="spine-track zero" d="M56 70 H580"/><path class="spine-track documented" d="M60 52 L64 47.8 L68 56.2 L72 47.8 L76 56.2 L80 47.8 L84 56.2 L88 47.8 L92 56.2 L96 47.8 L100 56.2 L104 47.8 L108 56.2 L112 47.8 L116 56.2 L120 47.8 L124 56.2 L128 47.8 L132 56.2 L136 47.8 L140 56.2 L144 47.8 L148 56.2 L152 47.8 L156 56.2 L160 47.8 L164 56.2 L168 47.8 L172 56.2 L176 47.8 L180 56.2 L184 47.8 L188 56.2 L192 47.8 L196 56.2 L200 47.8 L204 56.2 L208 47.8 L212 56.2 L216 47.8 L220 56.2 L224 47.8 L228 56.2 L232 47.8 L236 56.2 L240 47.8 L244 56.2 L248 47.8 L252 56.2 L256 47.8 L260 56.2 L264 47.8 L268 56.2 L272 47.8 L276 56.2 L280 47.8 L284 56.2 L288 47.8 L292 56.2 L296 47.8 L300 56.2 L304 47.8 L308 56.2 L312 47.8 L316 56.2 L320 47.8 L324 56.2 L328 47.8 L332 56.2 L336 47.8 L340 56.2 L344 47.8 L348 56.2 L352 47.8 L356 56.2 L360 47.8 L364 56.2 L368 47.8 L372 56.2 L376 47.8 L380 56.2 L384 47.8 L388 56.2 L392 47.8 L396 56.2 L400 47.8 L404 56.2 L408 47.8 L412 56.2 L416 47.8 L420 56.2 L424 47.8 L428 56.2 L432 47.8 L436 56.2 L440 47.8 L444 56.2 L446 52"/><path class="spine-track contested" d="M446 52 H486"/><path class="spine-track leap" d="M486 52 H526"/><path class="spine-track documented" d="M526 52 H580"/><path class="spine-track sky" d="M386 52 V34"/><circle class="spine-node" cx="386" cy="31" r="2.6" fill="rgba(244,244,251,0.55)"/><text class="spine-raillabel" x="0" y="55">floor</text><text class="spine-raillabel" x="0" y="73">0 K</text><g class="spine-node"><circle cx="66" cy="52" r="3.4"/><circle cx="106" cy="52" r="3.4"/><circle cx="146" cy="52" r="3.4"/><circle cx="186" cy="52" r="3.4"/><circle cx="226" cy="52" r="3.4"/><circle cx="266" cy="52" r="3.4"/><circle cx="346" cy="52" r="3.4"/><circle cx="386" cy="52" r="3.4"/><circle cx="426" cy="52" r="3.4"/><circle cx="466" cy="52" r="3.4"/><circle cx="506" cy="52" r="3.4"/><circle cx="546" cy="52" r="3.4"/></g><g class="spine-node live"><circle cx="306" cy="52" r="4.6"/></g><circle class="spine-ring" cx="306" cy="52" r="8"/>
+        </svg>
+        <div class="spine-label">7 · the pigeons · only a small reduction</div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Noise Floor · Stimpunks</span>
+        <span class="spread-footer-right">8</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 9: ten months ════ -->
+  <div class="spread" id="spread-9">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">July 1964 – April 1965</div>
+          <h2 class="spread-heading" id="ten-months-and-it-would-not-go">Ten months, and it would not go</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">The excess was <span class="num">3.5 ± 1.0 K</span> at 4080 Mc/s. Their paper is, mostly, a list of everything it wasn't.</p>
+            <div class="checks">
+              <div class="check"><span class="check-mark">✓</span><span>Atmospheric absorption, measured by elevation angle and the secant law</span><span class="check-result">2.3 K · accounted</span></div>
+              <div class="check"><span class="check-mark">✓</span><span>Ohmic losses in the tapers, the rotary joint, the antenna itself</span><span class="check-result">0.8 K · accounted</span></div>
+              <div class="check"><span class="check-mark">✓</span><span>Seams: every joint near the throat taped over with aluminium</span><span class="check-result">no change</span></div>
+              <div class="check"><span class="check-mark">✓</span><span>Back-lobes: a transmitter walked to ten ground positions, both polarisations</span><span class="check-result">&lt; 0.1 K</span></div>
+              <div class="check"><span class="check-mark">✓</span><span>Leakage and loss in the rotary joint</span><span class="check-result">negative result</span></div>
+              <div class="check"><span class="check-mark">✓</span><span>The pigeons</span><span class="check-result">small reduction</span></div>
+            </div>
+            <p>And the remainder held. The paper records it in one parenthesis that quietly contains ten months of work: the excess is <em>"isotropic, unpolarized, and free from seasonal variations <strong>(July, 1964-April, 1965)</strong>."</em></p>
+            <p>Isotropic: the same in every direction, so not a place. Unpolarised: so not a machine. No seasonal variation: so not the atmosphere, not the ground, not New York over the horizon.</p>
+            <div class="callout">Every property that made it impossible to get rid of is a property that made it <em>the universe</em>. The list of failures <strong>is</strong> the evidence.<span class="attr">how elimination becomes discovery</span></div>
+            <p><span class="joint joint-documented">documented</span> &nbsp;everything eliminated → a real, isotropic remainder</p>
+          </div>
+        </div>
+      </div>
+      <div class="spine">
+        <svg viewBox="0 0 620 80" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain drawn as a noise floor that never reaches zero kelvin, with a mark rising above the floor at this rung: the excess that would not go away. Live: 3.5 kelvin, ten months.">
+          <path class="spine-track zero" d="M56 70 H580"/><path class="spine-track documented" d="M60 52 L64 47.8 L68 56.2 L72 47.8 L76 56.2 L80 47.8 L84 56.2 L88 47.8 L92 56.2 L96 47.8 L100 56.2 L104 47.8 L108 56.2 L112 47.8 L116 56.2 L120 47.8 L124 56.2 L128 47.8 L132 56.2 L136 47.8 L140 56.2 L144 47.8 L148 56.2 L152 47.8 L156 56.2 L160 47.8 L164 56.2 L168 47.8 L172 56.2 L176 47.8 L180 56.2 L184 47.8 L188 56.2 L192 47.8 L196 56.2 L200 47.8 L204 56.2 L208 47.8 L212 56.2 L216 47.8 L220 56.2 L224 47.8 L228 56.2 L232 47.8 L236 56.2 L240 47.8 L244 56.2 L248 47.8 L252 56.2 L256 47.8 L260 56.2 L264 47.8 L268 56.2 L272 47.8 L276 56.2 L280 47.8 L284 56.2 L288 47.8 L292 56.2 L296 47.8 L300 56.2 L304 47.8 L308 56.2 L312 47.8 L316 56.2 L320 47.8 L324 56.2 L328 47.8 L332 56.2 L336 47.8 L340 56.2 L344 47.8 L348 56.2 L352 47.8 L356 56.2 L360 47.8 L364 56.2 L368 47.8 L372 56.2 L376 47.8 L380 56.2 L384 47.8 L388 56.2 L392 47.8 L396 56.2 L400 47.8 L404 56.2 L408 47.8 L412 56.2 L416 47.8 L420 56.2 L424 47.8 L428 56.2 L432 47.8 L436 56.2 L440 47.8 L444 56.2 L446 52"/><path class="spine-track contested" d="M446 52 H486"/><path class="spine-track leap" d="M486 52 H526"/><path class="spine-track documented" d="M526 52 H580"/><path class="spine-track sky" d="M386 52 V34"/><circle cx="386" cy="31" r="3.4" fill="rgba(244,244,251,0.85)"/><text class="spine-raillabel" x="0" y="55">floor</text><text class="spine-raillabel" x="0" y="73">0 K</text><g class="spine-node"><circle cx="66" cy="52" r="3.4"/><circle cx="106" cy="52" r="3.4"/><circle cx="146" cy="52" r="3.4"/><circle cx="186" cy="52" r="3.4"/><circle cx="226" cy="52" r="3.4"/><circle cx="266" cy="52" r="3.4"/><circle cx="306" cy="52" r="3.4"/><circle cx="426" cy="52" r="3.4"/><circle cx="466" cy="52" r="3.4"/><circle cx="506" cy="52" r="3.4"/><circle cx="546" cy="52" r="3.4"/></g><g class="spine-node live"><circle cx="346" cy="52" r="4.6"/></g><circle class="spine-ring" cx="346" cy="52" r="8"/>
+        </svg>
+        <div class="spine-label">8 · 3.5 K · isotropic, unpolarised, all year</div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Noise Floor · Stimpunks</span>
+        <span class="spread-footer-right">9</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 10: 1965, twice, inverted ════ -->
+  <div class="spread" id="spread-10">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Astrophysical Journal 142 · 1 July 1965</div>
+          <h2 class="spread-heading" id="the-same-shape-again-running-backwards">The same shape again, running <span class="spectrum-word">backwards</span></h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">One volume of one journal, in one issue, carried the explanation and the measurement — <strong>on facing pages.</strong> Again.</p>
+            <p><strong>Dicke, Peebles, Roll &amp; Wilkinson</strong>, "Cosmic Black-Body Radiation," pages <span class="num">414–419</span>. A Princeton group had reasoned that a hot early universe should have left a bath of cooled radiation, and were building a receiver to look for it.</p>
+            <p><strong>Penzias &amp; Wilson</strong>, "A Measurement of Excess Antenna Temperature at 4080 Mc/s," pages <span class="num">419–421</span>. Three pages of things they had ruled out, and one sentence pointing next door: <em>"A possible explanation for the observed excess noise temperature is the one given by Dicke, Peebles, Roll, and Wilkinson (1965) in a companion letter in this issue."</em></p>
+            <p>Thirty-seven years after Johnson and Nyquist, the same journal-page adjacency — <span class="gold">and this time in reverse.</span> In 1928 the measurement came first and the theory followed it. In 1965 the theory was already set in type when the measurement walked in from a telephone company in New Jersey.</p>
+            <div class="callout">The most consequential discovery in modern cosmology arrived <em>as noise</em>, in an instrument built to have as little of it as possible, in the hands of two people spending ten months trying to make it go away.<span class="attr">the beat this chain exists for</span></div>
+            <p>They got the Nobel Prize in 1978 for a hiss they had filed as a fault.</p>
+            <p><span class="joint joint-documented">documented</span> &nbsp;an unaccounted remainder → the oldest light there is</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 140" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig6-title fig6-desc">
+              <title id="fig6-title">1928 and 1965, mirrored</title>
+              <desc id="fig6-desc">Two rows of adjacent page blocks. In 1928 the measurement precedes the theory; in 1965 the theory precedes the measurement.</desc>
+              <text x="16" y="26" font-family="Space Mono, monospace" font-size="7" letter-spacing="0.8" fill="var(--sp-dim)">1928</text>
+              <rect x="60" y="14" width="96" height="24" rx="2" fill="rgba(34,211,238,0.12)" stroke="var(--sp-cyan)" stroke-width="1.2"/>
+              <rect x="160" y="14" width="72" height="24" rx="2" fill="rgba(167,139,250,0.12)" stroke="var(--sp-purple)" stroke-width="1.2"/>
+              <text x="108" y="30" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--sp-cyan)">measured</text>
+              <text x="196" y="30" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--sp-purple)">explained</text>
+              <text x="16" y="86" font-family="Space Mono, monospace" font-size="7" letter-spacing="0.8" fill="var(--sp-dim)">1965</text>
+              <rect x="60" y="74" width="96" height="24" rx="2" fill="rgba(167,139,250,0.12)" stroke="var(--sp-purple)" stroke-width="1.2"/>
+              <rect x="160" y="74" width="72" height="24" rx="2" fill="rgba(34,211,238,0.12)" stroke="var(--sp-cyan)" stroke-width="1.2"/>
+              <text x="108" y="90" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--sp-purple)">explained</text>
+              <text x="196" y="90" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--sp-cyan)">measured</text>
+              <path d="M244 26 L262 26 L262 74 L244 74" fill="none" stroke="rgba(251,191,36,0.6)" stroke-width="1.2"/>
+              <text x="276" y="53" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--sp-gold)">37 yr</text>
+              <text x="146" y="126" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" letter-spacing="0.7" fill="var(--sp-dim)">Phys. Rev. 32 · ApJ 142 · same move, mirrored</text>
+            </svg>
+            <div class="diagram-caption">Figure 6 · facing pages, twice, thirty-seven years apart</div>
+          </div>
+        </div>
+      </div>
+      <div class="spine">
+        <svg viewBox="0 0 620 80" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain drawn as a noise floor that never reaches zero kelvin. Live: the excess identified as the cosmic microwave background, 1965.">
+          <path class="spine-track zero" d="M56 70 H580"/><path class="spine-track documented" d="M60 52 L64 47.8 L68 56.2 L72 47.8 L76 56.2 L80 47.8 L84 56.2 L88 47.8 L92 56.2 L96 47.8 L100 56.2 L104 47.8 L108 56.2 L112 47.8 L116 56.2 L120 47.8 L124 56.2 L128 47.8 L132 56.2 L136 47.8 L140 56.2 L144 47.8 L148 56.2 L152 47.8 L156 56.2 L160 47.8 L164 56.2 L168 47.8 L172 56.2 L176 47.8 L180 56.2 L184 47.8 L188 56.2 L192 47.8 L196 56.2 L200 47.8 L204 56.2 L208 47.8 L212 56.2 L216 47.8 L220 56.2 L224 47.8 L228 56.2 L232 47.8 L236 56.2 L240 47.8 L244 56.2 L248 47.8 L252 56.2 L256 47.8 L260 56.2 L264 47.8 L268 56.2 L272 47.8 L276 56.2 L280 47.8 L284 56.2 L288 47.8 L292 56.2 L296 47.8 L300 56.2 L304 47.8 L308 56.2 L312 47.8 L316 56.2 L320 47.8 L324 56.2 L328 47.8 L332 56.2 L336 47.8 L340 56.2 L344 47.8 L348 56.2 L352 47.8 L356 56.2 L360 47.8 L364 56.2 L368 47.8 L372 56.2 L376 47.8 L380 56.2 L384 47.8 L388 56.2 L392 47.8 L396 56.2 L400 47.8 L404 56.2 L408 47.8 L412 56.2 L416 47.8 L420 56.2 L424 47.8 L428 56.2 L432 47.8 L436 56.2 L440 47.8 L444 56.2 L446 52"/><path class="spine-track contested" d="M446 52 H486"/><path class="spine-track leap" d="M486 52 H526"/><path class="spine-track documented" d="M526 52 H580"/><path class="spine-track sky" d="M386 52 V34"/><circle cx="386" cy="31" r="3.4" fill="rgba(244,244,251,0.85)"/><text class="spine-raillabel" x="0" y="55">floor</text><text class="spine-raillabel" x="0" y="73">0 K</text><g class="spine-node"><circle cx="66" cy="52" r="3.4"/><circle cx="106" cy="52" r="3.4"/><circle cx="146" cy="52" r="3.4"/><circle cx="186" cy="52" r="3.4"/><circle cx="226" cy="52" r="3.4"/><circle cx="266" cy="52" r="3.4"/><circle cx="306" cy="52" r="3.4"/><circle cx="346" cy="52" r="3.4"/><circle cx="466" cy="52" r="3.4"/><circle cx="506" cy="52" r="3.4"/><circle cx="546" cy="52" r="3.4"/></g><g class="spine-node live"><circle cx="426" cy="52" r="4.6"/></g><circle class="spine-ring" cx="426" cy="52" r="8"/>
+        </svg>
+        <div class="spine-label">9 · the noise was the universe · 1965</div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Noise Floor · Stimpunks</span>
+        <span class="spread-footer-right">10</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 11: rooms ════ -->
+  <div class="spread" id="spread-11">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">meanwhile · in the buildings</div>
+          <h2 class="spread-heading" id="architecture-already-knows-this">Architecture already knows this</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Here is the rung that surprised us while we were checking it. The transfer from Shannon to a room is not ours. <strong>It is already in the standard, in the standard's own words.</strong></p>
+            <p><span class="cyan">ANSI/ASA S12.60</span> caps background noise in a core learning space at <span class="num">35 dBA</span> and reverberation at <span class="num">0.6 s</span>. The Acoustical Society's guidance for architects explains why in a sentence that could have come off Shannon's page: you need an "average differential between speech level and background level <em>(called signal to noise ratio)</em> of about 15 dB, which means the A-weighted background noise level should not exceed about 35 dB."</p>
+            <p>Fifty decibels of teacher, minus thirty-five of room, equals fifteen of margin. <strong>A classroom is specified as a channel.</strong> And note the profession's instruction about what to do with it: "Rather than boost the instructor's voice through electronic amplification … we have to work to keep the background noise level inside the unoccupied classroom from exceeding 35 dB." <em>Lower the floor. Don't shout.</em></p>
+            <p>The same story is in the lights and the offices, and the numbers exist:</p>
+            <p><strong>Flicker.</strong> Wilkins, Nimmo-Smith, Slater &amp; Bedocs (1989) compared fluorescent tubes on magnetic ballasts — pulsating <span class="num">43–49%</span> at 100 Hz — against high-frequency electronic ballasts under <span class="num">7%</span>. Double-blind, crossed over. Headaches and eyestrain <strong>more than halved.</strong> Wilkins' own later note is the honest part: the effect is <em>"attributable to a minority that is particularly affected."</em> The room was not equally bad for everyone. It was catastrophic for some.</p>
+            <p><strong>Open plan.</strong> Kim &amp; de Dear (2013), across a large occupant-survey database, found sound privacy the single largest source of dissatisfaction anywhere in the building: <span class="num">59%</span> dissatisfied in high-partitioned cubicles, <span class="num">58%</span> in low, <span class="num">49%</span> with no partitions — against 18% in private offices. And the thing open plan was sold for did not show up: satisfaction with ease of interaction was <em>no higher</em> than in private offices.</p>
+            <div class="callout">We know how to lower a floor. We do it for microwave receivers, for classrooms, for concert halls. Where we don't is where we've decided the noise is free.<span class="attr">a floor is a design decision that somebody made</span></div>
+            <p><strong>One more thing worth noticing, because this chain has already shown you the good version.</strong> Penzias and Wilson's paper is, in large part, <em>a published noise budget</em>: 2.3 K of atmosphere, 0.8 K of ohmic loss, back-lobes under 0.1 K. Reporting the conditions the measurement was made in is simply what a radio astronomer does &mdash; otherwise nobody can tell whether the result is about the sky or about the equipment.</p>
+            <p>Now consider that physical-health research involving Autistic adults <strong>almost never reports the lighting or the noise in the room.</strong> That is the gap the <span class="cyan">TRACE</span> framework (Srinivasan, 2026) was written to close, as a reporting standard alongside CONSORT and STROBE: record the sensory context, the pacing, the proximity and touch practices, the access modifications offered and used. Its argument is exactly the radio astronomer's &mdash; without them <em>"researchers cannot determine whether outcomes reflect the procedure itself, the conditions under which participation occurred,"</em> or who was able to take part at all. <strong>One field publishes its noise floor as a matter of routine. The other is still being asked to start.</strong></p>
+            <p><span class="joint joint-documented">documented</span> &nbsp;Shannon's quantity → a building's design spec</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 148" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig7-title fig7-desc">
+              <title id="fig7-title">A classroom, specified as a channel</title>
+              <desc id="fig7-desc">Two bars: speech at fifty decibels and background noise at thirty-five decibels, with the fifteen decibel gap between them marked as the required signal-to-noise ratio.</desc>
+              <line x1="52" y1="126" x2="272" y2="126" stroke="rgba(34,211,238,0.4)" stroke-width="1"/>
+              <rect x="76" y="34" width="46" height="92" rx="2" fill="rgba(34,211,238,0.16)" stroke="var(--sp-cyan)" stroke-width="1.3"/>
+              <rect x="178" y="76" width="46" height="50" rx="2" fill="rgba(244,114,182,0.14)" stroke="var(--sp-pink)" stroke-width="1.3"/>
+              <text x="99" y="26" text-anchor="middle" font-family="Space Mono, monospace" font-size="8" font-weight="700" fill="var(--sp-cyan)">50 dB</text>
+              <text x="201" y="68" text-anchor="middle" font-family="Space Mono, monospace" font-size="8" font-weight="700" fill="var(--sp-pink)">35 dB</text>
+              <text x="99" y="140" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--sp-secondary)">the teacher</text>
+              <text x="201" y="140" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--sp-secondary)">the room</text>
+              <line x1="140" y1="34" x2="160" y2="34" stroke="rgba(251,191,36,0.7)" stroke-width="1"/>
+              <line x1="140" y1="76" x2="160" y2="76" stroke="rgba(251,191,36,0.7)" stroke-width="1"/>
+              <line x1="150" y1="34" x2="150" y2="76" stroke="var(--sp-gold)" stroke-width="1.4"/>
+              <text x="150" y="102" text-anchor="middle" font-family="Space Mono, monospace" font-size="8.5" font-weight="700" fill="var(--sp-gold)">15 dB</text>
+              <text x="150" y="114" text-anchor="middle" font-family="Space Mono, monospace" font-size="6" letter-spacing="0.5" fill="var(--sp-dim)">S/N</text>
+            </svg>
+            <div class="diagram-caption">Figure 7 · the standard's own quantity, in the standard's own words</div>
+          </div>
+        </div>
+      </div>
+      <div class="spine">
+        <svg viewBox="0 0 620 80" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain drawn as a noise floor that never reaches zero kelvin. Live: rooms specified as channels, ANSI S12.60.">
+          <path class="spine-track zero" d="M56 70 H580"/><path class="spine-track documented" d="M60 52 L64 47.8 L68 56.2 L72 47.8 L76 56.2 L80 47.8 L84 56.2 L88 47.8 L92 56.2 L96 47.8 L100 56.2 L104 47.8 L108 56.2 L112 47.8 L116 56.2 L120 47.8 L124 56.2 L128 47.8 L132 56.2 L136 47.8 L140 56.2 L144 47.8 L148 56.2 L152 47.8 L156 56.2 L160 47.8 L164 56.2 L168 47.8 L172 56.2 L176 47.8 L180 56.2 L184 47.8 L188 56.2 L192 47.8 L196 56.2 L200 47.8 L204 56.2 L208 47.8 L212 56.2 L216 47.8 L220 56.2 L224 47.8 L228 56.2 L232 47.8 L236 56.2 L240 47.8 L244 56.2 L248 47.8 L252 56.2 L256 47.8 L260 56.2 L264 47.8 L268 56.2 L272 47.8 L276 56.2 L280 47.8 L284 56.2 L288 47.8 L292 56.2 L296 47.8 L300 56.2 L304 47.8 L308 56.2 L312 47.8 L316 56.2 L320 47.8 L324 56.2 L328 47.8 L332 56.2 L336 47.8 L340 56.2 L344 47.8 L348 56.2 L352 47.8 L356 56.2 L360 47.8 L364 56.2 L368 47.8 L372 56.2 L376 47.8 L380 56.2 L384 47.8 L388 56.2 L392 47.8 L396 56.2 L400 47.8 L404 56.2 L408 47.8 L412 56.2 L416 47.8 L420 56.2 L424 47.8 L428 56.2 L432 47.8 L436 56.2 L440 47.8 L444 56.2 L446 52"/><path class="spine-track contested" d="M446 52 H486"/><path class="spine-track leap" d="M486 52 H526"/><path class="spine-track documented" d="M526 52 H580"/><path class="spine-track sky" d="M386 52 V34"/><circle class="spine-node" cx="386" cy="31" r="2.6" fill="rgba(244,244,251,0.55)"/><text class="spine-raillabel" x="0" y="55">floor</text><text class="spine-raillabel" x="0" y="73">0 K</text><g class="spine-node"><circle cx="66" cy="52" r="3.4"/><circle cx="106" cy="52" r="3.4"/><circle cx="146" cy="52" r="3.4"/><circle cx="186" cy="52" r="3.4"/><circle cx="226" cy="52" r="3.4"/><circle cx="266" cy="52" r="3.4"/><circle cx="306" cy="52" r="3.4"/><circle cx="346" cy="52" r="3.4"/><circle cx="386" cy="52" r="3.4"/><circle cx="466" cy="52" r="3.4"/><circle cx="506" cy="52" r="3.4"/><circle cx="546" cy="52" r="3.4"/></g><g class="spine-node live"><circle cx="426" cy="52" r="4.6"/></g><circle class="spine-ring" cx="426" cy="52" r="8"/>
+        </svg>
+        <div class="spine-label">10 · a room is a channel · 35 dBA</div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Noise Floor · Stimpunks</span>
+        <span class="spread-footer-right">11</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 12: where this stops being physics ════ -->
+  <div class="spread" id="spread-12">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">the joint that has to be marked</div>
+          <h2 class="spread-heading" id="where-this-stops-being-physics">Where this stops being physics</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">This is the joint where a chain like this normally cheats, so we are going to stop and say the disanalogy out loud before we say anything else.</p>
+            <p><strong>Auditory filtering is not thermal noise.</strong> kTB is a floor set by temperature in a conductor. What happens when we try to follow one voice in a hard-surfaced room is a different phenomenon in a different substrate, and none of Nyquist's numbers carry over. There is no <em>k</em> for a nervous system. Anyone who tells you the physics <em>proves</em> something about an Autistic person's hearing is selling you the naturalistic fallacy with a formula attached, and <a href="five-sigma-zine.html">this collection exists partly to refuse that move</a>.</p>
+            <div class="joint-note"><strong>What does carry across is smaller, and it is not a number.</strong> It is this: filtering is not free, and a limit is not a defect. Both of those are true in a circuit for reasons we can prove, and true in a room for reasons acousticians act on daily. Whether they are true in the same <em>way</em> for a person is a live research question, not a settled one.</div>
+            <p>What the research says, carefully: <strong>Anna Remington</strong> and <strong>Jake Fairnie</strong>, in "A sound advantage: increased auditory capacity in autism" (<em>Cognition</em>, 2017), find that Autistic adults have a <span class="cyan">larger</span> auditory perceptual capacity — and that this single fact predicts <em>both</em> results at once. We detect additional sounds others miss, which shows up as superior performance on the task we were asked to do <em>and</em> as greater distraction by the sounds nobody asked us to process.</p>
+            <p>That is not a deficit account and it is not a superpower account. It is a <strong>capacity</strong> account, and it means the sound reaching us was already received. "Tuning it out" is not a filter placed before the input; it is work done after, on material that has already arrived.</p>
+            <p><strong>And acoustics has now gone and asked the question directly.</strong> María del Carmen Rosas-Pérez's 2026 doctoral thesis <em>Disabling Acoustics</em> surveyed <span class="num">311</span> noise-sensitive people alongside interviews with twelve Autistic adults. Asked whether they can filter out irrelevant background sound, <strong>none of the Autistic participants said they find it easy</strong> — 96% could not do it or struggled, against 77% of the neurotypical respondents (χ²=25.08, <em>p</em>&lt;.001). Read that second number carefully: <em>everyone in this survey was already noise-sensitive</em>, so it is a difference measured <strong>inside</strong> a sensitive sample, not a claim about the general population.</p>
+            <div class="callout">The noise in the room does not become free by being ignored. Somebody pays for it, downstream, in a currency nobody is measuring.<span class="attr">the honest version of the transfer</span></div>
+            <p><strong>Here is where the analogy actually breaks, and the break is worth more than the resemblance.</strong> Thermal noise is <em>stationary</em>: kTB is the same in the tenth hour as in the first, and a receiver that runs all day is no worse off at dusk. Rosas-Pérez found the opposite in people — <span class="gold">no habituation, but an accumulation effect</span>, with fatigue and distress building over the short and long term. <strong>So the floor in a room is <em>crueller</em> than the floor in a circuit, not merely similar to it.</strong> A resistor never gets tired of being warm.</p>
+            <p>We mark this <span class="gold">contested</span> because it is: perceptual-capacity accounts are actively argued over, replication is ongoing, and no one study settles a population. We are not going to pretend otherwise to make a stronger ending.</p>
+            <p><span class="joint joint-contested">contested</span> &nbsp;a floor in a channel → a capacity in a person</p>
+          </div>
+        </div>
+      </div>
+      <div class="spine">
+        <svg viewBox="0 0 620 80" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain drawn as a noise floor. The trace goes smooth and dashed here: this rung is an argument, not a measurement. Live: the contested transfer to auditory capacity.">
+          <path class="spine-track zero" d="M56 70 H580"/><path class="spine-track documented" d="M60 52 L64 47.8 L68 56.2 L72 47.8 L76 56.2 L80 47.8 L84 56.2 L88 47.8 L92 56.2 L96 47.8 L100 56.2 L104 47.8 L108 56.2 L112 47.8 L116 56.2 L120 47.8 L124 56.2 L128 47.8 L132 56.2 L136 47.8 L140 56.2 L144 47.8 L148 56.2 L152 47.8 L156 56.2 L160 47.8 L164 56.2 L168 47.8 L172 56.2 L176 47.8 L180 56.2 L184 47.8 L188 56.2 L192 47.8 L196 56.2 L200 47.8 L204 56.2 L208 47.8 L212 56.2 L216 47.8 L220 56.2 L224 47.8 L228 56.2 L232 47.8 L236 56.2 L240 47.8 L244 56.2 L248 47.8 L252 56.2 L256 47.8 L260 56.2 L264 47.8 L268 56.2 L272 47.8 L276 56.2 L280 47.8 L284 56.2 L288 47.8 L292 56.2 L296 47.8 L300 56.2 L304 47.8 L308 56.2 L312 47.8 L316 56.2 L320 47.8 L324 56.2 L328 47.8 L332 56.2 L336 47.8 L340 56.2 L344 47.8 L348 56.2 L352 47.8 L356 56.2 L360 47.8 L364 56.2 L368 47.8 L372 56.2 L376 47.8 L380 56.2 L384 47.8 L388 56.2 L392 47.8 L396 56.2 L400 47.8 L404 56.2 L408 47.8 L412 56.2 L416 47.8 L420 56.2 L424 47.8 L428 56.2 L432 47.8 L436 56.2 L440 47.8 L444 56.2 L446 52"/><path class="spine-track contested" d="M446 52 H486"/><path class="spine-track leap" d="M486 52 H526"/><path class="spine-track documented" d="M526 52 H580"/><path class="spine-track sky" d="M386 52 V34"/><circle class="spine-node" cx="386" cy="31" r="2.6" fill="rgba(244,244,251,0.55)"/><text class="spine-raillabel" x="0" y="55">floor</text><text class="spine-raillabel" x="0" y="73">0 K</text><g class="spine-node"><circle cx="66" cy="52" r="3.4"/><circle cx="106" cy="52" r="3.4"/><circle cx="146" cy="52" r="3.4"/><circle cx="186" cy="52" r="3.4"/><circle cx="226" cy="52" r="3.4"/><circle cx="266" cy="52" r="3.4"/><circle cx="306" cy="52" r="3.4"/><circle cx="346" cy="52" r="3.4"/><circle cx="386" cy="52" r="3.4"/><circle cx="426" cy="52" r="3.4"/><circle cx="506" cy="52" r="3.4"/><circle cx="546" cy="52" r="3.4"/></g><g class="spine-node live"><circle cx="466" cy="52" r="4.6"/></g><circle class="spine-ring" cx="466" cy="52" r="8"/>
+        </svg>
+        <div class="spine-label">11 · the transfer · marked contested</div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Noise Floor · Stimpunks</span>
+        <span class="spread-footer-right">12</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 13: just tune it out ════ -->
+  <div class="spread" id="spread-13">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">the endpoint</div>
+          <h2 class="spread-heading" id="nobody-asks-a-receiver-to-be-quieter-than-ktb">Nobody asks a receiver to be <span class="spectrum-word">quieter than kTB</span></h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">"Just tune it out." "It's not that loud." "You'll get used to it."</p>
+            <p>Those are not our inventions. The first two are what Rosas-Pérez's interviewees reported being told, over and over, since childhood &mdash; a pattern her participants' accounts led her to name <strong>sensory gaslighting</strong>. One of them put the whole argument in a sentence:</p>
+            <div class="callout">"The attitude that you often get is, &lsquo;Well, it doesn't bother me and I can't see it, so it doesn't exist and I don't need to do anything about it.&rsquo;"<span class="attr">Participant 10, <em>Disabling Acoustics</em> (Rosas-Pérez, 2026)</span></div>
+            <p><strong>And "you'll get used to it" has an evidence base worth looking at.</strong> The idea that reducing exposure makes sensitivity worse &mdash; the reasoning behind telling people not to wear ear protection &mdash; traces to a study of <span class="num">five</span> participants, <em>none of them noise-sensitive</em>, listening to two pure tones over two weeks. That is the foundation under advice given to people whose daily lives are nothing like it. <em>Careful measurement, generalised past what it can carry, and handed back to us as a character note.</em></p>
+            <p>Hold that next to the instrument at Holmdel. Penzias and Wilson had the quietest receiver on the planet and it still had a floor, and not one person in that building thought the floor was a character flaw. <strong>They cooled it. They shielded it. They narrowed the band.</strong> Then they measured what was left and published it.</p>
+            <p>The move engineering made in 1928 was to stop demanding that the receiver be better than physics, and start changing the conditions the listening happened in. <em>That move is what an accommodation is.</em> Noise-cancelling headphones are shielding. A quiet room is a cooled load. A shorter meeting is a narrower band. None of it is special treatment; all of it is standard practice, applied to people.</p>
+            <div class="callout">We are not asking to be exempted from a limit everyone else beats. <strong>Nobody beats it.</strong> We are asking for the thing every engineer already does when the floor is real: change the room, not the receiver.<span class="attr">the argument, stated at its actual strength</span></div>
+            <p>And we mark it <span class="pink">leap</span>, because it is one. The physics does not prove this. Thermal noise entails nothing whatsoever about who deserves a quiet room — <strong>that is a moral claim and it has to stand on its own feet.</strong> What the physics does is narrower and still worth having: it removes an excuse. It makes "just tune it out" visibly the wrong <em>kind</em> of request — one that no receiver ever built has been able to honour.</p>
+            <div class="refusals">
+              <div class="refusal"><span class="refusal-tag">Not:</span><span>that thermal noise <strong>explains</strong> sensory experience. It does not, we say so twice, and the joint is marked.</span></div>
+              <div class="refusal"><span class="refusal-tag">Not:</span><span>that a sensory limit is a <strong>superpower</strong>. Remington and Fairnie found a larger capacity, not a gift, and it costs what capacity costs.</span></div>
+              <div class="refusal"><span class="refusal-tag">Not:</span><span>that the answer is <strong>resilience training</strong>. You cannot train a resistor below kTB, and nobody has ever tried.</span></div>
+              <div class="refusal"><span class="refusal-tag">Not:</span><span>that <strong>desensitisation</strong> is the fix. The measured pattern is accumulation, not habituation &mdash; so an intervention built on exposure is not merely useless, it runs the wrong way.</span></div>
+              <div class="refusal"><span class="refusal-tag">Not:</span><span>that noise is <strong>free</strong> because it is invisible on the budget. Somebody is paying for every decibel the room was allowed to keep.</span></div>
+              <div class="refusal"><span class="refusal-tag">Not:</span><span>that physics is the <strong>enemy</strong>. Every rung of this chain is careful measurement doing exactly what it should.</span></div>
+            </div>
+            <p><span class="joint joint-leap">leap</span> &nbsp;change the conditions, not the receiver → accommodation</p>
+          </div>
+        </div>
+      </div>
+      <div class="spine">
+        <svg viewBox="0 0 620 80" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain drawn as a noise floor. The trace is dotted here: this rung is a marked leap. Live: change the room, not the receiver.">
+          <path class="spine-track zero" d="M56 70 H580"/><path class="spine-track documented" d="M60 52 L64 47.8 L68 56.2 L72 47.8 L76 56.2 L80 47.8 L84 56.2 L88 47.8 L92 56.2 L96 47.8 L100 56.2 L104 47.8 L108 56.2 L112 47.8 L116 56.2 L120 47.8 L124 56.2 L128 47.8 L132 56.2 L136 47.8 L140 56.2 L144 47.8 L148 56.2 L152 47.8 L156 56.2 L160 47.8 L164 56.2 L168 47.8 L172 56.2 L176 47.8 L180 56.2 L184 47.8 L188 56.2 L192 47.8 L196 56.2 L200 47.8 L204 56.2 L208 47.8 L212 56.2 L216 47.8 L220 56.2 L224 47.8 L228 56.2 L232 47.8 L236 56.2 L240 47.8 L244 56.2 L248 47.8 L252 56.2 L256 47.8 L260 56.2 L264 47.8 L268 56.2 L272 47.8 L276 56.2 L280 47.8 L284 56.2 L288 47.8 L292 56.2 L296 47.8 L300 56.2 L304 47.8 L308 56.2 L312 47.8 L316 56.2 L320 47.8 L324 56.2 L328 47.8 L332 56.2 L336 47.8 L340 56.2 L344 47.8 L348 56.2 L352 47.8 L356 56.2 L360 47.8 L364 56.2 L368 47.8 L372 56.2 L376 47.8 L380 56.2 L384 47.8 L388 56.2 L392 47.8 L396 56.2 L400 47.8 L404 56.2 L408 47.8 L412 56.2 L416 47.8 L420 56.2 L424 47.8 L428 56.2 L432 47.8 L436 56.2 L440 47.8 L444 56.2 L446 52"/><path class="spine-track contested" d="M446 52 H486"/><path class="spine-track leap" d="M486 52 H526"/><path class="spine-track documented" d="M526 52 H580"/><path class="spine-track sky" d="M386 52 V34"/><circle class="spine-node" cx="386" cy="31" r="2.6" fill="rgba(244,244,251,0.55)"/><text class="spine-raillabel" x="0" y="55">floor</text><text class="spine-raillabel" x="0" y="73">0 K</text><g class="spine-node"><circle cx="66" cy="52" r="3.4"/><circle cx="106" cy="52" r="3.4"/><circle cx="146" cy="52" r="3.4"/><circle cx="186" cy="52" r="3.4"/><circle cx="226" cy="52" r="3.4"/><circle cx="266" cy="52" r="3.4"/><circle cx="306" cy="52" r="3.4"/><circle cx="346" cy="52" r="3.4"/><circle cx="386" cy="52" r="3.4"/><circle cx="426" cy="52" r="3.4"/><circle cx="466" cy="52" r="3.4"/><circle cx="546" cy="52" r="3.4"/></g><g class="spine-node live"><circle cx="506" cy="52" r="4.6"/></g><circle class="spine-ring" cx="506" cy="52" r="8"/>
+        </svg>
+        <div class="spine-label">12 · change the room · marked leap</div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Noise Floor · Stimpunks</span>
+        <span class="spread-footer-right">13</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 14: where the practice already is ════ -->
+  <div class="spread" id="spread-14">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">a coda, not a rung</div>
+          <h2 class="spread-heading" id="somebody-already-wrote-down-how-to-lower-it">Somebody already wrote down how to lower it</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">This zine is an argument, and an argument is the least useful thing in the room if you are the one in the room.</p>
+            <p>So: everything above says <em>the floor is set by the environment, therefore the environment is the unit of repair.</em> The work of writing down how to actually do that has been done, by us and by people we learn from, and it is free.</p>
+            <p><a href="https://stimpunks.org/library/broadsides/sensory-access-at-work/">Sensory Access at Work</a> is the one-page version for a workplace — ear protection as normal kit, cutting HVAC and open-plan chatter, and the rest of the senses nobody budgets for. <a href="https://stimpunks.org/patterns/recipes/sensory-safe-spaces/">Designing Sensory-Safe Spaces</a> is the longer pattern for a room you can change. <a href="https://stimpunks.org/access/sensory-experience/">Neuroception and Sensory Load</a> collects what our complex sensory experiences are actually like, in our own words rather than an observer's.</p>
+            <p><strong>And there is now an instrument.</strong> The third study in <em>Disabling Acoustics</em> builds <span class="cyan">AcoustInA</span>, an Acoustical Inclusivity Assessment tool, tested by thirteen experts across twenty-one real spaces &mdash; which means the question <em>how disabling is this room, and by how much</em> has stopped being rhetorical and started being something you can go and score.</p>
+            <p>And the frame that reaches furthest: <a href="https://stimpunks.org/glossary/sensory-trauma/"><strong>Sensory Trauma</strong></a>, the name <strong>Autism Wellbeing</strong> gave to something Autistic people had been describing all along — that the events which harm us need not be the extreme ones, that they arrive through taking a shower or going shopping, and that our responses are <em>proportionate to our genuine, lived experience</em> even when they are mislabelled as something else.</p>
+            <div class="callout">Sensory trauma "has been there all along, hiding in plain sight."<span class="attr">Sensory Trauma: Autism, Sensory Difference and the Daily Experience of Fear — Autism Wellbeing</span></div>
+            <p>Which is the last thing this chain wants to say. The hiss at Holmdel had been arriving for thirteen billion years before anyone built an instrument quiet enough to notice it, and when they did they assumed for ten months it was a fault in the equipment. <strong>Being persistently told your reading is instrument error does not make it instrument error.</strong></p>
+          </div>
+        </div>
+      </div>
+      <div class="spine">
+        <svg viewBox="0 0 620 80" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain drawn as a noise floor that never reaches zero kelvin. Live: the coda, where the practice is already written down.">
+          <path class="spine-track zero" d="M56 70 H580"/><path class="spine-track documented" d="M60 52 L64 47.8 L68 56.2 L72 47.8 L76 56.2 L80 47.8 L84 56.2 L88 47.8 L92 56.2 L96 47.8 L100 56.2 L104 47.8 L108 56.2 L112 47.8 L116 56.2 L120 47.8 L124 56.2 L128 47.8 L132 56.2 L136 47.8 L140 56.2 L144 47.8 L148 56.2 L152 47.8 L156 56.2 L160 47.8 L164 56.2 L168 47.8 L172 56.2 L176 47.8 L180 56.2 L184 47.8 L188 56.2 L192 47.8 L196 56.2 L200 47.8 L204 56.2 L208 47.8 L212 56.2 L216 47.8 L220 56.2 L224 47.8 L228 56.2 L232 47.8 L236 56.2 L240 47.8 L244 56.2 L248 47.8 L252 56.2 L256 47.8 L260 56.2 L264 47.8 L268 56.2 L272 47.8 L276 56.2 L280 47.8 L284 56.2 L288 47.8 L292 56.2 L296 47.8 L300 56.2 L304 47.8 L308 56.2 L312 47.8 L316 56.2 L320 47.8 L324 56.2 L328 47.8 L332 56.2 L336 47.8 L340 56.2 L344 47.8 L348 56.2 L352 47.8 L356 56.2 L360 47.8 L364 56.2 L368 47.8 L372 56.2 L376 47.8 L380 56.2 L384 47.8 L388 56.2 L392 47.8 L396 56.2 L400 47.8 L404 56.2 L408 47.8 L412 56.2 L416 47.8 L420 56.2 L424 47.8 L428 56.2 L432 47.8 L436 56.2 L440 47.8 L444 56.2 L446 52"/><path class="spine-track contested" d="M446 52 H486"/><path class="spine-track leap" d="M486 52 H526"/><path class="spine-track documented" d="M526 52 H580"/><path class="spine-track sky" d="M386 52 V34"/><circle class="spine-node" cx="386" cy="31" r="2.6" fill="rgba(244,244,251,0.55)"/><text class="spine-raillabel" x="0" y="55">floor</text><text class="spine-raillabel" x="0" y="73">0 K</text><g class="spine-node"><circle cx="66" cy="52" r="3.4"/><circle cx="106" cy="52" r="3.4"/><circle cx="146" cy="52" r="3.4"/><circle cx="186" cy="52" r="3.4"/><circle cx="226" cy="52" r="3.4"/><circle cx="266" cy="52" r="3.4"/><circle cx="306" cy="52" r="3.4"/><circle cx="346" cy="52" r="3.4"/><circle cx="386" cy="52" r="3.4"/><circle cx="426" cy="52" r="3.4"/><circle cx="466" cy="52" r="3.4"/><circle cx="506" cy="52" r="3.4"/></g><g class="spine-node live"><circle cx="546" cy="52" r="4.6"/></g><circle class="spine-ring" cx="546" cy="52" r="8"/>
+        </svg>
+        <div class="spine-label">coda · the room is the unit of repair</div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Noise Floor · Stimpunks</span>
+        <span class="spread-footer-right">14</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 15: COLOPHON ════ -->
+  <div class="spread" id="spread-15">
+    <div class="interior">
+      <div class="colophon">
+        <div>
+          <div class="colophon-top">
+            <span class="colophon-ls">L★S</span>
+            <p class="colophon-phrase">A floor is not a defect. It is the condition everything else gets designed around.</p>
+          </div>
+
+          <div class="series-list">
+            <div class="series-item"><span class="series-num">No. 40</span> Five Sigma — what a standard of evidence is for, and what it cannot be asked to do</div>
+            <div class="series-item"><span class="series-num">No. 43</span> The Elimination of Waste — a word borrowed from thermodynamics and pointed at people</div>
+            <div class="series-item"><span class="series-num">No. 50</span> The Sky Was Not Regular Enough — a standard cut loose from the thing it measured</div>
+            <div class="series-item current"><span class="series-num">No. 56</span> The Noise Floor — the limit nobody beats ← you are here</div>
+          </div>
+
+          <div class="reflect">
+            <div class="reflect-label">Reflection</div>
+            <p class="reflect-q">What in your day is a floor being described to you as a failure of effort?</p>
+            <p class="reflect-q">Which rooms in your life were built as though noise cost nothing — and who decided that?</p>
+            <p class="reflect-q">What have you spent months trying to eliminate that was, in fact, a reading?</p>
+            <p class="reflect-q">If you cannot filter your way to clarity, what would you change instead?</p>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="colophon-h" id="sources">Sources</h3>
+          <div class="colophon-body">
+            <p><strong>Read at the primary.</strong> H. Nyquist, "Thermal Agitation of Electric Charge in Conductors," <em>Physical Review</em> <strong>32</strong>, 110–113 (July 1928) — read in full. The quotations "a universal function of frequency, resistance and temperature and of these variables only", "no assumption has been made as to the nature of the two conductors…", the footnote "See preceding paper," and "The average power, transferred from each conductor to the line in the frequency interval dν … is therefore kTdν" are all verbatim from it, as is equation (1), E²dν = 4RkTdν. The thermodynamic argument on spread 4 is his, condensed. J. B. Johnson, "Thermal Agitation of Electricity in Conductors," <em>Phys. Rev.</em> <strong>32</strong>, 97–109 (1928), is cited for its page range and priority, <em>not</em> read in full — flagged as open in <code>FACTCHECK.md</code>.</p>
+            <p><strong>Shannon.</strong> C. E. Shannon, "A Mathematical Theory of Communication," <em>Bell System Technical Journal</em> <strong>27</strong> (1948). Theorem 17 and "It is not possible to transmit at a higher rate by any encoding system without a definite positive frequency of errors" are quoted verbatim from the paper. Shannon writes the capacity as C = W log (P+N)/N; the familiar B log₂(1 + S/N) is the same statement rearranged, and the page says so rather than quietly substituting one for the other.</p>
+            <p><strong>The measurement.</strong> A. A. Penzias &amp; R. W. Wilson, "A Measurement of Excess Antenna Temperature at 4080 Mc/s," <em>Astrophysical Journal</em> <strong>142</strong>, 419–421 (1 July 1965) — read in full. The 3.5 ± 1.0 K, the 2.3 K atmospheric and 0.8 K ohmic contributions, the aluminium taping test, the ten-position back-lobe measurement, and "isotropic, unpolarized, and free from seasonal variations (July, 1964-April, 1965)" are verbatim or directly from it. The companion is R. H. Dicke, P. J. E. Peebles, P. G. Roll &amp; D. T. Wilkinson, "Cosmic Black-Body Radiation," same volume, 414–419.</p>
+            <p><strong>The pigeons, corrected.</strong> R. W. Wilson, "The Cosmic Microwave Background Radiation," Nobel lecture, 8 December 1978 — read in full, and the source of "We evicted the pigeons and cleaned up their mess, but obtained only a small reduction in antenna temperature," of "A fundamental limit to the sensitivity of a radiometer is the fluctuation in the power level of this noise," and of the maser and helium-cooled reference-load details. <strong>The widely-repeated phrase "white dielectric material" does not appear in the lecture</strong>; Wilson wrote "a white material familiar to all city dwellers." The pigeons appear in the lecture, not in the 1965 paper. We flag both because the smoothed retelling is exactly what <a href="collection-how-we-got-here.html">this collection</a> exists to push back on.</p>
+            <p><strong>The rooms.</strong> Classroom figures are from the Acoustical Society of America's <em>Classroom Acoustics for Architects</em>, which quotes and explains ANSI/ASA S12.60 — 35 dBA background for core learning spaces, 0.6 s reverberation below 10,000 ft³, and the "signal to noise ratio of about 15 dB" wording, all quoted from that document. <strong>The standard itself is paywalled and we have not read it</strong>; the ASA's own explanatory publication is the nearest source we could reach, and that limitation is logged. Flicker: A. J. Wilkins, I. Nimmo-Smith, A. I. Slater &amp; L. Bedocs, "Fluorescent lighting, headaches and eyestrain," <em>Lighting Research &amp; Technology</em> <strong>21</strong>(1), 11–18 (1989) — the 43–49% and under-7% modulation figures and "more than halved" are from the abstract; the caveat that the effect is "attributable to a minority that is particularly affected" is Wilkins' own, from the 2010 IEEE PAR1789 review he co-authored. Offices: Jungsoo Kim &amp; Richard de Dear, "Workspace satisfaction: The privacy-communication trade-off in open-plan offices," <em>Journal of Environmental Psychology</em> (2013) — the 59 / 58 / 49 / 18% dissatisfaction figures and the finding that ease of interaction "was no higher in open-plan offices than in private office" are read from the full text.</p>
+            <p><strong>The endpoint.</strong> Anna Remington &amp; Jake Fairnie, "A sound advantage: increased auditory capacity in autism," <em>Cognition</em> <strong>166</strong>, 459–465 (2017). Read at the abstract, not the full paper, and marked <em>contested</em> on the page for that reason as well as on the merits. <strong>María del Carmen Rosas-Pérez</strong>, <em>Disabling Acoustics: Impact of daily life acoustic environments on neurodivergent, auraldivergent and noise sensitive people</em>, PhD thesis, Heriot-Watt University, June 2026 (supervisors Laurent Galbrun, Mary Stewart, Sarah Payne) — read from the thesis PDF. Twelve UK Autistic interviewees; a survey of 311 noise-sensitive people (59% neurodivergent, 44% reporting hearing differences); AcoustInA tested by 13 experts across 21 spaces. The filtering figures (87% overall; 96% of Autistic and 94% of neurodivergent respondents against 77% of neurotypical ones; <strong>no Autistic participant</strong> finding it easy; χ²=25.08, <em>p</em>&lt;.001, V=.29) are from her §5.2.5, and <strong>the page prints the caveat she makes structural — the whole sample was noise-sensitive, so this is a difference within sensitive people, not a population claim.</strong> "No habituation, but accumulation effect" is her §4.3.3 heading and finding. <em>Sensory gaslighting</em> is the term her thematic analysis develops for the dismissal her participants reported; Participant 10 is quoted as she prints it. <strong>Cited through her rather than from it:</strong> the exposure study underlying "you'll get used to it" is Formby et al. (2003) — the five non-noise-sensitive participants, two pure tones, two weeks — described here as she describes it, and <strong>we have not read that paper</strong>; likewise "sonic torture" is attributed by her to Botha et al. (2021) and is not quoted here as ours. <strong>TRACE</strong> is Hari B. Srinivasan, "The TRACE Framework: Improving Reporting of Sensory, Communication, and Contextual Factors in Autistic Physical-Health Research," 2026, doi:10.1177/25739581261477976 — read from the article; the quoted clause is its own. Both were surfaced by Ryan Boren from the Stimpunks Knowledge System inbox after the zine was drafted, and <strong>the acoustics thesis changed the argument rather than decorating it</strong>: it supplied the accumulation finding, which is where spread 12 now says the analogy to kTB <em>breaks</em> instead of holding. <strong>Sensory Trauma</strong> is the name given by <strong>Autism Wellbeing</strong>, in <em>Sensory Trauma: Autism, Sensory Difference and the Daily Experience of Fear</em>; the quoted phrases are from Stimpunks' <a href="https://stimpunks.org/glossary/sensory-trauma/">glossary entry</a> collecting it.</p>
+            <p><strong>What this zine does not claim.</strong> That thermal noise explains, models or predicts anything about human auditory experience. The transfer is marked <em>contested</em> on spread 12 and the closing analogy is marked <em>leap</em> on spread 13, and both spreads state the disanalogy in their own body text rather than leaving it to a note down here. The running spine is <strong>schematic</strong> — unlike <a href="the-sky-was-not-regular-enough-zine.html">No. 50's</a>, which plotted real data, it draws a floor rather than measuring one, and its geometry is generated rather than hand-drawn.</p>
+          </div>
+          <div class="colophon-footer">
+            <a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks Foundation</a> × <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a><br>
+            stimpunks.org · morerealms.com · starstuff.earth<br>
+            <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> · open edition · print freely
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Noise Floor · Stimpunks</span>
+        <span class="spread-footer-right">15</span>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /zine-shell -->
+
+<script>
+  let current = 1;
+  const total = 15;
+
+  function changePage(dir) {
+    const next = current + dir;
+    if (next < 1 || next > total) return;
+    document.getElementById('spread-' + current).classList.remove('active');
+    current = next;
+    document.getElementById('spread-' + current).classList.add('active');
+    document.getElementById('page-counter').textContent = current + ' / ' + total;
+    document.getElementById('prev-btn').disabled = current === 1;
+    document.getElementById('next-btn').disabled = current === total;
+    document.getElementById('prev-btn').classList.toggle('active', current > 1);
+    document.getElementById('next-btn').classList.toggle('active', current < total);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') changePage(1);
+    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   changePage(-1);
+  });
+
+  document.getElementById('prev-btn').disabled = true;
+  document.getElementById('next-btn').classList.add('active');
+</script>
+<script src="starstuff.js" defer></script>
+</body>
+</html>
