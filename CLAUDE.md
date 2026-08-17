@@ -99,8 +99,8 @@ The central phrase compresses through registers, each with a use:
   <a class="ss-nav-collection" href="collection-kin.html"><span class="ss-nav-collection-label">Collection</span> <span class="ss-nav-collection-name">Kin</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
   ```
 
-  All 101 members have one; the 13 collection pages, `index.html` and `search.html` do not (101 +
-  13 + 2 = the 116 pages in the repo root). **A new
+  All 102 members have one; the 13 collection pages, `index.html` and `search.html` do not (102 +
+  13 + 2 = the 117 pages in the repo root). **A new
   piece needs its badge and its collection page's card in the same pass** — the page→collection map
   is derived from `<a class="card" href="…">` on the collection pages, so a card that is missing
   makes the badge underivable. **`tools/check-markup.mjs` enforces all of this as of 2026-08-13**
@@ -162,7 +162,7 @@ on the 12th as the twelfth, at two members — see *the two-member floor* below.
 
 | Collection | Register | Members (zine numbers) |
 |------------|----------|------------------------|
-| **Star Stuff** | One settled, checkable fact, followed honestly, already contains the belonging claim | 1, 2, 6, 7, 8, 9, 10, 17, 19, 20, 21, 23, 24, 25, 44, 45, 46, 48, 51, 53, 54, 55 (22 — the largest collection by some way) |
+| **Star Stuff** | One settled, checkable fact, followed honestly, already contains the belonging claim | 1, 2, 6, 7, 8, 9, 10, 17, 19, 20, 21, 23, 24, 25, 44, 45, 46, 48, 51, 53, 54, 55, 57 (23 — the largest collection by some way) |
 | **Star Gazing** | Experimental, neuroqueer, wonder-forward — possibility, not proof | 11, 22, 26, 28, 29, 30 |
 | **More Than Human** | Umwelt, multispecies, ethodiversity; de-anthropocentrized | 5, 14, 15, 16, 27 |
 | **Kin** | Citation-dense natural history with a neurodivergence moral | 31, 32, 33, 34, 35, 36 |
@@ -268,7 +268,7 @@ never candidates for a register. Don't try to fold these into either table:
   everything else homework, and would become the one place the verify-everything standard could
   quietly relax. The fun is distributed; *Stars We Grew Up On* states this on the page.
 - The **prev/next chain follows collection order**: each collection page precedes its members, and
-  members run in ascending number within the collection. **100 pages** as of 2026-08-17,
+  members run in ascending number within the collection. **101 pages** as of 2026-08-17,
   `collection-start-here.html` → `shorthand-evolution.html`. **16 pages sit outside it, and every
   one is a decision:** `about.html` and `cosmic-connections.html`; **all of Notes &amp; Rationale** —
   `changelog.html`, `design.html`, `print-design.html`, `difference-first-frame.html` and
@@ -277,7 +277,7 @@ never candidates for a register. Don't try to fold these into either table:
   `hatchery.html`, `quillery.html` and `one-atom-of-justice-zine.html`, because a chain link would
   walk a reader into an egg by accident and stop it being one.
   (`index.html` and `search.html` are utility pages and were never in it, which makes
-  100 + 16 = 116.)
+  101 + 16 = 117.)
   **Don't trust that number — measure it**, and check `prev` and `next` agree in both directions;
   inserting a page means editing its two neighbours, and a one-sided edit leaves a chain that walks
   forward correctly and breaks going back:
@@ -428,7 +428,7 @@ tracking — the query never leaves the reader's browser.
 - **Duplicate presentations get stripped, not indexed twice.** `ls-playlist.html` lists every song
   as a `.lp-card` (with the note explaining it) *and* again as a flat `.lp-row` link list; the rows
   are in `CHROME_SEL`. The co-brand eyebrows (`.nav-brand`, `.hero-eyebrow`, `.masthead-eyebrow`,
-  `.cover-issue`) are stripped for the same reason — the pairing is on all 101 collection members, so as an
+  `.cover-issue`) are stripped for the same reason — the pairing is on all 102 collection members, so as an
   indexed string it carried no information. Colophons keep it, and that's correct: they hold the
   sources and credits, and `search.html` scores heading and repeat matches above one incidental hit.
 - `starstuff.js` opens a deep-linked field-guide entry (they render collapsed), so a result
@@ -542,7 +542,7 @@ that also makes the text unreadable.
   measured 4.16–4.24:1, under AA by a hair, while the same ink on bare paper is 15.9:1. Darkening
   the label in `starstuff.css` reaches every such shape at once; darkening each disc chases them
   one at a time and misses the next one.
-- **The one decorative exemption: `.cover-corner-num`.** The ghosted numeral on 55 zine covers
+- **The one decorative exemption: `.cover-corner-num`.** The ghosted numeral on 56 zine covers
   restates a number printed at full contrast two lines below it in `.cover-issue` ("Zine No. 30").
   It is a watermark, not a label. Reaching 3:1 would need opacity 0.44–0.57 against the 0.15–0.26
   it carries — **a different cover, not a fixed one.** So it is exempt under WCAG 1.4.3 *pure
@@ -555,7 +555,7 @@ that also makes the text unreadable.
     not decoration, so the claim has to be true in the markup before the tool will honour it. All
     40 numerals that existed then were marked in the same pass, which also stopped screen readers
     announcing a bare "30" before the title. **Every cover added since has carried it** — the count
-    is 55 now, and the day one ships without `aria-hidden` the exemption stops applying to it and
+    is 56 now, and the day one ships without `aria-hidden` the exemption stops applying to it and
     `check-contrast.mjs` will fail the page rather than wave it through.
 
 ## Markup checking (`tools/check-markup.mjs`)
@@ -578,7 +578,7 @@ node tools/check-markup.mjs --check               # exit non-zero on any failure
   by the time a DOM exists the parser has already repaired it, and
   `document.querySelectorAll('a a')` on the broken page returns **zero**. The evidence survives
   only in the source text. That also makes it the fastest gate here — no Chrome, no dependencies,
-  116 pages and 97,000 tags in about 0.25s.
+  117 pages and 98,000 tags in about 0.25s.
 - **Five faults, each one silent:** nested interactive elements (`<a>`/`<button>` inside each
   other — the parser closes the outer, so everything after falls out of its wrapper); a block
   element inside a `<p>` (auto-closes the paragraph part-way through); and **duplicate `id`**,
@@ -696,8 +696,8 @@ node tools/check-overlap.mjs --verbose           # every finding, not the first 
   kills the other guaranteed false positive for free: a `<span>` inside a `<p>` always overlaps its
   parent's box, but their text nodes are disjoint.
 - **Line boxes are not ink, and half-leading is space a neighbour may use.** `.cover-corner-label`
-  tucks under `.cover-corner-num` with `margin-top:-0.3rem` on all 55 covers and is perfectly
-  correct; trust the line box and all 55 fail. Each rect is shrunk to `INK_RATIO × font-size`
+  tucks under `.cover-corner-num` with `margin-top:-0.3rem` on all 56 covers and is perfectly
+  correct; trust the line box and all 56 fail. Each rect is shrunk to `INK_RATIO × font-size`
   centred in the line box, and `MIN_OVERLAP` then requires a real intersection **in both axes**,
   scaled to the smaller type — 2px is a catastrophe at 5.5px and nothing at 72px. The model is
   deliberately generous: it can only under-report, and **an under-reported collision still has a
@@ -724,7 +724,7 @@ node tools/check-overlap.mjs --verbose           # every finding, not the first 
   owns page fitting). One viewport, 1280×900, matching `check-contrast.mjs` — a collision that only
   happens at 380px is real and this will not see it. And **text over non-text**: a label crossing a
   line or an arrowhead is a legibility judgement about artwork, and still needs eyes at render size.
-- 116 pages in ~2 min. Chrome and Node 22+; local dev tool, Netlify does not run it.
+- 117 pages in ~2 min. Chrome and Node 22+; local dev tool, Netlify does not run it.
 
 ## Design system
 
@@ -828,7 +828,7 @@ or *Symbioses* (FG 6): keep the kinship, name the contested part, don't assert t
 ### The "masthead" trap (this project's signature phrase is LYDTYSS)
 
 **The site's signature phrase is *Love You Down To Your Star Stuff*** — **54 pages** carry it in
-full or as *LYDTYSS* (52 and 16 respectively, overlapping), and the **L★S** mark reaches 111. The
+full or as *LYDTYSS* (52 and 16 respectively, overlapping), and the **L★S** mark reaches 112. The
 other registers are rarer and deliberately so: *LYSS* on 8 pages, *LUSS* on 7. Measure before
 restating — `grep -lEi 'Love [Yy]ou [Dd]own [Tt]o [Yy]our [Ss]tar [Ss]tuff|LYDTYSS' *.html | wc -l`.
 **The masthead tagline on `index.html` is *Cosmic Connections*.**
