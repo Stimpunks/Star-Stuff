@@ -131,6 +131,20 @@ The central phrase compresses through registers, each with a use:
   `CHROME_SEL` (its names are already indexed as the headings they point at) and hidden in
   `@media print` (fragments mean nothing on paper, and the hardcoded accents would land at 1.6:1
   on white).
+- **An index card is three elements, and the disclosure is a *sibling* of the link, never a child.**
+  `.card-wrap` draws the box and the accent rule (and carries `--card-color`); `<a class="card">` sits inside it
+  with the number, title, series, **`.card-tagline`**, `.card-desc` and footer; the `<details class="card-details">`
+  follows the anchor as its sibling. **`<a>` may not contain interactive content and `<summary>` is interactive**,
+  so a toggle inside the anchor is the `collection-print.html` nested-anchor fault in a new costume — and
+  **`check-markup.mjs` passes it clean, exit 0** (measured 2026-08-18: the nesting check matches `<a>`/`<button>`
+  by name, and `details` only counts as a block element, which fires only inside a `<p>`). Nothing gates this;
+  it is on you.
+- **The tagline is the piece's own line, not a line written for the index.** Lift it verbatim from the page's
+  `.cover-subtitle` — 63 of the 97 cards had one. The other 34 (every field guide, playlist and broadside) have
+  no subtitle to lift, so theirs is drawn from what the page already argues. **A `Details` that merely restates
+  the tagline and summary is not a Details** — after the 2026-08-18 split, eleven cards had disclosures adding
+  under ten new words and four added *zero*; they were rewritten from their pages rather than deleted. Re-derive
+  with the word-set difference between face and body before adding a card, not by eye.
 - Paged zines: include `<script src="starstuff.js"></script>`, expose a global `changePage(dir)`,
   and structure spreads as `.spread` (with a `.spread.active`), each with a `.spread-footer`
   containing a `.spread-footer-right` page counter. IDs run `spread-1..N` in document order.
@@ -425,6 +439,12 @@ tracking — the query never leaves the reader's browser.
   record count drops is printed; a page dropping to **zero** exits non-zero and refuses to
   overwrite. Deleting content legitimately trips this, which is what `--force` is for.
 - **Netlify does not run it.** Still no build step; the script is a local dev tool.
+- **A markup change is an index change, and the run will not call it an error.** The 2026-08-18 card split moved
+  each card's prose into a sibling `<details>`, outside the `.card` the generic chunker was matching —
+  **`index.html` went 111 records to 14** while the per-page line printed as normally as any other. Only the
+  *fewer records than committed* check made a noise. The chunk selector now lists **`.card-wrap` ahead of `.card`**,
+  and the ancestor-wins rule gives one record per card covering tagline, summary and full description together.
+  **After any structural edit, read the per-page record count, not just the exit code.**
 - **Granularity is the point.** One record per zine spread (`#spread-N`) and per field-guide
   entry (`#entry-slug`), so a result lands on the passage rather than the top of a long page.
   Pages that are a flat run of headings are chunked per heading, falling back to a
@@ -815,6 +835,14 @@ node tools/check-overlap.mjs --verbose           # every finding, not the first 
   print block now sets `-webkit-text-fill-color` alongside `color` in both blunt rules, so a new
   page gets it free; **don't add page-specific selectors for this** — the block's own comment argues
   for chasing the mechanism instead, and this is why.
+- **A closed `<details>` is the third way to print blank, and it needs a rule *and* a script.** Collapsed content
+  does not print, so the front page would have gone to paper with 97 cards and no descriptions; the token inversion
+  cannot reach it, because this is not a colour. How a closed disclosure hides its content has moved across engine
+  versions — `display`, then `content-visibility` on `::details-content` — so **a CSS-only answer is a bet on which
+  engine the reader has**. `index.html` carries both an `@media print` rule and a `beforeprint`/`afterprint` handler
+  that opens every disclosure and restores each one exactly as the reader left it. Verify under print emulation
+  rather than by reading the stylesheet: the check is that every `.card-details-body` lays out, in `#222222`, with
+  the summaries hidden.
 - **`check-contrast.mjs` cannot see that fault, and says so.** Gradient-clipped text has no single
   pair of colors to compare, so it is listed as **"unmeasured — check by eye"** rather than guessed
   at. That list ran 196 entries and was being read as a footnote. *A tool reporting "I can't check

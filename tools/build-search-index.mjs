@@ -218,9 +218,16 @@ const EXTRACT = String.raw`(() => {
     document.querySelector('main, .doc-shell, .wrap, .stimpunks-manifesto, .sp-wrap') ||
     document.body;
   /* .lp-card, not .lp-row — see the CHROME_SEL note. Matching the row indexed 26
-     records averaging 50 characters and left 84% of the playlist unfindable. */
+     records averaging 50 characters and left 84% of the playlist unfindable.
+
+     .card-wrap BEFORE .card, and the ancestor-wins rule below is what makes it
+     matter: an index card is now a wrapper holding the anchor AND the <details>
+     that carries the full description. Chunk on .card alone and every card's
+     real prose falls outside its own record — index.html went 111 records to 14
+     the first time this ran after the split, which is the front page becoming
+     unfindable while the run still prints a tidy per-page line. */
   const chunks = [
-    ...main.querySelectorAll('section, article, .card, .entry, .sp-section, .scale, .lp-card'),
+    ...main.querySelectorAll('section, article, .card-wrap, .card, .entry, .sp-section, .scale, .lp-card'),
   ];
   const seen = new Set();
   const kept = [];
