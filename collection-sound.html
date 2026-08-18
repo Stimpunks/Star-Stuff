@@ -137,19 +137,46 @@
 
   .artifact-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
 
-  .card { background: var(--card); border-radius: 8px; border: 1px solid var(--border); padding: 1.25rem; position: relative; text-decoration: none; color: inherit; display: flex; flex-direction: column; transition: box-shadow 0.2s ease, background 0.2s ease, transform 0.2s ease; }
-  .card:hover { background: #131330; box-shadow: 0 4px 28px rgba(34,211,238,0.14); transform: translateY(-2px); }
-  .card::before { content: ''; position: absolute; top: 8px; left: 0; width: 3px; height: calc(100% - 16px); background: var(--card-color, var(--cyan)); border-radius: 0 2px 2px 0; }
+  /* A card is three parts: a wrapper that draws the box, an anchor that is the
+     link, and a <details> that holds the full description. The disclosure is a
+     SIBLING of the anchor and must stay one — <a> may not contain interactive
+     content, and check-markup.mjs cannot see that fault. */
+  .card-wrap { background: var(--card); border-radius: 8px; border: 1px solid var(--border); position: relative; display: flex; flex-direction: column; transition: box-shadow 0.2s ease, background 0.2s ease, transform 0.2s ease; }
+  .card { padding: 1.25rem; text-decoration: none; color: inherit; display: flex; flex-direction: column; flex: 1; }
+  .card-wrap:has(> .card:hover) { background: #131330; box-shadow: 0 4px 28px rgba(34,211,238,0.14); transform: translateY(-2px); }
+  .card-wrap::before { content: ''; position: absolute; top: 8px; left: 0; width: 3px; height: calc(100% - 16px); background: var(--card-color, var(--cyan)); border-radius: 0 2px 2px 0; }
 
   .card-number { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dim); margin-bottom: 0.5rem; }
   .card-title { font-size: 1.25rem; font-weight: 600; color: var(--star-white); line-height: 1.2; margin-bottom: 0.4rem; }
   .card-series { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--card-color, var(--cyan)); margin-bottom: 0.75rem; }
   .card-moment { font-family: 'Space Mono', monospace; font-size: 0.68rem; line-height: 1.7; color: var(--star-white); margin-bottom: 0.7rem; padding-left: 0.7rem; border-left: 2px solid var(--card-color, var(--cyan)); }
+  .card-tagline { font-size: 0.9375rem; font-style: italic; color: var(--star-white); line-height: 1.55; margin-bottom: 0.6rem; }
   .card-desc { font-size: 0.875rem; color: var(--stardust); line-height: 1.65; flex: 1; margin-bottom: 1.25rem; }
   .card-footer { display: flex; justify-content: space-between; align-items: center; padding-top: 0.9rem; border-top: 1px solid var(--border); }
   .card-tag { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dim); background: rgba(34,211,238,0.08); border: 1px solid var(--border); border-radius: 4px; padding: 0.2rem 0.6rem; }
   .card-arrow { font-size: 0.875rem; color: var(--card-color, var(--cyan)); font-weight: 700; transition: transform 0.2s ease; }
-  .card:hover .card-arrow { transform: translateX(3px); }
+  .card-wrap:has(> .card:hover) .card-arrow { transform: translateX(3px); }
+
+  .card-details { border-top: 1px solid var(--border); }
+  .card-details > summary { cursor: pointer; list-style: none; padding: 0.7rem 1.25rem; font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dim); display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; }
+  .card-details > summary::-webkit-details-marker { display: none; }
+  .card-details > summary::after { content: '\25be'; font-size: 0.75rem; color: var(--card-color, var(--cyan)); transition: transform 0.2s ease; }
+  .card-details[open] > summary::after { transform: rotate(180deg); }
+  .card-details > summary:hover { color: var(--star-white); }
+  .card-details > summary:focus-visible { outline: 2px solid var(--card-color, var(--cyan)); outline-offset: -2px; border-radius: 0 0 7px 7px; }
+  .card-details-body { padding: 0 1.25rem 1.25rem; font-size: 0.875rem; color: var(--stardust); line-height: 1.65; }
+  .card-details-body p { margin: 0; }
+
+  /* A closed <details> prints as nothing, and the token inversion cannot reach it
+     because this is not a colour. How a closed disclosure hides its content has
+     moved across engine versions, so this pairs with the beforeprint handler at
+     the foot of the page rather than betting on one engine. */
+  @media print {
+    .card-details > summary { display: none !important; }
+    .card-details > .card-details-body { display: block !important; }
+    .card-details::details-content { content-visibility: visible !important; block-size: auto !important; }
+    .card-wrap { break-inside: avoid; }
+  }
 
   .colophon-footer { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--dim2); line-height: 2.2; margin-top: 3rem; padding-top: 1.4rem; border-top: 1px solid rgba(34,211,238,0.14); }
   .colophon-footer a { color: inherit; }
@@ -198,41 +225,69 @@
 
   <div class="artifact-grid">
 
-    <a class="card" href="ls-playlist.html" style="--card-color: #fbbf24;">
-      <div class="card-number">Rack &middot; One theme</div>
-      <div class="card-title">L&#9733;S Playlist</div>
-      <div class="card-series">Sound &middot; 26 tracks</div>
-      <p class="card-moment">The shape: many artists, one idea.</p>
-      <p class="card-desc">Songs in conversation with <em>Love You Down To Your Star Stuff</em> — cosmic, reclamatory, tender, and true. Bowie's whole career read as one long LYDTYSS, plus Joni Mitchell's stardust, the Beatles beamed into deep space, Stevie Wonder's <em>Saturn</em>, Eno's Moon-landing ambient. The oldest rack here, and the one that behaves most like a mixtape: no essay, just the cards and the reasons.</p>
-      <div class="card-footer"><span class="card-tag">26 tracks</span><span class="card-arrow">&rarr;</span></div>
-    </a>
+    <div class="card-wrap" style="--card-color: #fbbf24;">
+      <a class="card" href="ls-playlist.html">
+        <div class="card-number">Rack &middot; One theme</div>
+        <div class="card-title">L&#9733;S Playlist</div>
+        <div class="card-series">Sound &middot; 26 tracks</div>
+        <p class="card-moment">The shape: many artists, one idea.</p>
+        <p class="card-tagline">Songs in conversation with <em>Love You Down To Your Star Stuff</em> — cosmic, reclamatory, tender, and true.</p>
+        <p class="card-desc">Bowie's whole career, Joni Mitchell, the Beatles, Stevie Wonder, and more, with YouTube embeds and Spotify links.</p>
+        <div class="card-footer"><span class="card-tag">26 tracks</span><span class="card-arrow">&rarr;</span></div>
+      </a>
+      <details class="card-details">
+        <summary>Details</summary>
+        <div class="card-details-body"><p>It opens on Bowie, because the whole career is LYDTYSS: <em>Space Oddity</em> (1969), alienation and the cosmos as both loss and liberation; <em>Starman</em> (1972), an alien who loves you, waiting in the sky, a message of hope for the kids who don't fit; <em>Ziggy Stardust</em>, stardust as persona and as a name you carry; and ★ (<em>Blackstar</em>, 2016), recorded while dying. Then Joni Mitchell, the Beatles, Stevie Wonder and the rest — cosmic, reclamatory, tender, and true. Every card says why the song is here. YouTube embeds and Spotify links throughout, and a long-form Bowie companion of its own.</p></div>
+      </details>
+    </div>
 
-    <a class="card" href="joyful-sound-playlist.html" style="--card-color: #f472b6;">
-      <div class="card-number">Rack &middot; One scene</div>
-      <div class="card-title">It Take a Joyful Sound</div>
-      <div class="card-series">Sound &middot; 36 tracks + essay</div>
-      <p class="card-moment">The shape: a subculture, and the argument it makes about doors.</p>
-      <p class="card-desc">The punk rack, drawn from the Stimpunks PSA. Marley naming the punky reggae party in 1977 and a hundred thousand people marching through National Front territory the following April; then the physics — sound needs matter, a pure tone has almost no identity, and distortion is <em>difference deliberately added</em>. Ends where punk pages usually don't: punk was never automatically inclusive, and a loud room is itself an access barrier.</p>
-      <div class="card-footer"><span class="card-tag">36 + essay</span><span class="card-arrow">&rarr;</span></div>
-    </a>
+    <div class="card-wrap" style="--card-color: #f472b6;">
+      <a class="card" href="joyful-sound-playlist.html">
+        <div class="card-number">Rack &middot; One scene</div>
+        <div class="card-title">It Take a Joyful Sound</div>
+        <div class="card-series">Sound &middot; 36 tracks + essay</div>
+        <p class="card-moment">The shape: a subculture, and the argument it makes about doors.</p>
+        <p class="card-tagline">The loud companion to the L★S Playlist, and the one that argues first.</p>
+        <p class="card-desc">In July 1977 Bob Marley recorded <em>Punky Reggae Party</em> with Lee Perry — a guest list for an alliance that did not exist until it was read out.</p>
+        <div class="card-footer"><span class="card-tag">36 + essay</span><span class="card-arrow">&rarr;</span></div>
+      </a>
+      <details class="card-details">
+        <summary>Details</summary>
+        <div class="card-details-body"><p>The loud companion to the L★S Playlist, and the one that argues first. In July 1977 Bob Marley recorded <em>Punky Reggae Party</em> with Lee Perry after hearing The Clash cover a Jamaican record — a guest list for an alliance that did not exist until it was read out, and the following April roughly <strong>100,000 people</strong> marched six miles through National Front territory to hear The Clash, Steel Pulse and X-Ray Spex on one Rock Against Racism bill. Naming a thing helped it happen, which is what <em>neurodiversity</em> did too. Then the physics, because the physics is unreasonably good: <strong>sound needs matter</strong> — in a vacuum there is none at all — so every note anyone has heard was carried by nitrogen and oxygen forged in stars. A pure sine wave has a pitch and almost no identity; <strong>Helmholtz worked out in 1863</strong> that what tells you <em>who</em> is playing lives entirely in the overtones above the note. And distortion, the sound the genre is named by, is a nonlinearity adding harmonics that were never sent in — <strong>difference, deliberately added</strong>. It reaches you at the skeleton, too: you hear your own voice partly through skull bone, which is why recordings sound wrong. Thirty-six songs from the Stimpunks PSA — Bikini Kill, Dream Nails, Kae Tempest, Le Tigre, The Linda Lindas, Gossip, pink suits — with the door test punk actually contributed, and the honest part: <em>a loud room is itself an access barrier</em>, and acceptance is not any scene's nature but a practice re-won in every room.</p></div>
+      </details>
+    </div>
 
-    <a class="card" href="aurora-playlist.html" style="--card-color: #4ade80;">
-      <div class="card-number">Rack &middot; One artist</div>
-      <div class="card-title">Stimming and Belonging with AURORA</div>
-      <div class="card-series">Sound &middot; 28 performances + essay</div>
-      <p class="card-moment">The shape: one body of work, and one body.</p>
-      <p class="card-desc">Weighted toward live footage, because the argument is the body — it opens on AURORA describing the first time she saw herself perform on video, being shocked, and keeping it anyway. Then the light she shares a name with: the aurora's green line is a <em>forbidden</em> transition that waits 0.7 seconds and only completes where nothing crowds it. Companion to <em>Warriors and Weirdos</em>, Zine No. 13.</p>
-      <div class="card-footer"><span class="card-tag">28 + essay</span><span class="card-arrow">&rarr;</span></div>
-    </a>
+    <div class="card-wrap" style="--card-color: #4ade80;">
+      <a class="card" href="aurora-playlist.html">
+        <div class="card-number">Rack &middot; One artist</div>
+        <div class="card-title">Stimming and Belonging with AURORA</div>
+        <div class="card-series">Sound &middot; 28 performances + essay</div>
+        <p class="card-moment">The shape: one body of work, and one body.</p>
+        <p class="card-tagline">Weighted toward live performances, because the argument is the body.</p>
+        <p class="card-desc">The companion rack to <em>Warriors and Weirdos</em> (No. 13). It opens on AURORA's own account of seeing herself on video for the first time.</p>
+        <div class="card-footer"><span class="card-tag">28 + essay</span><span class="card-arrow">&rarr;</span></div>
+      </a>
+      <details class="card-details">
+        <summary>Details</summary>
+        <div class="card-details-body"><p>The companion rack to <em>Warriors and Weirdos</em> (No. 13), weighted toward <strong>live</strong> performances because the argument is the body. It opens on AURORA's own account of seeing herself on video for the first time — she was shocked, said she couldn't do anything about it, and kept it: <em>I have to use everything I got.</em> Then the physics of the light she shares a name with, which turns out to be about exactly this. The solar wind delivers energy and nothing else; <strong>the colour is the atom's own</strong> — that famous green is oxygen's 557.7 nm line. And that line is a <strong>forbidden transition</strong>: it breaks the electric-dipole selection rules, so instead of the nanoseconds an allowed transition takes, the atom waits about <strong>0.7 seconds</strong> before letting go, and the red line waits <strong>110</strong>. Which is why altitude decides the colour — lower down the air is crowded and a collision takes the energy first. <em>The most famous light in the sky is a slow release the rules call forbidden, and it only completes where nothing crowds it.</em> Twenty-eight performances across six movements, plus stim-listening (Jim Irion's coinage) and the reason Ryan's own playlist is nearly all live footage. The page is careful about whose word is whose: <strong>she calls it emotion; we are the ones calling it stimming</strong>, and it says so rather than putting the term in her mouth. The sharpest refusal is saved for last — her movement is celebrated because it is on a stage and lovely, while <strong>the same body doing the same thing in a classroom gets a behaviour plan</strong>.</p></div>
+      </details>
+    </div>
 
-    <a class="card" href="bowie-playlist.html" style="--card-color: #a78bfa;">
-      <div class="card-number">Rack &middot; One artist</div>
-      <div class="card-title">Nobody Got His Eyes Right</div>
-      <div class="card-series">Sound &middot; 31 tracks + essay</div>
-      <p class="card-moment">The shape: one career, chronologically, and two corrections.</p>
-      <p class="card-desc">Bowie from <em>Space Oddity</em> to <em>I Can't Give Everything Away</em>, arranged as an arc rather than by theme. The essay starts from the two best-known facts about him that are wrong: he had <strong>anisocoria</strong>, not different-coloured eyes — a paralysed iris from a punch in 1962 — and the constellation named for him is an asterism, not a constellation. Both errors round something real up into something more elegant, which is <em>Too Good to Check</em> with a soundtrack. Companion to <em>Turn and Face the Strange</em>, Zine No. 12.</p>
-      <div class="card-footer"><span class="card-tag">31 + essay</span><span class="card-arrow">&rarr;</span></div>
-    </a>
+    <div class="card-wrap" style="--card-color: #a78bfa;">
+      <a class="card" href="bowie-playlist.html">
+        <div class="card-number">Rack &middot; One artist</div>
+        <div class="card-title">Nobody Got His Eyes Right</div>
+        <div class="card-series">Sound &middot; 31 tracks + essay</div>
+        <p class="card-moment">The shape: one career, chronologically, and two corrections.</p>
+        <p class="card-tagline">The most-looked-at face in pop, and the one fact everybody repeats about it.</p>
+        <p class="card-desc">Thirty-one songs from <em>Space Oddity</em> to <em>I Can't Give Everything Away</em> — the listening companion to <em>Turn and Face the Strange</em> (No. 12).</p>
+        <div class="card-footer"><span class="card-tag">31 + essay</span><span class="card-arrow">&rarr;</span></div>
+      </a>
+      <details class="card-details">
+        <summary>Details</summary>
+        <div class="card-details-body"><p>The long version of the five Bowie cards that open the L★S Playlist, and the listening companion to <em>Turn and Face the Strange</em> (No. 12) — thirty-one songs from <em>Space Oddity</em> to <em>I Can't Give Everything Away</em>. It starts from the most-looked-at face in pop and the one fact everybody repeats about it, which is wrong. <strong>He did not have different-coloured eyes.</strong> Both irises were the same colour; in February 1962 a schoolfriend punched him and a fingernail paralysed the muscles that contract the left iris, so that pupil could never close again — <strong>anisocoria, not heterochromia</strong>. A pupil stuck wide is a hole full of shadow, which is why the eye reads darker in exactly the bright light where a working pupil contracts, which is to say under every stage light and camera flash he ever stood in. That changes what kind of thing the famous feature <em>was</em>: heterochromia is a variation you're born with; this was an injury, reportedly with lasting effects on his depth perception. <em>Glamour is not an accommodation.</em> Then the second thing everyone knows — the constellation named for him in 2016 <strong>is not a constellation</strong>; there are 88, the list was fixed in the 1920s, and the observatory that made it said plainly it was an invented asterism. <strong>Both errors lean the same way:</strong> they round a damaged iris and a small tribute up into something more elegant, and the tidier version travels further. Which is <em>Too Good to Check</em> with a soundtrack — and it has a cost, because while the myth is that beautiful nobody asks what a fixed pupil is like under a follow spot.</p></div>
+      </details>
+    </div>
 
   </div>
 
@@ -300,5 +355,22 @@
 
 </div><!-- /doc-shell -->
 
+<script>
+/* Belt and braces for the paper copy: the @media print rule opens the card
+   disclosures with CSS, and this opens them for real, then puts each one back
+   exactly as the reader left it. Two mechanisms because a closed <details> has
+   hidden its content three different ways across engine versions, and the
+   failure mode is silent — a page that prints its cards without their
+   descriptions looks like a design choice, not a bug. */
+(function () {
+  var cards = function () { return document.querySelectorAll('.card-details'); };
+  addEventListener('beforeprint', function () {
+    cards().forEach(function (d) { d.dataset.wasOpen = d.open ? '1' : ''; d.open = true; });
+  });
+  addEventListener('afterprint', function () {
+    cards().forEach(function (d) { d.open = d.dataset.wasOpen === '1'; delete d.dataset.wasOpen; });
+  });
+})();
+</script>
 </body>
 </html>

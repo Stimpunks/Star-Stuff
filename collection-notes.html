@@ -118,19 +118,46 @@
 
   .artifact-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
 
-  .card { background: var(--card); border-radius: 8px; border: 1px solid var(--border); padding: 1.25rem; position: relative; text-decoration: none; color: inherit; display: flex; flex-direction: column; transition: box-shadow 0.2s ease, background 0.2s ease, transform 0.2s ease; }
-  .card:hover { background: #131330; box-shadow: 0 4px 28px rgba(34,211,238,0.14); transform: translateY(-2px); }
-  .card::before { content: ''; position: absolute; top: 8px; left: 0; width: 3px; height: calc(100% - 16px); background: var(--card-color, var(--accent)); border-radius: 0 2px 2px 0; }
+  /* A card is three parts: a wrapper that draws the box, an anchor that is the
+     link, and a <details> that holds the full description. The disclosure is a
+     SIBLING of the anchor and must stay one — <a> may not contain interactive
+     content, and check-markup.mjs cannot see that fault. */
+  .card-wrap { background: var(--card); border-radius: 8px; border: 1px solid var(--border); position: relative; display: flex; flex-direction: column; transition: box-shadow 0.2s ease, background 0.2s ease, transform 0.2s ease; }
+  .card { padding: 1.25rem; text-decoration: none; color: inherit; display: flex; flex-direction: column; flex: 1; }
+  .card-wrap:has(> .card:hover) { background: #131330; box-shadow: 0 4px 28px rgba(34,211,238,0.14); transform: translateY(-2px); }
+  .card-wrap::before { content: ''; position: absolute; top: 8px; left: 0; width: 3px; height: calc(100% - 16px); background: var(--card-color, var(--accent)); border-radius: 0 2px 2px 0; }
 
   .card-number { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dim); margin-bottom: 0.5rem; }
   .card-title { font-size: 1.25rem; font-weight: 600; color: var(--star-white); line-height: 1.2; margin-bottom: 0.4rem; }
   .card-series { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--card-color, var(--accent)); margin-bottom: 0.75rem; }
   .card-moment { font-family: 'Space Mono', monospace; font-size: 0.68rem; line-height: 1.7; color: var(--star-white); margin-bottom: 0.7rem; padding-left: 0.7rem; border-left: 2px solid var(--card-color, var(--accent)); }
+  .card-tagline { font-size: 0.9375rem; font-style: italic; color: var(--star-white); line-height: 1.55; margin-bottom: 0.6rem; }
   .card-desc { font-size: 0.875rem; color: var(--stardust); line-height: 1.65; flex: 1; margin-bottom: 1.25rem; }
   .card-footer { display: flex; justify-content: space-between; align-items: center; padding-top: 0.9rem; border-top: 1px solid var(--border); }
   .card-tag { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dim); background: rgba(34,211,238,0.08); border: 1px solid var(--border); border-radius: 4px; padding: 0.2rem 0.6rem; }
   .card-arrow { font-size: 0.875rem; color: var(--card-color, var(--accent)); font-weight: 700; transition: transform 0.2s ease; }
-  .card:hover .card-arrow { transform: translateX(3px); }
+  .card-wrap:has(> .card:hover) .card-arrow { transform: translateX(3px); }
+
+  .card-details { border-top: 1px solid var(--border); }
+  .card-details > summary { cursor: pointer; list-style: none; padding: 0.7rem 1.25rem; font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dim); display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; }
+  .card-details > summary::-webkit-details-marker { display: none; }
+  .card-details > summary::after { content: '\25be'; font-size: 0.75rem; color: var(--card-color, var(--accent)); transition: transform 0.2s ease; }
+  .card-details[open] > summary::after { transform: rotate(180deg); }
+  .card-details > summary:hover { color: var(--star-white); }
+  .card-details > summary:focus-visible { outline: 2px solid var(--card-color, var(--accent)); outline-offset: -2px; border-radius: 0 0 7px 7px; }
+  .card-details-body { padding: 0 1.25rem 1.25rem; font-size: 0.875rem; color: var(--stardust); line-height: 1.65; }
+  .card-details-body p { margin: 0; }
+
+  /* A closed <details> prints as nothing, and the token inversion cannot reach it
+     because this is not a colour. How a closed disclosure hides its content has
+     moved across engine versions, so this pairs with the beforeprint handler at
+     the foot of the page rather than betting on one engine. */
+  @media print {
+    .card-details > summary { display: none !important; }
+    .card-details > .card-details-body { display: block !important; }
+    .card-details::details-content { content-visibility: visible !important; block-size: auto !important; }
+    .card-wrap { break-inside: avoid; }
+  }
 
   .colophon-footer { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--dim2); line-height: 2.2; margin-top: 3rem; padding-top: 1.4rem; border-top: 1px solid rgba(34,211,238,0.14); }
   .colophon-footer a { color: inherit; }
@@ -186,41 +213,69 @@
 
   <div class="artifact-grid">
 
-    <a class="card" href="changelog.html" style="--card-color: #f472b6;">
-      <div class="card-number">Changelog</div>
-      <div class="card-title">What Changed, and When</div>
-      <div class="card-series">Notes &middot; the public error log</div>
-      <p class="card-moment">Publishing our own errors is the method, not an embarrassment.</p>
-      <p class="card-desc">Every zine and field guide as it was added, every substantial revision, and every fact-check and attribution audit — <strong>including the errors we found in our own work and exactly how we fixed them</strong>. A Martin Luther King Jr. line we credited to Baldwin. A paraphrase dressed as a Sagan quote. A forest-wide fungal network asserted as settled because it rhymed so well with mutual aid. Corrections are named plainly, with who caught them.</p>
-      <div class="card-footer"><span class="card-tag">Dated, newest first</span><span class="card-arrow">&rarr;</span></div>
-    </a>
+    <div class="card-wrap" style="--card-color: #f472b6;">
+      <a class="card" href="changelog.html">
+        <div class="card-number">Changelog</div>
+        <div class="card-title">What Changed, and When</div>
+        <div class="card-series">Notes &middot; the public error log</div>
+        <p class="card-moment">Publishing our own errors is the method, not an embarrassment.</p>
+        <p class="card-tagline">These are living documents, and a living document should show its work.</p>
+        <p class="card-desc">Every piece as it arrived, every substantial revision, and every fact-check — including the errors we found in our own work and how we fixed them.</p>
+        <div class="card-footer"><span class="card-tag">Dated, newest first</span><span class="card-arrow">&rarr;</span></div>
+      </a>
+      <details class="card-details">
+        <summary>Details</summary>
+        <div class="card-details-body"><p>The public half of the fact-check ledger, backfilled from the collection's full commit history and kept up from there. It records three kinds of change and no others: a piece added, a piece substantially revised, and a fact-check or attribution audit — typo and styling passes do not earn an entry. <strong>The corrections are the point of the page rather than something buried in it</strong>: a paraphrase we had dressed as a Sagan quote, a line credited to Baldwin that is Dr. King's, a forest-wide fungal network asserted where the literature is contested, a coinage returned to its author. Each names what we got wrong, what is right, and who caught it. Newest date first, every entry tagged <em>New</em>, <em>Revised</em>, <em>Fact-check</em> or <em>Site</em>.</p></div>
+      </details>
+    </div>
 
-    <a class="card" href="design.html" style="--card-color: #a78bfa;">
-      <div class="card-number">Design</div>
-      <div class="card-title">The Design System</div>
-      <div class="card-series">Notes &middot; how the screen works</div>
-      <p class="card-moment">Accessibility-first, printable, and credited.</p>
-      <p class="card-desc">Atkinson Hyperlegible, a five-accent palette on a violet-cast near-black, full-opacity body text at <strong>18.84:1</strong>, and a starfield in pure CSS. Includes the lineage done honestly: what the palette borrowed from Solarized is the <em>method</em> — a named accent set at near-uniform lightness on a non-black ground — and none of the actual values, which are Tailwind's 400 ramp. Our contrast target is the opposite of Solarized's.</p>
-      <div class="card-footer"><span class="card-tag">Tokens &amp; rationale</span><span class="card-arrow">&rarr;</span></div>
-    </a>
+    <div class="card-wrap" style="--card-color: #a78bfa;">
+      <a class="card" href="design.html">
+        <div class="card-number">Design</div>
+        <div class="card-title">The Design System</div>
+        <div class="card-series">Notes &middot; how the screen works</div>
+        <p class="card-moment">Accessibility-first, printable, and credited.</p>
+        <p class="card-tagline">The visual language of this collection is itself an argument about access.</p>
+        <p class="card-desc">One typeface chosen for legibility, five accents held at near-uniform lightness, and body text that never fades — with its numbers and its receipts.</p>
+        <div class="card-footer"><span class="card-tag">Tokens &amp; rationale</span><span class="card-arrow">&rarr;</span></div>
+      </a>
+      <details class="card-details">
+        <summary>Details</summary>
+        <div class="card-details-body"><p>Six sections: <em>Typeface</em>, <em>Palette</em>, <em>Palette lineage</em>, <em>Principles</em>, <em>Print</em> and <em>Shared assets</em>. Atkinson Hyperlegible, chosen because it was drawn for readers the standard face failed. Five accents held within sixteen points of each other in lightness, so no one collection outshouts another. Body text at <strong>18.84:1</strong>, because full opacity is the house rule and a faded grey is a hierarchy decision made at the reader's expense. The lineage section is the honest one: the palette began as a Solarized variant and <em>no Solarized value remains</em>, so Solarized is cited for the method and never for the colours. Every artifact here is a single self-contained HTML file with no dependency beyond a web font.</p></div>
+      </details>
+    </div>
 
-    <a class="card" href="print-design.html" style="--card-color: #fbbf24;">
-      <div class="card-number">Design</div>
-      <div class="card-title">Designing for Paper</div>
-      <div class="card-series">Notes &middot; how the paper works</div>
-      <p class="card-moment">Every number on the page, and why it is that number.</p>
-      <p class="card-desc"><strong>190 × 259 mm</strong> as the intersection of A4 and US Letter, so one sheet prints uncropped on either. Nine-millimetre margins rather than ten, because at ten the Letter box measures 259.4 mm against a 259 mm sheet and that sub-pixel overflow produced a silent third page. Ink on white in both media, because browsers omit background graphics by default. Borders instead of backgrounds; two spot inks darkened until they clear AA on white. <em>And a section on what the tools cannot see.</em></p>
-      <div class="card-footer"><span class="card-tag">Measured, not assumed</span><span class="card-arrow">&rarr;</span></div>
-    </a>
+    <div class="card-wrap" style="--card-color: #fbbf24;">
+      <a class="card" href="print-design.html">
+        <div class="card-number">Design</div>
+        <div class="card-title">Designing for Paper</div>
+        <div class="card-series">Notes &middot; how the paper works</div>
+        <p class="card-moment">Every number on the page, and why it is that number.</p>
+        <p class="card-tagline">Every number here was arrived at by printing something and finding out it was wrong.</p>
+        <p class="card-desc">The working behind the print rack — the spec, the inks, the gates, and the faults that no gate can see.</p>
+        <div class="card-footer"><span class="card-tag">Measured, not assumed</span><span class="card-arrow">&rarr;</span></div>
+      </a>
+      <details class="card-details">
+        <summary>Details</summary>
+        <div class="card-details-body"><p>The working behind the print rack, where every number was arrived at by printing something and finding out it was wrong: 190 × 259 mm as the intersection of A4 and US Letter, 9 mm margins rather than 10 because 0.4 mm of slack tipped a sheet onto a third page, ink on white in both media because browsers omit background graphics, borders instead of backgrounds, and five house hues darkened until they clear AA on white. Plus the three gates that measure it — and a standing list of the faults none of them can see.</p></div>
+      </details>
+    </div>
 
-    <a class="card" href="difference-first-frame.html" style="--card-color: #4ade80;">
-      <div class="card-number">Backing Material</div>
-      <div class="card-title">The Difference-First Frame</div>
-      <div class="card-series">Notes &middot; the frame behind the frame</div>
-      <p class="card-moment">A resonant frame, not a proof — and it says so.</p>
-      <p class="card-desc">A summary of Helen Edgar's essay <em>Why Difference Comes First</em>, held here for anyone who asks why difference gets to be the starting point rather than a deviation from a norm: the cosmic microwave background needing tiny perturbations to make any structure at all, Deleuze on difference before identity, relational quantum mechanics, and ethodiversity. Kept as backing material rather than promoted to a zine, precisely because it is a resonance across four fields and not an argument any one of them makes.</p>
-      <div class="card-footer"><span class="card-tag">After Helen Edgar</span><span class="card-arrow">&rarr;</span></div>
-    </a>
+    <div class="card-wrap" style="--card-color: #4ade80;">
+      <a class="card" href="difference-first-frame.html">
+        <div class="card-number">Backing Material</div>
+        <div class="card-title">The Difference-First Frame</div>
+        <div class="card-series">Notes &middot; the frame behind the frame</div>
+        <p class="card-moment">A resonant frame, not a proof — and it says so.</p>
+        <p class="card-tagline">Reference notes behind <em>Love You Down To Your Star Stuff</em>.</p>
+        <p class="card-desc">Backing material for anyone who asks why difference gets to be the starting point — a summary of Helen Edgar's essay “Why Difference Comes First.”</p>
+        <div class="card-footer"><span class="card-tag">After Helen Edgar</span><span class="card-arrow">&rarr;</span></div>
+      </a>
+      <details class="card-details">
+        <summary>Details</summary>
+        <div class="card-details-body"><p>A summary of Helen Edgar's essay <em>Why Difference Comes First</em>, held here for anyone who asks why difference gets to be the starting point rather than a deviation from a norm: the cosmic microwave background needing tiny perturbations to make any structure at all, Deleuze on difference before identity, relational quantum mechanics, and ethodiversity. Kept as backing material rather than promoted to a zine, precisely because it is a resonance across four fields and not an argument any one of them makes.</p></div>
+      </details>
+    </div>
 
   </div>
 
@@ -249,5 +304,22 @@
 
 </div><!-- /doc-shell -->
 
+<script>
+/* Belt and braces for the paper copy: the @media print rule opens the card
+   disclosures with CSS, and this opens them for real, then puts each one back
+   exactly as the reader left it. Two mechanisms because a closed <details> has
+   hidden its content three different ways across engine versions, and the
+   failure mode is silent — a page that prints its cards without their
+   descriptions looks like a design choice, not a bug. */
+(function () {
+  var cards = function () { return document.querySelectorAll('.card-details'); };
+  addEventListener('beforeprint', function () {
+    cards().forEach(function (d) { d.dataset.wasOpen = d.open ? '1' : ''; d.open = true; });
+  });
+  addEventListener('afterprint', function () {
+    cards().forEach(function (d) { d.open = d.dataset.wasOpen === '1'; delete d.dataset.wasOpen; });
+  });
+})();
+</script>
 </body>
 </html>

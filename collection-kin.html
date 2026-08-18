@@ -110,18 +110,45 @@
 
   .artifact-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
 
-  .card { background: var(--card); border-radius: 8px; border: 1px solid var(--border); padding: 1.25rem; position: relative; text-decoration: none; color: inherit; display: flex; flex-direction: column; transition: box-shadow 0.2s ease, background 0.2s ease, transform 0.2s ease; }
-  .card:hover { background: #131330; box-shadow: 0 4px 28px rgba(167,139,250,0.14); transform: translateY(-2px); }
-  .card::before { content: ''; position: absolute; top: 8px; left: 0; width: 3px; height: calc(100% - 16px); background: var(--card-color, var(--violet)); border-radius: 0 2px 2px 0; }
+  /* A card is three parts: a wrapper that draws the box, an anchor that is the
+     link, and a <details> that holds the full description. The disclosure is a
+     SIBLING of the anchor and must stay one — <a> may not contain interactive
+     content, and check-markup.mjs cannot see that fault. */
+  .card-wrap { background: var(--card); border-radius: 8px; border: 1px solid var(--border); position: relative; display: flex; flex-direction: column; transition: box-shadow 0.2s ease, background 0.2s ease, transform 0.2s ease; }
+  .card { padding: 1.25rem; text-decoration: none; color: inherit; display: flex; flex-direction: column; flex: 1; }
+  .card-wrap:has(> .card:hover) { background: #131330; box-shadow: 0 4px 28px rgba(167,139,250,0.14); transform: translateY(-2px); }
+  .card-wrap::before { content: ''; position: absolute; top: 8px; left: 0; width: 3px; height: calc(100% - 16px); background: var(--card-color, var(--violet)); border-radius: 0 2px 2px 0; }
 
   .card-number { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dim); margin-bottom: 0.5rem; }
   .card-title { font-size: 1.25rem; font-weight: 600; color: var(--star-white); line-height: 1.2; margin-bottom: 0.4rem; }
   .card-series { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--card-color, var(--violet)); margin-bottom: 0.75rem; }
+  .card-tagline { font-size: 0.9375rem; font-style: italic; color: var(--star-white); line-height: 1.55; margin-bottom: 0.6rem; }
   .card-desc { font-size: 0.875rem; color: var(--stardust); line-height: 1.65; flex: 1; margin-bottom: 1.25rem; }
   .card-footer { display: flex; justify-content: space-between; align-items: center; padding-top: 0.9rem; border-top: 1px solid var(--border); }
   .card-tag { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dim); background: rgba(167,139,250,0.08); border: 1px solid var(--border); border-radius: 4px; padding: 0.2rem 0.6rem; }
   .card-arrow { font-size: 0.875rem; color: var(--card-color, var(--violet)); font-weight: 700; transition: transform 0.2s ease; }
-  .card:hover .card-arrow { transform: translateX(3px); }
+  .card-wrap:has(> .card:hover) .card-arrow { transform: translateX(3px); }
+
+  .card-details { border-top: 1px solid var(--border); }
+  .card-details > summary { cursor: pointer; list-style: none; padding: 0.7rem 1.25rem; font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dim); display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; }
+  .card-details > summary::-webkit-details-marker { display: none; }
+  .card-details > summary::after { content: '\25be'; font-size: 0.75rem; color: var(--card-color, var(--violet)); transition: transform 0.2s ease; }
+  .card-details[open] > summary::after { transform: rotate(180deg); }
+  .card-details > summary:hover { color: var(--star-white); }
+  .card-details > summary:focus-visible { outline: 2px solid var(--card-color, var(--violet)); outline-offset: -2px; border-radius: 0 0 7px 7px; }
+  .card-details-body { padding: 0 1.25rem 1.25rem; font-size: 0.875rem; color: var(--stardust); line-height: 1.65; }
+  .card-details-body p { margin: 0; }
+
+  /* A closed <details> prints as nothing, and the token inversion cannot reach it
+     because this is not a colour. How a closed disclosure hides its content has
+     moved across engine versions, so this pairs with the beforeprint handler at
+     the foot of the page rather than betting on one engine. */
+  @media print {
+    .card-details > summary { display: none !important; }
+    .card-details > .card-details-body { display: block !important; }
+    .card-details::details-content { content-visibility: visible !important; block-size: auto !important; }
+    .card-wrap { break-inside: avoid; }
+  }
 
   .colophon-footer { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--dim2); line-height: 2.2; margin-top: 3rem; padding-top: 1.4rem; border-top: 1px solid rgba(167,139,250,0.14); }
   .colophon-footer a { color: inherit; }
@@ -176,48 +203,90 @@
   </div>
 
   <div class="artifact-grid">
-    <a class="card" href="five-times-a-crab-zine.html" style="--card-color: #4ade80;">
-      <div class="card-number">Zine No. 31</div>
-      <div class="card-title">Five Times a Crab, Seven Times Not</div>
-      <div class="card-series">Stimpunks Zines</div>
-      <p class="card-desc">Convergent evolution and &ldquo;attractors,&rdquo; read against the primary literature — written after Brett D. Wick's essay <em>When Everything Becomes a Crab</em>. The crab-like body plan really did evolve at least five times in decapod crustaceans, which is the part everyone quotes. It was also <em>lost</em> at least seven times — decarcinization, the commoner event — and Wolfe, Luque &amp; Bracken-Grissom (<em>BioEssays</em>, 2021) report that the reasons for the recurrence <strong>remain a mystery</strong>, with carcinized lineages running from millimetres to metres across nearly every habitat on Earth. So convergence produced no sameness, and the basin is not a destiny. Our eye and the octopus's converged on the same camera and were built backwards from each other, which is why a system that grades the <em>route</em> instead of the outcome will fail an eye. Waddington's canalized landscape gives the picture; &ldquo;attractor&rdquo; is named as a metaphor borrowed from dynamical systems. Then the turn: nature's basin permits the millions who never roll in, while engineered systems write the attractor into the rules — engagement chosen as the objective and everything downhill of it becoming vertical video, one route to the answer and a diagnosis for the others. Cavendish monoculture against Cavendish Space, on the ARLES Environment and Systems rungs. Ideas ripen the same way: Ogburn &amp; Thomas's 148 multiples, Merton's singletons-are-the-exception, Tao's &ldquo;maths at internet speed,&rdquo; and Brian Eno's <em>scenius</em> quoted from the 1996 primary rather than the altered version in circulation. Closes on our own history — neurodiversity was itself developed collectively. Gould and Conway Morris are left unresolved on purpose. A rhyme, not a proof.</p>
-      <div class="card-footer"><span class="card-tag">12 spreads</span><span class="card-arrow">&rarr;</span></div>
-    </a>
-    <a class="card" href="skeleton-that-skipped-bone-zine.html" style="--card-color: #22d3ee;">
-      <div class="card-number">Zine No. 32</div>
-      <div class="card-title">The Skeleton That Skipped Bone</div>
-      <div class="card-series">Stimpunks Zines</div>
-      <p class="card-desc">A companion and a counter-song to <em>Bone Song</em>, written for a young person in our community whose special interest is sharks. This collection opens on a skeleton that is piezoelectric — press it and it makes voltage. Sharks, rays and chimaeras are vertebrates with <strong>no true bone at all</strong>: a cartilage skeleton stiffened by thousands of mineral tiles called tesserae, which Dean &amp; Summers (<em>Zoology</em>, 2006) describe as tuned species by species and even to how the animal feeds. Then the finding that changes the story. Sharks were taught for a century as the <em>before</em> picture — cartilage first, bone later, primitive, not there yet. But Brazeau and colleagues (<em>Nature Ecology &amp; Evolution</em>, 2020) describe endochondral bone in <em>Minjinia turgenensis</em>, an Early Devonian fish near the common ancestry of jawed vertebrates. If the shared ancestor had bone, the shark's bonelessness is not a failure to arrive — it is a <strong>loss</strong>, derived rather than primitive, and the same shape of fact as the crab body plan being lost more often than gained. Which exposes the verdict buried in the word <em>primitive</em>, the same one hiding in <em>low-functioning</em> and <em>delayed</em>. Then the other half: because sharks were said not to get cancer, their cartilage was ground into pills. Ostrander et al. (<em>Cancer Research</em>, 2004) documented 42 chondrichthyan tumours across at least 21 species, at least 15 malignant; Loprinzi et al. (<em>Cancer</em>, 2005) ran the trial and found no benefit to survival or quality of life. A body read as a cure gets harvested — and extraction always starts as appreciation. The skeleton is for the animal. A rhyme, not a proof.</p>
-      <div class="card-footer"><span class="card-tag">12 spreads</span><span class="card-arrow">&rarr;</span></div>
-    </a>
-    <a class="card" href="the-ick-is-a-border-zine.html" style="--card-color: #f472b6;">
-      <div class="card-number">Zine No. 33</div>
-      <div class="card-title">The Ick Is a Border</div>
-      <div class="card-series">Stimpunks Zines</div>
-      <p class="card-desc">Disgust feels like a fact about the animal. It is a fact about the frame. Rozin &amp; Fallon (<em>Psychological Review</em>, 1987) treat disgust as a food emotion at root, whose objects are largely learned — arriving across a child's first eight years and running on the magical law of contagion, where one touch renders a whole plate inedible forever. A reaction that far out of proportion to any physical fact is a rule about categories, and rules about categories are taught. Then three arrangements that read as gross and are, in frame, simply competent. <em>Osedax</em>, the bone-eating worm (Rouse, Goffredi &amp; Vrijenhoek, <em>Science</em>, 2004): no mouth, no gut, a vascularised root system dissolving whale bone, dozens of dwarf males inside the female's tube. The deep-sea anglerfishes, whose fused males cost them their immunity — Swann, Holland, Petersen, Pietsch &amp; Boehm (<em>Science</em>, 2020) found loss of functional <em>aicda</em>, and in permanent attachment loss of <em>rag</em>, abolishing the hallmark of adaptive immunity. To stay joined to another body they gave up the machinery that tells self from not-self. And the whale fall (Smith &amp; Baco, 2003): a pulse of food worth roughly 2,000 years of background supply, a sulphophilic stage lasting decades, a mean of 185 macrofaunal species — richer than any other hard surface down there. Then the turn. The same reflex fires at feeding tubes, drooling, stimming, incontinence and AAC; Nussbaum calls it <strong>projective disgust</strong>, where a group of people becomes a buffer against the animal nature we would rather deny. Two frames to widen past — the neuronormative and the anthronormative. A house companion to Helen Edgar's <em>Wyrd &amp; Weird</em>: <em>weird</em> was reclaimed, <em>gross</em> gets disarmed. Nobody is guilty of a flinch; everyone is answerable for the two seconds after.</p>
-      <div class="card-footer"><span class="card-tag">13 spreads</span><span class="card-arrow">&rarr;</span></div>
-    </a>
-    <a class="card" href="two-hundred-years-zine.html" style="--card-color: #a78bfa;">
-      <div class="card-number">Zine No. 34</div>
-      <div class="card-title">Two Hundred Years Before You're Grown</div>
-      <div class="card-series">Stimpunks Zines</div>
-      <p class="card-desc">The Greenland shark is the longest-lived vertebrate known, and it does not reach maturity until it is about <strong>156 years old</strong>. Nielsen et al. (<em>Science</em>, 2016) radiocarbon-dated the eye lenses of 28 females — the lens core is laid down before birth and never replaced, so they read each animal's age against the atmospheric bomb pulse from 1950s nuclear testing — and found a life span of at least 272 years, the largest animal at 392 ± 120. It is also the slowest fish for its size: 0.34 m/s, one tail-beat every seven seconds (Watanabe et al., 2012), and it eats seals anyway, apparently by arriving quietly while they sleep — <em>the strategy needs the trait</em>. Nearly all of them carry a copepod clamped to the cornea, and it costs them almost nothing, because vision is not what the Arctic deep asks for. So <em>late</em> turns out to be a comparison, not a measurement; the ruler was always the variable. But this is <strong>not</strong> a zine about slow being beautiful: Nielsen's own paper raises the conservation alarm, because an animal needing a century and a half to reproduce cannot recover from pressure arriving in decades, and the species is IUCN Vulnerable. Slow is survivable or it isn't, and the environment decides — which is the social model of disability, stated in fish. Names the standard defence of the clock too: Alfie Kohn's <strong>BGUTI</strong>, "Better Get Used To It," which almost by definition ignores developmental differences — and cannot survive noticing them. A rhyme, not a proof.</p>
-      <div class="card-footer"><span class="card-tag">13 spreads</span><span class="card-arrow">&rarr;</span></div>
-    </a>
-    <a class="card" href="everywhere-that-turtles-go-zine.html" style="--card-color: #22d3ee;">
-      <div class="card-number">Zine No. 35</div>
-      <div class="card-title">Everywhere That Turtles Go</div>
-      <div class="card-series">Stimpunks Zines</div>
-      <p class="card-desc">Tyson Yunkaporta writes in <em>Sand Talk</em> that a Star Dreaming Oldman Juma Fejo of the Larrakia People wants to share with all peoples "goes everywhere that turtles go — and there are turtles all over the world, even in desert country, so it connects everybody." That reads like a figure of speech and is actually a range map, so we checked it: roughly <strong>357 species</strong> on every continent but Antarctica, in every warm ocean, and in the arid interior, where <em>Chelodina steindachneri</em> buries itself in a dry Pilbara riverbed and waits out a year without water. The primary literature then reverses the obvious reading twice. Lyson et al. (<em>Current Biology</em>, 2016) find the shell began as an adaptation for <strong>burrowing, not armour</strong> — broadened ribs "provide little protection" and cost you speed and breath; protection is a later exaptation. And Lyson et al. (<em>Nature Communications</em>, 2014) find the price: lock your ribs into a shell and you lose the ordinary way of breathing, so turtles run their lungs off a sling of abdominal muscle instead. Side-necks and hidden-necks answered one problem two ways. Sex is set by the temperature of the sand, not by chromosomes — which makes the Discworld philosophers' failed expedition to determine Great A'Tuin's sex a better joke than they knew. A hatchling learns the magnetic field of one beach and finds it again decades later. And every people had to think with this animal: Turtle Island, <em>ao</em> in the <em>Huainanzi</em>, Kurma — who is a pivot for churning and <strong>not</strong> a world-bearer — and Great A'Tuin. They are not the same turtle, and that is the connection. Carries the Fibonacci passage and says plainly where it stops being biology. ~48% of turtle species are threatened. A rhyme, not a proof.</p>
-      <div class="card-footer"><span class="card-tag">13 spreads</span><span class="card-arrow">&rarr;</span></div>
-    </a>
-    <a class="card" href="the-layer-we-call-essential-zine.html" style="--card-color: #22d3ee;">
-      <div class="card-number">Zine No. 36</div>
-      <div class="card-title">The Layer We Call Essential</div>
-      <div class="card-series">Stimpunks Zines</div>
-      <p class="card-desc">Mortensen et al. (<em>Frontiers in Neuroanatomy</em>, 2014) counted the long-finned pilot whale's neocortex and found roughly <strong>37.2 billion neurons</strong> — "almost twice as many neocortical neurons as humans," the first animal ever counted above us. Then, in the same paper, they conclude that absolute neuron number is "not correlated with the superior cognitive abilities of humans." The yardstick came back against us and the ranking survived, because <em>it was never resting on the count</em>. Underneath sits the architecture: the cetacean neocortex is agranular, with <strong>layer IV — the input layer our textbooks call canonical — absent or underdeveloped</strong>, and layer I apparently taking the job instead, giving "a very different connectivity scheme compared to more commonly studied species, like rats and macaque monkeys." Manger (2006) read that missing layer as evidence there is <em>no neural basis for complex cognition in cetaceans</em>; sixteen authors replied in <em>Biological Reviews</em> that these features are "a non-primate route to neuroanatomical (and cognitive) complexity." Difference read as deficit, conducted by neuroscientists, about whales. Held with care: thermogenesis is a serious hypothesis and a brain can do heat work and thought work at once — the claim here is only about which reading you get for free. On neurodiversity, the honest answer: <strong>there is no cetacean diagnostic literature and this zine does not invent one.</strong> What exists is variation inside single populations — sponging in <strong>15 of 141</strong> known Shark Bay mothers, down one matriline (Krützen et al., 2005), spongers more solitary and foraging longer (Mann et al., 2008) — read through <strong>ethodiversity</strong> (Ombre Tarragnat), which needs no clinic. Plus 8,719 sperm whale codas resolving into ~143 combinations where 21 had been described, because someone borrowed <em>rubato</em> from music. And eight days off Pico with an S-spined bottlenose dolphin among sperm whales, the rubs returned — a paper titled "Repeated Non-Agonistic Interactions," because "adopted" was the press's word. Douglas Adams got the joke in 1979, ranking us third behind the mice. Then he went to see the baiji. A rhyme, not a proof.</p>
-      <div class="card-footer"><span class="card-tag">13 spreads</span><span class="card-arrow">&rarr;</span></div>
-    </a>
+    <div class="card-wrap" style="--card-color: #4ade80;">
+      <a class="card" href="five-times-a-crab-zine.html">
+        <div class="card-number">Zine No. 31</div>
+        <div class="card-title">Five Times a Crab, Seven Times Not</div>
+        <div class="card-series">Stimpunks Zines</div>
+        <p class="card-tagline">convergence, attractors, and the ones who crawled back out of the valley</p>
+        <p class="card-desc">The crab-like body plan really did evolve at least five times, which is the part everyone quotes. Written after Brett D. Wick's <em>When Everything Becomes a Crab</em>.</p>
+        <div class="card-footer"><span class="card-tag">12 spreads</span><span class="card-arrow">&rarr;</span></div>
+      </a>
+      <details class="card-details">
+        <summary>Details</summary>
+        <div class="card-details-body"><p>Convergent evolution and &ldquo;attractors,&rdquo; read against the primary literature — written after Brett D. Wick's essay <em>When Everything Becomes a Crab</em>. The crab-like body plan really did evolve at least five times in decapod crustaceans, which is the part everyone quotes. It was also <em>lost</em> at least seven times — decarcinization, the commoner event — and Wolfe, Luque &amp; Bracken-Grissom (<em>BioEssays</em>, 2021) report that the reasons for the recurrence <strong>remain a mystery</strong>, with carcinized lineages running from millimetres to metres across nearly every habitat on Earth. So convergence produced no sameness, and the basin is not a destiny. Our eye and the octopus's converged on the same camera and were built backwards from each other, which is why a system that grades the <em>route</em> instead of the outcome will fail an eye. Waddington's canalized landscape gives the picture; &ldquo;attractor&rdquo; is named as a metaphor borrowed from dynamical systems. Then the turn: nature's basin permits the millions who never roll in, while engineered systems write the attractor into the rules — engagement chosen as the objective and everything downhill of it becoming vertical video, one route to the answer and a diagnosis for the others. Cavendish monoculture against Cavendish Space, on the ARLES Environment and Systems rungs. Ideas ripen the same way: Ogburn &amp; Thomas's 148 multiples, Merton's singletons-are-the-exception, Tao's &ldquo;maths at internet speed,&rdquo; and Brian Eno's <em>scenius</em> quoted from the 1996 primary rather than the altered version in circulation. Closes on our own history — neurodiversity was itself developed collectively. Gould and Conway Morris are left unresolved on purpose. A rhyme, not a proof.</p></div>
+      </details>
+    </div>
+    <div class="card-wrap" style="--card-color: #22d3ee;">
+      <a class="card" href="skeleton-that-skipped-bone-zine.html">
+        <div class="card-number">Zine No. 32</div>
+        <div class="card-title">The Skeleton That Skipped Bone</div>
+        <div class="card-series">Stimpunks Zines</div>
+        <p class="card-tagline">sharks, tesserae, and what happens to a body once somebody decides it's a cure</p>
+        <p class="card-desc">Sharks, rays and chimaeras are vertebrates with no true bone at all. A companion and a counter-song to <em>Bone Song</em>.</p>
+        <div class="card-footer"><span class="card-tag">12 spreads</span><span class="card-arrow">&rarr;</span></div>
+      </a>
+      <details class="card-details">
+        <summary>Details</summary>
+        <div class="card-details-body"><p>A companion and a counter-song to <em>Bone Song</em>, written for a young person in our community whose special interest is sharks. This collection opens on a skeleton that is piezoelectric — press it and it makes voltage. Sharks, rays and chimaeras are vertebrates with <strong>no true bone at all</strong>: a cartilage skeleton stiffened by thousands of mineral tiles called tesserae, which Dean &amp; Summers (<em>Zoology</em>, 2006) describe as tuned species by species and even to how the animal feeds. Then the finding that changes the story. Sharks were taught for a century as the <em>before</em> picture — cartilage first, bone later, primitive, not there yet. But Brazeau and colleagues (<em>Nature Ecology &amp; Evolution</em>, 2020) describe endochondral bone in <em>Minjinia turgenensis</em>, an Early Devonian fish near the common ancestry of jawed vertebrates. If the shared ancestor had bone, the shark's bonelessness is not a failure to arrive — it is a <strong>loss</strong>, derived rather than primitive, and the same shape of fact as the crab body plan being lost more often than gained. Which exposes the verdict buried in the word <em>primitive</em>, the same one hiding in <em>low-functioning</em> and <em>delayed</em>. Then the other half: because sharks were said not to get cancer, their cartilage was ground into pills. Ostrander et al. (<em>Cancer Research</em>, 2004) documented 42 chondrichthyan tumours across at least 21 species, at least 15 malignant; Loprinzi et al. (<em>Cancer</em>, 2005) ran the trial and found no benefit to survival or quality of life. A body read as a cure gets harvested — and extraction always starts as appreciation. The skeleton is for the animal. A rhyme, not a proof.</p></div>
+      </details>
+    </div>
+    <div class="card-wrap" style="--card-color: #f472b6;">
+      <a class="card" href="the-ick-is-a-border-zine.html">
+        <div class="card-number">Zine No. 33</div>
+        <div class="card-title">The Ick Is a Border</div>
+        <div class="card-series">Stimpunks Zines</div>
+        <p class="card-tagline">bone-eating worms, fused fish, a whale that becomes a town — and the reflex that rules bodies out</p>
+        <p class="card-desc">Disgust feels like a fact about the animal. It is a fact about the frame — Rozin &amp; Fallon (1987) treat its objects as largely learned.</p>
+        <div class="card-footer"><span class="card-tag">13 spreads</span><span class="card-arrow">&rarr;</span></div>
+      </a>
+      <details class="card-details">
+        <summary>Details</summary>
+        <div class="card-details-body"><p>Disgust feels like a fact about the animal. It is a fact about the frame. Rozin &amp; Fallon (<em>Psychological Review</em>, 1987) treat disgust as a food emotion at root, whose objects are largely learned — arriving across a child's first eight years and running on the magical law of contagion, where one touch renders a whole plate inedible forever. A reaction that far out of proportion to any physical fact is a rule about categories, and rules about categories are taught. Then three arrangements that read as gross and are, in frame, simply competent. <em>Osedax</em>, the bone-eating worm (Rouse, Goffredi &amp; Vrijenhoek, <em>Science</em>, 2004): no mouth, no gut, a vascularised root system dissolving whale bone, dozens of dwarf males inside the female's tube. The deep-sea anglerfishes, whose fused males cost them their immunity — Swann, Holland, Petersen, Pietsch &amp; Boehm (<em>Science</em>, 2020) found loss of functional <em>aicda</em>, and in permanent attachment loss of <em>rag</em>, abolishing the hallmark of adaptive immunity. To stay joined to another body they gave up the machinery that tells self from not-self. And the whale fall (Smith &amp; Baco, 2003): a pulse of food worth roughly 2,000 years of background supply, a sulphophilic stage lasting decades, a mean of 185 macrofaunal species — richer than any other hard surface down there. Then the turn. The same reflex fires at feeding tubes, drooling, stimming, incontinence and AAC; Nussbaum calls it <strong>projective disgust</strong>, where a group of people becomes a buffer against the animal nature we would rather deny. Two frames to widen past — the neuronormative and the anthronormative. A house companion to Helen Edgar's <em>Wyrd &amp; Weird</em>: <em>weird</em> was reclaimed, <em>gross</em> gets disarmed. Nobody is guilty of a flinch; everyone is answerable for the two seconds after.</p></div>
+      </details>
+    </div>
+    <div class="card-wrap" style="--card-color: #a78bfa;">
+      <a class="card" href="two-hundred-years-zine.html">
+        <div class="card-number">Zine No. 34</div>
+        <div class="card-title">Two Hundred Years Before You're Grown</div>
+        <div class="card-series">Stimpunks Zines</div>
+        <p class="card-tagline">the oldest vertebrate we know of, and the question of who is holding the calendar</p>
+        <p class="card-desc">The Greenland shark does not reach maturity until it is about 156 years old. Nielsen et al. (<em>Science</em>, 2016) radiocarbon-dated the eye lenses of 28 females.</p>
+        <div class="card-footer"><span class="card-tag">13 spreads</span><span class="card-arrow">&rarr;</span></div>
+      </a>
+      <details class="card-details">
+        <summary>Details</summary>
+        <div class="card-details-body"><p>The Greenland shark is the longest-lived vertebrate known, and it does not reach maturity until it is about <strong>156 years old</strong>. Nielsen et al. (<em>Science</em>, 2016) radiocarbon-dated the eye lenses of 28 females — the lens core is laid down before birth and never replaced, so they read each animal's age against the atmospheric bomb pulse from 1950s nuclear testing — and found a life span of at least 272 years, the largest animal at 392 ± 120. It is also the slowest fish for its size: 0.34 m/s, one tail-beat every seven seconds (Watanabe et al., 2012), and it eats seals anyway, apparently by arriving quietly while they sleep — <em>the strategy needs the trait</em>. Nearly all of them carry a copepod clamped to the cornea, and it costs them almost nothing, because vision is not what the Arctic deep asks for. So <em>late</em> turns out to be a comparison, not a measurement; the ruler was always the variable. But this is <strong>not</strong> a zine about slow being beautiful: Nielsen's own paper raises the conservation alarm, because an animal needing a century and a half to reproduce cannot recover from pressure arriving in decades, and the species is IUCN Vulnerable. Slow is survivable or it isn't, and the environment decides — which is the social model of disability, stated in fish. Names the standard defence of the clock too: Alfie Kohn's <strong>BGUTI</strong>, "Better Get Used To It," which almost by definition ignores developmental differences — and cannot survive noticing them. A rhyme, not a proof.</p></div>
+      </details>
+    </div>
+    <div class="card-wrap" style="--card-color: #22d3ee;">
+      <a class="card" href="everywhere-that-turtles-go-zine.html">
+        <div class="card-number">Zine No. 35</div>
+        <div class="card-title">Everywhere That Turtles Go</div>
+        <div class="card-series">Stimpunks Zines</div>
+        <p class="card-tagline">range, kinship, and the animal every people had to think with</p>
+        <p class="card-desc">A Star Dreaming that “goes everywhere that turtles go — and there are turtles all over the world.” That reads like a figure of speech and is not.</p>
+        <div class="card-footer"><span class="card-tag">13 spreads</span><span class="card-arrow">&rarr;</span></div>
+      </a>
+      <details class="card-details">
+        <summary>Details</summary>
+        <div class="card-details-body"><p>Tyson Yunkaporta writes in <em>Sand Talk</em> that a Star Dreaming Oldman Juma Fejo of the Larrakia People wants to share with all peoples "goes everywhere that turtles go — and there are turtles all over the world, even in desert country, so it connects everybody." That reads like a figure of speech and is actually a range map, so we checked it: roughly <strong>357 species</strong> on every continent but Antarctica, in every warm ocean, and in the arid interior, where <em>Chelodina steindachneri</em> buries itself in a dry Pilbara riverbed and waits out a year without water. The primary literature then reverses the obvious reading twice. Lyson et al. (<em>Current Biology</em>, 2016) find the shell began as an adaptation for <strong>burrowing, not armour</strong> — broadened ribs "provide little protection" and cost you speed and breath; protection is a later exaptation. And Lyson et al. (<em>Nature Communications</em>, 2014) find the price: lock your ribs into a shell and you lose the ordinary way of breathing, so turtles run their lungs off a sling of abdominal muscle instead. Side-necks and hidden-necks answered one problem two ways. Sex is set by the temperature of the sand, not by chromosomes — which makes the Discworld philosophers' failed expedition to determine Great A'Tuin's sex a better joke than they knew. A hatchling learns the magnetic field of one beach and finds it again decades later. And every people had to think with this animal: Turtle Island, <em>ao</em> in the <em>Huainanzi</em>, Kurma — who is a pivot for churning and <strong>not</strong> a world-bearer — and Great A'Tuin. They are not the same turtle, and that is the connection. Carries the Fibonacci passage and says plainly where it stops being biology. ~48% of turtle species are threatened. A rhyme, not a proof.</p></div>
+      </details>
+    </div>
+    <div class="card-wrap" style="--card-color: #22d3ee;">
+      <a class="card" href="the-layer-we-call-essential-zine.html">
+        <div class="card-number">Zine No. 36</div>
+        <div class="card-title">The Layer We Call Essential</div>
+        <div class="card-series">Stimpunks Zines</div>
+        <p class="card-tagline">cetacean brains, the missing layer IV, and a ranking that outlived its evidence</p>
+        <p class="card-desc">The long-finned pilot whale's neocortex holds roughly 37.2 billion neurons — the first animal ever counted above us. Then, in the same paper, the conclusion turns.</p>
+        <div class="card-footer"><span class="card-tag">13 spreads</span><span class="card-arrow">&rarr;</span></div>
+      </a>
+      <details class="card-details">
+        <summary>Details</summary>
+        <div class="card-details-body"><p>Mortensen et al. (<em>Frontiers in Neuroanatomy</em>, 2014) counted the long-finned pilot whale's neocortex and found roughly <strong>37.2 billion neurons</strong> — "almost twice as many neocortical neurons as humans," the first animal ever counted above us. Then, in the same paper, they conclude that absolute neuron number is "not correlated with the superior cognitive abilities of humans." The yardstick came back against us and the ranking survived, because <em>it was never resting on the count</em>. Underneath sits the architecture: the cetacean neocortex is agranular, with <strong>layer IV — the input layer our textbooks call canonical — absent or underdeveloped</strong>, and layer I apparently taking the job instead, giving "a very different connectivity scheme compared to more commonly studied species, like rats and macaque monkeys." Manger (2006) read that missing layer as evidence there is <em>no neural basis for complex cognition in cetaceans</em>; sixteen authors replied in <em>Biological Reviews</em> that these features are "a non-primate route to neuroanatomical (and cognitive) complexity." Difference read as deficit, conducted by neuroscientists, about whales. Held with care: thermogenesis is a serious hypothesis and a brain can do heat work and thought work at once — the claim here is only about which reading you get for free. On neurodiversity, the honest answer: <strong>there is no cetacean diagnostic literature and this zine does not invent one.</strong> What exists is variation inside single populations — sponging in <strong>15 of 141</strong> known Shark Bay mothers, down one matriline (Krützen et al., 2005), spongers more solitary and foraging longer (Mann et al., 2008) — read through <strong>ethodiversity</strong> (Ombre Tarragnat), which needs no clinic. Plus 8,719 sperm whale codas resolving into ~143 combinations where 21 had been described, because someone borrowed <em>rubato</em> from music. And eight days off Pico with an S-spined bottlenose dolphin among sperm whales, the rubs returned — a paper titled "Repeated Non-Agonistic Interactions," because "adopted" was the press's word. Douglas Adams got the joke in 1979, ranking us third behind the mice. Then he went to see the baiji. A rhyme, not a proof.</p></div>
+      </details>
+    </div>
   </div>
 
   <div class="body-text">
@@ -229,5 +298,22 @@
 
 </div><!-- /doc-shell -->
 
+<script>
+/* Belt and braces for the paper copy: the @media print rule opens the card
+   disclosures with CSS, and this opens them for real, then puts each one back
+   exactly as the reader left it. Two mechanisms because a closed <details> has
+   hidden its content three different ways across engine versions, and the
+   failure mode is silent — a page that prints its cards without their
+   descriptions looks like a design choice, not a bug. */
+(function () {
+  var cards = function () { return document.querySelectorAll('.card-details'); };
+  addEventListener('beforeprint', function () {
+    cards().forEach(function (d) { d.dataset.wasOpen = d.open ? '1' : ''; d.open = true; });
+  });
+  addEventListener('afterprint', function () {
+    cards().forEach(function (d) { d.open = d.dataset.wasOpen === '1'; delete d.dataset.wasOpen; });
+  });
+})();
+</script>
 </body>
 </html>

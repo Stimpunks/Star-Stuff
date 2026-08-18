@@ -110,18 +110,45 @@
 
   .artifact-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
 
-  .card { background: var(--card); border-radius: 8px; border: 1px solid var(--border); padding: 1.25rem; position: relative; text-decoration: none; color: inherit; display: flex; flex-direction: column; transition: box-shadow 0.2s ease, background 0.2s ease, transform 0.2s ease; }
-  .card:hover { background: #131330; box-shadow: 0 4px 28px rgba(167,139,250,0.14); transform: translateY(-2px); }
-  .card::before { content: ''; position: absolute; top: 8px; left: 0; width: 3px; height: calc(100% - 16px); background: var(--card-color, var(--violet)); border-radius: 0 2px 2px 0; }
+  /* A card is three parts: a wrapper that draws the box, an anchor that is the
+     link, and a <details> that holds the full description. The disclosure is a
+     SIBLING of the anchor and must stay one — <a> may not contain interactive
+     content, and check-markup.mjs cannot see that fault. */
+  .card-wrap { background: var(--card); border-radius: 8px; border: 1px solid var(--border); position: relative; display: flex; flex-direction: column; transition: box-shadow 0.2s ease, background 0.2s ease, transform 0.2s ease; }
+  .card { padding: 1.25rem; text-decoration: none; color: inherit; display: flex; flex-direction: column; flex: 1; }
+  .card-wrap:has(> .card:hover) { background: #131330; box-shadow: 0 4px 28px rgba(167,139,250,0.14); transform: translateY(-2px); }
+  .card-wrap::before { content: ''; position: absolute; top: 8px; left: 0; width: 3px; height: calc(100% - 16px); background: var(--card-color, var(--violet)); border-radius: 0 2px 2px 0; }
 
   .card-number { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dim); margin-bottom: 0.5rem; }
   .card-title { font-size: 1.25rem; font-weight: 600; color: var(--star-white); line-height: 1.2; margin-bottom: 0.4rem; }
   .card-series { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--card-color, var(--violet)); margin-bottom: 0.75rem; }
+  .card-tagline { font-size: 0.9375rem; font-style: italic; color: var(--star-white); line-height: 1.55; margin-bottom: 0.6rem; }
   .card-desc { font-size: 0.875rem; color: var(--stardust); line-height: 1.65; flex: 1; margin-bottom: 1.25rem; }
   .card-footer { display: flex; justify-content: space-between; align-items: center; padding-top: 0.9rem; border-top: 1px solid var(--border); }
   .card-tag { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dim); background: rgba(167,139,250,0.08); border: 1px solid var(--border); border-radius: 4px; padding: 0.2rem 0.6rem; }
   .card-arrow { font-size: 0.875rem; color: var(--card-color, var(--violet)); font-weight: 700; transition: transform 0.2s ease; }
-  .card:hover .card-arrow { transform: translateX(3px); }
+  .card-wrap:has(> .card:hover) .card-arrow { transform: translateX(3px); }
+
+  .card-details { border-top: 1px solid var(--border); }
+  .card-details > summary { cursor: pointer; list-style: none; padding: 0.7rem 1.25rem; font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dim); display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; }
+  .card-details > summary::-webkit-details-marker { display: none; }
+  .card-details > summary::after { content: '\25be'; font-size: 0.75rem; color: var(--card-color, var(--violet)); transition: transform 0.2s ease; }
+  .card-details[open] > summary::after { transform: rotate(180deg); }
+  .card-details > summary:hover { color: var(--star-white); }
+  .card-details > summary:focus-visible { outline: 2px solid var(--card-color, var(--violet)); outline-offset: -2px; border-radius: 0 0 7px 7px; }
+  .card-details-body { padding: 0 1.25rem 1.25rem; font-size: 0.875rem; color: var(--stardust); line-height: 1.65; }
+  .card-details-body p { margin: 0; }
+
+  /* A closed <details> prints as nothing, and the token inversion cannot reach it
+     because this is not a colour. How a closed disclosure hides its content has
+     moved across engine versions, so this pairs with the beforeprint handler at
+     the foot of the page rather than betting on one engine. */
+  @media print {
+    .card-details > summary { display: none !important; }
+    .card-details > .card-details-body { display: block !important; }
+    .card-details::details-content { content-visibility: visible !important; block-size: auto !important; }
+    .card-wrap { break-inside: avoid; }
+  }
 
   .colophon-footer { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--dim2); line-height: 2.2; margin-top: 3rem; padding-top: 1.4rem; border-top: 1px solid rgba(167,139,250,0.14); }
   .colophon-footer a { color: inherit; }
@@ -175,20 +202,34 @@
   </div>
 
   <div class="artifact-grid">
-    <a class="card" href="bowie-zine.html" style="--card-color: #f472b6;">
-      <div class="card-number">Zine No. 12</div>
-      <div class="card-title">Turn and Face the Strange</div>
-      <div class="card-series">Stimpunks Zines</div>
-      <p class="card-desc">David Bowie as a way of being star stuff — defiantly, joyfully weird. Unmasking as authorship rather than exposure, the freedom of many selves, bringing the hidden to the front, and authenticity as our purest freedom. From “Changes” and Space Oddity to Blackstar, difference read as direction, not deficit. Eight spreads, each with an embedded Bowie performance, plus a “Not:” refusals set.</p>
-      <div class="card-footer"><span class="card-tag">8 spreads</span><span class="card-arrow">&rarr;</span></div>
-    </a>
-    <a class="card" href="aurora-zine.html" style="--card-color: #4ade80;">
-      <div class="card-number">Zine No. 13</div>
-      <div class="card-title">Warriors and Weirdos</div>
-      <div class="card-series">Stimpunks Zines</div>
-      <p class="card-desc">AURORA as a way of being star stuff — the alien who came home by gathering a tribe of Weirdos, not by being cured into fitting. Feeling alien, the mothership's invitation, naming your people, refusing the cure, stimming in the open, and the way back to Earth. Eight spreads, each with an embedded AURORA performance, plus a “Not:” refusals set.</p>
-      <div class="card-footer"><span class="card-tag">8 spreads</span><span class="card-arrow">&rarr;</span></div>
-    </a>
+    <div class="card-wrap" style="--card-color: #f472b6;">
+      <a class="card" href="bowie-zine.html">
+        <div class="card-number">Zine No. 12</div>
+        <div class="card-title">Turn and Face the Strange</div>
+        <div class="card-series">Stimpunks Zines</div>
+        <p class="card-tagline">David Bowie as a way of being star stuff — on unmasking, the freedom of many selves, and difference read not as deficit but as direction</p>
+        <p class="card-desc">From “Changes” and <em>Space Oddity</em> to <em>Blackstar</em>: unmasking as authorship rather than exposure, and authenticity as our purest freedom.</p>
+        <div class="card-footer"><span class="card-tag">8 spreads</span><span class="card-arrow">&rarr;</span></div>
+      </a>
+      <details class="card-details">
+        <summary>Details</summary>
+        <div class="card-details-body"><p>Six spreads. <em>Turn and face the strange</em>; <em>the masks were the point</em> — the personae are authorship rather than concealment, which inverts the usual reading of unmasking as exposure; <em>everything hidden, brought to the front</em>; <em>from the capsule to the blackstar</em>, tracing the arc from <em>Space Oddity</em> to ★, recorded while dying; <em>authenticity is our purest freedom</em>; and <em>made of star stuff</em>. Difference read as direction rather than as deficit, and the freedom of having more than one self. Filed in <em>Stars We Grew Up On</em>, the collection that deliberately owns the star-as-celebrity sense of the word. Two listening companions: the five Bowie cards that open the L★S Playlist, and the long version, <em>Nobody Got His Eyes Right</em>.</p></div>
+      </details>
+    </div>
+    <div class="card-wrap" style="--card-color: #4ade80;">
+      <a class="card" href="aurora-zine.html">
+        <div class="card-number">Zine No. 13</div>
+        <div class="card-title">Warriors and Weirdos</div>
+        <div class="card-series">Stimpunks Zines</div>
+        <p class="card-tagline">AURORA as a way of being star stuff — the alien who came home by gathering a tribe of Weirdos, not by being cured into fitting</p>
+        <p class="card-desc">Feeling alien, the mothership's invitation, naming your people, refusing the cure, stimming in the open. Eight spreads, each with an embedded song.</p>
+        <div class="card-footer"><span class="card-tag">8 spreads</span><span class="card-arrow">&rarr;</span></div>
+      </a>
+      <details class="card-details">
+        <summary>Details</summary>
+        <div class="card-details-body"><p>Eight spreads, each built around an embedded AURORA song: <em>a different kind of human</em>; <em>the mothership is coming</em>; <em>warriors and weirdos</em>; <em>there is no cure for me</em>; <em>running with the wolves</em>; and <em>runaway home</em>. The arc is the argument — she came home by gathering a tribe of Weirdos, not by being cured into fitting. Feeling alien, the mothership's invitation, naming your people, refusing the cure, and stimming in the open. Filed here beside Bowie because both are public figures whose difference was read as direction, and because this collection owns the star-as-celebrity sense on purpose. The listening companion is <em>Stimming and Belonging with AURORA</em>, weighted toward live performance because the argument is the body.</p></div>
+      </details>
+    </div>
   </div>
 
   <div class="body-text">
@@ -200,5 +241,22 @@
 
 </div><!-- /doc-shell -->
 
+<script>
+/* Belt and braces for the paper copy: the @media print rule opens the card
+   disclosures with CSS, and this opens them for real, then puts each one back
+   exactly as the reader left it. Two mechanisms because a closed <details> has
+   hidden its content three different ways across engine versions, and the
+   failure mode is silent — a page that prints its cards without their
+   descriptions looks like a design choice, not a bug. */
+(function () {
+  var cards = function () { return document.querySelectorAll('.card-details'); };
+  addEventListener('beforeprint', function () {
+    cards().forEach(function (d) { d.dataset.wasOpen = d.open ? '1' : ''; d.open = true; });
+  });
+  addEventListener('afterprint', function () {
+    cards().forEach(function (d) { d.open = d.dataset.wasOpen === '1'; delete d.dataset.wasOpen; });
+  });
+})();
+</script>
 </body>
 </html>

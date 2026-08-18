@@ -128,19 +128,46 @@
 
   .artifact-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
 
-  .card { background: var(--card); border-radius: 8px; border: 1px solid var(--border); padding: 1.25rem; position: relative; text-decoration: none; color: inherit; display: flex; flex-direction: column; transition: box-shadow 0.2s ease, background 0.2s ease, transform 0.2s ease; }
-  .card:hover { background: #131330; box-shadow: 0 4px 28px rgba(74,222,128,0.14); transform: translateY(-2px); }
-  .card::before { content: ''; position: absolute; top: 8px; left: 0; width: 3px; height: calc(100% - 16px); background: var(--card-color, var(--accent)); border-radius: 0 2px 2px 0; }
+  /* A card is three parts: a wrapper that draws the box, an anchor that is the
+     link, and a <details> that holds the full description. The disclosure is a
+     SIBLING of the anchor and must stay one — <a> may not contain interactive
+     content, and check-markup.mjs cannot see that fault. */
+  .card-wrap { background: var(--card); border-radius: 8px; border: 1px solid var(--border); position: relative; display: flex; flex-direction: column; transition: box-shadow 0.2s ease, background 0.2s ease, transform 0.2s ease; }
+  .card { padding: 1.25rem; text-decoration: none; color: inherit; display: flex; flex-direction: column; flex: 1; }
+  .card-wrap:has(> .card:hover) { background: #131330; box-shadow: 0 4px 28px rgba(74,222,128,0.14); transform: translateY(-2px); }
+  .card-wrap::before { content: ''; position: absolute; top: 8px; left: 0; width: 3px; height: calc(100% - 16px); background: var(--card-color, var(--accent)); border-radius: 0 2px 2px 0; }
 
   .card-number { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dim); margin-bottom: 0.5rem; }
   .card-title { font-size: 1.25rem; font-weight: 600; color: var(--star-white); line-height: 1.2; margin-bottom: 0.4rem; }
   .card-series { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--card-color, var(--accent)); margin-bottom: 0.75rem; }
   .card-moment { font-family: 'Space Mono', monospace; font-size: 0.68rem; line-height: 1.7; color: var(--star-white); margin-bottom: 0.7rem; padding-left: 0.7rem; border-left: 2px solid var(--card-color, var(--accent)); }
+  .card-tagline { font-size: 0.9375rem; font-style: italic; color: var(--star-white); line-height: 1.55; margin-bottom: 0.6rem; }
   .card-desc { font-size: 0.875rem; color: var(--stardust); line-height: 1.65; flex: 1; margin-bottom: 1.25rem; }
   .card-footer { display: flex; justify-content: space-between; align-items: center; padding-top: 0.9rem; border-top: 1px solid var(--border); }
   .card-tag { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dim); background: rgba(74,222,128,0.08); border: 1px solid var(--border); border-radius: 4px; padding: 0.2rem 0.6rem; }
   .card-arrow { font-size: 0.875rem; color: var(--card-color, var(--accent)); font-weight: 700; transition: transform 0.2s ease; }
-  .card:hover .card-arrow { transform: translateX(3px); }
+  .card-wrap:has(> .card:hover) .card-arrow { transform: translateX(3px); }
+
+  .card-details { border-top: 1px solid var(--border); }
+  .card-details > summary { cursor: pointer; list-style: none; padding: 0.7rem 1.25rem; font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dim); display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; }
+  .card-details > summary::-webkit-details-marker { display: none; }
+  .card-details > summary::after { content: '\25be'; font-size: 0.75rem; color: var(--card-color, var(--accent)); transition: transform 0.2s ease; }
+  .card-details[open] > summary::after { transform: rotate(180deg); }
+  .card-details > summary:hover { color: var(--star-white); }
+  .card-details > summary:focus-visible { outline: 2px solid var(--card-color, var(--accent)); outline-offset: -2px; border-radius: 0 0 7px 7px; }
+  .card-details-body { padding: 0 1.25rem 1.25rem; font-size: 0.875rem; color: var(--stardust); line-height: 1.65; }
+  .card-details-body p { margin: 0; }
+
+  /* A closed <details> prints as nothing, and the token inversion cannot reach it
+     because this is not a colour. How a closed disclosure hides its content has
+     moved across engine versions, so this pairs with the beforeprint handler at
+     the foot of the page rather than betting on one engine. */
+  @media print {
+    .card-details > summary { display: none !important; }
+    .card-details > .card-details-body { display: block !important; }
+    .card-details::details-content { content-visibility: visible !important; block-size: auto !important; }
+    .card-wrap { break-inside: avoid; }
+  }
 
   .colophon-footer { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--dim2); line-height: 2.2; margin-top: 3rem; padding-top: 1.4rem; border-top: 1px solid rgba(74,222,128,0.14); }
   .colophon-footer a { color: inherit; }
@@ -199,77 +226,133 @@
 
   <div class="artifact-grid">
 
-    <a class="card" href="manifesto.html" style="--card-color: #a78bfa;">
-      <div class="card-number">Founding Document</div>
-      <div class="card-title">Star Stuff Manifesto</div>
-      <div class="card-series">Foundations &middot; the claim</div>
-      <p class="card-moment">The argument at full volume, so the zines can be quiet.</p>
-      <p class="card-desc">On the cosmic origins of who we are, the science of how we carry the universe in our bones, and why neurodivergent and disabled people belong — <strong>not despite difference, but as difference</strong>. Six sections and eight declarations. It is the loudest page on the site by design: everything else can then make one careful point and trust that the frame has already been stated somewhere.</p>
-      <div class="card-footer"><span class="card-tag">8 declarations</span><span class="card-arrow">&rarr;</span></div>
-    </a>
+    <div class="card-wrap" style="--card-color: #a78bfa;">
+      <a class="card" href="manifesto.html">
+        <div class="card-number">Founding Document</div>
+        <div class="card-title">Star Stuff Manifesto</div>
+        <div class="card-series">Foundations &middot; the claim</div>
+        <p class="card-moment">The argument at full volume, so the zines can be quiet.</p>
+        <p class="card-tagline">On the cosmic origins of who we are, and why we belong — not despite difference, but as difference.</p>
+        <p class="card-desc">The science of how we carry the universe in our bones. Six sections and eight declarations.</p>
+        <div class="card-footer"><span class="card-tag">8 declarations</span><span class="card-arrow">&rarr;</span></div>
+      </a>
+      <details class="card-details">
+        <summary>Details</summary>
+        <div class="card-details-body"><p>Six sections and eight declarations. We are all made of exploded stars. Your skeleton is piezoelectric. The universe doesn't pathologize its own variation. What it means to say L★S. The declarations of the Star Stuff community. And a closing note on piezoelectric bones and the neurodiversity paradigm, which is where the science and the claim about belonging are tied together rather than merely placed side by side. The founding document — every later piece assumes it, and the closing stamp carries the co-branding as plain text because it is meant for paper.</p></div>
+      </details>
+    </div>
 
-    <a class="card" href="inclusion-safety-creed.html" style="--card-color: #22d3ee;">
-      <div class="card-number">A Creed</div>
-      <div class="card-title">Inclusion Safety: Owed, Not Earned</div>
-      <div class="card-series">Foundations &middot; the ethic toward people</div>
-      <p class="card-moment">Worth before worthiness. Harm is the only disqualifier.</p>
-      <p class="card-desc">The first stage of psychological safety, made into a creed. Where Timothy Clark grounds inclusion safety in common humanity, Star Stuff goes one floor deeper: <strong>you were ★stuff all along, so belonging is constitutive rather than conferred</strong>. Nothing has to be earned by performance, productivity, or compliance — and the one thing that does forfeit it is harm, named plainly so the creed can't be read as limitless tolerance.</p>
-      <div class="card-footer"><span class="card-tag">Creed</span><span class="card-arrow">&rarr;</span></div>
-    </a>
+    <div class="card-wrap" style="--card-color: #22d3ee;">
+      <a class="card" href="inclusion-safety-creed.html">
+        <div class="card-number">A Creed</div>
+        <div class="card-title">Inclusion Safety: Owed, Not Earned</div>
+        <div class="card-series">Foundations &middot; the ethic toward people</div>
+        <p class="card-moment">Worth before worthiness. Harm is the only disqualifier.</p>
+        <p class="card-tagline">Inclusion safety is not a reward for the worthy. It is the baseline we owe one another simply for being here.</p>
+        <p class="card-desc">The first stage of psychological safety, made into a creed: worth before worthiness, with harm the only disqualifier.</p>
+        <div class="card-footer"><span class="card-tag">Creed</span><span class="card-arrow">&rarr;</span></div>
+      </a>
+      <details class="card-details">
+        <summary>Details</summary>
+        <div class="card-details-body"><p>The creed states the whole of it before anything else: <strong>your place among us is not a prize you win — it is yours because you are here.</strong> Then <em>worth before worthiness</em>, and the qualification in full, which is two sentences long: be human, be harmless. No litmus test — not your diagnosis, your speech, your output, your history, or how easily others can make sense of you; there is no audition at this threshold. One disqualifier, and it is harm. Where <strong>Timothy R. Clark</strong> grounds inclusion safety in common humanity (<em>The 4 Stages of Psychological Safety</em>, 2020, Stage 1, quoted on the page: it is <em>&ldquo;not earned but owed&rdquo;</em>, and giving it is <em>&ldquo;a moral imperative&rdquo;</em>), Star Stuff goes one floor deeper — you were ★stuff all along, so belonging is constitutive rather than conferred. The hand-out version is the broadside <em>Owed, Not Earned</em>.</p></div>
+      </details>
+    </div>
 
-    <a class="card" href="too-good-to-check.html" style="--card-color: #fbbf24;">
-      <div class="card-number">An Essay</div>
-      <div class="card-title">Too Good to Check</div>
-      <div class="card-series">Foundations &middot; the ethic toward facts</div>
-      <p class="card-moment">The one that makes every other page falsifiable.</p>
-      <p class="card-desc">How a story gets smoother than the science, and what reading the primary source puts back. <strong>Six ways a fact goes wrong</strong> — the quote nobody said, the number that went stale, the story told backwards, the credit that drifted, the press release instead of the paper, and the finding that flatters you — with seventeen worked corrections drawn from this site's own ledger, <em>including the ones we shipped</em>. The reader-facing front door to the fact-check file.</p>
-      <div class="card-footer"><span class="card-tag">6 ways &middot; 17 corrections</span><span class="card-arrow">&rarr;</span></div>
-    </a>
+    <div class="card-wrap" style="--card-color: #fbbf24;">
+      <a class="card" href="too-good-to-check.html">
+        <div class="card-number">An Essay</div>
+        <div class="card-title">Too Good to Check</div>
+        <div class="card-series">Foundations &middot; the ethic toward facts</div>
+        <p class="card-moment">The one that makes every other page falsifiable.</p>
+        <p class="card-tagline">How a story gets smoother than the science, and what reading the primary source puts back.</p>
+        <p class="card-desc">Six ways a fact goes wrong, and seventeen worked corrections — most of them ours, published, dated, and fixed in public.</p>
+        <div class="card-footer"><span class="card-tag">6 ways &middot; 17 corrections</span><span class="card-arrow">&rarr;</span></div>
+      </a>
+      <details class="card-details">
+        <summary>Details</summary>
+        <div class="card-details-body"><p>How a story gets smoother than the science, and what reading the primary source puts back. Six ways a fact goes wrong — the quote nobody said, the number that went stale, the story told backwards, the credit that drifted, the press release instead of the paper, and the finding that flatters you — with seventeen worked corrections, most of them errors we published and had to fix. Why &ldquo;go to the primary&rdquo; is the opposite move from &ldquo;do your own research,&rdquo; and why the primary source for an Autistic life is an Autistic person. Two diagrams, a table of receipts, a &ldquo;Not:&rdquo; refusals set.</p></div>
+      </details>
+    </div>
 
-    <a class="card" href="who-is-holding-the-candle.html" style="--card-color: #a78bfa;">
-      <div class="card-number">An Essay</div>
-      <div class="card-title">Who Is Holding the Candle</div>
-      <div class="card-series">Foundations &middot; the stance</div>
-      <p class="card-moment">There is no view from nowhere. There is only an unstated view from somewhere.</p>
-      <p class="card-desc">Two Sagans and one method. Carl learned skepticism and wonder together — from parents who knew almost nothing about science — and called them <strong>two uneasily cohabiting modes of thought</strong>; his son Dorion argues that the passive voice and the &ldquo;objective&rdquo; stance <em>betray</em> the fact that every observation is made by a particular person from a distinct place and time. Between them they explain why this collection holds both modes at full strength instead of averaging them, and why it writes <em>we</em>, names whoever caught each error, and publishes its own corrections.</p>
-      <div class="card-footer"><span class="card-tag">The stance</span><span class="card-arrow">&rarr;</span></div>
-    </a>
+    <div class="card-wrap" style="--card-color: #a78bfa;">
+      <a class="card" href="who-is-holding-the-candle.html">
+        <div class="card-number">An Essay</div>
+        <div class="card-title">Who Is Holding the Candle</div>
+        <div class="card-series">Foundations &middot; the stance</div>
+        <p class="card-moment">There is no view from nowhere. There is only an unstated view from somewhere.</p>
+        <p class="card-tagline">Skepticism and wonder, learned at the same time and called uneasy neighbours.</p>
+        <p class="card-desc">Two Sagans and one method — and the reason this site says <em>we</em>.</p>
+        <div class="card-footer"><span class="card-tag">The stance</span><span class="card-arrow">&rarr;</span></div>
+      </a>
+      <details class="card-details">
+        <summary>Details</summary>
+        <div class="card-details-body"><p>Two Sagans and one method. Carl learned skepticism and wonder together — from parents who knew almost nothing about science, and from no teacher at all — and called them two uneasily cohabiting modes of thought. His son Dorion argues that the passive voice, the &ldquo;objective&rdquo; stance and the anonymity of the scientist betray the fact that every observation is made from a distinct place and time by a particular individual. Why the two modes are held at full strength instead of averaged, why the funding decides which questions get asked, and why an accessibility-first collection writes in the first person plural, names whoever caught each error, and publishes its own corrections. One diagram, a table of deletions, a &ldquo;Not:&rdquo; refusals set.</p></div>
+      </details>
+    </div>
 
-    <a class="card" href="a-promise-not-a-finding.html" style="--card-color: #fbbf24;">
-      <div class="card-number">An Essay</div>
-      <div class="card-title">A Promise, Not a Finding</div>
-      <div class="card-series">Foundations &middot; what we may claim</div>
-      <p class="card-moment">A finding can be overturned by the next paper. A promise can only be broken by the people who made it.</p>
-      <p class="card-desc">For forty-nine issues we have signed off <em>Love you down to your star stuff</em>, and <strong>the grammar of that phrase turns out to be load-bearing</strong>. The subject is <em>us</em>, not the cosmos; &ldquo;down to&rdquo; measures how far the love reaches, not why it is given. <strong>The star stuff is the extent of the claim, not its warrant.</strong> Which matters, because grinding the universe down and sieving it turns up no atom of justice: a belonging claim resting on &ldquo;variation persists in nature&rdquo; would be revoked by any paper finding it doesn't. Ours never rested there &mdash; though we wrote the sentence that <em>did</em>, once, in the colophon of Zine No. 1, and repaired it in the same breath. Two working rules follow. Every piece here is a <strong>lie-to-children</strong> in Jack Cohen and Ian Stewart's sense &mdash; a simplification that stays honest only by marking where the rung stops, which is what &ldquo;a rhyme, not a proof&rdquo; has been doing unnamed &mdash; and the ladder has a <em>moral</em> limit as well as an epistemic one. And <strong>First Sight and Second Thoughts</strong>, from <em>Wintersmith</em>, is the name for what the six gates and the public changelog already implement, with the catch that only the second half can be automated. All three ideas are borrowed and are credited on the page's face.</p>
-      <div class="card-footer"><span class="card-tag">What we may claim</span><span class="card-arrow">&rarr;</span></div>
-    </a>
+    <div class="card-wrap" style="--card-color: #fbbf24;">
+      <a class="card" href="a-promise-not-a-finding.html">
+        <div class="card-number">An Essay</div>
+        <div class="card-title">A Promise, Not a Finding</div>
+        <div class="card-series">Foundations &middot; what we may claim</div>
+        <p class="card-moment">A finding can be overturned by the next paper. A promise can only be broken by the people who made it.</p>
+        <p class="card-tagline">For forty-nine issues we have signed off <em>Love you down to your star stuff</em>.</p>
+        <p class="card-desc">The subject is us, not the cosmos — and “down to” measures how far the love reaches, not why it is given.</p>
+        <div class="card-footer"><span class="card-tag">What we may claim</span><span class="card-arrow">&rarr;</span></div>
+      </a>
+      <details class="card-details">
+        <summary>Details</summary>
+        <div class="card-details-body"><p>For forty-nine issues this project has signed off <em>Love you down to your star stuff</em>, and the grammar of that phrase has been doing the hardest work on the site. The subject is <em>us</em>, not the cosmos — and &ldquo;down to&rdquo; measures how far the love reaches, not why it is given. The star stuff is the extent of the claim, not its warrant. Which matters, because grinding the universe down and sieving it turns up no atom of justice in the powder: a belonging claim resting on &ldquo;variation persists in nature&rdquo; would be revoked by any paper finding that it doesn't, and the same move run backwards is how eugenics argued. Ours never rested there. Includes the sentence we <em>did</em> write once, in the colophon of Zine No. 1, and repaired in the same breath. Two rules follow. Every piece here is a lie-to-children in Jack Cohen and Ian Stewart's sense — honest only where it marks the rung it stops at, which is what &ldquo;a rhyme, not a proof&rdquo; has been doing unnamed — and the ladder has a moral limit as well as an epistemic one. And First Sight and Second Thoughts, from Pratchett's <em>Wintersmith</em>, names what the six gates and the public changelog implement, with the catch that only the second half can ever be automated. One diagram, two tables, a &ldquo;Not:&rdquo; refusals set. All three ideas are borrowed, and credited on the page's face.</p></div>
+      </details>
+    </div>
 
-    <a class="card" href="starlight.html" style="--card-color: #FFF8E7;">
-      <div class="card-number">An Essay</div>
-      <div class="card-title">Starlight</div>
-      <div class="card-series">Foundations &middot; the method, and who is running it</div>
-      <p class="card-moment">The colour of the universe is an erratum. That is the whole argument for working in the open.</p>
-      <p class="card-desc">Average the light of 200,000 galaxies and you get a warm off-white someone named <strong>cosmic latte</strong> &mdash; and the first published answer was <em>pale turquoise</em>, wrong because the software assumed a reddish white point, corrected in public within weeks by the astronomers who got it wrong. <strong>&ldquo;I'm very embarrassed,&rdquo;</strong> said one of them, and the correction is why anyone can use the number. So: what is public here in nouns (the repository, the ledger, the errors, the reasoning, the tools, the index) and the one thing deliberately kept private &mdash; <strong>your search query, which never leaves your browser</strong>. Then the machines, in detail: <strong>six gates</strong>, what each asks, and the fault that created it &mdash; 44 pages that printed blank, four links nested inside a link, three collisions all five other gates passed, a zine never listed in the sitemap, a page indexed at 12% that passed its own check. Plus the rules those failures produced: <em>measure, don't count</em>; <em>wait on a condition, never a clock</em>; a page nobody looked at reads <code>UNREAD</code>, never <code>ok</code>. And the division of labour underneath all of it: <strong>machines hold ground, people take it</strong> &mdash; every gate here was written after a person found the fault. Ends with the first plain statement on this site of how generative AI is used, what it is never allowed to do, and why a smoothing machine is a strange thing to build a fact-checked site with. Two diagrams, four tables, a &ldquo;Not:&rdquo; refusals set. Brandeis, Papert &amp; Harel and the 2dF survey team quoted from primaries.</p>
-      <div class="card-footer"><span class="card-tag">6 gates &middot; 50 published errors</span><span class="card-arrow">&rarr;</span></div>
-    </a>
+    <div class="card-wrap" style="--card-color: #FFF8E7;">
+      <a class="card" href="starlight.html">
+        <div class="card-number">An Essay</div>
+        <div class="card-title">Starlight</div>
+        <div class="card-series">Foundations &middot; the method, and who is running it</div>
+        <p class="card-moment">The colour of the universe is an erratum. That is the whole argument for working in the open.</p>
+        <p class="card-tagline">This repository is public — every page, every tool, every error.</p>
+        <p class="card-desc">Making in the open, in the shine of the cosmic latte: a colour first published wrong, and corrected in public by the astronomers who got it wrong.</p>
+        <div class="card-footer"><span class="card-tag">6 gates &middot; 50 published errors</span><span class="card-arrow">&rarr;</span></div>
+      </a>
+      <details class="card-details">
+        <summary>Details</summary>
+        <div class="card-details-body"><p>Making in the open, in the shine of the cosmic latte. Average the light of 200,000 galaxies and you get a warm off-white someone named cosmic latte — and the first published answer was <em>pale turquoise</em>, wrong because the software assumed a reddish white point, corrected in public within weeks by the astronomers who got it wrong. The most-shared fact about the colour of the universe is an erratum, and that is the whole argument for an open repository. What is public here, in nouns: the pages, the ledger, the errors, the reasoning, the tools, the index — and the one thing deliberately kept private, your search query, which never leaves your browser. Then the machines in detail: six automated gates, what each one asks, and the fault that created it — 44 pages that printed blank, four links nested inside a link, three collisions every other gate passed, a live zine never listed in the sitemap, a page indexed at 12% that passed its own check. Plus the rules those failures produced: measure, don't count; wait on a condition, never a clock; a page nobody looked at reads UNREAD, never ok. And the division of labour underneath: machines hold ground, people take it — every gate here was written after a person found the fault. Ends with the first plain statement on this site of how generative AI is used, what it is never allowed to do, and why a smoothing machine is a strange thing to build a fact-checked site with. Two diagrams, four tables, a &ldquo;Not:&rdquo; refusals set.</p></div>
+      </details>
+    </div>
 
-    <a class="card" href="neurodiversity-field-guide-zine.html" style="--card-color: #4ade80;">
-      <div class="card-number">Zine No. 3</div>
-      <div class="card-title">Neurodiversity Field Guide</div>
-      <div class="card-series">Foundations &middot; the paradigm</div>
-      <p class="card-moment">The model the whole site is written inside of.</p>
-      <p class="card-desc">The paradigm, plainly stated and short enough to hand to someone who has never met it: two frameworks compared, three key definitions, five myth/fact pairs, five principles, and what each one changes in practice — from assessment to self-understanding. If a page here says <em>difference, not deficit</em> and moves on without explaining, this is where the explaining lives.</p>
-      <div class="card-footer"><span class="card-tag">Primer</span><span class="card-arrow">&rarr;</span></div>
-    </a>
+    <div class="card-wrap" style="--card-color: #4ade80;">
+      <a class="card" href="neurodiversity-field-guide-zine.html">
+        <div class="card-number">Zine No. 3</div>
+        <div class="card-title">Neurodiversity Field Guide</div>
+        <div class="card-series">Foundations &middot; the paradigm</div>
+        <p class="card-moment">The model the whole site is written inside of.</p>
+        <p class="card-tagline">What the paradigm actually claims. What it means to say variation instead of disorder.</p>
+        <p class="card-desc">The paradigm, plainly stated — two frameworks compared, three key definitions, five myth/fact pairs, five principles, and what it means in practice.</p>
+        <div class="card-footer"><span class="card-tag">Primer</span><span class="card-arrow">&rarr;</span></div>
+      </a>
+      <details class="card-details">
+        <summary>Details</summary>
+        <div class="card-details-body"><p>Seven spreads, and the primer the rest of the collection leans on. Two frameworks set side by side, one of them a medical model. Neurodiversity as a paradigm rather than a buzzword. What the DSM actually is — a tool, with the emphasis on what a tool is for. The universe that doesn't pathologize its own variation. And what all of it changes in practice. Three key definitions, five myth/fact pairs and five principles, running from assessment through to self-understanding. Filed in <em>Foundations</em> rather than in a register collection because it is not one settled fact followed honestly — it states the frame every other piece here assumes, which is also why it keeps its number, No. 3, against the collection that would otherwise claim it.</p></div>
+      </details>
+    </div>
 
-    <a class="card" href="the-garden-and-the-stars-zine.html" style="--card-color: #f472b6;">
-      <div class="card-number">Zine No. 18</div>
-      <div class="card-title">The Garden and the Stars</div>
-      <div class="card-series">Foundations &middot; the self-portrait</div>
-      <p class="card-moment">A garden, not a stream.</p>
-      <p class="card-desc">Knowledge gardening as star stuff, and the only piece here whose subject is this site. Evergreen rather than dated, cross-linked rather than sequential, grown from lived experience and held in common — <strong>a knowledge garden is how star stuff comes to know itself</strong>. The cosmos scatters its elements like a seed-head; the zines are the flowers, printed free and given away. It also explains why the collections are pages that link rather than folders that contain.</p>
-      <div class="card-footer"><span class="card-tag">Self-portrait</span><span class="card-arrow">&rarr;</span></div>
-    </a>
+    <div class="card-wrap" style="--card-color: #f472b6;">
+      <a class="card" href="the-garden-and-the-stars-zine.html">
+        <div class="card-number">Zine No. 18</div>
+        <div class="card-title">The Garden and the Stars</div>
+        <div class="card-series">Foundations &middot; the self-portrait</div>
+        <p class="card-moment">A garden, not a stream.</p>
+        <p class="card-tagline">on knowledge gardens, the commons, and how star stuff comes to know itself</p>
+        <p class="card-desc">A self-portrait of the whole project: if stimpunks.org is the knowledge garden, starstuff.earth is where it flowers, and these zines are the blooms.</p>
+        <div class="card-footer"><span class="card-tag">Self-portrait</span><span class="card-arrow">&rarr;</span></div>
+      </a>
+      <details class="card-details">
+        <summary>Details</summary>
+        <div class="card-details-body"><p>Knowledge gardening as star stuff — a self-portrait of the whole project. If stimpunks.org is the knowledge garden, starstuff.earth is where it flowers, and these zines are the blooms. A garden, not a stream: evergreen, cross-linked, walkable, grown from lived experience rather than handed down as hierarchy (a rhizome and a mycelial network, after Deleuze &amp; Guattari). The cosmic turn: a knowledge garden is how star stuff comes to know itself — a supernova scatters its forged elements like a seed-head (SN 1006, liberating iron), and the universe knows itself not as a vault but as a garden, by growing and seeding. Held in common, not enclosed: CC BY-SA, print free, share freely — the licence line is the seed dispersal. Grounded in Caulfield, Appleton, Bush, Deleuze &amp; Guattari, Ostrom, and Sagan, and rooted in Stimpunks' own garden and commons. Eight spreads, six diagrams, a cover bed of blooms keyed to the prior zines' colours, a “Not:” refusals set.</p></div>
+      </details>
+    </div>
 
   </div>
 
@@ -304,5 +387,22 @@
 
 </div><!-- /doc-shell -->
 
+<script>
+/* Belt and braces for the paper copy: the @media print rule opens the card
+   disclosures with CSS, and this opens them for real, then puts each one back
+   exactly as the reader left it. Two mechanisms because a closed <details> has
+   hidden its content three different ways across engine versions, and the
+   failure mode is silent — a page that prints its cards without their
+   descriptions looks like a design choice, not a bug. */
+(function () {
+  var cards = function () { return document.querySelectorAll('.card-details'); };
+  addEventListener('beforeprint', function () {
+    cards().forEach(function (d) { d.dataset.wasOpen = d.open ? '1' : ''; d.open = true; });
+  });
+  addEventListener('afterprint', function () {
+    cards().forEach(function (d) { d.open = d.dataset.wasOpen === '1'; delete d.dataset.wasOpen; });
+  });
+})();
+</script>
 </body>
 </html>

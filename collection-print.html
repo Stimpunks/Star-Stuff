@@ -127,19 +127,46 @@
 
   .artifact-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
 
-  .card { background: var(--card); border-radius: 8px; border: 1px solid var(--border); padding: 1.25rem; position: relative; text-decoration: none; color: inherit; display: flex; flex-direction: column; transition: box-shadow 0.2s ease, background 0.2s ease, transform 0.2s ease; }
-  .card:hover { background: #131330; box-shadow: 0 4px 28px rgba(167,139,250,0.14); transform: translateY(-2px); }
-  .card::before { content: ''; position: absolute; top: 8px; left: 0; width: 3px; height: calc(100% - 16px); background: var(--card-color, var(--violet)); border-radius: 0 2px 2px 0; }
+  /* A card is three parts: a wrapper that draws the box, an anchor that is the
+     link, and a <details> that holds the full description. The disclosure is a
+     SIBLING of the anchor and must stay one — <a> may not contain interactive
+     content, and check-markup.mjs cannot see that fault. */
+  .card-wrap { background: var(--card); border-radius: 8px; border: 1px solid var(--border); position: relative; display: flex; flex-direction: column; transition: box-shadow 0.2s ease, background 0.2s ease, transform 0.2s ease; }
+  .card { padding: 1.25rem; text-decoration: none; color: inherit; display: flex; flex-direction: column; flex: 1; }
+  .card-wrap:has(> .card:hover) { background: #131330; box-shadow: 0 4px 28px rgba(167,139,250,0.14); transform: translateY(-2px); }
+  .card-wrap::before { content: ''; position: absolute; top: 8px; left: 0; width: 3px; height: calc(100% - 16px); background: var(--card-color, var(--violet)); border-radius: 0 2px 2px 0; }
 
   .card-number { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dim); margin-bottom: 0.5rem; }
   .card-title { font-size: 1.25rem; font-weight: 600; color: var(--star-white); line-height: 1.2; margin-bottom: 0.4rem; }
   .card-series { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--card-color, var(--violet)); margin-bottom: 0.75rem; }
   .card-moment { font-family: 'Space Mono', monospace; font-size: 0.68rem; line-height: 1.7; color: var(--star-white); margin-bottom: 0.7rem; padding-left: 0.7rem; border-left: 2px solid var(--card-color, var(--violet)); }
+  .card-tagline { font-size: 0.9375rem; font-style: italic; color: var(--star-white); line-height: 1.55; margin-bottom: 0.6rem; }
   .card-desc { font-size: 0.875rem; color: var(--stardust); line-height: 1.65; flex: 1; margin-bottom: 1.25rem; }
   .card-footer { display: flex; justify-content: space-between; align-items: center; padding-top: 0.9rem; border-top: 1px solid var(--border); }
   .card-tag { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dim); background: rgba(167,139,250,0.08); border: 1px solid var(--border); border-radius: 4px; padding: 0.2rem 0.6rem; }
   .card-arrow { font-size: 0.875rem; color: var(--card-color, var(--violet)); font-weight: 700; transition: transform 0.2s ease; }
-  .card:hover .card-arrow { transform: translateX(3px); }
+  .card-wrap:has(> .card:hover) .card-arrow { transform: translateX(3px); }
+
+  .card-details { border-top: 1px solid var(--border); }
+  .card-details > summary { cursor: pointer; list-style: none; padding: 0.7rem 1.25rem; font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dim); display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; }
+  .card-details > summary::-webkit-details-marker { display: none; }
+  .card-details > summary::after { content: '\25be'; font-size: 0.75rem; color: var(--card-color, var(--violet)); transition: transform 0.2s ease; }
+  .card-details[open] > summary::after { transform: rotate(180deg); }
+  .card-details > summary:hover { color: var(--star-white); }
+  .card-details > summary:focus-visible { outline: 2px solid var(--card-color, var(--violet)); outline-offset: -2px; border-radius: 0 0 7px 7px; }
+  .card-details-body { padding: 0 1.25rem 1.25rem; font-size: 0.875rem; color: var(--stardust); line-height: 1.65; }
+  .card-details-body p { margin: 0; }
+
+  /* A closed <details> prints as nothing, and the token inversion cannot reach it
+     because this is not a colour. How a closed disclosure hides its content has
+     moved across engine versions, so this pairs with the beforeprint handler at
+     the foot of the page rather than betting on one engine. */
+  @media print {
+    .card-details > summary { display: none !important; }
+    .card-details > .card-details-body { display: block !important; }
+    .card-details::details-content { content-visibility: visible !important; block-size: auto !important; }
+    .card-wrap { break-inside: avoid; }
+  }
 
   .colophon-footer { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--dim2); line-height: 2.2; margin-top: 3rem; padding-top: 1.4rem; border-top: 1px solid rgba(167,139,250,0.14); }
   .colophon-footer a { color: inherit; }
@@ -187,104 +214,181 @@
 
   <div class="artifact-grid">
 
-    <a class="card" href="ls-broadside.html" style="--card-color: #fbbf24;">
-      <div class="card-number">Broadside</div>
-      <div class="card-title">L★S Broadside</div>
-      <div class="card-series">Print &middot; Single sheet</div>
-      <p class="card-moment">The moment: you are giving it to someone you love.</p>
-      <p class="card-desc">The mark, large, with Sagan's line and the three pillars — bone, star, paradigm. The reverse carries the full text of the <em>Bone Song</em> prose poem and the sources for the piezoelectric claim: Fukada &amp; Yasuda (1957), and the effect belonging to collagen rather than mineral. Compresses <em>Bone Song</em>, Zine No. 1.</p>
-      <div class="card-footer"><span class="card-tag">Print ready</span><span class="card-arrow">&rarr;</span></div>
-    </a>
+    <div class="card-wrap" style="--card-color: #fbbf24;">
+      <a class="card" href="ls-broadside.html">
+        <div class="card-number">Broadside</div>
+        <div class="card-title">L★S Broadside</div>
+        <div class="card-series">Print &middot; Single sheet</div>
+        <p class="card-moment">The moment: you are giving it to someone you love.</p>
+        <p class="card-tagline">Two-sided single sheet, designed for paper rather than for a screen.</p>
+        <p class="card-desc">L★S large on the face with Sagan's line and the three pillars; the full <em>Bone Song</em> poem on the reverse. Sized to print uncropped on A4 or US Letter.</p>
+        <div class="card-footer"><span class="card-tag">Print ready</span><span class="card-arrow">&rarr;</span></div>
+      </a>
+      <details class="card-details">
+        <summary>Details</summary>
+        <div class="card-details-body"><p>Two sides, one sheet, designed for paper rather than for a screen. Side A carries L★S large with Sagan's line from <em>Cosmos</em> (1980) — we are made of star-stuff, and a way for the cosmos to know itself — and the three pillars beneath it: <strong>the bone</strong> (your skeleton is piezoelectric; press on it and it generates voltage, so you are literally electric), <strong>the star</strong> (the calcium in those bones was forged in a dying star billions of years before you), and the belonging claim the two of them carry between them. Side B is the full <em>Bone Song</em> prose poem. Sized to print uncropped on A4 <em>or</em> US Letter — one physical sheet, two sides, verified by printing it rather than by assuming, with an on-screen toggle between the sides.</p></div>
+      </details>
+    </div>
 
-    <a class="card" href="six-ways-broadside.html" style="--card-color: #a78bfa;">
-      <div class="card-number">Broadside</div>
-      <div class="card-title">Six Ways a Fact Goes Wrong</div>
-      <div class="card-series">Print &middot; Single sheet</div>
-      <p class="card-moment">The moment: a claim arrives, and it is a little too neat.</p>
-      <p class="card-desc">A field card for checking a claim. Six failure modes with the tell that gives each one away — <em>more quotable than anything anyone says out loud</em>, <em>repeated everywhere and dated nowhere</em>, <em>you wanted it true before you read it</em>. The reverse carries eight habits, the refusals, and five of our own published errors, each tagged with the mode it belongs to. Compresses <em>Too Good to Check</em>.</p>
-      <div class="card-footer"><span class="card-tag">Print ready</span><span class="card-arrow">&rarr;</span></div>
-    </a>
+    <div class="card-wrap" style="--card-color: #a78bfa;">
+      <a class="card" href="six-ways-broadside.html">
+        <div class="card-number">Broadside</div>
+        <div class="card-title">Six Ways a Fact Goes Wrong</div>
+        <div class="card-series">Print &middot; Single sheet</div>
+        <p class="card-moment">The moment: a claim arrives, and it is a little too neat.</p>
+        <p class="card-tagline">A field card for checking a claim.</p>
+        <p class="card-desc">The hand-out companion to <em>Too Good to Check</em> — six failure modes and their tells on the face; the habits, five of our own published errors, and the refusals on the reverse.</p>
+        <div class="card-footer"><span class="card-tag">Print ready</span><span class="card-arrow">&rarr;</span></div>
+      </a>
+      <details class="card-details">
+        <summary>Details</summary>
+        <div class="card-details-body"><p>A field card for checking a claim, and the hand-out companion to <em>Too Good to Check</em>. Side A opens on the reason the card exists — <strong>a story that fits gets less scrutiny, which is exactly when it needs more</strong> — then gives six shapes the failure takes, each with its tell and what to do about it: the quote nobody said (tell: more quotable than anything anyone says out loud; do: search the actual book), the number that went stale (repeated everywhere, dated nowhere), the story told backwards, the credit that drifted, the press release instead of the paper, and the finding that flatters you. Side B holds the habits, five of our own published errors, and the refusals. Sized to print on A4 or US Letter.</p></div>
+      </details>
+    </div>
 
-    <a class="card" href="owed-not-earned-broadside.html" style="--card-color: #4ade80;">
-      <div class="card-number">Broadside</div>
-      <div class="card-title">Owed, Not Earned</div>
-      <div class="card-series">Print &middot; Single sheet</div>
-      <p class="card-moment">The moment: you are opening a room, and this goes on the door.</p>
-      <p class="card-desc">The qualification at the size you can read across a room — <em>be human, be harmless</em> — with the one disqualifier under it: acceptance is owed to everyone, and harm, not difference, is the only thing that can cost you your place. The reverse carries the whole creed, Timothy R. Clark and Frederick Douglass with their citations, and the four doors. Compresses the <em>Inclusion Safety</em> creed.</p>
-      <div class="card-footer"><span class="card-tag">Print ready</span><span class="card-arrow">&rarr;</span></div>
-    </a>
+    <div class="card-wrap" style="--card-color: #4ade80;">
+      <a class="card" href="owed-not-earned-broadside.html">
+        <div class="card-number">Broadside</div>
+        <div class="card-title">Owed, Not Earned</div>
+        <div class="card-series">Print &middot; Single sheet</div>
+        <p class="card-moment">The moment: you are opening a room, and this goes on the door.</p>
+        <p class="card-tagline">A sheet for the door.</p>
+        <p class="card-desc">The hand-out companion to the Inclusion Safety creed: be human, be harmless; no litmus test; one disqualifier, and it is harm.</p>
+        <div class="card-footer"><span class="card-tag">Print ready</span><span class="card-arrow">&rarr;</span></div>
+      </a>
+      <details class="card-details">
+        <summary>Details</summary>
+        <div class="card-details-body"><p>A creed for the door, and the hand-out companion to the Inclusion Safety creed. Side A states the qualification in full and it is two sentences long: <strong>be human, be harmless. Meet both and you are in.</strong> Then the numbered points — <em>no litmus test</em>: not your diagnosis, your speech, your output, your history, or how easily others can make sense of you, because there is no audition at this threshold; and <em>worth, not worthiness</em>: worth is a thing you have, entire, already. One disqualifier, and it is harm. Side B is the creed itself. Sized to print uncropped on A4 or US Letter, and meant to go on an actual door.</p></div>
+      </details>
+    </div>
 
-    <a class="card" href="what-we-refuse-broadside.html" style="--card-color: #f472b6;">
-      <div class="card-number">Broadside</div>
-      <div class="card-title">What We Refuse</div>
-      <div class="card-series">Print &middot; Single sheet</div>
-      <p class="card-moment">The moment: someone is about to describe you — or is about to write about us.</p>
-      <p class="card-desc">The only sheet here that compresses no single piece, because it compresses the <em>method</em>. Nearly every piece we publish ends by naming the traps it won't fall into; laid side by side, the same refusals keep returning, so this one counts them. <em>A rhyme, not a proof</em> appears in nine pieces. The reverse says what each refusal protects, and ends on the one that points inward.</p>
-      <div class="card-footer"><span class="card-tag">Print ready</span><span class="card-arrow">&rarr;</span></div>
-    </a>
+    <div class="card-wrap" style="--card-color: #f472b6;">
+      <a class="card" href="what-we-refuse-broadside.html">
+        <div class="card-number">Broadside</div>
+        <div class="card-title">What We Refuse</div>
+        <div class="card-series">Print &middot; Single sheet</div>
+        <p class="card-moment">The moment: someone is about to describe you — or is about to write about us.</p>
+        <p class="card-tagline">Nearly every piece here ends by naming the traps it won't fall into.</p>
+        <p class="card-desc">Lay them side by side and the same refusals keep returning — so this sheet collects them and counts them, with the measured number of pieces each appears in.</p>
+        <div class="card-footer"><span class="card-tag">Print ready</span><span class="card-arrow">&rarr;</span></div>
+      </a>
+      <details class="card-details">
+        <summary>Details</summary>
+        <div class="card-details-body"><p>Nearly every piece here ends by naming the traps it won't fall into. Lay them side by side and the same refusals keep returning — and <strong>how often each returns is the finding, not the decoration</strong>, so this sheet counts them. Side A gives six recurring refusals with the measured number of pieces each appears in. <em>A rhyme, not a proof</em> appears in nine, with the naturalistic fallacy stated as crisply as anywhere on the site: that a pattern recurs in nature is not why difference deserves welcome, since <em>it would deserve welcome in a universe that made exactly one shape</em> — and the pieces it appears in are named underneath it. Side B is what is left standing once the refusals are subtracted. Sized for A4 or US Letter.</p></div>
+      </details>
+    </div>
 
-    <a class="card" href="the-same-water-broadside.html" style="--card-color: #22d3ee;">
-      <div class="card-number">Broadside</div>
-      <div class="card-title">The Same Water</div>
-      <div class="card-series">Print &middot; Single sheet</div>
-      <p class="card-moment">The moment: the day you can't do what you did last week.</p>
-      <p class="card-desc">Capacity is a state, not a trait, and the drop from managing to not managing is a cliff rather than a ramp — you were near a boundary. The reverse carries supercooling, critical slowing down and threshold anxiety, then two plain lists: what to ask for, and what not to say. Compresses <em>The Same Water</em>, Zine No. 20.</p>
-      <div class="card-footer"><span class="card-tag">Print ready</span><span class="card-arrow">&rarr;</span></div>
-    </a>
+    <div class="card-wrap" style="--card-color: #22d3ee;">
+      <a class="card" href="the-same-water-broadside.html">
+        <div class="card-number">Broadside</div>
+        <div class="card-title">The Same Water</div>
+        <div class="card-series">Print &middot; Single sheet</div>
+        <p class="card-moment">The moment: the day you can't do what you did last week.</p>
+        <p class="card-tagline">Capacity is a state, not a trait.</p>
+        <p class="card-desc">The hand-out companion to Zine No. 20: capacity is a state, not a trait, and the flip from managing to not managing is a cliff rather than a ramp.</p>
+        <div class="card-footer"><span class="card-tag">Print ready</span><span class="card-arrow">&rarr;</span></div>
+      </a>
+      <details class="card-details">
+        <summary>Details</summary>
+        <div class="card-details-body"><p>For the day you can't do what you did last week — the hand-out companion to Zine No. 20. Side A states the physics and then the claim: cool a glass of water and it does not slowly thicken toward solid; it stays liquid, liquid, liquid, and then at a single temperature flips all at once into ice. Same molecules, nothing added and nothing taken away. <strong>Capacity is a state, not a trait.</strong> The figure plots two lines against worsening conditions — a dashed diagonal for the gradual decline people expect, and the real curve, which holds and then drops. <em>You are not inconsistent; you were near a boundary.</em> Side B covers supercooling, critical slowing down, threshold anxiety, and what to ask for. Sized for A4 or US Letter.</p></div>
+      </details>
+    </div>
 
-    <a class="card" href="shared-air-broadside.html" style="--card-color: #4ade80;">
-      <div class="card-number">Broadside</div>
-      <div class="card-title">Shared Air</div>
-      <div class="card-series">Print &middot; Single sheet</div>
-      <p class="card-moment">The moment: someone is asking for a window, and being told they're too sensitive.</p>
-      <p class="card-desc">Don't blame the canary; change the air. One air with no walls in it, shared-air space and co-regulation, and the habitability question on the face. The reverse is the most actionable in the rack — what to build, then what to say and what not to say. It is also the only sheet that stops <em>short</em> on purpose: the Corsi&ndash;Rosenthal box is described exactly as its parent describes it and no further, because a build spec that is slightly wrong on paper cannot be corrected once it is on a wall. Compresses <em>Shared Air</em>, Zine No. 24.</p>
-      <div class="card-footer"><span class="card-tag">Print ready</span><span class="card-arrow">&rarr;</span></div>
-    </a>
+    <div class="card-wrap" style="--card-color: #4ade80;">
+      <a class="card" href="shared-air-broadside.html">
+        <div class="card-number">Broadside</div>
+        <div class="card-title">Shared Air</div>
+        <div class="card-series">Print &middot; Single sheet</div>
+        <p class="card-moment">The moment: someone is asking for a window, and being told they're too sensitive.</p>
+        <p class="card-tagline">For the room where someone can't breathe easy. Don't blame the canary; change the air.</p>
+        <p class="card-desc">The hand-out companion to Zine No. 24 — one air with no walls in it, shared-air space and co-regulation, and the habitability question.</p>
+        <div class="card-footer"><span class="card-tag">Print ready</span><span class="card-arrow">&rarr;</span></div>
+      </a>
+      <details class="card-details">
+        <summary>Details</summary>
+        <div class="card-details-body"><p>Don't blame the canary; change the air. One air with no walls in it, shared-air space and co-regulation, and the habitability question on the face. The reverse is the most actionable in the rack — what to build, then what to say and what not to say. It is also the only sheet that stops <em>short</em> on purpose: the Corsi&ndash;Rosenthal box is described exactly as its parent describes it and no further, because a build spec that is slightly wrong on paper cannot be corrected once it is on a wall. Compresses <em>Shared Air</em>, Zine No. 24.</p></div>
+      </details>
+    </div>
 
-    <a class="card" href="better-get-used-to-it-broadside.html" style="--card-color: #a78bfa;">
-      <div class="card-number">Broadside</div>
-      <div class="card-title">Better Get Used To It</div>
-      <div class="card-series">Print &middot; Single sheet</div>
-      <p class="card-moment">The moment: someone says &ldquo;the real world won't wait,&rdquo; and expects that to end it.</p>
-      <p class="card-desc">BGUTI, named by Alfie Kohn in 2005, with both of his sentences verbatim: the defence has to ignore developmental difference or it stops working, and people don't get better at coping with unhappiness by being deliberately made unhappy young. The title is the doctrine <em>in quotation marks</em> on purpose — a face that reads &ldquo;the real world won't wait&rdquo; unmarked looks like agreement from across a room. The reverse inherits the zine's structural safeguard: the shark's bill comes before the moral. Compresses <em>Two Hundred Years Before You're Grown</em>, Zine No. 34.</p>
-      <div class="card-footer"><span class="card-tag">Print ready</span><span class="card-arrow">&rarr;</span></div>
-    </a>
+    <div class="card-wrap" style="--card-color: #a78bfa;">
+      <a class="card" href="better-get-used-to-it-broadside.html">
+        <div class="card-number">Broadside</div>
+        <div class="card-title">Better Get Used To It</div>
+        <div class="card-series">Print &middot; Single sheet</div>
+        <p class="card-moment">The moment: someone says &ldquo;the real world won't wait,&rdquo; and expects that to end it.</p>
+        <p class="card-tagline">Hardship now is not preparation.</p>
+        <p class="card-desc">BGUTI, named by Alfie Kohn in 2005, and why hardship now is not preparation. The hand-out companion to Zine No. 34.</p>
+        <div class="card-footer"><span class="card-tag">Print ready</span><span class="card-arrow">&rarr;</span></div>
+      </a>
+      <details class="card-details">
+        <summary>Details</summary>
+        <div class="card-details-body"><p>For the meeting where someone says <em>the real world won't wait</em> — the hand-out companion to Zine No. 34. BGUTI, named by Alfie Kohn in 2005, and why hardship now is not preparation: the doctrine has to ignore developmental difference or it stops working, and the claim underneath isn't true either. The reverse keeps the zine's own safeguard — the Greenland shark's 156-year childhood <em>and the bill attached to it</em> come before any application to people — then the social model turn, what to ask instead, and the refusals that stop it becoming a slow-is-beautiful poster. One sheet, two sides, A4 <em>or</em> US Letter.</p></div>
+      </details>
+    </div>
 
-    <a class="card" href="star-stuff-elements-broadside.html" style="--card-color: #fbbf24;">
-      <div class="card-number">Broadside</div>
-      <div class="card-title">The Star Stuff You're Made Of</div>
-      <div class="card-series">Print &middot; Single sheet</div>
-      <p class="card-moment">The moment: you want to hand someone the fact, and let them check it.</p>
-      <p class="card-desc">Eight elements with their house names and their forges, as a chart you can read across a room; the five forges in order on the reverse, from the Big Bang to neutron-star mergers. It was <strong>held back twice on rule three</strong> — a bedroom wall is a placement, not a moment — and ships because the moment turned out to be nameable: the face is the gift, the verso is the checking, and a poster would stop after the face. Building it also caught an error in its own parent. Compresses <em>A Field Guide to the Star Stuff You're Made Of</em>, Field Guide No. 2.</p>
-      <div class="card-footer"><span class="card-tag">Print ready</span><span class="card-arrow">&rarr;</span></div>
-    </a>
+    <div class="card-wrap" style="--card-color: #fbbf24;">
+      <a class="card" href="star-stuff-elements-broadside.html">
+        <div class="card-number">Broadside</div>
+        <div class="card-title">The Star Stuff You're Made Of</div>
+        <div class="card-series">Print &middot; Single sheet</div>
+        <p class="card-moment">The moment: you want to hand someone the fact, and let them check it.</p>
+        <p class="card-tagline">The periodic table read as autobiography, and the sheet most likely to end up on a wall.</p>
+        <p class="card-desc">Eight elements on the face with their house names and their forges — the hand-out companion to Field Guide No. 2.</p>
+        <div class="card-footer"><span class="card-tag">Print ready</span><span class="card-arrow">&rarr;</span></div>
+      </a>
+      <details class="card-details">
+        <summary>Details</summary>
+        <div class="card-details-body"><p>The periodic table read as autobiography, and the sheet in the rack most likely to end up on a wall — the hand-out companion to Field Guide No. 2. Eight elements on the face with their house names and their forges: hydrogen from the Big Bang, carbon from aging stars, oxygen and calcium from massive stars, iodine from colliding neutron stars. The reverse walks the five forges in order and carries a correction — <em>iron has two parents</em>, roughly half from core-collapse supernovae and half from Type Ia. One sheet, two sides, A4 <em>or</em> US Letter.</p></div>
+      </details>
+    </div>
 
-    <a class="card" href="not-a-line-broadside.html" style="--card-color: #f472b6;">
-      <div class="card-number">Broadside</div>
-      <div class="card-title">Not a Line</div>
-      <div class="card-series">Print &middot; Single sheet</div>
-      <p class="card-moment">The moment: someone at the table is about to say &ldquo;mild,&rdquo; &ldquo;high-functioning,&rdquo; or &ldquo;low support needs.&rdquo;</p>
-      <p class="card-desc">A functioning-labels field card, and the sheet in the rack with the clearest moment of any of them. The face draws the <strong>spiky profile</strong> — grid, baseline and all — then five phrases with what each one actually <em>does</em>: <em>high-functioning</em> is heard as a compliment and used as a refusal; <em>low support needs</em> renames the rungs without removing the ladder. Drawing the profile in order to refuse it is deliberate: you cannot refuse a picture you have not shown, and the reverse is where the grid gets dropped. The verso carries what to say instead, the spectroscopy fact a spectrum actually names, Helen Edgar's <em>constellation of intensities</em>, and the guardrail the whole sheet stands on — refusing the line is not refusing that some of us need far more support: <strong>no rank, and all the care.</strong> It has no &ldquo;Not:&rdquo; block, alone in the rack, because the face already is one. Compresses <em>Not a Line</em>, Zine No. 21.</p>
-      <div class="card-footer"><span class="card-tag">Print ready</span><span class="card-arrow">&rarr;</span></div>
-    </a>
+    <div class="card-wrap" style="--card-color: #f472b6;">
+      <a class="card" href="not-a-line-broadside.html">
+        <div class="card-number">Broadside</div>
+        <div class="card-title">Not a Line</div>
+        <div class="card-series">Print &middot; Single sheet</div>
+        <p class="card-moment">The moment: someone at the table is about to say &ldquo;mild,&rdquo; &ldquo;high-functioning,&rdquo; or &ldquo;low support needs.&rdquo;</p>
+        <p class="card-tagline">The sheet you hand across the table when someone is about to say <em>mild</em>.</p>
+        <p class="card-desc">A functioning-labels field card: the face draws the spiky profile in order to refuse it, and the reverse is where the grid gets dropped.</p>
+        <div class="card-footer"><span class="card-tag">Print ready</span><span class="card-arrow">&rarr;</span></div>
+      </a>
+      <details class="card-details">
+        <summary>Details</summary>
+        <div class="card-details-body"><p>A functioning-labels field card — the sheet you hand across the table when someone is about to say <em>mild</em>, <em>high-functioning</em>, or <em>low support needs</em>. The face draws the spiky profile, grid and baseline and all, and then five phrases with what each one actually <strong>does</strong>: <em>high-functioning</em> is heard as a compliment and used as a refusal; <em>low support needs</em> renames the rungs without removing the ladder; <em>mild</em> reports how much your difference costs the person describing it. Drawing the profile in order to refuse it is the point — you cannot refuse a picture you have not shown — and the reverse is where the grid gets dropped. There you get what to say instead, the spectroscopy fact (a spectrum is a fingerprint, not a scale), Helen Edgar's <em>constellation of intensities</em>, and the guardrail the whole sheet stands on: refusing the line is not refusing that some of us need far more support. <strong>No rank, and all the care.</strong> One sheet, two sides, A4 <em>or</em> US Letter.</p></div>
+      </details>
+    </div>
 
-    <a class="card" href="shorthand-evolution.html" style="--card-color: #fbbf24;">
-      <div class="card-number">Typographic</div>
-      <div class="card-title">Shorthand Evolution: LYDTYSS → L★S</div>
-      <div class="card-series">Print &middot; Typographic</div>
-      <p class="card-moment">Not a broadside — it fails rule four, and is in the rack anyway.</p>
-      <p class="card-desc">How one phrase compressed itself into a glyph. Five shorthands — LYDTYSS, LYSS, LUSS, L★S, ★stuff — with their etymologies and what each compression preserved and let go. It is a typographic specimen rather than a sheet: no fixed paper size, no A/B face, no spot inks. It sits in Print because that is where it is useful, and it is named here rather than quietly counted as another broadside.</p>
-      <div class="card-footer"><span class="card-tag">7 spreads</span><span class="card-arrow">&rarr;</span></div>
-    </a>
+    <div class="card-wrap" style="--card-color: #fbbf24;">
+      <a class="card" href="shorthand-evolution.html">
+        <div class="card-number">Typographic</div>
+        <div class="card-title">Shorthand Evolution: LYDTYSS → L★S</div>
+        <div class="card-series">Print &middot; Typographic</div>
+        <p class="card-moment">Not a broadside — it fails rule four, and is in the rack anyway.</p>
+        <p class="card-tagline">How one phrase compressed itself into a glyph.</p>
+        <p class="card-desc">Five shorthands — LYDTYSS, LYSS, LUSS, L★S, ★stuff — with their etymologies, and what each compression preserved and let go.</p>
+        <div class="card-footer"><span class="card-tag">7 spreads</span><span class="card-arrow">&rarr;</span></div>
+      </a>
+      <details class="card-details">
+        <summary>Details</summary>
+        <div class="card-details-body"><p>Five compressions, each with its own section and its own argument. The phrase before it became portable. Dropping the scaffolding while keeping the weight — LYDTYSS to LYSS. The single letter that changes and opens the sound up — LYSS to LUSS. The point at which a symbol earns its place, L★S. And the star taking everything else: ★stuff, the noun, reclaimed. Each with its etymology, its register, and an honest account of what the compression preserved and what it let go. Filed in <em>Print</em> because it is a typographic specimen rather than an essay — the subject is what happens to letterforms under pressure, which is why it sits beside the broadsides rather than in a register collection.</p></div>
+      </details>
+    </div>
 
-    <a class="card" href="constellation-sheet.html" style="--card-color: #a78bfa;">
-      <div class="card-number">Blank sheet</div>
-      <div class="card-title">The Constellation Sheet</div>
-      <div class="card-series">Print &middot; Blank</div>
-      <p class="card-moment">Not a broadside either — it fails rule one, and that is the whole idea.</p>
-      <p class="card-desc">Eighty stars, nothing joined, and a title with a gap in it: <em>My ______ Galaxy</em>. Field Guide No. 12 ends by asking readers to draw their own constellations, and the site gave them nothing to draw on; this is that gap, closed. Every other sheet in this rack compresses an argument made at length somewhere else. <strong>This one compresses nothing — it is a surface</strong>, and the reverse is a blank Constellation Index of ten rows. Ten rather than twenty, because twenty is Helen Edgar's number and printing hers would turn a personal map into a quota. The stars are SVG circles rather than the site's usual CSS starfield, which matters more here than anywhere: browsers omit background graphics by default, so a gradient field would have printed as an empty white box.</p>
-      <div class="card-footer"><span class="card-tag">2 sides &middot; 80 stars</span><span class="card-arrow">&rarr;</span></div>
-    </a>
+    <div class="card-wrap" style="--card-color: #a78bfa;">
+      <a class="card" href="constellation-sheet.html">
+        <div class="card-number">Blank sheet</div>
+        <div class="card-title">The Constellation Sheet</div>
+        <div class="card-series">Print &middot; Blank</div>
+        <p class="card-moment">Not a broadside either — it fails rule one, and that is the whole idea.</p>
+        <p class="card-tagline">Eighty stars, nothing joined, and a title with a gap in it: My ______ Galaxy.</p>
+        <p class="card-desc">Field Guide No. 12 ends by asking you to draw your own constellations, and the site gave you nothing to draw on — this is that gap, closed.</p>
+        <div class="card-footer"><span class="card-tag">2 sides &middot; 80 stars</span><span class="card-arrow">&rarr;</span></div>
+      </a>
+      <details class="card-details">
+        <summary>Details</summary>
+        <div class="card-details-body"><p>Eighty stars, nothing joined, and a title with a gap in it: <em>My ______ Galaxy.</em> <em>Field Guide No. 12</em> ends by asking you to draw your own constellations, and the site gave you nothing to draw on — this is that gap, closed. Every other sheet in the print rack compresses an argument made at length somewhere else; <strong>this one compresses nothing, because it is a surface.</strong> The face is the field, with a rule where Helen Edgar's title reads <em>Monotropic</em>, because that is her word for her own experience and a blank sheet must not assume it of whoever picks it up. The reverse is a blank Constellation Index of ten rows — ten rather than twenty, since twenty is <em>her</em> number and printing hers would quietly turn a personal map into a quota. The stars are SVG circles rather than the site's usual CSS starfield, which matters more here than anywhere else on this site: browsers leave background graphics off by default, so a gradient field would have printed as an empty white box, and a blank sheet with no stars on it is not a blank sheet, it is a mistake. Verified by printing it — two sides on A4 <em>and</em> US Letter, with the dots landing on paper. There is no wrong way to fill it in, and no score at the end.</p></div>
+      </details>
+    </div>
 
   </div>
 
@@ -341,5 +445,22 @@
 
 </div><!-- /doc-shell -->
 
+<script>
+/* Belt and braces for the paper copy: the @media print rule opens the card
+   disclosures with CSS, and this opens them for real, then puts each one back
+   exactly as the reader left it. Two mechanisms because a closed <details> has
+   hidden its content three different ways across engine versions, and the
+   failure mode is silent — a page that prints its cards without their
+   descriptions looks like a design choice, not a bug. */
+(function () {
+  var cards = function () { return document.querySelectorAll('.card-details'); };
+  addEventListener('beforeprint', function () {
+    cards().forEach(function (d) { d.dataset.wasOpen = d.open ? '1' : ''; d.open = true; });
+  });
+  addEventListener('afterprint', function () {
+    cards().forEach(function (d) { d.open = d.dataset.wasOpen === '1'; delete d.dataset.wasOpen; });
+  });
+})();
+</script>
 </body>
 </html>

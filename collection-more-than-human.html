@@ -110,18 +110,45 @@
 
   .artifact-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
 
-  .card { background: var(--card); border-radius: 8px; border: 1px solid var(--border); padding: 1.25rem; position: relative; text-decoration: none; color: inherit; display: flex; flex-direction: column; transition: box-shadow 0.2s ease, background 0.2s ease, transform 0.2s ease; }
-  .card:hover { background: #131330; box-shadow: 0 4px 28px rgba(167,139,250,0.14); transform: translateY(-2px); }
-  .card::before { content: ''; position: absolute; top: 8px; left: 0; width: 3px; height: calc(100% - 16px); background: var(--card-color, var(--violet)); border-radius: 0 2px 2px 0; }
+  /* A card is three parts: a wrapper that draws the box, an anchor that is the
+     link, and a <details> that holds the full description. The disclosure is a
+     SIBLING of the anchor and must stay one — <a> may not contain interactive
+     content, and check-markup.mjs cannot see that fault. */
+  .card-wrap { background: var(--card); border-radius: 8px; border: 1px solid var(--border); position: relative; display: flex; flex-direction: column; transition: box-shadow 0.2s ease, background 0.2s ease, transform 0.2s ease; }
+  .card { padding: 1.25rem; text-decoration: none; color: inherit; display: flex; flex-direction: column; flex: 1; }
+  .card-wrap:has(> .card:hover) { background: #131330; box-shadow: 0 4px 28px rgba(167,139,250,0.14); transform: translateY(-2px); }
+  .card-wrap::before { content: ''; position: absolute; top: 8px; left: 0; width: 3px; height: calc(100% - 16px); background: var(--card-color, var(--violet)); border-radius: 0 2px 2px 0; }
 
   .card-number { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dim); margin-bottom: 0.5rem; }
   .card-title { font-size: 1.25rem; font-weight: 600; color: var(--star-white); line-height: 1.2; margin-bottom: 0.4rem; }
   .card-series { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--card-color, var(--violet)); margin-bottom: 0.75rem; }
+  .card-tagline { font-size: 0.9375rem; font-style: italic; color: var(--star-white); line-height: 1.55; margin-bottom: 0.6rem; }
   .card-desc { font-size: 0.875rem; color: var(--stardust); line-height: 1.65; flex: 1; margin-bottom: 1.25rem; }
   .card-footer { display: flex; justify-content: space-between; align-items: center; padding-top: 0.9rem; border-top: 1px solid var(--border); }
   .card-tag { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dim); background: rgba(167,139,250,0.08); border: 1px solid var(--border); border-radius: 4px; padding: 0.2rem 0.6rem; }
   .card-arrow { font-size: 0.875rem; color: var(--card-color, var(--violet)); font-weight: 700; transition: transform 0.2s ease; }
-  .card:hover .card-arrow { transform: translateX(3px); }
+  .card-wrap:has(> .card:hover) .card-arrow { transform: translateX(3px); }
+
+  .card-details { border-top: 1px solid var(--border); }
+  .card-details > summary { cursor: pointer; list-style: none; padding: 0.7rem 1.25rem; font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dim); display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; }
+  .card-details > summary::-webkit-details-marker { display: none; }
+  .card-details > summary::after { content: '\25be'; font-size: 0.75rem; color: var(--card-color, var(--violet)); transition: transform 0.2s ease; }
+  .card-details[open] > summary::after { transform: rotate(180deg); }
+  .card-details > summary:hover { color: var(--star-white); }
+  .card-details > summary:focus-visible { outline: 2px solid var(--card-color, var(--violet)); outline-offset: -2px; border-radius: 0 0 7px 7px; }
+  .card-details-body { padding: 0 1.25rem 1.25rem; font-size: 0.875rem; color: var(--stardust); line-height: 1.65; }
+  .card-details-body p { margin: 0; }
+
+  /* A closed <details> prints as nothing, and the token inversion cannot reach it
+     because this is not a colour. How a closed disclosure hides its content has
+     moved across engine versions, so this pairs with the beforeprint handler at
+     the foot of the page rather than betting on one engine. */
+  @media print {
+    .card-details > summary { display: none !important; }
+    .card-details > .card-details-body { display: block !important; }
+    .card-details::details-content { content-visibility: visible !important; block-size: auto !important; }
+    .card-wrap { break-inside: avoid; }
+  }
 
   .colophon-footer { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--dim2); line-height: 2.2; margin-top: 3rem; padding-top: 1.4rem; border-top: 1px solid rgba(167,139,250,0.14); }
   .colophon-footer a { color: inherit; }
@@ -175,41 +202,76 @@
   </div>
 
   <div class="artifact-grid">
-    <a class="card" href="underground-zine.html" style="--card-color: #4ade80;">
-      <div class="card-number">Zine No. 5</div>
-      <div class="card-title">Underground</div>
-      <div class="card-series">Stimpunks Zines</div>
-      <p class="card-desc">The below to Bone Song's above — the mycelial worldview as an act of love. Networks with no center, decomposition as renewal, and the quiet dark where the realest work gets done. Six spreads with a prose poem, diagrams, a "Not:" refusals set, and reflection questions.</p>
-      <div class="card-footer"><span class="card-tag">6 spreads</span><span class="card-arrow">&rarr;</span></div>
-    </a>
-    <a class="card" href="the-council-of-all-beings-zine.html" style="--card-color: #22d3ee;">
-      <div class="card-number">Zine No. 14</div>
-      <div class="card-title">The Council of All Beings</div>
-      <div class="card-series">Stimpunks Zines</div>
-      <p class="card-desc">Multispecies justice and more-than-human governance, read as star stuff. Every being at the table — soil, river, beaver, cuckoo, meadow — is forged from the same stellar matter, so the Council of All Beings is the universe convening with itself, and you cannot rank what you are made of. Carries the ethodiversity thread from No. 8 outward: the cosmos varies not only in what it makes but in how its creatures live. Six spreads of argument, then a hydrofeminist coda — the “service provider” critique and the four dimensions of justice, ethodiversity and ethonormativity after Tarragnat, the role-play method (speaking as the soil and the river), the proxy problem and the Umwelt, and Rights of Nature meeting hydrofeminism at Te Awa Tupua, closing on a coda where the council dissolves into flow. Nine spreads, six diagrams, a “Not:” refusals set.</p>
-      <div class="card-footer"><span class="card-tag">9 spreads</span><span class="card-arrow">&rarr;</span></div>
-    </a>
-    <a class="card" href="every-creatures-own-sky-zine.html" style="--card-color: #a78bfa;">
-      <div class="card-number">Zine No. 15</div>
-      <div class="card-title">Every Creature's Own Sky</div>
-      <div class="card-series">Stimpunks Zines</div>
-      <p class="card-desc">Umwelt as star stuff. Every creature is sealed in its own complete perceptual world — the tick's three signals, the bat's echo, the mantis shrimp's light, the dog's scent-time — and each world is whole, not a partial view of one real world underneath. There is no neutral, default way to sense. The animals do the arguing, so that when minds enter, the point lands as recognition: monotropism is an attention-world, Autistic perception a different and complete sky, not a broken copy of a standard one. And when two worlds meet — human and bat, one mind and another — the gap is mutual: the double empathy problem, arrived at without lecturing. Not one correct channel, but mutual translation. Carries the Umwelt thread from No. 14 inward, from von Uexküll through Tarragnat, Manning, Milton, and Despret. Eight spreads, six diagrams, a “Not:” refusals set.</p>
-      <div class="card-footer"><span class="card-tag">8 spreads</span><span class="card-arrow">&rarr;</span></div>
-    </a>
-    <a class="card" href="minor-worlds-zine.html" style="--card-color: #4ade80;">
-      <div class="card-number">Zine No. 16</div>
-      <div class="card-title">Minor Worlds</div>
-      <div class="card-series">Stimpunks Zines</div>
-      <p class="card-desc">Niche construction as star stuff, and the third of a loose trilogy — how we treat other worlds (No. 14), how we sense them (No. 15), and here, how we build them. Organisms don't just adapt to a fixed environment; they remake it — the beaver's dam, the spider's web — and pass the built world on as ecological inheritance. So the neurodiversity turn is plain: don't fix the mind, change the environment (positive niche construction — there is no “normal” brain in a vat). Stimming is worldmaking; minor worlds and niche communities are real, not lesser; and no niche is neutral — the “default” room was built for one kind of mind, so the fix is reconstruction, not accommodation. Grounded in Odling-Smee &amp; Laland, Armstrong, Tarragnat, Manning, Kadodia &amp; Krueger, and Haraway, and rooted in Stimpunks' own glossary. Eight spreads, six diagrams, a “Not:” refusals set.</p>
-      <div class="card-footer"><span class="card-tag">8 spreads</span><span class="card-arrow">&rarr;</span></div>
-    </a>
-    <a class="card" href="every-nervous-system-zine.html" style="--card-color: #f2a24c;">
-      <div class="card-number">Zine No. 27</div>
-      <div class="card-title">Every Nervous System</div>
-      <div class="card-series">Stimpunks Zines</div>
-      <p class="card-desc">More-than-human neurodiversity, read through star stuff. There is no standard nervous system — not across species, and not within one: the octopus's mind distributed down its arms, the jellyfish's centreless nerve net, the worm's fully mapped 302 neurons. Read neurodiversity literally and it never stopped at the human. Following Ombre Tarragnat's antispeciesist–posthumanist philosophy: there's “no valid reason to be anthropocentric when you talk about neurodiversity,” and ethodiversity — behaviour reclaimed as “a subjective response to a bodymind's situation” — is a fundamentally animal phenomenon. Ethonormativity punishes the ethodivergent (the horse who refuses the rider, the cat who resists petting — abandoned or euthanised). And the core move: neurodivergent people are pathologised by being animalised, so the liberation is to reclaim animality — not bestialisation (the speciesist, neuronormative “less-than-human” split, after Butler 2020) but (hum)animality, kin. Distance is not disconnection: shutting down can be how we keep relation. Every nervous system is the universe wired up to feel itself, no two ever the same. “I would rather be a divergent animal than a typical human.” Eight spreads, six diagrams, a “Not:” refusals set.</p>
-      <div class="card-footer"><span class="card-tag">8 spreads</span><span class="card-arrow">&rarr;</span></div>
-    </a>
+    <div class="card-wrap" style="--card-color: #4ade80;">
+      <a class="card" href="underground-zine.html">
+        <div class="card-number">Zine No. 5</div>
+        <div class="card-title">Underground</div>
+        <div class="card-series">Stimpunks Zines</div>
+        <p class="card-tagline">on mycelial networks, decomposition, and the quiet dark where we do our realest work — the below to Bone Song's above</p>
+        <p class="card-desc">The mycelial worldview as an act of love. Six spreads with a prose poem, diagrams, a “Not:” refusals set, and reflection questions.</p>
+        <div class="card-footer"><span class="card-tag">6 spreads</span><span class="card-arrow">&rarr;</span></div>
+      </a>
+      <details class="card-details">
+        <summary>Details</summary>
+        <div class="card-details-body"><p>Six spreads, and the below to <em>Bone Song</em>'s above. The mycelial network and the oldest anarchist in the room; decomposition as bricolage, where nothing is wasted, only waiting; the prose poem; the quiet and the dark; and the line the zine turns on — the work that changes everything is the work no one is watching. It ends on mischief and punk. Diagrams, a “Not:” refusals set, and reflection questions. On the science, it keeps the kinship and drops the overclaim: mycorrhizal symbiosis is well established, and the popular wood-wide-web picture of forests wired together is named as contested, citing Karst, Jones &amp; Hoeksema (<em>Nature Ecology &amp; Evolution</em> 7, 2023).</p></div>
+      </details>
+    </div>
+    <div class="card-wrap" style="--card-color: #22d3ee;">
+      <a class="card" href="the-council-of-all-beings-zine.html">
+        <div class="card-number">Zine No. 14</div>
+        <div class="card-title">The Council of All Beings</div>
+        <div class="card-series">Stimpunks Zines</div>
+        <p class="card-tagline">on multispecies justice, more-than-human governance, and the star stuff that convenes</p>
+        <p class="card-desc">Every being at the table is forged from the same stellar matter, so the Council is the universe convening with itself — and you cannot rank what you are made of.</p>
+        <div class="card-footer"><span class="card-tag">9 spreads</span><span class="card-arrow">&rarr;</span></div>
+      </a>
+      <details class="card-details">
+        <summary>Details</summary>
+        <div class="card-details-body"><p>Multispecies justice and more-than-human governance, read as star stuff. Every being at the table — soil, river, beaver, cuckoo, meadow — is forged from the same stellar matter, so the Council of All Beings is the universe convening with itself, and you cannot rank what you are made of. Carries the ethodiversity thread from No. 8 outward: the cosmos varies not only in what it makes but in how its creatures live. Six spreads of argument, then a hydrofeminist coda — the “service provider” critique and the four dimensions of justice, ethodiversity and ethonormativity after Tarragnat, the role-play method (speaking as the soil and the river), the proxy problem and the Umwelt, and Rights of Nature meeting hydrofeminism at Te Awa Tupua, closing on a coda where the council dissolves into flow. Nine spreads, six diagrams, a “Not:” refusals set.</p></div>
+      </details>
+    </div>
+    <div class="card-wrap" style="--card-color: #a78bfa;">
+      <a class="card" href="every-creatures-own-sky-zine.html">
+        <div class="card-number">Zine No. 15</div>
+        <div class="card-title">Every Creature's Own Sky</div>
+        <div class="card-series">Stimpunks Zines</div>
+        <p class="card-tagline">on umwelt, attention-worlds, and why there was never a neutral way to sense</p>
+        <p class="card-desc">Every creature is sealed in its own complete perceptual world — the tick's three signals, the bat's echo, the dog's scent-time — and each world is whole.</p>
+        <div class="card-footer"><span class="card-tag">8 spreads</span><span class="card-arrow">&rarr;</span></div>
+      </a>
+      <details class="card-details">
+        <summary>Details</summary>
+        <div class="card-details-body"><p>Umwelt as star stuff. Every creature is sealed in its own complete perceptual world — the tick's three signals, the bat's echo, the mantis shrimp's light, the dog's scent-time — and each world is whole, not a partial view of one real world underneath. There is no neutral, default way to sense. The animals do the arguing, so that when minds enter, the point lands as recognition: monotropism is an attention-world, Autistic perception a different and complete sky, not a broken copy of a standard one. And when two worlds meet — human and bat, one mind and another — the gap is mutual: the double empathy problem, arrived at without lecturing. Not one correct channel, but mutual translation. Carries the Umwelt thread from No. 14 inward, from von Uexküll through Tarragnat, Manning, Milton, and Despret. Eight spreads, six diagrams, a “Not:” refusals set.</p></div>
+      </details>
+    </div>
+    <div class="card-wrap" style="--card-color: #4ade80;">
+      <a class="card" href="minor-worlds-zine.html">
+        <div class="card-number">Zine No. 16</div>
+        <div class="card-title">Minor Worlds</div>
+        <div class="card-series">Stimpunks Zines</div>
+        <p class="card-tagline">on niche construction, stimming, and how difference doesn't just see a world — it builds one</p>
+        <p class="card-desc">Organisms don't just adapt to a fixed environment; they remake it — the beaver's dam, the spider's web — and pass the built world on.</p>
+        <div class="card-footer"><span class="card-tag">8 spreads</span><span class="card-arrow">&rarr;</span></div>
+      </a>
+      <details class="card-details">
+        <summary>Details</summary>
+        <div class="card-details-body"><p>Niche construction as star stuff, and the third of a loose trilogy — how we treat other worlds (No. 14), how we sense them (No. 15), and here, how we build them. Organisms don't just adapt to a fixed environment; they remake it — the beaver's dam, the spider's web — and pass the built world on as ecological inheritance. So the neurodiversity turn is plain: don't fix the mind, change the environment (positive niche construction — there is no “normal” brain in a vat). Stimming is worldmaking; minor worlds and niche communities are real, not lesser; and no niche is neutral — the “default” room was built for one kind of mind, so the fix is reconstruction, not accommodation. Grounded in Odling-Smee &amp; Laland, Armstrong, Tarragnat, Manning, Kadodia &amp; Krueger, and Haraway, and rooted in Stimpunks' own glossary. Eight spreads, six diagrams, a “Not:” refusals set.</p></div>
+      </details>
+    </div>
+    <div class="card-wrap" style="--card-color: #f2a24c;">
+      <a class="card" href="every-nervous-system-zine.html">
+        <div class="card-number">Zine No. 27</div>
+        <div class="card-title">Every Nervous System</div>
+        <div class="card-series">Stimpunks Zines</div>
+        <p class="card-tagline">on more-than-human neurodiversity, and the animality we reclaim</p>
+        <p class="card-desc">There is no standard nervous system — not across species, and not within one. Read neurodiversity literally and it never stopped at us.</p>
+        <div class="card-footer"><span class="card-tag">8 spreads</span><span class="card-arrow">&rarr;</span></div>
+      </a>
+      <details class="card-details">
+        <summary>Details</summary>
+        <div class="card-details-body"><p>More-than-human neurodiversity, read through star stuff. There is no standard nervous system — not across species, and not within one: the octopus's mind distributed down its arms, the jellyfish's centreless nerve net, the worm's fully mapped 302 neurons. Read neurodiversity literally and it never stopped at the human. Following Ombre Tarragnat's antispeciesist–posthumanist philosophy: there's “no valid reason to be anthropocentric when you talk about neurodiversity,” and ethodiversity — behaviour reclaimed as “a subjective response to a bodymind's situation” — is a fundamentally animal phenomenon. Ethonormativity punishes the ethodivergent (the horse who refuses the rider, the cat who resists petting — abandoned or euthanised). And the core move: neurodivergent people are pathologised by being animalised, so the liberation is to reclaim animality — not bestialisation (the speciesist, neuronormative “less-than-human” split, after Butler 2020) but (hum)animality, kin. Distance is not disconnection: shutting down can be how we keep relation. Every nervous system is the universe wired up to feel itself, no two ever the same. “I would rather be a divergent animal than a typical human.” Eight spreads, six diagrams, a “Not:” refusals set.</p></div>
+      </details>
+    </div>
   </div>
 
   <div class="body-text">
@@ -221,5 +283,22 @@
 
 </div><!-- /doc-shell -->
 
+<script>
+/* Belt and braces for the paper copy: the @media print rule opens the card
+   disclosures with CSS, and this opens them for real, then puts each one back
+   exactly as the reader left it. Two mechanisms because a closed <details> has
+   hidden its content three different ways across engine versions, and the
+   failure mode is silent — a page that prints its cards without their
+   descriptions looks like a design choice, not a bug. */
+(function () {
+  var cards = function () { return document.querySelectorAll('.card-details'); };
+  addEventListener('beforeprint', function () {
+    cards().forEach(function (d) { d.dataset.wasOpen = d.open ? '1' : ''; d.open = true; });
+  });
+  addEventListener('afterprint', function () {
+    cards().forEach(function (d) { d.open = d.dataset.wasOpen === '1'; delete d.dataset.wasOpen; });
+  });
+})();
+</script>
 </body>
 </html>

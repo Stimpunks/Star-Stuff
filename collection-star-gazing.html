@@ -110,18 +110,45 @@
 
   .artifact-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
 
-  .card { background: var(--card); border-radius: 8px; border: 1px solid var(--border); padding: 1.25rem; position: relative; text-decoration: none; color: inherit; display: flex; flex-direction: column; transition: box-shadow 0.2s ease, background 0.2s ease, transform 0.2s ease; }
-  .card:hover { background: #131330; box-shadow: 0 4px 28px rgba(167,139,250,0.14); transform: translateY(-2px); }
-  .card::before { content: ''; position: absolute; top: 8px; left: 0; width: 3px; height: calc(100% - 16px); background: var(--card-color, var(--violet)); border-radius: 0 2px 2px 0; }
+  /* A card is three parts: a wrapper that draws the box, an anchor that is the
+     link, and a <details> that holds the full description. The disclosure is a
+     SIBLING of the anchor and must stay one — <a> may not contain interactive
+     content, and check-markup.mjs cannot see that fault. */
+  .card-wrap { background: var(--card); border-radius: 8px; border: 1px solid var(--border); position: relative; display: flex; flex-direction: column; transition: box-shadow 0.2s ease, background 0.2s ease, transform 0.2s ease; }
+  .card { padding: 1.25rem; text-decoration: none; color: inherit; display: flex; flex-direction: column; flex: 1; }
+  .card-wrap:has(> .card:hover) { background: #131330; box-shadow: 0 4px 28px rgba(167,139,250,0.14); transform: translateY(-2px); }
+  .card-wrap::before { content: ''; position: absolute; top: 8px; left: 0; width: 3px; height: calc(100% - 16px); background: var(--card-color, var(--violet)); border-radius: 0 2px 2px 0; }
 
   .card-number { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dim); margin-bottom: 0.5rem; }
   .card-title { font-size: 1.25rem; font-weight: 600; color: var(--star-white); line-height: 1.2; margin-bottom: 0.4rem; }
   .card-series { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--card-color, var(--violet)); margin-bottom: 0.75rem; }
+  .card-tagline { font-size: 0.9375rem; font-style: italic; color: var(--star-white); line-height: 1.55; margin-bottom: 0.6rem; }
   .card-desc { font-size: 0.875rem; color: var(--stardust); line-height: 1.65; flex: 1; margin-bottom: 1.25rem; }
   .card-footer { display: flex; justify-content: space-between; align-items: center; padding-top: 0.9rem; border-top: 1px solid var(--border); }
   .card-tag { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dim); background: rgba(167,139,250,0.08); border: 1px solid var(--border); border-radius: 4px; padding: 0.2rem 0.6rem; }
   .card-arrow { font-size: 0.875rem; color: var(--card-color, var(--violet)); font-weight: 700; transition: transform 0.2s ease; }
-  .card:hover .card-arrow { transform: translateX(3px); }
+  .card-wrap:has(> .card:hover) .card-arrow { transform: translateX(3px); }
+
+  .card-details { border-top: 1px solid var(--border); }
+  .card-details > summary { cursor: pointer; list-style: none; padding: 0.7rem 1.25rem; font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dim); display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; }
+  .card-details > summary::-webkit-details-marker { display: none; }
+  .card-details > summary::after { content: '\25be'; font-size: 0.75rem; color: var(--card-color, var(--violet)); transition: transform 0.2s ease; }
+  .card-details[open] > summary::after { transform: rotate(180deg); }
+  .card-details > summary:hover { color: var(--star-white); }
+  .card-details > summary:focus-visible { outline: 2px solid var(--card-color, var(--violet)); outline-offset: -2px; border-radius: 0 0 7px 7px; }
+  .card-details-body { padding: 0 1.25rem 1.25rem; font-size: 0.875rem; color: var(--stardust); line-height: 1.65; }
+  .card-details-body p { margin: 0; }
+
+  /* A closed <details> prints as nothing, and the token inversion cannot reach it
+     because this is not a colour. How a closed disclosure hides its content has
+     moved across engine versions, so this pairs with the beforeprint handler at
+     the foot of the page rather than betting on one engine. */
+  @media print {
+    .card-details > summary { display: none !important; }
+    .card-details > .card-details-body { display: block !important; }
+    .card-details::details-content { content-visibility: visible !important; block-size: auto !important; }
+    .card-wrap { break-inside: avoid; }
+  }
 
   .colophon-footer { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--dim2); line-height: 2.2; margin-top: 3rem; padding-top: 1.4rem; border-top: 1px solid rgba(167,139,250,0.14); }
   .colophon-footer a { color: inherit; }
@@ -176,48 +203,90 @@
   </div>
 
   <div class="artifact-grid">
-    <a class="card" href="why-difference-comes-first-zine.html" style="--card-color: #a78bfa;">
-      <div class="card-number">Zine No. 11 · Guest</div>
-      <div class="card-title">Why Difference Comes First</div>
-      <div class="card-series">Guest zine · Helen Edgar</div>
-      <p class="card-desc">A guest zine by Helen Edgar (Autistic Realms), in her own voice. One thread followed down three scales — relational quantum mechanics, the cosmic microwave background, and Deleuze — to the same shape: difference comes first, and the baseline is the thing that got built. It ends where the flat line, and even the spiky profile, give way to a constellation of intensities: a self that is dynamic, relational, and never finished. Ten spreads.</p>
-      <div class="card-footer"><span class="card-tag">10 spreads · guest</span><span class="card-arrow">&rarr;</span></div>
-    </a>
-    <a class="card" href="no-one-is-the-leader-zine.html" style="--card-color: #22d3ee;">
-      <div class="card-number">Zine No. 22</div>
-      <div class="card-title">No One Is the Leader</div>
-      <div class="card-series">Stimpunks Zines</div>
-      <p class="card-desc">Emergence and the murmuration — a flock has no captain, and neither does a self. Hundreds of thousands of starlings make vast rolling shapes with no leader and no plan: each bird tracks only its six or seven nearest neighbours (Ballerini &amp; the STARFLAG project), and the whole emerges from that one local rule. Philip Anderson's “More Is Different” (1972) is the spine — the founding statement of anti-reductionism: at each level of scale new laws appear that the parts don't contain, so knowing the parts never rebuilds the whole. The early universe did the same, self-organising faint density ripples into the cosmic web with no architect. Two payoffs land it home: the whole person is realer than any diagnostic checklist of parts (you are not a list of deficits — you are the murmuration), and our best neurodivergent collectives — NeurodiVentures — are leaderless murmurations, not org charts (competency networks and catalysts rather than leaders; decisions where the knowledge lives). A “the whole exceeds the parts” zine. Held with care: leaderless is not structureless. Eight spreads, flock-and-web diagrams, a “Not:” refusals set.</p>
-      <div class="card-footer"><span class="card-tag">8 spreads</span><span class="card-arrow">&rarr;</span></div>
-    </a>
-    <a class="card" href="mycelium-and-rhizome-zine.html" style="--card-color: #f472b6;">
-      <div class="card-number">Zine No. 26</div>
-      <div class="card-title">A Mycelium and a Rhizome</div>
-      <div class="card-series">Stimpunks Zines</div>
-      <p class="card-desc">How neurodivergent knowledge and community grow, read through star stuff — no trunk, no center, many doors. A tree has one trunk and a chain of command; you climb it or you're lost. A rhizome (Deleuze &amp; Guattari) has no root to ask permission of, so you can enter anywhere — Spiky Profiles → Monotropism → Deep Attention, or in from burnout, or a word that finally fit. No prerequisite, no gatekeeper. And a mycelium is the life in that shape: fungal threads carry nutrients and signals between trees that never touch (the “wood wide web,” Simard), thickening the paths that help and letting the rest fade; a brainless slime mold rebuilds the Tokyo rail network (Tero et al.). Zoom all the way out and the shape returns — the cosmic web of dark-matter filaments, the universe's largest structure, looks like a mycelium, like a neuron: not a pyramid, a web. We're already building it. Gray-Hammond and Munday name it neuro-anarchy; the Autistic Rhizome is “a network with no single point of origin,” members as equals held by a do-no-harm ethic, resilient because nothing depends on a center (with Helen Edgar's watering holes). Where the map meets soil is Cavendish Space. Decentralization isn't disorder — it's the oldest structure there is. Eight spreads, six diagrams, a “Not:” refusals set.</p>
-      <div class="card-footer"><span class="card-tag">8 spreads</span><span class="card-arrow">&rarr;</span></div>
-    </a>
-    <a class="card" href="wyrd-and-weird-zine.html" style="--card-color: #fbbf24;">
-      <div class="card-number">Zine No. 28 · Guest</div>
-      <div class="card-title">Wyrd &amp; Weird</div>
-      <div class="card-series">Stimpunks Zines · Helen Edgar</div>
-      <p class="card-desc">On the old word for fate, and the newer word we made of it — a guest zine by Helen Edgar (Autistic Realms), rehoused in the Star Stuff style. Long before “weird” meant strange, wyrd meant becoming: Old English wyrd comes from weorþan, “to become,” and is twined with the root of “worth.” Fate was never drawn as a straight line from birth to death but as cloth — the Norns' weaving at the well beneath Yggdrasill, the “web of man” — many threads crossing, none load-bearing alone. The Weird Sisters carried the word down through Holinshed to Shakespeare's Macbeth; over centuries “weird” drifted into an insult, and Autistic and disabled communities have run that drift backward, taking it up again as a name, not a verdict — which is etymologically honest, not just cheek. Held with care: wyrd is not a script, not doom, not a synonym for wrong, not something done to you alone. Under the root, weorþan meant “to become,” never “to be”: nobody is finished, and becoming was never the flaw — it was the design. You were never written; you are still being woven. Nine spreads, six diagrams, a “Not:” refusals set, a “threads already running” map of its kin in the collection, and Helen's own sources &amp; notes.</p>
-      <div class="card-footer"><span class="card-tag">9 spreads</span><span class="card-arrow">&rarr;</span></div>
-    </a>
-    <a class="card" href="only-in-relation-zine.html" style="--card-color: #22d3ee;">
-      <div class="card-number">Zine No. 29 · Guest</div>
-      <div class="card-title">Only in Relation</div>
-      <div class="card-series">Stimpunks Zines · after Helen Edgar</div>
-      <p class="card-desc">Relational quantum physics, and what it means to be Autistic — a guest zine developed after Helen Edgar (Autistic Realms) from her essay “We Are Made of Relations.” In Carlo Rovelli's relational quantum mechanics a particle has no standalone properties; what it is becomes definite only in relation to another system (Rovelli, 1996). The count gives it away: two distinct coins make four outcomes, but two identical bosons make only three — what's fundamental isn't the standalone particle but the symmetry, the relation (Webster, 2026). Karen Barad calls the relation-before-parts intra-action; the human version, intradependence — made of each other, deeper than interdependence — Helen draws from Barad too. Read through Deleuze, “objects emerge out of more fundamental processes of differentiation”: difference first, then relation, and the tidy standalone object is the thing that got built. The payoff lands on our own work — the double empathy problem (Milton, 2012) lives in the relation, not one mind, and Helen widens it into DEEP; and in the ARLES ladder Relational sits near the base with Regulation inside it, because regulation is relational, so you change the field, not the person. Held with care: not quantum mysticism, not “everything is connected” as a vibe, not dissolution into sameness — the spiky profile survives the merge. A rhyme, not a proof. Nine spreads, seven diagrams, a “Not:” refusals set.</p>
-      <div class="card-footer"><span class="card-tag">9 spreads</span><span class="card-arrow">&rarr;</span></div>
-    </a>
-    <a class="card" href="always-migrating-zine.html" style="--card-color: #22d3ee;">
-      <div class="card-number">Zine No. 30 · Guest</div>
-      <div class="card-title">Always Migrating</div>
-      <div class="card-series">Stimpunks Zines · Helen Edgar</div>
-      <p class="card-desc">Migration, monotropism, and the galaxy you're already made of — a guest zine by Helen Edgar (Autistic Realms), written after Brigit Anna McNeill's <em>The Living Page</em> migration workshop and rehoused here in the Star Stuff style. Every migrating body is made of matter that already migrated once, so migration was never a metaphor borrowed from animals: it's one of the oldest facts about star stuff. A bird crosses an ocean on a compass sense we still can't fully explain — light striking cryptochrome in the eye makes a pair of electrons whose spins stay linked, and that linked pair is thought to be part of how it reads the Earth's faint field (Hore &amp; Mouritsen; Mouritsen). Entanglement's lesson: once two things have been in relation, they stay in relation — separateness was always the less accurate story, which is Rovelli's relational quantum mechanics in a wingbeat. Zoom out and the pattern holds: the Sagittarius dwarf is still arriving in our halo, and the Milky Way–Andromeda collision everyone called settled is now closer to a coin-flip (Sawala et al., 2025) — a tug, not a destination. Then the turn inward: the bodily restlessness that builds before anything is decided is monotropism's gravity, attention gathered into a few bright points rather than spread as an even glow — and masking teaches us to quieten it until we lose our own north. Neuroqueering is the refusal; Pernille Fraser's “Can we trust the space you offer?” asks it from the other side. Widened by ethodiversity and the double empathy problem, and by Barad's intra-action — the liminal crossing isn't empty transit, it's where the shaping happens. Closes past the spiky profile: not a chart, a constellation of intensities. Eleven spreads, eight diagrams, a “Not:” refusals set, and a threads-already-running map of its kin.</p>
-      <div class="card-footer"><span class="card-tag">11 spreads · guest</span><span class="card-arrow">&rarr;</span></div>
-    </a>
+    <div class="card-wrap" style="--card-color: #a78bfa;">
+      <a class="card" href="why-difference-comes-first-zine.html">
+        <div class="card-number">Zine No. 11 · Guest</div>
+        <div class="card-title">Why Difference Comes First</div>
+        <div class="card-series">Guest zine · Helen Edgar</div>
+        <p class="card-tagline">I've been thinking about the connections in-between — physics, philosophy, my own life as an Autistic person. This is me following that thread.</p>
+        <p class="card-desc">A guest zine by Helen Edgar (Autistic Realms), in her own voice — one thread followed down three scales to the same shape: difference comes first.</p>
+        <div class="card-footer"><span class="card-tag">10 spreads · guest</span><span class="card-arrow">&rarr;</span></div>
+      </a>
+      <details class="card-details">
+        <summary>Details</summary>
+        <div class="card-details-body"><p>A guest zine by Helen Edgar (Autistic Realms), in her own voice, and the site does not translate it into house voice. Ten spreads following one thread down three scales — relational quantum mechanics, the cosmic microwave background, and Deleuze — arriving at the same shape each time: <strong>difference comes first, and the baseline is the thing that got built.</strong> It opens on <em>I'm not a fixed thing</em>, picking up her earlier writing on relational quantum mechanics, and ends where the flat line gives out. Filed in <em>Star Gazing</em> rather than <em>Star Stuff</em> because it is possibility-forward rather than one settled fact followed honestly — the physics is real, and it is being thought with rather than argued from. The backing notes are <em>The Difference-First Frame</em>, in <em>Notes &amp; Rationale</em>.</p></div>
+      </details>
+    </div>
+    <div class="card-wrap" style="--card-color: #22d3ee;">
+      <a class="card" href="no-one-is-the-leader-zine.html">
+        <div class="card-number">Zine No. 22</div>
+        <div class="card-title">No One Is the Leader</div>
+        <div class="card-series">Stimpunks Zines</div>
+        <p class="card-tagline">on murmurations, emergence, and the whole that exceeds its parts — a flock has no captain, and neither does a self</p>
+        <p class="card-desc">Each starling tracks only its six or seven nearest neighbours, and the whole emerges from that. After Ballerini &amp; the STARFLAG project.</p>
+        <div class="card-footer"><span class="card-tag">8 spreads</span><span class="card-arrow">&rarr;</span></div>
+      </a>
+      <details class="card-details">
+        <summary>Details</summary>
+        <div class="card-details-body"><p>Emergence and the murmuration — a flock has no captain, and neither does a self. Hundreds of thousands of starlings make vast rolling shapes with no leader and no plan: each bird tracks only its six or seven nearest neighbours (Ballerini &amp; the STARFLAG project), and the whole emerges from that one local rule. Philip Anderson's “More Is Different” (1972) is the spine — the founding statement of anti-reductionism: at each level of scale new laws appear that the parts don't contain, so knowing the parts never rebuilds the whole. The early universe did the same, self-organising faint density ripples into the cosmic web with no architect. Two payoffs land it home: the whole person is realer than any diagnostic checklist of parts (you are not a list of deficits — you are the murmuration), and our best neurodivergent collectives — NeurodiVentures — are leaderless murmurations, not org charts (competency networks and catalysts rather than leaders; decisions where the knowledge lives). A “the whole exceeds the parts” zine. Held with care: leaderless is not structureless. Eight spreads, flock-and-web diagrams, a “Not:” refusals set.</p></div>
+      </details>
+    </div>
+    <div class="card-wrap" style="--card-color: #f472b6;">
+      <a class="card" href="mycelium-and-rhizome-zine.html">
+        <div class="card-number">Zine No. 26</div>
+        <div class="card-title">A Mycelium and a Rhizome</div>
+        <div class="card-series">Stimpunks Zines</div>
+        <p class="card-tagline">how neurodivergent knowledge grows: no trunk, no center, many doors</p>
+        <p class="card-desc">A tree has one trunk and a chain of command; you climb it or you're lost. A rhizome has no root to ask permission of, so you can enter anywhere.</p>
+        <div class="card-footer"><span class="card-tag">8 spreads</span><span class="card-arrow">&rarr;</span></div>
+      </a>
+      <details class="card-details">
+        <summary>Details</summary>
+        <div class="card-details-body"><p>How neurodivergent knowledge and community grow, read through star stuff — no trunk, no center, many doors. A tree has one trunk and a chain of command; you climb it or you're lost. A rhizome (Deleuze &amp; Guattari) has no root to ask permission of, so you can enter anywhere — Spiky Profiles → Monotropism → Deep Attention, or in from burnout, or a word that finally fit. No prerequisite, no gatekeeper. And a mycelium is the life in that shape: fungal threads carry nutrients and signals between trees that never touch (the “wood wide web,” Simard), thickening the paths that help and letting the rest fade; a brainless slime mold rebuilds the Tokyo rail network (Tero et al.). Zoom all the way out and the shape returns — the cosmic web of dark-matter filaments, the universe's largest structure, looks like a mycelium, like a neuron: not a pyramid, a web. We're already building it. Gray-Hammond and Munday name it neuro-anarchy; the Autistic Rhizome is “a network with no single point of origin,” members as equals held by a do-no-harm ethic, resilient because nothing depends on a center (with Helen Edgar's watering holes). Where the map meets soil is Cavendish Space. Decentralization isn't disorder — it's the oldest structure there is. Eight spreads, six diagrams, a “Not:” refusals set.</p></div>
+      </details>
+    </div>
+    <div class="card-wrap" style="--card-color: #fbbf24;">
+      <a class="card" href="wyrd-and-weird-zine.html">
+        <div class="card-number">Zine No. 28 · Guest</div>
+        <div class="card-title">Wyrd &amp; Weird</div>
+        <div class="card-series">Stimpunks Zines · Helen Edgar</div>
+        <p class="card-tagline">on the old word for fate, and the newer word we made of it</p>
+        <p class="card-desc">Old English <em>wyrd</em> comes from <em>weorþan</em>, “to become,” and is twined with the root of “worth.” A guest zine by Helen Edgar.</p>
+        <div class="card-footer"><span class="card-tag">9 spreads</span><span class="card-arrow">&rarr;</span></div>
+      </a>
+      <details class="card-details">
+        <summary>Details</summary>
+        <div class="card-details-body"><p>On the old word for fate, and the newer word we made of it — a guest zine by Helen Edgar (Autistic Realms), rehoused in the Star Stuff style. Long before “weird” meant strange, wyrd meant becoming: Old English wyrd comes from weorþan, “to become,” and is twined with the root of “worth.” Fate was never drawn as a straight line from birth to death but as cloth — the Norns' weaving at the well beneath Yggdrasill, the “web of man” — many threads crossing, none load-bearing alone. The Weird Sisters carried the word down through Holinshed to Shakespeare's Macbeth; over centuries “weird” drifted into an insult, and Autistic and disabled communities have run that drift backward, taking it up again as a name, not a verdict — which is etymologically honest, not just cheek. Held with care: wyrd is not a script, not doom, not a synonym for wrong, not something done to you alone. Under the root, weorþan meant “to become,” never “to be”: nobody is finished, and becoming was never the flaw — it was the design. You were never written; you are still being woven. Nine spreads, six diagrams, a “Not:” refusals set, a “threads already running” map of its kin in the collection, and Helen's own sources &amp; notes.</p></div>
+      </details>
+    </div>
+    <div class="card-wrap" style="--card-color: #22d3ee;">
+      <a class="card" href="only-in-relation-zine.html">
+        <div class="card-number">Zine No. 29 · Guest</div>
+        <div class="card-title">Only in Relation</div>
+        <div class="card-series">Stimpunks Zines · after Helen Edgar</div>
+        <p class="card-tagline">relational quantum physics, and what it means to be Autistic</p>
+        <p class="card-desc">In Carlo Rovelli's relational quantum mechanics a particle has no standalone properties. Developed after Helen Edgar's essay “We Are Made of Relations.”</p>
+        <div class="card-footer"><span class="card-tag">9 spreads</span><span class="card-arrow">&rarr;</span></div>
+      </a>
+      <details class="card-details">
+        <summary>Details</summary>
+        <div class="card-details-body"><p>Relational quantum physics, and what it means to be Autistic — a guest zine developed after Helen Edgar (Autistic Realms) from her essay “We Are Made of Relations.” In Carlo Rovelli's relational quantum mechanics a particle has no standalone properties; what it is becomes definite only in relation to another system (Rovelli, 1996). The count gives it away: two distinct coins make four outcomes, but two identical bosons make only three — what's fundamental isn't the standalone particle but the symmetry, the relation (Webster, 2026). Karen Barad calls the relation-before-parts intra-action; the human version, intradependence — made of each other, deeper than interdependence — Helen draws from Barad too. Read through Deleuze, “objects emerge out of more fundamental processes of differentiation”: difference first, then relation, and the tidy standalone object is the thing that got built. The payoff lands on our own work — the double empathy problem (Milton, 2012) lives in the relation, not one mind, and Helen widens it into DEEP; and in the ARLES ladder Relational sits near the base with Regulation inside it, because regulation is relational, so you change the field, not the person. Held with care: not quantum mysticism, not “everything is connected” as a vibe, not dissolution into sameness — the spiky profile survives the merge. A rhyme, not a proof. Nine spreads, seven diagrams, a “Not:” refusals set.</p></div>
+      </details>
+    </div>
+    <div class="card-wrap" style="--card-color: #22d3ee;">
+      <a class="card" href="always-migrating-zine.html">
+        <div class="card-number">Zine No. 30 · Guest</div>
+        <div class="card-title">Always Migrating</div>
+        <div class="card-series">Stimpunks Zines · Helen Edgar</div>
+        <p class="card-tagline">migration, monotropism, and the galaxy you're already made of</p>
+        <p class="card-desc">A guest zine by Helen Edgar (Autistic Realms), written after Brigit Anna McNeill&apos;s <em>The Living Page</em> workshop and rehoused here in the Star Stuff style.</p>
+        <div class="card-footer"><span class="card-tag">11 spreads · guest</span><span class="card-arrow">&rarr;</span></div>
+      </a>
+      <details class="card-details">
+        <summary>Details</summary>
+        <div class="card-details-body"><p>Migration, monotropism, and the galaxy you're already made of — a guest zine by Helen Edgar (Autistic Realms), written after Brigit Anna McNeill's <em>The Living Page</em> migration workshop and rehoused here in the Star Stuff style. Every migrating body is made of matter that already migrated once, so migration was never a metaphor borrowed from animals: it's one of the oldest facts about star stuff. A bird crosses an ocean on a compass sense we still can't fully explain — light striking cryptochrome in the eye makes a pair of electrons whose spins stay linked, and that linked pair is thought to be part of how it reads the Earth's faint field (Hore &amp; Mouritsen; Mouritsen). Entanglement's lesson: once two things have been in relation, they stay in relation — separateness was always the less accurate story, which is Rovelli's relational quantum mechanics in a wingbeat. Zoom out and the pattern holds: the Sagittarius dwarf is still arriving in our halo, and the Milky Way–Andromeda collision everyone called settled is now closer to a coin-flip (Sawala et al., 2025) — a tug, not a destination. Then the turn inward: the bodily restlessness that builds before anything is decided is monotropism's gravity, attention gathered into a few bright points rather than spread as an even glow — and masking teaches us to quieten it until we lose our own north. Neuroqueering is the refusal; Pernille Fraser's “Can we trust the space you offer?” asks it from the other side. Widened by ethodiversity and the double empathy problem, and by Barad's intra-action — the liminal crossing isn't empty transit, it's where the shaping happens. Closes past the spiky profile: not a chart, a constellation of intensities. Eleven spreads, eight diagrams, a “Not:” refusals set, and a threads-already-running map of its kin.</p></div>
+      </details>
+    </div>
   </div>
 
   <div class="body-text">
@@ -229,5 +298,22 @@
 
 </div><!-- /doc-shell -->
 
+<script>
+/* Belt and braces for the paper copy: the @media print rule opens the card
+   disclosures with CSS, and this opens them for real, then puts each one back
+   exactly as the reader left it. Two mechanisms because a closed <details> has
+   hidden its content three different ways across engine versions, and the
+   failure mode is silent — a page that prints its cards without their
+   descriptions looks like a design choice, not a bug. */
+(function () {
+  var cards = function () { return document.querySelectorAll('.card-details'); };
+  addEventListener('beforeprint', function () {
+    cards().forEach(function (d) { d.dataset.wasOpen = d.open ? '1' : ''; d.open = true; });
+  });
+  addEventListener('afterprint', function () {
+    cards().forEach(function (d) { d.open = d.dataset.wasOpen === '1'; delete d.dataset.wasOpen; });
+  });
+})();
+</script>
 </body>
 </html>

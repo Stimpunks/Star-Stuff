@@ -139,6 +139,20 @@ The central phrase compresses through registers, each with a use:
   **`check-markup.mjs` passes it clean, exit 0** (measured 2026-08-18: the nesting check matches `<a>`/`<button>`
   by name, and `details` only counts as a block element, which fires only inside a `<p>`). Nothing gates this;
   it is on you.
+- **Seven collection pages already had a lead line — `.card-moment` — and the tagline must not
+  restate it.** Easter Eggs, Field Guides, Foundations, Notes, Print, Sound and Start Here carry one
+  on 52 cards, and it was doing the tagline's job before the tagline existed. Deriving both from the
+  same page produced **eleven collisions, six of them verbatim** (`elements-field-guide` had the
+  identical sentence twice). Nine were rewritten to say something the moment does not, which is why
+  those nine differ from their own index taglines — the index has no `.card-moment`, so nothing
+  collides there. Check with a word-set overlap between the two, not by eye; anything above ~60% is
+  the same sentence wearing two styles.
+- **The card structure is on all fourteen card-bearing pages** — `index.html` and the thirteen
+  collection pages (2026-08-18). The CSS is *not* shared: each collection page keeps its own accent
+  fallback (`var(--violet)`, `var(--cyan)`, `var(--accent)`) and its own hover tint, because the
+  tinting is per collection on purpose. Derive those from the page rather than hardcoding them.
+  **The membership map survives the wrapper** — `check-markup.mjs` reads `<a class="card" href>`,
+  which the wrapper does not touch; verified at 103/103 badges after the change.
 - **The tagline is the piece's own line, not a line written for the index.** Lift it verbatim from the page's
   `.cover-subtitle` — 63 of the 97 cards had one. The other 34 (every field guide, playlist and broadside) have
   no subtitle to lift, so theirs is drawn from what the page already argues. **A `Details` that merely restates
@@ -238,7 +252,7 @@ never candidates for a register. Don't try to fold these into either table:
   galaxy, amount of company, nest, egg}*
   — verify by grep before restating the count, it grows:
   `grep -l "no standard" *-field-guide.html | grep -v watching-animals` (the exclusion matters —
-  a tenth sits in the egg, FG 13: *there is no standard way to be interested in an animal*, and it is
+  an eleventh sits in the egg, FG 13: *there is no standard way to be interested in an animal*, and it is
   not in this collection, so it is not in the count).
 - **Where the form stops is load-bearing.** FG 10 keeps five *turtles people made* in a separate
   section with a dashed border and **no reframe table**, because that table corrects a mistaken

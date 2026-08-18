@@ -145,19 +145,46 @@
 
   .artifact-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
 
-  .card { background: var(--card); border-radius: 8px; border: 1px solid var(--border); padding: 1.25rem; position: relative; text-decoration: none; color: inherit; display: flex; flex-direction: column; transition: box-shadow 0.2s ease, background 0.2s ease, transform 0.2s ease; }
-  .card:hover { background: #131330; box-shadow: 0 4px 28px rgba(167,139,250,0.14); transform: translateY(-2px); }
-  .card::before { content: ''; position: absolute; top: 8px; left: 0; width: 3px; height: calc(100% - 16px); background: var(--card-color, var(--violet)); border-radius: 0 2px 2px 0; }
+  /* A card is three parts: a wrapper that draws the box, an anchor that is the
+     link, and a <details> that holds the full description. The disclosure is a
+     SIBLING of the anchor and must stay one — <a> may not contain interactive
+     content, and check-markup.mjs cannot see that fault. */
+  .card-wrap { background: var(--card); border-radius: 8px; border: 1px solid var(--border); position: relative; display: flex; flex-direction: column; transition: box-shadow 0.2s ease, background 0.2s ease, transform 0.2s ease; }
+  .card { padding: 1.25rem; text-decoration: none; color: inherit; display: flex; flex-direction: column; flex: 1; }
+  .card-wrap:has(> .card:hover) { background: #131330; box-shadow: 0 4px 28px rgba(167,139,250,0.14); transform: translateY(-2px); }
+  .card-wrap::before { content: ''; position: absolute; top: 8px; left: 0; width: 3px; height: calc(100% - 16px); background: var(--card-color, var(--violet)); border-radius: 0 2px 2px 0; }
 
   .card-number { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dim); margin-bottom: 0.5rem; }
   .card-title { font-size: 1.25rem; font-weight: 600; color: var(--star-white); line-height: 1.2; margin-bottom: 0.4rem; }
   .card-series { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--card-color, var(--violet)); margin-bottom: 0.75rem; }
   .card-moment { font-family: 'Space Mono', monospace; font-size: 0.68rem; line-height: 1.7; color: var(--star-white); margin-bottom: 0.7rem; padding-left: 0.7rem; border-left: 2px solid var(--card-color, var(--violet)); }
+  .card-tagline { font-size: 0.9375rem; font-style: italic; color: var(--star-white); line-height: 1.55; margin-bottom: 0.6rem; }
   .card-desc { font-size: 0.875rem; color: var(--stardust); line-height: 1.65; flex: 1; margin-bottom: 1.25rem; }
   .card-footer { display: flex; justify-content: space-between; align-items: center; padding-top: 0.9rem; border-top: 1px solid var(--border); }
   .card-tag { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dim); background: rgba(167,139,250,0.08); border: 1px solid var(--border); border-radius: 4px; padding: 0.2rem 0.6rem; }
   .card-arrow { font-size: 0.875rem; color: var(--card-color, var(--violet)); font-weight: 700; transition: transform 0.2s ease; }
-  .card:hover .card-arrow { transform: translateX(3px); }
+  .card-wrap:has(> .card:hover) .card-arrow { transform: translateX(3px); }
+
+  .card-details { border-top: 1px solid var(--border); }
+  .card-details > summary { cursor: pointer; list-style: none; padding: 0.7rem 1.25rem; font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dim); display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; }
+  .card-details > summary::-webkit-details-marker { display: none; }
+  .card-details > summary::after { content: '\25be'; font-size: 0.75rem; color: var(--card-color, var(--violet)); transition: transform 0.2s ease; }
+  .card-details[open] > summary::after { transform: rotate(180deg); }
+  .card-details > summary:hover { color: var(--star-white); }
+  .card-details > summary:focus-visible { outline: 2px solid var(--card-color, var(--violet)); outline-offset: -2px; border-radius: 0 0 7px 7px; }
+  .card-details-body { padding: 0 1.25rem 1.25rem; font-size: 0.875rem; color: var(--stardust); line-height: 1.65; }
+  .card-details-body p { margin: 0; }
+
+  /* A closed <details> prints as nothing, and the token inversion cannot reach it
+     because this is not a colour. How a closed disclosure hides its content has
+     moved across engine versions, so this pairs with the beforeprint handler at
+     the foot of the page rather than betting on one engine. */
+  @media print {
+    .card-details > summary { display: none !important; }
+    .card-details > .card-details-body { display: block !important; }
+    .card-details::details-content { content-visibility: visible !important; block-size: auto !important; }
+    .card-wrap { break-inside: avoid; }
+  }
 
   .colophon-footer { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--dim2); line-height: 2.2; margin-top: 3rem; padding-top: 1.4rem; border-top: 1px solid rgba(167,139,250,0.14); }
   .colophon-footer a { color: inherit; }
@@ -246,140 +273,245 @@
 
   <div class="artifact-grid">
 
-    <a class="card" href="constellation-field-guide.html" style="--card-color: #22d3ee;">
-      <div class="card-number">Field Guide No. 1</div>
-      <div class="card-title">A Field Guide to Neurodivergent Constellations</div>
-      <div class="card-series">Field Guide &middot; 8 entries</div>
-      <p class="card-moment">The one that is openly invented &mdash; and says so.</p>
-      <p class="card-desc">Eight patterns in the sky, renamed for what they actually are: The Stimmer, The Deep Diver, The Pattern Seeker, The Flood, The Navigator, The Bridge, The Signal, The Forge. Real star data under invented figures, which is exactly what every constellation has always been.</p>
-      <div class="card-footer"><span class="card-tag">8 constellations</span><span class="card-arrow">&rarr;</span></div>
-    </a>
+    <div class="card-wrap" style="--card-color: #22d3ee;">
+      <a class="card" href="constellation-field-guide.html">
+        <div class="card-number">Field Guide No. 1</div>
+        <div class="card-title">A Field Guide to Neurodivergent Constellations</div>
+        <div class="card-series">Field Guide &middot; 8 entries</div>
+        <p class="card-moment">The one that is openly invented &mdash; and says so.</p>
+        <p class="card-tagline">Eight patterns in the sky, renamed for what they actually are.</p>
+        <p class="card-desc">The Stimmer, The Deep Diver, The Pattern Seeker, The Flood, The Navigator, The Bridge, The Signal, The Forge — each with diagrams, star data and full field notes.</p>
+        <div class="card-footer"><span class="card-tag">8 constellations</span><span class="card-arrow">&rarr;</span></div>
+      </a>
+      <details class="card-details">
+        <summary>Details</summary>
+        <div class="card-details-body"><p>Eight entries, each giving the traditional name the old charts used, the reclaimed name, L★S coordinates, brief field notes and a full observing record — click any entry to open its notes. The renaming is the argument rather than the decoration: the old names belong to old frameworks, and those frameworks measured the sky's variation as error. Every diagram uses the actual star positions, so The Stimmer really is Gemini's stars — Castor, Pollux, Alhena, Tejat — seen from here. The companion argument is <em>The Lines We Drew</em> (No. 6), on constellations as lines we impose from one vantage point.</p></div>
+      </details>
+    </div>
 
-    <a class="card" href="elements-field-guide.html" style="--card-color: #fbbf24;">
-      <div class="card-number">Field Guide No. 2</div>
-      <div class="card-title">A Field Guide to the Star Stuff You're Made Of</div>
-      <div class="card-series">Field Guide &middot; 8 entries</div>
-      <p class="card-moment">The periodic table read as autobiography.</p>
-      <p class="card-desc">Eight elements essential to your body, traced to where the universe forged them — hydrogen from the Big Bang, carbon and oxygen from dying giants, calcium and iron from supernovae, iodine from colliding neutron stars. The founding fact of this whole site, catalogued.</p>
-      <div class="card-footer"><span class="card-tag">8 elements</span><span class="card-arrow">&rarr;</span></div>
-    </a>
+    <div class="card-wrap" style="--card-color: #fbbf24;">
+      <a class="card" href="elements-field-guide.html">
+        <div class="card-number">Field Guide No. 2</div>
+        <div class="card-title">A Field Guide to the Star Stuff You're Made Of</div>
+        <div class="card-series">Field Guide &middot; 8 entries</div>
+        <p class="card-moment">The periodic table read as autobiography.</p>
+        <p class="card-tagline">Eight elements, and the furnace each one came out of.</p>
+        <p class="card-desc">Eight elements essential to your body, traced to where the universe forged them — hydrogen from the Big Bang, iodine from colliding neutron stars.</p>
+        <div class="card-footer"><span class="card-tag">8 elements</span><span class="card-arrow">&rarr;</span></div>
+      </a>
+      <details class="card-details">
+        <summary>Details</summary>
+        <div class="card-details-body"><p>Eight elements essential to your body, each traced to the furnace that made it and each given a house name — <em>The First Light</em>, <em>The Weight of You</em>, <em>The Scaffold</em>, <em>The Borrowed Letters</em>, <em>The Bone Note</em>, <em>The Death Rattle</em>, <em>The Spark</em>, <em>The Rare Catastrophe</em>. Hydrogen from the Big Bang itself; carbon and oxygen from dying giants; calcium and iron from supernovae; iodine from colliding neutron stars. Every entry carries an atom diagram, the key numbers and the forge. The periodic table read as autobiography rather than as a chart — the argument being that the ordinary elements of a body have extraordinary provenance, and that this holds for every body without exception. Its one-sheet companion, <em>The Star Stuff You're Made Of</em>, is the broadside most likely to end up on a wall.</p></div>
+      </details>
+    </div>
 
-    <a class="card" href="impossible-places-field-guide.html" style="--card-color: #4ade80;">
-      <div class="card-number">Field Guide No. 3</div>
-      <div class="card-title">A Field Guide to Life in Impossible Places</div>
-      <div class="card-series">Field Guide &middot; 8 entries</div>
-      <p class="card-moment">The condition is named extreme. Never the organism.</p>
-      <p class="card-desc">Tardigrades that survive by pausing, lichens that never go it alone, vent worms on an economy without sun, fungi that eat radiation, life at home in brine and boiling springs and solid rock. It's about fit, not grit — and the &ldquo;to us / to them&rdquo; table is where that lands.</p>
-      <div class="card-footer"><span class="card-tag">8 organisms</span><span class="card-arrow">&rarr;</span></div>
-    </a>
+    <div class="card-wrap" style="--card-color: #4ade80;">
+      <a class="card" href="impossible-places-field-guide.html">
+        <div class="card-number">Field Guide No. 3</div>
+        <div class="card-title">A Field Guide to Life in Impossible Places</div>
+        <div class="card-series">Field Guide &middot; 8 entries</div>
+        <p class="card-moment">The condition is named extreme. Never the organism.</p>
+        <p class="card-tagline">Eight kinds of life at home where we assume nothing could be.</p>
+        <p class="card-desc">Eight kinds of life thriving where we assume nothing could — tardigrades that survive by pausing, lichens that never go it alone, vent worms on an economy without sun.</p>
+        <div class="card-footer"><span class="card-tag">8 organisms</span><span class="card-arrow">&rarr;</span></div>
+      </a>
+      <details class="card-details">
+        <summary>Details</summary>
+        <div class="card-details-body"><p>Eight kinds of life thriving where we assume nothing could, each under a house name: <em>The One Who Waits</em>, <em>The Partnership</em>, <em>The Sunless Economy</em>, <em>The One That Eats the Poison</em>, <em>The Salt Dwellers</em>, <em>The Gift from the Boiling Spring</em>, <em>The Clear-Blooded</em>, <em>The Slow Ones</em>. Tardigrades that survive by pausing; lichens that never go it alone; vent worms running an economy with no sun in it; fungi that eat radiation; life at home in brine, in boiling springs, in freezing seas and inside solid rock. <strong>The condition is named extreme, never the creature</strong> — which is the whole argument, because <em>extremophile</em> is a word about the observer's expectations rather than about the organism, and the organism is simply at home.</p></div>
+      </details>
+    </div>
 
-    <a class="card" href="worlds-field-guide.html" style="--card-color: #5b8def;">
-      <div class="card-number">Field Guide No. 4</div>
-      <div class="card-title">A Field Guide to Worlds That Work by Other Rules</div>
-      <div class="card-series">Field Guide &middot; 8 entries</div>
-      <p class="card-moment">Different rules, not broken rules.</p>
-      <p class="card-desc">Europa's hidden ocean, Titan's methane rain, Enceladus venting to space, Uranus on its side, Venus with no exit, Pluto reclassified by a vote, Mercury on its own clock, Neptune making its own weather. Not failed Earths. Each with an &ldquo;Earth's rule / its own rule / result&rdquo; table.</p>
-      <div class="card-footer"><span class="card-tag">8 worlds</span><span class="card-arrow">&rarr;</span></div>
-    </a>
+    <div class="card-wrap" style="--card-color: #5b8def;">
+      <a class="card" href="worlds-field-guide.html">
+        <div class="card-number">Field Guide No. 4</div>
+        <div class="card-title">A Field Guide to Worlds That Work by Other Rules</div>
+        <div class="card-series">Field Guide &middot; 8 entries</div>
+        <p class="card-moment">Different rules, not broken rules.</p>
+        <p class="card-tagline">Eight worlds in our own solar system that run on rules Earth would call impossible.</p>
+        <p class="card-desc">Europa's hidden ocean, Titan's methane rain, Enceladus venting to space, Uranus on its side, Venus with no exit, Pluto reclassified by a vote.</p>
+        <div class="card-footer"><span class="card-tag">8 worlds</span><span class="card-arrow">&rarr;</span></div>
+      </a>
+      <details class="card-details">
+        <summary>Details</summary>
+        <div class="card-details-body"><p>Eight worlds in our own solar system running on rules Earth would call impossible, each under a house name: <em>The Inner Ocean</em>, <em>The Other Chemistry</em>, <em>What Has to Come Out</em>, <em>Another Orientation</em>, <em>The World With No Exit</em>, <em>The One They Reclassified</em>, <em>Its Own Time</em>, <em>Its Own Weather</em>. Europa's hidden ocean under the ice; Titan's methane rain; Enceladus venting to space; Uranus lying on its side; Venus with no exit; Pluto reclassified by a vote rather than by anything that happened to Pluto; Mercury keeping its own clock; Neptune making its own weather. Not failed Earths — <em>other</em> ways for a world to work, which is why the catalogue carries no ranking.</p></div>
+      </details>
+    </div>
 
-    <a class="card" href="ways-of-being-a-star-field-guide.html" style="--card-color: #f472b6;">
-      <div class="card-number">Field Guide No. 5</div>
-      <div class="card-title">A Field Guide to the Ways of Being a Star</div>
-      <div class="card-series">Field Guide &middot; 8 entries</div>
-      <p class="card-moment">Astronomy's own names hide verdicts. The sky doesn't grade.</p>
-      <p class="card-desc">The long slow burn of a red dwarf, the so-called &ldquo;failed&rdquo; brown dwarf, a pulsar's millisecond precision, stars bound in pairs, the red giant's later phase, the white dwarf's long afterward, the brief brilliance of a blue giant. Each entry mapped onto the Hertzsprung&ndash;Russell diagram.</p>
-      <div class="card-footer"><span class="card-tag">8 stars</span><span class="card-arrow">&rarr;</span></div>
-    </a>
+    <div class="card-wrap" style="--card-color: #f472b6;">
+      <a class="card" href="ways-of-being-a-star-field-guide.html">
+        <div class="card-number">Field Guide No. 5</div>
+        <div class="card-title">A Field Guide to the Ways of Being a Star</div>
+        <div class="card-series">Field Guide &middot; 8 entries</div>
+        <p class="card-moment">Astronomy's own names hide verdicts. The sky doesn't grade.</p>
+        <p class="card-tagline">There is no standard star.</p>
+        <p class="card-desc">Eight ways to be one — the red dwarf's long slow burn, the so-called “failed” brown dwarf, a pulsar's millisecond precision, the white dwarf's long afterward.</p>
+        <div class="card-footer"><span class="card-tag">8 stars</span><span class="card-arrow">&rarr;</span></div>
+      </a>
+      <details class="card-details">
+        <summary>Details</summary>
+        <div class="card-details-body"><p><strong>There is no standard star</strong>, and the eight entries are the evidence: <em>The Long Slow Burn</em>, the red dwarf that outlives everything; <em>The So-Called Failure</em>, the brown dwarf whose common name is an accusation; <em>Energy on Its Own Rhythm</em>; <em>The Precise Signal</em>, a pulsar's millisecond regularity; <em>Never Alone</em>, stars bound in pairs; <em>A Later Way of Being</em>, the red giant; <em>The Long Afterward</em>, the white dwarf; and <em>Bright and Brief</em>, the blue giant. Each with a diagram, real stellar data and full field notes. The catalogue is deliberately unranked — a red dwarf is not a lesser sun, and <em>failed</em> is a judgement the physics never made.</p></div>
+      </details>
+    </div>
 
-    <a class="card" href="symbioses-field-guide.html" style="--card-color: #fb7185;">
-      <div class="card-number">Field Guide No. 6</div>
-      <div class="card-title">A Field Guide to Symbioses</div>
-      <div class="card-series">Field Guide &middot; 12 entries</div>
-      <p class="card-moment">Mutual aid, written into biology &mdash; and the honest one-way case.</p>
-      <p class="card-desc">Twelve partnerships across the tree of life: fungi and roots trading underground, a cleaner fish trusted by predators who could swallow it, algae building reefs that shelter a quarter of ocean life. Not &ldquo;nature is nice&rdquo; — the ghost pipe only takes, and is here as the honest case, bridging to monotropism. Solidarity, not charity.</p>
-      <div class="card-footer"><span class="card-tag">12 symbioses</span><span class="card-arrow">&rarr;</span></div>
-    </a>
+    <div class="card-wrap" style="--card-color: #fb7185;">
+      <a class="card" href="symbioses-field-guide.html">
+        <div class="card-number">Field Guide No. 6</div>
+        <div class="card-title">A Field Guide to Symbioses</div>
+        <div class="card-series">Field Guide &middot; 12 entries</div>
+        <p class="card-moment">Mutual aid, written into biology &mdash; and the honest one-way case.</p>
+        <p class="card-tagline">Twelve partnerships across the tree of life.</p>
+        <p class="card-desc">Twelve partnerships across the tree of life — fungi and roots trading underground, a cleaner fish trusted by predators who could swallow it, the fig and its wasp.</p>
+        <div class="card-footer"><span class="card-tag">12 symbioses</span><span class="card-arrow">&rarr;</span></div>
+      </a>
+      <details class="card-details">
+        <summary>Details</summary>
+        <div class="card-details-body"><p>Mutual aid, written into biology — twelve partnerships across the tree of life, read as mutual aid. Fungi and roots trading underground, bacteria making soil, a cleaner fish trusted by predators who could swallow it, algae building reefs that shelter a quarter of ocean life, the fig and its wasp that cannot live without each other. Interdependence is the rule, not the exception: Kropotkin showed mutual aid is a factor of evolution; Margulis, that life “took over the globe not by combat, but by networking.” This isn't “nature is nice” — parasites are real too, and the ghost pipe (Monotropa uniflora) is the honest one-way case, a myco-heterotroph that only takes, modelling receiving without reciprocating — and a bridge to monotropism (with Helen Edgar's tribute to Dinah Murray). It's that nothing living stands alone. What biology has always done, disability-justice communities name and practice: the human specimen is our own care webs and spoon shares (Spade, Mingus, Piepzna-Samarasinha, Kafai, Lewis), and a closing coda swaps the language of management for the language of living systems — symbiosis over competition, competency networks over leadership, coordination over management. Each entry maps who gives what and gets what, with full field notes. Solidarity, not charity; interdependence, not independence.</p></div>
+      </details>
+    </div>
 
-    <a class="card" href="nervous-systems-field-guide.html" style="--card-color: #f2a24c;">
-      <div class="card-number">Field Guide No. 7</div>
-      <div class="card-title">A Field Guide to Nervous Systems</div>
-      <div class="card-series">Field Guide &middot; 11 entries &middot; companion to No. 27</div>
-      <p class="card-moment">There is no standard nervous system.</p>
-      <p class="card-desc">The jellyfish's centreless net, older than brains; the octopus's mind spread through its arms; the worm's fully mapped 302 neurons; a jumping spider planning routes with a brain smaller than a pinhead; a slime mold solving mazes with no neurons at all; and us, one arrangement among many. Neuroscience hides verdicts in its words.</p>
-      <div class="card-footer"><span class="card-tag">11 systems</span><span class="card-arrow">&rarr;</span></div>
-    </a>
+    <div class="card-wrap" style="--card-color: #f2a24c;">
+      <a class="card" href="nervous-systems-field-guide.html">
+        <div class="card-number">Field Guide No. 7</div>
+        <div class="card-title">A Field Guide to Nervous Systems</div>
+        <div class="card-series">Field Guide &middot; 11 entries &middot; companion to No. 27</div>
+        <p class="card-moment">There is no standard nervous system.</p>
+        <p class="card-tagline">The jellyfish's net, the octopus's arms, the worm's 302 neurons.</p>
+        <p class="card-desc">Eleven ways to have one — the jellyfish's centreless net, the octopus's mind spread through its arms, the worm's fully mapped 302 neurons. Companion to No. 27.</p>
+        <div class="card-footer"><span class="card-tag">11 systems</span><span class="card-arrow">&rarr;</span></div>
+      </a>
+      <details class="card-details">
+        <summary>Details</summary>
+        <div class="card-details-body"><p>Eleven ways to have a nervous system — the companion catalogue to Every Nervous System (Zine No. 27). The jellyfish's centreless net, older than brains; the octopus's mind spread through its arms (two-thirds of its neurons outside the brain); the worm's fully mapped 302 neurons; the honeybee's million-neuron cognition and swarm mind; a jumping spider planning routes with a brain smaller than a pinhead; an electric fish reading a sense we lack; the star-nosed mole's 22-ray touch-world; the corvid's forebrain packed denser than a primate's (Olkowicz 2016); the elephant's 257 billion neurons, almost all cerebellar; a slime mold solving mazes with no neurons at all; and us — about 86 billion neurons, one arrangement among many, not the top of any ladder. Neuroscience hides verdicts in its words — “primitive,” “simple,” “lower” — but the animal kingdom keeps no standard nervous system. Each entry maps its architecture, reframes the deficit reading (“sounds like / actually”), and carries full field notes. There is no standard nervous system.</p></div>
+      </details>
+    </div>
 
-    <a class="card" href="migrating-field-guide.html" style="--card-color: #22d3ee;">
-      <div class="card-number">Field Guide No. 8</div>
-      <div class="card-title">A Field Guide to the Ways of Migrating</div>
-      <div class="card-series">Field Guide &middot; 15 entries &middot; companion to No. 30</div>
-      <p class="card-moment">The largest migration on Earth is a few hundred metres, straight up, in the dark.</p>
-      <p class="card-desc">The Arctic tern refusing the straight line because the long way is the cheap way; no monarch finishing the round trip; trees migrating at metres a year. The centre of it is partial migration — populations holding both migrants and residents, the commonest form. Variation within a population isn't the anomaly; it's the mechanism.</p>
-      <div class="card-footer"><span class="card-tag">15 ways</span><span class="card-arrow">&rarr;</span></div>
-    </a>
+    <div class="card-wrap" style="--card-color: #22d3ee;">
+      <a class="card" href="migrating-field-guide.html">
+        <div class="card-number">Field Guide No. 8</div>
+        <div class="card-title">A Field Guide to the Ways of Migrating</div>
+        <div class="card-series">Field Guide &middot; 15 entries &middot; companion to No. 30</div>
+        <p class="card-moment">The largest migration on Earth is a few hundred metres, straight up, in the dark.</p>
+        <p class="card-tagline">Say “migration” and most of us picture one shape. Almost nothing does that.</p>
+        <p class="card-desc">Fifteen ways of migrating — the Arctic tern flies ~71,000 km a year and refuses the straight line. The companion catalogue to <em>Always Migrating</em> (No. 30).</p>
+        <div class="card-footer"><span class="card-tag">15 ways</span><span class="card-arrow">&rarr;</span></div>
+      </a>
+      <details class="card-details">
+        <summary>Details</summary>
+        <div class="card-details-body"><p>Fifteen ways of migrating — the companion catalogue to <em>Always Migrating</em> (Zine No. 30). Say “migration” and most of us picture one shape: a long line, north in spring, back in autumn. Almost nothing does that. The Arctic tern flies ~71,000 km a year and refuses the straight line, riding wind in vast S-shaped detours because the long way is the cheap way. A juvenile godwit crossed 13,560 km in 11 days without landing — held with care, since it shrinks its own organs to do it and a migrant who rests is not a lesser migrant. No monarch finishes the round trip: several short-lived generations work north and one “super” generation, living 8–9 months instead of weeks, flies the whole way back. Salmon find one stream by the magnetic field they imprinted on, then die and carry the ocean up into the forest. The <em>largest</em> migration on Earth is a few hundred metres straight up, every night, in the dark — distance was never the measure. Spiderlings rig silk and let atmospheric electricity carry them; trees migrate at metres a year, seed by seed; the Sahara crosses an ocean as dust and fertilises the Amazon; a star gets handed to a wider orbit and the Sun is probably not from here. The centre of the guide is partial migration — populations holding both migrants and residents, described in the literature as the commonest form, the one all others derive from. Variation within a population isn't the anomaly; it's the mechanism. Closes on us: the crossing made in place, when the word arrives and every year behind you rearranges. Held with care throughout — this reads migration as a way of being, never as a frame for forced human displacement. Fifteen entries, route-shape diagrams, a “Not:” refusals set.</p></div>
+      </details>
+    </div>
 
-    <a class="card" href="shark-field-guide.html" style="--card-color: #22d3ee;">
-      <div class="card-number">Field Guide No. 9</div>
-      <div class="card-title">A Field Guide to Being a Shark</div>
-      <div class="card-series">Field Guide &middot; 12 entries &middot; companion to Nos. 32&ndash;34</div>
-      <p class="card-moment">Written for a young person in our community whose special interest is sharks.</p>
-      <p class="card-desc">One clade, one body plan, four hundred million years — and almost nothing holds still inside it. The dwarf lanternshark erases its own silhouette; the goblin shark's jaws fire forward at up to 3.1 m/s; the bonnethead eats seagrass and digests it. Two entries are here because of a <em>phrase</em> rather than an animal.</p>
-      <div class="card-footer"><span class="card-tag">12 ways</span><span class="card-arrow">&rarr;</span></div>
-    </a>
+    <div class="card-wrap" style="--card-color: #22d3ee;">
+      <a class="card" href="shark-field-guide.html">
+        <div class="card-number">Field Guide No. 9</div>
+        <div class="card-title">A Field Guide to Being a Shark</div>
+        <div class="card-series">Field Guide &middot; 12 entries &middot; companion to Nos. 32&ndash;34</div>
+        <p class="card-moment">Written for a young person in our community whose special interest is sharks.</p>
+        <p class="card-tagline">One clade, one body plan, four hundred million years — and inside it, almost nothing holds.</p>
+        <p class="card-desc">Twelve ways to be a shark, written for a young person in our community whose special interest is sharks. Companion to Zines 32, 33 and 34.</p>
+        <div class="card-footer"><span class="card-tag">12 ways</span><span class="card-arrow">&rarr;</span></div>
+      </a>
+      <details class="card-details">
+        <summary>Details</summary>
+        <div class="card-details-body"><p>Twelve ways to be a shark — the companion catalogue to the shark set (Zines 32, 33 and 34), written for a young person in our community whose special interest is sharks. These are not distant relatives: one clade, one body plan, four hundred million years. And inside it, almost nothing holds still. The whale shark reaches ~18.8 m and lives on plankton; the <strong>dwarf lanternshark</strong> tops out near 20 cm and erases its own silhouette by lighting its belly to match the light coming down. The <strong>goblin shark</strong> cannot give chase in the dark, so it doesn't — the jaws fire forward at up to 3.1 m/s, the fastest protrusion known in any shark. The <strong>thresher</strong> hunts with the far end of itself, whipping its tail overhead to stun several fish at once. The <strong>epaulette shark</strong> walks between tide pools on its fins and rides out near-anoxia by suppressing its own metabolism. The <strong>cookiecutter</strong>, at fifty centimetres, takes a neat plug out of animals hundreds of times its size and everything swims off alive. The <strong>bonnethead</strong> eats seagrass and — tested in 2018 — digests it, which made "sharks are carnivores" a category nobody had checked rather than a finding. Two entries are here because of a <em>phrase</em> rather than an animal: the great hammerhead's head does <strong>not</strong> sharpen its electrosense (tested directly, it widens the search area instead), and the frilled shark is not a living fossil, because nothing alive is. One points up, one points down, and both skip what the animal is doing. Twelve entries, schematic diagrams, a "Not:" refusals set. <em>There is no standard shark.</em></p></div>
+      </details>
+    </div>
 
-    <a class="card" href="turtle-field-guide.html" style="--card-color: #22d3ee;">
-      <div class="card-number">Field Guide No. 10</div>
-      <div class="card-title">A Field Guide to Being a Turtle</div>
-      <div class="card-series">Field Guide &middot; 12 + 5 &middot; companion to No. 35</div>
-      <p class="card-moment">Almost every entry is a thing a turtle is supposed to have and doesn't.</p>
-      <p class="card-desc">The leatherback with no bony carapace at all; the mata mata whose every listed weakness is a component of a superb predator; the Fitzroy River turtle taking ~70% of its oxygen in at the far end. And the Arrau, filed as silent until somebody brought a hydrophone — 2,122 sounds, hatchlings calling from inside the egg. <em>The silence was ours.</em></p>
-      <div class="card-footer"><span class="card-tag">12 + 5</span><span class="card-arrow">&rarr;</span></div>
-    </a>
+    <div class="card-wrap" style="--card-color: #22d3ee;">
+      <a class="card" href="turtle-field-guide.html">
+        <div class="card-number">Field Guide No. 10</div>
+        <div class="card-title">A Field Guide to Being a Turtle</div>
+        <div class="card-series">Field Guide &middot; 12 + 5 &middot; companion to No. 35</div>
+        <p class="card-moment">Almost every entry is a thing a turtle is supposed to have and doesn't.</p>
+        <p class="card-tagline">Twelve ways to be a turtle, and five turtles people made.</p>
+        <p class="card-desc">Twelve ways to be a turtle, and five turtles people made — the leatherback has no bony carapace at all. Companion to <em>Everywhere That Turtles Go</em> (No. 35).</p>
+        <div class="card-footer"><span class="card-tag">12 + 5</span><span class="card-arrow">&rarr;</span></div>
+      </a>
+      <details class="card-details">
+        <summary>Details</summary>
+        <div class="card-details-body"><p>Twelve ways to be a turtle, and five turtles people made — the companion catalogue to <em>Everywhere That Turtles Go</em> (No. 35). Almost every entry is a thing a turtle is supposed to have and doesn't. The <strong>leatherback</strong> has no bony carapace at all, just hundreds of interlocking ossicles in oily skin — and it dives to 1,280 m and holds its body up to 18 °C above the sea around it, which gives it the largest range of any reptile alive. The <strong>mata mata</strong> has weak jaw muscles and almost no tongue and is a superb predator, because it never bites: the mouth is a pump, and every "weakness" on the list is a component of it. The <strong>Fitzroy River turtle</strong> takes about 70% of its oxygen in through two enlarged sacs at the far end of itself. The <strong>Chinese softshell</strong> excretes urea through the lining of its mouth rather than its kidneys — the head-dipping that looks like drinking is the opposite of drinking. <strong>Painted turtle</strong> hatchlings spend their first winter in a nest below −10 °C by supercooling, and what decides whether they live is not how tough they are but what touches them. And the <strong>Arrau</strong> was filed as a silent animal until somebody brought a hydrophone: 2,122 recorded sounds in eleven types, hatchlings calling from inside the egg, and females coming and answering — the first evidence of post-hatching parental care in any turtle. <em>The silence was ours.</em> The last entry is the bill: <em>Rafetus swinhoei</em>, two or three animals left, the last known female dead in April 2023. The five turtles people made — Turtle Island, <em>ao</em>, Kurma (a pivot for churning, <strong>not</strong> a world-bearer), Great A'Tuin, and a Larrakia Star Dreaming we cite rather than retell — get a separate section and a deliberately different card, because they are not five drafts of one story. <em>There is no standard turtle.</em></p></div>
+      </details>
+    </div>
 
-    <a class="card" href="tortoise-field-guide.html" style="--card-color: #fbbf24;">
-      <div class="card-number">Field Guide No. 11</div>
-      <div class="card-title">A Field Guide to Being a Tortoise</div>
-      <div class="card-series">Field Guide &middot; 12 entries</div>
-      <p class="card-moment">It opens on the Moon, because in 1968 two tortoises went round it and came back.</p>
-      <p class="card-desc">Zond 5 carried two steppe tortoises around the far side two months before Apollo 8 carried any human. Then the gopher tortoise's burrows that 350+ other species live in — the argument for building rooms that fit whoever needs them most, stated in reptile. Four entries are marked unfinished, because their endings are decisions rather than facts.</p>
-      <div class="card-footer"><span class="card-tag">12 tortoises</span><span class="card-arrow">&rarr;</span></div>
-    </a>
+    <div class="card-wrap" style="--card-color: #fbbf24;">
+      <a class="card" href="tortoise-field-guide.html">
+        <div class="card-number">Field Guide No. 11</div>
+        <div class="card-title">A Field Guide to Being a Tortoise</div>
+        <div class="card-series">Field Guide &middot; 12 entries</div>
+        <p class="card-moment">It opens on the Moon, because in 1968 two tortoises went round it and came back.</p>
+        <p class="card-tagline">An arc that runs from the Moon to a graveyard to a beginning.</p>
+        <p class="card-desc">Twelve land tortoises. It opens on 15 September 1968, when Zond 5 carried two Soviet steppe tortoises around the far side of the Moon and brought them back alive.</p>
+        <div class="card-footer"><span class="card-tag">12 tortoises</span><span class="card-arrow">&rarr;</span></div>
+      </a>
+      <details class="card-details">
+        <summary>Details</summary>
+        <div class="card-details-body"><p>Twelve land tortoises — Testudinidae — and an arc that runs from the Moon to a graveyard to a beginning. It opens where this collection has to open: on <strong>15 September 1968</strong>, Zond 5 carried <strong>two Soviet steppe tortoises around the far side of the Moon and brought them back alive</strong>, two months before Apollo 8 carried any human. They lost about a tenth of their body weight and were otherwise fine. Then the ordinary astonishments of a slow land animal: the <strong>gopher tortoise</strong> digs burrows over fourteen metres long that more than 350 other species live in, which is the argument for building rooms that fit whoever needs them most, stated in reptile. The <strong>pancake tortoise</strong> has a shell whose bone is full of holes and is the fastest and best-climbing tortoise there is — and the beloved story that it <em>inflates</em> itself inside a rock crevice is now believed to be wrong, so the guide says so instead of repeating it. In July 2020 an <strong>Aldabra giant tortoise</strong> was filmed hunting and swallowing a tern chick, the first deliberate hunt ever recorded in a wild tortoise, which turned "tortoises are herbivores" from a law back into a summary of what we had happened to watch. Jonathan hatched around 1832 and is still on the lawn. The <strong>speckled padloper</strong> is six centimetres and complete. And then four entries marked as unfinished, because their endings are decisions rather than facts: the star tortoise, most trafficked tortoise on Earth and trafficked <em>because</em> it is beautiful; the ploughshare, whose shell conservationists engrave to spoil it for the market, and it may not be working; <strong>Lonesome George</strong>, who died in 2012 and took Pinta with him; and <strong>Fernanda</strong>, found alive in 2019 after 113 years of "extinct." It ends on Île aux Aigrettes, where an Aldabra tortoise is doing an extinct Mauritian tortoise's job — 529 hatchlings in eleven years. <em>Not restoring what was lost. Finding another way for the function to happen.</em></p></div>
+      </details>
+    </div>
 
-    <a class="card" href="monotropic-galaxy-field-guide.html" style="--card-color: #a78bfa;">
-      <div class="card-number">Field Guide No. 12</div>
-      <div class="card-title">My Monotropic Galaxy</div>
-      <div class="card-series">Guest guide &middot; 20 entries &middot; companion to Nos. 45&ndash;46</div>
-      <p class="card-moment">The first guide whose subject is a person, and the first with no reframe table at all.</p>
-      <p class="card-desc">Helen Edgar's twenty constellations of her own Autistic self, rehoused from More Realms in her words and her numbering &mdash; Dark Matter Field, Stellar Current, Pebbling Cluster, Time Drift, Emergence Point. There is no &ldquo;sounds like / actually&rdquo; table because there is no verdict here to correct, which is the turtle guide's rule at full scale. The astronomy sits behind the fold, optional. Ends where she ends: an invitation to draw your own.</p>
-      <div class="card-footer"><span class="card-tag">20 constellations</span><span class="card-arrow">&rarr;</span></div>
-    </a>
+    <div class="card-wrap" style="--card-color: #a78bfa;">
+      <a class="card" href="monotropic-galaxy-field-guide.html">
+        <div class="card-number">Field Guide No. 12</div>
+        <div class="card-title">My Monotropic Galaxy</div>
+        <div class="card-series">Guest guide &middot; 20 entries &middot; companion to Nos. 45&ndash;46</div>
+        <p class="card-moment">The first guide whose subject is a person, and the first with no reframe table at all.</p>
+        <p class="card-tagline">A deep field of one Autistic life, indexed like a sky.</p>
+        <p class="card-desc">Helen Edgar's deep-field image overlaid with constellation lines and an index of twenty named features of her own Autistic life — rehoused as the field guide it already was.</p>
+        <div class="card-footer"><span class="card-tag">20 constellations</span><span class="card-arrow">&rarr;</span></div>
+      </a>
+      <details class="card-details">
+        <summary>Details</summary>
+        <div class="card-details-body"><p>A guest guide, and the first whose subject is a person. <strong>Helen Edgar</strong> made a deep-field image of space overlaid with constellation lines and an index of twenty named features of her own Autistic life &mdash; and the form she reached for is already a field guide, so this rehouses it as one, in her words, at her numbers. <em>Dark Matter Field</em> is &ldquo;the weight of neuronormativity before I had words for it.&rdquo; <em>Stellar Current</em> is the heart of the galaxy, the deep monotropic flow where &ldquo;my whole bodymind system exhales and time dissolves.&rdquo; <em>Pebbling Cluster</em> is how she shows love, after the way penguins offer pebbles. <em>Time Drift</em> is lived time &ldquo;closer to superposition than sequence.&rdquo; <em>Friction Field</em> is the exhaustion of having needs the world was not designed to meet. <em>Emergence Point</em> is what surfaces when something is finally ready, &ldquo;trusted rather than forced, arriving in its own time, on its own terms.&rdquo; <strong>It carries no &ldquo;sounds like / actually&rdquo; table, and that is the argument rather than an omission.</strong> Every other guide here has one, because that table corrects a verdict somebody else handed down &mdash; and there is no verdict in these twenty to correct. They are one person's naming of her own life. Field Guide No. 10 found the limit first with its five <em>turtles people made</em>; this is that rule at full scale, and the first guide in the collection to carry it end to end. The astronomy is not gone, it is simply <strong>not on the face</strong>: open any card and the real object is waiting &mdash; galaxies rotating too fast for their visible mass, the quantum tunnelling without which the Sun could not shine, pebble accretion building planets out of small offerings, ram-pressure stripping taking a galaxy's gas because of the medium it is moving through rather than any fault in the galaxy. Five of the twenty have already grown into pieces of their own here, so the index doubles as the hub they hang off. Ends where Helen ends, with the thing she asks for twice: <em>draw your own.</em> Twenty constellations, an index map, a &ldquo;Not:&rdquo; refusals set. There is no standard galaxy.</p></div>
+      </details>
+    </div>
 
-    <a class="card" href="being-alone-field-guide.html" style="--card-color: #22d3ee;">
-      <div class="card-number">Field Guide No. 14</div>
-      <div class="card-title">A Field Guide to the Ways of Being Alone</div>
-      <div class="card-series">Field Guide &middot; 12 + 1 &middot; companion to No. 54</div>
-      <p class="card-moment">A lone wolf is not an outcast. It is a disperser, on its way to founding a pack.</p>
-      <p class="card-desc">Twelve ways of keeping your own company among our Terran kin, sorted by the four conditions Kenneth Rubin gives for solitude to be productive rather than punishing &mdash; voluntary, regulable, rejoinable, and networked. Fewer than one bee species in ten is social. Giant pandas aim over 80% of their scent marks at the trail, so animals they will never meet will find them. Pumas keep a running tab of who shared. And orangutan sociability turns out to track fruit availability rather than species, which is this site's oldest argument arriving through an ape. The thirteenth card gets no reframe table, on purpose.</p>
-      <div class="card-footer"><span class="card-tag">12 ways of being alone</span><span class="card-arrow">&rarr;</span></div>
-    </a>
+    <div class="card-wrap" style="--card-color: #22d3ee;">
+      <a class="card" href="being-alone-field-guide.html">
+        <div class="card-number">Field Guide No. 14</div>
+        <div class="card-title">A Field Guide to the Ways of Being Alone</div>
+        <div class="card-series">Field Guide &middot; 12 + 1 &middot; companion to No. 54</div>
+        <p class="card-moment">A lone wolf is not an outcast. It is a disperser, on its way to founding a pack.</p>
+        <p class="card-tagline">Twelve ways of keeping your own company among our Terran kin.</p>
+        <p class="card-desc">Twelve ways of keeping your own company among our Terran kin, grown from Betsy Selvam's Stimpunks essay <em>Lone Wolfing: The Joys of Autistic Solitude</em>.</p>
+        <div class="card-footer"><span class="card-tag">12 ways of being alone</span><span class="card-arrow">&rarr;</span></div>
+      </a>
+      <details class="card-details">
+        <summary>Details</summary>
+        <div class="card-details-body"><p>Twelve ways of keeping your own company among our Terran kin, grown from Betsy Selvam's Stimpunks essay <em>Lone Wolfing: The Joys of Autistic Solitude</em>. <strong>A lone wolf is not an outcast.</strong> It is a <em>disperser</em> &mdash; typically nine to thirty-six months old, one of the roughly 15&ndash;20% of any wolf population currently between territories, crossing the neutral buffer ground to find a mate and found a pack. The animal we named the loner after was always on its way somewhere. The guide is sorted by four conditions it did not invent: writing in <em>The Atlantic</em> in 2017, Brent Crane quotes the developmental psychologist <strong>Kenneth Rubin</strong> &mdash; solitude is productive only if it is voluntary, if emotion can be regulated within it, if one can rejoin when one wants to, and if relationships outside it are maintained. Crane's own gloss is the hinge: the difference between rejuvenation and suffering is the quality of reflection available, <em>and the ability to come back</em>. So: <strong>social bees are fewer than 10% of all bee species</strong> (Danforth, Minckley &amp; Neff, 2019) &mdash; we built the entire hive metaphor on the outlier. One sweat bee nests solitary in some populations and eusocial in others, and reared side by side each keeps its own way. Giant pandas aim <strong>over 80% of their scent marks at animal trails</strong>, going out of their way to be found by animals they will never meet &mdash; asynchronous is not the fallback channel, it is the majority channel. Territorial neighbours become <em>dear enemies</em> (Fisher, 1954), and sometimes nasty ones (Temeles, 1994), which is kept because both are true. Fission&ndash;fusion parties change membership hourly and nobody calls it instability. Cicadas spend seventeen years alone underground to be loud together for a fortnight. Pumas share kills with non-kin and are <strong>7.7 times more likely to share with someone who once shared with them</strong> (Elbroch et al., <em>Science Advances</em>, 2017). Orangutan party size tracks fruit availability rather than species &mdash; <em>you change the field, not the animal</em>. A wandering albatross takes a sabbatical year at sea and divorces at 0.3%. Then the thirteenth card, which gets <strong>no reframe table on purpose</strong>: the octopus settlements at Octopolis and Octlantis are not a secret society but dens crowded onto the only hard substrate for miles, with evictions at the edges. Proximity is not company; proximity plus scarcity is a fight. Four gates, a &ldquo;Not:&rdquo; refusals set that declines the <em>syntaxin 1a</em> bait outright. There is no standard amount of company.</p></div>
+      </details>
+    </div>
 
-    <a class="card" href="nests-field-guide.html" style="--card-color: #fbbf24;">
-      <div class="card-number">Field Guide No. 15</div>
-      <div class="card-title">A Field Guide to Nests</div>
-      <div class="card-series">Field Guide &middot; 13 + 1 &middot; companion to No. 55</div>
-      <p class="card-moment">Most nests are not built. The famous termite tower is uninhabited, and a bower is not a nest at all.</p>
-      <p class="card-desc">Thirteen homes among our Terran kin, sorted by <strong>where the labour actually goes</strong> &mdash; and the catalogue disagrees with the word. We began meaning to sort by material and the material sort kept failing, because a hermit crab supplies none and a gall wasp supplies none either. <em>What varies is who does the work.</em> <strong>Built:</strong> a ten-centimetre pufferfish making a two-metre geometric court that divers photographed for years before anyone believed the builder was that small (Kawase, Okata &amp; Ito, <em>Scientific Reports</em>, 2013), and the correction that reorganised the guide &mdash; <strong>a termite mound is uninhabited.</strong> The paper's own word: fungus-farming termites build massive empty towers above their <em>subterranean</em> nests, and diurnal solar heating drives the convection through them (Ocko, Turner, Mahadevan et al., <em>J. Exp. Biol.</em>, 2017). The most-photographed animal architecture on Earth is not a house, it is a lung. <strong>Borrowed:</strong> hermit crabs build nothing, and when one shell arrives they queue beside it in <em>descending size order</em> so the entire line rehouses at once &mdash; vacancy chains, whose benefits are distributed across many participants rather than captured by the first taker (Chase, Weissburg &amp; DeWitt 1988; Lewis &amp; Rotjan 2009). The largest bird nest recorded, 2.9&nbsp;m wide and over two tonnes, was accumulated across decades until it was more than the tree could hold. And a woodpecker's ecological job is not its nest but the <em>vacancies</em> it leaves. <strong>Induced:</strong> a gall is oak tissue that the insect made the oak build, described in the literature as an <em>extended phenotype</em> &mdash; different wasp species induce different gall shapes on the same tree, so the design is not the plant's. And not building at all evolved independently <strong>at least seven separate times</strong> in birds (Sorenson &amp; Payne, 2002). A thing discovered seven times over is not a mistake. <strong>Secreted:</strong> a swiftlet nest is pure saliva, and the entry says plainly that this is why the species is farmed and harvested; an emperor penguin has <em>no structure at all</em>, only two feet, a fold of skin, and a huddle whose walls are other penguins; and a trapdoor spider called Number 16 held one silk-lined burrow for 43 years &mdash; a record that is really about <strong>Barbara York Main</strong>, who began following that population in 1974 and kept coming back for four decades. <strong>Not a nest:</strong> the bower, which everyone files as the finest nest on Earth. No egg is ever laid in it; the female nests elsewhere, alone. It is a theatre with deliberate <em>forced perspective</em>, objects graded outward so they subtend an even angle from where she stands (Endler, Endler &amp; Doerr, <em>Current Biology</em>, 2010). <strong>And the fourteenth card gets no reframe table, for a fourth distinct reason.</strong> The rooms people build are not graded here: turning a sounds-like/actually on somebody's own room would make us the observer in the doorway that <em>What Looks Like Chaos</em> (No. 55) spends ten spreads indicting, and No. 55 is also explicit that <em>not every mess is a nest</em> &mdash; burnout collapses the architecture, and from the doorway the ruins look identical. Nobody can sort those on sight. The weaver is present in one card that hands off to No. 55 rather than re-running it. The beaver is deliberately absent, already spent in <em>Minor Worlds</em>. The ninth guide to arrive independently at the same sentence: <em>there is no standard nest.</em></p>
-      <div class="card-footer"><span class="card-tag">13 ways of having a home</span><span class="card-arrow">&rarr;</span></div>
-    </a>
+    <div class="card-wrap" style="--card-color: #fbbf24;">
+      <a class="card" href="nests-field-guide.html">
+        <div class="card-number">Field Guide No. 15</div>
+        <div class="card-title">A Field Guide to Nests</div>
+        <div class="card-series">Field Guide &middot; 13 + 1 &middot; companion to No. 55</div>
+        <p class="card-moment">Most nests are not built. The famous termite tower is uninhabited, and a bower is not a nest at all.</p>
+        <p class="card-tagline">Sorted by where the labour actually goes — and the catalogue disagrees with the word.</p>
+        <p class="card-desc">Thirteen homes among our Terran kin. We began meaning to sort by material, and the material sort kept failing: a hermit crab supplies none, and neither does a gall wasp.</p>
+        <div class="card-footer"><span class="card-tag">13 ways of having a home</span><span class="card-arrow">&rarr;</span></div>
+      </a>
+      <details class="card-details">
+        <summary>Details</summary>
+        <div class="card-details-body"><p>Thirteen homes among our Terran kin, sorted by <strong>where the labour actually goes</strong> &mdash; and the catalogue disagrees with the word. We began meaning to sort by material, and the material sort kept failing, because a hermit crab supplies none and a gall wasp supplies none either. <em>What varies is who does the work.</em> The companion to <em>What Looks Like Chaos</em> (Zine No. 55), which asks how a nest gets built; this one asks what gets to count as one, and the answer is much wider. <strong>Built:</strong> a ten-centimetre pufferfish making a two-metre geometric court on the seabed that divers photographed for years before anyone believed the builder was that small (Kawase, Okata &amp; Ito, <em>Scientific Reports</em>, 2013) &mdash; the pattern is not decorative, it sorts fine sand into the centre, which is the part the female inspects. Then the correction that reorganised the whole guide: <strong>a termite mound is uninhabited.</strong> That is the paper's own word. Fungus-farming termites build massive <em>empty</em> towers above their subterranean nests, and the daily swing of solar heating drives convection through the tunnel network (Ocko, King, Andreen, Bardunias, Turner, Soar &amp; Mahadevan, <em>Journal of Experimental Biology</em>, 2017). The most-photographed animal architecture on Earth is routinely called the wrong kind of thing: it is not shelter, it is infrastructure &mdash; closer to a lung than a house. <strong>Borrowed:</strong> a hermit crab contributes no material to any home it will ever occupy, and when a single shell arrives the crabs gather and queue beside it <em>in descending size order</em>, so that when the largest moves in the whole line moves up at once. Lewis and Rotjan tested the prediction that matters and found it held &mdash; vacancy chains distribute benefits across many participants rather than to the first taker. The crab that waits is not being passive; it is standing in the only position from which the chain works. The largest bird nest on record, 2.9&nbsp;m wide, 6&nbsp;m deep and over two tonnes, was accumulated across decades until it was more than the tree could hold, which is inheritance and its cost in one object. And a woodpecker's ecological job is not its own nest but the <em>vacancies</em> it leaves behind for everything that cannot excavate. <strong>Induced:</strong> a gall is oak tissue that the insect made the oak build &mdash; the inducer injects effectors including phytohormones that redirect the plant's development, and different wasp species induce distinctively different galls on the <em>same</em> host, which is why the literature calls a gall an <em>extended phenotype</em> of the insect. And not building at all evolved independently <strong>at least seven separate times</strong> in birds: three times in the cuckoos, once in honeyguides, once in a duck, twice in songbirds (Sorenson &amp; Payne, 2002). <strong>A thing discovered seven times over is not a mistake</strong>, and that is the sentence the guide would most like a reader to carry. <strong>Secreted, or worn:</strong> a swiftlet builds from nothing but its own hardened saliva, and the entry states plainly that this is why the species is farmed and harvested at industrial scale rather than leaving it as a footnote. An emperor penguin has <em>no structure at all</em> &mdash; an egg on two feet under a fold of belly skin, with the shelter being the huddle, whose walls are other penguins and which moves. If somewhere-to-be requires a structure, the emperor has nowhere and manifestly succeeds, so the definition has to give: some of us have been housed by other people rather than by rooms, and it counted. And a trapdoor spider known as Number 16 held one silk-lined burrow for <strong>43 years</strong>, the longest life recorded for any spider &mdash; a record that is really about <strong>Barbara York Main</strong>, who began following that population in 1974 and kept returning for four decades. A long quiet life in one small place is invisible unless somebody decides it is worth watching. <strong>Not a nest:</strong> the bower, which every list of animal architecture files as the finest nest alive. No egg is ever laid in it and nothing lives there; the female builds the actual nest elsewhere, alone. It is a theatre with deliberate <em>forced perspective</em> &mdash; objects graded outward so they subtend a more even visual angle from where she stands (Endler, Endler &amp; Doerr, <em>Current Biology</em>, 2010). We have spent a century calling a stage set a house. <strong>And the fourteenth card gets no reframe table, which is a fourth distinct reason for withholding the apparatus.</strong> The rooms people build are not graded here. Running a sounds-like/actually over somebody's own room would make us the observer in the doorway with the clipboard &mdash; the exact figure No. 55 spends ten spreads indicting &mdash; and No. 55 is also explicit that <em>not every mess is a nest</em>, since burnout collapses the architecture and from the doorway the ruins look identical to the curated version. Nobody can sort those two on sight, and the people most certain they can are the reason the guide has a refusals list. The weaver appears in one card that hands off to No. 55 rather than re-running it; the beaver is deliberately absent, already spent in <em>Minor Worlds</em>. Thirteen lineages, thirteen incompatible methods, none ranked, several of them the ones a tidy observer would call failures. The ninth guide to arrive independently at the same sentence: <em>there is no standard nest.</em></p></div>
+      </details>
+    </div>
 
-    <a class="card" href="eggs-field-guide.html" style="--card-color: #22d3ee;">
-      <div class="card-number">Field Guide No. 16</div>
-      <div class="card-title">A Field Guide to Eggs</div>
-      <div class="card-series">Field Guide &middot; 15 + 1 &middot; companion to No. 57</div>
-      <p class="card-moment">The murre's pointed egg does not roll in a safe arc. That is the textbook explanation, and it is wrong.</p>
-      <p class="card-desc">Fifteen beginnings among our Terran kin, sorted by <strong>how far the egg gets from the body</strong> &mdash; and the catalogue disagrees with the picture in your head. <em>The egg you are imagining occupies one band out of five.</em> A material sort was tried first and collapsed, because a hen's egg and a common murre's are the same object by every material measure. So: eggs that never leave, eggs grown over by skin, eggs carried, eggs set down and guarded, eggs left. In the first band, <strong>live birth turns out to have evolved at least 115 separate times in lizards and snakes alone</strong> &mdash; against roughly 140 origins in all vertebrates &mdash; and about a fifth of squamate species lay no egg at all; whether the transition ever runs backwards is genuinely contested and is left open here. A sand tiger shark shows an egg working as <em>food</em>: the mother goes on ovulating after mating, up to ten embryos begin, and two are born. Syngnathid fishes are the <strong>only vertebrates with male pregnancy</strong>, and it is literal &mdash; a placenta-like pouch, embryos joined to the father's circulation, a measured patrotrophy index of 1, and immune suppression to tolerate them. A Surinam toad's eggs are pressed into her back and <em>her own skin grows over each one and builds it a lid</em>; there is no tadpole stage, and the toadlets push the lids off after three to five months. Giant water bug eggs are cemented to the male's dorsum, and the carrying is plumbing rather than devotion: <strong>unattended eggs die every time</strong>, in air or underwater. A Banggai cardinalfish father holds the clutch in his mouth for a month and eats nothing, because a mouth cannot be a foregut and a nursery at once. Then the band everybody pictures, where four of five are strange: a kiwi egg is 15 to 22 per cent of the female (an ostrich's is 2 to 3); a monotreme egg is leathery and <em>porous enough to be fed through its own shell</em>, with ten days of egg followed by four to seven months of milk; and a deep-sea octopus in Monterey Canyon was revisited eighteen times over <strong>fifty-three months</strong>, guarding one clutch, never seen to feed. The murre is the entry that indicts us rather than an animal: the pointed egg was explained for decades by rolling in a tight arc, Ingold found little support in 1980, and Birkhead's objection is embarrassingly simple &mdash; <em>the arc is wider than the ledge.</em> Stability on a slope and shell strength do the work instead. In the last band, walking away turns out not to be the failure state: a megapode chick hatches under 40 to 150&nbsp;cm of compost, digs out unaided in a median forty hours, and can fly the same day; a brine shrimp cyst waits up to eighteen dry years and resumes where it stopped; and a cuckoo's shell has a second job no other egg here has, since it must survive being <em>looked at</em> &mdash; matched to host retinal function rather than to our eyes, by host-specific female lineages, with the arms-race framing now under live challenge. Then the sixteenth card, dashed, with <strong>no reframe table</strong>: the egg-crack accounts, borrowed from trans communities and credited as unowned, because there is no mistaken verdict about the morning your own life rearranged itself behind you. One thing the biology does supply is a limit rather than a licence &mdash; across birds, squamates, turtles, crocodilians and the echidna, the tool that opens an egg is on the <em>inside</em>. <em>You cannot do it for anyone. You can only be audible.</em> The tenth guide to arrive independently at the same sentence: <em>there is no standard egg.</em></p>
-      <div class="card-footer"><span class="card-tag">15 ways of beginning</span><span class="card-arrow">&rarr;</span></div>
-    </a>
+    <div class="card-wrap" style="--card-color: #22d3ee;">
+      <a class="card" href="eggs-field-guide.html">
+        <div class="card-number">Field Guide No. 16</div>
+        <div class="card-title">A Field Guide to Eggs</div>
+        <div class="card-series">Field Guide &middot; 15 + 1 &middot; companion to No. 57</div>
+        <p class="card-moment">The murre's pointed egg does not roll in a safe arc. That is the textbook explanation, and it is wrong.</p>
+        <p class="card-tagline">The egg you are imagining occupies one band out of five.</p>
+        <p class="card-desc">Fifteen beginnings among our Terran kin, sorted by how far the egg gets from the body — because a material sort was tried first and collapsed.</p>
+        <div class="card-footer"><span class="card-tag">15 ways of beginning</span><span class="card-arrow">&rarr;</span></div>
+      </a>
+      <details class="card-details">
+        <summary>Details</summary>
+        <div class="card-details-body"><p>Fifteen beginnings among our Terran kin, sorted by <strong>how far the egg gets from the body</strong> &mdash; and the catalogue disagrees with the picture in your head. <em>The egg you are imagining occupies one band out of five.</em> A material sort was tried first and collapsed, because a hen's egg and a common murre's are the same object by every material measure. So: eggs that never leave, eggs grown over by skin, eggs carried, eggs set down and guarded, eggs left. In the first band, <strong>live birth turns out to have evolved at least 115 separate times in lizards and snakes alone</strong> &mdash; against roughly 140 origins in all vertebrates &mdash; and about a fifth of squamate species lay no egg at all; whether the transition ever runs backwards is genuinely contested and is left open here. A sand tiger shark shows an egg working as <em>food</em>: the mother goes on ovulating after mating, up to ten embryos begin, and two are born. Syngnathid fishes are the <strong>only vertebrates with male pregnancy</strong>, and it is literal &mdash; a placenta-like pouch, embryos joined to the father's circulation, a measured patrotrophy index of 1, and immune suppression to tolerate them. A Surinam toad's eggs are pressed into her back and <em>her own skin grows over each one and builds it a lid</em>; there is no tadpole stage, and the toadlets push the lids off after three to five months. Giant water bug eggs are cemented to the male's dorsum, and the carrying is plumbing rather than devotion: <strong>unattended eggs die every time</strong>, in air or underwater. A Banggai cardinalfish father holds the clutch in his mouth for a month and eats nothing, because a mouth cannot be a foregut and a nursery at once. Then the band everybody pictures, where four of five are strange: a kiwi egg is 15 to 22 per cent of the female (an ostrich's is 2 to 3); a monotreme egg is leathery and <em>porous enough to be fed through its own shell</em>, with ten days of egg followed by four to seven months of milk; and a deep-sea octopus in Monterey Canyon was revisited eighteen times over <strong>fifty-three months</strong>, guarding one clutch, never seen to feed. The murre is the entry that indicts us rather than an animal: the pointed egg was explained for decades by rolling in a tight arc, Ingold found little support in 1980, and Birkhead's objection is embarrassingly simple &mdash; <em>the arc is wider than the ledge.</em> Stability on a slope and shell strength do the work instead. In the last band, walking away turns out not to be the failure state: a megapode chick hatches under 40 to 150&nbsp;cm of compost, digs out unaided in a median forty hours, and can fly the same day; a brine shrimp cyst waits up to eighteen dry years and resumes where it stopped; and a cuckoo's shell has a second job no other egg here has, since it must survive being <em>looked at</em> &mdash; matched to host retinal function rather than to our eyes, by host-specific female lineages, with the arms-race framing now under live challenge. Then the sixteenth card, dashed, with <strong>no reframe table</strong>: the egg-crack accounts, borrowed from trans communities and credited as unowned, because there is no mistaken verdict about the morning your own life rearranged itself behind you. One thing the biology does supply is a limit rather than a licence &mdash; across birds, squamates, turtles, crocodilians and the echidna, the tool that opens an egg is on the <em>inside</em>. <em>You cannot do it for anyone. You can only be audible.</em> The tenth guide to arrive independently at the same sentence: <em>there is no standard egg.</em></p></div>
+      </details>
+    </div>
 
   </div>
 
@@ -422,5 +554,22 @@
 
 </div><!-- /doc-shell -->
 
+<script>
+/* Belt and braces for the paper copy: the @media print rule opens the card
+   disclosures with CSS, and this opens them for real, then puts each one back
+   exactly as the reader left it. Two mechanisms because a closed <details> has
+   hidden its content three different ways across engine versions, and the
+   failure mode is silent — a page that prints its cards without their
+   descriptions looks like a design choice, not a bug. */
+(function () {
+  var cards = function () { return document.querySelectorAll('.card-details'); };
+  addEventListener('beforeprint', function () {
+    cards().forEach(function (d) { d.dataset.wasOpen = d.open ? '1' : ''; d.open = true; });
+  });
+  addEventListener('afterprint', function () {
+    cards().forEach(function (d) { d.open = d.dataset.wasOpen === '1'; delete d.dataset.wasOpen; });
+  });
+})();
+</script>
 </body>
 </html>
