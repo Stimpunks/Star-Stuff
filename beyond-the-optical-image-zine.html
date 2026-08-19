@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0a0a14">
+<link rel="canonical" href="https://starstuff.earth/beyond-the-optical-image-zine.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta name="description" content="Helen Edgar's first constellation is the Dark Matter Field — the accumulated weight of neuronormativity. The physics beside it is a measured discrepancy: Zwicky (1933) found the Coma cluster needed 400 times the density of its luminous matter, and filed it as an unsolved problem. Rubin, Ford and Thonnard (ApJ 238, 471, 1980) reported that most rotation curves are rising slowly even at the farthest measured point, and that mass must lie beyond the optical image — their abstract never uses the word dark. Rubin in 2000 still could not rule out modified gravity. Clowe et al. (2006) then proved the mass is unseen at 8 sigma, which is why this zine's own founding phrasing had to be corrected on the page. Ninety-three years of refusing to say where a discrepancy lives. Asked about a child, the same question was closed on day one. After Helen Edgar. A method, not a proof.">
+<!-- Open Graph / link unfurl -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Star Stuff · Stimpunks Foundation × More Realms">
+<meta property="og:url" content="https://starstuff.earth/beyond-the-optical-image-zine.html">
+<meta property="og:title" content="Beyond the Optical Image">
+<meta property="og:description" content="The most famous rotation-curve paper never uses the word dark. It says mass must lie beyond the optical image — exactly what was measured, and no more. Ninety-three years of refusing to say where a discrepancy lives, and the same question closed on day one when it was asked about a child. After Helen Edgar.">
+<meta property="og:image" content="https://starstuff.earth/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A rainbow-hued cosmic image — we are all made of star stuff.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Beyond the Optical Image">
+<meta name="twitter:description" content="Astronomy spent ninety-three years arguing in public about where a measured discrepancy lives. Asked about an Autistic child, the same question was never opened. After Helen Edgar's Dark Matter Field.">
+<meta name="twitter:image" content="https://starstuff.earth/og-card.jpg">
+<title>Beyond the Optical Image — Stimpunks Zine No. 60</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="starstuff.css">
+<style>
+  :root {
+    --void:  var(--sp-void-deep);
+    --deep:  var(--sp-deep);
+    --page:  var(--sp-page);
+    --violet:var(--sp-purple);
+    --pink:  var(--sp-pink);
+    --gold:  var(--sp-gold);
+    --cyan:  var(--sp-cyan);
+    --green: var(--sp-green);
+    --ember: #c1653a;
+    --accent: var(--sp-purple);        /* this zine's identity accent — Helen's own colour for the Dark Matter Field */
+    --star-white: var(--sp-white-soft);
+    --stardust:   var(--sp-secondary-soft);
+    --dim:   var(--sp-dim);
+    --dim2:  var(--sp-dim-soft);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--void);
+    font-family: 'Atkinson Hyperlegible Next', system-ui, sans-serif;
+    color: var(--star-white);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── STARFIELD (violet · white · gold — a field you see by what it does) ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 9% 14%, rgba(167,139,250,0.62) 0%, transparent 100%),
+      radial-gradient(1px 1px at 11% 17%, rgba(244,244,251,0.5) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 44% 8%, rgba(251,191,36,0.42) 0%, transparent 100%),
+      radial-gradient(1px 1px at 61% 62%, rgba(244,244,251,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 64% 65%, rgba(167,139,250,0.5) 0%, transparent 100%),
+      radial-gradient(2px 2px at 76% 23%, rgba(167,139,250,0.46) 0%, transparent 100%),
+      radial-gradient(1px 1px at 86% 50%, rgba(251,191,36,0.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 91% 78%, rgba(167,139,250,0.48) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 6% 57%, rgba(244,244,251,0.52) 0%, transparent 100%),
+      radial-gradient(1px 1px at 32% 83%, rgba(167,139,250,0.44) 0%, transparent 100%),
+      radial-gradient(1px 1px at 34% 86%, rgba(244,244,251,0.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 52% 42%, rgba(251,191,36,0.36) 0%, transparent 100%),
+      radial-gradient(2px 2px at 19% 86%, rgba(167,139,250,0.46) 0%, transparent 100%),
+      radial-gradient(1px 1px at 70% 6%, rgba(244,244,251,0.7) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 28% 19%, rgba(244,244,251,0.46) 0%, transparent 100%),
+      radial-gradient(1px 1px at 82% 88%, rgba(251,191,36,0.36) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .zine-shell { position: relative; z-index: 1; max-width: 820px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+
+  .spectrum-line { height: 2px; border: none; border-radius: 2px; background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); }
+
+  /* ── NAV ── */
+  .nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2.5rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(167,139,250,0.2); }
+  .nav-brand { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--dim); }
+  .nav-controls { display: flex; gap: 0.5rem; align-items: center; }
+  .nav-btn { background: none; border: 1px solid rgba(167,139,250,0.35); color: var(--stardust); font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.15em; padding: 0.4rem 0.85rem; border-radius: 2px; cursor: pointer; transition: all 0.2s ease; text-transform: uppercase; }
+  .nav-btn:hover { background: rgba(167,139,250,0.15); border-color: rgba(167,139,250,0.6); color: var(--star-white); }
+  .nav-btn.active { background: rgba(167,139,250,0.20); border-color: var(--accent); color: var(--star-white); }
+  .page-counter { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.2em; color: var(--dim2); }
+
+  .spread { display: none; animation: fadeIn 0.5s ease forwards; }
+  .spread.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ── COVER ── */
+  .cover-spread {
+    position: relative; min-height: 520px; border-radius: 4px; overflow: hidden;
+    background:
+      radial-gradient(ellipse at 22% 20%, rgba(167,139,250,0.14) 0%, transparent 52%),
+      radial-gradient(ellipse at 76% 24%, rgba(251,191,36,0.07) 0%, transparent 52%),
+      radial-gradient(ellipse at 64% 80%, rgba(167,139,250,0.10) 0%, transparent 52%),
+      radial-gradient(ellipse at 24% 78%, rgba(34,211,238,0.06) 0%, transparent 52%),
+      var(--deep);
+    border: 1px solid rgba(167,139,250,0.25);
+    box-shadow: inset 0 0 80px rgba(167,139,250,0.06), 0 0 0 4px rgba(255,255,255,0.03);
+    display: flex; flex-direction: column; justify-content: flex-end; padding: 3rem;
+  }
+  .cover-motif { position: absolute; top: -4px; right: -14px; width: 340px; height: 340px; opacity: 0.8; pointer-events: none; }
+  .cover-issue { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.5em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.5rem; }
+  .cover-title { font-weight: 700; font-size: clamp(2.1rem, 6vw, 3.5rem); line-height: 1.03; color: var(--star-white); letter-spacing: -0.01em; margin-bottom: 0.9rem; }
+  .cover-title .amp { color: var(--accent); font-style: italic; }
+  .cover-subtitle { font-size: 1rem; color: var(--stardust); opacity: 0.85; margin-bottom: 1.5rem; max-width: 470px; line-height: 1.55; }
+  .cover-byline { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.14em; color: var(--dim); margin-bottom: 1.8rem; }
+  .cover-byline strong { color: var(--stardust); font-weight: 700; }
+  .cover-rule { width: 220px; max-width: 60%; margin-bottom: 1.3rem; }
+  .cover-meta { display: flex; gap: 2rem; align-items: center; }
+  .cover-ls { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 1.4rem; color: var(--gold); letter-spacing: 0.05em; }
+  .cover-meta-text { font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--dim2); line-height: 1.9; }
+  .cover-corner { position: absolute; top: 2rem; right: 2.5rem; text-align: right; }
+  .cover-corner-num { font-weight: 700; font-size: 4.5rem; line-height: 1; color: var(--accent); opacity: 0.24; }
+  .cover-corner-label { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); display: block; margin-top: -0.3rem; }
+
+  /* ── INTERIOR ── */
+  .interior { background: var(--page); border: 1px solid rgba(167,139,250,0.15); border-radius: 4px; overflow: hidden; min-height: 480px; }
+  .spread-2col { display: grid; grid-template-columns: 1fr 1fr; min-height: 480px; }
+  .spread-left, .spread-right { padding: 3rem 2.4rem; position: relative; }
+  .spread-left { border-right: 1px solid rgba(167,139,250,0.12); }
+
+  .spread-2col.stacked { display: flex; flex-direction: column; }
+  .spread-2col.stacked > .spread-left,
+  .spread-2col.stacked > .spread-right { border-right: none; }
+  .spread-2col.stacked > .col-diagram { order: 2; padding-top: 0; }
+  .spread-2col.stacked > .col-text { padding-left: max(2.4rem, calc((100% - 32rem) / 2)); padding-right: max(2.4rem, calc((100% - 32rem) / 2)); }
+  .spread-2col.stacked .diagram-wrap { height: auto; }
+  .spread-2col.stacked .diagram { max-width: 380px; }
+
+  .eyebrow { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.1rem; }
+  .body-text { font-size: 0.98rem; line-height: 1.72; color: var(--stardust); }
+  .body-text p { margin-bottom: 1rem; }
+  .body-text p:last-child { margin-bottom: 0; }
+  .body-text strong { font-weight: 700; color: var(--star-white); }
+  .body-text em { font-style: italic; color: var(--star-white); }
+  .body-text a { color: var(--violet); text-decoration: none; border-bottom: 1px solid rgba(167,139,250,0.45); }
+  .body-text a:hover { border-bottom-color: var(--violet); color: var(--star-white); }
+  .body-text .violet { color: var(--violet); font-weight: 700; }
+  .body-text .pink { color: var(--pink); font-weight: 700; }
+  .body-text .gold { color: var(--gold); font-weight: 700; }
+  .body-text .cyan { color: var(--cyan); font-weight: 700; }
+  .body-text .green { color: var(--green); font-weight: 700; }
+  .body-text .lede { font-size: 1.08rem; color: var(--star-white); }
+
+  .spread-heading { font-weight: 700; font-size: 1.9rem; line-height: 1.12; color: var(--star-white); margin-bottom: 1.1rem; letter-spacing: -0.01em; margin-top: 0; scroll-margin-top: 5rem; }
+  .spread-heading .spectrum-word { background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .rule { width: 40px; margin: 1rem 0; }
+
+  .pull-quote { font-size: 1.18rem; font-weight: 700; line-height: 1.4; color: var(--star-white); border-left: 3px solid var(--accent); padding-left: 1.1rem; margin: 1.4rem 0; font-style: italic; }
+  .pull-quote.violet { border-left-color: var(--violet); }
+  .pull-quote.cyan { border-left-color: var(--cyan); }
+  .pull-quote.gold { border-left-color: var(--gold); }
+  .pull-quote.pink { border-left-color: var(--pink); }
+  .pull-quote .attr { display: block; font-family: 'Space Mono', monospace; font-size: 0.6rem; font-weight: 400; font-style: normal; letter-spacing: 0.08em; color: var(--dim); margin-top: 0.6rem; }
+
+  .callout { margin: 1.3rem 0; padding: 1rem 1.15rem; background: rgba(167,139,250,0.07); border: 1px solid rgba(167,139,250,0.24); border-radius: 4px; font-size: 1rem; font-style: italic; color: var(--star-white); line-height: 1.55; }
+  .callout .attr { display: block; font-family: 'Space Mono', monospace; font-size: 0.58rem; font-style: normal; letter-spacing: 0.06em; color: var(--dim); margin-top: 0.5rem; }
+
+  .note { font-size: 0.84rem; line-height: 1.6; color: var(--dim); border-left: 2px solid rgba(251,191,36,0.4); padding-left: 0.9rem; margin: 1.1rem 0; }
+  .note strong { color: var(--stardust); font-weight: 700; }
+
+  /* ── TABLES ── */
+  .trades { width: 100%; border-collapse: collapse; margin: 1.3rem 0; font-size: 0.84rem; }
+  .trades caption { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dim); text-align: left; padding-bottom: 0.6rem; }
+  .trades th { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--stardust); text-align: left; padding: 0.5rem 0.6rem; border-bottom: 1px solid rgba(167,139,250,0.34); font-weight: 700; }
+  .trades td { padding: 0.55rem 0.6rem; border-bottom: 1px solid rgba(167,139,250,0.1); color: var(--stardust); line-height: 1.5; vertical-align: top; }
+  .trades td.keeps { color: var(--violet); font-weight: 700; }
+  .trades td.loses { color: var(--gold); font-weight: 700; }
+
+  /* ── DIAGRAMS ── */
+  .diagram-wrap { display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; }
+  .diagram { width: 100%; max-width: 300px; display: block; }
+  .diagram-caption { font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim); text-align: center; margin-top: 0.9rem; line-height: 1.9; }
+
+  /* ── REFUSALS ── */
+  .refusals { margin-top: 1.3rem; }
+  .refusal { font-size: 0.88rem; line-height: 1.5; color: var(--stardust); padding: 0.55rem 0; border-bottom: 1px solid rgba(167,139,250,0.1); display: flex; gap: 0.6rem; align-items: baseline; }
+  .refusal:last-child { border-bottom: none; }
+  .refusal-tag { font-family: 'Space Mono', monospace; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ember); flex-shrink: 0; padding-top: 0.12rem; }
+  .refusal strong { color: var(--star-white); font-weight: 700; }
+
+  /* ── COLOPHON ── */
+  .colophon { padding: 3rem; display: flex; flex-direction: column; justify-content: space-between; min-height: 480px; background: radial-gradient(ellipse at 80% 16%, rgba(167,139,250,0.09) 0%, transparent 50%), radial-gradient(ellipse at 16% 84%, rgba(251,191,36,0.06) 0%, transparent 50%), var(--page); }
+  .colophon-top { border-bottom: 1px solid rgba(167,139,250,0.14); padding-bottom: 1.3rem; margin-bottom: 1.2rem; }
+  .colophon-ls { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 2.4rem; color: var(--gold); letter-spacing: 0.05em; display: block; margin-bottom: 0.4rem; }
+  .colophon-phrase { font-size: 0.98rem; font-weight: 700; font-style: italic; color: var(--stardust); }
+  .series-list { display: flex; flex-direction: column; gap: 0.38rem; margin-bottom: 1.2rem; }
+  .series-item { font-size: 0.72rem; color: var(--dim); letter-spacing: 0.01em; display: flex; gap: 0.7rem; align-items: baseline; line-height: 1.45; }
+  .series-item.current { color: var(--accent); font-weight: 700; }
+  .series-num { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim2); flex-shrink: 0; }
+  .series-item.current .series-num { color: var(--accent); }
+  .reflect { border-top: 1px solid rgba(167,139,250,0.14); padding-top: 1rem; margin-bottom: 1.2rem; }
+  .reflect-label { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.65rem; }
+  .reflect-q { font-size: 0.86rem; line-height: 1.55; color: var(--stardust); margin-bottom: 0.55rem; font-style: italic; }
+  .reflect-q:last-child { margin-bottom: 0; }
+  .colophon-body { font-size: 0.75rem; color: var(--dim); line-height: 1.75; margin-bottom: 1.2rem; }
+  .colophon-body a { color: var(--violet); text-decoration: none; border-bottom: 1px solid rgba(167,139,250,0.45); }
+  .colophon-body a:hover { border-bottom-color: var(--violet); }
+  .colophon-h { font-family: 'Space Mono', monospace; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: var(--stardust); margin: 1rem 0 0.4rem; scroll-margin-top: 5rem; }
+  .colophon-footer { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--dim); line-height: 2.2; border-top: 1px solid rgba(167,139,250,0.14); padding-top: 1rem; }
+
+  /* ── SPREAD FOOTER ── */
+  .spread-footer { display: flex; justify-content: space-between; align-items: center; padding: 0.9rem 2.4rem; border-top: 1px solid rgba(167,139,250,0.1); }
+  .spread-footer-left { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--dim); }
+  .spread-footer-right { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; color: var(--accent); }
+
+  .twinkle { position: fixed; width: 3px; height: 3px; border-radius: 50%; animation: twinkle-anim 3s ease-in-out infinite; pointer-events: none; z-index: 0; }
+
+  @media (max-width: 600px) {
+    .spread-2col { grid-template-columns: 1fr; }
+    .spread-left { border-right: none; border-bottom: 1px solid rgba(167,139,250,0.12); }
+    .spread-2col.stacked > .spread-left { border-bottom: none; }
+    .spread-2col.stacked > .col-text { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .cover-spread { padding: 2rem; min-height: 420px; }
+    .cover-motif { width: 224px; height: 224px; top: -4px; right: -24px; opacity: 0.5; }
+    .cover-title { font-size: 1.9rem; }
+    .spread-heading { font-size: 1.55rem; }
+    .spread-left, .spread-right { padding: 2rem 1.5rem; }
+    .colophon { padding: 2rem 1.5rem; }
+    .trades { font-size: 0.76rem; }
+    .trades th, .trades td { padding: 0.4rem 0.35rem; }
+  }
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Beyond the Optical Image","description":"The first of Helen Edgar's twenty constellations in My Monotropic Galaxy is the Dark Matter Field, which she defines as the heavy darkness of neuronormativity and the accumulated weight of a world that does not meet our needs. The physics set beside it is a measured discrepancy, followed honestly across ninety-three years. Fritz Zwicky, in Die Rotverschiebung von extragalaktischen Nebeln (Helvetica Physica Acta 6, 1933), applied the virial theorem to seven galaxies in the Coma cluster and found the average density would have to be at least 400 times greater than that derived from observations of luminous matter, concluding that the large velocity dispersion holds an unsolved problem. Vera C. Rubin, W. Kent Ford, Jr., and Norbert Thonnard, in Rotational Properties of 21 Sc Galaxies (Astrophysical Journal 238, 471, 1980), reported that most rotation curves are rising slowly even at the farthest measured point, that neither high nor low luminosity Sc galaxies have falling rotation curves, and that Sc galaxies of all luminosities must have significant mass located beyond the optical image. Their abstract never uses the word dark, and the subject heading is galaxies: internal motions. Rubin, in One Hundred Years of Rotating Galaxies (PASP 112, 747, 2000), wrote that we cannot yet rule out a modified gravitational potential rather than dark matter, and that it is folly to believe that we know what a galaxy is while the composition of ninety percent or more of its mass is still a dark mystery. Clowe et al., in A direct empirical proof of the existence of dark matter (ApJ 648, L109, 2006), then measured an 8-sigma offset in the Bullet Cluster that cannot be explained by altering the gravitational force law. That paper is why this zine's own founding premise, that the field is never directly observed, was corrected on the page rather than quietly dropped. The mass is established; the particle is still missing after LZ and XENONnT null results. The argument is that a discrepancy between a model and a body can be attributed to the mass, the law, or the measurement, and astronomy has argued all three in public for ninety-three years while the same question, asked about an Autistic child, was closed on day one and the residual placed in the child. Where the analogy breaks is stated at full strength: neuronormativity is unmarked, not unobserved. After Helen Edgar. Neuronormative paradigm: Nick Walker, Neuroqueer Heresies (2021). Double empathy problem: Milton (2012). A method, not a proof.","image":"https://starstuff.earth/og-card.jpg","url":"https://starstuff.earth/beyond-the-optical-image-zine.html","mainEntityOfPage":"https://starstuff.earth/beyond-the-optical-image-zine.html","author":{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/"},"contributor":[{"@type":"Person","name":"Helen Edgar","url":"https://morerealms.com/"}],"publisher":[{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/","logo":{"@type":"ImageObject","url":"https://starstuff.earth/og-card.jpg"}},{"@type":"Organization","name":"More Realms","url":"https://morerealms.com/"}],"isPartOf":{"@type":"WebSite","name":"Star Stuff","url":"https://starstuff.earth/"}}</script>
+</head>
+<body>
+
+<div class="twinkle" style="top:12%;left:10%;background:var(--violet);box-shadow:0 0 6px var(--violet);animation-delay:-0.5s"></div>
+<div class="twinkle" style="top:23%;left:88%;background:var(--star-white);box-shadow:0 0 6px var(--star-white);animation-delay:-1.4s"></div>
+<div class="twinkle" style="top:52%;left:5%;background:var(--gold);box-shadow:0 0 6px var(--gold);animation-delay:-2.2s"></div>
+<div class="twinkle" style="top:71%;left:93%;background:var(--violet);box-shadow:0 0 6px var(--violet);animation-delay:-0.8s"></div>
+<div class="twinkle" style="top:84%;left:29%;background:var(--star-white);box-shadow:0 0 6px var(--star-white);animation-delay:-1.9s"></div>
+<div class="twinkle" style="top:39%;left:96%;background:var(--violet);box-shadow:0 0 6px var(--violet);animation-delay:-3.0s"></div>
+
+<div class="zine-shell">
+
+  <nav class="ss-nav" style="--nav-accent:#a78bfa;" aria-label="Star Stuff collection">
+    <span class="ss-nav-home-group"><a class="ss-nav-home" href="index.html"><span class="ss-star" aria-hidden="true">★</span> stuff</a><a class="ss-nav-about" href="about.html">about</a>
+      <a class="ss-nav-search" href="search.html">search</a></span>
+    <span class="ss-nav-links">
+      <a class="ss-nav-prev" href="the-shell-was-your-calcium-zine.html"><span class="ss-nav-arrow" aria-hidden="true">&lsaquo;</span> <span class="ss-nav-label">The Shell Was Your Calcium</span></a>
+      <a class="ss-nav-next" href="collection-how-we-got-here.html"><span class="ss-nav-label">How We Got Here</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
+    </span>
+    <a class="ss-nav-collection" href="collection-star-stuff.html"><span class="ss-nav-collection-label">Collection</span> <span class="ss-nav-collection-name">Star Stuff</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
+  </nav>
+
+  <nav class="nav">
+    <div class="nav-brand"><a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks</a> × <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a> · Zine No. 60</div>
+    <div class="nav-controls">
+      <button class="nav-btn" id="prev-btn" onclick="changePage(-1)">← prev</button>
+      <span class="page-counter" id="page-counter">1 / 13</span>
+      <button class="nav-btn" id="next-btn" onclick="changePage(1)">next →</button>
+    </div>
+  </nav>
+
+  <!-- ════ SPREAD 1: COVER ════ -->
+  <div class="spread active" id="spread-1">
+    <div class="cover-spread">
+      <svg class="cover-motif" viewBox="0 0 340 340" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <!-- A rotation curve: the Keplerian fall you would get if the light were the mass,
+             against the curve that keeps rising. Art held in the UPPER THIRD — the cover is
+             520px and the title sits at its foot, so anything past y≈240 here lands on the words. -->
+        <g transform="translate(6,10) scale(0.84)">
+          <!-- axes -->
+          <path d="M46 172 H292" stroke="rgba(244,244,251,0.30)" stroke-width="1.1"/>
+          <path d="M46 172 V34" stroke="rgba(244,244,251,0.30)" stroke-width="1.1"/>
+          <!-- expected: rises, then falls away as the light runs out -->
+          <path d="M46 172 C 72 108, 96 82, 124 76 C 168 84, 224 116, 288 148"
+                fill="none" stroke="rgba(251,191,36,0.65)" stroke-width="1.5" stroke-dasharray="5 5"/>
+          <!-- observed: rises fast, then keeps rising slowly -->
+          <path d="M46 172 C 72 106, 96 78, 124 70 C 176 62, 232 54, 288 48"
+                fill="none" stroke="rgba(167,139,250,0.95)" stroke-width="2.1"/>
+          <!-- the farthest measured point -->
+          <circle cx="288" cy="48" r="4.2" fill="rgba(167,139,250,1)"/>
+          <!-- No caption here on purpose: a text label in this motif collided with
+               .cover-title (check-overlap.mjs, 38.8x8.4px). The line it carried now
+               sits in .cover-byline instead. Do not add text back into this SVG. -->
+        </g>
+      </svg>
+      <div class="cover-corner">
+        <div class="cover-corner-num" aria-hidden="true">60</div>
+        <span class="cover-corner-label">Star Stuff</span>
+      </div>
+      <div class="cover-issue">Stimpunks × More Realms · Zine No. 60</div>
+      <h1 class="cover-title">Beyond the <span class="amp">Optical</span> Image</h1>
+      <p class="cover-subtitle">on a measured discrepancy, ninety-three years of refusing to say where it lives, and the same question closed on day one</p>
+      <div class="cover-byline">after <strong>Helen Edgar</strong> · the curve that would not fall, and the word they would not write</div>
+      <hr class="spectrum-line cover-rule">
+      <div class="cover-meta">
+        <span class="cover-ls">L★S</span>
+        <div class="cover-meta-text">Love You Down To Your Star Stuff<br>open edition · print freely</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 2: her naming came first ════ -->
+  <div class="spread" id="spread-2">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Dark Matter Field</div>
+          <h2 class="spread-heading" id="she-named-it-first">She named it first, and that order matters</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">In <a href="https://morerealms.com/my-monotropic-galaxy-a-constellation-of-my-autistic-self/"><em>My Monotropic Galaxy</em></a> (More Realms, June 2026), Helen Edgar maps twenty constellations of her own Autistic self. The <strong>first</strong> of the twenty is the <span class="violet">Dark Matter Field</span>.</p>
+            <div class="callout">Much of the lived experience of being Autistic for many people is weighed down by what I have called the Dark Matter Field in my galaxy. This is the heavy darkness of neuronormativity, reflected in the accumulated weight we carry around of a world that does not meet our needs, and does not love us down to our star stuff.<span class="attr">Helen Edgar · My Monotropic Galaxy · More Realms, 2026</span></div>
+            <p>She reached for the cosmic vocabulary on her own, for her own reasons, before anybody asked what the physics of it was. We have left this constellation alone twice — <a href="the-cloud-phase-zine.html">No. 45</a> and <a href="companion-stars-zine.html">No. 46</a> both took other namings from her map and said in their colophons that <em>Dark Matter Field</em> was being deliberately kept back. This is the piece that spends it.</p>
+            <p><strong>The direction of travel is the whole discipline of the thing.</strong> Her naming came first; the astronomy is set beside it afterward, to see what the careful version of that inference actually looks like. The reverse move — physics first, then a claim about people because the physics said so — is the one this whole collection exists to refuse. It has a name, and it has a body count.</p>
+            <p>So: nothing on the next eleven spreads is evidence about a nervous system. What follows is a <span class="gold">method</span>, worked all the way through by people who were very good at it, and then the same method held up against how the question got answered about us.</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 156" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig1-title fig1-desc">
+              <title id="fig1-title">Which way the borrowing runs</title>
+              <desc id="fig1-desc">An arrow from her naming to the physics is marked allowed. The reverse arrow, from the physics to a claim about people, is crossed out and marked the naturalistic fallacy.</desc>
+              <g font-family="Space Mono, monospace" font-size="7">
+                <text x="14" y="30" fill="var(--sp-secondary)">her naming</text>
+                <text x="212" y="30" fill="var(--sp-secondary)">the physics</text>
+              </g>
+              <path d="M86 42 H206" stroke="rgba(167,139,250,0.9)" stroke-width="1.5"/>
+              <path d="M200 38 L208 42 L200 46 Z" fill="rgba(167,139,250,0.9)"/>
+              <text x="146" y="58" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.4" fill="#c4b5fd">set beside · allowed</text>
+              <path d="M206 92 H86" stroke="rgba(244,114,182,0.55)" stroke-width="1.5"/>
+              <path d="M92 88 L84 92 L92 96 Z" fill="rgba(244,114,182,0.55)"/>
+              <g stroke="rgba(244,114,182,0.95)" stroke-width="1.8" stroke-linecap="round">
+                <path d="M136 82 L156 102"/><path d="M156 82 L136 102"/>
+              </g>
+              <g font-family="Space Mono, monospace" font-size="7">
+                <text x="14" y="80" fill="var(--sp-secondary)">a claim</text>
+                <text x="14" y="90" fill="var(--sp-secondary)">about people</text>
+                <text x="212" y="85" fill="var(--sp-secondary)">the physics</text>
+              </g>
+              <text x="146" y="118" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.4" fill="#f9a8d4">because nature does it · refused</text>
+              <text x="150" y="142" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="0.8" fill="var(--sp-dim)">a method, never a warrant</text>
+            </svg>
+            <div class="diagram-caption">Figure 1 · one arrow only</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Beyond the Optical Image · Stimpunks</span>
+        <span class="spread-footer-right">2</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 3: Zwicky's discrepancy ════ -->
+  <div class="spread" id="spread-3">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Coma, 1933</div>
+          <h2 class="spread-heading" id="he-counted-the-light">He counted the light and weighed the cluster</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Fritz Zwicky did something very simple, with seven galaxies. He measured how fast they were moving relative to each other, and asked how much mass it would take to keep them from flying apart.</p>
+            <p>Then he counted the light and asked how much mass <em>that</em> implied, assuming the stars were like our Sun. The two numbers did not agree. They did not nearly agree.</p>
+            <div class="pull-quote violet">the average density in the Coma system would have to be at least 400 times greater than that derived on the basis of observations of luminous matter<span class="attr">Zwicky 1933 · Helvetica Physica Acta 6 · English translation</span></div>
+            <p>Four hundred times. Not a rounding error, not a calibration problem, not something you argue away over lunch. <strong>The discrepancy was the finding</strong> — a gap between what a model predicted and what the bodies were actually doing.</p>
+            <p>And he did name it. The translation has him writing that this &ldquo;would lead to the surprising result that <span class="violet">dark matter</span> exists in much greater density than luminous matter.&rdquo;</p>
+            <p>So the word was there from the start. What he did with it next is the part nobody quotes.</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 168" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig2-title fig2-desc">
+              <title id="fig2-title">The two masses of the Coma cluster</title>
+              <desc id="fig2-desc">A short bar for the mass implied by the cluster's light sits beside a bar roughly four hundred times taller for the mass implied by the galaxies' motions. The tall bar is drawn broken to indicate it is not to scale.</desc>
+              <!-- baseline -->
+              <path d="M28 138 H272" stroke="rgba(244,244,251,0.3)" stroke-width="1.1"/>
+              <!-- luminous bar: short -->
+              <rect x="56" y="132" width="42" height="6" fill="rgba(251,191,36,0.85)"/>
+              <!-- dynamical bar: tall, broken -->
+              <rect x="176" y="46" width="42" height="92" fill="rgba(167,139,250,0.55)" stroke="rgba(167,139,250,0.95)" stroke-width="1.2"/>
+              <path d="M172 88 L222 82" stroke="var(--sp-page)" stroke-width="5"/>
+              <path d="M172 90 H222" stroke="rgba(167,139,250,0.95)" stroke-width="1.1" stroke-dasharray="3 3"/>
+              <g font-family="Space Mono, monospace" font-size="6.6" fill="var(--sp-secondary)">
+                <text x="77" y="154" text-anchor="middle">from the light</text>
+                <text x="197" y="154" text-anchor="middle">from the motions</text>
+              </g>
+              <text x="197" y="38" text-anchor="middle" font-family="Space Mono, monospace" font-size="8" font-weight="700" fill="#c4b5fd">≥ 400 ×</text>
+              <text x="150" y="20" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.4" fill="var(--sp-dim)">bar broken · not to scale</text>
+            </svg>
+            <div class="diagram-caption">Figure 2 · the gap that started it</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Beyond the Optical Image · Stimpunks</span>
+        <span class="spread-footer-right">3</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 4: he filed it as unsolved ════ -->
+  <div class="spread" id="spread-4">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">What he declined to do</div>
+          <h2 class="spread-heading" id="an-unsolved-problem">And then he called it an unsolved problem</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Zwicky had a factor of four hundred and a name for it. He could have announced a discovery. Here is how the section actually ends:</p>
+            <div class="pull-quote gold">These considerations indicate that the large velocity dispersion in the Coma system (and other dense clusters of nebulae) holds an unsolved problem.<span class="attr">Zwicky 1933 · closing the argument</span></div>
+            <p>Read that again with the four hundred still in mind. He had the measurement. He had the word. He filed it as <strong>unsolved</strong>.</p>
+            <p>That is not modesty and it is not hedging. It is a precise report of what he was entitled to say: <em>a discrepancy of this size exists, and I do not know where it lives.</em> He lists three candidate accounts in the paper and settles on none of them.</p>
+            <p><span class="gold">The first thing a careful person does with a discrepancy is decline to place it.</span></p>
+            <p>Hold onto that sentence. In ninety-three years it does not get improved on, and on <a href="#the-question-about-a-child">spread ten</a> we are going to want it badly.</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 164" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig3-title fig3-desc">
+              <title id="fig3-title">Zwicky's ledger</title>
+              <desc id="fig3-desc">Two columns. Under claimed: a discrepancy of at least four hundred, and the word dark matter as one possibility. Under not claimed: which account is correct, that the matter had been found, and that the problem was solved.</desc>
+              <g font-family="Space Mono, monospace" font-size="6.4" font-weight="700" letter-spacing="0.6">
+                <text x="20" y="22" fill="#c4b5fd">CLAIMED</text>
+                <text x="164" y="22" fill="#fcd34d">NOT CLAIMED</text>
+              </g>
+              <path d="M20 28 H132" stroke="rgba(167,139,250,0.5)" stroke-width="1"/>
+              <path d="M164 28 H280" stroke="rgba(251,191,36,0.5)" stroke-width="1"/>
+              <g font-family="Space Mono, monospace" font-size="6.2" fill="var(--sp-secondary)">
+                <text x="20" y="44">a gap of ≥400×</text>
+                <text x="20" y="58">measured, not</text>
+                <text x="20" y="68">estimated</text>
+                <text x="20" y="86">&ldquo;dark matter&rdquo; as</text>
+                <text x="20" y="96">one possibility</text>
+                <text x="164" y="44">which account</text>
+                <text x="164" y="54">is right</text>
+                <text x="164" y="72">that anything</text>
+                <text x="164" y="82">had been found</text>
+                <text x="164" y="100">that the problem</text>
+                <text x="164" y="110">was solved</text>
+              </g>
+              <path d="M148 18 V126" stroke="rgba(244,244,251,0.2)" stroke-width="0.9" stroke-dasharray="4 4"/>
+              <text x="150" y="146" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.2" letter-spacing="0.8" fill="var(--sp-secondary)">the right-hand column is the discipline</text>
+            </svg>
+            <div class="diagram-caption">Figure 3 · what he would not say</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Beyond the Optical Image · Stimpunks</span>
+        <span class="spread-footer-right">4</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 5: what the famous paper actually says ════ -->
+  <div class="spread" id="spread-5">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">ApJ 238, 471 · 1980</div>
+          <h2 class="spread-heading" id="never-said-dark">The paper everyone cites never says <em>dark</em></h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Vera C. Rubin, W. Kent Ford, Jr. and Norbert Thonnard took spectra of twenty-one Sc galaxies out into their faint outer regions and published the rotation curves. It is the paper the whole story hangs on. <strong>Almost everything said about it is slightly wrong.</strong></p>
+            <table class="trades">
+              <caption>the retelling · and the abstract</caption>
+              <thead><tr><th>You have heard</th><th>The paper says</th></tr></thead>
+              <tbody>
+                <tr><td class="loses">flat rotation curves</td><td class="keeps">&ldquo;Most rotation curves are <em>rising slowly</em> even at the farthest measured point&rdquo;</td></tr>
+                <tr><td class="loses">Rubin discovered dark matter</td><td class="keeps">&ldquo;must have significant mass located <em>beyond the optical image</em>&rdquo;</td></tr>
+                <tr><td class="loses">a paper about dark matter</td><td class="keeps">subject heading: <em>galaxies : internal motions</em></td></tr>
+              </tbody>
+            </table>
+            <p>The curves are not flat; they are still climbing where the light gives out. The negative claim in the abstract is narrower still and more careful than either version: <em>&ldquo;Neither high nor low luminosity Sc galaxies have falling rotation curves.&rdquo;</em> Not <em>they are flat</em> — <strong>they do not fall</strong>. That is what the data could carry.</p>
+            <p>And then the conclusion, which is the sentence this zine is named after: <span class="violet">Sc galaxies of all luminosities must have significant mass located beyond the optical image.</span></p>
+            <p>Look at what that sentence does. It says <em>where</em>. It refuses to say <em>what</em>. <strong>The word &ldquo;dark&rdquo; does not appear in the abstract at all.</strong> Forty-seven years after Zwicky, with better instruments and twenty-one galaxies instead of seven, the claim is still only about the location of mass — and the paper is filed under <em>internal motions</em>, because that is what was measured.</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 150" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig4-title fig4-desc">
+              <title id="fig4-title">Where the light stops and the curve does not</title>
+              <desc id="fig4-desc">A rotation curve rises steeply then continues rising gently. A shaded band marks the extent of the visible galaxy, ending well before the curve's last measured point, which is labelled still rising.</desc>
+              <!-- optical extent band -->
+              <rect x="34" y="34" width="86" height="82" fill="rgba(251,191,36,0.10)"/>
+              <path d="M120 34 V116" stroke="rgba(251,191,36,0.6)" stroke-width="1" stroke-dasharray="3 3"/>
+              <text x="77" y="128" text-anchor="middle" font-family="Space Mono, monospace" font-size="6" fill="#fcd34d">the optical image</text>
+              <!-- axes -->
+              <path d="M34 116 H278" stroke="rgba(244,244,251,0.3)" stroke-width="1.1"/>
+              <path d="M34 116 V30" stroke="rgba(244,244,251,0.3)" stroke-width="1.1"/>
+              <!-- the curve -->
+              <path d="M34 116 C 54 74, 74 58, 96 53 C 150 46, 214 42, 270 39"
+                    fill="none" stroke="rgba(167,139,250,0.95)" stroke-width="2"/>
+              <circle cx="270" cy="39" r="3.6" fill="rgba(167,139,250,1)"/>
+              <text x="238" y="60" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.2" fill="#c4b5fd">still rising</text>
+              <text x="156" y="142" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.6" letter-spacing="0.6" fill="var(--sp-secondary)">mass beyond where the light ends</text>
+            </svg>
+            <div class="diagram-caption">Figure 4 · the sentence the title is taken from</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Beyond the Optical Image · Stimpunks</span>
+        <span class="spread-footer-right">5</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 6: twenty years on ════ -->
+  <div class="spread" id="spread-6">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">PASP 112, 747 · 2000</div>
+          <h2 class="spread-heading" id="still-would-not-place-it">Twenty years on, she still would not place it</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">In 2000, Rubin wrote a retrospective called <em>One Hundred Years of Rotating Galaxies</em>. By then she was the most cited person alive on this question. Here is what she was willing to say.</p>
+            <div class="pull-quote violet">Surprisingly, we cannot yet rule out a modified gravitational potential, rather than dark matter, as the explanation of our observations.<span class="attr">Vera Rubin · PASP 112, 747 · 2000</span></div>
+            <p>Twenty years after the famous paper, the woman the discovery is named for is still holding two rival accounts open: <strong>maybe there is unseen mass, or maybe our law of gravity is wrong at these distances</strong>. She does not pick. She reports that the observations cannot yet decide.</p>
+            <p>And then this, which is the reason this zine exists:</p>
+            <div class="pull-quote gold">It is folly to believe that we know what a galaxy is, while the extent, the density distribution, and the composition of ≥90% of its mass are still a dark mystery.<span class="attr">Vera Rubin · the same essay</span></div>
+            <p><em>Folly.</em> Her word, about her own field, about the object she spent a career measuring. Not <em>we are nearly there</em>. Not <em>the details remain</em>. It is <strong>folly to believe that we know what a galaxy is</strong>.</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 176" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig5-title fig5-desc">
+              <title id="fig5-title">Sixty-seven years of withholding</title>
+              <desc id="fig5-desc">A timeline with three marks. 1933: a gap of four hundred times, withheld what it is. 1980: mass beyond the optical image, withheld the word dark. 2000: ninety percent unaccounted for, withheld between dark matter and modified gravity.</desc>
+              <path d="M40 34 V150" stroke="rgba(167,139,250,0.4)" stroke-width="1.2"/>
+              <g>
+                <circle cx="40" cy="48" r="4" fill="rgba(167,139,250,0.95)"/>
+                <circle cx="40" cy="94" r="4" fill="rgba(167,139,250,0.95)"/>
+                <circle cx="40" cy="140" r="4" fill="rgba(167,139,250,0.95)"/>
+              </g>
+              <g font-family="Space Mono, monospace" font-size="7" font-weight="700" fill="#c4b5fd">
+                <text x="54" y="44">1933</text>
+                <text x="54" y="90">1980</text>
+                <text x="54" y="136">2000</text>
+              </g>
+              <g font-family="Space Mono, monospace" font-size="6" fill="var(--sp-secondary)">
+                <text x="98" y="44">a gap of 400×</text>
+                <text x="98" y="90">mass beyond the light</text>
+                <text x="98" y="136">≥90% unaccounted</text>
+              </g>
+              <g font-family="Space Mono, monospace" font-size="6" fill="#fcd34d">
+                <text x="98" y="56">withheld: what it is</text>
+                <text x="98" y="102">withheld: the word</text>
+                <text x="98" y="148">withheld: mass or law</text>
+              </g>
+              <text x="150" y="170" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="0.8" fill="var(--sp-dim)">three generations, no premature verdict</text>
+            </svg>
+            <div class="diagram-caption">Figure 5 · the withholding is the record</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Beyond the Optical Image · Stimpunks</span>
+        <span class="spread-footer-right">6</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 7: the Bullet Cluster, and our own correction ════ -->
+  <div class="spread" id="spread-7">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">ApJ 648, L109 · 2006</div>
+          <h2 class="spread-heading" id="then-they-placed-it">Then they placed it — and this is where we were wrong</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Two galaxy clusters collided. The hot gas — which is most of the ordinary matter — got slowed by the collision and left behind. The galaxies sailed on through. So for once, the ordinary matter and everything else were in <em>different places</em>.</p>
+            <p>Clowe and colleagues mapped the gravity by how the cluster bent the light of things behind it, and found that the gravity was not where the gas was. It was out with the galaxies. Their title is not shy: <em>&ldquo;A direct empirical proof of the existence of dark matter.&rdquo;</em></p>
+            <div class="pull-quote cyan">An 8-sigma significance spatial offset of the center of the total mass from the center of the baryonic mass peaks cannot be explained with an alteration of the gravitational force law, and thus proves that the majority of the matter in the system is unseen.<span class="attr">Clowe et al. · ApJ 648, L109 · 2006</span></div>
+            <div class="note"><strong>This zine was proposed on a sentence that is wrong, and we are leaving the correction on the page.</strong> The pitch said the field is <em>&ldquo;never directly observed, only detected by its distorting effect&rdquo;</em> — and offered gravitational lensing as evidence of that. But lensing is the instrument that made the <em>direct</em> detection, and this paper explicitly rules out the modified-gravity account Rubin was still holding open six years earlier. The premise had to go. <a href="a-promise-not-a-finding.html">We publish our own errors</a>; that is the house.</div>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 168" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig6-title fig6-desc">
+              <title id="fig6-title">Gravity where the gas is not</title>
+              <desc id="fig6-desc">Two lobes of hot gas sit near the centre of a collision. Two peaks of gravitational mass, mapped by lensing, sit further out with the galaxies, offset from the gas. An arrow marks the offset between them.</desc>
+              <!-- gas lobes, central -->
+              <ellipse cx="124" cy="70" rx="26" ry="20" fill="rgba(244,114,182,0.30)" stroke="rgba(244,114,182,0.7)" stroke-width="1.1"/>
+              <ellipse cx="178" cy="70" rx="20" ry="16" fill="rgba(244,114,182,0.30)" stroke="rgba(244,114,182,0.7)" stroke-width="1.1"/>
+              <!-- lensing mass peaks, outside -->
+              <circle cx="74" cy="70" r="17" fill="none" stroke="rgba(167,139,250,0.9)" stroke-width="1.5" stroke-dasharray="4 3"/>
+              <circle cx="228" cy="70" r="14" fill="none" stroke="rgba(167,139,250,0.9)" stroke-width="1.5" stroke-dasharray="4 3"/>
+              <!-- offset marker -->
+              <path d="M74 104 H124" stroke="rgba(251,191,36,0.9)" stroke-width="1.3"/>
+              <path d="M80 100 L72 104 L80 108 Z" fill="rgba(251,191,36,0.9)"/>
+              <path d="M118 100 L126 104 L118 108 Z" fill="rgba(251,191,36,0.9)"/>
+              <text x="99" y="120" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.6" font-weight="700" fill="#fcd34d">8σ offset</text>
+              <g font-family="Space Mono, monospace" font-size="6.2">
+                <text x="151" y="30" text-anchor="middle" fill="#f9a8d4">the gas · most ordinary matter</text>
+                <text x="151" y="146" text-anchor="middle" fill="#c4b5fd">the mass · mapped by lensing</text>
+              </g>
+              <text x="150" y="162" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="0.7" fill="var(--sp-secondary)">no change to the force law puts these together</text>
+            </svg>
+            <div class="diagram-caption">Figure 6 · schematic, after Clowe et al.</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Beyond the Optical Image · Stimpunks</span>
+        <span class="spread-footer-right">7</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 8: mass settled, particle open ════ -->
+  <div class="spread" id="spread-8">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Two claims, held apart</div>
+          <h2 class="spread-heading" id="unseen-is-not-unfindable">Unseen is not the same as unfindable</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Here is the thing the smoothed retelling flattens in both directions at once. The <strong>mass</strong> is established. The <strong>identity</strong> of that mass is not. Those are different claims and the field keeps them scrupulously apart.</p>
+            <p>Deep underground, in tanks of liquid xenon, people have spent decades waiting for one of these particles to bump into something. LZ has now reported hundreds of live days of exposure and <span class="gold">found nothing</span>. XENONnT, tonne-years of exposure, <span class="gold">nothing</span>. The searches are widening to lighter and stranger candidates — axion-like particles, dark photons — because the obvious ones keep not being there.</p>
+            <p>Ninety-three years after Zwicky, the ledger reads: <em>we know it is there, we know roughly how much, we know where it sits, and we do not know what it is.</em></p>
+            <p><strong>Both halves of that get abused.</strong> Say only the first half and you have a settled science that brooks no questions. Say only the second and you have &ldquo;scientists don't even know what dark matter is&rdquo; deployed as if it discredited the measurement. The honest version is harder to shout and it is the only one that is true.</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 168" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig7-title fig7-desc">
+              <title id="fig7-title">Settled and open</title>
+              <desc id="fig7-desc">Two columns. Settled: a discrepancy exists, its size, where the mass sits, and that the force law cannot explain it away. Open: what the particle is, its mass, whether it interacts at all beyond gravity.</desc>
+              <g font-family="Space Mono, monospace" font-size="6.6" font-weight="700" letter-spacing="0.6">
+                <text x="20" y="22" fill="#c4b5fd">SETTLED</text>
+                <text x="168" y="22" fill="#fcd34d">OPEN</text>
+              </g>
+              <path d="M20 28 H136" stroke="rgba(167,139,250,0.5)" stroke-width="1"/>
+              <path d="M168 28 H280" stroke="rgba(251,191,36,0.5)" stroke-width="1"/>
+              <g font-family="Space Mono, monospace" font-size="6.2" fill="var(--sp-secondary)">
+                <text x="20" y="44">the gap is real</text>
+                <text x="20" y="60">how big it is</text>
+                <text x="20" y="76">where the mass is</text>
+                <text x="20" y="92">not the force law</text>
+                <text x="168" y="44">what it is made of</text>
+                <text x="168" y="60">how heavy</text>
+                <text x="168" y="76">whether it ever</text>
+                <text x="168" y="86">touches anything</text>
+                <text x="168" y="102">why we can't find it</text>
+              </g>
+              <path d="M152 16 V118" stroke="rgba(244,244,251,0.2)" stroke-width="0.9" stroke-dasharray="4 4"/>
+              <text x="150" y="138" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.2" letter-spacing="0.7" fill="var(--sp-secondary)">93 years · both columns still stand</text>
+              <text x="150" y="154" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.4" fill="var(--sp-dim)">collapsing either one is the misuse</text>
+            </svg>
+            <div class="diagram-caption">Figure 7 · the ledger, kept honest</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Beyond the Optical Image · Stimpunks</span>
+        <span class="spread-footer-right">8</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 9: three places a discrepancy can live ════ -->
+  <div class="spread" id="spread-9">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The structural question</div>
+          <h2 class="spread-heading" id="three-places">Three places a discrepancy can live</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Strip away the galaxies and this is the shape of the whole thing. A model predicts what a body will do. The body does something else. <strong>The gap has to go somewhere.</strong></p>
+            <p>There are exactly three places to put it. In the <span class="violet">mass</span>: something is there that we are not seeing. In the <span class="cyan">law</span>: our model of how things work is wrong at this scale. In the <span class="gold">measurement</span>: we are reading the instrument badly.</p>
+            <p>Astronomy has spent ninety-three years arguing all three, out loud, in journals, with the rival accounts named and the failures published. Zwicky listed candidates and picked none. Rubin held mass and law open for twenty years past her own famous result. Clowe closed one of them and said precisely how — <em>8-sigma, and here is the configuration that made it possible.</em> The null results from the xenon tanks are <strong>published</strong>, which is why anyone knows the particle is missing.</p>
+            <p>None of that is a courtesy. It is the machinery that makes the eventual answer worth anything. <span class="green">A verdict is only as good as the alternatives that were allowed to compete with it.</span></p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 172" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig8-title fig8-desc">
+              <title id="fig8-title">Three doors, all opened</title>
+              <desc id="fig8-desc">A measured gap leads to three labelled doors: the mass, the law, the measurement. All three are drawn open, with a note that in astronomy each was argued in public.</desc>
+              <text x="150" y="22" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.4" font-weight="700" fill="#c4b5fd">a measured gap</text>
+              <path d="M150 30 V44" stroke="rgba(167,139,250,0.8)" stroke-width="1.2"/>
+              <path d="M56 44 H244" stroke="rgba(167,139,250,0.8)" stroke-width="1.2"/>
+              <path d="M56 44 V56" stroke="rgba(167,139,250,0.8)" stroke-width="1.2"/>
+              <path d="M150 44 V56" stroke="rgba(167,139,250,0.8)" stroke-width="1.2"/>
+              <path d="M244 44 V56" stroke="rgba(167,139,250,0.8)" stroke-width="1.2"/>
+              <g fill="none" stroke-width="1.4">
+                <rect x="30" y="58" width="52" height="46" stroke="rgba(167,139,250,0.9)"/>
+                <rect x="124" y="58" width="52" height="46" stroke="rgba(34,211,238,0.9)"/>
+                <rect x="218" y="58" width="52" height="46" stroke="rgba(251,191,36,0.9)"/>
+              </g>
+              <g font-family="Space Mono, monospace" font-size="6.4" text-anchor="middle">
+                <text x="56" y="80" fill="#c4b5fd">the</text><text x="56" y="90" fill="#c4b5fd">mass</text>
+                <text x="150" y="80" fill="#67e8f9">the</text><text x="150" y="90" fill="#67e8f9">law</text>
+                <text x="244" y="80" fill="#fcd34d">the</text><text x="244" y="90" fill="#fcd34d">measurement</text>
+              </g>
+              <g font-family="Space Mono, monospace" font-size="5.8" text-anchor="middle" fill="var(--sp-secondary)">
+                <text x="56" y="118">argued</text>
+                <text x="150" y="118">argued</text>
+                <text x="244" y="118">argued</text>
+              </g>
+              <text x="150" y="144" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="0.7" fill="var(--sp-secondary)">all three opened · rivals named · nulls published</text>
+              <text x="150" y="160" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.4" fill="var(--sp-dim)">this is what the method looks like</text>
+            </svg>
+            <div class="diagram-caption">Figure 8 · every door tried</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Beyond the Optical Image · Stimpunks</span>
+        <span class="spread-footer-right">9</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 10: the same question about a child ════ -->
+  <div class="spread" id="spread-10">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The same question, asked about us</div>
+          <h2 class="spread-heading" id="the-question-about-a-child">Asked about a child, the question was never opened</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">A developmental model predicts what a child will do. The child does something else. <strong>Identical shape. A measured gap, and three places it could live.</strong></p>
+            <p>It went into the child. Not into the fluorescent hum or the unannounced transition or the six hours of masking already spent before lunch. Not into the <a href="https://doi.org/10.1080/09687599.2012.710008">double empathy problem</a> — Damian Milton's (2012) point that the failure of understanding runs <em>both</em> ways and is a property of the gap between two parties, not of one of them. Not into what Nick Walker named the <strong>neuronormative paradigm</strong>: the assumption that there is one right way to be, one correct way to think.</p>
+            <table class="trades">
+              <caption>how each field handles a residual</caption>
+              <thead><tr><th></th><th>The galaxies</th><th>The clinic</th></tr></thead>
+              <tbody>
+                <tr><td>rival accounts</td><td class="keeps">named, three of them</td><td class="loses">one, unnamed</td></tr>
+                <tr><td>null results</td><td class="keeps">published</td><td class="loses">largely unpublished</td></tr>
+                <tr><td>&ldquo;cannot yet rule out&rdquo;</td><td class="keeps">in print, by the discoverer</td><td class="loses">absent from the criteria</td></tr>
+                <tr><td>time to verdict</td><td class="keeps">93 years, still open</td><td class="loses">before the first appointment</td></tr>
+              </tbody>
+            </table>
+            <p><strong>Read the argument precisely, because the sloppy version of it is not ours.</strong> We are not claiming the environmental attribution is obviously the right one, or that a body never contributes to a gap. We are claiming something narrower and much harder to answer: <span class="violet">it was never treated as an open question.</span></p>
+            <p>No rival account was funded. No competing attribution was named in the criteria. Nobody wrote <em>&ldquo;surprisingly, we cannot yet rule out&rdquo;</em> and left it standing for twenty years. Where astronomy built a ninety-three-year public controversy, we got a <strong>default</strong> — and a default with a citation attached is much harder to argue with than an insult.</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 148" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig9-title fig9-desc">
+              <title id="fig9-title">Two doors never opened</title>
+              <desc id="fig9-desc">The same three doors as before, but only the first is open and marked the child. The doors marked the environment and the model are drawn shut and greyed, labelled never opened.</desc>
+              <text x="150" y="20" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.4" font-weight="700" fill="#c4b5fd">a measured gap</text>
+              <path d="M150 28 V40" stroke="rgba(167,139,250,0.8)" stroke-width="1.2"/>
+              <path d="M56 40 H244" stroke="rgba(167,139,250,0.8)" stroke-width="1.2"/>
+              <path d="M56 40 V52" stroke="rgba(167,139,250,0.8)" stroke-width="1.2"/>
+              <path d="M150 40 V52" stroke="rgba(244,244,251,0.22)" stroke-width="1.2"/>
+              <path d="M244 40 V52" stroke="rgba(244,244,251,0.22)" stroke-width="1.2"/>
+              <rect x="30" y="54" width="52" height="44" fill="rgba(244,114,182,0.16)" stroke="rgba(244,114,182,0.95)" stroke-width="1.6"/>
+              <rect x="124" y="54" width="52" height="44" fill="none" stroke="rgba(244,244,251,0.26)" stroke-width="1.2" stroke-dasharray="3 3"/>
+              <rect x="218" y="54" width="52" height="44" fill="none" stroke="rgba(244,244,251,0.26)" stroke-width="1.2" stroke-dasharray="3 3"/>
+              <g font-family="Space Mono, monospace" font-size="6.4" text-anchor="middle">
+                <text x="56" y="74" fill="#f9a8d4">the</text><text x="56" y="84" fill="#f9a8d4">child</text>
+                <text x="150" y="74" fill="var(--sp-dim)">the</text><text x="150" y="84" fill="var(--sp-dim)">room</text>
+                <text x="244" y="74" fill="var(--sp-dim)">the</text><text x="244" y="84" fill="var(--sp-dim)">model</text>
+              </g>
+              <g font-family="Space Mono, monospace" font-size="5.8" text-anchor="middle">
+                <text x="56" y="112" fill="#f9a8d4">the default</text>
+                <text x="197" y="112" fill="var(--sp-dim)">never opened</text>
+              </g>
+              <text x="150" y="136" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="0.7" fill="var(--sp-secondary)">the objection is the closing, not the answer</text>
+            </svg>
+            <div class="diagram-caption">Figure 9 · compare Figure 8</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Beyond the Optical Image · Stimpunks</span>
+        <span class="spread-footer-right">10</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 11: where the analogy breaks ════ -->
+  <div class="spread" id="spread-11">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Where it breaks</div>
+          <h2 class="spread-heading" id="not-evidence-about-you">This is not evidence about you</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">The proposal for this zine called the parallel <em>&ldquo;an exact structural match.&rdquo;</em> It is not, and here is the failure at full strength rather than tucked in a hedge.</p>
+            <p><strong>Dark matter is hidden by nature. Neuronormativity is hidden by convention.</strong> That is a different kind of hiding, and it changes everything about what follows.</p>
+            <p>The field warping us is not undetected. It is <em>written down</em>. It is in the diagnostic criteria, the intervention targets, the compliance goal on an education plan, the phrase &ldquo;culture fit&rdquo; in a hiring rubric, the seating chart, the lighting spec. You do not need a tonne of liquid xenon a mile underground. You need to read the paperwork.</p>
+            <p>The right word is not <em>invisible</em> — it is <span class="violet">unmarked</span>. It goes unnamed because it is the baseline, and the baseline is the one thing a measurement never lists among its objects.</p>
+            <p><strong>And that difference is good news.</strong> A particle that has evaded ninety-three years of the best instruments ever built may simply be beyond us for another century. A convention is a decision, written by people, and it can be read, quoted, contested and changed this year.</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig10-title fig10-desc">
+              <title id="fig10-title">Two kinds of hiding</title>
+              <desc id="fig10-desc">Hidden by nature requires new instruments and may take another century. Hidden by convention requires reading the existing paperwork and can be changed this year.</desc>
+              <g font-family="Space Mono, monospace" font-size="6.6" font-weight="700">
+                <text x="20" y="22" fill="#c4b5fd">HIDDEN BY NATURE</text>
+                <text x="168" y="22" fill="#fcd34d">BY CONVENTION</text>
+              </g>
+              <path d="M20 28 H140" stroke="rgba(167,139,250,0.5)" stroke-width="1"/>
+              <path d="M168 28 H282" stroke="rgba(251,191,36,0.5)" stroke-width="1"/>
+              <g font-family="Space Mono, monospace" font-size="6.2" fill="var(--sp-secondary)">
+                <text x="20" y="46">a tonne of xenon</text>
+                <text x="20" y="58">a mile underground</text>
+                <text x="20" y="76">93 years, no result</text>
+                <text x="20" y="94">maybe another</text>
+                <text x="20" y="104">century</text>
+                <text x="168" y="46">the criteria</text>
+                <text x="168" y="58">the seating chart</text>
+                <text x="168" y="76">read the paperwork</text>
+                <text x="168" y="94">changeable</text>
+                <text x="168" y="104">this year</text>
+              </g>
+              <path d="M154 16 V116" stroke="rgba(244,244,251,0.2)" stroke-width="0.9" stroke-dasharray="4 4"/>
+              <text x="150" y="136" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.2" letter-spacing="0.7" fill="#c4b5fd">unmarked, not invisible</text>
+              <text x="150" y="150" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.4" fill="var(--sp-dim)">which is why this one is answerable</text>
+            </svg>
+            <div class="diagram-caption">Figure 10 · the break, stated plainly</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Beyond the Optical Image · Stimpunks</span>
+        <span class="spread-footer-right">11</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 12: same field, two readings ════ -->
+  <div class="spread" id="spread-12">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">One field, two readings</div>
+          <h2 class="spread-heading" id="the-physics-chooses-neither">The physics chooses neither, and that is the tell</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Helen's Dark Matter Field is the accumulated weight — the heavy darkness, the thing pressing down. That reading is hers and it is true to her life.</p>
+            <p>Now take the identical fact. <strong>Unseen mass is most of what holds a galaxy together.</strong> Without it the thing flies apart. Read that way, the very same physics is the perfect emblem of something else entirely: the co-regulation nobody logs, the care work nobody bills, the friend who answers at 2am, the accommodations that never made it into a report. <em>The unmeasured is not the unreal, and it is often the unmeasured that is holding everything in place.</em></p>
+            <p>Same field. Same evidence. Same ninety-three years of measurement. <span class="violet">Crushing weight</span> and <span class="green">the only reason anything is still standing</span> — and the physics does not adjudicate between them, because it was never asked about you.</p>
+            <div class="pull-quote violet">If one fact can carry two opposite morals, the moral was never in the fact.<span class="attr">the whole reason we mark it</span></div>
+            <p>This is the cleanest demonstration we have of why this collection keeps saying <em>a rhyme, not a proof</em>. Someone has to choose which reading to make, and then <strong>own the choosing</strong> rather than hiding behind the galaxy. Helen chose weight, in her own galaxy, about her own life, and said so in the first person. That is what an honest use of a metaphor looks like.</p>
+            <div class="refusals">
+              <div class="refusal"><span class="refusal-tag">Not:</span><span><strong>dark matter proving the field is real.</strong> Ninety-three years of rotation curves say nothing whatsoever about a nervous system. If you needed astrophysics to believe us, the problem was never the evidence.</span></div>
+              <div class="refusal"><span class="refusal-tag">Not:</span><span><strong>an argument against evidence.</strong> The opposite. Careful public attribution is the thing we are asking <em>for</em>. Nulls published, rivals named, verdicts withheld — give us that and we will take our chances.</span></div>
+              <div class="refusal"><span class="refusal-tag">Not:</span><span><strong>modified-gravity advocacy.</strong> Rubin's 2000 sentence was true in 2000. Clowe answered it in 2006 and we quote the answer, at 8-sigma, on <a href="#then-they-placed-it">spread seven</a>.</span></div>
+              <div class="refusal"><span class="refusal-tag">Not:</span><span><strong>&ldquo;you are mysterious.&rdquo;</strong> Rubin's <em>folly</em> line is about a galaxy. Turning it into mystique about Autistic people is the move we are refusing — being unexplained is not the same as being unknowable, and we are neither.</span></div>
+              <div class="refusal"><span class="refusal-tag">Not:</span><span><strong>the inspiration story about Vera Rubin.</strong> She was shut out of observatories and she was scrupulously careful. Only the second one is our argument here, and borrowing the first would be doing to her what gets done to us.</span></div>
+              <div class="refusal"><span class="refusal-tag">Not:</span><span><strong>a claim that bodies never contribute.</strong> A gap can have more than one source. The objection is to the question being closed, not to any particular answer.</span></div>
+              <div class="refusal"><span class="refusal-tag">Not:</span><span><strong>Helen's reading corrected.</strong> Her galaxy is hers. Spread twelve adds a second reading to the same physics; it does not take hers away.</span></div>
+            </div>
+            <p>The sentence this zine is named for is the one to keep. Rubin, Ford and Thonnard had twenty-one galaxies and every reason to reach, and they wrote: <strong>mass located beyond the optical image.</strong> Exactly what was measured. Nothing about what it was made of, or what it meant, or what anybody deserved.</p>
+            <p class="lede">Ask for claims about us that narrow, and that honest. <span class="gold">There is a great deal of you beyond the optical image</span> — and the loving does not wait on the inventory.</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 152" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig11-title fig11-desc">
+              <title id="fig11-title">One fact, two morals</title>
+              <desc id="fig11-desc">A single central fact, unseen mass dominates a galaxy, branches to two readings: the weight that presses down, and the mass that holds it together. Neither branch is marked as the one the physics chooses.</desc>
+              <rect x="82" y="14" width="136" height="30" rx="3" fill="rgba(167,139,250,0.16)" stroke="rgba(167,139,250,0.85)" stroke-width="1.3"/>
+              <text x="150" y="27" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.4" fill="#c4b5fd">unseen mass dominates</text>
+              <text x="150" y="37" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.4" fill="#c4b5fd">the galaxy</text>
+              <path d="M150 44 V58" stroke="rgba(167,139,250,0.8)" stroke-width="1.2"/>
+              <path d="M74 58 H226" stroke="rgba(167,139,250,0.8)" stroke-width="1.2"/>
+              <path d="M74 58 V70" stroke="rgba(244,114,182,0.8)" stroke-width="1.2"/>
+              <path d="M226 58 V70" stroke="rgba(74,222,128,0.8)" stroke-width="1.2"/>
+              <rect x="26" y="72" width="96" height="34" rx="3" fill="none" stroke="rgba(244,114,182,0.9)" stroke-width="1.3"/>
+              <rect x="178" y="72" width="96" height="34" rx="3" fill="none" stroke="rgba(74,222,128,0.9)" stroke-width="1.3"/>
+              <g font-family="Space Mono, monospace" font-size="6.2" text-anchor="middle">
+                <text x="74" y="87" fill="#f9a8d4">the weight that</text>
+                <text x="74" y="97" fill="#f9a8d4">presses down</text>
+                <text x="226" y="87" fill="#86efac">the mass that holds</text>
+                <text x="226" y="97" fill="#86efac">it together</text>
+              </g>
+              <text x="150" y="124" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" letter-spacing="0.7" fill="var(--sp-secondary)">both true of the physics · neither from it</text>
+              <text x="150" y="142" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.6" fill="var(--sp-dim)">somebody chooses · say who</text>
+            </svg>
+            <div class="diagram-caption">Figure 11 · the fork the fact will not take</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Beyond the Optical Image · Stimpunks</span>
+        <span class="spread-footer-right">12</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 13: COLOPHON ════ -->
+  <div class="spread" id="spread-13">
+    <div class="interior">
+      <div class="colophon">
+        <div>
+          <div class="colophon-top">
+            <span class="colophon-ls">L★S</span>
+            <p class="colophon-phrase">Mass located beyond the optical image. Exactly what was measured, and no more.</p>
+          </div>
+
+          <div class="series-list">
+            <div class="series-item"><span class="series-num">No. 3</span> The Neurodiversity Field Guide — variation is not deficit</div>
+            <div class="series-item"><span class="series-num">No. 9</span> Who Is Holding the Candle — epistemic injustice, with a citation attached</div>
+            <div class="series-item"><span class="series-num">No. 40</span> Five Sigma — what a threshold is for, and what it is not</div>
+            <div class="series-item"><span class="series-num">No. 45</span> The Cloud Phase — the in-between is the majority state</div>
+            <div class="series-item"><span class="series-num">No. 46</span> Companion Stars — no path can be solved alone</div>
+            <div class="series-item current"><span class="series-num">No. 60</span> Beyond the Optical Image — where a discrepancy is allowed to live ← you are here</div>
+          </div>
+
+          <div class="reflect">
+            <div class="reflect-label">Reflection</div>
+            <p class="reflect-q">Where in your life has a gap been attributed to you, without the other two doors ever being opened?</p>
+            <p class="reflect-q">What would it take to get someone to write &ldquo;we cannot yet rule out&rdquo; about a verdict already made about you?</p>
+            <p class="reflect-q">Which of the unmarked conventions around you is actually written down somewhere you could go and read?</p>
+            <p class="reflect-q">Whose unmeasured mass is holding your life together right now — and does anybody's paperwork know it?</p>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="colophon-h" id="sources">Sources</h3>
+          <div class="colophon-body">
+            <p><strong>The Coma discrepancy.</strong> Fritz Zwicky, &ldquo;Die Rotverschiebung von extragalaktischen Nebeln,&rdquo; <em>Helvetica Physica Acta</em> 6 (1933). Quoted here from the English translation by Sydney van den Bergh and others, <a href="https://arxiv.org/abs/1711.01693">arXiv:1711.01693</a> — the &ldquo;at least 400 times greater&rdquo; figure, the &ldquo;surprising result that dark matter exists in much greater density than luminous matter,&rdquo; and the closing &ldquo;holds an unsolved problem&rdquo; are all verbatim from that translation. <strong>We have not read the German original</strong>, and the phrase Zwicky uses there is <em>dunkle (kalte) Materie</em>; the wording above is the translators'.</p>
+            <p><strong>The rotation curves.</strong> Vera C. Rubin, W. Kent Ford, Jr. &amp; Norbert Thonnard, &ldquo;Rotational Properties of 21 Sc Galaxies with a Large Range of Luminosities and Radii, from NGC 4605 (R = 4 kpc) to UGC 2885 (R = 122 kpc),&rdquo; <em>Astrophysical Journal</em> 238, 471–487 (1980 June 1; received 1979 October 11). Read at the page scan, not at a summary. Verbatim: &ldquo;Most rotation curves are rising slowly even at the farthest measured point&rdquo;; &ldquo;Neither high nor low luminosity Sc galaxies have falling rotation curves&rdquo;; &ldquo;Sc galaxies of all luminosities must have significant mass located beyond the optical image.&rdquo; Subject heading as printed: <em>galaxies : internal motions</em>. <strong>The claim that the word &ldquo;dark&rdquo; is absent is made about the abstract</strong>, which we have read in full; we have not read all seventeen pages.</p>
+            <p><strong>Rubin's own retrospective.</strong> Vera Rubin, &ldquo;One Hundred Years of Rotating Galaxies,&rdquo; <em>Publications of the Astronomical Society of the Pacific</em> 112, 747 (2000). Both quotations verbatim from the published article. A much-quoted line in which Rubin says she would prefer a modification of Newton's laws to &ldquo;a new kind of sub-nuclear particle&rdquo; is <strong>deliberately not used here</strong>: it traces only to secondary retellings citing an unnamed <em>New Scientist</em> piece, and this repo does not treat aggregators as citations. The PASP sentence says the same thing and is hers on the record.</p>
+            <p><strong>The Bullet Cluster.</strong> Douglas Clowe, Maruša Bradač, Anthony H. Gonzalez, Maxim Markevitch, Scott W. Randall, Christine Jones &amp; Dennis Zaritsky, &ldquo;A direct empirical proof of the existence of dark matter,&rdquo; <em>Astrophysical Journal</em> 648, L109–L113 (2006), on the merging cluster 1E0657−558 at z = 0.296. The 8-sigma sentence is verbatim from the abstract. Figure 6 is schematic and is not a reproduction of their lensing map.</p>
+            <p><strong>The missing particle.</strong> Null results from the LUX-ZEPLIN (LZ) and XENONnT liquid-xenon experiments, reported from exposures of hundreds of live days and several tonne-years respectively, with search programmes widening toward axion-like particles and dark photons. <strong>Given from the experiments' published result announcements and a recent status review rather than from a primary paper read end to end</strong>, and stated without specific exclusion limits for that reason. The 93-year span is counted from Zwicky 1933 to 2026 and is ours.</p>
+            <h3 class="colophon-h" id="after-helen-edgar">After Helen Edgar</h3>
+            <p>This is a house zine written <strong>after</strong> Helen Edgar, in the shape of <a href="the-cloud-phase-zine.html">No. 45</a> and <a href="companion-stars-zine.html">No. 46</a> — hers is the naming and the frame; the astronomy, the argument, and any error in either are ours.</p>
+            <p><strong>Helen Edgar</strong>, <a href="https://morerealms.com/my-monotropic-galaxy-a-constellation-of-my-autistic-self/"><em>My Monotropic Galaxy: A Constellation of My Autistic Self</em></a> (More Realms, June 2026), where the <strong>Dark Matter Field</strong> is the first of twenty constellations. Her definition on spread two is quoted verbatim and in full. Her map is also rehoused, with her numbering and in her words, as <a href="monotropic-galaxy-field-guide.html">Field Guide No. 12</a>, whose card for this constellation carries the astronomy behind the fold. Her <em>Gravity Well</em> (#14) remains untouched, as <em>Dark Matter Field</em> was until this piece.</p>
+            <p><strong>She has not reviewed this zine.</strong> Spread seven corrects a framing that reached us through her session, and spread twelve sets a second reading beside hers. Both are ours, argued in the open, and neither is offered as a correction to her galaxy.</p>
+            <h3 class="colophon-h" id="credits">Credits</h3>
+            <p>The <strong>neuronormative paradigm</strong> is <strong>Nick Walker</strong>'s, from <em>Neuroqueer Heresies: Notes on the Neurodiversity Paradigm, Autistic Empowerment, and Postnormal Possibilities</em> (Autonomous Press, 2021), where it supersedes his earlier <em>pathology paradigm</em>. The attribution and the dating here follow <strong>Helen Edgar</strong>'s own account in <a href="https://autisticrealms.com/the-neuronormative-paradigm-naming-the-systems-that-harm/">The Neuronormative Paradigm: Naming The Systems That Harm</a> (Autistic Realms, November 2025); <strong>we have not read the book itself</strong>, and the coinage is logged as confirmed by corroborating secondary accounts rather than at the primary. The <strong>double empathy problem</strong> is <strong>Damian Milton</strong>'s, <em>Disability &amp; Society</em> 27(6), 883–887 (2012). <strong>Monotropism</strong>, which frames Helen's galaxy throughout, is <strong>Dinah Murray, Mike Lesser &amp; Wenn Lawson</strong>, <em>Autism</em> 9(2), 139–156 (2005).</p>
+            <h3 class="colophon-h" id="what-this-does-not-re-argue">What this deliberately does not re-argue</h3>
+            <p><a href="five-sigma-zine.html">No. 40 <em>Five Sigma</em></a> owns the argument about thresholds, unpublished nulls and evidence-based practice; the &ldquo;null results are published&rdquo; line on spread nine leans on it rather than restating it. <a href="who-is-holding-the-candle.html">Who Is Holding the Candle</a> owns epistemic injustice. <a href="why-difference-comes-first-zine.html">No. 3</a> and the <a href="difference-first-frame.html">difference-first frame</a> own the paradigm argument itself, which is why spread ten states the closure rather than re-litigating the paradigm.</p>
+            <p><strong>A method, not a proof.</strong> Ninety-three years of astrophysics knows nothing about us and demonstrates nothing about us. What it demonstrates is what care looks like when a discrepancy is measured and nobody yet knows where it lives. Every place this zine sets a physical fact beside a lived one, it is noticing a shape in both and saying so — and on <a href="#not-evidence-about-you">spread eleven</a> it says where the shape stops.</p>
+          </div>
+          <div class="colophon-footer">
+            <a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks Foundation</a> × <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a><br>
+            stimpunks.org · morerealms.com · starstuff.earth<br>
+            <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> · open edition · print freely
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Beyond the Optical Image · Stimpunks</span>
+        <span class="spread-footer-right">13</span>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /zine-shell -->
+
+<script>
+  let current = 1;
+  const total = 13;
+
+  function changePage(dir) {
+    const next = current + dir;
+    if (next < 1 || next > total) return;
+    document.getElementById('spread-' + current).classList.remove('active');
+    current = next;
+    document.getElementById('spread-' + current).classList.add('active');
+    document.getElementById('page-counter').textContent = current + ' / ' + total;
+    document.getElementById('prev-btn').disabled = current === 1;
+    document.getElementById('next-btn').disabled = current === total;
+    document.getElementById('prev-btn').classList.toggle('active', current > 1);
+    document.getElementById('next-btn').classList.toggle('active', current < total);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') changePage(1);
+    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   changePage(-1);
+  });
+
+  document.getElementById('prev-btn').disabled = true;
+  document.getElementById('next-btn').classList.add('active');
+</script>
+<script src="starstuff.js" defer></script>
+</body>
+</html>
