@@ -99,8 +99,8 @@ The central phrase compresses through registers, each with a use:
   <a class="ss-nav-collection" href="collection-kin.html"><span class="ss-nav-collection-label">Collection</span> <span class="ss-nav-collection-name">Kin</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
   ```
 
-  All 103 members have one; the 13 collection pages, `index.html` and `search.html` do not (103 +
-  13 + 2 = the 118 pages in the repo root). **A new
+  All 110 members have one; the 13 collection pages, `index.html` and `search.html` do not (110 +
+  13 + 2 = the 125 pages in the repo root). **A new
   piece needs its badge and its collection page's card in the same pass** — the page→collection map
   is derived from `<a class="card" href="…">` on the collection pages, so a card that is missing
   makes the badge underivable. **`tools/check-markup.mjs` enforces all of this as of 2026-08-13**
@@ -152,7 +152,7 @@ The central phrase compresses through registers, each with a use:
   fallback (`var(--violet)`, `var(--cyan)`, `var(--accent)`) and its own hover tint, because the
   tinting is per collection on purpose. Derive those from the page rather than hardcoding them.
   **The membership map survives the wrapper** — `check-markup.mjs` reads `<a class="card" href>`,
-  which the wrapper does not touch; verified at 103/103 badges after the change.
+  which the wrapper does not touch; verified at 103/103 badges after the change (110/110 as of 2026-08-22).
 - **The tagline is the piece's own line, not a line written for the index.** Lift it verbatim from the page's
   `.cover-subtitle` — 63 of the 97 cards had one. The other 34 (every field guide, playlist and broadside) have
   no subtitle to lift, so theirs is drawn from what the page already argues. **A `Details` that merely restates
@@ -190,7 +190,7 @@ on the 12th as the twelfth, at two members — see *the two-member floor* below.
 
 | Collection | Register | Members (zine numbers) |
 |------------|----------|------------------------|
-| **Star Stuff** | One settled, checkable fact, followed honestly, already contains the belonging claim | 1, 2, 6, 7, 8, 9, 10, 17, 19, 20, 21, 23, 24, 25, 44, 45, 46, 48, 51, 53, 54, 55, 57 (23 — the largest collection by some way) |
+| **Star Stuff** | One settled, checkable fact, followed honestly, already contains the belonging claim | 1, 2, 6, 7, 8, 9, 10, 17, 19, 20, 21, 23, 24, 25, 44, 45, 46, 48, 51, 53, 54, 55, 57, 60, 61, 62 (26 — the largest collection by some way) |
 | **Star Gazing** | Experimental, neuroqueer, wonder-forward — possibility, not proof | 11, 22, 26, 28, 29, 30 |
 | **More Than Human** | Umwelt, multispecies, ethodiversity; de-anthropocentrized | 5, 14, 15, 16, 27 |
 | **Kin** | Citation-dense natural history with a neurodivergence moral | 31, 32, 33, 34, 35, 36 |
@@ -296,7 +296,7 @@ never candidates for a register. Don't try to fold these into either table:
   everything else homework, and would become the one place the verify-everything standard could
   quietly relax. The fun is distributed; *Stars We Grew Up On* states this on the page.
 - The **prev/next chain follows collection order**: each collection page precedes its members, and
-  members run in ascending number within the collection. **102 pages** as of 2026-08-17,
+  members run in ascending number within the collection. **109 pages** as of 2026-08-22,
   `collection-start-here.html` → `shorthand-evolution.html`. **16 pages sit outside it, and every
   one is a decision:** `about.html` and `cosmic-connections.html`; **all of Notes &amp; Rationale** —
   `changelog.html`, `design.html`, `print-design.html`, `difference-first-frame.html` and
@@ -305,7 +305,7 @@ never candidates for a register. Don't try to fold these into either table:
   `hatchery.html`, `quillery.html` and `one-atom-of-justice-zine.html`, because a chain link would
   walk a reader into an egg by accident and stop it being one.
   (`index.html` and `search.html` are utility pages and were never in it, which makes
-  102 + 16 = 118.)
+  109 + 16 = 125.)
   **Don't trust that number — measure it**, and check `prev` and `next` agree in both directions;
   inserting a page means editing its two neighbours, and a one-sided edit leaves a chain that walks
   forward correctly and breaks going back:
@@ -501,7 +501,7 @@ tracking — the query never leaves the reader's browser.
 - **Duplicate presentations get stripped, not indexed twice.** `ls-playlist.html` lists every song
   as a `.lp-card` (with the note explaining it) *and* again as a flat `.lp-row` link list; the rows
   are in `CHROME_SEL`. The co-brand eyebrows (`.nav-brand`, `.hero-eyebrow`, `.masthead-eyebrow`,
-  `.cover-issue`) are stripped for the same reason — the pairing is on all 103 collection members, so as an
+  `.cover-issue`) are stripped for the same reason — the pairing is on all 110 collection members, so as an
   indexed string it carried no information. Colophons keep it, and that's correct: they hold the
   sources and credits, and `search.html` scores heading and repeat matches above one incidental hit.
 - `starstuff.js` opens a deep-linked field-guide entry (they render collapsed), so a result
@@ -651,7 +651,7 @@ node tools/check-markup.mjs --check               # exit non-zero on any failure
   by the time a DOM exists the parser has already repaired it, and
   `document.querySelectorAll('a a')` on the broken page returns **zero**. The evidence survives
   only in the source text. That also makes it the fastest gate here — no Chrome, no dependencies,
-  118 pages and 99,000 tags in about 0.25s.
+  125 pages and 112,000 tags in about 0.25s.
 - **Five faults, each one silent:** nested interactive elements (`<a>`/`<button>` inside each
   other — the parser closes the outer, so everything after falls out of its wrapper); a block
   element inside a `<p>` (auto-closes the paragraph part-way through); and **duplicate `id`**,
@@ -797,7 +797,7 @@ node tools/check-overlap.mjs --verbose           # every finding, not the first 
   owns page fitting). One viewport, 1280×900, matching `check-contrast.mjs` — a collision that only
   happens at 380px is real and this will not see it. And **text over non-text**: a label crossing a
   line or an arrowhead is a legibility judgement about artwork, and still needs eyes at render size.
-- 118 pages in ~2 min. Chrome and Node 22+; local dev tool, Netlify does not run it.
+- 125 pages in ~2 min. Chrome and Node 22+; local dev tool, Netlify does not run it.
 
 ## Design system
 
