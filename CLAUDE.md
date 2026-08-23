@@ -906,6 +906,36 @@ feed their own offspring through them. It rhymes beautifully with mutual aid, wh
 it slipped past us in three pieces. When writing *Underground* (5), *A Mycelium and a Rhizome* (26),
 or *Symbioses* (FG 6): keep the kinship, name the contested part, don't assert the wiring.
 
+### ARLES: the rungs go in, the acronym stays out
+
+**ARLES** is the [Stimpunks Design Method](https://stimpunks.org/design/) —
+**Attention → Relational (incl. Regulation) → Lived Experience → Environment → Systems**, each
+layer holding up the one above it. Read upward it is a design order; read downward, a diagnosis.
+Verify against [the glossary](https://stimpunks.org/glossary/arles/), not from memory — the SLODF
+crosswalk twice calls Attention and Lived Experience "the bottom two rungs" and the bottom two are
+Attention and **Relational**.
+
+**Standing rule, Ryan's, 2026-08-23: a new zine does not name ARLES.** Put the *rungs* in — in
+plain words, or as spread eyebrows the way No. 59 does — and leave the acronym, the ladder diagram
+and the order-claim out. The reason is the register test: a zine works by taking one settled fact
+and following it until the belonging claim is already inside it, and an acronym reverses that,
+asking the reader to accept a five-part model first so the fact arrives as an *illustration*. No.
+59's colophon already says it — *"the argument should stand without the scaffold."*
+
+- **The rule is going forward, not a description of the shelf.** Four pieces name ARLES in visible
+  page text today and one **draws** it: No. 17 (spread 6 + colophon), No. 29 (spread 6 draws the
+  ladder), No. 31 (colophon), No. 59 (colophon). They stay. Six more mention it only in card text
+  or metadata. **Enumerate by extracting visible text, never by grepping source** — a `<meta>`
+  description and a JSON-LD blob both match a grep and neither is on the page.
+- **The argument and the spread-by-spread maps live at `the-ladder-we-dont-print.html`**, in
+  *Notes & Rationale*: No. 59 (full ladder, one rung per spread, each paid for by an animal on the
+  spread before), No. 17 (four rungs, **no Attention spread** — a real gap), No. 15 (descends to the
+  floor, then climbs), No. 42 (reads downward throughout), against No. 31 (two rungs, says so) and
+  No. 16 (out of order, because its claim is *about* the Environment rung). Most of the 62 numbered
+  zines don't map, which the page states.
+- **No gate can check any of this.** The mapping is an interpretation of our own artifacts; the page
+  says so in its opening callout and its refusals. Don't quote a rung assignment from it as measured.
+
 ### The "masthead" trap (this project's signature phrase is LYDTYSS)
 
 **The site's signature phrase is *Love You Down To Your Star Stuff*** — **54 pages** carry it in
