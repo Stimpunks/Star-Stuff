@@ -929,10 +929,21 @@ asking the reader to accept a five-part model first so the fact arrives as an *i
   description and a JSON-LD blob both match a grep and neither is on the page.
 - **The argument and the spread-by-spread maps live at `the-ladder-we-dont-print.html`**, in
   *Notes & Rationale*: No. 59 (full ladder, one rung per spread, each paid for by an animal on the
-  spread before), No. 17 (four rungs, **no Attention spread** — a real gap), No. 15 (descends to the
+  spread before), **No. 58** (its companion — same Saturday otter cam; the rung reading was in the
+  *proposal* before the build, and the page names ARLES **nowhere**, not even in its ledger row),
+  No. 17 (four rungs, **no Attention spread** — a real gap), No. 15 (descends to the
   floor, then climbs), No. 42 (reads downward throughout), against No. 31 (two rungs, says so) and
   No. 16 (out of order, because its claim is *about* the Environment rung). Most of the 62 numbered
   zines don't map, which the page states.
+- **Enumerating ARLES mentions cannot find the pieces that matter most, and this cost a same-day
+  revision.** The page shipped calling No. 59 the one piece built on the ladder; Ryan named No. 58
+  the same day. A search for the word finds every piece that says it and is structurally blind to
+  the piece that says nothing — which is the category the rule is *about*. **To find a zine on the
+  ladder, read its spread sequence; to find one that names it, grep visible text. These are two
+  different questions and only the second is greppable.** Proposals and outlines are where a rung
+  reading is likeliest to be recorded, so check those too — and re-derive any mapping against the
+  **shipped** spreads, since proposals drift (No. 58's merged two spreads into one after the
+  proposal's rung numbers were written).
 - **No gate can check any of this.** The mapping is an interpretation of our own artifacts; the page
   says so in its opening callout and its refusals. Don't quote a rung assignment from it as measured.
 
