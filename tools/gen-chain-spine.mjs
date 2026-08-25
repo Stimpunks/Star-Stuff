@@ -25,7 +25,20 @@
 //   instrument — what we built so we would not have to wait (optics)
 import fs from 'node:fs';
 
-const NODES = [
+// CHAINS is keyed by zine filename. Before this, NODES was a single array edited in
+// place per chain — which meant that the moment a new chain was built, the previous
+// chain's spine could no longer be regenerated. That is the failure this file's own
+// header warns about ("a tool that has to be rebuilt from scratch is a tool nobody
+// runs"), one level up: not the tool being thrown away, but its data being overwritten.
+// Add a new chain as a new key. Do not edit an existing one.
+const CHAINS = {};
+
+CHAINS['build-the-eclipse-zine.html'] = {
+  rails: { light: 26, inst: 58, turn: 8 },
+  railLabels: [['light', 29], ['built', 61]],
+  aria: 'two rails — what the blocked Sun told us, and what we built so we would not have to wait',
+  reuse: { 18: 17, 20: 19 },
+  nodes: [
   // spread, year label, rail, joint tag on the edge ARRIVING at this node
   // Node 1 carries a tag for COUNTING only — it has no incoming edge, so edges() never reads it
   // (the loop starts at i=1 and uses b.joint). Without it the script's tally disagreed with the
@@ -47,14 +60,49 @@ const NODES = [
   { s: 16, y: 'now',   rail: 'inst',  joint: 'documented', t: 'obstruction as payload' },
   { s: 17, y: '',      rail: 'turn',  joint: 'leap',       t: 'do not wait for the alignment' },
   { s: 19, y: '1972',  rail: 'turn',  joint: 'documented', t: 'somebody poured it themselves' },
-];
+  ],
+};
 
-// Spreads that display an existing node rather than introducing one: the payoff spread
-// elaborates the leap, and the guardrail comments on the last node. Keyed spread -> node's `s`.
-const REUSE = { 18: 17, 20: 19 };
+CHAINS['everything-else-is-commentary-zine.html'] = {
+  // Two rails, because this chain is two threads that keep swapping:
+  //   proved    — what the mathematics actually established
+  //   repeated  — what the sentence that travelled actually said
+  // The four rail swaps are the argument: it crosses between them at 1975 (the title),
+  // at 2007 (the careful revival), straight back for the dropped clause, and back again
+  // for the field's ongoing dispute.
+  rails: { proved: 26, repeated: 58, turn: 8 },
+  railLabels: [['proved', 29], ['repeated', 61]],
+  aria: 'two rails — what the mathematics established, and what the sentence that travelled said',
+  reuse: {},
+  nodes: [
+  { s: 2,  y: '1871', rail: 'proved',   joint: 'documented', t: 'Darwin already had two levels' },
+  { s: 3,  y: '1962-66', rail: 'proved', joint: 'documented', t: 'wrong, and correctly refuted' },
+  { s: 4,  y: '1964', rail: 'proved',   joint: 'documented', t: "Hamilton's rule" },
+  { s: 5,  y: '1970', rail: 'proved',   joint: 'documented', t: 'Price partitions it' },
+  { s: 6,  y: '1975', rail: 'repeated', joint: 'documented', t: 'the title Maschler queried' },
+  { s: 7,  y: '1976', rail: 'repeated', joint: 'documented', t: 'the correction was inside' },
+  { s: 8,  y: '1979+', rail: 'repeated', joint: 'documented', t: 'he retracted it himself' },
+  { s: 9,  y: '',     rail: 'repeated', joint: 'contested',  t: 'available, not proven causal' },
+  { s: 10, y: '2007', rail: 'proved',   joint: 'documented', t: 'revived, carefully' },
+  { s: 11, y: '2007', rail: 'repeated', joint: 'documented', t: 'the clause fell off — ours too' },
+  { s: 12, y: '2010-11', rail: 'proved', joint: 'contested', t: 'still arguing, in Nature' },
+  { s: 13, y: 'now',  rail: 'proved',   joint: 'contested',  t: 'one arithmetic, two ledgers' },
+  { s: 14, y: '',     rail: 'turn',     joint: 'leap',       t: 'the level decides the repair' },
+  ],
+};
+
+const file0 = process.argv.slice(2).find(a => !a.startsWith('--'));
+const key = file0 ? file0.replace(/^.*\//, '') : '';
+const CHAIN = CHAINS[key];
+if (!CHAIN) {
+  console.error(`no chain config for ${key || '(no file given)'} — known: ${Object.keys(CHAINS).join(', ')}`);
+  process.exit(1);
+}
+const NODES = CHAIN.nodes;
+const REUSE = CHAIN.reuse;
 
 const X0 = 64, X1 = 578, W = 620, H = 84;
-const RAIL = { light: 26, inst: 58, turn: 8 };
+const RAIL = CHAIN.rails;
 const step = (X1 - X0) / (NODES.length - 1);
 const x = i => +(X0 + i * step).toFixed(1);
 
@@ -89,11 +137,10 @@ function spine(live) {
   const lx = x(i), ly = RAIL[n.rail];
   return [
     `<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="`,
-    `The chain so far, ${i + 1} of ${NODES.length}: two rails — what the blocked Sun told us, and what we built so we would not have to wait. `,
+    `The chain so far, ${i + 1} of ${NODES.length}: ${CHAIN.aria}. `,
     `Live node: ${n.y ? n.y + ', ' : ''}${n.t}.">`,
     edges(i),
-    `<text class="spine-raillabel" x="0" y="29">light</text>`,
-    `<text class="spine-raillabel" x="0" y="61">built</text>`,
+    ...CHAIN.railLabels.map(([t, yy]) => `<text class="spine-raillabel" x="0" y="${yy}">${t}</text>`),
     dots,
     `<circle class="spine-node live" cx="${lx}" cy="${ly}" r="4.4"/>`,
     `<circle class="spine-ring" cx="${lx}" cy="${ly}" r="8"/>`,
