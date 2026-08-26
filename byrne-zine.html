@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0a0a14">
+<link rel="canonical" href="https://starstuff.earth/byrne-zine.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta name="description" content="David Byrne as a way of being star stuff — on repetition, prediction, and the body that understands before the head. What he actually wrote about being Autistic, what got lost carrying it, and why Stop Making Sense is built one body at a time.">
+<!-- Open Graph / link unfurl -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Star Stuff · Stimpunks Foundation × More Realms">
+<meta property="og:url" content="https://starstuff.earth/byrne-zine.html">
+<meta property="og:title" content="The Body Understands It First">
+<meta property="og:description" content="David Byrne as a way of being star stuff — on repetition, prediction, and the body that understands before the head. What he actually wrote about being Autistic, what got lost carrying it, and why Stop Making Sense is built one body at a time.">
+<meta property="og:image" content="https://starstuff.earth/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A rainbow-hued cosmic image — we are all made of star stuff.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Body Understands It First">
+<meta name="twitter:description" content="David Byrne as a way of being star stuff — repetition, prediction, and a stage built so a nervous man could move. What he wrote, and what got lost carrying it.">
+<meta name="twitter:image" content="https://starstuff.earth/og-card.jpg">
+<title>The Body Understands It First — Stimpunks Zine No. 66</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="starstuff.css">
+<style>
+  :root {
+    --void:  var(--sp-void-deep);
+    --deep:  var(--sp-deep);
+    --page:  var(--sp-page);
+    --violet:var(--sp-purple);
+    --pink:  var(--sp-pink);
+    --gold:  var(--sp-gold);
+    --cyan:  var(--sp-cyan);
+    --green: var(--sp-green);
+    --star-white: var(--sp-white-soft);
+    --stardust:   var(--sp-secondary-soft);
+    --dim:   var(--sp-dim);
+    --dim2:  var(--sp-dim-soft);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--void);
+    font-family: 'Atkinson Hyperlegible Next', system-ui, sans-serif;
+    color: var(--star-white);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── STARFIELD (stage rig: cyan · gold · green) ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 9% 13%, rgba(34,211,238,0.85) 0%, transparent 100%),
+      radial-gradient(1px 1px at 23% 37%, rgba(244,244,251,0.6) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 45% 8%, rgba(251,191,36,0.75) 0%, transparent 100%),
+      radial-gradient(1px 1px at 62% 69%, rgba(74,222,128,0.6) 0%, transparent 100%),
+      radial-gradient(2px 2px at 75% 27%, rgba(244,244,251,0.55) 0%, transparent 100%),
+      radial-gradient(1px 1px at 85% 55%, rgba(34,211,238,0.7) 0%, transparent 100%),
+      radial-gradient(1px 1px at 92% 80%, rgba(244,244,251,0.7) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 5% 57%, rgba(251,191,36,0.55) 0%, transparent 100%),
+      radial-gradient(1px 1px at 33% 85%, rgba(244,244,251,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 55% 47%, rgba(167,139,250,0.4) 0%, transparent 100%),
+      radial-gradient(2px 2px at 18% 87%, rgba(34,211,238,0.65) 0%, transparent 100%),
+      radial-gradient(1px 1px at 70% 5%, rgba(244,244,251,0.8) 0%, transparent 100%),
+      radial-gradient(1px 1px at 48% 63%, rgba(251,191,36,0.5) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 29% 21%, rgba(244,244,251,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 78% 89%, rgba(74,222,128,0.5) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .zine-shell { position: relative; z-index: 1; max-width: 820px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+
+  .spectrum-line { height: 2px; border: none; border-radius: 2px; background: linear-gradient(90deg, var(--violet), var(--cyan), var(--green), var(--gold), var(--pink)); }
+
+  /* ── NAV ── */
+  .nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2.5rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(34,211,238,0.2); }
+  .nav-brand { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--dim); }
+  .nav-controls { display: flex; gap: 0.5rem; align-items: center; }
+  .nav-btn { background: none; border: 1px solid rgba(34,211,238,0.35); color: var(--stardust); font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.15em; padding: 0.4rem 0.85rem; border-radius: 2px; cursor: pointer; transition: all 0.2s ease; text-transform: uppercase; }
+  .nav-btn:hover { background: rgba(34,211,238,0.15); border-color: rgba(34,211,238,0.6); color: var(--star-white); }
+  .nav-btn.active { background: rgba(34,211,238,0.20); border-color: var(--cyan); color: var(--star-white); }
+  .page-counter { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.2em; color: var(--dim2); }
+
+  .spread { display: none; animation: fadeIn 0.5s ease forwards; }
+  .spread.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ── COVER ── */
+  .cover-spread {
+    position: relative; min-height: 520px; border-radius: 4px; overflow: hidden;
+    background:
+      radial-gradient(ellipse at 78% 26%, rgba(34,211,238,0.18) 0%, transparent 52%),
+      radial-gradient(ellipse at 22% 22%, rgba(251,191,36,0.10) 0%, transparent 52%),
+      radial-gradient(ellipse at 66% 84%, rgba(74,222,128,0.09) 0%, transparent 52%),
+      radial-gradient(ellipse at 28% 78%, rgba(167,139,250,0.07) 0%, transparent 52%),
+      var(--deep);
+    border: 1px solid rgba(34,211,238,0.25);
+    box-shadow: inset 0 0 80px rgba(34,211,238,0.05), 0 0 0 4px rgba(255,255,255,0.03);
+    display: flex; flex-direction: column; justify-content: flex-end; padding: 3rem;
+  }
+  .cover-motif { position: absolute; top: -10px; right: -20px; width: 320px; height: 320px; opacity: 0.75; pointer-events: none; }
+  .cover-issue { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.5em; text-transform: uppercase; color: var(--cyan); margin-bottom: 1.5rem; }
+  .cover-title { font-weight: 700; font-size: clamp(2.2rem, 6.4vw, 3.9rem); line-height: 1.03; color: var(--star-white); letter-spacing: -0.02em; margin-bottom: 0.9rem; }
+  .cover-title .spectrum-word { background: linear-gradient(90deg, var(--violet), var(--cyan), var(--green), var(--gold), var(--pink)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .cover-subtitle { font-size: 1rem; color: var(--stardust); margin-bottom: 2rem; max-width: 470px; line-height: 1.55; }
+  .cover-rule { width: 220px; max-width: 60%; margin-bottom: 1.3rem; }
+  .cover-meta { display: flex; gap: 2rem; align-items: center; }
+  .cover-ls { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 1.4rem; color: var(--gold); letter-spacing: 0.05em; }
+  .cover-meta-text { font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--dim2); line-height: 1.9; }
+  .cover-corner { position: absolute; top: 2rem; right: 2.5rem; text-align: right; }
+  .cover-corner-num { font-weight: 700; font-size: 4.5rem; line-height: 1; color: var(--cyan); opacity: 0.22; }
+  .cover-corner-label { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); display: block; margin-top: -0.3rem; }
+
+  /* ── INTERIOR ── */
+  .interior { background: var(--page); border: 1px solid rgba(34,211,238,0.15); border-radius: 4px; overflow: hidden; min-height: 480px; }
+  .spread-2col { display: grid; grid-template-columns: 1fr 1fr; min-height: 480px; }
+  .spread-left, .spread-right { padding: 3rem 2.4rem; position: relative; }
+  .spread-left { border-right: 1px solid rgba(34,211,238,0.12); }
+
+  /* Stacked is the default here, not the exception: this zine's spreads run
+     long on prose against ~300px of art, so a facing figure column would sit
+     in a tall hole. House classes, copied verbatim — see noise-floor-zine. */
+  .spread-2col.stacked { display: flex; flex-direction: column; }
+  .spread-2col.stacked > .spread-left,
+  .spread-2col.stacked > .spread-right { border-right: none; }
+  .spread-2col.stacked > .col-diagram { order: 2; padding-top: 0; }
+  .spread-2col.stacked > .col-text { padding-left: max(2.4rem, calc((100% - 32rem) / 2)); padding-right: max(2.4rem, calc((100% - 32rem) / 2)); }
+  .spread-2col.stacked .diagram-wrap { height: auto; }
+  .spread-2col.stacked .diagram { max-width: 380px; }
+
+  .eyebrow { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--cyan); margin-bottom: 1.1rem; }
+  .body-text { font-size: 0.98rem; line-height: 1.72; color: var(--stardust); }
+  .body-text p { margin-bottom: 1rem; }
+  .body-text p:last-child { margin-bottom: 0; }
+  .body-text .lede { font-size: 1.08rem; color: var(--star-white); }
+  .body-text strong { font-weight: 700; color: var(--star-white); }
+  .body-text em { font-style: italic; color: var(--star-white); }
+  .body-text a { color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(251,191,36,0.35); }
+  .body-text a:hover { border-bottom-color: var(--gold); color: var(--star-white); }
+  .body-text .violet { color: var(--violet); font-weight: 700; }
+  .body-text .cyan { color: var(--cyan); font-weight: 700; }
+  .body-text .gold { color: var(--gold); font-weight: 700; }
+  .body-text .green { color: var(--green); font-weight: 700; }
+
+  .spread-heading { font-weight: 700; font-size: 1.9rem; line-height: 1.12; color: var(--star-white); margin: 0 0 1.1rem; letter-spacing: -0.01em; scroll-margin-top: 5rem; }
+  .spread-heading .spectrum-word { background: linear-gradient(90deg, var(--violet), var(--cyan), var(--green), var(--gold), var(--pink)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .rule { width: 40px; margin: 1rem 0; }
+
+  .pull-quote { font-size: 1.18rem; font-weight: 700; line-height: 1.4; color: var(--star-white); border-left: 3px solid var(--cyan); padding-left: 1.1rem; margin: 1.4rem 0; }
+  .pull-quote.gold { border-left-color: var(--gold); }
+  .pull-quote.violet { border-left-color: var(--violet); }
+  .pull-quote.green { border-left-color: var(--green); }
+  .pull-quote .attr { display: block; font-family: 'Space Mono', monospace; font-size: 0.6rem; font-weight: 400; letter-spacing: 0.08em; color: var(--dim); margin-top: 0.6rem; }
+
+  .blockquote { border-left: 3px solid var(--gold); padding-left: 1.15rem; margin: 0.4rem 0 1.3rem; }
+  .blockquote p { font-size: 1.05rem; line-height: 1.5; color: var(--star-white); font-weight: 700; margin-bottom: 0.7rem; }
+  .blockquote .attr { font-family: 'Space Mono', monospace; font-size: 0.56rem; letter-spacing: 0.05em; color: var(--dim); line-height: 1.65; display: block; }
+  .formulation { font-size: 1.22rem; font-weight: 700; line-height: 1.32; color: var(--gold); margin-top: 1.2rem; }
+
+  .callout { margin: 1.3rem 0; padding: 1rem 1.15rem; background: rgba(34,211,238,0.07); border: 1px solid rgba(34,211,238,0.24); border-radius: 4px; font-size: 1rem; font-style: italic; color: var(--star-white); line-height: 1.55; }
+  .callout .attr { display: block; font-family: 'Space Mono', monospace; font-size: 0.58rem; font-style: normal; letter-spacing: 0.06em; color: var(--dim); margin-top: 0.5rem; }
+  .callout.warn { background: rgba(251,191,36,0.07); border-color: rgba(251,191,36,0.26); }
+
+  /* ── DIAGRAMS ── */
+  .diagram-wrap { display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; }
+  .diagram { width: 100%; max-width: 290px; display: block; }
+  .diagram-caption { font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim); text-align: center; margin-top: 0.9rem; line-height: 1.9; }
+  .annotation { color: var(--gold); }
+
+  /* ── VIDEO EMBEDS ── */
+  .video-wrap { display: flex; flex-direction: column; justify-content: center; height: 100%; gap: 1.4rem; }
+  .spread-2col.stacked .video-wrap { height: auto; }
+  .spread-video { position: relative; width: 100%; max-width: 520px; margin: 0 auto; padding-bottom: min(56.25%, 292px); height: 0; overflow: hidden; border-radius: 6px; border: 1px solid rgba(34,211,238,0.22); background: #000; }
+  .spread-video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+  /* ── REFUSALS ── */
+  .refusals { margin-top: 1.3rem; }
+  .refusal { font-size: 0.88rem; line-height: 1.5; color: var(--stardust); padding: 0.55rem 0; border-bottom: 1px solid rgba(34,211,238,0.1); display: flex; gap: 0.6rem; align-items: baseline; }
+  .refusal:last-child { border-bottom: none; }
+  .refusal-tag { font-family: 'Space Mono', monospace; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cyan); flex-shrink: 0; padding-top: 0.12rem; }
+  .refusal strong { color: var(--star-white); font-weight: 700; }
+
+  /* ── COLOPHON ── */
+  .colophon { padding: 3rem; display: flex; flex-direction: column; justify-content: space-between; min-height: 480px; background: radial-gradient(ellipse at 82% 18%, rgba(34,211,238,0.08) 0%, transparent 50%), radial-gradient(ellipse at 18% 85%, rgba(251,191,36,0.07) 0%, transparent 50%), var(--page); }
+  .colophon-top { border-bottom: 1px solid rgba(34,211,238,0.14); padding-bottom: 1.3rem; margin-bottom: 1.2rem; }
+  .colophon-ls { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 2.4rem; color: var(--gold); letter-spacing: 0.05em; display: block; margin-bottom: 0.4rem; }
+  .colophon-phrase { font-size: 0.92rem; font-weight: 700; color: var(--stardust); }
+  .series-list { display: flex; flex-direction: column; gap: 0.38rem; margin-bottom: 1.2rem; }
+  .series-item { font-size: 0.72rem; color: var(--dim); letter-spacing: 0.01em; display: flex; gap: 0.7rem; align-items: baseline; line-height: 1.45; }
+  .series-item.current { color: var(--gold); font-weight: 700; }
+  .series-num { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim2); flex-shrink: 0; }
+  .series-item.current .series-num { color: var(--gold); }
+  .reflect { border-top: 1px solid rgba(34,211,238,0.14); padding-top: 1rem; margin-bottom: 1.2rem; }
+  .reflect-label { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.65rem; }
+  .reflect-q { font-size: 0.86rem; line-height: 1.55; color: var(--stardust); margin-bottom: 0.55rem; }
+  .reflect-q:last-child { margin-bottom: 0; }
+  .colophon-h { font-family: 'Space Mono', monospace; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: var(--stardust); margin: 1rem 0 0.4rem; scroll-margin-top: 5rem; }
+  .colophon-body { font-size: 0.75rem; color: var(--dim); line-height: 1.75; margin-bottom: 1.2rem; }
+  .colophon-body a { color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(251,191,36,0.35); }
+  .colophon-body a:hover { border-bottom-color: var(--gold); }
+  .colophon-footer { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--dim); line-height: 2.2; border-top: 1px solid rgba(34,211,238,0.14); padding-top: 1rem; }
+
+  /* ── SPREAD FOOTER ── */
+  .spread-footer { display: flex; justify-content: space-between; align-items: center; padding: 0.9rem 2.4rem; border-top: 1px solid rgba(34,211,238,0.1); }
+  .spread-footer-left { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--dim); }
+  .spread-footer-right { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; color: var(--cyan); }
+
+  .twinkle { position: fixed; width: 3px; height: 3px; border-radius: 50%; animation: twinkle-anim 3s ease-in-out infinite; pointer-events: none; z-index: 0; }
+
+  @media (max-width: 600px) {
+    .spread-2col { grid-template-columns: 1fr; }
+    .spread-left { border-right: none; border-bottom: 1px solid rgba(34,211,238,0.12); }
+    .spread-2col.stacked > .spread-left { border-bottom: none; }
+    .spread-2col.stacked > .col-text { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .cover-spread { padding: 2rem; min-height: 420px; }
+    .cover-motif { width: 214px; height: 214px; top: -4px; right: -24px; opacity: 0.45; }
+    .cover-title { font-size: 2.15rem; }
+    .spread-heading { font-size: 1.55rem; }
+    .spread-left, .spread-right { padding: 2rem 1.5rem; }
+    .colophon { padding: 2rem 1.5rem; }
+  }
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"The Body Understands It First","description":"David Byrne as a way of being star stuff — on repetition, prediction, and the body that understands before the head. What he actually wrote about being Autistic, what got lost carrying it, and why Stop Making Sense is built one body at a time.","image":"https://starstuff.earth/og-card.jpg","url":"https://starstuff.earth/byrne-zine.html","mainEntityOfPage":"https://starstuff.earth/byrne-zine.html","author":{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/"},"publisher":[{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/","logo":{"@type":"ImageObject","url":"https://starstuff.earth/og-card.jpg"}},{"@type":"Organization","name":"More Realms","url":"https://morerealms.com/"}],"isPartOf":{"@type":"WebSite","name":"Star Stuff","url":"https://starstuff.earth/"},"about":{"@type":"Person","name":"David Byrne"}}</script>
+</head>
+<body>
+
+<div class="twinkle" style="top:7%;left:11%;background:var(--cyan);box-shadow:0 0 6px var(--cyan);animation-delay:-0.4s"></div>
+<div class="twinkle" style="top:19%;left:83%;background:var(--gold);box-shadow:0 0 6px var(--gold);animation-delay:-1.3s"></div>
+<div class="twinkle" style="top:52%;left:4%;background:var(--green);box-shadow:0 0 6px var(--green);animation-delay:-2.1s"></div>
+<div class="twinkle" style="top:71%;left:94%;background:var(--cyan);box-shadow:0 0 6px var(--cyan);animation-delay:-0.9s"></div>
+<div class="twinkle" style="top:88%;left:28%;background:var(--gold);box-shadow:0 0 6px var(--gold);animation-delay:-1.7s"></div>
+<div class="twinkle" style="top:38%;left:97%;background:var(--green);box-shadow:0 0 6px var(--green);animation-delay:-3.1s"></div>
+
+<div class="zine-shell">
+
+  <nav class="ss-nav" style="--nav-accent:#22d3ee;" aria-label="Star Stuff collection">
+    <span class="ss-nav-home-group"><a class="ss-nav-home" href="index.html"><span class="ss-star" aria-hidden="true">★</span> stuff</a><a class="ss-nav-about" href="about.html">about</a>
+      <a class="ss-nav-search" href="search.html">search</a></span>
+    <span class="ss-nav-links">
+      <a class="ss-nav-prev" href="aurora-zine.html"><span class="ss-nav-arrow" aria-hidden="true">&lsaquo;</span> <span class="ss-nav-label">Warriors &amp; Weirdos</span></a>
+      <a class="ss-nav-next" href="collection-field-guides.html"><span class="ss-nav-label">Field Guides</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
+    </span>
+    <a class="ss-nav-collection" href="collection-stars-we-grew-up-on.html"><span class="ss-nav-collection-label">Collection</span> <span class="ss-nav-collection-name">Stars We Grew Up On</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
+  </nav>
+
+  <nav class="nav">
+    <div class="nav-brand"><a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks</a> × <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a> · Zine No. 66</div>
+    <div class="nav-controls">
+      <button class="nav-btn" id="prev-btn" onclick="changePage(-1)">← prev</button>
+      <span class="page-counter" id="page-counter">1 / 10</span>
+      <button class="nav-btn" id="next-btn" onclick="changePage(1)">next →</button>
+    </div>
+  </nav>
+
+  <!-- ════ SPREAD 1: COVER ════ -->
+  <div class="spread active" id="spread-1">
+    <div class="cover-spread">
+      <svg class="cover-motif" viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <!-- A small head above a large square body: the suit's proportion, which is
+             also the argument. Geometry is constrained, not free-hand — the corner
+             numeral block occupies x 170-260 / y 42-124 and the cover text reaches
+             x 149 below y 225, so the figure lives at x>=165, y 140-280 and the
+             pulse train sits in the empty strip at x 12-148, y 60-74. The first
+             draft ignored all three and put "LIVE WIRE" on the suit's corner and
+             the title through the pulse train — the No. 48 fault, which
+             check-overlap does not measure because it is text over non-text. -->
+        <g fill="none" stroke-linecap="round">
+          <rect x="190" y="182" width="94" height="72" rx="4" stroke="rgba(34,211,238,0.42)" stroke-width="1.6"/>
+          <circle cx="237" cy="160" r="16" stroke="rgba(167,139,250,0.48)" stroke-width="1.4"/>
+          <path d="M212 254 V278 M262 254 V278" stroke="rgba(34,211,238,0.3)" stroke-width="1.3"/>
+          <path d="M190 200 H170 M284 200 H304" stroke="rgba(34,211,238,0.3)" stroke-width="1.3"/>
+        </g>
+        <!-- one figure, held: the pulse train -->
+        <path d="M12 74 h14 v-14 h9 v14 h17 v-14 h9 v14 h17 v-14 h9 v14 h17 v-14 h9 v14 h17 v-14 h9 v14 h9"
+              fill="none" stroke="rgba(251,191,36,0.55)" stroke-width="1.4" stroke-linecap="round"/>
+        <g fill="rgba(251,191,36,0.9)">
+          <circle cx="30" cy="26" r="2.8"/><circle cx="72" cy="18" r="2.4"/><circle cx="114" cy="32" r="2.6"/>
+        </g>
+        <g fill="rgba(34,211,238,0.85)">
+          <circle cx="16" cy="120" r="2.6"/><circle cx="300" cy="150" r="2.4"/><circle cx="20" cy="100" r="2.2"/>
+        </g>
+        <g fill="rgba(74,222,128,0.8)">
+          <circle cx="306" cy="232" r="2.4"/><circle cx="60" cy="40" r="2.2"/><circle cx="172" cy="296" r="2.4"/>
+        </g>
+        <g fill="#f4f2fb">
+          <circle cx="237" cy="160" r="3"/><circle cx="296" cy="28" r="2"/><circle cx="44" cy="150" r="2.2"/>
+        </g>
+      </svg>
+
+      <div class="cover-corner">
+        <div class="cover-corner-num" aria-hidden="true">66</div>
+        <span class="cover-corner-label">Live wire</span>
+      </div>
+
+      <div class="cover-issue">Stimpunks × More Realms · Zine No. 66</div>
+
+      <h1 class="cover-title">The Body<br>Understands It <span class="spectrum-word">First</span></h1>
+
+      <p class="cover-subtitle">David Byrne as a way of being star stuff — on repetition, prediction, and a stage built so a nervous man could move</p>
+
+      <hr class="spectrum-line cover-rule">
+
+      <div class="cover-meta">
+        <div class="cover-ls">L★S</div>
+        <div class="cover-meta-text">
+          Love You Down<br>
+          To Your Star Stuff<br>
+          · open edition ·
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 2: Two nights, six feet away ════ -->
+  <div class="spread" id="spread-2">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Lived experience · the warrant</div>
+          <h2 class="spread-heading" id="two-nights-six-feet-away">Two nights, six <span style="color:var(--cyan)">feet away</span></h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Twice. Once in a small club, standing about six feet from him. Once in a concert hall. Both times, transcendent.</p>
+            <p>And <em>Stop Making Sense</em> so many times the count is gone. He has always been an ambassador of weird — kindred, <span class="cyan">neurokin</span>, long before any interview said so out loud. His grooves are made for stim dancing and for spontaneous self-expression through movement, which is a thing a body does before anybody asks it to mean something.</p>
+            <p>That recognition is where this zine starts, and it is worth being precise about what kind of evidence it is. It is not a diagnosis and it is not a claim <em>about</em> him. It is the ordinary experience of watching somebody move the way you move and understanding that you are not the only one.</p>
+            <p>Three other writers got here independently — <a href="https://autcasts.substack.com/p/ive-got-a-little-tape-i-want-to-play">Aisling Walsh</a>, <a href="https://lwlies.com/in-praise-of/david-byrne-and-the-autistic-euphoria-of-stop-making-sense">Raine Petrie</a>, <a href="https://www.mediamatic.net/en/page/389251/stop-making-sense">Anna Lina Litz</a> — all in 2023, all reading the same film the same way. When several of us look at one performance and see our own nervous system, <strong>that convergence is data of a kind</strong>, even though it proves nothing about the man.</p>
+          </div>
+          <div class="pull-quote">Recognition is the oldest instrument we have, and it was working long before anyone published a word about it.</div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 150" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig1-title fig1-desc">
+              <title id="fig1-title">Four people arriving at the same reading independently</title>
+              <desc id="fig1-desc">Four separate points, each labelled with a year, all connecting inward to a single shared observation, drawn to show convergence rather than influence.</desc>
+              <circle cx="150" cy="82" r="26" fill="none" stroke="var(--sp-cyan)" stroke-width="1.5"/>
+              <text x="150" y="80" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" font-weight="700" fill="var(--sp-cyan)">same</text>
+              <text x="150" y="90" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" font-weight="700" fill="var(--sp-cyan)">film</text>
+              <g stroke="rgba(74,222,128,0.55)" stroke-width="1.2" fill="none">
+                <path d="M44 30 L128 66"/><path d="M256 30 L172 66"/>
+                <path d="M44 134 L128 98"/><path d="M256 134 L172 98"/>
+              </g>
+              <g fill="var(--sp-green)">
+                <circle cx="40" cy="28" r="3.2"/><circle cx="260" cy="28" r="3.2"/>
+                <circle cx="40" cy="136" r="3.2"/><circle cx="260" cy="136" r="3.2"/>
+              </g>
+              <text x="40" y="16" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--sp-secondary)">Walsh</text>
+              <text x="260" y="16" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--sp-secondary)">Petrie</text>
+              <text x="40" y="149" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--sp-secondary)">Litz</text>
+              <text x="260" y="149" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--sp-secondary)">a club, 6 ft</text>
+            </svg>
+            <div class="diagram-caption">Figure 1 · four arrivals, no coordination</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Body Understands It First · Stimpunks</span>
+        <span class="spread-footer-right">2</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 3: (I think) ════ -->
+  <div class="spread" id="spread-3">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">What he wrote · what arrived</div>
+          <h2 class="spread-heading" id="i-think">&ldquo;<span style="color:var(--gold)">I think</span>&rdquo;</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">He did not come out. He wrote a sentence, and the sentence had a hedge inside it.</p>
+          </div>
+          <div class="blockquote">
+            <p>Years later I diagnosed myself as having a very mild (I think) form of Asperger&rsquo;s syndrome.</p>
+            <span class="attr">David Byrne, <em>How Music Works</em> (2012), p. 37 — &ldquo;My Life in Performance&rdquo;</span>
+          </div>
+          <div class="body-text">
+            <p><strong>Every load-bearing word there is a qualifier.</strong> <em>I diagnosed myself.</em> <em>Very mild.</em> And then, inside its own parenthesis, <em>I think</em> — a man doubting his own self-assessment in the middle of stating it.</p>
+            <p>What travelled was &ldquo;David Byrne is autistic.&rdquo; One widely-read essay upgraded it to <em>proudly identifies as autistic</em>. Elsewhere he has said he has never thought of it as a disability. None of that is a lie, and nobody set out to distort him. <span class="gold">The hedge just doesn't survive the trip.</span></p>
+            <p>And here is the part that makes this a spread rather than a footnote: <strong>the same failure runs the other way through the same paragraph.</strong> Byrne follows his sentence by citing a 1994 study — 69 percent of creative people, he reports, had mental disorders. &ldquo;That&rsquo;s a lot of nutters!&rdquo;</p>
+            <p>We went and read it. <a href="https://www.cambridge.org/core/journals/the-british-journal-of-psychiatry/article/creativity-and-psychopathology-a-study-of-291-worldfamous-men/8153F46E0E6D222E2DC4FD936A8592DB">Felix Post, <em>British Journal of Psychiatry</em> 165(1), 1994</a>. The figure is real: 69.4% had &ldquo;episodic psychiatric conditions.&rdquo; <strong>The next sentence says that in just over half of those — 35.4% — they caused no serious disability at all.</strong></p>
+          </div>
+          <div class="callout warn">The qualification was printed in the sentence immediately after the number, and it did not travel.<span class="attr">the same fault, twice, in one paragraph</span></div>
+          <div class="body-text">
+            <p>There is more that didn&rsquo;t travel. Post picked his 291 men by <em>&ldquo;the availability of sufficiently adequate biographies&rdquo;</em> — the cohort was selected by how much had been written about them, then diagnosed from what was written, by DSM&ndash;III&ndash;R, after they were dead. His own abstract reports that these men were mostly <em>&ldquo;emotionally warm, with a gift for friendship and sociability,&rdquo;</em> and that severe psychoses were probably <em>less</em> frequent than the general population would predict.</p>
+            <p>So the study largely <em>undercut</em> the mad-genius myth, and its headline number went out and fed it. Byrne read the number, not the next sentence — and then, remarkably, <span class="cyan">refused the myth anyway</span>, on his own, in the same breath: he writes that he hopes very much one does not <em>have</em> to be unwell to be creative.</p>
+            <p><strong>He got the ethics right while the citation was already degraded.</strong> That is not a small thing, and it is why this page treats him as a reader in good faith rather than a source of error.</p>
+          </div>
+          <div class="pull-quote gold">Hedges don't travel. Numbers do. This is why we publish our own corrections instead of hoping.<span class="attr">see also: Too Good to Check</span></div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 178" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig2-title fig2-desc">
+              <title id="fig2-title">A hedged sentence losing its hedge in transit, twice</title>
+              <desc id="fig2-desc">Two parallel rows. In each, a printed statement carrying a qualifier passes through a narrowing and emerges without it. The top row is Byrne's self-description; the bottom row is the Post study's percentage.</desc>
+              <!-- row 1 -->
+              <text x="6" y="16" font-family="Space Mono, monospace" font-size="6.5" letter-spacing="0.5" fill="var(--sp-dim)">PRINTED</text>
+              <text x="235" y="16" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" letter-spacing="0.5" fill="var(--sp-dim)">ARRIVED</text>
+              <rect x="6" y="24" width="122" height="30" rx="3" fill="none" stroke="var(--sp-green)" stroke-width="1.3"/>
+              <text x="67" y="37" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" fill="var(--sp-green)">very mild</text>
+              <text x="67" y="48" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" font-weight="700" fill="var(--sp-gold)">(I think)</text>
+              <path d="M136 39 H168" stroke="var(--sp-cyan)" stroke-width="1.4" marker-end="url(#arw)"/>
+              <rect x="176" y="24" width="118" height="30" rx="3" fill="none" stroke="var(--sp-pink)" stroke-width="1.3"/>
+              <text x="235" y="43" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" font-weight="700" fill="var(--sp-pink)">&#8220;is autistic&#8221;</text>
+              <!-- row 2 -->
+              <rect x="6" y="98" width="122" height="30" rx="3" fill="none" stroke="var(--sp-green)" stroke-width="1.3"/>
+              <text x="67" y="111" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" fill="var(--sp-green)">69.4%</text>
+              <text x="67" y="122" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.4" font-weight="700" fill="var(--sp-gold)">35.4% no harm</text>
+              <path d="M136 113 H168" stroke="var(--sp-cyan)" stroke-width="1.4" marker-end="url(#arw)"/>
+              <rect x="176" y="98" width="118" height="30" rx="3" fill="none" stroke="var(--sp-pink)" stroke-width="1.3"/>
+              <text x="235" y="117" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" font-weight="700" fill="var(--sp-pink)">&#8220;a lot of nutters&#8221;</text>
+              <defs><marker id="arw" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="var(--sp-cyan)"/></marker></defs>
+              <text x="150" y="166" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--sp-secondary)">the parenthesis is what gets dropped</text>
+            </svg>
+            <div class="diagram-caption">Figure 2 · one paragraph, two hedges, neither arrived</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Body Understands It First · Stimpunks</span>
+        <span class="spread-footer-right">3</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 4: back into the shell ════ -->
+  <div class="spread" id="spread-4">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Lived experience · the baseline</div>
+          <h2 class="spread-heading" id="leaping-up-then-back-into-the-shell">Leaping up, then back<br>into the <span style="color:var(--green)">shell</span></h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">The sentence that follows the self-diagnosis is the one nobody quotes, and it is the better sentence.</p>
+          </div>
+          <div class="blockquote">
+            <p>Leaping up in public to do something wildly expressive and then quickly retreating back into my shell seemed, well, sort of normal to me.</p>
+            <span class="attr">David Byrne, <em>How Music Works</em> (2012), p. 37</span>
+          </div>
+          <div class="body-text">
+            <p>Read what that actually says. Not <em>I overcame my shyness.</em> Not <em>performing cured me.</em> The oscillation itself — enormous expression, then withdrawal, then expression again — is described as <strong>his baseline</strong>. Sort of normal. He even stops to worry that <em>normal</em> is the wrong word, and keeps it, because it worked.</p>
+            <p>Most of us have been handed the opposite reading of that same pattern. The leap gets called attention-seeking and the retreat gets called shutting down, and both get written up in the same file as evidence of the same deficit. <span class="green">Byrne describes the whole cycle as one working arrangement</span> — which is what it is, when nobody is grading it.</p>
+            <p>And this is the shape of a great deal of Autistic life that gets pathologised from outside: not a failure to regulate, but a <em>rhythm</em> of regulation. Big output, then recovery. The recovery is not the system breaking down. The recovery is <strong>part of how the output is possible at all.</strong></p>
+            <p>Asked in an interview about how he and the people he works with are, he put it about as plainly as it can be put.</p>
+          </div>
+          <div class="pull-quote green">Whatever we are, we don&rsquo;t know how to be another way.<span class="attr">David Byrne, in conversation about being autistic — video, at 1:44</span></div>
+          <div class="body-text">
+            <p>Not a boast and not an apology. A description of the situation, offered without either. There is no other way available, so the question of whether this way is acceptable was never really the interesting one.</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="video-wrap">
+            <div>
+              <div class="spread-video">
+                <iframe src="https://www.youtube-nocookie.com/embed/vtX6emk6U5k?start=104" title="David Byrne talks about being autistic" loading="lazy" allowfullscreen></iframe>
+              </div>
+              <p class="diagram-caption">
+                David Byrne on being autistic<br>
+                <span class="annotation">the line arrives at 1:44</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Body Understands It First · Stimpunks</span>
+        <span class="spread-footer-right">4</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 5: the loop ════ -->
+  <div class="spread" id="spread-5">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Attention · the settled fact</div>
+          <h2 class="spread-heading" id="a-groove-is-a-loop-with-a-body-attached">A groove is a loop with<br>a <span style="color:var(--cyan)">body attached</span></h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Here is the checkable thing this zine is built on, and it is about repetition.</p>
+            <p>The urge to move to music is measurable, and it is remarkably consistent between people. Petr Janata, Stefan Tomic and Jason Haberman — <em>Journal of Experimental Psychology: General</em>, 2012 — treated &ldquo;groove&rdquo; as a psychological construct and got it to hold still: how strongly a given passage compels movement is <strong>agreed upon across listeners</strong>, which means particular auditory features are especially good at engaging the human motor system. They describe what it produces as <em>a pleasurable drive toward action</em>.</p>
+            <p>Two things follow, and neither is a metaphor. Movement to music is not decorative — it is a coupling between hearing and moving. And the feature that does most of the work is <span class="cyan">repetition</span>: a figure has to come round again before a body can meet it.</p>
+            <p><strong>Repetition is not the deficit. Repetition is the mechanism.</strong> A thing must recur to be predictable, and it must be predictable before you can move with it rather than after it.</p>
+            <p>Which is roughly how <em>Remain in Light</em> (1980) was made. Talking Heads and Brian Eno built the record out of short repeated cells — instruments recorded largely one at a time, layered into looping grooves, drawing openly on Fela Kuti and West African polyrhythm. Chris Frantz described the rhythm parts as loops performed live. The Library of Congress added the album to the National Recording Registry in 2016.</p>
+            <p>One player, holding one figure, for a long time, while it stacks up into something enormous. <span class="gold">The record is made of stims.</span></p>
+          </div>
+          <div class="callout">Nobody involved described it that way, and we are not claiming they would. What we are claiming is narrower and harder to argue with: the technique is sustained repetition of a single small figure, and that is a thing plenty of us are told to stop doing.<span class="attr">what the fact does and doesn't carry</span></div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 156" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig3-title fig3-desc">
+              <title id="fig3-title">One figure, repeated and layered</title>
+              <desc id="fig3-desc">Four horizontal rows. Each row holds the same short repeated pattern of marks, entering at a different point, so that by the fourth row all four are sounding together.</desc>
+              <g stroke="rgba(34,211,238,0.2)" stroke-width="1">
+                <line x1="18" y1="26" x2="288" y2="26"/><line x1="18" y1="58" x2="288" y2="58"/>
+                <line x1="18" y1="90" x2="288" y2="90"/><line x1="18" y1="122" x2="288" y2="122"/>
+              </g>
+              <g fill="var(--sp-cyan)">
+                <rect x="46" y="20" width="11" height="12" rx="1.5"/><rect x="82" y="20" width="11" height="12" rx="1.5"/>
+                <rect x="118" y="20" width="11" height="12" rx="1.5"/><rect x="154" y="20" width="11" height="12" rx="1.5"/>
+                <rect x="190" y="20" width="11" height="12" rx="1.5"/><rect x="226" y="20" width="11" height="12" rx="1.5"/>
+                <rect x="262" y="20" width="11" height="12" rx="1.5"/>
+              </g>
+              <g fill="var(--sp-green)">
+                <rect x="100" y="52" width="8" height="12" rx="1.5"/><rect x="136" y="52" width="8" height="12" rx="1.5"/>
+                <rect x="172" y="52" width="8" height="12" rx="1.5"/><rect x="208" y="52" width="8" height="12" rx="1.5"/>
+                <rect x="244" y="52" width="8" height="12" rx="1.5"/><rect x="280" y="52" width="8" height="12" rx="1.5"/>
+              </g>
+              <g fill="var(--sp-gold)">
+                <rect x="154" y="84" width="6" height="12" rx="1.5"/><rect x="190" y="84" width="6" height="12" rx="1.5"/>
+                <rect x="226" y="84" width="6" height="12" rx="1.5"/><rect x="262" y="84" width="6" height="12" rx="1.5"/>
+              </g>
+              <g fill="var(--sp-purple)">
+                <rect x="208" y="116" width="6" height="12" rx="1.5"/><rect x="244" y="116" width="6" height="12" rx="1.5"/>
+                <rect x="280" y="116" width="6" height="12" rx="1.5"/>
+              </g>
+              <text x="14" y="30" text-anchor="end" font-family="Space Mono, monospace" font-size="6.5" fill="var(--sp-secondary)">1</text>
+              <text x="14" y="62" text-anchor="end" font-family="Space Mono, monospace" font-size="6.5" fill="var(--sp-secondary)">2</text>
+              <text x="14" y="94" text-anchor="end" font-family="Space Mono, monospace" font-size="6.5" fill="var(--sp-secondary)">3</text>
+              <text x="14" y="126" text-anchor="end" font-family="Space Mono, monospace" font-size="6.5" fill="var(--sp-secondary)">4</text>
+              <text x="150" y="148" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--sp-secondary)">each part holds one figure and does not develop</text>
+            </svg>
+            <div class="diagram-caption">Figure 3 · the loop stack</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Body Understands It First · Stimpunks</span>
+        <span class="spread-footer-right">5</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 6: the same predictor ════ -->
+  <div class="spread" id="spread-6">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Attention → relational · his own paragraph</div>
+          <h2 class="spread-heading" id="the-same-predictor-pointed-at-a-beat">The same predictor,<br>pointed at a <span style="color:var(--gold)">beat</span></h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Three hundred pages later in the same book, Byrne gets to the argument himself — and puts both halves of it in one paragraph.</p>
+            <p>He is writing about prediction: that when we watch an action or a gesture we already have a good idea what is coming next. Then he says, in his own case, that some people on the spectrum might not intuit all of that as easily, and that he is sure he is not alone in <em>having been accused of missing what friends thought were obvious cues or signals</em>.</p>
+            <p>And then, without changing paragraph, he turns the same machinery on music: we sense the rise and fall of a melody, <em>a repetition, a musical build</em>, and we form expectations about where it is going — expectations that get confirmed, or slightly redirected. He notes Daniel Levitin&rsquo;s point that too much confirmation bores us and little variations keep us alert.</p>
+            <p>Look at what he has just done. <strong>The faculty people told him was faulty in the room is the faculty he says the music runs on.</strong> Same prediction, same expectation, same reward for a small deviation from an established pattern — declared a deficit when the pattern is a face and a talent when the pattern is a bar of music.</p>
+          </div>
+          <div class="pull-quote gold">He didn&rsquo;t get a worse predictor. He got one that locks onto a beat instead of a face.<span class="attr">the extension is ours; the paragraph is his</span></div>
+          <div class="body-text">
+            <p>That is our step past him, and we mark it as ours. Prediction pointed at rhythm rather than at social signal is not a lesser instrument, and it is not a compensation for one. It is the same instrument, aimed somewhere that will actually hold still long enough to be predicted.</p>
+          </div>
+          <div class="callout warn"><strong>And we decline his mechanism.</strong> Byrne credits all of this to mirror neurons, which was the best-known popular account available in 2012. It has not held up. Antonia Hamilton&rsquo;s systematic review of 25 studies (<em>Developmental Cognitive Neuroscience</em>, 2013) found the data mixed with <em>no overall evidence</em> of abnormal mirror responses in autism, and Yates &amp; Hobson revisited the same question in <em>Autism</em> (2020) and reached no better news for it. <span class="cyan">His observation survives. The wiring he hung it on does not.</span><span class="attr">the broken-mirror account of autism is not something we will repeat</span></div>
+          <div class="body-text">
+            <p>We are saying this <em>because</em> we are using his paragraph, not despite it. A page that quoted the good half and quietly kept the bad half would be doing the exact thing this zine spent a spread complaining about.</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 150" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig4-title fig4-desc">
+              <title id="fig4-title">One predictor, two targets</title>
+              <desc id="fig4-desc">A single prediction mechanism with two outputs. Aimed at a face, the pattern is irregular and the prediction misses. Aimed at a repeating musical figure, the same prediction lands, with one small deviation marked as the interesting moment.</desc>
+              <rect x="118" y="8" width="64" height="22" rx="4" fill="none" stroke="var(--sp-purple)" stroke-width="1.4"/>
+              <text x="150" y="23" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" font-weight="700" fill="var(--sp-purple)">predict</text>
+              <path d="M132 34 L74 56" stroke="rgba(167,139,250,0.5)" stroke-width="1.2" fill="none"/>
+              <path d="M168 34 L226 56" stroke="rgba(167,139,250,0.5)" stroke-width="1.2" fill="none"/>
+              <!-- face target: jittery, unpredictable -->
+              <path d="M20 84 L32 72 L40 92 L52 68 L62 96 L74 74 L86 90 L98 70 L110 88 L122 78"
+                    fill="none" stroke="var(--sp-pink)" stroke-width="1.4" stroke-linecap="round"/>
+              <text x="71" y="112" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--sp-pink)">a face</text>
+              <text x="71" y="124" text-anchor="middle" font-family="Space Mono, monospace" font-size="6" fill="var(--sp-dim)">no period to lock to</text>
+              <!-- music target: periodic with one deviation -->
+              <path d="M178 84 q 12 -16 24 0 q 12 -16 24 0 q 12 -16 24 0 q 12 -24 24 0"
+                    fill="none" stroke="var(--sp-cyan)" stroke-width="1.4" stroke-linecap="round"/>
+              <circle cx="262" cy="70" r="3.4" fill="var(--sp-gold)"/>
+              <text x="226" y="112" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--sp-cyan)">a figure</text>
+              <text x="226" y="124" text-anchor="middle" font-family="Space Mono, monospace" font-size="6" fill="var(--sp-dim)">period, then a deviation</text>
+              <text x="150" y="144" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--sp-secondary)">the gold mark is the small deviation that keeps you awake</text>
+            </svg>
+            <div class="diagram-caption">Figure 4 · same instrument, two aims</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Body Understands It First · Stimpunks</span>
+        <span class="spread-footer-right">6</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 7: defined by negatives ════ -->
+  <div class="spread" id="spread-7">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Environment · subtraction as method</div>
+          <h2 class="spread-heading" id="a-performance-style-defined-by-negatives">A performance style<br>defined by <span style="color:var(--green)">negatives</span></h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Before the famous stage, there was a list of things they refused to do — and Byrne wrote it out as a list.</p>
+            <p>Early Talking Heads at CBGB, by his own account: no show-off solos. No rock moves or poses. No pomp, no drama, no rock hair. No rehearsed patter — he announced song titles, said thank you, and stopped. And no rock lights: their instruction to club lighting people was to turn them all on at the beginning and turn them off at the end.</p>
+            <p>He calls it, exactly, <em>a performance style defined by negatives</em>, and says the early band was <em>less a band than an outline for a band</em> — a sketch, the bare elements needed to lay out a song, like an architectural drawing where you have to imagine where the walls go.</p>
+            <p>This is the convention this whole collection runs on, arrived at independently and thirty years early: <strong>our zines carry a &ldquo;Not:&rdquo; set</strong> — the traps a piece refuses, named on its face. Byrne built a band that way.</p>
+            <p>And subtraction turns out to be an <span class="green">access strategy</span>, whether or not anyone called it that. Strip the unpredictable social apparatus of a rock show — the patter, the poses, the lighting cues you have to hit — and what is left is a set of tasks a nervous person can actually execute. He did not become comfortable. <em>He removed the parts that required him to be.</em></p>
+          </div>
+          <div class="pull-quote green">The room was not made welcoming. It was made <em>legible</em>. Those are different projects, and the second one is the one you can build.</div>
+          <div class="body-text">
+            <p>Then, in 1984, the same method with the volume up. <em>Stop Making Sense</em> (dir. Jonathan Demme) shows you the crew. The set gets assembled in front of you. The band lit their own show. Nothing is hidden, because hiding the apparatus is the thing that makes an apparatus frightening.</p>
+            <p>Which brings us to the suit. Byrne was in Japan between tours, looking at Kabuki, Noh and Bunraku; his friend the designer Jürgen Lehl told him, drily, that everything is bigger on stage. Byrne&rsquo;s own stated reason for the result is the one this zine took its title from — he wanted his head to appear smaller, and the simplest way was to make his body bigger, <em>because music is very physical and often the body understands it before the head</em>.</p>
+            <p><strong>He built a costume whose proportions subordinate the head to the body.</strong> That is not a gag. It is a claim about where understanding happens, worn where everyone can see it.</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 170" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig5-title fig5-desc">
+              <title id="fig5-title">The proportion of the big suit</title>
+              <desc id="fig5-desc">A silhouette with a small circular head above a very large rectangular body, with the head and body labelled to show which one the design makes larger.</desc>
+              <circle cx="150" cy="34" r="15" fill="none" stroke="var(--sp-purple)" stroke-width="1.5"/>
+              <rect x="96" y="56" width="108" height="82" rx="4" fill="none" stroke="var(--sp-cyan)" stroke-width="1.8"/>
+              <path d="M116 138 V160 M184 138 V160" stroke="var(--sp-cyan)" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M96 74 H72 M204 74 H228" stroke="var(--sp-cyan)" stroke-width="1.5" stroke-linecap="round"/>
+              <text x="252" y="37" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--sp-purple)">head</text>
+              <text x="252" y="48" text-anchor="middle" font-family="Space Mono, monospace" font-size="6" fill="var(--sp-dim)">smaller</text>
+              <text x="46" y="104" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--sp-cyan)">body</text>
+              <text x="46" y="115" text-anchor="middle" font-family="Space Mono, monospace" font-size="6" fill="var(--sp-dim)">bigger</text>
+              <text x="150" y="168" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="var(--sp-secondary)">a thesis about cognition, tailored</text>
+            </svg>
+            <div class="diagram-caption">Figure 5 · the proportion is the argument</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Body Understands It First · Stimpunks</span>
+        <span class="spread-footer-right">7</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 8: one body at a time ════ -->
+  <div class="spread" id="spread-8">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Relational · regulation</div>
+          <h2 class="spread-heading" id="one-body-at-a-time">One body at <span style="color:var(--cyan)">a time</span></h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">The architecture of <em>Stop Making Sense</em> is the argument, and you can watch it happen.</p>
+            <p>It opens with one man, alone, on a bare stage, with a boombox — playing a song whose narrator cannot face up to the facts and cannot relax. Then a second musician arrives, and a third, and the set builds up around them piece by piece, until the stage is full of people and the man who could not relax is dancing.</p>
+            <p>Nobody fixed him. <strong>The room filled up.</strong></p>
+            <p>And there is a measured thing underneath that, which is why it gets a spread rather than a sigh. Moving in synchrony with another person changes how you regard them. Michael Hove and Jane Risen found that the degree of in-phase coordination with a partner predicted how much people liked them (<em>Social Cognition</em>, 2009). Scott Wiltermuth and Chip Heath found that people who had acted in synchrony cooperated more afterwards, across three experiments, even at personal cost (<em>Psychological Science</em>, 2009).</p>
+            <p>So affiliation is not only something a group decides about you. Some of it is something a group <em>does with</em> you, in time, through the body, before anyone has formed an opinion.</p>
+          </div>
+          <div class="pull-quote">Belonging is not only a verdict the room passes on you. Part of it is a phase-lock the room does with you.</div>
+          <div class="callout warn">And the honest size of it: a 2017 meta-analysis of the synchrony-and-prosociality literature (Mogan, Fischer &amp; Bulbulia, <em>Zeitschrift für Psychologie</em>) finds the effect real but <strong>modest</strong> — not a lever, a tendency. Nor does any of this oblige a room to include you: a finding about coordination is not a moral argument, and we are not going to dress it as one. <span class="cyan">A rhyme with a measurement attached is still a rhyme.</span><span class="attr">what the synchrony literature will and won't carry</span></div>
+          <div class="body-text">
+            <p>What it does support is a much less romantic and more useful claim: <em>shared timing is a route into a group that does not run through conversation.</em> For a great many of us that is not a curiosity. It is the difference between an evening we can attend and one we cannot.</p>
+            <p>This collection has two zines on the distinction — <a href="shared-air-zine.html">shared-air space</a> and <a href="shared-signal-zine.html">shared-signal space</a>, Helen Edgar&rsquo;s coinages. A stage where twelve people move together and nobody has to make small talk is a shared-signal space with a lighting rig.</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 168" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig6-title fig6-desc">
+              <title id="fig6-title">Bodies arriving one at a time and coming into phase</title>
+              <desc id="fig6-desc">Five rows of oscillation. The first row starts alone. Each following row enters later and gradually aligns with the others, so by the right-hand side all five peaks line up.</desc>
+              <g fill="none" stroke-width="1.3" stroke-linecap="round">
+                <path d="M20.0 27.1 L23.0 30.9 L26.0 32.9 L29.0 32.5 L32.0 29.8 L35.0 25.6 L38.0 20.9 L41.0 17.1 L44.0 15.1 L47.0 15.5 L50.0 18.2 L53.0 22.4 L56.0 27.1 L59.0 30.9 L62.0 32.9 L65.0 32.5 L68.0 29.8 L71.0 25.6 L74.0 20.9 L77.0 17.1 L80.0 15.1 L83.0 15.5 L86.0 18.2 L89.0 22.4 L92.0 27.1 L95.0 30.9 L98.0 32.9 L101.0 32.5 L104.0 29.8 L107.0 25.6 L110.0 20.9 L113.0 17.1 L116.0 15.1 L119.0 15.5 L122.0 18.2 L125.0 22.4 L128.0 27.1 L131.0 30.9 L134.0 32.9 L137.0 32.5 L140.0 29.8 L143.0 25.6 L146.0 20.9 L149.0 17.1 L152.0 15.1 L155.0 15.5 L158.0 18.2 L161.0 22.4 L164.0 27.1 L167.0 30.9 L170.0 32.9 L173.0 32.5 L176.0 29.8 L179.0 25.6 L182.0 20.9 L185.0 17.1 L188.0 15.1 L191.0 15.5 L194.0 18.2 L197.0 22.4 L200.0 27.1 L203.0 30.9 L206.0 32.9 L209.0 32.5 L212.0 29.8 L215.0 25.6 L218.0 20.9 L221.0 17.1 L224.0 15.1 L227.0 15.5 L230.0 18.2 L233.0 22.4 L236.0 27.1 L239.0 30.9 L242.0 32.9 L245.0 32.5 L248.0 29.8 L251.0 25.6 L254.0 20.9 L257.0 17.1 L260.0 15.1 L263.0 15.5 L266.0 18.2 L269.0 22.4 L272.0 27.1 L275.0 30.9 L278.0 32.9 L281.0 32.5 L284.0 29.8 L287.0 25.6" stroke="var(--sp-cyan)"/>
+                <path d="M68.0 45.0 L71.0 45.5 L74.0 47.0 L77.0 49.3 L80.0 52.2 L83.0 55.4 L86.0 58.5 L89.0 61.0 L92.0 62.6 L95.0 63.0 L98.0 61.9 L101.0 59.4 L104.0 56.0 L107.0 52.1 L110.0 48.5 L113.0 46.0 L116.0 45.0 L119.0 46.0 L122.0 48.8 L125.0 52.8 L128.0 57.2 L131.0 60.9 L134.0 62.9 L137.0 62.5 L140.0 59.8 L143.0 55.6 L146.0 50.9 L149.0 47.1 L152.0 45.1 L155.0 45.5 L158.0 48.2 L161.0 52.4 L164.0 57.1 L167.0 60.9 L170.0 62.9 L173.0 62.5 L176.0 59.8 L179.0 55.6 L182.0 50.9 L185.0 47.1 L188.0 45.1 L191.0 45.5 L194.0 48.2 L197.0 52.4 L200.0 57.1 L203.0 60.9 L206.0 62.9 L209.0 62.5 L212.0 59.8 L215.0 55.6 L218.0 50.9 L221.0 47.1 L224.0 45.1 L227.0 45.5 L230.0 48.2 L233.0 52.4 L236.0 57.1 L239.0 60.9 L242.0 62.9 L245.0 62.5 L248.0 59.8 L251.0 55.6 L254.0 50.9 L257.0 47.1 L260.0 45.1 L263.0 45.5 L266.0 48.2 L269.0 52.4 L272.0 57.1 L275.0 60.9 L278.0 62.9 L281.0 62.5 L284.0 59.8 L287.0 55.6" stroke="var(--sp-green)"/>
+                <path d="M116.0 90.7 L119.0 89.6 L122.0 88.3 L125.0 86.6 L128.0 84.7 L131.0 82.7 L134.0 80.5 L137.0 78.5 L140.0 76.7 L143.0 75.5 L146.0 75.0 L149.0 75.4 L152.0 76.9 L155.0 79.3 L158.0 82.5 L161.0 86.1 L164.0 89.4 L167.0 91.9 L170.0 93.0 L173.0 92.2 L176.0 89.6 L179.0 85.5 L182.0 80.9 L185.0 77.1 L188.0 75.1 L191.0 75.5 L194.0 78.2 L197.0 82.4 L200.0 87.1 L203.0 90.9 L206.0 92.9 L209.0 92.5 L212.0 89.8 L215.0 85.6 L218.0 80.9 L221.0 77.1 L224.0 75.1 L227.0 75.5 L230.0 78.2 L233.0 82.4 L236.0 87.1 L239.0 90.9 L242.0 92.9 L245.0 92.5 L248.0 89.8 L251.0 85.6 L254.0 80.9 L257.0 77.1 L260.0 75.1 L263.0 75.5 L266.0 78.2 L269.0 82.4 L272.0 87.1 L275.0 90.9 L278.0 92.9 L281.0 92.5 L284.0 89.8 L287.0 85.6" stroke="var(--sp-gold)"/>
+                <path d="M164.0 123.0 L167.0 122.5 L170.0 120.4 L173.0 117.2 L176.0 113.4 L179.0 109.6 L182.0 106.6 L185.0 105.1 L188.0 105.4 L191.0 107.4 L194.0 110.9 L197.0 115.0 L200.0 119.0 L203.0 121.9 L206.0 123.0 L209.0 122.0 L212.0 119.2 L215.0 115.0 L218.0 110.6 L221.0 107.0 L224.0 105.1 L227.0 105.6 L230.0 108.2 L233.0 112.4 L236.0 117.1 L239.0 120.9 L242.0 122.9 L245.0 122.5 L248.0 119.8 L251.0 115.6 L254.0 110.9 L257.0 107.1 L260.0 105.1 L263.0 105.5 L266.0 108.2 L269.0 112.4 L272.0 117.1 L275.0 120.9 L278.0 122.9 L281.0 122.5 L284.0 119.8 L287.0 115.6" stroke="var(--sp-purple)"/>
+                <path d="M212.0 140.2 L215.0 142.1 L218.0 144.2 L221.0 146.4 L224.0 148.6 L227.0 150.5 L230.0 152.0 L233.0 152.9 L236.0 152.9 L239.0 151.9 L242.0 150.0 L245.0 147.3 L248.0 144.0 L251.0 140.5 L254.0 137.6 L257.0 135.6 L260.0 135.0 L263.0 136.2 L266.0 139.0 L269.0 143.0 L272.0 147.3 L275.0 150.9 L278.0 152.9 L281.0 152.5 L284.0 149.8 L287.0 145.6" stroke="var(--sp-pink)"/>
+              </g>
+              <g fill="var(--sp-secondary)">
+                <circle cx="20.0" cy="27.1" r="2.6"/><circle cx="68.0" cy="45.0" r="2.6"/><circle cx="116.0" cy="90.7" r="2.6"/><circle cx="164.0" cy="123.0" r="2.6"/><circle cx="212.0" cy="140.2" r="2.6"/>
+              </g>
+              <text x="20" y="14" font-family="Space Mono, monospace" font-size="6.5" fill="var(--sp-dim)">one, alone</text>
+              <text x="290" y="14" text-anchor="end" font-family="Space Mono, monospace" font-size="6.5" fill="var(--sp-dim)">in phase</text>
+            </svg>
+            <div class="diagram-caption">Figure 6 · the film&rsquo;s structure, drawn</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Body Understands It First · Stimpunks</span>
+        <span class="spread-footer-right">8</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 9: superpower & demons ════ -->
+  <div class="spread" id="spread-9">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Systems · the part that costs money</div>
+          <h2 class="spread-heading" id="two-escapes-from-the-same-trap">Two escapes from the<br>same <span style="color:var(--pink)">trap</span></h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">In 2012 he refused the demons. Later, on camera, he reached for a superpower. Both are escapes from the same room, and neither is a rule for anybody else.</p>
+            <p>The refusal first, because it is in print: having quoted the mad-genius number, Byrne says he hopes very much that one does not <em>have</em> to be unwell to be creative, and that you can escape your demons and still tap the well. That is a man declining to pay for his work with a diagnosis.</p>
+            <p>Then the other direction. Asked about his own mind, he has said — of having his own experience rather than someone else&rsquo;s brain — <em>&ldquo;I guess it&rsquo;s my superpower, I can use this in my way.&rdquo;</em></p>
+            <p>This site refuses superpower framing. We are not going to pretend otherwise, and we are not going to pretend he said something else. So: <strong>a person&rsquo;s first-person account of their own mind belongs to them.</strong> He is describing what he has and what he does with it, hedged with a <em>guess</em> and closed with <em>in my way</em>. Read as an autobiography, that sentence is unobjectionable and rather modest.</p>
+            <p>What we refuse is its promotion. <span class="cyan">The moment a superpower becomes the reason you are tolerated, it is a toll.</span> It means the ones who cannot demonstrate one owe an explanation, and the ones who can are only safe while the demonstrations keep arriving. Post&rsquo;s 69 percent and the superpower are the same trade with the sign flipped: both make a person&rsquo;s worth contingent on what their difference produces.</p>
+            <p>And then the part that is not about framing at all.</p>
+          </div>
+          <div class="pull-quote">David Byrne got to be an auteur. The same nervous system, in a kid with no record deal, gets a behaviour plan.</div>
+          <div class="body-text">
+            <p>He was twitchy and, in his own word, Aspergery, on a stage in front of Hilly Kristal, and what he got was a slot opening for the Ramones. Elsewhere, the identical presentation — the leap, the retreat, the flat affect, the one figure held too long — is written into a file, and the file recommends interventions.</p>
+            <p><strong>The difference between the eccentric genius and the disordered child is not in the nervous system. It is in the budget, the postcode, and who is holding the pen.</strong> Byrne is not the exception that proves us wrong about pathologisation. He is what pathologisation looks like when somebody with a stage happens to escape it.</p>
+          </div>
+          <div class="refusals">
+            <div class="refusal"><span class="refusal-tag">Not:</span><span><strong>Not the superpower deal.</strong> His sentence about himself is his. Turned into a standard, it becomes a fee we charge each other for existing — and most of us cannot pay it.</span></div>
+            <div class="refusal"><span class="refusal-tag">Not:</span><span><strong>Not the tortured-artist deal either.</strong> The mad-genius myth pays you in mystique and bills you in care. Byrne declined it in print and so do we.</span></div>
+            <div class="refusal"><span class="refusal-tag">Not:</span><span><strong>Not a retrospective diagnosis.</strong> We are not diagnosing David Byrne, and we are not treating a hedged self-description as a clinical finding. He said what he said.</span></div>
+            <div class="refusal"><span class="refusal-tag">Not:</span><span><strong>Not celebrity as proof.</strong> One famous person doing well is not evidence that a system works. It is one data point about who the system happens to let through.</span></div>
+            <div class="refusal"><span class="refusal-tag">Not:</span><span><strong>Not broken mirror neurons.</strong> We used his paragraph and dropped his mechanism, on purpose, and said so on the spread where we used it.</span></div>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="video-wrap">
+            <div>
+              <div class="spread-video">
+                <iframe src="https://www.youtube-nocookie.com/embed/VYuVp_0LI70" title="David Byrne on being autistic — &quot;That's my superpower!&quot;" loading="lazy" allowfullscreen></iframe>
+              </div>
+              <p class="diagram-caption">
+                Byrne, on his own mind<br>
+                <span class="annotation">his to say · not ours to require</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Body Understands It First · Stimpunks</span>
+        <span class="spread-footer-right">9</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 10: Colophon ════ -->
+  <div class="spread" id="spread-10">
+    <div class="interior">
+      <div class="colophon">
+        <div>
+          <div class="colophon-top">
+            <span class="colophon-ls">L★S</span>
+            <span class="colophon-phrase">The poor soul up there was just doing what he thought was right, given the skills and techniques available to him. So were you. So are you.</span>
+          </div>
+          <div class="body-text" style="margin-bottom:1.2rem">
+            <p>That clause is Byrne&rsquo;s, from page 44, looking back at his own young self on a stage and deciding to be fair to him. It is also, word for word, <strong>the presumption of competence</strong> — applied retroactively, without theory, by someone who had no reason to know the term.</p>
+            <p>It is what we want said about every one of us, in every file, at every meeting: not <em>he was inappropriate</em>, not <em>she was dysregulated</em>, but <span class="gold">that person was doing what they thought was right, with what they had.</span> Start there and most of the paperwork changes.</p>
+            <p>And <em>down to your star stuff</em> is a measure of reach, not a reason. Not loved <em>because</em> you are made of carbon forged in a dying star — loved <em>all the way down</em> to it, past the diagnosis and the file and the phenotype, into the elements, which were manufactured in stars, and which the universe has never once sorted into acceptable and unacceptable atoms.</p>
+          </div>
+          <div class="series-list">
+            <div class="series-item"><span class="series-num">No. 11</span> Why Difference Comes First — Helen Edgar (guest)</div>
+            <div class="series-item"><span class="series-num">No. 12</span> Turn and Face the Strange — Bowie, unmasking &amp; ways of being star stuff</div>
+            <div class="series-item"><span class="series-num">No. 13</span> Warriors and Weirdos — AURORA &amp; the tribe of weirdos</div>
+            <div class="series-item current"><span class="series-num">No. 66</span> The Body Understands It First — Byrne, repetition &amp; prediction ← you are here</div>
+          </div>
+          <div class="reflect">
+            <div class="reflect-label">Reflection</div>
+            <p class="reflect-q">What have you been told to stop doing that was, in fact, the mechanism?</p>
+            <p class="reflect-q">Where in your life is the room asking you to become comfortable, when what you actually need is for the unpredictable parts to be removed?</p>
+            <p class="reflect-q">Whose hedge have you dropped lately, carrying their sentence somewhere else?</p>
+          </div>
+          <h3 class="colophon-h" id="sources">Sources &amp; what is ours</h3>
+          <p class="colophon-body">
+            <strong>Primary.</strong> David Byrne, <em>How Music Works</em> (McSweeney&rsquo;s, 2012): the self-diagnosis and the &ldquo;shell&rdquo; sentence, p. 37, in &ldquo;My Life in Performance&rdquo;; CBGB, the negatives and the &ldquo;poor soul&rdquo; clause, pp. 43&ndash;44; prediction, repetition and the musical build, pp. 353&ndash;354. Quoted briefly for commentary and criticism. The spoken quotations are from two interview videos, embedded above from official uploads — the &ldquo;another way&rdquo; line at 1:44, and the &ldquo;superpower&rdquo; line in the second; <strong>we located these in the recordings but could not obtain a published transcript, and record that limitation here rather than presenting them as textually verified.</strong><br><br>
+            <strong>Studies.</strong> Felix Post, &ldquo;Creativity and Psychopathology: A Study of 291 World-Famous Men,&rdquo; <em>British Journal of Psychiatry</em> 165(1), 1994, 22&ndash;34 — the 69.4% figure, the 35.4% qualification in the following sentence, the biography-availability sampling and the DSM&ndash;III&ndash;R retrospective method are all from the paper itself, which we read rather than quoted from Byrne. Petr Janata, Stefan Tomic &amp; Jason Haberman, &ldquo;Sensorimotor Coupling in Music and the Psychology of the Groove,&rdquo; <em>Journal of Experimental Psychology: General</em> 141(1), 2012, 54&ndash;75. Michael Hove &amp; Jane Risen, &ldquo;It&rsquo;s All in the Timing: Interpersonal Synchrony Increases Affiliation,&rdquo; <em>Social Cognition</em> 27(6), 2009. Scott Wiltermuth &amp; Chip Heath, &ldquo;Synchrony and Cooperation,&rdquo; <em>Psychological Science</em> 20(1), 2009. Mogan, Fischer &amp; Bulbulia, &ldquo;Prosocial Consequences of Interpersonal Synchrony: A Meta-Analysis,&rdquo; <em>Zeitschrift für Psychologie</em> 224(3), 2017 — cited for the effect being modest. Antonia Hamilton, &ldquo;Reflecting on the mirror neuron system in autism: a systematic review of current theories,&rdquo; <em>Developmental Cognitive Neuroscience</em>, 2013; Luke Yates &amp; Hannah Hobson, &ldquo;Continuing to look in the mirror,&rdquo; <em>Autism</em>, 2020.<br><br>
+            <strong>The music and the film.</strong> <em>Remain in Light</em> (Sire, 8 October 1980), recorded at Compass Point and Sigma Sound, produced with Brian Eno, drawing on Fela Kuti and West African polyrhythm; added to the Library of Congress National Recording Registry in 2016. <em>Stop Making Sense</em> (1984), directed by Jonathan Demme, filmed at the Pantages Theatre in December 1983. The big suit: Byrne&rsquo;s Japan trip and Jürgen Lehl&rsquo;s remark are from Byrne&rsquo;s own accounts; the head-and-body explanation is his, given in a self-interview on the film&rsquo;s home release.<br><br>
+            <strong>Read first.</strong> Three Autistic and neurodivergent readings of <em>Stop Making Sense</em> reached this argument before we did, independently, all in 2023: Aisling Walsh in <em>AutCasts</em> (16 February), Anna Lina Litz at Mediamatic (14 July), and Raine Petrie in <em>Little White Lies</em> (29 September). We disagree with one detail — Petrie&rsquo;s piece describes Byrne as proudly identifying as autistic, which is more than his own sentences say — and we owe all three the reading itself.<br><br>
+            <strong>Ours.</strong> The extension of Byrne&rsquo;s prediction paragraph to entrainment; the refusal of the mirror-neuron mechanism he attributes it to; the reading of subtraction as access; the hedges-don&rsquo;t-travel pairing of his parenthesis with Post&rsquo;s next sentence; and the budget line. The concert memories are Ryan&rsquo;s. <a href="shared-air-zine.html">Shared-air space</a> and <a href="shared-signal-zine.html">shared-signal space</a> are Helen Edgar&rsquo;s coinages. This zine is commentary and celebration; the songs, recordings, film and book are the work of David Byrne and his collaborators, and we reproduce no lyrics or artwork. Companion rack: <a href="byrne-playlist.html">One Body at a Time</a>.
+          </p>
+        </div>
+        <div class="colophon-footer">
+          <a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks Foundation</a> × <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a> · Zine No. 66 · Open Edition<br>
+          Print freely · Share freely · <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> · L★S<br>
+          stimpunks.org · morerealms.com · starstuff.earth
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Body Understands It First · Stimpunks</span>
+        <span class="spread-footer-right">10</span>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /zine-shell -->
+
+<script>
+  let current = 1;
+  const total = 10;
+
+  function changePage(dir) {
+    const next = current + dir;
+    if (next < 1 || next > total) return;
+    document.getElementById('spread-' + current).classList.remove('active');
+    current = next;
+    document.getElementById('spread-' + current).classList.add('active');
+    document.getElementById('page-counter').textContent = current + ' / ' + total;
+    document.getElementById('prev-btn').disabled = current === 1;
+    document.getElementById('next-btn').disabled = current === total;
+    document.getElementById('prev-btn').classList.toggle('active', current > 1);
+    document.getElementById('next-btn').classList.toggle('active', current < total);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') changePage(1);
+    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   changePage(-1);
+  });
+
+  document.getElementById('prev-btn').disabled = true;
+  document.getElementById('next-btn').classList.add('active');
+</script>
+<script src="starstuff.js" defer></script>
+</body>
+</html>
