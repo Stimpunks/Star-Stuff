@@ -166,6 +166,56 @@ Decisions still to make. Move to **Settled** with a date once resolved.
 
 ## Settled
 
+- **The scrolling zine is a house form, not a one-off — settled 2026-08-26, by Ryan.** No. 68 arrived
+  from Helen as a vertical-scroll page and Ryan asked whether the layout could come in as a house
+  option, with the fallback of converting it to the usual paged form if it needed too much retooling.
+  **It needed almost none, and that was measured rather than assumed.** A scroll zine keeps `.spread`
+  sections and `#spread-N` ids and changes only how they are revealed, so every gate already handles
+  it: `starstuff.js` no-ops on any page lacking a global `changePage()`; `check-contrast.mjs` adds
+  `.active` to all spreads and removes it after, which is harmless when they were never hidden;
+  `check-overlap.mjs` and `check-sheets.mjs` have no opinion; and `build-search-index.mjs` chunks on
+  `[id^="spread-"]`, which produced 11 records at 100% coverage with no change to the tool.
+  - **Deep links get *better*, not worse.** On a paged zine `#spread-N` works only because
+    `starstuff.js` intercepts the hash and calls `changePage()`. On a scroll zine every section is
+    already laid out, so a search result reaches its passage through native anchor scrolling with no
+    JavaScript at all — one fewer thing between a reader and the sentence they were sent for.
+  - **When to reach for it.** When the *shape of the reading* is part of the argument. No. 68 is about
+    a groove — a channel you follow — so a continuous furrow says something a sequence of discrete
+    spreads would contradict. **This is not a default and should not become one.** The paged form is
+    still right for almost everything: it gives a reader a finishable unit, a page count, and a place
+    to stop, and a collection where every piece scrolls forever would lose that. If the form is not
+    doing argumentative work, page it.
+  - **What a scroll zine still owes.** Everything a paged one owes: `.ss-nav` with the collection
+    badge, full head metadata, a colophon, a card on its collection page and the index in the same
+    pass, `--sp-*` token aliases rather than hardcoded hexes, and **a real `@media print` block** —
+    this is the one genuine cost, and it is sharper than "write some print CSS".
+  - **The rule that must be overridden is `break-after`, and it is in the shared sheet.**
+    `starstuff.css`'s print block sets `.spread { page-break-after: always; break-after: page }`.
+    That is **correct for a paged zine** — one spread per sheet is the entire point there, so a
+    single Cmd+P yields the whole zine — and **wrong for this form**, where the sections were never
+    separate pages. A scroll zine must reset it: `.spread { break-after: auto; page-break-after: auto }`.
+    **Measured on No. 68:** with the shared rule left standing the zine printed **12 sheets** on both
+    Letter and A4, several holding 180–600 characters against the ~1,700 a Letter sheet takes at this
+    size. Resetting it gave **8 sheets** — cover alone, then a steady 977–1,736 per sheet. A third of
+    the paper, on a page whose colophon says *print it, copy it, give it away*.
+  - **This is the trap, and it cost a wrong measurement before it was found.** Removing
+    `break-inside: avoid` from the page's own rules changed **nothing**, because the shared
+    `break-after` was doing the work and had never been overridden — two re-measures came back
+    byte-identical and read as "the change had no effect" rather than "you changed the wrong
+    property". The scroll cue (`.cover-scroll`, *"scroll ↓ the groove opens as you go"*) also has to
+    be added to the print hide list; it is an instruction paper cannot carry out, and it is not part
+    of the shared furniture the sheet already hides.
+  - **Nothing catches any of this.** `check-contrast.mjs` measures the print *colours* and has no
+    view on how many sheets you used; `check-sheets.mjs` only applies to paper-first broadsides and
+    reports a scroll zine as `expected 0 sides`, which is not a failure, just the wrong tool. **Count
+    the sheets by hand for every scroll zine**, and read the characters-per-page distribution rather
+    than the page total alone — a low count with one crowded sheet is a different problem.
+  - **Rejected: making it the shared sheet's job.** The scroll CSS could have gone into
+    `starstuff.css` as a `.zine--scroll` modifier. Kept per-page instead, on the same reasoning as the
+    themed starfields: one page is not a pattern. If a second and third scroll zine ship and their
+    CSS agrees, promote the shared parts then — a form observed in finished work, which is the same
+    rule collection pages are created under.
+
 - **Widen *companion catalogue* to six of the fourteen Field Guides, and mark the two on their
   cards — settled 2026-08-17, by Ryan.** The collection page recognised four, and the category was
   never written down anywhere: it was *derived* from the four cards carrying a `companion to No. N`

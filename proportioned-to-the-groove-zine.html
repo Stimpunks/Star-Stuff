@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0a0a14">
+<link rel="canonical" href="https://starstuff.earth/proportioned-to-the-groove-zine.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta name="description" content="Emily Dickinson wrote four lines about love and freight. Read them beside monotropism and Deleuze and Guattari's refrain, and a narrow channel stops sounding like a shortage and starts sounding like a fit. The groove that shelters is the same groove that opens onto the cosmos.">
+<!-- Open Graph / link unfurl -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Star Stuff · Stimpunks Foundation × More Realms">
+<meta property="og:url" content="https://starstuff.earth/proportioned-to-the-groove-zine.html">
+<meta property="og:title" content="Proportioned to the Groove">
+<meta property="og:description" content="Dickinson's four lines about love and freight, read beside monotropism and the refrain. A narrow channel is not a shortage. It is a fit — and the same channel that shelters is the one that opens onto the cosmos.">
+<meta property="og:image" content="https://starstuff.earth/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A rainbow-hued cosmic image — we are all made of star stuff.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Proportioned to the Groove">
+<meta name="twitter:description" content="Four lines of Dickinson, read beside monotropism and the refrain. Love doesn't need to be vast to be complete. It needs to match the channel it moves through.">
+<meta name="twitter:image" content="https://starstuff.earth/og-card.jpg">
+<title>Proportioned to the Groove — Stimpunks Zine No. 68</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Fraunces:ital,opsz,wght@0,9..144,200..700;1,9..144,200..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="starstuff.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Proportioned to the Groove","description":"Emily Dickinson wrote four lines about love and freight. Read beside monotropism and Deleuze and Guattari's refrain, a narrow channel stops sounding like a shortage and starts sounding like a fit. The groove that shelters is the same groove that opens onto the cosmos.","image":"https://starstuff.earth/og-card.jpg","url":"https://starstuff.earth/proportioned-to-the-groove-zine.html","mainEntityOfPage":"https://starstuff.earth/proportioned-to-the-groove-zine.html","author":[{"@type":"Person","name":"Helen Edgar"},{"@type":"Person","name":"Ryan Boren"}],"publisher":[{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/","logo":{"@type":"ImageObject","url":"https://starstuff.earth/og-card.jpg"}},{"@type":"Organization","name":"More Realms","url":"https://morerealms.com/"}],"isPartOf":{"@type":"WebSite","name":"Star Stuff","url":"https://starstuff.earth/"}}</script>
+<style>
+  :root {
+    --void:       var(--sp-void);
+    --deep:       var(--sp-deep);
+    --page:       var(--sp-page);
+    --gold:       var(--sp-gold);
+    --pink:       var(--sp-pink);
+    --violet:     var(--sp-purple);
+    --cyan:       var(--sp-cyan);
+    --star-white: var(--sp-white-soft);
+    --stardust:   var(--sp-secondary-soft);
+    --dim:        var(--sp-dim);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--void);
+    font-family: 'Atkinson Hyperlegible Next', system-ui, sans-serif;
+    color: var(--star-white);
+    overflow-x: hidden;
+  }
+
+  /* ── STARFIELD ──
+     The house pure-CSS starfield rather than a <canvas>: the shared sheet already
+     hides body::before in @media print and already neutralises the twinkle under
+     prefers-reduced-motion, so this form gets both for free and ships no JS. */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1.4px 1.4px at 12% 18%, rgba(251,191,36,0.75), transparent),
+      radial-gradient(1.1px 1.1px at 68% 9%,  rgba(249,250,251,0.65), transparent),
+      radial-gradient(1.6px 1.6px at 84% 42%, rgba(244,114,182,0.55), transparent),
+      radial-gradient(1.1px 1.1px at 27% 63%, rgba(249,250,251,0.55), transparent),
+      radial-gradient(1.3px 1.3px at 55% 81%, rgba(251,191,36,0.55), transparent),
+      radial-gradient(1.1px 1.1px at 91% 88%, rgba(249,250,251,0.5), transparent),
+      radial-gradient(1.2px 1.2px at 40% 34%, rgba(244,114,182,0.45), transparent);
+    animation: twinkle-anim 7s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── THE FURROW ──
+     This zine scrolls rather than pages: one section per screen, a long
+     continuous channel. The form is the argument — see the colophon. */
+  .furrow-progress {
+    position: fixed;
+    top: 0; left: 0;
+    height: 3px;
+    width: 0;
+    background: linear-gradient(90deg, var(--gold), var(--pink));
+    z-index: 40;
+    transition: width 0.15s linear;
+  }
+
+  .furrow-count {
+    position: fixed;
+    right: clamp(0.9rem, 3vw, 2rem);
+    bottom: clamp(0.9rem, 3vw, 2rem);
+    z-index: 40;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.18em;
+    color: var(--stardust);
+    background: rgba(10,10,20,0.78);
+    border: 1px solid rgba(251,191,36,0.22);
+    padding: 0.45em 0.8em;
+    border-radius: 999px;
+  }
+  .furrow-count b { color: var(--gold); font-weight: 700; }
+
+  main { position: relative; z-index: 2; }
+
+  .spread {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(4.5rem, 11vh, 8rem) clamp(1.2rem, 6vw, 3rem);
+    overflow: hidden;
+  }
+
+  /* The concentric grooves behind each section, widening as the zine goes on.
+     Pure decoration: no text inside, aria-hidden, and it carries no argument
+     the prose does not also carry. */
+  .groove-art {
+    position: absolute;
+    top: 50%;
+    left: var(--gx, 50%);
+    width: min(92vw, 880px);
+    height: min(92vw, 880px);
+    transform: translate(-50%, -50%) scale(var(--gs, 1));
+    opacity: var(--go, 0.3);
+    z-index: 0;
+    pointer-events: none;
+  }
+  .groove-art circle { fill: none; stroke: var(--gold); stroke-width: 1; }
+  .groove-art.is-pink circle { stroke: var(--pink); }
+
+  .content { position: relative; z-index: 2; max-width: 40rem; width: 100%; }
+
+  .eyebrow {
+    display: block;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.4rem;
+  }
+
+  h1, h2 { font-family: 'Fraunces', Georgia, serif; font-weight: 600; text-wrap: balance; }
+
+  h2 {
+    font-size: clamp(1.6rem, 4.2vw, 2.4rem);
+    line-height: 1.15;
+    color: var(--star-white);
+    margin-bottom: 1.2rem;
+    scroll-margin-top: 5rem;
+  }
+
+  p { font-size: 1.02rem; line-height: 1.8; margin-bottom: 1.15rem; }
+  p:last-child { margin-bottom: 0; }
+  .lede { font-size: 1.12rem; }
+  .small { font-size: 0.85rem; line-height: 1.7; color: var(--stardust); }
+
+  em { color: var(--pink); font-style: italic; }
+
+  a { color: var(--gold); }
+
+  /* ── COVER ── */
+  .cover-issue {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--stardust);
+    display: block;
+    margin-bottom: 1.6rem;
+  }
+  .cover-title {
+    font-size: clamp(2.5rem, 9vw, 4.4rem);
+    line-height: 1.02;
+    letter-spacing: -0.015em;
+    color: var(--star-white);
+    margin-bottom: 1.1rem;
+  }
+  .cover-subtitle {
+    font-family: 'Fraunces', Georgia, serif;
+    font-style: italic;
+    font-size: clamp(1.02rem, 2.6vw, 1.25rem);
+    line-height: 1.55;
+    color: var(--stardust);
+    max-width: 32rem;
+    margin-bottom: 2.2rem;
+  }
+  .cover-byline {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    color: var(--stardust);
+    line-height: 1.9;
+  }
+  .cover-scroll {
+    margin-top: 2.8rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  .cover-corner {
+    position: absolute;
+    top: clamp(4.5rem, 10vh, 7rem);
+    right: clamp(1.2rem, 6vw, 3rem);
+    text-align: right;
+    z-index: 1;
+  }
+  .cover-corner-num {
+    font-family: 'Space Mono', monospace;
+    font-size: clamp(3.5rem, 11vw, 6rem);
+    font-weight: 700;
+    line-height: 1;
+    color: var(--gold);
+    opacity: 0.18;
+    display: block;
+  }
+
+  /* ── THE POEM ── */
+  .poem {
+    font-family: 'Fraunces', Georgia, serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(1.35rem, 3.8vw, 2rem);
+    line-height: 1.55;
+    color: var(--star-white);
+    border-left: 3px solid var(--gold);
+    padding-left: 1.4rem;
+    margin-bottom: 1.5rem;
+  }
+  .poem-attr {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    color: var(--gold);
+    margin-bottom: 1.6rem;
+  }
+
+  /* ── PULL QUOTE ── */
+  .pull {
+    border-left: 3px solid var(--violet);
+    padding-left: 1.4rem;
+    margin: 1.6rem 0;
+  }
+  .pull p {
+    font-family: 'Fraunces', Georgia, serif;
+    font-style: italic;
+    font-size: 1.15rem;
+    line-height: 1.6;
+    color: var(--star-white);
+    margin-bottom: 0.6rem;
+  }
+  .pull cite {
+    font-family: 'Space Mono', monospace;
+    font-style: normal;
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+    color: var(--stardust);
+  }
+
+  /* ── TESTIMONY ──
+     Ryan's own voice, set apart from Helen's. The house 3px left border, in pink
+     so it never reads as one of the sourced pull-quotes above. */
+  .testimony {
+    border-left: 3px solid var(--pink);
+    background: rgba(15,15,42,0.5);
+    border-radius: 8px;
+    padding: 1.3rem 1.5rem;
+    margin: 1.8rem 0 0;
+  }
+  .testimony-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--pink);
+    display: block;
+    margin-bottom: 0.8rem;
+  }
+  .testimony p { font-size: 0.98rem; margin-bottom: 0.9rem; }
+  .testimony-attr {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.66rem;
+    letter-spacing: 0.06em;
+    color: var(--stardust);
+  }
+
+  /* ── NOTE (fact-check aside on the page, not hidden in the colophon) ── */
+  .note {
+    border: 1px solid rgba(167,139,250,0.3);
+    border-radius: 8px;
+    padding: 1.1rem 1.3rem;
+    margin-top: 1.6rem;
+  }
+  .note h3 {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--violet);
+    margin-bottom: 0.7rem;
+  }
+  .note p { font-size: 0.84rem; line-height: 1.75; color: var(--stardust); margin-bottom: 0.7rem; }
+
+  /* ── REFUSALS ── */
+  .refusals { list-style: none; margin: 1.2rem 0 0; }
+  .refusals li {
+    font-size: 0.92rem;
+    line-height: 1.7;
+    padding-left: 1.9rem;
+    position: relative;
+    margin-bottom: 0.75rem;
+    color: var(--stardust);
+  }
+  .refusals li::before {
+    content: 'Not:';
+    position: absolute;
+    left: 0;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.66rem;
+    font-weight: 700;
+    color: var(--pink);
+    top: 0.28em;
+  }
+
+  /* ── COLOPHON ── */
+  .colophon-h {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--stardust);
+    margin: 1.6rem 0 0.6rem;
+    scroll-margin-top: 5rem;
+  }
+  .colophon-body { font-size: 0.8rem; line-height: 1.8; color: var(--stardust); margin-bottom: 1rem; }
+  .colophon-body a { color: var(--gold); }
+  .colophon-ls {
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+    font-size: 2.2rem;
+    color: var(--gold);
+    letter-spacing: 0.05em;
+    display: block;
+    margin-bottom: 0.4rem;
+  }
+  .colophon-phrase { font-size: 0.9rem; font-weight: 700; color: var(--stardust); margin-bottom: 1.6rem; }
+  .colophon-footer {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.56rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--dim);
+    line-height: 2.2;
+    border-top: 1px solid rgba(251,191,36,0.18);
+    padding-top: 1rem;
+    margin-top: 1.6rem;
+  }
+
+  /* ── PAPER ──
+     The scroll form is a screen form: 100vh sections would print as eleven
+     mostly-empty sheets. On paper it collapses back into continuous prose, and
+     the fixed screen furniture goes away entirely. Colours come from the shared
+     sheet's token inversion, because every colour above aliases a --sp-* token. */
+  @media print {
+    /* Screen furniture, and the scroll cue with it: "scroll down" is an
+       instruction a sheet of paper cannot carry out. */
+    .furrow-progress,
+    .furrow-count,
+    .groove-art,
+    .cover-scroll,
+    .cover-corner { display: none !important; }
+    /* Sections flow into one another on paper rather than each claiming a sheet.
+       THE OVERRIDE THAT MATTERS IS `break-after`. starstuff.css's print block sets
+       `.spread { page-break-after: always }` — correct for a PAGED zine, where one
+       spread per sheet is the whole point, and wrong for this form. Until it was
+       reset here the page printed 12 sheets no matter what else changed, several
+       of them holding 180-600 characters against the ~1,700 a Letter sheet takes.
+       What must not split is the boxed material, not the section. */
+    .spread {
+      min-height: 0;
+      padding: 0 0 1.4rem;
+      display: block;
+      overflow: visible;
+      break-after: auto;
+      page-break-after: auto;
+    }
+    #spread-1 { break-after: page; page-break-after: always; }
+    .poem, .pull, .testimony, .note { break-inside: avoid; page-break-inside: avoid; }
+    h2, .eyebrow { break-after: avoid; page-break-after: avoid; }
+    .content { max-width: none; }
+    .cover-title { font-size: 2.2rem; }
+    .testimony, .note { border: 1px solid #888; background: none; }
+    .poem, .pull { border-left: 2px solid #888; }
+  }
+
+  @media (max-width: 560px) {
+    .groove-art { width: 130vw; height: 130vw; }
+  }
+</style>
+</head>
+<body>
+
+<div class="furrow-progress" id="furrow-progress" aria-hidden="true"></div>
+<div class="furrow-count" aria-hidden="true"><b id="furrow-now">01</b> / 11</div>
+
+<nav class="ss-nav ss-nav--bleed" style="--nav-accent:#fbbf24;" aria-label="Star Stuff collection">
+  <span class="ss-nav-home-group"><a class="ss-nav-home" href="index.html"><span class="ss-star" aria-hidden="true">★</span> stuff</a><a class="ss-nav-about" href="about.html">about</a>
+    <a class="ss-nav-search" href="search.html">search</a></span>
+  <span class="ss-nav-links">
+    <a class="ss-nav-prev" href="always-migrating-zine.html"><span class="ss-nav-arrow" aria-hidden="true">&lsaquo;</span> <span class="ss-nav-label">Always Migrating</span></a>
+    <a class="ss-nav-next" href="collection-more-than-human.html"><span class="ss-nav-label">More Than Human</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
+  </span>
+  <a class="ss-nav-collection" href="collection-star-gazing.html"><span class="ss-nav-collection-label">Collection</span> <span class="ss-nav-collection-name">Star Gazing</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
+</nav>
+
+<main>
+
+<!-- ══════════ 1 · COVER ══════════ -->
+<section class="spread" id="spread-1" style="--gs:1; --go:0.24;">
+  <svg class="groove-art" viewBox="0 0 400 400" aria-hidden="true">
+    <circle cx="200" cy="200" r="60"/><circle cx="200" cy="200" r="95"/>
+    <circle cx="200" cy="200" r="130"/><circle cx="200" cy="200" r="165"/>
+  </svg>
+  <div class="cover-corner" aria-hidden="true"><span class="cover-corner-num">68</span></div>
+  <div class="content">
+    <span class="cover-issue">Stimpunks &times; More Realms &middot; Zine No. 68</span>
+    <h1 class="cover-title">Proportioned<br>to the Groove</h1>
+    <p class="cover-subtitle">four lines of Dickinson, and why a narrow channel is a fit rather than a shortage</p>
+    <div class="cover-byline">
+      Words: Helen Edgar<br>
+      With Ryan Boren
+    </div>
+    <div class="cover-scroll">Scroll &darr; &nbsp;the groove opens as you go</div>
+  </div>
+</section>
+
+<!-- ══════════ 2 · THE POEM ══════════ -->
+<section class="spread" id="spread-2" style="--gs:1.15; --go:0.28;">
+  <svg class="groove-art" viewBox="0 0 400 400" aria-hidden="true">
+    <circle cx="200" cy="200" r="70"/><circle cx="200" cy="200" r="105"/>
+    <circle cx="200" cy="200" r="140"/><circle cx="200" cy="200" r="175"/>
+  </svg>
+  <div class="content">
+    <span class="eyebrow">01 &middot; The Poem</span>
+    <h2 id="the-poem">Four lines, nothing left over</h2>
+    <p class="poem">That Love is all there is,<br>
+    Is all we know of Love;<br>
+    It is enough, the freight should be<br>
+    Proportioned to the groove.</p>
+    <p class="poem-attr">&mdash; Emily Dickinson, <em>The Single Hound</em> (1915), poem CX</p>
+    <p>A <strong>groove</strong>, in the sense Dickinson is using, is the channel a load runs along &mdash; a rut, a track, a rail. The freight is what the channel carries. She is not saying love is small. She is saying it is <em>matched</em>: enough is a relation between a load and the thing that carries it, not a quantity you could weigh on its own.</p>
+    <div class="note">
+      <h3>On the number</h3>
+      <p>This poem is usually cited as <strong>1765</strong>, which is <strong>Thomas H. Johnson's</strong> number from his 1955 edition &mdash; the numbering this collection already uses, as <em>J1765</em>, in <a href="dolly-zine.html">No. 67</a>. Dickinson titled and dated almost nothing, so a number is an editor's decision rather than hers. We could not confirm the corresponding Franklin number and so do not give one. The text above is quoted from the poem's <strong>first printing</strong>, where it appears untitled as poem CX on p. 118.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 3 · THE GROOVE ══════════ -->
+<section class="spread" id="spread-3" style="--gs:0.85; --go:0.34; --gx:32%;">
+  <svg class="groove-art" viewBox="0 0 400 400" aria-hidden="true">
+    <circle cx="200" cy="200" r="40"/><circle cx="200" cy="200" r="65"/>
+    <circle cx="200" cy="200" r="90"/><circle cx="200" cy="200" r="115"/><circle cx="200" cy="200" r="140"/>
+  </svg>
+  <div class="content">
+    <span class="eyebrow">02 &middot; The Groove</span>
+    <h2 id="a-channel-not-a-limit">A channel, not a limit</h2>
+    <p class="lede">Dickinson isn't describing a shortage. She's describing a fit. Love doesn't need to be vast to be complete &mdash; it needs to match the channel it moves through. A groove that carries everything it was built to carry is not a smaller love. It's a finished one.</p>
+    <p><strong>Monotropism</strong> describes attention working the same way: interest pulled into a small number of deep channels rather than spread thinly across many at once (Murray, Lesser &amp; Lawson, 2005). Read against that, <em>proportioned to the groove</em> stops sounding like a consolation and starts sounding like a description &mdash; of how focused, monotropic love already works.</p>
+    <p>The freight was never supposed to spread thin. It was supposed to fit.</p>
+  </div>
+</section>
+
+<!-- ══════════ 4 · THE REFRAIN ══════════ -->
+<section class="spread" id="spread-4" style="--gs:1.05; --go:0.3; --gx:68%;">
+  <svg class="groove-art" viewBox="0 0 400 400" aria-hidden="true">
+    <circle cx="200" cy="200" r="55"/><circle cx="200" cy="200" r="90"/>
+    <circle cx="200" cy="200" r="125"/><circle cx="200" cy="200" r="160"/>
+  </svg>
+  <div class="content">
+    <span class="eyebrow">03 &middot; The Refrain</span>
+    <h2 id="a-child-in-the-dark">A child in the dark</h2>
+    <p>Deleuze and Guattari open their plateau on the refrain &mdash; <em>1837: Of the Refrain</em> &mdash; with exactly this kind of groove. A child in the dark, gripped by fear, comforts himself by singing under his breath. Lost, he takes shelter, or orients himself with the little song as best he can.</p>
+    <div class="pull">
+      <p>&ldquo;a rough sketch of a calming and stabilizing, calm and stable, center in the heart of chaos&rdquo;</p>
+      <cite>Deleuze &amp; Guattari, <em>A Thousand Plateaus</em>, trans. Massumi (1987), on the child's song</cite>
+    </div>
+    <p>That's the groove doing its first job. Not confinement &mdash; <strong>shelter</strong>. A pattern repeated until it becomes somewhere safe to be. They are careful to add that the song is itself a skip: it jumps from chaos to the beginnings of order, and it can come apart at any moment. The shelter is real and it is not guaranteed.</p>
+    <div class="testimony">
+      <span class="testimony-label">A reader's own refrain</span>
+      <p>I was that child humming in the dark. Fear was the prevailing feeling of my childhood. I was scared of everything and felt tossed about by forces I didn't understand and had no hope of controlling.</p>
+      <p>I spent my nights sitting in the hallway outside my parents' bedroom door, staring at the light in the ceiling and humming to myself as I feared the world at either end of the corridor. The hum in my chest and the hum in the light offered a comforting groove, carved from unknowable chaos.</p>
+      <p class="testimony-attr">&mdash; Ryan Boren</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 5 · THE CIRCLE ══════════ -->
+<section class="spread" id="spread-5" style="--gs:1.35; --go:0.3; --gx:45%;">
+  <svg class="groove-art" viewBox="0 0 400 400" aria-hidden="true">
+    <circle cx="200" cy="200" r="65"/><circle cx="200" cy="200" r="100"/>
+    <circle cx="200" cy="200" r="135"/><circle cx="200" cy="200" r="170"/>
+  </svg>
+  <div class="content">
+    <span class="eyebrow">04 &middot; The Circle</span>
+    <h2 id="home-does-not-preexist">Home does not preexist</h2>
+    <p>The second movement of the refrain is the one that gets skipped in the retelling, and it is the one that matters most here. The song stops being a point in the dark and starts being a <em>space</em>. Deleuze and Guattari put it flatly:</p>
+    <div class="pull">
+      <p>&ldquo;Now we are at home. But home does not preexist&rdquo;</p>
+      <cite>Deleuze &amp; Guattari, <em>A Thousand Plateaus</em>, trans. Massumi (1987)</cite>
+    </div>
+    <p>It has to be drawn. A circle around an uncertain centre, marked out and held, so that the forces of chaos stay outside and something fragile inside gets room to work. Their own second example is a hallway light away from the one above: <strong>a child hums to summon the strength for the schoolwork she has to hand in.</strong></p>
+    <p>This is the part worth saying plainly to anyone who has been told their coping is a symptom. The repetition is not the residue of the fear. <em>It is the construction of the room.</em></p>
+  </div>
+</section>
+
+<!-- ══════════ 6 · THE OPENING ══════════ -->
+<section class="spread" id="spread-6" style="--gs:1.75; --go:0.28; --gx:55%;">
+  <svg class="groove-art" viewBox="0 0 400 400" aria-hidden="true">
+    <circle cx="200" cy="200" r="75"/><circle cx="200" cy="200" r="110"/>
+    <circle cx="200" cy="200" r="145"/><circle cx="200" cy="200" r="180"/>
+  </svg>
+  <div class="content">
+    <span class="eyebrow">05 &middot; The Opening</span>
+    <h2 id="one-opens-the-circle-a-crack">One opens the circle a crack</h2>
+    <p>Then the third movement. The circle that was built to keep chaos out is opened &mdash; not on the side where the old forces press against it, but somewhere the circle itself made possible. One opens it, they write, <em>&ldquo;in order to join with the forces of the future, cosmic forces.&rdquo;</em></p>
+    <div class="pull">
+      <p>&ldquo;One ventures from home on the thread of a tune.&rdquo;</p>
+      <cite>Deleuze &amp; Guattari, <em>A Thousand Plateaus</em>, trans. Massumi (1987)</cite>
+    </div>
+    <p>And then the line that keeps this from being a ladder: <strong>these are not three successive moments in an evolution.</strong> They are three aspects of one thing. The shelter, the room and the opening are not stages you graduate through, leaving the humming behind. They are happening at once, in the same small repeated tune.</p>
+    <p>Nothing about the groove has to widen for that to happen. It only has to open. <em>The channel that made the shelter possible is the channel that makes the cosmic connection possible</em> &mdash; not despite its narrowness, but through it.</p>
+    <div class="note">
+      <h3>A correction we made in the building</h3>
+      <p>This spread was drafted around a line about a cowbell being <em>&ldquo;promoted to the status of celestial noise&rdquo;</em> through sheer repetition, cited to <em>A Thousand Plateaus</em>. It is not in that book. Searching the Massumi translation, cow bells appear once, in a list making a different argument, and <em>celestial</em> appears elsewhere again. The image is genuinely Deleuze's &mdash; but he says it aloud, alone, in the filmed interviews <em>L'Ab&eacute;c&eacute;daire</em>, in the letter <strong>R comme Ritournelle</strong>. The only English we could reach is one scholar's own translation of spoken French, so we give the image as a <strong>paraphrase</strong> and let the verbatim quotations above, which we read at the primary, carry the argument instead.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 7 · STAR STUFF ══════════ -->
+<section class="spread" id="spread-7" style="--gs:2.1; --go:0.24; --gx:40%;">
+  <svg class="groove-art" viewBox="0 0 400 400" aria-hidden="true">
+    <circle cx="200" cy="200" r="90"/><circle cx="200" cy="200" r="125"/>
+    <circle cx="200" cy="200" r="160"/><circle cx="200" cy="200" r="195"/>
+  </svg>
+  <div class="content">
+    <span class="eyebrow">06 &middot; Star Stuff</span>
+    <h2 id="the-freight-is-literal">The freight is literal</h2>
+    <div class="pull">
+      <p>&ldquo;Because the cosmos is also within us. We're made of star-stuff. We are a way for the cosmos to know itself.&rdquo;</p>
+      <cite>Carl Sagan, <em>Cosmos: A Personal Voyage</em>, ep. 1, &ldquo;The Shores of the Cosmic Ocean&rdquo; (1980)</cite>
+    </div>
+    <p>Not a metaphor, and not a flourish. The calcium in the bones doing the humming, the iron in the blood, the carbon in every cell &mdash; forged in the interiors of stars that finished burning before the Earth existed, and scattered when those stars came apart.</p>
+    <p>So the freight in Dickinson's four lines is not only a figure of speech either. Something actual is being carried, and it has to take the shape of whatever carries it: a body, a relationship, a hallway at night, a line of a poem.</p>
+  </div>
+</section>
+
+<!-- ══════════ 8 · LYDTYSS ══════════ -->
+<section class="spread" id="spread-8" style="--gs:2.4; --go:0.3; --gx:58%;">
+  <svg class="groove-art is-pink" viewBox="0 0 400 400" aria-hidden="true">
+    <circle cx="200" cy="200" r="95"/><circle cx="200" cy="200" r="130"/>
+    <circle cx="200" cy="200" r="165"/><circle cx="200" cy="200" r="200"/>
+  </svg>
+  <div class="content">
+    <span class="eyebrow">07 &middot; LYDTYSS</span>
+    <h2 id="down-to-is-not-because-of">Down to is not because of</h2>
+    <p class="lede">This is where the groove, the refrain and the star stuff meet. <a href="love-you-down-to-your-star-stuff.html"><strong>Love You Down To Your Star Stuff</strong></a> is this house's central phrase, and its grammar is doing careful work.</p>
+    <p><em>Down to</em> measures how far the loving <strong>reaches</strong>. It does not say the star stuff is the <strong>reason</strong> for it. The elements are the <em>extent</em> of the claim, not its warrant &mdash; which is exactly the distinction Dickinson's line is already making. The freight is proportioned to the groove; the groove is not what earns the freight.</p>
+    <p>So: to love someone down to their star stuff is not to love them <em>despite</em> the narrowness of their channel. It is to love the specific, elemental material that channel is carrying, without asking it to widen first.</p>
+  </div>
+</section>
+
+<!-- ══════════ 9 · THE FREIGHT ══════════ -->
+<section class="spread" id="spread-9" style="--gs:1.7; --go:0.28; --gx:36%;">
+  <svg class="groove-art" viewBox="0 0 400 400" aria-hidden="true">
+    <circle cx="200" cy="200" r="65"/><circle cx="200" cy="200" r="100"/>
+    <circle cx="200" cy="200" r="135"/><circle cx="200" cy="200" r="170"/>
+  </svg>
+  <div class="content">
+    <span class="eyebrow">08 &middot; The Freight</span>
+    <h2 id="what-the-channel-was-carrying">What the channel was carrying all along</h2>
+    <p>A monotropic love often looks like one interest returned to again and again; one person's whole attention offered rather than divided; an info-dump handed over like a gift, because it is one. None of that is love running low. It's the freight, exactly proportioned, moving through the only channel it was ever going to fit.</p>
+    <p>It does not need translating into a broader, more diffuse shape to count. <em>It was already enough.</em></p>
+    <div class="testimony">
+      <span class="testimony-label">A reader's own refrain</span>
+      <p>I've felt the freight of limerence, and of requited love. The attention tunneling, furrowing, following its groove.</p>
+      <p class="testimony-attr">&mdash; Ryan Boren</p>
+    </div>
+    <p class="small" style="margin-top:1.4rem;">A companion reading runs through <a href="byrne-zine.html">No. 66</a>, which arrives at the same place from the other direction: <em>a groove is a loop with a body attached.</em> Dickinson's groove is a channel; Byrne's is a repetition you can dance to. Both are patterns that hold a person up.</p>
+  </div>
+</section>
+
+<!-- ══════════ 10 · AN INVITATION ══════════ -->
+<section class="spread" id="spread-10" style="--gs:1.3; --go:0.3; --gx:62%;">
+  <svg class="groove-art" viewBox="0 0 400 400" aria-hidden="true">
+    <circle cx="200" cy="200" r="50"/><circle cx="200" cy="200" r="85"/>
+    <circle cx="200" cy="200" r="120"/><circle cx="200" cy="200" r="155"/>
+  </svg>
+  <div class="content">
+    <span class="eyebrow">09 &middot; An Invitation</span>
+    <h2 id="whats-your-groove-carrying">What's your groove carrying?</h2>
+    <p class="lede">Think of the channel your own love travels through &mdash; the single interest, the one person, the particular way you show up for someone.</p>
+    <p>Has it been met at the size it actually is? Or has it been asked to widen before it was allowed to count?</p>
+    <p class="small">Sit with that for a moment before you scroll on.</p>
+  </div>
+</section>
+
+<!-- ══════════ 11 · COLOPHON ══════════ -->
+<section class="spread" id="spread-11" style="--gs:1; --go:0.22;">
+  <svg class="groove-art" viewBox="0 0 400 400" aria-hidden="true">
+    <circle cx="200" cy="200" r="60"/><circle cx="200" cy="200" r="95"/>
+    <circle cx="200" cy="200" r="130"/><circle cx="200" cy="200" r="165"/>
+  </svg>
+  <div class="content">
+    <span class="eyebrow">10 &middot; Colophon</span>
+    <span class="colophon-ls">L&#9733;S</span>
+    <p class="colophon-phrase">Love You Down To Your Star Stuff</p>
+
+    <h3 class="colophon-h" id="refusals">Refusals</h3>
+    <ul class="refusals">
+      <li>monotropic attention as a deficit to be broadened into something more respectable.</li>
+      <li>&ldquo;narrow but deep&rdquo; offered as a consolation prize for not being the other thing.</li>
+      <li>a poem as evidence. Dickinson's four lines are a <em>rhyme</em> with monotropism, not a proof of it, and she is not a witness we get to call.</li>
+      <li>retroactively diagnosing Emily Dickinson. Reclusiveness is not a diagnosis, we have no standing to hand her an identity she never claimed, and the argument does not need her to be one of us to work.</li>
+      <li>the naturalistic fallacy. That the universe is built out of difference does not by itself make difference good; we love people down to their star stuff because we choose to, not because physics instructs us.</li>
+    </ul>
+
+    <h3 class="colophon-h" id="sources">Sources</h3>
+    <div class="colophon-body">
+      <p><strong>Dickinson, E.</strong> &ldquo;That Love is all there is&rdquo; [poem CX], in <em>The Single Hound: Poems of a Lifetime</em>, ed. Martha Dickinson Bianchi (Boston: Little, Brown, 1915), p. 118. Commonly cited as <strong>J1765</strong> after Johnson's 1955 edition. Text checked against the transcription of the scanned first edition at Wikisource; all four lines match.</p>
+      <p><strong>Deleuze, G., &amp; Guattari, F.</strong> <em>A Thousand Plateaus: Capitalism and Schizophrenia</em>, trans. Brian Massumi (University of Minnesota Press, 1987; original French 1980), plateau 11, &ldquo;1837: Of the Refrain.&rdquo; All quotations on spreads 03&ndash;05 were read in the Massumi translation, not taken from summaries.</p>
+      <p><strong>Deleuze, G.</strong> <em>L'Ab&eacute;c&eacute;daire de Gilles Deleuze</em>, interviews with Claire Parnet, prod. and dir. Pierre-Andr&eacute; Boutang, letter <em>R comme Ritournelle</em> &mdash; the cowbell-as-celestial-noise image, given here as a <strong>paraphrase</strong>. The English in circulation is L&eacute;opold Lambert's own translation, published on The Funambulist and collected in <em>The Funambulist Pamphlets 3: Deleuze</em> (punctum books, 2013); the two are the same author, not two sources. The French transcript was not reached.</p>
+      <p><strong>Murray, D., Lesser, M., &amp; Lawson, W.</strong> (2005). Attention, monotropism and the diagnostic criteria for autism. <em>Autism, 9</em>(2), 139&ndash;156. <a href="https://doi.org/10.1177/1362361305051398">doi:10.1177/1362361305051398</a></p>
+      <p><strong>Sagan, C.</strong> <em>Cosmos: A Personal Voyage</em>, episode 1, &ldquo;The Shores of the Cosmic Ocean,&rdquo; first broadcast 28 September 1980. Wording confirmed against the footage at 6:14 by Ryan Boren. This corrects a quotation this house had been circulating with <em>Universe</em> in place of <em>cosmos</em> &mdash; see the <a href="changelog.html">changelog</a>.</p>
+    </div>
+
+    <h3 class="colophon-h" id="credits">Credits</h3>
+    <div class="colophon-body">
+      <p>Written by <strong>Helen Edgar</strong> (<a class="ss-cobrand" href="https://morerealms.com/">More Realms</a>), who brought the poem, the refrain and the argument. The two first-person passages are <strong>Ryan Boren</strong>'s, in his own words, and are his alone. The Dickinson poem reached us sideways, through Dolly Parton's autobiography, while building <a href="dolly-zine.html">No. 67</a> &mdash; which is how most things here arrive.</p>
+      <p><strong>On the form.</strong> This is the first zine in the collection built to <em>scroll</em> rather than to page: one section per screen, in a single continuous channel. That is not decoration. Every other zine here is a sequence of discrete spreads you step between; this one is a furrow you follow, which is the shape the piece is about. It still prints &mdash; on paper the screens collapse back into continuous prose and the scroll furniture disappears.</p>
+    </div>
+
+    <div class="colophon-footer">
+      Stimpunks Foundation &times; More Realms<br>
+      stimpunks.org &middot; morerealms.com &middot; starstuff.earth<br>
+      Print it. Copy it. Give it away.
+    </div>
+  </div>
+</section>
+
+</main>
+
+<script src="starstuff.js"></script>
+<script>
+(function () {
+  'use strict';
+  var sections = Array.prototype.slice.call(document.querySelectorAll('.spread'));
+  var now = document.getElementById('furrow-now');
+  var bar = document.getElementById('furrow-progress');
+  if (!sections.length || !now || !bar) return;
+
+  function pad(n) { return (n < 10 ? '0' : '') + n; }
+
+  /* The counter tracks whichever section owns the middle of the viewport, which
+     is the one a reader is actually reading. IntersectionObserver alone gets this
+     wrong on a tall section that never crosses a fixed threshold. */
+  function update() {
+    var mid = window.innerHeight / 2;
+    var current = 1;
+    for (var i = 0; i < sections.length; i++) {
+      var r = sections[i].getBoundingClientRect();
+      if (r.top <= mid && r.bottom > mid) { current = i + 1; break; }
+      if (r.top > mid) break;
+      current = i + 1;
+    }
+    now.textContent = pad(current);
+
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = (max > 0 ? Math.min(100, (window.pageYOffset / max) * 100) : 0) + '%';
+  }
+
+  var ticking = false;
+  function onScroll() {
+    if (ticking) return;
+    ticking = true;
+    window.requestAnimationFrame(function () { update(); ticking = false; });
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
+  update();
+})();
+</script>
+
+</body>
+</html>
