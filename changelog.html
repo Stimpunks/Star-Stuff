@@ -225,6 +225,27 @@
   </div>
 
   <!-- ================= 2026-08-26c (Proportioned to the Groove) ================= -->
+  <section class="release" id="2026-08-27-card-order" aria-labelledby="h-2026-08-27-card-order">
+    <div class="release-date">2026 &middot; August 27</div>
+    <h2 class="release-title" id="h-2026-08-27-card-order">An eighth gate, for a card sitting in the wrong place &mdash; and on its first run it found a second one we had missed</h2>
+    <p class="release-note">Yesterday&rsquo;s fix put No. 63&rsquo;s card back in order on two pages. That was the instance, not the fault. The fault was that <em>nothing here could see card order at all</em>, so we built the check &mdash; and it immediately found another collection with the same problem, live, on the front page.</p>
+
+    <div class="entry entry--site">
+      <div class="entry-head"><span class="tag tag--site">Site</span><span class="entry-name"><code>tools/check-card-order.mjs</code> &mdash; the eighth gate</span></div>
+      <div class="entry-body"><p>Inside each card grid, the cards that carry a series number must appear in <strong>ascending order within their own series</strong>. That last clause is the whole design: <a href="collection-easter-eggs.html">Easter Eggs</a> interleaves Zines and a Field Guide on purpose, so one merged sequence would fail that page for doing exactly what it means to do. <strong>Gaps are never reported</strong> &mdash; the number records <em>when</em> a piece was made and the collection records <em>what</em> it is, so 1, 2, 6, 7 is correct and only the direction is checked. The 64 cards with no number &mdash; broadsides, playlists, racks, essays, and the furniture in <a href="collection-start-here.html">Start Here</a>, <a href="collection-foundations.html">Foundations</a> and <a href="collection-notes.html">Notes</a> &mdash; are skipped and <em>counted on their own line</em>, because there is no mechanical answer to where <em>About</em> belongs relative to <em>Cosmic Connections</em> and inventing one would be the tool asserting an editorial preference. It reads files rather than driving a browser, which makes it the third browser-free check here and the fastest: 136 pages in about a tenth of a second.</p></div>
+    </div>
+
+    <div class="entry entry--factcheck">
+      <div class="entry-head"><span class="tag tag--factcheck">Corrected</span><span class="entry-name">Stars We Grew Up On ran 12, 66, 67, 13 on the front page</span></div>
+      <div class="entry-body"><p>The gate&rsquo;s first run found it: on <a href="index.html">the index</a>, the <a href="collection-stars-we-grew-up-on.html">Stars We Grew Up On</a> grid had <strong><em>Warriors and Weirdos</em> (No. 13) sitting last</strong>, after No. 67 &mdash; while its own collection page had the same four pieces in the right order. Two pages disagreeing about one collection, with nothing able to see it. Now fixed, and verified as a pure move rather than asserted: the file comes out byte-for-byte the same length with an identical set of lines. <strong>This is the useful part of the episode.</strong> Yesterday we found one misplaced card and fixed that card; the same fault was sitting two sections further down the same page the whole time. Fixing the instance you noticed is not the same as fixing the fault, and the only reliable difference between them is a check that looks everywhere.</p></div>
+    </div>
+
+    <div class="entry entry--site">
+      <div class="entry-head"><span class="tag tag--site">Site</span><span class="entry-name">What the gate deliberately does not check, and why</span></div>
+      <div class="entry-body"><p>It does <strong>not</strong> compare the index against a collection page. That sounds like the obvious companion check and it would emit warnings nobody should act on: Notes, Print and Sound are unnumbered, and their two grids legitimately run in different orders. The numeric case needs no cross-page check anyway &mdash; two grids that are each ascending already agree wherever agreement is defined. It also does not check a grid against the prev/next chain, because that is different markup, and a single failure that could mean either would tell you nothing about which. <strong>An exemption list exists and is empty</strong>, on the same terms as the two exemptions in our contrast checker: a decision somebody wrote down with a reason, never a pattern to fall into. Its own decoy fixture earned its keep by catching a bug in the gate &mdash; a card anchor written inside a JavaScript string was being counted as a real card &mdash; and a wrong first attempt at the fix was caught by the gate itself, which is roughly the point of having one.</p></div>
+    </div>
+  </section>
+
   <section class="release" id="2026-08-27-shadow" aria-labelledby="h-2026-08-27-shadow">
     <div class="release-date">2026 &middot; August 27</div>
     <h2 class="release-title" id="h-2026-08-27-shadow">A rainbow is centred on the shadow of your own head, and Roger Bacon proved in 1267 that no two people can see the same one &mdash; then did the thing we did not expect and used the un-shareability as his <em>evidence</em></h2>

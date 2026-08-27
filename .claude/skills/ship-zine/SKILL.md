@@ -63,7 +63,20 @@ Ryan's shorthand for "finish and publish." Scope depends on what changed.
    sanity. **Baseline is 0.** It exists because a live zine sat unlisted for three weeks and a
    broadside was listed twice, and no other gate could see either — the four page-level checks all
    pass on a page that the sitemap has simply never heard of.
-9. **If you touched a broadside, check it still fits the paper.**
+9. **Check card order if you added, moved or removed a card.**
+
+   ```bash
+   node tools/check-card-order.mjs --check
+   ```
+
+   Inside each grid, numbered cards must ascend within their own series. **Baseline is 0.** It
+   exists because a card in the wrong place misreports where a collection ends — the prev/next
+   chain follows collection order, so a misplaced card makes the chain look as though it stops a
+   piece early, and a new zine gets wired into the middle of the collection. `check-markup.mjs`
+   cannot see it: it derives membership from card *hrefs*, and a set has no order. Browser-free
+   and instant, like the two above.
+
+10. **If you touched a broadside, check it still fits the paper.**
 
    ```bash
    node tools/check-sheets.mjs --check
@@ -72,7 +85,7 @@ Ryan's shorthand for "finish and publish." Scope depends on what changed.
    Prints each sheet at US Letter *and* A4 and counts pages, and separately measures overflow —
    a fixed-height sheet that overruns is clipped, not paginated, so a clean page count can still
    hide a cut-off line. Only applies to pages with an `@page` rule.
-10. **Commit & push.** `git add` the touched files; commit with a descriptive heredoc message;
+11. **Commit & push.** `git add` the touched files; commit with a descriptive heredoc message;
    `git push`.
 
 ## Small edit (fast path)
@@ -80,6 +93,7 @@ Fact-check the touched claims → log it in `changelog.html` if it changes what 
 → **rebuild the search index if any page text changed** (`node tools/build-search-index.mjs`)
 → **check contrast if you touched a color, an opacity, or an SVG label**
 (`node tools/check-contrast.mjs --check <page>.html`)
+→ **run `node tools/check-card-order.mjs --check` if a card moved**
 → **always run `node tools/check-markup.mjs --check`** — it costs 0.3s, needs no browser, and its
 baseline is 0, so there is no reason to skip it on any edit that touched HTML
 → `git add` → commit → `git push`. Don't re-propose or widen scope.

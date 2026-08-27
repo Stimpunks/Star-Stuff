@@ -202,7 +202,7 @@ on the 12th as the twelfth, at two members — see *the two-member floor* below.
   `DECISIONS.md` rather than left to look like drift. The trade it bought: the alternative was a
   hand-written single-file exemption inside `check-markup.mjs`, and **a collection page is visible
   where a tool exemption is not.** An egg is *not a lower standard* — same sourcing, same grading,
-  same `FACTCHECK.md` row, same changelog entry, same seven gates. Only the door moves. And eggs stay
+  same `FACTCHECK.md` row, same changelog entry, same eight gates. Only the door moves. And eggs stay
   inside `sitemap.xml`, `search-index.json` and every gate, because a page the checks cannot see is
   a page that rots.
 
@@ -342,8 +342,10 @@ never candidates for a register. Don't try to fold these into either table:
 it ran 100. One had been wrong since the day it shipped: *How We Got Here* opened a paragraph "No. 45
 is the most lopsided chain here" when No. 45 is *The Cloud Phase*, in Star Stuff, not a chain at all.
 
-**Why they rot:** the seven gates measure colour, tag structure, position, paper, sitemap, index
-coverage and dead classes. **Not one of them can read a number written out in prose.** So treat every figure in this
+**Why they rot:** the eight gates measure colour, tag structure, position, paper, sitemap, index
+coverage, dead classes and card order. **Not one of them can read a number written out in prose** —
+`check-card-order.mjs` comes closest and still cannot, because it compares the numbers *cards*
+carry to each other and never to a total claimed in a sentence. So treat every figure in this
 file and on every collection page as a **lead, not a fact** — the same standing rule this repo
 applies to aggregators — and re-derive it. These are the derivations behind the numbers above:
 
@@ -703,7 +705,7 @@ node tools/check-markup.mjs --check               # exit non-zero on any failure
   and has recurred often enough to prove that remembering is not a control.
 - **The baseline is 0.** A clean tree passes, so `--check` is a real ship
   gate rather than an informational sweep. (This was the distinction from `check-contrast.mjs`
-  until 2026-08-13, when that one reached zero too — all seven gates now hold at 0.) It was
+  until 2026-08-13, when that one reached zero too — all eight gates now hold at 0.) It was
   regression-tested against the actual broken file
   from git history, and against decoys that must *not* fire — an `a a` CSS selector, a nested
   anchor inside a JS string, and a `>` inside an attribute value.
@@ -884,6 +886,75 @@ node tools/check-classes.mjs --verbose           # every finding, not the first 
   siblings — matching is structural, not visual, and revealing would inject `.active`/`.open`
   classes the tool would then have to explain away.
 - 135 pages in ~2 min. Chrome and Node 22+; local dev tool, Netlify does not run it.
+
+## Card order checking (`tools/check-card-order.mjs`)
+
+The eighth gate, added 2026-08-27, and the third that never opens a browser. The others ask
+*what colour is it*, *what shape is the tag tree*, *where is it on screen*, *does it fit the paper*,
+*is it in the sitemap*, *is it findable*, *did the styling happen*. This one asks **is it in the
+right place in the list**, which nothing here had ever measured.
+
+```bash
+node tools/check-card-order.mjs                     # every *.html in the repo root
+node tools/check-card-order.mjs index.html          # just these
+node tools/check-card-order.mjs --check             # exit non-zero on any finding
+node tools/check-card-order.mjs --verbose           # every finding, not the first 8
+```
+
+- **It exists because a card in the wrong place misreports where a collection ends.** While No. 69
+  was being added, the last `<a class="card">` in document order on `collection-star-stuff.html` was
+  No. 62 — so No. 62 looked like the tail. It was not: **No. 63's card was sitting between Nos. 45
+  and 46, identically on the index and the collection page**, which reads as one insertion
+  replicated rather than a decision. **The prev/next chain follows collection order**, so the
+  misplacement made the chain look as though it ended a piece early, and No. 69 was very nearly
+  wired into the middle of the collection. All seven existing gates passed and none was wrong to:
+  **`check-markup.mjs` derives membership from card *hrefs*, and the map it builds is a set — a set
+  has no order.** The rest measure colour, tag structure, position, paper, sitemap and findability.
+- **Its first honest run found a second live instance the manual fix had missed.** The *Stars We
+  Grew Up On* grid on `index.html` read **12, 66, 67, 13** — No. 13 last — while its own collection
+  page had the same four ascending. Two pages disagreeing about one collection, invisible to
+  everything. That is the argument for the gate, and it is why fixing the instance you noticed is
+  never the same as fixing the fault.
+- **Ascending *within a series*, within a grid — and the series split is load-bearing.**
+  `collection-easter-eggs.html` interleaves on purpose (Zine 37, Zine 47, The Hatchery, The
+  Quillery, Field Guide 13, Zine 49): the Zine numbers ascend among themselves with a Field Guide in
+  the middle. Checking one merged sequence would fail that page for doing exactly what it means to
+  do. **Non-contiguous numbering is never reported** — gaps are information, so 1, 2, 6, 7 is
+  correct and only the *direction* is checked.
+- **Unnumbered cards are skipped, and the count is printed.** 64 of the 236 cards carry no series
+  number — broadsides, playlists, racks, essays, and the furniture in *Start Here*, *Foundations*
+  and *Notes* — and there is no mechanical answer to where `About` belongs relative to
+  `Cosmic Connections`. Inventing one would be the tool asserting an editorial preference. The
+  number is on its own line so that a denominator which quietly shrinks is visible.
+- **Cards outside every grid are reported, not shrugged at.** An uncheckable card is not a passing
+  card; this is the `about.html` lesson from the search index in another costume. If that figure is
+  ever non-zero the `.artifact-grid` selector has drifted and the gate is checking less than its
+  output suggests.
+- **Deliberately NOT checked: whether the index and a collection page agree with each other.** That
+  sounds like the obvious companion check and it would emit noise nobody should act on — *Notes &amp;
+  Rationale*, *Print* and *Sound* are unnumbered, and their index and collection grids legitimately
+  run in different orders. The numeric case needs no cross-page check anyway: two grids both
+  ascending within series already agree wherever agreement is defined. Also not checked: whether a
+  grid's order matches the chain, because the chain is different markup and conflating them would
+  make a single failure unable to say which half was wrong.
+- **`ALLOWED_UNORDERED` exists and is empty.** Same bar as `check-contrast.mjs`'s watermark
+  exemption and `check-classes.mjs`'s HOOKS: an exemption must be a decision somebody wrote down
+  with a reason, keyed `page.html#gridindex`, never a pattern to fall into. The count prints on its
+  own line.
+- **Source, not DOM, and that is checked rather than assumed.** Cards are static HTML and no script
+  builds or sorts them; source order was compared against DOM order across all fourteen
+  card-bearing pages before this was written, and they agree everywhere. It masks `<script>`,
+  `<style>` and comments first — the decoy fixture caught a card anchor inside a JS template string
+  being counted as a real card.
+- **Regression-tested against the real broken states, not only synthetics.** Run against
+  `index.html` and `collection-star-stuff.html` at commits `d10de14` and `aae6008` it names both
+  faults, the right grids and the right cards. Five synthetic faults fire, including two descents in
+  one grid and an independent Field Guide descent. Decoys confirmed silent: non-contiguous ascending
+  numbers, interleaved series, `No. 21` in card *prose*, a `.card` CSS selector, a card anchor in a
+  JS string, unnumbered cards in non-alphabetical order, a `· Guest` suffix after the number, a
+  one-card grid, and two equal numbers.
+- **The baseline is 0**, so `--check` is a real ship gate. 136 pages in about 0.1s. No Chrome, no
+  dependencies. Local dev tool; Netlify does not run it.
 
 ## Design system
 
