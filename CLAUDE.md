@@ -202,7 +202,7 @@ on the 12th as the twelfth, at two members — see *the two-member floor* below.
   `DECISIONS.md` rather than left to look like drift. The trade it bought: the alternative was a
   hand-written single-file exemption inside `check-markup.mjs`, and **a collection page is visible
   where a tool exemption is not.** An egg is *not a lower standard* — same sourcing, same grading,
-  same `FACTCHECK.md` row, same changelog entry, same six gates. Only the door moves. And eggs stay
+  same `FACTCHECK.md` row, same changelog entry, same seven gates. Only the door moves. And eggs stay
   inside `sitemap.xml`, `search-index.json` and every gate, because a page the checks cannot see is
   a page that rots.
 
@@ -342,8 +342,8 @@ never candidates for a register. Don't try to fold these into either table:
 it ran 100. One had been wrong since the day it shipped: *How We Got Here* opened a paragraph "No. 45
 is the most lopsided chain here" when No. 45 is *The Cloud Phase*, in Star Stuff, not a chain at all.
 
-**Why they rot:** the six gates measure colour, tag structure, position, paper, sitemap and index
-coverage. **Not one of them can read a number written out in prose.** So treat every figure in this
+**Why they rot:** the seven gates measure colour, tag structure, position, paper, sitemap, index
+coverage and dead classes. **Not one of them can read a number written out in prose.** So treat every figure in this
 file and on every collection page as a **lead, not a fact** — the same standing rule this repo
 applies to aggregators — and re-derive it. These are the derivations behind the numbers above:
 
@@ -703,7 +703,7 @@ node tools/check-markup.mjs --check               # exit non-zero on any failure
   and has recurred often enough to prove that remembering is not a control.
 - **The baseline is 0.** A clean tree passes, so `--check` is a real ship
   gate rather than an informational sweep. (This was the distinction from `check-contrast.mjs`
-  until 2026-08-13, when that one reached zero too — all six gates now hold at 0.) It was
+  until 2026-08-13, when that one reached zero too — all seven gates now hold at 0.) It was
   regression-tested against the actual broken file
   from git history, and against decoys that must *not* fire — an `a a` CSS selector, a nested
   anchor inside a JS string, and a `>` inside an attribute value.
@@ -761,7 +761,7 @@ node tools/check-sitemap.mjs path/to.xml   # audit a different file
 
 ## Text collision checking (`tools/check-overlap.mjs`)
 
-The sixth gate, added 2026-08-14. The other five ask *what colour is it*, *what shape is the tag
+The sixth gate, added 2026-08-14. The others ask *what colour is it*, *what shape is the tag
 tree*, *does it fit the paper*, *is it in the sitemap*. This one asks **where is it**, which nothing
 here had ever measured.
 
@@ -817,6 +817,72 @@ node tools/check-overlap.mjs --verbose           # every finding, not the first 
   owns page fitting). One viewport, 1280×900, matching `check-contrast.mjs` — a collision that only
   happens at 380px is real and this will not see it. And **text over non-text**: a label crossing a
   line or an arrowhead is a legibility judgement about artwork, and still needs eyes at render size.
+- 135 pages in ~2 min. Chrome and Node 22+; local dev tool, Netlify does not run it.
+
+
+## Dead class checking (`tools/check-classes.mjs`)
+
+The seventh gate, added 2026-08-26. The other six ask *what colour is it*, *what shape is the tag
+tree*, *where is it*, *does it fit the paper*, *is it in the sitemap*, *is it findable*. This one
+asks **did the styling you asked for actually happen**, which nothing here had ever measured.
+
+```bash
+node tools/check-classes.mjs                     # every *.html in the repo root
+node tools/check-classes.mjs dolly-zine.html     # just these
+node tools/check-classes.mjs --check             # exit non-zero on any finding
+node tools/check-classes.mjs --verbose           # every finding, not the first 8
+```
+
+- **It exists because of a fault that produced no symptom.** A sixth refusal on No. 67 was written
+  as `<span class="pink">` and never rendered: `.pink` is declared as `.body-text .pink`, and
+  `.refusals` is a **sibling** of `.body-text`, not a descendant. All six gates passed it, and none
+  was wrong to — the markup is well formed, the text is legible, the box is in a sensible place,
+  the words are indexed. **`check-contrast.mjs` passed it *because* it failed:** unstyled text
+  inherits a colour that already clears AA, so the defect had no measurable consequence anywhere.
+  An intention that silently did not happen is not a colour, a tag tree, a position, a word, a page
+  count or a URL.
+- **Two findings, and only the second needs a browser.** `unknown` — no rule anywhere mentions the
+  class (a typo, or a card copied from a page that defines it into one that does not). `inert` —
+  rules exist, but not one of them reaches *this* element. `unknown` is answerable from source;
+  `inert` needs the ancestor chain and the real cascade, so the page is loaded and every class use
+  is tested with `Element.matches()`. That is the browser's own selector engine answering, rather
+  than a re-implementation of it.
+- **A class used only as a scoping ancestor is NOT inert, and getting that wrong is the whole
+  difficulty.** `.masthead-toc-collections a` styles the anchors *inside* the `<ul>`; the `<ul>`
+  matches nothing itself and the class is still doing all the work. The first draft flagged exactly
+  that, twice, on the front page. So each selector is cut at the compound carrying the class and the
+  element is tested against that **prefix** — "is this element the thing the selector names in that
+  position", subject or ancestor alike.
+- **It is the one gate that cannot read `file://`.** Its five browser-using siblings want computed
+  styles, text and geometry, all of which Chrome hands over for a local file. This one wants
+  `.cssRules` — the rules themselves — and a `file://` page treats its own linked stylesheet as
+  cross-origin and throws `SecurityError`; `--allow-file-access-from-files` does not lift it. So
+  `tools/serve.mjs` is spawned on its own port and the pages are read over `http://127.0.0.1`.
+  A **same-origin** sheet that still will not open is `UNREAD`; the Google Fonts sheet is expected
+  to be unreadable and is counted separately, because treating it as fatal would make every page
+  UNREAD and treating a blocked local sheet as fine would report every class on the page as dead.
+- **The baseline is 0, and getting there found 25 real defects across 12 pages — no false
+  positives.** Eleven vestigial `col-text`/`col-diagram` on a zine that stacks by single-column grid
+  rather than the house flex block; a `.card-moment` on **`index.html`**, copied from a collection
+  page, rendering as a bare paragraph — and CLAUDE.md said the index carried none, which was true
+  when written; `.footer-egg-fill` on two SVG paths with no rule anywhere; a `<th class="sig">` on
+  No. 55 whose rules only ever reached `td.sig`, so the σ column header never got its own styling;
+  and **eight accent utilities that silently did nothing** — four `.pull-quote` colour variants a
+  page used but never defined, and four colour spans sitting outside `.body-text`. Every one was an
+  author asking for something and not getting it.
+- **HOOKS are explicit, short, and counted.** Some classes are addressed by `starstuff.js` or by the
+  tools in this directory rather than by CSS — `.spread`, `.card-wrap`, `.ss-nav-prev`, the injected
+  `.prev`/`.next` buttons. They are a hand-written list with a comment naming *what reads each one*,
+  deliberately not a pattern like "ignore `js-*`": an exemption should be a decision somebody wrote
+  down, not a mechanism to fall into. `check-contrast.mjs` settled that argument first, and the
+  count is printed on its own line so a list that grows is a list somebody can question.
+- **What it does not do.** It does not check the reverse direction — dead CSS costs bytes, a dead
+  class attribute costs the reader the thing the author meant to say, and only one of those is a
+  defect in the artifact. It does not judge specificity: a class whose rule matches but is
+  overridden is a different fault, and `.ss-cobrand`'s over-specific selector is the standing
+  reminder that it exists. It does not reveal spreads or open entries, unlike its two browser
+  siblings — matching is structural, not visual, and revealing would inject `.active`/`.open`
+  classes the tool would then have to explain away.
 - 135 pages in ~2 min. Chrome and Node 22+; local dev tool, Netlify does not run it.
 
 ## Design system
