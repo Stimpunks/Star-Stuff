@@ -221,7 +221,7 @@ that disclosure is the convention, and **How We Got Here duly carries it too**:
 
 | Collection | Axis | Members |
 |------------|------|---------|
-| **Field Guides** | **form** — a catalogue of same-shaped entries, none ranked | Field Guides 1–12, 14, 15, 16 — 15 guides, **174 entries; 182 cards.** FG 13 is *not* here: it is the egg, `watching-animals-field-guide.html`. The eight cards that are deliberately **not** entries are the five *turtles people made* (FG 10), the octopus settlements (FG 14), the rooms people build (FG 15) and the egg-crack accounts (FG 16) |
+| **Field Guides** | **form** — a catalogue of same-shaped entries, none ranked | Field Guides 1–12, 14–19 — 18 guides, **218 entries; 231 cards** (derived 2026-08-27). FG 13 is *not* here: it is the egg, `watching-animals-field-guide.html`. The thirteen cards that are deliberately **not** entries are the five *turtles people made* (FG 10), the octopus settlements (FG 14), the rooms people build (FG 15), the egg-crack accounts (FG 16), the two questions the answer is not in on yet (FG 17), the palaeontologist who was not a specimen and the corrections nobody has published yet (FG 18), and the families people make (FG 19) |
 | **How We Got Here** | **form** — a Burke chain, one link per spread, joints marked | 38, 39, 40, 41, 42, 43, 50, 52, 56 (9 chains) |
 | **Print** | **medium** — paper | 9 broadsides + 2 that are not broadsides (a typographic specimen, and a blank sheet) |
 | **Sound** | **medium** — audio | 6 racks, 170 cards / **160** distinct songs |
@@ -267,9 +267,9 @@ never candidates for a register. Don't try to fold these into either table:
   no prev/next — the same shape `about.html` and `cosmic-connections.html` use. If a future
   collection's members all sit off the chain, copy that shape rather than inventing a link.
 - **Field Guides sort by form, and that cuts across register on purpose.** FG 2 is settled physics
-  and FG 1 is frank invention, and they are the same kind of object. Ten of the fifteen arrive
+  and FG 1 is frank invention, and they are the same kind of object. Twelve of the eighteen arrive
   independently at *there is no standard {star, nervous system, migration, shark, turtle, tortoise,
-  galaxy, amount of company, nest, egg}*
+  galaxy, amount of company, nest, egg, way to rest, family}*
   — verify by grep before restating the count, it grows:
   `grep -l "no standard" *-field-guide.html | grep -v watching-animals` (the exclusion matters —
   an eleventh sits in the egg, FG 13: *there is no standard way to be interested in an animal*, and it is
@@ -361,7 +361,11 @@ Two that need more than a grep, both learned the hard way:
 - **Field-guide entries are built from JS object literals**, so the source cannot be counted and the
   schema differs per guide. Count the **anchored records in `search-index.json`** (one per entry,
   which is what the rendered DOM produced) and subtract the cards a guide deliberately does not file
-  as entries — currently eight. That gives 182 cards / 174 entries.
+  as entries — currently thirteen. That gives 231 cards / 218 entries.
+  **The anchors are slugs, not `#entry-`.** A guide's entry records are anchored `#hydra`,
+  `#cassiopea`, `#sperm-whale` and so on, so counting on an `#entry-` prefix returns **zero** and
+  looks exactly like a guide with no entries. Count *all* records whose page is a `*-field-guide.html`,
+  which equals that guide's card total, and subtract the withheld cards.
 - **Chain joints over-count with a naive grep**, because `build-the-eclipse-zine.html` uses the tags
   inline in prose. The discriminator is the tag **opening its own paragraph**:
   `<p(?: class="joint-line")?><span class="joint joint-(documented|contested|leap)"`. That method
@@ -376,7 +380,8 @@ alone" had both halves wrong, and 4 + 7 hadn't equalled the total for two additi
 you are changing, not the sentence.
 
 **And a derived count can be wrong even when the arithmetic is right.** That companion figure is now
-**eight and seven** — and each time it has moved it was the *category* that was wrong, never the sum.
+**twelve and six** (re-derived 2026-08-27) — and each time it has moved it was the *category* that was
+wrong, never the sum.
 It was first derived from the four cards carrying `companion to No. N` in `.card-series`, while
 `nests-field-guide.html` and `being-alone-field-guide.html` name their companion zine in their own
 colophons and had no marker. **A count read off markers is only as honest as the markers**, and no
