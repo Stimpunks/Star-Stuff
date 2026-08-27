@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0a0a14">
+<link rel="canonical" href="https://starstuff.earth/your-shadow-is-the-centre-zine.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta name="description" content="A rainbow is a circle centred on the shadow of your own head, and no two people have ever seen the same one. Roger Bacon worked this out by experiment around 1267 and wrote it down in the Opus Majus: there are as many bows as there are observers, it is impossible for two observers to see one and the same bow, and the shadow of each observer divides the arc of the rainbow into two equal parts. He had no theory of refraction. He had an astrolabe, a measured 42 degrees, and a cone whose apex he put at the eye. Then he did the thing that matters most here: he used the un-shareability as evidence, reasoning that a coloured cloud looks the same to everyone and does not follow you, a fish seen through water does not follow you, and the bow does &mdash; so the bow must be made of rays that bounce. The privacy was the clue. Roland Stull's Practical Meteorology says the same thing 759 years later: different observers see different rainbows caused by different light rays interacting with different raindrops. The turn: nobody has ever doubted a rainbow on the grounds that it cannot be handed over. A rhyme, not a proof.">
+<!-- Open Graph / link unfurl -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Star Stuff · Stimpunks Foundation × More Realms">
+<meta property="og:url" content="https://starstuff.earth/your-shadow-is-the-centre-zine.html">
+<meta property="og:title" content="Your Shadow Is the Centre">
+<meta property="og:description" content="A rainbow is a circle centred on the shadow of your own head. Roger Bacon proved in 1267 that no two people can see the same one — and then used that privacy as his evidence for how rainbows work.">
+<meta property="og:image" content="https://starstuff.earth/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A rainbow-hued cosmic image — we are all made of star stuff.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Your Shadow Is the Centre">
+<meta name="twitter:description" content="As many bows as there are observers. Bacon, 1267, with an astrolabe and no theory of refraction — and the un-shareability was his evidence, not his problem.">
+<meta name="twitter:image" content="https://starstuff.earth/og-card.jpg">
+<title>Your Shadow Is the Centre — Stimpunks Zine No. 69</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="starstuff.css">
+<style>
+  :root {
+    --void:  var(--sp-void-deep);
+    --deep:  var(--sp-deep);
+    --page:  var(--sp-page);
+    --violet:var(--sp-purple);
+    --pink:  var(--sp-pink);
+    --gold:  var(--sp-gold);
+    --cyan:  var(--sp-cyan);
+    --green: var(--sp-green);
+    --ember: #c1653a;
+    --accent: var(--sp-gold);          /* this zine's identity accent — gold: the sun, which is always behind you */
+    --star-white: var(--sp-white-soft);
+    --stardust:   var(--sp-secondary-soft);
+    --dim:   var(--sp-dim);
+    --dim2:  var(--sp-dim-soft);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--void);
+    font-family: 'Atkinson Hyperlegible Next', system-ui, sans-serif;
+    color: var(--star-white);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── STARFIELD (cyan · white · violet — light in transit) ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 7% 13%, rgba(251,191,36,0.58) 0%, transparent 100%),
+      radial-gradient(1px 1px at 11% 17%, rgba(244,244,251,0.50) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 39% 8%, rgba(251,191,36,0.44) 0%, transparent 100%),
+      radial-gradient(1px 1px at 57% 62%, rgba(244,244,251,0.56) 0%, transparent 100%),
+      radial-gradient(1px 1px at 61% 67%, rgba(167,139,250,0.42) 0%, transparent 100%),
+      radial-gradient(2px 2px at 79% 21%, rgba(251,191,36,0.46) 0%, transparent 100%),
+      radial-gradient(1px 1px at 86% 47%, rgba(244,244,251,0.44) 0%, transparent 100%),
+      radial-gradient(1px 1px at 93% 77%, rgba(251,191,36,0.44) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 6% 57%, rgba(244,244,251,0.52) 0%, transparent 100%),
+      radial-gradient(1px 1px at 29% 83%, rgba(251,191,36,0.40) 0%, transparent 100%),
+      radial-gradient(1px 1px at 33% 86%, rgba(244,244,251,0.40) 0%, transparent 100%),
+      radial-gradient(1px 1px at 49% 41%, rgba(167,139,250,0.34) 0%, transparent 100%),
+      radial-gradient(2px 2px at 17% 88%, rgba(251,191,36,0.42) 0%, transparent 100%),
+      radial-gradient(1px 1px at 73% 6%, rgba(244,244,251,0.66) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 25% 19%, rgba(244,244,251,0.46) 0%, transparent 100%),
+      radial-gradient(1px 1px at 84% 90%, rgba(251,191,36,0.36) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .zine-shell { position: relative; z-index: 1; max-width: 820px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+
+  .spectrum-line { height: 2px; border: none; border-radius: 2px; background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); }
+
+  /* ── NAV ── */
+  .nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2.5rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(251,191,36,0.22); }
+  .nav-brand { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--dim); }
+  .nav-controls { display: flex; gap: 0.5rem; align-items: center; }
+  .nav-btn { background: none; border: 1px solid rgba(251,191,36,0.38); color: var(--stardust); font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.15em; padding: 0.4rem 0.85rem; border-radius: 2px; cursor: pointer; transition: all 0.2s ease; text-transform: uppercase; }
+  .nav-btn:hover { background: rgba(251,191,36,0.15); border-color: rgba(251,191,36,0.65); color: var(--star-white); }
+  .nav-btn.active { background: rgba(251,191,36,0.20); border-color: var(--accent); color: var(--star-white); }
+  .page-counter { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.2em; color: var(--dim2); }
+
+  .spread { display: none; animation: fadeIn 0.5s ease forwards; }
+  .spread.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ── COVER ── */
+  .cover-spread {
+    position: relative; min-height: 520px; border-radius: 4px; overflow: hidden;
+    background:
+      radial-gradient(ellipse at 20% 22%, rgba(251,191,36,0.13) 0%, transparent 52%),
+      radial-gradient(ellipse at 78% 26%, rgba(167,139,250,0.10) 0%, transparent 52%),
+      radial-gradient(ellipse at 66% 80%, rgba(251,191,36,0.07) 0%, transparent 52%),
+      radial-gradient(ellipse at 22% 78%, rgba(244,244,251,0.04) 0%, transparent 52%),
+      var(--deep);
+    border: 1px solid rgba(251,191,36,0.26);
+    box-shadow: inset 0 0 80px rgba(251,191,36,0.05), 0 0 0 4px rgba(255,255,255,0.03);
+    display: flex; flex-direction: column; justify-content: flex-end; padding: 3rem;
+  }
+  .cover-motif { position: absolute; top: -4px; left: -14px; width: 340px; height: 340px; opacity: 0.78; pointer-events: none; }
+  .cover-issue { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.5em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.5rem; }
+  .cover-title { font-weight: 700; font-size: clamp(2.1rem, 6vw, 3.5rem); line-height: 1.03; color: var(--star-white); letter-spacing: -0.01em; margin-bottom: 0.9rem; }
+  .cover-title .amp { color: var(--accent); font-style: italic; }
+  .cover-subtitle { font-size: 1rem; color: var(--stardust); opacity: 0.86; margin-bottom: 1.5rem; max-width: 470px; line-height: 1.55; }
+  .cover-byline { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.14em; color: var(--dim); margin-bottom: 1.8rem; }
+  .cover-byline strong { color: var(--stardust); font-weight: 700; }
+  .cover-rule { width: 220px; max-width: 60%; margin-bottom: 1.3rem; }
+  .cover-meta { display: flex; gap: 2rem; align-items: center; }
+  .cover-ls { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 1.4rem; color: var(--gold); letter-spacing: 0.05em; }
+  .cover-meta-text { font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--dim2); line-height: 1.9; }
+  .cover-corner { position: absolute; top: 2rem; right: 2.5rem; text-align: right; }
+  .cover-corner-num { font-weight: 700; font-size: 4.5rem; line-height: 1; color: var(--accent); opacity: 0.24; }
+  .cover-corner-label { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--cyan); display: block; margin-top: -0.3rem; }
+
+  /* ── INTERIOR ── */
+  .interior { background: var(--page); border: 1px solid rgba(251,191,36,0.15); border-radius: 4px; overflow: hidden; min-height: 480px; }
+  .spread-2col { display: grid; grid-template-columns: 1fr 1fr; min-height: 480px; }
+  .spread-left, .spread-right { padding: 3rem 2.4rem; position: relative; }
+  .spread-left { border-right: 1px solid rgba(251,191,36,0.12); }
+
+  .spread-2col.stacked { display: flex; flex-direction: column; }
+  .spread-2col.stacked > .spread-left,
+  .spread-2col.stacked > .spread-right { border-right: none; }
+  .spread-2col.stacked > .col-diagram { order: 2; padding-top: 0; }
+  .spread-2col.stacked > .col-text { padding-left: max(2.4rem, calc((100% - 32rem) / 2)); padding-right: max(2.4rem, calc((100% - 32rem) / 2)); }
+  .spread-2col.stacked .diagram-wrap { height: auto; }
+  .spread-2col.stacked .diagram { max-width: 380px; }
+
+  .eyebrow { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.1rem; }
+  .body-text { font-size: 0.98rem; line-height: 1.72; color: var(--stardust); }
+  .body-text p { margin-bottom: 1rem; }
+  .body-text p:last-child { margin-bottom: 0; }
+  .body-text strong { font-weight: 700; color: var(--star-white); }
+  .body-text em { font-style: italic; color: var(--star-white); }
+  .body-text a { color: var(--cyan); text-decoration: none; border-bottom: 1px solid rgba(251,191,36,0.45); }
+  .body-text a:hover { border-bottom-color: var(--cyan); color: var(--star-white); }
+  .body-text .violet { color: var(--violet); font-weight: 700; }
+  .body-text .pink { color: var(--pink); font-weight: 700; }
+  .body-text .gold { color: var(--gold); font-weight: 700; }
+  .body-text .cyan { color: var(--cyan); font-weight: 700; }
+  .zine-shell span.cyan { color: var(--cyan); font-weight: 700; }
+  /* This zine's accent is gold, and the colophon closes on a gold line that sits in
+     .colophon-body rather than .body-text — so the scoped .body-text .gold rule cannot
+     reach it. Same shape as the .pink refusal that went unstyled on No. 67 and prompted
+     check-classes.mjs; that gate caught this one too, before it shipped. */
+  .zine-shell span.gold { color: var(--gold); font-weight: 700; }
+  .body-text .green { color: var(--green); font-weight: 700; }
+  .body-text .lede { font-size: 1.08rem; color: var(--star-white); }
+
+  .spread-heading { font-weight: 700; font-size: 1.9rem; line-height: 1.12; color: var(--star-white); margin-bottom: 1.1rem; letter-spacing: -0.01em; margin-top: 0; scroll-margin-top: 5rem; }
+  .rule { width: 40px; margin: 1rem 0; }
+
+  .pull-quote { font-size: 1.18rem; font-weight: 700; line-height: 1.4; color: var(--star-white); border-left: 3px solid var(--accent); padding-left: 1.1rem; margin: 1.4rem 0; font-style: italic; }
+  .pull-quote.violet { border-left-color: var(--violet); }
+  .pull-quote.cyan { border-left-color: var(--cyan); }
+  .pull-quote.gold { border-left-color: var(--gold); }
+  .pull-quote.pink { border-left-color: var(--pink); }
+  .pull-quote .attr { display: block; font-family: 'Space Mono', monospace; font-size: 0.6rem; font-weight: 400; font-style: normal; letter-spacing: 0.08em; color: var(--dim); margin-top: 0.6rem; }
+
+  .callout { margin: 1.3rem 0; padding: 1rem 1.15rem; background: rgba(251,191,36,0.07); border: 1px solid rgba(251,191,36,0.26); border-radius: 4px; font-size: 1rem; font-style: italic; color: var(--star-white); line-height: 1.55; }
+  .callout .attr { display: block; font-family: 'Space Mono', monospace; font-size: 0.58rem; font-style: normal; letter-spacing: 0.06em; color: var(--dim); margin-top: 0.5rem; }
+
+  .note { font-size: 0.84rem; line-height: 1.6; color: var(--dim); border-left: 2px solid rgba(251,191,36,0.42); padding-left: 0.9rem; margin: 1.1rem 0; }
+  .note strong { color: var(--stardust); font-weight: 700; }
+
+  /* ── TABLES ── */
+  .trades { width: 100%; border-collapse: collapse; margin: 1.3rem 0; font-size: 0.84rem; }
+  .trades caption { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dim); text-align: left; padding-bottom: 0.6rem; }
+  .trades th { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--stardust); text-align: left; padding: 0.5rem 0.6rem; border-bottom: 1px solid rgba(251,191,36,0.36); font-weight: 700; }
+  .trades td { padding: 0.55rem 0.6rem; border-bottom: 1px solid rgba(251,191,36,0.1); color: var(--stardust); line-height: 1.5; vertical-align: top; }
+  .trades td.keeps { color: var(--green); font-weight: 700; }
+  .trades td.loses { color: var(--pink); font-weight: 700; }
+  .trades td.label { color: var(--star-white); font-weight: 700; }
+  .trades td.delay { color: var(--cyan); font-weight: 700; font-family: 'Space Mono', monospace; white-space: nowrap; }
+
+  /* ── DIAGRAMS ── */
+  .diagram-wrap { display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; }
+  .diagram { width: 100%; max-width: 300px; display: block; }
+  .diagram-caption { font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim); text-align: center; margin-top: 0.9rem; line-height: 1.9; }
+
+  /* ── REFUSALS ── */
+  .refusals { margin-top: 1.3rem; }
+  .refusal { font-size: 0.88rem; line-height: 1.5; color: var(--stardust); padding: 0.55rem 0; border-bottom: 1px solid rgba(251,191,36,0.1); display: flex; gap: 0.6rem; align-items: baseline; }
+  .refusal:last-child { border-bottom: none; }
+  .refusal-tag { font-family: 'Space Mono', monospace; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ember); flex-shrink: 0; padding-top: 0.12rem; }
+  .refusal strong { color: var(--star-white); font-weight: 700; }
+
+  /* ── COLOPHON ── */
+  .colophon { padding: 3rem; display: flex; flex-direction: column; justify-content: space-between; min-height: 480px; background: radial-gradient(ellipse at 80% 16%, rgba(251,191,36,0.09) 0%, transparent 50%), radial-gradient(ellipse at 16% 84%, rgba(167,139,250,0.05) 0%, transparent 50%), var(--page); }
+  .colophon-top { border-bottom: 1px solid rgba(251,191,36,0.16); padding-bottom: 1.3rem; margin-bottom: 1.2rem; }
+  .colophon-ls { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 2.4rem; color: var(--gold); letter-spacing: 0.05em; display: block; margin-bottom: 0.4rem; }
+  .colophon-phrase { font-size: 0.98rem; font-weight: 700; font-style: italic; color: var(--stardust); }
+  .series-list { display: flex; flex-direction: column; gap: 0.38rem; margin-bottom: 1.2rem; }
+  .series-item { font-size: 0.72rem; color: var(--dim); letter-spacing: 0.01em; display: flex; gap: 0.7rem; align-items: baseline; line-height: 1.45; }
+  .series-item.current { color: var(--accent); font-weight: 700; }
+  .series-num { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim2); flex-shrink: 0; }
+  .series-item.current .series-num { color: var(--accent); }
+  .reflect { border-top: 1px solid rgba(251,191,36,0.16); padding-top: 1rem; margin-bottom: 1.2rem; }
+  .reflect-label { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.65rem; }
+  .reflect-q { font-size: 0.86rem; line-height: 1.55; color: var(--stardust); margin-bottom: 0.55rem; font-style: italic; }
+  .reflect-q:last-child { margin-bottom: 0; }
+  .colophon-body { font-size: 0.75rem; color: var(--dim); line-height: 1.75; margin-bottom: 1.2rem; }
+  .colophon-body a { color: var(--cyan); text-decoration: none; border-bottom: 1px solid rgba(251,191,36,0.45); }
+  .colophon-body a:hover { border-bottom-color: var(--cyan); }
+  .colophon-h { font-family: 'Space Mono', monospace; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: var(--stardust); margin: 1rem 0 0.4rem; scroll-margin-top: 5rem; }
+  .colophon-footer { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--dim); line-height: 2.2; border-top: 1px solid rgba(251,191,36,0.16); padding-top: 1rem; }
+
+  /* ── SPREAD FOOTER ── */
+  .spread-footer { display: flex; justify-content: space-between; align-items: center; padding: 0.9rem 2.4rem; border-top: 1px solid rgba(251,191,36,0.1); }
+  .spread-footer-left { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--dim); }
+  .spread-footer-right { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; color: var(--accent); }
+
+  .twinkle { position: fixed; width: 3px; height: 3px; border-radius: 50%; animation: twinkle-anim 3s ease-in-out infinite; pointer-events: none; z-index: 0; }
+
+  @media (max-width: 600px) {
+    .spread-2col { grid-template-columns: 1fr; }
+    .spread-left { border-right: none; border-bottom: 1px solid rgba(251,191,36,0.12); }
+    .spread-2col.stacked > .spread-left { border-bottom: none; }
+    .spread-2col.stacked > .col-text { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .cover-spread { padding: 2rem; min-height: 420px; }
+    .cover-motif { width: 224px; height: 224px; top: -4px; left: -24px; opacity: 0.5; }
+    .cover-title { font-size: 1.9rem; }
+    .spread-heading { font-size: 1.55rem; }
+    .spread-left, .spread-right { padding: 2rem 1.5rem; }
+    .colophon { padding: 2rem 1.5rem; }
+    .trades { font-size: 0.76rem; }
+    .trades th, .trades td { padding: 0.4rem 0.35rem; }
+  }
+</style><script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Your Shadow Is the Centre",
+  "alternativeHeadline": "on the bow no two people can share, the man who proved it in 1267, and why being unable to show someone a real thing was never a reason to doubt it",
+  "url": "https://starstuff.earth/your-shadow-is-the-centre-zine.html",
+  "image": "https://starstuff.earth/og-card.jpg",
+  "inLanguage": "en",
+  "isPartOf": { "@type": "CreativeWorkSeries", "name": "Star Stuff", "url": "https://starstuff.earth/" },
+  "publisher": [
+    {
+      "@type": "Organization",
+      "name": "Stimpunks Foundation",
+      "url": "https://stimpunks.org/",
+      "logo": { "@type": "ImageObject", "url": "https://starstuff.earth/og-card.jpg" }
+    },
+    {
+      "@type": "Organization",
+      "name": "More Realms",
+      "url": "https://morerealms.com/"
+    }
+  ],
+  "license": "https://creativecommons.org/licenses/by-sa/4.0/",
+  "keywords": "rainbow, antisolar point, Roger Bacon, Opus Majus, atmospheric optics, Theodoric of Freiberg, Kamal al-Din al-Farisi, Ibn al-Haytham, Descartes, neurodiversity, Autistic, testimony, epistemic injustice, access",
+  "description": "A rainbow is a circle centred on the shadow of your own head, and no two people have ever seen the same one. Roger Bacon established this by experiment around 1267, with an astrolabe and no theory of refraction, and used the un-shareability as evidence for the mechanism. The turn: nobody has ever doubted a rainbow on the grounds that it cannot be handed over."
+}
+</script>
+</head>
+<body>
+
+<div class="twinkle" style="top:12%;left:8%;background:var(--gold);box-shadow:0 0 6px var(--gold);animation-delay:-0.5s"></div>
+<div class="twinkle" style="top:26%;left:90%;background:var(--star-white);box-shadow:0 0 6px var(--star-white);animation-delay:-1.4s"></div>
+<div class="twinkle" style="top:53%;left:5%;background:var(--cyan);box-shadow:0 0 6px var(--cyan);animation-delay:-2.2s"></div>
+<div class="twinkle" style="top:70%;left:95%;background:var(--violet);box-shadow:0 0 6px var(--violet);animation-delay:-0.8s"></div>
+<div class="twinkle" style="top:86%;left:26%;background:var(--star-white);box-shadow:0 0 6px var(--star-white);animation-delay:-1.9s"></div>
+<div class="twinkle" style="top:36%;left:97%;background:var(--gold);box-shadow:0 0 6px var(--gold);animation-delay:-3.0s"></div>
+
+<div class="zine-shell">
+
+  <nav class="ss-nav" style="--nav-accent:#fbbf24;" aria-label="Star Stuff collection">
+    <span class="ss-nav-home-group"><a class="ss-nav-home" href="index.html"><span class="ss-star" aria-hidden="true">★</span> stuff</a><a class="ss-nav-about" href="about.html">about</a>
+      <a class="ss-nav-search" href="search.html">search</a></span>
+    <span class="ss-nav-links">
+      <a class="ss-nav-prev" href="even-fallen-light-glows-zine.html"><span class="ss-nav-arrow" aria-hidden="true">&lsaquo;</span> <span class="ss-nav-label">Even Fallen Light Glows</span></a>
+      <a class="ss-nav-next" href="collection-how-we-got-here.html"><span class="ss-nav-label">How We Got Here</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
+    </span>
+    <a class="ss-nav-collection" href="collection-star-stuff.html"><span class="ss-nav-collection-label">Collection</span> <span class="ss-nav-collection-name">Star Stuff</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
+  </nav>
+
+  <nav class="nav">
+    <div class="nav-brand"><a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks</a> × <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a> · Zine No. 69</div>
+    <div class="nav-controls">
+      <button class="nav-btn" id="prev-btn" onclick="changePage(-1)">← prev</button>
+      <span class="page-counter" id="page-counter">1 / 11</span>
+      <button class="nav-btn" id="next-btn" onclick="changePage(1)">next →</button>
+    </div>
+  </nav>
+
+  <!-- ════ SPREAD 1: COVER ════ -->
+  <div class="spread active" id="spread-1">
+    <div class="cover-spread">
+      <svg class="cover-motif" viewBox="0 0 340 340" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <!-- Sun behind, at the left. A head. Its shadow running forward. The antisolar
+             point where the shadow's head lands, and the bow drawn as arcs around THAT
+             point, not around the sun. NO TEXT in this motif: a label here collided with
+             .cover-title on No. 60 and No. 48, and with .cover-issue on No. 48's fix.
+             THE BAND IS INHERITED AND MEASURED. This page reuses No. 62's cover CSS
+             unchanged — same 340x340 box at top:-4/left:-14, same .cover-issue and
+             .cover-title metrics — so the same hard limit applies: every painted shape
+             must stay above viewBox y=100, which at 1280x900 is page y=332, leaving
+             about 8px of clearance over "ZINE NO. 69". Real extent below: y 22..74,
+             x 40..288. Re-measure if you touch either. -->
+        <!-- the sun, behind you, low -->
+        <circle cx="52" cy="58" r="10" fill="rgba(251,191,36,0.85)"/>
+        <circle cx="52" cy="58" r="18" fill="none" stroke="rgba(251,191,36,0.38)" stroke-width="1.1"/>
+        <path d="M52 34 V26" stroke="rgba(251,191,36,0.45)" stroke-width="1.2"/>
+        <path d="M75 41 L81 35" stroke="rgba(251,191,36,0.35)" stroke-width="1.1"/>
+        <path d="M75 75 L81 81" stroke="rgba(251,191,36,0.35)" stroke-width="1.1"/>
+        <!-- the axis: sun centre, through the eye, to the nadir of the sun -->
+        <path d="M70 58 H272" stroke="rgba(244,244,251,0.30)" stroke-width="1.1" stroke-dasharray="5 5"/>
+        <!-- the head -->
+        <circle cx="140" cy="58" r="7.5" fill="rgba(244,244,251,0.82)"/>
+        <!-- its shadow, thrown forward along the axis -->
+        <path d="M148 53 L214 56.6 L214 59.4 L148 63 Z" fill="rgba(10,10,20,0.85)" stroke="rgba(244,244,251,0.20)" stroke-width="0.8"/>
+        <!-- the antisolar point: where the shadow's head would land -->
+        <circle cx="272" cy="58" r="3.4" fill="none" stroke="rgba(244,244,251,0.72)" stroke-width="1.2"/>
+        <path d="M264 58 H280" stroke="rgba(244,244,251,0.28)" stroke-width="0.9"/>
+        <path d="M272 50 V66" stroke="rgba(244,244,251,0.28)" stroke-width="0.9"/>
+        <!-- the bow: arcs centred on the antisolar point, not on the sun -->
+        <path d="M236 58 A 36 36 0 0 1 272 22" fill="none" stroke="rgba(167,139,250,0.80)" stroke-width="2.2"/>
+        <path d="M239 58 A 33 33 0 0 1 272 25" fill="none" stroke="rgba(34,211,238,0.72)" stroke-width="2.2"/>
+        <path d="M242 58 A 30 30 0 0 1 272 28" fill="none" stroke="rgba(251,191,36,0.80)" stroke-width="2.2"/>
+        <path d="M245 58 A 27 27 0 0 1 272 31" fill="none" stroke="rgba(244,114,182,0.72)" stroke-width="2.2"/>
+      </svg>
+      <div class="cover-corner">
+        <div class="cover-corner-num" aria-hidden="true">69</div>
+        <span class="cover-corner-label">Star Stuff</span>
+      </div>
+      <div class="cover-issue">Stimpunks × More Realms · Zine No. 69</div>
+      <h1 class="cover-title">Your Shadow Is <span class="amp">the</span> Centre</h1>
+      <p class="cover-subtitle">on the bow that no two people can share, the man who proved it in 1267 with an astrolabe and no theory at all, and why being unable to show someone a real thing was never a reason to doubt it</p>
+      <div class="cover-byline">for everyone who has been told that <strong>if it were real, you could prove it</strong></div>
+      <hr class="spectrum-line cover-rule">
+      <div class="cover-meta">
+        <span class="cover-ls">L★S</span>
+        <div class="cover-meta-text">Love You Down To Your Star Stuff<br>open edition · print freely</div>
+      </div>
+    </div>
+  </div>
+  <!-- ════ SPREAD 2: the fact ════ -->
+  <div class="spread" id="spread-2">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The fact this zine runs on</div>
+          <h2 class="spread-heading" id="as-many-bows">As many bows as there are observers</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Around <span class="gold">1267</span>, a Franciscan friar in Oxford wrote a very long book for the Pope. In the part on experimental science he took an astrolabe outside, measured the height of the sun and the height of a rainbow, and reported a number: the bow can never stand more than <span class="gold">42 degrees</span> above the horizon.</p>
+            <p>Then Roger Bacon wrote down something stranger, and he wrote it as a finding rather than a fancy:</p>
+            <p class="pull-quote gold">From these facts we learn by experiment that there are as many bows as there are observers.<span class="attr">Roger Bacon, <em>Opus Majus</em>, Part VI, c. 1267 · trans. Robert Belle Burke, 1928, ii. 600</span></p>
+            <p>He did not leave it as an aphorism. He gave the test. Two people stand side by side, looking north at the bow. One walks west and the bow travels west with him. The other walks east and <em>his</em> bow travels east with him. Stand still and it stands still.</p>
+            <p class="pull-quote violet">It is evident, therefore, that there are as many bows as there are observers; and for this reason it is impossible for two observers to see one and the same bow, although an ignorant person does not grasp this fact.<span class="attr">Bacon, ii. 600&ndash;601</span></p>
+            <p>Note the last clause. In 1267 he had already met the reaction, and it is the same reaction now: people do not believe you.</p>
+            <p class="lede">And here is what should stop you. <strong>Bacon had no theory of refraction.</strong> He did not know what happens to light inside a raindrop &mdash; nobody did for another forty years, and nobody could calculate it for another three hundred and seventy. He got this by <em>going outside and walking about.</em></p>
+            <p>Which means the oldest correct thing anybody wrote down about a rainbow is not about colour, and not about water. <span class="gold">It is about where you are standing.</span></p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 150" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig1-title fig1-desc">
+              <title id="fig1-title">Bacon's cone, apex at the eye</title>
+              <desc id="fig1-desc">A cone drawn with its point at the observer's eye and its circular base out in the falling rain. The axis of the cone runs from the sun, through the eye, to the point directly opposite the sun.</desc>
+              <!-- axis -->
+              <path d="M24 46 H272" stroke="rgba(244,244,251,0.34)" stroke-width="1" stroke-dasharray="4 4"/>
+              <!-- eye at the apex -->
+              <circle cx="60" cy="46" r="6" fill="rgba(244,244,251,0.85)"/>
+              <!-- cone walls opening to the base -->
+              <path d="M66 46 L226 14" stroke="rgba(251,191,36,0.85)" stroke-width="1.4"/>
+              <path d="M66 46 L226 78" stroke="rgba(251,191,36,0.85)" stroke-width="1.4"/>
+              <!-- the base: the circle of the bow, seen edge-on as an ellipse -->
+              <ellipse cx="226" cy="46" rx="9" ry="32" fill="none" stroke="rgba(167,139,250,0.9)" stroke-width="1.6"/>
+              <g font-family="Space Mono, monospace" font-size="6.6">
+                <text x="60" y="66" text-anchor="middle" fill="var(--sp-secondary)">the eye</text>
+                <text x="60" y="76" text-anchor="middle" fill="#fcd34d">apex</text>
+                <text x="226" y="98" text-anchor="middle" fill="#c4b5fd">base = the bow</text>
+                <text x="150" y="128" text-anchor="middle" fill="#fcd34d">&ldquo;a cone of which the apex is at the eye&rdquo;</text>
+                <text x="150" y="140" text-anchor="middle" fill="var(--sp-dim)">Opus Majus, Part VI, ch. V &middot; ii. 592&ndash;593</text>
+              </g>
+            </svg>
+            <div class="diagram-caption">Figure 1 · the observer is not looking at the cone. The observer is its point.</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Your Shadow Is the Centre · Stimpunks</span>
+        <span class="spread-footer-right">2</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 3: the antisolar point ════ -->
+  <div class="spread" id="spread-3">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Where the centre is</div>
+          <h2 class="spread-heading" id="shadow-divides-the-arc">Your shadow divides the arc</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">A rainbow is a circle. You usually see part of one, because the ground is in the way. And that circle has a centre, which is not the sun and not the rain.</p>
+            <p>Bacon put the axis of his cone through &ldquo;the center of the eye and the center of the sun and the center of the bow to <span class="gold">the nadir of the sun</span>&rdquo; &mdash; the point in the sky directly opposite the sun. Astronomy calls it the <span class="gold">antisolar point</span> now. There is a much simpler way to find it. Stand with the sun behind you and look at your own shadow. Follow it out to where the head is. That direction, extended, is the centre of your rainbow.</p>
+            <p class="pull-quote violet">For the shadow of each observer divides the arc of the rainbow into two equal parts &hellip; and therefore each observer must see his own bow.<span class="attr">Bacon, ii. 601</span></p>
+            <p>Seven hundred and fifty-nine years later, an open-access meteorology textbook says it without the thirteenth-century sentence structure and without changing anything:</p>
+            <p class="pull-quote cyan">Rainbows are circles or portions of circles that are centered on the antisolar point, which is the point corresponding to the shadow of your head or camera.<span class="attr">Roland Stull, <em>Practical Meteorology</em>, ch. 22</span></p>
+            <p>The radius of that circle is fixed and it is not a round number. Measuring outward from the antisolar point, the red edge sits at about <span class="gold">42.7&deg;</span> and the violet edge at about <span class="violet">40&deg;</span>, using a refractive index for water of <span class="cyan">1.3315</span>. The band between them is the whole bow, and it is narrower than most people draw it.</p>
+            <p class="lede"><strong>So the geometry is indexed to your body.</strong> Not as a figure of speech. The coordinate system this thing is described in has its origin inside your head, and the number 42.7 is measured from the shadow you are casting.</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 190" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig2-title fig2-desc">
+              <title id="fig2-title">The bow measured from the shadow of your head</title>
+              <desc id="fig2-desc">The sun is behind the observer and low. The observer's shadow runs forward along the ground to the antisolar point, and the rainbow is a ring centred on that point, its red edge about 42.7 degrees out and its violet edge about 40 degrees out.</desc>
+              <!-- Geometry is computed, not eyeballed. Antisolar point A = (150,150); the three
+                   arcs are centred on A at r = 95 (red), 88, 82 (violet), swept from straight up
+                   (theta -90) to theta -30, so they occupy only x >= 150, y 55..109.
+                   THE LEGEND LIVES IN THE MEASURED DEAD ZONE. A first pass put "42.7 red" at
+                   (278,76) anchored end, which ran the label straight through the coloured arcs —
+                   check-overlap.mjs passed it clean, because that gate measures text against TEXT
+                   and a label crossing artwork is not a collision it can see. Caught on a
+                   screenshot. The block at x 100..156, y 40..64 is clear: no arc reaches y < 55,
+                   and at y = 61 the outer arc is out at x = 183. Re-measure if you move an arc. -->
+              <path d="M20 150 H280" stroke="rgba(244,244,251,0.22)" stroke-width="1"/>
+              <circle cx="40" cy="122" r="8" fill="rgba(251,191,36,0.85)"/>
+              <circle cx="100" cy="128" r="5.5" fill="rgba(244,244,251,0.85)"/>
+              <path d="M100 133.5 V150" stroke="rgba(244,244,251,0.7)" stroke-width="1.4"/>
+              <path d="M105 147 L148 149 L148 151 L105 153 Z" fill="rgba(10,10,20,0.8)" stroke="rgba(244,244,251,0.24)" stroke-width="0.7"/>
+              <path d="M105 128 L150 150" stroke="rgba(244,244,251,0.30)" stroke-width="1" stroke-dasharray="4 4"/>
+              <circle cx="150" cy="150" r="3" fill="none" stroke="rgba(244,244,251,0.75)" stroke-width="1.1"/>
+              <path d="M150 55 A 95 95 0 0 1 232.3 102.5" fill="none" stroke="rgba(251,191,36,0.9)" stroke-width="2.6"/>
+              <path d="M150 62 A 88 88 0 0 1 226.2 106.0" fill="none" stroke="rgba(74,222,128,0.75)" stroke-width="2.2"/>
+              <path d="M150 68 A 82 82 0 0 1 221.0 109.0" fill="none" stroke="rgba(167,139,250,0.85)" stroke-width="2.6"/>
+              <path d="M100 42 H112" stroke="rgba(251,191,36,0.9)" stroke-width="2.6"/>
+              <path d="M100 58 H112" stroke="rgba(167,139,250,0.85)" stroke-width="2.6"/>
+              <g font-family="Space Mono, monospace" font-size="6.4">
+                <text x="117" y="45" fill="#fcd34d">42.7&deg; red</text>
+                <text x="117" y="61" fill="#c4b5fd">40&deg; violet</text>
+                <text x="40" y="108" text-anchor="middle" fill="#fcd34d">sun, behind you</text>
+                <text x="126" y="166" text-anchor="middle" fill="var(--sp-secondary)">your shadow</text>
+                <text x="196" y="166" text-anchor="middle" fill="var(--sp-secondary)">antisolar point</text>
+              </g>
+            </svg>
+            <div class="diagram-caption">Figure 2 · the ring is centred on the shadow, and the shadow is centred on you</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Your Shadow Is the Centre · Stimpunks</span>
+        <span class="spread-footer-right">3</span>
+      </div>
+    </div>
+  </div>
+  <!-- ════ SPREAD 4: the inversion — privacy as evidence ════ -->
+  <div class="spread" id="spread-4">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The inversion this zine is built on</div>
+          <h2 class="spread-heading" id="privacy-was-the-evidence">The privacy was the evidence</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Here is the part that should be famous and isn't. Bacon did not treat the un-shareability of the bow as a curiosity, a paradox, or a problem to be explained away. <strong>He used it as data.</strong></p>
+            <p>His reasoning runs like this. If the bow were sitting out there in the cloud like a painted object, it would stay put. It would not care who was looking or from where, and it certainly would not chase people down a road. So the fact that it <em>does</em> follow each observer separately tells you something about the light.</p>
+            <p class="pull-quote gold">From these arguments it follows, then, that the bow is seen only by reflected rays of the sun, because if it were seen by incident rays, the bow would be an object fixed in one place in the cloud, which would not vary according to the motion of the observers nor according to the number of the observers.<span class="attr">Bacon, ii. 601</span></p>
+            <p>And he ran controls. This is 1267, and he ran controls. A cloud lit from behind takes a colour &mdash; white, black, or something between &mdash; and <em>&ldquo;the color of the cloud appears the same to different observers, nor does it follow the motion of the observer.&rdquo;</em> A stick or a fish seen through water is displaced by refraction, and <em>&ldquo;the image of an object seen by refraction does not follow the observer if he recedes, nor does it recede if he approaches.&rdquo;</em></p>
+            <p>Three phenomena, one question asked of each, and only one of them answers differently. That difference is the finding.</p>
+            <p class="lede">Be exact about the scoring, because we are not going to launder it. <strong>Bacon's conclusion was wrong, or at least badly incomplete.</strong> He landed on reflection alone; a rainbow needs refraction going in, one reflection at the back of the drop, and refraction coming out again. He was reasoning from a mechanism he did not have.</p>
+            <p><span class="gold">The method was still right, and the observation was still right.</span> He asked whether a thing follows the observer, he tested it against cases that don't, and he drew a conclusion about the light rather than about the people. Forty years later somebody supplied the mechanism, and Bacon's geometry survived intact into a textbook you can download today.</p>
+            <p class="lede">So: <strong>the very feature that makes a rainbow impossible to hand to anyone is the feature that told us what a rainbow is.</strong> The privacy was not the obstacle to the knowledge. It was the route in.</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <table class="trades">
+              <caption>Bacon's discrimination · one question, three phenomena</caption>
+              <thead>
+                <tr><th>What you look at</th><th>Follows you?</th><th>Same for everyone?</th></tr>
+              </thead>
+              <tbody>
+                <tr><td class="label">The colour of a lit cloud</td><td class="loses">no</td><td class="keeps">yes</td></tr>
+                <tr><td class="label">A fish or a stick seen through water</td><td class="loses">no</td><td class="keeps">yes</td></tr>
+                <tr><td class="label">A rainbow</td><td class="keeps">yes &mdash; at running speed</td><td class="loses">no, never</td></tr>
+              </tbody>
+            </table>
+            <div class="diagram-caption">Figure 3 · the odd one out is the finding. Bacon, <em>Opus Majus</em> ii. 601&ndash;602.</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Your Shadow Is the Centre · Stimpunks</span>
+        <span class="spread-footer-right">4</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 5: the mechanism, forty years later ════ -->
+  <div class="spread" id="spread-5">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The mechanism, forty years later</div>
+          <h2 class="spread-heading" id="one-drop">One drop, and a place where the light piles up</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Between about <span class="gold">1304 and 1310</span>, two people who never met and never read each other worked out what happens inside a single raindrop: light refracts on the way in, reflects once off the far inside wall, and refracts again on the way out.</p>
+            <p>One was <span class="violet">Theodoric of Freiberg</span>, a Dominican in Germany, in a treatise called <em>De iride</em>. The other was <span class="violet">Kam&#257;l al-D&#299;n al-F&#257;ris&#299;</span>, working in Persia, in a commentary called the <em>Tanq&#299;&#7717; al-Man&#257;&#7827;ir</em>. They arrived at the same answer independently, and they had the same reason to: <strong>both were reading Ibn al-Haytham's <em>Kit&#257;b al-Man&#257;&#7827;ir</em></strong>, the book on optics that had already reached Latin Europe and was reshaping how everybody thought about light.</p>
+            <p class="pull-quote violet">Two people, one book, two continents, the same answer, and no contact. That is not a coincidence, and it is not genius twice. It is what a good enough shared source does.</p>
+            <p>The number came much later. <span class="gold">Descartes</span> published the calculation in <em>Les M&eacute;t&eacute;ores</em> in <span class="gold">1637</span>, three hundred and seventy years after Bacon measured the angle he could not explain. Work out how much a ray is bent as you move across the face of the drop and you find the bending has a limit: about <span class="cyan">137.6&deg;</span> for red, <span class="cyan">139.4&deg;</span> for violet. Subtract from 180 and you have 42.4 and 40.6 &mdash; Bacon's 42, arrived at from the other end.</p>
+            <p class="lede">And the reason a bow is <em>bright</em> is that limit. Near it, rays entering the drop at noticeably different places all come out heading in almost the same direction. They stop spreading out and start stacking up. Physics calls the resulting concentration a <span class="gold">caustic</span> &mdash; the same effect as the wobbling bright line at the bottom of a swimming pool.</p>
+            <p><strong>What matters for this zine is where the pile-up is.</strong> Not at a place in the sky. At <em>an angle from your eye</em> &mdash; and an angle from your eye is not a location anyone else can stand in.</p>
+            <p class="note"><strong>The colours are not this zine's argument.</strong> That a spectrum is a fan of every wavelength at once and never a ladder from a bad end to a good end is the whole business of <a href="not-a-line-zine.html">Not a Line</a> (No. 21), and it is done there. Here the dispersion is scaffolding. The load is carried by the geometry.</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 165" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig4-title fig4-desc">
+              <title id="fig4-title">Refraction, one internal reflection, refraction</title>
+              <desc id="fig4-desc">A horizontal ray of sunlight enters a spherical raindrop at the upper left and bends, crosses to the far wall and reflects once, then bends again as it leaves the lower left — emerging back toward the side it came from, below the ray that entered.</desc>
+              <!-- ALL THREE INTERACTION POINTS ARE ON THE CIRCLE, and getting that wrong was the
+                   first draft's real defect: two of the three sat INSIDE the drop, so the ray
+                   appeared to start refracting in mid-water. Refraction and reflection happen at
+                   a surface. No gate can see this — contrast measures colour, overlap measures
+                   text against text, and a physics error in a drawing is neither.
+                   Circle C = (150,70), r = 46. Points are taken at angles on the circle and use
+                   the equal-chord symmetry a single internal reflection requires:
+                     theta1 = 200 deg -> P1 (106.8, 54.3)   entry
+                     theta2 = 350 deg -> P2 (195.3, 62.0)   internal reflection, far wall
+                     theta3 = 2*theta2 - theta1 = 140 deg -> P3 (114.8, 99.6)  exit
+                   |P1P2| = |P2P3| = 88.8, which is what makes it a reflection rather than a
+                   sketch. Entry bends toward the inward normal; the exit ray leaves below the
+                   entry ray, which is the direction a rainbow ray actually returns. Schematic in
+                   scale, not in structure: the 137.6/139.4 deg deviation is stated in the prose,
+                   not claimed by this drawing. -->
+              <circle cx="150" cy="70" r="46" fill="rgba(34,211,238,0.07)" stroke="rgba(34,211,238,0.55)" stroke-width="1.4"/>
+              <path d="M20 54.3 H106.8" stroke="rgba(251,191,36,0.9)" stroke-width="1.6"/>
+              <path d="M106.8 54.3 L195.3 62.0" stroke="rgba(251,191,36,0.9)" stroke-width="1.6"/>
+              <path d="M195.3 62.0 L114.8 99.6" stroke="rgba(251,191,36,0.9)" stroke-width="1.6"/>
+              <path d="M114.8 99.6 L20 119.8" stroke="rgba(251,191,36,0.9)" stroke-width="1.6"/>
+              <circle cx="106.8" cy="54.3" r="2.6" fill="rgba(244,244,251,0.95)"/>
+              <circle cx="195.3" cy="62.0" r="2.6" fill="rgba(244,244,251,0.95)"/>
+              <circle cx="114.8" cy="99.6" r="2.6" fill="rgba(244,244,251,0.95)"/>
+              <g font-family="Space Mono, monospace" font-size="6.4">
+                <text x="22" y="46" fill="#fcd34d">sunlight in</text>
+                <text x="22" y="134" fill="#fcd34d">out, toward you</text>
+                <text x="204" y="64" fill="var(--sp-secondary)">1 reflection</text>
+                <text x="150" y="152" text-anchor="middle" fill="var(--sp-dim)">refract &middot; reflect &middot; refract</text>
+              </g>
+            </svg>
+            <div class="diagram-caption">Figure 4 · Theodoric of Freiberg and al-F&#257;ris&#299;, independently, c. 1304&ndash;1310</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Your Shadow Is the Centre · Stimpunks</span>
+        <span class="spread-footer-right">5</span>
+      </div>
+    </div>
+  </div>
+  <!-- ════ SPREAD 6: what kind of thing it isn't ════ -->
+  <div class="spread" id="spread-6">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">What kind of thing it isn&rsquo;t</div>
+          <h2 class="spread-heading" id="no-distance">It has no distance, and nothing in it stays</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Ask how far away a rainbow is and the question fails. Not because the answer is large, and not because it is hard to measure. Because there isn&rsquo;t one.</p>
+            <p>Les Cowley, who has run the standard reference on atmospheric optics for decades, puts it flatly: <em>&ldquo;Rainbows possess neither distance nor linear dimension.&rdquo;</em> The drops making your bow can be near or far, or both at once &mdash; <em>&ldquo;the water drops making a rainbow can be at any distance &hellip; but provided the drops are the same size the rainbow always looks the same. It looks and behaves as though it is at infinity.&rdquo;</em></p>
+            <p class="pull-quote cyan">It cannot be touched, tickled, walked around or driven through. It moves as you move and is forever unapproachable.<span class="attr">Les Cowley, Atmospheric Optics</span></p>
+            <p>Bacon had this too, in the vocabulary he had: the bow <em>&ldquo;seems to flee before him, because it always appears at the same distance,&rdquo;</em> and the fleeing happens <em>&ldquo;with a speed equal to that of a man running or riding as fast as possible.&rdquo;</em> There is no pot of gold, and the reason is not that somebody moved it. <span class="gold">A rainbow is a direction, not a place.</span></p>
+            <p>Then there is what it is made of, which is nothing for long. Rain falls. Every drop currently sending you light is on its way to the ground, and it leaves your 42-degree cone within a second or so of entering it. The bow you are looking at is being built out of water that was not in it a moment ago and will not be in it a moment from now.</p>
+            <p class="lede"><strong>The arch holds still while every single thing constituting it is replaced.</strong> Not once &mdash; continuously, the entire time you are watching, for as long as the rain lasts.</p>
+            <p class="note"><strong>Marked honestly:</strong> the sentences from Cowley and Bacon are quotations. The replacement claim is ours, and it is a <em>deduction</em> from two settled things &mdash; the cone is fixed relative to your eye and the sun, and the drops are in free fall through it. We have not measured a turnover rate and we are not asserting one.</p>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Your Shadow Is the Centre · Stimpunks</span>
+        <span class="spread-footer-right">6</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 7: how little difference it takes ════ -->
+  <div class="spread" id="spread-7">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">How little difference it takes</div>
+          <h2 class="spread-heading" id="two-eyes-two-bows">Two eyes, two bows</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Stull's textbook states the general case in one line: <em>&ldquo;At any one time for any one rain storm, different observers see different rainbows caused by different light rays interacting with different raindrops.&rdquo;</em></p>
+            <p>Stand a metre from a friend. Your antisolar points are a metre apart, so your cones are a metre apart, so the drops handing you light are not the drops handing them light. Two bows. They look the same, and they are not the same.</p>
+            <p>Now shrink the distance. Your pupils are roughly <span class="cyan">63 millimetres</span> apart. Each one is the apex of its own cone, each cone has its own axis running to its own antisolar point, and each therefore collects light from its own set of drops. <strong>You are not looking at one rainbow with two eyes. You are looking at two rainbows, one per eye, and your brain is handing you a composite.</strong></p>
+            <p class="pull-quote gold">Same species. Same genome. Same organ, built twice from the same instructions, sixty-three millimetres apart. Still two different phenomena.</p>
+            <p class="lede">This is the spread that earns the zine, so here is what it adds. Our own <a href="every-creatures-own-sky-zine.html">Every Creature&rsquo;s Own Sky</a> (No. 15) argues that every creature is sealed in its own perceptual world &mdash; the bat&rsquo;s echo, the mantis shrimp&rsquo;s light &mdash; and that there was never a neutral way to sense. True, and there is a standard way to wriggle out of it: <em>well, you and I are both human, so we must be seeing the same thing.</em></p>
+            <p><strong>The rainbow closes that exit.</strong> Difference in what is perceived does not require any difference in the perceiver. Identical hardware, identical software, and <span class="gold">position alone is sufficient.</span> Two eyes in one skull cannot be talked into a shared vantage point, because there is no such thing.</p>
+            <p class="note"><strong>Marked honestly:</strong> Stull's sentence is a textbook statement about different observers. The two-eyes case is us running his geometry inward &mdash; a deduction, not a separate measurement, and the difference between the two bows is far too small for you to notice. It is real and it is imperceptible, and both of those matter.</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 155" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig5-title fig5-desc">
+              <title id="fig5-title">Two eyes, two cones, two sets of drops</title>
+              <desc id="fig5-desc">Two eyes side by side, each the apex of its own cone. Some raindrops fall inside the left eye's cone only, some inside the right eye's cone only, and some inside both. The two sets overlap heavily but are not the same set.</desc>
+              <!-- The point of this figure is WHICH DROPS, so the drops are colour-coded by
+                   membership rather than left as an undifferentiated scatter — the first pass drew
+                   cone lines that simply stopped in a field of identical dots, which showed two
+                   cones and not two different SELECTIONS. Every dot below was checked against both
+                   cone envelopes: left cone spans y = 58 + (14-58)t .. 58 + (80-58)t and right
+                   spans y = 88 + (48-88)t .. 88 + (114-88)t, with t = (x-45)/225. Violet dots are
+                   inside the left envelope and outside the right, pink the reverse, pale dots
+                   inside both. Re-check the arithmetic if you move an eye or an edge. -->
+              <path d="M45 58 L270 14" stroke="rgba(167,139,250,0.7)" stroke-width="1.2"/>
+              <path d="M45 58 L270 80" stroke="rgba(167,139,250,0.7)" stroke-width="1.2"/>
+              <path d="M45 88 L270 48" stroke="rgba(244,114,182,0.7)" stroke-width="1.2"/>
+              <path d="M45 88 L270 114" stroke="rgba(244,114,182,0.7)" stroke-width="1.2"/>
+              <g fill="rgba(167,139,250,0.95)">
+                <circle cx="200" cy="30" r="2.2"/><circle cx="224" cy="26" r="2.2"/>
+                <circle cx="248" cy="34" r="2.2"/><circle cx="210" cy="46" r="2.2"/>
+              </g>
+              <g fill="rgba(244,244,251,0.92)">
+                <circle cx="220" cy="64" r="2.2"/><circle cx="236" cy="60" r="2.2"/>
+                <circle cx="244" cy="70" r="2.2"/><circle cx="256" cy="66" r="2.2"/>
+              </g>
+              <g fill="rgba(244,114,182,0.95)">
+                <circle cx="212" cy="86" r="2.2"/><circle cx="232" cy="90" r="2.2"/>
+                <circle cx="256" cy="98" r="2.2"/><circle cx="248" cy="108" r="2.2"/>
+              </g>
+              <circle cx="40" cy="58" r="5" fill="rgba(167,139,250,0.95)"/>
+              <circle cx="40" cy="88" r="5" fill="rgba(244,114,182,0.95)"/>
+              <g font-family="Space Mono, monospace" font-size="6.4">
+                <text x="30" y="52" text-anchor="end" fill="#c4b5fd">left</text>
+                <text x="30" y="94" text-anchor="end" fill="#f9a8d4">right</text>
+                <text x="150" y="128" text-anchor="middle" fill="var(--sp-secondary)">63 mm of separation</text>
+              </g>
+              <circle cx="96" cy="141" r="2.2" fill="rgba(167,139,250,0.95)"/>
+              <circle cx="150" cy="141" r="2.2" fill="rgba(244,244,251,0.92)"/>
+              <circle cx="192" cy="141" r="2.2" fill="rgba(244,114,182,0.95)"/>
+              <g font-family="Space Mono, monospace" font-size="6.2">
+                <text x="103" y="143.5" fill="#c4b5fd">left only</text>
+                <text x="157" y="143.5" fill="var(--sp-secondary)">both</text>
+                <text x="199" y="143.5" fill="#f9a8d4">right only</text>
+              </g>
+            </svg>
+            <div class="diagram-caption">Figure 5 · the cones overlap. They are not the same cone.</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Your Shadow Is the Centre · Stimpunks</span>
+        <span class="spread-footer-right">7</span>
+      </div>
+    </div>
+  </div>
+  <!-- ════ SPREAD 8: the conditions ════ -->
+  <div class="spread" id="spread-8">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">When there is no bow at all</div>
+          <h2 class="spread-heading" id="conditions">The conditions were never about you</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">A rainbow needs four things, and only one of them is you. The sun behind you. Rain in front of you. An unobstructed path from the sun to that rain. And the sun <strong>below about 42&deg; of altitude</strong>.</p>
+            <p>That last one is the interesting one, and it follows straight from the geometry. The bow is a ring 42&deg; around the antisolar point, and the antisolar point is as far <em>below</em> the horizon as the sun is above it. Lift the sun past 42&deg; and the entire ring sinks out of sight. Bacon again, from measurement: <em>&ldquo;when the sun is at an altitude of 42 degrees the rainbow does not appear in the sky &hellip; When the sun rises higher, the rainbow can nowhere appear.&rdquo;</em></p>
+            <p>He then did the arithmetic for where he lived and where he had read about. At the latitude of Paris the equinox noon sun stands at <span class="gold">41&deg;12&prime;</span> &mdash; a hair under the limit, so a bow at midday is barely possible and about to stop being. And working with a latitude near <span class="cyan">24&deg;25&prime;</span>, he found the noon sun clears 42&deg; even at the winter solstice, and drew the conclusion:</p>
+            <p class="pull-quote gold">Therefore no rainbow can be formed at any noon of the entire year.<span class="attr">Bacon, ii. 602 &mdash; for a latitude near the Tropic of Cancer</span></p>
+            <p>Sit with the shape of that. There are places and hours where the rain is falling, the sun is blazing, the air is clear, your eyes are working perfectly, and <strong>there is no rainbow, for you or for anybody.</strong> Nothing is wrong with the observer. The arrangement simply is not one a rainbow can happen in.</p>
+            <p class="lede">And the corollary, which is the useful half: <strong>the conditions are arrangeable.</strong> Wait three hours. Turn around. Walk to where the rain is. None of that changes you and all of it changes whether you see the bow &mdash; because access here was a fact about the geometry, and it always was.</p>
+            <p>We take the same care everywhere else in this collection. When somebody cannot do a thing in a room, the first question is what the room is doing, not what is wrong with them. A rainbow is a case where <em>nobody argues</em>, because the geometry is written down and checkable, and it would be plainly absurd to tell a person that the noon sun is their attitude problem.</p>
+            <p class="note"><strong>On the arithmetic:</strong> Bacon uses an obliquity of 23&deg;35&prime;; the modern value is about 23&deg;26&prime;, so his figures run a few minutes off. The conclusion is unaffected, and we would rather show you the seam than sand it.</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 170" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig6-title fig6-desc">
+              <title id="fig6-title">Why a high sun means no bow</title>
+              <desc id="fig6-desc">Two cases. With a low sun, the antisolar point is just below the horizon and most of the forty-two degree ring stands above it. With a high sun, the antisolar point is far below the horizon and the whole ring is hidden.</desc>
+              <!-- LEFT: low sun -->
+              <path d="M10 96 H140" stroke="rgba(244,244,251,0.28)" stroke-width="1"/>
+              <circle cx="26" cy="84" r="6" fill="rgba(251,191,36,0.85)"/>
+              <circle cx="104" cy="108" r="2.6" fill="none" stroke="rgba(244,244,251,0.7)" stroke-width="1"/>
+              <path d="M62 62 A 46 46 0 0 1 138 92" fill="none" stroke="rgba(167,139,250,0.9)" stroke-width="2.4"/>
+              <!-- RIGHT: high sun -->
+              <path d="M160 96 H290" stroke="rgba(244,244,251,0.28)" stroke-width="1"/>
+              <circle cx="176" cy="30" r="6" fill="rgba(251,191,36,0.85)"/>
+              <circle cx="252" cy="152" r="2.6" fill="none" stroke="rgba(244,244,251,0.5)" stroke-width="1"/>
+              <path d="M212 112 A 46 46 0 0 1 288 142" fill="none" stroke="rgba(167,139,250,0.34)" stroke-width="2.4" stroke-dasharray="4 3"/>
+              <g font-family="Space Mono, monospace" font-size="6.2">
+                <text x="75" y="34" text-anchor="middle" fill="#c4b5fd">bow visible</text>
+                <text x="26" y="72" text-anchor="middle" fill="#fcd34d">low sun</text>
+                <text x="225" y="60" text-anchor="middle" fill="#fcd34d">sun above 42&deg;</text>
+                <text x="225" y="76" text-anchor="middle" fill="var(--sp-dim)">nothing to see</text>
+                <text x="150" y="166" text-anchor="middle" fill="var(--sp-secondary)">the horizon is the whole difference</text>
+              </g>
+            </svg>
+            <div class="diagram-caption">Figure 6 · same rain, same eyes, same 42&deg;. Only the arrangement moved.</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Your Shadow Is the Centre · Stimpunks</span>
+        <span class="spread-footer-right">8</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 9: the turn ════ -->
+  <div class="spread" id="spread-9">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The turn</div>
+          <h2 class="spread-heading" id="cannot-show-it">You cannot show it to anyone</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Everything so far has been optics. Here is the whole of it put together, and it is a fact about people.</p>
+            <p>There is no vantage point from which two people see one rainbow. If someone doubts your bow and walks over to check, the walking is what breaks it: arriving where you stand gives them <em>their</em> bow, with its own centre in their own shadow, built from their own drops. You cannot hand it over. You cannot point at it in a way that makes it theirs. <span class="gold">The only route from your rainbow to another person is your account of it.</span></p>
+            <p class="pull-quote gold">A rainbow is real, it is exactly predictable, it is described in textbooks to a fraction of a degree &mdash; and it is impossible to share. All four of those at once, with no tension between them.</p>
+            <p>Now notice what nobody does. In seven hundred and fifty-nine years since Bacon wrote it down, <strong>no one has ever concluded that rainbows are not real on the grounds that they cannot be shown to a second person.</strong> No one demands corroboration. No one suggests you might be exaggerating, or attention-seeking, or would see fewer of them with a better attitude. The unshareability is simply understood to be a fact about the geometry.</p>
+            <p class="lede">That courtesy is not extended evenly. <em>If it were real, you could show me.</em> <em>Nobody else in the class has this problem.</em> <em>I&rsquo;ve never seen you like that.</em> <em>Prove it.</em> Every one of those treats privacy of access as evidence of unreality &mdash; and there is a settled, boring, four-hundred-page-textbook counterexample sitting in the sky perhaps twice a month.</p>
+            <p>Bacon met the resistance too, and filed it in one clause: <em>&ldquo;although an ignorant person does not grasp this fact.&rdquo;</em> He is not being unkind about eyesight. He means the person who has been told the geometry, and would still rather trust their assumption that a real thing must be a shared thing.</p>
+            <p class="pull-quote violet">Down to is not because of. The loving is not warranted by the star stuff; it is measured by how far it reaches. And what reaches you here is that your account was always going to be the only way in, and that this is ordinary.</p>
+            <p class="lede"><strong>Testimony is not the weak substitute for evidence. For some real phenomena it is the only mechanism there has ever been</strong> &mdash; and we already know how to accept it without argument, because we do it every time it rains and the sun comes out behind us.</p>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Your Shadow Is the Centre · Stimpunks</span>
+        <span class="spread-footer-right">9</span>
+      </div>
+    </div>
+  </div>
+  <!-- ════ SPREAD 10: refusals ════ -->
+  <div class="spread" id="spread-10">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">What this does not say</div>
+          <h2 class="spread-heading" id="what-this-does-not-say">What this does not say</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">This argument has an obvious cheap version, and the cheap version is worse than saying nothing. So, plainly:</p>
+          </div>
+          <div class="refusals">
+            <div class="refusal"><span class="refusal-tag">Not:</span><span><strong>that everybody sees it differently, so who&rsquo;s to say.</strong> We were handed the line <em>&ldquo;rainbows are like politics, everybody sees it differently&rdquo;</em> while making this, and we are refusing it on the page rather than quietly leaving it out. <strong>Different bow, same physics.</strong> The radius is 42.7&deg; for everyone. The centre is the antisolar point for everyone. The sun is behind everyone, below 42&deg;, always, without exception, and the whole thing is calculable from a refractive index of 1.3315. <em>Uniqueness of vantage point is not a licence for anything at all.</em> The most private phenomenon in this zine is also one of the most rigidly law-bound, and those two facts have never once been in conflict.</span></div>
+            <div class="refusal"><span class="refusal-tag">Not:</span><span><strong>that unverifiable means beyond question.</strong> Nothing here says a private experience is immune to being checked, and the rainbow is the reason: Bacon <em>tested</em> the privacy, with controls, and got a mechanism out of it. Being unable to share a thing directly is not the same as being unable to reason about it, predict it, or be wrong about it. We are arguing against one specific bad inference &mdash; <em>you cannot show me, therefore it is not there</em> &mdash; and against nothing else.</span></div>
+            <div class="refusal"><span class="refusal-tag">Not:</span><span><strong>that a rainbow demonstrates anything about a nervous system.</strong> It does not, and it cannot. <strong>A rhyme, not a proof.</strong> Optics is not evidence about Autistic experience, and if this piece is doing its job it has given you a case where the reasoning is uncontested, so that the reasoning can be looked at on its own before anybody&rsquo;s life is attached to it. The physics supplies the <em>shape</em> of one bad inference. It does not supply a single fact about a person.</span></div>
+            <div class="refusal"><span class="refusal-tag">Not:</span><span><strong>&ldquo;we all see things a bit differently&rdquo; as a way of not arranging anything.</strong> That sentence gets used to close conversations, and this zine points the other way. The conditions for a bow are exact, knowable and adjustable &mdash; sun behind, rain ahead, unobstructed, under 42&deg;. <em>Naming a condition is the first step in meeting it.</em> Spread eight is about the room, not about resignation.</span></div>
+            <div class="refusal"><span class="refusal-tag">Not:</span><span><strong>the spectrum argument, and not the umwelt argument.</strong> That a spectrum is a fan and never a ladder belongs to <a href="not-a-line-zine.html">Not a Line</a> (No. 21). That every creature is sealed in its own sensory world belongs to <a href="every-creatures-own-sky-zine.html">Every Creature&rsquo;s Own Sky</a> (No. 15). Both are done, and this is not a re-run of either &mdash; the claim here is narrower and more awkward: <em>identical perceivers, one position apart, get different phenomena.</em></span></div>
+            <div class="refusal"><span class="refusal-tag">Not:</span><span><strong>a claim on the Pride rainbow.</strong> The rainbow already means something specific in our house &mdash; the Philly Pride bar on our cards, and <a href="https://stimpunks.org/gender/">queer and neurodivergent liberation are entwined</a>, which runs under the banner <em>it&rsquo;s a double rainbow all the way.</em> That flag is a chosen set of colours, and the Philly stripes were added precisely because a &ldquo;natural&rdquo; spectrum was being used to leave Black and brown queer people out. <em>A political banner and an atmospheric phenomenon are not the same object</em>, and this zine is about the second one. The second bow, and what it means to live under two of them, is its own piece and not this one.</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Your Shadow Is the Centre · Stimpunks</span>
+        <span class="spread-footer-right">10</span>
+      </div>
+    </div>
+  </div>
+  <!-- ════ SPREAD 11: COLOPHON ════ -->
+  <div class="spread" id="spread-11">
+    <div class="interior">
+      <div class="colophon">
+        <div>
+          <div class="colophon-top">
+            <span class="colophon-ls">L★S</span>
+            <p class="colophon-phrase">As many bows as there are observers. Yours is centred on your own shadow, and it always was.</p>
+          </div>
+
+          <div class="series-list">
+            <div class="series-item"><span class="series-num">No. 9</span> The Lines We Drew &mdash; a pattern imposed from one vantage point</div>
+            <div class="series-item"><span class="series-num">No. 15</span> Every Creature&rsquo;s Own Sky &mdash; umwelt, and no neutral way to sense</div>
+            <div class="series-item"><span class="series-num">No. 21</span> Not a Line &mdash; a spectrum is a fan, never a ladder</div>
+            <div class="series-item"><span class="series-num">No. 29</span> Only in Relation &mdash; properties that exist only between systems</div>
+            <div class="series-item"><span class="series-num">No. 48</span> The Shadow Is Bigger Than the Thing &mdash; known only by its effect</div>
+            <div class="series-item"><span class="series-num">No. 62</span> The Light Arrived Before the Name &mdash; arrival records, not origin records</div>
+            <div class="series-item current"><span class="series-num">No. 69</span> Your Shadow Is the Centre &mdash; the bow you cannot hand over &larr; you are here</div>
+          </div>
+
+          <div class="reflect">
+            <div class="reflect-label">Reflection</div>
+            <p class="reflect-q">What have you stopped mentioning because you could not produce it on demand?</p>
+            <p class="reflect-q">When somebody tells you about something you cannot see from where you are standing, what would it cost you to take the geometry seriously?</p>
+            <p class="reflect-q">Where have you treated &ldquo;nobody else is reporting this&rdquo; as evidence, when it was a fact about where everybody happened to be standing?</p>
+            <p class="reflect-q">Whose conditions are you in a position to change &mdash; the sun, the rain, or the obstruction?</p>
+          </div>
+        </div>
+
+        <div class="colophon-body">
+          <h3 class="colophon-h" id="sources">Sources</h3>
+          <p><strong>The geometry, primary.</strong> Roger Bacon, <em>Opus Majus</em>, Part VI (<em>Experimental Science</em>), c. 1267, in Robert Belle Burke's translation (University of Pennsylvania Press, 1928), vol. II. The measured maximum elevation of 42&deg; and the solar-altitude limit are at <strong>pp. 590&ndash;591</strong>; the cone whose <em>&ldquo;apex is at the eye and the base is the circle of the bow&rdquo;</em> with its axis running to <em>&ldquo;the nadir of the sun&rdquo;</em> is ch. V, <strong>pp. 592&ndash;593</strong>; <em>&ldquo;as many bows as there are observers,&rdquo;</em> <em>&ldquo;impossible for two observers to see one and the same bow,&rdquo;</em> <em>&ldquo;the shadow of each observer divides the arc of the rainbow into two equal parts&rdquo;</em> and the inference to reflected rays are at <strong>pp. 600&ndash;601</strong>; the cloud-colour and refraction controls at <strong>pp. 601&ndash;602</strong>; the latitude arithmetic at <strong>p. 602</strong>. <em>We read the text ourselves rather than trusting a summary of it</em> &mdash; the translation is out of copyright and freely available, and every Bacon quotation on these spreads was taken from it directly.</p>
+          <p><strong>The modern statement.</strong> Roland Stull, <em>Practical Meteorology: An Algebra-based Survey of Atmospheric Science</em>, ch. 22 (<em>Atmospheric Optics</em>), open access &mdash; for the antisolar point as <em>&ldquo;the point corresponding to the shadow of your head or camera,&rdquo;</em> for <em>&ldquo;different observers see different rainbows caused by different light rays interacting with different raindrops,&rdquo;</em> and for 42.7&deg; red / ~40&deg; violet, n = 1.3315, one internal reflection for the primary and two for the secondary.</p>
+          <p><strong>Atmospheric optics.</strong> Les Cowley, <em>Atmospheric Optics</em> (atoptics.co.uk) &mdash; <em>&ldquo;Rainbows possess neither distance nor linear dimension&rdquo;</em>; <em>&ldquo;It looks and behaves as though it is at infinity&rdquo;</em>; <em>&ldquo;It cannot be touched, tickled, walked around or driven through. It moves as you move and is forever unapproachable.&rdquo;</em> Robert Greenler's <em>Rainbows, Halos, and Glories</em> (Cambridge, 1980) is the standing reference for the wider family.</p>
+          <p><strong>The mechanism, and the priority.</strong> Theodoric of Freiberg, <em>De iride et radialibus impressionibus</em>, c. 1304&ndash;1310; Kam&#257;l al-D&#299;n al-F&#257;ris&#299;, <em>Tanq&#299;&#7717; al-Man&#257;&#7827;ir</em>, c. 1309 &mdash; two refractions and one internal reflection, reached independently, both working from Ibn al-Haytham's <em>Kit&#257;b al-Man&#257;&#7827;ir</em>. Ren&eacute; Descartes, <em>Les M&eacute;t&eacute;ores</em> (1637), for the computed angle. Carl B. Boyer, <em>The Rainbow: From Myth to Mathematics</em> (1959) is the standard history. <strong>Flagged, not hidden:</strong> the independence-and-common-source account is well attested in the secondary literature and we have <em>not</em> confirmed it against Boyer or against the Latin and Arabic texts, so spread five states it and this line marks it as second-hand. Bacon's material, which carries the argument, is primary-sourced; the fourteenth-century material is context and is graded lower.</p>
+
+          <h3 class="colophon-h" id="credits">Credits</h3>
+          <p>House zine. Proposed by <strong>Ryan Boren</strong>, who brought the rainbow question, the <em>communal and collaborative yet individual</em> framing, and the observation that a bow is made unique for each perspective. The research turned up something better than the brief: Bacon had the whole thing in 1267, and had used the privacy as evidence. <em>The zine is the primary source, mostly.</em></p>
+          <p><strong>Not our phrase, so not on the cover.</strong> The formulation <em>&ldquo;an active real-time collaboration between solar radiation, the falling water, and your own biology&rdquo;</em> came to us through a YouTube narration and is that writer's, not ours. It is a good sentence and it is quoted here rather than absorbed into a title. Likewise <em>&ldquo;it&rsquo;s a double rainbow all the way&rdquo;</em> is Paul &ldquo;Yosemitebear&rdquo; Vasquez, 2010, and already carries a specific meaning in our house.</p>
+          <p><strong>The other double rainbow.</strong> Bertilsdotter Rosqvist, Day &amp; Krazinski (eds.), <em>Exploring Autistic Sexualities, Relationality and Genders: Living Under a Double Rainbow</em> (Routledge) &mdash; <em>&ldquo;Rainbows show us the beauty and variance within light&rdquo;</em> &mdash; and Twainbow, on having two rainbows and two coming-out stories. Both sit under <a href="https://stimpunks.org/gender/">queer and neurodivergent liberation are entwined</a>. Deliberately not the subject of this zine; see the last refusal on spread ten.</p>
+
+          <h3 class="colophon-h" id="what-this-does-not-re-argue">What this deliberately does not re-argue</h3>
+          <p><a href="not-a-line-zine.html">Not a Line</a> (No. 21) owns dispersion and the spectrum-is-not-a-ladder argument, and calls itself the rainbow zine in its own source. <a href="every-creatures-own-sky-zine.html">Every Creature&rsquo;s Own Sky</a> (No. 15) owns umwelt. <a href="only-in-relation-zine.html">Only in Relation</a> (No. 29) owns relational ontology &mdash; the property that exists only between systems. <a href="the-lines-we-drew-zine.html">The Lines We Drew</a> (No. 9) owns the vantage-point pattern, and <strong>this piece is its counterweight rather than its echo</strong>: No. 9 is about a line we imposed and can redraw, and a rainbow is a vantage-point phenomenon nobody imposed and nobody can redraw by so much as a tenth of a degree. <em>Perspective-dependent and arbitrary are different words.</em> <a href="who-is-holding-the-candle.html">Who Is Holding the Candle</a> owns epistemic injustice; <a href="a-promise-not-a-finding.html">A Promise, Not a Finding</a> owns the naturalistic fallacy, which is why spread nine says <em>down to is not because of</em> and leaves it there.</p>
+          <p><strong>A rhyme, not a proof.</strong> Nothing about the refractive index of water demonstrates anything about a nervous system, and we are not offering the physics as a cause. What it supplies is one honest counterexample, held steady: <em>there exists a real, exactly predictable, textbook-documented phenomenon that cannot be shown to a second person, and nobody has ever thought that counted against it.</em> The step from there to how we treat each other's accounts is an argument, made in words, on spread nine &mdash; not a deduction from optics. Two claims on these spreads are ours rather than anybody's measurement, and both say so where they stand: the two-eyes case on spread seven and the constant-replacement case on spread six. Every figure here is a lead you can check, and we would rather be corrected in public than be tidy. <span class="gold">As many bows as there are observers &mdash; and yours has always been enough.</span></p>
+          <div class="colophon-footer">
+            <a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks Foundation</a> × <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a><br>
+            stimpunks.org · morerealms.com · starstuff.earth<br>
+            <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> · open edition · print freely
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Your Shadow Is the Centre · Stimpunks</span>
+        <span class="spread-footer-right">11</span>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /zine-shell -->
+
+<script>
+  let current = 1;
+  const total = 11;
+
+  function changePage(dir) {
+    const next = current + dir;
+    if (next < 1 || next > total) return;
+    document.getElementById('spread-' + current).classList.remove('active');
+    current = next;
+    document.getElementById('spread-' + current).classList.add('active');
+    document.getElementById('page-counter').textContent = current + ' / ' + total;
+    document.getElementById('prev-btn').disabled = current === 1;
+    document.getElementById('next-btn').disabled = current === total;
+    document.getElementById('prev-btn').classList.toggle('active', current > 1);
+    document.getElementById('next-btn').classList.toggle('active', current < total);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') changePage(1);
+    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   changePage(-1);
+  });
+
+  document.getElementById('prev-btn').disabled = true;
+  document.getElementById('next-btn').classList.add('active');
+</script>
+<script src="starstuff.js" defer></script>
+</body>
+</html>
