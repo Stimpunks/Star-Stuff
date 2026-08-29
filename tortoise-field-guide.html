@@ -96,7 +96,14 @@
   /* ── INTRO BAND ── */
   .intro-band { position: relative; z-index: 2; padding: 1.5rem 2.5rem; border-bottom: 1px solid var(--border); display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.5rem; }
   .intro-note { font-size: 0.875rem; color: var(--secondary); line-height: 1.7; }
-  .intro-note strong { font-weight: 700; color: var(--white); display: block; font-size: 0.8125rem; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.3rem; }
+/* Scoped to the note's OWN first strong. Unscoped, this label style caught every
+     emphasis in the body and rendered it as an uppercase block heading mid-sentence.
+     No gate can see it: the markup is valid, the class is not dead, contrast passes
+     and nothing overlaps. Fifteen other pages carry the unscoped rule harmlessly
+     because they never put a second strong in a note — this is a latent trap, not
+     a live fault, on those. */
+  .intro-note > strong:first-child { font-weight: 700; color: var(--white); display: block; font-size: 0.8125rem; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.3rem; }
+  .intro-note strong { font-weight: 700; color: var(--white); }
   .intro-note a { color: var(--accent2); text-decoration: none; border-bottom: 1px solid rgba(74,222,128,0.4); }
   .intro-note a:hover { color: var(--white); }
   .intro-note em { color: var(--white); font-style: italic; }
@@ -230,7 +237,7 @@
   </div>
   <div class="intro-note">
     <strong>Tortoise is not the opposite of turtle</strong>
-    <strong style="display:inline;font-size:inherit;letter-spacing:0;text-transform:none">Testudinidae</strong> — the land tortoises — is a real family, and everything here belongs to it. But the everyday words don't carve it cleanly: American English calls the whole order <em>turtles</em> and tortoises a kind of turtle; British English splits <em>tortoise</em> (land), <em>turtle</em> (sea) and <em>terrapin</em> (fresh water). Both are fine. Neither is the taxonomy. The companion is <a href="turtle-field-guide.html">Field Guide No. 10</a>, and the Mojave desert tortoise lives over there.
+    <strong>Testudinidae</strong> — the land tortoises — is a real family, and everything here belongs to it. But the everyday words don't carve it cleanly: American English calls the whole order <em>turtles</em> and tortoises a kind of turtle; British English splits <em>tortoise</em> (land), <em>turtle</em> (sea) and <em>terrapin</em> (fresh water). Both are fine. Neither is the taxonomy. The companion is <a href="turtle-field-guide.html">Field Guide No. 10</a>, and the Mojave desert tortoise lives over there.
   </div>
   <div class="intro-note">
     <strong>Why the last four are marked</strong>
