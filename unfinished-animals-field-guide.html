@@ -98,7 +98,12 @@
   /* ── INTRO BAND ── */
   .intro-band { position: relative; z-index: 2; padding: 1.5rem 2.5rem; border-bottom: 1px solid var(--border); display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.5rem; }
   .intro-note { font-size: 0.875rem; color: var(--secondary); line-height: 1.7; }
-  .intro-note strong { font-weight: 700; color: var(--white); display: block; font-size: 0.8125rem; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.3rem; }
+  /* Scoped to the note's OWN first strong. Unscoped, this label style also caught
+     every emphasis in the note body and rendered it as an uppercase block heading
+     mid-sentence. No live fault on this page; closed because the same idiom did
+     bite on two other guides. No gate can see it. */
+  .intro-note > strong:first-child { font-weight: 700; color: var(--white); display: block; font-size: 0.8125rem; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.3rem; }
+  .intro-note strong { font-weight: 700; color: var(--white); }
   .intro-note a { color: var(--accent2); text-decoration: none; border-bottom: 1px solid rgba(34,211,238,0.4); }
   .intro-note a:hover { color: var(--white); }
   .intro-note em { color: var(--white); font-style: italic; }

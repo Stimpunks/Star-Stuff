@@ -159,7 +159,9 @@
     line-height: 1.7;
   }
 
-  .intro-note strong {
+  /* Scoped to the note's OWN first strong — unscoped, this label style also caught
+     every emphasis in the note body and rendered it as a block heading. */
+  .intro-note > strong:first-child {
     font-weight: 700;
     color: var(--white);
     display: block;
@@ -168,6 +170,7 @@
     text-transform: uppercase;
     margin-bottom: 0.3rem;
   }
+  .intro-note strong { font-weight: 700; color: var(--white); }
 
   /* ── CONSTELLATION GRID ── */
   .field-grid {
