@@ -272,6 +272,28 @@
     .footer-esmx:hover .footer-esmx-mane, .footer-esmx:focus-visible .footer-esmx-mane { transform: none; }
   }
 
+  /* ── The third door: the Bow-ery ──────────────────────────────────────
+     The continuous ramp is 34 thin arcs rather than a linearGradient, because
+     a vertical gradient across a thick arc stroke is only right near the apex
+     and goes flat at the two ends, which is exactly where the eye checks. The
+     hover swaps it for seven discrete bands: the page's own argument, made
+     before the reader has clicked anything. */
+  .footer-bow { display: flex; flex-direction: column; align-items: center; gap: 0.55rem; text-decoration: none; }
+  .footer-bow-art { width: 96px; height: auto; display: block; }
+  .footer-bow-cont, .footer-bow-bands { transition: opacity 0.35s ease; }
+  .footer-bow-bands { opacity: 0; }
+  .footer-bow:hover .footer-bow-cont,
+  .footer-bow:focus-visible .footer-bow-cont { opacity: 0; }
+  .footer-bow:hover .footer-bow-bands,
+  .footer-bow:focus-visible .footer-bow-bands { opacity: 1; }
+  .footer-bow-label { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--muted); }
+  .footer-bow:hover .footer-bow-label,
+  .footer-bow:focus-visible .footer-bow-label { color: var(--cyan); text-decoration: underline; text-underline-offset: 0.4em; }
+  .footer-bow:focus-visible { outline: 2px solid var(--cyan); outline-offset: 8px; border-radius: 8px; }
+  @media (prefers-reduced-motion: reduce) {
+    .footer-bow-cont, .footer-bow-bands { transition: none; }
+  }
+
   .twinkle { position: fixed; width: 3px; height: 3px; background: var(--gold); border-radius: 50%; box-shadow: 0 0 6px var(--gold); animation: twinkle-anim 3s ease-in-out infinite; pointer-events: none; z-index: 0; }
 
   @media (max-width: 600px) {
@@ -2370,6 +2392,20 @@
         <ellipse cx="114" cy="193" rx="10" ry="6.2" fill="var(--paw)"/>
       </svg>
       <span class="footer-esmx-label">The Quillery</span>
+    </a>
+
+    <!-- The third door: a bow. It sits as a continuous ramp of colour and snaps
+         into seven discrete bands on hover, which is the argument the page it
+         opens is making — Newton saw five, printed seven, and the light has no
+         bands in it at all. Same shape as the other two doors: a drawing, a
+         text label so a screen reader announces it as plainly as About or
+         Search, and a hover that does something the subject actually does. -->
+    <a class="footer-bow" href="bow-ery.html">
+      <svg class="footer-bow-art" viewBox="0 0 120 76" aria-hidden="true" focusable="false">
+        <g class="footer-bow-cont"><path d="M 16.0 68 A 44.0 44.0 0 0 1 104.0 68" fill="none" stroke="#a78bfa" stroke-width="1.0"/><path d="M 15.520000000000003 68 A 44.48 44.48 0 0 1 104.47999999999999 68" fill="none" stroke="#a08bfa" stroke-width="1.0"/><path d="M 15.030000000000001 68 A 44.97 44.97 0 0 1 104.97 68" fill="none" stroke="#998bf9" stroke-width="1.0"/><path d="M 14.549999999999997 68 A 45.45 45.45 0 0 1 105.45 68" fill="none" stroke="#928cf9" stroke-width="1.0"/><path d="M 14.060000000000002 68 A 45.94 45.94 0 0 1 105.94 68" fill="none" stroke="#8b8cf9" stroke-width="1.0"/><path d="M 13.579999999999998 68 A 46.42 46.42 0 0 1 106.42 68" fill="none" stroke="#848cf8" stroke-width="1.0"/><path d="M 13.090000000000003 68 A 46.91 46.91 0 0 1 106.91 68" fill="none" stroke="#7892f7" stroke-width="1.0"/><path d="M 12.61 68 A 47.39 47.39 0 0 1 107.39 68" fill="none" stroke="#679ff5" stroke-width="1.0"/><path d="M 12.119999999999997 68 A 47.88 47.88 0 0 1 107.88 68" fill="none" stroke="#56acf3" stroke-width="1.0"/><path d="M 11.64 68 A 48.36 48.36 0 0 1 108.36 68" fill="none" stroke="#45b9f2" stroke-width="1.0"/><path d="M 11.149999999999999 68 A 48.85 48.85 0 0 1 108.85 68" fill="none" stroke="#33c6f0" stroke-width="1.0"/><path d="M 10.670000000000002 68 A 49.33 49.33 0 0 1 109.33 68" fill="none" stroke="#22d3ee" stroke-width="1.0"/><path d="M 10.18 68 A 49.82 49.82 0 0 1 109.82 68" fill="none" stroke="#29d5da" stroke-width="1.0"/><path d="M 9.700000000000003 68 A 50.3 50.3 0 0 1 110.3 68" fill="none" stroke="#31d7c6" stroke-width="1.0"/><path d="M 9.21 68 A 50.79 50.79 0 0 1 110.78999999999999 68" fill="none" stroke="#38d9b2" stroke-width="1.0"/><path d="M 8.729999999999997 68 A 51.27 51.27 0 0 1 111.27000000000001 68" fill="none" stroke="#3fdb9e" stroke-width="1.0"/><path d="M 8.240000000000002 68 A 51.76 51.76 0 0 1 111.75999999999999 68" fill="none" stroke="#46dd8a" stroke-width="1.0"/><path d="M 7.759999999999998 68 A 52.24 52.24 0 0 1 112.24000000000001 68" fill="none" stroke="#5adb78" stroke-width="1.0"/><path d="M 7.270000000000003 68 A 52.73 52.73 0 0 1 112.72999999999999 68" fill="none" stroke="#7ad667" stroke-width="1.0"/><path d="M 6.789999999999999 68 A 53.21 53.21 0 0 1 113.21000000000001 68" fill="none" stroke="#9ad056" stroke-width="1.0"/><path d="M 6.299999999999997 68 A 53.7 53.7 0 0 1 113.7 68" fill="none" stroke="#bbca45" stroke-width="1.0"/><path d="M 5.82 68 A 54.18 54.18 0 0 1 114.18 68" fill="none" stroke="#dbc535" stroke-width="1.0"/><path d="M 5.329999999999998 68 A 54.67 54.67 0 0 1 114.67 68" fill="none" stroke="#fbbf24" stroke-width="1.0"/><path d="M 4.850000000000001 68 A 55.15 55.15 0 0 1 115.15 68" fill="none" stroke="#fbb728" stroke-width="1.0"/><path d="M 4.359999999999999 68 A 55.64 55.64 0 0 1 115.64 68" fill="none" stroke="#fbaf2d" stroke-width="1.0"/><path d="M 3.8800000000000026 68 A 56.12 56.12 0 0 1 116.12 68" fill="none" stroke="#fba631" stroke-width="1.0"/><path d="M 3.3900000000000006 68 A 56.61 56.61 0 0 1 116.61 68" fill="none" stroke="#fb9e35" stroke-width="1.0"/><path d="M 2.9099999999999966 68 A 57.09 57.09 0 0 1 117.09 68" fill="none" stroke="#fb963a" stroke-width="1.0"/><path d="M 2.4200000000000017 68 A 57.58 57.58 0 0 1 117.58 68" fill="none" stroke="#fa8f47" stroke-width="1.0"/><path d="M 1.9399999999999977 68 A 58.06 58.06 0 0 1 118.06 68" fill="none" stroke="#f9895d" stroke-width="1.0"/><path d="M 1.4500000000000028 68 A 58.55 58.55 0 0 1 118.55 68" fill="none" stroke="#f88373" stroke-width="1.0"/><path d="M 0.9699999999999989 68 A 59.03 59.03 0 0 1 119.03 68" fill="none" stroke="#f77e8a" stroke-width="1.0"/><path d="M 0.4799999999999969 68 A 59.52 59.52 0 0 1 119.52000000000001 68" fill="none" stroke="#f578a0" stroke-width="1.0"/><path d="M 0.0 68 A 60.0 60.0 0 0 1 120.0 68" fill="none" stroke="#f472b6" stroke-width="1.0"/></g>
+        <g class="footer-bow-bands"><path d="M 14.899999999999999 68 A 45.1 45.1 0 0 1 105.1 68" fill="none" stroke="#a78bfa" stroke-width="2.3"/><path d="M 12.600000000000001 68 A 47.4 47.4 0 0 1 107.4 68" fill="none" stroke="#818cf8" stroke-width="2.3"/><path d="M 10.299999999999997 68 A 49.7 49.7 0 0 1 109.7 68" fill="none" stroke="#22d3ee" stroke-width="2.3"/><path d="M 8.0 68 A 52.0 52.0 0 0 1 112.0 68" fill="none" stroke="#4ade80" stroke-width="2.3"/><path d="M 5.700000000000003 68 A 54.3 54.3 0 0 1 114.3 68" fill="none" stroke="#fbbf24" stroke-width="2.3"/><path d="M 3.3999999999999986 68 A 56.6 56.6 0 0 1 116.6 68" fill="none" stroke="#fb923c" stroke-width="2.3"/><path d="M 1.1000000000000014 68 A 58.9 58.9 0 0 1 118.9 68" fill="none" stroke="#f472b6" stroke-width="2.3"/></g>
+      </svg>
+      <span class="footer-bow-label">The Bow-ery</span>
     </a>
     </div>
   </footer>
