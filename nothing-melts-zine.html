@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0a0a14">
+<link rel="canonical" href="https://starstuff.earth/nothing-melts-zine.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta name="description" content="New snow will not carry your weight and old snow will. Nothing was added and nobody packed it. What happened in between is sintering: snow grains bond to each other below the melting point, and the grains never become liquid. Vapour leaves the convex surfaces of the grains and condenses in the concave neck between them, because a concave surface holds a lower vapour pressure than a convex one, so material moves to the joint precisely because it is the joint. The bond is built out of the substance of the things joining and nothing arrives from outside. It happens only where grains actually touch, at a rate controlled by contact pressure and grain shape, and it is strongly temperature-dependent, running fast near the melting point and almost stalling in deep cold. Held honestly: ice surfaces carry a quasi-liquid premelted layer below the bulk melting point which can help bonding without bulk melting, and its onset, thickness and relation to liquid water have been contested for over a century. Sintering is also what builds a cohesive slab, and a cohesive slab over a weak layer is the avalanche condition, because the same cohesion that carries weight is what lets a fracture cross the whole of it at once. Bonding to each other does not fix what you are all standing on. After Helen Edgar's Sintering, and the reading of sintering as coalition, which is Leanne Betasamosake Simpson's. A rhyme, not a proof.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Star Stuff &middot; Stimpunks Foundation &times; More Realms">
+<meta property="og:url" content="https://starstuff.earth/nothing-melts-zine.html">
+<meta property="og:title" content="Nothing Melts">
+<meta property="og:description" content="Snow grains bond below the melting point. They never become liquid, they stay separate crystals — and the joint grows because it is the joint.">
+<meta property="og:image" content="https://starstuff.earth/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A rainbow-hued cosmic image — we are all made of star stuff.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Nothing Melts">
+<meta name="twitter:description" content="You do not have to dissolve in order to join. And bonding to each other does not fix what you are all standing on.">
+<meta name="twitter:image" content="https://starstuff.earth/og-card.jpg">
+<title>Nothing Melts &mdash; Stimpunks Zine No. 77</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="starstuff.css">
+<style>
+  :root {
+    --void:  var(--sp-void-deep);
+    --deep:  var(--sp-deep);
+    --page:  var(--sp-page);
+    --violet:var(--sp-purple);
+    --pink:  var(--sp-pink);
+    --gold:  var(--sp-gold);
+    --cyan:  var(--sp-cyan);
+    --green: var(--sp-green);
+    --ember: #c1653a;
+    --star-white: var(--sp-white-soft);
+    --stardust:   var(--sp-secondary-soft);
+    --dim:   var(--sp-dim);
+    --dim2:  var(--sp-dim-soft);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--void);
+    font-family: 'Atkinson Hyperlegible Next', system-ui, sans-serif;
+    color: var(--star-white);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── STARFIELD (green · white · gold — a damp low canopy, lit from above) ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 9% 16%, rgba(244,114,182,0.56) 0%, transparent 100%),
+      radial-gradient(1px 1px at 14% 21%, rgba(244,244,251,0.50) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 35% 11%, rgba(244,114,182,0.44) 0%, transparent 100%),
+      radial-gradient(1px 1px at 53% 61%, rgba(244,244,251,0.54) 0%, transparent 100%),
+      radial-gradient(1px 1px at 61% 70%, rgba(251,191,36,0.38) 0%, transparent 100%),
+      radial-gradient(2px 2px at 79% 25%, rgba(244,114,182,0.46) 0%, transparent 100%),
+      radial-gradient(1px 1px at 87% 47%, rgba(244,244,251,0.44) 0%, transparent 100%),
+      radial-gradient(1px 1px at 93% 81%, rgba(244,114,182,0.40) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 6% 60%, rgba(244,244,251,0.52) 0%, transparent 100%),
+      radial-gradient(1px 1px at 25% 86%, rgba(244,114,182,0.38) 0%, transparent 100%),
+      radial-gradient(1px 1px at 33% 90%, rgba(244,244,251,0.40) 0%, transparent 100%),
+      radial-gradient(1px 1px at 45% 41%, rgba(251,191,36,0.30) 0%, transparent 100%),
+      radial-gradient(2px 2px at 21% 91%, rgba(244,114,182,0.40) 0%, transparent 100%),
+      radial-gradient(1px 1px at 69% 8%, rgba(244,244,251,0.62) 0%, transparent 100%),
+      radial-gradient(1px 1px at 41% 29%, rgba(244,114,182,0.36) 0%, transparent 100%);
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .zine-shell { position: relative; z-index: 1; max-width: 820px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+
+  .spectrum-line { height: 2px; border: none; border-radius: 2px; background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); }
+
+  /* ── NAV ── */
+  .nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2.5rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(244,114,182,0.22); }
+  .nav-brand { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--dim); }
+  .nav-controls { display: flex; gap: 0.5rem; align-items: center; }
+  .nav-btn { background: none; border: 1px solid rgba(244,114,182,0.38); color: var(--stardust); font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.15em; padding: 0.4rem 0.85rem; border-radius: 2px; cursor: pointer; transition: all 0.2s ease; text-transform: uppercase; }
+  .nav-btn:hover { background: rgba(244,114,182,0.15); border-color: rgba(244,114,182,0.65); color: var(--star-white); }
+  .nav-btn.active { background: rgba(244,114,182,0.20); border-color: var(--accent); color: var(--star-white); }
+  .page-counter { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.2em; color: var(--dim2); }
+
+  .spread { display: none; animation: fadeIn 0.5s ease forwards; }
+  .spread.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ── COVER ── */
+  .cover-spread {
+    position: relative; min-height: 520px; border-radius: 4px; overflow: hidden;
+    background:
+      radial-gradient(ellipse at 24% 26%, rgba(244,114,182,0.13) 0%, transparent 52%),
+      radial-gradient(ellipse at 78% 30%, rgba(34,211,238,0.08) 0%, transparent 52%),
+      radial-gradient(ellipse at 62% 84%, rgba(244,114,182,0.07) 0%, transparent 52%),
+      radial-gradient(ellipse at 18% 82%, rgba(244,244,251,0.04) 0%, transparent 52%),
+      var(--deep);
+    border: 1px solid rgba(244,114,182,0.26);
+    box-shadow: inset 0 0 80px rgba(244,114,182,0.05), 0 0 0 4px rgba(255,255,255,0.03);
+    display: flex; flex-direction: column; justify-content: flex-end; padding: 3rem;
+  }
+  .cover-motif { position: absolute; top: -6px; left: -18px; width: 340px; height: 340px; opacity: 0.72; pointer-events: none; }
+  .cover-issue { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.5em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.5rem; }
+  .cover-title { font-weight: 700; font-size: clamp(2.1rem, 6vw, 3.5rem); line-height: 1.03; color: var(--star-white); letter-spacing: -0.01em; margin-bottom: 0.9rem; }
+  .cover-title .amp { color: var(--accent); font-style: italic; }
+  .cover-subtitle { font-size: 1rem; color: var(--stardust); opacity: 0.86; margin-bottom: 1.5rem; max-width: 470px; line-height: 1.55; }
+  .cover-byline { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.14em; color: var(--dim); margin-bottom: 1.8rem; }
+  .cover-byline strong { color: var(--stardust); font-weight: 700; }
+  .cover-rule { width: 220px; max-width: 60%; margin-bottom: 1.3rem; }
+  .cover-meta { display: flex; gap: 2rem; align-items: center; }
+  .cover-ls { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 1.4rem; color: var(--gold); letter-spacing: 0.05em; }
+  .cover-meta-text { font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--dim2); line-height: 1.9; }
+  .cover-corner { position: absolute; top: 2rem; right: 2.5rem; text-align: right; }
+  .cover-corner-num { font-weight: 700; font-size: 4.5rem; line-height: 1; color: var(--accent); opacity: 0.24; }
+  .cover-corner-label { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--cyan); display: block; margin-top: -0.3rem; }
+
+  /* ── INTERIOR ── */
+  .interior { background: var(--page); border: 1px solid rgba(244,114,182,0.15); border-radius: 4px; overflow: hidden; min-height: 480px; }
+  .spread-2col { display: grid; grid-template-columns: 1fr 1fr; min-height: 480px; }
+  .spread-left, .spread-right { padding: 3rem 2.4rem; position: relative; }
+  .spread-left { border-right: 1px solid rgba(244,114,182,0.12); }
+
+  .spread-2col.stacked { display: flex; flex-direction: column; }
+  .spread-2col.stacked > .spread-left,
+  .spread-2col.stacked > .spread-right { border-right: none; }
+  .spread-2col.stacked > .col-diagram { order: 2; padding-top: 0; }
+  .spread-2col.stacked > .col-text { padding-left: max(2.4rem, calc((100% - 32rem) / 2)); padding-right: max(2.4rem, calc((100% - 32rem) / 2)); }
+  .spread-2col.stacked .diagram-wrap { height: auto; }
+  .spread-2col.stacked .diagram { max-width: 420px; }
+
+  .eyebrow { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.1rem; }
+  .body-text { font-size: 0.98rem; line-height: 1.72; color: var(--stardust); }
+  .body-text p { margin-bottom: 1rem; }
+  .body-text p:last-child { margin-bottom: 0; }
+  .body-text strong { font-weight: 700; color: var(--star-white); }
+  .body-text em { font-style: italic; color: var(--star-white); }
+  .body-text a { color: var(--cyan); text-decoration: none; border-bottom: 1px solid rgba(244,114,182,0.45); }
+  .body-text a:hover { border-bottom-color: var(--cyan); color: var(--star-white); }
+  .body-text .violet { color: var(--violet); font-weight: 700; }
+  .body-text .pink { color: var(--pink); font-weight: 700; }
+  .body-text .gold { color: var(--gold); font-weight: 700; }
+  .body-text .cyan { color: var(--cyan); font-weight: 700; }
+  .body-text .green { color: var(--green); font-weight: 700; }
+  .body-text .lede { font-size: 1.08rem; color: var(--star-white); }
+  /* Accent spans that sit OUTSIDE .body-text — colophon closing lines and callout
+     attributions. The scoped .body-text rules cannot reach them; this is the fault
+     check-classes.mjs was written for after No. 67 shipped an inert .pink. */
+  .zine-shell span.violet { color: var(--violet); font-weight: 700; }
+  .zine-shell span.gold { color: var(--gold); font-weight: 700; }
+  .zine-shell span.cyan { color: var(--cyan); font-weight: 700; }
+  .zine-shell span.pink { color: var(--pink); font-weight: 700; }
+  .zine-shell span.green { color: var(--green); font-weight: 700; }
+
+  .spread-heading { font-weight: 700; font-size: 1.9rem; line-height: 1.12; color: var(--star-white); margin-bottom: 1.1rem; letter-spacing: -0.01em; margin-top: 0; scroll-margin-top: 5rem; }
+  .rule { width: 40px; margin: 1rem 0; }
+
+  .pull-quote { font-size: 1.18rem; font-weight: 700; line-height: 1.4; color: var(--star-white); border-left: 3px solid var(--accent); padding-left: 1.1rem; margin: 1.4rem 0; font-style: italic; }
+  .pull-quote.violet { border-left-color: var(--violet); }
+  .pull-quote.cyan { border-left-color: var(--cyan); }
+  .pull-quote.gold { border-left-color: var(--gold); }
+  .pull-quote.pink { border-left-color: var(--pink); }
+  .pull-quote.green { border-left-color: var(--green); }
+  .pull-quote .attr { display: block; font-family: 'Space Mono', monospace; font-size: 0.6rem; font-weight: 400; font-style: normal; letter-spacing: 0.08em; color: var(--dim); margin-top: 0.6rem; }
+
+  .callout { margin: 1.3rem 0; padding: 1rem 1.15rem; background: rgba(244,114,182,0.07); border: 1px solid rgba(244,114,182,0.26); border-radius: 4px; font-size: 1rem; font-style: italic; color: var(--star-white); line-height: 1.55; }
+  .callout .attr { display: block; font-family: 'Space Mono', monospace; font-size: 0.58rem; font-style: normal; letter-spacing: 0.06em; color: var(--dim); margin-top: 0.5rem; }
+
+  .note { font-size: 0.84rem; line-height: 1.6; color: var(--dim); border-left: 2px solid rgba(244,114,182,0.42); padding-left: 0.9rem; margin: 1.1rem 0; }
+  .note strong { color: var(--stardust); font-weight: 700; }
+
+  /* ── TABLES ── */
+  .trades { width: 100%; border-collapse: collapse; margin: 1.3rem 0; font-size: 0.84rem; }
+  .trades caption { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dim); text-align: left; padding-bottom: 0.6rem; }
+  .trades th { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--stardust); text-align: left; padding: 0.5rem 0.6rem; border-bottom: 1px solid rgba(244,114,182,0.36); font-weight: 700; }
+  .trades td { padding: 0.55rem 0.6rem; border-bottom: 1px solid rgba(244,114,182,0.1); color: var(--stardust); line-height: 1.5; vertical-align: top; }
+  .trades td.label { color: var(--star-white); font-weight: 700; }
+  .trades td.verdict { color: var(--pink); font-weight: 700; }
+  .trades td.actual { color: var(--green); font-weight: 700; }
+  .trades td.num { color: var(--cyan); font-weight: 700; font-family: 'Space Mono', monospace; white-space: nowrap; }
+
+  /* ── DIAGRAMS ── */
+  .diagram-wrap { display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; }
+  .diagram { width: 100%; max-width: 340px; display: block; }
+  .diagram-caption { font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim); text-align: center; margin-top: 0.9rem; line-height: 1.9; }
+
+  /* ── REFUSALS ── */
+  .refusals { margin-top: 1.3rem; }
+  .refusal { font-size: 0.88rem; line-height: 1.5; color: var(--stardust); padding: 0.55rem 0; border-bottom: 1px solid rgba(244,114,182,0.1); display: flex; gap: 0.6rem; align-items: baseline; }
+  .refusal:last-child { border-bottom: none; }
+  .refusal-tag { font-family: 'Space Mono', monospace; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ember); flex-shrink: 0; padding-top: 0.12rem; }
+  .refusal strong { color: var(--star-white); font-weight: 700; }
+
+  /* ── COLOPHON ── */
+  .colophon { padding: 3rem; display: flex; flex-direction: column; justify-content: space-between; min-height: 480px; background: radial-gradient(ellipse at 80% 16%, rgba(244,114,182,0.09) 0%, transparent 50%), radial-gradient(ellipse at 16% 84%, rgba(34,211,238,0.05) 0%, transparent 50%), var(--page); }
+  .colophon-top { border-bottom: 1px solid rgba(244,114,182,0.16); padding-bottom: 1.3rem; margin-bottom: 1.2rem; }
+  .colophon-ls { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 2.4rem; color: var(--gold); letter-spacing: 0.05em; display: block; margin-bottom: 0.4rem; }
+  .colophon-phrase { font-size: 0.98rem; font-weight: 700; font-style: italic; color: var(--stardust); }
+  .series-list { display: flex; flex-direction: column; gap: 0.38rem; margin-bottom: 1.2rem; }
+  .series-item { font-size: 0.72rem; color: var(--dim); letter-spacing: 0.01em; display: flex; gap: 0.7rem; align-items: baseline; line-height: 1.45; }
+  .series-item.current { color: var(--accent); font-weight: 700; }
+  .series-num { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim2); flex-shrink: 0; }
+  .series-item.current .series-num { color: var(--accent); }
+  .reflect { border-top: 1px solid rgba(244,114,182,0.16); padding-top: 1rem; margin-bottom: 1.2rem; }
+  .reflect-label { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.65rem; }
+  .reflect-q { font-size: 0.86rem; line-height: 1.55; color: var(--stardust); margin-bottom: 0.55rem; font-style: italic; }
+  .reflect-q:last-child { margin-bottom: 0; }
+  .colophon-body { font-size: 0.75rem; color: var(--dim); line-height: 1.75; margin-bottom: 1.2rem; }
+  .colophon-body a { color: var(--cyan); text-decoration: none; border-bottom: 1px solid rgba(244,114,182,0.45); }
+  .colophon-body a:hover { border-bottom-color: var(--cyan); }
+  .colophon-h { font-family: 'Space Mono', monospace; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: var(--stardust); margin: 1rem 0 0.4rem; scroll-margin-top: 5rem; }
+  .colophon-footer { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--dim); line-height: 2.2; border-top: 1px solid rgba(244,114,182,0.16); padding-top: 1rem; }
+
+  /* ── SPREAD FOOTER ── */
+  .spread-footer { display: flex; justify-content: space-between; align-items: center; padding: 0.9rem 2.4rem; border-top: 1px solid rgba(244,114,182,0.1); }
+  .spread-footer-left { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--dim); }
+  .spread-footer-right { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; color: var(--accent); }
+
+  .twinkle { position: fixed; width: 3px; height: 3px; border-radius: 50%; animation: twinkle-anim 3s ease-in-out infinite; pointer-events: none; z-index: 0; }
+
+  @media (max-width: 600px) {
+    .spread-2col { grid-template-columns: 1fr; }
+    .spread-left { border-right: none; border-bottom: 1px solid rgba(244,114,182,0.12); }
+    .spread-2col.stacked > .spread-left { border-bottom: none; }
+    .spread-2col.stacked > .col-text { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .cover-spread { padding: 2rem; min-height: 420px; }
+    .cover-motif { width: 224px; height: 224px; top: -6px; left: -26px; opacity: 0.46; }
+    .cover-title { font-size: 1.9rem; }
+    .spread-heading { font-size: 1.55rem; }
+    .spread-left, .spread-right { padding: 2rem 1.5rem; }
+    .colophon { padding: 2rem 1.5rem; }
+    .trades { font-size: 0.76rem; }
+    .trades th, .trades td { padding: 0.4rem 0.35rem; }
+  }
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Nothing Melts","description":"Snow sintering: grains bond to each other below the melting point, without ever becoming liquid and without losing their identity as separate crystals. After J. R. Blackford, Sintering and microstructure of ice: a review, Journal of Physics D 40 (2007) R355, vapour diffusion is the main mechanism of isothermal ice sintering; molecules preferentially condense at the neck between grains because its concave curvature lowers the local vapour pressure, so material moves to the joint because it is the joint. The bond is built from the substance of the grains themselves. It forms only at genuine contact, at a rate controlled by contact pressure and grain shape, and it is strongly temperature-dependent, very rapid near the melting point and nearly stalled in deep cold. Held honestly: ice surfaces carry a quasi-liquid premelted layer below the bulk melting point which can facilitate bonding without bulk melting, and its onset temperature, thickness and relation to bulk liquid water have been contested for over a century. The cost is stated too: sintering densifies and builds cohesive slabs, and a cohesive slab over a weak layer is the avalanche condition, because the cohesion that carries weight is also what allows a fracture to propagate across the entire slab. Bonding to each other does not fix what you are all standing on. Developed after Helen Edgar, Sintering: Neurodivergent Community Building; the reading of sintering as coalition is Leanne Betasamosake Simpson's, in Theory of Water: Nishnaabe Maps to the Times Ahead. A rhyme, not a proof.","image":"https://starstuff.earth/og-card.jpg","url":"https://starstuff.earth/nothing-melts-zine.html","mainEntityOfPage":"https://starstuff.earth/nothing-melts-zine.html","datePublished":"2026-08-29","dateModified":"2026-08-29","license":"https://creativecommons.org/licenses/by-sa/4.0/","author":{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/"},"publisher":[{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/","logo":{"@type":"ImageObject","url":"https://starstuff.earth/og-card.jpg"}},{"@type":"Organization","name":"More Realms","url":"https://morerealms.com/"}],"isPartOf":{"@type":"WebSite","name":"Star Stuff","url":"https://starstuff.earth/"}}</script>
+</head>
+<body>
+<div class="zine-shell">
+
+  <nav class="ss-nav" style="--nav-accent:#f472b6;" aria-label="Star Stuff collection">
+    <span class="ss-nav-home-group"><a class="ss-nav-home" href="index.html"><span class="ss-star" aria-hidden="true">&#9733;</span> stuff</a><a class="ss-nav-about" href="about.html">about</a>
+      <a class="ss-nav-search" href="search.html">search</a></span>
+    <span class="ss-nav-links">
+      <a class="ss-nav-prev" href="forty-minutes-to-see-zine.html"><span class="ss-nav-arrow" aria-hidden="true">&lsaquo;</span> <span class="ss-nav-label">Forty Minutes to See</span></a>
+      <a class="ss-nav-next" href="collection-how-we-got-here.html"><span class="ss-nav-label">How We Got Here</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
+    </span>
+    <a class="ss-nav-collection" href="collection-star-stuff.html"><span class="ss-nav-collection-label">Collection</span> <span class="ss-nav-collection-name">Star Stuff</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
+  </nav>
+
+  <div class="nav">
+    <span class="nav-brand">Stimpunks &times; More Realms</span>
+    <div class="nav-controls">
+      <button class="nav-btn" id="prev-btn" onclick="changePage(-1)">&larr; prev</button>
+      <span class="page-counter" id="page-counter">1 / 12</span>
+      <button class="nav-btn" id="next-btn" onclick="changePage(1)">next &rarr;</button>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 1: COVER ════ -->
+  <div class="spread active" id="spread-1">
+    <div class="cover-spread">
+      <svg class="cover-motif" viewBox="0 0 340 340" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <!-- Grains with necks between them. Deliberately text-free, and lifted clear of the
+             title: the No. 48 cover fault, which check-overlap cannot see because it
+             measures text against text. -->
+        <g transform="translate(8,-4)">
+          <g fill="none" stroke="rgba(244,114,182,0.55)" stroke-width="1.4">
+            <circle cx="76" cy="86" r="26"/><circle cx="140" cy="70" r="20"/>
+            <circle cx="196" cy="96" r="30"/><circle cx="256" cy="74" r="18"/>
+            <circle cx="104" cy="150" r="22"/><circle cx="168" cy="158" r="26"/>
+            <circle cx="232" cy="152" r="21"/><circle cx="286" cy="128" r="16"/>
+          </g>
+          <!-- the necks: short concave bridges where grains touch -->
+          <g fill="none" stroke="rgba(244,244,251,0.75)" stroke-width="1.6">
+            <path d="M101 79 q 9 -5 20 -6"/>
+            <path d="M159 76 q 5 6 8 12"/>
+            <path d="M225 91 q 8 -6 14 -9"/>
+            <path d="M92 110 q 6 10 9 18"/>
+            <path d="M125 152 q 9 3 18 4"/>
+            <path d="M193 156 q 9 -1 18 -2"/>
+            <path d="M251 143 q 10 -6 19 -10"/>
+            <path d="M180 133 q 6 -6 10 -12"/>
+          </g>
+          <g fill="rgba(244,114,182,0.16)">
+            <circle cx="76" cy="86" r="26"/><circle cx="196" cy="96" r="30"/><circle cx="168" cy="158" r="26"/>
+          </g>
+        </g>
+      </svg>
+      <div class="cover-corner" aria-hidden="true">
+        <div class="cover-corner-num">77</div>
+        <span class="cover-corner-label">Star Stuff</span>
+      </div>
+      <div class="cover-issue">Stimpunks &times; More Realms &middot; Zine No. 77</div>
+      <h1 class="cover-title">Nothing <span class="amp">Melts</span></h1>
+      <p class="cover-subtitle">on how snow grains bond below the melting point without ever becoming liquid, why the joint grows <em>because it is the joint</em> &mdash; and why bonding to each other does not fix what you are all standing on</p>
+      <div class="cover-byline">after Helen Edgar&rsquo;s <strong>Sintering</strong>, and a reading that is <strong>Leanne Betasamosake Simpson&rsquo;s</strong></div>
+      <hr class="spectrum-line cover-rule">
+      <div class="cover-meta">
+        <span class="cover-ls">L&#9733;S</span>
+        <div class="cover-meta-text">Love You Down To Your Star Stuff<br>open edition &middot; print freely</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 2: new snow will not hold you ════ -->
+  <div class="spread" id="spread-2">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">An observation everyone has already made</div>
+          <h2 class="spread-heading" id="new-snow">New snow will not hold you</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Walk on snow that fell an hour ago and you go straight through it. Walk on the same snow two days later and it carries you.</p>
+            <p>Nothing was added in between. Nobody packed it down, no water was poured on, nothing froze and thawed. The same crystals are lying in the same place in the same quantity, and at some point they stopped being a powder and became a surface.</p>
+            <p class="pull-quote pink">A pile of separate things became a material, and the only ingredient was time.</p>
+            <p>The name for what happened is <span class="pink">sintering</span>, and it is not specific to snow. It is how a ceramic mug is made, how metal powder becomes a machine part, how the icy grains on a comet bind into a crust. In each case a heap of loose particles turns into a solid without anyone melting it.</p>
+            <p><strong>That last clause is the whole of this zine.</strong> The obvious way to make a heap of separate things into one thing is to melt them, so they run together and cool as a single mass. It works, and it is not what happens here.</p>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Nothing Melts &middot; Stimpunks</span>
+        <span class="spread-footer-right">2</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 3: nothing melts ════ -->
+  <div class="spread" id="spread-3">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The thing that does not happen</div>
+          <h2 class="spread-heading" id="nothing-melts">Nothing melts</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Sintering happens <em>below the melting point</em>. The grains do not liquefy, do not flow together, and do not cool into a single new mass. They stay solid the entire time.</p>
+            <p>And they stay <strong>themselves</strong>. After sintering, a snowpack is not one continuous piece of ice. It is the same crystals it was before, still individual, still with their own boundaries, now joined at the points where they meet. You can section it and count them.</p>
+            <p class="pull-quote pink">The joining does not cost them their edges. Nothing is dissolved into anything, and afterwards you can still say where each one is.</p>
+            <p class="note"><strong>Held honestly, because the title overclaims slightly and we would rather say so than be caught at it.</strong> Ice is not simply solid right up to 0&nbsp;&deg;C. Its surface carries a <em>quasi-liquid</em> premelted layer below the bulk melting temperature &mdash; the thing that makes ice slippery when it has no business being slippery &mdash; and that layer can help grains bond <em>without bulk melting occurring</em>. Its onset temperature, its thickness, and its actual relationship to ordinary liquid water have been argued over for more than a century and are not settled. <strong>So: nothing melts in bulk, no grain becomes a drop, and no crystal loses its identity &mdash; but the surface where the joining happens is not a simple solid either.</strong> The interesting part of the claim survives; the tidy version of it does not.</p>
+            <p>Which is worth sitting with before the mechanism arrives. <em>There is a way for separate things to become a strong single structure that does not require any of them to stop being separate things.</em></p>
+            <p class="note"><strong>And this zine&rsquo;s title is not our observation.</strong> Leanne Betasamosake Simpson makes the point herself, in a parenthesis, describing a snowflake forming bonds <em>&ldquo;at temperatures below zero (this is not a melting process) with its neighbouring snowflakes or crystals to create the fabric of a snowpack.&rdquo;</em> See spread ten, which is about whose reading this is.</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 168" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig1-title fig1-desc">
+              <title id="fig1-title">Two routes from loose grains to a solid</title>
+              <desc id="fig1-desc">Two rows. In the upper row, labelled melting, three separate grains become one continuous blob with no internal boundaries. In the lower row, labelled sintering, the same three grains stay separate and circular but grow concave necks where they touch, so the structure holds together while every grain remains identifiable.</desc>
+              <g fill="none" stroke="rgba(196,181,212,0.75)" stroke-width="1.3">
+                <circle cx="46" cy="40" r="13"/><circle cx="74" cy="40" r="13"/><circle cx="102" cy="40" r="13"/>
+              </g>
+              <path d="M126 40 H 150" stroke="rgba(196,181,212,0.5)" stroke-width="1"/>
+              <path d="M144 36 l 7 4 -7 4 z" fill="rgba(196,181,212,0.5)"/>
+              <path d="M176 40 q 0 -15 24 -15 q 26 0 30 8 q 22 -4 24 7 q 0 15 -26 15 q -30 0 -40 -4 q -12 -3 -12 -11"
+                    fill="rgba(196,181,212,0.16)" stroke="rgba(196,181,212,0.75)" stroke-width="1.3"/>
+              <g fill="none" stroke="rgba(244,114,182,0.9)" stroke-width="1.3">
+                <circle cx="46" cy="116" r="13"/><circle cx="74" cy="116" r="13"/><circle cx="102" cy="116" r="13"/>
+              </g>
+              <path d="M126 116 H 150" stroke="rgba(196,181,212,0.5)" stroke-width="1"/>
+              <path d="M144 112 l 7 4 -7 4 z" fill="rgba(196,181,212,0.5)"/>
+              <g fill="none" stroke="rgba(244,114,182,0.9)" stroke-width="1.3">
+                <circle cx="192" cy="116" r="13"/><circle cx="220" cy="116" r="13"/><circle cx="248" cy="116" r="13"/>
+              </g>
+              <g fill="none" stroke="rgba(244,244,251,0.95)" stroke-width="1.6">
+                <path d="M204 110 q 2 6 0 12"/><path d="M232 110 q 2 6 0 12"/>
+              </g>
+              <g font-family="Space Mono, monospace" font-size="6.4">
+                <text x="46" y="18" fill="#c4b5d4">melting</text>
+                <text x="176" y="70" fill="#c4b5d4">one mass, no boundaries</text>
+                <text x="46" y="94" fill="#f9a8d4">sintering</text>
+                <text x="176" y="146" fill="#f4f2fb">joined, and still three grains</text>
+              </g>
+            </svg>
+            <div class="diagram-caption">Figure 1 &middot; two ways to stop being a powder</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Nothing Melts &middot; Stimpunks</span>
+        <span class="spread-footer-right">3</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 4: material moves to the joint ════ -->
+  <div class="spread" id="spread-4">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Why there and not anywhere else</div>
+          <h2 class="spread-heading" id="to-the-joint">Material moves to the joint</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Where two grains touch, a small bridge grows between them. It is called a <span class="pink">neck</span>, and the question worth asking is why it forms <em>there</em>.</p>
+            <p>Ice sublimes: molecules leave the surface into the air as vapour, and arrive back from it, all the time. What matters is that the rate depends on the <strong>shape</strong> of the surface they are leaving. A convex surface &mdash; the outside of a grain &mdash; holds its molecules slightly less tightly and gives up more vapour. A concave surface &mdash; the little hollow where two grains meet &mdash; holds them slightly more tightly and gives up less.</p>
+            <p>So there is a standing imbalance. Vapour leaves the rounded outsides of the grains and preferentially condenses in the crevice between them, simply because that is where the vapour pressure is lowest. <strong>The neck fills in because it is a neck.</strong></p>
+            <p class="pull-quote pink">The connection is not built at the connection point by coincidence. It is built there because a joint is, geometrically, the place material goes.</p>
+            <p>And the bridge is self-reinforcing while it is small: the tighter the curve of the hollow, the stronger the pull, so the earliest and most awkward stage of a bond is the one the physics favours most.</p>
+            <p>Vapour diffusion is the main route in ordinary snow. It is not the only one &mdash; surface diffusion matters for very small necks, and other transport paths contribute &mdash; but the direction is the same whichever mechanism carries it. <em>Material goes to the contact.</em></p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 170" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig2-title fig2-desc">
+              <title id="fig2-title">Vapour leaves the convex grain surfaces and condenses in the concave neck</title>
+              <desc id="fig2-desc">Two grains side by side, joined by a narrow waist. The outer surfaces of the grains curve outward; the surface of the waist between them curves inward, pinching to its narrowest at the contact. Arrows leave the outward-curving surfaces of both grains and converge on the waist, showing vapour moving from the convex surfaces, where vapour pressure is higher, to the concave neck, where it is lower.</desc>
+              <!-- Redrawn. The first version put a lens-shaped object between two overlapping
+                   circles, which read as a third thing floating in the gap rather than as the
+                   hollow where two grains meet. The silhouette now pinches: the neck's own
+                   surface curves inward, which is the entire reason material goes there. -->
+              <circle cx="100" cy="88" r="44" fill="rgba(244,114,182,0.12)" stroke="rgba(244,114,182,0.85)" stroke-width="1.4"/>
+              <circle cx="202" cy="88" r="44" fill="rgba(244,114,182,0.12)" stroke="rgba(244,114,182,0.85)" stroke-width="1.4"/>
+              <path d="M144 70 Q 151 84 158 70 L 158 106 Q 151 92 144 106 Z" fill="rgba(244,114,182,0.12)" stroke="none"/>
+              <path d="M144 70 Q 151 84 158 70" fill="none" stroke="rgba(244,244,251,0.95)" stroke-width="2"/>
+              <path d="M144 106 Q 151 92 158 106" fill="none" stroke="rgba(244,244,251,0.95)" stroke-width="2"/>
+              <g stroke="rgba(34,211,238,0.8)" stroke-width="1.1" fill="none">
+                <path d="M68 50 L 136 76"/><path d="M68 126 L 136 100"/>
+                <path d="M234 50 L 166 76"/><path d="M234 126 L 166 100"/>
+                <path d="M100 40 L 142 72"/><path d="M202 40 L 160 72"/>
+              </g>
+              <g fill="rgba(34,211,238,0.8)">
+                <path d="M136 76 l -8 -2 4 7 z"/><path d="M136 100 l -8 2 4 -7 z"/>
+                <path d="M166 76 l 8 -2 -4 7 z"/><path d="M166 100 l 8 2 -4 -7 z"/>
+                <path d="M142 72 l -7 -3 1 8 z"/><path d="M160 72 l 7 -3 -1 8 z"/>
+              </g>
+              <g font-family="Space Mono, monospace" font-size="6.4">
+                <text x="22" y="26" fill="#f9a8d4">convex &mdash; gives up vapour</text>
+                <text x="151" y="152" text-anchor="middle" fill="#f4f2fb">concave &mdash; takes it in</text>
+              </g>
+            </svg>
+            <div class="diagram-caption">Figure 2 &middot; the neck fills in because it is a neck</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Nothing Melts &middot; Stimpunks</span>
+        <span class="spread-footer-right">4</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 5: built out of the grains ════ -->
+  <div class="spread" id="spread-5">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Where the material comes from</div>
+          <h2 class="spread-heading" id="out-of-the-grains">Built out of the grains themselves</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Nothing arrives from outside. No binder is added, no glue, no external supply. Every molecule in the bond came off the surface of one of the grains it is joining.</p>
+            <p>Which means the grains are very slightly diminished by it. Material leaves their rounded outsides and goes into the bridge, so as the neck thickens the grains lose a little of their own convexity to it. <strong>The joint is paid for out of the substance of the things being joined, and by nobody else.</strong></p>
+            <p class="pull-quote pink">The connection is not free, and it is not subsidised. It is made of them.</p>
+            <p>It is worth being exact about the scale of that cost, because it would be easy to make it sound tragic and it is not. The grains are not consumed. What they give up is a small amount of surface, and what they get is a structure that holds. In the accounting of the whole snowpack the trade is enormously favourable: a modest redistribution of material buys a very large increase in strength.</p>
+            <p>But it is a redistribution and not a gift, and a piece about bonding that skipped this would be describing a machine that runs on nothing. <em>The bridge is not extra. It is some of them, relocated.</em></p>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Nothing Melts &middot; Stimpunks</span>
+        <span class="spread-footer-right">5</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 6: only where they touch ════ -->
+  <div class="spread" id="spread-6">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The requirement</div>
+          <h2 class="spread-heading" id="only-where-they-touch">Only where they touch</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">A neck forms at contact. Not near contact. Grains that are close but not touching do not bond, however long you leave them and however many of them there are.</p>
+            <p>The rate is controlled by things that are all about the contact itself: <strong>how hard the grains are pressed together</strong>, and <strong>what shape they are where they meet</strong>. Angular grains with real contact area bond differently from rounded ones resting against each other at a point.</p>
+            <p class="pull-quote pink">Proximity is not contact. A heap of grains in the same box is not a snowpack, and time alone does not convert one into the other.</p>
+            <p>This is the least poetic fact in the zine and possibly the most useful one. The mechanism on the previous two spreads is real, reliable and free &mdash; and it is <em>entirely conditional</em> on an actual meeting having taken place. The physics does not reach across gaps. It has no mechanism for that at all.</p>
+            <p>So a structure of this kind cannot be assembled by putting the components in the same place. Something has to bring them into contact, and hold them there, before any of the rest of it can begin.</p>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Nothing Melts &middot; Stimpunks</span>
+        <span class="spread-footer-right">6</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 7: faster when warmer ════ -->
+  <div class="spread" id="spread-7">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The condition</div>
+          <h2 class="spread-heading" id="faster-when-warmer">Faster when it is warmer</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Sintering is strongly temperature-dependent, and not gently so. Close to the melting point necks grow very rapidly. In deep cold the same process runs so slowly that snow can stay powder for a long time.</p>
+            <p>Nothing about the grains has changed between those two cases. They are the same crystals with the same shapes in the same contact. What differs is the amount of thermal energy available to move molecules from surfaces into vapour and back down into the hollows.</p>
+            <p class="pull-quote pink">Whether a heap of grains becomes a structure is not only a question about the grains. It is a question about the conditions they are in.</p>
+            <p>This is the spread where the physics stops being neutral and starts being a claim about environments. <strong>The capacity to bond is not a property the grains either have or lack.</strong> It is a property of grains-in-a-temperature, and the same snow that will not consolidate at &minus;30&nbsp;&deg;C will knit within hours near zero.</p>
+            <p>Which sets a limit on how much any account of bonding can ask of the things being bonded. You cannot get a cold snowpack to sinter by describing the benefits of sintering to it.</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 168" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig3-title fig3-desc">
+              <title id="fig3-title">Neck growth against temperature</title>
+              <desc id="fig3-desc">Bond size plotted against temperature. The curve is very low and almost flat in deep cold, rises gradually through the middle of the range, and climbs steeply as the temperature approaches the melting point at zero degrees. The shape is schematic rather than a plot of measured data.</desc>
+              <path d="M30 20 V 132 H 284" fill="none" stroke="rgba(196,181,212,0.34)" stroke-width="1"/>
+              <polyline points="36,128 66,126 96,122 124,115 150,105 174,92 196,76 216,58 234,42 250,30"
+                        fill="none" stroke="rgba(244,114,182,0.95)" stroke-width="2"/>
+              <path d="M250 132 V 24" stroke="rgba(34,211,238,0.6)" stroke-width="1" stroke-dasharray="3 3"/>
+              <g font-family="Space Mono, monospace" font-size="6.4">
+                <text x="30" y="15" fill="#c4b5d4">bond size</text>
+                <text x="40" y="118" fill="#f9a8d4">deep cold &mdash; almost nothing</text>
+                <text x="254" y="20" fill="#67e8f9">0 &deg;C</text>
+                <text x="284" y="150" text-anchor="end" fill="#c4b5d4">warmer &rarr;</text>
+                <text x="30" y="150" fill="#c4b5d4">colder</text>
+                <text x="30" y="162" fill="#c4b5d4">schematic &mdash; shape, not data</text>
+              </g>
+            </svg>
+            <div class="diagram-caption">Figure 3 &middot; the same grains, different conditions</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Nothing Melts &middot; Stimpunks</span>
+        <span class="spread-footer-right">7</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 8: what it buys ════ -->
+  <div class="spread" id="spread-8">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The return</div>
+          <h2 class="spread-heading" id="what-it-buys">What the bonding buys</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">A sintered snowpack does something none of its grains can do alone: it distributes a load.</p>
+            <p>Stand on loose snow and your weight goes into whichever crystals are directly beneath your boot, which have nothing to pass it to, so they move and you sink. Stand on sintered snow and the force travels outward through the necks into grains that are nowhere near your foot. <strong>The structure spreads the load across members that are not carrying you directly.</strong></p>
+            <p>That is the entire benefit, and it is worth stating in exactly those terms rather than as strength in the abstract. The snowpack is not made of tougher crystals afterwards. Each individual grain is as fragile as it ever was. What changed is that no grain has to bear the whole thing by itself.</p>
+            <p class="pull-quote pink">Nothing got stronger. The load got shared, which turns out to be the same thing from the outside and a completely different thing from the inside.</p>
+            <p>It also becomes far harder to disturb. A single grain can be flicked away; a grain with six necks cannot be removed without breaking six bonds, and the force required goes up accordingly. <em>Resistance to collapse is not hardness. It is connectedness.</em></p>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Nothing Melts &middot; Stimpunks</span>
+        <span class="spread-footer-right">8</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 9: what it costs ════ -->
+  <div class="spread" id="spread-9">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The part that is not a consolation</div>
+          <h2 class="spread-heading" id="what-it-costs">And what it costs</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Everything so far has been an argument for bonding. Here is the other half, and it is not a small qualification. <strong>Sintering is also how a slab is made.</strong></p>
+            <p>A slab avalanche needs a particular arrangement: a cohesive layer of snow sitting on top of a weaker one. The cohesive layer is cohesive <em>because</em> its grains have sintered together. And when a fracture starts in the weak layer underneath, that cohesion is exactly what lets the break run &mdash; because the slab moves as one connected object rather than as loose grains that would simply subside.</p>
+            <p class="pull-quote pink">The same connectedness that carries your weight is what allows a crack to cross the whole of it at once.</p>
+            <p>Both halves of that sentence describe the same necks. There is no version of the structure that has the load-sharing and not the propagation; they are one property seen from two sides, exactly as the depth of a well is both the holding and the cost of leaving.</p>
+            <p><strong>And note where the failure actually is.</strong> The slab is not the problem. The slab is doing precisely what a bonded structure does. The problem is the <em>weak layer underneath it</em>, which the bonding above cannot reach, cannot repair, and cannot compensate for. A perfectly sintered slab on bad ground is a perfectly sintered slab on bad ground.</p>
+            <p><span class="pink">Bonding to each other does not fix what you are all standing on.</span> That is not an argument against bonding. It is a statement about what bonding is for and what it cannot be asked to do, and any account of mutual support that leaves it out is selling something.</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 150" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig4-title fig4-desc">
+              <title id="fig4-title">A cohesive slab resting on a weak layer</title>
+              <desc id="fig4-desc">A cross-section of snow on a slope. The upper band is drawn as grains joined by necks: the cohesive slab. Beneath it is a band of loose, unconnected grains: the weak layer. Below that is the ground. A fracture line runs along the weak layer, not through the slab, showing that the failure is underneath the bonded structure rather than within it.</desc>
+              <path d="M18 44 H 282 V 74 H 18 Z" fill="rgba(244,114,182,0.10)" stroke="rgba(244,114,182,0.7)" stroke-width="1.2"/>
+              <g fill="none" stroke="rgba(244,114,182,0.85)" stroke-width="1">
+                <circle cx="40" cy="59" r="7"/><circle cx="62" cy="55" r="7"/><circle cx="84" cy="61" r="7"/>
+                <circle cx="106" cy="55" r="7"/><circle cx="128" cy="60" r="7"/><circle cx="150" cy="55" r="7"/>
+                <circle cx="172" cy="61" r="7"/><circle cx="194" cy="55" r="7"/><circle cx="216" cy="60" r="7"/>
+                <circle cx="238" cy="56" r="7"/><circle cx="260" cy="60" r="7"/>
+              </g>
+              <g fill="none" stroke="rgba(244,244,251,0.9)" stroke-width="1.4">
+                <path d="M47 57 h 8"/><path d="M69 57 h 8"/><path d="M91 58 h 8"/><path d="M113 57 h 8"/>
+                <path d="M135 57 h 8"/><path d="M157 58 h 8"/><path d="M179 57 h 8"/><path d="M201 57 h 8"/>
+                <path d="M223 58 h 8"/><path d="M245 58 h 8"/>
+              </g>
+              <g fill="rgba(196,181,212,0.5)">
+                <circle cx="36" cy="88" r="3"/><circle cx="58" cy="92" r="3"/><circle cx="80" cy="87" r="3"/>
+                <circle cx="104" cy="92" r="3"/><circle cx="126" cy="87" r="3"/><circle cx="150" cy="92" r="3"/>
+                <circle cx="174" cy="87" r="3"/><circle cx="198" cy="92" r="3"/><circle cx="222" cy="87" r="3"/>
+                <circle cx="246" cy="92" r="3"/><circle cx="268" cy="88" r="3"/>
+              </g>
+              <path d="M18 100 q 66 4 132 0 t 132 0" fill="none" stroke="rgba(34,211,238,0.9)" stroke-width="1.6" stroke-dasharray="6 4"/>
+              <path d="M18 116 H 282" stroke="rgba(196,181,212,0.55)" stroke-width="1.4"/>
+              <g font-family="Space Mono, monospace" font-size="6.2">
+                <text x="18" y="38" fill="#f9a8d4">the slab &mdash; bonded, load-sharing</text>
+                <text x="282" y="80" text-anchor="end" fill="#c4b5d4">weak layer &mdash; unbonded</text>
+                <text x="18" y="134" fill="#67e8f9">the fracture runs here, under the bonding</text>
+                <text x="282" y="134" text-anchor="end" fill="#c4b5d4">ground</text>
+              </g>
+            </svg>
+            <div class="diagram-caption">Figure 4 &middot; the failure is not in the necks</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Nothing Melts &middot; Stimpunks</span>
+        <span class="spread-footer-right">9</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 10: whose move this is — INCOMPLETE, awaiting Theory of Water p.18 ════ -->
+  <div class="spread" id="spread-10">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Whose move this is</div>
+          <h2 class="spread-heading" id="whose-move">The reading is not ours</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Everything up to here is snow physics, and snow physics does not mean anything on its own. The move from <em>sintering</em> to <em>coalition</em> was made by somebody, and it matters a great deal who.</p>
+            <p>It is <strong>Leanne Betasamosake Simpson&rsquo;s</strong>, in <em>Theory of Water: Nishnaabe Maps to the Times Ahead</em>, in a chapter called simply &ldquo;Sintering.&rdquo; She is Michi Saagiig Nishnaabeg, and the book is what its subtitle says &mdash; Nishnaabe maps, not a general-purpose metaphor kit. <strong>Helen Edgar</strong> then applied that reading to neurodivergent community in <em>Sintering: Neurodivergent Community Building</em>, which is where this zine came from. The order is <em>her framework, Helen&rsquo;s application, our physics</em>, and the physics is the part that was already lying about in a review paper.</p>
+            <p><strong>She did not get it from a review paper.</strong> She got it from grooming a ski trail. The chapter is written from the sled, in the early morning: <em>&ldquo;I wasn&rsquo;t expecting the snow to teach me how to live in the world.&rdquo;</em></p>
+            <p>Her definition, which is the sentence this whole zine has been walking around:</p>
+            <p class="pull-quote pink">&ldquo;Sintering is a joining. It is a communal transformation that creates a fabric of former snowflakes bonded to each other.&rdquo;<span class="attr">Leanne Betasamosake Simpson, <em>Theory of Water</em>, ch. 4</span></p>
+            <p>And then the two lines that do the work our spreads three and eight were reaching for, and do it better: <em>&ldquo;the first thing a snowflake does when it lands from the skyworld is to join bonds, actual physical bonds, with its neighbours&rdquo;</em> &mdash; and <span class="pink">&ldquo;It weaves itself into its environment, and it does so in a way that doesn&rsquo;t destroy its neighbours.&rdquo;</span></p>
+            <p>Her conclusion is not a metaphor and should not be softened into one: <em>&ldquo;The snow is telling me that sintering is how Michi Saagiig Nishnaabeg make worlds, how we weave ourselves into the land without destroying it.&rdquo;</em> She asks whether it could ground a method of solidarity, <em>&ldquo;strengthening and renewing connections across communities of struggle towards new constellations of co-resistance.&rdquo;</em></p>
+            <p><strong>And she names the cost more honestly than we did.</strong> Two sentences, and the second is the one to sit with: <em>&ldquo;Sintering is slow deformation.&rdquo;</em> And: <span class="pink">&ldquo;Sintering in the forest is easy for me; sintering with people I&rsquo;m currently sharing the planet with, much more difficult.&rdquo;</span></p>
+            <p class="note"><strong>What is ours, so that it is not mistaken for hers.</strong> Spread nine &mdash; the slab, the weak layer, and the argument that cohesion is also what lets a fracture propagate &mdash; is not in her chapter and is not her claim. She is describing what bonding builds; the avalanche is our addition, and any objection to it is an objection to us. <strong>Also credited:</strong> Helen&rsquo;s essay draws on <strong>Jorn Bettin</strong>, <em>Trust in Human Scale</em> (2024), on being trusted only to the extent that we comply.</p>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Nothing Melts &middot; Stimpunks</span>
+        <span class="spread-footer-right">10</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 11: refusals ════ -->
+  <div class="spread" id="spread-11">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">What this does not say</div>
+          <h2 class="spread-heading" id="what-this-does-not-say">What this does not say</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">A piece that takes an Indigenous writer&rsquo;s framework and runs physics over it can go wrong in several directions at once. So, plainly:</p>
+          </div>
+          <div class="refusals">
+            <div class="refusal"><span class="refusal-tag">Not:</span><span><strong>a general-purpose metaphor extracted from someone&rsquo;s cosmology.</strong> Simpson&rsquo;s chapter is Nishnaabe knowledge, arrived at from a specific practice on specific land, and she says what it is for: <em>&ldquo;how Michi Saagiig Nishnaabeg make worlds.&rdquo;</em> We are describing her move and pointing at her book. <span class="pink">The framework is hers; the physics is the borrowed part, not the other way round.</span></span></div>
+            <div class="refusal"><span class="refusal-tag">Not:</span><span><strong>that the physics validates the reading.</strong> It does not, and it is not needed. Snow sintered long before anyone measured a neck, and Simpson&rsquo;s argument does not become true when a review paper agrees with it. <em>Physics is not a permit.</em></span></div>
+            <div class="refusal"><span class="refusal-tag">Not:</span><span><strong>that bonding is always good, or always available.</strong> It requires contact, it requires warmth, and it is <em>slow deformation</em> &mdash; her phrase, and the honest one. She says outright that sintering with people is much harder than sintering in a forest, and we are not going to be more optimistic about this than she is.</span></div>
+            <div class="refusal"><span class="refusal-tag">Not:</span><span><strong>that the avalanche is her argument.</strong> Spread nine is ours. She describes what bonding builds; the slab, the weak layer and the propagating fracture are our addition, and any objection belongs to us.</span></div>
+            <div class="refusal"><span class="refusal-tag">Not:</span><span><strong>that community fixes conditions.</strong> A well-sintered slab on a weak layer is still on a weak layer. <em>Mutual support is not a substitute for what people are standing on</em>, and a piece about bonding that let itself be read that way would be doing real harm with a nice picture attached.</span></div>
+            <div class="refusal"><span class="refusal-tag">Not:</span><span><strong>a proof.</strong> <strong>A rhyme, not a proof.</strong> Nothing in the thermodynamics of ice establishes anything about people. What the snow supplies is one exactly documented case of a shape &mdash; <em>separate things becoming a structure that carries weight, without any of them ceasing to be separate, by material moving to the places where they touch</em> &mdash; and somebody who grooms a trail at dawn already noticed it was a shape worth living by.</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Nothing Melts &middot; Stimpunks</span>
+        <span class="spread-footer-right">11</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 12: COLOPHON ════ -->
+  <div class="spread" id="spread-12">
+    <div class="interior">
+      <div class="colophon">
+        <div>
+          <div class="colophon-top">
+            <span class="colophon-ls">L&#9733;S</span>
+            <p class="colophon-phrase">They bond below the melting point, and stay separate crystals with their own boundaries. Nothing dissolves. And a perfectly bonded slab on a weak layer is still on a weak layer.</p>
+          </div>
+
+          <div class="series-list">
+            <div class="series-item"><span class="series-num">No. 8</span> The Universe Runs on Difference &mdash; uniformity is efficient and brittle</div>
+            <div class="series-item"><span class="series-num">No. 71</span> Nothing Is Pushing &mdash; the cost of staying belongs to the place</div>
+            <div class="series-item"><span class="series-num">No. 73</span> Measured Against a Tree &mdash; the ruler was one specialisation</div>
+            <div class="series-item"><span class="series-num">No. 76</span> Forty Minutes to See &mdash; the second system, and who pays for the light</div>
+            <div class="series-item current"><span class="series-num">No. 77</span> Nothing Melts &mdash; joined without dissolving &larr; you are here</div>
+          </div>
+
+          <div class="reflect">
+            <div class="reflect-label">Reflection</div>
+            <p class="reflect-q">Where have you been asked to melt when what was needed was a neck?</p>
+            <p class="reflect-q">Which of your bonds were built out of your own substance, and was that a fair price?</p>
+            <p class="reflect-q">Who are you near, and have you actually touched?</p>
+            <p class="reflect-q">What conditions would have to change before any of this could happen at all?</p>
+            <p class="reflect-q">What is the layer underneath, that no amount of bonding to each other will repair?</p>
+          </div>
+        </div>
+
+        <div class="colophon-body">
+          <h3 class="colophon-h" id="sources">Sources</h3>
+          <p><strong>The reading, read at the book.</strong> Leanne Betasamosake Simpson, <em>Theory of Water: Nishnaabe Maps to the Times Ahead</em> (Haymarket, 2025), <strong>ch. 4, &ldquo;Sintering.&rdquo;</strong> Source of <em>&ldquo;Sintering is a joining. It is a communal transformation that creates a fabric of former snowflakes bonded to each other&rdquo;</em>; of the parenthesis this zine takes its title from, bonds forming <em>&ldquo;at temperatures below zero (this is not a melting process)&rdquo;</em>; of <em>&ldquo;the first thing a snowflake does when it lands from the skyworld is to join bonds, actual physical bonds, with its neighbours&rdquo;</em>; of <em>&ldquo;It weaves itself into its environment, and it does so in a way that doesn&rsquo;t destroy its neighbours&rdquo;</em>; of <em>&ldquo;Sintering is bonding; it is building coalitions with your neighbours&rdquo;</em>; of <em>&ldquo;Sintering is slow deformation&rdquo;</em>; of <em>&ldquo;The snow is telling me that sintering is how Michi Saagiig Nishnaabeg make worlds, how we weave ourselves into the land without destroying it&rdquo;</em>; of the question about <em>&ldquo;new constellations of co-resistance&rdquo;</em>; and of <em>&ldquo;Sintering in the forest is easy for me; sintering with people I&rsquo;m currently sharing the planet with, much more difficult.&rdquo;</em> Also read at the book, from a later chapter and quoted on spread ten: her account of Nibi &mdash; water, animate, <em>they</em> &mdash; and <em>&ldquo;Perhaps world making is communal struggle.&rdquo;</em></p>
+          <p class="note"><strong>Cited by chapter, not by page, and deliberately.</strong> Helen&rsquo;s essay gives page numbers from the paper edition; the copy read here is the Kindle edition, whose pagination differs. Neither is wrong and there is no discrepancy to report &mdash; but a page number that only holds in one edition is not a citation another reader can follow, so this house cites the chapter.</p>
+          <p><strong>The physics.</strong> J. R. Blackford, <em>&ldquo;Sintering and microstructure of ice: a review,&rdquo; Journal of Physics D: Applied Physics</em> 40 (2007), R355 &mdash; the standard review, for vapour diffusion as the main mechanism of isothermal ice sintering, for neck growth driven by the lower vapour pressure over the concave contact, for the roles of contact pressure and grain shape, and for the strong temperature dependence with very rapid growth near the melting point. <em>Open:</em> read at the review&rsquo;s abstract and at the surrounding literature rather than the full text; the mechanism is textbook and the direction of the claim is not in dispute, but the paper itself is worth reading before any future piece leans harder on it. Figure 3 is explicitly labelled schematic &mdash; a shape, not plotted data.</p>
+          <p><strong>The premelting qualification on spread three</strong> &mdash; that ice surfaces carry a quasi-liquid layer below the bulk melting point which can assist bonding without bulk melting, and that its onset, thickness and relation to liquid water have been contested for over a century &mdash; is from the premelting literature. It is on the spread rather than buried here <strong>because it partially undercuts our own title</strong>, and a qualification that only appears in the colophon is a qualification hidden.</p>
+          <p><strong>The avalanche argument on spread nine is ours.</strong> That a cohesive slab over a weak layer is the slab-avalanche condition, and that the cohesion enabling load-sharing is also what allows a fracture to propagate, is standard avalanche science; the use made of it here is not Simpson&rsquo;s and not Helen&rsquo;s, and spread ten says so on the page.</p>
+
+          <h3 class="colophon-h" id="credits">Credits</h3>
+          <p><strong>The framework is Leanne Betasamosake Simpson&rsquo;s</strong>, and it is Nishnaabe knowledge arrived at from a practice &mdash; grooming a trail &mdash; on specific land. <strong>The application to neurodivergent community is Helen Edgar&rsquo;s</strong>, in <a href="https://autisticrealms.com/sintering-neurodivergent-community-building/">Sintering: Neurodivergent Community Building</a> (Autistic Realms, 2025), which is the seed of this zine and which also draws on <strong>Jorn Bettin</strong>, <em>Trust in Human Scale</em> (2024). <strong>Only the physics and the avalanche are ours.</strong> The order in which those three appear on spread ten is the order the knowledge actually travelled, which is the correction No. 72 had to make about a different book and is not a mistake we intend to repeat.</p>
+          <p>Proposed by <strong>Ryan Boren</strong>, who chose the title, ruled that the avalanche spread stays because it is the honest cost, and required Simpson be read at the book rather than through Helen &mdash; then supplied the chapter. <strong>Reading it changed three spreads.</strong> The below-zero claim the title rests on turns out to be hers, in a parenthesis, so spread three now credits her for it; spread eight&rsquo;s argument about weaving in without destroying neighbours is hers in better words; and the cost we thought we were adding, she had already named as <em>slow deformation.</em></p>
+
+          <h3 class="colophon-h" id="what-this-does-not-re-argue">What this deliberately does not re-argue</h3>
+          <p><a href="the-universe-runs-on-difference-zine.html">The Universe Runs on Difference</a> (No. 8) owns monoculture and fragility. <a href="nothing-is-pushing-zine.html">Nothing Is Pushing</a> (No. 71) owns the argument that a cost can belong to the arrangement rather than the occupant, and spread nine is adjacent to it. <a href="measured-against-a-tree-zine.html">Measured Against a Tree</a> (No. 73) owns the deficit list and the broken ruler.</p>
+          <p><strong>A rhyme, not a proof.</strong> <span class="pink">Separate things can become a structure that carries weight without any of them ceasing to be separate. It happens where they touch, out of their own substance, only when conditions allow &mdash; and it does nothing whatever about the ground.</span></p>
+          <div class="colophon-footer">
+            <a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks Foundation</a> &times; <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a><br>
+            stimpunks.org &middot; morerealms.com &middot; starstuff.earth<br>
+            <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> &middot; open edition &middot; print freely
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Nothing Melts &middot; Stimpunks</span>
+        <span class="spread-footer-right">12</span>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /zine-shell -->
+
+<script>
+  let current = 1;
+  const total = 12;
+
+  function changePage(dir) {
+    const next = current + dir;
+    if (next < 1 || next > total) return;
+    document.getElementById('spread-' + current).classList.remove('active');
+    current = next;
+    document.getElementById('spread-' + current).classList.add('active');
+    document.getElementById('page-counter').textContent = current + ' / ' + total;
+    document.getElementById('prev-btn').disabled = current === 1;
+    document.getElementById('next-btn').disabled = current === total;
+    document.getElementById('prev-btn').classList.toggle('active', current > 1);
+    document.getElementById('next-btn').classList.toggle('active', current < total);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') changePage(1);
+    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   changePage(-1);
+  });
+
+  document.getElementById('prev-btn').disabled = true;
+  document.getElementById('next-btn').classList.add('active');
+</script>
+<script src="starstuff.js" defer></script>
+</body>
+</html>
