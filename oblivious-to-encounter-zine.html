@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0a0a14">
+<link rel="canonical" href="https://starstuff.earth/oblivious-to-encounter-zine.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta name="description" content="A Burke chain on the plantation, scalability, and the mushroom that cannot be farmed — with every joint marked documented, contested or leap. Sugarcane crossed the Atlantic in 1493 as clonal planting stock: a crop that could be multiplied without being bred, which Anna Tsing calls comparatively self-contained, oblivious to encounter. Portuguese Brazil combined it with enslaved Africans taken far enough that there were no established routes for escape, and with land emptied by conquest. Interchangeability was not found in people; it was inflicted on them. Sidney Mintz, read at pages 47 and 48, describes Barbados holdings cut into equal ten-acre parcels planted and harvested seriatim to keep the mill fed, mills that operated unceasingly, and a work week broken only from Saturday night to Monday — and argues, in his own hedged words, that the plantation was probably the closest thing to industry typical of the seventeenth century. Industry before the homeland. Tsing names the resulting definition of progress scalability, and states its cost: it banishes meaningful diversity, that is, diversity that might change things. Then the counter-case: seventy years and millions of yen have not produced cultivated matsutake, because it exists only inside a transformative mutualism with pine roots — the only field successes used trees already colonised. And in Japan it vanished by abandonment rather than destruction. Nine documented joints, one contested, one leap. A rhyme, not a proof.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Star Stuff · Stimpunks Foundation × More Realms">
+<meta property="og:url" content="https://starstuff.earth/oblivious-to-encounter-zine.html">
+<meta property="og:title" content="Oblivious to Encounter">
+<meta property="og:description" content="Sameness is not the default that difference deviates from. It is the expensive thing, and somebody paid for it. A chain from the sugarcane plantation to the mushroom no one has managed to farm.">
+<meta property="og:image" content="https://starstuff.earth/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A rainbow-hued cosmic image — we are all made of star stuff.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Oblivious to Encounter">
+<meta name="twitter:description" content="What the plantation had to remove before it could scale — and the mushroom that has defeated seventy years of trying, because it is not a product but a relationship. Joints marked documented, contested and leap.">
+<meta name="twitter:image" content="https://starstuff.earth/og-card.jpg">
+<title>Oblivious to Encounter — Stimpunks Zine No. 74</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="starstuff.css">
+<style>
+  :root {
+    --void:  var(--sp-void-deep);
+    --deep:  var(--sp-deep);
+    --page:  var(--sp-page);
+    --violet:var(--sp-purple);
+    --pink:  var(--sp-pink);
+    --gold:  var(--sp-gold);
+    --cyan:  var(--sp-cyan);
+    --green: var(--sp-green);
+    --ember: #c1653a;
+    --accent: var(--sp-cyan);          /* this zine's identity accent — the frame that admits only what fits it */
+    --star-white: var(--sp-white-soft);
+    --stardust:   var(--sp-secondary-soft);
+    --dim:   var(--sp-dim);
+    --dim2:  var(--sp-dim-soft);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--void);
+    font-family: 'Atkinson Hyperlegible Next', system-ui, sans-serif;
+    color: var(--star-white);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── STARFIELD (green · white · gold — forest floor and mill fire) ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 13% 21%, rgba(74,222,128,0.55) 0%, transparent 100%),
+      radial-gradient(1px 1px at 27% 44%, rgba(244,244,251,0.6) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 46% 14%, rgba(74,222,128,0.46) 0%, transparent 100%),
+      radial-gradient(1px 1px at 61% 66%, rgba(244,244,251,0.64) 0%, transparent 100%),
+      radial-gradient(2px 2px at 78% 26%, rgba(251,191,36,0.42) 0%, transparent 100%),
+      radial-gradient(1px 1px at 89% 54%, rgba(74,222,128,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 93% 81%, rgba(244,244,251,0.5) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 7% 58%, rgba(251,191,36,0.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 36% 88%, rgba(74,222,128,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 54% 34%, rgba(244,244,251,0.52) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .zine-shell { position: relative; z-index: 1; max-width: 820px; margin: 0 auto; padding: 1.5rem 1.5rem 3rem; }
+
+  .nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem; }
+  .nav-brand { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--dim); }
+  .nav-controls { display: flex; gap: 0.5rem; align-items: center; }
+  .nav-btn { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; background: transparent; color: var(--dim2); border: 1px solid rgba(196,181,212,0.25); border-radius: 3px; padding: 0.4rem 0.75rem; cursor: pointer; transition: all 0.2s; }
+  .nav-btn.active { color: var(--accent); border-color: rgba(34,211,238,0.5); }
+  .nav-btn:disabled { opacity: 0.3; cursor: default; }
+  .page-counter { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.1em; color: var(--dim); padding: 0 0.4rem; }
+
+  .spread { display: none; animation: fadeIn 0.5s ease forwards; }
+  .spread.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ── COVER ── */
+  .cover-spread {
+    position: relative; min-height: 520px; border-radius: 4px; overflow: hidden;
+    background:
+      radial-gradient(ellipse at 24% 22%, rgba(251,191,36,0.11) 0%, transparent 52%),
+      radial-gradient(ellipse at 80% 28%, rgba(74,222,128,0.10) 0%, transparent 52%),
+      radial-gradient(ellipse at 70% 84%, rgba(34,211,238,0.08) 0%, transparent 52%),
+      radial-gradient(ellipse at 26% 82%, rgba(74,222,128,0.07) 0%, transparent 52%),
+      var(--deep);
+    border: 1px solid rgba(34,211,238,0.25);
+    box-shadow: inset 0 0 80px rgba(34,211,238,0.06), 0 0 0 4px rgba(255,255,255,0.03);
+    display: flex; flex-direction: column; justify-content: flex-end; padding: 3rem;
+  }
+  .cover-motif { position: absolute; top: -4px; right: -14px; width: 340px; height: 340px; opacity: 0.75; pointer-events: none; }
+  .cover-issue { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.5em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.5rem; }
+  .cover-title { font-weight: 700; font-size: clamp(1.9rem, 5.2vw, 3rem); line-height: 1.03; color: var(--star-white); letter-spacing: -0.01em; margin-bottom: 0.9rem; }
+  .cover-title .amp { color: var(--accent); font-style: italic; }
+  .cover-subtitle { font-size: 1rem; color: var(--stardust); opacity: 0.85; margin-bottom: 1.5rem; max-width: 470px; line-height: 1.55; }
+  .cover-byline { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.14em; color: var(--dim); margin-bottom: 1.8rem; }
+  .cover-byline strong { color: var(--stardust); font-weight: 700; }
+  .cover-rule { width: 220px; max-width: 60%; margin-bottom: 1.3rem; }
+  .cover-meta { display: flex; gap: 2rem; align-items: center; }
+  .cover-ls { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 1.4rem; color: var(--accent); letter-spacing: 0.05em; }
+  .cover-meta-text { font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--dim2); line-height: 1.9; }
+  .cover-corner { position: absolute; top: 2rem; right: 2.5rem; text-align: right; }
+  .cover-corner-num { font-weight: 700; font-size: 4.5rem; line-height: 1; color: var(--accent); opacity: 0.22; }
+  .cover-corner-label { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); display: block; margin-top: -0.3rem; }
+
+  /* ── INTERIOR ── */
+  .interior { background: var(--page); border: 1px solid rgba(34,211,238,0.15); border-radius: 4px; overflow: hidden; min-height: 480px; }
+  .spread-2col { display: grid; grid-template-columns: 1fr 1fr; min-height: 440px; }
+  .spread-left, .spread-right { padding: 3rem 2.4rem; position: relative; }
+  .spread-left { border-right: 1px solid rgba(167,139,250,0.12); }
+
+  .spread-2col.stacked { display: flex; flex-direction: column; }
+  .spread-2col.stacked > .spread-left,
+  .spread-2col.stacked > .spread-right { border-right: none; }
+  .spread-2col.stacked > .col-diagram { order: 2; padding-top: 0; }
+  .spread-2col.stacked > .col-text { padding-left: max(2.4rem, calc((100% - 32rem) / 2)); padding-right: max(2.4rem, calc((100% - 32rem) / 2)); }
+  .spread-2col.stacked .diagram-wrap { height: auto; }
+  .spread-2col.stacked .diagram { max-width: 420px; }
+
+  .eyebrow { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.1rem; }
+  .body-text { font-size: 0.98rem; line-height: 1.72; color: var(--stardust); }
+  .body-text p { margin-bottom: 1rem; }
+  .body-text p:last-child { margin-bottom: 0; }
+  .body-text strong { font-weight: 700; color: var(--star-white); }
+  .body-text em { font-style: italic; color: var(--star-white); }
+  .body-text a { color: var(--cyan); text-decoration: none; border-bottom: 1px solid rgba(34,211,238,0.4); }
+  .body-text a:hover { border-bottom-color: var(--cyan); color: var(--star-white); }
+  .body-text .violet { color: var(--violet); font-weight: 700; }
+  .body-text .pink { color: var(--pink); font-weight: 700; }
+  .body-text .gold { color: var(--gold); font-weight: 700; }
+  .body-text .cyan { color: var(--cyan); font-weight: 700; }
+  .body-text .green { color: var(--green); font-weight: 700; }
+  .body-text .dim { color: var(--dim); }
+  .body-text .lede { font-size: 1.08rem; color: var(--star-white); }
+  .latin { font-style: italic; color: var(--star-white); }
+
+  .spread-heading { font-weight: 700; font-size: 1.9rem; line-height: 1.12; color: var(--star-white); margin-bottom: 0.7rem; letter-spacing: -0.01em; margin-top: 0; scroll-margin-top: 5rem; }
+  .spread-heading .spectrum-word { background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .rule { width: 40px; margin: 1rem 0; }
+
+  /* ── JOINT TAGS — the collection's whole point ── */
+  .joint { display: inline-flex; align-items: baseline; gap: 0.4rem; font-family: 'Space Mono', monospace; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; padding: 0.16rem 0.5rem; border-radius: 2px; white-space: nowrap; vertical-align: 0.12em; }
+  .joint::before { content: ''; width: 16px; height: 0; border-top-width: 2px; align-self: center; }
+  .joint-documented { color: var(--green); background: rgba(74,222,128,0.10); border: 1px solid rgba(74,222,128,0.32); }
+  .joint-documented::before { border-top-style: solid; border-top-color: var(--green); }
+  .joint-contested  { color: var(--gold); background: rgba(251,191,36,0.10); border: 1px solid rgba(251,191,36,0.32); }
+  .joint-contested::before { border-top-style: dashed; border-top-color: var(--gold); }
+  .joint-leap       { color: var(--pink); background: rgba(244,114,182,0.10); border: 1px solid rgba(244,114,182,0.32); }
+  .joint-leap::before { border-top-style: dotted; border-top-color: var(--pink); }
+  .joint-line { margin-bottom: 1rem !important; }
+
+  .pull-quote { font-size: 1.18rem; font-weight: 700; line-height: 1.4; color: var(--star-white); border-left: 3px solid var(--accent); padding-left: 1.1rem; margin: 1.4rem 0; font-style: italic; }
+  .pull-quote.violet { border-left-color: var(--violet); }
+  .pull-quote.cyan { border-left-color: var(--cyan); }
+  .pull-quote.gold { border-left-color: var(--gold); }
+  .pull-quote.pink { border-left-color: var(--pink); }
+  .pull-quote.green { border-left-color: var(--green); }
+  .pull-quote .attr { display: block; font-family: 'Space Mono', monospace; font-size: 0.6rem; font-weight: 400; font-style: normal; letter-spacing: 0.08em; color: var(--dim); margin-top: 0.6rem; }
+
+  .callout { margin: 1.3rem 0; padding: 1rem 1.15rem; background: rgba(34,211,238,0.06); border: 1px solid rgba(34,211,238,0.24); border-radius: 4px; font-size: 1rem; font-style: italic; color: var(--star-white); line-height: 1.55; }
+  .callout .attr { display: block; font-family: 'Space Mono', monospace; font-size: 0.58rem; font-style: normal; letter-spacing: 0.06em; color: var(--dim); margin-top: 0.5rem; }
+
+  .note { font-size: 0.84rem; line-height: 1.6; color: var(--dim); border-left: 2px solid rgba(34,211,238,0.28); padding-left: 0.9rem; margin: 1.1rem 0; }
+  .note strong { color: var(--stardust); font-weight: 700; }
+
+  /* ── THE WITHHELD APPARATUS — link 2 only ──
+     Every other link in this chain gets the format: a diagram, or a pull-quote doing
+     analytical work. Link 2 gets a plain bordered block and nothing else, and says so
+     on its face. Standing rule from A Field Guide to Turtles: a subject that cannot
+     take the apparatus gets a DIFFERENT card, not a smaller one. ── */
+  .withheld { border: 1px dashed rgba(193,101,58,0.5); border-radius: 4px; padding: 1.15rem 1.25rem; margin: 1.4rem 0; background: rgba(193,101,58,0.05); }
+  .withheld-label { font-family: 'Space Mono', monospace; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ember); margin-bottom: 0.6rem; }
+  .withheld p { font-size: 0.88rem; line-height: 1.62; color: var(--stardust); margin: 0; }
+
+  /* ── DIAGRAMS ── */
+  .diagram-wrap { display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; }
+  .diagram { width: 100%; max-width: 300px; display: block; }
+  .diagram-caption { font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim); text-align: center; margin-top: 0.9rem; line-height: 1.9; }
+
+  /* ── REFUSALS ── */
+  .refusals { margin-top: 1.3rem; }
+  .refusal { font-size: 0.88rem; line-height: 1.5; color: var(--stardust); padding: 0.55rem 0; border-bottom: 1px solid rgba(34,211,238,0.1); display: flex; gap: 0.6rem; align-items: baseline; }
+  .refusal:last-child { border-bottom: none; }
+  .refusal-tag { font-family: 'Space Mono', monospace; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ember); flex-shrink: 0; padding-top: 0.12rem; }
+  .refusal strong { color: var(--star-white); font-weight: 700; }
+
+  /* ── THE RUNNING SPINE — generated, never hand-edited ── */
+  .spine { border-top: 1px solid rgba(167,139,250,0.12); padding: 1.1rem 2.4rem 0.2rem; }
+  .spine svg { width: 100%; max-width: 620px; margin: 0 auto; display: block; overflow: visible; }
+  .spine-label { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); text-align: center; margin-top: 0.5rem; }
+  .spine-node { fill: var(--sp-dim); }
+  .spine-node.dim { fill: rgba(196,181,212,0.35); }
+  .spine-node.live { fill: var(--accent); }
+  .spine-ring { fill: none; stroke: var(--accent); stroke-width: 1.6; }
+  .spine-track { fill: none; stroke-width: 1.6; stroke-linecap: round; }
+  .spine-track.documented { stroke: rgba(74,222,128,0.55); }
+  .spine-track.contested  { stroke: rgba(251,191,36,0.6); stroke-dasharray: 6 4; }
+  .spine-track.leap       { stroke: rgba(244,114,182,0.6); stroke-dasharray: 1.5 4; }
+  .spine-track.dim        { opacity: 0.32; }
+  .spine-raillabel { font-family: 'Space Mono', monospace; font-size: 7px; letter-spacing: 0.18em; text-transform: uppercase; fill: var(--sp-dim); }
+
+  /* ── COLOPHON ── */
+  .colophon { padding: 3rem; display: flex; flex-direction: column; justify-content: space-between; min-height: 480px; background: radial-gradient(ellipse at 82% 18%, rgba(34,211,238,0.09) 0%, transparent 50%), radial-gradient(ellipse at 18% 85%, rgba(74,222,128,0.06) 0%, transparent 50%), var(--page); }
+  .colophon-top { border-bottom: 1px solid rgba(34,211,238,0.14); padding-bottom: 1.3rem; margin-bottom: 1.2rem; }
+  .colophon-ls { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 2.4rem; color: var(--accent); letter-spacing: 0.05em; display: block; margin-bottom: 0.4rem; }
+  .colophon-phrase { font-size: 0.98rem; font-weight: 700; font-style: italic; color: var(--stardust); }
+  .series-list { display: flex; flex-direction: column; gap: 0.38rem; margin-bottom: 1.2rem; }
+  .series-item { font-size: 0.72rem; color: var(--dim); letter-spacing: 0.01em; display: flex; gap: 0.7rem; align-items: baseline; line-height: 1.45; }
+  .series-item.current { color: var(--accent); font-weight: 700; }
+  .series-num { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim2); flex-shrink: 0; }
+  .series-item.current .series-num { color: var(--accent); }
+  .reflect { border-top: 1px solid rgba(34,211,238,0.14); padding-top: 1rem; margin-bottom: 1.2rem; }
+  .reflect-label { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.65rem; }
+  .reflect-q { font-size: 0.86rem; line-height: 1.55; color: var(--stardust); margin-bottom: 0.55rem; font-style: italic; }
+  .reflect-q:last-child { margin-bottom: 0; }
+  .colophon-body { font-size: 0.75rem; color: var(--dim); line-height: 1.75; margin-bottom: 1.2rem; }
+  .colophon-body a { color: var(--cyan); text-decoration: none; border-bottom: 1px solid rgba(34,211,238,0.4); }
+  .colophon-body a:hover { border-bottom-color: var(--cyan); }
+  .colophon-h { font-family: 'Space Mono', monospace; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: var(--stardust); margin: 1rem 0 0.4rem; scroll-margin-top: 5rem; }
+  .colophon-footer { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--dim); line-height: 2.2; border-top: 1px solid rgba(34,211,238,0.14); padding-top: 1rem; }
+
+  /* ── SPREAD FOOTER ── */
+  .spread-footer { display: flex; justify-content: space-between; align-items: center; padding: 0.9rem 2.4rem; border-top: 1px solid rgba(34,211,238,0.1); }
+  .spread-footer-left { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--dim); }
+  .spread-footer-right { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; color: var(--accent); }
+
+  .twinkle { position: fixed; width: 3px; height: 3px; border-radius: 50%; animation: twinkle-anim 3s ease-in-out infinite; pointer-events: none; z-index: 0; }
+
+  @media (max-width: 600px) {
+    .spread-2col { grid-template-columns: 1fr; }
+    .spread-left { border-right: none; border-bottom: 1px solid rgba(167,139,250,0.12); }
+    .spread-2col.stacked > .spread-left { border-bottom: none; }
+    .spread-2col.stacked > .col-text { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .cover-spread { padding: 2rem; min-height: 420px; }
+    .cover-motif { width: 224px; height: 224px; top: -4px; right: -24px; opacity: 0.5; }
+    .cover-title { font-size: 1.75rem; }
+    .spread-heading { font-size: 1.55rem; }
+    .spread-left, .spread-right { padding: 2rem 1.5rem; }
+    .colophon { padding: 2rem 1.5rem; }
+    .spine { padding: 1rem 1.5rem 0.2rem; }
+  }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Oblivious to Encounter",
+  "alternativeHeadline": "on what the plantation had to remove before it could scale",
+  "url": "https://starstuff.earth/oblivious-to-encounter-zine.html",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://starstuff.earth/oblivious-to-encounter-zine.html" },
+  "image": "https://starstuff.earth/og-card.jpg",
+  "datePublished": "2026-08-29",
+  "dateModified": "2026-08-29",
+  "inLanguage": "en",
+  "isPartOf": { "@type": "CreativeWorkSeries", "name": "Star Stuff", "url": "https://starstuff.earth/" },
+  "license": "https://creativecommons.org/licenses/by-sa/4.0/",
+  "keywords": "scalability, plantation, sugarcane, Anna Tsing, Sidney Mintz, matsutake, ectomycorrhiza, satoyama, monoculture, standardization, neurodiversity, accommodation, social model of disability, ecological collapse",
+  "author": { "@type": "Organization", "name": "Stimpunks Foundation", "url": "https://stimpunks.org/" },
+  "publisher": [
+    { "@type": "Organization", "name": "Stimpunks Foundation", "url": "https://stimpunks.org/", "logo": { "@type": "ImageObject", "url": "https://starstuff.earth/og-card.jpg" } },
+    { "@type": "Organization", "name": "More Realms", "url": "https://morerealms.com/" }
+  ],
+  "description": "A How We Got Here chain with every joint graded: nine documented, one contested, one leap. Sugarcane crossed the Atlantic as clonal planting stock — multiplied without being bred, and in Anna Tsing's phrase comparatively self-contained, oblivious to encounter. Portuguese Brazil combined it with enslaved Africans taken beyond any established route of escape and with land emptied by conquest; interchangeability was inflicted, not discovered. Sidney Mintz (Sweetness and Power, pp. 47–48) documents Barbados holdings cut into equal ten-acre parcels harvested seriatim to keep the mill fed, mills operating unceasingly, and argues in his own hedged words that the plantation was probably the closest thing to industry typical of the seventeenth century. Tsing names the resulting idea of progress scalability and states its cost: it banishes meaningful diversity, that is, diversity that might change things. The counter-case is matsutake, uncultivated after seventy years because it exists only in transformative mutualism with pine roots; and in Japan it was lost to abandonment rather than destruction."
+}
+</script>
+</head>
+<body>
+
+<div class="twinkle" style="top:9%;left:12%;background:var(--green);box-shadow:0 0 6px var(--green);animation-delay:-0.4s"></div>
+<div class="twinkle" style="top:24%;left:87%;background:var(--star-white);box-shadow:0 0 6px var(--star-white);animation-delay:-1.5s"></div>
+<div class="twinkle" style="top:57%;left:6%;background:var(--gold);box-shadow:0 0 6px var(--gold);animation-delay:-2.2s"></div>
+<div class="twinkle" style="top:74%;left:92%;background:var(--green);box-shadow:0 0 6px var(--green);animation-delay:-0.9s"></div>
+<div class="twinkle" style="top:89%;left:31%;background:var(--star-white);box-shadow:0 0 6px var(--star-white);animation-delay:-1.8s"></div>
+<div class="twinkle" style="top:41%;left:95%;background:var(--cyan);box-shadow:0 0 6px var(--cyan);animation-delay:-2.9s"></div>
+
+<div class="zine-shell">
+
+  <nav class="ss-nav" style="--nav-accent:#22d3ee;" aria-label="Star Stuff collection">
+    <span class="ss-nav-home-group"><a class="ss-nav-home" href="index.html"><span class="ss-star" aria-hidden="true">★</span> stuff</a><a class="ss-nav-about" href="about.html">about</a>
+      <a class="ss-nav-search" href="search.html">search</a></span>
+    <span class="ss-nav-links">
+      <a class="ss-nav-prev" href="everything-else-is-commentary-zine.html"><span class="ss-nav-arrow" aria-hidden="true">&lsaquo;</span> <span class="ss-nav-label">Everything Else Is Commentary</span></a>
+      <a class="ss-nav-next" href="collection-star-gazing.html"><span class="ss-nav-label">Star Gazing</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
+    </span>
+    <a class="ss-nav-collection" href="collection-how-we-got-here.html"><span class="ss-nav-collection-label">Collection</span> <span class="ss-nav-collection-name">How We Got Here</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
+  </nav>
+
+  <nav class="nav">
+    <div class="nav-brand"><a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks</a> × <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a> · Zine No. 74</div>
+    <div class="nav-controls">
+      <button class="nav-btn" id="prev-btn" onclick="changePage(-1)">← prev</button>
+      <span class="page-counter" id="page-counter">1 / 13</span>
+      <button class="nav-btn" id="next-btn" onclick="changePage(1)">next →</button>
+    </div>
+  </nav>
+
+  <!-- ════ SPREAD 1: COVER ════ -->
+  <div class="spread active" id="spread-1">
+    <div class="cover-spread">
+      <svg class="cover-motif" viewBox="0 0 340 340" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <!-- Above: six identical parcels on one straight rail — the engineered landscape,
+             every unit interchangeable, all of them feeding a single clock.
+             Below: the same span, grown — irregular, joined, no two junctions alike.
+             Same width, two ways of occupying it. That is the whole chain.
+
+             NO TEXT IN THIS MOTIF. The cover's clean zone is left of the corner numeral
+             and above the .cover-issue eyebrow, roughly x 10..180, y 10..145 here, and
+             four shipped covers put a caption in it and landed on the gradient title.
+             Shapes only. Nothing below y 132 or right of x 148 \u2014 measured: at x 164 the
+             rightmost bar and the curve came within 1px of the .cover-corner-label ink. -->
+        <g fill="none" stroke="rgba(251,191,36,0.9)" stroke-width="1.8">
+          <rect x="10" y="30" width="16" height="34" rx="2"/>
+          <rect x="34" y="30" width="16" height="34" rx="2"/>
+          <rect x="58" y="30" width="16" height="34" rx="2"/>
+          <rect x="82" y="30" width="16" height="34" rx="2"/>
+          <rect x="106" y="30" width="16" height="34" rx="2"/>
+          <rect x="130" y="30" width="16" height="34" rx="2"/>
+        </g>
+        <path d="M10 74 H146" fill="none" stroke="rgba(251,191,36,0.95)" stroke-width="2.2"/>
+        <g fill="rgba(251,191,36,0.95)">
+          <circle cx="18" cy="74" r="2.4"/><circle cx="42" cy="74" r="2.4"/><circle cx="66" cy="74" r="2.4"/>
+          <circle cx="90" cy="74" r="2.4"/><circle cx="114" cy="74" r="2.4"/><circle cx="138" cy="74" r="2.4"/>
+        </g>
+        <g fill="none" stroke="rgba(74,222,128,0.9)" stroke-width="1.6" stroke-linecap="round">
+          <path d="M14 104 C32 96, 36 122, 58 112 S82 98, 96 116 S126 106, 142 100"/>
+          <path d="M28 101 V116"/><path d="M58 112 V127"/><path d="M96 116 V129"/><path d="M118 108 V121"/>
+          <path d="M44 121 H70"/><path d="M86 129 H108"/>
+        </g>
+        <g fill="rgba(74,222,128,0.95)">
+          <circle cx="28" cy="116" r="3"/><circle cx="58" cy="127" r="3.4"/>
+          <circle cx="96" cy="129" r="3"/><circle cx="118" cy="121" r="2.6"/>
+        </g>
+      </svg>
+
+      <div class="cover-corner">
+        <div class="cover-corner-num" aria-hidden="true">74</div>
+        <span class="cover-corner-label">How We Got Here</span>
+      </div>
+
+      <div class="cover-issue">Stimpunks × More Realms · Zine No. 74</div>
+
+      <h1 class="cover-title">Oblivious to<br><span class="amp">Encounter</span></h1>
+
+      <p class="cover-subtitle">on what the plantation had to remove before it could scale, and the mushroom that has defeated seventy years of trying</p>
+
+      <p class="cover-byline">a chain in ten links · <strong>every joint marked</strong></p>
+
+      <hr class="spectrum-line cover-rule">
+
+      <div class="cover-meta">
+        <div class="cover-ls">L★S</div>
+        <div class="cover-meta-text">
+          Love You Down<br>
+          To Your Star Stuff<br>
+          · open edition ·
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 2: LINK 1 ════ -->
+  <div class="spread" id="spread-2">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Link 1 · the Atlantic, 1493</div>
+          <h2 class="spread-heading" id="the-cane">A crop that did not need to be bred</h2>
+          <p class="joint-line"><span class="joint joint-documented">documented</span></p>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Sugarcane is a New Guinea cultigen. When Europeans got hold of it they had no idea how to breed it — and they did not need to. You plant cane by cutting a piece of cane and pushing it into the ground.</p>
+            <p>Every plant that comes up is the previous plant again. Not a descendant: a continuation. There is no cross, no pollen, no other parent, nothing that has to go right between two organisms for the next one to exist. <strong>The crop could be multiplied indefinitely without anything ever meeting anything.</strong></p>
+            <p>Carried across the Atlantic, it arrived somewhere it had no history — no companion species, no established diseases, nothing it had ever had to negotiate with. Anna Tsing gives this property its name:</p>
+            <div class="pull-quote gold">As plants go, it was comparatively self-contained, oblivious to encounter.<span class="attr">Anna Lowenhaupt Tsing, <em>The Mushroom at the End of the World</em>, 2015</span></div>
+            <p>Hold onto how ordinary that sounds. It is a remark about a grass. Nothing in it is sinister, and nothing in it is <em>about</em> anybody. It is a description of a plant that can be moved without being negotiated with.</p>
+            <p><strong>That property is the specification the rest of this chain is built out of.</strong> Everything that follows is what happened when people went looking for the same property in other things — in land, in work, in time, and then in each other.</p>
+            <p class="dim">The date is the standard account: cane carried from the Canaries on Columbus's second voyage and planted in Hispaniola before the end of 1493. Mintz notes independently that the technical skills for the early Spanish plantations of Santo Domingo were imported "principally from the Canaries."</p>
+          </div>
+        </div>
+      </div>
+      <div class="spine"><svg viewBox="0 0 620 84" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain so far, 1 of 11: two rails — what was engineered to scale, and what only grows in relation. Live node: 1493, a crop that need not be bred."><path class="spine-track documented dim" d="M64 26 H115.4"/><path class="spine-track documented dim" d="M115.4 26 H166.8"/><path class="spine-track documented dim" d="M166.8 26 H218.2"/><path class="spine-track contested dim" d="M218.2 26 H269.6"/><path class="spine-track documented dim" d="M269.6 26 H321"/><path class="spine-track documented dim" d="M321 26 H372.4"/><path class="spine-track documented dim" d="M372.4 26 H400.7 V58 H423.8"/><path class="spine-track documented dim" d="M423.8 58 H475.2"/><path class="spine-track documented dim" d="M475.2 58 H526.6"/><path class="spine-track leap dim" d="M526.6 58 H554.9 V8 H578"/><text class="spine-raillabel" x="0" y="29">built</text><text class="spine-raillabel" x="0" y="61">grown</text><circle class="spine-node dim" cx="115.4" cy="26" r="3.2"/><circle class="spine-node dim" cx="166.8" cy="26" r="3.2"/><circle class="spine-node dim" cx="218.2" cy="26" r="3.2"/><circle class="spine-node dim" cx="269.6" cy="26" r="3.2"/><circle class="spine-node dim" cx="321" cy="26" r="3.2"/><circle class="spine-node dim" cx="372.4" cy="26" r="3.2"/><circle class="spine-node dim" cx="423.8" cy="58" r="3.2"/><circle class="spine-node dim" cx="475.2" cy="58" r="3.2"/><circle class="spine-node dim" cx="526.6" cy="58" r="3.2"/><circle class="spine-node dim" cx="578" cy="8" r="3.2"/><circle class="spine-node live" cx="64" cy="26" r="4.4"/><circle class="spine-ring" cx="64" cy="26" r="8"/></svg><div class="spine-label">1 · 1493 · a crop that need not be bred</div></div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Oblivious to Encounter · Stimpunks</span>
+        <span class="spread-footer-right">2</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 3: LINK 2 — THE APPARATUS IS WITHHELD HERE ON PURPOSE ════ -->
+  <div class="spread" id="spread-3">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Link 2 · Brazil, sixteenth and seventeenth centuries</div>
+          <h2 class="spread-heading" id="three-things">Three things chosen because they could be severed</h2>
+          <p class="joint-line"><span class="joint joint-documented">documented</span></p>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">In their sugarcane plantations in colonial Brazil, Portuguese planters assembled a formula out of three components. Tsing lists them plainly: exterminate local people and plants; prepare now-empty, unclaimed land; bring in exotic and isolated labour and crops.</p>
+            <p>The cane, we have met. It had no relations here.</p>
+            <p>The land had been emptied — the emptiness was manufactured, and calling it "unclaimed" was part of the manufacture.</p>
+            <p><strong>And the third component was people.</strong> Portuguese cane-growing came together with the newly gained power to take enslaved people from Africa. Tsing is exact about what made that, from the growers' point of view, an advantage: they had <em>"no local social relations and thus no established routes for escape."</em> They had been carried somewhere they had no history — which is the same sentence we just wrote about the grass, and it is not a coincidence, and it is not a metaphor.</p>
+
+            <div class="withheld">
+              <div class="withheld-label">The format stops here</div>
+              <p>Every other link in this chain gets the apparatus — a diagram, a table, a quotation turned over and examined. This one does not, and the absence is the point rather than an oversight. What was done to these people is not a mechanism for illustrating an argument about mushrooms, and running our format over it would make it one. So the link is stated and left standing. Nothing is drawn.</p>
+            </div>
+
+            <p>What the plantation then did was make the interchangeability real. Once the central mill was running, every operation had to keep the mill's time. Workers cut cane as fast as they could, with full attention, <em>just to avoid injury</em>. Tsing: "Under these conditions, workers did, indeed, become self-contained and interchangeable units."</p>
+            <p><span class="gold">Read that sentence twice.</span> <strong>Interchangeability was not a property anyone discovered in human beings. It was produced in them, by force, at enormous cost, because the system required it as an input.</strong> The sameness came first as a demand and only afterwards looked like a fact.</p>
+            <p>Tsing's word for what the arrangement was engineered to achieve is <em>alienation</em>: "Plantations were organized to further alienation for better control."</p>
+          </div>
+        </div>
+      </div>
+      <div class="spine"><svg viewBox="0 0 620 84" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain so far, 2 of 11: two rails — what was engineered to scale, and what only grows in relation. Live node: 16-17c, three things that could be moved."><path class="spine-track documented" d="M64 26 H115.4"/><path class="spine-track documented dim" d="M115.4 26 H166.8"/><path class="spine-track documented dim" d="M166.8 26 H218.2"/><path class="spine-track contested dim" d="M218.2 26 H269.6"/><path class="spine-track documented dim" d="M269.6 26 H321"/><path class="spine-track documented dim" d="M321 26 H372.4"/><path class="spine-track documented dim" d="M372.4 26 H400.7 V58 H423.8"/><path class="spine-track documented dim" d="M423.8 58 H475.2"/><path class="spine-track documented dim" d="M475.2 58 H526.6"/><path class="spine-track leap dim" d="M526.6 58 H554.9 V8 H578"/><text class="spine-raillabel" x="0" y="29">built</text><text class="spine-raillabel" x="0" y="61">grown</text><circle class="spine-node" cx="64" cy="26" r="3.2"/><circle class="spine-node dim" cx="166.8" cy="26" r="3.2"/><circle class="spine-node dim" cx="218.2" cy="26" r="3.2"/><circle class="spine-node dim" cx="269.6" cy="26" r="3.2"/><circle class="spine-node dim" cx="321" cy="26" r="3.2"/><circle class="spine-node dim" cx="372.4" cy="26" r="3.2"/><circle class="spine-node dim" cx="423.8" cy="58" r="3.2"/><circle class="spine-node dim" cx="475.2" cy="58" r="3.2"/><circle class="spine-node dim" cx="526.6" cy="58" r="3.2"/><circle class="spine-node dim" cx="578" cy="8" r="3.2"/><circle class="spine-node live" cx="115.4" cy="26" r="4.4"/><circle class="spine-ring" cx="115.4" cy="26" r="8"/></svg><div class="spine-label">2 · 16-17c · three things that could be moved</div></div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Oblivious to Encounter · Stimpunks</span>
+        <span class="spread-footer-right">3</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 4: LINK 3 ════ -->
+  <div class="spread" id="spread-4">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Link 3 · Barbados, seventeenth century</div>
+          <h2 class="spread-heading" id="cut-to-the-mill">The land was cut to fit the machine</h2>
+          <p class="joint-line"><span class="joint joint-documented">documented</span></p>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Cane must be cut when it is ripe and ground as soon as it is cut. Those two facts are agronomy. What was built on top of them is not.</p>
+            <p>Sidney Mintz describes what English planters on Barbados did about it. They divided their land into equal portions of about ten acres each, so that the portions could be planted and harvested <span class="latin">seriatim</span> — one after another, on a stagger —</p>
+            <div class="pull-quote">assuring a steady flow of cane to the mill.<span class="attr">Sidney W. Mintz, <em>Sweetness and Power</em>, p. 48</span></div>
+            <p><strong>The fields were subdivided so that the machine would never be idle.</strong> Not the harvest scheduled around the land: the land re-cut around the schedule. During the harvest the mills "operated unceasingly." Time, Mintz writes, "was of the essence throughout, from the moment when the cane was perfect for cutting until the semicrystalline product was poured into molds to drain and be dried." The only break in the work week ran from Saturday night to Monday morning.</p>
+            <p>This is the mill's clock, and it reached everything. Cutting crews, mill crews and boiling crews all had to be coordinated to it; field labour was divided "not only seasonally but also between the cane and the subsistence crops." Mintz's list of what results — specialization by skill and job, division of labour into "crews, shifts, and 'gangs,'" and <em>"the stress upon punctuality and discipline"</em> — is a description of a factory floor written about the sixteenth and seventeenth centuries.</p>
+            <p>And one detail that should not be lost, because it tells you what kind of thing the discipline was. Some of the pressure, Mintz says, came from</p>
+            <div class="pull-quote gold">the somewhat misleading idea that sugar syrup, once boiling, should not be permitted to cool until "struck."<span class="attr">Mintz, p. 48 — his hedge, not ours</span></div>
+            <p><span class="gold">Part of the killing pace was not required by the chemistry at all.</span> <strong>The demand had already outrun the thing it claimed to serve.</strong> People were worked past exhaustion partly on the strength of a belief about sugar that was not quite right — and nobody was going to find out, because the schedule was no longer answerable to the process. It was answerable to itself.</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 190" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Six equal parcels staggered in time so that their harvest windows tile end to end without a gap, all feeding one continuous mill bar beneath them. The mill never stops; the land is what was rearranged.">
+              <text class="dlabel" x="6" y="14">parcels, equal</text>
+              <g stroke="rgba(251,191,36,0.85)" stroke-width="1.4" fill="rgba(251,191,36,0.12)">
+                <rect x="20" y="24" width="40" height="13" rx="2"/>
+                <rect x="60" y="42" width="40" height="13" rx="2"/>
+                <rect x="100" y="60" width="40" height="13" rx="2"/>
+                <rect x="140" y="78" width="40" height="13" rx="2"/>
+                <rect x="180" y="96" width="40" height="13" rx="2"/>
+                <rect x="220" y="114" width="40" height="13" rx="2"/>
+              </g>
+              <g stroke="rgba(251,191,36,0.5)" stroke-width="1" stroke-dasharray="3 3">
+                <path d="M40 37 V150"/><path d="M80 55 V150"/><path d="M120 73 V150"/>
+                <path d="M160 91 V150"/><path d="M200 109 V150"/><path d="M240 127 V150"/>
+              </g>
+              <text class="dlabel" x="6" y="146">the mill, never idle</text>
+              <rect x="20" y="152" width="240" height="16" rx="2" fill="rgba(34,211,238,0.16)" stroke="rgba(34,211,238,0.85)" stroke-width="1.6"/>
+              <g fill="rgba(34,211,238,0.95)">
+                <circle cx="40" cy="160" r="2.6"/><circle cx="80" cy="160" r="2.6"/><circle cx="120" cy="160" r="2.6"/>
+                <circle cx="160" cy="160" r="2.6"/><circle cx="200" cy="160" r="2.6"/><circle cx="240" cy="160" r="2.6"/>
+              </g>
+              <text class="dlabel" x="20" y="184">time →</text>
+              <style>
+                .dlabel { font-family: 'Space Mono', monospace; font-size: 7.5px; letter-spacing: 0.14em; text-transform: uppercase; fill: #c4b5d4; }
+              </style>
+            </svg>
+            <div class="diagram-caption">Six equal parcels, staggered so their<br>harvests tile end to end. The mill sets<br>the tempo; the land is what moved.</div>
+          </div>
+        </div>
+      </div>
+      <div class="spine"><svg viewBox="0 0 620 84" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain so far, 3 of 11: two rails — what was engineered to scale, and what only grows in relation. Live node: 17c, the land cut to the mill."><path class="spine-track documented" d="M64 26 H115.4"/><path class="spine-track documented" d="M115.4 26 H166.8"/><path class="spine-track documented dim" d="M166.8 26 H218.2"/><path class="spine-track contested dim" d="M218.2 26 H269.6"/><path class="spine-track documented dim" d="M269.6 26 H321"/><path class="spine-track documented dim" d="M321 26 H372.4"/><path class="spine-track documented dim" d="M372.4 26 H400.7 V58 H423.8"/><path class="spine-track documented dim" d="M423.8 58 H475.2"/><path class="spine-track documented dim" d="M475.2 58 H526.6"/><path class="spine-track leap dim" d="M526.6 58 H554.9 V8 H578"/><text class="spine-raillabel" x="0" y="29">built</text><text class="spine-raillabel" x="0" y="61">grown</text><circle class="spine-node" cx="64" cy="26" r="3.2"/><circle class="spine-node" cx="115.4" cy="26" r="3.2"/><circle class="spine-node dim" cx="218.2" cy="26" r="3.2"/><circle class="spine-node dim" cx="269.6" cy="26" r="3.2"/><circle class="spine-node dim" cx="321" cy="26" r="3.2"/><circle class="spine-node dim" cx="372.4" cy="26" r="3.2"/><circle class="spine-node dim" cx="423.8" cy="58" r="3.2"/><circle class="spine-node dim" cx="475.2" cy="58" r="3.2"/><circle class="spine-node dim" cx="526.6" cy="58" r="3.2"/><circle class="spine-node dim" cx="578" cy="8" r="3.2"/><circle class="spine-node live" cx="166.8" cy="26" r="4.4"/><circle class="spine-ring" cx="166.8" cy="26" r="8"/></svg><div class="spine-label">3 · 17c · the land cut to the mill</div></div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Oblivious to Encounter · Stimpunks</span>
+        <span class="spread-footer-right">4</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 5: LINK 4 ════ -->
+  <div class="spread" id="spread-5">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Link 4 · and the author's own hedge, kept</div>
+          <h2 class="spread-heading" id="before-the-homeland">Industry before the homeland</h2>
+          <p class="joint-line"><span class="joint joint-documented">documented</span></p>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">The usual story runs: Europe invented the factory, and then exported it. Mintz, on the two pages this link is built from, argues the traffic went the other way.</p>
+            <div class="pull-quote">it makes good sense to view the plantations as a synthesis of field and factory. Thus approached, they were really quite unlike anything known in mainland Europe at the time.<span class="attr">Mintz, <em>Sweetness and Power</em>, p. 47</span></div>
+            <p>The specialization, the crews and shifts and "gangs," the punctuality, the coordinated tempo — these, he writes, "are features associated more with industry than with agriculture — at least in the sixteenth century." The plantation was not a farm that later got industrialised. <strong>It was already the thing, and it was the thing first.</strong></p>
+            <p>Mintz knows exactly how that lands: "It may seem a topsy-turvy view of the West to find its factories elsewhere at so early a period." He is careful about why the idea sounds strange, and his reasons are worth having in full. The plantation was read as agricultural because it was colonial and worked by coerced rather than free labour; because it made a food rather than textiles or tools; and — the one that should stop us —</p>
+            <div class="pull-quote cyan">scholars interested in the history of western industry quite predictably began with the artisans and craftsmen of Europe … rather than with overseas ventures.<span class="attr">Mintz, p. 48</span></div>
+            <p><span class="cyan">The factory was looked for where the scholars already were.</span> Its absence from the record was a fact about the searchlight, not about the world — which is the same failure <a href="conquering-gaze-zine.html">A Conquering Gaze from Nowhere</a> (41) tracks in another discipline entirely.</p>
+            <p>Now the part we are obliged to print as he printed it. Mintz's strongest claim is <strong>marked, by him, as a belief</strong>, about a view then only "gradually winning recognition":</p>
+            <div class="pull-quote green">I believe it was probably the closest thing to industry that was typical of the seventeenth century.<span class="attr">Mintz, p. 48 — hedge in the original, and kept</span></div>
+            <div class="note"><strong>Why the hedge stays on.</strong> It would be easy, and much punchier, to write "Mintz proved the plantation was the first factory." He did not say that. He said <em>I believe it was probably</em>. This zine ships alongside a note in <a href="too-good-to-check.html">Too Good to Check</a> about a famous sentence whose author hedged it twice and whose readers dropped the hedge on the way. Doing that to Mintz in the same week would be indefensible. The claim is his; so is the qualifier.</div>
+          </div>
+        </div>
+      </div>
+      <div class="spine"><svg viewBox="0 0 620 84" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain so far, 4 of 11: two rails — what was engineered to scale, and what only grows in relation. Live node: 17c, industry before the homeland."><path class="spine-track documented" d="M64 26 H115.4"/><path class="spine-track documented" d="M115.4 26 H166.8"/><path class="spine-track documented" d="M166.8 26 H218.2"/><path class="spine-track contested dim" d="M218.2 26 H269.6"/><path class="spine-track documented dim" d="M269.6 26 H321"/><path class="spine-track documented dim" d="M321 26 H372.4"/><path class="spine-track documented dim" d="M372.4 26 H400.7 V58 H423.8"/><path class="spine-track documented dim" d="M423.8 58 H475.2"/><path class="spine-track documented dim" d="M475.2 58 H526.6"/><path class="spine-track leap dim" d="M526.6 58 H554.9 V8 H578"/><text class="spine-raillabel" x="0" y="29">built</text><text class="spine-raillabel" x="0" y="61">grown</text><circle class="spine-node" cx="64" cy="26" r="3.2"/><circle class="spine-node" cx="115.4" cy="26" r="3.2"/><circle class="spine-node" cx="166.8" cy="26" r="3.2"/><circle class="spine-node dim" cx="269.6" cy="26" r="3.2"/><circle class="spine-node dim" cx="321" cy="26" r="3.2"/><circle class="spine-node dim" cx="372.4" cy="26" r="3.2"/><circle class="spine-node dim" cx="423.8" cy="58" r="3.2"/><circle class="spine-node dim" cx="475.2" cy="58" r="3.2"/><circle class="spine-node dim" cx="526.6" cy="58" r="3.2"/><circle class="spine-node dim" cx="578" cy="8" r="3.2"/><circle class="spine-node live" cx="218.2" cy="26" r="4.4"/><circle class="spine-ring" cx="218.2" cy="26" r="8"/></svg><div class="spine-label">4 · 17c · industry before the homeland</div></div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Oblivious to Encounter · Stimpunks</span>
+        <span class="spread-footer-right">5</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 6: LINK 5 ════ -->
+  <div class="spread" id="spread-6">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Link 5 · the name for it</div>
+          <h2 class="spread-heading" id="scalability">Progress, defined as expanding without changing your mind</h2>
+          <p class="joint-line"><span class="joint joint-contested">contested</span></p>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">The plantation formula worked. That is the uncomfortable part, and it has to be said before anything else: great profits were made in Europe, and most Europeans were far enough away not to see how.</p>
+            <p>Tsing's argument is that the formula then stopped being a way to grow sugar and became a way to think about everything. She gives the quality a name:</p>
+            <div class="pull-quote gold">Scalability … is the ability of a project to change scales smoothly without any change in project frames.<span class="attr">Tsing, 2015</span></div>
+            <p>A scalable business does not reorganise as it grows. A scalable research project "admits only data that already fit the research frame." And the requirement underneath both, in her words, is that project elements be <em>"oblivious to the indeterminacies of encounter"</em> — the cane's property, promoted to a design principle.</p>
+            <p>She is precise about what the word does not mean, and the precision matters. Scalable is not the same as <em>discussable in terms of scale</em>. Braudel's <span class="latin">longue durée</span> and Bohr's quantum atom both revolutionised thinking about scale and neither is a project of scalability. The distinction is between changing your sense of scale and refusing to let scale change you.</p>
+            <div class="note"><strong>Why this joint is tagged contested.</strong> Links 1 through 4 are things that happened, described by historians. This one is a frame — an interpretation offered by one anthropologist, in one book, about what the word <em>progress</em> came to mean. It is a productive frame and we are using it. It is not a finding, no one measured it, and a reader is entitled to reject it and keep the four links before it. That is what the dashed line under this spread means.</div>
+            <p>What the frame buys is a question you can ask of any institution: <span class="gold">what did this have to become blind to in order to get this big?</span></p>
+          </div>
+        </div>
+      </div>
+      <div class="spine"><svg viewBox="0 0 620 84" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain so far, 5 of 11: two rails — what was engineered to scale, and what only grows in relation. Live node: expanding without changing your mind."><path class="spine-track documented" d="M64 26 H115.4"/><path class="spine-track documented" d="M115.4 26 H166.8"/><path class="spine-track documented" d="M166.8 26 H218.2"/><path class="spine-track contested" d="M218.2 26 H269.6"/><path class="spine-track documented dim" d="M269.6 26 H321"/><path class="spine-track documented dim" d="M321 26 H372.4"/><path class="spine-track documented dim" d="M372.4 26 H400.7 V58 H423.8"/><path class="spine-track documented dim" d="M423.8 58 H475.2"/><path class="spine-track documented dim" d="M475.2 58 H526.6"/><path class="spine-track leap dim" d="M526.6 58 H554.9 V8 H578"/><text class="spine-raillabel" x="0" y="29">built</text><text class="spine-raillabel" x="0" y="61">grown</text><circle class="spine-node" cx="64" cy="26" r="3.2"/><circle class="spine-node" cx="115.4" cy="26" r="3.2"/><circle class="spine-node" cx="166.8" cy="26" r="3.2"/><circle class="spine-node" cx="218.2" cy="26" r="3.2"/><circle class="spine-node dim" cx="321" cy="26" r="3.2"/><circle class="spine-node dim" cx="372.4" cy="26" r="3.2"/><circle class="spine-node dim" cx="423.8" cy="58" r="3.2"/><circle class="spine-node dim" cx="475.2" cy="58" r="3.2"/><circle class="spine-node dim" cx="526.6" cy="58" r="3.2"/><circle class="spine-node dim" cx="578" cy="8" r="3.2"/><circle class="spine-node live" cx="269.6" cy="26" r="4.4"/><circle class="spine-ring" cx="269.6" cy="26" r="8"/></svg><div class="spine-label">5 · expanding without changing your mind</div></div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Oblivious to Encounter · Stimpunks</span>
+        <span class="spread-footer-right">6</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 7: LINK 6 ════ -->
+  <div class="spread" id="spread-7">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Link 6 · the specification, in her words</div>
+          <h2 class="spread-heading" id="might-change-things">Diversity that might change things</h2>
+          <p class="joint-line"><span class="joint joint-documented">documented</span></p>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Having named it, Tsing writes down what it costs. This is the sentence the whole chain is walking toward, and it is one sentence:</p>
+            <div class="pull-quote green">Thus, too, scalability banishes meaningful diversity, that is, diversity that might change things.<span class="attr">Tsing, 2015</span></div>
+            <p><strong>Note what she does <em>not</em> say.</strong> Not <em>diversity is inefficient</em>. Not <em>diversity is risky</em>. Not even <em>diversity is unwelcome</em>. The clause after the comma is doing all the work: the diversity that gets banished is specifically <span class="green">the kind that would alter the frame if you let it in</span>.</p>
+            <p>Difference that changes nothing is fine. Six colours of the same interchangeable unit, fine. What cannot be admitted is a difference that would make you re-plan — because re-planning is precisely the thing the system was built not to have to do. <strong>The exclusion is not an attitude. It is in the specification.</strong></p>
+            <p>And this is where Tsing says something that ought to be printed larger than it usually is:</p>
+            <div class="pull-quote cyan">Scalability is not an ordinary feature of nature. Making projects scalable takes a lot of work.<span class="attr">Tsing, 2015</span></div>
+            <p>Sameness is not the resting state of the world that difference departs from. <span class="cyan">Sameness is the expensive, engineered, maintained thing</span> — and link 2 is who paid the bill the first time. Uniformity has to be manufactured continuously or it decays back into variety, which is what everything does when you stop holding it still.</p>
+            <p class="dim">Companion argument, from the other side: <a href="the-universe-runs-on-difference-zine.html">The Universe Runs on Difference</a> (8) shows monoculture is brittle. This link is the harder half of the same coin — brittle or not, <em>it worked</em>, and it was chosen.</p>
+          </div>
+        </div>
+      </div>
+      <div class="spine"><svg viewBox="0 0 620 84" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain so far, 6 of 11: two rails — what was engineered to scale, and what only grows in relation. Live node: diversity that might change things."><path class="spine-track documented" d="M64 26 H115.4"/><path class="spine-track documented" d="M115.4 26 H166.8"/><path class="spine-track documented" d="M166.8 26 H218.2"/><path class="spine-track contested" d="M218.2 26 H269.6"/><path class="spine-track documented" d="M269.6 26 H321"/><path class="spine-track documented dim" d="M321 26 H372.4"/><path class="spine-track documented dim" d="M372.4 26 H400.7 V58 H423.8"/><path class="spine-track documented dim" d="M423.8 58 H475.2"/><path class="spine-track documented dim" d="M475.2 58 H526.6"/><path class="spine-track leap dim" d="M526.6 58 H554.9 V8 H578"/><text class="spine-raillabel" x="0" y="29">built</text><text class="spine-raillabel" x="0" y="61">grown</text><circle class="spine-node" cx="64" cy="26" r="3.2"/><circle class="spine-node" cx="115.4" cy="26" r="3.2"/><circle class="spine-node" cx="166.8" cy="26" r="3.2"/><circle class="spine-node" cx="218.2" cy="26" r="3.2"/><circle class="spine-node" cx="269.6" cy="26" r="3.2"/><circle class="spine-node dim" cx="372.4" cy="26" r="3.2"/><circle class="spine-node dim" cx="423.8" cy="58" r="3.2"/><circle class="spine-node dim" cx="475.2" cy="58" r="3.2"/><circle class="spine-node dim" cx="526.6" cy="58" r="3.2"/><circle class="spine-node dim" cx="578" cy="8" r="3.2"/><circle class="spine-node live" cx="321" cy="26" r="4.4"/><circle class="spine-ring" cx="321" cy="26" r="8"/></svg><div class="spine-label">6 · diversity that might change things</div></div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Oblivious to Encounter · Stimpunks</span>
+        <span class="spread-footer-right">7</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 8: LINK 7 — HAND-OFF ════ -->
+  <div class="spread" id="spread-8">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Link 7 · 1911, and the hand-off</div>
+          <h2 class="spread-heading" id="reaches-the-desk">The same frame reaches the desk</h2>
+          <p class="joint-line"><span class="joint joint-documented">documented</span></p>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">This link is short on purpose. Another chain in this collection already runs it end to end, and re-arguing it here would be a worse version of a thing we have already done properly.</p>
+            <p>Frederick Taylor's <em>Principles of Scientific Management</em> appeared in 1911. One month after his magazine series ended, a school board member told the National Education Association that scientific management held a message for every teacher — and that if teachers did not raise their efficiency voluntarily, the business world would force them to. By 1916 Ellwood Cubberley's standard school-administration textbook was listing what schools must adopt from the factory: continuous measurement of production, and <em>the elimination of waste in manufacture</em>.</p>
+            <div class="callout">That chain is <a href="elimination-of-waste-zine.html">The Elimination of Waste</a> (43). It runs from Carnot's heat engine through Taylor and Cubberley to the productivity dashboard and spoon theory, and it grades its own joints. <strong>This link exists to mark the seam, not to re-argue what is already argued.</strong><span class="attr">the two chains meet here, and 43 takes it from Taylor onward</span></div>
+            <p>What is worth adding is only this. <span class="cyan">The thing that travelled from the cane field to the classroom was never a technology.</span> No machine made the trip. What made the trip was <strong>a specification</strong> — that a project should be able to get bigger without having to reconsider itself, and that it may therefore admit only what already fits its frame.</p>
+            <p>A mill can hold that specification. So can a syllabus, a job description, an intake form, a diagnostic threshold, a service that has to be delivered the same way in every borough. None of them need to have heard of Barbados. <strong>A specification does not require a lineage to be reinvented.</strong> It only requires the same pressure — get bigger, and do not change while you do it.</p>
+          </div>
+        </div>
+      </div>
+      <div class="spine"><svg viewBox="0 0 620 84" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain so far, 7 of 11: two rails — what was engineered to scale, and what only grows in relation. Live node: 1911, the same frame reaches the desk."><path class="spine-track documented" d="M64 26 H115.4"/><path class="spine-track documented" d="M115.4 26 H166.8"/><path class="spine-track documented" d="M166.8 26 H218.2"/><path class="spine-track contested" d="M218.2 26 H269.6"/><path class="spine-track documented" d="M269.6 26 H321"/><path class="spine-track documented" d="M321 26 H372.4"/><path class="spine-track documented dim" d="M372.4 26 H400.7 V58 H423.8"/><path class="spine-track documented dim" d="M423.8 58 H475.2"/><path class="spine-track documented dim" d="M475.2 58 H526.6"/><path class="spine-track leap dim" d="M526.6 58 H554.9 V8 H578"/><text class="spine-raillabel" x="0" y="29">built</text><text class="spine-raillabel" x="0" y="61">grown</text><circle class="spine-node" cx="64" cy="26" r="3.2"/><circle class="spine-node" cx="115.4" cy="26" r="3.2"/><circle class="spine-node" cx="166.8" cy="26" r="3.2"/><circle class="spine-node" cx="218.2" cy="26" r="3.2"/><circle class="spine-node" cx="269.6" cy="26" r="3.2"/><circle class="spine-node" cx="321" cy="26" r="3.2"/><circle class="spine-node dim" cx="423.8" cy="58" r="3.2"/><circle class="spine-node dim" cx="475.2" cy="58" r="3.2"/><circle class="spine-node dim" cx="526.6" cy="58" r="3.2"/><circle class="spine-node dim" cx="578" cy="8" r="3.2"/><circle class="spine-node live" cx="372.4" cy="26" r="4.4"/><circle class="spine-ring" cx="372.4" cy="26" r="8"/></svg><div class="spine-label">7 · 1911 · the same frame reaches the desk</div></div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Oblivious to Encounter · Stimpunks</span>
+        <span class="spread-footer-right">8</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 9: LINK 8 — THE RAIL CROSSES ════ -->
+  <div class="spread" id="spread-9">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Link 8 · the counter-case · the chain changes rails here</div>
+          <h2 class="spread-heading" id="no-harvest">Seventy years, no harvest</h2>
+          <p class="joint-line"><span class="joint joint-documented">documented</span></p>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Matsutake is, in a good year, the most valuable mushroom on earth. There is enormous demand, a wealthy market, decades of well-funded institutional science, and every commercial reason imaginable to grow it on purpose.</p>
+            <p>Nobody can.</p>
+            <p>Tsing, writing in 2015: "Japanese research institutions have thrown millions of yen into making matsutake cultivation possible, but so far without success."</p>
+            <p>That was eleven years ago, and a claim of the form <em>nobody has managed it yet</em> is exactly the kind that quietly stops being true while everyone keeps repeating it. So we checked. The most recent review of the field opens with the same verdict:</p>
+            <div class="pull-quote green">the cultivation of matsutake has been mostly unsuccessful.<span class="attr">Yamanaka, Yamada &amp; Furukawa, <em>Mycoscience</em> 61(2), 2020</span></div>
+            <p>Commercial demand is still met the way it has always been met — by people walking into forests and finding them.</p>
+            <p><strong>But the near-misses are more interesting than the failure, and they sharpen the fact rather than softening it.</strong> There have been field successes: fruiting achieved in 2010, reproduction in 2017. Both were done using <span class="green">pine trees that the fungus had already colonised</span>. Not soil, not spores, not a substrate — a tree with the relationship already in it, and then years of waiting.</p>
+            <p>So the honest version of the fact is not <em>matsutake refuses cultivation</em>. It is stranger and more exact:</p>
+            <div class="pull-quote cyan">the only known way to farm it is to already have the relationship, and wait.<span class="attr">which is not a farming method — it is the absence of one</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="spine"><svg viewBox="0 0 620 84" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain so far, 8 of 11: two rails — what was engineered to scale, and what only grows in relation. Live node: 1950s-now, seventy years, no harvest."><path class="spine-track documented" d="M64 26 H115.4"/><path class="spine-track documented" d="M115.4 26 H166.8"/><path class="spine-track documented" d="M166.8 26 H218.2"/><path class="spine-track contested" d="M218.2 26 H269.6"/><path class="spine-track documented" d="M269.6 26 H321"/><path class="spine-track documented" d="M321 26 H372.4"/><path class="spine-track documented" d="M372.4 26 H400.7 V58 H423.8"/><path class="spine-track documented dim" d="M423.8 58 H475.2"/><path class="spine-track documented dim" d="M475.2 58 H526.6"/><path class="spine-track leap dim" d="M526.6 58 H554.9 V8 H578"/><text class="spine-raillabel" x="0" y="29">built</text><text class="spine-raillabel" x="0" y="61">grown</text><circle class="spine-node" cx="64" cy="26" r="3.2"/><circle class="spine-node" cx="115.4" cy="26" r="3.2"/><circle class="spine-node" cx="166.8" cy="26" r="3.2"/><circle class="spine-node" cx="218.2" cy="26" r="3.2"/><circle class="spine-node" cx="269.6" cy="26" r="3.2"/><circle class="spine-node" cx="321" cy="26" r="3.2"/><circle class="spine-node" cx="372.4" cy="26" r="3.2"/><circle class="spine-node dim" cx="475.2" cy="58" r="3.2"/><circle class="spine-node dim" cx="526.6" cy="58" r="3.2"/><circle class="spine-node dim" cx="578" cy="8" r="3.2"/><circle class="spine-node live" cx="423.8" cy="58" r="4.4"/><circle class="spine-ring" cx="423.8" cy="58" r="8"/></svg><div class="spine-label">8 · 1950s-now · seventy years, no harvest</div></div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Oblivious to Encounter · Stimpunks</span>
+        <span class="spread-footer-right">9</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 10: LINK 9 ════ -->
+  <div class="spread" id="spread-10">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Link 9 · why not</div>
+          <h2 class="spread-heading" id="only-a-relation">You cannot buy the relationship</h2>
+          <p class="joint-line"><span class="joint joint-documented">documented</span></p>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">The mushroom is not the organism. It is the fruiting body of a fungus that lives underground, wrapped around the roots of particular trees, and that fungus cannot feed itself.</p>
+            <p>It gets its carbohydrates from the tree. In exchange it forages — reaching into ground the roots cannot work, and bringing back what the tree cannot otherwise get. Tsing: matsutake "make it possible for host trees to live in poor soils, without fertile humus. In turn, they are nourished by the trees."</p>
+            <p>Neither party is a product. There is no matsutake that is not <em>currently being</em> a relationship with a pine. And this, she says flatly, is the reason for link 8:</p>
+            <div class="pull-quote green">This transformative mutualism has made it impossible for humans to cultivate matsutake.<span class="attr">Tsing, 2015</span></div>
+            <p>Set it against the cane, which is the whole reason this chain has two rails. <strong>Cane could be moved because it had no relations. Matsutake cannot be moved because it is nothing but relations.</strong> The property that made one of them the engine of a world-system is the exact property the other one lacks.</p>
+            <p>Tsing's phrase for what the forest therefore is: an <span class="green">anti-plantation</span>. Matsutake "resist the conditions of the plantation. They require the dynamic multispecies diversity of the forest — with its contaminating relationality."</p>
+            <p>And the general form of the fact, which is the thing worth carrying out of this spread: <span class="cyan">some yields cannot be separated from the relation that produces them.</span> Not because the separation is difficult, or expensive, or not yet solved by better engineering. Because there is nothing left to take once you have taken it apart.</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A pine and a fungal sheath exchanging along the same interface: carbohydrates flow down from the tree, water and minerals flow up from the fungus. The mushroom above ground is drawn small, labelled the receipt. Below it the shiro, the underground colony, is labelled the organism.">
+              <path d="M150 8 L150 74" stroke="rgba(74,222,128,0.8)" stroke-width="2"/>
+              <path d="M150 16 L132 34 M150 16 L168 34 M150 32 L128 52 M150 32 L172 52 M150 50 L134 66 M150 50 L166 66" stroke="rgba(74,222,128,0.75)" stroke-width="1.5" fill="none"/>
+              <text class="dl2" x="196" y="30">pine</text>
+              <line x1="20" y1="86" x2="280" y2="86" stroke="rgba(196,181,212,0.35)" stroke-width="1" stroke-dasharray="4 4"/>
+              <text class="dl2" x="243" y="80">above</text>
+              <text class="dl2" x="243" y="99">below</text>
+              <g stroke="rgba(74,222,128,0.7)" stroke-width="1.4" fill="none" stroke-linecap="round">
+                <path d="M150 86 V104"/>
+                <path d="M150 104 C120 112, 104 128, 96 148"/>
+                <path d="M150 104 C180 112, 196 128, 204 148"/>
+                <path d="M150 104 C142 124, 130 140, 118 162"/>
+                <path d="M150 104 C158 124, 170 140, 182 162"/>
+                <path d="M96 148 C120 156, 140 150, 150 140"/>
+                <path d="M204 148 C180 156, 160 150, 150 140"/>
+                <path d="M118 162 C140 172, 164 170, 182 162"/>
+              </g>
+              <g fill="rgba(74,222,128,0.9)">
+                <circle cx="96" cy="148" r="3"/><circle cx="204" cy="148" r="3"/>
+                <circle cx="118" cy="162" r="2.6"/><circle cx="182" cy="162" r="2.6"/>
+                <circle cx="150" cy="140" r="2.6"/>
+              </g>
+              <path d="M172 96 v20" stroke="rgba(251,191,36,0.9)" stroke-width="1.4" marker-end="url(#ar74)"/>
+              <text class="dl3" x="178" y="110">sugars</text>
+              <path d="M128 116 v-20" stroke="rgba(34,211,238,0.9)" stroke-width="1.4" marker-end="url(#ar74b)"/>
+              <text class="dl3" x="82" y="110">minerals</text>
+              <defs>
+                <marker id="ar74" viewBox="0 0 8 8" refX="4" refY="4" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="rgba(251,191,36,0.9)"/></marker>
+                <marker id="ar74b" viewBox="0 0 8 8" refX="4" refY="4" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="rgba(34,211,238,0.9)"/></marker>
+              </defs>
+              <ellipse cx="48" cy="64" rx="13" ry="6" fill="rgba(244,244,251,0.22)" stroke="rgba(244,244,251,0.7)" stroke-width="1.3"/>
+              <path d="M48 70 v14" stroke="rgba(244,244,251,0.7)" stroke-width="2.6"/>
+              <!-- the fruiting body is not beside the organism; it is the organism surfacing.
+                   Drawn faint and dotted because it crosses the ground line. -->
+              <path d="M48 84 C50 108, 66 130, 96 146" fill="none" stroke="rgba(244,244,251,0.34)" stroke-width="1.2" stroke-dasharray="2 3"/>
+              <text class="dl3" x="22" y="50">the receipt</text>
+              <text class="dl3" x="112" y="188">the organism — the shiro, underground</text>
+              <style>
+                .dl2 { font-family: 'Space Mono', monospace; font-size: 8px; letter-spacing: 0.14em; text-transform: uppercase; fill: #c4b5d4; }
+                .dl3 { font-family: 'Space Mono', monospace; font-size: 7px; letter-spacing: 0.1em; text-transform: uppercase; fill: #c4b5d4; }
+              </style>
+            </svg>
+            <div class="diagram-caption">The mushroom you buy is the receipt.<br>The organism is the exchange, and the<br>exchange is what will not travel.</div>
+          </div>
+        </div>
+      </div>
+      <div class="spine"><svg viewBox="0 0 620 84" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain so far, 9 of 11: two rails — what was engineered to scale, and what only grows in relation. Live node: only a relation fruits."><path class="spine-track documented" d="M64 26 H115.4"/><path class="spine-track documented" d="M115.4 26 H166.8"/><path class="spine-track documented" d="M166.8 26 H218.2"/><path class="spine-track contested" d="M218.2 26 H269.6"/><path class="spine-track documented" d="M269.6 26 H321"/><path class="spine-track documented" d="M321 26 H372.4"/><path class="spine-track documented" d="M372.4 26 H400.7 V58 H423.8"/><path class="spine-track documented" d="M423.8 58 H475.2"/><path class="spine-track documented dim" d="M475.2 58 H526.6"/><path class="spine-track leap dim" d="M526.6 58 H554.9 V8 H578"/><text class="spine-raillabel" x="0" y="29">built</text><text class="spine-raillabel" x="0" y="61">grown</text><circle class="spine-node" cx="64" cy="26" r="3.2"/><circle class="spine-node" cx="115.4" cy="26" r="3.2"/><circle class="spine-node" cx="166.8" cy="26" r="3.2"/><circle class="spine-node" cx="218.2" cy="26" r="3.2"/><circle class="spine-node" cx="269.6" cy="26" r="3.2"/><circle class="spine-node" cx="321" cy="26" r="3.2"/><circle class="spine-node" cx="372.4" cy="26" r="3.2"/><circle class="spine-node" cx="423.8" cy="58" r="3.2"/><circle class="spine-node dim" cx="526.6" cy="58" r="3.2"/><circle class="spine-node dim" cx="578" cy="8" r="3.2"/><circle class="spine-node live" cx="475.2" cy="58" r="4.4"/><circle class="spine-ring" cx="475.2" cy="58" r="8"/></svg><div class="spine-label">9 · only a relation fruits</div></div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Oblivious to Encounter · Stimpunks</span>
+        <span class="spread-footer-right">10</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 11: LINK 10 ════ -->
+  <div class="spread" id="spread-11">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Link 10 · Japan, mid-1970s</div>
+          <h2 class="spread-heading" id="abandonment">Nobody destroyed it. They stopped tending it.</h2>
+          <p class="joint-line"><span class="joint joint-documented">documented</span></p>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Here is the part that catches people out. Matsutake is not a wilderness organism hanging on despite us. In Japan its great abundance was something people made — not on purpose, and not by protecting anything.</p>
+            <p>Peasant woodlands were worked: cut for firewood and charcoal, raked, kept open. That work stressed the soil and let pine hold ground it could not otherwise have held, and matsutake came up in it. By the early twentieth century matsutake were so common around Kyoto that <em>matsutake</em> served as a generic word for "mushroom."</p>
+            <p>Then, from the mid-1950s, the woodlands stopped being used. Tsing's account is a list of ordinary improvements: peasant woodlands cut down for timber plantations, paved for suburban development, or simply abandoned as people moved to the city. <span class="gold">Fossil fuel replaced firewood and charcoal.</span> Farmers no longer had a reason to go in.</p>
+            <p>What followed was not neglect producing wilderness. It was succession. The unworked woodlands "grew up in dense thickets of broadleaf trees"; hillsides that had been covered in matsutake became too shady for pine ecologies; the shade-stressed pines were then killed by an invasive nematode.</p>
+            <div class="pull-quote gold">By the mid-1970s, matsutake had become rare across Japan.<span class="attr">Tsing, 2015</span></div>
+            <p><strong>No one cut down the matsutake. No one meant it any harm at all.</strong> A support it depended on was incidental to how people happened to live, nobody had ever named it as a support, and then the way people lived improved and the support went with it. The loss was a side effect of a fuel switch.</p>
+            <div class="note"><strong>This is not an argument that damage is good.</strong> Tsing is explicit that matsutake's tolerance for wrecked ground "is not an excuse for further damage," and neither is this. The claim is narrower and harder: <em>what a living thing needs is a fact about that thing</em>, it is often invisible to everyone including the people supplying it, and it can be removed by changes aimed at something else entirely — by improvements, made in good faith, by people who would have stopped if they had known.</div>
+          </div>
+        </div>
+      </div>
+      <div class="spine"><svg viewBox="0 0 620 84" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain so far, 10 of 11: two rails — what was engineered to scale, and what only grows in relation. Live node: mid-1970s, lost by abandonment."><path class="spine-track documented" d="M64 26 H115.4"/><path class="spine-track documented" d="M115.4 26 H166.8"/><path class="spine-track documented" d="M166.8 26 H218.2"/><path class="spine-track contested" d="M218.2 26 H269.6"/><path class="spine-track documented" d="M269.6 26 H321"/><path class="spine-track documented" d="M321 26 H372.4"/><path class="spine-track documented" d="M372.4 26 H400.7 V58 H423.8"/><path class="spine-track documented" d="M423.8 58 H475.2"/><path class="spine-track documented" d="M475.2 58 H526.6"/><path class="spine-track leap dim" d="M526.6 58 H554.9 V8 H578"/><text class="spine-raillabel" x="0" y="29">built</text><text class="spine-raillabel" x="0" y="61">grown</text><circle class="spine-node" cx="64" cy="26" r="3.2"/><circle class="spine-node" cx="115.4" cy="26" r="3.2"/><circle class="spine-node" cx="166.8" cy="26" r="3.2"/><circle class="spine-node" cx="218.2" cy="26" r="3.2"/><circle class="spine-node" cx="269.6" cy="26" r="3.2"/><circle class="spine-node" cx="321" cy="26" r="3.2"/><circle class="spine-node" cx="372.4" cy="26" r="3.2"/><circle class="spine-node" cx="423.8" cy="58" r="3.2"/><circle class="spine-node" cx="475.2" cy="58" r="3.2"/><circle class="spine-node dim" cx="578" cy="8" r="3.2"/><circle class="spine-node live" cx="526.6" cy="58" r="4.4"/><circle class="spine-ring" cx="526.6" cy="58" r="8"/></svg><div class="spine-label">10 · mid-1970s · lost by abandonment</div></div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Oblivious to Encounter · Stimpunks</span>
+        <span class="spread-footer-right">11</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 12: THE TURN ════ -->
+  <div class="spread" id="spread-12">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The turn · and it is a leap, marked</div>
+          <h2 class="spread-heading" id="the-turn">An accommodation is diversity that might change things</h2>
+          <p class="joint-line"><span class="joint joint-leap">leap</span></p>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Nothing about a grass, a mill, or a fungus tells you how a person should be treated. Ten links of documented history do not add up to an ought. Tagging this <em>leap</em> is not modesty; it is the accurate label. The step is ours, and here it is.</p>
+            <p>Link 6 gave us a specification: a scalable system admits only what fits its existing frame, and therefore banishes <strong>diversity that might change things</strong>.</p>
+            <p>Now put an accommodation next to that sentence. An accommodation is not a preference or a comfort. <span class="cyan">An accommodation is, precisely and by definition, a difference that requires the frame to change in order to admit it.</span> A different pace. A different sensory environment. A different way of showing what you know. If it fitted the existing frame it would need no name, and nobody would have to ask.</p>
+            <div class="pull-quote pink">So the thing a scalable system is specified to exclude, and the thing we call an accommodation, are the same thing described from two sides.<span class="attr">this is the leap · the dotted line under this spread is why</span></div>
+            <p>Which explains something that otherwise looks like malice and mostly is not. <strong>An institution built to scale will experience every accommodation as a defect</strong> — not because the people in it are cruel, but because a request to re-plan is the one input the design was built to refuse. The refusal arrives already dressed as objectivity: <em>we can't make exceptions</em>, <em>it wouldn't be fair to the others</em>, <em>it doesn't scale</em>. That last one is not an excuse. It is an accurate technical description, and it is the confession.</p>
+            <p>And link 10 says what happens next, without anyone deciding it: the support that was never named gets removed by an improvement aimed at something else, and what depended on it goes quiet, and the record shows only that things got better.</p>
+
+            <h3 class="colophon-h" id="against-itself">Now the argument against this spread</h3>
+            <p>There is a seductive version of everything above, and it is wrong. It goes: <em>the forest is good and the plantation is bad, therefore be like the mushroom.</em></p>
+            <p>That is the naturalistic fallacy with better scenery. The matsutake is not a moral example; it is a fungus that happens to have a metabolism we cannot fake. <span class="gold">Nothing about how nature works is why anyone deserves care.</span> If cane had turned out to be the fussier organism the argument for welcoming difference would be exactly as strong, because that argument was never resting on biology.</p>
+            <p>Tsing puts her own brake on harder than we would dare to, and she is right to:</p>
+            <div class="pull-quote green">Latent commons cannot redeem us. … The best we can do is to aim for "good-enough" worlds, where "good-enough" is always imperfect and under revision.<span class="attr">Tsing, 2015 — her refusal, not ours</span></div>
+            <p>No redemption. No arc. Just the observation that <strong>sameness had to be built, someone was made to pay for building it, and it is still being maintained</strong> — and that a thing which has to be maintained can be maintained differently.</p>
+            <p>We love you down to your star stuff. Not because the universe runs on mutualism. <em>Down to is not because of.</em></p>
+          </div>
+        </div>
+      </div>
+      <div class="spine"><svg viewBox="0 0 620 84" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain so far, 11 of 11: two rails — what was engineered to scale, and what only grows in relation. Live node: an accommodation is that diversity."><path class="spine-track documented" d="M64 26 H115.4"/><path class="spine-track documented" d="M115.4 26 H166.8"/><path class="spine-track documented" d="M166.8 26 H218.2"/><path class="spine-track contested" d="M218.2 26 H269.6"/><path class="spine-track documented" d="M269.6 26 H321"/><path class="spine-track documented" d="M321 26 H372.4"/><path class="spine-track documented" d="M372.4 26 H400.7 V58 H423.8"/><path class="spine-track documented" d="M423.8 58 H475.2"/><path class="spine-track documented" d="M475.2 58 H526.6"/><path class="spine-track leap" d="M526.6 58 H554.9 V8 H578"/><text class="spine-raillabel" x="0" y="29">built</text><text class="spine-raillabel" x="0" y="61">grown</text><circle class="spine-node" cx="64" cy="26" r="3.2"/><circle class="spine-node" cx="115.4" cy="26" r="3.2"/><circle class="spine-node" cx="166.8" cy="26" r="3.2"/><circle class="spine-node" cx="218.2" cy="26" r="3.2"/><circle class="spine-node" cx="269.6" cy="26" r="3.2"/><circle class="spine-node" cx="321" cy="26" r="3.2"/><circle class="spine-node" cx="372.4" cy="26" r="3.2"/><circle class="spine-node" cx="423.8" cy="58" r="3.2"/><circle class="spine-node" cx="475.2" cy="58" r="3.2"/><circle class="spine-node" cx="526.6" cy="58" r="3.2"/><circle class="spine-node live" cx="578" cy="8" r="4.4"/><circle class="spine-ring" cx="578" cy="8" r="8"/></svg><div class="spine-label">11 · an accommodation is that diversity</div></div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Oblivious to Encounter · Stimpunks</span>
+        <span class="spread-footer-right">12</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 13: COLOPHON ════ -->
+  <div class="spread" id="spread-13">
+    <div class="interior">
+      <div class="colophon">
+        <div>
+          <div class="colophon-top">
+            <span class="colophon-ls">L★S</span>
+            <span class="colophon-phrase">Sameness is not what the world does when you leave it alone. It is the expensive thing, and somebody paid for it.</span>
+          </div>
+          <div class="series-list">
+            <div class="series-item"><span class="series-num">No. 8</span> The Universe Runs on Difference — monoculture, Cavendish Space &amp; ethodiversity</div>
+            <div class="series-item"><span class="series-num">No. 41</span> A Conquering Gaze from Nowhere — situated knowledge, and where the searchlight points</div>
+            <div class="series-item"><span class="series-num">No. 43</span> The Elimination of Waste — Carnot to Taylor to the dashboard, and what one word did</div>
+            <div class="series-item"><span class="series-num">No. 65</span> Everything Else Is Commentary — the level you account at, and the clause that fell off</div>
+            <div class="series-item current"><span class="series-num">No. 74</span> Oblivious to Encounter — the plantation, scalability &amp; the mushroom nobody can farm ← you are here</div>
+          </div>
+          <div class="reflect">
+            <div class="reflect-label">A thread to follow</div>
+            <p class="reflect-q">What has the place you work had to become blind to in order to get as big as it is?</p>
+            <p class="reflect-q">Which support in your life was incidental to something else — and is that something else being improved?</p>
+            <p class="reflect-q">When you last heard "it doesn't scale," was it a reason, or was it a description of the specification?</p>
+          </div>
+          <div class="refusals">
+            <div class="refusal"><span class="refusal-tag">Not:</span> <span><strong>enslaved people as metaphor.</strong> Link 2 is the load-bearing historical fact of this chain and it is also the place where our format is withheld, deliberately and visibly. What was done to those people is not an illustration of anything. If any sentence here reads as though the mushroom is the real subject and the plantation is the analogy, that sentence has failed and we want to know.</span></div>
+            <div class="refusal"><span class="refusal-tag">Not:</span> <span><strong>an argument against scale, or against evidence.</strong> Some things should be big; some things should be the same everywhere, and vaccines are among them. The claim is narrower: scalability has a stated cost, that cost falls on difference that would require re-planning, and pretending the cost is zero is what makes it invisible. That is why <a href="collection-how-we-got-here.html">How We Got Here</a> exists.</span></div>
+            <div class="refusal"><span class="refusal-tag">Not:</span> <span><strong>ruin as an aesthetic, or "thrives on adversity."</strong> Matsutake tolerating wrecked ground is not a case for wrecking ground, and Tsing says so herself. Neither is anyone's survival in a hostile institution evidence that the institution was survivable. <em>Thriving through adversity</em> is a sentence that launders the adversity.</span></div>
+            <div class="refusal"><span class="refusal-tag">Not:</span> <span><strong>nature says be kind.</strong> Mutualism is not why difference deserves welcome. It would deserve welcome in a universe made entirely of clonal cane. The turn on spread 12 is tagged <em>leap</em> for exactly this reason, and <a href="a-promise-not-a-finding.html">A Promise Not a Finding</a> is the longer version of the argument.</span></div>
+            <div class="refusal"><span class="refusal-tag">And:</span> <span><strong>we kept a hedge we could have dropped.</strong> Mintz's strongest sentence is marked, by him, "I believe it was probably." Every reachable summary of that page states it flatly. Ours does not, because <a href="too-good-to-check.html">Too Good to Check</a> is a page we have to be able to keep publishing.</span></div>
+          </div>
+          <p class="colophon-body">
+            Oblivious to Encounter is Zine No. 74 in the Stimpunks Star Stuff series, and the eleventh chain in the <a href="collection-how-we-got-here.html">How We Got Here</a> collection. Ten links and a turn, with <strong>every joint marked</strong> — nine documented, one contested, one leap — in the prose and in the line style of the running spine, because a Burke chain is built to feel inevitable and the notation is how the form carries its own epistemics. The two rails are <em>built</em> and <em>grown</em>, and unlike other chains here this one crosses between them exactly once, at link 8; that single crossing is the argument. Companion in argument to <a href="the-universe-runs-on-difference-zine.html">The Universe Runs on Difference</a> (8), which shows monoculture is brittle where this shows it was chosen anyway, and prequel to <a href="elimination-of-waste-zine.html">The Elimination of Waste</a> (43), which takes the same specification from Taylor onward.<br><br>
+            <strong style="color:var(--stardust);font-weight:400">Sources &amp; notes.</strong> <strong style="color:var(--stardust);font-weight:400">Tsing, Anna Lowenhaupt.</strong> <em>The Mushroom at the End of the World: On the Possibility of Life in Capitalist Ruins</em> (Princeton University Press, 2015) — <strong>read in the primary text</strong>, and the source of every Tsing quotation here: "comparatively self-contained, oblivious to encounter," the three plantation components and "no local social relations and thus no established routes for escape," "Plantations were organized to further alienation for better control," "Under these conditions, workers did, indeed, become self-contained and interchangeable units," the definition of scalability and "oblivious to the indeterminacies of encounter," the Braudel and Bohr distinction, "scalability banishes meaningful diversity, that is, diversity that might change things," "Scalability is not an ordinary feature of nature," the anti-plantation framing and "contaminating relationality," "This transformative mutualism has made it impossible for humans to cultivate matsutake," the account of the Japanese decline through the mid-1970s, and "Latent commons cannot redeem us" with the "good-enough" worlds formulation. <strong style="color:var(--stardust);font-weight:400">Mintz, Sidney W.</strong> <em>Sweetness and Power: The Place of Sugar in Modern History</em> (Viking, 1985; Penguin edition, which is the one read here) — <strong>pages 47 and 48 read in the primary</strong>, and the source of "a synthesis of field and factory," "really quite unlike anything known in mainland Europe at the time," the ten-acre parcels harvested <em>seriatim</em> "assuring a steady flow of cane to the mill," "time was of the essence throughout," the mills that "operated unceasingly," the Saturday-night-to-Monday work week, the specialization and "crews, shifts, and 'gangs'" with "the stress upon punctuality and discipline," the "somewhat misleading idea" about struck syrup, the three reasons the plantation's industrial character went unrecognised, "It may seem a topsy-turvy view of the West to find its factories elsewhere at so early a period," and "I believe it was probably the closest thing to industry that was typical of the seventeenth century." <strong style="color:var(--stardust);font-weight:400">Yamanaka, T., Yamada, A. &amp; Furukawa, H.</strong> (2020). "Advances in the cultivation of the highly-prized ectomycorrhizal mushroom <em>Tricholoma matsutake</em>," <em>Mycoscience</em> 61(2), 49–57 — the current state of the cultivation question, and the source of "the cultivation of matsutake has been mostly unsuccessful"; the 2010 fruiting and 2017 reproduction successes using already-colonised pine are reported from this literature. Taylor, F. W. (1911). <em>The Principles of Scientific Management</em>; Cubberley, E. P. (1916). <em>Public School Administration</em> — both are carried here from <a href="elimination-of-waste-zine.html">The Elimination of Waste</a> (43), where they are sourced directly, and are not independently re-verified for this piece.<br><br>
+            <strong style="color:var(--stardust);font-weight:400">Held honestly.</strong> Five things. <em>One:</em> only two pages of Mintz were read. Everything attributed to him here comes from pp. 47–48 of the Penguin edition; the rest of <em>Sweetness and Power</em> we did not open for this piece, and no claim is made about what it argues elsewhere. Tsing cites the same page 47 for a slightly different claim — that plantations were "the model for factories during industrialization" — and the page we read makes a claim about <em>priority</em> rather than transmission. We follow the page, not the gloss, and this chain does not assert the transmission claim at all. <em>Two:</em> the <em>Mycoscience</em> review is used at the level of its abstract and the review literature reporting it; we did not read the full paper, and the 2010 and 2017 field results are therefore second-hand. <em>Three:</em> the 1493 date on link 1 is the standard secondary account and we did not trace it to a primary; nothing in the chain depends on the year, only on the propagation method, which Tsing documents. <em>Four:</em> Mintz quotes W. L. Mathieson on sugar as "the most onerous of West Indian industries," and Thomas Tryon's seventeenth-century account of the boiling house — which Mintz himself flags "must be viewed with some skepticism, since he was a planter himself." Both are Mintz quoting others and neither is used as our own evidence. <em>Five:</em> Tsing's book opens with the story that the first living thing to emerge from the Hiroshima blast was a matsutake. <strong>It is deliberately not in this zine.</strong> Her own endnote says she took it for urban legend, that a scientist confirmed the story existed in 1990s Japanese newspapers, and — her words — "I have not yet found it." The line is logged in <a href="too-good-to-check.html">Too Good to Check</a> as what it is: unverified at source, and a clean case of a hedge that died in quotation while the author did nothing wrong.<br><br>
+            The star stuff is Carl Sagan's, and the SN 1006 remnant on every Stimpunks page. The universe doesn't pathologize its own variation — and it never asked anything to be interchangeable first.
+          </p>
+        </div>
+        <div class="colophon-footer">
+          <a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks Foundation</a> × <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a> · Zine No. 74 · How We Got Here<br>
+          Shared on Star Stuff · Print freely · Share freely · <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> · L★S<br>
+          stimpunks.org · morerealms.com · starstuff.earth
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Oblivious to Encounter · Stimpunks</span>
+        <span class="spread-footer-right">13</span>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /zine-shell -->
+
+<script>
+  let current = 1;
+  const total = 13;
+
+  function changePage(dir) {
+    const next = current + dir;
+    if (next < 1 || next > total) return;
+    document.getElementById('spread-' + current).classList.remove('active');
+    current = next;
+    document.getElementById('spread-' + current).classList.add('active');
+    document.getElementById('page-counter').textContent = current + ' / ' + total;
+    document.getElementById('prev-btn').disabled = current === 1;
+    document.getElementById('next-btn').disabled = current === total;
+    document.getElementById('prev-btn').classList.toggle('active', current > 1);
+    document.getElementById('next-btn').classList.toggle('active', current < total);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') changePage(1);
+    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   changePage(-1);
+  });
+
+  document.getElementById('prev-btn').disabled = true;
+  document.getElementById('next-btn').classList.add('active');
+</script>
+<script src="starstuff.js" defer></script>
+</body>
+</html>

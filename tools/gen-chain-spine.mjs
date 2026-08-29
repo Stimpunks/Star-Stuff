@@ -91,6 +91,34 @@ CHAINS['everything-else-is-commentary-zine.html'] = {
   ],
 };
 
+CHAINS['oblivious-to-encounter-zine.html'] = {
+  // Two rails, and unlike the eclipse chain this one crosses ONCE. That single crossing
+  // is the argument, so the two-rail form earns its keep even without repeated swaps:
+  //   built  — what was engineered so it could be moved, repeated and scaled
+  //   grown  — what only exists inside a relation, and so cannot be
+  // Links 1-7 run entirely on `built`. Link 8 crosses to `grown` and stays there.
+  // The turn is its own rail, as in every chain here.
+  rails: { built: 26, grown: 58, turn: 8 },
+  railLabels: [['built', 29], ['grown', 61]],
+  aria: 'two rails \u2014 what was engineered to scale, and what only grows in relation',
+  reuse: {},
+  nodes: [
+  // spread, year label, rail, joint tag on the edge ARRIVING at this node.
+  // Node 1 carries a tag for COUNTING only \u2014 see the note on the eclipse chain above.
+  { s: 2,  y: '1493',      rail: 'built', joint: 'documented', t: 'a crop that need not be bred' },
+  { s: 3,  y: '16-17c',    rail: 'built', joint: 'documented', t: 'three things that could be moved' },
+  { s: 4,  y: '17c',       rail: 'built', joint: 'documented', t: 'the land cut to the mill' },
+  { s: 5,  y: '17c',       rail: 'built', joint: 'documented', t: 'industry before the homeland' },
+  { s: 6,  y: '',          rail: 'built', joint: 'contested',  t: 'expanding without changing your mind' },
+  { s: 7,  y: '',          rail: 'built', joint: 'documented', t: 'diversity that might change things' },
+  { s: 8,  y: '1911',      rail: 'built', joint: 'documented', t: 'the same frame reaches the desk' },
+  { s: 9,  y: '1950s-now', rail: 'grown', joint: 'documented', t: 'seventy years, no harvest' },
+  { s: 10, y: '',          rail: 'grown', joint: 'documented', t: 'only a relation fruits' },
+  { s: 11, y: 'mid-1970s', rail: 'grown', joint: 'documented', t: 'lost by abandonment' },
+  { s: 12, y: '',          rail: 'turn',  joint: 'leap',       t: 'an accommodation is that diversity' },
+  ],
+};
+
 const file0 = process.argv.slice(2).find(a => !a.startsWith('--'));
 const key = file0 ? file0.replace(/^.*\//, '') : '';
 const CHAIN = CHAINS[key];
