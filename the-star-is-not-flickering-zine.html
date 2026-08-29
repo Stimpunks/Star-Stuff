@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0a0a14">
+<link rel="canonical" href="https://starstuff.earth/the-star-is-not-flickering-zine.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta name="description" content="Stars twinkle and planets do not, and the difference is not in their light. Both arrive steady. Scintillation is produced in the last few microseconds of a journey of years, as the wavefront crosses turbulent cells of differing temperature and density in Earth's atmosphere and is refracted into a rumpled shape that focuses and defocuses across the ground. A star is effectively a point source and is fully exposed to that. A planet is an extended disc whose angular diameter is large enough to quench the scintillation, because the fluctuations average across the disc and cancel. So the flicker is a property of the medium, not of the source, and it is used as one: scintillation measurements profile atmospheric turbulence. The same star flickers harder near the horizon, where its light crosses more air. Above the atmosphere nothing twinkles at all. And the distortion can be measured and cancelled in real time by adaptive optics, which is expensive, needs a reference star and works over a small field, so it fixes a patch of sky rather than the sky. Glimmers is Deb Dana's word, from 2018, within polyvagal theory, an influential but contested framework; the moments it names are real and this zine rests on none of it. After Helen Edgar's Glimmers: Autistic Joy and Monotropism. A rhyme, not a proof.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Star Stuff &middot; Stimpunks Foundation &times; More Realms">
+<meta property="og:url" content="https://starstuff.earth/the-star-is-not-flickering-zine.html">
+<meta property="og:title" content="The Star Is Not Flickering">
+<meta property="og:description" content="It left steady. It arrives unsteady. Everything that happened to that light happened in the last few microseconds of a journey of years.">
+<meta property="og:image" content="https://starstuff.earth/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A rainbow-hued cosmic image — we are all made of star stuff.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Star Is Not Flickering">
+<meta name="twitter:description" content="Stars twinkle, planets don't, and neither fact is about the light. The flicker belongs to the air it had to cross to reach you.">
+<meta name="twitter:image" content="https://starstuff.earth/og-card.jpg">
+<title>The Star Is Not Flickering &mdash; Stimpunks Zine No. 78</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="starstuff.css">
+<style>
+  :root {
+    --void:  var(--sp-void-deep);
+    --deep:  var(--sp-deep);
+    --page:  var(--sp-page);
+    --violet:var(--sp-purple);
+    --pink:  var(--sp-pink);
+    --gold:  var(--sp-gold);
+    --cyan:  var(--sp-cyan);
+    --green: var(--sp-green);
+    --ember: #c1653a;
+    --star-white: var(--sp-white-soft);
+    --stardust:   var(--sp-secondary-soft);
+    --dim:   var(--sp-dim);
+    --dim2:  var(--sp-dim-soft);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--void);
+    font-family: 'Atkinson Hyperlegible Next', system-ui, sans-serif;
+    color: var(--star-white);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── STARFIELD (green · white · gold — a damp low canopy, lit from above) ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 9% 16%, rgba(251,191,36,0.56) 0%, transparent 100%),
+      radial-gradient(1px 1px at 14% 21%, rgba(244,244,251,0.50) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 35% 11%, rgba(251,191,36,0.44) 0%, transparent 100%),
+      radial-gradient(1px 1px at 53% 61%, rgba(244,244,251,0.54) 0%, transparent 100%),
+      radial-gradient(1px 1px at 61% 70%, rgba(251,191,36,0.38) 0%, transparent 100%),
+      radial-gradient(2px 2px at 79% 25%, rgba(251,191,36,0.46) 0%, transparent 100%),
+      radial-gradient(1px 1px at 87% 47%, rgba(244,244,251,0.44) 0%, transparent 100%),
+      radial-gradient(1px 1px at 93% 81%, rgba(251,191,36,0.40) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 6% 60%, rgba(244,244,251,0.52) 0%, transparent 100%),
+      radial-gradient(1px 1px at 25% 86%, rgba(251,191,36,0.38) 0%, transparent 100%),
+      radial-gradient(1px 1px at 33% 90%, rgba(244,244,251,0.40) 0%, transparent 100%),
+      radial-gradient(1px 1px at 45% 41%, rgba(251,191,36,0.30) 0%, transparent 100%),
+      radial-gradient(2px 2px at 21% 91%, rgba(251,191,36,0.40) 0%, transparent 100%),
+      radial-gradient(1px 1px at 69% 8%, rgba(244,244,251,0.62) 0%, transparent 100%),
+      radial-gradient(1px 1px at 41% 29%, rgba(251,191,36,0.36) 0%, transparent 100%);
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .zine-shell { position: relative; z-index: 1; max-width: 820px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+
+  .spectrum-line { height: 2px; border: none; border-radius: 2px; background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); }
+
+  /* ── NAV ── */
+  .nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2.5rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(251,191,36,0.22); }
+  .nav-brand { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--dim); }
+  .nav-controls { display: flex; gap: 0.5rem; align-items: center; }
+  .nav-btn { background: none; border: 1px solid rgba(251,191,36,0.38); color: var(--stardust); font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.15em; padding: 0.4rem 0.85rem; border-radius: 2px; cursor: pointer; transition: all 0.2s ease; text-transform: uppercase; }
+  .nav-btn:hover { background: rgba(251,191,36,0.15); border-color: rgba(251,191,36,0.65); color: var(--star-white); }
+  .nav-btn.active { background: rgba(251,191,36,0.20); border-color: var(--accent); color: var(--star-white); }
+  .page-counter { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.2em; color: var(--dim2); }
+
+  .spread { display: none; animation: fadeIn 0.5s ease forwards; }
+  .spread.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ── COVER ── */
+  .cover-spread {
+    position: relative; min-height: 520px; border-radius: 4px; overflow: hidden;
+    background:
+      radial-gradient(ellipse at 24% 26%, rgba(251,191,36,0.13) 0%, transparent 52%),
+      radial-gradient(ellipse at 78% 30%, rgba(34,211,238,0.08) 0%, transparent 52%),
+      radial-gradient(ellipse at 62% 84%, rgba(251,191,36,0.07) 0%, transparent 52%),
+      radial-gradient(ellipse at 18% 82%, rgba(244,244,251,0.04) 0%, transparent 52%),
+      var(--deep);
+    border: 1px solid rgba(251,191,36,0.26);
+    box-shadow: inset 0 0 80px rgba(251,191,36,0.05), 0 0 0 4px rgba(255,255,255,0.03);
+    display: flex; flex-direction: column; justify-content: flex-end; padding: 3rem;
+  }
+  .cover-motif { position: absolute; top: -6px; left: -18px; width: 340px; height: 340px; opacity: 0.72; pointer-events: none; }
+  .cover-issue { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.5em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.5rem; }
+  .cover-title { font-weight: 700; font-size: clamp(2.1rem, 6vw, 3.5rem); line-height: 1.03; color: var(--star-white); letter-spacing: -0.01em; margin-bottom: 0.9rem; }
+  .cover-title .amp { color: var(--accent); font-style: italic; }
+  .cover-subtitle { font-size: 1rem; color: var(--stardust); opacity: 0.86; margin-bottom: 1.5rem; max-width: 470px; line-height: 1.55; }
+  .cover-byline { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.14em; color: var(--dim); margin-bottom: 1.8rem; }
+  .cover-byline strong { color: var(--stardust); font-weight: 700; }
+  .cover-rule { width: 220px; max-width: 60%; margin-bottom: 1.3rem; }
+  .cover-meta { display: flex; gap: 2rem; align-items: center; }
+  .cover-ls { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 1.4rem; color: var(--gold); letter-spacing: 0.05em; }
+  .cover-meta-text { font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--dim2); line-height: 1.9; }
+  .cover-corner { position: absolute; top: 2rem; right: 2.5rem; text-align: right; }
+  .cover-corner-num { font-weight: 700; font-size: 4.5rem; line-height: 1; color: var(--accent); opacity: 0.24; }
+  .cover-corner-label { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--cyan); display: block; margin-top: -0.3rem; }
+
+  /* ── INTERIOR ── */
+  .interior { background: var(--page); border: 1px solid rgba(251,191,36,0.15); border-radius: 4px; overflow: hidden; min-height: 480px; }
+  .spread-2col { display: grid; grid-template-columns: 1fr 1fr; min-height: 480px; }
+  .spread-left, .spread-right { padding: 3rem 2.4rem; position: relative; }
+  .spread-left { border-right: 1px solid rgba(251,191,36,0.12); }
+
+  .spread-2col.stacked { display: flex; flex-direction: column; }
+  .spread-2col.stacked > .spread-left,
+  .spread-2col.stacked > .spread-right { border-right: none; }
+  .spread-2col.stacked > .col-diagram { order: 2; padding-top: 0; }
+  .spread-2col.stacked > .col-text { padding-left: max(2.4rem, calc((100% - 32rem) / 2)); padding-right: max(2.4rem, calc((100% - 32rem) / 2)); }
+  .spread-2col.stacked .diagram-wrap { height: auto; }
+  .spread-2col.stacked .diagram { max-width: 420px; }
+
+  .eyebrow { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.1rem; }
+  .body-text { font-size: 0.98rem; line-height: 1.72; color: var(--stardust); }
+  .body-text p { margin-bottom: 1rem; }
+  .body-text p:last-child { margin-bottom: 0; }
+  .body-text strong { font-weight: 700; color: var(--star-white); }
+  .body-text em { font-style: italic; color: var(--star-white); }
+  .body-text a { color: var(--cyan); text-decoration: none; border-bottom: 1px solid rgba(251,191,36,0.45); }
+  .body-text a:hover { border-bottom-color: var(--cyan); color: var(--star-white); }
+  .body-text .violet { color: var(--violet); font-weight: 700; }
+  .body-text .pink { color: var(--pink); font-weight: 700; }
+  .body-text .gold { color: var(--gold); font-weight: 700; }
+  .body-text .cyan { color: var(--cyan); font-weight: 700; }
+  .body-text .green { color: var(--green); font-weight: 700; }
+  .body-text .lede { font-size: 1.08rem; color: var(--star-white); }
+  /* Accent spans that sit OUTSIDE .body-text — colophon closing lines and callout
+     attributions. The scoped .body-text rules cannot reach them; this is the fault
+     check-classes.mjs was written for after No. 67 shipped an inert .pink. */
+  .zine-shell span.violet { color: var(--violet); font-weight: 700; }
+  .zine-shell span.gold { color: var(--gold); font-weight: 700; }
+  .zine-shell span.cyan { color: var(--cyan); font-weight: 700; }
+  .zine-shell span.pink { color: var(--pink); font-weight: 700; }
+  .zine-shell span.green { color: var(--green); font-weight: 700; }
+
+  .spread-heading { font-weight: 700; font-size: 1.9rem; line-height: 1.12; color: var(--star-white); margin-bottom: 1.1rem; letter-spacing: -0.01em; margin-top: 0; scroll-margin-top: 5rem; }
+  .rule { width: 40px; margin: 1rem 0; }
+
+  .pull-quote { font-size: 1.18rem; font-weight: 700; line-height: 1.4; color: var(--star-white); border-left: 3px solid var(--accent); padding-left: 1.1rem; margin: 1.4rem 0; font-style: italic; }
+  .pull-quote.violet { border-left-color: var(--violet); }
+  .pull-quote.cyan { border-left-color: var(--cyan); }
+  .pull-quote.gold { border-left-color: var(--gold); }
+  .pull-quote.pink { border-left-color: var(--pink); }
+  .pull-quote.green { border-left-color: var(--green); }
+  .pull-quote .attr { display: block; font-family: 'Space Mono', monospace; font-size: 0.6rem; font-weight: 400; font-style: normal; letter-spacing: 0.08em; color: var(--dim); margin-top: 0.6rem; }
+
+  .callout { margin: 1.3rem 0; padding: 1rem 1.15rem; background: rgba(251,191,36,0.07); border: 1px solid rgba(251,191,36,0.26); border-radius: 4px; font-size: 1rem; font-style: italic; color: var(--star-white); line-height: 1.55; }
+  .callout .attr { display: block; font-family: 'Space Mono', monospace; font-size: 0.58rem; font-style: normal; letter-spacing: 0.06em; color: var(--dim); margin-top: 0.5rem; }
+
+  .note { font-size: 0.84rem; line-height: 1.6; color: var(--dim); border-left: 2px solid rgba(251,191,36,0.42); padding-left: 0.9rem; margin: 1.1rem 0; }
+  .note strong { color: var(--stardust); font-weight: 700; }
+
+  /* ── TABLES ── */
+  .trades { width: 100%; border-collapse: collapse; margin: 1.3rem 0; font-size: 0.84rem; }
+  .trades caption { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dim); text-align: left; padding-bottom: 0.6rem; }
+  .trades th { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--stardust); text-align: left; padding: 0.5rem 0.6rem; border-bottom: 1px solid rgba(251,191,36,0.36); font-weight: 700; }
+  .trades td { padding: 0.55rem 0.6rem; border-bottom: 1px solid rgba(251,191,36,0.1); color: var(--stardust); line-height: 1.5; vertical-align: top; }
+  .trades td.label { color: var(--star-white); font-weight: 700; }
+  .trades td.verdict { color: var(--pink); font-weight: 700; }
+  .trades td.actual { color: var(--green); font-weight: 700; }
+  .trades td.num { color: var(--cyan); font-weight: 700; font-family: 'Space Mono', monospace; white-space: nowrap; }
+
+  /* ── DIAGRAMS ── */
+  .diagram-wrap { display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; }
+  .diagram { width: 100%; max-width: 340px; display: block; }
+  .diagram-caption { font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim); text-align: center; margin-top: 0.9rem; line-height: 1.9; }
+
+  /* ── REFUSALS ── */
+  .refusals { margin-top: 1.3rem; }
+  .refusal { font-size: 0.88rem; line-height: 1.5; color: var(--stardust); padding: 0.55rem 0; border-bottom: 1px solid rgba(251,191,36,0.1); display: flex; gap: 0.6rem; align-items: baseline; }
+  .refusal:last-child { border-bottom: none; }
+  .refusal-tag { font-family: 'Space Mono', monospace; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ember); flex-shrink: 0; padding-top: 0.12rem; }
+  .refusal strong { color: var(--star-white); font-weight: 700; }
+
+  /* ── COLOPHON ── */
+  .colophon { padding: 3rem; display: flex; flex-direction: column; justify-content: space-between; min-height: 480px; background: radial-gradient(ellipse at 80% 16%, rgba(251,191,36,0.09) 0%, transparent 50%), radial-gradient(ellipse at 16% 84%, rgba(34,211,238,0.05) 0%, transparent 50%), var(--page); }
+  .colophon-top { border-bottom: 1px solid rgba(251,191,36,0.16); padding-bottom: 1.3rem; margin-bottom: 1.2rem; }
+  .colophon-ls { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 2.4rem; color: var(--gold); letter-spacing: 0.05em; display: block; margin-bottom: 0.4rem; }
+  .colophon-phrase { font-size: 0.98rem; font-weight: 700; font-style: italic; color: var(--stardust); }
+  .series-list { display: flex; flex-direction: column; gap: 0.38rem; margin-bottom: 1.2rem; }
+  .series-item { font-size: 0.72rem; color: var(--dim); letter-spacing: 0.01em; display: flex; gap: 0.7rem; align-items: baseline; line-height: 1.45; }
+  .series-item.current { color: var(--accent); font-weight: 700; }
+  .series-num { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim2); flex-shrink: 0; }
+  .series-item.current .series-num { color: var(--accent); }
+  .reflect { border-top: 1px solid rgba(251,191,36,0.16); padding-top: 1rem; margin-bottom: 1.2rem; }
+  .reflect-label { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.65rem; }
+  .reflect-q { font-size: 0.86rem; line-height: 1.55; color: var(--stardust); margin-bottom: 0.55rem; font-style: italic; }
+  .reflect-q:last-child { margin-bottom: 0; }
+  .colophon-body { font-size: 0.75rem; color: var(--dim); line-height: 1.75; margin-bottom: 1.2rem; }
+  .colophon-body a { color: var(--cyan); text-decoration: none; border-bottom: 1px solid rgba(251,191,36,0.45); }
+  .colophon-body a:hover { border-bottom-color: var(--cyan); }
+  .colophon-h { font-family: 'Space Mono', monospace; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: var(--stardust); margin: 1rem 0 0.4rem; scroll-margin-top: 5rem; }
+  .colophon-footer { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--dim); line-height: 2.2; border-top: 1px solid rgba(251,191,36,0.16); padding-top: 1rem; }
+
+  /* ── SPREAD FOOTER ── */
+  .spread-footer { display: flex; justify-content: space-between; align-items: center; padding: 0.9rem 2.4rem; border-top: 1px solid rgba(251,191,36,0.1); }
+  .spread-footer-left { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--dim); }
+  .spread-footer-right { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; color: var(--accent); }
+
+  .twinkle { position: fixed; width: 3px; height: 3px; border-radius: 50%; animation: twinkle-anim 3s ease-in-out infinite; pointer-events: none; z-index: 0; }
+
+  @media (max-width: 600px) {
+    .spread-2col { grid-template-columns: 1fr; }
+    .spread-left { border-right: none; border-bottom: 1px solid rgba(251,191,36,0.12); }
+    .spread-2col.stacked > .spread-left { border-bottom: none; }
+    .spread-2col.stacked > .col-text { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .cover-spread { padding: 2rem; min-height: 420px; }
+    .cover-motif { width: 224px; height: 224px; top: -6px; left: -26px; opacity: 0.46; }
+    .cover-title { font-size: 1.9rem; }
+    .spread-heading { font-size: 1.55rem; }
+    .spread-left, .spread-right { padding: 2rem 1.5rem; }
+    .colophon { padding: 2rem 1.5rem; }
+    .trades { font-size: 0.76rem; }
+    .trades th, .trades td { padding: 0.4rem 0.35rem; }
+  }
+
+  /* The cover motif's twinkling point uses the SHARED keyframe from starstuff.css —
+     the same one the starfield on every page of this site has been running since the
+     beginning. Reduced motion is handled globally in the shared sheet, which forces
+     iteration-count to 1 and duration to ~0, leaving the point at its final keyframe:
+     fully opaque and full size. So a reader who has asked for no motion gets the
+     steady star, which is the correct fallback rather than a vanished one. */
+  .motif-twinkle { animation: twinkle-anim 1.7s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
+  .motif-twinkle--b { animation-duration: 2.3s; animation-delay: 0.4s; }
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"The Star Is Not Flickering","description":"Atmospheric scintillation. Stars twinkle and planets do not, and the difference is not in their light: both are steady sources. The flicker is produced as the wavefront crosses turbulent cells of differing temperature and density in Earth's atmosphere, which refract it into a corrugated shape that focuses and defocuses across the ground. A star is effectively a point source and is fully exposed; a planet's angular diameter is large enough to quench the scintillation, because the fluctuations average across its disc and cancel. The flicker is therefore a property of the medium rather than the source, and is used as one, since scintillation measurements profile atmospheric turbulence. The same star scintillates more strongly near the horizon, where its light crosses a longer path through the air, and above the atmosphere there is no scintillation at all. Adaptive optics measures the distortion and cancels it in real time, but needs a reference star, works over a limited field and is expensive, so it corrects a patch of sky rather than the sky. Glimmers is Deb Dana's coinage, from The Polyvagal Theory in Therapy, 2018, within polyvagal theory, an influential but scientifically contested framework; the moments the word names are real, and this zine rests on none of that framework. Developed after Helen Edgar, Glimmers: Autistic Joy and Monotropism. A rhyme, not a proof.","image":"https://starstuff.earth/og-card.jpg","url":"https://starstuff.earth/the-star-is-not-flickering-zine.html","mainEntityOfPage":"https://starstuff.earth/the-star-is-not-flickering-zine.html","datePublished":"2026-08-29","dateModified":"2026-08-29","license":"https://creativecommons.org/licenses/by-sa/4.0/","author":{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/"},"publisher":[{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/","logo":{"@type":"ImageObject","url":"https://starstuff.earth/og-card.jpg"}},{"@type":"Organization","name":"More Realms","url":"https://morerealms.com/"}],"isPartOf":{"@type":"WebSite","name":"Star Stuff","url":"https://starstuff.earth/"}}</script>
+</head>
+<body>
+<div class="zine-shell">
+
+  <nav class="ss-nav" style="--nav-accent:#fbbf24;" aria-label="Star Stuff collection">
+    <span class="ss-nav-home-group"><a class="ss-nav-home" href="index.html"><span class="ss-star" aria-hidden="true">&#9733;</span> stuff</a><a class="ss-nav-about" href="about.html">about</a>
+      <a class="ss-nav-search" href="search.html">search</a></span>
+    <span class="ss-nav-links">
+      <a class="ss-nav-prev" href="nothing-melts-zine.html"><span class="ss-nav-arrow" aria-hidden="true">&lsaquo;</span> <span class="ss-nav-label">Nothing Melts</span></a>
+      <a class="ss-nav-next" href="collection-how-we-got-here.html"><span class="ss-nav-label">How We Got Here</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
+    </span>
+    <a class="ss-nav-collection" href="collection-star-stuff.html"><span class="ss-nav-collection-label">Collection</span> <span class="ss-nav-collection-name">Star Stuff</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
+  </nav>
+
+  <div class="nav">
+    <span class="nav-brand">Stimpunks &times; More Realms</span>
+    <div class="nav-controls">
+      <button class="nav-btn" id="prev-btn" onclick="changePage(-1)">&larr; prev</button>
+      <span class="page-counter" id="page-counter">1 / 12</span>
+      <button class="nav-btn" id="next-btn" onclick="changePage(1)">next &rarr;</button>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 1: COVER ════ -->
+  <div class="spread active" id="spread-1">
+    <div class="cover-spread">
+      <svg class="cover-motif" viewBox="0 0 340 340" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <!-- The argument, running before a word of it is read: two identical steady sources
+             at the top; the right-hand beam crosses a rumpled layer and arrives twinkling,
+             the left-hand one does not and arrives steady. The animation is the SHARED
+             twinkle-anim from starstuff.css — the keyframe this site's starfield has used
+             on every page since the beginning. No text, so nothing here can collide. -->
+        <!-- Everything lives above y=155 of a 340 viewBox. Two corrections got here:
+             the first draft put the arrivals at y=244, squarely on .cover-title, and the
+             second at y=172, squarely on .cover-issue — which is precisely the two-stage
+             mistake No. 48 made. check-overlap.mjs sees none of it: it measures text
+             against text, and artwork over a heading is the case it says needs eyes. -->
+        <g transform="translate(2,2)">
+          <circle cx="104" cy="20" r="3.6" fill="rgba(251,191,36,0.95)"/>
+          <circle cx="226" cy="20" r="3.6" fill="rgba(251,191,36,0.95)"/>
+          <path d="M104 27 V 128" stroke="rgba(251,191,36,0.30)" stroke-width="1.2" stroke-dasharray="4 5"/>
+          <path d="M226 27 V 128" stroke="rgba(251,191,36,0.30)" stroke-width="1.2" stroke-dasharray="4 5"/>
+          <g stroke="rgba(34,211,238,0.45)" stroke-width="1.2" fill="none">
+            <path d="M172 62 q 13 -7 26 0 t 26 0 t 26 0 t 26 0"/>
+            <path d="M172 76 q 13 7 26 0 t 26 0 t 26 0 t 26 0"/>
+            <path d="M172 90 q 13 -7 26 0 t 26 0 t 26 0 t 26 0"/>
+          </g>
+          <circle cx="104" cy="136" r="5.4" fill="rgba(251,191,36,0.95)"/>
+          <circle class="motif-twinkle" cx="226" cy="136" r="5.4" fill="rgba(251,191,36,0.95)"/>
+          <circle class="motif-twinkle motif-twinkle--b" cx="268" cy="112" r="2.4" fill="rgba(251,191,36,0.8)"/>
+          <circle class="motif-twinkle motif-twinkle--b" cx="196" cy="150" r="2" fill="rgba(251,191,36,0.7)"/>
+          <circle cx="62" cy="108" r="2" fill="rgba(251,191,36,0.6)"/>
+          <circle cx="142" cy="152" r="1.8" fill="rgba(251,191,36,0.55)"/>
+        </g>
+      </svg>
+      <div class="cover-corner" aria-hidden="true">
+        <div class="cover-corner-num">78</div>
+        <span class="cover-corner-label">Star Stuff</span>
+      </div>
+      <div class="cover-issue">Stimpunks &times; More Realms &middot; Zine No. 78</div>
+      <h1 class="cover-title">The Star Is <span class="amp">Not</span> Flickering</h1>
+      <p class="cover-subtitle">on why stars twinkle and planets do not, why the answer is in neither of them &mdash; and what it costs to correct <em>the air instead of the light</em></p>
+      <div class="cover-byline">after Helen Edgar&rsquo;s <strong>Glimmers: Autistic Joy and Monotropism</strong></div>
+      <hr class="spectrum-line cover-rule">
+      <div class="cover-meta">
+        <span class="cover-ls">L&#9733;S</span>
+        <div class="cover-meta-text">Love You Down To Your Star Stuff<br>open edition &middot; print freely</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 2: nothing happened at the source ════ -->
+  <div class="spread" id="spread-2">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Where the flicker is not</div>
+          <h2 class="spread-heading" id="not-at-the-source">Nothing happened at the source</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">A star that appears to be flickering wildly is not flickering. Its output over the seconds you are watching is, for practical purposes, constant.</p>
+            <p>The light you are receiving left that star years ago &mdash; four for the nearest, thousands for most of what you can see &mdash; and travelled the entire distance without incident. It arrived at the top of the atmosphere as a flat, orderly wavefront, still perfectly steady.</p>
+            <p class="pull-quote gold">Everything that happened to that light happened in the last few microseconds of a journey of years.</p>
+            <p>The word for the effect is <span class="gold">scintillation</span>, and its cause is not in the sky. It is in about a hundred kilometres of air, most of it in the lowest few, which the light has to cross at the very end in order to reach an eye standing at the bottom of it.</p>
+            <p><strong>This is not a subtle correction.</strong> It is the difference between a fact about the star and a fact about the observer&rsquo;s situation, and the two produce identical experiences. What you see is genuinely unsteady. Nothing you could do to the star would make it steadier, because the star was never the problem.</p>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Star Is Not Flickering &middot; Stimpunks</span>
+        <span class="spread-footer-right">2</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 3: what is in between ════ -->
+  <div class="spread" id="spread-3">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The mechanism</div>
+          <h2 class="spread-heading" id="what-is-between">What is in between</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">The atmosphere is not a uniform sheet of air. It is a shifting mess of cells at slightly different temperatures and therefore slightly different densities, and light bends when it crosses between them.</p>
+            <p>Each cell refracts the wavefront a little. The flat sheet that arrived from space is corrugated by the time it reaches the ground: parts of it converge, parts diverge, and the pattern of light and shadow that lands on your eye slides around as the cells drift and churn.</p>
+            <p>So the brightness at your particular pupil rises and falls, tens of times a second, while the total light arriving over a wide area stays constant. <strong>You are not watching the star change. You are watching a moving pattern cross your position.</strong></p>
+            <p class="pull-quote gold">The light is being redistributed, not altered. Somebody standing a few metres away is receiving your missing photons at that instant, and their star is bright while yours is dim.</p>
+            <p>The same mechanism produces the shifting bright bands on the bottom of a swimming pool, and for the same reason: an uneven medium between a steady source and a flat surface.</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 178" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig1-title fig1-desc">
+              <title id="fig1-title">A flat wavefront is corrugated by turbulent cells</title>
+              <desc id="fig1-desc">A star at the top emits light that arrives at the top of the atmosphere as a series of flat, evenly spaced horizontal wavefronts. Passing through a band of turbulent cells of differing density, the wavefronts emerge rippled and uneven. At the ground, the resulting light is shown as an irregular pattern of bright and dim patches rather than an even wash.</desc>
+              <circle cx="150" cy="18" r="4" fill="rgba(251,191,36,0.95)"/>
+              <g stroke="rgba(251,191,36,0.75)" stroke-width="1.3" fill="none">
+                <path d="M56 44 H 244"/><path d="M56 56 H 244"/><path d="M56 68 H 244"/>
+              </g>
+              <g stroke="rgba(34,211,238,0.4)" stroke-width="1" fill="none">
+                <circle cx="82" cy="94" r="14"/><circle cx="120" cy="88" r="11"/><circle cx="154" cy="98" r="16"/>
+                <circle cx="192" cy="88" r="12"/><circle cx="226" cy="96" r="13"/>
+              </g>
+              <g stroke="rgba(251,191,36,0.9)" stroke-width="1.3" fill="none">
+                <path d="M56 124 q 16 -7 30 2 t 30 -3 t 30 4 t 30 -4 t 30 3 t 24 -1"/>
+                <path d="M56 138 q 16 6 30 -2 t 30 4 t 30 -3 t 30 3 t 30 -4 t 24 2"/>
+              </g>
+              <path d="M42 160 H 258" stroke="rgba(196,181,212,0.5)" stroke-width="1.3"/>
+              <g fill="rgba(251,191,36,0.9)">
+                <rect x="52" y="152" width="16" height="5" rx="2"/><rect x="86" y="152" width="7" height="5" rx="2" opacity="0.35"/>
+                <rect x="106" y="152" width="20" height="5" rx="2"/><rect x="140" y="152" width="8" height="5" rx="2" opacity="0.35"/>
+                <rect x="162" y="152" width="14" height="5" rx="2"/><rect x="190" y="152" width="9" height="5" rx="2" opacity="0.35"/>
+                <rect x="212" y="152" width="18" height="5" rx="2"/>
+              </g>
+              <g font-family="Space Mono, monospace" font-size="6.4">
+                <text x="56" y="36" fill="#fcd34d">flat on arrival</text>
+                <text x="56" y="112" fill="#67e8f9">cells of differing density</text>
+                <text x="42" y="174" fill="#c4b5d4">bright and dim, and it moves</text>
+              </g>
+            </svg>
+            <div class="diagram-caption">Figure 1 &middot; the sheet arrives flat and lands rumpled</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Star Is Not Flickering &middot; Stimpunks</span>
+        <span class="spread-footer-right">3</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 4: why planets don't ════ -->
+  <div class="spread" id="spread-4">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The control experiment, free, every clear night</div>
+          <h2 class="spread-heading" id="why-planets-dont">Why planets do not</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Here is how we know the atmosphere is doing it and the star is not. On the same night, through the same air, at the same altitude in the sky, <strong>planets barely twinkle at all.</strong></p>
+            <p>Jupiter&rsquo;s light crosses exactly the same turbulence as the star next to it. If scintillation were a property of the source, that would make no sense. It is a property of <em>angular size</em>.</p>
+            <p>A star, however enormous, is so far away that it is effectively a <strong>point</strong>. All its light takes essentially one path through the air, so whatever that path does to it, it does to all of it. A planet is close enough to present a <strong>disc</strong> &mdash; small, but resolvable &mdash; and different parts of that disc send their light through different turbulent cells at the same moment.</p>
+            <p class="pull-quote gold">The disc is wide enough to be having several different atmospheres at once, and they cancel. The flickers average away, and the planet sits there steadily.</p>
+            <p>The astronomer&rsquo;s phrasing is exact: planets&rsquo; <em>&ldquo;angular diameters are so large as to quench the scintillations.&rdquo;</em> Quench, not resist. Nothing about a planet is tougher. It is simply large enough on the sky that no single cell can speak for the whole of it.</p>
+            <p><strong>Which is the first practical consequence of the whole zine.</strong> The flicker did not go away because the light got better. It went away because more of the medium was being sampled at once.</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 172" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig2-title fig2-desc">
+              <title id="fig2-title">A point source samples one cell; a disc samples many</title>
+              <desc id="fig2-desc">On the left, a star drawn as a single point sends one narrow beam through one turbulent cell, and the light arriving below is uneven. On the right, a planet drawn as a small disc sends several beams through several different cells at once, and the light arriving below is even, because the separate fluctuations average out.</desc>
+              <circle cx="72" cy="22" r="3.4" fill="rgba(251,191,36,0.95)"/>
+              <path d="M72 26 V 76" stroke="rgba(251,191,36,0.8)" stroke-width="1.4"/>
+              <circle cx="72" cy="92" r="15" fill="none" stroke="rgba(34,211,238,0.55)" stroke-width="1.1"/>
+              <path d="M72 107 q -6 14 2 26 q 6 10 -2 20" fill="none" stroke="rgba(251,191,36,0.9)" stroke-width="1.4"/>
+              <circle cx="228" cy="22" r="9" fill="rgba(251,191,36,0.35)" stroke="rgba(251,191,36,0.95)" stroke-width="1.3"/>
+              <g stroke="rgba(251,191,36,0.8)" stroke-width="1.2" fill="none">
+                <path d="M220 30 L 200 76"/><path d="M228 31 L 228 76"/><path d="M236 30 L 256 76"/>
+              </g>
+              <g fill="none" stroke="rgba(34,211,238,0.55)" stroke-width="1.1">
+                <circle cx="198" cy="92" r="13"/><circle cx="228" cy="92" r="13"/><circle cx="258" cy="92" r="13"/>
+              </g>
+              <g stroke="rgba(251,191,36,0.9)" stroke-width="1.4" fill="none">
+                <path d="M200 105 q -5 12 3 22"/><path d="M228 105 q 5 12 -3 22"/><path d="M256 105 q -4 12 4 22"/>
+              </g>
+              <path d="M196 140 H 260" stroke="rgba(251,191,36,0.95)" stroke-width="2"/>
+              <g font-family="Space Mono, monospace" font-size="6.4">
+                <text x="24" y="16" fill="#fcd34d">point</text>
+                <text x="272" y="16" text-anchor="end" fill="#fcd34d">disc</text>
+                <text x="72" y="156" text-anchor="middle" fill="#c4b5d4">one path, unaveraged</text>
+                <text x="228" y="156" text-anchor="middle" fill="#c4b5d4">many paths, cancelling</text>
+              </g>
+            </svg>
+            <div class="diagram-caption">Figure 2 &middot; quenched by being wide</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Star Is Not Flickering &middot; Stimpunks</span>
+        <span class="spread-footer-right">4</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 5: the flicker measures the air ════ -->
+  <div class="spread" id="spread-5">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The flicker is data</div>
+          <h2 class="spread-heading" id="flicker-is-data">So the flicker measures the air</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">If the twinkling is caused entirely by the medium, then the twinkling is a <em>measurement</em> of the medium. And astronomers use it as one.</p>
+            <p>Watch how fast a star scintillates, how deeply, and at what spatial scale, and you can work backwards to the turbulence that produced it &mdash; how strong it is, and roughly at what altitudes it sits. Observatories run instruments that do nothing but this, so they can tell in advance what kind of night they are going to have.</p>
+            <p class="pull-quote gold">The unsteadiness that ruins the image is also the only direct report on the thing ruining it.</p>
+            <p>That reframing is worth holding onto, because it inverts the obvious reading twice over. First the flicker stopped being a fact about the star. Now it stops being noise at all: <strong>it is the atmosphere&rsquo;s own account of itself, written in the only handwriting available.</strong></p>
+            <p>Nobody reads that report as a complaint about the star. It would not occur to anyone. The star&rsquo;s behaviour is not what is being reported on, and the instrument pointed at the flickering is pointed, in every sense that matters, at the air.</p>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Star Is Not Flickering &middot; Stimpunks</span>
+        <span class="spread-footer-right">5</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 6: worse near the horizon ════ -->
+  <div class="spread" id="spread-6">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The same star, twice</div>
+          <h2 class="spread-heading" id="near-the-horizon">Worse near the horizon</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Take one star. Watch it rise. It will scintillate violently when it is low &mdash; often flashing colours &mdash; and settle considerably by the time it is overhead.</p>
+            <p>Nothing about the star changed in those hours. What changed is the length of the path. Straight up, light crosses one thickness of atmosphere. Near the horizon it crosses many times that, at a shallow angle, through the densest and most disturbed air near the ground &mdash; so there is simply more medium to be disturbed by.</p>
+            <p class="pull-quote gold">The identical source, on the identical night, is steady in one part of the sky and frantic in another. The variable is entirely how much air is in the way.</p>
+            <p>Observers act on this without discussion. You do not photograph something at ten degrees if you can wait until it is at seventy. You do not conclude that the object is unreliable at low altitude. <strong>You wait, or you go somewhere the path is shorter, and the shortest paths are why observatories sit on mountains.</strong></p>
+            <p>Altitude, in other words, is not a property of the star. It is a property of the arrangement, and it is the single largest thing anyone can change about how well a faint thing can be seen.</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 190" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig3-title fig3-desc">
+              <title id="fig3-title">Path length through the atmosphere against altitude in the sky</title>
+              <desc id="fig3-desc">A curved ground with a band of atmosphere above it and an observer standing on the surface. A line drawn straight up from the observer crosses the atmospheric band at its shortest, about one thickness. A second line drawn at a shallow angle toward the horizon stays inside the same band for several times that distance before leaving it. The stretches actually inside the atmosphere are picked out, and the band's thickness is greatly exaggerated for legibility.</desc>
+              <!-- Positions computed against the two quadratics rather than eyeballed: the
+                   ground apex sits at (150,133) and the atmosphere top at (150,101), so the
+                   observer stands ON the ground. The first draft put the observer at y=116,
+                   floating between the two curves. -->
+              <path d="M10 150 q 140 -34 280 0" fill="none" stroke="rgba(196,181,212,0.6)" stroke-width="1.6"/>
+              <path d="M10 118 q 140 -34 280 0" fill="none" stroke="rgba(34,211,238,0.5)" stroke-width="1.2" stroke-dasharray="4 4"/>
+              <path d="M150 101 V 54" stroke="rgba(251,191,36,0.95)" stroke-width="1.8"/>
+              <path d="M270 113 L 296 109" stroke="rgba(251,191,36,0.95)" stroke-width="1.8"/>
+              <path d="M150 133 V 101" stroke="rgba(244,114,182,0.95)" stroke-width="3.4"/>
+              <path d="M150 133 L 270 113" stroke="rgba(244,114,182,0.95)" stroke-width="3.4"/>
+              <circle cx="150" cy="133" r="3" fill="rgba(244,244,251,0.95)"/>
+              <g font-family="Space Mono, monospace" font-size="6.4">
+                <text x="157" y="58" fill="#fcd34d">overhead &mdash; one thickness</text>
+                <text x="292" y="96" text-anchor="end" fill="#fcd34d">near the horizon &mdash; many</text>
+                <text x="10" y="112" fill="#67e8f9">top of the atmosphere</text>
+                <text x="10" y="172" fill="#f9a8d4">the pink stretch is air actually crossed</text>
+                <text x="10" y="184" fill="#c4b5d4">atmosphere hugely thickened, for legibility</text>
+              </g>
+            </svg>
+            <div class="diagram-caption">Figure 3 &middot; the variable is how much air</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Star Is Not Flickering &middot; Stimpunks</span>
+        <span class="spread-footer-right">6</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 7: above it, nothing twinkles ════ -->
+  <div class="spread" id="spread-7">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The limiting case</div>
+          <h2 class="spread-heading" id="above-it">Above it, nothing twinkles</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Put the telescope outside the atmosphere and scintillation stops. Not improves. Stops.</p>
+            <p>Hubble does not see stars twinkle. There is nothing between it and them to do the twinkling, so the light it collects is the flat, orderly wavefront that has been travelling unmolested for however many years, arriving in exactly the state it left in.</p>
+            <p class="pull-quote gold">The flicker was never in the light. Remove the medium and it is simply not there, and no adjustment to the star was required to achieve that.</p>
+            <p>This is the cleanest demonstration available that the problem was situational, and it cost several billion dollars to run. That is worth saying plainly rather than letting the moral arrive too easily: <strong>the fix that works perfectly is the most expensive object humans have put in orbit</strong>, and it works for one telescope pointed at one thing at a time.</p>
+            <p>Everyone else is still at the bottom of a hundred kilometres of moving air, and has to do something else.</p>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Star Is Not Flickering &middot; Stimpunks</span>
+        <span class="spread-footer-right">7</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 8: correct the medium ════ -->
+  <div class="spread" id="spread-8">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The other answer</div>
+          <h2 class="spread-heading" id="correct-the-medium">Or correct the medium</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">If you cannot leave the atmosphere, you can measure exactly what it is doing to the wavefront and undo it, hundreds of times a second, in a mirror.</p>
+            <p>That is <span class="gold">adaptive optics</span>, and the loop is unglamorous and exact. A sensor reads the shape of the incoming wavefront and works out how it has been rumpled. A computer converts that into a set of corrections. A thin deformable mirror, pushed by hundreds or thousands of actuators, bends into the <em>opposite</em> shape. The distorted wavefront reflects off it and comes out flat. Then it does it again, before the air has time to move.</p>
+            <p class="pull-quote gold">The star is not asked to be steadier. The instrument is reshaped, continuously, to match the conditions the light is actually arriving in.</p>
+            <p>It works spectacularly. Ground telescopes running adaptive optics resolve detail that was flatly impossible from the same site without it, on the same nights, looking at the same objects.</p>
+            <p><strong>And note the direction the effort runs.</strong> Nothing is done to the source, nothing is demanded of the light, and the correction is not a one-off adjustment that stays done. It is continuous, it tracks the conditions, and the moment it stops the blur returns immediately.</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 170" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig4-title fig4-desc">
+              <title id="fig4-title">The adaptive optics loop</title>
+              <desc id="fig4-desc">A rumpled wavefront arrives from above and reflects off a deformable mirror bent into the opposite shape, emerging flat. A wavefront sensor reads the incoming shape and feeds a computer, which drives the mirror's actuators, closing the loop. The correction is continuous.</desc>
+              <path d="M22 24 q 16 -8 32 2 t 32 -3 t 32 4 t 32 -3" fill="none" stroke="rgba(251,191,36,0.9)" stroke-width="1.6"/>
+              <!-- Same corrugation, translated down. The first draft gave the second wavefront the
+                   opposite phase, so the two crossed each other — which successive crests of one
+                   wavefront cannot do. It read as a knot rather than as a rumpled sheet. -->
+              <path d="M22 38 q 16 -8 32 2 t 32 -3 t 32 4 t 32 -3" fill="none" stroke="rgba(251,191,36,0.9)" stroke-width="1.6"/>
+              <path d="M86 52 V 74" stroke="rgba(251,191,36,0.5)" stroke-width="1" stroke-dasharray="3 3"/>
+              <path d="M30 86 q 16 8 32 -2 t 32 3 t 32 -4 t 32 3" fill="none" stroke="rgba(34,211,238,0.95)" stroke-width="2.4"/>
+              <g stroke="rgba(34,211,238,0.7)" stroke-width="1.1">
+                <path d="M36 92 V 104"/><path d="M52 96 V 108"/><path d="M68 90 V 102"/><path d="M84 96 V 108"/>
+                <path d="M100 92 V 104"/><path d="M116 97 V 109"/><path d="M132 91 V 103"/><path d="M148 96 V 108"/>
+              </g>
+              <path d="M22 130 H 190" fill="none" stroke="rgba(74,222,128,0.95)" stroke-width="2"/>
+              <path d="M22 140 H 190" fill="none" stroke="rgba(74,222,128,0.95)" stroke-width="2"/>
+              <rect x="206" y="30" width="66" height="26" rx="3" fill="none" stroke="rgba(196,181,212,0.7)" stroke-width="1.2"/>
+              <rect x="206" y="76" width="66" height="26" rx="3" fill="none" stroke="rgba(196,181,212,0.7)" stroke-width="1.2"/>
+              <path d="M180 32 L 204 40" stroke="rgba(196,181,212,0.6)" stroke-width="1.1"/>
+              <path d="M239 58 V 74" stroke="rgba(196,181,212,0.6)" stroke-width="1.1"/>
+              <path d="M206 92 L 156 100" stroke="rgba(196,181,212,0.6)" stroke-width="1.1"/>
+              <g font-family="Space Mono, monospace" font-size="6.2">
+                <text x="22" y="16" fill="#fcd34d">rumpled in</text>
+                <text x="30" y="122" fill="#67e8f9">mirror, bent the opposite way</text>
+                <text x="22" y="156" fill="#86efac">flat out</text>
+                <text x="239" y="46" text-anchor="middle" fill="#c4b5d4">sensor</text>
+                <text x="239" y="92" text-anchor="middle" fill="#c4b5d4">actuators</text>
+              </g>
+            </svg>
+            <div class="diagram-caption">Figure 4 &middot; reshape the instrument, not the star</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Star Is Not Flickering &middot; Stimpunks</span>
+        <span class="spread-footer-right">8</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 9: what that cannot do ════ -->
+  <div class="spread" id="spread-9">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The limits, before anyone gets carried away</div>
+          <h2 class="spread-heading" id="what-it-cannot-do">And what that cannot do</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Adaptive optics is not a solved problem handed out freely. It has hard constraints, and they are the honest end of this zine.</p>
+            <p><strong>It needs a reference.</strong> The system has to measure the distortion against something bright enough and close enough on the sky to the thing you actually care about. If there is no suitable star nearby, one has to be manufactured &mdash; a laser fired into the upper atmosphere to make an artificial spot to measure against.</p>
+            <p><strong>It works over a small patch.</strong> The correction is only valid within a limited angle around the reference, because further away the light has come through different air. Outside that patch you are back where you started.</p>
+            <p><strong>It is expensive, and it never finishes.</strong> Deformable mirrors, wavefront sensors, real-time control, lasers, and people to run all of it &mdash; and the moment the loop opens, the blur is back within milliseconds.</p>
+            <p class="pull-quote pink">You can correct a patch of sky. You cannot correct the sky. And the correction is a thing somebody has to keep paying for, continuously, or it stops.</p>
+            <p>So there is no version of this where the atmosphere is defeated and everyone goes home. There are three real options &mdash; wait for the light to be higher, spend enormously to get above the air, or spend continuously to cancel it in one small region &mdash; and every one of them is an intervention in the conditions rather than in the star.</p>
+            <p><strong>That is the whole finding, and it is not a comforting one.</strong> Knowing exactly where a problem lives does not make it cheap to fix. It only makes it impossible to keep blaming the wrong thing.</p>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Star Is Not Flickering &middot; Stimpunks</span>
+        <span class="spread-footer-right">9</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 10: whose word this is ════ -->
+  <div class="spread" id="spread-10">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Where this came from</div>
+          <h2 class="spread-heading" id="whose-word">Whose word this is</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">This zine started from an essay about <em>glimmers</em>, and the word needs its provenance said out loud rather than assumed.</p>
+            <p><strong>Glimmers</strong> is <strong>Deb Dana&rsquo;s</strong> coinage, from <em>The Polyvagal Theory in Therapy</em> (2018), where she offers it as the counterpart to <em>triggers</em>: the small moments that register as safety rather than threat. <strong>Helen Edgar</strong> then read it through monotropism, in <em>Glimmers: Autistic Joy and Monotropism</em> &mdash; small but powerful moments when focus, sensory needs and emotions come together in a way that feels right.</p>
+            <p class="note"><strong>Said once, plainly, because this house has said it twice before.</strong> The framework the word comes from is <em>polyvagal theory</em>, which is influential and <strong>scientifically contested</strong>. The moments the word names are real; the physiology offered to explain them is disputed. <em>This zine rests on none of it.</em> Everything on spreads two to nine is atmospheric optics, and it would stand unchanged if the framework were withdrawn tomorrow &mdash; which is precisely why we went and found the word something settled to stand on.</p>
+            <p><strong>Csikszentmihalyi&rsquo;s <em>flow</em></strong> appears in Helen&rsquo;s essay too, and is named here for completeness and not leaned on. <strong>Monotropism</strong> is Dinah Murray, Mike Lesser &amp; Wenn Lawson (2005).</p>
+            <p class="pull-quote gold">A good word does not stop being a good word because the scaffolding under it is disputed. It just needs better ground, and there was some available.</p>
+            <p>What the optics contributes is narrow and, we think, worth having. Not that glimmers are real &mdash; nobody needed telling. But that <em>intermittency is not evidence about the source</em>, that a thing seen through disturbance is not a disturbed thing, and that every available remedy is an intervention in the medium.</p>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Star Is Not Flickering &middot; Stimpunks</span>
+        <span class="spread-footer-right">10</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 11: refusals ════ -->
+  <div class="spread" id="spread-11">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">What this does not say</div>
+          <h2 class="spread-heading" id="what-this-does-not-say">What this does not say</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">A piece arguing that the flicker is in the medium can be turned into several bad sentences without much effort. So, plainly:</p>
+          </div>
+          <div class="refusals">
+            <div class="refusal"><span class="refusal-tag">Not:</span><span><strong>that the physics validates the psychology.</strong> Atmospheric optics has nothing to say about nervous systems, and we did not go looking for a mechanism that would license a framework. We went looking for <em>settled ground the word could stand on by itself</em>, which is a different errand and produces a different piece.</span></div>
+            <div class="refusal"><span class="refusal-tag">Not:</span><span><strong>an attack on Helen&rsquo;s essay or on Deb Dana&rsquo;s word.</strong> The word is good, the moments are real, and the essay is the reason this zine exists. Saying which parts of a foundation are contested is what you do for something you intend to keep building on.</span></div>
+            <div class="refusal"><span class="refusal-tag">Not:</span><span><strong>&ldquo;it&rsquo;s not you, it&rsquo;s your environment&rdquo; as a slogan.</strong> The physics makes a narrow claim about one specific measurement, not a general theory of anybody&rsquo;s life, and a person is not a point source. <em>The analogy is a shape, and it stops where the shape stops.</em></span></div>
+            <div class="refusal"><span class="refusal-tag">Not:</span><span><strong>that knowing this fixes it.</strong> Spread nine is in this zine for exactly that reason. Correcting a medium is expensive, partial, continuous, and covers a small patch. <span class="pink">Locating a problem correctly is not the same as being able to afford the answer.</span></span></div>
+            <div class="refusal"><span class="refusal-tag">Not:</span><span><strong>that steadiness is the goal.</strong> Nothing here says a flickering star is failing. It is being seen through moving air, which is what happens when anybody looks at anything from the bottom of an atmosphere, and the glimmers arrive regardless.</span></div>
+            <div class="refusal"><span class="refusal-tag">Not:</span><span><strong>a proof.</strong> <strong>A rhyme, not a proof.</strong> Scintillation establishes nothing whatever about a person. What it supplies is one exactly measured case in which an unsteadiness that appears to belong to a thing turns out, on inspection, to belong entirely to the distance between that thing and whoever is looking at it &mdash; and in which every real remedy is applied to the distance.</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Star Is Not Flickering &middot; Stimpunks</span>
+        <span class="spread-footer-right">11</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 12: COLOPHON ════ -->
+  <div class="spread" id="spread-12">
+    <div class="interior">
+      <div class="colophon">
+        <div>
+          <div class="colophon-top">
+            <span class="colophon-ls">L&#9733;S</span>
+            <p class="colophon-phrase">It left steady and it arrives unsteady, and everything that happened to it happened in the last few microseconds. You cannot correct the sky. You can correct a patch of it, continuously, for as long as somebody keeps paying.</p>
+          </div>
+
+          <div class="series-list">
+            <div class="series-item"><span class="series-num">FG 22</span> Under the Word &mdash; the eighteen words, and what is under each</div>
+            <div class="series-item"><span class="series-num">No. 73</span> Measured Against a Tree &mdash; the ruler was one specialisation</div>
+            <div class="series-item"><span class="series-num">No. 76</span> Forty Minutes to See &mdash; the second system, and who pays for the light</div>
+            <div class="series-item"><span class="series-num">No. 77</span> Nothing Melts &mdash; joined without dissolving</div>
+            <div class="series-item current"><span class="series-num">No. 78</span> The Star Is Not Flickering &mdash; the unsteadiness is in the air &larr; you are here</div>
+          </div>
+
+          <div class="reflect">
+            <div class="reflect-label">Reflection</div>
+            <p class="reflect-q">What have you been told is unreliable about you, that is a fact about the room?</p>
+            <p class="reflect-q">Where are you being looked at through a great deal of turbulent air, and by whom?</p>
+            <p class="reflect-q">What would it cost, honestly, to correct the medium rather than the light?</p>
+            <p class="reflect-q">Who is currently paying for a correction that stops the moment they stop?</p>
+            <p class="reflect-q">What arrives steadily when the path is short, and how often do you get a short path?</p>
+          </div>
+        </div>
+
+        <div class="colophon-body">
+          <h3 class="colophon-h" id="sources">Sources</h3>
+          <p><strong>Scintillation.</strong> Standard atmospheric optics and observational astronomy: that stellar scintillation is produced by refraction across turbulent cells of differing temperature and density in the Earth&rsquo;s atmosphere rather than by variation in the source; that a star is effectively a point source and is therefore fully exposed to it; and that planets do not visibly twinkle because, in the standard phrasing, their <em>angular diameters are so large as to quench the scintillations</em> &mdash; the fluctuations average across the resolved disc and cancel. That scintillation increases at low altitude with the longer atmospheric path, that it vanishes above the atmosphere, and that adaptive optics measures and cancels the wavefront distortion in real time, are likewise standard. <em>Open:</em> all of this is textbook and consistent across independent accounts, but it is cited here at that level rather than to named primaries, and the figures are schematic. Figure 3 in particular exaggerates the atmosphere&rsquo;s thickness enormously for legibility, and says so on its own face.</p>
+          <p><strong>Glimmers.</strong> <strong>Deb Dana</strong>, <em>The Polyvagal Theory in Therapy: Engaging the Rhythm of Regulation</em> (W. W. Norton, 2018) &mdash; the coinage, offered as the counterpart to <em>triggers</em>. <em>Open:</em> the attribution and date are taken from the publication record and from consistent secondary accounts; we have not read the book, and nothing is quoted from it. <strong>Polyvagal theory is Stephen Porges&rsquo; and is an influential but scientifically contested framework</strong> &mdash; the same wording this site uses in <a href="the-nearest-body-zine.html">The Nearest Body</a> (No. 72) and alongside <a href="shared-signal-zine.html">Shared Signal</a>, and applied here for the same reason. The moments the word names are real; the physiology offered to explain them is disputed; <strong>and this zine&rsquo;s argument rests on neither.</strong></p>
+          <p><strong>Credits.</strong> The seed is <strong>Helen Edgar</strong>&rsquo;s <a href="https://autisticrealms.com/glimmers-autistic-joy-and-monotropism/">Glimmers: Autistic Joy and Monotropism</a> (Autistic Realms), which reads glimmers through monotropism. Her essay also cites Csikszentmihalyi on flow, named on spread ten and deliberately not leaned on. <strong>Monotropism</strong> is Dinah Murray, Mike Lesser &amp; Wenn Lawson (2005). The optics and the argument are ours; the word is Dana&rsquo;s and the neurodivergent reading is Helen&rsquo;s. <strong>ARLES is named nowhere</strong>, per the standing rule &mdash; spreads six to nine are an environment argument made in plain words.</p>
+          <p><strong>The cover has been running this argument on every page of this site for years.</strong> The motif&rsquo;s twinkling points use <code>@keyframes twinkle-anim</code> from <code>starstuff.css</code> &mdash; the shared keyframe behind the pure-CSS starfield on every artifact here. <em>We had been animating atmospheric scintillation sitewide since the beginning and had never once said what it was a picture of.</em> Reduced motion is honoured by the shared sheet, which leaves the points at full opacity and full size: a reader who has asked for no movement gets the steady star, which is the correct fallback rather than a vanished one.</p>
+
+          <h3 class="colophon-h" id="what-this-does-not-re-argue">What this deliberately does not re-argue</h3>
+          <p><a href="the-nearest-body-zine.html">The Nearest Body</a> (No. 72) owns co-regulation and is where this site&rsquo;s polyvagal caveat was first written; this piece reuses the caveat and stays off the ground. <a href="nothing-is-pushing-zine.html">Nothing Is Pushing</a> (No. 71) owns the argument that a cost belongs to the arrangement rather than the occupant, and spread nine is adjacent to it. <a href="forty-minutes-to-see-zine.html">Forty Minutes to See</a> (No. 76) owns the eye and the cost of interruption; this zine stops at the pupil and says nothing about what happens behind it.</p>
+          <p><strong>A rhyme, not a proof.</strong> <span class="gold">The light was steady when it left. It is steady now. What is between you and it is not, and that is where every remedy has to go.</span></p>
+          <div class="colophon-footer">
+            <a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks Foundation</a> &times; <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a><br>
+            stimpunks.org &middot; morerealms.com &middot; starstuff.earth<br>
+            <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> &middot; open edition &middot; print freely
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Star Is Not Flickering &middot; Stimpunks</span>
+        <span class="spread-footer-right">12</span>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /zine-shell -->
+
+<script>
+  let current = 1;
+  const total = 12;
+
+  function changePage(dir) {
+    const next = current + dir;
+    if (next < 1 || next > total) return;
+    document.getElementById('spread-' + current).classList.remove('active');
+    current = next;
+    document.getElementById('spread-' + current).classList.add('active');
+    document.getElementById('page-counter').textContent = current + ' / ' + total;
+    document.getElementById('prev-btn').disabled = current === 1;
+    document.getElementById('next-btn').disabled = current === total;
+    document.getElementById('prev-btn').classList.toggle('active', current > 1);
+    document.getElementById('next-btn').classList.toggle('active', current < total);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') changePage(1);
+    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   changePage(-1);
+  });
+
+  document.getElementById('prev-btn').disabled = true;
+  document.getElementById('next-btn').classList.add('active');
+</script>
+<script src="starstuff.js" defer></script>
+</body>
+</html>
