@@ -124,7 +124,13 @@
   /* ── Masthead ── */
   .mast { display: flex; justify-content: space-between; align-items: flex-start; gap: 6mm; padding-bottom: 3mm; border-bottom: 0.6mm solid var(--ink); }
   .mast-org { font-family: 'Space Mono', monospace; font-size: 6pt; letter-spacing: 0.3em; text-transform: uppercase; color: var(--ink-2); line-height: 1.9; }
-  .mast-org strong { display: block; font-size: 7pt; letter-spacing: 0.22em; color: var(--ink); }
+  /* Scoped to the block's OWN first strong. Unscoped, this label style also caught
+     any emphasis in the body and rendered it as a block heading mid-sentence. No
+     live fault here — every block's label is its first element child and none has
+     a second strong — but the same idiom did bite twice on .intro-note, so the
+     trap is closed rather than left for the next author. A body strong now falls
+     through to inherited-colour bold, which is what paper wants. */
+    .mast-org > strong:first-child { display: block; font-size: 7pt; letter-spacing: 0.22em; color: var(--ink); }
   .mast-side { font-family: 'Space Mono', monospace; font-size: 6pt; letter-spacing: 0.24em; text-transform: uppercase; color: var(--spot); text-align: right; line-height: 1.9; white-space: nowrap; }
   .sheet--b .mast-side { color: var(--spot-2); }
 
