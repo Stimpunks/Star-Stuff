@@ -404,6 +404,26 @@ a.ss-cobrand.ss-cobrand:focus-visible { text-decoration-color: currentColor; }
   svg [fill="#fff"],
   svg [fill="#fbbf24"] { fill: #333333 !important; }
 
+  /* ...and now text wins that argument, which it did not before.
+     `svg text` is (0,0,2) — two type selectors. `svg [fill="#f9fafb"]` is
+     (0,1,1) — an attribute selector plus a type. (0,1,1) beats (0,0,2), so the
+     shape rule above was outranking the label rule fourteen lines up, and every
+     <text fill="#f9fafb"> or <text fill="#fbbf24"> printed at #333333 instead
+     of the #111111 that rule intends. Both !important, so specificity decided it.
+
+     Nothing was BROKEN by that: #333 on a bare sheet is 12.6:1 against #111's
+     18.8:1, and check-contrast.mjs reported zero print failures throughout. But
+     the darker ink exists for one specific reason — a diagram label often sits
+     on a coloured shape that survives print because it is content, not a
+     background — and those are precisely the labels that were quietly missing it.
+
+     Matching (0,1,1) and coming later is the whole fix. Text with no fill
+     attribute was always covered by the rule above and is untouched here.
+     Measured 2026-08-31: 127 label elements across 18 pages were taking #333;
+     full-repo sweep before and after both report 0 screen and 0 print failures
+     across 159 pages and 9,280 SVG labels. */
+  svg text[fill], svg tspan[fill] { fill: #111111 !important; }
+
   /* Site + paging chrome never belongs on paper. */
   .ss-nav { display: none !important; }
   .nav { display: none !important; }             /* paged-zine top prev/next bar */

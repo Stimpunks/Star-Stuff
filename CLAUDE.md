@@ -667,6 +667,21 @@ node tools/check-contrast.mjs --check              # exit non-zero on any failur
   - **Only shapes earlier in document order count** (SVG paints in order), and only
     `rect`/`circle`/`ellipse` — a `<path>` bounding box claims area the path never paints, so
     trusting it would invent backgrounds and mask real failures.
+- **A clean gate is not proof that a stylesheet change worked, and 2026-08-31 is the case that
+  shows it.** `starstuff.css`'s print block sets `svg text { fill: #111111 }` deliberately — darker
+  than the `#222222` body ink, for labels sitting on coloured content shapes — and also
+  `svg [fill="#f9fafb"] … { fill: #333333 }` to invert light shape fills. **An attribute selector is
+  (0,1,1) and a type selector is (0,0,2), so the shape rule silently outranked the label rule
+  fourteen lines above it**, and every `<text>` carrying one of those literals printed at `#333333`.
+  Both rules are `!important`, so specificity decided it. 127 label elements across 18 pages were
+  affected. **No gate could ever have caught this**: 12.6:1 against 18.8:1 on a bare sheet, both far
+  past AA. Fixed with `svg text[fill], svg tspan[fill]` placed *after* the shape rules.
+  **The verification is the transferable part.** Full sweeps before and after were byte-identical —
+  159 pages, 9,280 SVG labels, 0/0 failures, same warning tiers, no per-page line changed — which is
+  the *safety* result and is equally consistent with the CSS never having applied. Proving the fix
+  needed a separate print-emulation probe reading computed `fill` back off the elements. **When a
+  change is invisible to the gate by construction, run the gate for regressions and something else
+  for confirmation.**
 - **The print pass models paper, not print emulation.** `Emulation.setEmulatedMedia` applies the
   print stylesheet but still paints backgrounds; a real reader's sheet has none, which is the whole
   reason 44 pages printed blank. So the gating print number composites against the bare white sheet,
