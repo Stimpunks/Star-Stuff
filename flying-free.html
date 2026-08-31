@@ -139,7 +139,21 @@
   .refusals li::before { content: '\2715'; position: absolute; left: 0; color: var(--violet); font-weight: 700; }
   .refusals a { color: var(--violet); text-decoration: none; border-bottom: 1px solid rgba(167,139,250,0.4); }
 
-  .callout, .refusals { page-break-inside: avoid; break-inside: avoid; }
+  /* ── Figure + licence credit ── */
+  .fig { margin: 1.8rem 0 0.6rem; }
+  .fig img { display: block; width: 100%; height: auto; border-radius: 6px; }
+  .fig figcaption { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--dim); margin-top: 0.7rem; line-height: 1.9; }
+  /* The credit states this image's OWN licence status, which is not the page's.
+     Cyan rather than gold so it reads as the second tier and does not compete
+     with the accent. See the .artcredit on rainbow-serpents.html for the
+     precedent — a credit block is how a page declines to relicense someone
+     else's work under its own footer. */
+  .artcredit { font-family: 'Space Mono', monospace; font-size: 0.62rem; line-height: 1.9; letter-spacing: 0.08em; color: var(--dim); border-left: 3px solid var(--cyan); padding-left: 1rem; margin: 1.2rem 0; }
+  .artcredit a { color: var(--dim); border-bottom: 1px solid rgba(34,211,238,0.3); text-decoration: none; }
+  .artcredit a:hover { color: var(--stardust); }
+  .artcredit strong { color: var(--stardust); font-weight: 700; }
+
+  .callout, .refusals, .fig, .artcredit { page-break-inside: avoid; break-inside: avoid; }
 
   .start-link { display: inline-block; margin-top: 1.5rem; font-family: 'Space Mono', monospace; font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); text-decoration: none; border: 1px solid rgba(251,191,36,0.45); border-radius: 3px; padding: 0.6rem 1.1rem; transition: all 0.2s ease; }
   .start-link:hover { background: rgba(251,191,36,0.12); border-color: var(--accent); color: var(--star-white); }
@@ -165,7 +179,8 @@
     .callout strong, .body-text strong, .body-text em { color: #111; }
     .body-text li, .hero-sub, .callout p, .refusals li, .byline { color: #222; }
     .byline strong { color: #111; }
-    .pull .attr, .colophon-footer, .refs { color: #444; }
+    .pull .attr, .colophon-footer, .refs, .fig figcaption, .artcredit { color: #444; }
+    .artcredit strong { color: #222; }
     /* .callout and .refusals set their label color with a two-class selector,
        so match that specificity or the accent survives onto paper at ~2:1. */
     .callout .callout-label,
@@ -219,6 +234,13 @@
     <p>Liftoff was <strong>7:26 a.m. EDT on Sunday, 30 August 2026</strong>, from Launch Complex 39A at Kennedy Space Center &mdash; the pad that sent Apollo 11 to the Moon &mdash; on a SpaceX Falcon Heavy: three cores, twenty-seven Merlin engines, over five million pounds of thrust.</p>
 
     <p>The two side boosters shut down about two minutes and twenty-four seconds in, separated, flipped, burned back, and landed at Cape Canaveral. One of them was on its first flight; the other was on its third. <strong>The centre core was expended</strong> &mdash; it was not recovered, and it was never going to be. That is the part of the &ldquo;the boosters landed&rdquo; story that gets left out, and it is worth keeping in: the mass Roman needed cost one booster, and somebody decided that trade deliberately.</p>
+
+    <figure class="fig">
+      <img src="nancy-grace-roman-space-telescope-launch.jpg" alt="The Falcon Heavy second stage seen from an onboard camera 141 kilometres up. Its engine nozzle glows bright orange, ribbed with vertical stiffeners, against the blue-white curve of Earth and the black of space; crumpled silver and black insulation fills the right of the frame. Telemetry overlays read T+00:04:23, side boosters at 2392 km/h and 102 km, stage 2 at 14452 km/h and 141 km.">
+      <figcaption>T+00:04:23. The boosters are already falling away &mdash; still shown at 2,392&nbsp;km/h and 102&nbsp;km, on their way down &mdash; while the second stage is through 141&nbsp;km at 14,452&nbsp;km/h with Roman still inside the fairing. Screenshot taken from NASA&rsquo;s live broadcast.</figcaption>
+    </figure>
+
+    <p><strong>That orange is not a warning light.</strong> The second stage&rsquo;s Merlin Vacuum engine has a thin niobium-alloy nozzle extension, and in vacuum there is no air to carry heat away &mdash; so the nozzle sheds it the only way left, by radiating, which at that temperature means <em>glowing</em>. The light in that photograph <strong>is</strong> the cooling system. It is the part of the engine that looks most like it is failing, and it is the part doing its job most visibly, which is a thing worth remembering for later in this piece.</p>
 
     <p>The observatory separated from the second stage <strong>31 minutes after liftoff</strong>. It is now on a roughly <strong>hundred-day cruise</strong> to its working orbit. The mission cost about <strong>$4.3 billion</strong>, its primary science mission is <strong>five years</strong>, and it carries enough propellant for at least ten.</p>
 
@@ -400,6 +422,8 @@
       <p><strong>Budget history.</strong> Cancellation proposed in the FY2019, FY2020 and FY2021 budget requests under the mission&rsquo;s former name WFIRST, and a deep cut proposed for FY2026 following an OMB passback; Congress funded the mission each time; the FY2026 appropriation described Roman as ahead of schedule and under budget; launch roughly nine months ahead of the commitment date &mdash; <a href="https://spacenews.com/falcon-heavy-launches-nasas-roman-space-telescope/">SpaceNews</a> and contemporaneous launch reporting. VERIFIED as reported.</p>
       <p><strong>The broadcast quotations.</strong> Dr. Nicky Fox, Dr. Shawn Domagal-Goldman, Megan Cruz and the NASA launch commentator were transcribed by Ryan Boren while watching <a href="https://www.youtube.com/watch?v=9wq3VHsL_bE&amp;t=6000s">NASA&rsquo;s live launch broadcast</a>, linked at the timestamp. Titles were checked independently: Fox is Associate Administrator for NASA&rsquo;s Science Mission Directorate; Domagal-Goldman is Director of the Astrophysics Division. <em>PLAUSIBLE rather than VERIFIED:</em> the wording is a personal transcription from live speech and has not been checked against an official transcript. Light punctuation has been added and verbal repetitions trimmed where marked by ellipsis in the original notes; no words have been changed.</p>
       <p><strong>Glimmer.</strong> Deb Dana, <em>The Polyvagal Theory in Therapy</em> (Norton, 2018), cited from the publication record for the coinage; the book is unread here and nothing is quoted from it. Polyvagal theory is influential and scientifically contested, and that is stated wherever the word is used. Helen Edgar, <a href="https://autisticrealms.com/glimmers-autistic-joy-and-monotropism/"><em>Glimmers: Autistic Joy and Monotropism</em></a> (Autistic Realms), is the reading this collection works from. Full account: <a href="one-word-for-the-opposite-zine.html">No. 80</a> and the <a href="collection-glimmers.html">collection page</a>.</p>
+      <p><strong>The photograph.</strong> Screenshot taken by Ryan Boren from <a href="https://www.youtube.com/watch?v=9wq3VHsL_bE&amp;t=6000s">NASA&rsquo;s live broadcast</a> of the launch, 30 August 2026, at T+00:04:23 &mdash; a SpaceX onboard camera carried on NASA&rsquo;s stream. <strong>NASA content is generally not subject to copyright</strong> and is used here for informational purposes under <a href="https://www.nasa.gov/nasa-brand-center/images-and-media/">NASA&rsquo;s media usage guidelines</a>, with NASA credited as the source; the frame carries no third-party copyright notice, which is how NASA marks material it does not own. <strong>The onboard imagery is SpaceX&rsquo;s, and we could not find a clearly published licence covering webcast footage</strong> &mdash; SpaceX&rsquo;s terms for its still photography have changed more than once. So the honest statement is that this is used as news and not claimed: <em>credited, not relicensed.</em> The <strong>NASA insignia</strong> visible in the frame is protected separately and is <strong>not</strong> in the public domain; it appears here incidentally, as part of a broadcast frame, and nothing on this page should be read as NASA endorsing Star Stuff. The nozzle glow is radiative cooling of a niobium-alloy nozzle extension, which is standard for vacuum-optimised engines. VERIFIED at the level of the engineering literature&rsquo;s standard account.</p>
+      <div class="artcredit"><strong>This image is not covered by the CC BY-SA 4.0 licence on the rest of this page.</strong> Its status is stated above. Credited because attribution is courtesy even where it is not required &mdash; and because a site that licenses its own work should be exact about the work that is not its own.</div>
       <p><strong>Star Trek terms.</strong> <em>Competency network</em>, <em>omni-directional learning</em> and <em>experiential learning</em> are used here in their Stimpunks senses; see the <a href="https://stimpunks.org/glossary/">Stimpunks glossary</a>. The reading of <em>Star Trek: The Next Generation</em> is the author&rsquo;s own.</p>
       <p>A rhyme, not a proof.</p>
     </div>
