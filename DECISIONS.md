@@ -166,6 +166,62 @@ Decisions still to make. Move to **Settled** with a date once resolved.
 
 ## Settled
 
+- **A fourteenth collection — *Glimmers*, for hopeful science news — settled 2026-08-31, by Ryan.**
+  Proposed and named by Ryan alongside the Roman launch essay: a blog, in effect, for science news
+  that stokes wonder, awe, interdependence and belonging. **Three sub-decisions came with it, and
+  each is a departure from something this file already settled, so each is recorded separately.**
+  - **The axis is *occasion*, which is a fourth kind of sort here.** Five collections sort by
+    register, two by form, two by medium, and three are furniture. This one is in because *something
+    happened on a particular day*. The convention that an off-register collection discloses its axis
+    on its own face is honoured — the page says it in its second section. **The cost of a fourth axis
+    is that "what collection is this?" now has one more possible answer**, which is why the page also
+    states what Glimmers is *not* for: it is not a looser standard, and a slow piece with a news hook
+    still belongs in its register collection.
+  - **Entries are dated, not numbered.** The zine numbering says *when* and is load-bearing across
+    `changelog.html`, `FACTCHECK.md` and years of prose references with no redirects. Inserting news
+    into that sequence would make the numbers mean two different things. A date says *when* better
+    than a number does, and it is the field a reader of news actually wants. **Every entry carries
+    both the event date and the publication date**, because a piece written close to an event was
+    written with less than the full picture and the reader is owed the gap.
+  - **The two-member floor is broken at one, deliberately — the second time, after *Easter Eggs*.**
+    The floor exists because *collections are outputs, not inputs*: a form should be observed in
+    finished work rather than a folder opened in advance. **The argument for the exception is that a
+    running log is defined by its cadence, and cadence is the one property that cannot be observed
+    retroactively.** Waiting for a second entry would mean holding the first until it was no longer
+    news — destroying the exact property the shelf exists to hold. *Rejected alternative:* publish
+    *Flying Free* into `Star Stuff` or `Star Gazing` now and lift it into Glimmers when a second
+    entry arrives. Declined because it puts a piece of undigested news into a register collection
+    whose whole promise is one settled fact followed honestly, and because moving a page later costs
+    a slug redirect and a changelog entry to fix a problem we could simply not create. **Easter Eggs
+    is the precedent and the trade is the same one: a break written down on a visible page beats a
+    quiet exception inside a tool.**
+
+- **The name *Glimmers* is kept, two days after the word was removed from a zine — settled
+  2026-08-31, by Ryan.** This needs recording because the repo argues against it if read carelessly.
+  On 2026-08-29 **No. 78** shipped framed around glimmers and was repointed within hours: the
+  argument had correctly been moved off polyvagal theory (influential, contested) onto optics, and
+  **the word was kept as the frame after its foundation had been removed**. Ryan named that failure.
+  **The distinction that makes the collection name fine is that a frame and a label are different
+  jobs.** A zine's frame is load-bearing — the argument stands on it, so it must hold weight. A
+  collection name carries nothing; it only has to be *true of the pieces under it*, and these pieces
+  are moments of registering that things are all right, which is exactly what the word means.
+  **The obligations that come with keeping it:** Deb Dana credited for the coinage (2018), polyvagal
+  named as contested every time, Helen Edgar's reading given as the working definition, and the
+  No. 78 wrong turn stated on the collection page rather than left as invisible editorial history.
+  All four are done. *Rejected alternatives:* a neutral name such as "Dispatches" or "Good News",
+  declined because the word is precise and the site has just spent a zine (**No. 80**) establishing
+  that a good word does not stop being good when the theory it arrived in is in trouble — renaming
+  around the difficulty would quietly contradict that piece.
+
+- **A piece can carry a personal byline — settled 2026-08-31.** *Flying Free* is written in the
+  first person by one person, so it carries **By Ryan Boren** under the hero and names a `Person` as
+  `author` in its JSON-LD, with `publisher` still the two organizations. This is not new policy so
+  much as the existing rule applied in a new place: *the masthead is shared; authorship is not*, which
+  already governs Helen Edgar's guest zines. **The narrow new thing is the visible byline element**
+  (`.byline`), where guest zines have carried the credit in `.card-series`, the colophon and the
+  prose instead. Reason: a news entry in the first person needs the credit *before* the reader
+  starts, not after.
+
 - **The scrolling zine is a house form, not a one-off — settled 2026-08-26, by Ryan.** No. 68 arrived
   from Helen as a vertical-scroll page and Ryan asked whether the layout could come in as a house
   option, with the fallback of converting it to the usual paged form if it needed too much retooling.

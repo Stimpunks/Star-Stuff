@@ -99,8 +99,8 @@ The central phrase compresses through registers, each with a use:
   <a class="ss-nav-collection" href="collection-kin.html"><span class="ss-nav-collection-label">Collection</span> <span class="ss-nav-collection-name">Kin</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
   ```
 
-  All 125 members have one; the 13 collection pages, `index.html` and `search.html` do not (125 +
-  13 + 2 = the 140 pages in the repo root). **A new
+  All 140 members have one; the 14 collection pages, `index.html` and `search.html` do not (140 +
+  14 + 2 = the 156 pages in the repo root, re-derived 2026-08-31). **A new
   piece needs its badge and its collection page's card in the same pass** — the page→collection map
   is derived from `<a class="card" href="…">` on the collection pages, so a card that is missing
   makes the badge underivable. **`tools/check-markup.mjs` enforces all of this as of 2026-08-13**
@@ -123,8 +123,9 @@ The central phrase compresses through registers, each with a use:
   set size, weight, tracking and color, so the swap is a tag change plus `margin: 0` and a
   `scroll-margin-top`. `tools/check-markup.mjs` guards the ids for duplicates; nothing guards their
   existence, so this is on you.
-- `index.html` carries a **`.masthead-toc` jump strip** — two `<ul>` tiers, thirteen pills: seven
-  top-level sections (Start Here, Foundations, Collections, Field Guides, Sound, Print, Notes) then
+- `index.html` carries a **`.masthead-toc` jump strip** — two `<ul>` tiers, fourteen pills: eight
+  top-level sections (Start Here, Foundations, Collections, **Glimmers**, Field Guides, Sound, Print,
+  Notes — Glimmers joined the upper tier on 2026-08-31) then
   the six that get their own grid section — the five register collections plus **How We Got Here**,
   which joined the lower tier rather than the upper one. Each is tinted with the same `--sec-accent`
   its heading and rule carry. **A new top-level section on the index needs a pill here**, and the strip is in
@@ -183,9 +184,9 @@ The central phrase compresses through registers, each with a use:
   spread, not just the total.
   Reasoning and the rejected shared-sheet option are in `DECISIONS.md`.
 
-### Collections (thirteen pages, in three kinds plus one exception)
+### Collections (fourteen pages, in four kinds plus one exception)
 
-Thirteen **collection** landing pages (`collection-*.html`). **Every section of `index.html` has
+Fourteen **collection** landing pages (`collection-*.html`). **Every section of `index.html` has
 one** — that is the invariant, so *a new index section owes a collection page*, and a new
 collection page owes a `.collection-intro` on the index carrying its accent and an
 `About this collection →` link. The five register collections were settled 2026-08-11 — see
@@ -250,7 +251,42 @@ that disclosure is the convention, and **How We Got Here duly carries it too**:
   *collections are outputs, not inputs* principle, and created the same day No. 39 arrived with the
   same shape. Two is the floor, not a shortcut — *Stars We Grew Up On* has carried two numbered
   zines since 2026-08-11. What earns a collection page is a **form observed in finished work**,
-  never a folder opened in advance.
+  never a folder opened in advance. **Two collections have broken it at one member, both on purpose
+  and both with the reasoning written down:** Easter Eggs (2026-08-14) and **Glimmers**
+  (2026-08-31). Glimmers' argument is the narrower and more transferable one — *a running log is
+  defined by its cadence, and cadence is the one property you cannot observe retroactively*, so
+  waiting for a second entry would have meant holding the first until it was no longer news. Both
+  are in `DECISIONS.md`. **Don't read two breaks as the floor being gone**; read them as the only
+  two cases anyone has managed to argue.
+
+**One sorts by occasion, and that is a fourth axis added 2026-08-31** — Ryan's call, alongside the
+first entry. **Glimmers** is hopeful science news told with a Star Stuff angle: wonder, awe,
+interdependence, belonging. A piece is in it because *something happened on a particular day*.
+
+| Collection | Axis | Members |
+|------------|------|---------|
+| **Glimmers** | **occasion** — written close to the event, dated rather than numbered | `flying-free` (1 — opened deliberately below the two-member floor; see above) |
+
+- **Entries are dated, not numbered, and this is load-bearing rather than stylistic.** The zine
+  numbering says *when* and is referenced by number across `changelog.html`, `FACTCHECK.md` and
+  years of prose with no redirects; inserting news into that sequence would make the numbers mean
+  two things. **Every Glimmers entry carries the event date *and* the publication date** — a piece
+  written close to an event was written with less than the full picture, and the reader is owed the
+  gap. `check-card-order.mjs` therefore counts these among its unnumbered, order-unchecked cards,
+  which is correct and not a coverage loss.
+- **Faster to write is not looser.** Same eight gates, same `FACTCHECK.md` row, same changelog
+  entry, same grading of every quotation. The first entry marks a contested Einstein quotation
+  *against a NASA page it is otherwise citing favourably*, which is the standard the collection is
+  supposed to hold. **A slow piece with a news hook still belongs in its register collection** —
+  Glimmers is not the shelf for "recent", it is the shelf for "we wrote this while it was still
+  happening."
+- **The name is Deb Dana's, and the repo argues against it if read carelessly.** *Glimmer* (2018)
+  arrived inside polyvagal theory, which is influential and **contested**, and No. 78 was repointed
+  on 2026-08-29 specifically to remove the word as a zine's *frame*. The distinction that makes the
+  collection name fine: **a frame is load-bearing and a label is not** — a label only has to be true
+  of the pieces under it. Helen Edgar's reading (simply the opposite of a trigger) is the working
+  definition, No. 80 is the piece that argues it, and the No. 78 wrong turn is stated on the
+  collection page's own face. **Keep all four of those attached wherever the word is explained.**
 
 **Three are not sorted at all** — they are the site's own furniture, and the pieces in them were
 never candidates for a register. Don't try to fold these into either table:
@@ -323,7 +359,7 @@ never candidates for a register. Don't try to fold these into either table:
   everything else homework, and would become the one place the verify-everything standard could
   quietly relax. The fun is distributed; *Stars We Grew Up On* states this on the page.
 - The **prev/next chain follows collection order**: each collection page precedes its members, and
-  members run in ascending number within the collection. **123 pages** as of 2026-08-28,
+  members run in ascending number within the collection. **138 pages** as of 2026-08-31,
   `collection-start-here.html` → `shorthand-evolution.html`. **17 pages sit outside it, and every
   one is a decision:** `about.html` and `cosmic-connections.html`; **all of Notes &amp; Rationale** —
   `changelog.html`, `design.html`, `print-design.html`, `difference-first-frame.html`,
@@ -332,7 +368,7 @@ never candidates for a register. Don't try to fold these into either table:
   `hatchery.html`, `quillery.html` and `one-atom-of-justice-zine.html`, because a chain link would
   walk a reader into an egg by accident and stop it being one.
   (`index.html` and `search.html` are utility pages and were never in it, which makes
-  123 + 17 = 140.)
+  138 + 18 = 156, re-derived 2026-08-31.)
   **Don't trust that number — measure it**, and check `prev` and `next` agree in both directions;
   inserting a page means editing its two neighbours, and a one-sided edit leaves a chain that walks
   forward correctly and breaks going back:
@@ -380,7 +416,7 @@ file and on every collection page as a **lead, not a fact** — the same standin
 applies to aggregators — and re-derive it. These are the derivations behind the numbers above:
 
 ```bash
-ls collection-*.html | wc -l                                   # collection pages (13)
+ls collection-*.html | wc -l                                   # collection pages (14)
 node tools/check-markup.mjs | tail -4                          # pages, tags, badged members, collections
 grep -c '<a class="card"' collection-NAME.html                  # one collection's members
 git show <commit>:collection-field-guides.html | grep -c 'class="card"'   # what a count WAS, for historical claims
@@ -550,7 +586,7 @@ tracking — the query never leaves the reader's browser.
   is what `inclusion-safety-creed.html` still correctly gets. **The floor keeps its job in 3b**,
   where it chooses between two ways of covering a page; it has no business gating a path that only
   ever adds.
-- **All thirteen collection pages carry `id`s on their `h2.section` headings** (46 added
+- **All fourteen collection pages carry `id`s on their `h2.section` headings** (46 added
   2026-08-17; `collection-easter-eggs.html` already had them, and its id +
   `scroll-margin-top: 5rem` pairing is the pattern). Without them a search result can only
   deep-link by `#:~:text=` guess. **A new collection page owes its headings ids** — nothing gates
