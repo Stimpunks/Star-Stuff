@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0a0a14">
+<link rel="canonical" href="https://starstuff.earth/came-back-clean.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta name="description" content="A thousand volunteers across Switzerland buried more than two thousand pairs of cotton underpants and twelve thousand teabags, dug them up two months later, and mailed them to a laboratory. Land use turned out to matter more than anything else — and the ground that came back cleanest was the lawn. On the Underwear Index, why a pristine pair is the bad result, what soil does for us, and how to run the experiment in your own garden. Four diagrams. The third entry in Glimmers.">
+<!-- Open Graph / link unfurl -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Star Stuff &middot; Stimpunks Foundation &times; More Realms">
+<meta property="og:url" content="https://starstuff.earth/came-back-clean.html">
+<meta property="og:title" content="Came Back Clean &mdash; what buried underpants say about soil">
+<meta property="og:description" content="A thousand people buried two thousand pairs of underpants across Switzerland. The ones that came back cleanest were under lawns — and that is the bad result.">
+<meta property="og:image" content="https://starstuff.earth/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A rainbow-hued cosmic image — we are all made of star stuff.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Came Back Clean &mdash; what buried underpants say about soil">
+<meta name="twitter:description" content="A thousand people buried two thousand pairs of underpants across Switzerland. The ones that came back cleanest were under lawns — and that is the bad result.">
+<meta name="twitter:image" content="https://starstuff.earth/og-card.jpg">
+<title>Came Back Clean — Glimmers — Stimpunks × More Realms</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="starstuff.css">
+<style>
+  :root {
+    --void:  var(--sp-void-deep);
+    --deep:  var(--sp-deep);
+    --card:  var(--sp-card);
+    --violet:var(--sp-purple);
+    --pink:  var(--sp-pink);
+    --gold:  var(--sp-gold);
+    --cyan:  var(--sp-cyan);
+    --green: var(--sp-green);
+    /* Green rather than the collection's gold: this one is about soil, and the
+       accent is doing work the other two Glimmers entries did not need. Per-piece
+       accents vary inside a collection here — see Star Gazing. */
+    --accent:var(--sp-green);
+    --star-white: var(--sp-white-soft);
+    --stardust:   var(--sp-secondary-soft);
+    --dim:   var(--sp-dim);
+    --dim2:  var(--sp-dim-soft);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--void);
+    font-family: 'Atkinson Hyperlegible Next', system-ui, sans-serif;
+    color: var(--star-white);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Starfield, tinted green — see starstuff.css on why the gradient art stays
+     inline and per-page. */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 10% 15%, rgba(74,222,128,0.7) 0%, transparent 100%),
+      radial-gradient(1px 1px at 26% 40%, rgba(244,244,251,0.6) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 44% 8%, rgba(74,222,128,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 62% 69%, rgba(251,191,36,0.5) 0%, transparent 100%),
+      radial-gradient(2px 2px at 79% 26%, rgba(244,244,251,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 86% 56%, rgba(74,222,128,0.55) 0%, transparent 100%),
+      radial-gradient(1px 1px at 93% 81%, rgba(244,244,251,0.7) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 5% 61%, rgba(74,222,128,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 33% 86%, rgba(244,244,251,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 55% 46%, rgba(34,211,238,0.45) 0%, transparent 100%),
+      radial-gradient(2px 2px at 18% 84%, rgba(74,222,128,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 72% 6%, rgba(244,244,251,0.8) 0%, transparent 100%),
+      radial-gradient(1px 1px at 48% 63%, rgba(74,222,128,0.45) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 37% 22%, rgba(244,244,251,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 83% 92%, rgba(167,139,250,0.45) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .doc-shell { position: relative; z-index: 1; max-width: 760px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+
+  .spectrum-line { height: 2px; border: none; border-radius: 2px; background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); }
+
+  .hero { margin-bottom: 2.5rem; }
+  .hero-eyebrow { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.36em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.3rem; }
+  .hero-title { font-weight: 700; font-size: clamp(2.1rem, 6vw, 3.4rem); line-height: 1.05; letter-spacing: -0.02em; color: var(--star-white); margin-bottom: 1.1rem; }
+  .hero-title em { font-style: normal; background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .byline { font-family: 'Space Mono', monospace; font-size: 0.66rem; letter-spacing: 0.14em; color: var(--stardust); margin-bottom: 1.1rem; line-height: 1.9; }
+  .byline strong { color: var(--star-white); font-weight: 700; }
+  .byline a { color: var(--stardust); text-decoration: none; border-bottom: 1px solid rgba(74,222,128,0.35); }
+  .byline a:hover { color: var(--star-white); }
+  .hero-sub { font-size: 1.02rem; line-height: 1.6; color: var(--stardust); max-width: 38rem; }
+  .hero-rule { width: 200px; max-width: 55%; margin-top: 1.6rem; }
+
+  h2.section { font-weight: 700; font-size: 1.4rem; line-height: 1.2; color: var(--star-white); margin: 2.8rem 0 0.5rem; letter-spacing: -0.01em; scroll-margin-top: 2rem; }
+  h3.sub { font-weight: 700; font-size: 1.08rem; line-height: 1.3; color: var(--star-white); margin: 2rem 0 0.3rem; scroll-margin-top: 2rem; }
+
+  .body-text { font-size: 1.02rem; line-height: 1.75; color: var(--stardust); }
+  .body-text p { margin-top: 1rem; }
+  .body-text em { font-style: italic; color: var(--star-white); }
+  .body-text strong { font-weight: 700; color: var(--star-white); }
+  .body-text a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(74,222,128,0.4); }
+  .body-text a:hover { border-bottom-color: var(--accent); }
+  .body-text ul, .body-text ol { margin: 0.9rem 0 0 1.2rem; }
+  .body-text li { margin-top: 0.5rem; padding-left: 0.2rem; color: var(--stardust); line-height: 1.7; }
+
+  .claim { font-size: 1.22rem; font-weight: 700; line-height: 1.4; color: var(--star-white); border-left: 3px solid var(--accent); padding-left: 1.1rem; margin: 1.4rem 0; }
+
+  .pull { font-size: 1.06rem; line-height: 1.6; color: var(--star-white); border-left: 3px solid var(--violet); padding-left: 1.1rem; margin: 1.4rem 0; }
+  .pull .attr { display: block; margin-top: 0.5rem; font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim); }
+  .pull .attr a { color: var(--dim); text-decoration: none; border-bottom: 1px solid rgba(167,139,250,0.25); }
+  .pull .attr a:hover { color: var(--stardust); }
+
+  .callout { border: 1px solid rgba(74,222,128,0.32); border-left: 3px solid var(--accent); border-radius: 0 6px 6px 0; padding: 1.1rem 1.3rem; margin: 1.6rem 0; background: rgba(74,222,128,0.05); }
+  .callout .callout-label { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; }
+  .callout p { font-size: 0.96rem; line-height: 1.7; color: var(--stardust); }
+  .callout p + p { margin-top: 0.8rem; }
+  .callout strong { color: var(--star-white); font-weight: 700; }
+  .callout em { font-style: italic; color: var(--star-white); }
+  .callout a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(74,222,128,0.4); }
+  .callout--cyan { border-color: rgba(34,211,238,0.32); border-left-color: var(--cyan); background: rgba(34,211,238,0.05); }
+  .callout--cyan .callout-label { color: var(--cyan); }
+  .callout--cyan a { color: var(--cyan); border-bottom-color: rgba(34,211,238,0.4); }
+
+  .refusals { margin: 1.5rem 0 0.5rem; }
+  .refusals .callout-label { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--violet); margin-bottom: 0.6rem; }
+  .refusals ul { margin: 0; }
+  .refusals li { list-style: none; position: relative; padding-left: 1.5rem; margin-top: 0.55rem; color: var(--stardust); line-height: 1.65; }
+  .refusals li::before { content: '\2715'; position: absolute; left: 0; color: var(--violet); font-weight: 700; }
+  .refusals a { color: var(--violet); text-decoration: none; border-bottom: 1px solid rgba(167,139,250,0.4); }
+
+  /* ── Diagrams ──
+     Shape fills use the literals starstuff.css inverts for print; labels sit on
+     the page ground, never on a filled shape. */
+  .fig { margin: 1.9rem 0 0.7rem; }
+  .fig svg { display: block; width: 100%; height: auto; }
+  .fig figcaption { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--dim); margin-top: 0.7rem; line-height: 1.9; }
+  .fig figcaption strong { color: var(--stardust); }
+  /* The adaptation credit for a CC BY figure. Cyan so it reads as apparatus
+     rather than competing with the green accent. */
+  .artcredit { font-family: 'Space Mono', monospace; font-size: 0.62rem; line-height: 1.9; letter-spacing: 0.08em; color: var(--dim); border-left: 3px solid var(--cyan); padding-left: 1rem; margin: 1.2rem 0; }
+  .artcredit a { color: var(--dim); border-bottom: 1px solid rgba(34,211,238,0.3); text-decoration: none; }
+  .artcredit a:hover { color: var(--stardust); }
+  .artcredit strong { color: var(--stardust); font-weight: 700; }
+
+  /* ── Tables ── */
+  .tbl-wrap { overflow-x: auto; margin: 1.3rem 0 0.4rem; }
+  table { border-collapse: collapse; width: 100%; min-width: 540px; font-size: 0.88rem; }
+  caption { text-align: left; font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); padding-bottom: 0.7rem; }
+  th, td { text-align: left; vertical-align: top; padding: 0.6rem 0.9rem 0.6rem 0; border-bottom: 1px solid rgba(167,139,250,0.14); }
+  th { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--dim); font-weight: 400; }
+  td { color: var(--stardust); }
+  td strong { color: var(--star-white); }
+  td em { font-style: italic; color: var(--star-white); }
+  .src { font-family: 'Space Mono', monospace; font-size: 0.68rem; color: var(--dim); }
+
+  .callout, .refusals, .fig, .artcredit, .tbl-wrap { page-break-inside: avoid; break-inside: avoid; }
+
+  .start-link { display: inline-block; margin-top: 1.5rem; font-family: 'Space Mono', monospace; font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); text-decoration: none; border: 1px solid rgba(74,222,128,0.45); border-radius: 3px; padding: 0.6rem 1.1rem; transition: all 0.2s ease; }
+  .start-link:hover { background: rgba(74,222,128,0.12); border-color: var(--accent); color: var(--star-white); }
+
+  .colophon-footer { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--dim2); line-height: 2.2; margin-top: 3rem; padding-top: 1.4rem; border-top: 1px solid rgba(167,139,250,0.14); }
+  .colophon-footer a { color: var(--dim); text-decoration: none; border-bottom: 1px solid rgba(167,139,250,0.2); }
+  .colophon-footer a:hover { color: var(--stardust); }
+
+  .refs { font-size: 0.8rem; line-height: 1.85; color: var(--dim); margin-top: 2rem; padding-top: 1.2rem; border-top: 1px solid rgba(167,139,250,0.14); }
+  .refs a { color: var(--dim); border-bottom: 1px solid rgba(167,139,250,0.2); text-decoration: none; word-break: break-word; }
+  .refs a:hover { color: var(--stardust); }
+  .refs strong { color: var(--stardust); font-weight: 400; }
+  .refs em { font-style: italic; }
+
+  @media (max-width: 600px) {
+    .doc-shell { padding: 2rem 1.3rem 3rem; }
+  }
+
+  @media print {
+    body::before { display: none; }
+    .hero-title, h2.section, h3.sub, .claim, .pull, td strong, td em,
+    .callout strong, .body-text strong, .body-text em { color: #111; }
+    .body-text li, .hero-sub, .callout p, .refusals li, .byline, td { color: #222; }
+    .byline strong { color: #111; }
+    .pull .attr, .colophon-footer, .refs, .fig figcaption, .artcredit,
+    th, caption, .src { color: #444; }
+    .artcredit strong { color: #222; }
+    .callout .callout-label,
+    .callout--cyan .callout-label,
+    .refusals .callout-label { color: #444; }
+    .refusals li::before { color: #111; }
+    .callout, .callout--cyan { background: none; border-color: #999; border-left-color: #444; }
+    .start-link { display: none; }
+  }
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Came Back Clean","description":"About a thousand volunteers across Switzerland buried more than two thousand pairs of cotton underpants and twelve thousand teabags at around a thousand sites, dug them up after 30 and 60 days, and mailed them to Agroscope. Land use was the strongest single influence on how much the cotton decomposed. Private gardens showed the highest soil biological activity and lawns the lowest, with arable fields and meadows in between — so the pair that came back cleanest is the bad result. The piece covers the Underwear Index, the Tea Bag Index of Keuskamp et al. 2013 and its published criticism, what soil does and what threatens it, the roughly 240 citizen scientists listed as co-authors of the paper, and the burial protocol so a reader can run it themselves. Four diagrams, one adapted under CC BY 4.0 from the paper's own figure. The third entry in Glimmers.","image":"https://starstuff.earth/og-card.jpg","url":"https://starstuff.earth/came-back-clean.html","mainEntityOfPage":"https://starstuff.earth/came-back-clean.html","datePublished":"2026-08-31","author":{"@type":"Person","name":"Ryan Boren","url":"https://stimpunks.org/"},"publisher":[{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/","logo":{"@type":"ImageObject","url":"https://starstuff.earth/og-card.jpg"}},{"@type":"Organization","name":"More Realms","url":"https://morerealms.com/"}],"isPartOf":{"@type":"WebSite","name":"Star Stuff","url":"https://starstuff.earth/"},"license":"https://creativecommons.org/licenses/by-sa/4.0/"}</script>
+</head>
+<body>
+
+<div class="doc-shell">
+
+  <nav class="ss-nav" style="--nav-accent:#4ade80;" aria-label="Star Stuff collection">
+    <span class="ss-nav-home-group"><a class="ss-nav-home" href="index.html"><span class="ss-star" aria-hidden="true">&#9733;</span> stuff</a><a class="ss-nav-about" href="about.html">about</a>
+      <a class="ss-nav-search" href="search.html">search</a></span>
+    <span class="ss-nav-links">
+      <a class="ss-nav-prev" href="none-of-those-miles.html"><span class="ss-nav-arrow" aria-hidden="true">&lsaquo;</span> <span class="ss-nav-label">None of Those Miles</span></a>
+      <a class="ss-nav-next" href="collection-field-guides.html"><span class="ss-nav-label">Field Guides</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
+    </span>
+    <a class="ss-nav-collection" href="collection-glimmers.html"><span class="ss-nav-collection-label">Collection</span> <span class="ss-nav-collection-name">Glimmers</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-eyebrow"><a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks Foundation</a> &times; <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a> &middot; Glimmers</div>
+    <h1 class="hero-title">Came Back <em>Clean</em></h1>
+    <p class="byline">By <strong>Ryan Boren</strong> &middot; <a href="https://stimpunks.org/">Stimpunks Foundation</a><br>Occasion: Bender et al., <em>Plants, People, Planet</em>, August 2026 &middot; Published 31 August 2026</p>
+    <p class="hero-sub">A thousand people buried two thousand pairs of cotton underpants across Switzerland and dug them up two months later. Land use mattered more than anything else &mdash; and the pairs that came back cleanest were the ones under lawns. On why a pristine pair is the bad result, and how to run the experiment in your own garden.</p>
+    <hr class="spectrum-line hero-rule">
+  </header>
+
+  <div class="body-text">
+
+    <p>We love citizen science, and this bit of participatory experimentation has a fun hook: <strong>underpants</strong>. It has us looking at the ground beneath our feet and interrogating its biodiversity, or lack thereof, with an easy-to-comprehend <em>Underwear Index</em>.</p>
+
+    <p>The method is almost aggressively simple. Cotton is nearly pure cellulose &mdash; a standard meal that soil organisms anywhere will recognise. Bury a pair, wait, dig it up, and weigh what is left. <strong>How much of it is gone tells you how much life was down there eating.</strong></p>
+
+    <h2 class="section" id="what-they-did">What a thousand people did</h2>
+
+    <p>In 2021 researchers at the <strong>University of Zurich</strong> and <strong>Agroscope</strong>, the Swiss federal centre for agricultural research, launched a citizen-science project with the excellent name <em>Beweisst&uuml;ck Unterhose</em> &mdash; <strong>Proof by Underpants</strong>.</p>
+
+    <p>About <strong>a thousand volunteers</strong> buried more than <strong>two thousand pairs</strong> of cotton underpants and around <strong>twelve thousand teabags</strong> at roughly <strong>a thousand sites</strong> across Switzerland. They dug them up, photographed them, and mailed them to the laboratory along with a soil sample. The results are a map of where Swiss soil is alive.</p>
+
+    <figure class="fig">
+      <svg viewBox="0 0 720 300" role="img" aria-labelledby="fig1-title fig1-desc">
+        <title id="fig1-title">The Underwear Index</title>
+        <desc id="fig1-desc">Four pairs of briefs shown side by side, progressively more decomposed from left to right. The first is nearly intact with a few small holes and is labelled 10 percent. The second has more and larger holes, labelled 20 percent. The third is badly holed with a ragged lower edge, labelled 40 percent. The fourth is shredded, with large gaps and hanging threads, labelled 60 percent or more. An arrow beneath runs from little soil biological activity and poor soil health on the left to high soil biological activity and good soil health on the right.</desc>
+
+        <g transform="translate(20,16)">
+          <path d="M 14,8 L 86,8 L 86,23 L 14,23 Z" fill="none" stroke="#f9fafb" stroke-width="1.6"/>
+          <path d="M 14,23 L 86,23 C 88,40 86,58 80,68 C 74,78 62,80 56,70 C 53,64 51,58 50,52 C 49,58 47,64 44,70 C 38,80 26,78 20,68 C 14,58 12,40 14,23 Z" fill="none" stroke="#f9fafb" stroke-width="1.6"/>
+          <path d="M 24,63 C 29,73 38,75 43,66" fill="none" stroke="#f9fafb" stroke-width="0.96" opacity="0.7"/>
+          <path d="M 76,63 C 71,73 62,75 57,66" fill="none" stroke="#f9fafb" stroke-width="0.96" opacity="0.7"/>
+          <path d="M 50,23 L 50,46" fill="none" stroke="#f9fafb" stroke-width="0.96" opacity="0.7"/>
+          <path d="M 28,36 q 4,-3.2 6.0,1.2 q -2.4,3.6 -6.0,-1.2 Z" fill="none" stroke="#4ade80" stroke-width="1.2"/>
+          <path d="M 64,42 q 4,-3.2 6.0,1.2 q -2.4,3.6 -6.0,-1.2 Z" fill="none" stroke="#4ade80" stroke-width="1.2"/>
+          <path d="M 48,58 q 3,-2.4 4.5,0.9 q -1.8,2.7 -4.5,-0.9 Z" fill="none" stroke="#4ade80" stroke-width="1.2"/>
+        </g>
+        <text x="70" y="134" text-anchor="middle" font-size="15" font-weight="700" fill="#f9fafb">10%</text>
+        <g transform="translate(190,16)">
+          <path d="M 14,8 L 86,8 L 86,23 L 14,23 Z" fill="none" stroke="#f9fafb" stroke-width="1.6"/>
+          <path d="M 14,23 L 86,23 C 88,40 86,58 80,68 C 74,78 62,80 56,70 C 53,64 51,58 50,52 C 49,58 47,64 44,70 C 38,80 26,78 20,68 C 14,58 12,40 14,23 Z" fill="none" stroke="#f9fafb" stroke-width="1.6"/>
+          <path d="M 24,63 C 29,73 38,75 43,66" fill="none" stroke="#f9fafb" stroke-width="0.96" opacity="0.7"/>
+          <path d="M 76,63 C 71,73 62,75 57,66" fill="none" stroke="#f9fafb" stroke-width="0.96" opacity="0.7"/>
+          <path d="M 50,23 L 50,46" fill="none" stroke="#f9fafb" stroke-width="0.96" opacity="0.7"/>
+          <path d="M 24,34 q 6,-4.8 9.0,1.8 q -3.6,5.4 -9.0,-1.8 Z" fill="none" stroke="#4ade80" stroke-width="1.2"/>
+          <path d="M 62,38 q 6,-4.8 9.0,1.8 q -3.6,5.4 -9.0,-1.8 Z" fill="none" stroke="#4ade80" stroke-width="1.2"/>
+          <path d="M 42,50 q 5,-4.0 7.5,1.5 q -3.0,4.5 -7.5,-1.5 Z" fill="none" stroke="#4ade80" stroke-width="1.2"/>
+          <path d="M 30,58 q 4,-3.2 6.0,1.2 q -2.4,3.6 -6.0,-1.2 Z" fill="none" stroke="#4ade80" stroke-width="1.2"/>
+          <path d="M 66,56 q 4,-3.2 6.0,1.2 q -2.4,3.6 -6.0,-1.2 Z" fill="none" stroke="#4ade80" stroke-width="1.2"/>
+          <path d="M 38,28 q 4,-3.2 6.0,1.2 q -2.4,3.6 -6.0,-1.2 Z" fill="none" stroke="#4ade80" stroke-width="1.2"/>
+        </g>
+        <text x="240" y="134" text-anchor="middle" font-size="15" font-weight="700" fill="#f9fafb">20%</text>
+        <g transform="translate(360,16)">
+          <path d="M 14,8 L 86,8 L 86,23 L 14,23 Z" fill="none" stroke="#f9fafb" stroke-width="1.6"/>
+          <path d="M 14,23 L 86,23 C 88,40 86,58 80,66 L 76,54 L 72,68 L 68,56 L 63,70 C 58,64 53,58 50,52 C 47,58 42,64 37,70 L 33,56 L 29,68 L 25,54 L 20,66 C 14,58 12,40 14,23 Z" fill="none" stroke="#f9fafb" stroke-width="1.6"/>
+          <path d="M 50,23 L 50,46" fill="none" stroke="#f9fafb" stroke-width="0.96" opacity="0.7"/>
+          <path d="M 50,52 q 2,10 -1,16" fill="none" stroke="#4ade80" stroke-width="1.1"/>
+          <path d="M 72,68 q 2,8 0,12" fill="none" stroke="#4ade80" stroke-width="1.1"/>
+          <path d="M 29,68 q -2,8 1,12" fill="none" stroke="#4ade80" stroke-width="1.1"/>
+          <path d="M 22,32 q 7,-5.6 10.5,2.1 q -4.2,6.3 -10.5,-2.1 Z" fill="none" stroke="#4ade80" stroke-width="1.2"/>
+          <path d="M 60,32 q 7,-5.6 10.5,2.1 q -4.2,6.3 -10.5,-2.1 Z" fill="none" stroke="#4ade80" stroke-width="1.2"/>
+          <path d="M 40,44 q 6,-4.8 9.0,1.8 q -3.6,5.4 -9.0,-1.8 Z" fill="none" stroke="#4ade80" stroke-width="1.2"/>
+          <path d="M 50,26 q 4,-3.2 6.0,1.2 q -2.4,3.6 -6.0,-1.2 Z" fill="none" stroke="#4ade80" stroke-width="1.2"/>
+        </g>
+        <text x="410" y="134" text-anchor="middle" font-size="15" font-weight="700" fill="#f9fafb">40%</text>
+        <g transform="translate(530,16)">
+          <path d="M 14,8 L 86,8 L 86,23 L 14,23 Z" fill="none" stroke="#f9fafb" stroke-width="1.6"/>
+          <path d="M 14,23 L 86,23 C 88,36 87,46 84,52 L 80,39 L 76,53 L 72,40 L 67,55 L 63,40 L 58,52 L 54,38 L 50,54 L 46,38 L 42,52 L 37,39 L 33,54 L 28,40 L 24,53 L 19,38 C 15,32 13,27 14,23 Z" fill="none" stroke="#f9fafb" stroke-width="1.6"/>
+          <path d="M 50,23 L 50,46" fill="none" stroke="#f9fafb" stroke-width="0.96" opacity="0.7"/>
+          <path d="M 50,54 q 2,13 -1,21" fill="none" stroke="#4ade80" stroke-width="1.1"/>
+          <path d="M 33,54 q -2,12 1,18" fill="none" stroke="#4ade80" stroke-width="1.1"/>
+          <path d="M 67,55 q 3,11 0,17" fill="none" stroke="#4ade80" stroke-width="1.1"/>
+          <path d="M 19,38 q -3,14 1,22" fill="none" stroke="#4ade80" stroke-width="1.1"/>
+          <path d="M 24,29 q 8,-6.4 12.0,2.4 q -4.8,7.2 -12.0,-2.4 Z" fill="none" stroke="#4ade80" stroke-width="1.2"/>
+          <path d="M 58,29 q 8,-6.4 12.0,2.4 q -4.8,7.2 -12.0,-2.4 Z" fill="none" stroke="#4ade80" stroke-width="1.2"/>
+        </g>
+        <text x="580" y="134" text-anchor="middle" font-size="15" font-weight="700" fill="#f9fafb">&#8805; 60%</text>
+
+        <!-- ── the arrow ── -->
+        <line x1="60" y1="182" x2="632" y2="182" stroke="#4ade80" stroke-width="10"/>
+        <path d="M 660,182 l -30,-15 l 0,30 Z" fill="#4ade80"/>
+        <text x="60" y="216" font-size="12.5" font-weight="700" fill="#f9fafb">Little soil biological</text>
+        <text x="60" y="234" font-size="12.5" font-weight="700" fill="#f9fafb">activity, poor soil health</text>
+        <text x="360" y="216" text-anchor="middle" font-size="12.5" font-weight="700" fill="#4ade80">Decomposition</text>
+        <text x="660" y="216" text-anchor="end" font-size="12.5" font-weight="700" fill="#f9fafb">High soil biological</text>
+        <text x="660" y="234" text-anchor="end" font-size="12.5" font-weight="700" fill="#f9fafb">activity, good soil health</text>
+        <text x="60" y="268" font-size="11.5" fill="#c4b5d4">Percentages are mass loss after burial. More gone means more life.</text>
+      </svg>
+      <figcaption><strong>Fig. 1 &mdash; the Underwear Index.</strong> Mass loss after burial, read off the state of the cloth. Redrawn as SVG from the scale in Bender et al.</figcaption>
+    </figure>
+
+    <div class="artcredit"><strong>Fig. 1 is an adaptation, and here is the licence trail.</strong> Redrawn by us from the decomposition scale in <strong>Bender et al., &ldquo;Soil health assessment using buried cotton underpants with the help of 1000 citizen scientists,&rdquo;</strong> <em>Plants, People, Planet</em>, 2026, <a href="https://doi.org/10.1002/ppp3.70259">doi:10.1002/ppp3.70259</a> &mdash; published open access under <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. <strong>Adapted:</strong> vector artwork, palette and typography are ours; the four-step scale, the percentage breakpoints and the two end-labels are theirs. CC BY permits this with attribution, which is what this note is. <em>Unlike the photograph on <a href="flying-free.html">Flying Free</a>, this one we could clear outright &mdash; because we checked, and the answer happened to be yes.</em></div>
+
+    <h2 class="section" id="the-lawn">The finding is about lawns</h2>
+
+    <p class="pull">Land-use emerged as the most important factor influencing both UI and TBI, followed by various soil and environmental parameters.<span class="attr">&mdash; Bender et al., <a href="https://doi.org/10.1002/ppp3.70259"><em>Plants, People, Planet</em></a>, 2026</span></p>
+
+    <p>Of everything measured &mdash; soil chemistry, texture, climate, altitude &mdash; <strong>what people do with the land mattered most.</strong> And within that, the ranking is the part worth sitting with.</p>
+
+    <p><strong>Private gardens had the highest soil biological activity of any land type studied. Lawns had the lowest.</strong> Arable fields and meadows fell somewhere in between.</p>
+
+    <figure class="fig">
+      <svg viewBox="0 0 720 250" role="img" aria-labelledby="fig2-title fig2-desc">
+        <title id="fig2-title">The same sixty days, two kinds of ground</title>
+        <desc id="fig2-desc">Two pairs of briefs side by side. The pair on the left, from a private garden, is shredded with large gaps and hanging threads. The pair on the right, from a lawn, is almost completely intact with only two small holes. A label notes that the intact pair is the bad result.</desc>
+
+        <!-- garden: shredded -->
+        <g transform="translate(120,26)">
+          <path d="M 14,8 L 86,8 L 86,23 L 14,23 Z" fill="none" stroke="#4ade80" stroke-width="1.8"/>
+          <path d="M 14,23 L 86,23 C 88,36 87,46 84,52 L 80,39 L 76,53 L 72,40 L 67,55 L 63,40 L 58,52 L 54,38 L 50,54 L 46,38 L 42,52 L 37,39 L 33,54 L 28,40 L 24,53 L 19,38 C 15,32 13,27 14,23 Z" fill="none" stroke="#4ade80" stroke-width="1.8"/>
+          <path d="M 50,23 L 50,46" fill="none" stroke="#4ade80" stroke-width="1.08" opacity="0.7"/>
+          <path d="M 50,54 q 2,13 -1,21" fill="none" stroke="#4ade80" stroke-width="1.1"/>
+          <path d="M 33,54 q -2,12 1,18" fill="none" stroke="#4ade80" stroke-width="1.1"/>
+          <path d="M 67,55 q 3,11 0,17" fill="none" stroke="#4ade80" stroke-width="1.1"/>
+          <path d="M 24,29 q 8,-6.4 12.0,2.4 q -4.8,7.2 -12.0,-2.4 Z" fill="none" stroke="#4ade80" stroke-width="1.2"/>
+          <path d="M 58,29 q 8,-6.4 12.0,2.4 q -4.8,7.2 -12.0,-2.4 Z" fill="none" stroke="#4ade80" stroke-width="1.2"/>
+        </g>
+
+        <text x="170" y="164" text-anchor="middle" font-size="14" font-weight="700" fill="#4ade80">Private garden</text>
+        <text x="170" y="184" text-anchor="middle" font-size="12" fill="#f9fafb">most soil life of any</text>
+        <text x="170" y="200" text-anchor="middle" font-size="12" fill="#f9fafb">land type studied</text>
+
+        <!-- lawn: intact -->
+        <g transform="translate(500,26)">
+          <path d="M 14,8 L 86,8 L 86,23 L 14,23 Z" fill="none" stroke="#f472b6" stroke-width="1.8"/>
+          <path d="M 14,23 L 86,23 C 88,40 86,58 80,68 C 74,78 62,80 56,70 C 53,64 51,58 50,52 C 49,58 47,64 44,70 C 38,80 26,78 20,68 C 14,58 12,40 14,23 Z" fill="none" stroke="#f472b6" stroke-width="1.8"/>
+          <path d="M 24,63 C 29,73 38,75 43,66" fill="none" stroke="#f472b6" stroke-width="1.08" opacity="0.7"/>
+          <path d="M 76,63 C 71,73 62,75 57,66" fill="none" stroke="#f472b6" stroke-width="1.08" opacity="0.7"/>
+          <path d="M 50,23 L 50,46" fill="none" stroke="#f472b6" stroke-width="1.08" opacity="0.7"/>
+          <path d="M 32,40 q 3.5,-2.8 5.2,1.1 q -2.1,3.1 -5.2,-1.1 Z" fill="none" stroke="#f472b6" stroke-width="1.2"/>
+          <path d="M 62,48 q 3,-2.4 4.5,0.9 q -1.8,2.7 -4.5,-0.9 Z" fill="none" stroke="#f472b6" stroke-width="1.2"/>
+        </g>
+
+        <text x="550" y="164" text-anchor="middle" font-size="14" font-weight="700" fill="#f472b6">Lawn</text>
+        <text x="550" y="184" text-anchor="middle" font-size="12" fill="#f9fafb">least soil life of any</text>
+        <text x="550" y="200" text-anchor="middle" font-size="12" fill="#f9fafb">land type studied</text>
+
+        <text x="360" y="86" text-anchor="middle" font-size="12.5" font-weight="700" fill="#c4b5d4">same</text>
+        <text x="360" y="106" text-anchor="middle" font-size="12.5" font-weight="700" fill="#c4b5d4">cotton,</text>
+        <text x="360" y="126" text-anchor="middle" font-size="12.5" font-weight="700" fill="#c4b5d4">same</text>
+        <text x="360" y="146" text-anchor="middle" font-size="12.5" font-weight="700" fill="#c4b5d4">60 days</text>
+
+        <text x="360" y="230" text-anchor="middle" font-size="12.5" font-weight="700" fill="#f9fafb">The intact pair is the bad result.</text>
+      </svg>
+      <figcaption><strong>Fig. 2 &mdash; order, not magnitude.</strong> The ranking is the paper&rsquo;s reported result; the drawings are illustrative and carry no measured percentages, because we did not have the underlying values to plot. Arable fields and meadows fall between these two.</figcaption>
+    </figure>
+
+    <p>Read that again, because the intuition runs the wrong way. <strong>The ground that looks most cared for is the ground with least life in it.</strong> A lawn is mown, fed, weeded, watered and kept to one species. It is the most managed surface most of us own, and by this measure it is the deadest.</p>
+
+    <p class="claim">A lawn is a monoculture that we maintain on purpose, at some expense, in order that nothing surprising will happen in it.</p>
+
+    <p>This site has an argument about that already. <a href="the-universe-runs-on-difference-zine.html">The Universe Runs on Difference</a> (No. 8) is about what uniformity costs &mdash; the Cavendish banana, efficient and identical and one blight from collapse. <strong>A lawn is that argument at garden scale</strong>, and here it turns up as a measurement rather than a metaphor: somebody buried cotton under one and the cotton came back clean.</p>
+
+    <p>And the flip side is the genuinely cheering part. <strong>The most alive soil in the study was in ordinary private gardens</strong> &mdash; messy, mixed, mulched, compost-fed, planted with a dozen things at once and tended by people who are not soil scientists. Not a nature reserve. Somebody&rsquo;s vegetable patch.</p>
+
+    <h2 class="section" id="cotton-and-tea">Why cotton, and why the teabags</h2>
+
+    <p>Cotton is about 90% cellulose. That makes a pair of underpants a <strong>standardised meal</strong>: the same substrate everywhere, so the only variable left is the soil. Mass loss becomes a comparable number between a Zurich allotment and an alpine meadow.</p>
+
+    <p>The teabags are a second, finer instrument. The <strong>Tea Bag Index</strong> (Keuskamp and colleagues, 2013) buries two teas with deliberately different chemistry: <em>green tea</em>, which decomposes fast, and <em>rooibos</em>, which resists. From the pair you get two numbers &mdash; <strong>k</strong>, the decomposition rate, and <strong>S</strong>, a stabilisation factor describing how much of the easily-decomposed fraction gets locked up instead of consumed.</p>
+
+    <figure class="fig">
+      <svg viewBox="0 0 720 260" role="img" aria-labelledby="fig3-title fig3-desc">
+        <title id="fig3-title">Two instruments in one hole</title>
+        <desc id="fig3-desc">On the left, a pair of briefs labelled cotton, about ninety per cent cellulose, giving one number: mass lost. On the right, two tetrahedral teabags, green tea labelled fast and easily decomposed and rooibos labelled slow and resistant, together giving two numbers: k, the decomposition rate, and S, the stabilisation factor.</desc>
+
+        <!-- cotton -->
+        <g transform="translate(60,36)">
+          <path d="M 14,8 L 86,8 L 86,23 L 14,23 Z" fill="none" stroke="#f9fafb" stroke-width="1.6"/>
+          <path d="M 14,23 L 86,23 C 88,40 86,58 80,68 C 74,78 62,80 56,70 C 53,64 51,58 50,52 C 49,58 47,64 44,70 C 38,80 26,78 20,68 C 14,58 12,40 14,23 Z" fill="none" stroke="#f9fafb" stroke-width="1.6"/>
+          <path d="M 24,63 C 29,73 38,75 43,66" fill="none" stroke="#f9fafb" stroke-width="0.96" opacity="0.7"/>
+          <path d="M 76,63 C 71,73 62,75 57,66" fill="none" stroke="#f9fafb" stroke-width="0.96" opacity="0.7"/>
+          <path d="M 50,23 L 50,46" fill="none" stroke="#f9fafb" stroke-width="0.96" opacity="0.7"/>
+          <path d="M 30,38 q 5,-4.0 7.5,1.5 q -3.0,4.5 -7.5,-1.5 Z" fill="none" stroke="#4ade80" stroke-width="1.2"/>
+          <path d="M 60,46 q 5,-4.0 7.5,1.5 q -3.0,4.5 -7.5,-1.5 Z" fill="none" stroke="#4ade80" stroke-width="1.2"/>
+        </g>
+
+        <text x="110" y="150" text-anchor="middle" font-size="13" font-weight="700" fill="#f9fafb">Cotton</text>
+        <text x="110" y="170" text-anchor="middle" font-size="11.5" fill="#c4b5d4">~90% cellulose</text>
+        <text x="110" y="188" text-anchor="middle" font-size="11.5" fill="#c4b5d4">a standard meal</text>
+        <text x="110" y="220" text-anchor="middle" font-size="12.5" font-weight="700" fill="#4ade80">one number</text>
+        <text x="110" y="238" text-anchor="middle" font-size="11.5" fill="#f9fafb">mass lost</text>
+
+        <line x1="228" y1="40" x2="228" y2="238" stroke="#a78bfa" stroke-width="1" opacity="0.35"/>
+
+        <!-- teabags: tetrahedra -->
+        <g transform="translate(300,52)">
+          <path d="M 40,4 L 4,66 L 76,66 Z" fill="none" stroke="#4ade80" stroke-width="1.8"/>
+          <path d="M 40,4 L 40,66" fill="none" stroke="#4ade80" stroke-width="1" opacity="0.6"/>
+          <line x1="40" y1="4" x2="40" y2="-12" stroke="#4ade80" stroke-width="1.4"/>
+        </g>
+        <text x="340" y="146" text-anchor="middle" font-size="13" font-weight="700" fill="#4ade80">Green tea</text>
+        <text x="340" y="166" text-anchor="middle" font-size="11.5" fill="#c4b5d4">decomposes fast</text>
+
+        <g transform="translate(440,52)">
+          <path d="M 40,4 L 4,66 L 76,66 Z" fill="none" stroke="#fbbf24" stroke-width="1.8"/>
+          <path d="M 40,4 L 40,66" fill="none" stroke="#fbbf24" stroke-width="1" opacity="0.6"/>
+          <line x1="40" y1="4" x2="40" y2="-12" stroke="#fbbf24" stroke-width="1.4"/>
+        </g>
+        <text x="480" y="146" text-anchor="middle" font-size="13" font-weight="700" fill="#fbbf24">Rooibos</text>
+        <text x="480" y="166" text-anchor="middle" font-size="11.5" fill="#c4b5d4">resists</text>
+
+        <text x="410" y="204" text-anchor="middle" font-size="12.5" font-weight="700" fill="#22d3ee">two numbers</text>
+        <text x="410" y="224" text-anchor="middle" font-size="11.5" fill="#f9fafb">k &mdash; how fast it goes</text>
+        <text x="410" y="242" text-anchor="middle" font-size="11.5" fill="#f9fafb">S &mdash; how much gets locked up instead</text>
+      </svg>
+      <figcaption><strong>Fig. 3 &mdash; two instruments in one hole.</strong> The underpants give a single legible number anyone can read off the cloth. The teabags give the pair of parameters that make it a measurement. Tea Bag Index after Keuskamp et al. (2013).</figcaption>
+    </figure>
+
+    <div class="callout callout--cyan">
+      <div class="callout-label">The instrument has published critics, and that belongs on the page</div>
+      <p>The Tea Bag Index is widely used and it is not unchallenged. A 2020 paper is titled, memorably, <em>&ldquo;Not our cup of tea&rdquo;</em> and argues the index is <strong>problematic in most environments because of macrofauna</strong> &mdash; worms and larger animals can tear a bag open, which registers as decomposition without being decomposition. Other groups have run laboratory validations in its defence.</p>
+      <p>We are not adjudicating that. <strong>It matters here because the same objection applies with more force to a pair of underpants</strong>, which is bigger, more tearable and buried whole. <em>A vole is not a microbial community.</em> The Underwear Index is proposed by its own authors as a way to get a first impression and to raise awareness &mdash; not as a soil test with a decimal point &mdash; and that is the claim we are repeating.</p>
+    </div>
+
+    <h2 class="section" id="ode-to-soil">An ode to soil</h2>
+
+    <p>Why any of this matters. Soil is not dirt with ambitions; it is the thin living layer that most of the rest depends on, and nearly every line below is a load-bearing fact about staying alive.</p>
+
+    <div class="tbl-wrap">
+      <table>
+        <caption>What soil does</caption>
+        <thead>
+          <tr><th scope="col">Function</th><th scope="col">Why it matters</th><th scope="col">Source</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Food</strong></td><td>Around <em>95%</em> of our food depends on soil.</td><td class="src">FAO (2013); Montanarella et al. (2015)</td></tr>
+          <tr><td><strong>Biodiversity</strong></td><td>Soils may hold <em>59%</em> of all species on Earth &mdash; a headline figure that carries a &plusmn;15 and an argument. See the note below.</td><td class="src">Anthony, Bender &amp; van der Heijden (2023)</td></tr>
+          <tr><td><strong>Carbon</strong></td><td>The second largest carbon reservoir on Earth, around <em>2,700 Pg</em> &mdash; more than the atmosphere and all living things combined. It can be a sink or a source, and which one is up to us.</td><td class="src">Jobb&aacute;gy &amp; Jackson (2000); Lal (2008); Amundson et al. (2015); Crowther et al. (2019)</td></tr>
+          <tr><td><strong>Nutrient cycling</strong></td><td>Soil organisms decompose organic matter, recycle nutrients and fix nitrogen biologically. This is the machinery plants run on.</td><td class="src">Hopkins &amp; Dungait (2010); Crowther et al. (2019); Anthony et al. (2023)</td></tr>
+          <tr><td><strong>Water</strong></td><td>Central to the global water cycle; soil often stores more water than rivers and lakes combined.</td><td class="src">G&uuml;ntner et al. (2007); Hirmas et al. (2018)</td></tr>
+          <tr><td><strong>Filtering</strong></td><td>Soils filter, buffer and degrade contaminants, protecting ground and drinking water.</td><td class="src">Keesstra et al. (2012); Lamichhane et al. (2016)</td></tr>
+          <tr><td><strong>Human health</strong></td><td>A source of antibiotics, penicillin among them, and a suppressor of pathogens.</td><td class="src">Wall et al. (2015); Brevik et al. (2020)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">The 59% needs its error bars printed</div>
+      <p>&ldquo;Soils harbour 59% of global biodiversity&rdquo; is the line everyone repeats, this draft included. The paper behind it says <strong>59% &plusmn; 15%</strong> &mdash; a range from 44% to 74% &mdash; and <strong>its own authors say the estimate should be treated with caution.</strong> It is contested in both directions: a 2025 reanalysis argues the total is a large <em>underestimate</em> and puts soil biota above 99% of global species.</p>
+      <p><em>The uncertainty does not damage the point; it is the point.</em> Even the low end of that range makes soil the most species-rich habitat we know of, and the width of the bar is a statement about how little of it we have counted. <strong>Worth noting for transparency:</strong> S. Franz Bender is an author of both the 59% paper and the underpants paper, so the citation is partly a self-citation. That is entirely normal and it is better said than not.</p>
+    </div>
+
+    <div class="tbl-wrap">
+      <table>
+        <caption>What is happening to it</caption>
+        <thead>
+          <tr><th scope="col">Threat</th><th scope="col">Scale</th><th scope="col">Source</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Erosion</strong></td><td><em>20&ndash;50 Gt</em> of soil lost per year globally; up to 10&ndash;20 t/ha/year where plant cover is poor.</td><td class="src">Montanarella et al. (2015); Borrelli et al. (2017)</td></tr>
+          <tr><td><strong>Carbon loss</strong></td><td>Conversion to cropland costs <em>16&ndash;50%</em> of soil carbon; humans have released about <em>133 Gt</em> of soil carbon as CO&#8322; and CH&#8324;.</td><td class="src">Scharlemann et al. (2014); Sanderman et al. (2017); Beillouin et al. (2023)</td></tr>
+          <tr><td><strong>Sealing</strong></td><td><em>250&ndash;300 km&sup2; per day</em> goes under asphalt and concrete worldwide &mdash; on the order of 40,000 football pitches a day.</td><td class="src">Blum (2013); Gardi et al. (2015); Sarneel et al. (2024)</td></tr>
+          <tr><td><strong>Pollution</strong></td><td>Industry, mining, fossil fuels, pesticides, fertilisers, antibiotics, microplastics including tyre wear, PFAS, wastewater. <strong>Poorly quantified</strong>, and linked to more than <em>500,000</em> premature deaths a year.</td><td class="src">Landrigan et al. (2018); Rodr&iacute;guez-Eugenio et al. (2018); Silva et al. (2019); Khan et al. (2021); Larsson &amp; Flach (2022); Ackerman Grunfeld et al. (2024); K&ouml;ninger et al. (2026)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>Note the phrase in that last row: <strong>poorly quantified.</strong> The half-million deaths figure sits next to an admission that nobody has properly counted. <em>That gap is exactly the shape of a job for a great many people with shovels.</em></p>
+
+    <h2 class="section" id="citizen-science">An ode to citizen science</h2>
+
+    <p class="pull">Citizen science is an approach involving laypeople in data collection, which allows to expand research activities and to make science more accessible. It has the advantage that, through the help of citizens, a much higher number of samples and a wider range of sites can be investigated than through research staff alone.<span class="attr">&mdash; Bender et al., <a href="https://doi.org/10.1002/ppp3.70259"><em>Plants, People, Planet</em></a>, 2026</span></p>
+
+    <p>A thousand sites is not a number a research group gets on its own. That is the practical argument, and it is a good one. But the part we want to point at is in the byline.</p>
+
+    <p class="claim">Around 240 of the citizen scientists are listed as co-authors of the paper.</p>
+
+    <p><strong>Not acknowledged in a footnote. Not thanked in the supplementary material. Authors.</strong> People who dug a hole in their garden, buried two pairs of underpants and some tea, waited two months, and posted the results to a laboratory, and whose names are now on a paper in <em>Plants, People, Planet</em> alongside researchers from Zurich, Wageningen, Utrecht and the Joint Research Centre.</p>
+
+    <p>That is a claim about <em>who counts as a knower</em>, and it is one this site keeps making in other registers. <a href="no-one-is-the-leader-zine.html">No One Is the Leader</a> (No. 22) is about a whole that no single participant contains. <a href="how-anything-gets-built-zine.html">How Anything Gets Built</a> (No. 54) is about the same thing at human scale. <strong>A competency network is not a metaphor here. It is the methods section.</strong></p>
+
+    <p>And there is a harder edge to this, which is Ryan&rsquo;s and is marked as ours. As regulatory monitoring of the environment thins out, the question of who is measuring the ground stops being academic. <strong>Testing your own patch is not a hobby when nobody official is coming to test it.</strong> A thousand people with cotton and a trowel produced a national map. That capability does not depend on anyone&rsquo;s budget surviving.</p>
+
+    <h2 class="section" id="try-it">Try it yourself</h2>
+
+    <p>Here is the protocol the participants followed, close to as described in the paper. You do not need permission, and you do not need to be anybody in particular.</p>
+
+    <figure class="fig">
+      <svg viewBox="0 0 720 400" role="img" aria-labelledby="fig4-title fig4-desc">
+        <title id="fig4-title">The burial protocol</title>
+        <desc id="fig4-desc">A cross-section through a hole dug in soil, about sixty centimetres long and thirty deep. Two pairs of briefs stand vertically side by side with their waistbands above the soil surface and their leg openings buried eight centimetres down. Three teabags sit in front of each pair. A yellow marker stake stands beside the hole. Below, a timeline shows day zero for burial, day thirty for retrieving the first pair, and day sixty for the second.</desc>
+
+        <!-- soil surface -->
+        <line x1="40" y1="96" x2="680" y2="96" stroke="#fbbf24" stroke-width="2"/>
+        <text x="40" y="86" font-size="11.5" font-weight="700" fill="#fbbf24">soil surface</text>
+        <text x="248" y="74" font-size="11.5" fill="#c4b5d4">waistbands stay visible above the surface</text>
+
+        <!-- the hole -->
+        <path d="M 190,96 L 190,236 L 530,236 L 530,96" fill="none" stroke="#c4b5d4" stroke-width="1.6" stroke-dasharray="6 4"/>
+        <text x="360" y="256" text-anchor="middle" font-size="11.5" fill="#c4b5d4">a hole roughly 60 &times; 30 &times; 30 cm</text>
+
+        <!-- pair one -->
+        <g transform="translate(248,82) scale(0.62)">
+          <path d="M 14,8 L 86,8 L 86,23 L 14,23 Z" fill="none" stroke="#f9fafb" stroke-width="2.4"/>
+          <path d="M 14,23 L 86,23 C 88,40 86,58 80,68 C 74,78 62,80 56,70 C 53,64 51,58 50,52 C 49,58 47,64 44,70 C 38,80 26,78 20,68 C 14,58 12,40 14,23 Z" fill="none" stroke="#f9fafb" stroke-width="2.4"/>
+          <path d="M 24,63 C 29,73 38,75 43,66" fill="none" stroke="#f9fafb" stroke-width="1.44" opacity="0.7"/>
+          <path d="M 76,63 C 71,73 62,75 57,66" fill="none" stroke="#f9fafb" stroke-width="1.44" opacity="0.7"/>
+          <path d="M 50,23 L 50,46" fill="none" stroke="#f9fafb" stroke-width="1.44" opacity="0.7"/>
+        </g>
+        <!-- pair two -->
+        <g transform="translate(398,82) scale(0.62)">
+          <path d="M 14,8 L 86,8 L 86,23 L 14,23 Z" fill="none" stroke="#f9fafb" stroke-width="2.4"/>
+          <path d="M 14,23 L 86,23 C 88,40 86,58 80,68 C 74,78 62,80 56,70 C 53,64 51,58 50,52 C 49,58 47,64 44,70 C 38,80 26,78 20,68 C 14,58 12,40 14,23 Z" fill="none" stroke="#f9fafb" stroke-width="2.4"/>
+          <path d="M 24,63 C 29,73 38,75 43,66" fill="none" stroke="#f9fafb" stroke-width="1.44" opacity="0.7"/>
+          <path d="M 76,63 C 71,73 62,75 57,66" fill="none" stroke="#f9fafb" stroke-width="1.44" opacity="0.7"/>
+          <path d="M 50,23 L 50,46" fill="none" stroke="#f9fafb" stroke-width="1.44" opacity="0.7"/>
+        </g>
+
+        <!-- depth marker for the leg openings -->
+        <line x1="212" y1="96" x2="212" y2="132" stroke="#22d3ee" stroke-width="1.4"/>
+        <line x1="206" y1="132" x2="218" y2="132" stroke="#22d3ee" stroke-width="1.4"/>
+        <text x="150" y="136" font-size="11.5" fill="#22d3ee">8 cm</text>
+        <line x1="222" y1="132" x2="256" y2="132" stroke="#22d3ee" stroke-width="1" stroke-dasharray="3 3"/>
+        <text x="150" y="152" font-size="11" fill="#c4b5d4">leg openings</text>
+        <text x="150" y="167" font-size="11" fill="#c4b5d4">covered to here</text>
+
+        <!-- teabags -->
+        <g transform="translate(322,140)">
+          <path d="M 9,0 L 0,16 L 18,16 Z" fill="none" stroke="#4ade80" stroke-width="1.3"/>
+          <path d="M 31,0 L 22,16 L 40,16 Z" fill="none" stroke="#4ade80" stroke-width="1.3"/>
+          <path d="M 53,0 L 44,16 L 62,16 Z" fill="none" stroke="#fbbf24" stroke-width="1.3"/>
+        </g>
+        <g transform="translate(472,140)">
+          <path d="M 9,0 L 0,16 L 18,16 Z" fill="none" stroke="#4ade80" stroke-width="1.3"/>
+          <path d="M 31,0 L 22,16 L 40,16 Z" fill="none" stroke="#4ade80" stroke-width="1.3"/>
+          <path d="M 53,0 L 44,16 L 62,16 Z" fill="none" stroke="#fbbf24" stroke-width="1.3"/>
+        </g>
+        <text x="556" y="152" font-size="11.5" fill="#c4b5d4">three teabags of each</text>
+        <text x="556" y="168" font-size="11.5" fill="#c4b5d4">type, in front of each pair</text>
+
+        <!-- marker stake -->
+        <line x1="600" y1="96" x2="600" y2="40" stroke="#fbbf24" stroke-width="2.4"/>
+        <rect x="600" y="36" width="26" height="16" fill="none" stroke="#fbbf24" stroke-width="1.6"/>
+        <text x="600" y="28" font-size="11.5" fill="#fbbf24">mark the spot</text>
+
+
+        <!-- timeline -->
+        <line x1="80" y1="316" x2="640" y2="316" stroke="#c4b5d4" stroke-width="2"/>
+        <circle cx="80" cy="316" r="6" fill="#4ade80"/>
+        <text x="80" y="300" text-anchor="middle" font-size="12.5" font-weight="700" fill="#f9fafb">Day 0</text>
+        <text x="80" y="340" text-anchor="middle" font-size="11.5" fill="#c4b5d4">bury both pairs,</text>
+        <text x="80" y="356" text-anchor="middle" font-size="11.5" fill="#c4b5d4">tread the soil back down</text>
+        <circle cx="360" cy="316" r="6" fill="#4ade80"/>
+        <text x="360" y="300" text-anchor="middle" font-size="12.5" font-weight="700" fill="#f9fafb">Day 30</text>
+        <text x="360" y="340" text-anchor="middle" font-size="11.5" fill="#c4b5d4">lift the first pair</text>
+        <text x="360" y="356" text-anchor="middle" font-size="11.5" fill="#c4b5d4">and its teabags</text>
+        <circle cx="640" cy="316" r="6" fill="#4ade80"/>
+        <text x="640" y="300" text-anchor="middle" font-size="12.5" font-weight="700" fill="#f9fafb">Day 60</text>
+        <text x="640" y="340" text-anchor="middle" font-size="11.5" fill="#c4b5d4">lift the second,</text>
+        <text x="640" y="356" text-anchor="middle" font-size="11.5" fill="#c4b5d4">air-dry everything</text>
+        <text x="80" y="386" font-size="11" fill="#c4b5d4">Photograph both pairs against something for scale. The picture is the result.</text>
+      </svg>
+      <figcaption><strong>Fig. 4 &mdash; the protocol, as the participants ran it.</strong> Two pairs go in so that one can come out at 30 days and the other at 60, which gives you a rate rather than a single reading. Schematic; proportions are not to scale.</figcaption>
+    </figure>
+
+    <ol>
+      <li><strong>Pick your spot</strong> and dig a hole roughly <strong>60 &times; 30 &times; 30 cm</strong>. Keep the soil you take out.</li>
+      <li><strong>Take a soil sample</strong> before anything goes back in, if you want the chemistry later.</li>
+      <li><strong>Stand two pairs of cotton underpants vertically</strong>, side by side, with the waistbands still visible above the surface.</li>
+      <li><strong>Refill until the leg openings are covered</strong> &mdash; about <strong>8 cm</strong> down &mdash; and set <strong>three teabags of each type</strong> in front of each pair.</li>
+      <li><strong>Replace the rest of the soil, tread it down</strong>, and mark the spot so you can find it again.</li>
+      <li><strong>At 30 days</strong> lift the first pair and its teabags. <strong>At 60 days</strong> lift the second.</li>
+      <li><strong>Air-dry everything.</strong> Photograph the pairs side by side. Compare against Fig. 1.</li>
+    </ol>
+
+    <p>Two honest notes on doing this at home. <strong>Use plain, undyed, 100% cotton</strong> &mdash; elastic waistbands and synthetic stitching will not decompose and will confuse you, which is why the photographs all show an intact waistband on a ruined garment. And <strong>your result is one hole in one garden</strong>: it tells you something real about your own ground and nothing at all about anyone else&rsquo;s. If you want it to be data, do it in more than one place, and write down where.</p>
+
+    <div class="refusals">
+      <div class="callout-label">Not</div>
+      <ul>
+        <li><strong>Not a soil test.</strong> The authors propose the Underwear Index to give a first impression and to raise awareness. It is not a substitute for a laboratory analysis, and a number read off a garment has error bars nobody has drawn.</li>
+        <li><strong>Not an unchallenged instrument.</strong> The Tea Bag Index has a published critique arguing macrofauna damage is mistaken for decomposition, and that objection applies harder to a whole pair of underpants. Named on the page rather than left out.</li>
+        <li><strong>Not 59% flat.</strong> It is 59% &plusmn; 15%, its own authors say treat with caution, and a reanalysis argues it is far too low. The range is more interesting than the point estimate.</li>
+        <li><strong>Not an attack on anyone&rsquo;s garden.</strong> Lawns are useful; children play on them. The finding is about biological activity in the soil beneath one, not about whether you are allowed to have one. <em>What is being criticised is uniformity as a goal, not grass.</em></li>
+        <li><strong>Not a claim that citizen science replaces regulation.</strong> A thousand people with trowels produced something a research group could not. They did not thereby produce an environmental protection agency, and they should not have to.</li>
+        <li><strong>Not a rhyme dressed as a proof.</strong> A lawn is genuinely a monoculture and monocultures genuinely are fragile. That is not evidence about people, and the resemblance to every other argument on this site is offered as a resemblance.</li>
+      </ul>
+    </div>
+
+    <h2 class="section" id="go-and-look">Go and look</h2>
+
+    <p>The best thing about this experiment is how little it asks. A trowel, two pairs of pants you were going to throw out, and the patience to leave them alone for two months. At the end you get a photograph that a seven-year-old can interpret and a soil scientist will not argue with much.</p>
+
+    <p>Soil is the second largest carbon store on the planet, possibly the most species-rich habitat we know of, and the reason there is food. We are losing tens of gigatonnes of it a year and sealing an area the size of a small city under concrete every day. <strong>And you can find out whether yours is alive by burying your underwear in it.</strong></p>
+
+    <p class="claim">The pair that comes back clean is the one to worry about.</p>
+
+    <a class="start-link" href="collection-glimmers.html">More Glimmers &rarr;</a>
+
+    <div class="refs">
+      <p><strong>Sources &amp; notes.</strong> Graded as usual: what is verified, what is reported, and what we could not reach.</p>
+
+      <p><strong>The study.</strong> S. Franz Bender, Diane B&uuml;rge, Luca Bragazza, Eva Knop, Marcel G. A. van der Heijden and colleagues, including approximately 240 citizen-scientist co-authors, <em>&ldquo;Soil health assessment using buried cotton underpants with the help of 1000 citizen scientists,&rdquo;</em> <strong><em>Plants, People, Planet</em></strong> (2026), <a href="https://doi.org/10.1002/ppp3.70259">doi:10.1002/ppp3.70259</a>. <strong>Open access under CC BY 4.0</strong>, which is what permits the adaptation in Fig. 1. <em>Open, and stated rather than hidden:</em> the publisher&rsquo;s full text returned HTTP 403 to us, so the quantitative findings below are taken from the University of Zurich&rsquo;s own media release and contemporaneous coverage rather than read out of the paper. The two block quotations are as supplied to us from the article text. <strong>A copy of the PDF would settle the numbers outright and we would rather have read it.</strong></p>
+
+      <p><strong>Scale of the project.</strong> Launched 2021 by the University of Zurich and Agroscope as <em>Beweisst&uuml;ck Unterhose</em> / Proof by Underpants; about 1,000 volunteers; more than 2,000 pairs of cotton underpants; around 12,000 teabags; roughly 1,000 sites across Switzerland; two-month burial with a 30-day interim retrieval; materials air-dried and posted to Agroscope with a soil sample &mdash; <a href="https://www.news.uzh.ch/en/articles/media/2026/buried-underwear.html">UZH media release</a> and <a href="https://www.eurekalert.org/news-releases/1141365">EurekAlert</a>. VERIFIED as reported.</p>
+
+      <p><strong>The finding.</strong> Land use was the most important factor influencing both the Underwear Index and the Tea Bag Index, followed by soil and environmental parameters; private gardens showed the highest soil biological activity of any land type studied and lawns the lowest, with arable fields and meadows in between; chemical soil characteristics such as nutrient levels also played a significant role &mdash; UZH release, quoting the study. VERIFIED as reported. <strong>Fig. 2 shows order and not magnitude, and says so on its face</strong>, because we did not have the underlying values and will not draw a bar chart from a press release.</p>
+
+      <p><strong>The Tea Bag Index.</strong> Joost A. Keuskamp, Bas J. J. Dingemans, Taru Lehtinen, Judith M. Sarneel and Mariet M. Hefting, <em>&ldquo;Tea Bag Index: a novel approach to collect uniform decomposition data across ecosystems,&rdquo;</em> <em>Methods in Ecology and Evolution</em> 4 (2013). Green tea and rooibos in tetrahedral bags, roughly 2 g each; the index yields a decomposition constant <em>k</em> and a stabilisation factor <em>S</em>, the stabilised portion of the hydrolysable fraction. VERIFIED at the level of the paper&rsquo;s own abstract and standard summaries. <strong>The critique is real and is named on the page:</strong> a 2020 paper titled <em>&ldquo;Not our cup of tea&rdquo;</em> argues the index is problematic in most environments because macrofauna damage is recorded as decomposition; laboratory validation studies exist on the other side. CONTESTED, and presented as contested. <em>The extension of that objection to a whole pair of underpants is ours.</em></p>
+
+      <p><strong>The 59%.</strong> Mark A. Anthony, S. Franz Bender and Marcel G. A. van der Heijden, <em>&ldquo;Enumerating soil biodiversity,&rdquo;</em> <em>PNAS</em> 120 (2023). The estimate is <strong>59% &plusmn; 15%</strong> of species on Earth, and the authors state the figures should be treated with caution. A 2025 reanalysis in <em>ZooKeys</em> argues the totals are underestimated by orders of magnitude and restates soil biota at more than 99% of global species. <strong>CONTESTED IN BOTH DIRECTIONS, and the page prints the range rather than the point estimate.</strong> Bender and van der Heijden are authors of both this and the underpants paper, which the page notes.</p>
+
+      <p><strong>The soil function and threat tables.</strong> Supplied by Ryan from the study&rsquo;s own summary tables and reproduced with their citations intact. <strong>REPORTED, NOT INDEPENDENTLY VERIFIED:</strong> we have not gone to FAO (2013), Jobb&aacute;gy &amp; Jackson (2000), Borrelli et al. (2017), Sanderman et al. (2017), Landrigan et al. (2018) or the rest and read them. These are the study&rsquo;s citations, presented as the study&rsquo;s citations, and a reader who needs one of these numbers to be right should go to the source named beside it. <em>The 95%-of-food figure in particular is an FAO estimate that circulates very widely with no error bar attached, and we are repeating it with that caveat rather than endorsing it.</em> The one figure we did check independently is the 59%, above, and checking it found a &plusmn;15 and a live argument &mdash; which is a fair indication of what the others would yield.</p>
+
+      <p><strong>Cotton chemistry.</strong> Cotton fibre is roughly 90% cellulose, which is what makes it a standardised substrate. Stated at the level of the standard account.</p>
+
+      <p><strong>Fig. 1&rsquo;s licence.</strong> Adapted under CC BY 4.0 from the decomposition scale in Bender et al. (2026); vector artwork, palette and typography ours, the four-step structure and breakpoints theirs, adaptation indicated as the licence requires. <strong>Recorded because the previous entry in this collection had the opposite answer:</strong> <a href="flying-free.html">Flying Free</a> carries a broadcast screenshot whose licence we could not establish and which is therefore marked <em>credited, not relicensed</em>. Same question asked twice, two different answers, both because somebody looked.</p>
+
+      <p><strong>Figs. 2, 3 and 4 are ours</strong> and are schematic. Fig. 4 follows the protocol as described in the paper&rsquo;s methods, quoted to us from the article; proportions are not to scale.</p>
+
+      <p><strong>News coverage consulted:</strong> <a href="https://www.news.uzh.ch/en/articles/media/2026/buried-underwear.html">University of Zurich</a>, <a href="https://www.eurekalert.org/news-releases/1141365">EurekAlert</a>, <a href="https://phys.org/news/2026-08-underwear-key-soil-health.html">Phys.org</a>, <a href="https://www.popsci.com/environment/bury-underwear-soil-health/">Popular Science</a>, and a <a href="https://ground.news/article/swiss-scientists-propose-underwear-index-for-soil-health_79f81f">Ground News roundup</a>. <em>Science</em>&rsquo;s piece (<a href="https://doi.org/10.1126/science.adw0030">doi:10.1126/science.adw0030</a>) returned 403 and is cited unread.</p>
+
+      <p><strong>Prior art on this site:</strong> <a href="underground-zine.html">Underground</a> (No. 5) and <a href="mycelium-and-rhizome-zine.html">A Mycelium and a Rhizome</a> (No. 26) both carry the standing hedge on the <em>wood wide web</em>, which this piece does not invoke; <a href="third-nature-field-guide.html">A Field Guide to Third Nature</a> is the nearest neighbour on habitats we made by accident.</p>
+
+      <p>A rhyme, not a proof.</p>
+    </div>
+
+    <div class="colophon-footer">
+      <a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks Foundation</a> &times; <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a> &middot; Glimmers &middot; L&#9733;S<br>
+      By Ryan Boren &middot; 31 August 2026 &middot; stimpunks.org &middot; morerealms.com &middot; starstuff.earth &middot; <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
+    </div>
+
+  </div>
+
+</div><!-- /doc-shell -->
+
+</body>
+</html>

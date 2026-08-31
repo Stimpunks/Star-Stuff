@@ -99,8 +99,8 @@ The central phrase compresses through registers, each with a use:
   <a class="ss-nav-collection" href="collection-kin.html"><span class="ss-nav-collection-label">Collection</span> <span class="ss-nav-collection-name">Kin</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
   ```
 
-  All 141 members have one; the 14 collection pages, `index.html` and `search.html` do not (141 +
-  14 + 2 = the 157 pages in the repo root, re-derived 2026-08-31). **A new
+  All 143 members have one; the 14 collection pages, `index.html` and `search.html` do not (143 +
+  14 + 2 = the 159 pages in the repo root, re-derived 2026-08-31). **A new
   piece needs its badge and its collection page's card in the same pass** — the page→collection map
   is derived from `<a class="card" href="…">` on the collection pages, so a card that is missing
   makes the badge underivable. **`tools/check-markup.mjs` enforces all of this as of 2026-08-13**
@@ -267,7 +267,7 @@ interdependence, belonging. A piece is in it because *something happened on a pa
 
 | Collection | Axis | Members |
 |------------|------|---------|
-| **Glimmers** | **occasion** — written close to the event, dated rather than numbered | `flying-free`, `none-of-those-miles` (2 — opened deliberately *below* the floor and met it hours later; the cadence argument stands regardless, see above) |
+| **Glimmers** | **occasion** — written close to the event, dated rather than numbered | `flying-free`, `none-of-those-miles`, `came-back-clean` (3 — opened deliberately *below* the two-member floor and met it hours later; the cadence argument stands regardless, see above) |
 
 - **Entries are dated, not numbered, and this is load-bearing rather than stylistic.** The zine
   numbering says *when* and is referenced by number across `changelog.html`, `FACTCHECK.md` and
@@ -280,9 +280,12 @@ interdependence, belonging. A piece is in it because *something happened on a pa
   order-unchecked cards, which is correct and not a coverage loss.
 - **Faster to write is not looser.** Same eight gates, same `FACTCHECK.md` row, same changelog
   entry, same grading of every quotation. The first entry marks a contested Einstein quotation
-  *against a NASA page it is otherwise citing favourably*, and the second corrects the headline it was
-  built from *against the IEA report that headline came from* — both are the standard the collection is
-  supposed to hold. **A slow piece with a news hook still belongs in its register collection** —
+  *against a NASA page it is otherwise citing favourably*, the second corrects the headline it was built
+  from *against the IEA report that headline came from*, and the third **states on its own face that it
+  could not read the paper it reports on** — the PDF path in the draft did not exist and the publisher
+  returned 403, so every figure is sourced to the institution's release instead, and a chart that would
+  have needed the unavailable numbers was drawn as a ranking rather than invented. All three are the
+  standard the collection is supposed to hold. **A slow piece with a news hook still belongs in its register collection** —
   Glimmers is not the shelf for "recent", it is the shelf for "we wrote this while it was still
   happening."
 - **The name is Deb Dana's, and the repo argues against it if read carelessly.** *Glimmer* (2018)
@@ -364,7 +367,7 @@ never candidates for a register. Don't try to fold these into either table:
   everything else homework, and would become the one place the verify-everything standard could
   quietly relax. The fun is distributed; *Stars We Grew Up On* states this on the page.
 - The **prev/next chain follows collection order**: each collection page precedes its members, and
-  members run in ascending number within the collection. **139 pages** as of 2026-08-31,
+  members run in ascending number within the collection. **141 pages** as of 2026-08-31,
   `collection-start-here.html` → `shorthand-evolution.html`. **17 pages sit outside it, and every
   one is a decision:** `about.html` and `cosmic-connections.html`; **all of Notes &amp; Rationale** —
   `changelog.html`, `design.html`, `print-design.html`, `difference-first-frame.html`,
@@ -373,7 +376,7 @@ never candidates for a register. Don't try to fold these into either table:
   `hatchery.html`, `quillery.html` and `one-atom-of-justice-zine.html`, because a chain link would
   walk a reader into an egg by accident and stop it being one.
   (`index.html` and `search.html` are utility pages and were never in it, which makes
-  139 + 18 = 157, re-derived 2026-08-31.)
+  141 + 18 = 159, re-derived 2026-08-31.)
   **Don't trust that number — measure it**, and check `prev` and `next` agree in both directions;
   inserting a page means editing its two neighbours, and a one-sided edit leaves a chain that walks
   forward correctly and breaks going back:
