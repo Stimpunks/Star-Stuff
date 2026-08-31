@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0a0a14">
+<link rel="canonical" href="https://starstuff.earth/none-of-those-miles.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta name="description" content="Solar photovoltaics are now the cheapest source of electricity in history — with a qualifier the headline keeps dropping. On the learning curve that did it: module prices fell 497-fold from 1975 to 2024 while cumulative capacity grew three and a half million times, a 23.5% price decline for every doubling. On silicon forged in massive stars, arranged to catch light from the nearest one. And on Bill McKibben's line: sunlight travels ninety-three million miles, and none of those miles go through the Strait of Hormuz.">
+<!-- Open Graph / link unfurl -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Star Stuff &middot; Stimpunks Foundation &times; More Realms">
+<meta property="og:url" content="https://starstuff.earth/none-of-those-miles.html">
+<meta property="og:title" content="None of Those Miles &mdash; how sunlight got cheap">
+<meta property="og:description" content="Solar is the cheapest electricity in history, with a qualifier the headline keeps dropping. On the learning curve that did it, silicon forged in stars, and a supply line with no chokepoint in it.">
+<meta property="og:image" content="https://starstuff.earth/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A rainbow-hued cosmic image — we are all made of star stuff.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="None of Those Miles &mdash; how sunlight got cheap">
+<meta name="twitter:description" content="Solar is the cheapest electricity in history, with a qualifier the headline keeps dropping. On the learning curve that did it, silicon forged in stars, and a supply line with no chokepoint in it.">
+<meta name="twitter:image" content="https://starstuff.earth/og-card.jpg">
+<title>None of Those Miles — Glimmers — Stimpunks × More Realms</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="starstuff.css">
+<style>
+  :root {
+    --void:  var(--sp-void-deep);
+    --deep:  var(--sp-deep);
+    --card:  var(--sp-card);
+    --violet:var(--sp-purple);
+    --pink:  var(--sp-pink);
+    --gold:  var(--sp-gold);
+    --cyan:  var(--sp-cyan);
+    --green: var(--sp-green);
+    /* Gold is the Glimmers accent, and on a piece about sunlight it is doing
+       double duty. Refusals violet, second-tier callout cyan, as on the first
+       entry in this collection. */
+    --accent:var(--sp-gold);
+    --star-white: var(--sp-white-soft);
+    --stardust:   var(--sp-secondary-soft);
+    --dim:   var(--sp-dim);
+    --dim2:  var(--sp-dim-soft);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--void);
+    font-family: 'Atkinson Hyperlegible Next', system-ui, sans-serif;
+    color: var(--star-white);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Starfield, tinted gold — see starstuff.css on why the gradient art stays
+     inline and per-page. */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 9% 14%, rgba(251,191,36,0.75) 0%, transparent 100%),
+      radial-gradient(1px 1px at 26% 39%, rgba(244,244,251,0.6) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 45% 8%, rgba(251,191,36,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 63% 70%, rgba(74,222,128,0.5) 0%, transparent 100%),
+      radial-gradient(2px 2px at 78% 25%, rgba(244,244,251,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 87% 57%, rgba(251,191,36,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 93% 82%, rgba(244,244,251,0.7) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 5% 60%, rgba(251,191,36,0.55) 0%, transparent 100%),
+      radial-gradient(1px 1px at 32% 87%, rgba(244,244,251,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 56% 45%, rgba(34,211,238,0.45) 0%, transparent 100%),
+      radial-gradient(2px 2px at 18% 85%, rgba(251,191,36,0.55) 0%, transparent 100%),
+      radial-gradient(1px 1px at 71% 5%, rgba(244,244,251,0.8) 0%, transparent 100%),
+      radial-gradient(1px 1px at 49% 64%, rgba(251,191,36,0.45) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 37% 21%, rgba(244,244,251,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 83% 91%, rgba(74,222,128,0.45) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .doc-shell { position: relative; z-index: 1; max-width: 760px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+
+  .spectrum-line { height: 2px; border: none; border-radius: 2px; background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); }
+
+  .hero { margin-bottom: 2.5rem; }
+  .hero-eyebrow { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.36em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.3rem; }
+  .hero-title { font-weight: 700; font-size: clamp(2.1rem, 6vw, 3.4rem); line-height: 1.05; letter-spacing: -0.02em; color: var(--star-white); margin-bottom: 1.1rem; }
+  .hero-title em { font-style: normal; background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .byline { font-family: 'Space Mono', monospace; font-size: 0.66rem; letter-spacing: 0.14em; color: var(--stardust); margin-bottom: 1.1rem; line-height: 1.9; }
+  .byline strong { color: var(--star-white); font-weight: 700; }
+  .byline a { color: var(--stardust); text-decoration: none; border-bottom: 1px solid rgba(251,191,36,0.35); }
+  .byline a:hover { color: var(--star-white); }
+  .hero-sub { font-size: 1.02rem; line-height: 1.6; color: var(--stardust); max-width: 38rem; }
+  .hero-rule { width: 200px; max-width: 55%; margin-top: 1.6rem; }
+
+  h2.section { font-weight: 700; font-size: 1.4rem; line-height: 1.2; color: var(--star-white); margin: 2.8rem 0 0.5rem; letter-spacing: -0.01em; scroll-margin-top: 2rem; }
+  h3.sub { font-weight: 700; font-size: 1.08rem; line-height: 1.3; color: var(--star-white); margin: 2rem 0 0.3rem; scroll-margin-top: 2rem; }
+
+  .body-text { font-size: 1.02rem; line-height: 1.75; color: var(--stardust); }
+  .body-text p { margin-top: 1rem; }
+  .body-text em { font-style: italic; color: var(--star-white); }
+  .body-text strong { font-weight: 700; color: var(--star-white); }
+  .body-text a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(251,191,36,0.4); }
+  .body-text a:hover { border-bottom-color: var(--accent); }
+  .body-text ul { margin: 0.9rem 0 0 1.1rem; }
+  .body-text li { margin-top: 0.5rem; padding-left: 0.2rem; color: var(--stardust); line-height: 1.7; }
+
+  .claim { font-size: 1.22rem; font-weight: 700; line-height: 1.4; color: var(--star-white); border-left: 3px solid var(--accent); padding-left: 1.1rem; margin: 1.4rem 0; }
+
+  .pull { font-size: 1.06rem; line-height: 1.6; color: var(--star-white); border-left: 3px solid var(--violet); padding-left: 1.1rem; margin: 1.4rem 0; }
+  .pull .attr { display: block; margin-top: 0.5rem; font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim); }
+  .pull .attr a { color: var(--dim); text-decoration: none; border-bottom: 1px solid rgba(167,139,250,0.25); }
+  .pull .attr a:hover { color: var(--stardust); }
+
+  .callout { border: 1px solid rgba(251,191,36,0.32); border-left: 3px solid var(--accent); border-radius: 0 6px 6px 0; padding: 1.1rem 1.3rem; margin: 1.6rem 0; background: rgba(251,191,36,0.05); }
+  .callout .callout-label { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; }
+  .callout p { font-size: 0.96rem; line-height: 1.7; color: var(--stardust); }
+  .callout p + p { margin-top: 0.8rem; }
+  .callout strong { color: var(--star-white); font-weight: 700; }
+  .callout em { font-style: italic; color: var(--star-white); }
+  .callout a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(251,191,36,0.4); }
+  .callout--cyan { border-color: rgba(34,211,238,0.32); border-left-color: var(--cyan); background: rgba(34,211,238,0.05); }
+  .callout--cyan .callout-label { color: var(--cyan); }
+  .callout--cyan a { color: var(--cyan); border-bottom-color: rgba(34,211,238,0.4); }
+
+  .refusals { margin: 1.5rem 0 0.5rem; }
+  .refusals .callout-label { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--violet); margin-bottom: 0.6rem; }
+  .refusals ul { margin: 0; }
+  .refusals li { list-style: none; position: relative; padding-left: 1.5rem; margin-top: 0.55rem; color: var(--stardust); line-height: 1.65; }
+  .refusals li::before { content: '\2715'; position: absolute; left: 0; color: var(--violet); font-weight: 700; }
+  .refusals a { color: var(--violet); text-decoration: none; border-bottom: 1px solid rgba(167,139,250,0.4); }
+
+  /* ── Diagrams ──
+     Shape fills use the literals starstuff.css inverts for print (#f9fafb,
+     #fbbf24), and labels sit on the page ground rather than on a filled shape,
+     because a gold fill becomes #333 on paper while its label becomes #111 —
+     legible only if the two never overlap. */
+  .fig { margin: 1.9rem 0 0.7rem; }
+  .fig svg { display: block; width: 100%; height: auto; }
+  .fig figcaption { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--dim); margin-top: 0.7rem; line-height: 1.9; }
+  .fig figcaption strong { color: var(--stardust); }
+
+  .callout, .refusals, .fig { page-break-inside: avoid; break-inside: avoid; }
+
+  .start-link { display: inline-block; margin-top: 1.5rem; font-family: 'Space Mono', monospace; font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); text-decoration: none; border: 1px solid rgba(251,191,36,0.45); border-radius: 3px; padding: 0.6rem 1.1rem; transition: all 0.2s ease; }
+  .start-link:hover { background: rgba(251,191,36,0.12); border-color: var(--accent); color: var(--star-white); }
+
+  .colophon-footer { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--dim2); line-height: 2.2; margin-top: 3rem; padding-top: 1.4rem; border-top: 1px solid rgba(167,139,250,0.14); }
+  .colophon-footer a { color: var(--dim); text-decoration: none; border-bottom: 1px solid rgba(167,139,250,0.2); }
+  .colophon-footer a:hover { color: var(--stardust); }
+
+  .refs { font-size: 0.8rem; line-height: 1.85; color: var(--dim); margin-top: 2rem; padding-top: 1.2rem; border-top: 1px solid rgba(167,139,250,0.14); }
+  .refs a { color: var(--dim); border-bottom: 1px solid rgba(167,139,250,0.2); text-decoration: none; word-break: break-word; }
+  .refs a:hover { color: var(--stardust); }
+  .refs strong { color: var(--stardust); font-weight: 400; }
+  .refs em { font-style: italic; }
+
+  @media (max-width: 600px) {
+    .doc-shell { padding: 2rem 1.3rem 3rem; }
+  }
+
+  @media print {
+    body::before { display: none; }
+    .hero-title, h2.section, h3.sub, .claim, .pull,
+    .callout strong, .body-text strong, .body-text em { color: #111; }
+    .body-text li, .hero-sub, .callout p, .refusals li, .byline { color: #222; }
+    .byline strong { color: #111; }
+    .pull .attr, .colophon-footer, .refs, .fig figcaption { color: #444; }
+    .callout .callout-label,
+    .callout--cyan .callout-label,
+    .refusals .callout-label { color: #444; }
+    .refusals li::before { color: #111; }
+    .callout, .callout--cyan { background: none; border-color: #999; border-left-color: #444; }
+    .start-link { display: none; }
+  }
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"None of Those Miles","description":"Solar photovoltaics are now the cheapest source of electricity in history, with a conditional attached that the headline keeps dropping: the IEA's 2020 finding was for projects with low-cost financing tapping high-quality resources, and it was about electricity rather than all energy. The piece derives the learning curve from Our World in Data's series — module prices fell from $128.27 per watt in 1975 to $0.258 in 2024, a 497-fold fall, while cumulative installed capacity grew from 0.54 MW to 1.85 TW, 21.7 doublings, giving a 23.5 per cent price decline per doubling at R-squared 0.979 — and notes the six years in which prices rose. It covers the photovoltaic effect, the 250-year sequence of US energy crossovers from the EIA, silicon as the eighth most abundant element in the universe and a product of massive stars, community solar and shared power, and Bill McKibben's observation that sunlight travels ninety-three million miles to reach Earth and none of those miles go through the Strait of Hormuz. Four diagrams. The second entry in Glimmers.","image":"https://starstuff.earth/og-card.jpg","url":"https://starstuff.earth/none-of-those-miles.html","mainEntityOfPage":"https://starstuff.earth/none-of-those-miles.html","datePublished":"2026-08-31","author":{"@type":"Person","name":"Ryan Boren","url":"https://stimpunks.org/"},"publisher":[{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/","logo":{"@type":"ImageObject","url":"https://starstuff.earth/og-card.jpg"}},{"@type":"Organization","name":"More Realms","url":"https://morerealms.com/"}],"isPartOf":{"@type":"WebSite","name":"Star Stuff","url":"https://starstuff.earth/"},"license":"https://creativecommons.org/licenses/by-sa/4.0/"}</script>
+</head>
+<body>
+
+<div class="doc-shell">
+
+  <nav class="ss-nav" style="--nav-accent:#fbbf24;" aria-label="Star Stuff collection">
+    <span class="ss-nav-home-group"><a class="ss-nav-home" href="index.html"><span class="ss-star" aria-hidden="true">&#9733;</span> stuff</a><a class="ss-nav-about" href="about.html">about</a>
+      <a class="ss-nav-search" href="search.html">search</a></span>
+    <span class="ss-nav-links">
+      <a class="ss-nav-prev" href="flying-free.html"><span class="ss-nav-arrow" aria-hidden="true">&lsaquo;</span> <span class="ss-nav-label">Flying Free</span></a>
+      <a class="ss-nav-next" href="collection-field-guides.html"><span class="ss-nav-label">Field Guides</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
+    </span>
+    <a class="ss-nav-collection" href="collection-glimmers.html"><span class="ss-nav-collection-label">Collection</span> <span class="ss-nav-collection-name">Glimmers</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-eyebrow"><a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks Foundation</a> &times; <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a> &middot; Glimmers</div>
+    <h1 class="hero-title">None of Those <em>Miles</em></h1>
+    <p class="byline">By <strong>Ryan Boren</strong> &middot; <a href="https://stimpunks.org/">Stimpunks Foundation</a><br>Occasion: the first year a renewable source led global electricity-supply growth &mdash; and a shipping lane that stopped working &middot; Published 31 August 2026</p>
+    <p class="hero-sub">Sunlight is now the cheapest way we have ever made electricity. On the qualifier that keeps falling off that sentence, the fifty-year learning curve that actually did it, the star-forged silicon we arranged to catch starlight with, and a supply line with no chokepoint anywhere in it.</p>
+    <hr class="spectrum-line hero-rule">
+  </header>
+
+  <div class="body-text">
+
+    <p>This speaks to my electrify-everything, solarpunk heart. <strong>It&rsquo;s happening. It&rsquo;s really happening. It&rsquo;s finally happening.</strong> Solar power is affordable, attainable, and here when we really need it.</p>
+
+    <p class="pull">Today solar makes the cheapest electricity.<span class="attr">&mdash; Walajabad S. Sampath, site director, Center for Next Generation Photovoltaics, Colorado State University, in <a href="https://www.scientificamerican.com/article/how-solar-became-the-cheapest-form-of-energy-in-the-world/">Scientific American</a></span></p>
+
+    <p>Last year the world added <strong>600 terawatt-hours</strong> of solar photovoltaic generation &mdash; enough, <em>Scientific American</em> notes, to power Canada for a year. It was the first time a renewable source took the top slot in global supply growth, and the largest single-year increase for any electricity-generation technology the International Energy Agency has recorded. Global solar generation now equals <strong>the entire electricity demand of the European Union</strong>.</p>
+
+    <p>Two of those are records about <em>growth</em> rather than about totals, and that distinction is going to come back. But the direction is not in doubt, and neither is the price.</p>
+
+    <h2 class="section" id="the-qualifier">The qualifier that keeps falling off</h2>
+
+    <p>Here is the claim as it usually arrives, including in the headline of the article that prompted this piece:</p>
+
+    <p class="claim">Solar is the cheapest way to produce energy in human history.</p>
+
+    <p>And here is what the <strong>International Energy Agency</strong> actually wrote in 2020, which is where the claim comes from:</p>
+
+    <p class="claim">&ldquo;For projects with low cost financing that tap high quality resources, solar PV is now the cheapest source of electricity in history.&rdquo;</p>
+
+    <p><strong>Two things went missing between those sentences, and they are not the same size.</strong></p>
+
+    <p>The small one is <em>electricity</em> becoming <em>energy</em>. Electricity is about <strong>22%</strong> of final energy consumption worldwide; the rest is combustion &mdash; furnaces, engines, steel, cement, ships. Solar is not currently the cheapest way to make a tonne of steel. <em>That is exactly why <a href="https://stimpunks.org/philosophy/electrify-everything-decarbonization-requires-electrification/">electrify everything</a> is a slogan about the demand side</em>: the cheap electricity is the prize, and moving loads onto the wire is how you get to claim it.</p>
+
+    <p>The large one is <strong>&ldquo;for projects with low cost financing that tap high quality resources.&rdquo;</strong> That is a condition on capital and on sunshine. A solar farm is nearly all up-front cost and almost no fuel cost, which means its price per unit of electricity is set mostly by <em>the interest rate</em> and by <em>how sunny the site is</em>. Cheap money in a sunny place produces the cheapest electricity in history. Expensive money in a cloudy place does not. Same panels.</p>
+
+    <div class="callout callout--cyan">
+      <div class="callout-label">We published an essay about this exact failure two days ago</div>
+      <p><a href="rainbow-serpents.html">Rainbow Serpents</a> is about a four-word qualifier &mdash; <em>of an isolated system</em> &mdash; that is taught in every thermodynamics course and is almost always gone by the time the idea reaches daylight. <strong>This is the same fault in a different field, and we nearly committed it ourselves</strong>: this piece began life with the unqualified headline at the top of it.</p>
+      <p>The pattern is worth naming because it is not dishonesty. <em>A qualifier is the part of a sentence that makes it longer without making it better to repeat</em>, so it is the part that dies in transmission. The IEA hedge is fourteen words and it is load-bearing. Both halves matter: <strong>the claim is true, and it is conditional.</strong></p>
+    </div>
+
+    <p>The unconditional version of the good news is duller and still very good. In the United States, utility-scale solar runs about <strong>$38 to $78 per megawatt-hour</strong> against <strong>$48 to $109</strong> for new natural gas. That is not &ldquo;cheapest in history&rdquo;; it is &ldquo;cheaper than the incumbent, in ordinary conditions, right now.&rdquo; It is enough.</p>
+
+    <h2 class="section" id="scarcity">Sunlight isn&rsquo;t subject to scarcity</h2>
+
+    <p>Humans are unfortunately good at creating scarcity and precarity. <a href="eternal-sunshine-zine.html#spread-2">Sunlight travels ninety-three million miles</a> of empty space to get to us; it left the Sun&rsquo;s surface about eight minutes and twenty seconds ago. It arrived without a care for whatever human foolishness is afoot.</p>
+
+    <p class="pull">Sunlight has to travel 93 million miles to reach the Earth, but none of those miles go through the Strait of Hormuz.<span class="attr">&mdash; Bill McKibben, <a href="https://www.democracynow.org/2026/4/30/climate_change_super_el_nino_amoc">Democracy Now!</a>, 30 April 2026</span></p>
+
+    <p>That is the sentence this piece is named after, and it has been earning its keep all year. The reason is not rhetorical.</p>
+
+    <p><strong>Roughly a fifth of the world&rsquo;s oil moved through the Strait of Hormuz before this year</strong>, through a passage about 21 nautical miles across at its narrowest, in which the internationally recognised traffic lanes are two miles wide apiece. Following military operations against Iran in late February 2026 and Iranian attacks on commercial shipping, traffic through the strait has effectively collapsed: against roughly <strong>130 transits</strong> in a normal day, ship-tracking recorded <strong>between eight and fifteen</strong> on each of 4, 5 and 6 August. A ceasefire in April and a memorandum of understanding in June did not hold; attacks resumed in July. The US Strategic Petroleum Reserve has fallen below 300 million barrels, its lowest since January 1983.</p>
+
+    <p>We are not going to pretend to adjudicate that war here. The narrow, checkable point is the one McKibben makes: <strong>a supply line has chokepoints or it does not, and this is a property of the physical route, not of anybody&rsquo;s intentions.</strong></p>
+
+    <figure class="fig">
+      <svg viewBox="0 0 720 250" role="img" aria-labelledby="fig1-title fig1-desc">
+        <title id="fig1-title">Two supply lines compared: sunlight and oil</title>
+        <desc id="fig1-desc">The upper line runs from the Sun directly to a rooftop across ninety-three million miles of vacuum, with no chokepoints marked. The lower line runs from an oil field through a tanker route that narrows sharply at the Strait of Hormuz before reaching a refinery and a socket, with the narrowing marked as a chokepoint.</desc>
+
+        <!-- ── Lane A: sunlight ── -->
+        <text x="8" y="34" font-size="11.5" font-weight="700" fill="#fbbf24" letter-spacing="1.6">ONE SUPPLY LINE</text>
+        <circle cx="52" cy="76" r="19" fill="#fbbf24"/>
+        <text x="52" y="118" text-anchor="middle" font-size="11.5" fill="#f9fafb">Sun</text>
+        <line x1="78" y1="76" x2="628" y2="76" stroke="#fbbf24" stroke-width="2.2"/>
+        <path d="M 628,76 l -9,-4.5 l 0,9 Z" fill="#fbbf24"/>
+        <text x="352" y="63" text-anchor="middle" font-size="12" fill="#f9fafb">93,000,000 miles of vacuum &#183; 8 min 20 s</text>
+        <text x="352" y="98" text-anchor="middle" font-size="11.5" fill="#c4b5d4">nothing to close, nothing to embargo, no owner</text>
+        <path d="M 648,86 l 22,-16 l 22,16 l 0,20 l -44,0 Z" fill="none" stroke="#f9fafb" stroke-width="1.6"/>
+        <text x="670" y="126" text-anchor="middle" font-size="11.5" fill="#f9fafb">your roof</text>
+
+        <!-- ── Lane B: oil ── -->
+        <text x="8" y="172" font-size="11.5" font-weight="700" fill="#f472b6" letter-spacing="1.6">THE OTHER ONE</text>
+        <rect x="30" y="196" width="46" height="26" rx="3" fill="none" stroke="#f9fafb" stroke-width="1.6"/>
+        <text x="53" y="238" text-anchor="middle" font-size="11.5" fill="#f9fafb">field</text>
+        <line x1="80" y1="209" x2="298" y2="209" stroke="#c4b5d4" stroke-width="2.2"/>
+        <!-- The narrowing is drawn as two FILLED landmasses pinching a channel.
+             Stroke-only shorelines read as an X — two converging lines that the
+             eye completes into a crossing — which is a drawing that means the
+             wrong thing. Fill is #f9fafb so starstuff.css inverts it for print. -->
+        <path d="M 298,164 L 448,164 L 448,184 L 404,184 L 388,198 L 356,198 L 340,184 L 298,184 Z" fill="#f9fafb" fill-opacity="0.14" stroke="#f472b6" stroke-width="1.8"/>
+        <path d="M 298,254 L 448,254 L 448,234 L 404,234 L 388,220 L 356,220 L 340,234 L 298,234 Z" fill="#f9fafb" fill-opacity="0.14" stroke="#f472b6" stroke-width="1.8"/>
+        <line x1="298" y1="209" x2="448" y2="209" stroke="#f472b6" stroke-width="2.2" stroke-dasharray="5 4"/>
+        <text x="373" y="156" text-anchor="middle" font-size="11.5" font-weight="700" fill="#f472b6">Strait of Hormuz</text>
+        <line x1="448" y1="209" x2="628" y2="209" stroke="#c4b5d4" stroke-width="2.2"/>
+        <path d="M 628,209 l -9,-4.5 l 0,9 Z" fill="#c4b5d4"/>
+        <rect x="648" y="196" width="44" height="26" rx="3" fill="none" stroke="#f9fafb" stroke-width="1.6"/>
+        <text x="670" y="238" text-anchor="middle" font-size="11.5" fill="#f9fafb">socket</text>
+      </svg>
+      <figcaption><strong>Fig. 1 &mdash; a property of the route, not of anybody&rsquo;s intentions.</strong> The upper line has no owner and no gate. The lower one narrows to about 21 nautical miles at its tightest &mdash; and the internationally recognised shipping lanes inside it are two miles wide each. In a normal day it carried about a fifth of the world&rsquo;s oil. Transit counts for 4&ndash;6 August 2026: eight to fifteen ships a day, against roughly 130 before February.</figcaption>
+    </figure>
+
+    <p>Countries that built a lot of solar are, on the whole, less exposed to this particular shock, because electrons generated locally do not arrive by tanker. We would put that no more strongly than <em>less exposed</em>: it is a claim about one commodity and one route, and a grid still needs firm capacity, storage and transmission that solar panels by themselves do not supply.</p>
+
+    <h2 class="section" id="history">A brief history of producing energy from star stuff</h2>
+
+    <p>Everything humans have ever burned for power was sunlight first. Wood is a few decades of it. Coal is a Carboniferous swamp&rsquo;s worth, a few hundred million years old. Oil and gas are marine plankton, buried and cooked. <em>We have always run on the Sun. The only question has ever been how long ago the light arrived, and how much of somebody else&rsquo;s geology we had to dig up to get at it.</em></p>
+
+    <p>The US Energy Information Administration keeps the 250-year series, and read as a sequence of <strong>crossovers</strong> it is the most useful shape in this piece.</p>
+
+    <figure class="fig">
+      <svg viewBox="0 0 720 260" role="img" aria-labelledby="fig2-title fig2-desc">
+        <title id="fig2-title">Two and a half centuries of US energy crossovers</title>
+        <desc id="fig2-desc">A timeline from 1776 to 2025 marking six moments: wood dominant in 1776; coal passing wood around 1885; petroleum passing coal in 1950; the first commercial nuclear plant in 1957; renewables passing nuclear in 2022; and renewables passing coal in 2023. The last three markers cluster tightly at the right-hand end of the timeline.</desc>
+
+        <!-- axis -->
+        <line x1="60" y1="140" x2="686" y2="140" stroke="#c4b5d4" stroke-width="2"/>
+        <path d="M 686,140 l -9,-4.5 l 0,9 Z" fill="#c4b5d4"/>
+
+        <!-- 1776 -->
+        <circle cx="60" cy="140" r="4.5" fill="#fbbf24"/>
+        <line x1="60" y1="136" x2="60" y2="106" stroke="#fbbf24" stroke-width="1.2"/>
+        <text x="60" y="98" text-anchor="middle" font-size="12" font-weight="700" fill="#f9fafb">1776</text>
+        <text x="60" y="82" text-anchor="middle" font-size="11.5" fill="#c4b5d4">wood</text>
+
+        <!-- 1885 -->
+        <circle cx="320" cy="140" r="4.5" fill="#fbbf24"/>
+        <line x1="320" y1="144" x2="320" y2="180" stroke="#fbbf24" stroke-width="1.2"/>
+        <text x="320" y="196" text-anchor="middle" font-size="12" font-weight="700" fill="#f9fafb">c. 1885</text>
+        <text x="320" y="212" text-anchor="middle" font-size="11.5" fill="#c4b5d4">coal passes wood</text>
+
+        <!-- 1950 + 1957 grouped -->
+        <circle cx="476" cy="140" r="4.5" fill="#fbbf24"/>
+        <circle cx="492" cy="140" r="3.2" fill="none" stroke="#22d3ee" stroke-width="1.6"/>
+        <line x1="480" y1="136" x2="480" y2="106" stroke="#fbbf24" stroke-width="1.2"/>
+        <text x="480" y="98" text-anchor="middle" font-size="12" font-weight="700" fill="#f9fafb">1950 &#183; 1957</text>
+        <text x="480" y="82" text-anchor="middle" font-size="11.5" fill="#c4b5d4">petroleum passes coal;</text>
+        <text x="480" y="66" text-anchor="middle" font-size="11.5" fill="#c4b5d4">first commercial reactor</text>
+
+        <!-- 2022 + 2023 grouped -->
+        <circle cx="648" cy="140" r="4.5" fill="#fbbf24"/>
+        <circle cx="651" cy="140" r="4.5" fill="#fbbf24"/>
+        <line x1="650" y1="144" x2="650" y2="180" stroke="#fbbf24" stroke-width="1.2"/>
+        <text x="626" y="196" text-anchor="middle" font-size="12" font-weight="700" fill="#f9fafb">2022 &#183; 2023</text>
+        <text x="626" y="212" text-anchor="middle" font-size="11.5" fill="#c4b5d4">renewables pass nuclear,</text>
+        <text x="626" y="228" text-anchor="middle" font-size="11.5" fill="#c4b5d4">then coal</text>
+
+        <!-- span braces -->
+        <text x="190" y="132" text-anchor="middle" font-size="11" fill="#c4b5d4">109 years</text>
+        <text x="398" y="132" text-anchor="middle" font-size="11" fill="#c4b5d4">65 years</text>
+        <text x="562" y="132" text-anchor="middle" font-size="11" fill="#c4b5d4">72 years</text>
+
+        <text x="60" y="248" font-size="11" fill="#c4b5d4">Each mark is a crossover, not a replacement: wood, coal and gas are all still burning.</text>
+      </svg>
+      <figcaption><strong>Fig. 2 &mdash; the transitions are crossovers, and they are slow.</strong> Coal took about 109 years from the Declaration of Independence to pass wood; petroleum took another 65 to pass coal. Renewables passed nuclear in 2022 and coal in 2023 &mdash; the latter for the first time since the 1880s. Dates: US Energy Information Administration.</figcaption>
+    </figure>
+
+    <p><strong>Read the diagram twice.</strong> The first reading is the hopeful one: the crossovers are accelerating, and two of them just happened. The second reading is the one that keeps us honest: <em>not one of these transitions removed the thing it passed.</em> Wood did not stop burning in 1885. Coal did not stop in 1950. Total US energy use in 2025 was 96 quadrillion Btu, up 2% on the year. <strong>A crossover is a change in the ranking, not a subtraction</strong> &mdash; and the consequence of two centuries of not subtracting is the reason any of this is urgent.</p>
+
+    <p>Which is the honest frame for the records at the top of this piece. Solar leading <em>supply growth</em> is a real and large thing. It is not the same as solar leading supply.</p>
+
+    <h2 class="section" id="photovoltaics">Star stuff catching starlight</h2>
+
+    <p>Here is the part that never stops being remarkable, and it is the reason this piece is on this site at all.</p>
+
+    <p><strong>Silicon is made in stars.</strong> It is the eighth most abundant element in the universe, and its main isotope, silicon-28, comes overwhelmingly from massive stars &mdash; forged in their late burning stages and scattered by the Type II supernovae that end them. Every panel is a slab of dead-star material.</p>
+
+    <p class="claim">A solar panel is star stuff, arranged so that it catches starlight. Both halves of that sentence are literal.</p>
+
+    <p>The mechanism is a hundred and fifty years old in outline and gloriously simple in principle.</p>
+
+    <figure class="fig">
+      <svg viewBox="0 0 720 360" role="img" aria-labelledby="fig3-title fig3-desc">
+        <title id="fig3-title">How a photovoltaic cell works</title>
+        <desc id="fig3-desc">A cross-section of a solar cell. A photon arrives from the upper left and strikes the cell, knocking an electron loose just below the junction between a thin n-type layer doped with phosphorus and a thicker p-type layer doped with boron. The junction's built-in electric field pushes the freed electron one way only, up into the n-type layer and out through the top contact as direct current. Both contacts run to an inverter, which converts the direct current to alternating current for a house.</desc>
+
+        <!-- photon in -->
+        <text x="40" y="28" font-size="11.5" fill="#f9fafb">photon of sunlight</text>
+        <path d="M 40,42 q 14,-11 28,0 q 14,11 28,0 q 14,-11 28,0 q 14,11 28,0" fill="none" stroke="#fbbf24" stroke-width="2"/>
+        <line x1="152" y1="42" x2="194" y2="84" stroke="#fbbf24" stroke-width="2"/>
+        <path d="M 196,86 l -2,-9 l 9,2 Z" fill="#fbbf24"/>
+
+        <!-- the cell: a thin n-type layer over a thicker p-type layer -->
+        <rect x="60" y="90" width="300" height="30" fill="none" stroke="#22d3ee" stroke-width="1.8"/>
+        <rect x="60" y="120" width="300" height="80" fill="none" stroke="#a78bfa" stroke-width="1.8"/>
+        <line x1="60" y1="120" x2="360" y2="120" stroke="#f9fafb" stroke-width="2.4"/>
+        <text x="70" y="110" font-size="11" fill="#22d3ee">n-type &#183; silicon + phosphorus</text>
+        <text x="70" y="192" font-size="11" fill="#a78bfa">p-type &#183; silicon + boron</text>
+
+        <!-- the freed electron, pushed one way across the junction -->
+        <circle cx="300" cy="140" r="5" fill="#fbbf24"/>
+        <text x="288" y="144" text-anchor="end" font-size="11" fill="#f9fafb">electron, knocked loose</text>
+        <line x1="300" y1="132" x2="300" y2="104" stroke="#fbbf24" stroke-width="1.6" stroke-dasharray="4 3"/>
+        <path d="M 300,98 l -4,8 l 8,0 Z" fill="#fbbf24"/>
+
+        <!-- top contact out, and the return: both run to the inverter, so the
+             wire never crosses the cell's own labels. -->
+        <line x1="120" y1="90" x2="120" y2="64" stroke="#f9fafb" stroke-width="2"/>
+        <line x1="120" y1="64" x2="430" y2="64" stroke="#f9fafb" stroke-width="2"/>
+        <text x="250" y="56" font-size="11.5" font-weight="700" fill="#fbbf24">direct current</text>
+        <line x1="240" y1="200" x2="240" y2="248" stroke="#f9fafb" stroke-width="2"/>
+        <line x1="240" y1="248" x2="412" y2="248" stroke="#f9fafb" stroke-width="2"/>
+        <line x1="412" y1="248" x2="412" y2="82" stroke="#f9fafb" stroke-width="2"/>
+        <line x1="412" y1="82" x2="430" y2="82" stroke="#f9fafb" stroke-width="2"/>
+        <text x="256" y="239" font-size="11" fill="#c4b5d4">the circuit closes</text>
+
+        <!-- inverter, then AC to the house -->
+        <rect x="430" y="50" width="94" height="45" rx="4" fill="none" stroke="#f9fafb" stroke-width="1.8"/>
+        <text x="477" y="79" text-anchor="middle" font-size="12" fill="#f9fafb">inverter</text>
+        <line x1="524" y1="72" x2="592" y2="72" stroke="#f9fafb" stroke-width="2"/>
+        <path d="M 596,72 l -9,-4.5 l 0,9 Z" fill="#f9fafb"/>
+        <text x="552" y="64" font-size="11.5" font-weight="700" fill="#4ade80">AC</text>
+        <path d="M 606,102 l 26,-20 l 26,20 l 0,24 l -52,0 Z" fill="none" stroke="#4ade80" stroke-width="1.8"/>
+        <text x="632" y="144" text-anchor="middle" font-size="11.5" fill="#4ade80">everything</text>
+
+        <text x="60" y="278" font-size="11.5" fill="#c4b5d4">The junction&rsquo;s built-in field is one-way: a freed electron can only go up.</text>
+        <text x="60" y="304" font-size="11.5" fill="#c4b5d4">No moving parts. Nothing is consumed. Nothing is burned. There is no exhaust.</text>
+        <text x="60" y="324" font-size="11.5" fill="#c4b5d4">The panel is not a fuel; it is an arrangement that lets light do work on its way past.</text>
+        <text x="60" y="350" font-size="11" fill="#c4b5d4">A battery does the same trick in reverse, storing charge chemically so the arrangement keeps working after dark.</text>
+      </svg>
+      <figcaption><strong>Fig. 3 &mdash; the photovoltaic effect, schematically.</strong> Photons knock electrons free of their atomic bonds; the electric field built into the junction between the doped layers lets them travel one way only, which is what makes a current rather than a warm rock. An inverter turns the resulting DC into the AC that houses and grids use. After the US Department of Energy&rsquo;s <em>PV Cells 101</em>. Schematic, not to scale.</figcaption>
+    </figure>
+
+    <p>What is worth sitting with is the last line of that diagram. <strong>A panel is not a fuel.</strong> A coal plant is a device for consuming a thing you must keep buying; a panel is a device for being <em>in the way</em> of something that was going to arrive regardless. The Sun radiates about the same whether we catch it or not. The panel does not deplete it, and the light was never anybody&rsquo;s.</p>
+
+    <h2 class="section" id="the-learning-curve">Nobody invented cheap solar</h2>
+
+    <p>This is the part of the story that usually gets told as a breakthrough, and it is not one. There was no morning on which solar got cheap. <strong>It was iterated into existence, in public, over fifty years</strong>, and the shape of that is measurable.</p>
+
+    <p>Below is <em>Our World in Data</em>&rsquo;s series of inflation-adjusted module price against cumulative installed capacity, plotted on log&ndash;log axes, with the fit and the learning rate derived from the data rather than quoted.</p>
+
+    <figure class="fig">
+      <svg viewBox="0 0 720 372" role="img" aria-labelledby="fig4-title fig4-desc">
+        <title id="fig4-title">The solar learning curve, 1975 to 2024</title>
+        <desc id="fig4-desc">A log-log plot of solar module price in inflation-adjusted dollars per watt against cumulative installed capacity in megawatts. The data runs from 1975, at about 128 dollars per watt and half a megawatt installed, down to 2024, at about 26 cents per watt and 1.85 million megawatts installed. The points fall along a nearly straight descending line, indicating a constant percentage price decline for every doubling of capacity. A small marker highlights 2022, when the price rose rather than fell.</desc>
+
+        <text x="8" y="20" font-size="11.5" font-weight="700" fill="#fbbf24" letter-spacing="1.4">MODULE PRICE, $/W (INFLATION-ADJUSTED)</text>
+
+        <line x1="92.0" y1="44.0" x2="700.0" y2="44.0" stroke="#a78bfa" stroke-width="0.6" opacity="0.28"/>
+        <text x="83" y="47.5" text-anchor="end" font-size="11" fill="#c4b5d4">$1,000</text>
+        <line x1="92.0" y1="112.5" x2="700.0" y2="112.5" stroke="#a78bfa" stroke-width="0.6" opacity="0.28"/>
+        <text x="83" y="116.0" text-anchor="end" font-size="11" fill="#c4b5d4">$100</text>
+        <line x1="92.0" y1="181.0" x2="700.0" y2="181.0" stroke="#a78bfa" stroke-width="0.6" opacity="0.28"/>
+        <text x="83" y="184.5" text-anchor="end" font-size="11" fill="#c4b5d4">$10</text>
+        <line x1="92.0" y1="249.5" x2="700.0" y2="249.5" stroke="#a78bfa" stroke-width="0.6" opacity="0.28"/>
+        <text x="83" y="253.0" text-anchor="end" font-size="11" fill="#c4b5d4">$1</text>
+        <line x1="92.0" y1="318.0" x2="700.0" y2="318.0" stroke="#a78bfa" stroke-width="0.6" opacity="0.28"/>
+        <text x="83" y="321.5" text-anchor="end" font-size="11" fill="#c4b5d4">$0.10</text>
+
+        <line x1="92.0" y1="44.0" x2="92.0" y2="318.0" stroke="#a78bfa" stroke-width="0.6" opacity="0.18"/>
+        <text x="92.0" y="336" text-anchor="middle" font-size="11" fill="#c4b5d4">0.1</text>
+        <line x1="168.0" y1="44.0" x2="168.0" y2="318.0" stroke="#a78bfa" stroke-width="0.6" opacity="0.18"/>
+        <text x="168.0" y="336" text-anchor="middle" font-size="11" fill="#c4b5d4">1</text>
+        <line x1="244.0" y1="44.0" x2="244.0" y2="318.0" stroke="#a78bfa" stroke-width="0.6" opacity="0.18"/>
+        <text x="244.0" y="336" text-anchor="middle" font-size="11" fill="#c4b5d4">10</text>
+        <line x1="320.0" y1="44.0" x2="320.0" y2="318.0" stroke="#a78bfa" stroke-width="0.6" opacity="0.18"/>
+        <text x="320.0" y="336" text-anchor="middle" font-size="11" fill="#c4b5d4">100</text>
+        <line x1="396.0" y1="44.0" x2="396.0" y2="318.0" stroke="#a78bfa" stroke-width="0.6" opacity="0.18"/>
+        <text x="396.0" y="336" text-anchor="middle" font-size="11" fill="#c4b5d4">1k</text>
+        <line x1="472.0" y1="44.0" x2="472.0" y2="318.0" stroke="#a78bfa" stroke-width="0.6" opacity="0.18"/>
+        <text x="472.0" y="336" text-anchor="middle" font-size="11" fill="#c4b5d4">10k</text>
+        <line x1="548.0" y1="44.0" x2="548.0" y2="318.0" stroke="#a78bfa" stroke-width="0.6" opacity="0.18"/>
+        <text x="548.0" y="336" text-anchor="middle" font-size="11" fill="#c4b5d4">100k</text>
+        <line x1="624.0" y1="44.0" x2="624.0" y2="318.0" stroke="#a78bfa" stroke-width="0.6" opacity="0.18"/>
+        <text x="624.0" y="336" text-anchor="middle" font-size="11" fill="#c4b5d4">1M</text>
+        <line x1="700.0" y1="44.0" x2="700.0" y2="318.0" stroke="#a78bfa" stroke-width="0.6" opacity="0.18"/>
+        <text x="700.0" y="336" text-anchor="middle" font-size="11" fill="#c4b5d4">10M</text>
+        <text x="396" y="360" text-anchor="middle" font-size="11.5" fill="#c4b5d4">cumulative installed capacity, megawatts</text>
+
+        <path d="M 137.8,104.4 L 669.8,290.0" fill="none" stroke="#22d3ee" stroke-width="1.4" stroke-dasharray="7 5"/>
+        <polyline points="147.7,105.1 170.5,113.6 193.4,122.9 209.4,133.2 222.6,138.4 236.5,143.3 252.4,150.0 265.9,153.2 279.4,159.5 294.9,161.7 306.5,165.8 316.2,171.4 324.2,176.2 331.2,178.3 338.2,177.3 344.8,176.3 351.2,178.6 357.2,180.7 362.8,182.7 367.7,184.3 372.4,186.6 377.2,188.7 381.8,188.8 387.4,191.9 393.0,194.2 399.2,194.8 406.5,195.8 414.3,198.4 422.5,199.9 431.3,204.4 444.8,204.1 454.6,201.5 465.7,201.3 484.1,204.1 498.7,216.0 517.5,222.9 536.3,228.8 547.7,247.2 557.7,254.9 565.9,257.3 573.9,259.5 583.2,261.8 592.4,267.0 599.6,270.4 606.0,273.0 612.7,279.9 618.7,283.1 625.4,280.2 635.1,284.1 644.3,289.8" fill="none" stroke="#fbbf24" stroke-width="2.4" stroke-linejoin="round"/>
+
+        <circle cx="147.7" cy="105.1" r="4.5" fill="#fbbf24"/>
+        <text x="158" y="94" font-size="11.5" fill="#f9fafb">1975 &#183; $128.27/W &#183; 0.54 MW</text>
+        <circle cx="644.3" cy="289.8" r="4.5" fill="#fbbf24"/>
+        <text x="636" y="308" text-anchor="end" font-size="11.5" fill="#f9fafb">2024 &#183; $0.26/W &#183; 1.85 TW</text>
+        <circle cx="625.4" cy="280.2" r="3.6" fill="none" stroke="#f472b6" stroke-width="2"/>
+        <text x="634" y="266" font-size="11" fill="#f472b6">2022: +10%</text>
+
+        <text x="432" y="88" font-size="11.5" fill="#22d3ee">dashed: fitted trend, slope &minus;0.387</text>
+        <text x="432" y="106" font-size="11.5" fill="#22d3ee">23.5% cheaper per doubling &#183; R&sup2; = 0.979</text>
+      </svg>
+      <figcaption><strong>Fig. 4 &mdash; fifty years, twenty-two doublings.</strong> Module prices fell from $128.27 to $0.258 per watt &mdash; a factor of 497 &mdash; while cumulative capacity grew from 0.54 megawatts to 1.85 terawatts, a factor of 3.4 million. On a log&ndash;log fit that is <strong>23.5% off the price for every doubling of capacity</strong>, R&sup2; = 0.979. Data: Our World in Data. Fit and learning rate derived here.</figcaption>
+    </figure>
+
+    <p>That straight line on log&ndash;log axes is a <strong>learning curve</strong>, and the method predates solar by four decades: Theodore Wright measured it in aircraft manufacturing in 1936. Applied to photovoltaics it is often called <em>Swanson&rsquo;s law</em>, after Richard Swanson, who founded SunPower.</p>
+
+    <div class="callout">
+      <div class="callout-label">It is not a law, and the data says so</div>
+      <p>Calling it a law is the kind of thing this site is suspicious of, so we checked rather than repeated. <strong>Across the fifty years of that series, module prices rose year-on-year six times</strong> &mdash; in 1989, 1990, 2005, 2006, 2007 and 2022, the last by <strong>10.2%</strong> as polysilicon supply tightened. Six reversals inside a 497-fold decline.</p>
+      <p><em>An observed regularity with six exceptions is a trend, not a law</em>, and the difference matters when it is being used to forecast. The commonly quoted rate is &ldquo;about 20%&rdquo;; our own fit on the full series gives 23.5%, and an endpoint-only calculation gives 24.9%. <strong>All three are defensible and none is the number</strong> &mdash; which is what an honest learning rate looks like.</p>
+    </div>
+
+    <p>And here is why this is the section that belongs on Star Stuff. A learning curve is what <em>iteration</em> looks like when you plot it. Nobody at any point held the whole answer. Thousands of people made small improvements to wafer thickness, to kerf loss, to passivation, to inverter topology, to racking, to permitting, and the aggregate of those uncoordinated increments is a 497-fold price collapse. <strong>The mechanism is not genius. It is volume, variation and a great many people learning in public.</strong></p>
+
+    <p>That is <a href="cosmic-connections.html">Cosmic Connections</a>&rsquo; house method stated as an industrial fact &mdash; interdisciplinary, iterative, emergent, built out of each other&rsquo;s work. It is also, unavoidably, the argument against the lone-genius story of how anything gets built, which <a href="how-anything-gets-built-zine.html">No. 54</a> makes at length.</p>
+
+    <p><strong>Two countries deserve naming, because the curve did not descend on its own.</strong> Germany&rsquo;s feed-in tariffs guaranteed a price for solar electricity and so manufactured demand where none existed; Chinese manufacturers then scaled supply to meet it, at a scale that drove costs down the curve far faster than either intended. Neither set out to make solar the cheapest electricity in history. <em>Policy bought the doublings, and the doublings bought the price.</em></p>
+
+    <h2 class="section" id="shared-power">Shared power</h2>
+
+    <p>Join us now and share the sunlight.</p>
+
+    <p class="pull">Here, in nascent form, is a new social contract that is also an economic one. Your rooftop solar can lower not just your power bill but your neighbor&rsquo;s and your community&rsquo;s.<span class="attr">&mdash; <a href="https://www.rewiringamerica.org/newsroom/blog-building-shared-power">Rewiring America</a></span></p>
+
+    <p>A rooftop array is a private good that misbehaves helpfully. When it exports at the moment of highest local demand, it reduces what the utility must buy at the worst price of the day and defers the substation upgrade everyone would have paid for. <strong>The benefit leaks into the neighbourhood whether or not anybody intended it to.</strong></p>
+
+    <p>But a roof is a privilege. You need to own it, to have it face the right way, to not be renting, to have $25,000 or the credit to borrow it. <strong>Community solar is the part that answers that</strong>, and it is the part we care most about here.</p>
+
+    <p class="pull">Community solar expands access to solar for all, including low-to-moderate income customers most impacted by a lack of access, all while building a stronger, distributed, and more resilient electric grid.<span class="attr">&mdash; <a href="https://nativesolar.com/community-solar-explained/">NATiVE Solar</a></span></p>
+
+    <p>One array, many subscribers, none of whom needs a suitable roof. That is a <strong>watering hole</strong> in the Stimpunks sense &mdash; shared infrastructure that makes a capability available to people the default arrangement excluded. The grid it builds is also the more robust one: many small generators in many places fail differently from one large one in a single place, which is the <a href="the-universe-runs-on-difference-zine.html">difference-not-deficit</a> argument arriving as an engineering property rather than a metaphor.</p>
+
+    <div class="callout callout--cyan">
+      <div class="callout-label">Where that sentence comes from</div>
+      <p><em>Join us now and share the sunlight</em> is Ryan&rsquo;s, and it is playing on <strong>Richard Stallman</strong>&rsquo;s <a href="https://www.gnu.org/music/free-software-song.en.html">Free Software Song</a> from the early 1990s: <em>&ldquo;Join us now and share the software; you&rsquo;ll be free, hackers, you&rsquo;ll be free.&rdquo;</em> Stallman set it to the Bulgarian folk tune <em>Sadi moma bela loza</em>, and the Free Software Foundation claims no copyright on it.</p>
+      <p>The substitution is not decorative. The free-software argument was that a thing which can be copied at no cost should not be enclosed. <strong>Sunlight is the same argument with the marginal cost already at zero and no licence to write.</strong></p>
+    </div>
+
+    <div class="refusals">
+      <div class="callout-label">Not</div>
+      <ul>
+        <li><strong>Not the unqualified headline.</strong> The IEA&rsquo;s finding is about <em>electricity</em>, and it is conditional on cheap financing and a good site. We keep both halves, and we would rather publish the smaller true claim than the larger repeatable one.</li>
+        <li><strong>Not a story with no supply chain.</strong> Panels are manufactured, and manufacturing has a location and a workforce. Polysilicon production is concentrated, forced-labour allegations in parts of that supply chain are serious and contested, and batteries need lithium, nickel, cobalt and graphite that are mined by somebody, somewhere, under conditions that are not automatically better than the ones we are leaving. <em>A panel has no exhaust. It is not therefore free of harm</em>, and a solarpunk politics that cannot say so is just optimism.</li>
+        <li><strong>Not a claim that panels alone are a grid.</strong> The sun sets. Firm capacity, storage, transmission and demand flexibility are the rest of the sentence, and the cost figures quoted here are for generation, not for a whole system.</li>
+        <li><strong>Not techno-optimism instead of politics.</strong> The curve descended because Germany paid for demand and China built supply. Nothing here happened because a market spontaneously noticed a good idea, and the same lesson applies to accommodations, to access and to care: <em>somebody has to buy the first expensive units.</em></li>
+        <li><strong>Not a naturalistic fallacy.</strong> The Sun is not generous. It is fusing hydrogen and does not know we are here, and nothing about our belonging follows from the arrival of a photon. What follows from abundance is only this: <strong>where scarcity is manufactured, it can be unmanufactured</strong> &mdash; and that is an argument about us, not about the sky.</li>
+        <li><strong>Not a rhyme dressed as a proof.</strong> The learning curve genuinely is what iteration looks like plotted, and community solar genuinely is shared infrastructure. Neither is evidence for anything about neurodivergence. They are the same shape, and we say so as a shape.</li>
+      </ul>
+    </div>
+
+    <h2 class="section" id="the-time-is-now">The time is now</h2>
+
+    <p>The light left the Sun eight minutes and twenty seconds ago and it did not check whether the strait was open. The silicon was made in a star that died before there was an Earth to put it on. The price fell by a factor of five hundred because a very large number of people kept making it slightly better in public, and two governments were willing to pay for the early expensive units so the later cheap ones could exist.</p>
+
+    <p><a href="https://stimpunks.org/philosophy/electrify-everything-decarbonization-requires-electrification/">Electrify everything</a>, and power it with sunlight.</p>
+
+    <p class="claim">Join us now and share the sunlight.</p>
+
+    <a class="start-link" href="collection-glimmers.html">More Glimmers &rarr;</a>
+
+    <div class="refs">
+      <p><strong>Sources &amp; notes.</strong> Every figure was traced to a primary or authoritative source before publication, and the grading says which is which.</p>
+
+      <p><strong>The prompting article.</strong> <a href="https://www.scientificamerican.com/article/how-solar-became-the-cheapest-form-of-energy-in-the-world/"><em>How solar became the cheapest form of energy in the world</em></a>, <em>Scientific American</em>. The 600 TWh figure and the Canada comparison, the first-place finish in global supply growth, the largest single-year increase for any generation technology (attributed there to the IEA), the Ember comparison with EU electricity demand, the $38&ndash;78/MWh and $48&ndash;109/MWh ranges, the ~$25,000 home system, and Sampath&rsquo;s quotation and title are all from this article. <strong>REPORTED, not independently verified:</strong> the IEA and Ember figures reach us through <em>Scientific American</em> rather than from the underlying reports, and the page attributes them as the article does. Sampath&rsquo;s exact title &mdash; site director of the Center for Next Generation Photovoltaics, Colorado State University &mdash; is as given there.</p>
+
+      <p><strong>The IEA quotation, and the correction it produces.</strong> <em>&ldquo;For projects with low cost financing that tap high quality resources, solar PV is now the cheapest source of electricity in history&rdquo;</em> &mdash; International Energy Agency, <em>World Energy Outlook 2020</em>. VERIFIED as the wording reported consistently across contemporaneous coverage of that report. <strong>This is the load-bearing correction on the page:</strong> the widely repeated form drops the fourteen-word condition and swaps <em>electricity</em> for <em>energy</em>. Both changes make the claim larger than the source. <em>Open:</em> quoted from coverage of the WEO rather than from the report text itself, which is paywalled; the wording is stable across independent outlets, which is why it is graded VERIFIED rather than PLAUSIBLE, but a copy of the report would settle it outright.</p>
+
+      <p><strong>The McKibben line, and a drift worth recording.</strong> Quoted here as spoken on <a href="https://www.democracynow.org/2026/4/30/climate_change_super_el_nino_amoc"><em>Democracy Now!</em></a>, 30 April 2026: <em>&ldquo;Sunlight has to travel 93 million miles to reach the Earth, but none of those miles go through the Strait of Hormuz.&rdquo;</em> VERIFIED. <strong>It has no canonical wording, and that is the interesting part.</strong> McKibben has made the point repeatedly in slightly different words &mdash; in <a href="https://billmckibben.substack.com/p/now-where">his newsletter</a> on 19 June 2026 it appears as <em>&ldquo;sunlight must travel 93 million miles to reach the earth, none of those miles go through the Strait of Hormuz&rdquo;</em> &mdash; and <em>Scientific American</em> prints a third version inside quotation marks: <em>&ldquo;Sunlight travels 93 million miles to reach Earth, but none of those miles are in the Strait of Hormuz.&rdquo;</em> None of the three match each other. <strong>This is not a misattribution</strong> &mdash; it is unambiguously his line, and he is entitled to restate his own line. It is a quotation being tightened in transmission and presented as verbatim, which is the <a href="too-good-to-check.html">Too Good to Check</a> pattern in its mildest form. Our draft carried the <em>Scientific American</em> version; it now carries a dated, sourced one. His book is <em>Here Comes the Sun: A Last Chance for the Climate and a Fresh Chance for Civilization</em> (2026), which is unread here and not quoted from.</p>
+
+      <p><strong>The Strait of Hormuz.</strong> Roughly one-fifth of global oil supply transited the strait before 2026; US and Israeli military operations against Iran in late February 2026 were followed by Iranian attacks on commercial shipping; a ceasefire in April and a June memorandum of understanding did not hold, with attacks resuming in July; ship-tracking recorded 8&ndash;15 transits on each of 4, 5 and 6 August 2026 against roughly 130 before the conflict; the US Strategic Petroleum Reserve fell below 300 million barrels, its lowest since January 1983 &mdash; contemporaneous reporting, including <a href="https://www.cnbc.com/2026/08/10/oil-prices-today-brent-wti-hormuz-trump-iran.html">CNBC</a> and the Congressional Research Service&rsquo;s <a href="https://www.congress.gov/crs-product/R45281">standing report</a> on the strait. VERIFIED as reported. The strait is about <strong>21 nautical miles</strong> (roughly 33 km) wide at its narrowest between Iran and Oman&rsquo;s Musandam Peninsula, and the Traffic Separation Scheme runs two two-mile lanes with a two-mile buffer &mdash; <a href="https://www.strausscenter.org/strait-of-hormuz-about-the-strait/">Strauss Center</a>. <em>Note:</em> published widths vary between about 32 and 39 km depending on the endpoints measured, so the figure is given in nautical miles as the primary and rounded in kilometres. <strong>An earlier draft of this page said &ldquo;twenty-one miles&rdquo;, conflating nautical with statute miles</strong>; corrected before publication. <strong>Stated as the shipping and price record only.</strong> The page takes no position on the conflict, and the &ldquo;less exposed&rdquo; claim about high-solar countries is deliberately weak: it is about one commodity and one route, and is not offered as a measured finding.</p>
+
+      <p><strong>Electricity&rsquo;s share of final energy.</strong> About <strong>22%</strong> in 2025, having risen slightly since 2020 &mdash; <a href="https://yearbook.enerdata.net/electricity/share-electricity-final-consumption.html">Enerdata</a>, consistent with IEA series. VERIFIED. <strong>This figure is what makes the <em>electricity</em>-versus-<em>energy</em> correction above more than pedantry:</strong> the unqualified claim silently extends a finding about a fifth of the system to all of it. An earlier draft of this page said &ldquo;roughly a fifth&rdquo;, which rounds the wrong way; corrected before publication.</p>
+
+      <p><strong>The US energy crossovers.</strong> Wood dominant in 1776; coal surpassing wood around 1885; petroleum surpassing coal in 1950; the first full-scale commercial US nuclear plant online in Pennsylvania in 1957; renewables surpassing nuclear in 2022 for the first time since 1984; renewables surpassing coal in 2023 for the first time since the 1880s; 96 quadrillion Btu total US energy use in 2025, up 2% on 2024 and below the 2007 record of 99 &mdash; <a href="https://www.eia.gov/todayinenergy/detail.php?id=67824">US Energy Information Administration</a>. VERIFIED. The interval labels in Fig. 2 (109, 65 and 72 years) are arithmetic on those dates. <strong>The observation that a crossover is not a subtraction is ours</strong>, and it is why the figure carries that sentence on its face.</p>
+
+      <p><strong>Silicon.</strong> The eighth most abundant element in the universe; silicon-28 produced predominantly by massive stars and dispersed by Type II supernovae; the other stable isotopes largely from oxygen and neon burning &mdash; the astrophysical literature on silicon isotopic abundances and galactic chemical evolution. VERIFIED at the level of that literature&rsquo;s standard account rather than to a single paper read in full. <em>Open:</em> the repo&rsquo;s own <a href="elements-field-guide.html">A Field Guide to the Star Stuff You&rsquo;re Made Of</a> does not currently carry silicon, so this claim is not inheriting an existing checked row and stands on its own.</p>
+
+      <p><strong>The photovoltaic effect.</strong> Photons freeing electrons from atomic bonds; layers doped with boron and phosphorus establishing an internal field that drives current one way; inverters converting DC to AC &mdash; US Department of Energy, <a href="https://www.energy.gov/cmei/systems/articles/pv-cells-101-primer-solar-photovoltaic-cell"><em>PV Cells 101</em></a>. VERIFIED. <strong>Fig. 3 is schematic and says so on its face:</strong> it is not to scale, layer thicknesses are illustrative, and the single-electron depiction stands in for a statistical process. The battery sentence is one line and deliberately does not attempt a chemistry.</p>
+
+      <p><strong>The learning curve, and what is derived here rather than quoted.</strong> The series is <a href="https://ourworldindata.org/grapher/solar-pv-prices-vs-cumulative-capacity">Our World in Data</a>&rsquo;s solar PV module price against cumulative installed capacity, prices in inflation-adjusted US dollars per watt, downloaded as CSV: 50 annual observations, 1975 to 2024. <strong>The endpoints are theirs; the fit is ours.</strong> 1975: $128.269/W at 0.54 MW cumulative. 2024: $0.2580/W at 1,852,359 MW. That is a 497-fold price fall across 21.7 doublings of capacity. An ordinary-least-squares fit of log&#8322;(price) on log&#8322;(capacity) gives a slope of &minus;0.3871, R&sup2; = 0.9792, so <strong>price falls to 76.5% per doubling &mdash; a learning rate of 23.5%.</strong> An endpoint-only calculation gives 24.9%. Our World in Data&rsquo;s own summary says &ldquo;around 20%&rdquo;, and the figure commonly quoted for Swanson&rsquo;s law is 20%; the page prints all three and calls none of them the number. <strong>The six years of price increase &mdash; 1989, 1990, 2005, 2006, 2007 and 2022, the last at +10.2% &mdash; were found by iterating the series, and are the reason the page declines to call it a law.</strong> Attribution: the experience-curve method is Theodore Paul Wright&rsquo;s, from aircraft manufacturing in 1936; the photovoltaic application is named for Richard Swanson, founder of SunPower. <em>Open:</em> Swanson&rsquo;s law and the Wright attribution reach us through secondary summaries rather than Wright&rsquo;s 1936 paper or a Swanson primary, and are stated as attributions rather than quoted.</p>
+
+      <p><strong>Germany and China.</strong> That feed-in tariffs created guaranteed demand and Chinese manufacturing then scaled supply, driving costs down the curve faster than either party intended, is the standard account of how the price fell, and is the argument <em>Scientific American</em> makes under the heading <em>Two Countries Decided, If Inadvertently, to Make It Happen</em>. PLAUSIBLE, stated at the level of that standard account; no policy document or production series is cited here, and a piece resting harder on it would owe both.</p>
+
+      <p><strong>Shared power.</strong> <a href="https://www.rewiringamerica.org/newsroom/blog-building-shared-power">Rewiring America</a> and <a href="https://nativesolar.com/community-solar-explained/">NATiVE Solar</a>, both quoted verbatim and both advocacy sources, which is stated rather than hidden &mdash; they are quoted for their framing, not as evidence. <em>Watering holes</em> is Stimpunks&rsquo; term from its <a href="https://stimpunks.org/space/">space</a> work. The claim that distributed generation fails differently from centralised generation is offered as an engineering property at the level of the standard account, not as a measured resilience finding.</p>
+
+      <p><strong>The Free Software Song.</strong> Lyrics by <strong>Richard Stallman</strong>, early 1990s, to the melody of the Bulgarian folk song <em>Sadi moma bela loza</em>; the Free Software Foundation claims no copyright on the song &mdash; <a href="https://www.gnu.org/music/free-software-song.en.html">GNU Project</a>. VERIFIED. One line is quoted, and the allusion is credited because an unattributed echo of a well-known line reads as authorship.</p>
+
+      <p><strong>The four diagrams.</strong> Drawn here. Figs. 1, 2 and 3 are schematic. <strong>Fig. 4 is data</strong>, and its geometry was generated from the CSV rather than drawn by eye, precisely so that the curve cannot flatter the argument. Every diagram was checked at render size, because no gate in this repo can see that a drawing means the wrong thing.</p>
+
+      <p>A rhyme, not a proof.</p>
+    </div>
+
+    <div class="colophon-footer">
+      <a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks Foundation</a> &times; <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a> &middot; Glimmers &middot; L&#9733;S<br>
+      By Ryan Boren &middot; 31 August 2026 &middot; stimpunks.org &middot; morerealms.com &middot; starstuff.earth &middot; <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
+    </div>
+
+  </div>
+
+</div><!-- /doc-shell -->
+
+</body>
+</html>

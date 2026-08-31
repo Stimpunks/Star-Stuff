@@ -196,6 +196,24 @@ Decisions still to make. Move to **Settled** with a date once resolved.
     is the precedent and the trade is the same one: a break written down on a visible page beats a
     quiet exception inside a tool.**
 
+- **The Glimmers two-member floor break was met the same day — noted 2026-08-31.** *None of Those
+  Miles* arrived hours after *Flying Free*, which puts the collection at the floor after all, the way
+  *How We Got Here* was deferred and then created the day its second chain turned up. **The argument
+  for the break is kept rather than quietly retired**, because it was not made contingent on the
+  second entry being fast: if it had taken three weeks, the first entry would still have been
+  published there alone. The floor was broken on purpose and then met by accident, and both facts are
+  on the collection page. *Standing implication:* do not cite Glimmers as a precedent for opening a
+  collection at one member on the grounds that "it filled up quickly" — cite it, if at all, for the
+  cadence argument.
+
+- **Where a Glimmers entry has no single dated event, the publication date stands alone — settled
+  2026-08-31.** The collection's stated convention is that every entry carries *both* the event date
+  and the publication date. *Flying Free* has an obvious event: a launch, at 7:26 a.m. on a Sunday.
+  *None of Those Miles* does not — its occasion is a milestone visible only in a year of data plus an
+  ongoing shipping disruption. **The convention holds in substance and the byline says what the
+  occasion was in words rather than as a date**, which is more honest than manufacturing a
+  false precision. Where there is a day, print the day.
+
 - **The name *Glimmers* is kept, two days after the word was removed from a zine — settled
   2026-08-31, by Ryan.** This needs recording because the repo argues against it if read carelessly.
   On 2026-08-29 **No. 78** shipped framed around glimmers and was repointed within hours: the

@@ -99,8 +99,8 @@ The central phrase compresses through registers, each with a use:
   <a class="ss-nav-collection" href="collection-kin.html"><span class="ss-nav-collection-label">Collection</span> <span class="ss-nav-collection-name">Kin</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
   ```
 
-  All 140 members have one; the 14 collection pages, `index.html` and `search.html` do not (140 +
-  14 + 2 = the 156 pages in the repo root, re-derived 2026-08-31). **A new
+  All 141 members have one; the 14 collection pages, `index.html` and `search.html` do not (141 +
+  14 + 2 = the 157 pages in the repo root, re-derived 2026-08-31). **A new
   piece needs its badge and its collection page's card in the same pass** — the page→collection map
   is derived from `<a class="card" href="…">` on the collection pages, so a card that is missing
   makes the badge underivable. **`tools/check-markup.mjs` enforces all of this as of 2026-08-13**
@@ -256,7 +256,9 @@ that disclosure is the convention, and **How We Got Here duly carries it too**:
   (2026-08-31). Glimmers' argument is the narrower and more transferable one — *a running log is
   defined by its cadence, and cadence is the one property you cannot observe retroactively*, so
   waiting for a second entry would have meant holding the first until it was no longer news. Both
-  are in `DECISIONS.md`. **Don't read two breaks as the floor being gone**; read them as the only
+  are in `DECISIONS.md`. **Glimmers reached two members the same day**, which does *not* retire the
+  argument — it was never contingent on the second entry being quick — so **don't cite Glimmers as a
+  precedent for "open it, it'll fill up"**; cite it for the cadence claim or not at all. **Don't read two breaks as the floor being gone**; read them as the only
   two cases anyone has managed to argue.
 
 **One sorts by occasion, and that is a fourth axis added 2026-08-31** — Ryan's call, alongside the
@@ -265,18 +267,21 @@ interdependence, belonging. A piece is in it because *something happened on a pa
 
 | Collection | Axis | Members |
 |------------|------|---------|
-| **Glimmers** | **occasion** — written close to the event, dated rather than numbered | `flying-free` (1 — opened deliberately below the two-member floor; see above) |
+| **Glimmers** | **occasion** — written close to the event, dated rather than numbered | `flying-free`, `none-of-those-miles` (2 — opened deliberately *below* the floor and met it hours later; the cadence argument stands regardless, see above) |
 
 - **Entries are dated, not numbered, and this is load-bearing rather than stylistic.** The zine
   numbering says *when* and is referenced by number across `changelog.html`, `FACTCHECK.md` and
   years of prose with no redirects; inserting news into that sequence would make the numbers mean
   two things. **Every Glimmers entry carries the event date *and* the publication date** — a piece
   written close to an event was written with less than the full picture, and the reader is owed the
-  gap. `check-card-order.mjs` therefore counts these among its unnumbered, order-unchecked cards,
-  which is correct and not a coverage loss.
+  gap. **Where an entry has no single dated event** — a milestone visible only in a year of data, say
+  — the byline names the occasion in words and the publication date stands alone; manufacturing a
+  false precision would be worse. `check-card-order.mjs` counts these among its unnumbered,
+  order-unchecked cards, which is correct and not a coverage loss.
 - **Faster to write is not looser.** Same eight gates, same `FACTCHECK.md` row, same changelog
   entry, same grading of every quotation. The first entry marks a contested Einstein quotation
-  *against a NASA page it is otherwise citing favourably*, which is the standard the collection is
+  *against a NASA page it is otherwise citing favourably*, and the second corrects the headline it was
+  built from *against the IEA report that headline came from* — both are the standard the collection is
   supposed to hold. **A slow piece with a news hook still belongs in its register collection** —
   Glimmers is not the shelf for "recent", it is the shelf for "we wrote this while it was still
   happening."
@@ -359,7 +364,7 @@ never candidates for a register. Don't try to fold these into either table:
   everything else homework, and would become the one place the verify-everything standard could
   quietly relax. The fun is distributed; *Stars We Grew Up On* states this on the page.
 - The **prev/next chain follows collection order**: each collection page precedes its members, and
-  members run in ascending number within the collection. **138 pages** as of 2026-08-31,
+  members run in ascending number within the collection. **139 pages** as of 2026-08-31,
   `collection-start-here.html` → `shorthand-evolution.html`. **17 pages sit outside it, and every
   one is a decision:** `about.html` and `cosmic-connections.html`; **all of Notes &amp; Rationale** —
   `changelog.html`, `design.html`, `print-design.html`, `difference-first-frame.html`,
@@ -368,7 +373,7 @@ never candidates for a register. Don't try to fold these into either table:
   `hatchery.html`, `quillery.html` and `one-atom-of-justice-zine.html`, because a chain link would
   walk a reader into an egg by accident and stop it being one.
   (`index.html` and `search.html` are utility pages and were never in it, which makes
-  138 + 18 = 156, re-derived 2026-08-31.)
+  139 + 18 = 157, re-derived 2026-08-31.)
   **Don't trust that number — measure it**, and check `prev` and `next` agree in both directions;
   inserting a page means editing its two neighbours, and a one-sided edit leaves a chain that walks
   forward correctly and breaks going back:
