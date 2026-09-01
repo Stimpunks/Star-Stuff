@@ -71,9 +71,22 @@
  *    The markup stays valid and the anchors stay siblings, so check 1 sees nothing.
  *    See the comment at the code below for why it is not merely cosmetic.
  *
+ * 8. THE PAGE'S `<h1>` INSIDE `<main>` — the fourth house-convention check, added
+ *    2026-09-01, hours after check 6, because check 6 is a *count* and a count is true
+ *    of a landmark containing nothing. On 24 pages `<main>` was placed so that it held
+ *    neither the title nor the page: on `index.html` it opened inside a `<div>` that
+ *    closed a line later, leaving 0 characters and 0 of 137 cards; on the field guides
+ *    an existing grid container had been promoted to `<main>`, so the landmark was one
+ *    grid — 2 of 14 entries on one of them. One rule catches both shapes.
+ *    Deliberately NOT a div-depth check: the zine template closes its shell before its
+ *    main, so the parser closes main at that `</div>` — which is where it should close —
+ *    and those pages measure 98-100% of their text inside it. Depth would fail ~131
+ *    correct pages to catch 24 broken ones. Pages with no `<h1>` at all are counted on
+ *    their own line rather than failed; see the note at the summary.
+ *
  * WHAT IT DOES NOT DO
  * It is not a validator and does not try to be. It does not check unclosed tags,
- * attribute syntax, or anything the browser recovers from harmlessly. Seven faults,
+ * attribute syntax, or anything the browser recovers from harmlessly. Eight faults,
  * chosen because each one silently changes what the reader gets.
  *
  * The one edge that follows from that restraint, stated because it looks like a gap:
@@ -265,6 +278,7 @@ let pagesWithProblems = 0;
 let scannedTags = 0;
 let scannedIds = 0;
 let memberPages = 0;
+const unheaded = [];
 let badgesSeen = 0;
 
 for (const file of targets) {
@@ -300,8 +314,28 @@ for (const file of targets) {
   const wrapStack = [];
   const wrapFindings = [];
 
+  /* The <main> landmark and the page's own <h1>, tracked in body order. Head is
+     skipped: a JSON-LD blob or a meta description can contain a literal "<h1",
+     and counting those reported 25 affected pages when the answer was 24. */
+  let inBody = false;
+  let mainOpen = -1;
+  let mainClose = -1;
+  let firstH1 = -1;
+  let firstH1Line = 0;
+
   for (const t of tags(src)) {
     tagCount++;
+
+    // ── the <main> landmark and the first <h1>, in body order ──
+    if (t.name === 'body' && !t.closing) inBody = true;
+    if (inBody) {
+      if (t.name === 'main' && !t.closing && mainOpen === -1) mainOpen = t.index;
+      if (t.name === 'main' && t.closing && mainClose === -1) mainClose = t.index;
+      if (t.name === 'h1' && !t.closing && firstH1 === -1) {
+        firstH1 = t.index;
+        firstH1Line = t.line;
+      }
+    }
 
     // ── card-wrap integrity (see the state block above) ──
     if (t.name === 'div' && !t.selfClosed) {
@@ -399,6 +433,38 @@ for (const file of targets) {
       if (t.name === 'p') openP = 0;
     }
   }
+
+  // ── the page's <h1> must be inside <main> ──
+  // The fourth house-convention check, added 2026-09-01, and the one the other three
+  // could not have caught. The day <main> was given to every page, 24 of them got a
+  // landmark that pointed at the wrong thing, and the "exactly one <main>" check above
+  // passed every one of them — because it is a count, and a count is true of a landmark
+  // containing nothing.
+  //
+  // Two shapes, and this single rule catches both. (1) <main> opened INSIDE a <div> that
+  // closes before it: the parser closes main immediately and discards the real </main>,
+  // so index.html shipped a main landmark holding 0 characters and 0 of its 137 cards.
+  // (2) An existing container PROMOTED to <main>: <main class="field-grid"> made the
+  // landmark one grid rather than the page, and being-family-field-guide.html held 2 of
+  // its 14 entries. In both, the page's own <h1> ends up outside the landmark — which is
+  // the property worth protecting anyway, since the title is the first thing a reader
+  // jumping to main should meet.
+  //
+  // NOT checked by div depth, which was the obvious version and is wrong here: the zine
+  // template closes its shell before its main (`</div><!-- /zine-shell --></main>`), so
+  // the parser closes main at the </div> — exactly where it should close — and those
+  // pages measure 98-100% of their text inside main. A depth check would fail ~131
+  // correct pages to catch 24 broken ones.
+  if (mainOpen !== -1 && firstH1 !== -1) {
+    if (firstH1 < mainOpen) {
+      problems.push(
+        `<h1> at line ${firstH1Line} sits outside <main> — the landmark a screen reader jumps to does not contain the page's own title. <main> opens after the site nav closes and closes before the footer, wrapping the masthead or hero`
+      );
+    } else if (mainClose !== -1 && firstH1 > mainClose) {
+      problems.push(`<h1> at line ${firstH1Line} sits after </main>, outside the landmark`);
+    }
+  }
+  if (mainOpen !== -1 && firstH1 === -1) unheaded.push(file);
 
   // ── card-wrap integrity ──
   // The third house-convention check, added 2026-09-01, and it earned its place the same
@@ -563,6 +629,19 @@ console.log(
     `${badgesSeen}/${memberPages} collection badges across ${collectionFiles.length} collections · ${totalProblems} problem(s)`
 );
 
+/* Pages with no <h1> at all cannot be checked for one inside <main>, and an
+   unmeasurable page is not a passing page — so the number is printed rather than
+   folded into silence, the same way check-card-order prints its unnumbered cards.
+   It is NOT a failure: these five predate this check and fixing them means changing
+   a <div>/<span> title into a heading, which is an editorial change to those pages
+   rather than a markup repair. A count that shrinks is a count somebody can act on. */
+if (unheaded.length) {
+  console.log(
+    `${unheaded.length} page(s) have no <h1> in the body, so the landmark check could not run on them: ` +
+      unheaded.join(', ')
+  );
+}
+
 if (totalProblems) {
   console.log(
     gating
@@ -575,7 +654,8 @@ if (totalProblems) {
   console.log(
     'PASS — no nested interactive elements, no blocks inside paragraphs, no duplicate ids,\n' +
       '       no nav outside its content shell, exactly one <main> landmark per page, every\n' +
-      '       card in its own wrap, every collection member badged to the collection that cards it.'
+      '       card in its own wrap, every page title inside its main landmark, every\n' +
+      '       collection member badged to the collection that cards it.'
   );
 }
 

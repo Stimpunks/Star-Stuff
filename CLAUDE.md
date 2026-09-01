@@ -771,7 +771,7 @@ node tools/check-markup.mjs --check               # exit non-zero on any failure
   `document.querySelectorAll('a a')` on the broken page returns **zero**. The evidence survives
   only in the source text. That also makes it the fastest gate here — no Chrome, no dependencies,
   140 pages and 132,800 tags in about 0.25s.
-- **Seven faults, each one silent:** nested interactive elements (`<a>`/`<button>` inside each
+- **Eight faults, each one silent:** nested interactive elements (`<a>`/`<button>` inside each
   other — the parser closes the outer, so everything after falls out of its wrapper); a block
   element inside a `<p>` (auto-closes the paragraph part-way through); and **duplicate `id`**,
   which matters here more than most sites because this one runs on fragments — `#spread-N`,
@@ -833,8 +833,24 @@ node tools/check-markup.mjs --check               # exit non-zero on any failure
   its chunk selector and lets the outermost match win, so a nested pair indexes as **one** record
   covering both cards — `index.html` measured **151 records nested and 152 separated**, meaning the
   newer card's text was not independently findable.
+- **The eighth is the page's `<h1>` inside `<main>`, added 2026-09-01** — hours after the sixth,
+  because **the sixth is a count and a count is true of a landmark holding nothing.** It catches
+  both shapes of the 24-page fault described above with one rule, and the property it protects is
+  the right one anyway: the first thing a reader jumping to `main` should meet is the page's title.
+  **Deliberately not a div-depth check**, which is the obvious version and is wrong here — the zine
+  template closes its shell *before* its main (`</div><!-- /zine-shell --></main>`), so the parser
+  closes main at that `</div>`, which is exactly where it should close, and those pages measure
+  **98–100%** of their text inside main. Depth would fail ~131 correct pages to catch 24 broken
+  ones. **Head is skipped**, because a JSON-LD blob or a `meta` description can contain a literal
+  `<h1` — counting those is what produced "25 affected pages" when the answer was 24. **Five pages
+  have no `<h1>` at all** (`eternal-sunshine-zine`, `ls-broadside`, `ls-playlist`, `lydtyss-zine`,
+  `neurodiversity-field-guide-zine` — their titles are `<div>`/`<span>`, and two have *no heading
+  element of any kind*). They are **counted on their own line, not failed**: the check cannot run
+  on them, and fixing them means turning a styled `<div>` into a heading, which is an editorial
+  change to those pages rather than a markup repair. *A count that shrinks is a count somebody can
+  act on* — and this one should shrink.
 - **It is not a validator and shouldn't grow into one.** It ignores unclosed tags, attribute
-  syntax, and everything else browsers recover from harmlessly. The bar for adding an eighth check
+  syntax, and everything else browsers recover from harmlessly. The bar for adding a ninth check
   is that the browser silently hands the reader a different document than the source describes —
   or, as with the nav, badge and card-wrap checks, that a structural fault is invisible to *every*
   other gate and has recurred often enough to prove that remembering is not a control. **The
