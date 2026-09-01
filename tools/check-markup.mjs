@@ -81,8 +81,9 @@
  *    Deliberately NOT a div-depth check: the zine template closes its shell before its
  *    main, so the parser closes main at that `</div>` — which is where it should close —
  *    and those pages measure 98-100% of their text inside it. Depth would fail ~131
- *    correct pages to catch 24 broken ones. Pages with no `<h1>` at all are counted on
- *    their own line rather than failed; see the note at the summary.
+ *    correct pages to catch 24 broken ones. A page with NO `<h1>` fails too: five had
+ *    none — their titles being styled `<div>`s and `<span>`s, two of them with no heading
+ *    element of any kind — and they were fixed the same day, so the baseline is 0.
  *
  * WHAT IT DOES NOT DO
  * It is not a validator and does not try to be. It does not check unclosed tags,
@@ -278,7 +279,6 @@ let pagesWithProblems = 0;
 let scannedTags = 0;
 let scannedIds = 0;
 let memberPages = 0;
-const unheaded = [];
 let badgesSeen = 0;
 
 for (const file of targets) {
@@ -464,7 +464,17 @@ for (const file of targets) {
       problems.push(`<h1> at line ${firstH1Line} sits after </main>, outside the landmark`);
     }
   }
-  if (mainOpen !== -1 && firstH1 === -1) unheaded.push(file);
+  if (mainOpen !== -1 && firstH1 === -1) {
+    /* Promoted from a counted line to a failure on 2026-09-01, the same day it was
+       added, once the five pages it was counting were fixed. The count existed so it
+       could shrink; it shrank to zero, so it becomes an invariant. Every page on this
+       site has exactly one <h1> naming it, and a screen reader's headings rotor is
+       this site's table of contents — ls-broadside.html and ls-playlist.html had NO
+       heading element of any kind, so that list came back empty on them. */
+    problems.push(
+      `no <h1> in the body — the page has no title in its headings outline, and a screen reader's headings rotor is how a reader gets an overview of it. Promote the styled title element (a <div> or <span> carrying the cover/hero/masthead title class) to <h1>; the class already sets size, weight and colour, so pin margin/font-size on it and nothing moves`
+    );
+  }
 
   // ── card-wrap integrity ──
   // The third house-convention check, added 2026-09-01, and it earned its place the same
@@ -629,19 +639,6 @@ console.log(
     `${badgesSeen}/${memberPages} collection badges across ${collectionFiles.length} collections · ${totalProblems} problem(s)`
 );
 
-/* Pages with no <h1> at all cannot be checked for one inside <main>, and an
-   unmeasurable page is not a passing page — so the number is printed rather than
-   folded into silence, the same way check-card-order prints its unnumbered cards.
-   It is NOT a failure: these five predate this check and fixing them means changing
-   a <div>/<span> title into a heading, which is an editorial change to those pages
-   rather than a markup repair. A count that shrinks is a count somebody can act on. */
-if (unheaded.length) {
-  console.log(
-    `${unheaded.length} page(s) have no <h1> in the body, so the landmark check could not run on them: ` +
-      unheaded.join(', ')
-  );
-}
-
 if (totalProblems) {
   console.log(
     gating
@@ -654,8 +651,8 @@ if (totalProblems) {
   console.log(
     'PASS — no nested interactive elements, no blocks inside paragraphs, no duplicate ids,\n' +
       '       no nav outside its content shell, exactly one <main> landmark per page, every\n' +
-      '       card in its own wrap, every page title inside its main landmark, every\n' +
-      '       collection member badged to the collection that cards it.'
+      '       card in its own wrap, every page titled by exactly one <h1> inside its\n' +
+      '       main landmark, every collection member badged to the collection that cards it.'
   );
 }
 

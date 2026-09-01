@@ -842,13 +842,21 @@ node tools/check-markup.mjs --check               # exit non-zero on any failure
   closes main at that `</div>`, which is exactly where it should close, and those pages measure
   **98–100%** of their text inside main. Depth would fail ~131 correct pages to catch 24 broken
   ones. **Head is skipped**, because a JSON-LD blob or a `meta` description can contain a literal
-  `<h1` — counting those is what produced "25 affected pages" when the answer was 24. **Five pages
-  have no `<h1>` at all** (`eternal-sunshine-zine`, `ls-broadside`, `ls-playlist`, `lydtyss-zine`,
-  `neurodiversity-field-guide-zine` — their titles are `<div>`/`<span>`, and two have *no heading
-  element of any kind*). They are **counted on their own line, not failed**: the check cannot run
-  on them, and fixing them means turning a styled `<div>` into a heading, which is an editorial
-  change to those pages rather than a markup repair. *A count that shrinks is a count somebody can
-  act on* — and this one should shrink.
+  `<h1` — counting those is what produced "25 affected pages" when the answer was 24. **A page with no `<h1>` at all fails too**, and that half has a
+  short history worth keeping: it shipped as a *counted line* because five pages had none —
+  `eternal-sunshine-zine`, `ls-broadside`, `ls-playlist`, `lydtyss-zine`,
+  `neurodiversity-field-guide-zine`, their titles being styled `<div>`s and `<span>`s, and
+  **`ls-broadside` and `ls-playlist` carried no heading element of any kind**, so the headings rotor
+  came back empty on them exactly as it once did on `index.html`. All five were promoted to real
+  `<h1>`s the same day and the count became an invariant. **The swap is layout-neutral if you pin
+  what the UA would otherwise set:** every one of these pages has a `* { margin: 0 }` reset, so UA
+  *margins* were already gone and only `font-size`/`font-weight` inheritance needed fixing — add
+  `font-size: inherit; font-weight: inherit;` to a wrapper whose children carry the type, and pin
+  `margin` where the rule set only one side. All five verified **pixel-identical** afterwards
+  (position, size, weight, margins) rather than by eye. **One trap:** joining two title `<span>`s
+  onto one line inside the new `<h1>` made the accessible name read *"NeurodiversityParadigm"* —
+  block display hides the missing space visually, and only `textContent` shows it. Keep the
+  whitespace between them.
 - **It is not a validator and shouldn't grow into one.** It ignores unclosed tags, attribute
   syntax, and everything else browsers recover from harmlessly. The bar for adding a ninth check
   is that the browser silently hands the reader a different document than the source describes —
