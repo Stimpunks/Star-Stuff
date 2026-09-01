@@ -799,6 +799,23 @@ node tools/check-markup.mjs --check               # exit non-zero on any failure
   and two field guides had **two**, using `<main class="field-grid">` as a grid container. The
   landmark rotor is how a screen reader skips the nav and reaches the page, and two landmarks both
   called "main" is worse than none, because neither one is the page.
+  **The count is not the whole job, and the same day proved it.** That pass satisfied its own check
+  on 24 pages while leaving the landmark pointing at the wrong thing, so `--check` passed a front
+  page whose `<main>` was **empty**. The convention, stated so it is not re-derived: **`<main>`
+  opens immediately after the site nav (`.ss-nav`) closes and closes immediately before the page
+  `<footer>`** — or before the trailing `<script>` where a page has no footer. It wraps the
+  masthead/hero, so the `<h1>` is inside it; it never carries a layout class, because a landmark
+  that is also a grid container is a grid, not a page. **131 pages already did this**; the 24 that
+  did not were fixed 2026-09-01. Two failure shapes to recognise: `<main>` opened *inside* a `<div>`
+  that closes before it (the parser closes `main` immediately and the real `</main>` is discarded —
+  `index.html` held **0 of its 137 cards**), and an existing container *promoted* to `<main>`
+  (`<main class="field-grid">` made the landmark one grid — `being-family-field-guide.html` held
+  **2 of 14 entries and 8% of the page**). **No gate can see either**, because both are exactly one
+  well-formed `<main>`; measuring it needs a browser, and the numbers above were taken live.
+  **Two derivations went wrong on the way and are worth copying the fix for:** matching `<h1>` in
+  raw source counted hits inside `<head>` (25 pages, really 24 — mask `<script>`/`<style>` and start
+  at `<body>`), and `DOMParser` reported the field guides' `<main>` as empty because **it does not
+  run scripts** and those entries are built in JS. Measure landmarks on a *rendered* page.
 - **The seventh is card-wrap integrity, added 2026-09-01**, the third house-convention check, and
   it earned its place the same way the first two did — by shipping twice. A `.card-wrap` is *the
   box*: it draws the border and the accent rule and carries `--card-color`, and it must hold
