@@ -56,10 +56,31 @@
  * 5. THE COLLECTION BADGE — the second, added 2026-08-13 after four pages were found
  *    without one. See the comment at the code below for why no other gate can see it.
  *
+ * 6. EXACTLY ONE `<main>` LANDMARK — added 2026-09-01, when 130 of 159 pages had none
+ *    and two field guides had two, using it as a grid container. The landmark rotor is
+ *    how a screen reader skips the nav and reaches the page; two landmarks both named
+ *    "main" is worse than none, because neither one is the page.
+ *
+ * 7. CARD-WRAP INTEGRITY — the third house-convention check, added 2026-09-01, and it
+ *    earned its place by shipping twice (No. 74, then No. 83 with a written warning in
+ *    front of the person doing it). A `.card-wrap` is the box: it draws the border and
+ *    the accent rule and carries --card-color, and it must hold exactly one direct
+ *    `<a class="card">`. Anchor a new card's insertion on the previous card's
+ *    `</details>` instead of its `</div>` — one line earlier — and the new wrapper opens
+ *    before the old one shuts, so the new card renders *inside* the previous card's box.
+ *    The markup stays valid and the anchors stay siblings, so check 1 sees nothing.
+ *    See the comment at the code below for why it is not merely cosmetic.
+ *
  * WHAT IT DOES NOT DO
  * It is not a validator and does not try to be. It does not check unclosed tags,
- * attribute syntax, or anything the browser recovers from harmlessly. Five faults,
+ * attribute syntax, or anything the browser recovers from harmlessly. Seven faults,
  * chosen because each one silently changes what the reader gets.
+ *
+ * The one edge that follows from that restraint, stated because it looks like a gap:
+ * a `.card-wrap` whose `</div>` is simply missing is reported only if the file *ends*
+ * with it still open. If some later `</div>` closes it by depth — an unbalanced grid,
+ * say — the wrap looks closed and this check stays quiet, because unbalanced tags are
+ * out of scope by design and guessing at intent would make the gate noisy.
  *
  * USAGE
  *     node tools/check-markup.mjs                       # every root .html
@@ -194,6 +215,14 @@ const COLLECTION_RE = /^collection-[a-z0-9-]+\.html$/;
 /* Both sides of the name comparison come out of HTML source, so both arrive escaped
    ("Notes &amp; Rationale"). Decoding both is belt-and-braces — comparing raw would
    work today — but it means a future page written with a literal `&` still matches. */
+/* Class matching is token-wise, never substring: `card-wrapper` must not answer to
+   `card-wrap`, and `card-details` must not answer to `card`. */
+const hasClass = (raw, cls) => {
+  const m = raw.match(/\bclass\s*=\s*("([^"]*)"|'([^']*)'|([^\s"'>]+))/i);
+  if (!m) return false;
+  return (m[2] ?? m[3] ?? m[4] ?? '').trim().split(/\s+/).includes(cls);
+};
+
 const decode = (s) =>
   s.replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>')
     .replace(/&quot;/g, '"').replace(/&#39;|&apos;/g, "'").replace(/&nbsp;/g, ' ');
@@ -262,8 +291,48 @@ for (const file of targets) {
   let ssNavEnd = -1;
   const badges = [];
 
+  /* Card-wrap integrity. `.card-wrap` is the box: it draws the border and the accent
+     rule and carries --card-color, and it must contain exactly one `<a class="card">`
+     as a direct child. Depth-counted rather than string-matched, because a wrap holds
+     a `<details>` with its own `<div>` inside, so "the next </div>" is right only by
+     luck. */
+  let divDepth = 0;
+  const wrapStack = [];
+  const wrapFindings = [];
+
   for (const t of tags(src)) {
     tagCount++;
+
+    // ── card-wrap integrity (see the state block above) ──
+    if (t.name === 'div' && !t.selfClosed) {
+      if (!t.closing) {
+        divDepth++;
+        if (hasClass(t.raw, 'card-wrap')) {
+          if (wrapStack.length) {
+            wrapFindings.push(
+              `<div class="card-wrap"> at line ${t.line} opens inside the card-wrap at line ${wrapStack[wrapStack.length - 1].line} — this card renders inside the previous card's box, sharing its border and accent rule. Insert after the previous wrap's </div>, never after its </details>`
+            );
+          }
+          wrapStack.push({ line: t.line, innerDepth: divDepth, directCards: 0 });
+        }
+      } else {
+        const top = wrapStack[wrapStack.length - 1];
+        if (top && top.innerDepth === divDepth) {
+          wrapStack.pop();
+          if (top.directCards !== 1) {
+            wrapFindings.push(
+              `<div class="card-wrap"> at line ${top.line} has ${top.directCards} direct <a class="card"> child(ren) — it must have exactly one, because the wrap is the box`
+            );
+          }
+        }
+        divDepth = Math.max(0, divDepth - 1);
+      }
+    }
+    if (!t.closing && t.name === 'a' && hasClass(t.raw, 'card')) {
+      const top = wrapStack[wrapStack.length - 1];
+      if (top && top.innerDepth === divDepth) top.directCards++;
+      else wrapFindings.push(`<a class="card"> at line ${t.line} is not a direct child of any <div class="card-wrap"> — it will render without the box, border or accent rule`);
+    }
 
     // ── duplicate ids ──
     if (!t.closing) {
@@ -329,6 +398,31 @@ for (const file of targets) {
       if (t.name === 'button') openButton = Math.max(0, openButton - 1);
       if (t.name === 'p') openP = 0;
     }
+  }
+
+  // ── card-wrap integrity ──
+  // The third house-convention check, added 2026-09-01, and it earned its place the same
+  // way the other two did: by shipping twice. A card is inserted after the *previous card's
+  // closing `</div>`*; anchor it on that card's `</details>` instead — one line earlier —
+  // and the new wrapper opens before the old one shuts, so the new card renders inside the
+  // previous card's box, sharing one border, one accent rule and one Details row. It
+  // happened on No. 74 and again on No. 83, the second time with a written note about it
+  // in front of the person doing it, which is the definition of a fault that needs a gate
+  // rather than a reminder.
+  //
+  // No other gate can see it, and each is right not to. The markup is *valid*: the tags
+  // balance, and the two anchors are siblings rather than nested, so the nested-interactive
+  // check above finds nothing. check-card-order reads card hrefs in document order, where
+  // they still ascend. Contrast, overlap and dead classes are all indifferent to which
+  // parent a well-formed, legible, correctly-styled card sits in.
+  //
+  // It is not cosmetic either. build-search-index.mjs lists `.card-wrap` ahead of `.card`
+  // in its chunk selector and lets the outermost match win, so a nested pair indexes as ONE
+  // record covering both cards: index.html measured 151 records nested and 152 separated,
+  // meaning the newer card's text was not independently findable.
+  for (const f of wrapFindings) problems.push(f);
+  for (const open of wrapStack) {
+    problems.push(`<div class="card-wrap"> at line ${open.line} is never closed`);
   }
 
   // ── ss-nav outside the content shell ──
@@ -481,7 +575,7 @@ if (totalProblems) {
   console.log(
     'PASS — no nested interactive elements, no blocks inside paragraphs, no duplicate ids,\n' +
       '       no nav outside its content shell, exactly one <main> landmark per page, every\n' +
-      '       collection member badged to the collection that cards it.'
+      '       card in its own wrap, every collection member badged to the collection that cards it.'
   );
 }
 

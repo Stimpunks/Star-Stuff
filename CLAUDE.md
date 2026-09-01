@@ -771,7 +771,7 @@ node tools/check-markup.mjs --check               # exit non-zero on any failure
   `document.querySelectorAll('a a')` on the broken page returns **zero**. The evidence survives
   only in the source text. That also makes it the fastest gate here — no Chrome, no dependencies,
   140 pages and 132,800 tags in about 0.25s.
-- **Five faults, each one silent:** nested interactive elements (`<a>`/`<button>` inside each
+- **Seven faults, each one silent:** nested interactive elements (`<a>`/`<button>` inside each
   other — the parser closes the outer, so everything after falls out of its wrapper); a block
   element inside a `<p>` (auto-closes the paragraph part-way through); and **duplicate `id`**,
   which matters here more than most sites because this one runs on fragments — `#spread-N`,
@@ -795,11 +795,36 @@ node tools/check-markup.mjs --check               # exit non-zero on any failure
   byte-identical — the property that makes the index blind to its absence. The map is built from
   the collection pages' own `<a class="card">` hrefs and the names from their `<title>`s, never
   from a list kept in the tool, so there is no second answer free to drift from the first.
+- **The sixth is exactly one `<main>` landmark, added 2026-09-01**, when 130 of 159 pages had none
+  and two field guides had **two**, using `<main class="field-grid">` as a grid container. The
+  landmark rotor is how a screen reader skips the nav and reaches the page, and two landmarks both
+  called "main" is worse than none, because neither one is the page.
+- **The seventh is card-wrap integrity, added 2026-09-01**, the third house-convention check, and
+  it earned its place the same way the first two did — by shipping twice. A `.card-wrap` is *the
+  box*: it draws the border and the accent rule and carries `--card-color`, and it must hold
+  **exactly one direct `<a class="card">`**. A new card is inserted after the previous card's
+  closing `</div>`; anchor it on that card's **`</details>`** instead — one line earlier — and the
+  new wrapper opens before the old one shuts, so the new card renders *inside* the previous card's
+  box, sharing one border, one accent rule and one Details row. **It happened on No. 74 and again
+  on No. 83, the second time with a written note about it in front of the person doing it**, which
+  is the definition of a fault that needs a gate rather than a reminder. **No other gate can see
+  it and each is right not to:** the markup is *valid* — the tags balance and the two anchors are
+  siblings rather than nested — so the nested-interactive check finds nothing; `check-card-order`
+  reads card hrefs in document order, where they still ascend; and contrast, overlap and dead
+  classes are indifferent to which parent a well-formed, legible, correctly-styled card sits in.
+  **It is not cosmetic either:** `build-search-index.mjs` lists `.card-wrap` ahead of `.card` in
+  its chunk selector and lets the outermost match win, so a nested pair indexes as **one** record
+  covering both cards — `index.html` measured **151 records nested and 152 separated**, meaning the
+  newer card's text was not independently findable.
 - **It is not a validator and shouldn't grow into one.** It ignores unclosed tags, attribute
-  syntax, and everything else browsers recover from harmlessly. The bar for adding a sixth check
+  syntax, and everything else browsers recover from harmlessly. The bar for adding an eighth check
   is that the browser silently hands the reader a different document than the source describes —
-  or, as with the nav and badge checks, that a structural fault is invisible to *every* other gate
-  and has recurred often enough to prove that remembering is not a control.
+  or, as with the nav, badge and card-wrap checks, that a structural fault is invisible to *every*
+  other gate and has recurred often enough to prove that remembering is not a control. **The
+  restraint has one visible consequence, stated because it looks like a gap:** a `.card-wrap` whose
+  `</div>` is missing is reported only if the file *ends* with it still open — if some later
+  `</div>` closes it by depth, the wrap looks closed and the check stays quiet, because unbalanced
+  tags are out of scope and guessing at intent would make the gate noisy.
 - **The baseline is 0.** A clean tree passes, so `--check` is a real ship
   gate rather than an informational sweep. (This was the distinction from `check-contrast.mjs`
   until 2026-08-13, when that one reached zero too — all eight gates now hold at 0.) It was
