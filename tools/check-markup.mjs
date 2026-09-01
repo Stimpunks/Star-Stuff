@@ -374,6 +374,27 @@ for (const file of targets) {
   // map is derived from those cards — an uncarded page cannot be checked for a badge at all,
   // and silence there would be the check quietly excusing the exact pass CLAUDE.md says to
   // do in one go.
+  // ---- exactly one <main> landmark -------------------------------------------------
+  // A screen reader's landmark rotor is how a reader skips the nav to reach the page. On
+  // 2026-09-01, 130 of 159 pages had no <main> at all and two field guides had *two* — using it
+  // as a grid container, which is invalid (one <main> per document) and leaves those readers with
+  // two "main" landmarks and no way to tell which is the page. Both were fixed in that pass; this
+  // is the guard so neither can come back. The sibling field guides show the convention: the
+  // first grid is the <main>, every later grid is a <div class="field-grid">.
+  const mains = [];
+  for (const t of tags(src)) {
+    if (t.name === 'main' && !t.closing) mains.push(t.line);
+  }
+  if (mains.length === 0) {
+    problems.push(
+      `no <main> landmark — a screen reader has no way to skip the nav and reach the page. Open it right after </nav> and close it before the trailing <script> and any <footer>`
+    );
+  } else if (mains.length > 1) {
+    problems.push(
+      `${mains.length} <main> elements (lines ${mains.join(', ')}) — only one is valid per document, and two landmarks named "main" is worse for a screen reader than none. Keep the first, make the rest <div class="field-grid"> as being-alone-field-guide.html does`
+    );
+  }
+
   const cards = cardedBy.get(file) || [];
   const badge = badges[0];
 
@@ -459,8 +480,8 @@ if (totalProblems) {
 } else {
   console.log(
     'PASS — no nested interactive elements, no blocks inside paragraphs, no duplicate ids,\n' +
-      '       no nav outside its content shell, every collection member badged to the\n' +
-      '       collection that cards it.'
+      '       no nav outside its content shell, exactly one <main> landmark per page, every\n' +
+      '       collection member badged to the collection that cards it.'
   );
 }
 
