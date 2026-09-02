@@ -223,7 +223,7 @@ that disclosure is the convention, and **How We Got Here duly carries it too**:
 | Collection | Axis | Members |
 |------------|------|---------|
 | **Field Guides** | **form** — a catalogue of same-shaped entries, none ranked | Field Guides 1–12, 14–19 — 18 guides, **218 entries; 231 cards** (derived 2026-08-27). FG 13 is *not* here: it is the egg, `watching-animals-field-guide.html`. The thirteen cards that are deliberately **not** entries are the five *turtles people made* (FG 10), the octopus settlements (FG 14), the rooms people build (FG 15), the egg-crack accounts (FG 16), the two questions the answer is not in on yet (FG 17), the palaeontologist who was not a specimen and the corrections nobody has published yet (FG 18), and the families people make (FG 19) |
-| **How We Got Here** | **form** — a Burke chain, one link per spread, joints marked | 38, 39, 40, 41, 42, 43, 50, 52, 56, 65 (10 chains) |
+| **How We Got Here** | **form** — a Burke chain, one link per spread, joints marked | 38, 39, 40, 41, 42, 43, 50, 52, 56, 65, 74, 79, 84 (13 chains; **No. 84 is the collection’s first scroll zine**) |
 | **Print** | **medium** — paper | 9 broadsides + 2 that are not broadsides (a typographic specimen, and a blank sheet) |
 | **Sound** | **medium** — audio | 7 racks, **230 song cards** — and the collection page deliberately prints *no* distinct-song total, which is the right call: five Bowie songs sit in two racks on purpose, and the Dolly rack's covers section gives "Jolene" eight cards and "I Will Always Love You" five, so "distinct songs" has no honest single answer. Derived figures, if you need them: 226 distinct song+artist pairs, 193 distinct titles. **Don't put a songs number back on the page.** |
 
@@ -367,7 +367,7 @@ never candidates for a register. Don't try to fold these into either table:
   everything else homework, and would become the one place the verify-everything standard could
   quietly relax. The fun is distributed; *Stars We Grew Up On* states this on the page.
 - The **prev/next chain follows collection order**: each collection page precedes its members, and
-  members run in ascending number within the collection. **141 pages** as of 2026-08-31,
+  members run in ascending number within the collection. **143 pages** as of 2026-09-02,
   `collection-start-here.html` → `shorthand-evolution.html`. **17 pages sit outside it, and every
   one is a decision:** `about.html` and `cosmic-connections.html`; **all of Notes &amp; Rationale** —
   `changelog.html`, `design.html`, `print-design.html`, `difference-first-frame.html`,
@@ -376,7 +376,7 @@ never candidates for a register. Don't try to fold these into either table:
   `hatchery.html`, `quillery.html` and `one-atom-of-justice-zine.html`, because a chain link would
   walk a reader into an egg by accident and stop it being one.
   (`index.html` and `search.html` are utility pages and were never in it, which makes
-  141 + 18 = 159, re-derived 2026-08-31.)
+  143 + 18 = 161, re-derived 2026-09-02.)
   **Don't trust that number — measure it**, and check `prev` and `next` agree in both directions;
   inserting a page means editing its two neighbours, and a one-sided edit leaves a chain that walks
   forward correctly and breaks going back:

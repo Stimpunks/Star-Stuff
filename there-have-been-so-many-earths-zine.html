@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0a0a14">
+<link rel="canonical" href="https://starstuff.earth/there-have-been-so-many-earths-zine.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta name="description" content="A chain through the events that had to happen for us: Theia, the rock that maybe carried life, the oldest thing we think we can see, oxygenic photosynthesis, the eukaryotic merger, Rodinia, Pangea, Chicxulub. Only three of them were moments. The rest were durations, and the durations did most of the work.">
+<!-- Open Graph / link unfurl -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Star Stuff · Stimpunks Foundation × More Realms">
+<meta property="og:url" content="https://starstuff.earth/there-have-been-so-many-earths-zine.html">
+<meta property="og:title" content="There Have Been So Many Earths">
+<meta property="og:description" content="Nine links from Theia to Chicxulub, with the state of the land drawn at each one. Only three were moments. Oxygenic photosynthesis took a billion years to change the sky. The slow things did the work — and a life does not owe anyone a space rock.">
+<meta property="og:image" content="https://starstuff.earth/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A rainbow-hued cosmic image — we are all made of star stuff.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="There Have Been So Many Earths">
+<meta name="twitter:description" content="Every arrangement of land was temporary, and so was every argument that it was normal. A scrolling chain through deep time, where the height of a section is the length of the thing it describes.">
+<meta name="twitter:image" content="https://starstuff.earth/og-card.jpg">
+<title>There Have Been So Many Earths — Stimpunks Zine No. 84</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Fraunces:ital,opsz,wght@0,9..144,200..700;1,9..144,200..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="starstuff.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"There Have Been So Many Earths","description":"A Burke chain through the events that had to happen for us — Theia, lithopanspermia, the oldest disputed traces of life, oxygenic photosynthesis, eukaryogenesis, Rodinia, Pangea, Chicxulub — with the state of the land drawn at each link. Only three were moments; the durations did most of the work.","image":"https://starstuff.earth/og-card.jpg","url":"https://starstuff.earth/there-have-been-so-many-earths-zine.html","mainEntityOfPage":"https://starstuff.earth/there-have-been-so-many-earths-zine.html","author":[{"@type":"Person","name":"Ryan Boren"}],"publisher":[{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/","logo":{"@type":"ImageObject","url":"https://starstuff.earth/og-card.jpg"}},{"@type":"Organization","name":"More Realms","url":"https://morerealms.com/"}],"isPartOf":{"@type":"WebSite","name":"Star Stuff","url":"https://starstuff.earth/"}}</script>
+<style>
+  :root {
+    --void:       var(--sp-void);
+    --gold:       var(--sp-gold);
+    --pink:       var(--sp-pink);
+    --violet:     var(--sp-purple);
+    --cyan:       var(--sp-cyan);
+    --green:      var(--sp-green);
+    --star-white: var(--sp-white-soft);
+    --stardust:   var(--sp-secondary-soft);
+    --dim:        var(--sp-dim);
+    --magma:      #f97316;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--void);
+    font-family: 'Atkinson Hyperlegible Next', system-ui, sans-serif;
+    color: var(--star-white);
+    overflow-x: hidden;
+  }
+
+  /* ── STARFIELD ──
+     The house pure-CSS starfield. The shared sheet hides body::before in print
+     and neutralises the twinkle under prefers-reduced-motion, so this form gets
+     both for free and ships no extra JS. */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1.4px 1.4px at 14% 21%, rgba(34,211,238,0.70), transparent),
+      radial-gradient(1.1px 1.1px at 71% 11%, rgba(249,250,251,0.62), transparent),
+      radial-gradient(1.6px 1.6px at 86% 46%, rgba(167,139,250,0.52), transparent),
+      radial-gradient(1.1px 1.1px at 24% 66%, rgba(249,250,251,0.52), transparent),
+      radial-gradient(1.3px 1.3px at 58% 84%, rgba(34,211,238,0.50), transparent),
+      radial-gradient(1.1px 1.1px at 93% 90%, rgba(249,250,251,0.48), transparent),
+      radial-gradient(1.2px 1.2px at 43% 37%, rgba(251,191,36,0.42), transparent);
+    animation: twinkle-anim 8s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── THE FALL ──
+     This is the collection's second scroll zine, and the reason is measurable:
+     a section's height is the length of the thing it describes. Chicxulub is one
+     screen you fall past. The gap between oxygenic photosynthesis and the sky
+     changing colour is three screens of almost nothing, because that is what a
+     billion years of waiting looks like when you have to scroll through it.
+     --tall is set per section, in vh, and reset to auto on paper. */
+  .deep-progress {
+    position: fixed;
+    top: 0; left: 0;
+    height: 3px;
+    width: 0;
+    background: linear-gradient(90deg, var(--cyan), var(--violet), var(--pink));
+    z-index: 40;
+    transition: width 0.15s linear;
+  }
+
+  .deep-clock {
+    position: fixed;
+    right: clamp(0.9rem, 3vw, 2rem);
+    bottom: clamp(0.9rem, 3vw, 2rem);
+    z-index: 40;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.14em;
+    color: var(--stardust);
+    background: rgba(10,10,20,0.82);
+    border: 1px solid rgba(34,211,238,0.24);
+    padding: 0.45em 0.8em;
+    border-radius: 999px;
+  }
+  .deep-clock b { color: var(--cyan); font-weight: 700; }
+
+  main { position: relative; z-index: 2; }
+
+  .spread {
+    position: relative;
+    min-height: calc(var(--tall, 100) * 1vh);
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: clamp(4.5rem, 11vh, 8rem) clamp(1.2rem, 6vw, 3rem) clamp(3rem, 8vh, 5rem);
+  }
+  /* Short sections centre; tall ones pin their prose to the top so the height
+     below it reads as elapsed time rather than as stretched type. */
+  .spread.is-short { align-items: center; }
+
+  .content { position: relative; z-index: 2; max-width: 40rem; width: 100%; }
+
+  /* ── THE FALL RAIL ──
+     Only on tall sections. Without it the empty channel reads as a layout bug;
+     with it, the emptiness is legible as the duration it stands for. */
+  .fall-rail {
+    position: absolute;
+    left: clamp(0.55rem, 3vw, 1.6rem);
+    top: clamp(4.5rem, 11vh, 8rem);
+    bottom: clamp(3rem, 8vh, 5rem);
+    width: 1px;
+    background: linear-gradient(180deg, rgba(34,211,238,0.45), rgba(34,211,238,0.06));
+    z-index: 1;
+  }
+  /* The tick labels only exist where the rail sits clear of the 40rem prose
+     column. Below ~1240px the two occupy the same pixels and the labels run
+     straight through the type — which check-overlap.mjs cannot see, because it
+     measures one viewport at 1280x900 and at 1280 they clear comfortably. The
+     hairline stays at every width; only the labels go, and each section's
+     eyebrow already names its span in words. */
+  .fall-tick { display: none; }
+  @media (min-width: 1240px) { .fall-tick { display: block; } }
+  .fall-tick {
+    position: absolute;
+    left: 0;
+    top: var(--at, 50%);
+    white-space: nowrap;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.56rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--dim);
+    padding-left: 0.7rem;
+  }
+  .fall-tick::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.5em;
+    width: 0.45rem;
+    height: 1px;
+    background: rgba(34,211,238,0.5);
+  }
+
+  .eyebrow {
+    display: block;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--cyan);
+    margin-bottom: 1.1rem;
+  }
+
+  h1, h2 { font-family: 'Fraunces', Georgia, serif; font-weight: 600; text-wrap: balance; }
+
+  h2 {
+    font-size: clamp(1.6rem, 4.2vw, 2.4rem);
+    line-height: 1.15;
+    color: var(--star-white);
+    margin-bottom: 1rem;
+    scroll-margin-top: 5rem;
+  }
+
+  h3 {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--violet);
+    margin-bottom: 0.7rem;
+  }
+
+  p { font-size: 1.02rem; line-height: 1.8; margin-bottom: 1.15rem; }
+  p:last-child { margin-bottom: 0; }
+  .lede { font-size: 1.12rem; }
+  .small { font-size: 0.85rem; line-height: 1.7; color: var(--stardust); }
+
+  em { color: var(--pink); font-style: italic; }
+  strong { color: var(--star-white); }
+  a { color: var(--cyan); }
+
+  /* ── JOINT NOTATION ──
+     The collection's convention: every link says how well it is attached. Same
+     three grades and the same line styles as every other chain here, so a reader
+     who has read one can read this one. */
+  .joint {
+    display: inline-flex; align-items: baseline; gap: 0.4rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.55rem; font-weight: 700; letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 0.16rem 0.5rem; border-radius: 2px;
+    white-space: nowrap; vertical-align: 0.12em;
+  }
+  .joint::before { content: ''; width: 16px; height: 0; border-top-width: 2px; align-self: center; }
+  .joint-documented { color: var(--green); background: rgba(74,222,128,0.10); border: 1px solid rgba(74,222,128,0.32); }
+  .joint-documented::before { border-top-style: solid; border-top-color: var(--green); }
+  .joint-contested  { color: var(--gold);  background: rgba(251,191,36,0.10); border: 1px solid rgba(251,191,36,0.32); }
+  .joint-contested::before { border-top-style: dashed; border-top-color: var(--gold); }
+  .joint-leap       { color: var(--pink);  background: rgba(244,114,182,0.10); border: 1px solid rgba(244,114,182,0.32); }
+  .joint-leap::before { border-top-style: dotted; border-top-color: var(--pink); }
+  .joint-line { margin-bottom: 1.3rem; }
+
+  /* ── THE GLOBE ──
+     One per link: the state of the land at that moment. These are schematic, and
+     they get *less* certain the further back they go, on purpose. Sharp outlines
+     from 1 Ga forward, where a full-plate model exists (Merdith et al. 2021);
+     dashed and faint before it, where a crisp coastline would be an invention
+     wearing a map's clothes. The art carries its own epistemics, the same way the
+     joint tags do. No text inside the SVG — every label is HTML beneath it. */
+  .globe-block {
+    display: flex;
+    align-items: center;
+    gap: 1.1rem;
+    margin: 0 0 1.5rem;
+    padding: 0.9rem 1rem;
+    border: 1px solid rgba(34,211,238,0.20);
+    border-radius: 8px;
+    background: rgba(15,15,42,0.45);
+  }
+  .globe { flex: 0 0 auto; width: 88px; height: 88px; }
+  .globe .rim { fill: rgba(34,211,238,0.05); stroke: rgba(34,211,238,0.45); stroke-width: 1.5; }
+  .globe .sea { fill: rgba(34,211,238,0.07); }
+  .globe .land {
+    fill: var(--star-white);
+    fill-opacity: var(--land-solid, 0.82);
+    stroke: var(--star-white);
+    stroke-opacity: 0.75;
+    stroke-width: 1;
+    stroke-dasharray: var(--land-dash, none);
+  }
+  .globe .magma { fill: var(--magma); fill-opacity: 0.55; }
+  .globe .crack { fill: none; stroke: var(--magma); stroke-width: 1.4; stroke-opacity: 0.8; }
+  .globe-caption { font-family: 'Space Mono', monospace; font-size: 0.62rem; line-height: 1.75; letter-spacing: 0.05em; color: var(--stardust); }
+  .globe-caption b { display: block; color: var(--cyan); font-size: 0.66rem; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 0.2rem; }
+  .globe-caption i { font-style: normal; color: var(--dim); }
+
+  /* The four futures, drawn small and side by side because the models disagree
+     and picking one would be the page asserting something nobody knows. */
+  .globe-row { display: flex; flex-wrap: wrap; gap: 0.9rem; margin: 1.4rem 0; }
+  .globe-cell { flex: 1 1 7rem; text-align: center; }
+  .globe-cell .globe { width: 72px; height: 72px; }
+  .globe-cell span { display: block; font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.1em; color: var(--stardust); margin-top: 0.4rem; }
+
+  /* ── PULL QUOTE ── */
+  .pull { border-left: 3px solid var(--violet); padding-left: 1.4rem; margin: 1.6rem 0; }
+  .pull p {
+    font-family: 'Fraunces', Georgia, serif;
+    font-style: italic; font-size: 1.15rem; line-height: 1.6;
+    color: var(--star-white); margin-bottom: 0.6rem;
+  }
+  .pull cite {
+    font-family: 'Space Mono', monospace; font-style: normal;
+    font-size: 0.68rem; letter-spacing: 0.06em; color: var(--stardust);
+  }
+
+  /* ── NOTE (fact-check aside on the page, not buried in the colophon) ── */
+  .note {
+    border: 1px solid rgba(167,139,250,0.30);
+    border-radius: 8px;
+    padding: 1.1rem 1.3rem;
+    margin-top: 1.6rem;
+  }
+  .note p { font-size: 0.84rem; line-height: 1.75; color: var(--stardust); margin-bottom: 0.7rem; }
+
+  /* ── THE BAR CHART ──
+     Linear, deliberately. Two of these bars cannot be drawn at all, and that is
+     the finding rather than a limitation of the drawing. */
+  .bars { margin: 1.5rem 0 0; list-style: none; }
+  .bars li { margin-bottom: 1.05rem; }
+  .bar-label {
+    display: block;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.62rem; letter-spacing: 0.1em;
+    color: var(--stardust); margin-bottom: 0.35rem;
+  }
+  /* display:block is load-bearing, not tidiness: these are <span>s, and an inline
+     box ignores height and gives an absolutely-positioned child nothing to sit in,
+     so the whole chart renders as five labels and no bars. */
+  .bar-track { display: block; position: relative; height: 12px; background: rgba(34,211,238,0.08); border-radius: 2px; overflow: hidden; }
+  .bar-fill { position: absolute; inset: 0 auto 0 0; width: var(--w, 0%); background: var(--cyan); border-radius: 2px; }
+  .bar-fill.is-violet { background: var(--violet); }
+  .bar-fill.is-gold { background: var(--gold); }
+  .bar-fill.is-hair { background: var(--pink); width: 2px; }
+  .bar-note { display: block; font-size: 0.78rem; line-height: 1.6; color: var(--dim); margin-top: 0.3rem; }
+
+  /* ── COVER ── */
+  .cover-issue {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.62rem; font-weight: 700; letter-spacing: 0.26em;
+    text-transform: uppercase; color: var(--stardust);
+    display: block; margin-bottom: 1.6rem;
+  }
+  .cover-title {
+    font-size: clamp(2.4rem, 8.4vw, 4.2rem);
+    line-height: 1.02; letter-spacing: -0.015em;
+    color: var(--star-white); margin-bottom: 1.1rem;
+  }
+  .cover-subtitle {
+    font-family: 'Fraunces', Georgia, serif; font-style: italic;
+    font-size: clamp(1.02rem, 2.6vw, 1.25rem); line-height: 1.55;
+    color: var(--stardust); max-width: 32rem; margin-bottom: 2.2rem;
+  }
+  .cover-byline {
+    font-family: 'Space Mono', monospace; font-size: 0.7rem;
+    letter-spacing: 0.08em; color: var(--stardust); line-height: 1.9;
+  }
+  .cover-scroll {
+    margin-top: 2.8rem;
+    font-family: 'Space Mono', monospace; font-size: 0.62rem;
+    letter-spacing: 0.2em; text-transform: uppercase; color: var(--cyan);
+  }
+  .cover-corner {
+    position: absolute;
+    top: clamp(4.5rem, 10vh, 7rem);
+    right: clamp(1.2rem, 6vw, 3rem);
+    text-align: right; z-index: 1;
+  }
+  .cover-corner-num {
+    font-family: 'Space Mono', monospace;
+    font-size: clamp(3.5rem, 11vw, 6rem);
+    font-weight: 700; line-height: 1;
+    color: var(--cyan); opacity: 0.18; display: block;
+  }
+
+  /* ── REFUSALS ── */
+  .refusals { list-style: none; margin: 1.2rem 0 0; }
+  .refusals li {
+    font-size: 0.92rem; line-height: 1.7;
+    padding-left: 1.9rem; position: relative;
+    margin-bottom: 0.75rem; color: var(--stardust);
+  }
+  .refusals li::before {
+    content: 'Not:';
+    position: absolute; left: 0;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.66rem; font-weight: 700;
+    color: var(--pink); top: 0.28em;
+  }
+
+  /* ── COLOPHON ── */
+  .colophon-h {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.58rem; font-weight: 700; letter-spacing: 0.24em;
+    text-transform: uppercase; color: var(--stardust);
+    margin: 1.6rem 0 0.6rem; scroll-margin-top: 5rem;
+  }
+  .colophon-body { font-size: 0.8rem; line-height: 1.8; color: var(--stardust); margin-bottom: 1rem; }
+  .colophon-body a { color: var(--cyan); }
+  .colophon-ls {
+    font-family: 'Space Mono', monospace; font-weight: 700;
+    font-size: 2.2rem; color: var(--cyan); letter-spacing: 0.05em;
+    display: block; margin-bottom: 0.4rem;
+  }
+  .colophon-phrase { font-size: 0.9rem; font-weight: 700; color: var(--stardust); margin-bottom: 1.6rem; }
+  .colophon-footer {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.56rem; letter-spacing: 0.24em; text-transform: uppercase;
+    color: var(--dim); line-height: 2.2;
+    border-top: 1px solid rgba(34,211,238,0.18);
+    padding-top: 1rem; margin-top: 1.6rem;
+  }
+
+  /* ── PAPER ──
+     The scroll form is a screen form, and this one is worse than most on paper:
+     its whole device is that some sections are three screens tall. THE OVERRIDE
+     THAT MATTERS IS `break-after`. starstuff.css's print block sets
+     `.spread { page-break-after: always }` — right for a paged zine, wrong here —
+     and without resetting it the page prints one sheet per section regardless of
+     anything else. The heights go too: --tall is a screen device and a 300vh
+     section would print as three blank sheets. Colours come from the shared
+     sheet's token inversion, because every colour above aliases a --sp-* token. */
+  @media print {
+    .deep-progress,
+    .deep-clock,
+    .fall-rail,
+    .cover-scroll,
+    .cover-corner { display: none !important; }
+    .spread {
+      min-height: 0;
+      padding: 0 0 1.4rem;
+      display: block;
+      break-after: auto;
+      page-break-after: auto;
+    }
+    #spread-1 { break-after: page; page-break-after: always; }
+    .pull, .note, .globe-block, .bars li { break-inside: avoid; page-break-inside: avoid; }
+    h2, .eyebrow, .joint-line { break-after: avoid; page-break-after: avoid; }
+    .content { max-width: none; }
+    .cover-title { font-size: 2.2rem; }
+    .note, .globe-block { border: 1px solid #888; background: none; }
+    .pull { border-left: 2px solid #888; }
+    /* The bars are the spread's evidence, and they are painted with `background`,
+       which browsers omit on paper by default — so without this the chart prints
+       as five empty boxes and the argument disappears. `print-color-adjust: exact`
+       is the house way to say "this background is content"; the shared sheet's
+       print block honours it, and so does check-contrast.mjs, which then measures
+       these instead of skipping them. The track stays an outline: it is the scale,
+       not the datum. */
+    .bar-track { border: 1px solid #888; background: none; }
+    .bar-fill {
+      background: #222222 !important;
+      print-color-adjust: exact;
+      -webkit-print-color-adjust: exact;
+    }
+    .bar-fill.is-hair { background: #222222 !important; width: 3px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="deep-progress" id="deep-progress" aria-hidden="true"></div>
+<div class="deep-clock" aria-hidden="true"><b id="deep-now">01</b> / 15</div>
+
+<nav class="ss-nav ss-nav--bleed" style="--nav-accent:#22d3ee;" aria-label="Star Stuff collection">
+  <span class="ss-nav-home-group"><a class="ss-nav-home" href="index.html"><span class="ss-star" aria-hidden="true">★</span> stuff</a><a class="ss-nav-about" href="about.html">about</a>
+    <a class="ss-nav-search" href="search.html">search</a></span>
+  <span class="ss-nav-links">
+    <a class="ss-nav-prev" href="four-decimal-places-zine.html"><span class="ss-nav-arrow" aria-hidden="true">&lsaquo;</span> <span class="ss-nav-label">Four Decimal Places</span></a>
+    <a class="ss-nav-next" href="collection-star-gazing.html"><span class="ss-nav-label">Star Gazing</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
+  </span>
+  <a class="ss-nav-collection" href="collection-how-we-got-here.html"><span class="ss-nav-collection-label">Collection</span> <span class="ss-nav-collection-name">How We Got Here</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
+</nav>
+
+<main>
+
+<!-- ══════════ 1 · COVER ══════════ -->
+<section class="spread is-short" id="spread-1" style="--tall:100;">
+  <div class="cover-corner" aria-hidden="true"><span class="cover-corner-num">84</span></div>
+  <div class="content">
+    <span class="cover-issue">Stimpunks &times; More Realms &middot; Zine No. 84</span>
+    <!-- The space before the <br> is load-bearing: textContent ignores a <br>, so
+         without it the accessible name reads "There Have BeenSo Many Earths". Block
+         layout hides that completely; only the a11y tree shows it. -->
+    <h1 class="cover-title">There Have Been <br>So Many Earths</h1>
+    <p class="cover-subtitle">every arrangement of land was temporary, and so was every argument that it was normal</p>
+    <div class="cover-byline">
+      Nine links, from a collision to a rock<br>
+      How We Got Here &middot; a chain with its joints marked
+    </div>
+    <div class="cover-scroll">Scroll &darr; &nbsp;the sections are as long as the things they describe</div>
+  </div>
+</section>
+
+<!-- ══════════ 2 · THE FRAME ══════════ -->
+<section class="spread is-short" id="spread-2" style="--tall:100;">
+  <div class="content">
+    <span class="eyebrow">The frame</span>
+    <h2 id="what-important-was-made-to-mean">Importance had to be invented first</h2>
+    <p class="lede">Hank Green set himself a question &mdash; <em>what is the most important thing that ever happened?</em> &mdash; and then did the harder thing, which was to say what he meant by <strong>important</strong>.</p>
+    <p>Two tests. <strong>How much depended on it</strong>, and <strong>how easily could it have gone another way</strong>. A thing that everything rests on but which was going to happen regardless is not interesting. A thing that could have gone a thousand ways but changed nothing is not either. You need both.</p>
+    <p>Then the move that makes it worth a zine. Importance is not a property of the universe. It is a thing some of us do. So the question is not <em>what mattered most</em> &mdash; nothing mattered to anything, for most of the story &mdash; it is <strong>what had to happen for mattering to exist at all</strong>.</p>
+    <div class="pull">
+      <p>&ldquo;It makes me realize that&hellip; there have been a lot of earths and this is just one of them and there could have been a lot of other earths.&rdquo;</p>
+      <cite>Hank Green, <em>The Most Important Thing that Ever Happened</em>, 31 August 2026</cite>
+    </div>
+    <p>This chain takes his list, puts it in order, and draws the land at each stop. Something happens on the way down that his format could not show and ours can. <strong>Only three of the things on the list were moments.</strong></p>
+  </div>
+</section>
+
+<!-- ══════════ 3 · LINK 1 · THEIA ══════════ -->
+<section class="spread is-short" id="spread-3" style="--tall:100;">
+  <div class="content">
+    <span class="eyebrow">Link 1 &middot; about 4.51 billion years ago</span>
+    <h2 id="the-first-rock">The first rock was a world</h2>
+    <p class="joint-line"><span class="joint joint-documented">documented</span></p>
+    <div class="globe-block">
+      <svg class="globe" viewBox="0 0 140 140" aria-hidden="true">
+        <circle class="rim" cx="70" cy="70" r="62"/>
+        <circle class="magma" cx="70" cy="70" r="60"/>
+        <path class="crack" d="M28 56 C50 62 82 48 110 58"/>
+        <path class="crack" d="M24 84 C52 76 86 92 114 82"/>
+      </svg>
+      <p class="globe-caption"><b>No land</b>A magma ocean, no crust worth the name, no continents to arrange. <i>Schematic.</i></p>
+    </div>
+    <p class="lede">A body roughly the size of Mars hit the proto-Earth. We call it <strong>Theia</strong>. It is not a name anybody heard anyone say; it is a name we gave to an absence in the accounting.</p>
+    <p>What came out was not Earth-plus-a-moon. It was a different planet. Different mass, different composition, spinning differently, molten far deeper, with a satellite close enough to raise tides that would flatten anything we would recognise as a coastline. Much of the heat still down there &mdash; the heat that drives plate tectonics, that opens hydrothermal vents, that some houses draw power from &mdash; is a bill from that afternoon.</p>
+    <div class="note">
+      <h3>What is actually settled</h3>
+      <p><strong>That a giant impact happened is not seriously in doubt.</strong> What Theia <em>was</em> is. Models say the Moon should be made mostly of the impactor, but the Moon's oxygen isotopes are almost indistinguishable from Earth's, while nearly every meteorite class differs measurably. This is known in the literature as the <strong>isotopic crisis</strong>, and it is unresolved &mdash; proposed fixes include violent mixing during the impact and multiple smaller impacts instead of one. We are telling you a collision took place. We are not telling you we know what hit us.</p>
+      <p>The claim that the Moon <em>stabilises Earth's axial tilt enough to matter for complex life</em> is a genuinely contested one, and it is repeated far more confidently than it is held. Laskar, Joutel &amp; Robutel (<em>Nature</em> 361, 1993) argued yes; Lissauer, Barnes &amp; Chambers (<em>Icarus</em> 217, 2012) found the effect much weaker. We are not resting anything on it.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 4 · LINK 2 · THE MAYBE-ROCK ══════════ -->
+<section class="spread is-short" id="spread-4" style="--tall:100;">
+  <div class="content">
+    <span class="eyebrow">Link 2 &middot; somewhere before 3.5 billion years ago</span>
+    <h2 id="the-rock-that-may-have-carried-it">The second rock may not exist</h2>
+    <p class="joint-line"><span class="joint joint-leap">leap</span></p>
+    <div class="globe-block">
+      <svg class="globe" viewBox="0 0 140 140" aria-hidden="true">
+        <circle class="rim" cx="70" cy="70" r="62"/>
+        <circle class="sea" cx="70" cy="70" r="60"/>
+        <g class="land" style="--land-solid:0.22; --land-dash:2 3;">
+          <path d="M50 52 c6-6 16-4 18 4 c2 8-6 14-13 12 c-7-2-10-10-5-16 Z"/>
+          <path d="M88 66 c5-4 13-1 13 6 c0 7-8 11-13 7 c-5-4-5-9 0-13 Z"/>
+          <path d="M62 94 c7-3 14 2 13 9 c-1 7-10 10-15 5 c-5-5-4-12 2-14 Z"/>
+        </g>
+      </svg>
+      <p class="globe-caption"><b>Scraps</b>Proto-continental fragments, position and shape unknown. <i>Schematic &mdash; drawn faint because it is a guess.</i></p>
+    </div>
+    <p class="lede">Cali Moore's answer was the rock that brought the ingredients. It is a real hypothesis with a real name &mdash; <strong>lithopanspermia</strong>, life or its chemistry riding between worlds inside stone &mdash; and the mechanism is not silly.</p>
+    <p>Rocks demonstrably travel. There are <strong>Martian meteorites on Earth</strong>, catalogued and studied. There is a fragment from Apollo 14 whose zircon looks as though it crystallised in Earth conditions, which would make it an <em>Earth</em> meteorite recovered on the <em>Moon</em> &mdash; though the authors hedge it and so do we. Experiments show some biological material survives some of the launch, some of the transit, some of the arrival. Each of those steps is brutal. None is impossible.</p>
+    <p>But here is why this link is dotted rather than dashed, and it is not about the odds. <strong>Panspermia does not answer the question. It relocates it.</strong> If life came here from Mars, then it began on Mars. If it came from another system, it began there. At some point chemistry crossed into biology somewhere, and moving the address does not describe the crossing.</p>
+    <p>So the honest position on the single most load-bearing event in the whole chain is: <em>we do not know whether it is nearly inevitable or nearly impossible</em>, and we have exactly one data point, which is us, and we could not have been anywhere else.</p>
+  </div>
+</section>
+
+<!-- ══════════ 5 · LINK 3 · OLDEST VISIBLE ══════════ -->
+<section class="spread" id="spread-5" style="--tall:140;">
+  <div class="fall-rail" aria-hidden="true">
+    <span class="fall-tick" style="--at:6%;">3.7 Ga &middot; the disputed claim</span>
+    <span class="fall-tick" style="--at:82%;">3.48 Ga &middot; the accepted floor</span>
+  </div>
+  <div class="content">
+    <span class="eyebrow">Link 3 &middot; 3.7 to 3.48 billion years ago</span>
+    <h2 id="the-oldest-thing-we-think-we-can-see">Some of the bumps were upside down</h2>
+    <p class="joint-line"><span class="joint joint-contested">contested</span></p>
+    <div class="globe-block">
+      <svg class="globe" viewBox="0 0 140 140" aria-hidden="true">
+        <circle class="rim" cx="70" cy="70" r="62"/>
+        <circle class="sea" cx="70" cy="70" r="60"/>
+        <g class="land" style="--land-solid:0.28; --land-dash:2 3;">
+          <path d="M44 56 c10-8 22-4 24 6 c2 10-8 18-17 15 c-9-3-13-15-7-21 Z"/>
+          <path d="M84 52 c7-5 16-1 16 8 c0 9-10 14-16 9 c-6-5-6-13 0-17 Z"/>
+          <path d="M70 92 c9-4 18 2 17 11 c-1 9-13 13-19 6 c-6-7-5-14 2-17 Z"/>
+        </g>
+      </svg>
+      <p class="globe-caption"><b>Small cratons</b>Nuclei of the first long-lived crust. <i>Schematic &mdash; no reconstruction reaches here.</i></p>
+    </div>
+    <p class="lede">This is the spread where we decline to take the video's word for it, and we are naming that rather than doing it quietly.</p>
+    <p>The source list behind the talk cites <strong>Nutman et al. (<em>Nature</em>, 2016)</strong>, which reported 3.7-billion-year-old stromatolites &mdash; layered mats built by microbial communities &mdash; in the Isua supracrustal belt in Greenland. If it holds, it pushes life back by 200 million years and is one of the most important observations ever made.</p>
+    <p>In 2018, <strong>Allwood et al.</strong> went back to the same rocks and published in the same journal. Three-dimensional analysis of the structures' shape and orientation, plus trace-element chemistry, pointed the other way: these look more like <em>deformation</em> features formed long after burial, in metasediments squeezed and altered by heat and pressure. The detail that sticks is the plainest one. <strong>Some of the bumps point downward.</strong> Stromatolites grow up, toward the light. They do not grow down into the mud.</p>
+    <p>The oldest evidence for life that the field broadly accepts is younger and further south: the <strong>3.48-billion-year-old Dresser Formation</strong> in the Pilbara of Western Australia, where stromatolites, microfossils, and fractionated carbon and sulfur isotopes agree with each other. Even that has had challengers arguing some of its structures are volcanogenic look-alikes.</p>
+    <div class="note">
+      <h3>Why we left it contested rather than picking</h3>
+      <p>Every claimed <em>oldest</em> has a challenger, and the pattern is not a scandal &mdash; it is the field working. What would be dishonest is inheriting a headline date from a video, from us, or from an encyclopaedia, without going to the paper that disputes it. The date we are least sure of is the one everything downstream sits on, and the chain should say so at that exact joint.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 6 · LINK 4 · THE HINGE (TALL) ══════════ -->
+<section class="spread" id="spread-6" style="--tall:300;">
+  <div class="fall-rail" aria-hidden="true">
+    <span class="fall-tick" style="--at:2%;">3.5 Ga &middot; the invention</span>
+    <span class="fall-tick" style="--at:26%;">3.2 Ga &middot; nothing in the air</span>
+    <span class="fall-tick" style="--at:48%;">2.9 Ga &middot; local whiffs</span>
+    <span class="fall-tick" style="--at:70%;">2.7 Ga &middot; still waiting</span>
+    <span class="fall-tick" style="--at:94%;">2.4 Ga &middot; the sky turns</span>
+  </div>
+  <div class="content">
+    <span class="eyebrow">Link 4 &middot; about 3.5 down to 2.4 billion years ago</span>
+    <h2 id="the-invention-and-the-consequence">The invention, and then a billion years of nothing much</h2>
+    <p class="joint-line"><span class="joint joint-documented">documented</span></p>
+    <div class="globe-block">
+      <svg class="globe" viewBox="0 0 140 140" aria-hidden="true">
+        <circle class="rim" cx="70" cy="70" r="62"/>
+        <circle class="sea" cx="70" cy="70" r="60"/>
+        <g class="land" style="--land-solid:0.34; --land-dash:3 3;">
+          <path d="M40 50 c14-10 30-4 32 8 c2 12-10 22-22 19 c-12-3-17-19-10-27 Z"/>
+          <path d="M86 46 c9-6 20-1 20 10 c0 11-13 17-20 11 c-7-6-7-16 0-21 Z"/>
+          <path d="M60 94 c11-5 23 2 22 13 c-1 11-16 16-24 8 c-8-8-7-18 2-21 Z"/>
+          <path d="M100 84 c7-3 14 2 13 9 c-1 7-11 10-15 4 c-4-6-3-11 2-13 Z"/>
+        </g>
+      </svg>
+      <p class="globe-caption"><b>Growing cratons</b>Enough crust to argue about; not enough agreement to draw. <i>Schematic.</i></p>
+    </div>
+    <p class="lede">This is the hinge of the whole piece, and it is the one thing on the list that is neither a rock nor an accident. Somewhere in the Archean, in an ancestor of the cyanobacteria, a protein complex learned to <strong>pull electrons out of water</strong>.</p>
+    <p>Photosystem II. A cluster of four manganese atoms, one calcium and five oxygens, holding water still and taking it apart with sunlight. The waste product is oxygen. As far as the evidence goes it happened <strong>once</strong> &mdash; every oxygen-producing organism alive, cyanobacterium and redwood and kelp alike, inherited that one machine, the plants and algae acquiring it secondhand by swallowing a cyanobacterium and keeping it.</p>
+    <p>So: the single most consequential invention in the history of the planet's chemistry, arrived at once, never repeated, never improved on in any fundamental way.</p>
+    <p><strong>And then the sky did not change for something like a billion years.</strong></p>
+    <p>Not because the machine was broken. Because oxygen is greedy and the world was hungry for it. Dissolved iron took it. Volcanic gases took it. Rock surfaces took it. Every molecule the biosphere produced was consumed on contact by a planet with a very large appetite and no reason to stop. The geochemical record shows local, temporary <em>whiffs</em> &mdash; oxygen oases &mdash; hundreds of millions of years before anything global. Sinks filling, and filling, and filling.</p>
+    <div class="pull">
+      <p>The invention and the consequence are two different events, and between them there is a gap you could fit the entire history of animals into four times over.</p>
+    </div>
+    <p>Hold that number against the one everybody quotes about Chicxulub. A billion years, against thirty seconds. Both are on the same list of <em>most important things that ever happened</em>. Only one of them is a story.</p>
+    <p class="small">Keep scrolling. There is a lot of this left, which is the point &mdash; you are falling through the wait, not through an error in the layout.</p>
+  </div>
+</section>
+
+<!-- ══════════ 7 · LINK 5 · THE SKY ══════════ -->
+<section class="spread" id="spread-7" style="--tall:150;">
+  <div class="fall-rail" aria-hidden="true">
+    <span class="fall-tick" style="--at:8%;">2.4 Ga &middot; sinks full</span>
+    <span class="fall-tick" style="--at:78%;">2.2 Ga &middot; a different atmosphere</span>
+  </div>
+  <div class="content">
+    <span class="eyebrow">Link 5 &middot; about 2.4 billion years ago</span>
+    <h2 id="the-sky-changes-colour">The sinks fill, and the air becomes a different substance</h2>
+    <p class="joint-line"><span class="joint joint-documented">documented</span></p>
+    <div class="globe-block">
+      <svg class="globe" viewBox="0 0 140 140" aria-hidden="true">
+        <circle class="rim" cx="70" cy="70" r="62"/>
+        <circle class="sea" cx="70" cy="70" r="60"/>
+        <g class="land" style="--land-solid:0.40; --land-dash:4 3;">
+          <path d="M34 54 c12-9 26-4 28 7 c2 11-9 20-20 17 c-11-3-15-17-8-24 Z"/>
+          <path d="M76 40 c11-7 24-1 24 11 c0 12-15 19-23 12 c-8-7-8-18-1-23 Z"/>
+          <path d="M52 96 c11-5 23 2 22 13 c-1 11-16 16-24 8 c-8-8-7-18 2-21 Z"/>
+          <path d="M98 78 c9-4 18 2 17 11 c-1 9-14 13-19 6 c-5-7-4-15 2-17 Z"/>
+        </g>
+      </svg>
+      <p class="globe-caption"><b>Kenorland, coming apart</b>An early supercontinent, breaking after 2.5 Ga. <i>Schematic &mdash; existence and shape both debated.</i></p>
+    </div>
+    <p class="lede">The <strong>Great Oxidation Event</strong> is the moment the accounting flips: production finally exceeds consumption, and free oxygen accumulates in the atmosphere for the first time.</p>
+    <p>It is not gentle. For most of the life then alive, oxygen is a poison &mdash; a reactive gas that tears molecules apart. Whole ways of being alive are pushed into the mud and the deep water and the airless places, where their descendants still live. It is very likely the largest extinction event in the history of the planet, and it was caused by a metabolic by-product.</p>
+    <p>It also builds the ozone layer, which lets anything live on land at all, and it makes possible a way of getting energy from food that is roughly an order of magnitude better than the alternative. Everything with a body worth the name runs on that margin. You can still do it the old way &mdash; glycolysis, no oxygen required &mdash; and you do, briefly, every time you sprint. <strong>You do not die of holding your breath because you cannot make energy. You die because you cannot make enough.</strong></p>
+    <p>Two things at once, then, and no way to separate them: the worst thing that ever happened to the biosphere, and the reason there is anything here to call it that.</p>
+  </div>
+</section>
+
+<!-- ══════════ 8 · LINK 6 · THE MERGER ══════════ -->
+<section class="spread" id="spread-8" style="--tall:180;">
+  <div class="fall-rail" aria-hidden="true">
+    <span class="fall-tick" style="--at:6%;">2.0 Ga &middot; a host and a guest</span>
+    <span class="fall-tick" style="--at:44%;">1.84 Ga &middot; common ancestor</span>
+    <span class="fall-tick" style="--at:86%;">1.6 Ga &middot; the crown group spreads</span>
+  </div>
+  <div class="content">
+    <span class="eyebrow">Link 6 &middot; around 1.8 billion years ago, give or take a great deal</span>
+    <h2 id="a-merger-in-succession">A merger that was not a moment either</h2>
+    <p class="joint-line"><span class="joint joint-documented">documented</span></p>
+    <div class="globe-block">
+      <svg class="globe" viewBox="0 0 140 140" aria-hidden="true">
+        <circle class="rim" cx="70" cy="70" r="62"/>
+        <circle class="sea" cx="70" cy="70" r="60"/>
+        <g class="land" style="--land-solid:0.50; --land-dash:5 3;">
+          <path d="M40 42 c22-12 46-2 50 18 c4 20-10 40-32 42 c-22 2-38-12-38-30 c0-14 8-24 20-30 Z"/>
+          <path d="M96 96 c9-4 18 2 17 11 c-1 9-14 13-19 6 c-5-7-4-15 2-17 Z"/>
+        </g>
+      </svg>
+      <p class="globe-caption"><b>Nuna, also called Columbia</b>An assembled supercontinent, roughly 1.8&ndash;1.5 Ga. <i>Schematic &mdash; configuration debated.</i></p>
+    </div>
+    <p class="lede">An archaeon took in a bacterium and did not digest it. The bacterium became the mitochondrion. Everything with a nucleus &mdash; every animal, plant, fungus and protist, you and the yeast in your bread &mdash; descends from whatever cell that was.</p>
+    <p>The house has a whole zine on what this means, and it is not this one: <a href="you-were-never-one-thing-zine.html">No. 7, <em>You Were Never One Thing</em></a>, on the cell as a truce rather than a unit. What we want here is only the shape of the event, because the shape is the argument.</p>
+    <p><strong>It was not an event.</strong> Green says so himself, and the literature agrees: a bunch of things happened <em>in succession</em>, not simultaneously. There is no surviving lineage of half-built eukaryotic cells to show us the order. The closest archaeal relatives we have found &mdash; the Asgard archaea &mdash; contribute most of the conserved eukaryotic machinery, with the bacterial partner contributing mainly the energy systems, which means the merger was not one swallow but a long negotiation whose minutes were not kept.</p>
+    <p>And the date is soft. Molecular clocks calibrated against fossils put the last common ancestor of all living eukaryotes somewhere around 1.84 billion years ago, with the crown group diversifying over the few hundred million years after. That is not a date. It is a neighbourhood.</p>
+    <div class="note">
+      <h3>What is firm and what is not</h3>
+      <p><strong>Firm:</strong> it happened, and as far as anyone can tell it happened once. Every known eukaryote either has mitochondria or descends from ancestors that did &mdash; the handful that have lost them lost them later, which is a subtraction from the lineage, not an alternative to it.</p>
+      <p><strong>Soft:</strong> when, in what order, and how many partners. The tag on this link is <em>documented</em> because the merger is; if we were tagging the timeline it would be <em>contested</em>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 9 · LINK 7 · WHERE THE MAP BEGINS ══════════ -->
+<section class="spread" id="spread-9" style="--tall:130;">
+  <div class="fall-rail" aria-hidden="true">
+    <span class="fall-tick" style="--at:10%;">1.0 Ga &middot; the models begin</span>
+    <span class="fall-tick" style="--at:80%;">750 Ma &middot; Rodinia breaks</span>
+  </div>
+  <div class="content">
+    <span class="eyebrow">Link 7 &middot; about 1 billion years ago</span>
+    <h2 id="where-the-map-begins">Where the map begins, and why the earlier globes are blurred</h2>
+    <p class="joint-line"><span class="joint joint-contested">contested</span></p>
+    <div class="globe-block">
+      <svg class="globe" viewBox="0 0 140 140" aria-hidden="true">
+        <circle class="rim" cx="70" cy="70" r="62"/>
+        <circle class="sea" cx="70" cy="70" r="60"/>
+        <g class="land" style="--land-solid:0.66; --land-dash:7 3;">
+          <path d="M38 46 c24-16 54-6 60 18 c6 24-10 46-36 50 c-26 4-44-12-44-32 c0-16 8-28 20-36 Z"/>
+        </g>
+      </svg>
+      <p class="globe-caption"><b>Rodinia</b>Assembled around 1.2 Ga, broken up by roughly 750 Ma. <i>Reconstruction begins here.</i></p>
+    </div>
+    <p class="lede">Every globe above this one is drawn faint and dashed, and this is the spread that owes you the reason.</p>
+    <p>The best continuous full-plate reconstruction of Earth &mdash; Merdith and colleagues, <em>Earth-Science Reviews</em>, 2021 &mdash; runs from <strong>1 billion years ago to the present</strong>. That is not a shortage of effort. It is where the palaeomagnetic and geological constraints stop being able to hold a self-consistent model together. Before it, there are named supercontinents &mdash; Vaalbara, Ur, Kenorland, Nuna &mdash; and there are honest disagreements about whether some of them were supercontinents, what shape they were, and in one or two cases whether they happened.</p>
+    <p>So the drawings sharpen as they come forward, and that is not a style choice. <strong>A crisp coastline at 3.5 billion years would be an invention wearing a map's clothes.</strong> If we drew every globe with the same confident line, the picture would be making a claim the science does not support, and it would be making it more persuasively than any sentence could.</p>
+    <p>Even Rodinia, where the models start, is argued about. Pannotia, the proposed supercontinent between Rodinia and Pangea, may not have been one at all. We have not drawn it.</p>
+  </div>
+</section>
+
+<!-- ══════════ 10 · LINK 8 · PANGEA (TALL) ══════════ -->
+<section class="spread" id="spread-10" style="--tall:210;">
+  <div class="fall-rail" aria-hidden="true">
+    <span class="fall-tick" style="--at:4%;">320 Ma &middot; assembling</span>
+    <span class="fall-tick" style="--at:26%;">299 Ma &middot; complete</span>
+    <span class="fall-tick" style="--at:52%;">230 Ma &middot; the first rift basins</span>
+    <span class="fall-tick" style="--at:74%;">201 Ma &middot; the flood basalts</span>
+    <span class="fall-tick" style="--at:94%;">175 Ma &middot; genuinely apart</span>
+  </div>
+  <div class="content">
+    <span class="eyebrow">Link 8 &middot; roughly 320 to 175 million years ago</span>
+    <h2 id="a-continent-is-not-a-moment">A continent is not a moment</h2>
+    <p class="joint-line"><span class="joint joint-documented">documented</span></p>
+    <div class="globe-block">
+      <svg class="globe" viewBox="0 0 140 140" aria-hidden="true">
+        <circle class="rim" cx="70" cy="70" r="62"/>
+        <circle class="sea" cx="70" cy="70" r="60"/>
+        <g class="land" style="--land-solid:0.86;">
+          <path d="M70 14 c-28 0-50 24-50 56 c0 32 22 56 50 56 c9 0 17-2 24-6 l-10-19 c-4 2-9 3-14 3 c-19 0-33-15-33-34 c0-19 14-34 33-34 c5 0 10 1 14 3 l10-19 c-7-4-15-6-24-6 Z"/>
+        </g>
+      </svg>
+      <p class="globe-caption"><b>Pangea</b>One landmass, open to the east around the Tethys. <i>Reconstructed, not schematic.</i></p>
+    </div>
+    <p class="lede">Cali Moore, who spent two years making a television series about it, said the thing that gives this spread its title. Most of us carry a picture in which all the continents came together, stood there for a bit, and then set off in different directions.</p>
+    <div class="pull">
+      <p>&ldquo;It comes together at the very end of the Carboniferous&hellip; and then it breaks up&hellip; I mean, it was around for over a hundred million years&hellip; It was there for a long time. It changed shapes.&rdquo;</p>
+      <cite>Cali Moore, PBS Eons, in conversation with Hank Green, 31 August 2026</cite>
+    </div>
+    <p><strong>Over a hundred million years of being a continent.</strong> Longer than the entire history of primates, several times over. It changed shape while it was there. It was not a formation; it was a condition. And it was never a circle or a blob &mdash; it was roughly a <em>C</em>, curled around the Tethys ocean, which is a shape it is hard to unsee once someone tells you it looks like a Pac-Man.</p>
+    <p>Being one continent did things. The interior, around the equator, was <strong>desert</strong> &mdash; a barrier so effective that what lived in the north largely stayed north and what lived in the south stayed south. One landmass, and still two worlds.</p>
+    <p>And it took something away. In the Carboniferous, the wetlands were forested by <strong>lycopsids</strong> &mdash; club mosses, which today are small enough to kneel down to, and which then grew a hundred feet tall and spanned continents. When Pangea assembled it dried those wetlands out. The giant ones went. The small ones are still here.</p>
+    <div class="pull">
+      <p>&ldquo;The lycopsids survive, but they had to shrink&hellip; Only the shrinky ones.&rdquo;</p>
+      <cite>Cali Moore, same conversation</cite>
+    </div>
+    <p>We are going to leave that where it is for now and come back to it. It is very hard to hear <em>only the ones who could shrink got through</em> as a neutral fact about plants.</p>
+    <p>The breakup was not a moment either. Rift basins were opening by around 230 million years ago. The flood basalts of the Central Atlantic Magmatic Province came around 201 million years ago. Genuine separation took until roughly 175. <strong>A hundred and forty-five million years of assembly, tenure and divorce, and no single day you could put on a calendar.</strong></p>
+  </div>
+</section>
+
+<!-- ══════════ 11 · LINK 9 · CHICXULUB ══════════ -->
+<section class="spread is-short" id="spread-11" style="--tall:100;">
+  <div class="content">
+    <span class="eyebrow">Link 9 &middot; 66 million years ago &middot; one afternoon</span>
+    <h2 id="thirty-seconds">Thirty seconds</h2>
+    <p class="joint-line"><span class="joint joint-documented">documented</span></p>
+    <div class="globe-block">
+      <svg class="globe" viewBox="0 0 140 140" aria-hidden="true">
+        <circle class="rim" cx="70" cy="70" r="62"/>
+        <circle class="sea" cx="70" cy="70" r="60"/>
+        <g class="land" style="--land-solid:0.86;">
+          <path d="M40 30 c12-6 22 2 24 16 c2 14-4 34-16 42 c-12 8-24-2-24-18 c0-14 4-34 16-40 Z"/>
+          <path d="M96 34 c11 4 13 22 9 38 c-4 16-15 28-24 24 c-9-4-9-22-5-38 c4-16 10-28 20-24 Z"/>
+          <path d="M60 108 c9-4 18 1 17 9 c-1 8-13 12-18 6 c-5-6-5-13 1-15 Z"/>
+        </g>
+      </svg>
+      <p class="globe-caption"><b>66 Ma</b>Pangea long gone, the Atlantic wide open. <i>Reconstructed.</i></p>
+    </div>
+    <p class="lede">An object about nine kilometres across came down on the Yucat&aacute;n. It is the only link in this chain that happened in an afternoon, and it is the one everybody knows.</p>
+    <p>Two findings make it more than bad luck, and both are real. <strong>Kaiho and Oshima</strong> (<em>Scientific Reports</em>, 2017) showed the killing mechanism depended on <em>where</em> it landed: the target rock was rich in hydrocarbons and sulfur, which the impact turned into stratospheric soot and sulfate aerosol, which caused the cooling and the drought. Only about <strong>13% of Earth's surface</strong> had enough of it. Their conclusion, in the title of the paper, is <em>the low probability of mass extinction</em>. <strong>Collins and colleagues</strong> (<em>Nature Communications</em>, 2020) found the trajectory was steeply inclined, 45&ndash;60&deg; from the horizontal, coming from the north-east &mdash; a range that lofts more climate-altering gas per kilogram of impactor than either a grazing blow or a vertical one.</p>
+    <p>So the honest version is dramatic enough on its own: it hit one of the worst available places, at close to the worst available angle.</p>
+    <div class="note">
+      <h3>And then there is the thirty seconds <span class="joint joint-leap">leap</span></h3>
+      <p>You have probably met the claim that had the asteroid arrived <strong>thirty seconds later</strong> it would have hit deep ocean and the dinosaurs would still be here. It is a wonderful sentence and we are not going to use it.</p>
+      <p>It is not a result. It traces to a 2017 BBC documentary, <em>The Day the Dinosaurs Died</em>, built around Jo Morgan and Sean Gulick's drilling of the crater &mdash; excellent work that does not contain this number. Even the popular-science article that put the figure in its headline says plainly that there is no causal evidence for it. Green flags his own scepticism about it in his source list.</p>
+      <p>Notice the shape of it, because we have a page about exactly this shape: <a href="too-good-to-check.html">too good to check</a>. The real finding is a probability across a whole planet's surface. The travelling version is a stopwatch. <strong>Thirty seconds is not a smaller version of 13% &mdash; it is a different kind of claim</strong>, and it is the kind that makes contingency feel like a near-miss in a film rather than a fact about how the world is put together.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 12 · THE THREE ROCKS ══════════ -->
+<section class="spread is-short" id="spread-12" style="--tall:100;">
+  <div class="content">
+    <span class="eyebrow">The accounting</span>
+    <h2 id="the-three-rocks">Three rocks, and only one of them is in the ground</h2>
+    <p class="lede">Take the whole list and ask which entries were <em>moments</em> &mdash; things with a duration a person could have lived through. Three. All three are impacts.</p>
+    <p>Then ask how well we know each one.</p>
+    <p><strong>Chicxulub is in the ground.</strong> There is a crater. There is a layer of iridium in the rock on every continent. There are drill cores. You can go and look.</p>
+    <p><strong>Theia is an inference from a moon.</strong> Nobody has found it. We reason backwards from what the Moon is made of and how the Earth spins, and the reasoning is strong and the details are actively contested, and the object itself is a hole in the accounts that we have given a name to so we can talk about it.</p>
+    <p><strong>The rock that brought life is imagined.</strong> It has no crater, no isotopes, no date. It is a hypothesis about a mechanism we know is possible, standing in for a transition we cannot describe.</p>
+    <div class="pull">
+      <p>One documented, one inferred, one imagined. Even the moments are not three moments.</p>
+    </div>
+    <p>This is not debunking. Theia almost certainly happened. Lithopanspermia is a serious idea. It is a note about <strong>what a list of events does to a history that was mostly not made of events</strong> &mdash; and about which entries survive the retelling. The one with the crater and the dinosaurs is the one your niece can name.</p>
+  </div>
+</section>
+
+<!-- ══════════ 13 · WHAT THE DURATIONS DID ══════════ -->
+<section class="spread" id="spread-13" style="--tall:130;">
+  <div class="content">
+    <span class="eyebrow">The comparison</span>
+    <h2 id="what-the-durations-did">Two of these bars cannot be drawn</h2>
+    <p class="lede">Same scale for all five, linear, no tricks. The longest bar is the time from the eukaryotic common ancestor to now &mdash; call it 1,840 million years &mdash; and everything else is measured against it.</p>
+    <ul class="bars">
+      <li>
+        <span class="bar-label">Eukaryotes to now &middot; ~1,840 million years</span>
+        <span class="bar-track"><span class="bar-fill" style="--w:100%;"></span></span>
+      </li>
+      <li>
+        <span class="bar-label">Oxygenic photosynthesis to the sky changing &middot; ~1,100 million years</span>
+        <span class="bar-track"><span class="bar-fill is-violet" style="--w:60%;"></span></span>
+        <span class="bar-note">The gap between the invention and the consequence.</span>
+      </li>
+      <li>
+        <span class="bar-label">Pangea, assembly to separation &middot; ~145 million years</span>
+        <span class="bar-track"><span class="bar-fill is-gold" style="--w:7.9%;"></span></span>
+        <span class="bar-note">The thing most of us picture as a moment.</span>
+      </li>
+      <li>
+        <span class="bar-label">Theia, the impact itself &middot; hours</span>
+        <span class="bar-track"><span class="bar-fill is-hair"></span></span>
+        <span class="bar-note">Drawn as a two-pixel line because at this scale it has no width. Honest value: about 0.0000000001%.</span>
+      </li>
+      <li>
+        <span class="bar-label">Chicxulub, the decisive interval &middot; seconds</span>
+        <span class="bar-track"><span class="bar-fill is-hair"></span></span>
+        <span class="bar-note">Same. The bar is a marker, not a measurement &mdash; there is nothing there to measure.</span>
+      </li>
+    </ul>
+    <p style="margin-top:1.6rem;">The two entries that cannot be drawn are the two that everybody can name. The two that fill the chart have no anniversary, no crater, no witness and no name that would fit on a poster.</p>
+    <p><strong>The moments are memorable because they are shaped like stories.</strong> Beginning, middle, end; a protagonist; an interval short enough to imagine standing inside. The durations are shaped like weather. Nothing happens, and nothing happens, and then the thing that had been happening all along has happened.</p>
+    <div class="note">
+      <h3>One guard, before the turn</h3>
+      <p>None of this means the universe was aiming at us, and the early appearance of life is not evidence that life is easy. We could only ever find ourselves on a planet where it went this way and went this way <em>early enough</em>, because a world where complex life started two billion years ago has no one on it yet to notice. That is a selection effect, not a plan. <strong>Rare and inevitable look identical from the inside of the one case you get to observe.</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 14 · THE TURN ══════════ -->
+<section class="spread" id="spread-14" style="--tall:130;">
+  <div class="content">
+    <span class="eyebrow">The turn</span>
+    <h2 id="ask-me-when-it-started">Ask me when it started</h2>
+    <p class="lede">Here is a question we get asked constantly, in clinics and at family dinners and in the first ten minutes of a job we have just disclosed at. <em>When did you know?</em> <em>When were you diagnosed?</em> <em>What happened to you?</em></p>
+    <p>Every version of it assumes an impact. Something arrived, at an angle, on a date, and after it things were different. Give us the crater and we will understand you.</p>
+    <p>Mostly there is no crater. Mostly what happened to us is that a difference we had always had met an environment that had no room in it, slowly, over years, in a thousand encounters too small to itemise &mdash; and then one day there was a word for it, and the word arrived long after the thing it named. <strong>The diagnosis is not the event. It is the sinks finally filling.</strong></p>
+    <div class="pull">
+      <p>The invention and the consequence are two different events. A billion years, sometimes, between the thing being true and the sky admitting it.</p>
+    </div>
+    <p>And the accommodations that actually changed our lives were never moments either. Not the meeting where it was agreed. The two years afterwards in which nobody made us explain it again. A duration is what a support actually is.</p>
+    <p>So we will say what the chain says. <strong>You do not owe anyone a space rock.</strong> A life that cannot produce a single dramatic afternoon to account for itself is not an unexplained life. It is the ordinary case. It is what almost everything that ever mattered on this planet looked like from the inside.</p>
+    <p>And about the club mosses. When Pangea dried the wetlands out, the lycopsids that survived were the ones that could shrink. We are not going to pretend that reads as neutral. <em>Fit through the gap or be a fossil</em> is a description of the Carboniferous and also of a great many classrooms. The difference we insist on is that a drying wetland has no author and a classroom does. <strong>Nobody chose the desert at the centre of Pangea. Somebody chooses the one at the centre of an institution.</strong></p>
+    <div class="globe-row">
+      <div class="globe-cell">
+        <svg class="globe" viewBox="0 0 140 140" aria-hidden="true">
+          <circle class="rim" cx="70" cy="70" r="62"/><circle class="sea" cx="70" cy="70" r="60"/>
+          <g class="land" style="--land-solid:0.86;">
+            <path d="M44 26 c10-4 18 4 19 16 c1 12-5 28-14 34 c-9 6-18-2-18-14 c0-12 3-32 13-36 Z"/>
+            <path d="M92 40 c10 4 11 20 7 34 c-4 14-13 24-21 20 c-8-4-7-20-4-34 c3-14 9-24 18-20 Z"/>
+            <path d="M56 106 c8-3 16 1 15 8 c-1 7-12 11-16 5 c-4-6-4-11 1-13 Z"/>
+          </g>
+        </svg>
+        <span>Now</span>
+      </div>
+      <div class="globe-cell">
+        <svg class="globe" viewBox="0 0 140 140" aria-hidden="true">
+          <circle class="rim" cx="70" cy="70" r="62"/><circle class="sea" cx="70" cy="70" r="60"/>
+          <g class="land" style="--land-solid:0.30; --land-dash:4 3;">
+            <path d="M70 14 c28 0 48 18 48 36 c0 14-22 24-48 24 c-26 0-48-10-48-24 c0-18 20-36 48-36 Z"/>
+          </g>
+        </svg>
+        <span>Amasia</span>
+      </div>
+      <div class="globe-cell">
+        <svg class="globe" viewBox="0 0 140 140" aria-hidden="true">
+          <circle class="rim" cx="70" cy="70" r="62"/><circle class="sea" cx="70" cy="70" r="60"/>
+          <g class="land" style="--land-solid:0.30; --land-dash:4 3;">
+            <path d="M70 42 c26 0 44 16 44 34 c0 20-20 36-44 36 c-24 0-44-16-44-36 c0-18 18-34 44-34 Z"/>
+          </g>
+        </svg>
+        <span>Novopangaea</span>
+      </div>
+      <div class="globe-cell">
+        <svg class="globe" viewBox="0 0 140 140" aria-hidden="true">
+          <circle class="rim" cx="70" cy="70" r="62"/><circle class="sea" cx="70" cy="70" r="60"/>
+          <g class="land" style="--land-solid:0.30; --land-dash:4 3;">
+            <path d="M62 24 c8-2 14 6 12 18 l-16 62 c-3 11-11 15-17 9 c-6-6-6-18-3-28 l16-52 c2-6 5-9 8-9 Z"/><path d="M92 34 c9 2 12 14 8 26 l-16 46 c-4 11-13 15-18 8 c-5-7-3-19 1-29 l17-43 c3-7 5-9 8-8 Z"/>
+          </g>
+        </svg>
+        <span>Aurica</span>
+      </div>
+      <div class="globe-cell">
+        <svg class="globe" viewBox="0 0 140 140" aria-hidden="true">
+          <circle class="rim" cx="70" cy="70" r="62"/><circle class="sea" cx="70" cy="70" r="60"/>
+          <g class="land" style="--land-solid:0.30; --land-dash:4 3;">
+            <path d="M70 18 c-26 0-48 22-48 52 c0 30 22 52 48 52 c10 0 18-2 25-7 l-11-18 c-4 3-9 4-14 4 c-18 0-31-14-31-31 c0-17 13-31 31-31 c5 0 10 1 14 4 l11-18 c-7-5-15-7-25-7 Z"/>
+          </g>
+        </svg>
+        <span>Pangaea Ultima</span>
+      </div>
+    </div>
+    <p>Four models of the next supercontinent, in 200 to 250 million years. They disagree about which ocean closes, so we have drawn all four and picked none. <strong>Earth has never held an arrangement, and it is not holding this one.</strong> There have been so many Earths. Every configuration was temporary, and so was every argument that any of them was normal.</p>
+  </div>
+</section>
+
+<!-- ══════════ 15 · REFUSALS + COLOPHON ══════════ -->
+<section class="spread" id="spread-15" style="--tall:100;">
+  <div class="content">
+    <span class="eyebrow">Refusals &amp; colophon</span>
+    <h2 id="not">What this chain refuses</h2>
+    <ul class="refusals">
+      <li>that the universe was aiming at us. Every link here could have failed, and the fact that none did is a thing we <em>observe</em>, not a thing we were promised.</li>
+      <li>that contingency means meaninglessness. It could have gone otherwise and it went this way and here you are. Those three facts do not cancel.</li>
+      <li>that early means easy. We are the only sample, and we could not have been drawn from anywhere else.</li>
+      <li>that the dinosaurs were in the way. They were a hundred and sixty million years of somebody's life, and mammals did not deserve the room more.</li>
+      <li>that a story is a measurement. Thirty seconds travels further than thirteen per cent because it is better shaped, not because it is better evidence.</li>
+      <li>that a person owes anybody an origin story. There is no requirement to produce an impact to justify a difference.</li>
+      <li>that <em>only the shrinky ones survived</em> is advice.</li>
+    </ul>
+
+    <h3 class="colophon-h" id="sources">Sources</h3>
+    <div class="colophon-body">
+      <p><strong>The occasion.</strong> Hank Green, <em>The Most Important Thing that Ever Happened</em>, YouTube, 31 August 2026, with <strong>Cali Moore</strong> (PBS Eons) and a clip from <strong>Joe Hansen</strong> (<em>Be Smart</em>), made alongside <em>Eons: Life and Death in Pangea</em> (Complexly &times; PBS). The framing of <em>important</em> as dependence &times; contingency, and the observation that importance itself had to be invented, are Green's. The Pangea material and the lycopsid account are Moore's, quoted from that conversation. The ribosome answer is Hansen's; we have not built a link on it, because it has no date to put in a chronology.</p>
+      <p><strong>Chicxulub.</strong> Kaiho &amp; Oshima, &ldquo;Site of asteroid impact changed the history of life on Earth: the low probability of mass extinction,&rdquo; <em>Scientific Reports</em> 7:14855 (2017) &mdash; the ~13% figure. Collins et al., &ldquo;A steeply-inclined trajectory for the Chicxulub impact,&rdquo; <em>Nature Communications</em> 11:1480 (2020) &mdash; the 45&ndash;60&deg; angle. The <em>thirty seconds</em> figure is from the BBC documentary <em>The Day the Dinosaurs Died</em> (2017), not from either paper.</p>
+      <p><strong>Earliest life.</strong> Nutman et al., <em>Nature</em> 537 (2016), the 3.7 Ga Isua claim; Allwood et al., &ldquo;Reassessing evidence of life in 3,700-million-year-old rocks of Greenland,&rdquo; <em>Nature</em> 563 (2018), the rebuttal. The 3.48 Ga Dresser Formation of the Pilbara is the more widely accepted floor.</p>
+      <p><strong>Photosynthesis and oxygen.</strong> The single origin of water oxidation in Photosystem II, in an ancestor of the cyanobacteria, is the standard reading of the comparative and structural evidence. The lag between that origin and the Great Oxidation Event at ~2.4 Ga, including the Archean &ldquo;whiffs&rdquo; of oxygen, is well attested; the size of the lag depends on which origin date you accept, and estimates range from several hundred million years to well over a billion. We have said <em>something like a billion</em> rather than pretending to a figure.</p>
+      <p><strong>Eukaryogenesis.</strong> Betts et al., &ldquo;Integrated genomic and fossil evidence illuminates life's early evolution and eukaryote origin,&rdquo; <em>Nature Ecology &amp; Evolution</em> 2 (2018), for the ~1.84 Ga neighbourhood; the Asgard archaea literature, from Zaremba-Niedzwiedzka et al. (2017) onward, for the archaeal host and the division of labour with the bacterial partner. Our own <a href="you-were-never-one-thing-zine.html">No. 7</a> carries the argument.</p>
+      <p><strong>Palaeogeography.</strong> Merdith et al., &ldquo;Extending full-plate tectonic models into deep time,&rdquo; <em>Earth-Science Reviews</em> 214:103477 (2021) &mdash; the continuous full-plate model back to 1 Ga, and the reason every globe older than that is drawn dashed. The four future scenarios &mdash; Amasia, Novopangaea, Aurica, Pangaea Ultima &mdash; are from the Davies, Green and Duarte comparisons of next-supercontinent models.</p>
+      <p><strong>Theia.</strong> The giant-impact hypothesis is standard; the near-identity of terrestrial and lunar oxygen isotopes against the impactor-dominated composition the models predict is the open problem, referred to in the literature as the isotopic crisis. On the Moon and axial tilt: Laskar, Joutel &amp; Robutel, <em>Nature</em> 361 (1993) against Lissauer, Barnes &amp; Chambers, <em>Icarus</em> 217 (2012).</p>
+    </div>
+
+    <h3 class="colophon-h" id="on-the-title">On the title</h3>
+    <div class="colophon-body">
+      <p>The title is <strong>ours, compressed from Green's</strong>, and we are saying so rather than letting it pass as a quotation. What he actually said, verbatim, is: <em>&ldquo;there have been a lot of earths and this is just one of them and there could have been a lot of other earths.&rdquo;</em> He also says, later, that the history of the Earth is <em>&ldquo;a sequence of impossible worlds.&rdquo;</em> Both are quoted where they appear. The cover is a paraphrase wearing our own words, which is a thing we are allowed to do only if we never let it be mistaken for his sentence.</p>
+    </div>
+
+    <h3 class="colophon-h" id="on-the-form">On the form</h3>
+    <div class="colophon-body">
+      <p>This is the second zine here built to <strong>scroll</strong> rather than to page, and the second time the reason has been that the shape of the reading is part of the claim. A section's height is the length of the thing it describes. Chicxulub is one screen. The wait between oxygenic photosynthesis and the sky changing colour is three, most of it empty, with a rail down the side so the emptiness reads as elapsed time. You cannot argue that the durations did the work and then give every duration the same amount of paper.</p>
+      <p>The globes are <strong>schematic before 1 billion years ago and reconstructed after it</strong>, and they are drawn dashed and faint in the schematic half on purpose. A confident coastline is a claim. Where the models cannot support one, neither can the drawing.</p>
+      <p>On the joints: this collection marks every link <em>documented</em>, <em>contested</em> or <em>leap</em>, because a chain is built to feel inevitable and a chain about contingency had better not. Nine links here: six documented, two contested, one leap, plus a leap called out inside Link 9 that we refuse rather than use.</p>
+      <p>It prints. On paper the sections collapse into continuous prose and the screen furniture goes away &mdash; including the heights, because a three-screen section would otherwise print as three blank sheets.</p>
+    </div>
+
+    <h3 class="colophon-h" id="credits">Credits</h3>
+    <div class="colophon-body">
+      <p>Written by <strong>Ryan Boren</strong> for <a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks Foundation</a> &times; <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a>. The chain, the duration argument and the turn are ours; the list of candidate events is Green's and Moore's, and we have gone to the primary literature behind each one rather than inheriting it. Two of the corrections above &mdash; the disputed Isua stromatolites and the documentary provenance of <em>thirty seconds</em> &mdash; are things we would not have found by trusting the summary, which is the whole of our policy on summaries.</p>
+    </div>
+
+    <span class="colophon-ls">L&#9733;S</span>
+    <p class="colophon-phrase">Love you down to your star stuff.</p>
+
+    <div class="colophon-footer">
+      Stimpunks Foundation &times; More Realms<br>
+      stimpunks.org &middot; morerealms.com &middot; starstuff.earth<br>
+      Print it. Copy it. Give it away.
+    </div>
+  </div>
+</section>
+
+</main>
+
+<script src="starstuff.js"></script>
+<script>
+(function () {
+  'use strict';
+  var sections = Array.prototype.slice.call(document.querySelectorAll('.spread'));
+  var now = document.getElementById('deep-now');
+  var bar = document.getElementById('deep-progress');
+  if (!sections.length || !now || !bar) return;
+
+  function pad(n) { return (n < 10 ? '0' : '') + n; }
+
+  /* The counter tracks whichever section owns the middle of the viewport. On this
+     zine that matters more than on the last one: a 300vh section never crosses a
+     fixed IntersectionObserver threshold in the way a 100vh one does. */
+  function update() {
+    var mid = window.innerHeight / 2;
+    var current = 1;
+    for (var i = 0; i < sections.length; i++) {
+      var r = sections[i].getBoundingClientRect();
+      if (r.top <= mid && r.bottom > mid) { current = i + 1; break; }
+      if (r.top > mid) break;
+      current = i + 1;
+    }
+    now.textContent = pad(current);
+
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = (max > 0 ? Math.min(100, (window.pageYOffset / max) * 100) : 0) + '%';
+  }
+
+  var ticking = false;
+  function onScroll() {
+    if (ticking) return;
+    ticking = true;
+    window.requestAnimationFrame(function () { update(); ticking = false; });
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
+  update();
+})();
+</script>
+
+</body>
+</html>
