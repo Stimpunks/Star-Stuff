@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0a0a14">
+<link rel="canonical" href="https://starstuff.earth/glimmer-wire.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta name="description" content="A weekly digest of hopeful science and medicine, graded before it is enjoyed — the working scan behind the Glimmers collection. Seven items filed, three held, five leads, each carrying what was actually read and what was not. Saturn's ten-sided south pole against its famous hexagon, rocky planets a hundred million years after the Big Bang, diamond turning pressure into charge at its irregular grain boundaries, and the triune brain retired across 182 species. Published with every grade below verified, because no paper could be opened that day.">
+<!-- Open Graph / link unfurl -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Star Stuff &middot; Stimpunks Foundation &times; More Realms">
+<meta property="og:url" content="https://starstuff.earth/glimmer-wire.html">
+<meta property="og:title" content="Glimmer Wire &mdash; a graded weekly scan of hopeful science">
+<meta property="og:description" content="Seven items filed, three held, five leads. Every one graded, and the section that matters is the one listing what we declined and why.">
+<meta property="og:image" content="https://starstuff.earth/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A rainbow-hued cosmic image &mdash; we are all made of star stuff.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Glimmer Wire &mdash; a graded weekly scan of hopeful science">
+<meta name="twitter:description" content="The working scan behind Glimmers, published with its grades showing. Seven filed, three held — including the whale story the peer-reviewed survey contradicts.">
+<meta name="twitter:image" content="https://starstuff.earth/og-card.jpg">
+<title>Glimmer Wire — Hopeful Science, Graded — Stimpunks × More Realms</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="starstuff.css">
+<style>
+  :root {
+    --void:  var(--sp-void-deep);
+    --deep:  var(--sp-deep);
+    --page:  var(--sp-page);
+    --card:  var(--sp-card);
+    --violet:var(--sp-purple);
+    --pink:  var(--sp-pink);
+    --gold:  var(--sp-gold);
+    --cyan:  var(--sp-cyan);
+    --green: var(--sp-green);
+    --star-white: var(--sp-white-soft);
+    --stardust:   var(--sp-secondary-soft);
+    --secondary:  var(--sp-secondary);
+    --muted: var(--sp-muted);
+    --dim:   var(--sp-dim);
+    --dim2:  var(--sp-dim-soft);
+    /* Gold leads: it is the Glimmers collection accent, and this page is the
+       working scan behind that collection rather than a Notes house colour. */
+    --accent:var(--sp-gold);
+    --border: rgba(251,191,36,0.16);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  /* One unscoped rule: the first draft scoped it to .notice and .seed, and the
+     dead-class gate caught the .caveat use it therefore never reached. */
+  .mono { font-family: 'Space Mono', monospace; }
+
+  html, body {
+    background: var(--void);
+    font-family: 'Atkinson Hyperlegible Next', system-ui, sans-serif;
+    color: var(--star-white);
+    line-height: 1.7;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Starfield, tinted gold for Glimmers. Inline and per-page by design —
+     see starstuff.css on why the themed gradient art is not shared. */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background-image:
+      radial-gradient(1px 1px at 11% 14%, rgba(251,191,36,0.70) 0%, transparent 100%),
+      radial-gradient(1px 1px at 27% 41%, rgba(244,242,251,0.60) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 43% 9%, rgba(251,191,36,0.55) 0%, transparent 100%),
+      radial-gradient(1px 1px at 61% 68%, rgba(167,139,250,0.50) 0%, transparent 100%),
+      radial-gradient(2px 2px at 78% 25%, rgba(244,242,251,0.50) 0%, transparent 100%),
+      radial-gradient(1px 1px at 87% 57%, rgba(251,191,36,0.55) 0%, transparent 100%),
+      radial-gradient(1px 1px at 93% 80%, rgba(244,242,251,0.70) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 6% 62%, rgba(251,191,36,0.45) 0%, transparent 100%),
+      radial-gradient(1px 1px at 34% 87%, rgba(244,242,251,0.60) 0%, transparent 100%),
+      radial-gradient(1px 1px at 54% 47%, rgba(34,211,238,0.45) 0%, transparent 100%),
+      radial-gradient(2px 2px at 19% 83%, rgba(251,191,36,0.45) 0%, transparent 100%),
+      radial-gradient(1px 1px at 71% 7%, rgba(244,242,251,0.75) 0%, transparent 100%),
+      radial-gradient(1px 1px at 47% 64%, rgba(251,191,36,0.40) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 38% 23%, rgba(244,242,251,0.50) 0%, transparent 100%),
+      radial-gradient(1px 1px at 64% 92%, rgba(167,139,250,0.45) 0%, transparent 100%),
+      radial-gradient(1px 1px at 82% 44%, rgba(251,191,36,0.50) 0%, transparent 100%);
+    animation: twinkle-anim 9s ease-in-out infinite;
+  }
+
+  .doc-shell { position: relative; z-index: 1; max-width: 820px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+
+  .nav-brand { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--dim2); margin-bottom: 2rem; }
+  .nav-brand a { color: inherit; }
+
+  /* ---------- Hero ---------- */
+
+  .hero { margin-bottom: 2.5rem; }
+  .hero-eyebrow { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--secondary); margin-bottom: 1rem; }
+  .hero-eyebrow a { color: inherit; }
+  .hero-title { font-size: clamp(2.2rem, 7vw, 3.4rem); font-weight: 800; line-height: 1.05; letter-spacing: -0.02em; color: var(--star-white); text-wrap: balance; margin: 0 0 1rem; scroll-margin-top: 5rem; }
+  .hero-title .star { color: var(--gold); }
+  .hero-byline { font-size: 1.05rem; color: var(--muted); max-width: 44ch; margin-bottom: 0.9rem; }
+  .hero-sub { font-size: 0.95rem; color: var(--stardust); max-width: 62ch; }
+  .hero-rule { border: 0; height: 2px; background: var(--gold); opacity: 0.5; border-radius: 2px; margin: 1.5rem 0 1.1rem; }
+
+  .dateline { font-family: 'Space Mono', monospace; font-size: 0.68rem; letter-spacing: 0.1em; color: var(--secondary); display: flex; flex-wrap: wrap; gap: 0.4rem 1.1rem; font-variant-numeric: tabular-nums; }
+  .dateline i { font-style: normal; color: var(--dim); }
+  .dateline b { color: var(--gold); font-weight: 700; }
+
+  /* ---------- Standing notice ---------- */
+
+  .notice { background: var(--card); border-left: 3px solid var(--pink); border-radius: 8px; padding: 1.1rem 1.3rem; margin-bottom: 2.75rem; display: flex; flex-direction: column; gap: 0.6rem; }
+  .notice h2 { font-size: 0.62rem; font-family: 'Space Mono', monospace; letter-spacing: 0.18em; text-transform: uppercase; color: var(--pink); font-weight: 700; margin: 0; scroll-margin-top: 5rem; }
+  .notice p { font-size: 0.9rem; color: var(--stardust); }
+
+  /* ---------- Sections ---------- */
+
+  h2.section { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.01em; color: var(--sec-accent, var(--star-white)); margin: 0 0 0.4rem; scroll-margin-top: 5rem; text-wrap: balance; }
+  .section-rule { height: 2px; background: var(--sec-accent, var(--gold)); opacity: 0.5; margin-bottom: 0.9rem; border-radius: 2px; }
+  .section-intro { color: var(--muted); font-size: 0.95rem; margin-bottom: 1.6rem; max-width: 62ch; }
+  .section-block { margin-bottom: 3.25rem; }
+
+  /* ---------- Grading key ---------- */
+
+  .key { display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); gap: 0.75rem; margin-bottom: 1.6rem; }
+  .key div { border: 1px solid var(--border); border-radius: 8px; padding: 0.7rem 0.85rem; font-size: 0.8rem; color: var(--stardust); display: flex; flex-direction: column; gap: 0.3rem; }
+  .key span { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.14em; font-weight: 700; }
+  .key .k-verified  { color: var(--green); }
+  .key .k-plausible { color: var(--gold); }
+  .key .k-contested { color: var(--pink); }
+  .key .k-held      { color: var(--dim); }
+
+  /* ---------- Entries ---------- */
+
+  .wire-list { display: flex; flex-direction: column; gap: 1.5rem; }
+  .wire-item { background: var(--card); border: 1px solid var(--border); border-left: 3px solid var(--e-accent, var(--gold)); border-radius: 8px; padding: 1.4rem 1.5rem 1.5rem; display: flex; flex-direction: column; gap: 0.9rem; }
+
+  .meta { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.35rem 1rem; font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.1em; color: var(--dim); font-variant-numeric: tabular-nums; }
+  .meta i { font-style: normal; color: var(--secondary); }
+  .meta .grade { font-weight: 700; letter-spacing: 0.14em; color: var(--e-accent, var(--gold)); }
+  .meta .grade.contested { color: var(--pink); }
+
+  /* Lag: how long the finding had been public before a news wire carried it.
+     A real axis for a digest — several of these are months old, and the number
+     is what settled the weekly cadence. Bar plus figure, never the bar alone. */
+  .lag { display: flex; align-items: center; gap: 0.5rem; width: 100%; margin-top: 0.1rem; }
+  .lag-label { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.1em; color: var(--dim); white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .lag-track { flex: 1; height: 3px; background: rgba(184,174,208,0.16); border-radius: 2px; overflow: hidden; min-width: 3rem; }
+  .lag-fill { display: block; height: 100%; background: var(--e-accent, var(--gold)); opacity: 0.75; border-radius: 2px; }
+
+  .wire-item h3 { font-size: 1.28rem; font-weight: 800; line-height: 1.25; letter-spacing: -0.01em; color: var(--star-white); text-wrap: balance; scroll-margin-top: 5rem; }
+  .finding { color: var(--star-white); }
+
+  .frame, .placement, .caveat { border-radius: 6px; padding: 0.8rem 0.95rem; font-size: 0.92rem; }
+  .frame { background: rgba(10,10,20,0.55); border-left: 2px solid var(--e-accent, var(--gold)); color: var(--star-white); }
+  .placement { background: rgba(10,10,20,0.4); border-left: 2px solid var(--secondary); color: var(--stardust); }
+  .caveat { background: rgba(10,10,20,0.4); border-left: 2px solid var(--pink); color: var(--stardust); }
+  .frame b, .placement b, .caveat b { display: block; font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 0.35rem; font-weight: 700; }
+  .frame b     { color: var(--e-accent, var(--gold)); }
+  .placement b { color: var(--secondary); }
+  .caveat b    { color: var(--pink); }
+
+  .cite { font-family: 'Space Mono', monospace; font-size: 0.63rem; line-height: 1.75; color: var(--dim2); border-top: 1px solid var(--border); padding-top: 0.75rem; word-break: break-word; }
+  .cite b { color: var(--secondary); font-weight: 700; }
+  .cite a { color: var(--secondary); }
+
+  /* ---------- Held ---------- */
+
+  .held { display: flex; flex-direction: column; gap: 1rem; }
+  .held-item { border: 1px dashed rgba(184,174,208,0.3); border-radius: 8px; padding: 1.1rem 1.25rem; display: flex; flex-direction: column; gap: 0.5rem; }
+  .held-item h3 { font-size: 1.02rem; font-weight: 700; color: var(--stardust); line-height: 1.3; scroll-margin-top: 5rem; }
+  .held-item p { font-size: 0.9rem; color: var(--muted); }
+  .held-item .why { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--dim); font-weight: 700; }
+
+  /* ---------- Seedbed ---------- */
+
+  .seeds { display: flex; flex-direction: column; gap: 1.1rem; }
+  .seed { background: var(--card); border-radius: 8px; border-left: 3px solid var(--s-accent, var(--violet)); padding: 1.1rem 1.25rem; display: flex; flex-direction: column; gap: 0.5rem; }
+  .seed-kind { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; color: var(--s-accent, var(--violet)); }
+  .seed h3 { font-size: 1.08rem; font-weight: 800; color: var(--star-white); line-height: 1.3; scroll-margin-top: 5rem; }
+  .seed p { font-size: 0.92rem; color: var(--stardust); }
+  .seed .src { font-family: 'Space Mono', monospace; font-size: 0.62rem; color: var(--dim2); line-height: 1.7; word-break: break-word; }
+
+  /* ---------- Refusals ---------- */
+
+  .refusals { background: var(--card); border: 1px solid rgba(244,114,182,0.3); border-radius: 8px; padding: 1.4rem 1.5rem; display: flex; flex-direction: column; gap: 0.85rem; }
+  .refusals p { font-size: 0.94rem; color: var(--star-white); }
+  .refusals p strong { color: var(--pink); font-weight: 700; }
+
+  /* ---------- Editions ----------
+     One page, every edition kept. Nothing is deleted: the Held list is the
+     record this page exists for, and an archive of only the good weeks would
+     assert a cadence that did not happen. New editions are PREPENDED. */
+  .edition + .edition { margin-top: 4rem; padding-top: 2.5rem; border-top: 1px solid var(--border); }
+  .edition-date { font-family: 'Space Mono', monospace; font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 700; margin-bottom: 0.5rem; scroll-margin-top: 5rem; }
+  .edition-tally { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.12em; color: var(--dim); margin-bottom: 2rem; font-variant-numeric: tabular-nums; }
+  .edition + .edition .edition-date { color: var(--secondary); }
+  .colophon-footer { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--dim2); line-height: 2.2; margin-top: 3rem; padding-top: 1.4rem; border-top: 1px solid var(--border); }
+  .colophon-footer a { color: inherit; }
+
+  /* Page-specific print work. The --sp-* aliases above give the token inversion
+     for free; these are the hardcoded rgba surfaces and the lag bar, which the
+     shared sheet cannot reach. */
+  @media print {
+    body::before { display: none !important; }
+    .doc-shell { max-width: none; padding: 0 0 1rem; }
+    .wire-item, .notice, .seed, .refusals, .held-item, .key div {
+      background: transparent !important; border-color: #999999 !important; break-inside: avoid;
+    }
+    .wire-item, .notice, .seed { border-left-color: #333333 !important; }
+    .frame, .placement, .caveat { background: transparent !important; border-left-color: #666666 !important; }
+    .lag-track { background: #dddddd !important; }
+    .lag-fill { background: #555555 !important; opacity: 1; }
+    .hero-rule, .section-rule { background: #333333 !important; opacity: 1; }
+  }
+
+  @media (max-width: 600px) {
+    .doc-shell { padding: 2rem 1.3rem 3rem; }
+  }
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Glimmer Wire","description":"A weekly digest of hopeful science and medicine, graded before it is enjoyed — the working scan behind the Glimmers collection. Seven items filed, three held, five leads, each carrying what was actually read and what was not.","image":"https://starstuff.earth/og-card.jpg","url":"https://starstuff.earth/glimmer-wire.html","mainEntityOfPage":"https://starstuff.earth/glimmer-wire.html","datePublished":"2026-09-02","author":{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/"},"publisher":[{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/","logo":{"@type":"ImageObject","url":"https://starstuff.earth/og-card.jpg"}},{"@type":"Organization","name":"More Realms","url":"https://morerealms.com/"}],"isPartOf":{"@type":"WebSite","name":"Star Stuff","url":"https://starstuff.earth/"}}</script>
+</head>
+<body>
+
+<div class="doc-shell">
+
+  <!-- Home-group only, no prev/next: every member of Notes & Rationale sits outside
+       the reading chain by decision. See collection-notes.html. -->
+  <nav class="ss-nav" style="--nav-accent:#fbbf24;" aria-label="Star Stuff collection">
+    <span class="ss-nav-home-group"><a class="ss-nav-home" href="index.html"><span class="ss-star" aria-hidden="true">★</span> stuff</a><a class="ss-nav-about" href="about.html">about</a>
+      <a class="ss-nav-search" href="search.html">search</a></span>
+    <a class="ss-nav-collection" href="collection-notes.html"><span class="ss-nav-collection-label">Collection</span> <span class="ss-nav-collection-name">Notes &amp; Rationale</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
+  </nav>
+<main>
+
+  <div class="nav-brand"><a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks</a> &times; <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a> &middot; Rationale &middot; Working Scan</div>
+
+  <header class="hero">
+    <div class="hero-eyebrow"><a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks Foundation</a> &times; <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a> &middot; Working Paper</div>
+    <h1 class="hero-title" id="masthead">Glimmer <span class="star">&#9733;</span> Wire</h1>
+    <p class="hero-byline">A weekly read of what is going well in science and medicine, graded before it is enjoyed.</p>
+    <p class="hero-sub">This is the scan that sits behind <a href="collection-glimmers.html">Glimmers</a>, published with its grades showing rather than kept in a drafts folder. Items are sorted by <em>lag</em> &mdash; how long a finding had been public before a news wire carried it here &mdash; and the section that matters most is <a href="#held-items">Held</a>, which lists what we declined and why. Nothing here has cleared the bar to be a page. That is the point of showing it.</p>
+    <hr class="hero-rule">
+    <p class="dateline">
+      <span><i>Latest</i> <b>2 September 2026</b></span>
+      <span><i>Editions</i> <b>1</b></span>
+      <span><i>Cadence</i> <b>Weekly, Fridays</b></span>
+      <span><i>Verified to date</i> <b>0</b></span>
+    </p>
+  </header>
+
+  <!-- ============================================================
+       NEW EDITIONS ARE PREPENDED IMMEDIATELY BELOW THIS MARKER.
+       One <div class="edition" id="edition-YYYY-MM-DD"> per week,
+       newest first. Never delete an older edition.
+       ============================================================ -->
+
+  <div class="edition" id="edition-2026-09-02">
+    <h2 class="edition-date" id="ed-2026-09-02">Edition of 2 September 2026</h2>
+    <p class="edition-tally">7 filed &middot; 3 held &middot; 5 leads &middot; 0 verified &middot; median lag 36 d</p>
+
+  <div class="notice" role="region" aria-labelledby="what-was-read">
+    <h2 id="what-was-read">What was actually read</h2>
+    <p>Every item below is graded, and none of them is graded <strong>verified</strong>. <em>Science Advances</em>, <em>Nature Medicine</em>, <em>Neuron</em>, PMC, PubMed and medRxiv all refused a direct read on the day this was compiled &mdash; paywalls, an authentication redirect, three <span class="mono">403</span>s and a reCAPTCHA. So the sourcing stops at institutional press releases, publisher metadata and DOIs: the university or agency that did the work, never the paper itself.</p>
+    <p>That is a real limit and it belongs on the page rather than in a footnote. Each entry names what was read and what was not, and figures that reached us only through a news summary are marked as such. Anything here that becomes a <a href="collection-glimmers.html">Glimmers</a> entry or a zine needs the primary source first, a <a href="changelog.html">changelog</a> entry, and its row in the fact-check ledger &mdash; the standard does not move because the format is fast.</p>
+  </div>
+
+  <div class="section-block" role="region" style="--sec-accent: var(--gold);" aria-labelledby="filed">
+    <h2 class="section" id="filed">Filed</h2>
+    <div class="section-rule" aria-hidden="true"></div>
+    <p class="section-intro">Sorted by lag. Three of these seven were news that week only in the sense that somebody re-ran them &mdash; the median gap between publication and coverage was <strong>36 days</strong>, and exactly one item was same-day. That distribution is why this digest is weekly and not daily.</p>
+
+    <div class="key" role="list">
+      <div role="listitem"><span class="k-verified">Verified</span> Primary source read and confirmed.</div>
+      <div role="listitem"><span class="k-plausible">Plausible</span> Finding sound and metadata confirmed; paper text not read.</div>
+      <div role="listitem"><span class="k-contested">Contested</span> Specialists disagree, or the claim outruns the method.</div>
+      <div role="listitem"><span class="k-held">Held</span> Could not be traced to a source that supports it.</div>
+    </div>
+
+    <div class="wire-list">
+
+      <article class="wire-item" id="decagon" style="--e-accent: var(--gold);" aria-labelledby="decagon-title">
+        <p class="meta">
+          <span class="grade">Plausible</span>
+          <span><i>Published</i> 2026-09-02</span>
+          <span><i>Journal</i> Science Advances</span>
+          <span><i>Read</i> NASA release</span>
+        </p>
+        <p class="lag"><span class="lag-label">Lag 0 d</span><span class="lag-track" aria-hidden="true"><span class="lag-fill" style="width:1%"></span></span></p>
+        <h3 id="decagon-title">Saturn grew a ten-sided pole, and the famous six-sided one stopped being a law</h3>
+        <p class="finding">Saturn's northern hexagon &mdash; a jet stream bent into six straight sides, wider than Earth &mdash; has been in every image anyone has taken for more than forty years. That durability is exactly why it read as a rule about how gas giants behave. Hubble has now tracked a <strong>decagon</strong>, ten sides, encircling the <em>south</em> pole: the first large regular-sided jet pattern seen in Saturn's southern hemisphere. It appears to have formed between 2023 and 2025, is still changing, and nobody knows why it arrived now.</p>
+        <div class="frame">
+          <b>The star stuff frame</b>
+          One planet, one atmosphere, one set of physics &mdash; and two poles that resolved it differently, six sides at the top and ten at the bottom. Neither is the standard; the hexagon only looked like the standard because it was the one we had measured. Forty years of stability was mistaken for a rule, and the correction came from looking at the other end of the same object. The universe doesn't pathologize its own variation &mdash; and here it declines even to standardise a planet against itself.
+        </div>
+        <div class="placement">
+          <b>Where it goes</b>
+          Glimmers, gold accent. It also pairs hard with <a href="the-sky-was-not-regular-enough-zine.html">No. 50</a>, <em>The Sky Was Not Regular Enough</em> &mdash; that piece is about the sky failing to be steady enough to keep time by; this is the sky failing to be regular enough to generalise from. A companion note, not a rewrite.
+        </div>
+        <p class="cite"><b>S&aacute;nchez-Lavega, A., et al.</b> <em>Science Advances</em>, 2 September 2026. <b>DOI</b> 10.1126/sciadv.aee4251. <b>Read:</b> <a href="https://science.nasa.gov/missions/hubble/nasas-hubble-tracks-new-decagon-encircling-saturns-south-pole/">NASA Science</a>, which carries direct quotes from Amy Simon and states the cause as open. <b>Not read:</b> the paper. <b>No figures</b> for the decagon's size, latitude or wind speed were in the release; don't invent them.</p>
+      </article>
+
+      <article class="wire-item" id="cosmic-dawn" style="--e-accent: var(--violet);" aria-labelledby="cosmic-dawn-title">
+        <p class="meta">
+          <span class="grade contested">Contested</span>
+          <span><i>Announced</i> 2026-08-28</span>
+          <span><i>Journal</i> Astrophysical Journal Letters</span>
+          <span><i>Read</i> Portsmouth release</span>
+        </p>
+        <p class="lag"><span class="lag-label">Lag 5 d</span><span class="lag-track" aria-hidden="true"><span class="lag-fill" style="width:4%"></span></span></p>
+        <h3 id="cosmic-dawn-title">The clock on &ldquo;you are made of star stuff&rdquo; may start 13.7 billion years ago</h3>
+        <p class="finding">The first stars were enormous, and some ended as pair-instability supernovae &mdash; explosions that can throw out more than a hundred solar masses of heavy elements at once. Simulations from Portsmouth follow that debris as it settles around a later, smaller star, roughly 70% of the Sun's mass, and find a water-rich disc capable of building planetesimals: the precursors of rocky worlds. Carbon, oxygen, iron. Water at a few times less than the Solar System had. All of it about <strong>100 million years after the Big Bang</strong>, before the first galaxies had finished assembling.</p>
+        <div class="frame">
+          <b>The star stuff frame</b>
+          This is the founding fact of the whole collection with its date moved. The atoms in a body were forged in dying stars and scattered &mdash; and the scattering, and the assembling of them into rock and water, may have begun almost immediately. Sagan's line stops being a story about the late universe and becomes a description of how it worked from the start. If it holds, the ingredients were never scarce and never late.
+        </div>
+        <div class="caveat">
+          <b>Why contested, not plausible</b>
+          This is a simulation chain, and the release describes <em>one</em> example disc meeting the criteria. Coverage elsewhere is already framing it as a debate. The gap between &ldquo;planetesimals could form&rdquo; and the habitability language in the headlines is wide, and it is the kind of gap this site exists to hold open rather than close.
+        </div>
+        <div class="placement">
+          <b>Where it goes</b>
+          Glimmers if the paper supports the narrow claim, with the wide claim named and refused on the page. It is also the strongest zine candidate here for <a href="collection-star-stuff.html">Star Stuff</a> proper &mdash; one settled-enough fact, followed honestly, and the belonging claim already inside it.
+        </div>
+        <p class="cite"><b>Jessop, C., &amp; Whalen, D. J.</b> &ldquo;Planet Formation at Cosmic Dawn: Planetesimals in H<sub>2</sub>O-Rich Disks Around Low-Mass Stars.&rdquo; <em>The Astrophysical Journal Letters</em>, 2026. <b>Read:</b> <a href="https://www.port.ac.uk/news-events-and-blogs/news/the-ingredients-for-planets-formed-far-earlier-than-thought">University of Portsmouth</a>. <b>Not read:</b> the paper. <b>Not obtained:</b> DOI, full author list, redshift or metallicity thresholds. The title came from a search summary rather than the release &mdash; confirm it before quoting.</p>
+      </article>
+
+      <article class="wire-item" id="strengths" style="--e-accent: var(--green);" aria-labelledby="strengths-title">
+        <p class="meta">
+          <span class="grade">Plausible</span>
+          <span><i>Published</i> 2026-08 (epub)</span>
+          <span><i>Journal</i> Autism</span>
+          <span><i>Read</i> listings only</span>
+        </p>
+        <p class="lag"><span class="lag-label">Lag ~7 d</span><span class="lag-track" aria-hidden="true"><span class="lag-fill" style="width:6%"></span></span></p>
+        <h3 id="strengths-title">Somebody asked Autistic adults what we are good at, in our own words</h3>
+        <p class="finding">Autism research overwhelmingly measures deficits; instruments ask what is hard and rarely what is there. This study put open-ended questions to 127 legally independent Autistic adults and coded what they said about their own strengths and talents. The answers spread across problem-solving, creativity, character, academics and getting along with others &mdash; and close to a third named <em>good people skills</em>, which is the specific thing the literature is most confident we lack. The authors argue strengths should be measured during assessment, not just difficulties.</p>
+        <div class="frame">
+          <b>The star stuff frame</b>
+          A spiky profile has two sides, and the field has instruments for one of them. This is not a claim that we are secretly fine; it is a claim about who holds the pen. A third of a sample reporting social strength, inside a paradigm built on social deficit, is variation showing up the moment the question changed &mdash; and <a href="difference-first-frame.html">difference-first</a> is the frame this whole site is built on.
+        </div>
+        <div class="caveat">
+          <b>Handle carefully</b>
+          Self-report from 127 people recruited through SPARK &mdash; a genetics research registry some of our community declines to join, which makes the sample selected in a way any use of it has to state. And the finding writes itself straight into the superpower framing if left alone. That trap is already named across the collection; a piece here would have to name it again.
+        </div>
+        <div class="placement">
+          <b>Where it goes</b>
+          Glimmers is a stretch &mdash; this is a paper, not an occasion. Better as a card in the neurodiversity field guide, or the evidence spread of a zine about who gets to write the instrument.
+        </div>
+        <p class="cite"><b>Lampinen, L. A., Singer, J., Wang, X., VanHook, B., Wilkinson, E., &amp; Bal, V. H.</b> &ldquo;Self-reported strengths and talents of autistic adults.&rdquo; <em>Autism</em>, 2026. <b>DOI</b> 10.1177/13623613251364361 &middot; PMID 40856551. <b>Read:</b> journal and PubMed listings, plus a SPARK research-match summary. <b>Not read:</b> the abstract in full, or the paper. Recruitment, coding method and limitations all need checking at source. Note the house rule: <em>Autistic</em> is capitalised as an identity term, and the paper's own lowercase title is quoted verbatim.</p>
+      </article>
+
+      <article class="wire-item" id="fibro" style="--e-accent: var(--pink);" aria-labelledby="fibro-title">
+        <p class="meta">
+          <span class="grade contested">Contested</span>
+          <span><i>Published</i> 2026-07-28</span>
+          <span><i>Journal</i> Nature Medicine</span>
+          <span><i>Read</i> metadata + critique</span>
+        </p>
+        <p class="lag"><span class="lag-label">Lag 36 d</span><span class="lag-track" aria-hidden="true"><span class="lag-fill" style="width:28%"></span></span></p>
+        <h3 id="fibro-title">The largest fibromyalgia study ever run found something &mdash; and much less than the headlines said</h3>
+        <p class="finding">A multi-ancestry genome-wide meta-analysis across roughly 2.56 million people reports 26 risk loci for fibromyalgia, heritability enriched in brain tissues and neural cell types, and genetic correlation above 0.7 with low back pain, PTSD and irritable bowel syndrome. For a condition routinely met with <em>there is nothing wrong with you</em>, a measurable biological signature is not a small thing. A companion paper in <em>Nature Communications</em> covers adjacent ground.</p>
+        <div class="frame">
+          <b>The star stuff frame</b>
+          This is the shape of vindication and it is also the shape of a trap. The good part is real: pain that has been treated as fabrication has a genetic architecture, and it sits in the nervous system. The trap is that the belonging claim was never waiting on this. If a finding is what makes disbelieved people credible, then the next null result un-makes them. <em>Down to is not because of</em> &mdash; the star stuff is the extent of the claim, never its warrant, and the same rule applies here.
+        </div>
+        <div class="caveat">
+          <b>What the critique says &mdash; itself unverified</b>
+          A published critic's reading, which we have <em>not</em> checked against the paper: the headline <span class="mono">HTT</span> variant raises odds by about 9% (roughly 2.5% to 2.7% absolute), the model explains under 10% of risk, the polygenic score predicts at about 0.59 against a coin-flip 0.5, cases needed only one billing code, and measured prevalence ranged sixfold across cohorts. If those numbers survive, &ldquo;a central nervous system disorder with drug targets&rdquo; is well past what was measured. The critique is a lead too, and gets the same treatment as the paper.
+        </div>
+        <div class="placement">
+          <b>Where it goes</b>
+          Not Glimmers yet. This wants the paper, the critique checked line by line, and probably the <a href="too-good-to-check.html">Too Good to Check</a> treatment &mdash; a piece about a finding our own community most wants to be bigger than it is.
+        </div>
+        <p class="cite">&ldquo;The genetic architecture of fibromyalgia across 2.5 million individuals.&rdquo; <em>Nature Medicine</em>, 28 July 2026. <b>DOI</b> 10.1038/s41591-026-04492-6 &middot; PMC12458511 &middot; preprint medRxiv 10.1101/2025.09.18.25335914. Companion: &ldquo;The genetics of fibromyalgia and its relationships to psychiatric and medical traits,&rdquo; <em>Nature Communications</em>, DOI 10.1038/s41467-026-75256-6. <b>Read:</b> publisher metadata, a Fred Hutch release, one critical blog post. <b>Not read:</b> either paper &mdash; Nature redirected to authentication, medRxiv returned 403, PMC returned a reCAPTCHA.</p>
+      </article>
+
+      <article class="wire-item" id="microglia" style="--e-accent: var(--cyan);" aria-labelledby="microglia-title">
+        <p class="meta">
+          <span class="grade">Plausible</span>
+          <span><i>Published</i> 2026-07</span>
+          <span><i>Journal</i> Neuron</span>
+          <span><i>Read</i> Columbia coverage</span>
+        </p>
+        <p class="lag"><span class="lag-label">Lag ~37 d</span><span class="lag-track" aria-hidden="true"><span class="lag-fill" style="width:29%"></span></span></p>
+        <h3 id="microglia-title">Taking four to eight years to finish is the mechanism, not the delay</h3>
+        <p class="finding">Microglia are the brain's resident immune cells, and they do developmental work: pruning synapses, tuning how circuits respond. In a mouse they reach maturity in about three weeks. In a human they take <strong>four to eight years</strong>. Columbia's group traces that to human-specific duplications of the gene <em>SRGAP2</em> &mdash; reportedly around ten times more abundant in microglia than in neurons &mdash; which slow the maturation of both cell types. The slowing is <em>synchronised</em>: glia and neurons kept on the same long clock, and the group's reading is that the long clock is what human cognitive complexity is built on.</p>
+        <div class="frame">
+          <b>The star stuff frame</b>
+          One gene, doing the same thing to two different cell types so they stay in step, and the result of the delay is capacity. That is neoteny read as an achievement rather than a deficit, and it lands directly on a word our children get measured with. <em>Developmental delay</em> describes a schedule &mdash; and this is a species whose signature trick is being years behind the mouse on purpose.
+        </div>
+        <div class="placement">
+          <b>Where it goes</b>
+          A numbered <a href="collection-star-stuff.html">Star Stuff</a> zine rather than a Glimmers entry: one settled mechanism, followed until the belonging claim is already in it. Neoteny is <em>not</em> unspent here &mdash; check what <a href="the-play-you-keep-zine.html">The Play You Keep</a> and <a href="thirteen-changes-zine.html">Thirteen Changes</a> already argue. The unspent part is the <strong>synchrony</strong>: that being slow <em>together</em> is the point.
+        </div>
+        <p class="cite"><b>Diaz-Salazar, C., &hellip; Polleux, F.</b> &ldquo;Human-specific SRGAP2 paralogs synchronize neotenic microglial maturation and synaptic development.&rdquo; <em>Neuron</em>, 2026. Article S0896-6273(26)00536-2 &middot; preprint bioRxiv 10.1101/2024.06.28.601266. <b>Read:</b> Neuroscience News and Columbia Zuckerman Institute coverage. <b>Not read:</b> the paper &mdash; Cell returned 403. The &ldquo;ten times more abundant&rdquo; figure and the four-to-eight-year range come from that coverage, not the paper.</p>
+      </article>
+
+      <article class="wire-item" id="diamond" style="--e-accent: var(--violet);" aria-labelledby="diamond-title">
+        <p class="meta">
+          <span class="grade">Plausible</span>
+          <span><i>Published</i> 2026-05-21</span>
+          <span><i>Journal</i> Science Advances</span>
+          <span><i>Read</i> HKU release</span>
+        </p>
+        <p class="lag"><span class="lag-label">Lag 104 d</span><span class="lag-track" aria-hidden="true"><span class="lag-fill" style="width:80%"></span></span></p>
+        <h3 id="diamond-title">Diamond was ruled non-piezoelectric for a century. Its irregularities turned out to be the mechanism</h3>
+        <p class="finding">Squeeze a quartz crystal and it makes a voltage; that is piezoelectricity, and it requires a crystal structure without a centre of symmetry. Diamond has one, so for over a century diamond was simply not a piezoelectric material. A Hong Kong group used edge exfoliation to make diamond membranes thin enough to bend, bent them, and measured stable, repeatable voltages. Their calculations put the cause in the <strong>grain boundaries</strong> &mdash; the messy joins between crystal domains in a polycrystalline film. Charge polarisation gathers there as the bending increases, leaving a potential difference between the two faces. Named applications include self-powered implants and deformation sensors.</p>
+        <div class="frame">
+          <b>The star stuff frame</b>
+          This is the Yasuda line arriving from the opposite direction. Bone is piezoelectric &mdash; pressure into charge, the fact this whole collection stands on. Here the hardest material there is turns out to do the same thing, and it does it <em>because it is not uniform</em>. A perfect single crystal of diamond stays silent. The signal exists only where the structure is irregular. Difference is not tolerated in this system; difference is the transducer.
+        </div>
+        <div class="caveat">
+          <b>Numbers not confirmed</b>
+          A five-micrometre membrane holding output across more than 7,000 bending cycles at 0.35% strain: those figures came from a search summary. The HKU release carries the mechanism and no numbers, and <em>Science Advances</em> would not open. No piezoelectric coefficient was obtained at all. Don't print any of these until the paper is read &mdash; and mind the unit, because <span class="mono">&micro;m</span> is micrometres and a stylesheet that uppercases it turns the figure into millimetres and a thousandfold error.
+        </div>
+        <div class="placement">
+          <b>Where it goes</b>
+          The frame is too good to spend on a recirculated item without the paper. This is the companion to <a href="bone-song-zine.html">Bone Song</a> &mdash; a zine whose one fact is that asymmetry is what makes the charge.
+        </div>
+        <p class="cite"><b>Jing, J., et al.</b> &ldquo;Uncovering piezoelectric effect in polycrystalline diamond membranes.&rdquo; <em>Science Advances</em>, 21 May 2026. <b>DOI</b> 10.1126/sciadv.aea8318. Group led by Zhiqin Chu and Yuan Lin, University of Hong Kong. <b>Read:</b> the <a href="https://lead.hku.hk/press/news_detail_29115.html">HKU press release</a>. <b>Not read:</b> the paper, the full author list, or any measured value. <b>Surfaced</b> by a news feed on 29 August 2026, 100 days after publication.</p>
+      </article>
+
+      <article class="wire-item" id="triune" style="--e-accent: var(--pink);" aria-labelledby="triune-title">
+        <p class="meta">
+          <span class="grade">Plausible</span>
+          <span><i>Published</i> 2026, vol 12 no 17</span>
+          <span><i>Journal</i> Science Advances</span>
+          <span><i>Read</i> Georgia Tech release</span>
+        </p>
+        <p class="lag"><span class="lag-label">Lag ~130 d</span><span class="lag-track" aria-hidden="true"><span class="lag-fill" style="width:100%"></span></span></p>
+        <h3 id="triune-title">There is no lizard inside your head, and 182 species say what is there instead</h3>
+        <p class="finding">The triune brain &mdash; a reptilian core for survival, a limbic layer for emotion, a rational neocortex stacked on top &mdash; was proposed in the 1950s and has been contradicted by comparative neuroanatomy since the 1970s. It is also still in circulation, and appeared in introductory psychology textbooks as a real model as late as 2017. This analysis across <strong>182 species</strong> finds the limbic system and neocortex do not stack; they trade. The two are wired on different principles &mdash; spatially organised circuits against distributed networks &mdash; and expand and contract together as an animal's life demands. When limbic regions grow, cortex tends to give ground.</p>
+        <div class="frame">
+          <b>The star stuff frame</b>
+          This is the <a href="collection-how-we-got-here.html">How We Got Here</a> motive in one finding. The triune brain is good science's clothes on a bad idea: it has a neuroanatomist's name on it, it produced a diagram everybody can draw, and pointed at people it does exactly the flattening that collection was built to answer &mdash; it ranks parts of a nervous system by how recently they arrived and calls the older ones primitive. Every appeal to somebody's <em>lizard brain</em> descends from it. And the replacement is not a ladder at all: it is a trade-off, with no top.
+        </div>
+        <div class="placement">
+          <b>Where it goes</b>
+          The best chain candidate in this edition, and unspent &mdash; nothing on this site says <em>triune</em> or <em>lizard brain</em>. MacLean's proposal, the 1970s contradictions, the textbook survival to 2017, the pop-neuro descendants, and this paper: one link per spread, joints marked <span class="mono">documented</span> / <span class="mono">contested</span> / <span class="mono">leap</span>. It is an argument <em>for</em> the method and against a model that borrowed its authority &mdash; if a draft starts reading as anti-science it has gone wrong.
+        </div>
+        <p class="cite"><b>Imam, N., Kielo, M., Trude, B. M., &amp; Finlay, B. L.</b> &ldquo;Dual computational systems in the development and evolution of mammalian brains.&rdquo; <em>Science Advances</em> 12(17), 2026. <b>DOI</b> 10.1126/sciadv.aec6112. <b>Read:</b> a news release citing the paper, plus Georgia Tech Research News (29 June 2026). <b>Not read:</b> the paper. <b>Date approximate</b> &mdash; the issue number implies spring 2026 and was not confirmed; get the real date before it goes on a page. Barbara Finlay is a long-standing critic of the triune model, which is context rather than a caution.</p>
+      </article>
+
+    </div>
+  </div>
+
+  <div class="section-block" role="region" style="--sec-accent: var(--dim);" aria-labelledby="held-items">
+    <h2 class="section" id="held-items">Held</h2>
+    <div class="section-rule" aria-hidden="true"></div>
+    <p class="section-intro">Three stories that looked like the best items of the day and are not being filed. This section is why the digest is published at all. The fact-check ledger records what we checked and the <a href="changelog.html">changelog</a> records what we got wrong and fixed; neither records the story we declined to tell, and that is the record most worth keeping in public.</p>
+
+    <div class="held">
+      <div class="held-item">
+        <p class="why">Could not verify &mdash; primary contradicts</p>
+        <h3 id="held-whales">Humpback &ldquo;super-groups&rdquo; of more than a hundred whales feeding off the South Orkney Islands, for the first time in a century</h3>
+        <p>A wonderful item, and the strongest <a href="collection-more-than-human.html">More Than Human</a> candidate of the day. It traces to a conservation round-up with no citation. The peer-reviewed survey of that exact water &mdash; fin and humpback abundance at the South Orkneys across the austral summers 2011&ndash;2025, in the <em>ICES Journal of Marine Science</em> &mdash; reports humpback densities between 0 and about 0.12 individuals per square kilometre. That is not nothing, but it is not a hundred whales in one place either, and nothing found supports the century claim. Aggregators are leads, not citations. If the sighting is real there will be a survey report behind it; until then it stays here.</p>
+      </div>
+      <div class="held-item">
+        <p class="why">Held &mdash; scientism risk</p>
+        <h3 id="held-mindfulness">Mindfulness, gratitude and optimism training improving blood pressure and inflammation in eight to twelve weeks</h3>
+        <p>It may well be a good trial, and it is exactly the shape of claim that arrives with science's authority and none of its practice &mdash; the register where pre-registration, blinding, reported harms and published nulls decide whether there is anything there. It also sits one inch from <em>regulate yourself out of your material conditions</em>, which this collection refuses. Worth reading the trial. Not worth repeating first.</p>
+      </div>
+      <div class="held-item">
+        <p class="why">Held &mdash; undated round-up sourcing</p>
+        <h3 id="held-cow">A cow using a brush as a tool with purpose; cleaner wrasse passing the mirror test</h3>
+        <p>Both are plausible, both are on-frame for ethodiversity, and both reached us through undated &ldquo;surprisingly intelligent animals&rdquo; round-ups with no paper attached. The mirror-test result in cleaner wrasse is genuinely established in the literature and is not news; the cow needs a citation before it is anything. Good seedbed material, bad digest material.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-block" role="region" style="--sec-accent: var(--violet);" aria-labelledby="seedbed">
+    <h2 class="section" id="seedbed">Seedbed</h2>
+    <div class="section-rule" aria-hidden="true"></div>
+    <p class="section-intro">Not news, and not for Glimmers. These are pieces with a shape, checked far enough to be worth the next hour.</p>
+
+    <div class="seeds">
+
+      <div class="seed" style="--s-accent: var(--pink);">
+        <p class="seed-kind">Zine &middot; How We Got Here</p>
+        <h3 id="seed-lizard">The Lizard That Was Never There</h3>
+        <p>A Burke chain on the triune brain: a 1950s model, contradicted from the 1970s, alive in textbooks into 2017, and still supplying the phrase people reach for when they want to call somebody's reaction primitive. Ends on the 182-species trade-off that has no top. The collection's own argument &mdash; reclaim science from the things that wear its clothes &mdash; is the spine, and the joints will genuinely include a <span class="mono">leap</span> or two, because tracing a phrase into common speech always does.</p>
+        <p class="src">Source: Imam, Kielo, Trude &amp; Finlay, <em>Science Advances</em> 12(17), 2026, DOI 10.1126/sciadv.aec6112. Unspent: no page here contains &ldquo;triune&rdquo; or &ldquo;lizard brain&rdquo;.</p>
+      </div>
+
+      <div class="seed" style="--s-accent: var(--cyan);">
+        <p class="seed-kind">Zine &middot; Star Stuff &middot; companion to No. 1</p>
+        <h3 id="seed-charge">The Charge Is in the Joins</h3>
+        <p>Bone turns pressure into charge; that is where this whole site starts. Diamond &mdash; symmetric, perfect, ruled out for a century &mdash; does it too, and only where its crystal domains meet at irregular angles. One fact, one mechanism, and the belonging claim already inside it: the uniform sample is the silent one. Needs the paper first, and needs the coefficient.</p>
+        <p class="src">Source: Jing et al., <em>Science Advances</em>, 21 May 2026, DOI 10.1126/sciadv.aea8318. Note: piezoelectricity is spent across 33 pages here &mdash; the unspent claim is <em>asymmetry as the transducer</em>, not piezoelectricity itself.</p>
+      </div>
+
+      <div class="seed" style="--s-accent: var(--green);">
+        <p class="seed-kind">Field guide entry &middot; More Than Human</p>
+        <h3 id="seed-kanzi">Kanzi, who could hand you a cup of nothing</h3>
+        <p>A bonobo tracked imaginary juice and imaginary grapes through pretend tea parties, pointed to where the invisible grape was in 68.9% of trials, and chose the real juice when both were offered &mdash; so he knew which was which. Published in <em>Science</em> in February 2026; Kanzi died in March 2025, and the researchers want to know whether apes without his language training can do it too. The authors put the capacity for imagination possibly six to nine million years back, and other researchers question whether something simpler explains it. Both halves belong on the card.</p>
+        <p class="src">Bastos, A. P. M., &amp; Krupenye, C. &ldquo;Evidence for representation of pretend objects by Kanzi, a language-trained bonobo.&rdquo; <em>Science</em>, 5 February 2026, DOI 10.1126/science.adz0743. Unspent: no page here mentions Kanzi or pretend play.</p>
+      </div>
+
+      <div class="seed" style="--s-accent: var(--gold);">
+        <p class="seed-kind">Field guide &middot; the formula</p>
+        <h3 id="seed-poles">There is no standard pole</h3>
+        <p>Twelve guides in the collection arrive at <em>there is no standard star, nest, egg, shark, way to rest</em>. Saturn just supplied another, and unusually the variation is <em>within one body</em>: six sides north, ten sides south, same planet, same physics. A guide to poles, vortices and the shapes atmospheres settle into &mdash; Saturn's two, Venus's double vortex, Earth's wandering jet, Jupiter's polar cyclone clusters. Verify each entry independently; this one is a form waiting on eighteen facts, not a fact waiting on a form.</p>
+        <p class="src">Prompted by S&aacute;nchez-Lavega et al., <em>Science Advances</em>, 2 September 2026, DOI 10.1126/sciadv.aee4251.</p>
+      </div>
+
+      <div class="seed" style="--s-accent: var(--violet);">
+        <p class="seed-kind">Leads &middot; unchecked</p>
+        <h3 id="seed-leads">Four more off this week's wires</h3>
+        <p>Snake embryos spiral inside the egg because the body grows faster than the gut it has to fit around &mdash; two clocks in one animal, and the shape is the compromise. West African monkeys turn out to have feet flexible in ways that may make fossil feet misleading about human evolution &mdash; <em>no standard foot</em>. Neighbourhood conditions in someone's twenties showing up in their arteries decades later, and chronic money trouble tracking with faster brain ageing by fifty: both are the Environment and Systems rungs stated as measurements, and both are the argument that the deficit was in the conditions.</p>
+        <p class="src">All four off a top-science feed, 31 August &ndash; 2 September 2026. Journal, authors and DOIs not yet obtained for any of them.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="section-block" role="region" style="--sec-accent: var(--pink);" aria-labelledby="refusals">
+    <h2 class="section" id="refusals">Not</h2>
+    <div class="section-rule" aria-hidden="true"></div>
+    <div class="refusals">
+      <p><strong>Not a cure list.</strong> Nothing here is filed because it promises to make somebody normal. The soil, the whales, the diamond and the brains are here on the same terms.</p>
+      <p><strong>Not &ldquo;science says you are valid.&rdquo;</strong> The fibromyalgia item is the test of this. A finding that makes disbelieved people credible also makes them revocable, and the belonging claim was never waiting on a <em>p</em>-value.</p>
+      <p><strong>Not the superpower frame.</strong> Autistic adults naming our own strengths is a correction to who holds the instrument, not evidence of a gift.</p>
+      <p><strong>Not anti-science.</strong> The triune brain item is an argument for comparative neuroanatomy and against a model that borrowed its authority. If a draft off this digest starts reading as a case against evidence, it has gone wrong.</p>
+      <p><strong>Not <em>because of</em>.</strong> Saturn declining to standardise its own two poles is a rhyme, not a proof. The universe not pathologizing its variation is why the phrase has reach &mdash; <em>down to your star stuff</em> measures how far the loving goes, never why it is owed.</p>
+    </div>
+  </div>
+
+  </div><!-- /edition 2026-09-02 -->
+
+  <div class="colophon-footer">
+    <a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks Foundation</a> &times; <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a> &middot; Notes &amp; Rationale &middot; L&#9733;S<br>
+    Edition of 2 September 2026 &middot; seven filed, three held, five leads, none verified<br>
+    A working scan, not a finding &middot; off the reading chain, on purpose<br>
+    <a href="collection-notes.html">Notes &amp; Rationale</a> &middot; <a href="collection-glimmers.html">Glimmers</a> &middot; <a href="changelog.html">Changelog</a> &middot; <a href="too-good-to-check.html">Too Good to Check</a><br>
+    stimpunks.org &middot; morerealms.com &middot; starstuff.earth &middot; <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
+  </div>
+
+</div><!-- /doc-shell --></main>
+
+</body>
+</html>
