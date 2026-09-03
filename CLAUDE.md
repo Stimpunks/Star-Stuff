@@ -302,7 +302,7 @@ never candidates for a register. Don't try to fold these into either table:
 | Collection | What it is | Members |
 |------------|-----------|---------|
 | **Start Here** | the ways in | `about`, `love-you-down-to-your-star-stuff`, `cosmic-connections`, No. 4 — three doors in, one out |
-| **Foundations** | what the rest presupposes | `manifesto`, `inclusion-safety-creed`, `too-good-to-check`, `who-is-holding-the-candle`, `a-promise-not-a-finding`, `starlight`, No. 3, No. 18 (8) |
+| **Foundations** | what the rest presupposes | `manifesto`, `inclusion-safety-creed`, `six-principles-and-a-room`, `too-good-to-check`, `who-is-holding-the-candle`, `a-promise-not-a-finding`, `starlight`, No. 3, No. 18, `rainbow-serpents` (10 — re-derived 2026-09-02, when the page said *eight* in six places and had nine cards) |
 | **Notes & Rationale** | the working papers | `changelog`, `design`, `print-design`, `difference-first-frame`, `the-ladder-we-dont-print` (5) |
 
 - **Notes & Rationale is the only collection page outside the prev/next chain**, because all five
@@ -367,16 +367,18 @@ never candidates for a register. Don't try to fold these into either table:
   everything else homework, and would become the one place the verify-everything standard could
   quietly relax. The fun is distributed; *Stars We Grew Up On* states this on the page.
 - The **prev/next chain follows collection order**: each collection page precedes its members, and
-  members run in ascending number within the collection. **143 pages** as of 2026-09-02,
-  `collection-start-here.html` → `shorthand-evolution.html`. **17 pages sit outside it, and every
-  one is a decision:** `about.html` and `cosmic-connections.html`; **all of Notes &amp; Rationale** —
+  members run in ascending number within the collection. **146 pages** as of 2026-09-02,
+  `collection-start-here.html` → `shorthand-evolution.html`. **19 pages sit outside it, and all but
+  two are a decision:** `about.html` and `cosmic-connections.html`; **all of Notes &amp; Rationale** —
   `changelog.html`, `design.html`, `print-design.html`, `difference-first-frame.html`,
   `the-ladder-we-dont-print.html` and `collection-notes.html`; and **all of Easter Eggs** — `collection-easter-eggs.html`,
   `out-of-order-zine.html`, `true-facts-zine.html`, `watching-animals-field-guide.html`,
   `hatchery.html`, `quillery.html` and `one-atom-of-justice-zine.html`, because a chain link would
   walk a reader into an egg by accident and stop it being one.
   (`index.html` and `search.html` are utility pages and were never in it, which makes
-  143 + 18 = 161, re-derived 2026-09-02.)
+  146 + 19 = 165, re-derived 2026-09-02.)
+  **Two are unexplained and want a ruling:** `bow-ery.html` and `glimmer-wire.html` are outside the
+  chain with no reason recorded here. They may be deliberate; nobody has written down which.
   **Don't trust that number — measure it**, and check `prev` and `next` agree in both directions;
   inserting a page means editing its two neighbours, and a one-sided edit leaves a chain that walks
   forward correctly and breaks going back:
