@@ -663,6 +663,28 @@ commit evidence, not necessarily when the call was made.
 
 Ideas deferred, not rejected — revisit later.
 
+- **The fibromyalgia genetics piece — held 2026-09-02, after reading both papers.** Ryan's call,
+  with the primaries on the table rather than before them. Two studies of comparable size landed
+  the same day — *Nat Med* **32**:3060 (2.56M individuals, 26 loci) and Bright et al., *Nat Commun*
+  **17**:6248 (85,139 cases, Yale/VA MVP) — and they **disagree on sex** (inter-sex r_g 1.03,
+  "no sex difference", against 0.73 ± 0.064), **on autoimmunity** ("not primarily an autoimmune
+  disorder" against "mostly a pain and autoimmune-related trait") and **on heritability** (10.4%
+  observed-scale against 6.9% SNP-h²).
+  **Why the original framing died:** it was scoped as a *Too Good to Check* piece about press
+  over-reach, and that is wrong — "a central nervous system disorder" is the *Nat Med* abstract's
+  own sentence, said twice, with two named therapeutic targets. Arguing with a paper is a different
+  job from arguing with a press release.
+  **The two live framings, both declined for now:** *identical genetics and a diagnosis rate that
+  is not* (87.7% of diagnosed cases female, and the authors themselves name **diagnostic bias**
+  among the explanations) — the closest to this site's core; and *two answers, one day*, about what
+  a reader does with a field that disagrees with itself in print.
+  **Why held rather than built:** fibromyalgia is a live condition for people in this community and
+  the evidence is genuinely in flux. The strongest available hook is a finding the second paper
+  contradicts, so a piece written now would have to spend its best material defending it.
+  **What would unpark it:** a replication or a third study settling the inter-sex correlation, or
+  the Methods supplement resolving the case-definition question. The full adjudication is in
+  `FACTCHECK.md` and on [Glimmer Wire](glimmer-wire.html); nothing needs re-deriving.
+
 - **Loosen to CC0 later?** BY-SA → CC0 is the easy direction and ours to make as rights holder;
   the catch is guest-contributed portions, which need each author's sign-off before CC0 (it
   waives attribution, which BY-SA preserves). Our own work can go CC0 anytime.
