@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0a0a14">
+<link rel="canonical" href="https://starstuff.earth/the-lizard-that-was-never-there-zine.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta name="description" content="Everybody has a lizard brain and nobody has one. A Burke chain from Broca's 1878 word for a border to a 2026 analysis of 182 mammalian species, tracing how a name for a shape became a name for a function, then a claim about evolutionary time, then a rank. Karten published the counter-evidence in 1969 &mdash; eight years before the Pulitzer-winning book that carried the model into common speech, a book by this site's own founding figure. Fifty-one years later 86% of the introductory psychology textbooks that mention brain evolution still got it wrong. What is actually dividing the brain is not age but the shape of the information: vision, touch and hearing arrive with spatial structure and get orderly maps; smell arrives with none and gets a fractured one, and the two systems compete for room. Sixteen spreads, thirteen links: ten documented, two contested, one leap.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Star Stuff · Stimpunks Foundation × More Realms">
+<meta property="og:url" content="https://starstuff.earth/the-lizard-that-was-never-there-zine.html">
+<meta property="og:title" content="The Lizard That Was Never There &mdash; Stimpunks Zine No. 85">
+<meta property="og:description" content="The counter-evidence was published in 1969. The book that spread the model came out in 1977 — and it was ours. A chain from a word meaning “border” to 182 species.">
+<meta property="og:image" content="https://starstuff.earth/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A rainbow-hued cosmic image — we are all made of star stuff.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Lizard That Was Never There &mdash; Stimpunks Zine No. 85">
+<meta name="twitter:description" content="The counter-evidence was published in 1969. The book that spread the model came out in 1977 — and it was ours. A chain from a word meaning “border” to 182 species.">
+<meta name="twitter:image" content="https://starstuff.earth/og-card.jpg">
+<title>The Lizard That Was Never There — Stimpunks Zine No. 85</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="starstuff.css">
+<style>
+  :root {
+    --void:  var(--sp-void-deep);
+    --deep:  var(--sp-deep);
+    --page:  var(--sp-page);
+    --violet:var(--sp-purple);
+    --pink:  var(--sp-pink);
+    --gold:  var(--sp-gold);
+    --cyan:  var(--sp-cyan);
+    --green: var(--sp-green);
+    --ember: #c1653a;
+    --accent: var(--sp-cyan);          /* this zine's identity accent — the frame that admits only what fits it */
+    --star-white: var(--sp-white-soft);
+    --stardust:   var(--sp-secondary-soft);
+    --dim:   var(--sp-dim);
+    --dim2:  var(--sp-dim-soft);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--void);
+    font-family: 'Atkinson Hyperlegible Next', system-ui, sans-serif;
+    color: var(--star-white);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── STARFIELD (green · white · gold — forest floor and mill fire) ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 13% 21%, rgba(74,222,128,0.55) 0%, transparent 100%),
+      radial-gradient(1px 1px at 27% 44%, rgba(244,244,251,0.6) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 46% 14%, rgba(74,222,128,0.46) 0%, transparent 100%),
+      radial-gradient(1px 1px at 61% 66%, rgba(244,244,251,0.64) 0%, transparent 100%),
+      radial-gradient(2px 2px at 78% 26%, rgba(251,191,36,0.42) 0%, transparent 100%),
+      radial-gradient(1px 1px at 89% 54%, rgba(74,222,128,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 93% 81%, rgba(244,244,251,0.5) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 7% 58%, rgba(251,191,36,0.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 36% 88%, rgba(74,222,128,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 54% 34%, rgba(244,244,251,0.52) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .zine-shell { position: relative; z-index: 1; max-width: 820px; margin: 0 auto; padding: 1.5rem 1.5rem 3rem; }
+
+  .nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem; }
+  .nav-brand { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--dim); }
+  .nav-controls { display: flex; gap: 0.5rem; align-items: center; }
+  .nav-btn { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; background: transparent; color: var(--dim2); border: 1px solid rgba(196,181,212,0.25); border-radius: 3px; padding: 0.4rem 0.75rem; cursor: pointer; transition: all 0.2s; }
+  .nav-btn.active { color: var(--accent); border-color: rgba(34,211,238,0.5); }
+  .nav-btn:disabled { opacity: 0.3; cursor: default; }
+  .page-counter { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.1em; color: var(--dim); padding: 0 0.4rem; }
+
+  .spread { display: none; animation: fadeIn 0.5s ease forwards; }
+  .spread.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ── COVER ── */
+  .cover-spread {
+    position: relative; min-height: 520px; border-radius: 4px; overflow: hidden;
+    background:
+      radial-gradient(ellipse at 24% 22%, rgba(251,191,36,0.11) 0%, transparent 52%),
+      radial-gradient(ellipse at 80% 28%, rgba(74,222,128,0.10) 0%, transparent 52%),
+      radial-gradient(ellipse at 70% 84%, rgba(34,211,238,0.08) 0%, transparent 52%),
+      radial-gradient(ellipse at 26% 82%, rgba(74,222,128,0.07) 0%, transparent 52%),
+      var(--deep);
+    border: 1px solid rgba(34,211,238,0.25);
+    box-shadow: inset 0 0 80px rgba(34,211,238,0.06), 0 0 0 4px rgba(255,255,255,0.03);
+    display: flex; flex-direction: column; justify-content: flex-end; padding: 3rem;
+  }
+  .cover-motif { position: absolute; top: -4px; right: -14px; width: 340px; height: 340px; opacity: 0.75; pointer-events: none; }
+  .cover-issue { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.5em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.5rem; }
+  .cover-title { font-weight: 700; font-size: clamp(1.9rem, 5.2vw, 3rem); line-height: 1.03; color: var(--star-white); letter-spacing: -0.01em; margin-bottom: 0.9rem; }
+  .cover-title .amp { color: var(--accent); font-style: italic; }
+  .cover-subtitle { font-size: 1rem; color: var(--stardust); opacity: 0.85; margin-bottom: 1.5rem; max-width: 470px; line-height: 1.55; }
+  .cover-byline { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.14em; color: var(--dim); margin-bottom: 1.8rem; }
+  .cover-byline strong { color: var(--stardust); font-weight: 700; }
+  .cover-rule { width: 220px; max-width: 60%; margin-bottom: 1.3rem; }
+  .cover-meta { display: flex; gap: 2rem; align-items: center; }
+  .cover-ls { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 1.4rem; color: var(--accent); letter-spacing: 0.05em; }
+  .cover-meta-text { font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--dim2); line-height: 1.9; }
+  .cover-corner { position: absolute; top: 2rem; right: 2.5rem; text-align: right; }
+  .cover-corner-num { font-weight: 700; font-size: 4.5rem; line-height: 1; color: var(--accent); opacity: 0.22; }
+  .cover-corner-label { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); display: block; margin-top: -0.3rem; }
+
+  /* ── INTERIOR ── */
+  .interior { background: var(--page); border: 1px solid rgba(34,211,238,0.15); border-radius: 4px; overflow: hidden; min-height: 480px; }
+  .spread-2col { display: grid; grid-template-columns: 1fr 1fr; min-height: 440px; }
+  .spread-left, .spread-right { padding: 3rem 2.4rem; position: relative; }
+  .spread-left { border-right: 1px solid rgba(167,139,250,0.12); }
+
+  .spread-2col.stacked { display: flex; flex-direction: column; }
+  .spread-2col.stacked > .spread-left,
+  .spread-2col.stacked > .spread-right { border-right: none; }
+  .spread-2col.stacked > .col-diagram { order: 2; padding-top: 0; }
+  .spread-2col.stacked > .col-text { padding-left: max(2.4rem, calc((100% - 32rem) / 2)); padding-right: max(2.4rem, calc((100% - 32rem) / 2)); }
+  .spread-2col.stacked .diagram-wrap { height: auto; }
+  .spread-2col.stacked .diagram { max-width: 420px; }
+
+  .eyebrow { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.1rem; }
+  .body-text { font-size: 0.98rem; line-height: 1.72; color: var(--stardust); }
+  .body-text p { margin-bottom: 1rem; }
+  .body-text p:last-child { margin-bottom: 0; }
+  .body-text strong { font-weight: 700; color: var(--star-white); }
+  .body-text em { font-style: italic; color: var(--star-white); }
+  .body-text a { color: var(--cyan); text-decoration: none; border-bottom: 1px solid rgba(34,211,238,0.4); }
+  .body-text a:hover { border-bottom-color: var(--cyan); color: var(--star-white); }
+  .body-text .violet { color: var(--violet); font-weight: 700; }
+  .body-text .pink { color: var(--pink); font-weight: 700; }
+  .body-text .gold { color: var(--gold); font-weight: 700; }
+  .body-text .cyan { color: var(--cyan); font-weight: 700; }
+  .body-text .green { color: var(--green); font-weight: 700; }
+  .body-text .dim { color: var(--dim); }
+  .body-text .lede { font-size: 1.08rem; color: var(--star-white); }
+  .latin { font-style: italic; color: var(--star-white); }
+
+  .spread-heading { font-weight: 700; font-size: 1.9rem; line-height: 1.12; color: var(--star-white); margin-bottom: 0.7rem; letter-spacing: -0.01em; margin-top: 0; scroll-margin-top: 5rem; }
+  .spread-heading .spectrum-word { background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .rule { width: 40px; margin: 1rem 0; }
+
+  /* ── JOINT TAGS — the collection's whole point ── */
+  .joint { display: inline-flex; align-items: baseline; gap: 0.4rem; font-family: 'Space Mono', monospace; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; padding: 0.16rem 0.5rem; border-radius: 2px; white-space: nowrap; vertical-align: 0.12em; }
+  .joint::before { content: ''; width: 16px; height: 0; border-top-width: 2px; align-self: center; }
+  .joint-documented { color: var(--green); background: rgba(74,222,128,0.10); border: 1px solid rgba(74,222,128,0.32); }
+  .joint-documented::before { border-top-style: solid; border-top-color: var(--green); }
+  .joint-contested  { color: var(--gold); background: rgba(251,191,36,0.10); border: 1px solid rgba(251,191,36,0.32); }
+  .joint-contested::before { border-top-style: dashed; border-top-color: var(--gold); }
+  .joint-leap       { color: var(--pink); background: rgba(244,114,182,0.10); border: 1px solid rgba(244,114,182,0.32); }
+  .joint-leap::before { border-top-style: dotted; border-top-color: var(--pink); }
+  .joint-line { margin-bottom: 1rem !important; }
+
+  .pull-quote { font-size: 1.18rem; font-weight: 700; line-height: 1.4; color: var(--star-white); border-left: 3px solid var(--accent); padding-left: 1.1rem; margin: 1.4rem 0; font-style: italic; }
+  .pull-quote.violet { border-left-color: var(--violet); }
+  .pull-quote.cyan { border-left-color: var(--cyan); }
+  .pull-quote.gold { border-left-color: var(--gold); }
+  .pull-quote.pink { border-left-color: var(--pink); }
+  .pull-quote.green { border-left-color: var(--green); }
+  .pull-quote .attr { display: block; font-family: 'Space Mono', monospace; font-size: 0.6rem; font-weight: 400; font-style: normal; letter-spacing: 0.08em; color: var(--dim); margin-top: 0.6rem; }
+
+  .callout { margin: 1.3rem 0; padding: 1rem 1.15rem; background: rgba(34,211,238,0.06); border: 1px solid rgba(34,211,238,0.24); border-radius: 4px; font-size: 1rem; font-style: italic; color: var(--star-white); line-height: 1.55; }
+  .callout .attr { display: block; font-family: 'Space Mono', monospace; font-size: 0.58rem; font-style: normal; letter-spacing: 0.06em; color: var(--dim); margin-top: 0.5rem; }
+
+  .note { font-size: 0.84rem; line-height: 1.6; color: var(--dim); border-left: 2px solid rgba(34,211,238,0.28); padding-left: 0.9rem; margin: 1.1rem 0; }
+  .note strong { color: var(--stardust); font-weight: 700; }
+
+  /* ── THE WITHHELD APPARATUS — link 2 only ──
+     Every other link in this chain gets the format: a diagram, or a pull-quote doing
+     analytical work. Link 2 gets a plain bordered block and nothing else, and says so
+     on its face. Standing rule from A Field Guide to Turtles: a subject that cannot
+     take the apparatus gets a DIFFERENT card, not a smaller one. ── */
+  .withheld { border: 1px dashed rgba(193,101,58,0.5); border-radius: 4px; padding: 1.15rem 1.25rem; margin: 1.4rem 0; background: rgba(193,101,58,0.05); }
+  .withheld-label { font-family: 'Space Mono', monospace; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ember); margin-bottom: 0.6rem; }
+  .withheld p { font-size: 0.88rem; line-height: 1.62; color: var(--stardust); margin: 0; }
+
+  /* ── DIAGRAMS ── */
+  .diagram-wrap { display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; }
+  .diagram { width: 100%; max-width: 300px; display: block; }
+  .diagram-caption { font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim); text-align: center; margin-top: 0.9rem; line-height: 1.9; }
+
+  /* ── REFUSALS ── */
+  .refusals { margin-top: 1.3rem; }
+  .refusal { font-size: 0.88rem; line-height: 1.5; color: var(--stardust); padding: 0.55rem 0; border-bottom: 1px solid rgba(34,211,238,0.1); display: flex; gap: 0.6rem; align-items: baseline; }
+  .refusal:last-child { border-bottom: none; }
+  .refusal-tag { font-family: 'Space Mono', monospace; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ember); flex-shrink: 0; padding-top: 0.12rem; }
+  .refusal strong { color: var(--star-white); font-weight: 700; }
+
+  /* ── THE RUNNING SPINE — generated, never hand-edited ── */
+  .spine { border-top: 1px solid rgba(167,139,250,0.12); padding: 1.1rem 2.4rem 0.2rem; }
+  .spine svg { width: 100%; max-width: 620px; margin: 0 auto; display: block; overflow: visible; }
+  .spine-label { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); text-align: center; margin-top: 0.5rem; }
+  .spine-node { fill: var(--sp-dim); }
+  .spine-node.dim { fill: rgba(196,181,212,0.35); }
+  .spine-node.live { fill: var(--accent); }
+  .spine-ring { fill: none; stroke: var(--accent); stroke-width: 1.6; }
+  .spine-track { fill: none; stroke-width: 1.6; stroke-linecap: round; }
+  .spine-track.documented { stroke: rgba(74,222,128,0.55); }
+  .spine-track.contested  { stroke: rgba(251,191,36,0.6); stroke-dasharray: 6 4; }
+  .spine-track.leap       { stroke: rgba(244,114,182,0.6); stroke-dasharray: 1.5 4; }
+  .spine-track.dim        { opacity: 0.32; }
+  .spine-raillabel { font-family: 'Space Mono', monospace; font-size: 7px; letter-spacing: 0.18em; text-transform: uppercase; fill: var(--sp-dim); }
+
+  /* ── COLOPHON ── */
+  .colophon { padding: 3rem; display: flex; flex-direction: column; justify-content: space-between; min-height: 480px; background: radial-gradient(ellipse at 82% 18%, rgba(34,211,238,0.09) 0%, transparent 50%), radial-gradient(ellipse at 18% 85%, rgba(74,222,128,0.06) 0%, transparent 50%), var(--page); }
+  .colophon-top { border-bottom: 1px solid rgba(34,211,238,0.14); padding-bottom: 1.3rem; margin-bottom: 1.2rem; }
+  .colophon-ls { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 2.4rem; color: var(--accent); letter-spacing: 0.05em; display: block; margin-bottom: 0.4rem; }
+  .colophon-phrase { font-size: 0.98rem; font-weight: 700; font-style: italic; color: var(--stardust); }
+  .series-list { display: flex; flex-direction: column; gap: 0.38rem; margin-bottom: 1.2rem; }
+  .series-item { font-size: 0.72rem; color: var(--dim); letter-spacing: 0.01em; display: flex; gap: 0.7rem; align-items: baseline; line-height: 1.45; }
+  .series-item.current { color: var(--accent); font-weight: 700; }
+  .series-num { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim2); flex-shrink: 0; }
+  .series-item.current .series-num { color: var(--accent); }
+  .reflect { border-top: 1px solid rgba(34,211,238,0.14); padding-top: 1rem; margin-bottom: 1.2rem; }
+  .reflect-label { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.65rem; }
+  .reflect-q { font-size: 0.86rem; line-height: 1.55; color: var(--stardust); margin-bottom: 0.55rem; font-style: italic; }
+  .reflect-q:last-child { margin-bottom: 0; }
+  .colophon-body { font-size: 0.75rem; color: var(--dim); line-height: 1.75; margin-bottom: 1.2rem; }
+  .colophon-body a { color: var(--cyan); text-decoration: none; border-bottom: 1px solid rgba(34,211,238,0.4); }
+  .colophon-body a:hover { border-bottom-color: var(--cyan); }
+  .colophon-h { font-family: 'Space Mono', monospace; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: var(--stardust); margin: 1rem 0 0.4rem; scroll-margin-top: 5rem; }
+  .colophon-footer { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--dim); line-height: 2.2; border-top: 1px solid rgba(34,211,238,0.14); padding-top: 1rem; }
+
+  /* ── SPREAD FOOTER ── */
+  .spread-footer { display: flex; justify-content: space-between; align-items: center; padding: 0.9rem 2.4rem; border-top: 1px solid rgba(34,211,238,0.1); }
+  .spread-footer-left { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--dim); }
+  .spread-footer-right { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; color: var(--accent); }
+
+  .twinkle { position: fixed; width: 3px; height: 3px; border-radius: 50%; animation: twinkle-anim 3s ease-in-out infinite; pointer-events: none; z-index: 0; }
+
+  @media (max-width: 600px) {
+    .spread-2col { grid-template-columns: 1fr; }
+    .spread-left { border-right: none; border-bottom: 1px solid rgba(167,139,250,0.12); }
+    .spread-2col.stacked > .spread-left { border-bottom: none; }
+    .spread-2col.stacked > .col-text { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .cover-spread { padding: 2rem; min-height: 420px; }
+    .cover-motif { width: 224px; height: 224px; top: -4px; right: -24px; opacity: 0.5; }
+    .cover-title { font-size: 1.75rem; }
+    .spread-heading { font-size: 1.55rem; }
+    .spread-left, .spread-right { padding: 2rem 1.5rem; }
+    .colophon { padding: 2rem 1.5rem; }
+    .spine { padding: 1rem 1.5rem 0.2rem; }
+  }
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"The Lizard That Was Never There","description":"A Burke chain on the triune brain, from Broca's 1878 word for a border to a 2026 analysis of 182 mammalian species. Thirteen links, ten documented, two contested, one leap.","image":"https://starstuff.earth/og-card.jpg","url":"https://starstuff.earth/the-lizard-that-was-never-there-zine.html","mainEntityOfPage":"https://starstuff.earth/the-lizard-that-was-never-there-zine.html","datePublished":"2026-09-02","author":{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/"},"publisher":[{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/","logo":{"@type":"ImageObject","url":"https://starstuff.earth/og-card.jpg"}},{"@type":"Organization","name":"More Realms","url":"https://morerealms.com/"}],"isPartOf":{"@type":"WebSite","name":"Star Stuff","url":"https://starstuff.earth/"},"license":"https://creativecommons.org/licenses/by-sa/4.0/"}</script>
+</head>
+<body>
+
+<div class="twinkle" style="top:9%;left:12%;background:var(--green);box-shadow:0 0 6px var(--green);animation-delay:-0.4s"></div>
+<div class="twinkle" style="top:24%;left:87%;background:var(--star-white);box-shadow:0 0 6px var(--star-white);animation-delay:-1.5s"></div>
+<div class="twinkle" style="top:57%;left:6%;background:var(--gold);box-shadow:0 0 6px var(--gold);animation-delay:-2.2s"></div>
+<div class="twinkle" style="top:74%;left:92%;background:var(--green);box-shadow:0 0 6px var(--green);animation-delay:-0.9s"></div>
+<div class="twinkle" style="top:89%;left:31%;background:var(--star-white);box-shadow:0 0 6px var(--star-white);animation-delay:-1.8s"></div>
+<div class="twinkle" style="top:41%;left:95%;background:var(--cyan);box-shadow:0 0 6px var(--cyan);animation-delay:-2.9s"></div>
+
+<div class="zine-shell">
+
+  <nav class="ss-nav" style="--nav-accent:#f472b6;" aria-label="Star Stuff collection">
+    <span class="ss-nav-home-group"><a class="ss-nav-home" href="index.html"><span class="ss-star" aria-hidden="true">★</span> stuff</a><a class="ss-nav-about" href="about.html">about</a>
+      <a class="ss-nav-search" href="search.html">search</a></span>
+    <span class="ss-nav-links">
+      <a class="ss-nav-prev" href="there-have-been-so-many-earths-zine.html"><span class="ss-nav-arrow" aria-hidden="true">&lsaquo;</span> <span class="ss-nav-label">There Have Been So Many Earths</span></a>
+      <a class="ss-nav-next" href="collection-star-gazing.html"><span class="ss-nav-label">Star Gazing</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
+    </span>
+    <a class="ss-nav-collection" href="collection-how-we-got-here.html"><span class="ss-nav-collection-label">Collection</span> <span class="ss-nav-collection-name">How We Got Here</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
+  </nav>
+
+  <nav class="nav">
+    <div class="nav-brand"><a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks</a> × <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a> · Zine No. 85</div>
+    <div class="nav-controls">
+      <button class="nav-btn" id="prev-btn" onclick="changePage(-1)">← prev</button>
+      <span class="page-counter" id="page-counter">1 / 16</span>
+      <button class="nav-btn" id="next-btn" onclick="changePage(1)">next →</button>
+    </div>
+  </nav>
+<main>
+
+  <!-- ════ SPREAD 1: COVER ════ -->
+  <div class="spread active" id="spread-1">
+    <div class="cover-spread">
+      <svg class="cover-motif" viewBox="0 0 340 340" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <!-- Left: three stacked bars — the ladder, newest on top, the diagram this
+             chain is about. Right: two interleaved combs of equal standing, one
+             orderly and one fractured — what is actually there.
+
+             NO TEXT IN THIS MOTIF, and nothing below y 132 or right of x 148:
+             the cover's clean zone. Four shipped covers put a caption here and
+             landed on the gradient title. Shapes only. -->
+        <!-- Everything is wrapped and lifted: measured in the browser, the violet
+             group's ink reached y 337 while .cover-issue occupies 308-323, so the
+             fractured strokes ran straight through "ZINE NO. 85". The overlap gate
+             cannot see this — it measures text against text, and artwork over text
+             is explicitly out of its scope. Measure the cover, do not eyeball it. -->
+        <g transform="translate(2,-10) scale(0.74)">
+        <g fill="none" stroke="rgba(244,114,182,0.9)" stroke-width="1.8">
+          <rect x="14" y="26" width="58" height="16" rx="2"/>
+          <rect x="14" y="48" width="58" height="16" rx="2"/>
+          <rect x="14" y="70" width="58" height="16" rx="2"/>
+        </g>
+        <path d="M43 96 V116" fill="none" stroke="rgba(244,114,182,0.5)" stroke-width="1.4" stroke-dasharray="2 3"/>
+        <g fill="none" stroke="rgba(34,211,238,0.9)" stroke-width="1.5" stroke-linecap="round">
+          <path d="M96 30 H140"/><path d="M96 40 H140"/><path d="M96 50 H140"/><path d="M96 60 H140"/>
+        </g>
+        <g fill="rgba(34,211,238,0.95)">
+          <circle cx="104" cy="30" r="1.8"/><circle cx="116" cy="40" r="1.8"/>
+          <circle cx="128" cy="50" r="1.8"/><circle cx="140" cy="60" r="1.8"/>
+        </g>
+        <g fill="none" stroke="rgba(167,139,250,0.9)" stroke-width="1.5" stroke-linecap="round">
+          <path d="M96 82 C110 76, 118 96, 132 86"/>
+          <path d="M100 100 C114 108, 122 90, 138 100"/>
+          <path d="M98 118 C112 110, 126 124, 140 114"/>
+        </g>
+        <g fill="rgba(167,139,250,0.95)">
+          <circle cx="110" cy="80" r="2.2"/><circle cx="126" cy="92" r="2.2"/>
+          <circle cx="106" cy="104" r="2.2"/><circle cx="134" cy="98" r="2.2"/>
+          <circle cx="118" cy="120" r="2.2"/>
+        </g>
+        </g>
+      </svg>
+
+      <div class="cover-corner">
+        <div class="cover-corner-num" aria-hidden="true">85</div>
+        <span class="cover-corner-label">How We Got Here</span>
+      </div>
+
+      <div class="cover-issue">Stimpunks × More Realms · Zine No. 85</div>
+
+      <h1 class="cover-title">The Lizard That<br><span class="amp">Was Never There</span></h1>
+
+      <p class="cover-subtitle">on a word that meant “border”, the diagram it turned into, and the counter-evidence that was already published eight years before the book that spread it</p>
+
+      <hr class="spectrum-line cover-rule">
+
+      <div class="cover-meta">
+        <p class="cover-meta-text">Thirteen links · ten documented, two contested, one leap. The chain runs on two rails — what was <em>told</em> about the brain, and what was <em>observed</em> in it. They do not meet until the end.</p>
+      </div>
+
+      <div class="cover-ls">L★S</div>
+
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Lizard That Was Never There · Stimpunks</span>
+        <span class="spread-footer-right">1</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 2 ════ -->
+  <div class="spread" id="spread-2">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The question</div>
+          <h2 class="spread-heading" id="the-phrase">Everybody has a lizard brain, and nobody has one</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">You have heard it, and you may have said it. <em>That was my lizard brain.</em> <em>My amygdala hijacked me.</em> <em>The reptile took over.</em> It is a way of apologising for a reaction by attributing it to an older, dumber animal living downstairs.</p>
+            <p>There is no such animal. There is no such downstairs.</p>
+            <p>The model behind the phrase is called the <strong>triune brain</strong>, and a paper published in April 2026 disposes of it in a single sentence that is worth reading slowly, because of how little hedging is in it:</p>
+            <div class="pull-quote">the “triune brain” theory persists to this day in the evocation of “my lizard brain” to explain uncontrolled emotional excess using the utterly false evolutionary tale that reptiles have brain only “up to” the emotional limbic system, grown over later by the logical neocortex, reaching its full flower in humans.<span class="attr">Imam, Kielo, Trude &amp; Finlay, <em>Science Advances</em>, 22 April 2026</span></div>
+            <p><strong>“Utterly false” is not a phrase working scientists spend lightly.</strong> And the model has been contradicted in the specialist literature since 1969. So this chain is not really about whether the lizard brain is real. It is about how a claim that was refuted before most of us were born ended up in everyone's mouth &mdash; and what is actually dividing the brain, which turns out to be better than the story it replaces.</p>
+            <p>Thirteen links. We are implicated in one of them.</p>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Lizard That Was Never There · Stimpunks</span>
+        <span class="spread-footer-right">2</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 3 ════ -->
+  <div class="spread" id="spread-3">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Link 1 · Paris, 1878</div>
+          <h2 class="spread-heading" id="broca">A word that only meant “the edge”</h2>
+          <p class="joint-line"><span class="joint joint-documented">documented</span></p>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Paul Broca, describing mammalian brains, notices a rim of cortex curving around the brainstem like a collar. He calls it <span class="latin">le grand lobe limbique</span> &mdash; the great limbic lobe.</p>
+            <p><strong>The word is <span class="latin">limbus</span>. It means border, edge, hem.</strong> Broca is naming a <em>shape</em>, and a position: the stuff at the margin, where the cortex folds round. His grouping takes in the cingulate and parahippocampal gyri, the hippocampus, the primary olfactory cortex, the diagonal band, retrosplenial and medial prefrontal areas.</p>
+            <p>Note what is <em>not</em> in that sentence. No function. No claim about feelings. No suggestion that these parts are older than the rest, or that they do one job together. Broca has drawn a line around a region and named it for where it sits.</p>
+            <p>This is the cleanest link in the chain and the most important one to get right, because everything downstream is a series of additions to a word that started out meaning nothing more than <em>around the edge</em>.</p>
+          </div>
+        </div>
+      </div>
+      <div class="spine"><svg viewBox="0 0 620 84" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain so far, 1 of 13: two rails — what was told about the brain, and what was observed in it. Live node: 1878, a word for a border."><path class="spine-track documented dim" d="M64.0 58 H106.8"/><path class="spine-track documented dim" d="M106.8 58 H128.2 V26 H149.7"/><path class="spine-track documented dim" d="M149.7 26 H192.5"/><path class="spine-track documented dim" d="M192.5 26 H213.9 V58 H235.3"/><path class="spine-track contested dim" d="M235.3 58 H256.8 V26 H278.2"/><path class="spine-track documented dim" d="M278.2 26 H299.6 V58 H321.0"/><path class="spine-track documented dim" d="M321.0 58 H363.8"/><path class="spine-track documented dim" d="M363.8 58 H385.2 V26 H406.7"/><path class="spine-track documented dim" d="M406.7 26 H428.1 V58 H449.5"/><path class="spine-track documented dim" d="M449.5 58 H492.3"/><path class="spine-track contested dim" d="M492.3 58 H535.2"/><path class="spine-track leap dim" d="M535.2 58 H556.6 V8 H578.0"/><text class="spine-raillabel" x="0" y="29">told</text><text class="spine-raillabel" x="0" y="61">observed</text><circle class="spine-node dim" cx="106.8" cy="58" r="3.2"/><circle class="spine-node dim" cx="149.7" cy="26" r="3.2"/><circle class="spine-node dim" cx="192.5" cy="26" r="3.2"/><circle class="spine-node dim" cx="235.3" cy="58" r="3.2"/><circle class="spine-node dim" cx="278.2" cy="26" r="3.2"/><circle class="spine-node dim" cx="321.0" cy="58" r="3.2"/><circle class="spine-node dim" cx="363.8" cy="58" r="3.2"/><circle class="spine-node dim" cx="406.7" cy="26" r="3.2"/><circle class="spine-node dim" cx="449.5" cy="58" r="3.2"/><circle class="spine-node dim" cx="492.3" cy="58" r="3.2"/><circle class="spine-node dim" cx="535.2" cy="58" r="3.2"/><circle class="spine-node dim" cx="578.0" cy="8" r="3.2"/><circle class="spine-node live" cx="64.0" cy="58" r="4.4"/><circle class="spine-ring" cx="64.0" cy="58" r="8"/></svg><div class="spine-label">1 · 1878 · a word for a border</div></div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Lizard That Was Never There · Stimpunks</span>
+        <span class="spread-footer-right">3</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 4 ════ -->
+  <div class="spread" id="spread-4">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Link 2 · Ithaca, 1937</div>
+          <h2 class="spread-heading" id="papez">A circuit is proposed, and it is a proposal</h2>
+          <p class="joint-line"><span class="joint joint-documented">documented</span></p>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">James Papez publishes <em>A proposed mechanism of emotion</em>. He argues that the hippocampus, the hypothalamus, the anterior thalamic nuclei, the cingulate gyrus and the connections between them form a working loop, and that this loop is where emotion is elaborated.</p>
+            <p>It becomes known as the <strong>Papez circuit</strong>, and it is a real contribution: an anatomical hypothesis, stated as one, about how a set of structures might be wired together.</p>
+            <p><strong>Two things travel forward from here, and only one of them should have.</strong> The wiring diagram was productive and much of it survives. The association &mdash; <em>this region, that feeling</em> &mdash; hardened much faster than the evidence for it, and it hardened onto a set of structures whose only original qualification was sitting at the edge.</p>
+            <p>The 2026 paper is blunt about how thin the direct evidence still is for the version everyone inherited: <em>“Empirical examination of whether an aroma, song, or vista better evokes an individual's old memories is scarce.”</em> Eighty-nine years on, the question at the bottom of the whole edifice has barely been asked.</p>
+          </div>
+        </div>
+      </div>
+      <div class="spine"><svg viewBox="0 0 620 84" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain so far, 2 of 13: two rails — what was told about the brain, and what was observed in it. Live node: 1937, a circuit for emotion."><path class="spine-track documented" d="M64.0 58 H106.8"/><path class="spine-track documented dim" d="M106.8 58 H128.2 V26 H149.7"/><path class="spine-track documented dim" d="M149.7 26 H192.5"/><path class="spine-track documented dim" d="M192.5 26 H213.9 V58 H235.3"/><path class="spine-track contested dim" d="M235.3 58 H256.8 V26 H278.2"/><path class="spine-track documented dim" d="M278.2 26 H299.6 V58 H321.0"/><path class="spine-track documented dim" d="M321.0 58 H363.8"/><path class="spine-track documented dim" d="M363.8 58 H385.2 V26 H406.7"/><path class="spine-track documented dim" d="M406.7 26 H428.1 V58 H449.5"/><path class="spine-track documented dim" d="M449.5 58 H492.3"/><path class="spine-track contested dim" d="M492.3 58 H535.2"/><path class="spine-track leap dim" d="M535.2 58 H556.6 V8 H578.0"/><text class="spine-raillabel" x="0" y="29">told</text><text class="spine-raillabel" x="0" y="61">observed</text><circle class="spine-node" cx="64.0" cy="58" r="3.2"/><circle class="spine-node dim" cx="149.7" cy="26" r="3.2"/><circle class="spine-node dim" cx="192.5" cy="26" r="3.2"/><circle class="spine-node dim" cx="235.3" cy="58" r="3.2"/><circle class="spine-node dim" cx="278.2" cy="26" r="3.2"/><circle class="spine-node dim" cx="321.0" cy="58" r="3.2"/><circle class="spine-node dim" cx="363.8" cy="58" r="3.2"/><circle class="spine-node dim" cx="406.7" cy="26" r="3.2"/><circle class="spine-node dim" cx="449.5" cy="58" r="3.2"/><circle class="spine-node dim" cx="492.3" cy="58" r="3.2"/><circle class="spine-node dim" cx="535.2" cy="58" r="3.2"/><circle class="spine-node dim" cx="578.0" cy="8" r="3.2"/><circle class="spine-node live" cx="106.8" cy="58" r="4.4"/><circle class="spine-ring" cx="106.8" cy="58" r="8"/></svg><div class="spine-label">2 · 1937 · a circuit for emotion</div></div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Lizard That Was Never There · Stimpunks</span>
+        <span class="spread-footer-right">4</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 5 ════ -->
+  <div class="spread" id="spread-5">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Link 3 · Bethesda, 1949–1952</div>
+          <h2 class="spread-heading" id="maclean-names">The border is given a job</h2>
+          <p class="joint-line"><span class="joint joint-documented">documented</span></p>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Paul MacLean publishes on what he calls the <em>visceral brain</em> in 1949, and in 1952 coins the term that will outlive him: the <strong>limbic system</strong>.</p>
+            <p>Look at what that phrase does. It takes Broca's word for an edge, adds Papez's circuit and further structures &mdash; septum, amygdala, hypothalamus &mdash; and binds them into a <em>system</em>: a set of parts that belong together because they do one thing.</p>
+            <p class="note"><strong>A name for a place has become a name for a function.</strong> Nothing was discovered at this step. A category was drawn, and the drawing did the work.</p>
+            <p>The 2026 authors, looking at the same collection of structures seventy-four years later, put the problem plainly: the limbic system <em>“has resisted functional definition or even a specific list of its contents.”</em> Its members have disparate jobs. Olfactory researchers and memory researchers are, for practical purposes, describing different objects and using the same word.</p>
+            <p>That is what happens when a category is named before it is characterised. It becomes very hard to disprove, because nobody can say exactly what it claims.</p>
+          </div>
+        </div>
+      </div>
+      <div class="spine"><svg viewBox="0 0 620 84" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain so far, 3 of 13: two rails — what was told about the brain, and what was observed in it. Live node: 1952, the border gets a job."><path class="spine-track documented" d="M64.0 58 H106.8"/><path class="spine-track documented" d="M106.8 58 H128.2 V26 H149.7"/><path class="spine-track documented dim" d="M149.7 26 H192.5"/><path class="spine-track documented dim" d="M192.5 26 H213.9 V58 H235.3"/><path class="spine-track contested dim" d="M235.3 58 H256.8 V26 H278.2"/><path class="spine-track documented dim" d="M278.2 26 H299.6 V58 H321.0"/><path class="spine-track documented dim" d="M321.0 58 H363.8"/><path class="spine-track documented dim" d="M363.8 58 H385.2 V26 H406.7"/><path class="spine-track documented dim" d="M406.7 26 H428.1 V58 H449.5"/><path class="spine-track documented dim" d="M449.5 58 H492.3"/><path class="spine-track contested dim" d="M492.3 58 H535.2"/><path class="spine-track leap dim" d="M535.2 58 H556.6 V8 H578.0"/><text class="spine-raillabel" x="0" y="29">told</text><text class="spine-raillabel" x="0" y="61">observed</text><circle class="spine-node" cx="64.0" cy="58" r="3.2"/><circle class="spine-node" cx="106.8" cy="58" r="3.2"/><circle class="spine-node dim" cx="192.5" cy="26" r="3.2"/><circle class="spine-node dim" cx="235.3" cy="58" r="3.2"/><circle class="spine-node dim" cx="278.2" cy="26" r="3.2"/><circle class="spine-node dim" cx="321.0" cy="58" r="3.2"/><circle class="spine-node dim" cx="363.8" cy="58" r="3.2"/><circle class="spine-node dim" cx="406.7" cy="26" r="3.2"/><circle class="spine-node dim" cx="449.5" cy="58" r="3.2"/><circle class="spine-node dim" cx="492.3" cy="58" r="3.2"/><circle class="spine-node dim" cx="535.2" cy="58" r="3.2"/><circle class="spine-node dim" cx="578.0" cy="8" r="3.2"/><circle class="spine-node live" cx="149.7" cy="26" r="4.4"/><circle class="spine-ring" cx="149.7" cy="26" r="8"/></svg><div class="spine-label">3 · 1952 · the border gets a job</div></div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Lizard That Was Never There · Stimpunks</span>
+        <span class="spread-footer-right">5</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 6 ════ -->
+  <div class="spread" id="spread-6">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Link 4 · the 1960s</div>
+          <h2 class="spread-heading" id="triune">Three brains, and now they are in an order</h2>
+          <p class="joint-line"><span class="joint joint-documented">documented</span></p>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">MacLean assembles the full model. The human brain, he proposes, is three brains in one, added in sequence over evolutionary time, each retained inside the next:</p>
+            <ul>
+              <li>the <strong>reptilian complex</strong> — the basal ganglia; instinct, aggression, ritual;</li>
+              <li>the <strong>paleomammalian complex</strong> — the limbic system; emotion;</li>
+              <li>the <strong>neomammalian complex</strong> — the neocortex; reason, language, planning.</li>
+            </ul>
+            <p>He describes each as independently conscious. A reptile's brain, on this account, stops at the second floor. Ours has a third built on top.</p>
+            <p class="note"><strong>This is the step where a functional claim becomes a claim about chronology &mdash; and chronology, pointed at living animals, becomes a rank.</strong> Older reads as cruder. Newer reads as better. The lizard is downstairs because the lizard arrived first.</p>
+            <p>It is a magnificent diagram. It is drawable on a napkin, it explains your worst afternoon, and it flatters the species drawing it. None of which is evidence.</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap"><svg class="diagram" viewBox="0 0 300 190" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The triune model as it is usually drawn: three nested layers, reptilian at the core, paleomammalian around it, neomammalian outermost, with an arrow labelled evolutionary time pointing outward — and a caption noting that no segments are added on.">
+              <text class="dlabel" x="6" y="14">the model as drawn</text>
+              <ellipse cx="150" cy="96" rx="98" ry="62" fill="rgba(244,114,182,0.08)" stroke="rgba(244,114,182,0.85)" stroke-width="1.5"/>
+              <ellipse cx="150" cy="96" rx="64" ry="41" fill="rgba(251,191,36,0.10)" stroke="rgba(251,191,36,0.85)" stroke-width="1.5"/>
+              <ellipse cx="150" cy="96" rx="31" ry="20" fill="rgba(34,211,238,0.14)" stroke="rgba(34,211,238,0.9)" stroke-width="1.5"/>
+              <text class="dlabel" x="150" y="99" text-anchor="middle">reptilian</text>
+              <text class="dlabel" x="150" y="66" text-anchor="middle">paleomammalian</text>
+              <text class="dlabel" x="150" y="45" text-anchor="middle">neomammalian</text>
+              <path d="M150 158 V176" fill="none" stroke="rgba(196,181,212,0.8)" stroke-width="1.2"/>
+              <text class="dlabel" x="150" y="186" text-anchor="middle">“evolutionary time” →</text>
+              <style>
+                .dlabel { font-family: 'Space Mono', monospace; font-size: 7.5px; letter-spacing: 0.14em; text-transform: uppercase; fill: #c4b5d4; }
+              </style>
+            </svg>
+            <div class="diagram-caption">How it is drawn, not how it is.<br>All vertebrates share the same gross<br>segmentation, with no segments added on.</div></div>
+        </div>
+      </div>
+      <div class="spine"><svg viewBox="0 0 620 84" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain so far, 4 of 13: two rails — what was told about the brain, and what was observed in it. Live node: 1960s, three brains, in order."><path class="spine-track documented" d="M64.0 58 H106.8"/><path class="spine-track documented" d="M106.8 58 H128.2 V26 H149.7"/><path class="spine-track documented" d="M149.7 26 H192.5"/><path class="spine-track documented dim" d="M192.5 26 H213.9 V58 H235.3"/><path class="spine-track contested dim" d="M235.3 58 H256.8 V26 H278.2"/><path class="spine-track documented dim" d="M278.2 26 H299.6 V58 H321.0"/><path class="spine-track documented dim" d="M321.0 58 H363.8"/><path class="spine-track documented dim" d="M363.8 58 H385.2 V26 H406.7"/><path class="spine-track documented dim" d="M406.7 26 H428.1 V58 H449.5"/><path class="spine-track documented dim" d="M449.5 58 H492.3"/><path class="spine-track contested dim" d="M492.3 58 H535.2"/><path class="spine-track leap dim" d="M535.2 58 H556.6 V8 H578.0"/><text class="spine-raillabel" x="0" y="29">told</text><text class="spine-raillabel" x="0" y="61">observed</text><circle class="spine-node" cx="64.0" cy="58" r="3.2"/><circle class="spine-node" cx="106.8" cy="58" r="3.2"/><circle class="spine-node" cx="149.7" cy="26" r="3.2"/><circle class="spine-node dim" cx="235.3" cy="58" r="3.2"/><circle class="spine-node dim" cx="278.2" cy="26" r="3.2"/><circle class="spine-node dim" cx="321.0" cy="58" r="3.2"/><circle class="spine-node dim" cx="363.8" cy="58" r="3.2"/><circle class="spine-node dim" cx="406.7" cy="26" r="3.2"/><circle class="spine-node dim" cx="449.5" cy="58" r="3.2"/><circle class="spine-node dim" cx="492.3" cy="58" r="3.2"/><circle class="spine-node dim" cx="535.2" cy="58" r="3.2"/><circle class="spine-node dim" cx="578.0" cy="8" r="3.2"/><circle class="spine-node live" cx="192.5" cy="26" r="4.4"/><circle class="spine-ring" cx="192.5" cy="26" r="8"/></svg><div class="spine-label">4 · 1960s · three brains, in order</div></div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Lizard That Was Never There · Stimpunks</span>
+        <span class="spread-footer-right">6</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 7 ════ -->
+  <div class="spread" id="spread-7">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Link 5 · New York, 1969</div>
+          <h2 class="spread-heading" id="karten">The birds had already said no, eight years early</h2>
+          <p class="joint-line"><span class="joint joint-documented">documented</span></p>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Harvey Karten publishes <em>The organization of the avian telencephalon and some speculations on the phylogeny of the amniote telencephalon</em> in the <em>Annals of the New York Academy of Sciences</em>. It is a paper about pigeons, and it takes the floor out from under the ladder.</p>
+            <p>Karten shows that two regions of the bird forebrain &mdash; the dorsal ventricular ridge and the Wulst &mdash; contain <strong>the same neuron types and the same patterns of connectivity as mammalian neocortex</strong>. They are not arranged in six layers. They are arranged in nuclei.</p>
+            <p class="note"><strong>The six layers are a packing arrangement, not the thing that does the thinking.</strong> Give a bird the same cell types and the same wiring in a different shape, and you get the same computation.</p>
+            <p>Which means the top floor of the triune building is not a floor, and it is not on top, and birds &mdash; who on the model should have stopped at the reptile &mdash; have the circuitry all along.</p>
+            <p><strong>Hold this date.</strong> This is 1969. The chain has eight more links and most of them are still ahead of us, and the counter-evidence is already in print, in a mainstream journal, from the person who would spend the next forty years on it.</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap"><svg class="diagram" viewBox="0 0 300 190" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Two panels. Left: mammalian neocortex drawn as six stacked layers with cells connected in a vertical column. Right: the avian pallium drawn as separate clustered nuclei with the identical connection pattern between the same cell types. Caption notes same cells, same wiring, different packing.">
+              <text class="dlabel" x="6" y="14">mammal · layers</text>
+              <g stroke="rgba(34,211,238,0.7)" stroke-width="1" fill="none">
+                <path d="M18 26 H130"/><path d="M18 40 H130"/><path d="M18 54 H130"/>
+                <path d="M18 68 H130"/><path d="M18 82 H130"/><path d="M18 96 H130"/><path d="M18 110 H130"/>
+              </g>
+              <g fill="rgba(34,211,238,0.95)">
+                <circle cx="58" cy="33" r="3"/><circle cx="58" cy="61" r="3"/><circle cx="58" cy="89" r="3"/>
+              </g>
+              <path d="M58 33 V89" fill="none" stroke="rgba(251,191,36,0.95)" stroke-width="1.8"/>
+              <path d="M58 61 H92" fill="none" stroke="rgba(251,191,36,0.95)" stroke-width="1.8"/>
+              <circle cx="92" cy="61" r="3" fill="rgba(34,211,238,0.95)"/>
+              <text class="dlabel" x="166" y="14">bird · nuclei</text>
+              <g stroke="rgba(167,139,250,0.7)" stroke-width="1" fill="none">
+                <ellipse cx="196" cy="38" rx="24" ry="15"/>
+                <ellipse cx="246" cy="70" rx="22" ry="14"/>
+                <ellipse cx="200" cy="100" rx="23" ry="14"/>
+              </g>
+              <g fill="rgba(167,139,250,0.95)">
+                <circle cx="196" cy="38" r="3"/><circle cx="246" cy="70" r="3"/><circle cx="200" cy="100" r="3"/>
+              </g>
+              <path d="M196 38 V100" fill="none" stroke="rgba(251,191,36,0.95)" stroke-width="1.8"/>
+              <path d="M196 70 H246" fill="none" stroke="rgba(251,191,36,0.95)" stroke-width="1.8"/>
+              <text class="dlabel" x="150" y="140" text-anchor="middle">same cells · same wiring</text>
+              <text class="dlabel" x="150" y="156" text-anchor="middle">different packing</text>
+              <text class="dlabel" x="150" y="180" text-anchor="middle">karten 1969</text>
+              <style>
+                .dlabel { font-family: 'Space Mono', monospace; font-size: 7.5px; letter-spacing: 0.14em; text-transform: uppercase; fill: #c4b5d4; }
+              </style>
+            </svg>
+            <div class="diagram-caption">The layers are how it is stacked,<br>not what it is made of. The gold<br>lines are the same circuit, twice.</div></div>
+        </div>
+      </div>
+      <div class="spine"><svg viewBox="0 0 620 84" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain so far, 5 of 13: two rails — what was told about the brain, and what was observed in it. Live node: 1969, the birds already said no."><path class="spine-track documented" d="M64.0 58 H106.8"/><path class="spine-track documented" d="M106.8 58 H128.2 V26 H149.7"/><path class="spine-track documented" d="M149.7 26 H192.5"/><path class="spine-track documented" d="M192.5 26 H213.9 V58 H235.3"/><path class="spine-track contested dim" d="M235.3 58 H256.8 V26 H278.2"/><path class="spine-track documented dim" d="M278.2 26 H299.6 V58 H321.0"/><path class="spine-track documented dim" d="M321.0 58 H363.8"/><path class="spine-track documented dim" d="M363.8 58 H385.2 V26 H406.7"/><path class="spine-track documented dim" d="M406.7 26 H428.1 V58 H449.5"/><path class="spine-track documented dim" d="M449.5 58 H492.3"/><path class="spine-track contested dim" d="M492.3 58 H535.2"/><path class="spine-track leap dim" d="M535.2 58 H556.6 V8 H578.0"/><text class="spine-raillabel" x="0" y="29">told</text><text class="spine-raillabel" x="0" y="61">observed</text><circle class="spine-node" cx="64.0" cy="58" r="3.2"/><circle class="spine-node" cx="106.8" cy="58" r="3.2"/><circle class="spine-node" cx="149.7" cy="26" r="3.2"/><circle class="spine-node" cx="192.5" cy="26" r="3.2"/><circle class="spine-node dim" cx="278.2" cy="26" r="3.2"/><circle class="spine-node dim" cx="321.0" cy="58" r="3.2"/><circle class="spine-node dim" cx="363.8" cy="58" r="3.2"/><circle class="spine-node dim" cx="406.7" cy="26" r="3.2"/><circle class="spine-node dim" cx="449.5" cy="58" r="3.2"/><circle class="spine-node dim" cx="492.3" cy="58" r="3.2"/><circle class="spine-node dim" cx="535.2" cy="58" r="3.2"/><circle class="spine-node dim" cx="578.0" cy="8" r="3.2"/><circle class="spine-node live" cx="235.3" cy="58" r="4.4"/><circle class="spine-ring" cx="235.3" cy="58" r="8"/></svg><div class="spine-label">5 · 1969 · the birds already said no</div></div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Lizard That Was Never There · Stimpunks</span>
+        <span class="spread-footer-right">7</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 8 ════ -->
+  <div class="spread" id="spread-8">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Link 6 · New York, 1977</div>
+          <h2 class="spread-heading" id="sagan">The book that carried it, and it is ours</h2>
+          <p class="joint-line"><span class="joint joint-contested">contested</span></p>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Carl Sagan publishes <em>The Dragons of Eden: Speculations on the Evolution of Human Intelligence</em>. It wins the Pulitzer Prize for General Non-Fiction in 1978. A substantial part of it is given over to MacLean's triune brain, presented with all of Sagan's gift for making an idea feel like something you have always known.</p>
+            <p><strong>We have to stop here and say something about ourselves.</strong> This site is named out of Sagan's line about star stuff. Its tagline, <em>Cosmic Connections</em>, is partly out of his 1973 book. He is one of two figures the entire collection stands on.</p>
+            <p class="note">And this is the book that took a refuted model out of the journals and put it into common speech, where it has stayed for fifty years. Both things are true. We are not going to file only the flattering one.</p>
+            <p>Sagan was doing what popular science does: taking the most vivid current account and giving it reach. The account he chose had been contradicted in a mainstream journal eight years earlier. Reach is not a filter. <strong>The better a communicator is, the more expensive their sourcing errors become</strong> &mdash; and this collection exists because of that, not in spite of it.</p>
+            <p class="withheld"><span class="withheld-label">Why this joint is marked contested</span> That <em>The Dragons of Eden</em> is <em>the</em> reason “lizard brain” is in ordinary speech is a causal claim about cultural transmission. It is widely asserted and it is plausible &mdash; the book was enormous and the phrase spreads after it &mdash; but we have not found a study that establishes it, and popular ideas rarely have one carrier. The book's role is documented. Its sole responsibility is not.</p>
+          </div>
+        </div>
+      </div>
+      <div class="spine"><svg viewBox="0 0 620 84" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain so far, 6 of 13: two rails — what was told about the brain, and what was observed in it. Live node: 1977, the book that carried it."><path class="spine-track documented" d="M64.0 58 H106.8"/><path class="spine-track documented" d="M106.8 58 H128.2 V26 H149.7"/><path class="spine-track documented" d="M149.7 26 H192.5"/><path class="spine-track documented" d="M192.5 26 H213.9 V58 H235.3"/><path class="spine-track contested" d="M235.3 58 H256.8 V26 H278.2"/><path class="spine-track documented dim" d="M278.2 26 H299.6 V58 H321.0"/><path class="spine-track documented dim" d="M321.0 58 H363.8"/><path class="spine-track documented dim" d="M363.8 58 H385.2 V26 H406.7"/><path class="spine-track documented dim" d="M406.7 26 H428.1 V58 H449.5"/><path class="spine-track documented dim" d="M449.5 58 H492.3"/><path class="spine-track contested dim" d="M492.3 58 H535.2"/><path class="spine-track leap dim" d="M535.2 58 H556.6 V8 H578.0"/><text class="spine-raillabel" x="0" y="29">told</text><text class="spine-raillabel" x="0" y="61">observed</text><circle class="spine-node" cx="64.0" cy="58" r="3.2"/><circle class="spine-node" cx="106.8" cy="58" r="3.2"/><circle class="spine-node" cx="149.7" cy="26" r="3.2"/><circle class="spine-node" cx="192.5" cy="26" r="3.2"/><circle class="spine-node" cx="235.3" cy="58" r="3.2"/><circle class="spine-node dim" cx="321.0" cy="58" r="3.2"/><circle class="spine-node dim" cx="363.8" cy="58" r="3.2"/><circle class="spine-node dim" cx="406.7" cy="26" r="3.2"/><circle class="spine-node dim" cx="449.5" cy="58" r="3.2"/><circle class="spine-node dim" cx="492.3" cy="58" r="3.2"/><circle class="spine-node dim" cx="535.2" cy="58" r="3.2"/><circle class="spine-node dim" cx="578.0" cy="8" r="3.2"/><circle class="spine-node live" cx="278.2" cy="26" r="4.4"/><circle class="spine-ring" cx="278.2" cy="26" r="8"/></svg><div class="spine-label">6 · 1977 · the book that carried it</div></div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Lizard That Was Never There · Stimpunks</span>
+        <span class="spread-footer-right">8</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 9 ════ -->
+  <div class="spread" id="spread-9">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Link 7 · Ithaca, 1995</div>
+          <h2 class="spread-heading" id="finlay-darlington">You do not add a part. You run the programme longer</h2>
+          <p class="joint-line"><span class="joint joint-documented">documented</span></p>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Barbara Finlay and Richard Darlington publish <em>Linked regularities in the development and evolution of mammalian brains</em> in <em>Science</em>. They measure the parts of the brain across 131 species of primates, bats and insectivores, and find something the ladder cannot accommodate.</p>
+            <p><strong>The size of every component, from medulla to forebrain, is highly predictable from the size of the brain as a whole.</strong> One nonlinear function. Not a set of independent modules that can be bolted on, but a single developmental schedule that runs for longer or shorter.</p>
+            <p>And the order in which parts are generated is strongly conserved across mammals. The structures made <em>late</em> in that schedule are the ones that grow disproportionately when a brain gets bigger. Run the programme a little longer and the late parts &mdash; the neocortex among them &mdash; expand hardest, without anything being added.</p>
+            <p class="note"><strong>The neocortex is not a newer floor. It is the part of an old schedule that has the most room left to grow when the schedule runs long.</strong></p>
+            <p>Remember Finlay's name. She will be back on this chain in thirty-one years, as an author of the paper that closes it.</p>
+          </div>
+        </div>
+      </div>
+      <div class="spine"><svg viewBox="0 0 620 84" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain so far, 7 of 13: two rails — what was told about the brain, and what was observed in it. Live node: 1995, parts are not added on."><path class="spine-track documented" d="M64.0 58 H106.8"/><path class="spine-track documented" d="M106.8 58 H128.2 V26 H149.7"/><path class="spine-track documented" d="M149.7 26 H192.5"/><path class="spine-track documented" d="M192.5 26 H213.9 V58 H235.3"/><path class="spine-track contested" d="M235.3 58 H256.8 V26 H278.2"/><path class="spine-track documented" d="M278.2 26 H299.6 V58 H321.0"/><path class="spine-track documented dim" d="M321.0 58 H363.8"/><path class="spine-track documented dim" d="M363.8 58 H385.2 V26 H406.7"/><path class="spine-track documented dim" d="M406.7 26 H428.1 V58 H449.5"/><path class="spine-track documented dim" d="M449.5 58 H492.3"/><path class="spine-track contested dim" d="M492.3 58 H535.2"/><path class="spine-track leap dim" d="M535.2 58 H556.6 V8 H578.0"/><text class="spine-raillabel" x="0" y="29">told</text><text class="spine-raillabel" x="0" y="61">observed</text><circle class="spine-node" cx="64.0" cy="58" r="3.2"/><circle class="spine-node" cx="106.8" cy="58" r="3.2"/><circle class="spine-node" cx="149.7" cy="26" r="3.2"/><circle class="spine-node" cx="192.5" cy="26" r="3.2"/><circle class="spine-node" cx="235.3" cy="58" r="3.2"/><circle class="spine-node" cx="278.2" cy="26" r="3.2"/><circle class="spine-node dim" cx="363.8" cy="58" r="3.2"/><circle class="spine-node dim" cx="406.7" cy="26" r="3.2"/><circle class="spine-node dim" cx="449.5" cy="58" r="3.2"/><circle class="spine-node dim" cx="492.3" cy="58" r="3.2"/><circle class="spine-node dim" cx="535.2" cy="58" r="3.2"/><circle class="spine-node dim" cx="578.0" cy="8" r="3.2"/><circle class="spine-node live" cx="321.0" cy="58" r="4.4"/><circle class="spine-ring" cx="321.0" cy="58" r="8"/></svg><div class="spine-label">7 · 1995 · parts are not added on</div></div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Lizard That Was Never There · Stimpunks</span>
+        <span class="spread-footer-right">9</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 10 ════ -->
+  <div class="spread" id="spread-10">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Link 8 · an international consortium, 2005</div>
+          <h2 class="spread-heading" id="renaming">The names had to go, because the names were an argument</h2>
+          <p class="joint-line"><span class="joint joint-documented">documented</span></p>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">An international consortium of neuroscientists publishes <em>Avian brains and a new understanding of vertebrate brain evolution</em> in <em>Nature Reviews Neuroscience</em>, and formally renames most of the bird forebrain.</p>
+            <p>Read the old names aloud. <strong>Paleostriatum. Neostriatum. Archistriatum. Hyperstriatum.</strong> Old-striatum, new-striatum, ancient-striatum. A century-old vocabulary in which every label asserts two things: that these regions are basal ganglia, and that they arrived in an order.</p>
+            <p>Both were wrong. The greatest expanse of the bird telencephalon turns out to be derived from <strong>pallium</strong> &mdash; the cortical side &mdash; not striatum at all. Only one of the old “striatum” regions is genuinely equivalent to the mammalian striatum.</p>
+            <p class="note"><strong>The terminology had to be replaced because a name is a claim, and students were absorbing the claim every time they learned the word.</strong> You cannot teach around a vocabulary that argues with you.</p>
+            <p>This is the field doing the expensive, unglamorous thing: not writing a rebuttal, but changing the words, in a hundred textbooks, because the words had been carrying a wrong idea for free.</p>
+          </div>
+        </div>
+      </div>
+      <div class="spine"><svg viewBox="0 0 620 84" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain so far, 8 of 13: two rails — what was told about the brain, and what was observed in it. Live node: 2005, the names had to go."><path class="spine-track documented" d="M64.0 58 H106.8"/><path class="spine-track documented" d="M106.8 58 H128.2 V26 H149.7"/><path class="spine-track documented" d="M149.7 26 H192.5"/><path class="spine-track documented" d="M192.5 26 H213.9 V58 H235.3"/><path class="spine-track contested" d="M235.3 58 H256.8 V26 H278.2"/><path class="spine-track documented" d="M278.2 26 H299.6 V58 H321.0"/><path class="spine-track documented" d="M321.0 58 H363.8"/><path class="spine-track documented dim" d="M363.8 58 H385.2 V26 H406.7"/><path class="spine-track documented dim" d="M406.7 26 H428.1 V58 H449.5"/><path class="spine-track documented dim" d="M449.5 58 H492.3"/><path class="spine-track contested dim" d="M492.3 58 H535.2"/><path class="spine-track leap dim" d="M535.2 58 H556.6 V8 H578.0"/><text class="spine-raillabel" x="0" y="29">told</text><text class="spine-raillabel" x="0" y="61">observed</text><circle class="spine-node" cx="64.0" cy="58" r="3.2"/><circle class="spine-node" cx="106.8" cy="58" r="3.2"/><circle class="spine-node" cx="149.7" cy="26" r="3.2"/><circle class="spine-node" cx="192.5" cy="26" r="3.2"/><circle class="spine-node" cx="235.3" cy="58" r="3.2"/><circle class="spine-node" cx="278.2" cy="26" r="3.2"/><circle class="spine-node" cx="321.0" cy="58" r="3.2"/><circle class="spine-node dim" cx="406.7" cy="26" r="3.2"/><circle class="spine-node dim" cx="449.5" cy="58" r="3.2"/><circle class="spine-node dim" cx="492.3" cy="58" r="3.2"/><circle class="spine-node dim" cx="535.2" cy="58" r="3.2"/><circle class="spine-node dim" cx="578.0" cy="8" r="3.2"/><circle class="spine-node live" cx="363.8" cy="58" r="4.4"/><circle class="spine-ring" cx="363.8" cy="58" r="8"/></svg><div class="spine-label">8 · 2005 · the names had to go</div></div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Lizard That Was Never There · Stimpunks</span>
+        <span class="spread-footer-right">10</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 11 ════ -->
+  <div class="spread" id="spread-11">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Link 9 · psychology, 2020</div>
+          <h2 class="spread-heading" id="textbooks">Fifty-one years later, it is still in the textbook</h2>
+          <p class="joint-line"><span class="joint joint-documented">documented</span></p>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Joseph Cesario, David Johnson and Heather Eisthen publish <em>Your Brain Is Not an Onion With a Tiny Reptile Inside</em> in <em>Current Directions in Psychological Science</em>. The title is doing a job the field had evidently stopped doing for itself.</p>
+            <p>Their description of the situation is the sentence to keep:</p>
+            <div class="pull-quote">This belief, although widely shared in introductory psychology textbooks, has long been discredited among neurobiologists and stands in contrast to the clear and unanimous agreement on these issues among those studying nervous-system evolution.<span class="attr">Cesario, Johnson &amp; Eisthen, 2020</span></div>
+            <p><strong>Not a live controversy. Two rooms.</strong> In one room the question was settled decades ago and there is unanimous agreement. In the other room it is being taught to first-year students as fact.</p>
+            <p>They sampled <strong>20 introductory psychology textbooks published between 2009 and 2017</strong>. Of the 14 that discuss brain evolution, <strong>86% contained at least one inaccuracy</strong>. Only <strong>two</strong> described brain evolution in a way matching the consensus among comparative neurobiologists.</p>
+            <p>Karten published in 1969. Two textbooks out of twenty had caught up by 2017.</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap"><svg class="diagram" viewBox="0 0 300 190" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Twenty squares representing twenty introductory psychology textbooks sampled from 2009 to 2017. Six are outlined only, meaning they do not discuss brain evolution. Twelve are filled in pink, meaning they discuss it and contain at least one inaccuracy. Two are filled in green, meaning they match the consensus of comparative neurobiologists.">
+              <text class="dlabel" x="6" y="14">20 intro psych textbooks, 2009–2017</text>
+              <g stroke="rgba(244,114,182,0.85)" stroke-width="1.3" fill="rgba(244,114,182,0.18)">
+                <rect x="18" y="28" width="24" height="24" rx="2"/><rect x="50" y="28" width="24" height="24" rx="2"/>
+                <rect x="82" y="28" width="24" height="24" rx="2"/><rect x="114" y="28" width="24" height="24" rx="2"/>
+                <rect x="146" y="28" width="24" height="24" rx="2"/><rect x="178" y="28" width="24" height="24" rx="2"/>
+                <rect x="18" y="60" width="24" height="24" rx="2"/><rect x="50" y="60" width="24" height="24" rx="2"/>
+                <rect x="82" y="60" width="24" height="24" rx="2"/><rect x="114" y="60" width="24" height="24" rx="2"/>
+                <rect x="146" y="60" width="24" height="24" rx="2"/><rect x="178" y="60" width="24" height="24" rx="2"/>
+              </g>
+              <g stroke="rgba(74,222,128,0.9)" stroke-width="1.4" fill="rgba(74,222,128,0.28)">
+                <rect x="210" y="28" width="24" height="24" rx="2"/><rect x="242" y="28" width="24" height="24" rx="2"/>
+              </g>
+              <g stroke="rgba(196,181,212,0.5)" stroke-width="1.1" fill="none">
+                <rect x="210" y="60" width="24" height="24" rx="2"/><rect x="242" y="60" width="24" height="24" rx="2"/>
+                <rect x="18" y="92" width="24" height="24" rx="2"/><rect x="50" y="92" width="24" height="24" rx="2"/>
+                <rect x="82" y="92" width="24" height="24" rx="2"/><rect x="114" y="92" width="24" height="24" rx="2"/>
+              </g>
+              <text class="dlabel" x="18" y="140">12 · discuss it, at least one error</text>
+              <text class="dlabel" x="18" y="156">2 · match the consensus</text>
+              <text class="dlabel" x="18" y="172">6 · do not discuss it at all</text>
+              <style>
+                .dlabel { font-family: 'Space Mono', monospace; font-size: 7.5px; letter-spacing: 0.14em; text-transform: uppercase; fill: #c4b5d4; }
+              </style>
+            </svg>
+            <div class="diagram-caption">Fourteen of twenty discuss brain<br>evolution. Twelve of those fourteen<br>get something wrong. Two do not.</div></div>
+        </div>
+      </div>
+      <div class="spine"><svg viewBox="0 0 620 84" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain so far, 9 of 13: two rails — what was told about the brain, and what was observed in it. Live node: 2020, still in the textbook."><path class="spine-track documented" d="M64.0 58 H106.8"/><path class="spine-track documented" d="M106.8 58 H128.2 V26 H149.7"/><path class="spine-track documented" d="M149.7 26 H192.5"/><path class="spine-track documented" d="M192.5 26 H213.9 V58 H235.3"/><path class="spine-track contested" d="M235.3 58 H256.8 V26 H278.2"/><path class="spine-track documented" d="M278.2 26 H299.6 V58 H321.0"/><path class="spine-track documented" d="M321.0 58 H363.8"/><path class="spine-track documented" d="M363.8 58 H385.2 V26 H406.7"/><path class="spine-track documented dim" d="M406.7 26 H428.1 V58 H449.5"/><path class="spine-track documented dim" d="M449.5 58 H492.3"/><path class="spine-track contested dim" d="M492.3 58 H535.2"/><path class="spine-track leap dim" d="M535.2 58 H556.6 V8 H578.0"/><text class="spine-raillabel" x="0" y="29">told</text><text class="spine-raillabel" x="0" y="61">observed</text><circle class="spine-node" cx="64.0" cy="58" r="3.2"/><circle class="spine-node" cx="106.8" cy="58" r="3.2"/><circle class="spine-node" cx="149.7" cy="26" r="3.2"/><circle class="spine-node" cx="192.5" cy="26" r="3.2"/><circle class="spine-node" cx="235.3" cy="58" r="3.2"/><circle class="spine-node" cx="278.2" cy="26" r="3.2"/><circle class="spine-node" cx="321.0" cy="58" r="3.2"/><circle class="spine-node" cx="363.8" cy="58" r="3.2"/><circle class="spine-node dim" cx="449.5" cy="58" r="3.2"/><circle class="spine-node dim" cx="492.3" cy="58" r="3.2"/><circle class="spine-node dim" cx="535.2" cy="58" r="3.2"/><circle class="spine-node dim" cx="578.0" cy="8" r="3.2"/><circle class="spine-node live" cx="406.7" cy="26" r="4.4"/><circle class="spine-ring" cx="406.7" cy="26" r="8"/></svg><div class="spine-label">9 · 2020 · still in the textbook</div></div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Lizard That Was Never There · Stimpunks</span>
+        <span class="spread-footer-right">11</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 12 ════ -->
+  <div class="spread" id="spread-12">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Link 10 · Georgia Tech and Cornell, 2026</div>
+          <h2 class="spread-heading" id="imam">Not three floors. Two systems</h2>
+          <p class="joint-line"><span class="joint joint-documented">documented</span></p>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Nabil Imam, Matthew Kielo, Brandon Trude and Barbara Finlay publish <em>Dual computational systems in the development and evolution of mammalian brains</em> in <em>Science Advances</em>. They measure brain structures across <strong>182 mammalian species</strong> in 10 taxonomic groups.</p>
+            <p>What they find is not a ladder and not independence. It is a <strong>trade</strong>.</p>
+            <p>The <strong>olfactory system and the neocortex covary inversely</strong>. Take out the effect of overall brain size and plot what is left: species with more olfactory system than expected have less neocortex than expected, and the reverse, at <span class="latin">r</span> = −0.63.</p>
+            <p>Meanwhile the structures MacLean bundled as limbic &mdash; amygdala, septum, schizocortex, hippocampus &mdash; covary <em>positively</em> with the olfactory system and with each other. They really do belong together. <strong>They just do not belong together for the reason he gave.</strong></p>
+            <p class="note">Two systems, in tension, competing. Not three storeys stacked by age.</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap"><svg class="diagram" viewBox="0 0 300 190" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A scatter plot of neocortex residuals against olfactory residuals for mammal species, with points falling along a clear downward slope from upper left to lower right, and a fitted line labelled r equals minus 0.63. Two points are circled: the armadillo at lower right and the squirrel monkey at upper left.">
+              <text class="dlabel" x="6" y="14">what is left after brain size</text>
+              <path d="M40 26 V150 H274" fill="none" stroke="rgba(196,181,212,0.6)" stroke-width="1.1"/>
+              <text class="dlabel" x="150" y="168" text-anchor="middle">olfactory residual →</text>
+              <text class="dlabel" x="6" y="88" >neocortex</text>
+              <text class="dlabel" x="6" y="100">residual ↑</text>
+              <g fill="rgba(34,211,238,0.75)">
+                <circle cx="62" cy="44" r="3"/><circle cx="78" cy="52" r="3"/><circle cx="70" cy="62" r="3"/>
+                <circle cx="96" cy="58" r="3"/><circle cx="110" cy="70" r="3"/><circle cx="92" cy="76" r="3"/>
+                <circle cx="126" cy="78" r="3"/><circle cx="140" cy="88" r="3"/><circle cx="118" cy="94" r="3"/>
+                <circle cx="156" cy="96" r="3"/><circle cx="170" cy="104" r="3"/><circle cx="148" cy="112" r="3"/>
+                <circle cx="186" cy="112" r="3"/><circle cx="200" cy="122" r="3"/><circle cx="178" cy="128" r="3"/>
+                <circle cx="216" cy="126" r="3"/><circle cx="232" cy="136" r="3"/><circle cx="208" cy="140" r="3"/>
+              </g>
+              <path d="M52 40 L252 140" fill="none" stroke="rgba(251,191,36,0.95)" stroke-width="1.8"/>
+              <circle cx="70" cy="46" r="7" fill="none" stroke="rgba(244,114,182,0.95)" stroke-width="1.4"/>
+              <text class="dlabel" x="84" y="34">squirrel monkey</text>
+              <circle cx="232" cy="136" r="7" fill="none" stroke="rgba(244,114,182,0.95)" stroke-width="1.4"/>
+              <text class="dlabel" x="228" y="120" text-anchor="end">armadillo</text>
+              <text class="dlabel" x="264" y="60" text-anchor="end">r = −0.63</text>
+              <style>
+                .dlabel { font-family: 'Space Mono', monospace; font-size: 7.5px; letter-spacing: 0.14em; text-transform: uppercase; fill: #c4b5d4; }
+              </style>
+            </svg>
+            <div class="diagram-caption">Schematic of the reported relationship,<br>not the paper's own plot. 182 species;<br>more of one means less of the other.</div></div>
+        </div>
+      </div>
+      <div class="spine"><svg viewBox="0 0 620 84" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain so far, 10 of 13: two rails — what was told about the brain, and what was observed in it. Live node: 2026, two systems, not three floors."><path class="spine-track documented" d="M64.0 58 H106.8"/><path class="spine-track documented" d="M106.8 58 H128.2 V26 H149.7"/><path class="spine-track documented" d="M149.7 26 H192.5"/><path class="spine-track documented" d="M192.5 26 H213.9 V58 H235.3"/><path class="spine-track contested" d="M235.3 58 H256.8 V26 H278.2"/><path class="spine-track documented" d="M278.2 26 H299.6 V58 H321.0"/><path class="spine-track documented" d="M321.0 58 H363.8"/><path class="spine-track documented" d="M363.8 58 H385.2 V26 H406.7"/><path class="spine-track documented" d="M406.7 26 H428.1 V58 H449.5"/><path class="spine-track documented dim" d="M449.5 58 H492.3"/><path class="spine-track contested dim" d="M492.3 58 H535.2"/><path class="spine-track leap dim" d="M535.2 58 H556.6 V8 H578.0"/><text class="spine-raillabel" x="0" y="29">told</text><text class="spine-raillabel" x="0" y="61">observed</text><circle class="spine-node" cx="64.0" cy="58" r="3.2"/><circle class="spine-node" cx="106.8" cy="58" r="3.2"/><circle class="spine-node" cx="149.7" cy="26" r="3.2"/><circle class="spine-node" cx="192.5" cy="26" r="3.2"/><circle class="spine-node" cx="235.3" cy="58" r="3.2"/><circle class="spine-node" cx="278.2" cy="26" r="3.2"/><circle class="spine-node" cx="321.0" cy="58" r="3.2"/><circle class="spine-node" cx="363.8" cy="58" r="3.2"/><circle class="spine-node" cx="406.7" cy="26" r="3.2"/><circle class="spine-node dim" cx="492.3" cy="58" r="3.2"/><circle class="spine-node dim" cx="535.2" cy="58" r="3.2"/><circle class="spine-node dim" cx="578.0" cy="8" r="3.2"/><circle class="spine-node live" cx="449.5" cy="58" r="4.4"/><circle class="spine-ring" cx="449.5" cy="58" r="8"/></svg><div class="spine-label">10 · 2026 · two systems, not three floors</div></div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Lizard That Was Never There · Stimpunks</span>
+        <span class="spread-footer-right">12</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 13 ════ -->
+  <div class="spread" id="spread-13">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Link 11 · why there are two</div>
+          <h2 class="spread-heading" id="two-shapes">Because the information arrives in two shapes</h2>
+          <p class="joint-line"><span class="joint joint-documented">documented</span></p>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Here is the part that makes the whole thing click, and it has nothing to do with when anything evolved. It has to do with what the input <em>is like</em>.</p>
+            <p><strong>Vision, touch and hearing arrive with space already in them.</strong> Things near each other in the world are near each other in the signal. The team measured this in the actual datasets &mdash; images, tactile-glove pressure readings, speech &mdash; and got spatial autocorrelation scores of <strong>0.90, 0.86 and 0.89</strong>.</p>
+            <p><strong>Smell does not.</strong> Two odour molecules that are chemically adjacent smell nothing alike. There is no “next to” in odour space. Same measurement: <strong>0.11</strong>. On a locality index the gap is starker still &mdash; 0.97, 0.84 and 0.99 against <strong>0.00</strong>.</p>
+            <p>So they trained artificial networks on each kind of data and looked at what organisation emerged. Networks optimised for vision, touch and hearing <strong>converge on orderly maps</strong> that keep neighbours as neighbours &mdash; which is what neocortex looks like. Networks optimised for smell, and for relational memory, develop <strong>fractured maps with distributed connectivity</strong> &mdash; which is what the olfactory system and hippocampus look like.</p>
+            <p class="note"><strong>The division is not old versus new. It is mappable versus not.</strong> One kind of information can be laid out on a sheet. The other cannot, and needs wiring that reaches everywhere.</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap"><svg class="diagram" viewBox="0 0 300 190" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Two panels. Left, labelled mappable, shows a neat grid of dots with short connections only between neighbours, and the value 0.90. Right, labelled not mappable, shows scattered dots with long connections crossing the whole area, and the value 0.11.">
+              <text class="dlabel" x="6" y="14">mappable</text>
+              <g fill="rgba(34,211,238,0.9)">
+                <circle cx="24" cy="30" r="2.4"/><circle cx="46" cy="30" r="2.4"/><circle cx="68" cy="30" r="2.4"/><circle cx="90" cy="30" r="2.4"/><circle cx="112" cy="30" r="2.4"/>
+                <circle cx="24" cy="52" r="2.4"/><circle cx="46" cy="52" r="2.4"/><circle cx="68" cy="52" r="2.4"/><circle cx="90" cy="52" r="2.4"/><circle cx="112" cy="52" r="2.4"/>
+                <circle cx="24" cy="74" r="2.4"/><circle cx="46" cy="74" r="2.4"/><circle cx="68" cy="74" r="2.4"/><circle cx="90" cy="74" r="2.4"/><circle cx="112" cy="74" r="2.4"/>
+              </g>
+              <g stroke="rgba(251,191,36,0.85)" stroke-width="1.2" fill="none">
+                <path d="M24 30 H46"/><path d="M46 52 H68"/><path d="M90 30 H112"/>
+                <path d="M68 30 V52"/><path d="M24 52 V74"/><path d="M112 52 V74"/>
+              </g>
+              <text class="dlabel" x="24" y="100">sight touch sound</text>
+              <text class="dlabel" x="24" y="114">spatial order 0.90</text>
+              <text class="dlabel" x="166" y="14">not mappable</text>
+              <g fill="rgba(167,139,250,0.9)">
+                <circle cx="176" cy="34" r="2.4"/><circle cx="238" cy="28" r="2.4"/><circle cx="206" cy="58" r="2.4"/>
+                <circle cx="270" cy="48" r="2.4"/><circle cx="184" cy="72" r="2.4"/><circle cx="252" cy="76" r="2.4"/>
+                <circle cx="222" cy="38" r="2.4"/><circle cx="266" cy="66" r="2.4"/>
+              </g>
+              <g stroke="rgba(251,191,36,0.85)" stroke-width="1.1" fill="none">
+                <path d="M176 34 L252 76"/><path d="M238 28 L184 72"/><path d="M206 58 L270 48"/><path d="M222 38 L266 66"/>
+              </g>
+              <text class="dlabel" x="166" y="100">smell</text>
+              <text class="dlabel" x="166" y="114">spatial order 0.11</text>
+              <text class="dlabel" x="150" y="140" text-anchor="middle">two kinds of input</text>
+              <text class="dlabel" x="150" y="156" text-anchor="middle">two kinds of wiring</text>
+              <text class="dlabel" x="150" y="172" text-anchor="middle">neither one older</text>
+              <style>
+                .dlabel { font-family: 'Space Mono', monospace; font-size: 7.5px; letter-spacing: 0.14em; text-transform: uppercase; fill: #c4b5d4; }
+              </style>
+            </svg>
+            <div class="diagram-caption">Moran's I, measured on the real<br>datasets. Where neighbours mean<br>something, you can build a map.</div></div>
+        </div>
+      </div>
+      <div class="spine"><svg viewBox="0 0 620 84" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain so far, 11 of 13: two rails — what was told about the brain, and what was observed in it. Live node: why, smell has no map."><path class="spine-track documented" d="M64.0 58 H106.8"/><path class="spine-track documented" d="M106.8 58 H128.2 V26 H149.7"/><path class="spine-track documented" d="M149.7 26 H192.5"/><path class="spine-track documented" d="M192.5 26 H213.9 V58 H235.3"/><path class="spine-track contested" d="M235.3 58 H256.8 V26 H278.2"/><path class="spine-track documented" d="M278.2 26 H299.6 V58 H321.0"/><path class="spine-track documented" d="M321.0 58 H363.8"/><path class="spine-track documented" d="M363.8 58 H385.2 V26 H406.7"/><path class="spine-track documented" d="M406.7 26 H428.1 V58 H449.5"/><path class="spine-track documented" d="M449.5 58 H492.3"/><path class="spine-track contested dim" d="M492.3 58 H535.2"/><path class="spine-track leap dim" d="M535.2 58 H556.6 V8 H578.0"/><text class="spine-raillabel" x="0" y="29">told</text><text class="spine-raillabel" x="0" y="61">observed</text><circle class="spine-node" cx="64.0" cy="58" r="3.2"/><circle class="spine-node" cx="106.8" cy="58" r="3.2"/><circle class="spine-node" cx="149.7" cy="26" r="3.2"/><circle class="spine-node" cx="192.5" cy="26" r="3.2"/><circle class="spine-node" cx="235.3" cy="58" r="3.2"/><circle class="spine-node" cx="278.2" cy="26" r="3.2"/><circle class="spine-node" cx="321.0" cy="58" r="3.2"/><circle class="spine-node" cx="363.8" cy="58" r="3.2"/><circle class="spine-node" cx="406.7" cy="26" r="3.2"/><circle class="spine-node" cx="449.5" cy="58" r="3.2"/><circle class="spine-node dim" cx="535.2" cy="58" r="3.2"/><circle class="spine-node dim" cx="578.0" cy="8" r="3.2"/><circle class="spine-node live" cx="492.3" cy="58" r="4.4"/><circle class="spine-ring" cx="492.3" cy="58" r="8"/></svg><div class="spine-label">11 · why · smell has no map</div></div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Lizard That Was Never There · Stimpunks</span>
+        <span class="spread-footer-right">13</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 14 ════ -->
+  <div class="spread" id="spread-14">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Link 12 · the trade</div>
+          <h2 class="spread-heading" id="competition">They cannot both have the room</h2>
+          <p class="joint-line"><span class="joint joint-contested">contested</span></p>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">If two systems need incompatible wiring and both need space, they compete. The team tested that directly: an evolutionary algorithm optimising one network with two connectivity domains &mdash; one orderly, one distributed &mdash; for different mixes of task. Change what the animal needs to do, and the two subnetworks expand and contract <em>against each other</em>, reproducing the pattern seen across the 182 species.</p>
+            <p>Which brings us to the nine-banded armadillo, which forages by smell in the dark. Against what its brain size predicts, its <strong>hippocampus is twice the expected volume</strong> &mdash; 464 mm³ of extra circuitry &mdash; its olfactory system is 1.5 times larger, and its <strong>neocortex is smaller by a factor of 2.8</strong>.</p>
+            <p>Now the owl monkey: a small nocturnal primate. Brain 15 g. And the agouti, a rodent: brain 16 g. Nearly identical brains by weight, and utterly different inside &mdash; in the agouti the olfactory system is so large it obscures the cerebellum from view.</p>
+            <p class="note"><strong>An armadillo is not a failed monkey.</strong> It is a nervous system that spent its room on the thing it lives by. There is no version of this where one of them is the deficient one, because there is no single axis for them to be worse along.</p>
+            <p class="withheld"><span class="withheld-label">Why this joint is marked contested</span> The inverse covariation across species is measured and solid. The <em>explanation</em> &mdash; that it happens because two computational systems compete for representational space &mdash; comes from optimising artificial neural networks and mapping the result onto cortex. That is a model, and the authors say their results <em>“suggest”</em> it. We are not going to upgrade their verb.</p>
+          </div>
+        </div>
+      </div>
+      <div class="spine"><svg viewBox="0 0 620 84" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain so far, 12 of 13: two rails — what was told about the brain, and what was observed in it. Live node: room, they cannot both have it."><path class="spine-track documented" d="M64.0 58 H106.8"/><path class="spine-track documented" d="M106.8 58 H128.2 V26 H149.7"/><path class="spine-track documented" d="M149.7 26 H192.5"/><path class="spine-track documented" d="M192.5 26 H213.9 V58 H235.3"/><path class="spine-track contested" d="M235.3 58 H256.8 V26 H278.2"/><path class="spine-track documented" d="M278.2 26 H299.6 V58 H321.0"/><path class="spine-track documented" d="M321.0 58 H363.8"/><path class="spine-track documented" d="M363.8 58 H385.2 V26 H406.7"/><path class="spine-track documented" d="M406.7 26 H428.1 V58 H449.5"/><path class="spine-track documented" d="M449.5 58 H492.3"/><path class="spine-track contested" d="M492.3 58 H535.2"/><path class="spine-track leap dim" d="M535.2 58 H556.6 V8 H578.0"/><text class="spine-raillabel" x="0" y="29">told</text><text class="spine-raillabel" x="0" y="61">observed</text><circle class="spine-node" cx="64.0" cy="58" r="3.2"/><circle class="spine-node" cx="106.8" cy="58" r="3.2"/><circle class="spine-node" cx="149.7" cy="26" r="3.2"/><circle class="spine-node" cx="192.5" cy="26" r="3.2"/><circle class="spine-node" cx="235.3" cy="58" r="3.2"/><circle class="spine-node" cx="278.2" cy="26" r="3.2"/><circle class="spine-node" cx="321.0" cy="58" r="3.2"/><circle class="spine-node" cx="363.8" cy="58" r="3.2"/><circle class="spine-node" cx="406.7" cy="26" r="3.2"/><circle class="spine-node" cx="449.5" cy="58" r="3.2"/><circle class="spine-node" cx="492.3" cy="58" r="3.2"/><circle class="spine-node dim" cx="578.0" cy="8" r="3.2"/><circle class="spine-node live" cx="535.2" cy="58" r="4.4"/><circle class="spine-ring" cx="535.2" cy="58" r="8"/></svg><div class="spine-label">12 · room · they cannot both have it</div></div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Lizard That Was Never There · Stimpunks</span>
+        <span class="spread-footer-right">14</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 15 ════ -->
+  <div class="spread" id="spread-15">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The turn</div>
+          <h2 class="spread-heading" id="the-turn">What the ladder was actually for</h2>
+          <p class="joint-line"><span class="joint joint-leap">leap</span></p>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Everything above is history and measurement. This spread is not, and it is marked accordingly.</p>
+            <p>A model with an order in it will be used to rank whatever you point it at. That is not a misuse of the triune brain; it is the only thing a stack of floors can do. And the thing it got pointed at was people.</p>
+            <p><strong>“That's your lizard brain” is not a neutral description of a reaction. It is a verdict on it.</strong> It says: what happened in you just now was the old animal, the part that predates reason, breaking through the floor. It relocates a person's response to a lower storey and files it under something to be overridden.</p>
+            <p>Ask who gets told this. It is said about anger and about panic, about a meltdown, about a startle response, about someone who could not mask any longer. It is a way of describing a nervous system doing exactly what it is built to do, as though it were a failure of the newer, better parts to keep the lid on.</p>
+            <p class="note"><strong>There was never an older animal in there.</strong> All vertebrates share the same gross forebrain-to-spinal-cord segmentation, with no segments added on. The reaction was not primitive. It was yours, entire, from a brain with no basement.</p>
+            <p>And what replaced the ladder does not sort anybody. Two systems, competing for room, tuned by what a creature actually has to do. The armadillo went one way and the monkey the other, and the answer to <em>which is better</em> is that the question does not survive contact with the measurement.</p>
+            <div class="refusals">
+              <div class="refusal"><span class="refusal-tag">Not</span> a claim that emotion and reason are the same thing, or that nothing in the brain is older than anything else. Some structures <em>are</em> older. What is false is that they are stacked, ranked, or separately conscious.</div>
+              <div class="refusal"><span class="refusal-tag">Not</span> an attack on Sagan, or on popular science. The problem is not that he explained something. It is that reach is not a filter, and the correction never travelled as far as the claim.</div>
+              <div class="refusal"><span class="refusal-tag">Not</span> anti-science. Every link that dismantles this model is science: pigeons in 1969, 131 species in 1995, a renaming in 2005, 182 species in 2026. The method is what fixed it. The model was what borrowed the method's authority.</div>
+              <div class="refusal"><span class="refusal-tag">Not</span> <em>because of</em>. That an armadillo's brain is differently proportioned is a rhyme, not a warrant. Nobody's standing depends on how a mammal allocates its cortex.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="spine"><svg viewBox="0 0 620 84" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain so far, 13 of 13: two rails — what was told about the brain, and what was observed in it. Live node: turn, what the ladder was for."><path class="spine-track documented" d="M64.0 58 H106.8"/><path class="spine-track documented" d="M106.8 58 H128.2 V26 H149.7"/><path class="spine-track documented" d="M149.7 26 H192.5"/><path class="spine-track documented" d="M192.5 26 H213.9 V58 H235.3"/><path class="spine-track contested" d="M235.3 58 H256.8 V26 H278.2"/><path class="spine-track documented" d="M278.2 26 H299.6 V58 H321.0"/><path class="spine-track documented" d="M321.0 58 H363.8"/><path class="spine-track documented" d="M363.8 58 H385.2 V26 H406.7"/><path class="spine-track documented" d="M406.7 26 H428.1 V58 H449.5"/><path class="spine-track documented" d="M449.5 58 H492.3"/><path class="spine-track contested" d="M492.3 58 H535.2"/><path class="spine-track leap" d="M535.2 58 H556.6 V8 H578.0"/><text class="spine-raillabel" x="0" y="29">told</text><text class="spine-raillabel" x="0" y="61">observed</text><circle class="spine-node" cx="64.0" cy="58" r="3.2"/><circle class="spine-node" cx="106.8" cy="58" r="3.2"/><circle class="spine-node" cx="149.7" cy="26" r="3.2"/><circle class="spine-node" cx="192.5" cy="26" r="3.2"/><circle class="spine-node" cx="235.3" cy="58" r="3.2"/><circle class="spine-node" cx="278.2" cy="26" r="3.2"/><circle class="spine-node" cx="321.0" cy="58" r="3.2"/><circle class="spine-node" cx="363.8" cy="58" r="3.2"/><circle class="spine-node" cx="406.7" cy="26" r="3.2"/><circle class="spine-node" cx="449.5" cy="58" r="3.2"/><circle class="spine-node" cx="492.3" cy="58" r="3.2"/><circle class="spine-node" cx="535.2" cy="58" r="3.2"/><circle class="spine-node live" cx="578.0" cy="8" r="4.4"/><circle class="spine-ring" cx="578.0" cy="8" r="8"/></svg><div class="spine-label">13 · turn · what the ladder was for</div></div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Lizard That Was Never There · Stimpunks</span>
+        <span class="spread-footer-right">15</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 16: COLOPHON ════ -->
+  <div class="spread" id="spread-16">
+    <div class="interior">
+      <div class="colophon">
+        <div class="colophon-top">
+          <div class="colophon-h">Sources &amp; notes</div>
+          <div class="colophon-body">
+            <p><strong>The chain, in order.</strong> Broca, P. (1878) <span class="latin">le grand lobe limbique</span>, naming a rim of cortex for its position; <span class="latin">limbus</span> is Latin for border. Papez, J. W. (1937) “A proposed mechanism of emotion,” <em>Archives of Neurology and Psychiatry</em>. MacLean, P. D. (1949) on the “visceral brain”; (1952) coins <em>limbic system</em>; the full triune model follows in the 1960s. Karten, H. J. (1969) “The organization of the avian telencephalon and some speculations on the phylogeny of the amniote telencephalon,” <em>Annals of the New York Academy of Sciences</em> <strong>167</strong>, 164–179. Sagan, C. (1977) <em>The Dragons of Eden</em>, Random House; Pulitzer Prize for General Non-Fiction, 1978. Finlay, B. L. &amp; Darlington, R. B. (1995) “Linked regularities in the development and evolution of mammalian brains,” <em>Science</em> <strong>268</strong>, 1578–1584. Jarvis, E. D. et al., Avian Brain Nomenclature Consortium (2005) “Avian brains and a new understanding of vertebrate brain evolution,” <em>Nature Reviews Neuroscience</em> <strong>6</strong>, 151–159. Cesario, J., Johnson, D. J. &amp; Eisthen, H. L. (2020) “Your Brain Is Not an Onion With a Tiny Reptile Inside,” <em>Current Directions in Psychological Science</em> <strong>29</strong>(3), 255–260.</p>
+            <p><strong>The paper this was built from, read in full.</strong> Imam, N., Kielo, M., Trude, B. M. &amp; Finlay, B. L. (2026) “Dual computational systems in the development and evolution of mammalian brains,” <em>Science Advances</em> <strong>12</strong>, eaec6112, published 22 April 2026, <a href="https://doi.org/10.1126/sciadv.aec6112">doi:10.1126/sciadv.aec6112</a>, CC BY 4.0. Every figure quoted here — 182 species, <span class="latin">r</span> = −0.63, Moran's I of 0.90 / 0.86 / 0.89 against 0.11, locality 0.97 / 0.84 / 0.99 against 0.00, the armadillo's 464 mm³ and factor of 2.8, the owl monkey and agouti at 15 g and 16 g — is the paper's own. Both direct quotations on spreads 2 and 5 are verbatim from it.</p>
+            <p><strong>What is second-hand, and marked as such.</strong> The Cesario textbook figures — 20 books sampled 2009–2017, 14 discussing brain evolution, 86% carrying at least one inaccuracy, 2 matching consensus — were taken from summaries of that paper rather than from the paper itself, which we could not open. The abstract, quoted here verbatim, supports the claim in kind but carries no numbers. <strong>Treat the counts as provisional.</strong> Dates and citations for Broca, Papez, MacLean and Karten were confirmed against reference sources, not against the original nineteenth- and twentieth-century papers.</p>
+            <p><strong>The disclosure on spread 6 stands on its own.</strong> Carl Sagan is one of the two figures this site is built on, and <em>The Dragons of Eden</em> is a principal vector for a model that had already been contradicted. We would rather publish that than keep a clean story.</p>
+            <p><strong>Prior art here.</strong> <a href="the-layer-we-call-essential-zine.html">The Layer We Call Essential</a> (No. 36) is the closest neighbour and does a different job: a ranking that outlived its evidence <em>inside</em> the neocortex, where cetacean brains lack the layer primate neuroscience treats as canonical. This chain is about the ranking <em>between</em> regions. <a href="nervous-systems-field-guide.html">A Field Guide to Nervous Systems</a> already holds the conclusion that the neocortex is not the summit of a hierarchy; what is new here is the history of how the summit got built, and the mechanism that replaces it. Neither is re-argued.</p>
+            <div class="series-list">
+              <div class="series-item"><span class="series-num">Joints</span> Ten documented, two contested, one leap. The contested pair are Sagan's sole responsibility for the phrase entering common speech, and the competition-for-space explanation, which is a modelling result the authors themselves only say “suggests.” The leap is spread 15, which moves from <em>the model is false</em> to <em>what the model does to a person</em>. That move is ours.</div>
+              <div class="series-item"><span class="series-num">Rails</span> The spine runs two: what was <em>told</em> about the brain and what was <em>observed</em> in it. The shape of the chain is the point — the observed rail is live from 1969, and the told rail keeps running for another fifty-one years without touching it.</div>
+            </div>
+            <p class="colophon-phrase">A rhyme, not a proof.</p>
+          </div>
+        </div>
+        <div class="colophon-footer">
+          <a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks Foundation</a> × <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a> · Zine No. 85 · <span class="colophon-ls">L★S</span><br>
+          2 September 2026 · stimpunks.org · morerealms.com · starstuff.earth · <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Lizard That Was Never There · Stimpunks</span>
+        <span class="spread-footer-right">16</span>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /zine-shell --></main>
+
+<script src="starstuff.js"></script>
+<script>
+  let current = 1;
+  const total = 16;
+
+  function changePage(dir) {
+    const next = current + dir;
+    if (next < 1 || next > total) return;
+    document.getElementById('spread-' + current).classList.remove('active');
+    current = next;
+    document.getElementById('spread-' + current).classList.add('active');
+    document.getElementById('page-counter').textContent = current + ' / ' + total;
+    document.getElementById('prev-btn').disabled = current === 1;
+    document.getElementById('next-btn').disabled = current === total;
+    document.getElementById('prev-btn').classList.toggle('active', current > 1);
+    document.getElementById('next-btn').classList.toggle('active', current < total);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') changePage(1);
+    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   changePage(-1);
+  });
+
+  document.getElementById('prev-btn').disabled = true;
+  document.getElementById('next-btn').classList.add('active');
+</script>
+
+</body>
+</html>
