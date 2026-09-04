@@ -99,8 +99,8 @@ The central phrase compresses through registers, each with a use:
   <a class="ss-nav-collection" href="collection-kin.html"><span class="ss-nav-collection-label">Collection</span> <span class="ss-nav-collection-name">Kin</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
   ```
 
-  All 152 members have one; the 15 collection pages, `index.html` and `search.html` do not (152 +
-  15 + 2 = the 169 pages in the repo root, re-derived 2026-09-04 — the numbers here are the gate's
+  All 154 members have one; the 16 collection pages, `index.html` and `search.html` do not (154 +
+  16 + 2 = the 172 pages in the repo root, re-derived 2026-09-04 — the numbers here are the gate's
   own, printed by `check-markup.mjs`, which is the only count in this file you get for free). **A new
   piece needs its badge and its collection page's card in the same pass** — the page→collection map
   is derived from `<a class="card" href="…">` on the collection pages, so a card that is missing
@@ -150,7 +150,7 @@ The central phrase compresses through registers, each with a use:
   those nine differ from their own index taglines — the index has no `.card-moment`, so nothing
   collides there. Check with a word-set overlap between the two, not by eye; anything above ~60% is
   the same sentence wearing two styles.
-- **The card structure is on all sixteen card-bearing pages** — `index.html` and the fifteen
+- **The card structure is on all seventeen card-bearing pages** — `index.html` and the sixteen
   collection pages (re-derived 2026-09-04; the figure said *fourteen* from 2026-08-18, when there
   were thirteen collection pages, and went stale twice without anybody noticing. Derive it:
   `grep -l '<a class="card"' *.html | wc -l`). The CSS is *not* shared: each collection page keeps its own accent
@@ -190,7 +190,7 @@ The central phrase compresses through registers, each with a use:
 
 ### Collections (fifteen pages, in five kinds plus one exception)
 
-Fifteen **collection** landing pages (`collection-*.html`). **Every section of `index.html` has
+Sixteen **collection** landing pages (`collection-*.html`). **Every section of `index.html` has
 one** — that is the invariant, so *a new index section owes a collection page*, and a new
 collection page owes a `.collection-intro` on the index carrying its accent and an
 `About this collection →` link. The five register collections were settled 2026-08-11 — see
@@ -216,7 +216,7 @@ joined on 2026-09-04 as the fifteenth, on a **fifth axis** — see *sorting by i
 
 | Collection | Register | Members (zine numbers) |
 |------------|----------|------------------------|
-| **Star Stuff** | One settled, checkable fact, followed honestly, already contains the belonging claim | 1, 2, 6, 7, 8, 9, 10, 17, 19, 20, 21, 23, 24, 25, 44, 45, 46, 48, 51, 53, 54, 55, 57, 60, 61, 62, 63, 69, 70, 71 (30 — the largest collection by some way) |
+| **Star Stuff** | One settled, checkable fact, followed honestly, already contains the belonging claim | 1, 2, 6, 7, 8, 9, 10, 17, 19, 20, 21, 23, 24, 25, 44, 45, 46, 48, 51, 53, 54, 55, 57, 60, 61, 62, 63, 69, 70, 71, … 87 (**39** as of 2026-09-04 — the largest collection by some way; the list above is stale beyond No. 71, so **derive it**: `grep -c '<a class="card"' collection-star-stuff.html`) |
 | **Star Gazing** | Experimental, neuroqueer, wonder-forward — possibility, not proof | 11, 22, 26, 28, 29, 30, 68 |
 | **More Than Human** | Umwelt, multispecies, ethodiversity; de-anthropocentrized | 5, 14, 15, 16, 27, 58, 59, 72 (8) |
 | **Kin** | Citation-dense natural history with a neurodivergence moral | 31, 32, 33, 34, 35, 36, 64 (7) |
@@ -300,6 +300,35 @@ interdependence, belonging. A piece is in it because *something happened on a pa
   of the pieces under it. Helen Edgar's reading (simply the opposite of a trigger) is the working
   definition, No. 80 is the piece that argues it, and the No. 78 wrong turn is stated on the
   collection page's own face. **Keep all four of those attached wherever the word is explained.**
+
+**One sorts by threat-and-response, and it is the THIRD form-sorted collection rather than a new
+axis** — added 2026-09-04 alongside its first issue. **Triggers** is *bad news from a dying planet,
+and what we can do about it*: a member names a harm and then grades every response to it.
+
+| Collection | Axis | Members |
+|------------|------|---------|
+| **Triggers** | **form** — a harm, then a graded ladder of responses | `trigger-overshoot` (Trigger No. 1 — **1**, and the page calls itself provisional) |
+
+- **The collection's convention is a five-tier readiness grade on every response** — `deployed`,
+  `scaling`, `demonstrated`, `proposed`, `speculative` — plus an individual/structural marker. It is
+  the analogue of How We Got Here's `documented / contested / leap`, and it exists because **a flat
+  solutions list puts loft insulation next to direct air capture as though they were the same kind
+  of object.** A grade is about *deployment, not merit*: afforestation is `deployed` and nearly
+  useless at scale; net-negative CO₂ is `proposed` and is what every "we can return to 1.5" sentence
+  depends on. **Say that on the page**, or the scale reads as a ranking.
+- **It is the first collection here that constrains its subject as well as its form.** A field guide
+  can be about anything; a Trigger is about the planetary crisis. Stated rather than smuggled.
+- **Members are numbered in their own series** (Trigger No. 1, 2, …), like the field guides — the
+  zine numbering says *when* and a serial does not insert itself into it.
+- **The two-member floor was broken a third time, and this argument is the weakest of the three.**
+  A convention cannot be demonstrated by one instance; one graded ladder is a page, not a form. It
+  was opened so the grading scale is written down somewhere that is not inside the only piece using
+  it. **The collection page calls itself provisional on its own face** — don't quote it as a
+  precedent for opening collections early.
+- **The individual column is where this genre lies, and the collection handles it explicitly.**
+  No per-action carbon figures unless traced to a primary. Name the failure mode: a list that moves
+  a problem of energy systems into a reader's kitchen makes people feel responsible and powerless
+  at once.
 
 **One sorts by issue, and that is a fifth axis added 2026-09-04** — the day the single-page
 *Glimmer Wire* was split up. **Glimmer Wire** is the weekly graded scan behind Glimmers, and a
@@ -407,8 +436,8 @@ never candidates for a register. Don't try to fold these into either table:
   everything else homework, and would become the one place the verify-everything standard could
   quietly relax. The fun is distributed; *Stars We Grew Up On* states this on the page.
 - The **prev/next chain follows collection order**: each collection page precedes its members, and
-  members run in ascending number within the collection. **148 pages** as of 2026-09-04,
-  `collection-start-here.html` → `shorthand-evolution.html`. **21 pages sit outside it, and all but
+  members run in ascending number within the collection. **151 pages** as of 2026-09-04,
+  `collection-start-here.html` → `trigger-overshoot.html`. **21 pages sit outside it, and all but
   one are a decision:** `about.html` and `cosmic-connections.html`; **all of Notes &amp; Rationale** —
   `changelog.html`, `design.html`, `print-design.html`, `difference-first-frame.html`,
   `the-ladder-we-dont-print.html` and `collection-notes.html`; **all of Glimmer Wire** —
@@ -644,7 +673,7 @@ tracking — the query never leaves the reader's browser.
   is what `inclusion-safety-creed.html` still correctly gets. **The floor keeps its job in 3b**,
   where it chooses between two ways of covering a page; it has no business gating a path that only
   ever adds.
-- **All fifteen collection pages carry `id`s on their `h2.section` headings** (46 added
+- **All sixteen collection pages carry `id`s on their `h2.section` headings** (46 added
   2026-08-17, and `collection-glimmer-wire.html` shipped 2026-09-04 with ids on all seven of its; `collection-easter-eggs.html` already had them, and its id +
   `scroll-margin-top: 5rem` pairing is the pattern). Without them a search result can only
   deep-link by `#:~:text=` guess. **A new collection page owes its headings ids** — nothing gates

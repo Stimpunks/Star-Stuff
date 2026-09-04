@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0a0a14">
+<link rel="canonical" href="https://starstuff.earth/collection-triggers.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta name="description" content="Triggers &mdash; bad news from a dying planet, and what we can do about it. The sixteenth Star Stuff collection, and the third sorted by form: each issue names something going wrong and then grades the responses to it, from deployed to speculative, at both individual and structural scale. The grading is the collection&rsquo;s own convention and exists to stop a solutions list flattering itself &mdash; it puts loft insulation and direct air capture on the same page without pretending they are the same kind of object. The name is the deliberate mirror of Glimmers, which this site already defines as &lsquo;simply the opposite of a trigger&rsquo;; the second half of the title is load-bearing, because naming a harm and stopping is not an argument, it is harm redistributed to the reader.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Star Stuff &middot; Stimpunks Foundation &times; More Realms">
+<meta property="og:url" content="https://starstuff.earth/collection-triggers.html">
+<meta property="og:title" content="Triggers &mdash; a Star Stuff collection">
+<meta property="og:description" content="Bad news from a dying planet, and what we can do about it. Every response graded from deployed to speculative, at individual and structural scale.">
+<meta property="og:image" content="https://starstuff.earth/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A rainbow-hued cosmic image &mdash; we are all made of star stuff.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Triggers &mdash; a Star Stuff collection">
+<meta name="twitter:description" content="The mirror of Glimmers. Name the harm, then grade every response to it &mdash; deployed, scaling, demonstrated, proposed, speculative.">
+<meta name="twitter:image" content="https://starstuff.earth/og-card.jpg">
+<title>Triggers &mdash; Star Stuff &mdash; Stimpunks &times; More Realms</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="starstuff.css">
+<style>
+
+  :root {
+    --void:  var(--sp-void-deep);
+    --deep:  var(--sp-deep);
+    --page:  var(--sp-page);
+    --violet:var(--sp-purple);
+    --pink:  var(--sp-pink);
+    --gold:  var(--sp-gold);
+    --cyan:  var(--sp-cyan);
+    --green: var(--sp-green);
+    --star-white: var(--sp-white-soft);
+    --stardust:   var(--sp-secondary-soft);
+    --dim:   var(--sp-dim);
+    --dim2:  var(--sp-dim-soft);
+    --card:  var(--sp-deep);
+    --border: rgba(244,114,182,0.18);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--void);
+    font-family: 'Atkinson Hyperlegible Next', system-ui, sans-serif;
+    color: var(--star-white);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Starfield, tinted gold to match the collection accent — see starstuff.css
+     on why the gradient art stays inline and per-page. */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 8% 12%, rgba(251,191,36,0.8) 0%, transparent 100%),
+      radial-gradient(1px 1px at 22% 38%, rgba(244,244,251,0.6) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 44% 9%, rgba(251,191,36,0.7) 0%, transparent 100%),
+      radial-gradient(1px 1px at 61% 68%, rgba(34,211,238,0.6) 0%, transparent 100%),
+      radial-gradient(2px 2px at 74% 28%, rgba(244,244,251,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 84% 54%, rgba(251,191,36,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 91% 79%, rgba(244,244,251,0.7) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 4% 58%, rgba(167,139,250,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 34% 84%, rgba(244,244,251,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 54% 48%, rgba(251,191,36,0.45) 0%, transparent 100%),
+      radial-gradient(2px 2px at 19% 88%, rgba(251,191,36,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 69% 4%, rgba(244,244,251,0.8) 0%, transparent 100%),
+      radial-gradient(1px 1px at 47% 62%, rgba(167,139,250,0.5) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 30% 20%, rgba(244,244,251,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 77% 88%, rgba(34,211,238,0.5) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .doc-shell { position: relative; z-index: 1; max-width: 860px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+
+  .spectrum-line { height: 2px; border: none; border-radius: 2px; background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); }
+
+  .nav-brand { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--dim); margin: 1.6rem 0 2.5rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(167,139,250,0.2); }
+
+  .hero { margin-bottom: 2.5rem; }
+  .hero-eyebrow { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.36em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.3rem; }
+  .hero-title { font-weight: 700; font-size: clamp(2.1rem, 6vw, 3.4rem); line-height: 1.05; letter-spacing: -0.02em; color: var(--star-white); margin-bottom: 1.1rem; }
+  .hero-title em { font-style: normal; background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .hero-count { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--dim); margin-bottom: 0.9rem; }
+  .hero-sub { font-size: 1.08rem; line-height: 1.65; color: var(--stardust); max-width: 38rem; }
+  .hero-rule { width: 200px; max-width: 55%; margin-top: 1.6rem; }
+
+  h2.section { font-weight: 700; font-size: 1.4rem; line-height: 1.2; color: var(--star-white); margin: 2.6rem 0 0.5rem; letter-spacing: -0.01em; scroll-margin-top: 5rem; }
+  .body-text { font-size: 1.02rem; line-height: 1.75; color: var(--stardust); }
+  .body-text p { margin-top: 1rem; }
+  .body-text em { font-style: italic; color: var(--star-white); }
+  .body-text strong { font-weight: 700; color: var(--star-white); }
+  .body-text a { color: var(--gold); text-decoration: none; border-bottom: 1px solid currentColor; }
+  .body-text a:hover { border-bottom-width: 2px; }
+
+  .refusals { border: 1px solid rgba(244,114,182,0.32); border-left: 3px solid var(--pink); border-radius: 0 6px 6px 0; padding: 1.1rem 1.3rem; margin: 2rem 0 0; background: rgba(244,114,182,0.05); }
+  .refusals .refusals-label { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--pink); margin-bottom: 0.5rem; }
+  .refusals p { font-size: 0.96rem; line-height: 1.7; color: var(--stardust); }
+  .refusals p + p { margin-top: 0.7rem; }
+  .refusals strong { color: var(--star-white); font-weight: 700; }
+  .refusals a { color: var(--pink); text-decoration: none; border-bottom: 1px solid rgba(244,114,182,0.4); }
+
+  .artifact-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
+
+  /* A card is three parts: a wrapper that draws the box, an anchor that is the
+     link, and a <details> that holds the full description. The disclosure is a
+     SIBLING of the anchor and must stay one — <a> may not contain interactive
+     content, and check-markup.mjs cannot see that fault. */
+  .card-wrap { background: var(--card); border-radius: 8px; border: 1px solid var(--border); position: relative; display: flex; flex-direction: column; transition: box-shadow 0.2s ease, background 0.2s ease, transform 0.2s ease; }
+  .card { padding: 1.25rem; text-decoration: none; color: inherit; display: flex; flex-direction: column; flex: 1; }
+  .card-wrap:has(> .card:hover) { background: #131330; box-shadow: 0 4px 28px rgba(251,191,36,0.14); transform: translateY(-2px); }
+  .card-wrap::before { content: ''; position: absolute; top: 8px; left: 0; width: 3px; height: calc(100% - 16px); background: var(--card-color, var(--gold)); border-radius: 0 2px 2px 0; }
+
+  .card-number { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dim); margin-bottom: 0.5rem; }
+  .card-title { font-size: 1.25rem; font-weight: 600; color: var(--star-white); line-height: 1.2; margin-bottom: 0.4rem; }
+  .card-series { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--card-color, var(--gold)); margin-bottom: 0.75rem; }
+  .card-tagline { font-size: 0.9375rem; font-style: italic; color: var(--star-white); line-height: 1.55; margin-bottom: 0.6rem; }
+  .card-desc { font-size: 0.875rem; color: var(--stardust); line-height: 1.65; flex: 1; margin-bottom: 1.25rem; }
+  .card-footer { display: flex; justify-content: space-between; align-items: center; padding-top: 0.9rem; border-top: 1px solid var(--border); }
+  .card-tag { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dim); background: rgba(251,191,36,0.08); border: 1px solid var(--border); border-radius: 4px; padding: 0.2rem 0.6rem; }
+  .card-arrow { font-size: 0.875rem; color: var(--card-color, var(--gold)); font-weight: 700; transition: transform 0.2s ease; }
+  .card-wrap:has(> .card:hover) .card-arrow { transform: translateX(3px); }
+
+  .card-details { border-top: 1px solid var(--border); }
+  .card-details > summary { cursor: pointer; list-style: none; padding: 0.7rem 1.25rem; font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dim); display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; }
+  .card-details > summary::-webkit-details-marker { display: none; }
+  .card-details > summary::after { content: '+'; font-size: 1rem; line-height: 1; color: var(--card-color, var(--gold)); }
+  .card-details[open] > summary::after { content: '\2212'; }
+  .card-details > summary:hover { color: var(--star-white); }
+  .card-details-body { padding: 0 1.25rem 1.1rem; }
+  .card-details-body p { font-size: 0.875rem; line-height: 1.7; color: var(--stardust); }
+  .card-details-body strong { color: var(--star-white); font-weight: 700; }
+  .card-details-body em { font-style: italic; color: var(--star-white); }
+
+  .colophon-footer { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--dim2); line-height: 2.2; margin-top: 3rem; padding-top: 1.4rem; border-top: 1px solid rgba(167,139,250,0.14); }
+  .colophon-footer a { color: var(--dim); text-decoration: none; border-bottom: 1px solid rgba(167,139,250,0.2); }
+  .colophon-footer a:hover { color: var(--stardust); }
+
+  @media (max-width: 600px) {
+    .doc-shell { padding: 2rem 1.3rem 3rem; }
+  }
+
+  @media print {
+    body::before { display: none; }
+    .hero-title, h2.section, .card-title, .card-tagline, .body-text strong,
+    .body-text em, .refusals strong, .card-details-body strong { color: #111; }
+    .body-text, .body-text p, .hero-sub, .card-desc, .refusals p,
+    .card-details-body p { color: #222; }
+    .hero-count, .card-number, .card-tag, .colophon-footer,
+    .refusals .refusals-label, .card-details > summary { color: #444; }
+    .refusals { background: none; border-color: #999; border-left-color: #444; }
+    .card-wrap { border-color: #999; background: none; }
+    /* A closed <details> does not print, so the card descriptions would go to
+       paper missing. The rule opens them; the script below opens them for real
+       and puts each one back as the reader left it. */
+    .card-details > summary { display: none; }
+    .card-details[open] > .card-details-body,
+    .card-details > .card-details-body { display: block; }
+  }
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Triggers","headline":"Triggers — a Star Stuff collection","description":"Bad news from a dying planet, and what we can do about it. The sixteenth Star Stuff collection and the third sorted by form: an issue names a harm and then grades every response to it on a five-tier readiness scale — deployed, scaling, demonstrated, proposed, speculative — marking each as individual or structural. The grading is the collection's own convention, analogous to How We Got Here's documented/contested/leap joint marking, and it exists because a solutions list that puts loft insulation next to direct air capture without distinguishing them is flattering itself. Triggers is also the first collection here that constrains its subject as well as its form: a member is about the planetary crisis. The name is the deliberate mirror of Glimmers, which this site already defines, following Helen Edgar, as simply the opposite of a trigger.","url":"https://starstuff.earth/collection-triggers.html","image":"https://starstuff.earth/og-card.jpg","license":"https://creativecommons.org/licenses/by-sa/4.0/","publisher":[{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/","logo":{"@type":"ImageObject","url":"https://starstuff.earth/og-card.jpg"}},{"@type":"Organization","name":"More Realms","url":"https://morerealms.com/"}],"isPartOf":{"@type":"WebSite","name":"Star Stuff","url":"https://starstuff.earth/"}}</script>
+</head>
+<body>
+<div class="doc-shell">
+
+  <nav class="ss-nav" style="--nav-accent:#f472b6;" aria-label="Star Stuff collection">
+    <span class="ss-nav-home-group"><a class="ss-nav-home" href="index.html"><span class="ss-star" aria-hidden="true">&#9733;</span> stuff</a><a class="ss-nav-about" href="about.html">about</a>
+      <a class="ss-nav-search" href="search.html">search</a></span>
+    <span class="ss-nav-links">
+      <a class="ss-nav-prev" href="shorthand-evolution.html"><span class="ss-nav-arrow" aria-hidden="true">&lsaquo;</span> <span class="ss-nav-label">Shorthand Evolution</span></a>
+      <a class="ss-nav-next" href="trigger-overshoot.html"><span class="ss-nav-label">Overshoot</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
+    </span>
+  </nav>
+<main>
+
+  <div class="nav-brand"><a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks</a> &times; <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a> &middot; Collection &middot; Triggers</div>
+
+  <header class="hero">
+    <div class="hero-eyebrow"><a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks Foundation</a> &times; <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a> &middot; Bad news, handled</div>
+    <h1 class="hero-title"><em>Triggers</em></h1>
+    <div class="hero-count">A Star Stuff collection &middot; 1 piece &middot; started 4 September 2026</div>
+    <p class="hero-sub">Bad news from a dying planet, and what we can do about it. Each issue names something going wrong and then grades every response to it &mdash; from things running at scale now to things that exist only as arguments &mdash; at both individual and structural scale, with the costs printed next to the benefits.</p>
+    <hr class="spectrum-line hero-rule">
+  </header>
+
+  <div class="body-text">
+
+    <h2 class="section" id="what-holds-these-together">What holds these together</h2>
+    <p>A Trigger has two halves and needs both. The first names a harm accurately, including the parts that are worse than the coverage says. The second sets out what can be done about it, <em>graded</em>, so that a reader can tell the difference between something a city could start next month and something that exists as a paper.</p>
+    <p><strong>Naming a harm and stopping is not an argument.</strong> It is just harm, redistributed to the reader &mdash; and this site is built by and for people for whom that redistribution has a cost. So the second half of the title is load-bearing rather than decorative. A piece that cannot say what to do about the thing it has raised does not belong here; it belongs in a different collection, or nowhere.</p>
+
+    <h2 class="section" id="the-axis">The axis is form &mdash; and this is the third collection sorted that way</h2>
+    <p>Five collections here sort by <em>register</em>, the kind of argument a piece makes. <a href="collection-print.html">Print</a> and <a href="collection-sound.html">Sound</a> sort by <em>medium</em>. <a href="collection-glimmers.html">Glimmers</a> sorts by <em>occasion</em>. <a href="collection-glimmer-wire.html">Glimmer Wire</a> sorts by <em>issue</em>. And <a href="collection-field-guides.html">Field Guides</a> and <a href="collection-how-we-got-here.html">How We Got Here</a> sort by <em>form</em> &mdash; a catalogue of same-shaped entries, a chain with one link per spread.</p>
+    <p><strong>Triggers is the third form-sorted collection, and it is not a new axis.</strong> Saying so plainly rather than inventing a sixth axis is the honest call: what makes a Trigger a Trigger is its shape &mdash; harm, then graded ladder &mdash; exactly as what makes a field guide a field guide is its shape.</p>
+    <p>There is one genuine difference worth recording. <strong>This is the first collection here that constrains its subject as well as its form.</strong> A field guide can be about stars or turtles or nests; a chain can start anywhere. A Trigger is about the planetary crisis. That constraint is deliberate, because the grading convention below only earns its keep on problems large enough that the gap between a deployed response and a proposed one is the difference between two futures.</p>
+
+    <h2 class="section" id="the-grading">Every response carries a readiness grade, and that is this collection&rsquo;s convention</h2>
+    <p><a href="collection-how-we-got-here.html">How We Got Here</a> marks every joint in a chain <em>documented</em>, <em>contested</em> or <em>leap</em>, because a Burke chain is built to feel inevitable and the notation is how the form carries its own epistemics. Triggers has the equivalent problem in a different direction, and takes the same solution.</p>
+    <p><strong>The defect in every list of climate solutions is that it puts loft insulation next to direct air capture as though they were the same kind of object.</strong> One is a thing millions of people have already done. The other is a technology whose total contribution this century UNEP puts at a few tenths of a degree at best. Printed as a flat list, those read as two options. They are not two options.</p>
+    <p>So each response gets one of five grades &mdash; <em>deployed</em>, <em>scaling</em>, <em>demonstrated</em>, <em>proposed</em>, <em>speculative</em> &mdash; and a note saying whether it is individual, structural or both.</p>
+    <p><strong>A grade is about deployment, not merit.</strong> Something can be <em>deployed</em> and nearly useless at the scale required, which is exactly what afforestation turns out to be. Something can be <em>proposed</em> and be the most important item on the page. The grade says how far a thing is from ordinary and nothing else &mdash; and keeping that distinction visible is the whole reason the scale exists.</p>
+
+    <h2 class="section" id="the-individual-column">The individual column is where this genre lies, so it is handled explicitly</h2>
+    <p>A list that opens with shorter showers and closes with <em>and write to your representative</em> has quietly moved a problem of energy systems, land use and international law into a reader&rsquo;s kitchen &mdash; where it cannot be solved, and where failing to solve it feels like a personal failing. That produces people who feel responsible and powerless at once, which is the combination that stops anybody doing anything.</p>
+    <p><strong>So Triggers marks the scale of every response rather than mixing them.</strong> Where the honest distribution is mostly structural, the page says so and then says what an individual can genuinely do, in order of size &mdash; without inflating it and without pretending it is nothing.</p>
+    <p>And <strong>no unsourced figures.</strong> Per-action carbon-saving tables are the most quoted and least traced numbers in this subject; this collection prints none it has not verified at a primary source.</p>
+
+    <h2 class="section" id="the-name">The name is the mirror of Glimmers, and the mirror was already on the site</h2>
+    <p><a href="collection-glimmers.html">Glimmers</a> defines its own term, following Helen Edgar&rsquo;s reading, as <em>&ldquo;simply the opposite of a trigger &mdash; a moment of joy or comfort, sensory or cognitive.&rdquo;</em> That sentence was published here before this collection existed. <strong>Triggers is not a clever inversion; it is the other half of a definition already on the site.</strong></p>
+    <p>The word carries weight in our communities, and using it as a shelf label is a deliberate choice rather than an unnoticed one. Two things make it defensible. First, it is accurate: these pages are about things that are genuinely distressing, and a title that said so is more respectful than one that did not. Second, <strong>a trigger with a way out is a different object from a trigger.</strong> Every issue here is required to carry the exit, and that requirement is what the collection is for.</p>
+    <p>The same distinction Glimmers relies on applies here: <em>a frame is load-bearing and a label is not.</em> No piece in this collection frames a reader&rsquo;s response, diagnoses anybody, or makes a clinical claim. It names what the pages contain.</p>
+
+    <h2 class="section" id="one-member">Why this page opened at one member</h2>
+    <p>The standing rule here is a <strong>two-member floor</strong>: what earns a collection page is a form observed in finished work, never a folder opened in advance. It has been broken twice on purpose &mdash; <a href="collection-easter-eggs.html">Easter Eggs</a>, where the absence of an index section <em>is</em> the mechanism, and <a href="collection-glimmers.html">Glimmers</a>, on the argument that a running log is defined by its cadence and cadence cannot be observed retroactively.</p>
+    <p><strong>This is the third break, and its argument is the weakest of the three &mdash; which is stated here rather than dressed up.</strong> The grading convention above is the thing that makes a Trigger a Trigger, and a convention cannot be demonstrated by a single instance: one graded ladder is a page, not a form. The honest position is that this collection is <em>provisional</em> until a second issue shows the convention surviving contact with a different problem.</p>
+    <p>It was opened anyway for one reason: the grading scale needed somewhere to be written down that is not inside the piece using it. A convention held in one page&rsquo;s head is a convention that gets reinvented differently next time. <em>If a second issue does not arrive, this page is the record of a form that was tried once</em> &mdash; which is more useful than the same fact left unwritten, and is why it says so on its face.</p>
+
+    <h2 class="section" id="the-pieces">The pieces</h2>
+    <p>Newest first. Numbered in their own series, like the field guides &mdash; the zine numbering says <em>when</em> and is referenced by number across the changelog, the ledger and years of prose, so a serial does not insert itself into it.</p>
+  </div>
+
+  <div class="artifact-grid">
+    <div class="card-wrap" style="--card-color: #f472b6;">
+      <a class="card" href="trigger-overshoot.html">
+        <div class="card-number">Trigger No. 1</div>
+        <div class="card-title">Overshoot</div>
+        <div class="card-series">Triggers</div>
+        <p class="card-tagline">1.5&nbsp;&deg;C sounds small because it is an average of a planet that is mostly ocean.</p>
+        <p class="card-desc">Five separate reasons a number that reads like nothing arrives as fires and failed harvests &mdash; then eleven responses graded from deployed to speculative, with what each one costs.</p>
+        <div class="card-footer"><span class="card-tag">11 responses &middot; 1 figure</span><span class="card-arrow">&rarr;</span></div>
+      </a>
+      <details class="card-details">
+        <summary>Details</summary>
+        <div class="card-details-body"><p><strong>The number is not measuring what most people assume it measures, and there are five separate reasons for that.</strong> It is a <em>global</em> mean over a planet 71 per cent covered in ocean &mdash; at a global 1.09&nbsp;&deg;C for 2011&ndash;2020 the land was already at <strong>1.59&nbsp;&deg;C</strong>, and the IPCC assesses land warming at 1.4 to 1.7 times the ocean rate with the Arctic above twice the global rate. It is a <em>twenty-year running average</em>, so 2024 at 1.55&nbsp;&plusmn;&nbsp;0.13&nbsp;&deg;C was the first calendar year above 1.5 and was <em>not</em> a crossing. Extremes move further than the mean and rarer extremes move furthest: a hot day that came once in fifty years over land becomes <strong>8.6 times</strong> more frequent at 1.5&nbsp;&deg;C and arrives <strong>2.0&nbsp;&deg;C hotter</strong> &mdash; against 4.1 times for a once-in-ten-years event, because as the IPCC puts it, <em>projected percentage changes in frequency are larger for rarer events.</em> The Last Glacial Maximum was <strong>6.1&nbsp;&deg;C</strong> colder in the global mean, which makes 1.5 a quarter of the distance from a kilometre of ice over Chicago, travelled in a century and a half rather than ten thousand years. And the surface figure is a receipt: the Earth system took up <strong>381 zettajoules</strong> between 1971 and 2020, of which 89 per cent went into the ocean and <strong>1 per cent into the atmosphere</strong> &mdash; the part the thermometers read. <strong>Then the sentence nobody put next to the other one.</strong> UNEP&rsquo;s <em>Limiting Overshoot</em> says on its first page that full implementation of every national climate plan plus additional net-zero targets still puts expected peak warming at <strong>1.8&nbsp;&deg;C</strong> &mdash; and six pages later, that <em>beyond around 1.8&nbsp;&deg;C, decline to 1.5&nbsp;&deg;C during the 21st century becomes increasingly challenging.</em> The optimistic case lands exactly on the boundary past which coming back gets hard. <strong>Current policies, by the same report, give 2.6&nbsp;&deg;C by 2100.</strong> <strong>Eleven responses are then graded</strong>, five mitigation and six adaptation, each with its costs: methane cuts as the fastest brake; net-zero as the thing that stops the rise; afforestation carrying the sentence that should follow every tree-planting headline (<em>over 100 years at current scale, with zero residual emissions, for 0.1&nbsp;&deg;C</em>); novel carbon removal with its storage limit; urban canopy; <a href="two-peppers-zine.html">agrivoltaics</a>; heat protection for workers; crop adaptation; and <strong>the entry that corrects the question it was written to answer</strong> &mdash; Pacific Islanders have explicitly rejected the framing of &lsquo;climate refugees&rsquo;, and the IPCC finds with high agreement that agency over <em>if, where, how and when</em> people move is what decides whether mobility is adaptation or an additional harm. The report&rsquo;s own question, adopted here: <em>whose relocation is it?</em></p></div>
+      </details>
+    </div>
+  </div>
+
+  <div class="body-text">
+    <div class="colophon-footer">
+      <a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks Foundation</a> &times; <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a> &middot; Triggers &middot; L&#9733;S<br>
+      A collection, not a folder &middot; provisional at one member, and it says so &middot; stimpunks.org &middot; morerealms.com &middot; starstuff.earth &middot; <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
+    </div>
+  </div>
+
+</div><!-- /doc-shell --></main>
+
+<script>
+/* Belt and braces for the paper copy: the @media print rule opens the card
+   disclosures with CSS, and this opens them for real, then puts each one back
+   exactly as the reader left it. Two mechanisms because a closed <details> has
+   hidden its content three different ways across engine versions, and the
+   failure mode is silent — a page that prints its cards without their
+   descriptions looks like a design choice, not a bug. */
+(function () {
+  var cards = function () { return document.querySelectorAll('.card-details'); };
+  addEventListener('beforeprint', function () {
+    cards().forEach(function (d) { d.dataset.wasOpen = d.open ? '1' : ''; d.open = true; });
+  });
+  addEventListener('afterprint', function () {
+    cards().forEach(function (d) { d.open = d.dataset.wasOpen === '1'; delete d.dataset.wasOpen; });
+  });
+})();
+</script>
+</body>
+</html>
