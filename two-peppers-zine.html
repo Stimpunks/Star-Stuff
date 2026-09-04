@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0a0a14">
+<link rel="canonical" href="https://starstuff.earth/two-peppers-zine.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta name="description" content="A zine on the light saturation point, and what happens when you stop giving every plant the same sun. Barron-Gafford and colleagues grew three crops under solar panels outside Tucson. Chiltepin pepper, a wild variety, took up 33 per cent more carbon and produced three times the fruit. Jalape&ntilde;o &mdash; the domesticated variety of the same species &mdash; took up 11 per cent less carbon and produced the same fruit on 65 per cent less water, with water-use efficiency 157 per cent greater. Cherry tomato doubled. Same panels, same season, one species answering twice. Underneath sits settled physiology: photosynthesis rises with light and then flattens at a species-specific light saturation point, past which extra photons do nothing. Stallknecht and colleagues measured basil saturating near 12 mol per square metre per day while the open sky delivered about 20 &mdash; and found tomato yield linear in light with no upper asymptote, so the same genus that doubled in an Arizona field lost a quarter of its yield in a Michigan greenhouse. Neither result is wrong. What differed was which resource was scarce. Fourteen spreads, two figures, six refusals. A rhyme, not a proof.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Star Stuff &middot; Stimpunks Foundation &times; More Realms">
+<meta property="og:url" content="https://starstuff.earth/two-peppers-zine.html">
+<meta property="og:title" content="Two Peppers">
+<meta property="og:description" content="Same species, same panels, same season. One tripled its fruit. The other broke even on two-thirds less water. Neither of them failed.">
+<meta property="og:image" content="https://starstuff.earth/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A rainbow-hued cosmic image &mdash; we are all made of star stuff.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Two Peppers">
+<meta name="twitter:description" content="There is a point past which more light does nothing. Every plant has one, and no two are the same &mdash; which is the entire reason you can farm under a solar panel.">
+<meta name="twitter:image" content="https://starstuff.earth/og-card.jpg">
+<title>Two Peppers &mdash; Stimpunks Zine No. 87</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="starstuff.css">
+<style>
+  :root {
+    --void:  var(--sp-void-deep);
+    --deep:  var(--sp-deep);
+    --page:  var(--sp-page);
+    --violet:var(--sp-purple);
+    --pink:  var(--sp-pink);
+    --gold:  var(--sp-gold);
+    --cyan:  var(--sp-cyan);
+    --green: var(--sp-green);
+    --ember: #c1653a;
+    --accent: var(--sp-green);         /* this zine's identity accent — the leaf under the panel */
+    --star-white: var(--sp-white-soft);
+    --stardust:   var(--sp-secondary-soft);
+    --dim:   var(--sp-dim);
+    --dim2:  var(--sp-dim-soft);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--void);
+    font-family: 'Atkinson Hyperlegible Next', system-ui, sans-serif;
+    color: var(--star-white);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── STARFIELD (green · gold · white — leaf, sun, and the light between them) ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 13% 21%, rgba(74,222,128,0.52) 0%, transparent 100%),
+      radial-gradient(1px 1px at 31% 49%, rgba(244,244,251,0.6) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 46% 14%, rgba(251,191,36,0.44) 0%, transparent 100%),
+      radial-gradient(1px 1px at 65% 71%, rgba(244,244,251,0.62) 0%, transparent 100%),
+      radial-gradient(2px 2px at 83% 26%, rgba(74,222,128,0.44) 0%, transparent 100%),
+      radial-gradient(1px 1px at 89% 55%, rgba(251,191,36,0.48) 0%, transparent 100%),
+      radial-gradient(1px 1px at 93% 81%, rgba(244,244,251,0.5) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 7% 63%, rgba(74,222,128,0.42) 0%, transparent 100%),
+      radial-gradient(1px 1px at 36% 88%, rgba(251,191,36,0.48) 0%, transparent 100%),
+      radial-gradient(1px 1px at 58% 33%, rgba(244,244,251,0.52) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .zine-shell { position: relative; z-index: 1; max-width: 820px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+
+  .nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem; }
+  .nav-brand { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--dim); }
+  .nav-controls { display: flex; gap: 0.5rem; align-items: center; }
+  .nav-btn { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; background: transparent; color: var(--dim2); border: 1px solid rgba(196,181,212,0.25); border-radius: 3px; padding: 0.4rem 0.75rem; cursor: pointer; transition: all 0.2s; }
+  .nav-btn.active { color: var(--accent); border-color: rgba(74,222,128,0.5); }
+  .nav-btn:disabled { opacity: 0.3; cursor: default; }
+  .page-counter { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.1em; color: var(--dim); padding: 0 0.4rem; }
+
+  .spread { display: none; animation: fadeIn 0.5s ease forwards; }
+  .spread.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ── COVER ── */
+  .cover-spread {
+    position: relative; min-height: 520px; border-radius: 4px; overflow: hidden;
+    background:
+      radial-gradient(ellipse at 22% 20%, rgba(74,222,128,0.12) 0%, transparent 52%),
+      radial-gradient(ellipse at 82% 30%, rgba(251,191,36,0.09) 0%, transparent 52%),
+      radial-gradient(ellipse at 68% 86%, rgba(167,139,250,0.07) 0%, transparent 52%),
+      radial-gradient(ellipse at 24% 84%, rgba(74,222,128,0.06) 0%, transparent 52%),
+      var(--deep);
+    border: 1px solid rgba(74,222,128,0.25);
+    box-shadow: inset 0 0 80px rgba(74,222,128,0.06), 0 0 0 4px rgba(255,255,255,0.03);
+    display: flex; flex-direction: column; justify-content: flex-end; padding: 3rem;
+  }
+  .cover-motif { position: absolute; top: -6px; right: -10px; width: 320px; height: 320px; opacity: 0.72; pointer-events: none; }
+  .cover-issue { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.5em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.5rem; }
+  .cover-title { font-weight: 700; font-size: clamp(1.9rem, 5.2vw, 3rem); line-height: 1.03; color: var(--star-white); letter-spacing: -0.01em; margin-bottom: 0.9rem; }
+  .cover-title .amp { color: var(--accent); font-style: italic; }
+  .cover-subtitle { font-size: 1rem; color: var(--stardust); opacity: 0.85; margin-bottom: 1.5rem; max-width: 470px; line-height: 1.55; }
+  .cover-byline { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.14em; color: var(--dim); margin-bottom: 1.8rem; }
+  .cover-byline strong { color: var(--stardust); font-weight: 700; }
+  .cover-rule { width: 220px; max-width: 60%; margin-bottom: 1.3rem; }
+  .cover-meta { display: flex; gap: 2rem; align-items: center; }
+  .cover-ls { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 1.4rem; color: var(--accent); letter-spacing: 0.05em; }
+  .cover-meta-text { font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--dim2); line-height: 1.9; }
+  .cover-corner { position: absolute; top: 2rem; right: 2.5rem; text-align: right; }
+  .cover-corner-num { font-weight: 700; font-size: 4.5rem; line-height: 1; color: var(--accent); opacity: 0.20; }
+  .cover-corner-label { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); display: block; margin-top: -0.3rem; }
+
+  /* ── INTERIOR ── */
+  .interior { background: var(--page); border: 1px solid rgba(74,222,128,0.15); border-radius: 4px; overflow: hidden; min-height: 480px; }
+  .spread-2col { display: grid; grid-template-columns: 1fr 1fr; min-height: 440px; }
+  .spread-left, .spread-right { padding: 3rem 2.4rem; position: relative; }
+  .spread-left { border-right: 1px solid rgba(167,139,250,0.12); }
+
+  .spread-2col.stacked { display: flex; flex-direction: column; }
+  .spread-2col.stacked > .spread-left,
+  .spread-2col.stacked > .spread-right { border-right: none; }
+  .spread-2col.stacked > .col-diagram { order: 2; padding-top: 0; }
+  .spread-2col.stacked > .col-text { padding-left: max(2.4rem, calc((100% - 32rem) / 2)); padding-right: max(2.4rem, calc((100% - 32rem) / 2)); }
+  .spread-2col.stacked .diagram-wrap { height: auto; }
+  .spread-2col.stacked .diagram { max-width: 460px; }
+
+  .eyebrow { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.1rem; }
+  .body-text { font-size: 0.98rem; line-height: 1.72; color: var(--stardust); }
+  .body-text p { margin-bottom: 1rem; }
+  .body-text p:last-child { margin-bottom: 0; }
+  .body-text strong { font-weight: 700; color: var(--star-white); }
+  .body-text em { font-style: italic; color: var(--star-white); }
+  .body-text a { color: var(--cyan); text-decoration: none; border-bottom: 1px solid rgba(34,211,238,0.4); }
+  .body-text a:hover { border-bottom-color: var(--cyan); color: var(--star-white); }
+  /* Accent spans that sit OUTSIDE .body-text — inside .refusals and .colophon-body,
+     which are its siblings. The No. 67 fault check-classes.mjs was written for. */
+  .zine-shell span.violet { color: var(--violet); font-weight: 700; }
+  .zine-shell span.gold { color: var(--gold); font-weight: 700; }
+  .zine-shell span.cyan { color: var(--cyan); font-weight: 700; }
+  .zine-shell span.pink { color: var(--pink); font-weight: 700; }
+  .zine-shell span.green { color: var(--green); font-weight: 700; }
+  .body-text .violet { color: var(--violet); font-weight: 700; }
+  .body-text .pink { color: var(--pink); font-weight: 700; }
+  .body-text .gold { color: var(--gold); font-weight: 700; }
+  .body-text .cyan { color: var(--cyan); font-weight: 700; }
+  .body-text .green { color: var(--green); font-weight: 700; }
+  .body-text .dim { color: var(--dim); }
+  .body-text .lede { font-size: 1.08rem; color: var(--star-white); }
+  .latin { font-style: italic; color: var(--star-white); }
+
+  .spread-heading { font-weight: 700; font-size: 1.9rem; line-height: 1.12; color: var(--star-white); margin-bottom: 0.7rem; letter-spacing: -0.01em; margin-top: 0; scroll-margin-top: 5rem; }
+  .spread-heading .spectrum-word { background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .rule { width: 40px; margin: 1rem 0; }
+
+  .pull-quote { font-size: 1.18rem; font-weight: 700; line-height: 1.4; color: var(--star-white); border-left: 3px solid var(--accent); padding-left: 1.1rem; margin: 1.4rem 0; font-style: italic; }
+  .pull-quote.violet { border-left-color: var(--violet); }
+  .pull-quote.cyan { border-left-color: var(--cyan); }
+  .pull-quote.gold { border-left-color: var(--gold); }
+  .pull-quote.pink { border-left-color: var(--pink); }
+  .pull-quote.green { border-left-color: var(--green); }
+  .pull-quote .attr { display: block; font-family: 'Space Mono', monospace; font-size: 0.6rem; font-weight: 400; font-style: normal; letter-spacing: 0.08em; color: var(--dim); margin-top: 0.6rem; }
+
+  .callout { margin: 1.3rem 0; padding: 1rem 1.15rem; background: rgba(74,222,128,0.06); border: 1px solid rgba(74,222,128,0.24); border-radius: 4px; font-size: 1rem; font-style: italic; color: var(--star-white); line-height: 1.55; }
+  .callout .attr { display: block; font-family: 'Space Mono', monospace; font-size: 0.58rem; font-style: normal; letter-spacing: 0.06em; color: var(--dim); margin-top: 0.5rem; }
+
+  .note { font-size: 0.84rem; line-height: 1.6; color: var(--dim); border-left: 2px solid rgba(74,222,128,0.28); padding-left: 0.9rem; margin: 1.1rem 0; }
+  .note strong { color: var(--stardust); font-weight: 700; }
+
+  /* ── THE MEASUREMENT BLOCK ── */
+  .measure { display: flex; flex-wrap: wrap; gap: 0.9rem; margin: 1.4rem 0; }
+  .measure-cell { flex: 1 1 150px; border: 1px solid rgba(74,222,128,0.28); border-radius: 4px; padding: 0.9rem 1rem; background: rgba(74,222,128,0.05); }
+  .measure-num { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 1.5rem; color: var(--accent); line-height: 1.1; }
+  .measure-label { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--stardust); margin-top: 0.45rem; line-height: 1.7; }
+
+  /* ── THE THREE-CROP LEDGER — spread five only ── */
+  .ledger { margin: 1.4rem 0; border: 1px solid rgba(74,222,128,0.24); border-radius: 4px; overflow: hidden; }
+  .ledger-row { display: flex; flex-wrap: wrap; gap: 0.2rem 1.1rem; padding: 0.85rem 1rem; border-bottom: 1px solid rgba(74,222,128,0.14); background: rgba(74,222,128,0.04); }
+  .ledger-row:last-child { border-bottom: none; }
+  .ledger-name { flex: 1 1 100%; font-weight: 700; color: var(--star-white); font-size: 0.93rem; }
+  .ledger-name .sci { font-weight: 400; font-style: italic; color: var(--dim); font-size: 0.8rem; }
+  .ledger-fig { font-family: 'Space Mono', monospace; font-size: 0.68rem; letter-spacing: 0.08em; color: var(--stardust); }
+  .ledger-fig b { color: var(--accent); font-weight: 700; }
+
+  /* ── DIAGRAMS ── */
+  .diagram-wrap { display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; }
+  .diagram { width: 100%; max-width: 300px; display: block; }
+  .diagram-caption { font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim); text-align: center; margin-top: 0.9rem; line-height: 1.9; }
+
+  /* ── REFUSALS ── */
+  .refusals { margin-top: 1.3rem; }
+  .refusal { font-size: 0.88rem; line-height: 1.5; color: var(--stardust); padding: 0.55rem 0; border-bottom: 1px solid rgba(74,222,128,0.1); display: flex; gap: 0.6rem; align-items: baseline; }
+  .refusal:last-child { border-bottom: none; }
+  .refusal-tag { font-family: 'Space Mono', monospace; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ember); flex-shrink: 0; padding-top: 0.12rem; }
+  .refusal strong { color: var(--star-white); font-weight: 700; }
+
+  /* ── COLOPHON ── */
+  .colophon { padding: 3rem; display: flex; flex-direction: column; justify-content: space-between; min-height: 480px; background: radial-gradient(ellipse at 82% 18%, rgba(74,222,128,0.09) 0%, transparent 50%), radial-gradient(ellipse at 18% 85%, rgba(251,191,36,0.06) 0%, transparent 50%), var(--page); }
+  .colophon-top { border-bottom: 1px solid rgba(74,222,128,0.14); padding-bottom: 1.3rem; margin-bottom: 1.2rem; }
+  .colophon-ls { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 2.4rem; color: var(--accent); letter-spacing: 0.05em; display: block; margin-bottom: 0.4rem; }
+  .colophon-phrase { font-size: 0.98rem; font-weight: 700; font-style: italic; color: var(--stardust); }
+  .series-list { display: flex; flex-direction: column; gap: 0.38rem; margin-bottom: 1.2rem; }
+  .series-item { font-size: 0.72rem; color: var(--dim); letter-spacing: 0.01em; display: flex; gap: 0.7rem; align-items: baseline; line-height: 1.45; }
+  .series-item.current { color: var(--accent); font-weight: 700; }
+  .series-num { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim2); flex-shrink: 0; }
+  .series-item.current .series-num { color: var(--accent); }
+  .reflect { border-top: 1px solid rgba(74,222,128,0.14); padding-top: 1rem; margin-bottom: 1.2rem; }
+  .reflect-label { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.65rem; }
+  .reflect-q { font-size: 0.86rem; line-height: 1.55; color: var(--stardust); margin-bottom: 0.55rem; font-style: italic; }
+  .reflect-q:last-child { margin-bottom: 0; }
+  .colophon-body { font-size: 0.75rem; color: var(--dim); line-height: 1.75; margin-bottom: 1.2rem; }
+  .colophon-body a { color: var(--cyan); text-decoration: none; border-bottom: 1px solid rgba(34,211,238,0.4); }
+  .colophon-body a:hover { border-bottom-color: var(--cyan); }
+  .colophon-h { font-family: 'Space Mono', monospace; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: var(--stardust); margin: 1rem 0 0.4rem; scroll-margin-top: 5rem; }
+  .colophon-footer { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--dim); line-height: 2.2; border-top: 1px solid rgba(74,222,128,0.14); padding-top: 1rem; }
+
+  /* ── SPREAD FOOTER ── */
+  .spread-footer { display: flex; justify-content: space-between; align-items: center; padding: 0.9rem 2.4rem; border-top: 1px solid rgba(74,222,128,0.1); }
+  .spread-footer-left { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--dim); }
+  .spread-footer-right { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; color: var(--accent); }
+
+  .twinkle { position: fixed; width: 3px; height: 3px; border-radius: 50%; animation: twinkle-anim 3s ease-in-out infinite; pointer-events: none; z-index: 0; }
+
+  @media (max-width: 600px) {
+    .spread-2col { grid-template-columns: 1fr; }
+    .spread-left { border-right: none; border-bottom: 1px solid rgba(167,139,250,0.12); }
+    .spread-2col.stacked > .spread-left { border-bottom: none; }
+    .spread-2col.stacked > .col-text { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .cover-spread { padding: 2rem; min-height: 420px; }
+    .cover-motif { width: 210px; height: 210px; top: -6px; right: -22px; opacity: 0.5; }
+    .cover-title { font-size: 1.75rem; }
+    .spread-heading { font-size: 1.55rem; }
+    .spread-left, .spread-right { padding: 2rem 1.5rem; }
+    .colophon { padding: 2rem 1.5rem; }
+  }
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Two Peppers","description":"A Star Stuff zine following one measurement honestly. Barron-Gafford and colleagues grew three Solanaceae crops under a photovoltaic array outside Tucson and measured carbon uptake, water-use efficiency and fruit production against a conventional plot. Chiltepin pepper, the wild variety of Capsicum annuum, took up 33 per cent more carbon and produced three times the fruit. Jalapeño — the domesticated variety of the same species — took up 11 per cent less carbon and produced roughly equal fruit with 157 per cent greater water-use efficiency and 65 per cent less transpirational water loss. Cherry tomato took up 65 per cent more carbon and doubled its fruit. The photovoltaic panels themselves ran about 8.9 degrees Celsius cooler in daylight above the crops. Beneath the result sits settled physiology: photosynthesis rises with light intensity and then flattens at a species-specific light saturation point, past which additional photons change nothing because the light-harvesting machinery is finite. Stallknecht and colleagues measured basil yield saturating near 12 mol per square metre per day against an unshaded control receiving about 20, and separately found tomato yield linear in daily light integral with no upper asymptote — so the same genus that doubled under Arizona panels lost a quarter of its yield under mild shade in a Michigan greenhouse. Neither result is wrong. What differed was which resource was already scarce. Goetzberger and Zastrow proposed the geometry in 1982. Fourteen spreads, two figures, six refusals. A rhyme, not a proof.","image":"https://starstuff.earth/og-card.jpg","url":"https://starstuff.earth/two-peppers-zine.html","mainEntityOfPage":"https://starstuff.earth/two-peppers-zine.html","datePublished":"2026-09-04","dateModified":"2026-09-04","license":"https://creativecommons.org/licenses/by-sa/4.0/","author":{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/"},"publisher":[{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/","logo":{"@type":"ImageObject","url":"https://starstuff.earth/og-card.jpg"}},{"@type":"Organization","name":"More Realms","url":"https://morerealms.com/"}],"isPartOf":{"@type":"WebSite","name":"Star Stuff","url":"https://starstuff.earth/"}}</script>
+</head>
+<body>
+<div class="zine-shell">
+
+  <nav class="ss-nav" style="--nav-accent:#4ade80;" aria-label="Star Stuff collection">
+    <span class="ss-nav-home-group"><a class="ss-nav-home" href="index.html"><span class="ss-star" aria-hidden="true">&#9733;</span> stuff</a><a class="ss-nav-about" href="about.html">about</a>
+      <a class="ss-nav-search" href="search.html">search</a></span>
+    <span class="ss-nav-links">
+      <a class="ss-nav-prev" href="older-than-either-of-us-zine.html"><span class="ss-nav-arrow" aria-hidden="true">&lsaquo;</span> <span class="ss-nav-label">Older Than Either of Us</span></a>
+      <a class="ss-nav-next" href="collection-how-we-got-here.html"><span class="ss-nav-label">How We Got Here</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
+    </span>
+    <a class="ss-nav-collection" href="collection-star-stuff.html"><span class="ss-nav-collection-label">Collection</span> <span class="ss-nav-collection-name">Star Stuff</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
+  </nav>
+<main>
+
+  <div class="nav">
+    <span class="nav-brand">Stimpunks &times; More Realms</span>
+    <div class="nav-controls">
+      <button class="nav-btn" id="prev-btn" onclick="changePage(-1)">&larr; prev</button>
+      <span class="page-counter" id="page-counter">1 / 14</span>
+      <button class="nav-btn" id="next-btn" onclick="changePage(1)">next &rarr;</button>
+    </div>
+  </div>
+
+  <div class="spread active" id="spread-1">
+    <div class="cover-spread">
+      <!-- Cover motif: a panel row above, two plants beneath it, and the light
+           arriving in two portions — the part the leaf can use, and the surplus.
+           Text-free, drawn small and high-right so nothing can reach the title or
+           the corner numeral (the No. 48 cover fault; cheaper to design out than to fix). -->
+      <svg class="cover-motif" viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <g transform="translate(4,6)">
+          <!-- incoming light: the surplus, above the panel -->
+          <g stroke="rgba(251,191,36,0.55)" stroke-width="1.1">
+            <path d="M126 42 v26"/><path d="M150 34 v34"/><path d="M174 30 v38"/>
+            <path d="M198 34 v34"/><path d="M222 42 v26"/>
+          </g>
+          <!-- the panel, tilted -->
+          <g stroke="rgba(34,211,238,0.7)" stroke-width="1.4" fill="rgba(34,211,238,0.10)">
+            <path d="M116 92 L236 74 L244 88 L124 106 Z"/>
+          </g>
+          <g stroke="rgba(34,211,238,0.4)" stroke-width="0.8">
+            <path d="M140 88 l 2 14"/><path d="M164 84 l 2 14"/>
+            <path d="M188 81 l 2 14"/><path d="M212 78 l 2 14"/>
+          </g>
+          <!-- the post -->
+          <path d="M180 96 v76" stroke="rgba(196,181,212,0.45)" stroke-width="1.4"/>
+          <!-- the portion that gets through, below the panel -->
+          <g stroke="rgba(251,191,36,0.34)" stroke-width="1">
+            <path d="M132 118 v22"/><path d="M228 112 v22"/>
+          </g>
+          <!-- two plants, unequal on purpose -->
+          <g stroke="rgba(74,222,128,0.8)" stroke-width="1.5" fill="none">
+            <path d="M134 214 v-38"/>
+            <path d="M134 194 q -18 -12 -22 -28"/>
+            <path d="M134 186 q 18 -10 22 -24"/>
+            <path d="M228 214 v-24"/>
+            <path d="M228 202 q -14 -8 -17 -20"/>
+            <path d="M228 196 q 14 -7 17 -17"/>
+          </g>
+          <!-- ground -->
+          <path d="M96 216 h176" stroke="rgba(196,181,212,0.4)" stroke-width="1.2"/>
+        </g>
+      </svg>
+      <div class="cover-corner">
+        <div class="cover-corner-num" aria-hidden="true">87</div>
+        <span class="cover-corner-label">Star Stuff</span>
+      </div>
+      <div class="cover-issue">Stimpunks &times; More Realms &middot; Zine No. 87</div>
+      <h1 class="cover-title">Two <span class="amp">Peppers</span></h1>
+      <p class="cover-subtitle">on the point past which more light does nothing, one species that answered the same shade in two different ways, and what it takes to stop calling one of them a failure</p>
+      <div class="cover-byline">fourteen spreads &middot; two figures &middot; <strong>six refusals</strong></div>
+      <hr class="spectrum-line cover-rule">
+      <div class="cover-meta">
+        <span class="cover-ls">L&#9733;S</span>
+        <div class="cover-meta-text">Love You Down To Your Star Stuff<br>open edition &middot; print freely</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 2 ════ -->
+  <div class="spread" id="spread-2">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The premise</div>
+          <h2 class="spread-heading" id="either-food-or-energy">Either food or energy, and never both</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+<p class="lede">There is a sentence buried in the introduction of a 2019 paper that is doing more damage than most of the arguments people have about solar panels.</p>
+<p>The authors name it themselves, as the thing they are writing against &mdash; a <em>conventional understanding of land use</em> that asserts, in their words, an inherent <span class="pink">&ldquo;zero-sum-game&rdquo;</span> of competition between solar photovoltaic installations and agricultural food production.</p>
+<p>Land is either a field or a power station. Every panel is a hectare that stopped being a farm. It is a tidy premise, it decides planning applications and land allotments and permits, and the authors point out that this either-or discourse drives those decisions whether or not it is true.</p>
+<p>So somebody went and checked. They put panels over a field outside Tucson, planted three crops under them, and measured what happened &mdash; not the yield alone, but the carbon going in, the water going out, the moisture left in the soil, and the temperature of the panels themselves.</p>
+<p class="note"><strong>What came back was not a win.</strong> It was something more useful and much harder to headline: <span class="green">three plants gave three different answers, and two of them were good in completely different ways.</span></p>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Two Peppers &middot; Stimpunks</span>
+        <span class="spread-footer-right">2</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 3 ════ -->
+  <div class="spread" id="spread-3">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The physics &middot; 1</div>
+          <h2 class="spread-heading" id="the-saturation-point">There is a point past which more light does nothing</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+<p class="lede">Before any of the field results make sense, one piece of settled plant physiology has to be on the table, and it is the whole hinge of this zine.</p>
+<p>Photosynthesis does not rise forever with light. At low light levels the rate climbs more or less in a straight line &mdash; and a plant kept down there is under stress, because it cannot reach its growth potential. Then, as light keeps rising, the climb levels off. It flattens. Past a certain intensity, <strong>more photons produce no more sugar</strong>, because the capacity of the light-harvesting reactions is finite.</p>
+<p>That flattening has a name: the <span class="green">light saturation point.</span> And the fact that makes it interesting is not that it exists. It is that <strong>it is species-specific.</strong> Every plant has one and no two are in the same place.</p>
+<p>Which means the shape of that curve is a design parameter. As the Fraunhofer group put it, plainly, in a chapter about how to build these systems:</p>
+<div class="callout">The lower the light saturation point the more shade can be given to a crop without experiencing yield losses.<span class="attr">Trommsdorff, Dhal, &Ouml;zdemir, Ketzer, Weinberger &amp; R&ouml;sch, &ldquo;Agrivoltaics: solar power generation and food production,&rdquo; ch. 5</span></div>
+<p class="note">Notice what that sentence quietly refuses to say. It does not sort plants into the ones that can take shade and the ones that cannot. <span class="gold">It sorts shade to plants.</span></p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 440 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig1-title fig1-desc">
+              <title id="fig1-title">Two light response curves with different saturation points</title>
+              <desc id="fig1-desc">Photosynthetic rate plotted against light intensity for two plants. Both curves rise steeply at low light and then flatten. The shade-tolerant plant flattens early, at a low light intensity; the sun-loving plant flattens much later. The band of light to the right of the earlier flattening is marked as surplus for that plant — light it cannot convert, and therefore light a panel can take at no cost.</desc>
+              <!-- axes -->
+              <g stroke="rgba(196,181,212,0.55)" stroke-width="1.2" fill="none">
+                <path d="M56 250 H408"/>
+                <path d="M56 250 V34"/>
+              </g>
+              <!-- surplus band for the shade-tolerant plant -->
+              <rect x="176" y="34" width="232" height="216" fill="rgba(251,191,36,0.10)"/>
+              <path d="M176 34 V250" stroke="rgba(251,191,36,0.55)" stroke-width="1.1" stroke-dasharray="4 4" fill="none"/>
+              <!-- shade-tolerant curve: saturates early -->
+              <path d="M56 250 Q 110 132 176 108 Q 250 96 408 92" fill="none" stroke="#4ade80" stroke-width="2.4"/>
+              <!-- sun-loving curve: saturates late -->
+              <path d="M56 250 Q 150 158 260 84 Q 330 50 408 44" fill="none" stroke="#c4b5fd" stroke-width="2.4"/>
+              <!-- saturation markers -->
+              <circle cx="176" cy="108" r="4.5" fill="#4ade80"/>
+              <circle cx="330" cy="56" r="4.5" fill="#c4b5fd"/>
+              <!-- labels -->
+              <text x="186" y="132" font-family="'Space Mono', monospace" font-size="11" fill="#4ade80">shade-tolerant</text>
+              <text x="186" y="146" font-family="'Space Mono', monospace" font-size="10" fill="#b8aed0">saturates here</text>
+              <text x="236" y="42" font-family="'Space Mono', monospace" font-size="11" fill="#c4b5fd">sun-loving</text>
+              <text x="196" y="238" font-family="'Space Mono', monospace" font-size="11" fill="#fbbf24">surplus for the green plant</text>
+              <text x="196" y="222" font-family="'Space Mono', monospace" font-size="10" fill="#b8aed0">light it cannot use</text>
+              <text x="64" y="26" font-family="'Space Mono', monospace" font-size="10" fill="#b8aed0">photosynthetic rate</text>
+              <text x="300" y="270" font-family="'Space Mono', monospace" font-size="10" fill="#b8aed0">light intensity</text>
+            </svg>
+            <p class="diagram-caption"><strong>Figure 1.</strong> Schematic, not data. Two curves, two saturation points. The gold band is the part of full sun the green plant was never able to spend.</p>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Two Peppers &middot; Stimpunks</span>
+        <span class="spread-footer-right">3</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 4 ════ -->
+  <div class="spread" id="spread-4">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The physics &middot; 2</div>
+          <h2 class="spread-heading" id="the-surplus">The surplus, measured in basil</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+<p class="lede">A curve on a diagram is an argument. Here is the same thing as a number somebody actually harvested.</p>
+<p>Stallknecht and colleagues grew basil, petunia and tomato under a range of semi-transparent coverings and tracked yield against the <strong>daily light integral</strong> &mdash; how many moles of usable photons land on a square metre in a day. For basil, the relationship came out sigmoidal: yield rose steadily between about 6 and 12&nbsp;mol&nbsp;m<sup>&minus;2</sup>&nbsp;d<sup>&minus;1</sup>, and then, in the paper's phrasing, <em>did not increase much further</em> once the daily light integral went past roughly 12.</p>
+<p>Their unshaded control was sitting at about <strong>20.</strong></p>
+<div class="measure">
+  <div class="measure-cell"><div class="measure-num">~12</div><div class="measure-label">Where basil<br>stops improving</div></div>
+  <div class="measure-cell"><div class="measure-num">~20</div><div class="measure-label">What the<br>open sky gave</div></div>
+  <div class="measure-cell"><div class="measure-num">~40%</div><div class="measure-label">The difference<br>&mdash; ours, derived</div></div>
+</div>
+<p>Roughly two fifths of the light falling on a basil plant is not being converted into basil. It is not being wasted, exactly &mdash; there is nothing there to waste it. It is arriving at a machine that is already running flat out.</p>
+<p class="note"><strong>Do not quote that 40 per cent as theirs.</strong> <span class="cyan">It is our arithmetic on their two numbers</span>, and it is a rough figure about one crop in one experiment. The finding is the shape of the curve; the percentage is just the shape said out loud.</p>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Two Peppers &middot; Stimpunks</span>
+        <span class="spread-footer-right">4</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 5 ════ -->
+  <div class="spread" id="spread-5">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The result &middot; 1</div>
+          <h2 class="spread-heading" id="two-peppers">Two peppers, one species, opposite answers</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+<p class="lede">Back to Tucson. Three crops, all in the nightshade family, all under the same array, all through the same season.</p>
+<div class="ledger">
+  <div class="ledger-row">
+    <div class="ledger-name">Chiltepin pepper <span class="sci">Capsicum annuum var. glabriusculum</span></div>
+    <div class="ledger-fig">carbon uptake <b>+33%</b></div>
+    <div class="ledger-fig">water-use efficiency <b>no change</b></div>
+    <div class="ledger-fig">fruit <b>3&times;</b></div>
+  </div>
+  <div class="ledger-row">
+    <div class="ledger-name">Jalape&ntilde;o <span class="sci">Capsicum annuum var. annuum</span></div>
+    <div class="ledger-fig">carbon uptake <b>&minus;11%</b></div>
+    <div class="ledger-fig">water-use efficiency <b>+157%</b></div>
+    <div class="ledger-fig">fruit <b>~equal, on 65% less water</b></div>
+  </div>
+  <div class="ledger-row">
+    <div class="ledger-name">Cherry tomato <span class="sci">Solanum lycopersicum var. cerasiforme</span></div>
+    <div class="ledger-fig">carbon uptake <b>+65%</b></div>
+    <div class="ledger-fig">water-use efficiency <b>+65%</b></div>
+    <div class="ledger-fig">fruit <b>2&times;</b></div>
+  </div>
+</div>
+<p>Read the two peppers again, slowly, because the interesting thing is easy to slide past. <strong>Chiltepin and jalape&ntilde;o are the same species.</strong> One is the wild variety; the other is the domesticated one. Same genus, same species, different varieties, identical treatment.</p>
+<p>The chiltepin took the shade and <span class="green">tripled its fruit.</span> The jalape&ntilde;o actually took up <em>less</em> carbon under the panels &mdash; on a productivity chart, a loss &mdash; and still came out with the same amount of fruit, because it had become dramatically better at holding water. Same harvest, <span class="cyan">two-thirds less of it spent.</span></p>
+<p class="note"><strong>Neither of those is the failure case.</strong> One plant did more with the situation. The other did the same with far less. There is no version of this table where you can rank them without first deciding, arbitrarily, whether you are short of land or short of water.</p>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Two Peppers &middot; Stimpunks</span>
+        <span class="spread-footer-right">5</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 6 ════ -->
+  <div class="spread" id="spread-6">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The result &middot; 2</div>
+          <h2 class="spread-heading" id="the-one-we-bred">The one that needed the help is the one we bred</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+<p class="lede">There is an observation sitting on that table, and it needs handling carefully, because it is exactly the kind of thing that is too satisfying to be trusted without a hedge.</p>
+<p>The chiltepin is the wild one. It is native to southern North America and northern South America, it grows under desert shrubs, and nobody bred it for anything. The jalape&ntilde;o is its domesticated sister variety &mdash; <em>widely domesticated across large biogeographic space</em>, in the paper's words, and of considerably greater commercial value.</p>
+<p>Under the panels, the wild one flourished. The bred one coped &mdash; well, and by a different route, but coped.</p>
+<p class="note"><strong>Here is the hedge, and it is load-bearing.</strong> The study did not test domestication as a variable. It picked two varieties of one species because they represent different dryland niches, and any story about what breeding did to the jalape&ntilde;o is <span class="gold">our inference, not their finding.</span> Two plants is not a result about agriculture.</p>
+<p>But the shape is worth sitting with, even unproven. We select crops in full sun, for full sun, and then we measure them in full sun. A variety optimised inside one narrow set of conditions is a variety whose performance <em>outside</em> those conditions nobody was ever paying attention to.</p>
+<p>The chiltepin was not better. It was <span class="green">never asked to be uniform.</span></p>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Two Peppers &middot; Stimpunks</span>
+        <span class="spread-footer-right">6</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 7 ════ -->
+  <div class="spread" id="spread-7">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The disagreement</div>
+          <h2 class="spread-heading" id="the-tomato-disagrees">And then the tomato disagrees with itself</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+<p class="lede">If this zine stopped at spread five it would be a nice story about solar panels. It does not, because two of the papers on this desk contradict each other, and the contradiction is better than either result on its own.</p>
+<p>In Arizona, cherry tomato under the array <strong>doubled its fruit.</strong></p>
+<p>In a Michigan greenhouse, Stallknecht and colleagues found the opposite, and found it emphatically. Where basil and petunia gave those flattening sigmoidal curves, <span class="pink">tomato yield increased linearly with the daily light integral and never approached an upper asymptote.</span> There was no saturation point in range. Every photon removed cost fruit. Even their best-transmitting coverings came in <strong>25 and 37 per cent</strong> below the control &mdash; and on <em>ripe</em> fruit at harvest the gap was <strong>52 and 74 per cent</strong>, because the shaded plants were also slower.</p>
+<p>The same genus. Doubling under 70&ndash;80 per cent shade in one place; losing a quarter of its yield to mild shade in another.</p>
+<p class="note"><strong>The temptation here is to pick a winner.</strong> Field beats greenhouse, or the newer paper beats the older one, or somebody's cultivar was different. <span class="cyan">Resist it.</span> Both measurements are careful and both are almost certainly right about the place they were made.</p>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Two Peppers &middot; Stimpunks</span>
+        <span class="spread-footer-right">7</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 8 ════ -->
+  <div class="spread" id="spread-8">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The resolution</div>
+          <h2 class="spread-heading" id="what-was-scarce">The trait was never in the plant</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+<p class="lede">The two tomatoes are not in conflict. They are answering two different questions, and neither paper ever claimed otherwise.</p>
+<p>Ask what was <em>scarce</em> in each place.</p>
+<p>In an Arizona summer, the limiting factors are heat and water. A tomato out there is losing the argument with the atmosphere long before it runs short of photons &mdash; the paper describes the crop as heat-sensitive to the point that summer flowering is accompanied by abortion from excessive temperature. Take away some light and you take away heat and evaporative demand with it. The plant gets back more than it loses. Barron-Gafford's team attribute the gain to exactly this: an <span class="cyan">alleviation of multiple stress interactions</span> from heat and atmospheric drought.</p>
+<p>In a Michigan greenhouse in the same season, light <em>is</em> the scarce thing. Remove some and you have removed the thing that was already in short supply. Nothing is given back.</p>
+<div class="pull-quote green">Shade tolerance is not a property of the plant. It is a property of the plant and the place, and it changes when the place does.</div>
+<p>This is why the Fraunhofer chapter can write, in the middle of a sober engineering discussion, that <em>when other factors &mdash; water, for instance &mdash; are already limiting crop growth, shading is not necessarily a hindrance, and may even be beneficial.</em></p>
+<p class="note"><strong>Say the general form of it, because it is the whole zine.</strong> <span class="green">Whether a characteristic reads as a deficit depends on what the surrounding conditions have made scarce.</span> Change what is scarce and the same characteristic changes sign.</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 440 268" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig2-title fig2-desc">
+              <title id="fig2-title">The same shade, two settings, opposite outcomes</title>
+              <desc id="fig2-desc">Two panels compared. On the left, an Arizona field where heat and water are the scarce resources: removing light also removes heat and evaporative demand, and the tomato yield doubles. On the right, a Michigan greenhouse where light itself is the scarce resource: removing light removes the thing already in short supply, and yield falls by about a quarter. The shade is the same in both; only what was scarce differs.</desc>
+              <!-- left panel: Arizona -->
+              <rect x="18" y="24" width="184" height="204" rx="4" fill="rgba(74,222,128,0.07)" stroke="rgba(74,222,128,0.4)" stroke-width="1.2"/>
+              <text x="34" y="50" font-family="'Space Mono', monospace" font-size="11" fill="#4ade80">ARIZONA FIELD</text>
+              <text x="34" y="76" font-family="'Space Mono', monospace" font-size="10" fill="#b8aed0">scarce: heat relief,</text>
+              <text x="34" y="90" font-family="'Space Mono', monospace" font-size="10" fill="#b8aed0">water</text>
+              <text x="34" y="118" font-family="'Space Mono', monospace" font-size="10" fill="#b8aed0">shade removes</text>
+              <text x="34" y="132" font-family="'Space Mono', monospace" font-size="10" fill="#b8aed0">a burden</text>
+              <path d="M34 150 h150" stroke="rgba(74,222,128,0.35)" stroke-width="1"/>
+              <text x="34" y="184" font-family="'Space Mono', monospace" font-size="20" fill="#4ade80">2&#215;</text>
+              <text x="34" y="204" font-family="'Space Mono', monospace" font-size="10" fill="#b8aed0">tomato fruit</text>
+
+              <!-- right panel: Michigan -->
+              <rect x="238" y="24" width="184" height="204" rx="4" fill="rgba(244,114,182,0.07)" stroke="rgba(244,114,182,0.4)" stroke-width="1.2"/>
+              <text x="254" y="50" font-family="'Space Mono', monospace" font-size="11" fill="#f9a8d4">MICHIGAN GLASS</text>
+              <text x="254" y="76" font-family="'Space Mono', monospace" font-size="10" fill="#b8aed0">scarce: light</text>
+              <text x="254" y="118" font-family="'Space Mono', monospace" font-size="10" fill="#b8aed0">shade removes</text>
+              <text x="254" y="132" font-family="'Space Mono', monospace" font-size="10" fill="#b8aed0">the supply</text>
+              <path d="M254 150 h150" stroke="rgba(244,114,182,0.35)" stroke-width="1"/>
+              <text x="254" y="184" font-family="'Space Mono', monospace" font-size="20" fill="#f9a8d4">&minus;25%</text>
+              <text x="254" y="204" font-family="'Space Mono', monospace" font-size="10" fill="#b8aed0">tomato fruit</text>
+            </svg>
+            <p class="diagram-caption"><strong>Figure 2.</strong> Same plant, same shade, opposite sign. The variable that decided it is not on either plant.</p>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Two Peppers &middot; Stimpunks</span>
+        <span class="spread-footer-right">8</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 9 ════ -->
+  <div class="spread" id="spread-9">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The design</div>
+          <h2 class="spread-heading" id="no-unsuitable-crop">There is no unsuitable crop</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+<p class="lede">Once you know the saturation point is species-specific, the engineering question inverts. It stops being <em>which plants can cope with our panels</em> and becomes <em>what spacing does this plant want.</em></p>
+<p>The Fraunhofer chapter states the consequence outright, and it is a striking thing to find in a technical handbook:</p>
+<div class="callout">&hellip; if the shading rates are adjusted accordingly, it is theoretically possible to grow all crops in an agrivoltaic system.<span class="attr">Trommsdorff et&nbsp;al., ch. 5 &mdash; <em>theoretically</em> is theirs, and we are keeping it</span></div>
+<p>All of them. Not because every plant is secretly shade-tolerant, but because <strong>shading rate is a dial and somebody gets to set it.</strong> The failure mode is not an unsuitable crop. It is an unmatched ratio &mdash; one number chosen for the whole field and then applied to every plant in it regardless.</p>
+<p>The geometry has been on the table a long time. In 1982, <span class="gold">Adolf Goetzberger and Armin Zastrow</span> proposed lifting the collectors about two metres off the ground and spacing the rows at roughly three times the collector height &mdash; which, they calculated, delivers nearly uniform radiation at the ground of about <strong>two thirds</strong> of what an open field receives. Forty-four years ago, in the first paper on the subject, the design question was already <em>how much light to leave.</em></p>
+<p class="note"><strong>One borrowed word, returned.</strong> These systems are scored with the <em>land equivalent ratio</em> &mdash; how much separate land you would need to match what the combined plot produces. Above 1 means the pairing beats the split. It is not a solar metric: <span class="cyan">Mead and Willey defined it in 1980 for intercropping</span>, for farmers growing two plants in one field. The tool for measuring this arrived from people who had already stopped planting one thing at a time.</p>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Two Peppers &middot; Stimpunks</span>
+        <span class="spread-footer-right">9</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 10 ════ -->
+  <div class="spread" id="spread-10">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The exchange</div>
+          <h2 class="spread-heading" id="the-panels-too">The panels ran nine degrees cooler</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+<p class="lede">Everything so far has been about what the plants got. There is a second half to the measurement, and it is the part that stops this being a story about accommodation.</p>
+<p>Photovoltaic panels lose efficiency as they heat up. Across the growing season, the panels in the agrivoltaic installation ran <span class="green">about 8.9&nbsp;&plusmn;&nbsp;0.2&nbsp;&deg;C cooler</span> in daylight than the same panels over bare ground &mdash; because the crop underneath was transpiring, and a transpiring plant is an evaporative cooler running on sunlight.</p>
+<p>The soil held on to more water, too. Irrigating every two days, moisture in the agrivoltaic plot stayed about <strong>15 per cent higher</strong> (3.2 volumetric units) than the control before the next watering. Even under daily irrigation it held 5 per cent more. The authors note something further: soil under the panels after two days was still wetter than the control's driest point after <em>one</em> &mdash; which suggests the watering could be cut further than they cut it.</p>
+<div class="pull-quote gold">The plants take the light the panel does not want. The panel takes the heat the plants do not want. Neither one is the host.</div>
+<p class="note"><strong>This is the bit the zero-sum framing cannot represent at all.</strong> It has one axis and two claimants, so every outcome has to be a split. <span class="cyan">A relationship where both parties come out ahead does not fit on that axis</span> &mdash; not as a compromise, not as a subsidy, not as one side being generous.</p>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Two Peppers &middot; Stimpunks</span>
+        <span class="spread-footer-right">10</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 11 ════ -->
+  <div class="spread" id="spread-11">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The gaps</div>
+          <h2 class="spread-heading" id="what-is-not-known">What nobody has measured yet</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+<p class="lede">A hopeful piece that cannot state its own costs is just optimism. Here is what the same literature says about itself, in its own words.</p>
+<p><strong>The evidence base is thin.</strong> Weselek and colleagues, reviewing the field, write that although the technology is already running in commercial projects, <em>its practicability and impact on crop production have hardly been investigated</em>, and that only very few studies address it. The Fraunhofer chapter adds that most results lack robust long-term observation. Several of the striking numbers in this zine come from single seasons on single sites.</p>
+<p><strong>Nobody is sure how these things behave in a storm.</strong> Zahrawi and Aly, reviewing wind loading, report a <span class="pink">contradiction between different versions of the American Society of Civil Engineers standards and the wind-tunnel results</span>, and name a significant knowledge gap in wind load mitigation. Structures being sold partly as climate adaptation, with unsettled guidance on extreme weather.</p>
+<p><strong>The policy scaffolding barely exists.</strong> Alves, Marques da Costa and Sirnik screened 308 publications and found <strong>twelve</strong> addressing policy instruments for agrivoltaics, all published between 2021 and 2024.</p>
+<p><strong>And a result we are not going to use.</strong> One trial of corn &mdash; a C4 plant, with a light saturation point <em>higher</em> than most, so it should suffer under shade &mdash; produced a surprising outcome, with shading rate simply tracking yield reduction proportionally. The authors flag that the plot was only 100&nbsp;m<sup>2</sup>, which could explain it. <span class="gold">We are printing it as an unresolved oddity rather than as evidence, because that is what it is.</span></p>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Two Peppers &middot; Stimpunks</span>
+        <span class="spread-footer-right">11</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 12 ════ -->
+  <div class="spread" id="spread-12">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The turn</div>
+          <h2 class="spread-heading" id="what-counts-as-a-deficit">What counts as a deficit is set by the room</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+<p class="lede">We did not go looking for this. It was already in the table.</p>
+<p>The jalape&ntilde;o took up eleven per cent less carbon under the panels. Score that column alone and you have a plant that underperformed. Put the water column next to it and the same plant is <span class="green">the most efficient thing in the trial.</span> The number did not change. The measure changed, and with it, which plant was failing.</p>
+<p>The tomato is the sharper case, because it is one crop giving both answers. Nobody had to reclassify the tomato. All that changed was which resource the surroundings had made scarce &mdash; and the identical characteristic went from a liability to an advantage without the plant doing anything at all.</p>
+<p>This is not a metaphor we are importing. It is what the measurements say. <strong>A trait becomes a deficit when it meets conditions that were arranged without it in mind</strong>, and it stops being one when the conditions change. The chiltepin did not need accommodating in Tucson because the shade was already the accommodation. The greenhouse tomato needed light because someone had built a room where light was the limit.</p>
+<p>Which puts the design question exactly where the Fraunhofer chapter put it, and where we would put it about a classroom or an office: <span class="gold">set the conditions to the organism, not the organism to the conditions.</span> There is no unsuitable crop. There is a ratio nobody adjusted.</p>
+<p class="note"><strong>And a rhyme, offered as one.</strong> Every plant has a saturation point &mdash; a level past which more input adds nothing, and beyond which it starts to cost. <span class="cyan">A great many people reading this will recognise that curve from the inside.</span> The mechanisms are not the same and we are not claiming they are; photosynthesis is not sensation. But the shape is the shape, and it is worth knowing that <em>there is a point past which more is not better</em> is a measured fact about living things and not a personal shortcoming.</p>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Two Peppers &middot; Stimpunks</span>
+        <span class="spread-footer-right">12</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 13 ════ -->
+  <div class="spread" id="spread-13">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Refusals</div>
+          <h2 class="spread-heading" id="not">Not:</h2>
+          <hr class="spectrum-line rule">
+          <div class="refusals">
+            <div class="refusal"><span class="refusal-tag">Not</span><span><strong>&ldquo;Solar panels make crops grow better.&rdquo;</strong> They made three crops grow differently, on one site, in one climate, for a season or two. In a Michigan greenhouse the same genus lost a quarter of its yield. The finding is conditional and the condition is the whole point.</span></div>
+            <div class="refusal"><span class="refusal-tag">Not</span><span><strong>A technology that fixes the problem.</strong> Every hectare of this is downstream of emissions nobody has stopped making. Adaptation that works is still adaptation, and <span class="green">a cooler field is not a cooler planet.</span></span></div>
+            <div class="refusal"><span class="refusal-tag">Not</span><span><strong>The wild pepper as a lesson about resilience.</strong> The chiltepin is not modelling anything for us. It grows under desert shrubs because it grows under desert shrubs, and it owes nobody an inspiring reading.</span></div>
+            <div class="refusal"><span class="refusal-tag">Not</span><span><strong>A ranking with the shade-tolerant plants moved up it.</strong> If the reply to <em>sun-loving crops are the real ones</em> is <em>actually the shade-tolerant ones are</em>, the sorting survived and only the order moved.</span></div>
+            <div class="refusal"><span class="refusal-tag">Not</span><span><strong>An argument that the physiology proves anything about people.</strong> The saturation curve is a rhyme and spread twelve says so on its face. We will take the shape and leave the claim.</span></div>
+            <div class="refusal"><span class="refusal-tag">Not</span><span><strong>Settled.</strong> The reviewers of this field say plainly that its practicability has hardly been investigated, that the wind standards disagree with the wind tunnels, and that twelve papers exist on the policy. <span class="gold">We are reporting an open subject while it is open.</span></span></div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Two Peppers &middot; Stimpunks</span>
+        <span class="spread-footer-right">13</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 14: COLOPHON ════ -->
+  <div class="spread" id="spread-14">
+    <div class="interior">
+      <div class="colophon">
+        <div>
+          <div class="colophon-top">
+            <span class="colophon-ls">L&#9733;S</span>
+            <p class="colophon-phrase">Two varieties of one species, given the same shade, answered it two different ways &mdash; and the only way to call either one a failure is to decide in advance which column counts.</p>
+          </div>
+
+          <div class="series-list">
+            <div class="series-item"><span class="series-num">No. 8</span> <a href="the-universe-runs-on-difference-zine.html">The Universe Runs on Difference</a> &mdash; the Cavendish banana, and what monoculture costs</div>
+            <div class="series-item"><span class="series-num">No. 36</span> <a href="the-layer-we-call-essential-zine.html">The Layer We Call Essential</a> &mdash; the yardstick that came back against us</div>
+            <div class="series-item"><span class="series-num">No. 5</span> <a href="underground-zine.html">Underground</a> &mdash; roots, fungi, and the trade we can actually evidence</div>
+            <div class="series-item"><span class="series-num">&mdash;</span> <a href="difference-first-frame.html">The Difference-First Frame</a> &mdash; why variation comes before deficit here</div>
+            <div class="series-item"><span class="series-num">&mdash;</span> <a href="too-good-to-check.html">Too Good to Check</a> &mdash; six ways a fact goes wrong</div>
+            <div class="series-item current"><span class="series-num">No. 87</span> Two Peppers &mdash; the saturation point, and the shade nobody adjusted &larr; you are here</div>
+          </div>
+
+          <div class="reflect">
+            <div class="reflect-label">Reflection</div>
+            <p class="reflect-q">Which column does the room you work in score you on, and who chose it?</p>
+            <p class="reflect-q">Where have you been called inefficient by a measure that was only counting one resource?</p>
+            <p class="reflect-q">What is scarce where you are &mdash; and would the same trait read differently somewhere it was plentiful?</p>
+            <p class="reflect-q">When something is described as unsuitable for an environment, who is holding the dial that could be turned instead?</p>
+            <p class="reflect-q">What is your saturation point, and what happens after it?</p>
+          </div>
+        </div>
+
+        <div class="colophon-body">
+          <h3 class="colophon-h" id="sources">Sources</h3>
+          <p><strong>The three crops.</strong> Greg A. Barron-Gafford, Mitchell A. Pavao-Zuckerman, Rebecca L. Minor, Leland F. Sutter, Isaiah Barnett-Moreno and colleagues, <em>&ldquo;Agrivoltaics provide mutual benefits across the food&ndash;energy&ndash;water nexus in drylands,&rdquo; Nature Sustainability</em> <strong>2</strong>, 848&ndash;855 (2019), doi:10.1038/s41893-019-0364-5. Source of the chiltepin, jalape&ntilde;o and cherry tomato figures on spread five, the <em>zero-sum-game</em> framing quoted on spread two, the heat-and-atmospheric-drought attribution on spread eight, the ~8.9&nbsp;&plusmn;&nbsp;0.2&nbsp;&deg;C panel cooling and the soil-moisture figures on spread ten. <strong>Read at the accepted-manuscript version</strong> deposited under the US Department of Energy Public Access Plan (OSTI 1567040), because the publisher's copy sits behind an authorisation redirect. Page and figure numbering therefore follow the manuscript rather than the printed article; every number above is quoted from the authors' own results text.</p>
+          <p><strong>Why going to that manuscript mattered.</strong> The secondary account we met first &mdash; the Fraunhofer chapter below &mdash; reports this experiment as <em>&ldquo;chiltepin pepper and tomato showed a yield increase of 150% and 90%&hellip; with high shading rates of 70&ndash;80%.&rdquo;</em> That is a fair summary and it drops the jalape&ntilde;o entirely, which is the result this zine is built on. <span class="gold">We are naming that because it is the ordinary way a finding gets smaller on its way to being retold</span>, not because anyone did anything wrong.</p>
+          <p><strong>The saturation curves, and the tomato that disagrees.</strong> Eric J. Stallknecht, Christopher K. Herrera, Chenchen Yang, Isaac King, Thomas D. Sharkey, Richard R. Lunt &amp; Erik S. Runkle, <em>&ldquo;Designing plant&ndash;transparent agrivoltaics,&rdquo; Scientific Reports</em> <strong>13</strong>, 1903 (2023), doi:10.1038/s41598-023-28484-5. Source of the basil sigmoidal response and its ~12&nbsp;mol&nbsp;m<sup>&minus;2</sup>&nbsp;d<sup>&minus;1</sup> plateau against a control near 20 (spread four), and of the tomato result on spread seven &mdash; yield linear in daily light integral with no upper asymptote, the 25 and 37 per cent yield shortfalls and the 52 and 74 per cent reductions in ripe fruit. <em>The ~40 per cent surplus figure on spread four is ours</em>, derived from their two numbers and labelled as such on the spread.</p>
+          <p><strong>The physiology and the design rule.</strong> Max Trommsdorff, Ipsa Sweta Dhal, &Ouml;zal Emre &Ouml;zdemir, Daniel Ketzer, Nora Weinberger &amp; Christine R&ouml;sch, <em>&ldquo;Agrivoltaics: solar power generation and food production,&rdquo;</em> chapter 5 in <em>Solar Energy Advancements in Agriculture and Food Production Systems</em> (Elsevier). Source of the light response curve and species-specific light saturation point (spread three), both quoted sentences, the <em>other factors already limiting</em> passage on spread eight, the Arizona yield figures as reported secondhand, and the corn trial and its 100&nbsp;m<sup>2</sup> caveat on spread eleven.</p>
+          <p><strong>The first proposal.</strong> Adolf Goetzberger &amp; Armin Zastrow, <em>&ldquo;On the Coexistence of Solar-Energy Conversion and Plant Cultivation,&rdquo; International Journal of Solar Energy</em> <strong>1</strong>(1), 55&ndash;69 (1982) &mdash; collectors raised about 2&nbsp;m with row spacing near three times collector height, giving roughly two thirds of open-field radiation at the ground. <em>Open:</em> verified through the journal record and abstract, <span class="cyan">not read at full text</span>; the pair's earlier German note (<em>&ldquo;Kartoffeln unter dem Kollektor,&rdquo; Sonnenenergie</em>, 1981) we have not seen at all and cite only as the earlier of the two. <strong>The land equivalent ratio</strong> is Roger Mead &amp; R. W. Willey, <em>&ldquo;The Concept of a &lsquo;Land Equivalent Ratio&rsquo; and Advantages in Yields from Intercropping,&rdquo; Experimental Agriculture</em> <strong>16</strong>, 217&ndash;228 (1980) &mdash; an intercropping measure, borrowed into this field, as spread nine says.</p>
+          <p><strong>What the field says about itself.</strong> Axel Weselek, Andrea Ehmann, Sabine Zikeli, Iris Lewandowski, Stephan Schindele &amp; Petra H&ouml;gy, <em>&ldquo;Agrophotovoltaic systems: applications, challenges, and opportunities. A review,&rdquo; Agronomy for Sustainable Development</em> <strong>39</strong>, 35 (2019) &mdash; the <em>hardly been investigated</em> assessment. Amro A. Zahrawi &amp; Aly Mousaad Aly, <em>&ldquo;A Review of Agrivoltaic Systems: Addressing Challenges and Enhancing Sustainability,&rdquo; Sustainability</em> <strong>16</strong>, 8271 (2024) &mdash; the ASCE-versus-wind-tunnel contradiction and the wind-load knowledge gap. Andr&eacute; Alves, Eduarda Marques da Costa &amp; Igor Sirnik, <em>&ldquo;The policy landscape of agrivoltaics: a systematic review,&rdquo; Energy, Sustainability and Society</em> <strong>16</strong>, 8 (2026) &mdash; 308 publications screened, 12 on policy instruments, 2021&ndash;2024. Also consulted: Simone Coluccia, Michelina Ruocco, Davide Della Porta &amp; Giuseppe Langella, <em>&ldquo;Agrivoltaic systems: State of the art and potential field applications,&rdquo; Energy Reports</em> <strong>14</strong>, 1606&ndash;1633 (2025).</p>
+          <p><strong>One source we could not use.</strong> Anas Rahman, Akash Sharma, Florian Postel, Siddharth Goel, Kritika Kumar &amp; Tara Laan, <em>Agrivoltaics in India: Challenges and opportunities for scale-up</em> (IISD, 2023) was in the reading pile, but <span class="pink">the copy available to us contains only the front matter</span> &mdash; title page and JSTOR notice, no report body. Nothing in this zine draws on it, and the Indian deployment picture is consequently absent from a piece that would have been better for having it.</p>
+
+          <h3 class="colophon-h" id="what-this-does-not-re-argue">What this deliberately does not re-argue</h3>
+          <p><strong><a href="the-universe-runs-on-difference-zine.html">No. 8</a> owns the monoculture argument</strong> &mdash; the Cavendish banana, uniformity as efficiency purchased with fragility. This zine is its other half and does not rebuild it: where No. 8 shows what a field of identical plants costs when conditions move, this one shows what a field of <em>different</em> ones can do when the conditions are set to them rather than the other way round. <strong><a href="difference-first-frame.html">The Difference-First Frame</a> owns the reasoning</strong> behind reading variation before deficit; spread twelve applies it to a measurement rather than restating it.</p>
+          <p><strong>A rhyme, not a proof.</strong> <span class="gold">We are not claiming a pepper is like a person. We are pointing at a case where the same characteristic was a deficit in one room and an advantage in another, with nothing about the organism changing in between &mdash; and noticing how much of what gets called failure is an unadjusted dial.</span></p>
+          <div class="colophon-footer">
+            <a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks Foundation</a> &times; <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a><br>
+            stimpunks.org &middot; morerealms.com &middot; starstuff.earth<br>
+            <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> &middot; open edition &middot; print freely
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Two Peppers &middot; Stimpunks</span>
+        <span class="spread-footer-right">14</span>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /zine-shell --></main>
+
+
+<script>
+  let current = 1;
+  const total = 14;
+
+  function changePage(dir) {
+    const next = current + dir;
+    if (next < 1 || next > total) return;
+    document.getElementById('spread-' + current).classList.remove('active');
+    current = next;
+    document.getElementById('spread-' + current).classList.add('active');
+    document.getElementById('page-counter').textContent = current + ' / ' + total;
+    document.getElementById('prev-btn').disabled = current === 1;
+    document.getElementById('next-btn').disabled = current === total;
+    document.getElementById('prev-btn').classList.toggle('active', current > 1);
+    document.getElementById('next-btn').classList.toggle('active', current < total);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') changePage(1);
+    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   changePage(-1);
+  });
+
+  document.getElementById('prev-btn').disabled = true;
+  document.getElementById('next-btn').classList.add('active');
+</script>
+<script src="starstuff.js" defer></script>
+</body>
+</html>
