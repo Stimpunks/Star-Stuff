@@ -166,6 +166,47 @@ Decisions still to make. Move to **Settled** with a date once resolved.
 
 ## Settled
 
+- **A fifteenth collection — *Glimmer Wire*, one page per weekly edition — settled 2026-09-04, by
+  Ryan.** *Glimmer Wire* shipped on 2026-09-02 as a single page carrying every edition newest-first
+  behind one masthead, with a source comment instructing that new editions be prepended. Two
+  editions in, Ryan's call: **"having multiple editions on one page is too much for me. Let's
+  separate editions and put them in a Glimmer Wire collection."** The prepend model was wrong in a
+  way that gets monotonically worse — a running log on one page grows without bound, and edition two
+  had already buried edition one.
+  - **The axis is *issue*, a fifth kind of sort here.** Five collections sort by register, two by
+    form, two by medium, one by occasion, three are furniture. This one is in because a member is
+    *edition N of a serial*. The convention that an off-register collection discloses its axis on
+    its own face is honoured on the collection page.
+  - **Editions are dated, never numbered**, on the Glimmers reasoning: the zine numbering says
+    *when* and has no redirects, so a serial inserting itself into it would make numbers mean two
+    things.
+  - **`glimmer-wire.html` was retired rather than kept as a hub.** Two options were live. *Keep it*
+    as a Notes & Rationale hub with the collection page as a plain card grid — rejected because it
+    leaves two landing pages both explaining what Glimmer Wire is, and the gates cannot make the old
+    filename a collection page (`check-markup.mjs` matches `^collection-[a-z0-9-]+\.html$`, so the
+    name is not cosmetic). *Retire it* with a 301 — chosen, following the No. 78 retitle precedent
+    already in `_redirects`. All ten inbound links were rewritten so nothing depends on the
+    redirect, and the two deep links were repointed at edition one directly, because **a Netlify
+    redirect does not carry a fragment.**
+  - **It gets its own `index.html` section — the invariant honoured, not excepted.** Ryan's call
+    against the alternative of nesting it inside Notes & Rationale on the front page and taking an
+    Easter-Eggs-style documented exception. So: a ninth top-level section, a fifteenth masthead
+    pill, its own accent, an `About this collection →` link. **Notes & Rationale drops from six
+    working papers to five** and says on its face that one moved out and why.
+  - **The cost is stated on the page rather than left to be discovered.** An edition no longer sits
+    beside the one before it, and this scan makes cross-edition observations deliberately — the same
+    held item declined twice so the pattern is on the record, a lag distribution confirmed by a
+    second data point. Those became links. Accepted for an edition a reader can finish, a URL that
+    means *that week*, and an archive still navigable at fifty editions.
+  - **Anchor ids were kept verbatim, including the asymmetric `-0904` suffixes.** Normalising them
+    would be tidier and would break two live deep links for nothing. Recorded here so it does not
+    read as sloppiness later.
+  - **The editions carry prev/next to each other, which is a local order and not the site chain.**
+    This also **closes an open question**: `CLAUDE.md` had listed `glimmer-wire.html` among two pages
+    off the reading chain with no reason recorded. Ruled — off the chain on purpose, because
+    threading a weekly scan between two zines drops a maintenance document into somebody's reading.
+    `bow-ery.html` is now the only one left wanting a ruling.
+
 - **A fourteenth collection — *Glimmers*, for hopeful science news — settled 2026-08-31, by Ryan.**
   Proposed and named by Ryan alongside the Roman launch essay: a blog, in effect, for science news
   that stokes wonder, awe, interdependence and belonging. **Three sub-decisions came with it, and

@@ -99,8 +99,9 @@ The central phrase compresses through registers, each with a use:
   <a class="ss-nav-collection" href="collection-kin.html"><span class="ss-nav-collection-label">Collection</span> <span class="ss-nav-collection-name">Kin</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
   ```
 
-  All 143 members have one; the 14 collection pages, `index.html` and `search.html` do not (143 +
-  14 + 2 = the 159 pages in the repo root, re-derived 2026-08-31). **A new
+  All 152 members have one; the 15 collection pages, `index.html` and `search.html` do not (152 +
+  15 + 2 = the 169 pages in the repo root, re-derived 2026-09-04 — the numbers here are the gate's
+  own, printed by `check-markup.mjs`, which is the only count in this file you get for free). **A new
   piece needs its badge and its collection page's card in the same pass** — the page→collection map
   is derived from `<a class="card" href="…">` on the collection pages, so a card that is missing
   makes the badge underivable. **`tools/check-markup.mjs` enforces all of this as of 2026-08-13**
@@ -123,9 +124,10 @@ The central phrase compresses through registers, each with a use:
   set size, weight, tracking and color, so the swap is a tag change plus `margin: 0` and a
   `scroll-margin-top`. `tools/check-markup.mjs` guards the ids for duplicates; nothing guards their
   existence, so this is on you.
-- `index.html` carries a **`.masthead-toc` jump strip** — two `<ul>` tiers, fourteen pills: eight
-  top-level sections (Start Here, Foundations, Collections, **Glimmers**, Field Guides, Sound, Print,
-  Notes — Glimmers joined the upper tier on 2026-08-31) then
+- `index.html` carries a **`.masthead-toc` jump strip** — two `<ul>` tiers, fifteen pills: nine
+  top-level sections (Start Here, Foundations, Collections, **Glimmers**, **Glimmer Wire**, Field
+  Guides, Sound, Print, Notes — Glimmers joined the upper tier on 2026-08-31, Glimmer Wire on
+  2026-09-04, placed directly after it because it is the scan behind it) then
   the six that get their own grid section — the five register collections plus **How We Got Here**,
   which joined the lower tier rather than the upper one. Each is tinted with the same `--sec-accent`
   its heading and rule carry. **A new top-level section on the index needs a pill here**, and the strip is in
@@ -148,8 +150,10 @@ The central phrase compresses through registers, each with a use:
   those nine differ from their own index taglines — the index has no `.card-moment`, so nothing
   collides there. Check with a word-set overlap between the two, not by eye; anything above ~60% is
   the same sentence wearing two styles.
-- **The card structure is on all fourteen card-bearing pages** — `index.html` and the thirteen
-  collection pages (2026-08-18). The CSS is *not* shared: each collection page keeps its own accent
+- **The card structure is on all sixteen card-bearing pages** — `index.html` and the fifteen
+  collection pages (re-derived 2026-09-04; the figure said *fourteen* from 2026-08-18, when there
+  were thirteen collection pages, and went stale twice without anybody noticing. Derive it:
+  `grep -l '<a class="card"' *.html | wc -l`). The CSS is *not* shared: each collection page keeps its own accent
   fallback (`var(--violet)`, `var(--cyan)`, `var(--accent)`) and its own hover tint, because the
   tinting is per collection on purpose. Derive those from the page rather than hardcoding them.
   **The membership map survives the wrapper** — `check-markup.mjs` reads `<a class="card" href>`,
@@ -184,15 +188,16 @@ The central phrase compresses through registers, each with a use:
   spread, not just the total.
   Reasoning and the rejected shared-sheet option are in `DECISIONS.md`.
 
-### Collections (fourteen pages, in four kinds plus one exception)
+### Collections (fifteen pages, in five kinds plus one exception)
 
-Fourteen **collection** landing pages (`collection-*.html`). **Every section of `index.html` has
+Fifteen **collection** landing pages (`collection-*.html`). **Every section of `index.html` has
 one** — that is the invariant, so *a new index section owes a collection page*, and a new
 collection page owes a `.collection-intro` on the index carrying its accent and an
 `About this collection →` link. The five register collections were settled 2026-08-11 — see
 `DECISIONS.md` for the reasoning; Print and Sound followed the same day, Field Guides on the 12th,
 and Start Here, Foundations and Notes &amp; Rationale later on the 12th. **How We Got Here** joined
-on the 12th as the twelfth, at two members — see *the two-member floor* below.
+on the 12th as the twelfth, at two members — see *the two-member floor* below. **Glimmer Wire**
+joined on 2026-09-04 as the fifteenth, on a **fifth axis** — see *sorting by issue* below.
 
 - **`collection-easter-eggs.html` is the one exception, and it inverts that invariant on purpose
   (2026-08-14).** It has **no section on the index** — that absence is the entire mechanism, since a
@@ -296,6 +301,41 @@ interdependence, belonging. A piece is in it because *something happened on a pa
   definition, No. 80 is the piece that argues it, and the No. 78 wrong turn is stated on the
   collection page's own face. **Keep all four of those attached wherever the word is explained.**
 
+**One sorts by issue, and that is a fifth axis added 2026-09-04** — the day the single-page
+*Glimmer Wire* was split up. **Glimmer Wire** is the weekly graded scan behind Glimmers, and a
+member is here because it is *edition N of a serial*.
+
+| Collection | Axis | Members |
+|------------|------|---------|
+| **Glimmer Wire** | **issue** — one page per weekly edition, dated rather than numbered | `glimmer-wire-2026-09-02`, `glimmer-wire-2026-09-04` (2) |
+
+- **The split is the whole reason the collection exists, and it was reader-driven.** It was one page
+  with editions stacked newest-first behind a single masthead, from 2026-09-02 to 2026-09-04. Two
+  editions in, Ryan said it was too much on one page — and the shape gets *worse* every week rather
+  than better, because a running log on one page grows without bound. `glimmer-wire.html` is gone,
+  301'd to the collection in `_redirects`. **The cost is real and is stated on the collection page's
+  own face:** an edition no longer sits next to the one before it, and this scan makes cross-edition
+  observations on purpose (the same held item declined twice; a lag distribution confirmed by a
+  second data point). Those are links now rather than a scroll.
+- **Editions are dated, never numbered** — the Glimmers reasoning exactly: the zine numbering says
+  *when* and is referenced by number across `changelog.html`, `FACTCHECK.md` and years of prose with
+  no redirects, so a serial inserting itself into that sequence would make the numbers mean two
+  things. An edition's address is its date.
+- **Anchor ids were kept verbatim across the split, suffixes and all.** Edition two's ids carry a
+  `-0904` suffix and edition one's do not, which looks like an inconsistency and is now load-bearing
+  history: they were unique-per-edition on the old single page, they are already unique per file, and
+  two external deep links point at edition one's. **Don't normalise them** — renaming buys tidiness
+  and costs live links. A Netlify redirect does not carry a fragment, which is why the two deep links
+  were rewritten in place rather than left to the 301.
+- **Prev/next on the editions is a *local* order, not the site's chain.** Glimmer Wire sits outside
+  the global reading chain, like every working paper; the editions link to each other so a reader can
+  walk the archive. The chain-walk one-liner below starts at `collection-start-here.html` and will
+  never reach them, which is correct rather than a break.
+- **A new edition owes:** its own page, a card on `collection-glimmer-wire.html`, a card in the
+  `#glimmer-wire` section of `index.html`, a `prev` on itself and a `next` on the edition before it,
+  a `sitemap.xml` entry, the badge, a `FACTCHECK.md` row and a `changelog.html` entry. And it owes
+  the hero counts on the collection page a re-derivation — they are prose, and no gate can read them.
+
 **Three are not sorted at all** — they are the site's own furniture, and the pieces in them were
 never candidates for a register. Don't try to fold these into either table:
 
@@ -303,7 +343,7 @@ never candidates for a register. Don't try to fold these into either table:
 |------------|-----------|---------|
 | **Start Here** | the ways in | `about`, `love-you-down-to-your-star-stuff`, `cosmic-connections`, No. 4 — three doors in, one out |
 | **Foundations** | what the rest presupposes | `manifesto`, `inclusion-safety-creed`, `six-principles-and-a-room`, `too-good-to-check`, `who-is-holding-the-candle`, `a-promise-not-a-finding`, `starlight`, No. 3, No. 18, `rainbow-serpents` (10 — re-derived 2026-09-02, when the page said *eight* in six places and had nine cards) |
-| **Notes & Rationale** | the working papers | `changelog`, `design`, `print-design`, `difference-first-frame`, `the-ladder-we-dont-print` (5) |
+| **Notes & Rationale** | the working papers | `changelog`, `design`, `print-design`, `difference-first-frame`, `the-ladder-we-dont-print` (5 — `glimmer-wire` was the sixth until 2026-09-04, when it left to become its own collection; the page says so on its face) |
 
 - **Notes & Rationale is the only collection page outside the prev/next chain**, because all five
   of its members are. Threading a changelog or a design system into a reading sequence would put a
@@ -367,18 +407,26 @@ never candidates for a register. Don't try to fold these into either table:
   everything else homework, and would become the one place the verify-everything standard could
   quietly relax. The fun is distributed; *Stars We Grew Up On* states this on the page.
 - The **prev/next chain follows collection order**: each collection page precedes its members, and
-  members run in ascending number within the collection. **146 pages** as of 2026-09-02,
-  `collection-start-here.html` → `shorthand-evolution.html`. **19 pages sit outside it, and all but
-  two are a decision:** `about.html` and `cosmic-connections.html`; **all of Notes &amp; Rationale** —
+  members run in ascending number within the collection. **148 pages** as of 2026-09-04,
+  `collection-start-here.html` → `shorthand-evolution.html`. **21 pages sit outside it, and all but
+  one are a decision:** `about.html` and `cosmic-connections.html`; **all of Notes &amp; Rationale** —
   `changelog.html`, `design.html`, `print-design.html`, `difference-first-frame.html`,
-  `the-ladder-we-dont-print.html` and `collection-notes.html`; and **all of Easter Eggs** — `collection-easter-eggs.html`,
+  `the-ladder-we-dont-print.html` and `collection-notes.html`; **all of Glimmer Wire** —
+  `collection-glimmer-wire.html`, `glimmer-wire-2026-09-02.html` and `glimmer-wire-2026-09-04.html`,
+  which link prev/next to *each other* and to nothing in the chain; and **all of Easter Eggs** — `collection-easter-eggs.html`,
   `out-of-order-zine.html`, `true-facts-zine.html`, `watching-animals-field-guide.html`,
   `hatchery.html`, `quillery.html` and `one-atom-of-justice-zine.html`, because a chain link would
   walk a reader into an egg by accident and stop it being one.
   (`index.html` and `search.html` are utility pages and were never in it, which makes
-  146 + 19 = 165, re-derived 2026-09-02.)
-  **Two are unexplained and want a ruling:** `bow-ery.html` and `glimmer-wire.html` are outside the
-  chain with no reason recorded here. They may be deliberate; nobody has written down which.
+  148 + 21 = 169, re-derived 2026-09-04 with the one-liner below.)
+  **One is unexplained and wants a ruling:** `bow-ery.html` is outside the chain with no reason
+  recorded here. It may be deliberate; nobody has written down which. (`glimmer-wire.html` was the
+  other, and was **ruled on 2026-09-04**: Glimmer Wire is off the chain on purpose, because
+  threading a weekly scan between two zines drops a maintenance document into the middle of a
+  reading. The page itself is gone — split into `collection-glimmer-wire.html` plus one page per
+  edition, all three off the chain, with the editions carrying prev/next to *each other* instead.
+  That local order through an archive is **not** a link in the site's chain, and the chain-walk
+  below will not reach it, which is correct.)
   **Don't trust that number — measure it**, and check `prev` and `next` agree in both directions;
   inserting a page means editing its two neighbours, and a one-sided edit leaves a chain that walks
   forward correctly and breaks going back:
@@ -596,8 +644,8 @@ tracking — the query never leaves the reader's browser.
   is what `inclusion-safety-creed.html` still correctly gets. **The floor keeps its job in 3b**,
   where it chooses between two ways of covering a page; it has no business gating a path that only
   ever adds.
-- **All fourteen collection pages carry `id`s on their `h2.section` headings** (46 added
-  2026-08-17; `collection-easter-eggs.html` already had them, and its id +
+- **All fifteen collection pages carry `id`s on their `h2.section` headings** (46 added
+  2026-08-17, and `collection-glimmer-wire.html` shipped 2026-09-04 with ids on all seven of its; `collection-easter-eggs.html` already had them, and its id +
   `scroll-margin-top: 5rem` pairing is the pattern). Without them a search result can only
   deep-link by `#:~:text=` guess. **A new collection page owes its headings ids** — nothing gates
   this, and twelve pages went without them.
