@@ -360,10 +360,25 @@ member is here because it is *edition N of a serial*.
   the global reading chain, like every working paper; the editions link to each other so a reader can
   walk the archive. The chain-walk one-liner below starts at `collection-start-here.html` and will
   never reach them, which is correct rather than a break.
-- **A new edition owes:** its own page, a card on `collection-glimmer-wire.html`, a card in the
-  `#glimmer-wire` section of `index.html`, a `prev` on itself and a `next` on the edition before it,
-  a `sitemap.xml` entry, the badge, a `FACTCHECK.md` row and a `changelog.html` entry. And it owes
-  the hero counts on the collection page a re-derivation — they are prose, and no gate can read them.
+- **A new edition is a NEW FILE, never an insertion.** `glimmer-wire-YYYY-MM-DD.html`, copied from
+  the most recent edition. **The old single page's source comment said new editions are *prepended*;
+  it was carried into both edition pages by the copy and was corrected on 2026-09-04** — if you meet
+  that instruction anywhere, it is stale. (One stray copy survives in `trigger-overshoot.html`,
+  which inherited this stylesheet wholesale and is not a serial at all.) The full debt:
+  - the page itself, with its own `<title>`, canonical, `meta`/`og:`/`twitter:` descriptions and
+    JSON-LD — **all four carry edition-specific text, and copying an edition leaves all four wrong**;
+  - a `.ss-nav-collection` badge pointing at `collection-glimmer-wire.html` **and** a card on that
+    page, in the same pass, or `check-markup.mjs` fails it in both directions;
+  - a card in the `#glimmer-wire` section of `index.html`;
+  - `prev` on the new edition and `next` on the one before it — **edit both files**, or the archive
+    walks forward and breaks going back;
+  - a `sitemap.xml` entry;
+  - a `FACTCHECK.md` row and a `changelog.html` entry;
+  - `node tools/build-search-index.mjs`, committed alongside;
+  - all eight gates at 0.
+  And it owes **the collection page's prose counts a re-derivation** — the `hero-count` (`N editions`),
+  the colophon line and the `meta`/`og:` figures. Those are prose; **no gate can read a number written
+  out in a sentence**, which is the standing lesson in this file arriving on a weekly schedule.
 
 **Three are not sorted at all** — they are the site's own furniture, and the pieces in them were
 never candidates for a register. Don't try to fold these into either table:
