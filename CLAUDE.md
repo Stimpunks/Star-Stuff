@@ -124,10 +124,12 @@ The central phrase compresses through registers, each with a use:
   set size, weight, tracking and color, so the swap is a tag change plus `margin: 0` and a
   `scroll-margin-top`. `tools/check-markup.mjs` guards the ids for duplicates; nothing guards their
   existence, so this is on you.
-- `index.html` carries a **`.masthead-toc` jump strip** — two `<ul>` tiers, fifteen pills: nine
-  top-level sections (Start Here, Foundations, Collections, **Glimmers**, **Glimmer Wire**, Field
-  Guides, Sound, Print, Notes — Glimmers joined the upper tier on 2026-08-31, Glimmer Wire on
-  2026-09-04, placed directly after it because it is the scan behind it) then
+- `index.html` carries a **`.masthead-toc` jump strip** — two `<ul>` tiers, sixteen pills
+  (derive it, don't trust this: `python3 -c` over the `<nav class="masthead-toc">` block): ten
+  top-level sections (Start Here, Foundations, Collections, **Glimmers**, **Glimmer Wire**,
+  **Triggers**, Field Guides, Sound, Print, Notes — Glimmers joined the upper tier on 2026-08-31,
+  Glimmer Wire on 2026-09-04 placed directly after it because it is the scan behind it, and
+  Triggers on 2026-09-04 after that) then
   the six that get their own grid section — the five register collections plus **How We Got Here**,
   which joined the lower tier rather than the upper one. Each is tinted with the same `--sec-accent`
   its heading and rule carry. **A new top-level section on the index needs a pill here**, and the strip is in
@@ -188,7 +190,7 @@ The central phrase compresses through registers, each with a use:
   spread, not just the total.
   Reasoning and the rejected shared-sheet option are in `DECISIONS.md`.
 
-### Collections (fifteen pages, in five kinds plus one exception)
+### Collections (sixteen pages, in five kinds plus one exception)
 
 Sixteen **collection** landing pages (`collection-*.html`). **Every section of `index.html` has
 one** — that is the invariant, so *a new index section owes a collection page*, and a new
