@@ -226,6 +226,37 @@
   </div>
 
   <!-- ================= 2026-09-04e (Triggers collection + Trigger No. 1) ================= -->
+  <section class="release" id="2026-09-05-dead-embeds" aria-labelledby="h-2026-09-05-dead-embeds">
+    <div class="release-date">2026 &middot; September 5 &middot; later</div>
+    <h2 class="release-title" id="h-2026-09-05-dead-embeds">Four dead embeds across the Sound shelf, and the rule that was supposed to catch them</h2>
+    <p class="release-note">Ryan opened <a href="we-were-punk-first-playlist.html">We Were Punk First</a> and two cards said <em>Video unavailable</em>. Both had passed the collection&rsquo;s own embed check on the day they shipped &mdash; and <strong>both still pass it.</strong> Sweeping the whole shelf for what a reader actually depends on found two more, on racks that had been live for weeks.</p>
+
+    <div class="entry entry--factcheck">
+      <div class="entry-head"><span class="tag tag--factcheck">Correction</span><span class="entry-name">oEmbed confirms identity, not existence &mdash; so rule three passed a dead video</span></div>
+      <div class="entry-body"><p><a href="collection-sound.html">Rule three</a> of the Sound collection says every embed is resolved through YouTube&rsquo;s oEmbed endpoint before it ships, which returns the real title and channel for a video ID. That catches the fault it was built for: a card quietly pointing at a different recording. <strong>It is structurally blind to this one.</strong></p>
+      <p>Both failing IDs return <strong>HTTP 200, with the correct title and the correct channel</strong>, today, while the player refuses to play them. The check was verifying that a video ID <em>is what we said it is</em> and never that it <em>still works</em>. All eight gates were equally blind, and correctly so &mdash; the markup is valid, the contrast is fine, the words are all indexed, the card is in the right place in the list. The rule has been corrected on the collection page rather than quietly patched.</p></div>
+    </div>
+
+    <div class="entry entry--updated">
+      <div class="entry-head"><span class="tag tag--updated">Fixed</span><span class="entry-name">Two more on racks that shipped weeks ago, found only because we swept all 269</span></div>
+      <div class="entry-body"><p>Fixing the two Ryan saw would have left the shelf in exactly the state that produced them. The sweep found <strong>one dead embed on <a href="dolly-playlist.html">the Dolly rack</a></strong> (Linda Ronstadt&rsquo;s 1975 <em>I Will Always Love You</em>) and <strong>one age-restricted video on <a href="bowie-playlist.html">the Bowie rack</a></strong> (<em>The Stars (Are Out Tonight)</em>) &mdash; and an age gate blocks embedded playback just as completely as deletion, while looking perfectly healthy from outside.</p>
+      <p>All four replaced, each with an official or institutional channel: <strong>KEXP</strong> for <em>We Were Punk First</em>, whose live take is the better card anyway &mdash; a demand read to a room is a different object from a demand on a record, and the note now says eighty seconds rather than ninety because that is how long the take actually is. The band&rsquo;s own music video for <em>No One Owns Anything and Death Is Real</em>, from the company that made the <em>Bad Indian</em> video already on the page. Linda Ronstadt&rsquo;s own channel. David Bowie&rsquo;s own channel, for the album track rather than the restricted video.</p></div>
+    </div>
+
+    <div class="entry entry--site">
+      <div class="entry-head"><span class="tag tag--site">Site</span><span class="entry-name">A ninth check that is deliberately not a ninth gate</span></div>
+      <div class="entry-body"><p><code>tools/check-embeds.mjs</code> asks each embed whether it still plays, and plays <em>embedded</em>. It reports age-restricted videos as failures, and skips <code>/embed/videoseries</code> playlist embeds, which have no single video to ask about.</p>
+      <p><strong>It is an on-demand audit, not a ship gate, and the file says why.</strong> All eight gates are hermetic &mdash; no network, no third-party state &mdash; and <code>check-sitemap.mjs</code> names never touching the network as a virtue. This one asks a question about somebody else&rsquo;s server, and the answer can turn red while nobody here touches anything. <em>A red gate you cannot fix by editing the repo is a gate people learn to push past</em>, which is how a gate stops being read at all. Promoting it is a decision somebody should make on purpose and write down.</p>
+      <p>Regression-tested against the actual broken state rather than synthetics: pointed at the four real IDs it names both the dead video and the age-restricted one, and stays silent on the playlist embed and on a working card.</p></div>
+    </div>
+
+    <div class="entry entry--site">
+      <div class="entry-head"><span class="tag tag--site">Method</span><span class="entry-name">Found by a reader, which is the part worth recording</span></div>
+      <div class="entry-body"><p>This site has eight automated gates and a rule written specifically about embeds, and the thing that found this was <strong>somebody opening the page and looking at it.</strong> The rule was not lazy &mdash; it was aimed at the failure mode we had already been bitten by, and a new one arrived from a direction it did not face.</p>
+      <p>Worth stating plainly because the shelf is 269 links to other people&rsquo;s servers, and <strong>that number only goes up.</strong> Every rack added is more surface that can rot silently, on somebody else&rsquo;s schedule, with every gate here green.</p></div>
+    </div>
+  </section>
+
   <section class="release" id="2026-09-05-indigenous-punk" aria-labelledby="h-2026-09-05-indigenous-punk">
     <div class="release-date">2026 &middot; September 5</div>
     <h2 class="release-title" id="h-2026-09-05-indigenous-punk">An eighth rack, on Indigenous punk and metal &mdash; and the shelf it sits on had three wrong numbers on it</h2>
