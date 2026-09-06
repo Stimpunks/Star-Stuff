@@ -233,7 +233,7 @@ that disclosure is the convention, and **How We Got Here duly carries it too**:
 
 | Collection | Axis | Members |
 |------------|------|---------|
-| **Field Guides** | **form** — a catalogue of same-shaped entries, none ranked | Field Guides 1–12, 14–19 — 18 guides, **218 entries; 231 cards** (derived 2026-08-27). FG 13 is *not* here: it is the egg, `watching-animals-field-guide.html`. The thirteen cards that are deliberately **not** entries are the five *turtles people made* (FG 10), the octopus settlements (FG 14), the rooms people build (FG 15), the egg-crack accounts (FG 16), the two questions the answer is not in on yet (FG 17), the palaeontologist who was not a specimen and the corrections nobody has published yet (FG 18), and the families people make (FG 19) |
+| **Field Guides** | **form** — a catalogue of same-shaped entries, none ranked | Field Guides 1–12, 14–23 — **22 guides, 278 entries; 297 cards** (re-derived 2026-09-06; this row said *18 guides, 218 entries, 231 cards* from 2026-08-27 and went stale by four guides while the collection page's own figures stayed current — the inverse of the usual direction, and the reason the derivation below matters more than the number). FG 13 is *not* here: it is the egg, `watching-animals-field-guide.html`. **Nineteen** cards are deliberately **not** entries; the ones recorded here are the five *turtles people made* (FG 10), the octopus settlements (FG 14), the rooms people build (FG 15), the egg-crack accounts (FG 16), the two questions the answer is not in on yet (FG 17), the palaeontologist who was not a specimen and the corrections nobody has published yet (FG 18), and the families people make (FG 19) |
 | **How We Got Here** | **form** — a Burke chain, one link per spread, joints marked | 38, 39, 40, 41, 42, 43, 50, 52, 56, 65, 74, 79, 84 (13 chains; **No. 84 is the collection’s first scroll zine**) |
 | **Print** | **medium** — paper | 9 broadsides + 2 that are not broadsides (a typographic specimen, and a blank sheet) |
 | **Sound** | **medium** — audio | 7 racks, **230 song cards** — and the collection page deliberately prints *no* distinct-song total, which is the right call: five Bowie songs sit in two racks on purpose, and the Dolly rack's covers section gives "Jolene" eight cards and "I Will Always Love You" five, so "distinct songs" has no honest single answer. Derived figures, if you need them: 226 distinct song+artist pairs, 193 distinct titles. **Don't put a songs number back on the page.** |
@@ -537,7 +537,7 @@ Two that need more than a grep, both learned the hard way:
 - **Field-guide entries are built from JS object literals**, so the source cannot be counted and the
   schema differs per guide. Count the **anchored records in `search-index.json`** (one per entry,
   which is what the rendered DOM produced) and subtract the cards a guide deliberately does not file
-  as entries — currently thirteen. That gives 231 cards / 218 entries.
+  as entries — **nineteen** as of 2026-09-06. That gives 297 cards / 278 entries. (Check the arithmetic against the collection page rather than against this line: cards − withheld = entries, and the withheld figure is the half that rots, because a new guide can add a withheld section without anyone updating a count.)
   **The anchors are slugs, not `#entry-`.** A guide's entry records are anchored `#hydra`,
   `#cassiopea`, `#sperm-whale` and so on, so counting on an `#entry-` prefix returns **zero** and
   looks exactly like a guide with no entries. Count *all* records whose page is a `*-field-guide.html`,
