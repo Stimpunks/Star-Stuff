@@ -222,7 +222,7 @@ joined on 2026-09-04 as the fifteenth, on a **fifth axis** — see *sorting by i
 
 | Collection | Register | Members (zine numbers) |
 |------------|----------|------------------------|
-| **Star Stuff** | One settled, checkable fact, followed honestly, already contains the belonging claim | 1, 2, 6, 7, 8, 9, 10, 17, 19, 20, 21, 23, 24, 25, 44, 45, 46, 48, 51, 53, 54, 55, 57, 60, 61, 62, 63, 69, 70, 71, … 87 (**39** as of 2026-09-04 — the largest collection by some way; the list above is stale beyond No. 71, so **derive it**: `grep -c '<a class="card"' collection-star-stuff.html`) |
+| **Star Stuff** | One settled, checkable fact, followed honestly, already contains the belonging claim | 1, 2, 6, 7, 8, 9, 10, 17, 19, 20, 21, 23, 24, 25, 44, 45, 46, 48, 51, 53, 54, 55, 57, 60, 61, 62, 63, 69, 70, 71, … 89 (**40** as of 2026-09-06 — the largest collection by some way; the list above is stale beyond No. 71, so **derive it**: `grep -c '<a class="card"' collection-star-stuff.html`) |
 | **Star Gazing** | Experimental, neuroqueer, wonder-forward — possibility, not proof | 11, 22, 26, 28, 29, 30, 68 |
 | **More Than Human** | Umwelt, multispecies, ethodiversity; de-anthropocentrized | 5, 14, 15, 16, 27, 58, 59, 72 (8) |
 | **Kin** | Citation-dense natural history with a neurodivergence moral | 31, 32, 33, 34, 35, 36, 64 (7) |
@@ -457,7 +457,7 @@ never candidates for a register. Don't try to fold these into either table:
   everything else homework, and would become the one place the verify-everything standard could
   quietly relax. The fun is distributed; *Stars We Grew Up On* states this on the page.
 - The **prev/next chain follows collection order**: each collection page precedes its members, and
-  members run in ascending number within the collection. **151 pages** as of 2026-09-04,
+  members run in ascending number within the collection. **157 pages** as of 2026-09-06,
   `collection-start-here.html` → `trigger-overshoot.html`. **21 pages sit outside it, and all but
   one are a decision:** `about.html` and `cosmic-connections.html`; **all of Notes &amp; Rationale** —
   `changelog.html`, `design.html`, `print-design.html`, `difference-first-frame.html`,
@@ -512,8 +512,10 @@ guides". **Grep for a count wherever it is quoted, not only where it is owned.**
 **And two of the derivations in this section were themselves wrong**, which is worse than a stale
 number because it reproduces itself. The prescribed `grep -l "no standard"` returns **13** and the
 answer is **12**: `unfinished-animals-field-guide.html` matches while explicitly declining the formula
-(*"This one cannot"*). And the `aria-hidden` check on cover numerals reports 70 of 71 because No. 68
-puts the attribute on the parent `.cover-corner`, which is correct and inherits. **A derivation that
+(*"This one cannot"*). And the `aria-hidden` check on cover numerals under-reports because some covers
+put the attribute on the parent `.cover-corner`, which is correct and inherits — **nine of them as
+of 2026-09-06, not the one this file claimed**, so the shortfall grew for two months while the note
+next to it still said No. 68 was the only case. **A derivation that
 returns a number nobody reads back is not a derivation — read the hits.**
 
 **Why they rot:** the eight gates measure colour, tag structure, position, paper, sitemap, index
@@ -902,11 +904,14 @@ that also makes the text unreadable.
     not decoration, so the claim has to be true in the markup before the tool will honour it. All
     40 numerals that existed then were marked in the same pass, which also stopped screen readers
     announcing a bare "30" before the title. **Every cover added since has carried it** — the count
-    is 71 now, and the day one ships without `aria-hidden` the exemption stops applying to it and
+    is 88 now, and the day one ships without `aria-hidden` the exemption stops applying to it and
     `check-contrast.mjs` will fail the page rather than wave it through. **Check the parent, not just
     the numeral:** `proportioned-to-the-groove-zine.html` (No. 68) puts `aria-hidden` on the wrapping
-    `.cover-corner` instead, which covers the numeral by inheritance and is correct — so
-    `grep -c 'cover-corner-num" aria-hidden'` reports 70 of 71 and the missing one is a false alarm.
+    `.cover-corner` instead, which covers the numeral by inheritance and is correct — and it is **not
+    alone any more: nine covers do it that way** as of 2026-09-06, so
+    `grep -c 'cover-corner-num" aria-hidden'` reports **79 of 88** and all nine misses are false
+    alarms. Verify each one against the parent before treating any of them as a defect; the loop
+    that does it is four lines and is the only honest form of this check.
 
 ## Markup checking (`tools/check-markup.mjs`)
 
