@@ -1,0 +1,522 @@
+#!/usr/bin/env node
+/**
+ * build-whats-new.mjs — generate whats-new.html and feed.xml.
+ *
+ * Why this is generated and not hand-written
+ * ------------------------------------------
+ * CLAUDE.md's longest section is about counts that go stale because no gate can
+ * read a number written out in prose. A hand-maintained "What's New" page is that
+ * fault with a schedule attached: it is wrong the first time somebody ships a
+ * piece and forgets the second edit. So every fact on the page — the list, the
+ * dates, the totals — is derived at build time from two sources that cannot drift
+ * from the site:
+ *
+ *   1. The collection pages' own `<a class="card">` blocks, for title and tagline.
+ *      This is the same map `check-markup.mjs` builds to verify badges, so the
+ *      page and the gate agree by construction. Every card carries a
+ *      `.card-title` and a `.card-tagline`; both were verified present on all
+ *      157 carded pages before this was written.
+ *   2. `git log --diff-filter=A`, for the date the URL first existed.
+ *
+ * Neither is a list kept in this file, so there is no second answer free to rot.
+ *
+ * Easter Eggs are excluded, and that is the point of them
+ * -------------------------------------------------------
+ * `collection-easter-eggs.html` has no section on the index because a listed egg
+ * is not off the path. A What's New page is a listing and a feed is a listing
+ * pushed to people, so eggs appear in neither. They stay in `sitemap.xml`, in
+ * `search-index.json` and in every gate exactly as before — findable, never
+ * announced.
+ *
+ * Usage
+ *   node tools/build-whats-new.mjs           # write whats-new.html and feed.xml
+ *   node tools/build-whats-new.mjs --check   # exit non-zero if either is stale
+ */
+
+import fs from 'node:fs';
+import path from 'node:path';
+import { execFileSync } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
+
+const REPO = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const SITE = 'https://starstuff.earth/';
+const CHECK = process.argv.includes('--check');
+
+const COLLECTION_RE = /^collection-[a-z0-9-]+\.html$/;
+const EGGS = 'collection-easter-eggs.html';
+
+/* Publication dates that git cannot tell the truth about. Deliberately an
+   explicit, short list with a reason per line, for the same reason
+   check-contrast.mjs keeps its watermark exemption explicit and
+   check-classes.mjs keeps its HOOKS list by hand: an override should be a
+   decision somebody wrote down, not a mechanism to fall into. The count is
+   printed on its own line so a list that grows is a list somebody can question. */
+const DATE_OVERRIDES = {
+  // Glimmer Wire was one page from 2026-09-02 until the 2026-09-04 split, so the
+  // first edition's own file was created on the 4th. Its address is its date and
+  // the edition was published on the 2nd; git would file it a day and a half late.
+  'glimmer-wire-2026-09-02.html': '2026-09-02T12:00:00-05:00',
+};
+
+/* ── text handling ───────────────────────────────────────────────────────────
+   Card text is HTML: it carries named entities and, in taglines, <em>. An RSS
+   title cannot carry `&mdash;` — that is not one of XML's five predefined
+   entities, and a feed reader is entitled to reject the document over it. So
+   everything is decoded to real characters first and re-escaped per output. */
+const ENTS = {
+  amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", nbsp: ' ',
+  mdash: '—', ndash: '–', middot: '·', deg: '°',
+  ldquo: '“', rdquo: '”', lsquo: '‘', rsquo: '’',
+  hellip: '…', times: '×', eacute: 'é', uuml: 'ü',
+};
+
+function decodeEnts(s) {
+  return s.replace(/&(#x?[0-9a-fA-F]+|[a-zA-Z][a-zA-Z0-9]*);/g, (m, body) => {
+    if (body[0] === '#') {
+      const cp = body[1] === 'x' || body[1] === 'X'
+        ? parseInt(body.slice(2), 16)
+        : parseInt(body.slice(1), 10);
+      return Number.isFinite(cp) ? String.fromCodePoint(cp) : m;
+    }
+    return body in ENTS ? ENTS[body] : m;
+  });
+}
+
+const stripTags = (s) => s.replace(/<[^>]+>/g, '');
+const collapse  = (s) => s.replace(/\s+/g, ' ').trim();
+
+/* HTML escape for text going back into the generated page. The page keeps <em>,
+   so tagline markup is re-inserted after escaping rather than escaped away. */
+const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+/* XML needs only these three in element content; quotes matter in attributes. */
+const xesc = (s) => s
+  .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+  .replace(/"/g, '&quot;');
+
+/* Keep <em> as real emphasis on the page: escape the text, then unescape just
+   the em tags. Nothing else is allowed through, so a stray tag in a card cannot
+   reach the generated page as markup. */
+const withEm = (s) => esc(s).replace(/&lt;(\/?)em&gt;/g, '<$1em>');
+
+/* ── read the cards ──────────────────────────────────────────────────────── */
+function field(block, cls) {
+  const m = block.match(new RegExp(`class="${cls}"[^>]*>([\\s\\S]*?)</(?:div|p)>`));
+  return m ? collapse(m[1]) : '';
+}
+
+const collections = fs.readdirSync(REPO)
+  .filter((f) => COLLECTION_RE.test(f))
+  .sort();
+
+const records = [];
+const seen = new Map();          // href → first collection that carded it
+let eggsSkipped = 0;
+
+for (const cf of collections) {
+  const src = fs.readFileSync(path.join(REPO, cf), 'utf8');
+  const titleTag = src.match(/<title>([\s\S]*?)<\/title>/);
+  const colName = titleTag
+    ? collapse(decodeEnts(titleTag[1]).split('—')[0])
+    : cf.replace(/^collection-|\.html$/g, '');
+
+  for (const m of src.matchAll(/<a class="card" href="([^"#]+)"[\s\S]*?<\/a>/g)) {
+    const href = m[1];
+    if (cf === EGGS) { eggsSkipped++; continue; }
+    if (seen.has(href)) continue;   // a page carded twice is one publication
+    seen.set(href, cf);
+
+    const title   = decodeEnts(stripTags(field(m[0], 'card-title')));
+    const tagline = decodeEnts(field(m[0], 'card-tagline'));   // keeps <em>
+    const number  = decodeEnts(stripTags(field(m[0], 'card-number')));
+
+    if (!title || !tagline) {
+      console.error(`  FAIL  ${href}: card on ${cf} is missing a ${title ? 'tagline' : 'title'}`);
+      process.exitCode = 1;
+      continue;
+    }
+    records.push({ href, title, tagline, number, collection: colName, collectionFile: cf });
+  }
+}
+
+/* ── date each record ────────────────────────────────────────────────────── */
+function addedAt(file) {
+  if (DATE_OVERRIDES[file]) return DATE_OVERRIDES[file];
+  const out = execFileSync(
+    'git',
+    ['log', '--diff-filter=A', '--reverse', '--format=%aI', '--', file],
+    { cwd: REPO, encoding: 'utf8' },
+  );
+  return out.split('\n')[0].trim();
+}
+
+for (const r of records) {
+  r.iso = addedAt(r.href);
+  if (!r.iso) {
+    console.error(`  FAIL  ${r.href}: no git add-date.`);
+    console.error('        A page\'s publication date is the commit that added it, so an');
+    console.error('        uncommitted page has no date. Commit the piece first, then run');
+    console.error('        this and commit whats-new.html and feed.xml alongside it.');
+    process.exitCode = 1;
+  }
+  r.day = (r.iso || '').slice(0, 10);
+}
+if (process.exitCode) process.exit(1);
+
+/* Newest first. Ties inside one commit keep collection-page order, which is the
+   only ordering that exists for the eighteen files of the launch import. */
+records.sort((a, b) => (a.iso < b.iso ? 1 : a.iso > b.iso ? -1 : 0));
+
+/* ── group by day ────────────────────────────────────────────────────────── */
+const days = [];
+for (const r of records) {
+  if (!days.length || days[days.length - 1].day !== r.day) days.push({ day: r.day, items: [] });
+  days[days.length - 1].items.push(r);
+}
+
+const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June',
+  'July', 'August', 'September', 'October', 'November', 'December'];
+function longDate(day) {
+  const [y, m, d] = day.split('-').map(Number);
+  return `${d} ${MONTHS[m - 1]} ${y}`;
+}
+
+const DOW = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+function rfc822(iso) {
+  const dt = new Date(iso);
+  const p = (n) => String(n).padStart(2, '0');
+  const off = -dt.getTimezoneOffset();
+  const sign = off < 0 ? '-' : '+';
+  const oh = p(Math.floor(Math.abs(off) / 60));
+  const om = p(Math.abs(off) % 60);
+  return `${DOW[dt.getDay()]}, ${p(dt.getDate())} ${MONTHS[dt.getMonth()].slice(0, 3)} `
+       + `${dt.getFullYear()} ${p(dt.getHours())}:${p(dt.getMinutes())}:${p(dt.getSeconds())} `
+       + `${sign}${oh}${om}`;
+}
+
+/* ── the accent a collection carries, so the list reads as the site does ──── */
+const ACCENTS = {
+  'collection-star-stuff.html': '#fbbf24',
+  'collection-star-gazing.html': '#a78bfa',
+  'collection-more-than-human.html': '#4ade80',
+  'collection-kin.html': '#22d3ee',
+  'collection-stars-we-grew-up-on.html': '#f472b6',
+  'collection-how-we-got-here.html': '#22d3ee',
+  'collection-field-guides.html': '#4ade80',
+  'collection-glimmers.html': '#fbbf24',
+  'collection-glimmer-wire.html': '#22d3ee',
+  'collection-triggers.html': '#f472b6',
+  'collection-print.html': '#f472b6',
+  'collection-sound.html': '#a78bfa',
+  'collection-start-here.html': '#fbbf24',
+  'collection-foundations.html': '#a78bfa',
+  'collection-notes.html': '#4ade80',
+};
+const accent = (f) => ACCENTS[f] || '#a78bfa';
+
+/* ── the page ────────────────────────────────────────────────────────────── */
+const NEWEST = records[0];
+const DESC = `Everything published on Star Stuff, newest first — ${records.length} zines, `
+  + 'field guides, broadsides, racks and working papers, each with the line it '
+  + 'leads with. Subscribe by RSS, or read the changelog for the reasoning.';
+
+function buildHtml() {
+  const listing = days.map((d) => {
+    const items = d.items.map((r) => `
+        <li class="entry" style="--entry-accent:${accent(r.collectionFile)};">
+          <a class="entry-title" href="${xesc(r.href)}">${esc(r.title)}</a>
+          <p class="entry-tagline">${withEm(r.tagline)}</p>
+          <p class="entry-meta">${esc(r.number)} <span aria-hidden="true">·</span> <a class="entry-collection" href="${xesc(r.collectionFile)}">${esc(r.collection)}</a></p>
+        </li>`).join('');
+    return `
+      <section class="day">
+        <h2 class="day-date" id="d-${d.day}"><time datetime="${d.day}">${longDate(d.day)}</time></h2>
+        <ul class="entries">${items}
+        </ul>
+      </section>`;
+  }).join('');
+
+  /* The whole listing goes inside one container that build-search-index.mjs
+     strips as chrome — the date headings too, not just the cards. Wrapping only
+     the <ul>s left 33 date strings outside every record and the page reported
+     62% coverage, which is the search index correctly saying "you have prose here
+     that nothing indexes". The dates are part of the duplicate presentation, so
+     the honest fix is to exclude the whole listing rather than to index a heading
+     whose entire body has been removed. */
+  const listingBlock = `\n  <div class="whats-new-list">${listing}\n  </div>`;
+
+  const jsonld = JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: "What's New — Star Stuff",
+    description: DESC,
+    url: `${SITE}whats-new.html`,
+    isPartOf: { '@type': 'WebSite', name: 'Star Stuff', url: SITE },
+    publisher: [
+      { '@type': 'Organization', name: 'Stimpunks Foundation', url: 'https://stimpunks.org/', logo: { '@type': 'ImageObject', url: `${SITE}og-card.jpg` } },
+      { '@type': 'Organization', name: 'More Realms', url: 'https://morerealms.com/' },
+    ],
+    mainEntity: {
+      '@type': 'ItemList',
+      numberOfItems: records.length,
+      itemListElement: records.slice(0, 20).map((r, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        url: SITE + r.href,
+        name: r.title,
+      })),
+    },
+  });
+
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0a0a14">
+<link rel="canonical" href="${SITE}whats-new.html">
+<link rel="alternate" type="application/rss+xml" title="Star Stuff — What's New" href="feed.xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta name="description" content="${xesc(DESC)}">
+<!-- Open Graph / link unfurl -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Star Stuff · Stimpunks Foundation × More Realms">
+<meta property="og:url" content="${SITE}whats-new.html">
+<meta property="og:title" content="What's New — Star Stuff">
+<meta property="og:description" content="${xesc(DESC)}">
+<meta property="og:image" content="${SITE}og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A rainbow-hued cosmic image — we are all made of star stuff.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="What's New — Star Stuff">
+<meta name="twitter:description" content="${xesc(DESC)}">
+<meta name="twitter:image" content="${SITE}og-card.jpg">
+<title>What's New — Star Stuff — Stimpunks × More Realms</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="starstuff.css">
+<style>
+  :root {
+    --void:  var(--sp-void-deep);
+    --card:  var(--sp-card);
+    --violet:var(--sp-purple);
+    --pink:  var(--sp-pink);
+    --gold:  var(--sp-gold);
+    --cyan:  var(--sp-cyan);
+    --green: var(--sp-green);
+    /* One knob for this page's tint. Green keeps What's New distinct from
+       Search (violet), About (gold) and Changelog (cyan). */
+    --accent: var(--sp-green);
+    --star-white: var(--sp-white-soft);
+    --stardust:   var(--sp-secondary-soft);
+    --dim:   var(--sp-dim);
+    --dim2:  var(--sp-dim-soft);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--void);
+    font-family: 'Atkinson Hyperlegible Next', system-ui, sans-serif;
+    color: var(--star-white);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 8% 12%, rgba(251,191,36,0.85) 0%, transparent 100%),
+      radial-gradient(1px 1px at 22% 38%, rgba(244,244,251,0.6) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 44% 9%, rgba(244,114,182,0.7) 0%, transparent 100%),
+      radial-gradient(1px 1px at 61% 68%, rgba(34,211,238,0.6) 0%, transparent 100%),
+      radial-gradient(2px 2px at 74% 28%, rgba(167,139,250,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 84% 54%, rgba(74,222,128,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 91% 79%, rgba(244,244,251,0.7) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 4% 58%, rgba(251,191,36,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 34% 84%, rgba(244,244,251,0.6) 0%, transparent 100%),
+      radial-gradient(2px 2px at 19% 88%, rgba(167,139,250,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 69% 4%, rgba(244,244,251,0.8) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 30% 20%, rgba(74,222,128,0.5) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .doc-shell { position: relative; z-index: 1; max-width: 760px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+
+  .spectrum-line { height: 2px; border: none; border-radius: 2px; background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); }
+
+  .nav-brand { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--dim); margin: 1.6rem 0 2.5rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(167,139,250,0.2); }
+
+  .hero { margin-bottom: 2rem; }
+  .hero-eyebrow { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.36em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.3rem; }
+  .hero-title { font-weight: 700; font-size: clamp(2.1rem, 6vw, 3.4rem); line-height: 1.05; letter-spacing: -0.02em; color: var(--star-white); margin-bottom: 1.1rem; }
+  .hero-title em { font-style: normal; background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .hero-sub { font-size: 1.02rem; line-height: 1.6; color: var(--stardust); max-width: 38rem; }
+  .hero-sub + .hero-sub { margin-top: 0.9rem; }
+  .hero-sub a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(74,222,128,0.4); }
+  .hero-sub a:hover { color: var(--star-white); border-bottom-color: var(--star-white); }
+  .hero-rule { width: 200px; max-width: 55%; margin-top: 1.6rem; }
+
+  /* ── subscribe strip ── */
+  .subscribe { display: flex; flex-wrap: wrap; align-items: center; gap: 0.7rem 1rem; margin: 2rem 0 0.5rem; padding: 1rem 1.15rem; background: var(--card); border: 1px solid rgba(74,222,128,0.28); border-left: 3px solid var(--accent); border-radius: 0 6px 6px 0; }
+  .subscribe-label { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); }
+  .subscribe-text { font-size: 0.94rem; line-height: 1.65; color: var(--stardust); flex: 1 1 16rem; min-width: 0; }
+  .subscribe-link { display: inline-block; font-family: 'Space Mono', monospace; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); padding: 0.45rem 1.05rem; border: 1px solid rgba(74,222,128,0.5); border-radius: 999px; text-decoration: none; white-space: nowrap; }
+  .subscribe-link:hover, .subscribe-link:focus-visible { background: rgba(74,222,128,0.14); color: var(--star-white); border-color: var(--accent); }
+
+  /* ── the listing ── */
+  .day { margin-top: 2.6rem; }
+  .day-date { font-family: 'Space Mono', monospace; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.28em; text-transform: uppercase; color: var(--accent); margin: 0 0 1rem; padding-bottom: 0.55rem; border-bottom: 1px solid rgba(74,222,128,0.22); scroll-margin-top: 2rem; }
+
+  .entries { list-style: none; margin: 0; padding: 0; }
+  .entry { margin: 0 0 1.35rem; padding-left: 0.95rem; border-left: 3px solid var(--entry-accent, var(--accent)); }
+  .entry:last-child { margin-bottom: 0; }
+  .entry-title { display: block; font-size: 1.08rem; font-weight: 700; line-height: 1.35; color: var(--star-white); text-decoration: none; border-bottom: 1px solid transparent; }
+  .entry-title:hover, .entry-title:focus-visible { color: var(--entry-accent, var(--accent)); }
+  .entry-tagline { margin-top: 0.3rem; font-size: 0.96rem; line-height: 1.65; color: var(--stardust); }
+  .entry-tagline em { font-style: italic; color: var(--star-white); }
+  .entry-meta { margin-top: 0.35rem; font-family: 'Space Mono', monospace; font-size: 0.56rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dim); }
+  .entry-collection { color: var(--entry-accent, var(--accent)); text-decoration: none; border-bottom: 1px solid transparent; }
+  .entry-collection:hover, .entry-collection:focus-visible { border-bottom-color: currentColor; }
+
+  .colophon-footer { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--dim); line-height: 2.2; margin-top: 3rem; padding-top: 1.4rem; border-top: 1px solid rgba(167,139,250,0.14); }
+  .colophon-footer a { color: var(--stardust); text-decoration: none; border-bottom: 1px solid rgba(167,139,250,0.2); }
+  .colophon-footer a:hover { color: var(--star-white); }
+
+  @media (max-width: 600px) {
+    .doc-shell { padding: 2rem 1.3rem 3rem; }
+    .subscribe { flex-direction: column; align-items: flex-start; }
+  }
+
+  @media print {
+    body::before { display: none; }
+    .doc-shell { max-width: none; padding: 0; }
+    .subscribe { border-color: #999999; background: none; }
+    .entry { break-inside: avoid; }
+  }
+</style>
+<script type="application/ld+json">${jsonld}</script>
+</head>
+<body>
+
+<div class="doc-shell">
+
+  <nav class="ss-nav" style="--nav-accent:#4ade80;" aria-label="Star Stuff collection">
+    <span class="ss-nav-home-group">
+      <a class="ss-nav-home" href="index.html"><span class="ss-star" aria-hidden="true">★</span> stuff</a>
+      <a class="ss-nav-about" href="about.html">about</a>
+      <a class="ss-nav-search" href="search.html">search</a>
+    </span>
+  </nav>
+<main>
+
+  <div class="nav-brand"><a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks</a> × <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a> · What's New</div>
+
+  <header class="hero">
+    <div class="hero-eyebrow"><a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks Foundation</a> × <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a> · Newest First</div>
+    <h1 class="hero-title">What&rsquo;s <em>New</em></h1>
+    <p class="hero-sub">Everything published here, newest first &mdash; ${records.length} pieces across ${collections.length - 1} collections, each with the line it leads with. Nothing else: no reasoning, no corrections, no method. If you want those, the <a href="changelog.html">changelog</a> is where we publish our own errors.</p>
+    <p class="hero-sub">This page is generated from the collection pages and from git, so the list and the dates cannot drift from the site. A date is the day the piece first went live at its own address.</p>
+    <hr class="spectrum-line hero-rule">
+  </header>
+
+  <div class="subscribe">
+    <span class="subscribe-label">Subscribe</span>
+    <p class="subscribe-text">New pieces arrive by RSS, so you don&rsquo;t have to come back and check. No account, no email, no tracking &mdash; your reader fetches a file.</p>
+    <a class="subscribe-link" href="feed.xml">RSS feed</a>
+  </div>
+${listingBlock}
+
+  <div class="colophon-footer">
+    <a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks Foundation</a> × <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a> · <a href="https://starstuff.earth">starstuff.earth</a> · <a href="about.html">About</a> · <a href="search.html">Search</a> · <a href="changelog.html">Changelog</a> · <a href="feed.xml">RSS</a><br>
+    Generated by <code>tools/build-whats-new.mjs</code> · Print freely · Share freely · <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> · L★S
+  </div>
+
+</div><!-- /doc-shell --></main>
+
+</body>
+</html>
+`;
+}
+
+/* ── the feed ────────────────────────────────────────────────────────────── */
+const FEED_ITEMS = 50;
+
+function buildFeed() {
+  const items = records.slice(0, FEED_ITEMS).map((r) => {
+    /* The description is escaped HTML, which is what RSS 2.0 expects and what
+       every reader renders. <em> survives; nothing else is let through. The
+       designation gets its own paragraph rather than being glued to the tagline
+       with a separator: several card numbers already contain a middle dot
+       ("Rack · One scene"), so a third one would read as punctuation noise. */
+    const body = `<p><em>${esc(r.number)} — ${esc(r.collection)}</em></p>`
+               + `<p>${withEm(r.tagline)}</p>`;
+    return `    <item>
+      <title>${xesc(r.title)}</title>
+      <link>${SITE}${xesc(r.href)}</link>
+      <guid isPermaLink="true">${SITE}${xesc(r.href)}</guid>
+      <pubDate>${rfc822(r.iso)}</pubDate>
+      <category>${xesc(r.collection)}</category>
+      <description>${xesc(body)}</description>
+    </item>`;
+  }).join('\n');
+
+  /* lastBuildDate is the newest item's date, not the clock. A feed that changed
+     on every run would make --check report STALE seconds after a clean write,
+     which is the fault build-search-index.mjs already hit once for another reason. */
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Star Stuff</title>
+    <link>${SITE}</link>
+    <atom:link href="${SITE}feed.xml" rel="self" type="application/rss+xml"/>
+    <description>${xesc(DESC)}</description>
+    <language>en</language>
+    <copyright>CC BY-SA 4.0 · Stimpunks Foundation × More Realms</copyright>
+    <lastBuildDate>${rfc822(NEWEST.iso)}</lastBuildDate>
+    <image>
+      <url>${SITE}og-card.jpg</url>
+      <title>Star Stuff</title>
+      <link>${SITE}</link>
+    </image>
+${items}
+  </channel>
+</rss>
+`;
+}
+
+/* ── write or check ──────────────────────────────────────────────────────── */
+const outputs = [
+  ['whats-new.html', buildHtml()],
+  ['feed.xml', buildFeed()],
+];
+
+let stale = 0;
+for (const [name, next] of outputs) {
+  const full = path.join(REPO, name);
+  const prev = fs.existsSync(full) ? fs.readFileSync(full, 'utf8') : null;
+  const same = prev === next;
+  if (CHECK) {
+    console.log(`  ${name.padEnd(18)} ${same ? 'ok' : 'STALE'}`);
+    if (!same) stale++;
+  } else {
+    if (!same) fs.writeFileSync(full, next, 'utf8');
+    console.log(`  ${name.padEnd(18)} ${same ? 'unchanged' : 'written'}  ${next.length.toLocaleString()} chars`);
+  }
+}
+
+console.log(`\n  ${records.length} pieces · ${days.length} days · ${collections.length - 1} collections`
+  + ` · newest ${records[0].day} · oldest ${records[records.length - 1].day}`);
+console.log(`  ${FEED_ITEMS} most recent in the feed`);
+console.log(`  ${eggsSkipped} Easter Eggs excluded by decision (a listed egg is not off the path)`);
+console.log(`  ${Object.keys(DATE_OVERRIDES).length} date override${Object.keys(DATE_OVERRIDES).length === 1 ? '' : 's'}`);
+
+if (CHECK && stale) {
+  console.log(`\n  ${stale} file(s) stale — run: node tools/build-whats-new.mjs`);
+  process.exit(1);
+}

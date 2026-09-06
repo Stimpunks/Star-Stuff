@@ -126,6 +126,13 @@ const HOOKS = new Set([
   'spread', 'spread-footer', 'spread-footer-left', 'spread-footer-right',
   // build-search-index.mjs chunk selectors and CHROME_SEL strips.
   'card', 'card-wrap', 'entry', 'scale', 'lp-card', 'lp-row',
+  /* The wrapper around whats-new.html's generated listing. It carries no style of
+     its own — the .day sections and .entry items inside it do — and exists purely
+     so build-search-index.mjs can strip the whole listing as chrome: every title
+     and tagline in it is already indexed on the card it was lifted from. Giving it
+     a decorative rule to satisfy this check would be inventing a style to justify
+     a hook, which is the wrong way round. */
+  'whats-new-list',
   /* Structural repeating-unit marker on the racks, like .lp-card. Its only rule
      is `.lyss-playlist > .lp-head:first-child .lp-section`, so the class is
      targeted on the first section and carried on the rest for consistency.

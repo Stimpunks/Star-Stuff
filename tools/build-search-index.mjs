@@ -149,6 +149,15 @@ const EXTRACT = String.raw`(() => {
        in a second record that is nothing but a list of the other eleven — the
        same duplicate-presentation problem as .lp-row above. */
     '.masthead-toc',
+    /* whats-new.html is a generated listing: every title and tagline in it is
+       lifted verbatim from a .card on a collection page, where it is already
+       indexed as part of that card's record. Indexing the listing too would put
+       all 150 taglines in a second copy — the .lp-row problem at scale, and it
+       would push whats-new.html to the top of results for text that belongs to
+       the piece itself. The page's own prose (hero, subscribe note) still indexes.
+       The container class is deliberately page-specific rather than a generic
+       ".entries", so this cannot start stripping a future page by accident. */
+    '.whats-new-list',
   ].join(',');
 
   /* Blocks that sit flush against each other in the source concatenate under
@@ -232,6 +241,16 @@ const EXTRACT = String.raw`(() => {
   const seen = new Set();
   const kept = [];
   for (const c of chunks) {
+    /* Skip a chunk sitting inside chrome. textOf() strips CHROME_SEL from its
+       own clone, which handles a chrome node *inside* a chunk — but not a real
+       chunk element *inside* a chrome container, because the match is then an
+       ancestor rather than a descendant. whats-new.html is the case that found
+       this: its generated listing is one stripped container holding 33 <section>
+       elements, so the coverage denominator excluded the listing while the
+       chunker happily indexed all 33 of its sections — 34 records at 3000%
+       coverage. segmentByHeading() has always removed CHROME_SEL from its clone;
+       this gives step 3 the same rule. */
+    if (c.closest(CHROME_SEL)) continue;
     /* Skip a chunk whose text is already covered by an ancestor chunk. */
     if (chunks.some((o) => o !== c && o.contains(c))) continue;
     const t = textOf(c);

@@ -225,9 +225,42 @@
 
   </div>
 
+  <!-- ================= 2026-09-05f (What's New page + RSS feed) ================= -->
+  <section class="release" id="2026-09-05-whats-new" aria-labelledby="h-2026-09-05-whats-new">
+    <div class="release-date">2026 &middot; September 5 &middot; latest</div>
+    <h2 class="release-title" id="h-2026-09-05-whats-new">A What&rsquo;s New page and an RSS feed, both generated, because a hand-kept list of 150 pieces is a stale list</h2>
+    <p class="release-note">This page tells you <em>why</em> something changed, at length, and that is what it is for. It is a poor answer to <em>what came out this week</em>. <a href="whats-new.html">What&rsquo;s New</a> is that answer: every piece newest first, title and the line it leads with, nothing else. <a href="feed.xml">The RSS feed</a> is the same list, so you don&rsquo;t have to come back and check.</p>
+
+    <div class="entry entry--site">
+      <div class="entry-head"><span class="tag tag--site">Site</span><span class="entry-name">Both files are generated, and that is the whole design</span></div>
+      <div class="entry-body"><p>The longest standing lesson on this site is that a number written out in prose goes stale and <strong>no gate can read it</strong> &mdash; one sweep found roughly two dozen wrong counts across seven pages. A hand-maintained &ldquo;what&rsquo;s new&rdquo; list is that fault with a publishing schedule attached: wrong the first time somebody ships a piece and edits one of two places.</p>
+      <p>So <code>tools/build-whats-new.mjs</code> derives every fact from two sources that cannot drift from the site. Titles and taglines are lifted from the collection pages&rsquo; own <code>.card</code> blocks &mdash; the same map <code>check-markup.mjs</code> builds to verify badges, so the page and the gate agree by construction. Dates come from <code>git log --diff-filter=A</code>: the day a piece first went live at its own address. Neither is a list kept inside the tool, so there is no second answer free to rot. <code>--check</code> exits non-zero when either output is stale, matching the convention the search index already uses.</p></div>
+    </div>
+
+    <div class="entry entry--site">
+      <div class="entry-head"><span class="tag tag--site">Method</span><span class="entry-name">The Easter Eggs are not in it, and that is the point of them</span></div>
+      <div class="entry-body"><p><a href="collection-easter-eggs.html">Easter Eggs</a> has no section on the front page because a listed egg is not off the path. A What&rsquo;s New page is a listing and a feed is a listing pushed to people, so the seven eggs appear in neither. They stay in the sitemap, in the search index and in all eight gates exactly as before &mdash; findable, never announced. The tool prints the exclusion on its own line, so a number that grows is a number somebody can question.</p></div>
+    </div>
+
+    <div class="entry entry--factcheck">
+      <div class="entry-head"><span class="tag tag--factcheck">Correction</span><span class="entry-name">One date git gets wrong, and it is written down rather than quietly patched</span></div>
+      <div class="entry-body"><p><a href="glimmer-wire-2026-09-02.html">Glimmer Wire, edition one</a> was published on <strong>2 September</strong> and its file was created on the <strong>4th</strong>, when the single page was split into one page per edition. Git can only see the file. The tool carries exactly one date override, with the reason on the line above it, and prints the count of overrides every run &mdash; the same shape as the watermark exemption in the contrast checker and the hook list in the dead-class checker. An override should be a decision somebody wrote down, not a mechanism to fall into.</p></div>
+    </div>
+
+    <div class="entry entry--factcheck">
+      <div class="entry-head"><span class="tag tag--factcheck">Correction</span><span class="entry-name">The new page found a real hole in the search index</span></div>
+      <div class="entry-body"><p>Every tagline on What&rsquo;s New is already indexed on the card it was lifted from, so the listing is a duplicate presentation and belongs in <code>CHROME_SEL</code> alongside the playlist row list and the front page&rsquo;s jump strip. Stripping it exposed a gap that had been there all along: <strong><code>textOf()</code> removes chrome from its own clone, which handles chrome <em>inside</em> a chunk &mdash; but the chunker selects from the live document, so a chunk <em>inside</em> a chrome container was still indexed.</strong> The listing&rsquo;s 33 <code>&lt;section&gt;</code> elements were excluded from the coverage denominator and indexed anyway: <strong>34 records at 3000% coverage</strong>, a figure only visible because the run prints coverage per page. Step 3 now skips a chunk whose ancestor is chrome, which <code>segmentByHeading()</code> had always done. <strong>Verified as a no-op elsewhere</strong> by diffing every record against the committed index: 174 pages byte-identical, the only change the front page&rsquo;s new masthead link.</p></div>
+    </div>
+
+    <div class="entry entry--site">
+      <div class="entry-head"><span class="tag tag--site">Site</span><span class="entry-name">Wiring, and the gates</span></div>
+      <div class="entry-body"><p><code>whats-new.html</code> is site furniture like <a href="search.html">Search</a>: no collection badge, no card, outside the reading chain, reached from a new masthead pill. It joins the short, explicit exempt list in <code>check-markup.mjs</code> rather than being caught by a rule. Feed autodiscovery sits in the head of the front page and of What&rsquo;s New. <strong>All eight gates at zero</strong>, and the page indexes at one record and 100% coverage &mdash; its own prose, none of the borrowed list.</p></div>
+    </div>
+  </section>
+
   <!-- ================= 2026-09-04e (Triggers collection + Trigger No. 1) ================= -->
   <section class="release" id="2026-09-05-which-distortion" aria-labelledby="h-2026-09-05-which-distortion">
-    <div class="release-date">2026 &middot; September 5 &middot; latest</div>
+    <div class="release-date">2026 &middot; September 5</div>
     <h2 class="release-title" id="h-2026-09-05-which-distortion">The UN voted to change the world map, every headline got the reason wrong, and the resolution itself did not</h2>
     <p class="release-note"><a href="which-distortion.html">Which Distortion</a> is the fifth entry in <a href="collection-glimmers.html">Glimmers</a>, written the day after the General Assembly adopted the &ldquo;Correct the map&rdquo; resolution 164 to 1. It is the news companion to <a href="cannot-flatten-a-sphere-zine.html">You Cannot Flatten a Sphere</a> (No. 44), which shipped three weeks earlier and needed no changes.</p>
 

@@ -268,10 +268,10 @@ for (const cf of collectionFiles) {
 /* Pages that carry no badge by decision. Deliberately an explicit, short list rather
    than a rule like "anything without a card", for the reason the contrast tool keeps
    its exemption list explicit: an exemption should be a decision somebody wrote down,
-   not a mechanism a page can fall into by accident. index.html and search.html are
-   utility pages; a collection page does not badge itself. Adding to this list should
-   feel like a decision, because it is one. */
-const NO_BADGE = new Set(['index.html', 'search.html']);
+   not a mechanism a page can fall into by accident. index.html, search.html and
+   whats-new.html are utility pages; a collection page does not badge itself. Adding
+   to this list should feel like a decision, because it is one. */
+const NO_BADGE = new Set(['index.html', 'search.html', 'whats-new.html']);
 const exempt = (f) => NO_BADGE.has(f) || COLLECTION_RE.test(f);
 
 let totalProblems = 0;

@@ -29,7 +29,19 @@ Ryan's shorthand for "finish and publish." Scope depends on what changed.
    ```
 
    Commit the regenerated JSON with the rest. `--check` exits non-zero if it's stale.
-6. **Measure contrast, on screen and on paper.** Don't assert that it prints — measure it:
+6. **Rebuild What's New and the RSS feed.** A new or renamed piece changes both, and nothing
+   else in the repo will notice their absence — they are generated from the collection-page
+   cards and from `git log`, so they go stale the moment a card lands:
+
+   ```bash
+   node tools/build-whats-new.mjs
+   ```
+
+   **Run it after the commit that adds the piece**, not before: the date comes from
+   `git log --diff-filter=A`, so an uncommitted page has no date and the tool fails. In practice
+   that means commit, regenerate, then amend or add a follow-up commit. Commit
+   `whats-new.html` and `feed.xml` with the rest. `--check` exits non-zero if either is stale.
+7. **Measure contrast, on screen and on paper.** Don't assert that it prints — measure it:
 
    ```bash
    node tools/check-contrast.mjs --check <the-changed-pages>.html
@@ -40,7 +52,7 @@ Ryan's shorthand for "finish and publish." Scope depends on what changed.
    any failure. Run it on the changed pages at minimum; bare, it sweeps the whole repo. If it
    reports a failure, fix the page, or say plainly in the report that you're shipping a known one.
    `CLAUDE.md` → *Contrast & print checking* explains each tier of the output.
-7. **Check the markup.** Cheapest gate here — no browser, no dependencies, ~0.3s for the repo:
+8. **Check the markup.** Cheapest gate here — no browser, no dependencies, ~0.3s for the repo:
 
    ```bash
    node tools/check-markup.mjs --check
@@ -51,7 +63,7 @@ Ryan's shorthand for "finish and publish." Scope depends on what changed.
    parser close the outer element early — it took a card grid apart on a live page while contrast,
    the search index and the eye of the person who wrote it all passed. **Baseline is 0**, so any
    failure here is yours and should be fixed rather than noted.
-8. **Check the sitemap.** Also browser-free and instant, and it must be run whenever a page is
+9. **Check the sitemap.** Also browser-free and instant, and it must be run whenever a page is
    added, renamed or removed:
 
    ```bash
@@ -63,7 +75,7 @@ Ryan's shorthand for "finish and publish." Scope depends on what changed.
    sanity. **Baseline is 0.** It exists because a live zine sat unlisted for three weeks and a
    broadside was listed twice, and no other gate could see either — the four page-level checks all
    pass on a page that the sitemap has simply never heard of.
-9. **Check card order if you added, moved or removed a card.**
+10. **Check card order if you added, moved or removed a card.**
 
    ```bash
    node tools/check-card-order.mjs --check
@@ -76,7 +88,7 @@ Ryan's shorthand for "finish and publish." Scope depends on what changed.
    cannot see it: it derives membership from card *hrefs*, and a set has no order. Browser-free
    and instant, like the two above.
 
-10. **If you touched a broadside, check it still fits the paper.**
+11. **If you touched a broadside, check it still fits the paper.**
 
    ```bash
    node tools/check-sheets.mjs --check
@@ -85,12 +97,14 @@ Ryan's shorthand for "finish and publish." Scope depends on what changed.
    Prints each sheet at US Letter *and* A4 and counts pages, and separately measures overflow —
    a fixed-height sheet that overruns is clipped, not paginated, so a clean page count can still
    hide a cut-off line. Only applies to pages with an `@page` rule.
-11. **Commit & push.** `git add` the touched files; commit with a descriptive heredoc message;
+12. **Commit & push.** `git add` the touched files; commit with a descriptive heredoc message;
    `git push`.
 
 ## Small edit (fast path)
 Fact-check the touched claims → log it in `changelog.html` if it changes what a piece *claims*
 → **rebuild the search index if any page text changed** (`node tools/build-search-index.mjs`)
+→ **rebuild What's New and the feed if a card's title or tagline changed, or a page was added or
+renamed** (`node tools/build-whats-new.mjs`)
 → **check contrast if you touched a color, an opacity, or an SVG label**
 (`node tools/check-contrast.mjs --check <page>.html`)
 → **run `node tools/check-card-order.mjs --check` if a card moved**

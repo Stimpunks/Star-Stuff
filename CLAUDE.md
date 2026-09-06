@@ -64,6 +64,9 @@ The central phrase compresses through registers, each with a use:
     (i.e. pages lacking a global `changePage()` plus `.spread` / `.spread-footer` elements).
 - Supporting files: `favicon.svg`, `og-card.jpg`, shared cosmic image
   `35407642044_c29b4f2bd7_3k.jpg`, `robots.txt`, `sitemap.xml`.
+- **`whats-new.html` and `feed.xml` are generated, not edited.** Both come out of
+  `tools/build-whats-new.mjs`; a hand edit is overwritten on the next run. See
+  *What's New & RSS* below.
 - `changelog.html` is the **public changelog**, live at https://starstuff.earth/changelog (Netlify
   serves clean URLs, so the `.html` file answers at both paths; keep internal links, canonical, and
   the sitemap on `changelog.html` like every other page). It is the reader-facing companion to
@@ -99,9 +102,10 @@ The central phrase compresses through registers, each with a use:
   <a class="ss-nav-collection" href="collection-kin.html"><span class="ss-nav-collection-label">Collection</span> <span class="ss-nav-collection-name">Kin</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
   ```
 
-  All 154 members have one; the 16 collection pages, `index.html` and `search.html` do not (154 +
-  16 + 2 = the 172 pages in the repo root, re-derived 2026-09-04 — the numbers here are the gate's
-  own, printed by `check-markup.mjs`, which is the only count in this file you get for free). **A new
+  All 157 members have one; the 16 collection pages, `index.html`, `search.html` and
+  `whats-new.html` do not (157 + 16 + 3 = the 176 pages in the repo root, re-derived 2026-09-05 —
+  the numbers here are the gate's own, printed by `check-markup.mjs`, which is the only count in
+  this file you get for free). **A new
   piece needs its badge and its collection page's card in the same pass** — the page→collection map
   is derived from `<a class="card" href="…">` on the collection pages, so a card that is missing
   makes the badge underivable. **`tools/check-markup.mjs` enforces all of this as of 2026-08-13**
@@ -708,6 +712,64 @@ tracking — the query never leaves the reader's browser.
   revalidate.
 - Every page reaches search through the `.ss-nav-search` pill in the nav cluster; `index.html`
   has no `.ss-nav`, so it carries its own `.masthead-search` link.
+
+## What's New & RSS (`tools/build-whats-new.mjs`)
+
+`whats-new.html` is the answer to *what came out this week* — every piece newest first, title and
+the line it leads with, nothing else. `changelog.html` answers *why it changed*, at length, and is
+a poor substitute; the two are deliberately different documents. `feed.xml` is the same list as
+RSS 2.0, so nobody has to come back and check.
+
+```bash
+node tools/build-whats-new.mjs           # write whats-new.html and feed.xml
+node tools/build-whats-new.mjs --check   # exit non-zero if either is stale
+```
+
+- **Both files are generated, and a hand edit is lost on the next run.** This is the *counts go
+  stale* section applied in advance: a hand-kept list of 150 pieces is wrong the first time
+  somebody ships a piece and edits one of two places. Every fact comes from two sources that
+  cannot drift from the site — the collection pages' own `<a class="card">` blocks, for title and
+  tagline, which is the same page→collection map `check-markup.mjs` derives to verify badges; and
+  `git log --diff-filter=A`, for the day a URL first existed. Neither is a list kept in the tool,
+  so there is no second answer free to rot. The tool **fails** if any card ever loses its title or
+  tagline.
+- **`--check` is a ship gate and belongs in the `ship-zine` routine**, next to
+  `build-search-index.mjs --check`. A new piece means a new row here, and nothing else in the repo
+  will notice its absence.
+- **`lastmod` is not a publication date and neither is `--follow`.** The sitemap records *last
+  modified*, a different claim. `--follow` traces a renamed file back to its predecessor's
+  creation, which is right for a retitle and wrong for a serial edition split out of a shared page.
+  Plain `--diff-filter=A` on the current path is the honest answer to *when did this URL go live*,
+  and all three renames in the history were checked individually against it.
+- **One date override exists, in `DATE_OVERRIDES`, and it is the only one.** Glimmer Wire edition
+  one was published 2 September and its file created on the 4th by the split. Same bar as the
+  contrast checker's watermark exemption and the dead-class checker's HOOKS list: a reason on the
+  line above it, and the count printed on its own line so a list that grows is a list somebody can
+  question.
+- **Easter Eggs are excluded, and that is the point of them.** A listing announces, and a listed
+  egg is not off the path. The seven eggs stay in `sitemap.xml`, `search-index.json` and all eight
+  gates — findable, never announced. The exclusion count prints every run.
+- **The listing is stripped from the search index as chrome (`.whats-new-list`).** Every tagline on
+  the page is already indexed on the card it was lifted from, so indexing it again is the `.lp-row`
+  duplicate-presentation problem at 150×, and it would put What's New at the top of results for
+  text belonging to the piece. The page's own prose still indexes — one record, 100% coverage.
+  The container class is page-specific on purpose, so this cannot start stripping a future page.
+- **It exposed a real hole in `build-search-index.mjs`, now fixed.** `textOf()` strips `CHROME_SEL`
+  from its own clone, which handles chrome *inside* a chunk — but step 3's chunker selects from the
+  live document, so a chunk *inside* a chrome container was still indexed. The listing's 33
+  `<section>` elements were excluded from the coverage denominator and indexed anyway: **34 records
+  at 3000% coverage**, visible only because the run prints coverage per page. Step 3 now skips a
+  chunk whose ancestor is chrome, which `segmentByHeading()` had always done. Verified a no-op
+  across all 174 other pages by diffing every record against the committed index.
+- **`whats-new.html` is site furniture**, like `search.html`: no collection badge, no card, outside
+  the reading chain, reached from a masthead pill on `index.html`. It is on the short explicit
+  exempt list in `check-markup.mjs`, not caught by a rule.
+- **The feed's `lastBuildDate` is the newest item's date, not the clock.** A feed that changed every
+  run would make `--check` report STALE seconds after a clean write — the fault
+  `build-search-index.mjs` already hit once for a different reason. Card entities are decoded to
+  real characters before XML escaping, because `&mdash;` is **not** one of XML's five predefined
+  entities and a reader is entitled to reject the document over it. 50 most recent items.
+- No Chrome, no dependencies; it shells out to `git`. Local dev tool, Netlify does not run it.
 
 ## Contrast & print checking (`tools/check-contrast.mjs`)
 
