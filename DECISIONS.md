@@ -166,6 +166,83 @@ Decisions still to make. Move to **Settled** with a date once resolved.
 
 ## Settled
 
+- **"Confirmed at the abstract" is a status for calibration figures, not for load-bearing ones —
+  settled 2026-09-06, by a case that proved it.** Trigger No. 1 marked two supporting figures
+  *confirmed at the journal record, not read in full* and said so on the page. That was defensible:
+  both were calibration. **Trigger No. 2 shipped-in-progress with three sources it could not reach,
+  named on its face, and Ryan supplied all three from the SKS inbox within the hour. Reading them
+  changed the piece's substance, not just its citations.**
+  - The near-term North Atlantic tipping element turned out to be **Labrador–Irminger Sea /
+    subpolar gyre convection at ~1.8 °C (1.1–3.8), high confidence, ~10 years** — not the AMOC at
+    ~4 °C (1.4–8), low confidence. A lower threshold, faster transition and *better* confidence, on
+    the system nobody has heard of. The draft was about to lead with the AMOC.
+  - The full report carried a marine tipping system the draft had missed entirely (**kelp forests**,
+    local-scale, high confidence, urchin barrens as the mechanism).
+  - The headline coral threshold had **moved from ~1.5 °C (1–2) to 1.2 °C (1–1.5)** between the 2022
+    paper and the 2025 assessment, attributed to different work. **None of that is in an abstract.**
+  - **The rule going forward:** a figure the argument *rests on* is an open item until the source is
+    read, and the ledger says so. A figure used to calibrate intuition may be confirmed at the
+    record with the discount stated. The distinction is what the claim is carrying, not how hard the
+    publisher made it.
+  - **And the corollary, which is the more useful half.** Naming an unreachable source on the page
+    is not a consolation prize for having a gap — **it is the mechanism that closes it.** The page
+    said which three it could not read; that is what got them read. Keep doing it, and keep the
+    *held* section a real list rather than a hedge.
+
+- **A third *who must act* marker in Triggers — `vocational` — settled 2026-09-06, with Trigger
+  No. 2.** Trigger No. 1 marked each response `individual` or `structural` and put nine of eleven in
+  the structural column, which is the honest distribution and is the collection's stated defence
+  against the personal-footprint failure mode. **Trigger No. 2 is addressed to someone choosing what
+  to do for a living, and neither value fits that.** A working life is not a consumption choice and
+  it is not a policy lever; it is a third thing with its own reach and its own ceiling.
+  - **Why a third value rather than reusing `both`.** `Both` in No. 1 means *individual and
+    structural* — an urban canopy programme a household participates in and a city decides. Using it
+    for "this is somebody's job" would collapse two different claims into one token, and the token
+    would then mean nothing. Seven of No. 2's twelve responses are vocational, which is a much
+    higher proportion than No. 1's individual column and is real rather than encouraging.
+  - **The marker's own failure mode is named on the page that introduced it**, because this is
+    exactly the move the collection exists to police. *A vocational column is an efficient way to
+    tell a young person that their career will fix a structural problem* — the personal-footprint
+    error in a lab coat. So No. 2 leads its ladder with the structural entry that sizes every other
+    one (the IPCC's "coral reef restoration options may be ineffective if global warming exceeds
+    1.5 ºC") and states outright that nothing in a marine biologist's toolkit substitutes for
+    cutting emissions.
+  - **Recorded on `collection-triggers.html`, not only in the piece.** The collection page exists
+    because a convention held in one page's head gets reinvented differently next time; a new value
+    for the marker set has to live there or it is not a convention. Section `#the-third-marker`.
+  - **Rejected: leaving it at two and filing career responses as `structural`.** Accurate about who
+    ultimately decides, useless to the reader the piece is for, and it would have made the ladder
+    say that there is nothing a person entering the field can do — which is false and is the exact
+    despair the collection is built to refuse.
+  - **Rejected: a separate `professional` value alongside `vocational`.** One word, one idea. The
+    distinction between a paid profession and a vocation is real and is not what this marker is
+    measuring; it measures *is this somebody's work*.
+
+- **The Triggers *provisional at one member* note is retired — settled 2026-09-06.** The collection
+  opened on 2026-09-04 at one member, the third break of the two-member floor, and graded its own
+  argument as the weakest of the three on its face: *a convention cannot be demonstrated by a single
+  instance*. It committed to a specific test — provisional **until a second issue shows the
+  convention surviving contact with a different problem**. No. 2 is a different problem at a
+  different scale for a different reader, and the five-tier readiness scale needed no change.
+  - **The original paragraph is kept, not deleted.** The test it set is the thing that was passed,
+    and a collection page that quietly loses its own caveat once the caveat is satisfied is a page
+    that will be believed less next time it prints one.
+  - **What bent is the interesting result.** The readiness scale held unchanged; the `who` marker
+    needed a new value. **A convention that survives a second use completely untouched has probably
+    only been used once in two costumes.** That is the transferable lesson, and it is why the
+    collection page records the bend rather than announcing a clean pass.
+  - **This does not soften the floor.** Three breaks are now on the record with three arguments of
+    descending quality, and this one was still the weakest. The rule stands: what earns a collection
+    page is a form observed in finished work.
+
+- **Collection pages list ascending, not newest-first — clarified 2026-09-06 by a near-collision.**
+  `collection-triggers.html` shipped saying "Newest first" while holding one card, so nothing
+  disagreed with anything. Adding No. 2 would have made it descend, which `check-card-order.mjs`
+  fails, **and the gate is right**: the prev/next chain follows collection order, so a
+  newest-first grid and an ascending chain would have walked a reader through the collection
+  backwards relative to the page they came from. Fixed by ordering the cards ascending and saying
+  why in the prose. **A page can carry a false convention indefinitely while it has one member.**
+
 - **A fifteenth collection — *Glimmer Wire*, one page per weekly edition — settled 2026-09-04, by
   Ryan.** *Glimmer Wire* shipped on 2026-09-02 as a single page carrying every edition newest-first
   behind one masthead, with a source comment instructing that new editions be prepended. Two
