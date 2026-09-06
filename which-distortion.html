@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0a0a14">
+<link rel="canonical" href="https://starstuff.earth/which-distortion.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta name="description" content="On 4 September 2026 the UN General Assembly adopted the &quot;Correct the map&quot; resolution, 164 to 1, urging the world to use the Equal Earth projection where the sizes of continents matter. Every headline called Equal Earth the more accurate map. No map is. Equal Earth is equal-area: it keeps area exactly and pays for it in shape, and three equal-area projections computed here all enclose exactly 4&#960; and disagree with each other about everything else. The resolution knows this and says so in its own preamble &mdash; and its tenth operative paragraph asks for something better than accuracy, which nobody quoted. The fifth entry in Glimmers.">
+<!-- Open Graph / link unfurl -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Star Stuff &middot; Stimpunks Foundation &times; More Realms">
+<meta property="og:url" content="https://starstuff.earth/which-distortion.html">
+<meta property="og:title" content="Which Distortion &mdash; the UN corrects the map">
+<meta property="og:description" content="164 states voted to correct the world map. The coverage called Equal Earth &quot;more accurate&quot; &mdash; the one thing no flat map can be. The resolution itself is more careful than every headline about it.">
+<meta property="og:image" content="https://starstuff.earth/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A rainbow-hued cosmic image &mdash; we are all made of star stuff.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Which Distortion &mdash; the UN corrects the map">
+<meta name="twitter:description" content="Three equal-area maps, all exactly right about area, all disagreeing about shape. What the General Assembly actually voted for, and the paragraph nobody quoted.">
+<meta name="twitter:image" content="https://starstuff.earth/og-card.jpg">
+<title>Which Distortion &mdash; Glimmers &mdash; Stimpunks &#215; More Realms</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="starstuff.css">
+<style>
+  :root {
+    --void:  var(--sp-void-deep);
+    --deep:  var(--sp-deep);
+    --card:  var(--sp-card);
+    --violet:var(--sp-purple);
+    --pink:  var(--sp-pink);
+    --gold:  var(--sp-gold);
+    --cyan:  var(--sp-cyan);
+    --green: var(--sp-green);
+    /* Cyan: the one accent the other four Glimmers have not taken (gold x3,
+       green x1), and the colour this collection's globes and water already use. */
+    --accent:var(--sp-cyan);
+    --star-white: var(--sp-white-soft);
+    --stardust:   var(--sp-secondary-soft);
+    --dim:   var(--sp-dim);
+    --dim2:  var(--sp-dim-soft);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--void);
+    font-family: 'Atkinson Hyperlegible Next', system-ui, sans-serif;
+    color: var(--star-white);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Starfield, tinted cyan — see starstuff.css on why the gradient art stays
+     inline and per-page. */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 12% 17%, rgba(34,211,238,0.70) 0%, transparent 100%),
+      radial-gradient(1px 1px at 29% 44%, rgba(244,242,251,0.60) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 45% 11%, rgba(34,211,238,0.55) 0%, transparent 100%),
+      radial-gradient(1px 1px at 63% 71%, rgba(167,139,250,0.50) 0%, transparent 100%),
+      radial-gradient(2px 2px at 80% 27%, rgba(244,242,251,0.50) 0%, transparent 100%),
+      radial-gradient(1px 1px at 88% 59%, rgba(34,211,238,0.55) 0%, transparent 100%),
+      radial-gradient(1px 1px at 94% 82%, rgba(244,242,251,0.70) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 7% 64%, rgba(34,211,238,0.45) 0%, transparent 100%),
+      radial-gradient(1px 1px at 36% 89%, rgba(244,242,251,0.60) 0%, transparent 100%),
+      radial-gradient(1px 1px at 56% 49%, rgba(74,222,128,0.45) 0%, transparent 100%),
+      radial-gradient(2px 2px at 21% 85%, rgba(34,211,238,0.45) 0%, transparent 100%),
+      radial-gradient(1px 1px at 73% 9%, rgba(244,242,251,0.75) 0%, transparent 100%),
+      radial-gradient(1px 1px at 49% 66%, rgba(34,211,238,0.40) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 40% 25%, rgba(244,242,251,0.50) 0%, transparent 100%),
+      radial-gradient(1px 1px at 66% 94%, rgba(167,139,250,0.45) 0%, transparent 100%),
+      radial-gradient(1px 1px at 84% 46%, rgba(34,211,238,0.50) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .doc-shell { position: relative; z-index: 1; max-width: 760px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+
+  .spectrum-line { height: 2px; border: none; border-radius: 2px; background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); }
+
+  .hero { margin-bottom: 2.5rem; }
+  .hero-eyebrow { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.36em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.3rem; }
+  .hero-title { font-weight: 700; font-size: clamp(2.1rem, 6vw, 3.4rem); line-height: 1.05; letter-spacing: -0.02em; color: var(--star-white); margin-bottom: 1.1rem; }
+  .hero-title em { font-style: normal; background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .byline { font-family: 'Space Mono', monospace; font-size: 0.66rem; letter-spacing: 0.14em; color: var(--stardust); margin-bottom: 1.1rem; line-height: 1.9; }
+  .byline strong { color: var(--star-white); font-weight: 700; }
+  .byline a { color: var(--stardust); text-decoration: none; border-bottom: 1px solid rgba(34,211,238,0.35); }
+  .byline a:hover { color: var(--star-white); }
+  .hero-sub { font-size: 1.02rem; line-height: 1.6; color: var(--stardust); max-width: 38rem; }
+  .hero-rule { width: 200px; max-width: 55%; margin-top: 1.6rem; }
+
+  h2.section { font-weight: 700; font-size: 1.4rem; line-height: 1.2; color: var(--star-white); margin: 2.8rem 0 0.5rem; letter-spacing: -0.01em; scroll-margin-top: 2rem; }
+  h3.sub { font-weight: 700; font-size: 1.08rem; line-height: 1.3; color: var(--star-white); margin: 2rem 0 0.3rem; scroll-margin-top: 2rem; }
+
+  .body-text { font-size: 1.02rem; line-height: 1.75; color: var(--stardust); }
+  .body-text p { margin-top: 1rem; }
+  .body-text em { font-style: italic; color: var(--star-white); }
+  .body-text strong { font-weight: 700; color: var(--star-white); }
+  .body-text a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(34,211,238,0.4); }
+  .body-text a:hover { border-bottom-color: var(--accent); }
+  .body-text ul, .body-text ol { margin: 0.9rem 0 0 1.2rem; }
+  .body-text li { margin-top: 0.5rem; padding-left: 0.2rem; color: var(--stardust); line-height: 1.7; }
+
+  .claim { font-size: 1.22rem; font-weight: 700; line-height: 1.4; color: var(--star-white); border-left: 3px solid var(--accent); padding-left: 1.1rem; margin: 1.4rem 0; }
+
+  .pull { font-size: 1.06rem; line-height: 1.6; color: var(--star-white); border-left: 3px solid var(--violet); padding-left: 1.1rem; margin: 1.4rem 0; }
+  .pull .attr { display: block; margin-top: 0.5rem; font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim); }
+  .pull .attr a { color: var(--dim); text-decoration: none; border-bottom: 1px solid rgba(167,139,250,0.25); }
+  .pull .attr a:hover { color: var(--stardust); }
+
+  .callout { border: 1px solid rgba(34,211,238,0.32); border-left: 3px solid var(--accent); border-radius: 0 6px 6px 0; padding: 1.1rem 1.3rem; margin: 1.6rem 0; background: rgba(34,211,238,0.05); }
+  .callout .callout-label { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; }
+  .callout p { font-size: 0.96rem; line-height: 1.7; color: var(--stardust); }
+  .callout p + p { margin-top: 0.8rem; }
+  .callout strong { color: var(--star-white); font-weight: 700; }
+  .callout em { font-style: italic; color: var(--star-white); }
+  .callout a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(34,211,238,0.4); }
+  .callout--gold { border-color: rgba(251,191,36,0.32); border-left-color: var(--gold); background: rgba(251,191,36,0.05); }
+  .callout--gold .callout-label { color: var(--gold); }
+  .callout--gold a { color: var(--gold); border-bottom-color: rgba(251,191,36,0.4); }
+
+  .refusals { margin: 1.5rem 0 0.5rem; }
+  .refusals .callout-label { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--violet); margin-bottom: 0.6rem; }
+  .refusals ul { margin: 0; }
+  .refusals li { list-style: none; position: relative; padding-left: 1.5rem; margin-top: 0.55rem; color: var(--stardust); line-height: 1.65; }
+  .refusals li::before { content: '\2715'; position: absolute; left: 0; color: var(--violet); font-weight: 700; }
+  .refusals a { color: var(--violet); text-decoration: none; border-bottom: 1px solid rgba(167,139,250,0.4); }
+
+  /* ── Diagrams ──
+     Figure 1 is COMPUTED, not drawn. The three outlines, graticules and Tissot
+     ellipses come from each projection's own published forward equations
+     (Equal Earth: Savric, Patterson & Jenny 2018; Eckert IV: 1906; Gall-Peters:
+     cylindrical equal-area, standard parallel 45 degrees), evaluated in Python
+     and emitted as path data. Two consequences worth knowing before editing it:
+
+     1. ALL THREE PANELS SHARE ONE SCALE FACTOR (k = 38). That is not a
+        convenience — each projection encloses exactly 4*pi square units on the
+        unit sphere, so a single k makes the three page areas identical without
+        any per-panel fudging. Rescale one panel and you destroy the only claim
+        the figure makes. The equal areas ARE the argument.
+     2. The ellipses are Tissot indicatrices computed from the numeric Jacobian;
+        det(J) = 1.000000 at every sampled point on all three, which is what
+        "equal-area" means and is what makes their DIFFERING elongations the
+        finding. Their rotation is real too: Gall-Peters' ellipse stands upright
+        at the equator and lies flat at 60 degrees, because the stretch axis
+        swaps. Do not "tidy" the angles.
+
+     A third thing, learned from the print probe: @media print flattens EVERY
+     stroke on the site to #444444, so outline, graticule and indicatrix all
+     arrive at the same colour on paper and only stroke-WIDTH separates them.
+     The indicatrices are what the figure is about, so they carry the heaviest
+     line (1.9) against the outline (1.4) and the graticule (0.7). The panel
+     fills are handled in the @media print block below; without that override
+     they print as navy ink blocks. Verified by reading computed fill and stroke
+     back under Emulation.setEmulatedMedia, not by reading the stylesheet.
+
+     Labels sit on the page ground, never on a filled shape. */
+  .fig { margin: 1.9rem 0 0.7rem; }
+  .fig svg { display: block; width: 100%; height: auto; }
+  .fig figcaption { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--dim); margin-top: 0.7rem; line-height: 1.9; }
+  .fig figcaption strong { color: var(--stardust); }
+
+  /* ── Tables ── */
+  .tbl-wrap { overflow-x: auto; margin: 1.3rem 0 0.4rem; }
+  table { border-collapse: collapse; width: 100%; min-width: 540px; font-size: 0.88rem; }
+  caption { text-align: left; font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); padding-bottom: 0.7rem; }
+  th, td { text-align: left; vertical-align: top; padding: 0.6rem 0.9rem 0.6rem 0; border-bottom: 1px solid rgba(167,139,250,0.14); }
+  th { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--dim); font-weight: 400; }
+  td { color: var(--stardust); }
+  td strong { color: var(--star-white); }
+  td em { font-style: italic; color: var(--star-white); }
+  .src { font-family: 'Space Mono', monospace; font-size: 0.68rem; color: var(--dim); }
+
+  .callout, .refusals, .fig, .tbl-wrap { page-break-inside: avoid; break-inside: avoid; }
+
+  .colophon-footer { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--dim2); line-height: 2.2; margin-top: 3rem; padding-top: 1.4rem; border-top: 1px solid rgba(34,211,238,0.14); }
+  .colophon-footer a { color: var(--dim); text-decoration: none; border-bottom: 1px solid rgba(34,211,238,0.2); }
+  .colophon-footer a:hover { color: var(--stardust); }
+
+  .refs { font-size: 0.8rem; line-height: 1.85; color: var(--dim); margin-top: 2rem; padding-top: 1.2rem; border-top: 1px solid rgba(34,211,238,0.14); }
+  .refs a { color: var(--dim); border-bottom: 1px solid rgba(34,211,238,0.2); text-decoration: none; word-break: break-word; }
+  .refs a:hover { color: var(--stardust); }
+  .refs strong { color: var(--stardust); font-weight: 400; }
+  .refs em { font-style: italic; }
+
+  @media (max-width: 600px) {
+    .doc-shell { padding: 2rem 1.3rem 3rem; }
+  }
+
+  @media print {
+    body::before { display: none; }
+    /* The map panels fill with a dark literal (#12122c) that starstuff.css's
+       print block does not invert — its blanket list only covers light fills.
+       Left alone, each panel prints as a navy ink block with the graticule and
+       the indicatrices (flattened to #444444 with every other stroke) lost
+       inside it. No gate can see this: check-contrast measures TEXT, and these
+       are shapes. Verified under print emulation by reading computed fill back
+       off the elements. */
+    .fig svg .panel { fill: #ffffff !important; }
+    .hero-title, h2.section, h3.sub, .claim, .pull, td strong, td em,
+    .callout strong, .body-text strong, .body-text em { color: #111; }
+    .body-text li, .hero-sub, .callout p, .refusals li, .byline, td { color: #222; }
+    .byline strong { color: #111; }
+    .pull .attr, .colophon-footer, .refs, .fig figcaption,
+    th, caption, .src { color: #444; }
+    .callout .callout-label,
+    .callout--gold .callout-label,
+    .refusals .callout-label { color: #444; }
+    .refusals li::before { color: #111; }
+    .callout, .callout--gold { background: none; border-color: #999; border-left-color: #444; }
+  }
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Which Distortion","description":"On 4 September 2026 the UN General Assembly adopted A/80/L.104, the \u201cCorrect the map\u201d resolution, by 164 votes to 1 with 6 abstentions, encouraging Member States to adopt the Equal Earth projection where the sizes of continents are critical. Coverage worldwide described this as a swap to a more accurate map. No flat map is more accurate; Equal Earth is equal-area, keeping area exactly and paying for it in shape. Three equal-area projections \u2014 Gall-Peters, Eckert IV and Equal Earth \u2014 are computed here from their published equations: all three enclose exactly 4\u03c0 square units and all three disagree about shape, with Gall-Peters distorting 2:1 at the equator. The resolution\u2019s own preamble states that no single projection can perfectly represent the curved surface of the Earth on a plane, and its tenth operative paragraph urges states to explain projection methods, characteristics and limitations to users \u2014 the paragraph no outlet quoted. The fifth entry in Glimmers.","image":"https://starstuff.earth/og-card.jpg","url":"https://starstuff.earth/which-distortion.html","mainEntityOfPage":"https://starstuff.earth/which-distortion.html","datePublished":"2026-09-05","author":{"@type":"Person","name":"Ryan Boren","url":"https://stimpunks.org/"},"publisher":[{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/","logo":{"@type":"ImageObject","url":"https://starstuff.earth/og-card.jpg"}},{"@type":"Organization","name":"More Realms","url":"https://morerealms.com/"}],"isPartOf":{"@type":"WebSite","name":"Star Stuff","url":"https://starstuff.earth/"},"license":"https://creativecommons.org/licenses/by-sa/4.0/"}</script>
+</head>
+<body>
+
+<div class="doc-shell">
+
+  <nav class="ss-nav" style="--nav-accent:#22d3ee;" aria-label="Star Stuff collection">
+    <span class="ss-nav-home-group"><a class="ss-nav-home" href="index.html"><span class="ss-star" aria-hidden="true">&#9733;</span> stuff</a><a class="ss-nav-about" href="about.html">about</a>
+      <a class="ss-nav-search" href="search.html">search</a></span>
+    <span class="ss-nav-links">
+      <a class="ss-nav-prev" href="until-there-were-ten.html"><span class="ss-nav-arrow" aria-hidden="true">&lsaquo;</span> <span class="ss-nav-label">Until There Were Ten</span></a>
+      <a class="ss-nav-next" href="collection-field-guides.html"><span class="ss-nav-label">Field Guides</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
+    </span>
+    <a class="ss-nav-collection" href="collection-glimmers.html"><span class="ss-nav-collection-label">Collection</span> <span class="ss-nav-collection-name">Glimmers</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
+  </nav>
+<main>
+
+  <header class="hero">
+    <div class="hero-eyebrow"><a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks Foundation</a> &times; <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a> &middot; Glimmers</div>
+    <h1 class="hero-title" id="masthead">Which <em>Distortion</em></h1>
+    <p class="byline">By <strong>Ryan Boren</strong> &middot; <a href="https://stimpunks.org/">Stimpunks Foundation</a><br>Event: UN General Assembly resolution A/80/L.104, adopted 4 September 2026 &middot; Published 5 September 2026</p>
+    <p class="hero-sub">On Friday the General Assembly voted 164 to 1 to correct the world map. Every headline reported it as a swap to a <em>more accurate</em> map &mdash; which is the one thing no flat map can be, and the resolution says so in its own preamble. On three maps that are all exactly right about area and all disagree about everything else, and on the paragraph nobody quoted.</p>
+    <hr class="spectrum-line hero-rule">
+  </header>
+
+  <div class="body-text">
+
+    <p>The General Assembly did something on Friday afternoon that I have wanted somebody to do since I was a kid staring at a pull-down map in a Texas classroom, wondering why Greenland was so enormous and why nobody seemed to think that was strange. One hundred and sixty-four countries voted to stop drawing Africa small.</p>
+
+    <p>And then almost every account of it described the vote as swapping the Mercator projection for a <strong>more accurate</strong> one. That sentence went into the note I clipped on Friday night in quotation marks, because it was the thing I wanted to argue with &mdash; it is the single claim the mathematics forbids. The strange, hopeful part of this story is that <em>the resolution itself never makes it</em>. The document is more careful than nearly everything written about it.</p>
+
+    <p class="pull">A fair map does not change the geography of the world, it changes how we see the world.<span class="attr">Robert Dussey, Togo&rsquo;s foreign affairs minister, introducing the resolution &mdash; <a href="https://news.un.org/en/story/2026/09/1168284">UN News</a></span></p>
+
+    <h2 class="section" id="what-passed">What 164 states actually voted for</h2>
+
+    <p>The text is <strong>A/80/L.104</strong>, <em>&ldquo;Correct the map&rdquo;: rebalancing global cartographic representation and promoting equitable representation of the world&rsquo;s regions, particularly Africa</em>. It was sponsored by fifty-five African states and the Bahamas, and introduced by Togo on behalf of the African Union. It carried <strong>164 in favour, 1 against, 6 abstentions</strong>. The one against was the United States. The six abstentions were Estonia, Georgia, Lithuania, Moldova, Serbia and Ukraine; Ukraine&rsquo;s objection was to how a world map renders occupied territory, which is a real argument about a different property of maps entirely.</p>
+
+    <p>It is non-binding, and its verbs say so plainly: it <em>affirms</em>, <em>recognizes</em>, <em>declares</em>, <em>encourages</em>, <em>invites</em> and <em>urges</em>. Nothing in it bans a projection or mandates one. The operative paragraph that carries the headline, number five, encourages states and organisations to use Equal Earth and other equal-area methods &mdash; and then adds four words that most reports dropped: <strong>&ldquo;where their sizes are critical.&rdquo;</strong></p>
+
+    <p>That qualifier is not a hedge. It is the whole design.</p>
+
+    <h2 class="section" id="the-one-against">The one vote against</h2>
+
+    <p>The United States publishes its own explanations of vote, so this one can be read whole rather than in fragments. It was delivered <em>before</em> the ballot by <strong>Yaryna Ferencevych</strong>, Deputy U.S. Representative to the UN Economic and Social Council. Its two substantive paragraphs:</p>
+
+    <div class="callout callout--gold">
+      <div class="callout-label">Explanation of vote, United States, 4 September 2026</div>
+      <p>&ldquo;This resolution mocks the work and purpose of this institution. While this initiative is presented as an anodyne effort to update cartographic proportions, the United States clearly sees it cannot be separated from the much larger and more radical ideological project it belongs to &ndash; as its most vocal and committed proponents plainly and openly state.</p>
+      <p>Instead of focusing on genuine problems of international peace, prosperity, or good relations, this body is debating map projects from the 16th century, and their role in promoting reparations and &lsquo;cognitive justice.&rsquo; Resolutions like this and the ideological agenda they promote, are barnacles on our work here, and the reason this institution is losing its credibility.&rdquo;</p>
+    </div>
+
+    <p>Two things are worth saying about that, and only one of them is mine to settle.</p>
+
+    <p><strong>The first is checkable.</strong> <em>Cognitive justice</em> is in scare quotes there, and it is <strong>the resolution&rsquo;s own phrase</strong> &mdash; its preamble states that correcting these distortions &ldquo;constitutes an act of cognitive justice and memorial reparation&rdquo;, and it cites the African Union&rsquo;s 2026&ndash;2035 reparations decade by decision number. So the objection lands on language the document really does use, in a paragraph anybody can look up. Where the statement is wrong is its setup: the resolution is not &ldquo;presented as an anodyne effort&rdquo; with something larger concealed behind it. <strong>It says what it is on its own face</strong>, in its preamble, several paragraphs before it asks anyone to do anything.</p>
+
+    <p><strong>The second is not mine to settle.</strong> Whether that reasoning is right is a political argument, it is a real one, and it is going to be had loudly &mdash; a five-page cartography text is already being made into a proxy for something much larger. What I will say is where the argument now sits: a recorded vote, a published explanation with a name on it, and a document with numbered paragraphs. <em>That is a better place to have it than a classroom wall with no legend on it.</em> A projection that nobody argues about is not a projection everyone agreed to. It is one whose choice went unread.</p>
+
+    <h2 class="section" id="the-qualifier">The qualifier that keeps falling off</h2>
+
+    <p>Here is the claim as it travelled. The Guardian reported that the Assembly &ldquo;officially retired the 16th-century Mercator projection in favour of one based on the more accurate 2018 Equal Earth design&rdquo;, and that the resolution called to <em>phase out</em> the old map. Al Jazeera, CNN, NPR and the rest ran the same shape of sentence.</p>
+
+    <p>The resolution retires nothing. Read its preamble:</p>
+
+    <div class="callout">
+      <div class="callout-label">A/80/L.104, preambular paragraph</div>
+      <p>&ldquo;<em>Recognizing</em> that a variety of map projections have been developed over time, using different methods and preserving different cartographic properties, that <strong>no single projection can perfectly represent the curved surface of the Earth on a plane</strong>, and that <strong>each projection is therefore suited to particular purposes</strong>&hellip; and is without prejudice to the established practice with regard to the use of cartographic material for navigational purposes&rdquo;</p>
+    </div>
+
+    <p>That is the <a href="cannot-flatten-a-sphere-zine.html">Theorema Egregium</a> in the voice of a UN resolution. Gauss proved in 1827 that a sphere&rsquo;s curvature is intrinsic, so no amount of bending flattens it without stretching &mdash; which means every flat map must sacrifice area, angle, distance or direction, and no cartographer will ever be careful enough to escape it. Not a limit of technique. A theorem.</p>
+
+    <p class="claim">There is no undistorted map waiting to be drawn by someone more careful. There is only the question of which distortion, chosen by someone, for something.</p>
+
+    <p>So Equal Earth is not <em>more accurate</em>. Equal Earth is <strong>equal-area</strong>: it reproduces the relative sizes of things exactly, and it pays for that in shape, continuously and everywhere. Mercator kept angle and paid in area. Equal Earth keeps area and pays in angle. Neither is the true map, because there isn&rsquo;t one, and operative paragraph 3 knows it &mdash; it says Equal Earth &ldquo;offers a more accurate representation of the <strong>sizes</strong> of continental landmasses&rdquo; and is, in its own careful words, <strong>&ldquo;a relevant option&rdquo;</strong>.</p>
+
+    <p>None of which weakens the case. Africa really is about fourteen times Greenland, a classroom Mercator really does say otherwise, and five centuries of that really did settle into how the world pictures itself. The campaign is right. It is just not right <em>because Equal Earth is accurate</em>. It is right because area is the property that matters for the job that map is doing, and Mercator was optimised for a different job by people crossing oceans in 1569.</p>
+
+    <h2 class="section" id="three-maps">Three maps that are all exactly right, and all disagree</h2>
+
+    <p>Here is the part I did not expect when I started checking. Equal Earth is not the only equal-area world map. It is not even the only one in this news story. So I computed three of them from their own published equations &mdash; <strong>Gall&ndash;Peters</strong>, <strong>Eckert IV</strong> and <strong>Equal Earth</strong> &mdash; and measured what they do.</p>
+
+    <p>Every one of them encloses exactly <strong>4&#960; square units</strong> on the unit sphere. Every one has a local area scale of <strong>1.000000</strong> at every point I sampled. They are equal-area in the strict sense, with no rounding and no argument. And they look nothing like each other.</p>
+
+    <figure class="fig">
+      <svg viewBox="0 0 720 300" role="img" aria-labelledby="fig1-title fig1-desc">
+        <title id="fig1-title">Three equal-area world projections compared at one shared scale</title>
+        <desc id="fig1-desc">Three world map outlines side by side, drawn at a single shared scale so that the three enclosed areas are identical on the page. Left, Gall-Peters: a tall narrow rectangle. Centre, Eckert IV: a rounded shape with flattened poles, wider and shorter. Right, Equal Earth: similar to Eckert IV but slightly wider and with more pointed corners. Each carries a graticule and nine Tissot indicatrix ellipses showing local shape distortion. On Gall-Peters the equatorial ellipses stand upright and the high-latitude ellipses lie flat, both stretched two to one. On Eckert IV and Equal Earth the ellipses are noticeably rounder.</desc>
+        <!-- Gall–Peters -->
+        <path d="M211.4,64.3 L211.4,171.7 L42.6,171.4 L42.6,64.3 L211.4,64.3 Z" class="panel" fill="#12122c" stroke="#a78bfa" stroke-width="1.4"/>
+        <g fill="none" stroke="#4a4668" stroke-width="0.7"><path d="M70.7,171.7 L70.7,64.3"/><path d="M98.9,171.7 L98.9,64.3"/><path d="M127.0,171.7 L127.0,64.3"/><path d="M155.1,171.7 L155.1,64.3"/><path d="M183.3,171.7 L183.3,64.3"/><path d="M42.6,164.5 L211.4,164.5"/><path d="M42.6,144.9 L211.4,144.9"/><path d="M42.6,118.0 L211.4,118.0"/><path d="M42.6,91.1 L211.4,91.1"/><path d="M42.6,71.5 L211.4,71.5"/></g>
+        <ellipse cx="70.7" cy="71.5" rx="12.7" ry="6.4" transform="rotate(-0.0 70.7 71.5)" fill="none" stroke="#22d3ee" stroke-width="1.9"/><ellipse cx="127.0" cy="71.5" rx="12.7" ry="6.4" transform="rotate(-0.0 127.0 71.5)" fill="none" stroke="#22d3ee" stroke-width="1.9"/><ellipse cx="183.3" cy="71.5" rx="12.7" ry="6.4" transform="rotate(-0.0 183.3 71.5)" fill="none" stroke="#22d3ee" stroke-width="1.9"/><ellipse cx="70.7" cy="118.0" rx="12.7" ry="6.4" transform="rotate(-90.0 70.7 118.0)" fill="none" stroke="#fbbf24" stroke-width="1.9"/><ellipse cx="127.0" cy="118.0" rx="12.7" ry="6.4" transform="rotate(-90.0 127.0 118.0)" fill="none" stroke="#fbbf24" stroke-width="1.9"/><ellipse cx="183.3" cy="118.0" rx="12.7" ry="6.4" transform="rotate(-90.0 183.3 118.0)" fill="none" stroke="#fbbf24" stroke-width="1.9"/><ellipse cx="70.7" cy="164.5" rx="12.7" ry="6.4" transform="rotate(-0.0 70.7 164.5)" fill="none" stroke="#22d3ee" stroke-width="1.9"/><ellipse cx="127.0" cy="164.5" rx="12.7" ry="6.4" transform="rotate(-0.0 127.0 164.5)" fill="none" stroke="#22d3ee" stroke-width="1.9"/><ellipse cx="183.3" cy="164.5" rx="12.7" ry="6.4" transform="rotate(-0.0 183.3 164.5)" fill="none" stroke="#22d3ee" stroke-width="1.9"/>
+        <!-- Eckert IV -->
+        <path d="M415.4,67.6 L422.1,68.0 L428.3,69.3 L439.1,73.5 L448.0,79.5 L455.0,86.8 L460.3,95.1 L463.8,104.0 L465.6,113.3 L465.6,122.7 L463.8,132.0 L460.3,140.9 L455.0,149.2 L448.0,156.5 L439.1,162.5 L428.3,166.7 L422.1,168.0 L314.6,168.4 L307.9,168.0 L301.7,166.7 L290.9,162.5 L282.0,156.5 L275.0,149.2 L269.7,140.9 L266.2,132.0 L264.4,122.7 L264.4,113.3 L266.2,104.0 L269.7,95.1 L275.0,86.8 L282.0,79.5 L290.9,73.5 L301.7,69.3 L307.9,68.0 L415.4,67.6 Z" class="panel" fill="#12122c" stroke="#a78bfa" stroke-width="1.4"/>
+        <g fill="none" stroke="#4a4668" stroke-width="0.7"><path d="M331.4,168.4 L326.9,168.0 L322.8,166.7 L315.6,162.5 L309.7,156.5 L305.0,149.2 L300.1,136.5 L297.9,122.7 L298.4,108.6 L301.5,95.1 L305.0,86.8 L309.7,79.5 L315.6,73.5 L322.8,69.3 L326.9,68.0 L331.4,67.6"/><path d="M348.2,168.4 L346.0,168.0 L342.0,164.9 L337.3,156.5 L333.2,140.9 L331.4,118.0 L333.2,95.1 L337.3,79.5 L342.0,71.1 L346.0,68.0 L348.2,67.6"/><path d="M365.0,168.4 L365.0,67.6"/><path d="M381.8,168.4 L384.0,168.0 L388.0,164.9 L392.7,156.5 L396.8,140.9 L398.6,118.0 L396.8,95.1 L392.7,79.5 L388.0,71.1 L384.0,68.0 L381.8,67.6"/><path d="M398.6,168.4 L403.1,168.0 L407.2,166.7 L414.4,162.5 L420.3,156.5 L425.0,149.2 L429.9,136.5 L432.1,122.7 L431.6,108.6 L428.5,95.1 L425.0,86.8 L420.3,79.5 L414.4,73.5 L407.2,69.3 L403.1,68.0 L398.6,67.6"/><path d="M286.2,159.7 L443.8,159.7"/><path d="M269.7,140.9 L460.3,140.9"/><path d="M264.2,118.0 L465.8,118.0"/><path d="M269.7,95.1 L460.3,95.1"/><path d="M286.2,76.3 L443.8,76.3"/></g>
+        <ellipse cx="312.5" cy="76.3" rx="14.1" ry="5.7" transform="rotate(-16.6 312.5 76.3)" fill="none" stroke="#22d3ee" stroke-width="1.9"/><ellipse cx="365.0" cy="76.3" rx="11.9" ry="6.8" transform="rotate(-0.0 365.0 76.3)" fill="none" stroke="#22d3ee" stroke-width="1.9"/><ellipse cx="417.5" cy="76.3" rx="14.1" ry="5.7" transform="rotate(16.6 417.5 76.3)" fill="none" stroke="#22d3ee" stroke-width="1.9"/><ellipse cx="297.8" cy="118.0" rx="10.7" ry="7.6" transform="rotate(-90.0 297.8 118.0)" fill="none" stroke="#fbbf24" stroke-width="1.9"/><ellipse cx="365.0" cy="118.0" rx="10.7" ry="7.6" transform="rotate(-90.0 365.0 118.0)" fill="none" stroke="#fbbf24" stroke-width="1.9"/><ellipse cx="432.2" cy="118.0" rx="10.7" ry="7.6" transform="rotate(-90.0 432.2 118.0)" fill="none" stroke="#fbbf24" stroke-width="1.9"/><ellipse cx="312.5" cy="159.7" rx="14.1" ry="5.7" transform="rotate(16.6 312.5 159.7)" fill="none" stroke="#22d3ee" stroke-width="1.9"/><ellipse cx="365.0" cy="159.7" rx="11.9" ry="6.8" transform="rotate(-0.0 365.0 159.7)" fill="none" stroke="#22d3ee" stroke-width="1.9"/><ellipse cx="417.5" cy="159.7" rx="14.1" ry="5.7" transform="rotate(-16.6 417.5 159.7)" fill="none" stroke="#22d3ee" stroke-width="1.9"/>
+        <!-- Equal Earth -->
+        <path d="M663.9,67.9 L675.8,73.8 L685.0,79.9 L693.0,87.2 L699.2,95.5 L703.4,104.3 L705.6,113.4 L705.6,122.6 L703.4,131.7 L699.2,140.5 L693.0,148.8 L685.0,156.1 L671.3,164.6 L663.9,168.1 L542.1,168.1 L530.2,162.2 L521.0,156.1 L513.0,148.8 L506.8,140.5 L502.6,131.7 L500.4,122.6 L500.4,113.4 L502.6,104.3 L506.8,95.5 L513.0,87.2 L521.0,79.9 L534.7,71.4 L542.1,67.9 L663.9,67.9 Z" class="panel" fill="#12122c" stroke="#a78bfa" stroke-width="1.4"/>
+        <g fill="none" stroke="#4a4668" stroke-width="0.7"><path d="M562.4,168.1 L551.3,159.4 L545.5,152.6 L540.8,144.7 L537.3,136.2 L535.1,127.2 L534.4,118.0 L535.1,108.8 L537.3,99.8 L540.8,91.3 L545.5,83.4 L554.4,73.8 L562.4,67.9"/><path d="M582.7,168.1 L575.7,156.1 L570.9,140.5 L568.8,122.6 L569.5,104.3 L573.0,87.2 L578.7,73.8 L582.7,67.9"/><path d="M603.0,168.1 L603.0,67.9"/><path d="M623.3,168.1 L630.3,156.1 L635.1,140.5 L637.2,122.6 L636.5,104.3 L633.0,87.2 L627.3,73.8 L623.3,67.9"/><path d="M643.6,168.1 L654.7,159.4 L660.5,152.6 L665.2,144.7 L668.7,136.2 L670.9,127.2 L671.6,118.0 L670.9,108.8 L668.7,99.8 L665.2,91.3 L660.5,83.4 L651.6,73.8 L643.6,67.9"/><path d="M525.5,159.4 L680.5,159.4"/><path d="M506.8,140.5 L699.2,140.5"/><path d="M500.1,118.0 L705.9,118.0"/><path d="M506.8,95.5 L699.2,95.5"/><path d="M525.5,76.6 L680.5,76.6"/></g>
+        <ellipse cx="551.3" cy="76.6" rx="14.2" ry="5.7" transform="rotate(-17.6 551.3 76.6)" fill="none" stroke="#22d3ee" stroke-width="1.9"/><ellipse cx="603.0" cy="76.6" rx="11.7" ry="6.9" transform="rotate(-0.0 603.0 76.6)" fill="none" stroke="#22d3ee" stroke-width="1.9"/><ellipse cx="654.7" cy="76.6" rx="14.2" ry="5.7" transform="rotate(17.6 654.7 76.6)" fill="none" stroke="#22d3ee" stroke-width="1.9"/><ellipse cx="534.4" cy="118.0" rx="10.4" ry="7.8" transform="rotate(-90.0 534.4 118.0)" fill="none" stroke="#fbbf24" stroke-width="1.9"/><ellipse cx="603.0" cy="118.0" rx="10.4" ry="7.8" transform="rotate(-90.0 603.0 118.0)" fill="none" stroke="#fbbf24" stroke-width="1.9"/><ellipse cx="671.6" cy="118.0" rx="10.4" ry="7.8" transform="rotate(-90.0 671.6 118.0)" fill="none" stroke="#fbbf24" stroke-width="1.9"/><ellipse cx="551.3" cy="159.4" rx="14.2" ry="5.7" transform="rotate(17.6 551.3 159.4)" fill="none" stroke="#22d3ee" stroke-width="1.9"/><ellipse cx="603.0" cy="159.4" rx="11.7" ry="6.9" transform="rotate(-0.0 603.0 159.4)" fill="none" stroke="#22d3ee" stroke-width="1.9"/><ellipse cx="654.7" cy="159.4" rx="14.2" ry="5.7" transform="rotate(-17.6 654.7 159.4)" fill="none" stroke="#22d3ee" stroke-width="1.9"/>
+        <text x="127" y="212" font-size="12.5" fill="#f4f2fb" text-anchor="middle" font-family="Atkinson Hyperlegible Next, sans-serif" font-weight="700">Gall&ndash;Peters</text>
+        <text x="127" y="230" font-size="9.5" fill="#c4b5d4" text-anchor="middle" font-family="Atkinson Hyperlegible Next, sans-serif">1855 / 1973</text>
+        <text x="127" y="250" font-size="9.5" fill="#c4b5d4" text-anchor="middle" font-family="Atkinson Hyperlegible Next, sans-serif">shape error at equator 2.00&#215;</text>
+        <text x="127" y="264" font-size="9.5" fill="#c4b5d4" text-anchor="middle" font-family="Atkinson Hyperlegible Next, sans-serif">at 60&deg; 2.00&#215;</text>
+
+        <text x="365" y="212" font-size="12.5" fill="#f4f2fb" text-anchor="middle" font-family="Atkinson Hyperlegible Next, sans-serif" font-weight="700">Eckert IV</text>
+        <text x="365" y="230" font-size="9.5" fill="#c4b5d4" text-anchor="middle" font-family="Atkinson Hyperlegible Next, sans-serif">1906 &middot; France, from Friday</text>
+        <text x="365" y="250" font-size="9.5" fill="#c4b5d4" text-anchor="middle" font-family="Atkinson Hyperlegible Next, sans-serif">shape error at equator 1.40&#215;</text>
+        <text x="365" y="264" font-size="9.5" fill="#c4b5d4" text-anchor="middle" font-family="Atkinson Hyperlegible Next, sans-serif">at 60&deg; 1.74&#215;</text>
+
+        <text x="603" y="212" font-size="12.5" fill="#f4f2fb" text-anchor="middle" font-family="Atkinson Hyperlegible Next, sans-serif" font-weight="700">Equal Earth</text>
+        <text x="603" y="230" font-size="9.5" fill="#c4b5d4" text-anchor="middle" font-family="Atkinson Hyperlegible Next, sans-serif">2018 &middot; the resolution&rsquo;s choice</text>
+        <text x="603" y="250" font-size="9.5" fill="#c4b5d4" text-anchor="middle" font-family="Atkinson Hyperlegible Next, sans-serif">shape error at equator 1.35&#215;</text>
+        <text x="603" y="264" font-size="9.5" fill="#c4b5d4" text-anchor="middle" font-family="Atkinson Hyperlegible Next, sans-serif">at 60&deg; 1.69&#215;</text>
+
+        <text x="16" y="288" font-size="9" fill="#8f86ab" font-family="Space Mono, monospace">ALL THREE ENCLOSE EXACTLY 4&#960; &mdash; ONE SHARED SCALE, NO PANEL RESIZED</text>
+        <text x="704" y="288" font-size="9" fill="#8f86ab" text-anchor="end" font-family="Space Mono, monospace">ELLIPSES: TISSOT INDICATRICES</text>
+      </svg>
+      <figcaption><strong>Fig 1.</strong> Computed, not drawn &mdash; outlines, graticules and indicatrices are evaluated from each projection&rsquo;s published forward equations. Because all three are equal-area, one shared scale factor makes the three page areas identical; no panel was resized to fit. Each ellipse began as the same circle on the globe. <strong>Every ellipse here has the same area as every other</strong> &mdash; only their elongation and their tilt differ, and that difference is the price each map paid.</figcaption>
+    </figure>
+
+    <p>Look at Gall&ndash;Peters, the map Arno Peters made famous in 1973 and the one most people mean when they say &ldquo;the fair map&rdquo;. Its shape error is <strong>2:1 at the equator</strong> &mdash; countries pulled to twice their height. Equal Earth&rsquo;s is 1.35. And the equator is precisely where the continent this resolution is about happens to sit.</p>
+
+    <div class="callout callout--gold">
+      <div class="callout-label">The thing the ellipses show that a number cannot</div>
+      <p>On Gall&ndash;Peters the indicatrix <strong>stands upright at the equator and lies flat at 60&deg;</strong>, because the stretch swaps axes as you go north. Both are 2:1. The map is not uniformly bad in one way; it is badly wrong in <em>opposite</em> ways in different places, which is exactly the sort of thing a single &ldquo;accuracy&rdquo; score cannot tell you and a picture can.</p>
+    </div>
+
+    <h2 class="section" id="why-not-peters">Why the fair map was not the one they chose</h2>
+
+    <p>Which raises the obvious question: if Peters got there in 1973, why does a 2026 resolution name a projection from 2018?</p>
+
+    <p>Because in March 2017 Boston Public Schools switched its classroom maps to Peters, it made news around the world, and three cartographers went looking for something better to offer and could not find one they liked. So they built it. In their own words:</p>
+
+    <p class="pull">The creation of this projection was motivated by a wave of news stories about Boston Public Schools switching to maps using the Peters projection.<span class="attr">&#352;avri&#269;, Jenny &amp; Patterson, <a href="https://ica-abs.copernicus.org/articles/1/321/2019/">Advances in Cartography and GIScience of the ICA</a>, 2019</span></p>
+
+    <p>Equal Earth was published in August 2018 &mdash; Bojan &#352;avri&#269;, Tom Patterson and Bernhard Jenny, in the <em>International Journal of Geographical Information Science</em>. It is deliberately modelled on the familiar look of the Robinson projection, which is a compromise map that preserves nothing exactly, and it makes that look equal-area. The abstract is blunt about the goal: <em>&ldquo;Continental outlines are shown in a visually pleasing and balanced way.&rdquo;</em></p>
+
+    <p>So the sequence runs: a theorem forecloses a perfect map; a political argument in 1973 forces a choice into the open; a school district acts on it in 2017; cartographers respond in 2018 by making the honest choice easier to live with; the African Union endorses the campaign in August 2025; and the General Assembly votes in September 2026. <strong>Nobody at any step became more accurate.</strong> They got better at choosing, and better at saying so.</p>
+
+    <h2 class="section" id="two-answers">By Friday evening there were already two answers</h2>
+
+    <p>The best evidence that this is a choice rather than a correction arrived within hours of the vote, from one of the resolution&rsquo;s supporters.</p>
+
+    <p>Speaking at the Sorbonne before the vote, France&rsquo;s foreign minister Jean-No&euml;l Barrot announced that France would abandon Mercator &mdash; and then named a different map from the one the resolution recommends. France is adopting <strong>Eckert IV</strong>, a pseudocylindrical equal-area projection from 1906. Not Equal Earth. Barrot&rsquo;s phrasing for what France was moving to is the most quietly precise sentence anyone said all day: <em>&ldquo;map representations tailored to specific uses.&rdquo;</em></p>
+
+    <p>Two governments, one vote, the same afternoon, two different equal-area projections. That is not a crack in the consensus. <strong>It is the consensus working correctly</strong>, because the resolution never claimed there was one right map &mdash; it claimed area is the property that ought to be preserved when size is what is at stake, and left the rest open. Eckert IV and Equal Earth are both honest answers to that. They differ by about five percent in shape error and by rather more in taste.</p>
+
+    <h2 class="section" id="the-paragraph">The paragraph nobody quoted</h2>
+
+    <p>I read every article I could find about this vote. Not one of them quoted operative paragraph 10, which is the best thing in the document and, I think, the actual news.</p>
+
+    <div class="callout">
+      <div class="callout-label">A/80/L.104, operative paragraph 10</div>
+      <p>&ldquo;<em>Urges</em> Member States, international institutions and civil society organizations to <strong>explain to users the methods of cartographic projections, including their characteristics, limitations and appropriate applications</strong>, and, <strong>acknowledging that each projection serves specific cartographic purposes</strong>, to undertake awareness-raising initiatives&hellip;&rdquo;</p>
+      <p>And paragraph 11(a): to &ldquo;integrate the <strong>critical teaching of cartography</strong> into school curricula&rdquo;.</p>
+    </div>
+
+    <p>That is not a request to hang a better map on the wall. It is a request to <strong>teach the choice</strong> &mdash; to hand children a map that says what it kept, what it dropped, and who it was drawn for.</p>
+
+    <p>In 1859 Nicolas Auguste Tissot worked out that you cannot remove a projection&rsquo;s distortion, so you should draw it instead: a grid of ellipses across the map, each one a circle on the globe, each one showing exactly what this map did to this place. The map carries its own error bars on its face. It concedes that it is distorted everywhere and refuses to let the distortion be invisible.</p>
+
+    <p>Paragraph 10 is Tissot&rsquo;s move, made policy, for eight billion people. <em>Publish the indicatrix.</em></p>
+
+    <div class="tbl-wrap">
+      <table>
+        <caption>What was reported &middot; what the document says</caption>
+        <thead><tr><th>As it travelled</th><th>A/80/L.104</th></tr></thead>
+        <tbody>
+          <tr><td>The UN &ldquo;retired&rdquo; and will &ldquo;phase out&rdquo; Mercator</td><td>Bans nothing. <em>Without prejudice</em> to navigational use; Mercator is named in a paragraph that <em>recognizes</em> its area distortion, not one that prohibits it</td></tr>
+          <tr><td>Equal Earth is &ldquo;the more accurate&rdquo; map</td><td>&ldquo;a more accurate representation of the <strong>sizes</strong>&rdquo; and &ldquo;<strong>a relevant option</strong>&rdquo;; adoption urged &ldquo;<strong>where their sizes are critical</strong>&rdquo;</td></tr>
+          <tr><td>A new world standard</td><td>Non-binding throughout. <em>Encourages</em>, <em>invites</em>, <em>urges</em>. France picked a different projection the same day</td></tr>
+          <tr><td>&mdash; <span class="src">not reported anywhere I could find</span></td><td><strong>&para;10:</strong> explain projections&rsquo; &ldquo;characteristics, limitations and appropriate applications&rdquo;. <strong>&para;11(a):</strong> &ldquo;critical teaching of cartography&rdquo; in schools</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 class="section" id="the-turn">Being at the edge was never information about you</h2>
+
+    <p>A globe has no edges. Every point on a sphere has exactly as much sphere around it as every other, and <em>peripheral</em> is a property of flat things with borders. The margin arrives with the projection &mdash; the edge of a world map is not a feature of the world, it is where somebody decided to cut.</p>
+
+    <p>Five centuries of one cut taught a great many people that they lived at the rim. On Friday, one hundred and sixty-four countries said out loud that the rim was a decision. They did not fix the map, because the map cannot be fixed. They did something better: they moved the argument into the open, and then asked that it be taught there.</p>
+
+    <p>That is what a correction looks like when the thing being corrected is a silence rather than an error.</p>
+
+    <div class="refusals">
+      <div class="callout-label">Not</div>
+      <ul>
+        <li><strong>Not a more accurate map.</strong> No such object exists, and reaching for one concedes the argument. Equal Earth is equal-area; it pays in shape everywhere, by about 1.35&#215; at the equator and 1.69&#215; at 60&deg;.</li>
+        <li><strong>Not Mercator&rsquo;s fault.</strong> Gerardus Mercator solved a navigation problem in 1569 and solved it beautifully. The scandal was never the distortion &mdash; it was hanging his answer in a classroom without the question attached.</li>
+        <li><strong>Not settled by science.</strong> The mathematics says no projection is perfect; it does not say which sacrifice to make. Choosing area over shape is a judgement about what matters, and it is a good one, and it is still a judgement. The resolution is more careful about this than its own coverage.</li>
+        <li><strong>Not the end of the argument.</strong> Ukraine abstained over how a world map renders occupied territory. Two supporters adopted two different projections in one afternoon. Arguing in the open is the win condition, not a sign of failure.</li>
+        <li><strong>Not <em>because of</em>.</strong> Gauss proved something about surfaces. Everything here about margins and belonging is a rhyme, not a proof &mdash; <a href="a-promise-not-a-finding.html">down to is not because of</a>, and nobody&rsquo;s standing rests on a theorem about paper.</li>
+      </ul>
+    </div>
+
+    <h2 class="section" id="go-and-look">Go and look</h2>
+
+    <p>The resolution is five pages and it is <a href="https://documents.un.org/api/symbol/access?s=A/80/L.104&amp;l=en&amp;t=pdf">free to read</a>. It takes ten minutes and it is better than every article written about it, including this one. Read the preamble especially &mdash; the paragraph beginning <em>&ldquo;Recognizing that a variety of map projections&hellip;&rdquo;</em> is a General Assembly quietly agreeing with a theorem from 1827.</p>
+
+    <div class="refs">
+      <p><strong>The resolution.</strong> United Nations General Assembly, eightieth session, agenda item 13, <strong>A/80/L.104</strong>, <em>&ldquo;Correct the map&rdquo;: rebalancing global cartographic representation and promoting equitable representation of the world&rsquo;s regions, particularly Africa</em>, dated 4 August 2026, adopted 4 September 2026. Sponsored by 55 African Member States and the Bahamas. <a href="https://documents.un.org/api/symbol/access?s=A/80/L.104&amp;l=en&amp;t=pdf">Full text (PDF)</a>. <strong>Read in full.</strong> Every quotation from the resolution on this page is taken from that document, not from coverage of it, and the paragraph numbers are its own.</p>
+
+      <p><strong>The vote.</strong> 164 in favour, 1 against (United States), 6 abstentions (Estonia, Georgia, Lithuania, Republic of Moldova, Serbia, Ukraine) &mdash; <a href="https://press.un.org/en/2026/ga12779.doc.htm">UN Meetings Coverage, GA/12779</a> and <a href="https://news.un.org/en/story/2026/09/1168284">UN News</a>. Dussey&rsquo;s remarks, France&rsquo;s adoption of Eckert IV and Barrot&rsquo;s Sorbonne speech, the #CorrectTheMap petition figure and the planned Lom&eacute; implementation meeting are from <a href="https://www.theguardian.com/world/2026/sep/04/un-vote-world-map-mercator-equal-earth-africa">The Guardian</a>, 4 September 2026, read in full. <strong>Open:</strong> Ukraine&rsquo;s stated reason for abstaining is given from summaries of the meeting record rather than from the verbatim record, which we have not read; it is characterised here, never quoted.</p>
+
+      <p><strong>The United States&rsquo; explanation of vote is quoted from the primary</strong> &mdash; Yaryna Ferencevych, Deputy U.S. Representative to the UN Economic and Social Council, <em>&ldquo;Explanation of Vote Before the Vote for UNGA 80 Adoption on the Resolution to &lsquo;Correct the Map&rsquo;&rdquo;</em>, 4 September 2026, published by the <a href="https://usun.usmission.gov/explanation-of-vote-before-the-vote-for-unga-80-adoption-on-the-resolution-to-correct-the-map/">United States Mission to the United Nations</a>. The two paragraphs quoted are verbatim and consecutive; the statement&rsquo;s remaining sentences are its opening attribution and its closing two lines (&ldquo;We urge countries to instill common sense to this body, and fully reject this text. The United States will vote &lsquo;no&rsquo; on this resolution.&rdquo;), omitted for length rather than for content. <strong>One characterisation declined:</strong> The Guardian reports the US representative as calling the resolution &ldquo;superfluous&rdquo;. <strong>That word appears nowhere in the published statement</strong>, so it is not used here &mdash; and it would have understated the objection, which is substantive rather than procedural. This page reached the statement only because a reader flagged the fuller quotation; <em>thehill.com</em> and the Mission&rsquo;s own page both refuse automated requests, and the Mission&rsquo;s page was retrieved directly.</p>
+
+      <p><strong>Equal Earth.</strong> Bojan &#352;avri&#269;, Tom Patterson &amp; Bernhard Jenny, &ldquo;The Equal Earth map projection&rdquo;, <em>International Journal of Geographical Information Science</em> <strong>33</strong>(3), 454&ndash;465, published online 7 August 2018, in issue 4 March 2019, <a href="https://doi.org/10.1080/13658816.2018.1504949">doi:10.1080/13658816.2018.1504949</a>. <strong>The paper is paywalled and we have not read it.</strong> The description quoted &mdash; equal-area, inspired by Robinson, &ldquo;continental outlines are shown in a visually pleasing and balanced way&rdquo; &mdash; is from the published abstract. The Boston Public Schools motivation is quoted from the authors&rsquo; own open-access conference abstract: &#352;avri&#269;, Jenny &amp; Patterson, &ldquo;The Equal Earth Projection: Distortion Characteristics, Adoption, and (Social) Media Impact&rdquo;, <em>Advances in Cartography and GIScience of the ICA</em> <strong>1</strong>:321 (2019), <a href="https://ica-abs.copernicus.org/articles/1/321/2019/">doi:10.5194/ica-abs-1-321-2019</a>. The projection&rsquo;s forward equations, used for Figure 1, are the published ones and are widely reproduced (PROJ, ArcGIS, D3).</p>
+
+      <p><strong>Figure 1 is computed, and here is how, so it can be checked.</strong> Each projection&rsquo;s forward equations were evaluated directly: Equal Earth with its published coefficients A&#8321;&nbsp;=&nbsp;1.340264, A&#8322;&nbsp;=&nbsp;&minus;0.081106, A&#8323;&nbsp;=&nbsp;0.000893, A&#8324;&nbsp;=&nbsp;0.003796; Eckert IV by Newton iteration on its defining equation; Gall&ndash;Peters as cylindrical equal-area with standard parallel 45&deg;. Enclosed area was integrated numerically and comes to <strong>12.5663&ndash;12.5664</strong> for all three, against 4&#960;&nbsp;=&nbsp;12.56637. Tissot indicatrices are the singular values of the numeric Jacobian in a local east&ndash;north frame; the determinant is <strong>1.000000</strong> at all 35 sampled points on all three projections, which is the definition of equal-area and is the check that the drawing is right. Shape error is the ratio of the larger axis to the smaller. Panel outlines are simplified to 0.35&nbsp;px, which is below the stroke width.</p>
+
+      <p><strong>The theorem.</strong> Carl Friedrich Gauss, <em>Disquisitiones generales circa superficies curvas</em> (1827). Given from the standard mathematical statement, not read in the original Latin. Tissot&rsquo;s indicatrix: Nicolas Auguste Tissot, 1859, popularised in his <em>M&eacute;moire</em> (1881). The Greenland/Africa ratio near fourteen uses approximate areas of about 2.2 and 30.4 million km&sup2; and is stated as approximate.</p>
+
+      <p><strong>Prior art on this site.</strong> <a href="cannot-flatten-a-sphere-zine.html">You Cannot Flatten a Sphere</a> (No. 44) is the argument this news walked into &mdash; the theorem, the 1569 choice, the Gall&ndash;Peters fight, Tissot&rsquo;s answer, and the turn to what a single number about a person has to delete. It was published on 13 August 2026, three weeks before the vote, and nothing in it needed changing afterwards. <a href="the-lines-we-drew-zine.html">The Lines We Drew</a> (No. 9) holds the constructed border and who holds the pen. <a href="not-a-line-zine.html">Not a Line</a> (No. 21) holds the spectrum.</p>
+
+      <p>A rhyme, not a proof.</p>
+    </div>
+
+    <div class="colophon-footer">
+      <a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks Foundation</a> &times; <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a> &middot; Glimmers &middot; L&#9733;S<br>
+      By Ryan Boren &middot; 5 September 2026 &middot; stimpunks.org &middot; morerealms.com &middot; starstuff.earth &middot; <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
+    </div>
+
+  </div>
+
+</div><!-- /doc-shell --></main>
+
+</body>
+</html>
