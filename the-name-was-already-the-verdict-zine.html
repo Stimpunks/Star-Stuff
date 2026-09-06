@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0a0a14">
+<link rel="canonical" href="https://starstuff.earth/the-name-was-already-the-verdict-zine.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta name="description" content="A record with no words on it was kept off American radio in 1958 for its title — a title the musician did not choose and that a listener supplied after the fact. A Burke chain from a record hop in Fredericksburg to Harold Black's ferry crossing in 1927, the 1580s word that already called the sound twisted out of shape, the 1954 hearings that taught a country to read danger in a medium, and the 2012 paper showing the evidence underneath them was falsified. Thirteen links, ten documented, three contested, one leap.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Star Stuff · Stimpunks Foundation × More Realms">
+<meta property="og:url" content="https://starstuff.earth/the-name-was-already-the-verdict-zine.html">
+<meta property="og:title" content="The Name Was Already the Verdict">
+<meta property="og:description" content="A wordless record banned for its title, thirty years of engineering that had already called the sound a defect, and the falsified evidence under the apparatus that made it bannable.">
+<meta property="og:image" content="https://starstuff.earth/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A rainbow-hued cosmic image — we are all made of star stuff.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Name Was Already the Verdict">
+<meta name="twitter:description" content="A wordless record banned for its title, thirty years of engineering that had already called the sound a defect, and the falsified evidence under the apparatus that made it bannable.">
+<meta name="twitter:image" content="https://starstuff.earth/og-card.jpg">
+<title>The Name Was Already the Verdict — Stimpunks Zine No. 88</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="starstuff.css">
+<style>
+  :root {
+    --void:  var(--sp-void-deep);
+    --deep:  var(--sp-deep);
+    --page:  var(--sp-page);
+    --violet:var(--sp-purple);
+    --pink:  var(--sp-pink);
+    --gold:  var(--sp-gold);
+    --cyan:  var(--sp-cyan);
+    --green: var(--sp-green);
+    --ember: #c1653a;
+    --accent: var(--sp-cyan);          /* this zine's identity accent — the frame that admits only what fits it */
+    --star-white: var(--sp-white-soft);
+    --stardust:   var(--sp-secondary-soft);
+    --dim:   var(--sp-dim);
+    --dim2:  var(--sp-dim-soft);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--void);
+    font-family: 'Atkinson Hyperlegible Next', system-ui, sans-serif;
+    color: var(--star-white);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── STARFIELD (green · white · gold — forest floor and mill fire) ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 13% 21%, rgba(74,222,128,0.55) 0%, transparent 100%),
+      radial-gradient(1px 1px at 27% 44%, rgba(244,244,251,0.6) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 46% 14%, rgba(74,222,128,0.46) 0%, transparent 100%),
+      radial-gradient(1px 1px at 61% 66%, rgba(244,244,251,0.64) 0%, transparent 100%),
+      radial-gradient(2px 2px at 78% 26%, rgba(251,191,36,0.42) 0%, transparent 100%),
+      radial-gradient(1px 1px at 89% 54%, rgba(74,222,128,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 93% 81%, rgba(244,244,251,0.5) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 7% 58%, rgba(251,191,36,0.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 36% 88%, rgba(74,222,128,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 54% 34%, rgba(244,244,251,0.52) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .zine-shell { position: relative; z-index: 1; max-width: 820px; margin: 0 auto; padding: 1.5rem 1.5rem 3rem; }
+
+  .nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem; }
+  .nav-brand { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--dim); }
+  .nav-controls { display: flex; gap: 0.5rem; align-items: center; }
+  .nav-btn { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; background: transparent; color: var(--dim2); border: 1px solid rgba(196,181,212,0.25); border-radius: 3px; padding: 0.4rem 0.75rem; cursor: pointer; transition: all 0.2s; }
+  .nav-btn.active { color: var(--accent); border-color: rgba(34,211,238,0.5); }
+  .nav-btn:disabled { opacity: 0.3; cursor: default; }
+  .page-counter { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.1em; color: var(--dim); padding: 0 0.4rem; }
+
+  .spread { display: none; animation: fadeIn 0.5s ease forwards; }
+  .spread.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ── COVER ── */
+  .cover-spread {
+    position: relative; min-height: 520px; border-radius: 4px; overflow: hidden;
+    background:
+      radial-gradient(ellipse at 24% 22%, rgba(251,191,36,0.11) 0%, transparent 52%),
+      radial-gradient(ellipse at 80% 28%, rgba(74,222,128,0.10) 0%, transparent 52%),
+      radial-gradient(ellipse at 70% 84%, rgba(34,211,238,0.08) 0%, transparent 52%),
+      radial-gradient(ellipse at 26% 82%, rgba(74,222,128,0.07) 0%, transparent 52%),
+      var(--deep);
+    border: 1px solid rgba(34,211,238,0.25);
+    box-shadow: inset 0 0 80px rgba(34,211,238,0.06), 0 0 0 4px rgba(255,255,255,0.03);
+    display: flex; flex-direction: column; justify-content: flex-end; padding: 3rem;
+  }
+  .cover-motif { position: absolute; top: -4px; right: -14px; width: 340px; height: 340px; opacity: 0.75; pointer-events: none; }
+  .cover-issue { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.5em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.5rem; }
+  .cover-title { font-weight: 700; font-size: clamp(1.9rem, 5.2vw, 3rem); line-height: 1.03; color: var(--star-white); letter-spacing: -0.01em; margin-bottom: 0.9rem; }
+  .cover-title .amp { color: var(--accent); font-style: italic; }
+  .cover-subtitle { font-size: 1rem; color: var(--stardust); opacity: 0.85; margin-bottom: 1.5rem; max-width: 470px; line-height: 1.55; }
+  .cover-byline { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.14em; color: var(--dim); margin-bottom: 1.8rem; }
+  .cover-byline strong { color: var(--stardust); font-weight: 700; }
+  .cover-rule { width: 220px; max-width: 60%; margin-bottom: 1.3rem; }
+  .cover-meta { display: flex; gap: 2rem; align-items: center; }
+  .cover-ls { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 1.4rem; color: var(--accent); letter-spacing: 0.05em; }
+  .cover-meta-text { font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--dim2); line-height: 1.9; }
+  .cover-corner { position: absolute; top: 2rem; right: 2.5rem; text-align: right; }
+  .cover-corner-num { font-weight: 700; font-size: 4.5rem; line-height: 1; color: var(--accent); opacity: 0.22; }
+  .cover-corner-label { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); display: block; margin-top: -0.3rem; }
+
+  /* ── INTERIOR ── */
+  .interior { background: var(--page); border: 1px solid rgba(34,211,238,0.15); border-radius: 4px; overflow: hidden; min-height: 480px; }
+  .spread-2col { display: grid; grid-template-columns: 1fr 1fr; min-height: 440px; }
+  .spread-left, .spread-right { padding: 3rem 2.4rem; position: relative; }
+  .spread-left { border-right: 1px solid rgba(167,139,250,0.12); }
+
+  .spread-2col.stacked { display: flex; flex-direction: column; }
+  .spread-2col.stacked > .spread-left,
+  .spread-2col.stacked > .spread-right { border-right: none; }
+  .spread-2col.stacked > .col-diagram { order: 2; padding-top: 0; }
+  .spread-2col.stacked > .col-text { padding-left: max(2.4rem, calc((100% - 32rem) / 2)); padding-right: max(2.4rem, calc((100% - 32rem) / 2)); }
+  .spread-2col.stacked .diagram-wrap { height: auto; }
+  .spread-2col.stacked .diagram { max-width: 420px; }
+
+  .eyebrow { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.1rem; }
+  .body-text { font-size: 0.98rem; line-height: 1.72; color: var(--stardust); }
+  .body-text p { margin-bottom: 1rem; }
+  .body-text p:last-child { margin-bottom: 0; }
+  .body-text strong { font-weight: 700; color: var(--star-white); }
+  .body-text em { font-style: italic; color: var(--star-white); }
+  .body-text a { color: var(--cyan); text-decoration: none; border-bottom: 1px solid rgba(34,211,238,0.4); }
+  .body-text a:hover { border-bottom-color: var(--cyan); color: var(--star-white); }
+  .body-text .violet { color: var(--violet); font-weight: 700; }
+  .body-text .pink { color: var(--pink); font-weight: 700; }
+  .body-text .gold { color: var(--gold); font-weight: 700; }
+  .body-text .cyan { color: var(--cyan); font-weight: 700; }
+  .body-text .green { color: var(--green); font-weight: 700; }
+  .body-text .dim { color: var(--dim); }
+  .body-text .lede { font-size: 1.08rem; color: var(--star-white); }
+  .latin { font-style: italic; color: var(--star-white); }
+
+  .spread-heading { font-weight: 700; font-size: 1.9rem; line-height: 1.12; color: var(--star-white); margin-bottom: 0.7rem; letter-spacing: -0.01em; margin-top: 0; scroll-margin-top: 5rem; }
+  .spread-heading .spectrum-word { background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .rule { width: 40px; margin: 1rem 0; }
+
+  /* ── JOINT TAGS — the collection's whole point ── */
+  .joint { display: inline-flex; align-items: baseline; gap: 0.4rem; font-family: 'Space Mono', monospace; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; padding: 0.16rem 0.5rem; border-radius: 2px; white-space: nowrap; vertical-align: 0.12em; }
+  .joint::before { content: ''; width: 16px; height: 0; border-top-width: 2px; align-self: center; }
+  .joint-documented { color: var(--green); background: rgba(74,222,128,0.10); border: 1px solid rgba(74,222,128,0.32); }
+  .joint-documented::before { border-top-style: solid; border-top-color: var(--green); }
+  .joint-contested  { color: var(--gold); background: rgba(251,191,36,0.10); border: 1px solid rgba(251,191,36,0.32); }
+  .joint-contested::before { border-top-style: dashed; border-top-color: var(--gold); }
+  .joint-leap       { color: var(--pink); background: rgba(244,114,182,0.10); border: 1px solid rgba(244,114,182,0.32); }
+  .joint-leap::before { border-top-style: dotted; border-top-color: var(--pink); }
+  .joint-line { margin-bottom: 1rem !important; }
+
+  .pull-quote { font-size: 1.18rem; font-weight: 700; line-height: 1.4; color: var(--star-white); border-left: 3px solid var(--accent); padding-left: 1.1rem; margin: 1.4rem 0; font-style: italic; }
+  .pull-quote.violet { border-left-color: var(--violet); }
+  .pull-quote.cyan { border-left-color: var(--cyan); }
+  .pull-quote.gold { border-left-color: var(--gold); }
+  .pull-quote.pink { border-left-color: var(--pink); }
+  .pull-quote.green { border-left-color: var(--green); }
+  .pull-quote .attr { display: block; font-family: 'Space Mono', monospace; font-size: 0.6rem; font-weight: 400; font-style: normal; letter-spacing: 0.08em; color: var(--dim); margin-top: 0.6rem; }
+
+  .callout { margin: 1.3rem 0; padding: 1rem 1.15rem; background: rgba(34,211,238,0.06); border: 1px solid rgba(34,211,238,0.24); border-radius: 4px; font-size: 1rem; font-style: italic; color: var(--star-white); line-height: 1.55; }
+  .callout .attr { display: block; font-family: 'Space Mono', monospace; font-size: 0.58rem; font-style: normal; letter-spacing: 0.06em; color: var(--dim); margin-top: 0.5rem; }
+
+  .note { font-size: 0.84rem; line-height: 1.6; color: var(--dim); border-left: 2px solid rgba(34,211,238,0.28); padding-left: 0.9rem; margin: 1.1rem 0; }
+  .note strong { color: var(--stardust); font-weight: 700; }
+
+  /* ── THE WITHHELD APPARATUS — link 2 only ──
+     Every other link in this chain gets the format: a diagram, or a pull-quote doing
+     analytical work. Link 2 gets a plain bordered block and nothing else, and says so
+     on its face. Standing rule from A Field Guide to Turtles: a subject that cannot
+     take the apparatus gets a DIFFERENT card, not a smaller one. ── */
+  .withheld { border: 1px dashed rgba(193,101,58,0.5); border-radius: 4px; padding: 1.15rem 1.25rem; margin: 1.4rem 0; background: rgba(193,101,58,0.05); }
+  .withheld-label { font-family: 'Space Mono', monospace; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ember); margin-bottom: 0.6rem; }
+  .withheld p { font-size: 0.88rem; line-height: 1.62; color: var(--stardust); margin: 0; }
+
+  /* ── DIAGRAMS ── */
+  .diagram-wrap { display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; }
+  .diagram { width: 100%; max-width: 300px; display: block; }
+  .diagram-caption { font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim); text-align: center; margin-top: 0.9rem; line-height: 1.9; }
+
+  /* ── REFUSALS ── */
+  .refusals { margin-top: 1.3rem; }
+  .refusal { font-size: 0.88rem; line-height: 1.5; color: var(--stardust); padding: 0.55rem 0; border-bottom: 1px solid rgba(34,211,238,0.1); display: flex; gap: 0.6rem; align-items: baseline; }
+  .refusal:last-child { border-bottom: none; }
+  .refusal-tag { font-family: 'Space Mono', monospace; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ember); flex-shrink: 0; padding-top: 0.12rem; }
+  .refusal strong { color: var(--star-white); font-weight: 700; }
+
+  /* ── THE RUNNING SPINE — generated, never hand-edited ── */
+  .spine { border-top: 1px solid rgba(167,139,250,0.12); padding: 1.1rem 2.4rem 0.2rem; }
+  .spine svg { width: 100%; max-width: 620px; margin: 0 auto; display: block; overflow: visible; }
+  .spine-label { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); text-align: center; margin-top: 0.5rem; }
+  .spine-node { fill: var(--sp-dim); }
+  .spine-node.dim { fill: rgba(196,181,212,0.35); }
+  .spine-node.live { fill: var(--accent); }
+  .spine-ring { fill: none; stroke: var(--accent); stroke-width: 1.6; }
+  .spine-track { fill: none; stroke-width: 1.6; stroke-linecap: round; }
+  .spine-track.documented { stroke: rgba(74,222,128,0.55); }
+  .spine-track.contested  { stroke: rgba(251,191,36,0.6); stroke-dasharray: 6 4; }
+  .spine-track.leap       { stroke: rgba(244,114,182,0.6); stroke-dasharray: 1.5 4; }
+  .spine-track.dim        { opacity: 0.32; }
+  .spine-raillabel { font-family: 'Space Mono', monospace; font-size: 7px; letter-spacing: 0.18em; text-transform: uppercase; fill: var(--sp-dim); }
+
+  /* ── COLOPHON ── */
+  .colophon { padding: 3rem; display: flex; flex-direction: column; justify-content: space-between; min-height: 480px; background: radial-gradient(ellipse at 82% 18%, rgba(34,211,238,0.09) 0%, transparent 50%), radial-gradient(ellipse at 18% 85%, rgba(74,222,128,0.06) 0%, transparent 50%), var(--page); }
+  .colophon-top { border-bottom: 1px solid rgba(34,211,238,0.14); padding-bottom: 1.3rem; margin-bottom: 1.2rem; }
+  .colophon-ls { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 2.4rem; color: var(--accent); letter-spacing: 0.05em; display: block; margin-bottom: 0.4rem; }
+  .colophon-phrase { font-size: 0.98rem; font-weight: 700; font-style: italic; color: var(--stardust); }
+  .series-list { display: flex; flex-direction: column; gap: 0.38rem; margin-bottom: 1.2rem; }
+  .series-item { font-size: 0.72rem; color: var(--dim); letter-spacing: 0.01em; display: flex; gap: 0.7rem; align-items: baseline; line-height: 1.45; }
+  .series-item.current { color: var(--accent); font-weight: 700; }
+  .series-num { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim2); flex-shrink: 0; }
+  .series-item.current .series-num { color: var(--accent); }
+  .reflect { border-top: 1px solid rgba(34,211,238,0.14); padding-top: 1rem; margin-bottom: 1.2rem; }
+  .reflect-label { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.65rem; }
+  .reflect-q { font-size: 0.86rem; line-height: 1.55; color: var(--stardust); margin-bottom: 0.55rem; font-style: italic; }
+  .reflect-q:last-child { margin-bottom: 0; }
+  .colophon-body { font-size: 0.75rem; color: var(--dim); line-height: 1.75; margin-bottom: 1.2rem; }
+  .colophon-body a { color: var(--cyan); text-decoration: none; border-bottom: 1px solid rgba(34,211,238,0.4); }
+  .colophon-body a:hover { border-bottom-color: var(--cyan); }
+  .colophon-h { font-family: 'Space Mono', monospace; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: var(--stardust); margin: 1rem 0 0.4rem; scroll-margin-top: 5rem; }
+  .colophon-footer { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--dim); line-height: 2.2; border-top: 1px solid rgba(34,211,238,0.14); padding-top: 1rem; }
+
+  /* ── SPREAD FOOTER ── */
+  .spread-footer { display: flex; justify-content: space-between; align-items: center; padding: 0.9rem 2.4rem; border-top: 1px solid rgba(34,211,238,0.1); }
+  .spread-footer-left { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--dim); }
+  .spread-footer-right { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; color: var(--accent); }
+
+  .twinkle { position: fixed; width: 3px; height: 3px; border-radius: 50%; animation: twinkle-anim 3s ease-in-out infinite; pointer-events: none; z-index: 0; }
+
+  @media (max-width: 600px) {
+    .spread-2col { grid-template-columns: 1fr; }
+    .spread-left { border-right: none; border-bottom: 1px solid rgba(167,139,250,0.12); }
+    .spread-2col.stacked > .spread-left { border-bottom: none; }
+    .spread-2col.stacked > .col-text { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .cover-spread { padding: 2rem; min-height: 420px; }
+    .cover-motif { width: 224px; height: 224px; top: -4px; right: -24px; opacity: 0.5; }
+    .cover-title { font-size: 1.75rem; }
+    .spread-heading { font-size: 1.55rem; }
+    .spread-left, .spread-right { padding: 2rem 1.5rem; }
+    .colophon { padding: 2rem 1.5rem; }
+    .spine { padding: 1rem 1.5rem 0.2rem; }
+  }
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"The Name Was Already the Verdict","description":"A wordless record banned for its title, thirty years of engineering that had already called the sound a defect, and the falsified evidence under the apparatus that made it bannable.","image":"https://starstuff.earth/og-card.jpg","url":"https://starstuff.earth/the-name-was-already-the-verdict-zine.html","mainEntityOfPage":"https://starstuff.earth/the-name-was-already-the-verdict-zine.html","datePublished":"2026-09-02","author":{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/"},"publisher":[{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/","logo":{"@type":"ImageObject","url":"https://starstuff.earth/og-card.jpg"}},{"@type":"Organization","name":"More Realms","url":"https://morerealms.com/"}],"isPartOf":{"@type":"WebSite","name":"Star Stuff","url":"https://starstuff.earth/"},"license":"https://creativecommons.org/licenses/by-sa/4.0/"}</script>
+</head>
+<body>
+
+<div class="twinkle" style="top:9%;left:12%;background:var(--green);box-shadow:0 0 6px var(--green);animation-delay:-0.4s"></div>
+<div class="twinkle" style="top:24%;left:87%;background:var(--star-white);box-shadow:0 0 6px var(--star-white);animation-delay:-1.5s"></div>
+<div class="twinkle" style="top:57%;left:6%;background:var(--gold);box-shadow:0 0 6px var(--gold);animation-delay:-2.2s"></div>
+<div class="twinkle" style="top:74%;left:92%;background:var(--green);box-shadow:0 0 6px var(--green);animation-delay:-0.9s"></div>
+<div class="twinkle" style="top:89%;left:31%;background:var(--star-white);box-shadow:0 0 6px var(--star-white);animation-delay:-1.8s"></div>
+<div class="twinkle" style="top:41%;left:95%;background:var(--cyan);box-shadow:0 0 6px var(--cyan);animation-delay:-2.9s"></div>
+
+<div class="zine-shell">
+
+  <nav class="ss-nav" style="--nav-accent:#f472b6;" aria-label="Star Stuff collection">
+    <span class="ss-nav-home-group"><a class="ss-nav-home" href="index.html"><span class="ss-star" aria-hidden="true">★</span> stuff</a><a class="ss-nav-about" href="about.html">about</a>
+      <a class="ss-nav-search" href="search.html">search</a></span>
+    <span class="ss-nav-links">
+      <a class="ss-nav-prev" href="the-lizard-that-was-never-there-zine.html"><span class="ss-nav-arrow" aria-hidden="true">&lsaquo;</span> <span class="ss-nav-label">The Lizard That Was Never There</span></a>
+      <a class="ss-nav-next" href="collection-star-gazing.html"><span class="ss-nav-label">Star Gazing</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
+    </span>
+    <a class="ss-nav-collection" href="collection-how-we-got-here.html"><span class="ss-nav-collection-label">Collection</span> <span class="ss-nav-collection-name">How We Got Here</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
+  </nav>
+
+  <nav class="nav">
+    <div class="nav-brand"><a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks</a> × <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a> · Zine No. 88</div>
+    <div class="nav-controls">
+      <button class="nav-btn" id="prev-btn" onclick="changePage(-1)">← prev</button>
+      <span class="page-counter" id="page-counter">1 / 16</span>
+      <button class="nav-btn" id="next-btn" onclick="changePage(1)">next →</button>
+    </div>
+  </nav>
+<main>
+
+  <!-- ════ SPREAD 1: COVER ════ -->
+  <div class="spread active" id="spread-1">
+    <div class="cover-spread">
+      <svg class="cover-motif" viewBox="0 0 340 340" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <!-- Left: a clean sine, the specification. Right: the same wave with its peaks
+             flattened, and a label bracket that is deliberately EMPTY — the name has not
+             been applied yet, which is the whole chain.
+
+             NO TEXT IN THIS MOTIF, and nothing below y 132 or right of x 148 once the
+             group transform is applied: the cover's clean zone. Four shipped covers put
+             a caption here and landed on the gradient title. Shapes only, and measured
+             in the browser rather than eyeballed — see No. 85's note. -->
+        <g transform="translate(4,-6) scale(0.76)">
+        <g fill="none" stroke="rgba(34,211,238,0.9)" stroke-width="1.6" stroke-linecap="round">
+          <path d="M14 60 q 11 -26 22 0 t 22 0 t 22 0"/>
+        </g>
+        <g fill="rgba(34,211,238,0.95)">
+          <circle cx="14" cy="60" r="1.8"/><circle cx="80" cy="60" r="1.8"/>
+        </g>
+        <path d="M43 84 V104" fill="none" stroke="rgba(251,191,36,0.5)" stroke-width="1.4" stroke-dasharray="2 3"/>
+        <g fill="none" stroke="rgba(251,191,36,0.92)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 138 L20 124 H30 L36 138 L42 152 H52 L58 138 L64 124 H74 L80 138"/>
+        </g>
+        <g fill="none" stroke="rgba(167,139,250,0.85)" stroke-width="1.4">
+          <path d="M100 34 H140"/>
+          <path d="M100 34 V44"/><path d="M140 34 V44"/>
+          <path d="M120 34 V24"/>
+        </g>
+        <g fill="none" stroke="rgba(167,139,250,0.45)" stroke-width="1.3" stroke-dasharray="3 4">
+          <rect x="100" y="56" width="40" height="20" rx="2"/>
+          <rect x="100" y="86" width="40" height="20" rx="2"/>
+          <rect x="100" y="116" width="40" height="20" rx="2"/>
+        </g>
+        </g>
+      </svg>
+
+      <div class="cover-corner">
+        <div class="cover-corner-num" aria-hidden="true">88</div>
+        <span class="cover-corner-label">How We Got Here</span>
+      </div>
+
+      <div class="cover-issue">Stimpunks × More Realms · Zine No. 88</div>
+
+      <h1 class="cover-title">The Name Was<br><span class="amp">Already the Verdict</span></h1>
+
+      <p class="cover-subtitle">on a record with no words that was banned for its title, a title the musician did not choose, and thirty years of engineering that had already decided a deviation from the specification was damage</p>
+
+      <hr class="spectrum-line cover-rule">
+
+      <div class="cover-meta">
+        <p class="cover-meta-text">Thirteen links · nine documented, three contested, one leap. The chain runs on two rails — what was <em>built</em>, and what was <em>heard</em>. It crosses twice &mdash; from what was heard to what was built, and back.</p>
+      </div>
+
+      <div class="cover-ls">L★S</div>
+
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Name Was Already the Verdict · Stimpunks</span>
+        <span class="spread-footer-right">1</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 2 ════ -->
+  <div class="spread" id="spread-2">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The event · spring 1958</div>
+          <h2 class="spread-heading" id="the-ban">A record with no words in it, kept off the radio</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Two and a half minutes. No lyrics. No voice at any point. Radio stations across the United States declined to play it, on the grounds that it would incite violence among teenagers — and it reached number 16 on the pop chart and number 11 on the rhythm and blues chart anyway, on jukebox and counter sales.</p>
+            <p>The Library of Congress, adding the record to the National Recording Registry in 2008, puts the mechanism in one sentence: <strong>&ldquo;though <em>Rumble</em> contained no lyrics, many radio stations banned <em>Rumble</em> for its incendiary title.&rdquo;</strong></p>
+            <p>Hold that still for a second, because everything else here follows from it. <strong>A signal was transmitted that contained no propositions at all.</strong> There was nothing in it to agree or disagree with, nothing to quote in a complaint, no line anybody could point at. Whatever the objectors heard, they brought with them and left in it.</p>
+            <p>So the chain has a shape before it has any links. Something arrives that the apparatus cannot read, the apparatus reads it anyway, and the reading gets attributed to the thing.</p>
+            <p>What follows is thirteen steps back and forward from that record: to the word that was applied to it, to the accident that produced its sound, to thirty years of engineering that had already classified that sound as a fault, and to the reason a country was ready in 1958 to believe that a piece of music could make a child dangerous.</p>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Name Was Already the Verdict · Stimpunks</span>
+        <span class="spread-footer-right">2</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 3 ════ -->
+  <div class="spread" id="spread-3">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Link 1 · 1957–58</div>
+          <h2 class="spread-heading" id="oddball">It was not called that when it was made</h2>
+          <p class="joint-line"><span class="joint joint-documented">documented</span></p>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">The record that was banned for its title did not have that title when it was recorded. It was called <em>Oddball</em>.</p>
+            <p>That is not a footnote. <strong>The word that got it banned was not in the music, was not in the session, and was not the musician's.</strong> It arrived later, from outside, and the ban followed the word rather than the record.</p>
+            <p>Two labels — Capitol and Decca — turned it down. Archie Bleyer's Cadence label, best known at the time for Andy Williams and the Everly Brothers, took it on, which is not where anybody would have looked for the loudest record of 1958.</p>
+            <div class="note">
+              <p><strong>A small thing worth keeping:</strong> the Library of Congress essay writes the original title as &ldquo;Originally (accurately?) the piece was called <em>Oddball</em>.&rdquo; The parenthesis is the Library's, not ours. Somebody at the national archive of recorded sound thought the first name fit better, and put a question mark in a document that does not usually contain them.</p>
+            </div>
+            <p>So the chain's first link is a substitution. A descriptive name, chosen by the person who made the thing, is replaced by an evocative one chosen by somebody who heard it — and the second name is the one that gets acted on.</p>
+          </div>
+        </div>
+      </div>
+      <div class="spine"><svg viewBox="0 0 620 84" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain so far, 1 of 13: two rails — what was heard, and what was built, named and enforced about it. Live node: 1957, it was called Oddball."><path class="spine-track contested dim" d="M64 26 H106.8"/><path class="spine-track documented dim" d="M106.8 26 H149.7"/><path class="spine-track documented dim" d="M149.7 26 H192.5"/><path class="spine-track documented dim" d="M192.5 26 H216.1 V58 H235.3"/><path class="spine-track documented dim" d="M235.3 58 H278.2"/><path class="spine-track contested dim" d="M278.2 58 H321"/><path class="spine-track documented dim" d="M321 58 H363.8"/><path class="spine-track documented dim" d="M363.8 58 H406.7"/><path class="spine-track contested dim" d="M406.7 58 H449.5"/><path class="spine-track documented dim" d="M449.5 58 H473.1 V26 H492.3"/><path class="spine-track documented dim" d="M492.3 26 H535.2"/><path class="spine-track leap dim" d="M535.2 26 H578"/><text class="spine-raillabel" x="0" y="29">heard</text><text class="spine-raillabel" x="0" y="61">built</text><circle class="spine-node dim" cx="106.8" cy="26" r="3.2"/><circle class="spine-node dim" cx="149.7" cy="26" r="3.2"/><circle class="spine-node dim" cx="192.5" cy="26" r="3.2"/><circle class="spine-node dim" cx="235.3" cy="58" r="3.2"/><circle class="spine-node dim" cx="278.2" cy="58" r="3.2"/><circle class="spine-node dim" cx="321" cy="58" r="3.2"/><circle class="spine-node dim" cx="363.8" cy="58" r="3.2"/><circle class="spine-node dim" cx="406.7" cy="58" r="3.2"/><circle class="spine-node dim" cx="449.5" cy="58" r="3.2"/><circle class="spine-node dim" cx="492.3" cy="26" r="3.2"/><circle class="spine-node dim" cx="535.2" cy="26" r="3.2"/><circle class="spine-node dim" cx="578" cy="26" r="3.2"/><circle class="spine-node live" cx="64" cy="26" r="4.4"/><circle class="spine-ring" cx="64" cy="26" r="8"/></svg><div class="spine-label">1 · 1957 · it was called Oddball</div></div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Name Was Already the Verdict · Stimpunks</span>
+        <span class="spread-footer-right">3</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 4 ════ -->
+  <div class="spread" id="spread-4">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Link 2 · the renaming</div>
+          <h2 class="spread-heading" id="who-named-it">Nobody agrees who supplied the word</h2>
+          <p class="joint-line"><span class="joint joint-contested">contested</span></p>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Two accounts, both from serious places, and they name different people.</p>
+            <p><strong>The Library of Congress essay</strong> credits Archie Bleyer's daughter: she heard the record, liked it, and — after she and her friends decided the sound called to mind street gangs, fights and <em>West Side Story</em> — renamed it. The Library marks its own claim: <em>&ldquo;Legend has it that she also renamed the tune.&rdquo;</em></p>
+            <p><strong><em>Rolling Stone</em>, in its 2005 obituary</strong>, credits Phil Everly, on the grounds that the rough sound conjured images of a street fight.</p>
+            <p>We are not going to pick. This joint is marked <em>contested</em> and stays that way, and the disagreement is more useful than a resolution would be — <strong>because the two accounts agree on everything that matters.</strong></p>
+            <p>Both say the name came from the <em>listening</em> side rather than the making side. Both say it was chosen for an association the sound produced in somebody's head. And both describe the same operation: a texture arrives, a listener supplies a scene, and the scene gets written on the label.</p>
+            <p>Then the record is banned for the label. <strong>Whoever said the word, the word was a response to the music and was then treated as its content.</strong></p>
+          </div>
+        </div>
+      </div>
+      <div class="spine"><svg viewBox="0 0 620 84" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain so far, 2 of 13: two rails — what was heard, and what was built, named and enforced about it. Live node: 1958, nobody agrees who named it."><path class="spine-track contested" d="M64 26 H106.8"/><path class="spine-track documented dim" d="M106.8 26 H149.7"/><path class="spine-track documented dim" d="M149.7 26 H192.5"/><path class="spine-track documented dim" d="M192.5 26 H216.1 V58 H235.3"/><path class="spine-track documented dim" d="M235.3 58 H278.2"/><path class="spine-track contested dim" d="M278.2 58 H321"/><path class="spine-track documented dim" d="M321 58 H363.8"/><path class="spine-track documented dim" d="M363.8 58 H406.7"/><path class="spine-track contested dim" d="M406.7 58 H449.5"/><path class="spine-track documented dim" d="M449.5 58 H473.1 V26 H492.3"/><path class="spine-track documented dim" d="M492.3 26 H535.2"/><path class="spine-track leap dim" d="M535.2 26 H578"/><text class="spine-raillabel" x="0" y="29">heard</text><text class="spine-raillabel" x="0" y="61">built</text><circle class="spine-node" cx="64" cy="26" r="3.2"/><circle class="spine-node dim" cx="149.7" cy="26" r="3.2"/><circle class="spine-node dim" cx="192.5" cy="26" r="3.2"/><circle class="spine-node dim" cx="235.3" cy="58" r="3.2"/><circle class="spine-node dim" cx="278.2" cy="58" r="3.2"/><circle class="spine-node dim" cx="321" cy="58" r="3.2"/><circle class="spine-node dim" cx="363.8" cy="58" r="3.2"/><circle class="spine-node dim" cx="406.7" cy="58" r="3.2"/><circle class="spine-node dim" cx="449.5" cy="58" r="3.2"/><circle class="spine-node dim" cx="492.3" cy="26" r="3.2"/><circle class="spine-node dim" cx="535.2" cy="26" r="3.2"/><circle class="spine-node dim" cx="578" cy="26" r="3.2"/><circle class="spine-node live" cx="106.8" cy="26" r="4.4"/><circle class="spine-ring" cx="106.8" cy="26" r="8"/></svg><div class="spine-label">2 · 1958 · nobody agrees who named it</div></div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Name Was Already the Verdict · Stimpunks</span>
+        <span class="spread-footer-right">4</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 5 ════ -->
+  <div class="spread" id="spread-5">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Link 3 · Fredericksburg, Virginia, 1957</div>
+          <h2 class="spread-heading" id="the-accident">The sound was an accident before it was a technique</h2>
+          <p class="joint-line"><span class="joint joint-documented">documented</span></p>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">At a record hop, a local disc jockey asked the band for something the kids could do The Stroll to. The guitarist did not know the chords to the record of that name, so he improvised.</p>
+            <p>Then somebody grabbed one of the microphones and stuck it up against an amplifier.</p>
+            <p><strong>That is the origin of the sound.</strong> Not a design, not a pedal, not an idea about rebellion — a person in a hall pointing a live microphone at a speaker and the room getting a noise nobody had planned. In Wray's account, the kids went ape, and the band played the new thing four times in a row because the crowd kept chanting for the weird song.</p>
+            <div class="pull-quote">
+              <p>&ldquo;Play that weird song! Play that weird song!&rdquo;</p>
+              <p class="attr">— the crowd at Fredericksburg, as Wray remembered it, quoted in the Library of Congress Registry essay</p>
+            </div>
+            <p>Note what the room did with it, because it is the opposite of what the radio would do eight months later. <strong>The same unclassifiable noise was received as a reason to play it again.</strong> Nobody in that hall needed to know what it was.</p>
+          </div>
+        </div>
+      </div>
+      <div class="spine"><svg viewBox="0 0 620 84" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain so far, 3 of 13: two rails — what was heard, and what was built, named and enforced about it. Live node: 1957, a mic against an amp."><path class="spine-track contested" d="M64 26 H106.8"/><path class="spine-track documented" d="M106.8 26 H149.7"/><path class="spine-track documented dim" d="M149.7 26 H192.5"/><path class="spine-track documented dim" d="M192.5 26 H216.1 V58 H235.3"/><path class="spine-track documented dim" d="M235.3 58 H278.2"/><path class="spine-track contested dim" d="M278.2 58 H321"/><path class="spine-track documented dim" d="M321 58 H363.8"/><path class="spine-track documented dim" d="M363.8 58 H406.7"/><path class="spine-track contested dim" d="M406.7 58 H449.5"/><path class="spine-track documented dim" d="M449.5 58 H473.1 V26 H492.3"/><path class="spine-track documented dim" d="M492.3 26 H535.2"/><path class="spine-track leap dim" d="M535.2 26 H578"/><text class="spine-raillabel" x="0" y="29">heard</text><text class="spine-raillabel" x="0" y="61">built</text><circle class="spine-node" cx="64" cy="26" r="3.2"/><circle class="spine-node" cx="106.8" cy="26" r="3.2"/><circle class="spine-node dim" cx="192.5" cy="26" r="3.2"/><circle class="spine-node dim" cx="235.3" cy="58" r="3.2"/><circle class="spine-node dim" cx="278.2" cy="58" r="3.2"/><circle class="spine-node dim" cx="321" cy="58" r="3.2"/><circle class="spine-node dim" cx="363.8" cy="58" r="3.2"/><circle class="spine-node dim" cx="406.7" cy="58" r="3.2"/><circle class="spine-node dim" cx="449.5" cy="58" r="3.2"/><circle class="spine-node dim" cx="492.3" cy="26" r="3.2"/><circle class="spine-node dim" cx="535.2" cy="26" r="3.2"/><circle class="spine-node dim" cx="578" cy="26" r="3.2"/><circle class="spine-node live" cx="149.7" cy="26" r="4.4"/><circle class="spine-ring" cx="149.7" cy="26" r="8"/></svg><div class="spine-label">3 · 1957 · a mic against an amp</div></div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Name Was Already the Verdict · Stimpunks</span>
+        <span class="spread-footer-right">5</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 6 ════ -->
+  <div class="spread" id="spread-6">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Link 4 · the studio</div>
+          <h2 class="spread-heading" id="the-tweeters">He had to damage equipment to get the accident back</h2>
+          <p class="joint-line"><span class="joint joint-documented">documented</span></p>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">In the studio it came out clean. Too clean, and — Wray's word — too country. The accident did not survive being recorded properly, which is a sentence worth reading twice.</p>
+            <p>So he made a hole in the equipment. In his own account, given to <em>Guitar</em> magazine and quoted in the Registry essay: he got a pen and started punching holes in the <strong>tweeters</strong>. <em>&ldquo;I didn't mess with the big speaker.&rdquo;</em> Plus tremolo, and a combination of the two at the end.</p>
+            <div class="note">
+              <p><strong>The version everybody prints is tidier than his.</strong> <em>The New York Times</em> obituary and <em>Rolling Stone</em> both have him poking <em>a pencil</em> through <em>the speaker cone</em>, and that is the sentence that has travelled — into Wikipedia, into a hundred articles, into our own first draft of this page.</p>
+              <p>A pen through the tweeters is a more precise act than a pencil through the cone: it is the high end he was after, and he deliberately left the woofer alone. <strong>The smoothed version is easier to say and slightly wrong, which is this collection's whole subject arriving early.</strong></p>
+            </div>
+            <p>What he was doing has a plain description. <strong>He introduced a defect on purpose, in a component whose entire specification is to introduce none</strong>, because the defect was the part that meant something.</p>
+          </div>
+        </div>
+      </div>
+      <div class="spine"><svg viewBox="0 0 620 84" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain so far, 4 of 13: two rails — what was heard, and what was built, named and enforced about it. Live node: 1958, a pen through the tweeters."><path class="spine-track contested" d="M64 26 H106.8"/><path class="spine-track documented" d="M106.8 26 H149.7"/><path class="spine-track documented" d="M149.7 26 H192.5"/><path class="spine-track documented dim" d="M192.5 26 H216.1 V58 H235.3"/><path class="spine-track documented dim" d="M235.3 58 H278.2"/><path class="spine-track contested dim" d="M278.2 58 H321"/><path class="spine-track documented dim" d="M321 58 H363.8"/><path class="spine-track documented dim" d="M363.8 58 H406.7"/><path class="spine-track contested dim" d="M406.7 58 H449.5"/><path class="spine-track documented dim" d="M449.5 58 H473.1 V26 H492.3"/><path class="spine-track documented dim" d="M492.3 26 H535.2"/><path class="spine-track leap dim" d="M535.2 26 H578"/><text class="spine-raillabel" x="0" y="29">heard</text><text class="spine-raillabel" x="0" y="61">built</text><circle class="spine-node" cx="64" cy="26" r="3.2"/><circle class="spine-node" cx="106.8" cy="26" r="3.2"/><circle class="spine-node" cx="149.7" cy="26" r="3.2"/><circle class="spine-node dim" cx="235.3" cy="58" r="3.2"/><circle class="spine-node dim" cx="278.2" cy="58" r="3.2"/><circle class="spine-node dim" cx="321" cy="58" r="3.2"/><circle class="spine-node dim" cx="363.8" cy="58" r="3.2"/><circle class="spine-node dim" cx="406.7" cy="58" r="3.2"/><circle class="spine-node dim" cx="449.5" cy="58" r="3.2"/><circle class="spine-node dim" cx="492.3" cy="26" r="3.2"/><circle class="spine-node dim" cx="535.2" cy="26" r="3.2"/><circle class="spine-node dim" cx="578" cy="26" r="3.2"/><circle class="spine-node live" cx="192.5" cy="26" r="4.4"/><circle class="spine-ring" cx="192.5" cy="26" r="8"/></svg><div class="spine-label">4 · 1958 · a pen through the tweeters</div></div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Name Was Already the Verdict · Stimpunks</span>
+        <span class="spread-footer-right">6</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 7 ════ -->
+  <div class="spread" id="spread-7">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Link 5 · Hudson River, 2 August 1927</div>
+          <h2 class="spread-heading" id="black">Thirty years of work had gone into removing exactly this</h2>
+          <p class="joint-line"><span class="joint joint-documented">documented</span></p>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Harold Black, six years out of college, is riding the Lackawanna Ferry across the Hudson to Bell Labs on West Street. He wants to write something down and has nothing to write on, so he uses his morning paper — one page of which happens to be blank.</p>
+            <p>The problem he is solving is stated plainly in the engineering history: <strong>the distortion and instability of vacuum-tube amplifiers, compounded when they were connected in tandem</strong> over a long-distance telephone system. Every repeater along the line added its own nonlinearity to the one before. Speech came out the far end unrecognisable.</p>
+            <p>His answer is negative feedback: take some of the output, invert it, feed it back to the input. You lose gain — a great deal of it — and in exchange the amplifier stops depending on the temperamental part of itself. Linearity is bought with amplification.</p>
+            <p><strong>It works, and it is one of the century's genuinely great inventions.</strong> It carried long-distance telephony, fire control in the Second World War, the first operational amplifiers, and it survived the move from vacuum tubes to microelectronics intact, because it was never really about tubes.</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 380 210" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fb-t fb-d">
+              <title id="fb-t">A negative feedback loop around an amplifier</title>
+              <desc id="fb-d">A signal enters at the left, passes through a summing point, then through a block labelled amplifier, and out to the right. A path from the output returns to the summing point marked with a minus sign, so part of the output is subtracted from the input.</desc>
+              <line x1="14" y1="70" x2="72" y2="70" stroke="#22d3ee" stroke-width="2"/>
+              <circle cx="86" cy="70" r="14" fill="none" stroke="#c8bfde" stroke-width="1.8"/>
+              <text x="79" y="76" fill="#f9fafb" font-family="'Atkinson Hyperlegible Next',sans-serif" font-size="15" font-weight="700">+</text>
+              <line x1="100" y1="70" x2="150" y2="70" stroke="#22d3ee" stroke-width="2"/>
+              <rect x="150" y="46" width="96" height="48" rx="4" fill="none" stroke="#fbbf24" stroke-width="2"/>
+              <text x="163" y="76" fill="#fbbf24" font-family="'Atkinson Hyperlegible Next',sans-serif" font-size="15" font-weight="700">amplifier</text>
+              <line x1="246" y1="70" x2="352" y2="70" stroke="#22d3ee" stroke-width="2"/>
+              <path d="M300 70 V150 H86 V84" fill="none" stroke="#a78bfa" stroke-width="2"/>
+              <text x="96" y="98" fill="#a78bfa" font-family="'Atkinson Hyperlegible Next',sans-serif" font-size="16" font-weight="700">&#8722;</text>
+              <text x="14" y="46" fill="#c4b5d4" font-family="'Atkinson Hyperlegible Next',sans-serif" font-size="13">in</text>
+              <text x="330" y="46" fill="#c4b5d4" font-family="'Atkinson Hyperlegible Next',sans-serif" font-size="13">out</text>
+              <text x="128" y="174" fill="#c4b5d4" font-family="'Atkinson Hyperlegible Next',sans-serif" font-size="13">a portion of the output, subtracted</text>
+              <text x="128" y="192" fill="#c4b5d4" font-family="'Atkinson Hyperlegible Next',sans-serif" font-size="13">from what goes in</text>
+            </svg>
+            <p class="diagram-caption">Gain traded for linearity. The amplifier stops being the thing that decides what comes out; the feedback network does, and a network of passive parts is far less temperamental than a valve. Everything downstream of 1927 in audio engineering treats the difference between input and output as an error to be driven toward zero.</p>
+          </div>
+        </div>
+      </div>
+      <div class="spine"><svg viewBox="0 0 620 84" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain so far, 5 of 13: two rails — what was heard, and what was built, named and enforced about it. Live node: 1927, the ferry, and the blank page."><path class="spine-track contested" d="M64 26 H106.8"/><path class="spine-track documented" d="M106.8 26 H149.7"/><path class="spine-track documented" d="M149.7 26 H192.5"/><path class="spine-track documented" d="M192.5 26 H216.1 V58 H235.3"/><path class="spine-track documented dim" d="M235.3 58 H278.2"/><path class="spine-track contested dim" d="M278.2 58 H321"/><path class="spine-track documented dim" d="M321 58 H363.8"/><path class="spine-track documented dim" d="M363.8 58 H406.7"/><path class="spine-track contested dim" d="M406.7 58 H449.5"/><path class="spine-track documented dim" d="M449.5 58 H473.1 V26 H492.3"/><path class="spine-track documented dim" d="M492.3 26 H535.2"/><path class="spine-track leap dim" d="M535.2 26 H578"/><text class="spine-raillabel" x="0" y="29">heard</text><text class="spine-raillabel" x="0" y="61">built</text><circle class="spine-node" cx="64" cy="26" r="3.2"/><circle class="spine-node" cx="106.8" cy="26" r="3.2"/><circle class="spine-node" cx="149.7" cy="26" r="3.2"/><circle class="spine-node" cx="192.5" cy="26" r="3.2"/><circle class="spine-node dim" cx="278.2" cy="58" r="3.2"/><circle class="spine-node dim" cx="321" cy="58" r="3.2"/><circle class="spine-node dim" cx="363.8" cy="58" r="3.2"/><circle class="spine-node dim" cx="406.7" cy="58" r="3.2"/><circle class="spine-node dim" cx="449.5" cy="58" r="3.2"/><circle class="spine-node dim" cx="492.3" cy="26" r="3.2"/><circle class="spine-node dim" cx="535.2" cy="26" r="3.2"/><circle class="spine-node dim" cx="578" cy="26" r="3.2"/><circle class="spine-node live" cx="235.3" cy="58" r="4.4"/><circle class="spine-ring" cx="235.3" cy="58" r="8"/></svg><div class="spine-label">5 · 1927 · the ferry, and the blank page</div></div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Name Was Already the Verdict · Stimpunks</span>
+        <span class="spread-footer-right">7</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 8 ════ -->
+  <div class="spread" id="spread-8">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Link 6 · 1580s, and 1887</div>
+          <h2 class="spread-heading" id="the-word">The word had held the verdict since before anyone could measure it</h2>
+          <p class="joint-line"><span class="joint joint-documented">documented</span></p>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">The property Black spent his career reducing has a name, and the name is not neutral. It never was.</p>
+            <p><strong><span class="latin">Distortion</span></strong>, in English from the 1580s: <em>the action of distorting; the state of being twisted out of shape.</em> From Latin <span class="latin">distorquere</span> — <span class="latin">dis-</span>, completely, plus <span class="latin">torquere</span>, to twist. The same <span class="latin">torquere</span> that gives us <em>torque</em>, and <em>torture</em>.</p>
+            <p>The technical sense — a change in the waveform of a signal by a device — arrives in <strong>1887</strong>. So by the time Black got on the ferry, the electrical property had been carrying that word for forty years, and the word had been carrying its judgement for three hundred.</p>
+            <div class="pull-quote">
+              <p>Out of shape. Not <em>a different shape</em>. Out of it.</p>
+              <p class="attr">— what the word has claimed since the 1580s</p>
+            </div>
+            <p>There is a version of this history where the property gets a flat name — <em>nonlinearity</em>, which is what the mathematics calls it and which asserts nothing at all. That is not the name it got. It got a name that says the signal has been twisted away from the shape it should have had, and <strong>the shape it should have had was decided by what the telephone network needed.</strong></p>
+            <p>Which was the right decision, for the telephone network. The trouble starts when the specification stops being a description of a job and becomes a description of how sound ought to be.</p>
+          </div>
+        </div>
+      </div>
+      <div class="spine"><svg viewBox="0 0 620 84" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain so far, 6 of 13: two rails — what was heard, and what was built, named and enforced about it. Live node: 1580s, twisted out of shape."><path class="spine-track contested" d="M64 26 H106.8"/><path class="spine-track documented" d="M106.8 26 H149.7"/><path class="spine-track documented" d="M149.7 26 H192.5"/><path class="spine-track documented" d="M192.5 26 H216.1 V58 H235.3"/><path class="spine-track documented" d="M235.3 58 H278.2"/><path class="spine-track contested dim" d="M278.2 58 H321"/><path class="spine-track documented dim" d="M321 58 H363.8"/><path class="spine-track documented dim" d="M363.8 58 H406.7"/><path class="spine-track contested dim" d="M406.7 58 H449.5"/><path class="spine-track documented dim" d="M449.5 58 H473.1 V26 H492.3"/><path class="spine-track documented dim" d="M492.3 26 H535.2"/><path class="spine-track leap dim" d="M535.2 26 H578"/><text class="spine-raillabel" x="0" y="29">heard</text><text class="spine-raillabel" x="0" y="61">built</text><circle class="spine-node" cx="64" cy="26" r="3.2"/><circle class="spine-node" cx="106.8" cy="26" r="3.2"/><circle class="spine-node" cx="149.7" cy="26" r="3.2"/><circle class="spine-node" cx="192.5" cy="26" r="3.2"/><circle class="spine-node" cx="235.3" cy="58" r="3.2"/><circle class="spine-node dim" cx="321" cy="58" r="3.2"/><circle class="spine-node dim" cx="363.8" cy="58" r="3.2"/><circle class="spine-node dim" cx="406.7" cy="58" r="3.2"/><circle class="spine-node dim" cx="449.5" cy="58" r="3.2"/><circle class="spine-node dim" cx="492.3" cy="26" r="3.2"/><circle class="spine-node dim" cx="535.2" cy="26" r="3.2"/><circle class="spine-node dim" cx="578" cy="26" r="3.2"/><circle class="spine-node live" cx="278.2" cy="58" r="4.4"/><circle class="spine-ring" cx="278.2" cy="58" r="8"/></svg><div class="spine-label">6 · 1580s · twisted out of shape</div></div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Name Was Already the Verdict · Stimpunks</span>
+        <span class="spread-footer-right">8</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 9 ════ -->
+  <div class="spread" id="spread-9">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Link 7 · the hinge</div>
+          <h2 class="spread-heading" id="the-hinge">One measurement, two names, and only one of them is a fact</h2>
+          <p class="joint-line"><span class="joint joint-contested">contested</span></p>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Put an oscilloscope on Wray's amplifier in 1958 and on a Bell repeater in 1938 and you can measure the same thing: the output is not a scaled copy of the input. Harmonics are present that were not sent in.</p>
+            <p>That is the measurement, and it is not in dispute. <strong>Everything else on this spread is a naming decision.</strong></p>
+            <p>Call it <em>distortion</em> and you have said: the device is failing to do what it is for. Call it <em>timbre</em>, or <em>tone</em>, or <em>the sound of that amp</em>, and you have said: the device has a character, and the character is why you chose it.</p>
+            <p><strong>Same reading. Same physics. The difference is a claim about whose specification counts</strong>, and it is smuggled in as though it were part of the measurement.</p>
+            <p>We mark this joint <em>contested</em> rather than documented, because the two previous links are history and this one is an argument about history. It is the step a reader is entitled to refuse.</p>
+          </div>
+        </div>
+        <div class="spread-right col-diagram">
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 380 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="hinge-t hinge-d">
+              <title id="hinge-t">One clipped waveform, labelled two ways</title>
+              <desc id="hinge-d">A single waveform whose peaks are flattened is drawn once in the centre. An arrow to the left labels it defect, with the note not to specification. An identical arrow to the right labels it signature, with the note not in the specification. The waveform itself is unchanged.</desc>
+              <g fill="none" stroke="#f9fafb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M40 120 L64 84 H104 L128 120 L152 156 H192 L216 120 L240 84 H280 L304 120"/>
+              </g>
+              <text x="40" y="184" fill="#c4b5d4" font-family="'Atkinson Hyperlegible Next',sans-serif" font-size="13">one waveform, measured once</text>
+              <line x1="100" y1="62" x2="64" y2="78" stroke="#f472b6" stroke-width="1.8"/>
+              <text x="24" y="34" fill="#f472b6" font-family="'Atkinson Hyperlegible Next',sans-serif" font-size="15" font-weight="700">defect</text>
+              <text x="24" y="50" fill="#c4b5d4" font-family="'Atkinson Hyperlegible Next',sans-serif" font-size="12.5">not to specification</text>
+              <line x1="244" y1="62" x2="280" y2="78" stroke="#4ade80" stroke-width="1.8"/>
+              <text x="266" y="34" fill="#4ade80" font-family="'Atkinson Hyperlegible Next',sans-serif" font-size="15" font-weight="700">signature</text>
+              <text x="228" y="50" fill="#c4b5d4" font-family="'Atkinson Hyperlegible Next',sans-serif" font-size="12.5">not in the specification</text>
+              <text x="40" y="222" fill="#fbbf24" font-family="'Atkinson Hyperlegible Next',sans-serif" font-size="13.5" font-weight="700">the reading does not change. the word does.</text>
+            </svg>
+            <p class="diagram-caption">Two prepositions doing all the work. <em>Not to specification</em> is a fault report. <em>Not in the specification</em> is a description of something the specification never undertook to cover. The oscilloscope cannot tell them apart, because the difference is not in the signal.</p>
+          </div>
+        </div>
+      </div>
+      <div class="spine"><svg viewBox="0 0 620 84" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain so far, 7 of 13: two rails — what was heard, and what was built, named and enforced about it. Live node: one reading, two names."><path class="spine-track contested" d="M64 26 H106.8"/><path class="spine-track documented" d="M106.8 26 H149.7"/><path class="spine-track documented" d="M149.7 26 H192.5"/><path class="spine-track documented" d="M192.5 26 H216.1 V58 H235.3"/><path class="spine-track documented" d="M235.3 58 H278.2"/><path class="spine-track contested" d="M278.2 58 H321"/><path class="spine-track documented dim" d="M321 58 H363.8"/><path class="spine-track documented dim" d="M363.8 58 H406.7"/><path class="spine-track contested dim" d="M406.7 58 H449.5"/><path class="spine-track documented dim" d="M449.5 58 H473.1 V26 H492.3"/><path class="spine-track documented dim" d="M492.3 26 H535.2"/><path class="spine-track leap dim" d="M535.2 26 H578"/><text class="spine-raillabel" x="0" y="29">heard</text><text class="spine-raillabel" x="0" y="61">built</text><circle class="spine-node" cx="64" cy="26" r="3.2"/><circle class="spine-node" cx="106.8" cy="26" r="3.2"/><circle class="spine-node" cx="149.7" cy="26" r="3.2"/><circle class="spine-node" cx="192.5" cy="26" r="3.2"/><circle class="spine-node" cx="235.3" cy="58" r="3.2"/><circle class="spine-node" cx="278.2" cy="58" r="3.2"/><circle class="spine-node dim" cx="363.8" cy="58" r="3.2"/><circle class="spine-node dim" cx="406.7" cy="58" r="3.2"/><circle class="spine-node dim" cx="449.5" cy="58" r="3.2"/><circle class="spine-node dim" cx="492.3" cy="26" r="3.2"/><circle class="spine-node dim" cx="535.2" cy="26" r="3.2"/><circle class="spine-node dim" cx="578" cy="26" r="3.2"/><circle class="spine-node live" cx="321" cy="58" r="4.4"/><circle class="spine-ring" cx="321" cy="58" r="8"/></svg><div class="spine-label">7 · one reading, two names</div></div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Name Was Already the Verdict · Stimpunks</span>
+        <span class="spread-footer-right">9</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 10 ════ -->
+  <div class="spread" id="spread-10">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Link 8 · New York, April 1954</div>
+          <h2 class="spread-heading" id="the-apparatus">Why a wordless record could be dangerous at all</h2>
+          <p class="joint-line"><span class="joint joint-documented">documented</span></p>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Four years before <em>Rumble</em>, the United States built a working apparatus for deciding that a medium was making children violent — and did it fast, in public, with a psychiatrist at the front.</p>
+            <p>Fredric Wertham's <em><span class="latin">Seduction of the Innocent</span></em> is published in 1954. The <strong>Senate Subcommittee on Juvenile Delinquency</strong>, chaired by Estes Kefauver, holds hearings in New York on <strong>21–22 April and 4 June 1954</strong>, taking twenty-two witnesses — psychiatrists, publishers, retailers, cartoonists. Wertham is among the most important of them, and tells the subcommittee that Hitler was a beginner compared to the comic book industry.</p>
+            <p>The same year, the industry forestalls legislation by censoring itself: the Comics Magazine Association of America creates the <strong>Comics Code Authority</strong>, and a seal on the cover becomes the condition of distribution.</p>
+            <p>What that whole sequence establishes is a habit of mind, and the habit is the link. <strong>A medium can be judged dangerous on the strength of what an adult believes a child will do with it</strong>, without any need to demonstrate the mechanism, and the judgement can be enforced by people who are not a court.</p>
+            <p>By 1958 the country is, in the Library of Congress's phrase, <em>&ldquo;anxious over sudden spikes in juvenile delinquency&rdquo;</em> and <em>&ldquo;eager to drum out anything that could be cited as an instigator.&rdquo;</em> A record called <em>Rumble</em> is a thing that can be cited.</p>
+          </div>
+        </div>
+      </div>
+      <div class="spine"><svg viewBox="0 0 620 84" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain so far, 8 of 13: two rails — what was heard, and what was built, named and enforced about it. Live node: 1954, the hearings, and the Code."><path class="spine-track contested" d="M64 26 H106.8"/><path class="spine-track documented" d="M106.8 26 H149.7"/><path class="spine-track documented" d="M149.7 26 H192.5"/><path class="spine-track documented" d="M192.5 26 H216.1 V58 H235.3"/><path class="spine-track documented" d="M235.3 58 H278.2"/><path class="spine-track contested" d="M278.2 58 H321"/><path class="spine-track documented" d="M321 58 H363.8"/><path class="spine-track documented dim" d="M363.8 58 H406.7"/><path class="spine-track contested dim" d="M406.7 58 H449.5"/><path class="spine-track documented dim" d="M449.5 58 H473.1 V26 H492.3"/><path class="spine-track documented dim" d="M492.3 26 H535.2"/><path class="spine-track leap dim" d="M535.2 26 H578"/><text class="spine-raillabel" x="0" y="29">heard</text><text class="spine-raillabel" x="0" y="61">built</text><circle class="spine-node" cx="64" cy="26" r="3.2"/><circle class="spine-node" cx="106.8" cy="26" r="3.2"/><circle class="spine-node" cx="149.7" cy="26" r="3.2"/><circle class="spine-node" cx="192.5" cy="26" r="3.2"/><circle class="spine-node" cx="235.3" cy="58" r="3.2"/><circle class="spine-node" cx="278.2" cy="58" r="3.2"/><circle class="spine-node" cx="321" cy="58" r="3.2"/><circle class="spine-node dim" cx="406.7" cy="58" r="3.2"/><circle class="spine-node dim" cx="449.5" cy="58" r="3.2"/><circle class="spine-node dim" cx="492.3" cy="26" r="3.2"/><circle class="spine-node dim" cx="535.2" cy="26" r="3.2"/><circle class="spine-node dim" cx="578" cy="26" r="3.2"/><circle class="spine-node live" cx="363.8" cy="58" r="4.4"/><circle class="spine-ring" cx="363.8" cy="58" r="8"/></svg><div class="spine-label">8 · 1954 · the hearings, and the Code</div></div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Name Was Already the Verdict · Stimpunks</span>
+        <span class="spread-footer-right">10</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 11 ════ -->
+  <div class="spread" id="spread-11">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Link 9 · 2010, and 2012</div>
+          <h2 class="spread-heading" id="tilley">The evidence under the apparatus was falsified, and it took fifty-eight years to check</h2>
+          <p class="joint-line"><span class="joint joint-documented">documented</span></p>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Wertham's personal archive was opened to researchers in 2010. In 2012 the librarian and scholar <strong>Carol L. Tilley</strong> published what she found in it.</p>
+            <p><em>&ldquo;Seducing the Innocent: Fredric Wertham and the Falsifications That Helped Condemn Comics&rdquo;</em>, <em>Information &amp; Culture: A Journal of History</em> 47(4), 2012, pages 383–413. Comparing his own case notes against the book built from them, Tilley documents that he <strong>revised children's ages, distorted their quotes, omitted other causal factors</strong>, and generally played fast and loose with the data he had gathered.</p>
+            <div class="pull-quote">
+              <p>The censorship regime was real. The clinic behind it was partly invented.</p>
+              <p class="attr">— and the gap between those two sentences is fifty-eight years wide</p>
+            </div>
+            <p><strong>This is the link this collection exists for.</strong> Not pseudo-science, which announces itself. This is the other thing: the authority of the clinic kept, the practice of the clinic dropped — an argument that looked like evidence, was treated as evidence, produced a code, changed an industry, and was not audited until the man had been dead for thirty years and the archive was opened.</p>
+            <p>Nothing about the method was exotic. Tilley read the notes and compared them to the book. <strong>That was available the entire time.</strong> What was missing was anybody with standing who wanted to look, and a climate in which looking would have been welcome.</p>
+          </div>
+        </div>
+      </div>
+      <div class="spine"><svg viewBox="0 0 620 84" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain so far, 9 of 13: two rails — what was heard, and what was built, named and enforced about it. Live node: 2012, the case notes, finally read."><path class="spine-track contested" d="M64 26 H106.8"/><path class="spine-track documented" d="M106.8 26 H149.7"/><path class="spine-track documented" d="M149.7 26 H192.5"/><path class="spine-track documented" d="M192.5 26 H216.1 V58 H235.3"/><path class="spine-track documented" d="M235.3 58 H278.2"/><path class="spine-track contested" d="M278.2 58 H321"/><path class="spine-track documented" d="M321 58 H363.8"/><path class="spine-track documented" d="M363.8 58 H406.7"/><path class="spine-track contested dim" d="M406.7 58 H449.5"/><path class="spine-track documented dim" d="M449.5 58 H473.1 V26 H492.3"/><path class="spine-track documented dim" d="M492.3 26 H535.2"/><path class="spine-track leap dim" d="M535.2 26 H578"/><text class="spine-raillabel" x="0" y="29">heard</text><text class="spine-raillabel" x="0" y="61">built</text><circle class="spine-node" cx="64" cy="26" r="3.2"/><circle class="spine-node" cx="106.8" cy="26" r="3.2"/><circle class="spine-node" cx="149.7" cy="26" r="3.2"/><circle class="spine-node" cx="192.5" cy="26" r="3.2"/><circle class="spine-node" cx="235.3" cy="58" r="3.2"/><circle class="spine-node" cx="278.2" cy="58" r="3.2"/><circle class="spine-node" cx="321" cy="58" r="3.2"/><circle class="spine-node" cx="363.8" cy="58" r="3.2"/><circle class="spine-node dim" cx="449.5" cy="58" r="3.2"/><circle class="spine-node dim" cx="492.3" cy="26" r="3.2"/><circle class="spine-node dim" cx="535.2" cy="26" r="3.2"/><circle class="spine-node dim" cx="578" cy="26" r="3.2"/><circle class="spine-node live" cx="406.7" cy="58" r="4.4"/><circle class="spine-ring" cx="406.7" cy="58" r="8"/></svg><div class="spine-label">9 · 2012 · the case notes, finally read</div></div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Name Was Already the Verdict · Stimpunks</span>
+        <span class="spread-footer-right">11</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 12 ════ -->
+  <div class="spread" id="spread-12">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Link 10 · the joint that does not hold</div>
+          <h2 class="spread-heading" id="did-it-reach">Did any of that actually reach this record?</h2>
+          <p class="joint-line"><span class="joint joint-contested">contested</span></p>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Here is where a chain like this wants to close itself, and where we are going to stop it.</p>
+            <p><strong>No documented line runs from the Kefauver subcommittee to the banning of <em>Rumble</em>.</strong> No federal body banned the record. No code covered it. What happened is that individual stations, in Boston and New York and elsewhere, declined to play a record — which is not censorship in the legal sense at all, and is a decision each of them made privately and mostly without leaving a paper trail.</p>
+            <p>What we can say is that the Library of Congress, describing the climate, connects the two: a nation anxious about delinquency, eager to identify instigators. That is a national archive's characterisation, and it is evidence about the atmosphere rather than about the causal step.</p>
+            <div class="note">
+              <p><strong>This is the form doing its job rather than failing.</strong> A Burke chain is built to feel inevitable — that is the pleasure of the genre and it is exactly what makes it dangerous. So every joint here carries a tag, and the reader can see which ones are load-bearing history and which are ours.</p>
+              <p>If you delete this link, the chain still stands: a record was banned for a name it acquired from a listener. What you lose is the explanation of <em>why 1958 was ready to do that</em>, and the explanation is a good one. It is just not proved.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="spine"><svg viewBox="0 0 620 84" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain so far, 10 of 13: two rails — what was heard, and what was built, named and enforced about it. Live node: 1958, no line runs to this record."><path class="spine-track contested" d="M64 26 H106.8"/><path class="spine-track documented" d="M106.8 26 H149.7"/><path class="spine-track documented" d="M149.7 26 H192.5"/><path class="spine-track documented" d="M192.5 26 H216.1 V58 H235.3"/><path class="spine-track documented" d="M235.3 58 H278.2"/><path class="spine-track contested" d="M278.2 58 H321"/><path class="spine-track documented" d="M321 58 H363.8"/><path class="spine-track documented" d="M363.8 58 H406.7"/><path class="spine-track contested" d="M406.7 58 H449.5"/><path class="spine-track documented dim" d="M449.5 58 H473.1 V26 H492.3"/><path class="spine-track documented dim" d="M492.3 26 H535.2"/><path class="spine-track leap dim" d="M535.2 26 H578"/><text class="spine-raillabel" x="0" y="29">heard</text><text class="spine-raillabel" x="0" y="61">built</text><circle class="spine-node" cx="64" cy="26" r="3.2"/><circle class="spine-node" cx="106.8" cy="26" r="3.2"/><circle class="spine-node" cx="149.7" cy="26" r="3.2"/><circle class="spine-node" cx="192.5" cy="26" r="3.2"/><circle class="spine-node" cx="235.3" cy="58" r="3.2"/><circle class="spine-node" cx="278.2" cy="58" r="3.2"/><circle class="spine-node" cx="321" cy="58" r="3.2"/><circle class="spine-node" cx="363.8" cy="58" r="3.2"/><circle class="spine-node" cx="406.7" cy="58" r="3.2"/><circle class="spine-node dim" cx="492.3" cy="26" r="3.2"/><circle class="spine-node dim" cx="535.2" cy="26" r="3.2"/><circle class="spine-node dim" cx="578" cy="26" r="3.2"/><circle class="spine-node live" cx="449.5" cy="58" r="4.4"/><circle class="spine-ring" cx="449.5" cy="58" r="8"/></svg><div class="spine-label">10 · 1958 · no line runs to this record</div></div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Name Was Already the Verdict · Stimpunks</span>
+        <span class="spread-footer-right">12</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 13 ════ -->
+  <div class="spread" id="spread-13">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Link 11 · what was actually available to object to</div>
+          <h2 class="spread-heading" id="what-they-had">A slang word, a texture, and a chart position</h2>
+          <p class="joint-line"><span class="joint joint-documented">documented</span></p>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Strip the record down to what a programme director in 1958 could point at, and the list is very short.</p>
+            <p><strong>One word</strong>, on the label, supplied by a listener after the fact. <strong>One texture</strong>, which is the thing this chain has spent five links describing and which no one had vocabulary for. And <strong>the numbers</strong>: number 16 pop, number 11 rhythm and blues.</p>
+            <p>That second chart position is not decoration. The Library of Congress raises it directly: industry charts of the time show the record scoring <em>&ldquo;just as strongly, if not more so, with young black audiences, as it did with white teenagers, no doubt adding further to the furor.&rdquo;</em></p>
+            <div class="note">
+              <p><strong>The &ldquo;no doubt&rdquo; is theirs and we are not adopting it.</strong> An inference about motive, however plausible, is not the same kind of object as a chart position — and this page has spent eleven links insisting on that distinction, so it does not get to relax here.</p>
+              <p>What is not an inference: number 11 R&amp;B. A record that crossed over in both directions in 1958, at a moment when a great deal of American institutional energy was devoted to preventing exactly that.</p>
+            </div>
+            <p>So the objection had a word and a feeling to work with. <strong>The feeling was not admissible, so the word did the work</strong> — which is what names are for when you need to act on something you cannot articulate.</p>
+          </div>
+        </div>
+      </div>
+      <div class="spine"><svg viewBox="0 0 620 84" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain so far, 11 of 13: two rails — what was heard, and what was built, named and enforced about it. Live node: 1958, a word, a texture, a chart."><path class="spine-track contested" d="M64 26 H106.8"/><path class="spine-track documented" d="M106.8 26 H149.7"/><path class="spine-track documented" d="M149.7 26 H192.5"/><path class="spine-track documented" d="M192.5 26 H216.1 V58 H235.3"/><path class="spine-track documented" d="M235.3 58 H278.2"/><path class="spine-track contested" d="M278.2 58 H321"/><path class="spine-track documented" d="M321 58 H363.8"/><path class="spine-track documented" d="M363.8 58 H406.7"/><path class="spine-track contested" d="M406.7 58 H449.5"/><path class="spine-track documented" d="M449.5 58 H473.1 V26 H492.3"/><path class="spine-track documented dim" d="M492.3 26 H535.2"/><path class="spine-track leap dim" d="M535.2 26 H578"/><text class="spine-raillabel" x="0" y="29">heard</text><text class="spine-raillabel" x="0" y="61">built</text><circle class="spine-node" cx="64" cy="26" r="3.2"/><circle class="spine-node" cx="106.8" cy="26" r="3.2"/><circle class="spine-node" cx="149.7" cy="26" r="3.2"/><circle class="spine-node" cx="192.5" cy="26" r="3.2"/><circle class="spine-node" cx="235.3" cy="58" r="3.2"/><circle class="spine-node" cx="278.2" cy="58" r="3.2"/><circle class="spine-node" cx="321" cy="58" r="3.2"/><circle class="spine-node" cx="363.8" cy="58" r="3.2"/><circle class="spine-node" cx="406.7" cy="58" r="3.2"/><circle class="spine-node" cx="449.5" cy="58" r="3.2"/><circle class="spine-node dim" cx="535.2" cy="26" r="3.2"/><circle class="spine-node dim" cx="578" cy="26" r="3.2"/><circle class="spine-node live" cx="492.3" cy="26" r="4.4"/><circle class="spine-ring" cx="492.3" cy="26" r="8"/></svg><div class="spine-label">11 · 1958 · a word, a texture, a chart</div></div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Name Was Already the Verdict · Stimpunks</span>
+        <span class="spread-footer-right">13</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 14 ════ -->
+  <div class="spread" id="spread-14">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Link 12 · 1958 onward</div>
+          <h2 class="spread-heading" id="what-it-seeded">The thing they kept off the radio became the floor</h2>
+          <p class="joint-line"><span class="joint joint-documented">documented</span></p>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Pete Townshend has said that <em>Rumble</em> was the reason he first picked up a guitar. Bob Dylan called it the greatest instrumental ever made.</p>
+            <p>The Library of Congress essay lists the rest in one breath: the Kinks, the Cramps, Jeff Beck, Jimmy Page, Jimi Hendrix, Eric Clapton, Marc Bolan, PJ Harvey, Neil Young, Bruce Springsteen, Paul McCartney. <strong>The deliberate defect became the default</strong>, and within fifteen years an amplifier that could not produce it was a limitation rather than a virtue.</p>
+            <p>The Registry added the record in <strong>2008</strong>. The Rock and Roll Hall of Fame inducted Link Wray in <strong>2023</strong>, in the Musical Influence category — <strong>eighteen years after he died</strong>, sixty-five after the ban.</p>
+            <div class="note">
+              <p><strong>One more thing, and we are going to leave it where the record leaves it.</strong> Wray's mother was Shawnee, and the Library of Congress states it plainly; he described his childhood as hiding from Klan raids, and said he grew up <em>&ldquo;Shawnee poor&rdquo;</em> where Elvis grew up white-man poor. Census records for the family say White. Both of those are true statements about the documentary record and we are not resolving them here.</p>
+              <p>Our rack <a href="we-were-punk-first-playlist.html">We Were Punk First</a> handles that question at length. This chain notes only the part that belongs to it: <strong>for most of the sixty-five years, almost nobody outside the family knew.</strong></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="spine"><svg viewBox="0 0 620 84" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain so far, 12 of 13: two rails — what was heard, and what was built, named and enforced about it. Live node: 2023, inducted, eighteen years late."><path class="spine-track contested" d="M64 26 H106.8"/><path class="spine-track documented" d="M106.8 26 H149.7"/><path class="spine-track documented" d="M149.7 26 H192.5"/><path class="spine-track documented" d="M192.5 26 H216.1 V58 H235.3"/><path class="spine-track documented" d="M235.3 58 H278.2"/><path class="spine-track contested" d="M278.2 58 H321"/><path class="spine-track documented" d="M321 58 H363.8"/><path class="spine-track documented" d="M363.8 58 H406.7"/><path class="spine-track contested" d="M406.7 58 H449.5"/><path class="spine-track documented" d="M449.5 58 H473.1 V26 H492.3"/><path class="spine-track documented" d="M492.3 26 H535.2"/><path class="spine-track leap dim" d="M535.2 26 H578"/><text class="spine-raillabel" x="0" y="29">heard</text><text class="spine-raillabel" x="0" y="61">built</text><circle class="spine-node" cx="64" cy="26" r="3.2"/><circle class="spine-node" cx="106.8" cy="26" r="3.2"/><circle class="spine-node" cx="149.7" cy="26" r="3.2"/><circle class="spine-node" cx="192.5" cy="26" r="3.2"/><circle class="spine-node" cx="235.3" cy="58" r="3.2"/><circle class="spine-node" cx="278.2" cy="58" r="3.2"/><circle class="spine-node" cx="321" cy="58" r="3.2"/><circle class="spine-node" cx="363.8" cy="58" r="3.2"/><circle class="spine-node" cx="406.7" cy="58" r="3.2"/><circle class="spine-node" cx="449.5" cy="58" r="3.2"/><circle class="spine-node" cx="492.3" cy="26" r="3.2"/><circle class="spine-node dim" cx="578" cy="26" r="3.2"/><circle class="spine-node live" cx="535.2" cy="26" r="4.4"/><circle class="spine-ring" cx="535.2" cy="26" r="8"/></svg><div class="spine-label">12 · 2023 · inducted, eighteen years late</div></div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Name Was Already the Verdict · Stimpunks</span>
+        <span class="spread-footer-right">14</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 15 ════ -->
+  <div class="spread" id="spread-15">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Link 13 · the leap</div>
+          <h2 class="spread-heading" id="the-leap">A deviation from the specification, read from outside</h2>
+          <p class="joint-line"><span class="joint joint-leap">leap</span></p>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+            <p class="lede">Here is the step this chain has been walking toward, and it is a leap. We are marking it, and the marking is not a formality.</p>
+            <p>Everything up to here is about amplifiers, archives and radio programmers. What follows is about people, and <strong>an analogy is not an inference.</strong> Nothing in the history of audio engineering establishes anything whatsoever about human beings.</p>
+            <p>With that said. The pattern this chain has traced has four parts, and all four are documented:</p>
+            <p><strong>One.</strong> A property is measured accurately. <strong>Two.</strong> A specification, written for a particular job, describes what the measurement should have been. <strong>Three.</strong> The gap between them is given a name that contains a verdict — <em>twisted out of shape</em> — and the verdict is carried inside the name rather than argued for. <strong>Four.</strong> Enormous, genuinely brilliant institutional effort goes into eliminating the gap, and the effort is largely right, because the specification was right about the job.</p>
+            <p>And then a person finds that the thing being eliminated is the part that carries who is playing.</p>
+            <div class="pull-quote">
+              <p>The measurement was never the argument. The specification was the argument, and it arrived already named.</p>
+              <p class="attr">— the leap, stated so it can be refused</p>
+            </div>
+            <p>We are not going to tell you what to do with that. This site has a view, and the view is on every other page. <strong>What this page is for is showing you a case where the whole sequence is on the record</strong> — the memo, the ferry, the etymology, the hearings, the falsified case notes, the ban, the chart position, the induction sixty-five years late — and where nobody had to be a villain for it to happen.</p>
+          </div>
+        </div>
+      </div>
+      <div class="spine"><svg viewBox="0 0 620 84" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The chain so far, 13 of 13: two rails — what was heard, and what was built, named and enforced about it. Live node: now, read from outside."><path class="spine-track contested" d="M64 26 H106.8"/><path class="spine-track documented" d="M106.8 26 H149.7"/><path class="spine-track documented" d="M149.7 26 H192.5"/><path class="spine-track documented" d="M192.5 26 H216.1 V58 H235.3"/><path class="spine-track documented" d="M235.3 58 H278.2"/><path class="spine-track contested" d="M278.2 58 H321"/><path class="spine-track documented" d="M321 58 H363.8"/><path class="spine-track documented" d="M363.8 58 H406.7"/><path class="spine-track contested" d="M406.7 58 H449.5"/><path class="spine-track documented" d="M449.5 58 H473.1 V26 H492.3"/><path class="spine-track documented" d="M492.3 26 H535.2"/><path class="spine-track leap" d="M535.2 26 H578"/><text class="spine-raillabel" x="0" y="29">heard</text><text class="spine-raillabel" x="0" y="61">built</text><circle class="spine-node" cx="64" cy="26" r="3.2"/><circle class="spine-node" cx="106.8" cy="26" r="3.2"/><circle class="spine-node" cx="149.7" cy="26" r="3.2"/><circle class="spine-node" cx="192.5" cy="26" r="3.2"/><circle class="spine-node" cx="235.3" cy="58" r="3.2"/><circle class="spine-node" cx="278.2" cy="58" r="3.2"/><circle class="spine-node" cx="321" cy="58" r="3.2"/><circle class="spine-node" cx="363.8" cy="58" r="3.2"/><circle class="spine-node" cx="406.7" cy="58" r="3.2"/><circle class="spine-node" cx="449.5" cy="58" r="3.2"/><circle class="spine-node" cx="492.3" cy="26" r="3.2"/><circle class="spine-node" cx="535.2" cy="26" r="3.2"/><circle class="spine-node live" cx="578" cy="26" r="4.4"/><circle class="spine-ring" cx="578" cy="26" r="8"/></svg><div class="spine-label">13 · now · read from outside</div></div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Name Was Already the Verdict · Stimpunks</span>
+        <span class="spread-footer-right">15</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 16: COLOPHON ════ -->
+  <div class="spread" id="spread-16">
+    <div class="interior">
+      <div class="colophon">
+        <div class="colophon-top">
+          <div class="eyebrow">Colophon · Zine No. 88</div>
+          <h2 class="colophon-h" id="colophon">What the specification was actually for</h2>
+          <hr class="spectrum-line rule">
+        </div>
+        <div class="colophon-body">
+          <p>The telephone specification was correct. Long-distance speech needs the far end to sound like the near end, repeaters in tandem compound their errors, and Harold Black's answer to that was excellent engineering that we all still use. <strong>Nothing in this chain is an argument against it.</strong></p>
+          <p>The chain is about what happened to the word afterwards. A specification is a description of a job. It is not a description of how the world should be, and the moment its vocabulary escapes the job it was written for, it starts issuing verdicts it was never entitled to issue. <em>Distortion</em> escaped in 1887 and has been at large since.</p>
+
+          <div class="refusals">
+            <div class="refusal"><span class="refusal-tag">Not</span> an argument against measurement, engineering or specifications. Black's amplifier is one of the great inventions and this page says so twice. The collection this zine belongs to exists to <em>reclaim</em> science from the things that wear its clothes, not to be suspicious of it.</div>
+            <div class="refusal"><span class="refusal-tag">Not</span> a claim that amplifiers tell you anything about people. Spread 15 is tagged <em>leap</em> for that reason, and it is the only leap here.</div>
+            <div class="refusal"><span class="refusal-tag">Not</span> a story with a villain. The radio programmers were frightened, the Senate was responding to real public alarm, and Wertham believed he was protecting children. The falsification is documented; the malice is not, and we are not supplying it.</div>
+            <div class="refusal"><span class="refusal-tag">Not</span> a resolution of who Link Wray was. The documentary record disagrees with itself and we have left it disagreeing.</div>
+          </div>
+
+          <h3 class="colophon-h" id="sources-and-checks">Sources, and what we could not reach</h3>
+          <p><strong>The record.</strong> Cary O'Dell, <em>&ldquo;Rumble&rdquo; — Link Wray (1958)</em>, essay for the National Recording Registry, Library of Congress, added 2008 — the source for the ban being for the title, the original name <em>Oddball</em>, the Fredericksburg origin, Wray's own account of the tweeters, the influence list, and the chart crossover. Chart positions (16 pop, 11 R&amp;B) cross-checked against Joel Whitburn's chart compilations as cited by others; <strong>we did not open Whitburn ourselves.</strong> Release date is given as April 1958 by the Library and 31 March 1958 elsewhere; we say spring.</p>
+          <p><strong>The renaming.</strong> Two accounts that disagree, both reported and neither adopted: the Library of Congress (Archie Bleyer's daughter, and the Library itself calls it legend) and <em>Rolling Stone</em>'s 2005 obituary by James Sullivan (Phil Everly). Spread 4 is tagged <em>contested</em> on that basis.</p>
+          <p><strong>The pencil that was a pen.</strong> <em>The New York Times</em> obituary and <em>Rolling Stone</em> both have a pencil through the speaker cone. Wray, quoted in <em>Guitar</em> magazine via the Registry essay, says a pen through the tweeters and that he left the big speaker alone. We follow him.</p>
+          <p><strong>Negative feedback.</strong> Ronald Kline, <em>&ldquo;Harold Black and the negative-feedback amplifier&rdquo;</em>, <em>IEEE Control Systems</em> 13(4), 1993 — read in full for the date, the Lackawanna Ferry, the blank newspaper page, and the statement of the problem. <em>A figure we declined:</em> the widely repeated claim that the December 1927 test reduced distortion &ldquo;by a factor of 100,000&rdquo; <strong>is not in Kline</strong>, and we did not find its primary. It appears nowhere on this page.</p>
+          <p><strong>The word.</strong> Etymology from the <em>Online Etymology Dictionary</em>: 1580s, from Latin <span class="latin">distorquere</span>; technical signal sense 1887.</p>
+          <p><strong>The apparatus.</strong> Senate Subcommittee on Juvenile Delinquency hearings, New York, 21–22 April and 4 June 1954, Kefauver chairing, twenty-two witnesses; Comics Code Authority established 1954. Carol L. Tilley, <em>&ldquo;Seducing the Innocent: Fredric Wertham and the Falsifications That Helped Condemn Comics&rdquo;</em>, <em>Information &amp; Culture: A Journal of History</em> 47(4), 2012, 383–413, from Wertham's papers opened to researchers in 2010. <strong>We have read the article's abstract and the published accounts of its findings, not the article itself</strong>, and say so rather than implying otherwise.</p>
+          <p><strong>Companion.</strong> The Sound rack <a href="we-were-punk-first-playlist.html">We Were Punk First</a> carries the recording, and <a href="joyful-sound-playlist.html">It Take a Joyful Sound</a> carries the acoustics — what distortion <em>is</em>, as opposed to what it was called.</p>
+
+          <div class="colophon-footer">
+            <p class="colophon-phrase">Love you down to your star stuff — including the part that is not to specification.</p>
+            <div class="colophon-ls">L★S</div>
+            <p>Stimpunks Foundation × More Realms · stimpunks.org · morerealms.com · starstuff.earth</p>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Name Was Already the Verdict · Stimpunks</span>
+        <span class="spread-footer-right">16</span>
+      </div>
+    </div>
+  </div>
+
+  </main>
+
+<script src="starstuff.js"></script>
+<script>
+  let current = 1;
+  const total = 16;
+
+  function changePage(dir) {
+    const next = current + dir;
+    if (next < 1 || next > total) return;
+    document.getElementById('spread-' + current).classList.remove('active');
+    current = next;
+    document.getElementById('spread-' + current).classList.add('active');
+    document.getElementById('page-counter').textContent = current + ' / ' + total;
+    document.getElementById('prev-btn').disabled = current === 1;
+    document.getElementById('next-btn').disabled = current === total;
+    document.getElementById('prev-btn').classList.toggle('active', current > 1);
+    document.getElementById('next-btn').classList.toggle('active', current < total);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') changePage(1);
+    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   changePage(-1);
+  });
+
+  document.getElementById('prev-btn').disabled = true;
+  document.getElementById('next-btn').classList.add('active');
+</script>
+
+</body>
+</html>

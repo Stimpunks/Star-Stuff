@@ -121,6 +121,38 @@ CHAINS['oblivious-to-encounter-zine.html'] = {
 
 const file0 = process.argv.slice(2).find(a => !a.startsWith('--'));
 const key = file0 ? file0.replace(/^.*\//, '') : '';
+CHAINS['the-name-was-already-the-verdict-zine.html'] = {
+  // Two rails, and this chain crosses twice — out and back — because the whole argument is
+  // that the same event has a maker's side and an institution's side:
+  //   heard  — what a room, a listener or a musician did with the sound
+  //   built  — what was engineered, named, legislated or enforced about it
+  // Links 1-4 run on `heard`, 5-10 cross to `built`, 11-13 cross back. The two crossings are
+  // the shape of the claim: the sound goes out into the apparatus and comes back renamed.
+  rails: { heard: 26, built: 58, turn: 8 },
+  railLabels: [['heard', 29], ['built', 61]],
+  aria: 'two rails \u2014 what was heard, and what was built, named and enforced about it',
+  reuse: {},
+  nodes: [
+  // spread, year label, rail, joint tag on the edge ARRIVING at this node.
+  // Unlike the eclipse chain, node 1 here is Link 1 and its tag IS printed on the page
+  // (spread 2 is the event rather than a link, and carries neither tag nor spine), so the
+  // script's tally of 13 is exactly the number of tags a reader can count. Keep it that way.
+  { s: 3,  y: '1957',  rail: 'heard', joint: 'documented', t: 'it was called Oddball' },
+  { s: 4,  y: '1958',  rail: 'heard', joint: 'contested',  t: 'nobody agrees who named it' },
+  { s: 5,  y: '1957',  rail: 'heard', joint: 'documented', t: 'a mic against an amp' },
+  { s: 6,  y: '1958',  rail: 'heard', joint: 'documented', t: 'a pen through the tweeters' },
+  { s: 7,  y: '1927',  rail: 'built', joint: 'documented', t: 'the ferry, and the blank page' },
+  { s: 8,  y: '1580s', rail: 'built', joint: 'documented', t: 'twisted out of shape' },
+  { s: 9,  y: '',      rail: 'built', joint: 'contested',  t: 'one reading, two names' },
+  { s: 10, y: '1954',  rail: 'built', joint: 'documented', t: 'the hearings, and the Code' },
+  { s: 11, y: '2012',  rail: 'built', joint: 'documented', t: 'the case notes, finally read' },
+  { s: 12, y: '1958',  rail: 'built', joint: 'contested',  t: 'no line runs to this record' },
+  { s: 13, y: '1958',  rail: 'heard', joint: 'documented', t: 'a word, a texture, a chart' },
+  { s: 14, y: '2023',  rail: 'heard', joint: 'documented', t: 'inducted, eighteen years late' },
+  { s: 15, y: 'now',   rail: 'heard', joint: 'leap',       t: 'read from outside' },
+  ],
+};
+
 const CHAIN = CHAINS[key];
 if (!CHAIN) {
   console.error(`no chain config for ${key || '(no file given)'} — known: ${Object.keys(CHAINS).join(', ')}`);
