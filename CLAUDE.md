@@ -392,7 +392,7 @@ never candidates for a register. Don't try to fold these into either table:
 | Collection | What it is | Members |
 |------------|-----------|---------|
 | **Start Here** | the ways in | `about`, `love-you-down-to-your-star-stuff`, `cosmic-connections`, No. 4 — three doors in, one out |
-| **Foundations** | what the rest presupposes | `manifesto`, `inclusion-safety-creed`, `six-principles-and-a-room`, `too-good-to-check`, `who-is-holding-the-candle`, `a-promise-not-a-finding`, `starlight`, No. 3, No. 18, `rainbow-serpents` (10 — re-derived 2026-09-02, when the page said *eight* in six places and had nine cards) |
+| **Foundations** | what the rest presupposes | `mission`, `manifesto`, `inclusion-safety-creed`, `six-principles-and-a-room`, `too-good-to-check`, `who-is-holding-the-candle`, `a-promise-not-a-finding`, `starlight`, No. 3, No. 18, `rainbow-serpents` (11 — `mission` added 2026-09-05 as the collection's statement of aims and the first link in its chain; 10 when re-derived 2026-09-02, when the page said *eight* in six places and had nine cards) |
 | **Notes & Rationale** | the working papers | `changelog`, `design`, `print-design`, `difference-first-frame`, `the-ladder-we-dont-print` (5 — `glimmer-wire` was the sixth until 2026-09-04, when it left to become its own collection; the page says so on its face) |
 
 - **Notes & Rationale is the only collection page outside the prev/next chain**, because all five
