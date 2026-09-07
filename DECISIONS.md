@@ -820,3 +820,40 @@ Ideas deferred, not rejected — revisit later.
   the hedges. Nearest sibling already shipped: **No. 50**, *The Sky Was Not Regular Enough*,
   which is the **second** standard-vs-world piece; check it before starting so the chain does not
   re-walk the leap-second argument.
+
+- **Young Readers, and the sixth axis &mdash; settled 2026-09-06.** Ryan's call, after three
+  read-aloud pieces existed. **The collection sorts by audience**, which is a new axis on this
+  site: the first collection defined by *who a piece is for* rather than by register (what kind of
+  claim), form (what shape), occasion (what happened that day) or issue (which edition of a
+  serial). Members: Nos. 91, 93, 94.
+  **Why a shelf and not a tag.** All three pass the *Star Stuff* register test outright &mdash;
+  each takes one settled, checkable fact and follows it until the belonging claim is inside it
+  &mdash; and that is exactly the problem. **They pass and remain unfindable.** A caregiver looking
+  for something to read to a five-year-old will not locate three read-alouds inside a grid of
+  thirty-nine adult zines, and discoverability is the entire job of a collection page. The same
+  reasoning already put *Field Guides* and *How We Got Here* on their own shelves while their
+  members remained Star Stuff pieces by register.
+  **The cost, paid deliberately:** the three moved *out* of Star Stuff, because
+  `check-markup.mjs` enforces one collection per page and the badge must agree with the collection
+  that cards it. Star Stuff went 44 &rarr; 41 cards, and its two prose counts were re-derived
+  (hero-count 41; the derived "made much later" figure is total minus the seven founders, so
+  thirty-three &rarr; thirty-four). Those had been stale across four additions before this pass.
+  **The two-member floor was NOT broken**, and that is worth recording because it has been broken
+  three times on this site. This opened at three, on a form observed in finished work. The first
+  read-aloud shipped with the collection question deliberately deferred on the reasoning that
+  **reading level, unlike cadence, can be observed retroactively** &mdash; so waiting cost nothing,
+  which is precisely what the Glimmers cadence argument required and this one lacked.
+  **The convention the axis produced:** two layers on every spread (read-aloud type first in the
+  document, then a bordered grown-up box carrying names, figures, citations and limits); figures
+  placed *between* them, never below or inside the grown-up box; refusals addressed to the adult.
+  **The sourcing standard does not relax** &mdash; same eight gates, same ledger row, same grading
+  &mdash; on the same argument that keeps a "For Fun" collection off this site, which
+  *Stars We Grew Up On* states on its own page.
+  **Rejected:** naming it for the form (*Read-Aloud*) rather than the audience. The form is the
+  consequence; the audience is the membership test, and naming the consequence would have hidden
+  what the axis actually is.
+  **Still open:** how a *translation* is numbered and marked. Ryan settled on 2026-09-06 that this
+  collection may hold both new facts and read-aloud doors into zines the site already owns (a
+  read-aloud of No. 1's Yasuda finding being the obvious first). No rule exists yet for numbering
+  one, or for marking it so two pieces making the same claim do not read as a duplicate argument.
+  Nothing has been built on it.

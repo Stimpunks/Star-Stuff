@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0a0a14">
+<link rel="canonical" href="https://starstuff.earth/collection-young-readers.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta name="description" content="The read-aloud collection: Star Stuff pieces written for children of about four to eight, and for whoever is reading to them. Sorted by audience &mdash; the sixth axis on this site and the first collection defined by who a piece is for rather than what kind of argument it makes. Every member carries two layers on every spread: large plain-language type for the child, and a boxed grown-up layer holding the species names, the figures, the papers and the places the evidence runs out, so a caregiver can answer &ldquo;is that really true?&rdquo; without leaving the page. The sourcing standard does not relax for the audience: same eight gates, same fact-check ledger row, same grading of every claim, same refusals &mdash; aimed at the adult. Three pieces: pace, conditions, and perception.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Star Stuff &middot; Stimpunks Foundation &times; More Realms">
+<meta property="og:url" content="https://starstuff.earth/collection-young-readers.html">
+<meta property="og:title" content="Young Readers">
+<meta property="og:description" content="Star Stuff for four- to eight-year-olds and whoever is reading to them. Two layers on every spread &mdash; and the sourcing standard does not relax for the audience.">
+<meta property="og:image" content="https://starstuff.earth/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A rainbow-hued cosmic image &mdash; we are all made of star stuff.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Young Readers">
+<meta name="twitter:description" content="Sorted by audience &mdash; the first collection here defined by who a piece is for. Same eight gates, same ledger, same refusals.">
+<meta name="twitter:image" content="https://starstuff.earth/og-card.jpg">
+<title>Young Readers &mdash; a Star Stuff collection &mdash; Stimpunks &times; More Realms</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="starstuff.css">
+<style>
+
+  :root {
+    --void:  var(--sp-void-deep);
+    --deep:  var(--sp-deep);
+    --page:  var(--sp-page);
+    --violet:var(--sp-purple);
+    --pink:  var(--sp-pink);
+    --gold:  var(--sp-gold);
+    --cyan:  var(--sp-cyan);
+    --green: var(--sp-green);
+    --star-white: var(--sp-white-soft);
+    --stardust:   var(--sp-secondary-soft);
+    --dim:   var(--sp-dim);
+    --dim2:  var(--sp-dim-soft);
+    --card:  var(--sp-deep);
+    --border: rgba(74,222,128,0.18);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--void);
+    font-family: 'Atkinson Hyperlegible Next', system-ui, sans-serif;
+    color: var(--star-white);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Starfield, tinted gold to match the collection accent — see starstuff.css
+     on why the gradient art stays inline and per-page. */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 8% 12%, rgba(251,191,36,0.8) 0%, transparent 100%),
+      radial-gradient(1px 1px at 22% 38%, rgba(244,244,251,0.6) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 44% 9%, rgba(251,191,36,0.7) 0%, transparent 100%),
+      radial-gradient(1px 1px at 61% 68%, rgba(34,211,238,0.6) 0%, transparent 100%),
+      radial-gradient(2px 2px at 74% 28%, rgba(244,244,251,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 84% 54%, rgba(251,191,36,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 91% 79%, rgba(244,244,251,0.7) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 4% 58%, rgba(167,139,250,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 34% 84%, rgba(244,244,251,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 54% 48%, rgba(251,191,36,0.45) 0%, transparent 100%),
+      radial-gradient(2px 2px at 19% 88%, rgba(251,191,36,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 69% 4%, rgba(244,244,251,0.8) 0%, transparent 100%),
+      radial-gradient(1px 1px at 47% 62%, rgba(167,139,250,0.5) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 30% 20%, rgba(244,244,251,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 77% 88%, rgba(34,211,238,0.5) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .doc-shell { position: relative; z-index: 1; max-width: 860px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+
+  .spectrum-line { height: 2px; border: none; border-radius: 2px; background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); }
+
+  .nav-brand { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--dim); margin: 1.6rem 0 2.5rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(167,139,250,0.2); }
+
+  .hero { margin-bottom: 2.5rem; }
+  .hero-eyebrow { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.36em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.3rem; }
+  .hero-title { font-weight: 700; font-size: clamp(2.1rem, 6vw, 3.4rem); line-height: 1.05; letter-spacing: -0.02em; color: var(--star-white); margin-bottom: 1.1rem; }
+  .hero-title em { font-style: normal; background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .hero-count { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--dim); margin-bottom: 0.9rem; }
+  .hero-sub { font-size: 1.08rem; line-height: 1.65; color: var(--stardust); max-width: 38rem; }
+  .hero-rule { width: 200px; max-width: 55%; margin-top: 1.6rem; }
+
+  h2.section { font-weight: 700; font-size: 1.4rem; line-height: 1.2; color: var(--star-white); margin: 2.6rem 0 0.5rem; letter-spacing: -0.01em; scroll-margin-top: 5rem; }
+  .body-text { font-size: 1.02rem; line-height: 1.75; color: var(--stardust); }
+  .body-text p { margin-top: 1rem; }
+  .body-text em { font-style: italic; color: var(--star-white); }
+  .body-text strong { font-weight: 700; color: var(--star-white); }
+  .body-text a { color: var(--gold); text-decoration: none; border-bottom: 1px solid currentColor; }
+  .body-text a:hover { border-bottom-width: 2px; }
+
+  .refusals { border: 1px solid rgba(74,222,128,0.32); border-left: 3px solid var(--pink); border-radius: 0 6px 6px 0; padding: 1.1rem 1.3rem; margin: 2rem 0 0; background: rgba(74,222,128,0.05); }
+  .refusals .refusals-label { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--pink); margin-bottom: 0.5rem; }
+  .refusals p { font-size: 0.96rem; line-height: 1.7; color: var(--stardust); }
+  .refusals p + p { margin-top: 0.7rem; }
+  .refusals strong { color: var(--star-white); font-weight: 700; }
+  .refusals a { color: var(--pink); text-decoration: none; border-bottom: 1px solid rgba(74,222,128,0.4); }
+
+  /* The opening address is written for the reader the collection is for, so it
+     is set at read-aloud size rather than at essay size. The explanation of how
+     the collection works sits after the cards, where the adult will look for it. */
+  .hero-lede { font-size: 1.06rem; line-height: 1.7; color: var(--stardust); max-width: 44rem; margin: 1.1rem auto 0; }
+  .body-text .note { font-size: 0.88rem; line-height: 1.65; color: var(--dim); border-left: 2px solid rgba(74,222,128,0.3); padding-left: 0.9rem; margin: 1.2rem 0; }
+  .body-text .note em { color: var(--stardust); }
+  .body-text .green { color: var(--green); font-weight: 700; }
+  .body-text .cyan { color: var(--cyan); font-weight: 700; }
+  .body-text .gold { color: var(--gold); font-weight: 700; }
+  .address { font-size: 1.24rem; line-height: 1.78; color: var(--white); max-width: 32rem; margin: 0 0 1.6rem; }
+  .address p { margin: 0 0 1.1rem; }
+  .address p:last-child { margin-bottom: 0; }
+  .address strong { font-weight: 700; color: var(--white); }
+  .address em { font-style: italic; }
+  .grown-up-note { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--muted); margin: 2.6rem 0 0.9rem; }
+
+  .artifact-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
+
+  /* A card is three parts: a wrapper that draws the box, an anchor that is the
+     link, and a <details> that holds the full description. The disclosure is a
+     SIBLING of the anchor and must stay one — <a> may not contain interactive
+     content, and check-markup.mjs cannot see that fault. */
+  .card-wrap { background: var(--card); border-radius: 8px; border: 1px solid var(--border); position: relative; display: flex; flex-direction: column; transition: box-shadow 0.2s ease, background 0.2s ease, transform 0.2s ease; }
+  .card { padding: 1.25rem; text-decoration: none; color: inherit; display: flex; flex-direction: column; flex: 1; }
+  .card-wrap:has(> .card:hover) { background: #131330; box-shadow: 0 4px 28px rgba(251,191,36,0.14); transform: translateY(-2px); }
+  .card-wrap::before { content: ''; position: absolute; top: 8px; left: 0; width: 3px; height: calc(100% - 16px); background: var(--card-color, var(--gold)); border-radius: 0 2px 2px 0; }
+
+  .card-number { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dim); margin-bottom: 0.5rem; }
+  .card-title { font-size: 1.25rem; font-weight: 600; color: var(--star-white); line-height: 1.2; margin-bottom: 0.4rem; }
+  .card-series { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--card-color, var(--gold)); margin-bottom: 0.75rem; }
+  .card-tagline { font-size: 0.9375rem; font-style: italic; color: var(--star-white); line-height: 1.55; margin-bottom: 0.6rem; }
+  .card-desc { font-size: 0.875rem; color: var(--stardust); line-height: 1.65; flex: 1; margin-bottom: 1.25rem; }
+  .card-footer { display: flex; justify-content: space-between; align-items: center; padding-top: 0.9rem; border-top: 1px solid var(--border); }
+  .card-tag { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dim); background: rgba(251,191,36,0.08); border: 1px solid var(--border); border-radius: 4px; padding: 0.2rem 0.6rem; }
+  .card-arrow { font-size: 0.875rem; color: var(--card-color, var(--gold)); font-weight: 700; transition: transform 0.2s ease; }
+  .card-wrap:has(> .card:hover) .card-arrow { transform: translateX(3px); }
+
+  .card-details { border-top: 1px solid var(--border); }
+  .card-details > summary { cursor: pointer; list-style: none; padding: 0.7rem 1.25rem; font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dim); display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; }
+  .card-details > summary::-webkit-details-marker { display: none; }
+  .card-details > summary::after { content: '+'; font-size: 1rem; line-height: 1; color: var(--card-color, var(--gold)); }
+  .card-details[open] > summary::after { content: '\2212'; }
+  .card-details > summary:hover { color: var(--star-white); }
+  .card-details-body { padding: 0 1.25rem 1.1rem; }
+  .card-details-body p { font-size: 0.875rem; line-height: 1.7; color: var(--stardust); }
+  .card-details-body strong { color: var(--star-white); font-weight: 700; }
+  .card-details-body em { font-style: italic; color: var(--star-white); }
+
+  .colophon-footer { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--dim2); line-height: 2.2; margin-top: 3rem; padding-top: 1.4rem; border-top: 1px solid rgba(167,139,250,0.14); }
+  .colophon-footer a { color: var(--dim); text-decoration: none; border-bottom: 1px solid rgba(167,139,250,0.2); }
+  .colophon-footer a:hover { color: var(--stardust); }
+
+  @media (max-width: 600px) {
+    .doc-shell { padding: 2rem 1.3rem 3rem; }
+  }
+
+  @media print {
+    body::before { display: none; }
+    .hero-title, h2.section, .card-title, .card-tagline, .body-text strong,
+    .body-text em, .refusals strong, .card-details-body strong { color: #111; }
+    .body-text, .body-text p, .hero-sub, .card-desc, .refusals p,
+    .card-details-body p { color: #222; }
+    .hero-count, .card-number, .card-tag, .colophon-footer,
+    .refusals .refusals-label, .card-details > summary { color: #444; }
+    .refusals { background: none; border-color: #999; border-left-color: #444; }
+    .card-wrap { border-color: #999; background: none; }
+    /* A closed <details> does not print, so the card descriptions would go to
+       paper missing. The rule opens them; the script below opens them for real
+       and puts each one back as the reader left it. */
+    .card-details > summary { display: none; }
+    .card-details[open] > .card-details-body,
+    .card-details > .card-details-body { display: block; }
+  }
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Triggers","headline":"Young Readers","description":"The read-aloud collection: Star Stuff pieces written for children of about four to eight, and for whoever is reading to them. Sorted by audience — the sixth axis on this site and the first collection defined by who a piece is for rather than what kind of argument it makes. Every member carries two layers on every spread: large plain-language type for the child, and a boxed grown-up layer holding the species names, the figures, the papers and the places the evidence runs out, so a caregiver can answer "is that really true?" without leaving the page. The sourcing standard does not relax for the audience: same eight gates, same fact-check ledger row, same grading of every claim, same refusals — aimed at the adult. Three pieces: pace, conditions, and perception.","url":"https://starstuff.earth/collection-young-readers.html","image":"https://starstuff.earth/og-card.jpg","license":"https://creativecommons.org/licenses/by-sa/4.0/","publisher":[{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/","logo":{"@type":"ImageObject","url":"https://starstuff.earth/og-card.jpg"}},{"@type":"Organization","name":"More Realms","url":"https://morerealms.com/"}],"isPartOf":{"@type":"WebSite","name":"Star Stuff","url":"https://starstuff.earth/"}}</script>
+</head>
+<body>
+<div class="doc-shell">
+
+  <nav class="ss-nav" style="--nav-accent:#4ade80;" aria-label="Star Stuff collection">
+    <span class="ss-nav-home-group"><a class="ss-nav-home" href="index.html"><span class="ss-star" aria-hidden="true">&#9733;</span> stuff</a><a class="ss-nav-about" href="about.html">about</a>
+      <a class="ss-nav-search" href="search.html">search</a></span>
+    <span class="ss-nav-links">
+      <a class="ss-nav-prev" href="two-things-on-one-leaf-zine.html"><span class="ss-nav-arrow" aria-hidden="true">&lsaquo;</span> <span class="ss-nav-label">Two Things on One Leaf</span></a>
+      <a class="ss-nav-next" href="nobody-in-this-pond-is-late-zine.html"><span class="ss-nav-label">Nobody in This Pond Is Late</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
+    </span>
+  </nav>
+<main>
+
+  <header class="hero">
+    <div class="hero-eyebrow">Stimpunks Foundation &times; More Realms</div>
+    <h1 class="hero-title"><em>Young Readers</em></h1>
+    <div class="hero-count">A Star Stuff collection &middot; 3 pieces &middot; started 6 September 2026</div>
+    <p class="hero-lede">Star Stuff you can have read to you. Real animals, real plants, real measurements &mdash; in words you can hold.</p>
+  </header>
+
+  <div class="address">
+    <p>Hello. These ones are for you.</p>
+    <p>They are about real things &mdash; a pond, a seed, a flower &mdash; and everything in them is true. Nobody made any of it up.</p>
+    <p><strong>Somebody can read them to you.</strong> The big words are for you to hear. The small words in the box are for the grown-up, so that if you ask <em>&ldquo;is that really true?&rdquo;</em> they can look down and tell you exactly how we know.</p>
+    <p>You are allowed to ask that about anything.</p>
+  </div>
+
+  <div class="body-text">
+    <h2 class="section" id="the-pieces">Three to start with</h2>
+    <p>One about how <strong>fast</strong> things grow up. One about <strong>waiting</strong>. One about <strong>seeing</strong>.</p>
+  </div>
+
+  <div class="artifact-grid">
+    <div class="card-wrap" style="--card-color: #4ade80;">
+      <a class="card" href="nobody-in-this-pond-is-late-zine.html">
+        <div class="card-number">Zine No. 91</div>
+        <div class="card-title">Nobody in This Pond Is Late</div>
+        <div class="card-series">Stimpunks Zines &middot; read-aloud, ages 4&ndash;8</div>
+        <p class="card-tagline">A frog changes, an axolotl never does, and both of them are grown-ups &mdash; read-aloud science for four to eight, with every source kept on the page where the grown-up can find it.</p>
+        <p class="card-desc">Spadefoot larvae in one desert finished in eight days, and in sixteen. When the water was put back, the ones who had been hurrying slowed down again. Both papers found the hurried ones came out smaller.</p>
+        <div class="card-footer"><span class="card-tag">12 spreads</span><span class="card-arrow">&rarr;</span></div>
+      </a>
+      <details class="card-details">
+        <summary>Details</summary>
+        <div class="card-details-body"><p><strong>The first Star Stuff zine written to be read aloud, and the sourcing does not relax for it.</strong> Every spread carries two layers: large plain type for the child, and a boxed grown-up layer holding the species names, the figures, the papers and the places the evidence runs out &mdash; so a caregiver can answer <em>is that really true?</em> without leaving the page. <strong>The frog and the axolotl are not a metaphor we imposed.</strong> They are the pairing on Lilypad Library&rsquo;s own logo &mdash; Kiersten Case&rsquo;s low-stimulation puppet series for neurodivergent kids, which Stimpunks fiscally sponsors &mdash; and the biology underneath the pairing turned out to be better than it looked. The IUCN&rsquo;s own Red List assessment describes <em>Ambystoma mexicanum</em> as &ldquo;a paedomorphic species, living permanently in water, and does not undergo complete metamorphosis&rdquo;: a description of an adult, not of a delay. <strong>The strongest spread is a population-genetics result.</strong> Everson and colleagues found the tiger salamander complex holds populations that metamorphose, populations that never do, &ldquo;and those that do both&rdquo; &mdash; with genetic clusters that &ldquo;often contain a mixture of paedomorphic and metamorphic taxa&rdquo; and gene flow between adjacent metamorphic and paedomorphic populations. Geography divides these salamanders; the route through childhood does not. <strong>Then the timing, and its price.</strong> Newman measured Couch&rsquo;s spadefoot completing development in eight to sixteen days &mdash; the widely-quoted &ldquo;eight days&rdquo; is the floor of a range, not the fact. Denver, Mirhadi and Phillips found tadpoles accelerate as their pond dries in &ldquo;a continuum of response,&rdquo; not a switch, and decelerate again when the water is restored: the pace was never only a property of the animal. Both studies, one in the field and one in the lab, found accelerated development produced smaller metamorphs. <strong>Five refusals, aimed at the grown-up</strong>, the first being that &ldquo;the axolotl never grows up&rdquo; is the deficit reading wearing a nicer coat. A rhyme, not a proof.</p></div>
+      </details>
+    </div>
+    <div class="card-wrap" style="--card-color: #fbbf24;">
+      <a class="card" href="seeds-that-wait-zine.html">
+        <div class="card-number">Zine No. 93</div>
+        <div class="card-title">Seeds That Wait</div>
+        <div class="card-series">Stimpunks Zines &middot; read-aloud, ages 4&ndash;8</div>
+        <p class="card-tagline">Some seeds do nothing at all when you plant them, and they are not broken &mdash; read-aloud science for four to eight, with every source kept on the page where the grown-up can find it.</p>
+        <p class="card-desc">One waits for a whole winter. One waits for a fire to melt the resin holding its cone shut. One waits to go through a bird. And a date seed dug out of Masada waited about two thousand years, then grew.</p>
+        <div class="card-footer"><span class="card-tag">12 spreads</span><span class="card-arrow">&rarr;</span></div>
+      </a>
+      <details class="card-details">
+        <summary>Details</summary>
+        <div class="card-details-body"><p><strong>The second read-aloud Star Stuff zine, and the sourcing does not relax for it.</strong> Two layers on every spread: large plain type for the child, and a boxed grown-up layer holding the mechanisms, the papers and the limits, so a caregiver can answer <em>is that really true?</em> without leaving the page. <strong>Four different kinds of waiting, and they are mechanisms rather than moods.</strong> Physiological dormancy broken by a long cold period &mdash; the seed is not counting days, it is waiting for evidence that winter has happened and is over. Serotiny, where cones are held shut by a resin bond that only fire's heat will break, releasing seed onto ground the fire has just cleared. Gut passage, which both moves a seed away from its parent and thins its coat. And physical dormancy, where a water-impermeable shell has to be worn through before a seed can even begin. <strong>Then the spread the zine is built to reach:</strong> look at what each seed waits for and then at where it lives. A seed that germinated before winter would freeze; one that germinated before the fire would burn; one that germinated under its parent would find no room. Every one is waiting for the moment when starting would actually work. <em>A requirement is not a defect.</em> <strong>And the longest wait anybody has directly dated:</strong> Sallon and colleagues germinated a date seed excavated at Masada and radiocarbon-dated to the first century Common Era &mdash; the authors' phrase is &ldquo;the oldest, <em>directly dated</em>, viable seed,&rdquo; and <em>directly dated</em> is the load-bearing part, ruling out claims that rest on the age of surrounding material. Its seedling grew normally over 26 months. Seven more were later germinated and sequenced. <strong>Five refusals</strong>, including that dormancy is a mechanism and not a virtue, that a fire-adapted seed is no argument that wildfire is good, and that two thousand years is a preservation accident rather than the point.</p></div>
+      </details>
+    </div>
+    <div class="card-wrap" style="--card-color: #a78bfa;">
+      <a class="card" href="the-colours-you-cannot-see-zine.html">
+        <div class="card-number">Zine No. 94</div>
+        <div class="card-title">The Colours You Cannot See</div>
+        <div class="card-series">Stimpunks Zines &middot; read-aloud, ages 4&ndash;8</div>
+        <p class="card-tagline">There are patterns on flowers that your eyes have no part for, and they are really there &mdash; read-aloud science for four to eight, with every source kept on the page where the grown-up can find it.</p>
+        <p class="card-desc">A bee lands on the same flower you are looking at and sees a bullseye. The pattern is not hidden and not a trick. And the bee is not seeing more than you &mdash; it cannot see red at all.</p>
+        <div class="card-footer"><span class="card-tag">12 spreads</span><span class="card-arrow">&rarr;</span></div>
+      </a>
+      <details class="card-details">
+        <summary>Details</summary>
+        <div class="card-details-body"><p><strong>The third read-aloud zine, and it is built on a correction rather than a wonder.</strong> Many flowers carry ultraviolet patterns &mdash; the UV bull&rsquo;s eye, which Lunau, Camargo and Ren describe as &ldquo;a UV-absorbing centre of a UV-reflecting flower&rdquo; acting as a guide toward a reward. Human eyes have no receptor tuned there. The pattern is physically present, in full daylight, on the front of the flower, and permanently unavailable to us. <strong>Then the spread that asks how anybody knows.</strong> In 1914 von Frisch trained bees to a coloured card with sugar water, then took the reward away and put that card out beside grey cards of every brightness he could make &mdash; so a bee choosing the <em>brightest</em> thing rather than the colour would have failed. The greys are the control, and a six-year-old can hold why they matter. <strong>And the correction the whole zine turns on:</strong> the popular version says bees see <em>more</em> colours than we do. The review says ultraviolet is &ldquo;merely one component of colour vision&rdquo; and that humans are more sensitive to red than bees are. <em>The window is shifted, not widened</em> &mdash; roughly 300&ndash;650&nbsp;nm against our 390&ndash;750 &mdash; and writing it the popular way turns a difference into a ranking. Neither animal gets the whole ribbon; nobody does. <strong>The one step it takes toward people is deliberately the small one:</strong> a real signal can be present and undetectable to a particular observer, and the one who <em>can</em> detect it is not making it up. <strong>Five refusals</strong>, including that nobody here has a superpower, and that a UV photograph does not show anyone what a bee sees &mdash; the receptors, the brain and the photographer&rsquo;s false colours are all in the way.</p></div>
+      </details>
+    </div>
+  </div>
+
+  <div class="grown-up-note">For the grown-ups &mdash; how this collection works</div>
+
+  <div class="body-text">
+
+    <h2 class="section" id="what-holds-these-together">What holds these together</h2>
+    <p>An audience. That is the whole membership test, and it makes this <strong>the first collection on this site defined by who a piece is for</strong> rather than by what kind of argument it makes or what shape it takes.</p>
+    <p>Every other collection here sorts by <em>register</em> (what kind of claim), by <em>form</em> (what shape the thing is), by <em>occasion</em> (what happened that day) or by <em>issue</em> (which edition of a serial). This one asks a different question: <span class="green">can a five-year-old receive this, and can the adult reading it aloud check it?</span></p>
+
+    <h2 class="section" id="the-axis">The sixth axis, and why it is a real one</h2>
+    <p>Audience is not a subject and it is not a genre. It is a constraint, and the constraint produced a form &mdash; so this collection is sorted by <em>who</em>, and it is recognisable by <em>how</em>.</p>
+    <p>The reason it needed its own shelf rather than a tag: these three would otherwise sit in <a href="collection-star-stuff.html">Star Stuff</a>, which is entirely correct by register &mdash; each of them takes one settled, checkable fact and follows it until the belonging claim is already inside it. <strong>They pass that test and they still cannot be found by anybody looking for them.</strong> A caregiver hunting for something to read to a five-year-old is not going to locate three read-alouds inside a grid of thirty-nine adult zines, and discoverability is the entire job of a collection page.</p>
+    <p class="note">This is the same reasoning that put <a href="collection-field-guides.html">Field Guides</a> and <a href="collection-how-we-got-here.html">How We Got Here</a> on their own shelves while their members remained, by register, Star Stuff pieces. <em>The number says when. The collection says what &mdash; or here, for whom.</em></p>
+
+    <h2 class="section" id="the-two-layer-form">The convention: two layers, and the sourcing does not relax</h2>
+    <p>Every member is built the same way. A <strong>read-aloud layer</strong> in large plain type, short lines, full contrast, first in the document so a screen reader meets it first. Beneath it a <strong>grown-up layer</strong> in a bordered box: the Latin names, the measurements, the citations, the caveats, and every place we could not reach a source.</p>
+    <p>It is deliberately not a separate document, and not a page of endnotes. <span class="cyan">A caregiver reading aloud should be able to answer &ldquo;is that really true?&rdquo; without leaving the spread.</span></p>
+    <p><strong>And the standard does not soften for the audience.</strong> Same eight gates. Same row in <a href="changelog.html">the public ledger</a>. Same grading of every quotation and every figure. Same refusals &mdash; which are addressed to the adult, not the child, and which name the traps this genre falls into: difference as superpower, the comforting moral, the tidy number that turns out to be a preservation accident.</p>
+    <p>That last point is the reason this collection exists at all rather than being a tone. <em>For kids</em> is exactly the shelf where a verify-everything standard quietly lapses, and it is the same argument that keeps <a href="collection-stars-we-grew-up-on.html">a &ldquo;For Fun&rdquo; collection</a> off this site: a bin labelled easy implicitly labels everything else homework, and becomes the one place the rules relax.</p>
+
+    <h2 class="section" id="the-illustrations">The pictures go with the child&rsquo;s words</h2>
+    <p>A convention learned by getting it wrong twice. Figures sit <strong>immediately after the read-aloud text and before the grown-up box</strong> &mdash; never below the citations, and never inside them.</p>
+    <p>It happened on the first piece, was fixed, and recurred on the next two within a day; one figure had been written <em>inside</em> the grown-up layer, where a child following the large type would never have reached it. <span class="gold">No gate can see this.</span> It is a house rule held by a person, which is why it is written down here.</p>
+
+    <h2 class="section" id="what-it-does-not-claim">What these pieces do not claim</h2>
+    <p>None of them makes a claim about children. Every measurement in them is about spadefoot toads, salamanders, seeds or bees, and each says so on its own face and again in its refusals.</p>
+    <p>Where an argument about people is actually wanted, it is linked rather than borrowed: Stimpunks makes it on human evidence at <a href="https://stimpunks.org/why/developmental-pace/">Developmental Pace</a>, whose own sentence is sharper than anything on these pages &mdash; <em>&ldquo;Behind&rdquo; is information about the ruler, not about the learner.</em></p>
+
+    <h2 class="section" id="how-it-opened">How this collection opened, and at what count</h2>
+    <p>At <strong>three members</strong>, on a form observed in finished work &mdash; which clears the two-member floor rather than arguing around it. That matters because the floor has been broken three times on this site, each time with a written reason, and this collection did not need to.</p>
+    <p>The first read-aloud shipped on its own with the collection question deliberately deferred: reading level, unlike cadence, <em>can</em> be observed retroactively, so waiting cost nothing. Two more arrived the same day, and the form was then a thing that had happened rather than a thing hoped for.</p>
+  </div>
+
+
+  <div class="body-text">
+    <div class="colophon-footer">
+      <a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks Foundation</a> &times; <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a> &middot; Young Readers &middot; L★S<br>
+      A collection, not a folder &middot; stimpunks.org &middot; morerealms.com &middot; starstuff.earth &middot; <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
+    </div>
+  </div>
+
+</main>
+
+<script>
+/* Belt and braces for the paper copy: the @media print rule opens the card
+   disclosures with CSS, and this opens them for real, then puts each one back
+   exactly as the reader left it. Two mechanisms because a closed <details> has
+   hidden its content three different ways across engine versions, and the
+   failure mode is silent — a page that prints its cards without their
+   descriptions looks like a design choice, not a bug. */
+(function () {
+  var cards = function () { return document.querySelectorAll('.card-details'); };
+  addEventListener('beforeprint', function () {
+    cards().forEach(function (d) { d.dataset.wasOpen = d.open ? '1' : ''; d.open = true; });
+  });
+  addEventListener('afterprint', function () {
+    cards().forEach(function (d) { d.open = d.dataset.wasOpen === '1'; delete d.dataset.wasOpen; });
+  });
+})();
+</script>
+</body>
+</html>
