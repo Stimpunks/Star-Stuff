@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0a0a14">
+<link rel="canonical" href="https://starstuff.earth/the-cuttlefish-that-cannot-see-colour-zine.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta name="description" content="A read-aloud zine for four to eight, and whoever is reading it to them. A cuttlefish matches the colour of wherever it sits &mdash; and it cannot see colour. Its eye has one kind of light-catcher; yours has three. M&auml;thger, Barbosa, Miner and Hanlon proved it by building a checkerboard whose two squares were matched for brightness against the cuttlefish's single visual pigment, so the board would look plain to the animal: a cuttlefish that could see colour would break into its bold disruptive pattern, and these ones stayed plain. Their conclusion, quoted: cuttlefish must be color blind. Yet Chiao, Wickiser, Allen, Genter and Hanlon photographed live camouflaged cuttlefish with a camera that records every wavelength, modelled how the pictures would look to the fish that hunt them, and found a good colour match. Reiter's 2026 review works through every proposed explanation &mdash; skin reflectance, chromatic aberration, polarized light, light-sensing skin &mdash; and finds each one insufficient or weakly supported. Then he suggests something better: maybe there is no colour perception at all, and the animal is predicting colour from light and dark the way you know a grey photograph of grass should be green. Nobody has finished working it out. Thirteen spreads, six figures, five refusals.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Star Stuff &middot; Stimpunks Foundation &times; More Realms">
+<meta property="og:url" content="https://starstuff.earth/the-cuttlefish-that-cannot-see-colour-zine.html">
+<meta property="og:title" content="The Cuttlefish That Can't See Colour">
+<meta property="og:description" content="It matches the colour of wherever it sits. It cannot see colour. Nobody has worked out how. Read-aloud science for four to eight, with every source kept on the page.">
+<meta property="og:image" content="https://starstuff.earth/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A rainbow-hued cosmic image &mdash; we are all made of star stuff.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Cuttlefish That Can't See Colour">
+<meta name="twitter:description" content="You cannot ask a cuttlefish what colour something is. So they built a checkerboard it could answer with its skin &mdash; and it answered.">
+<meta name="twitter:image" content="https://starstuff.earth/og-card.jpg">
+<title>The Cuttlefish That Can't See Colour &mdash; Stimpunks Zine No. 96</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="starstuff.css">
+<style>
+  :root {
+    --void:  var(--sp-void-deep);
+    --deep:  var(--sp-deep);
+    --page:  var(--sp-page);
+    --violet:var(--sp-purple);
+    --pink:  var(--sp-pink);
+    --gold:  var(--sp-gold);
+    --cyan:  var(--sp-cyan);
+    --green: var(--sp-green);
+    --ember: #c1653a;
+    /* This zine's one-off accent. Sepia is the animal's own name: the genus is
+       Sepia, the English word comes from the Greek sepia for cuttlefish, and the
+       pigment is its ink. The five --sp-* accents are all spoken for across the
+       read-aloud collection, and CYAN IS NOT AVAILABLE — all four siblings use
+       it for the .grownup box border, which is the format's signature and should
+       not be broken for one page. */
+    --sepia: #d99a63;
+    --accent: var(--sepia);
+    --star-white: var(--sp-white-soft);
+    --stardust:   var(--sp-secondary-soft);
+    --dim:   var(--sp-dim);
+    --dim2:  var(--sp-dim-soft);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--void);
+    font-family: 'Atkinson Hyperlegible Next', system-ui, sans-serif;
+    color: var(--star-white);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── STARFIELD (sepia · cyan · white — the ink, the water, and the light in it) ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 13% 21%, rgba(217,154,99,0.52) 0%, transparent 100%),
+      radial-gradient(1px 1px at 27% 55%, rgba(244,244,251,0.6) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 47% 15%, rgba(34,211,238,0.46) 0%, transparent 100%),
+      radial-gradient(1px 1px at 61% 77%, rgba(244,244,251,0.62) 0%, transparent 100%),
+      radial-gradient(2px 2px at 83% 27%, rgba(217,154,99,0.44) 0%, transparent 100%),
+      radial-gradient(1px 1px at 89% 61%, rgba(34,211,238,0.48) 0%, transparent 100%),
+      radial-gradient(1px 1px at 93% 86%, rgba(244,244,251,0.5) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 8% 69%, rgba(217,154,99,0.42) 0%, transparent 100%),
+      radial-gradient(1px 1px at 37% 92%, rgba(34,211,238,0.46) 0%, transparent 100%),
+      radial-gradient(1px 1px at 54% 39%, rgba(244,244,251,0.52) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .zine-shell { position: relative; z-index: 1; max-width: 820px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+
+  .nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem; }
+  .nav-brand { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--dim); }
+  .nav-controls { display: flex; gap: 0.5rem; align-items: center; }
+  .nav-btn { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; background: transparent; color: var(--dim2); border: 1px solid rgba(196,181,212,0.25); border-radius: 3px; padding: 0.4rem 0.75rem; cursor: pointer; transition: all 0.2s; }
+  .nav-btn.active { color: var(--accent); border-color: rgba(217,154,99,0.5); }
+  .nav-btn:disabled { opacity: 0.3; cursor: default; }
+  .page-counter { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.1em; color: var(--dim); padding: 0 0.4rem; }
+
+  .spread { display: none; animation: fadeIn 0.5s ease forwards; }
+  .spread.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ── COVER ── */
+  .cover-spread {
+    position: relative; min-height: 520px; border-radius: 4px; overflow: hidden;
+    background:
+      radial-gradient(ellipse at 22% 24%, rgba(217,154,99,0.13) 0%, transparent 52%),
+      radial-gradient(ellipse at 78% 30%, rgba(34,211,238,0.10) 0%, transparent 52%),
+      radial-gradient(ellipse at 64% 86%, rgba(167,139,250,0.07) 0%, transparent 52%),
+      radial-gradient(ellipse at 20% 88%, rgba(217,154,99,0.06) 0%, transparent 52%),
+      var(--deep);
+    border: 1px solid rgba(217,154,99,0.25);
+    box-shadow: inset 0 0 80px rgba(217,154,99,0.06), 0 0 0 4px rgba(255,255,255,0.03);
+    display: flex; flex-direction: column; justify-content: flex-end; padding: 3rem;
+  }
+  .cover-motif { position: absolute; top: -6px; right: -10px; width: 320px; height: 320px; opacity: 0.72; pointer-events: none; }
+  .cover-issue { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.5em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.5rem; }
+  .cover-title { font-weight: 700; font-size: clamp(1.9rem, 5.2vw, 3rem); line-height: 1.03; color: var(--star-white); letter-spacing: -0.01em; margin-bottom: 0.9rem; }
+  .cover-title .amp { color: var(--accent); font-style: italic; }
+  .cover-subtitle { font-size: 1rem; color: var(--stardust); opacity: 0.85; margin-bottom: 1.5rem; max-width: 470px; line-height: 1.55; }
+  .cover-byline { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.14em; color: var(--dim); margin-bottom: 1.8rem; }
+  .cover-byline strong { color: var(--stardust); font-weight: 700; }
+  .cover-rule { width: 220px; max-width: 60%; margin-bottom: 1.3rem; }
+  .cover-meta { display: flex; gap: 2rem; align-items: center; }
+  .cover-ls { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 1.4rem; color: var(--accent); letter-spacing: 0.05em; }
+  .cover-meta-text { font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--dim2); line-height: 1.9; }
+  .cover-corner { position: absolute; top: 2rem; right: 2.5rem; text-align: right; }
+  .cover-corner-num { font-weight: 700; font-size: 4.5rem; line-height: 1; color: var(--accent); opacity: 0.20; }
+  .cover-corner-label { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); display: block; margin-top: -0.3rem; }
+
+  /* ── INTERIOR ── */
+  .interior { background: var(--page); border: 1px solid rgba(217,154,99,0.15); border-radius: 4px; overflow: hidden; min-height: 480px; }
+  .spread-2col { display: grid; grid-template-columns: 1fr 1fr; min-height: 440px; }
+  .spread-left, .spread-right { padding: 3rem 2.4rem; position: relative; }
+  .spread-left { border-right: 1px solid rgba(167,139,250,0.12); }
+
+  .spread-2col.stacked { display: flex; flex-direction: column; }
+  .spread-2col.stacked > .spread-left,
+  .spread-2col.stacked > .spread-right { border-right: none; }
+  .spread-2col.stacked > .col-diagram { order: 2; padding-top: 0; }
+  .spread-2col.stacked > .col-text { padding-left: max(2.4rem, calc((100% - 32rem) / 2)); padding-right: max(2.4rem, calc((100% - 32rem) / 2)); }
+  .spread-2col.stacked .diagram-wrap { height: auto; }
+  .spread-2col.stacked .diagram { max-width: 460px; }
+
+  .eyebrow { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.1rem; }
+  .body-text { font-size: 0.98rem; line-height: 1.72; color: var(--stardust); }
+  .body-text p { margin-bottom: 1rem; }
+  .body-text p:last-child { margin-bottom: 0; }
+  .body-text strong { font-weight: 700; color: var(--star-white); }
+  .body-text em { font-style: italic; color: var(--star-white); }
+  .body-text a { color: var(--cyan); text-decoration: none; border-bottom: 1px solid rgba(34,211,238,0.4); }
+  .body-text a:hover { border-bottom-color: var(--cyan); color: var(--star-white); }
+  /* Accent spans that sit OUTSIDE .body-text — inside .refusals, .readaloud,
+     .grownup-body and .colophon-body, which are its siblings. The No. 67 fault. */
+  .zine-shell span.violet { color: var(--violet); font-weight: 700; }
+  .zine-shell span.gold { color: var(--gold); font-weight: 700; }
+  .zine-shell span.cyan { color: var(--cyan); font-weight: 700; }
+  .zine-shell span.pink { color: var(--pink); font-weight: 700; }
+  .zine-shell span.green { color: var(--green); font-weight: 700; }
+  .zine-shell span.sepia { color: var(--sepia); font-weight: 700; }
+  .body-text .violet { color: var(--violet); font-weight: 700; }
+  .body-text .pink { color: var(--pink); font-weight: 700; }
+  .body-text .gold { color: var(--gold); font-weight: 700; }
+  .body-text .cyan { color: var(--cyan); font-weight: 700; }
+  .body-text .green { color: var(--green); font-weight: 700; }
+  .body-text .dim { color: var(--dim); }
+  .body-text .lede { font-size: 1.08rem; color: var(--star-white); }
+  .latin { font-style: italic; color: var(--star-white); }
+
+  .spread-heading { font-weight: 700; font-size: 1.9rem; line-height: 1.12; color: var(--star-white); margin-bottom: 0.7rem; letter-spacing: -0.01em; margin-top: 0; scroll-margin-top: 5rem; }
+  .spread-heading .spectrum-word { background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .rule { width: 40px; margin: 1rem 0; }
+
+  /* ── THE READ-ALOUD LAYER ──
+     The child's half of the page. Large, short-lined, full contrast, and the
+     first thing in the DOM after the heading so a screen reader meets it first.
+     Everything a four-year-old is meant to receive is in here and nowhere else. */
+  .readaloud { font-size: 1.24rem; line-height: 1.78; color: var(--star-white); max-width: 30rem; }
+  .readaloud p { margin-bottom: 1.15rem; }
+  .readaloud p:last-child { margin-bottom: 0; }
+  .readaloud strong { font-weight: 700; color: var(--star-white); }
+  .readaloud em { font-style: italic; }
+  .readaloud .turn { font-weight: 700; font-size: 1.42rem; line-height: 1.4; display: block; }
+
+  /* ── THE GROWN-UP LAYER ──
+     Same page, same spread, smaller type: the sourcing, the species names, the
+     caveats. Deliberately not a separate document — a caregiver reading aloud
+     should be able to answer "is that true?" without leaving the spread. */
+  .grownup { margin-top: 1.7rem; border-left: 3px solid var(--cyan); background: rgba(34,211,238,0.05); border-radius: 0 4px 4px 0; padding: 1rem 1.15rem; }
+  .grownup-label { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--cyan); margin-bottom: 0.6rem; }
+  .grownup-body { font-size: 0.83rem; line-height: 1.72; color: var(--stardust); }
+  .grownup-body p { margin-bottom: 0.75rem; }
+  .grownup-body p:last-child { margin-bottom: 0; }
+  .grownup-body strong { font-weight: 700; color: var(--star-white); }
+  .grownup-body em { font-style: italic; color: var(--star-white); }
+  .grownup-body a { color: var(--cyan); text-decoration: none; border-bottom: 1px solid rgba(34,211,238,0.4); }
+  .grownup-body a:hover { border-bottom-color: var(--cyan); color: var(--star-white); }
+
+  .pull-quote { font-size: 1.18rem; font-weight: 700; line-height: 1.4; color: var(--star-white); border-left: 3px solid var(--accent); padding-left: 1.1rem; margin: 1.4rem 0; font-style: italic; }
+  .pull-quote.cyan { border-left-color: var(--cyan); }
+  .pull-quote.gold { border-left-color: var(--gold); }
+  .pull-quote .attr { display: block; font-family: 'Space Mono', monospace; font-size: 0.6rem; font-weight: 400; font-style: normal; letter-spacing: 0.08em; color: var(--dim); margin-top: 0.6rem; }
+
+  .callout { margin: 1.3rem 0; padding: 1rem 1.15rem; background: rgba(217,154,99,0.06); border: 1px solid rgba(217,154,99,0.24); border-radius: 4px; font-size: 1rem; font-style: italic; color: var(--star-white); line-height: 1.55; }
+  .callout .attr { display: block; font-family: 'Space Mono', monospace; font-size: 0.58rem; font-style: normal; letter-spacing: 0.06em; color: var(--dim); margin-top: 0.5rem; }
+
+  .note { font-size: 0.84rem; line-height: 1.6; color: var(--dim); border-left: 2px solid rgba(217,154,99,0.28); padding-left: 0.9rem; margin: 1.1rem 0; }
+  .note strong { color: var(--stardust); font-weight: 700; }
+
+  /* ── DIAGRAMS ── */
+  .diagram-wrap { display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; margin: 1.7rem 0 0.3rem; }
+  .diagram { width: 100%; max-width: 300px; display: block; }
+  /* NOTE: .diagram-caption is uppercased. Never put a unit symbol in one —
+     text-transform turns nm into NM, which is the µm→MM fault in another costume.
+     Wavelength figures live in SVG <text>, in .grownup-body, or in the colophon. */
+  .diagram-caption { font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim); text-align: center; margin-top: 0.9rem; line-height: 1.9; }
+
+  /* ── REFUSALS ── */
+  .refusals { margin-top: 1.3rem; }
+  .refusal { font-size: 0.88rem; line-height: 1.5; color: var(--stardust); padding: 0.55rem 0; border-bottom: 1px solid rgba(217,154,99,0.1); display: flex; gap: 0.6rem; align-items: baseline; }
+  .refusal:last-child { border-bottom: none; }
+  .refusal-tag { font-family: 'Space Mono', monospace; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ember); flex-shrink: 0; padding-top: 0.12rem; }
+  .refusal strong { color: var(--star-white); font-weight: 700; }
+
+  /* ── COLOPHON ── */
+  .colophon { padding: 3rem; display: flex; flex-direction: column; justify-content: space-between; min-height: 480px; background: radial-gradient(ellipse at 80% 18%, rgba(217,154,99,0.09) 0%, transparent 50%), radial-gradient(ellipse at 18% 85%, rgba(34,211,238,0.06) 0%, transparent 50%), var(--page); }
+  .colophon-top { border-bottom: 1px solid rgba(217,154,99,0.14); padding-bottom: 1.3rem; margin-bottom: 1.2rem; }
+  .colophon-ls { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 2.4rem; color: var(--accent); letter-spacing: 0.05em; display: block; margin-bottom: 0.4rem; }
+  .colophon-phrase { font-size: 0.98rem; font-weight: 700; font-style: italic; color: var(--stardust); }
+  .series-list { display: flex; flex-direction: column; gap: 0.38rem; margin-bottom: 1.2rem; }
+  .series-item { font-size: 0.72rem; color: var(--dim); letter-spacing: 0.01em; display: flex; gap: 0.7rem; align-items: baseline; line-height: 1.45; }
+  .series-item.current { color: var(--accent); font-weight: 700; }
+  .series-num { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim2); flex-shrink: 0; }
+  .series-item.current .series-num { color: var(--accent); }
+  .reflect { border-top: 1px solid rgba(217,154,99,0.14); padding-top: 1rem; margin-bottom: 1.2rem; }
+  .reflect-label { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.65rem; }
+  .reflect-q { font-size: 0.86rem; line-height: 1.55; color: var(--stardust); margin-bottom: 0.55rem; font-style: italic; }
+  .reflect-q:last-child { margin-bottom: 0; }
+  .colophon-body { font-size: 0.75rem; color: var(--dim); line-height: 1.75; margin-bottom: 1.2rem; }
+  .colophon-body a { color: var(--cyan); text-decoration: none; border-bottom: 1px solid rgba(34,211,238,0.4); }
+  .colophon-body a:hover { border-bottom-color: var(--cyan); }
+  .colophon-h { font-family: 'Space Mono', monospace; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: var(--stardust); margin: 1rem 0 0.4rem; scroll-margin-top: 5rem; }
+  .colophon-footer { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--dim); line-height: 2.2; border-top: 1px solid rgba(217,154,99,0.14); padding-top: 1rem; }
+
+  /* ── SPREAD FOOTER ── */
+  .spread-footer { display: flex; justify-content: space-between; align-items: center; padding: 0.9rem 2.4rem; border-top: 1px solid rgba(217,154,99,0.1); }
+  .spread-footer-left { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--dim); }
+  .spread-footer-right { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; color: var(--accent); }
+
+  .twinkle { position: fixed; width: 3px; height: 3px; border-radius: 50%; animation: twinkle-anim 3s ease-in-out infinite; pointer-events: none; z-index: 0; }
+
+  @media (max-width: 600px) {
+    .spread-2col { grid-template-columns: 1fr; }
+    .spread-left { border-right: none; border-bottom: 1px solid rgba(167,139,250,0.12); }
+    .spread-2col.stacked > .spread-left { border-bottom: none; }
+    .spread-2col.stacked > .col-text { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .cover-spread { padding: 2rem; min-height: 420px; }
+    .cover-motif { width: 210px; height: 210px; top: -6px; right: -22px; opacity: 0.5; }
+    .cover-title { font-size: 1.75rem; }
+    .spread-heading { font-size: 1.55rem; }
+    .readaloud { font-size: 1.12rem; }
+    .readaloud .turn { font-size: 1.3rem; }
+    .spread-left, .spread-right { padding: 2rem 1.5rem; }
+    .colophon { padding: 2rem 1.5rem; }
+  }
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"The Cuttlefish That Can't See Colour","description":"A read-aloud Star Stuff zine for four to eight, and whoever is reading it to them, following one measured paradox honestly. A cuttlefish matches the colour of whatever it sits on, and its eye contains a single class of photoreceptor. Mäthger, Barbosa, Miner and Hanlon tested this by pairing checker shades matched in intensity to the cuttlefish visual system, so that a colour-blind animal would see a uniform substrate: the cuttlefish showed non-disruptive body patterns, and the authors conclude that cuttlefish must be color blind, while the same assay showed the animals resolve contrast differences of about fifteen per cent. Chiao, Wickiser, Allen, Genter and Hanlon then imaged live camouflaged cuttlefish hyperspectrally and modelled di- and trichromatic fish predator vision, finding just-noticeable differences relatively small and distributed randomly, an indication of good colour match — while noting that most cuttlefish reflectance spectra carry a peak around 800 nanometres in the infrared that natural substrates lack. Reiter's 2026 review evaluates passive skin reflectance, chromatic-aberration-based spectral inference after Stubbs and Stubbs, polarization vision, and extraocular photoreception after Kingston and colleagues, and finds each insufficient or weakly supported, before taking seriously the possibility that accurate colour matching is achieved without colour perception at all — a predictive mapping from luminance to coloured skin, by analogy with image-colourisation networks. Nobody has finished working it out. Thirteen spreads, six figures, five refusals. A rhyme, not a proof.","image":"https://starstuff.earth/og-card.jpg","url":"https://starstuff.earth/the-cuttlefish-that-cannot-see-colour-zine.html","mainEntityOfPage":"https://starstuff.earth/the-cuttlefish-that-cannot-see-colour-zine.html","datePublished":"2026-09-07","dateModified":"2026-09-07","license":"https://creativecommons.org/licenses/by-sa/4.0/","author":{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/"},"publisher":[{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/","logo":{"@type":"ImageObject","url":"https://starstuff.earth/og-card.jpg"}},{"@type":"Organization","name":"More Realms","url":"https://morerealms.com/"}],"isPartOf":{"@type":"WebSite","name":"Star Stuff","url":"https://starstuff.earth/"}}</script>
+</head>
+<body>
+<div class="zine-shell">
+
+  <nav class="ss-nav" style="--nav-accent:#d99a63;" aria-label="Star Stuff collection">
+    <span class="ss-nav-home-group"><a class="ss-nav-home" href="index.html"><span class="ss-star" aria-hidden="true">&#9733;</span> stuff</a><a class="ss-nav-about" href="about.html">about</a>
+      <a class="ss-nav-search" href="search.html">search</a></span>
+    <span class="ss-nav-links">
+      <a class="ss-nav-prev" href="bone-song-read-aloud-zine.html"><span class="ss-nav-arrow" aria-hidden="true">&lsaquo;</span> <span class="ss-nav-label">Bone Song, Read Aloud</span></a>
+      <a class="ss-nav-next" href="collection-how-we-got-here.html"><span class="ss-nav-label">How We Got Here</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
+    </span>
+    <a class="ss-nav-collection" href="collection-young-readers.html"><span class="ss-nav-collection-label">Collection</span> <span class="ss-nav-collection-name">Young Readers</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
+  </nav>
+<main>
+
+  <div class="nav">
+    <span class="nav-brand">Stimpunks &times; More Realms</span>
+    <div class="nav-controls">
+      <button class="nav-btn" id="prev-btn" onclick="changePage(-1)">&larr; prev</button>
+      <span class="page-counter" id="page-counter">1 / 13</span>
+      <button class="nav-btn" id="next-btn" onclick="changePage(1)">next &rarr;</button>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 1: COVER ════ -->
+  <div class="spread active" id="spread-1">
+    <div class="cover-spread">
+      <!-- Cover motif: a cuttlefish, side on, over a strip of speckled sea floor.
+           Deliberately TEXT-FREE — the No. 48 cover fault was a motif caption
+           running through the title, and a motif carrying no text cannot collide.
+
+           Drawn from the four features that stop a cuttlefish reading as a fish,
+           because that is the failure mode for every side-view sea animal here:
+           a BROAD OVAL MANTLE; a CONTINUOUS FIN SKIRT running the whole length of
+           it, drawn as an offset outline rather than as separate fins; a CROWN OF
+           SHORT ARMS at the head end, not a tail; and the W-SHAPED PUPIL, which
+           is diagnostic on sight. Give it a forked tail or dorsal fins and it is
+           a fish immediately.
+
+           The W pupil is not decoration: the off-axis pupil is the whole basis of
+           the chromatic-aberration mechanism on spread eight, so the cover shows
+           the feature one of the four ideas depends on.
+
+           Composed inside viewBox y 20-210. Below ~y215 the motif sits on
+           .cover-title, and the corner numeral occupies roughly x 190-285 /
+           y 25-120. check-overlap.mjs compares text to text and cannot see text
+           over artwork, so this clearance is geometry, checked at render size. -->
+      <svg class="cover-motif" viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <!-- The mantle: BROAD. A cuttlefish is roughly two-to-one, and the first
+             attempt here at five-to-one read as a thin fish on sight. -->
+        <path d="M56 120 C 56 100, 78 89, 116 89 C 154 89, 172 100, 176 114
+                 C 178 118, 178 122, 176 126 C 172 140, 154 151, 116 151
+                 C 78 151, 56 140, 56 120 Z"
+              fill="rgba(217,154,99,0.12)" stroke="rgba(217,154,99,0.9)" stroke-width="1.8" stroke-linejoin="round"/>
+        <!-- The fin: a scalloped frill along the underside, drawn as its own line
+             so it reads as a frill rather than as a second outline. -->
+        <path d="M68 145 q 11 11 23 2 q 11 11 23 2 q 11 11 23 1 q 10 10 20 -2"
+              fill="none" stroke="rgba(217,154,99,0.62)" stroke-width="1.5" stroke-linecap="round"/>
+        <!-- The arms: ONE BLUNT CROWN, not radiating lines. Thin fanned strokes
+             here read as whiskers and turned the whole animal into a cat's face. -->
+        <path d="M56 105 C 42 103, 30 109, 22 119 C 30 131, 42 137, 56 135 Z"
+              fill="rgba(217,154,99,0.10)" stroke="rgba(217,154,99,0.9)" stroke-width="1.6" stroke-linejoin="round"/>
+        <g stroke="rgba(217,154,99,0.55)" stroke-width="1.1" fill="none" stroke-linecap="round">
+          <path d="M51 109 q -12 3 -20 8"/>
+          <path d="M51 119 q -13 0 -22 1"/>
+          <path d="M51 130 q -12 -3 -20 -7"/>
+        </g>
+        <!-- the two long feeding tentacles, which the eight arms do not have -->
+        <g stroke="rgba(217,154,99,0.7)" stroke-width="1.3" fill="none" stroke-linecap="round">
+          <path d="M24 114 q -12 -5 -18 -9"/>
+          <path d="M24 125 q -12 4 -18 8"/>
+        </g>
+        <!-- the eye, with the W pupil — diagnostic, and the basis of idea two -->
+        <circle cx="78" cy="111" r="10" fill="rgba(10,10,20,0.6)" stroke="rgba(217,154,99,0.9)" stroke-width="1.6"/>
+        <path d="M72 110 l 3 6 l 3 -6 l 3 6 l 3 -6" fill="none" stroke="rgba(244,244,251,0.95)" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/>
+        <!-- Speckles ON the animal: this is the camouflage, and putting them on the
+             skin rather than on a sea floor below keeps everything inside the one
+             region measured clear of the numeral and of the title's first line.
+             THE CLEARANCE HERE WAS MEASURED, NOT ESTIMATED. The first placement
+             collided with the title ink and the inherited comment from No. 91 did
+             not describe this cover. Safe region on this page, in viewBox units:
+             x 0-180 at any height, plus x 180-320 only below y 115; nothing below
+             y 168, where the title's first line begins. Re-measure with a Range
+             over the text nodes if any coordinate moves — check-overlap.mjs
+             compares text to text and cannot see text crossing artwork. -->
+        <g fill="rgba(34,211,238,0.42)">
+          <circle cx="104" cy="103" r="2.6"/><circle cx="128" cy="114" r="2.2"/><circle cx="152" cy="105" r="2.4"/>
+          <circle cx="114" cy="134" r="2.3"/><circle cx="140" cy="140" r="1.9"/><circle cx="162" cy="126" r="2.1"/>
+          <circle cx="96" cy="126" r="1.9"/><circle cx="132" cy="96" r="1.6"/>
+        </g>
+      </svg>
+      <div class="cover-corner">
+        <div class="cover-corner-num" aria-hidden="true">96</div>
+        <span class="cover-corner-label">Star Stuff</span>
+      </div>
+      <div class="cover-issue">Stimpunks &times; More Realms &middot; Zine No. 96</div>
+      <h1 class="cover-title">The Cuttlefish That Can&rsquo;t See <span class="amp">Colour</span></h1>
+      <p class="cover-subtitle">it matches whatever it sits on, it cannot see colour, and nobody has worked out how &mdash; read-aloud science for four to eight, with every source kept on the page where the grown-up can find it</p>
+      <div class="cover-byline">thirteen spreads &middot; six figures &middot; <strong>five refusals</strong></div>
+      <hr class="spectrum-line cover-rule">
+      <div class="cover-meta">
+        <span class="cover-ls">L&#9733;S</span>
+        <div class="cover-meta-text">Love You Down To Your Star Stuff<br>open edition &middot; print freely</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 2 ════ -->
+  <div class="spread" id="spread-2">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Start here</div>
+          <h2 class="spread-heading" id="a-cuttlefish-is-not-a-fish">A cuttlefish is not a fish</h2>
+          <hr class="spectrum-line rule">
+          <div class="readaloud">
+<p>Say it like this: <strong>CUTTLE-fish</strong>.</p>
+<p>It is not a fish at all. It belongs with the snails and the octopuses. Its shell is on the <em>inside</em>.</p>
+<p>It lives in the sea. It has eight arms, and two long ones for grabbing, and a frill that runs all the way round its body like a skirt.</p>
+<p>Look at its eye. The dark part is not round like yours. It is shaped like a <strong>W</strong>.</p>
+<p><span class="turn">And it can change what colour it is. Fast &mdash; faster than you could find the right crayon.</span></p>
+          </div>
+          <div class="grownup">
+            <div class="grownup-label">For the grown-up reading this</div>
+            <div class="grownup-body">
+<p>Cuttlefish are <strong>cephalopod molluscs</strong> &mdash; the group that holds octopus and squid. The species in every study behind this zine is <span class="latin">Sepia officinalis</span>, the common cuttlefish. The internal shell is the cuttlebone.</p>
+<p>The skin patterns are made by <strong>chromatophores</strong>, pigment cells in the skin, along with other specialised skin cell types (Reiter, 2026).</p>
+<p>The literature's word for the speed is <em>rapidly</em>. <span class="cyan">We have not printed a number</span>, because none of the five papers here is a timing study, and a figure we could not source is worse than a comparison a child can picture.</p>
+<p>The <strong>W-shaped pupil</strong> is not a flourish. It comes back on spread eight: an off-axis pupil is exactly what one of the four proposed explanations is built on.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Cuttlefish That Can&rsquo;t See Colour &middot; Stimpunks</span>
+        <span class="spread-footer-right">2</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 3 ════ -->
+  <div class="spread" id="spread-3">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">What it does</div>
+          <h2 class="spread-heading" id="it-matches-wherever-it-sits">It matches wherever it sits</h2>
+          <hr class="spectrum-line rule">
+          <div class="readaloud">
+<p>Put a cuttlefish down on speckly gravel, and it goes speckly.</p>
+<p>Move it onto smooth pale sand, and it goes smooth and pale.</p>
+<p>It does not have to practise. A baby cuttlefish can do this on the day it hatches, with nobody showing it how.</p>
+<p><span class="turn">And it is not only the pattern. It gets the <em>colour</em> right too.</span></p>
+          </div>
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 480 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig1-title fig1-desc">
+              <title id="fig1-title">The same cuttlefish on two different sea floors</title>
+              <desc id="fig1-desc">Two pictures side by side. On the left, a cuttlefish resting on speckled gravel; its skin is covered in matching speckles. On the right, the same cuttlefish on smooth pale sand; its skin is now plain and pale, with no speckles at all. The labels beneath read speckly gravel and smooth sand. The same animal appears in both.</desc>
+              <!-- LEFT: speckled ground, speckled animal -->
+              <path d="M14 150 q 44 -5 88 0 t 88 0" fill="none" stroke="rgba(34,211,238,0.4)" stroke-width="1.2"/>
+              <g fill="rgba(34,211,238,0.5)">
+                <circle cx="34" cy="160" r="2.4"/><circle cx="62" cy="167" r="1.6"/><circle cx="90" cy="158" r="2.1"/>
+                <circle cx="118" cy="168" r="1.5"/><circle cx="146" cy="161" r="2.5"/><circle cx="174" cy="166" r="1.7"/>
+              </g>
+              <path d="M54 106 C 54 89.88, 72.4 80, 100 80 C 127.6 80, 141.86 89.88, 146 102.1 C 148.07 104.96, 148.07 107.04, 146 109.9 C 141.86 122.12, 127.6 132, 100 132 C 72.4 132, 54 122.12, 54 106 Z" fill="rgba(217,154,99,0.1)" stroke="rgba(217,154,99,0.9)" stroke-width="1.6" stroke-linejoin="round"/>
+              <path d="M64.12 127.84 q 7.728 8.84 15.824 1.04 q 7.728 8.84 15.824 1.04 q 7.728 8.84 15.824 1.04 q 7.728 8.84 15.824 1.04" fill="none" stroke="rgba(217,154,99,0.6)" stroke-width="1.3" stroke-linecap="round"/>
+              <path d="M54 93 C 42.96 91.96, 32.84 96.12, 26.4 106 C 32.84 115.88, 42.96 120.04, 54 119 Z" fill="rgba(217,154,99,0.09)" stroke="rgba(217,154,99,0.9)" stroke-width="1.5" stroke-linejoin="round"/>
+              <g stroke="rgba(217,154,99,0.7)" stroke-width="1.2" fill="none" stroke-linecap="round"><path d="M28.7 98.2 q -10.12 -5.2 -16.56 -8.32"/><path d="M28.7 113.8 q -10.12 5.2 -16.56 8.32"/></g>
+              <circle cx="72.4" cy="97.68" r="8" fill="rgba(10,10,20,0.6)" stroke="rgba(217,154,99,0.9)" stroke-width="1.3"/>
+              <path d="M67.44 96.88 l 2.48 4.4 l 2.48 -4.4 l 2.48 4.4 l 2.48 -4.4" fill="none" stroke="rgba(244,244,251,0.95)" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+              <g fill="rgba(34,211,238,0.45)"><circle cx="90.8" cy="93" r="2.3"/><circle cx="111.5" cy="103.4" r="1.9"/><circle cx="132.2" cy="94.3" r="2.1"/><circle cx="100" cy="119" r="2"/><circle cx="123" cy="121.6" r="1.6"/><circle cx="139.1" cy="111.2" r="1.8"/><circle cx="86.2" cy="111.2" r="1.7"/></g>
+              <!-- RIGHT: smooth ground, plain animal -->
+              <path d="M292 150 q 44 -3 88 0 t 88 0" fill="none" stroke="rgba(34,211,238,0.4)" stroke-width="1.2"/>
+              <path d="M332 106 C 332 89.88, 350.4 80, 378 80 C 405.6 80, 419.86 89.88, 424 102.1 C 426.07 104.96, 426.07 107.04, 424 109.9 C 419.86 122.12, 405.6 132, 378 132 C 350.4 132, 332 122.12, 332 106 Z" fill="rgba(217,154,99,0.06)" stroke="rgba(217,154,99,0.9)" stroke-width="1.6" stroke-linejoin="round"/>
+              <path d="M342.12 127.84 q 7.728 8.84 15.824 1.04 q 7.728 8.84 15.824 1.04 q 7.728 8.84 15.824 1.04 q 7.728 8.84 15.824 1.04" fill="none" stroke="rgba(217,154,99,0.6)" stroke-width="1.3" stroke-linecap="round"/>
+              <path d="M332 93 C 320.96 91.96, 310.84 96.12, 304.4 106 C 310.84 115.88, 320.96 120.04, 332 119 Z" fill="rgba(217,154,99,0.09)" stroke="rgba(217,154,99,0.9)" stroke-width="1.5" stroke-linejoin="round"/>
+              <g stroke="rgba(217,154,99,0.7)" stroke-width="1.2" fill="none" stroke-linecap="round"><path d="M306.7 98.2 q -10.12 -5.2 -16.56 -8.32"/><path d="M306.7 113.8 q -10.12 5.2 -16.56 8.32"/></g>
+              <circle cx="350.4" cy="97.68" r="8" fill="rgba(10,10,20,0.6)" stroke="rgba(217,154,99,0.9)" stroke-width="1.3"/>
+              <path d="M345.44 96.88 l 2.48 4.4 l 2.48 -4.4 l 2.48 4.4 l 2.48 -4.4" fill="none" stroke="rgba(244,244,251,0.95)" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+              <text x="102" y="196" text-anchor="middle" fill="#f4f2fb" font-family="'Space Mono', monospace" font-size="13">speckly gravel</text>
+              <text x="380" y="196" text-anchor="middle" fill="#f4f2fb" font-family="'Space Mono', monospace" font-size="13">smooth sand</text>
+              <text x="240" y="226" text-anchor="middle" fill="#f4f2fb" font-family="'Space Mono', monospace" font-size="12">the same animal, both times</text>
+            </svg>
+            <div class="diagram-caption">Figure 1 &middot; one animal, two sea floors</div>
+          </div>
+          <div class="grownup">
+            <div class="grownup-label">For the grown-up reading this</div>
+            <div class="grownup-body">
+<p>Reiter (2026) on the hatchling point, in his own words: <em>&ldquo;Animals are capable of camouflage from hatching, without tutoring. This behavior therefore has a large innate component, ultimately encoded in the genome.&rdquo;</em></p>
+<p>The willingness to attempt camouflage on <em>any</em> substrate is what makes the animal testable at all, and it is the hinge of the experiment on spread five (M&auml;thger and colleagues, 2006, following Marshall &amp; Messenger, 1996).</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Cuttlefish That Can&rsquo;t See Colour &middot; Stimpunks</span>
+        <span class="spread-footer-right">3</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 4 ════ -->
+  <div class="spread" id="spread-4">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The strange part</div>
+          <h2 class="spread-heading" id="it-cannot-see-colour">It cannot see colour</h2>
+          <hr class="spectrum-line rule">
+          <div class="readaloud">
+<p>Here is the strange part.</p>
+<p>Inside your eye there are <strong>three</strong> different kinds of tiny light-catcher. One answers best to red light. One to green. One to blue. Your brain compares what the three of them say, and <em>that</em> is how you see colour.</p>
+<p>Inside a cuttlefish eye there is only <strong>one</strong> kind.</p>
+<p>One kind on its own cannot tell colours apart. It can only say <em>brighter</em> or <em>dimmer</em>. To see colour you need at least two, to compare.</p>
+<p><span class="turn">So the cuttlefish is matching a colour it cannot see.</span></p>
+          </div>
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 480 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig2-title fig2-desc">
+              <title id="fig2-title">Three kinds of light-catcher, and one</title>
+              <desc id="fig2-desc">Two groups. On the left, labelled you, three separate light-catchers drawn as three tall shapes, one answering to blue light, one to green, one to red, with a brain symbol beneath comparing them. On the right, labelled cuttlefish, a single light-catcher on its own, with nothing to compare it against. Beneath, the note reads comparing is the part that makes colour.</desc>
+              <!-- YOU: three catchers -->
+              <g stroke-width="1.7" fill="none">
+                <rect x="30" y="60" width="26" height="58" rx="12" stroke="rgba(129,168,248,0.95)"/>
+                <rect x="68" y="60" width="26" height="58" rx="12" stroke="rgba(74,222,128,0.95)"/>
+                <rect x="106" y="60" width="26" height="58" rx="12" stroke="rgba(248,113,113,0.95)"/>
+              </g>
+              <path d="M43 118 L81 140 M81 118 L81 140 M119 118 L81 140" fill="none" stroke="rgba(244,244,251,0.55)" stroke-width="1.2"/>
+              <circle cx="81" cy="152" r="12" fill="none" stroke="rgba(244,244,251,0.85)" stroke-width="1.5"/>
+              <path d="M75 152 q 6 -7 12 0" fill="none" stroke="rgba(244,244,251,0.85)" stroke-width="1.3"/>
+              <text x="81" y="44" text-anchor="middle" fill="#f4f2fb" font-family="'Space Mono', monospace" font-size="13">you</text>
+              <text x="81" y="192" text-anchor="middle" fill="#f4f2fb" font-family="'Space Mono', monospace" font-size="12">three, compared</text>
+              <!-- divider -->
+              <path d="M240 46 V176" fill="none" stroke="rgba(217,154,99,0.28)" stroke-width="1" stroke-dasharray="4 5"/>
+              <!-- CUTTLEFISH: one catcher -->
+              <rect x="372" y="60" width="26" height="58" rx="12" fill="none" stroke="rgba(217,154,99,0.95)" stroke-width="1.7"/>
+              <path d="M385 118 L385 140" fill="none" stroke="rgba(244,244,251,0.55)" stroke-width="1.2"/>
+              <circle cx="385" cy="152" r="12" fill="none" stroke="rgba(244,244,251,0.85)" stroke-width="1.5"/>
+              <path d="M379 152 q 6 -7 12 0" fill="none" stroke="rgba(244,244,251,0.85)" stroke-width="1.3"/>
+              <text x="385" y="44" text-anchor="middle" fill="#f4f2fb" font-family="'Space Mono', monospace" font-size="13">cuttlefish</text>
+              <text x="385" y="192" text-anchor="middle" fill="#f4f2fb" font-family="'Space Mono', monospace" font-size="12">one, alone</text>
+              <text x="240" y="226" text-anchor="middle" fill="#f4f2fb" font-family="'Space Mono', monospace" font-size="12">comparing is the part that makes colour</text>
+            </svg>
+            <div class="diagram-caption">Figure 2 &middot; three light-catchers, and one</div>
+          </div>
+          <div class="grownup">
+            <div class="grownup-label">For the grown-up reading this</div>
+            <div class="grownup-body">
+<p><span class="latin">Sepia officinalis</span> has a <strong>single visual pigment</strong>, with peak absorption near <strong>492 nm</strong>. Colour vision requires at least two receptor classes with different spectral sensitivities, because the signal that carries colour is the <em>comparison</em> between them &mdash; a single class cannot distinguish a change of wavelength from a change of intensity.</p>
+<p><span class="cyan">One caveat worth having, because the zine's title rests on it.</span> That pigment measurement traces to Brown &amp; Brown (1958). M&auml;thger and colleagues note in 2006 that it is <em>&ldquo;the only study looking at the absorption of </em>S. officinalis<em> visual pigment,&rdquo;</em> with no modern microspectrophotometry since; Bellingham and colleagues (1998) modelled the same peak from the opsin sequence and agreed. So the anatomy rests on one old measurement and one model &mdash; which is why the <em>behavioural</em> test on the next spread matters so much.</p>
+<p><strong>And one cephalopod is a known exception.</strong> The deep-sea, bioluminescent firefly squid <span class="latin">Watasenia scintillans</span> expresses three photopigments with distinct peak sensitivities (Reiter, 2026). &ldquo;Cephalopods are colour-blind&rdquo; is a statement about most of them, not all.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Cuttlefish That Can&rsquo;t See Colour &middot; Stimpunks</span>
+        <span class="spread-footer-right">4</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 5 ════ -->
+  <div class="spread" id="spread-5">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">How anybody knows</div>
+          <h2 class="spread-heading" id="they-asked-in-a-way-it-could-answer">They asked it in a way it could answer</h2>
+          <hr class="spectrum-line rule">
+          <div class="readaloud">
+<p>How could anyone find that out? You cannot ask a cuttlefish what colour something is. It has no way to tell you.</p>
+<p>So they did something clever instead.</p>
+<p>When a cuttlefish sits on a <strong>checkerboard</strong>, it makes a big bold blotchy pattern to break up its shape. It always does. That is its answer to squares.</p>
+<p>So: build a checkerboard out of two <em>different colours</em> &mdash; but choose them so that, to a cuttlefish's one light-catcher, both squares are exactly as bright as each other.</p>
+<p>If it can see colour, it will still see squares. It will go blotchy.</p>
+<p>If it cannot, the whole board will look plain to it. It will stay plain.</p>
+<p><span class="turn">It stayed plain. The cuttlefish answered with its skin.</span></p>
+          </div>
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 480 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig3-title fig3-desc">
+              <title id="fig3-title">The same checkerboard, to us and to a cuttlefish</title>
+              <desc id="fig3-desc">Two versions of one checkerboard. On the left, labelled to us, the squares alternate between two clearly different colours, blue and yellow. On the right, labelled to a cuttlefish, every square is the same single shade, because the two colours were chosen to be equally bright to its one light-catcher, so no squares can be made out at all. The note beneath reads same board, chosen so the squares vanish.</desc>
+              <!-- TO US: blue / yellow checks -->
+              <g>
+                <rect x="26" y="52" width="32" height="32" fill="rgba(129,168,248,0.85)"/>
+                <rect x="58" y="52" width="32" height="32" fill="rgba(251,191,36,0.85)"/>
+                <rect x="90" y="52" width="32" height="32" fill="rgba(129,168,248,0.85)"/>
+                <rect x="122" y="52" width="32" height="32" fill="rgba(251,191,36,0.85)"/>
+                <rect x="26" y="84" width="32" height="32" fill="rgba(251,191,36,0.85)"/>
+                <rect x="58" y="84" width="32" height="32" fill="rgba(129,168,248,0.85)"/>
+                <rect x="90" y="84" width="32" height="32" fill="rgba(251,191,36,0.85)"/>
+                <rect x="122" y="84" width="32" height="32" fill="rgba(129,168,248,0.85)"/>
+                <rect x="26" y="116" width="32" height="32" fill="rgba(129,168,248,0.85)"/>
+                <rect x="58" y="116" width="32" height="32" fill="rgba(251,191,36,0.85)"/>
+                <rect x="90" y="116" width="32" height="32" fill="rgba(129,168,248,0.85)"/>
+                <rect x="122" y="116" width="32" height="32" fill="rgba(251,191,36,0.85)"/>
+              </g>
+              <rect x="26" y="52" width="128" height="96" fill="none" stroke="rgba(244,244,251,0.5)" stroke-width="1.2"/>
+              <text x="90" y="36" text-anchor="middle" fill="#f4f2fb" font-family="'Space Mono', monospace" font-size="13">to us</text>
+              <text x="90" y="176" text-anchor="middle" fill="#f4f2fb" font-family="'Space Mono', monospace" font-size="12">squares</text>
+              <!-- arrow -->
+              <path d="M186 100 H262" fill="none" stroke="rgba(217,154,99,0.7)" stroke-width="1.4"/>
+              <path d="M256 94 l 12 6 l -12 6 Z" fill="rgba(217,154,99,0.85)"/>
+              <!-- TO A CUTTLEFISH: uniform -->
+              <rect x="296" y="52" width="128" height="96" fill="rgba(184,174,208,0.5)" stroke="rgba(244,244,251,0.5)" stroke-width="1.2"/>
+              <text x="360" y="36" text-anchor="middle" fill="#f4f2fb" font-family="'Space Mono', monospace" font-size="13">to a cuttlefish</text>
+              <text x="360" y="176" text-anchor="middle" fill="#f4f2fb" font-family="'Space Mono', monospace" font-size="12">no squares at all</text>
+              <text x="240" y="212" text-anchor="middle" fill="#f4f2fb" font-family="'Space Mono', monospace" font-size="12">same board, built so the squares vanish</text>
+              <text x="240" y="240" text-anchor="middle" fill="#f4f2fb" font-family="'Space Mono', monospace" font-size="12">it stayed plain, so it saw no squares</text>
+            </svg>
+            <div class="diagram-caption">Figure 3 &middot; a board made to look plain</div>
+          </div>
+          <div class="grownup">
+            <div class="grownup-label">For the grown-up reading this</div>
+            <div class="grownup-body">
+<p>M&auml;thger, Barbosa, Miner &amp; Hanlon (2006). Sixteen checkerboards pairing sixteen grey shades with one green matched to the animal's 492 nm peak; then a blue-and-yellow board with intensities matched to the cuttlefish visual system. On the intensity-matched boards the animals produced <strong>non-disruptive</strong> body patterns, <em>&ldquo;suggesting that the substrates appeared to their eyes as uniform backgrounds.&rdquo;</em></p>
+<p>Their conclusion, quoted: <em>&ldquo;we show clearly that cuttlefish must be color blind.&rdquo;</em> The same assay showed the animals resolve contrast differences of about <strong>15%</strong>, so the null is not a story about an animal that cannot see.</p>
+<p><span class="cyan">The design is the point of this spread.</span> The authors call the body pattern <em>&ldquo;a quantifiable, neurally controlled motor response&rdquo;</em> &mdash; the animal's own body is the readout. No question was asked and none could have been. Spread eleven comes back to this.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Cuttlefish That Can&rsquo;t See Colour &middot; Stimpunks</span>
+        <span class="spread-footer-right">5</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 6 ════ -->
+  <div class="spread" id="spread-6">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">And it really works</div>
+          <h2 class="spread-heading" id="checked-from-a-fishs-side">Checked from a fish&rsquo;s side of it</h2>
+          <hr class="spectrum-line rule">
+          <div class="readaloud">
+<p>Wait, though. Maybe the cuttlefish only <em>looks</em> like a good match to <strong>us</strong>.</p>
+<p>So somebody checked properly.</p>
+<p>They used a special camera that measures every colour of light, one by one, instead of just the three our eyes use.</p>
+<p>They photographed real cuttlefish hiding on the real sea floor. Then they worked out what those pictures would look like <em>to a fish</em> &mdash; because a fish is who the cuttlefish is hiding from, and fish can see colour.</p>
+<p><span class="turn">To a fish, the cuttlefish matched. That is not a guess. Somebody measured it.</span></p>
+          </div>
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 480 230" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig4-title fig4-desc">
+              <title id="fig4-title">Checking the match through a fish's eye</title>
+              <desc id="fig4-desc">A cuttlefish resting on the sea floor on the left. An arrow runs from it to the right, passing through a shape labelled a fish's eye, and arriving at a small panel labelled good match. The note beneath reads the check was done from the predator's side.</desc>
+              <path d="M18 132 q 34 -5 68 0 t 68 0" fill="none" stroke="rgba(34,211,238,0.36)" stroke-width="1.2"/>
+              <path d="M36 96 C 36 81.12, 53.6 72, 80 72 C 106.4 72, 120.04 81.12, 124 92.4 C 125.98 95.04, 125.98 96.96, 124 99.6 C 120.04 110.88, 106.4 120, 80 120 C 53.6 120, 36 110.88, 36 96 Z" fill="rgba(217,154,99,0.1)" stroke="rgba(217,154,99,0.9)" stroke-width="1.6" stroke-linejoin="round"/>
+              <path d="M45.68 116.16 q 7.392 8.16 15.136 0.96 q 7.392 8.16 15.136 0.96 q 7.392 8.16 15.136 0.96 q 7.392 8.16 15.136 0.96" fill="none" stroke="rgba(217,154,99,0.6)" stroke-width="1.3" stroke-linecap="round"/>
+              <path d="M36 84 C 25.44 83.04, 15.76 86.88, 9.6 96 C 15.76 105.12, 25.44 108.96, 36 108 Z" fill="rgba(217,154,99,0.09)" stroke="rgba(217,154,99,0.9)" stroke-width="1.5" stroke-linejoin="round"/>
+              <g stroke="rgba(217,154,99,0.7)" stroke-width="1.2" fill="none" stroke-linecap="round"><path d="M11.8 88.8 q -9.68 -4.8 -15.84 -7.68"/><path d="M11.8 103.2 q -9.68 4.8 -15.84 7.68"/></g>
+              <circle cx="53.6" cy="88.32" r="7" fill="rgba(10,10,20,0.6)" stroke="rgba(217,154,99,0.9)" stroke-width="1.3"/>
+              <path d="M49.26 87.62 l 2.17 3.85 l 2.17 -3.85 l 2.17 3.85 l 2.17 -3.85" fill="none" stroke="rgba(244,244,251,0.95)" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round"/>
+              <g fill="rgba(34,211,238,0.45)"><circle cx="71.2" cy="84" r="2.3"/><circle cx="91" cy="93.6" r="1.9"/><circle cx="110.8" cy="85.2" r="2.1"/><circle cx="80" cy="108" r="2"/><circle cx="102" cy="110.4" r="1.6"/></g>
+              <path d="M170 96 H236" fill="none" stroke="rgba(244,244,251,0.5)" stroke-width="1.2"/>
+              <path d="M230 90 l 12 6 l -12 6 Z" fill="rgba(244,244,251,0.7)"/>
+              <!-- the fish's eye -->
+              <circle cx="272" cy="96" r="22" fill="none" stroke="rgba(74,222,128,0.9)" stroke-width="1.6"/>
+              <circle cx="272" cy="96" r="8" fill="rgba(74,222,128,0.45)"/>
+              <text x="272" y="146" text-anchor="middle" fill="#f4f2fb" font-family="'Space Mono', monospace" font-size="12">a fish&#8217;s eye</text>
+              <path d="M304 96 H366" fill="none" stroke="rgba(244,244,251,0.5)" stroke-width="1.2"/>
+              <path d="M360 90 l 12 6 l -12 6 Z" fill="rgba(244,244,251,0.7)"/>
+              <rect x="386" y="72" width="52" height="48" rx="4" fill="rgba(217,154,99,0.14)" stroke="rgba(217,154,99,0.8)" stroke-width="1.4"/>
+              <path d="M398 96 l 7 8 l 16 -18" fill="none" stroke="rgba(74,222,128,0.95)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <text x="412" y="146" text-anchor="middle" fill="#f4f2fb" font-family="'Space Mono', monospace" font-size="12">good match</text>
+              <text x="240" y="196" text-anchor="middle" fill="#f4f2fb" font-family="'Space Mono', monospace" font-size="12">the check was done from the hunter&#8217;s side</text>
+            </svg>
+            <div class="diagram-caption">Figure 4 &middot; measured, not eyeballed</div>
+          </div>
+          <div class="grownup">
+            <div class="grownup-label">For the grown-up reading this</div>
+            <div class="grownup-body">
+<p>Chiao, Wickiser, Allen, Genter &amp; Hanlon (2011). <strong>Hyperspectral imaging</strong> records the full reflectance spectrum at every pixel rather than three channels, so the comparison does not inherit our own colour vision. Live camouflaged cuttlefish were imaged on natural substrates; most reflectance spectra of animal and background were similar.</p>
+<p>They then modelled the vision of <strong>di- and trichromatic fish predators</strong>. The just-noticeable differences between animal and background were <em>&ldquo;relatively small and distributed randomly, an indication of good color match.&rdquo;</em> Pattern matched too &mdash; and largely in the predator's <em>luminance</em> channel rather than its chromatic ones.</p>
+<p><span class="cyan">Why this spread exists:</span> without it, &ldquo;the cuttlefish matches&rdquo; would be our impression of a photograph. The paradox is only a paradox because <em>both</em> halves were measured.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Cuttlefish That Can&rsquo;t See Colour &middot; Stimpunks</span>
+        <span class="spread-footer-right">6</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 7 ════ -->
+  <div class="spread" id="spread-7">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">One place it does not match</div>
+          <h2 class="spread-heading" id="a-light-nobody-there-can-see">A light nobody down there can see</h2>
+          <hr class="spectrum-line rule">
+          <div class="readaloud">
+<p>Almost perfect. There is one thing.</p>
+<p>There is a kind of light called <strong>infrared</strong>. It is real light, but your eyes cannot see it. It is the light a TV remote uses to change the channel.</p>
+<p>When they measured with that special camera, the cuttlefish gave back a little <em>bump</em> of infrared &mdash; and the sand around it did not.</p>
+<p>So in infrared light, the cuttlefish does not match at all. It stands out.</p>
+<p>And it does not matter one bit. Nothing that hunts a cuttlefish can see infrared.</p>
+<p><span class="turn">It only shows up if you bring the wrong camera.</span></p>
+          </div>
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 480 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig5-title fig5-desc">
+              <title id="fig5-title">The cuttlefish and the sand, measured across the light</title>
+              <desc id="fig5-desc">A graph with wavelength running left to right, from blue through green and red into infrared. Two lines run across it and lie almost on top of one another for most of the way, showing that the cuttlefish and the sand reflect light the same. Near the right-hand end, in the infrared, the cuttlefish line rises into a distinct bump while the sand line stays flat. A shaded band marks the region no fish can see. The label reads a bump only the wrong camera would notice.</desc>
+              <path d="M44 168 H444" fill="none" stroke="rgba(244,244,251,0.45)" stroke-width="1.2"/>
+              <path d="M44 168 V44" fill="none" stroke="rgba(244,244,251,0.45)" stroke-width="1.2"/>
+              <!-- the band nothing there can see -->
+              <rect x="336" y="44" width="108" height="124" fill="rgba(167,139,250,0.10)"/>
+              <path d="M336 44 V168" fill="none" stroke="rgba(167,139,250,0.5)" stroke-width="1" stroke-dasharray="4 4"/>
+              <!-- sand: flat -->
+              <path d="M48 132 C 110 126, 170 120, 232 116 S 330 110, 440 108" fill="none" stroke="rgba(34,211,238,0.85)" stroke-width="1.8"/>
+              <!-- cuttlefish: same, then the bump -->
+              <path d="M48 135 C 110 129, 170 122, 232 118 S 320 113, 348 110 C 372 106, 386 70, 404 68 C 422 66, 430 96, 440 104" fill="none" stroke="rgba(217,154,99,0.95)" stroke-width="1.8"/>
+              <text x="60" y="200" fill="#f4f2fb" font-family="'Space Mono', monospace" font-size="12">blue</text>
+              <text x="160" y="200" fill="#f4f2fb" font-family="'Space Mono', monospace" font-size="12">green</text>
+              <text x="262" y="200" fill="#f4f2fb" font-family="'Space Mono', monospace" font-size="12">red</text>
+              <text x="390" y="200" text-anchor="middle" fill="#f4f2fb" font-family="'Space Mono', monospace" font-size="12">infrared</text>
+              <text x="390" y="222" text-anchor="middle" fill="#f4f2fb" font-family="'Space Mono', monospace" font-size="11">no fish sees in here</text>
+              <text x="240" y="246" text-anchor="middle" fill="#f4f2fb" font-family="'Space Mono', monospace" font-size="12">the sand is flat here; the cuttlefish is not</text>
+            </svg>
+            <div class="diagram-caption">Figure 5 &middot; the one place the match fails</div>
+          </div>
+          <div class="grownup">
+            <div class="grownup-label">For the grown-up reading this</div>
+            <div class="grownup-body">
+<p>Chiao and colleagues report it themselves, in the same paper this zine cites for the good match: <em>&ldquo;Curiously, most reflectance spectra of cuttlefish had a peak around 800 nm in the infrared range (IR), whereas natural substrates tested did not have this spectral characteristic.&rdquo;</em></p>
+<p>It is printed here because <span class="cyan">it is a measured imperfection inside the very result we are leaning on</span>, and leaving it out would be the tidier version of the paper rather than the paper.</p>
+<p><strong>What we checked and what we did not.</strong> Vertebrate visual pigments are not known to extend to 800 nm, so the bump is not thought to be visible to the fish these models cover. <span class="pink">We have not found a study that asks whether any cuttlefish predator can detect it</span> &mdash; so &ldquo;it does not matter&rdquo; is an inference from the absence of such a sense, not a tested result. If you want a harder answer than that, you will have to go further than we did.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Cuttlefish That Can&rsquo;t See Colour &middot; Stimpunks</span>
+        <span class="spread-footer-right">7</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 8 ════ -->
+  <div class="spread" id="spread-8">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">So how?</div>
+          <h2 class="spread-heading" id="grown-ups-have-four-ideas">Grown-ups have four ideas</h2>
+          <hr class="spectrum-line rule">
+          <div class="readaloud">
+<p>So how does it do it?</p>
+<p>Nobody knows yet. But people have ideas. Here are four of them.</p>
+<p><strong>One.</strong> Maybe its skin is already the right sort of colours, all by itself, without the cuttlefish choosing.</p>
+<p><strong>Two.</strong> Maybe that <strong>W</strong>-shaped pupil smears colours apart, a little like a rainbow, and the cuttlefish hunts for the one that comes out sharpest.</p>
+<p><strong>Three.</strong> Maybe it uses something else that is hidden in light, which our eyes throw away.</p>
+<p><strong>Four.</strong> Maybe its <em>skin</em> can feel light &mdash; not only its eyes.</p>
+<p>Somebody has looked hard at each one.</p>
+<p><span class="turn">Every time, so far, the answer is the same: that <em>might</em> work. Nobody has shown that it <em>does</em>.</span></p>
+          </div>
+          <div class="grownup">
+            <div class="grownup-label">For the grown-up reading this</div>
+            <div class="grownup-body">
+<p>Reiter (2026) works through exactly these four and finds each <em>&ldquo;either insufficient or weakly supported by current data.&rdquo;</em></p>
+<p><strong>One &mdash; passive skin reflectance.</strong> Colour matching is needed to avoid detection by predator and prey visual systems, and wavelength filtering does not remove that need.</p>
+<p><strong>Two &mdash; chromatic aberration.</strong> Stubbs &amp; Stubbs (2016) modelled it: an off-axis pupil plus wavelength-dependent focus could let a single-receptor animal infer spectra by scanning through focus for the sharpest image. It is a computer model, and Reiter notes <em>&ldquo;there have been no physiological tests of this proposal&rdquo;</em>; it has also been challenged on ecological grounds, since most objects a cephalopod meets have broadband spectra, and turbidity and wavelength-dependent attenuation blur the chromatic focus further.</p>
+<p><strong>Three &mdash; polarized light.</strong> Cephalopods genuinely detect linear polarization. Using it for colour would require sensitivity to small changes in the <em>degree</em> of polarization arising from an object's material or spectral properties, which is a much stronger claim.</p>
+<p><strong>Four &mdash; light-sensing skin.</strong> Rhodopsin and retinochrome really are present outside the eyes, including within chromatophore organs (Kingston, Wardill, Hanlon &amp; Cronin, 2015). But Reiter's assessment is that <em>&ldquo;extraocular photoreceptors appear better placed to mediate behavioral responses to global luminance changes, rather than color vision.&rdquo;</em></p>
+<p><span class="cyan">Four live hypotheses, none carried over the line.</span> That is the honest state of it in 2026.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Cuttlefish That Can&rsquo;t See Colour &middot; Stimpunks</span>
+        <span class="spread-footer-right">8</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 9 ════ -->
+  <div class="spread" id="spread-9">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The newest idea</div>
+          <h2 class="spread-heading" id="maybe-it-is-not-seeing-colour">Maybe it is not seeing colour at all</h2>
+          <hr class="spectrum-line rule">
+          <div class="readaloud">
+<p>Here is the newest idea. It turns the whole question round.</p>
+<p>Maybe the cuttlefish is not seeing colour. Maybe it is <strong>guessing</strong> &mdash; and guessing extremely well.</p>
+<p>Try this. If I showed you a grey photograph of grass, what colour would you make it?</p>
+<p>Green. And you would be right &mdash; and you never saw any green at all.</p>
+<p>You did not see it. You <em>knew</em> it. Grass is green, and you have seen a great deal of grass.</p>
+<p>Maybe a cuttlefish is like that. It looks at the light and the dark, it already knows what colour that kind of place usually is, and it makes its skin that colour.</p>
+<p><span class="turn">Not seeing. Predicting.</span></p>
+          </div>
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 480 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig6-title fig6-desc">
+              <title id="fig6-title">Guessing the colour of a grey picture</title>
+              <desc id="fig6-desc">On the left, a grey picture of grass and sky, drawn only in shades of grey. An arrow points right to the same picture filled in with green grass and blue sky. The label beneath the first reads light and dark only, the label beneath the second reads a very good guess. The note reads you have seen a lot of grass.</desc>
+              <!-- grey version -->
+              <rect x="26" y="44" width="140" height="96" fill="rgba(184,174,208,0.22)" stroke="rgba(244,244,251,0.5)" stroke-width="1.2"/>
+              <path d="M26 106 H166" fill="none" stroke="rgba(244,244,251,0.4)" stroke-width="1"/>
+              <rect x="26" y="106" width="140" height="34" fill="rgba(184,174,208,0.42)"/>
+              <g stroke="rgba(244,244,251,0.42)" stroke-width="1.1" fill="none">
+                <path d="M44 138 v -18"/><path d="M60 138 v -22"/><path d="M76 138 v -16"/>
+                <path d="M92 138 v -21"/><path d="M108 138 v -17"/><path d="M124 138 v -20"/><path d="M140 138 v -15"/>
+              </g>
+              <text x="96" y="164" text-anchor="middle" fill="#f4f2fb" font-family="'Space Mono', monospace" font-size="12">light and dark only</text>
+              <!-- arrow -->
+              <path d="M192 92 H262" fill="none" stroke="rgba(217,154,99,0.75)" stroke-width="1.4"/>
+              <path d="M256 86 l 12 6 l -12 6 Z" fill="rgba(217,154,99,0.9)"/>
+              <text x="227" y="76" text-anchor="middle" fill="#f4f2fb" font-family="'Space Mono', monospace" font-size="11">guess</text>
+              <!-- coloured version -->
+              <rect x="290" y="44" width="140" height="96" fill="rgba(129,168,248,0.30)" stroke="rgba(244,244,251,0.5)" stroke-width="1.2"/>
+              <rect x="290" y="106" width="140" height="34" fill="rgba(74,222,128,0.45)"/>
+              <path d="M290 106 H430" fill="none" stroke="rgba(244,244,251,0.4)" stroke-width="1"/>
+              <g stroke="rgba(74,222,128,0.95)" stroke-width="1.1" fill="none">
+                <path d="M308 138 v -18"/><path d="M324 138 v -22"/><path d="M340 138 v -16"/>
+                <path d="M356 138 v -21"/><path d="M372 138 v -17"/><path d="M388 138 v -20"/><path d="M404 138 v -15"/>
+              </g>
+              <text x="360" y="164" text-anchor="middle" fill="#f4f2fb" font-family="'Space Mono', monospace" font-size="12">a very good guess</text>
+              <text x="240" y="196" text-anchor="middle" fill="#f4f2fb" font-family="'Space Mono', monospace" font-size="12">you have seen a lot of grass</text>
+            </svg>
+            <div class="diagram-caption">Figure 6 &middot; knowing without seeing</div>
+          </div>
+          <div class="grownup">
+            <div class="grownup-label">For the grown-up reading this</div>
+            <div class="grownup-body">
+<p>This is Reiter's null hypothesis, and his framing of it: <em>&ldquo;it is necessary to take seriously the alternative possibility that accurate color matching can be achieved without color perception.&rdquo;</em></p>
+<p>The parallel he draws is to <strong>image-colourisation networks</strong>, which learn to predict an image's chromatic channels from its luminance channel alone. They work because natural scenes are statistically regular: luminance edges tend to coincide with colour boundaries, textures constrain likely reflectance, and scene structure constrains plausible colour. Crucially, such networks <em>&ldquo;do not recover the &lsquo;true&rsquo; colors of objects in any physically unique sense; rather, they generate the most probable chromatic interpretation given a luminance pattern.&rdquo;</em></p>
+<p>On that reading a cephalopod is the generator and its predators are the discriminator, judging the output with the colour vision the cephalopod lacks.</p>
+<p><span class="pink">This is a hypothesis in a review, not a result.</span> It is the newest idea here and the least tested of all of them &mdash; the grass example is ours, not the paper's, and it is a way in rather than evidence.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Cuttlefish That Can&rsquo;t See Colour &middot; Stimpunks</span>
+        <span class="spread-footer-right">9</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 10 ════ -->
+  <div class="spread" id="spread-10">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Still open</div>
+          <h2 class="spread-heading" id="nobody-has-finished">Nobody has finished working this out</h2>
+          <hr class="spectrum-line rule">
+          <div class="readaloud">
+<p>So here is where we are.</p>
+<p>We know the cuttlefish matches. Somebody measured that.</p>
+<p>We know its eye has only one kind of light-catcher. Somebody tested that too.</p>
+<p>How it puts those two things together, nobody has worked out. People are trying right now, today, while you are holding this.</p>
+<p><span class="turn">That is not a problem with the science. That <em>is</em> the science.</span></p>
+          </div>
+          <div class="grownup">
+            <div class="grownup-label">For the grown-up reading this</div>
+            <div class="grownup-body">
+<p>Every paper behind this zine states the paradox as unresolved. M&auml;thger and colleagues close their own 2006 paper on it: <em>&ldquo;the question of how cuttlefish achieve &lsquo;color-blind camouflage&rsquo; in chromatically rich environments still remains.&rdquo;</em></p>
+<p>Twenty years later Reiter's review arrives at the same place &mdash; having ruled more out, and with a better idea in hand. <span class="cyan">A question that stays open for twenty years while the evidence around it sharpens is what a healthy question looks like</span>, and it is worth letting a child meet one without alarm.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Cuttlefish That Can&rsquo;t See Colour &middot; Stimpunks</span>
+        <span class="spread-footer-right">10</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 11 ════ -->
+  <div class="spread" id="spread-11">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">One more thing</div>
+          <h2 class="spread-heading" id="how-you-ask-changes-what-you-find-out">How you ask changes what you find out</h2>
+          <hr class="spectrum-line rule">
+          <div class="readaloud">
+<p>One last thing. This part is about the people, not the cuttlefish.</p>
+<p>Nobody found out any of this by asking the cuttlefish a question. It has no way to answer a question.</p>
+<p>They found it out by building a <strong>checkerboard</strong> it could answer with its skin.</p>
+<p>Think about that. If all they had brought was questions, they would have learned nothing at all &mdash; and they might have decided there was nothing there to learn.</p>
+<p><span class="turn">When someone seems not to know something, it is always worth asking whether anybody has found the way they can answer yet.</span></p>
+          </div>
+          <div class="grownup">
+            <div class="grownup-label">For the grown-up reading this</div>
+            <div class="grownup-body">
+<p><span class="cyan">This is a point about method, and it is deliberately not a claim about people drawn from a cuttlefish.</span> The assay works because <span class="latin">S. officinalis</span> will attempt camouflage on any substrate it is placed on, which turns the animal's own body into what M&auml;thger and colleagues call <em>&ldquo;a quantifiable, neurally controlled motor response.&rdquo;</em> The experimenters built the answer channel; the animal did the rest.</p>
+<p>Notice what nobody in this literature concluded. Every null here is reported as a fact about the reach of the test &mdash; not as an absence in the animal. Where that courtesy is <em>not</em> extended, <a href="bone-song-zine.html">Bone Song</a> has the argument at length, and it is the argument this spread is standing next to rather than restating.</p>
+<p><strong>A rhyme, not a proof.</strong> Nothing about a cuttlefish establishes anything about a person. What transfers is the shape of a habit: build the channel before you conclude there is no signal.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Cuttlefish That Can&rsquo;t See Colour &middot; Stimpunks</span>
+        <span class="spread-footer-right">11</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 12: REFUSALS ════ -->
+  <div class="spread" id="spread-12">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Refusals &middot; for the grown-up reading this</div>
+          <h2 class="spread-heading" id="not">Not:</h2>
+          <hr class="spectrum-line rule">
+          <div class="refusals">
+            <div class="refusal"><span class="refusal-tag">Not</span><span><strong>&ldquo;Colour blind, and it manages anyway.&rdquo;</strong> That is the superpower reading with a sympathetic face, and it keeps our own three-receptor eye as the standard the cuttlefish is heroically working around. <span class="sepia">It is not working around anything.</span> It is doing whatever it does, well, by a route nobody has mapped.</span></div>
+            <div class="refusal"><span class="refusal-tag">Not</span><span><strong>&ldquo;Secretly it can see colour after all.&rdquo;</strong> The tidy ending, and the opposite of where the evidence has moved. Four proposed rescues have been examined and none is supported; the newest serious proposal is that there is <em>no</em> colour perception here at all. A child can be told that the surprising answer might be the boring-sounding one.</span></div>
+            <div class="refusal"><span class="refusal-tag">Not</span><span><strong>A finding about people.</strong> Every study here is about cephalopods, and spread eleven says so on its own face. We take the shape of the habit &mdash; build the answer channel before concluding there is no signal &mdash; and leave the claim where it was measured. <span class="gold">A rhyme, not a proof.</span></span></div>
+            <div class="refusal"><span class="refusal-tag">Not</span><span><strong>&ldquo;The scientists got it wrong.&rdquo;</strong> Nobody here has been careless. Two careful measurements disagree about what should be possible, which is the most interesting thing that can happen to a question, and every author in this zine says plainly that it is unfinished.</span></div>
+            <div class="refusal"><span class="refusal-tag">Not</span><span><strong>An easier standard because the reader is five.</strong> Same eight gates, same ledger row, same grading of every quotation. The only thing that changed is the size of the type &mdash; and the one measured imperfection in our own best source got its own spread rather than a footnote.</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Cuttlefish That Can&rsquo;t See Colour &middot; Stimpunks</span>
+        <span class="spread-footer-right">12</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 13: COLOPHON ════ -->
+  <div class="spread" id="spread-13">
+    <div class="interior">
+      <div class="colophon">
+        <div>
+          <div class="colophon-top">
+            <span class="colophon-ls">L&#9733;S</span>
+            <p class="colophon-phrase">Nobody asked the cuttlefish a question. They built it a checkerboard, and it answered with its skin. Everything we know here came from somebody making a way to answer.</p>
+          </div>
+
+          <div class="series-list">
+            <div class="series-item"><span class="series-num">No. 94</span> <a href="the-colours-you-cannot-see-zine.html">The Colours You Cannot See</a> &mdash; the mirror of this one: an animal seeing colours we cannot</div>
+            <div class="series-item"><span class="series-num">No. 91</span> <a href="nobody-in-this-pond-is-late-zine.html">Nobody in This Pond Is Late</a> &mdash; the first read-aloud, and where &ldquo;nobody has finished&rdquo; became a normal sentence here</div>
+            <div class="series-item"><span class="series-num">No. 1</span> <a href="bone-song-zine.html">Bone Song</a> &mdash; the instrument argument at full length</div>
+            <div class="series-item"><span class="series-num">No. 27</span> <a href="every-nervous-system-zine.html">Every Nervous System</a> &mdash; the octopus, and no standard nervous system</div>
+            <div class="series-item"><span class="series-num">&mdash;</span> <a href="too-good-to-check.html">Too Good to Check</a> &mdash; six ways a fact goes wrong</div>
+            <div class="series-item current"><span class="series-num">No. 96</span> The Cuttlefish That Can&rsquo;t See Colour &mdash; one light-catcher, a good match, and an open question &larr; you are here</div>
+          </div>
+
+          <div class="reflect">
+            <div class="reflect-label">Reflection</div>
+            <p class="reflect-q">Whose answer have you scored on a channel they had no way to use?</p>
+            <p class="reflect-q">When a test comes back empty, what would it take for you to suspect the test first?</p>
+            <p class="reflect-q">What have you called a good guess in someone, when what they had actually built was a whole different route?</p>
+            <p class="reflect-q">Which open question in this child's life are you tempted to close early, because an answer is easier to hold than a question?</p>
+          </div>
+        </div>
+
+        <div class="colophon-body">
+          <h3 class="colophon-h" id="sources">Sources</h3>
+          <p><strong>The colour blindness, and the checkerboard.</strong> Lydia M. M&auml;thger, Alexandra Barbosa, Simon Miner &amp; Roger T. Hanlon, <em>&ldquo;Color blindness and contrast perception in cuttlefish (</em>Sepia officinalis<em>) determined by a visual sensorimotor assay,&rdquo; Vision Research</em> <strong>46</strong>(11), 1746&ndash;1753 (2006). Source of spreads four and five, and of the roughly 15% contrast threshold. <span class="cyan">Read at full text.</span> Their own conclusion is quoted on the page, and so is their closing sentence, which is the whole reason this zine exists: the question of how cuttlefish achieve colour-blind camouflage <em>&ldquo;still remains.&rdquo;</em> The 492 nm pigment traces to Brown &amp; Brown (1958), which this paper notes is the only absorption study of it, with Bellingham and colleagues (1998) agreeing from the opsin sequence &mdash; a caveat kept in the spread-four grown-up box.</p>
+          <p><strong>The good match, and the one mismatch.</strong> Chuan-Chin Chiao, J. Kenneth Wickiser, Justine J. Allen, Brock Genter &amp; Roger T. Hanlon, <em>&ldquo;Hyperspectral imaging of cuttlefish camouflage indicates good color match in the eyes of fish predators,&rdquo; PNAS</em> <strong>108</strong>(22), 9148&ndash;9153 (2011), doi:10.1073/pnas.1019090108. Source of spreads six and seven. <span class="cyan">Read at full text.</span> Both the good-match result and the 800 nm infrared peak are theirs, in the same paper.</p>
+          <p><strong>The four explanations, and the newest idea.</strong> Sam Reiter, <em>&ldquo;Weaving the rainbow: Color-blind color matching in cephalopods,&rdquo; Current Opinion in Neurobiology</em> <strong>99</strong>, 103206 (2026), doi:10.1016/j.conb.2026.103206 &mdash; open access, online 28 April 2026. <span class="cyan">Read at full text.</span> Source of spreads eight and nine, of the hatchling and chromatophore points on spreads two and three, and of the <span class="latin">Watasenia</span> exception. Four months old at the time of writing, which is why this zine can say what the open question looks like now rather than in 2016.</p>
+          <p><strong>The pupil idea.</strong> Alexander L. Stubbs &amp; Christopher W. Stubbs, <em>&ldquo;Spectral discrimination in color blind animals via chromatic aberration and pupil shape,&rdquo; PNAS</em> <strong>113</strong>(29), 8206&ndash;8211 (2016), doi:10.1073/pnas.1524578113. Idea two on spread eight, in the authors' own terms: a mechanism, a computer model, and numerical simulations. They are explicit that it is <em>proposed</em>.</p>
+          <p><strong>The light-sensing skin.</strong> Alexandra C. N. Kingston, Trevor J. Wardill, Roger T. Hanlon &amp; Thomas W. Cronin, <em>&ldquo;An Unexpected Diversity of Photoreceptor Classes in the Longfin Squid, </em>Doryteuthis pealeii<em>,&rdquo; PLoS ONE</em> <strong>10</strong>(9), e0135381 (2015), doi:10.1371/journal.pone.0135381 &mdash; open access. Idea four on spread eight. Note the species: this is a <em>squid</em>, not a cuttlefish, and the zine does not smuggle the result across.</p>
+
+          <h3 class="colophon-h" id="what-we-cut">What we cut, and why</h3>
+          <p><strong>A number for the colour change.</strong> The obvious child-facing fact is how fast it happens, and every source here says only <em>rapidly</em>. None of these five papers is a timing study, so the large type carries a comparison a child can picture instead of a figure we could not source.</p>
+          <p><strong>The generator and the discriminator.</strong> Reiter's analogy is precise and worth reading in the original, and the machine-learning vocabulary is in the grown-up box rather than the large type. <span class="gold">What survived into the child's half is the part that does not need the vocabulary:</span> you can know a grey photograph of grass should be green, because the world is regular and you have seen a lot of grass.</p>
+          <p><strong>&ldquo;Cephalopods are colour-blind.&rdquo;</strong> Stated flatly it is wrong. <span class="latin">Watasenia scintillans</span> carries three photopigments, so the claim is about most cephalopods rather than all, and the grown-up box on spread four says so. The zine's title is about one species, and the studies behind it are about that species.</p>
+          <p><strong>The colour of this zine.</strong> Sepia is the animal's own name &mdash; the genus is <span class="latin">Sepia</span>, the English word comes from the Greek <em>s&#0275;p&iacute;a</em> for cuttlefish, and the pigment is its ink. It is also the only warm neutral in this palette, and the four read-aloud zines before it had already taken green, gold, violet and pink, while cyan is reserved across all of them for the grown-up boxes.</p>
+
+          <h3 class="colophon-h" id="what-this-does-not-re-argue">What this deliberately does not re-argue</h3>
+          <p><strong><a href="the-colours-you-cannot-see-zine.html">No. 94</a> is this zine's mirror and owns the other direction.</strong> There, an animal sees colours we cannot. Here, an animal sees none of them and matches them anyway. The two make different claims and are meant to be read together, not merged: one is about the reach of a sensory system, and this one is about the reach of a <em>test</em>.</p>
+          <p><strong><a href="bone-song-zine.html">No. 1</a> owns the instrument argument</strong> &mdash; that a null result is a fact about the instrument at least as much as about the thing it was pointed at, and that the belonging in <em>love you down to your star stuff</em> is a promise being made rather than a finding being reported. Spread eleven stands next to that argument at read-aloud size and does not restate it.</p>
+          <p><strong><a href="every-nervous-system-zine.html">No. 27</a> owns the cephalopod nervous system here</strong>, and <a href="nervous-systems-field-guide.html">Field Guide No. 11</a> catalogues it. This zine stays with one question about one sense and does not reach for the octopus's distributed mind, which is a different argument with a different literature.</p>
+          <p><strong>A rhyme, not a proof.</strong> <span class="gold">We are not claiming a cuttlefish is like a child.</span> We are pointing at a case where a careful test came back empty, everybody involved treated that as a fact about the test rather than about the animal, and the interesting work started there.</p>
+          <div class="colophon-footer">
+            <a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks Foundation</a> &times; <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a><br>
+            stimpunks.org &middot; morerealms.com &middot; starstuff.earth<br>
+            <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> &middot; open edition &middot; print freely
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Cuttlefish That Can&rsquo;t See Colour &middot; Stimpunks</span>
+        <span class="spread-footer-right">13</span>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /zine-shell --></main>
+
+
+<script>
+  let current = 1;
+  const total = 13;
+
+  function changePage(dir) {
+    const next = current + dir;
+    if (next < 1 || next > total) return;
+    document.getElementById('spread-' + current).classList.remove('active');
+    current = next;
+    document.getElementById('spread-' + current).classList.add('active');
+    document.getElementById('page-counter').textContent = current + ' / ' + total;
+    document.getElementById('prev-btn').disabled = current === 1;
+    document.getElementById('next-btn').disabled = current === total;
+    document.getElementById('prev-btn').classList.toggle('active', current > 1);
+    document.getElementById('next-btn').classList.toggle('active', current < total);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') changePage(1);
+    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   changePage(-1);
+  });
+
+  document.getElementById('prev-btn').disabled = true;
+  document.getElementById('next-btn').classList.add('active');
+</script>
+<script src="starstuff.js" defer></script>
+</body>
+</html>
