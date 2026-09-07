@@ -194,9 +194,9 @@ The central phrase compresses through registers, each with a use:
   spread, not just the total.
   Reasoning and the rejected shared-sheet option are in `DECISIONS.md`.
 
-### Collections (sixteen pages, in five kinds plus one exception)
+### Collections (seventeen pages, in five kinds plus one exception)
 
-Sixteen **collection** landing pages (`collection-*.html`). **Every section of `index.html` has
+Seventeen **collection** landing pages (`collection-*.html`). **Every section of `index.html` has
 one** — that is the invariant, so *a new index section owes a collection page*, and a new
 collection page owes a `.collection-intro` on the index carrying its accent and an
 `About this collection →` link. The five register collections were settled 2026-08-11 — see
@@ -204,6 +204,34 @@ collection page owes a `.collection-intro` on the index carrying its accent and 
 and Start Here, Foundations and Notes &amp; Rationale later on the 12th. **How We Got Here** joined
 on the 12th as the twelfth, at two members — see *the two-member floor* below. **Glimmer Wire**
 joined on 2026-09-04 as the fifteenth, on a **fifth axis** — see *sorting by issue* below.
+**Young Readers** joined on 2026-09-06 as the seventeenth, on a **sixth axis** — *audience*, the
+first collection here defined by who a piece is for rather than what it is. Derive the count rather
+than trusting this line: `ls collection-*.html | wc -l`, and `check-markup.mjs` prints it too.
+
+- **Every collection page runs summary → cards → methodology, and that order is the convention
+  (settled 2026-09-07, Ryan's call, modelled on `collection-young-readers.html`).** A collection
+  page opens with a **`.summary`** block — two or three short paragraphs of plain language saying
+  what is on the shelf and who might want it — then a one-line heading introducing the grid, then
+  the cards, then a **`.method-note`** band (*How this collection works*) and every argument the
+  page wants to make: the axis, the conventions, the refusals, the count derivations, the
+  self-criticism. **The argument is not cut and not shortened; it goes second.** Before this, all
+  sixteen of the older pages opened with the apparatus — a reader reached the first card on
+  *Triggers* after ~8,900 characters of epistemics, and on *Field Guides* after ~9,000. Both
+  classes carry one CSS rule per page, aliasing `--star-white` and `--dim`, so they invert for
+  print with everything else.
+- **The summary must not restate the section it now sits above.** The first drafts of all sixteen
+  did exactly that — *Kin*'s reproduced its own *What holds these together* paragraph, animal list
+  and *not a metaphor waiting to be cashed in* line, in shorter words. This is the
+  **tagline-versus-`.card-moment` collision** from the card split, in a new place, and the test is
+  the same: word-set overlap between the summary and the first paragraph below the cards, not eye.
+  Write the summary from *what a stranger needs*, and let the methodology keep its own sentences.
+- **Moving prose keeps its `id`s.** Every heading moved below the cards kept its heading text and
+  its `id`, because search records and external links point at them; `check-markup.mjs` guards
+  duplicates but nothing notices a *renamed* fragment. Five pages had no short heading before
+  their grid and were given one (`#the-eggs`, `#the-guides`, `#the-pieces`, `#the-pages`,
+  `#the-doors`); those are new ids, so they broke nothing. **No gate can see any of this order** —
+  contrast, overlap, markup, classes and card order are all indifferent to whether the argument
+  comes before or after the thing it is about.
 
 - **`collection-easter-eggs.html` is the one exception, and it inverts that invariant on purpose
   (2026-08-14).** It has **no section on the index** — that absence is the entire mechanism, since a
@@ -1029,6 +1057,17 @@ node tools/check-markup.mjs --check               # exit non-zero on any failure
   `</div>` is missing is reported only if the file *ends* with it still open — if some later
   `</div>` closes it by depth, the wrap looks closed and the check stays quiet, because unbalanced
   tags are out of scope and guessing at intent would make the gate noisy.
+- **That restraint has a real cost, and it was measured on 2026-09-07: a `<div>`/`</div>` count
+  across all 189 pages found three unbalanced files, one of them a live visual defect.**
+  `collection-notes.html` carried one `</div>` too many — left behind on 2026-09-04 when Glimmer
+  Wire's card was removed — which closes `.doc-shell` early: measured at 1280px, the hero sat in
+  its 812px column while the closing section and colophon ran the full 1280. `collection-young-readers.html`
+  and `the-name-was-already-the-verdict-zine.html` (No. 88) never closed their shells at all, which
+  rendered *correctly* because the parser pops the div at `</main>`. **All eight gates passed all
+  three, and each was right to**: this gate ignores balance by design, and the other seven measure
+  a repaired DOM or a rendered page that looks fine. The check is one command and worth running
+  after any structural edit — it is not a reason to grow this tool into a validator:
+  `python3 -c` counting `<div\b` against `</div>` from `<body` onward, per file.
 - **The baseline is 0.** A clean tree passes, so `--check` is a real ship
   gate rather than an informational sweep. (This was the distinction from `check-contrast.mjs`
   until 2026-08-13, when that one reached zero too — all eight gates now hold at 0.) It was
