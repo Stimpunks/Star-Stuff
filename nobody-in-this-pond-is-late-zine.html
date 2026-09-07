@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0a0a14">
+<link rel="canonical" href="https://starstuff.earth/nobody-in-this-pond-is-late-zine.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta name="description" content="A read-aloud zine for four to eight, and whoever is reading it to them. A frog changes: gills to lungs, tail to legs. An axolotl never does &mdash; and the IUCN's own assessment says it plainly, &ldquo;a paedomorphic species, living permanently in water,&rdquo; which is a description of a grown-up, not a delay. Everson and colleagues found the tiger salamander complex holds populations that transform, populations that never do, &ldquo;and those that do both&rdquo; &mdash; with gene flow between adjacent metamorphic and paedomorphic populations. Geography divides these salamanders. Developmental route does not. Then the timing: Newman measured Couch's spadefoot larvae growing up in eight to sixteen days in one desert, and Denver, Mirhadi and Phillips found tadpoles accelerate when the pond dries, in a continuum rather than a switch &mdash; then slow back down when the water is put back. Both papers, one in the field and one in the lab, found the same cost: accelerated development produced smaller metamorphs. Fast is not free. Slow is not late. Twelve spreads, five figures, five refusals. Dedicated to Lilypad Library.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Star Stuff &middot; Stimpunks Foundation &times; More Realms">
+<meta property="og:url" content="https://starstuff.earth/nobody-in-this-pond-is-late-zine.html">
+<meta property="og:title" content="Nobody in This Pond Is Late">
+<meta property="og:description" content="A frog changes. An axolotl never does. Both of them are grown-ups. Read-aloud science for four to eight, with every source kept where the grown-up can find it.">
+<meta property="og:image" content="https://starstuff.earth/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A rainbow-hued cosmic image &mdash; we are all made of star stuff.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Nobody in This Pond Is Late">
+<meta name="twitter:description" content="In one desert, spadefoot tadpoles grew up in eight days. Their siblings took sixteen. Same pond, same species, twice the time &mdash; and not one of them was behind.">
+<meta name="twitter:image" content="https://starstuff.earth/og-card.jpg">
+<title>Nobody in This Pond Is Late &mdash; Stimpunks Zine No. 91</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="starstuff.css">
+<style>
+  :root {
+    --void:  var(--sp-void-deep);
+    --deep:  var(--sp-deep);
+    --page:  var(--sp-page);
+    --violet:var(--sp-purple);
+    --pink:  var(--sp-pink);
+    --gold:  var(--sp-gold);
+    --cyan:  var(--sp-cyan);
+    --green: var(--sp-green);
+    --ember: #c1653a;
+    --accent: var(--sp-green);         /* this zine's identity accent — the lily pad */
+    --star-white: var(--sp-white-soft);
+    --stardust:   var(--sp-secondary-soft);
+    --dim:   var(--sp-dim);
+    --dim2:  var(--sp-dim-soft);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--void);
+    font-family: 'Atkinson Hyperlegible Next', system-ui, sans-serif;
+    color: var(--star-white);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── STARFIELD (green · cyan · white — the pad, the water, and the light on it) ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 11% 24%, rgba(74,222,128,0.52) 0%, transparent 100%),
+      radial-gradient(1px 1px at 29% 52%, rgba(244,244,251,0.6) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 44% 17%, rgba(34,211,238,0.46) 0%, transparent 100%),
+      radial-gradient(1px 1px at 63% 74%, rgba(244,244,251,0.62) 0%, transparent 100%),
+      radial-gradient(2px 2px at 81% 29%, rgba(74,222,128,0.44) 0%, transparent 100%),
+      radial-gradient(1px 1px at 87% 58%, rgba(34,211,238,0.48) 0%, transparent 100%),
+      radial-gradient(1px 1px at 95% 83%, rgba(244,244,251,0.5) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 6% 66%, rgba(74,222,128,0.42) 0%, transparent 100%),
+      radial-gradient(1px 1px at 34% 90%, rgba(34,211,238,0.46) 0%, transparent 100%),
+      radial-gradient(1px 1px at 56% 36%, rgba(244,244,251,0.52) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .zine-shell { position: relative; z-index: 1; max-width: 820px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+
+  .nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem; }
+  .nav-brand { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--dim); }
+  .nav-controls { display: flex; gap: 0.5rem; align-items: center; }
+  .nav-btn { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; background: transparent; color: var(--dim2); border: 1px solid rgba(196,181,212,0.25); border-radius: 3px; padding: 0.4rem 0.75rem; cursor: pointer; transition: all 0.2s; }
+  .nav-btn.active { color: var(--accent); border-color: rgba(74,222,128,0.5); }
+  .nav-btn:disabled { opacity: 0.3; cursor: default; }
+  .page-counter { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.1em; color: var(--dim); padding: 0 0.4rem; }
+
+  .spread { display: none; animation: fadeIn 0.5s ease forwards; }
+  .spread.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ── COVER ── */
+  .cover-spread {
+    position: relative; min-height: 520px; border-radius: 4px; overflow: hidden;
+    background:
+      radial-gradient(ellipse at 20% 22%, rgba(74,222,128,0.12) 0%, transparent 52%),
+      radial-gradient(ellipse at 80% 32%, rgba(34,211,238,0.10) 0%, transparent 52%),
+      radial-gradient(ellipse at 66% 88%, rgba(167,139,250,0.07) 0%, transparent 52%),
+      radial-gradient(ellipse at 22% 86%, rgba(74,222,128,0.06) 0%, transparent 52%),
+      var(--deep);
+    border: 1px solid rgba(74,222,128,0.25);
+    box-shadow: inset 0 0 80px rgba(74,222,128,0.06), 0 0 0 4px rgba(255,255,255,0.03);
+    display: flex; flex-direction: column; justify-content: flex-end; padding: 3rem;
+  }
+  .cover-motif { position: absolute; top: -6px; right: -10px; width: 320px; height: 320px; opacity: 0.72; pointer-events: none; }
+  .cover-issue { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.5em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.5rem; }
+  .cover-title { font-weight: 700; font-size: clamp(1.9rem, 5.2vw, 3rem); line-height: 1.03; color: var(--star-white); letter-spacing: -0.01em; margin-bottom: 0.9rem; }
+  .cover-title .amp { color: var(--accent); font-style: italic; }
+  .cover-subtitle { font-size: 1rem; color: var(--stardust); opacity: 0.85; margin-bottom: 1.5rem; max-width: 470px; line-height: 1.55; }
+  .cover-byline { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.14em; color: var(--dim); margin-bottom: 1.8rem; }
+  .cover-byline strong { color: var(--stardust); font-weight: 700; }
+  .cover-rule { width: 220px; max-width: 60%; margin-bottom: 1.3rem; }
+  .cover-meta { display: flex; gap: 2rem; align-items: center; }
+  .cover-ls { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 1.4rem; color: var(--accent); letter-spacing: 0.05em; }
+  .cover-meta-text { font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--dim2); line-height: 1.9; }
+  .cover-corner { position: absolute; top: 2rem; right: 2.5rem; text-align: right; }
+  .cover-corner-num { font-weight: 700; font-size: 4.5rem; line-height: 1; color: var(--accent); opacity: 0.20; }
+  .cover-corner-label { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); display: block; margin-top: -0.3rem; }
+
+  /* ── INTERIOR ── */
+  .interior { background: var(--page); border: 1px solid rgba(74,222,128,0.15); border-radius: 4px; overflow: hidden; min-height: 480px; }
+  .spread-2col { display: grid; grid-template-columns: 1fr 1fr; min-height: 440px; }
+  .spread-left, .spread-right { padding: 3rem 2.4rem; position: relative; }
+  .spread-left { border-right: 1px solid rgba(167,139,250,0.12); }
+
+  .spread-2col.stacked { display: flex; flex-direction: column; }
+  .spread-2col.stacked > .spread-left,
+  .spread-2col.stacked > .spread-right { border-right: none; }
+  .spread-2col.stacked > .col-diagram { order: 2; padding-top: 0; }
+  .spread-2col.stacked > .col-text { padding-left: max(2.4rem, calc((100% - 32rem) / 2)); padding-right: max(2.4rem, calc((100% - 32rem) / 2)); }
+  .spread-2col.stacked .diagram-wrap { height: auto; }
+  .spread-2col.stacked .diagram { max-width: 460px; }
+
+  .eyebrow { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.1rem; }
+  .body-text { font-size: 0.98rem; line-height: 1.72; color: var(--stardust); }
+  .body-text p { margin-bottom: 1rem; }
+  .body-text p:last-child { margin-bottom: 0; }
+  .body-text strong { font-weight: 700; color: var(--star-white); }
+  .body-text em { font-style: italic; color: var(--star-white); }
+  .body-text a { color: var(--cyan); text-decoration: none; border-bottom: 1px solid rgba(34,211,238,0.4); }
+  .body-text a:hover { border-bottom-color: var(--cyan); color: var(--star-white); }
+  /* Accent spans that sit OUTSIDE .body-text — inside .refusals, .readaloud,
+     .grownup-body and .colophon-body, which are its siblings. The No. 67 fault. */
+  .zine-shell span.violet { color: var(--violet); font-weight: 700; }
+  .zine-shell span.gold { color: var(--gold); font-weight: 700; }
+  .zine-shell span.cyan { color: var(--cyan); font-weight: 700; }
+  .zine-shell span.pink { color: var(--pink); font-weight: 700; }
+  .zine-shell span.green { color: var(--green); font-weight: 700; }
+  .body-text .violet { color: var(--violet); font-weight: 700; }
+  .body-text .pink { color: var(--pink); font-weight: 700; }
+  .body-text .gold { color: var(--gold); font-weight: 700; }
+  .body-text .cyan { color: var(--cyan); font-weight: 700; }
+  .body-text .green { color: var(--green); font-weight: 700; }
+  .body-text .dim { color: var(--dim); }
+  .body-text .lede { font-size: 1.08rem; color: var(--star-white); }
+  .latin { font-style: italic; color: var(--star-white); }
+
+  .spread-heading { font-weight: 700; font-size: 1.9rem; line-height: 1.12; color: var(--star-white); margin-bottom: 0.7rem; letter-spacing: -0.01em; margin-top: 0; scroll-margin-top: 5rem; }
+  .spread-heading .spectrum-word { background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .rule { width: 40px; margin: 1rem 0; }
+
+  /* ── THE READ-ALOUD LAYER ──
+     The child's half of the page. Large, short-lined, full contrast, and the
+     first thing in the DOM after the heading so a screen reader meets it first.
+     Everything a four-year-old is meant to receive is in here and nowhere else. */
+  .readaloud { font-size: 1.24rem; line-height: 1.78; color: var(--star-white); max-width: 30rem; }
+  .readaloud p { margin-bottom: 1.15rem; }
+  .readaloud p:last-child { margin-bottom: 0; }
+  .readaloud strong { font-weight: 700; color: var(--star-white); }
+  .readaloud em { font-style: italic; }
+  .readaloud .turn { font-weight: 700; font-size: 1.42rem; line-height: 1.4; display: block; }
+
+  /* ── THE GROWN-UP LAYER ──
+     Same page, same spread, smaller type: the sourcing, the species names, the
+     caveats. Deliberately not a separate document — a caregiver reading aloud
+     should be able to answer "is that true?" without leaving the spread. */
+  .grownup { margin-top: 1.7rem; border-left: 3px solid var(--cyan); background: rgba(34,211,238,0.05); border-radius: 0 4px 4px 0; padding: 1rem 1.15rem; }
+  .grownup-label { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--cyan); margin-bottom: 0.6rem; }
+  .grownup-body { font-size: 0.83rem; line-height: 1.72; color: var(--stardust); }
+  .grownup-body p { margin-bottom: 0.75rem; }
+  .grownup-body p:last-child { margin-bottom: 0; }
+  .grownup-body strong { font-weight: 700; color: var(--star-white); }
+  .grownup-body em { font-style: italic; color: var(--star-white); }
+  .grownup-body a { color: var(--cyan); text-decoration: none; border-bottom: 1px solid rgba(34,211,238,0.4); }
+  .grownup-body a:hover { border-bottom-color: var(--cyan); color: var(--star-white); }
+
+  .pull-quote { font-size: 1.18rem; font-weight: 700; line-height: 1.4; color: var(--star-white); border-left: 3px solid var(--accent); padding-left: 1.1rem; margin: 1.4rem 0; font-style: italic; }
+  .pull-quote.cyan { border-left-color: var(--cyan); }
+  .pull-quote.gold { border-left-color: var(--gold); }
+  .pull-quote .attr { display: block; font-family: 'Space Mono', monospace; font-size: 0.6rem; font-weight: 400; font-style: normal; letter-spacing: 0.08em; color: var(--dim); margin-top: 0.6rem; }
+
+  .callout { margin: 1.3rem 0; padding: 1rem 1.15rem; background: rgba(74,222,128,0.06); border: 1px solid rgba(74,222,128,0.24); border-radius: 4px; font-size: 1rem; font-style: italic; color: var(--star-white); line-height: 1.55; }
+  .callout .attr { display: block; font-family: 'Space Mono', monospace; font-size: 0.58rem; font-style: normal; letter-spacing: 0.06em; color: var(--dim); margin-top: 0.5rem; }
+
+  .note { font-size: 0.84rem; line-height: 1.6; color: var(--dim); border-left: 2px solid rgba(74,222,128,0.28); padding-left: 0.9rem; margin: 1.1rem 0; }
+  .note strong { color: var(--stardust); font-weight: 700; }
+
+  /* ── DIAGRAMS ── */
+  .diagram-wrap { display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; margin: 1.7rem 0 0.3rem; }
+  .diagram { width: 100%; max-width: 300px; display: block; }
+  .diagram-caption { font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim); text-align: center; margin-top: 0.9rem; line-height: 1.9; }
+
+  /* ── REFUSALS ── */
+  .refusals { margin-top: 1.3rem; }
+  .refusal { font-size: 0.88rem; line-height: 1.5; color: var(--stardust); padding: 0.55rem 0; border-bottom: 1px solid rgba(74,222,128,0.1); display: flex; gap: 0.6rem; align-items: baseline; }
+  .refusal:last-child { border-bottom: none; }
+  .refusal-tag { font-family: 'Space Mono', monospace; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ember); flex-shrink: 0; padding-top: 0.12rem; }
+  .refusal strong { color: var(--star-white); font-weight: 700; }
+
+  /* ── COLOPHON ── */
+  .colophon { padding: 3rem; display: flex; flex-direction: column; justify-content: space-between; min-height: 480px; background: radial-gradient(ellipse at 80% 18%, rgba(74,222,128,0.09) 0%, transparent 50%), radial-gradient(ellipse at 18% 85%, rgba(34,211,238,0.06) 0%, transparent 50%), var(--page); }
+  .colophon-top { border-bottom: 1px solid rgba(74,222,128,0.14); padding-bottom: 1.3rem; margin-bottom: 1.2rem; }
+  .colophon-ls { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 2.4rem; color: var(--accent); letter-spacing: 0.05em; display: block; margin-bottom: 0.4rem; }
+  .colophon-phrase { font-size: 0.98rem; font-weight: 700; font-style: italic; color: var(--stardust); }
+  .series-list { display: flex; flex-direction: column; gap: 0.38rem; margin-bottom: 1.2rem; }
+  .series-item { font-size: 0.72rem; color: var(--dim); letter-spacing: 0.01em; display: flex; gap: 0.7rem; align-items: baseline; line-height: 1.45; }
+  .series-item.current { color: var(--accent); font-weight: 700; }
+  .series-num { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim2); flex-shrink: 0; }
+  .series-item.current .series-num { color: var(--accent); }
+  .reflect { border-top: 1px solid rgba(74,222,128,0.14); padding-top: 1rem; margin-bottom: 1.2rem; }
+  .reflect-label { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.65rem; }
+  .reflect-q { font-size: 0.86rem; line-height: 1.55; color: var(--stardust); margin-bottom: 0.55rem; font-style: italic; }
+  .reflect-q:last-child { margin-bottom: 0; }
+  .colophon-body { font-size: 0.75rem; color: var(--dim); line-height: 1.75; margin-bottom: 1.2rem; }
+  .colophon-body a { color: var(--cyan); text-decoration: none; border-bottom: 1px solid rgba(34,211,238,0.4); }
+  .colophon-body a:hover { border-bottom-color: var(--cyan); }
+  .colophon-h { font-family: 'Space Mono', monospace; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: var(--stardust); margin: 1rem 0 0.4rem; scroll-margin-top: 5rem; }
+  .colophon-footer { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--dim); line-height: 2.2; border-top: 1px solid rgba(74,222,128,0.14); padding-top: 1rem; }
+
+  /* ── SPREAD FOOTER ── */
+  .spread-footer { display: flex; justify-content: space-between; align-items: center; padding: 0.9rem 2.4rem; border-top: 1px solid rgba(74,222,128,0.1); }
+  .spread-footer-left { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--dim); }
+  .spread-footer-right { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; color: var(--accent); }
+
+  .twinkle { position: fixed; width: 3px; height: 3px; border-radius: 50%; animation: twinkle-anim 3s ease-in-out infinite; pointer-events: none; z-index: 0; }
+
+  @media (max-width: 600px) {
+    .spread-2col { grid-template-columns: 1fr; }
+    .spread-left { border-right: none; border-bottom: 1px solid rgba(167,139,250,0.12); }
+    .spread-2col.stacked > .spread-left { border-bottom: none; }
+    .spread-2col.stacked > .col-text { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .cover-spread { padding: 2rem; min-height: 420px; }
+    .cover-motif { width: 210px; height: 210px; top: -6px; right: -22px; opacity: 0.5; }
+    .cover-title { font-size: 1.75rem; }
+    .spread-heading { font-size: 1.55rem; }
+    .readaloud { font-size: 1.12rem; }
+    .readaloud .turn { font-size: 1.3rem; }
+    .spread-left, .spread-right { padding: 2rem 1.5rem; }
+    .colophon { padding: 2rem 1.5rem; }
+  }
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Nobody in This Pond Is Late","description":"A read-aloud Star Stuff zine for four to eight, and whoever is reading it to them, following one measured thing honestly: how long it takes to grow up in a pond. A frog metamorphoses. An axolotl does not — the IUCN Red List assessment describes Ambystoma mexicanum as a paedomorphic species living permanently in water that does not undergo complete metamorphosis, and Crowner, Khatri, Blichmann and Voss state that axolotls express ancestral juvenile traits in the adult stage of life. That is a description of an adult, not of a delay. Everson and colleagues, sampling the North American tiger salamander complex across its range, found genetic clusters that often contain a mixture of paedomorphic and metamorphic taxa, together with gene flow between adjacent metamorphic and paedomorphic populations: geography divides these salamanders and developmental route does not. On timing, Newman measured Couch's spadefoot larvae completing development in eight to sixteen days in one desert, and Denver, Mirhadi and Phillips found tadpoles accelerate metamorphosis as their pond dries — a continuum of response rather than a switch — and decelerate again when the water is restored. Both studies, one in the field and one in the laboratory, found accelerated development produced smaller size at metamorphosis. Fast is not free and slow is not late. Twelve spreads, five figures, five refusals. Dedicated to Lilypad Library. A rhyme, not a proof.","image":"https://starstuff.earth/og-card.jpg","url":"https://starstuff.earth/nobody-in-this-pond-is-late-zine.html","mainEntityOfPage":"https://starstuff.earth/nobody-in-this-pond-is-late-zine.html","datePublished":"2026-09-06","dateModified":"2026-09-06","license":"https://creativecommons.org/licenses/by-sa/4.0/","author":{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/"},"publisher":[{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/","logo":{"@type":"ImageObject","url":"https://starstuff.earth/og-card.jpg"}},{"@type":"Organization","name":"More Realms","url":"https://morerealms.com/"}],"isPartOf":{"@type":"WebSite","name":"Star Stuff","url":"https://starstuff.earth/"}}</script>
+</head>
+<body>
+<div class="zine-shell">
+
+  <nav class="ss-nav" style="--nav-accent:#4ade80;" aria-label="Star Stuff collection">
+    <span class="ss-nav-home-group"><a class="ss-nav-home" href="index.html"><span class="ss-star" aria-hidden="true">&#9733;</span> stuff</a><a class="ss-nav-about" href="about.html">about</a>
+      <a class="ss-nav-search" href="search.html">search</a></span>
+    <span class="ss-nav-links">
+      <a class="ss-nav-prev" href="nobody-set-out-to-do-this-zine.html"><span class="ss-nav-arrow" aria-hidden="true">&lsaquo;</span> <span class="ss-nav-label">Nobody Set Out To Do This</span></a>
+      <a class="ss-nav-next" href="collection-how-we-got-here.html"><span class="ss-nav-label">How We Got Here</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
+    </span>
+    <a class="ss-nav-collection" href="collection-star-stuff.html"><span class="ss-nav-collection-label">Collection</span> <span class="ss-nav-collection-name">Star Stuff</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
+  </nav>
+<main>
+
+  <div class="nav">
+    <span class="nav-brand">Stimpunks &times; More Realms</span>
+    <div class="nav-controls">
+      <button class="nav-btn" id="prev-btn" onclick="changePage(-1)">&larr; prev</button>
+      <span class="page-counter" id="page-counter">1 / 12</span>
+      <button class="nav-btn" id="next-btn" onclick="changePage(1)">next &rarr;</button>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 1: COVER ════ -->
+  <div class="spread active" id="spread-1">
+    <div class="cover-spread">
+      <!-- Cover motif: two lily pads at the waterline, a frog sitting on one, an
+           axolotl below. Deliberately TEXT-FREE — the No. 48 cover fault was a
+           motif caption running through the title, and a motif that carries no
+           text cannot collide with any. -->
+      <svg class="cover-motif" viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <!-- Composed inside viewBox y 20-206 on purpose. Below ~y215 this motif
+             sits on .cover-title, and the corner numeral occupies roughly
+             x 190-285 / y 25-120. check-overlap.mjs compares text to text and
+             cannot see text-over-artwork, so the clearance here is geometry,
+             checked at render size, not a gate.
+             The axolotl is ONE closed path — head, body and tail fin in a single
+             outline — because a head circle overlapping a body ellipse reads as
+             a blob, and long radiating gill curves read as insect legs. Short
+             tufted stubs and a continuous silhouette are what make it an
+             axolotl rather than a shrimp. -->
+        <path d="M4 130 q 20 -7 40 0 t 40 0 t 40 0 t 40 0 t 40 0 t 40 0 t 40 0" fill="none" stroke="rgba(34,211,238,0.5)" stroke-width="1.3"/>
+        <path d="M14 144 q 18 -6 36 0 t 36 0 t 36 0" fill="none" stroke="rgba(34,211,238,0.24)" stroke-width="1"/>
+        <!-- lily pad, larger, with its sinus -->
+        <ellipse cx="78" cy="130" rx="38" ry="13" fill="rgba(74,222,128,0.12)" stroke="rgba(74,222,128,0.85)" stroke-width="1.5"/>
+        <path d="M78 130 L44 125" stroke="rgba(74,222,128,0.85)" stroke-width="1.4" fill="none"/>
+        <!-- the frog, sitting on it -->
+        <g stroke="rgba(74,222,128,0.9)" stroke-width="1.5" fill="none">
+          <ellipse cx="78" cy="104" rx="18" ry="14"/>
+          <path d="M63 110 q -9 4 -11 11"/>
+          <path d="M93 110 q 9 4 11 11"/>
+          <circle cx="71" cy="92" r="4.5"/>
+          <circle cx="85" cy="92" r="4.5"/>
+        </g>
+        <!-- lily pad, smaller, off to the right -->
+        <ellipse cx="250" cy="142" rx="22" ry="7" fill="rgba(74,222,128,0.09)" stroke="rgba(74,222,128,0.6)" stroke-width="1.3"/>
+        <path d="M250 142 L270 145" stroke="rgba(74,222,128,0.6)" stroke-width="1.2" fill="none"/>
+        <!-- The axolotl. Drawn from the four features that separate one from a
+             fish, because the first two attempts here read as a fish and then as
+             a dolphin: a WIDE FLAT HEAD broader than the body; FOUR LEGS; three
+             branching GILL STALKS per side swept up and back; and a long tapered
+             tail with a leaf-shaped fin rather than a fluke. Lose the legs or
+             point the tail and it stops being an amphibian on sight. -->
+        <path d="M122 182 q 0 -20 20 -20 l 12 1 l 44 2 q 18 2 30 -9 q 22 14 24 26 q -2 12 -24 26 q -12 -11 -30 -9 l -44 2 l -12 1 q -20 0 -20 -20 Z"
+              fill="rgba(244,114,182,0.10)" stroke="rgba(244,114,182,0.85)" stroke-width="1.6" stroke-linejoin="round"/>
+        <!-- four legs -->
+        <g stroke="rgba(244,114,182,0.8)" stroke-width="1.5" fill="none" stroke-linecap="round">
+          <path d="M156 201 l -5 11 l -7 2"/>
+          <path d="M168 201 l 2 11 l 7 2"/>
+          <path d="M190 199 l 4 11 l 7 1"/>
+          <path d="M156 163 l -4 -9"/>
+          <path d="M190 165 l 4 -8"/>
+        </g>
+        <!-- three branching gill stalks per side, swept back -->
+        <g stroke="rgba(244,114,182,0.75)" stroke-width="1.4" fill="none" stroke-linecap="round">
+          <path d="M150 164 q 4 -14 16 -19"/>
+          <path d="M158 163 q 8 -13 22 -14"/>
+          <path d="M166 164 q 12 -9 25 -6"/>
+          <path d="M150 200 q 4 14 16 19"/>
+          <path d="M158 201 q 8 13 22 14"/>
+        </g>
+        <g stroke="rgba(244,114,182,0.5)" stroke-width="1.1" fill="none" stroke-linecap="round">
+          <path d="M166 145 l -5 -6 M166 145 l 3 -7 M166 145 l 7 -3"/>
+          <path d="M180 149 l -3 -7 M180 149 l 5 -6 M180 149 l 8 -1"/>
+          <path d="M191 158 l 1 -8 M191 158 l 7 -4 M191 158 l 8 3"/>
+          <path d="M166 219 l -5 6 M166 219 l 3 7 M166 219 l 7 3"/>
+          <path d="M180 215 l -3 7 M180 215 l 5 6 M180 215 l 8 1"/>
+        </g>
+        <!-- eye, and the smile it is famous for -->
+        <circle cx="136" cy="172" r="2.4" fill="rgba(244,114,182,0.95)"/>
+        <path d="M126 186 q 8 5 15 2" fill="none" stroke="rgba(244,114,182,0.75)" stroke-width="1.2"/>
+      </svg>
+      <div class="cover-corner">
+        <div class="cover-corner-num" aria-hidden="true">91</div>
+        <span class="cover-corner-label">Star Stuff</span>
+      </div>
+      <div class="cover-issue">Stimpunks &times; More Realms &middot; Zine No. 91</div>
+      <h1 class="cover-title">Nobody in This <span class="amp">Pond</span> Is Late</h1>
+      <p class="cover-subtitle">a frog changes, an axolotl never does, and both of them are grown-ups &mdash; read-aloud science for four to eight, with every source kept on the page where the grown-up can find it</p>
+      <div class="cover-byline">twelve spreads &middot; five figures &middot; <strong>five refusals</strong></div>
+      <hr class="spectrum-line cover-rule">
+      <div class="cover-meta">
+        <span class="cover-ls">L&#9733;S</span>
+        <div class="cover-meta-text">Love You Down To Your Star Stuff<br>open edition &middot; print freely</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 2 ════ -->
+  <div class="spread" id="spread-2">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Here is a pond</div>
+          <h2 class="spread-heading" id="here-is-a-pond">A lily pad is a leaf that floats</h2>
+          <hr class="spectrum-line rule">
+          <div class="readaloud">
+<p>Underneath the leaf, the water is full of animals.</p>
+<p>Some of them are little now. All of them are busy growing up.</p>
+<p><span class="turn">They are not all doing it the same way.</span></p>
+<p>That is not a problem. That is the pond.</p>
+          </div>
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 460 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig1-title fig1-desc">
+              <title id="fig1-title">One pond, with animals at different stages above and below the water</title>
+              <desc id="fig1-desc">A pond drawn in cross-section. Two lily pads float on the surface: a frog sits on the larger one, and a water lily flower grows beside the smaller one. Below the waterline swim two tadpoles of different sizes and an axolotl with feathery gills, among water plants. All of them are in the same pond at the same time, at different stages of growing up.</desc>
+              <path d="M10 100 q 22 -8 45 0 t 45 0 t 45 0 t 45 0 t 45 0 t 45 0 t 45 0 t 45 0 t 45 0 t 45 0" fill="none" stroke="rgba(34,211,238,0.6)" stroke-width="1.6"/>
+              <path d="M24 120 q 20 -6 40 0 t 40 0 t 40 0 t 40 0 t 40 0 t 40 0" fill="none" stroke="rgba(34,211,238,0.24)" stroke-width="1.1"/>
+              <ellipse cx="140" cy="98" rx="58" ry="15" fill="rgba(74,222,128,0.14)" stroke="rgba(74,222,128,0.85)" stroke-width="1.7"/>
+              <path d="M140 98 L86 91" stroke="rgba(74,222,128,0.85)" stroke-width="1.5" fill="none"/>
+              <g stroke="rgba(74,222,128,0.95)" stroke-width="1.7" fill="none">
+                <ellipse cx="140" cy="70" rx="21" ry="16"/>
+                <path d="M122 77 q -10 5 -12 12"/>
+                <path d="M158 77 q 10 5 12 12"/>
+                <circle cx="132" cy="55" r="5.5"/>
+                <circle cx="148" cy="55" r="5.5"/>
+              </g>
+              <ellipse cx="332" cy="104" rx="42" ry="11" fill="rgba(74,222,128,0.10)" stroke="rgba(74,222,128,0.65)" stroke-width="1.4"/>
+              <path d="M332 104 L370 108" stroke="rgba(74,222,128,0.65)" stroke-width="1.3" fill="none"/>
+              <g stroke="rgba(244,114,182,0.75)" stroke-width="1.4" fill="none">
+                <path d="M300 92 q -6 -14 4 -18 q 10 4 4 18"/>
+                <path d="M300 92 q -16 -6 -14 -16 q 12 -2 14 16"/>
+                <path d="M300 92 q 16 -6 14 -16 q -12 -2 -14 16"/>
+              </g>
+              <g stroke="rgba(74,222,128,0.5)" stroke-width="1.4" fill="none">
+                <path d="M40 240 q 6 -34 0 -60"/><path d="M40 205 q 12 -8 16 -22"/>
+                <path d="M418 240 q -5 -30 0 -52"/><path d="M418 210 q -12 -7 -15 -19"/>
+              </g>
+              <g stroke="rgba(196,181,212,0.85)" stroke-width="1.5" fill="none">
+                <ellipse cx="98" cy="168" rx="17" ry="13"/>
+                <path d="M114 166 q 13 -11 21 -17 q -5 17 0 34 q -8 -6 -21 -17 Z"/>
+                <circle cx="91" cy="163" r="2.4" fill="rgba(196,181,212,0.95)"/>
+              </g>
+              <g stroke="rgba(196,181,212,0.6)" stroke-width="1.3" fill="none">
+                <ellipse cx="212" cy="205" rx="12" ry="9"/>
+                <path d="M223 204 q 10 -8 15 -12 q -3 12 0 24 q -5 -4 -15 -12 Z"/>
+              </g>
+              <g stroke="rgba(244,114,182,0.85)" stroke-width="1.5" fill="none">
+                <path d="M296 176 q 0 -14 14 -14 l 9 1 l 31 1 q 13 2 21 -6 q 16 10 17 18 q -1 9 -17 19 q -8 -8 -21 -7 l -31 1 l -9 1 q -14 0 -14 -14 Z"/>
+                <path d="M320 162 q 3 -10 11 -13"/>
+                <path d="M328 162 q 6 -9 16 -10"/>
+                <path d="M320 190 q 3 10 11 13"/>
+                <path d="M328 190 q 6 9 16 10"/>
+                <path d="M320 190 q 3 10 11 13"/>
+              </g>
+              <circle cx="306" cy="171" r="2.2" fill="rgba(244,114,182,0.95)"/>
+            </svg>
+            <div class="diagram-caption">Figure 1 &middot; one pond, several ways of being partway</div>
+          </div>
+          <div class="grownup">
+            <div class="grownup-label">For the grown-up reading this</div>
+            <div class="grownup-body">
+<p>This zine follows <strong>one measured thing</strong> and does not wander from it: how long it takes to grow up in a pond, and what the measurements say about the idea of being behind.</p>
+<p>Everything in the large type is true and sourced. Everything in these boxes is where it came from &mdash; species names, figures, the papers, and the places the evidence runs out. <span class="cyan">You should not have to leave the page to answer &ldquo;is that really true?&rdquo;</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Nobody in This Pond Is Late &middot; Stimpunks</span>
+        <span class="spread-footer-right">2</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 3 ════ -->
+  <div class="spread" id="spread-3">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The frog</div>
+          <h2 class="spread-heading" id="the-frog">This frog used to be a tadpole</h2>
+          <hr class="spectrum-line rule">
+          <div class="readaloud">
+<p>She had a tail. She had no legs at all.</p>
+<p>She breathed under the water, the way a fish does.</p>
+<p>Then her back legs came. Then her front legs came. Then her tail got smaller and smaller until it was gone.</p>
+<p>Now she has lungs. Now she sits on the leaf.</p>
+<p><span class="turn">She changed her whole body. That took a long time, and it was hard work.</span></p>
+          </div>
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 480 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig2-title fig2-desc">
+              <title id="fig2-title">A tadpole becoming a frog, in four stages</title>
+              <desc id="fig2-desc">Four drawings in a row, left to right, with an arrow running beneath them. First, a tadpole: a rounded body with a swimming tail and no legs. Second, the same tadpole with two back legs. Third, a froglet with four legs and a tail that has grown short. Fourth, a frog sitting up, with four legs and no tail at all. The labels beneath read tadpole, back legs, front legs, and frog.</desc>
+              <g stroke="rgba(74,222,128,0.9)" stroke-width="1.7" fill="none">
+                <ellipse cx="52" cy="108" rx="22" ry="17"/>
+                <path d="M73 106 q 16 -13 25 -21 q -6 21 0 42 q -9 -8 -25 -21 Z"/>
+              </g>
+              <circle cx="44" cy="102" r="3.2" fill="rgba(74,222,128,0.95)"/>
+              <g stroke="rgba(74,222,128,0.9)" stroke-width="1.7" fill="none">
+                <ellipse cx="172" cy="108" rx="22" ry="17"/>
+                <path d="M193 106 q 16 -13 25 -21 q -6 21 0 42 q -9 -8 -25 -21 Z"/>
+                <path d="M182 124 l -4 15 l -8 4"/>
+                <path d="M192 123 l 3 16 l 8 3"/>
+              </g>
+              <circle cx="164" cy="102" r="3.2" fill="rgba(74,222,128,0.95)"/>
+              <g stroke="rgba(74,222,128,0.9)" stroke-width="1.7" fill="none">
+                <ellipse cx="296" cy="108" rx="22" ry="16"/>
+                <path d="M317 107 q 11 -6 17 -9 q -4 9 0 18 q -6 -3 -17 -9 Z"/>
+                <path d="M282 122 l -6 14 l -8 4"/>
+                <path d="M310 122 l 5 15 l 8 3"/>
+                <path d="M280 95 l -6 -9"/>
+                <path d="M310 95 l 6 -9"/>
+                <circle cx="288" cy="97" r="4"/>
+                <circle cx="302" cy="97" r="4"/>
+              </g>
+              <g stroke="rgba(74,222,128,0.9)" stroke-width="1.7" fill="none">
+                <ellipse cx="420" cy="110" rx="23" ry="17"/>
+                <path d="M401 118 q -11 6 -13 15"/>
+                <path d="M439 118 q 11 6 13 15"/>
+                <circle cx="411" cy="94" r="5.5"/>
+                <circle cx="429" cy="94" r="5.5"/>
+              </g>
+              <path d="M24 172 H448" fill="none" stroke="rgba(34,211,238,0.6)" stroke-width="1.4"/>
+              <path d="M440 166 l 12 6 l -12 6 Z" fill="rgba(34,211,238,0.8)"/>
+              <text x="60" y="206" text-anchor="middle" fill="#f4f2fb" font-family="'Space Mono', monospace" font-size="13">tadpole</text>
+              <text x="180" y="206" text-anchor="middle" fill="#f4f2fb" font-family="'Space Mono', monospace" font-size="13">back legs</text>
+              <text x="300" y="206" text-anchor="middle" fill="#f4f2fb" font-family="'Space Mono', monospace" font-size="13">front legs</text>
+              <text x="420" y="206" text-anchor="middle" fill="#f4f2fb" font-family="'Space Mono', monospace" font-size="13">frog</text>
+              <text x="240" y="236" text-anchor="middle" fill="#f4f2fb" font-family="'Space Mono', monospace" font-size="12">the tail is not lost &#8212; it is taken back in</text>
+            </svg>
+            <div class="diagram-caption">Figure 2 &middot; one body, rebuilt</div>
+          </div>
+          <div class="grownup">
+            <div class="grownup-label">For the grown-up reading this</div>
+            <div class="grownup-body">
+<p>This is <strong>metamorphosis</strong>, and it is a genuine rebuilding rather than a growth spurt: gills to lungs, a herbivorous gut to a carnivorous one, a swimming tail resorbed for limbs.</p>
+<p>It is worth saying to a child that it is hard, because the next spread is about an animal who does not do it &mdash; and if the frog's route sounds effortless here, the axolotl will read as the one who failed at something easy.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Nobody in This Pond Is Late &middot; Stimpunks</span>
+        <span class="spread-footer-right">3</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 4 ════ -->
+  <div class="spread" id="spread-4">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The axolotl</div>
+          <h2 class="spread-heading" id="the-axolotl">This axolotl is a grown-up</h2>
+          <hr class="spectrum-line rule">
+          <div class="readaloud">
+<p>He has feathery pink gills that stick out around his head, like a crown.</p>
+<p>He has a tail for swimming. He never walked out onto the land. He never will.</p>
+<p>He is not a baby. He is not waiting. He is not late.</p>
+<p><span class="turn">He is a whole grown-up axolotl. He is a grown-up who stayed in the water.</span></p>
+<p>That is his way. It always was.</p>
+          </div>
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 460 290" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig3-title fig3-desc">
+              <title id="fig3-title">An axolotl, with its gills, legs and tail fin labelled</title>
+              <desc id="fig3-desc">A side view of an axolotl. It has a wide flat head, a small eye and a curved mouth, three branching feathery gill stalks sweeping back from behind the head on each side, four short legs beneath the body, and a long tail ending in a leaf-shaped fin. Labels point to the feathery gills, the little legs and the tail fin. This is the body the animal keeps for its whole adult life.</desc>
+              <!-- Drawn at native size rather than scaled up from the cover motif:
+                   that shape is tuned to read at 90px and low opacity, and enlarged
+                   it loses the head and goes slab-shaped. Here the head is visibly
+                   wider than the trunk, the four legs are long enough to count, and
+                   the tail flares into a fin. -->
+              <path d="M108 156 C108 116 130 108 152 110 C200 114 250 126 290 140 C330 151 390 156 420 158 C390 160 330 167 290 178 C250 192 200 202 152 204 C130 206 108 194 108 156 Z"
+                    fill="rgba(244,114,182,0.10)" stroke="rgba(244,114,182,0.9)" stroke-width="1.8" stroke-linejoin="round"/>
+              <path d="M180 118 C187 134 187 148 182 162" fill="none" stroke="rgba(244,114,182,0.4)" stroke-width="1.2"/>
+              <path d="M274 136 C312 110 368 114 416 155" fill="none" stroke="rgba(244,114,182,0.6)" stroke-width="1.5"/>
+              <path d="M274 182 C312 208 368 204 416 161" fill="none" stroke="rgba(244,114,182,0.6)" stroke-width="1.5"/>
+              <g stroke="rgba(244,114,182,0.85)" stroke-width="1.6" fill="none" stroke-linecap="round">
+                <path d="M166 202 l -12 30"/>
+                <path d="M154 232 l -11 3 M154 232 l -3 11 M154 232 l 8 8"/>
+                <path d="M276 186 l -9 30"/>
+                <path d="M267 216 l -11 3 M267 216 l -3 11 M267 216 l 8 8"/>
+              </g>
+              <g stroke="rgba(244,114,182,0.5)" stroke-width="1.4" fill="none" stroke-linecap="round">
+                <path d="M196 202 l 9 27 M205 229 l 10 4 M205 229 l 2 10"/>
+                <path d="M300 181 l 10 27 M310 208 l 10 4 M310 208 l 2 10"/>
+              </g>
+              <g stroke="rgba(244,114,182,0.85)" stroke-width="1.6" fill="none" stroke-linecap="round">
+                <path d="M156 122 q 6 -24 26 -30"/>
+                <path d="M172 117 q 14 -19 36 -19"/>
+                <path d="M188 120 q 20 -13 40 -7"/>
+              </g>
+              <g stroke="rgba(244,114,182,0.5)" stroke-width="1.4" fill="none" stroke-linecap="round">
+                <path d="M158 192 q 8 22 28 28"/>
+                <path d="M176 197 q 16 17 38 16"/>
+              </g>
+              <g stroke="rgba(244,114,182,0.7)" stroke-width="1.3" fill="none" stroke-linecap="round">
+                <path d="M182 92 l -7 -7 M182 92 l 2 -10 M182 92 l 10 -4"/>
+                <path d="M208 98 l -5 -9 M208 98 l 6 -8 M208 98 l 10 -1"/>
+                <path d="M228 113 l 0 -10 M228 113 l 9 -6 M228 113 l 10 3"/>
+                <path d="M186 220 l -7 7 M186 220 l 2 10 M186 220 l 10 4"/>
+                <path d="M214 213 l -5 9 M214 213 l 6 8 M214 213 l 10 1"/>
+              </g>
+              <circle cx="130" cy="144" r="4.2" fill="rgba(244,114,182,0.95)"/>
+              <path d="M112 168 q 15 9 28 4" fill="none" stroke="rgba(244,114,182,0.8)" stroke-width="1.4"/>
+              <path d="M288 62 q -28 14 -52 40" fill="none" stroke="rgba(196,181,212,0.55)" stroke-width="1.1"/>
+              <text x="296" y="58" fill="#f4f2fb" font-family="'Space Mono', monospace" font-size="13">feathery gills</text>
+              <path d="M152 258 q 8 -16 12 -30" fill="none" stroke="rgba(196,181,212,0.55)" stroke-width="1.1"/>
+              <text x="146" y="268" text-anchor="end" fill="#f4f2fb" font-family="'Space Mono', monospace" font-size="13">little legs</text>
+              <path d="M392 234 q -14 -22 -30 -38" fill="none" stroke="rgba(196,181,212,0.55)" stroke-width="1.1"/>
+              <text x="452" y="246" text-anchor="end" fill="#f4f2fb" font-family="'Space Mono', monospace" font-size="13">tail fin</text>
+            </svg>
+            <div class="diagram-caption">Figure 3 &middot; the body he keeps</div>
+          </div>
+          <div class="grownup">
+            <div class="grownup-label">For the grown-up reading this</div>
+            <div class="grownup-body">
+<p>The axolotl (<span class="latin">Ambystoma mexicanum</span>) is <strong>paedomorphic</strong>: it keeps larval features &mdash; external gills, tail fin, an aquatic life &mdash; and breeds in that body. Crowner, Khatri, Blichmann and Voss put it exactly: axolotls &ldquo;express ancestral juvenile traits in <em>the adult stage of life</em>.&rdquo;</p>
+<p>The IUCN's own Red List assessment says the same in passing, which is the sentence we would point a doubting adult at: <span class="green">&ldquo;It is a paedomorphic species, living permanently in water, and does not undergo complete metamorphosis.&rdquo;</span> That is a description of an adult, not of a delay.</p>
+<p><strong>One honest complication, kept out of the large type.</strong> Axolotls retain the <em>capacity</em> to metamorphose and can be pushed through it with thyroid hormone in a laboratory. They do not do it on their own. We have left this out of the read-aloud deliberately, because &ldquo;he could if you made him&rdquo; is the exact idea this spread is written against.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Nobody in This Pond Is Late &middot; Stimpunks</span>
+        <span class="spread-footer-right">4</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 5 ════ -->
+  <div class="spread" id="spread-5">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The cousins</div>
+          <h2 class="spread-heading" id="the-cousins">They are all one family</h2>
+          <hr class="spectrum-line rule">
+          <div class="readaloud">
+<p>The axolotl has cousins.</p>
+<p>Some of his cousins <em>do</em> change. They lose their gills and walk out onto the land.</p>
+<p>Some of his cousins never change, the way he never changes.</p>
+<p>And some of them do both.</p>
+<p><span class="turn">They live right next to each other. They are still one family.</span></p>
+<p>Nobody has to change the same way to belong to the same family.</p>
+          </div>
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 440 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig4-title fig4-desc">
+              <title id="fig4-title">Three developmental strategies inside one salamander family</title>
+              <desc id="fig4-desc">A single bracket labelled ONE FAMILY spans three salamander figures. The first has four legs and no gills and is labelled: changes. The second has feathery external gills and a tail fin and is labelled: never changes. The third has both legs and gills and is labelled: does both. All three sit under the same bracket, showing that the three strategies belong to one group rather than to three separate ones.</desc>
+              <text x="220" y="26" text-anchor="middle" fill="#f4f2fb" font-family="'Space Mono', monospace" font-size="13" letter-spacing="3">ONE FAMILY</text>
+              <path d="M46 44 v14 H394 v-14" fill="none" stroke="rgba(74,222,128,0.75)" stroke-width="1.6"/>
+              <path d="M220 58 v16" fill="none" stroke="rgba(74,222,128,0.75)" stroke-width="1.6"/>
+              <g stroke="rgba(74,222,128,0.85)" stroke-width="1.5" fill="none">
+                <ellipse cx="86" cy="128" rx="30" ry="10"/>
+                <circle cx="56" cy="128" r="10"/>
+                <path d="M72 138 v14"/><path d="M100 138 v14"/>
+                <path d="M72 118 v-13"/><path d="M100 118 v-13"/>
+                <path d="M116 128 h20"/>
+              </g>
+              <g stroke="rgba(244,114,182,0.85)" stroke-width="1.5" fill="none">
+                <ellipse cx="230" cy="128" rx="30" ry="10"/>
+                <circle cx="200" cy="128" r="10"/>
+                <path d="M196 118 q -10 -10 -20 -12"/>
+                <path d="M202 116 q -5 -13 -12 -18"/>
+                <path d="M196 138 q -10 10 -20 12"/>
+                <path d="M202 140 q -5 13 -12 18"/>
+                <path d="M260 128 q 16 -12 22 -2 q -6 12 -22 2 Z"/>
+              </g>
+              <g stroke="rgba(251,191,36,0.9)" stroke-width="1.5" fill="none">
+                <ellipse cx="368" cy="128" rx="30" ry="10"/>
+                <circle cx="338" cy="128" r="10"/>
+                <path d="M354 138 v14"/><path d="M382 138 v14"/>
+                <path d="M334 118 q -10 -10 -20 -12"/>
+                <path d="M334 138 q -10 10 -20 12"/>
+                <path d="M398 128 h14"/>
+              </g>
+              <text x="86" y="192" text-anchor="middle" fill="#f4f2fb" font-family="'Space Mono', monospace" font-size="13">changes</text>
+              <text x="230" y="192" text-anchor="middle" fill="#f4f2fb" font-family="'Space Mono', monospace" font-size="13">never changes</text>
+              <text x="368" y="192" text-anchor="middle" fill="#f4f2fb" font-family="'Space Mono', monospace" font-size="13">does both</text>
+              <path d="M46 226 H394" fill="none" stroke="rgba(34,211,238,0.45)" stroke-width="1.2"/>
+              <text x="220" y="256" text-anchor="middle" fill="#f4f2fb" font-family="'Space Mono', monospace" font-size="12">neighbours, and they interbreed</text>
+            </svg>
+            <div class="diagram-caption">Figure 4 &middot; three strategies, one group<br>Everson et&nbsp;al., PNAS 2021</div>
+          </div>
+          <div class="grownup">
+            <div class="grownup-label">For the grown-up reading this</div>
+            <div class="grownup-body">
+<p>This is the strongest thing in the zine, and it is a result rather than a sentiment. Everson and colleagues sampled the North American tiger salamander complex &mdash; the axolotl's own group &mdash; across its range in <em>PNAS</em> (2021). The complex holds populations that undergo metamorphosis, populations that forgo it and stay aquatic, <span class="green">&ldquo;and those that do both.&rdquo;</span></p>
+<p>They then looked at whether that difference splits the family. It does not. The genetic clusters they found &ldquo;often contain a <strong>mixture of paedomorphic and metamorphic taxa</strong>,&rdquo; and their analyses show <strong>gene flow between adjacent metamorphic and paedomorphic populations</strong> &mdash; animals with different developmental routes living side by side and interbreeding.</p>
+<p>Their conclusion is that <em>geography</em> has done more to divide these salamanders than developmental strategy has. <span class="cyan">The route through childhood is not what sorts them.</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Nobody in This Pond Is Late &middot; Stimpunks</span>
+        <span class="spread-footer-right">5</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 6 ════ -->
+  <div class="spread" id="spread-6">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Eight days, and sixteen</div>
+          <h2 class="spread-heading" id="eight-days-and-sixteen">Some tadpoles are quick. Some take twice as long.</h2>
+          <hr class="spectrum-line rule">
+          <div class="readaloud">
+<p>In a hot desert, there is a pond that comes when it rains and dries up again.</p>
+<p>The tadpoles there have to hurry.</p>
+<p>Some of them grew all the way up in <strong>eight days</strong>.</p>
+<p>Some of them, in the very same desert, took <strong>sixteen</strong>. That is twice as long.</p>
+<p><span class="turn">Both of them grew up. Both of them are frogs.</span></p>
+<p>Nobody counted the slow ones as late.</p>
+          </div>
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 440 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig5-title fig5-desc">
+              <title id="fig5-title">Two larval periods in one desert, eight days and sixteen days</title>
+              <desc id="fig5-desc">Two horizontal bars drawn to the same scale. The upper bar is half the length of the lower one and is labelled eight days. The lower bar is twice as long and is labelled sixteen days. A dashed vertical line marks the point where the shorter bar ends, showing the second animal still developing there. Both bars are the same species in the same desert, and both end in a metamorphosed frog.</desc>
+              <rect x="60" y="60" width="160" height="42" rx="3" fill="rgba(74,222,128,0.20)" stroke="rgba(74,222,128,0.8)" stroke-width="1.4"/>
+              <text x="76" y="87" fill="#f4f2fb" font-family="'Space Mono', monospace" font-size="15" font-weight="700">8 DAYS</text>
+              <rect x="60" y="126" width="320" height="42" rx="3" fill="rgba(34,211,238,0.18)" stroke="rgba(34,211,238,0.8)" stroke-width="1.4"/>
+              <text x="76" y="153" fill="#f4f2fb" font-family="'Space Mono', monospace" font-size="15" font-weight="700">16 DAYS</text>
+              <path d="M220 48 V186" fill="none" stroke="rgba(196,181,212,0.5)" stroke-width="1.2" stroke-dasharray="4 4"/>
+              <text x="220" y="212" text-anchor="middle" fill="#f4f2fb" font-family="'Space Mono', monospace" font-size="12">the quick one is done here</text>
+              <text x="220" y="240" text-anchor="middle" fill="#f4f2fb" font-family="'Space Mono', monospace" font-size="12">same desert &#183; same species</text>
+            </svg>
+            <div class="diagram-caption">Figure 5 &middot; one species, twice the time<br>Newman, Ecology 1989</div>
+          </div>
+          <div class="grownup">
+            <div class="grownup-label">For the grown-up reading this</div>
+            <div class="grownup-body">
+<p>Newman, in <em>Ecology</em> (1989), measured Couch's spadefoot (<span class="latin">Scaphiopus couchii</span>) in desert ponds of varying duration. With sufficient food, larvae developed in <strong>eight to sixteen days</strong> &mdash; a range, in one species, in one place.</p>
+<p><strong>A correction we made on the way.</strong> The figure that circulates is a flat &ldquo;eight days &mdash; the shortest of any North American amphibian.&rdquo; <span class="gold">Eight is the floor of a range, not the fact.</span> We went to Newman because a single number is exactly the shape of thing that loses its range in retelling, and the range is the whole point of this spread.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Nobody in This Pond Is Late &middot; Stimpunks</span>
+        <span class="spread-footer-right">6</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 7 ════ -->
+  <div class="spread" id="spread-7">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The pond has a say</div>
+          <h2 class="spread-heading" id="the-pond-has-a-say">How fast is not only up to the tadpole</h2>
+          <hr class="spectrum-line rule">
+          <div class="readaloud">
+<p>Some scientists wanted to know what makes a tadpole hurry.</p>
+<p>So they took a tank of water with tadpoles in it, and they let the water get lower. A little bit each day.</p>
+<p>The tadpoles could feel the water going down.</p>
+<p><span class="turn">And they hurried.</span></p>
+<p>The faster the water went down, the faster they hurried. It was not like a switch that clicks on. It was more like a dial, turning.</p>
+          </div>
+          <div class="grownup">
+            <div class="grownup-label">For the grown-up reading this</div>
+            <div class="grownup-body">
+<p>Denver, Mirhadi and Phillips, <em>Ecology</em> (1998), reduced water in aquaria at a controlled rate. Tadpoles &ldquo;showed significant acceleration of metamorphosis,&rdquo; and &mdash; the part worth keeping &mdash; &ldquo;the developmental acceleration <strong>depended on the rate of reduction</strong> of the water level; i.e., tadpoles exhibited <span class="green">a continuum of response</span>.&rdquo;</p>
+<p><strong>A different spadefoot from the last spread.</strong> This is the western spadefoot, <span class="latin">Scaphiopus hammondii</span>; the eight-to-sixteen-day figures were Couch's spadefoot, <span class="latin">S. couchii</span>. Two related species, two studies, and we are not merging them into one animal.</p>
+<p>The cue was not what the authors expected either. It was not chemical, and not other tadpoles. It &ldquo;appears to be related to the <em>reduced swimming volume</em>&rdquo; &mdash; and when the water is low, tadpoles eat less.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Nobody in This Pond Is Late &middot; Stimpunks</span>
+        <span class="spread-footer-right">7</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 8 ════ -->
+  <div class="spread" id="spread-8">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">And then</div>
+          <h2 class="spread-heading" id="when-the-water-came-back">Then they put the water back</h2>
+          <hr class="spectrum-line rule">
+          <div class="readaloud">
+<p>Here is the part we like best.</p>
+<p>The scientists filled the tanks back up.</p>
+<p>And the tadpoles <em>slowed back down</em>. They started growing again. They stopped hurrying.</p>
+<p><span class="turn">So how fast a tadpole grows up was never only about the tadpole.</span></p>
+<p>It was about the tadpole <em>and</em> the pond. Together.</p>
+<p>And of those two, the pond is the one a grown-up can change.</p>
+          </div>
+          <div class="grownup">
+            <div class="grownup-label">For the grown-up reading this</div>
+            <div class="grownup-body">
+<p>Same paper. Refilling the aquaria at various points after the drawdown began &ldquo;resulted in <strong>restoration of body mass and a tendency to decelerate metamorphosis</strong>.&rdquo; The hurrying was not a fixed trait switched on for good. It tracked the conditions, in both directions.</p>
+<p>This is the spread the whole zine is built to arrive at, and it is the reason we would rather hand a caregiver a tadpole than a milestone chart. <span class="cyan">A rate of development was read here as information about an environment</span> &mdash; and the environment is the half that can be altered.</p>
+<p><strong>Said plainly, and held there:</strong> this is a measurement about spadefoot toads. It is not a finding about children, and we are not going to dress it as one. What it is good for is loosening the assumption that a pace is a property of the small creature going at it.</p>
+<p><strong>Where the argument about people actually lives &mdash; not here.</strong> Stimpunks makes it on human evidence, at <a href="https://stimpunks.org/why/developmental-pace/">Developmental Pace</a>: a why sheet, a <a href="https://stimpunks.org/glossary/developmental-pace/">glossary entry</a>, and a <a href="https://stimpunks.org/library/broadsides/developmental-pace/">printable broadside</a> made for the meeting where a child is about to be told they are behind. Its sentence is sharper than any of ours: <span class="green">&ldquo;Behind&rdquo; is information about the ruler, not about the learner.</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Nobody in This Pond Is Late &middot; Stimpunks</span>
+        <span class="spread-footer-right">8</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 9 ════ -->
+  <div class="spread" id="spread-9">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">What hurrying costs</div>
+          <h2 class="spread-heading" id="what-hurrying-costs">The ones who hurried came out smaller</h2>
+          <hr class="spectrum-line rule">
+          <div class="readaloud">
+<p>Hurrying worked. The quick ones got out before the pond dried up. That is a good thing, and it saved them.</p>
+<p>But hurrying was not free.</p>
+<p><span class="turn">The tadpoles who hurried came out smaller than the ones who took their time.</span></p>
+<p>Two different sets of scientists found this. One watched real ponds outside. One used tanks indoors. They both found the same thing.</p>
+<p>So going fast is not better. It just costs something different.</p>
+          </div>
+          <div class="grownup">
+            <div class="grownup-label">For the grown-up reading this</div>
+            <div class="grownup-body">
+<p><strong>Denver, Mirhadi and Phillips (lab, 1998):</strong> &ldquo;Accelerated development resulted in smaller size at metamorphosis.&rdquo; <strong>Newman (field, 1989):</strong> rapid development maximised the chance of finishing before the pond dried, &ldquo;but resulting in small size at metamorphosis.&rdquo;</p>
+<p>Two study designs, two species, one cost &mdash; which is a good deal more than either paper establishes alone. Newman also found the accelerated metamorphs emerged with relatively smaller hindlimbs.</p>
+<p><strong>Why this spread exists at all.</strong> A zine that stopped at spread eight would have argued that slow is fine, which is true and only half of it. <span class="gold">The other half is that speed has a price nobody bills the fast child for either.</span> Both halves belong to the same measurement, and leaving out the second one would have been the more comfortable edit.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Nobody in This Pond Is Late &middot; Stimpunks</span>
+        <span class="spread-footer-right">9</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 10 ════ -->
+  <div class="spread" id="spread-10">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">So</div>
+          <h2 class="spread-heading" id="nobody-is-late">Nobody in this pond is late</h2>
+          <hr class="spectrum-line rule">
+          <div class="readaloud">
+<p>The frog changed everything about herself.</p>
+<p>The axolotl never changed at all, and he is a grown-up too.</p>
+<p>Some tadpoles took eight days. Some took sixteen. Some of their cousins take a whole winter, and then another one.</p>
+<p>The pond does not have one right way to grow up. It never did.</p>
+<p><span class="turn">Fast is not better. Slow is not late.</span></p>
+<p>You are growing up in your own pond, at your own speed, and you are not behind.</p>
+<p>We love you down to your star stuff.</p>
+          </div>
+          <div class="grownup">
+            <div class="grownup-label">For the grown-up reading this</div>
+            <div class="grownup-body">
+<p><strong>&ldquo;A whole winter, and then another one&rdquo;</strong> is the loosest sentence in this zine and it is deliberately vague. American bullfrog tadpoles are widely reported overwintering for one to three years, with the figures scattering badly across sources &mdash; some populations metamorphose in under four months. <span class="pink">We could not resolve it to a primary we were willing to print</span>, so it stays a soft comparison in the read-aloud and gets no number anywhere.</p>
+<p>Everything else in the large type on this page is carried by the four papers in the colophon.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Nobody in This Pond Is Late &middot; Stimpunks</span>
+        <span class="spread-footer-right">10</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 11 ════ -->
+  <div class="spread" id="spread-11">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Refusals &middot; for the grown-up reading this</div>
+          <h2 class="spread-heading" id="not">Not:</h2>
+          <hr class="spectrum-line rule">
+          <div class="refusals">
+            <div class="refusal"><span class="refusal-tag">Not</span><span><strong>&ldquo;The axolotl never grows up.&rdquo;</strong> He grows up. He reaches adulthood, breeds, and lives out a full life in the body he has. <span class="green">The Peter Pan reading is the deficit reading wearing a nicer coat</span> &mdash; it keeps &ldquo;proper adult&rdquo; meaning the one who left the water, and files him as arrested instead of finished.</span></div>
+            <div class="refusal"><span class="refusal-tag">Not</span><span><strong>Difference as a superpower.</strong> Staying aquatic is not a secret advantage the axolotl is keeping from the others. It is one way of being a salamander among several, and it needs no upgrade to deserve the page.</span></div>
+            <div class="refusal"><span class="refusal-tag">Not</span><span><strong>&ldquo;Everyone gets there in the end.&rdquo;</strong> The comforting version of this book would promise the axolotl a later transformation. He does not get one and does not need one, and a child who is told that everyone arrives eventually has simply been handed the same finish line with a longer rope.</span></div>
+            <div class="refusal"><span class="refusal-tag">Not</span><span><strong>A readiness checklist with kinder feelings.</strong> This is not a milestone chart that says <em>and that's okay!</em> after each row. The measurements here do not soften a schedule; <span class="gold">they undercut the idea that a pace belongs to the small creature going at it.</span></span></div>
+            <div class="refusal"><span class="refusal-tag">Not</span><span><strong>A finding about children.</strong> Every study here is about amphibians, and spread eight says so on its own face. We will take the shape of the result &mdash; that a rate can be information about an environment &mdash; and leave the claim where it was measured. A rhyme, not a proof.</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Nobody in This Pond Is Late &middot; Stimpunks</span>
+        <span class="spread-footer-right">11</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 12: COLOPHON ════ -->
+  <div class="spread" id="spread-12">
+    <div class="interior">
+      <div class="colophon">
+        <div>
+          <div class="colophon-top">
+            <span class="colophon-ls">L&#9733;S</span>
+            <p class="colophon-phrase">How fast a tadpole grows up was never only a fact about the tadpole. It was a fact about the tadpole and the pond, together &mdash; and the pond is the half a grown-up can change.</p>
+          </div>
+
+          <div class="series-list">
+            <div class="series-item"><span class="series-num">No. 8</span> <a href="the-universe-runs-on-difference-zine.html">The Universe Runs on Difference</a> &mdash; the Cavendish banana, and what uniformity costs</div>
+            <div class="series-item"><span class="series-num">No. 87</span> <a href="two-peppers-zine.html">Two Peppers</a> &mdash; the same trait read two ways by two rooms</div>
+            <div class="series-item"><span class="series-num">No. 34</span> <a href="two-hundred-years-zine.html">Two Hundred Years Before You&rsquo;re Grown</a> &mdash; the Greenland shark, and what slow costs when conditions move</div>
+            <div class="series-item"><span class="series-num">No. 61</span> <a href="thirteen-changes-zine.html">Thirteen Changes</a> &mdash; where the neoteny argument lives here</div>
+            <div class="series-item"><span class="series-num">&mdash;</span> <a href="difference-first-frame.html">The Difference-First Frame</a> &mdash; why variation comes before deficit here</div>
+            <div class="series-item"><span class="series-num">&mdash;</span> <a href="too-good-to-check.html">Too Good to Check</a> &mdash; six ways a fact goes wrong</div>
+            <div class="series-item current"><span class="series-num">No. 91</span> Nobody in This Pond Is Late &mdash; eight days, sixteen days, and the axolotl who stayed &larr; you are here</div>
+          </div>
+
+          <div class="reflect">
+            <div class="reflect-label">Reflection</div>
+            <p class="reflect-q">What is the water level in the room this child is growing up in, and who has a hand on the tap?</p>
+            <p class="reflect-q">When you call a pace slow, what are you measuring it against, and who chose that?</p>
+            <p class="reflect-q">Where have you paid the cost of hurrying and had nobody count it?</p>
+            <p class="reflect-q">Which grown-ups in this child's life are the ones who left the water, and which ones stayed?</p>
+          </div>
+        </div>
+
+        <div class="colophon-body">
+          <h3 class="colophon-h" id="for-lilypad-library">For Lilypad Library</h3>
+          <p>This zine exists because of <a href="https://mskiersten.com/">Kiersten Case</a> and <strong>Lilypad Library</strong>, the low-stimulation puppet series she created for neurodivergent kids, which the <a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks Foundation</a> is proud to <a href="https://stimpunks.org/2026/05/26/we-are-fiscal-sponsors-of-lilypad-library/">fiscally sponsor</a>. <span class="green">The frog-and-axolotl pairing is theirs, not ours</span> &mdash; the show put those two animals side by side, and this zine is what happened when we went to look up whether the biology underneath that pairing was as good as it looked. It was better.</p>
+          <p><strong>The show's characters have names. We have not used them here</strong>, because they are Kiersten Case's to lend and this page was not the place to assume. Nothing in this zine should be read as coming from the show, or as speaking for it.</p>
+
+          <h3 class="colophon-h" id="sources">Sources</h3>
+          <p><strong>The eight-to-sixteen days.</strong> Robert A. Newman, <em>&ldquo;Developmental Plasticity of </em>Scaphiopus couchii<em> Tadpoles in an Unpredictable Environment,&rdquo; Ecology</em> <strong>70</strong>(6), 1775&ndash;1787 (1989). Source of the larval-period range on spread six and of the field half of the size cost on spread nine.</p>
+          <p><strong>The drying pond, the continuum, and the refill.</strong> Robert J. Denver, Nooshan Mirhadi &amp; Marnie Phillips, <em>&ldquo;Adaptive Plasticity in Amphibian Metamorphosis: Response of </em>Scaphiopus hammondii<em> Tadpoles to Habitat Desiccation,&rdquo; Ecology</em> <strong>79</strong>(6), 1859&ndash;1872 (1998). Source of spreads seven and eight and of the laboratory half of spread nine, including the quoted <em>continuum of response</em>, the restoration-of-body-mass result, the reduced-swimming-volume cue, and <em>&ldquo;Accelerated development resulted in smaller size at metamorphosis.&rdquo;</em> <span class="cyan">Read at full text.</span></p>
+          <p><strong>The axolotl.</strong> Aaron Crowner, Shivam Khatri, Doris Blichmann &amp; S. Randal Voss, <em>&ldquo;Rediscovering the Axolotl as a Model for Thyroid Hormone Dependent Development,&rdquo; Frontiers in Endocrinology</em> <strong>10</strong>, 237 (2019) &mdash; the <em>ancestral juvenile traits in the adult stage of life</em> wording, and the induced-metamorphosis complication kept in the spread-four grown-up box.</p>
+          <p><strong>The family.</strong> Kathryn M. Everson, Levi N. Gray, Angela G. Jones and colleagues, <em>&ldquo;Geography is more important than life history in the recent diversification of the tiger salamander complex,&rdquo; PNAS</em> <strong>118</strong> (2021), doi:10.1073/pnas.2014719118. Source of spread five and Figure 1. <span class="pink">Read at the abstract only</span> &mdash; the publisher returned 403 to us and we reached the record through Europe PMC. Every phrase quoted on that spread is from the authors' own abstract; we have not read their methods, and a reader who wants the sampling design will have to go further than we did.</p>
+          <p><strong>The conservation status.</strong> IUCN SSC Amphibian Specialist Group. 2020. <span class="latin">Ambystoma mexicanum</span>. <em>The IUCN Red List of Threatened Species</em> 2020: e.T1095A53947343. Assessed 23 October 2019; <strong>Critically Endangered A2abce</strong>, on an observed decline estimated at more than 80% over three generations (16.5 years). Source of the <em>paedomorphic species, living permanently in water</em> sentence quoted on spread four. Read at full text.</p>
+          <p><strong>And the hopeful one.</strong> Alejandra G. Ramos, Horacio Mena, Diana Schneider &amp; Luis Zambrano, <em>&ldquo;Movement ecology of captive-bred axolotls in restored and artificial wetlands: Conservation insights for amphibian reintroductions and translocations,&rdquo; PLOS ONE</em> (2025) &mdash; released captive-bred axolotls that were recaptured having <em>gained weight, suggesting successful adaptation</em>, in the same breath as <em>two axolotls were lost to avian predation</em>. Both halves, as the authors wrote them.</p>
+
+          <h3 class="colophon-h" id="what-we-cut">What we cut, and why</h3>
+          <p><strong>A number that is repeated everywhere and is not in the assessment.</strong> Secondary accounts of the axolotl's decline commonly run a density series ending &ldquo;35 individuals per square kilometre in 2017.&rdquo; The Red List assessment carries the earlier figures &mdash; 6,000 in 1998, 1,000 in 2004, and 100 in 2008, that last one explicitly <em>unpublished data</em> &mdash; and <span class="gold">it says nothing about 35.</span> What it says about 2017 is starker and differently shaped: monthly sampling at Xochimilco through that year <em>did not record the species at all</em>. We are printing the assessment's own sentence and not the tidier number, and we would not have caught the difference without going to the document.</p>
+          <p><strong>The bullfrog's two winters</strong> is discussed in the spread-ten grown-up box: reported, unresolved, and therefore given no figure.</p>
+          <p><strong>The axolotl a child meets in this zine is nearly gone from its lake</strong>, and we have kept that out of the large type on purpose. A four-year-old being read to at bedtime is owed the animal before the obituary. The grown-up holding the book is owed the fact, which is why it is here: the only site with records in recent years is Chapultepec Lake &mdash; artificial, cement-lined, in a city park &mdash; where released individuals seem to be breeding. <span class="cyan">The animal that never leaves the water is now breeding in the pond we poured for it.</span></p>
+
+          <h3 class="colophon-h" id="what-this-does-not-re-argue">What this deliberately does not re-argue</h3>
+          <p><strong>Stimpunks already owns the argument about people, and this zine does not restate it.</strong> <a href="https://stimpunks.org/why/developmental-pace/">Developmental Pace</a> exists as a why sheet, a <a href="https://stimpunks.org/glossary/developmental-pace/">glossary entry</a> and a <a href="https://stimpunks.org/library/broadsides/developmental-pace/">printable broadside</a>, built on human evidence and written for the meeting where a child is about to be told they are behind. Its definition &mdash; <em>the rate at which a person arrives &hellip; and it varies enormously between people, and within one person across different domains</em> &mdash; and its <em>&ldquo;behind&rdquo; is information about the ruler</em> are the sentences this zine is standing next to rather than reaching for. <span class="cyan">The glossary&rsquo;s own refusals overlap with spread eleven deliberately:</span> it says pace is not simply <em>slower is better</em>, that pace is neither virtuous nor flawed, and that survivability depends on context &mdash; which is precisely why spread nine prints the cost of hurrying instead of stopping at spread eight.</p>
+          <p><strong><a href="two-hundred-years-zine.html">No. 34</a> owns &ldquo;slow&rdquo; in this collection.</strong> <em>Two Hundred Years Before You&rsquo;re Grown</em> follows the Greenland shark to sexual maturity at about 156 years and then turns the finding over: slow is viable in an environment that permits it and lethal in one that does not. This zine is its other half, and its opposite in shape &mdash; not one animal that is slow, but a pond with <em>no shared schedule at all</em>, where the pace moved when the water did and moved back when it returned. <span class="gold">It is also the first piece here written for the child rather than about them.</span></p>
+          <p><strong><a href="thirteen-changes-zine.html">No. 61</a> owns neoteny here</strong> &mdash; Jorn Bettin's inversion, retained neoteny as distributed adaptive capacity rather than developmental lag. That is an argument about people and about groups. This zine does not restate it and does not lean on it: it stays with four salamanders and two spadefoot toads, and lets the reader carry whatever they carry. <strong><a href="two-peppers-zine.html">No. 87</a> owns the same-trait-two-rooms argument</strong>, and <strong><a href="difference-first-frame.html">The Difference-First Frame</a> owns the reasoning</strong> behind reading variation before deficit.</p>
+          <p><strong>A rhyme, not a proof.</strong> <span class="gold">We are not claiming a tadpole is like a child. We are pointing at a set of measurements in which a rate of development turned out to be a fact about conditions as much as about the animal &mdash; reversible when the conditions reversed, and costly when it was rushed.</span></p>
+          <div class="colophon-footer">
+            <a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks Foundation</a> &times; <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a><br>
+            stimpunks.org &middot; morerealms.com &middot; starstuff.earth<br>
+            <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> &middot; open edition &middot; print freely
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Nobody in This Pond Is Late &middot; Stimpunks</span>
+        <span class="spread-footer-right">12</span>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /zine-shell --></main>
+
+
+<script>
+  let current = 1;
+  const total = 12;
+
+  function changePage(dir) {
+    const next = current + dir;
+    if (next < 1 || next > total) return;
+    document.getElementById('spread-' + current).classList.remove('active');
+    current = next;
+    document.getElementById('spread-' + current).classList.add('active');
+    document.getElementById('page-counter').textContent = current + ' / ' + total;
+    document.getElementById('prev-btn').disabled = current === 1;
+    document.getElementById('next-btn').disabled = current === total;
+    document.getElementById('prev-btn').classList.toggle('active', current > 1);
+    document.getElementById('next-btn').classList.toggle('active', current < total);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') changePage(1);
+    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   changePage(-1);
+  });
+
+  document.getElementById('prev-btn').disabled = true;
+  document.getElementById('next-btn').classList.add('active');
+</script>
+<script src="starstuff.js" defer></script>
+</body>
+</html>
