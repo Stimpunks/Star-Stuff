@@ -153,6 +153,40 @@ CHAINS['the-name-was-already-the-verdict-zine.html'] = {
   ],
 };
 
+CHAINS['nobody-knows-where-the-dog-came-from-zine.html'] = {
+  // Two rails, and this chain zigzags between them more than any other here — which is
+  // the argument. The dog-origins dispute is not one field disagreeing with itself; it is
+  // two methods that kept returning different answers about the same animal:
+  //   bone    — what was dug up, measured, re-measured and reclassified
+  //   genome  — what was sequenced, from living dogs and then from ancient ones
+  // Five rail swaps in thirteen links. The truce (link 8) sits on `bone` because Larson
+  // and Dobney's whole methodological claim was that morphometrics had to come back into
+  // the room; everything after it runs on `genome`, which is where the field went.
+  rails: { bone: 26, genome: 58, turn: 8 },
+  railLabels: [['bone', 29], ['genome', 61]],
+  aria: 'two rails \u2014 what was dug up and measured, and what was sequenced',
+  reuse: {},
+  nodes: [
+  // spread, year label, rail, joint tag on the edge ARRIVING at this node.
+  // As in No. 88, node 1 IS Link 1 and its tag is printed on the page (spread 2 is the
+  // question rather than a link, and carries neither tag nor spine), so the script's
+  // tally of 13 is exactly the number of link tags a reader can count. Keep it that way.
+  { s: 3,  y: '1868', rail: 'bone',   joint: 'documented', t: 'Darwin concluded, not wondered' },
+  { s: 4,  y: '1978', rail: 'bone',   joint: 'documented', t: 'a puppy under a hand' },
+  { s: 5,  y: '1997', rail: 'genome', joint: 'documented', t: 'wolves \u2014 and co-authors' },
+  { s: 6,  y: '2009', rail: 'genome', joint: 'contested',  t: 'south of the Yangtze' },
+  { s: 7,  y: '2009', rail: 'bone',   joint: 'contested',  t: 'a skull in a drawer' },
+  { s: 8,  y: '2015', rail: 'bone',   joint: 'contested',  t: 'measured again, in 3D' },
+  { s: 9,  y: '2013', rail: 'genome', joint: 'contested',  t: 'Europe, says the other camp' },
+  { s: 10, y: '2013', rail: 'bone',   joint: 'documented', t: 'the truce, and who paid for it' },
+  { s: 11, y: '2016', rail: 'genome', joint: 'contested',  t: 'domesticated twice, possibly' },
+  { s: 12, y: '2020', rail: 'genome', joint: 'documented', t: 'five lineages, one-way street' },
+  { s: 13, y: '',     rail: 'genome', joint: 'leap',       t: 'why the street ran one way' },
+  { s: 14, y: '2026', rail: 'genome', joint: 'documented', t: 'the oldest dog anyone has read' },
+  { s: 15, y: 'now',  rail: 'turn',   joint: 'leap',       t: 'origin is not a prerequisite' },
+  ],
+};
+
 const CHAIN = CHAINS[key];
 if (!CHAIN) {
   console.error(`no chain config for ${key || '(no file given)'} — known: ${Object.keys(CHAINS).join(', ')}`);
