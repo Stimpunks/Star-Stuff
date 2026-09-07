@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0a0a14">
+<link rel="canonical" href="https://starstuff.earth/the-colours-you-cannot-see-zine.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta name="description" content="A read-aloud zine for four to eight, and whoever is reading it to them. Flowers carry patterns &mdash; bullseyes, rings, lines running to the centre &mdash; made of ultraviolet, which human eyes have no receptor for and bees do. The patterns are really there. Karl von Frisch showed in 1914 that bees see colour rather than brightness, by training them to a coloured card and then testing it against grey cards of many different intensities, so a bee picking the brightest thing would have got it wrong. And the part the popular version leaves out: bees do not see more than we do. Lunau, Camargo and Ren (Plant Biology, 2025) state that ultraviolet is &ldquo;merely one component of colour vision&rdquo; for a bee, not a separate channel &mdash; bees are sensitive to ultraviolet and we are not, and humans are more sensitive to red than bees are. It is a different stretch, not a longer one. Nobody gets the whole thing. Twelve spreads, three figures, five refusals.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Star Stuff &middot; Stimpunks Foundation &times; More Realms">
+<meta property="og:url" content="https://starstuff.earth/the-colours-you-cannot-see-zine.html">
+<meta property="og:title" content="The Colours You Cannot See">
+<meta property="og:description" content="Flowers have patterns on them that your eyes have no part for. A bee can see them. They are really there &mdash; and the bee is not seeing more than you, it is seeing a different stretch.">
+<meta property="og:image" content="https://starstuff.earth/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A rainbow-hued cosmic image &mdash; we are all made of star stuff.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Colours You Cannot See">
+<meta name="twitter:description" content="Bees cannot see red. You cannot see ultraviolet. Nobody gets the whole thing, and the flower made its pattern for whoever can use it.">
+<meta name="twitter:image" content="https://starstuff.earth/og-card.jpg">
+<title>The Colours You Cannot See &mdash; Stimpunks Zine No. 94</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="starstuff.css">
+<style>
+  :root {
+    --void:  var(--sp-void-deep);
+    --deep:  var(--sp-deep);
+    --page:  var(--sp-page);
+    --violet:var(--sp-purple);
+    --pink:  var(--sp-pink);
+    --gold:  var(--sp-gold);
+    --cyan:  var(--sp-cyan);
+    --green: var(--sp-green);
+    --ember: #c1653a;
+    --accent: var(--sp-purple);        /* this zine's identity accent — the end of the spectrum we do not get */
+    --star-white: var(--sp-white-soft);
+    --stardust:   var(--sp-secondary-soft);
+    --dim:   var(--sp-dim);
+    --dim2:  var(--sp-dim-soft);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--void);
+    font-family: 'Atkinson Hyperlegible Next', system-ui, sans-serif;
+    color: var(--star-white);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── STARFIELD (green · cyan · white — the pad, the water, and the light on it) ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 11% 24%, rgba(167,139,250,0.56) 0%, transparent 100%),
+      radial-gradient(1px 1px at 29% 52%, rgba(244,244,251,0.6) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 44% 17%, rgba(244,114,182,0.48) 0%, transparent 100%),
+      radial-gradient(1px 1px at 63% 74%, rgba(244,244,251,0.62) 0%, transparent 100%),
+      radial-gradient(2px 2px at 81% 29%, rgba(167,139,250,0.48) 0%, transparent 100%),
+      radial-gradient(1px 1px at 87% 58%, rgba(244,114,182,0.46) 0%, transparent 100%),
+      radial-gradient(1px 1px at 95% 83%, rgba(244,244,251,0.5) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 6% 66%, rgba(167,139,250,0.46) 0%, transparent 100%),
+      radial-gradient(1px 1px at 34% 90%, rgba(244,114,182,0.48) 0%, transparent 100%),
+      radial-gradient(1px 1px at 56% 36%, rgba(244,244,251,0.52) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .zine-shell { position: relative; z-index: 1; max-width: 820px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+
+  .nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem; }
+  .nav-brand { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--dim); }
+  .nav-controls { display: flex; gap: 0.5rem; align-items: center; }
+  .nav-btn { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; background: transparent; color: var(--dim2); border: 1px solid rgba(196,181,212,0.25); border-radius: 3px; padding: 0.4rem 0.75rem; cursor: pointer; transition: all 0.2s; }
+  .nav-btn.active { color: var(--accent); border-color: rgba(167,139,250,0.5); }
+  .nav-btn:disabled { opacity: 0.3; cursor: default; }
+  .page-counter { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.1em; color: var(--dim); padding: 0 0.4rem; }
+
+  .spread { display: none; animation: fadeIn 0.5s ease forwards; }
+  .spread.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ── COVER ── */
+  .cover-spread {
+    position: relative; min-height: 520px; border-radius: 4px; overflow: hidden;
+    background:
+      radial-gradient(ellipse at 20% 22%, rgba(167,139,250,0.13) 0%, transparent 52%),
+      radial-gradient(ellipse at 80% 32%, rgba(34,211,238,0.10) 0%, transparent 52%),
+      radial-gradient(ellipse at 66% 88%, rgba(167,139,250,0.07) 0%, transparent 52%),
+      radial-gradient(ellipse at 22% 86%, rgba(167,139,250,0.07) 0%, transparent 52%),
+      var(--deep);
+    border: 1px solid rgba(167,139,250,0.28);
+    box-shadow: inset 0 0 80px rgba(167,139,250,0.07), 0 0 0 4px rgba(255,255,255,0.03);
+    display: flex; flex-direction: column; justify-content: flex-end; padding: 3rem;
+  }
+  .cover-motif { position: absolute; top: -6px; right: -10px; width: 320px; height: 320px; opacity: 0.72; pointer-events: none; }
+  .cover-issue { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.5em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.5rem; }
+  .cover-title { font-weight: 700; font-size: clamp(1.9rem, 5.2vw, 3rem); line-height: 1.03; color: var(--star-white); letter-spacing: -0.01em; margin-bottom: 0.9rem; }
+  .cover-title .amp { color: var(--accent); font-style: italic; }
+  .cover-subtitle { font-size: 1rem; color: var(--stardust); opacity: 0.85; margin-bottom: 1.5rem; max-width: 470px; line-height: 1.55; }
+  .cover-byline { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.14em; color: var(--dim); margin-bottom: 1.8rem; }
+  .cover-byline strong { color: var(--stardust); font-weight: 700; }
+  .cover-rule { width: 220px; max-width: 60%; margin-bottom: 1.3rem; }
+  .cover-meta { display: flex; gap: 2rem; align-items: center; }
+  .cover-ls { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 1.4rem; color: var(--accent); letter-spacing: 0.05em; }
+  .cover-meta-text { font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--dim2); line-height: 1.9; }
+  .cover-corner { position: absolute; top: 2rem; right: 2.5rem; text-align: right; }
+  .cover-corner-num { font-weight: 700; font-size: 4.5rem; line-height: 1; color: var(--accent); opacity: 0.20; }
+  .cover-corner-label { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); display: block; margin-top: -0.3rem; }
+
+  /* ── INTERIOR ── */
+  .interior { background: var(--page); border: 1px solid rgba(167,139,250,0.16); border-radius: 4px; overflow: hidden; min-height: 480px; }
+  .spread-2col { display: grid; grid-template-columns: 1fr 1fr; min-height: 440px; }
+  .spread-left, .spread-right { padding: 3rem 2.4rem; position: relative; }
+  .spread-left { border-right: 1px solid rgba(167,139,250,0.12); }
+
+  .spread-2col.stacked { display: flex; flex-direction: column; }
+  .spread-2col.stacked > .spread-left,
+  .spread-2col.stacked > .spread-right { border-right: none; }
+  .spread-2col.stacked > .col-diagram { order: 2; padding-top: 0; }
+  .spread-2col.stacked > .col-text { padding-left: max(2.4rem, calc((100% - 32rem) / 2)); padding-right: max(2.4rem, calc((100% - 32rem) / 2)); }
+  .spread-2col.stacked .diagram-wrap { height: auto; }
+  .spread-2col.stacked .diagram { max-width: 460px; }
+
+  .eyebrow { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.1rem; }
+  .body-text { font-size: 0.98rem; line-height: 1.72; color: var(--stardust); }
+  .body-text p { margin-bottom: 1rem; }
+  .body-text p:last-child { margin-bottom: 0; }
+  .body-text strong { font-weight: 700; color: var(--star-white); }
+  .body-text em { font-style: italic; color: var(--star-white); }
+  .body-text a { color: var(--cyan); text-decoration: none; border-bottom: 1px solid rgba(34,211,238,0.4); }
+  .body-text a:hover { border-bottom-color: var(--cyan); color: var(--star-white); }
+  /* Accent spans that sit OUTSIDE .body-text — inside .refusals, .readaloud,
+     .grownup-body and .colophon-body, which are its siblings. The No. 67 fault. */
+  .zine-shell span.violet { color: var(--violet); font-weight: 700; }
+  .zine-shell span.gold { color: var(--gold); font-weight: 700; }
+  .zine-shell span.cyan { color: var(--cyan); font-weight: 700; }
+  .zine-shell span.pink { color: var(--pink); font-weight: 700; }
+  .zine-shell span.green { color: var(--green); font-weight: 700; }
+  .body-text .violet { color: var(--violet); font-weight: 700; }
+  .body-text .pink { color: var(--pink); font-weight: 700; }
+  .body-text .gold { color: var(--gold); font-weight: 700; }
+  .body-text .cyan { color: var(--cyan); font-weight: 700; }
+  .body-text .green { color: var(--green); font-weight: 700; }
+  .body-text .dim { color: var(--dim); }
+  .body-text .lede { font-size: 1.08rem; color: var(--star-white); }
+  .latin { font-style: italic; color: var(--star-white); }
+
+  .spread-heading { font-weight: 700; font-size: 1.9rem; line-height: 1.12; color: var(--star-white); margin-bottom: 0.7rem; letter-spacing: -0.01em; margin-top: 0; scroll-margin-top: 5rem; }
+  .spread-heading .spectrum-word { background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .rule { width: 40px; margin: 1rem 0; }
+
+  /* ── THE READ-ALOUD LAYER ──
+     The child's half of the page. Large, short-lined, full contrast, and the
+     first thing in the DOM after the heading so a screen reader meets it first.
+     Everything a four-year-old is meant to receive is in here and nowhere else. */
+  .readaloud { font-size: 1.24rem; line-height: 1.78; color: var(--star-white); max-width: 30rem; }
+  .readaloud p { margin-bottom: 1.15rem; }
+  .readaloud p:last-child { margin-bottom: 0; }
+  .readaloud strong { font-weight: 700; color: var(--star-white); }
+  .readaloud em { font-style: italic; }
+  .readaloud .turn { font-weight: 700; font-size: 1.42rem; line-height: 1.4; display: block; }
+
+  /* ── THE GROWN-UP LAYER ──
+     Same page, same spread, smaller type: the sourcing, the species names, the
+     caveats. Deliberately not a separate document — a caregiver reading aloud
+     should be able to answer "is that true?" without leaving the spread. */
+  .grownup { margin-top: 1.7rem; border-left: 3px solid var(--cyan); background: rgba(34,211,238,0.05); border-radius: 0 4px 4px 0; padding: 1rem 1.15rem; }
+  .grownup-label { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--cyan); margin-bottom: 0.6rem; }
+  .grownup-body { font-size: 0.83rem; line-height: 1.72; color: var(--stardust); }
+  .grownup-body p { margin-bottom: 0.75rem; }
+  .grownup-body p:last-child { margin-bottom: 0; }
+  .grownup-body strong { font-weight: 700; color: var(--star-white); }
+  .grownup-body em { font-style: italic; color: var(--star-white); }
+  .grownup-body a { color: var(--cyan); text-decoration: none; border-bottom: 1px solid rgba(34,211,238,0.4); }
+  .grownup-body a:hover { border-bottom-color: var(--cyan); color: var(--star-white); }
+
+  .pull-quote { font-size: 1.18rem; font-weight: 700; line-height: 1.4; color: var(--star-white); border-left: 3px solid var(--accent); padding-left: 1.1rem; margin: 1.4rem 0; font-style: italic; }
+  .pull-quote.cyan { border-left-color: var(--cyan); }
+  .pull-quote.gold { border-left-color: var(--gold); }
+  .pull-quote .attr { display: block; font-family: 'Space Mono', monospace; font-size: 0.6rem; font-weight: 400; font-style: normal; letter-spacing: 0.08em; color: var(--dim); margin-top: 0.6rem; }
+
+  .callout { margin: 1.3rem 0; padding: 1rem 1.15rem; background: rgba(167,139,250,0.07); border: 1px solid rgba(167,139,250,0.26); border-radius: 4px; font-size: 1rem; font-style: italic; color: var(--star-white); line-height: 1.55; }
+  .callout .attr { display: block; font-family: 'Space Mono', monospace; font-size: 0.58rem; font-style: normal; letter-spacing: 0.06em; color: var(--dim); margin-top: 0.5rem; }
+
+  .note { font-size: 0.84rem; line-height: 1.6; color: var(--dim); border-left: 2px solid rgba(167,139,250,0.3); padding-left: 0.9rem; margin: 1.1rem 0; }
+  .note strong { color: var(--stardust); font-weight: 700; }
+
+  /* ── DIAGRAMS ── */
+  .diagram-wrap { display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; margin: 1.7rem 0 0.3rem; }
+  .diagram { width: 100%; max-width: 300px; display: block; }
+  .diagram-caption { font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim); text-align: center; margin-top: 0.9rem; line-height: 1.9; }
+
+  /* ── REFUSALS ── */
+  .refusals { margin-top: 1.3rem; }
+  .refusal { font-size: 0.88rem; line-height: 1.5; color: var(--stardust); padding: 0.55rem 0; border-bottom: 1px solid rgba(167,139,250,0.1); display: flex; gap: 0.6rem; align-items: baseline; }
+  .refusal:last-child { border-bottom: none; }
+  .refusal-tag { font-family: 'Space Mono', monospace; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ember); flex-shrink: 0; padding-top: 0.12rem; }
+  .refusal strong { color: var(--star-white); font-weight: 700; }
+
+  /* ── COLOPHON ── */
+  .colophon { padding: 3rem; display: flex; flex-direction: column; justify-content: space-between; min-height: 480px; background: radial-gradient(ellipse at 80% 18%, rgba(167,139,250,0.1) 0%, transparent 50%), radial-gradient(ellipse at 18% 85%, rgba(34,211,238,0.06) 0%, transparent 50%), var(--page); }
+  .colophon-top { border-bottom: 1px solid rgba(167,139,250,0.15); padding-bottom: 1.3rem; margin-bottom: 1.2rem; }
+  .colophon-ls { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 2.4rem; color: var(--accent); letter-spacing: 0.05em; display: block; margin-bottom: 0.4rem; }
+  .colophon-phrase { font-size: 0.98rem; font-weight: 700; font-style: italic; color: var(--stardust); }
+  .series-list { display: flex; flex-direction: column; gap: 0.38rem; margin-bottom: 1.2rem; }
+  .series-item { font-size: 0.72rem; color: var(--dim); letter-spacing: 0.01em; display: flex; gap: 0.7rem; align-items: baseline; line-height: 1.45; }
+  .series-item.current { color: var(--accent); font-weight: 700; }
+  .series-num { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim2); flex-shrink: 0; }
+  .series-item.current .series-num { color: var(--accent); }
+  .reflect { border-top: 1px solid rgba(167,139,250,0.15); padding-top: 1rem; margin-bottom: 1.2rem; }
+  .reflect-label { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.65rem; }
+  .reflect-q { font-size: 0.86rem; line-height: 1.55; color: var(--stardust); margin-bottom: 0.55rem; font-style: italic; }
+  .reflect-q:last-child { margin-bottom: 0; }
+  .colophon-body { font-size: 0.75rem; color: var(--dim); line-height: 1.75; margin-bottom: 1.2rem; }
+  .colophon-body a { color: var(--cyan); text-decoration: none; border-bottom: 1px solid rgba(34,211,238,0.4); }
+  .colophon-body a:hover { border-bottom-color: var(--cyan); }
+  .colophon-h { font-family: 'Space Mono', monospace; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: var(--stardust); margin: 1rem 0 0.4rem; scroll-margin-top: 5rem; }
+  .colophon-footer { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--dim); line-height: 2.2; border-top: 1px solid rgba(167,139,250,0.15); padding-top: 1rem; }
+
+  /* ── SPREAD FOOTER ── */
+  .spread-footer { display: flex; justify-content: space-between; align-items: center; padding: 0.9rem 2.4rem; border-top: 1px solid rgba(167,139,250,0.1); }
+  .spread-footer-left { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--dim); }
+  .spread-footer-right { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; color: var(--accent); }
+
+  .twinkle { position: fixed; width: 3px; height: 3px; border-radius: 50%; animation: twinkle-anim 3s ease-in-out infinite; pointer-events: none; z-index: 0; }
+
+  @media (max-width: 600px) {
+    .spread-2col { grid-template-columns: 1fr; }
+    .spread-left { border-right: none; border-bottom: 1px solid rgba(167,139,250,0.12); }
+    .spread-2col.stacked > .spread-left { border-bottom: none; }
+    .spread-2col.stacked > .col-text { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .cover-spread { padding: 2rem; min-height: 420px; }
+    .cover-motif { width: 210px; height: 210px; top: -6px; right: -22px; opacity: 0.5; }
+    .cover-title { font-size: 1.75rem; }
+    .spread-heading { font-size: 1.55rem; }
+    .readaloud { font-size: 1.12rem; }
+    .readaloud .turn { font-size: 1.3rem; }
+    .spread-left, .spread-right { padding: 2rem 1.5rem; }
+    .colophon { padding: 2rem 1.5rem; }
+  }
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"The Colours You Cannot See","description":"A read-aloud Star Stuff zine for four to eight, and whoever is reading it to them, following one settled thing honestly: ultraviolet floral patterns and bee colour vision. Many flowers carry ultraviolet patterns invisible to human eyes, including the UV bull's eye, which Lunau, Camargo and Ren describe as a UV-absorbing centre on a UV-reflecting flower, functioning as a floral guide toward a reward. Bee colour vision is trichromatic and shifted relative to ours, with photoreceptor sensitivity peaks in the ultraviolet, blue and green. Karl von Frisch established bee colour vision in 1914 by training bees to a coloured card and then presenting it in unrewarded tests alongside grey cards of differing intensities, so that an animal responding to brightness rather than hue would have failed. The correction this zine is built on is that ultraviolet is not an extra sense bolted onto a human visual system: it is merely one component of the bee's colour vision, bees are sensitive to ultraviolet where humans are not, and humans are more sensitive to red than bees are. The window is shifted, not enlarged, and neither animal receives the whole spectrum. Every spread carries a large plain-language layer for the child and a boxed grown-up layer holding the figures, the sources and the limits. Twelve spreads, three figures, five refusals. A rhyme, not a proof.","image":"https://starstuff.earth/og-card.jpg","url":"https://starstuff.earth/the-colours-you-cannot-see-zine.html","mainEntityOfPage":"https://starstuff.earth/the-colours-you-cannot-see-zine.html","datePublished":"2026-09-06","dateModified":"2026-09-06","license":"https://creativecommons.org/licenses/by-sa/4.0/","author":{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/"},"publisher":[{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/","logo":{"@type":"ImageObject","url":"https://starstuff.earth/og-card.jpg"}},{"@type":"Organization","name":"More Realms","url":"https://morerealms.com/"}],"isPartOf":{"@type":"WebSite","name":"Star Stuff","url":"https://starstuff.earth/"}}</script>
+</head>
+<body>
+<div class="zine-shell">
+
+  <nav class="ss-nav" style="--nav-accent:#a78bfa;" aria-label="Star Stuff collection">
+    <span class="ss-nav-home-group"><a class="ss-nav-home" href="index.html"><span class="ss-star" aria-hidden="true">&#9733;</span> stuff</a><a class="ss-nav-about" href="about.html">about</a>
+      <a class="ss-nav-search" href="search.html">search</a></span>
+    <span class="ss-nav-links">
+      <a class="ss-nav-prev" href="seeds-that-wait-zine.html"><span class="ss-nav-arrow" aria-hidden="true">&lsaquo;</span> <span class="ss-nav-label">Seeds That Wait</span></a>
+      <a class="ss-nav-next" href="collection-how-we-got-here.html"><span class="ss-nav-label">How We Got Here</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
+    </span>
+    <a class="ss-nav-collection" href="collection-star-stuff.html"><span class="ss-nav-collection-label">Collection</span> <span class="ss-nav-collection-name">Star Stuff</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
+  </nav>
+<main>
+
+  <div class="nav">
+    <span class="nav-brand">Stimpunks &times; More Realms</span>
+    <div class="nav-controls">
+      <button class="nav-btn" id="prev-btn" onclick="changePage(-1)">&larr; prev</button>
+      <span class="page-counter" id="page-counter">1 / 12</span>
+      <button class="nav-btn" id="next-btn" onclick="changePage(1)">next &rarr;</button>
+    </div>
+  </div>
+
+
+  <!-- ════ SPREAD 1: COVER ════ -->
+  <div class="spread active" id="spread-1">
+    <div class="cover-spread">
+      <!-- Cover motif: the same flower twice — plain on the left, and with its
+           ultraviolet bullseye showing on the right — with a bee between them.
+           Inside viewBox y 20-200 to clear .cover-title, and out of x 190-285 /
+           y 25-120 where the corner numeral sits. TEXT-FREE by design. -->
+      <svg class="cover-motif" viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <g stroke="rgba(251,191,36,0.85)" stroke-width="1.5" fill="rgba(251,191,36,0.12)">
+          <g transform="translate(72,130)">
+            <ellipse cx="0" cy="-30" rx="11" ry="20"/><ellipse cx="0" cy="30" rx="11" ry="20"/>
+            <ellipse cx="-30" cy="0" rx="20" ry="11"/><ellipse cx="30" cy="0" rx="20" ry="11"/>
+            <ellipse cx="-21" cy="-21" rx="16" ry="9" transform="rotate(45 -21 -21)"/>
+            <ellipse cx="21" cy="21" rx="16" ry="9" transform="rotate(45 21 21)"/>
+            <ellipse cx="21" cy="-21" rx="16" ry="9" transform="rotate(-45 21 -21)"/>
+            <ellipse cx="-21" cy="21" rx="16" ry="9" transform="rotate(-45 -21 21)"/>
+          </g>
+        </g>
+        <circle cx="72" cy="130" r="11" fill="rgba(251,191,36,0.28)" stroke="rgba(251,191,36,0.9)" stroke-width="1.4"/>
+        <g stroke="rgba(167,139,250,0.9)" stroke-width="1.5" fill="rgba(167,139,250,0.10)">
+          <g transform="translate(238,150)">
+            <ellipse cx="0" cy="-30" rx="11" ry="20"/><ellipse cx="0" cy="30" rx="11" ry="20"/>
+            <ellipse cx="-30" cy="0" rx="20" ry="11"/><ellipse cx="30" cy="0" rx="20" ry="11"/>
+            <ellipse cx="-21" cy="-21" rx="16" ry="9" transform="rotate(45 -21 -21)"/>
+            <ellipse cx="21" cy="21" rx="16" ry="9" transform="rotate(45 21 21)"/>
+            <ellipse cx="21" cy="-21" rx="16" ry="9" transform="rotate(-45 21 -21)"/>
+            <ellipse cx="-21" cy="21" rx="16" ry="9" transform="rotate(-45 -21 21)"/>
+          </g>
+        </g>
+        <circle cx="238" cy="150" r="20" fill="rgba(167,139,250,0.42)" stroke="rgba(167,139,250,0.95)" stroke-width="1.6"/>
+        <circle cx="238" cy="150" r="10" fill="rgba(10,10,20,0.55)" stroke="rgba(167,139,250,0.8)" stroke-width="1.2"/>
+        <g stroke="rgba(251,191,36,0.9)" stroke-width="1.5" fill="none">
+          <ellipse cx="156" cy="72" rx="15" ry="10"/>
+          <path d="M147 66 h18 M147 78 h18"/>
+          <path d="M150 62 q -10 -12 -20 -8 q 6 12 20 8" fill="rgba(244,244,251,0.16)"/>
+          <path d="M162 62 q 10 -12 20 -8 q -6 12 -20 8" fill="rgba(244,244,251,0.16)"/>
+          <path d="M143 68 q -7 -6 -9 -12"/>
+          <path d="M143 72 q -8 -1 -12 -6"/>
+        </g>
+        <path d="M162 84 q 20 22 52 46" fill="none" stroke="rgba(167,139,250,0.5)" stroke-width="1.2" stroke-dasharray="3 5"/>
+      </svg>
+      <div class="cover-corner">
+        <div class="cover-corner-num" aria-hidden="true">94</div>
+        <span class="cover-corner-label">Star Stuff</span>
+      </div>
+      <div class="cover-issue">Stimpunks &times; More Realms &middot; Zine No. 94</div>
+      <h1 class="cover-title">The Colours You <span class="amp">Cannot</span> See</h1>
+      <p class="cover-subtitle">there are patterns on flowers that your eyes have no part for, and they are really there &mdash; read-aloud science for four to eight, with every source kept on the page where the grown-up can find it</p>
+      <div class="cover-byline">twelve spreads &middot; three figures &middot; <strong>five refusals</strong></div>
+      <hr class="spectrum-line cover-rule">
+      <div class="cover-meta">
+        <span class="cover-ls">L&#9733;S</span>
+        <div class="cover-meta-text">Love You Down To Your Star Stuff<br>open edition &middot; print freely</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 2 ════ -->
+  <div class="spread" id="spread-2">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Look at a flower</div>
+          <h2 class="spread-heading" id="look-at-a-flower">Here is a flower. It is yellow.</h2>
+          <hr class="spectrum-line rule">
+          <div class="readaloud">
+<p>That is what you see. Yellow petals, all the way round, and a middle.</p>
+<p>You are not wrong. It <em>is</em> yellow.</p>
+<p><span class="turn">But that is not all of it.</span></p>
+          </div>
+          <div class="grownup">
+            <div class="grownup-label">For the grown-up reading this</div>
+            <div class="grownup-body">
+<p>This zine follows one settled thing: <strong>ultraviolet floral patterns and bee colour vision</strong>, and the correction that the popular version of it usually drops.</p>
+<p>Large type is for the child. These boxes hold the figures, the papers and the limits. <span class="cyan">You should not have to leave the page to answer &ldquo;is that really true?&rdquo;</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Colours You Cannot See &middot; Stimpunks</span>
+        <span class="spread-footer-right">2</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 3 ════ -->
+  <div class="spread" id="spread-3">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">What the bee sees</div>
+          <h2 class="spread-heading" id="what-the-bee-sees">A bee lands on it and sees a target</h2>
+          <hr class="spectrum-line rule">
+          <div class="readaloud">
+<p>On the very same flower, a bee sees a dark ring in the middle and bright petals around it.</p>
+<p>Like a bullseye. Like a landing pad with an arrow painted on it saying <em>here, this way, the middle</em>.</p>
+<p><span class="turn">The pattern is really on the flower. It is really there right now.</span></p>
+<p>You are looking straight at it and your eyes do not have the part that picks it up.</p>
+          </div>
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 460 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig1-title fig1-desc">
+              <title id="fig1-title">The same flower as a person sees it and as a bee sees it</title>
+              <desc id="fig1-desc">Two drawings of the same eight-petalled flower. On the left it is plain and evenly coloured, with only a small centre, labelled what you see. On the right the identical flower carries a large dark ring around its centre with pale petals beyond it, forming a bullseye, labelled what is also there. Both drawings are the same flower at the same moment.</desc>
+              <g stroke="rgba(251,191,36,0.85)" stroke-width="1.5" fill="rgba(251,191,36,0.13)">
+                <g transform="translate(114,112)">
+                  <ellipse cx="0" cy="-46" rx="16" ry="30"/><ellipse cx="0" cy="46" rx="16" ry="30"/>
+                  <ellipse cx="-46" cy="0" rx="30" ry="16"/><ellipse cx="46" cy="0" rx="30" ry="16"/>
+                  <ellipse cx="-33" cy="-33" rx="25" ry="14" transform="rotate(45 -33 -33)"/>
+                  <ellipse cx="33" cy="33" rx="25" ry="14" transform="rotate(45 33 33)"/>
+                  <ellipse cx="33" cy="-33" rx="25" ry="14" transform="rotate(-45 33 -33)"/>
+                  <ellipse cx="-33" cy="33" rx="25" ry="14" transform="rotate(-45 -33 33)"/>
+                </g>
+              </g>
+              <circle cx="114" cy="112" r="16" fill="rgba(251,191,36,0.3)" stroke="rgba(251,191,36,0.9)" stroke-width="1.5"/>
+              <g stroke="rgba(167,139,250,0.9)" stroke-width="1.5" fill="rgba(167,139,250,0.12)">
+                <g transform="translate(340,112)">
+                  <ellipse cx="0" cy="-46" rx="16" ry="30"/><ellipse cx="0" cy="46" rx="16" ry="30"/>
+                  <ellipse cx="-46" cy="0" rx="30" ry="16"/><ellipse cx="46" cy="0" rx="30" ry="16"/>
+                  <ellipse cx="-33" cy="-33" rx="25" ry="14" transform="rotate(45 -33 -33)"/>
+                  <ellipse cx="33" cy="33" rx="25" ry="14" transform="rotate(45 33 33)"/>
+                  <ellipse cx="33" cy="-33" rx="25" ry="14" transform="rotate(-45 33 -33)"/>
+                  <ellipse cx="-33" cy="33" rx="25" ry="14" transform="rotate(-45 -33 33)"/>
+                </g>
+              </g>
+              <circle cx="340" cy="112" r="34" fill="rgba(167,139,250,0.5)" stroke="rgba(167,139,250,0.95)" stroke-width="1.6"/>
+              <circle cx="340" cy="112" r="16" fill="rgba(15,15,42,0.75)" stroke="rgba(167,139,250,0.85)" stroke-width="1.3"/>
+              <text x="114" y="214" text-anchor="middle" fill="#f4f2fb" font-family="'Space Mono', monospace" font-size="13">what you see</text>
+              <text x="340" y="214" text-anchor="middle" fill="#f4f2fb" font-family="'Space Mono', monospace" font-size="13">what is also there</text>
+              <text x="228" y="244" text-anchor="middle" fill="#f4f2fb" font-family="'Space Mono', monospace" font-size="12">the same flower, the same moment</text>
+            </svg>
+            <div class="diagram-caption">Figure 1 &middot; the UV bull&rsquo;s eye</div>
+          </div>
+          <div class="grownup">
+            <div class="grownup-label">For the grown-up reading this</div>
+            <div class="grownup-body">
+<p>Lunau, Camargo and Ren (<em>Plant Biology</em>, 2025) describe the <strong>&ldquo;UV bull's eye&rdquo;</strong> as &ldquo;a UV-absorbing centre of a UV-reflecting flower,&rdquo; functioning as a floral guide directing pollinators toward a reward.</p>
+<p>The pattern is made of ultraviolet light being absorbed in the middle and bounced off at the edges. <span class="violet">Human retinas have no receptor tuned there</span>, and our lenses filter much of it out before it would arrive anyway.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Colours You Cannot See &middot; Stimpunks</span>
+        <span class="spread-footer-right">3</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 4 ════ -->
+  <div class="spread" id="spread-4">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">How do we know</div>
+          <h2 class="spread-heading" id="how-do-we-know">How do we know the bee is really seeing a colour?</h2>
+          <hr class="spectrum-line rule">
+          <div class="readaloud">
+<p>This is a good question and somebody asked it a very long time ago.</p>
+<p>Maybe the bee is not seeing <em>colour</em> at all. Maybe it is just going to whatever is <strong>brightest</strong>.</p>
+<p>So in 1914 a man called Karl von Frisch did this.</p>
+<p>First he taught bees to go to a blue card, by putting sugar water on it.</p>
+<p>Then he took the sugar water away, and he put the blue card out with a whole row of <strong>grey cards</strong> beside it &mdash; pale grey, middle grey, dark grey, every brightness he could make.</p>
+<p><span class="turn">If the bees were only picking the brightest thing, one of those greys would have fooled them.</span></p>
+<p>The bees went to the blue.</p>
+          </div>
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 460 230" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig2-title fig2-desc">
+              <title id="fig2-title">Von Frisch's grey-card control</title>
+              <desc id="fig2-desc">A row of six cards. Five are grey, each a different brightness from nearly white to nearly black. One, second from the left, is blue. A small bee flies toward the blue card. The caption explains that if the bee were choosing the brightest card rather than the colour, one of the greys would have caught it.</desc>
+              <g stroke="rgba(196,181,212,0.7)" stroke-width="1.4">
+                <rect x="24" y="72" width="56" height="72" rx="3" fill="#e8e8ee"/>
+                <rect x="164" y="72" width="56" height="72" rx="3" fill="#b9b9c4"/>
+                <rect x="234" y="72" width="56" height="72" rx="3" fill="#8b8b98"/>
+                <rect x="304" y="72" width="56" height="72" rx="3" fill="#5d5d69"/>
+                <rect x="374" y="72" width="56" height="72" rx="3" fill="#33333c"/>
+              </g>
+              <rect x="94" y="72" width="56" height="72" rx="3" fill="rgba(96,132,238,0.85)" stroke="rgba(167,139,250,0.95)" stroke-width="2"/>
+              <g stroke="rgba(251,191,36,0.95)" stroke-width="1.5" fill="none">
+                <ellipse cx="122" cy="36" rx="13" ry="9"/>
+                <path d="M114 31 h16 M114 41 h16"/>
+                <path d="M117 27 q -9 -10 -17 -7 q 5 10 17 7" fill="rgba(244,244,251,0.18)"/>
+                <path d="M127 27 q 9 -10 17 -7 q -5 10 -17 7" fill="rgba(244,244,251,0.18)"/>
+              </g>
+              <path d="M122 48 v14" fill="none" stroke="rgba(251,191,36,0.8)" stroke-width="1.5"/>
+              <path d="M116 58 l 6 8 l 6 -8" fill="none" stroke="rgba(251,191,36,0.95)" stroke-width="1.8" stroke-linecap="round"/>
+              <text x="228" y="180" text-anchor="middle" fill="#f4f2fb" font-family="'Space Mono', monospace" font-size="13">one colour, five brightnesses of grey</text>
+              <text x="228" y="206" text-anchor="middle" fill="#f4f2fb" font-family="'Space Mono', monospace" font-size="12">the greys are there to catch us out</text>
+            </svg>
+            <div class="diagram-caption">Figure 2 &middot; the control, 1914</div>
+          </div>
+          <div class="grownup">
+            <div class="grownup-label">For the grown-up reading this</div>
+            <div class="grownup-body">
+<p>This is worth dwelling on with a child, because it is a <strong>control</strong>, and it is one of the cleanest ever designed. The greys are there to rule out the alternative explanation. Without them the experiment proves nothing; with them it proves the thing.</p>
+<p>Von Frisch (1914) trained bees to a coloured card with a sucrose reward, then in <em>unrewarded</em> tests presented that card together with grey cards of differing intensities. He later established that bees are trichromats, with three photoreceptor types contributing to colour vision.</p>
+<p><span class="gold">&ldquo;How would we know if we were wrong?&rdquo; is the whole of science in one sentence</span>, and a six-year-old can hold it.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Colours You Cannot See &middot; Stimpunks</span>
+        <span class="spread-footer-right">4</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 5 ════ -->
+  <div class="spread" id="spread-5">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The part people leave out</div>
+          <h2 class="spread-heading" id="not-more">The bee is not seeing more than you</h2>
+          <hr class="spectrum-line rule">
+          <div class="readaloud">
+<p>Here is where the story usually goes wrong, and the true version is better.</p>
+<p>People say bees see <em>extra</em> colours, like they got everything you have and then some more on top.</p>
+<p><span class="turn">That is not it.</span></p>
+<p>A bee cannot see red.</p>
+<p>Hold up something red. A bee is not seeing a beautiful extra red plus ultraviolet. It is not getting the red at all.</p>
+          </div>
+          <div class="grownup">
+            <div class="grownup-label">For the grown-up reading this</div>
+            <div class="grownup-body">
+<p>This is the correction the zine is built on, and it comes from the review itself. Lunau, Camargo and Ren state that <strong>&ldquo;ultraviolet is merely one component of colour vision&rdquo;</strong> for bees &mdash; not a separate discrete signal bolted onto a human-like system &mdash; and that &ldquo;bees are sensitive to UV light, humans are not, whereas <em>humans are more sensitive to red light compared to bees.</em>&rdquo;</p>
+<p><span class="violet">The window is shifted, not widened.</span> Writing it the popular way turns a difference into a ranking, which is exactly the move this collection exists to refuse.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Colours You Cannot See &middot; Stimpunks</span>
+        <span class="spread-footer-right">5</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 6 ════ -->
+  <div class="spread" id="spread-6">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Two windows</div>
+          <h2 class="spread-heading" id="two-windows">You each get a different stretch</h2>
+          <hr class="spectrum-line rule">
+          <div class="readaloud">
+<p>Imagine a very long ribbon of light, going on past both ends of what anybody can see.</p>
+<p>You get a piece of it. The bee gets a piece of it.</p>
+<p>The two pieces overlap in the middle &mdash; you both get blue, you both get green.</p>
+<p>Then yours keeps going one way, into red. And the bee's keeps going the other way, into ultraviolet.</p>
+<p><span class="turn">Neither piece is bigger. They are just in different places.</span></p>
+          </div>
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 460 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig3-title fig3-desc">
+              <title id="fig3-title">The human and bee visible ranges drawn as two overlapping bars</title>
+              <desc id="fig3-desc">One long horizontal line representing light. Two bars sit on it. The upper bar, labelled you, starts further to the right and extends to the right-hand end, into red. The lower bar, labelled a bee, starts further to the left, into ultraviolet, and stops before the right-hand end. The two bars are about the same length and overlap through the middle, which is labelled blue and green. Neither bar is longer than the other.</desc>
+              <path d="M14 178 H446" fill="none" stroke="rgba(196,181,212,0.45)" stroke-width="1.2"/>
+              <rect x="132" y="52" width="272" height="34" rx="4" fill="rgba(244,114,182,0.32)" stroke="rgba(244,114,182,0.95)" stroke-width="1.8"/>
+              <rect x="56" y="102" width="272" height="34" rx="4" fill="rgba(167,139,250,0.34)" stroke="rgba(167,139,250,0.98)" stroke-width="1.8"/>
+              <text x="146" y="75" fill="#f4f2fb" font-family="'Space Mono', monospace" font-size="14" font-weight="700">you</text>
+              <text x="70" y="125" fill="#f4f2fb" font-family="'Space Mono', monospace" font-size="14" font-weight="700">a bee</text>
+              <path d="M132 44 V146" fill="none" stroke="rgba(244,244,251,0.35)" stroke-width="1.1" stroke-dasharray="4 4"/>
+              <path d="M328 44 V146" fill="none" stroke="rgba(244,244,251,0.35)" stroke-width="1.1" stroke-dasharray="4 4"/>
+              <text x="230" y="166" text-anchor="middle" fill="#f4f2fb" font-family="'Space Mono', monospace" font-size="12">both of you get this bit</text>
+              <text x="46" y="204" text-anchor="middle" fill="#f4f2fb" font-family="'Space Mono', monospace" font-size="12">ultraviolet</text>
+              <text x="416" y="204" text-anchor="middle" fill="#f4f2fb" font-family="'Space Mono', monospace" font-size="12">red</text>
+            </svg>
+            <div class="diagram-caption">Figure 3 &middot; shifted, not widened</div>
+          </div>
+          <div class="grownup">
+            <div class="grownup-label">For the grown-up reading this</div>
+            <div class="grownup-body">
+<p>Human vision runs roughly <strong>390&ndash;750&nbsp;nm</strong>; bee vision runs roughly <strong>300&ndash;650&nbsp;nm</strong>, with photoreceptor sensitivity peaks in the ultraviolet, blue and green. Both are about the same width. Both sit in different places on the same continuous spectrum.</p>
+<p>These figures are widely reported and we have <span class="pink">not read the primary measurement papers for the range endpoints</span>; they are given as approximate, and the argument does not depend on the exact numbers &mdash; only on the overlap and the two different tails.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Colours You Cannot See &middot; Stimpunks</span>
+        <span class="spread-footer-right">6</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 7 ════ -->
+  <div class="spread" id="spread-7">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Nobody gets all of it</div>
+          <h2 class="spread-heading" id="nobody-gets-all-of-it">And the ribbon goes on past both of you</h2>
+          <hr class="spectrum-line rule">
+          <div class="readaloud">
+<p>Past your end there is more. Past the bee's end there is more.</p>
+<p>Heat that you can feel on your face but never see. Radio going straight through the room right now, through the walls, through you.</p>
+<p><span class="turn">Nobody has eyes for all of it. Not you, not the bee, not anybody.</span></p>
+<p>Everyone is looking at a piece.</p>
+          </div>
+          <div class="grownup">
+            <div class="grownup-label">For the grown-up reading this</div>
+            <div class="grownup-body">
+<p>Radio, microwave, infrared, visible light, ultraviolet, X-rays and gamma rays are one continuous electromagnetic spectrum, not different substances. <strong>This zine states that and stops.</strong></p>
+<p><a href="shared-signal-zine.html">Shared Signal</a> owns that argument here and makes it properly; repeating it would be this piece borrowing an authority it has not earned. What belongs to <em>this</em> zine is narrower and is on the next spread.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Colours You Cannot See &middot; Stimpunks</span>
+        <span class="spread-footer-right">7</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 8 ════ -->
+  <div class="spread" id="spread-8">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Who it is for</div>
+          <h2 class="spread-heading" id="the-flower-is-not-hiding">The flower is not hiding anything from you</h2>
+          <hr class="spectrum-line rule">
+          <div class="readaloud">
+<p>It is not being sneaky. It is not keeping a secret.</p>
+<p>The pattern is out in the open, in the middle of a sunny day, on the front of the flower.</p>
+<p>It was simply not made for your eyes. It was made for whoever can use it &mdash; and what the flower wants is a bee, because a bee will carry its pollen to the next flower.</p>
+<p><span class="turn">A thing can be perfectly obvious and still not be for you.</span></p>
+          </div>
+          <div class="grownup">
+            <div class="grownup-label">For the grown-up reading this</div>
+            <div class="grownup-body">
+<p>Careful language here on purpose: the flower is not <em>trying</em> anything. Floral guides are the product of selection on pollination success, not intention, and &ldquo;what the flower wants&rdquo; is a shorthand a four-year-old can hold and an adult should be able to unpack.</p>
+<p>The claim that these patterns actually direct pollinator behaviour is testable and tested &mdash; and the honest summary is that it is well supported for a number of species and not a universal law of all flowers.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Colours You Cannot See &middot; Stimpunks</span>
+        <span class="spread-footer-right">8</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 9 ════ -->
+  <div class="spread" id="spread-9">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">So</div>
+          <h2 class="spread-heading" id="so">Real things can be there when you cannot find them</h2>
+          <hr class="spectrum-line rule">
+          <div class="readaloud">
+<p>You cannot see the pattern on the flower. It is still on the flower.</p>
+<p>Not seeing a thing is not the same as the thing not being there.</p>
+<p><span class="turn">And the one who <em>can</em> see it is not making it up.</span></p>
+<p>So if somebody tells you they can hear something, or feel something, or see something that you cannot &mdash; the flower has already shown you how that works.</p>
+<p>You do not have to be able to find it to believe them.</p>
+<p>We love you down to your star stuff.</p>
+          </div>
+          <div class="grownup">
+            <div class="grownup-label">For the grown-up reading this</div>
+            <div class="grownup-body">
+<p>That is the only step this zine takes from bees toward people, and it is deliberately the <em>modest</em> one. It does not claim that human sensory differences are like bee ultraviolet vision, or that anybody has extra senses. <span class="green">It claims something much smaller and much harder to argue with: that a real signal can be present and undetectable to a particular observer, and that this is unremarkable.</span></p>
+<p>For a child who is regularly told that a sound is not that loud or a light is not that bright, the flower is a better argument than reassurance, because it is not about them.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Colours You Cannot See &middot; Stimpunks</span>
+        <span class="spread-footer-right">9</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 10 ════ -->
+  <div class="spread" id="spread-10">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">One more thing</div>
+          <h2 class="spread-heading" id="you-can-go-and-look">You can go and look</h2>
+          <hr class="spectrum-line rule">
+          <div class="readaloud">
+<p>You will never see ultraviolet with your own eyes. That part is permanent.</p>
+<p>But people built cameras that can, and there are photographs of flowers taken that way &mdash; the same flower, side by side, in our light and in the bee's.</p>
+<p><span class="turn">That is what people do when they cannot see something. They build a way to look anyway.</span></p>
+<p>The bee did not need a camera. We did. Neither of us was wrong.</p>
+          </div>
+          <div class="grownup">
+            <div class="grownup-label">For the grown-up reading this</div>
+            <div class="grownup-body">
+<p>UV floral photography &mdash; a UV-pass filter and a sensor without the usual UV-blocking layer &mdash; is how most published bull's-eye images are made, and searching for it is a good next step with a child who wants more.</p>
+<p><strong>A caution worth having ready:</strong> a UV photograph is <em>not</em> a picture of what a bee sees. The bee's three receptor types, its brain, and the false colours a photographer assigns are all in the way. <span class="gold">It shows that the pattern exists; it does not show anyone the bee's experience</span>, and no image can.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Colours You Cannot See &middot; Stimpunks</span>
+        <span class="spread-footer-right">10</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 11 ════ -->
+  <div class="spread" id="spread-11">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Refusals &middot; for the grown-up reading this</div>
+          <h2 class="spread-heading" id="not">Not:</h2>
+          <hr class="spectrum-line rule">
+          <div class="refusals">
+            <div class="refusal"><span class="refusal-tag">Not</span><span><strong>&ldquo;Bees see more than we do.&rdquo;</strong> This is the version in almost every retelling and the review this zine leans on corrects it directly: ultraviolet is <em>&ldquo;merely one component of colour vision,&rdquo;</em> and humans are more sensitive to red than bees are. <span class="violet">The window is shifted, not widened</span> &mdash; and writing it the other way turns a difference into a ranking.</span></div>
+            <div class="refusal"><span class="refusal-tag">Not</span><span><strong>Sensory difference as a superpower.</strong> Nobody in this zine has extra senses, including the bee. A child who experiences a room as louder or brighter than the adults do is not a bee and has not been given a gift; they are in a room built for a different receiver.</span></div>
+            <div class="refusal"><span class="refusal-tag">Not</span><span><strong>A claim about human perception.</strong> Every measurement here is about bees and flowers. Spread nine takes one small step &mdash; that a real signal can be undetectable to a particular observer &mdash; and stops there on purpose. It is not evidence about anybody's senses and does not need to be.</span></div>
+            <div class="refusal"><span class="refusal-tag">Not</span><span><strong>&ldquo;A UV photo shows you what a bee sees.&rdquo;</strong> It does not, it cannot, and no picture will. Those images demonstrate that the pattern is physically present. <span class="cyan">The bee's experience is not available to us at any resolution</span>, and spread ten says so rather than letting a striking photograph imply otherwise.</span></div>
+            <div class="refusal"><span class="refusal-tag">Not</span><span><strong>The flower as generous, or as sneaky.</strong> It is neither. Floral guides are the outcome of selection on pollination success, not a gift and not a trick, and the &ldquo;what the flower wants&rdquo; on spread eight is shorthand for a four-year-old that the grown-up box unpacks.</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Colours You Cannot See &middot; Stimpunks</span>
+        <span class="spread-footer-right">11</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 12: COLOPHON ════ -->
+  <div class="spread" id="spread-12">
+    <div class="interior">
+      <div class="colophon">
+        <div>
+          <div class="colophon-top">
+            <span class="colophon-ls">L&#9733;S</span>
+            <p class="colophon-phrase">The pattern is on the flower whether or not you can find it &mdash; and the one who can find it is not seeing more than you. They are seeing a different stretch of the same ribbon.</p>
+          </div>
+
+          <div class="series-list">
+            <div class="series-item"><span class="series-num">No. 91</span> <a href="nobody-in-this-pond-is-late-zine.html">Nobody in This Pond Is Late</a> &mdash; read-aloud, on pace</div>
+            <div class="series-item"><span class="series-num">No. 93</span> <a href="seeds-that-wait-zine.html">Seeds That Wait</a> &mdash; read-aloud, on conditions</div>
+            <div class="series-item"><span class="series-num">&mdash;</span> <a href="shared-signal-zine.html">Shared Signal</a> &mdash; where the one-spectrum argument actually lives</div>
+            <div class="series-item"><span class="series-num">&mdash;</span> <a href="difference-first-frame.html">The Difference-First Frame</a> &mdash; why variation comes before deficit here</div>
+            <div class="series-item"><span class="series-num">&mdash;</span> <a href="too-good-to-check.html">Too Good to Check</a> &mdash; six ways a fact goes wrong</div>
+            <div class="series-item current"><span class="series-num">No. 94</span> The Colours You Cannot See &mdash; the bull&rsquo;s eye, the grey cards, and the shifted window &larr; you are here</div>
+          </div>
+
+          <div class="reflect">
+            <div class="reflect-label">Reflection</div>
+            <p class="reflect-q">What has somebody in your house reported that you could not detect &mdash; and what did you do with that?</p>
+            <p class="reflect-q">Where do you say &ldquo;more&rdquo; when the honest word is &ldquo;different&rdquo;?</p>
+            <p class="reflect-q">What are the grey cards in an argument you are currently having &mdash; the thing that would show you were wrong?</p>
+            <p class="reflect-q">Which room in your life was built for a receiver that is not the one using it?</p>
+          </div>
+        </div>
+
+        <div class="colophon-body">
+          <h3 class="colophon-h" id="sources">Sources</h3>
+          <p><strong>The bull's eye, and the correction this zine is built on.</strong> Klaus Lunau, Maria Gabriela Gutierrez Camargo &amp; Zong-Xin Ren, <em>&ldquo;Bees, flowers and UV,&rdquo; Plant Biology</em> <strong>27</strong>(6), 948&ndash;961 (2025), doi:10.1111/plb.70050 &mdash; open access. Source of the UV bull's eye as &ldquo;a UV-absorbing centre of a UV-reflecting flower&rdquo; acting as a floral guide (spread three), and of the sentences spreads five and eleven turn on: that ultraviolet is <em>&ldquo;merely one component of colour vision&rdquo;</em> rather than a separate discrete signal, and that &ldquo;bees are sensitive to UV light, humans are not, whereas humans are more sensitive to red light compared to bees.&rdquo;</p>
+          <p><strong>The grey cards.</strong> Karl von Frisch (1914) established bee colour vision by training bees to a coloured card with a sucrose reward and then, in <em>unrewarded</em> tests, presenting that card together with grey cards of differing intensities &mdash; the control that rules out a response to brightness. He went on to show bees must be trichromats. Randolf Menzel's work from 1967 onward established how quickly bees learn colours. <span class="pink">We have not read von Frisch's 1914 paper</span>; the design and the result are taken from the review literature that recounts them, and spread four states the experiment rather than quoting him.</p>
+          <p><strong>The two ranges on spread six</strong> &mdash; roughly 390&ndash;750&nbsp;nm for humans and roughly 300&ndash;650&nbsp;nm for bees, with bee photoreceptor peaks in the ultraviolet, blue and green &mdash; are widely reported figures that we have <span class="pink">not traced to the primary measurement papers</span>. They are given as approximate on the page. <strong>Nothing in the argument depends on the exact endpoints</strong>, only on the overlap and on the two tails pointing in opposite directions, and that much is stated directly by the review above.</p>
+
+          <h3 class="colophon-h" id="what-we-would-not-print">What we would not print</h3>
+          <p><strong>The sentence this zine exists to avoid is &ldquo;bees see more colours than we do.&rdquo;</strong> It is in almost every popular account, it is the version we arrived with, and it is a ranking wearing a fact's clothes. <span class="gold">The true version is better and harder to sell:</span> two animals get comparably sized windows onto the same continuous spectrum, sitting in different places, and each is blind to what the other has. That is the whole zine, and it would have been very easy to write the exciting wrong one instead.</p>
+          <p><strong>And we would not let a photograph overreach.</strong> UV floral images are the most persuasive thing in this subject and they do not show anyone what a bee sees &mdash; the receptor set, the brain and the photographer's arbitrary false colours are all in between. Spread ten says so on its own face, because a picture that impressive will otherwise make the claim by itself.</p>
+
+          <h3 class="colophon-h" id="what-this-does-not-re-argue">What this deliberately does not re-argue</h3>
+          <p><strong><a href="shared-signal-zine.html">Shared Signal</a> owns the one-spectrum argument</strong> &mdash; that radio, infrared, visible light and the rest are a single electromagnetic field at different frequencies rather than different substances. Spread seven states it in one breath and hands it back. <strong><a href="nobody-in-this-pond-is-late-zine.html">No. 91</a> and <a href="seeds-that-wait-zine.html">No. 93</a> are this zine's read-aloud siblings</strong>: pace, conditions, and now perception. All three carry the same two-layer format and the same sourcing standard, because <span class="cyan">&ldquo;for kids&rdquo; is exactly the shelf where a verify-everything standard quietly lapses.</span></p>
+          <p><strong>A rhyme, not a proof.</strong> <span class="gold">We are not claiming a person is like a bee. We are pointing at a signal that is measurably present, plainly visible to one animal and permanently invisible to another &mdash; and noticing how ordinary it turns out to be for something real to be undetectable to a particular pair of eyes.</span></p>
+          <div class="colophon-footer">
+            <a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks Foundation</a> &times; <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a><br>
+            stimpunks.org &middot; morerealms.com &middot; starstuff.earth<br>
+            <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> &middot; open edition &middot; print freely
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">The Colours You Cannot See &middot; Stimpunks</span>
+        <span class="spread-footer-right">12</span>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /zine-shell --></main>
+
+
+<script>
+  let current = 1;
+  const total = 12;
+
+  function changePage(dir) {
+    const next = current + dir;
+    if (next < 1 || next > total) return;
+    document.getElementById('spread-' + current).classList.remove('active');
+    current = next;
+    document.getElementById('spread-' + current).classList.add('active');
+    document.getElementById('page-counter').textContent = current + ' / ' + total;
+    document.getElementById('prev-btn').disabled = current === 1;
+    document.getElementById('next-btn').disabled = current === total;
+    document.getElementById('prev-btn').classList.toggle('active', current > 1);
+    document.getElementById('next-btn').classList.toggle('active', current < total);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') changePage(1);
+    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   changePage(-1);
+  });
+
+  document.getElementById('prev-btn').disabled = true;
+  document.getElementById('next-btn').classList.add('active');
+</script>
+<script src="starstuff.js" defer></script>
+</body>
+</html>
