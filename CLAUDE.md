@@ -253,7 +253,7 @@ than trusting this line: `ls collection-*.html | wc -l`, and `check-markup.mjs` 
 | **Star Stuff** | One settled, checkable fact, followed honestly, already contains the belonging claim | 1, 2, 6, 7, 8, 9, 10, 17, 19, 20, 21, 23, 24, 25, 44, 45, 46, 48, 51, 53, 54, 55, 57, 60, 61, 62, 63, 69, 70, 71, … 89 (**40** as of 2026-09-06 — the largest collection by some way; the list above is stale beyond No. 71, so **derive it**: `grep -c '<a class="card"' collection-star-stuff.html`) |
 | **Star Gazing** | Experimental, neuroqueer, wonder-forward — possibility, not proof | 11, 22, 26, 28, 29, 30, 68 |
 | **More Than Human** | Umwelt, multispecies, ethodiversity; de-anthropocentrized | 5, 14, 15, 16, 27, 58, 59, 72 (8) |
-| **Kin** | Citation-dense natural history with a neurodivergence moral | 31, 32, 33, 34, 35, 36, 64 (7) |
+| **Kin** | Citation-dense natural history with a neurodivergence moral | 31, 32, 33, 34, 35, 36, 64, 103 (8) |
 | **Stars We Grew Up On** | Culture and icon; owns the star-as-celebrity sense | 12, 13, 66, 67 (+ playlists, broadside in spirit) |
 
 **Four do not**, and each says so on its own face rather than letting it read as an oversight —
