@@ -777,7 +777,7 @@ node tools/build-whats-new.mjs --check   # exit non-zero if either is stale
   line above it, and the count printed on its own line so a list that grows is a list somebody can
   question.
 - **Easter Eggs are excluded, and that is the point of them.** A listing announces, and a listed
-  egg is not off the path. The seven eggs stay in `sitemap.xml`, `search-index.json` and all eight
+  egg is not off the path. The eight eggs stay in `sitemap.xml`, `search-index.json` and all eight
   gates — findable, never announced. The exclusion count prints every run.
 - **The listing is stripped from the search index as chrome (`.whats-new-list`).** Every tagline on
   the page is already indexed on the card it was lifted from, so indexing it again is the `.lp-row`
