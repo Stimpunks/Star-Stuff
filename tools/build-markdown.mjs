@@ -18,11 +18,17 @@
  * quietly discards an element is how a Markdown copy comes to say less than the
  * page, which is the drift this file exists to prevent arriving by another door.
  *
- * IT ADDS THE GATE THAT ONE LACKS. `make-markdown.mjs` there has no `--check` and
- * the `check-markdown.mjs` its header names was never built, so a page edited
- * without re-running it ships a stale mirror and nothing notices. (Checked
- * 2026-09-09: that site's output happened to be current. Nothing was keeping it so.)
- * Here `--check` byte-compares and belongs in the ship routine beside the others.
+ * THE GATE HERE IS A `--check` FLAG; THERE IT IS A SEPARATE TOOL. Corrected 2026-09-09,
+ * hours after this file first claimed Queering-Earth had no staleness check at all.
+ * IT DOES. `make-markdown.mjs` there has no `--check`, and the `check-markdown.mjs` its
+ * header named was never written — but the check lives in `check-metadata.mjs`, which
+ * regenerates every derived file into memory and compares, and separately asserts that
+ * each page still advertises its sibling. Both verified firing. Their header comment was
+ * stale; their coverage was not. I read the comment instead of their gate list.
+ *
+ * Which is the fault this file is otherwise full of examples of — a claim in prose
+ * mistaken for the state of the thing. And their shape is arguably the better one: a
+ * single gate asking "is every derived file current?" rather than a flag per generator.
  *
  * WHICH PAGES, AND WHY NOT ALL OF THEM
  * ------------------------------------

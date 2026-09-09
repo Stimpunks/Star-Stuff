@@ -224,9 +224,26 @@
 
   </div>
 
+  <!-- ================= 2026-09-09k (correction: Queering Earth's gate) ================= -->
+  <section class="release" id="2026-09-09-qe-correction" aria-labelledby="h-2026-09-09-qe-correction">
+    <div class="release-date">2026 &middot; September 9 &middot; latest</div>
+    <h2 class="release-title" id="h-2026-09-09-qe-correction">We said our sister site ships Markdown mirrors with no staleness check. It does not, and we should have looked at the gate rather than the comment</h2>
+    <p class="release-note">The entry below this one says <a href="https://queering.earth/">Queering Earth</a>'s Markdown generator has no check behind it, so an edited page would ship a stale copy unnoticed. <strong>That is false.</strong> Its <code>check-metadata.mjs</code> catches exactly that, and catches a missing discovery link too. Both verified firing today. The correction matters more than most because it was a public claim that somebody else's work was deficient.</p>
+
+    <div class="entry entry--factcheck">
+      <div class="entry-head"><span class="tag tag--factcheck">Correction</span><span class="entry-name">What we said, what is true, and how we got it wrong</span></div>
+      <div class="entry-body"><p><strong>What we said</strong>, in the entry below and in our working notes: that their generator has no <code>--check</code>, that the <code>check-markdown.mjs</code> its own header names was never built, and therefore <em>&ldquo;a page edited without re-running it ships a stale mirror and nothing notices.&rdquo;</em></p>
+      <p><strong>The first two clauses are true and the conclusion does not follow.</strong> The check was built somewhere else and under another name: <code>check-metadata.mjs</code>, one of that site's seven ship gates, regenerates <em>every</em> derived file into memory — each Markdown sibling, the two index files, the feed — and compares. Its own error message for the case reads <em>&ldquo;a stale .md is the quiet one.&rdquo;</em> It separately asserts that every page still advertises its sibling. <strong>We tested both rather than reading them:</strong> corrupt a sibling and it exits 1; delete a discovery link and it exits 1.</p>
+      <p><strong>How we got it wrong.</strong> We read the comment at the top of their generator, which names a file that does not exist, went looking for that file, did not find it, and concluded the coverage was missing. We did not read their list of gates &mdash; which is in their working notes, seven lines long, with the answer in it. <strong>A comment naming a file that was never written is a claim, and we repeated it.</strong> Their coverage was never the problem; their comment was, and it has been fixed.</p>
+      <p><strong>And it is the same fault we spent the day cataloguing, turned outward.</strong> Five times today a tool of ours mistook prose for the thing the prose describes &mdash; a broken tag quoted inside a script, a comment about a deleted attribute, a changelog entry quoting a template. This is the sixth, and the only one where the prose belonged to somebody else. <em>Reading a description instead of measuring the thing is the error this site is organised against, and we made it about a neighbour.</em></p>
+      <p><strong>Their arrangement is arguably better than ours.</strong> One gate asking <em>is every derived file current?</em> is a cleaner shape than a <code>--check</code> flag on each of three generators, which is what we have.</p></div>
+    </div>
+
+  </section>
+
   <!-- ================= 2026-09-09j (site: markdown siblings) ================= -->
   <section class="release" id="2026-09-09-markdown" aria-labelledby="h-2026-09-09-markdown">
-    <div class="release-date">2026 &middot; September 9 &middot; latest</div>
+    <div class="release-date">2026 &middot; September 9</div>
     <h2 class="release-title" id="h-2026-09-09-markdown">Fifty-seven pages now have a Markdown twin at the same address &mdash; and a hundred and forty-one deliberately do not</h2>
     <p class="release-note">Add <code>.md</code> to the address of an essay, a collection page or <a href="changelog.md">this changelog</a> and you get the same words as Markdown, derived from the page itself. The zines, field guides and print sheets are left out on purpose, and the reason is the more interesting half.</p>
 

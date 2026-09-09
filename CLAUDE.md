@@ -920,8 +920,14 @@ tracking — the query never leaves the reader's browser.
 ## Per-page Markdown siblings (`tools/build-markdown.mjs`)
 
 **57 of 198 pages have a `.md` at the same address, and the other 141 deliberately do not.**
-Ported from Queering-Earth's `tools/make-markdown.mjs`, which got the hard part right; this one
-adds the gate that one lacks.
+Ported from Queering-Earth's `tools/make-markdown.mjs`, which got the hard part right.
+**Corrected 2026-09-09: that site is NOT missing a staleness gate**, as this file claimed for a
+few hours. Its `check-metadata.mjs` regenerates every derived file — the `.md` siblings,
+`llms.txt`, `llms-full.txt`, `feed.xml` — into memory and compares, and separately asserts each
+page still advertises its sibling; both verified firing. What was actually wrong was a comment in
+*their* generator naming a `check-markdown.mjs` that was never written, and I read that comment
+instead of their gate list. **Their shape is arguably better than ours** — one gate asking *is
+every derived file current?* rather than a `--check` on each generator.
 
 ```bash
 node tools/build-markdown.mjs            # write the siblings

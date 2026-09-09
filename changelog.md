@@ -32,6 +32,24 @@ New piece Revised Fact-check Site
 
 2026 · September 9 · latest
 
+## We said our sister site ships Markdown mirrors with no staleness check. It does not, and we should have looked at the gate rather than the comment
+
+The entry below this one says [Queering Earth](https://queering.earth/)'s Markdown generator has no check behind it, so an edited page would ship a stale copy unnoticed. **That is false.** Its `check-metadata.mjs` catches exactly that, and catches a missing discovery link too. Both verified firing today. The correction matters more than most because it was a public claim that somebody else's work was deficient.
+
+CorrectionWhat we said, what is true, and how we got it wrong
+
+**What we said**, in the entry below and in our working notes: that their generator has no `--check`, that the `check-markdown.mjs` its own header names was never built, and therefore *“a page edited without re-running it ships a stale mirror and nothing notices.”*
+
+**The first two clauses are true and the conclusion does not follow.** The check was built somewhere else and under another name: `check-metadata.mjs`, one of that site's seven ship gates, regenerates *every* derived file into memory — each Markdown sibling, the two index files, the feed — and compares. Its own error message for the case reads *“a stale .md is the quiet one.”* It separately asserts that every page still advertises its sibling. **We tested both rather than reading them:** corrupt a sibling and it exits 1; delete a discovery link and it exits 1.
+
+**How we got it wrong.** We read the comment at the top of their generator, which names a file that does not exist, went looking for that file, did not find it, and concluded the coverage was missing. We did not read their list of gates — which is in their working notes, seven lines long, with the answer in it. **A comment naming a file that was never written is a claim, and we repeated it.** Their coverage was never the problem; their comment was, and it has been fixed.
+
+**And it is the same fault we spent the day cataloguing, turned outward.** Five times today a tool of ours mistook prose for the thing the prose describes — a broken tag quoted inside a script, a comment about a deleted attribute, a changelog entry quoting a template. This is the sixth, and the only one where the prose belonged to somebody else. *Reading a description instead of measuring the thing is the error this site is organised against, and we made it about a neighbour.*
+
+**Their arrangement is arguably better than ours.** One gate asking *is every derived file current?* is a cleaner shape than a `--check` flag on each of three generators, which is what we have.
+
+2026 · September 9
+
 ## Fifty-seven pages now have a Markdown twin at the same address — and a hundred and forty-one deliberately do not
 
 Add `.md` to the address of an essay, a collection page or [this changelog](https://starstuff.earth/changelog.md) and you get the same words as Markdown, derived from the page itself. The zines, field guides and print sheets are left out on purpose, and the reason is the more interesting half.
