@@ -827,7 +827,7 @@ tracking — the query never leaves the reader's browser.
 
   ```bash
   node tools/build-search-index.mjs          # rewrites search-index.json
-  node tools/build-search-index.mjs --check  # non-zero exit if stale; writes nothing
+  node tools/build-search-index.mjs --check  # non-zero exit if stale; writes nothing (or: check-derived.mjs)
   node tools/build-search-index.mjs --force  # write even if a page lost records
   ```
 
@@ -917,6 +917,36 @@ tracking — the query never leaves the reader's browser.
 - Every page reaches search through the `.ss-nav-search` pill in the nav cluster; `index.html`
   has no `.ss-nav`, so it carries its own `.masthead-search` link.
 
+## Is every derived file current? (`tools/check-derived.mjs`)
+
+**One gate, and it is the one the ship routine names.** Four generators write copies of something
+else, and each grew its own `--check` as it was built; four commands is four chances to run three
+of them.
+
+```bash
+node tools/check-derived.mjs           # all four
+node tools/check-derived.mjs --quick   # skip the search index, the only one needing Chrome
+```
+
+- **Modelled on Queering-Earth's `check-metadata.mjs`**, which is the better shape and asks one
+  question instead of four. (Also the tool this repo got publicly wrong on 2026-09-09 — it always
+  had the check; the comment naming it was what was broken.)
+- **It is a RUNNER, not a reimplementation.** It executes each generator's own `--check` and
+  aggregates. Recomputing the expected output here would be four more copies free to drift, which
+  is what every one of those generators exists to prevent. **The per-generator `--check` flags stay**
+  — they are the implementation, and they are what you want while iterating on one tool.
+- **The verdict is the exit code, never a parsed message.** Scraping `PASS` out of a generator's
+  output would be the seventh instance of this repo's signature 2026-09-09 fault. Each tool's own
+  last lines are echoed for detail; its exit status decides.
+- **A missing or unrunnable generator is `ERROR`, not `ok`.** Zero problems out of zero files is
+  the `UNREAD` fault `check-contrast.mjs` records, in a new place.
+- **It surfaces the security.txt countdown**, because that gate fires on a *date* rather than on an
+  edit and a summary that hides it is a summary somebody trusts instead of reads.
+- **Tested by breaking things, not by watching it pass:** a stale `.md`, a new inline script that
+  invalidates the CSP hash list, an edited card tagline (which correctly makes *two* generators
+  stale at once — the argument for one gate), and a deleted tool. All four report and exit 1.
+- Cheap first: ~9s for the three fast ones, ~154s more for the search index.
+
 ## Per-page Markdown siblings (`tools/build-markdown.mjs`)
 
 **57 of 198 pages have a `.md` at the same address, and the other 141 deliberately do not.**
@@ -931,7 +961,7 @@ every derived file current?* rather than a `--check` on each generator.
 
 ```bash
 node tools/build-markdown.mjs            # write the siblings
-node tools/build-markdown.mjs --check    # ship gate: stale files AND missing head links
+node tools/build-markdown.mjs --check    # stale files AND missing head links (or: check-derived.mjs)
 node tools/build-markdown.mjs about.html # one page, to stdout
 ```
 
@@ -981,7 +1011,7 @@ RSS 2.0, so nobody has to come back and check.
 
 ```bash
 node tools/build-derived.mjs           # write all four
-node tools/build-derived.mjs --check   # exit non-zero if any is stale
+node tools/build-derived.mjs --check   # exit non-zero if any is stale (or: check-derived.mjs)
 ```
 
 - **A repo-wide sweep over "every page" will silently lose its edit here, and that is not the same
@@ -1045,8 +1075,9 @@ node tools/build-derived.mjs --check   # exit non-zero if any is stale
   report categories out, and says which ones are still worth sending.
 - **No `Encryption:` and no `Acknowledgments:`.** There is no PGP key and no hall of fame, and an
   empty gesture in a security file is worse than an absent field.
-- **`--check` is a ship gate and belongs in the `ship-zine` routine**, next to
-  `build-search-index.mjs --check`. A new piece means a new row here, and nothing else in the repo
+- **`--check` is a ship gate**, but the routine now names `check-derived.mjs`, which runs this one
+  and the other three. Keep this flag: it is the implementation, and it is what you want while
+  iterating on this tool alone. A new piece means a new row here, and nothing else in the repo
   will notice its absence.
 - **`lastmod` is not a publication date and neither is `--follow`.** The sitemap records *last
   modified*, a different claim. `--follow` traces a renamed file back to its predecessor's

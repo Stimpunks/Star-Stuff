@@ -97,7 +97,19 @@ Ryan's shorthand for "finish and publish." Scope depends on what changed.
    Prints each sheet at US Letter *and* A4 and counts pages, and separately measures overflow —
    a fixed-height sheet that overruns is clipped, not paginated, so a clean page count can still
    hide a cut-off line. Only applies to pages with an `@page` rule.
-12. **Commit & push.** `git add` the touched files; commit with a descriptive heredoc message;
+12. **Confirm every derived file is current — one command for all four.**
+
+   ```bash
+   node tools/check-derived.mjs
+   ```
+
+   Runs `build-derived`, `build-csp`, `build-markdown` and `build-search-index` in `--check` mode
+   and aggregates. Each writes a copy of something, and a copy that has stopped agreeing with the
+   site is worse than no copy: the page looks right and the file an agent fetches does not. Use
+   `--quick` to skip the search index (the only one needing Chrome) while iterating; run it in full
+   before shipping. **A stale card tagline makes two of them stale at once**, which is why this is
+   one gate rather than four flags to remember.
+13. **Commit & push.** `git add` the touched files; commit with a descriptive heredoc message;
    `git push`.
 
 ## Small edit (fast path)
@@ -110,6 +122,8 @@ renamed** (`node tools/build-derived.mjs`)
 → **run `node tools/check-card-order.mjs --check` if a card moved**
 → **always run `node tools/check-markup.mjs --check`** — it costs 0.3s, needs no browser, and its
 baseline is 0, so there is no reason to skip it on any edit that touched HTML
+→ **always run `node tools/check-derived.mjs`** (or `--quick` for the three fast ones) — page text,
+a card tagline, an inline script or a heading all invalidate something generated
 → `git add` → commit → `git push`. Don't re-propose or widen scope.
 
 ## Changelog
