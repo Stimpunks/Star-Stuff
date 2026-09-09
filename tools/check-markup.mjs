@@ -618,6 +618,44 @@ for (const file of targets) {
     }
   }
 
+  /* ── the ninth check: an attribute value cut short by an unescaped quote ──────
+     Added 2026-09-09. `content="… where "star" means …"` ends at the quote before
+     `star`, so the parser stores `… where ` and turns the rest into stray
+     attributes on the same element. That is exactly this tool's bar — the browser
+     silently hands the reader a different document than the source describes —
+     and it had shipped 5 times across 3 pages, live in search results and link
+     unfurls for a month, found by a person reading descriptions rather than by any
+     gate. It is not the general "validate attribute syntax" the header declines:
+     the fault is a value that looks complete in the source and is truncated in the
+     DOM, and it is silent because a meta description has no rendering to go wrong.
+
+     Runs over the TAG WALK rather than over the source, for the reason the nested-anchor
+     and badge checks do: the walker tracks quote state exactly as a parser does, and it
+     skips <script>, <style> and comments. Scanning the source instead reported a broken
+     meta tag written inside a JS string — a decoy, caught because it was written as one.
+
+     Scoped to attributes where a truncation has a consequence and where prose
+     legitimately contains quotation marks. Deliberately not every attribute: a stray
+     quote in `style` or `srcset` is a different fault with a visible symptom. */
+  const QUOTED_ATTRS = ['content', 'alt', 'title', 'aria-label'];
+  for (const t of tags(src)) {
+    if (t.closing) continue;
+    for (const attr of QUOTED_ATTRS) {
+      const am = t.raw.match(new RegExp(`\\b${attr}="([^"]*)"`));
+      if (!am) continue;
+      /* What follows a properly closed attribute is whitespace, more `name="…"`
+         attributes, or the end of the tag. Bare words are the remains of a value the
+         parser stopped reading early. */
+      const after = t.raw.slice(am.index + am[0].length);
+      if (/[A-Za-z]{3,}["\s]/.test(after) && !/=/.test(after.replace(/\//g, ''))) {
+        const shown = am[1].length > 60 ? am[1].slice(0, 60) + '…' : am[1];
+        problems.push(
+          `${attr}="…" at line ${t.line} is cut short by an unescaped double quote — the parser stores ${JSON.stringify(shown)} and treats the rest as stray attributes; escape the inner quotes (&ldquo; &rdquo; or &quot;)`
+        );
+      }
+    }
+  }
+
   if (!exempt(file)) memberPages++;
   if (badge) badgesSeen++;
 
@@ -655,7 +693,8 @@ if (totalProblems) {
     'PASS — no nested interactive elements, no blocks inside paragraphs, no duplicate ids,\n' +
       '       no nav outside its content shell, exactly one <main> landmark per page, every\n' +
       '       card in its own wrap, every page titled by exactly one <h1> inside its\n' +
-      '       main landmark, every collection member badged to the collection that cards it.'
+      '       main landmark, every collection member badged to the collection that cards it,\n'
+      + '       no attribute value cut short by an unescaped quote.'
   );
 }
 

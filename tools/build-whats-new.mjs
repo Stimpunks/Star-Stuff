@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * build-whats-new.mjs — generate whats-new.html and feed.xml.
+ * build-whats-new.mjs — generate whats-new.html, feed.xml and llms.txt.
  *
  * Why this is generated and not hand-written
  * ------------------------------------------
@@ -28,9 +28,31 @@
  * `search-index.json` and in every gate exactly as before — findable, never
  * announced.
  *
+ * Why llms.txt is generated HERE, in a tool whose name is about something else
+ * ---------------------------------------------------------------------------
+ * Because the alternative is worse. `llms.txt` needs the same page→collection map
+ * with the same titles and taglines, and a second tool parsing `<a class="card">`
+ * would be a second answer free to drift from this one — the exact fault the whole
+ * file is built to avoid. So the map is read once and three files come out of it.
+ * The name under-describes the tool; a duplicated parser would under-describe the
+ * site, and only one of those gets a reader wrong.
+ *
+ * llms.txt is CURATED, and that is the whole difficulty
+ * ----------------------------------------------------
+ * The llms.txt convention's own list of common mistakes leads with "treating it
+ * like a sitemap and listing every URL." This site has 169 pieces; emitting all of
+ * them would be that mistake, and would also duplicate `sitemap.xml`, which already
+ * exists and is exhaustive by design. So the file lists the ways in, what the
+ * project is, how it is checked, and the seventeen collection pages that lead to
+ * everything else — about forty links — and says plainly where the full list is.
+ *
+ * Easter Eggs are excluded here too, silently. A listing announces; an announced
+ * egg is not off the path. The file does not mention the exclusion either, because
+ * saying "some pages are not listed" is itself an announcement.
+ *
  * Usage
- *   node tools/build-whats-new.mjs           # write whats-new.html and feed.xml
- *   node tools/build-whats-new.mjs --check   # exit non-zero if either is stale
+ *   node tools/build-whats-new.mjs           # write whats-new.html, feed.xml, llms.txt
+ *   node tools/build-whats-new.mjs --check   # exit non-zero if any is stale
  */
 
 import fs from 'node:fs';
@@ -491,10 +513,129 @@ ${items}
 `;
 }
 
+/* ── llms.txt ─────────────────────────────────────────────────────────────────
+   v2 of the convention. Structure is fixed by the proposal: `# Site name` first,
+   a `>` blockquote, free prose, then `##` sections of markdown links. The one hard
+   v2 addition is discovery — the file must be advertised with rel="describedby"
+   rather than guessed at, which is done in `_headers` (an HTTP Link header, so it
+   reaches an agent that never parses our HTML) and in index.html's head.
+
+   `## Optional` is deliberately absent. v1 gave that heading mechanical semantics
+   for context-expansion tooling and v2 dropped both; using it now would imply a
+   meaning the convention has explicitly withdrawn. */
+
+/* A collection page is not carded by any other collection page, so it has no
+   tagline to lift. Its own <meta name="description"> is the authored one-liner,
+   trimmed to its first sentence — same principle as the taglines: text the page
+   already publishes about itself, not a summary kept in this tool. */
+function metaDescription(file) {
+  const src = fs.readFileSync(path.join(REPO, file), 'utf8');
+  /* Read all three and take the SHORTEST. Several pages carry a purpose-written
+     twitter:description that is already one complete sentence, which beats
+     truncating a 487-character meta description — and truncation here produced
+     "side A is a face you'd…" on the first run. Where all three are identical the
+     shortest is just the one, so this costs nothing. */
+  const cands = [...src.matchAll(/<meta (?:name|property)="(?:description|og:description|twitter:description)" content="([^"]*)"/g)]
+    .map((m) => collapse(decodeEnts(m[1])))
+    .filter((d) => d.length > 20);
+  if (!cands.length) return '';
+  let d = cands.sort((a, b) => a.length - b.length)[0];
+
+  /* Trim to a whole sentence where one ends inside the cap. Failing that, cut at
+     the last clause boundary rather than mid-phrase, and only then add an ellipsis
+     — a fragment that stops at a comma reads as an abridgement; one that stops
+     mid-list reads as a bug. */
+  const CAP = 230;
+  const sentence = d.search(/[.!?](?:\s+[A-Z“"]|$)/);
+  if (sentence > 60 && sentence < CAP) return d.slice(0, sentence + 1);
+  if (d.length <= CAP) return d;
+  const cut = d.slice(0, CAP);
+  const boundary = Math.max(cut.lastIndexOf('; '), cut.lastIndexOf(' — '), cut.lastIndexOf(', '));
+  return (boundary > 80 ? cut.slice(0, boundary) : cut.replace(/\s+\S*$/, '')) + '…';
+}
+
+function collectionTitle(file) {
+  const src = fs.readFileSync(path.join(REPO, file), 'utf8');
+  const t = src.match(/<title>([\s\S]*?)<\/title>/);
+  return t ? collapse(decodeEnts(t[1]).split('—')[0]) : file;
+}
+
+function buildLlms() {
+  const bySection = (cf) => records.filter((r) => r.collectionFile === cf);
+  const line = (r) => `- [${r.title}](${SITE}${r.href}): ${stripTags(r.tagline)}`;
+
+  const groups = [
+    ['Start here', 'collection-start-here.html'],
+    ['What this project is', 'collection-foundations.html'],
+    ['How it is made, and how it is checked', 'collection-notes.html'],
+  ];
+
+  const out = [];
+  out.push('# Star Stuff');
+  out.push('');
+  out.push('> Printable, shareable web artifacts about difference — zines, field guides and'
+    + ' broadsides that take one settled fact and follow it until a claim about belonging is'
+    + ' already inside it. A collaboration between the Stimpunks Foundation and More Realms.');
+  out.push('');
+  out.push('The through-line is that the universe does not pathologize its own variation, read'
+    + ' through the neurodiversity paradigm: difference is variation, not deficit. Two threads'
+    + ' braid together — Carl Sagan\'s cosmology, and the finding that bone is piezoelectric.');
+  out.push('');
+  out.push('Editorial conventions worth knowing if you quote from here. We write about'
+    + ' neurodivergent and disabled people in the first person plural — we, us, our — because'
+    + ' we write from inside that community. *Autistic* is capitalised as an identity term;'
+    + ' *autism* is not. Quotations are traced to primary sources and every piece records its'
+    + ' sources, its open questions and its corrections in FACTCHECK.md; corrections are'
+    + ' published by date in the changelog rather than quietly fixed.');
+  out.push('');
+  out.push('This index is curated, not exhaustive. It lists the ways in, the working papers,'
+    + ` and the ${collections.length - 1} collection pages that lead to everything else.`
+    + ` The complete list of all ${records.length} pieces is at ${SITE}whats-new.html, and`
+    + ` ${SITE}sitemap.xml is exhaustive.`);
+  out.push('');
+
+  for (const [heading, cf] of groups) {
+    const rows = bySection(cf);
+    if (!rows.length) continue;
+    out.push(`## ${heading}`);
+    out.push('');
+    out.push(`${metaDescription(cf)} — [${collectionTitle(cf)}](${SITE}${cf})`);
+    out.push('');
+    for (const r of rows) out.push(line(r));
+    out.push('');
+  }
+
+  out.push('## Collections');
+  out.push('');
+  out.push('Each collection page argues for why its pieces belong together, and states the axis'
+    + ' it sorts on — register, form, medium, occasion, issue or audience. The collections were'
+    + ' observed in finished work rather than planned, so several say on their own face where'
+    + ' they break their own rules.');
+  out.push('');
+  for (const cf of collections) {
+    if (cf === EGGS) continue;
+    if (groups.some(([, g]) => g === cf)) continue;   // already listed above with its members
+    out.push(`- [${collectionTitle(cf)}](${SITE}${cf}): ${metaDescription(cf)}`);
+  }
+  out.push('');
+
+  out.push('## Machine-readable');
+  out.push('');
+  out.push(`- [Sitemap](${SITE}sitemap.xml): Every page on the site, with last-modified dates.`);
+  out.push(`- [RSS feed](${SITE}feed.xml): The 50 most recent pieces, newest first.`);
+  out.push(`- [What's New](${SITE}whats-new.html): Every piece, newest first, with the line each one leads with.`);
+  out.push(`- [Search index](${SITE}search-index.json): The full-text index the in-browser search reads — one record per zine spread and per field-guide entry.`);
+  out.push(`- [Source repository](https://github.com/Stimpunks/Star-Stuff): Every page, every generator, and the eight checks that gate a change.`);
+  out.push('');
+
+  return out.join('\n');
+}
+
 /* ── write or check ──────────────────────────────────────────────────────── */
 const outputs = [
   ['whats-new.html', buildHtml()],
   ['feed.xml', buildFeed()],
+  ['llms.txt', buildLlms()],
 ];
 
 let stale = 0;

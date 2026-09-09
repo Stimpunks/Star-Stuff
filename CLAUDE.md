@@ -861,7 +861,7 @@ tracking — the query never leaves the reader's browser.
 - Every page reaches search through the `.ss-nav-search` pill in the nav cluster; `index.html`
   has no `.ss-nav`, so it carries its own `.masthead-search` link.
 
-## What's New & RSS (`tools/build-whats-new.mjs`)
+## What's New, RSS & llms.txt (`tools/build-whats-new.mjs`)
 
 `whats-new.html` is the answer to *what came out this week* — every piece newest first, title and
 the line it leads with, nothing else. `changelog.html` answers *why it changed*, at length, and is
@@ -888,6 +888,35 @@ node tools/build-whats-new.mjs --check   # exit non-zero if either is stale
   `git log --diff-filter=A`, for the day a URL first existed. Neither is a list kept in the tool,
   so there is no second answer free to rot. The tool **fails** if any card ever loses its title or
   tagline.
+- **It emits a third file, `llms.txt`, and the name of the tool now under-describes it.**
+  Deliberate: `llms.txt` needs the same page→collection map with the same titles and taglines,
+  and a second tool parsing `<a class="card">` would be a second answer free to drift — the exact
+  fault this whole file is built to avoid. The name under-describes the tool; a duplicated parser
+  would under-describe the site, and only one of those gets a reader wrong.
+- **`llms.txt` is CURATED, and that is the whole difficulty.** The convention's own list of common
+  mistakes leads with *treating it like a sitemap and listing every URL* — and `sitemap.xml`
+  already exists and is exhaustive by design. So the file carries the ways in, the Foundations and
+  Notes working papers, and the seventeen collection pages that lead to everything else: **39
+  links, 71 lines**, and it says on its face where the full list is. **Don't "complete" it** by
+  adding the 169 pieces; that is the named anti-pattern and it would duplicate the sitemap.
+  Easter Eggs are excluded silently, and the file does not mention the exclusion either — saying
+  *some pages are not listed* is itself an announcement.
+- **`## Optional` is deliberately absent.** v1 gave that heading mechanical semantics for
+  context-expansion tooling; v2 dropped the tooling and the semantics. Using it now would imply a
+  meaning the convention has withdrawn.
+- **A collection page has no tagline to lift**, because no collection page cards another. Its
+  description comes from the **shortest** of its own `description` / `og:description` /
+  `twitter:description` — several pages carry a purpose-written short `twitter:description` that
+  is already one complete sentence, which beats truncating a 487-character one. First-run
+  truncation produced *"side A is a face you'd…"*; it now cuts at a sentence, else at the last
+  clause boundary, and only then adds an ellipsis. 2 of 39 need one.
+- **Discovery is the v2 requirement, not the file.** v1 expected agents to guess `/llms.txt`, so
+  an unadvertised file was found only by one that had already assumed the path. It is advertised
+  with `rel="describedby"` **both** as an HTTP `Link` header on `/*` in `_headers` — which reaches
+  a client that never parses our HTML, including anything fetching `feed.xml` directly — and as a
+  `<link>` in `index.html`'s head. The header also carries `sitemap`, `alternate` and `license`.
+  **Every relation is IANA-registered**; inventing one is a bad signal and crawlers ignore it, and
+  the URI goes in angle brackets, not quotes.
 - **`--check` is a ship gate and belongs in the `ship-zine` routine**, next to
   `build-search-index.mjs --check`. A new piece means a new row here, and nothing else in the repo
   will notice its absence.
@@ -1173,8 +1202,25 @@ node tools/check-markup.mjs --check               # exit non-zero on any failure
   onto one line inside the new `<h1>` made the accessible name read *"NeurodiversityParadigm"* —
   block display hides the missing space visually, and only `textContent` shows it. Keep the
   whitespace between them.
-- **It is not a validator and shouldn't grow into one.** It ignores unclosed tags, attribute
-  syntax, and everything else browsers recover from harmlessly. The bar for adding a ninth check
+- **The ninth is an attribute value cut short by an unescaped quote, added 2026-09-09.**
+  `content="… where "star" means …"` ends at the quote before `star`: the parser stores
+  `… where ` and turns the rest into stray attributes on the same element. **It had shipped 5
+  times across 3 pages** — `collection-stars-we-grew-up-on.html` (all three of its descriptions),
+  `shark-field-guide.html`, `two-hundred-years-zine.html` — live in search results and link
+  unfurls for a month, and found by a person reading descriptions while building `llms.txt`, not
+  by a gate. **This is the bar, not an exception to it:** the source looks complete and the DOM is
+  truncated, and it is silent precisely because a meta description has no rendering to go wrong.
+  Scoped to `content`, `alt`, `title` and `aria-label` — attributes where prose legitimately
+  contains quotation marks and where truncation has a consequence; a stray quote in `style` or
+  `srcset` is a different fault with a visible symptom. **It runs over the tag walk, not the
+  source**, like the nested-anchor and badge checks: the walker tracks quote state exactly as a
+  parser does and skips `<script>`, `<style>` and comments — scanning the source instead reported
+  a broken meta written inside a JS string. Regression-tested against all three real pages at
+  `HEAD` (5 findings, right lines) and against decoys that must stay silent: escaped entities, a
+  value containing `=` and `/`, an attribute followed by more attributes, and the broken tag
+  inside both a script string and a comment.
+- **It is not a validator and shouldn't grow into one.** It ignores unclosed tags, most attribute
+  syntax, and everything else browsers recover from harmlessly. The bar for adding a tenth check
   is that the browser silently hands the reader a different document than the source describes —
   or, as with the nav, badge and card-wrap checks, that a structural fault is invisible to *every*
   other gate and has recurred often enough to prove that remembering is not a control. **The

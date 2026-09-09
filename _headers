@@ -60,6 +60,23 @@
   Content-Security-Policy: frame-ancestors 'self' https://stimpunks.org https://morerealms.com
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), midi=(), serial=(), bluetooth=(), display-capture=(), xr-spatial-tracking=()
+  Link: </llms.txt>; rel="describedby"; type="text/markdown"; title="Site index for language models", </sitemap.xml>; rel="sitemap"; type="application/xml", </feed.xml>; rel="alternate"; type="application/rss+xml"; title="Star Stuff", <https://creativecommons.org/licenses/by-sa/4.0/>; rel="license"
+
+# llms.txt (2026-09-09). Served as text/markdown, which is what the convention asks for
+# and what makes a browser show it rather than offer to download it.
+#
+# The Link header above is the part that matters, and it is v2 of the convention's one
+# hard addition: v1 expected an agent to GUESS /llms.txt at the root, so a file nobody
+# advertised was found only by an agent that had already assumed the path. rel="describedby"
+# replaces the guess. It rides on /* rather than on the HTML pages alone, deliberately —
+# the whole point of a header over a <link> is that it reaches a client that never parses
+# our HTML, which includes anything fetching feed.xml or search-index.json directly.
+#
+# Every rel there is IANA-registered: describedby, sitemap, alternate, license. Inventing
+# one is a bad signal and crawlers ignore it. URIs go in angle brackets, not quotes.
+/llms.txt
+  Content-Type: text/markdown; charset=utf-8
+  Cache-Control: public, max-age=3600, must-revalidate
 
 # Images (2026-09-09, with the AVIF pass). Every raster is an AVIF -> WebP -> JPEG
 # chain, and Content-Type is stated because the <source type> attribute is only how the
