@@ -34,7 +34,7 @@ Ryan's shorthand for "finish and publish." Scope depends on what changed.
    cards and from `git log`, so they go stale the moment a card lands:
 
    ```bash
-   node tools/build-whats-new.mjs
+   node tools/build-derived.mjs
    ```
 
    **Run it after the commit that adds the piece**, not before: the date comes from
@@ -104,7 +104,7 @@ Ryan's shorthand for "finish and publish." Scope depends on what changed.
 Fact-check the touched claims → log it in `changelog.html` if it changes what a piece *claims*
 → **rebuild the search index if any page text changed** (`node tools/build-search-index.mjs`)
 → **rebuild What's New and the feed if a card's title or tagline changed, or a page was added or
-renamed** (`node tools/build-whats-new.mjs`)
+renamed** (`node tools/build-derived.mjs`)
 → **check contrast if you touched a color, an opacity, or an SVG label**
 (`node tools/check-contrast.mjs --check <page>.html`)
 → **run `node tools/check-card-order.mjs --check` if a card moved**

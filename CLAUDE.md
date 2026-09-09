@@ -151,7 +151,7 @@ The central phrase compresses through registers, each with a use:
   resolves and every phone reader was paying for it. If one sheet ever needs print-grade, add a
   `srcset` candidate to *that figure* — don't put four megabytes back on a door page.
 - **`whats-new.html` and `feed.xml` are generated, not edited.** Both come out of
-  `tools/build-whats-new.mjs`; a hand edit is overwritten on the next run. See
+  `tools/build-derived.mjs`; a hand edit is overwritten on the next run. See
   *What's New & RSS* below.
 - `changelog.html` is the **public changelog**, live at https://starstuff.earth/changelog (Netlify
   serves clean URLs, so the `.html` file answers at both paths; keep internal links, canonical, and
@@ -907,14 +907,15 @@ tracking — the query never leaves the reader's browser.
 - Every page reaches search through the `.ss-nav-search` pill in the nav cluster; `index.html`
   has no `.ss-nav`, so it carries its own `.masthead-search` link.
 
-## Generated files (`tools/build-whats-new.mjs`)
+## Derived files (`tools/build-derived.mjs`)
 
-**The tool's name under-describes it twice over, and a rename is worth doing.** It emits
-`whats-new.html`, `feed.xml`, `llms.txt` and `.well-known/security.txt`. The coupling is
-deliberate for `llms.txt` (it needs the same card map, and a second parser would be a second
-answer free to drift) and merely convenient for `security.txt` (it needs a `--check` somebody
-actually runs). Renaming costs edits in this file, the `ship-zine` skill and habit; it is
-recorded here as an open call rather than done quietly.
+**Renamed from `build-whats-new.mjs` on 2026-09-09** — grep that name and you will land here.
+It emits `whats-new.html`, `feed.xml`, `llms.txt` and `.well-known/security.txt`, and the old name
+described a quarter of it. The coupling is deliberate for `llms.txt` (it needs the same card map,
+and a second parser would be a second answer free to drift) and merely convenient for
+`security.txt` (it needs a `--check` somebody actually runs). **`changelog.html` and the older
+`FACTCHECK.md` rows still say `build-whats-new.mjs`, on purpose** — both are dated records and were
+true when written; the rename is logged under its own date rather than edited backwards.
 
 `whats-new.html` is the answer to *what came out this week* — every piece newest first, title and
 the line it leads with, nothing else. `changelog.html` answers *why it changed*, at length, and is
@@ -922,13 +923,13 @@ a poor substitute; the two are deliberately different documents. `feed.xml` is t
 RSS 2.0, so nobody has to come back and check.
 
 ```bash
-node tools/build-whats-new.mjs           # write whats-new.html and feed.xml
-node tools/build-whats-new.mjs --check   # exit non-zero if either is stale
+node tools/build-derived.mjs           # write all four
+node tools/build-derived.mjs --check   # exit non-zero if any is stale
 ```
 
 - **A repo-wide sweep over "every page" will silently lose its edit here, and that is not the same
   failure as a hand edit.** On 2026-09-09 the skip-link pass touched all 197 pages, `whats-new.html`
-  among them; the next `build-whats-new.mjs` run rebuilt the page from the template inside the tool
+  among them; the next `build-derived.mjs` run rebuilt the page from the template inside the tool
   and **the skip link was gone, with the tool reporting a clean successful build.** It was caught by
   a `git diff --stat` that had two lines a moment before and none after. **A generated page does not
   conflict, it reverts** — so a sweep of this kind owes the *template* the same edit, and the check

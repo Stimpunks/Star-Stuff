@@ -223,9 +223,25 @@
 
   </div>
 
+  <!-- ================= 2026-09-09i (site: tool renamed) ================= -->
+  <section class="release" id="2026-09-09-rename" aria-labelledby="h-2026-09-09-rename">
+    <div class="release-date">2026 &middot; September 9 &middot; latest</div>
+    <h2 class="release-title" id="h-2026-09-09-rename">A tool called <code>build-whats-new</code> was building four things, only one of which is What&rsquo;s New</h2>
+    <p class="release-note">Renamed to <code>build-derived.mjs</code>. It generates <a href="whats-new.html">What&rsquo;s New</a>, <a href="feed.xml">the feed</a>, <a href="llms.txt">llms.txt</a> and the <a href="https://starstuff.earth/.well-known/security.txt">security.txt</a>, and the old name described a quarter of it.</p>
+
+    <div class="entry entry--site">
+      <div class="entry-head"><span class="tag tag--site">Site</span><span class="entry-name">Why a name mattered enough to change</span></div>
+      <div class="entry-body"><p><strong>The four files are coupled on purpose and the coupling is worth keeping.</strong> All of them are derived from the same two sources that cannot drift from the site &mdash; the collection pages' own cards, and <code>git log</code> &mdash; and a second tool parsing those cards would be a second answer, free to disagree with the first. That is the fault this whole apparatus exists to prevent, so the tool stays one tool.</p>
+      <p><strong>What was wrong was only the label, and a label is what somebody greps for</strong> when they need to know where a file on this site comes from. Two of today's changes were logged with a note that the name had stopped being true; leaving it that way would have been the same species of error as a stale count &mdash; a description that no longer matches the thing, sitting where a reader will trust it.</p>
+      <p><strong>The old name survives in three places on purpose.</strong> The entries below still say <code>build-whats-new.mjs</code>, and so do the older rows of the fact-check ledger, because both are dated records that were true when written &mdash; the same reason <a href="bone-song-zine.html">Bone Song</a> still carries the sentence we later argued against. The working notes name both, so a search for the old one lands on the explanation rather than on nothing.</p>
+      <p><strong>One reader-visible consequence:</strong> What&rsquo;s New says at its foot which tool generated it, and that line is itself generated &mdash; so the page had to be rebuilt for its own colophon to stop naming a file that no longer exists.</p></div>
+    </div>
+
+  </section>
+
   <!-- ================= 2026-09-09h (site: inline handlers removed) ================= -->
   <section class="release" id="2026-09-09-handlers" aria-labelledby="h-2026-09-09-handlers">
-    <div class="release-date">2026 &middot; September 9 &middot; latest</div>
+    <div class="release-date">2026 &middot; September 9</div>
     <h2 class="release-title" id="h-2026-09-09-handlers">Two hundred and thirty-three <code>onclick</code> attributes are gone, and with them the one weak keyword in the security policy</h2>
     <p class="release-note">The policy shipped an hour ago needed <code>'unsafe-hashes'</code> to permit six strings &mdash; the handlers on every pager button, every print sheet and the search form. Those buttons are now bound in JavaScript, <strong>there are zero inline event handlers left on the site</strong>, and the keyword removed itself.</p>
 
