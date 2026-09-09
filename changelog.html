@@ -7,6 +7,7 @@
 <meta name="color-scheme" content="dark">
 <meta name="theme-color" content="#0a0a14">
 <link rel="canonical" href="https://starstuff.earth/changelog.html">
+<link rel="alternate" type="text/markdown" href="https://starstuff.earth/changelog.md" title="Changelog &mdash; Markdown source">
 <meta name="description" content="What changed and when in the Star Stuff collection — every zine and field guide as it was added, every substantial revision, and every fact-check and attribution audit, including the errors we found in our own work and how we fixed them.">
 <!-- Open Graph / link unfurl -->
 <meta property="og:type" content="website">
@@ -223,9 +224,37 @@
 
   </div>
 
+  <!-- ================= 2026-09-09j (site: markdown siblings) ================= -->
+  <section class="release" id="2026-09-09-markdown" aria-labelledby="h-2026-09-09-markdown">
+    <div class="release-date">2026 &middot; September 9 &middot; latest</div>
+    <h2 class="release-title" id="h-2026-09-09-markdown">Fifty-seven pages now have a Markdown twin at the same address &mdash; and a hundred and forty-one deliberately do not</h2>
+    <p class="release-note">Add <code>.md</code> to the address of an essay, a collection page or <a href="changelog.md">this changelog</a> and you get the same words as Markdown, derived from the page itself. The zines, field guides and print sheets are left out on purpose, and the reason is the more interesting half.</p>
+
+    <div class="entry entry--site">
+      <div class="entry-head"><span class="tag tag--site">Site</span><span class="entry-name">Why three-quarters of the site has no Markdown copy</span></div>
+      <div class="entry-body"><p><strong>Because it would lie by omission.</strong> A zine's argument is not only its sentences &mdash; it is carried by the figures too, and this site has <strong>1,021 inline diagrams holding 4,851 text labels</strong>, almost every one of them on a zine, a field guide or a print sheet. Markdown cannot represent any of it. A <code>.md</code> of <em>The Lines We Drew</em> would be its prose with the drawings quietly absent, which is a smoothed retelling of our own work &mdash; published, of all places, in a file whose entire purpose is to be trusted by a machine that cannot check.</p>
+      <p>The field guides would be worse. Their entries are built by JavaScript from data in the page, so they do not exist in the source at all; a converter reading the file would produce a guide with no animals in it.</p>
+      <p><strong>Where something is dropped from the 57 that do have a sibling, the frontmatter says so</strong> &mdash; 105 decorative diagrams, counted per page as <code>omitted_diagrams</code>. Excluding the artifact pages for that exact reason and then dropping silently here would have been the same fault at a smaller scale. And the 275 song embeds on the racks became links rather than disappearing, because the song is the content.</p></div>
+    </div>
+
+    <div class="entry entry--site">
+      <div class="entry-head"><span class="tag tag--site">Site</span><span class="entry-name">Ported from Queering Earth, with the gate it was missing</span></div>
+      <div class="entry-body"><p>Our sister site <a href="https://queering.earth/">Queering Earth</a> shipped this first and got the hard part right: derive from the page's own <code>&lt;main&gt;</code> landmark, and <strong>throw on any element the converter does not recognise</strong> rather than skipping it. A converter that shrugs is precisely how a Markdown copy starts saying less than its page.</p>
+      <p><strong>What it does not have is a check.</strong> Its own header names a <code>check-markdown.mjs</code> that was never built, so a page edited without re-running the tool would ship a stale mirror and nothing would notice. We looked: that site's files happen to be current today, and nothing is keeping them so. <strong>Ours fails the build in two ways</strong> &mdash; when a sibling is out of date, and when a page in the set does not <em>advertise</em> its sibling from its own <code>&lt;head&gt;</code>. An unadvertised Markdown file is found only by something that already guessed the address, which is the failure the whole convention was revised to fix.</p></div>
+    </div>
+
+    <div class="entry entry--factcheck">
+      <div class="entry-head"><span class="tag tag--factcheck">Correction</span><span class="entry-name">The fifth time in one day that a tool mistook prose for the thing it describes</span></div>
+      <div class="entry-body"><p><strong>This changelog was excluded from the Markdown set, and the reason was this changelog.</strong> The tool decides whether a page is a client-rendered field guide by looking for a template string; an entry published this morning <em>quotes</em> that template while explaining a fix to it. So the page describing the mechanism was mistaken for the mechanism, and the largest and most useful document on the site silently had no Markdown sibling. The check we had just added caught the consequence within the minute: <em>56 of 57 advertise their sibling</em>.</p>
+      <p><strong>Five tools, one day, one fault.</strong> The markup checker flagged a broken tag written inside a JavaScript string. The policy generator counted a comment <em>about</em> a removed attribute as a live attribute, and would have kept a weak keyword in the security policy indefinitely. Two of our own verification commands reported problems that were sentences. And now this. <strong>A regex over a whole file cannot tell a thing from a sentence about the thing</strong> &mdash; and this site writes about its own markup more than most sites ever do, which is why it keeps stepping on the same rake. The rule is now written down where the next person will find it: ask the structure, never the raw text.</p>
+      <p><strong>One smaller one, in the same hour.</strong> The sentence in <a href="llms.txt">llms.txt</a> announcing how many pages have a sibling was written with the number typed into it. It was wrong within the hour, when the misclassified page above joined the set. That is the fault the longest section of our working notes is about, committed inside a sentence whose whole job is to be accurate for a machine. It is counted from the filesystem now.</p></div>
+    </div>
+
+  </section>
+
   <!-- ================= 2026-09-09i (site: tool renamed) ================= -->
   <section class="release" id="2026-09-09-rename" aria-labelledby="h-2026-09-09-rename">
-    <div class="release-date">2026 &middot; September 9 &middot; latest</div>
+    <div class="release-date">2026 &middot; September 9</div>
     <h2 class="release-title" id="h-2026-09-09-rename">A tool called <code>build-whats-new</code> was building four things, only one of which is What&rsquo;s New</h2>
     <p class="release-note">Renamed to <code>build-derived.mjs</code>. It generates <a href="whats-new.html">What&rsquo;s New</a>, <a href="feed.xml">the feed</a>, <a href="llms.txt">llms.txt</a> and the <a href="https://starstuff.earth/.well-known/security.txt">security.txt</a>, and the old name described a quarter of it.</p>
 

@@ -95,6 +95,20 @@
   Content-Type: text/plain; charset=utf-8
   Cache-Control: public, max-age=86400, must-revalidate
 
+# The per-page Markdown siblings (2026-09-09). 56 of the 198 pages have one; the other
+# 142 deliberately do not — see tools/build-markdown.mjs for why a zine's Markdown would
+# say less than the zine. Content-Type matters twice over here: without it a browser
+# offers to download the file instead of showing it, and an agent may misclassify it.
+#
+# The per-page rel="alternate" lives in each page's own <head> rather than here, because
+# it varies by path and a header cannot. The site-wide relations above do not vary.
+#
+# Cached like the markup it mirrors, not longer: a .md that outlives an edit to its page
+# is the drift the generator exists to prevent, arriving through a proxy instead.
+/*.md
+  Content-Type: text/markdown; charset=utf-8
+  Cache-Control: public, max-age=0, must-revalidate
+
 # llms.txt (2026-09-09). Served as text/markdown, which is what the convention asks for
 # and what makes a browser show it rather than offer to download it.
 #

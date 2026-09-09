@@ -108,6 +108,16 @@ The central phrase compresses through registers, each with a use:
   `style` attributes carry the nav accents, the card colours and every twinkle position; an
   attribute cannot be hashed without hashing all 2,290. CSS injection can deface and can leak some
   data through selectors — it cannot execute script. **Say so rather than rounding it down.**
+- **ASK THE STRUCTURE, NEVER THE RAW TEXT. Five tools got this wrong in one day.**
+  `check-markup.mjs` flagged a broken `<meta>` written inside a JS string; `build-csp.mjs`
+  counted a *comment about* an `onsubmit` attribute as a live handler and would have kept
+  `'unsafe-hashes'` in the policy forever; `build-markdown.mjs` excluded `changelog.html` from the
+  Markdown set because a changelog entry *quotes* `${entry.name}`; and two verification greps of
+  mine reported handlers and stale names that were prose. **The fault is always the same**: a
+  regex over the whole file cannot tell a thing from a sentence about the thing, and this site's
+  prose is *about* its own markup more than most. The fix is always the same too — walk the tags,
+  or restrict the probe to script bodies. **A site that documents its own internals will keep
+  tripping this**, so treat any new raw-source scan as guilty until it is scoped.
 - **A pager test must be able to tell *broken* from *not applicable*.** The suite that verified
   the handler removal reported four `undefined`s for **No. 68** and called it a failure — a scroll
   zine has `.spread` sections and `spread-1..N` ids but no `changePage` and no buttons, working
@@ -906,6 +916,47 @@ tracking — the query never leaves the reader's browser.
   revalidate.
 - Every page reaches search through the `.ss-nav-search` pill in the nav cluster; `index.html`
   has no `.ss-nav`, so it carries its own `.masthead-search` link.
+
+## Per-page Markdown siblings (`tools/build-markdown.mjs`)
+
+**57 of 198 pages have a `.md` at the same address, and the other 141 deliberately do not.**
+Ported from Queering-Earth's `tools/make-markdown.mjs`, which got the hard part right; this one
+adds the gate that one lacks.
+
+```bash
+node tools/build-markdown.mjs            # write the siblings
+node tools/build-markdown.mjs --check    # ship gate: stale files AND missing head links
+node tools/build-markdown.mjs about.html # one page, to stdout
+```
+
+- **This site has no Markdown source — the HTML is the source**, so every `.md` is a derived
+  *second representation*. The spec's own common-mistakes list warns about exactly that
+  (*"letting the Markdown drift… generated from the same source at the same time"*), which is why
+  nothing here is hand-written and why `--check` exists.
+- **It throws on an element it does not know**, and must keep doing so. A converter that shrugs is
+  how a Markdown copy comes to say less than its page. Adding a new element to a prose page means
+  adding it to `DROP`, `TRANSPARENT`, `EMPH` or `BLOCK` — the run will tell you.
+- **The 141 exclusions are two decisions, not an oversight.** 137 artifact pages (paged zines,
+  client-rendered field guides, print sheets, scroll zines) carry part of their argument in
+  figures — **1,021 inline `<svg>` holding 4,851 labels**, almost all on those pages — so their
+  Markdown would be prose with the diagrams silently gone: a smoothed retelling of our own work,
+  in a file published to be trusted by machines. Plus 4 furniture pages named with a reason each.
+- **`<svg>` dropped from the 57 is declared** in frontmatter as `omitted_diagrams`. Dropping
+  silently here would be the same fault the exclusions above exist to avoid, at a smaller scale.
+  **`<iframe>` becomes a link**, because 275 of them are song embeds and the song is the content.
+- **`a.card` is special-cased, deliberately coupling the converter to this site's classes.** A
+  card wraps six block divs; flattening them into link text produced one 400-character
+  unreadable link per card. A general converter cannot know which of six divs is the title, and
+  this is not a general converter.
+- **`--check` verifies the advertisement too**, not just the file: a page in the set must carry
+  `<link rel="alternate" type="text/markdown">` in its own `<head>`. An unadvertised `.md` is
+  found only by an agent that already guessed the pattern — llms.txt v2's failure in miniature.
+  It caught `changelog.html` within a minute of that page joining the set.
+- **Content negotiation is deliberately NOT done.** It needs Netlify Edge Functions, and *static
+  files, no build step* is worth more than the second delivery mode. The spec says ship the suffix
+  at minimum; that is the honest stopping point.
+- **`tools/serve.mjs` knows `.md`** so a local render check sees `text/markdown` rather than
+  `application/octet-stream` — the first mistake the spec's page lists.
 
 ## Derived files (`tools/build-derived.mjs`)
 

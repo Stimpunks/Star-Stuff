@@ -22,6 +22,11 @@ const TYPES = {
   '.png': 'image/png',
   '.xml': 'application/xml; charset=utf-8',
   '.txt': 'text/plain; charset=utf-8',
+  /* The per-page Markdown siblings. Production sets this in _headers; the local
+     server needs it too, or a render check sees application/octet-stream and the
+     browser offers to download the file — which is the first mistake the spec's
+     markdown-source-endpoints page lists. */
+  '.md': 'text/markdown; charset=utf-8',
 };
 
 createServer(async (req, res) => {

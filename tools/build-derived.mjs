@@ -589,9 +589,15 @@ function collectionTitle(file) {
   return t ? collapse(decodeEnts(t[1]).split('—')[0]) : file;
 }
 
+/* Asked of the filesystem rather than of a list, so this tool and
+   build-markdown.mjs cannot disagree about which pages have a sibling. 56 of 198 do;
+   the artifact pages deliberately do not. */
+const hasMd = (href) => fs.existsSync(path.join(REPO, href.replace(/\.html$/, '.md')));
+const mdLink = (href) => (hasMd(href) ? ` [Markdown](${SITE}${href.replace(/\.html$/, '.md')})` : '');
+
 function buildLlms() {
   const bySection = (cf) => records.filter((r) => r.collectionFile === cf);
-  const line = (r) => `- [${r.title}](${SITE}${r.href}): ${stripTags(r.tagline)}`;
+  const line = (r) => `- [${r.title}](${SITE}${r.href}): ${stripTags(r.tagline)}${mdLink(r.href)}`;
 
   const groups = [
     ['Start here', 'collection-start-here.html'],
@@ -617,6 +623,20 @@ function buildLlms() {
     + ' sources, its open questions and its corrections in FACTCHECK.md; corrections are'
     + ' published by date in the changelog rather than quietly fixed.');
   out.push('');
+  /* COUNTED, not typed. The first version of this sentence carried a hardcoded 56 and
+     was wrong within the hour, when a misclassified page gained a sibling — the exact
+     fault CLAUDE.md's longest section is about, committed in a sentence about being
+     machine-readable. Both figures come off the filesystem. */
+  const htmlPages = fs.readdirSync(REPO).filter((f) => f.endsWith('.html'));
+  const withMd = htmlPages.filter((f) => hasMd(f)).length;
+  out.push('Where a link below is followed by [Markdown], that page has a Markdown sibling at'
+    + ' the same address with .md appended, derived from the page\'s own <main> landmark and'
+    + ` advertised from its <head>. **${withMd} of the ${htmlPages.length} pages have one.** The other`
+    + ` ${htmlPages.length - withMd} deliberately do not: the zines, field guides and print sheets`
+    + ' carry part of their argument in figures, and a Markdown copy would be their prose with the'
+    + ' diagrams silently missing. Where a page does have a sibling and something was still'
+    + ' dropped, its frontmatter says so.');
+  out.push('');
   out.push('This index is curated, not exhaustive. It lists the ways in, the working papers,'
     + ` and the ${collections.length - 1} collection pages that lead to everything else.`
     + ` The complete list of all ${records.length} pieces is at ${SITE}whats-new.html, and`
@@ -628,7 +648,7 @@ function buildLlms() {
     if (!rows.length) continue;
     out.push(`## ${heading}`);
     out.push('');
-    out.push(`${metaDescription(cf)} — [${collectionTitle(cf)}](${SITE}${cf})`);
+    out.push(`${metaDescription(cf)} — [${collectionTitle(cf)}](${SITE}${cf})${mdLink(cf)}`);
     out.push('');
     for (const r of rows) out.push(line(r));
     out.push('');
@@ -644,7 +664,7 @@ function buildLlms() {
   for (const cf of collections) {
     if (cf === EGGS) continue;
     if (groups.some(([, g]) => g === cf)) continue;   // already listed above with its members
-    out.push(`- [${collectionTitle(cf)}](${SITE}${cf}): ${metaDescription(cf)}`);
+    out.push(`- [${collectionTitle(cf)}](${SITE}${cf}): ${metaDescription(cf)}${mdLink(cf)}`);
   }
   out.push('');
 
