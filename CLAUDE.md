@@ -150,6 +150,33 @@ The central phrase compresses through registers, each with a use:
   values: `og:site_name` is `Star Stuff · Stimpunks Foundation × More Realms`, and `publisher` is an
   **array of both organizations** — Stimpunks Foundation (`https://stimpunks.org/`, with the
   `og-card.jpg` logo) then More Realms (`https://morerealms.com/`). See *Co-branding* below.
+- **Every data table carries an accessible name and every header cell a `scope`** (2026-09-09).
+  WCAG 1.3.1, Level A. Two naming conventions are both in use and both fine: a `<caption>` (59
+  tables) or an `aria-label` on the `<table>` (24, all of them field-guide templates where the name
+  interpolates the entry). **Don't "fix" an `aria-label` into a caption** — it already names the
+  table. `<th>` inside `<thead>` takes `scope="col"`; a `<th>` that begins a body row and is
+  explained by the cell beside it takes `scope="row"` (only `print-design.html` does this). **An
+  empty corner `<th>` gets no scope**, because it names nothing and a scope there asserts a
+  relationship that does not exist — two of those exist, deliberately.
+- **Table counts in source are NOT what a reader meets, and the gap is large.** 23 of the 83
+  source tables live inside JS template strings and are instantiated once per field-guide entry, so
+  the rendered figures are **353 tables and 1,028 header cells**. Measure this in the accessibility
+  tree — `Accessibility.getFullAXTree`, checking every header cell announces as `columnheader` or
+  `rowheader` rather than `cell` — because **no gate here can ask that question**, and a source
+  count under-reports by 4×.
+- **`grep -o '<th'` also matches `<thead>`, and this shipped a wrong number to the public
+  changelog.** There are 81 `<thead>` elements here, so the pattern returns **299** where the real
+  `<th>` count is **218** — 218 + 81 = 299 exactly, which is why the wrong figure looked plausible.
+  Use `grep -oE '<th[ >]'`. Filed here rather than only in `FACTCHECK.md` because it is the
+  *counts go stale* lesson in its nastier form: not a figure that rotted, a **method that was never
+  right**, which reproduces every time it is run.
+- **A caption is `text-transform: uppercase`, so it must carry no unit symbols.** `mm` becomes
+  `MM`, which is a different claim — the same fault as `µm` rendering as `MM`, in a new slot.
+  `print-design.html`'s caption names no measurement even though all four of its row headers are
+  measurements. **And three of the four pages that needed a caption had no `caption` CSS rule at
+  all**, so the added caption would have rendered as centred browser default mid-page; check for a
+  *bare* `caption` selector before adding one, and note that grepping `caption` matches
+  `.diagram-caption`, which is how that check went wrong the first time.
 - **Every page carries a skip link, and it is the first thing in `<body>`** (added 2026-09-09,
   from a specification.website audit). WCAG 2.4.1 Bypass Blocks, Level A, and we had **zero of
   197 pages** carrying one, from the first page on 2026-07-17 to 2026-09-09: the `.ss-nav` cluster is six controls — home,

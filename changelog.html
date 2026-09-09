@@ -226,9 +226,46 @@
 
   </div>
 
+  <!-- ================= 2026-09-09b (site: data tables) ================= -->
+  <section class="release" id="2026-09-09-tables" aria-labelledby="h-2026-09-09-tables">
+    <div class="release-date">2026 &middot; September 9 &middot; latest</div>
+    <h2 class="release-title" id="h-2026-09-09-tables">A screen reader can now tell you which column a table cell is in &mdash; and two numbers we published this morning were wrong</h2>
+    <p class="release-note">The second half of the accessibility audit: <strong>199 header cells</strong> given a <code>scope</code>, four tables that had no accessible name at all given a caption, and <strong>161 table names that read &ldquo;the The&hellip;&rdquo;</strong> repaired. <strong>Corrected below:</strong> both table figures in this morning's entry were overstated, one of them because our own counting method was broken.</p>
+
+    <div class="entry entry--factcheck">
+      <div class="entry-head"><span class="tag tag--factcheck">Correction</span><span class="entry-name">We said 282 of 299 header cells and 28 uncaptioned tables. Both numbers were wrong</span></div>
+      <div class="entry-body"><p><strong>What we said, this morning, on this page and in the ledger.</strong> That <em>&ldquo;282 of 299 <code>&lt;th&gt;</code> carry no <code>scope</code>&rdquo;</em> and <em>&ldquo;28 of 83 tables have no <code>&lt;caption&gt;</code>&rdquo;</em>.</p>
+      <p><strong>The first was a broken count, and the bug is worth naming because it is one keystroke.</strong> The figure came from <code>grep -o '&lt;th'</code> &mdash; which also matches <code>&lt;thead&gt;</code>. There are 81 <code>&lt;thead&gt;</code> elements here, and 218 + 81 = 299 exactly. <strong>The real figure was 201 of 218.</strong> The correct pattern is <code>grep -oE '&lt;th[ &gt;]'</code>. An audit that inflates its own findings is not being cautious; it is being wrong in the direction that feels safe.</p>
+      <p><strong>The second was literally true and materially misleading.</strong> 28 tables did lack a <code>&lt;caption&gt;</code> &mdash; but <strong>24 of them carry an <code>aria-label</code></strong> on the <code>&lt;table&gt;</code>, which gives them an accessible name just as a caption does. Only <strong>four</strong> tables on the whole site had no name by any means. Presenting 28 as an accessibility failure counted a naming convention we had deliberately chosen as an absence.</p>
+      <p><strong>Caught by us, while fixing it</strong> &mdash; the inventory taken before the first edit disagreed with the audit that ordered the edit. That is the good case, and it is the second time in one day that <em>the error was in our own check rather than in the thing being checked</em>. The lesson is already written down here in another form: a derivation that returns a number nobody reads back is not a derivation.</p></div>
+    </div>
+
+    <div class="entry entry--site">
+      <div class="entry-head"><span class="tag tag--site">Site</span><span class="entry-name">199 header cells given a scope, so a cell knows which column it belongs to</span></div>
+      <div class="entry-body"><p><strong>What was wrong.</strong> WCAG 1.3.1 Info and Relationships, Level A. A sighted reader takes in the column heading above a number and the row label beside it at once. A screen-reader user is told only what the markup encodes &mdash; so without <code>scope</code>, landing on a cell gives you the value and nothing that makes it mean anything.</p>
+      <p><strong>The shape of the fix turned out to be almost entirely mechanical, which is worth stating because it was not obvious in advance.</strong> An inventory of all 83 tables in source found that <strong>81 of them</strong> put every header cell inside a <code>&lt;thead&gt;</code> &mdash; so every one is a column header, and nothing had to be judged. Exactly two tables needed a decision: <a href="print-design.html">print-design.html</a>, whose four headers each begin a row and are explained by the cell beside them (<code>scope="row"</code>), and <a href="even-fallen-light-glows-zine.html">even-fallen-light-glows-zine.html</a>, whose header row has no <code>&lt;thead&gt;</code> around it (<code>scope="col"</code>).</p>
+      <p><strong>Two empty corner cells were deliberately left bare.</strong> A header cell with no text names nothing, and giving it a scope would assert a relationship that does not exist.</p>
+      <p><strong>Verified in the accessibility tree, not in the source.</strong> The source count is misleading on its own: 23 of those 83 tables live inside JavaScript template strings and are instantiated once per field-guide entry, so what a reader actually meets is <strong>353 tables carrying 1,028 header cells</strong>. A probe reading <code>Accessibility.getFullAXTree</code> across all 60 table-bearing pages reports all 1,028 announcing as <code>columnheader</code> or <code>rowheader</code> rather than <code>cell</code>, and all 353 tables with a non-empty accessible name. <strong>No gate here can ask that question</strong> &mdash; they measure colour, tag structure, position, paper, sitemap, findability, dead classes and card order.</p></div>
+    </div>
+
+    <div class="entry entry--site">
+      <div class="entry-head"><span class="tag tag--site">Site</span><span class="entry-name">161 table names read &ldquo;How a default reading misreads the The Biggest Mouth in the Sea&rdquo;</span></div>
+      <div class="entry-body"><p>Found while confirming that <code>scope</code> had reached the rendered DOM, by reading one field guide's accessible names rather than its markup. Fourteen guides label each entry's table from a template ending <code>misreads the ${entry.name}</code> &mdash; and most entry names begin with an article of their own. <strong>161 of 208 entries</strong> produced a doubled article in the one string a screen reader uses to announce the table.</p>
+      <p>The article is gone from all fourteen templates. It reads <em>&ldquo;misreads The Biggest Mouth in the Sea&rdquo;</em> now, and <em>&ldquo;misreads Whale Shark&rdquo;</em> for an entry with no article &mdash; slightly bare, and never wrong. <strong>This was invisible to every check on the site and to anyone reading the source</strong>, because the defect exists only in the assembled string: the template is correct English and so is the entry name.</p></div>
+    </div>
+
+    <div class="entry entry--site">
+      <div class="entry-head"><span class="tag tag--site">Site</span><span class="entry-name">Four tables that had no name at all, and a caption that must not contain units</span></div>
+      <div class="entry-body"><p>Captions added to the four tables with neither a <code>&lt;caption&gt;</code> nor an <code>aria-label</code>: the three-woman credit ledger in <a href="conquering-gaze-zine.html">The Conquering Gaze</a>, the one-word-two-meanings table in <a href="elimination-of-waste-zine.html">The Elimination of Waste</a>, the sheet specification in <a href="print-design.html">Designing for Paper</a>, and the three-systems thermodynamics table in <a href="rainbow-serpents.html">Rainbow Serpents</a>. Each says what the table is rather than repeating the heading above it &mdash; the same overlap test the card taglines have to pass.</p>
+      <p><strong>Three of the four pages had no <code>caption</code> CSS rule at all</strong>, so an added caption would have rendered as centred browser-default text in the middle of a house page. Each got a rule matching its own table's label style. The first attempt to check this was itself wrong: a grep for <code>caption</code> matched <code>.diagram-caption</code> on two of the pages and reported styling that was not there.</p>
+      <p><strong>And one house constraint that decided the wording.</strong> Captions here are <code>text-transform: uppercase</code>, and uppercase destroys unit symbols &mdash; the reason a caption for the sheet specification says <em>&ldquo;four decisions in the sheet specification, and what each one buys&rdquo;</em> and names no measurement, even though every row header is one. A caption reading <code>190 × 259 MM</code> would be a different claim from <code>190 × 259 mm</code>.</p></div>
+    </div>
+
+  </section>
+
   <!-- ================= 2026-09-09 (site: accessibility, privacy, headers) ================= -->
   <section class="release" id="2026-09-09-skip-links" aria-labelledby="h-2026-09-09-skip-links">
-    <div class="release-date">2026 &middot; September 9 &middot; latest</div>
+    <div class="release-date">2026 &middot; September 9</div>
     <h2 class="release-title" id="h-2026-09-09-skip-links">Every page on this site made a keyboard reader walk past six links to reach the first word &mdash; on all 197 of them, since the first one shipped</h2>
     <p class="release-note">An audit of starstuff.earth against <a href="https://specification.website/">The Website Specification</a>, and the fixes it earned. The largest was a <strong>skip link</strong>, which we did not have anywhere. Also: 66 YouTube embeds moved to the no-cookie host, four security response headers, a <a href="404.html">real 404 page</a> instead of the host&rsquo;s default, and intrinsic dimensions on every image. Two faults were found <em>while</em> fixing, and both are logged below.</p>
 

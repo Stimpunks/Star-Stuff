@@ -987,8 +987,8 @@ function renderGrid() {
     /* The three not-carded entries carry no facts, and that omission is the
        argument their section head makes. Rendering an empty table would undo it. */
     const table = entry.facts ? `
-        <table class="rule-table" aria-label="How the popular telling misreads the ${entry.name}">
-          <thead><tr><th>Trait</th><th>Sounds like</th><th>Actually</th></tr></thead>
+        <table class="rule-table" aria-label="How the popular telling misreads ${entry.name}">
+          <thead><tr><th scope="col">Trait</th><th scope="col">Sounds like</th><th scope="col">Actually</th></tr></thead>
           <tbody>${entry.facts.map(f => `<tr><td>${f.trait}</td><td>${f.sounds}</td><td>${f.truth}</td></tr>`).join('')}</tbody>
         </table>` : '';
 

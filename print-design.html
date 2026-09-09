@@ -107,6 +107,7 @@
      paragraph — a reader checking one should be able to find it. */
   .spec { width: 100%; border-collapse: collapse; margin-top: 1.4rem; font-size: 0.95rem; }
   .spec th, .spec td { text-align: left; padding: 0.7rem 0.8rem 0.7rem 0; border-bottom: 1px solid var(--border); vertical-align: top; line-height: 1.6; }
+  .spec caption { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); text-align: left; padding-bottom: 0.7rem; }
   .spec th { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 700; padding-right: 1.4rem; width: 30%; }
   .spec td { color: var(--stardust); }
   .spec strong { color: var(--star-white); }
@@ -173,20 +174,21 @@
 
     <div class="spec-wrap">
     <table class="spec">
+              <caption>Four decisions in the sheet specification, and what each one buys</caption>
       <tr>
-        <th>190 × 259 mm</th>
+        <th scope="row">190 × 259 mm</th>
         <td>The intersection of A4 and US Letter. At 9 mm page margins, A4 gives a box of 192 × 279 mm and Letter gives 198 × 261 — so a sheet inside <strong>both</strong> is one file that prints uncropped in either country, with no &ldquo;US version&rdquo; to maintain and get out of sync.</td>
       </tr>
       <tr>
-        <th>9 mm margins, not 10</th>
+        <th scope="row">9 mm margins, not 10</th>
         <td>At 10 mm the Letter box is 259.4 mm against a 259 mm sheet. That 0.4 mm of slack was thin enough for sub-pixel rounding to tip the whole thing onto <strong>a third page</strong>. Found by printing to PDF and counting, not by reading the arithmetic — the arithmetic said it fit.</td>
       </tr>
       <tr>
-        <th>Two sides, A and B</th>
+        <th scope="row">Two sides, A and B</th>
         <td>Side A is the face; side B does the work. Enforced structurally: each side is a <code>.sheet</code> element with <code>page-break-after</code> on the first, so the file is two printed sides or it is broken.</td>
       </tr>
       <tr>
-        <th>Breakpoint below 700 px</th>
+        <th scope="row">Breakpoint below 700 px</th>
         <td>The one that looks like a screen concern and isn't. <strong>Print media queries resolve against the page box, not the screen</strong> — and the narrowest real page box here is A4 less its margins, 192 mm, or about 726 px. A mobile breakpoint set at 820 px was therefore matching <em>on paper</em>, collapsing a two-column card into one 190 mm column at roughly 95 characters a line, long enough that side B overran and was silently clipped.</td>
       </tr>
     </table>
