@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0a0a14">
+<!-- Deliberately NO <link rel="canonical">: this document answers at every address that
+     does not exist, so it has no canonical self to point at. And an explicit noindex,
+     because an error page is exactly the thin content that directive is for — it is the
+     one page here that should never be a search result. Netlify serves this file with a
+     real 404 status automatically; the status is the part that matters and it is not
+     something the markup can get wrong. Not listed in sitemap.xml, and exempt in
+     tools/check-sitemap.mjs for that reason. -->
+<meta name="robots" content="noindex, follow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta name="description" content="That address isn't here — the page may have been renamed, or the link may have lost its tail. Ways back into the Star Stuff collection: the front page, the search, and what came out this week.">
+<title>Page not found — Star Stuff — Stimpunks × More Realms</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="starstuff.css">
+<style>
+  :root {
+    --void:  var(--sp-void-deep);
+    --card:  var(--sp-card);
+    --violet:var(--sp-purple);
+    --pink:  var(--sp-pink);
+    --gold:  var(--sp-gold);
+    --cyan:  var(--sp-cyan);
+    --green: var(--sp-green);
+    /* This page's tint. Pink was the one accent still free: Search is violet,
+       About gold, Changelog cyan, Design green. */
+    --accent: var(--sp-pink);
+    --star-white: var(--sp-white-soft);
+    --stardust:   var(--sp-secondary-soft);
+    --dim:   var(--sp-dim);
+    --dim2:  var(--sp-dim-soft);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--void);
+    font-family: 'Atkinson Hyperlegible Next', system-ui, sans-serif;
+    color: var(--star-white);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 8% 12%, rgba(251,191,36,0.85) 0%, transparent 100%),
+      radial-gradient(1px 1px at 22% 38%, rgba(244,244,251,0.6) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 44% 9%, rgba(244,114,182,0.7) 0%, transparent 100%),
+      radial-gradient(1px 1px at 61% 68%, rgba(34,211,238,0.6) 0%, transparent 100%),
+      radial-gradient(2px 2px at 74% 28%, rgba(167,139,250,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 84% 54%, rgba(74,222,128,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 91% 79%, rgba(244,244,251,0.7) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 4% 58%, rgba(251,191,36,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 34% 84%, rgba(244,244,251,0.6) 0%, transparent 100%),
+      radial-gradient(2px 2px at 19% 88%, rgba(167,139,250,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 69% 4%, rgba(244,244,251,0.8) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 30% 20%, rgba(74,222,128,0.5) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .doc-shell { position: relative; z-index: 1; max-width: 760px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+
+  .spectrum-line { height: 2px; border: none; border-radius: 2px; background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); }
+
+  .nav-brand { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--dim); margin: 1.6rem 0 2.5rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(167,139,250,0.2); }
+
+  .hero { margin-bottom: 2rem; }
+  .hero-eyebrow { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.36em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.3rem; }
+  .hero-title { font-weight: 700; font-size: clamp(2.1rem, 6vw, 3.4rem); line-height: 1.05; letter-spacing: -0.02em; color: var(--star-white); margin-bottom: 1.1rem; }
+  .hero-title em { font-style: normal; background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .hero-sub { font-size: 1.02rem; line-height: 1.6; color: var(--stardust); max-width: 38rem; }
+  .hero-rule { width: 200px; max-width: 55%; margin-top: 1.6rem; }
+
+  .body-text { margin-top: 2.2rem; }
+  .body-text p { font-size: 0.99rem; line-height: 1.72; color: var(--stardust); margin-bottom: 1.1rem; max-width: 38rem; }
+  .body-text a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(244,114,182,0.4); }
+  .body-text a:hover { color: var(--star-white); }
+
+  /* ── The doors ──
+     A 404 that only apologises is a dead end with manners. Each of these is a real
+     route back, and the descriptions say what is behind the door rather than
+     repeating the link text — "read more" four times over would fail the same
+     link-text rule this page exists to respect. */
+  .doors { list-style: none; margin: 2.4rem 0 0; display: grid; gap: 0.9rem; }
+  .door {
+    background: var(--card);
+    border: 1px solid rgba(244,114,182,0.22);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 8px 8px 0;
+    padding: 1rem 1.15rem;
+  }
+  /* `>` on purpose. Written as `.door a` first, which also caught the "an RSS feed"
+     link inside the What's New door's paragraph and rendered it as a second bold
+     block title with its own line — a real defect, and no gate can see it: the
+     markup is valid, the class is live, the contrast passes and nothing collides. */
+  .door > a { display: block; color: var(--star-white); text-decoration: none; font-weight: 700; font-size: 1.02rem; letter-spacing: -0.01em; }
+  .door > a:hover { color: var(--accent); }
+  .door a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+  .door p { font-size: 0.88rem; line-height: 1.6; color: var(--stardust); margin-top: 0.35rem; }
+  .door p a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(244,114,182,0.4); }
+  .door p a:hover { color: var(--star-white); }
+
+  .section-label { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--accent); margin: 3rem 0 0.2rem; font-weight: 400; }
+
+  .colophon-footer { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--dim2); line-height: 2.2; margin-top: 3.4rem; padding-top: 1.4rem; border-top: 1px solid rgba(167,139,250,0.14); }
+  .colophon-footer a { color: var(--dim); text-decoration: none; border-bottom: 1px solid rgba(167,139,250,0.2); }
+  .colophon-footer a:hover { color: var(--stardust); }
+
+  @media (max-width: 600px) {
+    .doc-shell { padding: 2rem 1.3rem 3rem; }
+  }
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Page not found","description":"The requested address is not part of the Star Stuff collection. Routes back: the front page, the search, and the newest pieces.","isPartOf":{"@type":"WebSite","name":"Star Stuff","url":"https://starstuff.earth/"},"publisher":[{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/","logo":{"@type":"ImageObject","url":"https://starstuff.earth/og-card.jpg"}},{"@type":"Organization","name":"More Realms","url":"https://morerealms.com/"}]}</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<div class="doc-shell">
+
+  <nav class="ss-nav" style="--nav-accent:#f472b6;" aria-label="Star Stuff collection">
+    <span class="ss-nav-home-group">
+      <a class="ss-nav-home" href="index.html"><span class="ss-star" aria-hidden="true">★</span> stuff</a>
+      <a class="ss-nav-about" href="about.html">about</a>
+      <a class="ss-nav-search" href="search.html">search</a>
+    </span>
+  </nav>
+<main id="main" tabindex="-1">
+
+  <div class="nav-brand"><a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks</a> × <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a> · Page Not Found</div>
+
+  <header class="hero">
+    <div class="hero-eyebrow"><a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks Foundation</a> × <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a> · 404</div>
+    <h1 class="hero-title">That address isn't <em>here</em></h1>
+    <p class="hero-sub">Nothing is wrong with you and nothing is wrong with your browser. A page may have been renamed, or a link may have lost its tail somewhere between one place and another. The collection is still where you left it.</p>
+    <hr class="spectrum-line hero-rule">
+  </header>
+
+  <div class="body-text">
+    <p>A few addresses here <em>have</em> moved, and those are set up to forward on their own — so if you followed an old link and landed at this page instead, the address probably lost a character in transit rather than being retired. Worth a second look at where it came from.</p>
+    <p>Otherwise, the fastest way to find a specific thing is the search: it runs entirely in your browser, over every zine, field guide and broadside, down to the individual spread — so a result takes you to the passage rather than the top of a long page.</p>
+  </div>
+
+  <h2 class="section-label">Ways back in</h2>
+
+  <ul class="doors">
+    <li class="door">
+      <a href="index.html">The front page</a>
+      <p>Everything, arranged by section — the collections, the field guides, the playlists, the print sheets.</p>
+    </li>
+    <li class="door">
+      <a href="search.html">Search the collection</a>
+      <p>Full text across every page and every spread. No server, no tracking; what you type stays on your device.</p>
+    </li>
+    <li class="door">
+      <a href="whats-new.html">What's new</a>
+      <p>Everything newest first, with the line each piece leads with. Also available as <a href="feed.xml">an RSS feed</a>.</p>
+    </li>
+    <li class="door">
+      <a href="collection-start-here.html">Start Here</a>
+      <p>Three doors in and one out, if you've arrived without a particular page in mind.</p>
+    </li>
+    <li class="door">
+      <a href="changelog.html">The changelog</a>
+      <p>What changed and why, newest first — including the corrections to our own work, which is the point of keeping it.</p>
+    </li>
+  </ul>
+
+  <div class="body-text">
+    <p>If a link on this site is broken, that's ours to fix and we'd like to know: open an issue on <a href="https://github.com/Stimpunks/Star-Stuff/issues">GitHub</a>, or reach us at <a href="https://stimpunks.org">stimpunks.org</a>. A URL is a promise, and we'd rather keep it than have you work around it.</p>
+    <p>We love you down to your star stuff.</p>
+  </div>
+
+  <div class="colophon-footer">
+    <a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks Foundation</a> × <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a> · <a href="https://starstuff.earth">starstuff.earth</a> · <a href="https://stimpunks.org">stimpunks.org</a> · <a href="https://morerealms.com">morerealms.com</a><br>
+    Print freely · Share freely · <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> · L★S · You were ★stuff all along
+  </div>
+
+</div><!-- /doc-shell --></main>
+
+</body>
+</html>

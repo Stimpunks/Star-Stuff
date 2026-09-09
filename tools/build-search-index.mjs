@@ -104,8 +104,11 @@ if (!CHROME) {
   process.exit(1);
 }
 
-/* Pages that are tooling or duplicates rather than readable artifacts. */
-const SKIP = new Set(['search.html']);
+/* Pages that are tooling or duplicates rather than readable artifacts. search.html is
+   the search itself. 404.html (added 2026-09-09) would be a search result that means
+   "the thing you searched for does not exist" — and its prose names five other pages,
+   so it would compete with them on their own titles. */
+const SKIP = new Set(['search.html', '404.html']);
 
 /* ─────────────────────────────────────────────────────────────────────────────
    The in-page extractor. Runs inside each page after render.

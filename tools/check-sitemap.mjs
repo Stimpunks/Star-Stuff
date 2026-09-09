@@ -96,8 +96,15 @@ const ORIGIN = 'https://starstuff.earth/';
 
 /* index.html is exempt from the "missing" check by design — it is covered by the
    bare origin entry rather than listed under its own filename. Check 6 guards
-   that entry's existence so the exemption cannot quietly become a hole. */
-const EXEMPT = new Set(['index.html']);
+   that entry's existence so the exemption cannot quietly become a hole.
+
+   404.html is exempt for the opposite reason: it must NOT be listed. It is the
+   document Netlify returns for every address that does not exist, so it has no
+   address of its own to submit, and it carries `noindex` on its own face. Added
+   2026-09-09 with the page. Note there is no check guarding this one the way
+   check 6 guards the root entry — if the file is ever deleted, this line becomes
+   dead rather than a hole, which is the harmless direction. */
+const EXEMPT = new Set(['index.html', '404.html']);
 
 const args = process.argv.slice(2);
 const gating = args.includes('--check');

@@ -16,8 +16,50 @@
 #
 # This header does nothing. That is the point.
 
+# ── Security response headers (added 2026-09-09, from a specification.website audit) ──
+#
+# Netlify already sends `strict-transport-security: max-age=31536000` on its own, and
+# already redirects http -> https. The line below restates it WITH includeSubDomains,
+# which Netlify's default omits. Checked before adding it: the only subdomain that
+# resolves is www.starstuff.earth, which is on Netlify and 301s to the apex over
+# HTTPS, so forcing HTTPS across the whole tree for a year costs nothing. Deliberately
+# NO `preload` — the preload list's own operator now discourages it, and it is close
+# to irreversible.
+#
+# nosniff stops a browser guessing a response's type when the Content-Type looks
+# wrong. Cheap, and there is no case here where guessing helps.
+#
+# frame-ancestors is the clickjacking control, and it is the CSP form rather than the
+# legacy X-Frame-Options. It is NOT 'none': stimpunks.org's /star-stuff/ hub is our
+# single best referrer and morerealms.com is the other half of the masthead, so both
+# collaborators can embed us. Everyone else cannot. If a partner ever needs to frame
+# a page, add their origin here rather than dropping the directive.
+#
+# This is deliberately not a full Content-Security-Policy. Every page here carries an
+# inline <style> and many carry inline <script>, so a real policy needs script-src /
+# style-src decisions (nonces, or 'unsafe-inline', which would be a policy in name
+# only) plus an allow-list covering fonts.googleapis.com, fonts.gstatic.com,
+# youtube-nocookie.com and open.spotify.com. That is a separate job with a real
+# chance of breaking pages; frame-ancestors is the half that is required and safe.
+#
+# Referrer-Policy: our URLs are public documents, so leaking one is not a privacy
+# problem in itself — but a reader following an outbound citation should not hand the
+# destination the full path they came from. strict-origin-when-cross-origin sends the
+# bare origin off-site and the full path within it.
+#
+# Permissions-Policy names ONLY features nothing on this site uses. Autoplay,
+# encrypted-media, fullscreen, picture-in-picture, clipboard-write, accelerometer,
+# gyroscope and web-share are all left alone on purpose: 292 YouTube embeds depend on
+# them and only 6 of those iframes carry an explicit `allow=`, so a document-level
+# denial would quietly break the racks. Verified before writing this list.
+
 /*
   X-Clacks-Overhead: GNU Terry Pratchett
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  X-Content-Type-Options: nosniff
+  Content-Security-Policy: frame-ancestors 'self' https://stimpunks.org https://morerealms.com
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), midi=(), serial=(), bluetooth=(), display-capture=(), xr-spatial-tracking=()
 
 # The RSS feed. Netlify serves .xml as application/xml, which every reader accepts,
 # but application/rss+xml is what a feed actually is — and it is what makes a browser

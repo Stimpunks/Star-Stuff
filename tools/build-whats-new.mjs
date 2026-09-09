@@ -403,6 +403,7 @@ function buildHtml() {
 <script type="application/ld+json">${jsonld}</script>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to main content</a>
 
 <div class="doc-shell">
 
@@ -413,7 +414,7 @@ function buildHtml() {
       <a class="ss-nav-search" href="search.html">search</a>
     </span>
   </nav>
-<main>
+<main id="main" tabindex="-1">
 
   <div class="nav-brand"><a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks</a> × <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a> · What's New</div>
 

@@ -52,6 +52,46 @@
   50%      { opacity: 0.15; transform: scale(0.3); }
 }
 
+/* ── Skip link ──
+   WCAG 2.4.1 Bypass Blocks. Every page here opens with .ss-nav — home, about,
+   search, prev, next and the collection badge — so a Tab-only reader walked past
+   six controls before the first word, on all 196 pages. Screen readers have the
+   headings and landmark rotors (both fixed 2026-09-01); switch-device and
+   Tab-only readers had nothing.
+
+   Offscreen, NOT display:none — display:none takes it out of the accessibility
+   tree and it can never be focused, which is the standard way this ships broken.
+   The target is <main id="main" tabindex="-1">, uniform across the collection;
+   the tabindex is what makes focus actually move into main rather than merely
+   scrolling the page.
+
+   Selector is a.skip-link (0,1,1), on purpose, for the reason .ss-cobrand is
+   over-specific: this sheet loads BEFORE each page's inline <style>, and a page
+   rule as ordinary as `a { color: … }` at (0,0,1) already loses, but the pages
+   here also carry shell-scoped anchor rules. Don't simplify it to .skip-link.
+   Colors are the print-safe tokens so it inverts with everything else, though it
+   is hidden on paper anyway — see the @media print chrome block. */
+a.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -3rem;
+  z-index: 100;
+  padding: 0.6rem 1rem;
+  background: var(--sp-void);
+  color: var(--sp-white);
+  border: 2px solid var(--sp-purple);
+  border-radius: 6px;
+  font-family: 'Atkinson Hyperlegible Next', system-ui, sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  transition: top 0.15s ease;
+}
+a.skip-link:focus {
+  top: 1rem;
+}
+
 .ss-nav {
   --nav-accent: #a78bfa;
   position: relative;
@@ -426,6 +466,7 @@ a.ss-cobrand.ss-cobrand:focus-visible { text-decoration-color: currentColor; }
 
   /* Site + paging chrome never belongs on paper. */
   .ss-nav { display: none !important; }
+  .skip-link { display: none !important; }   /* an in-page jump means nothing on a sheet */
   .nav { display: none !important; }             /* paged-zine top prev/next bar */
   .spread-nav-btn { display: none !important; }  /* injected footer prev/next buttons */
 

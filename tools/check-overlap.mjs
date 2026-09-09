@@ -163,7 +163,7 @@ const REVEAL = String.raw`(() => {
 })()`;
 
 const MEASURE = String.raw`((cfg) => {
-  const { INK_RATIO, MIN_OVERLAP, MIN_PX, CLIP_TOL } = cfg;
+  const { INK_RATIO, MIN_OVERLAP, MIN_PX, CLIP_TOL, OFFSCREEN } = cfg;
   const SVG_NS = 'http://www.w3.org/2000/svg';
 
   /* ── boxes ────────────────────────────────────────────────────────────────
@@ -296,6 +296,7 @@ const MEASURE = String.raw`((cfg) => {
      why-difference-comes-first-zine.html had 0.22em of a closing quote's bearing
      past the edge with the glyph itself intact. */
   const clipped = [];
+  let offscreen = 0;
   const CLIP = new Set(['hidden', 'clip']);
   for (const box of boxes) {
     const el = box.el;
@@ -321,6 +322,9 @@ const MEASURE = String.raw`((cfg) => {
     if (!h.width || !h.height) continue;
     const out = Math.max(h.left - box.l, box.r - h.right, h.top - box.t, box.b - h.bottom);
     if (out > Math.max(1, CLIP_TOL * box.em)) {
+      /* Offscreen by design — see OFFSCREEN below. Counted, never silently dropped:
+         a clip this tool stops reporting is a clip nobody is looking for. */
+      if (OFFSCREEN.some((q) => el.closest && el.closest(q))) { offscreen++; continue; }
       clipped.push({
         text: box.text, sel: sel(el), by: Math.round(out * 10) / 10,
         em: Math.round((out / box.em) * 100) / 100,
@@ -340,7 +344,7 @@ const MEASURE = String.raw`((cfg) => {
     return (s && s.id) || 'page';
   }
 
-  return JSON.stringify({ boxes: boxes.length, hits, clipped });
+  return JSON.stringify({ boxes: boxes.length, hits, clipped, offscreen });
 })`;
 
 /* ─── minimal CDP client — same shape as check-contrast.mjs ─────────────────── */
@@ -444,8 +448,30 @@ function resolveTargets() {
    CLIP_TOL    how far outside a clipping box text may sit, as a fraction of its own
                font size, before it counts as cut off. Absorbs the glyph advance
                box's side bearings. See the clipped section for the two measured
-               cases either side of it. */
-const CFG = { INK_RATIO: 0.8, MIN_OVERLAP: 0.22, MIN_PX: 3, CLIP_TOL: 0.25 };
+               cases either side of it.
+   OFFSCREEN   selectors whose text is SUPPOSED to sit outside the box, so being
+               clipped is the feature rather than the fault. Exactly one entry, and
+               the bar for a second is the bar check-contrast.mjs set for its
+               watermark and check-classes.mjs set for its HOOKS: a decision somebody
+               wrote down with a reason, never a pattern a page can fall into. There
+               is deliberately no rule like "ignore anything positioned off the
+               viewport" — that is how a real clip disappears by acquiring a
+               position property.
+
+               .skip-link (added 2026-09-09 with the repo-wide skip link) parks at
+               top:-3rem and slides to top:1rem on :focus. That is the standard
+               technique and the standard is that way on purpose: display:none would
+               remove it from the accessibility tree and it could never be focused,
+               which is the usual way this ships broken. This tool measured the
+               unfocused state and called it clipped on 5 of the first 7 pages swept
+               — correct in mechanics, wrong in meaning. Note it did NOT fire on
+               index.html or ls-broadside.html, so the report was per-page rather
+               than per-element and reading it as a page problem would have sent
+               somebody looking at the wrong pages. */
+const CFG = {
+  INK_RATIO: 0.8, MIN_OVERLAP: 0.22, MIN_PX: 3, CLIP_TOL: 0.25,
+  OFFSCREEN: ['.skip-link'],
+};
 
 async function main() {
   const files = resolveTargets();
@@ -541,11 +567,22 @@ async function main() {
   const hits = results.reduce((a, [, o]) => a + o.hits.length, 0);
   const clipped = results.reduce((a, [, o]) => a + o.clipped.length, 0);
   const boxes = results.reduce((a, [, o]) => a + o.boxes, 0);
+  const offscreen = results.reduce((a, [, o]) => a + (o.offscreen || 0), 0);
 
   console.log(
     `\n${results.length} page(s) · ${boxes.toLocaleString()} text boxes measured at ` +
       `${VIEWPORT.width}×${VIEWPORT.height} · ${hits} collision(s), ${clipped} clipped`
   );
+
+  /* On its own line, like the exemption counts in check-contrast.mjs: a list that
+     grows is a list somebody can question, and a number folded into the total is
+     a number nobody reads. */
+  if (offscreen) {
+    console.log(
+      `${offscreen} text box(es) sit outside their container BY DESIGN and are exempt ` +
+        `(${CFG.OFFSCREEN.join(', ')} — offscreen until focused).`
+    );
+  }
 
   /* Its own block, above the verdict. An unmeasured page is a broken RUN, not a
      clean page, and it gates separately for the same reason it does in

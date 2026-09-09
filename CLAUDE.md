@@ -64,6 +64,35 @@ The central phrase compresses through registers, each with a use:
     (i.e. pages lacking a global `changePage()` plus `.spread` / `.spread-footer` elements).
 - Supporting files: `favicon.svg`, `og-card.jpg`, shared cosmic image
   `35407642044_c29b4f2bd7_3k.jpg`, `robots.txt`, `sitemap.xml`.
+- **`404.html` is site furniture, like `search.html`, and it is exempt in three tools.** Netlify
+  serves it with a real 404 status for any address that does not exist; the status was always
+  correct, the page was the host's blank default until 2026-09-09. It carries `noindex` and **no
+  canonical** — it answers at every non-existent address, so it has none of its own — sits outside
+  the reading chain, and carries **no collection badge**, because a badge would claim the address
+  the reader asked for belongs to a collection when the whole message is that it does not exist.
+  Its three exemptions each name a reason on the line above: `NO_BADGE` in `check-markup.mjs`,
+  `EXEMPT` in `check-sitemap.mjs` (it must *not* be listed, the inverse of `index.html`'s reason),
+  and `SKIP` in `build-search-index.mjs` (a result meaning *the thing you searched for does not
+  exist* is worse than no result, and its prose names five other pages it would compete with).
+- **`_headers` carries the security headers, and what it deliberately omits is the interesting
+  half.** `nosniff`, CSP `frame-ancestors` (`'self'` plus stimpunks.org and morerealms.com — not
+  `'none'`, so both collaborators can embed us), `Referrer-Policy: strict-origin-when-cross-origin`,
+  a `Permissions-Policy` naming **only** features nothing here uses, and HSTS restated *with*
+  `includeSubDomains`, which Netlify's own default omits. **There is deliberately no full CSP:**
+  every page carries an inline `<style>` and many an inline `<script>`, so a real policy needs
+  nonces or `'unsafe-inline'`, and the second is a policy in name only. The file's own comments
+  carry the reasoning — read them before adding a directive.
+- **Video embeds use `youtube-nocookie.com`, always.** The house had made this call 226 times and
+  missed 66, on three pages, until 2026-09-09 — including one of the three doors in. **No gate can
+  see an embed host**, and none of the eight is wrong not to. Links to YouTube *watch* pages stay
+  on the normal host on purpose: a link the reader chooses to follow is a different thing from a
+  frame that loads whether they wanted it or not.
+- **Every `<img>` carries `width` and `height`.** Seven of eight had neither until 2026-09-09, so
+  the browser could not reserve their space. It is layout-neutral here because all three pages
+  involved already set `height: auto`; check that before adding the attributes to a page that
+  does not. **Still outstanding and named so it doesn't look finished:** the rasters are JPEG only
+  and one is 2.3 MB on a *Start Here* page, where AVIF has been the format to encode first since
+  July 2026.
 - **`whats-new.html` and `feed.xml` are generated, not edited.** Both come out of
   `tools/build-whats-new.mjs`; a hand edit is overwritten on the next run. See
   *What's New & RSS* below.
@@ -121,6 +150,28 @@ The central phrase compresses through registers, each with a use:
   values: `og:site_name` is `Star Stuff · Stimpunks Foundation × More Realms`, and `publisher` is an
   **array of both organizations** — Stimpunks Foundation (`https://stimpunks.org/`, with the
   `og-card.jpg` logo) then More Realms (`https://morerealms.com/`). See *Co-branding* below.
+- **Every page carries a skip link, and it is the first thing in `<body>`** (added 2026-09-09,
+  from a specification.website audit). WCAG 2.4.1 Bypass Blocks, Level A, and we had **zero of
+  197 pages** carrying one, from the first page on 2026-07-17 to 2026-09-09: the `.ss-nav` cluster is six controls — home,
+  about, search, prev, next, badge — so a Tab-only reader walked past all six to reach the first
+  word, on every page. **This was never costing screen-reader users**, who have the headings and
+  landmark rotors fixed on 2026-09-01; it was costing **switch-device and Tab-only readers**, who
+  have neither, which is why nobody using a mouse ever met it. Two lines, uniform everywhere:
+
+  ```html
+  <body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  ```
+
+  plus `<main id="main" tabindex="-1">`. **The `tabindex` is load-bearing** — without it some
+  browsers scroll the page and leave focus where it was, which looks like it worked. The styling
+  is in `starstuff.css` as `a.skip-link` — over-specific for the `.ss-cobrand` reason, since this
+  sheet loads *before* each page's inline `<style>`; don't simplify it. **Offscreen, never
+  `display:none`**, which removes it from the accessibility tree so it can never be focused: that
+  is the ordinary way this ships broken. **Nothing gates its presence**, so this is on you — and
+  `check-overlap.mjs` will correctly report it as clipped unless the element is in that tool's
+  `OFFSCREEN` list, which it is. Verify by keyboard, not by reading the sheet: one Tab from a
+  fresh load must reveal it, and Enter must land focus on `main#main`.
 - **Use real headings, with ids.** A section label must be an `<h1>`/`<h2>`, not a styled `<span>`
   — a screen reader's headings rotor *is* the table of contents, and `index.html` shipped with
   **zero heading elements** until 2026-08-12, so that list came back empty on the landing page of
@@ -495,7 +546,7 @@ never candidates for a register. Don't try to fold these into either table:
   `out-of-order-zine.html`, `true-facts-zine.html`, `watching-animals-field-guide.html`,
   `hatchery.html`, `quillery.html` and `one-atom-of-justice-zine.html`, because a chain link would
   walk a reader into an egg by accident and stop it being one.
-  (`index.html` and `search.html` are utility pages and were never in it, which makes
+  (`index.html`, `search.html` and `404.html` are utility pages and were never in it, which makes
   148 + 21 = 169, re-derived 2026-09-04 with the one-liner below.)
   **One is unexplained and wants a ruling:** `bow-ery.html` is outside the chain with no reason
   recorded here. It may be deliberate; nobody has written down which. (`glimmer-wire.html` was the
@@ -755,6 +806,13 @@ node tools/build-whats-new.mjs           # write whats-new.html and feed.xml
 node tools/build-whats-new.mjs --check   # exit non-zero if either is stale
 ```
 
+- **A repo-wide sweep over "every page" will silently lose its edit here, and that is not the same
+  failure as a hand edit.** On 2026-09-09 the skip-link pass touched all 197 pages, `whats-new.html`
+  among them; the next `build-whats-new.mjs` run rebuilt the page from the template inside the tool
+  and **the skip link was gone, with the tool reporting a clean successful build.** It was caught by
+  a `git diff --stat` that had two lines a moment before and none after. **A generated page does not
+  conflict, it reverts** — so a sweep of this kind owes the *template* the same edit, and the check
+  is `git diff` after regenerating, not before. The same applies to `feed.xml`.
 - **Both files are generated, and a hand edit is lost on the next run.** This is the *counts go
   stale* section applied in advance: a hand-kept list of 150 pieces is wrong the first time
   somebody ships a piece and edits one of two places. Every fact comes from two sources that
@@ -1184,6 +1242,15 @@ node tools/check-overlap.mjs --verbose           # every finding, not the first 
   owns page fitting). One viewport, 1280×900, matching `check-contrast.mjs` — a collision that only
   happens at 380px is real and this will not see it. And **text over non-text**: a label crossing a
   line or an arrowhead is a legibility judgement about artwork, and still needs eyes at render size.
+- **`OFFSCREEN` is the one exemption, added 2026-09-09, and it holds exactly `.skip-link`.** A skip
+  link parks outside the viewport until focused, so *being clipped is the feature* — this tool
+  failed **5 of the first 7 pages** swept after the skip-link pass, correct in mechanics and wrong
+  in meaning. Same bar as `check-contrast.mjs`'s watermark and `check-classes.mjs`'s HOOKS: an
+  explicit short list with the reason on the line above, and the count printed on its own line.
+  **There is deliberately no rule like "ignore anything positioned off the viewport"** — that is
+  how a real clip disappears by acquiring a `position`. **And read the report as per-element, not
+  per-page:** it did *not* fire on `index.html` or `ls-broadside.html` among those seven, so the
+  same fault looked like a problem with five particular pages.
 - 140 pages in ~2 min. Chrome and Node 22+; local dev tool, Netlify does not run it.
 
 

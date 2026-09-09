@@ -184,6 +184,7 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Changelog — Star Stuff","description":"What changed and when in the Star Stuff collection: every zine and field guide as it was added, every substantial revision, and every fact-check and attribution audit, including corrections to our own errors.","url":"https://starstuff.earth/changelog.html","inLanguage":"en","isPartOf":{"@type":"WebSite","name":"Star Stuff","url":"https://starstuff.earth/"},"publisher":[{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/","logo":{"@type":"ImageObject","url":"https://starstuff.earth/og-card.jpg"}},{"@type":"Organization","name":"More Realms","url":"https://morerealms.com/"}],"license":"https://creativecommons.org/licenses/by-sa/4.0/"}</script>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to main content</a>
 
 <div class="doc-shell">
 
@@ -195,7 +196,7 @@
     </span>
     <a class="ss-nav-collection" href="collection-notes.html"><span class="ss-nav-collection-label">Collection</span> <span class="ss-nav-collection-name">Notes &amp; Rationale</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
   </nav>
-<main>
+<main id="main" tabindex="-1">
 
   <div class="nav-brand"><a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks</a> × <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a> · Star Stuff Changelog</div>
 
@@ -225,9 +226,56 @@
 
   </div>
 
+  <!-- ================= 2026-09-09 (site: accessibility, privacy, headers) ================= -->
+  <section class="release" id="2026-09-09-skip-links" aria-labelledby="h-2026-09-09-skip-links">
+    <div class="release-date">2026 &middot; September 9 &middot; latest</div>
+    <h2 class="release-title" id="h-2026-09-09-skip-links">Every page on this site made a keyboard reader walk past six links to reach the first word &mdash; on all 197 of them, since the first one shipped</h2>
+    <p class="release-note">An audit of starstuff.earth against <a href="https://specification.website/">The Website Specification</a>, and the fixes it earned. The largest was a <strong>skip link</strong>, which we did not have anywhere. Also: 66 YouTube embeds moved to the no-cookie host, four security response headers, a <a href="404.html">real 404 page</a> instead of the host&rsquo;s default, and intrinsic dimensions on every image. Two faults were found <em>while</em> fixing, and both are logged below.</p>
+
+    <div class="entry entry--site">
+      <div class="entry-head"><span class="tag tag--site">Site</span><span class="entry-name">A skip link, on all 197 pages</span></div>
+      <div class="entry-body"><p><strong>What was wrong.</strong> Every page here opens with the same nav &mdash; home, about, search, prev, next, and the collection badge. A reader using a keyboard alone pressed Tab six times before reaching the first word of the piece, <em>on every page</em>. WCAG 2.4.1 (Level A) requires a way to bypass repeated blocks, and we had none: <strong>zero of 197 pages</strong> carried a skip link.</p>
+      <p><strong>Who this was costing.</strong> Not screen-reader users, mostly &mdash; they have the headings and landmark rotors, and we fixed both of those on 1 September. This was costing <strong>switch-device users and Tab-only users</strong>, who have neither. It is the accessibility failure that is hardest to notice from the inside, because a mouse never encounters it.</p>
+      <p><strong>The fix, and why it was cheap.</strong> The work done on 1 September paid for this one: every page already has exactly one <code>&lt;main&gt;</code> landmark, opening right where the nav ends, so the target already existed and only needed a name. Each page now carries one anchor as the first thing in the body, and <code>&lt;main id="main" tabindex="-1"&gt;</code>. The <code>tabindex</code> is load-bearing &mdash; without it some browsers scroll the page but leave focus where it was, which looks like it worked and is not.</p>
+      <p><strong>Offscreen, not hidden.</strong> The link sits at <code>top: -3rem</code> and slides to <code>top: 1rem</code> on focus. <code>display: none</code> would have been simpler and would have removed it from the accessibility tree, so it could never be focused &mdash; which is the ordinary way this ships broken. Verified by keyboard rather than by reading the stylesheet: one Tab from a fresh load reveals it, and activating it lands focus on <code>main#main</code>, checked on a paged zine and on the front page, whose <code>&lt;main&gt;</code> holds all 168 cards.</p></div>
+    </div>
+
+    <div class="entry entry--site">
+      <div class="entry-head"><span class="tag tag--site">Site</span><span class="entry-name">66 YouTube embeds were still on the cookie-setting host</span></div>
+      <div class="entry-body"><p>We embed 292 YouTube videos across the playlists and racks, and <strong>226 of them were already on <code>youtube-nocookie.com</code></strong> &mdash; the house had made that call, repeatedly, on purpose. Three pages missed it: <a href="joyful-sound-playlist.html">Joyful Sound</a> (36), <a href="ls-playlist.html">the LYDTYSS rack</a> (26), and <a href="love-you-down-to-your-star-stuff.html">Love You Down To Your Star Stuff</a> (4) &mdash; and that last one is one of the three doors into the collection.</p>
+      <p><strong>Nobody could have caught this but a person.</strong> All eight gates passed all three pages, and each was right to: an embed host is not a colour, a tag tree, a position, a paper size, a sitemap entry, a dead class or a card order. An inconsistency 226 pages deep is invisible to a tool that was never asked the question. Links to YouTube <em>watch</em> pages are deliberately unchanged &mdash; a link the reader chooses to follow is a different thing from a frame that loads whether they wanted it or not.</p></div>
+    </div>
+
+    <div class="entry entry--site">
+      <div class="entry-head"><span class="tag tag--site">Site</span><span class="entry-name">A 404 page that offers a way back</span></div>
+      <div class="entry-body"><p>Requests for addresses that do not exist have always returned the correct <strong>404 status</strong> &mdash; that part was never broken &mdash; but the page itself was the host&rsquo;s default: correct, blank, and no way onward. Now there is <a href="404.html">a real one</a>, in the house palette, offering five routes back and saying plainly that some old addresses <em>do</em> forward on their own, so a reader who followed an aged link should look again at where it came from before assuming the page is gone.</p>
+      <p>It carries <code>noindex</code> and no canonical, because it answers at every address that does not exist and therefore has no address of its own. It is deliberately absent from <code>sitemap.xml</code> and from the search index &mdash; a search result meaning &ldquo;the thing you searched for is not here&rdquo; would be worse than no result. Three of the eight gates needed an explicit exemption to let it through, each written down with its reason where the decision is visible rather than buried.</p></div>
+    </div>
+
+    <div class="entry entry--site">
+      <div class="entry-head"><span class="tag tag--site">Site</span><span class="entry-name">Four security headers, and honest limits on a fifth</span></div>
+      <div class="entry-body"><p><code>_headers</code> now sends <code>X-Content-Type-Options: nosniff</code>, a CSP <code>frame-ancestors</code> allowing only ourselves and the two collaborating organisations, <code>Referrer-Policy: strict-origin-when-cross-origin</code>, and a <code>Permissions-Policy</code> naming <em>only</em> features nothing here uses. Our host&rsquo;s own HSTS header omits <code>includeSubDomains</code>; ours states it, after checking that the one subdomain which resolves is served over HTTPS.</p>
+      <p><strong>What we did not do, and why.</strong> A full Content-Security-Policy is <em>not</em> here. Every page carries an inline <code>&lt;style&gt;</code> and many carry inline <code>&lt;script&gt;</code>, so a real policy needs nonces or <code>'unsafe-inline'</code> &mdash; and the second is a policy in name only. Shipping the reassuring half of a security header while it protects nothing would be worse than shipping neither. <code>frame-ancestors</code> is the half that is required, and it is safe.</p></div>
+    </div>
+
+    <div class="entry entry--site">
+      <div class="entry-head"><span class="tag tag--site">Site</span><span class="entry-name">Two faults found while fixing, neither of them the thing being fixed</span></div>
+      <div class="entry-body"><p><strong>A generated page quietly ate its own fix.</strong> The skip-link pass edited all 197 pages, <code>whats-new.html</code> among them &mdash; and that page is <em>generated</em>. The next run of <code>tools/build-whats-new.mjs</code> rewrote it from the template inside the tool and the skip link vanished, with the tool reporting a clean, successful build. It was caught by a <code>git diff</code> that had two lines a moment earlier and none afterwards. The template is patched now; the lesson is the one already written down about that file, arriving in a new costume: <strong>a repo-wide sweep over &ldquo;every page&rdquo; includes the pages a tool owns, and those will be silently reverted rather than conflicted.</strong></p>
+      <p><strong>A gate reported the fix as a defect, correctly.</strong> <code>check-overlap.mjs</code> asks whether text sits outside the box that clips it, and an offscreen-until-focused skip link is exactly that &mdash; so it failed 5 of the first 7 pages swept. True in mechanics, wrong in meaning. It now carries a one-entry exemption list with the reasoning attached, and the count prints on its own line so a list that grows is a list somebody can question. Notably it did <em>not</em> fire on two of the seven, so the report read as a per-page problem when it was a per-element one, which would have sent somebody to the wrong pages.</p>
+      <p><strong>And one defect in the new page itself, no gate could see.</strong> The 404&rsquo;s door cards style their title with <code>.door a</code> &mdash; which also caught the &ldquo;an RSS feed&rdquo; link inside one door&rsquo;s sentence and rendered it as a second bold heading on its own line. The markup was valid, the class was live, the contrast passed, nothing collided. It was visible in a screenshot and nowhere else. Now scoped with <code>&gt;</code>.</p></div>
+    </div>
+
+    <div class="entry entry--site">
+      <div class="entry-head"><span class="tag tag--site">Site</span><span class="entry-name">Intrinsic dimensions on every image, and what is still outstanding</span></div>
+      <div class="entry-body"><p>Seven of the eight <code>&lt;img&gt;</code> elements here had no <code>width</code> or <code>height</code>, so the browser could not reserve their space and the page jumped as they arrived. All eight now carry their real pixel dimensions; because all three pages involved already set <code>height: auto</code> in CSS, the layout is unchanged and only the reserved space is new.</p>
+      <p><strong>Named as still outstanding</strong>, rather than left to look finished: the images are JPEG only, and one is 2.3&nbsp;MB on a page in <em>Start Here</em>. AVIF reached baseline support in July 2026 and is now the format to encode first. Separately, 28 of our 83 tables have no <code>&lt;caption&gt;</code> and 282 of 299 header cells carry no <code>scope</code>, so a screen reader lands on a cell without being told which row and column it belongs to. That is a real Level A failure across 57 pages and it is not fixed today. And we still have <strong>no privacy page</strong> &mdash; we set no cookies, run no analytics and keep search entirely in your browser, but every page does request fonts from Google, and saying so plainly is owed.</p></div>
+    </div>
+
+  </section>
+
   <!-- ================= 2026-09-08 (No. 103) ================= -->
   <section class="release" id="2026-09-08-blood-ants" aria-labelledby="h-2026-09-08-blood-ants">
-    <div class="release-date">2026 &middot; September 8 &middot; latest</div>
+    <div class="release-date">2026 &middot; September 8</div>
     <h2 class="release-title" id="h-2026-09-08-blood-ants">The blood a horned lizard squirts at a coyote is made out of the ants it eats &mdash; and the viral claim we went looking to confirm is in none of the ten papers</h2>
     <p class="release-note"><a href="the-blood-was-made-of-ants-zine.html">Zine No. 103</a>, the eighth <a href="collection-kin.html">Kin</a> piece. Commissioned to check a claim, and the check came back negative &mdash; so the zine is the animal, and the claim gets graded on two of its fourteen spreads. Three sources are named on the page as <em>unread</em> rather than paraphrased, including the video itself. <strong>Corrected the same day:</strong> the zine said the schoolyard children had done something now illegal. They had not &mdash; they only looked.</p>
 
