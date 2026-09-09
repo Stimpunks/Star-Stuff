@@ -61,6 +61,21 @@
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), midi=(), serial=(), bluetooth=(), display-capture=(), xr-spatial-tracking=()
 
+# Images (2026-09-09, with the AVIF pass). Every raster is an AVIF -> WebP -> JPEG
+# chain, and Content-Type is stated because the <source type> attribute is only how the
+# browser CHOOSES a candidate — the response still has to arrive as an image, and a host
+# that does not know .avif serves it as octet-stream. Cached the same way as the fonts and
+# for the same reason: the filenames carry no content hash, so `immutable` would promise
+# something the names cannot keep. If these ever get hashed names, raise it to a year.
+/*.avif
+  Cache-Control: public, max-age=604800, must-revalidate
+  Content-Type: image/avif
+/*.webp
+  Cache-Control: public, max-age=604800, must-revalidate
+  Content-Type: image/webp
+/*.jpg
+  Cache-Control: public, max-age=604800, must-revalidate
+
 # Self-hosted webfonts (2026-09-09). Fonts moved off fonts.gstatic.com so a page view
 # stops handing a reader's IP to a third party; see the block at the top of starstuff.css.
 #

@@ -260,6 +260,15 @@
   --sp-dim-soft:        #807d98;
 }
 
+/* <picture> wrappers (2026-09-09, with the AVIF pass). Every raster on the site is
+   an AVIF -> WebP -> JPEG chain now, which puts a <picture> around each <img>. The
+   pages style the IMG (`.fig img { display:block; width:100% }`) and <picture> is
+   inline by default, so without this the wrapper contributes a line box and adds a
+   few stray pixels under each figure. display:block on the wrapper, not
+   display:contents: contents is the tidier idea and removes the element from the box
+   tree, which is a bigger change to reason about for the sake of one property. */
+picture { display: block; }
+
 /* Shared starfield twinkle. Pages apply this via `animation: twinkle-anim …`
    on their .twinkle dots; the keyframe used to be copy-pasted into ~25 pages.
    (manifesto.html keeps its own sp-twinkle — a deliberately deeper fade.) */

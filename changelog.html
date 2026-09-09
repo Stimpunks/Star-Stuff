@@ -223,9 +223,44 @@
 
   </div>
 
+  <!-- ================= 2026-09-09d (site: images, headings) ================= -->
+  <section class="release" id="2026-09-09-images" aria-labelledby="h-2026-09-09-images">
+    <div class="release-date">2026 &middot; September 9 &middot; latest</div>
+    <h2 class="release-title" id="h-2026-09-09-images">One picture on this site weighed 2.3 megabytes to be displayed four hundred pixels wide</h2>
+    <p class="release-note">The images are now AVIF with WebP and JPEG behind them, and sized to what the page actually draws rather than to whatever the original happened to be. <strong>A modern browser now fetches 600&nbsp;KB of images where it used to fetch 4,216&nbsp;KB</strong> &mdash; 86% less. Also: the last three pages with a skipped heading level are fixed, and a separate check of every tap target on the site came back clean.</p>
+
+    <div class="entry entry--site">
+      <div class="entry-head"><span class="tag tag--site">Site</span><span class="entry-name">AVIF, WebP, JPEG &mdash; and sizes taken from measurement rather than from the CSS</span></div>
+      <div class="entry-body"><p><strong>The worst case names the whole problem.</strong> The SN&nbsp;1006 supernova remnant on <a href="love-you-down-to-your-star-stuff.html">Love You Down To Your Star Stuff</a> &mdash; one of the three doors into this collection &mdash; was a <strong>3072&times;3072 JPEG weighing 2.3&nbsp;MB</strong>, and the page displays it <strong>400 pixels wide</strong>. That is nearly eight times more picture than any screen was going to use, on a page many readers meet first. It is now 800&times;800 and <strong>154&nbsp;KB</strong> as AVIF.</p>
+      <p><strong>The sizes came from measuring, not from reading the stylesheet.</strong> Each image's rendered width was read off the live layout: 400px for the supernova, 560 and 598 for Rainbow Mosho's artwork, 708&ndash;712 for the launch frames and the dragon. Each source is now twice its largest rendered width, which is what a high-density screen needs and no more. Guessing from <code>max-width</code> declarations would have got the supernova wrong, because the figure that constrains it is two rules away from the image.</p>
+      <p><strong>Every image is a three-format chain</strong> &mdash; <code>&lt;picture&gt;</code> with AVIF first, WebP behind it, JPEG last. AVIF reached baseline availability in July 2026 so it is the format to encode first, and the fallback chain stays because <em>widely available</em> describes the browsers shipped in the last two and a half years, not the ones people are actually running. Verified rather than assumed: all eight images were checked in a real browser and all eight pick the AVIF, load cleanly, and report a natural width of exactly twice their rendered width.</p>
+      <p><strong>Two decisions worth stating.</strong> <code>og-card.jpg</code> is deliberately untouched &mdash; it is never in an <code>&lt;img&gt;</code>, it exists for link unfurls, and social scrapers want a plain JPEG. And <code>&lt;picture&gt;</code> is an inline element by default while the pages style the <code>&lt;img&gt;</code> as a block, so the wrapper would have contributed a stray line box under every figure; one rule in the shared stylesheet fixes it.</p></div>
+    </div>
+
+    <div class="entry entry--site">
+      <div class="entry-head"><span class="tag tag--site">Site</span><span class="entry-name">What the smaller files cost, stated rather than buried</span></div>
+      <div class="entry-body"><p>These pages are meant to be printable, and no print rule constrains an image, so a figure prints at its CSS width. <strong>The downscaled sources print at roughly 190&ndash;216&nbsp;dpi where the supernova previously had 736&nbsp;dpi available.</strong> That is a real reduction and it is a deliberate trade: 736&nbsp;dpi is far past what any home printer resolves, and it was being paid for by every reader on a phone. Around 190&nbsp;dpi is comfortable for a photograph inside an essay and well clear of where downscaling becomes visible.</p>
+      <p>If print sharpness ever matters more than page weight for a particular sheet, the fix is a <code>srcset</code> with a larger candidate on that one figure &mdash; not putting four megabytes back on the front door.</p></div>
+    </div>
+
+    <div class="entry entry--site">
+      <div class="entry-head"><span class="tag tag--site">Site</span><span class="entry-name">Three pages skipped a heading level; a tag change with the selector to match</span></div>
+      <div class="entry-body"><p><a href="the-shell-was-your-calcium-zine.html">The Shell Was Your Calcium</a>, <a href="what-looks-like-chaos-zine.html">What Looks Like Chaos</a> and <a href="why-difference-comes-first-zine.html">Why Difference Comes First</a> each jumped from an <code>&lt;h2&gt;</code> straight to an <code>&lt;h4&gt;</code> for their colophon labels &mdash; <em>Credit where it is owed</em>, <em>References</em>, <em>Read more</em>. A heading outline with a rung missing is a broken outline to anyone navigating by headings, which on this site is the table of contents.</p>
+      <p>All eight became <code>&lt;h3&gt;</code>, and the rule that styles them moved with them from <code>.colophon h4</code> to <code>.colophon h3</code>. <strong>The change is visually inert and that was checked rather than hoped for:</strong> the rule sets font-family, size, tracking, transform, colour, <em>margin</em> and <em>font-weight</em> explicitly, and these pages carry a <code>margin: 0</code> reset, so nothing was inherited from the browser's defaults for either tag. <strong>0 pages now skip a heading level.</strong></p></div>
+    </div>
+
+    <div class="entry entry--factcheck">
+      <div class="entry-head"><span class="tag tag--factcheck">Audit</span><span class="entry-name">Every tap target on the site, measured &mdash; and the measurement was wrong twice first</span></div>
+      <div class="entry-body"><p><strong>The result: clean.</strong> 5,591 interactive targets across 198 pages. 3,005 are inline links inside running prose, which the criterion exempts outright; 1,379 are smaller than 24&times;24&nbsp;px but sit far enough from their neighbours to satisfy the spacing exception; <strong>none fails both.</strong></p>
+      <p><strong>Getting there took three attempts and the first two were wrong in opposite directions, which is the part worth keeping.</strong> Testing only a link's immediate parent <em>under</em>-detected the prose exemption &mdash; a link wrapped in <code>&lt;em&gt;</code>, or two links joined by the word &ldquo;and&rdquo;, both read as isolated controls, and it reported <strong>11 failures that were not failures</strong>. Testing whether the nearest block ancestor is mostly prose <em>over</em>-detected it: the front page's pills sit in a block full of prose, so a genuine standalone control was exempted and <strong>a real finding disappeared</strong>. The criterion is neither. A link is inline in prose when real text sits immediately beside it in its own inline flow, and only that test gives the same answer as reading the page.</p>
+      <p><strong>A number that comes out clean on the first run has not been checked; it has been asserted.</strong> These three runs disagreed with each other by eleven findings in one direction and one in the other, and the site never changed.</p></div>
+    </div>
+
+  </section>
+
   <!-- ================= 2026-09-09c (site: fonts self-hosted, privacy page) ================= -->
   <section class="release" id="2026-09-09-privacy" aria-labelledby="h-2026-09-09-privacy">
-    <div class="release-date">2026 &middot; September 9 &middot; latest</div>
+    <div class="release-date">2026 &middot; September 9</div>
     <h2 class="release-title" id="h-2026-09-09-privacy">Every page on this site handed your address to Google before it drew a word &mdash; and we only found out because we sat down to write the privacy page</h2>
     <p class="release-note">The site now has <a href="privacy.html">a privacy statement</a>, and writing it changed the site first. Four typeface families are <strong>self-hosted</strong> as of today, which ends the only third-party request a plain page here was making. On the way we found that <strong>eight pages were rendering a fallback typeface</strong>, and that <strong>this morning's own changelog entry overstated what <code>youtube-nocookie</code> actually promises</strong>. Both below.</p>
 

@@ -89,12 +89,21 @@ The central phrase compresses through registers, each with a use:
   see an embed host**, and none of the eight is wrong not to. Links to YouTube *watch* pages stay
   on the normal host on purpose: a link the reader chooses to follow is a different thing from a
   frame that loads whether they wanted it or not.
-- **Every `<img>` carries `width` and `height`.** Seven of eight had neither until 2026-09-09, so
-  the browser could not reserve their space. It is layout-neutral here because all three pages
-  involved already set `height: auto`; check that before adding the attributes to a page that
-  does not. **Still outstanding and named so it doesn't look finished:** the rasters are JPEG only
-  and one is 2.3 MB on a *Start Here* page, where AVIF has been the format to encode first since
-  July 2026.
+- **Every raster is an AVIF → WebP → JPEG `<picture>` chain, sized to twice its rendered width**
+  (2026-09-09). Eight `<img>` elements, seven source files; a modern browser fetches **600 KB where
+  it used to fetch 4,216 KB**. **Size from measurement, never from the CSS** — the supernova on
+  `love-you-down-to-your-star-stuff.html` was 3072×3072 / 2.3 MB and the page draws it at **400px**,
+  which no reading of `max-width` would have told you, because the rule that constrains it is two
+  selectors away. Every `<img>` keeps `width`/`height` at the *new* intrinsic size.
+  **`og-card.jpg` is deliberately untouched** — it is never in an `<img>`, it exists for unfurls,
+  and scrapers want a plain JPEG. **`picture { display: block }` in the shared sheet** because
+  `<picture>` is inline by default while the pages style the `<img>` as a block; without it every
+  figure gains a stray line box. The fallback chain stays even though AVIF is baseline: *widely
+  available* describes browsers shipped in the last two and a half years, not the ones people run.
+- **The images print at ~190–216 dpi now, down from 736, and that is a stated trade.** No print
+  rule constrains a figure, so it prints at its CSS width. 736 dpi was past anything a home printer
+  resolves and every phone reader was paying for it. If one sheet ever needs print-grade, add a
+  `srcset` candidate to *that figure* — don't put four megabytes back on a door page.
 - **`whats-new.html` and `feed.xml` are generated, not edited.** Both come out of
   `tools/build-whats-new.mjs`; a hand edit is overwritten on the next run. See
   *What's New & RSS* below.
@@ -152,6 +161,14 @@ The central phrase compresses through registers, each with a use:
   values: `og:site_name` is `Star Stuff · Stimpunks Foundation × More Realms`, and `publisher` is an
   **array of both organizations** — Stimpunks Foundation (`https://stimpunks.org/`, with the
   `og-card.jpg` logo) then More Realms (`https://morerealms.com/`). See *Co-branding* below.
+- **Tap targets pass, and the check is harder to write than it looks.** Measured 2026-09-09:
+  5,591 targets, 3,005 exempt as inline prose links, 1,379 under 24×24 px but clearing the
+  spacing exception, **0 failing both**. WCAG 2.5.8's exemption is the whole difficulty — testing
+  a link's **immediate parent** under-detects it and invents ~11 failures (a link inside `<em>`,
+  or two links joined by "and"); testing whether the **nearest block ancestor is mostly prose**
+  over-detects it and makes a real finding vanish (the front page's pills sit in a prose-heavy
+  block). The correct test: real text **immediately beside the link in its own inline flow**.
+  Nothing gates this; if you re-measure it, write that test.
 - **Webfonts are self-hosted, declared once, in `starstuff.css`** (2026-09-09). Twenty woff2 files
   in `fonts/`, the exact set Google was serving, with the same subsets and `unicode-range` values —
   **don't hand-pick subsets**, that is how a self-hosting pass loses a glyph nobody meets until a
