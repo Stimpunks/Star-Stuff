@@ -205,7 +205,7 @@
     <hr class="spectrum-line hero-rule">
   </header>
 
-  <form class="search-form" role="search" onsubmit="return false;">
+  <form class="search-form" role="search">
     <label class="search-label" for="q">Search the collection</label>
     <div class="search-row">
       <input id="q" type="search" name="q" autocomplete="off" autocapitalize="none"
@@ -492,6 +492,11 @@
   }
   qEl.focus({ preventScroll: true });
 })();
+
+  /* Was onsubmit="return false". The form has no action and never submits — matching
+     happens in this page — and CSP's form-action 'none' would block a submission
+     anyway; this stops the attempt (and the console noise) at the source. */
+  document.querySelector('.search-form').addEventListener('submit', function (e) { e.preventDefault(); });
 </script>
 
 </body>

@@ -223,9 +223,36 @@
 
   </div>
 
+  <!-- ================= 2026-09-09h (site: inline handlers removed) ================= -->
+  <section class="release" id="2026-09-09-handlers" aria-labelledby="h-2026-09-09-handlers">
+    <div class="release-date">2026 &middot; September 9 &middot; latest</div>
+    <h2 class="release-title" id="h-2026-09-09-handlers">Two hundred and thirty-three <code>onclick</code> attributes are gone, and with them the one weak keyword in the security policy</h2>
+    <p class="release-note">The policy shipped an hour ago needed <code>'unsafe-hashes'</code> to permit six strings &mdash; the handlers on every pager button, every print sheet and the search form. Those buttons are now bound in JavaScript, <strong>there are zero inline event handlers left on the site</strong>, and the keyword removed itself.</p>
+
+    <div class="entry entry--site">
+      <div class="entry-head"><span class="tag tag--site">Site</span><span class="entry-name">The pager still pages, which was the whole risk</span></div>
+      <div class="entry-body"><p><strong>This touched the primary navigation of a hundred zines</strong>, which is the most load-bearing thing on the site: the prev/next bar above every spread. 200 of the 233 attributes were the two pager buttons, and they are now bound in <code>starstuff.js</code>, which every one of those pages already loads. The other 33 &mdash; ten print sheets, one page with a pager and no shared script, and the search form's single <code>onsubmit</code> &mdash; are bound in each page's own inline script, each of which already sits after its buttons in the document.</p>
+      <p><strong>So it was tested by clicking it.</strong> Twelve zines, forward twice and back once each, checking the spread actually changed; four print sheets, toggling side A to side B and back; the outlier pager; and the search form, confirming a submit does not navigate. <strong>Run twice &mdash; once with the security policy applied and once without &mdash;</strong> because the binding has to work either way, and because a policy that is what makes the site work is a policy nobody can safely change later.</p>
+      <p><strong>The binding is deliberately not folded into the function beside it.</strong> <code>starstuff.js</code> already builds the injected per-spread footer controls, and that function returns early on a page with no spread footer. Putting the two top buttons in it would have silently skipped any page that has a pager and no footer. It also asks for <code>changePage</code> at click time rather than holding a reference, because on four pages the shared script loads before the page's own.</p></div>
+    </div>
+
+    <div class="entry entry--factcheck">
+      <div class="entry-head"><span class="tag tag--factcheck">Correction</span><span class="entry-name">Our own tool counted a comment as a live handler</span></div>
+      <div class="entry-body"><p>After the last attribute was removed, the policy generator still reported one inline handler and still emitted <code>'unsafe-hashes'</code> for it. <strong>The handler was a sentence.</strong> The note we had just written into <code>search.html</code> explaining <em>why</em> the <code>onsubmit</code> attribute had been removed contains the words of the attribute, and the tool was scanning the raw file rather than the tags &mdash; so a comment about deleting a handler was read as a handler, and would have kept the weak keyword in the policy indefinitely on the strength of a description.</p>
+      <p><strong>This is the third time today the same mistake has appeared in a different tool</strong>, which is the part worth publishing rather than the instance. <code>check-markup.mjs</code> flagged a broken tag written inside a JavaScript string; the search index once indexed a page's own listing of other pages; and now this. The fix is the same each time: walk the tags, not the text. The generator now uses the same quote-aware walk the markup checker does, and skips scripts, styles and comments.</p></div>
+    </div>
+
+    <div class="entry entry--factcheck">
+      <div class="entry-head"><span class="tag tag--factcheck">Audit</span><span class="entry-name">And the test could not tell &ldquo;broken&rdquo; from &ldquo;not applicable&rdquo;</span></div>
+      <div class="entry-body"><p>The first run reported <a href="proportioned-to-the-groove-zine.html">Proportioned to the Groove</a> as a failure: four spread ids, all <em>undefined</em>. Nothing was wrong with it. <strong>It is a scroll zine</strong> &mdash; every section laid out at once, no paging, so no pager buttons and no active spread, exactly as it was built. The page had not been modified at all; the test had simply clicked a button that does not exist and reported the absence as a break.</p>
+      <p>The suite now checks that a page <em>has</em> a pager before it tries to use one, and skips the two scroll zines by name in its output. <strong>A test that cannot distinguish a broken page from an inapplicable one files the wrong bug</strong>, and the wrong bug on a page that is working is worse than no test: it sends somebody to fix something that is correct.</p></div>
+    </div>
+
+  </section>
+
   <!-- ================= 2026-09-09g (site: full CSP) ================= -->
   <section class="release" id="2026-09-09-csp" aria-labelledby="h-2026-09-09-csp">
-    <div class="release-date">2026 &middot; September 9 &middot; latest</div>
+    <div class="release-date">2026 &middot; September 9</div>
     <h2 class="release-title" id="h-2026-09-09-csp">This morning we said a real Content-Security-Policy was impossible here. It is not &mdash; we had stopped at two options when there are three</h2>
     <p class="release-note">A full CSP now ships on every response. <strong>An inline script injected into any page on this site does not run</strong>, and that is checked by injecting one into a browser rather than asserted. The reasoning we published earlier today was sound in both its halves and wrong in its conclusion, which is a nicer way to be wrong than usual and still worth naming.</p>
 

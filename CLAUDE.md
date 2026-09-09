@@ -90,13 +90,29 @@ The central phrase compresses through registers, each with a use:
   browsers too old to understand hashes. **Verify, never assume:** the test is injecting a
   `<script>` element in a current browser and confirming it is refused with a violation logged. If
   that ever stops holding, the token comes out and the pager breaks on Safari < 15.4.
-- **`'unsafe-hashes'` covers the 233 inline handlers with 6 hashes**, and the better end state is
-  deleting them: every pager button is already `id="prev-btn"`/`id="next-btn"`, so `starstuff.js`
-  could bind them and the keyword would go. A 233-attribute change across ~150 pages; not done.
+- **There are ZERO inline event handlers on the site, and `'unsafe-hashes'` is gone with them**
+  (2026-09-09, later the same day). All 233 were removed: the 200 pager `onclick`s on the 100 zines
+  that load `starstuff.js` are bound by **`bindOwnPager()`** there, and the 33 remaining — ten print
+  sheets (`showSide`, plus a print button that gained `id="btn-print"`), `shorthand-evolution.html`
+  (a pager and no `starstuff.js`) and `search.html`'s one `onsubmit` — are bound in each page's own
+  inline script, every one of which already sits after its buttons in the document.
+  **`build-csp.mjs` emits `'unsafe-hashes'` only while handlers exist**, so it dropped out by itself
+  and returns by itself if one is reintroduced. **Don't write a new `onclick=`** — it weakens
+  `script-src` for all 198 pages to permit one string.
+- **`bindOwnPager()` is deliberately NOT part of `buildFooterNav()`.** That function builds the
+  *injected* per-spread footer controls and returns early on a page with no `.spread-footer`;
+  folding the two buttons in would silently skip any page with a pager and no footer. It calls
+  `window.changePage` at click time rather than capturing it, because `starstuff.js` loads *before*
+  the page's own inline script on four pages, and it flags `dataset.ssBound` to stay idempotent.
 - **`style-src` genuinely permits inline CSS, and that one is a real concession.** 2,290 inline
   `style` attributes carry the nav accents, the card colours and every twinkle position; an
   attribute cannot be hashed without hashing all 2,290. CSS injection can deface and can leak some
   data through selectors — it cannot execute script. **Say so rather than rounding it down.**
+- **A pager test must be able to tell *broken* from *not applicable*.** The suite that verified
+  the handler removal reported four `undefined`s for **No. 68** and called it a failure — a scroll
+  zine has `.spread` sections and `spread-1..N` ids but no `changePage` and no buttons, working
+  exactly as designed. **There are two scroll zines** (Nos. 68 and 84), and any test that walks
+  "the zines" has to assert `#next-btn` and `window.changePage` exist before clicking.
 - **A CSP must be tested against the site WORKING, not only against the attack.** One that breaks a
   hundred pagers is worse than none. The suite serves the repo with the real header and asserts
   fifteen things: a zine pages, search returns hits, a rack's embeds and fonts load, a broadside's

@@ -273,10 +273,10 @@
 
 <div class="controls">
   <span class="ctrl-label">Side</span>
-  <button class="ctrl-btn active" id="btn-a" onclick="showSide('a')">A — The Door</button>
-  <button class="ctrl-btn" id="btn-b" onclick="showSide('b')">B — The Creed</button>
+  <button class="ctrl-btn active" id="btn-a">A — The Door</button>
+  <button class="ctrl-btn" id="btn-b">B — The Creed</button>
   <div class="ctrl-sep"></div>
-  <button class="ctrl-btn" onclick="window.print()">Print ↗</button>
+  <button class="ctrl-btn" id="btn-print">Print ↗</button>
 </div>
 
 <!-- ════ SIDE A ════ -->
@@ -411,6 +411,13 @@
     document.getElementById('btn-a').classList.toggle('active', side === 'a');
     document.getElementById('btn-b').classList.toggle('active', side === 'b');
   }
+
+  /* Bound here rather than with onclick= attributes. An inline handler cannot be
+     covered by an ordinary CSP hash — it needs the 'unsafe-hashes' keyword, which
+     weakens script-src across the whole site to permit a handful of strings. */
+  document.getElementById('btn-a').addEventListener('click', function () { showSide('a'); });
+  document.getElementById('btn-b').addEventListener('click', function () { showSide('b'); });
+  document.getElementById('btn-print').addEventListener('click', function () { window.print(); });
 </script>
 </body>
 </html>

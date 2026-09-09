@@ -185,9 +185,9 @@
   <nav class="nav">
     <div class="nav-brand"><a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks</a> × <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a> · Shorthand Evolution</div>
     <div class="nav-controls">
-      <button class="nav-btn" id="prev-btn" onclick="changePage(-1)">← prev</button>
+      <button class="nav-btn" id="prev-btn">← prev</button>
       <span class="page-counter" id="page-counter">1 / 7</span>
-      <button class="nav-btn active" id="next-btn" onclick="changePage(1)">next →</button>
+      <button class="nav-btn active" id="next-btn">next →</button>
     </div>
   </nav>
 <main id="main" tabindex="-1">
@@ -460,6 +460,11 @@
   });
 
   document.getElementById('prev-btn').disabled = true;
+
+  /* This page has a pager but does not load starstuff.js, so it binds its own two
+     buttons — see the note in starstuff.js's bindOwnPager for why not onclick=. */
+  document.getElementById('prev-btn').addEventListener('click', function () { changePage(-1); });
+  document.getElementById('next-btn').addEventListener('click', function () { changePage(1); });
 </script>
 </body>
 </html>

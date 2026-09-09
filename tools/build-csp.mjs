@@ -29,16 +29,19 @@
  * <script> is refused in a current browser. If it runs, the policy is theatre and
  * `'unsafe-inline'` must come out, at the cost of inline handlers on Safari < 15.4.
  *
- * `'unsafe-hashes'` and why it is here
- * ------------------------------------
- * 233 inline event-handler attributes across the site — `onclick="changePage(1)"`
- * and five others — and an event handler cannot be covered by an ordinary hash.
- * `'unsafe-hashes'` plus a hash per distinct handler body covers all 233 with six
- * hashes. It is weaker than a plain hash and far stronger than `'unsafe-inline'`.
- * THE BETTER END STATE is to delete the attributes: every pager button is
- * `id="prev-btn"` / `id="next-btn"` already, so `starstuff.js` could bind them and
- * `'unsafe-hashes'` would go. That is a 233-attribute change across ~150 pages and
- * it is not this pass.
+ * `'unsafe-hashes'` is GONE, and the tool decides that, not a constant
+ * ---------------------------------------------------------------------
+ * There were 233 inline event-handler attributes — `onclick="changePage(1)"` and
+ * five others — and an event handler cannot be covered by an ordinary hash, so the
+ * first version of this policy carried `'unsafe-hashes'` to permit six strings
+ * across the whole site. All 233 were removed on 2026-09-09 and bound in JavaScript
+ * instead: the 100 zine pagers in `starstuff.js` (`bindOwnPager`), and the ten print
+ * sheets, `shorthand-evolution.html` and `search.html` in their own inline scripts,
+ * each of which already sits after its buttons in the document.
+ *
+ * The keyword is emitted only while handlers exist, so it dropped out by itself and
+ * would come back by itself if one were reintroduced — better than a flag somebody
+ * has to remember. The inventory prints the count either way.
  *
  * `style-src` keeps `'unsafe-inline'` and that one is real
  * -------------------------------------------------------
@@ -82,6 +85,40 @@ const sha256 = (s) => `'sha256-${crypto.createHash('sha256').update(s, 'utf8').d
    site under the policy and watching for a violation rather than by reading the spec. */
 const JS_TYPES = new Set(['', 'text/javascript', 'application/javascript', 'module']);
 
+/* Yield `on…="…"` attributes that are genuinely inside a start tag. Quote-aware and
+   skipping <script>, <style> and comments, so prose that merely quotes an attribute is
+   not mistaken for one. Deliberately the same shape as check-markup.mjs's tag walk. */
+function* handlerAttrs(src) {
+  let i = 0;
+  while (i < src.length) {
+    const lt = src.indexOf('<', i);
+    if (lt === -1) return;
+    if (src.startsWith('<!--', lt)) { const e = src.indexOf('-->', lt + 4); i = e === -1 ? src.length : e + 3; continue; }
+    if (src.startsWith('<!', lt) || src.startsWith('<?', lt)) { const e = src.indexOf('>', lt); i = e === -1 ? src.length : e + 1; continue; }
+    let j = lt + 1, q = null;
+    while (j < src.length) {
+      const c = src[j];
+      if (q) { if (c === q) q = null; }
+      else if (c === '"' || c === "'") q = c;
+      else if (c === '>') break;
+      j++;
+    }
+    if (j >= src.length) return;
+    const raw = src.slice(lt + 1, j);
+    const name = (raw.replace(/^\//, '').match(/^[A-Za-z][A-Za-z0-9-]*/) || [''])[0].toLowerCase();
+    for (const m of raw.matchAll(/\son([a-z]+)="([^"]*)"/g)) yield m;
+    /* Skip raw-text bodies wholesale — this is what stops a handler-shaped string in
+       page JavaScript being counted. */
+    if (name === 'script' || name === 'style') {
+      if (!raw.startsWith('/') && !raw.trimEnd().endsWith('/')) {
+        const close = src.toLowerCase().indexOf(`</${name}`, j);
+        if (close !== -1) { i = close; continue; }
+      }
+    }
+    i = j + 1;
+  }
+}
+
 function inventory() {
   const scripts = new Map();      // hash → count
   const handlers = new Map();     // hash → { count, sample }
@@ -108,10 +145,17 @@ function inventory() {
       if (m[1].trim()) styleElems++;
     }
 
-    /* Event handlers. The browser hashes the attribute VALUE as source text, after
-       HTML entity decoding — none of ours contain an entity, and if one ever does
-       this needs a decode step or the hash silently will not match. */
-    for (const m of src.matchAll(/\son([a-z]+)="([^"]*)"/g)) {
+    /* Event handlers, found by walking TAGS rather than by scanning the source.
+       Scanning found one inside a JS comment — the words onsubmit="return false" in
+       a note explaining why that attribute had been removed — and reported it as a
+       live handler, which would have kept 'unsafe-hashes' in the policy forever on
+       the strength of a sentence. Same fault check-markup.mjs hit the same day, for
+       the same reason, and the same fix.
+
+       The browser hashes the attribute VALUE as source text, after HTML entity
+       decoding — none of ours contain an entity, and if one ever does this needs a
+       decode step or the hash silently will not match. */
+    for (const m of handlerAttrs(src)) {
       const body = m[2];
       if (/&[a-zA-Z#]/.test(body)) {
         console.error(`  WARN  ${f}: on${m[1]} contains an HTML entity — its hash will not match. Rewrite it without one.`);
@@ -154,7 +198,11 @@ const policy = [
   "font-src 'self'",
   "connect-src 'self'",
   "style-src 'self' 'unsafe-inline'",
-  `script-src 'self' 'unsafe-hashes' ${[...scriptHashes, ...handlerHashes].join(' ')} 'unsafe-inline'`,
+  /* 'unsafe-hashes' appears only while inline event handlers exist to cover. All 233
+     were removed on 2026-09-09 and bound in JavaScript instead, so the keyword drops
+     out on its own — and comes back on its own if a handler is ever reintroduced,
+     which is better than a constant somebody has to remember to flip. */
+  `script-src 'self'${handlerHashes.length ? " 'unsafe-hashes'" : ''} ${[...scriptHashes, ...handlerHashes].join(' ')} 'unsafe-inline'`,
   'upgrade-insecure-requests',
 ].join('; ');
 
@@ -198,7 +246,11 @@ if (PRINT) {
 
 note(`\n  ${inv.pages} pages scanned`);
 note(`  ${scriptHashes.length} distinct inline <script> bodies hashed (${[...inv.scripts.values()].reduce((a, b) => a + b, 0)} elements)`);
-note(`  ${handlerHashes.length} distinct inline event handlers hashed (${[...inv.handlers.values()].reduce((a, b) => a + b.count, 0)} attributes), covered by 'unsafe-hashes':`);
+const nHandlers = [...inv.handlers.values()].reduce((a, b) => a + b.count, 0);
+note(nHandlers
+  ? `  ${handlerHashes.length} distinct inline event handlers hashed (${nHandlers} attributes) — 'unsafe-hashes' IS IN THE POLICY to cover them:`
+  : `  0 inline event handlers on the site, so 'unsafe-hashes' is not in the policy. If this`
+    + ` ever goes above zero, the keyword returns and script-src weakens for every page.`);
 for (const [, r] of [...inv.handlers.entries()].sort((a, b) => b[1].count - a[1].count)) {
   note(`      x${String(r.count).padEnd(4)} ${r.sample}`);
 }

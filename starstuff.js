@@ -223,9 +223,39 @@
     }, 3000);
   }
 
+  /* =================================================================
+     1b) The page's OWN top prev/next bar
+     =================================================================
+     Every paged zine carries `<button id="prev-btn">` and `<button id="next-btn">`
+     in a .nav-controls bar above the spread. Those two buttons used to call
+     changePage() through an `onclick=` attribute — 202 of them across 100 pages —
+     and an inline event handler cannot be covered by an ordinary CSP hash: it needs
+     the 'unsafe-hashes' keyword, which weakens script-src for the whole site to
+     permit six strings. Binding them here costs nothing and lets that keyword go.
+
+     Deliberately NOT merged into buildFooterNav(): that function builds the
+     *injected* per-spread footer controls and returns early when a page has no
+     .spread-footer. These two buttons exist on pages independently of that, so
+     folding them in would silently skip any page that has a pager and no footer.
+
+     Calls window.changePage at CLICK time rather than capturing it, because
+     starstuff.js loads before the page's own inline script on four pages. Idempotent
+     via a data flag, since init() can run more than once on a page that is already
+     interactive. */
+  function bindOwnPager() {
+    if (typeof window.changePage !== 'function') return;
+    [['prev-btn', -1], ['next-btn', 1]].forEach(function (pair) {
+      var el = document.getElementById(pair[0]);
+      if (!el || el.dataset.ssBound) return;
+      el.dataset.ssBound = '1';
+      el.addEventListener('click', function () { window.changePage(pair[1]); });
+    });
+  }
+
   /* ---------- init ---------- */
   function init() {
     buildFooterNav();
+    bindOwnPager();
     setupDeepLinks();
     setupEntryDeepLinks();
   }
