@@ -54,11 +54,16 @@ That shape rules out most of what a report usually concerns:
   page and published as a correction rather than a quiet fix.
 
 **Out of scope:** missing headers with no demonstrated impact on a static site,
-scanner output with no working proof, absence of a Content Security Policy
-`script-src` (we know; every page carries an inline `<style>` and many an inline
-`<script>`, so a real policy needs nonces, and
-[the privacy page says so](https://starstuff.earth/privacy.html)), and anything
-about Netlify's or GitHub's own infrastructure — report those to them.
+scanner output with no working proof, and anything about Netlify's or GitHub's own
+infrastructure — report those to them.
+
+**In scope and already known:** `style-src` permits inline CSS. That is deliberate
+and documented in [`_headers`](_headers) — 2,290 inline `style` attributes carry the
+nav accents, the card colours and every twinkle position, and an attribute cannot be
+hashed without hashing all of them. A *working* demonstration of harm through it is
+worth sending; a scanner line reporting that `unsafe-inline` is present is not news.
+`script-src` is hash-based and permits no injected inline script — **if you find one
+that runs, that is the report we most want.**
 
 ## What you can expect from us
 

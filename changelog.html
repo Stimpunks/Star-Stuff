@@ -223,9 +223,38 @@
 
   </div>
 
+  <!-- ================= 2026-09-09g (site: full CSP) ================= -->
+  <section class="release" id="2026-09-09-csp" aria-labelledby="h-2026-09-09-csp">
+    <div class="release-date">2026 &middot; September 9 &middot; latest</div>
+    <h2 class="release-title" id="h-2026-09-09-csp">This morning we said a real Content-Security-Policy was impossible here. It is not &mdash; we had stopped at two options when there are three</h2>
+    <p class="release-note">A full CSP now ships on every response. <strong>An inline script injected into any page on this site does not run</strong>, and that is checked by injecting one into a browser rather than asserted. The reasoning we published earlier today was sound in both its halves and wrong in its conclusion, which is a nicer way to be wrong than usual and still worth naming.</p>
+
+    <div class="entry entry--factcheck">
+      <div class="entry-head"><span class="tag tag--factcheck">Correction</span><span class="entry-name">&ldquo;A real policy needs nonces or unsafe-inline&rdquo; &mdash; both true, and it missed hashes</span></div>
+      <div class="entry-body"><p><strong>What we said, in the entry below this one and in <code>_headers</code>.</strong> That a full policy was deliberately absent because every page carries an inline <code>&lt;style&gt;</code> and many an inline <code>&lt;script&gt;</code>, so it would need either nonces &mdash; which a static site with no build step cannot produce, since a nonce must be unique per response and appear in both header and HTML &mdash; or <code>'unsafe-inline'</code>, which is a policy in name only. We concluded that <code>frame-ancestors</code> was the only half worth shipping.</p>
+      <p><strong>Both premises hold. The conclusion does not, because there is a third option, and the specification we were reading names it in the same sentence: hashes.</strong> This site has <strong>49 distinct inline script bodies across 157 elements</strong> and <strong>six distinct inline event handlers across 233 attributes</strong>. Forty-nine and six are small numbers. Every one of them is now hashed into <code>script-src</code>.</p>
+      <p><strong>What made it look impossible was counting elements instead of distinct bodies.</strong> 157 inline scripts sounds like a hash list nobody could maintain; 49 unique ones, most of them the same pager repeated across a hundred zines, is a 3.3 KB header. The measurement that mattered took one command and we had not run it.</p></div>
+    </div>
+
+    <div class="entry entry--site">
+      <div class="entry-head"><span class="tag tag--site">Site</span><span class="entry-name">What the policy actually forbids now</span></div>
+      <div class="entry-body"><p>Beyond script: <strong>no <code>&lt;base&gt;</code> element may be injected</strong> (a base tag rewrites every relative URL on the page, and this site is built entirely out of relative URLs); <strong>no plugin embeds</strong>; <strong>no form may submit anywhere at all</strong> &mdash; <code>form-action 'none'</code>, which is simply the truth here and closes the easiest route an injection has to send data out; <strong>no frame except the two embed hosts</strong>; <strong>no connection except to this domain</strong>; and no font or image from anywhere but here, which only became sayable when the typefaces came off Google earlier today.</p>
+      <p><strong>The <code>'unsafe-inline'</code> at the end of <code>script-src</code> is not what it looks like</strong>, and it would be fair to assume the worst on seeing it. Under CSP Level 3 a browser that finds a hash or a nonce in a source list <em>discards</em> <code>'unsafe-inline'</code> entirely; it is there only for browsers too old to understand hashes, which get a weak policy instead of none. <strong>We tested that rather than trusting it:</strong> a script element injected into the front page is refused, with a violation logged, in a current browser. <em>If that ever stops being true the token has to come out</em> &mdash; and the cost would be the pager breaking on Safari before 15.4, which is the trade written down beside it.</p>
+      <p><strong>One concession is real and is not a technicality.</strong> <code>style-src</code> still permits inline CSS, because <strong>2,290 inline <code>style</code> attributes</strong> carry the nav accents, the card colours and every twinkle position, and an attribute cannot be hashed without hashing all 2,290. CSS injection can deface a page and can leak some kinds of data through selectors; it cannot execute script. Said plainly because the alternative is rounding it down to nothing.</p></div>
+    </div>
+
+    <div class="entry entry--site">
+      <div class="entry-head"><span class="tag tag--site">Site</span><span class="entry-name">Generated, gated, and tested against the site working</span></div>
+      <div class="entry-body"><p>A hash list is a second description of the site, so it cannot be typed by hand: it would be wrong the first time somebody ships a zine, and <strong>the failure is not cosmetic &mdash; an inline script whose hash is missing does not run, so a new zine's pager would simply be dead.</strong> So <code>tools/build-csp.mjs</code> computes the policy from the pages and writes it into a marked region of <code>_headers</code>, and <code>--check</code> fails when the two disagree. That gate was verified by adding a new inline script to a zine and confirming the build refused it.</p>
+      <p><strong>And the policy was tested against the site working, not only against the attack.</strong> A CSP that breaks a hundred pagers is worse than none: the suite loads a paged zine and clicks through a spread, runs a search and counts 40 hits, loads a rack and confirms 44 embeds and the self-hosted fonts, opens a broadside, and checks the AVIF images arrive &mdash; all with the real header, and all watching the console for violations. Fifteen assertions.</p>
+      <p><strong>Two of the first results were my own bugs and both are worth recording.</strong> The tool's <code>--print</code> mode emitted the policy <em>and</em> its inventory, so the value carried newlines, the local test server refused it as an invalid header and died &mdash; and the suite then ran every assertion against Chrome's network-error page and reported <strong>nine failures that were all mine</strong>. It reported them confidently, because the readiness loop gave up silently instead of failing. Both are fixed: <code>--print</code> writes only the policy, and the suite aborts rather than testing an error page. <em>A test that can quietly measure the wrong document is not a test.</em> And a third: the suite called <code>eval()</code> a failure, when an expression evaluated over the debugging protocol is exempt from the page's eval restriction &mdash; so it now asserts what is actually checkable, that the policy contains no <code>'unsafe-eval'</code>.</p></div>
+    </div>
+
+  </section>
+
   <!-- ================= 2026-09-09f (site: security.txt) ================= -->
   <section class="release" id="2026-09-09-security" aria-labelledby="h-2026-09-09-security">
-    <div class="release-date">2026 &middot; September 9 &middot; latest</div>
+    <div class="release-date">2026 &middot; September 9</div>
     <h2 class="release-title" id="h-2026-09-09-security">If you find a hole in this site, there is now somewhere to send it that isn't a public issue</h2>
     <p class="release-note">A <a href="https://github.com/Stimpunks/Star-Stuff/blob/main/SECURITY.md">security policy</a> and an RFC 9116 <code>security.txt</code>, pointing at a private reporting channel that had to be switched on before it existed. The interesting part is the <code>Expires</code> field, which is a file that goes invalid on a date and says nothing about it &mdash; so it is gated rather than diarised.</p>
 
