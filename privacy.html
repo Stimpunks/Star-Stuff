@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0a0a14">
+<link rel="canonical" href="https://starstuff.earth/privacy.html">
+<meta name="description" content="What this site knows about you, stated exactly. No accounts, no cookies, nothing stored on your device, and a search that runs in your browser. Our host counts pageviews server-side and processes IP addresses to do it. Thirteen pages of embedded players still contact Google and Spotify when they load — and youtube-nocookie promises less than its name suggests. Written the day we stopped loading fonts from Google, because the honest sentence was unwriteable until then.">
+<!-- Open Graph / link unfurl -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Star Stuff · Stimpunks Foundation × More Realms">
+<meta property="og:url" content="https://starstuff.earth/privacy.html">
+<meta property="og:title" content="What This Site Knows About You">
+<meta property="og:description" content="No accounts, no cookies, nothing stored on your device, a search that never leaves your browser. What our host counts, who your browser still contacts, and what youtube-nocookie actually promises — which is narrower than the name.">
+<meta property="og:image" content="https://starstuff.earth/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A rainbow-hued cosmic image — we are all made of star stuff.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="What This Site Knows About You">
+<meta name="twitter:description" content="No cookies, no accounts, nothing on your device, search that runs in your browser. What the host counts, who your browser still contacts, and where we are still making a trade on your behalf.">
+<meta name="twitter:image" content="https://starstuff.earth/og-card.jpg">
+<title>Privacy — What This Site Knows About You — Stimpunks × More Realms</title>
+<link rel="stylesheet" href="starstuff.css">
+<style>
+  :root {
+    --void:  var(--sp-void-deep);
+    --deep:  var(--sp-deep);
+    --page:  var(--sp-page);
+    --card:  var(--sp-card);
+    --violet:var(--sp-purple);
+    --pink:  var(--sp-pink);
+    --gold:  var(--sp-gold);
+    --cyan:  var(--sp-cyan);
+    --green: var(--sp-green);
+    /* This page's tint. Green was free in Notes &amp; Rationale alongside changelog
+       (cyan), print-design (gold), difference-first-frame (violet) — design.html is
+       green too, and two greens in one collection is fine: the accents vary per
+       piece, they do not index it. */
+    --accent: var(--sp-green);
+    --star-white: var(--sp-white-soft);
+    --stardust:   var(--sp-secondary-soft);
+    --dim:   var(--sp-dim);
+    --dim2:  var(--sp-dim-soft);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--void);
+    font-family: 'Atkinson Hyperlegible Next', system-ui, sans-serif;
+    color: var(--star-white);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 8% 12%, rgba(74,222,128,0.7) 0%, transparent 100%),
+      radial-gradient(1px 1px at 22% 38%, rgba(244,244,251,0.6) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 44% 9%, rgba(167,139,250,0.7) 0%, transparent 100%),
+      radial-gradient(1px 1px at 61% 68%, rgba(34,211,238,0.6) 0%, transparent 100%),
+      radial-gradient(2px 2px at 74% 28%, rgba(251,191,36,0.55) 0%, transparent 100%),
+      radial-gradient(1px 1px at 84% 54%, rgba(74,222,128,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 91% 79%, rgba(244,244,251,0.7) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 4% 58%, rgba(244,114,182,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 34% 84%, rgba(244,244,251,0.6) 0%, transparent 100%),
+      radial-gradient(2px 2px at 19% 88%, rgba(167,139,250,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 69% 4%, rgba(244,244,251,0.8) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 30% 20%, rgba(74,222,128,0.5) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .doc-shell { position: relative; z-index: 1; max-width: 820px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+
+  .spectrum-line { height: 2px; border: none; border-radius: 2px; background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); }
+
+  .nav-brand { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--dim); margin: 1.6rem 0 2.5rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(74,222,128,0.2); }
+
+  .hero { margin-bottom: 2.2rem; }
+  .hero-eyebrow { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.36em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.3rem; }
+  .hero-title { font-weight: 700; font-size: clamp(2.1rem, 6vw, 3.4rem); line-height: 1.05; letter-spacing: -0.02em; color: var(--star-white); margin-bottom: 1.1rem; }
+  .hero-title em { font-style: normal; background: linear-gradient(90deg, var(--green), var(--cyan), var(--violet)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .hero-byline { font-size: 1.06rem; line-height: 1.6; color: var(--star-white); font-weight: 700; margin-bottom: 0.9rem; max-width: 40rem; }
+  .hero-sub { font-size: 1rem; line-height: 1.65; color: var(--stardust); max-width: 40rem; }
+  .hero-rule { width: 220px; max-width: 55%; margin-top: 1.6rem; }
+  .hero-date { font-family: 'Space Mono', monospace; font-size: 0.56rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dim); margin-top: 1.2rem; }
+
+  .body-text { margin-top: 2.4rem; }
+  .body-text p { font-size: 1rem; line-height: 1.75; color: var(--stardust); margin-bottom: 1.1rem; }
+  .body-text strong { color: var(--star-white); font-weight: 700; }
+  .body-text em { font-style: italic; color: var(--star-white); }
+  .body-text a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(74,222,128,0.4); }
+  .body-text a:hover { color: var(--star-white); }
+  .body-text ul { margin: 0 0 1.2rem 1.2rem; }
+  .body-text li { font-size: 1rem; line-height: 1.7; color: var(--stardust); margin-bottom: 0.55rem; }
+
+  .section { font-weight: 700; font-size: 1.4rem; line-height: 1.2; color: var(--star-white); margin: 3rem 0 0.6rem; letter-spacing: -0.01em; scroll-margin-top: 5rem; }
+  .subsection { font-weight: 700; font-size: 1.02rem; line-height: 1.3; color: var(--star-white); margin: 1.8rem 0 0.5rem; scroll-margin-top: 5rem; }
+
+  .claim { font-size: 1.18rem; font-weight: 700; line-height: 1.45; color: var(--star-white); border-left: 3px solid var(--accent); padding-left: 1.1rem; margin: 1.5rem 0; }
+
+  .callout { border: 1px solid rgba(74,222,128,0.35); border-left: 3px solid var(--accent); border-radius: 0 6px 6px 0; padding: 1.1rem 1.3rem; margin: 1.6rem 0; background: rgba(74,222,128,0.05); }
+  .callout-label { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; }
+  .callout p { font-size: 0.97rem; line-height: 1.7; color: var(--stardust); margin-bottom: 0; }
+  .callout p + p { margin-top: 0.7rem; }
+  .callout strong { color: var(--star-white); font-weight: 700; }
+  .callout em { font-style: italic; color: var(--star-white); }
+  .callout a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(74,222,128,0.4); }
+
+  /* The amber variant marks the places where we are still making a trade on a
+     reader's behalf, so they do not read as settled. */
+  .callout--open { border-color: rgba(251,191,36,0.35); border-left-color: var(--gold); background: rgba(251,191,36,0.05); }
+  .callout--open .callout-label { color: var(--gold); }
+  .callout--open a { color: var(--gold); border-bottom-color: rgba(251,191,36,0.4); }
+
+  .ledger { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.92rem; }
+  .ledger caption { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); text-align: left; padding-bottom: 0.6rem; }
+  .ledger th { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--stardust); text-align: left; padding: 0.5rem 0.6rem 0.5rem 0; border-bottom: 1px solid rgba(74,222,128,0.3); font-weight: 700; vertical-align: bottom; }
+  .ledger td { padding: 0.6rem 0.6rem 0.6rem 0; border-bottom: 1px solid rgba(167,139,250,0.14); color: var(--stardust); line-height: 1.6; vertical-align: top; }
+  .ledger td:first-child { color: var(--star-white); font-weight: 700; }
+  .ledger strong { color: var(--star-white); }
+  .ledger code { font-family: 'Space Mono', monospace; font-size: 0.88em; color: var(--cyan); }
+
+  .refusals { border: 1px solid rgba(244,114,182,0.3); border-radius: 8px; padding: 1.2rem 1.35rem; margin: 2.2rem 0 1rem; background: rgba(244,114,182,0.04); }
+  .refusals-label { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--pink); margin-bottom: 0.7rem; }
+  .refusals ul { margin: 0 0 0 1.1rem; }
+  .refusals li { font-size: 0.95rem; line-height: 1.65; color: var(--stardust); margin-bottom: 0.5rem; }
+  .refusals li:last-child { margin-bottom: 0; }
+  .refusals strong { color: var(--star-white); }
+
+  .refs { margin-top: 1.2rem; }
+  .ref { font-size: 0.88rem; line-height: 1.65; color: var(--dim); margin-bottom: 0.6rem; }
+  .ref a { color: var(--dim); text-decoration: none; border-bottom: 1px solid rgba(74,222,128,0.25); }
+  .ref a:hover { color: var(--stardust); }
+
+  .colophon-footer { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--dim2); line-height: 2.2; margin-top: 3.4rem; padding-top: 1.4rem; border-top: 1px solid rgba(74,222,128,0.14); }
+  .colophon-footer a { color: var(--dim2); text-decoration: none; border-bottom: 1px solid rgba(74,222,128,0.2); }
+  .colophon-footer a:hover { color: var(--stardust); }
+
+  @media (max-width: 640px) {
+    .doc-shell { padding: 2rem 1.3rem 3rem; }
+    .ledger { font-size: 0.86rem; }
+    .ledger th, .ledger td { display: block; width: auto; }
+    .ledger th { border-bottom: none; padding-bottom: 0.2rem; }
+    .ledger td:first-child { padding-bottom: 0.15rem; }
+    .ledger td:last-child { padding-bottom: 1rem; }
+  }
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"What This Site Knows About You","description":"The privacy statement for starstuff.earth, written the day the site stopped loading webfonts from Google. No accounts, no cookies, no client-side storage, and a search that runs entirely in the reader's browser. Netlify Web Analytics counts pageviews server-side and treats distinct IP addresses as unique visitors. Two kinds of embed — YouTube's privacy-enhanced player and two Spotify players — still contact a third party when a page loads, and Google's own description of privacy-enhanced mode is about personalisation rather than collection, which is narrower than the youtube-nocookie name suggests.","datePublished":"2026-09-09","image":"https://starstuff.earth/og-card.jpg","url":"https://starstuff.earth/privacy.html","mainEntityOfPage":"https://starstuff.earth/privacy.html","publisher":[{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/","logo":{"@type":"ImageObject","url":"https://starstuff.earth/og-card.jpg"}},{"@type":"Organization","name":"More Realms","url":"https://morerealms.com/"}]}</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<div class="doc-shell">
+
+  <!-- Home-group only, no prev/next: every member of Notes & Rationale sits outside
+       the reading chain by decision. See collection-notes.html. -->
+  <nav class="ss-nav" style="--nav-accent:#4ade80;" aria-label="Star Stuff collection">
+    <span class="ss-nav-home-group"><a class="ss-nav-home" href="index.html"><span class="ss-star" aria-hidden="true">★</span> stuff</a><a class="ss-nav-about" href="about.html">about</a>
+      <a class="ss-nav-search" href="search.html">search</a><a class="ss-nav-privacy" href="privacy.html">privacy</a></span>
+    <a class="ss-nav-collection" href="collection-notes.html"><span class="ss-nav-collection-label">Collection</span> <span class="ss-nav-collection-name">Notes &amp; Rationale</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
+  </nav>
+<main id="main" tabindex="-1">
+
+  <div class="nav-brand"><a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks</a> &times; <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a> &middot; Rationale &middot; Privacy</div>
+
+  <header class="hero">
+    <div class="hero-eyebrow"><a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks Foundation</a> &times; <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a> &middot; Working Paper</div>
+    <h1 class="hero-title">What This Site Knows <em>About You</em></h1>
+    <p class="hero-byline">Almost nothing, and this page says exactly which almost. No accounts, no cookies, nothing written to your device, and a search that runs entirely inside your browser.</p>
+    <p class="hero-sub">What is left is small and worth naming rather than rounding to zero: our host counts pageviews from the requests it already handles, and it treats distinct IP addresses as distinct visitors. Embedded players on 13 of the 198 pages still reach a third party the moment those pages load. And until the day this page was written, every single page you opened here fetched its typefaces from Google.</p>
+    <hr class="spectrum-line hero-rule">
+    <p class="hero-date">Published 9 September 2026 &middot; the state of the site on that date</p>
+  </header>
+
+  <div class="body-text">
+
+    <div class="callout">
+      <div class="callout-label">The short version</div>
+      <p><strong>We do not want your data and we have not built anything to collect it.</strong> There is no account to make, no newsletter, no comment box, no analytics script, no advertising, no A/B test and no third-party tag of any kind. The only script this site loads is <a href="starstuff.js">one 8.7&nbsp;KB file of our own</a>, which handles page turning and deep links and makes no network request at all. Exactly one page fetches anything: <a href="search.html">the search</a> downloads its index from this domain.</p>
+      <p><strong>What remains is one thing we do and one thing we ask your browser to do.</strong> Our host counts pageviews. Thirteen pages &mdash; the eight song racks and five others &mdash; load embedded players from Google, two of them from Spotify as well. Both are below, in the detail a reader would need to decide whether to care.</p>
+    </div>
+
+    <div class="callout callout--open">
+      <div class="callout-label">There is a second privacy policy, and it is not about this page</div>
+      <p>The Stimpunks Foundation publishes <a href="https://stimpunks.org/privacy/">a privacy policy for stimpunks.org</a>, and <strong>almost none of it describes this site.</strong> That one covers a WordPress site with comments, logins, contact forms, Gravatar, and form data flowing into HubSpot and QuickBooks &mdash; because that is what stimpunks.org is. <strong>starstuff.earth has no comments, no login, no forms and no CRM</strong>, so reading across from that document to this one would leave you expecting cookies and processors that do not exist here.</p>
+      <p>Where the two agree is worth quoting, because it is the same organisation: <em>&ldquo;We will not sell or give your data to third parties. We will not use your information to market anything to you.&rdquo;</em> And on server logs it says the same thing this page does &mdash; <em>&ldquo;Your IP address will be captured in our server logs.&rdquo;</em></p>
+    </div>
+
+    <h2 class="section" id="nothing-on-your-device">Nothing is written to your device</h2>
+
+    <p>No cookies. Not &ldquo;no advertising cookies&rdquo; or &ldquo;only essential cookies&rdquo; &mdash; <strong>none at all.</strong> Nor <code>localStorage</code>, <code>sessionStorage</code>, IndexedDB, or any other browser storage. This is checkable rather than promised: the whole site is <a href="https://github.com/Stimpunks/Star-Stuff">a public repository of static HTML files</a>, and the strings that would have to appear in it do not appear anywhere in it.</p>
+
+    <p><strong>That is why there is no cookie banner here, and its absence is the honest kind.</strong> A consent prompt is required for storage that is not strictly necessary. We set no storage, so there is nothing to consent to and nothing to decline &mdash; and a banner that asked you to agree to nothing would be theatre, plus one more thing to click.</p>
+
+    <p><strong>The search is the case that shows the shape of it.</strong> <a href="search.html">Search</a> downloads a single index file from this domain and then does all the matching inside your browser. Your query is never sent anywhere, because there is no endpoint to send it to. Nothing about it is logged, because nothing about it leaves the page. You can turn off your network connection after the page has loaded and the search still works.</p>
+
+    <h2 class="section" id="what-the-host-records">What our host records, and what we look at</h2>
+
+    <p>This site is served by <a href="https://www.netlify.com/">Netlify</a>, and <strong>Netlify Web Analytics is enabled.</strong> That is the one measurement we take, and it is worth being precise about how it works, because &ldquo;analytics&rdquo; usually means something much more invasive than this.</p>
+
+    <p>It is collected <strong>server-side</strong>, from the requests Netlify already has to handle in order to send you a page. Netlify's own documentation says the collection <em>&ldquo;complies with the General Data Protection Regulation (GDPR), has no impact on site performance, is not stopped by ad blockers, and does not require any extra configuration.&rdquo;</em> No script runs in your browser for it, so nothing it does can write anything to your device &mdash; which is also why an ad blocker cannot switch it off, and we would rather say that plainly than let you assume otherwise.</p>
+
+    <table class="ledger">
+      <caption>What the analytics panel shows us</caption>
+      <thead>
+        <tr><th scope="col">What we see</th><th scope="col">What it is, in Netlify's own terms</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Pageviews</td><td><em>&ldquo;instances of your project's pages being served&rdquo;</em> &mdash; a count, with no person attached</td></tr>
+        <tr><td>Unique visitors</td><td><em>&ldquo;different IP addresses engaging with your project&rdquo;</em>. <strong>This is the part that touches you.</strong> Counting distinct visitors means processing IP addresses, which are personal data in the EU and UK. We never see a list of them and cannot look one up; we see a number</td></tr>
+        <tr><td>Top locations</td><td>countries, derived from those addresses &mdash; not towns, not streets</td></tr>
+        <tr><td>Top pages</td><td>which pages were served most</td></tr>
+        <tr><td>Pages not found</td><td>the broken links people arrive at, which is how we find our own mistakes</td></tr>
+      </tbody>
+    </table>
+
+    <p><strong>What we actually do with it is duller than it sounds.</strong> We check whether anybody is reading, and we look at the not-found list to fix links we have broken. <a href="changelog.html">Our own changelog</a> records the pageview figures being mostly crawlers rather than people. There is no funnel, no cohort, no retargeting, and nothing is joined to anything else.</p>
+
+    <p>Netlify is our data processor, and their handling of it &mdash; including how long the underlying request data is kept &mdash; is theirs to state, not ours to paraphrase: <a href="https://www.netlify.com/privacy/">Netlify's privacy statement</a>. Their documentation mentions backfilling up to 30 days of history when analytics is switched on; we have not tried to derive a retention period from that, and would rather point you at them than guess.</p>
+
+    <h2 class="section" id="who-else-your-browser-contacts">Who else your browser contacts</h2>
+
+    <p><strong>On most pages, nobody.</strong> Open a zine, a field guide or a broadside and every single request goes to this domain. That became true on the day this page was published, and the reason is the next section.</p>
+
+    <h3 class="subsection" id="embedded-players">The playlists and racks embed players, and those reach out</h3>
+
+    <p>The <a href="collection-sound.html">Sound</a> collection is built out of songs, and each song card carries an embedded YouTube player. There are <strong>292 of them, on 13 of the site's 198 pages</strong>: 269 across the <a href="collection-sound.html">eight racks</a>, and 23 more on four music zines and on <a href="love-you-down-to-your-star-stuff.html">Love You Down To Your Star Stuff</a>, which is one of the three doors into the collection and the one worth knowing about. Two of those cards carry a Spotify player as well. An embedded player is a frame loaded from somebody else's server, so <strong>when one of those pages loads, Google (and on two cards, Spotify) receives a request from your browser, and therefore your IP address and user-agent, whether or not you press play.</strong></p>
+
+    <p>Every one of those YouTube frames uses the privacy-enhanced player at <code>youtube-nocookie.com</code> rather than the ordinary one. <strong>That is worth having and it is narrower than its name suggests</strong>, so here is what Google actually claims for it, in their words: it <em>&ldquo;prevents the use of views of embedded YouTube content from influencing the viewer's browsing experience on YouTube&rdquo;</em>, any ads shown on such a video <em>&ldquo;will likewise be non-personalized&rdquo;</em>, and the view <em>&ldquo;will not be used to personalize advertising shown to the viewer outside of your site or app.&rdquo;</em></p>
+
+    <div class="callout callout--open">
+      <div class="callout-label">Read that carefully, because we did not at first</div>
+      <p><strong>Every one of those promises is about personalisation, not about collection.</strong> Google does not say the request is not made, that nothing is logged, or that no cookie is ever set &mdash; only that what you watch in one of our embeds will not be used to shape what YouTube shows you later. The domain name says <em>nocookie</em>; the documentation says <em>non-personalised</em>. Those are different claims and the second is the one on offer.</p>
+      <p>We moved 66 remaining embeds onto that host earlier the same day this page was written, and described it in <a href="changelog.html">the changelog</a> as the cheapest privacy win available. That was true, and it was also the point at which we should have read the small print rather than the domain name. <strong>We have not independently verified any of Google's claim.</strong> It is their statement about their own service, quoted as such.</p>
+    </div>
+
+    <p><strong>So: if you would rather not be seen by Google, it is those 13 pages &mdash; the eight racks, four music zines and that one door &mdash; and everything else here is free of it.</strong> Blocking third-party frames costs you nothing but the players; the writing, the sources and the argument are all in the page itself, and the racks list every song in text with ordinary links you can choose to follow.</p>
+
+    <h3 class="subsection" id="the-fonts">The fonts, until today</h3>
+
+    <p>Until 9 September 2026, every page on this site loaded its typefaces from <code>fonts.googleapis.com</code> and <code>fonts.gstatic.com</code>. That meant <strong>every page view, on every page, handed Google your IP address and user-agent</strong> before a word was rendered &mdash; on a site with no analytics script, no cookies and a search that never leaves your browser. The fonts were quietly the largest thing we were giving away, and they were giving it away on pages that had nothing else on them.</p>
+
+    <p class="claim">Writing this page is what found it. The sentence &ldquo;most pages contact nobody&rdquo; was simply not true, and it could not be made true by rewording.</p>
+
+    <p>All four families are now served from this domain. They are unmodified, they are all under the <a href="https://openfontlicense.org/">SIL Open Font License 1.1</a>, and each licence <a href="https://github.com/Stimpunks/Star-Stuff/tree/main/fonts">ships beside the files</a> as that licence requires. The files are the exact set Google was serving, mirrored one for one, so the type on the page is unchanged &mdash; and on eight pages it is now <em>more</em> correct than it was, because those pages had been using a family they never actually requested.</p>
+
+    <div class="refusals">
+      <div class="refusals-label">Not:</div>
+      <ul>
+        <li><strong>Not a consent dialog.</strong> There is nothing to consent to. A banner asking permission for storage we do not set would be a costume, and it would train you to click through the ones that matter.</li>
+        <li><strong>Not &ldquo;we value your privacy&rdquo; over a list of 400 partners.</strong> We have no partners. Nothing here is shared with anyone, because nothing here is collected to share.</li>
+        <li><strong>Not anonymised.</strong> We are not claiming that word. An IP address is processed to count you; we simply never receive it. Saying <em>anonymous</em> would be a stronger claim than we can support.</li>
+        <li><strong>Not a promise about anybody else's servers.</strong> What Netlify, Google and Spotify do is theirs to state, and we link to them rather than summarise them into something more comforting than the original.</li>
+        <li><strong>Not finished.</strong> The embeds are a live trade we are making on your behalf, and it is marked as one above rather than filed as settled.</li>
+      </ul>
+    </div>
+
+    <h2 class="section" id="your-rights">If you are in the EU or the UK</h2>
+
+    <p><strong>The Stimpunks Foundation is the controller</strong> for this site; Netlify is a processor acting on our instructions. The lawful basis for the two things described above is <strong>legitimate interests</strong>: serving a page you asked for necessarily involves handling your request, and an aggregate count of pageviews is the minimum needed to know whether publishing this is worth doing. There is no consent basis in play because there is no non-essential storage to consent to.</p>
+
+    <p><strong>You have the usual rights &mdash; access, rectification, erasure, objection, restriction &mdash; and the honest answer to most of them here is that there is nothing on our side to exercise them against.</strong> We hold no account, no email address, no profile and no identifier for you. If you write and ask what we hold about you, the truthful reply is <em>nothing that could be linked to you</em>, and we would rather say that in advance than make you ask. If you want your data removed from our host's aggregate counts, that request has to go to Netlify, and their statement above is the route.</p>
+
+    <p><strong>You also have the right to complain to a supervisory authority</strong>, and you do not have to come to us first. In the EU that is the data protection authority for your country (the <a href="https://www.edpb.europa.eu/about-edpb/about-edpb/members_en">EDPB lists them all</a>); in the UK it is the <a href="https://ico.org.uk/make-a-complaint/">Information Commissioner's Office</a>.</p>
+
+    <h3 class="subsection" id="transfers">Where the processing happens</h3>
+
+    <p><strong>Our host is in the United States, and so are Google and Spotify.</strong> If you are reading this from the EU or the UK, serving you a page therefore involves a transfer outside your jurisdiction. The safeguards for that are the processors' own &mdash; Netlify's statement describes the mechanisms it relies on, including standard contractual clauses &mdash; and we link rather than restate, because a summary of somebody else's legal basis written by us would be less reliable than theirs.</p>
+
+    <h3 class="subsection" id="retention">How long anything is kept</h3>
+
+    <p><strong>We keep nothing, because we receive nothing to keep.</strong> There is no database on our side, no logs of our own, no mailing list and no file with anything of yours in it. The only retention question that applies is our host's: Netlify holds the request data behind the pageview counts, and <a href="https://www.netlify.com/privacy/">their statement</a> is the authority on how long. The criterion we apply on our side is the only one available to us &mdash; <strong>we do not create a store to retain from.</strong></p>
+
+    <h3 class="subsection" id="contact">Contact</h3>
+
+    <p><strong>The controller is the Stimpunks Foundation</strong>, a 501(c)(3) nonprofit. Ask us anything about this page, or tell us it is wrong: <a href="https://github.com/Stimpunks/Star-Stuff/issues">open an issue on GitHub</a>, or use the contact routes at <a href="https://stimpunks.org/">stimpunks.org</a> if you would rather not use GitHub &mdash; a reasonable preference on a privacy page. <strong>We have not published a postal address here</strong>, because we could not find one already public to point at rather than invent; if you need one for a formal request, ask through either route and we will give it to you.</p>
+
+    <h2 class="section" id="what-we-cannot-promise">What we cannot promise</h2>
+
+    <p><strong>This page describes the site on 9 September 2026, and a description can go out of date faster than the thing it describes.</strong> If it stops matching the site, the page is what is wrong; the repository is the source of truth and every change to it is public. Substantive changes here get an entry in <a href="changelog.html">the changelog</a> with a date, like everything else.</p>
+
+    <p>Three limits, stated rather than left to be discovered:</p>
+
+    <ul>
+      <li><strong>We have not audited our host or Google.</strong> Everything above about their behaviour is their own published claim, quoted and linked. We verified what happens in our own pages, which is the part we control.</li>
+      <li><strong>The repository is public, and so is anything you send us.</strong> A GitHub issue is world-readable and carries your GitHub identity. That is a feature for corrections and a poor choice for anything you would not want indexed.</li>
+      <li><strong>This is not legal advice and we are not lawyers.</strong> It is a plain description of what the site does, written by the people who built it, which is the only kind of privacy statement we know how to make honest.</li>
+    </ul>
+
+    <h2 class="section" id="references">Sources</h2>
+
+    <div class="refs">
+      <p class="ref">Netlify, <a href="https://docs.netlify.com/monitor-sites/analytics/">&ldquo;Web Analytics&rdquo;</a>, Netlify Docs &mdash; the server-side collection description and the definitions of pageviews, unique visitors, top locations, top pages and pages not found, quoted above.</p>
+      <p class="ref">Netlify, <a href="https://www.netlify.com/privacy/">&ldquo;Privacy Statement&rdquo;</a> &mdash; our processor's own statement, including data retention.</p>
+      <p class="ref">Google, <a href="https://support.google.com/youtube/answer/171780">&ldquo;Embed videos &amp; playlists&rdquo;</a>, YouTube Help &mdash; the description of Privacy Enhanced Mode, quoted above in full on the point that matters.</p>
+      <p class="ref">SIL, <a href="https://openfontlicense.org/">SIL Open Font License 1.1</a> &mdash; the licence under which all four self-hosted families are redistributed, unmodified, with their licence texts included.</p>
+      <p class="ref">The site itself: <a href="https://github.com/Stimpunks/Star-Stuff">github.com/Stimpunks/Star-Stuff</a>. Every claim on this page about what our pages do is checkable there, which is the point of publishing it that way.</p>
+    </div>
+
+    <div class="colophon-footer">
+      <a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks Foundation</a> &times; <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a> &middot; <a href="https://starstuff.earth">starstuff.earth</a> &middot; <a href="changelog.html">Changelog</a> &middot; <a href="https://stimpunks.org">stimpunks.org</a> &middot; <a href="https://morerealms.com">morerealms.com</a><br>
+      Published 9 September 2026 &middot; Print freely &middot; Share freely &middot; <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> &middot; L&#9733;S &middot; We love you down to your star stuff
+    </div>
+
+  </div>
+
+</div><!-- /doc-shell --></main>
+
+</body>
+</html>

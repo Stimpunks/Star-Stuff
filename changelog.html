@@ -7,8 +7,6 @@
 <meta name="color-scheme" content="dark">
 <meta name="theme-color" content="#0a0a14">
 <link rel="canonical" href="https://starstuff.earth/changelog.html">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <meta name="description" content="What changed and when in the Star Stuff collection — every zine and field guide as it was added, every substantial revision, and every fact-check and attribution audit, including the errors we found in our own work and how we fixed them.">
 <!-- Open Graph / link unfurl -->
 <meta property="og:type" content="website">
@@ -25,7 +23,6 @@
 <meta name="twitter:description" content="What changed and when: every piece as it was added, every substantial revision, and every fact-check and attribution audit — including our own errors and their corrections.">
 <meta name="twitter:image" content="https://starstuff.earth/og-card.jpg">
 <title>Changelog — Star Stuff — Stimpunks × More Realms</title>
-<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="starstuff.css">
 <style>
   :root {
@@ -192,7 +189,7 @@
     <span class="ss-nav-home-group">
       <a class="ss-nav-home" href="index.html"><span class="ss-star" aria-hidden="true">★</span> stuff</a>
       <a class="ss-nav-about" href="about.html">about</a>
-      <a class="ss-nav-search" href="search.html">search</a>
+      <a class="ss-nav-search" href="search.html">search</a><a class="ss-nav-privacy" href="privacy.html">privacy</a>
     </span>
     <a class="ss-nav-collection" href="collection-notes.html"><span class="ss-nav-collection-label">Collection</span> <span class="ss-nav-collection-name">Notes &amp; Rationale</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
   </nav>
@@ -226,9 +223,45 @@
 
   </div>
 
+  <!-- ================= 2026-09-09c (site: fonts self-hosted, privacy page) ================= -->
+  <section class="release" id="2026-09-09-privacy" aria-labelledby="h-2026-09-09-privacy">
+    <div class="release-date">2026 &middot; September 9 &middot; latest</div>
+    <h2 class="release-title" id="h-2026-09-09-privacy">Every page on this site handed your address to Google before it drew a word &mdash; and we only found out because we sat down to write the privacy page</h2>
+    <p class="release-note">The site now has <a href="privacy.html">a privacy statement</a>, and writing it changed the site first. Four typeface families are <strong>self-hosted</strong> as of today, which ends the only third-party request a plain page here was making. On the way we found that <strong>eight pages were rendering a fallback typeface</strong>, and that <strong>this morning's own changelog entry overstated what <code>youtube-nocookie</code> actually promises</strong>. Both below.</p>
+
+    <div class="entry entry--site">
+      <div class="entry-head"><span class="tag tag--site">Site</span><span class="entry-name">The fonts came off Google, because the honest sentence was unwriteable</span></div>
+      <div class="entry-body"><p><strong>The fault, and how it surfaced.</strong> This site has no analytics script, no cookies, no accounts, and a search that runs entirely in the reader's browser. The draft privacy page said <em>&ldquo;on most pages, your browser contacts nobody&rdquo;</em> &mdash; and that was simply false. Every page fetched its typefaces from <code>fonts.googleapis.com</code> and <code>fonts.gstatic.com</code>, so <strong>every page view handed Google an IP address and a user-agent before a word was rendered.</strong> It could not be fixed by rewording. <em>The fonts were quietly the largest thing we were giving away, and they were giving it away on pages that had nothing else on them.</em></p>
+      <p><strong>What shipped.</strong> Atkinson Hyperlegible Next, Space Mono, Fraunces and Boogaloo now come from this domain &mdash; 20 files, 580&nbsp;KB, the <em>exact</em> set Google was serving for the URLs the pages requested, mirrored one for one with the same subsets, the same <code>unicode-range</code> values, the same weight ranges and the same <code>font-display: swap</code>. Hand-picking subsets is how a self-hosting pass loses a glyph nobody notices until a reader meets it. All four are <a href="https://openfontlicense.org/">SIL Open Font License 1.1</a>, verified against the <code>google/fonts</code> repository rather than assumed, redistributed unmodified, with each licence text shipped beside the files as the licence requires. Fraunces keeps its variable optical-size axis, because no page overrides it and a static instance would silently redraw the Bone Song display type.</p>
+      <p><strong>Verified by measuring the old against the new, not by looking.</strong> The live site still served Google fonts while the working copy served its own, so both could be measured at once: every text node's rendered box, on the same pages, at the same viewport. <strong>Ten control pages came back identical &mdash; 14,021 text boxes on the changelog alone, zero differing.</strong> A separate probe confirmed 118 font renders across 14 pages all resolve to the self-hosted face rather than a copy installed on the machine doing the checking, which is the trap this repository already had written down.</p></div>
+    </div>
+
+    <div class="entry entry--factcheck">
+      <div class="entry-head"><span class="tag tag--factcheck">Correction</span><span class="entry-name">We called the youtube-nocookie move a privacy win. It is one, and narrower than we implied</span></div>
+      <div class="entry-body"><p><strong>What we said this morning</strong>, in the entry directly below this one: that moving 66 embeds to <code>youtube-nocookie.com</code> was <em>&ldquo;the cheapest privacy win on the list.&rdquo;</em></p>
+      <p><strong>What Google actually promises.</strong> Privacy Enhanced Mode <em>&ldquo;prevents the use of views of embedded YouTube content from influencing the viewer's browsing experience on YouTube&rdquo;</em>; ads on such a video <em>&ldquo;will likewise be non-personalized&rdquo;</em>; and the view <em>&ldquo;will not be used to personalize advertising shown to the viewer outside of your site or app.&rdquo;</em> <strong>Every one of those is about personalisation, not about collection.</strong> Google does not say the request is not made, that nothing is logged, or that no cookie is ever set. The domain name says <em>nocookie</em>; the documentation says <em>non-personalised</em>.</p>
+      <p><strong>Why it matters more than the wording.</strong> An embedded player is a frame from somebody else's server, so <strong>292 of them across 13 pages reach Google the moment those pages load, whether or not a reader presses play.</strong> We had read the domain name and not the small print &mdash; which is this site's own <a href="too-good-to-check.html">too-good-to-check</a> reflex, aimed at a piece of infrastructure instead of a quotation. The <a href="privacy.html">privacy page</a> now states the trade on its own face and marks it as unfinished rather than settled, and names the 13 pages so a reader who would rather not be seen by Google knows which they are.</p></div>
+    </div>
+
+    <div class="entry entry--site">
+      <div class="entry-head"><span class="tag tag--site">Site</span><span class="entry-name">Eight pages were rendering a typeface they never asked for</span></div>
+      <div class="entry-body"><p>Found while proving the self-hosting had changed nothing. <code>starstuff.css</code> puts Atkinson Hyperlegible Next on the site nav of <em>every</em> page and Space Mono on the injected paged-zine controls &mdash; but the font <code>&lt;link&gt;</code> was written per page, which made it <strong>a second list free to drift from the first</strong>, and it had drifted on eight: <a href="bone-song-zine.html">Bone Song</a>, <a href="underground-zine.html">Underground</a> and <a href="you-were-never-one-thing-zine.html">You Were Never One Thing</a> never requested Atkinson; <a href="index.html">the front page</a>, <a href="lydtyss-zine.html">LYDTYSS</a>, <a href="eternal-sunshine-zine.html">Eternal Sunshine</a>, <a href="neurodiversity-field-guide-zine.html">the Neurodiversity Field Guide</a> and <a href="shorthand-evolution.html">Shorthand Evolution</a> used Space Mono in their own stylesheets and never requested it.</p>
+      <p><strong>The front page is the clearest case: its masthead tagline, <em>Cosmic Connections</em>, was being drawn in Menlo.</strong> Not a near-miss &mdash; a completely different typeface, on the first line under the wordmark, for as long as the page has existed.</p>
+      <p><strong>And the reason nobody caught it is written in this repository already.</strong> Atkinson and Space Mono are installed on the machine this site is built on, so a fallback rendered <em>correctly here</em> and would have shown a stranger something else. Chrome reports the difference &mdash; a webfont face is flagged custom and an installed one is not &mdash; but only if you ask, and no gate here asks. Seven of the eight now render correctly for everyone. The eighth, Shorthand Evolution, measured identical either way: it declares Space Mono for an element that renders no text, so it was a real missing request with no visible consequence. <strong>Self-hosting removes the whole class of error rather than these eight instances</strong>, because there is now exactly one place a face is declared.</p></div>
+    </div>
+
+    <div class="entry entry--site">
+      <div class="entry-head"><span class="tag tag--site">Site</span><span class="entry-name">The privacy page, and a link to it on all 198 pages</span></div>
+      <div class="entry-body"><p><a href="privacy.html">What This Site Knows About You</a> is the sixth working paper in <a href="collection-notes.html">Notes &amp; Rationale</a>. It states what is collected, by whom, on what basis, and what is not collected &mdash; with our host's definitions quoted from its own documentation, including the one that matters: unique visitors are <em>&ldquo;different IP addresses engaging with your project&rdquo;</em>, so counting readers means processing addresses, and we say so rather than reaching for the word <em>anonymous</em>.</p>
+      <p><strong>It also explains why there is no cookie banner</strong>, and why that absence is the honest kind: we set no cookies and no browser storage of any sort, so a prompt asking you to consent to nothing would be theatre plus one more thing to click. <strong>And it disowns a document that would otherwise mislead you</strong> &mdash; the Stimpunks Foundation's policy for stimpunks.org describes comments, logins, Gravatar, HubSpot and QuickBooks, none of which exists here, so reading across would leave you expecting processors this site does not have.</p>
+      <p>A privacy statement has to be reachable from every page. The colophons here are per-page and vary &mdash; 153 pages have one, 45 do not, and their link lists differ &mdash; so there was no uniform footer slot to insert into. The site nav is uniform, so the link sits there, in the home group beside <em>about</em> and <em>search</em>, on all 197 pages that have a nav, plus the front page's masthead. It is hidden in <code>@media print</code> with the rest of the chrome, so nothing changes on paper.</p></div>
+    </div>
+
+  </section>
+
   <!-- ================= 2026-09-09b (site: data tables) ================= -->
   <section class="release" id="2026-09-09-tables" aria-labelledby="h-2026-09-09-tables">
-    <div class="release-date">2026 &middot; September 9 &middot; latest</div>
+    <div class="release-date">2026 &middot; September 9</div>
     <h2 class="release-title" id="h-2026-09-09-tables">A screen reader can now tell you which column a table cell is in &mdash; and two numbers we published this morning were wrong</h2>
     <p class="release-note">The second half of the accessibility audit: <strong>199 header cells</strong> given a <code>scope</code>, four tables that had no accessible name at all given a caption, and <strong>161 table names that read &ldquo;the The&hellip;&rdquo;</strong> repaired. <strong>Corrected below:</strong> both table figures in this morning's entry were overstated, one of them because our own counting method was broken.</p>
 

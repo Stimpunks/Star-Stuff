@@ -61,6 +61,27 @@
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), midi=(), serial=(), bluetooth=(), display-capture=(), xr-spatial-tracking=()
 
+# Self-hosted webfonts (2026-09-09). Fonts moved off fonts.gstatic.com so a page view
+# stops handing a reader's IP to a third party; see the block at the top of starstuff.css.
+#
+# NOT `immutable`. The filenames carry the family, style, weight range and unicode subset
+# but no content hash, so a future re-download from google/fonts would reuse a filename for
+# different bytes — and immutable tells a browser never to ask again for up to a year. A
+# week of caching with must-revalidate afterwards is the honest trade for an unhashed asset,
+# and these are ~10-80 KB files a reader fetches once. If they ever get content-hashed
+# names, this is the line to change to max-age=31536000, immutable.
+#
+# Content-Type is stated because Netlify does not always infer woff2, and a font served as
+# octet-stream is refused by the font loader with nothing useful in the console.
+/fonts/*
+  Cache-Control: public, max-age=604800, must-revalidate
+  Content-Type: font/woff2
+
+# The OFL licence texts that ship beside the fonts, as required by the licence. Plain text.
+/fonts/OFL-*.txt
+  Cache-Control: public, max-age=604800
+  Content-Type: text/plain; charset=utf-8
+
 # The RSS feed. Netlify serves .xml as application/xml, which every reader accepts,
 # but application/rss+xml is what a feed actually is — and it is what makes a browser
 # offer to subscribe rather than dump the markup on screen. Charset stated explicitly:

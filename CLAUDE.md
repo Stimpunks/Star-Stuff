@@ -48,8 +48,10 @@ The central phrase compresses through registers, each with a use:
 
 ## Architecture
 
-- Every artifact is a **single self-contained HTML file** with no dependencies beyond Google web
-  fonts. Each is reachable at its own path (e.g. `https://starstuff.earth/bone-song-zine.html`).
+- Every artifact is a **single self-contained HTML file** with **no third-party dependency at all**
+  as of 2026-09-09 — the four typeface families are self-hosted in `fonts/` and declared once in
+  `starstuff.css`. This line used to read *no dependencies beyond Google web fonts*; that was the
+  dependency, and it was handing every reader's IP to Google before a word rendered. Each is reachable at its own path (e.g. `https://starstuff.earth/bone-song-zine.html`).
 - `index.html` is the landing page and entry point.
 - Two shared assets, included by pages via **relative URLs**:
   - **`starstuff.css`** — shared site navigation (`.ss-nav`), the injected per-spread footer nav
@@ -150,6 +152,27 @@ The central phrase compresses through registers, each with a use:
   values: `og:site_name` is `Star Stuff · Stimpunks Foundation × More Realms`, and `publisher` is an
   **array of both organizations** — Stimpunks Foundation (`https://stimpunks.org/`, with the
   `og-card.jpg` logo) then More Realms (`https://morerealms.com/`). See *Co-branding* below.
+- **Webfonts are self-hosted, declared once, in `starstuff.css`** (2026-09-09). Twenty woff2 files
+  in `fonts/`, the exact set Google was serving, with the same subsets and `unicode-range` values —
+  **don't hand-pick subsets**, that is how a self-hosting pass loses a glyph nobody meets until a
+  reader does. All four families are OFL 1.1 and **unmodified**, each licence shipped beside the
+  files; all four carry a Reserved Font Name, so a modified file would have to be renamed. Fraunces
+  keeps its variable `opsz` axis because no page overrides it. **Pages carry no font `<link>` and no
+  preconnect** — adding one back reintroduces the third-party request the privacy page says is gone.
+- **A per-page font `<link>` was a second list free to drift from the CSS, and it had drifted on
+  eight pages.** `starstuff.css` puts Atkinson on `.ss-nav` for *every* page and Space Mono on the
+  injected paged-zine controls, but each page requested its own families — so `index.html` drew its
+  masthead tagline in **Menlo**, and three zines drew their nav in a system face. **This was masked
+  because Atkinson and Space Mono are installed on the build machine**, exactly as the Google Fonts
+  note in *Design system* warns. The tell is `isCustomFont` in
+  `CSS.getPlatformFontsForNode` — a webfont face is flagged custom, an installed one is not, and
+  **no gate here asks**. Self-hosting retired the whole class of fault, not the eight instances.
+- **`youtube-nocookie.com` promises less than the name says, and the repo got this wrong once.**
+  Google's own text is about *personalisation*: a view "will not be used to personalize" the
+  viewer's YouTube experience or advertising. It does **not** say no request is made, nothing is
+  logged, or no cookie is set. 292 embeds across 13 pages contact Google on page load regardless.
+  Use the host — it is better than the alternative — and **don't describe it as "no tracking"**;
+  `privacy.html` states the trade and marks it unfinished.
 - **Every data table carries an accessible name and every header cell a `scope`** (2026-09-09).
   WCAG 1.3.1, Level A. Two naming conventions are both in use and both fine: a `<caption>` (59
   tables) or an `aria-label` on the `<table>` (24, all of them field-guide templates where the name
