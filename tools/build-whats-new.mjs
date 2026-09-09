@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * build-whats-new.mjs — generate whats-new.html, feed.xml and llms.txt.
+ * build-whats-new.mjs — generate whats-new.html, feed.xml, llms.txt and security.txt.
  *
  * Why this is generated and not hand-written
  * ------------------------------------------
@@ -50,8 +50,24 @@
  * egg is not off the path. The file does not mention the exclusion either, because
  * saying "some pages are not listed" is itself an announcement.
  *
+ * And security.txt, which is here for the CHECK rather than for the generation
+ * -----------------------------------------------------------------------------
+ * `/.well-known/security.txt` has a mandatory `Expires:` field, and RFC 9116's own
+ * guidance is to treat it like a certificate. That is this repository's signature
+ * fault with a date attached: a file that is valid today, invalid in a year, and
+ * silent about the transition. Hand-writing it would put the lapse on nobody's
+ * calendar. So the date is one constant below, the file is generated from it, and
+ * this tool FAILS while the expiry is inside 30 days — `--check` is already in the
+ * ship routine, so the renewal cannot pass unnoticed. The countdown prints on every
+ * run, like the exemption counts.
+ *
+ * The name of this tool now under-describes it twice over. See CLAUDE.md: the trade
+ * is deliberate for llms.txt (it needs the card map) and merely convenient here (it
+ * needs a --check that somebody runs). A rename is worth doing and is not free —
+ * CLAUDE.md, the ship-zine skill and habit all name this file.
+ *
  * Usage
- *   node tools/build-whats-new.mjs           # write whats-new.html, feed.xml, llms.txt
+ *   node tools/build-whats-new.mjs           # write all four
  *   node tools/build-whats-new.mjs --check   # exit non-zero if any is stale
  */
 
@@ -73,6 +89,12 @@ const EGGS = 'collection-easter-eggs.html';
    check-classes.mjs keeps its HOOKS list by hand: an override should be a
    decision somebody wrote down, not a mechanism to fall into. The count is
    printed on its own line so a list that grows is a list somebody can question. */
+/* security.txt's mandatory Expires. RFC 9116 says roughly a year and update it
+   before it lapses; the check below refuses to let that be a matter of memory.
+   Bump this line and re-run when the countdown gets short. */
+const SECURITY_EXPIRES = '2027-09-09T00:00:00Z';
+const SECURITY_RENEW_WITHIN_DAYS = 30;
+
 const DATE_OVERRIDES = {
   // Glimmer Wire was one page from 2026-09-02 until the 2026-09-04 split, so the
   // first edition's own file was created on the 4th. Its address is its date and
@@ -631,11 +653,43 @@ function buildLlms() {
   return out.join('\n');
 }
 
+/* ── security.txt ─────────────────────────────────────────────────────────────
+   RFC 9116. Contact points at GitHub's private vulnerability reporting rather than
+   at an inbox: the source is public, so an issue would disclose a report the moment
+   it was filed, and a draft advisory is private until we publish it. It also means
+   no address is published — and the spec's warning is that an UNMONITORED contact is
+   worse than no file at all, which a general contact form on a small nonprofit's
+   site would have been. Fields kept to the ones that are true: no Encryption (no
+   PGP key) and no Acknowledgments (no hall of fame) rather than empty gestures. */
+function buildSecurityTxt() {
+  return [
+    '# Star Stuff — starstuff.earth',
+    '# Stimpunks Foundation × More Realms',
+    '#',
+    '# A static site: no server-side code, no accounts, no database, no cookies. The',
+    '# full policy, including what is in scope and what is not, is at the Policy URL',
+    '# below. Please use the private channel — issues on the repository are public the',
+    '# moment they are opened.',
+    '',
+    'Contact: https://github.com/Stimpunks/Star-Stuff/security/advisories/new',
+    'Policy: https://github.com/Stimpunks/Star-Stuff/blob/main/SECURITY.md',
+    `Expires: ${SECURITY_EXPIRES}`,
+    'Preferred-Languages: en',
+    `Canonical: ${SITE}.well-known/security.txt`,
+    '',
+  ].join('\n');
+}
+
+/* The expiry is the whole reason this file is generated here. Checked on every run,
+   not only under --check, so a plain build says it too. */
+const expiryDays = Math.floor((Date.parse(SECURITY_EXPIRES) - Date.now()) / 86400000);
+
 /* ── write or check ──────────────────────────────────────────────────────── */
 const outputs = [
   ['whats-new.html', buildHtml()],
   ['feed.xml', buildFeed()],
   ['llms.txt', buildLlms()],
+  ['.well-known/security.txt', buildSecurityTxt()],
 ];
 
 let stale = 0;
@@ -657,6 +711,15 @@ console.log(`\n  ${records.length} pieces · ${days.length} days · ${collection
 console.log(`  ${FEED_ITEMS} most recent in the feed`);
 console.log(`  ${eggsSkipped} Easter Eggs excluded by decision (a listed egg is not off the path)`);
 console.log(`  ${Object.keys(DATE_OVERRIDES).length} date override${Object.keys(DATE_OVERRIDES).length === 1 ? '' : 's'}`);
+console.log(`  security.txt expires ${SECURITY_EXPIRES.slice(0, 10)} — ${expiryDays} day${expiryDays === 1 ? '' : 's'} left`);
+if (expiryDays <= SECURITY_RENEW_WITHIN_DAYS) {
+  console.error(
+    `\n  security.txt ${expiryDays < 0 ? 'EXPIRED' : 'EXPIRES SOON'} — RFC 9116 requires a future Expires, and a`
+    + `\n  lapsed file is invalid rather than merely stale. Bump SECURITY_EXPIRES in`
+    + `\n  ${path.relative(REPO, fileURLToPath(import.meta.url))} and re-run.`
+  );
+  process.exitCode = 1;
+}
 
 if (CHECK && stale) {
   console.log(`\n  ${stale} file(s) stale — run: node tools/build-whats-new.mjs`);

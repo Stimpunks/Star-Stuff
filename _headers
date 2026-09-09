@@ -60,7 +60,21 @@
   Content-Security-Policy: frame-ancestors 'self' https://stimpunks.org https://morerealms.com
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), midi=(), serial=(), bluetooth=(), display-capture=(), xr-spatial-tracking=()
-  Link: </llms.txt>; rel="describedby"; type="text/markdown"; title="Site index for language models", </sitemap.xml>; rel="sitemap"; type="application/xml", </feed.xml>; rel="alternate"; type="application/rss+xml"; title="Star Stuff", <https://creativecommons.org/licenses/by-sa/4.0/>; rel="license"
+  Link: </llms.txt>; rel="describedby"; type="text/markdown"; title="Site index for language models", </sitemap.xml>; rel="sitemap"; type="application/xml", </feed.xml>; rel="alternate"; type="application/rss+xml"; title="Star Stuff", </.well-known/security.txt>; rel="security"; type="text/plain", <https://creativecommons.org/licenses/by-sa/4.0/>; rel="license"
+
+# security.txt (2026-09-09), RFC 9116. text/plain is required by the RFC and Netlify
+# infers it from the extension anyway; stated because a Content-Type is a claim and this
+# one is cheap to make explicitly. Cached for a day rather than a week: the file carries
+# an Expires date, and a stale copy in a proxy outliving its own validity window is the
+# one caching failure that actually matters here.
+#
+# The Link header above advertises it with rel="security", which is IANA-registered. The
+# expiry itself is gated in tools/build-whats-new.mjs — a lapsed security.txt is INVALID
+# per the RFC rather than merely old, so it is checked on every ship instead of trusted
+# to a calendar.
+/.well-known/security.txt
+  Content-Type: text/plain; charset=utf-8
+  Cache-Control: public, max-age=86400, must-revalidate
 
 # llms.txt (2026-09-09). Served as text/markdown, which is what the convention asks for
 # and what makes a browser show it rather than offer to download it.

@@ -223,9 +223,30 @@
 
   </div>
 
+  <!-- ================= 2026-09-09f (site: security.txt) ================= -->
+  <section class="release" id="2026-09-09-security" aria-labelledby="h-2026-09-09-security">
+    <div class="release-date">2026 &middot; September 9 &middot; latest</div>
+    <h2 class="release-title" id="h-2026-09-09-security">If you find a hole in this site, there is now somewhere to send it that isn't a public issue</h2>
+    <p class="release-note">A <a href="https://github.com/Stimpunks/Star-Stuff/blob/main/SECURITY.md">security policy</a> and an RFC 9116 <code>security.txt</code>, pointing at a private reporting channel that had to be switched on before it existed. The interesting part is the <code>Expires</code> field, which is a file that goes invalid on a date and says nothing about it &mdash; so it is gated rather than diarised.</p>
+
+    <div class="entry entry--site">
+      <div class="entry-head"><span class="tag tag--site">Site</span><span class="entry-name">A private channel, because an issue on a public repository is a disclosure</span></div>
+      <div class="entry-body"><p><strong>Reports go to <a href="https://github.com/Stimpunks/Star-Stuff/security/advisories/new">a draft advisory</a></strong>, which is private until we publish it. The obvious alternative was an issue on this repository, and that is exactly wrong: every issue here is world-readable the moment it is opened, so the ordinary route would publish a vulnerability rather than report it. <strong>Private vulnerability reporting was switched off on the repository</strong> until this change &mdash; had we just written the URL into a file, it would have pointed at nothing.</p>
+      <p><strong>What decided it was a warning rather than a preference.</strong> RFC 9116's guidance is that an <em>unmonitored</em> contact is worse than no file at all &mdash; and the honest reading of our own <a href="privacy.html">contact arrangements</a> is that a general form on a small nonprofit's site is that failure: Stimpunks' own contact page says we get lots of spam and sometimes miss requests in the noise. A GitHub advisory notifies the people who can actually fix it, and publishes no address to be harvested.</p>
+      <p><strong>The policy states the scope honestly, which is the useful part for anybody reading it.</strong> This site has no application server, no database, no accounts, no session, and no form that submits anywhere &mdash; so most report categories are ruled out before anyone spends an evening on them, and the policy says which ones are still worth sending: a header or redirect misconfiguration, a way out of the JavaScript template that builds the field-guide entries, or anything that makes the site contact a third party we have not disclosed. It also says there is no money, because there isn't, and pretending otherwise wastes a researcher's time.</p></div>
+    </div>
+
+    <div class="entry entry--site">
+      <div class="entry-head"><span class="tag tag--site">Site</span><span class="entry-name">A file that expires, on a site with a documented weakness for things that go stale</span></div>
+      <div class="entry-body"><p><code>security.txt</code> requires an <code>Expires</code> date and the RFC's own advice is to treat it like a certificate. <strong>That is this project's signature fault with a date attached:</strong> valid today, <em>invalid</em> in a year &mdash; not merely out of date, invalid &mdash; and completely silent about the transition. The longest section of our working notes is about numbers going stale because nothing can read a figure written out in prose. A hand-written expiry would have been that, on a one-year timer, on nobody's calendar.</p>
+      <p><strong>So the date is one constant, the file is generated from it, and the build refuses to pass inside 30 days of the lapse.</strong> The countdown prints on every run &mdash; <em>364 days left</em>, today. The check itself was tested in both directions before being trusted rather than assumed to work: it fails at nine days out, fails at forty days past, and passes at 364. Renewal is a one-line edit in the place that tells you it is due.</p></div>
+    </div>
+
+  </section>
+
   <!-- ================= 2026-09-09e (site: llms.txt, a broken quote) ================= -->
   <section class="release" id="2026-09-09-llms" aria-labelledby="h-2026-09-09-llms">
-    <div class="release-date">2026 &middot; September 9 &middot; latest</div>
+    <div class="release-date">2026 &middot; September 9</div>
     <h2 class="release-title" id="h-2026-09-09-llms">A description on this site read &ldquo;The culture end of Star Stuff, where&rdquo; and stopped &mdash; for a month, because of one unescaped quotation mark</h2>
     <p class="release-note">The site now publishes <a href="llms.txt">an index for language models</a>, generated from the same collection cards every other list here comes from. Writing it meant reading all seventeen collection descriptions, which is how we found <strong>five meta tags on three pages silently cut in half by an unescaped quote</strong> &mdash; and that fault has earned <code>check-markup.mjs</code> a ninth check.</p>
 

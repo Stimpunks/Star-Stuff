@@ -861,7 +861,14 @@ tracking — the query never leaves the reader's browser.
 - Every page reaches search through the `.ss-nav-search` pill in the nav cluster; `index.html`
   has no `.ss-nav`, so it carries its own `.masthead-search` link.
 
-## What's New, RSS & llms.txt (`tools/build-whats-new.mjs`)
+## Generated files (`tools/build-whats-new.mjs`)
+
+**The tool's name under-describes it twice over, and a rename is worth doing.** It emits
+`whats-new.html`, `feed.xml`, `llms.txt` and `.well-known/security.txt`. The coupling is
+deliberate for `llms.txt` (it needs the same card map, and a second parser would be a second
+answer free to drift) and merely convenient for `security.txt` (it needs a `--check` somebody
+actually runs). Renaming costs edits in this file, the `ship-zine` skill and habit; it is
+recorded here as an open call rather than done quietly.
 
 `whats-new.html` is the answer to *what came out this week* — every piece newest first, title and
 the line it leads with, nothing else. `changelog.html` answers *why it changed*, at length, and is
@@ -917,6 +924,23 @@ node tools/build-whats-new.mjs --check   # exit non-zero if either is stale
   `<link>` in `index.html`'s head. The header also carries `sitemap`, `alternate` and `license`.
   **Every relation is IANA-registered**; inventing one is a bad signal and crawlers ignore it, and
   the URI goes in angle brackets, not quotes.
+- **`.well-known/security.txt` is generated for the CHECK, not for the generation** (RFC 9116,
+  added 2026-09-09). Its mandatory `Expires:` is this repo's signature fault with a date
+  attached: valid today, **invalid** in a year, and silent about the transition — and a lapsed
+  file is invalid rather than merely stale. So the date is one constant, `SECURITY_EXPIRES`, the
+  file is generated from it, the countdown prints on every run, and the tool **exits non-zero
+  inside 30 days**. Tested both ways before being trusted: fires at 9 days and at −40, passes at
+  364. **Bump the constant; don't hand-edit the file** — `--check` byte-compares and will catch it.
+- **`Contact:` is GitHub's private vulnerability reporting**, not an inbox and not a contact form.
+  The source is public, so an issue would disclose a report the moment it was filed; a draft
+  advisory is private until published. It also publishes no address. The spec's warning decided
+  it: an **unmonitored** contact is worse than no file, and Stimpunks' own contact page says
+  requests sometimes get missed in the spam. Private reporting was enabled on the repo in the same
+  pass — it was off, so the URL would have 404'd. `SECURITY.md` is what `Policy:` points at, and it
+  states the scope honestly: a static site with no server, no accounts and no storage rules most
+  report categories out, and says which ones are still worth sending.
+- **No `Encryption:` and no `Acknowledgments:`.** There is no PGP key and no hall of fame, and an
+  empty gesture in a security file is worse than an absent field.
 - **`--check` is a ship gate and belongs in the `ship-zine` routine**, next to
   `build-search-index.mjs --check`. A new piece means a new row here, and nothing else in the repo
   will notice its absence.
