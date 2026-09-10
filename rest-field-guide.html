@@ -752,7 +752,10 @@ It sits at the end of the guide because it names the guide's own risk. <em>Rest<
    because tools/check-overlap.mjs measures inked extent and these sit at 6.4px. */
 function makeSVG(entry) {
   const c = entry.color, A = '#fbbf24', G = '#4ade80', C = '#22d3ee', M = '#c4b5d4', W = '#f9fafb';
-  const lbl = (x,y,col,anchor,t) => `<text x="${x}" y="${y}" font-size="6.4" fill="${col}" text-anchor="${anchor}" font-family="Atkinson Hyperlegible Next, sans-serif">${t}</text>`;
+  /* `cls` is optional and exists for one caller: a label set on a shape the diagram
+     paints itself needs fc-own-ground, because a forced palette leaves that shape's
+     fill alone and would invert only the label. */
+  const lbl = (x,y,col,anchor,t,cls) => `<text${cls?` class="${cls}"`:''} x="${x}" y="${y}" font-size="6.4" fill="${col}" text-anchor="${anchor}" font-family="Atkinson Hyperlegible Next, sans-serif">${t}</text>`;
   const dot = (x,y,r,col,op) => `<circle cx="${x}" cy="${y}" r="${r}" fill="${col}"${op?` opacity="${op}"`:''}/>`;
   const ring = (x,y,r,col,dash) => `<circle cx="${x}" cy="${y}" r="${r}" fill="none" stroke="${col}" stroke-width="1.1"${dash?` stroke-dasharray="${dash}"`:''}/>`;
   const line = (x1,y1,x2,y2,col,sw,dash) => `<path d="M${x1} ${y1} L${x2} ${y2}" stroke="${col}" stroke-width="${sw||1.1}" fill="none"${dash?` stroke-dasharray="${dash}"`:''}/>`;
@@ -888,7 +891,7 @@ function makeSVG(entry) {
       m += dot(52,44,9,G,'0.9');
       m += `<g fill="${c}" opacity="0.85">` + [0,1,2,3,4,5,6,7].map(i=>{const a=i*Math.PI/4;return dot(52+Math.cos(a)*22,44+Math.sin(a)*22,3,c);}).join('') + `</g>`;
       m += lbl(52,18,W,'middle','−19 °C');
-      m += lbl(52,47,'#0a0a14','middle','37.5');
+      m += lbl(52,47,'#0a0a14','middle','37.5','fc-own-ground');
       m += lbl(52,88,G,'middle','the middle is blood-warm');
       break;
     }

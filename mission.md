@@ -95,7 +95,7 @@ An aim you cannot fail is not an aim. Each of these is a condition that could be
 | **Publish the checking** | A stretch of [changelog](https://starstuff.earth/changelog.html) with no correction in it. We are not getting better that fast; a clean run means we stopped looking. |
 | **Better than the coverage** | A [Glimmers](https://starstuff.earth/collection-glimmers.html) entry resting on a press release alone, with no statement of what could not be read at source. |
 | **Bad news with an exit** | A [Trigger](https://starstuff.earth/collection-triggers.html) that names a harm and stops, or a solutions list that puts an individual action and a structural one on the same footing. |
-| **Working in the open** | A count printed in prose that nobody can re-derive from the repository — or any of the eight gates left standing at a baseline above zero. |
+| **Working in the open** | A count printed in prose that nobody can re-derive from the repository — or any of the nine gates left standing at a baseline above zero. |
 | **Readable and printable** | A page that comes off a printer blank, or a contrast failure shipped and left. Both have happened; both are measured now. |
 | **AI under constraint** | A page shipped whose sources no person read, or a citation that traces back only to something a model said. |
 

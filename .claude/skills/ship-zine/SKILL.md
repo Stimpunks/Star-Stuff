@@ -88,7 +88,31 @@ Ryan's shorthand for "finish and publish." Scope depends on what changed.
    cannot see it: it derives membership from card *hrefs*, and a set has no order. Browser-free
    and instant, like the two above.
 
-11. **If you touched a broadside, check it still fits the paper.**
+11. **Check the reader's own palette.** Run it whenever you touched a colour, an `<svg>`
+   label, or anything using `background-clip: text`:
+
+   ```bash
+   node tools/check-forced-colors.mjs --check <the-changed-pages>.html
+   ```
+
+   Windows Contrast themes and their equivalents replace every colour on the site with the
+   reader's own. **Baseline is 0.** It exists because that mode had never been emulated here, and
+   **4,862 SVG labels across 133 pages** were under AA in it: Chrome does not force `fill`, so the
+   diagrams kept the light ink they were drawn with while the ground under them turned white.
+
+   It measures **both** palettes, light and dark, and that is not optional: those failures run
+   4,862 light against **15** dark, so a one-palette run calls the site fine. If it names a label
+   sitting on a shape the diagram paints for itself, that label wants `class="fc-own-ground"`
+   rather than a colour change — recolouring that one is what breaks it.
+
+   **And take a screenshot, not just a ratio.** This tool's first version reported 229
+   gradient-clipped headings as invisible on reasoning that matched the real 2026-08-12 print
+   fault exactly, and every one of them renders fine — the browser forces the paint even though
+   the computed fill stays transparent. A fix was written and applied to 198 pages before two
+   screenshots showed there was nothing to fix. It now counts those elements and judges none of
+   them.
+
+12. **If you touched a broadside, check it still fits the paper.**
 
    ```bash
    node tools/check-sheets.mjs --check
@@ -97,7 +121,7 @@ Ryan's shorthand for "finish and publish." Scope depends on what changed.
    Prints each sheet at US Letter *and* A4 and counts pages, and separately measures overflow —
    a fixed-height sheet that overruns is clipped, not paginated, so a clean page count can still
    hide a cut-off line. Only applies to pages with an `@page` rule.
-12. **Confirm every derived file is current — one command for all four.**
+13. **Confirm every derived file is current — one command for all four.**
 
    ```bash
    node tools/check-derived.mjs
@@ -109,7 +133,7 @@ Ryan's shorthand for "finish and publish." Scope depends on what changed.
    `--quick` to skip the search index (the only one needing Chrome) while iterating; run it in full
    before shipping. **A stale card tagline makes two of them stale at once**, which is why this is
    one gate rather than four flags to remember.
-13. **Commit & push.** `git add` the touched files; commit with a descriptive heredoc message;
+14. **Commit & push.** `git add` the touched files; commit with a descriptive heredoc message;
    `git push`.
 
 ## Small edit (fast path)
@@ -120,6 +144,9 @@ renamed** (`node tools/build-derived.mjs`)
 → **check contrast if you touched a color, an opacity, or an SVG label**
 (`node tools/check-contrast.mjs --check <page>.html`)
 → **run `node tools/check-card-order.mjs --check` if a card moved**
+→ **run `node tools/check-forced-colors.mjs --check <page>.html` if you touched a colour, an
+`<svg>` label, or anything with `background-clip: text`** — it measures both the light and the
+dark forced palette, and one palette on its own proves nothing
 → **always run `node tools/check-markup.mjs --check`** — it costs 0.3s, needs no browser, and its
 baseline is 0, so there is no reason to skip it on any edit that touched HTML
 → **always run `node tools/check-derived.mjs`** (or `--quick` for the three fast ones) — page text,

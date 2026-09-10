@@ -209,6 +209,20 @@
     h2.section { page-break-after: avoid; break-after: avoid; }
     .swatches, .tbl-wrap, .callout, .specimen { page-break-inside: avoid; break-inside: avoid; }
   }
+
+  /* A reader running a forced palette gets every colour on the site replaced with
+     their own — which on this page would blank all 17 swatch chips, because a chip
+     is a bare div whose whole content is a background-colour. This is the one thing
+     the spec reserves forced-color-adjust for: "only where the colour IS the
+     information", and a page documenting the palette is that case. It is the same
+     judgement as print-color-adjust: exact on the same selector eleven lines up.
+
+     The chips are the only opt-out here. The token name, the hex and the L* value
+     sit in text beside every one of them, so nothing is *known* only by the colour
+     — but a palette you cannot see is a poor way to argue about a palette. */
+  @media (forced-colors: active) {
+    .sw-chip, .spectrum-line { forced-color-adjust: none; }
+  }
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"The Star Stuff Design System","description":"The design system behind the Star Stuff collection: Atkinson Hyperlegible, a five-accent palette on a violet-cast near-black, full-opacity body text at 18.84:1, a pure-CSS starfield, and an honest accounting of what it borrowed from Solarized.","image":"https://starstuff.earth/og-card.jpg","url":"https://starstuff.earth/design.html","mainEntityOfPage":"https://starstuff.earth/design.html","author":{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/"},"publisher":[{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/","logo":{"@type":"ImageObject","url":"https://starstuff.earth/og-card.jpg"}},{"@type":"Organization","name":"More Realms","url":"https://morerealms.com/"}],"isPartOf":{"@type":"WebSite","name":"Star Stuff","url":"https://starstuff.earth/"},"license":"https://creativecommons.org/licenses/by-sa/4.0/"}</script>
 </head>

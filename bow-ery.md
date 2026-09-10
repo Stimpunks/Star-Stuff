@@ -199,7 +199,7 @@ Notes
 
 Printed in grey. Every stroke on this sheet is a colour the shared print stylesheet flattens for legibility — the radii and the labels are unaffected, and the colour version is at starstuff.earth/bow-ery.
 
-**Why a third “-ery”, and why it is an Easter egg.** [The Hatchery](https://starstuff.earth/hatchery.html) came from the small egg at the foot of the front page; [The Quillery](https://starstuff.earth/quillery.html) from the mascot beside it. This one comes from a catalogue that had to draw sixteen bows at 104×96 and could not show you how big any of them was. An egg is *not* a lower standard here — same sourcing, same fact-check ledger, same eight gates, same changelog entry as anything else on this site. *Only the door moves.*
+**Why a third “-ery”, and why it is an Easter egg.** [The Hatchery](https://starstuff.earth/hatchery.html) came from the small egg at the foot of the front page; [The Quillery](https://starstuff.earth/quillery.html) from the mascot beside it. This one comes from a catalogue that had to draw sixteen bows at 104×96 and could not show you how big any of them was. An egg is *not* a lower standard here — same sourcing, same fact-check ledger, same nine gates, same changelog entry as anything else on this site. *Only the door moves.*
 
 Ten bows at three units to the degree · radii true, everything else drawn for legibility
  companion sheet to [A Field Guide to Rainbows](https://starstuff.earth/rainbows-field-guide.html) · third of the “-ery” sheets

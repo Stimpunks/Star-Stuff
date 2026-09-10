@@ -722,7 +722,10 @@ function makeSVG(entry) {
 
   svg += `<circle cx="${cx}" cy="${cy}" r="13" fill="${accent}" opacity="0.18"/>`;
   svg += `<circle cx="${cx}" cy="${cy}" r="8" fill="${accent}"/>`;
-  svg += `<text x="${cx}" y="${cy + 2.6}" text-anchor="middle" font-family="Atkinson Hyperlegible Next, sans-serif" font-size="7.5" font-weight="700" fill="#0a0a14">${entry.symbol}</text>`;
+  /* fc-own-ground: the symbol is dark ink on the element's own accent disc, which a
+     forced palette leaves alone — so forcing the symbol to CanvasText would put white
+     on gold under a dark contrast theme. On the template, so a new element inherits it. */
+  svg += `<text class="fc-own-ground" x="${cx}" y="${cy + 2.6}" text-anchor="middle" font-family="Atkinson Hyperlegible Next, sans-serif" font-size="7.5" font-weight="700" fill="#0a0a14">${entry.symbol}</text>`;
   svg += `</svg>`;
   return svg;
 }

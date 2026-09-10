@@ -151,6 +151,27 @@
 
      Two adjustments, both because #444 at low opacity is nearly nothing:
      the ghost primary and the glare washes are lifted so they survive. */
+  /* A reader running a forced palette gets the site's colours replaced with their
+     own, and .b-occ — the ground band, #0a0a14 at 0.72 — is the one element here
+     that cannot survive that unchanged: alpha composites against whatever is BEHIND
+     it, so over our dark page it reads as solid ground and over the reader's Canvas
+     it lands at mid-grey rgb(79,79,86). Measured, the two labels on it then fall to
+     2.57:1 forced and 4.24:1 authored — the only place on the site where neither the
+     shared rule nor an exemption on its own was enough.
+
+     So the band stops borrowing the ground behind it, and its two labels keep the
+     ink they were drawn with (class="fc-own-ground"), which puts them at ~9.8:1 in
+     either palette. Under a dark contrast theme the band merges with the Canvas and
+     reads as an edge rather than a mass; the two labels are what carry its meaning,
+     and they stay. Only THIS diagram has a .b-occ — the other six repeat the same
+     two labels with no band under them, so the shared rule is right for those and
+     they are deliberately untouched. Same move as .b-occ in the print block below,
+     with a different value, because print's ground is always paper and this one is
+     the reader's. */
+  @media (forced-colors: active) {
+    .b-occ { opacity: 1; }
+  }
+
   @media print {
     .bow-art [stroke-dasharray] { opacity: 0.75 !important; }
     .bow-art circle[fill="#fbbf24"] { opacity: 0.28 !important; }
@@ -400,7 +421,7 @@
         <svg class="bow-art" viewBox="0 0 400 232" role="img" aria-labelledby="p10t p10d" xmlns="http://www.w3.org/2000/svg">
           <title id="p10t">The Full Circle</title>
           <desc id="p10d">A complete circle of rainbow colours at 42 degrees radius. The upper half is drawn solid; the lower half is dashed and faded, and the lower part of the frame below the horizon line is shaded dark to show that the ground is in the way.</desc>
-          <path d="M 77.9 200 A 122.1 122.1 0 0 1 322.1 200" fill="none" stroke="#a78bfa" stroke-width="2.2" opacity="0.95"/><path d="M 77.1 200 A 122.9 122.9 0 0 1 322.9 200" fill="none" stroke="#818cf8" stroke-width="2.2" opacity="0.95"/><path d="M 76.2 200 A 123.8 123.8 0 0 1 323.8 200" fill="none" stroke="#22d3ee" stroke-width="2.2" opacity="0.95"/><path d="M 75.4 200 A 124.6 124.6 0 0 1 324.6 200" fill="none" stroke="#4ade80" stroke-width="2.2" opacity="0.95"/><path d="M 74.5 200 A 125.5 125.5 0 0 1 325.5 200" fill="none" stroke="#fbbf24" stroke-width="2.2" opacity="0.95"/><path d="M 73.7 200 A 126.3 126.3 0 0 1 326.3 200" fill="none" stroke="#fb923c" stroke-width="2.2" opacity="0.95"/><path d="M 72.9 200 A 127.1 127.1 0 0 1 327.1 200" fill="none" stroke="#f472b6" stroke-width="2.2" opacity="0.95"/><path d="M 77.9 200 A 122.1 122.1 0 0 0 322.1 200" fill="none" stroke="#a78bfa" stroke-width="1.8" opacity="0.30" stroke-dasharray="5 4"/><path d="M 77.1 200 A 122.9 122.9 0 0 0 322.9 200" fill="none" stroke="#818cf8" stroke-width="1.8" opacity="0.30" stroke-dasharray="5 4"/><path d="M 76.2 200 A 123.8 123.8 0 0 0 323.8 200" fill="none" stroke="#22d3ee" stroke-width="1.8" opacity="0.30" stroke-dasharray="5 4"/><path d="M 75.4 200 A 124.6 124.6 0 0 0 324.6 200" fill="none" stroke="#4ade80" stroke-width="1.8" opacity="0.30" stroke-dasharray="5 4"/><path d="M 74.5 200 A 125.5 125.5 0 0 0 325.5 200" fill="none" stroke="#fbbf24" stroke-width="1.8" opacity="0.30" stroke-dasharray="5 4"/><path d="M 73.7 200 A 126.3 126.3 0 0 0 326.3 200" fill="none" stroke="#fb923c" stroke-width="1.8" opacity="0.30" stroke-dasharray="5 4"/><path d="M 72.9 200 A 127.1 127.1 0 0 0 327.1 200" fill="none" stroke="#f472b6" stroke-width="1.8" opacity="0.30" stroke-dasharray="5 4"/><rect class="b-occ" x="0" y="200" width="400" height="32" fill="#0a0a14" opacity="0.72"/><path d="M6 200 H394" stroke="#c4b5d4" stroke-width="1.4" opacity="0.9"/><circle cx="200" cy="200" r="2.6" fill="#c4b5d4" opacity="0.9"/><path d="M200 204 v10" stroke="#c4b5d4" stroke-width="2.4" opacity="0.55"/><text x="200" y="22" text-anchor="middle" font-family="Space Mono, monospace" font-size="9" letter-spacing="1" fill="#a78bfa">ALWAYS A FULL CIRCLE</text><text x="8" y="218" text-anchor="start" font-family="Space Mono, monospace" font-size="7.4" letter-spacing="0.6" fill="#c4b5d4">the ground is in the way</text><text x="392" y="218" text-anchor="end" font-family="Space Mono, monospace" font-size="7.4" letter-spacing="0.6" fill="#c4b5d4">get above it and it closes</text>
+          <path d="M 77.9 200 A 122.1 122.1 0 0 1 322.1 200" fill="none" stroke="#a78bfa" stroke-width="2.2" opacity="0.95"/><path d="M 77.1 200 A 122.9 122.9 0 0 1 322.9 200" fill="none" stroke="#818cf8" stroke-width="2.2" opacity="0.95"/><path d="M 76.2 200 A 123.8 123.8 0 0 1 323.8 200" fill="none" stroke="#22d3ee" stroke-width="2.2" opacity="0.95"/><path d="M 75.4 200 A 124.6 124.6 0 0 1 324.6 200" fill="none" stroke="#4ade80" stroke-width="2.2" opacity="0.95"/><path d="M 74.5 200 A 125.5 125.5 0 0 1 325.5 200" fill="none" stroke="#fbbf24" stroke-width="2.2" opacity="0.95"/><path d="M 73.7 200 A 126.3 126.3 0 0 1 326.3 200" fill="none" stroke="#fb923c" stroke-width="2.2" opacity="0.95"/><path d="M 72.9 200 A 127.1 127.1 0 0 1 327.1 200" fill="none" stroke="#f472b6" stroke-width="2.2" opacity="0.95"/><path d="M 77.9 200 A 122.1 122.1 0 0 0 322.1 200" fill="none" stroke="#a78bfa" stroke-width="1.8" opacity="0.30" stroke-dasharray="5 4"/><path d="M 77.1 200 A 122.9 122.9 0 0 0 322.9 200" fill="none" stroke="#818cf8" stroke-width="1.8" opacity="0.30" stroke-dasharray="5 4"/><path d="M 76.2 200 A 123.8 123.8 0 0 0 323.8 200" fill="none" stroke="#22d3ee" stroke-width="1.8" opacity="0.30" stroke-dasharray="5 4"/><path d="M 75.4 200 A 124.6 124.6 0 0 0 324.6 200" fill="none" stroke="#4ade80" stroke-width="1.8" opacity="0.30" stroke-dasharray="5 4"/><path d="M 74.5 200 A 125.5 125.5 0 0 0 325.5 200" fill="none" stroke="#fbbf24" stroke-width="1.8" opacity="0.30" stroke-dasharray="5 4"/><path d="M 73.7 200 A 126.3 126.3 0 0 0 326.3 200" fill="none" stroke="#fb923c" stroke-width="1.8" opacity="0.30" stroke-dasharray="5 4"/><path d="M 72.9 200 A 127.1 127.1 0 0 0 327.1 200" fill="none" stroke="#f472b6" stroke-width="1.8" opacity="0.30" stroke-dasharray="5 4"/><rect class="b-occ" x="0" y="200" width="400" height="32" fill="#0a0a14" opacity="0.72"/><path d="M6 200 H394" stroke="#c4b5d4" stroke-width="1.4" opacity="0.9"/><circle cx="200" cy="200" r="2.6" fill="#c4b5d4" opacity="0.9"/><path d="M200 204 v10" stroke="#c4b5d4" stroke-width="2.4" opacity="0.55"/><text x="200" y="22" text-anchor="middle" font-family="Space Mono, monospace" font-size="9" letter-spacing="1" fill="#a78bfa">ALWAYS A FULL CIRCLE</text><text class="fc-own-ground" x="8" y="218" text-anchor="start" font-family="Space Mono, monospace" font-size="7.4" letter-spacing="0.6" fill="#c4b5d4">the ground is in the way</text><text class="fc-own-ground" x="392" y="218" text-anchor="end" font-family="Space Mono, monospace" font-size="7.4" letter-spacing="0.6" fill="#c4b5d4">get above it and it closes</text>
         </svg>
       </div>
       <div class="b-text">
@@ -432,7 +453,7 @@
 
     <div class="print-note">Printed in grey. Every stroke on this sheet is a colour the shared print stylesheet flattens for legibility &mdash; the radii and the labels are unaffected, and the colour version is at starstuff.earth/bow-ery.</div>
 
-    <p class="footer-text"><strong>Why a third &ldquo;-ery&rdquo;, and why it is an Easter egg.</strong> <a href="hatchery.html">The Hatchery</a> came from the small egg at the foot of the front page; <a href="quillery.html">The Quillery</a> from the mascot beside it. This one comes from a catalogue that had to draw sixteen bows at 104&times;96 and could not show you how big any of them was. An egg is <em>not</em> a lower standard here &mdash; same sourcing, same fact-check ledger, same eight gates, same changelog entry as anything else on this site. <em>Only the door moves.</em></p>
+    <p class="footer-text"><strong>Why a third &ldquo;-ery&rdquo;, and why it is an Easter egg.</strong> <a href="hatchery.html">The Hatchery</a> came from the small egg at the foot of the front page; <a href="quillery.html">The Quillery</a> from the mascot beside it. This one comes from a catalogue that had to draw sixteen bows at 104&times;96 and could not show you how big any of them was. An egg is <em>not</em> a lower standard here &mdash; same sourcing, same fact-check ledger, same nine gates, same changelog entry as anything else on this site. <em>Only the door moves.</em></p>
   </div>
 
   <div class="colophon-footer">

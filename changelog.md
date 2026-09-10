@@ -1,7 +1,7 @@
 ---
 title: "Changelog"
 url: "https://starstuff.earth/changelog.html"
-updated: "2026-09-09"
+updated: "2026-09-10"
 description: "What changed and when in the Star Stuff collection — every zine and field guide as it was added, every substantial revision, and every fact-check and attribution audit, including the errors we found in our own work and how we fixed them."
 collection: "Notes & Rationale"
 licence: "CC-BY-SA-4.0"
@@ -30,7 +30,47 @@ The working guidelines and the full per-piece ledger live in [FACTCHECK.md](http
 
 New piece Revised Fact-check Site
 
-2026 · September 9 · latest
+2026 · September 10 · latest
+
+## If you replace our colours with your own, 4,862 diagram labels had almost no contrast — and the first thing we “found” was not real
+
+Some readers override every site's colours with a small high-contrast palette of their own. We had **not one rule** for that, from the first page in July until today. **Nobody reported this.** We went looking because [a specification asked a question we had never asked ourselves](https://specification.website/spec/accessibility/forced-colors/) — and then spent most of the day fixing something that was never broken, which is the part of this worth reading.
+
+SiteThe diagrams were never wrong. The ground moved out from under them
+
+Browsers do not replace `fill` and `stroke` on an SVG. So when a forced palette turned the page white, every diagram kept the light ink it had been drawn with against our dark ground: **4,862 labels across 133 pages** below the AA contrast threshold, most of them between 1.2:1 and 2:1. Under a *dark* forced palette the same count is **15**, which is the tell — the drawings were fine, the page beneath them was not. Diagram labels now take the reader's own foreground colour.
+
+**A forced palette can be either, and that decided the fix.** We measured it before writing anything: a light contrast theme reports white ground and black text, a dark one the reverse, and the link colour moves from navy to yellow. So the print stylesheet's approach — pick an ink and write it down — is wrong here. Print's ground is always paper; *this one belongs to the reader*, so every value we added is a system colour keyword that tracks their actual choice rather than our guess about it.
+
+CorrectionWe reported 229 invisible headings, including our own wordmark. There were none
+
+**What we measured, and why it sounded right.** A heading painted with a clipped gradient takes its colour from a *fill* property that beats `color` outright. A forced palette throws the gradient away. The fill, read back from the browser, was still fully transparent. That is *precisely* the mechanism by which **90 headings across 45 pages printed blank** on 12 August, a fault we found and fixed — so 229 elements on 130 pages, the **★ stuff** wordmark among them, read as the same thing in a medium we had not thought to emulate.
+
+**It was wrong.** A browser under a forced palette paints those glyphs in the reader's own colour anyway, whatever the fill says. The proof is two screenshots of the same masthead — one with the transparent fill still winning, one without — and they are *identical*. Paper genuinely honours the transparent fill; this mode does not. The two are indistinguishable if you ask the browser what the fill computes to, and obvious the moment you look at the pixels.
+
+**The cost, and the reason this is a correction and not a footnote.** A rule was written for it and applied to all 198 pages, where it did exactly nothing. It has been removed. *Reading a property and inferring what a reader sees, instead of looking at what a reader sees, is the error this site is organised against* — we have a page about it, a gate that exists because of it, and five entries below this one from a single day last week cataloguing tools of ours that mistook a description for the thing described. This is a new instrument making that exact mistake in its own first draft, and finding it took a screenshot rather than a better argument.
+
+**What the checker does now.** It counts gradient-clipped headings and offers no verdict on them, with the reasoning written where a future version would be tempted to add the test back. A real check would sample the rendered pixels inside each glyph; that is a bigger instrument than this, and until somebody builds it the gap is recorded rather than papered over. *A tool reporting “I cannot check this” is reporting a gap, not clearing it.*
+
+SiteTwenty-four labels are exempt, and recolouring them is what would have broken them
+
+A label set on a shape the diagram paints for itself — the symbol on an element's coloured disc in [the elements field guide](https://starstuff.earth/elements-field-guide.html), the two swatch names in [Starlight](https://starstuff.earth/starlight.html) — was never in trouble. It reads at about 10:1 against its own backdrop in either palette. Recolouring it is the damage: **5 such labels dropped below AA in the light palette and 19 in the dark** when the blunt fix was first applied. Those 24 now carry an explicit opt-out, and two of them live in the code that *generates* the diagrams, so a new element or entry inherits it rather than arriving broken.
+
+**This is a mistake our contrast checker already had written on its front page**, and we made it anyway: a probe that knows only the page background calls all eight of those element symbols 1.05:1, and “fixing” them erases every symbol. The note was there. We had to walk into it a second time to read it.
+
+**One page needed more than a rule or an exemption.** On [The Bow-ery](https://starstuff.earth/bow-ery.html) the ground band under two labels is a dark fill at 72% opacity, and a partly transparent thing borrows whatever is *behind* it — over our page that reads as solid ground, over the reader's palette it lands at mid-grey. Both options failed there: 2.57:1 recoloured, 4.24:1 left alone against a 4.5 bar. The band no longer borrows the ground it sits on.
+
+SiteA ninth gate, and the reason to trust it is that it failed first
+
+`check-forced-colors.mjs` measures every page twice, once under each palette, and the baseline is zero. **A clean first run would have proved nothing** — a check that reports no problems is equally consistent with a stylesheet that never applied, a trap we walked into on 31 August. The evidence is the sequence: **4,862 findings, then 24, then 0**, where the 24 were exactly the labels predicted to break, in exactly the palettes predicted.
+
+**Its first design had a hole shaped like the fault it exists to find.** It skipped any diagram marked exempt — which would have silenced every label sitting on the page ground in a *mixed* diagram, the moment somebody exempted it to fix the others. [Starlight](https://starstuff.earth/starlight.html) is precisely that diagram: eleven labels on the page ground, four on its own colour swatches. Nothing is skipped now.
+
+**What we are not counting, and why.** 3,581 shape fills fall below the non-text threshold against a white palette, and nearly all are starfield dots and glows inside the artwork — decoration, whose disappearance *is* the mode working correctly. Counting them made an early run report 96 problems on a page that had one. And nothing needed a restored border: we checked 198 pages for boxes whose only edge was a shadow and found **zero**, because everything here draws a real border. *We are reporting that absence rather than adding a rule that would imply something had been wrong.*
+
+**One thing we wrote and then deleted.** The specification also asks after readers who want more contrast without taking over the palette. We wrote that block and removed it the same day, because *nothing we own can measure it* — our contrast checker emulates screen and paper and takes no such setting, so it would have shipped to 198 pages on the argument that it looked safe. Given the morning we had just had, that was not an argument worth accepting twice. It is recorded as unfinished, in the stylesheet, where the rule would have gone.
+
+2026 · September 9
 
 ## We said our sister site ships Markdown mirrors with no staleness check. It does not, and we should have looked at the gate rather than the comment
 

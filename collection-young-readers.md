@@ -2,7 +2,7 @@
 title: "Young Readers"
 url: "https://starstuff.earth/collection-young-readers.html"
 updated: "2026-09-07"
-description: "The read-aloud collection: Star Stuff pieces written for children of about four to eight, and for whoever is reading to them. Sorted by audience — the sixth axis on this site and the first collection defined by who a piece is for rather than what kind of argument it makes. Every member carries two layers on every spread: large plain-language type for the child, and a boxed grown-up layer holding the species names, the figures, the papers and the places the evidence runs out, so a caregiver can answer “is that really true?” without leaving the page. The sourcing standard does not relax for the audience: same eight gates, same fact-check ledger row, same grading of every claim, same refusals — aimed at the adult. Nine pieces: pace, waiting, perception, bone, camouflage, airflow, flight, hearing and change."
+description: "The read-aloud collection: Star Stuff pieces written for children of about four to eight, and for whoever is reading to them. Sorted by audience — the sixth axis on this site and the first collection defined by who a piece is for rather than what kind of argument it makes. Every member carries two layers on every spread: large plain-language type for the child, and a boxed grown-up layer holding the species names, the figures, the papers and the places the evidence runs out, so a caregiver can answer “is that really true?” without leaving the page. The sourcing standard does not relax for the audience: same nine gates, same fact-check ledger row, same grading of every claim, same refusals — aimed at the adult. Nine pieces: pace, waiting, perception, bone, camouflage, airflow, flight, hearing and change."
 licence: "CC-BY-SA-4.0"
 licence_url: "https://creativecommons.org/licenses/by-sa/4.0/"
 fact_check: "https://github.com/Stimpunks/Star-Stuff/blob/main/FACTCHECK.md"
@@ -159,7 +159,7 @@ Every member is built the same way. A **read-aloud layer** in large plain type, 
 
 It is deliberately not a separate document, and not a page of endnotes. A caregiver reading aloud should be able to answer “is that really true?” without leaving the spread.
 
-**And the standard does not soften for the audience.** Same eight gates. Same row in [the public ledger](https://starstuff.earth/changelog.html). Same grading of every quotation and every figure. Same refusals — which are addressed to the adult, not the child, and which name the traps this genre falls into: difference as superpower, the comforting moral, the tidy number that turns out to be a preservation accident.
+**And the standard does not soften for the audience.** Same nine gates. Same row in [the public ledger](https://starstuff.earth/changelog.html). Same grading of every quotation and every figure. Same refusals — which are addressed to the adult, not the child, and which name the traps this genre falls into: difference as superpower, the comforting moral, the tidy number that turns out to be a preservation accident.
 
 That last point is the reason this collection exists at all rather than being a tone. *For kids* is exactly the shelf where a verify-everything standard quietly lapses, and it is the same argument that keeps [a “For Fun” collection](https://starstuff.earth/collection-stars-we-grew-up-on.html) off this site: a bin labelled easy implicitly labels everything else homework, and becomes the one place the rules relax.
 

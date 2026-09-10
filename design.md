@@ -1,7 +1,7 @@
 ---
 title: "Design System"
 url: "https://starstuff.earth/design.html"
-updated: "2026-08-09"
+updated: "2026-09-10"
 description: "The Star Stuff design system: Atkinson Hyperlegible, a five-accent palette on a violet-cast near-black, full-opacity body text at 18.84:1, and a starfield in pure CSS. Built accessibility-first, printable, and credited — including what it borrowed from Solarized and what it deliberately threw out."
 collection: "Notes & Rationale"
 licence: "CC-BY-SA-4.0"

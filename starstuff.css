@@ -765,6 +765,127 @@ a.ss-cobrand.ss-cobrand:focus-visible { text-decoration-color: currentColor; }
   }
 }
 
+/* ── The reader's own palette (forced colours) ──
+   Some readers replace every site's colours with a small high-contrast palette of
+   their own — Windows Contrast themes are the best-known. The browser then
+   substitutes system colours for whatever we declared and drops box-shadow and
+   background-image. Measured 2026-09-10: this site had NOT ONE RULE for that mode,
+   from the first page on 2026-07-17 onward — `grep forced-colors` returned zero
+   across this sheet and all 198 pages.
+
+   THE PALETTE CAN BE DARK, AND THAT IS WHY NOTHING HERE IS A HEX. Measured before
+   anything was written: with forced-colors active Chrome reports Canvas #ffffff /
+   CanvasText #000000 under a light theme and Canvas #000000 / CanvasText #ffffff
+   under a dark one, with LinkText moving from navy to yellow. So the @media print
+   answer in the block above — pick an ink, write it down — is WRONG here: print's
+   ground is always paper, and this one belongs to the reader. Every value below is
+   a system colour keyword, which tracks their actual choice.
+
+   Verify in BOTH palettes or you have verified nothing. A fix confirmed only
+   against the white theme is the 2026-08-31 fault again: `svg text` looked fine
+   while `svg [fill]` was quietly beating it, and one run cannot see that.
+
+   AND VERIFY WITH PIXELS, NOT WITH getComputedStyle. This block was twice as long
+   for a day. Half of it repaired 229 gradient-clipped headings that a computed-style
+   probe reported as invisible and that a screenshot showed rendering perfectly —
+   Chrome forces the PAINT here even when the computed fill stays transparent, which
+   is the one way this mode differs from print. Section A below is what is left of
+   that half: a note, and no rule. What survived is real and pixel-checked. */
+@media (forced-colors: active) {
+  /* ── A. Gradient-clipped headings are FINE here, and the wrong instrument said
+     otherwise. Recorded because it cost most of this pass. ──
+     A heading using background-clip: text plus -webkit-text-fill-color: transparent
+     takes its colour from the *fill*, which beats `color` outright. That is exactly
+     how 90 elements across 45 pages printed BLANK on 2026-08-12, and the print block
+     above still sets the fill for that reason.
+
+     It does NOT happen here. Chrome forces the PAINT under a forced palette even when
+     the computed fill is rgba(0,0,0,0): the wordmark on index.html renders solid
+     CanvasText with `-webkit-text-fill-color: transparent` still winning the cascade.
+     Verified by pixels — the same clip of the masthead, captured with the transparent
+     fill restored at higher specificity and again without it, is IDENTICAL.
+
+     So there is no rule here, and the absence is the finding. A
+     `-webkit-text-fill-color: currentColor` rule was written for this, applied to all
+     198 pages, and REMOVED the same day once the screenshots came back: it changed
+     nothing, because there was nothing to change. **The fault was mine and it was one
+     this repo is organised against** — I read a computed property and inferred a
+     rendering instead of measuring the rendering. The print case is real and needs
+     the fill set; this case looks identical in the computed style and is not. If you
+     ever add a rule here, the test is a screenshot, not getComputedStyle. */
+
+  /* ── B. SVG diagrams, which the browser does not touch ──
+     `fill` and `stroke` are NOT forced in Chrome — measured: every shape and label
+     kept its authored colour while the page around it changed. That mismatch is the
+     whole fault. The labels are light because they were drawn against our dark
+     ground, and that ground is now the reader's Canvas: 4,862 labels across 133
+     pages landed under AA in the light palette, most of them between 1.2:1 and
+     2:1. In the DARK palette only 15 did, which is the tell — the diagrams were
+     never wrong, the ground moved out from under them.
+
+     Same two-rule shape as the print block, for the same reason and in the same
+     order: `svg text` is (0,0,2) and `svg [fill="…"]` is (0,1,1), so a label
+     carrying its own fill attribute needs the (0,1,2) rule and needs it LAST.
+     `tspan` as well as `text`, because a tspan's own fill attribute is not reached
+     by a rule aimed at its parent.
+
+     THE `:not()` IS LOAD-BEARING, AND LEAVING IT OFF LOOKS LIKE IT WORKS.
+     `forced-color-adjust: none` tells the BROWSER not to substitute a colour. It
+     says nothing about our own rules, and this one carries !important — so the
+     first version of this pass forced all 24 exempted labels anyway and the gate
+     reported all 24 still failing, with the exemption visibly applied in the
+     markup. The declaration and the exclusion are two different jobs: the
+     declaration is what a conforming engine reads (Chrome does not force `fill` at
+     all today, so on its own it is a no-op here), and the `:not()` is what actually
+     keeps our own hand off the label. */
+  svg text:not(.fc-own-ground), svg tspan:not(.fc-own-ground) { fill: CanvasText !important; }
+  svg text[fill]:not(.fc-own-ground),
+  svg tspan[fill]:not(.fc-own-ground) { fill: CanvasText !important; }
+
+  /* ── The one exemption: a diagram that paints its own ground ──
+     A handful of diagrams lay down a full-bleed dark rect and draw on that. Those
+     labels were never in trouble — they measure 10:1 against their own backdrop in
+     either palette — and forcing them to CanvasText is what would BREAK them: 5
+     dropped below AA in the light palette and 19 in the dark one, the elements
+     field guide's colour-coded discs among them. Fixing those by hand is the
+     mistake check-contrast.mjs records at the top of its SVG pass: a probe that
+     only knew the page ground called all 8 of that page's element symbols 1.05:1,
+     and "fixing" them would have erased every symbol.
+
+     So the SVG opts out entirely and keeps the relationship it was designed with.
+     `forced-color-adjust: none` is what the spec reserves for "where the colour IS
+     the information", and a diagram whose ground, shapes and labels are one
+     composition qualifies. It is a class on the element, not a page-name selector
+     in this sheet — the print block's own comment argues against a growing list of
+     page-specific rules here, and it was right.
+
+     Applied deliberately and counted; check-forced-colors.mjs prints the total on
+     its own line, so a list that grows is a list somebody can question. There is
+     deliberately NO rule like "opt out any svg with a rect" — that is how a real
+     failure disappears by acquiring a background. */
+  .fc-own-ground { forced-color-adjust: none; }
+
+  /* Nothing below is a repair, and the absence is worth recording: 1,415 candidate
+     containers on index.html alone were checked for a boundary lost with the
+     dropped box-shadow, and the total across 198 pages was ZERO. Every card, panel
+     and table on this site draws its edge with a real `border`, which forced
+     colours recolours to CanvasText and keeps. No border needs restoring here, so
+     none is declared — a speculative rule would read as evidence that something
+     was wrong. */
+}
+
+/* prefers-contrast: more is deliberately NOT handled yet, and this note is here so
+   the gap is a decision rather than an oversight. The forced-colours spec page asks
+   for both, because they are different audiences — one takes over the palette, the
+   other just wants more separation. The obvious move is to promote the muted
+   neutrals toward white, and it was written and then removed on 2026-09-10 for one
+   reason: NOTHING HERE CAN MEASURE IT. check-contrast.mjs emulates screen and print
+   and takes no media feature, so a token change reaching all 198 pages would have
+   shipped on the argument that it looks safe — which is the definition of a wish in
+   this repo. There is also little to win: body text already runs 18.84:1. Whoever
+   picks this up owes a measurement first, and note that --sp-dim is not only text —
+   it is the fill on .spine-node as well as .spine-raillabel across 30 diagrams. */
+
 /* Respect the OS "reduce motion" setting: neutralize the starfield twinkle,
    spinning stars, fade-ins, and smooth-scroll for anyone who asks for less motion. */
 @media (prefers-reduced-motion: reduce) {

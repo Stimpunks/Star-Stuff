@@ -111,7 +111,7 @@ The practical consequences are three, and they are all constraints rather than p
 
 - **Dated on its face.** Every entry carries the date of the event and the date of publication, because a piece written close to an event is a piece written with less than the full picture, and the reader is owed the ability to see how close.
 - **Unnumbered.** Zines carry a number that records *when*; that sequence is load-bearing across the changelog, the fact-check ledger and years of prose references. Glimmers entries are dated instead. A date says *when* better than a number does, and the number sequence should not have news inserted into it.
-- **Same eight gates, same ledger, same changelog.** Faster to write is not looser. Every claim traces to a primary or agency source, every quotation is graded, and the entry gets its row in the fact-check ledger like anything else. *Timeliness is not a discount.*
+- **Same nine gates, same ledger, same changelog.** Faster to write is not looser. Every claim traces to a primary or agency source, every quotation is graded, and the entry gets its row in the fact-check ledger like anything else. *Timeliness is not a discount.*
 
 ## Where the name comes from, including the part that goes against us
 
@@ -139,7 +139,7 @@ It is Ryan’s call, made on 31 August 2026, and it is recorded here rather than
 
 Not
 
-**Not a looser standard.** Written faster, checked the same. Every entry passes the same eight gates, carries the same fact-check ledger row, and grades its own quotations. Where a claim is contested, it is marked contested — including on pages belonging to institutions we are cheering for.
+**Not a looser standard.** Written faster, checked the same. Every entry passes the same nine gates, carries the same fact-check ledger row, and grades its own quotations. Where a claim is contested, it is marked contested — including on pages belonging to institutions we are cheering for.
 
 **Not a press-release feed.** An agency announcing something is a lead, not a citation, exactly as an aggregator is. Being glad about a finding is not a reason to stop checking it, and enthusiasm is the condition under which checking is most often skipped.
 
