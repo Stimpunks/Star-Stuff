@@ -1133,6 +1133,107 @@ node tools/build-derived.mjs --check   # exit non-zero if any is stale (or: chec
   entities and a reader is entitled to reject the document over it. 50 most recent items.
 - No Chrome, no dependencies; it shells out to `git`. Local dev tool, Netlify does not run it.
 
+## AI crawlers, content signals, and agent skills (2026-09-10)
+
+**The policy is the same for everyone: read it, quote it, index it, train on it.** Ryan's
+call, 2026-09-10, and it closes the last `recommended` item in the spec's agent-readiness
+category — all eight are now done.
+
+- **`robots.txt` names thirteen agents and allows every one of them.** The reasoning is on
+  the file's own face: an open edition under CC BY-SA 4.0, and every other choice here
+  already pointed that way — a curated `llms.txt` written for models, an api-catalog, 57
+  Markdown siblings. Plus a reason beyond openness: **this material is a corrective to
+  deficit-framing writing about disabled and neurodivergent people, and training data is
+  how a great many people will meet the neurodiversity paradigm** without ever landing on
+  the site. The alternative considered and declined was *read us, don't train on us* — the
+  CC BY-SA ShareAlike argument — and it is recorded here so the decision does not look
+  like a default.
+- **A crawler obeys only the MOST SPECIFIC group that matches it and inherits nothing from
+  `User-agent: *`.** That is why `Content-Signal:` is repeated in all thirteen groups
+  rather than stated once. A named group with no signal line would have *fewer*
+  directives than the wildcard, which is the opposite of the intent.
+- **The vendor lists were verified against each vendor's own documentation, and TWO WERE
+  OUT OF DATE IN THE SPEC.** Anthropic now publishes **`Claude-User`** and
+  **`Claude-SearchBot`** alongside `ClaudeBot`, and OpenAI has added **`OAI-AdsBot`** —
+  none of the three appears on the spec page's 2026 list, which itself says *"user-agents
+  change; the vendor docs are the source of truth."* Re-check
+  `developers.openai.com/api/docs/bots` and `support.claude.com/en/articles/8896518`
+  before editing, and note the Anthropic URL moved from `support.anthropic.com`.
+- **`Content-Signal:` is singular, must sit inside a group, and takes only `yes`/`no`.**
+  It is NOT a settled standard: the IETF vocabulary draft is alive, but
+  `draft-ietf-aipref-attach` — the half defining how a preference binds to content over
+  HTTP — **expired on 1 May 2026** and has not been reposted, so the line rests on the IAB
+  Tech Lab spec and validator convention. Most crawlers do not parse it. It is here
+  because it says out loud what the allows only imply. **Never pair it with `Disallow: /`
+  for the same agent** — a bot that cannot fetch the page never reads the signal, and the
+  two contradict.
+- **`Google-Extended` and `Applebot-Extended` do nothing when allowed**, since both exist
+  only to opt *out* of training and neither touches Search, Siri or Spotlight. They are
+  named anyway, because the absence of a `Google-Extended` block is otherwise something a
+  reader has to infer.
+- **`/.well-known/agent-skills/` publishes one skill, and the SKILL.md is hand-written
+  while the index is generated.** That split is the point: the skill is prose and belongs
+  in a file somebody edits, but the index carries a **sha256 digest of that file**, and
+  letting a digest drift from its artefact is the first mistake the spec names — a client
+  that verifies and finds a mismatch is entitled to refuse the skill. `build-derived.mjs`
+  computes it from the bytes on disk and also refuses a frontmatter `name` that disagrees
+  with the directory, a missing description, and a description over 1,024 characters.
+  **Tested by breaking both:** an edited SKILL.md exits 1, a renamed one is named and
+  refused.
+- **What the skill actually teaches is chosen to prevent the errors this site has made.**
+  Fetch the `.md` siblings and know that the other 141 pages deliberately have none
+  because their arguments live in 1,021 diagrams; the number says *when* and never ranks;
+  **every count in the prose is a lead, not a fact**; the fact-check status of any claim is
+  published and a hedge marked contested must be carried; the four attribution
+  conventions; and **the one sentence widely attributed to this site that is not its
+  motto** — with the naturalistic-fallacy argument for why *down to* is not *because of*.
+  An agent that reads it is less likely to repeat the mistake we published a correction
+  about in August.
+- **There is deliberately NO `Link: rel="agent-skills"` header, and the spec asks for
+  one.** `agent-skills` is not in the IANA link-relations registry — checked the same day
+  `sitemap` and `security` were removed from that header for exactly this reason — and
+  RFC 8288 admits an extension relation only as a full URI, never a bare token. Adding it
+  would have repeated, within the hour, the error we had just published a correction
+  about. **The well-known path IS the discovery mechanism the RFC defines**, so the only
+  cost is a validator tick. Revisit if it is ever registered.
+- **CORS is open on the two agent-skills files and nowhere else on this site.** A
+  browser-based agent fetching cross-origin gets nothing without it, and these are the one
+  thing here written to be read that way. They contain no secrets and no user data, so the
+  exposure is what a plain GET already carries. **Don't copy that block to anything else.**
+- **The other recommended items were already satisfied and were checked rather than
+  assumed:** `llms.txt` and the Markdown endpoints (2026-09-09), `link-headers` (corrected
+  the same day), `machine-readable-formats` (RSS, the Linkset, 57 `.md`, all with correct
+  types), `stable-urls` — the one `required` item — where the two renames carry 301s in
+  `_redirects` and `check-sitemap.mjs` proves every entry resolves.
+
+### The tenth markup check: JSON-LD that does not parse
+
+**`collection-young-readers.html` shipped on 2026-09-06 with invalid JSON-LD and it was
+live for four days.** Its description quotes a caregiver asking *"is that really true?"*
+with straight double quotes, which closes the JSON string four words early — so the page
+offered search engines and agents **no typed data at all**. Found while verifying
+`structured-data-for-agents`, not by any gate.
+
+- **It is the ninth check's fault in a different container**, and the ninth cannot see it:
+  that one walks tag *attributes*, and this lives in script content. Both are an
+  unescaped quote ending a string early, and both are silent — a broken JSON-LD block has
+  no rendering to go wrong.
+- **HTML character references are NOT decoded inside `<script>`**, so `&ldquo;` here would
+  land in the JSON as seven literal characters. The fix is a literal `“ ”` or a `\"`
+  escape; three other pages already use literal typographic quotes in their JSON-LD, which
+  is the house answer.
+- **Parse, don't pattern-match.** The failure modes are trailing commas, smart quotes in
+  keys and truncated strings; a regex tuned to today's would miss tomorrow's.
+- **A block that parses but types nothing also fails**, because that is the `UNREAD` fault
+  in a new place — it satisfies a "has JSON-LD" check while telling an agent nothing.
+  `@graph` counts as typed: `index.html` uses one, holding a `WebSite` and two
+  `Organization` nodes, and an early version of this check reported it as untyped.
+- Regression-tested against the **real** broken file, not a synthetic: restored, it fires
+  with the right line; fixed, it is silent. Decoys that must stay quiet — escaped quotes,
+  an `@graph` block, and a broken JSON-LD tag written inside a JS string — do.
+- **198 JSON-LD blocks, 198 parsing.** Types: 175 `Article`, 17 `CollectionPage`, 2
+  `WebPage`, 1 `AboutPage`, 1 `SearchResultsPage`, 1 `@graph`.
+
 ## Find-in-page and collapsed content (`hidden="until-found"`, 2026-09-10)
 
 **The 24 field guides' notes are reachable by Ctrl/Cmd+F while collapsed. The 101 paged
@@ -1547,7 +1648,9 @@ node tools/check-markup.mjs --check               # exit non-zero on any failure
   value containing `=` and `/`, an attribute followed by more attributes, and the broken tag
   inside both a script string and a comment.
 - **It is not a validator and shouldn't grow into one.** It ignores unclosed tags, most attribute
-  syntax, and everything else browsers recover from harmlessly. The bar for adding a tenth check
+  syntax, and everything else browsers recover from harmlessly. **A tenth check was added on
+  2026-09-10 — JSON-LD that does not parse — and its reasoning is in *AI crawlers, content
+  signals, and agent skills* above rather than repeated here.** The bar for an eleventh check
   is that the browser silently hands the reader a different document than the source describes —
   or, as with the nav, badge and card-wrap checks, that a structural fault is invisible to *every*
   other gate and has recurred often enough to prove that remembering is not a control. **The

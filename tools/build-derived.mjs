@@ -79,6 +79,7 @@
  */
 
 import fs from 'node:fs';
+import crypto from 'node:crypto';
 import path from 'node:path';
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
@@ -833,6 +834,69 @@ function buildApiCatalog() {
   }, null, 2) + '\n';
 }
 
+/* ── /.well-known/agent-skills/index.json ─────────────────────────────────────
+   Agent Skills discovery (Cloudflare-led RFC, draft v0.2.0): one URL that answers
+   "what skills does this site publish for agents?". The SKILL.md itself is
+   HAND-WRITTEN — it is prose, and prose belongs in a file somebody can edit — but the
+   INDEX is generated, because it carries a sha256 digest of that file and **letting
+   the digest drift from the artefact is the first mistake the spec names**. A client
+   that verifies the digest and finds a mismatch is entitled to refuse the skill, so a
+   hand-kept hash is a hand-kept way to break it. Computed from the bytes on disk, and
+   `--check` catches an edited SKILL.md with a stale index.
+
+   `$schema` is not optional: without it a client falls back to v0.1.0 parsing and may
+   ignore every entry. */
+const SKILL_DIR = '.well-known/agent-skills';
+const SKILLS = ['star-stuff'];
+
+function buildAgentSkills() {
+  const skills = SKILLS.map((name) => {
+    const rel = `${SKILL_DIR}/${name}/SKILL.md`;
+    const full = path.join(REPO, rel);
+    if (!fs.existsSync(full)) {
+      console.error(`\n  ${rel} is named in tools/build-derived.mjs and is not in the repo.`);
+      process.exit(1);
+    }
+    const bytes = fs.readFileSync(full);
+    const fm = bytes.toString('utf8').match(/^---\n([\s\S]*?)\n---/);
+    if (!fm) {
+      console.error(`\n  ${rel} has no YAML frontmatter; the spec requires name and description.`);
+      process.exit(1);
+    }
+    const field = (k) => {
+      const m = fm[1].match(new RegExp('^' + k + ':\\s*(.+)$', 'm'));
+      return m ? m[1].trim() : null;
+    };
+    const declared = field('name');
+    const description = field('description');
+    /* The directory name and the frontmatter name are two statements of the same fact,
+       which is this repo's definition of something that will drift. */
+    if (declared !== name) {
+      console.error(`\n  ${rel} declares name "${declared}" but sits in a directory called "${name}".`);
+      process.exit(1);
+    }
+    if (!description) {
+      console.error(`\n  ${rel} has no description. It is the only thing most agents read.`);
+      process.exit(1);
+    }
+    if (description.length > 1024) {
+      console.error(`\n  ${rel}'s description is ${description.length} chars; the spec's limit is 1024.`);
+      process.exit(1);
+    }
+    return {
+      name,
+      type: 'skill-md',
+      description,
+      url: `${SITE}${rel}`,
+      digest: 'sha256:' + crypto.createHash('sha256').update(bytes).digest('hex'),
+    };
+  });
+  return JSON.stringify({
+    $schema: 'https://schemas.agentskills.io/discovery/0.2.0/schema.json',
+    skills,
+  }, null, 2) + '\n';
+}
+
 /* The expiry is the whole reason this file is generated here. Checked on every run,
    not only under --check, so a plain build says it too. */
 const expiryDays = Math.floor((Date.parse(SECURITY_EXPIRES) - Date.now()) / 86400000);
@@ -845,6 +909,7 @@ const outputs = [
   ['.well-known/security.txt', buildSecurityTxt()],
   ['site.webmanifest', buildManifest()],
   ['.well-known/api-catalog', buildApiCatalog()],
+  ['.well-known/agent-skills/index.json', buildAgentSkills()],
 ];
 
 let stale = 0;

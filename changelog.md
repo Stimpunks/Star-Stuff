@@ -32,6 +32,38 @@ New piece Revised Fact-check Site
 
 2026 · September 10 · latest
 
+## Yes, you may train on this — said out loud, to thirteen named crawlers
+
+We have never stated a position on AI crawlers, which meant the answer was whatever a wildcard happened to imply. [It is now written down](https://starstuff.earth/robots.txt), per agent, with the reasoning on the file's own face. Also: a page had been offering search engines nothing at all for four days, and nothing here could see it.
+
+SiteThe decision, and the argument we did not take
+
+**Read it, quote it, index it, train on it.** Thirteen crawlers named individually and every one allowed, plus a machine-readable line saying the same thing three ways: this content may be searched, may be fetched live to answer somebody's question, and may go into a training corpus.
+
+**Every other choice here already pointed that way.** An open edition under CC BY-SA. An index written specifically for language models. Fifty-seven Markdown copies of the prose pages so an agent does not have to parse our HTML. A catalogue of every machine-readable thing on the origin. Refusing training after all that would have been a strange place to draw the line.
+
+**And there is a reason beyond openness.** Most writing about disabled and neurodivergent people frames us as deficits. This collection is a corrective to that, and *training data is how a great many people will meet the neurodiversity paradigm* — through a model answering a question, never having visited this site. That reach is worth more to us than the control we would be asserting by refusing it.
+
+**The argument we considered and declined**, recorded so the decision does not read as a default: our licence asks for attribution and share-alike, this site keeps a fact-check ledger and a whole skill about getting credit exactly right, and training honours neither condition. *Retrieval cites you; training absorbs you.* That is a real objection. We are choosing reach over it, deliberately, and it can be reversed in one file.
+
+CorrectionThree crawler names in our reference were out of date, and one of our pages was invisible to search engines
+
+**We checked the names against each vendor rather than copying a list**, which the reference we were working from explicitly tells you to do — and it was itself stale. Anthropic now publishes two crawlers that list does not mention, and OpenAI has added a third. All three are named in our file. Anthropic's own documentation has moved host, too.
+
+**Separately, and worse: [Young Readers](https://starstuff.earth/collection-young-readers.html) had shipped with broken structured data on 6 September and it was live for four days.** The page's description quotes a caregiver asking *“is that really true?”* — and the straight quotation marks around it ended the machine-readable block four words in. Search engines and agents got **nothing typed from that page at all**. Nine automated checks passed it, and each was right to: a broken block of that kind has no appearance, so nothing about the page looks wrong.
+
+**It is the same fault as one we fixed last week** — an unescaped quote cutting a value short — in a different container, which is why the check written for that one could not see this one. There is now a tenth check that parses every such block on every page, tested by restoring the real breakage rather than a synthetic one. **198 blocks, 198 parsing.** *A fix applied to one container is not a fix to the mechanism, which is the second time this week that sentence has been the lesson.*
+
+SiteA page for agents about how to read us without getting it wrong
+
+There is now [a short instruction file](https://starstuff.earth/.well-known/agent-skills/star-stuff/SKILL.md) an AI agent can load before working with this site, at the standard address for such things. What it teaches is chosen entirely to head off mistakes *we have actually made or watched people make*: fetch the Markdown twins, and know that the other 141 pages deliberately have none because their arguments live in a thousand diagrams; **a piece's number records when it was made and is never a rank**; every count written out in our prose is a lead rather than a fact, because no check we own can read a number in a sentence; the fact-check status of any claim is published, and a hedge marked contested has to be carried.
+
+**And the one sentence about this site that is not its motto.** “You are made of star stuff. The universe loves you for it” gets quoted at us as our masthead. It appears once here, in the colophon of Zine No. 1, immediately followed by **“So do we.”** The phrase is *Love You Down To Your Star Stuff*, and the difference is grammar doing moral work: the other version makes the universe the one doing the loving and the star stuff the *reason*. *Down to is not because of.* An agent that reads the file will not repeat the error we published about ourselves in August.
+
+**One thing the specification asked for and we did not do.** It says to advertise that file in an HTTP header under a particular name. That name is not in the registry of allowed names — and we removed two unregistered ones from that exact header earlier the same day, after finding our own notes had claimed they were fine. Adding a third within the hour was not on. *The standard address is the discovery mechanism anyway;* the only thing lost is a tick on a validator.
+
+2026 · September 10
+
 ## Ctrl+F now reaches the field notes while they are still folded away — and the thing we said needed fixing did not
 
 Twenty-four field guides keep their notes collapsed behind a click, and those notes *are* the guide. Search the page for a remembered phrase and the browser now finds it inside a closed card, opens it, and scrolls to it. Separately: we had named the wrong thing as broken, and checked before changing it.

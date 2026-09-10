@@ -1,4 +1,92 @@
+# Star Stuff — https://starstuff.earth/
+#
+# THE POLICY IS THE SAME FOR EVERYONE: read it, quote it, index it, train on it.
+# Ryan's call, 2026-09-10. An open edition under CC BY-SA 4.0, and every other choice
+# on this site already pointed here — a curated /llms.txt written for models, an
+# api-catalog, 57 Markdown siblings of the prose pages. There is also a reason beyond
+# openness: this material is a corrective to deficit-framing writing about disabled
+# and neurodivergent people, and training data is how a great many people will meet
+# the neurodiversity paradigm without ever landing on this page.
+#
+# Every agent below is named rather than left to the wildcard, because an explicit
+# allow is a decision somebody made and a wildcard is a decision nobody made. A
+# crawler obeys only the MOST SPECIFIC group that matches it and inherits nothing
+# from `User-agent: *`, which is why the Content-Signal line is repeated in each
+# group rather than stated once at the top.
+#
+# Names verified against each vendor's own documentation on 2026-09-10, not copied
+# from a list. Two were out of date in the spec we audited against: Anthropic now
+# publishes Claude-User and Claude-SearchBot alongside ClaudeBot, and OpenAI has
+# added OAI-AdsBot. Re-check the vendor pages before editing — they move.
+#
+# Content-Signal is an IAB Tech Lab / IETF AI-Preferences proposal and NOT a settled
+# standard: the vocabulary draft is alive, but draft-ietf-aipref-attach — the half
+# that would define how a preference binds to content over HTTP — expired on
+# 1 May 2026 and has not been reposted. Most crawlers do not parse it yet. It is here
+# because it says out loud what the allows above only imply, and because saying yes
+# costs nothing if the syntax moves.
+
+# ── OpenAI ────────────────────────────────────────────────────────────────────
+# https://developers.openai.com/api/docs/bots
+User-agent: GPTBot
+Allow: /
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+
+User-agent: OAI-SearchBot
+Allow: /
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+
+User-agent: ChatGPT-User
+Allow: /
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+
+User-agent: OAI-AdsBot
+Allow: /
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+
+# ── Anthropic ─────────────────────────────────────────────────────────────────
+# https://support.claude.com/en/articles/8896518
+User-agent: ClaudeBot
+Allow: /
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+
+User-agent: Claude-User
+Allow: /
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+
+User-agent: Claude-SearchBot
+Allow: /
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+
+# ── Google and Apple ──────────────────────────────────────────────────────────
+# These two tokens exist ONLY to opt out of AI training; neither affects Search,
+# Siri or Spotlight, and neither has any effect when allowed. They are named anyway,
+# because the absence of a Google-Extended block is the thing a reader would
+# otherwise have to infer.
+User-agent: Google-Extended
+Allow: /
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+
+User-agent: Applebot-Extended
+Allow: /
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+
+# ── Retrieval and dataset crawlers ────────────────────────────────────────────
+User-agent: PerplexityBot
+Allow: /
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+
+User-agent: CCBot
+Allow: /
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+
+User-agent: Bytespider
+Allow: /
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+
+# ── Everyone else, named or not ───────────────────────────────────────────────
 User-agent: *
 Allow: /
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
 
 Sitemap: https://starstuff.earth/sitemap.xml

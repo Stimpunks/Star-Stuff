@@ -656,6 +656,44 @@ for (const file of targets) {
     }
   }
 
+  /* ── the tenth check: JSON-LD that does not parse ────────────────────────────
+     Added 2026-09-10, from the agent-readiness half of the specification.website
+     audit. Every page here carries a `<script type="application/ld+json">` block,
+     and `collection-young-readers.html`'s had been INVALID SINCE THE PAGE SHIPPED on
+     2026-09-06: its description quotes a caregiver asking "is that really true?" with
+     straight double quotes, which closes the JSON string four words early. Four days
+     live, and the page offered search engines and agents no typed data at all.
+
+     This is squarely this tool's bar. It is silent — a broken JSON-LD block has no
+     rendering to go wrong, so nothing about the page looks off — and it is invisible
+     to every other gate: not a colour, not a tag tree, not a position, not paper, not
+     the sitemap, not a dead class, not card order. It is the ninth check's fault in a
+     different container: an unescaped quote ending a string early. The ninth cannot
+     see it, because that one walks TAG ATTRIBUTES and this lives in script content.
+
+     Two things worth keeping. Parse, do not pattern-match — the failure modes are
+     trailing commas, smart quotes in keys and truncated strings, and a regex that
+     caught today's would miss tomorrow's. And note that HTML character references are
+     NOT decoded inside <script>, so the fix is a literal “ or a \" escape, never
+     &ldquo; — which would land in the JSON as seven characters. Three other pages
+     already use literal typographic quotes here; that is the house answer. */
+  for (const m of src.matchAll(/<script[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/gi)) {
+    const line = src.slice(0, m.index).split('\n').length;
+    try {
+      const parsed = JSON.parse(m[1]);
+      /* A block that parses but describes nothing is the UNREAD fault in a new place:
+         it satisfies a "has JSON-LD" check while telling an agent nothing. @graph is
+         the legitimate alternative to a top-level @type — index.html uses one. */
+      if (!parsed || (!parsed['@type'] && !parsed['@graph'])) {
+        problems.push(`JSON-LD at line ${line} parses but has neither @type nor @graph, so it types nothing`);
+      }
+    } catch (e) {
+      problems.push(
+        `JSON-LD at line ${line} does not parse: ${e.message} — search engines and agents get no structured data from this page. Note that &ldquo; is NOT decoded inside <script>; use a literal “ ” or \\".`
+      );
+    }
+  }
+
   if (!exempt(file)) memberPages++;
   if (badge) badgesSeen++;
 
@@ -694,7 +732,8 @@ if (totalProblems) {
       '       no nav outside its content shell, exactly one <main> landmark per page, every\n' +
       '       card in its own wrap, every page titled by exactly one <h1> inside its\n' +
       '       main landmark, every collection member badged to the collection that cards it,\n'
-      + '       no attribute value cut short by an unescaped quote.'
+      + '       no attribute value cut short by an unescaped quote, and every JSON-LD\n'
+      + '       block parsing and typing something.'
   );
 }
 

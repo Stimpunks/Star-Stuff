@@ -136,6 +136,10 @@ Ryan's shorthand for "finish and publish." Scope depends on what changed.
    needing Chrome) while iterating; run it in full before shipping. **A stale card tagline makes
    two of them stale at once**, which is why this is one gate rather than four flags to remember.
 
+   It also owns `/.well-known/agent-skills/index.json`, whose sha256 digest is computed from
+   `SKILL.md` on disk — **so editing that skill without re-running this makes the digest lie,
+   and a compliant agent client will refuse the skill outright.** `--check` catches it.
+
    **`tools/build-icons.mjs` is deliberately NOT here, and it is the one generator nothing
    checks.** PNG bytes depend on the Chrome build, so a byte gate would fail on browser upgrades
    and get disabled. Run it by hand if — and only if — you touched `favicon.svg`:
