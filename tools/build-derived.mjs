@@ -497,6 +497,25 @@ ${listingBlock}
 }
 
 /* ── the feed ────────────────────────────────────────────────────────────── */
+/* The brand colour, read off the pages rather than restated here, because the
+   manifest is the third place it would otherwise be written down (after each page's
+   <meta name="theme-color"> and starstuff.css's --sp-void). The modal value wins and
+   the run says how lopsided the vote was: 197 of 198 pages carry #0a0a14 and one
+   print-first sheet carries #ffffff, which is correct for that page and must not
+   become the manifest's answer. */
+const themeVotes = {};
+for (const f of fs.readdirSync(REPO).filter((f) => f.endsWith('.html'))) {
+  const m = fs.readFileSync(path.join(REPO, f), 'utf8')
+    .match(/<meta\s+name="theme-color"\s+content="([^"]+)"/i);
+  if (m) themeVotes[m[1]] = (themeVotes[m[1]] || 0) + 1;
+}
+const themeRanked = Object.entries(themeVotes).sort((a, b) => b[1] - a[1]);
+if (!themeRanked.length) {
+  console.error('No <meta name="theme-color"> on any page — the manifest would invent a colour.');
+  process.exit(1);
+}
+const THEME_COLOUR = themeRanked[0][0];
+
 const FEED_ITEMS = 50;
 
 function buildFeed() {
@@ -522,7 +541,8 @@ function buildFeed() {
      on every run would make --check report STALE seconds after a clean write,
      which is the fault build-search-index.mjs already hit once for another reason. */
   return `<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"
+     xmlns:sy="http://purl.org/rss/1.0/modules/syndication/">
   <channel>
     <title>Star Stuff</title>
     <link>${SITE}</link>
@@ -531,6 +551,8 @@ function buildFeed() {
     <language>en</language>
     <copyright>CC BY-SA 4.0 · Stimpunks Foundation × More Realms</copyright>
     <lastBuildDate>${rfc822(NEWEST.iso)}</lastBuildDate>
+    <sy:updatePeriod>${SY_PERIOD}</sy:updatePeriod>
+    <sy:updateFrequency>${SY_FREQUENCY}</sy:updateFrequency>
     <image>
       <url>${SITE}og-card.jpg</url>
       <title>Star Stuff</title>
@@ -707,6 +729,110 @@ function buildSecurityTxt() {
   ].join('\n');
 }
 
+/* ── The feed's declared cadence (RSS Syndication module) ──────────────────────
+   A cadence is a PROMISE, and the spec's own common-mistakes list warns that
+   aggregators back off from a feed that is stale relative to what it declares. So
+   this is derived rather than chosen: measured 2026-09-10, the site published 109
+   pages across 25 of the last 28 days — about 3.9 a day.
+
+   `daily` with a frequency of ONE, not four, and the difference is which way the
+   number cuts. sy:updateFrequency is polls per period, so declaring four asks polite
+   readers to fetch four times as often for no gain: the feed carries 50 items at
+   roughly 3.9 pieces a day, which is about thirteen days of headroom, so a reader
+   polling once a day cannot miss an item. Under-declaring costs a few hours of
+   latency on a zine collection; over-declaring costs everybody bandwidth.
+
+   Re-derive before changing it — `git log --diff-filter=A` per page, grouped by day —
+   and note that the honest number is the recent rate, not the all-time one: the
+   all-time figure is 3.6 a day and the site was slower in July. */
+const SY_PERIOD = 'daily';
+const SY_FREQUENCY = 1;
+
+/* ── site.webmanifest ─────────────────────────────────────────────────────────
+   Generated, not hand-written, for one reason: the icon list and the theme colour
+   are a SECOND description of things that live elsewhere, and a hand-kept copy of
+   either is the drift this whole tool exists to prevent. The icons are checked
+   against the filesystem and the theme colour is read off the pages.
+
+   `display: minimal-ui`, deliberately, and not `standalone`. This site is a chain of
+   pages — every piece carries prev/next and a collection badge — and standalone hides
+   the browser's own back affordance on Android, which would strand a reader inside a
+   reading order they cannot walk back up. minimal-ui installs and keeps the way out.
+   `fullscreen` would be worse again and the spec names it as a mistake. */
+function buildManifest() {
+  const icons = [
+    { src: '/icon-192.png', sizes: '192x192', type: 'image/png', purpose: 'any' },
+    { src: '/icon-512.png', sizes: '512x512', type: 'image/png', purpose: 'any' },
+    { src: '/icon-maskable-512.png', sizes: '512x512', type: 'image/png', purpose: 'maskable' },
+  ];
+  for (const i of icons) {
+    if (!fs.existsSync(path.join(REPO, i.src.replace(/^\//, '')))) {
+      console.error(`\n  site.webmanifest names ${i.src}, which is not in the repo.`
+        + `\n  Run: node tools/build-icons.mjs`);
+      process.exit(1);
+    }
+  }
+  return JSON.stringify({
+    name: 'Star Stuff · Stimpunks Foundation × More Realms',
+    short_name: 'Star Stuff',
+    description: 'Printable, shareable web artifacts about piezoelectric bone, stellar'
+      + ' nucleosynthesis and the neurodiversity paradigm.',
+    start_url: '/',
+    scope: '/',
+    display: 'minimal-ui',
+    background_color: THEME_COLOUR,
+    theme_color: THEME_COLOUR,
+    lang: 'en',
+    icons,
+  }, null, 2) + '\n';
+}
+
+/* ── /.well-known/api-catalog (RFC 9727, as an RFC 9264 Linkset) ──────────────
+   One predictable fetch that lists every machine-readable thing on the origin, so an
+   agent never has to guess a path. Advertised with `Link: rel="api-catalog"` in
+   _headers — that relation is what RFC 9727 registered, and the spec's own mistake
+   list calls out pairing it with `describedby` instead.
+
+   ONLY IANA-REGISTERED RELATIONS APPEAR HERE, AND THAT IS WHY TWO THINGS ARE MISSING.
+   Checked against the IANA link-relations registry on 2026-09-10 (236 entries):
+   `sitemap` and `security` are NOT in it. Both were in this site's Link header, and
+   CLAUDE.md claimed every relation there was registered; both are now gone from it.
+   RFC 8288 allows an extension relation only as a full URI, never as a bare token, so
+   an unregistered token is not a lax choice but an invalid one.
+
+   Nothing is lost by leaving them out. robots.txt already carries `Sitemap:`, which is
+   the canonical discovery mechanism and the one every crawler reads; security.txt is
+   found at its well-known path, which is the whole point of a well-known path.
+
+   Worth knowing if you compare this against the spec page: the spec's own worked
+   example uses a `sitemap` key and lists it under "useful relations", while the same
+   page says to use only registered names. Those cannot both hold. The registry is
+   the authority it cites, so the registry wins here.
+
+   The 57 Markdown siblings are deliberately absent too — each is advertised on its own
+   page with `<link rel="alternate">`, llms.txt describes the site as a whole, and the
+   spec says keep the catalogue small. Listing them would make this a second sitemap. */
+function buildApiCatalog() {
+  return JSON.stringify({
+    linkset: [
+      {
+        anchor: SITE,
+        describedby: [
+          { href: `${SITE}llms.txt`, type: 'text/markdown',
+            title: 'Site index for language models' },
+        ],
+        alternate: [
+          { href: `${SITE}feed.xml`, type: 'application/rss+xml', title: 'Star Stuff' },
+        ],
+        license: [
+          { href: 'https://creativecommons.org/licenses/by-sa/4.0/',
+            title: 'CC BY-SA 4.0' },
+        ],
+      },
+    ],
+  }, null, 2) + '\n';
+}
+
 /* The expiry is the whole reason this file is generated here. Checked on every run,
    not only under --check, so a plain build says it too. */
 const expiryDays = Math.floor((Date.parse(SECURITY_EXPIRES) - Date.now()) / 86400000);
@@ -717,6 +843,8 @@ const outputs = [
   ['feed.xml', buildFeed()],
   ['llms.txt', buildLlms()],
   ['.well-known/security.txt', buildSecurityTxt()],
+  ['site.webmanifest', buildManifest()],
+  ['.well-known/api-catalog', buildApiCatalog()],
 ];
 
 let stale = 0;
@@ -725,11 +853,11 @@ for (const [name, next] of outputs) {
   const prev = fs.existsSync(full) ? fs.readFileSync(full, 'utf8') : null;
   const same = prev === next;
   if (CHECK) {
-    console.log(`  ${name.padEnd(18)} ${same ? 'ok' : 'STALE'}`);
+    console.log(`  ${name.padEnd(26)} ${same ? 'ok' : 'STALE'}`);
     if (!same) stale++;
   } else {
     if (!same) fs.writeFileSync(full, next, 'utf8');
-    console.log(`  ${name.padEnd(18)} ${same ? 'unchanged' : 'written'}  ${next.length.toLocaleString()} chars`);
+    console.log(`  ${name.padEnd(26)} ${same ? 'unchanged' : 'written'}  ${next.length.toLocaleString()} chars`);
   }
 }
 
@@ -739,6 +867,9 @@ console.log(`  ${FEED_ITEMS} most recent in the feed`);
 console.log(`  ${eggsSkipped} Easter Eggs excluded by decision (a listed egg is not off the path)`);
 console.log(`  ${Object.keys(DATE_OVERRIDES).length} date override${Object.keys(DATE_OVERRIDES).length === 1 ? '' : 's'}`);
 console.log(`  security.txt expires ${SECURITY_EXPIRES.slice(0, 10)} — ${expiryDays} day${expiryDays === 1 ? '' : 's'} left`);
+console.log(`  feed declares ${SY_FREQUENCY}× ${SY_PERIOD}; theme ${THEME_COLOUR}`
+  + ` (${themeRanked[0][1]} of ${themeRanked.reduce((n, [, c]) => n + c, 0)} pages`
+  + `${themeRanked.length > 1 ? `, ${themeRanked.length - 1} other value(s)` : ''})`);
 if (expiryDays <= SECURITY_RENEW_WITHIN_DAYS) {
   console.error(
     `\n  security.txt ${expiryDays < 0 ? 'EXPIRED' : 'EXPIRES SOON'} — RFC 9116 requires a future Expires, and a`

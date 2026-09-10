@@ -1060,9 +1060,23 @@ node tools/build-derived.mjs --check   # exit non-zero if any is stale (or: chec
   an unadvertised file was found only by one that had already assumed the path. It is advertised
   with `rel="describedby"` **both** as an HTTP `Link` header on `/*` in `_headers` — which reaches
   a client that never parses our HTML, including anything fetching `feed.xml` directly — and as a
-  `<link>` in `index.html`'s head. The header also carries `sitemap`, `alternate` and `license`.
-  **Every relation is IANA-registered**; inventing one is a bad signal and crawlers ignore it, and
-  the URI goes in angle brackets, not quotes.
+  `<link>` in `index.html`'s head. The header also carries `alternate`, `api-catalog` and
+  `license`. The URI goes in angle brackets, not quotes.
+- **This file said "every relation is IANA-registered" and TWO OF THE FIVE WERE NOT** (found
+  2026-09-10, doing the cheap agent-readiness items). The registry was fetched and read — 236
+  entries — and neither **`sitemap`** nor **`security`** appears anywhere in it, though both rode
+  on every response for a day. RFC 8288 admits an extension relation only as a **full URI**, never
+  as a bare token, so those two were not a lax choice but an invalid one. Both are gone from the
+  header and **nothing was lost**: `robots.txt` already carries `Sitemap:`, which is the canonical
+  mechanism every crawler reads, and a security.txt is found at its well-known path, which is what
+  a well-known path is for. **Verify a relation against the registry rather than against how
+  plausible the word looks** — `sitemap` is exactly the kind of token that reads as standard and
+  is not. The registry is one `curl` of
+  `https://www.iana.org/assignments/link-relations/link-relations-1.csv`.
+- **The spec's own api-catalog page has this inconsistency too, and it is worth reporting
+  upstream:** its worked example keys a link as `sitemap` and lists it under *useful relations*,
+  while the same page's mistake list says to use only IANA-registered names. Those cannot both
+  hold, and the registry is the authority the page cites. Ours omits it.
 - **`.well-known/security.txt` is generated for the CHECK, not for the generation** (RFC 9116,
   added 2026-09-09). Its mandatory `Expires:` is this repo's signature fault with a date
   attached: valid today, **invalid** in a year, and silent about the transition — and a lapsed
@@ -1118,6 +1132,80 @@ node tools/build-derived.mjs --check   # exit non-zero if any is stale (or: chec
   real characters before XML escaping, because `&mdash;` is **not** one of XML's five predefined
   entities and a reader is entitled to reject the document over it. 50 most recent items.
 - No Chrome, no dependencies; it shells out to `git`. Local dev tool, Netlify does not run it.
+
+## Icons, the manifest, and the API catalogue (2026-09-10)
+
+The cheap end of the specification.website audit, done in one pass. Three of these are
+generated; one is not, and that exception is stated below rather than left to be found.
+
+- **Five raster icons come out of `tools/build-icons.mjs`, from `favicon.svg`.** The site
+  shipped one SVG and nothing else, which covers a modern tab strip and no other surface:
+  `/favicon.ico` **404'd for every crawler and old browser that asks for it unprompted**,
+  iOS had no home-screen icon, Android had no launcher icon. All five derive from the one
+  SVG so the mark cannot drift between them — the failure mode of a hand-made icon set.
+- **`build-icons.mjs` has NO `--check`, alone among the generators, and that is a real
+  hole.** The others byte-compare, which works because they emit text this repo controls;
+  a PNG comes out of Chrome's encoder and its bytes move when Chrome updates, so a gate
+  on them fails on browser upgrades and gets disabled. **Nothing will notice if
+  `favicon.svg` is edited and these are not rebuilt.** The mitigation is that the mark
+  changes roughly never. If you touch `favicon.svg`, run the tool.
+- **Alpha is per-target and getting it backwards is invisible until somebody looks.** The
+  first run produced **RGB with no alpha channel on every file**, because Chrome
+  composites a screenshot onto white unless the default background is overridden — so the
+  rounded-corner icons were a dark rounded rect inside a **white square**. The rounded
+  targets now ask for alpha and the full-bleed ones refuse it, because **iOS renders an
+  apple-touch-icon's transparency as a hole**. The tool reads the PNG colour type back out
+  of the IHDR and throws if it is not what was asked for; four lines, and it is the check
+  that would have caught the white corners first time.
+- **Maskable is a separate render, not the same file at another size.** Android crops an
+  adaptive icon to a circle or squircle of its own choosing, and the rounded rectangle in
+  `favicon.svg` is exactly what that crop eats — corners first, leaving the mark in a
+  clipped box inside another box. So the maskable variant drops the rounded rect for a
+  full-bleed ground and scales the star to **80%**, the safe zone. The `purpose: any`
+  icons keep the rounded rect, because that is what desktop surfaces show unmasked.
+- **`site.webmanifest` is generated, and `display` is `minimal-ui` on purpose.** This site
+  is a chain of pages — every piece carries prev/next and a collection badge — and
+  `standalone` hides the browser's own back affordance on Android, stranding a reader
+  inside a reading order they cannot walk back up. `fullscreen` would be worse and the
+  spec names it a mistake. It is generated rather than hand-written because the icon list
+  and the theme colour are a **second description** of things that live elsewhere: the
+  icons are asserted against the filesystem, and the theme colour is read off the pages
+  by vote — **197 of 198 carry `#0a0a14`** and one print-first sheet carries `#ffffff`,
+  which is right for that page and must not become the manifest's answer. The run prints
+  how lopsided the vote was.
+- **`/.well-known/api-catalog` is an RFC 9264 Linkset, and its Content-Type is the whole
+  reason it works.** The file has no extension, so a static host serves it as
+  `application/octet-stream` and an agent that type-checks strictly skips it;
+  `application/linkset+json` is set in `_headers`, and `tools/serve.mjs` keys it by exact
+  path since no extension table can reach it. Advertised with `rel="api-catalog"` — the
+  relation RFC 9727 registered, and the spec's mistake list calls out using `describedby`
+  for it instead.
+- **It carries three relations and the two it omits are the interesting half.** See the
+  llms.txt section above: `sitemap` and `security` are **not** IANA-registered, this file
+  claimed they were, and both are gone from the `Link` header. The 57 Markdown siblings
+  are deliberately absent too — each is advertised in its own page's head, llms.txt
+  describes the site, and the spec says keep the catalogue small. Listing them would make
+  it a second sitemap, which is the named anti-pattern one convention over.
+- **The feed declares a cadence now, and a cadence is a promise.** `sy:updatePeriod: daily`
+  with `sy:updateFrequency: **1**`, not four, and the direction of that number is the
+  point: frequency is *polls per period*, so declaring four asks polite readers to fetch
+  four times as often for no gain. Measured 2026-09-10 — 109 pages across 25 of the last
+  28 days, about **3.9 a day** — and the feed holds 50 items, so a once-daily poll has
+  about **thirteen days of headroom** and cannot miss an item. Under-declaring costs a few
+  hours of latency; over-declaring costs everybody bandwidth. Re-derive from
+  `git log --diff-filter=A` before changing it, and use the **recent** rate: the all-time
+  figure is 3.6 a day because July was slower.
+- **The feed `<link rel="alternate">` is on 19 pages, NOT all 198, and that is the spec's
+  instruction rather than an omission.** Its own guidance: a blog index links to the main
+  feed, *"an individual post does not need its own feed"*. So it sits on `index.html`,
+  `whats-new.html` and the **17 collection pages** — the pages that are lists of pieces.
+  Every page still advertises the feed over HTTP via the `Link` header, which is what
+  reaches a client that never parses our HTML.
+- **Verified in a browser, not by reading the JSON.** Chrome parses the manifest at the
+  right type, every icon loads and **decodes at its declared size**, `favicon.ico` and
+  `apple-touch-icon.png` and the catalogue all return 200 with the types they claim, and
+  the page logs zero errors and zero 4xx. A manifest that parses is not the same claim as
+  an icon that decodes, and only one of those is checkable by eye.
 
 ## Contrast & print checking (`tools/check-contrast.mjs`)
 

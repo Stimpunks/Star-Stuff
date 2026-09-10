@@ -32,6 +32,44 @@ New piece Revised Fact-check Site
 
 2026 · September 10 · latest
 
+## A favicon that only worked in one place, and two link relations we said were standard and are not
+
+Small, overdue plumbing: real icons for phones and old browsers, a manifest so the site installs properly, and a machine-readable index of everything on this origin that a program can read. The interesting part is what fell out of checking our own claims against a registry.
+
+CorrectionTwo of the five link relations we send on every response are not registered
+
+Every page here carries an HTTP header pointing at the things a machine might want — the index for language models, the feed, the licence. Our working notes said *“every relation is IANA-registered; inventing one is a bad signal and crawlers ignore it.”* We fetched the registry to add a new one and read all 236 entries. **`sitemap` is not in it. `security` is not in it.** Both had been going out on every response.
+
+**Why that is an error and not a nitpick.** The standard for these headers permits a made-up relation only as a full web address, never as a bare word. A bare unregistered word is not a loose choice; it is invalid, and a strict reader is entitled to discard the whole header. We had written the rule down correctly and then broken it twice, in the same file, in the same line.
+
+**Nothing is lost by removing them.** `robots.txt` has always carried the sitemap, which is where every crawler actually looks, and a security policy is found at its standard path — that is what a standard path is for. *The lesson is narrower than “check your work”:* `sitemap` reads exactly like a standard word. Plausibility is not registration, and the registry is one fetch away.
+
+**The same inconsistency is in the specification we were auditing against**, which is worth saying rather than quietly working around: its example for this file keys a link as `sitemap` and lists it as useful, while the same page says to use only registered names. Both cannot be true. We followed the registry.
+
+SiteThe favicon worked in a tab and nowhere else
+
+One SVG covers a modern browser tab. It covers nothing else: **`/favicon.ico` returned a 404 to every crawler and older browser that asks for it without being told to**, iOS had no icon when someone added the site to a home screen, and Android had no launcher icon because there was no manifest to hold one. There are now five raster icons, all generated from the same SVG so the mark cannot drift between them, which is how hand-made icon sets go wrong.
+
+**The first run produced white squares and looked fine in the file listing.** A browser screenshot composites onto white unless told otherwise, so every icon came out with no transparency — a dark rounded rectangle inside a white box, which would have looked broken on any dark tab strip. The generator now reads the colour type back out of each PNG and refuses to write one that is not what was asked for. Four lines, and it is the check that would have caught it first time. *The one before it was a screenshot, yesterday, for the same reason.*
+
+**Android's icon is a different drawing, not the same one resized.** Adaptive icons get cropped to a circle or a squircle chosen by the device, and a rounded rectangle is exactly what that crop eats — corners first, leaving the star in a clipped box inside another box. That variant drops the rounded corners for a full-bleed ground with the star at 80%.
+
+SiteIt installs, and deliberately keeps the way out
+
+A [web app manifest](https://starstuff.earth/site.webmanifest) means Android and Chrome can install the site properly rather than falling back to a generic browser icon and a page title. **It opens in `minimal-ui`, not `standalone`, and that is a decision about this site specifically:** every piece here carries prev/next and a collection badge, so it is a chain you walk. Hiding the browser's own back control would strand a reader inside a reading order with no way back up it.
+
+It is generated rather than hand-written, because the icon list and the brand colour are a second copy of things that live elsewhere, and a second copy is what goes stale. The icons are checked against the repository, and the colour is *counted off the pages* — 197 of 198 carry the same value and one print-first sheet carries white, which is correct for that page and must not become the answer for the whole site.
+
+SiteOne address that lists everything here a program can read
+
+[A small standard file](https://starstuff.earth/.well-known/api-catalog) now names the index for language models, the feed, and the licence, so an agent makes one predictable request instead of guessing paths. **The type it is served as is the entire point:** the file has no extension, so a static host would call it a generic download, and a strict reader skips anything that is not the right type. It is declared explicitly, and our local development server was taught the same thing so a check run here reflects what a reader gets.
+
+**It does not list the 57 Markdown copies of pages**, and that is the convention's own advice: each is announced on its own page, the language-model index covers the site, and a catalogue that lists every URL has just become a second sitemap — the exact anti-pattern we avoided when writing the first one.
+
+**The feed now declares how often to check it.** Measured rather than chosen: 109 pages across 25 of the last 28 days, about four a day, and the feed holds fifty items — so a reader checking once a day has roughly a fortnight of slack and cannot miss anything. Declaring four checks a day would have asked every polite reader to fetch four times as often for nothing. *A cadence is a promise, so it is derived from the log rather than picked.*
+
+2026 · September 10
+
 ## If you replace our colours with your own, 4,862 diagram labels had almost no contrast — and the first thing we “found” was not real
 
 Some readers override every site's colours with a small high-contrast palette of their own. We had **not one rule** for that, from the first page in July until today. **Nobody reported this.** We went looking because [a specification asked a question we had never asked ourselves](https://specification.website/spec/accessibility/forced-colors/) — and then spent most of the day fixing something that was never broken, which is the part of this worth reading.

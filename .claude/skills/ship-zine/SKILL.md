@@ -121,18 +121,28 @@ Ryan's shorthand for "finish and publish." Scope depends on what changed.
    Prints each sheet at US Letter *and* A4 and counts pages, and separately measures overflow —
    a fixed-height sheet that overruns is clipped, not paginated, so a clean page count can still
    hide a cut-off line. Only applies to pages with an `@page` rule.
-13. **Confirm every derived file is current — one command for all four.**
+13. **Confirm every derived file is current — one command for all of them.**
 
    ```bash
    node tools/check-derived.mjs
    ```
 
    Runs `build-derived`, `build-csp`, `build-markdown` and `build-search-index` in `--check` mode
-   and aggregates. Each writes a copy of something, and a copy that has stopped agreeing with the
-   site is worse than no copy: the page looks right and the file an agent fetches does not. Use
-   `--quick` to skip the search index (the only one needing Chrome) while iterating; run it in full
-   before shipping. **A stale card tagline makes two of them stale at once**, which is why this is
-   one gate rather than four flags to remember.
+   and aggregates. Between them they own `whats-new.html`, `feed.xml`, `llms.txt`,
+   `.well-known/security.txt`, `site.webmanifest`, `.well-known/api-catalog`, the CSP block in
+   `_headers`, 57 Markdown siblings and `search-index.json`. Each is a copy of something, and a
+   copy that has stopped agreeing with the site is worse than no copy: the page looks right and
+   the file an agent fetches does not. Use `--quick` to skip the search index (the only one
+   needing Chrome) while iterating; run it in full before shipping. **A stale card tagline makes
+   two of them stale at once**, which is why this is one gate rather than four flags to remember.
+
+   **`tools/build-icons.mjs` is deliberately NOT here, and it is the one generator nothing
+   checks.** PNG bytes depend on the Chrome build, so a byte gate would fail on browser upgrades
+   and get disabled. Run it by hand if — and only if — you touched `favicon.svg`:
+
+   ```bash
+   node tools/build-icons.mjs
+   ```
 14. **Commit & push.** `git add` the touched files; commit with a descriptive heredoc message;
    `git push`.
 

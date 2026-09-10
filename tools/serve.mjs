@@ -27,6 +27,26 @@ const TYPES = {
      browser offers to download the file — which is the first mistake the spec's
      markdown-source-endpoints page lists. */
   '.md': 'text/markdown; charset=utf-8',
+  '.ico': 'image/x-icon',
+  /* Installability depends on this exact type: served as anything else, Chromium
+     declines to install and says so nowhere a reader would look. Production sets it
+     in _headers; a local check that got application/octet-stream would look fine. */
+  '.webmanifest': 'application/manifest+json; charset=utf-8',
+};
+
+/* /.well-known/api-catalog has NO EXTENSION, so the table above cannot reach it, and
+   the RFC 9727 type is not optional — an agent that type-checks strictly skips
+   anything that is not a Linkset. Keyed by exact path for that reason, and this is
+   the only entry that needs to be. */
+const EXACT = {
+  '/.well-known/api-catalog': 'application/linkset+json; charset=utf-8',
+  /* These two have extensions, but the extension gives the WRONG answer: .xml maps to
+     application/xml and .txt to text/plain, where _headers sends application/rss+xml
+     and text/markdown. Listed so a local check reflects what a reader gets — the spec
+     warns that a feed served as application/xml is ignored by some readers, and that
+     is exactly the kind of thing a faithful local server should be able to show. */
+  '/feed.xml': 'application/rss+xml; charset=utf-8',
+  '/llms.txt': 'text/markdown; charset=utf-8',
 };
 
 createServer(async (req, res) => {
@@ -50,7 +70,7 @@ createServer(async (req, res) => {
       body = await readFile(target);
     }
     res.writeHead(200, {
-      'content-type': TYPES[extname(target)] || 'application/octet-stream',
+      'content-type': EXACT[rel] || TYPES[extname(target)] || 'application/octet-stream',
       'cache-control': 'no-store',
     }).end(body);
   } catch {

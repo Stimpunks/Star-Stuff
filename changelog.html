@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
 <meta name="color-scheme" content="dark">
 <meta name="theme-color" content="#0a0a14">
 <link rel="canonical" href="https://starstuff.earth/changelog.html">
@@ -225,9 +228,45 @@
   </div>
 
   <!-- ================= 2026-09-09k (correction: Queering Earth's gate) ================= -->
+  <!-- ================= 2026-09-10b (site: icons, manifest, api-catalog) ================= -->
+  <section class="release" id="2026-09-10-discovery" aria-labelledby="h-2026-09-10-discovery">
+    <div class="release-date">2026 &middot; September 10 &middot; latest</div>
+    <h2 class="release-title" id="h-2026-09-10-discovery">A favicon that only worked in one place, and two link relations we said were standard and are not</h2>
+    <p class="release-note">Small, overdue plumbing: real icons for phones and old browsers, a manifest so the site installs properly, and a machine-readable index of everything on this origin that a program can read. The interesting part is what fell out of checking our own claims against a registry.</p>
+
+    <div class="entry entry--factcheck">
+      <div class="entry-head"><span class="tag tag--factcheck">Correction</span><span class="entry-name">Two of the five link relations we send on every response are not registered</span></div>
+      <div class="entry-body"><p>Every page here carries an HTTP header pointing at the things a machine might want &mdash; the index for language models, the feed, the licence. Our working notes said <em>&ldquo;every relation is IANA-registered; inventing one is a bad signal and crawlers ignore it.&rdquo;</em> We fetched the registry to add a new one and read all 236 entries. <strong><code>sitemap</code> is not in it. <code>security</code> is not in it.</strong> Both had been going out on every response.</p>
+      <p><strong>Why that is an error and not a nitpick.</strong> The standard for these headers permits a made-up relation only as a full web address, never as a bare word. A bare unregistered word is not a loose choice; it is invalid, and a strict reader is entitled to discard the whole header. We had written the rule down correctly and then broken it twice, in the same file, in the same line.</p>
+      <p><strong>Nothing is lost by removing them.</strong> <code>robots.txt</code> has always carried the sitemap, which is where every crawler actually looks, and a security policy is found at its standard path &mdash; that is what a standard path is for. <em>The lesson is narrower than &ldquo;check your work&rdquo;:</em> <code>sitemap</code> reads exactly like a standard word. Plausibility is not registration, and the registry is one fetch away.</p>
+      <p><strong>The same inconsistency is in the specification we were auditing against</strong>, which is worth saying rather than quietly working around: its example for this file keys a link as <code>sitemap</code> and lists it as useful, while the same page says to use only registered names. Both cannot be true. We followed the registry.</p></div>
+    </div>
+
+    <div class="entry entry--site">
+      <div class="entry-head"><span class="tag tag--site">Site</span><span class="entry-name">The favicon worked in a tab and nowhere else</span></div>
+      <div class="entry-body"><p>One SVG covers a modern browser tab. It covers nothing else: <strong><code>/favicon.ico</code> returned a 404 to every crawler and older browser that asks for it without being told to</strong>, iOS had no icon when someone added the site to a home screen, and Android had no launcher icon because there was no manifest to hold one. There are now five raster icons, all generated from the same SVG so the mark cannot drift between them, which is how hand-made icon sets go wrong.</p>
+      <p><strong>The first run produced white squares and looked fine in the file listing.</strong> A browser screenshot composites onto white unless told otherwise, so every icon came out with no transparency &mdash; a dark rounded rectangle inside a white box, which would have looked broken on any dark tab strip. The generator now reads the colour type back out of each PNG and refuses to write one that is not what was asked for. Four lines, and it is the check that would have caught it first time. <em>The one before it was a screenshot, yesterday, for the same reason.</em></p>
+      <p><strong>Android's icon is a different drawing, not the same one resized.</strong> Adaptive icons get cropped to a circle or a squircle chosen by the device, and a rounded rectangle is exactly what that crop eats &mdash; corners first, leaving the star in a clipped box inside another box. That variant drops the rounded corners for a full-bleed ground with the star at 80%.</p></div>
+    </div>
+
+    <div class="entry entry--site">
+      <div class="entry-head"><span class="tag tag--site">Site</span><span class="entry-name">It installs, and deliberately keeps the way out</span></div>
+      <div class="entry-body"><p>A <a href="site.webmanifest">web app manifest</a> means Android and Chrome can install the site properly rather than falling back to a generic browser icon and a page title. <strong>It opens in <code>minimal-ui</code>, not <code>standalone</code>, and that is a decision about this site specifically:</strong> every piece here carries prev/next and a collection badge, so it is a chain you walk. Hiding the browser's own back control would strand a reader inside a reading order with no way back up it.</p>
+      <p>It is generated rather than hand-written, because the icon list and the brand colour are a second copy of things that live elsewhere, and a second copy is what goes stale. The icons are checked against the repository, and the colour is <em>counted off the pages</em> &mdash; 197 of 198 carry the same value and one print-first sheet carries white, which is correct for that page and must not become the answer for the whole site.</p></div>
+    </div>
+
+    <div class="entry entry--site">
+      <div class="entry-head"><span class="tag tag--site">Site</span><span class="entry-name">One address that lists everything here a program can read</span></div>
+      <div class="entry-body"><p><a href="/.well-known/api-catalog">A small standard file</a> now names the index for language models, the feed, and the licence, so an agent makes one predictable request instead of guessing paths. <strong>The type it is served as is the entire point:</strong> the file has no extension, so a static host would call it a generic download, and a strict reader skips anything that is not the right type. It is declared explicitly, and our local development server was taught the same thing so a check run here reflects what a reader gets.</p>
+      <p><strong>It does not list the 57 Markdown copies of pages</strong>, and that is the convention's own advice: each is announced on its own page, the language-model index covers the site, and a catalogue that lists every URL has just become a second sitemap &mdash; the exact anti-pattern we avoided when writing the first one.</p>
+      <p><strong>The feed now declares how often to check it.</strong> Measured rather than chosen: 109 pages across 25 of the last 28 days, about four a day, and the feed holds fifty items &mdash; so a reader checking once a day has roughly a fortnight of slack and cannot miss anything. Declaring four checks a day would have asked every polite reader to fetch four times as often for nothing. <em>A cadence is a promise, so it is derived from the log rather than picked.</em></p></div>
+    </div>
+
+  </section>
+
   <!-- ================= 2026-09-10 (site: forced colours) ================= -->
   <section class="release" id="2026-09-10-forced-colours" aria-labelledby="h-2026-09-10-forced-colours">
-    <div class="release-date">2026 &middot; September 10 &middot; latest</div>
+    <div class="release-date">2026 &middot; September 10</div>
     <h2 class="release-title" id="h-2026-09-10-forced-colours">If you replace our colours with your own, 4,862 diagram labels had almost no contrast &mdash; and the first thing we &ldquo;found&rdquo; was not real</h2>
     <p class="release-note">Some readers override every site's colours with a small high-contrast palette of their own. We had <strong>not one rule</strong> for that, from the first page in July until today. <strong>Nobody reported this.</strong> We went looking because <a href="https://specification.website/spec/accessibility/forced-colors/">a specification asked a question we had never asked ourselves</a> &mdash; and then spent most of the day fixing something that was never broken, which is the part of this worth reading.</p>
 
