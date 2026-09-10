@@ -228,9 +228,42 @@
   </div>
 
   <!-- ================= 2026-09-09k (correction: Queering Earth's gate) ================= -->
+  <!-- ================= 2026-09-10c (site: find-in-page) ================= -->
+  <section class="release" id="2026-09-10-find-in-page" aria-labelledby="h-2026-09-10-find-in-page">
+    <div class="release-date">2026 &middot; September 10 &middot; latest</div>
+    <h2 class="release-title" id="h-2026-09-10-find-in-page">Ctrl+F now reaches the field notes while they are still folded away &mdash; and the thing we said needed fixing did not</h2>
+    <p class="release-note">Twenty-four field guides keep their notes collapsed behind a click, and those notes <em>are</em> the guide. Search the page for a remembered phrase and the browser now finds it inside a closed card, opens it, and scrolls to it. Separately: we had named the wrong thing as broken, and checked before changing it.</p>
+
+    <div class="entry entry--factcheck">
+      <div class="entry-head"><span class="tag tag--factcheck">Correction</span><span class="entry-name">We said the front page's card descriptions were unfindable. They were not</span></div>
+      <div class="entry-body"><p>Yesterday's audit note claimed that the 401 collapsible descriptions across the front page and the collection pages were invisible to find-in-page, and listed fixing them as the next job. <strong>They were already fine.</strong> Those use the browser's own disclosure element, which has handled this for years &mdash; and the specification we were auditing against says so in as many words: prefer the native element, because it gives you find-in-page reachability with no code at all.</p>
+      <p><strong>Checked before touching anything</strong>, which is the only reason this is a paragraph rather than 401 needless edits: the text is present in the page, three accessibility-tree nodes carry it while the card is shut, and the browser's own find call locates it. <em>The lesson is the same one as yesterday morning</em> &mdash; an inference about what a reader can reach is worth nothing next to a measurement of whether they can reach it.</p></div>
+    </div>
+
+    <div class="entry entry--site">
+      <div class="entry-head"><span class="tag tag--site">Site</span><span class="entry-name">What was actually unreachable: the field notes</span></div>
+      <div class="entry-body"><p>The guides hid their notes with <code>display: none</code>, which removes text from find-in-page and from the accessibility tree completely. That is the first item on the specification's own list of mistakes, and it applied to the substance of a quarter of the pages here &mdash; <a href="collection-field-guides.html">278 entries across 24 guides</a>, where the short brief on the card is the trailer and the notes are the film.</p>
+      <p>They now carry <code>hidden="until-found"</code>: hidden, but walked by find-in-page and by a link that targets a phrase. Find a match inside one and the browser reveals it, and a handler in the shared script opens the card properly &mdash; chevron turned, state announced &mdash; rather than leaving a note hanging open inside a card that still claims to be shut.</p>
+      <p><strong>Older browsers lose nothing, and that is from the standard rather than from optimism.</strong> The HTML specification makes an unrecognised value of this attribute mean <em>plainly hidden</em>, which is exactly what the old rule did. So a browser that has never heard of the feature behaves precisely as before. We had designed a feature-detection dance and deleted it after reading the spec text.</p></div>
+    </div>
+
+    <div class="entry entry--site">
+      <div class="entry-head"><span class="tag tag--site">Site</span><span class="entry-name">The trap: making text hidden a different way breaks four things that reveal it</span></div>
+      <div class="entry-body"><p>Those notes get revealed on four separate occasions &mdash; a reader clicks the card, a link points straight at an entry, the print stylesheet opens every note because a printed guide carrying only the briefs is useless, and four of our checking tools force them open to measure them. <strong>All four worked by making the notes <code>display: block</code>, and that does not override the new way they are hidden.</strong> One added line in each guide fixes all four at once, which is why none of the 24 click handlers had to change.</p>
+      <p><strong>The regression to fear was the search index</strong>, since it builds its records by forcing every note open, and a silent failure there would have quietly dropped the best writing on the site out of search. It is <em>byte-identical</em>: 196 pages, the 24 guides at 349 records and 771,190 characters, unchanged. Printing was checked under emulation as well &mdash; eight notes, none still hidden.</p></div>
+    </div>
+
+    <div class="entry entry--site">
+      <div class="entry-head"><span class="tag tag--site">Site</span><span class="entry-name">The zines are not done, and it is a question about reading rather than a checkbox</span></div>
+      <div class="entry-body"><p>The same fault is in every paged zine, and much larger: <strong>1,149 spreads across 101 zines, holding 2.16 million characters, and you can only search the spread you are standing on.</strong> The average zine is eleven spreads. On arrival, sitting on the cover, 98.6% of its words are beyond Ctrl+F.</p>
+      <p>The fix would work the same way and the shape is written down. It was not done today for two reasons, and the second is the real one. It touches 101 files, a thousand attributes, the shared script, the print rules and the reveal logic four tools depend on &mdash; with every zine on the site as the failure mode. <strong>And it is a decision about what reading a zine is.</strong> A zine is paginated, not folded: should searching from spread two throw you to spread fourteen? Our own search already links to a specific spread and handles it, so the gap is narrower than it looks &mdash; searching <em>inside</em> a zine you are already reading. <em>That is a judgement about the artifact, so it is being asked rather than assumed.</em></p></div>
+    </div>
+
+  </section>
+
   <!-- ================= 2026-09-10b (site: icons, manifest, api-catalog) ================= -->
   <section class="release" id="2026-09-10-discovery" aria-labelledby="h-2026-09-10-discovery">
-    <div class="release-date">2026 &middot; September 10 &middot; latest</div>
+    <div class="release-date">2026 &middot; September 10</div>
     <h2 class="release-title" id="h-2026-09-10-discovery">A favicon that only worked in one place, and two link relations we said were standard and are not</h2>
     <p class="release-note">Small, overdue plumbing: real icons for phones and old browsers, a manifest so the site installs properly, and a machine-readable index of everything on this origin that a program can read. The interesting part is what fell out of checking our own claims against a registry.</p>
 

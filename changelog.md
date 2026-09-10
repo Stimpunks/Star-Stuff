@@ -32,6 +32,38 @@ New piece Revised Fact-check Site
 
 2026 · September 10 · latest
 
+## Ctrl+F now reaches the field notes while they are still folded away — and the thing we said needed fixing did not
+
+Twenty-four field guides keep their notes collapsed behind a click, and those notes *are* the guide. Search the page for a remembered phrase and the browser now finds it inside a closed card, opens it, and scrolls to it. Separately: we had named the wrong thing as broken, and checked before changing it.
+
+CorrectionWe said the front page's card descriptions were unfindable. They were not
+
+Yesterday's audit note claimed that the 401 collapsible descriptions across the front page and the collection pages were invisible to find-in-page, and listed fixing them as the next job. **They were already fine.** Those use the browser's own disclosure element, which has handled this for years — and the specification we were auditing against says so in as many words: prefer the native element, because it gives you find-in-page reachability with no code at all.
+
+**Checked before touching anything**, which is the only reason this is a paragraph rather than 401 needless edits: the text is present in the page, three accessibility-tree nodes carry it while the card is shut, and the browser's own find call locates it. *The lesson is the same one as yesterday morning* — an inference about what a reader can reach is worth nothing next to a measurement of whether they can reach it.
+
+SiteWhat was actually unreachable: the field notes
+
+The guides hid their notes with `display: none`, which removes text from find-in-page and from the accessibility tree completely. That is the first item on the specification's own list of mistakes, and it applied to the substance of a quarter of the pages here — [278 entries across 24 guides](https://starstuff.earth/collection-field-guides.html), where the short brief on the card is the trailer and the notes are the film.
+
+They now carry `hidden="until-found"`: hidden, but walked by find-in-page and by a link that targets a phrase. Find a match inside one and the browser reveals it, and a handler in the shared script opens the card properly — chevron turned, state announced — rather than leaving a note hanging open inside a card that still claims to be shut.
+
+**Older browsers lose nothing, and that is from the standard rather than from optimism.** The HTML specification makes an unrecognised value of this attribute mean *plainly hidden*, which is exactly what the old rule did. So a browser that has never heard of the feature behaves precisely as before. We had designed a feature-detection dance and deleted it after reading the spec text.
+
+SiteThe trap: making text hidden a different way breaks four things that reveal it
+
+Those notes get revealed on four separate occasions — a reader clicks the card, a link points straight at an entry, the print stylesheet opens every note because a printed guide carrying only the briefs is useless, and four of our checking tools force them open to measure them. **All four worked by making the notes `display: block`, and that does not override the new way they are hidden.** One added line in each guide fixes all four at once, which is why none of the 24 click handlers had to change.
+
+**The regression to fear was the search index**, since it builds its records by forcing every note open, and a silent failure there would have quietly dropped the best writing on the site out of search. It is *byte-identical*: 196 pages, the 24 guides at 349 records and 771,190 characters, unchanged. Printing was checked under emulation as well — eight notes, none still hidden.
+
+SiteThe zines are not done, and it is a question about reading rather than a checkbox
+
+The same fault is in every paged zine, and much larger: **1,149 spreads across 101 zines, holding 2.16 million characters, and you can only search the spread you are standing on.** The average zine is eleven spreads. On arrival, sitting on the cover, 98.6% of its words are beyond Ctrl+F.
+
+The fix would work the same way and the shape is written down. It was not done today for two reasons, and the second is the real one. It touches 101 files, a thousand attributes, the shared script, the print rules and the reveal logic four tools depend on — with every zine on the site as the failure mode. **And it is a decision about what reading a zine is.** A zine is paginated, not folded: should searching from spread two throw you to spread fourteen? Our own search already links to a specific spread and handles it, so the gap is narrower than it looks — searching *inside* a zine you are already reading. *That is a judgement about the artifact, so it is being asked rather than assumed.*
+
+2026 · September 10
+
 ## A favicon that only worked in one place, and two link relations we said were standard and are not
 
 Small, overdue plumbing: real icons for phones and old browsers, a manifest so the site installs properly, and a machine-readable index of everything on this origin that a program can read. The interesting part is what fell out of checking our own claims against a registry.

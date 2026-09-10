@@ -173,7 +173,8 @@
 
   function openEntry(el) {
     if (!el || !el.classList || !el.classList.contains('entry')) return false;
-    if (!el.querySelector('.entry-notes')) return false;   // not a collapsible guide entry
+    var notes = el.querySelector('.entry-notes');
+    if (!notes) return false;                              // not a collapsible guide entry
     if (!el.classList.contains('open')) {
       el.classList.add('open');
       el.setAttribute('aria-expanded', 'true');
@@ -181,8 +182,37 @@
       // Match the arrow the page's own click handler would have set.
       if (label) label.textContent = '▾ Field notes';
     }
+    /* The notes are rendered with hidden="until-found" (2026-09-10) so find-in-page
+       can reach them. `.entry.open` reveals them through content-visibility, so
+       clearing the attribute is not what makes them visible — it is what stops the
+       element claiming to be hidden while it is on screen. Assistive tech reads the
+       attribute, not the class. */
+    if (notes.hasAttribute('hidden')) notes.removeAttribute('hidden');
     return true;
   }
+
+  /* ── 4) Find-in-page into a collapsed field note ──────────────────────────────
+     Each guide renders its notes with hidden="until-found", which keeps the text
+     reachable by Ctrl/Cmd+F and by a scroll-to-text fragment while it is collapsed.
+     When the browser finds a match inside one it fires `beforematch`, strips the
+     attribute and scrolls to it — but it knows nothing about `.entry.open`, so
+     without this the note would be revealed while the card still showed a collapsed
+     chevron and `aria-expanded="false"`. That mismatch is the mistake the spec names.
+
+     `beforematch` BUBBLES, so one delegated listener covers every entry on the page
+     and needs no hook into each guide's own render loop — which matters, because the
+     entries do not exist when this file runs on the guides that load it first.
+
+     The 24 guides' own click handlers are deliberately untouched: they toggle
+     `.open`, and the CSS rule added alongside the attribute makes that class reveal
+     the notes on its own. Two paths to the same state, and neither has to know about
+     the other. */
+  document.addEventListener('beforematch', function (e) {
+    var notes = e.target && e.target.closest ? e.target.closest('.entry-notes') : null;
+    if (!notes) return;
+    var entry = notes.closest('.entry');
+    if (entry) openEntry(entry);
+  }, true);
 
   function entryFromHash() {
     var hash = window.location.hash || '';

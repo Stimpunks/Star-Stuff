@@ -756,6 +756,12 @@ a.ss-cobrand.ss-cobrand:focus-visible { text-decoration-color: currentColor; }
     display: block !important;
     opacity: 1 !important;
     animation: none !important;
+    /* The notes carry hidden="until-found" (2026-09-10), so they are hidden by
+       content-visibility rather than by display — and `display: block` does not
+       override content-visibility. Without this line every printed field guide goes
+       back to carrying only the short briefs, which is the exact fault this block was
+       written to fix. Verified under print emulation, not reasoned about. */
+    content-visibility: visible !important;
   }
   .field-grid .entry-expand { display: none !important; }
   .field-grid .entry {

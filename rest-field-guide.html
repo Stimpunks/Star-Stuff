@@ -160,8 +160,8 @@
   .entry-expand { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); transition: color 0.2s ease; }
   .entry:hover .entry-expand, .entry.open .entry-expand { color: var(--secondary); }
 
-  .entry-notes { display: none; margin-top: 1.2rem; padding-top: 1.2rem; border-top: 1px solid var(--border); animation: fadeIn 0.3s ease forwards; }
-  .entry.open .entry-notes { display: block; }
+  .entry-notes { margin-top: 1.2rem; padding-top: 1.2rem; border-top: 1px solid var(--border); animation: fadeIn 0.3s ease forwards; }
+  .entry.open .entry-notes { display: block; content-visibility: visible; }
   @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
 
   .notes-heading { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.7rem; }
@@ -973,7 +973,7 @@ function renderGrid() {
       <p class="entry-brief">${entry.brief}</p>
       <div class="entry-tags">${tags}</div>
       <div class="entry-expand">▸ Field notes</div>
-      <div class="entry-notes">
+      <div class="entry-notes" hidden="until-found">
         <div class="notes-heading">Field notes · ${entry.identity}</div>
         <div class="notes-body">${entry.notes.replace(/\n\n/g,'</p><p>').replace(/^/,'<p>').replace(/$/,'</p>')}</div>
         ${table}

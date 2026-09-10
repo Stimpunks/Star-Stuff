@@ -1133,6 +1133,81 @@ node tools/build-derived.mjs --check   # exit non-zero if any is stale (or: chec
   entities and a reader is entitled to reject the document over it. 50 most recent items.
 - No Chrome, no dependencies; it shells out to `git`. Local dev tool, Netlify does not run it.
 
+## Find-in-page and collapsed content (`hidden="until-found"`, 2026-09-10)
+
+**The 24 field guides' notes are reachable by Ctrl/Cmd+F while collapsed. The 101 paged
+zines' spreads still are not, and that is an open decision rather than an oversight.**
+
+- **The disclosures on the index and the collection pages never needed this, and my own
+  audit note said they did.** 401 `<details>` elements hide their bodies **natively** —
+  there is no author `display: none` anywhere near them — and the spec's own guidance is
+  *"prefer `<details>/<summary>` where you can… the native disclosure element gives you
+  focus management, keyboard handling, and find-in-page reachability with zero
+  JavaScript."* Measured before touching anything: the text is in `textContent`, three
+  accessibility-tree nodes carry it while closed, and `window.find()` returns true.
+  **Do not add `hidden="until-found"` to a `<details>`** — the spec reserves it for
+  custom widgets `<details>` cannot model.
+- **What actually had the fault was `display: none`, in two places**, which is the first
+  item on the spec's mistake list. The field-guide notes (`.entry-notes`) and the paged
+  zines' inactive spreads (`.spread`). Both hide real content that a reader might well
+  search for by remembered phrase.
+- **The fallback is safe, and that is checked against the standard, not assumed.** The
+  HTML Standard makes `hidden` an enumerated attribute whose **invalid value default is
+  the Hidden state** — so a browser that does not know `until-found` puts the element in
+  the plain hidden state, which its UA sheet implements as `display: none`. Identical to
+  the old behaviour. Verified empirically too, with `hidden="zzz"`: `display: none`.
+  **There is therefore no need for a JS feature test**, and one was designed and thrown
+  away once the spec text was read.
+- **`display: none` had to come OFF `.entry-notes`, and the class-based reveal keeps
+  working because of one added declaration.** `.entry.open .entry-notes` now also sets
+  `content-visibility: visible`, because **`display: block` does not override
+  `content-visibility`** — that is the whole trap here. With it, all four paths to a
+  revealed note keep working and **the 24 guides' own click handlers were not touched**:
+  the click toggles `.open`, `starstuff.js`'s deep-link opener adds `.open`, the four
+  measurement tools inject `.open`, and find-in-page strips the attribute. Two mechanisms,
+  neither needing to know about the other.
+- **The print block needed the same line or every field guide would have printed short
+  again.** `starstuff.css` already forces `.field-grid .entry-notes { display: block }`
+  for paper — the 2026-08 fault where printed guides carried only the briefs — and
+  `display: block` does not defeat `content-visibility: hidden`. Verified under print
+  emulation: **8 notes, 0 still hidden**.
+- **`beforematch` bubbles, so one delegated listener in `starstuff.js` covers every
+  entry** and needs no hook into each guide's render loop — which matters, because the
+  entries do not exist when that file runs. Without it the browser would reveal a note
+  while the card still showed a collapsed chevron and `aria-expanded="false"`, which is
+  the mistake the spec names. Verified: dispatching the event sets `.open`,
+  `aria-expanded="true"`, clears the attribute and flips the chevron.
+- **The regression to fear was the search index, and it is byte-identical.** Those notes
+  *are* the guide, and `build-search-index.mjs` reveals them by injecting `.open`. All
+  **196 pages identical, the 24 guides at 349 records and 771,190 characters unchanged** —
+  which is the only proof that the reveal still yields the same text. `check-contrast`
+  still measures 303 elements on `elements-field-guide.html`.
+
+### The paged zines are NOT done, and it is a design question, not a checkbox
+
+**Measured 2026-09-10: 1,149 spread sections across 101 paged zines, holding 2,160,367
+characters of prose, and a reader can find-in-page only the spread they are on.** The mean
+zine is 11.4 spreads, so roughly ten elevenths of a zine is invisible to Cmd+F at any
+moment; sitting on the cover, as a reader does on arrival, it is 98.6% of the characters.
+The two scroll zines (Nos. 68 and 84) are fine — they reveal everything.
+
+The mechanism would work the same way and the shape is already known: put
+`hidden="until-found"` on inactive spreads **in the source** so no-JS still shows only
+spread 1, drop `.spread { display: none }`, give `.spread.active` the
+`content-visibility: visible` line, add it to the print block, and have `starstuff.js`
+maintain the attribute across page changes plus a `beforematch` handler that calls
+`changePage` to the found spread. `changePage` is per-zine and would **not** need editing:
+a class observer in the shared file can do it.
+
+**Two reasons it was not done in the same pass.** First the blast radius: 101 files' CSS,
+1,048 attributes, the shared file, the print block, and the reveal logic four tools depend
+on — with every zine on the site as the failure mode, and a sweep of all 101 needed to
+prove it. Second, and the real one: **it is an editorial question about the reading
+experience.** A zine is paginated *reading*, not collapsed content — should Cmd+F teleport
+a reader from spread 2 to spread 14? Our own search already deep-links `#spread-N` and
+`starstuff.js` handles that, so the gap is specifically searching *within* a zine you are
+already in. That is Ryan's call, and it is recorded here rather than decided quietly.
+
 ## Icons, the manifest, and the API catalogue (2026-09-10)
 
 The cheap end of the specification.website audit, done in one pass. Three of these are

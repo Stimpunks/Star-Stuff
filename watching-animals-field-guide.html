@@ -121,8 +121,8 @@
   .entry-expand { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); transition: color 0.2s ease; }
   .entry:hover .entry-expand, .entry.open .entry-expand { color: var(--secondary); }
 
-  .entry-notes { display: none; margin-top: 1.2rem; padding-top: 1.2rem; border-top: 1px solid var(--border); }
-  .entry.open .entry-notes { display: block; }
+  .entry-notes { margin-top: 1.2rem; padding-top: 1.2rem; border-top: 1px solid var(--border); }
+  .entry.open .entry-notes { display: block; content-visibility: visible; }
   .notes-heading { font-family: 'Space Mono', monospace; font-size: 0.56rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--entry-color, var(--green)); margin-bottom: 0.8rem; }
   .notes-body { font-size: 0.875rem; line-height: 1.7; color: var(--secondary); }
   .notes-body p { margin-bottom: 0.8rem; }
@@ -584,7 +584,7 @@ function renderInto(containerId, entries, startIndex) {
       <p class="entry-brief">${entry.brief}</p>
       <div class="entry-tags">${tags}</div>
       <div class="entry-expand">▸ Field notes &amp; video</div>
-      <div class="entry-notes">
+      <div class="entry-notes" hidden="until-found">
         <div class="notes-heading">Field notes · ${entry.identity}</div>
         <div class="video" data-yt="${entry.video.yt}" data-title="${entry.video.title.replace(/"/g,'&quot;')}">
           <button type="button" class="video-facade">

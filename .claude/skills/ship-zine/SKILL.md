@@ -182,6 +182,17 @@ passes do not.
   `sitemap.xml` row.
 
 ## Rules
+- **If you touch a field guide's notes, or add a collapsible panel anywhere, remember the
+  notes are hidden by `hidden="until-found"` and not by `display: none`** (2026-09-10). Four
+  things reveal them — a reader's click, the `#entry-slug` deep link, the print stylesheet,
+  and four measurement tools injecting `.open` — and all four work because
+  `.entry.open .entry-notes` carries `content-visibility: visible` alongside `display: block`.
+  **`display: block` on its own does not override `content-visibility`**, so dropping that
+  declaration silently breaks printing and every measurement at once. The regression test is
+  `node tools/build-search-index.mjs` followed by `git diff --stat search-index.json`: those
+  notes are the substance of the guides, so if the reveal breaks, the index shrinks. It should
+  be byte-identical. Never put `hidden="until-found"` on a `<details>` — native disclosures
+  already do this, and the spec says to prefer them.
 - Never invent that something renders — actually open it in the browser first.
 - If a Netlify deploy later fails with `Permission denied (publickey)` / "Could not read from
   remote", that's infra (Netlify can't clone the repo), **not** a code bug — flag it to Ryan
