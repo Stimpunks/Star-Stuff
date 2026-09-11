@@ -1,7 +1,7 @@
 ---
 title: "Changelog"
 url: "https://starstuff.earth/changelog.html"
-updated: "2026-09-10"
+updated: "2026-09-11"
 description: "What changed and when in the Star Stuff collection — every zine and field guide as it was added, every substantial revision, and every fact-check and attribution audit, including the errors we found in our own work and how we fixed them."
 collection: "Notes & Rationale"
 licence: "CC-BY-SA-4.0"
@@ -30,7 +30,29 @@ The working guidelines and the full per-piece ledger live in [FACTCHECK.md](http
 
 New piece Revised Fact-check Site
 
-2026 · September 10 · latest
+2026 · September 11 · latest
+
+## Glimmer Wire, edition three — the week the network answered, and a correction of ours still out on the wire
+
+The third weekly edition of [Glimmer Wire](https://starstuff.earth/glimmer-wire-2026-09-11.html). Seven items filed, five held, and for the first time **three papers read end to end** rather than at one remove. Also the longest lag the page has measured, and a held item that is not a story we found thin — it is a figure this page corrected last week, still travelling unchanged.
+
+Working paperSeven filed: a Jurassic chorus, a species that is several, a cat that was never a cheetah
+
+**Three graded verified, all three read in full in PubMed Central under CC BY.** Twenty fossil wings from nine species in one Middle Jurassic forest, reconstructed into a soundscape in which *no two species sang at the same pitch* — and one of them already up in the ultrasound, about a hundred and ten million years before the bats that would come to listen there. A *Nature* paper showing that a gut bacterial species name covers several populations that have been selected into different ways of living, in at least 66 taxa across 25 families. And a bacterial enzyme reading a synthetic eight-letter genetic alphabet, the structures showing it handles the four letters it has never met exactly as it handles the four it evolved on.
+
+**Two more filed on publisher-deposited abstracts, one on the authors’ own preprint, and one graded contested.** The extinct American “cheetah” turns out to be sister to pumas rather than to cheetahs, with one population eating salmon in the Arctic Yukon and another hunting temperate grassland — the paper’s own closing line is that morphological convergence can obscure the true diversity of the ecosystems it describes. A framework paper on tropical insect conservation names the gap that more than 80% of insect species live where almost none of the knowledge is published. An interstellar comet carries a methanol-to-hydrogen-cyanide ratio among the highest measured anywhere, exceeded only by one comet of our own. And two papers *in the same volume of the same journal*, published a day apart, disagree about whether the universe is accelerating; we file the disagreement and decline to referee it.
+
+**The lag axis had its most useful week.** Items ran 0 to 187 days, median 14, against 36 and 40.5 in the first two editions — and the drop is not the world speeding up, it is this scan finally reaching journal feeds instead of reaching only what a search summary had already digested. The longest item was published on 6 March and carried to us on 9 September as news. *And the axis stayed blind in the same way as before:* two items were public as preprints far earlier than their journal dates, one of them by **834 days**, which is the largest gap this page has recorded.
+
+HeldA figure we corrected last week is still on the wire, and a 2022 paper arrived as a discovery
+
+**Five held, and the first one is about us.** On 4 September this page filed the bat immunoglobulin paper, read it in full, and corrected one figure: the widely repeated *more than 500 vesper bat species*. The paper measures **26 species** with duplicated antibody gene loci and confirms both functional in **one**; it gives the family no number at all. A release carrying the old figure surfaced on this week’s scan, unchanged. *A correction that lives only on our own page is a correction that has not happened* — so it is held and recorded rather than passed over. In fairness to that release, we went back to the paper and its other numbers check out.
+
+**Held second: a mouse study from February 2022, carried on 2 September 2026 under a headline in the present tense**, crediting the discovery to Stanford when the author list is led from Shanghai Jiao Tong University. **Also held:** a magazine feature about a decade-long bird-cognition programme whose headline result is a 2024 paper, and which reads as a merit argument if lifted; two papers on cortical development folded into one headline, with both publishers refusing us so we could not tell which finding belonged to which; and three large observational studies reported as percentages a reader might act on, which turns a question about prescribing and access into a personal decision. *That last decline is the second time this collection has made it, and declining twice is the point of keeping the list.*
+
+**What we got right by checking our own sentence rather than the coverage’s.** A correction had been drafted saying the cosmology summary’s “1,700+ supernovae” confused light curves with supernovae. The paper itself says 1,701 SNe Ia. The draft correction was deleted before publication, which is the discipline the second edition’s amendment pass bought us.
+
+2026 · September 10
 
 ## Yes, you may train on this — said out loud, to thirteen named crawlers
 

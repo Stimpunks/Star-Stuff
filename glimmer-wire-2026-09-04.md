@@ -1,7 +1,7 @@
 ---
 title: "Glimmer Wire"
 url: "https://starstuff.earth/glimmer-wire-2026-09-04.html"
-updated: "2026-09-04"
+updated: "2026-09-11"
 description: "Edition two of Glimmer Wire, 4 September 2026 — the weekly graded scan behind Glimmers. Six items filed, four held, three leads, one verified. Compiled in a session where every source was refused at the network layer, published saying so, then amended hours later when the block lifted: one item verified, corrections in all six, and the two sharpest ours rather than the coverage's."
 collection: "Glimmer Wire"
 licence: "CC-BY-SA-4.0"

@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0a0a14">
+<link rel="canonical" href="https://starstuff.earth/glimmer-wire-2026-09-11.html">
+<link rel="alternate" type="text/markdown" href="https://starstuff.earth/glimmer-wire-2026-09-11.md" title="Glimmer Wire &mdash; Markdown source">
+<meta name="description" content="Edition three of Glimmer Wire, 11 September 2026 — the weekly graded scan behind Glimmers. Seven items filed, five held, three verified, median lag 14 days. A Jurassic soundscape of nine species each singing at its own frequency, a gut bacterium that is several ecologically separate populations wearing one name, and an American cheetah that was never a cheetah. Two papers in the same journal volume disagree about whether the universe is accelerating, and a 2022 mouse study came round again as this week&rsquo;s discovery.">
+<!-- Open Graph / link unfurl -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Star Stuff &middot; Stimpunks Foundation &times; More Realms">
+<meta property="og:url" content="https://starstuff.earth/glimmer-wire-2026-09-11.html">
+<meta property="og:title" content="Glimmer Wire &mdash; edition of 11 September 2026">
+<meta property="og:description" content="Seven filed, five held, three read in full. A Jurassic forest full of species singing at different frequencies, one gut species that is really several, and a cat that was never a cheetah — plus two papers in one journal volume that disagree about the universe.">
+<meta property="og:image" content="https://starstuff.earth/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A rainbow-hued cosmic image &mdash; we are all made of star stuff.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Glimmer Wire &mdash; edition of 11 September 2026">
+<meta name="twitter:description" content="The week the network worked: three papers read in full, and the longest lag yet — a March result carried as September news.">
+<meta name="twitter:image" content="https://starstuff.earth/og-card.jpg">
+<title>Glimmer Wire — Edition of 11 September 2026 — Stimpunks × More Realms</title>
+<link rel="stylesheet" href="starstuff.css">
+<style>
+  :root {
+    --void:  var(--sp-void-deep);
+    --deep:  var(--sp-deep);
+    --page:  var(--sp-page);
+    --card:  var(--sp-card);
+    --violet:var(--sp-purple);
+    --pink:  var(--sp-pink);
+    --gold:  var(--sp-gold);
+    --cyan:  var(--sp-cyan);
+    --green: var(--sp-green);
+    --star-white: var(--sp-white-soft);
+    --stardust:   var(--sp-secondary-soft);
+    --secondary:  var(--sp-secondary);
+    --muted: var(--sp-muted);
+    --dim:   var(--sp-dim);
+    --dim2:  var(--sp-dim-soft);
+    /* Gold leads: it is the Glimmers collection accent, and this page is the
+       working scan behind that collection rather than a Notes house colour. */
+    --accent:var(--sp-gold);
+    --border: rgba(251,191,36,0.16);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  /* One unscoped rule: the first draft scoped it to .notice and .seed, and the
+     dead-class gate caught the .caveat use it therefore never reached. */
+  .mono { font-family: 'Space Mono', monospace; }
+
+  html, body {
+    background: var(--void);
+    font-family: 'Atkinson Hyperlegible Next', system-ui, sans-serif;
+    color: var(--star-white);
+    line-height: 1.7;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Starfield, tinted gold for Glimmers. Inline and per-page by design —
+     see starstuff.css on why the themed gradient art is not shared. */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background-image:
+      radial-gradient(1px 1px at 11% 14%, rgba(251,191,36,0.70) 0%, transparent 100%),
+      radial-gradient(1px 1px at 27% 41%, rgba(244,242,251,0.60) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 43% 9%, rgba(251,191,36,0.55) 0%, transparent 100%),
+      radial-gradient(1px 1px at 61% 68%, rgba(167,139,250,0.50) 0%, transparent 100%),
+      radial-gradient(2px 2px at 78% 25%, rgba(244,242,251,0.50) 0%, transparent 100%),
+      radial-gradient(1px 1px at 87% 57%, rgba(251,191,36,0.55) 0%, transparent 100%),
+      radial-gradient(1px 1px at 93% 80%, rgba(244,242,251,0.70) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 6% 62%, rgba(251,191,36,0.45) 0%, transparent 100%),
+      radial-gradient(1px 1px at 34% 87%, rgba(244,242,251,0.60) 0%, transparent 100%),
+      radial-gradient(1px 1px at 54% 47%, rgba(34,211,238,0.45) 0%, transparent 100%),
+      radial-gradient(2px 2px at 19% 83%, rgba(251,191,36,0.45) 0%, transparent 100%),
+      radial-gradient(1px 1px at 71% 7%, rgba(244,242,251,0.75) 0%, transparent 100%),
+      radial-gradient(1px 1px at 47% 64%, rgba(251,191,36,0.40) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 38% 23%, rgba(244,242,251,0.50) 0%, transparent 100%),
+      radial-gradient(1px 1px at 64% 92%, rgba(167,139,250,0.45) 0%, transparent 100%),
+      radial-gradient(1px 1px at 82% 44%, rgba(251,191,36,0.50) 0%, transparent 100%);
+    animation: twinkle-anim 9s ease-in-out infinite;
+  }
+
+  .doc-shell { position: relative; z-index: 1; max-width: 820px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+
+  .nav-brand { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--dim2); margin-bottom: 2rem; }
+  .nav-brand a { color: inherit; }
+
+  /* ---------- Hero ---------- */
+
+  .hero { margin-bottom: 2.5rem; }
+  .hero-eyebrow { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--secondary); margin-bottom: 1rem; }
+  .hero-eyebrow a { color: inherit; }
+  .hero-title { font-size: clamp(2.2rem, 7vw, 3.4rem); font-weight: 800; line-height: 1.05; letter-spacing: -0.02em; color: var(--star-white); text-wrap: balance; margin: 0 0 1rem; scroll-margin-top: 5rem; }
+  .hero-title .star { color: var(--gold); }
+  .hero-byline { font-size: 1.05rem; color: var(--muted); max-width: 44ch; margin-bottom: 0.9rem; }
+  .hero-sub { font-size: 0.95rem; color: var(--stardust); max-width: 62ch; }
+  .hero-rule { border: 0; height: 2px; background: var(--gold); opacity: 0.5; border-radius: 2px; margin: 1.5rem 0 1.1rem; }
+
+  .dateline { font-family: 'Space Mono', monospace; font-size: 0.68rem; letter-spacing: 0.1em; color: var(--secondary); display: flex; flex-wrap: wrap; gap: 0.4rem 1.1rem; font-variant-numeric: tabular-nums; }
+  .dateline i { font-style: normal; color: var(--dim); }
+  .dateline b { color: var(--gold); font-weight: 700; }
+
+  /* ---------- Standing notice ---------- */
+
+  .notice { background: var(--card); border-left: 3px solid var(--pink); border-radius: 8px; padding: 1.1rem 1.3rem; margin-bottom: 2.75rem; display: flex; flex-direction: column; gap: 0.6rem; }
+  .notice h2 { font-size: 0.62rem; font-family: 'Space Mono', monospace; letter-spacing: 0.18em; text-transform: uppercase; color: var(--pink); font-weight: 700; margin: 0; scroll-margin-top: 5rem; }
+  .notice p { font-size: 0.9rem; color: var(--stardust); }
+
+  /* ---------- Sections ---------- */
+
+  h2.section { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.01em; color: var(--sec-accent, var(--star-white)); margin: 0 0 0.4rem; scroll-margin-top: 5rem; text-wrap: balance; }
+  .section-rule { height: 2px; background: var(--sec-accent, var(--gold)); opacity: 0.5; margin-bottom: 0.9rem; border-radius: 2px; }
+  .section-intro { color: var(--muted); font-size: 0.95rem; margin-bottom: 1.6rem; max-width: 62ch; }
+  .section-block { margin-bottom: 3.25rem; }
+
+  /* ---------- Grading key ---------- */
+
+  .key { display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); gap: 0.75rem; margin-bottom: 1.6rem; }
+  .key div { border: 1px solid var(--border); border-radius: 8px; padding: 0.7rem 0.85rem; font-size: 0.8rem; color: var(--stardust); display: flex; flex-direction: column; gap: 0.3rem; }
+  .key span { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.14em; font-weight: 700; }
+  .key .k-verified  { color: var(--green); }
+  .key .k-plausible { color: var(--gold); }
+  .key .k-contested { color: var(--pink); }
+  .key .k-held      { color: var(--dim); }
+
+  /* ---------- Entries ---------- */
+
+  .wire-list { display: flex; flex-direction: column; gap: 1.5rem; }
+  .wire-item { background: var(--card); border: 1px solid var(--border); border-left: 3px solid var(--e-accent, var(--gold)); border-radius: 8px; padding: 1.4rem 1.5rem 1.5rem; display: flex; flex-direction: column; gap: 0.9rem; }
+
+  .meta { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.35rem 1rem; font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.1em; color: var(--dim); font-variant-numeric: tabular-nums; }
+  .meta i { font-style: normal; color: var(--secondary); }
+  .meta .grade { font-weight: 700; letter-spacing: 0.14em; color: var(--e-accent, var(--gold)); }
+  .meta .grade.contested { color: var(--pink); }
+  .meta .grade.verified  { color: var(--green); }
+
+  /* Lag: how long the finding had been public before a news wire carried it.
+     A real axis for a digest — several of these are months old, and the number
+     is what settled the weekly cadence. Bar plus figure, never the bar alone. */
+  .lag { display: flex; align-items: center; gap: 0.5rem; width: 100%; margin-top: 0.1rem; }
+  .lag-label { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.1em; color: var(--dim); white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .lag-track { flex: 1; height: 3px; background: rgba(184,174,208,0.16); border-radius: 2px; overflow: hidden; min-width: 3rem; }
+  .lag-fill { display: block; height: 100%; background: var(--e-accent, var(--gold)); opacity: 0.75; border-radius: 2px; }
+
+  .wire-item h3 { font-size: 1.28rem; font-weight: 800; line-height: 1.25; letter-spacing: -0.01em; color: var(--star-white); text-wrap: balance; scroll-margin-top: 5rem; }
+  .finding { color: var(--star-white); }
+
+  .frame, .placement, .caveat { border-radius: 6px; padding: 0.8rem 0.95rem; font-size: 0.92rem; }
+  .frame { background: rgba(10,10,20,0.55); border-left: 2px solid var(--e-accent, var(--gold)); color: var(--star-white); }
+  .placement { background: rgba(10,10,20,0.4); border-left: 2px solid var(--secondary); color: var(--stardust); }
+  .caveat { background: rgba(10,10,20,0.4); border-left: 2px solid var(--pink); color: var(--stardust); }
+  .frame b, .placement b, .caveat b { display: block; font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 0.35rem; font-weight: 700; }
+  .frame b     { color: var(--e-accent, var(--gold)); }
+  .placement b { color: var(--secondary); }
+  .caveat b    { color: var(--pink); }
+
+  .cite { font-family: 'Space Mono', monospace; font-size: 0.63rem; line-height: 1.75; color: var(--dim2); border-top: 1px solid var(--border); padding-top: 0.75rem; word-break: break-word; }
+  .cite b { color: var(--secondary); font-weight: 700; }
+  .cite a { color: var(--secondary); }
+
+  /* ---------- Held ---------- */
+
+  .held { display: flex; flex-direction: column; gap: 1rem; }
+  .held-item { border: 1px dashed rgba(184,174,208,0.3); border-radius: 8px; padding: 1.1rem 1.25rem; display: flex; flex-direction: column; gap: 0.5rem; }
+  .held-item h3 { font-size: 1.02rem; font-weight: 700; color: var(--stardust); line-height: 1.3; scroll-margin-top: 5rem; }
+  .held-item p { font-size: 0.9rem; color: var(--muted); }
+  .held-item .why { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--dim); font-weight: 700; }
+
+  /* ---------- Seedbed ---------- */
+
+  .seeds { display: flex; flex-direction: column; gap: 1.1rem; }
+  .seed { background: var(--card); border-radius: 8px; border-left: 3px solid var(--s-accent, var(--violet)); padding: 1.1rem 1.25rem; display: flex; flex-direction: column; gap: 0.5rem; }
+  .seed-kind { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; color: var(--s-accent, var(--violet)); }
+  .seed h3 { font-size: 1.08rem; font-weight: 800; color: var(--star-white); line-height: 1.3; scroll-margin-top: 5rem; }
+  .seed p { font-size: 0.92rem; color: var(--stardust); }
+  .seed .src { font-family: 'Space Mono', monospace; font-size: 0.62rem; color: var(--dim2); line-height: 1.7; word-break: break-word; }
+
+  /* ---------- Refusals ---------- */
+
+  .refusals { background: var(--card); border: 1px solid rgba(244,114,182,0.3); border-radius: 8px; padding: 1.4rem 1.5rem; display: flex; flex-direction: column; gap: 0.85rem; }
+  .refusals p { font-size: 0.94rem; color: var(--star-white); }
+  .refusals p strong { color: var(--pink); font-weight: 700; }
+
+  /* ---------- Edition ----------
+     ONE EDITION PER PAGE as of 2026-09-04. This used to be a single page with
+     every edition stacked newest-first, and this comment used to say new
+     editions are PREPENDED — they are not. A new edition is a NEW FILE,
+     `glimmer-wire-YYYY-MM-DD.html`, carded on collection-glimmer-wire.html;
+     see that page and CLAUDE.md for what else it owes. Nothing is ever deleted:
+     the Held list is the record this collection exists for, and an archive of
+     only the good weeks would assert a cadence that did not happen.
+     The `.edition + .edition` rule below is now inert here and is kept so the
+     two shipped editions stay byte-comparable with what they were. */
+  .edition + .edition { margin-top: 4rem; padding-top: 2.5rem; border-top: 1px solid var(--border); }
+  .edition-date { font-family: 'Space Mono', monospace; font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 700; margin-bottom: 0.5rem; scroll-margin-top: 5rem; }
+  .edition-tally { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.12em; color: var(--dim); margin-bottom: 2rem; font-variant-numeric: tabular-nums; }
+  .edition + .edition .edition-date { color: var(--secondary); }
+  .colophon-footer { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--dim2); line-height: 2.2; margin-top: 3rem; padding-top: 1.4rem; border-top: 1px solid var(--border); }
+  .colophon-footer a { color: inherit; }
+
+  /* Page-specific print work. The --sp-* aliases above give the token inversion
+     for free; these are the hardcoded rgba surfaces and the lag bar, which the
+     shared sheet cannot reach. */
+  @media print {
+    body::before { display: none !important; }
+    .doc-shell { max-width: none; padding: 0 0 1rem; }
+    .wire-item, .notice, .seed, .refusals, .held-item, .key div {
+      background: transparent !important; border-color: #999999 !important; break-inside: avoid;
+    }
+    .wire-item, .notice, .seed { border-left-color: #333333 !important; }
+    .frame, .placement, .caveat { background: transparent !important; border-left-color: #666666 !important; }
+    .lag-track { background: #dddddd !important; }
+    .lag-fill { background: #555555 !important; opacity: 1; }
+    .hero-rule, .section-rule { background: #333333 !important; opacity: 1; }
+  }
+
+  @media (max-width: 600px) {
+    .doc-shell { padding: 2rem 1.3rem 3rem; }
+  }
+</style>
+
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Glimmer Wire — edition of 11 September 2026","description":"Edition three of Glimmer Wire, 11 September 2026 — the weekly graded scan behind Glimmers. Seven items filed, five held, three verified, median lag 14 days. The week the network answered: three papers read in full in PubMed Central, a fourth read as the authors’ preprint, and the longest lag the axis has yet measured — a March paper carried as September news.","image":"https://starstuff.earth/og-card.jpg","url":"https://starstuff.earth/glimmer-wire-2026-09-11.html","mainEntityOfPage":"https://starstuff.earth/glimmer-wire-2026-09-11.html","datePublished":"2026-09-11","dateModified":"2026-09-11","author":{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/"},"publisher":[{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/","logo":{"@type":"ImageObject","url":"https://starstuff.earth/og-card.jpg"}},{"@type":"Organization","name":"More Realms","url":"https://morerealms.com/"}],"isPartOf":{"@type":"WebSite","name":"Star Stuff","url":"https://starstuff.earth/"},"isPartOf_collection":"https://starstuff.earth/collection-glimmer-wire.html"}</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<div class="doc-shell">
+
+  <!-- prev/next here move between EDITIONS, not along the site's global reading
+       chain: Glimmer Wire sits outside that chain by decision, like every other
+       working paper. See collection-glimmer-wire.html and DECISIONS.md. -->
+  <nav class="ss-nav" style="--nav-accent:#fbbf24;" aria-label="Star Stuff collection">
+    <span class="ss-nav-home-group"><a class="ss-nav-home" href="index.html"><span class="ss-star" aria-hidden="true">&#9733;</span> stuff</a><a class="ss-nav-about" href="about.html">about</a>
+      <a class="ss-nav-search" href="search.html">search</a><a class="ss-nav-privacy" href="privacy.html">privacy</a></span>
+    <span class="ss-nav-links">
+      <a class="ss-nav-prev" href="glimmer-wire-2026-09-04.html"><span class="ss-nav-arrow" aria-hidden="true">&lsaquo;</span> <span class="ss-nav-label">4 September 2026</span></a>
+    </span>
+    <a class="ss-nav-collection" href="collection-glimmer-wire.html"><span class="ss-nav-collection-label">Collection</span> <span class="ss-nav-collection-name">Glimmer Wire</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
+  </nav>
+<main id="main" tabindex="-1">
+
+  <div class="nav-brand"><a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks</a> &times; <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a> &middot; Glimmer &#9733; Wire &middot; Edition Three</div>
+
+  <header class="hero">
+    <div class="hero-eyebrow"><a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks Foundation</a> &times; <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a> &middot; Working Paper</div>
+    <h1 class="hero-title" id="masthead">Edition of 11 September 2026</h1>
+    <p class="hero-byline">A weekly read of what is going well in science and medicine, graded before it is enjoyed.</p>
+    <p class="hero-sub">The third edition of <a href="collection-glimmer-wire.html">Glimmer Wire</a>, the scan that sits behind <a href="collection-glimmers.html">Glimmers</a> &mdash; and the first one where the network answered. <strong>Three papers were read in full</strong>, all three in PubMed Central, all three the version of record under a CC&nbsp;BY licence; a fourth was read as the authors&rsquo; own preprint and is graded accordingly. Items are sorted by <em>lag</em>, which this week runs from <strong>0 to 187 days</strong>, and the section that matters most is <a href="#held-items-0911">Held</a>, which lists what we declined and why. One held item is a figure <em>we corrected last week</em>, still travelling.</p>
+    <hr class="hero-rule">
+    <p class="dateline">
+      <span><i>Edition</i> <b>Three</b></span>
+      <span><i>Published</i> <b>11 September 2026</b></span>
+      <span><i>Amended</i> <b>&mdash;</b></span>
+      <span><i>Verified</i> <b>3 of 7</b></span>
+    </p>
+  </header>
+
+  <div class="edition" id="edition-2026-09-11">
+    <p class="edition-tally">7 filed &middot; 5 held &middot; 2 seeds &middot; 3 verified &middot; median lag 14 d</p>
+
+  <div class="notice" role="region" aria-labelledby="what-was-read-0911">
+    <h2 id="what-was-read-0911">What was actually read: three papers in full, one preprint, three abstracts</h2>
+    <p>Last week&rsquo;s edition was compiled with <em>every</em> source refused at the network layer. This week most of the refusals lifted, and the tally moved with them. <strong>Answered when tried, by name:</strong> <span class="mono">api.crossref.org</span>, <span class="mono">api.semanticscholar.org</span>, <span class="mono">pmc.ncbi.nlm.nih.gov</span>, <span class="mono">arxiv.org</span>, <span class="mono">sciencedaily.com</span>, <span class="mono">sciencenews.org</span> and <span class="mono">journals.plos.org</span>. <strong>Still refused, also by name:</strong> <span class="mono">doi.org</span>, <span class="mono">eutils.ncbi.nlm.nih.gov</span>, <span class="mono">www.ebi.ac.uk</span> (Europe PMC), <span class="mono">export.arxiv.org</span>, <span class="mono">api.openalex.org</span>, <span class="mono">phys.org</span>, <span class="mono">eurekalert.org</span>, <span class="mono">science.org</span>, <span class="mono">cell.com</span>, <span class="mono">sciencedirect.com</span>, <span class="mono">pnas.org</span>, <span class="mono">nature.com</span>, <span class="mono">iopscience.iop.org</span>, <span class="mono">academic.oup.com</span> and <span class="mono">news.ucsc.edu</span>. One refusal is worth naming separately because it looks like success: <span class="mono">pubmed.ncbi.nlm.nih.gov</span> answered every request with <span class="mono">HTTP&nbsp;200</span> and served a cookie notice instead of the record, so <em>a status code is not a source</em>.</p>
+    <p><strong>What that bought is three verified items, and it bought them in one place.</strong> PubMed Central holds author-accepted and publisher deposits of open-access papers, and three of this week&rsquo;s seven are there in full and under CC&nbsp;BY: the <em>Nature</em> gut-microbiome paper, the <em>PNAS</em> Jurassic soundscape, and the <em>Nature Communications</em> eight-letter transcription paper. Those three are graded <strong>verified</strong> and the entries say what was read. A fourth, the interstellar-comet result, was read in full as <strong>the authors&rsquo; own arXiv preprint</strong> and is <em>not</em> graded verified, because a preprint read in full is the authors&rsquo; text and not the version of record, and this page does not blur the two. The remaining three stand on publisher-deposited abstracts.</p>
+    <p><strong>One of those abstracts is a hop further out than usual, and it is flagged rather than smoothed.</strong> The American-cheetah paper&rsquo;s abstract was obtained from the Semantic Scholar Graph API, not from Crossref and not from the publisher &mdash; Crossref carries the paper&rsquo;s metadata but deposited no abstract, and <em>Cell</em> and ScienceDirect both refused the article page. Semantic Scholar redistributes a publisher deposit rather than authoring it, but it is one more link in the chain than we would like, and the entry says so.</p>
+    <p><strong>The lag axis had its most useful week so far.</strong> The seven items run from <strong>0 days</strong> to <strong>187</strong>, with a median of <strong>14</strong> &mdash; against 36 and 40.5 in the two editions before this one. That drop is not the world getting faster; it is this scan finally reaching journal feeds rather than reaching only what a search summary had already digested. The longest item is the useful one: an <em>Astrophysical Journal Letters</em> paper published on <strong>6 March 2026</strong> and carried to us on <strong>9 September</strong> as news, when the same result had been covered at publication six months earlier. <em>And the axis is again structurally blind in the same way:</em> two of the seven were public as preprints long before their journal dates &mdash; the gut-microbiome result by <strong>834 days</strong>, the comet result by <strong>288</strong>. Both entries print that interval as well.</p>
+    <p><strong>A note on the wire dates, because they are easy to get wrong by a day.</strong> ScienceDaily&rsquo;s category index lists three of these items under a date one day later than the timestamp in the release&rsquo;s own URL. The lags below are computed against the <em>URL timestamp</em>, which is when the release was actually posted, and every entry prints the wire date it used.</p>
+  </div>
+
+  <div class="section-block" role="region" style="--sec-accent: var(--gold);" aria-labelledby="filed-0911">
+    <h2 class="section" id="filed-0911">Filed</h2>
+    <div class="section-rule" aria-hidden="true"></div>
+    <p class="section-intro">Sorted by lag, shortest first. Bars are scaled to the longest item, 187 days; the three items at 0&ndash;2 days would draw a bar too thin to see, so they are given a visible floor of 2% rather than a true-to-scale sliver, which is a drawing decision and not a measurement. <strong>Four of the seven carry a date inside the last ten days.</strong> The other three are 88, 123 and 187 days old, and each was carried to us this week by a feed treating it as new.</p>
+
+    <div class="key" role="list">
+      <div role="listitem"><span class="k-verified">Verified</span> Primary source read and confirmed.</div>
+      <div role="listitem"><span class="k-plausible">Plausible</span> Finding sound and metadata confirmed; paper text not read.</div>
+      <div role="listitem"><span class="k-contested">Contested</span> Specialists disagree, or the claim outruns the method.</div>
+      <div role="listitem"><span class="k-held">Held</span> Could not be traced to a source that supports it.</div>
+    </div>
+
+    <div class="wire-list">
+
+      <article class="wire-item" id="cheetah-0911" style="--e-accent: var(--gold);" aria-labelledby="cheetah-0911-title">
+        <p class="meta">
+          <span class="grade">Plausible</span>
+          <span><i>Published online</i> 2026-09-04</span>
+          <span><i>Journal</i> Current Biology</span>
+          <span><i>Read</i> the abstract, at Semantic Scholar</span>
+        </p>
+        <p class="lag"><span class="lag-label">Lag 0 d</span><span class="lag-track" aria-hidden="true"><span class="lag-fill" style="width:2%"></span></span></p>
+        <h3 id="cheetah-0911-title">The American cheetah was never a cheetah, and it was not one thing either</h3>
+        <p class="finding"><em>Miracinonyx trumani</em> has been read for decades as North America&rsquo;s answer to the African cheetah, on the strength of a long-legged, cursorial build. This group generated nuclear palaeogenomes from specimens in Wyoming (~23,000 years old) and the Yukon (~31,000), and the phylogeny puts the animal <strong>sister to pumas</strong>, not to cheetahs, with a divergence around <strong>2.6 million years ago</strong>. The Yukon material extends the known range by <strong>more than 20&deg; of latitude</strong> into the Arctic. And stable isotopes separate the two populations sharply: the Yukon animals sit at an elevated trophic position consistent with eating <em>anadromous fish</em>, while the Wyoming animals were generalist terrestrial predators. The abstract also reports loss-of-function mutations in circadian genes, which the authors read as <em>relaxed constraints</em> on circadian regulation rather than as an adaptation. Its closing sentence is the one to keep: these findings underscore how morphological convergence can <strong>obscure the true diversity and complexity</strong> of extinct megafaunal ecosystems.</p>
+        <div class="frame">
+          <b>The star stuff frame</b>
+          Two things happen here and the second is the better one. A resemblance got mistaken for a relationship, and the name recorded the mistake for a century. Then, once the name came off, the animal turned out not to be a single way of living at all &mdash; the same species eating salmon under an Arctic light cycle and hunting on temperate grassland, with the genome relaxing the clock in the population that no longer needed it. <em>The category was doing the flattening.</em> That is the shape this site keeps meeting from the human end: a label built on surface likeness, and a range of real ways of being that only becomes visible once the label stops answering for them.
+        </div>
+        <div class="caveat">
+          <b>Four specimens, and a date we could not settle</b>
+          The palaeogenomes come from <strong>four</strong> specimens, one from Natural Trap Cave in Wyoming and three from the Yukon &mdash; a small sample for a claim about two ecologically distinct populations, and the isotope result is a dietary <em>inference</em> from tissue chemistry rather than an observed meal. The salmon reading is the authors&rsquo; own and is hedged in the abstract as <em>consistent with</em>. <strong>The publication date is genuinely unresolved and the lag inherits that.</strong> Crossref gives the paper a print date of September 2026 with <em>no</em> online-first date, and registered the DOI on <strong>4 September 2026</strong> &mdash; the same day the coverage ran, hence the 0 days. But the same Crossref record carries a CC&nbsp;BY licence whose version-of-record start date is <strong>31 July 2026</strong>, which would make the lag 35 days instead. We could not adjudicate, because the publisher&rsquo;s own article page is refused. <em>The 0 d is therefore a floor, not a measurement</em>, and it is the smallest number in the sort for a reason that may not survive contact with the page we cannot open.
+        </div>
+        <div class="placement">
+          <b>Where it goes</b>
+          Checked against the shelf rather than assumed: convergent evolution is <strong>not</strong> unspent here. <a href="five-times-a-crab-zine.html">No.&nbsp;31</a>, <em>Five Times a Crab, Seven Times Not</em>, is built on carcinisation, and <a href="too-good-to-check.html">Too Good to Check</a> and <a href="watching-animals-field-guide.html">the watching-animals guide</a> both name it too. What is unspent is the second half &mdash; <em>one species, two ways of making a living, separated by 20&deg; of latitude</em> &mdash; which is a different argument from convergence and a better fit for <a href="collection-more-than-human.html">More Than Human</a> than for a chain. A chain link is possible on the naming error alone and would be marked <span class="mono">documented</span>.
+        </div>
+        <p class="cite"><b>Cassatt-Johnstone, M., Wooldridge, T. B., Ghosh, S., Hall, E., Hewitson, S., Meachen, J., Wooller, M. J., Zazula, G. &amp; Shapiro, B.</b> &ldquo;Range and diet diversity in the Pleistocene American &lsquo;cheetah,&rsquo; <em>Miracinonyx trumani</em>.&rdquo; <em>Current Biology</em>, 2026. <b>DOI</b> 10.1016/j.cub.2026.07.072 &middot; <b>PMID</b> 42697199. <b>Read:</b> the paper&rsquo;s abstract, as redistributed by the Semantic Scholar Graph API from a publisher deposit &mdash; <em>one link further out than this page likes</em>, and the reason this is not graded verified even though the paper is CC&nbsp;BY. <b>Not read:</b> the paper. <em>Cell</em> returned a <span class="mono">403</span>, ScienceDirect was refused at the network layer, and <span class="mono">doi.org</span> returned a <span class="mono">403</span>; there is no PubMed Central copy. <b>Not the paper&rsquo;s own:</b> nothing in the finding above &mdash; but the specimen provenance (Natural Trap Cave; three Yukon specimens) comes from the coverage, not from the abstract, and is marked here rather than carried as if it were. <b>Wire:</b> <em>Science News</em>, 4 September 2026.</p>
+      </article>
+
+      <article class="wire-item" id="hachimoji-0911" style="--e-accent: var(--green);" aria-labelledby="hachimoji-0911-title">
+        <p class="meta">
+          <span class="grade verified">Verified</span>
+          <span><i>Published online</i> 2026-09-02</span>
+          <span><i>Journal</i> Nature Communications</span>
+          <span><i>Read</i> the paper, in full</span>
+        </p>
+        <p class="lag"><span class="lag-label">Lag 2 d</span><span class="lag-track" aria-hidden="true"><span class="lag-fill" style="width:2%"></span></span></p>
+        <h3 id="hachimoji-0911-title">A cell&rsquo;s own transcription machine reads four letters it has never met, the same way it reads the four it has</h3>
+        <p class="finding">Every living thing on Earth writes with four DNA letters. The <em>hachimoji</em> system adds four synthetic ones in two extra pairs, P:Z and B:S. This group shows that <strong><em>Escherichia coli</em> RNA polymerase</strong> &mdash; an ordinary bacterial enzyme, not a redesigned one &mdash; transcribes the full eight-letter alphabet efficiently. They hit one real failure, G:Z misincorporation, and fixed it by synthesising a higher-fidelity analogue, <strong>Z*</strong>, with the C5 nitro group replaced by a carboxamide. Then four cryo-electron-microscopy structures at <strong>2.42&ndash;2.75&nbsp;&Aring;</strong> show what the enzyme is doing: in the paper&rsquo;s words, <em>E. coli</em> RNA polymerase recognises these unnatural base pairs &ldquo;in the same manner as natural base pairs.&rdquo; Neither P:Z nor P:Z* incorporation impairs the elongation that follows. The A-locus arithmetic of the enzyme did not have to change to accommodate a doubled alphabet.</p>
+        <div class="frame">
+          <b>The star stuff frame</b>
+          The reading that matters is not <em>we can build new letters</em>. It is that <strong>the machinery was never as narrow as the alphabet it evolved on.</strong> A polymerase shaped by four billion years of exactly four characters turns out to accept eight without being asked twice, because what it checks is geometry rather than identity. A system that looks purpose-built for one arrangement was actually built for a <em>shape</em>, and the arrangement is what happened to arrive. That is the difference-first claim in its most literal form: four letters is a contingency, not a requirement, and the thing doing the reading knew that before we did.
+        </div>
+        <div class="caveat">
+          <b>This is a test tube, and the headline is not</b>
+          The ScienceDaily headline is <em>Life uses 4 DNA letters. Scientists just made 8 work.</em> <strong>Nothing here happens in a living cell.</strong> The transcription assays are <em>in vitro</em>, on synthetic nucleic-acid scaffolds, with <em>E. coli</em> RNA polymerase expressed and purified from plasmids &mdash; the paper&rsquo;s own closing claim is that the results &ldquo;establish the feasibility of an eight-letter genetic alphabet for transcription,&rdquo; which is a sentence about feasibility and about transcription, and about neither life nor cells. <strong>Nor is the eight-letter alphabet new.</strong> Hachimoji is Steven Benner&rsquo;s system, published in 2019, and Benner is an author here; what is new is that a multi-subunit cellular RNA polymerase handles it, the structural account of <em>how</em>, and the Z* analogue. <em>We have not read the 2019 paper</em>, so its date is reported from this paper&rsquo;s own citation of it and not independently confirmed. One more thing the frame above must not be allowed to carry: an enzyme accepting a synthetic base pair says nothing about whether any organism could live on one.
+        </div>
+        <div class="placement">
+          <b>Where it goes</b>
+          Unspent, and by a wide margin: no page here contains <em>base pair</em>, <em>adenine</em>, <em>guanine</em> or <em>genetic alphabet</em>, checked by grep. (<span class="mono">shorthand-evolution.html</span> matches <em>four letters</em> and is about shorthand writing systems, which is a decoy and was read rather than counted.) The honest shape is small and good: a card, or a spread inside a piece about standards that turn out to be defaults. It is <em>not</em> a zine on its own, because the argument needs the biology to stay in the test tube and a zine would want it out.
+        </div>
+        <p class="cite"><b>Li, Q., Kim, H.-J., Liu, Y., Oh, J., Hou, P., Hoshika, S., Pintilie, G., Aiyer, S., Chong, J., Lyumkis, D., Benner, S. A. &amp; Wang, D.</b> &ldquo;Structural basis of transcription of the hachimoji eight-letter alphabet by <em>E. coli</em> RNA polymerase.&rdquo; <em>Nature Communications</em> <strong>17</strong>, published online 2 September 2026. <b>DOI</b> 10.1038/s41467-026-76668-0 &middot; <b>PMID</b> 42686745 &middot; <b>PMCID</b> PMC13538358. UC San Diego, with the Foundation for Applied Molecular Evolution and Scripps. <b>Read:</b> the paper, in full, at PubMed Central, under CC&nbsp;BY 4.0 &mdash; including the methods, which is where the <em>in vitro</em> point above comes from. <b>Not read:</b> the UC San Diego release, or Hoshika <em>et al.</em> 2019. <b>Wire:</b> ScienceDaily, 4 September 2026.</p>
+      </article>
+
+      <article class="wire-item" id="insects-0911" style="--e-accent: var(--cyan);" aria-labelledby="insects-0911-title">
+        <p class="meta">
+          <span class="grade">Plausible</span>
+          <span><i>Published online</i> 2026-09-07</span>
+          <span><i>Journal</i> BioScience</span>
+          <span><i>Read</i> the abstract, at Crossref</span>
+        </p>
+        <p class="lag"><span class="lag-label">Lag 2 d</span><span class="lag-track" aria-hidden="true"><span class="lag-fill" style="width:2%"></span></span></p>
+        <h3 id="insects-0911-title">Most insects live in the tropics; most of what is known about insects does not</h3>
+        <p class="finding">A global team assembled by Shawan Chowdhury at Monash names the gap plainly: insects are declining, they are largely absent from biodiversity conservation measures, and <em>the gap is most severe in the tropics, which harbour over <strong>80%</strong> of insect species</em>. The abstract identifies <strong>four</strong> obstacles &mdash; limited global visibility, a data shortfall, a lack of infrastructure, and insufficient conservation action &mdash; and proposes a framework that integrates diverse data sources, strengthens regional expertise and links evidence to policy, worked through an application in Bangladesh. The point is not that nobody is looking at tropical insects. It is that when they do, the looking does not become <em>visible</em> knowledge: the release reports <strong>111</strong> relevant butterfly studies in Bangladesh with only <strong>34</strong> published in international journals, and Facebook holding records for <strong>167 of 169</strong> threatened Bangladeshi butterfly species.</p>
+        <div class="frame">
+          <b>The star stuff frame</b>
+          This is the <a href="collection-how-we-got-here.html">How We Got Here</a> motive without a chain attached: a body of knowledge that measures the surface, badly, and then acts as though the measurement were the world. A conservation map drawn from where the data happen to have been collected is a map of collectors, not of insects &mdash; and the missing eighty per cent are not missing because nobody knew them but because the people who knew them were not counted as knowing. Local expertise, museum drawers and a Facebook group are proposed here as <em>data infrastructure</em>, which is a quietly radical sentence about whose observation counts as observation.
+        </div>
+        <div class="caveat">
+          <b>A framework paper is a proposal, and the striking numbers are the release&rsquo;s</b>
+          <strong>This is not a finding.</strong> It is an expert synthesis proposing a strategy, and every such paper is an argument about priorities as much as a description of a shortfall &mdash; the grade reflects that as much as the unread full text. <strong>Only two figures above are the paper&rsquo;s own:</strong> the <em>over 80%</em> of insect species in the tropics, and the four named obstacles, both in the abstract we read. <em>Everything else &mdash; 111 and 34 studies, 167 of 169 species, the 26% of GBIF insect records from the United Kingdom, the 14&ndash;30 million estimate of insect species, the 20% of diversity in temperate regions &mdash; comes from the Monash release and is marked as such rather than carried as the paper&rsquo;s.</em> Several of them appear to belong to a 2023 companion paper in <em>One Earth</em> that the release also cites, and we have opened neither. A digest that cannot say which paper a number is from has not traced that number.
+        </div>
+        <div class="placement">
+          <b>Where it goes</b>
+          Epistemic injustice is well worked here already &mdash; grep finds the phrase on <a href="five-microns-zine.html">No.&nbsp;39</a>, <a href="five-sigma-zine.html">No.&nbsp;40</a>, <a href="beyond-the-optical-image-zine.html">No.&nbsp;60</a>, <a href="the-light-arrived-before-the-name-zine.html">No.&nbsp;62</a>, <a href="both-arcs-one-drop-zine.html">No.&nbsp;70</a> and <a href="six-principles-and-a-room.html">Six Principles and a Room</a>. <em>We have not re-read those six, so treat the overlap as unchecked rather than absent.</em> What looks unspent is the specific move: not <em>who gets believed</em> but <em>whose looking is infrastructure</em>. That is a real distinction and it would need a better source than an unread framework paper before anyone builds on it.
+        </div>
+        <p class="cite"><b>Chowdhury, S., Jahan, S. F., Akite, P., Benedetti, Y., Bonebrake, T. C., Freitas, A. V. L., Hossain, M. M., Ladle, R. J., Morelli, F., Stork, N. E. &amp; Kunte, K.</b> &ldquo;A framework for the strategic conservation of tropical insects.&rdquo; <em>BioScience</em>, published online 7 September 2026. <b>DOI</b> 10.1093/biosci/biag136. CC&nbsp;BY 4.0 per the Crossref licence record. <b>Read:</b> the paper&rsquo;s abstract, as deposited by the publisher at Crossref. <b>Not read:</b> the paper &mdash; <span class="mono">academic.oup.com</span> was refused at the network layer, and there is no PubMed Central copy &mdash; nor the Monash release beyond a summary of it, nor the 2023 <em>One Earth</em> companion (DOI 10.1016/j.oneear.2023.08.025). <b>Not the paper&rsquo;s own:</b> every number in the finding above except the 80% and the four obstacles. <b>Wire:</b> ScienceDaily, 9 September 2026.</p>
+      </article>
+
+      <article class="wire-item" id="jurassic-0911" style="--e-accent: var(--violet);" aria-labelledby="jurassic-0911-title">
+        <p class="meta">
+          <span class="grade verified">Verified</span>
+          <span><i>Published online</i> 2026-08-25</span>
+          <span><i>Journal</i> PNAS</span>
+          <span><i>Read</i> the paper, in full</span>
+        </p>
+        <p class="lag"><span class="lag-label">Lag 14 d</span><span class="lag-track" aria-hidden="true"><span class="lag-fill" style="width:7%"></span></span></p>
+        <h3 id="jurassic-0911-title">Nine species in one Jurassic forest, and no two of them sang at the same pitch</h3>
+        <p class="finding">Insect wings fossilise, and so do the ridged files and scrapers they sing with. Working from <strong>20 fossils of nine species</strong> &mdash; seven Prophalangopsidae and two Haglidae &mdash; all from the Jiulongshan Formation at Daohugou in Inner Mongolia, and all from one place and time (the paper gives ~165 million years, the assemblage 157&ndash;165), this group combined phylogenetics, laser Doppler vibrometry on living relatives, numerical simulation and a machine-learning model of syllable rate to reconstruct what the assemblage sounded like. Two results. The songs were <strong>pure tones</strong>, which the authors read as an adaptation to avoid being located by eavesdropping predators. And the assemblage showed, in the paper&rsquo;s words, <em>rich diversity in their calling song frequencies and repertoires</em>, produced by differences in file morphology and wing size. One species called <strong>above 20&nbsp;kHz</strong> &mdash; ultrasound, roughly 110 million years before bats appear in the Eocene, which the paper dates at about 55&nbsp;Ma.</p>
+        <div class="frame">
+          <b>The star stuff frame</b>
+          A soundscape is not one sound. Nine species sharing a forest solved the same problem &mdash; be heard by the right listener, not by the wrong one &mdash; and arrived at nine answers, because a frequency that nobody else is using is worth more than a frequency that works well. <em>The variation is not incidental to the system; it is the mechanism.</em> Species recognition here is a difference-detection problem, and the diversity of the chorus is what makes any single voice legible. This site keeps arriving at that from the human end, and here it is in the Middle Jurassic, in a paper with no interest whatever in the argument.
+        </div>
+        <div class="caveat">
+          <b>Reconstruction, not recording &mdash; and they are not katydids</b>
+          Nothing here was heard. Every call is <em>modelled</em>, from wing geometry plus measurements on living relatives plus a phylogenetic prior, and the temporal pattern &mdash; the cadence &mdash; comes from a machine-learning model fitted on body size and Jurassic temperature estimates. The authors are explicit that the calls are inferred; a listener should hold the pitches more firmly than the rhythms. <strong>And the coverage&rsquo;s word is wrong, gently.</strong> <em>Science News</em> calls these &ldquo;katydid ancestors.&rdquo; The paper says katydids (Tettigoniidae) <em>are not known in the fossil record before the Cenozoic</em>, and that molecular data put the family&rsquo;s origin in the Late Cretaceous; the fossils here are Prophalangopsidae and Haglidae, whose nearest living relatives are the grigs. They are relatives of katydids&rsquo; ancestors, which is not the same claim and is the kind of compression that later gets quoted as a fact. <em>We checked the ultrasound-versus-bats interval ourselves rather than repeating the coverage&rsquo;s &ldquo;about 100 million years&rdquo;:</em> 165 minus the paper&rsquo;s own ~55&nbsp;Ma for bats is about 110.
+        </div>
+        <div class="placement">
+          <b>Where it goes</b>
+          Unspent, checked by grep: no page here contains <em>stridulation</em>, <em>katydid</em> or <em>soundscape</em>. This is the strongest <a href="collection-more-than-human.html">More Than Human</a> material to come through this scan in three editions, and the reason is that the umwelt argument is <em>in the evidence</em> rather than applied to it &mdash; the frequencies differ because the listeners differ. See the seed below.
+        </div>
+        <p class="cite"><b>Gu, J.-J., Montealegre-Z, F., Jonsson, T., Woodrow, C., Celiker, E., Islam, M. N., Linde, J. B., Sarria-S, F. A., Shi, F., Song, H., Robert, D. &amp; Ren, D.</b> &ldquo;Reconstruction of an extinct soundscape reveals ultrasonic communication in the Jurassic.&rdquo; <em>PNAS</em> <strong>123</strong>(36), published online 25 August 2026, issue of 8 September 2026. <b>DOI</b> 10.1073/pnas.2615107123 &middot; <b>PMID</b> 42640818 &middot; <b>PMCID</b> PMC13552889. <b>Read:</b> the paper, in full, at PubMed Central, under CC&nbsp;BY 4.0. <b>Not read:</b> the supplementary appendix, or the audio reconstruction the paper supplies as Movie S4 and Audio S1 &mdash; <em>so this entry has not heard the soundscape it is describing</em>, which is worth saying out loud. <em>PNAS</em>&rsquo;s own article page returned a <span class="mono">403</span>. <b>Wire:</b> <em>Science News</em>, 8 September 2026; phys.org carried the same paper in late August, which we could not open.</p>
+      </article>
+
+      <article class="wire-item" id="deceleration-0911" style="--e-accent: var(--pink);" aria-labelledby="deceleration-0911-title">
+        <p class="meta">
+          <span class="grade contested">Contested</span>
+          <span><i>Published online</i> 2026-06-11</span>
+          <span><i>Journal</i> MNRAS</span>
+          <span><i>Read</i> the authors&rsquo; preprint, in full</span>
+        </p>
+        <p class="lag"><span class="lag-label">Lag 88 d</span><span class="lag-track" aria-hidden="true"><span class="lag-fill" style="width:47%"></span></span></p>
+        <h3 id="deceleration-0911-title">Two papers, one journal volume, opposite conclusions about whether the universe is accelerating</h3>
+        <p class="finding">The acceleration of cosmic expansion is measured from Type Ia supernovae, which are treated as standard candles. A known worry is that they are not quite standard: their brightness may drift with the <em>age</em> of the stellar population that produced them, and older populations sit at higher redshift. Sah, Rameez and Sarkar apply a redshift-dependent correction for progenitor age to the <strong>Pantheon+</strong> catalogue &mdash; 1,701 supernovae, of which they cut 31 above redshift 0.8 &mdash; and report that this shifts the monopole component of the deceleration parameter <em>q</em><sub>0</sub> to positive values, meaning deceleration, while leaving a strong local dipole aligned with the bulk flow essentially unchanged. <strong>In the same volume of the same journal</strong>, Wiseman, Popovic, Sullivan, Riess, Scolnic, Chen, Davis and Galbany publish &ldquo;Still accelerating: type Ia supernova cosmology is robust to host galaxy age evolution.&rdquo; The two papers went online a day apart.</p>
+        <div class="frame">
+          <b>The star stuff frame</b>
+          Filed for the shape rather than the answer, and the shape is one this site trusts: a correction to the <em>instrument</em> proposed as an explanation for the result. Whether or not it survives, the argument is an argument about what a standard candle is standard <em>against</em> &mdash; and the honest position, which both sides hold, is that the measurement depends on a model of the thing measuring. That is not a weakness in cosmology; it is cosmology doing its job in public, with two papers in one volume and the disagreement printed rather than smoothed.
+        </div>
+        <div class="caveat">
+          <b>Why contested, and why the ScienceDaily headline is not the story</b>
+          <strong>&ldquo;Dark energy debunked?&rdquo; is a headline about one half of a standoff.</strong> This is a live, specialist disagreement between two teams &mdash; the second of which includes Adam Riess, who shared the Nobel Prize for the original acceleration measurement &mdash; published side by side, and a digest that reported only the first would be selecting for the surprising one. The grade is <span class="mono">contested</span> in the plainest sense the key allows. <strong>Two things we checked rather than assumed.</strong> The summary&rsquo;s figure of &ldquo;1,700+ supernovae&rdquo; is not an inflation: the paper itself says 1,701 SNe Ia in Pantheon+, and we had drafted a correction claiming those were light curves before reading the paper and deleting it. And the <em>tilted observer</em> framing, which circulated with this story, does not appear in this paper; it belongs to the authors&rsquo; earlier work and to other coverage, and is not attributed to this result here. <strong>What we have not done</strong> is read the Wiseman paper at all, beyond its title and author list at Crossref &mdash; so this entry can report that a disagreement exists and cannot referee it, and does not try.
+        </div>
+        <div class="placement">
+          <b>Where it goes</b>
+          Nowhere as a zine, and there is a specific reason to say so rather than leave it. <a href="flying-free.html">Flying Free</a>, the first <a href="collection-glimmers.html">Glimmers</a> entry, is about the Roman Space Telescope launch, and one of the things Roman is built to measure is dark energy by Type Ia supernovae &mdash; that entry already carries an honest reading of the phrase, noting that NASA itself calls it the name astronomers gave to a mysterious something. <em>That page is now the right place for a link, not a new piece</em>, and the link should wait until the disagreement resolves or is shown not to.
+        </div>
+        <p class="cite"><b>Sah, A., Rameez, M. &amp; Sarkar, S.</b> &ldquo;Pantheon+ supernovae corrected for progenitor age indicate the universe is decelerating.&rdquo; <em>Monthly Notices of the Royal Astronomical Society</em> <strong>549</strong>, 1&ndash;6, published online 11 June 2026. <b>DOI</b> 10.1093/mnras/stag844. TIFR Mumbai and Oxford. Accepted 30 April 2026; received in original form 16 March 2026. <b>The other side:</b> <b>Wiseman, P., Popovic, B., Sullivan, M., Riess, A. G., Scolnic, D., Chen, R. C., Davis, T. M. &amp; Galbany, L.</b> &ldquo;Still accelerating: type Ia supernova cosmology is robust to host galaxy age evolution.&rdquo; <em>MNRAS</em> <strong>549</strong>, published online 10 June 2026, DOI 10.1093/mnras/stag797 &mdash; <b>not read</b>. <b>Read:</b> the first paper in full as <b>arXiv:2606.09650</b>, posted 8 June 2026, the authors&rsquo; own text. <b>Not read:</b> the version of record &mdash; <span class="mono">academic.oup.com</span> refused &mdash; which is why this is not graded verified even though the text was read end to end. <b>A Crossref oddity, left rather than tidied:</b> this record gives a print date of 3 June 2026 and an online date of 11 June, in that order. We used the later, online date, which makes the lag a floor. <b>Wire:</b> ScienceDaily, 7 September 2026.</p>
+      </article>
+
+      <article class="wire-item" id="sweeps-0911" style="--e-accent: var(--green);" aria-labelledby="sweeps-0911-title">
+        <p class="meta">
+          <span class="grade verified">Verified</span>
+          <span><i>Published online</i> 2026-05-06</span>
+          <span><i>Journal</i> Nature</span>
+          <span><i>Read</i> the paper, in full</span>
+        </p>
+        <p class="lag"><span class="lag-label">Lag 123 d</span><span class="lag-track" aria-hidden="true"><span class="lag-fill" style="width:66%"></span></span></p>
+        <h3 id="sweeps-0911-title">A gut bacterium with one name turns out to be several populations living different lives</h3>
+        <p class="finding">A species name in the gut microbiome behaves like an average nobody is. This group shows that <strong>genome-wide selective sweeps</strong> &mdash; one clone out-competing the rest in its niche, then rediversifying &mdash; are a pervasive mechanism sorting gut bacteria into distinct populations, in <strong>at least 66 taxa from 25 bacterial families</strong>. The resulting structure, in the paper&rsquo;s phrase, is &ldquo;akin to global epidemics across geographically and ethnically diverse human populations,&rdquo; and the estimated divergence ages suggest sweep clusters <em>can spread globally within decades</em>. The clusters are ecologically real, not just phylogenetic bookkeeping: tested against five host phenotypes &mdash; colorectal cancer, Crohn&rsquo;s disease, ulcerative colitis, type 2 diabetes and age over 65 &mdash; they associate differentially, some positively and some negatively. One <em>Bacteroides uniformis</em> cluster is shared between the Baka and Beti in Cameroon and the Matses in Peru, communities that have never been in contact; the paper reads this as a chain of transmission through less isolated populations, and offers two alternatives for why it is absent elsewhere.</p>
+        <div class="frame">
+          <b>The star stuff frame</b>
+          Two things, and the first is the one that carries. <strong>The taxonomic name was hiding the variation.</strong> What looked like one species doing one job is several populations that have each been selected into a different way of living &mdash; a spiky profile at the level of the genome, inside an organism we had been treating as a unit. Calling the whole thing by one name did not make it one thing; it made the differences invisible, which is the failure mode this site is organised around. And the second: <em>a microbiome is partly received</em>. Some of what is in you arrived from someone else, and the paper traces one lineage between two communities on different continents who never met. Interdependence at the resolution of a genome, and no version of it that is about individual virtue.
+        </div>
+        <div class="caveat">
+          <b>The word <em>contagious</em> is not in this paper</b>
+          The ScienceDaily headline is <em>Your Gut Microbiome May Be More Contagious Than Scientists Thought.</em> <strong>The word <span class="mono">contagious</span> does not occur once in the paper</strong> &mdash; we searched the full text; <em>transmission</em> occurs nine times, and the transmission claim is a single, carefully hedged inference about one <em>B.&nbsp;uniformis</em> cluster in three communities. The paper is about <em>adaptation and population structure</em>; the epidemic language is a simile for the shape of the phylogeny, not a claim about catching a microbiome from a housemate. A different 2026 paper does study strain sharing between cohabitants, and we did not open it. <strong>Two smaller things.</strong> The disease associations are <em>associations</em>, offered as evidence of ecological differentiation rather than of causation; the paper&rsquo;s own suggestion is that sweep clusters may serve as markers, which is a diagnostic claim and not a therapeutic one. And the release says four health conditions where the paper tests <strong>five</strong> phenotypes &mdash; the abstract collapses Crohn&rsquo;s and ulcerative colitis into <em>inflammatory bowel diseases</em>, and the analysis does not.
+        </div>
+        <div class="placement">
+          <b>Where it goes</b>
+          Half spent, half not. <em>You contain trillions of microbes and they are part of you</em> is held by <a href="you-were-never-one-thing-zine.html">No.&nbsp;7</a>, which prints the 38 trillion to 30 trillion figure, and by the <a href="symbioses-field-guide.html">Symbioses</a> entry <em>The Collective You Carry</em>. Unspent: that a bacterial <em>species</em> is not a unit either, and that the name is what made its populations look alike. That is a <em>there is no standard member</em> argument arriving one taxonomic level below where this site usually finds it, and it is the better half of the paper.
+        </div>
+        <p class="cite"><b>Yu, X. A., Strachan, C. R., Herbold, C. W., Lang, M., Gasche, C., Makristathis, A., Segata, N., Pollak, S., Tett, A. &amp; Polz, M. F.</b> &ldquo;Genome-wide sweeps create ecological units in the human gut microbiome.&rdquo; <em>Nature</em> <strong>655</strong>(8121), 202&ndash;209, published online 6 May 2026, issue of 2 July 2026. <b>DOI</b> 10.1038/s41586-026-10476-w &middot; <b>PMID</b> 42092154 &middot; <b>PMCID</b> PMC13322978. University of Vienna, with the University of Veterinary Medicine Vienna and others. <b>Read:</b> the paper, in full, at PubMed Central, under CC&nbsp;BY 4.0. <b>Not read:</b> the Vienna release, or the cohabitation paper mentioned above. <b>The lag axis undercounts this badly:</b> the work was public as a bioRxiv preprint on <strong>26 May 2024</strong>, DOI 10.1101/2024.05.25.595854, under the title &ldquo;Genome-wide sweeps create <em>fundamental</em> ecological units in the human gut microbiome&rdquo; &mdash; <strong>834 days</strong> before the wire carried it here, against the 123 we print. That is the largest gap this page has recorded, ahead of the 753 days on last edition&rsquo;s bats paper. <b>Wire:</b> ScienceDaily, 6 September 2026.</p>
+      </article>
+
+      <article class="wire-item" id="atlas-0911" style="--e-accent: var(--cyan);" aria-labelledby="atlas-0911-title">
+        <p class="meta">
+          <span class="grade">Plausible</span>
+          <span><i>Published online</i> 2026-03-06</span>
+          <span><i>Journal</i> Astrophys. J. Lett.</span>
+          <span><i>Read</i> the authors&rsquo; preprint, in full</span>
+        </p>
+        <p class="lag"><span class="lag-label">Lag 187 d</span><span class="lag-track" aria-hidden="true"><span class="lag-fill" style="width:100%"></span></span></p>
+        <h3 id="atlas-0911-title">A comet from another system, carrying a chemistry ours mostly does not</h3>
+        <p class="finding">3I/ATLAS is the third confirmed interstellar object to pass through the solar system. Using ALMA&rsquo;s Atacama Compact Array on five dates in late 2025, this group detected methanol (CH<sub>3</sub>OH) and hydrogen cyanide (HCN) in its coma, across pre-perihelion distances of <strong>2.6 to 1.7 astronomical units</strong>. The two molecules behaved differently: HCN production was depleted on the sunward side of the coma, while methanol was <em>enhanced</em> in that direction, and methanol production rose sharply from August to October with an uptick near the inner edge of the water sublimation zone. The headline number is a ratio, and it is a ratio: CH<sub>3</sub>OH/HCN of <strong>124 (+30/&minus;34)</strong> and <strong>79 (+11/&minus;14)</strong> on 12 and 15 September 2025 &mdash; among the most enriched values measured in any comet, and in the authors&rsquo; own words <em>surpassed only by</em> one comet of ours, the anomalous C/2016&nbsp;R2 (Pan-STARRS).</p>
+        <div class="frame">
+          <b>The star stuff frame</b>
+          The atoms are the same atoms. What differs is the <em>proportions</em>, and the proportions are a record of the conditions the ice formed or was processed in &mdash; a different disc, a different star, a different temperature history. So an object from another system is not made of anything exotic; it is made of what we are made of, arranged by a different history. And it is not even off our chart: one comet born here sits further out on the same axis. <em>The range is wider than the origin.</em> That is a better sentence about difference than most things written about difference, and nobody wrote it about people.
+        </div>
+        <div class="caveat">
+          <b>A ratio is not an amount, and the headline is six months old</b>
+          <strong>&ldquo;70 times more methanol than any comet from our Sun,&rdquo; which circulated with this story, is wrong twice.</strong> The numbers are ratios of methanol to hydrogen cyanide, not multiples of any comet&rsquo;s methanol; and the paper says explicitly that one solar-system comet exceeds them. The ScienceDaily framing &mdash; <em>bursting with methanol</em>, more than almost all known comets &mdash; is defensible; the multiplier version is not. <strong>The paper also declines a tidier claim than the coverage gives it.</strong> Statistical analysis put some methanol production in extended coma sources beyond 258&nbsp;km at 99% confidence, but low signal-to-noise on the long baselines <em>prevented definitively ruling out</em> methanol as a pure parent species &mdash; so where the methanol comes from is open, and the paper says so. <strong>And this is not this week&rsquo;s news.</strong> It was published on 6 March 2026 and covered then; a feed carried it to us on 9 September as though it were new. The lag bar at the bottom of this list is that, and it is the longest the axis has measured.
+        </div>
+        <div class="placement">
+          <b>Where it goes</b>
+          Unspent as a subject, checked by grep: no page here says <em>methanol</em>, and none says <em>&lsquo;Oumuamua</em>, <em>Borisov</em> or <em>3I/ATLAS</em>. (<em>Interstellar</em> appears on eight pages, <a href="the-cloud-phase-zine.html">The Cloud Phase</a> and <a href="bodies-of-water-zine.html">Bodies of Water</a> among them; we have not re-read them, so the overlap is unchecked rather than absent.) <strong>It should not be built on this entry.</strong> A piece about an interstellar visitor&rsquo;s chemistry needs the version of record and needs the comparison comet handled properly, and the frame above is doing more work than a preprint abstract can carry alone.
+        </div>
+        <p class="cite"><b>Roth, N. X., Cordiner, M. A., Bockel&eacute;e-Morvan, D., Biver, N., Crovisier, J., Milam, S. N., Lellouch, E., Santos-Sanz, P., Lis, D. C., Qi, C., Foster, K. D., Boissier, J., Furuya, K., Moreno, R., Charnley, S. B., Remijan, A. J., Kuan, Y.-J. &amp; Hart, L. X.</b> &ldquo;CH<sub>3</sub>OH and HCN in Interstellar Comet 3I/ATLAS Mapped with the ALMA Atacama Compact Array: Distinct Outgassing Behaviors and a Remarkably High CH<sub>3</sub>OH/HCN Production Rate Ratio.&rdquo; <em>The Astrophysical Journal Letters</em> <strong>999</strong>(2), L32, published online 6 March 2026. <b>DOI</b> 10.3847/2041-8213/ae433b. <b>Read:</b> the published abstract, as deposited by the publisher at Crossref; and the authors&rsquo; preprint <em>in full</em> &mdash; <b>arXiv:2511.20845</b>, v1 posted 25 November 2025, v2 revised 2 March 2026, four days before journal publication. <b>Not read:</b> the version of record &mdash; <span class="mono">iopscience.iop.org</span> was refused at the network layer and <span class="mono">doi.org</span> returned a <span class="mono">403</span> &mdash; nor the NRAO or ALMA releases. <b>Not graded verified</b> for that reason. <b>And the lag axis undercounts here too:</b> public as a preprint <strong>288 days</strong> before the wire, against the 187 printed. <b>Wire:</b> ScienceDaily, 9 September 2026.</p>
+      </article>
+
+    </div>
+  </div>
+
+  <div class="section-block" role="region" style="--sec-accent: var(--dim);" aria-labelledby="held-items-0911">
+    <h2 class="section" id="held-items-0911">Held</h2>
+    <div class="section-rule" aria-hidden="true"></div>
+    <p class="section-intro">Five this week. The first is the one that earns the section outright, because it is not a story we declined for being thin &mdash; it is <strong>an error this page corrected last week, still circulating on the wire we scan</strong>. The second is a four-year-old paper arriving as a discovery. Nothing here was invented to fill the section, and nothing that was looked at and declined has been quietly omitted.</p>
+
+    <div class="held">
+      <div class="held-item">
+        <p class="why">Held &mdash; already filed, and the coverage still carries the figure we corrected</p>
+        <h3 id="held-bats-0911">More than 500 vesper bat species have two antibody gene sets</h3>
+        <p>We filed the immunoglobulin duplication paper on <a href="glimmer-wire-2026-09-04.html#bats-0904">4 September</a>, read it in full, graded it verified, and corrected exactly one figure: the widely repeated <em>more than 500 vesper bat species</em>. The paper measures <strong>26 species</strong> with duplicated heavy-chain loci and confirms both loci functional in <strong>one</strong>, the big brown bat; it calls Vespertilionidae the largest bat family and gives that family <em>no</em> number at all, printing only &ldquo;over 1500 known species of bats&rdquo; for the whole order. The release that surfaced on this week&rsquo;s scan still says more than 500 species of vesper bats. Held, obviously, because it is already filed &mdash; but recorded here because <strong>a correction that lives only on our page is a correction that has not happened</strong>, and because this is what the gap between a paper and its coverage looks like when you watch the same item twice. <em>Where the release is right:</em> its per-locus gene counts check out &mdash; we went back to the paper, and A-IGH does encode 33 IGHV genes against B-IGH&rsquo;s 99. The error is the species number, not the reporting in general, and saying so is part of naming it fairly.</p>
+      </div>
+      <div class="held-item">
+        <p class="why">Held &mdash; a 2022 paper presented as this week&rsquo;s discovery, plus a supplement pitch and mice</p>
+        <h3 id="held-plasmalogen-0911">Stanford scientists discover a seafood that can reverse signs of aging</h3>
+        <p>Sea squirts are rich in plasmalogens, a class of membrane lipid that declines with age; supplemented aged mice did better on learning and memory tests, with reduced neuroinflammation. Declined three times over. <strong>The paper is from 2022.</strong> Gu <em>et al.</em>, <em>Frontiers in Molecular Biosciences</em> <strong>9</strong>, published online <strong>23 February 2022</strong>, DOI 10.3389/fmolb.2022.815320 &mdash; confirmed at Crossref, which is the only part of this item we traced. The wire carried it on 2 September 2026, <strong>1,652 days later</strong>, with a headline in the present perfect. <strong>The attribution is also off:</strong> the author list is led from Shanghai Jiao Tong University, with one Stanford co-author, so <em>Stanford scientists discover</em> misplaces both the verb and the institution. <strong>And the framing is the trap this collection names</strong> &mdash; a mouse supplement result, written as a seafood you could go and buy. A finding does not become false by being four years old. It becomes a different kind of claim when it is presented as news, and we are not passing that on.</p>
+      </div>
+      <div class="held-item">
+        <p class="why">Held &mdash; a profile of a research programme, not a finding of the week</p>
+        <h3 id="held-chickadee-0911">Winter work shows it really pays to be a smart mountain chickadee</h3>
+        <p>Mountain chickadees cache tens of thousands of seeds and recover them by spatial memory through a Sierra winter; a long-running programme at Nevada, Reno has tracked how that ability varies and what it costs and buys. The <em>Science News</em> piece of 9 September is a feature about that programme, and the headline result it rests on &mdash; birds with better spatial cognition living longer &mdash; is a <em>Science</em> paper from <strong>2024</strong>, which we did not open. So there is no paper of the week here to file. <strong>It is held on a second ground too, and that one is editorial.</strong> The available framing is <em>smarter birds do better</em>, which is a fine description of one selection pressure in one environment and reads, transplanted, as exactly the merit argument this collection refuses. The interesting version is the opposite: variation in spatial cognition <em>persists</em> in these populations despite that pressure, which is a question about what else the variation is buying. That would need the primary literature and a lot more care, and it is a better piece than the one on offer.</p>
+      </div>
+      <div class="held-item">
+        <p class="why">Held &mdash; two papers under one headline, neither openable</p>
+        <h3 id="held-radialglia-0911">The hidden instructions that build the human brain</h3>
+        <p>Radial glia are the stem cells that build the human cerebral cortex, and two UCLA-led papers reported this week describe what steers them: a metabolic route through the pentose phosphate pathway, where restricting glucose shifts which cell types get made, and physical contact with incoming thalamic signals, which alters the production of upper-layer neurons. This is squarely on-frame &mdash; <em>development and timing</em>, cortical cell-type composition set by conditions rather than by a plan. It is held because <strong>the coverage folds two separate papers, in <em>Cell</em> and in <em>Science</em>, into a single headline</strong>, and a digest that cannot tell you which finding belongs to which paper has not traced either. Both publishers refused, and the UCLA newsroom was refused at the network layer as well, so we could not separate them. Carried here as the most promising thing we could not open, and a first candidate for next week.</p>
+      </div>
+      <div class="held-item">
+        <p class="why">Held &mdash; observational associations converted into personal advice</p>
+        <h3 id="held-observational-0911">Semaglutide and psychiatric outcomes, early statins and dementia, blood tyrosine and male lifespan</h3>
+        <p>Three items from the same week&rsquo;s mind-and-brain feed, held together because they share one failure and it is not a failure of the underlying work. Each is a large observational study &mdash; a Swedish cohort of about 15,000 people with bipolar disorder, a Danish cohort of more than 132,000 with type 2 diabetes, a genetic-and-observational analysis of more than 270,000 &mdash; and each reaches the reader as a percentage attached to a decision they might make. <strong>None of the three named its journal in what we could reach</strong>, so the sourcing floor is a summary, and that alone holds them. But the editorial reason is the one worth writing down: a hazard ratio drawn from who happened to be prescribed what is a fact about a health system, and printing it as a number a person can act on moves a question about access and prescribing into an individual&rsquo;s morning routine. That is the same conversion this collection declined on the sitting-and-cancer item two editions ago, and declining it twice is the point of keeping the list.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-block" role="region" style="--sec-accent: var(--violet);" aria-labelledby="seedbed-0911">
+    <h2 class="section" id="seedbed-0911">Seedbed</h2>
+    <div class="section-rule" aria-hidden="true"></div>
+    <p class="section-intro">Two seeds, both from items read in full, which is the first time this has been true of every seed on the page. Plus the leads nobody opened.</p>
+
+    <div class="seeds">
+
+      <div class="seed" style="--s-accent: var(--violet);">
+        <p class="seed-kind">Zine &middot; More Than Human</p>
+        <h3 id="seed-chorus-0911">Nine ways to be heard in one forest</h3>
+        <p>The strongest thing to come through this scan in three editions, and it can be built from a single paper that has been read end to end. Nine species in one Middle Jurassic forest, each singing at its own frequency, the pitches set by file morphology and wing size, the tones kept pure so that predators could not locate them &mdash; and one of the nine already up in the ultrasound, a hundred and ten million years before the bats that would eventually listen there. <strong>The argument is that the diversity is the mechanism, not a by-product of it:</strong> a call only identifies a species if the other calls are different, so difference is what makes any individual voice legible. The reading a zine would have to earn, and could: the same is true of us, and it is the reason a norm is a worse tool than a range. <em>What is missing before this is a piece:</em> the supplementary material and the authors&rsquo; own audio reconstruction, neither of which we have opened &mdash; and a piece about a soundscape that has not heard the soundscape would be writing about a diagram.</p>
+        <p class="src">From the <em>PNAS</em> paper filed above, read in full at PubMed Central. <b>Not obtained:</b> SI Appendix, Movie S4, Audio S1.</p>
+      </div>
+
+      <div class="seed" style="--s-accent: var(--green);">
+        <p class="seed-kind">Field guide entry &middot; or a spread</p>
+        <h3 id="seed-name-0911">There is no standard member of a species</h3>
+        <p>This site&rsquo;s field guides keep arriving at <em>there is no standard star, nest, egg, shark, rainbow, bird, way to rest</em>. The gut-sweeps paper puts the same claim one level lower, where it is stranger: a bacterial <strong>species name</strong> covers several populations that have been selected into different ways of living, in at least 66 taxa across 25 families &mdash; and the name is what made them look alike. <strong>The transferable point is about naming rather than about bacteria.</strong> A taxon is a claim that a set of things are the same kind of thing, and the finding is that the claim was hiding the structure it was supposed to describe. <em>What holds this at seed:</em> one paper, however well read, is one paper, and the argument needs a second case from a different kingdom before it is a pattern rather than a good line. <em>It also needs the existing count re-derived rather than quoted</em> &mdash; last edition put the guides arriving at that formula at fifteen, and the standing lesson in our own working notes is that every such figure is a lead and not a fact.</p>
+        <p class="src">From the <em>Nature</em> paper filed above, read in full at PubMed Central, plus <span class="mono">you-were-never-one-thing-zine.html</span> and <span class="mono">symbioses-field-guide.html</span>, read in the repository. <b>Not obtained:</b> a second case.</p>
+      </div>
+
+      <div class="seed" style="--s-accent: var(--cyan);">
+        <p class="seed-kind">Leads &middot; unchecked</p>
+        <h3 id="seed-leads-0911">Four off this week&rsquo;s wires</h3>
+        <p>Newly reported Denisovan fossils from a Chinese cave site. Morning glories reported to have lost adaptive capacity over nine years under climate change and pollinator scarcity, which is the inverse of the usual evolution-is-fast story and would need handling with care. Engineered bacterial circuits at MIT, described as living transistors. And a survey of several hundred astrobiologists in which only <strong>6.6%</strong> found the K2-18b biosignature claim convincing &mdash; which is an <em>epistemics</em> item rather than a discovery, and possibly the most useful of the four: a field publishing its own distribution of belief instead of its loudest member.</p>
+        <p class="src">All four off ScienceDaily and <em>Science News</em> listings, 4&ndash;9 September 2026, and <b>none of them opened</b> &mdash; no journal, authors, date or DOI obtained for any. The 6.6% is a summary&rsquo;s figure and is not confirmed against the survey. Listed so that next week starts from somewhere. Last edition&rsquo;s three leads were not chased either, and are not carried forward here; they are still in <a href="glimmer-wire-2026-09-04.html#seed-leads-0904">that edition</a>.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="section-block" role="region" style="--sec-accent: var(--pink);" aria-labelledby="refusals-0911">
+    <h2 class="section" id="refusals-0911">Not</h2>
+    <div class="section-rule" aria-hidden="true"></div>
+    <div class="refusals">
+      <p><strong>Not a citation.</strong> Three papers here were read in full and a fourth as its preprint, which is the best this page has managed &mdash; and it changes nothing about the standing rule. Nothing filed here may be promoted to a zine, a <a href="collection-glimmers.html">Glimmers</a> entry or a card without the primary source in hand, a <a href="changelog.html">changelog</a> entry and its row in the fact-check ledger. For the three items resting on abstracts, lifting a figure out and printing it elsewhere would be laundering a deposit into a fact.</p>
+      <p><strong>Not a superpower.</strong> Twenty-six bat species, nine Jurassic singers, several populations inside one bacterial name: these are facts about <em>architecture and range</em>, never about merit. The chickadee item is held partly because its available framing runs the other way, and better spatial memory buying a longer life in one Sierra winter is a description of a pressure, not a ranking of birds.</p>
+      <p><strong>Not a cure list.</strong> The sea-squirt item is held for going that way, and the three observational items with it. A mouse, a supplement and a percentage are three different things, and a headline that joins them is selling something.</p>
+      <p><strong>Not anti-science.</strong> The cosmology item files a live disagreement between two teams and does not referee it; the complaint is about a headline that reported half a standoff. If a draft off this digest starts reading as a case against evidence, or against the people making measurements this careful, it has gone wrong.</p>
+      <p><strong>Not &ldquo;science says you are valid.&rdquo;</strong> A finding that makes disbelieved people credible also makes them revocable. The belonging claim was never waiting on a result, and it does not move when one fails to replicate &mdash; or when two papers in one journal volume disagree about the universe.</p>
+      <p><strong>Not <em>because of</em>.</strong> A comet from another star carrying the same atoms in different proportions is a rhyme, not a proof. The universe declining to pathologize its own variation is why the phrase carries &mdash; <em>down to your star stuff</em> measures how far the loving reaches, never why it is owed.</p>
+    </div>
+  </div>
+
+  </div><!-- /edition 2026-09-11 -->
+
+  <div class="colophon-footer">
+    <a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks Foundation</a> &times; <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a> &middot; Glimmer Wire &middot; L&#9733;S<br>
+    Edition Three of the weekly scan &middot; published 11 September 2026<br>
+    Every edition is kept on its own page &middot; nothing deleted, the Held list included<br>
+    A working scan, not a finding &middot; off the reading chain, on purpose<br>
+    <a href="collection-glimmer-wire.html">All editions</a> &middot; <a href="collection-glimmers.html">Glimmers</a> &middot; <a href="changelog.html">Changelog</a> &middot; <a href="too-good-to-check.html">Too Good to Check</a><br>
+    stimpunks.org &middot; morerealms.com &middot; starstuff.earth &middot; <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
+  </div>
+
+</div><!-- /doc-shell --></main>
+
+</body>
+</html>
