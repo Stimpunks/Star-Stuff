@@ -32,6 +32,30 @@ New piece Revised Fact-check Site
 
 2026 · September 12
 
+## A catalogue of missing names, including the two stories we had to correct against ourselves
+
+Field Guide No. 25 joins [Field Guides](https://starstuff.earth/collection-field-guides.html), which now holds twenty-four. It sorts eleven pieces of work not by how famous the person was but by *how the name came off* — and two of its entries exist to correct the popular telling in the direction that costs the argument something.
+
+NewA Field Guide to Missing Names — Field Guide No. 25, 11 entries
+
+**“She was not given credit” is not one event.** [The guide](https://starstuff.earth/missing-names-field-guide.html) argues it is at least five mechanisms, that they leave different evidence, and that they need different things done about them. **The work split and only one half counted** — Lise Meitner supplied the physical interpretation of a chemical result, and the prize was in chemistry; Chien-Shiung Wu ran the experiment that decided a prediction, and the prize was for the prediction. **Credit ran uphill by default**, with nobody deciding anything: a simultaneous discovery attributed to the better-known of two people, and a laboratory’s work attributed to whoever runs the laboratory. **The material moved and the name stayed behind** — Marthe Gautier’s slides, lent to a lab that had a camera; Alice Ball’s method, republished under someone else’s name after she died at twenty-four. **The story dropped a name the document carries.** And **the correction arrived, decades late.**
+
+**Why the sort is the finding.** By discipline you get physics, genetics and chemistry, which tells you nothing. By how badly wronged, the guide is being asked to award damages. The mechanism is the useful sort, because a reader who can tell an authorship rule from a stolen slide from a degraded retelling can see it happening rather than reading about it afterwards — and because *no single rule guards against all five*. You cannot fix a default with a policy about theft.
+
+Fact-checkTwo entries that correct the story against our own argument
+
+**Jocelyn Bell is on the paper.** Second of five, *Nature* 217, 709–713. The claim that she was left off it circulates constantly, it is false, and it is checkable in ten seconds — so anyone hostile to the subject can knock it over in one line and take the genuine complaint down with it. The card puts that in its first row rather than quietly omitting it. **Sharpening a true grievance with a false detail is the same offence as the grievance.**
+
+**And Hedy Lamarr did not invent Wi-Fi.** This is the most repeated story in the genre and it does not survive the patent record. Frequency hopping has prior art in Tesla’s patent applied for in 1901 and in Zenneck’s 1908 book, which notes Telefunken had already tried it; Ellison Purington filed a year before she did. BLADES, the first frequency-hopping system actually deployed, cites neither her nor Antheil — nor does the field’s first textbook across nearly two thousand references. And 802.11 Wi-Fi does not generally use frequency hopping at all. **What is true is quieter and still worth saying:** the patent is real, it is US 2,292,387, and it is filed under *Hedy Kiesler Markey* — a name she is not known by, which makes the document itself a missing name. A props culture that overclaims is not a props culture.
+
+**Three cards carry no reframe table**, following the rule [FG 10](https://starstuff.earth/turtle-field-guide.html) set and [FG 18](https://starstuff.earth/unfinished-animals-field-guide.html) followed. Henrietta Lacks is one: tissue taken without consent in 1951 is not an attribution dispute, and describing it as one proposes a remedy — add her name to the papers — that addresses none of the injury. Her card’s diagram is the only one in the guide built out of no name-slots at all. Ada Lovelace is another, because the historiography is genuinely contested in both directions and the flattering reading is the tempting one. And the third is the survivorship problem: every case here was recovered by somebody doing the work of recovering it, so eleven is not a sample.
+
+RevisedField Guides — counts re-derived, and a stale figure in our own notes
+
+The collection now reads **twenty-four guides, 308 entries, 332 cards**. Derived rather than incremented, by two independent routes that agree: 318 cards plus this guide’s 14 is 332, and 21 withheld cards plus its 3 is 24, so 332 − 24 = 308 — which also equals the old 297 plus 11. **The internal working notes turned out to be the stale copy**, carrying a withheld-card figure of 19 when the collection page’s own colophon had the correct 21. That is the usual direction of this rot reversed: the reader-facing page was right and the maintenance file was wrong, because nobody reads the maintenance file for pleasure.
+
+2026 · September 12
+
 ## The primary source contradicted the zine we set out to write, so we wrote the one it supports
 
 Zine No. 109 joins [Young Readers](https://starstuff.earth/collection-young-readers.html), which now holds fourteen. It is a read-aloud about who gets named — and two things it was going to say were cut, both because the discoverer’s own account says otherwise.
