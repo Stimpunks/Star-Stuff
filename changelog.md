@@ -60,6 +60,22 @@ Fact-checkThe finding that prompted this zine is deliberately absent from it —
 
 2026 · September 12 · latest
 
+## One number was doing two jobs, so it came apart three times — twice at our own hands
+
+The [Young Readers](https://starstuff.earth/collection-young-readers.html) page has a line saying how many of its pieces hand the child something to do. It has been wrong, in one direction or another, since before either of this week’s zines. The figure is now **eight of the twelve**, and the eight are named on the page so it cannot drift again.
+
+Fact-check“Something to do” and “a demonstration” are different sets, and one number was counting both
+
+**The page said *seven of the ten* for weeks.** Adding Zine No. 105 on 12 September, we could not reconstruct that seven from the page’s own named sets, re-derived it as *six of the eleven*, and shipped that. Adding No. 106 hours later we carried it to *seven of the twelve*. Both of those were ours and both were wrong.
+
+**The cause is not carelessness, and it is worth naming because it will happen again elsewhere.** Two different sets were being described by one number. *Something to do* is wider than *a demonstration*: [No. 102](https://starstuff.earth/it-stays-green-and-then-it-goes-zine.html) has no demonstration — you cannot do a whole autumn on a table — and it still hands a child a method to carry out, which is to mark one leaf and look at it every day. It belongs in one set and not the other. The two lists differ by exactly that piece, and a count that does not say which set it means has nowhere to stand.
+
+**The original seven does reconstruct, and only on a reading the page argues against.** It works if [No. 95](https://starstuff.earth/bone-song-read-aloud-zine.html) is counted — and that zine’s “push on the bone, the bone answers” is the one case the page keeps deliberately on the far side of the line, because the same zine says the current is “not enough to feel.” So the figure and the boundary paragraph beneath it could never both have been right. That inconsistency predates this week; our two corrections inherited the ambiguity rather than the error.
+
+**What changed, beyond the number.** The eight are now **written out by name** rather than counted, the paragraph says out loud why the two sets differ, and the list below it now reads “no *demonstration*” rather than implying the same four pieces hand the child nothing. No gate can see a number written out in a sentence — this site’s oldest standing lesson, and the reason the fix is to name members rather than to correct a digit.
+
+2026 · September 12
+
 ## Sixty-four words, twenty beads — and the promise No. 105 made on its own face, kept
 
 Zine No. 106 joins [Young Readers](https://starstuff.earth/collection-young-readers.html), which now holds twelve. Yesterday’s zine said in its grown-up layer that the genetic code “is not in this zine at all.” This is that promise being kept, and it goes somewhere the first one could not.
