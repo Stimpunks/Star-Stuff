@@ -82,7 +82,7 @@ Fact-checkA lead we published as unread, now read — and what the zine declines
 
 **What it refuses.** No position on whether non-coding DNA has function — that argument is live, the onion comparison comes out of it, and the zine needs only that raw length is the wrong ruler. No swap to *recipe*, which keeps a dish somebody is working towards. And **no argument about people anywhere in the child’s layer**: every measurement is about a plant, a worm and a gene count, because a fact about an onion licenses nothing about anybody.
 
-**The half that is missing is deliberate, and it is the better piece.** How a qualifier falls off between a 1944 founding text and an ordinary sentence about a child is a chain with graded joints, and it belongs in [How We Got Here](https://starstuff.earth/collection-how-we-got-here.html) rather than in a read-aloud. It is planned. One refusal points at it: a plan is the kind of thing that can have a mistake in it, and that is what made the word useful to people who wanted to search a human being for the error.
+**The half that is missing is deliberate, and it is the better piece.** How a qualifier falls off between a 1944 founding text and an ordinary sentence about a child is a chain with graded joints, and it belongs in [How We Got Here](https://starstuff.earth/collection-how-we-got-here.html) rather than in a read-aloud. It is planned. One refusal points at it: **a plan is the kind of thing that can have a mistake in it**, and that is what made the word useful to people who wanted to search a human being for the error.
 
 2026 · September 12
 
@@ -96,7 +96,7 @@ Fact-checkOne blocked route is not unreachable
 
 **The PDF has a text layer.** Fetched from Europe PMC, the fifteen pages come out as searchable text — imperfect OCR, but plainly legible — and the result the zine would have used is two lines of it: *“the addition of 10 µg of polyuridylic acid per ml of reaction mixture resulted in a remarkable stimulation of C&sup1;⁴-L-phenylalanine incorporation… no other polynucleotide tested could replace polyuridylic acid.”* A tube of nothing but one letter, producing a chain of nothing but one bead.
 
-**The failure is not the blocked route, it is stopping at it.** Our own working notes name Europe PMC as one of the metadata-and-full-text routes to try when a publisher or a repository refuses, and that note was written after a previous paper hunt. It was not applied. “We could not read it” is a claim about the world, and it needs the same standard as any other claim on these pages — which is that you try the routes you already know about before writing it down.
+**The failure is not the blocked route, it is stopping at it.** Our own working notes name Europe PMC as one of the metadata-and-full-text routes to try when a publisher or a repository refuses, and that note was written after a previous paper hunt. It was not applied. **“We could not read it” is a claim about the world, and it needs the same standard as any other claim on these pages** — which is that you try the routes you already know about before writing it down.
 
 **The spread stays cut, and now for an honest reason.** Twelve spreads is the right length for that zine and its argument does not need the history — so it is cut by choice rather than by a wall that was never there. The colophon now says so, quotes the result, and records that we got this wrong.
 
@@ -114,7 +114,7 @@ Fact-check“Something to do” and “a demonstration” are different sets, an
 
 **The original seven does reconstruct, and only on a reading the page argues against.** It works if [No. 95](https://starstuff.earth/bone-song-read-aloud-zine.html) is counted — and that zine’s “push on the bone, the bone answers” is the one case the page keeps deliberately on the far side of the line, because the same zine says the current is “not enough to feel.” So the figure and the boundary paragraph beneath it could never both have been right. That inconsistency predates this week; our two corrections inherited the ambiguity rather than the error.
 
-**What changed, beyond the number.** The eight are now **written out by name** rather than counted, the paragraph says out loud why the two sets differ, and the list below it now reads “no *demonstration*” rather than implying the same four pieces hand the child nothing. No gate can see a number written out in a sentence — this site’s oldest standing lesson, and the reason the fix is to name members rather than to correct a digit.
+**What changed, beyond the number.** The eight are now **written out by name** rather than counted, the paragraph says out loud why the two sets differ, and the list below it now reads “no *demonstration*” rather than implying the same four pieces hand the child nothing. **No gate can see a number written out in a sentence** — this site’s oldest standing lesson, and the reason the fix is to name members rather than to correct a digit.
 
 2026 · September 12
 
