@@ -60,6 +60,32 @@ Fact-checkThe finding that prompted this zine is deliberately absent from it —
 
 2026 · September 12 · latest
 
+## The man who coined the genetic code wrote the correction four lines later. It took the rest of us eighty years
+
+Zine No. 108 joins [How We Got Here](https://starstuff.earth/collection-how-we-got-here.html) as its seventeenth chain: twelve links, nine documented, two contested, one leap. It is the adult companion to yesterday’s read-aloud, and it goes all the way to 2025.
+
+NewToo Narrow — Zine No. 108, a chain in twelve links
+
+**In 1944 Erwin Schrödinger proposed that a chromosome carries a *code-script*.** That sentence went round the world and is still going. [This chain](https://starstuff.earth/too-narrow-zine.html) is about the one immediately after it: “But the term code-script is, of course, too narrow. The chromosome structures are at the same time instrumental in bringing about the development they foreshadow. They are law-code and executive power — or, to use another simile, they are architect’s plan and builder’s craft — in one.”
+
+**Not a plan that something else carries out — the plan and the carrying out, the same object.** He did not have to be argued into it; he wrote it in the same breath, on the same page. And Watson, Crick and Wilkins all credited that book, with Crick writing to him in August 1953 to say so. *The qualifier was not lost in transit. It was on the page the carriers were reading.*
+
+**The chain’s account of why it fell off anyway is the opposite of a conspiracy.** One half became testable within a decade and the other did not. Base pairing gave a copying mechanism, then the code itself, then tables and prizes and a three-billion-dollar project. How a sequence becomes a body gave almost nothing measurable for fifty years. **A qualifier survives only if something can be done with it.** The Modern Synthesis duly filed development as an “incidental blackbox”, *blueprint* became the ordinary word, and in June 2000 the genome was announced from the White House as “our own instruction book, previously known only to God”.
+
+**Then the prediction failed twice, on evidence from inside.** A gene count estimated at up to 100,000 came in near 20,000. An onion turned out to carry five times more DNA than a person, and onions vary among themselves more than they differ from us. In 2010 a Royal Society review declared the metaphor “not only woefully inadequate but positively misleading” and proposed *developmental encoding* instead — which is Schrödinger’s sentence, reached again from the other end, sixty-six years later.
+
+Fact-checkOne leap, marked and then declined — and a joint graded contested because we could not source it
+
+**The last three links go where this house lives, and the fairness in them is structural rather than decorative.** In 2018 the retired metaphor was the title of Robert Plomin’s *Blueprint*. The objection the chain quotes is Kathryn Paige Harden’s, *a working behaviour geneticist* — “Insisting that DNA matters is scientifically accurate; insisting that it is the only thing that matters is scientifically outlandish” — chosen precisely so the chain cannot be read as an argument against heritability, which it is not. The spread also records that others defend the book as misread, and that we do not adjudicate.
+
+**Link 11 is the one we are inside, and it is deliberately not a villain story.** Spectrum 10K opened in August 2021 to collect DNA from ten thousand Autistic people, was paused within weeks after our objections, consulted on for years, and closed in 2025 with Wellcome’s support. Proposed, objected to, consulted on, ended — **that sequence is the thing working, not failing.** The chain asks only why the objection had to be that loud.
+
+**And the last link is a leap we refuse to cross.** The tempting sentence is *the blueprint metaphor caused the gene-hunts*. We cannot show that. Did the picture make the search thinkable, or did people who wanted to search reach for a picture that suited them? Both fit every fact in the chain. What the zine will say without hedging is narrower: the picture is **wrong** — on the gene count, on the onion, on the 2010 review, and on the testimony of the man who coined it.
+
+**Two things declared rather than hidden.** Link 5 is graded *contested* because **we could not source a first use of “genetic blueprint”** — a grade given for our own sourcing failure rather than a live dispute, which the spread says outright while asking readers to correct it. And Plomin’s book was **not read**; its thesis and the responses to it come from reviews and reference summaries, which is the weakest sourcing in the zine and is labelled as such on the page.
+
+2026 · September 12
+
 ## An onion has five times more DNA than you do, so whatever it is, it is not a plan of anybody
 
 Zine No. 107 joins [Young Readers](https://starstuff.earth/collection-young-readers.html), which now holds thirteen, and closes a three-part arc: No. 105 gave the alphabet, No. 106 the code that reads it, and this one asks what the whole thing is. It exists to pay a debt — No. 106 cited a paper as a lead it had not read, and this zine read it.
