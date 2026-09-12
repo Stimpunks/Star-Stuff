@@ -30,7 +30,35 @@ The working guidelines and the full per-piece ledger live in [FACTCHECK.md](http
 
 New piece Revised Fact-check Site
 
-2026 · September 11 · latest
+2026 · September 12 · latest
+
+## Four letters, and the half of the 1953 paper nobody quotes — plus the finding that prompted this zine and is not in it
+
+Zine No. 105 joins [Young Readers](https://starstuff.earth/collection-young-readers.html), which now holds eleven. It is a read-aloud about the genetic alphabet, a subject this site had never touched: before this week no page here contained *base pair*, *adenine*, *guanine* or *genetic alphabet*.
+
+NewThe Same Four Letters — Zine No. 105, read-aloud, ages 4–8
+
+**Everybody quotes one half of the Watson and Crick paper.** [The zine](https://starstuff.earth/the-same-four-letters-zine.html) is built on the other half. The famous half is the constraint: “These pairs are: adenine (purine) with thymine (pyrimidine), and guanine (purine) with cytosine (pyrimidine)” — fixed, and fixed by size, since one of any pair has to be the larger ring and the other the smaller. A few lines later, in the same paper, comes the sentence this piece turns on: *“The sequence of bases on a single chain does not appear to be restricted in any way.”*
+
+**Every constraint in the system runs across the two strands, and none runs along one.** The pairing is fixed; the order is free, for everything alive, and always was. That is not a gap somebody will tidy up later — it is the property that lets DNA carry information at all, because a sequence permitted only one arrangement could carry none. The alphabet is shared. The sentence is not.
+
+**The demonstration hands a child the paper’s closing inference.** Paper and a pencil: write a row of A, T, G and C in any order, write each letter’s partner underneath, cover the top row, put it back. It comes back exactly, and it could not have come back any other way — which is what the authors meant by “It has not escaped our notice that the specific pairing we have postulated immediately suggests a possible copying mechanism for the genetic material.” It is the first demonstration in this collection where the child performs a piece of reasoning rather than observing an effect.
+
+**And the exception lives in a pond rather than a laboratory.** Cyanophage S-2L swaps *every* adenine in its genome for 2-aminoadenine — reported in *Nature* in **1977**, and not explained until 2021. A virus is not a cellular organism, so “everything alive uses the same four” survives, barely; the zine hands that caveat to the reader on its own spread rather than ruling for the convenient answer.
+
+Fact-checkThe finding that prompted this zine is deliberately absent from it — on our own wire’s advice
+
+**This piece started somewhere else entirely.** Last week’s [Glimmer Wire](https://starstuff.earth/glimmer-wire-2026-09-11.html) graded a September 2026 result in which an ordinary bacterial enzyme transcribed a *synthetic* eight-letter alphabet as readily as the natural four. Ryan read it and asked for a Young Readers primer on the genetic alphabet.
+
+**The wire’s own filing note said not to build a zine on it** — that the argument needs the biology to stay in the test tube, and a zine would want it out. That judgement was followed rather than argued with. The synthetic alphabet appears nowhere in the finished piece. A read-aloud ending on *scientists made new letters* sits one small mishearing away from *scientists made new creatures*, and the 1977 pond virus carries the same *four is a habit, not a law* claim without ever leaving the water.
+
+**One source is declared unread on the page itself.** Kirnos, Khudyakov, Alexandrushkina and Vanyushin (*Nature* 270, 1977) is behind an authentication redirect; the substitution and its completeness are taken from the 2021 literature citing it, read at full text, and marked as such on the spread and in the colophon rather than carried as the 1977 paper’s. **And one number is deliberately not quoted at all**: the 2021 papers disagree about how many Z-genome phages are now known, and an unreconciled figure is worse than none.
+
+**The Franklin acknowledgement is quoted in full and left uncommented.** Watson and Crick recorded being “stimulated by a knowledge of the general nature of the unpublished experimental results and ideas of Dr. M. H. F. Wilkins, Dr. R. E. Franklin and their co-workers at King’s College, London.” How thin that sentence is, is the point, so the grown-up layer reproduces it exactly rather than characterising it. The child layer names nobody.
+
+**Two claims the zine refuses to make, both named on its own refusals spread.** The pond virus is an exception in chemistry and is *not* an argument about people — reading it as one is the naturalistic fallacy with a nice feeling attached. And the piece declines the obvious ending, *nobody else has your order*: it is not quite true for identical twins, and worth that rests on being rare is worth that somebody similar can take away.
+
+2026 · September 11
 
 ## A read-aloud about the Goldilocks Zone — and a correction, from the reader who proposed it, that made the zine better
 

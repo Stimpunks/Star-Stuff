@@ -2,7 +2,7 @@
 title: "Young Readers"
 url: "https://starstuff.earth/collection-young-readers.html"
 updated: "2026-09-11"
-description: "The read-aloud collection: Star Stuff pieces written for children of about four to eight, and for whoever is reading to them. Sorted by audience — the sixth axis on this site and the first collection defined by who a piece is for rather than what kind of argument it makes. Every member carries two layers on every spread: large plain-language type for the child, and a boxed grown-up layer holding the species names, the figures, the papers and the places the evidence runs out, so a caregiver can answer “is that really true?” without leaving the page. The sourcing standard does not relax for the audience: same nine gates, same fact-check ledger row, same grading of every claim, same refusals — aimed at the adult. Ten pieces: pace, waiting, perception, bone, camouflage, airflow, flight, hearing, change and niche."
+description: "The read-aloud collection: Star Stuff pieces written for children of about four to eight, and for whoever is reading to them. Sorted by audience — the sixth axis on this site and the first collection defined by who a piece is for rather than what kind of argument it makes. Every member carries two layers on every spread: large plain-language type for the child, and a boxed grown-up layer holding the species names, the figures, the papers and the places the evidence runs out, so a caregiver can answer “is that really true?” without leaving the page. The sourcing standard does not relax for the audience: same nine gates, same fact-check ledger row, same grading of every claim, same refusals — aimed at the adult. Eleven pieces: pace, waiting, perception, bone, camouflage, airflow, flight, hearing, change and niche."
 licence: "CC-BY-SA-4.0"
 licence_url: "https://creativecommons.org/licenses/by-sa/4.0/"
 fact_check: "https://github.com/Stimpunks/Star-Stuff/blob/main/FACTCHECK.md"
@@ -13,7 +13,7 @@ Stimpunks Foundation × More Realms
 
 # *Young Readers*
 
-A Star Stuff collection · 10 pieces · started 6 September 2026
+A Star Stuff collection · 11 pieces · started 6 September 2026
 
 Star Stuff you can have read to you. Real animals, real plants, real measurements — in words you can hold.
 
@@ -25,9 +25,9 @@ They are about real things — a pond, a seed, a flower — and everything in th
 
 You are allowed to ask that about anything.
 
-## Ten so far
+## Eleven so far
 
-One about how **fast** things grow up. One about **waiting**. One about **seeing**. One about the bone in your own arm. One about an animal that **matches a colour it cannot see**. One about a nose that **breathes out sideways**. One about a seed that flies on **the parts that are not there**. One about a bird whose two ears **disagree about up and down**. One about what a leaf **really does in autumn**, which is not what anybody thinks. And one about the **warm band around a star**, and who it is just right for. Most of them have something to try; the note below says which, and why three of them deliberately have nothing.
+One about how **fast** things grow up. One about **waiting**. One about **seeing**. One about the bone in your own arm. One about an animal that **matches a colour it cannot see**. One about a nose that **breathes out sideways**. One about a seed that flies on **the parts that are not there**. One about a bird whose two ears **disagree about up and down**. One about what a leaf **really does in autumn**, which is not what anybody thinks. One about the **warm band around a star**, and who it is just right for. And one about the **four letters that everything alive is written with**, and the one thing about them nobody checks. Most of them have something to try; the note below says which, and why four of them deliberately have nothing.
 
 ### [Nobody in This Pond Is Late](https://starstuff.earth/nobody-in-this-pond-is-late-zine.html)
 
@@ -149,6 +149,18 @@ The fairy tale says one bowl is right and two are wrong. Earth is 1.4 per cent o
 
 **The science borrowed the fairy tale’s name and then said nearly the opposite of it.** Kopparapu and colleagues put the conservative limits for our own system at 0.99 and 1.70 astronomical units, and draw the consequence in their own abstract: this suggests “the present Earth lies near the inner edge”. So Earth sits about 1.4 per cent of the way across a band 0.71 wide — not the just-right bowl, but the one that only just fits. And we did not arrive there by moving. The young Sun was roughly a third dimmer than it is now, and a dimmer star holds a smaller, closer band; scaling those limits by the square root of luminosity puts Earth about 13 per cent across the band two billion years ago and 23 per cent four billion years ago. The planet stayed exactly where it was. The edge came to it. **Then the zine goes somewhere else to show the band is not a fact about distance at all.** TRAPPIST-1e completes a year in 6.1 days at 0.02925 astronomical units, because its star is small and cool and keeps its warm band tucked in close — more than thirty times nearer in than ours, and nothing has gone wrong there. Every star gets its own band, computed from its own output, and astronomers have never once called a dim star defective for having a close one. Which is the turn the whole piece is built to reach. A band of conditions in which a living thing can persist is its *niche*, in Hutchinson’s 1957 sense; a tulip bulb needs twelve to sixteen weeks of proper cold or the flower never leaves the bulb, and that is not fussiness but a location. There is no standard band, so “just right” is never just right on its own — it is always just right *for somebody*, and you have to say who. **The answer is therefore not one room set more kindly**, but a place with a cave and a campfire and a watering hole in it, which is a Cavendish Space and the first time this collection has named one. Spread eight carries the correction that made the zine: proximity to the inner edge does *not* mean carbon dioxide can push us over it — Goldblatt and Watson are explicit that it cannot — but the headroom does shrink as the Sun brightens, and the band a human world needs is nested inside the planet’s and far thinner. Thirteen spreads, four figures, six refusals for the adult.
 
+### [The Same Four Letters](https://starstuff.earth/the-same-four-letters-zine.html)
+
+Zine No. 105 · Stimpunks Zines · read-aloud, ages 4–8
+
+*A read-aloud about the four letters that everything alive is written with, and the one thing about them nobody checks — with something you can try, and every source kept on the page for the grown-up.*
+
+Watson and Crick fixed the pairs in 1953 and, four sentences later, recorded that the order along a strand is not restricted in any way. The alphabet is shared. The sentence is not.
+
+**Details**
+
+**One paper carries most of this, and it is carrying two findings rather than the famous one.** The first is the constraint everybody knows: *“These pairs are: adenine (purine) with thymine (pyrimidine), and guanine (purine) with cytosine (pyrimidine)”* — fixed, and fixed by size, since one of any pair must be the larger purine and the other the smaller pyrimidine. The second sits a few lines later in the same 1953 paper and is the one this zine is built on: *“The sequence of bases on a single chain does not appear to be restricted in any way.”* Every constraint in the system runs across the two strands and none runs along one. That is not a gap somebody will close later; it is the property that lets DNA carry information at all, since a sequence permitted only one arrangement could carry none. **The demonstration has a child perform the paper’s closing inference.** Write a row of letters, write its partner row beneath, cover the first row, put it back — and it comes back exactly, because it never could have come back otherwise. That is what Watson and Crick meant by the sentence they ended on: the specific pairing *“immediately suggests a possible copying mechanism for the genetic material.”* **Then the zine goes to a pond rather than a laboratory, and that is a deliberate refusal.** This piece began from a September 2026 result in which an ordinary bacterial enzyme transcribed a synthetic eight-letter alphabet as readily as the natural four — and that finding is nowhere in it, because our own weekly scan had graded it and said the argument needs the biology to stay in the test tube. The wild exception does the same work and never leaves the water. Cyanophage S-2L substitutes 2-aminoadenine for adenine throughout its genome, reported in *Nature* in **1977** and not explained until 2021 — and a virus is not a cellular organism, so the universality claim survives, which the grown-up layer says rather than letting the child layer overclaim. Twelve spreads, four figures, five refusals for the adult, including a refusal of the genetic-verdict frame and a refusal of worth built on rarity.
+
 For the grown-ups — how this collection works
 
 ## What holds these together
@@ -183,13 +195,15 @@ It happened on the first piece, was fixed, and recurred on the next two within a
 
 ## Sometimes there is something to do
 
-Seven of the ten pieces hand the child something to *do*, and they do it in **three different ways**. This was not planned. It is a form that turned up in finished work, which is the only kind of convention this site names.
+Six of the eleven pieces hand the child something to *do*, and they do it in **three different ways**. This was not planned. It is a form that turned up in finished work, which is the only kind of convention this site names.
 
 **A prop.** One line, inside the flow of the reading, using a thing already in the room. [No. 94](https://starstuff.earth/the-colours-you-cannot-see-zine.html) says *“Hold up something red”* — and then explains that a bee is not getting the red at all. The object is not the experiment; it is what makes an *absence* concrete, which is otherwise very hard to picture.
 
 **A thought experiment.** No props at all, and the child’s own mind supplies the result. [No. 96](https://starstuff.earth/the-cuttlefish-that-cannot-see-colour-zine.html): *“If I showed you a grey photograph of grass, what colour would you make it?”* Green — and you were right, and you never saw any green. The child performs the finding on themselves before the animal is mentioned again.
 
 **A demonstration.** A physical before-and-after with a household object, given room to breathe. [No. 99](https://starstuff.earth/the-dog-breathes-out-sideways-zine.html) is the first: blow at a feather and it goes; put it back, blow *past* it, and it wobbles and stays. That is the whole finding — exhaled air scatters a scent or stirs it — at kitchen scale. [No. 100](https://starstuff.earth/almost-all-of-it-is-holes-zine.html) is the second and it obeys the same two-spread rule: drop a paper circle the width of your thumbnail, then drop a dandelion seed, and watch the difference in *how* they come down. **It also shows where the fourth rule bites.** The obvious version of that demonstration — the solid one falls faster — is *false*, and it took reading the paper to find out: a solid disc of the same width has more drag, and being twenty times heavier it lands first anyway. The observable, correct difference is steadiness. A demonstration has to be the mechanism, and finding out which half of it is the mechanism is work that happens in the primary source, not at the table. [No. 101](https://starstuff.earth/one-ear-higher-than-the-other-zine.html) is the third and the most reliable of them, because it needs *nothing*: shut your eyes, have somebody clap, point — then cover one ear with a hand and do it again. It is also the closest any of these has come to the published experiment itself, since covering one ear is exactly the manipulation Knudsen and Konishi ran on the owl, and the grown-up box quotes their result beside the child’s.
+
+**And the fourth demonstration is the odd one, because what it demonstrates is not an effect.** [No. 105](https://starstuff.earth/the-same-four-letters-zine.html) needs paper and a pencil: write a row of A, T, G and C in any order, write each letter’s partner underneath, cover the top row, and put it back. It comes back exactly, and it could not have come back any other way. The child is not observing a result — they are performing an inference, and specifically the one Watson and Crick recorded in the last sentence of the 1953 paper, that the specific pairing *“immediately suggests a possible copying mechanism for the genetic material.”* It still obeys all four rules below, and it is worth marking as its own case: a demonstration can carry a piece of reasoning rather than a piece of physics, and this is the first here that does.
 
 **Four rules, and they all come from that fourth one working.** A demonstration lives in the *read-aloud layer*, never the grown-up box, for the same reason the figures do: a child following the large type has to reach it. It uses what a household already has — a feather, a tissue, a dandelion — because *a demonstration that needs a kit is a demonstration that will not happen*. It gets **two spreads if it has a before and an after**, which No. 99 does: one spread for the problem, one for the solution, the same feather in both. On a single spread it would have been an illustration. And it has to **be** the mechanism rather than decorate it — the test is whether a child who does it and gets the result has observed the actual finding, scaled down. A craft that produces a dog-shaped thing has not.
 
@@ -205,7 +219,7 @@ Where an argument about people is actually wanted, it is linked rather than borr
 
 ## How this collection opened, and at what count
 
-At **three members** (ten now), on a form observed in finished work — which clears the two-member floor rather than arguing around it. That matters because the floor has been broken three times on this site, each time with a written reason, and this collection did not need to.
+At **three members** (eleven now), on a form observed in finished work — which clears the two-member floor rather than arguing around it. That matters because the floor has been broken three times on this site, each time with a written reason, and this collection did not need to.
 
 The first read-aloud shipped on its own with the collection question deliberately deferred: reading level, unlike cadence, *can* be observed retroactively, so waiting cost nothing. Two more arrived the same day, and the form was then a thing that had happened rather than a thing hoped for.
 
