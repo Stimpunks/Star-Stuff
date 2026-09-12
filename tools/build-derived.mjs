@@ -329,8 +329,11 @@ function buildHtml() {
 <meta name="theme-color" content="#0a0a14">
 <link rel="canonical" href="${SITE}whats-new.html">
 <link rel="alternate" type="application/rss+xml" title="Star Stuff — What's New" href="feed.xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- No font <link> and no preconnect: all four families are self-hosted in fonts/
+     and declared once in starstuff.css (2026-09-09). This template kept the Google
+     Fonts links through that sweep because a GENERATED page reverts rather than
+     conflicts, so the sweep's edit was overwritten on the next build and this was
+     the last page on the site still contacting Google. Do not restore them. -->
 <meta name="description" content="${xesc(DESC)}">
 <!-- Open Graph / link unfurl -->
 <meta property="og:type" content="website">
@@ -347,7 +350,6 @@ function buildHtml() {
 <meta name="twitter:description" content="${xesc(DESC)}">
 <meta name="twitter:image" content="${SITE}og-card.jpg">
 <title>What's New — Star Stuff — Stimpunks × More Realms</title>
-<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="starstuff.css">
 <style>
   :root {

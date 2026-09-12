@@ -30,7 +30,7 @@ The working guidelines and the full per-piece ledger live in [FACTCHECK.md](http
 
 New piece Revised Fact-check Site
 
-2026 · September 12 · latest
+2026 · September 12
 
 ## Four letters, and the half of the 1953 paper nobody quotes — plus the finding that prompted this zine and is not in it
 
@@ -57,6 +57,22 @@ Fact-checkThe finding that prompted this zine is deliberately absent from it —
 **The Franklin acknowledgement is quoted in full and left uncommented.** Watson and Crick recorded being “stimulated by a knowledge of the general nature of the unpublished experimental results and ideas of Dr. M. H. F. Wilkins, Dr. R. E. Franklin and their co-workers at King’s College, London.” How thin that sentence is, is the point, so the grown-up layer reproduces it exactly rather than characterising it. The child layer names nobody.
 
 **Two claims the zine refuses to make, both named on its own refusals spread.** The pond virus is an exception in chemistry and is *not* an argument about people — reading it as one is the naturalistic fallacy with a nice feeling attached. And the piece declines the obvious ending, *nobody else has your order*: it is not quite true for identical twins, and worth that rests on being rare is worth that somebody similar can take away.
+
+2026 · September 12 · latest
+
+## We said no page here contacts Google for fonts. One still did, and it was the one no sweep could reach
+
+On 9 September the four typeface families were self-hosted and every font `<link>` and preconnect was removed site-wide. [Our privacy page](https://starstuff.earth/privacy.html) has said so since. It was true of 200 pages and false of one.
+
+Fact-checkwhats-new.html carried two preconnects and a Google Fonts stylesheet for three days
+
+**Anyone who opened What’s New handed their IP address to Google before a word rendered** — exactly the thing the self-hosting pass existed to stop, and exactly the thing the privacy page says no longer happens. The page is otherwise unremarkable; the reason it survived is the interesting part.
+
+**A generated page does not conflict. It reverts.** `whats-new.html` is written from a template inside `tools/build-derived.mjs`, so the 9 September sweep edited the file, and the next routine rebuild quietly wrote the Google links back — with the tool reporting a clean, successful build. *This site already had that failure on record.* The same tool did the same thing to this page’s skip link on 9 September, and the lesson written down then was that a repo-wide sweep owes the template the same edit. The sweep that followed did not pay it.
+
+**Found while reading a diff for something else**, which is the honest account: no gate looks for a third-party font request, and none of the nine can. The two other pages that match a search for those hostnames — this changelog and the privacy page — only *mention* them in prose, which is the difference between a thing and a sentence about the thing, and is why a raw-text search would have called all three guilty.
+
+**The template no longer carries them**, and the lines have been replaced with a comment saying why, so a future copy does not restore them. Verified by loading the rebuilt page and watching the four self-hosted `woff2` files arrive from this site — not by reading the stylesheet, since both families are installed on the machine that builds this and a silent fallback would have looked identical.
 
 2026 · September 11
 

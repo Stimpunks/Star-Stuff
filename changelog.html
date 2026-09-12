@@ -229,7 +229,7 @@
 
   <!-- ================= 2026-09-12 (zine: No. 105, The Same Four Letters) ================= -->
   <section class="release" id="2026-09-12-four-letters" aria-labelledby="h-2026-09-12-four-letters">
-    <div class="release-date">2026 &middot; September 12 &middot; latest</div>
+    <div class="release-date">2026 &middot; September 12</div>
     <h2 class="release-title" id="h-2026-09-12-four-letters">Four letters, and the half of the 1953 paper nobody quotes &mdash; plus the finding that prompted this zine and is not in it</h2>
     <p class="release-note">Zine No. 105 joins <a href="collection-young-readers.html">Young Readers</a>, which now holds eleven. It is a read-aloud about the genetic alphabet, a subject this site had never touched: before this week no page here contained <em>base pair</em>, <em>adenine</em>, <em>guanine</em> or <em>genetic alphabet</em>.</p>
 
@@ -253,6 +253,22 @@
   </section>
 
   <!-- ================= 2026-09-09k (correction: Queering Earth's gate) ================= -->
+  <!-- ================= 2026-09-12b (correction: whats-new.html still called Google) ================= -->
+  <section class="release" id="2026-09-12-fonts" aria-labelledby="h-2026-09-12-fonts">
+    <div class="release-date">2026 &middot; September 12 &middot; latest</div>
+    <h2 class="release-title" id="h-2026-09-12-fonts">We said no page here contacts Google for fonts. One still did, and it was the one no sweep could reach</h2>
+    <p class="release-note">On 9 September the four typeface families were self-hosted and every font <code>&lt;link&gt;</code> and preconnect was removed site-wide. <a href="privacy.html">Our privacy page</a> has said so since. It was true of 200 pages and false of one.</p>
+
+    <div class="entry entry--factcheck">
+      <div class="entry-head"><span class="tag tag--factcheck">Fact-check</span><span class="entry-name">whats-new.html carried two preconnects and a Google Fonts stylesheet for three days</span></div>
+      <div class="entry-body"><p><strong>Anyone who opened What&rsquo;s New handed their IP address to Google before a word rendered</strong> &mdash; exactly the thing the self-hosting pass existed to stop, and exactly the thing the privacy page says no longer happens. The page is otherwise unremarkable; the reason it survived is the interesting part.</p>
+      <p><strong>A generated page does not conflict. It reverts.</strong> <code>whats-new.html</code> is written from a template inside <code>tools/build-derived.mjs</code>, so the 9 September sweep edited the file, and the next routine rebuild quietly wrote the Google links back &mdash; with the tool reporting a clean, successful build. <em>This site already had that failure on record.</em> The same tool did the same thing to this page&rsquo;s skip link on 9 September, and the lesson written down then was that a repo-wide sweep owes the template the same edit. The sweep that followed did not pay it.</p>
+      <p><strong>Found while reading a diff for something else</strong>, which is the honest account: no gate looks for a third-party font request, and none of the nine can. The two other pages that match a search for those hostnames &mdash; this changelog and the privacy page &mdash; only <em>mention</em> them in prose, which is the difference between a thing and a sentence about the thing, and is why a raw-text search would have called all three guilty.</p>
+      <p><strong>The template no longer carries them</strong>, and the lines have been replaced with a comment saying why, so a future copy does not restore them. Verified by loading the rebuilt page and watching the four self-hosted <code>woff2</code> files arrive from this site &mdash; not by reading the stylesheet, since both families are installed on the machine that builds this and a silent fallback would have looked identical.</p></div>
+    </div>
+
+  </section>
+
   <!-- ================= 2026-09-11b (zine: No. 104, Just Right For Whom?) ================= -->
   <section class="release" id="2026-09-11-just-right" aria-labelledby="h-2026-09-11-just-right">
     <div class="release-date">2026 &middot; September 11</div>
