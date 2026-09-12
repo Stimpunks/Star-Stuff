@@ -50,6 +50,14 @@ Fact-checkA paper we could not read, and a figure two sources disagree about
 
 **One link came out before shipping.** A draft linked the repository’s fact-check ledger as a reader-facing document. Nothing on the site links it, it is not in the sitemap, and it is raw markdown with no navigation — making a zine the first public door to a maintenance file is an editorial decision rather than a citation, so the sentence now describes the ledger and links the changelog instead.
 
+Fact-checkUpdate, same day: we got the paper, and it was better than our hedge
+
+**The zine shipped with one source unread and said so; hours later Ryan put the PDF in front of us and spread seven was rewritten from it.** The hedged version is gone and the figures are on the page: **30,054 PLOS papers** across 2017 and 2018; **57 per cent of women contributed to investigation against 49 per cent of men**, with a similar gap for data curation; men **30 per cent likelier** on funding acquisition and supervision.
+
+**And the paper contains a result that argues this zine’s case better than the zine did.** The older, coarser scheme PLOS used had a single category for writing, and under it men appeared to dominate. CRediT splits writing into original draft and review & editing — and the picture inverts: **women are 6 per cent likelier to have written the original draft, men 8 per cent likelier to review and edit it.** The authors call the inversion striking and attribute the earlier finding to how ubiquitous the reviewing half is. So a coarse vocabulary did not merely fail to record something; *it produced a false picture that a finer one corrected* — which is the zine’s whole thesis arriving as a measured result rather than a claim.
+
+**The method’s limit went on the page with the finding**, because the finding rests on it: gender was assigned by algorithm rather than self-report, reaching 82.2 per cent of authorships and reported as 98.3 per cent precise for men and 86.7 per cent for women. A measurement less accurate for the group a finding is about is worth stating out loud. It does not overturn a gap that size; it sets the resolution.
+
 RevisedWhat the zine says about this site, which is not flattering
 
 Spread nine shows our own practice at the point where it is checkable rather than where it looks good, and then names a failure that is real and current: **credit here is well kept for sources and poorly kept for labour.** Every quotation on this site carries its route — read at full text, from secondary accounts, or not read. The person who built a diagram or rewrote a paragraph mostly appears nowhere. That is the same one-field problem the zine is describing, in our own house, only partly fixed. The refusals say so outright, because a piece about attribution that overstated its own would come apart in a single move.
