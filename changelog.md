@@ -32,6 +32,30 @@ New piece Revised Fact-check Site
 
 2026 · September 11 · latest
 
+## A read-aloud about the Goldilocks Zone — and a correction, from the reader who proposed it, that made the zine better
+
+Zine No. 104 joins [Young Readers](https://starstuff.earth/collection-young-readers.html), which now holds ten. The fairy tale says one bowl is right and two are wrong. The science that borrowed its nickname says nearly the opposite, and this piece follows that until it arrives somewhere the collection has never been.
+
+NewJust Right For Whom? — Zine No. 104, read-aloud, ages 4–8
+
+**Earth is not in the middle of its own habitable zone.** [The zine](https://starstuff.earth/just-right-for-whom-zine.html) takes the figures from Kopparapu and colleagues (2013), read at full text: the conservative limits for our system are **0.99 and 1.70 astronomical units**, and the paper draws the consequence in its own abstract — this suggests “the present Earth lies near the inner edge.” Earth sits about **1.4 per cent of the way across a band 0.71 wide**. Not the just-right bowl; the one that only just fits.
+
+**And we did not get there by moving.** The young Sun was roughly a third dimmer, and a dimmer star holds a smaller, closer band. The band has been sliding outwards past a planet that stayed exactly where it was. *Earth did not move. The band did.* Then the zine goes to TRAPPIST-1e, which completes a year in 6.1 days at 0.02925 astronomical units because its star is small and cool — more than thirty times nearer in than ours, and nothing has gone wrong there. Every star gets its own band, computed from its own output, and nobody has ever called a dim star defective for having a close one.
+
+**Which is the turn.** A band of conditions in which a living thing can persist is its *niche*, in Hutchinson’s 1957 sense. A tulip bulb needs twelve to sixteen weeks of proper cold or the flower never leaves the bulb — not fussiness, a location. There is no standard band, so “just right” is never just right on its own: it is always just right *for somebody*, and you have to say who. **The answer is therefore not one room set more kindly but a place with a cave and a campfire and a watering hole in it** — and this is the first piece in the collection to name a [Cavendish Space](https://stimpunks.org/glossary/cavendish-space/), on the last spread, after the argument rather than before it.
+
+Fact-checkThe premise the zine was proposed on was half wrong — and then our correction to it was wrong too
+
+**Ryan proposed this piece with a second claim attached:** that sitting near the inner edge is part of why we are sensitive to carbon dioxide now. Checking it against Goldblatt & Watson (2012), read at full text, produced a clean refutation — *“adding carbon dioxide does not increase the outgoing longwave flux, so it cannot cause a runaway greenhouse”* — and on that basis the climate thread was cut from the outline entirely.
+
+**That was an over-correction, and it is worth naming plainly.** It answered *runaway greenhouse*, which was not the claim being made. Ryan came back with astrophysicist David Kipping’s version: the zone migrates outward as the Sun brightens, so the *headroom* shrinks. That holds. Scaling the 2013 limits by the square root of luminosity puts Earth about **13 per cent across the band two billion years ago against 1.4 per cent now** — the same planet, a ninefold smaller margin. The thread went back in, and the zine is better for it: spread seven carries the mechanism, spread eight carries the distinction and names the misapplication out loud.
+
+**Kipping is credited here as the lead that prompted the re-check and is not cited on the page.** The figures there come from the papers. *A video is a lead, not a citation* — the same rule this site applies to aggregators, applied to a source that happened to be right.
+
+**Everything else, graded on its own face.** The cloud-free hedge is printed verbatim on spread five, because Kopparapu’s own abstract says the boundaries “may extend further in both directions” and cloudy models since have argued the inner edge moves substantially inward. The band positions for two and four billion years ago are **our arithmetic and are labelled as ours on the spread itself**. Gough (1981) and Rushby *et al.* (2013) are marked cited-not-read and read-at-abstract respectively. The tulip figure is extension-service consensus rather than a primary paper, and says so. And caves, campfires and watering holes are credited to **David Thornburg**, with the count stated as **four** — the fourth, *life*, named in the grown-up box rather than quietly dropped.
+
+2026 · September 11
+
 ## Queering Earth introduces itself by naming this site. The front page now names it back
 
 There is a sibling site, built by the same two organizations, working the half of the shelf this one does not. Its front page has been pointing here since it opened on 7 September; ours pointed nowhere. A reader who arrived at this end had no way of knowing the other end existed.

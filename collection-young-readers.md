@@ -2,7 +2,7 @@
 title: "Young Readers"
 url: "https://starstuff.earth/collection-young-readers.html"
 updated: "2026-09-10"
-description: "The read-aloud collection: Star Stuff pieces written for children of about four to eight, and for whoever is reading to them. Sorted by audience — the sixth axis on this site and the first collection defined by who a piece is for rather than what kind of argument it makes. Every member carries two layers on every spread: large plain-language type for the child, and a boxed grown-up layer holding the species names, the figures, the papers and the places the evidence runs out, so a caregiver can answer “is that really true?” without leaving the page. The sourcing standard does not relax for the audience: same nine gates, same fact-check ledger row, same grading of every claim, same refusals — aimed at the adult. Nine pieces: pace, waiting, perception, bone, camouflage, airflow, flight, hearing and change."
+description: "The read-aloud collection: Star Stuff pieces written for children of about four to eight, and for whoever is reading to them. Sorted by audience — the sixth axis on this site and the first collection defined by who a piece is for rather than what kind of argument it makes. Every member carries two layers on every spread: large plain-language type for the child, and a boxed grown-up layer holding the species names, the figures, the papers and the places the evidence runs out, so a caregiver can answer “is that really true?” without leaving the page. The sourcing standard does not relax for the audience: same nine gates, same fact-check ledger row, same grading of every claim, same refusals — aimed at the adult. Ten pieces: pace, waiting, perception, bone, camouflage, airflow, flight, hearing, change and niche."
 licence: "CC-BY-SA-4.0"
 licence_url: "https://creativecommons.org/licenses/by-sa/4.0/"
 fact_check: "https://github.com/Stimpunks/Star-Stuff/blob/main/FACTCHECK.md"
@@ -13,7 +13,7 @@ Stimpunks Foundation × More Realms
 
 # *Young Readers*
 
-A Star Stuff collection · 9 pieces · started 6 September 2026
+A Star Stuff collection · 10 pieces · started 6 September 2026
 
 Star Stuff you can have read to you. Real animals, real plants, real measurements — in words you can hold.
 
@@ -25,9 +25,9 @@ They are about real things — a pond, a seed, a flower — and everything in th
 
 You are allowed to ask that about anything.
 
-## Nine so far
+## Ten so far
 
-One about how **fast** things grow up. One about **waiting**. One about **seeing**. One about the bone in your own arm. One about an animal that **matches a colour it cannot see**. One about a nose that **breathes out sideways**. One about a seed that flies on **the parts that are not there**. One about a bird whose two ears **disagree about up and down**. And one about what a leaf **really does in autumn**, which is not what anybody thinks. Most of them have something to try; the note below says which, and why two of them deliberately have nothing.
+One about how **fast** things grow up. One about **waiting**. One about **seeing**. One about the bone in your own arm. One about an animal that **matches a colour it cannot see**. One about a nose that **breathes out sideways**. One about a seed that flies on **the parts that are not there**. One about a bird whose two ears **disagree about up and down**. One about what a leaf **really does in autumn**, which is not what anybody thinks. And one about the **warm band around a star**, and who it is just right for. Most of them have something to try; the note below says which, and why three of them deliberately have nothing.
 
 ### [Nobody in This Pond Is Late](https://starstuff.earth/nobody-in-this-pond-is-late-zine.html)
 
@@ -137,6 +137,18 @@ Somebody went out to the same marked leaves every morning and every evening, all
 
 **The method is the reason the finding exists.** Mattila and colleagues marked individual leaves on rowan, Norway maple, silver birch and bird cherry and measured chlorophyll in each of them *every morning and every evening for a whole autumn*, with an instrument that reads a leaf without damaging it — so the same leaf could be measured hundreds of times. A method that destroys its sample can only ever compare different leaves to each other. What they found, verbatim: “the chlorophyll content of each individual leaf remained constant until a phase of rapid degradation commenced. The fast phase lasted only ~1 week and ended with abscission.” **And the leaves are not synchronised.** Chlorophyll degradation “started at different times in different *B. pendula* leaves, and the leaves belonging to same branches did not behave similarly” — so a tree turning gradually over weeks is hundreds of fast changes, staggered, and the smooth fade everybody pictures is an artefact of averaging them together. Then two colours that arrive by completely different routes. The yellow carotenoids are in the leaf all summer, doing photosynthetic work. The red anthocyanins are not there at all until the tree builds them, during senescence — Keskitalo and colleagues caught the switch in aspen, where stressed leaves accumulated anthocyanins after the programme began “but at the beginning of September the leaves did not.” **The zine also prints a correction against its own tidiest sentence.** Everybody says the green leaves and reveals the yellow that was hiding. The one source that separated the individual carotenoids found “lutein and beta-carotene were degraded in parallel with chlorophyll”, with only some xanthophylls retained longer — so the unmasking story is part of the answer and not all of it, and even the paper stating the standard version hedges it with *partly*. Why the red gets made is being argued in print right now, with a 2021 test and a 2022 reply. And before it lets go the tree recovers about 80 per cent of the leaf’s nitrogen and phosphorus. Thirteen spreads, four pictures, five refusals for the adult — the first being a refusal of the masking metaphor, which is the one this piece most needed.
 
+### [Just Right For Whom?](https://starstuff.earth/just-right-for-whom-zine.html)
+
+Zine No. 104 · Stimpunks Zines · read-aloud, ages 4–8
+
+*A read-aloud about the warm band around a star, where Earth actually sits in it, and why nothing alive has the same one — with every source kept on the page for the grown-up.*
+
+The fairy tale says one bowl is right and two are wrong. Earth is 1.4 per cent of the way across its own habitable band, pressed against the hot edge — and it never moved there. The band slid out from under it.
+
+**Details**
+
+**The science borrowed the fairy tale’s name and then said nearly the opposite of it.** Kopparapu and colleagues put the conservative limits for our own system at 0.99 and 1.70 astronomical units, and draw the consequence in their own abstract: this suggests “the present Earth lies near the inner edge”. So Earth sits about 1.4 per cent of the way across a band 0.71 wide — not the just-right bowl, but the one that only just fits. And we did not arrive there by moving. The young Sun was roughly a third dimmer than it is now, and a dimmer star holds a smaller, closer band; scaling those limits by the square root of luminosity puts Earth about 13 per cent across the band two billion years ago and 23 per cent four billion years ago. The planet stayed exactly where it was. The edge came to it. **Then the zine goes somewhere else to show the band is not a fact about distance at all.** TRAPPIST-1e completes a year in 6.1 days at 0.02925 astronomical units, because its star is small and cool and keeps its warm band tucked in close — more than thirty times nearer in than ours, and nothing has gone wrong there. Every star gets its own band, computed from its own output, and astronomers have never once called a dim star defective for having a close one. Which is the turn the whole piece is built to reach. A band of conditions in which a living thing can persist is its *niche*, in Hutchinson’s 1957 sense; a tulip bulb needs twelve to sixteen weeks of proper cold or the flower never leaves the bulb, and that is not fussiness but a location. There is no standard band, so “just right” is never just right on its own — it is always just right *for somebody*, and you have to say who. **The answer is therefore not one room set more kindly**, but a place with a cave and a campfire and a watering hole in it, which is a Cavendish Space and the first time this collection has named one. Spread eight carries the correction that made the zine: proximity to the inner edge does *not* mean carbon dioxide can push us over it — Goldblatt and Watson are explicit that it cannot — but the headroom does shrink as the Sun brightens, and the band a human world needs is nested inside the planet’s and far thinner. Thirteen spreads, four figures, six refusals for the adult.
+
 For the grown-ups — how this collection works
 
 ## What holds these together
@@ -171,7 +183,7 @@ It happened on the first piece, was fixed, and recurred on the next two within a
 
 ## Sometimes there is something to do
 
-Seven of the nine pieces hand the child something to *do*, and they do it in **three different ways**. This was not planned. It is a form that turned up in finished work, which is the only kind of convention this site names.
+Seven of the ten pieces hand the child something to *do*, and they do it in **three different ways**. This was not planned. It is a form that turned up in finished work, which is the only kind of convention this site names.
 
 **A prop.** One line, inside the flow of the reading, using a thing already in the room. [No. 94](https://starstuff.earth/the-colours-you-cannot-see-zine.html) says *“Hold up something red”* — and then explains that a bee is not getting the red at all. The object is not the experiment; it is what makes an *absence* concrete, which is otherwise very hard to picture.
 
@@ -183,7 +195,7 @@ Seven of the nine pieces hand the child something to *do*, and they do it in **t
 
 **The boundary is worth keeping deliberate.** [No. 95](https://starstuff.earth/bone-song-read-aloud-zine.html) says *“Push on the bone — the bone answers”*, which is an image rather than an instruction: the same zine states that the current is *“not enough to feel.”* That is fine as writing and it is not a demonstration, and the difference matters, because an imperative a child follows and gets nothing from teaches them that the book was wrong.
 
-**And this is not a quota.** [No. 91](https://starstuff.earth/nobody-in-this-pond-is-late-zine.html), [No. 93](https://starstuff.earth/seeds-that-wait-zine.html) and [No. 102](https://starstuff.earth/it-stays-green-and-then-it-goes-zine.html) have no demonstration, and are not worse for it — you cannot do spadefoot metamorphosis, or a seed’s decade of waiting, or a whole autumn, on a table in five minutes, and a forced demonstration is worse than none. What No. 102 offers instead is the *method*: pick one leaf, mark it, and look at it every day. That is a season rather than an afternoon, and it is the actual experiment. *Reach for one when the mechanism is small enough to fit in a room.* No gate can see any of this either. It is the second house rule on this page held by a person rather than by a tool.
+**And this is not a quota.** [No. 91](https://starstuff.earth/nobody-in-this-pond-is-late-zine.html), [No. 93](https://starstuff.earth/seeds-that-wait-zine.html), [No. 102](https://starstuff.earth/it-stays-green-and-then-it-goes-zine.html) and [No. 104](https://starstuff.earth/just-right-for-whom-zine.html) have no demonstration, and are not worse for it — you cannot do spadefoot metamorphosis, or a seed’s decade of waiting, or a whole autumn, or stellar evolution, on a table in five minutes, and a forced demonstration is worse than none. What No. 102 offers instead is the *method*: pick one leaf, mark it, and look at it every day. That is a season rather than an afternoon, and it is the actual experiment. *Reach for one when the mechanism is small enough to fit in a room.* No gate can see any of this either. It is the second house rule on this page held by a person rather than by a tool.
 
 ## What these pieces do not claim
 
@@ -193,7 +205,7 @@ Where an argument about people is actually wanted, it is linked rather than borr
 
 ## How this collection opened, and at what count
 
-At **three members** (nine now), on a form observed in finished work — which clears the two-member floor rather than arguing around it. That matters because the floor has been broken three times on this site, each time with a written reason, and this collection did not need to.
+At **three members** (ten now), on a form observed in finished work — which clears the two-member floor rather than arguing around it. That matters because the floor has been broken three times on this site, each time with a written reason, and this collection did not need to.
 
 The first read-aloud shipped on its own with the collection question deliberately deferred: reading level, unlike cadence, *can* be observed retroactively, so waiting cost nothing. Two more arrived the same day, and the form was then a thing that had happened rather than a thing hoped for.
 
