@@ -60,6 +60,32 @@ Fact-checkThe finding that prompted this zine is deliberately absent from it —
 
 2026 · September 12 · latest
 
+## Sixty-four words, twenty beads — and the promise No. 105 made on its own face, kept
+
+Zine No. 106 joins [Young Readers](https://starstuff.earth/collection-young-readers.html), which now holds twelve. Yesterday’s zine said in its grown-up layer that the genetic code “is not in this zine at all.” This is that promise being kept, and it goes somewhere the first one could not.
+
+NewMore Than One Way to Spell It — Zine No. 106, read-aloud, ages 4–8
+
+**The letters are read three at a time, and each three names one bead.** [The zine](https://starstuff.earth/more-than-one-way-to-spell-it-zine.html) builds a protein as what it actually is — a long string of beads, twenty kinds — and a codon as what it actually says, which is *put a glycine on next*. Not *make a nose*. One bead, and then the next word says the next bead.
+
+**Then the arithmetic does the arguing.** Four letters read in threes give sixty-four possible words. There are twenty beads to name, and three words are spent saying *stop*. So there are far more words than things to say — and what gives is that **nearly every bead has more than one correct spelling**. Glycine has four. Leucine, serine and arginine have six each. Only methionine and tryptophan get one. Sixty-one naming codons falling into five fourfold sets, nine twofold, three sixfold, one threefold and two single ones — which sums to exactly twenty, every amino acid once.
+
+**The demonstration is a pencil and six rows of the real table.** Write `GGU`, look it up: glycine. Change the *last* letter to anything at all and look again — glycine, every time. Put it back and change the *first* letter, and it is serine. The last letter often does not matter; the first nearly always does. A child finds that pattern themselves, and the grown-up box says plainly that a child who tests a different word and finds the third letter mattering has found a real thing rather than made a mistake.
+
+**And this time the exception is inside the reader.** The code is not universal — thirty-three translation tables are catalogued — and *you are using two of them right now*. Your mitochondria read `UGA` as tryptophan where the rest of you reads it as stop. That is the sharpest evidence going for what [No. 7](https://starstuff.earth/you-were-never-one-thing-zine.html) argued about a bacterium that moved in and never quite stopped being itself.
+
+Fact-checkNothing written from memory, two papers declared unread, and a famous result kept with its criticism attached
+
+**Every codon on the page was checked against NCBI’s own translation tables** rather than recalled, because this zine is the first here whose demonstration *fails* if a single row is wrong. A child following spread seven with one bad row gets the wrong answer and learns that the book lies.
+
+**Two sources are declared unread on the page itself.** Freeland and Hurst’s 1998 result that the standard code is extraordinarily good at limiting the damage of errors is carried at second hand — PubMed refused us — and Crick’s 1968 paper is quoted from the same open-access review. A third, Nirenberg and Matthaei 1961, the experiment that read the very first codon, had a spread outlined and then **cut**: PubMed Central holds it only as scanned page images, and we would not build a spread on a paper nobody here had read.
+
+**The famous result is not allowed to travel without the half that usually falls off.** The same review that gave us the figure puts the code “halfway from an average random code to the summit,” notes that billions of alternative codes would do better, and finds Crick’s rival account — that the code is a *frozen accident*, arbitrary and stuck because any change now would be lethal — essentially unfalsified. **So the zine does not say the code was arranged kindly, or arranged at all.** It says the checkable thing: there is more than one right spelling, so a great many changes change nothing. Why that is so is an open argument, and the page does not borrow its warmth.
+
+**One departure from its companion, made deliberately.** No. 105 stayed safe by never saying what DNA does. No. 106 cannot, because the code *is* what it does — so spread ten corrects the popular meaning of “genetic code” in the child’s own layer, in plain type: it says which bead comes next, and holds no entry for what anybody will be good at, or love, or be like. **And one overclaim was caught during the build:** synonymous does *not* always mean no difference, since codon usage can affect how a chain is built and folds. The child layer claims only what the table says, and the grown-up box states the limit.
+
+2026 · September 12
+
 ## We said no page here contacts Google for fonts. One still did, and it was the one no sweep could reach
 
 On 9 September the four typeface families were self-hosted and every font `<link>` and preconnect was removed site-wide. [Our privacy page](https://starstuff.earth/privacy.html) has said so since. It was true of 200 pages and false of one.

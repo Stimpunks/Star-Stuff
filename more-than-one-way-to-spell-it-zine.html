@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0a0a14">
+<link rel="canonical" href="https://starstuff.earth/more-than-one-way-to-spell-it-zine.html">
+<meta name="description" content="Read-aloud science for four to eight, with every source kept on the page. The four DNA letters are read three at a time, and each three-letter word &mdash; a codon &mdash; names one amino acid, one bead on a protein string. Four letters read in threes make sixty-four possible words, and there are only twenty beads to name, so nearly every bead has more than one correct spelling: glycine has four, and leucine, serine and arginine have six each. Only methionine and tryptophan get one. Verified against the NCBI standard translation table. With something you can try on paper: GGU is glycine, and changing the last letter to anything at all leaves it glycine, while changing the first letter makes it something else entirely. Which means a great many copying changes change nothing, because there was more than one right answer to begin with. And the table is not the same everywhere &mdash; NCBI lists 33 of them, and you are using two right now, because your mitochondria disagree with the rest of you about what UGA means. Twelve spreads, four pictures, five refusals for the grown-up, and a spread in plain type saying what the code does not say.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Star Stuff &middot; Stimpunks Foundation &times; More Realms">
+<meta property="og:url" content="https://starstuff.earth/more-than-one-way-to-spell-it-zine.html">
+<meta property="og:title" content="More Than One Way to Spell It">
+<meta property="og:description" content="Read-aloud science for ages 4&ndash;8. Sixty-four words, twenty beads &mdash; so nearly everything has several correct spellings, and most one-letter changes change nothing at all. With something you can try on paper.">
+<meta property="og:image" content="https://starstuff.earth/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A rainbow-hued cosmic image &mdash; we are all made of star stuff.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="More Than One Way to Spell It">
+<meta name="twitter:description" content="Glycine has four spellings. Leucine has six. Change the last letter of a codon and very often nothing happens &mdash; because there was never only one right answer.">
+<meta name="twitter:image" content="https://starstuff.earth/og-card.jpg">
+<title>More Than One Way to Spell It &mdash; Stimpunks Zine No. 106</title>
+<link rel="stylesheet" href="starstuff.css">
+<style>
+  :root {
+    --void:  var(--sp-void-deep);
+    --deep:  var(--sp-deep);
+    --page:  var(--sp-page);
+    --violet:var(--sp-purple);
+    --pink:  var(--sp-pink);
+    --gold:  var(--sp-gold);
+    --cyan:  var(--sp-cyan);
+    --green: var(--sp-green);
+    --ember: #c1653a;
+    /* This zine's one-off accent, named for the thing the zine is about: a
+       SYNONYMOUS substitution -- the genetics term for a letter change that
+       leaves the amino acid unchanged, which is the whole claim of the piece.
+       A one-off is required rather than preferred, as on Nos. 99, 100 and 105:
+       all five --sp-* accents are spoken for across this collection (green
+       No. 91, gold No. 93, purple No. 94, pink No. 95) and CYAN IS NOT
+       AVAILABLE -- every sibling uses it for the .grownup box border, which is
+       the format's signature and must not be broken for one page. A dusty rose:
+       deliberately far less saturated and redder than --sp-pink, and a clearly
+       different hue from No. 99's coral --rhinarium (#e8836a) and No. 101's
+       --ruff (#d6a2e0), the two nearest neighbours. Measured on --page before
+       shipping. */
+    --synonym: #e89ab0;
+    --accent: var(--synonym);
+    --star-white: var(--sp-white-soft);
+    --stardust:   var(--sp-secondary-soft);
+    --dim:   var(--sp-dim);
+    --dim2:  var(--sp-dim-soft);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--void);
+    font-family: 'Atkinson Hyperlegible Next', system-ui, sans-serif;
+    color: var(--star-white);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* STARFIELD (pairing-teal, white, violet -- the rungs, the letters, the dark) */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 13% 21%, rgba(232,154,176,0.55) 0%, transparent 100%),
+      radial-gradient(1px 1px at 27% 55%, rgba(244,244,251,0.6) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 48% 14%, rgba(232,154,176,0.48) 0%, transparent 100%),
+      radial-gradient(1px 1px at 66% 77%, rgba(244,244,251,0.62) 0%, transparent 100%),
+      radial-gradient(2px 2px at 83% 27%, rgba(232,154,176,0.44) 0%, transparent 100%),
+      radial-gradient(1px 1px at 90% 61%, rgba(167,139,250,0.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 95% 85%, rgba(244,244,251,0.5) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 8% 74%, rgba(232,154,176,0.42) 0%, transparent 100%),
+      radial-gradient(1px 1px at 37% 92%, rgba(167,139,250,0.38) 0%, transparent 100%),
+      radial-gradient(1px 1px at 59% 40%, rgba(244,244,251,0.52) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .zine-shell { position: relative; z-index: 1; max-width: 820px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+
+  .nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem; }
+  .nav-brand { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--dim); }
+  .nav-controls { display: flex; gap: 0.5rem; align-items: center; }
+  .nav-btn { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; background: transparent; color: var(--dim2); border: 1px solid rgba(196,181,212,0.25); border-radius: 3px; padding: 0.4rem 0.75rem; cursor: pointer; transition: all 0.2s; }
+  .nav-btn.active { color: var(--accent); border-color: rgba(232,154,176,0.5); }
+  .nav-btn:disabled { opacity: 0.3; cursor: default; }
+  .page-counter { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.1em; color: var(--dim); padding: 0 0.4rem; }
+
+  .spread { display: none; animation: fadeIn 0.5s ease forwards; }
+  .spread.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* COVER */
+  .cover-spread {
+    position: relative; min-height: 520px; border-radius: 4px; overflow: hidden;
+    background:
+      radial-gradient(ellipse at 24% 22%, rgba(232,154,176,0.14) 0%, transparent 52%),
+      radial-gradient(ellipse at 78% 32%, rgba(167,139,250,0.08) 0%, transparent 52%),
+      radial-gradient(ellipse at 62% 86%, rgba(232,154,176,0.07) 0%, transparent 52%),
+      radial-gradient(ellipse at 18% 88%, rgba(167,139,250,0.07) 0%, transparent 52%),
+      var(--deep);
+    border: 1px solid rgba(232,154,176,0.25);
+    box-shadow: inset 0 0 80px rgba(232,154,176,0.06), 0 0 0 4px rgba(255,255,255,0.03);
+    display: flex; flex-direction: column; justify-content: flex-end; padding: 3rem;
+  }
+  /* Placed by MEASUREMENT, not by eye, and re-measured for THIS page rather
+     than inherited from No. 105 -- which is the whole point of the note. This
+     title is long enough to wrap across two lines filling the full 676px of
+     cover text width (measured at 1280: ink from x=49 to x~675, y=135..240),
+     so unlike No. 105 there is NO clear band beside the title. The only free
+     region is BELOW the title and RIGHT of the subtitle, whose ink stops at
+     x=519: that is x>540, y>250. check-overlap.mjs caught the inherited
+     placement immediately, with the motif's codons crossing both title lines. */
+  .cover-motif { position: absolute; top: 248px; right: 18px; width: 200px; height: 195px; opacity: 0.72; pointer-events: none; }
+  .cover-issue { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.5em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.5rem; }
+  .cover-title { font-weight: 700; font-size: clamp(1.9rem, 5.2vw, 3rem); line-height: 1.03; color: var(--star-white); letter-spacing: -0.01em; margin-bottom: 0.9rem; }
+  .cover-title .amp { color: var(--accent); font-style: italic; }
+  .cover-subtitle { font-size: 1rem; color: var(--stardust); opacity: 0.85; margin-bottom: 1.5rem; max-width: 470px; line-height: 1.55; }
+  .cover-byline { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.14em; color: var(--dim); margin-bottom: 1.8rem; }
+  .cover-byline strong { color: var(--stardust); font-weight: 700; }
+  .cover-rule { width: 220px; max-width: 60%; margin-bottom: 1.3rem; }
+  .cover-meta { display: flex; gap: 2rem; align-items: center; }
+  .cover-ls { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 1.4rem; color: var(--accent); letter-spacing: 0.05em; }
+  .cover-meta-text { font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--dim2); line-height: 1.9; }
+  .cover-corner { position: absolute; top: 2rem; right: 2.5rem; text-align: right; }
+  .cover-corner-num { font-weight: 700; font-size: 4.5rem; line-height: 1; color: var(--accent); opacity: 0.20; }
+  .cover-corner-label { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); display: block; margin-top: -0.3rem; }
+
+  /* INTERIOR */
+  .interior { background: var(--page); border: 1px solid rgba(232,154,176,0.15); border-radius: 4px; overflow: hidden; min-height: 480px; }
+  .spread-2col { display: grid; grid-template-columns: 1fr 1fr; min-height: 440px; }
+  .spread-left { padding: 3rem 2.4rem; position: relative; border-right: 1px solid rgba(167,139,250,0.12); }
+
+  .spread-2col.stacked { display: flex; flex-direction: column; }
+  .spread-2col.stacked > .spread-left { border-right: none; }
+  .spread-2col.stacked > .col-text { padding-left: max(2.4rem, calc((100% - 32rem) / 2)); padding-right: max(2.4rem, calc((100% - 32rem) / 2)); }
+
+  .eyebrow { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.1rem; }
+  /* Accent spans that sit OUTSIDE .body-text -- inside .refusals, .readaloud and
+     .grownup-body, which are its siblings. The No. 67 fault. */
+  .zine-shell span.violet { color: var(--violet); font-weight: 700; }
+  .zine-shell span.gold { color: var(--gold); font-weight: 700; }
+  .zine-shell span.cyan { color: var(--cyan); font-weight: 700; }
+  .zine-shell span.pink { color: var(--pink); font-weight: 700; }
+  .zine-shell span.green { color: var(--green); font-weight: 700; }
+  .latin { font-style: italic; color: var(--star-white); }
+
+  .spread-heading { font-weight: 700; font-size: 1.9rem; line-height: 1.12; color: var(--star-white); margin-bottom: 0.7rem; letter-spacing: -0.01em; margin-top: 0; scroll-margin-top: 5rem; }
+  .rule { width: 40px; margin: 1rem 0; }
+
+  /* THE READ-ALOUD LAYER */
+  .readaloud { font-size: 1.24rem; line-height: 1.78; color: var(--star-white); max-width: 30rem; }
+  .readaloud p { margin-bottom: 1.15rem; }
+  .readaloud p:last-child { margin-bottom: 0; }
+  .readaloud strong { font-weight: 700; color: var(--star-white); }
+  .readaloud em { font-style: italic; }
+  .readaloud .turn { font-weight: 700; font-size: 1.42rem; line-height: 1.4; display: block; }
+  /* The four letters, set as letters. Monospace so A, T, G and C are the same
+     width on the page as they are in the alphabet -- a child tracking them
+     across a line should not meet four different widths. */
+  .letter { font-family: 'Space Mono', monospace; font-weight: 700; color: var(--accent); letter-spacing: 0.08em; }
+
+  /* THE GROWN-UP LAYER */
+  .grownup { margin-top: 1.7rem; border-left: 3px solid var(--cyan); background: rgba(34,211,238,0.05); border-radius: 0 4px 4px 0; padding: 1rem 1.15rem; }
+  .grownup-label { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--cyan); margin-bottom: 0.6rem; }
+  .grownup-body { font-size: 0.83rem; line-height: 1.72; color: var(--stardust); }
+  .grownup-body p { margin-bottom: 0.75rem; }
+  .grownup-body p:last-child { margin-bottom: 0; }
+  .grownup-body strong { font-weight: 700; color: var(--star-white); }
+  .grownup-body em { font-style: italic; color: var(--star-white); }
+  .grownup-body a { color: var(--cyan); text-decoration: none; border-bottom: 1px solid rgba(34,211,238,0.4); }
+  .grownup-body a:hover { border-bottom-color: var(--cyan); color: var(--star-white); }
+
+  /* DIAGRAMS -- after the read-aloud text and BEFORE the grown-up box, so a
+     child following the large type actually reaches the picture. */
+  .diagram-wrap { display: flex; flex-direction: column; justify-content: center; align-items: center; margin: 1.7rem 0 0.3rem; }
+  .diagram { width: 100%; max-width: 340px; display: block; }
+  /* NOTE: .diagram-caption is uppercased. Never put a unit symbol in one --
+     text-transform turns the micrometre sign into MM, a 1000-fold error that
+     every gate passes. */
+  .diagram-caption { font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim); text-align: center; margin-top: 0.9rem; line-height: 1.9; }
+
+  /* REFUSALS */
+  .refusals { margin-top: 1.3rem; }
+  .refusal { font-size: 0.88rem; line-height: 1.5; color: var(--stardust); padding: 0.55rem 0; border-bottom: 1px solid rgba(232,154,176,0.1); display: flex; gap: 0.6rem; align-items: baseline; }
+  .refusal:last-child { border-bottom: none; }
+  .refusal-tag { font-family: 'Space Mono', monospace; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ember); flex-shrink: 0; padding-top: 0.12rem; }
+  .refusal strong { color: var(--star-white); font-weight: 700; }
+
+  /* COLOPHON */
+  .colophon { padding: 3rem; display: flex; flex-direction: column; justify-content: space-between; min-height: 480px; background: radial-gradient(ellipse at 80% 18%, rgba(232,154,176,0.10) 0%, transparent 50%), radial-gradient(ellipse at 18% 85%, rgba(167,139,250,0.05) 0%, transparent 50%), var(--page); }
+  .colophon-top { border-bottom: 1px solid rgba(232,154,176,0.14); padding-bottom: 1.3rem; margin-bottom: 1.2rem; }
+  .colophon-ls { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 2.4rem; color: var(--accent); letter-spacing: 0.05em; display: block; margin-bottom: 0.4rem; }
+  .colophon-phrase { font-size: 0.98rem; font-weight: 700; font-style: italic; color: var(--stardust); }
+  .series-list { display: flex; flex-direction: column; gap: 0.38rem; margin-bottom: 1.2rem; }
+  .series-item { font-size: 0.72rem; color: var(--dim); letter-spacing: 0.01em; display: flex; gap: 0.7rem; align-items: baseline; line-height: 1.45; }
+  .series-item.current { color: var(--accent); font-weight: 700; }
+  .series-num { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim2); flex-shrink: 0; }
+  .series-item.current .series-num { color: var(--accent); }
+  .reflect { border-top: 1px solid rgba(232,154,176,0.14); padding-top: 1rem; margin-bottom: 1.2rem; }
+  .reflect-label { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.65rem; }
+  .reflect-q { font-size: 0.86rem; line-height: 1.55; color: var(--stardust); margin-bottom: 0.55rem; font-style: italic; }
+  .reflect-q:last-child { margin-bottom: 0; }
+  .colophon-body { font-size: 0.75rem; color: var(--dim); line-height: 1.75; margin-bottom: 1.2rem; }
+  .colophon-body a { color: var(--cyan); text-decoration: none; border-bottom: 1px solid rgba(34,211,238,0.4); }
+  .colophon-body a:hover { border-bottom-color: var(--cyan); }
+  .colophon-h { font-family: 'Space Mono', monospace; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: var(--stardust); margin: 1rem 0 0.4rem; scroll-margin-top: 5rem; }
+  .colophon-footer { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--dim); line-height: 2.2; border-top: 1px solid rgba(232,154,176,0.14); padding-top: 1rem; }
+
+  /* SPREAD FOOTER */
+  .spread-footer { display: flex; justify-content: space-between; align-items: center; padding: 0.9rem 2.4rem; border-top: 1px solid rgba(232,154,176,0.1); }
+  .spread-footer-left { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--dim); }
+  .spread-footer-right { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; color: var(--accent); }
+
+  /* PRINT -- one page-specific override, required rather than tidy.
+     The shared sheet inverts a FIXED LIST of light SVG fill literals, and this
+     page's one-off --synonym accent is not on it and could not be, because it
+     is one page's colour. Without this, every bracket, rule and connector in
+     the four figures keeps a pale #e89ab0 on white paper.
+
+     CIRCLES AND THE CODON PILLS ARE DELIBERATELY ABSENT from the darkening
+     list: each carries a <text> on top of it, and the shared sheet forces
+     svg text to #111111 on paper, so darkening the shape underneath puts
+     #111111 on #333333. That is exactly the fault check-contrast.mjs caught
+     on No. 105 as four print failures. A coloured shape that CARRIES a label
+     is content that survives print; the label is legible because the shape
+     stays light.
+
+     NO GATE CAN SEE THE SHAPE HALF. check-contrast.mjs measures TEXT against
+     its background in both media; a shape fill carries no text and is never
+     measured.
+
+     Tag-qualified so these cannot reach a <text>: the bare form
+     `svg [fill="#e89ab0"]` is (0,1,1) against the shared sheet's (0,1,2)
+     `svg text[fill]` and would lose the race. */
+  @media print {
+    svg rect[fill="rgba(232,154,176,0.5)"],
+    svg rect[fill="rgba(138,127,168,0.55)"] { fill: #333333 !important; }
+    svg line[stroke="rgba(232,154,176,0.5)"],
+    svg line[stroke="#e89ab0"],
+    svg path[stroke="#e89ab0"] { stroke: #333333 !important; }
+  }
+
+  @media (max-width: 600px) {
+    .spread-2col { grid-template-columns: 1fr; }
+    .spread-left { border-right: none; border-bottom: 1px solid rgba(167,139,250,0.12); }
+    .spread-2col.stacked > .spread-left { border-bottom: none; }
+    .spread-2col.stacked > .col-text { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .cover-spread { padding: 2rem; min-height: 420px; }
+    .cover-motif { width: 124px; height: 121px; top: 214px; right: 10px; opacity: 0.42; }
+    .cover-title { font-size: 1.75rem; }
+    .spread-heading { font-size: 1.55rem; }
+    .readaloud { font-size: 1.12rem; }
+    .readaloud .turn { font-size: 1.3rem; }
+    .spread-left { padding: 2rem 1.5rem; }
+    .colophon { padding: 2rem 1.5rem; }
+  }
+
+  /* ── CODON PILLS AND THE LOOKUP TABLE ──
+     Two components No. 105 did not need. A codon is three letters read as one
+     unit, so it is set as one unit: monospace, tracked, on its own ground, so a
+     child tracking GGU across a line meets it as a word rather than as three
+     letters that happen to be adjacent. */
+  .codon { font-family: 'Space Mono', monospace; font-weight: 700; letter-spacing: 0.16em; color: var(--accent); background: rgba(232,154,176,0.10); border: 1px solid rgba(232,154,176,0.30); border-radius: 4px; padding: 0.08em 0.4em; white-space: nowrap; }
+  .bead { font-weight: 700; color: var(--star-white); }
+
+  /* The lookup table the child actually uses on spread seven. Deliberately tiny
+     and deliberately incomplete -- six rows out of sixty-four -- because the
+     demonstration needs exactly the rows it names and a full codon table on a
+     read-aloud spread is a wall. The grown-up box says it is a extract and says
+     where the whole one is. */
+  .codetable { margin: 1.5rem 0 0.3rem; border: 1px solid rgba(232,154,176,0.28); border-radius: 6px; overflow: hidden; max-width: 26rem; }
+  .codetable table { border-collapse: collapse; width: 100%; }
+  .codetable caption { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); padding: 0.7rem 0.9rem 0.5rem; text-align: left; }
+  .codetable th, .codetable td { padding: 0.5rem 0.9rem; text-align: left; font-size: 1rem; border-top: 1px solid rgba(232,154,176,0.16); }
+  .codetable th { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dim); font-weight: 400; }
+  .codetable td:first-child { font-family: 'Space Mono', monospace; font-weight: 700; letter-spacing: 0.16em; color: var(--accent); }
+  .codetable td:last-child { color: var(--star-white); font-weight: 700; }
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"More Than One Way to Spell It","description":"A Young Readers zine: read-aloud science for ages four to eight, built in two layers, with something a child can try on paper. It is the companion to Zine No. 105, The Same Four Letters, which deliberately left the genetic code out and said so on its own face. The spine is degeneracy. The four DNA bases are read three at a time; each three-letter word, a codon, names one amino acid — one bead on a protein string. Four letters read in threes give 4 × 4 × 4 = 64 possible codons, and there are only 20 amino acids, so 61 sense codons and 3 stops distribute as 5 quartets, 9 doublets, 3 sextets, 1 triplet and 2 singlets. Nearly every amino acid therefore has more than one correct spelling: glycine has four (GGU, GGC, GGA, GGG), while leucine, serine and arginine have six each, and only methionine (AUG) and tryptophan (UGG) have one. Every codon assignment used in this zine was verified against the NCBI standard translation table, table 1. The paper demonstration on spread seven turns on that structure: GGU is glycine, and changing the third letter to any of the four leaves it glycine, while changing the first letter from G to A gives AGU, which is serine. The third position is often, though not always, the tolerant one — the grown-up box carries the counter-example, since UUU and UUC are phenylalanine but UUA and UUG are leucine. The consequence is that a great many copying changes are synonymous and change nothing, not because an error was repaired but because there was more than one right answer. Spread nine carries the exception: the code is not universal, NCBI lists 33 translation tables, and a human body runs two of them at once, since vertebrate mitochondria read UGA as tryptophan rather than stop and AGA and AGG as stop rather than arginine. Spread ten is a plain-type correction saying what the code does not say: it names which bead comes next and nothing about anybody's traits. Twelve spreads, four figures, five refusals addressed to the adult.","image":"https://starstuff.earth/og-card.jpg","url":"https://starstuff.earth/more-than-one-way-to-spell-it-zine.html","mainEntityOfPage":"https://starstuff.earth/more-than-one-way-to-spell-it-zine.html","datePublished":"2026-09-12","dateModified":"2026-09-12","license":"https://creativecommons.org/licenses/by-sa/4.0/","author":{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/"},"publisher":[{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/","logo":{"@type":"ImageObject","url":"https://starstuff.earth/og-card.jpg"}},{"@type":"Organization","name":"More Realms","url":"https://morerealms.com/"}],"isPartOf":{"@type":"WebSite","name":"Star Stuff","url":"https://starstuff.earth/"}}</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+<div class="zine-shell">
+
+  <nav class="ss-nav" style="--nav-accent:#e89ab0;" aria-label="Star Stuff collection">
+    <span class="ss-nav-home-group"><a class="ss-nav-home" href="index.html"><span class="ss-star" aria-hidden="true">&#9733;</span> stuff</a><a class="ss-nav-about" href="about.html">about</a>
+      <a class="ss-nav-search" href="search.html">search</a><a class="ss-nav-privacy" href="privacy.html">privacy</a></span>
+    <span class="ss-nav-links">
+      <a class="ss-nav-prev" href="the-same-four-letters-zine.html"><span class="ss-nav-arrow" aria-hidden="true">&lsaquo;</span> <span class="ss-nav-label">The Same Four Letters</span></a>
+      <a class="ss-nav-next" href="collection-how-we-got-here.html"><span class="ss-nav-label">How We Got Here</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
+    </span>
+    <a class="ss-nav-collection" href="collection-young-readers.html"><span class="ss-nav-collection-label">Collection</span> <span class="ss-nav-collection-name">Young Readers</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
+  </nav>
+<main id="main" tabindex="-1">
+
+  <div class="nav">
+    <span class="nav-brand">Stimpunks &times; More Realms</span>
+    <div class="nav-controls">
+      <button class="nav-btn" id="prev-btn">&larr; prev</button>
+      <span class="page-counter" id="page-counter">1 / 12</span>
+      <button class="nav-btn" id="next-btn">next &rarr;</button>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 1: COVER ════ -->
+  <div class="spread active" id="spread-1">
+    <div class="cover-spread">
+      <!-- Cover motif: THE CLAIM, which is the whole zine. Four different
+           three-letter words on the left, all of them arriving at one bead on
+           the right. Four spellings, one thing spelled. -->
+      <svg class="cover-motif" viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="motif-title motif-desc">
+        <title id="motif-title">Four spellings, one bead</title>
+        <desc id="motif-desc">On the left, four three-letter words written one above the other: G G U, G G C, G G A and G G G. A curved line runs from each of the four words to a single filled circle on the right, so that all four arrive at the same place. The circle is labelled one bead.</desc>
+        <g font-family="'Space Mono', monospace" font-size="12" font-weight="700" letter-spacing="2" fill="#e89ab0">
+          <text x="8" y="34">G G U</text>
+          <text x="8" y="78">G G C</text>
+          <text x="8" y="122">G G A</text>
+          <text x="8" y="166">G G G</text>
+        </g>
+        <g stroke="rgba(232,154,176,0.5)" stroke-width="1.5" fill="none" stroke-linecap="round">
+          <path d="M64 30 C110 30, 118 80, 146 96"/>
+          <path d="M64 74 C110 74, 120 86, 146 98"/>
+          <path d="M64 118 C110 118, 120 110, 146 104"/>
+          <path d="M64 162 C110 162, 118 122, 146 106"/>
+        </g>
+        <circle cx="160" cy="101" r="15" fill="#e89ab0"/>
+        <text x="160" y="136" text-anchor="middle" font-family="'Space Mono', monospace" font-size="8" letter-spacing="1.2" fill="#c4b5d4">ONE BEAD</text>
+      </svg>
+      <div class="cover-corner">
+        <div class="cover-corner-num" aria-hidden="true">106</div>
+        <span class="cover-corner-label">Young Readers</span>
+      </div>
+      <div class="cover-issue">Stimpunks &times; More Realms &middot; Zine No. 106</div>
+      <h1 class="cover-title">More Than One Way to <span class="amp">Spell It</span></h1>
+      <p class="cover-subtitle">a read-aloud about reading three letters at a time, and finding out that nearly everything has several right spellings &mdash; with something you can try, and every source kept on the page for the grown-up</p>
+      <div class="cover-byline">twelve spreads &middot; four pictures &middot; <strong>read-aloud, ages 4&ndash;8</strong></div>
+      <hr class="spectrum-line cover-rule">
+      <div class="cover-meta">
+        <span class="cover-ls">L&#9733;S</span>
+        <div class="cover-meta-text">Love You Down To Your Star Stuff<br>open edition &middot; print freely</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 2 ════ -->
+  <div class="spread" id="spread-2">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">To begin</div>
+          <h2 class="spread-heading" id="you-know-the-letters">You know the letters already</h2>
+          <hr class="spectrum-line rule">
+          <div class="readaloud">
+<p>Last time we met the four letters that everything alive is written with. <span class="letter">A</span>, <span class="letter">T</span>, <span class="letter">G</span> and <span class="letter">C</span>.</p>
+<p>And we found out the surprising thing about them: <em>nobody checks the order</em>. Any order at all is allowed.</p>
+<p>So here is the next question, and it is a good one.</p>
+<p><span class="turn">If any order is allowed &mdash; what is the order <em>for</em>?</span></p>
+<p>What does all that writing actually <em>say</em>?</p>
+          </div>
+          <div class="grownup">
+            <div class="grownup-label">For the grown-up</div>
+            <div class="grownup-body">
+<p><strong>This is the companion to <a href="the-same-four-letters-zine.html">No. 105</a></strong>, which was about the <em>alphabet</em> &mdash; which letters exist, and how they pair. That zine deliberately left this subject out and said so on its own face: <em>&ldquo;The genetic code is a different thing&hellip; The code is not in this zine at all.&rdquo;</em> This is the promise being kept.</p>
+<p><strong>The word &ldquo;code&rdquo; is about to do a lot of work, so it is worth pinning down now.</strong> The genetic code is not a secret message and it is not a set of instructions for building a person. It is a <em>lookup table</em>: three letters go in, one amino acid comes out. That is the entire content of it. Spread ten comes back to this, in the child&rsquo;s own layer, because the popular meaning of the phrase is the misreading rather than a simplification of the real one.</p>
+<p><strong>One boundary kept from No. 105.</strong> Nothing in this zine says what any particular stretch of DNA does in a body, or what any gene is &ldquo;for&rdquo;. The subject here is the table, not the consequences.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">More Than One Way to Spell It &middot; Stimpunks</span>
+        <span class="spread-footer-right">2</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 3 ════ -->
+  <div class="spread" id="spread-3">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">How it is read</div>
+          <h2 class="spread-heading" id="three-at-a-time">Three at a time</h2>
+          <hr class="spectrum-line rule">
+          <div class="readaloud">
+<p>The letters are not read one at a time.</p>
+<p>They are read in <strong>threes</strong>. Always threes.</p>
+<p>So a long line of letters gets chopped into little three-letter words, one after another, all the way along.</p>
+<p><span class="turn">A three-letter word like that has a name. It is called a <strong>codon</strong>.</span></p>
+<p>That is a proper grown-up word and you may keep it.</p>
+          </div>
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 150" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig1-title fig1-desc">
+              <title id="fig1-title">One long line of letters, chopped into threes</title>
+              <desc id="fig1-desc">A row of twelve letters reading G G U A C A U U G C C U, with a gap after every third letter. Underneath, four brackets each gather one group of three, making four separate three-letter words. A label says each group of three is one codon, and that it is never two and never four.</desc>
+              <g font-family="'Space Mono', monospace" font-size="14" font-weight="700" letter-spacing="3" text-anchor="middle" fill="#e89ab0">
+                <text x="52" y="36">GGU</text>
+                <text x="118" y="36">ACA</text>
+                <text x="184" y="36">UUG</text>
+                <text x="250" y="36">CCU</text>
+              </g>
+              <g stroke="rgba(232,154,176,0.5)" stroke-width="1.6" fill="none" stroke-linecap="round">
+                <path d="M26 50 V60 H78 V50"/>
+                <path d="M92 50 V60 H144 V50"/>
+                <path d="M158 50 V60 H210 V50"/>
+                <path d="M224 50 V60 H276 V50"/>
+              </g>
+              <text x="150" y="92" text-anchor="middle" fill="#e89ab0" font-family="'Space Mono', monospace" font-size="10" letter-spacing="1.4">EACH THREE IS ONE CODON</text>
+              <text x="150" y="116" text-anchor="middle" fill="#c4b5d4" font-family="'Space Mono', monospace" font-size="9" letter-spacing="1.2">NEVER TWO. NEVER FOUR.</text>
+            </svg>
+            <div class="diagram-caption">Codons, read in order along the strand</div>
+          </div>
+          <div class="grownup">
+            <div class="grownup-label">For the grown-up</div>
+            <div class="grownup-body">
+<p><strong>Where the chopping starts matters enormously</strong>, and it is the thing the picture cannot show. The same row of letters read starting one place to the right gives entirely different words from there on &mdash; that offset is called the <em>reading frame</em>, and a change that shifts it is a <em>frameshift</em>. This zine deliberately does not go there; it is a real and much larger subject, and the claim on the next six spreads does not depend on it.</p>
+<p><strong>The letters in the picture are U rather than T</strong>, and that is not a slip. The strand actually being read three at a time is a working copy made of RNA, which uses uracil where DNA uses thymine &mdash; the swap No. 105 noted in passing. Every codon in this zine is written the way codons are conventionally written, in RNA letters, so that a child who looks one up later finds the same spelling.</p>
+<p><strong>The row of letters in the figure is invented.</strong> It is there to show the chopping, not to be anybody&rsquo;s sequence.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">More Than One Way to Spell It &middot; Stimpunks</span>
+        <span class="spread-footer-right">3</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 4 ════ -->
+  <div class="spread" id="spread-4">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">What it names</div>
+          <h2 class="spread-heading" id="each-three-names-one-bead">Each three names one bead</h2>
+          <hr class="spectrum-line rule">
+          <div class="readaloud">
+<p>What is all this building? Mostly it is building <strong>proteins</strong>, and a protein is a very long string of beads.</p>
+<p>There are <strong>twenty</strong> kinds of bead. Twenty, and that is all.</p>
+<p>And here is the whole job of a codon. Each three-letter word names <em>one bead</em>.</p>
+<p><span class="turn"><span class="codon">GGU</span> means: put a <span class="bead">glycine</span> bead on next.</span></p>
+<p>That is it. That is everything a codon says.</p>
+<p>Not <em>make a nose</em>. Not <em>be good at running</em>. One bead, and then the next word says the next bead.</p>
+          </div>
+          <div class="grownup">
+            <div class="grownup-label">For the grown-up</div>
+            <div class="grownup-body">
+<p><strong>The beads are amino acids</strong>, twenty of them in the standard set, strung into chains that fold into proteins. <em>Glycine</em> is the smallest. The bead image is doing real work rather than softening anything: a protein genuinely is a linear sequence of these units, assembled one at a time in the order the codons come.</p>
+<p><strong>&ldquo;Not <em>make a nose</em>&rdquo; is the load-bearing sentence on this spread</strong>, and it is literally rather than rhetorically true. The genetic code is a mapping from 64 triplets to 20 amino acids plus a stop signal. There is no entry in it for a trait, a behaviour, an ability or a person. Whatever is true about how bodies develop &mdash; and it is complicated, and contested, and involves a great deal besides sequence &mdash; none of it is in this table. Spread ten says so to the child.</p>
+<p><strong>Three of the sixty-four words name no bead at all.</strong> They mean <em>stop</em>: the chain ends here. And one, <span class="codon">AUG</span>, does double duty &mdash; it names methionine and is also the usual signal for <em>start here</em>.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">More Than One Way to Spell It &middot; Stimpunks</span>
+        <span class="spread-footer-right">4</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 5 ════ -->
+  <div class="spread" id="spread-5">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Count it</div>
+          <h2 class="spread-heading" id="sixty-four-and-twenty">Sixty-four words, twenty beads</h2>
+          <hr class="spectrum-line rule">
+          <div class="readaloud">
+<p>Let us count how many different three-letter words you can even make.</p>
+<p>Four choices for the first letter. Four for the second. Four for the third.</p>
+<p><span class="turn">4 &times; 4 &times; 4 = <strong>64</strong></span></p>
+<p>Sixty-four different words.</p>
+<p>But there are only <strong>twenty</strong> beads to name. And three words are used up saying <em>stop</em>.</p>
+<p>So there are far more words than there are things to say.</p>
+<p><span class="turn">Something has to give. What do you think it is?</span></p>
+          </div>
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 190" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig2-title fig2-desc">
+              <title id="fig2-title">Sixty-four words against twenty beads</title>
+              <desc id="fig2-desc">On the left, a block of sixty-four small squares arranged in eight rows of eight, labelled sixty-four words. On the right, a much smaller group of twenty filled circles arranged in four rows of five, labelled twenty beads. The block of squares is plainly more than three times the size of the group of circles.</desc>
+              <text x="70" y="16" text-anchor="middle" fill="#c4b5d4" font-family="'Space Mono', monospace" font-size="9" letter-spacing="1.4">64 WORDS</text>
+              <text x="232" y="16" text-anchor="middle" fill="#c4b5d4" font-family="'Space Mono', monospace" font-size="9" letter-spacing="1.4">20 BEADS</text>
+              <g fill="rgba(232,154,176,0.5)">
+                <rect x="24" y="28" width="11" height="11" rx="2"/><rect x="39" y="28" width="11" height="11" rx="2"/><rect x="54" y="28" width="11" height="11" rx="2"/><rect x="69" y="28" width="11" height="11" rx="2"/><rect x="84" y="28" width="11" height="11" rx="2"/><rect x="99" y="28" width="11" height="11" rx="2"/><rect x="114" y="28" width="11" height="11" rx="2"/><rect x="129" y="28" width="11" height="11" rx="2"/>
+                <rect x="24" y="43" width="11" height="11" rx="2"/><rect x="39" y="43" width="11" height="11" rx="2"/><rect x="54" y="43" width="11" height="11" rx="2"/><rect x="69" y="43" width="11" height="11" rx="2"/><rect x="84" y="43" width="11" height="11" rx="2"/><rect x="99" y="43" width="11" height="11" rx="2"/><rect x="114" y="43" width="11" height="11" rx="2"/><rect x="129" y="43" width="11" height="11" rx="2"/>
+                <rect x="24" y="58" width="11" height="11" rx="2"/><rect x="39" y="58" width="11" height="11" rx="2"/><rect x="54" y="58" width="11" height="11" rx="2"/><rect x="69" y="58" width="11" height="11" rx="2"/><rect x="84" y="58" width="11" height="11" rx="2"/><rect x="99" y="58" width="11" height="11" rx="2"/><rect x="114" y="58" width="11" height="11" rx="2"/><rect x="129" y="58" width="11" height="11" rx="2"/>
+                <rect x="24" y="73" width="11" height="11" rx="2"/><rect x="39" y="73" width="11" height="11" rx="2"/><rect x="54" y="73" width="11" height="11" rx="2"/><rect x="69" y="73" width="11" height="11" rx="2"/><rect x="84" y="73" width="11" height="11" rx="2"/><rect x="99" y="73" width="11" height="11" rx="2"/><rect x="114" y="73" width="11" height="11" rx="2"/><rect x="129" y="73" width="11" height="11" rx="2"/>
+                <rect x="24" y="88" width="11" height="11" rx="2"/><rect x="39" y="88" width="11" height="11" rx="2"/><rect x="54" y="88" width="11" height="11" rx="2"/><rect x="69" y="88" width="11" height="11" rx="2"/><rect x="84" y="88" width="11" height="11" rx="2"/><rect x="99" y="88" width="11" height="11" rx="2"/><rect x="114" y="88" width="11" height="11" rx="2"/><rect x="129" y="88" width="11" height="11" rx="2"/>
+                <rect x="24" y="103" width="11" height="11" rx="2"/><rect x="39" y="103" width="11" height="11" rx="2"/><rect x="54" y="103" width="11" height="11" rx="2"/><rect x="69" y="103" width="11" height="11" rx="2"/><rect x="84" y="103" width="11" height="11" rx="2"/><rect x="99" y="103" width="11" height="11" rx="2"/><rect x="114" y="103" width="11" height="11" rx="2"/><rect x="129" y="103" width="11" height="11" rx="2"/>
+                <rect x="24" y="118" width="11" height="11" rx="2"/><rect x="39" y="118" width="11" height="11" rx="2"/><rect x="54" y="118" width="11" height="11" rx="2"/><rect x="69" y="118" width="11" height="11" rx="2"/><rect x="84" y="118" width="11" height="11" rx="2"/><rect x="99" y="118" width="11" height="11" rx="2"/><rect x="114" y="118" width="11" height="11" rx="2"/><rect x="129" y="118" width="11" height="11" rx="2"/>
+                <rect x="24" y="133" width="11" height="11" rx="2"/><rect x="39" y="133" width="11" height="11" rx="2"/><rect x="54" y="133" width="11" height="11" rx="2"/><rect x="69" y="133" width="11" height="11" rx="2"/><rect x="84" y="133" width="11" height="11" rx="2"/><rect x="99" y="133" width="11" height="11" rx="2"/><rect x="114" y="133" width="11" height="11" rx="2"/><rect x="129" y="133" width="11" height="11" rx="2"/>
+              </g>
+              <g fill="#e89ab0">
+                <circle cx="190" cy="34" r="6"/><circle cx="211" cy="34" r="6"/><circle cx="232" cy="34" r="6"/><circle cx="253" cy="34" r="6"/><circle cx="274" cy="34" r="6"/>
+                <circle cx="190" cy="55" r="6"/><circle cx="211" cy="55" r="6"/><circle cx="232" cy="55" r="6"/><circle cx="253" cy="55" r="6"/><circle cx="274" cy="55" r="6"/>
+                <circle cx="190" cy="76" r="6"/><circle cx="211" cy="76" r="6"/><circle cx="232" cy="76" r="6"/><circle cx="253" cy="76" r="6"/><circle cx="274" cy="76" r="6"/>
+                <circle cx="190" cy="97" r="6"/><circle cx="211" cy="97" r="6"/><circle cx="232" cy="97" r="6"/><circle cx="253" cy="97" r="6"/><circle cx="274" cy="97" r="6"/>
+              </g>
+              <text x="150" y="170" text-anchor="middle" fill="#e89ab0" font-family="'Space Mono', monospace" font-size="10" letter-spacing="1.4">FAR MORE WORDS THAN THINGS TO SAY</text>
+            </svg>
+            <div class="diagram-caption">Sixty-one name a bead &middot; three mean stop</div>
+          </div>
+          <div class="grownup">
+            <div class="grownup-label">For the grown-up</div>
+            <div class="grownup-body">
+<p><strong>The arithmetic closes exactly, and it is worth doing with a child who wants to.</strong> 61 codons name an amino acid and 3 mean stop, which is 64. Those 61 distribute as <strong>5 fourfold sets, 9 twofold sets, 3 sixfold sets, 1 threefold set and 2 single ones</strong> &mdash; and 5 + 9 + 3 + 1 + 2 = <strong>20</strong>, which is every amino acid accounted for, once each.</p>
+<p><strong>Every codon assignment in this zine was checked against the <a href="https://www.ncbi.nlm.nih.gov/Taxonomy/Utils/wprintgc.cgi">NCBI translation tables</a>, table 1, &ldquo;The Standard Code&rdquo;</strong> &mdash; not written from memory. That matters more than usual here, because the demonstration on the next two spreads only works if the particular codons named are the right ones.</p>
+<p><strong>The picture draws sixty-four squares and twenty circles at their true counts.</strong> Nothing in it is schematic except the arrangement.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">More Than One Way to Spell It &middot; Stimpunks</span>
+        <span class="spread-footer-right">5</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 6 ════ -->
+  <div class="spread" id="spread-6">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">What gives</div>
+          <h2 class="spread-heading" id="more-than-one-spelling">More than one way to spell it</h2>
+          <hr class="spectrum-line rule">
+          <div class="readaloud">
+<p>Here is what gives, and it is the whole point of this zine.</p>
+<p>Nearly every bead has <strong>more than one spelling</strong>.</p>
+<p>Glycine has four. <span class="codon">GGU</span>, <span class="codon">GGC</span>, <span class="codon">GGA</span>, <span class="codon">GGG</span>.</p>
+<p>All four mean glycine. Not one proper one and three near-misses. <em>All four are right.</em></p>
+<p><span class="turn">And leucine has <strong>six</strong>.</span></p>
+<p>Two beads do only get one spelling each, and they are the odd ones out: methionine and tryptophan.</p>
+          </div>
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig3-title fig3-desc">
+              <title id="fig3-title">How many spellings each bead gets</title>
+              <desc id="fig3-desc">A row of bars. Leucine, serine and arginine each have six blocks. Glycine has four. Phenylalanine has two. Methionine has one and tryptophan has one. The bars show that the number of spellings is not the same for every bead, and that having one is unusual.</desc>
+              <g font-family="'Space Mono', monospace" font-size="9" letter-spacing="1" fill="#c4b5d4">
+                <text x="8" y="27">LEUCINE</text><text x="8" y="53">SERINE</text><text x="8" y="79">ARGININE</text><text x="8" y="105">GLYCINE</text><text x="8" y="131">PHENYLALANINE</text><text x="8" y="157">METHIONINE</text><text x="8" y="183">TRYPTOPHAN</text>
+              </g>
+              <g fill="rgba(232,154,176,0.5)">
+                <rect x="118" y="17" width="24" height="13" rx="2"/><rect x="146" y="17" width="24" height="13" rx="2"/><rect x="174" y="17" width="24" height="13" rx="2"/><rect x="202" y="17" width="24" height="13" rx="2"/><rect x="230" y="17" width="24" height="13" rx="2"/><rect x="258" y="17" width="24" height="13" rx="2"/>
+                <rect x="118" y="43" width="24" height="13" rx="2"/><rect x="146" y="43" width="24" height="13" rx="2"/><rect x="174" y="43" width="24" height="13" rx="2"/><rect x="202" y="43" width="24" height="13" rx="2"/><rect x="230" y="43" width="24" height="13" rx="2"/><rect x="258" y="43" width="24" height="13" rx="2"/>
+                <rect x="118" y="69" width="24" height="13" rx="2"/><rect x="146" y="69" width="24" height="13" rx="2"/><rect x="174" y="69" width="24" height="13" rx="2"/><rect x="202" y="69" width="24" height="13" rx="2"/><rect x="230" y="69" width="24" height="13" rx="2"/><rect x="258" y="69" width="24" height="13" rx="2"/>
+                <rect x="118" y="95" width="24" height="13" rx="2"/><rect x="146" y="95" width="24" height="13" rx="2"/><rect x="174" y="95" width="24" height="13" rx="2"/><rect x="202" y="95" width="24" height="13" rx="2"/>
+                <rect x="118" y="121" width="24" height="13" rx="2"/><rect x="146" y="121" width="24" height="13" rx="2"/>
+                <rect x="118" y="147" width="24" height="13" rx="2"/>
+                <rect x="118" y="173" width="24" height="13" rx="2"/>
+              </g>
+            </svg>
+            <div class="diagram-caption">Spellings per bead &middot; NCBI standard code, table 1</div>
+          </div>
+          <div class="grownup">
+            <div class="grownup-label">For the grown-up</div>
+            <div class="grownup-body">
+<p><strong>The technical word for this is <em>degeneracy</em></strong> &mdash; the genetic code is said to be degenerate. It is a genuinely unfortunate term for the property it names, which is redundancy, slack, and more than one correct answer. It is not in the child&rsquo;s layer for that reason, and it is here so you have it if somebody meets it later.</p>
+<p><strong>The three sixfold beads are leucine, serine and arginine</strong>; the two singletons are methionine (<span class="codon">AUG</span>) and tryptophan (<span class="codon">UGG</span>); isoleucine is the one with exactly three. Verified against NCBI table 1.</p>
+<p><strong>Synonymous does not always mean identical in effect.</strong> Two spellings of the same amino acid produce the same bead, but they are not always interchangeable in a living cell &mdash; codon usage can affect how fast a chain is built and how it folds, and some synonymous changes do have consequences. The claim in the child layer is about what the <em>table</em> says, which is exactly and only that the bead is the same. That is true; the broader &ldquo;so it makes no difference&rdquo; is not, and is not claimed.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">More Than One Way to Spell It &middot; Stimpunks</span>
+        <span class="spread-footer-right">6</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 7 ════ -->
+  <div class="spread" id="spread-7">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Something to try</div>
+          <h2 class="spread-heading" id="something-to-try">Change one letter</h2>
+          <hr class="spectrum-line rule">
+          <div class="readaloud">
+<p>You need a pencil. The little table is underneath.</p>
+<p><strong>One.</strong> Write <span class="codon">GGU</span>. Look it up. It is <span class="bead">glycine</span>.</p>
+<p><strong>Two.</strong> Now change the <em>last</em> letter. Any letter you like. <span class="codon">GGC</span>. Or <span class="codon">GGA</span>. Or <span class="codon">GGG</span>.</p>
+<p>Look each one up.</p>
+<p><span class="turn">Still glycine. Every single time.</span></p>
+<p><strong>Three.</strong> Now put it back to <span class="codon">GGU</span> and change the <em>first</em> letter instead. G becomes A. That gives you <span class="codon">AGU</span>.</p>
+<p><span class="turn">That one is not glycine. It is <span class="bead">serine</span>.</span></p>
+<p>The last letter often does not matter at all. The first one nearly always does.</p>
+          </div>
+          <div class="codetable">
+            <table>
+              <caption>A few rows of the table, for the game</caption>
+              <thead>
+                <tr><th scope="col">Word</th><th scope="col">Bead</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>GGU</td><td>Glycine</td></tr>
+                <tr><td>GGC</td><td>Glycine</td></tr>
+                <tr><td>GGA</td><td>Glycine</td></tr>
+                <tr><td>GGG</td><td>Glycine</td></tr>
+                <tr><td>AGU</td><td>Serine</td></tr>
+                <tr><td>AGA</td><td>Arginine</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="grownup">
+            <div class="grownup-label">For the grown-up</div>
+            <div class="grownup-body">
+<p><strong>Six rows out of sixty-four, and the extract is deliberate.</strong> A full codon table on a read-aloud spread is a wall; these are exactly the rows the game needs. The whole table is at <a href="https://www.ncbi.nlm.nih.gov/Taxonomy/Utils/wprintgc.cgi">NCBI</a>, and every row above was checked against it.</p>
+<p><strong>The third position is <em>often</em> the tolerant one, not always</strong>, and the child layer says &ldquo;often&rdquo; for that reason. Glycine is a fourfold set, so all four third letters give glycine. But <span class="codon">UUU</span> and <span class="codon">UUC</span> are phenylalanine while <span class="codon">UUA</span> and <span class="codon">UUG</span> are leucine &mdash; same first two letters, and the third letter decides. If your child tests a different word and finds the third letter mattering, they have found a twofold set and they are right, not wrong.</p>
+<p><strong>Why the third position gets away with it.</strong> The pairing between a codon and the molecule that delivers the bead is looser at that position than at the other two &mdash; Crick named it <em>wobble</em>. The child does not need the mechanism to run the experiment; the pattern is real and they can find it themselves.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">More Than One Way to Spell It &middot; Stimpunks</span>
+        <span class="spread-footer-right">7</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 8 ════ -->
+  <div class="spread" id="spread-8">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">So</div>
+          <h2 class="spread-heading" id="a-lot-of-changes-change-nothing">A lot of changes change nothing</h2>
+          <hr class="spectrum-line rule">
+          <div class="readaloud">
+<p>Copying all those letters is not perfect. Sometimes a letter comes out different from the one before.</p>
+<p>And a great many of those times &mdash; <em>nothing happens at all</em>.</p>
+<p>The word is spelled a different way, and it names exactly the same bead. The string comes out the same.</p>
+<p><span class="turn">It is not that somebody caught the mistake and fixed it.</span></p>
+<p>It is that there was more than one right answer, so it was never a mistake in the first place.</p>
+          </div>
+          <div class="grownup">
+            <div class="grownup-label">For the grown-up</div>
+            <div class="grownup-body">
+<p><strong>These are called <em>synonymous</em> or <em>silent</em> substitutions</strong>, and they are common enough to be a standard tool: comparing rates of synonymous and non-synonymous change is one of the ordinary ways of detecting selection on a gene.</p>
+<p><strong>There is a famous result here and it needs its hedge carried with it.</strong> Freeland &amp; Hurst, <em>&ldquo;The genetic code is one in a million,&rdquo; J. Mol. Evol.</em> <strong>47</strong>, 238&ndash;248 (1998), found the standard code extraordinarily good at limiting the damage of errors compared with randomly generated alternatives. <span class="gold">Read at second hand</span> &mdash; PubMed refused us, so those figures come from an open-access review that cites it, not from the paper.</p>
+<p><strong>And the hedge is the part that usually gets dropped.</strong> That same review puts the code <em>&ldquo;halfway from an average random code to the summit&rdquo;</em> of what is possible, notes that billions of alternative codes would do better, and concludes that Crick&rsquo;s rival account &mdash; that the code is a <em>frozen accident</em>, arbitrary and stuck because <em>&ldquo;at the present time any change would be lethal, or at least very strongly selected against&rdquo;</em> &mdash; is essentially unfalsified. <strong>So this zine does not say the code was arranged kindly, or arranged at all.</strong> It says what is plainly true and checkable: there is more than one right spelling, and a lot of changes therefore change nothing. Why that is so is an open argument, and the page does not borrow its warmth.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">More Than One Way to Spell It &middot; Stimpunks</span>
+        <span class="spread-footer-right">8</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 9 ════ -->
+  <div class="spread" id="spread-9">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Except</div>
+          <h2 class="spread-heading" id="you-are-using-two">And you are using two of these</h2>
+          <hr class="spectrum-line rule">
+          <div class="readaloud">
+<p>The list of which word means which bead &mdash; <em>that</em> is the code. One list, for everything alive.</p>
+<p>You would think there is one of it.</p>
+<p>People have written down at least <strong>33</strong>.</p>
+<p><span class="turn">And you are using two of them. Right now. Inside you.</span></p>
+<p>Most of you uses the usual list. But the tiny power parts inside your cells &mdash; they are called <strong>mitochondria</strong> &mdash; use a different one.</p>
+<p>They do not agree about <span class="codon">UGA</span>. In most of you it means <em>stop</em>. In there it means a bead called tryptophan.</p>
+          </div>
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 300 180" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig4-title fig4-desc">
+              <title id="fig4-title">Two lists that disagree</title>
+              <desc id="fig4-desc">Two columns side by side. The left is headed most of you and reads: UGA means stop, AGA means arginine, AUA means isoleucine. The right is headed your mitochondria and reads: UGA means tryptophan, AGA means stop, AUA means methionine. Each of the three rows differs between the two columns.</desc>
+              <g font-family="'Space Mono', monospace" font-size="9" letter-spacing="1.4" text-anchor="middle" fill="#c4b5d4">
+                <text x="80" y="16">MOST OF YOU</text>
+                <text x="222" y="16">YOUR MITOCHONDRIA</text>
+              </g>
+              <g stroke="rgba(232,154,176,0.5)" stroke-width="1.4"><line x1="151" y1="26" x2="151" y2="150"/></g>
+              <g font-family="'Space Mono', monospace" font-size="11" font-weight="700" letter-spacing="1.6">
+                <text x="18" y="52" fill="#e89ab0">UGA</text><text x="70" y="52" fill="#f9fafb">stop</text>
+                <text x="18" y="86" fill="#e89ab0">AGA</text><text x="70" y="86" fill="#f9fafb">arginine</text>
+                <text x="18" y="120" fill="#e89ab0">AUA</text><text x="70" y="120" fill="#f9fafb">isoleucine</text>
+                <text x="163" y="52" fill="#e89ab0">UGA</text><text x="215" y="52" fill="#fbbf24">tryptophan</text>
+                <text x="163" y="86" fill="#e89ab0">AGA</text><text x="215" y="86" fill="#fbbf24">stop</text>
+                <text x="163" y="120" fill="#e89ab0">AUA</text><text x="215" y="120" fill="#fbbf24">methionine</text>
+              </g>
+              <text x="150" y="168" text-anchor="middle" fill="#fbbf24" font-family="'Space Mono', monospace" font-size="10" letter-spacing="1.4">SAME BODY. SAME MOMENT.</text>
+            </svg>
+            <div class="diagram-caption">NCBI translation tables 1 and 2</div>
+          </div>
+          <div class="grownup">
+            <div class="grownup-label">For the grown-up</div>
+            <div class="grownup-body">
+<p><strong>The count and the differences are NCBI&rsquo;s.</strong> Their translation tables run to <strong>33</strong>, numbered 1&ndash;33 with several retired and the numbers left as gaps. Table 1 is &ldquo;The Standard Code&rdquo;; table 2 is the vertebrate mitochondrial code, which is the one your mitochondria use. It differs in three places: <span class="codon">UGA</span> is tryptophan rather than stop, <span class="codon">AGA</span> and <span class="codon">AGG</span> are stop rather than arginine, and <span class="codon">AUA</span> is methionine rather than isoleucine.</p>
+<p><strong>&ldquo;At least 33&rdquo; is doing honest work.</strong> That is how many have been catalogued and numbered, not how many exist. It is a count of a list, and the list has grown.</p>
+<p><strong>This is the sharpest evidence for something <a href="you-were-never-one-thing-zine.html">No. 7</a> argued</strong> &mdash; that the mitochondrion is a former free-living bacterium that <em>&ldquo;never quite stopped being itself.&rdquo;</em> It kept its own DNA and its own ribosomes; it also kept its own reading of the table. The human mitochondrial genome encodes 13 proteins, and those 13 are read by a different code from everything else in the same cell.</p>
+<p><strong>So &ldquo;the universal genetic code&rdquo; is not universal inside one human being</strong>, which is a sentence worth saying slowly. The usual phrase survives because table 1 covers the overwhelming majority of genes in the overwhelming majority of organisms &mdash; and because a rule is allowed to be a rule with exceptions, provided somebody says where they are.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">More Than One Way to Spell It &middot; Stimpunks</span>
+        <span class="spread-footer-right">9</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 10 ════ -->
+  <div class="spread" id="spread-10">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">What it says, and what it does not</div>
+          <h2 class="spread-heading" id="what-the-code-says">What the code actually says</h2>
+          <hr class="spectrum-line rule">
+          <div class="readaloud">
+<p>People say <em>the genetic code</em> as if it meant the instructions for making you. As if somewhere in there it said what you would be like.</p>
+<p>It does not say that. It has never said that.</p>
+<p><span class="turn">It says which bead comes next. That is all it says.</span></p>
+<p>It does not say what you will be good at.</p>
+<p>It does not say what you will love, or what will be hard, or what you will be like to be around.</p>
+<p>It does not say who you are.</p>
+<p>It is a list for putting beads on a string, one at a time, in order.</p>
+<p><span class="turn">And even <em>that</em> list has more than one right answer nearly everywhere you look.</span></p>
+          </div>
+          <div class="grownup">
+            <div class="grownup-label">For the grown-up</div>
+            <div class="grownup-body">
+<p><strong>This spread is in the child&rsquo;s layer deliberately, and it is the one departure from <a href="the-same-four-letters-zine.html">No. 105</a>.</strong> That zine protected itself by never saying what DNA does. This one cannot &mdash; the code <em>is</em> what it does &mdash; so the protection has to come from accuracy instead: the popular meaning of &ldquo;genetic code&rdquo; is not a simplification of the real one, it is a different claim, and correcting it is the honest move rather than a reassuring one.</p>
+<p><strong>Everything on this page is literally true of the table.</strong> The genetic code is a mapping from 64 triplets to 20 amino acids plus stop. There is no entry for a trait. How bodies actually develop involves regulation, timing, environment, chance and a great deal more besides sequence &mdash; and none of that is in this table either.</p>
+<p><strong>The <em>blueprint</em> metaphor is the usual carrier of the misreading</strong>, and it has been argued against at length in the literature &mdash; the objection being that a blueprint specifies a finished object deterministically and leaves no room for the developmental process that actually does the building. <span class="gold">Cited as a lead, not read:</span> we have identified but not read Pigliucci&rsquo;s 2010 paper on the end of the genes-as-blueprint metaphor, so it is named here and nothing in this zine rests on it.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">More Than One Way to Spell It &middot; Stimpunks</span>
+        <span class="spread-footer-right">10</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 11 ════ -->
+  <div class="spread" id="spread-11">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">For the grown-up, not the child</div>
+          <h2 class="spread-heading" id="what-this-one-refuses">What this one refuses</h2>
+          <hr class="spectrum-line rule">
+          <div class="readaloud">
+<p>This page is for you rather than for the child. Its companion, No. 105, could stay safe by never saying what DNA does. This one walks straight into the subject where this genre does its damage, so it owes you a plainer account of where it stops.</p>
+          </div>
+          <div class="refusals">
+            <div class="refusal"><span class="refusal-tag">Not</span><span><strong>A blueprint.</strong> The code specifies amino acids, not outcomes. Nothing here says a stretch of DNA determines a trait, and the one spread that addresses the popular reading does so to <em>correct</em> it, in the child&rsquo;s own words, rather than to soften it.</span></div>
+            <div class="refusal"><span class="refusal-tag">Not</span><span><strong>&ldquo;A gene for&rdquo; anything.</strong> Same rule as its companion, and the phrase again appears nowhere. Twenty beads and a list of spellings is the entire subject of this zine.</span></div>
+            <div class="refusal"><span class="refusal-tag">Not</span><span><strong>A code that was arranged kindly.</strong> The redundancy is real and the error-limiting result is real, and the temptation is to read the table as considerate. <span class="gold">We do not.</span> The best-known finding here sits against Crick&rsquo;s frozen accident, the code ranks about halfway to what is possible, and how it got this way is an open argument. A fact is not nicer for being useful to us.</span></div>
+            <div class="refusal"><span class="refusal-tag">Not</span><span><strong>A permission slip from the mitochondria.</strong> Two codes in one body is a fact about molecular history, not an argument about people. The naturalistic fallacy is as available here as it was in No. 105 and is refused the same way: what the exception shows is about <em>us</em> &mdash; that a rule we called universal was stated more confidently than it had earned.</span></div>
+            <div class="refusal"><span class="refusal-tag">Not</span><span><strong>Slack as a moral.</strong> &ldquo;Most changes change nothing&rdquo; is a statement about a lookup table. It is not a claim that mistakes do not matter, and it is not advice. The zine stops at the table on purpose.</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">More Than One Way to Spell It &middot; Stimpunks</span>
+        <span class="spread-footer-right">11</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 12: COLOPHON ════ -->
+  <div class="spread" id="spread-12">
+    <div class="interior">
+      <div class="colophon">
+        <div>
+          <div class="colophon-top">
+            <span class="colophon-ls">L&#9733;S</span>
+            <p class="colophon-phrase">Sixty-four ways of writing, twenty things to write. Nearly everything alive is spelled more than one way, and all the spellings are right.</p>
+          </div>
+
+          <div class="series-list">
+            <div class="series-item"><span class="series-num">No. 99</span> <a href="the-dog-breathes-out-sideways-zine.html">The Dog Breathes Out Sideways</a> &mdash; the first demonstration, with a feather</div>
+            <div class="series-item"><span class="series-num">No. 100</span> <a href="almost-all-of-it-is-holes-zine.html">Almost All of It Is Holes</a> &mdash; a seed that flies on the parts that are not there</div>
+            <div class="series-item"><span class="series-num">No. 101</span> <a href="one-ear-higher-than-the-other-zine.html">One Ear Higher Than the Other</a> &mdash; two ears that disagree, on purpose</div>
+            <div class="series-item"><span class="series-num">No. 102</span> <a href="it-stays-green-and-then-it-goes-zine.html">It Stays Green, and Then It Goes</a> &mdash; what a leaf actually does in autumn</div>
+            <div class="series-item"><span class="series-num">No. 104</span> <a href="just-right-for-whom-zine.html">Just Right For Whom?</a> &mdash; the warm band round a star, and who it suits</div>
+            <div class="series-item"><span class="series-num">No. 105</span> <a href="the-same-four-letters-zine.html">The Same Four Letters</a> &mdash; the alphabet, and the order nobody checks</div>
+            <div class="series-item current"><span class="series-num">No. 106</span> More Than One Way to Spell It &mdash; what the order is for, and why it has spare room &larr; you are here</div>
+          </div>
+
+          <div class="reflect">
+            <div class="reflect-label">To ask together</div>
+            <p class="reflect-q">Can you think of another thing that has more than one right spelling?</p>
+            <p class="reflect-q">Why do you think the last letter is the one that gets to be different?</p>
+            <p class="reflect-q">If two lists inside you disagree about a word, how does anything work at all?</p>
+            <p class="reflect-q">What would happen if there were sixty-four beads instead of twenty?</p>
+          </div>
+        </div>
+
+        <div class="colophon-body">
+          <h3 class="colophon-h" id="sources">Where all of this comes from</h3>
+          <p><strong>Every codon in this zine, and the two tables on spread nine.</strong> The <a href="https://www.ncbi.nlm.nih.gov/Taxonomy/Utils/wprintgc.cgi">NCBI translation tables</a> &mdash; table 1, &ldquo;The Standard Code&rdquo;, and table 2, the vertebrate mitochondrial code. <span class="green">Read directly.</span> Source of every codon-to-amino-acid assignment used here, the count of 33 tables, and the three differences drawn in figure four. <strong>Nothing in this zine was written from memory</strong>, which matters more than usual because the demonstration on spread seven fails if a single row is wrong.</p>
+          <p><strong>Spread eight, and its hedge.</strong> S. J. Freeland &amp; L. D. Hurst, <em>&ldquo;The genetic code is one in a million,&rdquo; J. Mol. Evol.</em> <strong>47</strong>, 238&ndash;248 (1998), PMID 9732450. <span class="gold">Not read</span> &mdash; PubMed refused the request. Its result, and the criticism printed beside it, both come from an open-access review that cites it and that we did read. F. H. C. Crick, <em>&ldquo;The origin of the genetic code,&rdquo; J. Mol. Biol.</em> <strong>38</strong>, 367&ndash;379 (1968) is likewise <span class="gold">quoted at second hand</span>, from that review.</p>
+          <p><strong>One paper named and not used.</strong> M. W. Nirenberg &amp; J. H. Matthaei, <em>&ldquo;The dependence of cell-free protein synthesis in E. coli upon naturally occurring or synthetic polyribonucleotides,&rdquo; PNAS</em> <strong>47</strong>, 1588&ndash;1602 (1961), PMID 14479932 &mdash; the experiment that read the first codon. <span class="gold">Not read:</span> PubMed Central holds it only as scanned page images. An early outline had a spread on it; it came out rather than be built on a paper nobody here had read.</p>
+
+          <h3 class="colophon-h" id="how-this-is-built">How this one is built</h3>
+          <p>Two layers on every spread. <strong>Large plain type for the child, first in the document</strong>, so a screen reader meets it first &mdash; then a bordered box for the adult, holding the citations, the exact wording and every place the evidence runs out. Pictures sit between the two. The refusals on spread eleven are <span class="violet">addressed to you, not to the child.</span></p>
+          <p><strong>Spread ten is the one departure from this collection&rsquo;s usual caution</strong>, and it was a deliberate call. Its companion protected itself by never saying what DNA does; this zine cannot, so the correction is made in the child&rsquo;s own layer in plain type rather than kept in a box the child never hears.</p>
+
+          <h3 class="colophon-h" id="what-we-left-out">What we left out, and what is still open</h3>
+          <p><strong>Two zines running have ended on an exception</strong> &mdash; a virus in pond water, and now a disagreement between two lists inside one body. <span class="cyan">That is not a habit, and it is worth saying why.</span> A rule stated as universal earns the question <em>where does it give?</em>, and both times the answer was already published and interesting. When a third piece reaches for the same shape without the exception being the best thing in the material, that will be the time to stop.</p>
+          <p><strong>Open, and said on the page.</strong> Why the code has the shape it has is unsettled &mdash; frozen accident, error minimisation, or both at different stages &mdash; and spread eight leaves it unsettled rather than choosing the flattering answer. Reading frames and frameshifts are named on spread three and deliberately not pursued. And synonymous changes are not always consequence-free in a living cell, which spread six says in its grown-up box rather than letting the child layer overreach.</p>
+          <p><strong>For grown-ups who want the rest of it.</strong> <a href="you-were-never-one-thing-zine.html">You Were Never One Thing</a> is where the mitochondria on spread nine come from &mdash; a bacterium that moved in and never entirely stopped being itself. It is not written for a child, and this zine borrows nothing from it into the read-aloud layer.</p>
+          <div class="colophon-footer">
+            <a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks Foundation</a> &times; <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a><br>
+            stimpunks.org &middot; morerealms.com &middot; starstuff.earth<br>
+            <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> &middot; open edition &middot; print freely
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">More Than One Way to Spell It &middot; Stimpunks</span>
+        <span class="spread-footer-right">12</span>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /zine-shell --></main>
+
+
+<script>
+  let current = 1;
+  const total = 12;
+
+  function changePage(dir) {
+    const next = current + dir;
+    if (next < 1 || next > total) return;
+    document.getElementById('spread-' + current).classList.remove('active');
+    current = next;
+    document.getElementById('spread-' + current).classList.add('active');
+    document.getElementById('page-counter').textContent = current + ' / ' + total;
+    document.getElementById('prev-btn').disabled = current === 1;
+    document.getElementById('next-btn').disabled = current === total;
+    document.getElementById('prev-btn').classList.toggle('active', current > 1);
+    document.getElementById('next-btn').classList.toggle('active', current < total);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') changePage(1);
+    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   changePage(-1);
+  });
+
+  document.getElementById('prev-btn').disabled = true;
+  document.getElementById('next-btn').classList.add('active');
+</script>
+<script src="starstuff.js" defer></script>
+</body>
+</html>
