@@ -32,6 +32,30 @@ New piece Revised Fact-check Site
 
 2026 · September 12
 
+## A byline has one field and contribution has fourteen — the constructive half of the credit run
+
+Zine No. 110 joins [Star Stuff](https://starstuff.earth/collection-star-stuff.html), which now holds forty-three. It is the practice piece: not who was wronged, but what the format underneath all of it can and cannot record, and what to do instead at any scale.
+
+NewFourteen Kinds of Doing — Zine No. 110, 12 spreads
+
+**Take the byline seriously as engineering and it is a data structure with exactly one shape:** an ordered list of names, with no field for what anybody did. Position is made to stand in for it, which is why the conventions differ by discipline and nobody outside a field can read them. In May 2015 that structure was pushed to its limit — the ATLAS and CMS collaborations published a combined Higgs mass measurement with **5,154 authors**, and of its thirty-three pages only the first nine carried the research and the references. The other twenty-four were names and institutions. [The zine](https://starstuff.earth/fourteen-kinds-of-doing-zine.html) refuses the easy reading: the absurdity is not how many people it took, because five thousand people really did make that measurement. It is the format, which could record that honesty only by printing twenty-four pages of names and still saying nothing about any one of them.
+
+**What got built instead is CRediT — fourteen roles, ANSI/NISO Z39.104-2022 — and the interesting half is reading the list rather than citing it.** Data curation. Software. Validation. Visualization. Resources. Somebody cleaned the data, wrote the code, checked whether it was true, made it legible, kept the instrument running. All of it is work; none of it has ever had anywhere to go. Which gives the argument without anything being bolted on: *a recognition system with one field reliably recognises the people whose contribution fits that field, and reliably misses everyone else* — with nobody intending it, and with none of the missed work any less real. The fix was never a better kind of contributor. It was another field.
+
+Fact-checkA paper we could not read, and a figure two sources disagree about
+
+**The zine will not end on the standard as a happy conclusion, and the source for the reason is one we could not open.** Once contributions became recordable they became countable, and Larivière, Pontille and Sugimoto used contributorship statements to measure how scientific labour actually divides. The citation is confirmed at Crossref; **the publisher returned 403 and we did not read the paper.** A search summary offered us specific percentages, and a search summary is not a citation — so the spread states the *direction* of the finding and quotes no figure at all, and the colophon asks anyone who can reach it to send the numbers. A vocabulary makes work visible; it does not make it valued.
+
+**And the headline figure has two versions.** *Nature*’s report gives 5,154 authors; another source gives 5,153. We did not count the list ourselves. Rather than average them or pick one quietly, the zine prints *Nature*’s figure and states the discrepancy. **The two-column arrangement of the fourteen roles is also ours rather than the standard’s**, which publishes one flat alphabetical list and ranks nothing — and the spread says so on its face, because presenting an editorial reading as a published norm would be self-refuting in a zine about attribution.
+
+**One link came out before shipping.** A draft linked the repository’s fact-check ledger as a reader-facing document. Nothing on the site links it, it is not in the sitemap, and it is raw markdown with no navigation — making a zine the first public door to a maintenance file is an editorial decision rather than a citation, so the sentence now describes the ledger and links the changelog instead.
+
+RevisedWhat the zine says about this site, which is not flattering
+
+Spread nine shows our own practice at the point where it is checkable rather than where it looks good, and then names a failure that is real and current: **credit here is well kept for sources and poorly kept for labour.** Every quotation on this site carries its route — read at full text, from secondary accounts, or not read. The person who built a diagram or rewrote a paragraph mostly appears nowhere. That is the same one-field problem the zine is describing, in our own house, only partly fixed. The refusals say so outright, because a piece about attribution that overstated its own would come apart in a single move.
+
+2026 · September 12
+
 ## A catalogue of missing names, including the two stories we had to correct against ourselves
 
 Field Guide No. 25 joins [Field Guides](https://starstuff.earth/collection-field-guides.html), which now holds twenty-four. It sorts eleven pieces of work not by how famous the person was but by *how the name came off* — and two of its entries exist to correct the popular telling in the direction that costs the argument something.

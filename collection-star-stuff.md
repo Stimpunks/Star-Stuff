@@ -15,7 +15,7 @@ generated_by: "tools/build-markdown.mjs, from the page's own <main> landmark"
 
 # Star *Stuff*
 
-A Star Stuff collection · 42 pieces
+A Star Stuff collection · 43 pieces
 
 The founding register: one settled, checkable fact, followed honestly, already contains the claim about belonging.
 
@@ -535,6 +535,20 @@ Many of us leave the gathering and go sit with the dogs. The usual explanation i
 
 **Stress has an outgassing, and a nose can find it through a sample jar.** Wilson, Campbell, Petzel and Reeve ran a double-blind, two-phase, three-alternative forced-choice trial: four dogs — Treo, Winnie, Fingal and Soot — presented with combined breath and sweat taken from thirty-six people before and after three minutes of counting backwards aloud from 9000 in seventeens. Stress was confirmed independently, and eleven of the fifty-three people recruited were *excluded for not having a sufficient stress response at all*. The dogs picked the stress sample in **675 of 720 trials**, and in **34 of 36** on first exposure to a stranger they had no history with. The authors’ own conclusion is about chemistry, not sympathy: an acute stress response changes the volatile organic compounds coming off breath and sweat. A volatile organic compound is metabolic exhaust, not a performance — you do not rehearse it, time it, or get better at it. **Which places the dog on the other channel.** A room grades a narrow authored band: face, gaze, prosody, turn-taking latency. That band is what masking works on, at enormous cost, and it is the band the dogs never had. So the quiet room is not restful because the dog understands us better; it is restful because *the dog is reading the one channel we are not required to manage* — and the signal everybody agreed was missing turns out to be present, legible and reliable at 93.75 per cent as soon as somebody stops looking in the band we spend our lives performing. **The honesty is printed rather than kept back.** The sample is four dogs and the authors call it proof of principle in their own words; the dogs were *trained to alert* and rewarded for it; and discrimination is not interpretation, which is not care. Nagasawa’s famous oxytocin gaze loop is on no spread here, because published commentaries flag confounds in it and a contested result is not a floor. Worse for the warm reading: Parr-Cortes and colleagues found eighteen dogs exposed to an unfamiliar person’s stress odour became significantly *less* likely to approach an ambiguous food location — possible risk-reduction rather than comfort. The dog beside us may be being careful, not soothing. It closes on **Carol Millman**, an Autistic professional dog trainer, who answered “is ABA dog training for children?” by pointing out that the comparison is unfair to the trainers: meet every fundamental need before any conditioning, relieve the fear rather than train away its display, and know that a dog taught not to growl is a *time bomb dog*, because you removed the warning and not the fear. That professional standard is higher than the one applied behaviour analysis has held for us. Thirteen spreads, two figures, five refusals. A rhyme, not a proof.
 
+### [Fourteen Kinds of Doing](https://starstuff.earth/fourteen-kinds-of-doing-zine.html)
+
+Zine No. 110 · Stimpunks × More Realms · companion to Field Guide No. 25
+
+*A byline has one field and contribution does not — what happened when the format was pushed to 5,154 names, what got built instead, and the practice that follows at any scale.*
+
+Twenty-four of the paper’s thirty-three pages were the list of names, and not one of them said what anybody did. The fix was never a better kind of contributor. It was another field.
+
+**Details**
+
+**Take the byline seriously as engineering and it is a data structure with exactly one shape:** an ordered list of names, with no field for what anybody did. In May 2015 that structure was pushed to its limit — the ATLAS and CMS collaborations published a combined Higgs mass measurement with **5,154 authors**, and of its 33 pages only the first nine carried the research and the references. The other 24 were names and institutions. The zine refuses the easy reading: the absurdity is not how many people it took, because five thousand people really did make that measurement. It is the *format*, which could record that honesty only by printing 24 pages of names and still saying nothing about any of them.
+
+**What got built instead is CRediT — fourteen roles, ANSI/NISO Z39.104-2022 — and the interesting half is reading the list rather than citing it.** Data curation. Software. Validation. Visualization. Resources. Somebody cleaned the data, wrote the code, checked whether it was true, made it legible, kept the instrument running. All of it is work and none of it has ever had anywhere to go. *A recognition system with one field reliably recognises the people whose contribution fits that field and reliably misses everyone else* — without anyone intending it. **And the zine will not end there:** once contributions became recordable they became countable, and Larivière, Pontille and Sugimoto found the division of labour running along familiar lines. A vocabulary makes work visible; it does not make it valued. Then five moves that need no standard at all, what this site actually does, the failure it has not fixed — credit here is well kept for sources and poorly kept for labour — and the limit: **a named contributor who has not been paid is a contributor who has not been paid.**
+
 How this collection works
 
 ## What holds these together
@@ -545,7 +559,7 @@ That is the difference between physics as argument and physics as decoration. In
 
 ## Sorted by register, not by date
 
-The first ten zines founded this method, and seven of them are here. But **thirty-five of these pieces were made much later** — *The Nearest Body*, *No Universal Now*, *The Same Water* and *Not a Line* among them — and still belong here, because they do exactly the same thing. Tidal force really does fall off with the cube of distance, which is why the Moon runs the tide even though the Sun out-masses it some 27 million times. Clocks really do run at different rates by speed and gravity, which is why your phone's GPS has to correct for it. Water really does hold and then flip at a threshold rather than stiffening by degrees.
+The first ten zines founded this method, and seven of them are here. But **thirty-six of these pieces were made much later** — *The Nearest Body*, *No Universal Now*, *The Same Water* and *Not a Line* among them — and still belong here, because they do exactly the same thing. Tidal force really does fall off with the cube of distance, which is why the Moon runs the tide even though the Sun out-masses it some 27 million times. Clocks really do run at different rates by speed and gravity, which is why your phone's GPS has to correct for it. Water really does hold and then flip at a threshold rather than stiffening by degrees.
 
 Membership here is decided by **mechanism, not chronology**. A piece is in this collection if the fact is doing the work. The numbers still say when each one was made — see [Cosmic Connections](https://starstuff.earth/cosmic-connections.html) on why we kept them that way.
 
