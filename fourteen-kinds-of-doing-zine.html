@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0a0a14">
+<link rel="canonical" href="https://starstuff.earth/fourteen-kinds-of-doing-zine.html">
+<meta name="description" content="A byline is a data structure with exactly one shape: an ordered list of names, with no field for what anybody did. In May 2015 that structure was pushed to its limit &mdash; the ATLAS and CMS collaborations published a combined Higgs mass measurement in Physical Review Letters with 5,154 authors, and of its 33 pages only the first nine carried the research and the references; the other 24 were the list of names and institutions. The absurdity is not the number of people it took. It is the format. What the field built instead is CRediT, the Contributor Roles Taxonomy, fourteen named roles standardised as ANSI/NISO Z39.104-2022 &mdash; and the interesting half is reading the list: conceptualization, data curation, formal analysis, funding acquisition, investigation, methodology, project administration, resources, software, supervision, validation, visualization, and writing in two kinds. Most of those have never been visible in a byline at all. The person who kept the instrument running, curated the data, checked the arithmetic or made the figure legible has always been doing that work, and there has never been a field to put them in. A recognition system with one slot recognises one shape of contribution. And the zine does not claim the taxonomy fixes it: Larivi&egrave;re, Pontille and Sugimoto measured the division of labour once it became measurable and found a division, which is what a vocabulary does &mdash; it makes the thing visible, not valued. Then the practice, at any scale, and what this site actually does and fails to do. Twelve spreads, two figures, five refusals. Companion to Field Guide No. 25.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Star Stuff &middot; Stimpunks Foundation &times; More Realms">
+<meta property="og:url" content="https://starstuff.earth/fourteen-kinds-of-doing-zine.html">
+<meta property="og:title" content="Fourteen Kinds of Doing">
+<meta property="og:description" content="A byline has one field and contribution has fourteen. 5,154 authors, 24 of 33 pages, and what the field built when the format finally broke &mdash; plus the practice, at any scale.">
+<meta property="og:image" content="https://starstuff.earth/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A rainbow-hued cosmic image &mdash; we are all made of star stuff.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Fourteen Kinds of Doing">
+<meta name="twitter:description" content="The byline is a one-field structure and contribution is not. What happens when you push it to 5,154 names &mdash; and what to do instead, at any scale.">
+<meta name="twitter:image" content="https://starstuff.earth/og-card.jpg">
+<title>Fourteen Kinds of Doing &mdash; Stimpunks Zine No. 110</title>
+<link rel="stylesheet" href="starstuff.css">
+<style>
+  :root {
+    --void:  var(--sp-void-deep);
+    --deep:  var(--sp-deep);
+    --page:  var(--sp-page);
+    --violet:var(--sp-purple);
+    --pink:  var(--sp-pink);
+    --gold:  var(--sp-gold);
+    --cyan:  var(--sp-cyan);
+    --green: var(--sp-green);
+    --ember: #c1653a;
+    /* This zine's identity accent. CYAN, for the plainest possible reason:
+       the subject is a RECORD -- a byline, a taxonomy, a colophon, a ledger of
+       who did which part -- and cyan is the house's cold, technical accent,
+       used on every field guide's grown-up box for exactly that register.
+       Gold was the obvious first choice, since a byline is a name set in type,
+       and it is taken twice over in this neighbourhood: No. 97 next door in
+       this collection, and Field Guide No. 25, which is this zine's companion
+       and must not be confusable with it at a glance. */
+    --accent: var(--sp-cyan);
+    --star-white: var(--sp-white-soft);
+    --stardust:   var(--sp-secondary-soft);
+    --dim:   var(--sp-dim);
+    --dim2:  var(--sp-dim-soft);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--void);
+    font-family: 'Atkinson Hyperlegible Next', system-ui, sans-serif;
+    color: var(--star-white);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── STARFIELD (gold · white · violet — a warm, low-lit room off the main one) ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 11% 21%, rgba(34,211,238,0.50) 0%, transparent 100%),
+      radial-gradient(1px 1px at 29% 54%, rgba(244,244,251,0.60) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 47% 14%, rgba(167,139,250,0.42) 0%, transparent 100%),
+      radial-gradient(1px 1px at 63% 76%, rgba(244,244,251,0.62) 0%, transparent 100%),
+      radial-gradient(2px 2px at 84% 26%, rgba(34,211,238,0.44) 0%, transparent 100%),
+      radial-gradient(1px 1px at 89% 59%, rgba(167,139,250,0.44) 0%, transparent 100%),
+      radial-gradient(1px 1px at 93% 84%, rgba(244,244,251,0.50) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 6% 67%, rgba(34,211,238,0.42) 0%, transparent 100%),
+      radial-gradient(1px 1px at 37% 88%, rgba(167,139,250,0.42) 0%, transparent 100%),
+      radial-gradient(1px 1px at 56% 37%, rgba(244,244,251,0.52) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .zine-shell { position: relative; z-index: 1; max-width: 820px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+
+  .nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem; }
+  .nav-brand { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--dim); }
+  .nav-controls { display: flex; gap: 0.5rem; align-items: center; }
+  .nav-btn { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; background: transparent; color: var(--dim2); border: 1px solid rgba(196,181,212,0.25); border-radius: 3px; padding: 0.4rem 0.75rem; cursor: pointer; transition: all 0.2s; }
+  .nav-btn.active { color: var(--accent); border-color: rgba(34,211,238,0.5); }
+  .nav-btn:disabled { opacity: 0.3; cursor: default; }
+  .page-counter { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.1em; color: var(--dim); padding: 0 0.4rem; }
+
+  .spread { display: none; animation: fadeIn 0.5s ease forwards; }
+  .spread.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ── COVER ── */
+  .cover-spread {
+    position: relative; min-height: 520px; border-radius: 4px; overflow: hidden;
+    background:
+      radial-gradient(ellipse at 20% 22%, rgba(34,211,238,0.11) 0%, transparent 52%),
+      radial-gradient(ellipse at 80% 30%, rgba(167,139,250,0.09) 0%, transparent 52%),
+      radial-gradient(ellipse at 68% 88%, rgba(244,114,182,0.06) 0%, transparent 52%),
+      radial-gradient(ellipse at 22% 86%, rgba(34,211,238,0.06) 0%, transparent 52%),
+      var(--deep);
+    border: 1px solid rgba(34,211,238,0.25);
+    box-shadow: inset 0 0 80px rgba(34,211,238,0.05), 0 0 0 4px rgba(255,255,255,0.03);
+    display: flex; flex-direction: column; justify-content: flex-end; padding: 3rem;
+  }
+  .cover-motif { position: absolute; top: -6px; right: -10px; width: 320px; height: 320px; opacity: 0.72; pointer-events: none; }
+  .cover-issue { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.5em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.5rem; }
+  .cover-title { font-weight: 700; font-size: clamp(1.9rem, 5.2vw, 3rem); line-height: 1.03; color: var(--star-white); letter-spacing: -0.01em; margin-bottom: 0.9rem; }
+  .cover-title .amp { color: var(--accent); font-style: italic; }
+  .cover-subtitle { font-size: 1rem; color: var(--stardust); opacity: 0.85; margin-bottom: 1.5rem; max-width: 470px; line-height: 1.55; }
+  .cover-byline { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.14em; color: var(--dim); margin-bottom: 1.8rem; }
+  .cover-byline strong { color: var(--stardust); font-weight: 700; }
+  .cover-rule { width: 220px; max-width: 60%; margin-bottom: 1.3rem; }
+  .cover-meta { display: flex; gap: 2rem; align-items: center; }
+  .cover-ls { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 1.4rem; color: var(--accent); letter-spacing: 0.05em; }
+  .cover-meta-text { font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--dim2); line-height: 1.9; }
+  .cover-corner { position: absolute; top: 2rem; right: 2.5rem; text-align: right; }
+  .cover-corner-num { font-weight: 700; font-size: 4.5rem; line-height: 1; color: var(--accent); opacity: 0.20; }
+  .cover-corner-label { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--cyan); display: block; margin-top: -0.3rem; }
+
+  /* ── INTERIOR ── */
+  .interior { background: var(--page); border: 1px solid rgba(34,211,238,0.15); border-radius: 4px; overflow: hidden; min-height: 480px; }
+  .spread-2col { display: grid; grid-template-columns: 1fr 1fr; min-height: 440px; }
+  .spread-left, .spread-right { padding: 3rem 2.4rem; position: relative; }
+  .spread-left { border-right: 1px solid rgba(167,139,250,0.12); }
+
+  .spread-2col.stacked { display: flex; flex-direction: column; }
+  .spread-2col.stacked > .spread-left,
+  .spread-2col.stacked > .spread-right { border-right: none; }
+  .spread-2col.stacked > .col-diagram { order: 2; padding-top: 0; }
+  .spread-2col.stacked > .col-text { padding-left: max(2.4rem, calc((100% - 32rem) / 2)); padding-right: max(2.4rem, calc((100% - 32rem) / 2)); }
+  .spread-2col.stacked .diagram-wrap { height: auto; }
+  .spread-2col.stacked .diagram { max-width: 460px; }
+
+  .eyebrow { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.1rem; }
+  .body-text { font-size: 0.98rem; line-height: 1.72; color: var(--stardust); }
+  .body-text p { margin-bottom: 1rem; }
+  .body-text p:last-child { margin-bottom: 0; }
+  .body-text strong { font-weight: 700; color: var(--star-white); }
+  .body-text em { font-style: italic; color: var(--star-white); }
+  .body-text a { color: var(--cyan); text-decoration: none; border-bottom: 1px solid rgba(34,211,238,0.4); }
+  .body-text a:hover { border-bottom-color: var(--cyan); color: var(--star-white); }
+  /* Accent spans that sit OUTSIDE .body-text — inside .refusals and .colophon-body,
+     which are its siblings. The No. 67 fault check-classes.mjs was written for. */
+  .zine-shell span.violet { color: var(--violet); font-weight: 700; }
+  .zine-shell span.gold { color: var(--gold); font-weight: 700; }
+  .zine-shell span.cyan { color: var(--cyan); font-weight: 700; }
+  .zine-shell span.pink { color: var(--pink); font-weight: 700; }
+  .zine-shell span.green { color: var(--green); font-weight: 700; }
+  .body-text .violet { color: var(--violet); font-weight: 700; }
+  .body-text .pink { color: var(--pink); font-weight: 700; }
+  .body-text .gold { color: var(--gold); font-weight: 700; }
+  .body-text .cyan { color: var(--cyan); font-weight: 700; }
+  .body-text .green { color: var(--green); font-weight: 700; }
+  .body-text .dim { color: var(--dim); }
+  .body-text .lede { font-size: 1.08rem; color: var(--star-white); }
+  .latin { font-style: italic; color: var(--star-white); }
+
+  .spread-heading { font-weight: 700; font-size: 1.9rem; line-height: 1.12; color: var(--star-white); margin-bottom: 0.7rem; letter-spacing: -0.01em; margin-top: 0; scroll-margin-top: 5rem; }
+  .spread-heading .spectrum-word { background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .rule { width: 40px; margin: 1rem 0; }
+
+  .pull-quote { font-size: 1.18rem; font-weight: 700; line-height: 1.4; color: var(--star-white); border-left: 3px solid var(--accent); padding-left: 1.1rem; margin: 1.4rem 0; font-style: italic; }
+  .pull-quote.violet { border-left-color: var(--violet); }
+  .pull-quote.cyan { border-left-color: var(--cyan); }
+  .pull-quote.gold { border-left-color: var(--gold); }
+  .pull-quote.green { border-left-color: var(--green); }
+  .pull-quote .attr { display: block; font-family: 'Space Mono', monospace; font-size: 0.6rem; font-weight: 400; font-style: normal; letter-spacing: 0.08em; color: var(--dim); margin-top: 0.6rem; }
+
+  .callout { margin: 1.3rem 0; padding: 1rem 1.15rem; background: rgba(34,211,238,0.06); border: 1px solid rgba(34,211,238,0.24); border-radius: 4px; font-size: 1rem; font-style: italic; color: var(--star-white); line-height: 1.55; }
+  .callout .attr { display: block; font-family: 'Space Mono', monospace; font-size: 0.58rem; font-style: normal; letter-spacing: 0.06em; color: var(--dim); margin-top: 0.5rem; }
+
+  /* The pivot line. Set larger and heavier than body text and given room, so
+     the one sentence a spread turns on is findable by eye at reading distance.
+     Borrowed from the Young Readers zines, where it is `.readaloud .turn`;
+     scoped here to .body-text for the same reason it is scoped there -- an
+     unscoped .turn would reach the refusals and the colophon. */
+  .body-text .turn { display: block; font-weight: 700; font-size: 1.18rem; line-height: 1.5; color: var(--star-white); margin: 1.5rem 0; }
+
+  .note { font-size: 0.84rem; line-height: 1.6; color: var(--dim); border-left: 2px solid rgba(34,211,238,0.28); padding-left: 0.9rem; margin: 1.1rem 0; }
+  .note strong { color: var(--stardust); font-weight: 700; }
+
+  /* ── THE OBSERVATION BLOCK — Ryan's account, marked as account and not data.
+       Same device as No. 92's pond, for the same reason. ── */
+  .obs { margin: 1.4rem 0; border: 1px solid rgba(34,211,238,0.28); border-left: 3px solid var(--cyan); border-radius: 0 4px 4px 0; padding: 1rem 1.15rem; background: rgba(34,211,238,0.05); }
+  .obs-label { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--cyan); margin-bottom: 0.55rem; }
+  .obs-body { font-size: 0.9rem; line-height: 1.68; color: var(--stardust); }
+  .obs-body p { margin-bottom: 0.7rem; }
+  .obs-body p:last-child { margin-bottom: 0; }
+  .obs-body strong { color: var(--star-white); font-weight: 700; }
+  .obs-body em { font-style: italic; color: var(--star-white); }
+
+  .measure { display: flex; flex-wrap: wrap; gap: 0.9rem; margin: 1.4rem 0; }
+  .measure-cell { flex: 1 1 150px; border: 1px solid rgba(34,211,238,0.28); border-radius: 4px; padding: 0.9rem 1rem; background: rgba(34,211,238,0.05); }
+  .measure-num { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 1.5rem; color: var(--accent); line-height: 1.1; }
+  .measure-label { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--stardust); margin-top: 0.45rem; line-height: 1.7; }
+
+  /* ── THE CHANNEL TABLE — what a room grades, against what a nose reads ── */
+  .chan { width: 100%; border-collapse: collapse; margin: 1.4rem 0; font-size: 0.86rem; }
+  .chan caption { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dim); text-align: left; padding-bottom: 0.6rem; }
+  .chan th { font-family: 'Space Mono', monospace; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; text-align: left; padding: 0.5rem 0.7rem; border-bottom: 1px solid rgba(34,211,238,0.28); color: var(--stardust); }
+  .chan th.ch-managed { color: var(--pink); }
+  .chan th.ch-unmanaged { color: var(--green); }
+  .chan td { padding: 0.55rem 0.7rem; border-bottom: 1px solid rgba(34,211,238,0.1); color: var(--stardust); line-height: 1.5; vertical-align: top; }
+  .chan tr:last-child td { border-bottom: none; }
+  .chan td strong { color: var(--star-white); font-weight: 700; }
+
+  /* ── DIAGRAMS ── */
+  .diagram-wrap { display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; margin: 1.7rem 0 0.3rem; }
+  .diagram { width: 100%; max-width: 300px; display: block; }
+  .diagram-caption { font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim); text-align: center; margin-top: 0.9rem; line-height: 1.9; }
+
+  /* ── REFUSALS ── */
+  .refusals { margin-top: 1.3rem; }
+  .refusal { font-size: 0.88rem; line-height: 1.5; color: var(--stardust); padding: 0.55rem 0; border-bottom: 1px solid rgba(34,211,238,0.1); display: flex; gap: 0.6rem; align-items: baseline; }
+  .refusal:last-child { border-bottom: none; }
+  .refusal-tag { font-family: 'Space Mono', monospace; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ember); flex-shrink: 0; padding-top: 0.12rem; }
+  .refusal strong { color: var(--star-white); font-weight: 700; }
+
+  /* ── COLOPHON ── */
+  .colophon { padding: 3rem; display: flex; flex-direction: column; justify-content: space-between; min-height: 480px; background: radial-gradient(ellipse at 80% 18%, rgba(34,211,238,0.08) 0%, transparent 50%), radial-gradient(ellipse at 18% 86%, rgba(167,139,250,0.06) 0%, transparent 50%), var(--page); }
+  .colophon-top { border-bottom: 1px solid rgba(34,211,238,0.14); padding-bottom: 1.3rem; margin-bottom: 1.2rem; }
+  .colophon-ls { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 2.4rem; color: var(--accent); letter-spacing: 0.05em; display: block; margin-bottom: 0.4rem; }
+  .colophon-phrase { font-size: 0.98rem; font-weight: 700; font-style: italic; color: var(--stardust); }
+  .series-list { display: flex; flex-direction: column; gap: 0.38rem; margin-bottom: 1.2rem; }
+  .series-item { font-size: 0.72rem; color: var(--dim); letter-spacing: 0.01em; display: flex; gap: 0.7rem; align-items: baseline; line-height: 1.45; }
+  .series-item.current { color: var(--accent); font-weight: 700; }
+  .series-num { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim2); flex-shrink: 0; }
+  .series-item.current .series-num { color: var(--accent); }
+  .reflect { border-top: 1px solid rgba(34,211,238,0.14); padding-top: 1rem; margin-bottom: 1.2rem; }
+  .reflect-label { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.65rem; }
+  .reflect-q { font-size: 0.86rem; line-height: 1.55; color: var(--stardust); margin-bottom: 0.55rem; font-style: italic; }
+  .reflect-q:last-child { margin-bottom: 0; }
+  .colophon-body { font-size: 0.75rem; color: var(--dim); line-height: 1.75; margin-bottom: 1.2rem; }
+  .colophon-body a { color: var(--cyan); text-decoration: none; border-bottom: 1px solid rgba(34,211,238,0.4); }
+  .colophon-body a:hover { border-bottom-color: var(--cyan); }
+  .colophon-h { font-family: 'Space Mono', monospace; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: var(--stardust); margin: 1rem 0 0.4rem; scroll-margin-top: 5rem; }
+  .colophon-footer { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--dim); line-height: 2.2; border-top: 1px solid rgba(34,211,238,0.14); padding-top: 1rem; }
+
+  /* ── SPREAD FOOTER ── */
+  .spread-footer { display: flex; justify-content: space-between; align-items: center; padding: 0.9rem 2.4rem; border-top: 1px solid rgba(34,211,238,0.1); }
+  .spread-footer-left { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--dim); }
+  .spread-footer-right { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; color: var(--accent); }
+
+  .twinkle { position: fixed; width: 3px; height: 3px; border-radius: 50%; animation: twinkle-anim 3s ease-in-out infinite; pointer-events: none; z-index: 0; }
+
+  @media print {
+    svg rect[fill="#22d3ee"],
+    svg rect[fill="rgba(34,211,238,0.45)"],
+    svg rect[fill="rgba(138,127,168,0.55)"] { fill: #333333 !important; }
+    /* AND THE INHERITED CASE, which the rule above cannot see. Both figures and
+       the cover motif set fill once on a <g> and let the rects inherit it, so
+       those rects carry NO fill attribute and an attribute selector never
+       matches them. Caught by reading the authored fills back off the DOM and
+       finding thirteen rects with a null fill attribute, not by any gate:
+       check-contrast.mjs measures text against its background and a shape fill
+       carries no text. Scoped to rect so it can never reach a <text>. */
+    svg g[fill="#22d3ee"] rect { fill: #333333 !important; }
+  }
+
+  @media (max-width: 600px) {
+    .spread-2col { grid-template-columns: 1fr; }
+    .spread-left { border-right: none; border-bottom: 1px solid rgba(167,139,250,0.12); }
+    .spread-2col.stacked > .spread-left { border-bottom: none; }
+    .spread-2col.stacked > .col-text { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .cover-spread { padding: 2rem; min-height: 420px; }
+    .cover-motif { width: 210px; height: 210px; top: -6px; right: -22px; opacity: 0.5; }
+    .cover-title { font-size: 1.75rem; }
+    .spread-heading { font-size: 1.55rem; }
+    .spread-left, .spread-right { padding: 2rem 1.5rem; }
+    .colophon { padding: 2rem 1.5rem; }
+    .chan { font-size: 0.8rem; }
+    .chan th, .chan td { padding: 0.45rem 0.4rem; }
+  }
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Fourteen Kinds of Doing","description":"A byline is a data structure with exactly one shape — an ordered list of names — and it has no field for what anybody did. In May 2015 that structure was pushed to its limit: the ATLAS and CMS collaborations published “Combined Measurement of the Higgs Boson Mass in pp Collisions at √s = 7 and 8 TeV” in Physical Review Letters 114, 191803, with 5,154 authors, and of its 33 pages only the first nine carried the research and the references while the other 24 were the list of names and institutions. The zine argues the absurdity is not how many people it took — that figure is the field being honest — but the format being asked to carry it. What particle physics and then biomedicine built instead is CRediT, the Contributor Roles Taxonomy, fourteen named roles standardised as ANSI/NISO Z39.104-2022: conceptualization, data curation, formal analysis, funding acquisition, investigation, methodology, project administration, resources, software, supervision, validation, visualization, writing – original draft, and writing – review & editing. The turn is in reading that list rather than citing it: most of those roles have never been visible in a byline at all, so the person who kept the instrument running, curated the data, checked the arithmetic or made the figure legible has always been doing the work with nowhere to be recorded. A recognition system with one slot recognises one shape of contribution, which is the belonging claim and it is already inside the mechanics rather than argued on top of them. The zine then refuses the easy conclusion: a taxonomy is a vocabulary and not a remedy. Larivière, Pontille and Sugimoto, in Quantitative Science Studies 2(1), 111–128 (2021), used contributorship statements to measure the division of scientific labour once it became measurable, and found the division ran along gendered lines — which is what making work visible does, rather than making it valued. The last movement is the practice at any scale: name the role and not only the person, put it where it is recorded rather than only where it is said, name who caught each error, date the correction, and mark the route of every source. It closes on what this site actually does — colophons, route grades, a public changelog, a fact-check ledger — and on where it falls short, and on the limit that credit is not payment. Twelve spreads, two figures, five refusals. Companion to Field Guide No. 25.","image":"https://starstuff.earth/og-card.jpg","url":"https://starstuff.earth/fourteen-kinds-of-doing-zine.html","mainEntityOfPage":"https://starstuff.earth/fourteen-kinds-of-doing-zine.html","datePublished":"2026-09-12","dateModified":"2026-09-12","license":"https://creativecommons.org/licenses/by-sa/4.0/","author":{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/"},"publisher":[{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/","logo":{"@type":"ImageObject","url":"https://starstuff.earth/og-card.jpg"}},{"@type":"Organization","name":"More Realms","url":"https://morerealms.com/"}],"isPartOf":{"@type":"WebSite","name":"Star Stuff","url":"https://starstuff.earth/"}}</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+<div class="zine-shell">
+
+  <nav class="ss-nav" style="--nav-accent:#22d3ee;" aria-label="Star Stuff collection">
+    <span class="ss-nav-home-group"><a class="ss-nav-home" href="index.html"><span class="ss-star" aria-hidden="true">&#9733;</span> stuff</a><a class="ss-nav-about" href="about.html">about</a>
+      <a class="ss-nav-search" href="search.html">search</a><a class="ss-nav-privacy" href="privacy.html">privacy</a></span>
+    <span class="ss-nav-links">
+      <a class="ss-nav-prev" href="the-channel-you-cannot-mask-zine.html"><span class="ss-nav-arrow" aria-hidden="true">&lsaquo;</span> <span class="ss-nav-label">The Channel You Cannot Mask</span></a>
+      <a class="ss-nav-next" href="collection-young-readers.html"><span class="ss-nav-label">Young Readers</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
+    </span>
+    <a class="ss-nav-collection" href="collection-star-stuff.html"><span class="ss-nav-collection-label">Collection</span> <span class="ss-nav-collection-name">Star Stuff</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
+  </nav>
+<main id="main" tabindex="-1">
+
+  <div class="nav">
+    <span class="nav-brand">Stimpunks &times; More Realms</span>
+    <div class="nav-controls">
+      <button class="nav-btn" id="prev-btn">&larr; prev</button>
+      <span class="page-counter" id="page-counter">1 / 12</span>
+      <button class="nav-btn" id="next-btn">next &rarr;</button>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 1: COVER ════ -->
+  <div class="spread active" id="spread-1">
+    <div class="cover-spread">
+      <!-- Cover motif: ONE FIELD, AND FOURTEEN. A single wide slot with a row of
+           marks crammed into it, and beside it the same marks given fourteen
+           slots of their own. The drawing is the argument, so nothing else on
+           the cover explains it. -->
+      <svg class="cover-motif" viewBox="0 0 200 210" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="motif-title motif-desc">
+        <title id="motif-title">One field, and fourteen</title>
+        <desc id="motif-desc">At the top, a single long horizontal slot with many small marks crowded into it in one row. Below, the same quantity of marks arranged in fourteen separate labelled slots, each with room around it.</desc>
+        <rect x="6" y="14" width="188" height="22" rx="3" fill="none" stroke="rgba(34,211,238,0.55)" stroke-width="1.2"/>
+        <g fill="#22d3ee">
+          <rect x="12" y="22" width="9" height="6" rx="1"/><rect x="24" y="22" width="9" height="6" rx="1"/>
+          <rect x="36" y="22" width="9" height="6" rx="1"/><rect x="48" y="22" width="9" height="6" rx="1"/>
+          <rect x="60" y="22" width="9" height="6" rx="1"/><rect x="72" y="22" width="9" height="6" rx="1"/>
+          <rect x="84" y="22" width="9" height="6" rx="1"/><rect x="96" y="22" width="9" height="6" rx="1"/>
+          <rect x="108" y="22" width="9" height="6" rx="1"/><rect x="120" y="22" width="9" height="6" rx="1"/>
+          <rect x="132" y="22" width="9" height="6" rx="1"/><rect x="144" y="22" width="9" height="6" rx="1"/>
+          <rect x="156" y="22" width="9" height="6" rx="1"/><rect x="168" y="22" width="9" height="6" rx="1"/>
+        </g>
+        <path d="M100 48 V 62" fill="none" stroke="rgba(196,181,212,0.6)" stroke-width="1.2"/>
+        <path d="M94 56 L100 62 L106 56" fill="none" stroke="rgba(196,181,212,0.6)" stroke-width="1.2"/>
+        <g>
+          <rect x="6" y="72" width="44" height="26" rx="3" fill="none" stroke="rgba(34,211,238,0.45)" stroke-width="1"/>
+          <rect x="54" y="72" width="44" height="26" rx="3" fill="none" stroke="rgba(34,211,238,0.45)" stroke-width="1"/>
+          <rect x="102" y="72" width="44" height="26" rx="3" fill="none" stroke="rgba(34,211,238,0.45)" stroke-width="1"/>
+          <rect x="150" y="72" width="44" height="26" rx="3" fill="none" stroke="rgba(34,211,238,0.45)" stroke-width="1"/>
+          <rect x="6" y="104" width="44" height="26" rx="3" fill="none" stroke="rgba(34,211,238,0.45)" stroke-width="1"/>
+          <rect x="54" y="104" width="44" height="26" rx="3" fill="none" stroke="rgba(34,211,238,0.45)" stroke-width="1"/>
+          <rect x="102" y="104" width="44" height="26" rx="3" fill="none" stroke="rgba(34,211,238,0.45)" stroke-width="1"/>
+          <rect x="150" y="104" width="44" height="26" rx="3" fill="none" stroke="rgba(34,211,238,0.45)" stroke-width="1"/>
+          <rect x="6" y="136" width="44" height="26" rx="3" fill="none" stroke="rgba(34,211,238,0.45)" stroke-width="1"/>
+          <rect x="54" y="136" width="44" height="26" rx="3" fill="none" stroke="rgba(34,211,238,0.45)" stroke-width="1"/>
+          <rect x="102" y="136" width="44" height="26" rx="3" fill="none" stroke="rgba(34,211,238,0.45)" stroke-width="1"/>
+          <rect x="150" y="136" width="44" height="26" rx="3" fill="none" stroke="rgba(34,211,238,0.45)" stroke-width="1"/>
+          <rect x="6" y="168" width="44" height="26" rx="3" fill="none" stroke="rgba(34,211,238,0.45)" stroke-width="1"/>
+          <rect x="54" y="168" width="44" height="26" rx="3" fill="none" stroke="rgba(34,211,238,0.45)" stroke-width="1"/>
+        </g>
+        <g fill="#22d3ee">
+          <rect x="24" y="82" width="9" height="6" rx="1"/><rect x="72" y="82" width="9" height="6" rx="1"/>
+          <rect x="120" y="82" width="9" height="6" rx="1"/><rect x="168" y="82" width="9" height="6" rx="1"/>
+          <rect x="24" y="114" width="9" height="6" rx="1"/><rect x="72" y="114" width="9" height="6" rx="1"/>
+          <rect x="120" y="114" width="9" height="6" rx="1"/><rect x="168" y="114" width="9" height="6" rx="1"/>
+          <rect x="24" y="146" width="9" height="6" rx="1"/><rect x="72" y="146" width="9" height="6" rx="1"/>
+          <rect x="120" y="146" width="9" height="6" rx="1"/><rect x="168" y="146" width="9" height="6" rx="1"/>
+          <rect x="24" y="178" width="9" height="6" rx="1"/><rect x="72" y="178" width="9" height="6" rx="1"/>
+        </g>
+      </svg>
+      <div class="cover-corner">
+        <div class="cover-corner-num" aria-hidden="true">110</div>
+        <span class="cover-corner-label">Star Stuff</span>
+      </div>
+      <div class="cover-issue">Stimpunks &times; More Realms &middot; Zine No. 110</div>
+      <h1 class="cover-title">Fourteen Kinds <span class="amp">of Doing</span></h1>
+      <p class="cover-subtitle">a byline has one field and contribution does not &mdash; what happened when the format was pushed to 5,154 names, what got built instead, and the practice that follows at any scale</p>
+      <div class="cover-byline">twelve spreads &middot; two figures &middot; <strong>a companion to Field Guide No. 25</strong></div>
+      <hr class="spectrum-line cover-rule">
+      <div class="cover-meta">
+        <span class="cover-ls">L&#9733;S</span>
+        <div class="cover-meta-text">Love You Down To Your Star Stuff<br>open edition &middot; print freely</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 2 ════ -->
+  <div class="spread" id="spread-2">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The field</div>
+          <h2 class="spread-heading" id="one-field">One name means <em>this is whose</em></h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+<p>Take the byline seriously as a piece of engineering for a moment, because that is what it is.</p>
+<p>It is a data structure, and it has exactly one shape: <strong>an ordered list of names.</strong> That is the whole of it. Two degrees of freedom &mdash; who is in the list, and what order they come in &mdash; carrying everything anyone is ever going to know about who made the thing.</p>
+<p>There is <em>no field for what anybody did.</em> Position is made to stand in for it, which is why the conventions differ by discipline and why nobody outside a field can read them: first author means one thing in biology and another in mathematics, and last author means the opposite of itself depending on where you are standing.</p>
+<p class="turn">A format with one field will record one kind of fact. The question is what happens to every other kind.</p>
+<p>This zine is not about a wrong being done to anybody. <a href="missing-names-field-guide.html">Field Guide No. 25</a> catalogues that, and its finding is that credit comes off work in five different ways. This one is about the format underneath all five, and about what to do &mdash; which is a different and more cheerful subject.</p>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Fourteen Kinds of Doing &middot; Stimpunks</span>
+        <span class="spread-footer-right">2</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 3 ════ -->
+  <div class="spread" id="spread-3">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The measurement</div>
+          <h2 class="spread-heading" id="where-it-broke">Twenty-four of thirty-three pages</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+<p>In May 2015 the two big detector collaborations at the Large Hadron Collider published a joint measurement of the Higgs boson mass in <em>Physical Review Letters</em>.</p>
+<p>The paper has <strong>5,154 authors.</strong> It runs to thirty-three pages. <strong>The research and the references occupy the first nine.</strong> The remaining twenty-four are the list of names and the institutions they belong to.</p>
+<p class="turn">The author list is nearly three times the length of the paper.</p>
+<p>It is easy to file that as an absurdity, and the reporting at the time largely did. It is worth resisting. <strong>Five thousand people really did make that measurement</strong> &mdash; the detectors, the trigger systems, the calibration, the software, the years of running. The number is the field being honest about what it took.</p>
+<p>What is absurd is the <em>format</em>, which could only record that honesty by printing twenty-four pages of names and still not saying what a single one of them did.</p>
+          </div>
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 400 150" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig1-title fig1-desc">
+              <title id="fig1-title">The thirty-three pages, to scale</title>
+              <desc id="fig1-desc">A horizontal bar divided into thirty-three segments. The first nine are filled and labelled the research and the references. The remaining twenty-four are a lighter tone and labelled the list of names. The names section is visibly almost three times the length of the research section.</desc>
+              <g>
+                <rect x="8" y="46" width="103" height="38" rx="2" fill="#22d3ee"/>
+                <rect x="113" y="46" width="279" height="38" rx="2" fill="rgba(138,127,168,0.55)"/>
+              </g>
+              <g stroke="rgba(34,211,238,0.35)" stroke-width="0.6">
+                <path d="M119 46 V84"/><path d="M130 46 V84"/><path d="M141 46 V84"/><path d="M152 46 V84"/>
+                <path d="M163 46 V84"/><path d="M174 46 V84"/><path d="M185 46 V84"/><path d="M196 46 V84"/>
+                <path d="M207 46 V84"/><path d="M218 46 V84"/><path d="M229 46 V84"/><path d="M240 46 V84"/>
+                <path d="M251 46 V84"/><path d="M262 46 V84"/><path d="M273 46 V84"/><path d="M284 46 V84"/>
+                <path d="M295 46 V84"/><path d="M306 46 V84"/><path d="M317 46 V84"/><path d="M328 46 V84"/>
+                <path d="M339 46 V84"/><path d="M350 46 V84"/><path d="M361 46 V84"/>
+              </g>
+              <g font-family="'Space Mono', monospace" font-size="8" letter-spacing="1" fill="#c4b5d4">
+                <!-- The left label must fit the segment it names: the research bar is
+                     103px wide and starts at x=8, and the names label starts at x=113.
+                     "NINE PAGES &#183; THE RESEARCH" measures ~145px, so it ran 40px into
+                     its neighbour. Shortened to fit the bar rather than moved, because
+                     a label that does not sit over its own segment stops being a label. -->
+                <text x="8" y="36" text-anchor="start">NINE PAGES</text>
+                <text x="113" y="36" text-anchor="start">TWENTY-FOUR PAGES OF NAMES</text>
+                <text x="8" y="106" text-anchor="start">AND NOT ONE OF THE TWENTY-FOUR SAYS WHAT ANYBODY DID</text>
+              </g>
+            </svg>
+            <div class="diagram-caption">One paper, thirty-three pages, drawn to scale</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Fourteen Kinds of Doing &middot; Stimpunks</span>
+        <span class="spread-footer-right">3</span>
+      </div>
+    </div>
+  </div>
+  <!-- ════ SPREAD 4 ════ -->
+  <div class="spread" id="spread-4">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The answer</div>
+          <h2 class="spread-heading" id="fourteen">So they built a second field</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+<p>Not the physicists, in the end, but the biomedical journals, and then broadly: a fixed vocabulary for <em>kinds of contribution</em>, to sit alongside the byline rather than replace it.</p>
+<p>It is called <strong>CRediT</strong>, the Contributor Roles Taxonomy. It has <strong>fourteen roles</strong>, and since 2022 it has been a standard with a number on it &mdash; ANSI/NISO Z39.104-2022.</p>
+<p>Here they are. This is the entire vocabulary.</p>
+<table class="chan">
+  <caption>The fourteen contributor roles</caption>
+  <thead>
+    <tr><th class="ch-managed" scope="col">Roles a byline has always implied</th><th class="ch-unmanaged" scope="col">Roles a byline has never shown</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>Conceptualization</strong></td><td><strong>Data curation</strong></td></tr>
+    <tr><td><strong>Methodology</strong></td><td><strong>Software</strong></td></tr>
+    <tr><td><strong>Formal analysis</strong></td><td><strong>Validation</strong></td></tr>
+    <tr><td><strong>Investigation</strong></td><td><strong>Visualization</strong></td></tr>
+    <tr><td><strong>Writing</strong> &mdash; original draft</td><td><strong>Resources</strong></td></tr>
+    <tr><td><strong>Writing</strong> &mdash; review &amp; editing</td><td><strong>Project administration</strong></td></tr>
+    <tr><td><strong>Supervision</strong></td><td><strong>Funding acquisition</strong></td></tr>
+  </tbody>
+</table>
+<p class="note"><strong>The split down that table is ours, not the standard's.</strong> CRediT publishes fourteen roles in one flat alphabetical list and ranks nothing, deliberately. The two columns are this zine's reading of which ones a reader could already have guessed at from a name in a byline, and the next spread is about what falls in the right-hand column.</p>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Fourteen Kinds of Doing &middot; Stimpunks</span>
+        <span class="spread-footer-right">4</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 5 ════ -->
+  <div class="spread" id="spread-5">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The tell</div>
+          <h2 class="spread-heading" id="read-it-again">Read the right-hand column again</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+<p><strong>Data curation.</strong> Somebody cleaned it, annotated it, and kept it usable.</p>
+<p><strong>Software.</strong> Somebody wrote the code the result came out of.</p>
+<p><strong>Validation.</strong> Somebody checked whether it was true.</p>
+<p><strong>Visualization.</strong> Somebody made it legible &mdash; which is often the difference between a finding and a finding anybody understood.</p>
+<p><strong>Resources.</strong> Somebody kept the instrument running.</p>
+<p class="turn">Every one of those is work. Not one of them has ever had anywhere to go.</p>
+<p>This is the part worth sitting with, because it is not a story about prizes or about anybody being slighted. It is plainer than that. <strong>For three hundred years the record of who made a piece of knowledge had one field in it</strong>, and the work that field could not describe was not hidden or suppressed. There was simply no box.</p>
+<p>The fourteen roles are interesting not because a taxonomy is interesting but because <em>reading them tells you what the old format could not see.</em></p>
+          </div>
+          <div class="diagram-wrap">
+            <svg class="diagram" viewBox="0 0 400 176" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig2-title fig2-desc">
+              <title id="fig2-title">One field against fourteen</title>
+              <desc id="fig2-desc">At the top, a single wide slot labelled the byline, holding one row of name marks. Below it, a grid of fourteen separate slots, seven of them solid and labelled implied by a byline, and seven of them outlined in a dashed line and labelled no field for this.</desc>
+              <rect x="8" y="18" width="384" height="24" rx="3" fill="none" stroke="rgba(34,211,238,0.55)" stroke-width="1.1"/>
+              <g fill="#22d3ee">
+                <rect x="18" y="26" width="16" height="8" rx="1"/><rect x="40" y="26" width="16" height="8" rx="1"/>
+                <rect x="62" y="26" width="16" height="8" rx="1"/><rect x="84" y="26" width="16" height="8" rx="1"/>
+                <rect x="106" y="26" width="16" height="8" rx="1"/><rect x="128" y="26" width="16" height="8" rx="1"/>
+              </g>
+              <text x="158" y="34" font-family="'Space Mono', monospace" font-size="8" letter-spacing="1" fill="#c4b5d4">ONE FIELD &#183; AN ORDERED LIST OF NAMES</text>
+              <g>
+                <rect x="8" y="66" width="52" height="20" rx="2" fill="rgba(34,211,238,0.45)"/>
+                <rect x="64" y="66" width="52" height="20" rx="2" fill="rgba(34,211,238,0.45)"/>
+                <rect x="120" y="66" width="52" height="20" rx="2" fill="rgba(34,211,238,0.45)"/>
+                <rect x="176" y="66" width="52" height="20" rx="2" fill="rgba(34,211,238,0.45)"/>
+                <rect x="232" y="66" width="52" height="20" rx="2" fill="rgba(34,211,238,0.45)"/>
+                <rect x="288" y="66" width="52" height="20" rx="2" fill="rgba(34,211,238,0.45)"/>
+                <rect x="344" y="66" width="48" height="20" rx="2" fill="rgba(34,211,238,0.45)"/>
+              </g>
+              <g fill="none" stroke="rgba(196,181,212,0.6)" stroke-width="1" stroke-dasharray="3 3">
+                <rect x="8" y="96" width="52" height="20" rx="2"/><rect x="64" y="96" width="52" height="20" rx="2"/>
+                <rect x="120" y="96" width="52" height="20" rx="2"/><rect x="176" y="96" width="52" height="20" rx="2"/>
+                <rect x="232" y="96" width="52" height="20" rx="2"/><rect x="288" y="96" width="52" height="20" rx="2"/>
+                <rect x="344" y="96" width="48" height="20" rx="2"/>
+              </g>
+              <g font-family="'Space Mono', monospace" font-size="8" letter-spacing="1" fill="#c4b5d4">
+                <text x="8" y="60" text-anchor="start">SEVEN A BYLINE ALREADY IMPLIED</text>
+                <text x="8" y="132" text-anchor="start">SEVEN WITH NOWHERE TO BE RECORDED</text>
+                <text x="8" y="152" text-anchor="start">SOMEBODY DID ALL FOURTEEN. ONLY THE TOP ROW HAD A BOX.</text>
+              </g>
+            </svg>
+            <div class="diagram-caption">What the old format could and could not carry</div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Fourteen Kinds of Doing &middot; Stimpunks</span>
+        <span class="spread-footer-right">5</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 6 ════ -->
+  <div class="spread" id="spread-6">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The turn</div>
+          <h2 class="spread-heading" id="the-turn">One slot recognises one shape of person</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+<p>Here is the whole argument, and it comes out of the mechanics rather than being placed on top of them.</p>
+<p class="turn">A recognition system with one field will reliably recognise the people whose contribution happens to fit that field, and reliably miss everybody else &mdash; without anyone intending it, and without any of the missed work being any less real.</p>
+<p>Which people? Read the right-hand column once more. The one who kept the instrument running. The one who cleaned the data nobody else could face. The one who wrote the software. <strong>The one whose contribution was <em>validation</em> &mdash; who checked, and found the number was wrong.</strong></p>
+<p>Those are recognisable people. Many of them are <em>us</em> &mdash; and not by coincidence. A profile that is spiky rather than flat produces exactly this: enormous contribution in a narrow band, and a recognition format with one box that band does not fit in.</p>
+<p>And notice what the fix is not. Nobody needed to become a different kind of contributor. <strong>The format needed another field.</strong></p>
+<p class="note"><strong>A rhyme, not a proof.</strong> Nothing about the structure of a byline demonstrates anything about a nervous system, and this zine is not claiming that it does. What the mechanics supply is one honest shape, held steady: <em>a system that can record one kind of contribution will find one kind of contributor, and will go on believing that is all there was.</em> Whether that shape fits your life is yours to say, not ours.</p>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Fourteen Kinds of Doing &middot; Stimpunks</span>
+        <span class="spread-footer-right">6</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 7 ════ -->
+  <div class="spread" id="spread-7">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The honesty</div>
+          <h2 class="spread-heading" id="the-honesty">The taxonomy does not fix it</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+<p>This is where a piece like this usually ends, with the standard as the happy conclusion. It should not.</p>
+<p>Once contributions became recordable, they became <em>countable</em> &mdash; and people counted them. Vincent Larivi&egrave;re, David Pontille and Cassidy R. Sugimoto used contributorship statements to look at how scientific labour actually divides, and reported that the division runs along familiar lines, with conceptual roles and empirical ones distributed differently by gender.</p>
+<p class="turn">The vocabulary made the division visible. It did not make it go away.</p>
+<p>That is what a vocabulary does, and it is worth being exact about the limit rather than disappointed by it. <strong>Naming a kind of work is a precondition for valuing it and nothing more than a precondition.</strong> Fourteen boxes will faithfully record that the same people keep ending up in the same boxes.</p>
+<p>Which is an argument for the taxonomy, not against it. <em>You cannot address a distribution you cannot see</em>, and before 2014 nobody could see this one. But a piece that told you a standard had solved the problem would be doing the thing this house exists to refuse.</p>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Fourteen Kinds of Doing &middot; Stimpunks</span>
+        <span class="spread-footer-right">7</span>
+      </div>
+    </div>
+  </div>
+  <!-- ════ SPREAD 8 ════ -->
+  <div class="spread" id="spread-8">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">What to do</div>
+          <h2 class="spread-heading" id="the-practice">Five moves, at any scale</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+<p>None of these needs a standard, a committee or a journal. They are the same five whether the thing being made is a paper, a codebase, a school project or a meal.</p>
+<p><strong>1 &middot; Name the role, not only the person.</strong> &ldquo;Sam helped&rdquo; records nothing. <em>&ldquo;Sam found the error in the third column&rdquo;</em> records a contribution and a kind of contribution, and the second half is the part that survives being retold.</p>
+<p><strong>2 &middot; Put it where the thing is recorded</strong>, not only where it is said. Credit given out loud in a meeting evaporates with the meeting. The same sentence in the commit message, the colophon, the footer or the minutes is still there in four years, which is when it matters.</p>
+<p><strong>3 &middot; Name who caught it.</strong> This is the cheapest and the most neglected. Finding the mistake is work, it is the role CRediT calls <em>validation</em>, and the person who does it is structurally invisible &mdash; their contribution leaves no trace in the finished thing except its correctness.</p>
+<p><strong>4 &middot; Date the correction and leave it up.</strong> A fix made silently teaches everyone watching that being wrong is unspeakable. A fix with a date on it teaches that it is ordinary.</p>
+<p><strong>5 &middot; Mark the route.</strong> Say how you know &mdash; read at the primary, taken from a summary, not read at all. It is an attribution to the source <em>and</em> an honest statement of your own contribution, which is often smaller than a confident sentence implies.</p>
+<p class="turn">Every one of the five is free, and four of the five take under ten seconds.</p>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Fourteen Kinds of Doing &middot; Stimpunks</span>
+        <span class="spread-footer-right">8</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 9 ════ -->
+  <div class="spread" id="spread-9">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The receipts</div>
+          <h2 class="spread-heading" id="our-own">What this site does, and where it fails</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+<p>A piece recommending a practice should show its own, at the point where it is checkable rather than at the point where it is flattering.</p>
+<p><strong>Every source carries its route.</strong> Read the colophon of any piece here and each citation is graded &mdash; <em>read at full text</em>, <em>from published secondary accounts</em>, or <em>not read</em>. <a href="missing-names-field-guide.html">Field Guide No. 25</a> says on its own face that it never opened the Tesla and Purington patents.</p>
+<p><strong>Corrections are public and dated.</strong> <a href="changelog.html">The changelog</a> carries them by date, in the reader&rsquo;s view, naming what was wrong and what is right. A per-piece fact-check ledger in the repository is the working half, kept beside the source rather than published as a page.</p>
+<p><strong>Errors are attributed to whoever caught them.</strong> When a reader or a collaborator finds something, the entry says so by name. That is move three, and it is the one this house most wants to be judged on.</p>
+<p class="turn">And it is inconsistent, in a way worth printing rather than tidying.</p>
+<p>Credit here is much better recorded for <em>sources</em> than for <em>labour</em>. Every quotation has a traced origin; the person who built a diagram or rewrote a paragraph mostly does not appear anywhere. <strong>This site has the same one-field problem it is describing</strong>, and has only partly fixed it &mdash; which is the ordinary condition, and is why the practice is a habit rather than an achievement.</p>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Fourteen Kinds of Doing &middot; Stimpunks</span>
+        <span class="spread-footer-right">9</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 10 ════ -->
+  <div class="spread" id="spread-10">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">The limit</div>
+          <h2 class="spread-heading" id="the-limit">Credit is not payment</h2>
+          <hr class="spectrum-line rule">
+          <div class="body-text">
+<p>One more thing, and it is the reason this zine does not end on the previous spread.</p>
+<p>Attribution is nearly free. That is what makes it available to anyone, today, at any scale &mdash; and it is also what makes it a convenient substitute for the things that are not free.</p>
+<p class="turn">A named contributor who has not been paid is a contributor who has not been paid.</p>
+<p>The same holds for a credited person who was not consulted, not employed, not given the next piece of work, or not believed when they said the number was wrong. <strong>Recognition is a real good and it is a small one</strong>, and it is easiest to offer precisely when the larger things are being withheld.</p>
+<p>So: give credit generously, because it costs nothing and it is owed. And <em>notice when it is being offered instead of something.</em> The guide beside this zine has an entry on a woman who was given a magnificent public correction sixty-six years after her laboratory did not have a camera.</p>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Fourteen Kinds of Doing &middot; Stimpunks</span>
+        <span class="spread-footer-right">10</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 11 ════ -->
+  <div class="spread" id="spread-11">
+    <div class="interior">
+      <div class="spread-2col stacked">
+        <div class="spread-left col-text">
+          <div class="eyebrow">Refusals</div>
+          <h2 class="spread-heading" id="refusals">Not:</h2>
+          <hr class="spectrum-line rule">
+          <div class="refusals">
+            <div class="refusal"><span class="refusal-tag">Not</span><span><strong>A claim that a taxonomy fixes a bias.</strong> Spread seven exists to refuse exactly that, and it is placed before the practice rather than after it so the practice is not read as a solution. <span class="cyan">A vocabulary makes work visible; valuing it is a separate act</span> that nobody has standardised and probably nobody can.</span></div>
+            <div class="refusal"><span class="refusal-tag">Not</span><span><strong>A demand that anyone adopt a standard.</strong> Nobody needs ANSI/NISO Z39.104-2022 to run a household or a classroom. The fourteen roles are useful here as a <em>reading</em> &mdash; a list of kinds of work somebody already knew how to name &mdash; and the five moves on spread eight require no apparatus at all.</span></div>
+            <div class="refusal"><span class="refusal-tag">Not</span><span><strong>Credit as currency.</strong> Contribution is not a fixed quantity divided between people, and treating it that way produces the thing the byline already produces: an argument about order. <em>Naming what five people each did takes nothing from any of them</em>, which is the single most useful property of the whole practice.</span></div>
+            <div class="refusal"><span class="refusal-tag">Not</span><span><strong>A substitute for pay, access or belief.</strong> Spread ten. Attribution is cheap, and cheapness is both its virtue and its trap. <span class="cyan">Watch for the place where a name is offered and a wage, a seat or a hearing is not.</span></span></div>
+            <div class="refusal"><span class="refusal-tag">Not</span><span><strong>This site holding itself up as an example.</strong> Spread nine names a real failure rather than a modest-sounding one: credit here is well kept for sources and poorly kept for labour. We are describing a practice we are part way through, and <em>a piece about attribution that overstated its own would be self-refuting in one move.</em></span></div>
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Fourteen Kinds of Doing &middot; Stimpunks</span>
+        <span class="spread-footer-right">11</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SPREAD 12: COLOPHON ════ -->
+  <div class="spread" id="spread-12">
+    <div class="interior">
+      <div class="colophon">
+        <div>
+          <div class="colophon-top">
+            <span class="colophon-ls">L&#9733;S</span>
+            <p class="colophon-phrase">Somebody did all fourteen. Only one of them had a box. The fix was never a better kind of person &mdash; it was another field.</p>
+          </div>
+
+          <div class="series-list">
+            <div class="series-item"><span class="series-num">FG 25</span> <a href="missing-names-field-guide.html">A Field Guide to Missing Names</a> &mdash; the companion: eleven cases, five mechanisms</div>
+            <div class="series-item"><span class="series-num">No. 62</span> <a href="the-light-arrived-before-the-name-zine.html">The Light Arrived Before the Name</a> &mdash; the delay between a finding and its naming, measured</div>
+            <div class="series-item"><span class="series-num">No. 64</span> <a href="five-times-a-crab-zine.html">Five Times a Crab</a> &mdash; owns multiples and scenius: discovery converges, and the singleton is the exception</div>
+            <div class="series-item"><span class="series-num">No. 109</span> <a href="a-bit-of-scruff-zine.html">A Bit of Scruff</a> &mdash; the same practice, four words, read-aloud</div>
+            <div class="series-item"><span class="series-num">&mdash;</span> <a href="too-good-to-check.html">Too Good to Check</a> &mdash; owns the smoothed retelling, including the credit that drifted</div>
+            <div class="series-item current"><span class="series-num">No. 110</span> Fourteen Kinds of Doing &mdash; the format, and what to do &larr; you are here</div>
+          </div>
+
+          <div class="reflect">
+            <div class="reflect-label">To sit with</div>
+            <p class="reflect-q">Which of the fourteen describes what you actually do, and where is it written down?</p>
+            <p class="reflect-q">Who caught the last mistake you made, and does anything record that?</p>
+            <p class="reflect-q">Where in your week is credit being offered instead of something larger?</p>
+          </div>
+        </div>
+
+        <div class="colophon-body">
+          <h3 class="colophon-h" id="sources">Where all of this comes from</h3>
+          <p><strong>The paper on spread three.</strong> ATLAS and CMS Collaborations, <em>&ldquo;Combined Measurement of the Higgs Boson Mass in pp Collisions at &radic;s = 7 and 8 TeV with the ATLAS and CMS Experiments,&rdquo; Physical Review Letters</em> <strong>114</strong>, 191803 (14 May 2015), doi:10.1103/PhysRevLett.114.191803; preprint arXiv:1503.07589. <strong>The figures &mdash; 5,154 authors, 33 pages, nine of research and references, twenty-four of names and institutions &mdash; are from Davide Castelvecchi&rsquo;s report in <em>Nature</em> news (2015), doi:10.1038/nature.2015.17567.</strong> <span class="gold">We did not count the author list or the pages ourselves</span>, and one other source gives 5,153; we print <em>Nature</em>&rsquo;s figure and say so rather than averaging two numbers.</p>
+          <p><strong>The taxonomy.</strong> CRediT, the Contributor Roles Taxonomy: fourteen roles, <strong>ANSI/NISO Z39.104-2022</strong>, doi:10.3789/ansi.niso.z39.104-2022. <span class="green">The fourteen role names are quoted from the standard&rsquo;s own published list</span> at credit.niso.org. The two-column arrangement on spread four is <strong>ours and not the standard&rsquo;s</strong>, which publishes one flat alphabetical list and ranks nothing; the spread says so on its face.</p>
+          <p><strong>The finding on spread seven.</strong> Vincent Larivi&egrave;re, David Pontille &amp; Cassidy R. Sugimoto, <em>&ldquo;Investigating the division of scientific labor using the Contributor Roles Taxonomy (CRediT),&rdquo; Quantitative Science Studies</em> <strong>2</strong>(1), 111&ndash;128 (2021), doi:10.1162/qss_a_00097. <strong>Citation confirmed at Crossref; the paper itself is <span class="gold">not read at primary</span></strong> &mdash; the publisher returned 403 &mdash; so the spread states the <em>direction</em> of the finding and deliberately quotes no percentage. If you can reach it, the exact figures belong on this page and we would like them.</p>
+
+          <h3 class="colophon-h" id="what-this-is-not">What this deliberately does not re-argue</h3>
+          <p><a href="five-times-a-crab-zine.html">No. 64</a> owns the multiples argument in full &mdash; Ogburn and Thomas&rsquo;s 148 independent discoveries, Merton&rsquo;s conclusion that multiples are the dominant pattern and the lone singleton the exception, and Eno&rsquo;s <em>scenius</em>. That is the deeper reason a one-name field misdescribes discovery, and it is settled there rather than restated here. <a href="missing-names-field-guide.html">Field Guide No. 25</a> owns the five mechanisms by which a name comes off finished work, and this zine takes the format underneath them. <a href="who-is-holding-the-candle.html">Who Is Holding the Candle</a> owns the argument for naming the observer at all, and <a href="the-light-arrived-before-the-name-zine.html">No. 62</a> owns the measured delay between a finding and its name.</p>
+          <p><strong>A rhyme, not a proof.</strong> Nothing about the structure of a byline demonstrates anything about a nervous system, and spread six says so on the page rather than leaving it to a colophon. What the mechanics supply is one shape held steady &mdash; a record with one field finds one kind of contributor &mdash; and the reader decides whether it fits.</p>
+
+          <h3 class="colophon-h" id="open">What is still open</h3>
+          <p>The Larivi&egrave;re, Pontille and Sugimoto figures, as above. Whether CRediT adoption has changed anything measurable since 2022 &mdash; <em>we did not find out, and did not guess.</em> And the failure named on spread nine is genuinely unfixed: this site records the route of every source and almost nothing about who did which part of the work, which is the one-field problem in our own house.</p>
+          <div class="colophon-footer">
+            <a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks Foundation</a> &times; <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a><br>
+            stimpunks.org &middot; morerealms.com &middot; starstuff.earth<br>
+            <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> &middot; open edition &middot; print freely
+          </div>
+        </div>
+      </div>
+      <div class="spread-footer">
+        <span class="spread-footer-left">Fourteen Kinds of Doing &middot; Stimpunks</span>
+        <span class="spread-footer-right">12</span>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /zine-shell --></main>
+
+
+<script>
+  let current = 1;
+  const total = 12;
+
+  function changePage(dir) {
+    const next = current + dir;
+    if (next < 1 || next > total) return;
+    document.getElementById('spread-' + current).classList.remove('active');
+    current = next;
+    document.getElementById('spread-' + current).classList.add('active');
+    document.getElementById('page-counter').textContent = current + ' / ' + total;
+    document.getElementById('prev-btn').disabled = current === 1;
+    document.getElementById('next-btn').disabled = current === total;
+    document.getElementById('prev-btn').classList.toggle('active', current > 1);
+    document.getElementById('next-btn').classList.toggle('active', current < total);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') changePage(1);
+    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   changePage(-1);
+  });
+
+  document.getElementById('prev-btn').disabled = true;
+  document.getElementById('next-btn').classList.add('active');
+</script>
+<script src="starstuff.js" defer></script>
+</body>
+</html>
