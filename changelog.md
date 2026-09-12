@@ -32,6 +32,20 @@ New piece Revised Fact-check Site
 
 2026 · September 11 · latest
 
+## Queering Earth introduces itself by naming this site. The front page now names it back
+
+There is a sibling site, built by the same two organizations, working the half of the shelf this one does not. Its front page has been pointing here since it opened on 7 September; ours pointed nowhere. A reader who arrived at this end had no way of knowing the other end existed.
+
+SiteA second paragraph on the front page, and the difference between the two sites stated rather than smoothed
+
+[Queering Earth](https://queering.earth/) reads art, literature, poetry, politics, people and history through a queering lens — *“the stories we were handed and told not to question,”* as it puts it while describing this site as the one built on science. The [front page](https://starstuff.earth/index.html) now carries the return leg, directly under the paragraph explaining what star stuff means.
+
+**It says what is different rather than presenting the two as interchangeable halves of one thing.** Everything here is built on a settled, checkable fact followed until the claim about belonging is already inside it — the [register test](https://starstuff.earth/collection-star-stuff.html) this site has applied to itself since the beginning. There, the material is a canon nobody can settle, and the site says so on its own face: *“There are no hard facts here for everything. That is deliberate.”* Two methods, one collaboration, and the paragraph would be doing the reader a disservice if it blurred them.
+
+**Their sentence about their own method is in quotation marks, and that is deliberate too.** The first draft stated it in our voice, which would have made a characterisation of somebody else's work read as our description of it — the exact failure mode the [fact-check rules](https://github.com/Stimpunks/Star-Stuff/blob/main/FACTCHECK.md) exist to prevent, with the unusual feature that the somebody else is us. The phrase describing *their* subject matter is echoed unquoted on purpose: their paragraph echoes our own line about a universe that declines to pathologize its own variation, and an echo returned is the shape of the exchange. *Every claim in the paragraph was checked against their live page rather than against a memory of it.*
+
+2026 · September 11
+
 ## Glimmer Wire, edition three — the week the network answered, and a correction of ours still out on the wire
 
 The third weekly edition of [Glimmer Wire](https://starstuff.earth/glimmer-wire-2026-09-11.html). Seven items filed, five held, and for the first time **three papers read end to end** rather than at one remove. Also the longest lag the page has measured, and a held item that is not a story we found thin — it is a figure this page corrected last week, still travelling unchanged.
