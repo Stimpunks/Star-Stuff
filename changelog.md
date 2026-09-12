@@ -60,6 +60,22 @@ Fact-checkThe finding that prompted this zine is deliberately absent from it —
 
 2026 · September 12 · latest
 
+## We said a 1961 paper could not be read. It could, and our own working notes already said how
+
+Zine No. 106 shipped this morning saying that Nirenberg and Matthaei’s 1961 paper — the experiment that read the very first codon — was held only as scanned page images, and that a spread on it had been cut for that reason. The paper is readable. The claim has been corrected on the zine and here.
+
+Fact-checkOne blocked route is not unreachable
+
+**What is true:** PubMed Central’s web reader does serve that article as page images, and our fetcher could not read them. **What we then said, and should not have:** that the paper was therefore unreadable.
+
+**The PDF has a text layer.** Fetched from Europe PMC, the fifteen pages come out as searchable text — imperfect OCR, but plainly legible — and the result the zine would have used is two lines of it: *“the addition of 10 µg of polyuridylic acid per ml of reaction mixture resulted in a remarkable stimulation of C&sup1;⁴-L-phenylalanine incorporation… no other polynucleotide tested could replace polyuridylic acid.”* A tube of nothing but one letter, producing a chain of nothing but one bead.
+
+**The failure is not the blocked route, it is stopping at it.** Our own working notes name Europe PMC as one of the metadata-and-full-text routes to try when a publisher or a repository refuses, and that note was written after a previous paper hunt. It was not applied. “We could not read it” is a claim about the world, and it needs the same standard as any other claim on these pages — which is that you try the routes you already know about before writing it down.
+
+**The spread stays cut, and now for an honest reason.** Twelve spreads is the right length for that zine and its argument does not need the history — so it is cut by choice rather than by a wall that was never there. The colophon now says so, quotes the result, and records that we got this wrong.
+
+2026 · September 12
+
 ## One number was doing two jobs, so it came apart three times — twice at our own hands
 
 The [Young Readers](https://starstuff.earth/collection-young-readers.html) page has a line saying how many of its pieces hand the child something to do. It has been wrong, in one direction or another, since before either of this week’s zines. The figure is now **eight of the twelve**, and the eight are named on the page so it cannot drift again.
@@ -94,7 +110,7 @@ Fact-checkNothing written from memory, two papers declared unread, and a famous 
 
 **Every codon on the page was checked against NCBI’s own translation tables** rather than recalled, because this zine is the first here whose demonstration *fails* if a single row is wrong. A child following spread seven with one bad row gets the wrong answer and learns that the book lies.
 
-**Two sources are declared unread on the page itself.** Freeland and Hurst’s 1998 result that the standard code is extraordinarily good at limiting the damage of errors is carried at second hand — PubMed refused us — and Crick’s 1968 paper is quoted from the same open-access review. A third, Nirenberg and Matthaei 1961, the experiment that read the very first codon, had a spread outlined and then **cut**: PubMed Central holds it only as scanned page images, and we would not build a spread on a paper nobody here had read.
+**Two sources are declared unread on the page itself.** Freeland and Hurst’s 1998 result that the standard code is extraordinarily good at limiting the damage of errors is carried at second hand — PubMed refused us — and Crick’s 1968 paper is quoted from the same open-access review. A third, Nirenberg and Matthaei 1961, the experiment that read the very first codon, had a spread outlined and then **cut** because we believed PubMed Central held it only as scanned page images. **That reason was wrong and is corrected below.**
 
 **The famous result is not allowed to travel without the half that usually falls off.** The same review that gave us the figure puts the code “halfway from an average random code to the summit,” notes that billions of alternative codes would do better, and finds Crick’s rival account — that the code is a *frozen accident*, arbitrary and stuck because any change now would be lethal — essentially unfalsified. **So the zine does not say the code was arranged kindly, or arranged at all.** It says the checkable thing: there is more than one right spelling, so a great many changes change nothing. Why that is so is an open argument, and the page does not borrow its warmth.
 
