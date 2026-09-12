@@ -1,7 +1,7 @@
 ---
 title: "Young Readers"
 url: "https://starstuff.earth/collection-young-readers.html"
-updated: "2026-09-10"
+updated: "2026-09-11"
 description: "The read-aloud collection: Star Stuff pieces written for children of about four to eight, and for whoever is reading to them. Sorted by audience — the sixth axis on this site and the first collection defined by who a piece is for rather than what kind of argument it makes. Every member carries two layers on every spread: large plain-language type for the child, and a boxed grown-up layer holding the species names, the figures, the papers and the places the evidence runs out, so a caregiver can answer “is that really true?” without leaving the page. The sourcing standard does not relax for the audience: same nine gates, same fact-check ledger row, same grading of every claim, same refusals — aimed at the adult. Ten pieces: pace, waiting, perception, bone, camouflage, airflow, flight, hearing, change and niche."
 licence: "CC-BY-SA-4.0"
 licence_url: "https://creativecommons.org/licenses/by-sa/4.0/"
