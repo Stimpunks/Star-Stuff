@@ -32,6 +32,30 @@ New piece Revised Fact-check Site
 
 2026 · September 12
 
+## The primary source contradicted the zine we set out to write, so we wrote the one it supports
+
+Zine No. 109 joins [Young Readers](https://starstuff.earth/collection-young-readers.html), which now holds fourteen. It is a read-aloud about who gets named — and two things it was going to say were cut, both because the discoverer’s own account says otherwise.
+
+NewA Bit of Scruff — Zine No. 109, read-aloud, ages 4–8
+
+**In 1967 Jocelyn Bell spent two years helping build a radio telescope across four and a half acres** — “an area that would accomodate 57 tennis courts”, a thousand posts, 120 miles of cable — and then read what it drew. It had no screen. It had pens: “between them they produced 96 feet of chart paper every day. The charts were analyzed by hand—by me.” They had decided against computerising the analysis for a reason [the zine](https://starstuff.earth/a-bit-of-scruff-zine.html) turns on: “a human can recognize signals of different character whereas it is difficult to program a computer to do so.” Six or eight weeks in there was “a bit of ‘scruff’” that was neither a star nor interference, and she did not throw it away. Three months of failure later it resolved into pulses one and a third seconds apart — the first pulsar.
+
+**Then the half the zine is actually about.** Five names went on the *Nature* paper and hers is second. A few years later a Nobel went to her supervisor and her name was not on it. The zine draws the reason as a rule rather than a villain: Nobel Foundation statute §4 caps a prize at three people, and five people wrote the paper.
+
+Fact-checkTwo things we were going to print, cut against the primary
+
+**We had the famous image and it is not in the source.** The line everybody repeats — a quarter of an inch of scruff in 400 feet of paper — was to be the spine of the whole zine. Her own 1977 account gives no such figure; what it gives is 96 feet a day and “the 3½ miles of chart recordings from the radio telescope that I analyzed.” Those two agree with each other, and they are hers. The quarter-inch is gone, and the zine says on its own face that it was cut and why. A secondary source had also given us 98 feet a day; the primary says 96.
+
+**And the argument itself was wrong.** This piece was proposed as *she was robbed, and it was unfair*. In the same speech she declines that reading in print, with four reasons, ending “Finally, I am not myself upset about it—after all, I am in good company, am I not!” A zine asserting her grievance would have contradicted its own cited source on the page. **So the credit argument was rerouted through what she does record as absurd:** the press, who on discovering a woman was involved “descended even faster”, photographed her “examining bogus records”, and asked “how many boyfriends did I have at a time?” The child gets the harder and truer distinction instead — **being kind about something is not the same as the something being fair** — and is told she may reach her own verdict. So, arguably, did Bell Burnell: in 2018 she gave away the entire &pound;2.3 million of a later prize to fund students who get left out, disabled students named among them.
+
+**One more we are keeping on the page rather than quietly fixing.** The circulating story in which she was left off the *paper* is false — she is second author — and the zine insists on her by-line rather than dropping it to sharpen the grievance. Sharpening a true complaint with a false detail is the same offence as the complaint.
+
+RevisedYoung Readers — a count that stopped adding up two zines ago
+
+**Adding a piece made us re-derive the collection’s sets instead of incrementing them, and the increment would have been wrong.** The page said eight of the pieces hand the child something to do and that four hand them nothing at all. Eight plus four is twelve, and the collection held thirteen — No. 107 had joined the second set without being counted into it. It is now **nine of fourteen** with something to do, and the five that hand the child nothing are named rather than counted. *No gate on this site can read a number written out in a sentence*, which is why the members are written out instead.
+
+2026 · September 12
+
 ## Four letters, and the half of the 1953 paper nobody quotes — plus the finding that prompted this zine and is not in it
 
 Zine No. 105 joins [Young Readers](https://starstuff.earth/collection-young-readers.html), which now holds eleven. It is a read-aloud about the genetic alphabet, a subject this site had never touched: before this week no page here contained *base pair*, *adenine*, *guanine* or *genetic alphabet*.
