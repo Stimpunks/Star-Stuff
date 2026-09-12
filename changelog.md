@@ -60,6 +60,32 @@ Fact-checkThe finding that prompted this zine is deliberately absent from it —
 
 2026 · September 12 · latest
 
+## An onion has five times more DNA than you do, so whatever it is, it is not a plan of anybody
+
+Zine No. 107 joins [Young Readers](https://starstuff.earth/collection-young-readers.html), which now holds thirteen, and closes a three-part arc: No. 105 gave the alphabet, No. 106 the code that reads it, and this one asks what the whole thing is. It exists to pay a debt — No. 106 cited a paper as a lead it had not read, and this zine read it.
+
+NewThe Onion Has More Than You — Zine No. 107, read-aloud, ages 4–8
+
+**Grown-ups say DNA is the plan for you, and *blueprint* is an old word for a drawing of a house made before the house.** [The zine](https://starstuff.earth/the-onion-has-more-than-you-zine.html) takes that seriously enough to test it. A plan of a bigger, more complicated thing is a bigger plan — a hut fits on one sheet and a castle does not. That is a prediction, and it can be checked.
+
+**It fails twice.** An ordinary kitchen onion carries about **16,400 million bases** against a human **3,200 million** — five times more. And counting instructions rather than letters does not save it: before anyone had counted, human gene estimates ran to **100,000**, and the answer came in near **20,000** — about the same as a nematode a millimetre long with 959 body cells, whose entire genome is **thirty-two times smaller** than ours.
+
+**The objection is handed to the child before it is answered.** Spread five gives away that counting letters is unfair, because at least 95 per cent of the onion’s genome is repeated sequence — and then counts instructions instead, which is worse for the idea rather than better. Then the strongest version, which needs no definition of complexity at all: within the onion genus alone, genome size varies about four and a half fold. *Onions disagree with other onions by more than onions disagree with us.*
+
+**And what replaces the metaphor turns out to be older than the metaphor.** Schrödinger introduced *code-script* in 1944 — the book Watson, Crick and Wilkins all credited — and then wrote, in the very same paragraph, that the term is “of course, too narrow,” because chromosomes are “law-code and executive power — or, to use another simile, they are architect’s plan and builder’s craft — in one.” **The man who coined it flagged the limit on the spot, and the limit is what got dropped.** The plan and the building are the same thing, and there is no finished you in there to be a drawing of.
+
+Fact-checkA lead we published as unread, now read — and what the zine declines to do with it
+
+**No. 106 shipped naming Pigliucci’s 2010 paper as a lead it had not read.** It has now been read at full text, and this zine is what came of it. Its verdict is blunter than ours: the blueprint and programme metaphors are “not only woefully inadequate but positively misleading.” The zine tests one of the four failures he names and lists the other three for the adult.
+
+**Three of four sources read directly; one figure marked second-hand on the page.** The onion assembly, the worm genome and Schrödinger were read; the *Allium* genome-size range of roughly 7 to 31.5 picograms was not traced back to the measurement papers and says so where it is used.
+
+**What it refuses.** No position on whether non-coding DNA has function — that argument is live, the onion comparison comes out of it, and the zine needs only that raw length is the wrong ruler. No swap to *recipe*, which keeps a dish somebody is working towards. And **no argument about people anywhere in the child’s layer**: every measurement is about a plant, a worm and a gene count, because a fact about an onion licenses nothing about anybody.
+
+**The half that is missing is deliberate, and it is the better piece.** How a qualifier falls off between a 1944 founding text and an ordinary sentence about a child is a chain with graded joints, and it belongs in [How We Got Here](https://starstuff.earth/collection-how-we-got-here.html) rather than in a read-aloud. It is planned. One refusal points at it: a plan is the kind of thing that can have a mistake in it, and that is what made the word useful to people who wanted to search a human being for the error.
+
+2026 · September 12
+
 ## We said a 1961 paper could not be read. It could, and our own working notes already said how
 
 Zine No. 106 shipped this morning saying that Nirenberg and Matthaei’s 1961 paper — the experiment that read the very first codon — was held only as scanned page images, and that a spread on it had been cut for that reason. The paper is readable. The claim has been corrected on the zine and here.
