@@ -351,6 +351,26 @@ The central phrase compresses through registers, each with a use:
 - Paged zines: include `<script src="starstuff.js"></script>`, expose a global `changePage(dir)`,
   and structure spreads as `.spread` (with a `.spread.active`), each with a `.spread-footer`
   containing a `.spread-footer-right` page counter. IDs run `spread-1..N` in document order.
+- **Cover geometry is per-page on DESKTOP and shared on the phone, and the split is the ruling
+  (2026-09-12).** Place `.cover-motif` per page by measurement as before — every title wraps
+  differently and `check-overlap.mjs` is the gate. But **do not write a per-page mobile fix for the
+  cover ornaments**: `starstuff.css` now flows `.cover-corner` and `.cover-motif` into normal order
+  below 600px, for all 108 covers and every cover after them. The argument for taking this one rule
+  out of the pages: **the desktop placement is a composition and the phone failure is the absence
+  of the margin that composition assumed.** At 375px there is no horizontal room beside a wrapped
+  title for any absolutely positioned ornament, whatever its per-page offsets — **105 of the 108
+  covers were broken there**, so there is no per-page *value* that fixes it, only a per-page
+  repetition of the same rule 108 times. It had
+  already been repeated 98 times in the wrong half: **all 98 pages carrying a `.cover-motif` have a
+  narrow-screen block that resizes it** (97 at 600px, one at 720px), and **no page on this site has
+  ever touched `.cover-corner` in a narrow-screen block** — zero of 108, which is exactly the fault.
+  Derive rather than trust those figures: count `class="cover-corner"` for the denominator and walk
+  each page's `@media (max-width: …)` blocks for the rest.
+- **The shared cover rule is over-specific at 0-2-0 (`.cover-motif.cover-motif`) and must stay
+  that way.** `starstuff.css` loads *before* each page's inline `<style>`, so a page's own
+  `.cover-motif { position: absolute }` at 0-1-0 wins on later-wins and puts the collision back.
+  Same trap as `.ss-cobrand` and `.nav-btn`. A page's own mobile `top`/`right` values are left
+  alone and simply stop applying — the rule resets the insets so nothing reads as still placed.
 - **Scrolling zines are the second zine form, and the paged one is still the default (2026-08-26).**
   A scroll zine keeps `.spread` sections and `spread-1..N` ids and changes only how they are
   revealed: every section is laid out at once, one per screen, in a continuous channel. It needs
@@ -1782,9 +1802,48 @@ node tools/check-overlap.mjs --verbose           # every finding, not the first 
   the right elements. Fault 3's original spacing is unrecoverable; the label fires at ≤3 units of
   separation and is clean at 4, where the x-height ink genuinely clears. Decoys confirmed silent.
 - **What it does not measure, on purpose.** Print (paper is a different layout; `check-sheets.mjs`
-  owns page fitting). One viewport, 1280×900, matching `check-contrast.mjs` — a collision that only
-  happens at 380px is real and this will not see it. And **text over non-text**: a label crossing a
-  line or an arrowhead is a legibility judgement about artwork, and still needs eyes at render size.
+  owns page fitting). And **text over non-text**: a label crossing a line or an arrowhead is a
+  legibility judgement about artwork, and still needs eyes at render size.
+- **It measures TWO viewports as of 2026-09-12 — 1280×900 and 375×812 — and the second one was
+  bought at the price of nearly every cover on the site.** This entry used to say *one viewport,
+  1280×900 … a collision that only happens at 380px is real and this will not see it.* It was, and
+  it did not. **105 of the 108 zine covers were broken at 375px**, from the first cover on
+  2026-07-17 until 2026-09-12, found by hand while No. 109 was being built. The desktop sweep was
+  green throughout and was right to be: the desktop composition is measured per page and passes.
+  **A limitation a tool documents is still a limitation** — the note was accurate, in the right
+  file, and bought nothing, which is the same thing this tool's own header says about the warning
+  comment in No. 48's source. Each page is **loaded fresh at each viewport** rather than resized
+  after measuring, and `mobile:false` on both, so the only variable is the layout width. What is
+  still unmeasured is now narrower rather than absent: **a collision that appears only at 768px
+  will still ship.**
+- **The cover fault is TWO faults and only one of them has a gate — don't quote the sweep as the
+  whole picture.** *Text on text*, which this tool measures: **313 collisions on 103 of 205 pages**,
+  all on spread 1 — `.cover-corner-num` × `.cover-issue` on 96 pages, `.cover-corner-label` ×
+  `.cover-title` on 65, `.cover-corner-num` × `.cover-title` on 50, a motif `<text>` × cover type
+  on 30. **Nine covers carry all four**, not most of them: a hand sample of ten pages suggested
+  four-per-cover was universal and the full sweep says otherwise, which is this file's standing
+  *derive it, don't remember it* rule arriving inside a bug report. *Artwork on type*, which this
+  tool **cannot** see and is right not to — it measures glyph extent, and text-over-non-text is the
+  judgement listed as deliberately out of scope: **all 98 covers carrying a `.cover-motif`**, the
+  box across the title on 95, the issue line on 94 and the subtitle on 93, measured with a one-off
+  bounding-box probe and confirmed by eye. The three clean covers are `lydtyss-zine.html` and the
+  two scroll zines.
+- **A SCROLL CONTAINER IS NOT A CLIP, and the tool got that wrong until the phone viewport exposed
+  it.** The clip walk looked for the nearest ancestor computing `overflow: hidden|clip` and skated
+  straight past `auto`/`scroll` — so at 375px it reported **256 clips across 12 pages**, every one a
+  wide table inside `.tbl-wrap { overflow-x: auto }`, blamed on the `html, body { overflow-x:
+  hidden }` those pages set to contain the starfield. **All 256 were false**: the reader swipes the
+  table. The walk now stops at the first ancestor that takes responsibility for the overflow **in
+  the axis being tested** and answers differently by kind — a scroller means reachable, a clipper
+  means cut off — and the count of declined findings prints on its own line, because this is the
+  number the tool used to get wrong. **That counter counts ESCAPES, not boxes**, and the first
+  version got it backwards: Chrome reports the used `overflow` of `<html>` and `<body>` as `auto`
+  on every scrolling document, so counting boxes that merely *sit inside* a scroller printed
+  147,630 — the site's text total wearing a label. It now counts only text that actually runs
+  outside one, which is 256 at 375px and 0 at 1280. The change to the walk itself can only
+  *remove* findings, which is why the desktop baseline was unaffected. **CSS forbids the dangerous case**: an element with `overflow-y: hidden`
+  cannot compute `overflow-x: visible`, so a real clip can never hide behind an ancestor the walk
+  declines to stop at.
 - **`OFFSCREEN` is the one exemption, added 2026-09-09, and it holds exactly `.skip-link`.** A skip
   link parks outside the viewport until focused, so *being clipped is the feature* — this tool
   failed **5 of the first 7 pages** swept after the skip-link pass, correct in mechanics and wrong
@@ -1794,7 +1853,7 @@ node tools/check-overlap.mjs --verbose           # every finding, not the first 
   how a real clip disappears by acquiring a `position`. **And read the report as per-element, not
   per-page:** it did *not* fire on `index.html` or `ls-broadside.html` among those seven, so the
   same fault looked like a problem with five particular pages.
-- 140 pages in ~2 min. Chrome and Node 22+; local dev tool, Netlify does not run it.
+- 205 pages × 2 viewports in ~5 min. Chrome and Node 22+; local dev tool, Netlify does not run it.
 
 
 ## Dead class checking (`tools/check-classes.mjs`)

@@ -87,10 +87,34 @@
  *     already owns "does this land on the page". Adding a print pass here would
  *     double the surface for a fault class not yet observed on paper. If one turns
  *     up, add the pass rather than assuming this covered it.
- *   · One viewport. 1280×900, the same fixed desktop viewport check-contrast.mjs
- *     uses, so a run is reproducible and @media rules resolve the same way every
- *     time. A collision that only happens at 380px is real and this will not see
- *     it.
+ *   · Widths other than the two it measures. It ran at ONE viewport — 1280×900 —
+ *     from 2026-08-14 to 2026-09-12, and this header said in its own words that
+ *     "a collision that only happens at 380px is real and this will not see it."
+ *     It was. On 2026-09-12, while No. 109 was being built, a hand measurement at
+ *     375×812 found 105 of the 108 zine covers broken, shipped since the first
+ *     cover on 2026-07-17, with this gate running green over all of them and this
+ *     note explaining why. What this tool can see is the text-on-text half: 313
+ *     collisions on 103 pages, every one on spread 1 — the ghosted issue numeral
+ *     through the issue line (96 pages), the collection label through the title
+ *     (65), the numeral through the title (50), a motif label through cover type
+ *     (30). NINE covers carry all four, not most of them; a sample of ten had
+ *     suggested otherwise, which is the standing argument for sweeping before
+ *     describing.
+ *
+ *     The other half is artwork over type — the motif's BOX across the subtitle on
+ *     93 of the 98 covers that have one — and this tool cannot see it and should
+ *     not. It measures glyph extent, and "text over non-text" is the judgement
+ *     listed three bullets down as deliberately out of scope. Adding the second
+ *     viewport did not change that, and reading the phone sweep as the whole
+ *     picture of the fault would be wrong in the tool's own documented direction.
+ *
+ *     A LIMITATION A TOOL DOCUMENTS IS STILL A LIMITATION. The comment was
+ *     accurate, it was in the right file, and it bought nothing — the same thing
+ *     this tool's own reason for existing says about the warning comment in
+ *     No. 48's source: a note is not a control. So there are two viewports now,
+ *     and the honest statement of what is still unmeasured is narrower rather
+ *     than absent: 375 and 1280 are measured, everything between and either side
+ *     is not, and a collision that appears only at 768px will still ship.
  *   · Text over non-text. A label on a line, an arrowhead through a word: those
  *     are legibility judgements about artwork, and CLAUDE.md is right that a human
  *     has to check a diagram at render size. This checks the part that is
@@ -102,14 +126,19 @@
  *   node tools/check-overlap.mjs --check                    # exit non-zero on any collision
  *
  * --check is the gating mode, matching its four siblings. A plain run always exits
- * 0 so an informational pass doesn't read as a crash. It prints a line per page,
- * pass or fail, with the count of text boxes actually measured — the lesson every
- * other tool here learned separately: when the only output is "it worked", a page
- * that measured none of itself looks exactly like a clean one.
+ * 0 so an informational pass doesn't read as a crash. It prints a line per page
+ * per viewport, pass or fail, with the count of text boxes actually measured — the
+ * lesson every other tool here learned separately: when the only output is "it
+ * worked", a page that measured none of itself looks exactly like a clean one. The
+ * two viewports are also totalled SEPARATELY at the end, because one combined
+ * number cannot say which width a regression arrived at, and one number hiding a
+ * width is the whole reason the second viewport exists.
  *
- * BASELINE: 0, established by sweeping all 102 pages on 2026-08-14. Keep it there.
- * A gate that ships with a non-zero baseline has to be read past to find the real
- * number, and then it stops being read.
+ * BASELINE: 0 at BOTH viewports — established at 1280×900 by sweeping all 102
+ * pages on 2026-08-14, and at 375×812 on 2026-09-12, where the first honest run
+ * found 313 collisions on 103 of 205 pages and reaching zero took one shared rule
+ * in starstuff.css. Keep both there. A gate that ships with a non-zero baseline
+ * has to be read past to find the real number, and then it stops being read.
  *
  * Requires: Google Chrome installed. Node 22+ (uses the global WebSocket).
  * Netlify does not run this; local dev tool, same as its siblings.
@@ -125,10 +154,31 @@ const PORT = 9414; // 9411 search-index, 9412 contrast, 9413 sheets — one each
 const CHECK = process.argv.includes('--check');
 const VERBOSE = process.argv.includes('--verbose');
 
-/* The same fixed viewport check-contrast.mjs measures at, for the same reasons:
-   reproducibility, and so @media width rules resolve to the desktop layout every
-   run. See "what it does not measure" above. */
-const VIEWPORT = { width: 1280, height: 900 };
+/* TWO fixed viewports, each page loaded fresh at each. Fixed, because a
+   reproducible run is worth more than a realistic one and @media width rules must
+   resolve the same way every time; check-contrast.mjs measures at the first of
+   them for the same reason.
+
+   1280×900 is the desktop composition, which on the covers is placed per page by
+   measurement and passes. 375×812 is an iPhone-class phone, and it is where the
+   covers were colliding for two months — see the header. The desktop baseline
+   stays 0 and the phone baseline joins it; a finding at either width is a
+   finding.
+
+   FRESH LOAD PER VIEWPORT, not a resize of a measured page. Re-running
+   Emulation.setDeviceMetricsOverride on a page that has already been revealed and
+   measured would be faster and would ask the browser to reflow a document into a
+   width its own load-time script never saw. That is the shape of instrument error
+   this repo keeps writing down, and the cost of avoiding it is about two minutes.
+
+   `mobile: false` deliberately. What is being tested is the layout width; turning
+   on mobile emulation would also bring touch, a device pixel ratio and a changed
+   `@media (hover)`, none of which this tool measures and any of which could move a
+   result for a reason nobody would think to look for. */
+const VIEWPORTS = [
+  { name: 'desktop', width: 1280, height: 900 },
+  { name: 'phone', width: 375, height: 812 },
+];
 
 const CHROME = [
   '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
@@ -279,12 +329,13 @@ const MEASURE = String.raw`((cfg) => {
   }
 
   /* ── 4. clipped ───────────────────────────────────────────────────────────
-     Text running outside something that cuts it off. Two hosts count, and both
-     are real: the nearest ancestor that actually computes overflow hidden/clip,
-     and — for SVG text — the <svg> viewport itself, which clips by UA default
-     once it has a viewBox. A hand-placed label at y=168 in a 340-unit box stays
-     inside; the same label in a 120-unit box is sliced, and nothing else here
-     would say so.
+     Text running outside something that cuts it off — where the reader gets a
+     sentence with the end sliced away and no way to reach it. Two hosts count,
+     and both are real: the nearest ancestor that actually computes overflow
+     hidden/clip in the axis the text escapes in, and — for SVG text — the <svg>
+     viewport itself, which clips by UA default once it has a viewBox. A
+     hand-placed label at y=168 in a 340-unit box stays inside; the same label in
+     a 120-unit box is sliced, and nothing else here would say so.
 
      The tolerance is a fraction of the type size, not a pixel count, because the
      thing it has to absorb scales with the type: getBBox reports the glyph ADVANCE
@@ -297,10 +348,46 @@ const MEASURE = String.raw`((cfg) => {
      past the edge with the glyph itself intact. */
   const clipped = [];
   let offscreen = 0;
+  let scrollable = 0;
   const CLIP = new Set(['hidden', 'clip']);
+  const SCROLL = new Set(['auto', 'scroll']);
+
+  /* A SCROLL CONTAINER IS NOT A CLIP, and treating it as one invented 256
+     findings across 12 pages the first time this tool was run at 375px. Every
+     one of them was a wide table inside a .tbl-wrap set to overflow-x: auto —
+     content the reader reaches by swiping the table sideways, which is the whole
+     reason the wrapper is there. The walk skated straight past it, because auto
+     is not in CLIP, and stopped at the html, body overflow-x: hidden those twelve
+     pages set to contain the starfield.
+
+     So the walk now stops at the first ancestor that takes responsibility for the
+     overflow in the axis being tested, and answers differently depending on which
+     kind it is: a scroller means reachable, a clipper means cut off. Per axis,
+     because the two can differ on one element — and note CSS itself forbids the
+     dangerous case: an element with overflow-y hidden cannot compute overflow-x
+     visible, so a genuine clip can never hide behind an ancestor this walk
+     declines to stop at. */
+  const overflowHost = (el, axis) => {
+    for (let n = el.parentElement; n && n.nodeType === 1; n = n.parentElement) {
+      const o = axis === 'x' ? getComputedStyle(n).overflowX : getComputedStyle(n).overflowY;
+      if (SCROLL.has(o)) return { kind: 'scroll', el: n };
+      if (CLIP.has(o)) return { kind: 'clip', el: n };
+    }
+    return null;
+  };
+
+  /* How far a box sticks out of a host in one axis. Negative means it is inside. */
+  const escape = (host, box, axis) => {
+    const h = host.getBoundingClientRect();
+    if (!h.width || !h.height) return -Infinity;
+    return axis === 'x'
+      ? Math.max(h.left - box.l, box.r - h.right)
+      : Math.max(h.top - box.t, box.b - h.bottom);
+  };
+
   for (const box of boxes) {
     const el = box.el;
-    let host = null;
+    let svgHost = null;
     if (box.kind === 'svg') {
       /* A viewBox'd <svg> clips at its viewport by UA default, so it is a clip host
          unless the page explicitly said overflow:visible — which several diagrams
@@ -308,20 +395,31 @@ const MEASURE = String.raw`((cfg) => {
       const svg = el.ownerSVGElement;
       if (svg && svg.viewBox && svg.viewBox.baseVal && svg.viewBox.baseVal.width) {
         const cs = getComputedStyle(svg);
-        if (CLIP.has(cs.overflowX) || CLIP.has(cs.overflowY)) host = svg;
+        if (CLIP.has(cs.overflowX) || CLIP.has(cs.overflowY)) svgHost = { kind: 'clip', el: svg };
       }
     }
-    if (!host) {
-      for (let n = el.parentElement; n && n.nodeType === 1; n = n.parentElement) {
-        const cs = getComputedStyle(n);
-        if (CLIP.has(cs.overflowX) || CLIP.has(cs.overflowY)) { host = n; break; }
+
+    const tol = Math.max(1, CLIP_TOL * box.em);
+    let out = -Infinity, host = null, declined = false;
+    for (const axis of ['x', 'y']) {
+      const h = svgHost || overflowHost(el, axis);
+      if (!h) continue;
+      const o = escape(h.el, box, axis);
+      if (h.kind === 'scroll') {
+        /* Reachable. Counted only when the text ACTUALLY escapes — the number has
+           to mean "findings declined", not "boxes looked at". Chrome reports the
+           used overflow of <html> and <body> as auto on every scrolling document,
+           so nearly every box on the site has a scroll host somewhere above it and
+           a count of those would be the page's text total wearing a label. */
+        if (o > tol) declined = true;
+        continue;
       }
+      if (o > out) { out = o; host = h.el; }
     }
+    if (declined) scrollable++;
     if (!host) continue;
-    const h = host.getBoundingClientRect();
-    if (!h.width || !h.height) continue;
-    const out = Math.max(h.left - box.l, box.r - h.right, h.top - box.t, box.b - h.bottom);
-    if (out > Math.max(1, CLIP_TOL * box.em)) {
+
+    if (out > tol) {
       /* Offscreen by design — see OFFSCREEN below. Counted, never silently dropped:
          a clip this tool stops reporting is a clip nobody is looking for. */
       if (OFFSCREEN.some((q) => el.closest && el.closest(q))) { offscreen++; continue; }
@@ -344,7 +442,7 @@ const MEASURE = String.raw`((cfg) => {
     return (s && s.id) || 'page';
   }
 
-  return JSON.stringify({ boxes: boxes.length, hits, clipped, offscreen });
+  return JSON.stringify({ boxes: boxes.length, hits, clipped, offscreen, scrollable });
 })`;
 
 /* ─── minimal CDP client — same shape as check-contrast.mjs ─────────────────── */
@@ -500,79 +598,98 @@ async function main() {
   const unread = [];
 
   try {
-    for (const f of files) {
-      let out;
-      try {
-        out = await withPage(`file://${path.join(ROOT, f)}`, async (send) => {
-          await send('Page.enable');
-          await send('Emulation.setDeviceMetricsOverride', {
-            width: VIEWPORT.width, height: VIEWPORT.height, deviceScaleFactor: 1, mobile: false,
+    /* Viewport outermost, so each width gets its own labelled block and a reader
+       can see at a glance which one a page fails at. A page is loaded fresh for
+       each — see the VIEWPORTS comment on why this is not a resize. */
+    for (const vp of VIEWPORTS) {
+      console.log(`\n── ${vp.name} · ${vp.width}×${vp.height} ─────────────────────────────────────`);
+      for (const f of files) {
+        let out;
+        try {
+          out = await withPage(`file://${path.join(ROOT, f)}`, async (send) => {
+            await send('Page.enable');
+            await send('Emulation.setDeviceMetricsOverride', {
+              width: vp.width, height: vp.height, deviceScaleFactor: 1, mobile: false,
+            });
+            const settledChars = await settle(send);
+            evaluated(await send('Runtime.evaluate', { expression: REVEAL, returnByValue: true }), 'reveal');
+            await sleep(120);
+            const m = evaluated(
+              await send('Runtime.evaluate', {
+                expression: `(${MEASURE})(${JSON.stringify(CFG)})`,
+                returnByValue: true,
+              }),
+              'overlap measure'
+            );
+            return { ...m, settledChars };
           });
-          const settledChars = await settle(send);
-          evaluated(await send('Runtime.evaluate', { expression: REVEAL, returnByValue: true }), 'reveal');
-          await sleep(120);
-          const m = evaluated(
-            await send('Runtime.evaluate', {
-              expression: `(${MEASURE})(${JSON.stringify(CFG)})`,
-              returnByValue: true,
-            }),
-            'overlap measure'
+        } catch (e) {
+          unread.push([f, vp.name, String(e.message || e).slice(0, 140)]);
+          console.log(`  ${f.padEnd(44)} UNREAD  ${String(e.message || e).slice(0, 60)}`);
+          continue;
+        }
+
+        results.push([f, vp, out]);
+
+        let notMeasured = true;
+        if (out.settledChars === null) {
+          unread.push([f, vp.name, 'never settled — readyState/text length still changing after 15s']);
+        } else if (out.boxes === 0) {
+          unread.push([f, vp.name, out.settledChars === 0
+            ? 'loaded with no text at all'
+            : 'measured 0 text boxes despite having text — check the reveal step']);
+        } else {
+          notMeasured = false;
+        }
+
+        const n = out.hits.length + out.clipped.length;
+        console.log(
+          `  ${f.padEnd(44)} ${notMeasured ? 'UNREAD' : n ? 'FAIL  ' : 'ok    '}` +
+            `  ${String(out.boxes).padStart(5)} text boxes` +
+            (out.hits.length ? `  ${out.hits.length} collision(s)` : '') +
+            (out.clipped.length ? `  ${out.clipped.length} clipped` : '')
+        );
+        for (const h of out.hits.slice(0, VERBOSE ? 999 : 8)) {
+          console.log(
+            `      ${h.where.padEnd(9)} ${h.kind.padEnd(12)} ${h.dx}×${h.dy}px overlap\n` +
+              `        "${h.a}" <${h.aSel}>\n        "${h.b}" <${h.bSel}>`
           );
-          return { ...m, settledChars };
-        });
-      } catch (e) {
-        unread.push([f, String(e.message || e).slice(0, 140)]);
-        console.log(`  ${f.padEnd(44)} UNREAD  ${String(e.message || e).slice(0, 60)}`);
-        continue;
+        }
+        if (!VERBOSE && out.hits.length > 8) console.log(`      … ${out.hits.length - 8} more`);
+        for (const c of out.clipped.slice(0, VERBOSE ? 999 : 8)) {
+          console.log(
+            `      ${c.where.padEnd(9)} clipped      ${c.by}px (${c.em}em) outside <${c.host}>\n        "${c.text}" <${c.sel}>`
+          );
+        }
+        if (!VERBOSE && out.clipped.length > 8) console.log(`      … ${out.clipped.length - 8} more`);
       }
-
-      results.push([f, out]);
-
-      let notMeasured = true;
-      if (out.settledChars === null) {
-        unread.push([f, 'never settled — readyState/text length still changing after 15s']);
-      } else if (out.boxes === 0) {
-        unread.push([f, out.settledChars === 0
-          ? 'loaded with no text at all'
-          : 'measured 0 text boxes despite having text — check the reveal step']);
-      } else {
-        notMeasured = false;
-      }
-
-      const n = out.hits.length + out.clipped.length;
-      console.log(
-        `  ${f.padEnd(44)} ${notMeasured ? 'UNREAD' : n ? 'FAIL  ' : 'ok    '}` +
-          `  ${String(out.boxes).padStart(5)} text boxes` +
-          (out.hits.length ? `  ${out.hits.length} collision(s)` : '') +
-          (out.clipped.length ? `  ${out.clipped.length} clipped` : '')
-      );
-      for (const h of out.hits.slice(0, VERBOSE ? 999 : 8)) {
-        console.log(
-          `      ${h.where.padEnd(9)} ${h.kind.padEnd(12)} ${h.dx}×${h.dy}px overlap\n` +
-            `        "${h.a}" <${h.aSel}>\n        "${h.b}" <${h.bSel}>`
-        );
-      }
-      if (!VERBOSE && out.hits.length > 8) console.log(`      … ${out.hits.length - 8} more`);
-      for (const c of out.clipped.slice(0, VERBOSE ? 999 : 8)) {
-        console.log(
-          `      ${c.where.padEnd(9)} clipped      ${c.by}px (${c.em}em) outside <${c.host}>\n        "${c.text}" <${c.sel}>`
-        );
-      }
-      if (!VERBOSE && out.clipped.length > 8) console.log(`      … ${out.clipped.length - 8} more`);
     }
   } finally {
     chrome.kill();
   }
 
-  const hits = results.reduce((a, [, o]) => a + o.hits.length, 0);
-  const clipped = results.reduce((a, [, o]) => a + o.clipped.length, 0);
-  const boxes = results.reduce((a, [, o]) => a + o.boxes, 0);
-  const offscreen = results.reduce((a, [, o]) => a + (o.offscreen || 0), 0);
+  const hits = results.reduce((a, [, , o]) => a + o.hits.length, 0);
+  const clipped = results.reduce((a, [, , o]) => a + o.clipped.length, 0);
+  const boxes = results.reduce((a, [, , o]) => a + o.boxes, 0);
+  const offscreen = results.reduce((a, [, , o]) => a + (o.offscreen || 0), 0);
+  const scrollable = results.reduce((a, [, , o]) => a + (o.scrollable || 0), 0);
 
   console.log(
-    `\n${results.length} page(s) · ${boxes.toLocaleString()} text boxes measured at ` +
-      `${VIEWPORT.width}×${VIEWPORT.height} · ${hits} collision(s), ${clipped} clipped`
+    `\n${results.length} page-measurement(s) across ${VIEWPORTS.length} viewport(s) · ` +
+      `${boxes.toLocaleString()} text boxes · ${hits} collision(s), ${clipped} clipped`
   );
+  /* Per viewport as well as in total. A single number cannot say which width a
+     regression arrived at, and the whole reason this tool grew a second viewport
+     is that one number hid a fault on 103 pages for two months. */
+  for (const vp of VIEWPORTS) {
+    const rs = results.filter(([, v]) => v === vp);
+    const h = rs.reduce((a, [, , o]) => a + o.hits.length, 0);
+    const c = rs.reduce((a, [, , o]) => a + o.clipped.length, 0);
+    console.log(
+      `  ${vp.name.padEnd(8)} ${String(vp.width).padStart(4)}×${vp.height}  ` +
+        `${String(rs.length).padStart(3)} page(s) · ${h} collision(s), ${c} clipped`
+    );
+  }
 
   /* On its own line, like the exemption counts in check-contrast.mjs: a list that
      grows is a list somebody can question, and a number folded into the total is
@@ -583,19 +700,30 @@ async function main() {
         `(${CFG.OFFSCREEN.join(', ')} — offscreen until focused).`
     );
   }
+  /* Also on its own line, and for a sharper reason than the exemption above: this
+     number is the one the tool used to get WRONG. Text that runs out of a scroll
+     container is reachable, not clipped, and counting it as clipped invented 256
+     findings the first time this ran at 375px. Printing the count keeps the
+     silence deliberate rather than invisible. */
+  if (scrollable) {
+    console.log(
+      `${scrollable} text box(es) run OUTSIDE a scroll container (overflow auto/scroll), ` +
+        `where the reader can scroll to them — reachable, so not reported as clipped.`
+    );
+  }
 
   /* Its own block, above the verdict. An unmeasured page is a broken RUN, not a
      clean page, and it gates separately for the same reason it does in
      check-contrast.mjs. */
   if (unread.length) {
-    console.error(`\n${unread.length} page(s) WERE NOT MEASURED. Nothing above counts for these:`);
-    for (const [f, why] of unread) console.error(`  ${f.padEnd(44)} ${why}`);
+    console.error(`\n${unread.length} page-measurement(s) WERE NOT MEASURED. Nothing above counts for these:`);
+    for (const [f, vpName, why] of unread) console.error(`  ${f.padEnd(44)} ${vpName.padEnd(8)} ${why}`);
   }
 
   const problems = hits + clipped;
   if (CHECK) {
     if (unread.length) {
-      console.error(`\nFAIL — ${unread.length} page(s) not measured; the run is incomplete.`);
+      console.error(`\nFAIL — ${unread.length} page-measurement(s) not measured; the run is incomplete.`);
       process.exit(1);
     }
     if (problems) {

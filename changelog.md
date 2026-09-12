@@ -88,6 +88,40 @@ The collection now reads **twenty-four guides, 308 entries, 332 cards**. Derived
 
 2026 · September 12
 
+## 105 of our 108 zine covers were broken on a phone, and the gate that would have caught it had written down in advance that it would not
+
+Found while building No. 109. On a 375px screen the ghosted issue number printed through the issue line or the title on 103 pages, and the cover artwork lay across the words on every cover that has any. It had been like that since the first cover in July. Fixed in one shared rule; the checker now measures two screen widths instead of one.
+
+SiteCover ornaments now flow on a phone instead of being pinned to a corner that is not there
+
+**Measured at 375×812 across all 205 pages, and it is two faults rather than one.** Text printed on text: **313 collisions on 103 pages**, every one on the cover. The big translucent issue number crossed the issue line on 96 covers and the title on 50; the collection label crossed the title on 65; a label inside the artwork crossed the type on 30. *Nine* covers had all four — not most of them, which is what a hand-checked sample of ten had suggested before the full sweep was run. And separately, the artwork itself lay across the words on **every one of the 98 covers that carry any**: over the title on 95, the issue line on 94, the subtitle on 93. Between them, **105 of our 108 covers** were affected.
+
+**On a desktop all of this sits in the empty margin beside a short title.** On a phone the title wraps to three lines and the margin does not exist, so the ornaments printed on the words.
+
+**The cause is duller than the effect, and it is one line of thinking repeated a hundred times.** Each cover carries its own small-screen block, and ninety-eight of them do: they shrink the artwork and shrink the title. Not one of them ever *moved* the number, which stayed pinned to a top-right corner at four and a half times the body type while the title grew taller underneath it. We had applied the convention ninety-eight times and got the load-bearing half wrong ninety-eight times.
+
+**So this one moved out of the pages and into the shared stylesheet.** Below 600px the number and the artwork stop being pinned and simply take their turn in the reading order: artwork, number, issue line, title, subtitle. The desktop composition is untouched — it is placed per page by measurement, and it was always correct. Every cover made from here gets the phone behaviour without anyone remembering to ask for it.
+
+**And that last sentence got tested before it shipped, by accident.** [No. 110](https://starstuff.earth/fourteen-kinds-of-doing-zine.html) was written while this fix was being built, by someone who knew nothing about it, and landed first. Measured afterwards: **six collisions on its cover at 375px without the shared rule, and none with it.** A cover that did not exist when the rule was written was already fixed by it — which is the argument for the shared sheet making itself, on a page nobody chose as evidence.
+
+SiteThe collision checker had said, in its own file, exactly what it was going to miss
+
+**We have a tool whose whole job is finding text printed on other text.** It has run green over these covers since August. It was not wrong: it measured one screen width, 1280 pixels, and at 1280 the covers are fine. Its own header said so in advance — *“a collision that only happens at 380px is real and this will not see it.”*
+
+**It also only ever saw half of this fault, and that half is still out of scope on purpose.** The checker measures where the *letters* are. Artwork lying across a paragraph is a judgement about a drawing, which its own notes have always said it declines to make and leaves to a person looking at the page. So the 98 covers whose art sat on the type were counted by a one-off measurement and by eye, not by the gate — and the gate has not quietly grown an opinion about it now.
+
+**That sentence was accurate, sat in the right file, and bought nothing.** It is the same finding this site already had on the books from a different direction: the zine that prompted the checker's existence carried a comment in its own source warning where its artwork would land, and the artwork landed there anyway. **A note is not a control** — and a limitation a tool documents is still a limitation. The checker now loads every page fresh at 375×812 as well as 1280×900, and reports the two widths separately, so a fault can never again be hidden by a number that averages a working width with a broken one. What is still unmeasured is narrower rather than absent: a collision that only appears at 768px will still get through.
+
+Fact-checkThe first phone run reported 256 problems that were not problems, on twelve of our own pages
+
+**Same run, opposite error, and worth publishing because it is the more dangerous of the two.** Alongside the real collisions the checker reported 256 pieces of text as cut off — sliced by the edge of the page with no way to reach them — across twelve pages of working notes. Every one was a wide table on a narrow screen, and every one of those tables sits in a wrapper you can swipe sideways. **Nothing was cut off. The reader reaches all of it.**
+
+**The tool was looking for a container that hides overflow and walking straight past containers that scroll it**, then blaming a rule much higher up the page that exists to contain the starfield. It now stops at whichever container takes responsibility for the overflow first, and answers differently depending on which kind it is. It also prints how many pieces of text it declined to report for that reason — because that is precisely the number it used to get wrong, and a silence nobody counts is a silence nobody questions.
+
+**Both halves were tested by breaking them.** With the cover fix removed the checker reports the collisions again on the phone width and stays clean on the desktop one; with it restored, both are clean. A page that genuinely cuts text off still fails; the same page with a scrollable wrapper passes. *A green gate is only evidence if you have watched it go red.*
+
+2026 · September 12
+
 ## The primary source contradicted the zine we set out to write, so we wrote the one it supports
 
 Zine No. 109 joins [Young Readers](https://starstuff.earth/collection-young-readers.html), which now holds fourteen. It is a read-aloud about who gets named — and two things it was going to say were cut, both because the discoverer’s own account says otherwise.

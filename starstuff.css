@@ -951,3 +951,78 @@ a.ss-cobrand.ss-cobrand:focus-visible { text-decoration-color: currentColor; }
 @media (max-width: 600px) {
   .spread-footer-nav { gap: 0.7rem; }
 }
+
+/* ── Zine covers at phone width ──
+   105 of the 108 zine covers collide at 375px, and have since the first cover on
+   2026-07-17: the ghosted issue numeral prints through the issue line and the
+   title, the collection label prints through the title, and the motif artwork
+   prints across the subtitle. Measured across all 205 pages at 375×812, in two
+   kinds, and the split matters because only the first kind has a gate behind it:
+
+     TEXT ON TEXT — 313 collisions on 103 pages, every one on spread 1, found by
+     check-overlap.mjs once it was taught this viewport. The numeral crosses the
+     issue line on 96 pages, the collection label crosses the title on 65, the
+     numeral crosses the title on 50, and a label inside the motif crosses cover
+     type on 30. Nine covers carry all four at once — NOT most of them, which is
+     what a sample of ten suggested before the sweep was run.
+
+     ARTWORK ON TEXT — all 98 pages carrying a .cover-motif, over the title on 95,
+     the issue line on 94 and the subtitle on 93. check-overlap.mjs cannot see this
+     and is right not to: it measures glyph extent, and type over artwork is the
+     legibility judgement it declines to make. Measured with a one-off bounding-box
+     probe and confirmed by eye at render size.
+
+   The three covers that were clean are lydtyss-zine and the two scroll zines,
+   whose covers are laid out differently.
+
+   THE MECHANISM IS THE SAME EVERYWHERE AND THAT IS WHY THIS RULE IS SHARED.
+   All 98 pages carrying a .cover-motif have a narrow-screen block that shrinks it
+   (97 at 600px, one at 720px), and NO PAGE ON THIS SITE — zero of the 108 carrying
+   a .cover-corner — has ever touched .cover-corner in one. It stays absolutely
+   positioned at top:2rem right:2.5rem carrying a 4.5rem numeral, while the title
+   below it grows taller from wrapping and the issue line wraps to two full-width
+   lines underneath it. The motif keeps an absolute `top` in px that was measured
+   against the DESKTOP title height. Both ornaments are placed in a horizontal
+   margin that does not exist at 375px.
+
+   CLAUDE.md is right that cover geometry is deliberately per-page — but that is
+   a statement about the DESKTOP composition, which is measured per title and
+   passes. The phone failure is not a composition; it is the absence of the
+   margin the composition assumed. There is no per-page value that fixes it,
+   because the fix is to stop positioning out of flow at all. So the ornaments
+   flow: motif, then numeral, then the type. Desktop is untouched.
+
+   DELIBERATELY OVER-SPECIFIC AT 0-2-0. This sheet loads *before* each zine's
+   inline <style>, so a page's own `.cover-motif` at 0-1-0 would win on
+   later-wins and restore position:absolute — the .ss-cobrand trap, which cost
+   this repo a stripped underline once already. Don't "simplify" it back.
+   The inset properties are reset too: a page whose own mobile block still sets
+   `top: 206px` is harmless under position:static, but leaving live values on an
+   element is how the next person reads this as still being placed.
+
+   Nothing here changes what the ornaments ARE: the numeral keeps its
+   aria-hidden and its watermark opacity, so check-contrast.mjs's one decorative
+   exemption still applies to it unchanged. */
+@media (max-width: 600px) {
+  .cover-corner.cover-corner,
+  .cover-motif.cover-motif {
+    position: static;
+    top: auto;
+    right: auto;
+    bottom: auto;
+    left: auto;
+  }
+
+  /* Right-aligned so the artwork keeps reading as a corner mark rather than a
+     figure, and capped so a motif wider than the phone cannot reintroduce the
+     horizontal overflow this rule exists to remove. */
+  .cover-motif.cover-motif {
+    display: block;
+    margin-left: auto;
+    margin-right: 0;
+    margin-bottom: 1rem;
+    max-width: 100%;
+  }
+
+  .cover-corner.cover-corner { margin-bottom: 1.1rem; }
+}

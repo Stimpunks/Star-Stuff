@@ -166,6 +166,48 @@ Decisions still to make. Move to **Settled** with a date once resolved.
 
 ## Settled
 
+- **Cover ornaments are placed per page on desktop and flowed by the shared sheet on the phone —
+  settled 2026-09-12.** CLAUDE.md says cover geometry is deliberately per-page, and a rule in
+  `starstuff.css` reaching 108 covers at once is a departure that needed an argument. The argument:
+  **the per-page placement is a composition, and the phone failure is the absence of the margin
+  that composition assumed.** Measured across all 205 pages at 375×812, **105 of the 108 covers
+  were broken**, in two kinds: *text on text* — 313 collisions on 103 pages, all on spread 1, the
+  numeral through the issue line (96 pages), the collection label through the title (65), the
+  numeral through the title (50), a motif label through cover type (30), with all four on only
+  **nine** — and *artwork on type*, which `check-overlap.mjs` declines to judge by design: the
+  motif's box across the title, issue line or subtitle on **all 98 covers that have one**. Only
+  `lydtyss-zine.html` and the two scroll zines were clean. There is no per-page *value* that fixes
+  this: at 375px there is no horizontal margin beside a wrapped title for an absolutely positioned
+  ornament, so the only per-page answer is the same rule written 108 times.
+  - **The alternative considered and declined: a per-page `@media (max-width: 600px)` fix on each
+    cover.** It is what the house has been doing — and it is the evidence against itself. 98 of the
+    108 covers already carry such a block; every one of them *resizes* `.cover-motif`, and **not a
+    single page on this site has ever moved `.cover-corner` in one** — zero of 108. A convention
+    applied 98 times that got the load-bearing half wrong 98 times is not a convention; it is a
+    thing people forget. Every new
+    cover would get a fresh chance to forget it. (Derived, not remembered: 108 pages carry
+    `.cover-corner`, 98 carry `.cover-motif`, all 98 of those resize it in a narrow-screen block —
+    97 at 600px, one at 720px.)
+  - **The rule was then tested by a page nobody chose as evidence.** No. 110 was written while this
+    fix was being built, by a session that knew nothing about it, and landed on main first. Measured
+    on the rebased tree: **six collisions on its cover at 375px with the shared rule removed, zero
+    with it.** A cover that did not exist when the rule was written was already correct because of
+    it. (Field Guide No. 25 landed in the same window and carries no cover ornaments at all, so it
+    passes for a different reason and is not evidence either way — worth saying, because counting it
+    as a second confirmation would be the *green gate proves nothing* fault.)
+  - **What stays per page:** the desktop placement, unchanged and still measured per title, because
+    it is genuinely a composition and it passes. The shared rule is inside `@media (max-width: 600px)`
+    and touches nothing above it.
+  - **The cost, stated:** the ornaments stop being ornaments on a phone. The numeral and the motif
+    flow above the type instead of sitting in a corner, so the cover reads top-to-bottom rather than
+    as a composed rectangle. That is a worse cover than the desktop one and a much better one than a
+    title with a 4.5rem numeral printed through it.
+  - **Follow-on, and it is the transferable half:** `check-overlap.mjs` gained a second viewport in
+    the same pass. The fault was invisible for two months *and the tool's own header said so in
+    words* — "a collision that only happens at 380px is real and this will not see it." A limitation
+    a tool documents is still a limitation, which is the same finding this repo already wrote down
+    about the warning comment in No. 48's source.
+
 - **"Confirmed at the abstract" is a status for calibration figures, not for load-bearing ones —
   settled 2026-09-06, by a case that proved it.** Trigger No. 1 marked two supporting figures
   *confirmed at the journal record, not read in full* and said so on the page. That was defensible:
