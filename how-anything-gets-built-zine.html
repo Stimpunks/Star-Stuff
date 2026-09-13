@@ -152,12 +152,6 @@
   .pull-quote.gold { border-left-color: var(--gold); }
   .pull-quote .attr { display: block; margin-top: 0.6rem; font-family: 'Space Mono', monospace; font-size: 0.56rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--dim); }
 
-  .trades { width: 100%; border-collapse: collapse; margin: 1.3rem 0; font-size: 0.84rem; }
-  .trades caption { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dim); text-align: left; padding-bottom: 0.6rem; }
-  .trades th { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--stardust); text-align: left; padding: 0.5rem 0.5rem; border-bottom: 1px solid rgba(244,114,182,0.3); }
-  .trades td { padding: 0.55rem 0.5rem; border-bottom: 1px solid rgba(244,114,182,0.12); vertical-align: top; color: var(--star-white); }
-  .trades .keeps { color: #f9a8d4; font-weight: 700; }
-  .trades .loses { color: var(--gold); font-family: 'Space Mono', monospace; font-size: 0.8rem; }
 
   .diagram-wrap { border: 1px solid rgba(244,114,182,0.18); border-radius: 8px; padding: 1.1rem; background: rgba(10,10,20,0.45); }
   .diagram { width: 100%; height: auto; display: block; }
@@ -185,8 +179,13 @@
      number was a fossil rather than a choice. The block it governed was written
      for a layout this page does not have: a two-column spread to collapse (every
      .spread-2col here carries .stacked, which is (0,2,0) and already one column at
-     every width, so that rule was a no-op) and a .trades table to shrink (no
-     <table> has ever existed on this page, in any commit). Both are gone with it.
+     every width, so that rule was a no-op) and a .trades table to shrink — and this
+     page has never held a table element, in any commit. All eight .trades rules are
+     gone with the breakpoint, base rules included. (Deliberately no literal tag
+     written out here: this repo's prose is about its own markup often enough that a
+     comment mentioning one becomes a decoy for the next person's grep. It already
+     was — a grep for the opening tag matched this comment and reported one table on
+     a page that has none, which is how the sentence you are reading got rewritten.)
      What remains is padding and type size, which behave identically at 600.
      Measured at 375/600/620/660/719/721/780/1280 before and after: motif ink over
      cover type 0 everywhere, text on text 0 everywhere. */
