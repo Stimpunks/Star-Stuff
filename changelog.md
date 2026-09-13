@@ -32,6 +32,26 @@ New piece Revised Fact-check Site
 
 2026 · September 13
 
+## Twenty-four style rules that were written out a thousand times, and two wrong theories about why that was safe
+
+A colophon heading, a page counter, a byline: the same rules, copied into page after page. They now live in one place. Getting there took three attempts, because the first two moved rules that looked identical and were not interchangeable.
+
+Site1,015 copies of 24 rules become 24 rules
+
+**Each page here carries its own stylesheet**, which is what lets a zine be one file you can save and open anywhere. The cost is that genuinely shared furniture gets written out once per page — and 24 rules were byte-identical across twenty or more pages each: **1,015 copies, 94,726 characters.** Changing how a colophon heading looks meant editing it in 133 files, or more realistically meant never changing it.
+
+**On download size this is close to a wash, and it is worth saying so.** Compressed, the pages lose about 76 bytes each and the shared sheet gains 1,433 — which pays for itself only once a reader has opened about nineteen pages. A search engine crawling the whole site comes out ahead; someone reading three zines pays slightly more. **The reason to do it is that one definition can be corrected and a thousand copies cannot.**
+
+Fact-checkTwo wrong theories, both caught by rendering all 207 pages
+
+**The first attempt moved 59 rules and changed 2,878 elements across 53 pages.** The reasoning had been: a page that writes its own version of a rule overrides the shared one, so sharing is safe. That is true per *property*, not per rule. A page whose version set the colour but said nothing about letter-spacing kept its colour and **silently inherited a letter-spacing it had never had**. Forty-seven rules fail that test and stayed where they were.
+
+**The second attempt moved 27 and changed 52 elements, all on the two scroll zines.** One rule — the one that shows the current spread — is more specific than a scroll zine’s own layout rule, and would win. No reader would ever see it, because nothing marks a spread “current” on a page that scrolls. **But four of our own measuring tools add that mark in order to see every spread at once**, so sharing the rule would have changed what those tools look at. Three rules dropped for touching state the tools inject.
+
+**What shipped: 24 rules, verified at zero change.** Every computed property of every element on all 207 pages, before against after — **140,667 elements, not one difference** — with the “before” copies pinned to a frozen duplicate of the shared sheet, so the comparison measured the move and not the sheet swap. *Both wrong theories sounded right and neither survived being rendered.*
+
+2026 · September 13
+
 ## One page-turning function instead of 107, and the security policy got a quarter smaller for free
 
 Every paged zine carried its own copy of the code that turns the page — 107 copies in 17 slightly different versions. The only thing that varied between them was the number of spreads, which the shared file could already count. All 107 now share one implementation.

@@ -1026,3 +1026,62 @@ a.ss-cobrand.ss-cobrand:focus-visible { text-decoration-color: currentColor; }
 
   .cover-corner.cover-corner { margin-bottom: 1.1rem; }
 }
+
+
+/* ── Zine furniture, shared ──
+   Moved out of the pages on 2026-09-13: 24 rules that were byte-identical on 20
+   or more pages, 1,015 copies, 94,726 bytes of inline CSS.
+
+   THREE CONDITIONS. A rule is here only if (a) no page that omits it contains an
+   element the selector would reach, (b) every page declaring a DIFFERENT body
+   sets every property this one sets, and (c) the selector names no state class
+   that the tools inject.
+
+   (b) was learned by breaking it. A first attempt moved 59 rules on (a) alone and
+   changed 2,878 elements across 53 pages, because THE CASCADE MERGES PER
+   PROPERTY, NOT PER RULE: a page whose variant set `color` but not
+   `letter-spacing` kept its colour and silently inherited a letter-spacing it had
+   never had. "The page declares its own, so the page wins" holds only for the
+   properties the page actually names. 47 rules fail (b).
+
+   (c) was learned the same way, one round later. `.spread.active { display:block }`
+   is on 108 pages with a single body and passes (a) and (b) — but at 0-2-0 it
+   outranks a scroll zine's own `.spread { display:flex }`, and while no reader
+   ever sees a scroll zine spread carrying .active, four tools in tools/ ADD it to
+   measure. Sharing that rule would have changed what those tools see on Nos. 68
+   and 84. Three rules fail (c); they are 3% of the bytes and not worth the
+   entanglement.
+
+   PAGES THAT DECLARE THEIR OWN STILL WIN, for the properties they name: this
+   sheet loads before each page's inline <style>, so an equal-specificity page
+   rule takes it on later-wins. That is why these are written at their natural
+   specificity, unlike the cover and cobrand rules, which are deliberately
+   over-specific because they must beat a page.
+
+   Verified by rendering: every computed property of every element on all 207
+   pages, before against after, with the before copies pinned to a frozen copy of
+   this sheet so the comparison measured the change and not the sheet swap. */
+.spread-2col.stacked > .col-text { padding-left: max(2.4rem, calc((100% - 32rem) / 2)); padding-right: max(2.4rem, calc((100% - 32rem) / 2)); }
+.zine-shell { position: relative; z-index: 1; max-width: 820px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+.spread-heading .spectrum-word { background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+.nav-controls { display: flex; gap: 0.5rem; align-items: center; }
+.colophon-top { border-bottom: 1px solid rgba(167,139,250,0.14); padding-bottom: 1.3rem; margin-bottom: 1.2rem; }
+.intro-band { position: relative; z-index: 2; padding: 1.5rem 2.5rem; border-bottom: 1px solid var(--border); display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.5rem; }
+.intro-note > strong:first-child { font-weight: 700; color: var(--white); display: block; font-size: 0.8125rem; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.3rem; }
+.rule-table th { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-align: left; padding: 0.3rem 0.5rem 0.3rem 0; border-bottom: 1px solid var(--border); }
+.cover-title .amp { color: var(--accent); font-style: italic; }
+.reflect-q:last-child { margin-bottom: 0; }
+.series-item.current .series-num { color: var(--accent); }
+.entry-number { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.2rem; }
+.entry-traditional { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.4rem; }
+.spread-2col.stacked > .col-diagram { order: 2; padding-top: 0; }
+.entry-header { display: grid; grid-template-columns: auto 1fr; gap: 1.2rem; align-items: start; margin-bottom: 1rem; }
+.entry-brief { font-size: 0.875rem; color: var(--secondary); line-height: 1.65; margin-bottom: 0.8rem; }
+.entry-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.7rem; }
+.intro-note { font-size: 0.875rem; color: var(--secondary); line-height: 1.7; }
+.intro-note strong { font-weight: 700; color: var(--white); }
+.notes-body em { color: var(--white); font-style: italic; }
+.masthead-right { text-align: right; flex-shrink: 0; }
+.notes-body p:last-child { margin-bottom: 0; }
+.body-text .dim { color: var(--dim); }
+.notes-body p { margin-bottom: 1em; }

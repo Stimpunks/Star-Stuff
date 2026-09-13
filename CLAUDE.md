@@ -863,6 +863,41 @@ carry equal weight** — never shrink one to a courtesy mention. Three forms, an
   a tab and a search result). A zine's `— Stimpunks Zine No. N` is a *series designation*, not an
   org attribution, and stays as it is.
 
+## Moving a rule into `starstuff.css` (2026-09-13)
+
+24 rules moved out of the pages that day — 1,015 copies, 94,726 bytes. **Three conditions, and the
+last two were learned by breaking them.** The rules and the reasoning are in the sheet's own
+*Zine furniture, shared* block; this is the part you need before moving another.
+
+- **(a) No page that omits the rule may contain an element the selector reaches.** Obvious, and not
+  sufficient on its own.
+- **(b) Every page declaring a DIFFERENT body must set every property the shared body sets.**
+  **The cascade merges per property, not per rule.** A first pass moved 59 rules on (a) alone and
+  changed **2,878 elements across 53 pages**: a page whose variant set `color` but not
+  `letter-spacing` kept its colour and silently *inherited* a letter-spacing it never had.
+  *"The page declares its own, so the page wins"* is true only for the properties the page names.
+  47 rules fail this.
+- **(c) The selector must name no state class the tools inject.** `.spread.active { display: block }`
+  is on 108 pages with a single body and passes (a) and (b) — but at 0-2-0 it outranks a scroll
+  zine's own `.spread { display: flex }`. **No reader ever sees that**, because nothing marks a
+  scroll zine's spread active; **but `check-contrast`, `check-overlap`, `check-forced-colors` and
+  `check-dead-css` all add `.active` to measure**, so sharing it would have changed what they see on
+  Nos. 68 and 84. 3 rules fail this, worth 3% of the bytes.
+- **Verify by rendering every page, not a sample.** A shared-sheet change is global, so the twelve
+  most-affected pages prove nothing. Dump every computed property of every element on all 207 pages
+  before and after — **and pin the before copies to a frozen duplicate of the sheet**, or the
+  comparison measures the sheet swap instead of the move. Sort the properties and freeze animation
+  (see the dead-CSS section for why both). The shipped set measures **140,667 elements, 0 differences.**
+- **On bytes it is nearly a wash, and the honest reason to do it is maintainability.** Gzipped, pages
+  lose ~76 B each and the sheet gains 1,433 B — break-even around nineteen page-views per reader. A
+  crawler wins; a three-zine reader pays slightly more. **One definition can be corrected; 1,015
+  copies cannot.** Don't sell a consolidation as a performance win without measuring gzip.
+- **Natural specificity, not the defensive 0-2-0.** `.ss-cobrand`, `.nav-btn` and the cover rules are
+  over-specific *because they must beat a page*. These must not: a page keeping its own variant has
+  to win on later-wins.
+- **Rules inside `@media` were not considered** — 353 of them. The same three conditions apply, plus
+  the media query itself has to match, so that is a separate pass with its own verification.
+
 ## Search (`search.html` + `search-index.json`)
 
 Client-side search over the whole collection. No dependencies, no server, no
