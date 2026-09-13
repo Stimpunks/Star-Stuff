@@ -55,7 +55,6 @@
 
   /* One unscoped rule: the first draft scoped it to .notice and .seed, and the
      dead-class gate caught the .caveat use it therefore never reached. */
-  .mono { font-family: 'Space Mono', monospace; }
 
   html, body {
     background: var(--void);
@@ -132,10 +131,6 @@
   .key { display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); gap: 0.75rem; margin-bottom: 1.6rem; }
   .key div { border: 1px solid var(--border); border-radius: 8px; padding: 0.7rem 0.85rem; font-size: 0.8rem; color: var(--stardust); display: flex; flex-direction: column; gap: 0.3rem; }
   .key span { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.14em; font-weight: 700; }
-  .key .k-verified  { color: var(--green); }
-  .key .k-plausible { color: var(--gold); }
-  .key .k-contested { color: var(--pink); }
-  .key .k-held      { color: var(--dim); }
 
   /* ---------- Entries ---------- */
 
@@ -145,16 +140,11 @@
   .meta { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.35rem 1rem; font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.1em; color: var(--dim); font-variant-numeric: tabular-nums; }
   .meta i { font-style: normal; color: var(--secondary); }
   .meta .grade { font-weight: 700; letter-spacing: 0.14em; color: var(--e-accent, var(--gold)); }
-  .meta .grade.contested { color: var(--pink); }
-  .meta .grade.verified  { color: var(--green); }
 
   /* Lag: how long the finding had been public before a news wire carried it.
      A real axis for a digest — several of these are months old, and the number
      is what settled the weekly cadence. Bar plus figure, never the bar alone. */
   .lag { display: flex; align-items: center; gap: 0.5rem; width: 100%; margin-top: 0.1rem; }
-  .lag-label { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.1em; color: var(--dim); white-space: nowrap; font-variant-numeric: tabular-nums; }
-  .lag-track { flex: 1; height: 3px; background: rgba(184,174,208,0.16); border-radius: 2px; overflow: hidden; min-width: 3rem; }
-  .lag-fill { display: block; height: 100%; background: var(--e-accent, var(--gold)); opacity: 0.75; border-radius: 2px; }
 
   .wire-item h3 { font-size: 1.28rem; font-weight: 800; line-height: 1.25; letter-spacing: -0.01em; color: var(--star-white); text-wrap: balance; scroll-margin-top: 5rem; }
   .finding { color: var(--star-white); }
@@ -168,26 +158,9 @@
   .placement b { color: var(--secondary); }
   .caveat b    { color: var(--pink); }
 
-  .cite { font-family: 'Space Mono', monospace; font-size: 0.63rem; line-height: 1.75; color: var(--dim2); border-top: 1px solid var(--border); padding-top: 0.75rem; word-break: break-word; }
-  .cite b { color: var(--secondary); font-weight: 700; }
-  .cite a { color: var(--secondary); }
-
   /* ---------- Held ---------- */
 
-  .held { display: flex; flex-direction: column; gap: 1rem; }
-  .held-item { border: 1px dashed rgba(184,174,208,0.3); border-radius: 8px; padding: 1.1rem 1.25rem; display: flex; flex-direction: column; gap: 0.5rem; }
-  .held-item h3 { font-size: 1.02rem; font-weight: 700; color: var(--stardust); line-height: 1.3; scroll-margin-top: 5rem; }
-  .held-item p { font-size: 0.9rem; color: var(--muted); }
-  .held-item .why { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--dim); font-weight: 700; }
-
   /* ---------- Seedbed ---------- */
-
-  .seeds { display: flex; flex-direction: column; gap: 1.1rem; }
-  .seed { background: var(--card); border-radius: 8px; border-left: 3px solid var(--s-accent, var(--violet)); padding: 1.1rem 1.25rem; display: flex; flex-direction: column; gap: 0.5rem; }
-  .seed-kind { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; color: var(--s-accent, var(--violet)); }
-  .seed h3 { font-size: 1.08rem; font-weight: 800; color: var(--star-white); line-height: 1.3; scroll-margin-top: 5rem; }
-  .seed p { font-size: 0.92rem; color: var(--stardust); }
-  .seed .src { font-family: 'Space Mono', monospace; font-size: 0.62rem; color: var(--dim2); line-height: 1.7; word-break: break-word; }
 
   /* ---------- Refusals ---------- */
 
@@ -199,10 +172,6 @@
      One page, every edition kept. Nothing is deleted: the Held list is the
      record this page exists for, and an archive of only the good weeks would
      assert a cadence that did not happen. New editions are PREPENDED. */
-  .edition + .edition { margin-top: 4rem; padding-top: 2.5rem; border-top: 1px solid var(--border); }
-  .edition-date { font-family: 'Space Mono', monospace; font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 700; margin-bottom: 0.5rem; scroll-margin-top: 5rem; }
-  .edition-tally { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.12em; color: var(--dim); margin-bottom: 2rem; font-variant-numeric: tabular-nums; }
-  .edition + .edition .edition-date { color: var(--secondary); }
   .colophon-footer { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--dim2); line-height: 2.2; margin-top: 3rem; padding-top: 1.4rem; border-top: 1px solid var(--border); }
   .colophon-footer a { color: inherit; }
 
@@ -212,13 +181,11 @@
   @media print {
     body::before { display: none !important; }
     .doc-shell { max-width: none; padding: 0 0 1rem; }
-    .wire-item, .notice, .seed, .refusals, .held-item, .key div {
+    .wire-item, .notice, .refusals, .key div {
       background: transparent !important; border-color: #999999 !important; break-inside: avoid;
     }
-    .wire-item, .notice, .seed { border-left-color: #333333 !important; }
+    .wire-item, .notice { border-left-color: #333333 !important; }
     .frame, .placement, .caveat { background: transparent !important; border-left-color: #666666 !important; }
-    .lag-track { background: #dddddd !important; }
-    .lag-fill { background: #555555 !important; opacity: 1; }
     .hero-rule, .section-rule { background: #333333 !important; opacity: 1; }
   }
 

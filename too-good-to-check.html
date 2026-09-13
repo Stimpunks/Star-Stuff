@@ -114,9 +114,6 @@
 
   .claim { font-size: 1.22rem; font-weight: 700; line-height: 1.4; color: var(--star-white); border-left: 3px solid var(--accent); padding-left: 1.1rem; margin: 1.4rem 0; }
 
-  .pull { font-size: 1.06rem; line-height: 1.6; color: var(--star-white); border-left: 3px solid var(--violet); padding-left: 1.1rem; margin: 1.4rem 0; }
-  .pull .attr { display: block; margin-top: 0.5rem; font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim); }
-
   /* The tell: one line per failure mode, the thing that gives it away. */
   .tell { font-family: 'Space Mono', monospace; font-size: 0.78rem; line-height: 1.65; color: var(--star-white); border-left: 3px solid var(--gold); padding-left: 1.1rem; margin: 1.1rem 0 0; }
   .tell span { color: var(--gold); letter-spacing: 0.16em; text-transform: uppercase; font-size: 0.58rem; display: block; margin-bottom: 0.35rem; }
@@ -126,8 +123,6 @@
   .callout p { font-size: 0.96rem; line-height: 1.7; color: var(--stardust); }
   .callout p + p { margin-top: 0.8rem; }
   .callout strong { color: var(--star-white); font-weight: 700; }
-  .callout--gold { border-color: rgba(251,191,36,0.32); border-left-color: var(--gold); background: rgba(251,191,36,0.05); }
-  .callout--gold .callout-label { color: var(--gold); }
 
   .refusals { margin: 1.5rem 0 0.5rem; }
   .refusals .callout-label { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--violet); margin-bottom: 0.6rem; }
@@ -173,18 +168,17 @@
      of it for free. These are the few roles that name a color of their own. */
   @media print {
     body::before { display: none; }
-    .hero-title, h2.section, h3.sub, .claim, .pull, .tell, td strong,
+    .hero-title, h2.section, h3.sub, .claim, .tell, td strong,
     .callout strong, .body-text strong, .body-text em { color: #111; }
     .body-text li, .hero-sub, .callout p, td, .refusals li { color: #222; }
-    th, caption, .fig figcaption, .pull .attr, .colophon-footer, .refs,
+    th, caption, .fig figcaption, .colophon-footer, .refs,
     .tell span, h3.sub .mode-num { color: #444; }
     /* .callout and .refusals set their label color with a two-class selector,
        so match that specificity or the accent survives onto paper at ~2:1. */
     .callout .callout-label,
-    .callout--gold .callout-label,
     .refusals .callout-label { color: #444; }
     .refusals li::before { color: #111; }
-    .callout, .callout--gold { background: none; border-color: #999; border-left-color: #444; }
+    .callout { background: none; border-color: #999; border-left-color: #444; }
     .start-link { display: none; }
   }
 </style>

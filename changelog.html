@@ -227,6 +227,32 @@
 
   </div>
 
+  <!-- ================= 2026-09-13b (site: dead CSS swept) ================= -->
+  <section class="release" id="2026-09-13-dead-css" aria-labelledby="h-2026-09-13-dead-css">
+    <div class="release-date">2026 &middot; September 13</div>
+    <h2 class="release-title" id="h-2026-09-13-dead-css">A thousand style rules that styled nothing, and the two bugs in the tool that found them</h2>
+    <p class="release-note">Every page carries its own stylesheet, copied forward from the page before it. Over 110 zines that accumulated 1,054 rules aimed at things none of those pages contain. They are gone, and nothing on the site looks different &mdash; which is the entire claim, and it was measured rather than assumed.</p>
+
+    <div class="entry entry--site">
+      <div class="entry-head"><span class="tag tag--site">Site</span><span class="entry-name">1,054 dead selectors removed from 119 pages</span></div>
+      <div class="entry-body"><p><strong>This started with one zine.</strong> <a href="how-anything-gets-built-zine.html">No. 54</a> was found carrying eight rules for a comparison table it has never had, and the same dead block also held the only 720-pixel layout breakpoint on the site &mdash; a number chosen for the table, left behind when the table never arrived. The bytes were harmless. The breakpoint was a decision nobody could explain, sitting in a file nobody had reason to re-read. So we looked at the other 206 pages.</p>
+      <p><strong>What was there was almost entirely template residue:</strong> colour helpers for accents the page never uses, prose scaffolding for callouts and pull-quotes it never sets, layout rules for a second column it does not have. <strong>Crucially, no other page had No. 54&rsquo;s defect</strong> &mdash; we checked specifically for a whole block of dead rules carrying a breakpoint, and there were none. Everything else was cost without consequence.</p>
+      <p><strong>Why it is safe to delete, stated as the argument it is.</strong> A rule can only affect a page if its selector matches something. These name classes that appear nowhere in the page, nowhere in its scripts, and nowhere in the shared script &mdash; so no click, no state, no interaction can ever produce them. A selector that can never match contributes nothing to anything. <strong>That was then checked rather than trusted:</strong> every computed property of every element on the twelve most affected pages, before and against after &mdash; <strong>7,705 elements, not one difference.</strong></p></div>
+    </div>
+
+    <div class="entry entry--factcheck">
+      <div class="entry-head"><span class="tag tag--factcheck">Fact-check</span><span class="entry-name">The tool was wrong twice before it was right, and one of the errors would have broken every zine</span></div>
+      <div class="entry-body"><p><strong>First, it did not know about the shared script.</strong> Pages get some of their classes at load time, from the one JavaScript file the whole site shares &mdash; the pager controls on every zine, among others. Those classes are not written in the page, so the first version of the audit called their styling dead: <strong>87 live rules, on the pager of every paged zine.</strong> Acting on that run would have broken the thing readers touch most.</p>
+      <p><strong>Second, comments were being read as part of the rule that followed them.</strong> That hid any block introduced by a comment, and &mdash; far worse &mdash; meant a comment that happened to mention a class could condemn the perfectly live rule underneath it. On a site whose stylesheets are heavily commented, that is a loaded gun. Comments are now parsed as their own thing.</p>
+      <p><strong>And the verification was wrong before it was right, in the same direction as yesterday&rsquo;s correction.</strong> The first before-and-after comparison reported 3,611 changed elements, which looked like a disaster and was an artefact: the browser lists an element&rsquo;s custom properties in a different order once rules are removed, and one animated panel was sampled at two different moments of the same fade. Sorting the properties and freezing animation gave the true answer of zero. <em>Three times in two days a measurement has been wrong in a way that looked like a finding.</em></p></div>
+    </div>
+
+    <div class="entry entry--site">
+      <div class="entry-head"><span class="tag tag--site">Site</span><span class="entry-name">The audit is kept, and deliberately not made a gate</span></div>
+      <div class="entry-body"><p>The checker lives in the tools directory and is run on demand, like the one that verifies video embeds. <strong>It is not a tenth gate.</strong> Every gate here answers a question about something a reader meets &mdash; a colour, a position, a broken link, a page that prints blank. Dead CSS costs bytes and costs the reader nothing, and a gate that fires on it would be noise in front of the nine that matter. The one time it <em>did</em> matter, the cost was a stray breakpoint, and that is now fixed and written down.</p></div>
+    </div>
+  </section>
+
   <!-- ================= 2026-09-13 (correction: the artwork-over-type figures were box-measured) ================= -->
   <section class="release" id="2026-09-13-ink-not-boxes" aria-labelledby="h-2026-09-13-ink-not-boxes">
     <div class="release-date">2026 &middot; September 13</div>

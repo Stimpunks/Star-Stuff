@@ -32,6 +32,32 @@ New piece Revised Fact-check Site
 
 2026 · September 13
 
+## A thousand style rules that styled nothing, and the two bugs in the tool that found them
+
+Every page carries its own stylesheet, copied forward from the page before it. Over 110 zines that accumulated 1,054 rules aimed at things none of those pages contain. They are gone, and nothing on the site looks different — which is the entire claim, and it was measured rather than assumed.
+
+Site1,054 dead selectors removed from 119 pages
+
+**This started with one zine.** [No. 54](https://starstuff.earth/how-anything-gets-built-zine.html) was found carrying eight rules for a comparison table it has never had, and the same dead block also held the only 720-pixel layout breakpoint on the site — a number chosen for the table, left behind when the table never arrived. The bytes were harmless. The breakpoint was a decision nobody could explain, sitting in a file nobody had reason to re-read. So we looked at the other 206 pages.
+
+**What was there was almost entirely template residue:** colour helpers for accents the page never uses, prose scaffolding for callouts and pull-quotes it never sets, layout rules for a second column it does not have. **Crucially, no other page had No. 54’s defect** — we checked specifically for a whole block of dead rules carrying a breakpoint, and there were none. Everything else was cost without consequence.
+
+**Why it is safe to delete, stated as the argument it is.** A rule can only affect a page if its selector matches something. These name classes that appear nowhere in the page, nowhere in its scripts, and nowhere in the shared script — so no click, no state, no interaction can ever produce them. A selector that can never match contributes nothing to anything. **That was then checked rather than trusted:** every computed property of every element on the twelve most affected pages, before and against after — **7,705 elements, not one difference.**
+
+Fact-checkThe tool was wrong twice before it was right, and one of the errors would have broken every zine
+
+**First, it did not know about the shared script.** Pages get some of their classes at load time, from the one JavaScript file the whole site shares — the pager controls on every zine, among others. Those classes are not written in the page, so the first version of the audit called their styling dead: **87 live rules, on the pager of every paged zine.** Acting on that run would have broken the thing readers touch most.
+
+**Second, comments were being read as part of the rule that followed them.** That hid any block introduced by a comment, and — far worse — meant a comment that happened to mention a class could condemn the perfectly live rule underneath it. On a site whose stylesheets are heavily commented, that is a loaded gun. Comments are now parsed as their own thing.
+
+**And the verification was wrong before it was right, in the same direction as yesterday’s correction.** The first before-and-after comparison reported 3,611 changed elements, which looked like a disaster and was an artefact: the browser lists an element’s custom properties in a different order once rules are removed, and one animated panel was sampled at two different moments of the same fade. Sorting the properties and freezing animation gave the true answer of zero. *Three times in two days a measurement has been wrong in a way that looked like a finding.*
+
+SiteThe audit is kept, and deliberately not made a gate
+
+The checker lives in the tools directory and is run on demand, like the one that verifies video embeds. **It is not a tenth gate.** Every gate here answers a question about something a reader meets — a colour, a position, a broken link, a page that prints blank. Dead CSS costs bytes and costs the reader nothing, and a gate that fires on it would be noise in front of the nine that matter. The one time it *did* matter, the cost was a stray breakpoint, and that is now fixed and written down.
+
+2026 · September 13
+
 ## We said the cover artwork lay across the subtitle on 93 covers. It was 23, and we made the exact mistake our own checker was built to avoid
 
 Yesterday’s cover-collision entry carried four numbers measured the wrong way. The headline finding stands; three of the four figures under it do not. Found while Ryan asked an unrelated question about one zine’s stylesheet.

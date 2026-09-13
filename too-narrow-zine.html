@@ -119,16 +119,12 @@
   /* ── INTERIOR ── */
   .interior { background: var(--page); border: 1px solid rgba(167,139,250,0.15); border-radius: 4px; overflow: hidden; min-height: 480px; }
   .spread-2col { display: grid; grid-template-columns: 1fr 1fr; min-height: 440px; }
-  .spread-left, .spread-right { padding: 3rem 2.4rem; position: relative; }
+  .spread-left { padding: 3rem 2.4rem; position: relative; }
   .spread-left { border-right: 1px solid rgba(167,139,250,0.12); }
 
   .spread-2col.stacked { display: flex; flex-direction: column; }
-  .spread-2col.stacked > .spread-left,
-  .spread-2col.stacked > .spread-right { border-right: none; }
-  .spread-2col.stacked > .col-diagram { order: 2; padding-top: 0; }
+  .spread-2col.stacked > .spread-left { border-right: none; }
   .spread-2col.stacked > .col-text { padding-left: max(2.4rem, calc((100% - 32rem) / 2)); padding-right: max(2.4rem, calc((100% - 32rem) / 2)); }
-  .spread-2col.stacked .diagram-wrap { height: auto; }
-  .spread-2col.stacked .diagram { max-width: 420px; }
 
   .eyebrow { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.1rem; }
   .body-text { font-size: 0.98rem; line-height: 1.72; color: var(--stardust); }
@@ -157,7 +153,6 @@
   .latin { font-style: italic; color: var(--star-white); }
 
   .spread-heading { font-weight: 700; font-size: 1.9rem; line-height: 1.12; color: var(--star-white); margin-bottom: 0.7rem; letter-spacing: -0.01em; margin-top: 0; scroll-margin-top: 5rem; }
-  .spread-heading .spectrum-word { background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
   .rule { width: 40px; margin: 1rem 0; }
 
   /* ── JOINT TAGS — the collection's whole point ── */
@@ -171,14 +166,6 @@
   .joint-leap::before { border-top-style: dotted; border-top-color: var(--pink); }
   .joint-line { margin-bottom: 1rem !important; }
 
-  .pull-quote { font-size: 1.18rem; font-weight: 700; line-height: 1.4; color: var(--star-white); border-left: 3px solid var(--accent); padding-left: 1.1rem; margin: 1.4rem 0; font-style: italic; }
-  .pull-quote.violet { border-left-color: var(--violet); }
-  .pull-quote.cyan { border-left-color: var(--cyan); }
-  .pull-quote.gold { border-left-color: var(--gold); }
-  .pull-quote.pink { border-left-color: var(--pink); }
-  .pull-quote.green { border-left-color: var(--green); }
-  .pull-quote .attr { display: block; font-family: 'Space Mono', monospace; font-size: 0.6rem; font-weight: 400; font-style: normal; letter-spacing: 0.08em; color: var(--dim); margin-top: 0.6rem; }
-
   .callout { margin: 1.3rem 0; padding: 1rem 1.15rem; background: rgba(167,139,250,0.06); border: 1px solid rgba(167,139,250,0.24); border-radius: 4px; font-size: 1rem; font-style: italic; color: var(--star-white); line-height: 1.55; }
   .callout .attr { display: block; font-family: 'Space Mono', monospace; font-size: 0.58rem; font-style: normal; letter-spacing: 0.06em; color: var(--dim); margin-top: 0.5rem; }
 
@@ -190,27 +177,12 @@
      analytical work. Link 2 gets a plain bordered block and nothing else, and says so
      on its face. Standing rule from A Field Guide to Turtles: a subject that cannot
      take the apparatus gets a DIFFERENT card, not a smaller one. ── */
-  .withheld { border: 1px dashed rgba(193,101,58,0.5); border-radius: 4px; padding: 1.15rem 1.25rem; margin: 1.4rem 0; background: rgba(193,101,58,0.05); }
-  .withheld-label { font-family: 'Space Mono', monospace; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ember); margin-bottom: 0.6rem; }
-  .withheld p { font-size: 0.88rem; line-height: 1.62; color: var(--stardust); margin: 0; }
 
   /* ── MEASURED FIGURES — spread 6's haplogroup gradient ── */
-  .measure { display: flex; flex-wrap: wrap; gap: 0.9rem; margin: 1.4rem 0; }
-  .measure-cell { flex: 1 1 150px; border: 1px solid rgba(167,139,250,0.28); border-radius: 4px; padding: 0.9rem 1rem; background: rgba(167,139,250,0.05); }
-  .measure-num { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 1.5rem; color: var(--accent); line-height: 1.1; }
-  .measure-label { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--stardust); margin-top: 0.45rem; line-height: 1.7; }
 
   /* ── DIAGRAMS ── */
-  .diagram-wrap { display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; }
-  .diagram { width: 100%; max-width: 300px; display: block; }
-  .diagram-caption { font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim); text-align: center; margin-top: 0.9rem; line-height: 1.9; }
 
   /* ── REFUSALS ── */
-  .refusals { margin-top: 1.3rem; }
-  .refusal { font-size: 0.88rem; line-height: 1.5; color: var(--stardust); padding: 0.55rem 0; border-bottom: 1px solid rgba(167,139,250,0.1); display: flex; gap: 0.6rem; align-items: baseline; }
-  .refusal:last-child { border-bottom: none; }
-  .refusal-tag { font-family: 'Space Mono', monospace; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ember); flex-shrink: 0; padding-top: 0.12rem; }
-  .refusal strong { color: var(--star-white); font-weight: 700; }
 
   /* ── THE RUNNING SPINE — generated, never hand-edited ── */
   .spine { border-top: 1px solid rgba(167,139,250,0.12); padding: 1.1rem 2.4rem 0.2rem; }
@@ -252,8 +224,6 @@
   .spread-footer-left { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--dim); }
   .spread-footer-right { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; color: var(--accent); }
 
-  .twinkle { position: fixed; width: 3px; height: 3px; border-radius: 50%; animation: twinkle-anim 3s ease-in-out infinite; pointer-events: none; z-index: 0; }
-
   @media (max-width: 600px) {
     .spread-2col { grid-template-columns: 1fr; }
     .spread-left { border-right: none; border-bottom: 1px solid rgba(167,139,250,0.12); }
@@ -263,7 +233,7 @@
     .cover-motif { width: 224px; height: 224px; top: -4px; right: -24px; opacity: 0.5; }
     .cover-title { font-size: 1.75rem; }
     .spread-heading { font-size: 1.55rem; }
-    .spread-left, .spread-right { padding: 2rem 1.5rem; }
+    .spread-left { padding: 2rem 1.5rem; }
     .colophon { padding: 2rem 1.5rem; }
     .spine { padding: 1rem 1.5rem 0.2rem; }
   }

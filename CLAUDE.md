@@ -1700,6 +1700,57 @@ node tools/check-markup.mjs --check               # exit non-zero on any failure
   from git history, and against decoys that must *not* fire — an `a a` CSS selector, a nested
   anchor inside a JS string, and a `>` inside an attribute value.
 
+## Dead CSS (`tools/check-dead-css.mjs`)
+
+**Not a gate, deliberately** — an on-demand audit, like `check-embeds.mjs`. Every one of the nine
+gates answers a question about a defect a *reader* meets; dead CSS costs bytes and costs the reader
+nothing, which is this file's own distinction under `check-classes.mjs`. It stays true.
+
+```bash
+node tools/check-dead-css.mjs                 # every *.html in the repo root
+node tools/check-dead-css.mjs --json          # machine-readable, for a stripper
+node tools/check-dead-css.mjs --check         # exit non-zero on any finding
+```
+
+- **It exists because of what dead CSS carried, not what it cost.** No. 54 held eight `.trades`
+  rules for a table that never existed in any commit — and the same dead block held the **only
+  720px breakpoint on the site**, chosen for that table. The bytes were nothing; the breakpoint was
+  a structural decision nobody could justify. So the report flags a **fully-dead `@media` block**
+  separately: that is the shape worth acting on. Swept 2026-09-13 — **1,054 dead selectors across
+  119 of 207 pages, and no other page had a fully-dead media block.** Baseline is now 0.
+- **It is the inverse of `check-classes.mjs`, and `querySelectorAll` is the WRONG instrument.**
+  That tool asks *does this class attribute get styled?*; this asks *does this rule style
+  anything?* Testing selectors against the DOM reports every **state** selector as dead —
+  `.entry.open`, `.spread.active`, `:hover`, `:disabled` match nothing at rest and are all alive.
+  So the test is token-based: **a selector is dead when it names a class token present nowhere** —
+  no class attribute in the rendered DOM, no inline script, **and not in `starstuff.js`**.
+- **`starstuff.js` is read from disk and included, and leaving it out is not a small error.** It
+  adds `.open`, `.spread-footer-nav` and `.spread-nav-btn` at runtime, none of which appear in page
+  markup — so the first run reported **87 live rules as dead, on the pager of every paged zine**.
+  Acting on that run would have broken the control readers touch most.
+- **Comments must be parsed as their own nodes.** Folded into the following rule's prelude they
+  hide any `@media` introduced by a comment, and — worse — **a comment mentioning a class can
+  condemn the live rule beneath it.** On a site whose stylesheets are this heavily commented that
+  is a loaded gun. Preludes are analysed comment-free and comments are preserved verbatim.
+- **Why deleting is safe, and how that was checked rather than asserted.** A selector whose token
+  can never exist can never match, so it contributes nothing to any element's computed style.
+  Verified empirically: every computed property of every element on the twelve most-affected pages,
+  before against after — **7,705 elements, 0 differences**. The stripper's parser was also proved
+  **lossless across 2.88M characters** of CSS before it was allowed to remove anything.
+- **The verification was wrong before it was right, and the shape is this file's signature fault.**
+  The first comparison reported **3,611 changed elements**: Chrome enumerates an element's custom
+  properties in a different **order** once rules are removed, and one `.spread` was sampled
+  mid-fade. **Sort the property list and freeze animation** — `check-overlap.mjs` kills animation
+  for the same reason. A diff that is order-sensitive or animation-sensitive invents findings.
+- **Chrome supports CSS nesting, so every `CSSStyleRule` now carries a (usually empty)
+  `.cssRules`.** A walk that tests `.cssRules` before `.selectorText` recurses into nothing and
+  swallows every style rule: the first run reported **0 selectors examined across 207 pages** and
+  exited clean. **Test `selectorText` first** — a property's presence is not a type.
+- **Only inline `<style>` is examined.** `starstuff.css` is shared by 207 pages, so a class unused
+  on one is live on another; "dead" there is a site-wide question this tool does not ask.
+- Served over HTTP for `check-classes.mjs`'s reason: a `file://` page cannot read its own
+  `.cssRules`. Chrome and Node 22+; local dev tool, Netlify does not run it.
+
 ## Sheet fitting (`tools/check-sheets.mjs`)
 
 Does a paper-first sheet actually land on the paper? Run it on any broadside before shipping:

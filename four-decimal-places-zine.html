@@ -119,16 +119,12 @@
   /* ── INTERIOR ── */
   .interior { background: var(--page); border: 1px solid rgba(34,211,238,0.15); border-radius: 4px; overflow: hidden; min-height: 480px; }
   .spread-2col { display: grid; grid-template-columns: 1fr 1fr; min-height: 440px; }
-  .spread-left, .spread-right { padding: 3rem 2.4rem; position: relative; }
+  .spread-left { padding: 3rem 2.4rem; position: relative; }
   .spread-left { border-right: 1px solid rgba(167,139,250,0.12); }
 
   .spread-2col.stacked { display: flex; flex-direction: column; }
-  .spread-2col.stacked > .spread-left,
-  .spread-2col.stacked > .spread-right { border-right: none; }
-  .spread-2col.stacked > .col-diagram { order: 2; padding-top: 0; }
+  .spread-2col.stacked > .spread-left { border-right: none; }
   .spread-2col.stacked > .col-text { padding-left: max(2.4rem, calc((100% - 32rem) / 2)); padding-right: max(2.4rem, calc((100% - 32rem) / 2)); }
-  .spread-2col.stacked .diagram-wrap { height: auto; }
-  .spread-2col.stacked .diagram { max-width: 420px; }
 
   .eyebrow { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.1rem; }
   .body-text { font-size: 0.98rem; line-height: 1.72; color: var(--stardust); }
@@ -138,27 +134,19 @@
   .body-text em { font-style: italic; color: var(--star-white); }
   .body-text a { color: var(--cyan); text-decoration: none; border-bottom: 1px solid rgba(34,211,238,0.4); }
   .body-text a:hover { border-bottom-color: var(--cyan); color: var(--star-white); }
-  .body-text .violet { color: var(--violet); font-weight: 700; }
-  .body-text .pink { color: var(--pink); font-weight: 700; }
   .body-text .gold { color: var(--gold); font-weight: 700; }
   /* Accent spans that sit OUTSIDE .body-text — inside .refusals, which is its sibling,
      and inside .colophon-body. The scoped .body-text rules cannot reach them, and both
      of this page's gold spans rendered unstyled until check-classes.mjs said so. This is
      the No. 67 fault the gate was written for, and it was still latent in the stylesheet
      this zine was built from. */
-  .zine-shell span.violet { color: var(--violet); font-weight: 700; }
   .zine-shell span.gold { color: var(--gold); font-weight: 700; }
   .zine-shell span.cyan { color: var(--cyan); font-weight: 700; }
-  .zine-shell span.pink { color: var(--pink); font-weight: 700; }
-  .zine-shell span.green { color: var(--green); font-weight: 700; }
   .body-text .cyan { color: var(--cyan); font-weight: 700; }
-  .body-text .green { color: var(--green); font-weight: 700; }
   .body-text .dim { color: var(--dim); }
   .body-text .lede { font-size: 1.08rem; color: var(--star-white); }
-  .latin { font-style: italic; color: var(--star-white); }
 
   .spread-heading { font-weight: 700; font-size: 1.9rem; line-height: 1.12; color: var(--star-white); margin-bottom: 0.7rem; letter-spacing: -0.01em; margin-top: 0; scroll-margin-top: 5rem; }
-  .spread-heading .spectrum-word { background: linear-gradient(90deg, var(--violet), var(--pink), var(--gold), var(--cyan), var(--green)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
   .rule { width: 40px; margin: 1rem 0; }
 
   /* ── JOINT TAGS — the collection's whole point ── */
@@ -173,15 +161,9 @@
   .joint-line { margin-bottom: 1rem !important; }
 
   .pull-quote { font-size: 1.18rem; font-weight: 700; line-height: 1.4; color: var(--star-white); border-left: 3px solid var(--accent); padding-left: 1.1rem; margin: 1.4rem 0; font-style: italic; }
-  .pull-quote.violet { border-left-color: var(--violet); }
   .pull-quote.cyan { border-left-color: var(--cyan); }
   .pull-quote.gold { border-left-color: var(--gold); }
-  .pull-quote.pink { border-left-color: var(--pink); }
-  .pull-quote.green { border-left-color: var(--green); }
   .pull-quote .attr { display: block; font-family: 'Space Mono', monospace; font-size: 0.6rem; font-weight: 400; font-style: normal; letter-spacing: 0.08em; color: var(--dim); margin-top: 0.6rem; }
-
-  .callout { margin: 1.3rem 0; padding: 1rem 1.15rem; background: rgba(34,211,238,0.06); border: 1px solid rgba(34,211,238,0.24); border-radius: 4px; font-size: 1rem; font-style: italic; color: var(--star-white); line-height: 1.55; }
-  .callout .attr { display: block; font-family: 'Space Mono', monospace; font-size: 0.58rem; font-style: normal; letter-spacing: 0.06em; color: var(--dim); margin-top: 0.5rem; }
 
   .note { font-size: 0.84rem; line-height: 1.6; color: var(--dim); border-left: 2px solid rgba(34,211,238,0.28); padding-left: 0.9rem; margin: 1.1rem 0; }
   .note strong { color: var(--stardust); font-weight: 700; }
@@ -191,14 +173,8 @@
      analytical work. Link 2 gets a plain bordered block and nothing else, and says so
      on its face. Standing rule from A Field Guide to Turtles: a subject that cannot
      take the apparatus gets a DIFFERENT card, not a smaller one. ── */
-  .withheld { border: 1px dashed rgba(193,101,58,0.5); border-radius: 4px; padding: 1.15rem 1.25rem; margin: 1.4rem 0; background: rgba(193,101,58,0.05); }
-  .withheld-label { font-family: 'Space Mono', monospace; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ember); margin-bottom: 0.6rem; }
-  .withheld p { font-size: 0.88rem; line-height: 1.62; color: var(--stardust); margin: 0; }
 
   /* ── DIAGRAMS ── */
-  .diagram-wrap { display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; }
-  .diagram { width: 100%; max-width: 300px; display: block; }
-  .diagram-caption { font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim); text-align: center; margin-top: 0.9rem; line-height: 1.9; }
 
   /* ── REFUSALS ── */
   .refusals { margin-top: 1.3rem; }
@@ -220,7 +196,6 @@
   .spine-track.contested  { stroke: rgba(251,191,36,0.6); stroke-dasharray: 6 4; }
   .spine-track.leap       { stroke: rgba(244,114,182,0.6); stroke-dasharray: 1.5 4; }
   .spine-track.dim        { opacity: 0.32; }
-  .spine-raillabel { font-family: 'Space Mono', monospace; font-size: 7px; letter-spacing: 0.18em; text-transform: uppercase; fill: var(--sp-dim); }
 
   /* ── COLOPHON ── */
   .colophon { padding: 3rem; display: flex; flex-direction: column; justify-content: space-between; min-height: 480px; background: radial-gradient(ellipse at 82% 18%, rgba(34,211,238,0.09) 0%, transparent 50%), radial-gradient(ellipse at 18% 85%, rgba(74,222,128,0.06) 0%, transparent 50%), var(--page); }
@@ -247,8 +222,6 @@
   .spread-footer-left { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--dim); }
   .spread-footer-right { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; color: var(--accent); }
 
-  .twinkle { position: fixed; width: 3px; height: 3px; border-radius: 50%; animation: twinkle-anim 3s ease-in-out infinite; pointer-events: none; z-index: 0; }
-
   @media (max-width: 600px) {
     .spread-2col { grid-template-columns: 1fr; }
     .spread-left { border-right: none; border-bottom: 1px solid rgba(167,139,250,0.12); }
@@ -258,7 +231,7 @@
     .cover-motif { width: 224px; height: 224px; top: -4px; right: -24px; opacity: 0.5; }
     .cover-title { font-size: 1.75rem; }
     .spread-heading { font-size: 1.55rem; }
-    .spread-left, .spread-right { padding: 2rem 1.5rem; }
+    .spread-left { padding: 2rem 1.5rem; }
     .colophon { padding: 2rem 1.5rem; }
     .spine { padding: 1rem 1.5rem 0.2rem; }
   }
