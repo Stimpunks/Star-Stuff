@@ -601,30 +601,6 @@
 </div></main>
 
 
-<script>
-  let currentPage = 1;
-  const totalPages = 8;
-
-  function showPage(n) {
-    document.querySelectorAll('.spread').forEach(s => s.classList.remove('active'));
-    const target = document.getElementById('spread-' + n);
-    if (!target) return;
-    target.classList.add('active');
-    currentPage = n;
-    document.getElementById('page-counter').textContent = n + ' / ' + totalPages;
-    document.getElementById('prev-btn').disabled = (n === 1);
-    document.getElementById('next-btn').disabled = (n === totalPages);
-  }
-
-  function changePage(dir) {
-    const next = currentPage + dir;
-    if (next < 1 || next > totalPages) return;
-    showPage(next);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-
-  showPage(1);
-</script>
 <script src="starstuff.js"></script>
 
 </body>

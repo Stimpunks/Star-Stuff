@@ -1,7 +1,11 @@
 /* Star Stuff — shared front-end behaviors
    =================================================================
-   Two features, both driven entirely from this shared file so that
+   Three features, all driven entirely from this shared file so that
    every paged zine inherits them just by including <script src="starstuff.js">:
+
+     0. The pager itself              — changePage(), the prev/next buttons and
+        the arrow keys, with the spread count read from the DOM rather than
+        declared per page. Installed only if the page has not defined its own.
 
      1. Per-spread footer navigation  — prev / page-number / next controls
         added to the bottom of each spread's .spread-footer.
@@ -34,6 +38,86 @@
   // Positional order matches the spread-N ids, which run 1..N in document order.
   function currentIndex() {
     return spreadList().indexOf(document.querySelector('.spread.active')) + 1;
+  }
+
+  /* =================================================================
+     0) The pager itself
+     -----------------------------------------------------------------
+     Added 2026-09-13. Until then every paged zine carried its own copy of
+     changePage() inline — 107 of them, in 17 variants, 115,101 bytes, and the
+     ONLY thing that differed between the variants was `const total = N`. That
+     number is the count of .spread elements, which this file already computes
+     as spreadCount(): on all 107 pages the declared total matched the DOM count
+     exactly, with no exceptions. So it was 107 copies of one function keeping a
+     constant the page could not get wrong without the copy being wrong too.
+
+     It also cost the CSP. Each variant is a distinct inline script body needing
+     its own hash in _headers, so seventeen near-identical functions bought
+     seventeen hashes; moving the code into this file retires all of them.
+
+     THE PAGE MAY STILL OWN IT. install() returns early if window.changePage is
+     already a function, so a page with special paging keeps its own and this one
+     stays out of the way — shorthand-evolution.html does not load this file at
+     all and is unaffected. Everything else here already routed through
+     window.changePage (see the header note), so nothing else changed.
+
+     NOT A PAGER, NOT INSTALLED. The guard is prev-btn AND next-btn AND at least
+     one .spread. The two scroll zines have .spread sections and spread-N ids but
+     no buttons, which is exactly how they are meant to work: they get no pager,
+     window.changePage stays undefined, and buildFooterNav below returns early on
+     its own. A guard on .spread alone would have paged them. */
+  function pagerParts() {
+    return {
+      prev: document.getElementById('prev-btn'),
+      next: document.getElementById('next-btn'),
+      counter: document.getElementById('page-counter')
+    };
+  }
+
+  // Counter text and button state for spread n of total. Each element is
+  // optional: a zine may carry buttons and no counter.
+  function paintPager(n, total) {
+    var p = pagerParts();
+    if (p.counter) p.counter.textContent = n + ' / ' + total;
+    if (p.prev) {
+      p.prev.disabled = n === 1;
+      p.prev.classList.toggle('active', n > 1);
+    }
+    if (p.next) {
+      p.next.disabled = n === total;
+      p.next.classList.toggle('active', n < total);
+    }
+  }
+
+  // Positional, not by id: spreadList() is document order, which is what the
+  // spread-N ids already follow. Reading position from the DOM is what lets the
+  // page-specific `total` constant go away.
+  function defaultChangePage(dir) {
+    var spreads = spreadList();
+    var total = spreads.length;
+    var cur = currentIndex();
+    if (!total || cur < 1) return;
+    var next = cur + dir;
+    if (next < 1 || next > total) return;
+    spreads[cur - 1].classList.remove('active');
+    spreads[next - 1].classList.add('active');
+    paintPager(next, total);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function installPager() {
+    if (typeof window.changePage === 'function') return;   // the page owns it
+    var p = pagerParts();
+    if (!p.prev || !p.next) return;                        // not a paged zine
+    var total = spreadCount();
+    if (!total) return;
+    if (currentIndex() < 1) spreadList()[0].classList.add('active');
+    window.changePage = defaultChangePage;
+    paintPager(currentIndex(), total);
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') window.changePage(1);
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') window.changePage(-1);
+    });
   }
 
   /* =================================================================
@@ -284,6 +368,9 @@
 
   /* ---------- init ---------- */
   function init() {
+    /* FIRST: buildFooterNav() and bindOwnPager() both return early unless
+       window.changePage is a function, so the pager has to exist before them. */
+    installPager();
     buildFooterNav();
     bindOwnPager();
     setupDeepLinks();

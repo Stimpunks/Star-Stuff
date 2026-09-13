@@ -32,6 +32,34 @@ New piece Revised Fact-check Site
 
 2026 · September 13
 
+## One page-turning function instead of 107, and the security policy got a quarter smaller for free
+
+Every paged zine carried its own copy of the code that turns the page — 107 copies in 17 slightly different versions. The only thing that varied between them was the number of spreads, which the shared file could already count. All 107 now share one implementation.
+
+Site115,101 bytes of duplicated page-turning code, replaced by 88 lines
+
+**The zines here are paginated, and each one shipped with its own copy of the function that moves between spreads.** 107 copies, drifted into 17 variants — and the variants differed in exactly one character sequence: `const total = 12`, or 8, or 16. The spread count. **Which the shared script has always been able to count for itself**, and does, for the footer controls and the deep links that were already shared.
+
+**So it was a hundred and seven copies of one function, maintaining a number that could not be wrong unless the copy was wrong too.** Checked before touching anything: on all 107 pages the declared total matched the actual number of spreads exactly. The shared version reads its position from the page instead of being told, and it now also binds the arrow keys, which not every page had.
+
+**A page can still bring its own.** The shared one steps aside if a page defines its own page-turner — [one does](https://starstuff.earth/shorthand-evolution.html), deliberately, because it does not load the shared script at all. And the two scroll zines, which have spreads but no buttons, correctly get no pager: the check is for the buttons, not for the spreads.
+
+SiteDuplicated script is duplicated security surface
+
+**The unexpected half.** This site’s content security policy works by listing a cryptographic hash of every piece of script written directly into a page — that is how a site with no server can allow its own code and nothing else. **Seventeen near-identical page-turners meant seventeen separate hashes**, because a hash does not care that two functions differ by one digit.
+
+Moving the code into a file that is already allowed by name retires all seventeen. **Distinct inline scripts went from 50 to 34, the elements carrying them from 163 to 58, and the policy itself from 3,061 bytes to 2,197** — sent on every request, to every reader. Nobody set out to shrink the policy; it fell out of not repeating yourself.
+
+Fact-checkTested by driving all 107, and then again with the real policy switched on
+
+**A shared pager that loads is not a pager that pages.** So every one of the 107 pages was driven in a real browser: start on spread one with the back button disabled, click forward and check the spread, the counter and both buttons, press the right-arrow key, walk to the last spread and check the forward button disables, then follow a *#spread-4* link and land on spread four. **107 pages driven, none failing.**
+
+**Then the same test again with the actual security policy served**, because this site has learnt that a policy tested only against attacks is untested: a policy that breaks a hundred page-turners is worse than none. Pages paged, zero violations reported.
+
+**One test failure was the test’s fault and is worth naming.** The page that keeps its own pager was reported as failing the deep-link check — because it has never had deep links, that feature living in the shared script it does not load. The assertion was demanding a feature the page was never offered. *A test that does not know what a page is for will confidently report it broken.*
+
+2026 · September 13
+
 ## A thousand style rules that styled nothing, and the two bugs in the tool that found them
 
 Every page carries its own stylesheet, copied forward from the page before it. Over 110 zines that accumulated 1,054 rules aimed at things none of those pages contain. They are gone, and nothing on the site looks different — which is the entire claim, and it was measured rather than assumed.

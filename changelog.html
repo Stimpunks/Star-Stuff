@@ -227,6 +227,33 @@
 
   </div>
 
+  <!-- ================= 2026-09-13c (site: the pager moves into the shared file) ================= -->
+  <section class="release" id="2026-09-13-shared-pager" aria-labelledby="h-2026-09-13-shared-pager">
+    <div class="release-date">2026 &middot; September 13</div>
+    <h2 class="release-title" id="h-2026-09-13-shared-pager">One page-turning function instead of 107, and the security policy got a quarter smaller for free</h2>
+    <p class="release-note">Every paged zine carried its own copy of the code that turns the page &mdash; 107 copies in 17 slightly different versions. The only thing that varied between them was the number of spreads, which the shared file could already count. All 107 now share one implementation.</p>
+
+    <div class="entry entry--site">
+      <div class="entry-head"><span class="tag tag--site">Site</span><span class="entry-name">115,101 bytes of duplicated page-turning code, replaced by 88 lines</span></div>
+      <div class="entry-body"><p><strong>The zines here are paginated, and each one shipped with its own copy of the function that moves between spreads.</strong> 107 copies, drifted into 17 variants &mdash; and the variants differed in exactly one character sequence: <code>const total = 12</code>, or 8, or 16. The spread count. <strong>Which the shared script has always been able to count for itself</strong>, and does, for the footer controls and the deep links that were already shared.</p>
+      <p><strong>So it was a hundred and seven copies of one function, maintaining a number that could not be wrong unless the copy was wrong too.</strong> Checked before touching anything: on all 107 pages the declared total matched the actual number of spreads exactly. The shared version reads its position from the page instead of being told, and it now also binds the arrow keys, which not every page had.</p>
+      <p><strong>A page can still bring its own.</strong> The shared one steps aside if a page defines its own page-turner &mdash; <a href="shorthand-evolution.html">one does</a>, deliberately, because it does not load the shared script at all. And the two scroll zines, which have spreads but no buttons, correctly get no pager: the check is for the buttons, not for the spreads.</p></div>
+    </div>
+
+    <div class="entry entry--site">
+      <div class="entry-head"><span class="tag tag--site">Site</span><span class="entry-name">Duplicated script is duplicated security surface</span></div>
+      <div class="entry-body"><p><strong>The unexpected half.</strong> This site&rsquo;s content security policy works by listing a cryptographic hash of every piece of script written directly into a page &mdash; that is how a site with no server can allow its own code and nothing else. <strong>Seventeen near-identical page-turners meant seventeen separate hashes</strong>, because a hash does not care that two functions differ by one digit.</p>
+      <p>Moving the code into a file that is already allowed by name retires all seventeen. <strong>Distinct inline scripts went from 50 to 34, the elements carrying them from 163 to 58, and the policy itself from 3,061 bytes to 2,197</strong> &mdash; sent on every request, to every reader. Nobody set out to shrink the policy; it fell out of not repeating yourself.</p></div>
+    </div>
+
+    <div class="entry entry--factcheck">
+      <div class="entry-head"><span class="tag tag--factcheck">Fact-check</span><span class="entry-name">Tested by driving all 107, and then again with the real policy switched on</span></div>
+      <div class="entry-body"><p><strong>A shared pager that loads is not a pager that pages.</strong> So every one of the 107 pages was driven in a real browser: start on spread one with the back button disabled, click forward and check the spread, the counter and both buttons, press the right-arrow key, walk to the last spread and check the forward button disables, then follow a <em>#spread-4</em> link and land on spread four. <strong>107 pages driven, none failing.</strong></p>
+      <p><strong>Then the same test again with the actual security policy served</strong>, because this site has learnt that a policy tested only against attacks is untested: a policy that breaks a hundred page-turners is worse than none. Pages paged, zero violations reported.</p>
+      <p><strong>One test failure was the test&rsquo;s fault and is worth naming.</strong> The page that keeps its own pager was reported as failing the deep-link check &mdash; because it has never had deep links, that feature living in the shared script it does not load. The assertion was demanding a feature the page was never offered. <em>A test that does not know what a page is for will confidently report it broken.</em></p></div>
+    </div>
+  </section>
+
   <!-- ================= 2026-09-13b (site: dead CSS swept) ================= -->
   <section class="release" id="2026-09-13-dead-css" aria-labelledby="h-2026-09-13-dead-css">
     <div class="release-date">2026 &middot; September 13</div>
