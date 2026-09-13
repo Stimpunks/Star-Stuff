@@ -6,9 +6,9 @@ allowed-tools: Bash(tools/sks-search.sh:*), Grep, Glob, Read
 
 # sks-search
 
-Star Stuff is one repo. **SKS is the library behind it** — a separate project at
-`~/Documents/Claude/Projects/Stimpunks Knowledge System` holding ~18,700 indexed files
-under [qmd](https://github.com/tobi/qmd), a local hybrid search engine (BM25 + vectors +
+Star Stuff is one repo. **SKS is the library behind it** — a separate repo, checked out
+wherever you keep repos, holding ~18,700 indexed files under
+[qmd](https://github.com/tobi/qmd), a local hybrid search engine (BM25 + vectors +
 reranker, all on-device — no network, no API key).
 
 Invoke it through the wrapper, from anywhere in Star Stuff:
@@ -24,6 +24,19 @@ tools/sks-search.sh status                             # index health + freshnes
 The wrapper exists because qmd's index is project-local with no `--root` flag, and run
 from the wrong directory it prints `No results found.` and **exits 0**. See the header
 comment in `tools/sks-search.sh`.
+
+**The wrapper finds SKS; you do not have to.** It checks `STIMPUNKS_KNOWLEDGE_SYSTEM`
+first, then the likely places in order — a sibling of this repo,
+`~/Documents/GitHub/Stimpunks-Knowledge-System`, and Ryan's older
+`~/Documents/Claude/Projects/Stimpunks Knowledge System`. A clone does not land in the same
+place on two machines: `git clone` names the folder `Stimpunks-Knowledge-System`, while
+Ryan's checkout predates the repo and has spaces in its name. If yours is somewhere else:
+
+```bash
+export STIMPUNKS_KNOWLEDGE_SYSTEM="/path/to/Stimpunks-Knowledge-System"
+```
+
+When it finds nothing it lists every path it tried and exits 3 — never an empty result.
 
 ## The one rule: this is a finding tool, not a source
 

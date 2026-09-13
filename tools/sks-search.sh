@@ -20,13 +20,42 @@
 # the find-vs-verify boundary before using anything this returns in a zine.
 set -euo pipefail
 
-SKS="${STIMPUNKS_KNOWLEDGE_SYSTEM:-/Users/ryan/Documents/Claude/Projects/Stimpunks Knowledge System}"
-
-if [ ! -d "$SKS" ]; then
-  echo "sks-search: no Stimpunks Knowledge System at:" >&2
-  echo "  $SKS" >&2
-  echo "Set STIMPUNKS_KNOWLEDGE_SYSTEM to its path, or edit this script." >&2
-  exit 3
+# WHERE SKS IS, and why this is a search rather than a constant.
+# It used to default to Ryan's path outright. SKS gained a second contributor on
+# 2026-09-13, and a clone does not land in the same place twice: `git clone` names the
+# folder Stimpunks-Knowledge-System, while Ryan's own checkout predates the repo and sits
+# under Documents/Claude/Projects with spaces in the name. Hardcoding either spelling makes
+# the other person's setup look broken on day one.
+#
+# STIMPUNKS_KNOWLEDGE_SYSTEM always wins. Otherwise try the likely places, nearest first —
+# a sibling of this repo, then the usual GitHub folder, then Ryan's. If none of them exist,
+# say which ones were tried; "not found" with no list is a dead end for whoever hits it.
+REPO="$(cd "$(dirname "$0")/.." && pwd)"
+SKS=""
+if [ -n "${STIMPUNKS_KNOWLEDGE_SYSTEM:-}" ]; then
+  SKS="$STIMPUNKS_KNOWLEDGE_SYSTEM"
+  if [ ! -d "$SKS" ]; then
+    echo "sks-search: STIMPUNKS_KNOWLEDGE_SYSTEM is set but there is nothing there:" >&2
+    echo "  $SKS" >&2
+    echo "Fix the variable, or unset it to fall back to the usual locations." >&2
+    exit 3
+  fi
+else
+  CANDIDATES=(
+    "$(dirname "$REPO")/Stimpunks-Knowledge-System"
+    "$HOME/Documents/GitHub/Stimpunks-Knowledge-System"
+    "$HOME/Documents/Claude/Projects/Stimpunks Knowledge System"
+  )
+  for c in "${CANDIDATES[@]}"; do
+    if [ -d "$c" ]; then SKS="$c"; break; fi
+  done
+  if [ -z "$SKS" ]; then
+    echo "sks-search: no Stimpunks Knowledge System found. Tried:" >&2
+    for c in "${CANDIDATES[@]}"; do echo "  $c" >&2; done
+    echo "Clone it, or point at it explicitly:" >&2
+    echo "  export STIMPUNKS_KNOWLEDGE_SYSTEM=\"/path/to/Stimpunks-Knowledge-System\"" >&2
+    exit 3
+  fi
 fi
 
 if [ ! -f "$SKS/.qmd/index.sqlite" ]; then
