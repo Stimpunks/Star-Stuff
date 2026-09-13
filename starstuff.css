@@ -652,9 +652,15 @@ a.ss-cobrand.ss-cobrand:focus-visible { text-decoration-color: currentColor; }
   }
 
   /* Gradient-clipped headings fall back to ink; without this the text stays
-     transparent and the heading prints as a blank line. */
-  .hero-title em,
-  .gradient-text {
+     transparent and the heading prints as a blank line.
+
+     `.gradient-text` sat beside this selector until 2026-09-13 and no page has
+     ever carried the class — the only occurrence in the repo was its own
+     declaration here. It read as a hook offered to future pages, but an unused
+     hook nobody knows about is not a hook: a new gradient heading would be
+     written the way the existing ones are, matched by the selector that is
+     actually load-bearing. Removed rather than left to look like coverage. */
+  .hero-title em {
     background: none !important;
     -webkit-text-fill-color: #111111 !important;
     color: #111111 !important;

@@ -32,6 +32,20 @@ New piece Revised Fact-check Site
 
 2026 · September 13
 
+## A style rule kept for a class no page has ever used
+
+The smallest item on the housekeeping list, finished for completeness: one selector in the shared stylesheet, waiting since it was written for markup that never arrived.
+
+SiteThe last dead selector in the shared stylesheet
+
+**The shared stylesheet has a rule for printing:** headings painted with a colour gradient carry no ink of their own, so on paper they come out blank unless something forces them back to black. That rule named two things — the heading style every page actually uses, and a second, generic name that **no page has ever carried**. Its only appearance anywhere in the site was its own declaration.
+
+**It read as a hook held open for future pages, and that is the reason to remove it rather than keep it.** An unused hook nobody knows about is not a hook: the next gradient heading would be written the way the existing ones are, and matched by the selector that does the work. A rule that has never matched anything is not coverage; it is something later readers have to check before they can rule it out. The comment in its place now says what was removed and why, so nobody re-adds it.
+
+**Checked the way a removal from a print rule has to be checked** — not by reading the stylesheet but by rendering: under print emulation, all **41** headings the surviving selector serves still compute to black ink for both fill and colour. A change to a print rule is invisible on screen, which is exactly how the 2026-08 blank-heading fault shipped in the first place.
+
+2026 · September 13
+
 ## Twenty-four style rules that were written out a thousand times, and two wrong theories about why that was safe
 
 A colophon heading, a page counter, a byline: the same rules, copied into page after page. They now live in one place. Getting there took three attempts, because the first two moved rules that looked identical and were not interchangeable.
