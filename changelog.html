@@ -227,6 +227,28 @@
 
   </div>
 
+  <!-- ================= 2026-09-13 (correction: the artwork-over-type figures were box-measured) ================= -->
+  <section class="release" id="2026-09-13-ink-not-boxes" aria-labelledby="h-2026-09-13-ink-not-boxes">
+    <div class="release-date">2026 &middot; September 13</div>
+    <h2 class="release-title" id="h-2026-09-13-ink-not-boxes">We said the cover artwork lay across the subtitle on 93 covers. It was 23, and we made the exact mistake our own checker was built to avoid</h2>
+    <p class="release-note">Yesterday&rsquo;s cover-collision entry carried four numbers measured the wrong way. The headline finding stands; three of the four figures under it do not. Found while Ryan asked an unrelated question about one zine&rsquo;s stylesheet.</p>
+
+    <div class="entry entry--factcheck">
+      <div class="entry-head"><span class="tag tag--factcheck">Correction</span><span class="entry-name">A drawing&rsquo;s box is not a drawing</span></div>
+      <div class="entry-body"><p><strong>What we said, yesterday, on this page and in two working files.</strong> That the cover artwork lay across cover type on <em>&ldquo;every one of the 98 covers that carry any: over the title on 95, the issue line on 94, the subtitle on 93.&rdquo;</em></p>
+      <p><strong>Those came from the artwork&rsquo;s bounding box, not the artwork.</strong> A cover motif is an SVG, and the drawing rarely fills its own frame &mdash; the median motif here inks about <strong>30%</strong> of the box it sits in. So a box can sit squarely on a paragraph while every visible mark clears it by a wide margin. Re-measured by <em>ink</em> &mdash; the union of the shapes and labels actually painted &mdash; at the same phone width, on the same pre-fix state: <strong>98 of 99 covers, with the issue line crossed on 90, the title on 84, the subtitle on 23</strong> and a byline on one. <strong>The subtitle figure was wrong by seventy pages.</strong></p>
+      <p><strong>The error has a precise shape and we had it written down already.</strong> Our collision checker measures where the <em>letters</em> are, and its own notes explain why at length: an early throwaway version compared bounding boxes and, in its author&rsquo;s words, drowned in false positives. That tool did not make this mistake yesterday and does not make it now. <strong>A one-off probe written beside it did</strong> &mdash; and the subtitle claim happened to be true on the one cover we checked by eye, so a real observation on a single page got generalised across ninety-eight by a method that could not support it.</p>
+      <p><strong>What still stands, stated plainly so the correction is not read as wider than it is.</strong> The count of covers affected is unchanged at <strong>105 of 108</strong>. The text-on-text figures &mdash; 313 collisions across 103 pages &mdash; came from the checker&rsquo;s own ink measurement, not the bad probe, and are unaffected. The fix shipped yesterday is correct and is verified at zero findings on both measured widths. Only the artwork figures were wrong, and only because of how they were counted.</p></div>
+    </div>
+
+    <div class="entry entry--site">
+      <div class="entry-head"><span class="tag tag--site">Site</span><span class="entry-name">One zine had a breakpoint tuned for a table it never had</span></div>
+      <div class="entry-body"><p><strong>The question that turned all this up.</strong> Yesterday&rsquo;s entry ended by flagging <a href="how-anything-gets-built-zine.html">No. 54</a> as the one page whose layout switches at 720 pixels rather than the 600 every other page uses, and warning of a gap between the two. Ryan asked why it was different.</p>
+      <p><strong>It was a fossil.</strong> The block at 720 was written for a layout this page does not have: a two-column spread to collapse &mdash; but every spread here is set to stack at all widths anyway, so that rule did nothing &mdash; and a comparison table to shrink, when no table has ever existed on the page in any version of it. Two of its rules styled furniture that was never there. The breakpoint number was chosen for content that never arrived.</p>
+      <p><strong>And the gap we warned about was not real either.</strong> It was measured the same box-shaped way as the figures above. Looking at the page at that width shows the motif &mdash; a small accretion disc with a caption, high in a mostly empty frame &mdash; sitting well clear of the words. The page is now on the house 600, the dead rules are gone, and it was measured at eight widths from 375 to 1280 before and after: no artwork on type, no text on text, at any of them.</p></div>
+    </div>
+  </section>
+
   <!-- ================= 2026-09-12 (zine: No. 110, Fourteen Kinds of Doing) ================= -->
   <section class="release" id="2026-09-12-fourteen-kinds" aria-labelledby="h-2026-09-12-fourteen-kinds">
     <div class="release-date">2026 &middot; September 12</div>

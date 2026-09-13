@@ -180,15 +180,22 @@
   .src-list li::before { content: '\2022'; position: absolute; left: 0; color: var(--accent); }
   .colophon-footer { margin-top: 2.2rem; padding-top: 1.4rem; border-top: 1px solid rgba(244,114,182,0.18); font-family: 'Space Mono', monospace; font-size: 0.56rem; letter-spacing: 0.16em; line-height: 2; color: var(--dim); text-transform: uppercase; }
 
-  @media (max-width: 720px) {
-    .spread-2col { grid-template-columns: 1fr; }
+  /* 600px, the house breakpoint, as of 2026-09-13. This page was the only one of
+     205 at 720px, and the only paged zine with no 600px block at all — and the
+     number was a fossil rather than a choice. The block it governed was written
+     for a layout this page does not have: a two-column spread to collapse (every
+     .spread-2col here carries .stacked, which is (0,2,0) and already one column at
+     every width, so that rule was a no-op) and a .trades table to shrink (no
+     <table> has ever existed on this page, in any commit). Both are gone with it.
+     What remains is padding and type size, which behave identically at 600.
+     Measured at 375/600/620/660/719/721/780/1280 before and after: motif ink over
+     cover type 0 everywhere, text on text 0 everywhere. */
+  @media (max-width: 600px) {
     .cover-spread { padding: 2rem 1.5rem; min-height: 460px; }
     .cover-motif { width: 220px; height: 220px; opacity: 0.5; }
     .spread-heading { font-size: 1.55rem; }
     .spread-left, .spread-right { padding: 2rem 1.5rem; }
     .colophon { padding: 2rem 1.5rem; }
-    .trades { font-size: 0.76rem; }
-    .trades th, .trades td { padding: 0.4rem 0.35rem; }
   }
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"How Anything Gets Built","description":"The Five Neurodivergent Love Locutions — infodumping, parallel play, support swapping, deep pressure and penguin pebbling — set beside five mechanisms by which matter is actually assembled, on the argument that these are construction methods rather than compensations. Infodumping: a star cannot stop broadcasting its composition, and the absorption spectrum catalogued by Fraunhofer in 1814 and read as elemental fingerprints by Kirchhoff and Bunsen in 1859-60 is the only reason we know we are star stuff at all; Cecilia Payne read hydrogen out of it in 1925. Parallel play: El-Badry, Rix and Heintz (MNRAS 506, 2269, 2021) catalogue 1.3 million wide binaries from Gaia eDR3 at separations out to a parsec, bound and effectively non-interacting. Support swapping: W Ursae Majoris contact binaries share a common convective envelope, and energy flowing from the more massive component to the less massive one holds both within roughly 200 K despite a mass ratio near 0.3 — with the honest complication that in Algol-type systems the donor transferred so much mass it became the less massive, less luminous star and looked like the one lagging behind, the paradox Crawford resolved in 1955. Deep pressure: nothing fuses unsqueezed, and the solar core sits near 2.4 by 10 to the 16 pascals, over 200 billion atmospheres, in hydrostatic equilibrium. Penguin pebbling: classical planetesimal accretion was too slow to build a giant-planet core before the gas disk dissipated, and pebble accretion — named by Lambrechts and Johansen in 2012 — does it in 10,000 to a million years, which makes the small offering not the lesser mechanism but the only one fast enough. Then the refusal: this is not the universe signing off, because down to is not because of. Amythest Schaber originated the Five Neurodivergent Love Languages; Stimpunks Foundation popularized them and put them into currency from 2022, substituting locutions for languages; the term penguin pebbling reached Stimpunks later, through Lindsey; and Helen Edgar of Autistic Realms has developed the framework furthest, including the Penguin Pebbling game built with Ryan Boren. A rhyme, not a proof.","image":"https://starstuff.earth/og-card.jpg","url":"https://starstuff.earth/how-anything-gets-built-zine.html","mainEntityOfPage":"https://starstuff.earth/how-anything-gets-built-zine.html","author":{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/"},"contributor":[{"@type":"Person","name":"Helen Edgar","url":"https://morerealms.com/"},{"@type":"Person","name":"Amythest Schaber"},{"@type":"Person","name":"Lindsey"}],"publisher":[{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/","logo":{"@type":"ImageObject","url":"https://starstuff.earth/og-card.jpg"}},{"@type":"Organization","name":"More Realms","url":"https://morerealms.com/"}],"isPartOf":{"@type":"WebSite","name":"Star Stuff","url":"https://starstuff.earth/"}}</script>

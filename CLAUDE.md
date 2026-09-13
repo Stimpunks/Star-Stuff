@@ -360,7 +360,11 @@ The central phrase compresses through registers, each with a use:
   of the margin that composition assumed.** At 375px there is no horizontal room beside a wrapped
   title for any absolutely positioned ornament, whatever its per-page offsets — **105 of the 108
   covers were broken there**, so there is no per-page *value* that fixes it, only a per-page
-  repetition of the same rule 108 times. It had
+  repetition of the same rule 108 times. **Every paged zine is now on the 600px house breakpoint**
+  (2026-09-13): `how-anything-gets-built-zine.html` was the last holdout at 720px, and that number
+  turned out to be a fossil — its block collapsed a two-column spread the page stacks unconditionally
+  and shrank a `.trades` table that has never existed in any commit. Both rules are gone. **A
+  breakpoint that does not match 600 now wants a reason on the line above it.** It had
   already been repeated 98 times in the wrong half: **all 98 pages carrying a `.cover-motif` have a
   narrow-screen block that resizes it** (97 at 600px, one at 720px), and **no page on this site has
   ever touched `.cover-corner` in a narrow-screen block** — zero of 108, which is exactly the fault.
@@ -1824,10 +1828,19 @@ node tools/check-overlap.mjs --verbose           # every finding, not the first 
   four-per-cover was universal and the full sweep says otherwise, which is this file's standing
   *derive it, don't remember it* rule arriving inside a bug report. *Artwork on type*, which this
   tool **cannot** see and is right not to — it measures glyph extent, and text-over-non-text is the
-  judgement listed as deliberately out of scope: **all 98 covers carrying a `.cover-motif`**, the
-  box across the title on 95, the issue line on 94 and the subtitle on 93, measured with a one-off
-  bounding-box probe and confirmed by eye. The three clean covers are `lydtyss-zine.html` and the
-  two scroll zines.
+  judgement listed as deliberately out of scope: **98 of the 99 covers carrying a `.cover-motif`**,
+  the ink across the issue line on 90, the title on 84, the subtitle on **23** and a byline on one.
+  The three covers clean of *both* faults are `lydtyss-zine.html` and the two scroll zines.
+- **THOSE ARTWORK FIGURES WERE PUBLISHED WRONG ON 2026-09-12 AND THE MISTAKE IS THIS TOOL'S OWN
+  FOUNDING ONE.** They first read *all 98 covers, the title on 95, the issue line on 94, the
+  subtitle on 93*, because the probe measured the motif's **bounding box**. A motif inks a **median
+  30%** of its own frame, so a box lands on a paragraph that every visible mark clears — which is
+  exactly what the header above records about the prototype that "drowned in false positives". The
+  gate did not make this mistake; **a hand probe written beside it did, and then a claim verified by
+  eye on ONE cover (No. 109, where it was true) was generalised across ninety-eight.** The subtitle
+  figure was wrong by 70 pages. **Measure a motif by the union of its painted children**
+  (`rect, circle, ellipse, path, line, polyline, polygon, text, tspan, image`), never by the `<svg>`
+  rect — and the text-on-text figures are unaffected, because those came from the gate.
 - **A SCROLL CONTAINER IS NOT A CLIP, and the tool got that wrong until the phone viewport exposed
   it.** The clip walk looked for the nearest ancestor computing `overflow: hidden|clip` and skated
   straight past `auto`/`scroll` — so at 375px it reported **256 clips across 12 pages**, every one a

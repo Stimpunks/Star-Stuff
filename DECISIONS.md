@@ -175,8 +175,13 @@ Decisions still to make. Move to **Settled** with a date once resolved.
   numeral through the issue line (96 pages), the collection label through the title (65), the
   numeral through the title (50), a motif label through cover type (30), with all four on only
   **nine** — and *artwork on type*, which `check-overlap.mjs` declines to judge by design: the
-  motif's box across the title, issue line or subtitle on **all 98 covers that have one**. Only
-  `lydtyss-zine.html` and the two scroll zines were clean. There is no per-page *value* that fixes
+  motif's ink across the issue line, title or subtitle on **98 of the 99 covers that have one**.
+  Only `lydtyss-zine.html` and the two scroll zines were clean of both.
+  **(Corrected 2026-09-13.** This row first read *all 98 … the title on 95, the issue line on 94,
+  the subtitle on 93*, measured by the motif's bounding box. By ink the per-target figures are 90 /
+  84 / **23** — the subtitle wrong by 70 pages — because a motif inks a median 30% of its own frame.
+  The decision itself is untouched: the count of broken covers and the text-on-text figures came
+  from the gate and are unaffected.**)** There is no per-page *value* that fixes
   this: at 375px there is no horizontal margin beside a wrapped title for an absolutely positioned
   ornament, so the only per-page answer is the same rule written 108 times.
   - **The alternative considered and declined: a per-page `@media (max-width: 600px)` fix on each

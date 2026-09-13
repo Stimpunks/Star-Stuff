@@ -30,6 +30,30 @@ The working guidelines and the full per-piece ledger live in [FACTCHECK.md](http
 
 New piece Revised Fact-check Site
 
+2026 · September 13
+
+## We said the cover artwork lay across the subtitle on 93 covers. It was 23, and we made the exact mistake our own checker was built to avoid
+
+Yesterday’s cover-collision entry carried four numbers measured the wrong way. The headline finding stands; three of the four figures under it do not. Found while Ryan asked an unrelated question about one zine’s stylesheet.
+
+CorrectionA drawing’s box is not a drawing
+
+**What we said, yesterday, on this page and in two working files.** That the cover artwork lay across cover type on *“every one of the 98 covers that carry any: over the title on 95, the issue line on 94, the subtitle on 93.”*
+
+**Those came from the artwork’s bounding box, not the artwork.** A cover motif is an SVG, and the drawing rarely fills its own frame — the median motif here inks about **30%** of the box it sits in. So a box can sit squarely on a paragraph while every visible mark clears it by a wide margin. Re-measured by *ink* — the union of the shapes and labels actually painted — at the same phone width, on the same pre-fix state: **98 of 99 covers, with the issue line crossed on 90, the title on 84, the subtitle on 23** and a byline on one. **The subtitle figure was wrong by seventy pages.**
+
+**The error has a precise shape and we had it written down already.** Our collision checker measures where the *letters* are, and its own notes explain why at length: an early throwaway version compared bounding boxes and, in its author’s words, drowned in false positives. That tool did not make this mistake yesterday and does not make it now. **A one-off probe written beside it did** — and the subtitle claim happened to be true on the one cover we checked by eye, so a real observation on a single page got generalised across ninety-eight by a method that could not support it.
+
+**What still stands, stated plainly so the correction is not read as wider than it is.** The count of covers affected is unchanged at **105 of 108**. The text-on-text figures — 313 collisions across 103 pages — came from the checker’s own ink measurement, not the bad probe, and are unaffected. The fix shipped yesterday is correct and is verified at zero findings on both measured widths. Only the artwork figures were wrong, and only because of how they were counted.
+
+SiteOne zine had a breakpoint tuned for a table it never had
+
+**The question that turned all this up.** Yesterday’s entry ended by flagging [No. 54](https://starstuff.earth/how-anything-gets-built-zine.html) as the one page whose layout switches at 720 pixels rather than the 600 every other page uses, and warning of a gap between the two. Ryan asked why it was different.
+
+**It was a fossil.** The block at 720 was written for a layout this page does not have: a two-column spread to collapse — but every spread here is set to stack at all widths anyway, so that rule did nothing — and a comparison table to shrink, when no table has ever existed on the page in any version of it. Two of its rules styled furniture that was never there. The breakpoint number was chosen for content that never arrived.
+
+**And the gap we warned about was not real either.** It was measured the same box-shaped way as the figures above. Looking at the page at that width shows the motif — a small accretion disc with a caption, high in a mostly empty frame — sitting well clear of the words. The page is now on the house 600, the dead rules are gone, and it was measured at eight widths from 375 to 1280 before and after: no artwork on type, no text on text, at any of them.
+
 2026 · September 12
 
 ## A byline has one field and contribution has fourteen — the constructive half of the credit run
