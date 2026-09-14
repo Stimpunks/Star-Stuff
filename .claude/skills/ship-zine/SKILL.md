@@ -150,11 +150,13 @@ the pull-rebase-recheck order, the number claim, and what to do with a conflicte
    ```bash
    node tools/build-icons.mjs
    ```
-14. **Rebase, re-derive, then push.** Two people push to `main`, so the tree you built against
-   is not necessarily the tree you are pushing onto:
+14. **Sync, then push.** Two people push to `main`, so the tree you built against is not
+   necessarily the tree you are pushing onto. **Run the `sync` skill** rather than these
+   commands — it handles the dirty tree, the conflict cases and the checks, and it reports
+   whether the number you built under is still free:
 
    ```bash
-   git pull --rebase
+   git pull --rebase --autostash
    node tools/check-derived.mjs --write   # all five, in dependency order
    node tools/check-derived.mjs           # and confirm
    ```
@@ -196,8 +198,7 @@ dark forced palette, and one palette on its own proves nothing
 baseline is 0, so there is no reason to skip it on any edit that touched HTML
 → **always run `node tools/check-derived.mjs`** (or `--quick` for the three fast ones) — page text,
 a card tagline, an inline script or a heading all invalidate something generated
-→ `git pull --rebase` → `node tools/check-derived.mjs --write` → `git add` → commit → `git push`.
-Don't re-propose or widen scope.
+→ run the `sync` skill → `git add` → commit → `git push`. Don't re-propose or widen scope.
 
 ## Changelog
 

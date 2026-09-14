@@ -61,6 +61,9 @@ who is in the room. Don't edit those backwards; they were true when written.
 **[`CONTRIBUTING.md`](CONTRIBUTING.md) holds the working agreement** — setup, the push loop, and
 the three places two people collide. The parts that change what a session does:
 
+- **Neither of them should be typing git. `/sync` is the skill** — it pulls, regenerates,
+  handles the conflict cases and the checks, and reports what the other person shipped.
+  `/ship-zine` publishes. Run `/sync` before starting a piece and again before shipping one.
 - **`git pull --rebase` before you build, and again before you push** — then
   **`node tools/check-derived.mjs --write`.** A rebase is not a conflict and produces no
   warning, and it still leaves every derived file describing a site that no longer exists:

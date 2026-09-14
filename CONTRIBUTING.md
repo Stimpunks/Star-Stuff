@@ -65,11 +65,15 @@ the query.
 This is the only genuinely new rule, and it is new because a rebase can leave a
 derived file describing a site that no longer exists.
 
+**You should not have to run any of it by hand. Say `/sync`** — the skill does the pull,
+the regeneration, the conflict cases and the checks, and tells you what the other person
+shipped. Run it **before starting a piece** and **again before shipping one**. `/ship-zine`
+then publishes. What `/sync` is doing underneath:
+
 ```bash
-git pull --rebase                     # somebody else's pages are now in your tree
+git pull --rebase --autostash         # somebody else's pages are now in your tree
 node tools/check-derived.mjs --write  # regenerate all five, in dependency order
 node tools/check-derived.mjs          # and every other gate you need — see below
-git add -A && git commit -m "…" && git push
 ```
 
 **Why `--write` after a rebase, every time.** Five generators here write files that are
