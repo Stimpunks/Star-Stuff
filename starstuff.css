@@ -1141,3 +1141,141 @@ a.ss-cobrand.ss-cobrand:focus-visible { text-decoration-color: currentColor; }
   .ss-toc.ss-toc { border: 1px solid #999999; border-radius: 0; padding: 1rem 1.2rem; }
   .ss-toc.ss-toc a { border-bottom: 0; }
 }
+
+
+/* ── The floating contents rail ──
+   Added 2026-09-14, after the in-body .ss-toc, and modelled on the `qe-rail` on
+   our sibling site queering.earth — a stack of small ticks in the left margin
+   that becomes the contents list on hover or focus. Theirs terminates in a
+   curling sprig; ours in a shooting star. Theirs leans each tick a degree or
+   three; ours are straight, because this is a starfield rather than a hand-drawn
+   herbarium and the ruled horizontal is the house mark. (Ryan, 2026-09-14.)
+
+   IT IS BUILT BY starstuff.js FROM THE PAGE'S OWN .ss-toc, and that is the whole
+   reason it is safe to have two of them: there is no second list in the source to
+   drift from the first. A reader with no JavaScript gets the in-body contents and
+   no rail, which is the right way round.
+
+   IT RESERVES ITS OWN WIDTH AND NEVER SITS ON THE WORDS. An overlay version was
+   built and rejected on 2026-09-14: collapsing to 2.75rem of ticks and floating
+   the open list over the prose would have put a rail on every page from 1200px,
+   including the eight Sound racks, but it reads as a thing covering the page
+   rather than a thing beside it. So the rail appears only where there is room for
+   it, which is measured per page — see placeRail() in starstuff.js. */
+.ss-rail { display: none; }
+
+@media screen and (min-width: 1200px) {
+  .ss-rail.ss-rail-fits {
+    display: block;
+    position: fixed;
+    z-index: 5;
+    top: 50%;
+    transform: translateY(-50%);
+    /* 9rem under 1300px. print-design.html carries the widest column on the site
+       at 812px, which at 1200px leaves 194px of margin against the 204px a 10rem
+       rail needs — ten pixels short, so that page alone lost its rail while its
+       collection siblings kept theirs. Measured, not guessed. */
+    --ss-rail-w: 9rem;
+    width: var(--ss-rail-w);
+    box-sizing: border-box;
+    /* `left` is written by starstuff.js from the page's OWN measured column: the
+       racks are 1040px wide where the essays are 672–812, so one hardcoded
+       half-column put the rail on top of the rack on all eight. This is the
+       fallback for the instant before the script runs. */
+    left: 0.75rem;
+    max-height: calc(100vh - 6rem);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding-left: 0.75rem;
+    border-left: 1px solid rgba(167,139,250,0.22);
+    border-left-color: color-mix(in srgb, var(--ss-rail-accent, #a78bfa) 26%, transparent);
+  }
+}
+
+@media screen and (min-width: 1300px) { .ss-rail.ss-rail-fits { --ss-rail-w: 10rem; } }
+@media screen and (min-width: 1500px) { .ss-rail.ss-rail-fits { --ss-rail-w: 12rem; } }
+
+/* Out of the way while a column too wide for it is level with the rail. On a Sound
+   rack that is the 1040px rack itself: the rail rides beside the essay and steps
+   aside when the cards arrive. Visibility rather than display, so it keeps its box
+   and does not re-run the placement on every scroll. */
+.ss-rail.ss-rail-hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+@media (prefers-reduced-motion: no-preference) {
+  .ss-rail.ss-rail-fits { transition: opacity 0.18s ease-out, visibility 0.18s; }
+}
+
+.ss-rail ol { list-style: none; margin: 0; padding: 0; }
+.ss-rail li { position: relative; }
+
+/* The tick. Non-text decoration, so it may whisper where a glyph may not — the
+   2026-08-13 ruling. Width is set per item by starstuff.js from a hash of the
+   section's own href, so the stack is stable across reloads rather than random:
+   a rail that reshuffled itself every visit would be a different left margin each
+   time you came back. Straight, no rotation. */
+.ss-rail li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 1.35rem;
+  width: var(--ss-tick, 24px);
+  height: 1px;
+  background: var(--ss-rail-accent, #a78bfa);
+  opacity: 0.55;
+}
+
+.ss-rail a {
+  display: block;
+  padding: 0.8rem 0 0.8rem 0.5rem;
+  font-size: 0.8rem;
+  line-height: 1.35;
+  color: var(--sp-secondary);
+  text-decoration: none;
+  opacity: 0;
+}
+
+.ss-rail:hover a,
+.ss-rail:focus-within a,
+.ss-rail.ss-rail-open a { opacity: 1; }
+
+.ss-rail:hover li::before,
+.ss-rail:focus-within li::before,
+.ss-rail.ss-rail-open li::before { opacity: 0; }
+
+.ss-rail a:hover { color: var(--sp-white); text-decoration: underline; }
+.ss-rail a:focus-visible { outline: 2px solid var(--ss-rail-accent, #a78bfa); outline-offset: -1px; }
+
+/* A pointer-less device has no hover, so the drawer would never open. Below the
+   1200px floor there is no rail at all, so this only reaches a wide touchscreen. */
+@media (hover: none) {
+  .ss-rail a { opacity: 1; }
+  .ss-rail li::before { opacity: 0; }
+}
+
+/* The fade is the only motion here, and it goes away with the rest of them. */
+@media (prefers-reduced-motion: no-preference) {
+  .ss-rail a, .ss-rail li::before { transition: opacity 0.14s ease-out; }
+}
+
+/* The shooting star that ends the rail. Stroke for the trail, fill for the head,
+   sized like the sibling's sprig so the two sites rhyme at the same scale. */
+.ss-rail-star {
+  display: block;
+  width: 32px;
+  height: auto;
+  margin: 0.6rem 0 0 -0.85rem;
+  overflow: visible;
+}
+.ss-rail-star .trail {
+  fill: none;
+  stroke: var(--ss-rail-accent, #a78bfa);
+  stroke-width: 1.2;
+  stroke-linecap: round;
+  opacity: 0.75;
+}
+.ss-rail-star .trail-2 { opacity: 0.4; }
+.ss-rail-star .head { fill: var(--ss-rail-accent, #a78bfa); }
+.ss-rail-star .spark { fill: var(--ss-rail-accent, #a78bfa); opacity: 0.6; }
+
+/* Paper has no gutter and no hover. The in-body contents list prints; this does
+   not — the same call index.html's .masthead-toc gets. */
+@media print { .ss-rail { display: none !important; } }

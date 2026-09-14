@@ -171,6 +171,12 @@ const EXTRACT = String.raw`(() => {
        to-your-star-stuff.html's hand-made .toc was NOT stripped before this and
        should have been; its records change on this run for that reason. */
     '.ss-toc',
+    /* The floating rail starstuff.js projects from that same .ss-toc (2026-09-14).
+       It is the TOC's own link text a second time, in an element that does not
+       exist in the source at all — so it would be indexed only because this
+       generator renders pages, which is the .lp-row duplicate-presentation
+       problem arriving by a new route. */
+    '.ss-rail',
   ].join(',');
 
   /* Blocks that sit flush against each other in the source concatenate under

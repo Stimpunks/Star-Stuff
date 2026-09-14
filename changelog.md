@@ -32,6 +32,26 @@ New piece Revised Fact-check Site
 
 2026 · September 14
 
+## A second table of contents that lives in the margin, and gets out of the way when the page gets wide
+
+A row of small ticks down the left margin that becomes the contents list when you point at it, ending in a shooting star. On the 34 pages that have a contents list, and only where there is room for it — which on some pages changes as you scroll.
+
+SiteThe rail, and the four things that were wrong with it first
+
+**It is lifted from [Queering Earth](https://queering.earth/), our sibling site**, which has had one for a while: a stack of ticks in the margin that expands into the page’s contents on hover or focus. Theirs ends in a curling sprig, so ours ends in a shooting star — the same gesture in this site’s vocabulary. Theirs leans each tick a degree or two, which belongs to a hand-drawn botanical alphabet; **ours are straight**, because this is a starfield and the ruled horizontal is the house mark.
+
+**There is no second contents list in the source, and that is the point.** The rail is built at load from the page’s own in-body contents, so a heading added to one is in the other by construction and the two cannot drift apart. A reader with no JavaScript gets the in-body list and no rail, which is the right way round. It is also kept out of the search index: it is the same link text a second time, and indexing it would be the duplicate-presentation problem arriving by a new route. **Verified: 0 of 205 pages changed a single search record.**
+
+**It never sits on the words, and getting that right took four goes.** The first version placed it against one hardcoded column width and landed on top of all eight Sound racks, whose cards run wider than their essays. The second measured each block’s *box* rather than the place it actually paints, so a centred masthead looked like a full-width column and hid the rail at the top of a page with 405px of clear margin. The third measured painted extent with the wrong tool and got the same answer for the same reason. **Each of those is a fault this site has written down before**, about cover artwork, and each was caught by measuring rather than looking.
+
+**The fourth was a real bug and Ryan found it**, reading in a browser with a sidebar open: on [the print specification](https://starstuff.earth/print-design.html) the rail blinked in and out all the way down the page. That page carries the widest column on the site, and at that window it was about ten pixels too wide — so nearly every paragraph counted as an obstruction and the rail toggled once per paragraph. **A wide region inside a page and a page with no room are different things**, and the rail now tells them apart: it measures how much of the document it could actually stay up for, and if the answer is “almost none” it does not appear at all rather than flickering. The rail also got narrower on smaller windows, which gives that page its rail back.
+
+**So on a Sound rack it now does what it should:** it rides alongside the essay, steps aside for the full-width card grid, and comes back for the colophon at the foot. **Checked across 34 pages, four window widths and nine scroll positions each — 1,224 measurements, no overlap anywhere.**
+
+**[The manifesto](https://starstuff.earth/manifesto.html) now has a contents list too.** It was left out of yesterday’s pass on the argument that a declaration read straight through is not a document you navigate. It has six numbered planks and sits in the same collection as pages that have one; the argument was thinner than the inconsistency.
+
+2026 · September 14
+
 ## Eight of our seventeen collection pages were telling machines they held a fraction of what they hold
 
 Yesterday’s pass found one page whose structured data carried another page’s title. Writing a check for it turned up something larger: the machine-readable table of contents on most of the collection pages had been drifting from the actual shelf for months.

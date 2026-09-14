@@ -304,7 +304,8 @@ The central phrase compresses through registers, each with a use:
   `OFFSCREEN` list, which it is. Verify by keyboard, not by reading the sheet: one Tab from a
   fresh load must reveal it, and Enter must land focus on `main#main`.
 - **Every essay page with two or more section headings carries a `.ss-toc`, after the lede and
-  before the first heading (2026-09-13; the 8 Sound racks joined 2026-09-14).** 33 pages. The one definition is in
+  before the first heading (2026-09-13; the 8 Sound racks and `manifesto.html` joined
+  2026-09-14).** 34 pages, 320 entries. The one definition is in
   `starstuff.css`; **don't write a page-local `.toc`** — `love-you-down-to-your-star-stuff.html` had
   the only contents list on the site from the day it shipped, and its own rules were deleted rather
   than kept and overridden when it became the shared component.
@@ -344,8 +345,20 @@ The central phrase compresses through registers, each with a use:
     and `print-design.html` had **15 headings and zero ids** between them, so every search result on
     either was a `#:~:text=` guess. Check before writing a TOC — the ids are the deliverable, the
     list is the easy half.
+  - **A SECOND, FLOATING COPY LIVES IN THE LEFT MARGIN — `.ss-rail`, built by `starstuff.js`
+    from this same `.ss-toc` (2026-09-14).** Borrowed from `queering.earth`'s `qe-rail`; ticks at
+    rest, the list on hover or `:focus-within`, ending in a shooting star where theirs ends in a
+    sprig. **Ours are straight where theirs lean** — Ryan's call; this is a starfield, not a
+    herbarium. **There is no second list in the source** and there must never be: the rail is a
+    projection, so a heading added to one is in the other by construction. `.ss-rail` is in
+    `CHROME_SEL`, and the check that it is stripped is that a rebuild changed **0 of 205 pages'
+    records**. Details, and the four defects it shipped with in draft, are in *The floating
+    contents rail* below.
   - **Collection pages, the five galleries/eggs (`hatchery`, `quillery`, `glimmery`, `bow-ery`,
-    `watching-animals-field-guide`) and `manifesto.html` deliberately have none.** A card grid is
+    `watching-animals-field-guide`) deliberately have none.** `manifesto.html` was on this list for
+    one day and came off it on 2026-09-14: the argument was that a declaration read straight through
+    is not a document you navigate, and it lost to the fact that the page has six numbered planks
+    and sits in a collection whose other members have one. A card grid is
     already its own contents, and a declaration read straight through is not a document you
     navigate. **No gate can see any of this** — nothing counts TOCs or notices a missing one.
   - **ON A SOUND RACK THE TOC COVERS THE ESSAY *AND* THE ROOMS**, because a rack page is essay
@@ -419,6 +432,46 @@ The central phrase compresses through registers, each with a use:
   - **`hasPart` is hand-maintained and gated rather than generated**, the same call `sitemap.xml`
     already represents. If it drifts again, generating it from the cards in `build-derived.mjs` is
     the obvious next move — it already derives that exact map.
+### The floating contents rail (`.ss-rail`, 2026-09-14)
+
+Built by `starstuff.js` at load from the page's own `.ss-toc`; styled in `starstuff.css`; shown
+only at `min-width: 1200px` and only where the page leaves room. **The 30 pages that did not load
+`starstuff.js` now do** — it is documented as a safe no-op on anything that is not a paged zine,
+and it is one external script, so the CSP hash list is untouched.
+
+- **IT NEVER SITS ON THE WORDS, and every attempt to shortcut that failed in a way this file has
+  already recorded once.** (a) One hardcoded half-column put it on top of all eight Sound racks,
+  whose cards run 1040px against a 688px essay. (b) Measuring an element's **box** instead of its
+  painted extent made a centred masthead look full-width and hid the rail on a page with 405px of
+  clear margin — *the cover-motif bounding-box error*, verbatim. (c) The fix for (b) used one
+  `Range` per candidate, and **a Range over a subtree returns the LINE BOXES of block children**,
+  so a centred paragraph in a 1040px container still measured 1040px. Text nodes are the honest
+  unit, walked once with each node's left pushed up its ancestor chain.
+- **AN INTERSECTION OBSERVER'S FIRST CALLBACK REPORTS EVERY TARGET, not only the intersecting
+  ones.** A `+1/-1` counter therefore opened at 1 − 18 = −17 on `aurora-playlist.html`, clamped to
+  zero, and the single real blocker — a 1040px gradient headline level with the rail — was
+  cancelled by the eighteen that were not. The rail stayed up and the title ran through it.
+  **Membership is the question: use a Set.**
+- **A WIDE REGION INSIDE A PAGE AND A PAGE WITH NO ROOM ARE DIFFERENT THINGS, and telling them
+  apart is the whole of the scroll behaviour.** Ryan found this reading `print-design.html` in a
+  browser with a sidebar open: the rail blinked in and out once per paragraph. That page carries
+  the widest column on the site (812px), and at ~1200px it is about **ten pixels** too wide, so
+  nearly every block counted as an obstruction. The rail now measures the **union of obstructed
+  vertical extent** and, below 35% of the document left clear, shows nothing at all rather than
+  flickering. On a Sound rack the obstruction is a real region — the rail rides beside the essay,
+  steps aside for the card grid, and returns for the colophon.
+- **The width steps 9rem / 10rem / 12rem at 1200 / 1300 / 1500px, and the first step is derived:**
+  an 812px column at 1200px leaves 194px against the 204px a 10rem rail needs. Without it
+  `print-design.html` alone lost its rail while its collection siblings kept theirs.
+- **`check-contrast.mjs` opens the rail before measuring** (`.ss-rail-open`, revealed and
+  un-revealed exactly as `.spread` and `.entry` are). That tool folds element opacity into text
+  alpha — correctly — so a rail measured shut reads as a screenful of unreadable links rather than
+  a closed drawer. The state it measures is the state a reader meets.
+- **Verify by sweeping scroll positions, not by loading the page.** The shipped check is 34 pages ×
+  4 widths × 9 scroll positions = **1,224 samples, 0 overlaps**; every one of the four defects above
+  was invisible to a single screenshot at one width and one scroll offset. `check-overlap.mjs`
+  measures two viewports at scroll 0 and cannot see any of this.
+
 - **Use real headings, with ids.** A section label must be an `<h1>`/`<h2>`, not a styled `<span>`
   — a screen reader's headings rotor *is* the table of contents, and `index.html` shipped with
   **zero heading elements** until 2026-08-12, so that list came back empty on the landing page of

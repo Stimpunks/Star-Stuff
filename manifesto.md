@@ -1,7 +1,7 @@
 ---
 title: "Star Stuff Manifesto"
 url: "https://starstuff.earth/manifesto.html"
-updated: "2026-09-07"
+updated: "2026-09-14"
 description: "On the cosmic origins of who we are, the science of how we carry the universe in our bones, and why neurodivergent and disabled people belong — not despite difference, but as difference. Six sections and eight declarations."
 collection: "Foundations"
 licence: "CC-BY-SA-4.0"

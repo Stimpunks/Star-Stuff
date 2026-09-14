@@ -123,6 +123,15 @@ const REVEAL = String.raw`(() => {
   for (const d of document.querySelectorAll('details:not([open])')) {
     d.open = true; d.setAttribute('data-ss-revealed', 'details');
   }
+  /* The floating contents rail keeps its links at opacity 0 until hover or focus;
+     the ticks carry the meaning while it is shut. This tool folds element opacity
+     into text alpha — correctly, since opacity is what the reader sees — so a rail
+     measured shut reads as a screenful of unreadable links rather than as a closed
+     drawer. Opened here so the measurement is of the state a reader meets when
+     they actually use it, and closed again by UNREVEAL. */
+  for (const r of document.querySelectorAll('.ss-rail:not(.ss-rail-open)')) {
+    r.classList.add('ss-rail-open'); r.setAttribute('data-ss-revealed', 'ss-rail-open');
+  }
   return JSON.stringify({ spreads, entries });
 })()`;
 
