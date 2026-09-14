@@ -1,7 +1,7 @@
 ---
 title: "More Than Human"
 url: "https://starstuff.earth/collection-more-than-human.html"
-updated: "2026-09-07"
+updated: "2026-09-14"
 description: "The de-anthropocentrized strand of Star Stuff: Umwelt and every creature sealed in its own complete perceptual world, multispecies councils, niche construction, mycorrhizal networks, and nervous systems that are nothing like ours. Biodiversity contains ethodiversity contains neurodiversity."
 licence: "CC-BY-SA-4.0"
 licence_url: "https://creativecommons.org/licenses/by-sa/4.0/"

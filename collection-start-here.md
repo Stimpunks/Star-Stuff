@@ -1,7 +1,7 @@
 ---
 title: "Start Here"
 url: "https://starstuff.earth/collection-start-here.html"
-updated: "2026-09-07"
+updated: "2026-09-14"
 description: "The Start Here collection — four doors into Star Stuff, and an honest account of why a site that argues for links over folders has a start-here at all. Three ways in and one way out: what the project is, the argument it is named after, the method it works by, and the open call to write something of your own."
 licence: "CC-BY-SA-4.0"
 licence_url: "https://creativecommons.org/licenses/by-sa/4.0/"

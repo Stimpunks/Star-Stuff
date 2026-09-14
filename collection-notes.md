@@ -1,7 +1,7 @@
 ---
 title: "Notes & Rationale"
 url: "https://starstuff.earth/collection-notes.html"
-updated: "2026-09-07"
+updated: "2026-09-14"
 description: "The Notes & Rationale collection — the working material, published on purpose. The public error log, two design systems including what the tools cannot see, the method map that says where ARLES actually shows in the zines, and the backing material for why difference gets to come first. The whole section sits outside the reading chain, which is the point."
 licence: "CC-BY-SA-4.0"
 licence_url: "https://creativecommons.org/licenses/by-sa/4.0/"

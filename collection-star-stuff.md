@@ -1,7 +1,7 @@
 ---
 title: "Star Stuff"
 url: "https://starstuff.earth/collection-star-stuff.html"
-updated: "2026-09-07"
+updated: "2026-09-14"
 description: "The founding Star Stuff register — where a single settled, checkable fact carries the argument about belonging rather than decorating it. Piezoelectric bone, stellar calcium, endosymbiosis, the early universe's necessary unevenness, tidal force falling off with the cube of distance, and the one continuous electromagnetic field."
 licence: "CC-BY-SA-4.0"
 licence_url: "https://creativecommons.org/licenses/by-sa/4.0/"

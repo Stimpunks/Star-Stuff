@@ -32,6 +32,10 @@
  *
  * WHAT IT CHECKS, and why each one is here rather than assumed
  *
+ * (11) JSON-LD that describes a DIFFERENT page — a headline sharing no word with the
+ *      page's own title, and a collection's hasPart disagreeing with its own cards.
+ *      The tenth check asks whether a block parses; this asks whether it is true.
+ *
  * 1. NESTED INTERACTIVE ELEMENTS — `<a>` in `<a>`, `<button>` in `<button>`, and
  *    either inside the other. This is the fault above. The parser closes the outer
  *    element, so the damage is structural: everything after the inner element
@@ -241,6 +245,41 @@ const decode = (s) =>
   s.replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>')
     .replace(/&quot;/g, '"').replace(/&#39;|&apos;/g, "'").replace(/&nbsp;/g, ' ');
 
+/* ── the eleventh check's vocabulary ─────────────────────────────────────────
+   PAGE_TYPES is the set of @type values that describe THIS PAGE. It deliberately
+   excludes WebSite and Organization: index.html's @graph carries one of each, and
+   they are identity nodes for the site and its two publishers rather than titles
+   for the page. Checking them reported "Star Stuff" and "Stimpunks Foundation" as
+   wrong headlines on the front page, which is the check misreading the graph. */
+const PAGE_TYPES = new Set([
+  'Article', 'CollectionPage', 'WebPage', 'AboutPage', 'SearchResultsPage',
+  'BlogPosting', 'CreativeWork',
+]);
+
+/* Words too common to count as agreement between a headline and a title. Measured
+   rather than guessed: without this list the overlap test below passes on almost
+   anything; with it, the one page whose title is ENTIRELY stopwords is
+   mission.html ("What We Are For"), which is why the exact-match test runs first
+   and this one is only the fallback. */
+const TITLE_STOP = new Set([
+  'the','a','an','and','of','to','in','for','on','is','it','at','as','by','with',
+  'from','that','this','was','are','not','but','how','why','what','who','we','you','our',
+]);
+
+const titleWords = (s) =>
+  new Set(
+    (s || '')
+      .toLowerCase()
+      .match(/[a-z0-9\u2605]+/g)
+      ?.filter((w) => w.length >= 3 && !TITLE_STOP.has(w)) ?? []
+  );
+
+const normTitle = (s) => decode(s || '').replace(/\s+/g, ' ').trim().toLowerCase();
+
+/* A page title is "<the page's name> — <house suffix>": em dash, then the series or
+   org designation. The lead is the half that a headline should agree with. */
+const titleLead = (t) => normTitle(String(t || '').split(/\s+[\u2014\u2013]\s+/)[0]);
+
 const collectionFiles = fs.readdirSync(REPO).filter((f) => COLLECTION_RE.test(f)).sort();
 const cardedBy = new Map(); // member page -> [collection file, …]
 const collectionName = new Map(); // collection file -> display name
@@ -325,6 +364,7 @@ for (const file of targets) {
   let mainClose = -1;
   let firstH1 = -1;
   let firstH1Line = 0;
+  let h1Text = '';
 
   for (const t of tags(src)) {
     tagCount++;
@@ -337,6 +377,15 @@ for (const file of targets) {
       if (t.name === 'h1' && !t.closing && firstH1 === -1) {
         firstH1 = t.index;
         firstH1Line = t.line;
+        /* The h1's TEXT, for the eleventh check. Taken from the raw source between
+           this tag and the matching close, with tags stripped — the accessible name
+           is what a headline should agree with, and a title broken across two
+           <span>s is exactly where these disagree. */
+        const close = src.indexOf('</h1>', t.index);
+        if (close > -1) {
+          const inner = src.slice(src.indexOf('>', t.index) + 1, close);
+          h1Text = decode(inner.replace(/<[^>]+>/g, ' ')).replace(/\s+/g, ' ').trim();
+        }
       }
     }
 
@@ -656,6 +705,14 @@ for (const file of targets) {
     }
   }
 
+  /* Comments blanked, byte-for-byte so every index and line number still lines up.
+     BOTH JSON-LD checks below scan for `<script type="application/ld+json">` and a
+     raw-source scan cannot tell a live block from one somebody commented out — this
+     repo's signature fault, and the eleventh check committed it in its own first
+     draft: a decoy carrying a commented-out block was reported as a live headline
+     naming the wrong page. The tenth check had the same hole and inherited the fix. */
+  const srcLive = src.replace(/<!--[\s\S]*?-->/g, (c) => ' '.repeat(c.length));
+
   /* ── the tenth check: JSON-LD that does not parse ────────────────────────────
      Added 2026-09-10, from the agent-readiness half of the specification.website
      audit. Every page here carries a `<script type="application/ld+json">` block,
@@ -677,7 +734,7 @@ for (const file of targets) {
      NOT decoded inside <script>, so the fix is a literal “ or a \" escape, never
      &ldquo; — which would land in the JSON as seven characters. Three other pages
      already use literal typographic quotes here; that is the house answer. */
-  for (const m of src.matchAll(/<script[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/gi)) {
+  for (const m of srcLive.matchAll(/<script[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/gi)) {
     const line = src.slice(0, m.index).split('\n').length;
     try {
       const parsed = JSON.parse(m[1]);
@@ -690,6 +747,103 @@ for (const file of targets) {
     } catch (e) {
       problems.push(
         `JSON-LD at line ${line} does not parse: ${e.message} — search engines and agents get no structured data from this page. Note that &ldquo; is NOT decoded inside <script>; use a literal “ ” or \\".`
+      );
+    }
+  }
+
+  /* ── the eleventh check: JSON-LD that describes a DIFFERENT page ─────────────
+     Added 2026-09-14. The tenth check asks whether a block parses and whether it
+     declares a type. It cannot ask whether what the block SAYS is true of this page,
+     and two faults had been living in that gap.
+
+     `dolly-playlist.html` carried `"headline":"One Body at a Time"` — which is
+     `byrne-playlist.html`'s title, copied when the page was built. Its <title>, its
+     <h1> and its card were all correct; only the machine-readable name was wrong, so
+     search engines and agents were told the page was a different piece. There is no
+     rendering for a headline to get wrong, which is the whole reason it survived.
+
+     And `hasPart` on the collection pages had drifted badly: eight of seventeen
+     disagreed with their own card grids, `collection-star-stuff.html` claiming 17 of
+     its 43 members and `collection-notes.html` still listing `glimmer-wire.html`, a
+     page 301'd away on 2026-09-04. A collection page's whole job is to say what it
+     contains; these were telling agents a third of it.
+
+     WHY THE TEST IS OVERLAP RATHER THAN EQUALITY, and this was measured before it was
+     written. Requiring the headline to match the title fires on six nodes, and five of
+     them are correct: `design.html` expands "Design System" to "The Star Stuff Design
+     System", `print-design.html` appends a subtitle clause, `shorthand-evolution.html`
+     writes "to" where its title has an arrow, and two are index.html's @graph identity
+     nodes. A gate whose first run emits five findings nobody should act on is a gate
+     that gets ignored, and then so are its real ones. So: exact match first, then a
+     single shared significant word, and only then a failure. Checked against the real
+     broken dolly headline at f8f664d~1 — it shares no word with "Love Without
+     Cringing" and fires — and against all 206 page-typed nodes on a clean tree, where
+     it is silent.
+
+     `hasPart` is compared against the page's own `<a class="card" href>` set, which is
+     the same source `check-markup` already derives the badge map from — never a list
+     kept in this tool, so there is no second answer free to rot. A collection page
+     with no `hasPart` at all is reported too, on the same principle as an uncarded
+     page above: uncheckable is not the same as passing. */
+  {
+    const titleMatch = src.match(/<title>([\s\S]*?)<\/title>/i);
+    const pageTitle = titleMatch ? decode(titleMatch[1]).replace(/\s+/g, ' ').trim() : '';
+    const want = new Set([...titleWords(titleLead(pageTitle)), ...titleWords(h1Text)]);
+    const ownCards = [...src.matchAll(/<a class="card" href="([^"]+)"/g)].map((m) => m[1]);
+    let sawHasPart = false;
+
+    for (const m of srcLive.matchAll(/<script[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/gi)) {
+      const line = srcLive.slice(0, m.index).split('\n').length;
+      let parsed;
+      try { parsed = JSON.parse(m[1]); } catch { continue; } // the tenth check owns unparseable blocks
+      const nodes = Array.isArray(parsed?.['@graph']) ? parsed['@graph'] : [parsed];
+      for (const node of nodes) {
+        if (!node || typeof node !== 'object') continue;
+        if (!PAGE_TYPES.has(node['@type'])) continue;
+
+        const name = node.headline || node.name;
+        if (name && pageTitle) {
+          const n = normTitle(name);
+          const exact = n === titleLead(pageTitle) || n === normTitle(h1Text) || normTitle(pageTitle).includes(n);
+          if (!exact) {
+            const shared = [...titleWords(name)].filter((w) => want.has(w));
+            if (shared.length === 0) {
+              problems.push(
+                `JSON-LD at line ${line} names this page ${JSON.stringify(name)}, which shares no word with ` +
+                `its <title> (${JSON.stringify(titleLead(pageTitle))}) or its <h1> (${JSON.stringify(h1Text)}) — ` +
+                'agents are being told this is a different piece. Check it was not copied from another page.'
+              );
+            }
+          }
+        }
+
+        if (Array.isArray(node.hasPart)) {
+          sawHasPart = true;
+          const listed = node.hasPart
+            .map((x) => (x && typeof x === 'object' ? String(x.url || '') : ''))
+            .map((u) => u.replace(/^https?:\/\/[^/]+\//, ''));
+          const missing = ownCards.filter((c) => !listed.includes(c));
+          const extra = listed.filter((u) => u && !ownCards.includes(u));
+          if (missing.length) {
+            problems.push(
+              `JSON-LD hasPart at line ${line} omits ${missing.length} of this page's ${ownCards.length} cards ` +
+              `(${missing.slice(0, 3).join(', ')}${missing.length > 3 ? ', …' : ''}) — the collection tells agents it holds less than it does`
+            );
+          }
+          if (extra.length) {
+            problems.push(
+              `JSON-LD hasPart at line ${line} lists ${extra.length} page(s) this collection does not card ` +
+              `(${extra.join(', ')}) — a member that moved or was removed leaves its entry behind`
+            );
+          }
+        }
+      }
+    }
+
+    if (COLLECTION_RE.test(file) && ownCards.length && !sawHasPart) {
+      problems.push(
+        `collection page cards ${ownCards.length} member(s) but its JSON-LD declares no hasPart, ` +
+        'so an agent reading the structured data cannot see what the collection contains'
       );
     }
   }
@@ -732,8 +886,9 @@ if (totalProblems) {
       '       no nav outside its content shell, exactly one <main> landmark per page, every\n' +
       '       card in its own wrap, every page titled by exactly one <h1> inside its\n' +
       '       main landmark, every collection member badged to the collection that cards it,\n'
-      + '       no attribute value cut short by an unescaped quote, and every JSON-LD\n'
-      + '       block parsing and typing something.'
+      + '       no attribute value cut short by an unescaped quote, every JSON-LD\n'
+      + '       block parsing and typing something, and every JSON-LD block naming\n'
+      + '       the page it is on and listing the members that page cards.'
   );
 }
 

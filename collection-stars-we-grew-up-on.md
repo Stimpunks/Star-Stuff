@@ -1,7 +1,7 @@
 ---
 title: "Stars We Grew Up On"
 url: "https://starstuff.earth/collection-stars-we-grew-up-on.html"
-updated: "2026-09-09"
+updated: "2026-09-14"
 description: "The culture end of Star Stuff, where “star” means icon rather than nucleosynthesis — David Bowie and AURORA as ways of being star stuff, unmasking as authorship, and gathering a tribe of weirdos instead of being cured into fitting."
 licence: "CC-BY-SA-4.0"
 licence_url: "https://creativecommons.org/licenses/by-sa/4.0/"

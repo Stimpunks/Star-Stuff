@@ -1,7 +1,7 @@
 ---
 title: "Triggers"
 url: "https://starstuff.earth/collection-triggers.html"
-updated: "2026-09-07"
+updated: "2026-09-14"
 description: "Triggers — bad news from a dying planet, and what we can do about it. The sixteenth Star Stuff collection, and the third sorted by form: each issue names something going wrong and then grades the responses to it, from deployed to speculative, at individual, structural and — since Trigger No. 2 — vocational scale. The grading is the collection’s own convention and exists to stop a solutions list flattering itself — it puts loft insulation and direct air capture on the same page without pretending they are the same kind of object. The name is the deliberate mirror of Glimmers, which this site already defines as ‘simply the opposite of a trigger’; the second half of the title is load-bearing, because naming a harm and stopping is not an argument, it is harm redistributed to the reader."
 licence: "CC-BY-SA-4.0"
 licence_url: "https://creativecommons.org/licenses/by-sa/4.0/"

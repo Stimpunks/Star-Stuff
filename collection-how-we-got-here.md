@@ -1,7 +1,7 @@
 ---
 title: "How We Got Here"
 url: "https://starstuff.earth/collection-how-we-got-here.html"
-updated: "2026-09-07"
+updated: "2026-09-14"
 description: "Chains, in the manner of James Burke's Connections — one link per spread, running from a settled fact in physical science through a series of handoffs to something that happens to us now. This collection sorts by form, not by register, and every chain publishes the strength of its own joints: documented, contested, or leap. The shared moral is that nobody authored these roads. They accumulated — which is also how they come apart."
 licence: "CC-BY-SA-4.0"
 licence_url: "https://creativecommons.org/licenses/by-sa/4.0/"

@@ -1,7 +1,7 @@
 ---
 title: "Star Gazing"
 url: "https://starstuff.earth/collection-star-gazing.html"
-updated: "2026-09-07"
+updated: "2026-09-14"
 description: "The experimental, neuroqueer end of Star Stuff — named by Helen Edgar. Where the physics thins and philosophy of difference, relation and becoming does the work: Deleuze, relational quantum mechanics, rhizomes, wyrd, migration. Possibilities of thought rather than settled proof."
 licence: "CC-BY-SA-4.0"
 licence_url: "https://creativecommons.org/licenses/by-sa/4.0/"

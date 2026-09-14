@@ -383,15 +383,42 @@ The central phrase compresses through registers, each with a use:
     `margin`**, which is *why* it was neutral — the rule already pinned everything the UA would
     otherwise supply. Check that before promoting a label elsewhere; where it is not true, pin the
     properties first, exactly as the 2026-09-01 `<h1>` pass did.
-- **A JSON-LD `headline` that names a DIFFERENT page is invisible to every gate**, found
-  2026-09-14: `dolly-playlist.html` carried `"headline":"One Body at a Time"`, which is
-  `byrne-playlist.html`'s title, copied when the page was built. Its `<title>`, its visible title
-  and its card were all correct. **`check-markup.mjs`'s tenth check passes it and is right to** —
-  it asks whether the block parses and declares a type, never whether the title inside matches the
-  page. Found the same day: `collection-sound.html`'s `hasPart` listed **7 of its 8** racks.
-  **An eleventh check comparing JSON-LD `headline`/`name` against the page's `<title>` and `<h1>`,
-  and `hasPart` against the page's own cards, would have caught both in a second** and is the
-  strongest candidate on the list.
+- **The eleventh check: JSON-LD that describes a DIFFERENT page** (written 2026-09-14, the same
+  day the two faults that earned it were found). The tenth check asks whether a block *parses*;
+  this asks whether what it says is *true of this page*. Two halves:
+  - **A `headline`/`name` sharing no significant word with the page's own `<title>` lead or
+    `<h1>`.** `dolly-playlist.html` carried `"headline":"One Body at a Time"` — `byrne-playlist.html`'s
+    title, copied when the page was built — while its `<title>`, its visible title and its card
+    were all correct. No rendering to go wrong, so it survived.
+  - **A collection's `hasPart` disagreeing with its own `<a class="card">` set**, in both
+    directions. **Eight of seventeen collection pages were wrong** when the check first ran:
+    *Star Stuff* claimed **17 of its 43** members, *How We Got Here* 7 of 17, *Field Guides* 13 of
+    24, and *Notes* still listed `glimmer-wire.html`, 301'd away on 2026-09-04. Three more
+    (*Glimmer Wire*, *Triggers*, *Young Readers*) had **no `hasPart` at all** — reported too, on
+    the same principle as an uncarded page: uncheckable is not passing. All 17 regenerated from
+    their own cards: **186 entries, which equals the badge count, so every carded member now
+    appears in exactly one collection's structured data.**
+  - **THE TEST IS WORD OVERLAP, NOT EQUALITY, AND THAT WAS MEASURED FIRST.** Requiring the
+    headline to match the title fires on **six** nodes and **five are correct** — `design.html`
+    expands *Design System* to *The Star Stuff Design System*, `print-design.html` appends a
+    subtitle clause, `shorthand-evolution.html` writes *to* where its title has an arrow, and two
+    are `index.html`'s `@graph` identity nodes. So: exact match first, then **one shared
+    significant word**, then failure. `PAGE_TYPES` excludes `WebSite` and `Organization` for the
+    `@graph` reason; `mission.html` is why exact-match runs first, its title being *entirely*
+    stopwords (*What We Are For*).
+  - **IT COMMITTED THIS REPO'S SIGNATURE FAULT IN ITS OWN FIRST DRAFT.** A decoy carrying a
+    JSON-LD block **inside an HTML comment** was reported as a live headline naming the wrong
+    page, because both JSON-LD checks scanned raw source. **The tenth check had the same hole**
+    and inherited the fix: comments are blanked byte-for-byte into `srcLive` so indices and line
+    numbers still line up. *Ask the structure, never the raw text* — again.
+  - **Regression-tested against the real broken files, not only synthetics:** `dolly-playlist.html`
+    and `collection-sound.html` at `f8f664d~1` and `collection-notes.html` at `f8f664d` all fire
+    with the right message and go silent when restored. Four decoys stay silent — all-stopword
+    exact match, a legitimate expansion, `@graph` identity nodes, and both a commented-out and an
+    escaped-in-prose block.
+  - **`hasPart` is hand-maintained and gated rather than generated**, the same call `sitemap.xml`
+    already represents. If it drifts again, generating it from the cards in `build-derived.mjs` is
+    the obvious next move — it already derives that exact map.
 - **Use real headings, with ids.** A section label must be an `<h1>`/`<h2>`, not a styled `<span>`
   — a screen reader's headings rotor *is* the table of contents, and `index.html` shipped with
   **zero heading elements** until 2026-08-12, so that list came back empty on the landing page of

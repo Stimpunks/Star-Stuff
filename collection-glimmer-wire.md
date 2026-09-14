@@ -1,7 +1,7 @@
 ---
 title: "Glimmer Wire"
 url: "https://starstuff.earth/collection-glimmer-wire.html"
-updated: "2026-09-11"
+updated: "2026-09-14"
 description: "The weekly graded scan behind Glimmers, one page per edition. Three editions so far, twenty items filed and twelve held — every one carrying its grade and, more usefully, what was actually read and what was not. The section that earns the page is Held, which lists what we declined and why. A fifth sorting axis on this site: these sort by issue."
 licence: "CC-BY-SA-4.0"
 licence_url: "https://creativecommons.org/licenses/by-sa/4.0/"

@@ -1,7 +1,7 @@
 ---
 title: "Field Guides"
 url: "https://starstuff.earth/collection-field-guides.html"
-updated: "2026-09-07"
+updated: "2026-09-14"
 description: "The Field Guides collection — twenty-four catalogues, 308 entries, and the one sentence seventeen of them arrive at independently: there is no standard anything. Sorted by form rather than register, like Print and Sound are sorted by medium. What a field guide is here, the four things every one of them turned out to do, and the limit the form named on itself."
 licence: "CC-BY-SA-4.0"
 licence_url: "https://creativecommons.org/licenses/by-sa/4.0/"

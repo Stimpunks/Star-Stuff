@@ -227,6 +227,22 @@
 
   </div>
 
+  <!-- ================= 2026-09-14b (site: the eleventh markup check) ================= -->
+  <section class="release" id="2026-09-14-eleventh-check" aria-labelledby="h-2026-09-14-eleventh-check">
+    <div class="release-date">2026 &middot; September 14</div>
+    <h2 class="release-title" id="h-2026-09-14-eleventh-check">Eight of our seventeen collection pages were telling machines they held a fraction of what they hold</h2>
+    <p class="release-note">Yesterday&rsquo;s pass found one page whose structured data carried another page&rsquo;s title. Writing a check for it turned up something larger: the machine-readable table of contents on most of the collection pages had been drifting from the actual shelf for months.</p>
+
+    <div class="entry entry--site">
+      <div class="entry-head"><span class="tag tag--site">Site</span><span class="entry-name">A check for structured data that describes the wrong page</span></div>
+      <div class="entry-body"><p><strong>Every page here carries a block of machine-readable data &mdash; the thing a search engine or an AI assistant reads instead of the page.</strong> We already check that it parses. Nothing checked whether what it <em>said</em> was true, and two faults had been living in that gap.</p>
+      <p><strong>The first was a title.</strong> <a href="dolly-playlist.html">The Dolly rack</a> told machines it was called <em>One Body at a Time</em>, which is <a href="byrne-playlist.html">the David Byrne rack</a>. Fixed yesterday. <strong>The second is the one that turned out to be everywhere.</strong> Each collection page carries a list of what it contains, and <strong>eight of the seventeen disagreed with their own shelves</strong>: <a href="collection-star-stuff.html">Star Stuff</a> claimed <strong>17 of its 43</strong> pieces, <a href="collection-how-we-got-here.html">How We Got Here</a> 7 of 17, <a href="collection-field-guides.html">Field Guides</a> 13 of 24. <a href="collection-notes.html">Notes</a> still listed a page we retired in September. Three more collections had no list at all.</p>
+      <p><strong>All seventeen are rebuilt from the cards on the page itself, and the arithmetic cross-checks:</strong> 186 entries, which is exactly the number of pieces that carry a collection badge. Every member now appears in exactly one collection&rsquo;s structured data.</p>
+      <p><strong>The check tests overlap rather than equality, and that was measured before it was written.</strong> Demanding that the machine-readable title match the visible one fires six times, and five of those are correct &mdash; a page that expands <em>Design System</em> to <em>The Star Stuff Design System</em> is not broken. So it asks for exact agreement first, then for a single word in common, and only then fails. That is the difference between a check somebody runs and a check somebody learns to ignore.</p>
+      <p><strong>And the new check made this repository&rsquo;s oldest mistake in its own first draft.</strong> A deliberately planted test page carried a block of structured data <em>inside an HTML comment</em> &mdash; switched off, invisible, not part of the page &mdash; and the check read it as live and reported the page as mis-titled. It was scanning the file as text rather than reading its structure, which is the fault we have now written down half a dozen times. <strong>The older check had the same hole</strong> and inherited the fix. Comments are now blanked before either one looks.</p></div>
+    </div>
+  </section>
+
   <!-- ================= 2026-09-14a (the L★S rack gets its essay; Sound gets its headings) ================= -->
   <section class="release" id="2026-09-14-ls-essay" aria-labelledby="h-2026-09-14-ls-essay">
     <div class="release-date">2026 &middot; September 14</div>

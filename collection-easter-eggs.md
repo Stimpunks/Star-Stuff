@@ -1,7 +1,7 @@
 ---
 title: "Easter Eggs"
 url: "https://starstuff.earth/collection-easter-eggs.html"
-updated: "2026-09-07"
+updated: "2026-09-14"
 description: "The Easter Eggs collection — pieces that are real work but are not on the front page, reachable by a small door or by searching. Deliberately the only collection with no section on the index, and the only one created below the two-member floor, both of which it explains on its own face. Eight eggs: No. 37, which fills the single gap in our numbering and marks itself out of order for doing it; No. 47, a long-overdue credit to Ze Frank; Field Guide No. 13, sixteen animals to watch with the papers underneath them; The Hatchery, twelve drawn cosmic eggs including the one on the door; No. 49, a credit to Terry Pratchett that turned up three attribution corrections and ends by conceding what our own masthead cannot claim; The Quillery, eight star-stuff variants of our mascot Esmx, drawn under the licence that invites them; The Bow-ery, ten bows drawn to one angular scale; and The Glimmery, ten faint lights drawn against one measured visual threshold."
 licence: "CC-BY-SA-4.0"
 licence_url: "https://creativecommons.org/licenses/by-sa/4.0/"

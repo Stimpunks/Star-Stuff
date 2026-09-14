@@ -32,6 +32,24 @@ New piece Revised Fact-check Site
 
 2026 · September 14
 
+## Eight of our seventeen collection pages were telling machines they held a fraction of what they hold
+
+Yesterday’s pass found one page whose structured data carried another page’s title. Writing a check for it turned up something larger: the machine-readable table of contents on most of the collection pages had been drifting from the actual shelf for months.
+
+SiteA check for structured data that describes the wrong page
+
+**Every page here carries a block of machine-readable data — the thing a search engine or an AI assistant reads instead of the page.** We already check that it parses. Nothing checked whether what it *said* was true, and two faults had been living in that gap.
+
+**The first was a title.** [The Dolly rack](https://starstuff.earth/dolly-playlist.html) told machines it was called *One Body at a Time*, which is [the David Byrne rack](https://starstuff.earth/byrne-playlist.html). Fixed yesterday. **The second is the one that turned out to be everywhere.** Each collection page carries a list of what it contains, and **eight of the seventeen disagreed with their own shelves**: [Star Stuff](https://starstuff.earth/collection-star-stuff.html) claimed **17 of its 43** pieces, [How We Got Here](https://starstuff.earth/collection-how-we-got-here.html) 7 of 17, [Field Guides](https://starstuff.earth/collection-field-guides.html) 13 of 24. [Notes](https://starstuff.earth/collection-notes.html) still listed a page we retired in September. Three more collections had no list at all.
+
+**All seventeen are rebuilt from the cards on the page itself, and the arithmetic cross-checks:** 186 entries, which is exactly the number of pieces that carry a collection badge. Every member now appears in exactly one collection’s structured data.
+
+**The check tests overlap rather than equality, and that was measured before it was written.** Demanding that the machine-readable title match the visible one fires six times, and five of those are correct — a page that expands *Design System* to *The Star Stuff Design System* is not broken. So it asks for exact agreement first, then for a single word in common, and only then fails. That is the difference between a check somebody runs and a check somebody learns to ignore.
+
+**And the new check made this repository’s oldest mistake in its own first draft.** A deliberately planted test page carried a block of structured data *inside an HTML comment* — switched off, invisible, not part of the page — and the check read it as live and reported the page as mis-titled. It was scanning the file as text rather than reading its structure, which is the fault we have now written down half a dozen times. **The older check had the same hole** and inherited the fix. Comments are now blanked before either one looks.
+
+2026 · September 14
+
 ## The sentence this whole collection is named after was being sung to audiences three years before Carl Sagan published it
 
 The oldest rack here was the only one of the eight with no essay in front of it. It has one now, and the argument is a chronology that puts us last rather than first. Plus: fifty-four section labels across the Sound collection that were never headings at all, and two pieces of structured data quietly describing the wrong page.
