@@ -166,6 +166,38 @@ Decisions still to make. Move to **Settled** with a date once resolved.
 
 ## Settled
 
+- **A negative result is filed as a *Kin* piece with the animal as the spine, not as a debunk
+  zine — settled 2026-09-08, by Ryan.** Ten papers went into the SKS inbox looking for support
+  for a viral claim (horned lizards suppressing fire ants by "grazing pressure"). **None of them
+  supported it.** The ruling on the shape: the animal is the subject, the claim is a case, graded
+  on **two of fourteen spreads**.
+  - **Why not a debunk zine.** `too-good-to-check.html` already holds *the story told backwards*
+    as one of its six named ways a fact goes wrong, so a whole piece on one instance duplicates a
+    Foundations page — and it makes the viral claim the subject, which is that claim's own best
+    outcome.
+  - **And the papers gathered to check a claim reliably contain something better than the
+    claim.** Here: the coyote-repelling compound in horned lizard blood is **dietary**, coming
+    out of the harvester ants the lizard eats (Sherbrooke & Kimball 2024) — which nobody in the
+    popular coverage had.
+  - Two grading traps from the same build are now in `CLAUDE.md`: a genus-level identification
+    is not a species finding, and a search run to check a claim can return the claim back dressed
+    as findings.
+
+- **The ordered-solar-system architecture proposal — declined 2026-08-23, by Ryan**, on the
+  grounds that there is not enough settled science in it. **Don't re-propose it from the same
+  source** (Mishra, Alibert, Udry & Mordasini, *A&A* 670, A68 and A69, 2023).
+  - **The founding fact doesn't hold.** The "our system is the rarest, ~1.5%" figure is a
+    property of the **Bern-model synthetic population**. In the same paper's catalogue of 41
+    *observed* multi-planet systems, ordered is **37%** — the second most common class — and
+    Paper I states plainly that the discrepancy "reflects the inability of Bern models to
+    simulate a Solar System analogue." The class with zero observed examples is *anti*-ordered,
+    and that is detection bias.
+  - The Jupiter–Saturn migration story carrying the popular version is the **Grand Tack** (Walsh
+    et al., *Nature* 475, 2011), which has a critical review by two of its own authors
+    (arXiv:1409.6340) and no confirmed exoplanet analogue.
+  - **Worth keeping if the topic ever returns through a different door:** ordered systems have
+    the *lowest* median planet–planet mergers of the four classes (62).
+
 - **Star Stuff becomes a two-contributor repo — settled 2026-09-14, by Ryan.** Helen Edgar gets
   her own checkout and her own Claude session, and **both she and Ryan push directly to `main`**,
   which deploys. Helen **runs the nine gates herself** rather than handing drafts over to be

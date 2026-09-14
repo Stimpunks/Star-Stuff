@@ -869,6 +869,38 @@ interdependence, belonging. A piece is in it because *something happened on a pa
   — the byline names the occasion in words and the publication date stands alone; manufacturing a
   false precision would be worse. `check-card-order.mjs` counts these among its unnumbered,
   order-unchecked cards, which is correct and not a coverage loss.
+- **THE HOUSE STYLE IS "BETTER THAN THE ARTICLE THAT PROMPTED IT", AND RYAN SAID SO EXPLICITLY**
+  (2026-08-31, after the first three entries): *"more interesting, informative, precise, and
+  accessible than anything on the news sites… part of my motivation with the Glimmers collection
+  is to do science news that I can actually like."* The collection exists because mainstream
+  science coverage is the thing we want an alternative to, not a model to imitate faster — so the
+  standard is not *a good blog post*, it is **visibly better than its source, by work a newsroom
+  did not do.** Six moves, all of which earned their place in those three pieces:
+  1. **Find the qualifier that fell off the headline and put it back.** The IEA's *"for projects
+     with low cost financing that tap high quality resources"*; 59% is really 59% ± 15%; "21
+     nautical miles" is not twenty-one miles. **The single highest-value move**, and it has hit on
+     every entry so far. Keep both halves: *the claim is true, and it is conditional.*
+  2. **The spine is usually not the hook.** Underpants → the lawn is the deadest ground you own. A
+     rocket launch → L2 is unstable and needs thrusters forever. Cheap solar → nobody invented it,
+     it was iterated into existence. Take the fun hook, then find the argument underneath it.
+  3. **Derive rather than quote wherever the data exists.** The solar learning rate came from Our
+     World in Data's CSV fitted here (23.5%/doubling, R² = 0.979), not the "about 20%" everyone
+     repeats — and iterating the series found **six years the price rose**, which is why the page
+     declines to call it a law.
+  4. **Say what you could not reach** — in the Sources note, and about the *shipped page* (see
+     *Our own claims are the unchecked ones*). *Came Back Clean* states outright that it never
+     read the paper it reports on.
+  5. **Decline claims you cannot establish, and log the declining.** An escape-velocity comparison
+     was computed and cut because the readout's reference frame was unverifiable; no bar chart was
+     drawn from a press release. **A declined claim is worth as much as a kept one** and goes in
+     `FACTCHECK.md` either way.
+  6. **Name the costs in the refusals.** Polysilicon and forced-labour allegations; the Tea Bag
+     Index's published critique; the near-cancellations. *A hopeful collection that cannot state
+     the cost is just optimism.*
+
+  Two standing companions, not optional: **every image's licence settled explicitly** (CC BY 4.0
+  adaptation vs *credited, not relicensed*), and **every diagram checked at render size** — three
+  of four were wrong in each illustrated piece and no gate saw any of it.
 - **Faster to write is not looser.** Same nine gates, same `FACTCHECK.md` row, same changelog
   entry, same grading of every quotation. The first entry marks a contested Einstein quotation
   *against a NASA page it is otherwise citing favourably*, the second corrects the headline it was built
@@ -2875,6 +2907,19 @@ wrong doing it.
   **not one word overlapping the dinosaur vocabulary**. Search in the words the *argument* would
   use (`threshold`, `cut-off`, `somebody chose`, `arbitrary`), and read colophon series-lists,
   which are the site's index of claims.
+- **A DROP OF PAPERS CAN CONTAIN ITS OWN DISAGREEMENT, AND THAT IS THE BETTER PIECE.** Nine
+  bird-cognition papers arrived at once on 2026-09-03. Read individually each supports the
+  familiar story; read **against each other**, three answer one question three ways — Stacho et
+  al. (*Science* 369, 2020) propose the cortex-like circuit is **conserved** from a stem amniote;
+  Güntürkün, Pusch & Rose (*TiCS* 28(3), 2024) argue the features **convergently** evolved and
+  call their own list *speculative*; Zaremba et al. (*Science* 387, 2025) find conserved
+  inhibitory cell types **plus** transcriptomic convergence, with the boundary not where anatomy
+  predicted. That became No. 86, and it is better than any single paper would have supported,
+  because **"convergent evolution!" is the smoothed retelling** and the thing filed off is that
+  nobody has settled it. The register test wants one settled fact followed honestly — **an
+  unsettled question *between* papers is followable honestly too**, and is the one shape the
+  popular coverage never takes. Read a multi-paper drop for its contradictions before its
+  agreements.
 - **A draft handed over is a starting point, not a checked artifact.** Proposals arrive as
   finished spread-by-spread outlines written in a collaborator's own Claude session — Helen
   Edgar's, and David Gray-Hammond's (NeuroHub Community). **Verify the founding fact before
