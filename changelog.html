@@ -227,6 +227,21 @@
 
   </div>
 
+  <!-- ================= 2026-09-13g (site: the CSP generator fixed) ================= -->
+  <section class="release" id="2026-09-13-csp-walk" aria-labelledby="h-2026-09-13-csp-walk">
+    <div class="release-date">2026 &middot; September 13</div>
+    <h2 class="release-title" id="h-2026-09-13-csp-walk">The tool that writes our security policy could be fooled by a sentence about itself, and the reason was a Turkish letter</h2>
+    <p class="release-note">Logged a few hours ago as a known weakness we had failed twice to repair. It is repaired now, and the cause turned out to be something this site had already written down in its own search code.</p>
+
+    <div class="entry entry--site">
+      <div class="entry-head"><span class="tag tag--site">Site</span><span class="entry-name">A scan that read prose as markup, and a lowercase that moved every index after it</span></div>
+      <div class="entry-body"><p><strong>Every page here carries a security policy that lists, by fingerprint, exactly which scripts are allowed to run.</strong> The list is generated rather than typed, because a hand-kept one would drift and a missing fingerprint means a real script is refused &mdash; on a zine, that is a dead page-turner. The generator found those scripts by pattern-matching the whole file, which meant <strong>writing the words for a script tag into a comment was enough to fool it</strong>: it treated the sentence as a script, fingerprinted a stretch of the page that is not one, and lost the real script inside it. Earlier today we published that weakness as unfixed, having broken a live page with each of two attempted repairs.</p>
+      <p><strong>The repair is to read the page the way a browser reads it</strong> &mdash; walking the tags in order, stepping over comments and stylesheet text rather than searching the file as a flat string. That much was straightforward. What was not is why the first version of the walk still produced the wrong fingerprint for exactly one page: <a href="search.html">the search page</a>.</p>
+      <p><strong>The cause is that lowercasing a string can make it longer.</strong> The walk searched a lowercased copy of the page so it could match tags whatever their capitalisation, then used the positions it found against the original. That works until the page contains a character whose lowercase form is two characters instead of one &mdash; and the search page contains exactly one, <strong>&#304;</strong>, the Turkish capital I with a dot. From that character onward the copy is one longer than the original, so every position was off by one, and the captured script gained a stray character, and its fingerprint no longer matched. <strong>The search page contains that letter inside its own comment explaining that this very letter lowercases to two characters.</strong> Our search code had known about the trap for months; the tool measuring it had not.</p>
+      <p><strong>Checked against the browser rather than against the thing it replaced</strong>, because the browser is the only authority on what a fingerprint has to be. Every script on all <strong>207</strong> pages was loaded in a real browser, fingerprinted as the browser would, and compared: the generator now agrees on every one, with none missing and none invented. The published policy is byte-for-byte what it was before, which is the point &mdash; a fix to how something is measured should not change the answer on a site that was already correct. Eleven decoys confirm the traps stay shut, including the one that started this and the one that broke the second attempt.</p></div>
+    </div>
+  </section>
+
   <!-- ================= 2026-09-13f (site: the in-browser editor) ================= -->
   <section class="release" id="2026-09-13-editor" aria-labelledby="h-2026-09-13-editor">
     <div class="release-date">2026 &middot; September 13</div>

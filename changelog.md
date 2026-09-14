@@ -32,6 +32,22 @@ New piece Revised Fact-check Site
 
 2026 · September 13
 
+## The tool that writes our security policy could be fooled by a sentence about itself, and the reason was a Turkish letter
+
+Logged a few hours ago as a known weakness we had failed twice to repair. It is repaired now, and the cause turned out to be something this site had already written down in its own search code.
+
+SiteA scan that read prose as markup, and a lowercase that moved every index after it
+
+**Every page here carries a security policy that lists, by fingerprint, exactly which scripts are allowed to run.** The list is generated rather than typed, because a hand-kept one would drift and a missing fingerprint means a real script is refused — on a zine, that is a dead page-turner. The generator found those scripts by pattern-matching the whole file, which meant **writing the words for a script tag into a comment was enough to fool it**: it treated the sentence as a script, fingerprinted a stretch of the page that is not one, and lost the real script inside it. Earlier today we published that weakness as unfixed, having broken a live page with each of two attempted repairs.
+
+**The repair is to read the page the way a browser reads it** — walking the tags in order, stepping over comments and stylesheet text rather than searching the file as a flat string. That much was straightforward. What was not is why the first version of the walk still produced the wrong fingerprint for exactly one page: [the search page](https://starstuff.earth/search.html).
+
+**The cause is that lowercasing a string can make it longer.** The walk searched a lowercased copy of the page so it could match tags whatever their capitalisation, then used the positions it found against the original. That works until the page contains a character whose lowercase form is two characters instead of one — and the search page contains exactly one, **İ**, the Turkish capital I with a dot. From that character onward the copy is one longer than the original, so every position was off by one, and the captured script gained a stray character, and its fingerprint no longer matched. **The search page contains that letter inside its own comment explaining that this very letter lowercases to two characters.** Our search code had known about the trap for months; the tool measuring it had not.
+
+**Checked against the browser rather than against the thing it replaced**, because the browser is the only authority on what a fingerprint has to be. Every script on all **207** pages was loaded in a real browser, fingerprinted as the browser would, and compared: the generator now agrees on every one, with none missing and none invented. The published policy is byte-for-byte what it was before, which is the point — a fix to how something is measured should not change the answer on a site that was already correct. Eleven decoys confirm the traps stay shut, including the one that started this and the one that broke the second attempt.
+
+2026 · September 13
+
 ## You can now change the words on a page without editing HTML — and there is a list of what it will not let you change
 
 A bookmark that makes a page editable and copies out a patch for somebody to apply. It cannot save, nothing on the site loads it, and the most important part of it is the list of things it refuses to touch.

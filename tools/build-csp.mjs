@@ -85,6 +85,83 @@ const sha256 = (s) => `'sha256-${crypto.createHash('sha256').update(s, 'utf8').d
    site under the policy and watching for a violation rather than by reading the spec. */
 const JS_TYPES = new Set(['', 'text/javascript', 'application/javascript', 'module']);
 
+/* Where a raw-text element's body ends: the first `</name` followed by whitespace, `/`
+   or `>`, per the HTML spec's end-tag-open rules. A bare `</scriptfoo` does not close it.
+
+   IT SEARCHES THE ORIGINAL STRING AND CASE-FOLDS ONLY THE CANDIDATE, and that is the
+   whole point of the function rather than a stylistic choice. The obvious spelling,
+   `src.toLowerCase().indexOf('</script', j)`, was here and was WRONG: toLowerCase() can
+   CHANGE A STRING'S LENGTH, so every index it returns after the first such character is
+   shifted. search.html contains U+0130 (`İ`) at offset 14830 — inside its own comment
+   explaining that İ lowercases to two characters — so the lowered copy is one unit
+   longer and the end tag was reported one past its `<`. The captured body gained a
+   trailing `<`, its hash changed, and the site search script would have been refused.
+
+   Same fault this repo keeps meeting from the other direction: do not transform the
+   source in order to analyse it, because the transformation moves the coordinates. */
+function findRawTextEnd(src, from, name) {
+  const needle = `</${name}`;
+  for (let k = from; ; k++) {
+    k = src.indexOf('<', k);
+    if (k === -1) return -1;
+    if (src.slice(k, k + needle.length).toLowerCase() === needle) {
+      const after = src[k + needle.length];
+      if (after === undefined || /[\t\n\f\r >/]/.test(after)) return k;
+    }
+  }
+}
+
+/* Yield the <script> elements a BROWSER would create: { attrs, body }. Same walk as
+   handlerAttrs below, and it exists for the same reason — which is the point, because
+   for a long time only ONE of the two had it.
+
+   THIS WAS A REGEX OVER THE WHOLE FILE until 2026-09-13, four lines above a comment
+   explaining why that is wrong for the other loop. Writing the words for a script open
+   tag into a CSS comment on design.html was enough: the regex matched the fake opener
+   and ran non-greedily to the NEXT `</script>` anywhere in the file — that page's
+   JSON-LD block — taking the inventory from 34 executable / 207 JSON-LD to 35 / 206.
+   The policy gained a hash for a stretch that is not a script and lost the real element
+   inside it, which on a zine is a dead pager.
+
+   ONE EARLIER ATTEMPT BLANKED <style> AND COMMENT BODIES IN PLACE instead, preserving
+   length so offsets held. It moved the hash on symbioses-field-guide.html, whose entry
+   renderer builds SVG in template literals holding six `<!-- … -->` comments: a browser
+   hashes a script body VERBATIM, so blanking them described a body that does not exist
+   and that guide would have been refused live. Hence a walk that reads the source and
+   never rewrites it. */
+function* scriptElements(src) {
+  let i = 0;
+  while (i < src.length) {
+    const lt = src.indexOf('<', i);
+    if (lt === -1) return;
+    if (src.startsWith('<!--', lt)) { const e = src.indexOf('-->', lt + 4); i = e === -1 ? src.length : e + 3; continue; }
+    if (src.startsWith('<!', lt) || src.startsWith('<?', lt)) { const e = src.indexOf('>', lt); i = e === -1 ? src.length : e + 1; continue; }
+    let j = lt + 1, q = null;
+    while (j < src.length) {
+      const c = src[j];
+      if (q) { if (c === q) q = null; }
+      else if (c === '"' || c === "'") q = c;
+      else if (c === '>') break;
+      j++;
+    }
+    if (j >= src.length) return;
+    const raw = src.slice(lt + 1, j);
+    const name = (raw.replace(/^\//, '').match(/^[A-Za-z][A-Za-z0-9-]*/) || [''])[0].toLowerCase();
+    const isEnd = raw.startsWith('/');
+    const selfClosing = raw.trimEnd().endsWith('/');
+    if (!isEnd && !selfClosing && (name === 'script' || name === 'style')) {
+      const close = findRawTextEnd(src, j + 1, name);
+      if (close !== -1) {
+        /* A <style> body is walked past; a <script> body is what we came for. */
+        if (name === 'script') yield { attrs: raw.slice(name.length), body: src.slice(j + 1, close) };
+        i = close;
+        continue;
+      }
+    }
+    i = j + 1;
+  }
+}
+
 /* Yield `on…="…"` attributes that are genuinely inside a start tag. Quote-aware and
    skipping <script>, <style> and comments, so prose that merely quotes an attribute is
    not mistaken for one. Deliberately the same shape as check-markup.mjs's tag walk. */
@@ -111,7 +188,7 @@ function* handlerAttrs(src) {
        page JavaScript being counted. */
     if (name === 'script' || name === 'style') {
       if (!raw.startsWith('/') && !raw.trimEnd().endsWith('/')) {
-        const close = src.toLowerCase().indexOf(`</${name}`, j);
+        const close = findRawTextEnd(src, j + 1, name);
         if (close !== -1) { i = close; continue; }
       }
     }
@@ -130,9 +207,9 @@ function inventory() {
   for (const f of pages) {
     const src = fs.readFileSync(path.join(REPO, f), 'utf8');
 
-    for (const m of src.matchAll(/<script([^>]*)>([\s\S]*?)<\/script>/g)) {
-      const attrs = m[1];
-      const body = m[2];
+    for (const el of scriptElements(src)) {
+      const attrs = el.attrs;
+      const body = el.body;
       if (/\bsrc=/.test(attrs)) continue;
       const t = (attrs.match(/\btype="([^"]*)"/) || ['', ''])[1].trim().toLowerCase();
       if (!JS_TYPES.has(t)) { jsonLd++; continue; }
