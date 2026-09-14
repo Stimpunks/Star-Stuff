@@ -276,7 +276,7 @@ What a contributor actually needs is much smaller: change some words without edi
 
 [★ Edit this page](javascript:(function()%7Bvar%20s=document.createElement('script');s.src=location.origin+'/edit.js';document.body.appendChild(s);%7D)();) **Drag this to your bookmarks bar.** Do not press it — on this site it will not run, and that is the security policy working rather than failing. Our `script-src` carries a hash for every inline script on the site, and CSP Level 3 makes a browser discard `'unsafe-inline'` the moment a hash is present. A `javascript:` URL needs precisely that keyword, so pressing this logs a refusal and does nothing. Dragging it is not running it, so dragging still works.
 
-Then open any page here and press the bookmark. If your browser refuses to run bookmarklets on a page carrying a content policy — some have, and **nobody has yet tested this site in Safari** — paste this one line into the browser console instead. It needs no exemption from anything, because loading a script from this same origin is something the policy allows outright:
+Then open any page here and press the bookmark. **Safari runs it**, tested by hand on 13 September 2026 — and Safari was the one worth checking, because a bookmarklet’s exemption from the page’s content policy is each browser’s own decision rather than something the policy grants, and Safari is where that decision has differed before. If some other browser ever declines, paste this one line into its console instead. It needs no exemption from anything, because loading a script from this same origin is something the policy allows outright:
 
 `(function(){var s=document.createElement('script');s.src=location.origin+'/edit.js';document.body.appendChild(s);})()`
 

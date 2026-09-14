@@ -44,12 +44,17 @@
  *                                        the following Content Security Policy directive"
  *
  * So the sister site's one element that both drags AND runs cannot do both here. The link on
- * design.html is drag-only and says so; a console line is published beside it, because a
- * bookmarklet run from the bookmarks bar is exempt from page CSP in some browsers and not
- * others and NOBODY HAS TESTED IT ON THIS SITE — there is no CDP command that simulates a
- * bookmarks-bar click, and Runtime.evaluate is exempt from the page's CSP the same way the
- * debugger is exempt from its eval restriction, so testing it that way would prove nothing.
- * If you test it by hand, write the answer down on design.html.
+ * design.html is drag-only and says so, and a console line is published beside it as a
+ * fallback for any browser that declines to run a bookmarklet on a page carrying a policy.
+ *
+ * THE BOOKMARKLET ITSELF RUNS IN SAFARI — Ryan, by hand, 2026-09-13, and Safari was the
+ * case worth checking, because that exemption is each browser's own decision rather than
+ * something the policy grants, and Safari is where it has differed before. It had to be
+ * tested by hand and still would: there is no CDP command that simulates a bookmarks-bar
+ * click, and Runtime.evaluate is exempt from the page's CSP the same way the debugger is
+ * exempt from its eval restriction, so automating it would prove nothing. Chrome and
+ * Firefox are not claimed here, only unsurprising; if you check them, say so on
+ * design.html rather than leaving the next reader to re-derive it.
  *
  * WHAT IT REFUSES TO EDIT IS THE MOST IMPORTANT PART OF IT, and this site's refusals are
  * not the sister site's. Quotations and attributions, yes — FACTCHECK.md exists because
