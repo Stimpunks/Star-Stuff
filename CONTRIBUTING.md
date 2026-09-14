@@ -21,10 +21,16 @@ replaced by it:
 No install step, no dependencies, no build. Clone it and open a page.
 
 ```bash
+cd ~/Documents/GitHub
 git clone git@github.com:Stimpunks/Star-Stuff.git
 cd Star-Stuff
 node tools/check-derived.mjs --quick     # ~4s; proves the toolchain works
 ```
+
+Nothing requires that location — every tool resolves the repo root from its own path — but
+`tools/sks-search.sh` looks for the Knowledge System **beside this repo first**, and at
+`~/Documents/GitHub/Stimpunks-Knowledge-System` second. Clone both here and either rule finds
+it, with no `STIMPUNKS_KNOWLEDGE_SYSTEM` to set.
 
 What the tools need:
 
