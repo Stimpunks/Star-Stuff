@@ -50,6 +50,10 @@ const QUICK = process.argv.includes('--quick');
 const GENERATORS = [
   { tool: 'build-derived.mjs', writes: 'whats-new.html, feed.xml, llms.txt, .well-known/security.txt' },
   { tool: 'build-csp.mjs', writes: 'the Content-Security-Policy block in _headers' },
+  /* The changelog index over its monthly archive. Added 2026-09-14 with the split;
+     it is a second description of every archive page's entry titles, which is
+     exactly the shape that rots when it is hand-kept. */
+  { tool: 'build-changelog.mjs', writes: 'changelog.html, the index over the monthly archive' },
   { tool: 'build-markdown.mjs', writes: '57 Markdown siblings, and the rel=alternate that advertises each one' },
   { tool: 'build-search-index.mjs', writes: 'search-index.json', chrome: true },
 ];

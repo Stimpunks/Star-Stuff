@@ -1,0 +1,2669 @@
+---
+title: "Changelog · September 2026"
+url: "https://starstuff.earth/changelog-2026-09.html"
+updated: "2026-09-14"
+description: "Everything that changed in the Star Stuff collection during September 2026 — 91 dated entries: pieces added, pieces substantially revised, and every fact-check and attribution audit, corrections to our own errors included."
+licence: "CC-BY-SA-4.0"
+licence_url: "https://creativecommons.org/licenses/by-sa/4.0/"
+fact_check: "https://github.com/Stimpunks/Star-Stuff/blob/main/FACTCHECK.md"
+generated_by: "tools/build-markdown.mjs, from the page's own <main> landmark"
+---
+
+[Stimpunks](https://stimpunks.org/) × [More Realms](https://morerealms.com/) · Star Stuff Changelog
+
+[Stimpunks Foundation](https://stimpunks.org/) × [More Realms](https://morerealms.com/) · Changelog Archive
+
+# *September* 2026
+
+91 dated entries from September 2026 — pieces added, pieces revised, and every fact-check, corrections included. One month of [the changelog](https://starstuff.earth/changelog.html).
+
+---
+
+This log is backfilled from the collection's full commit history and kept up from here. It records three kinds of change: **pieces added**, **pieces substantially revised**, and **fact-check and attribution audits** — including the errors we found in our own work and exactly how we fixed them. Small typo passes and styling tweaks are left out; anything that changes what a piece *claims* is in.
+
+Why publish our corrections
+
+We braid real science with ideas credited to named thinkers, so the facts and the attributions have to be right. We're human, and we've gotten things wrong — a paraphrase dressed as a Sagan quote, a Martin Luther King Jr. line credited to Baldwin, a forest-wide fungal network asserted as settled fact because it rhymed so well with mutual aid. Naming those in public is part of the method, not an embarrassment to bury.
+
+The working guidelines and the full per-piece ledger live in [FACTCHECK.md](https://github.com/Stimpunks/Star-Stuff/blob/main/FACTCHECK.md). If you spot an error, [open an issue](https://github.com/Stimpunks/Star-Stuff/issues) or reach us at [stimpunks.org](https://stimpunks.org). **Corrections are mutual aid.**
+
+New piece Revised Fact-check Site
+
+2026 · September 14
+
+## This page had grown to 1.4 megabytes, so it is now one page per month — and every old link still lands on the right entry
+
+The changelog was a single page carrying every dated entry since the collection started. It was 449 KB to download just to read the newest one, and growing by about six entries a day. Split by month, with an index at the address it always had.
+
+SiteA running log on one page gets worse every week, not better
+
+**The numbers are why.** On 14 September this page was **1,402 KB** of HTML — **449 KB gzipped**, which is what you actually downloaded — carrying 190,000 words, 145 dated entries and 636 individual items. That is two and a half times the front page, which lists every piece on the site. Its machine-readable sibling, the file an AI assistant fetches instead of the page, was **1,136 KB**. And it was growing at about **six and a half entries a day**, without any end.
+
+**This is a ruling we already made once, for the same reason.** On 4 September the [Glimmer Wire](https://starstuff.earth/collection-glimmer-wire.html) was split into one page per edition, because a running log on a single page gets worse every week rather than better. The changelog is the other running log here, and it had simply got there more slowly.
+
+**So: one page per month** — [July](https://starstuff.earth/changelog-2026-07.html), [August](https://starstuff.earth/changelog-2026-08.html), [September](https://starstuff.earth/changelog-2026-09.html) — and [the changelog](https://starstuff.earth/changelog.html) is now an index listing every month with its entries, each one a link. The index is **38 KB** where the page was 1.4 MB, and it stops growing rather than growing forever. Each month page carries its own contents list and the margin rail.
+
+**Every entry kept the address it has always had, and this time nothing needed rewriting by hand.** All 290 anchors on the old page encode their own date — `2026-08-14-something` — so an old link can be sent to its month page by reading the date out of the link itself, rather than from a list that would rot. **That is better than the Glimmer Wire split managed:** a server redirect cannot carry the part of a link after the `#`, which is why that split had to rewrite its two deep links by hand. Ours are handled for anyone arriving from anywhere.
+
+**The cost is real and is stated on the index rather than buried here:** you can no longer search the whole history with your browser’s find-in-page. [Site search](https://starstuff.earth/search.html) covers it — better than before, in fact, since a result now lands on a month instead of inside a megabyte.
+
+**The index is generated, not maintained.** It is a second description of every month’s entry titles, and a second description that is kept by hand is one that drifts the first time somebody adds an entry and edits one of two places. A new tool builds it from the month pages themselves and a ship gate fails if it has fallen behind. **Two faults in that tool were caught by looking at the result:** it printed `&middot;` and `Google&rsquo;s` into every date and several titles, because it decoded only the five characters XML reserves and then re-escaped the ampersand on everything else. *This site had already written that exact mistake down about its RSS feed.*
+
+2026 · September 14
+
+## A second table of contents that lives in the margin, and gets out of the way when the page gets wide
+
+A row of small ticks down the left margin that becomes the contents list when you point at it, ending in a shooting star. On the 34 pages that have a contents list, and only where there is room for it — which on some pages changes as you scroll.
+
+SiteThe rail, and the four things that were wrong with it first
+
+**It is lifted from [Queering Earth](https://queering.earth/), our sibling site**, which has had one for a while: a stack of ticks in the margin that expands into the page’s contents on hover or focus. Theirs ends in a curling sprig, so ours ends in a shooting star — the same gesture in this site’s vocabulary. Theirs leans each tick a degree or two, which belongs to a hand-drawn botanical alphabet; **ours are straight**, because this is a starfield and the ruled horizontal is the house mark.
+
+**There is no second contents list in the source, and that is the point.** The rail is built at load from the page’s own in-body contents, so a heading added to one is in the other by construction and the two cannot drift apart. A reader with no JavaScript gets the in-body list and no rail, which is the right way round. It is also kept out of the search index: it is the same link text a second time, and indexing it would be the duplicate-presentation problem arriving by a new route. **Verified: 0 of 205 pages changed a single search record.**
+
+**It never sits on the words, and getting that right took four goes.** The first version placed it against one hardcoded column width and landed on top of all eight Sound racks, whose cards run wider than their essays. The second measured each block’s *box* rather than the place it actually paints, so a centred masthead looked like a full-width column and hid the rail at the top of a page with 405px of clear margin. The third measured painted extent with the wrong tool and got the same answer for the same reason. **Each of those is a fault this site has written down before**, about cover artwork, and each was caught by measuring rather than looking.
+
+**The fourth was a real bug and Ryan found it**, reading in a browser with a sidebar open: on [the print specification](https://starstuff.earth/print-design.html) the rail blinked in and out all the way down the page. That page carries the widest column on the site, and at that window it was about ten pixels too wide — so nearly every paragraph counted as an obstruction and the rail toggled once per paragraph. **A wide region inside a page and a page with no room are different things**, and the rail now tells them apart: it measures how much of the document it could actually stay up for, and if the answer is “almost none” it does not appear at all rather than flickering. The rail also got narrower on smaller windows, which gives that page its rail back.
+
+**So on a Sound rack it now does what it should:** it rides alongside the essay, steps aside for the full-width card grid, and comes back for the colophon at the foot. **Checked across 34 pages, four window widths and nine scroll positions each — 1,224 measurements, no overlap anywhere.**
+
+**[The manifesto](https://starstuff.earth/manifesto.html) now has a contents list too.** It was left out of yesterday’s pass on the argument that a declaration read straight through is not a document you navigate. It has six numbered planks and sits in the same collection as pages that have one; the argument was thinner than the inconsistency.
+
+2026 · September 14
+
+## Eight of our seventeen collection pages were telling machines they held a fraction of what they hold
+
+Yesterday’s pass found one page whose structured data carried another page’s title. Writing a check for it turned up something larger: the machine-readable table of contents on most of the collection pages had been drifting from the actual shelf for months.
+
+SiteA check for structured data that describes the wrong page
+
+**Every page here carries a block of machine-readable data — the thing a search engine or an AI assistant reads instead of the page.** We already check that it parses. Nothing checked whether what it *said* was true, and two faults had been living in that gap.
+
+**The first was a title.** [The Dolly rack](https://starstuff.earth/dolly-playlist.html) told machines it was called *One Body at a Time*, which is [the David Byrne rack](https://starstuff.earth/byrne-playlist.html). Fixed yesterday. **The second is the one that turned out to be everywhere.** Each collection page carries a list of what it contains, and **eight of the seventeen disagreed with their own shelves**: [Star Stuff](https://starstuff.earth/collection-star-stuff.html) claimed **17 of its 43** pieces, [How We Got Here](https://starstuff.earth/collection-how-we-got-here.html) 7 of 17, [Field Guides](https://starstuff.earth/collection-field-guides.html) 13 of 24. [Notes](https://starstuff.earth/collection-notes.html) still listed a page we retired in September. Three more collections had no list at all.
+
+**All seventeen are rebuilt from the cards on the page itself, and the arithmetic cross-checks:** 186 entries, which is exactly the number of pieces that carry a collection badge. Every member now appears in exactly one collection’s structured data.
+
+**The check tests overlap rather than equality, and that was measured before it was written.** Demanding that the machine-readable title match the visible one fires six times, and five of those are correct — a page that expands *Design System* to *The Star Stuff Design System* is not broken. So it asks for exact agreement first, then for a single word in common, and only then fails. That is the difference between a check somebody runs and a check somebody learns to ignore.
+
+**And the new check made this repository’s oldest mistake in its own first draft.** A deliberately planted test page carried a block of structured data *inside an HTML comment* — switched off, invisible, not part of the page — and the check read it as live and reported the page as mis-titled. It was scanning the file as text rather than reading its structure, which is the fault we have now written down half a dozen times. **The older check had the same hole** and inherited the fix. Comments are now blanked before either one looks.
+
+2026 · September 14
+
+## The sentence this whole collection is named after was being sung to audiences three years before Carl Sagan published it
+
+The oldest rack here was the only one of the eight with no essay in front of it. It has one now, and the argument is a chronology that puts us last rather than first. Plus: fifty-four section labels across the Sound collection that were never headings at all, and two pieces of structured data quietly describing the wrong page.
+
+RevisedL★S Playlist — an essay on the order it actually happened in
+
+**[The L★S Playlist](https://starstuff.earth/ls-playlist.html) was the first rack we made and the only one that never argued anything.** The other seven open with an essay; this one opened with a grid of songs. The new essay takes the obvious question nobody had asked on the page — *where did this phrase come from?* — and answers it with four dates, which turn out not to run in the order the tidy version implies.
+
+**The physics is 1957**, the B²FH paper on how stars build the elements. **Joni Mitchell was performing “Woodstock” by December 1969** and released it in April 1970. **Carl Sagan published *The Cosmic Connection* in 1973**, and *Cosmos* followed in 1980. So the singing came twelve years after the science and three years before the book — and the phrase this entire collection is built on reached us half a century after the paper. **We are the last people to this idea, not the first.**
+
+**The thing we could not establish is stated on the page rather than smoothed over.** Whether Mitchell took the line from the physics is the obvious flattering answer, which is exactly why we went looking for it. **Her own archive records no statement from her about where it came from** — so the essay says the dates are checkable and the influence is not, and declines to build a chain across the gap. It also declines the chart figure that circulates for the other 1970 recording, because [Billboard](https://www.billboard.com/)’s own archive is paywalled and an aggregator is not a source for a number.
+
+**One beat is a correction of ours.** Read literally, *we are stardust, we are golden* names two different catastrophes: ordinary stellar nucleosynthesis for the carbon and the iron, and the r-process — best evidence since 2017 pointing at colliding neutron stars — for the gold. That distinction is not pedantry, and we know because [our own LYDTYSS zine](https://starstuff.earth/lydtyss-zine.html) once blurred it, saying the elements were forged in a “stellar interior” when its own companion guide credits the heavy ones to mergers. Corrected previously, and named again here.
+
+**It ends on 4 February 2008**, when NASA pointed a deep-space antenna at Polaris and sent “Across the Universe” — a song on this rack — out to arrive in the twenty-fifth century. Nobody who made it will hear it land, which is the whole of [LYDTYSS](https://starstuff.earth/love-you-down-to-your-star-stuff.html) in one gesture: the loving is aimed further than the lover can follow.
+
+SiteFifty-four section labels that looked like headings and were not
+
+**Every room in every rack — “Cosmic Origin,” “The suit · 1983–1984,” “Books, and the kids they went to” — was a styled `span`.** They looked exactly like headings and were invisible to one: a screen reader’s headings list is how you skip through a long page, and on a forty-four-card rack it came back holding only the essay. **54 of them across the eight racks**, promoted to real headings with addresses, so every room can now be linked to directly and reached from the rotor. This is a rule this site already had written down, and had been breaking on its longest pages since the first rack shipped.
+
+**Proved layout-neutral rather than eyeballed.** Promoting an inline element to a block one can change type size, weight, spacing and flow, so every computed property of every element on all eight racks was dumped before and after and compared: **4,680 elements, 54 differences, and all 54 are the promoted labels differing in one property** — `unicode-bidi`, the browser’s default for a block element, which affects nothing on a page with no right-to-left text. Not one box moved a pixel.
+
+**All eight racks now carry a contents list**, covering the essay sections and then the rooms, so the map matches the page instead of stopping where the prose does. Two faults in that work were caught by the reader rather than by us and are worth naming: on three racks the contents list shipped *above* the page title, because the check we wrote asked whether it came before the first section heading and never whether it came after the h1; and on five more it rendered at full width against a narrower column of text — a map wider than the thing it maps. Both fixed, and the check now asks both questions.
+
+Fact-checkTwo pieces of structured data describing the wrong page
+
+**[The Dolly rack](https://starstuff.earth/dolly-playlist.html) told search engines and agents it was called “One Body at a Time.”** That is [the David Byrne rack](https://starstuff.earth/byrne-playlist.html)’s title, copied across when the page was built. Its visible title, its tab title and its card were all correct; only the machine-readable `headline` was wrong, which is precisely why it survived — there is no rendering for it to get wrong. **And [the Sound collection](https://starstuff.earth/collection-sound.html)’s own structured data listed seven of its eight racks**, omitting the newest. Both fixed.
+
+**Our markup gate passes both of these and is right to.** It asks whether a structured-data block parses and whether it declares a type; it cannot ask whether the title inside it is this page’s title. A check that compared the two would have caught both in a second, and is worth writing.
+
+**One sentence elsewhere stopped being true** and was corrected on two pages: [It Take a Joyful Sound](https://starstuff.earth/joyful-sound-playlist.html) was described as “the one that argues first,” which read as *the L★S rack does not argue*. It now says what is actually the case — that it was the first rack here to carry an essay.
+
+2026 · September 13
+
+## Our design page said this site depends on Google’s font servers. Our privacy page said it doesn’t. The privacy page was right.
+
+A sentence that stopped being true on 9 September and stayed up for four days, plus four more places carrying the same dead claim — two of them as instructions telling the next person to put the dependency back.
+
+Fact-checkTwo pages on one site disagreeing about whether it phones Google
+
+**[The design system](https://starstuff.earth/design.html) opened by saying every artifact here is one self-contained file *“with no dependencies beyond Google web fonts”*.** On 9 September the four typefaces were moved onto this domain, precisely because that dependency was handing every reader’s address to Google before a word appeared — and [the privacy page written that same day](https://starstuff.earth/privacy.html) says so at length. The design page was not updated with it. For four days the site told readers two different things about itself, and **the page still claiming the dependency is the page whose whole subject is how the thing is built**.
+
+**It was swept rather than patched, because fixing only the instance somebody noticed is how a correction inherits the original defect.** Four more copies of the claim were live: the repository README and the working notes both still specified what *“the Google Fonts request must be”*, down to the weight range — **instructions for reintroducing the exact third-party request the privacy page says is gone** — a decision-log entry still listing Google fonts as the one permitted dependency, and a comment in one of the checking tools naming the Google stylesheet as an expected cross-origin fetch. All five corrected. The lesson each carried was kept: the old font request asked for a weight range the typeface does not publish, so it returned an error and no font at all, and *nobody noticed for weeks because the font was installed on the machine doing the checking*. That is about verification, not about Google, and it outlives the mechanism.
+
+**The replacement claim was checked against Google rather than against our own notes.** Saying the self-hosted files are the same set Google used to serve is a provenance claim, and our working notes asserting it are not evidence for it. The site’s own font request URLs were recovered from the commit before the move, fetched from Google as they stood, and compared face by face against what this site now ships: **20 against 20, identical** in family, style, weight range and character subset, with nothing added and nothing lost. The four families are [OFL 1.1](https://openfontlicense.org/) and unmodified, each licence shipped beside the files.
+
+**What was deliberately left alone is the other half of this.** The privacy page’s *“until 9 September 2026, every page loaded its typefaces from…”*, the migration account further down the design page, and every earlier entry on this page are all correctly in the past tense. They are dated records of what was true when written, and editing them backwards would be tidying away the evidence — which is the opposite of what this page is for. Only claims still written in the present tense were touched.
+
+2026 · September 13
+
+## Twenty-four long essays here had no table of contents, and eight of them run past five thousand words
+
+A reader arriving from a search result landed in the middle of a document with no way to see its shape. One page on the site had a contents list; it has been made into a house component and given to every essay that earns one.
+
+SiteA map at the top of every essay, and two pages whose headings could not be linked to at all
+
+**[The page about the phrase this whole collection is named for](https://starstuff.earth/love-you-down-to-your-star-stuff.html) has carried a contents list since it shipped, and no other page here had one.** That was not a decision, it was an accident of where the page came from — and it left **twenty-four** other essays with nothing at the top saying what was inside. Measured rather than eyeballed, with the navigation and the contents list itself taken out of the count: **19 of the 25** run past three thousand words, **8** past five thousand, and the longest is **9,274**. A reader who arrives from a search result lands mid-document; a reader who wants one section has to scroll for it. The contents list is now a shared component, sitting on all **25** of them — **214** entries in all — placed after the opening passage and before the first section, where the page stops introducing itself and starts arguing.
+
+**Two pages could not have been given one without a repair first: not one of their headings carried an address.** [The difference-first frame](https://starstuff.earth/difference-first-frame.html) and [the print specification](https://starstuff.earth/print-design.html) between them had **15** headings and **zero** ids, so nothing on either page could be linked to directly. Our own search had been papering over it — every result on those two pages pointed at a guess built from the heading’s text rather than at the heading, which is a fragile thing that breaks the moment a word changes. They have real addresses now, and the search index was rebuilt to use them.
+
+**The contents list is deliberately kept out of the search index, and the page that already had one shows why.** Every line in it is a heading that is already indexed on the passage it points at, so indexing the list too produces a record made of nothing but the names of a page’s other sections — and, because it sits at the top, that record wins the position belonging to the opening of the page. The original list had never been stripped and had exactly that record. It does not any more. Nothing else in the index moved: **202** of the 205 pages are unchanged, and the three that moved are the three named here.
+
+**It very nearly shipped looking wrong, in the way this site’s shared stylesheet always goes wrong.** That sheet loads *before* each page’s own styling, so a rule written at ordinary strength loses to any page rule of equal strength — and every essay here styles its prose links and its lists. The first render drew the contents of [the design system](https://starstuff.earth/design.html) as twelve underlined gold prose links, indented by that page’s paragraph list margin: a wall of links rather than a map. The component is now written to outrank a page on purpose, like the two other shared pieces that have to, and every one of the 25 pages was rendered and measured afterwards rather than sampled — at desktop width, at phone width, and under print emulation, where the list keeps its border and goes to black ink on white.
+
+**Collection pages, the galleries and the manifesto did not get one**, and that is a judgement rather than an omission: a grid of cards is already its own contents, and a declaration read straight through is not a document you navigate.
+
+2026 · September 13
+
+## The tool that writes our security policy could be fooled by a sentence about itself, and the reason was a Turkish letter
+
+Logged a few hours ago as a known weakness we had failed twice to repair. It is repaired now, and the cause turned out to be something this site had already written down in its own search code.
+
+SiteA scan that read prose as markup, and a lowercase that moved every index after it
+
+**Every page here carries a security policy that lists, by fingerprint, exactly which scripts are allowed to run.** The list is generated rather than typed, because a hand-kept one would drift and a missing fingerprint means a real script is refused — on a zine, that is a dead page-turner. The generator found those scripts by pattern-matching the whole file, which meant **writing the words for a script tag into a comment was enough to fool it**: it treated the sentence as a script, fingerprinted a stretch of the page that is not one, and lost the real script inside it. Earlier today we published that weakness as unfixed, having broken a live page with each of two attempted repairs.
+
+**The repair is to read the page the way a browser reads it** — walking the tags in order, stepping over comments and stylesheet text rather than searching the file as a flat string. That much was straightforward. What was not is why the first version of the walk still produced the wrong fingerprint for exactly one page: [the search page](https://starstuff.earth/search.html).
+
+**The cause is that lowercasing a string can make it longer.** The walk searched a lowercased copy of the page so it could match tags whatever their capitalisation, then used the positions it found against the original. That works until the page contains a character whose lowercase form is two characters instead of one — and the search page contains exactly one, **İ**, the Turkish capital I with a dot. From that character onward the copy is one longer than the original, so every position was off by one, and the captured script gained a stray character, and its fingerprint no longer matched. **The search page contains that letter inside its own comment explaining that this very letter lowercases to two characters.** Our search code had known about the trap for months; the tool measuring it had not.
+
+**Checked against the browser rather than against the thing it replaced**, because the browser is the only authority on what a fingerprint has to be. Every script on all **207** pages was loaded in a real browser, fingerprinted as the browser would, and compared: the generator now agrees on every one, with none missing and none invented. The published policy is byte-for-byte what it was before, which is the point — a fix to how something is measured should not change the answer on a site that was already correct. Eleven decoys confirm the traps stay shut, including the one that started this and the one that broke the second attempt.
+
+2026 · September 13
+
+## You can now change the words on a page without editing HTML — and there is a list of what it will not let you change
+
+A bookmark that makes a page editable and copies out a patch for somebody to apply. It cannot save, nothing on the site loads it, and the most important part of it is the list of things it refuses to touch.
+
+SiteAn editor that cannot save, and will not touch a quotation
+
+**There is no content management system here and there is not going to be one.** The three that would otherwise fit are all editors over a set of files with named fields, and nothing here has fields: a zine is one file carrying its own starfield, its own cover composition, and — if it is a field guide — its entries as JavaScript objects. What a contributor actually needs is much smaller, so that is what was built. [The colophon explains how to install it](https://starstuff.earth/design.html#changing-the-words), and publishes in the same breath what it declines to edit, so that a reader wondering whether this site lets people quietly reword a quotation gets the answer without having to ask.
+
+**It refuses quotations, every attribution attached to one, and every colophon**, because the failure this collection is organised against is not an invented source but a tightened one — a sentence trimmed to fit with the attribution left attached. It also refuses **every epistemic grade**: the *documented*, *contested* and *leap* markers on a chain, the verification grades on the Wire, the readiness tiers on a Trigger. A convenience tool that promoted a contested joint to a documented one in a single keystroke would be a machine for producing exactly the thing the notation exists to prevent. Each refusal says why, where you try it.
+
+**It writes nothing to your device, and that is a departure from the tool this one is modelled on.** The equivalent on our sister site keeps a key in local storage so a half-finished edit survives a reload. Ours does not, because [our privacy page](https://starstuff.earth/privacy.html#nothing-on-your-device) says that nothing at all is written to your device and then invites you to check that claim against the source. One line in this file would have made that page false by the exact test it proposes, so the editor holds your edits in memory and your browser warns you before you lose them.
+
+**Two faults were caught by measuring it rather than by reading it, and both were the same mistake.** Every readiness grade on a Trigger was editable, because the refusal looked upward for a container and this site writes its grades *inside* paragraphs. And on the pages built from cards, a refused block never explained itself at all — a card is a link, so pressing one navigated away instead. A design borrowed from another site does not arrive already fitted to this one.
+
+**And writing about it broke something.** A note in the new stylesheet used the words for an opening script tag, as prose, inside a comment — and the tool that generates this site's security policy read those words as a real script, hashed a stretch of the page that is not one, and lost the real one inside it. That is this repository's oldest recurring fault, committed while documenting a defence against it. The prose was rewritten; the underlying weakness in the tool is written down, unfixed, because the two obvious repairs each broke a live page when they were tried.
+
+2026 · September 13
+
+## A style rule kept for a class no page has ever used
+
+The smallest item on the housekeeping list, finished for completeness: one selector in the shared stylesheet, waiting since it was written for markup that never arrived.
+
+SiteThe last dead selector in the shared stylesheet
+
+**The shared stylesheet has a rule for printing:** headings painted with a colour gradient carry no ink of their own, so on paper they come out blank unless something forces them back to black. That rule named two things — the heading style every page actually uses, and a second, generic name that **no page has ever carried**. Its only appearance anywhere in the site was its own declaration.
+
+**It read as a hook held open for future pages, and that is the reason to remove it rather than keep it.** An unused hook nobody knows about is not a hook: the next gradient heading would be written the way the existing ones are, and matched by the selector that does the work. A rule that has never matched anything is not coverage; it is something later readers have to check before they can rule it out. The comment in its place now says what was removed and why, so nobody re-adds it.
+
+**Checked the way a removal from a print rule has to be checked** — not by reading the stylesheet but by rendering: under print emulation, all **41** headings the surviving selector serves still compute to black ink for both fill and colour. A change to a print rule is invisible on screen, which is exactly how the 2026-08 blank-heading fault shipped in the first place.
+
+2026 · September 13
+
+## Twenty-four style rules that were written out a thousand times, and two wrong theories about why that was safe
+
+A colophon heading, a page counter, a byline: the same rules, copied into page after page. They now live in one place. Getting there took three attempts, because the first two moved rules that looked identical and were not interchangeable.
+
+Site1,015 copies of 24 rules become 24 rules
+
+**Each page here carries its own stylesheet**, which is what lets a zine be one file you can save and open anywhere. The cost is that genuinely shared furniture gets written out once per page — and 24 rules were byte-identical across twenty or more pages each: **1,015 copies, 94,726 characters.** Changing how a colophon heading looks meant editing it in 133 files, or more realistically meant never changing it.
+
+**On download size this is close to a wash, and it is worth saying so.** Compressed, the pages lose about 76 bytes each and the shared sheet gains 1,433 — which pays for itself only once a reader has opened about nineteen pages. A search engine crawling the whole site comes out ahead; someone reading three zines pays slightly more. **The reason to do it is that one definition can be corrected and a thousand copies cannot.**
+
+Fact-checkTwo wrong theories, both caught by rendering all 207 pages
+
+**The first attempt moved 59 rules and changed 2,878 elements across 53 pages.** The reasoning had been: a page that writes its own version of a rule overrides the shared one, so sharing is safe. That is true per *property*, not per rule. A page whose version set the colour but said nothing about letter-spacing kept its colour and **silently inherited a letter-spacing it had never had**. Forty-seven rules fail that test and stayed where they were.
+
+**The second attempt moved 27 and changed 52 elements, all on the two scroll zines.** One rule — the one that shows the current spread — is more specific than a scroll zine’s own layout rule, and would win. No reader would ever see it, because nothing marks a spread “current” on a page that scrolls. **But four of our own measuring tools add that mark in order to see every spread at once**, so sharing the rule would have changed what those tools look at. Three rules dropped for touching state the tools inject.
+
+**What shipped: 24 rules, verified at zero change.** Every computed property of every element on all 207 pages, before against after — **140,667 elements, not one difference** — with the “before” copies pinned to a frozen duplicate of the shared sheet, so the comparison measured the move and not the sheet swap. *Both wrong theories sounded right and neither survived being rendered.*
+
+2026 · September 13
+
+## One page-turning function instead of 107, and the security policy got a quarter smaller for free
+
+Every paged zine carried its own copy of the code that turns the page — 107 copies in 17 slightly different versions. The only thing that varied between them was the number of spreads, which the shared file could already count. All 107 now share one implementation.
+
+Site115,101 bytes of duplicated page-turning code, replaced by 88 lines
+
+**The zines here are paginated, and each one shipped with its own copy of the function that moves between spreads.** 107 copies, drifted into 17 variants — and the variants differed in exactly one character sequence: `const total = 12`, or 8, or 16. The spread count. **Which the shared script has always been able to count for itself**, and does, for the footer controls and the deep links that were already shared.
+
+**So it was a hundred and seven copies of one function, maintaining a number that could not be wrong unless the copy was wrong too.** Checked before touching anything: on all 107 pages the declared total matched the actual number of spreads exactly. The shared version reads its position from the page instead of being told, and it now also binds the arrow keys, which not every page had.
+
+**A page can still bring its own.** The shared one steps aside if a page defines its own page-turner — [one does](https://starstuff.earth/shorthand-evolution.html), deliberately, because it does not load the shared script at all. And the two scroll zines, which have spreads but no buttons, correctly get no pager: the check is for the buttons, not for the spreads.
+
+SiteDuplicated script is duplicated security surface
+
+**The unexpected half.** This site’s content security policy works by listing a cryptographic hash of every piece of script written directly into a page — that is how a site with no server can allow its own code and nothing else. **Seventeen near-identical page-turners meant seventeen separate hashes**, because a hash does not care that two functions differ by one digit.
+
+Moving the code into a file that is already allowed by name retires all seventeen. **Distinct inline scripts went from 50 to 34, the elements carrying them from 163 to 58, and the policy itself from 3,061 bytes to 2,197** — sent on every request, to every reader. Nobody set out to shrink the policy; it fell out of not repeating yourself.
+
+Fact-checkTested by driving all 107, and then again with the real policy switched on
+
+**A shared pager that loads is not a pager that pages.** So every one of the 107 pages was driven in a real browser: start on spread one with the back button disabled, click forward and check the spread, the counter and both buttons, press the right-arrow key, walk to the last spread and check the forward button disables, then follow a *#spread-4* link and land on spread four. **107 pages driven, none failing.**
+
+**Then the same test again with the actual security policy served**, because this site has learnt that a policy tested only against attacks is untested: a policy that breaks a hundred page-turners is worse than none. Pages paged, zero violations reported.
+
+**One test failure was the test’s fault and is worth naming.** The page that keeps its own pager was reported as failing the deep-link check — because it has never had deep links, that feature living in the shared script it does not load. The assertion was demanding a feature the page was never offered. *A test that does not know what a page is for will confidently report it broken.*
+
+2026 · September 13
+
+## A thousand style rules that styled nothing, and the two bugs in the tool that found them
+
+Every page carries its own stylesheet, copied forward from the page before it. Over 110 zines that accumulated 1,054 rules aimed at things none of those pages contain. They are gone, and nothing on the site looks different — which is the entire claim, and it was measured rather than assumed.
+
+Site1,054 dead selectors removed from 119 pages
+
+**This started with one zine.** [No. 54](https://starstuff.earth/how-anything-gets-built-zine.html) was found carrying eight rules for a comparison table it has never had, and the same dead block also held the only 720-pixel layout breakpoint on the site — a number chosen for the table, left behind when the table never arrived. The bytes were harmless. The breakpoint was a decision nobody could explain, sitting in a file nobody had reason to re-read. So we looked at the other 206 pages.
+
+**What was there was almost entirely template residue:** colour helpers for accents the page never uses, prose scaffolding for callouts and pull-quotes it never sets, layout rules for a second column it does not have. **Crucially, no other page had No. 54’s defect** — we checked specifically for a whole block of dead rules carrying a breakpoint, and there were none. Everything else was cost without consequence.
+
+**Why it is safe to delete, stated as the argument it is.** A rule can only affect a page if its selector matches something. These name classes that appear nowhere in the page, nowhere in its scripts, and nowhere in the shared script — so no click, no state, no interaction can ever produce them. A selector that can never match contributes nothing to anything. **That was then checked rather than trusted:** every computed property of every element on the twelve most affected pages, before and against after — **7,705 elements, not one difference.**
+
+Fact-checkThe tool was wrong twice before it was right, and one of the errors would have broken every zine
+
+**First, it did not know about the shared script.** Pages get some of their classes at load time, from the one JavaScript file the whole site shares — the pager controls on every zine, among others. Those classes are not written in the page, so the first version of the audit called their styling dead: **87 live rules, on the pager of every paged zine.** Acting on that run would have broken the thing readers touch most.
+
+**Second, comments were being read as part of the rule that followed them.** That hid any block introduced by a comment, and — far worse — meant a comment that happened to mention a class could condemn the perfectly live rule underneath it. On a site whose stylesheets are heavily commented, that is a loaded gun. Comments are now parsed as their own thing.
+
+**And the verification was wrong before it was right, in the same direction as yesterday’s correction.** The first before-and-after comparison reported 3,611 changed elements, which looked like a disaster and was an artefact: the browser lists an element’s custom properties in a different order once rules are removed, and one animated panel was sampled at two different moments of the same fade. Sorting the properties and freezing animation gave the true answer of zero. *Three times in two days a measurement has been wrong in a way that looked like a finding.*
+
+SiteThe audit is kept, and deliberately not made a gate
+
+The checker lives in the tools directory and is run on demand, like the one that verifies video embeds. **It is not a tenth gate.** Every gate here answers a question about something a reader meets — a colour, a position, a broken link, a page that prints blank. Dead CSS costs bytes and costs the reader nothing, and a gate that fires on it would be noise in front of the nine that matter. The one time it *did* matter, the cost was a stray breakpoint, and that is now fixed and written down.
+
+2026 · September 13
+
+## We said the cover artwork lay across the subtitle on 93 covers. It was 23, and we made the exact mistake our own checker was built to avoid
+
+Yesterday’s cover-collision entry carried four numbers measured the wrong way. The headline finding stands; three of the four figures under it do not. Found while Ryan asked an unrelated question about one zine’s stylesheet.
+
+CorrectionA drawing’s box is not a drawing
+
+**What we said, yesterday, on this page and in two working files.** That the cover artwork lay across cover type on *“every one of the 98 covers that carry any: over the title on 95, the issue line on 94, the subtitle on 93.”*
+
+**Those came from the artwork’s bounding box, not the artwork.** A cover motif is an SVG, and the drawing rarely fills its own frame — the median motif here inks about **30%** of the box it sits in. So a box can sit squarely on a paragraph while every visible mark clears it by a wide margin. Re-measured by *ink* — the union of the shapes and labels actually painted — at the same phone width, on the same pre-fix state: **98 of 99 covers, with the issue line crossed on 90, the title on 84, the subtitle on 23** and a byline on one. **The subtitle figure was wrong by seventy pages.**
+
+**The error has a precise shape and we had it written down already.** Our collision checker measures where the *letters* are, and its own notes explain why at length: an early throwaway version compared bounding boxes and, in its author’s words, drowned in false positives. That tool did not make this mistake yesterday and does not make it now. **A one-off probe written beside it did** — and the subtitle claim happened to be true on the one cover we checked by eye, so a real observation on a single page got generalised across ninety-eight by a method that could not support it.
+
+**What still stands, stated plainly so the correction is not read as wider than it is.** The count of covers affected is unchanged at **105 of 108**. The text-on-text figures — 313 collisions across 103 pages — came from the checker’s own ink measurement, not the bad probe, and are unaffected. The fix shipped yesterday is correct and is verified at zero findings on both measured widths. Only the artwork figures were wrong, and only because of how they were counted.
+
+SiteOne zine had a breakpoint tuned for a table it never had
+
+**The question that turned all this up.** Yesterday’s entry ended by flagging [No. 54](https://starstuff.earth/how-anything-gets-built-zine.html) as the one page whose layout switches at 720 pixels rather than the 600 every other page uses, and warning of a gap between the two. Ryan asked why it was different.
+
+**It was a fossil.** The block at 720 was written for a layout this page does not have: a two-column spread to collapse — but every spread here is set to stack at all widths anyway, so that rule did nothing — and a comparison table to shrink, when no table has ever existed on the page in any version of it. Two of its rules styled furniture that was never there. The breakpoint number was chosen for content that never arrived.
+
+**And the gap we warned about was not real either.** It was measured the same box-shaped way as the figures above. Looking at the page at that width shows the motif — a small accretion disc with a caption, high in a mostly empty frame — sitting well clear of the words. The page is now on the house 600, the dead rules are gone, and it was measured at eight widths from 375 to 1280 before and after: no artwork on type, no text on text, at any of them.
+
+2026 · September 12
+
+## A byline has one field and contribution has fourteen — the constructive half of the credit run
+
+Zine No. 110 joins [Star Stuff](https://starstuff.earth/collection-star-stuff.html), which now holds forty-three. It is the practice piece: not who was wronged, but what the format underneath all of it can and cannot record, and what to do instead at any scale.
+
+NewFourteen Kinds of Doing — Zine No. 110, 12 spreads
+
+**Take the byline seriously as engineering and it is a data structure with exactly one shape:** an ordered list of names, with no field for what anybody did. Position is made to stand in for it, which is why the conventions differ by discipline and nobody outside a field can read them. In May 2015 that structure was pushed to its limit — the ATLAS and CMS collaborations published a combined Higgs mass measurement with **5,154 authors**, and of its thirty-three pages only the first nine carried the research and the references. The other twenty-four were names and institutions. [The zine](https://starstuff.earth/fourteen-kinds-of-doing-zine.html) refuses the easy reading: the absurdity is not how many people it took, because five thousand people really did make that measurement. It is the format, which could record that honesty only by printing twenty-four pages of names and still saying nothing about any one of them.
+
+**What got built instead is CRediT — fourteen roles, ANSI/NISO Z39.104-2022 — and the interesting half is reading the list rather than citing it.** Data curation. Software. Validation. Visualization. Resources. Somebody cleaned the data, wrote the code, checked whether it was true, made it legible, kept the instrument running. All of it is work; none of it has ever had anywhere to go. Which gives the argument without anything being bolted on: *a recognition system with one field reliably recognises the people whose contribution fits that field, and reliably misses everyone else* — with nobody intending it, and with none of the missed work any less real. The fix was never a better kind of contributor. It was another field.
+
+Fact-checkA paper we could not read, and a figure two sources disagree about
+
+**The zine will not end on the standard as a happy conclusion, and the source for the reason is one we could not open.** Once contributions became recordable they became countable, and Larivière, Pontille and Sugimoto used contributorship statements to measure how scientific labour actually divides. The citation is confirmed at Crossref; **the publisher returned 403 and we did not read the paper.** A search summary offered us specific percentages, and a search summary is not a citation — so the spread states the *direction* of the finding and quotes no figure at all, and the colophon asks anyone who can reach it to send the numbers. A vocabulary makes work visible; it does not make it valued.
+
+**And the headline figure has two versions.** *Nature*’s report gives 5,154 authors; another source gives 5,153. We did not count the list ourselves. Rather than average them or pick one quietly, the zine prints *Nature*’s figure and states the discrepancy. **The two-column arrangement of the fourteen roles is also ours rather than the standard’s**, which publishes one flat alphabetical list and ranks nothing — and the spread says so on its face, because presenting an editorial reading as a published norm would be self-refuting in a zine about attribution.
+
+**One link came out before shipping.** A draft linked the repository’s fact-check ledger as a reader-facing document. Nothing on the site links it, it is not in the sitemap, and it is raw markdown with no navigation — making a zine the first public door to a maintenance file is an editorial decision rather than a citation, so the sentence now describes the ledger and links the changelog instead.
+
+Fact-checkUpdate, same day: we got the paper, and it was better than our hedge
+
+**The zine shipped with one source unread and said so; hours later Ryan put the PDF in front of us and spread seven was rewritten from it.** The hedged version is gone and the figures are on the page: **30,054 PLOS papers** across 2017 and 2018; **57 per cent of women contributed to investigation against 49 per cent of men**, with a similar gap for data curation; men **30 per cent likelier** on funding acquisition and supervision.
+
+**And the paper contains a result that argues this zine’s case better than the zine did.** The older, coarser scheme PLOS used had a single category for writing, and under it men appeared to dominate. CRediT splits writing into original draft and review & editing — and the picture inverts: **women are 6 per cent likelier to have written the original draft, men 8 per cent likelier to review and edit it.** The authors call the inversion striking and attribute the earlier finding to how ubiquitous the reviewing half is. So a coarse vocabulary did not merely fail to record something; *it produced a false picture that a finer one corrected* — which is the zine’s whole thesis arriving as a measured result rather than a claim.
+
+**The method’s limit went on the page with the finding**, because the finding rests on it: gender was assigned by algorithm rather than self-report, reaching 82.2 per cent of authorships and reported as 98.3 per cent precise for men and 86.7 per cent for women. A measurement less accurate for the group a finding is about is worth stating out loud. It does not overturn a gap that size; it sets the resolution.
+
+RevisedWhat the zine says about this site, which is not flattering
+
+Spread nine shows our own practice at the point where it is checkable rather than where it looks good, and then names a failure that is real and current: **credit here is well kept for sources and poorly kept for labour.** Every quotation on this site carries its route — read at full text, from secondary accounts, or not read. The person who built a diagram or rewrote a paragraph mostly appears nowhere. That is the same one-field problem the zine is describing, in our own house, only partly fixed. The refusals say so outright, because a piece about attribution that overstated its own would come apart in a single move.
+
+2026 · September 12
+
+## A catalogue of missing names, including the two stories we had to correct against ourselves
+
+Field Guide No. 25 joins [Field Guides](https://starstuff.earth/collection-field-guides.html), which now holds twenty-four. It sorts eleven pieces of work not by how famous the person was but by *how the name came off* — and two of its entries exist to correct the popular telling in the direction that costs the argument something.
+
+NewA Field Guide to Missing Names — Field Guide No. 25, 11 entries
+
+**“She was not given credit” is not one event.** [The guide](https://starstuff.earth/missing-names-field-guide.html) argues it is at least five mechanisms, that they leave different evidence, and that they need different things done about them. **The work split and only one half counted** — Lise Meitner supplied the physical interpretation of a chemical result, and the prize was in chemistry; Chien-Shiung Wu ran the experiment that decided a prediction, and the prize was for the prediction. **Credit ran uphill by default**, with nobody deciding anything: a simultaneous discovery attributed to the better-known of two people, and a laboratory’s work attributed to whoever runs the laboratory. **The material moved and the name stayed behind** — Marthe Gautier’s slides, lent to a lab that had a camera; Alice Ball’s method, republished under someone else’s name after she died at twenty-four. **The story dropped a name the document carries.** And **the correction arrived, decades late.**
+
+**Why the sort is the finding.** By discipline you get physics, genetics and chemistry, which tells you nothing. By how badly wronged, the guide is being asked to award damages. The mechanism is the useful sort, because a reader who can tell an authorship rule from a stolen slide from a degraded retelling can see it happening rather than reading about it afterwards — and because *no single rule guards against all five*. You cannot fix a default with a policy about theft.
+
+Fact-checkTwo entries that correct the story against our own argument
+
+**Jocelyn Bell is on the paper.** Second of five, *Nature* 217, 709–713. The claim that she was left off it circulates constantly, it is false, and it is checkable in ten seconds — so anyone hostile to the subject can knock it over in one line and take the genuine complaint down with it. The card puts that in its first row rather than quietly omitting it. **Sharpening a true grievance with a false detail is the same offence as the grievance.**
+
+**And Hedy Lamarr did not invent Wi-Fi.** This is the most repeated story in the genre and it does not survive the patent record. Frequency hopping has prior art in Tesla’s patent applied for in 1901 and in Zenneck’s 1908 book, which notes Telefunken had already tried it; Ellison Purington filed a year before she did. BLADES, the first frequency-hopping system actually deployed, cites neither her nor Antheil — nor does the field’s first textbook across nearly two thousand references. And 802.11 Wi-Fi does not generally use frequency hopping at all. **What is true is quieter and still worth saying:** the patent is real, it is US 2,292,387, and it is filed under *Hedy Kiesler Markey* — a name she is not known by, which makes the document itself a missing name. A props culture that overclaims is not a props culture.
+
+**Three cards carry no reframe table**, following the rule [FG 10](https://starstuff.earth/turtle-field-guide.html) set and [FG 18](https://starstuff.earth/unfinished-animals-field-guide.html) followed. Henrietta Lacks is one: tissue taken without consent in 1951 is not an attribution dispute, and describing it as one proposes a remedy — add her name to the papers — that addresses none of the injury. Her card’s diagram is the only one in the guide built out of no name-slots at all. Ada Lovelace is another, because the historiography is genuinely contested in both directions and the flattering reading is the tempting one. And the third is the survivorship problem: every case here was recovered by somebody doing the work of recovering it, so eleven is not a sample.
+
+RevisedField Guides — counts re-derived, and a stale figure in our own notes
+
+The collection now reads **twenty-four guides, 308 entries, 332 cards**. Derived rather than incremented, by two independent routes that agree: 318 cards plus this guide’s 14 is 332, and 21 withheld cards plus its 3 is 24, so 332 − 24 = 308 — which also equals the old 297 plus 11. **The internal working notes turned out to be the stale copy**, carrying a withheld-card figure of 19 when the collection page’s own colophon had the correct 21. That is the usual direction of this rot reversed: the reader-facing page was right and the maintenance file was wrong, because nobody reads the maintenance file for pleasure.
+
+2026 · September 12
+
+## 105 of our 108 zine covers were broken on a phone, and the gate that would have caught it had written down in advance that it would not
+
+Found while building No. 109. On a 375px screen the ghosted issue number printed through the issue line or the title on 103 pages, and the cover artwork lay across the words on every cover that has any. It had been like that since the first cover in July. Fixed in one shared rule; the checker now measures two screen widths instead of one.
+
+SiteCover ornaments now flow on a phone instead of being pinned to a corner that is not there
+
+**Measured at 375×812 across all 205 pages, and it is two faults rather than one.** Text printed on text: **313 collisions on 103 pages**, every one on the cover. The big translucent issue number crossed the issue line on 96 covers and the title on 50; the collection label crossed the title on 65; a label inside the artwork crossed the type on 30. *Nine* covers had all four — not most of them, which is what a hand-checked sample of ten had suggested before the full sweep was run. And separately, the artwork itself lay across the words on **every one of the 98 covers that carry any**: over the title on 95, the issue line on 94, the subtitle on 93. Between them, **105 of our 108 covers** were affected.
+
+**On a desktop all of this sits in the empty margin beside a short title.** On a phone the title wraps to three lines and the margin does not exist, so the ornaments printed on the words.
+
+**The cause is duller than the effect, and it is one line of thinking repeated a hundred times.** Each cover carries its own small-screen block, and ninety-eight of them do: they shrink the artwork and shrink the title. Not one of them ever *moved* the number, which stayed pinned to a top-right corner at four and a half times the body type while the title grew taller underneath it. We had applied the convention ninety-eight times and got the load-bearing half wrong ninety-eight times.
+
+**So this one moved out of the pages and into the shared stylesheet.** Below 600px the number and the artwork stop being pinned and simply take their turn in the reading order: artwork, number, issue line, title, subtitle. The desktop composition is untouched — it is placed per page by measurement, and it was always correct. Every cover made from here gets the phone behaviour without anyone remembering to ask for it.
+
+**And that last sentence got tested before it shipped, by accident.** [No. 110](https://starstuff.earth/fourteen-kinds-of-doing-zine.html) was written while this fix was being built, by someone who knew nothing about it, and landed first. Measured afterwards: **six collisions on its cover at 375px without the shared rule, and none with it.** A cover that did not exist when the rule was written was already fixed by it — which is the argument for the shared sheet making itself, on a page nobody chose as evidence.
+
+SiteThe collision checker had said, in its own file, exactly what it was going to miss
+
+**We have a tool whose whole job is finding text printed on other text.** It has run green over these covers since August. It was not wrong: it measured one screen width, 1280 pixels, and at 1280 the covers are fine. Its own header said so in advance — *“a collision that only happens at 380px is real and this will not see it.”*
+
+**It also only ever saw half of this fault, and that half is still out of scope on purpose.** The checker measures where the *letters* are. Artwork lying across a paragraph is a judgement about a drawing, which its own notes have always said it declines to make and leaves to a person looking at the page. So the 98 covers whose art sat on the type were counted by a one-off measurement and by eye, not by the gate — and the gate has not quietly grown an opinion about it now.
+
+**That sentence was accurate, sat in the right file, and bought nothing.** It is the same finding this site already had on the books from a different direction: the zine that prompted the checker's existence carried a comment in its own source warning where its artwork would land, and the artwork landed there anyway. **A note is not a control** — and a limitation a tool documents is still a limitation. The checker now loads every page fresh at 375×812 as well as 1280×900, and reports the two widths separately, so a fault can never again be hidden by a number that averages a working width with a broken one. What is still unmeasured is narrower rather than absent: a collision that only appears at 768px will still get through.
+
+Fact-checkThe first phone run reported 256 problems that were not problems, on twelve of our own pages
+
+**Same run, opposite error, and worth publishing because it is the more dangerous of the two.** Alongside the real collisions the checker reported 256 pieces of text as cut off — sliced by the edge of the page with no way to reach them — across twelve pages of working notes. Every one was a wide table on a narrow screen, and every one of those tables sits in a wrapper you can swipe sideways. **Nothing was cut off. The reader reaches all of it.**
+
+**The tool was looking for a container that hides overflow and walking straight past containers that scroll it**, then blaming a rule much higher up the page that exists to contain the starfield. It now stops at whichever container takes responsibility for the overflow first, and answers differently depending on which kind it is. It also prints how many pieces of text it declined to report for that reason — because that is precisely the number it used to get wrong, and a silence nobody counts is a silence nobody questions.
+
+**Both halves were tested by breaking them.** With the cover fix removed the checker reports the collisions again on the phone width and stays clean on the desktop one; with it restored, both are clean. A page that genuinely cuts text off still fails; the same page with a scrollable wrapper passes. *A green gate is only evidence if you have watched it go red.*
+
+2026 · September 12
+
+## The primary source contradicted the zine we set out to write, so we wrote the one it supports
+
+Zine No. 109 joins [Young Readers](https://starstuff.earth/collection-young-readers.html), which now holds fourteen. It is a read-aloud about who gets named — and two things it was going to say were cut, both because the discoverer’s own account says otherwise.
+
+NewA Bit of Scruff — Zine No. 109, read-aloud, ages 4–8
+
+**In 1967 Jocelyn Bell spent two years helping build a radio telescope across four and a half acres** — “an area that would accomodate 57 tennis courts”, a thousand posts, 120 miles of cable — and then read what it drew. It had no screen. It had pens: “between them they produced 96 feet of chart paper every day. The charts were analyzed by hand—by me.” They had decided against computerising the analysis for a reason [the zine](https://starstuff.earth/a-bit-of-scruff-zine.html) turns on: “a human can recognize signals of different character whereas it is difficult to program a computer to do so.” Six or eight weeks in there was “a bit of ‘scruff’” that was neither a star nor interference, and she did not throw it away. Three months of failure later it resolved into pulses one and a third seconds apart — the first pulsar.
+
+**Then the half the zine is actually about.** Five names went on the *Nature* paper and hers is second. A few years later a Nobel went to her supervisor and her name was not on it. The zine draws the reason as a rule rather than a villain: Nobel Foundation statute §4 caps a prize at three people, and five people wrote the paper.
+
+Fact-checkTwo things we were going to print, cut against the primary
+
+**We had the famous image and it is not in the source.** The line everybody repeats — a quarter of an inch of scruff in 400 feet of paper — was to be the spine of the whole zine. Her own 1977 account gives no such figure; what it gives is 96 feet a day and “the 3½ miles of chart recordings from the radio telescope that I analyzed.” Those two agree with each other, and they are hers. The quarter-inch is gone, and the zine says on its own face that it was cut and why. A secondary source had also given us 98 feet a day; the primary says 96.
+
+**And the argument itself was wrong.** This piece was proposed as *she was robbed, and it was unfair*. In the same speech she declines that reading in print, with four reasons, ending “Finally, I am not myself upset about it—after all, I am in good company, am I not!” A zine asserting her grievance would have contradicted its own cited source on the page. **So the credit argument was rerouted through what she does record as absurd:** the press, who on discovering a woman was involved “descended even faster”, photographed her “examining bogus records”, and asked “how many boyfriends did I have at a time?” The child gets the harder and truer distinction instead — **being kind about something is not the same as the something being fair** — and is told she may reach her own verdict. So, arguably, did Bell Burnell: in 2018 she gave away the entire &pound;2.3 million of a later prize to fund students who get left out, disabled students named among them.
+
+**One more we are keeping on the page rather than quietly fixing.** The circulating story in which she was left off the *paper* is false — she is second author — and the zine insists on her by-line rather than dropping it to sharpen the grievance. Sharpening a true complaint with a false detail is the same offence as the complaint.
+
+RevisedYoung Readers — a count that stopped adding up two zines ago
+
+**Adding a piece made us re-derive the collection’s sets instead of incrementing them, and the increment would have been wrong.** The page said eight of the pieces hand the child something to do and that four hand them nothing at all. Eight plus four is twelve, and the collection held thirteen — No. 107 had joined the second set without being counted into it. It is now **nine of fourteen** with something to do, and the five that hand the child nothing are named rather than counted. *No gate on this site can read a number written out in a sentence*, which is why the members are written out instead.
+
+2026 · September 12
+
+## Four letters, and the half of the 1953 paper nobody quotes — plus the finding that prompted this zine and is not in it
+
+Zine No. 105 joins [Young Readers](https://starstuff.earth/collection-young-readers.html), which now holds eleven. It is a read-aloud about the genetic alphabet, a subject this site had never touched: before this week no page here contained *base pair*, *adenine*, *guanine* or *genetic alphabet*.
+
+NewThe Same Four Letters — Zine No. 105, read-aloud, ages 4–8
+
+**Everybody quotes one half of the Watson and Crick paper.** [The zine](https://starstuff.earth/the-same-four-letters-zine.html) is built on the other half. The famous half is the constraint: “These pairs are: adenine (purine) with thymine (pyrimidine), and guanine (purine) with cytosine (pyrimidine)” — fixed, and fixed by size, since one of any pair has to be the larger ring and the other the smaller. A few lines later, in the same paper, comes the sentence this piece turns on: *“The sequence of bases on a single chain does not appear to be restricted in any way.”*
+
+**Every constraint in the system runs across the two strands, and none runs along one.** The pairing is fixed; the order is free, for everything alive, and always was. That is not a gap somebody will tidy up later — it is the property that lets DNA carry information at all, because a sequence permitted only one arrangement could carry none. The alphabet is shared. The sentence is not.
+
+**The demonstration hands a child the paper’s closing inference.** Paper and a pencil: write a row of A, T, G and C in any order, write each letter’s partner underneath, cover the top row, put it back. It comes back exactly, and it could not have come back any other way — which is what the authors meant by “It has not escaped our notice that the specific pairing we have postulated immediately suggests a possible copying mechanism for the genetic material.” It is the first demonstration in this collection where the child performs a piece of reasoning rather than observing an effect.
+
+**And the exception lives in a pond rather than a laboratory.** Cyanophage S-2L swaps *every* adenine in its genome for 2-aminoadenine — reported in *Nature* in **1977**, and not explained until 2021. A virus is not a cellular organism, so “everything alive uses the same four” survives, barely; the zine hands that caveat to the reader on its own spread rather than ruling for the convenient answer.
+
+Fact-checkThe finding that prompted this zine is deliberately absent from it — on our own wire’s advice
+
+**This piece started somewhere else entirely.** Last week’s [Glimmer Wire](https://starstuff.earth/glimmer-wire-2026-09-11.html) graded a September 2026 result in which an ordinary bacterial enzyme transcribed a *synthetic* eight-letter alphabet as readily as the natural four. Ryan read it and asked for a Young Readers primer on the genetic alphabet.
+
+**The wire’s own filing note said not to build a zine on it** — that the argument needs the biology to stay in the test tube, and a zine would want it out. That judgement was followed rather than argued with. The synthetic alphabet appears nowhere in the finished piece. A read-aloud ending on *scientists made new letters* sits one small mishearing away from *scientists made new creatures*, and the 1977 pond virus carries the same *four is a habit, not a law* claim without ever leaving the water.
+
+**One source is declared unread on the page itself.** Kirnos, Khudyakov, Alexandrushkina and Vanyushin (*Nature* 270, 1977) is behind an authentication redirect; the substitution and its completeness are taken from the 2021 literature citing it, read at full text, and marked as such on the spread and in the colophon rather than carried as the 1977 paper’s. **And one number is deliberately not quoted at all**: the 2021 papers disagree about how many Z-genome phages are now known, and an unreconciled figure is worse than none.
+
+**The Franklin acknowledgement is quoted in full and left uncommented.** Watson and Crick recorded being “stimulated by a knowledge of the general nature of the unpublished experimental results and ideas of Dr. M. H. F. Wilkins, Dr. R. E. Franklin and their co-workers at King’s College, London.” How thin that sentence is, is the point, so the grown-up layer reproduces it exactly rather than characterising it. The child layer names nobody.
+
+**Two claims the zine refuses to make, both named on its own refusals spread.** The pond virus is an exception in chemistry and is *not* an argument about people — reading it as one is the naturalistic fallacy with a nice feeling attached. And the piece declines the obvious ending, *nobody else has your order*: it is not quite true for identical twins, and worth that rests on being rare is worth that somebody similar can take away.
+
+2026 · September 12 · latest
+
+## The man who coined the genetic code wrote the correction four lines later. It took the rest of us eighty years
+
+Zine No. 108 joins [How We Got Here](https://starstuff.earth/collection-how-we-got-here.html) as its seventeenth chain: twelve links, nine documented, two contested, one leap. It is the adult companion to yesterday’s read-aloud, and it goes all the way to 2025.
+
+NewToo Narrow — Zine No. 108, a chain in twelve links
+
+**In 1944 Erwin Schrödinger proposed that a chromosome carries a *code-script*.** That sentence went round the world and is still going. [This chain](https://starstuff.earth/too-narrow-zine.html) is about the one immediately after it: “But the term code-script is, of course, too narrow. The chromosome structures are at the same time instrumental in bringing about the development they foreshadow. They are law-code and executive power — or, to use another simile, they are architect’s plan and builder’s craft — in one.”
+
+**Not a plan that something else carries out — the plan and the carrying out, the same object.** He did not have to be argued into it; he wrote it in the same breath, on the same page. And Watson, Crick and Wilkins all credited that book, with Crick writing to him in August 1953 to say so. *The qualifier was not lost in transit. It was on the page the carriers were reading.*
+
+**The chain’s account of why it fell off anyway is the opposite of a conspiracy.** One half became testable within a decade and the other did not. Base pairing gave a copying mechanism, then the code itself, then tables and prizes and a three-billion-dollar project. How a sequence becomes a body gave almost nothing measurable for fifty years. **A qualifier survives only if something can be done with it.** The Modern Synthesis duly filed development as an “incidental blackbox”, *blueprint* became the ordinary word, and in June 2000 the genome was announced from the White House as “our own instruction book, previously known only to God”.
+
+**Then the prediction failed twice, on evidence from inside.** A gene count estimated at up to 100,000 came in near 20,000. An onion turned out to carry five times more DNA than a person, and onions vary among themselves more than they differ from us. In 2010 a Royal Society review declared the metaphor “not only woefully inadequate but positively misleading” and proposed *developmental encoding* instead — which is Schrödinger’s sentence, reached again from the other end, sixty-six years later.
+
+Fact-checkOne leap, marked and then declined — and a joint graded contested because we could not source it
+
+**The last three links go where this house lives, and the fairness in them is structural rather than decorative.** In 2018 the retired metaphor was the title of Robert Plomin’s *Blueprint*. The objection the chain quotes is Kathryn Paige Harden’s, *a working behaviour geneticist* — “Insisting that DNA matters is scientifically accurate; insisting that it is the only thing that matters is scientifically outlandish” — chosen precisely so the chain cannot be read as an argument against heritability, which it is not. The spread also records that others defend the book as misread, and that we do not adjudicate.
+
+**Link 11 is the one we are inside, and it is deliberately not a villain story.** Spectrum 10K opened in August 2021 to collect DNA from ten thousand Autistic people, was paused within weeks after our objections, consulted on for years, and closed in 2025 with Wellcome’s support. Proposed, objected to, consulted on, ended — **that sequence is the thing working, not failing.** The chain asks only why the objection had to be that loud.
+
+**And the last link is a leap we refuse to cross.** The tempting sentence is *the blueprint metaphor caused the gene-hunts*. We cannot show that. Did the picture make the search thinkable, or did people who wanted to search reach for a picture that suited them? Both fit every fact in the chain. What the zine will say without hedging is narrower: the picture is **wrong** — on the gene count, on the onion, on the 2010 review, and on the testimony of the man who coined it.
+
+**Two things declared rather than hidden.** Link 5 is graded *contested* because **we could not source a first use of “genetic blueprint”** — a grade given for our own sourcing failure rather than a live dispute, which the spread says outright while asking readers to correct it. And Plomin’s book was **not read**; its thesis and the responses to it come from reviews and reference summaries, which is the weakest sourcing in the zine and is labelled as such on the page.
+
+2026 · September 12
+
+## An onion has five times more DNA than you do, so whatever it is, it is not a plan of anybody
+
+Zine No. 107 joins [Young Readers](https://starstuff.earth/collection-young-readers.html), which now holds thirteen, and closes a three-part arc: No. 105 gave the alphabet, No. 106 the code that reads it, and this one asks what the whole thing is. It exists to pay a debt — No. 106 cited a paper as a lead it had not read, and this zine read it.
+
+NewThe Onion Has More Than You — Zine No. 107, read-aloud, ages 4–8
+
+**Grown-ups say DNA is the plan for you, and *blueprint* is an old word for a drawing of a house made before the house.** [The zine](https://starstuff.earth/the-onion-has-more-than-you-zine.html) takes that seriously enough to test it. A plan of a bigger, more complicated thing is a bigger plan — a hut fits on one sheet and a castle does not. That is a prediction, and it can be checked.
+
+**It fails twice.** An ordinary kitchen onion carries about **16,400 million bases** against a human **3,200 million** — five times more. And counting instructions rather than letters does not save it: before anyone had counted, human gene estimates ran to **100,000**, and the answer came in near **20,000** — about the same as a nematode a millimetre long with 959 body cells, whose entire genome is **thirty-two times smaller** than ours.
+
+**The objection is handed to the child before it is answered.** Spread five gives away that counting letters is unfair, because at least 95 per cent of the onion’s genome is repeated sequence — and then counts instructions instead, which is worse for the idea rather than better. Then the strongest version, which needs no definition of complexity at all: within the onion genus alone, genome size varies about four and a half fold. *Onions disagree with other onions by more than onions disagree with us.*
+
+**And what replaces the metaphor turns out to be older than the metaphor.** Schrödinger introduced *code-script* in 1944 — the book Watson, Crick and Wilkins all credited — and then wrote, in the very same paragraph, that the term is “of course, too narrow,” because chromosomes are “law-code and executive power — or, to use another simile, they are architect’s plan and builder’s craft — in one.” **The man who coined it flagged the limit on the spot, and the limit is what got dropped.** The plan and the building are the same thing, and there is no finished you in there to be a drawing of.
+
+Fact-checkA lead we published as unread, now read — and what the zine declines to do with it
+
+**No. 106 shipped naming Pigliucci’s 2010 paper as a lead it had not read.** It has now been read at full text, and this zine is what came of it. Its verdict is blunter than ours: the blueprint and programme metaphors are “not only woefully inadequate but positively misleading.” The zine tests one of the four failures he names and lists the other three for the adult.
+
+**Three of four sources read directly; one figure marked second-hand on the page.** The onion assembly, the worm genome and Schrödinger were read; the *Allium* genome-size range of roughly 7 to 31.5 picograms was not traced back to the measurement papers and says so where it is used.
+
+**What it refuses.** No position on whether non-coding DNA has function — that argument is live, the onion comparison comes out of it, and the zine needs only that raw length is the wrong ruler. No swap to *recipe*, which keeps a dish somebody is working towards. And **no argument about people anywhere in the child’s layer**: every measurement is about a plant, a worm and a gene count, because a fact about an onion licenses nothing about anybody.
+
+**The half that is missing is deliberate, and it is the better piece.** How a qualifier falls off between a 1944 founding text and an ordinary sentence about a child is a chain with graded joints, and it belongs in [How We Got Here](https://starstuff.earth/collection-how-we-got-here.html) rather than in a read-aloud. It is planned. One refusal points at it: **a plan is the kind of thing that can have a mistake in it**, and that is what made the word useful to people who wanted to search a human being for the error.
+
+2026 · September 12
+
+## We said a 1961 paper could not be read. It could, and our own working notes already said how
+
+Zine No. 106 shipped this morning saying that Nirenberg and Matthaei’s 1961 paper — the experiment that read the very first codon — was held only as scanned page images, and that a spread on it had been cut for that reason. The paper is readable. The claim has been corrected on the zine and here.
+
+Fact-checkOne blocked route is not unreachable
+
+**What is true:** PubMed Central’s web reader does serve that article as page images, and our fetcher could not read them. **What we then said, and should not have:** that the paper was therefore unreadable.
+
+**The PDF has a text layer.** Fetched from Europe PMC, the fifteen pages come out as searchable text — imperfect OCR, but plainly legible — and the result the zine would have used is two lines of it: *“the addition of 10 µg of polyuridylic acid per ml of reaction mixture resulted in a remarkable stimulation of C&sup1;⁴-L-phenylalanine incorporation… no other polynucleotide tested could replace polyuridylic acid.”* A tube of nothing but one letter, producing a chain of nothing but one bead.
+
+**The failure is not the blocked route, it is stopping at it.** Our own working notes name Europe PMC as one of the metadata-and-full-text routes to try when a publisher or a repository refuses, and that note was written after a previous paper hunt. It was not applied. **“We could not read it” is a claim about the world, and it needs the same standard as any other claim on these pages** — which is that you try the routes you already know about before writing it down.
+
+**The spread stays cut, and now for an honest reason.** Twelve spreads is the right length for that zine and its argument does not need the history — so it is cut by choice rather than by a wall that was never there. The colophon now says so, quotes the result, and records that we got this wrong.
+
+2026 · September 12
+
+## One number was doing two jobs, so it came apart three times — twice at our own hands
+
+The [Young Readers](https://starstuff.earth/collection-young-readers.html) page has a line saying how many of its pieces hand the child something to do. It has been wrong, in one direction or another, since before either of this week’s zines. The figure is now **eight of the twelve**, and the eight are named on the page so it cannot drift again.
+
+Fact-check“Something to do” and “a demonstration” are different sets, and one number was counting both
+
+**The page said *seven of the ten* for weeks.** Adding Zine No. 105 on 12 September, we could not reconstruct that seven from the page’s own named sets, re-derived it as *six of the eleven*, and shipped that. Adding No. 106 hours later we carried it to *seven of the twelve*. Both of those were ours and both were wrong.
+
+**The cause is not carelessness, and it is worth naming because it will happen again elsewhere.** Two different sets were being described by one number. *Something to do* is wider than *a demonstration*: [No. 102](https://starstuff.earth/it-stays-green-and-then-it-goes-zine.html) has no demonstration — you cannot do a whole autumn on a table — and it still hands a child a method to carry out, which is to mark one leaf and look at it every day. It belongs in one set and not the other. The two lists differ by exactly that piece, and a count that does not say which set it means has nowhere to stand.
+
+**The original seven does reconstruct, and only on a reading the page argues against.** It works if [No. 95](https://starstuff.earth/bone-song-read-aloud-zine.html) is counted — and that zine’s “push on the bone, the bone answers” is the one case the page keeps deliberately on the far side of the line, because the same zine says the current is “not enough to feel.” So the figure and the boundary paragraph beneath it could never both have been right. That inconsistency predates this week; our two corrections inherited the ambiguity rather than the error.
+
+**What changed, beyond the number.** The eight are now **written out by name** rather than counted, the paragraph says out loud why the two sets differ, and the list below it now reads “no *demonstration*” rather than implying the same four pieces hand the child nothing. **No gate can see a number written out in a sentence** — this site’s oldest standing lesson, and the reason the fix is to name members rather than to correct a digit.
+
+2026 · September 12
+
+## Sixty-four words, twenty beads — and the promise No. 105 made on its own face, kept
+
+Zine No. 106 joins [Young Readers](https://starstuff.earth/collection-young-readers.html), which now holds twelve. Yesterday’s zine said in its grown-up layer that the genetic code “is not in this zine at all.” This is that promise being kept, and it goes somewhere the first one could not.
+
+NewMore Than One Way to Spell It — Zine No. 106, read-aloud, ages 4–8
+
+**The letters are read three at a time, and each three names one bead.** [The zine](https://starstuff.earth/more-than-one-way-to-spell-it-zine.html) builds a protein as what it actually is — a long string of beads, twenty kinds — and a codon as what it actually says, which is *put a glycine on next*. Not *make a nose*. One bead, and then the next word says the next bead.
+
+**Then the arithmetic does the arguing.** Four letters read in threes give sixty-four possible words. There are twenty beads to name, and three words are spent saying *stop*. So there are far more words than things to say — and what gives is that **nearly every bead has more than one correct spelling**. Glycine has four. Leucine, serine and arginine have six each. Only methionine and tryptophan get one. Sixty-one naming codons falling into five fourfold sets, nine twofold, three sixfold, one threefold and two single ones — which sums to exactly twenty, every amino acid once.
+
+**The demonstration is a pencil and six rows of the real table.** Write `GGU`, look it up: glycine. Change the *last* letter to anything at all and look again — glycine, every time. Put it back and change the *first* letter, and it is serine. The last letter often does not matter; the first nearly always does. A child finds that pattern themselves, and the grown-up box says plainly that a child who tests a different word and finds the third letter mattering has found a real thing rather than made a mistake.
+
+**And this time the exception is inside the reader.** The code is not universal — thirty-three translation tables are catalogued — and *you are using two of them right now*. Your mitochondria read `UGA` as tryptophan where the rest of you reads it as stop. That is the sharpest evidence going for what [No. 7](https://starstuff.earth/you-were-never-one-thing-zine.html) argued about a bacterium that moved in and never quite stopped being itself.
+
+Fact-checkNothing written from memory, two papers declared unread, and a famous result kept with its criticism attached
+
+**Every codon on the page was checked against NCBI’s own translation tables** rather than recalled, because this zine is the first here whose demonstration *fails* if a single row is wrong. A child following spread seven with one bad row gets the wrong answer and learns that the book lies.
+
+**Two sources are declared unread on the page itself.** Freeland and Hurst’s 1998 result that the standard code is extraordinarily good at limiting the damage of errors is carried at second hand — PubMed refused us — and Crick’s 1968 paper is quoted from the same open-access review. A third, Nirenberg and Matthaei 1961, the experiment that read the very first codon, had a spread outlined and then **cut** because we believed PubMed Central held it only as scanned page images. **That reason was wrong and is corrected below.**
+
+**The famous result is not allowed to travel without the half that usually falls off.** The same review that gave us the figure puts the code “halfway from an average random code to the summit,” notes that billions of alternative codes would do better, and finds Crick’s rival account — that the code is a *frozen accident*, arbitrary and stuck because any change now would be lethal — essentially unfalsified. **So the zine does not say the code was arranged kindly, or arranged at all.** It says the checkable thing: there is more than one right spelling, so a great many changes change nothing. Why that is so is an open argument, and the page does not borrow its warmth.
+
+**One departure from its companion, made deliberately.** No. 105 stayed safe by never saying what DNA does. No. 106 cannot, because the code *is* what it does — so spread ten corrects the popular meaning of “genetic code” in the child’s own layer, in plain type: it says which bead comes next, and holds no entry for what anybody will be good at, or love, or be like. **And one overclaim was caught during the build:** synonymous does *not* always mean no difference, since codon usage can affect how a chain is built and folds. The child layer claims only what the table says, and the grown-up box states the limit.
+
+2026 · September 12
+
+## We said no page here contacts Google for fonts. One still did, and it was the one no sweep could reach
+
+On 9 September the four typeface families were self-hosted and every font `<link>` and preconnect was removed site-wide. [Our privacy page](https://starstuff.earth/privacy.html) has said so since. It was true of 200 pages and false of one.
+
+Fact-checkwhats-new.html carried two preconnects and a Google Fonts stylesheet for three days
+
+**Anyone who opened What’s New handed their IP address to Google before a word rendered** — exactly the thing the self-hosting pass existed to stop, and exactly the thing the privacy page says no longer happens. The page is otherwise unremarkable; the reason it survived is the interesting part.
+
+**A generated page does not conflict. It reverts.** `whats-new.html` is written from a template inside `tools/build-derived.mjs`, so the 9 September sweep edited the file, and the next routine rebuild quietly wrote the Google links back — with the tool reporting a clean, successful build. *This site already had that failure on record.* The same tool did the same thing to this page’s skip link on 9 September, and the lesson written down then was that a repo-wide sweep owes the template the same edit. The sweep that followed did not pay it.
+
+**Found while reading a diff for something else**, which is the honest account: no gate looks for a third-party font request, and none of the nine can. The two other pages that match a search for those hostnames — this changelog and the privacy page — only *mention* them in prose, which is the difference between a thing and a sentence about the thing, and is why a raw-text search would have called all three guilty.
+
+**The template no longer carries them**, and the lines have been replaced with a comment saying why, so a future copy does not restore them. Verified by loading the rebuilt page and watching the four self-hosted `woff2` files arrive from this site — not by reading the stylesheet, since both families are installed on the machine that builds this and a silent fallback would have looked identical.
+
+2026 · September 11
+
+## A read-aloud about the Goldilocks Zone — and a correction, from the reader who proposed it, that made the zine better
+
+Zine No. 104 joins [Young Readers](https://starstuff.earth/collection-young-readers.html), which now holds ten. The fairy tale says one bowl is right and two are wrong. The science that borrowed its nickname says nearly the opposite, and this piece follows that until it arrives somewhere the collection has never been.
+
+NewJust Right For Whom? — Zine No. 104, read-aloud, ages 4–8
+
+**Earth is not in the middle of its own habitable zone.** [The zine](https://starstuff.earth/just-right-for-whom-zine.html) takes the figures from Kopparapu and colleagues (2013), read at full text: the conservative limits for our system are **0.99 and 1.70 astronomical units**, and the paper draws the consequence in its own abstract — this suggests “the present Earth lies near the inner edge.” Earth sits about **1.4 per cent of the way across a band 0.71 wide**. Not the just-right bowl; the one that only just fits.
+
+**And we did not get there by moving.** The young Sun was roughly a third dimmer, and a dimmer star holds a smaller, closer band. The band has been sliding outwards past a planet that stayed exactly where it was. *Earth did not move. The band did.* Then the zine goes to TRAPPIST-1e, which completes a year in 6.1 days at 0.02925 astronomical units because its star is small and cool — more than thirty times nearer in than ours, and nothing has gone wrong there. Every star gets its own band, computed from its own output, and nobody has ever called a dim star defective for having a close one.
+
+**Which is the turn.** A band of conditions in which a living thing can persist is its *niche*, in Hutchinson’s 1957 sense. A tulip bulb needs twelve to sixteen weeks of proper cold or the flower never leaves the bulb — not fussiness, a location. There is no standard band, so “just right” is never just right on its own: it is always just right *for somebody*, and you have to say who. **The answer is therefore not one room set more kindly but a place with a cave and a campfire and a watering hole in it** — and this is the first piece in the collection to name a [Cavendish Space](https://stimpunks.org/glossary/cavendish-space/), on the last spread, after the argument rather than before it.
+
+Fact-checkThe premise the zine was proposed on was half wrong — and then our correction to it was wrong too
+
+**Ryan proposed this piece with a second claim attached:** that sitting near the inner edge is part of why we are sensitive to carbon dioxide now. Checking it against Goldblatt & Watson (2012), read at full text, produced a clean refutation — *“adding carbon dioxide does not increase the outgoing longwave flux, so it cannot cause a runaway greenhouse”* — and on that basis the climate thread was cut from the outline entirely.
+
+**That was an over-correction, and it is worth naming plainly.** It answered *runaway greenhouse*, which was not the claim being made. Ryan came back with astrophysicist David Kipping’s version: the zone migrates outward as the Sun brightens, so the *headroom* shrinks. That holds. Scaling the 2013 limits by the square root of luminosity puts Earth about **13 per cent across the band two billion years ago against 1.4 per cent now** — the same planet, a ninefold smaller margin. The thread went back in, and the zine is better for it: spread seven carries the mechanism, spread eight carries the distinction and names the misapplication out loud.
+
+**Kipping is credited here as the lead that prompted the re-check and is not cited on the page.** The figures there come from the papers. *A video is a lead, not a citation* — the same rule this site applies to aggregators, applied to a source that happened to be right.
+
+**Everything else, graded on its own face.** The cloud-free hedge is printed verbatim on spread five, because Kopparapu’s own abstract says the boundaries “may extend further in both directions” and cloudy models since have argued the inner edge moves substantially inward. The band positions for two and four billion years ago are **our arithmetic and are labelled as ours on the spread itself**. Gough (1981) and Rushby *et al.* (2013) are marked cited-not-read and read-at-abstract respectively. The tulip figure is extension-service consensus rather than a primary paper, and says so. And caves, campfires and watering holes are credited to **David Thornburg**, with the count stated as **four** — the fourth, *life*, named in the grown-up box rather than quietly dropped.
+
+2026 · September 11
+
+## Queering Earth introduces itself by naming this site. The front page now names it back
+
+There is a sibling site, built by the same two organizations, working the half of the shelf this one does not. Its front page has been pointing here since it opened on 7 September; ours pointed nowhere. A reader who arrived at this end had no way of knowing the other end existed.
+
+SiteA second paragraph on the front page, and the difference between the two sites stated rather than smoothed
+
+[Queering Earth](https://queering.earth/) reads art, literature, poetry, politics, people and history through a queering lens — *“the stories we were handed and told not to question,”* as it puts it while describing this site as the one built on science. The [front page](https://starstuff.earth/index.html) now carries the return leg, directly under the paragraph explaining what star stuff means.
+
+**It says what is different rather than presenting the two as interchangeable halves of one thing.** Everything here is built on a settled, checkable fact followed until the claim about belonging is already inside it — the [register test](https://starstuff.earth/collection-star-stuff.html) this site has applied to itself since the beginning. There, the material is a canon nobody can settle, and the site says so on its own face: *“There are no hard facts here for everything. That is deliberate.”* Two methods, one collaboration, and the paragraph would be doing the reader a disservice if it blurred them.
+
+**Their sentence about their own method is in quotation marks, and that is deliberate too.** The first draft stated it in our voice, which would have made a characterisation of somebody else's work read as our description of it — the exact failure mode the [fact-check rules](https://github.com/Stimpunks/Star-Stuff/blob/main/FACTCHECK.md) exist to prevent, with the unusual feature that the somebody else is us. The phrase describing *their* subject matter is echoed unquoted on purpose: their paragraph echoes our own line about a universe that declines to pathologize its own variation, and an echo returned is the shape of the exchange. *Every claim in the paragraph was checked against their live page rather than against a memory of it.*
+
+2026 · September 11
+
+## Glimmer Wire, edition three — the week the network answered, and a correction of ours still out on the wire
+
+The third weekly edition of [Glimmer Wire](https://starstuff.earth/glimmer-wire-2026-09-11.html). Seven items filed, five held, and for the first time **three papers read end to end** rather than at one remove. Also the longest lag the page has measured, and a held item that is not a story we found thin — it is a figure this page corrected last week, still travelling unchanged.
+
+Working paperSeven filed: a Jurassic chorus, a species that is several, a cat that was never a cheetah
+
+**Three graded verified, all three read in full in PubMed Central under CC BY.** Twenty fossil wings from nine species in one Middle Jurassic forest, reconstructed into a soundscape in which *no two species sang at the same pitch* — and one of them already up in the ultrasound, about a hundred and ten million years before the bats that would come to listen there. A *Nature* paper showing that a gut bacterial species name covers several populations that have been selected into different ways of living, in at least 66 taxa across 25 families. And a bacterial enzyme reading a synthetic eight-letter genetic alphabet, the structures showing it handles the four letters it has never met exactly as it handles the four it evolved on.
+
+**Two more filed on publisher-deposited abstracts, one on the authors’ own preprint, and one graded contested.** The extinct American “cheetah” turns out to be sister to pumas rather than to cheetahs, with one population eating salmon in the Arctic Yukon and another hunting temperate grassland — the paper’s own closing line is that morphological convergence can obscure the true diversity of the ecosystems it describes. A framework paper on tropical insect conservation names the gap that more than 80% of insect species live where almost none of the knowledge is published. An interstellar comet carries a methanol-to-hydrogen-cyanide ratio among the highest measured anywhere, exceeded only by one comet of our own. And two papers *in the same volume of the same journal*, published a day apart, disagree about whether the universe is accelerating; we file the disagreement and decline to referee it.
+
+**The lag axis had its most useful week.** Items ran 0 to 187 days, median 14, against 36 and 40.5 in the first two editions — and the drop is not the world speeding up, it is this scan finally reaching journal feeds instead of reaching only what a search summary had already digested. The longest item was published on 6 March and carried to us on 9 September as news. *And the axis stayed blind in the same way as before:* two items were public as preprints far earlier than their journal dates, one of them by **834 days**, which is the largest gap this page has recorded.
+
+HeldA figure we corrected last week is still on the wire, and a 2022 paper arrived as a discovery
+
+**Five held, and the first one is about us.** On 4 September this page filed the bat immunoglobulin paper, read it in full, and corrected one figure: the widely repeated *more than 500 vesper bat species*. The paper measures **26 species** with duplicated antibody gene loci and confirms both functional in **one**; it gives the family no number at all. A release carrying the old figure surfaced on this week’s scan, unchanged. *A correction that lives only on our own page is a correction that has not happened* — so it is held and recorded rather than passed over. In fairness to that release, we went back to the paper and its other numbers check out.
+
+**Held second: a mouse study from February 2022, carried on 2 September 2026 under a headline in the present tense**, crediting the discovery to Stanford when the author list is led from Shanghai Jiao Tong University. **Also held:** a magazine feature about a decade-long bird-cognition programme whose headline result is a 2024 paper, and which reads as a merit argument if lifted; two papers on cortical development folded into one headline, with both publishers refusing us so we could not tell which finding belonged to which; and three large observational studies reported as percentages a reader might act on, which turns a question about prescribing and access into a personal decision. *That last decline is the second time this collection has made it, and declining twice is the point of keeping the list.*
+
+**What we got right by checking our own sentence rather than the coverage’s.** A correction had been drafted saying the cosmology summary’s “1,700+ supernovae” confused light curves with supernovae. The paper itself says 1,701 SNe Ia. The draft correction was deleted before publication, which is the discipline the second edition’s amendment pass bought us.
+
+2026 · September 10
+
+## Yes, you may train on this — said out loud, to thirteen named crawlers
+
+We have never stated a position on AI crawlers, which meant the answer was whatever a wildcard happened to imply. [It is now written down](https://starstuff.earth/robots.txt), per agent, with the reasoning on the file's own face. Also: a page had been offering search engines nothing at all for four days, and nothing here could see it.
+
+SiteThe decision, and the argument we did not take
+
+**Read it, quote it, index it, train on it.** Thirteen crawlers named individually and every one allowed, plus a machine-readable line saying the same thing three ways: this content may be searched, may be fetched live to answer somebody's question, and may go into a training corpus.
+
+**Every other choice here already pointed that way.** An open edition under CC BY-SA. An index written specifically for language models. Fifty-seven Markdown copies of the prose pages so an agent does not have to parse our HTML. A catalogue of every machine-readable thing on the origin. Refusing training after all that would have been a strange place to draw the line.
+
+**And there is a reason beyond openness.** Most writing about disabled and neurodivergent people frames us as deficits. This collection is a corrective to that, and *training data is how a great many people will meet the neurodiversity paradigm* — through a model answering a question, never having visited this site. That reach is worth more to us than the control we would be asserting by refusing it.
+
+**The argument we considered and declined**, recorded so the decision does not read as a default: our licence asks for attribution and share-alike, this site keeps a fact-check ledger and a whole skill about getting credit exactly right, and training honours neither condition. *Retrieval cites you; training absorbs you.* That is a real objection. We are choosing reach over it, deliberately, and it can be reversed in one file.
+
+CorrectionThree crawler names in our reference were out of date, and one of our pages was invisible to search engines
+
+**We checked the names against each vendor rather than copying a list**, which the reference we were working from explicitly tells you to do — and it was itself stale. Anthropic now publishes two crawlers that list does not mention, and OpenAI has added a third. All three are named in our file. Anthropic's own documentation has moved host, too.
+
+**Separately, and worse: [Young Readers](https://starstuff.earth/collection-young-readers.html) had shipped with broken structured data on 6 September and it was live for four days.** The page's description quotes a caregiver asking *“is that really true?”* — and the straight quotation marks around it ended the machine-readable block four words in. Search engines and agents got **nothing typed from that page at all**. Nine automated checks passed it, and each was right to: a broken block of that kind has no appearance, so nothing about the page looks wrong.
+
+**It is the same fault as one we fixed last week** — an unescaped quote cutting a value short — in a different container, which is why the check written for that one could not see this one. There is now a tenth check that parses every such block on every page, tested by restoring the real breakage rather than a synthetic one. **198 blocks, 198 parsing.** *A fix applied to one container is not a fix to the mechanism, which is the second time this week that sentence has been the lesson.*
+
+SiteA page for agents about how to read us without getting it wrong
+
+There is now [a short instruction file](https://starstuff.earth/.well-known/agent-skills/star-stuff/SKILL.md) an AI agent can load before working with this site, at the standard address for such things. What it teaches is chosen entirely to head off mistakes *we have actually made or watched people make*: fetch the Markdown twins, and know that the other 141 pages deliberately have none because their arguments live in a thousand diagrams; **a piece's number records when it was made and is never a rank**; every count written out in our prose is a lead rather than a fact, because no check we own can read a number in a sentence; the fact-check status of any claim is published, and a hedge marked contested has to be carried.
+
+**And the one sentence about this site that is not its motto.** “You are made of star stuff. The universe loves you for it” gets quoted at us as our masthead. It appears once here, in the colophon of Zine No. 1, immediately followed by **“So do we.”** The phrase is *Love You Down To Your Star Stuff*, and the difference is grammar doing moral work: the other version makes the universe the one doing the loving and the star stuff the *reason*. *Down to is not because of.* An agent that reads the file will not repeat the error we published about ourselves in August.
+
+**One thing the specification asked for and we did not do.** It says to advertise that file in an HTTP header under a particular name. That name is not in the registry of allowed names — and we removed two unregistered ones from that exact header earlier the same day, after finding our own notes had claimed they were fine. Adding a third within the hour was not on. *The standard address is the discovery mechanism anyway;* the only thing lost is a tick on a validator.
+
+2026 · September 10
+
+## Ctrl+F now reaches the field notes while they are still folded away — and the thing we said needed fixing did not
+
+Twenty-four field guides keep their notes collapsed behind a click, and those notes *are* the guide. Search the page for a remembered phrase and the browser now finds it inside a closed card, opens it, and scrolls to it. Separately: we had named the wrong thing as broken, and checked before changing it.
+
+CorrectionWe said the front page's card descriptions were unfindable. They were not
+
+Yesterday's audit note claimed that the 401 collapsible descriptions across the front page and the collection pages were invisible to find-in-page, and listed fixing them as the next job. **They were already fine.** Those use the browser's own disclosure element, which has handled this for years — and the specification we were auditing against says so in as many words: prefer the native element, because it gives you find-in-page reachability with no code at all.
+
+**Checked before touching anything**, which is the only reason this is a paragraph rather than 401 needless edits: the text is present in the page, three accessibility-tree nodes carry it while the card is shut, and the browser's own find call locates it. *The lesson is the same one as yesterday morning* — an inference about what a reader can reach is worth nothing next to a measurement of whether they can reach it.
+
+SiteWhat was actually unreachable: the field notes
+
+The guides hid their notes with `display: none`, which removes text from find-in-page and from the accessibility tree completely. That is the first item on the specification's own list of mistakes, and it applied to the substance of a quarter of the pages here — [278 entries across 24 guides](https://starstuff.earth/collection-field-guides.html), where the short brief on the card is the trailer and the notes are the film.
+
+They now carry `hidden="until-found"`: hidden, but walked by find-in-page and by a link that targets a phrase. Find a match inside one and the browser reveals it, and a handler in the shared script opens the card properly — chevron turned, state announced — rather than leaving a note hanging open inside a card that still claims to be shut.
+
+**Older browsers lose nothing, and that is from the standard rather than from optimism.** The HTML specification makes an unrecognised value of this attribute mean *plainly hidden*, which is exactly what the old rule did. So a browser that has never heard of the feature behaves precisely as before. We had designed a feature-detection dance and deleted it after reading the spec text.
+
+SiteThe trap: making text hidden a different way breaks four things that reveal it
+
+Those notes get revealed on four separate occasions — a reader clicks the card, a link points straight at an entry, the print stylesheet opens every note because a printed guide carrying only the briefs is useless, and four of our checking tools force them open to measure them. **All four worked by making the notes `display: block`, and that does not override the new way they are hidden.** One added line in each guide fixes all four at once, which is why none of the 24 click handlers had to change.
+
+**The regression to fear was the search index**, since it builds its records by forcing every note open, and a silent failure there would have quietly dropped the best writing on the site out of search. It is *byte-identical*: 196 pages, the 24 guides at 349 records and 771,190 characters, unchanged. Printing was checked under emulation as well — eight notes, none still hidden.
+
+SiteThe zines are not done, and it is a question about reading rather than a checkbox
+
+The same fault is in every paged zine, and much larger: **1,149 spreads across 101 zines, holding 2.16 million characters, and you can only search the spread you are standing on.** The average zine is eleven spreads. On arrival, sitting on the cover, 98.6% of its words are beyond Ctrl+F.
+
+The fix would work the same way and the shape is written down. It was not done today for two reasons, and the second is the real one. It touches 101 files, a thousand attributes, the shared script, the print rules and the reveal logic four tools depend on — with every zine on the site as the failure mode. **And it is a decision about what reading a zine is.** A zine is paginated, not folded: should searching from spread two throw you to spread fourteen? Our own search already links to a specific spread and handles it, so the gap is narrower than it looks — searching *inside* a zine you are already reading. *That is a judgement about the artifact, so it is being asked rather than assumed.*
+
+2026 · September 10
+
+## A favicon that only worked in one place, and two link relations we said were standard and are not
+
+Small, overdue plumbing: real icons for phones and old browsers, a manifest so the site installs properly, and a machine-readable index of everything on this origin that a program can read. The interesting part is what fell out of checking our own claims against a registry.
+
+CorrectionTwo of the five link relations we send on every response are not registered
+
+Every page here carries an HTTP header pointing at the things a machine might want — the index for language models, the feed, the licence. Our working notes said *“every relation is IANA-registered; inventing one is a bad signal and crawlers ignore it.”* We fetched the registry to add a new one and read all 236 entries. **`sitemap` is not in it. `security` is not in it.** Both had been going out on every response.
+
+**Why that is an error and not a nitpick.** The standard for these headers permits a made-up relation only as a full web address, never as a bare word. A bare unregistered word is not a loose choice; it is invalid, and a strict reader is entitled to discard the whole header. We had written the rule down correctly and then broken it twice, in the same file, in the same line.
+
+**Nothing is lost by removing them.** `robots.txt` has always carried the sitemap, which is where every crawler actually looks, and a security policy is found at its standard path — that is what a standard path is for. *The lesson is narrower than “check your work”:* `sitemap` reads exactly like a standard word. Plausibility is not registration, and the registry is one fetch away.
+
+**The same inconsistency is in the specification we were auditing against**, which is worth saying rather than quietly working around: its example for this file keys a link as `sitemap` and lists it as useful, while the same page says to use only registered names. Both cannot be true. We followed the registry.
+
+SiteThe favicon worked in a tab and nowhere else
+
+One SVG covers a modern browser tab. It covers nothing else: **`/favicon.ico` returned a 404 to every crawler and older browser that asks for it without being told to**, iOS had no icon when someone added the site to a home screen, and Android had no launcher icon because there was no manifest to hold one. There are now five raster icons, all generated from the same SVG so the mark cannot drift between them, which is how hand-made icon sets go wrong.
+
+**The first run produced white squares and looked fine in the file listing.** A browser screenshot composites onto white unless told otherwise, so every icon came out with no transparency — a dark rounded rectangle inside a white box, which would have looked broken on any dark tab strip. The generator now reads the colour type back out of each PNG and refuses to write one that is not what was asked for. Four lines, and it is the check that would have caught it first time. *The one before it was a screenshot, yesterday, for the same reason.*
+
+**Android's icon is a different drawing, not the same one resized.** Adaptive icons get cropped to a circle or a squircle chosen by the device, and a rounded rectangle is exactly what that crop eats — corners first, leaving the star in a clipped box inside another box. That variant drops the rounded corners for a full-bleed ground with the star at 80%.
+
+SiteIt installs, and deliberately keeps the way out
+
+A [web app manifest](https://starstuff.earth/site.webmanifest) means Android and Chrome can install the site properly rather than falling back to a generic browser icon and a page title. **It opens in `minimal-ui`, not `standalone`, and that is a decision about this site specifically:** every piece here carries prev/next and a collection badge, so it is a chain you walk. Hiding the browser's own back control would strand a reader inside a reading order with no way back up it.
+
+It is generated rather than hand-written, because the icon list and the brand colour are a second copy of things that live elsewhere, and a second copy is what goes stale. The icons are checked against the repository, and the colour is *counted off the pages* — 197 of 198 carry the same value and one print-first sheet carries white, which is correct for that page and must not become the answer for the whole site.
+
+SiteOne address that lists everything here a program can read
+
+[A small standard file](https://starstuff.earth/.well-known/api-catalog) now names the index for language models, the feed, and the licence, so an agent makes one predictable request instead of guessing paths. **The type it is served as is the entire point:** the file has no extension, so a static host would call it a generic download, and a strict reader skips anything that is not the right type. It is declared explicitly, and our local development server was taught the same thing so a check run here reflects what a reader gets.
+
+**It does not list the 57 Markdown copies of pages**, and that is the convention's own advice: each is announced on its own page, the language-model index covers the site, and a catalogue that lists every URL has just become a second sitemap — the exact anti-pattern we avoided when writing the first one.
+
+**The feed now declares how often to check it.** Measured rather than chosen: 109 pages across 25 of the last 28 days, about four a day, and the feed holds fifty items — so a reader checking once a day has roughly a fortnight of slack and cannot miss anything. Declaring four checks a day would have asked every polite reader to fetch four times as often for nothing. *A cadence is a promise, so it is derived from the log rather than picked.*
+
+2026 · September 10
+
+## If you replace our colours with your own, 4,862 diagram labels had almost no contrast — and the first thing we “found” was not real
+
+Some readers override every site's colours with a small high-contrast palette of their own. We had **not one rule** for that, from the first page in July until today. **Nobody reported this.** We went looking because [a specification asked a question we had never asked ourselves](https://specification.website/spec/accessibility/forced-colors/) — and then spent most of the day fixing something that was never broken, which is the part of this worth reading.
+
+SiteThe diagrams were never wrong. The ground moved out from under them
+
+Browsers do not replace `fill` and `stroke` on an SVG. So when a forced palette turned the page white, every diagram kept the light ink it had been drawn with against our dark ground: **4,862 labels across 133 pages** below the AA contrast threshold, most of them between 1.2:1 and 2:1. Under a *dark* forced palette the same count is **15**, which is the tell — the drawings were fine, the page beneath them was not. Diagram labels now take the reader's own foreground colour.
+
+**A forced palette can be either, and that decided the fix.** We measured it before writing anything: a light contrast theme reports white ground and black text, a dark one the reverse, and the link colour moves from navy to yellow. So the print stylesheet's approach — pick an ink and write it down — is wrong here. Print's ground is always paper; *this one belongs to the reader*, so every value we added is a system colour keyword that tracks their actual choice rather than our guess about it.
+
+CorrectionWe reported 229 invisible headings, including our own wordmark. There were none
+
+**What we measured, and why it sounded right.** A heading painted with a clipped gradient takes its colour from a *fill* property that beats `color` outright. A forced palette throws the gradient away. The fill, read back from the browser, was still fully transparent. That is *precisely* the mechanism by which **90 headings across 45 pages printed blank** on 12 August, a fault we found and fixed — so 229 elements on 130 pages, the **★ stuff** wordmark among them, read as the same thing in a medium we had not thought to emulate.
+
+**It was wrong.** A browser under a forced palette paints those glyphs in the reader's own colour anyway, whatever the fill says. The proof is two screenshots of the same masthead — one with the transparent fill still winning, one without — and they are *identical*. Paper genuinely honours the transparent fill; this mode does not. The two are indistinguishable if you ask the browser what the fill computes to, and obvious the moment you look at the pixels.
+
+**The cost, and the reason this is a correction and not a footnote.** A rule was written for it and applied to all 198 pages, where it did exactly nothing. It has been removed. *Reading a property and inferring what a reader sees, instead of looking at what a reader sees, is the error this site is organised against* — we have a page about it, a gate that exists because of it, and five entries below this one from a single day last week cataloguing tools of ours that mistook a description for the thing described. This is a new instrument making that exact mistake in its own first draft, and finding it took a screenshot rather than a better argument.
+
+**What the checker does now.** It counts gradient-clipped headings and offers no verdict on them, with the reasoning written where a future version would be tempted to add the test back. A real check would sample the rendered pixels inside each glyph; that is a bigger instrument than this, and until somebody builds it the gap is recorded rather than papered over. *A tool reporting “I cannot check this” is reporting a gap, not clearing it.*
+
+SiteTwenty-four labels are exempt, and recolouring them is what would have broken them
+
+A label set on a shape the diagram paints for itself — the symbol on an element's coloured disc in [the elements field guide](https://starstuff.earth/elements-field-guide.html), the two swatch names in [Starlight](https://starstuff.earth/starlight.html) — was never in trouble. It reads at about 10:1 against its own backdrop in either palette. Recolouring it is the damage: **5 such labels dropped below AA in the light palette and 19 in the dark** when the blunt fix was first applied. Those 24 now carry an explicit opt-out, and two of them live in the code that *generates* the diagrams, so a new element or entry inherits it rather than arriving broken.
+
+**This is a mistake our contrast checker already had written on its front page**, and we made it anyway: a probe that knows only the page background calls all eight of those element symbols 1.05:1, and “fixing” them erases every symbol. The note was there. We had to walk into it a second time to read it.
+
+**One page needed more than a rule or an exemption.** On [The Bow-ery](https://starstuff.earth/bow-ery.html) the ground band under two labels is a dark fill at 72% opacity, and a partly transparent thing borrows whatever is *behind* it — over our page that reads as solid ground, over the reader's palette it lands at mid-grey. Both options failed there: 2.57:1 recoloured, 4.24:1 left alone against a 4.5 bar. The band no longer borrows the ground it sits on.
+
+SiteA ninth gate, and the reason to trust it is that it failed first
+
+`check-forced-colors.mjs` measures every page twice, once under each palette, and the baseline is zero. **A clean first run would have proved nothing** — a check that reports no problems is equally consistent with a stylesheet that never applied, a trap we walked into on 31 August. The evidence is the sequence: **4,862 findings, then 24, then 0**, where the 24 were exactly the labels predicted to break, in exactly the palettes predicted.
+
+**Its first design had a hole shaped like the fault it exists to find.** It skipped any diagram marked exempt — which would have silenced every label sitting on the page ground in a *mixed* diagram, the moment somebody exempted it to fix the others. [Starlight](https://starstuff.earth/starlight.html) is precisely that diagram: eleven labels on the page ground, four on its own colour swatches. Nothing is skipped now.
+
+**What we are not counting, and why.** 3,581 shape fills fall below the non-text threshold against a white palette, and nearly all are starfield dots and glows inside the artwork — decoration, whose disappearance *is* the mode working correctly. Counting them made an early run report 96 problems on a page that had one. And nothing needed a restored border: we checked 198 pages for boxes whose only edge was a shadow and found **zero**, because everything here draws a real border. *We are reporting that absence rather than adding a rule that would imply something had been wrong.*
+
+**One thing we wrote and then deleted.** The specification also asks after readers who want more contrast without taking over the palette. We wrote that block and removed it the same day, because *nothing we own can measure it* — our contrast checker emulates screen and paper and takes no such setting, so it would have shipped to 198 pages on the argument that it looked safe. Given the morning we had just had, that was not an argument worth accepting twice. It is recorded as unfinished, in the stylesheet, where the rule would have gone.
+
+2026 · September 9
+
+## We said our sister site ships Markdown mirrors with no staleness check. It does not, and we should have looked at the gate rather than the comment
+
+The entry below this one says [Queering Earth](https://queering.earth/)'s Markdown generator has no check behind it, so an edited page would ship a stale copy unnoticed. **That is false.** Its `check-metadata.mjs` catches exactly that, and catches a missing discovery link too. Both verified firing today. The correction matters more than most because it was a public claim that somebody else's work was deficient.
+
+CorrectionWhat we said, what is true, and how we got it wrong
+
+**What we said**, in the entry below and in our working notes: that their generator has no `--check`, that the `check-markdown.mjs` its own header names was never built, and therefore *“a page edited without re-running it ships a stale mirror and nothing notices.”*
+
+**The first two clauses are true and the conclusion does not follow.** The check was built somewhere else and under another name: `check-metadata.mjs`, one of that site's seven ship gates, regenerates *every* derived file into memory — each Markdown sibling, the two index files, the feed — and compares. Its own error message for the case reads *“a stale .md is the quiet one.”* It separately asserts that every page still advertises its sibling. **We tested both rather than reading them:** corrupt a sibling and it exits 1; delete a discovery link and it exits 1.
+
+**How we got it wrong.** We read the comment at the top of their generator, which names a file that does not exist, went looking for that file, did not find it, and concluded the coverage was missing. We did not read their list of gates — which is in their working notes, seven lines long, with the answer in it. **A comment naming a file that was never written is a claim, and we repeated it.** Their coverage was never the problem; their comment was, and it has been fixed.
+
+**And it is the same fault we spent the day cataloguing, turned outward.** Five times today a tool of ours mistook prose for the thing the prose describes — a broken tag quoted inside a script, a comment about a deleted attribute, a changelog entry quoting a template. This is the sixth, and the only one where the prose belonged to somebody else. *Reading a description instead of measuring the thing is the error this site is organised against, and we made it about a neighbour.*
+
+**Their arrangement is arguably better than ours.** One gate asking *is every derived file current?* is a cleaner shape than a `--check` flag on each of three generators, which is what we have.
+
+2026 · September 9
+
+## Fifty-seven pages now have a Markdown twin at the same address — and a hundred and forty-one deliberately do not
+
+Add `.md` to the address of an essay, a collection page or [this changelog](https://starstuff.earth/changelog.md) and you get the same words as Markdown, derived from the page itself. The zines, field guides and print sheets are left out on purpose, and the reason is the more interesting half.
+
+SiteWhy three-quarters of the site has no Markdown copy
+
+**Because it would lie by omission.** A zine's argument is not only its sentences — it is carried by the figures too, and this site has **1,021 inline diagrams holding 4,851 text labels**, almost every one of them on a zine, a field guide or a print sheet. Markdown cannot represent any of it. A `.md` of *The Lines We Drew* would be its prose with the drawings quietly absent, which is a smoothed retelling of our own work — published, of all places, in a file whose entire purpose is to be trusted by a machine that cannot check.
+
+The field guides would be worse. Their entries are built by JavaScript from data in the page, so they do not exist in the source at all; a converter reading the file would produce a guide with no animals in it.
+
+**Where something is dropped from the 57 that do have a sibling, the frontmatter says so** — 105 decorative diagrams, counted per page as `omitted_diagrams`. Excluding the artifact pages for that exact reason and then dropping silently here would have been the same fault at a smaller scale. And the 275 song embeds on the racks became links rather than disappearing, because the song is the content.
+
+SitePorted from Queering Earth, with the gate it was missing
+
+Our sister site [Queering Earth](https://queering.earth/) shipped this first and got the hard part right: derive from the page's own `<main>` landmark, and **throw on any element the converter does not recognise** rather than skipping it. A converter that shrugs is precisely how a Markdown copy starts saying less than its page.
+
+**What it does not have is a check.** Its own header names a `check-markdown.mjs` that was never built, so a page edited without re-running the tool would ship a stale mirror and nothing would notice. We looked: that site's files happen to be current today, and nothing is keeping them so. **Ours fails the build in two ways** — when a sibling is out of date, and when a page in the set does not *advertise* its sibling from its own `<head>`. An unadvertised Markdown file is found only by something that already guessed the address, which is the failure the whole convention was revised to fix.
+
+CorrectionThe fifth time in one day that a tool mistook prose for the thing it describes
+
+**This changelog was excluded from the Markdown set, and the reason was this changelog.** The tool decides whether a page is a client-rendered field guide by looking for a template string; an entry published this morning *quotes* that template while explaining a fix to it. So the page describing the mechanism was mistaken for the mechanism, and the largest and most useful document on the site silently had no Markdown sibling. The check we had just added caught the consequence within the minute: *56 of 57 advertise their sibling*.
+
+**Five tools, one day, one fault.** The markup checker flagged a broken tag written inside a JavaScript string. The policy generator counted a comment *about* a removed attribute as a live attribute, and would have kept a weak keyword in the security policy indefinitely. Two of our own verification commands reported problems that were sentences. And now this. **A regex over a whole file cannot tell a thing from a sentence about the thing** — and this site writes about its own markup more than most sites ever do, which is why it keeps stepping on the same rake. The rule is now written down where the next person will find it: ask the structure, never the raw text.
+
+**One smaller one, in the same hour.** The sentence in [llms.txt](https://starstuff.earth/llms.txt) announcing how many pages have a sibling was written with the number typed into it. It was wrong within the hour, when the misclassified page above joined the set. That is the fault the longest section of our working notes is about, committed inside a sentence whose whole job is to be accurate for a machine. It is counted from the filesystem now.
+
+2026 · September 9
+
+## A tool called `build-whats-new` was building four things, only one of which is What’s New
+
+Renamed to `build-derived.mjs`. It generates [What’s New](https://starstuff.earth/whats-new.html), [the feed](https://starstuff.earth/feed.xml), [llms.txt](https://starstuff.earth/llms.txt) and the [security.txt](https://starstuff.earth/.well-known/security.txt), and the old name described a quarter of it.
+
+SiteWhy a name mattered enough to change
+
+**The four files are coupled on purpose and the coupling is worth keeping.** All of them are derived from the same two sources that cannot drift from the site — the collection pages' own cards, and `git log` — and a second tool parsing those cards would be a second answer, free to disagree with the first. That is the fault this whole apparatus exists to prevent, so the tool stays one tool.
+
+**What was wrong was only the label, and a label is what somebody greps for** when they need to know where a file on this site comes from. Two of today's changes were logged with a note that the name had stopped being true; leaving it that way would have been the same species of error as a stale count — a description that no longer matches the thing, sitting where a reader will trust it.
+
+**The old name survives in three places on purpose.** The entries below still say `build-whats-new.mjs`, and so do the older rows of the fact-check ledger, because both are dated records that were true when written — the same reason [Bone Song](https://starstuff.earth/bone-song-zine.html) still carries the sentence we later argued against. The working notes name both, so a search for the old one lands on the explanation rather than on nothing.
+
+**One reader-visible consequence:** What’s New says at its foot which tool generated it, and that line is itself generated — so the page had to be rebuilt for its own colophon to stop naming a file that no longer exists.
+
+2026 · September 9
+
+## Two hundred and thirty-three `onclick` attributes are gone, and with them the one weak keyword in the security policy
+
+The policy shipped an hour ago needed `'unsafe-hashes'` to permit six strings — the handlers on every pager button, every print sheet and the search form. Those buttons are now bound in JavaScript, **there are zero inline event handlers left on the site**, and the keyword removed itself.
+
+SiteThe pager still pages, which was the whole risk
+
+**This touched the primary navigation of a hundred zines**, which is the most load-bearing thing on the site: the prev/next bar above every spread. 200 of the 233 attributes were the two pager buttons, and they are now bound in `starstuff.js`, which every one of those pages already loads. The other 33 — ten print sheets, one page with a pager and no shared script, and the search form's single `onsubmit` — are bound in each page's own inline script, each of which already sits after its buttons in the document.
+
+**So it was tested by clicking it.** Twelve zines, forward twice and back once each, checking the spread actually changed; four print sheets, toggling side A to side B and back; the outlier pager; and the search form, confirming a submit does not navigate. **Run twice — once with the security policy applied and once without —** because the binding has to work either way, and because a policy that is what makes the site work is a policy nobody can safely change later.
+
+**The binding is deliberately not folded into the function beside it.** `starstuff.js` already builds the injected per-spread footer controls, and that function returns early on a page with no spread footer. Putting the two top buttons in it would have silently skipped any page that has a pager and no footer. It also asks for `changePage` at click time rather than holding a reference, because on four pages the shared script loads before the page's own.
+
+CorrectionOur own tool counted a comment as a live handler
+
+After the last attribute was removed, the policy generator still reported one inline handler and still emitted `'unsafe-hashes'` for it. **The handler was a sentence.** The note we had just written into `search.html` explaining *why* the `onsubmit` attribute had been removed contains the words of the attribute, and the tool was scanning the raw file rather than the tags — so a comment about deleting a handler was read as a handler, and would have kept the weak keyword in the policy indefinitely on the strength of a description.
+
+**This is the third time today the same mistake has appeared in a different tool**, which is the part worth publishing rather than the instance. `check-markup.mjs` flagged a broken tag written inside a JavaScript string; the search index once indexed a page's own listing of other pages; and now this. The fix is the same each time: walk the tags, not the text. The generator now uses the same quote-aware walk the markup checker does, and skips scripts, styles and comments.
+
+AuditAnd the test could not tell “broken” from “not applicable”
+
+The first run reported [Proportioned to the Groove](https://starstuff.earth/proportioned-to-the-groove-zine.html) as a failure: four spread ids, all *undefined*. Nothing was wrong with it. **It is a scroll zine** — every section laid out at once, no paging, so no pager buttons and no active spread, exactly as it was built. The page had not been modified at all; the test had simply clicked a button that does not exist and reported the absence as a break.
+
+The suite now checks that a page *has* a pager before it tries to use one, and skips the two scroll zines by name in its output. **A test that cannot distinguish a broken page from an inapplicable one files the wrong bug**, and the wrong bug on a page that is working is worse than no test: it sends somebody to fix something that is correct.
+
+2026 · September 9
+
+## This morning we said a real Content-Security-Policy was impossible here. It is not — we had stopped at two options when there are three
+
+A full CSP now ships on every response. **An inline script injected into any page on this site does not run**, and that is checked by injecting one into a browser rather than asserted. The reasoning we published earlier today was sound in both its halves and wrong in its conclusion, which is a nicer way to be wrong than usual and still worth naming.
+
+Correction“A real policy needs nonces or unsafe-inline” — both true, and it missed hashes
+
+**What we said, in the entry below this one and in `_headers`.** That a full policy was deliberately absent because every page carries an inline `<style>` and many an inline `<script>`, so it would need either nonces — which a static site with no build step cannot produce, since a nonce must be unique per response and appear in both header and HTML — or `'unsafe-inline'`, which is a policy in name only. We concluded that `frame-ancestors` was the only half worth shipping.
+
+**Both premises hold. The conclusion does not, because there is a third option, and the specification we were reading names it in the same sentence: hashes.** This site has **49 distinct inline script bodies across 157 elements** and **six distinct inline event handlers across 233 attributes**. Forty-nine and six are small numbers. Every one of them is now hashed into `script-src`.
+
+**What made it look impossible was counting elements instead of distinct bodies.** 157 inline scripts sounds like a hash list nobody could maintain; 49 unique ones, most of them the same pager repeated across a hundred zines, is a 3.3 KB header. The measurement that mattered took one command and we had not run it.
+
+SiteWhat the policy actually forbids now
+
+Beyond script: **no `<base>` element may be injected** (a base tag rewrites every relative URL on the page, and this site is built entirely out of relative URLs); **no plugin embeds**; **no form may submit anywhere at all** — `form-action 'none'`, which is simply the truth here and closes the easiest route an injection has to send data out; **no frame except the two embed hosts**; **no connection except to this domain**; and no font or image from anywhere but here, which only became sayable when the typefaces came off Google earlier today.
+
+**The `'unsafe-inline'` at the end of `script-src` is not what it looks like**, and it would be fair to assume the worst on seeing it. Under CSP Level 3 a browser that finds a hash or a nonce in a source list *discards* `'unsafe-inline'` entirely; it is there only for browsers too old to understand hashes, which get a weak policy instead of none. **We tested that rather than trusting it:** a script element injected into the front page is refused, with a violation logged, in a current browser. *If that ever stops being true the token has to come out* — and the cost would be the pager breaking on Safari before 15.4, which is the trade written down beside it.
+
+**One concession is real and is not a technicality.** `style-src` still permits inline CSS, because **2,290 inline `style` attributes** carry the nav accents, the card colours and every twinkle position, and an attribute cannot be hashed without hashing all 2,290. CSS injection can deface a page and can leak some kinds of data through selectors; it cannot execute script. Said plainly because the alternative is rounding it down to nothing.
+
+SiteGenerated, gated, and tested against the site working
+
+A hash list is a second description of the site, so it cannot be typed by hand: it would be wrong the first time somebody ships a zine, and **the failure is not cosmetic — an inline script whose hash is missing does not run, so a new zine's pager would simply be dead.** So `tools/build-csp.mjs` computes the policy from the pages and writes it into a marked region of `_headers`, and `--check` fails when the two disagree. That gate was verified by adding a new inline script to a zine and confirming the build refused it.
+
+**And the policy was tested against the site working, not only against the attack.** A CSP that breaks a hundred pagers is worse than none: the suite loads a paged zine and clicks through a spread, runs a search and counts 40 hits, loads a rack and confirms 44 embeds and the self-hosted fonts, opens a broadside, and checks the AVIF images arrive — all with the real header, and all watching the console for violations. Fifteen assertions.
+
+**Two of the first results were my own bugs and both are worth recording.** The tool's `--print` mode emitted the policy *and* its inventory, so the value carried newlines, the local test server refused it as an invalid header and died — and the suite then ran every assertion against Chrome's network-error page and reported **nine failures that were all mine**. It reported them confidently, because the readiness loop gave up silently instead of failing. Both are fixed: `--print` writes only the policy, and the suite aborts rather than testing an error page. *A test that can quietly measure the wrong document is not a test.* And a third: the suite called `eval()` a failure, when an expression evaluated over the debugging protocol is exempt from the page's eval restriction — so it now asserts what is actually checkable, that the policy contains no `'unsafe-eval'`.
+
+2026 · September 9
+
+## If you find a hole in this site, there is now somewhere to send it that isn't a public issue
+
+A [security policy](https://github.com/Stimpunks/Star-Stuff/blob/main/SECURITY.md) and an RFC 9116 `security.txt`, pointing at a private reporting channel that had to be switched on before it existed. The interesting part is the `Expires` field, which is a file that goes invalid on a date and says nothing about it — so it is gated rather than diarised.
+
+SiteA private channel, because an issue on a public repository is a disclosure
+
+**Reports go to [a draft advisory](https://github.com/Stimpunks/Star-Stuff/security/advisories/new)**, which is private until we publish it. The obvious alternative was an issue on this repository, and that is exactly wrong: every issue here is world-readable the moment it is opened, so the ordinary route would publish a vulnerability rather than report it. **Private vulnerability reporting was switched off on the repository** until this change — had we just written the URL into a file, it would have pointed at nothing.
+
+**What decided it was a warning rather than a preference.** RFC 9116's guidance is that an *unmonitored* contact is worse than no file at all — and the honest reading of our own [contact arrangements](https://starstuff.earth/privacy.html) is that a general form on a small nonprofit's site is that failure: Stimpunks' own contact page says we get lots of spam and sometimes miss requests in the noise. A GitHub advisory notifies the people who can actually fix it, and publishes no address to be harvested.
+
+**The policy states the scope honestly, which is the useful part for anybody reading it.** This site has no application server, no database, no accounts, no session, and no form that submits anywhere — so most report categories are ruled out before anyone spends an evening on them, and the policy says which ones are still worth sending: a header or redirect misconfiguration, a way out of the JavaScript template that builds the field-guide entries, or anything that makes the site contact a third party we have not disclosed. It also says there is no money, because there isn't, and pretending otherwise wastes a researcher's time.
+
+SiteA file that expires, on a site with a documented weakness for things that go stale
+
+`security.txt` requires an `Expires` date and the RFC's own advice is to treat it like a certificate. **That is this project's signature fault with a date attached:** valid today, *invalid* in a year — not merely out of date, invalid — and completely silent about the transition. The longest section of our working notes is about numbers going stale because nothing can read a figure written out in prose. A hand-written expiry would have been that, on a one-year timer, on nobody's calendar.
+
+**So the date is one constant, the file is generated from it, and the build refuses to pass inside 30 days of the lapse.** The countdown prints on every run — *364 days left*, today. The check itself was tested in both directions before being trusted rather than assumed to work: it fails at nine days out, fails at forty days past, and passes at 364. Renewal is a one-line edit in the place that tells you it is due.
+
+2026 · September 9
+
+## A description on this site read “The culture end of Star Stuff, where” and stopped — for a month, because of one unescaped quotation mark
+
+The site now publishes [an index for language models](https://starstuff.earth/llms.txt), generated from the same collection cards every other list here comes from. Writing it meant reading all seventeen collection descriptions, which is how we found **five meta tags on three pages silently cut in half by an unescaped quote** — and that fault has earned `check-markup.mjs` a ninth check.
+
+CorrectionFive descriptions were truncated in every browser, and the source looked fine
+
+**What was wrong.** [Stars We Grew Up On](https://starstuff.earth/collection-stars-we-grew-up-on.html) described itself as *“The culture end of Star Stuff, where ”* — and stopped. Not a truncated sentence: the description reads *“…where ‘star’ means icon rather than nucleosynthesis”*, and the quotation marks around *star* were plain `"` characters inside an attribute already delimited by `"`. So the parser closed the attribute at the first inner quote, kept nine words, and treated the rest of the sentence as stray attributes on the same `<meta>` element.
+
+**It affected all three of that page's descriptions** — `description`, `og:description`, `twitter:description` — so a search result, a link unfurl and a shared card all showed the same nine-word fragment. Two more pages had the same fault in one tag each: [A Field Guide to Being a Shark](https://starstuff.earth/shark-field-guide.html) lost everything after *“a ‘living fossil’”*, and [Two Hundred Years](https://starstuff.earth/two-hundred-years-zine.html) after Alfie Kohn's *“Better Get Used To It”*. **Live since 11 August** in the first case, which is the day that page shipped.
+
+**Why nothing caught it.** The JSON-LD on the same page carries the identical sentence *correctly* escaped, which is how we know the wording was never in doubt — only the attribute. And the source reads perfectly: the sentence is all there, in order, in the file. The defect exists only in the parsed document, which no gate here was looking at, and a meta description has no rendering to look wrong. **Found by reading seventeen descriptions in a row while building the index below**, which is the only reason it turned up at all.
+
+SiteA ninth check, so that cannot happen quietly again
+
+`tools/check-markup.mjs` now reports an attribute value cut short by an unescaped quote. **This is the gate's stated bar rather than an exception to it:** its job is faults where the browser silently hands a reader a different document than the source describes, and this is that, exactly.
+
+Scoped to `content`, `alt`, `title` and `aria-label` — the attributes where prose legitimately contains quotation marks and where truncation costs something. A stray quote in a `style` or `srcset` is a different fault with a visible symptom, and widening the check would start reporting on the JavaScript inside the field guides.
+
+**It runs over the tag walk rather than over the source, and the first version did not.** Scanning the file directly flagged a deliberately broken `<meta>` written inside a JavaScript string in the test fixture — a decoy, caught only because it had been written as one. The walker already tracks quote state exactly as a parser does and already skips scripts, styles and comments, so moving the check onto it fixed the false positive and inherited the rest. Regression-tested against all three real pages as they stood before the fix (5 findings, correct lines) and against decoys that must stay silent: escaped entities, values containing `=` and `/`, an attribute followed by more attributes, and the broken tag inside both a script string and an HTML comment.
+
+Sitellms.txt — curated, which is the hard part
+
+[/llms.txt](https://starstuff.earth/llms.txt) is a short markdown index of the site for language models. **The convention's own list of common mistakes opens with “treating it like a sitemap and listing every URL”**, and this site has 169 pieces and an exhaustive [sitemap](https://starstuff.earth/sitemap.xml) already. So the file carries the ways in, the Foundations and Notes working papers, and the seventeen collection pages that lead to everything else — **39 links across 71 lines** — and states plainly where the complete list lives instead of reproducing it.
+
+It also states the editorial conventions, because a model quoting us should know them: that we write about neurodivergent and disabled people in the first person plural because we write from inside that community; that *Autistic* is capitalised as an identity term and *autism* is not; and that every piece records its sources, its open questions and its corrections, which are published by date rather than quietly fixed.
+
+**Generated, from the same two sources as everything else here** — the collection pages' own cards, and `git log`. The tool that emits it is still called `build-whats-new.mjs`, which now under-describes it, and that is the deliberate half of the trade: a second tool parsing those cards would be a second answer free to drift from the first. *The name under-describes the tool; a duplicated parser would under-describe the site, and only one of those gets a reader wrong.*
+
+**The version-two requirement is discovery, not the file.** v1 expected an agent to guess the path, so an unadvertised file was found only by one that had already assumed it. Every response from this site now carries `Link: </llms.txt>; rel="describedby"`, alongside registered relations for the sitemap, the feed and the licence — sent as a header rather than only as HTML, so it reaches a client that never parses a page. `## Optional` is deliberately absent: v1 gave that heading mechanical meaning and v2 withdrew it.
+
+2026 · September 9
+
+## One picture on this site weighed 2.3 megabytes to be displayed four hundred pixels wide
+
+The images are now AVIF with WebP and JPEG behind them, and sized to what the page actually draws rather than to whatever the original happened to be. **A modern browser now fetches 600 KB of images where it used to fetch 4,216 KB** — 86% less. Also: the last three pages with a skipped heading level are fixed, and a separate check of every tap target on the site came back clean.
+
+SiteAVIF, WebP, JPEG — and sizes taken from measurement rather than from the CSS
+
+**The worst case names the whole problem.** The SN 1006 supernova remnant on [Love You Down To Your Star Stuff](https://starstuff.earth/love-you-down-to-your-star-stuff.html) — one of the three doors into this collection — was a **3072×3072 JPEG weighing 2.3 MB**, and the page displays it **400 pixels wide**. That is nearly eight times more picture than any screen was going to use, on a page many readers meet first. It is now 800×800 and **154 KB** as AVIF.
+
+**The sizes came from measuring, not from reading the stylesheet.** Each image's rendered width was read off the live layout: 400px for the supernova, 560 and 598 for Rainbow Mosho's artwork, 708–712 for the launch frames and the dragon. Each source is now twice its largest rendered width, which is what a high-density screen needs and no more. Guessing from `max-width` declarations would have got the supernova wrong, because the figure that constrains it is two rules away from the image.
+
+**Every image is a three-format chain** — `<picture>` with AVIF first, WebP behind it, JPEG last. AVIF reached baseline availability in July 2026 so it is the format to encode first, and the fallback chain stays because *widely available* describes the browsers shipped in the last two and a half years, not the ones people are actually running. Verified rather than assumed: all eight images were checked in a real browser and all eight pick the AVIF, load cleanly, and report a natural width of exactly twice their rendered width.
+
+**Two decisions worth stating.** `og-card.jpg` is deliberately untouched — it is never in an `<img>`, it exists for link unfurls, and social scrapers want a plain JPEG. And `<picture>` is an inline element by default while the pages style the `<img>` as a block, so the wrapper would have contributed a stray line box under every figure; one rule in the shared stylesheet fixes it.
+
+SiteWhat the smaller files cost, stated rather than buried
+
+These pages are meant to be printable, and no print rule constrains an image, so a figure prints at its CSS width. **The downscaled sources print at roughly 190–216 dpi where the supernova previously had 736 dpi available.** That is a real reduction and it is a deliberate trade: 736 dpi is far past what any home printer resolves, and it was being paid for by every reader on a phone. Around 190 dpi is comfortable for a photograph inside an essay and well clear of where downscaling becomes visible.
+
+If print sharpness ever matters more than page weight for a particular sheet, the fix is a `srcset` with a larger candidate on that one figure — not putting four megabytes back on the front door.
+
+SiteThree pages skipped a heading level; a tag change with the selector to match
+
+[The Shell Was Your Calcium](https://starstuff.earth/the-shell-was-your-calcium-zine.html), [What Looks Like Chaos](https://starstuff.earth/what-looks-like-chaos-zine.html) and [Why Difference Comes First](https://starstuff.earth/why-difference-comes-first-zine.html) each jumped from an `<h2>` straight to an `<h4>` for their colophon labels — *Credit where it is owed*, *References*, *Read more*. A heading outline with a rung missing is a broken outline to anyone navigating by headings, which on this site is the table of contents.
+
+All eight became `<h3>`, and the rule that styles them moved with them from `.colophon h4` to `.colophon h3`. **The change is visually inert and that was checked rather than hoped for:** the rule sets font-family, size, tracking, transform, colour, *margin* and *font-weight* explicitly, and these pages carry a `margin: 0` reset, so nothing was inherited from the browser's defaults for either tag. **0 pages now skip a heading level.**
+
+AuditEvery tap target on the site, measured — and the measurement was wrong twice first
+
+**The result: clean.** 5,591 interactive targets across 198 pages. 3,005 are inline links inside running prose, which the criterion exempts outright; 1,379 are smaller than 24×24 px but sit far enough from their neighbours to satisfy the spacing exception; **none fails both.**
+
+**Getting there took three attempts and the first two were wrong in opposite directions, which is the part worth keeping.** Testing only a link's immediate parent *under*-detected the prose exemption — a link wrapped in `<em>`, or two links joined by the word “and”, both read as isolated controls, and it reported **11 failures that were not failures**. Testing whether the nearest block ancestor is mostly prose *over*-detected it: the front page's pills sit in a block full of prose, so a genuine standalone control was exempted and **a real finding disappeared**. The criterion is neither. A link is inline in prose when real text sits immediately beside it in its own inline flow, and only that test gives the same answer as reading the page.
+
+**A number that comes out clean on the first run has not been checked; it has been asserted.** These three runs disagreed with each other by eleven findings in one direction and one in the other, and the site never changed.
+
+2026 · September 9
+
+## Every page on this site handed your address to Google before it drew a word — and we only found out because we sat down to write the privacy page
+
+The site now has [a privacy statement](https://starstuff.earth/privacy.html), and writing it changed the site first. Four typeface families are **self-hosted** as of today, which ends the only third-party request a plain page here was making. On the way we found that **eight pages were rendering a fallback typeface**, and that **this morning's own changelog entry overstated what `youtube-nocookie` actually promises**. Both below.
+
+SiteThe fonts came off Google, because the honest sentence was unwriteable
+
+**The fault, and how it surfaced.** This site has no analytics script, no cookies, no accounts, and a search that runs entirely in the reader's browser. The draft privacy page said *“on most pages, your browser contacts nobody”* — and that was simply false. Every page fetched its typefaces from `fonts.googleapis.com` and `fonts.gstatic.com`, so **every page view handed Google an IP address and a user-agent before a word was rendered.** It could not be fixed by rewording. *The fonts were quietly the largest thing we were giving away, and they were giving it away on pages that had nothing else on them.*
+
+**What shipped.** Atkinson Hyperlegible Next, Space Mono, Fraunces and Boogaloo now come from this domain — 20 files, 580 KB, the *exact* set Google was serving for the URLs the pages requested, mirrored one for one with the same subsets, the same `unicode-range` values, the same weight ranges and the same `font-display: swap`. Hand-picking subsets is how a self-hosting pass loses a glyph nobody notices until a reader meets it. All four are [SIL Open Font License 1.1](https://openfontlicense.org/), verified against the `google/fonts` repository rather than assumed, redistributed unmodified, with each licence text shipped beside the files as the licence requires. Fraunces keeps its variable optical-size axis, because no page overrides it and a static instance would silently redraw the Bone Song display type.
+
+**Verified by measuring the old against the new, not by looking.** The live site still served Google fonts while the working copy served its own, so both could be measured at once: every text node's rendered box, on the same pages, at the same viewport. **Ten control pages came back identical — 14,021 text boxes on the changelog alone, zero differing.** A separate probe confirmed 118 font renders across 14 pages all resolve to the self-hosted face rather than a copy installed on the machine doing the checking, which is the trap this repository already had written down.
+
+CorrectionWe called the youtube-nocookie move a privacy win. It is one, and narrower than we implied
+
+**What we said this morning**, in the entry directly below this one: that moving 66 embeds to `youtube-nocookie.com` was *“the cheapest privacy win on the list.”*
+
+**What Google actually promises.** Privacy Enhanced Mode *“prevents the use of views of embedded YouTube content from influencing the viewer's browsing experience on YouTube”*; ads on such a video *“will likewise be non-personalized”*; and the view *“will not be used to personalize advertising shown to the viewer outside of your site or app.”* **Every one of those is about personalisation, not about collection.** Google does not say the request is not made, that nothing is logged, or that no cookie is ever set. The domain name says *nocookie*; the documentation says *non-personalised*.
+
+**Why it matters more than the wording.** An embedded player is a frame from somebody else's server, so **292 of them across 13 pages reach Google the moment those pages load, whether or not a reader presses play.** We had read the domain name and not the small print — which is this site's own [too-good-to-check](https://starstuff.earth/too-good-to-check.html) reflex, aimed at a piece of infrastructure instead of a quotation. The [privacy page](https://starstuff.earth/privacy.html) now states the trade on its own face and marks it as unfinished rather than settled, and names the 13 pages so a reader who would rather not be seen by Google knows which they are.
+
+SiteEight pages were rendering a typeface they never asked for
+
+Found while proving the self-hosting had changed nothing. `starstuff.css` puts Atkinson Hyperlegible Next on the site nav of *every* page and Space Mono on the injected paged-zine controls — but the font `<link>` was written per page, which made it **a second list free to drift from the first**, and it had drifted on eight: [Bone Song](https://starstuff.earth/bone-song-zine.html), [Underground](https://starstuff.earth/underground-zine.html) and [You Were Never One Thing](https://starstuff.earth/you-were-never-one-thing-zine.html) never requested Atkinson; [the front page](https://starstuff.earth/index.html), [LYDTYSS](https://starstuff.earth/lydtyss-zine.html), [Eternal Sunshine](https://starstuff.earth/eternal-sunshine-zine.html), [the Neurodiversity Field Guide](https://starstuff.earth/neurodiversity-field-guide-zine.html) and [Shorthand Evolution](https://starstuff.earth/shorthand-evolution.html) used Space Mono in their own stylesheets and never requested it.
+
+**The front page is the clearest case: its masthead tagline, *Cosmic Connections*, was being drawn in Menlo.** Not a near-miss — a completely different typeface, on the first line under the wordmark, for as long as the page has existed.
+
+**And the reason nobody caught it is written in this repository already.** Atkinson and Space Mono are installed on the machine this site is built on, so a fallback rendered *correctly here* and would have shown a stranger something else. Chrome reports the difference — a webfont face is flagged custom and an installed one is not — but only if you ask, and no gate here asks. Seven of the eight now render correctly for everyone. The eighth, Shorthand Evolution, measured identical either way: it declares Space Mono for an element that renders no text, so it was a real missing request with no visible consequence. **Self-hosting removes the whole class of error rather than these eight instances**, because there is now exactly one place a face is declared.
+
+SiteThe privacy page, and a link to it on all 198 pages
+
+[What This Site Knows About You](https://starstuff.earth/privacy.html) is the sixth working paper in [Notes & Rationale](https://starstuff.earth/collection-notes.html). It states what is collected, by whom, on what basis, and what is not collected — with our host's definitions quoted from its own documentation, including the one that matters: unique visitors are *“different IP addresses engaging with your project”*, so counting readers means processing addresses, and we say so rather than reaching for the word *anonymous*.
+
+**It also explains why there is no cookie banner**, and why that absence is the honest kind: we set no cookies and no browser storage of any sort, so a prompt asking you to consent to nothing would be theatre plus one more thing to click. **And it disowns a document that would otherwise mislead you** — the Stimpunks Foundation's policy for stimpunks.org describes comments, logins, Gravatar, HubSpot and QuickBooks, none of which exists here, so reading across would leave you expecting processors this site does not have.
+
+A privacy statement has to be reachable from every page. The colophons here are per-page and vary — 153 pages have one, 45 do not, and their link lists differ — so there was no uniform footer slot to insert into. The site nav is uniform, so the link sits there, in the home group beside *about* and *search*, on all 197 pages that have a nav, plus the front page's masthead. It is hidden in `@media print` with the rest of the chrome, so nothing changes on paper.
+
+2026 · September 9
+
+## A screen reader can now tell you which column a table cell is in — and two numbers we published this morning were wrong
+
+The second half of the accessibility audit: **199 header cells** given a `scope`, four tables that had no accessible name at all given a caption, and **161 table names that read “the The…”** repaired. **Corrected below:** both table figures in this morning's entry were overstated, one of them because our own counting method was broken.
+
+CorrectionWe said 282 of 299 header cells and 28 uncaptioned tables. Both numbers were wrong
+
+**What we said, this morning, on this page and in the ledger.** That *“282 of 299 `<th>` carry no `scope`”* and *“28 of 83 tables have no `<caption>`”*.
+
+**The first was a broken count, and the bug is worth naming because it is one keystroke.** The figure came from `grep -o '<th'` — which also matches `<thead>`. There are 81 `<thead>` elements here, and 218 + 81 = 299 exactly. **The real figure was 201 of 218.** The correct pattern is `grep -oE '<th[ >]'`. An audit that inflates its own findings is not being cautious; it is being wrong in the direction that feels safe.
+
+**The second was literally true and materially misleading.** 28 tables did lack a `<caption>` — but **24 of them carry an `aria-label`** on the `<table>`, which gives them an accessible name just as a caption does. Only **four** tables on the whole site had no name by any means. Presenting 28 as an accessibility failure counted a naming convention we had deliberately chosen as an absence.
+
+**Caught by us, while fixing it** — the inventory taken before the first edit disagreed with the audit that ordered the edit. That is the good case, and it is the second time in one day that *the error was in our own check rather than in the thing being checked*. The lesson is already written down here in another form: a derivation that returns a number nobody reads back is not a derivation.
+
+Site199 header cells given a scope, so a cell knows which column it belongs to
+
+**What was wrong.** WCAG 1.3.1 Info and Relationships, Level A. A sighted reader takes in the column heading above a number and the row label beside it at once. A screen-reader user is told only what the markup encodes — so without `scope`, landing on a cell gives you the value and nothing that makes it mean anything.
+
+**The shape of the fix turned out to be almost entirely mechanical, which is worth stating because it was not obvious in advance.** An inventory of all 83 tables in source found that **81 of them** put every header cell inside a `<thead>` — so every one is a column header, and nothing had to be judged. Exactly two tables needed a decision: [print-design.html](https://starstuff.earth/print-design.html), whose four headers each begin a row and are explained by the cell beside them (`scope="row"`), and [even-fallen-light-glows-zine.html](https://starstuff.earth/even-fallen-light-glows-zine.html), whose header row has no `<thead>` around it (`scope="col"`).
+
+**Two empty corner cells were deliberately left bare.** A header cell with no text names nothing, and giving it a scope would assert a relationship that does not exist.
+
+**Verified in the accessibility tree, not in the source.** The source count is misleading on its own: 23 of those 83 tables live inside JavaScript template strings and are instantiated once per field-guide entry, so what a reader actually meets is **353 tables carrying 1,028 header cells**. A probe reading `Accessibility.getFullAXTree` across all 60 table-bearing pages reports all 1,028 announcing as `columnheader` or `rowheader` rather than `cell`, and all 353 tables with a non-empty accessible name. **No gate here can ask that question** — they measure colour, tag structure, position, paper, sitemap, findability, dead classes and card order.
+
+Site161 table names read “How a default reading misreads the The Biggest Mouth in the Sea”
+
+Found while confirming that `scope` had reached the rendered DOM, by reading one field guide's accessible names rather than its markup. Fourteen guides label each entry's table from a template ending `misreads the ${entry.name}` — and most entry names begin with an article of their own. **161 of 208 entries** produced a doubled article in the one string a screen reader uses to announce the table.
+
+The article is gone from all fourteen templates. It reads *“misreads The Biggest Mouth in the Sea”* now, and *“misreads Whale Shark”* for an entry with no article — slightly bare, and never wrong. **This was invisible to every check on the site and to anyone reading the source**, because the defect exists only in the assembled string: the template is correct English and so is the entry name.
+
+SiteFour tables that had no name at all, and a caption that must not contain units
+
+Captions added to the four tables with neither a `<caption>` nor an `aria-label`: the three-woman credit ledger in [The Conquering Gaze](https://starstuff.earth/conquering-gaze-zine.html), the one-word-two-meanings table in [The Elimination of Waste](https://starstuff.earth/elimination-of-waste-zine.html), the sheet specification in [Designing for Paper](https://starstuff.earth/print-design.html), and the three-systems thermodynamics table in [Rainbow Serpents](https://starstuff.earth/rainbow-serpents.html). Each says what the table is rather than repeating the heading above it — the same overlap test the card taglines have to pass.
+
+**Three of the four pages had no `caption` CSS rule at all**, so an added caption would have rendered as centred browser-default text in the middle of a house page. Each got a rule matching its own table's label style. The first attempt to check this was itself wrong: a grep for `caption` matched `.diagram-caption` on two of the pages and reported styling that was not there.
+
+**And one house constraint that decided the wording.** Captions here are `text-transform: uppercase`, and uppercase destroys unit symbols — the reason a caption for the sheet specification says *“four decisions in the sheet specification, and what each one buys”* and names no measurement, even though every row header is one. A caption reading `190 × 259 MM` would be a different claim from `190 × 259 mm`.
+
+2026 · September 9
+
+## Every page on this site made a keyboard reader walk past six links to reach the first word — on all 197 of them, since the first one shipped
+
+An audit of starstuff.earth against [The Website Specification](https://specification.website/), and the fixes it earned. The largest was a **skip link**, which we did not have anywhere. Also: 66 YouTube embeds moved to the no-cookie host, four security response headers, a [real 404 page](https://starstuff.earth/404.html) instead of the host’s default, and intrinsic dimensions on every image. Two faults were found *while* fixing, and both are logged below.
+
+SiteA skip link, on all 197 pages
+
+**What was wrong.** Every page here opens with the same nav — home, about, search, prev, next, and the collection badge. A reader using a keyboard alone pressed Tab six times before reaching the first word of the piece, *on every page*. WCAG 2.4.1 (Level A) requires a way to bypass repeated blocks, and we had none: **zero of 197 pages** carried a skip link.
+
+**Who this was costing.** Not screen-reader users, mostly — they have the headings and landmark rotors, and we fixed both of those on 1 September. This was costing **switch-device users and Tab-only users**, who have neither. It is the accessibility failure that is hardest to notice from the inside, because a mouse never encounters it.
+
+**The fix, and why it was cheap.** The work done on 1 September paid for this one: every page already has exactly one `<main>` landmark, opening right where the nav ends, so the target already existed and only needed a name. Each page now carries one anchor as the first thing in the body, and `<main id="main" tabindex="-1">`. The `tabindex` is load-bearing — without it some browsers scroll the page but leave focus where it was, which looks like it worked and is not.
+
+**Offscreen, not hidden.** The link sits at `top: -3rem` and slides to `top: 1rem` on focus. `display: none` would have been simpler and would have removed it from the accessibility tree, so it could never be focused — which is the ordinary way this ships broken. Verified by keyboard rather than by reading the stylesheet: one Tab from a fresh load reveals it, and activating it lands focus on `main#main`, checked on a paged zine and on the front page, whose `<main>` holds all 168 cards.
+
+Site66 YouTube embeds were still on the cookie-setting host
+
+We embed 292 YouTube videos across the playlists and racks, and **226 of them were already on `youtube-nocookie.com`** — the house had made that call, repeatedly, on purpose. Three pages missed it: [Joyful Sound](https://starstuff.earth/joyful-sound-playlist.html) (36), [the LYDTYSS rack](https://starstuff.earth/ls-playlist.html) (26), and [Love You Down To Your Star Stuff](https://starstuff.earth/love-you-down-to-your-star-stuff.html) (4) — and that last one is one of the three doors into the collection.
+
+**Nobody could have caught this but a person.** All eight gates passed all three pages, and each was right to: an embed host is not a colour, a tag tree, a position, a paper size, a sitemap entry, a dead class or a card order. An inconsistency 226 pages deep is invisible to a tool that was never asked the question. Links to YouTube *watch* pages are deliberately unchanged — a link the reader chooses to follow is a different thing from a frame that loads whether they wanted it or not.
+
+SiteA 404 page that offers a way back
+
+Requests for addresses that do not exist have always returned the correct **404 status** — that part was never broken — but the page itself was the host’s default: correct, blank, and no way onward. Now there is [a real one](https://starstuff.earth/404.html), in the house palette, offering five routes back and saying plainly that some old addresses *do* forward on their own, so a reader who followed an aged link should look again at where it came from before assuming the page is gone.
+
+It carries `noindex` and no canonical, because it answers at every address that does not exist and therefore has no address of its own. It is deliberately absent from `sitemap.xml` and from the search index — a search result meaning “the thing you searched for is not here” would be worse than no result. Three of the eight gates needed an explicit exemption to let it through, each written down with its reason where the decision is visible rather than buried.
+
+SiteFour security headers, and honest limits on a fifth
+
+`_headers` now sends `X-Content-Type-Options: nosniff`, a CSP `frame-ancestors` allowing only ourselves and the two collaborating organisations, `Referrer-Policy: strict-origin-when-cross-origin`, and a `Permissions-Policy` naming *only* features nothing here uses. Our host’s own HSTS header omits `includeSubDomains`; ours states it, after checking that the one subdomain which resolves is served over HTTPS.
+
+**What we did not do, and why.** A full Content-Security-Policy is *not* here. Every page carries an inline `<style>` and many carry inline `<script>`, so a real policy needs nonces or `'unsafe-inline'` — and the second is a policy in name only. Shipping the reassuring half of a security header while it protects nothing would be worse than shipping neither. `frame-ancestors` is the half that is required, and it is safe.
+
+SiteTwo faults found while fixing, neither of them the thing being fixed
+
+**A generated page quietly ate its own fix.** The skip-link pass edited all 197 pages, `whats-new.html` among them — and that page is *generated*. The next run of `tools/build-whats-new.mjs` rewrote it from the template inside the tool and the skip link vanished, with the tool reporting a clean, successful build. It was caught by a `git diff` that had two lines a moment earlier and none afterwards. The template is patched now; the lesson is the one already written down about that file, arriving in a new costume: **a repo-wide sweep over “every page” includes the pages a tool owns, and those will be silently reverted rather than conflicted.**
+
+**A gate reported the fix as a defect, correctly.** `check-overlap.mjs` asks whether text sits outside the box that clips it, and an offscreen-until-focused skip link is exactly that — so it failed 5 of the first 7 pages swept. True in mechanics, wrong in meaning. It now carries a one-entry exemption list with the reasoning attached, and the count prints on its own line so a list that grows is a list somebody can question. Notably it did *not* fire on two of the seven, so the report read as a per-page problem when it was a per-element one, which would have sent somebody to the wrong pages.
+
+**And one defect in the new page itself, no gate could see.** The 404’s door cards style their title with `.door a` — which also caught the “an RSS feed” link inside one door’s sentence and rendered it as a second bold heading on its own line. The markup was valid, the class was live, the contrast passed, nothing collided. It was visible in a screenshot and nowhere else. Now scoped with `>`.
+
+SiteIntrinsic dimensions on every image, and what is still outstanding
+
+Seven of the eight `<img>` elements here had no `width` or `height`, so the browser could not reserve their space and the page jumped as they arrived. All eight now carry their real pixel dimensions; because all three pages involved already set `height: auto` in CSS, the layout is unchanged and only the reserved space is new.
+
+**Named as still outstanding**, rather than left to look finished: the images are JPEG only, and one is 2.3 MB on a page in *Start Here*. AVIF reached baseline support in July 2026 and is now the format to encode first. Separately, 28 of our 83 tables have no `<caption>` and 282 of 299 header cells carry no `scope`, so a screen reader lands on a cell without being told which row and column it belongs to. That is a real Level A failure across 57 pages and it is not fixed today. And we still have **no privacy page** — we set no cookies, run no analytics and keep search entirely in your browser, but every page does request fonts from Google, and saying so plainly is owed.
+
+2026 · September 8
+
+## The blood a horned lizard squirts at a coyote is made out of the ants it eats — and the viral claim we went looking to confirm is in none of the ten papers
+
+[Zine No. 103](https://starstuff.earth/the-blood-was-made-of-ants-zine.html), the eighth [Kin](https://starstuff.earth/collection-kin.html) piece. Commissioned to check a claim, and the check came back negative — so the zine is the animal, and the claim gets graded on two of its fourteen spreads. Three sources are named on the page as *unread* rather than paraphrased, including the video itself. **Corrected the same day:** the zine said the schoolyard children had done something now illegal. They had not — they only looked.
+
+New pieceThe Blood Was Made of Ants — Zine No. 103
+
+Everybody knows Texas horned lizards squirt blood from their eyes. Almost nobody knows where the blood gets its power. Sherbrooke and Kimball fractionated the plasma, ran the fractions past coyotes and mice, isolated the active material at 800–1,600 molecular weight — and found it is **dietary**: *“Plasma fractions from individuals of P. cornutum, a blood-squirting species, fed Pogonomyrmex had more aversive levels of the active compound(s) compared to those given a cricket diet.”* Extracts from the ants placed the compound in the **abdomen, where the venom is stored**. The defence is not manufactured. It is eaten.
+
+**Which sits on top of everything else this animal borrows.** The lethal dose of harvester ant venom runs 0.119 µg/g in a mouse, 28 in a spiny lizard and **162 in this one** — and mice given two and a half lethal doses *plus horned lizard plasma* survived with no symptoms, while mice given snake or other-lizard plasma all died. The tongue lands on the ant’s mesosoma — the one segment with neither mandibles nor sting — in **76% of fifty filmed strikes**, and *“never touched the ants at their rostral or caudal end, even if it was the closest position to strike at”*: given a nearer armed target and a further safe one, it reaches *further*, in sixty milliseconds. **The venom never became safe. The lizard became specific.**
+
+Then fire ants land at Mobile in the 1930s, reach Texas in 1953, and turn out not to be a substitute at all — *“Texas horned lizards do not actively eat fire ants”* — so the whole apparatus stays perfect and points at nothing. **That is a support withdrawn, not an animal too fragile to cope, and the difference decides what work you do.** The evidence for the difference is in Oklahoma, on a reserve with *no harvester ants at all*, where the lizards ate the ant that made up **7% of what was available in 81% of scat samples**, and the ant that made up 69% in **1%**. Stripped of the specific thing, it did not learn to make do with the average. It chose again, narrowly.
+
+Claim graded“Fire ants are vanishing across Texas — scientists finally found what’s hunting them”
+
+**What we were asked to check.** A Popsci video essay claims Texas horned lizards are recovering in “protected limestone corridors” and reducing fire ant numbers through “grazing pressure” that keeps harvester ant colonies compact and defensible. Ten papers were gathered in the hope of finding support for it.
+
+**None of them contains it.** The chain needs three links: lizards eat harvester ants (*documented*, half a century over); moderate predation makes a harvester colony better at resisting fire ants (**no published evidence found**); that lowers fire ant numbers across a region (**no published evidence found** — Texas Parks and Wildlife’s volunteer data suggested a negative relationship in *some* years, and the same report says “pooled data do not reveal a clear relationship”).
+
+**The causal arrow is reversed, and that is the part with a cost.** The literature runs one way: suppress fire ants and small vertebrates recover. Lee Ann Johnson Linam’s conclusion is an *ask* — “recovery efforts will have to address their management in order to be successful.” Reverse it and a request for work becomes a reassurance that no work is needed.
+
+**And the geography is exactly backwards.** The claim puts the recovery in limestone. The eastern Edwards Plateau — the limestone country — is precisely where that report records volunteers “confirm some pessimism.” The encouraging reports came from the Post Oak Savannah, the coastal barrier islands and the Dallas–Fort Worth Metroplex, and are described as “small and isolated.” Mason Mountain, where releases actually happen, is roughly **two-thirds granite**.
+
+**The true half of the headline is the bad half.** Fire ants genuinely are being eliminated across parts of Texas — by the tawny crazy ant, *Nylanderia fulva*. One invasive replacing another, which is worse news, not better. The invented half is the comforting one.
+
+Declared unreadThree sources named as gaps on the page, including the video
+
+**The 1992 paper, and the numbers we did not print.** Middendorf & Sherbrooke’s canid-elicitation study in *Copeia* is paywalled and every route we tried refused us. A search-engine summary offered specific percentages for how often lizards squirt at a dog versus at a human imitating one. **Those figures are deliberately absent from the spread**, and the spread says why — a synthesised summary is not a source, least of all for a number. The qualitative finding is carried instead by Henry and colleagues, read in full: a defence “employed primarily against canids.”
+
+**The 1989 venom paper.** The 0.119 and 162 µg/g values are quoted as they appear in the 2021 paper we did read. The 28 µg/g figure for the spiny lizard and the plasma-transfer detail come from secondary reporting, and are logged as an open item.
+
+**The video.** YouTube returned the title and nothing else; a site republishing the script returned 403. So the zine grades the claim *as it was described to us*, and says so on the spread. The claim has meanwhile propagated into synthesised search answers phrased as though it were research, which is the part that should worry anybody.
+
+Refused as evidenceA genus-level hit that would have read as a finding
+
+A 2019 study of introduced populations in South Carolina reports *Solenopsis* at 1.20%, 8.53% and 1.50% of the diet by number across three sites. That could be written up as “actually, horned lizards *do* eat fire ants” — and it is not: the identification is to **genus**, and *Solenopsis* contains many native species. The spread says so rather than spending the number in either direction.
+
+Two other things were left unasserted for the same reason. That fire ant baits kill native harvester ants is *contested* — pesticides are repeatedly implicated in the decline literature, and at least one field trial found broadcast baits did not reduce native ant populations. And no arithmetic was done on whether one lizard could dent a colony, because inventing that calculation would be the same error as the video, pointed the other way. **Grading the chain is the honest move; a counter-calculation would not be.**
+
+A release figure was also corrected before shipping: a press summary gave “260 released, 205 from Fort Worth Zoo”, where *Texas Parks & Wildlife Magazine* gives **263 released in autumn 2021, 159 of them hatched at Fort Worth Zoo**. A widely repeated “more than 3,000 juveniles since 2017” total was dropped rather than printed unverified.
+
+CorrectionWe said looking at a horned lizard is illegal. It is not, and the source lists what is
+
+**What we got wrong.** Spread ten read: “The species was listed as threatened in Texas on 18 July 1977 — within a few years of that schoolyard. *Which means the thing those children did is now illegal.*” It then quoted Henke & Fair, *“Handling horned lizards is illegal even if your intentions are good.”*
+
+**What is right.** Those children did not handle it. They took turns looking into a tree hollow and left the animal where it was. The statute Henke & Fair are describing names three things — it is illegal to *“pick up, touch, or possess”* one — and **looking is on none of that list.** It was lawful then and it is lawful now. **Ryan caught it, within the hour of shipping**, from his own account of the afternoon.
+
+**Why the error mattered.** The spread was building to a real point — that the law is a measure of how scarce the animal became, not a verdict on a child — and it reached for the sharpest available version and overshot into a claim the source does not support. The refusals two spreads later already said *“looking is not extraction”*, so **the zine contradicted itself in its own closing argument** and no gate could see it: this is a claim about a Texas statute, which is not a colour, a tag tree, a position, a class or a card order.
+
+**And the correct version is the better one.** The law draws its line at the next step because that is where the harm was, and collection sits in the decline literature beside the roads and the poison. Those children were on the right side of that line — and looking leaves the animal where it is, which is precisely why a schoolyard memory can end up as evidence. Spread seven gained the sharper half: nobody touched it, so the animal was on the *first* rung of its own defence ladder. Henry and colleagues set the order out — cryptic coloration first, then *“flatten itself against the substrate… run a short distance and then ‘freeze’”*, with hissing, lunging, horn-jabbing and blood-squirting all further up. **The stillness those children remember was not tameness. It was the defence, working.**
+
+Fixed before shippingA cover motif redrawn, and nine diagram grounds that would have printed as slabs of ink
+
+The cover began as a top-down horned lizard, positioned so its fringe ran through the issue numeral and its label. Moving and scaling it cleared the numeral but left it reading as a spiky ball rather than an animal — the fault [recorded here before](https://starstuff.earth/changelog.html) as four of five whale attempts drawing a fish. **It was replaced rather than iterated:** an eye, and the drop leaving it made of ants, which is the argument and cannot be mistaken for a different animal. Clearances against the numeral block and the title’s ink were measured, not eyeballed.
+
+**And a print fault no gate on this site can see.** The nine diagrams sit on a dark ground rectangle for screen. `starstuff.css` blanket-inverts SVG *text* and *strokes* for print but deliberately does not blanket-invert shape fills — so every one of those grounds would have printed as a slab of ink with #111111 labels on top of it. A page-level print rule now sets them to `fill: none`. **The contrast gate reports 0 screen and 0 print failures either way**, because its print pass composites against a bare sheet; confirming the fix needed a separate probe reading computed fills back under print emulation. Same lesson as the August stylesheet case: run the gate for regressions and something else for confirmation.
+
+2026 · September 7
+
+## A leaf does not fade. It stays green, and green, and green — and then it turns in about a week
+
+[Zine No. 102](https://starstuff.earth/it-stays-green-and-then-it-goes-zine.html), the ninth [Young Readers](https://starstuff.earth/collection-young-readers.html) piece. The frame this zine was proposed on did not survive its own sources, and the correction is now a spread of its own rather than a quiet substitution. A count on the collection page was corrected rather than incremented.
+
+New pieceIt Stays Green, and Then It Goes — Zine No. 102
+
+Read-aloud science for four to eight, in the collection’s two-layer form. Mattila and colleagues marked individual leaves on rowan, Norway maple, silver birch and bird cherry and measured the chlorophyll in each of them **every morning and every evening for a whole autumn**, with an instrument that reads a leaf without damaging it — so the same leaf could be measured hundreds of times. Verbatim: “the chlorophyll content of each individual leaf remained constant until a phase of rapid degradation commenced. The fast phase lasted only ~1 week and ended with abscission.” **The slow fade everybody pictures is not what a leaf does.** And the leaves are not synchronised — degradation “started at different times in different *B. pendula* leaves, and the leaves belonging to same branches did not behave similarly” — so a tree turning gradually over weeks is hundreds of fast changes, staggered, and the smooth curve is an artefact of averaging them together.
+
+**Then two colours that arrive by completely different routes.** The yellow carotenoids are in the leaf all summer, doing photosynthetic work. The red anthocyanins are not there at all until the tree builds them *during* senescence. And before it lets go, the tree recovers “about 80% of the nitrogen and phosphorus”. The leaf on the ground is a leaf the tree has already emptied.
+
+Corrected before shippingThe tidy sentence we proposed the zine on is tidier than the measurements
+
+**What we planned.** The zine was proposed as *The Yellow Was Already There* — the standard account, in every popular explanation of autumn colour: the green goes and reveals the yellow that was hiding underneath.
+
+**What the one source that actually separated the yellow pigments found.** Keskitalo and colleagues, following a single aspen through an autumn: **“Lutein and beta-carotene were degraded in parallel with chlorophyll, whereas neoxanthin and the xanthophyll cycle pigments were retained longer.”** The two main yellow carotenoids went down alongside the green, not after it. And the paper that states the standard version hedges it — Mattila et al. write, in their introduction rather than their results, that autumn colours are “*partly* caused by exposure of carotenoids due to faster degradation of chlorophyll.” **The popular retelling drops the *partly*.**
+
+**What the zine does instead.** The uncontested half stays: the pigment really is in the summer leaf, and the spread that says so is the claim the piece is most confident of. The contested half gets *its own spread, in the child’s own layer*, ending “nobody has finished this one either.” A read-aloud could have printed the tidy sentence and nobody would have complained, which is exactly why it did not: *for kids* is the shelf where a verify-everything standard quietly lapses, and this was the sentence on the page most likely to have lapsed.
+
+CorrectionA count we incremented instead of deriving, on our own collection page
+
+Adding this piece, the [Young Readers](https://starstuff.earth/collection-young-readers.html) line about how many pieces hand the child something to *do* was bumped by arithmetic — from “six of the eight” to “six of the nine”, on the assumption that the new piece added none. **Deriving the set from the read-aloud layers of all nine pieces gives seven, not six.** The page now says seven, and the derivation agrees with the page’s own separately-worded sentence naming exactly the pieces that have nothing. **An inherited count incremented is not a count derived** — and no gate on this site can read a number written out in a sentence, which is why this file keeps saying so.
+
+Two more figures on that page had gone stale in the same way and were re-derived: the list of what the pieces measure, which still stopped at “spadefoot toads, salamanders, seeds or bees” four pieces after it stopped being true, and the note on which pieces have no demonstration.
+
+Fixed before shippingThe cover art ran under the issue number again
+
+Third cover in a row where the motif had to be measured rather than placed. Here the binding constraint was *horizontal* — this motif is a wide shape and the numeral block’s ink starts at 864 px — so it had to be scaled down to 0.70 rather than merely moved. **check-overlap.mjs passes it and is right to**: art over text is the half of the No. 48 fault that gate was explicitly built not to cover, so the clearances are measured against each element’s ink box every time.
+
+The print probe was clean on the first run for once, because this zine’s figures were written with the lesson from [No. 100](https://starstuff.earth/almost-all-of-it-is-holes-zine.html) and [No. 101](https://starstuff.earth/one-ear-higher-than-the-other-zine.html) already applied: every pigment bar is **labelled in text as well as coloured**, and the page carries its own print rules pushing the shapes to two distinguishable inks, so the figures still read on a black-and-white sheet where the green/gold distinction cannot survive.
+
+2026 · September 7
+
+## A barn owl’s two ears are at different heights — and at least five separate lines of owl arrived at that, never the same way twice
+
+[Zine No. 101](https://starstuff.earth/one-ear-higher-than-the-other-zine.html), the eighth [Young Readers](https://starstuff.earth/collection-young-readers.html) piece and the third with something to *do*. One source read at full text and three at abstract only — which the zine states on each spread rather than letting the citations imply more. A count that three papers give three different answers to is printed as disputed rather than resolved.
+
+New pieceOne Ear Higher Than the Other — Zine No. 101
+
+Read-aloud science for four to eight, in the collection’s two-layer form. Your two ears are level, so a sound directly above and a sound directly below reach both of them identically — there is **nothing to compare**, and up-and-down is the direction two level ears cannot do. A barn owl’s are not level. Knudsen and Konishi, verbatim: “The barn owl’s left ear opening and flap are located high in the left trough, whereas the right ear opening and flap are centered in the right trough.” So up and down produces a difference between its ears too — and that is the direction an owl needs most, for a geometric reason Norberg gives: prey direction “usually forms a shallow angle with the ground”, so the same angular error costs far more distance vertically than horizontally.
+
+New pieceThe demonstration is the published experiment, and it needs nothing
+
+Shut your eyes, have somebody clap, point — you are close. Cover one ear with a hand and do it again, and you point wide. That is the manipulation Knudsen and Konishi ran on the owl, quoted on the same spread: “Occluding the right ear caused the owl to orient below and to the left of the sound source; occluding the left ear caused it to orient above and to the right of the sound source.” **Read it twice, because the owl’s version has an extra half** — a child loses left and right; the owl loses left-and-right *and up-and-down at once*, which is the entire subject. No props, no kit, no season: the most reliable demonstration in this collection to actually do.
+
+**And the strongest spread is a dissociation rather than a wonder.** With the facial ruff feathers moved aside, the owl “continued to localize sounds accurately in azimuth, but failed to localize sounds in elevation.” One ability destroyed, the other untouched — far better evidence than everything getting slightly worse together, which is what you would expect from a bird that was merely upset.
+
+Fact-checkThree papers, three answers, and we printed all three
+
+How many times ear asymmetry evolved independently among owls is given as **at least five** by Norberg’s own 1977 abstract, as **at least four** by a 2018 paper summarising that very same paper, and as **up to seven** by a 2019 one. The count depends on which owl family tree you use and on how different two asymmetries must be to count as separate inventions. The read-aloud uses the primary’s own figure and the grown-up box states the disagreement, because picking the tidiest number would have been the easiest possible place for this collection’s standard to lapse. **The independence is not what is in dispute — the counting is**, and the reason nobody doubts the independence is the fact the child gets: the anatomy is different every time, soft tissue over a symmetrical skull in one owl and skull bone in another.
+
+**An open question from the proposal, now closed.** Which of the barn owl’s ears sits higher was reported inconsistently across the sources we had at proposal stage. Two independent primaries settle it and agree: Knudsen and Konishi on *Tyto alba*, and Krings, Rosskamp and Wagner on *Tyto furcata pratincola* — “the left ear opening in the skin is located higher than its counterpart on the right.” The zine’s figure is labelled from the owl’s point of view and *says so on its face*, because an owl facing you has its left on your right, and an unlabelled drawing tells half its readers the mirror image.
+
+Fixed before shippingA motif position carried from a sibling was measured against a different title
+
+The cover art collided with **all three** cover elements at once — the issue number by 5 px, the masthead line by 10 px, and the title by 57 px vertically. The cause is worth keeping: this title wraps to **two** lines where [No. 100](https://starstuff.earth/almost-all-of-it-is-holes-zine.html)’s took one, so its ink box is 112 px tall instead of 62 and starts 42 px higher up the cover. A position inherited from a sibling is a position measured against a different title. Rescaled to 0.85 and repositioned by measuring the painted group against each element’s ink box. **check-overlap.mjs passes all of it and is right to** — that gate compares text to text, and art over text is the half of the No. 48 fault it was explicitly built not to cover.
+
+**And the print probe earned its keep a second time.** Two arrowheads were drawn as filled triangles in a light `rgba()`, which is matched by neither the shared print sheet’s list of light fill literals nor this page’s own print rule — so they would have printed near-white and vanished beside a bracket printing at #444444. Converted to strokes, which the shared sheet handles for free. Re-probed clean: every shape #333333, all seventeen labels #111111.
+
+2026 · September 7
+
+## A dandelion seed flies on the parts that are not there — and the demonstration we planned would have taught a child the opposite
+
+[Zine No. 100](https://starstuff.earth/almost-all-of-it-is-holes-zine.html), the seventh [Young Readers](https://starstuff.earth/collection-young-readers.html) piece and the second with something to *do*. The source was read at full text. **Reading it killed the demonstration the zine was proposed with**, and the replacement is on the page along with an account of why.
+
+New pieceAlmost All of It Is Holes — Zine No. 100
+
+Read-aloud science for four to eight, in the collection’s two-layer form. A dandelion seed is not a parachute, and the difference is the whole piece: a parachute is a sheet, and this is **about a hundred separate hairs with nothing in between them**. Cummins, Seale, Macente, Certini, Mastropaolo, Viola and Nakayama counted them by X-ray micro-tomography — 100 \[95, 106\] filaments, each 7.41 millimetres long and 16.3 micrometres thick — and measured the plume’s porosity, “the ratio of the empty projected area to the plan area of the enclosing disk”, at **0.916**. About ninety-two parts in every hundred of a dandelion’s flight is air. And the emptiness is the mechanism rather than a saving: because the plume is gaps, the air does not escape round the edges but passes straight through, and that leaves “an extraordinary type of vortex” — “a ring of recirculating fluid, which is detached owing to the flow passing through the pappus” — hanging in the air above the seed, never touching it, all the way down.
+
+Corrected before shippingThe demonstration we proposed was false, and a child would have found out first
+
+**What we planned.** Cut a paper circle the width of the seed head, drop both, and watch the solid one fall faster. It is the obvious version, it sounds right, and it is *wrong*.
+
+**What the paper says.** Their own arithmetic runs against the intuition: for a solid disc to supply the same drag as the pappus at the same falling speed, its diameter “is given by D = 8.6 mm, which is 38% smaller than” the real 13.8 mm plume. **Per unit of width, a solid disc is the better brake.** A same-size paper circle has *more* drag — and, being some twenty times heavier, lands first anyway. A child following that instruction would have got the opposite of what the page promised, which is the exact failure the collection names on its own face: *an imperative a child follows and gets nothing from teaches them that the book was wrong.*
+
+**What the demonstration is now.** The observable, correct difference is **steadiness, not speed**. A paper circle flutters, tips and slides all the way down; a dandelion seed comes straight down upright. That *is* the finding: the paper measured the critical Reynolds number at which the ring breaks up into vortex shedding at 149 for an impervious disc against 429 for real seeds, with a porous disc built to the dandelion’s own porosity giving 457 — and “all of the dandelion samples tested flew at a Re below Re\_c.” Spread ten states the correction to the reader rather than quietly benefiting from it, and the figure was redrawn to show *orientation*, which is what a child actually watches. **No gate could have caught any of this.** A demonstration that quietly proves something other than what it claims is worse than no demonstration, and the only thing that catches it is reading the primary source.
+
+Fixed before shippingFigure two would have printed backwards
+
+The zine’s second figure is a hundred dots — eight filled for the hair, ninety-two hollow for the air. The shared print stylesheet turns every *stroked* SVG shape #444444 on paper and inverts a fixed list of light *fill* literals; this page’s one-off accent is not on that list and could not be. So on paper the ninety-two hollow dots would have come out dark and the eight filled ones pale: **the emphasis inverted, and the picture saying the opposite of its own caption.** **check-contrast.mjs cannot see it** — it measures text against its background, and a shape fill carries no text. Found with a separate print-emulation probe reading computed `fill` back off the elements, and fixed with a small page-level print rule whose selectors name `circle`, `ellipse` and `rect` explicitly so they cannot reach a label. Re-probed after: shapes #333333, every label #111111.
+
+Fixed before shippingThe cover art was sitting on the title
+
+The cover motif’s descending flow arrows crossed the last word of `.cover-title` — art over text, measured at 1280 px as arrows at x 742–806 against a title ink box running to x 843. **check-overlap.mjs passes it and is right to**: that gate compares text to text, and text over artwork is the half of the No. 48 fault it was explicitly built not to cover. Caught by looking, measured with a Range rather than by eye, and the motif moved up 56 units to leave 14 px of clearance.
+
+Fact-checkThe volume number that circulates is wrong
+
+The paper is *Nature* **562**(7727), 414–418 (2018) — not 559, which appears in secondary accounts and which we would have carried had we not checked it against Crossref and Europe PMC before building on it. Publisher access is blocked, so the text was read from the **peer-reviewed accepted author manuscript** in the University of Strathclyde’s repository; the zine says so in its colophon, and says that it is the accepted version rather than the version of record.
+
+2026 · September 7
+
+## A dog breathes out through the sides of its nose, so the smell stays put
+
+[Zine No. 99](https://starstuff.earth/the-dog-breathes-out-sideways-zine.html), the sixth [Young Readers](https://starstuff.earth/collection-young-readers.html) piece and the first with something to *do*. Both sources open access and read at full text. A third paper arrived while we were building and was read and then declined — and reading it corrected a number that circulates widely.
+
+New pieceThe Dog Breathes Out Sideways — Zine No. 99
+
+Read-aloud science for four to eight, in the collection’s two-layer form. Every explanation of a dog’s nose starts with how many smell-receptors it has; this one starts with **where the air goes**. Craven, Paterson and Settles measured seven dogs sniffing in masks — from a 6.8-kilogram Pomeranian to a 52.9-kilogram Labrador — and every one sniffed between four and seven times a second. On the way out, the air does not go forward: “a ventral-laterally directed air jet is ejected from the nose”, two sideways puffs that stir the scent up instead of scattering it. Inside, a shelf of bone splits the flow, and only about 12–13 per cent of a sniff turns off into the smelling room at the back. **And the paper’s comparison with us runs the way nobody expects** — human sniffing gives “dramatically different” patterns in the left and right cavities of one nose, which the authors call “undesirable for consistent odorant deposition.” Your nose is not a broken dog nose. It was never trying to be one.
+
+New pieceThe first read-aloud with a demonstration you do together
+
+Spreads four and five are one demonstration split in half, and they are the reason the zine works. Put a feather on the table and blow at it: it goes. Put it back and blow *past* it: it wobbles, spins and stays. **A child who has watched that has felt the problem and the solution in their own breath before either is explained.** None of the other five Young Readers pieces gives the adult something to do with the child, and this one is built around it.
+
+Fact-checkA paper we were handed, read, and then did not use — and a number it corrects
+
+While this was being built, Ryan supplied the source we had flagged as untraced for a different, rejected proposal about dog body-size variation. Reading it settled the matter in an unexpected direction. Shearin and Ostrander (*PLOS Biology* 8(3), e1000310) is an **Essay** rather than a research report; its headline claim is hedged in its own text — “*arguably* the most morphologically variable land mammal” — and **it does not contain the hundred-fold Chihuahua-to-mastiff range that circulates widely and gets attributed to the literature.** What it actually states, in a figure caption, is that the difference between a Cane Corso and a Yorkshire terrier is *over 30-fold*. Nothing in No. 99 rests on any of it, and the discrepancy is recorded on the zine’s own colophon. *A source you are handed can be a lead that dead-ends, and saying so is the finding.*
+
+Fact-checkThe two numbers a caregiver will repeat both carry their caveats on the page
+
+Read-aloud is exactly the shelf where a verify-everything standard quietly lapses, so the two figures most likely to be quoted back are hedged where the adult will see them. The four-to-seven-sniffs band is real, but the paper *also* reports sniff frequency scaling with body mass — so “the big dog and the little dog did it at the same speed” is true at the resolution a five-year-old is being offered, and the grown-up box says exactly that. The 12–13 per cent split is one modelled case of a “relaxed, undilated nostril”, and the authors hedge it upward themselves. **A whole spread is given to a distinction between two verbs:** that each nostril samples a separate patch of air is a measurement; that the dog uses this to work out direction is the authors’ proposal, written “may be used”. The child is told the difference.
+
+SiteA convention nobody had noticed was already there
+
+No. 99 was going to be written up as the first Young Readers piece with something for the child to *do*. Checking the other five before saying so found that **four of the six already had one, in three different kinds** — a *prop* ([No. 94](https://starstuff.earth/the-colours-you-cannot-see-zine.html): “Hold up something red”, which makes an absence concrete), a *thought experiment* ([No. 96](https://starstuff.earth/the-cuttlefish-that-cannot-see-colour-zine.html): what colour would you make a grey photograph of grass? — the child performs the finding on themselves), and now a *demonstration* (No. 99’s feather). That is a form observed in finished work, which is this site’s bar for naming a convention, so it is written into [the collection page](https://starstuff.earth/collection-young-readers.html#something-to-do) rather than left as a habit. The rules that came out of it: it lives in the read-aloud layer and never the grown-up box; it uses what a household already has; it gets two spreads when it has a before and an after; and it has to *be* the mechanism rather than decorate it. **Two honest limits are recorded with it.** [No. 95](https://starstuff.earth/bone-song-read-aloud-zine.html)’s “Push on the bone — the bone answers” is an *image*, not an instruction — the same zine says the current is “not enough to feel” — and the line between the two matters, because an imperative a child follows and gets nothing from teaches them the book was wrong. And it is not a quota: [No. 91](https://starstuff.earth/nobody-in-this-pond-is-late-zine.html) and [No. 93](https://starstuff.earth/seeds-that-wait-zine.html) have none and are not worse for it, because you cannot do a seed’s decade of waiting on a table.
+
+SiteThree dogs with real names, and a cover that is not a dog
+
+The closing spread is a frontier result presented as unfinished: three dogs called **Kevin, Delfi and Charlie** picked a warm patch from a cool one across a room using a nose-tip too cold to be a heater. Their names and their individual scores are real, from the paper’s own table — a named animal is a real animal — and the child is told, in the scientists’ own words, that the limits of it “remain to be elucidated.” **The cover deliberately does not show a dog.** [No. 97](https://starstuff.earth/the-channel-you-cannot-mask-zine.html) spent four drafts trying to draw one and produced an insect face, a skull and an alien with shoulders, and all eight gates passed every one. The motif here is the mechanism instead: two breaths, one scattering the specks and one leaving them.
+
+2026 · September 7
+
+## The first animal we ever domesticated, and nobody can say where it came from
+
+[Zine No. 98](https://starstuff.earth/nobody-knows-where-the-dog-came-from-zine.html), the sixteenth chain in [How We Got Here](https://starstuff.earth/collection-how-we-got-here.html). Six documented joints, five contested, two leaps — the lowest documented share of any chain we have made, because the question is genuinely open and the most recent paper in the field says so on its own face. Three corrections came out of building it, one of them to another page.
+
+New pieceNobody Knows Where the Dog Came From — Zine No. 98
+
+Thirteen links from 1868 to March 2026, on two rails — **bone** against **genome** — because the dog-origins dispute is not one field disagreeing with itself but two methods returning different answers about the same animal. Darwin concluded multiple origins; mitochondrial DNA established wolves; then two camps formed and stopped speaking, one reading 1,543 living dogs and finding the origin south of the Yangtze, the other reading 18 prehistoric genomes and finding it in Europe. A 31,680-year-old skull from Goyet Cave was called a dog and then, six years later, re-measured in 3D and called a wolf. In 2013 two outsiders raised three million dollars and got the warring camps into one room. **The chain ends on the most recent paper in the field saying, in its own words, “our results cannot resolve where in the world, and how many times, dogs were domesticated.”** That is not a failure. That is what the work looks like when nobody is smoothing it.
+
+Fact-checkThe chain’s most important link was not in the source material
+
+Ryan handed over six items on dogs. The chain’s ending came from none of them: *Genomic history of early dogs in Europe* (*Nature* 651, 25 March 2026) turned up while we were chasing a radiocarbon date for the Goyet skull. It reads the oldest dog genome yet recovered — 14,200 years old, from Kesslerloch in Switzerland — and rules out one long-standing hypothesis before declining to settle the rest. **Without it the chain would have stopped at 2020 and been six years stale on its central question.** A chain is only as current as its last search, and the source drop is a starting point rather than a boundary.
+
+Fact-checkTwo numbers that travelled, and an edition that had to be checked
+
+**Darwin is quoted at the 1868 first edition, not the one everybody transcribes.** The public-domain text of *The Variation of Animals and Plants under Domestication* that circulates online is the *1875 second edition*, and the zine dates its quotation 1868 — so the sentence was checked against the first edition as well. It appears in both. A sentence quoted at the wrong date is a sentence nobody checked. **And the retelling of Darwin is wrong in a way worth printing:** the secondary accounts have him *wondering* whether dogs came from one species or a wolf-jackal cross. He considered it and then concluded the opposite of a wondering — “the balance of evidence is strongly in favour of the multiple origin of our dogs.” **Separately:** the 1997 paper that founded modern dog genetics is universally reported as dating dogs to *135,000 years ago*. Its own abstract says “more than 100,000 years before the present.” The zine prints the abstract’s figure and names the other as the number that entered circulation.
+
+Fact-checkA count on the collection page that this zine made false
+
+[How We Got Here](https://starstuff.earth/collection-how-we-got-here.html) said that [No. 52](https://starstuff.earth/build-the-eclipse-zine.html) “carries the most contested joints of any chain here.” It did, with four. No. 98 has **five**, so the sentence was corrected in the same pass rather than left to rot, and the collection tally was re-derived from the pages rather than incremented — fifteen chains and 135–33–14 becomes sixteen and **141–38–16**. *A new piece can falsify a sentence on a page it never touches*, and nothing in the eight gates can read a count written out in prose.
+
+SiteA prev link that had been pointing correctly under the wrong name
+
+Wiring No. 98 into the reading chain turned up a stale label: [Star Gazing](https://starstuff.earth/collection-star-gazing.html)’s *prev* link pointed at No. 88 but was still captioned *The Lizard That Was Never There* — the href had been updated when No. 88 shipped and the visible label had not, so the arrow went one place and the words said another. Fixed. A repo-wide sweep of every prev/next label against its target’s title found 24 mismatches and **23 of them are deliberate abbreviations** (*Mycelium & Rhizome* for *A Mycelium and a Rhizome*, and so on). This was the only one naming a different piece.
+
+2026 · September 7
+
+## Four dogs told thirty-six strangers apart by smell, and it explains the quiet room
+
+[Zine No. 97](https://starstuff.earth/the-channel-you-cannot-mask-zine.html). Many of us leave the gathering and go sit with the dogs. The usual explanation is that dogs are more empathetic than people; the evidence will not carry that, and what it will carry is better. We also removed a whole planned spread because the paper behind it disagrees with its own title.
+
+New pieceThe Channel You Cannot Mask — Zine No. 97
+
+Built from an account of Ryan’s: that like many Autistic people he always got on better with dogs than humans, and at a gathering would go and sit with the dogs somewhere quiet. **The account is on spread two, marked as an account and not as data** — the device [No. 92](https://starstuff.earth/two-things-on-one-leaf-zine.html) established for the same reason. Then the settled fact. Wilson, Campbell, Petzel and Reeve (*PLOS ONE* 17(9):e0274143, 2022) ran a double-blind, three-alternative forced-choice trial: four dogs, breath and sweat from thirty-six people taken before and after three minutes of counting backwards aloud from 9000 in seventeens. The dogs picked the stress sample in **675 of 720 trials**, and **34 of 36** on first exposure to a stranger. The authors’ own conclusion is chemistry rather than sympathy: acute stress changes the volatile organic compounds coming off a body. So the dog is not on the channel a room grades. Face, gaze, prosody and turn-taking latency are authored output, and that band is what masking works on; metabolic exhaust is not authored by anybody. *The signal everybody agreed was missing turns out to be present and reliable as soon as somebody stops looking in the band we spend our lives performing.*
+
+Fact-checkThe most famous study in this area is on none of the spreads
+
+Nagasawa et al.’s oxytocin gaze loop (*Science* 348, 2015) is the obvious thing to build a zine like this on, and we did not. Published commentaries flag confounds between its dog and wolf conditions and note the effect was not uniform across the dogs. **Contested is not refuted — and it is also not a floor.** Albuquerque et al. (*Biology Letters* 12, 2016) went the same way for a different reason: we could find it neither replicated nor overturned, which is an absence of evidence about the evidence. Both are named in the colophon rather than quietly omitted, because a reader is entitled to know which famous thing is missing and why.
+
+Fact-checkA spread deleted because a paper’s title disagrees with its own body
+
+The outline carried a sweep about what dogs have done for us across millennia. The survey behind it — Fallahi, Masoudi, Maghsoudi and Vaez Torshizi, *Veterinary Medicine and Science* 10, e70012 — is titled *“A 40,000 years history”* while its own text gives the range as **“between 10,000 and 40,000 years ago”**, a factor of four, cites secondary sources for it, and carries the typo “&sim;40,0000–10,000 BP.” The confidently-assigned archaeological floor is far more recent: about 15,000 years in Europe and over 12,500 in Far East Asia, read at Frantz et al. (*Science* 352, 2016). **The sweep is gone rather than restated at a number we could not stand behind**, and the deletion is printed in the zine’s own colophon.
+
+Fact-checkOur own library had erased an author, and we nearly inherited it
+
+The zine closes on **Carol Millman** — an Autistic professional dog trainer — who answered *“is ABA dog training for children?”* by pointing out that the comparison is unfair to the dog trainers: meet the animal’s fundamental needs before any conditioning, relieve the fear rather than train away its display, and know that a dog taught not to growl is a *time bomb dog*, because you removed the warning and not the fear. We found her piece through a saved highlight file in our own library, **which credited it to “neuroclastic.com” rather than to her**. Both quotations were verified at the article instead, where her name and credentials are. *An aggregator can erase an author as easily as it can alter a quotation* — and this one is in a store we built ourselves.
+
+New pieceThe counter-evidence is on a spread, not in a footnote
+
+Two years after the Belfast result, Parr-Cortes, Müller, Talas, Mendl, Guest and Rooney (*Scientific Reports* 14, 2024) exposed eighteen dogs to an unfamiliar person’s stress odour and found them **significantly less likely to approach an ambiguous food location** — which the authors read as possible risk-reduction behaviour. A zine arguing that dogs read our stress owes the reader the finding that what a dog may do with it is *get careful* rather than comforting. It has spread nine and a figure of its own. The zine also prints its floor: four dogs, and the authors’ own words are *proof of principle*.
+
+2026 · September 7
+
+## Every collection page now says what it is before it says how it works
+
+Sixteen collection pages rebuilt to the shape [Young Readers](https://starstuff.earth/collection-young-readers.html) arrived with: a short plain-language summary, then the cards, then the methodology behind a labelled band. Two unbalanced page shells turned up while we were in there, one of them visible on the live site.
+
+UpdatedThe argument was arriving before the thing it was about
+
+Ryan’s call, and the model was the newest collection page rather than a principle: [Young Readers](https://starstuff.earth/collection-young-readers.html) opens by telling a reader in plain words what is on the shelf, lists the pieces, and only then explains how the collection is built. Every other collection page did it the other way round — **a reader arriving at [Triggers](https://starstuff.earth/collection-triggers.html) met about 8,900 characters of convention, epistemics and self-criticism before the first card**, and at [Field Guides](https://starstuff.earth/collection-field-guides.html) about 9,000 — measured as visible text, tags stripped. That material is the best writing on those pages and none of it has been cut; it was in the wrong place. All sixteen now run *summary → cards → how this collection works*.
+
+UpdatedThe summaries are new writing, and they were written not to repeat what they sit above
+
+Each page gained two or three short paragraphs in plain language, and the first drafts were thrown away: they had turned into the methodology’s own opening paragraph in shorter words — [Kin](https://starstuff.earth/collection-kin.html)’s summary reproduced its animal list and its *not a metaphor* line almost sentence for sentence. That is the [tagline-and-moment collision](https://starstuff.earth/collection-easter-eggs.html) this site has already had once, on cards, and the fix is the same one: a face and a body have to say different things. **Nothing below the cards was rewritten.** Every existing section kept its heading and its `id`, so a link into a collection page’s argument still lands where it did.
+
+UpdatedFive pages had nothing short to say before their cards, and one had a count paragraph in the way
+
+[Easter Eggs](https://starstuff.earth/collection-easter-eggs.html), [Field Guides](https://starstuff.earth/collection-field-guides.html), [Foundations](https://starstuff.earth/collection-foundations.html), [Notes & Rationale](https://starstuff.earth/collection-notes.html) and [Start Here](https://starstuff.earth/collection-start-here.html) ran an essay straight into the grid with no heading introducing it, so each got one line and a new heading — *The eggs*, *The guides*, *The pieces*, *The pages*, *The doors*. And [Sound](https://starstuff.earth/collection-sound.html)’s paragraph on why 268 cards is not 268 songs moved below the cards under its own heading: it is a good paragraph and it is arithmetic, not an introduction. **The search index gained seven records and lost none**, all of them on the six pages that gained a heading; every summary is findable.
+
+SiteNotes & Rationale had been printing its own footer full-bleed since 4 September
+
+Found by counting `<div>` against `</div>` across every page, which nothing here had done. [Notes & Rationale](https://starstuff.earth/collection-notes.html) carried **one closing tag too many**, left behind on 4 September when Glimmer Wire’s card was removed to make it [its own collection](https://starstuff.earth/collection-glimmer-wire.html). The browser does not error on that; it closes `.doc-shell` early. Measured at 1280px on the version that was live: the hero sat in its 812px column and **the closing section and the colophon ran the full 1280**. Two pages had the opposite fault — a shell never closed at all, on [Young Readers](https://starstuff.earth/collection-young-readers.html) and [No. 88](https://starstuff.earth/the-name-was-already-the-verdict-zine.html). Those two rendered correctly, because the parser closes the div at `</main>`, and both are fixed anyway. **None of the eight gates can see any of this:** `check-markup.mjs` ignores unbalanced tags on purpose, and the other seven measure a repaired DOM or a rendered page that looks fine.
+
+2026 · September 7
+
+## Zine No. 96 — an animal that matches a colour it cannot see, and nobody knows how
+
+The fifth read-aloud, for four to eight and whoever is reading to them. Two measurements that disagree about what should be possible, four explanations that have all failed so far, and a 2026 review with a better idea.
+
+NewThe Cuttlefish That Can’t See Colour
+
+[No. 96](https://starstuff.earth/the-cuttlefish-that-cannot-see-colour-zine.html) joins [Young Readers](https://starstuff.earth/collection-young-readers.html), which goes from four members to five. A cuttlefish matches whatever it sits on — pattern *and* colour — and its eye holds a single class of light-catcher, where yours holds three. **Both halves of that were measured, and they should not both be true.** Mäthger and colleagues built checkerboards whose squares differed only in wavelength, matched for brightness against the animal’s own single pigment, so the board would look plain *to a cuttlefish*; one that could see colour would break into its bold disruptive pattern, and these stayed plain. Their conclusion: *“cuttlefish must be color blind.”* Chiao and colleagues then imaged live camouflaged animals with a camera that records every wavelength and modelled how they would look to the fish that hunt them — a good colour match, in the eyes of the predator. **Thirteen spreads, six figures, five refusals.**
+
+NewFour explanations, none of them over the line — and then a better question
+
+Sam Reiter’s review (*Current Opinion in Neurobiology*, online 28 April 2026, four months old) works through every proposed rescue — skin that happens to be the right colours, the chromatic-aberration idea built on the cuttlefish’s **W-shaped pupil**, polarized light, light-sensing skin — and finds each *“insufficient or weakly supported,”* noting that the pupil idea has had *no physiological tests at all*. Then he suggests something stranger and better: **maybe there is no colour perception here**, and the animal predicts colour from light and dark, the way an image-colourisation network guesses a greyscale photo’s colours from statistical regularities in the world. The child’s half of that spread carries the idea without the vocabulary: *if I showed you a grey photograph of grass, what colour would you make it?* The machine-learning parallel stays in the grown-up layer, and the grass example is ours, labelled as a way in rather than as evidence.
+
+Fact-checkThe imperfection inside our own best source got its own spread
+
+The paper we cite for *the match is good* also reports where it fails: *“most reflectance spectra of cuttlefish had a peak around 800 nm in the infrared range, whereas natural substrates tested did not have this spectral characteristic.”* In infrared the animal does not match at all. **That is a whole spread rather than a footnote**, because printing only the flattering half of a paper is the tidier version of it. And the grown-up box says exactly what we did *not* establish: vertebrate visual pigments are not known to reach 800 nm, but **we found no study asking whether any cuttlefish predator can detect it**, so “it does not matter” is an inference from an absent sense rather than a tested result. Two other caveats sit on the page: the 492 nm pigment measurement traces to a single study from **1958** that nobody has redone with modern methods, and *“cephalopods are colour-blind”* is false as stated — the firefly squid carries three photopigments.
+
+UpdatedTwo experiments the zine let a reader fuse
+
+Ryan, reading the draft: *“I’m confused between spreads 5 and 6. Humans can see the cuttlefish against the special checkerboard but fish cannot?”* **No fish was involved in the checkerboard experiment at all**, and the confusion was the writing’s fault. Spread five is an artificial board in a tank, and the only vision it probes is the *cuttlefish’s*. Spread six is natural sea floor, and the vision being modelled is the *predator’s*. One asks what the animal can see; the other asks whether what it does works on the thing it is hiding from. But spread six opened *“maybe the cuttlefish only looks like a good match to us”*, which invites carrying the board forward into a scene it has no part in. Rewritten to change scene explicitly — *now put the checkerboard away; that was a test, in a tank* — and the grown-up box now names the conflation and says why it is easy to make. **A reader landing on a question neither paper poses is a defect in the zine, not in the reader.**
+
+SiteThe first drawing was a fish with whiskers
+
+Recorded because it is the third time this failure mode has been caught by eye on this site and no gate can see it. The first cover cuttlefish had a five-to-one mantle and fanned arm strokes; it read as **a thin fish, or a cat’s face on a torpedo**. A real cuttlefish is about two-to-one, so it was redrawn broad, with a scalloped fin frill and the arms as one blunt crown rather than radiating lines, and the corrected shape was pushed into two figures as well. **Then the placement turned out to collide with the title’s first line** — the clearance note in the template described the cover it came from, not this one. Re-measured properly, with a Range over each text node, which is the only honest form of that check: `check-overlap.mjs` compares text against text and is explicitly blind to text crossing artwork.
+
+2026 · September 7
+
+## The eighteenth receipt — and a correction to a correction notice on this page
+
+This week’s shear error is now in the receipts table where it belongs. Going to fetch it turned up an entry on this page that had claimed a count moved when it had not.
+
+CorrectedOur own correction log was missing our biggest recent correction
+
+[Too Good to Check](https://starstuff.earth/too-good-to-check.html) is the page that lists what we got wrong, and for two days it did not list the compression-versus-shear error — the one we swept across seven pages. It is now the eighteenth row: *“Press a bone and it makes a voltage — negative where compressed, positive where stretched. Ours, on seven pages, for seven weeks.”* It is filed under Mode 03, *the story told backwards*, which is exactly its shape: the facts survived the retelling and the mechanism did not. **It also carries the detail that makes it worth printing** — a 2021 review in *Bioelectricity* states the mechanism correctly on one page and repeats the compression gloss four pages earlier, which is how a wrong sentence stays alive in a literature that also holds the right one.
+
+CorrectedAn entry on this page said a count went up. It hadn’t.
+
+The changelog entry for the Tsing matsutake case ends: *“That page’s worked-correction count goes from seventeen to eighteen.”* **It did not.** That case was written into the page’s prose, as a worked example under Mode 03 — the cleanest instance we have of a hedge dying in quotation with the author at no fault — and not into the receipts table. So the table stayed at seventeen rows, its caption kept saying *Seventeen receipts*, and the four other places that cite *“seventeen worked corrections”* were right all along. **The entry asserted the consequence of an edit rather than the edit**, which is the same species of error as everything else on that page. Today’s addition is what actually takes it to eighteen, and the caption and all six downstream references now say so.
+
+SiteAnd a miscount in yesterday’s entry, from not reading the hits
+
+The entry above this one said the count was asserted in *four other places* and that the page *“states no count of its own.”* Both were wrong, and wrong the same way: the number came from `grep -c` without reading what matched. The page **does** state its count, in the table’s caption, capitalised — which a lower-case search missed. And two of the four hits on the front page were *“the seventeen**th** century”* and *“cicadas spend seventeen years underground.”* The real figure was six references plus the caption. **Our own working notes carry a standing rule for exactly this — a derivation that returns a number nobody reads back is not a derivation** — and it was broken while writing an entry about counts going stale.
+
+2026 · September 7
+
+## We read all ten printable sheets for the same fault. Two had it; one of those had it worst of all.
+
+There is no grep for *derives an ought from an is*, so every sheet was read. Eight were already clean and two were exemplary. One fix we wanted does not fit on the paper, and is recorded here rather than forced.
+
+CorrectedThe door sheet argued it as a syllogism, and its colophon claimed the argument as ours
+
+[Owed, Not Earned](https://starstuff.earth/owed-not-earned-broadside.html) is the sheet we print for a door, and section vi read: *“if you have flesh and blood, we accept you. **If you are made of stars — and you are — you are already one of us.**”* That is membership derived from what you are made of, laid out as a formal step. The colophon then named the step as the piece’s own contribution: *“that belonging is constitutive **because** we are made of the same star stuff — is ours.”* **The sheet never needed it.** Its actual warrant is Timothy R. Clark’s — *“not earned but owed … a nonnegotiable right”* — plus Douglass, and both are moral arguments that stand without any physics at all. Section vi now reads *“You are made of stars, and the welcome goes all the way down to them,”* and the colophon says the belonging rests on Clark and Douglass, *“not on the physics: it would be owed in a universe made of one element.”* **Section v was deliberately left as it stands** — *“Kinship is not a courtesy we extend to you. It is the material you are made of”* is a true claim about what kinship *is*, since kinship means shared origin and we do share it. The fallacy was only ever in the step from kinship to membership.
+
+UpdatedA sheet built entirely on a physics analogy, which never said so
+
+[The Same Water](https://starstuff.earth/the-same-water-broadside.html) runs from ice to human capacity across two sides, and its refusals list had three items, none of them *a rhyme, not a proof* — while two sibling sheets carry exactly that refusal. Added, with its counterfactual: *“Not a proof. A rhyme — capacity would still be a state in a universe where nothing froze.”* Three longer drafts were cut **for paper rather than for style**: `check-sheets.mjs` reported Side B spilling onto a third US Letter side until the line got short enough.
+
+SiteEight sheets needed nothing, and two of them are the model
+
+[The Star Stuff You’re Made Of](https://starstuff.earth/star-stuff-elements-broadside.html) and [“Better Get Used To It”](https://starstuff.earth/better-get-used-to-it-broadside.html) already carry the refusal with its counterfactual, and the first is the one to copy: *“The atoms do not owe us a conclusion about belonging; it would deserve defending in a universe made of one element”* — and, on its face, *“None of it was made for you.”* [Six Ways a Fact Goes Wrong](https://starstuff.earth/six-ways-broadside.html) is a method sheet with no belonging claim to ground. [Shared Air](https://starstuff.earth/shared-air-broadside.html) argues that shared air makes a *private* accommodation ineffective, which is a claim about what works rather than an ought from an is. [Not a Line](https://starstuff.earth/not-a-line-broadside.html) uses the spectrum for etymology — the word meant fingerprint, we heard ladder — and rests its case against ranking on *harm*, which is independent of the optics. [My Galaxy](https://starstuff.earth/constellation-sheet.html) is a blank worksheet. **And the negations on several of these are their subject matter**, not caution dressed as content: *what not to say* is the whole point of a field card. The rule from this morning bans hedges and disclaimers in poster type. It was never a ban on contrast.
+
+OpenOne correction we could not fit, and the count that is about to go wrong
+
+This week’s shear correction belongs in [Six Ways](https://starstuff.earth/six-ways-broadside.html)’ list of the ones we got wrong — it is precisely that sheet’s Mode 03, *the paper’s own hedge is missing*. **It does not fit.** One more entry costs about 48px and Side B has less slack than that; a full entry overflowed by 64px and a two-line one by 48. **We did not cut an existing correction to make room** — trading one published error for another is not a fix. Its real home is [Too Good to Check](https://starstuff.earth/too-good-to-check.html), which the sheet already points at for the full list and **which is also missing it**. That page holds seventeen worked corrections and states no count of its own; *“seventeen”* is asserted in four other places instead. So the eighteenth correction is owed, and so are eight count updates across four files. Logged here first, because the gap is the finding.
+
+2026 · September 7
+
+## Our broadside of refusals broke its own most-repeated refusal, on the back of the same sheet
+
+And the first attempt at fixing it was rejected for hedging the poetry out of poster type. Both are worth reading; the second is the more useful mistake.
+
+CorrectedSide A refuses the move. Side B made it.
+
+[What We Refuse](https://starstuff.earth/what-we-refuse-broadside.html) ranks our refusals by how often they recur, and the one at the top — on **nine pieces** — is *a rhyme, not a proof*: *“That a pattern recurs in nature is not why difference deserves welcome. It would deserve welcome in a universe that made exactly one shape.”* **Side B then read: *“Difference is variation, not deficit. The universe doesn’t pathologize its own variation. Neither do we.”*** That is the derivation, printed on the reverse of the sheet that counts it nine times — and Side B’s own commentary says why it matters: take that refusal out of the natural-history pieces *“and what’s left is an argument that biology licenses a politics.”* The panel now reads *“True even in a universe that made exactly one shape. We are the ones saying it, and we are saying it all the way down.”* **The sheet also now says so on its own face**, in the section it already keeps for this — *And: we notice we are doing it too*, whose whole point is *“not a claim to have escaped the trap, but a note, in the piece itself, saying where we are still standing in it.”*
+
+UpdatedA disclaimer is not a fix, and we put one in 20-point type
+
+The first pass at the [L★S Broadside](https://starstuff.earth/ls-broadside.html) gave it *“It answers to being twisted, not merely pressed — measured in 1957, far too quietly to feel”* and *“The physics does not prove it. It is a promise we are making.”* Ryan’s verdict: **“so hedged they have no power or poetry.”** He is right, and the diagnosis is exact — **a broadside is read at three metres off a wall, and we had printed the footnote instead of the claim.** The hedge belongs in the sources block, the zine, and the ledger. **The repair was to make the claims stronger, not weaker.** The bone panel is now *“Your skeleton is piezoelectric. It hums a little song, quietly but measurably”* — Ryan’s, after two rejected attempts of ours and one of his. His first, *“it answers to **impact**”*, was declined: impact names the one load the 1957 paper says reads back as nothing, and it is the wording the compression gloss travels in. **The final version states no mechanism at all, which is the honest move** — silence is not error, where a wrong mechanism was; *shear* stays in the sources block. And *hums a little* is the phrase [No. 95](https://starstuff.earth/bone-song-read-aloud-zine.html) already defends as correctly sized, with *quietly but measurably* holding the magnitude, where the boil is the control that proved the effect is not biological at all. It hedges nothing because it overclaims nothing: it never says that voltage runs a body. The paradigm panel took two more passes. A version built on [A Promise, Not a Finding](https://starstuff.earth/a-promise-not-a-finding.html)’s best line — *“not a discovery we are reporting, a distance we are willing to travel”* — was rejected too, on a rule worth keeping: **no negations on a broadside.** A poster that tells you what it is not has spent its space arguing with an absent opponent. It now reads *“Difference is variation, not deficit. The universe runs on variation. We call it beautiful, and we mean it all the way down to our star stuff.”* Ryan wrote the first two sentences and a third — *“It is the beauty and the strength of star stuff”* — which put the value *in the material*, and that is the move *a rhyme, not a proof* names on nine pieces. (It also over-reaches on the physics: strength through diversity is a claim about populations, and stars gain nothing from isotopic variety.) **The fix was to give the value a subject, not a hedge.** *We call it beautiful* is as warm as the original and cannot be read as a derivation, because the one doing the calling is us — and *all the way down to our star stuff* is the tagline’s own grammar, in which the star stuff is the reach of the claim and never its warrant — with *our* against the *your* printed above it, so the sheet closes the distance it has just measured. *Not deficit* stayed: it is the one negation on the sheet carrying meaning rather than caution. [The Manifesto](https://starstuff.earth/manifesto.html) got the same treatment, having been hedged just as limply the day before.
+
+SiteThe phrase stays. It was never the phrase.
+
+*The universe doesn’t pathologize its own variation* is on roughly forty pages and is staying on all of them. It is this project’s founding **image**, and the site already says as much in several places: [Bone Song’s refusals](https://starstuff.earth/bone-song-zine.html#spread-8) now state that an image is all it is, the Manifesto’s *Held honestly* panel says the science does not make our ethics true, and [this week’s Glimmer Wire](https://starstuff.earth/glimmer-wire-2026-09-04.html) puts it plainly — *down to is not because of*. **What was wrong was a phrase carrying a warrant in the two places built to refuse warrants**: the third panel of a broadside, and the reverse of the sheet that collects the refusals. Fixed there. Left alone everywhere it is doing the job an image does.
+
+2026 · September 7
+
+## We fixed the shear error on one page yesterday. It was on seven.
+
+Correcting the instance you noticed is not correcting the fault — a lesson this site has written down twice and has now failed twice. Every page carrying the compression framing has been swept, the [L★S Broadside](https://starstuff.earth/ls-broadside.html) has the revised poem, and four cross-references that our own edit had quietly falsified are repointed.
+
+CorrectedThe Manifesto argued against itself on one page
+
+[The Manifesto](https://starstuff.earth/manifesto.html) said bone generates charge *“under mechanical stress — compression, tension, bending”* in one paragraph, and correctly described collagen fibres slipping past one another *under shear* two paragraphs later. **Both were already on the page, and nobody had noticed they disagree.** It also stated the contested part as settled — *“It is how bone knows to grow, where to strengthen, how to heal. The skeleton is a living signal processor”* — and carried *“Every step you take, every breath, every impact — your bones are generating voltage,”* which is **verbatim the sentence [Bone Song’s refusals name](https://starstuff.earth/bone-song-zine.html#spread-8)**. All three fixed. The same framing was also in the read-aloud’s grown-up box, its colophon, its structured metadata, its card on two pages, and the broadside’s card on the Print collection. **Seven pages, one grep.**
+
+UpdatedThe broadside carries the revised poem, and a new third pillar
+
+Side B of the [L★S Broadside](https://starstuff.earth/ls-broadside.html) is the full *Bone Song* poem, so it inherited every fault the poem had: *Dr. Yasuda* alone rather than **Fukada and Yasuda**, *press on them and they spark* rather than *they answer — too quietly to feel*, and *move through the world and they sing voltage*, which is the unhedged claim again in nicer clothes. Replaced with the revised text. On Side A, the first pillar said *“press on it and it generates voltage”*; it now says the skeleton answers to being twisted rather than merely pressed. **And the third pillar, at Ryan’s request, no longer reads *“The universe doesn’t pathologize its own variation. Neither do we.”*** It reads: *Difference is variation, not deficit. The physics does not prove it. It is a promise we are making, and it reaches all the way down.* That is [A Promise, Not a Finding](https://starstuff.earth/a-promise-not-a-finding.html)’s position rather than a second slogan in the first one’s place. Verified as one sheet, two sides, on A4 and US Letter.
+
+CorrectedOur own edit made four other sentences untrue, and no check could see it
+
+Rewriting *Bone Song*’s poem removed the *universe doesn’t pathologize / storms are not disorders* stanzas. **Bone Song’s own refusals then still said “the poem says the universe does not pathologise its own variation”** — pointing at a line the poem no longer had. And [No. 95](https://starstuff.earth/bone-song-read-aloud-zine.html) described that removed argument as No. 1’s in four separate places, including its refusals and the note explaining how read-aloud translations are numbered. **Editing one piece can falsify another piece’s account of it, and every gate passes cleanly:** the sentence stays grammatical, the link still resolves, the markup is fine — the claim is just no longer true. All five now describe what the zine actually argues: a nothing found is a fact about the instrument at least as much as about the thing it was pointed at, and the belonging is a promise being made rather than a finding being reported.
+
+UpdatedThe read-aloud now names a third correction, and this one was ours
+
+[No. 95](https://starstuff.earth/bone-song-read-aloud-zine.html) shipped saying it had read the 1957 paper *“at the bibliographic record and through the review literature, not at the full text, which we could not reach”* — and then cited that paper for a sentence it does not contain. It is now read in full, and the colophon’s *two corrections in this zine’s own house* is **three**. The added lesson: *“confirmed through the review literature” is not a small discount on reading the thing* — and a 2021 review in *Bioelectricity* states the mechanism correctly on one page while repeating the compression gloss four pages earlier, which is how a wrong sentence survives in a literature that also holds the right one. The self-correction stays in the colophon and out of the spread text, where it would only get between a child and the fact.
+
+2026 · September 7
+
+## A 2021 review states the mechanism both ways on the same page, which is how the error travelled
+
+Two more open-access papers, read at full text. They confirm yesterday’s correction to [Bone Song](https://starstuff.earth/bone-song-zine.html), hand its central hedge a direct quotation, and supply a second instance of the zine’s own argument from inside bone biology. One thing they offered has been turned down.
+
+Fact-checkThe wrong sentence and the right one, four pages apart, in the same review
+
+Carter and colleagues (*Bioelectricity*, 2021) write that a charge appears **“when a shearing force is applied to collagen fibers and they slip past each other”** — the 1957 finding, stated correctly. Four pages earlier the same review says *“compression on bone is shown to produce a negative electric charge … whereas traction produces a positive charge”* — which is, almost word for word, the sentence this zine carried for seven weeks and corrected yesterday. **A peer-reviewed review holding both at once is the measure of how completely the compression gloss has settled into the secondary literature**, and of why nothing short of the primary could have told us which one was Fukada and Yasuda’s. It is now said plainly in the colophon rather than left as our own bad luck.
+
+UpdatedThe hedge is now a quotation instead of our judgement
+
+Spread three has said since yesterday that the size of the effect in a living body is unsettled. That was our reading of the literature. The same review says it outright: **“There is a controversy around the presence of the piezoelectricity of the bone and its role in regeneration.”** And Yue and colleagues (*International Journal of Nanomedicine*, 2025) have the wet-bone flow potential and the piezoelectric effect *interacting* rather than one of them winning, which is the direction the spread already pointed — open toward more mechanisms, not fewer. The 2025 review also independently confirms the attribution on spread two: the effect is *“mainly due to the non-centrically symmetrical arrangement structure of collagen fibers,”* while hydroxyapatite crystals *“are not generally considered to be significant piezoelectric sources in themselves.”*
+
+NewCells in a dish need ten to a hundred times the strain a real bone ever gets
+
+A walking body strains its bones by roughly **0.04–0.3%**, rarely past 0.1%. Bone cells in culture need something like **1–10%** before they respond at all. Read that as a result about the cells and you conclude ordinary walking never reaches them. **Nobody read it that way.** The field read it as a result about the dish and went looking for what a living bone has that a dish does not — the current answer, still a hypothesis, being fluid drag magnifying the strain each cell actually feels. That is [spread five](https://starstuff.earth/bone-song-zine.html#spread-5)’s argument arriving from inside bone biology rather than from us, and it is now on the page, hedged as the hypothesis it is.
+
+DeclinedA braid we could have had, and did not take
+
+The same review reports that the piezoelectric charge opens voltage-gated calcium channels in bone-repair models. That would tie [spread two](https://starstuff.earth/bone-song-zine.html#spread-2)’s electricity directly to [spread four](https://starstuff.earth/bone-song-zine.html#spread-4)’s star-forged calcium — a genuinely satisfying join, and cited. **We have left it out of the argument.** It sits inside the very mechanism spread three spends a page saying is unsettled, so spending it here would spend the hedge for a rhyme. It is named in the colophon, so the choice is visible rather than a gap. **And both papers carry the same limit, flagged twice:** their subject is overwhelmingly *engineered* piezoelectric materials — barium titanate, PLLA, ceramics, scaffolds mending defects in rats. That applied stimulation helps a bone heal is well supported and is the lineage Bassett’s clinical work belongs to. It is not the claim that native bone uses its own voltage to decide where to grow, and this zine keeps the two apart.
+
+2026 · September 7
+
+## We read the two papers at full text and found an error the abstracts had been hiding
+
+Both of [Bone Song](https://starstuff.earth/bone-song-zine.html)’s load-bearing sources were listed as read-at-abstract. They are now read in full, and neither reading turned out to be a formality.
+
+CorrectedShear, not compression
+
+Spread two said the voltage goes *“negative where the tissue is compressed, positive where it is stretched.”* That is the later stress-generated-potential literature, not Fukada and Yasuda. Their paper says the effect **“appears only when the shearing force is applied to the collagen fibres to make them slip past each other,”** that its magnitude depends on the angle between the pressure and the bone’s axis, and that the sign and amount of polarisation *“vary considerably with the direction of pressure.”* Push straight down a bone’s axis and there is nothing to read. *It answers to being twisted, not merely pressed.* The diagram caption was wrong for the same reason. **Not one of the abstract-level sources or review summaries we had used said any of this** — which is the whole argument against treating “confirmed at the abstract” as a small discount on reading the thing.
+
+NewThey boiled a bone for two hours and it still worked
+
+Two controls from 1957, both now on the page. Specimens boiled for two hours and re-dried showed little change — *“the fact ascertaining that the effect is not of biological origin.”* Whatever this is, it is not a vital process; it is the shape of the material. And polarisation rose **linearly** with stress, which the authors take as *“evidence that the effect is truely piezoelectric and not electrostrictive”* — electrostriction goes as the *square*, and every material does it. **A straight line as the discriminator**, which is the same move as von Frisch’s grey cards in [No. 94](https://starstuff.earth/the-colours-you-cannot-see-zine.html). Also now on the page: the largest constant they measured was about a tenth that of quartz, the human bone had been air-drying for *years*, and the collagen winds along the bone as a spiral that reverses direction layer by layer.
+
+NewThe control group the IQ spread was weaker without
+
+The obvious objection to *“38 Autistic children scored 30 to 70 percentile points higher on Raven’s”* is that Raven’s is simply the easier test and flatters everybody. **Dawson and colleagues tested that, and we did not have it.** Twenty-four non-Autistic children, recruited by newspaper advertisement, took both and showed *no such discrepancy*; among adults the two scores *“did not differ significantly.”* So the gap is not a property of the tests — it is what happens when *these instruments* meet *these people*. Added, with the authors’ own conclusion (*“intelligence has been underestimated in autistics”*) and their own caution against calling the processes dysfunctional, which the refusals now honour.
+
+NewKanner said it in 1943, and the field went the other way
+
+Dawson and colleagues open by quoting the paper that codified autism. Kanner wrote that Autistic children’s *“excellent memory … and the precise recollection of complex patterns and sequences, bespeak good intelligence.”* Sixty years of measurement then placed a large fraction of the same population in the range once called mental retardation. **And one connection nobody planned:** that paper carries a footnote explaining its use of *Autistic* rather than *person with autism*, citing **Jim Sinclair** — who is already credited at the foot of this zine, for the paradigm. The study it leans on and the zine itself are indebted to the same person.
+
+2026 · September 7
+
+## Our first zine was arguing against its own refusals, so we rebuilt the argument on measurement instead of physics
+
+[Bone Song](https://starstuff.earth/bone-song-zine.html), second revision in two days. Nine spreads now, seven refusals, and the poem moved to the end.
+
+CorrectedThe zine contained a refusal and a spread that contradicted each other
+
+Friday’s pass added *“Not: physics as a warrant for a moral claim”* while the paradigm spread was still making exactly that argument — *“a star doesn’t diagnose its own magnetosphere … but the bone still made its electricity.”* That closing clause is the fact vindicating the person, which is the move [A Promise, Not a Finding](https://starstuff.earth/a-promise-not-a-finding.html) exists to refuse. The spread also restated the poem in prose, and asked *“what is the universe trying to do through this particular configuration of matter?”* — the universe is not trying to do anything.
+
+NewNothing found is not nothing there
+
+The replacement argument was already inside the zine. Bone was silent until somebody put a meter on it. The field then spent fifty years unable to separate two mechanisms in wet tissue — **and nobody concluded the bone was doing nothing.** When a result comes back ambiguous, a field says the measurement is hard and builds better instruments. *That courtesy is not extended everywhere.* A null result is a fact about the instrument at least as much as about the thing it was pointed at — which is epistemology, not physics doing moral work, and the spread says so on its own face.
+
+NewTwo instruments, seventy percentile points apart
+
+The same shape, measured on people. Dawson, Soulières, Gernsbacher and Mottron gave **38 Autistic children** two intelligence tests. On Raven’s Progressive Matrices — reasoning about patterns, almost no words, no stopwatch — they scored on average **30 percentile points higher** than on the Wechsler, and in some cases more than **70**. Same children, same afternoon. *Only one of those numbers usually leaves the room*, and it goes into a file, a placement, and what the adults around a child expect for years. And the test is not a neutral window: it is a room, a stranger, a clock, and a demand to perform on cue — **a sensory event that can depress the very thing it is trying to read.** That point is Stimpunks’ own, from the [Intelligence Quotient](https://stimpunks.org/glossary/intelligence-quotient/) entry, cited rather than rebuilt.
+
+UpdatedThe poem moved to the end, and four verses came out of it
+
+It now sits after the refusals. Cut: *the universe doesn’t pathologize its own variation / storms are not disorders / variation is not deficit / the electric bone that bends differently is still making the signal* — the fallacy, two slogans, and the fact vindicating the person, all orphaned once the prose that matched them was gone. A replacement draft put the zine’s instrument argument into verse instead — and that was cut too, on Ryan’s read that the poem should **stand alone from the essay**. He was right, and it is the same fault as the old paradigm spread in reverse: prose restating the poem had become the poem restating the prose. What is left is the two facts and the love. The join it produces is the house phrase saying its own logic plainly: *you are walking around with stellar ash in your skeleton / we love you down to your star stuff* — the loving reaching all the way down to it, not caused by it. One more line changed that nobody had flagged — *“move through the world and they sing voltage”* was the every-step overclaim still standing in verse after its removal from prose.
+
+NewA payoff spread, and what the title actually means
+
+The IQ spread read as a setup with nothing after it, so there is now a synthesis spread before the refusals. Three things had to happen before anybody could say a bone makes electricity, and they are not the same kind of thing. **Make:** the body assembles stellar calcium and spends energy every second of your life holding a gradient, so signalling is possible at all — whether or not anyone is in the room. **Detect:** whether it registers depends on what is pointed at it; bone was silent for as long as nobody held a meter to it, and *the silence was ours.* **Read:** when the meter does move, somebody still decides what the movement means — a voltage becomes a mechanism or an artefact; a score becomes a placement, a set of expectations, and a child. **Only the first of those belongs to the body**, and the making does not wait for either of the others. It did not wait for 1957. That is what the title is: a bone under load makes a signal, and that is the song. The spread carries its own guard, because a synthesis is exactly where the fallacy would creep back in — *the song does not make a case for you; it was never doing that job.* And it hands the value claim to the right side of the instrument: **the loving is on our side of it too. It is not a reading, and it does not wait for one.**
+
+MethodThe stars spread was interrupting the argument
+
+Found on a cohesion read. The argument runs across four spreads, and the calcium-and-stars spread sat inside that run with no part in it — two hard cuts, and a spread that had to point *backwards over the interruption* to reach the material it needed. Rather than move it, we gave it a job: the thread now runs **make → detect → who reads it**, and the calcium gradient becomes the first term of the argument instead of a second unrelated wonder. Two smaller seams fixed in the same pass: one spread ended by pre-stating the next spread’s heading word for word, and another re-told a fact from three spreads earlier without signalling that it was coming back to it on purpose.
+
+MethodA refusal that had to be made stronger, and one added
+
+Friday’s refusal disclaimed “a finding about anyone” — which **under-claimed** once a published finding was on the page. It now says what is true: a finding about *instruments*, not a ruling on anyone’s file, and not a claim that these tests measure nothing. And the inverse move is refused outright: **not Raven’s as the real score.** Treating the higher instrument as the truth-teller leaves the machinery intact and merely reorders the same children. Dawson and colleagues make no such claim, and neither do we.
+
+MethodWhy there is a parent’s account in the colophon and not on a spread
+
+Ryan Boren’s own words about IQ tests administered to his multiply neurodivergent child are in the colophon, attributed, in his voice. **Deliberately not on a spread.** The zine states that the account is *why* that spread exists but is not the evidence for it — Dawson and colleagues are, and their finding would stand without it — and that it is an account of what a parent watched rather than a description of a child. The reasoning is printed rather than assumed: *a child reduced to a number in a file is the thing that spread objects to; a child written into a zine to illustrate the objection would be the same move with better manners.*
+
+2026 · September 6
+
+## The element guide had hung a property of bone onto calcium, and stated the disputed part outright
+
+The Bone Note — Calcium · Ca in [A Field Guide to the Star Stuff You’re Made Of](https://starstuff.earth/elements-field-guide.html), rewritten. The same material now runs in spread four of [Bone Song](https://starstuff.earth/bone-song-zine.html).
+
+CorrectedCalcium is not piezoelectric
+
+The entry said it was — in its summary line, in a tag, and in a whole fact row reading *“Piezoelectric · pressure becomes voltage · bone sings under load.”* **The effect belongs to bone as a composite, and is attributed to the collagen rather than the mineral**, which we had already established elsewhere on this site in August. An element guide is exactly the wrong place to hang a composite-material property on a single element. All of it is gone.
+
+CorrectedAnd it carried the overclaim in its strongest form anywhere here
+
+*“Every step you take, every load your skeleton bears, gets quietly translated into electricity that tells the bone where to grow.”* That asserts the **remodelling mechanism outright** — the precise part the literature does not settle, and a step further than the sentence removed from No. 1 the same day.
+
+NewWhat replaced it is calcium’s own, and it is a better fact
+
+**More than 99 per cent** of your calcium is locked in bone and teeth — about a kilogram, one to two per cent of your body weight, almost all of it architecture. The part that *does* anything is the **under one per cent** that moves: every heartbeat, every muscle contraction, every nerve signal. And it works because your cells spend energy continuously pumping calcium out of themselves, holding the concentration inside at roughly **a ten-thousandth** of what is immediately outside. Open a channel for an instant and calcium floods down the slope, and the cell has its signal. *A signal made of scarcity, held in place by work.* That is true of calcium specifically, where the piezoelectric line never was.
+
+UpdatedThe same material now runs in Bone Song
+
+At Ryan’s request, spread four of [No. 1](https://starstuff.earth/bone-song-zine.html) now carries the 99-per-cent split and the gradient rather than the nucleosynthesis alone. Its origin line was also tightened from *“a star that lived and died”* to **massive stars and the supernovae that ended them**, which is calcium’s actual production route and what the field guide had said all along.
+
+2026 · September 6
+
+## We rebuilt our first zine to the standard we invented after making it
+
+[Bone Song](https://starstuff.earth/bone-song-zine.html) was made on 17 July 2026, before the Star Stuff voice and method existed. It now runs to eight spreads: a new one carrying the caveat, and a refusals set, which the zine predated the convention for. The prose poem stays.
+
+CorrectedThe credit, including inside the poem
+
+Bone piezoelectricity is **Fukada and Yasuda’s**. This page named Yasuda alone in **four places** — an eyebrow, the body prose, the colophon, and the poem. We had already fixed this on the [Manifesto](https://starstuff.earth/manifesto.html) and the [L★S Broadside](https://starstuff.earth/ls-broadside.html) in August and never swept it back to the founding zine. The poem line is now *“Fukada and Yasuda knew this / They pressed on the crystal and it answered.”* Editing verse is a bigger act than editing a citation, and it is recorded as one.
+
+Corrected“Every step you take is a small current” is gone, and a spread replaces it
+
+That sentence was a step past the evidence, and nothing on this site had ever mentioned why. New spread three: Fukada and Yasuda measured **dried** bone. Piezoelectric response **falls as tissue is hydrated** — Fukada came back to measure exactly that in 1982. In a living body there is a second mechanism, **streaming potentials** from fluid squeezed through the tiny channels in bone, and a voltage measured in wet tissue is not by itself evidence of piezoelectric origin. *It is not refuted either* — recent work finds collagen’s response measurable at the humidity a real body runs at. Unsettled in both directions, for fifty years. The claim that holds is narrower: **squeeze a bone and it makes a little electricity, and this was measured.** The effect is also now attributed to the collagen rather than to collagen and mineral jointly.
+
+CorrectedA number we invented, caught before it shipped
+
+The first draft of this revision said the page had carried the fault *“for three years”* — in four places. Ryan asked: three years or three months? **Seven weeks.** 17 July to 6 September 2026. The figure had been invented to make the correction sound weightier, which is precisely the failure this site exists to catch, committed *inside a correction to our founding fact*. All four fixed; a grep confirmed it had not spread to any other page.
+
+MethodThe spreads carry the story. The colophon owns the mistakes.
+
+Also Ryan’s, and it reshaped the revision. The new spread had been written as self-narration — *this zine said … and it took writing a version for five-year-olds to notice it* — under an eyebrow reading *What we left out*, with a paragraph justifying its own existence. **That reads as noisy housekeeping and distracts from the story being told.** Six passages rewritten; the eyebrow is now *Dry and wet*; spread three contains zero references to this zine’s own history and reads as science. The full correction record lives in the colophon and here, which is what both are for.
+
+MethodOne sentence is deliberately not fixed
+
+The colophon still ends *“You are made of star stuff. The universe loves you for it. So do we.”* The middle sentence is the naturalistic fallacy stated flatly, and the next three words take it back. **It stays, verbatim.** [A Promise, Not a Finding](https://starstuff.earth/a-promise-not-a-finding.html) is built on that exact line and says on its own face that it is pointing at it rather than quietly deleting it. A site that keeps a public error log does not get to tidy its own first page.
+
+2026 · September 6
+
+## We made a read-aloud of our founding zine, and it found two faults in the fact this whole site is built on
+
+[Bone Song, Read Aloud](https://starstuff.earth/bone-song-read-aloud-zine.html) (No. 95) is the read-aloud door into [No. 1](https://starstuff.earth/bone-song-zine.html). Twelve spreads, three figures, five refusals, for four- to eight-year-olds. Writing it required checking the fact underneath it, and the check did not come back clean.
+
+CorrectedThe founding zine still credits one of the two people who measured it
+
+Bone piezoelectricity is **Fukada and Yasuda’s** — Eiichi Fukada is first author on the 1957 paper. This site credited *Yasuda alone* for a long time. We fixed that on the [Manifesto](https://starstuff.earth/manifesto.html) and the [L★S Broadside](https://starstuff.earth/ls-broadside.html) in August, logged it, and **never swept it back to No. 1 itself**, where it still stands in four places. Fixing the instances you noticed is not the same as fixing the fault, and this is that lesson landing on the oldest page here. *No. 1 has not been edited yet:* one of the four is inside its prose poem, and rewriting the founding artifact is a decision, not a correction to make in passing.
+
+CorrectedAnd a caveat that appeared nowhere on this site at all
+
+This is the bigger one. Fukada and Yasuda measured **dried** bone. Piezoelectric response **falls as tissue is hydrated** — Fukada himself returned to that in 1982 — and in living wet bone there is a second mechanism, **streaming potentials** from fluid squeezed through tiny channels, which some researchers think matters more for cell signalling. Voltages measured in hydrated tissue are not by themselves enough to show a piezoelectric origin. **It is not refuted either:** recent work finds collagen’s piezoresponse still measurable at physiological humidity, and a 2023 study reports both mechanisms coexisting and possibly coupled. *The question is live in both directions.* Until now, nothing on this site mentioned any of it, while No. 1 and the masthead broadside both say *“every step you take is a small current”* without a hedge. **What No. 1 says is not false** — the effect is real and was measured. It is stated more strongly than the evidence about *living* bone supports, which is a different fault and still worth fixing.
+
+NewThe zine gives a whole spread to “nobody has finished working it out”
+
+Not in the grown-up box — on the child’s page, in the big type. *In a real live bone there is something else making a little electricity too: water being squished through very small tunnels. So when a scientist measures a living bone they get a number, and then they have to work out how much came from the squeezing and how much came from the water moving. They have not finished. That is not a problem with the science. That is the science.* A four-year-old can be handed an open question without alarm, and the large type only ever makes the claim that survives: **squeeze a bone and it makes a little electricity, and this was measured.**
+
+MethodHow a read-aloud translation gets numbered
+
+The rule, set here because this is the first one. **A translation takes the next number in sequence** — numbers on this site record *when* a thing was made, and this was made now, so *No. 1b* would make the number lie about its own position. It carries a ***read-aloud of No. N*** marker in its card, in the same slot as the existing *companion to No. N*. And its colophon states that **the original owns the argument**: No. 1 makes the case that variation is not deficit, and No. 95 does not compress that into shorter words. A translation that re-made the argument would be two pieces claiming the same thing in two voices.
+
+2026 · September 6
+
+## A sixteenth collection, and the first one sorted by who it is for
+
+[Young Readers](https://starstuff.earth/collection-young-readers.html) opens with three members — [No. 91](https://starstuff.earth/nobody-in-this-pond-is-late-zine.html), [No. 93](https://starstuff.earth/seeds-that-wait-zine.html) and [No. 94](https://starstuff.earth/the-colours-you-cannot-see-zine.html). Star Stuff for four- to eight-year-olds and whoever is reading to them.
+
+NewAudience is a sixth axis, and it needed a shelf rather than a tag
+
+Every other collection here sorts by *register* (what kind of claim), *form* (what shape), *occasion* (what happened that day) or *issue* (which edition of a serial). This one asks who a piece is for. **All three members pass the Star Stuff register test outright** — each takes one settled, checkable fact and follows it until the belonging claim is already inside it — and that is exactly the problem. They pass, and a caregiver hunting for something to read to a five-year-old will never find three read-alouds inside a grid of thirty-nine adult zines. Discoverability is the entire job of a collection page.
+
+UpdatedThe three pieces left Star Stuff, and its counts were four additions stale
+
+A page belongs to one collection and says so once, so the move is a move rather than a copy. Star Stuff went from 44 cards to **41**. Its hero count still read *40 pieces* — wrong before this change and wrong for four additions before that — and its derived figure (total minus the seven founding zines) went from *thirty-three* to **thirty-four**. Both re-derived from the cards rather than incremented. This is the failure mode CLAUDE.md names in its own margin: no gate can read a number written out in a sentence.
+
+NewThe collection page greets the reader it is for
+
+It opens in plain language, at read-aloud size, addressed to a child: *“Hello. These ones are for you… Somebody can read them to you. The big words are for you to hear. The small words in the box are for the grown-up, so that if you ask ‘is that really true?’ they can look down and tell you exactly how we know. You are allowed to ask that about anything.”* Then the three cards. **Only then** does the page explain how the collection works — the axis, the two-layer convention, where the pictures go, and what these pieces refuse to claim — under a heading that says it is for the grown-ups. A collection page for young readers that opened with a methodology essay would have been addressed to the wrong person.
+
+MethodThe two-member floor was not broken, and that is the point
+
+It has been broken three times on this site, each with a written reason. This one opened at **three**, on a form observed in finished work. The first read-aloud shipped with the collection deliberately deferred, on a specific argument: *reading level, unlike cadence, can be observed retroactively* — so waiting cost nothing, which is exactly what the Glimmers cadence argument required and this one lacked. The reasoning, the rejected name (*Read-Aloud*, which names the consequence rather than the membership test), and the one thing still unsettled — how a read-aloud *translation* of an existing zine would be numbered and marked — are in `DECISIONS.md`.
+
+CorrectedA gate had been quietly standing down on one collection page
+
+Found in passing. `check-markup.mjs` verifies that a piece’s collection badge is labelled with the name the collection page gives itself, and it takes that name from the page’s `<title>`. If the title does not match the canonical form, the tool *deliberately stands down* rather than failing every member — an unverifiable claim is not a failing one. **[Triggers](https://starstuff.earth/collection-triggers.html) was the one page of sixteen whose title did not match**, so that check has been inactive on it since it shipped. Title canonicalised; the check is armed again.
+
+2026 · September 6
+
+## Two more read-aloud zines, and the second one is built on a correction to itself
+
+[Seeds That Wait](https://starstuff.earth/seeds-that-wait-zine.html) (No. 93) and [The Colours You Cannot See](https://starstuff.earth/the-colours-you-cannot-see-zine.html) (No. 94) join [No. 91](https://starstuff.earth/nobody-in-this-pond-is-late-zine.html) on the read-aloud shelf. Twelve spreads and three figures each, for readers of about four to eight and whoever is reading to them.
+
+NewFour kinds of waiting, and none of them is slowness
+
+Some seeds will not start until a whole winter has happened. Some sit inside cones **glued shut with resin** that only fire will melt. Some need to go through a bird. Some have a shell so hard that water cannot get in until it has been worn thin. Then look at where each one lives: a seed that sprouted before winter would freeze, one that sprouted before the fire would burn, one that sprouted under its parent would find no room. *Every one is waiting for the moment when starting would actually work.* And the longest wait anybody has **directly dated** — a date seed from Masada, radiocarbon-dated to the first century, planted and grown. That phrase *directly dated* is the authors’ own, and it is why we did not reach for a bigger number: longer claims rest on the age of the dirt around the seed rather than the seed itself.
+
+Corrected“Bees see more colours than we do” is a ranking wearing a fact’s clothes
+
+That is the sentence No. 94 arrived carrying, and it is in nearly every popular account. The review it is built on reverses it: ultraviolet is **“merely one component of colour vision”** for a bee, not a separate channel bolted onto a human-like system — and *humans are more sensitive to red than bees are.* A bee cannot see red at all. **The window is shifted, not widened.** Two comparably sized pieces of one continuous spectrum, sitting in different places, each blind to what the other has. The true version is better and harder to sell, and writing it the popular way turns a difference into a ranking, which is the move this whole site exists to refuse.
+
+NewA six-year-old can hold what a control is
+
+No. 94 spends a whole spread on how anybody knows bees see colour rather than just going for the brightest thing. In 1914 von Frisch taught bees to a blue card with sugar water, then took the reward away and set that card out beside **grey cards of every brightness he could make**. If the bees were picking brightness, one of the greys would have caught them. *The greys are there to catch us out.* That is the whole of science in one picture, and it belongs in a book for four-year-olds.
+
+MethodThe illustrations were in the wrong place, and one was inside the grown-up box
+
+Caught by Ryan: in a read-aloud, the child’s picture has to sit **with the child’s words**, not below the adult’s citations. All six new figures were moved above the grown-up layer — and one of them had been written *inside* it, where a child following the large type would never have reached it. The same fault was fixed on No. 91 during its build; it recurred immediately on the next two, which is what a convention with no gate behind it is worth.
+
+MethodWhat both zines decline to claim
+
+No. 93 prints no figures for its four dormancy mechanisms, names no pine and no bird, and says why: they are stated at settled-textbook level and we read no species-specific study for any of them. It also refuses *good things come to those who wait* — dormancy is a mechanism, not a virtue, and a child waiting for something that is not coming has been handed a delay, not a moral. No. 94 marks its wavelength figures as untraced to primaries, states that we have not read von Frisch’s 1914 paper, and refuses the most persuasive thing in its subject: **a UV photograph does not show you what a bee sees**, and no image can. Neither zine claims anything about human perception or human pace; where those arguments live is linked instead.
+
+2026 · September 6
+
+## Zine No. 92: we tried to write about frogs and lily pads, and got the relationship wrong twice
+
+[Two Things on One Leaf](https://starstuff.earth/two-things-on-one-leaf-zine.html) — fifteen spreads, three figures, five refusals. Companion to [No. 91](https://starstuff.earth/nobody-in-this-pond-is-late-zine.html), built from the same pond: that one reads the water for time, this one for space.
+
+CorrectedFirst we decided the picture was wrong. It isn’t.
+
+The first draft held that *frogs sit on lily pads* was mostly artistic convention, on the strength of finding no primary source for it. What we had actually found was that **content farms are not sources** — and we reported the shortcoming of our own search as a fact about frogs. A null result from a bad corpus is not a finding, especially for something so ordinary nobody publishes a paper about it. Ryan Boren corrected it from his own pond, and then from a photograph: a southern leopard frog fully up on a mature lily pad, taking its whole weight. The picture was never the thing that was wrong.
+
+CorrectedThen we smuggled the pairing back in through a nicer sentence
+
+Draft two had settled into *the pad is a lung the frog sits on* — which sounds like a finding and quietly asserts a relationship. The second correction killed it: **the frogs perch on everything in the tank.** Pennywort, elephant ear, rocks, the steel rim. What an adult frog wants is geometric rather than botanical — a flat surface, at a height, in the sun, above the strike zone, one jump from the water. Take the lilies out and they would sit on whatever was left. The lily has no claim on the frog, and that leaves the actual finding standing alone.
+
+NewMeanwhile the leaf is running a wind
+
+Dacey measured a *“pressurized flow-through system”* in a water lily: several litres of air a day entering the **young, newly emerged** leaves by thermal transpiration and hygrometric pressure, travelling down the petioles at up to **50 centimetres per minute** to a rhizome buried in anaerobic mud, and forcing a simultaneous return flow of carbon-dioxide-rich gas up the petioles of the **older** leaves. New growth is the intake; old growth is the exhaust; neither half works alone. And a 2021 photograph from the same pond shows a frog egg mass glued to a water lily stem — a tube that is roughly a quarter air by cross-section. *The zine refuses to say the frog chose the stem because it is a pipe.* The coincidence does not resolve; it just gets more exact.
+
+MethodA genus boundary we nearly walked across, and two things we cut
+
+Dacey’s plant is *Nuphar*. The plant in the tank is *Nymphaea*. The draft was one sentence from carrying the finding across that boundary unchecked — so we checked, and Richards, Kuhn and Bishop describe the same convective system in *Nymphaea odorata*, with air canals at 24 per cent of the petiole’s cross-section. **It carries. But checking and assuming are different acts.** Two things did not survive: a circulating claim that through-flow doubles root ATP, which we could not trace to anything we had read; and the shading-and-deoxygenation complication, because the strong literature is on *free-floating* mats like duckweed and water hyacinth, and attributing a hyacinth result to a rooted water lily is a growth-form swap. Also corrected: **a figure that contradicted its own caption** — the petiole diagram’s air canals were drawn at about 35 per cent of the disc under a label reading 24 per cent, and were redrawn to 23.4. No gate can see that.
+
+MethodThirty frogs is an observation, and the zine says so on its face
+
+One tank, one observer, no method, no repeat counts. It is the reason the piece exists and it is **not evidence for a single claim in it**; every measured number comes from somebody who was measuring. The crowding pattern — big leaves first, small ones when the pond fills — is described by the ideal free distribution, and the zine prints the awkward part: that theory predicts fitness is *equalised*, so it does not say the small-pad frogs lost. Two readings are live and nobody counted. What survives either way is that which pad you are on is a fact about how full the pond is. The turn is the error itself: reading partnership out of proximity is the same move that turned mycorrhizal symbiosis into elder trees feeding their young.
+
+2026 · September 6
+
+## Zine No. 91: the first one written to be read aloud, and it does not lower the bar to do it
+
+[Nobody in This Pond Is Late](https://starstuff.earth/nobody-in-this-pond-is-late-zine.html) is for readers of about four to eight, and for whoever is reading it to them. Twelve spreads, five figures, five refusals. Dedicated to [Lilypad Library](https://mskiersten.com/), Kiersten Case’s low-stimulation puppet series for neurodivergent kids, which Stimpunks fiscally sponsors.
+
+NewEvery spread carries two layers, and the small one holds the sources
+
+Large plain type for the child; a boxed *for the grown-up reading this* layer underneath holding the species names, the figures, the papers and the places the evidence runs out. **The point is that a caregiver can answer “is that really true?” without leaving the page.** The sourcing standard is not relaxed for the audience — same eight gates, same ledger row, same grading of every claim — because *for kids* is exactly the bin where a verify-everything standard quietly lapses. It is the same reasoning that keeps a *For Fun* collection off this site.
+
+NewThe frog and the axolotl are not our metaphor. They are the show’s casting.
+
+Lilypad Library put a frog and an axolotl side by side, and the biology underneath that pairing turned out to be better than it looked. A frog rebuilds its whole body. An axolotl never does — and the IUCN’s own Red List assessment describes it as **“a paedomorphic species, living permanently in water, and does not undergo complete metamorphosis.”** That is a description of an adult, not of a delay. The strongest spread is a population-genetics result: Everson and colleagues found the tiger salamander complex holds populations that transform, populations that never do, *“and those that do both”* — with gene flow between adjacent metamorphic and paedomorphic populations. **Geography divides these salamanders. The route through childhood does not.**
+
+CorrectedThe famous “eight days” is the floor of a range, and a widely-quoted axolotl number is not in the document it is credited to
+
+Couch’s spadefoot is everywhere reported as metamorphosing in *eight days, the shortest of any North American amphibian*. Newman’s 1989 paper gives **eight to sixteen** with sufficient food, and the range — one species, one desert, twice the time — is what the spread is actually built on. Separately, secondary accounts of the axolotl’s decline run a density series ending *“35 per square kilometre in 2017.”* **The Red List assessment contains no such number.** What it says about 2017 is starker and differently shaped: monthly sampling at Xochimilco *did not record the species at all*. We cut the tidier series and printed the assessment’s own sentence. And an American bullfrog figure would not resolve to a primary, so it appears with no number at all and the grown-up box says why.
+
+MethodTwo spreads had no picture, in a book for four-year-olds
+
+Caught by Ryan mid-build: the frog spread said *this frog used to be a tadpole* and showed nothing. Neither did the axolotl spread. In a read-aloud that is a real failure, and it was not one spread but a class of them — so the fix was five figures rather than one, and all five moved to sit **with the read-aloud text instead of below the grown-up box**, which relocated the two that already existed. The axolotl drawing was then redrawn twice more, because it read first as an insect and then as a fish. *No gate can see any of this.* The collision checker compares text to text, so a title running through a drawing is invisible to it; that clearance is geometry, checked at render size, by a person.
+
+MethodWhat this zine refuses to claim, and where the real argument lives
+
+Every study here is about amphibians, and the zine says so twice — on a spread face and in the refusals. It makes no claim about children. **Stimpunks already owns that argument, on human evidence**, in [Developmental Pace](https://stimpunks.org/why/developmental-pace/): a why sheet, a [glossary entry](https://stimpunks.org/glossary/developmental-pace/) and a [printable broadside](https://stimpunks.org/library/broadsides/developmental-pace/) for the meeting where a child is about to be told they are behind. Its sentence is sharper than any of ours — *“Behind” is information about the ruler, not about the learner* — and this zine stands next to it rather than reaching for it. [No. 34](https://starstuff.earth/two-hundred-years-zine.html) keeps *slow*; [No. 61](https://starstuff.earth/thirteen-changes-zine.html) keeps neoteny. The refusals name the trap this genre falls into first: **“the axolotl never grows up” is the deficit reading wearing a nicer coat.** And the show’s characters have names, which we have not used — they are Kiersten Case’s to lend.
+
+2026 · September 6
+
+## Field Guide No. 24: nineteen organisms, sorted by which assumption each one breaks
+
+[A Field Guide to the Sexes](https://starstuff.earth/sexes-field-guide.html) is the companion catalogue to [No. 90](https://starstuff.earth/strike-his-zine.html). Nineteen entries in five sections, twenty-one cards, and two that get no reframe table. It carries the zine’s refusals and repeats none of its argument.
+
+NewThe sort is the finding, and it was not the sort we set out to make
+
+By taxonomy you get fish, molluscs and a fungus, which tells you nothing. By strangeness you are building a freak show, which is the oldest and worst way to write about this. What actually divides these nineteen is **which part of the bundle each one takes apart** — because “there are two sexes and you are one of them” is five separate claims: that the count is two, that yours is fixed, that you are one or the other, that each names one kind of thing, and that making more takes two. *No organism in the guide breaks all five.* Each breaks one or two and keeps the rest, which is why the bundle held together so long.
+
+NewA fungus on a fallen branch, a plant that re-decides every spring, and a barnacle that does not need the organ it is famous for
+
+*Schizophyllum commune* runs past twenty-three thousand mating-type combinations and is probably growing within walking distance of wherever you are — **the strange number is not out at the edge of life, it is on the log in the park.** A jack-in-the-pulpit flowers male or female on the strength of last year’s reserves, and *can go back*, which makes it the only reversible case in its section. And the barnacle card is called **Darwin’s Mistake**: the famous longest-penis-for-its-size fact is real, has been in the textbooks for a century and a half, and a 2013 paternity study found a quarter of individuals with a partner within reach were carrying embryos fertilised by a distant one. The animal was never wrong. The account of it was.
+
+CorrectedOne entry was rewritten mid-build because the easy version of it was wrong
+
+The *Chlamydomonas* card was drafted as *look, an organism with no sexes at all.* That is not what isogamy is. The gametes are the same size, so sperm and egg genuinely have nothing to attach to — and there are still two mating types, distinguishable by where the mating structure sits relative to the flagellar beat plane and the eyespot, under the control of *MID*. **Equal size is not sameness.** Printing the easy version would have been this guide flattening a real distinction because it did not match the expected shape, which is the exact thing it accuses the two-sex model of doing.
+
+MethodTwo cards carry no reframe table, and one of them is about people
+
+A “how it circulates / as it checks out” table asserts that there is a verdict and that we hold it. One card reports the maintenance of sexual reproduction as an open problem with no consensus, so there is no verdict to print. The other is the obvious missing entry — us — and it exists to say why there is no entry rather than leave a silent gap. It gives both published figures for human sex variation, **about 1.7 per cent** (Blackless and colleagues, 2000) against **about 0.018 per cent** (Sax, 2002), notes that the gap is almost entirely one condition, and **declines to adjudicate**: the disagreement is about what the word covers, not about what exists. The deciding reason is the second one. A sounds-like / actually table takes its subject as a specimen whose popular description needs correcting by us. That is fine to do to a barnacle. *Done to people it turns them into entries.* [Field Guide No. 10](https://starstuff.earth/turtle-field-guide.html) set that rule with the turtles people made; this is its second use.
+
+MethodThe counts were re-derived, four were already wrong, and the derivation itself under-counted until it was checked
+
+Guides 22→23, entries 278→297, cards 297→318, withheld 19→21. The method was to evaluate each guide’s entry array rather than trust the printed figure — and it came out **exactly five cards short** until it was validated against the collection page’s own number, because [Being a Turtle](https://starstuff.earth/turtle-field-guide.html) keeps its five *turtles people made* in a second array. **Already wrong before this pass:** *“Thirteen of the nineteen are companion catalogues”* had both halves wrong against twenty-two guides and fourteen companions, and its list had quietly omitted three guides; it is now sixteen of twenty-three, with seven standing alone. And the sentence *fifteen of them arrive at* is now **sixteen** — derived by reading all seventeen matches rather than counting them, since [Unfinished Animals](https://starstuff.earth/unfinished-animals-field-guide.html) matches the phrase in order to decline it. **That figure is quoted on three other guides as well as owned by the collection page**, and all four were corrected. A count is never in one place.
+
+2026 · September 6
+
+## Zine No. 90: the sex lives of Terran life, and the argument we are refusing to make about them
+
+[Strike “His”](https://starstuff.earth/strike-his-zine.html) joins [Star Gazing](https://starstuff.earth/collection-star-gazing.html). Fifteen spreads, three figures, six refusals. Its title is a quotation from Ursula K. Le Guin’s marginal correction to her own essay — and the standard we hold for a title is why this piece took a second verification pass.
+
+NewA fish rewrites its own cell memory in ten days, and a fungus carries twenty-three thousand mating types
+
+Remove the dominant male from a bluehead wrasse group and the largest female begins behaving as a male **within hours**; a mature ovary is remodelled into a functional testis in eight to ten days and produces sperm inside twenty-one, driven by changes to the chemical marks on the DNA. Anemonefish run the reverse, and the 1977 paper names the mechanism plainly — sex change *by aggressive dominance*, which is a ladder, not a freedom. *Schizophyllum commune* runs to more than twenty-three thousand mating-type combinations; *Tetrahymena* has seven; isogamous algae have no sperm and no egg, so the words have nothing to attach to. Male pregnancy in seahorses was paid for with the MHC class II pathway and three Toll-like receptors — **a price, not a superpower**, which is the distinction this project keeps having to make.
+
+NewLe Guin found the default she had not noticed, and printed the correction beside the error
+
+*The Left Hand of Darkness* (1969) imagines people with no fixed sex, and gives the line the zine was almost named for — along with the joke nobody quotes, which is that the villagers laugh at the pregnant king because he is **too old**. In 1987 Le Guin reprinted her 1976 essay on the book *entire*, running her disagreements alongside it in bracketed italics rather than revising them away, because *“it doesn’t seem right or wise to revise an old text severely, as if trying to obliterate it, hiding the evidence that one had to go there to get here.”* Among the corrections: that she had *quite unnecessarily locked the Gethenians into heterosexuality*, and had not noticed. **That is this changelog’s own method, published in 1987 and better put** — minds that don’t change are like clams that don’t open. She also asks that anyone quoting the essay include the reconsiderations. Most don’t. This zine does.
+
+CorrectedThirty years of believing something true about bonobos, assembled into something false
+
+Spread ten prints a correction to the author’s own long-held reading rather than dropping it quietly. Bonobos as a liberatory model — sex in place of conflict, food shared, females allied — is built from attested behaviour and is not a society anybody has observed. Mouginot and colleagues followed twelve male bonobos and fourteen male chimpanzees for two years and counted: **bonobo males were involved in roughly 2.8 times as many aggressive encounters**, and the most aggressive sired the most offspring. The real difference survives, and it is not the one in the story: lethal aggression is common in chimpanzees and **absent** in bonobos. *The error was not believing a false fact. It was believing a selected one, and stopping.*
+
+MethodTwo retrievals of one reproduction agreed with each other and confirmed nothing
+
+Our own library held a file titled as Le Guin’s essay. It was a clipping of an online reproduction — the *same* reproduction a separate web fetch returned, so the two appeared to corroborate each other while tracing to a single source. Since the zine’s title is itself a quotation from the annotations, that was graded *plausible* and escalated rather than shipped. Ryan photographed the pages from his own copy: Grove Press, 1989, ISBN 978-0-8021-3529-2. Every bracket is confirmed verbatim at the book — and reading it turned up something the reproduction had not made obvious, that there are **two** *\[strike …\]* annotations, the other on the word *“feminist.”*
+
+NoteOne attribution logged as unsourced, on purpose, and the reason printed on the page
+
+Every other attribution in this zine reaches a journal with a DOI or a book with an ISBN. *Autigender* does not. The definition most quoted is a 2017 Tumblr post surviving in the Internet Archive; the coinage is traced to two Tumblr accounts in August 2014 and attested only in community-maintained wikis, which this project treats as leads rather than citations. We have not upgraded it, and spread thirteen says why on its own face: **a word made by disabled people on a platform nobody was archiving is a word the academy calls unsourced, and that is a fact about the academy.** Left open on the page as well: the elevated rates of LGBTQ+ identity among Autistic people are well replicated and unexplained, and the zine presents both live readings without picking one.
+
+RefusalNature does not authorise us — it only fails to convict us
+
+Bagemihl’s catalogue of 450-plus species was cited in the *Lawrence v. Texas* amici, and it helped. It is still the wrong argument, and the zine says so at length. *This occurs in nature, therefore it is permissible* concedes the premise, not just the conclusion — and the court that acquits on those grounds convicts on them. So the frank half of the subject is on the page rather than curated off it: traumatic insemination, sexual parasitism, coercion, infanticide. **A version of this zine containing only the delightful animals would be the same fallacy with better manners.** It is the same defect we already refuse in our own masthead: *down to* is not *because of*.
+
+2026 · September 6
+
+## The migrating field guide gets its sixteenth way, and it is the one nobody can explain
+
+[A Field Guide to the Ways of Migrating](https://starstuff.earth/migrating-field-guide.html) had fifteen entries and no whale — a gap noticed while building [No. 89](https://starstuff.earth/nobody-set-out-to-do-this-zine.html). **The Course Held** now sits after *The One-Way Trip*, because the salmon and the whale pose the same navigation problem and only one of them is solved.
+
+RevisedA route whose shape is known to a fraction of a degree and whose mechanism is not known at all
+
+Sixteen tagged humpbacks swam **twenty-eight dead-straight segments**, fifteen of them holding a heading to **better than one degree** across up to 2,230 km and twenty-eight days. Currents deflected their *headings* by as much as twenty-five degrees and did not move their *tracks* — so the animal is correcting continuously against a reference outside itself, and you cannot correct for a drift you cannot detect. One segment crossed a tropical storm. The guide's diagrams all answer one question — what shape does the route make? — and this one's answer is a straight track with a crabbed heading. Every figure was already verified for No. 89 the same day; no new sourcing, and the nutrient half is deliberately left out, because a guide to *ways of migrating* is not the place for what the crossing happens to carry.
+
+MethodThe counts were re-derived, and the derivation caught our own notes four guides behind
+
+Adding one entry moves a number in eleven places, and none of them is gated. The guide's own figure went 15→16 in five places plus a source comment; both cards moved in four fields each; and the L★S sequence labels 005–015 shifted to 006–016 so position and label still agree. The collection totals were **derived from the search index rather than incremented** — 22 guides, 296 anchored records against 277 claimed entries, implying 19 cards deliberately filed as something other than entries; now **297 cards, 278 entries**. Doing it that way turned up `CLAUDE.md` claiming *18 guides, 218 entries, 231 cards*, dated 27 August, while every one of the collection page's own seven figures was current. **That is the rot running backwards from usual** — the reader-facing page right, the working notes wrong — and it is corrected. One thing left open rather than half-fixed: the JSON-LD `hasPart` array on the collection page lists thirteen of the twenty-two guides and wants its own pass.
+
+2026 · September 6
+
+## Zine No. 89: a whale holds a line nobody can explain, and carries a cargo it is not trying to carry
+
+[Nobody Set Out To Do This](https://starstuff.earth/nobody-set-out-to-do-this-zine.html) joins [Star Stuff](https://starstuff.earth/collection-star-stuff.html) as its fortieth piece, and is marked on its own face as the companion to Helen Edgar’s [No. 30, *Always Migrating*](https://starstuff.earth/always-migrating-zine.html). Fifteen spreads, five figures, six refusals. Built from three papers, all read in the originals.
+
+NewTwenty-eight straight lines, and no mechanism that accounts for them
+
+Horton and six colleagues tracked **sixteen humpback whales** by satellite between 2003 and 2010 and found **twenty-eight constant-course segments** — every one held to better than **five degrees** at the 95 per cent confidence level, **fifteen of them to better than one**, across **240 to 2,230 kilometres** and **two to twenty-eight days**. Sea-surface currents deflected the whales’ *headings* by up to **twenty-five degrees** and did not move their *tracks*, meaning the animals correct continuously for a drift they must first be able to detect. One segment crossed a tropical storm. The three whales tracked all the way south finished within about **a hundred kilometres of 58°S, 23°W** — in different months, of different years, along distinctly different routes. Neither obvious answer closes: whales under near-identical magnetic declination departed on opposite headings, and whales under different Sun positions held the same one.
+
+NewTwenty-nine directional modes, and the paper’s own hedge printed next to its own headline
+
+Fourteen years later Chatterjee and Ghosh brought directional statistics to the problem — a von Mises–Fisher mixture and a circular–circular regression, because the average of 350° and 10° is 0° and ordinary arithmetic cannot say so. Their strongest correlate is the *interaction* of solar position and geomagnetic change, which is a real answer to Horton’s objection. Then, in their own discussion, they write that the cues’ contribution is *“limited and likely part of a broader, more complex system of navigation cues”*, and that some parameters may not exert a biologically meaningful influence at all. The zine prints the hedge next to the headline. And describing how a humpback changes direction took **twenty-nine mixture components**: there is no average heading for the rest to be noise around.
+
+Fact-checkA source contradicts itself, and we printed the contradiction instead of picking a side
+
+Chatterjee and Ghosh’s abstract says **nine** mixture components for *both* species. Their discussion says **nine for blue and twenty-nine for humpback**, in two separate passages. We could not reconcile that from the published text, so spread nine states both and says the discrepancy is the paper’s. A second caution is ours rather than theirs and sits in the colophon: the models assume *independent* directional changes across environmental variables — the authors’ own third limitation — while the headline result is a correlation *between* two of them. We report the finding and the caveat and draw nothing from the tension. Two conversions on spread three (1° over 2,230 km ≈ 39 km; 10° ≈ 393 km) are **our arithmetic**, not the paper’s, and are labelled as ours on the spread.
+
+NewThe great whale conveyor belt, weighed
+
+Roman and nine colleagues estimate that gray, humpback and right whales move **46,512 tons of biomass** and **3,784 tons of nitrogen** a year from high-latitude feeding grounds to nutrient-poor tropical calving grounds — to the authors’ knowledge the largest long-distance nutrient subsidy on the planet, and roughly **three times larger before commercial whaling**. The whales are fasting the entire way. A North Pacific gray whale gathers across an area up to **forty-six times** larger than the one it unloads into, and that concentration is the mechanism. In the Hawaiian Islands Humpback Whale National Marine Sanctuary the animals deliver **125 to 175 per cent** of the nitrogen that upwelling and convective mixing bring up during the breeding season. Most of the biomass arrives as carcasses and placentas.
+
+MethodThe first refusal is the one holding the piece up
+
+The source paper discusses how species recovery might restore nutrient movement and increase ecosystem resilience. **We took the measurement and declined the warrant.** A creature that moved no nitrogen at all would be owed exactly the same, and an argument from usefulness holds only as long as the usefulness does — which is the trade offered to disabled people every time our worth is priced in contribution. Five more refusals follow: not a superpower, not solved, not proof that whales navigate by the stars, not a metaphor for staying the course, and not an argument that mystery beats explanation. **What the piece deliberately does not re-argue:** magnetoreception, which No. 30, No. 35 and the migrating field guide have already spent on birds, turtles and salmon — this is the case where that family of answers does *not* close. And No. 30’s whale pump is the *vertical* flux; this one is the *horizontal* one, and spread ten hands the vertical back to Helen along with the intra-action reading it borrows from her, after Barad (2007). The video that prompted the piece is named in the colophon as a lead, not a source.
+
+2026 · September 6
+
+## A fourth drawing sheet — and the scale it was built around turned out to be unbuildable, so the page publishes that instead
+
+[The Glimmery](https://starstuff.earth/glimmery.html) joins [Easter Eggs](https://starstuff.earth/collection-easter-eggs.html) as the fourth “-ery” sheet, after The Hatchery, The Quillery and The Bow-ery. Ten faint lights that somebody has actually measured, from a single photon to a galaxy most people can no longer see — and a fourth small door at the foot of the front page to reach them by.
+
+NewTen glimmers, each with one checkable thing under it
+
+Humans can report **a single photon**. The sky is never dark, because ozone and hydrogen make hydroxyl glow at **87 km** all night with no sunlight on it. The **zodiacal light** emits nothing — it is sunlight off dust. The **gegenschein** is **1.3×** the ecliptic minimum and the grains making it are darker than asphalt. **Noctilucent clouds** sit at **83 km**, lit by a sun that has already set for everything below them. **Foxfire** runs on a temperature-compensated circadian clock and is calling insects, because there is no wind under a canopy to carry spores. A **dinoflagellate** answers a touch in **15 milliseconds**. **Cherenkov blue** is a shock front at **48.6°** and breaks no rule — what it outruns is light *in water*. Synchronised **fireflies** get an **82 per cent** response where unsynchronised ones get **3**. And the **Milky Way** is hidden from more than a third of humanity.
+
+MethodThe sheet’s organising idea failed halfway through, and the failure is the last section of the page
+
+Every “-ery” sheet holds one thing constant. The plan here was the [Bow-ery](https://starstuff.earth/bow-ery.html) move transposed from angle to brightness: ten glimmers on one logarithmic strip, faintness comparable by eye instead of taken on trust. **It cannot be done honestly.** Only four of the ten are diffuse *surface brightnesses* quotable in the same unit; a noctilucent cloud is normally reported as an albedo, a single photon is not a brightness at all, and a mushroom, a reactor pool and a dinoflagellate are objects whose apparent brightness depends entirely on how far away you stand. **Six of the ten numbers would have had to be invented.** So the constant moved from the source to the detector — every plate now carries the same block of rods from the 1942 visual threshold — and the abandoned premise is published as the page’s closing argument rather than quietly replaced.
+
+MethodNothing on a sheet about faint light is drawn faint
+
+The obvious way to draw ten glimmers is dimly, and it is wrong twice. On a screen, faintness is a claim about a brightness *the reader set*. On paper — where this collection expects to be printed — the whole sheet inverts and a faint mark becomes an invisible one. So faintness here is carried by printed numbers and by the rod block, never by low-contrast ink. *That is the house rule about opacity not being a hierarchy tool, arriving from a direction nobody expected it from.*
+
+Fact-checkThree claims cut for want of a primary, one date left unresolved, and one P value printed as it stands
+
+All ten claims trace to a primary or to a named peer-reviewed review. **Three did not and were cut, and the page names all three:** that airglow is the brightest natural component of a moonless sky; that Joshua Childrey first described the zodiacal light in 1661; and the light-pollution atlas’s regional splits (60 per cent of Europeans, ~80 per cent of North Americans), which are the paper’s own but reached us only through news coverage. **One date is left open on the page’s face:** Cassini’s zodiacal work is popularly dated 1683, and the review we actually read lists it as 1693 — the plate prints what the source prints and says why. **And the single-photon result carries P = 0.0545**, on the wrong side of the line those papers conventionally draw. It is on the plate in that form rather than swapped for the stronger confidence-restricted figure. *A sheet about the edge of detectability has no business being confident about where the edge is.*
+
+SiteTwo new doors — including one the Hatchery never had — three stale counts, and the gates
+
+The new door on [the front page](https://starstuff.earth/index.html) is a patch of sky holding one star, which fills in with forty-four more across three staggered tiers when you hover it — **dark adaptation, compressed**, which is the thing the page behind it is about. Text label, keyboard focus, reduced-motion opt-out, hidden in print, like the others. **And a door the Hatchery turned out never to have had:** the egg at the head of that row opens the *Easter Eggs collection*, not the sheet — so for four sheets there were only three doors, and the one page that is a specimen sheet *for that very egg* could not be reached from it. Its own door is now the second of its twelve, *The Yolk Is a Star*, reproduced from the sheet rather than redrawn so it cannot drift from the plate it opens, and reaching its rays out through an unbroken shell on hover — that egg’s own argument, and deliberately not a second hatching gesture next to the first. **The Hatchery’s description had been claiming a door “at the foot of every page”** since it shipped; the doors are on the front page only, and it now says so. **Three stale counts were corrected on the Easter Eggs page in the same pass**: its heading and both social descriptions said *six eggs* against seven cards, having gone stale when the Bow-ery shipped and gone unnoticed since. **Two print faults were caught by probing computed fills under print emulation, and the second was our own fix making it worse.** Synchrony draws its two rasters in different colours on purpose — gold in step, lilac out of step. Gold is on the shared print sheet’s inversion list and prints as ink; lilac is not, and printed at about 1.9:1, so *the paper copy showed a full top raster against a nearly blank bottom one and read as “out of step means no flashes.”* The flashes are identical in both conditions and only their timing differs — the plate would have printed the opposite of its own finding. Then the first attempt at protecting the rod block printed the ~486 dark rods at about 1.1:1, because the bed’s alpha sits on the pattern’s circle rather than on the rect and the two multiplied — fourteen lit dots with no denominator behind them. **Neither is visible to any gate**, because the contrast checker measures text and both faults are on circles. **Rendering the plates before writing the page caught five more no gate could see** — a caption running through a foot label on nine plates, an arc crossing its own headline, a label off the left edge, and **the Cherenkov cone drawn at roughly 20° when the shock front stands at 48.6°**, now generated from the refractive index so the tangency is true by construction rather than by eye. **All eight gates at zero**; sitemap updated and search index rebuilt. Eggs are excluded from [What’s New](https://starstuff.earth/whats-new.html) by design — a listing announces, and an announced egg is not off the path.
+
+2026 · September 6
+
+## A second Trigger, on the ocean — and the convention it was opened to test survived, except in one place
+
+[Advice to a Young Marine Biologist](https://starstuff.earth/trigger-young-marine-biologist.html) joins [Triggers](https://starstuff.earth/collection-triggers.html) as Trigger No. 2. Six mechanisms in the water, three tipping points graded by how settled they are, and twelve responses on the readiness scale — written for one person who is studying to do this for a living, and published because the position is not unusual.
+
+NewFive things happening to the ocean, and a sixth that happens to the person watching
+
+Marine heatwaves have *very likely* doubled in frequency since 1982, and 84–90 per cent of those between 2006 and 2015 are attributable to anthropogenic warming. Acidification crossed its planetary boundary by 2020. The open ocean lost 0.5–3.3 per cent of its oxygen over the upper 1000 m. Species are moving poleward at 52 km a decade — two hundred kilometres over a working life. **Then the sixth, which is Daniel Pauly’s 1995 shifting baseline syndrome, quoted from the one-page original:** each generation of scientists takes as its baseline the state of things at the start of its own career. The reef you first dive on will feel like a reef.
+
+MethodA third answer to *who has to act*, and the way it can lie
+
+Trigger No. 1 marked every response *individual* or *structural*. Neither fits a person choosing what to do for a living, so the marker set gains a third value, ***vocational***, recorded on the collection page where the convention lives rather than only inside the piece using it. **The new marker’s failure mode is named before it happens:** a vocational column is an efficient way to tell a young person their career will fix a structural problem, which is the personal-footprint error in a lab coat. So the ladder opens with the structural entry that sizes every other one — the IPCC’s *“coral reef restoration options may be ineffective if global warming exceeds 1.5 ºC”* — and says outright that nothing in a marine biologist’s toolkit substitutes for cutting emissions.
+
+SiteThe *provisional* note on the Triggers page is retired, and the paragraph that set the test is kept
+
+[Triggers](https://starstuff.earth/collection-triggers.html) opened at one member on 4 September, breaking the two-member floor for the third time, and said on its own face that it was provisional until a second issue showed the grading convention surviving contact with a different problem. It has. The original paragraph stays where it was, because the test it set is the thing that was passed — and what *did* bend is more interesting than what held: the readiness scale needed no change, the *who* marker needed a new value. **A convention that survives a second use completely untouched has probably only been used once in two costumes.**
+
+Fact-checkWe named three sources we could not reach — and naming them is what got them read
+
+Four IPCC Summaries for Policymakers were read directly, six papers read at source, and Pauly’s 1995 page read in full. Three sources were out of reach and the page said so on its face: the Armstrong McKay 2022 *Science* paper refused the request, the *Global Tipping Points Report 2025* had been used only through institutional releases, and Marshall et al.’s *Reef Grief* sat behind a publisher wall with its figures deliberately left off the page. **All three arrived mid-build, and the tipping-point section was rewritten from the papers themselves.** Stating a gap is not a consolation for having one; here it is the thing that closed it.
+
+CorrectionWhat reading the primaries changed — including which ocean current this page says is close
+
+Two of the three gaps were not merely sourcing gaps. **The near-term North Atlantic tipping element is not the AMOC.** Armstrong McKay et al. put Labrador–Irminger Sea convection at a best estimate of **~1.8 °C (1.1–3.8), high confidence**, over about ten years — against the AMOC’s **~4 °C (1.4–8), low confidence**. A lower threshold, a faster transition and better confidence, on the system nobody has heard of. The full report added a marine tipping system the draft had missed entirely (**kelp forests**, local-scale, high confidence, urchin barrens as the mechanism) and revealed that the headline coral threshold **moved from ~1.5 °C to 1.2 °C between 2022 and 2025**, which the page now prints as a movement rather than as a number. *“Confirmed at the abstract” turns out not to be a small discount on “read in full”* — none of that was in an abstract.
+
+Fact-checkAnd the gap that stayed a gap: a page titled as new research on marine conservationists’ mental health is not that
+
+A summary indexed as *“new research on the mental health consequences of working in marine conservation”* was about to be cited for a striking figure. Read properly, it describes a review with no original survey, a study of **residents, tourists and tourism operators** rather than professionals, and a study of atmospheric and environmental scientists. **There is no survey of marine conservation professionals behind that headline.** Reading the paywalled paper closed the sourcing question and confirmed the absence rather than filling it — so the Reef Grief figures are now printed with their real populations named (53.5 per cent of residents, 22.9 per cent of fishers, and the authors’ own caveat that it rests on a single survey item), and the missing study stays in the held section. *The title of an aggregating page is a claim about its contents, and has to be checked like any other claim.*
+
+SiteWiring, and the gates
+
+Triggers goes from one piece to two, with the `hero-count`, the `meta` description and the colophon line updated with it, plus the front page’s section intro. The collection page’s cards were also switched from *newest first* to series order, because the prev/next chain follows collection order and the two were about to disagree. The new issue takes the last chain slot, so [Overshoot](https://starstuff.earth/trigger-overshoot.html) now links forward to it. **All eight gates at zero** — including one real catch, an SVG label sitting on its own bar at 2.4:1, and one the card-order gate caught: this collection page had shipped saying *newest first* while holding a single card, where nothing could disagree with it — sitemap updated, search index and [What’s New](https://starstuff.earth/whats-new.html) rebuilt.
+
+2026 · September 5
+
+## A Mission page, because the collection had one for what we hold and none for what we are trying to do
+
+[What We Are For](https://starstuff.earth/mission.html) joins [Foundations](https://starstuff.earth/collection-foundations.html) as its eleventh piece and the first link in its chain. Eleven aims in four groups, each naming the page where it is already being kept — then how this site serves the Stimpunks Foundation’s mission, and the half of that mission a website cannot do.
+
+NewThe aims, and the pages they are already being kept on
+
+The site has a page for what it holds ([the Manifesto](https://starstuff.earth/manifesto.html)), for what it owes ([the Creed](https://starstuff.earth/inclusion-safety-creed.html)), for how it is made ([Starlight](https://starstuff.earth/starlight.html)) and for how it connects ([Cosmic Connections](https://starstuff.earth/cosmic-connections.html)). It had none for *what we are trying to do*, which is the kind of absence that lets aims drift with nobody able to point at the drift.
+
+So: belonging owed rather than earned, and variation as the rule at every scale; one settled fact followed honestly, every quotation traced to a primary, the checking published errors first, and science celebrated by being *practised* rather than by having its authority defended; hopeful news reported better than the coverage of it, the weekly scan published with what we declined, and no harm named without a graded ladder of responses; and the work done in the open, readable and printable and free. **Every aim links to a page where it is already being practised**, because a values list you cannot check against the work is the thing this page is trying not to be.
+
+MethodA table of falsifiers, so an aim is something we can be caught failing
+
+An aim you cannot fail is not an aim. The page closes on eight conditions a reader could observe from outside, with no access to our intentions: a quotation whose trail ends at an aggregator; a stretch of this changelog with no correction in it; a [Glimmers](https://starstuff.earth/collection-glimmers.html) entry resting on a press release alone; a [Trigger](https://starstuff.earth/collection-triggers.html) that names a harm and stops; a count printed in prose that nobody can re-derive; a page that prints blank; a page whose sources no person read.
+
+**Most of those are not hypothetical.** Forty-four of forty-six pages once printed blank; a Martin Luther King Jr. line shipped under James Baldwin’s name; the wood-wide-web story went into three pieces because it rhymed with everything we already believed; a sentence out of this repository’s own working notes was promoted to “our masthead” and then argued against. Each is already in this changelog under its own date, with the name of whoever caught it.
+
+SiteWhat a website cannot do for a mutual-aid mission, said on the page
+
+The second half reads the Stimpunks mission sentence into its three verbs — *live with dignity*, *challenge dehumanizing systems*, *design environments that honor difference as strength* — and puts this site under each. Then it marks the limit rather than blurring it. **Stimpunks’ first sentence is about direct support and mutual aid, and no zine here has paid anybody’s rent.** Direct financial support, mutual aid grants, creator grants and living wages are the foundation’s programmes; this site is the public-tools half, and counting it as the other half would be doing the thing these pages criticise.
+
+All three Stimpunks sentences are quoted verbatim from [the mission page](https://stimpunks.org/mission/) and [the about page](https://stimpunks.org/about/), read directly rather than from a summary — an organisation’s own site being the primary source for its own statement of purpose. The reading of that sentence into three verbs is ours and is marked as ours.
+
+SiteWiring, and the gates
+
+Foundations goes from ten pieces to eleven, and every count on that page was updated with it — the `hero-count`, the body prose, the `meta`, `og:` and `twitter:` descriptions, the JSON-LD and the colophon line, plus the front page’s section intro. The new page takes the first chain slot in the collection, so [Foundations](https://starstuff.earth/collection-foundations.html) now links forward to it and [the Manifesto](https://starstuff.earth/manifesto.html) links back to it. **All eight gates at zero**, sitemap updated, search index and [What’s New](https://starstuff.earth/whats-new.html) rebuilt.
+
+2026 · September 5
+
+## A What’s New page and an RSS feed, both generated, because a hand-kept list of 150 pieces is a stale list
+
+This page tells you *why* something changed, at length, and that is what it is for. It is a poor answer to *what came out this week*. [What’s New](https://starstuff.earth/whats-new.html) is that answer: every piece newest first, title and the line it leads with, nothing else. [The RSS feed](https://starstuff.earth/feed.xml) is the same list, so you don’t have to come back and check.
+
+SiteBoth files are generated, and that is the whole design
+
+The longest standing lesson on this site is that a number written out in prose goes stale and **no gate can read it** — one sweep found roughly two dozen wrong counts across seven pages. A hand-maintained “what’s new” list is that fault with a publishing schedule attached: wrong the first time somebody ships a piece and edits one of two places.
+
+So `tools/build-whats-new.mjs` derives every fact from two sources that cannot drift from the site. Titles and taglines are lifted from the collection pages’ own `.card` blocks — the same map `check-markup.mjs` builds to verify badges, so the page and the gate agree by construction. Dates come from `git log --diff-filter=A`: the day a piece first went live at its own address. Neither is a list kept inside the tool, so there is no second answer free to rot. `--check` exits non-zero when either output is stale, matching the convention the search index already uses.
+
+MethodThe Easter Eggs are not in it, and that is the point of them
+
+[Easter Eggs](https://starstuff.earth/collection-easter-eggs.html) has no section on the front page because a listed egg is not off the path. A What’s New page is a listing and a feed is a listing pushed to people, so the seven eggs appear in neither. They stay in the sitemap, in the search index and in all eight gates exactly as before — findable, never announced. The tool prints the exclusion on its own line, so a number that grows is a number somebody can question.
+
+CorrectionOne date git gets wrong, and it is written down rather than quietly patched
+
+[Glimmer Wire, edition one](https://starstuff.earth/glimmer-wire-2026-09-02.html) was published on **2 September** and its file was created on the **4th**, when the single page was split into one page per edition. Git can only see the file. The tool carries exactly one date override, with the reason on the line above it, and prints the count of overrides every run — the same shape as the watermark exemption in the contrast checker and the hook list in the dead-class checker. An override should be a decision somebody wrote down, not a mechanism to fall into.
+
+CorrectionThe new page found a real hole in the search index
+
+Every tagline on What’s New is already indexed on the card it was lifted from, so the listing is a duplicate presentation and belongs in `CHROME_SEL` alongside the playlist row list and the front page’s jump strip. Stripping it exposed a gap that had been there all along: **`textOf()` removes chrome from its own clone, which handles chrome *inside* a chunk — but the chunker selects from the live document, so a chunk *inside* a chrome container was still indexed.** The listing’s 33 `<section>` elements were excluded from the coverage denominator and indexed anyway: **34 records at 3000% coverage**, a figure only visible because the run prints coverage per page. Step 3 now skips a chunk whose ancestor is chrome, which `segmentByHeading()` had always done. **Verified as a no-op elsewhere** by diffing every record against the committed index: 174 pages byte-identical, the only change the front page’s new masthead link.
+
+SiteWiring, and the gates
+
+`whats-new.html` is site furniture like [Search](https://starstuff.earth/search.html): no collection badge, no card, outside the reading chain, reached from a new masthead pill. It joins the short, explicit exempt list in `check-markup.mjs` rather than being caught by a rule. Feed autodiscovery sits in the head of the front page and of What’s New. **All eight gates at zero**, and the page indexes at one record and 100% coverage — its own prose, none of the borrowed list.
+
+2026 · September 5
+
+## The UN voted to change the world map, every headline got the reason wrong, and the resolution itself did not
+
+[Which Distortion](https://starstuff.earth/which-distortion.html) is the fifth entry in [Glimmers](https://starstuff.earth/collection-glimmers.html), written the day after the General Assembly adopted the “Correct the map” resolution 164 to 1. It is the news companion to [You Cannot Flatten a Sphere](https://starstuff.earth/cannot-flatten-a-sphere-zine.html) (No. 44), which shipped three weeks earlier and needed no changes.
+
+NewEqual Earth is not a more accurate map, and A/80/L.104 never says it is
+
+Every outlet reported the vote as a swap to a *more accurate* projection. That is the one claim Gauss’s *Theorema Egregium* forbids: a sphere cannot be flattened, so every map trades away area, angle, distance or direction, and there is no undistorted map waiting for a more careful cartographer. Equal Earth is **equal-area** — it keeps size exactly and pays for it in shape, everywhere.
+
+**The resolution is more careful than its coverage.** Read at the UN’s own document server, its preamble states that *“no single projection can perfectly represent the curved surface of the Earth on a plane, and… each projection is therefore suited to particular purposes”*, and it is *“without prejudice”* to navigational use. Its third operative paragraph claims only “a more accurate representation of the **sizes**” from “a relevant option”. None of which weakens the case — Africa really is about fourteen times Greenland, and area really is the property that matters for the job that map is doing.
+
+NewThree equal-area maps, computed rather than drawn, that all disagree
+
+The page’s one diagram is evaluated from each projection’s published equations. Gall–Peters, Eckert IV and Equal Earth each enclose **exactly 4π square units** and each has a local area scale of **1.000000** at every sampled point — and each pays a different price in shape: **2.00×, 1.40× and 1.35×** at the equator.
+
+Which turns up something the coverage missed. **Gall–Peters — the map most people mean by “the fair map” — distorts shape worst at exactly the latitude the campaign is about.** That is why three cartographers built Equal Earth in 2018, by their own account, after Boston Public Schools adopted Peters in 2017. And hours before the vote, France announced it was adopting **Eckert IV instead**: two supporters, one afternoon, two different equal-area answers. That is the consensus working, not failing.
+
+CorrectionA sentence attributed to the resolution that is not in it
+
+Al Jazeera reports the resolution as saying it “in no way challenges the use of the Mercator projection for maritime and aerial navigation, for which it remains fully suited.” **That sentence does not appear in A/80/L.104.** The document says *without prejudice to the established practice with regard to the use of cartographic material for navigational purposes*. The gloss is close in spirit and is not the text, so it is not quoted on our page as resolution wording.
+
+Ukraine’s stated reason for abstaining is characterised from summaries of the meeting record rather than quoted, because we have not read the verbatim record. Said on the page, not only here.
+
+CorrectionOne word for the US objection, where the whole statement was published
+
+The page first reported only that the US representative “called the resolution ‘superfluous’”, following the Guardian. **Ryan flagged the fuller remarks mid-build**, which led to the primary: the United States Mission publishes its explanations of vote, so Yaryna Ferencevych’s statement can be read in full. **The word “superfluous” is not in it**, and it made a substantive objection sound procedural — the statement calls the resolution part of “a much larger and more radical ideological project” and such resolutions “barnacles on our work here”. Two paragraphs are now quoted verbatim instead.
+
+Which turned up something checkable and worth having on the page. **“Cognitive justice” is in scare quotes in the US statement, and it is the resolution’s own phrase** — its preamble says correcting these distortions “constitutes an act of cognitive justice and memorial reparation”. The objection lands on language the document really uses. What it gets wrong is the premise that this was “presented as an anodyne effort” hiding something larger: the resolution states its reasoning on its own face, in its preamble. Both halves are on the page, because a piece about summaries losing what they were not built to keep should not summarise the one statement against.
+
+CorrectionWe nearly put the error in Ryan’s mouth
+
+A draft paragraph had Ryan clipping the “more accurate” framing on Friday night as his own belief, and then correcting himself. He had quoted it from another source *as an example of wrongness*. He caught it mid-build; the paragraph now says so. Recorded because the ledger is for our own errors first.
+
+SiteA diagram that would have printed as three navy ink blocks
+
+The figure’s map panels fill with a dark colour that the shared print stylesheet’s inversion list does not cover, and print flattens every stroke to the same grey — so on paper each panel would have been a block of ink with the graticule and the indicatrices lost inside it. **No gate can see this**: the contrast checker measures text, and these are shapes. Found by rendering the page under print emulation and reading the computed fill back off the elements. The panels now print white, and the indicatrices carry the heaviest line, since stroke width is the only distinction print leaves.
+
+2026 · September 5 · later still
+
+## No. 88, a chain about a record with no words in it — and the title it was banned for was not the musician’s
+
+[The Name Was Already the Verdict](https://starstuff.earth/the-name-was-already-the-verdict-zine.html) is the fifteenth [How We Got Here](https://starstuff.earth/collection-how-we-got-here.html) chain: thirteen links, nine documented, three contested, one leap. It spun out of [the Indigenous punk rack](https://starstuff.earth/we-were-punk-first-playlist.html) shipped the same day, and the research changed it twice.
+
+NewThe record was called *Oddball*
+
+The Library of Congress essay for the National Recording Registry says plainly that stations banned *Rumble* **“for its incendiary title.”** And the title was applied afterwards, by somebody who had heard the record and thought of a street fight. **The word that got it banned was not in the music, not in the session, and not the musician’s.**
+
+That discovery is what made the chosen title right, and we did not know it when we chose it. Two accounts name different people as the renamer — the Library of Congress says Archie Bleyer’s daughter and *marks its own claim as legend*; *Rolling Stone* says Phil Everly. Tagged **contested** and left there, because both agree on the part the argument needs: *the name came from the listening side and was then treated as the record’s content.*
+
+CorrectionA pen through the tweeters, not a pencil through the speaker cone
+
+*The New York Times* obituary and *Rolling Stone* both have Wray poking a pencil through the speaker cone, and that is the sentence that has travelled — into Wikipedia, into a hundred articles, and into our own first draft of the page.
+
+Wray, quoted in *Guitar* magazine via the Registry essay: he used **a pen**, on **the tweeters**, and *“I didn’t mess with the big speaker.”* A more precise act than the version everyone prints — it is the high end he was after and he deliberately left the woofer alone. **The smoothed version is easier to say and slightly wrong**, which is this collection’s subject arriving inside its own sources.
+
+MethodA figure declined, and it cost the zine a title
+
+The claim that Harold Black’s December 1927 test cut distortion *“by a factor of 100,000”* is repeated widely. It is **not in Ronald Kline’s 1993 *IEEE Control Systems* paper**, which we downloaded and read, and we did not find its primary.
+
+*A Factor of One Hundred Thousand* was a shortlisted title for this zine — it matches the collection’s numeric-title habit exactly. **It was dropped because the number could not be traced**, and the figure appears nowhere on the page. What Kline does give, and what the page uses, is the date, the Lackawanna Ferry, the blank page of that morning’s newspaper, and the problem statement.
+
+NewThe link the chain would most like to have, refused
+
+1954 gave the United States a working apparatus for judging a medium dangerous: Wertham’s *Seduction of the Innocent*, the Kefauver subcommittee hearings in New York on 21–22 April and 4 June, and the Comics Code. In 2012 Carol Tilley, working from an archive opened in 2010, documented that the case notes underneath it were **falsified** — ages revised, quotes distorted, causes omitted. Fifty-eight years unaudited.
+
+It would be very satisfying to run a line from that to a programme director in Boston in 1958. **There isn’t one.** No federal body banned the record; stations declined to play it, privately. That joint is tagged *contested* and the spread says outright that deleting it leaves the chain standing — you lose the explanation of why 1958 was ready, and the explanation is good but not proved. *A Burke chain is built to feel inevitable, which is exactly what the tags are for.*
+
+SiteWiring, gates, and two faults measurement caught
+
+The reading chain extends to **153 pages**, tail [The Lizard That Was Never There](https://starstuff.earth/the-lizard-that-was-never-there-zine.html) → No. 88 → [Star Gazing](https://starstuff.earth/collection-star-gazing.html). All eight gates clean; the page indexes at 16 records and 100% coverage. The chain is registered in `tools/gen-chain-spine.mjs` as its own key rather than overwriting an existing one, and its tally, its cover line and its printed tags all read 13.
+
+**Both diagram faults were found by measuring, not by a gate.** Both leader lines on the spread 9 figure started *inside their own label’s text box* — `check-overlap.mjs` cannot see that, because text over non-text is explicitly out of its scope. And two spreads used `.spread-2col` without `.stacked`, so their column classes styled nothing; `check-classes.mjs` did catch that one.
+
+2026 · September 5 · later
+
+## Four dead embeds across the Sound shelf, and the rule that was supposed to catch them
+
+Ryan opened [We Were Punk First](https://starstuff.earth/we-were-punk-first-playlist.html) and two cards said *Video unavailable*. Both had passed the collection’s own embed check on the day they shipped — and **both still pass it.** Sweeping the whole shelf for what a reader actually depends on found two more, on racks that had been live for weeks.
+
+CorrectionoEmbed confirms identity, not existence — so rule three passed a dead video
+
+[Rule three](https://starstuff.earth/collection-sound.html) of the Sound collection says every embed is resolved through YouTube’s oEmbed endpoint before it ships, which returns the real title and channel for a video ID. That catches the fault it was built for: a card quietly pointing at a different recording. **It is structurally blind to this one.**
+
+Both failing IDs return **HTTP 200, with the correct title and the correct channel**, today, while the player refuses to play them. The check was verifying that a video ID *is what we said it is* and never that it *still works*. All eight gates were equally blind, and correctly so — the markup is valid, the contrast is fine, the words are all indexed, the card is in the right place in the list. The rule has been corrected on the collection page rather than quietly patched.
+
+FixedTwo more on racks that shipped weeks ago, found only because we swept all 269
+
+Fixing the two Ryan saw would have left the shelf in exactly the state that produced them. The sweep found **one dead embed on [the Dolly rack](https://starstuff.earth/dolly-playlist.html)** (Linda Ronstadt’s 1975 *I Will Always Love You*) and **one age-restricted video on [the Bowie rack](https://starstuff.earth/bowie-playlist.html)** (*The Stars (Are Out Tonight)*) — and an age gate blocks embedded playback just as completely as deletion, while looking perfectly healthy from outside.
+
+All four replaced, each with an official or institutional channel: **KEXP** for *We Were Punk First*, whose live take is the better card anyway — a demand read to a room is a different object from a demand on a record, and the note now says eighty seconds rather than ninety because that is how long the take actually is. The band’s own music video for *No One Owns Anything and Death Is Real*, from the company that made the *Bad Indian* video already on the page. Linda Ronstadt’s own channel. David Bowie’s own channel, for the album track rather than the restricted video.
+
+SiteA ninth check that is deliberately not a ninth gate
+
+`tools/check-embeds.mjs` asks each embed whether it still plays, and plays *embedded*. It reports age-restricted videos as failures, and skips `/embed/videoseries` playlist embeds, which have no single video to ask about.
+
+**It is an on-demand audit, not a ship gate, and the file says why.** All eight gates are hermetic — no network, no third-party state — and `check-sitemap.mjs` names never touching the network as a virtue. This one asks a question about somebody else’s server, and the answer can turn red while nobody here touches anything. *A red gate you cannot fix by editing the repo is a gate people learn to push past*, which is how a gate stops being read at all. Promoting it is a decision somebody should make on purpose and write down.
+
+Regression-tested against the actual broken state rather than synthetics: pointed at the four real IDs it names both the dead video and the age-restricted one, and stays silent on the playlist embed and on a working card.
+
+MethodFound by a reader, which is the part worth recording
+
+This site has eight automated gates and a rule written specifically about embeds, and the thing that found this was **somebody opening the page and looking at it.** The rule was not lazy — it was aimed at the failure mode we had already been bitten by, and a new one arrived from a direction it did not face.
+
+Worth stating plainly because the shelf is 269 links to other people’s servers, and **that number only goes up.** Every rack added is more surface that can rot silently, on somebody else’s schedule, with every gate here green.
+
+2026 · September 5
+
+## An eighth rack, on Indigenous punk and metal — and the shelf it sits on had three wrong numbers on it
+
+[We Were Punk First](https://starstuff.earth/we-were-punk-first-playlist.html) is thirty-eight recordings of Indigenous punk, metal and hard rock, with Gregg Deal and Dead Pioneers as its spine. It is the first rack on this shelf that **argues with another rack**, and recounting the shelf to add it turned up three published figures that were wrong — one of them wrong in two places by two different values.
+
+NewA record with no words in it, banned for what people heard in it
+
+Link Wray’s *Rumble* (1958) is an instrumental. No lyrics, no propositions, nothing anybody could point at — and radio stations banned it for inciting juvenile gang violence. **Every listener who was frightened by it supplied the fright themselves, out of their own head, and then billed the record for it.**
+
+Wray was the son of a Shawnee mother, punched holes in his speaker cone to get the sound he wanted, and made the power chord so ordinary that people stopped hearing it as a choice. Pete Townshend said that without him he would never have picked up a guitar.
+
+CorrectionOur own source was wrong twice, and the page prints both
+
+The rack is built from Al Carroll’s *Indigenous Punk* (Microcosm, 2026), read in full. It states that Wray entered the Rock and Roll Hall of Fame in **2007**. He entered in **2023**, in the Musical Influence category, per the Hall’s own inductee record — **eighteen years after his death, not two.**
+
+The same book names Dead Pioneers’ guitarist “Gregg Rivera” where he is **Josh Rivera**, and spells the singer “Greg Deal” at first mention where he is **Gregg Deal**. Neither error changes a claim the page makes. Both are on the page rather than quietly applied, because the sixteen-year gap is the argument for checking and not a footnote to it.
+
+NewThe drumbeat everybody hears as Indian was sold by the page to silent-film organists
+
+The tom-tom, four to the bar with a stamp on the first, over an open fifth: **no Native tradition produced it.** It is a concert-hall convention that hardened into a film convention, and by the 1920s it was a purchasable commodity — accompanists worked from cue anthologies indexed by mood and situation, of which Erno Rapée’s *Motion Picture Moods* (1924) is the canonical example. You looked it up while the reel was running.
+
+Then listen to XIT putting Taos Pueblo drums on a **Motown** record and being kept off American radio while charting across Europe, and to 1876 covering the Black Lodge Singers’ children’s song “Mighty Mouse” as punk, with actual powwow drums, entirely unbothered.
+
+NewA landscape does not silence a sound. It decides which parts survive
+
+Air is a steep low-pass filter — distant thunder rumbles and near thunder cracks, same event, different amount of air. Fresh snow is one of the most absorptive surfaces in nature. And a temperature gradient bends sound toward the cooler air: **down over cold ground, so a voice carries for kilometres; up over hot ground, leaving an acoustic shadow a short walk from the source.**
+
+Which is [the punk rack](https://starstuff.earth/joyful-sound-playlist.html)’s overtones and [the AURORA rack](https://starstuff.earth/aurora-playlist.html)’s emission lines arrived at from the other side. Those two found a medium *adding* what is characteristic of it; this one finds a medium *subtracting*, and what it removes is just as characteristic. Marked a rhyme rather than a proof, as all three are. [The collection page](https://starstuff.earth/collection-sound.html) now reads *three pages, one piece of physics*, and still prints the Bowie rack’s refusal to join in.
+
+CorrectionThree counts on the Sound collection page were wrong, and one was wrong twice over
+
+**The distinct-title figure could not be reproduced by any method we tried.** The page published **182**; our own fact-check ledger records **181** for the same set; case-insensitive matching gives **193**. The 2026-08-27 ledger row names the cause outright — the number had been *carried forward by delta* from a base our normaliser already disagreed with, twice. It has now been **replaced rather than incremented**, and the page states its method: **231 distinct titles counted case-insensitively, 264 distinct song-and-artist pairs.** The pairs method was validated by reproducing the existing figure exactly before it was trusted.
+
+**“The shelf is 146 embedded videos” was never an embed count.** 146 was the *card* total on 26 August, and it was two racks stale besides. Derived: **269 embeds across 268 cards** — the odd one out is a video inside the AURORA essay rather than on a card. And rule two’s “a hundred and twenty-one reasons” was the four-rack collection total from 12 August, used in a sentence about how long a single *rack* may get; it is now the longest rack, forty-four.
+
+Every figure on the page was re-derived from the card markup rather than incremented: **eight racks, 268 cards**, replacing *seven racks, 230 cards* in six places including the `og:` and `twitter:` descriptions that a link unfurl quotes. **No gate can read a number written out in a sentence**, which is why this keeps happening and why the method is now printed next to the number.
+
+MethodWhere we stop, and why the page says so out loud
+
+The source book applies its own blood-and-culture test for who counts as Native and runs identity verdicts on named musicians. **The rack reports his findings as his and extends none of them**, says his criteria are contested including inside Native communities, and runs no verdicts of its own.
+
+Three claims were declined rather than shipped, and the page prints the declining: Carroll’s attribution of the Hollywood idiom to Russian immigrant composers is *not asserted*; the positive description of powwow drumming is left to the people who play it; and two standard monographs are named as the route to settling the rest and **not cited as though we had read them.** The machine transcripts we worked from are visibly imperfect — one places the Argentine group Tacuara in Chile — so Deal is quoted from an edited published interview in preference to any of them.
+
+**And the refusal that took the most care:** colonisation is not a figure of speech for neurodivergence. The structural rhyme — being handed a portrait made by other people and then graded on how well you match it — is real, narrow, and belongs to the reader. Deal has said publicly both that people connect to *Bad Indian* through their own not-measuring-up *and* that he accepts no duty to educate anybody. Both halves are on the page; the second half is the one that usually gets dropped.
+
+SiteWiring and gates
+
+The reading chain extends to **152 pages** with no mismatches, [Skepticism and Wonder](https://starstuff.earth/rainbow-connection-playlist.html) → We Were Punk First → [Print](https://starstuff.earth/collection-print.html). **155 of 155 badges** across sixteen collections. All eight gates clean, and the new page indexes at 55 records and 100% coverage.
+
+**All 38 video IDs went through the oEmbed endpoint before a word was written about them** — 38 of 38 returned the expected title and channel. The embeds are `youtube-nocookie`, matching the newer racks rather than the older ones. No lyric is reproduced anywhere on the page, which is worth stating because most of this material is spoken word and unusually quotable.
+
+2026 · September 4 · later still
+
+## A sixteenth collection, for bad news that comes with a way out — and its first issue, on the 1.5 °C overshoot
+
+[Triggers](https://starstuff.earth/collection-triggers.html) is *bad news from a dying planet, and what we can do about it* — the deliberate mirror of [Glimmers](https://starstuff.earth/collection-glimmers.html), which this site already defines as “simply the opposite of a trigger.” The first issue is [Overshoot](https://starstuff.earth/trigger-overshoot.html): why 1.5 °C is not a small number, and eleven responses graded from deployed to speculative.
+
+NewEvery response carries a readiness grade, and that is the whole point of the collection
+
+The defect in every list of climate solutions is that it puts loft insulation next to direct air capture as though they were the same kind of object. So each response here is graded **deployed, scaling, demonstrated, proposed** or **speculative**, and marked individual or structural — the same job [How We Got Here](https://starstuff.earth/collection-how-we-got-here.html)’s *documented / contested / leap* marking does for a Burke chain.
+
+**A grade is about deployment, not merit**, and the page says so. Afforestation is graded *deployed* and is nearly useless at the scale required. Sustained net-negative CO~2~ is graded *proposed* and is the mechanism every “we can return to 1.5” sentence quietly depends on.
+
+NewFive reasons a number that sounds like nothing arrives as fires
+
+It is a *global* mean over a planet 71 per cent ocean — at a global 1.09 °C for 2011–2020, land was already at **1.59 °C**. It is a *twenty-year running average*, so 2024 at 1.55 °C was the first calendar year above 1.5 and was not a crossing. **Extremes move further than the mean, and rarer extremes move furthest:** the once-in-fifty-years hot day over land becomes **8.6×** more frequent at 1.5 °C and arrives **2.0 °C hotter**, against 4.1× for a once-in-ten-years event.
+
+The ice age was **6.1 °C** colder in the global mean, which makes 1.5 a quarter of that distance travelled in a century and a half. And the surface figure is a receipt: the Earth system absorbed **381 zettajoules** between 1971 and 2020, 89 per cent of it into the ocean and **1 per cent into the atmosphere** — the part the thermometers read.
+
+MethodReading the coverage produced the figure that reframes the issue
+
+The issue was drafted from the UNEP report itself — all 68,000 words — and the IPCC’s AR6 WGI Summary for Policymakers, read directly. Ryan then supplied the two pieces of coverage, and reading them changed the page.
+
+**The report’s summary leads on 1.8 °C as the optimistic peak. The coverage carries the other number: current policies give 2.6 °C by 2100.** Which reveals 1.8 as the *good* outcome rather than the forecast — and 1.8 is also, six pages later in the report, the level beyond which returning to 1.5 this century “becomes increasingly challenging.” The best case on paper lands on the edge of recoverable.
+
+It also produced Mirey Atallah’s boiler analogy, which independently states the fifth mechanism from the report’s own coordinator, and two dissents from scientists not involved — kept because they disagree in opposite directions. **And a headline-versus-source gap:** the coverage is headlined “the 1.5 C threshold is lost,” while UNEP’s executive director, quoted inside that same article, says it “is still the goal,” to be approached from above. The body is accurate; the headline is not.
+
+CorrectionOne of the questions this issue was written to answer is the wrong question
+
+The brief asked *how do we re-home climate refugees.* The report answers by rejecting the framing: **“Pacific Islanders have explicitly rejected the framing of ‘climate refugees’”**, and both Pacific and Caribbean island communities have consistently expressed a preference to remain in place, with relocation a last resort.
+
+Where movement does happen, the IPCC finds *with high agreement* that the degree of agency people retain over **if, where, how and when** they move is what determines whether mobility is adaptation or an additional harm — while consultation “remains very limited in practice, including with populations whose movement is being planned.” The report turns that into its own question, and the entry adopts it: **“whose relocation is it?”**
+
+MethodThe two-member floor broken a third time, and graded as the weakest of the three
+
+Easter Eggs broke it because the absence of an index section *is* its mechanism. Glimmers broke it because a running log is defined by its cadence and cadence cannot be observed retroactively. **This break is weaker than both, and the collection page says so on its face:** a convention cannot be demonstrated by a single instance — one graded ladder is a page, not a form.
+
+It was opened anyway because the grading scale needed to be written down somewhere that is not inside the only piece using it; a convention held in one page’s head gets reinvented differently next time. The page calls itself *provisional* until a second issue, and states that without one it is the record of a form that was tried once.
+
+SiteWiring and gates
+
+Sixteen collections now, **154 of 154 badges**. The reading chain extends to **151 pages** with no mismatches, tail [Shorthand Evolution](https://starstuff.earth/shorthand-evolution.html) → Triggers → Overshoot. A `#triggers` pill joins the front-page jump strip.
+
+All eight gates clean. **One figure fault was found by measuring rather than by a gate:** the `39.2×` label on the extremes chart sat *inside* its own bar rather than after it. `check-overlap.mjs` cannot see that by design — text over non-text is explicitly outside its scope — and the contrast pass was right to allow it, having correctly composited the bar behind the label. Fixed by rescaling the bar area, re-measured at exactly 8 px clearance for all five value labels.
+
+2026 · September 4 · later
+
+## Two varieties of one pepper, the same solar panels, and two opposite answers — neither of which is the failure
+
+[Two Peppers](https://starstuff.earth/two-peppers-zine.html) is Zine No. 87, in [Star Stuff](https://starstuff.earth/collection-star-stuff.html): fourteen spreads, two figures, six refusals. Built from six agrivoltaics papers Ryan added to the SKS on 4 September, and then from the primary behind the one that mattered. **The finding the reviews had smoothed away is the one the zine is built on.**
+
+NewThe light saturation point, and the surplus a panel can take for free
+
+Photosynthesis climbs with light and then flattens, at a point that is **specific to the species**. Past it, more photons change nothing — the light-harvesting reactions are already full. Stallknecht and colleagues (*Scientific Reports* 13:1903, 2023) measured basil yield rising between roughly 6 and 12 mol m⁻² d⁻¹ and then not improving further, against an unshaded control near 20.
+
+Which makes shade a dial rather than a verdict. As the Fraunhofer group put it in a technical handbook: *“if the shading rates are adjusted accordingly, it is theoretically possible to grow all crops in an agrivoltaic system.”* There is no unsuitable crop; there is a ratio nobody adjusted.
+
+NewGoing to the primary put back the result that mattered
+
+The review chapter reports the Arizona experiment as *“chiltepin pepper and tomato showed a yield increase of 150% and 90%.”* Fair enough as a summary — and it drops the third crop entirely. Read at the authors’ own manuscript (Barron-Gafford et al., *Nature Sustainability* 2:848–855, 2019, via the US Department of Energy’s open deposit, because the publisher’s copy sits behind an authorisation wall):
+
+**Chiltepin**, the wild variety of *Capsicum annuum*: carbon uptake +33%, fruit **three times** greater. **Jalapeño**, the domesticated variety of *the same species*: carbon uptake **−11%**, water-use efficiency **+157%**, and roughly equal fruit on **65% less water**. **Cherry tomato**: +65% uptake, fruit doubled.
+
+*One species, two strategies, and no way to rank them that does not begin with an arbitrary choice about whether you are short of land or short of water.* The panels themselves ran about **8.9 °C cooler** over the transpiring crops than over bare ground — which is the thing the zero-sum framing has no axis to express.
+
+NewTwo papers in the same drop contradict each other, and the contradiction is the argument
+
+Cherry tomato doubled under Arizona panels. In a Michigan greenhouse, Stallknecht and colleagues found tomato yield **linear in daily light with no upper asymptote at all** — every photon removed cost fruit, with the best coverings still 25% and 37% down on yield and 52% and 74% down on *ripe* fruit at harvest.
+
+**Neither measurement is wrong.** In the desert, heat and water were scarce and shade removed a burden. Under glass, light was scarce and shade removed the supply. Shade tolerance turns out not to be a property of the plant at all — it is a property of the plant and the place, and it changes sign when the place does.
+
+MethodWhat the field says about itself, printed rather than skipped
+
+Spread eleven carries the costs in the reviewers’ own words: Weselek and colleagues write that the technology’s *practicability and impact on crop production have hardly been investigated*; Zahrawi and Aly report a **contradiction between ASCE wind standards and wind-tunnel results**, with a named knowledge gap on wind-load mitigation — for structures partly sold as climate adaptation; and Alves and colleagues screened **308 publications and found twelve** on policy instruments. A corn result that looked surprising is printed as an unresolved oddity rather than as evidence, because its plot was 100 m² and the authors say so.
+
+**And one source we could not use is named on the page.** The IISD report *Agrivoltaics in India* was in the reading pile, but the copy available to us contains only front matter — a title page and a JSTOR notice, no report body. Nothing in the zine draws on it, and the piece would have been better for having it.
+
+SiteWiring, counts and gates
+
+*Star Stuff* goes 38 pieces to **39**, and its derived line — total minus the seven founders — from *thirty-one of these pieces were made much later* to **thirty-two**. The chain now runs [No. 86](https://starstuff.earth/older-than-either-of-us-zine.html) → No. 87 → [How We Got Here](https://starstuff.earth/collection-how-we-got-here.html), edited in both directions.
+
+All eight gates clean: markup, sitemap, card order, contrast (0 screen / 0 print across 392 elements including 20 SVG labels), overlap (0 collisions, 0 clipped), dead classes (0 of 419 uses). Search index rebuilt — 14 records at 100% coverage, one per spread, and the front page went 161 records to 162 rather than merging the new card into its neighbour. **Both figures were rendered standalone and looked at**, and every label’s geometry measured with the spreads revealed — because a diagram that means the wrong thing is invisible to every gate here.
+
+2026 · September 4
+
+## Glimmer Wire is a collection now, one page per edition — because two editions on one page was already a wall
+
+A running log on a single page grows without bound, and the second edition had already buried the first. [Glimmer Wire](https://starstuff.earth/collection-glimmer-wire.html) is now the fifteenth collection here, with each edition on its own page: [2 September](https://starstuff.earth/glimmer-wire-2026-09-02.html) and [4 September](https://starstuff.earth/glimmer-wire-2026-09-04.html). The old single-page address permanently redirects to the collection. Nothing was rewritten in the move — both editions keep their text, their grades, their amendments and their anchor ids.
+
+NewA fifteenth collection, and a fifth sorting axis: issue
+
+The five register collections sort by the *kind of argument* a piece makes. Field Guides and How We Got Here sort by *form*. Print and Sound sort by *medium*. [Glimmers](https://starstuff.earth/collection-glimmers.html) sorts by *occasion* — something happened on a particular day. This one sorts by **issue**: a member is here because it is edition *N* of a serial, and its identity is the date it went out.
+
+Editions are therefore **dated, never numbered**, for exactly the reason Glimmers entries are: the zine numbering says *when* and is referenced by number across the changelog, the fact-check ledger and years of prose with no redirects, so a serial inserting itself into that sequence would make the numbers mean two things. The collection page carries the argument, the grade definitions, and the reason **Held** is the section that earns the whole thing.
+
+SiteWhat the split costs, said on the page rather than left to be noticed
+
+An edition no longer sits in the immediate company of the one before it, and this scan makes cross-edition observations on purpose — the same held item declined twice so the pattern is on the record, a lag distribution confirmed by a second data point. Those are now links rather than a scroll, which is a real loss and is named on the collection page.
+
+What it buys: an edition a reader can finish, a URL that means *that week*, and an archive still navigable at fifty editions instead of collapsing under them. The editions carry prev/next to **each other** — a local order through the archive, not a link in the site's global reading chain, which Glimmer Wire stays outside of for the same reason every working paper does.
+
+MethodA ruling on an open question, and one collection loses a member
+
+`CLAUDE.md` had listed `glimmer-wire.html` as one of two pages sitting outside the reading chain *with no reason recorded* — deliberate or not, nobody had written down which. That is now ruled and written down: **Glimmer Wire is off the chain on purpose**, because threading a weekly scan between two zines drops a maintenance document into the middle of somebody's reading. One open question left on that list.
+
+[Notes & Rationale](https://starstuff.earth/collection-notes.html) goes from six working papers to **five**, and says on its own face that one moved out and why. It is also no longer the only collection page off the reading chain. Six member counts on that page were corrected in the same pass — the hero, the tier list, the off-chain paragraph, the colophon and a source comment — which is the standing counts lesson arriving exactly where `CLAUDE.md` says it will.
+
+SiteTen inbound links repointed, so nothing relies on the redirect
+
+A redirect is a safety net, not a fix. Every internal link that pointed at the old page now points at the edition it actually meant: seven in this changelog, one in [Until There Were Ten](https://starstuff.earth/until-there-were-ten.html), and the cards on the front page and in Notes. The two deep links — into edition one's [Held](https://starstuff.earth/glimmer-wire-2026-09-02.html#held-items) section and its Kanzi seedbed entry — were rewritten in place, because a Netlify redirect does not carry a fragment.
+
+The front page gains a Glimmer Wire section with its own accent and a fifteenth jump pill in the masthead strip. `sitemap.xml` trades one entry for three. Both editions keep every anchor id they shipped with, suffixes included, so an external link into a specific entry still lands on that entry.
+
+2026 · September 4
+
+## The block lifted, we read the papers, and the two worst errors turned out to be ours rather than the coverage’s
+
+The network restriction behind the edition above was widened hours after it shipped, so every source was tried again. **One item upgraded to verified. Five stayed where they were. All six were corrected.** That ratio is the honest result of a verification pass and it is the opposite of the one you would hope for: what reading primaries mostly buys is not confirmation, it is a list of things you had wrong. Two of the corrections are not the press releases’ fault at all — we misread a paper’s title, and we described a physics result using the wrong physics.
+
+CorrectionWe built a correction on a grammatical misreading of the title we were correcting
+
+The *Science* macrophage entry said the coverage’s “reverses ageing” overreached, because “the paper’s own title claims the impairment *limits* organ ageing.” The title is “***Restored clearance* of senescent neutrophils by tissue-resident macrophages limits organ aging**.” The subject is the *restored* clearance — so the title says that restoring the clearance limits ageing, which is a good deal closer to the coverage than we allowed. The abstract then closes on impaired clearance as “a **reversible driver** of organ decline in aging.”
+
+We had the grammar backwards and reprimanded a science desk for it. The entry now says so in place of the complaint. Two things came out of the same abstract: the paper has a human arm after all — elevated EP2 and senescent neutrophils *observed* in aged and diseased human tissue, with no human intervention — and the mouse ages and dosing duration we printed appear nowhere in it, so they are struck from the entry rather than carried on a summary. **The withheld author list is resolved:** the ordering we distrusted was right, and all thirteen names are printed.
+
+CorrectionWe complained that a press release conflated two things, using the same conflation
+
+The *Nature Materials* entry opened: run a current through a conductor, put it in a magnetic field *perpendicular* to the sample, and a voltage appears across the sides — that is the Hall effect, discovered by Edwin Hall in 1879, hence “century-old.” Then it reported this paper as finding that voltage with the field in-plane. **It does not.** The paper is about the *anomalous* Hall effect, which arises from the material’s own magnetisation and from symmetry, not from an applied field. Nothing in it touches Hall’s 1879 result or the sensors built on it. The paper stacks a low-symmetry semimetal on a ferromagnetic insulator so that a single mirror plane survives, breaks that symmetry with in-plane magnetisation, and gets a Hall response tracking *both* magnetisation components — offered as “a pathway for engineering tunable, symmetry-driven Hall effects.”
+
+**The flagged open question is answered, and in our favour:** the prior in-plane literature exists in force. Papers reach back to 2022, with independent *observations* published in 2024 and a run of further work through 2025 and 2026, including a unified symmetry framework at the end of July — all now cited by number in the entry. So “century-old assumption overturned” is release language and appears nowhere in the paper. Being right about the release did not stop us reproducing its error one paragraph earlier.
+
+CorrectionThree dates that describe cooling in sediment cores, not encounters with clouds
+
+The heliosphere entry printed 13–14, 6–7 and 2–3 million years ago as the times the solar system crossed cold interstellar clouds. Those are not cloud encounters. They are **stepwise cooling intervals read out of deep-sea sediment cores** — the independent half of the argument — and the review says their driving mechanisms are “subject to ongoing debate” and that such cooling *might* be triggered by heliosphere collapse. Getting it backwards turned a proposed correlation into a reported observation, which is the specific move this page exists to refuse.
+
+Two more, from the same abstract. **It is not a group:** the review has a single author, Merav Opher, who directs NASA’s SHIELD centre — we had written “a NASA-funded group.” **And the superflare and nitrous-oxide strand is not in this paper**, which we had filed as a “companion strand” of it; the review’s stated span is the Sun’s last ten million years, and almost certainly a second piece of work was folded in by the summaries. It has not been identified, and the entry says so. The title, author, volume, pages and DOI were all filed as *not obtained* and are now printed. On the figure: nitrous oxide is **273** times as warming as carbon dioxide over a hundred years, per IPCC AR6 — not 300, and the real defect was never the digit but the missing *timescale*.
+
+VerifiedThe bats paper was open access all along, and two of its headline numbers are not in it
+
+Upgraded from plausible to **verified**, read in full in PubMed Central, and it supplies the DOI the entry had been missing: *Science Advances* **12**(31), eaeb6714, 10.1126/sciadv.aeb6714. The eight-author list and the date we filed from summaries were exactly right. Two of the claims were not.
+
+**“The largest bat family at more than 500 species” is nowhere in the paper.** It calls Vespertilionidae the largest family and gives no number at all; the only count it prints is “over 1,500 known species of bats,” which is the whole order. The measured figures are **26 species** carrying dual immunoglobulin heavy-chain loci on separate chromosomes, with **one** — the big brown bat *Eptesicus fuscus* — confirmed functional by single-cell transcriptomes, both loci generating diversity by different mechanisms. Our phrasing implied a family-wide trait. **And the virus-tolerance explanation is not the authors’ claim:** bats as reservoirs is the paper’s opening motivation, and its conclusion is “a foundation for analysis of humoral immunity and pathogen response in bats.” We had attributed the coverage’s framing to the group, in an entry whose own caveat was about being careful with verbs.
+
+CorrectionThe tubes were photographed; the trading was inferred from gene content
+
+The Asgard entry said the archaeon was imaged in contact with bacteria “joined by nanotubes and apparently exchanging material.” The imaging shows the *connection* — through tubular fibres **assembled by the bacterium**, not jointly. The exchange is inferred from complementary genomes: the archaeon can make hydrogen, acetate, formate and sulfite, the bacterium makes amino acids and vitamins, and the paper’s verb is that these “*could* be exchanged in a syntrophic partnership.” We had a genomic inference standing where an observation should be. We also said the group reported *isolating* the archaeon; it reports a highly enriched culture at **89%**, which is not an isolate.
+
+Everything the entry had withheld is now obtained: the DOI, the full fourteen-author list, the volume and pages, and both species names, which are printed for the first time — the archaeon *Nerearchaeum marumarumayae* and the bacterium *Stromatodesulfovibrio nilemahensis*. The 9 April 2026 date we filed from a summary is right.
+
+CorrectionAn Ediacaran animal’s lag was nine days, not one, and the poison story was ours
+
+The *Conotubus* entry printed its lag as “1 d, a floor,” because no online-first date could be found and the issue date had to stand in. The online-first date is **24 August 2026**, so the lag is a measured **9 days**. Three claims corrected with it. The proxy is **molybdenum** — extremely low δ^98^Mo in pyritised fossils — and the sulfur isotopes do a different job, showing that pyritisation preserved the original signal and that microbial sulfide oxidation was going on in the habitat; we had both isotopes doing the same work. The bacteria *drawing down a lethal sulfide load* is not in the paper; that was a summary’s addition and we repeated it. And the paper’s modern comparison is **cold-seep** tubeworms, where our own frame reached for a hydrothermal-vent animal. The full twelve-author list is obtained. The paper’s hedge, which the entry said was the thing it could not read, turns out to be stronger than ours was: *Conotubus* “**may** have engaged in chemosymbiosis.”
+
+MethodGetting past the network is not getting past a paywall — and the lag axis cannot see a preprint
+
+Five of the six items are still not read at source, and the entries now name the exact refusal instead of a summary. *PNAS*, *Cell* and *Annual Reviews* returned `403` at the article page. *Nature Materials* served its abstract and priced the full text at $39.95. *Science* paywalls past its abstract. Metadata and abstracts came from Crossref, PubMed, Europe PMC, arXiv and PubMed Central. **One grade was deliberately not raised:** the Hall paper’s authors posted a full preprint of the same experiment in May 2025 and it was read end to end — but a preprint is the authors’ text, not the version of record, so the entry stays contested and says exactly what was read.
+
+**And the page’s own axis is understating two items by years.** The bats result was public as a bioRxiv preprint on **9 August 2024** — 753 days before the wire carried it, against the 34 we print. The Hall result was public on arXiv on **11 May 2025**: 478 days, against 96. The lag axis measures journal publication, so a preprint is invisible to it by construction. Rather than redefine the axis mid-archive, both entries and the section intro now carry the preprint dates alongside the printed figure. The median is unchanged at 40.5 days, which is a coincidence and is labelled as one.
+
+SiteA page that said “nothing was read” in eight places, including three link unfurls
+
+The claim was load-bearing and it was everywhere. Updated: the hero’s *Verified to date* (1 → 2), the edition tally (*0 verified* → *1 verified*), the colophon, and the `meta`, `og:` and `twitter:` descriptions, all three of which were still telling anyone who shared the link that nothing in the edition had been verified. The standing notice keeps its original account of the blockage — moved to past tense, not deleted — under a retitled heading, with the amendment set out beneath it. The *Filed* intro claimed one of the six carried a date inside the last seven days; after the *Conotubus* date correction, none does.
+
+Two factual errors were corrected inside the “Not” refusals block, which is otherwise untouched: “Nothing here was read at source” is no longer true, and the refusal is restated so that it survives its own correction; and “a family of bats with two antibody loci” became twenty-six species. The seedbed’s *no standard immune system* entry keeps its hold, but for the better of its two reasons — not “half of it is a search summary,” which is no longer the case, but that a field guide built on two poles is an argument wearing a catalogue’s clothes.
+
+2026 · September 4
+
+## This week’s digest could not open a single source, so nothing in it is graded verified — and we published it saying so
+
+Edition two of [Glimmer Wire](https://starstuff.earth/glimmer-wire-2026-09-04.html), the weekly graded scan behind [Glimmers](https://starstuff.earth/collection-glimmers.html). **Six items filed, four held, three leads, none verified.** The reason is not editorial: every publisher, aggregator, press wire and DOI resolver the scan reached for was refused at the network layer before the request arrived, so the whole edition rests on search-result summaries — which our own rules class as leads and never as citations. That is one step further out than edition one, which at least reached institutional press releases.
+
+NewSix filed, sorted by lag, every figure marked as summary-sourced
+
+An Ediacaran tube-dweller reported to have lived on sulfide-oxidising bacteria **550 million years ago** (*PNAS*); the solar system’s passage through cold interstellar clouds proposed as part of Earth’s climate record (*Annual Review of Astronomy and Astrophysics*); vesper bats reported to build antibodies from **two** immunoglobulin heavy-chain loci where every other mammal has one (*Science Advances*); organ ageing traced to tissue-resident macrophages losing the ability to clear worn-out neutrophils (*Science*); a Hall voltage measured with the magnetic field in-plane (*Nature Materials*); and the archaeon–bacterium partnership at the root of complex cells *imaged*, joined by nanotubes, in a Shark Bay microbial mat (*Current Biology*).
+
+**Two are graded contested and the reasons differ.** The heliosphere item is a review article plus a modelled trajectory, and “may help explain the ice ages” is a causal claim the method cannot close. The Hall item is contested for its *framing*: “century-old assumption overturned” reads as release language, and searching around it surfaced prior work on Hall responses in parallel magnetic fields — which, if it holds, makes the honest story a narrow real result inside an active field. We could not open the paper, the release, or the prior work to settle it, and the entry says so rather than picking a side.
+
+**What is withheld is on the page.** The *Science* paper’s full author list (the ordering in the summary was garbled). The new archaeon’s species name (spelling unconfirmed). The bats DOI, the Asgard DOI and author list, and the heliosphere review’s title, authors and volume — none obtained. Two of the lag figures are flagged as provisional because the publication dates behind them are unconfirmed, which is the honest thing to do to your own axis.
+
+Fact-checkFour held, and the first is the item most on-frame for this whole site
+
+**Attention patterns in ADHD as a creative advantage.** It goes straight at the paradigm and we are not filing it. The sourcing traces to a congress presentation and a cross-field synthesis rather than a study; the summaries conflate a 2025 congress item with a separate 2026 design-task study, so a digest could not tell you which finding it was describing; and the framing on offer — creative activity as a therapy that channels defocused attention while strengthening focus and self-control — sits one inch from *regulate yourself out of your material conditions*. Here the superpower frame is not a risk downstream. It is the headline.
+
+**“Each extra hour of prolonged sitting linked to 9% higher cancer death risk.”** Held because *the sources disagree on the journal* — the summaries name both *PLOS One* and *PLOS Medicine* for the same paper, and a scan that cannot say who published a result has not traced it. Held also because an observational hazard ratio about how a day is broken up quietly converts a question about who is *permitted* to stand up at work into personal advice.
+
+**A single dose of engineered immune cells said to protect aged mice for a year** is declined as cure framing, and named on the page rather than dropped, because the filed macrophage item is the same field seen from a better angle and a reader is owed the neighbouring claim we chose not to repeat. **Octopus, whale and corvid cognition** is held for undated round-up sourcing — the same fault as edition one’s cow with a brush, held a second time on purpose so the pattern is on the record twice. That category is where our sourcing standard comes under the most pressure, because the items are the most fun.
+
+CorrectionTwo of our own counts were stale, in two different files, and the digest says so on its face
+
+Checking where a bats entry would go meant re-deriving the *there is no standard X* figure. It is **fifteen** field guides. `CLAUDE.md` says twelve; [the guide to untranslatable words](https://starstuff.earth/under-the-word-field-guide.html) says thirteen in its own refusals. Both predate three more guides — bird, rainbow, and *way to be moved* — and those three were read here to confirm they *arrive* at the formula rather than merely mention it. The grep returns sixteen files; the sixteenth, [the unfinished-animals guide](https://starstuff.earth/unfinished-animals-field-guide.html), matches while explicitly declining the formula, which is why the answer is fifteen and not sixteen.
+
+*The standing rule held exactly as written:* a count in the working notes is a lead about the site, not a fact about it. Both stale figures are named on the digest rather than quietly corrected, because a count that was wrong in two places at once is evidence for the rule.
+
+MethodPlacement checked by argument, and two items were demoted for it
+
+A new item can duplicate an old claim with none of its nouns, so the check is on the argument. **Chemosymbiosis is not unspent here:** [A Field Guide to Life in Impossible Places](https://starstuff.earth/impossible-places-field-guide.html) already carries *Riftia*, the vent tubeworm, living on “oxygen and sulfide at once” — so the *Conotubus* item’s unspent claim was narrowed from *animals live in partnership* to the **age**, and to the evidence being isotopic rather than anatomical. **The eukaryote-origin argument is spent too:** [No. 7](https://starstuff.earth/you-were-never-one-thing-zine.html) holds it and [No. 84](https://starstuff.earth/there-have-been-so-many-earths-zine.html) holds the long-negotiation reading, citing the Asgard literature by name — so that item’s unspent claim was narrowed to *partnership without engulfment, imaged rather than inferred*. Unspent by grep, zero hits each: heliosphere, immunoglobulin, vesper, macrophage, neutrophil, efferocytosis, nanotube.
+
+One stale sentence on the page itself was fixed while we were there. The hero read “nothing here has cleared the bar to be a page,” which stopped being true on 2 September when two of edition one’s items became [Until There Were Ten](https://starstuff.earth/until-there-were-ten.html) and [No. 85](https://starstuff.earth/the-lizard-that-was-never-there-zine.html). It now states the ratio instead, which is the more useful claim anyway.
+
+2026 · September 3 · later
+
+## We credited an elephant with recognising itself in a mirror. The study was of a different species — and the species is what made its control work
+
+The corrective pass promised in this morning’s entry, done as its own commit rather than folded into the piece that found it. Two claims withdrawn from [Field Guide No. 11](https://starstuff.earth/nervous-systems-field-guide.html), both traced to primary. **One of the two faults is a kind nothing on this site had previously looked for.**
+
+CorrectionThe corvid card: two of five magpies, and a replication that failed
+
+**What we said.** The crow card listed *self-recognition* among the things a corvid does without a neocortex, and its field notes said crows and ravens “use tools, plan for the future, and recognise themselves.”
+
+**What is right.** Prior, Schwarz and Güntürkün (*PLoS Biology* 6(8): e202, 2008) marked five hand-raised magpies. **Two** showed statistically significant mark-directed behaviour, **one** a single spontaneous instance that did not reach significance, **two** none — with the authors’ own printed caution that the sample is too small for a definitive estimate of the distribution in the population. Soler, Colmenero, Pérez-Contreras and Peralta-Sánchez (*Journal of Comparative Psychology* 134(4), 2020) then failed to confirm it in a close, larger replication.
+
+**Hedged narrowly, in both directions.** The replication *did* reproduce more social and more self-directed behaviour at the mirror than at the cardboard control; it failed specifically on the **mark test**. So “debunked” would be as wrong as the original overclaim, and the card says so on its face. Tool use and next-day planning are untouched, and were strengthened rather than left vague — Kabadayi & Osvath and Gruber et al. are now named on the card.
+
+CorrectionThe elephant card: the wrong species, and the species was the control
+
+**What we said.** The elephant card listed *self-recognition* alongside memory, grief and culture.
+
+**The first thing wrong is one we had never thought to check.** Every figure on that card is the **African** elephant (*Loxodonta africana*). The mirror study — Plotnik, de Waal and Reiss, “Self-recognition in an Asian elephant,” *PNAS* 103(45), 2006 — is of three adult female **Asian** elephants (*Elephas maximus*) at the Bronx Zoo. **And that is not pedantry, because the study’s own control depends on it.** The paper notes that male African elephants often touch their heads owing to temporal gland secretion, whereas in female Asian elephants that gland is bilateral, vestigial and nonsecretory — which is precisely what let the authors rule out a general tendency to touch the marked area. *Carry the finding across to an African elephant and you reintroduce the confound the species choice removed.*
+
+**The second is the strength: one of three.** Happy passed the mark test on the first day of marking, with a significant shift in her head-touching distribution. Maxine and Patty did not. Re-marked two months later, none of the three touched mark or sham. The paper’s title is singular for a reason.
+
+**Graded more gently than the magpie, deliberately.** There is *no* failed independent replication here, and the authors answer the one-of-three objection themselves: even in chimpanzees, the most extensively tested species with mirror self-recognition, fewer than half of individuals may pass on some studies — and repeated mark tests on one animal are considered uninterpretable, because they compromise the mark’s salience. All three elephants reached the third and fourth stages of the standard progression and showed a **total absence** of social responses to the mirror image, which is evidence in its own right. So the card now says what is actually true: mirror self-recognition has been demonstrated in **one Asian elephant**, it is a real and careful result, it is not a general fact about elephants, and it is not a fact about this card’s animal.
+
+**A figure tightened while we were in there, and its source cited for the first time.** Herculano-Houzel and colleagues (*Frontiers in Neuroanatomy* 8, 2014): 257 billion neurons, **97.5%** of them (251 billion) in the cerebellum — the card had said *~98%* in four places. The cerebral cortex has twice the mass of ours and holds **5.6 billion** neurons against our roughly 16 billion. That last figure is new to the card and makes its point better than the wording it replaces.
+
+MethodThe fix introduced a drawing fault, and the gate was right not to catch it
+
+Changing the glyph label from `cerebellum: 98%` to `cerebellum: 97.5%` made it wider — wide enough to **collide with the neighbouring `cortex` label**. Measured in the browser: an overlap of about 1.1 px.
+
+**`check-overlap.mjs` reported zero collisions, and it was not wrong to.** Its ink-ratio shrink and minimum-overlap floor are deliberately generous, so that the gate can only ever *under*-report — an under-reported collision still has a human to catch it, where an over-reported one is a gate nobody reads. At 5 px type, 1.1 px sits below the floor. Fixed by moving the labels apart, re-measured at 14.9 px of separation, and then rendered to an image and looked at.
+
+*The standing lesson, already recorded for zine diagrams and now for guide glyphs: editing the text of an SVG label changes its width, and the check that watches for text collisions is tuned not to see small ones.* All 14 labels on the page were then measured directly — none outside its viewBox, none overlapping another.
+
+MethodWhy this is a separate commit
+
+Both faults were found while sourcing [Field Guide No. 23](https://starstuff.earth/bird-minds-field-guide.html) this morning, and neither was fixed in that pass. **Patching a fault in the file where you happened to notice it is the failure mode this log keeps recording** — it leaves the corrected version carrying the original defect with a fresher date on it. So the new guide shipped naming the error, and the error was then fixed on its own, against the primaries, with the species check applied to *both* cards rather than only the one that prompted it. No other card on the page was touched, and the guide’s argument is unchanged: it never rested on self-recognition, only on neuron density and architecture.
+
+2026 · September 3
+
+## Three papers on one desk disagree about whether birds inherited the circuit or built it twice. Every popular version picks one
+
+A new zine in [Star Stuff](https://starstuff.earth/collection-star-stuff.html), its 38th piece, and a companion catalogue in [Field Guides](https://starstuff.earth/collection-field-guides.html), the 23rd. Built from nine bird-cognition papers Ryan added to the library this morning. **One card corrects a claim we shipped in an earlier field guide.**
+
+New piece[Older Than Either of Us](https://starstuff.earth/older-than-either-of-us-zine.html)
+
+**The checkable thing.** Stacho, Herold, Rook, Wagner, Axer, Amunts and Güntürkün put pigeon and barn owl forebrain through three-dimensional polarised light imaging, which reads the orientation of nerve fibres from how they bend light, and found **radially and tangentially organised fibres crossing at right angles** along the entire extent of the Wulst and the sensory dorsal ventricular ridge. Lamina-like and column-like, in a brain that builds neither layers nor columns. The motif was *iterative* — it recurred across somatosensory, visual and auditory zones, across two regions, and across two species — which is what makes it a finding rather than a lucky slice. *Science* 369, eabc5534 (2020).
+
+**The boundary the paper printed, which a summary would drop.** The motif was not everywhere: the *non*-sensory parts of the dorsal ventricular ridge showed a mosaic-like arrangement instead, patches of fibres running in different directions. The zine gives that its own spread. A finding that arrives with its own edge is worth more than one that arrives seamless.
+
+**Then the obvious explanation fails, on the numbers of the paper that supplies them.** A kea carries about **1.28 billion** pallial neurons, a raven **1.2 billion**, a chimpanzee **7.4 billion** — and all three perform comparably across a wide range of tasks. Güntürkün, Pusch and Rose say so plainly: corvids are on par with apes and their neuron numbers still differ widely. What makes the arithmetic survivable is where the neurons sit (about 19 per cent of a primate’s are pallial, against 62 in parrots and 78 in songbirds) and what they cost (avian neurons run on roughly a third of the glucose mammalian neurons use). **A measure that fails in both directions was never measuring the thing.**
+
+**The centre of the piece is a disagreement, and it was inside the same batch of papers.** Stacho and colleagues close by suggesting an ancient microcircuit already present in the last common stem amniote, conserved and partly modified — *inheritance*. Güntürkün, Pusch and Rose argue the four features required for complex cognition *convergently evolved*, independently, and are therefore “hard to replace” — *invention, twice*. Zaremba and colleagues, sequencing the whole chicken pallium across eight stages inside the egg, report conserved inhibitory cell types alongside *transcriptomic convergence* — *partly each*, with the boundary not where gross anatomy would have predicted. **Three papers, three answers, and “convergent evolution” is the one that travels** — because two independent inventions of a mind is a headline and an unsettled question is a research programme.
+
+**Why we can print an open question and still make the claim.** The belonging claim survives either answer, which is how you can tell it was never resting on the ranking. If it was built twice, the layered cortex is one implementation among at least two and is not the entry fee — the field’s own words are that *an isocortex seems to be dispensable for complex cognition*. If it was inherited, the kit is older than either lineage and neither of us designed it. **A shared inheritance cannot be a hierarchy.** Fifteen spreads, two figures, six refusals.
+
+New piece[A Field Guide to Bird Minds](https://starstuff.earth/bird-minds-field-guide.html)
+
+**Thirteen birds, sorted by what we wanted each one to prove** — and the sort is the guide’s finding rather than its plan. By taxonomy you get parrots, corvids and everyone else, which says nothing about minds. By cleverness you are building the ranking this site refuses. What actually divides the thirteen is the question a researcher brought to them, which is a fact about us.
+
+Three sections hold the birds recruited into an argument: *asked to mean it* (Alex the African grey naming the colour of an object and the object of a colour; the budgerigar carrying open-ended vocal learning, a capacity we share with parrots, songbirds, hummingbirds and some cetaceans but *not* with apes), *asked to make a plan* (New Caledonian crows planning around tools that are out of sight; ravens refusing food they could eat now for a token worth something only tomorrow; cockatoos whose bin-opening reached **44 Sydney suburbs** with site-specific styles and provoked a human counter-culture of bricks and bungees), and *asked to remember when* (a Clark’s nutcracker holding up to **30,000 caches** for six months by landmark geometry — move the landmarks 20 cm and the bird searches 20 cm off — against a scrub-jay that must hold *when* as well as *where*, because its caches perish at different rates).
+
+**The fourth section is where the line arrives.** The pigeon, the chicken, the barn owl and the ostrich were never candidates for cleverness, and between them they supplied the fibre architecture, the single-cell developmental atlas, the second species that turned one measurement into a finding, and the negative control that breaks brain mass as a predictor. Nobody put them on a poster. **The evidence that dismantled the ranking came from the animals at the bottom of it, for reasons that had nothing to do with respect.** The chicken card sits with that rather than tidying it: roughly seventy billion are killed each year, and it is the bird holding the map.
+
+**Two cards carry no reframe table, and the absence is the argument.** A “how it circulates / as it checks out” table asserts that there is a verdict and that we hold it. The origin of the circuit has no verdict, and neither does whether the corvid-versus-ape neuron comparison is like-for-like — its own authors say it “is not entirely fair” in the same paragraph they make it. Same rule as [Field Guide No. 10](https://starstuff.earth/turtle-field-guide.html): a subject that cannot take the apparatus gets a different card, not a smaller one. Its line: **there is no standard bird.**
+
+CorrectionWe said corvids recognise themselves in mirrors. Two of five birds did, and a replication failed
+
+**What we got wrong.** [Field Guide No. 11](https://starstuff.earth/nervous-systems-field-guide.html)’s corvid card lists *self-recognition* among the things a bird does without a neocortex — and it lists it in the column a reframe table uses to say what is *actually* the case, which is the worst available place for a contested result. Its field notes say crows and ravens “recognise themselves.”
+
+**What is right.** Prior, Schwarz and Güntürkün (*PLoS Biology* 6(8): e202, 2008) marked five hand-raised Eurasian magpies and gave them a mirror. **Two showed statistically significant mark-directed behaviour. One showed a single spontaneous instance without reaching significance. Two showed none.** The authors’ own caution, in the paper, is that the number of birds tested is too small for a definitive estimate of the distribution within the population. Then Soler, Colmenero, Pérez-Contreras and Peralta-Sánchez (*Journal of Comparative Psychology* 134(4), 363–371, 2020) ran a close replication with a larger sample. The mirror-versus-control difference in social and self-directed behaviour reproduced; **the mark test did not** — self-directed behaviour was more frequent in front of the cardboard control.
+
+**Held in both directions.** That is not a debunking either: what failed is the mark test specifically, not every mirror response, and the new guide’s magpie card says so in the table. Tool use and next-day planning are unaffected and stand.
+
+**Who caught it and how.** Nobody wrote in. It came out of checking a favourite fact while sourcing the new guide — which is the whole reason for this page. A first web search returned the birds’ names and a “two of five” framing partly from what look like content-farm pages; the figures above are from the open-access primary, whose own sentence is *three out of five birds showed at least one instance of spontaneous self-directed behavior*. Not the same claim, which is why the card gives the breakdown rather than a ratio. **FG 11’s own wording, and a second instance the audit turned up — its elephant card lists self-recognition too, on evidence we have not yet checked — are queued as their own pass rather than patched where noticed.** Fixing only the instance you spotted is the failure mode this file keeps recording.
+
+DeclinedThe obvious bird zine was already written three times, so we did not write it again
+
+The zine this material invites is *birds have no cortex and are clever anyway; difference read as deficit.* **That is spent, and the check that found it was grepping the argument rather than the topic.** [No. 36](https://starstuff.earth/the-layer-we-call-essential-zine.html) owns it in the harder case — the long-finned pilot whale counted above us at 37.2 billion neocortical neurons, the ranking surviving anyway, layer IV absent, “difference read as deficit, conducted by neuroscientists, about whales.” [No. 85](https://starstuff.earth/the-lizard-that-was-never-there-zine.html), published yesterday, owns the nomenclature. And FG 11’s crow card already says *there are many roads to a mind.*
+
+**A bird version would have been No. 36 with feathers.** So No. 86 spends one spread naming those three and moves to the question they leave behind — if not that, then what is actually in there, and where did it come from? No. 36 cannot reach that dispute, because nobody argues about whether a whale is a mammal.
+
+SiteCounts re-derived, and a figure redrawn after being looked at
+
+**Field Guides** now reads **twenty-two guides, 277 entries, 296 cards**, with nineteen cards deliberately not filed as entries — corrected in all seven places those figures appear, from the `meta` description to the colophon. The *there is no standard anything* count went fourteen to fifteen, derived by reading every hit rather than counting them: the grep returns sixteen files and one of them matches the phrase in order to *decline* it. **Star Stuff** went 37 to 38 pieces, and its derived line — total minus the seven founding zines — from thirty to thirty-one.
+
+**Figure 1 was redrawn because somebody rendered it and looked at it.** The mammal panel and the bird panel were both drawn as grids, so the picture did not distinguish a layered sheet from clusters — which is the entire point of the figure. Faint bands were added to the mammal panel. **No gate could see it:** contrast, overlap and dead-class checks all passed the ambiguous version, because a diagram that means the wrong thing is not a colour, a position or a class. And a first attempt to bounds-check the guide’s fifteen glyphs by regex reported eight of them out of their viewBox; it was reading relative path deltas as absolute coordinates. Re-measured properly in the browser: **fifteen of fifteen inside, none clipped.** *A derivation nobody reads back is not a derivation.*
+
+2026 · September 2 · later still
+
+## A professional ethics code names the environment once in 6,825 words. Its replacement, out this November, names it not at all
+
+A new essay in [Foundations](https://starstuff.earth/collection-foundations.html), the tenth — and the conduct half of [the Creed](https://starstuff.earth/inclusion-safety-creed.html). The question is Helen Edgar’s, asked after an evening on ethics in her BACP training. Both editions of the framework were downloaded and read.
+
+New piece[Six Principles and a Room](https://starstuff.earth/six-principles-and-a-room.html)
+
+**The checkable thing.** The BACP *Ethical Framework for the Counselling Professions* (2018) is public, free and binding on tens of thousands of UK practitioners until November. Its six core principles — being trustworthy, autonomy, beneficence, non-maleficence, justice, self-respect — are each a duty running between a practitioner and a client. Counted rather than asserted: in 6,825 words, *client* appears **173** times, *practitioner* **35**, *environment* **once** (in a sentence about the practitioner’s own moral energy), and *system*, *systemic*, *structural* and *institutional* **not at all**. The only *organisation* named in the document is BACP’s own charity registration, on the copyright page.
+
+**Why that is not a complaint about counsellors.** A professional code regulates professionals; its sanction is registration, and you cannot strike off a building. The essay says so plainly. The consequence is the argument: when the only parties to an ethic are two people, everything that is not one of those two people — the lighting, the timetable, the eleven-month wait, the commissioning incentive — has nowhere to be recorded except inside the person who came in.
+
+**Then the profession moved, and the essay had to be rewritten around it.** BACP spent four years revising the framework. The 2026 edition is published, becomes mandatory this November, and puts *“Working ethically is working within relationships”* on its cover. It drops the Latin — *autonomy*, *beneficence*, *non-maleficence* and *self-respect* now appear zero times — goes from six principles to twelve, and adds **anti-oppression** as a named ethical principle. That is a bigger step than most professional bodies have taken and the piece says so before saying anything else.
+
+**Where the step stopped, by the same count.** *Environment* falls from one to zero. *Systemic*, *structural* and *institutional* stay at zero. And both occurrences of *relational* in the new edition sit inside the anti-oppression principle — *relational power dynamics*, *relational power imbalances* — locating oppression in the space between the two people. Kadodia & Krueger (*Philosophical Psychology*, 2026) name the gap exactly: these injustices *“are not merely interpersonal – they are structural.”* The room does finally appear in the code, in the clause admitting that a contract or a context may *“specifically exclude collaborative working”* — **as a reason you could not do the ethical thing, with a duty to write down why.**
+
+Guattari’s three ecologies name the missing band, with the mapping marked as ours rather than his. The floor stays the Creed’s, unchanged: a relational ethic does not weaken *do no harm*, it lengthens the list of things capable of doing it. And the practice in the last section is Helen’s own [Ethodivergent Hearth Building](https://autisticrealms.com/ethodivergent-hearth-building-a-relational-neuroqueering-community-practice/) — **the first time that essay has been cited anywhere on this site**, which it should have been a year ago. Six refusals; the closing line is *an ethic you can only point at a person is an ethic that will keep finding the fault in the person.*
+
+MethodTwo published dates, both printed, neither reconciled
+
+The 2026 framework’s own copyright page says it *“takes effect from 1 November 2026.”* BACP’s *Preparing for the 2026 Ethical Framework* page says it becomes mandatory at midday on Tuesday 3 November 2026. Both are BACP’s, both are published, and they are not the same date — so both are on the page, per the house rule about printing an ambiguity rather than resolving it silently.
+
+**The word counts are the essay’s central claim, so the method is printed with them:** both PDFs converted with `pdftotext -layout`, counted with `grep -oiw`, extracted lengths 6,825 and 4,124 words including front matter. Stated so a reader can reproduce it, or contradict it. *A count you have not run yourself is a claim somebody made.*
+
+DeclinedThe paragraph No. 81 refused, refused again
+
+The strongest available hinge for this essay was Aunty Mary Graham’s charge that settler law is *incomplete* — that it is “possible, even commonplace, to commit immoral and unethical acts of destruction that are not illegal” — run against a professional code. [No. 81](https://starstuff.earth/already-an-entity-zine.html) declined that paragraph three days ago, by name, on the grounds that it would travel without its qualifier. **It is declined here too.** The essay instead states its own exposure through Zoe Todd’s *aer nullius*, credits Deleuze and Guattari for *assemblage* while noting the idea has older addresses, and recruits nobody else’s law to settle ours. Ryan’s call.
+
+SiteFoundations said eight, and had nine
+
+Fixed in the same pass. [The Foundations collection page](https://starstuff.earth/collection-foundations.html) was carrying **nine cards** while its prose, its section heading, its residual count, its colophon, its `meta` description and both social cards all said **eight** — with a single stray *nine* in the hero count. *Rainbow Serpents* had been added without the sentences being swept, and its JSON-LD `hasPart` list had never included it either. All of it now reads **ten**, both new members are in the structured data, and the index’s own Foundations blurb — which also said eight — is corrected. **No gate can read a number written out in prose**, which is exactly why this file keeps recording them.
+
+2026 · September 2 · end of the day
+
+## We repeated a critic’s charge that a headline had exceeded a paper. The sentence was in the paper’s own abstract
+
+A fact-check on the fibromyalgia item in [Glimmer Wire](https://starstuff.earth/glimmer-wire-2026-09-02.html), after both papers were read in full. The grade stays *contested* — for a better reason than before.
+
+CorrectionThe over-reach, if it is one, is the authors’
+
+**What we published.** That a critic’s reading suggested “a central nervous system disorder with drug targets” was *“well past what was measured”* — framed, in our summary, as headlines outrunning a paper we admitted we had not opened.
+
+**What the paper says.** Its abstract: *“This study provides robust genetic evidence defining fibromyalgia as a central nervous system disorder.”* It says so again in its closing paragraph and names two therapeutic targets. **This is not a science-communication failure. It is a scientific claim by the authors**, which may still be too strong — but arguing with a paper and arguing with a press release are different jobs, and we filed the wrong one.
+
+**The rest of the critique, adjudicated.** Three figures hold and every one is the paper’s own: OR 1.090 for the `HTT` variant (“about 9% increased odds”), polygenic score AUC 0.59, and prevalence ranging sixfold across cohorts, 1.2% to 7.5% — which the paper discloses in the *second sentence* of its Results rather than concealing. **One figure is wrong:** heritability is **10.4%** (95% CI 9.8–11.0), not “less than 10%.” **One is unresolved:** the one-billing-code claim needs the Methods supplement.
+
+UpdatedTwo studies, one condition, one day, two answers
+
+We had called the second paper a “companion.” It is not. **Bright et al. in *Nature Communications*** (85,139 cases; Yale and the VA Million Veteran Program) is a separate study by a separate group, published the same day, and it disagrees with the *Nature Medicine* meta-analysis where it matters most.
+
+**On sex:** an inter-sex genetic correlation of **1.03** — “statistically indistinguishable from perfect”, “no sex difference in the genetic architecture” — against **0.73 ± 0.064**, significantly short of identical. **On autoimmunity:** *Nature Medicine* finds no MHC signal and no immune-cell enrichment and concludes fibromyalgia is “not primarily an autoimmune disorder”; the *Nature Communications* structural model places it *“mostly as a pain and autoimmune-related trait.”* **On heritability:** 10.4% against 6.9%, on different scales. *The coverage we filed from reported one of these papers and not the other.*
+
+**And the finding nothing we read reported.** The *Nature Medicine* group found the genetic architecture of fibromyalgia to be the same in men and women, while **87.7% of diagnosed cases are female**. Their own conclusion is that the prevalence gap is *“unlikely to be driven by sex-specific genetic risk variants, and may instead reflect nongenetic biological factors, environmental exposures or diagnostic bias.”* That is the authors, in *Nature Medicine*, putting *who gets believed* on the list of explanations. The other paper puts that correlation at 0.73, so even this is contested — which is the honest state and is now on the page.
+
+Fact-checkA seedbed card that left out the study’s central limit
+
+The Kanzi card in [Glimmer Wire](https://starstuff.earth/glimmer-wire-2026-09-02.html#seed-kanzi)’s seedbed was written from a single search summary and never checked. Checked now. **The citation holds** — Bastos & Krupenye, *Science* **391**(6785):583, DOI 10.1126/science.adz0743 — and so do the 68.9% grape figure, Kanzi’s death in March 2025 aged 44, and the six-to-nine-million-year claim.
+
+**What was missing is the part that matters.** The study shows Kanzi could *follow* a pretence a human set up; it does *not* show he could start one. Comprehension, not production — and that is exactly the distinction a card like this gets flattened into “a bonobo played pretend” downstream. The skeptic we had gestured at vaguely is **Daniel Povinelli**, and his alternative is specific: that Kanzi tracked which cup the experimenter had touched most recently. Both are now on the card, with the real-juice figure (77.8%) we had given only in words.
+
+**One thing stays unresolved and is marked as such.** The institutional record dates the paper 5 February 2026; the journal’s own citation block says 10 February. An online-first versus issue split we did not settle, so the card cites volume and issue instead of a day. *A lead written from a summary inherits whatever the summary left out — including, here, the sentence the authors were most careful about.*
+
+2026 · September 2 · last of the day
+
+## The counter-evidence was published in 1969. The Pulitzer-winning book that spread the model came out in 1977 — and it is one of the two books this site is built on
+
+A new chain in [How We Got Here](https://starstuff.earth/collection-how-we-got-here.html), the fourteenth, and the collection’s longest at sixteen spreads. Built from a paper Ryan put on disk; the historical links were traced separately.
+
+New[The Lizard That Was Never There](https://starstuff.earth/the-lizard-that-was-never-there-zine.html) · Zine No. 85
+
+**The chain runs on two rails — what was *told* about the brain, and what was *observed* in it — and the shape is the argument.** 1878: Broca names a rim of cortex *le grand lobe limbique*; *limbus* means border, and he claims no function whatever. 1937: Papez proposes a circuit for emotion, as a proposal. 1952: MacLean fuses the two into a *system* — a name for a place becomes a name for a job, and nothing was discovered at that step. The 1960s: three brains stacked by evolutionary age, each described as independently conscious, and chronology pointed at living animals becomes a rank.
+
+**Then the hinge.** In **1969** Harvey Karten showed that the bird forebrain carries the same neuron types and the same wiring as mammalian neocortex, packed as nuclei instead of layers — the six layers are a packing arrangement, not the thing that thinks. That is **eight years before** *The Dragons of Eden* won its Pulitzer carrying the model into everyday speech. The observed rail goes live in 1969; the told rail runs another fifty-one years without touching it.
+
+**We are in this chain, and the page says so.** Carl Sagan is one of the two figures this entire site stands on — it is named out of his line about star stuff, and its tagline comes partly from his 1973 book. *The Dragons of Eden* is also the principal vector by which a model that had already been contradicted reached the public. Spread 6 publishes that rather than keeping the flattering half. *Reach is not a filter, and the better a communicator is, the more expensive their sourcing errors become.*
+
+**What is actually there is better than the story it replaces.** Finlay & Darlington (1995, 131 species) found one conserved developmental schedule rather than bolt-on modules. In 2005 an international consortium renamed most of the bird forebrain because *paleostriatum*, *neostriatum* and *archistriatum* were arguments disguised as labels. And in April 2026 Imam, Kielo, Trude and Finlay measured **182 mammalian species** and found not three floors but two systems that *trade*: olfactory system against neocortex at *r* = −0.63, with the limbic components covarying *positively* with olfaction — so they do belong together, just not for MacLean’s reason. The division is not age but the shape of the information: sight, touch and hearing arrive with space already in them (spatial order 0.90, 0.86, 0.89) and can be laid out as maps; smell arrives with none (0.11) and cannot. The nine-banded armadillo spends its room on smell — hippocampus twice its expected volume, neocortex smaller by a factor of 2.8 — and **is not a failed monkey**.
+
+**Ten documented joints, two contested, one leap.** The contested pair are named on their own spreads: that Sagan’s book is *the* reason the phrase entered common speech is a causal claim about culture with no study behind it, and the competition-for-space explanation is a modelling result the authors themselves only say “suggests” — the page declines to upgrade their verb. The leap is the final spread, which moves from *the model is false* to what *“that’s your lizard brain”* does when it is said to a person about their own nervous system. That move is ours and is marked as ours.
+
+CorrectionOur own digest got the relationship wrong, twelve hours earlier
+
+**What we said.** [Glimmer Wire](https://starstuff.earth/glimmer-wire-2026-09-02.html) filed this paper that morning describing it as finding that *“the limbic system and neocortex do not stack; they trade”*, and gave its date as “vol 12 no 17, 2026, approximate.”
+
+**What the paper says.** The inverse relationship is specifically between the **olfactory system** and the neocortex. The limbic components — amygdala, septum, schizocortex, hippocampus — covary *positively* with the olfactory system and with each other, and sit on its side of the trade. Calling the whole limbic system the thing that trades against neocortex inverts where half of it belongs. The date is **22 April 2026**. Both were caught by reading the paper, which the digest had said plainly it could not open.
+
+**One figure on the new page is second-hand and flagged there.** The Cesario, Johnson & Eisthen textbook counts — 20 books sampled 2009–2017, 14 discussing brain evolution, 86% carrying at least one inaccuracy, two matching consensus — come from summaries of that paper rather than the paper, which would not open. Its abstract, quoted verbatim, supports the claim in kind but carries no numbers. The colophon says to treat the counts as provisional, and the open item is logged.
+
+SiteA cover collision no gate can see, found by measuring instead of looking
+
+The cover motif’s fractured violet strokes ran straight through *“Zine No. 85”* in the `.cover-issue` line. **The overlap gate passed the page**, correctly: it measures text against text, and artwork over text is explicitly outside its scope — that judgement is left to eyes. The motif also sat inside the clean zone recorded in a source comment on an earlier cover, which turned out not to transfer.
+
+It was caught by reading the bounding boxes back out of the browser rather than by squinting at a screenshot: four motif elements inside the band the eyebrow occupies. The motif is now wrapped and lifted, with **13px of measured clearance** above the eyebrow and 52px from the corner numeral, and the source comment says what was measured and why. *Four shipped covers have made this mistake; a comment is a note, not a control.*
+
+A second collision, this one inside the gate’s scope, was caught by it: two panel headers in the spatial-order diagram overlapped by 12.9×8.4px. Shortened and split rather than shrunk.
+
+2026 · September 2 · later still
+
+## Saturn’s hexagon was the only one of its kind for forty-four years, and one example held still that long is very hard to tell apart from a rule
+
+A new entry in [Glimmers](https://starstuff.earth/collection-glimmers.html), the fourth, written and published the day the paper appeared. It is also the first item this site has moved from *plausible* to *verified* by getting hold of the paper.
+
+New[Until There Were Ten](https://starstuff.earth/until-there-were-ten.html)
+
+**Saturn’s north pole has a hexagon on it** — a jet stream bent into six straight sides near 78.5°N, found by Voyager in 1980–81 and present in every image since, a lifetime exceeding **44 years**. In all that observing, nobody had ever reported a second one anywhere on the planet. The southern hemisphere was tipped out of view from mid-2012; when it came back in 2023 there was a **ten-sided wave** at planetographic latitudes 58°S to 63°S, mean zonal wavelength **16,782 ± 1,100 km**.
+
+**The piece is built on the paper’s refusal of the tidy reading.** *Two poles, two polygons, how balanced* is not what was found. Where the hexagon’s sides and corners are equally contrasted, the decagon is *“not uniform in longitude”* — three corners very prominent, four less so, three barely defined. Its corners oscillate with a mean period of **32.5 days** and amplitudes of 4.6° to 8.4°, and the wobble travels, each corner peaking about **2.7 days** after its neighbour: *“a complex dynamical behavior, never observed in the hexagon.”* It did not exist in Saturn’s previous year, and the authors say it *“could be a transient evolving phenomenon, whereas the hexagon is a robust wave.”* Two candidate causes — a jet instability, or a 4,000-km red anticyclone at 55°S resembling one Voyager saw in 1981 — and three shallow-water runs, none of which reproduces the observed drift. *Nobody knows yet* is the honest state, and it is not the same as *baffled*.
+
+**The turn is epistemic rather than decorative.** One example, unchanging, for forty-four years, is a terrible basis for a general claim and an extremely convincing one. The second case is different in almost every measurable way. The hexagon did not become less real; it stopped being the only way for a jet on Saturn to arrange itself. Three diagrams, all drawn from the paper’s own reported values. *A rhyme, not a proof* — and the refusals say plainly that nobody’s belonging rests on what a gas giant does with a jet stream.
+
+**One design decision worth recording, because no gate can see it.** The decagon’s unevenness is drawn with stroke-*width* and never with stroke colour. The shared print block flattens every SVG stroke to `#444444`, so a difference carried in colour would have been invisible on paper — and the unevenness is the finding, not a drawing style.
+
+Fact-checkFirst upgrade from plausible to verified — and two things we had filed wrong
+
+[Glimmer Wire](https://starstuff.earth/glimmer-wire-2026-09-02.html) filed this story that morning graded **plausible**, sourced only to the NASA release, with a standing notice saying no paper on the page could be opened. The paper was then obtained and read in full, and the entry is now graded **verified** — the first on this site to make that move. **Two things we published are corrected by it.**
+
+**We wrote “nobody knows why it arrived now.”** That overstates the authors. They name two candidate mechanisms and say they cannot discriminate between them, which is a different and more interesting condition than not knowing. **And the formation window is bounded at mid-2012**, when the southern hemisphere stopped being observable from Earth — not 2017, which is circulating in coverage. A third thing is worth naming without calling it an error: the widely-quoted 16,782 km is the wave’s mean *zonal wavelength*. For a ten-sided figure that is within about 2% of a side length, so “one side exceeds 16,700 km” survives — but it is not the measurement the paper reports.
+
+**The digest’s own counts were updated rather than left to rot:** the standing notice, the hero dateline, the edition tally and the colophon all said *none verified*, and all four now say *one*. That is exactly the class of stale prose figure no gate on this site can read.
+
+2026 · September 2 · later still
+
+## A weekly science digest that publishes what it *declined* to tell you — and whose first edition contains nothing we were able to verify
+
+A new working paper in [Notes & Rationale](https://starstuff.earth/collection-notes.html), and the sixth page in that collection. It is the scan that sits behind [Glimmers](https://starstuff.earth/collection-glimmers.html), published with its grades showing rather than kept in a drafts folder.
+
+New[Glimmer Wire](https://starstuff.earth/glimmer-wire-2026-09-02.html)
+
+**What it is.** A weekly read of what is going well in science and medicine, graded before it is enjoyed. The first edition files seven items, holds three, and lists five leads. Saturn’s ten-sided south pole against its famous forty-year hexagon; rocky planets possibly forming a hundred million years after the Big Bang; diamond — ruled non-piezoelectric for a century — turning pressure into charge *at its irregular grain boundaries*, which is the [Bone Song](https://starstuff.earth/bone-song-zine.html) fact arriving from the opposite direction; human microglia taking four to eight years to mature against a mouse’s three weeks; and the triune brain retired across 182 species.
+
+**Nothing in it is graded *verified*, and that is on the page’s face rather than in a footnote.** Six publishers refused a direct read on the day it was compiled — paywalls, an authentication redirect, three `403`s and a reCAPTCHA — so the sourcing stops at institutional press releases, publisher metadata and DOIs. Every entry names what was actually read and what was not, and figures that arrived only through a news summary are marked as such. The diamond membrane’s numbers are flagged that way, and so is the critique of the fibromyalgia paper, which we have *not* checked against the paper either.
+
+**The section that earns the page is [Held](https://starstuff.earth/glimmer-wire-2026-09-02.html#held-items).** This changelog records what we got wrong and fixed; the fact-check ledger records what we checked. Neither has ever recorded *the story we declined to tell*. The first edition declines a lovely one: humpback “super-groups” of more than a hundred whales off the South Orkney Islands, reported as a first in a century. It traces to an uncited conservation round-up, and the peer-reviewed survey of that same water — fin and humpback abundance across the austral summers 2011–2025, in the *ICES Journal of Marine Science* — reports humpback densities between 0 and about 0.12 individuals per square kilometre. Not contradicted in spirit; contradicted in the primary.
+
+**Why weekly, decided by the digest’s own data.** Items are sorted by *lag* — how long a finding had been public before a news feed carried it here. In the first edition the median gap was **36 days** and exactly one item of seven was same-day; two were over a hundred days old. A daily digest would mostly re-encounter what it had already seen, and the real bottleneck is not finding stories but opening the papers.
+
+**Off the reading chain, on purpose**, like every member of Notes & Rationale. The collection page’s counts were re-derived while adding it, and one was stale in a way worth naming: it said the reading chain ran to *a hundred and nine* pages when the chain measures **143**. That is the failure mode our own notes warn about — no gate can read a number written out in prose.
+
+SiteA dead class the gate caught, and a search fast path we were hijacking
+
+Two faults found by the tooling while wiring the page in, both invisible to a reader. **The dead-class gate** caught a `.mono` declared under `.notice` and `.seed` but used inside `.caveat`, so one span asked for a monospace face and silently did not get it — the exact shape that gate was built for. Declared once, unscoped.
+
+**The second was worse and had no symptom at all.** The page’s items were marked up as `<article class="entry">`, which is the selector the search-index builder uses for *field-guide entries* — a fast path that fires at three or more matches and **returns early**, before the section chunker and the remainder pass ever run. The page indexed 7 records covering only the filed items: the standing notice, all of Held, all of Seedbed and the refusals were **unfindable**, and the run reported `7 records 100%`, because the coverage figure is computed on a path that had already been skipped. Renaming the class to `.wire-item` and giving each item a real `id` takes the page to **21 records, every one of them anchored**, with each held story and each seed independently findable. *A per-page record count is not a coverage measurement, and a coverage percentage printed by a path that did not execute is worth nothing.*
+
+2026 · September 2 · later the same day
+
+## We reported an accessibility bug in 163 headings. There was no bug. We had read a tool’s output instead of the thing the tool was named after
+
+A correction to the entry below, posted hours after it. Nobody caught this but us, and only because the fix was being measured before it shipped.
+
+CorrectionThe accessible name was never wrong
+
+**What we said.** That a `<br>` with no space beside it makes a heading announce as one run-together word — that [No. 84](https://starstuff.earth/there-have-been-so-many-earths-zine.html)’s cover read as “There Have BeenSo Many Earths”, that [Bone Song](https://starstuff.earth/bone-song-zine.html)’s title read as “BoneSong”, and that **163 headings across 48 pages** were affected.
+
+**What is actually true.** `textContent` does run the words together — that part is real and checkable. **The accessible name does not.** Chrome inserts the whitespace itself when it computes the name, and it does so in every shape we could construct: a bare `<br>`, a `<br>` between two `<em>`s, between two `<span>`s, after a comma, and inside a link and a button as well as a heading. Measured directly with the browser’s own accessibility tree, against copies of the pages from before and after the change: *“Bone Song” both times.*
+
+**How the error was made, which is the part worth publishing.** The finding came from a tool that reports what it calls the accessibility tree, and the line it printed was the element’s `textContent`. We treated the label on the output as the thing itself. **This site already has a rule for exactly this shape** — aggregators and summaries are leads, not citations; go to the primary — and it had not occurred to us that the rule covers our own instruments. *A tool that says “accessibility” is a lead. The accessibility tree is the primary.*
+
+**The sweep is not shipping, because it was measured and it does nothing.** The 347 edits were written and checked before being thrown away. They were **pixel-identical** at 2× on the worst-affected covers; the search index came back **byte-identical**, 2,069 records either way, because its builder already pads these boundaries and had always indexed the heading as “Bone Song”; and the accessible names were unchanged because they were already right. **Three fragments that looked like proof of harm in the search index were false positives:** *nevertheless*, *everythingisaremix.info*, and — the one that should have been the tell — **our own changelog entry, quoting the mistaken claim.**
+
+**The count was wrong too, in the other direction.** The first pass reported 163 breaks on 48 pages. Re-derived properly — by reproducing `textContent` semantics rather than pattern-matching the source, which cannot see `</em><br>` and mishandles a heading with two breaks — the real figure is **348 across 74 pages**. More than double. Both numbers are in this changelog now; the first one is wrong and is left standing above with a pointer here, which is what this page is for.
+
+**One thing the exercise did establish.** The related fault written down in our notes — two adjacent `<span>`s with nothing between them producing “NeurodiversityParadigm” — *is* a real accessible-name defect, and it reproduces. It is a different fault from the one we misdiagnosed: no `<br>`, nothing for the browser to turn into a space. And a footnote we cannot fix from here: because Chrome inserts that space, [Underground](https://starstuff.earth/underground-zine.html)’s cover, which splits the single word across two lines, announces as *“Under ground”*. That is the browser being helpful in the one place we would rather it were not.
+
+**Scope of the check.** Chrome only. We could not test WebKit or Gecko here and are not claiming they behave the same, only that the defect we published does not exist in the engine we can measure.
+
+2026 · September 2
+
+## Only three of the most important things that ever happened were moments — and the famous thirty seconds turns out to be a television documentary, not a finding
+
+A new chain in [How We Got Here](https://starstuff.earth/collection-how-we-got-here.html), and the collection’s second scrolling zine. Built from a Hank Green video, with two of the video’s own citations corrected against the papers that dispute them.
+
+New piece[There Have Been So Many Earths](https://starstuff.earth/there-have-been-so-many-earths-zine.html) — Zine No. 84, in [How We Got Here](https://starstuff.earth/collection-how-we-got-here.html)
+
+**Hank Green asked what the most important thing that ever happened was, and then did the harder thing, which was to say what he meant by *important*** — how much depended on it, how easily it could have gone otherwise, and the sharper move underneath both: importance is not a property of the universe, so the real question is what had to happen for *mattering* to exist at all. With **Cali Moore** of PBS Eons and a clip from **Joe Hansen** of *Be Smart*, the candidates were the origin of life, the eukaryotic cell, the Earth–Moon system, the Chicxulub impact, the ribosome and oxygenic photosynthesis.
+
+**Put them in chronological order and something a list cannot show comes out: only three of them were moments, and all three are impacts.** Even those are not three of a kind. Chicxulub is in the ground — a crater, an iridium layer on every continent, drill cores. Theia is an *inference from a moon* and has never been found. The rock that may have carried life is *imagined*, a hypothesis about a mechanism we know is possible, standing in for a transition nobody can describe. One documented, one inferred, one imagined.
+
+**Everything else that made us was a duration.** Photosystem II learned to pull electrons out of water once, in an ancestor of the cyanobacteria — and then the sky did not change for something like a billion years, because every molecule of oxygen was consumed on contact by dissolved iron, volcanic gases and rock. *The invention and the consequence are two different events.* Eukaryogenesis was, in Green’s own words, a bunch of things happening in succession. And Pangea, which most of us picture as a moment, was **over a hundred million years of being a continent** — roughly a C curled round the Tethys, with an equatorial desert so effective that one landmass still held two worlds. On a linear chart of these spans, the two entries everybody can name are the two whose bars cannot be drawn at all.
+
+**The form is the argument, for the second time on this site.** This is the collection’s second *scrolling* zine, and here a section’s height is the length of the thing it describes: Chicxulub is one screen you fall past, and the wait between oxygenic photosynthesis and the sky changing colour is three, most of it empty, with a rail down the side so the emptiness reads as elapsed time rather than as a layout fault. **A globe on every link shows the state of the land at that moment** — and they are drawn dashed and faint before 1 billion years ago and solid after it, because that is exactly as far back as a continuous full-plate model reaches (Merdith et al., *Earth-Science Reviews* **214**:103477, 2021). A crisp coastline older than that would be an invention wearing a map’s clothes. *The art carries its own epistemics, the way the joint tags do.*
+
+**The turn is the demand for a moment.** *When did you know. When were you diagnosed. What happened to you.* Every version of the question assumes an impact — something arrived, at an angle, on a date. Mostly there is no crater: mostly a difference we always had met an environment with no room in it, slowly, across years of encounters too small to itemise, and the word arrived long after the thing it named. **The diagnosis is not the event; it is the sinks finally filling.** Ends on four models of the next supercontinent — Amasia, Novopangaea, Aurica, Pangaea Ultima — drawn all four and chosen none, because the models disagree and Earth has never held an arrangement. Fifteen sections, nine links: six documented, two contested, one leap. *Endosymbiosis is not re-argued here — [No. 7](https://starstuff.earth/you-were-never-one-thing-zine.html) owns it, and the spread says so.* **A rhyme, not a proof.**
+
+Fact-checkTwo corrections, both against sources the video itself cites
+
+**The famous “thirty seconds later and it would have hit ocean” is not a research finding.** It traces to the 2017 BBC documentary *The Day the Dinosaurs Died*, made around Jo Morgan and Sean Gulick’s drilling of the Chicxulub crater — excellent work that does not contain the number — and the popular-science article that put the figure in its own headline states plainly that there is no causal evidence for it. Green flags his scepticism about it in his source list. **The zine refuses it rather than using it.** What the papers actually say is better: **Kaiho & Oshima** (*Scientific Reports* **7**:14855, 2017) found the killing mechanism depended on the target rock being rich in hydrocarbons and sulfur, present under only about **13 per cent of Earth’s surface** — their paper’s own title is *the low probability of mass extinction* — and **Collins et al.** (*Nature Communications* **11**:1480, 2020) put the trajectory at **45–60°** from horizontal, from the north-east, a range that lofts more climate-altering gas per kilogram of impactor than either a grazing blow or a vertical one. *A stopwatch is not a smaller version of thirteen per cent. It is a different kind of claim* — and it is the kind that makes contingency feel like a near-miss in a film. Filed alongside [Too Good to Check](https://starstuff.earth/too-good-to-check.html). We have also declined the press framing that rounded Collins’s range to “sixty degrees, the deadliest possible angle”.
+
+**The video’s citation for the earliest evidence of life is disputed, and the dispute is not in its source list.** It cites **Nutman et al.** (*Nature* **537**, 2016), reporting 3.7-billion-year-old stromatolites at Isua in Greenland. In 2018 **Allwood et al.** went back to the same rocks and published in the same journal, reading the structures instead as deformation features in carbonate-altered metasediments formed long after burial — and the plainest piece of evidence is that *some of the bumps point downward*, which stromatolites, growing toward the light, do not do. The floor the field broadly accepts is younger and further south: the **3.48-billion-year-old Dresser Formation** in the Pilbara, where stromatolites, microfossils and fractionated carbon and sulfur isotopes agree — and even that has had a volcanogenic-pseudofossil challenge. The joint is marked *contested*, and the page says on its own face that the date it is least sure of is the one everything downstream sits on.
+
+**Three things are hedged on the page rather than smoothed.** The **isotopic crisis** — models say the Moon should be made mostly of the impactor, while its oxygen isotopes are almost indistinguishable from Earth’s — is stated as unresolved instead of skipped, so the zine says a collision took place without claiming to know what hit us. The claim that the Moon stabilises Earth’s tilt *enough to matter for complex life* is given as genuinely contested (Laskar, Joutel & Robutel, *Nature* **361**, 1993, for; Lissauer, Barnes & Chambers, *Icarus* **217**, 2012, much weaker) and nothing in the argument rests on it. And the photosynthesis-to-oxygen lag is written as *something like a billion years*, because the figure moves with whichever origin date you accept.
+
+**The title is ours, compressed from Green’s, and the colophon says so rather than letting a paraphrase pass as a quotation.** His verbatim line, quoted in full on the page, is *“there have been a lot of earths and this is just one of them and there could have been a lot of other earths”*; he also calls the history of the planet *“a sequence of impossible worlds.”* **And a guard spread carries the naturalistic-fallacy problem in the open:** the early appearance of life here is not evidence that life is easy, because we could only ever have found ourselves on a planet where it went this way and went this way early enough. That is a selection effect, not a plan. *Rare and inevitable look identical from inside the one case you get to observe.*
+
+FixedA stale prev label, and a collision no gate measures at the width it happens
+
+**The *Star Gazing* collection page’s previous-link label said “Oblivious to Encounter” while its href pointed at *Four Decimal Places*.** The chain walked correctly in both directions — our chain check compares hrefs — so a reader following the arrow got the right page under the wrong name. Found while wiring this zine in, and now consistent.
+
+**Its bar chart rendered as five labels and no bars.** The tracks are `<span>`s, and an inline box ignores `height` and gives an absolutely-positioned child nothing to sit in — so the spread that carries the piece’s central comparison displayed nothing at all. **No gate can see this either, and each is right not to:** the class is live and a rule reaches it, the markup is well formed, nothing collides, and text that is not there has no contrast to fail. Then a second fault behind the first: the bars are painted with `background`, which browsers omit on paper by default, so with the reader’s usual settings the chart would have printed as five empty boxes — *the same fault that once sent forty-four of this site’s pages to paper blank*, in miniature, on the one spread that is pure evidence. The fills now carry `print-color-adjust: exact`, which is this site’s way of saying *this background is content*, and the result was checked by rendering the PDF with background graphics **off** rather than by trusting print emulation, which paints them regardless.
+
+**A third thing we thought we had found here was not real, and the correction is the entry below.** This spot originally reported that the cover heading announced itself as “There Have BeenSo Many Earths”, and that 163 headings across 48 pages shared the fault. *The accessible name was never wrong.* See [the correction](#2026-09-02-the-br-that-was-not-a-bug), posted the same day.
+
+**The new zine’s timeline rail collided with its own prose below about 1,240 pixels, and the overlap checker passed it clean.** That gate measures one viewport, 1280×900, which is written down in its own notes as a known limit — and at 1280 the rail labels clear the text column by a hundred pixels. At 800 they ran straight through a pull-quote. Caught by opening the page in a narrow window rather than by any check. The labels are now gated behind a 1,240-pixel breakpoint, measured at **48 pixels of clearance** at the breakpoint itself rather than eyeballed; the hairline stays at every width, and each section’s eyebrow already names its span in words.
+
+2026 · September 1
+
+## A dandelion root changes the soil for seventy micrometres and nothing at all beyond that — and a line credited for years to the writer who was quoting it
+
+A new zine in [Star Stuff](https://starstuff.earth/collection-star-stuff.html), written the day after the essay that prompted it. Two primaries, one attribution moved back a step, one publication year corrected, and one famous quotation left out because we could not confirm it.
+
+New piece[The Width of Itself](https://starstuff.earth/the-width-of-itself-zine.html) — Zine No. 83, in [Star Stuff](https://starstuff.earth/collection-star-stuff.html)
+
+**Burr-Hersey, Ritz, Bengough and Mooney built the hostile ground on purpose** — sandy loam compacted to 1.8 g cm⁻³ with a penetration resistance of 1.55 MPa, roughly fifteen atmospheres — grew three wild dicots in it for 28 days, and imaged the soil by X-ray computed tomography so the pore structure could be measured without taking it apart (*Journal of Experimental Botany* **71**(19), 2020). All three species are plants a lawn is designed to exclude. It is a study of weeds that never calls itself one.
+
+**For the dandelion, porosity was 6.9 per cent in the mantle 0–70 µm from the root surface and 3.9 per cent at 70–140 µm — and the paper states plainly that changes were not observed at the whole-column scale.** Seventy micrometres is about the width of a human hair. The dandelion does not fix the lawn; it opens a channel the width of itself. Which makes the sentence everyone repeats — *dandelions break up compacted soil* — a claim that kept the verb and dropped every condition attached to it. The conditions were the finding.
+
+**Then a complication the metaphor does not survive intact.** Most dandelions are clones: the genus reproduces largely by apomixis, setting viable seed without fertilisation, and apomicts are triploid or tetraploid while the sexual minority are diploid. Majeský, Vašut, Kitner and Trávníček found apomictic accessions *“genetically highly homogeneous,”* with the genus’s real variety *“most likely of sexual origin”* — inherited from its past rather than being made now. So the tidy reading, grass monoculture against dandelion biodiversity, has a clone-field on both sides.
+
+**The piece was prompted by** Nick Covington’s [“Every Dandelion is a Triumph”](https://www.humanrestorationproject.org/writing/every-dandelion-is-a-triumph-thinking-ecologically-about-education/) (Human Restoration Project, 31 August 2026), **and it sharpens his argument rather than disputing it.** His closing line holds: in an environment of total control, every dandelion is a triumph. Triumph is the right word; *solution* is not — and if even the weed is not the answer to the lawn, the answer was never going to be among the things growing in it. The turn is ours: the Autistic kid who found one corridor, the Disabled worker who found the one manager who said yes. A channel opened by force, the width of one person, in ground that stayed exactly as hard — then read back by the institution as evidence that the column was fine. Thirteen spreads, two figures, six refusals. **A rhyme, not a proof.**
+
+**And the closing spread turns on a second dandelion that points the other way.** In W. Thomas Boyce and Bruce J. Ellis’s 2005 borrowing from Swedish, *the dandelion child is the **low**-sensitivity one* — who does tolerably almost anywhere — while the orchid is exquisitely sensitive to context. Lionetti, Aron, Aron and colleagues later added the tulip in the middle across 906 adults (*Translational Psychiatry* **8**: 24, 2018): **29 per cent, 40 per cent, 31 per cent**. The orchid half is not fragility — under good conditions orchids do *better* than dandelions, so every orchid failing in a compacted room is also a result nobody got to see. Set the two dandelions side by side and they agree about the ground: **hard ground does not produce variety, it selects for whoever needed least from it**, and the survivors then get counted as the normal range. Behaviourism is the machinery that presses down, and its offer is precise — the ground can stay exactly as hard, if the child is trained to tolerate it. Unmaking is mostly subtraction; remaking is **Cavendish Space**, built for caves, campfires and watering holes alike — **David Thornburg’s** primordial learning spaces, whose set is actually four, with *life* the one that usually gets dropped. Not one room made kinder: several conditions available at once. *The history of behaviourism is not re-argued here — [No. 70](https://starstuff.earth/both-arcs-one-drop-zine.html) and [No. 42](https://starstuff.earth/look-for-the-air-zine.html) own it, and the spread says so on its face.*
+
+**One hedge is printed on the spread rather than kept in the ledger.** The tidy three-flower sorting is contested within its own literature — susceptibility looks continuous rather than bimodal — and *the continuous reading is the one that happens to suit this argument*, so the page says that out loud instead of letting the convenient version pass. It also cuts our way: if you cannot sort people into three flowers, you cannot run a programme per flower. You can only build ground that holds the range.
+
+Fact-checkA quotation credited to the wrong person, a year that is wrong nearly everywhere, and a line we left out
+
+**“A fine carpet of green grass stamps the inhabitants as good neighbors, as desirable citizens” is not Elizabeth Kolbert’s.** It is regularly credited to her, including in the essay that prompted this zine. She is *quoting* it. The line is **Abraham Levitt’s**, of Levittown, by way of Ted Steinberg’s *American Green* (2006) — one of the two books Kolbert’s 2008 *New Yorker* essay reviews. This is the same shape as the misattribution this site shipped once before, when a line of Martin Luther King Jr.’s was credited to Baldwin because a secondary summary was trusted. We have **not** opened Steinberg at primary, so the line is graded *plausible* rather than *verified*, and the zine prints the chain instead of collapsing it.
+
+**Etta Kralovec’s *Schools That Do Too Much* is 2003, not 2002.** The 2002 date is widespread, including in the source essay; Beacon Press’s own record gives 2003. **And the sentence usually quoted from her** — that how schools spend time and money are not facts of nature but decisions that can be unmade — **we could not confirm against the book, so we did not print it.** Spread 10 paraphrases the argument and says on its own face that it is a paraphrase. If the book comes to hand the line can be restored with quotation marks it has earned.
+
+**A number printed as a range because the headline is disputed.** Turfgrass cover in the United States is often given as ~163,800 km² from Milesi et al. (*Environmental Management* **36**(3), 2005), usually attached to the claim that lawns are the country’s largest irrigated crop. That figure is a *modelled* satellite estimate rather than a census, and the “largest irrigated crop” framing is contested — including by the turf industry’s own trade press. Kolbert gives *nearly fifty thousand square miles*. The zine prints both, takes the range, and declines the headline.
+
+**We also looked for the study that would support the popular claim and did not find it.** The zine says that, rather than implying no such study exists. It is not an argument against gardeners: taproots do open channels. The dispute is about the size of the claim.
+
+FixedA unit that rendered a thousand times wrong, found by opening the page
+
+**Two measurement cells on spread five were written *µm* inside a label that sets `text-transform: uppercase`.** Uppercasing *µ* produces Greek capital Mu, and in Space Mono that glyph is indistinguishable from a Latin M — so both cells rendered as **“0–70 MM FROM ROOT”**. Millimetres. **A factor of a thousand, on the one number the whole zine turns on**, in a piece whose argument is that seventy micrometres is almost nothing.
+
+**All eight gates passed it, twice, and none was wrong to.** The markup is well formed, the class is live and doing its job, nothing collides, and a wrong character has exactly the same contrast as a right one. This is not a colour, a tag tree, a position, a page count, a URL or a dead class — it is a *glyph substitution performed by CSS at paint time*, with correct source text underneath. The unit is now spelled out. The SVG labels were never affected, because `<text>` there carries no `text-transform`.
+
+**The same look found a second fault in the same figure:** the magnifier tie-lines ran straight through both of its caption lines. Our overlap checker measures text against text and deliberately declines to judge text over artwork, which is written down as needing eyes at render size. The captions moved below the funnel. **Both were caught by actually opening the page, which is a step in our own publishing routine and is there for exactly this.**
+
+**A third, caught by Ryan after this went live: on the front page the new card shipped *inside* the previous one.** The insertion was anchored on the previous card’s closing `</details>` rather than on the `</div>` that closes its wrapper, so the new box opened before the old one shut. The collection page had the identical edit anchored one line later and was correct. **Every gate passed it, and none was wrong to** — a wrapper inside a wrapper is valid HTML with balanced tags and no nested links, so the markup checker sees nothing, and the card-order checker reads the cards in document order, where they still ascend. **It cost more than the look of it:** our search builder treats the wrapper as the chunk and lets the outermost one win, so the nested pair indexed as a *single* record — the front page went from 151 records to 152 once the two were separated, which means the new card’s text had not been independently findable. Fixed, and verified in the rendered document rather than by reading tags.
+
+SiteFive pages had no heading at all — two of them had none of any kind
+
+**The check we added an hour earlier reported five pages it could not examine, because they had no `<h1>`.** Their titles were styled `<div>`s and `<span>`s that looked like headings and were not. On [the L★S broadside](https://starstuff.earth/ls-broadside.html) and [the L★S playlist](https://starstuff.earth/ls-playlist.html) there was *no heading element of any kind* — so a screen reader’s headings list, which is how many readers get an overview of a page before reading it, came back completely empty. That is the same fault this site’s own front page carried until last month.
+
+**All five now have a real title heading** — [Eternal Sunshine](https://starstuff.earth/eternal-sunshine-zine.html), [Love You Down To Your Star Stuff](https://starstuff.earth/lydtyss-zine.html), [the Neurodiversity Paradigm guide](https://starstuff.earth/neurodiversity-field-guide-zine.html), and the two above. **Nothing moved.** These pages already reset margins to zero globally, so the only thing to pin was type inheritance; every one was measured before and after and is identical to the pixel in position, size, weight and spacing.
+
+**One trap worth naming, because it would have shipped silently.** The Neurodiversity cover sets its title in two pieces, and putting them on one line inside the new heading made it announce as *“NeurodiversityParadigm”* — no space. The two pieces sit on separate lines on screen, so nothing looked wrong; the missing space exists only in what a screen reader reads. Caught by reading the heading back as text rather than by looking at it.
+
+**With the last of them fixed, the check stops counting and starts enforcing:** a page with no title heading is now a build failure rather than a number in a report. The count existed so it could shrink. It shrank to nothing, so it becomes a rule.
+
+SiteAn eighth markup check: the page’s title must be inside its main landmark
+
+**The check we added yesterday counted main landmarks, and a count is true of a landmark holding nothing.** That is how a front page with an empty `<main>` passed. The new check asks the question that actually matters — *is the page’s own `<h1>` inside it?* — and one rule catches both shapes of yesterday’s fault: a landmark opened inside a box that closes before it, and a grid container promoted into a landmark.
+
+**The obvious implementation would have been wrong, which is worth recording.** Checking that the landmark and its container nest tidily fails *131 correct pages*: our zine template closes its shell just before its main, so the browser closes the landmark at that point — exactly where it should close — and those pages carry 98 to 100 per cent of their text inside it. A check that fails 131 good pages to catch 24 bad ones is not a check, it is noise with a true statement inside it.
+
+**It also skips the document head**, because a structured-data block or a description tag can contain a literal heading tag as text. Counting those is exactly what produced our first, wrong figure of 25 affected pages when the answer was 24.
+
+**Five pages cannot be checked, and the number is printed rather than quietly folded away:** they have no `<h1>` at all, their titles being styled `<div>`s and `<span>`s, and two of them have *no heading element of any kind*. That is a real gap on an accessibility-first site — a screen reader’s headings list is the table of contents, and on those two it comes back empty. Fixing it means changing those pages’ own markup rather than repairing a mistake, so it is logged as work to do rather than silently bundled in here. **A count that shrinks is a count somebody can act on.**
+
+Regression-tested against the four real broken files from yesterday’s history — it names the right line on each — and confirmed silent on their fixed versions, on the zine shell pattern, and on heading tags appearing inside metadata, scripts, stylesheets and comments.
+
+SiteThe main landmark was pointing at the wrong thing on 24 pages — including an empty one on the front page
+
+**Yesterday we gave every page a `<main>` landmark** — the region a screen reader jumps to in order to skip the navigation and reach the page. The stated rule was that it opens after the last `</nav>` and closes before the footer. **On 24 pages it did neither.**
+
+**On the front page, `<main>` was opened inside the masthead and closed by the masthead’s own `</div>` a line later.** The browser repairs that silently, and the result was a main landmark containing *nothing*: zero characters, zero children, **none of the 137 cards**. Anyone jumping to “main” on the front page of this site arrived at an empty element. It now holds the whole page.
+
+**On the 22 field guides it was worse in a subtler way.** Rather than adding a landmark, the pass had promoted an existing grid container into one — `<main class="field-grid">` — so the landmark was *one grid*, not the page. On the guides that run several grids that meant main held a fraction of the entries and none of the title: **the guide to ways of being a family had 2 of its 14 entries inside main, and 8 per cent of the page.** Eggs had 3 of 16. Ways to rest had 3 of 17. Every one of those grids is a `<div>` again, with a real `<main>` around the page: those three now sit at 81, 88 and 86 per cent, with every entry and the title inside.
+
+**And a search regression is repaired.** Our index reads the main landmark, so on the LYDTYSS page the hero title and the Table of Contents heading had dropped out of it entirely — the site’s own signature phrase, unsearchable on the page that is about it. That page is back from 22 records to 24.
+
+**What we got wrong in describing this, too.** The first pass at measuring it reported 25 affected pages by matching `<h1>` in the raw file; two of those hits were inside `<head>`, and the manifesto was never affected. It is **24**. A second measurement said the field guides’ main was empty, which was an artefact of reading the pages without running their scripts — the entries are built in JavaScript. *Both numbers were re-derived against live pages before anything was changed.* No layout changed anywhere; no rule in our stylesheets or scripts selects `main` at all.
+
+SiteA seventh markup check, so the card-in-a-card fault cannot ship a third time
+
+**Our markup checker now verifies that every card sits in its own wrapper** — that no `.card-wrap` opens inside another, and that each one holds exactly one card. The wrapper is the box: it draws the border and the accent rule. Anchor a new card’s insertion one line too early and the new box opens before the old one closes, which is how the card above shipped inside its neighbour.
+
+**The bar we set for adding a check is that a fault be invisible to every other gate *and* have recurred often enough to prove that remembering is not a control.** This one qualified on both counts: it happened once before, in July, and again this week with a written note about it in front of the person doing it. That is what a convention with no gate behind it is worth.
+
+Regression-tested against the real broken file from this week’s history rather than only against synthetic cases — it names the offending line and the wrapper it opened inside — and confirmed silent on the things that must not trip it: the same class name in a stylesheet, inside a script, and inside an HTML comment; a `card-wrapper` that merely starts with the same letters; and a legitimate card whose Details section contains nested boxes of its own. **160 pages, 155,807 tags, zero findings on a clean tree.**
+
+FixedStar Stuff’s counts, stale again one day later
+
+The collection said **36 pieces** and its derived figure said *twenty-nine of these pieces were made much later*. With this zine they are **37** and **thirty**. Both were re-derived by counting cards and subtracting the seven founders, not by incrementing the numbers that were there — which is the only method that survives a count having already been wrong. **Yesterday’s entry fixed the same two figures.** No gate can read a number written out in a sentence, so this will keep happening; the defence is the derivation, not the memory.
+
+[Browse the collection →](https://starstuff.earth/index.html)
+
+[Stimpunks Foundation](https://stimpunks.org/) × [More Realms](https://morerealms.com/) · [starstuff.earth](https://starstuff.earth) · [stimpunks.org](https://stimpunks.org) · [morerealms.com](https://morerealms.com) · [Source on GitHub](https://github.com/Stimpunks/Star-Stuff)
+ Print freely · Share freely · [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) · L★S · You were ★stuff all along

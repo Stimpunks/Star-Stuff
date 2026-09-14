@@ -314,7 +314,15 @@ for (const cf of collectionFiles) {
    belongs to a collection, when the whole message of the page is that it does not
    exist. Adding to this list should feel like a decision, because it is one. */
 const NO_BADGE = new Set(['index.html', 'search.html', 'whats-new.html', '404.html']);
-const exempt = (f) => NO_BADGE.has(f) || COLLECTION_RE.test(f);
+/* The changelog's monthly archive, added 2026-09-14 when a 1.4 MB single page was
+   split one page per month. These are furniture in the same sense whats-new.html
+   is: reached from changelog.html, never carded by a collection, and it is
+   changelog.html that carries the Notes & Rationale badge and the card. A pattern
+   rather than a list only because the set grows by one every month on its own —
+   it is still narrow enough to name exactly what it exempts, and the count prints
+   below so a set that grows is a set somebody can question. */
+const CHANGELOG_ARCHIVE = /^changelog-\d{4}-\d{2}\.html$/;
+const exempt = (f) => NO_BADGE.has(f) || COLLECTION_RE.test(f) || CHANGELOG_ARCHIVE.test(f);
 
 let totalProblems = 0;
 let pagesWithProblems = 0;
@@ -790,6 +798,12 @@ for (const file of targets) {
     const pageTitle = titleMatch ? decode(titleMatch[1]).replace(/\s+/g, ' ').trim() : '';
     const want = new Set([...titleWords(titleLead(pageTitle)), ...titleWords(h1Text)]);
     const ownCards = [...src.matchAll(/<a class="card" href="([^"]+)"/g)].map((m) => m[1]);
+    /* Every local page this one links to, for the "extra" direction below. A
+       collection page lists its members as cards; changelog.html lists its monthly
+       archive as an ordinary link list, and both are legitimate ways to be the
+       page that contains something. The "omits" direction still asks about CARDS,
+       because that is the promise a card grid makes. */
+    const ownLinks = [...src.matchAll(/<a[^>]+href="([^"#?:]+\.html)"/g)].map((m) => m[1]);
     let sawHasPart = false;
 
     for (const m of srcLive.matchAll(/<script[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/gi)) {
@@ -823,7 +837,7 @@ for (const file of targets) {
             .map((x) => (x && typeof x === 'object' ? String(x.url || '') : ''))
             .map((u) => u.replace(/^https?:\/\/[^/]+\//, ''));
           const missing = ownCards.filter((c) => !listed.includes(c));
-          const extra = listed.filter((u) => u && !ownCards.includes(u));
+          const extra = listed.filter((u) => u && !ownCards.includes(u) && !ownLinks.includes(u));
           if (missing.length) {
             problems.push(
               `JSON-LD hasPart at line ${line} omits ${missing.length} of this page's ${ownCards.length} cards ` +
@@ -869,7 +883,8 @@ for (const file of targets) {
    claim that reads identically whether the map was built or came back empty. */
 console.log(
   `\n${targets.length} page(s) · ${scannedTags.toLocaleString()} tags · ${scannedIds.toLocaleString()} ids · ` +
-    `${badgesSeen}/${memberPages} collection badges across ${collectionFiles.length} collections · ${totalProblems} problem(s)`
+    `${badgesSeen}/${memberPages} collection badges across ${collectionFiles.length} collections · ` +
+    `${targets.filter((f) => CHANGELOG_ARCHIVE.test(f)).length} changelog archive page(s) exempt · ${totalProblems} problem(s)`
 );
 
 if (totalProblems) {

@@ -175,6 +175,30 @@ The central phrase compresses through registers, each with a use:
   serves clean URLs, so the `.html` file answers at both paths; keep internal links, canonical, and
   the sitemap on `changelog.html` like every other page). It is the reader-facing companion to
   `FACTCHECK.md` — see *Fact-checking & attribution* below for what to log there.
+- **The changelog is ONE PAGE PER MONTH, and `changelog.html` is a GENERATED index over them
+  (2026-09-14).** A new entry goes at the top of `changelog-YYYY-MM.html`, then
+  `node tools/build-changelog.mjs`. **Never hand-edit `changelog.html`** — it is rebuilt from the
+  month pages and `check-derived.mjs` gates it.
+  - **Why:** it had reached **1,402 KB raw / 449 KB gzipped**, 190,000 words, 145 sections, 636
+    entries, growing ~6.5 sections a day without bound — and `changelog.md`, the file agents
+    fetch, was **1,136 KB**. Ryan's own Glimmer Wire ruling (2026-09-04) applied to the other
+    running log here. The index is 38 KB and stops growing; `changelog.md` is 38 KB too.
+  - **A NEW MONTH IS A NEW FILE.** Copy the most recent archive page, empty its sections, fix its
+    `<title>`/canonical/`meta`/`og:`/`twitter:`/JSON-LD (**all of them carry month-specific text,
+    and copying leaves all of them wrong** — the Glimmer Wire lesson), fix `prev`/`next` on it
+    *and on the month before it*, add a `sitemap.xml` row, then rebuild the index.
+  - **Deep links survive mechanically, and that is the part worth keeping.** All 290 ids encode
+    their own date (`2026-08-14-slug`, `h-2026-08-14-slug`), so `routeChangelogHash()` in
+    `starstuff.js` reads the month out of the fragment rather than from a table. **A Netlify 301
+    cannot carry a fragment** — that is why the Glimmer Wire split had to rewrite its deep links
+    by hand, and why this one did not. **Don't "tidy" an id into a slug without its date**; the
+    router is the only thing keeping two months of published links alive.
+  - **The archive pages are badge-exempt**, as `whats-new.html` is — furniture reached from
+    `changelog.html`, which keeps the badge and the Notes & Rationale card. The exemption is a
+    narrow named pattern in `check-markup.mjs` and its count prints on the summary line.
+  - **The stated cost, on the index's own face:** find-in-page no longer reaches the whole
+    history. Site search does, and better, because a hit lands on a month rather than inside a
+    megabyte.
 
 ### Page conventions (treat every page this way)
 

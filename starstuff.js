@@ -603,6 +603,36 @@
     });
   }
 
+
+  /* ---------- the changelog's old deep links ----------
+     The changelog was one page until 2026-09-14 and is now one page per month, so
+     a link to changelog.html#2026-08-14-something points at a section that has
+     moved to changelog-2026-08.html. Nothing on this site still links that way —
+     240 of the 244 inbound links were to the page rather than a section, and the
+     four that carried a fragment were rewritten in place — but anything published
+     elsewhere in the two months the page existed whole still does.
+
+     THE MAPPING IS MECHANICAL, WHICH IS WHY THIS IS SAFE. Every one of the 290 ids
+     encodes its own date: `2026-08-14-slug` on the section and `h-2026-08-14-slug`
+     on its heading. So the month page is read off the fragment itself rather than
+     from a table that could rot. A Netlify redirect cannot do this — a 301 does not
+     carry the fragment, which is the reason the Glimmer Wire split had to rewrite
+     its two deep links by hand.
+
+     Only ever runs on changelog.html, only for a hash that looks like one of ours,
+     and only when no element with that id is on the page — so a real anchor on the
+     index always wins. */
+  function routeChangelogHash() {
+    if (!/\/changelog(\.html)?$/.test(window.location.pathname)) return;
+    var hash = window.location.hash;
+    if (!hash || hash.length < 2) return;
+    var id = decodeURIComponent(hash.slice(1));
+    if (document.getElementById(id)) return;
+    var m = id.match(/^h?-?(\d{4})-(\d{2})-\d{2}/);
+    if (!m) return;
+    window.location.replace('changelog-' + m[1] + '-' + m[2] + '.html#' + id);
+  }
+
   /* ---------- init ---------- */
   function init() {
     /* FIRST: buildFooterNav() and bindOwnPager() both return early unless
@@ -612,6 +642,7 @@
     bindOwnPager();
     setupDeepLinks();
     setupEntryDeepLinks();
+    routeChangelogHash();
     buildRail();
   }
 
