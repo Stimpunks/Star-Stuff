@@ -172,7 +172,7 @@ What this site says, it says here too and no louder: the universe does not patho
 - **Not a land acknowledgement standing in for anything.** Deal opens his TEDx talk with one and immediately gives it teeth — *this is still Indian land* — then closes by telling the room that they are now responsible for what they have just heard. A sentence at the top of a page that changes nothing below it is worse than no sentence.
 - **Not artists diagnosed from a distance.** Standing rule across this collection: where a musician has spoken about being neurodivergent we use their word; where we recognise something they have not named, the recognition is ours and we say so.
 
-One — We were punk first
+## One — We were punk first
 
 Dead Pioneers, who began as an artwork about what music does to a person, and then became the thing they were describing.
 
@@ -236,7 +236,7 @@ Lead single from *Wagon Burner*, whose title reclaims a slur out of westward exp
 
 [▶ Nazi Teeth — Dead Pioneers](https://www.youtube-nocookie.com/embed/lM0TnyGELuI)
 
-Two — Before Link Wray there was no hard rock
+## Two — Before Link Wray there was no hard rock
 
 A Shawnee guitarist, a punctured speaker cone, and an instrumental that got banned for things it never said.
 
@@ -280,7 +280,7 @@ From the album recorded in a converted chicken shack, with Wray singing for the 
 
 [▶ Fire and Brimstone — Link Wray](https://www.youtube-nocookie.com/embed/H4b4oj6-1bI)
 
-Three — The drumbeat you think is Indian
+## Three — The drumbeat you think is Indian
 
 What happens when actual drums arrive on a major label, and what happens when a punk band covers a powwow song for children.
 
@@ -334,7 +334,7 @@ A punk cover of the Black Lodge Singers' song for children, from a Portland band
 
 [▶ Mighty Mouse — 1876](https://www.youtube-nocookie.com/embed/mP7cHpTQU2c)
 
-Four — The landscape is a filter
+## Four — The landscape is a filter
 
 The far north takes the treble out and carries the rest a long way. The daylight desert throws everything at the sky. Listen to the two next to each other.
 
@@ -398,7 +398,7 @@ From a community 170km out of Alice Springs, modelled on KISS and playing closer
 
 [▶ Young Men — Mulga Bore Hard Rock](https://www.youtube-nocookie.com/embed/joSGebqEsIM)
 
-Five — Singing to two hundred people
+## Five — Singing to two hundred people
 
 Records made in languages with very few speakers, released untranslated, for an audience that was never going to be large.
 
@@ -472,7 +472,7 @@ One of the largest bands in a whole genre that barely exists outside Latin Ameri
 
 [▶ Guerreros de Cemican — Cemican](https://www.youtube-nocookie.com/embed/9UTRDQtpgL8)
 
-Six — How a scene checks itself
+## Six — How a scene checks itself
 
 Bands who did the political work in public, and non-Native bands who got the history right without appointing themselves to it.
 
@@ -526,7 +526,7 @@ Named for the 1990 Kanehsatà:ke resistance, and an example of the thing that is
 
 [▶ Oka Everywhere — Propagandhi](https://www.youtube-nocookie.com/embed/FqGnqnJT_Ss)
 
-Seven — Still here, and tired
+## Seven — Still here, and tired
 
 Four ways of ending, none of them triumphant, all of them still going.
 

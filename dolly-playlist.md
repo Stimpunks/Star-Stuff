@@ -1,7 +1,7 @@
 ---
 title: "Love Without Cringing"
 url: "https://starstuff.earth/dolly-playlist.html"
-updated: "2026-09-05"
+updated: "2026-09-14"
 description: "Dolly Parton from 1967 to 2023 — forty-four tracks — twenty-five of hers and nineteen covers — and the argument that runs through them: the persona was assigned before she chose it, the copyright stayed in her pocket, and the songs went out to everyone without an eligibility test. Companion rack to Zine No. 67."
 collection: "Sound"
 licence: "CC-BY-SA-4.0"
@@ -182,7 +182,7 @@ Cottom opens *The Dolly Moment* by observing that this is exactly the register t
 - **Not bootstraps.** The rags-to-riches arc is the most extractable thing in the catalogue and gets used to argue that the ladder is fine because one person climbed it.
 - **Not claiming her.** She was not one of us. The rack is about how her work treated people, not about recruiting her to a community she did not belong to.
 
-One — Underestimated on purpose · 1967–1970
+## One — Underestimated on purpose · 1967–1970
 
 The costume arrives first, written by somebody else. Listen to what she does inside it almost immediately.
 
@@ -226,7 +226,7 @@ A pregnant unmarried woman is sent away to wait for a man who is not coming, and
 
 [▶ Dolly Parton — Down from Dover](https://www.youtube-nocookie.com/embed/MZ1IL8R5sSY)
 
-Two — Poor is not the same as lacking · 1971–1975
+## Two — Poor is not the same as lacking · 1971–1975
 
 The childhood songs, which are about dignity rather than hardship, and which decline to be inspiring.
 
@@ -260,7 +260,7 @@ A woman describes herself as second-hand goods and invites you to look anyway. B
 
 [▶ Dolly Parton — The Bargain Store](https://www.youtube-nocookie.com/embed/D1TXnTjbf4A)
 
-Three — The ones she refused to sell · 1973–1980
+## Three — The ones she refused to sell · 1973–1980
 
 Four songs that made her rich, and the reason they made her rich rather than somebody else.
 
@@ -304,7 +304,7 @@ Written on set, with the percussion track played on her acrylic nails. It is a s
 
 [▶ Dolly Parton — 9 to 5](https://www.youtube-nocookie.com/embed/UbxUSsFXYo4)
 
-Four — Walking out, and the light on the other side · 1977–1991
+## Four — Walking out, and the light on the other side · 1977–1991
 
 The songs about leaving, and the two that this rack’s companion zine builds a spread of physics on.
 
@@ -348,7 +348,7 @@ Gentle when she's held, and an eagle when she flies. Written at forty-five about
 
 [▶ Dolly Parton — Eagle When She Flies](https://www.youtube-nocookie.com/embed/Mb1Rufxem_4)
 
-Five — Claimed as family, and what it cost · 1987–2017
+## Five — Claimed as family, and what it cost · 1987–2017
 
 Four decades of declining to make anybody respectable first, including the year it brought death threats.
 
@@ -392,7 +392,7 @@ In March 2023 a Wisconsin elementary school barred its first-graders from singin
 
 [▶ Miley Cyrus ft. Dolly Parton — Rainbowland](https://www.youtube-nocookie.com/embed/GtFw9dEwrbo)
 
-Six — Books, and the kids they went to · 1999–2023
+## Six — Books, and the kids they went to · 1999–2023
 
 Where the money went, what she made for children, and the last version of the song she wrote when she walked out.
 
@@ -446,7 +446,7 @@ The 1977 deliverance song, forty-six years on, with four other women taking vers
 
 [▶ Dolly Parton — Light of a Clear Blue Morning (2023)](https://www.youtube-nocookie.com/embed/McaD2PG8jOE)
 
-Seven — The one time she said it out loud · 2023
+## Seven — The one time she said it out loud · 2023
 
 A section of one, because it is a category of one. For sixty years her answer was *I don’t do politics* — and she was explicit about the arithmetic: as many Republican fans as Democrats, and no wish to lose either. Then, at seventy-seven, she opened a rock record by calling somebody a liar.
 
@@ -460,7 +460,7 @@ The lead single from *Rockstar*, debuted live closing the 58th ACM Awards on 11 
 
 [▶ Dolly Parton — World On Fire (58th ACM Awards)](https://www.youtube-nocookie.com/embed/0QJXsmDBS8k)
 
-Eight — What other people made of her · 1975–2024
+## Eight — What other people made of her · 1975–2024
 
 The last section of the essay is about what happens to a song once it leaves the person who wrote it. This is that, played: seven Jolenes, four goodbyes, and a Hall of Fame stage singing about a coat.
 

@@ -108,7 +108,7 @@ A page about a beloved performer's body carries specific risks, and it is better
 - **Not stimming as acceptable only when it is beautiful.** This is the one that matters most here. Her movement is celebrated because it is on a stage, set to music, and lovely to watch. **The same body doing the same thing in a classroom gets a behaviour plan, and a child who flaps in a supermarket gets stared at by people who would applaud this.** If the movement is only permitted once it has been made into art, nothing has actually been conceded.
 - **Not physics as permission.** The aurora does not authorise anything. It is a rhyme, and it is fenced as one above.
 
-One — Watch the body
+## One — Watch the body
 
 Live, because that is where the argument is. Most of these come straight from Ryan's own *Stimming with Aurora* playlist.
 
@@ -172,7 +172,7 @@ The format that strips everything: an office, no lights, an audience of colleagu
 
 [▶ AURORA — NPR Music Tiny Desk Concert](https://www.youtube-nocookie.com/embed/evBgLWQwAFA)
 
-Two — Excited from outside, the colour is yours
+## Two — Excited from outside, the colour is yours
 
 The wild, animal, earthbound songs — where the energy arrives from somewhere else and what comes out is characteristic of the material.
 
@@ -216,7 +216,7 @@ From *Infections of a Different Kind – Step 1*. A title that holds the whole i
 
 [▶ AURORA — Gentle Earthquakes](https://www.youtube-nocookie.com/embed/7B19B0PUE4Y)
 
-Three — Stim-listening
+## Three — Stim-listening
 
 The ones that reward the fortieth play. Put one on repeat; that is a use, not a malfunction.
 
@@ -270,7 +270,7 @@ Filmed by a newspaper rather than a label, which is why it looks like this. The 
 
 [▶ AURORA — Forgotten Love, live in Brazil](https://www.youtube-nocookie.com/embed/OLJQrXitrro)
 
-Four — A people that names itself
+## Four — A people that names itself
 
 Declaring a country rather than applying for a visa to somebody else's.
 
@@ -324,7 +324,7 @@ From *The Gods We Can Touch*. Belonging framed as something you have to stop res
 
 [▶ AURORA — Giving In To The Love](https://www.youtube-nocookie.com/embed/QrC8yyp32wY)
 
-Five — No cure, and the wounds nobody can see
+## Five — No cure, and the wounds nobody can see
 
 The refusal, and the part that doesn't photograph.
 
@@ -378,7 +378,7 @@ Ungoverned rather than lost — a distinction the people doing the governing rar
 
 [▶ AURORA — A Soul With No King, live on KEXP](https://www.youtube-nocookie.com/embed/BgZsRaqDzKs)
 
-Six — Back to Earth
+## Six — Back to Earth
 
 The mothership was never the destination. Each other was.
 
@@ -412,7 +412,7 @@ A last session for the road. If you have got this far, you already know what to 
 
 [▶ AURORA at Paste Studio NYC](https://www.youtube-nocookie.com/embed/sHRljIHnLSI)
 
-Listen — the whole playlist
+## Listen — the whole playlist
 
 *Stimming with Aurora* is Ryan's own YouTube playlist, and it is almost entirely live performances. That is the thesis of this page in the form of a collection: when the body is the argument, you need the footage where the body is.
 

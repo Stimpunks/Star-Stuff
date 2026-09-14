@@ -1,7 +1,7 @@
 ---
 title: "Changelog"
 url: "https://starstuff.earth/changelog.html"
-updated: "2026-09-13"
+updated: "2026-09-14"
 description: "What changed and when in the Star Stuff collection — every zine and field guide as it was added, every substantial revision, and every fact-check and attribution audit, including the errors we found in our own work and how we fixed them."
 collection: "Notes & Rationale"
 licence: "CC-BY-SA-4.0"
@@ -29,6 +29,40 @@ We braid real science with ideas credited to named thinkers, so the facts and th
 The working guidelines and the full per-piece ledger live in [FACTCHECK.md](https://github.com/Stimpunks/Star-Stuff/blob/main/FACTCHECK.md). If you spot an error, [open an issue](https://github.com/Stimpunks/Star-Stuff/issues) or reach us at [stimpunks.org](https://stimpunks.org). **Corrections are mutual aid.**
 
 New piece Revised Fact-check Site
+
+2026 · September 14
+
+## The sentence this whole collection is named after was being sung to audiences three years before Carl Sagan published it
+
+The oldest rack here was the only one of the eight with no essay in front of it. It has one now, and the argument is a chronology that puts us last rather than first. Plus: fifty-four section labels across the Sound collection that were never headings at all, and two pieces of structured data quietly describing the wrong page.
+
+RevisedL★S Playlist — an essay on the order it actually happened in
+
+**[The L★S Playlist](https://starstuff.earth/ls-playlist.html) was the first rack we made and the only one that never argued anything.** The other seven open with an essay; this one opened with a grid of songs. The new essay takes the obvious question nobody had asked on the page — *where did this phrase come from?* — and answers it with four dates, which turn out not to run in the order the tidy version implies.
+
+**The physics is 1957**, the B²FH paper on how stars build the elements. **Joni Mitchell was performing “Woodstock” by December 1969** and released it in April 1970. **Carl Sagan published *The Cosmic Connection* in 1973**, and *Cosmos* followed in 1980. So the singing came twelve years after the science and three years before the book — and the phrase this entire collection is built on reached us half a century after the paper. **We are the last people to this idea, not the first.**
+
+**The thing we could not establish is stated on the page rather than smoothed over.** Whether Mitchell took the line from the physics is the obvious flattering answer, which is exactly why we went looking for it. **Her own archive records no statement from her about where it came from** — so the essay says the dates are checkable and the influence is not, and declines to build a chain across the gap. It also declines the chart figure that circulates for the other 1970 recording, because [Billboard](https://www.billboard.com/)’s own archive is paywalled and an aggregator is not a source for a number.
+
+**One beat is a correction of ours.** Read literally, *we are stardust, we are golden* names two different catastrophes: ordinary stellar nucleosynthesis for the carbon and the iron, and the r-process — best evidence since 2017 pointing at colliding neutron stars — for the gold. That distinction is not pedantry, and we know because [our own LYDTYSS zine](https://starstuff.earth/lydtyss-zine.html) once blurred it, saying the elements were forged in a “stellar interior” when its own companion guide credits the heavy ones to mergers. Corrected previously, and named again here.
+
+**It ends on 4 February 2008**, when NASA pointed a deep-space antenna at Polaris and sent “Across the Universe” — a song on this rack — out to arrive in the twenty-fifth century. Nobody who made it will hear it land, which is the whole of [LYDTYSS](https://starstuff.earth/love-you-down-to-your-star-stuff.html) in one gesture: the loving is aimed further than the lover can follow.
+
+SiteFifty-four section labels that looked like headings and were not
+
+**Every room in every rack — “Cosmic Origin,” “The suit · 1983–1984,” “Books, and the kids they went to” — was a styled `span`.** They looked exactly like headings and were invisible to one: a screen reader’s headings list is how you skip through a long page, and on a forty-four-card rack it came back holding only the essay. **54 of them across the eight racks**, promoted to real headings with addresses, so every room can now be linked to directly and reached from the rotor. This is a rule this site already had written down, and had been breaking on its longest pages since the first rack shipped.
+
+**Proved layout-neutral rather than eyeballed.** Promoting an inline element to a block one can change type size, weight, spacing and flow, so every computed property of every element on all eight racks was dumped before and after and compared: **4,680 elements, 54 differences, and all 54 are the promoted labels differing in one property** — `unicode-bidi`, the browser’s default for a block element, which affects nothing on a page with no right-to-left text. Not one box moved a pixel.
+
+**All eight racks now carry a contents list**, covering the essay sections and then the rooms, so the map matches the page instead of stopping where the prose does. Two faults in that work were caught by the reader rather than by us and are worth naming: on three racks the contents list shipped *above* the page title, because the check we wrote asked whether it came before the first section heading and never whether it came after the h1; and on five more it rendered at full width against a narrower column of text — a map wider than the thing it maps. Both fixed, and the check now asks both questions.
+
+Fact-checkTwo pieces of structured data describing the wrong page
+
+**[The Dolly rack](https://starstuff.earth/dolly-playlist.html) told search engines and agents it was called “One Body at a Time.”** That is [the David Byrne rack](https://starstuff.earth/byrne-playlist.html)’s title, copied across when the page was built. Its visible title, its tab title and its card were all correct; only the machine-readable `headline` was wrong, which is precisely why it survived — there is no rendering for it to get wrong. **And [the Sound collection](https://starstuff.earth/collection-sound.html)’s own structured data listed seven of its eight racks**, omitting the newest. Both fixed.
+
+**Our markup gate passes both of these and is right to.** It asks whether a structured-data block parses and whether it declares a type; it cannot ask whether the title inside it is this page’s title. A check that compared the two would have caught both in a second, and is worth writing.
+
+**One sentence elsewhere stopped being true** and was corrected on two pages: [It Take a Joyful Sound](https://starstuff.earth/joyful-sound-playlist.html) was described as “the one that argues first,” which read as *the L★S rack does not argue*. It now says what is actually the case — that it was the first rack here to carry an essay.
 
 2026 · September 13
 

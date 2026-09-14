@@ -1,7 +1,7 @@
 ---
 title: "Sound"
 url: "https://starstuff.earth/collection-sound.html"
-updated: "2026-09-07"
+updated: "2026-09-14"
 description: "The Sound collection — eight racks, 268 cards, and the four rules that decide what earns one. Every other collection here is something we made; these point at other people's work, and the writing is only the way in. Plus the physics two of the racks arrived at independently, and the access gap this collection has not closed."
 licence: "CC-BY-SA-4.0"
 licence_url: "https://creativecommons.org/licenses/by-sa/4.0/"
@@ -33,13 +33,13 @@ Eight, in the order they were made, and they are deliberately different shapes �
 
 ### [L★S Playlist](https://starstuff.earth/ls-playlist.html)
 
-Rack · One theme · Sound · 26 tracks
+Rack · One theme · Sound · 26 tracks + essay
 
 *The shape: many artists, one idea.*
 
 *Songs in conversation with *Love You Down To Your Star Stuff* — cosmic, reclamatory, tender, and true.*
 
-Bowie's whole career, Joni Mitchell, the Beatles, Stevie Wonder, and more, with YouTube embeds and Spotify links.
+Bowie's whole career, Joni Mitchell, the Beatles, Stevie Wonder, and more — led since September 2026 by an essay on the order it all actually happened in.
 
 **Details**
 
@@ -51,13 +51,13 @@ Rack · One scene · Sound · 36 tracks + essay
 
 *The shape: a subculture, and the argument it makes about doors.*
 
-*The loud companion to the L★S Playlist, and the one that argues first.*
+*The loud companion to the L★S Playlist, and the first rack here to carry an essay.*
 
 In July 1977 Bob Marley recorded *Punky Reggae Party* with Lee Perry — a guest list for an alliance that did not exist until it was read out.
 
 **Details**
 
-The loud companion to the L★S Playlist, and the one that argues first. In July 1977 Bob Marley recorded *Punky Reggae Party* with Lee Perry after hearing The Clash cover a Jamaican record — a guest list for an alliance that did not exist until it was read out, and the following April roughly **100,000 people** marched six miles through National Front territory to hear The Clash, Steel Pulse and X-Ray Spex on one Rock Against Racism bill. Naming a thing helped it happen, which is what *neurodiversity* did too. Then the physics, because the physics is unreasonably good: **sound needs matter** — in a vacuum there is none at all — so every note anyone has heard was carried by nitrogen and oxygen forged in stars. A pure sine wave has a pitch and almost no identity; **Helmholtz worked out in 1863** that what tells you *who* is playing lives entirely in the overtones above the note. And distortion, the sound the genre is named by, is a nonlinearity adding harmonics that were never sent in — **difference, deliberately added**. It reaches you at the skeleton, too: you hear your own voice partly through skull bone, which is why recordings sound wrong. Thirty-six songs from the Stimpunks PSA — Bikini Kill, Dream Nails, Kae Tempest, Le Tigre, The Linda Lindas, Gossip, pink suits — with the door test punk actually contributed, and the honest part: *a loud room is itself an access barrier*, and acceptance is not any scene's nature but a practice re-won in every room.
+The loud companion to the L★S Playlist, and the first rack here to carry an essay. In July 1977 Bob Marley recorded *Punky Reggae Party* with Lee Perry after hearing The Clash cover a Jamaican record — a guest list for an alliance that did not exist until it was read out, and the following April roughly **100,000 people** marched six miles through National Front territory to hear The Clash, Steel Pulse and X-Ray Spex on one Rock Against Racism bill. Naming a thing helped it happen, which is what *neurodiversity* did too. Then the physics, because the physics is unreasonably good: **sound needs matter** — in a vacuum there is none at all — so every note anyone has heard was carried by nitrogen and oxygen forged in stars. A pure sine wave has a pitch and almost no identity; **Helmholtz worked out in 1863** that what tells you *who* is playing lives entirely in the overtones above the note. And distortion, the sound the genre is named by, is a nonlinearity adding harmonics that were never sent in — **difference, deliberately added**. It reaches you at the skeleton, too: you hear your own voice partly through skull bone, which is why recordings sound wrong. Thirty-six songs from the Stimpunks PSA — Bikini Kill, Dream Nails, Kae Tempest, Le Tigre, The Linda Lindas, Gossip, pink suits — with the door test punk actually contributed, and the honest part: *a loud room is itself an access barrier*, and acceptance is not any scene's nature but a practice re-won in every room.
 
 ### [Stimming and Belonging with AURORA](https://starstuff.earth/aurora-playlist.html)
 

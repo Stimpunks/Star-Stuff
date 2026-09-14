@@ -304,7 +304,7 @@ The central phrase compresses through registers, each with a use:
   `OFFSCREEN` list, which it is. Verify by keyboard, not by reading the sheet: one Tab from a
   fresh load must reveal it, and Enter must land focus on `main#main`.
 - **Every essay page with two or more section headings carries a `.ss-toc`, after the lede and
-  before the first heading (2026-09-13).** 25 pages, 214 entries. The one definition is in
+  before the first heading (2026-09-13; the 8 Sound racks joined 2026-09-14).** 33 pages. The one definition is in
   `starstuff.css`; **don't write a page-local `.toc`** — `love-you-down-to-your-star-stuff.html` had
   the only contents list on the site from the day it shipped, and its own rules were deleted rather
   than kept and overridden when it became the shared component.
@@ -348,6 +348,50 @@ The central phrase compresses through registers, each with a use:
     `watching-animals-field-guide`) and `manifesto.html` deliberately have none.** A card grid is
     already its own contents, and a declaration read straight through is not a document you
     navigate. **No gate can see any of this** — nothing counts TOCs or notices a missing one.
+  - **ON A SOUND RACK THE TOC COVERS THE ESSAY *AND* THE ROOMS**, because a rack page is essay
+    *then* rack: a contents list over the essay headings alone stops where the prose stops and
+    says nothing about the 25–44 cards below it. On `dolly-playlist.html` that would have been
+    6 entries at the top of an 80 KB page. This only became possible once the rooms were real
+    headings — see *Sound: the room labels* below.
+  - **TWO FAULTS SHIPPED IN THE RACK PASS AND A READER CAUGHT BOTH. Copy the fixes, not the
+    checks that missed them.** (a) The TOC landed **above the `<h1>`** on the three racks whose
+    masthead lives *inside* `.es` rather than in a sibling section — because the verification
+    asked whether the TOC preceded the first *section heading* and never whether it followed the
+    title. **Those are two different questions**, and `check-markup.mjs`'s eighth check answers
+    neither: it asks only that exactly one `<h1>` sits inside `<main>`, which stayed true
+    throughout. (b) On the five racks where it sat *outside* `.es`, it inherited `main`'s full
+    width and rendered **1040px against a 688px measure** — a map wider than the thing it maps.
+    **The invariant to assert is: the TOC follows the h1, precedes the first section heading, and
+    fills the column it sits in** — and measure that last one against its *parent's content box*,
+    never against the median paragraph width, which sweeps in card and caption text and reported
+    a 298px card paragraph as "the prose".
+- **Sound: the room labels were styled `<span>`s on every rack, and were promoted 2026-09-14.**
+  `.lp-section` — *Cosmic Origin*, *The suit · 1983–1984*, *Books, and the kids they went to* —
+  looked exactly like a heading and was invisible to one. **54 of them across the 8 racks**, from
+  the first rack until now, so a screen reader's headings list on a 44-card rack came back holding
+  only the essay. They are `<h2 class="lp-section" id="rack-…">` now. **`.lp-ls-section` was
+  deliberately NOT promoted** — that is `ls-playlist.html`'s quick-reference list repeating the
+  same rooms, already stripped from the search index as a duplicate presentation, and promoting it
+  would double every room in the rotor.
+  - **The swap was layout-neutral and that was proved, not assumed.** Inline → block can move type
+    size, weight, spacing and flow. Every computed property of every element on all 8 racks was
+    dumped before and after: **4,680 elements, 54 differences, all 54 the promoted labels, all
+    differing in exactly one property — `unicode-bidi` (`normal` → `isolate`, the UA default for a
+    block), which does nothing on a page with no RTL text. 0 boxes moved.** That is the shape of
+    verification any future span→heading promotion owes.
+  - **`.lyss-playlist .lp-section` already set `display:block`, `font-size`, `font-weight` and
+    `margin`**, which is *why* it was neutral — the rule already pinned everything the UA would
+    otherwise supply. Check that before promoting a label elsewhere; where it is not true, pin the
+    properties first, exactly as the 2026-09-01 `<h1>` pass did.
+- **A JSON-LD `headline` that names a DIFFERENT page is invisible to every gate**, found
+  2026-09-14: `dolly-playlist.html` carried `"headline":"One Body at a Time"`, which is
+  `byrne-playlist.html`'s title, copied when the page was built. Its `<title>`, its visible title
+  and its card were all correct. **`check-markup.mjs`'s tenth check passes it and is right to** —
+  it asks whether the block parses and declares a type, never whether the title inside matches the
+  page. Found the same day: `collection-sound.html`'s `hasPart` listed **7 of its 8** racks.
+  **An eleventh check comparing JSON-LD `headline`/`name` against the page's `<title>` and `<h1>`,
+  and `hasPart` against the page's own cards, would have caught both in a second** and is the
+  strongest candidate on the list.
 - **Use real headings, with ids.** A section label must be an `<h1>`/`<h2>`, not a styled `<span>`
   — a screen reader's headings rotor *is* the table of contents, and `index.html` shipped with
   **zero heading elements** until 2026-08-12, so that list came back empty on the landing page of
@@ -528,7 +572,7 @@ that disclosure is the convention, and **How We Got Here duly carries it too**:
 | **Field Guides** | **form** — a catalogue of same-shaped entries, none ranked | Field Guides 1–12, 14–23 — **22 guides, 278 entries; 297 cards** (re-derived 2026-09-06; this row said *18 guides, 218 entries, 231 cards* from 2026-08-27 and went stale by four guides while the collection page's own figures stayed current — the inverse of the usual direction, and the reason the derivation below matters more than the number). FG 13 is *not* here: it is the egg, `watching-animals-field-guide.html`. **Nineteen** cards are deliberately **not** entries; the ones recorded here are the five *turtles people made* (FG 10), the octopus settlements (FG 14), the rooms people build (FG 15), the egg-crack accounts (FG 16), the two questions the answer is not in on yet (FG 17), the palaeontologist who was not a specimen and the corrections nobody has published yet (FG 18), and the families people make (FG 19) |
 | **How We Got Here** | **form** — a Burke chain, one link per spread, joints marked | 38, 39, 40, 41, 42, 43, 50, 52, 56, 65, 74, 79, 84 (13 chains; **No. 84 is the collection’s first scroll zine**) |
 | **Print** | **medium** — paper | 9 broadsides + 2 that are not broadsides (a typographic specimen, and a blank sheet) |
-| **Sound** | **medium** — audio | 7 racks, **230 song cards** — and the collection page deliberately prints *no* distinct-song total, which is the right call: five Bowie songs sit in two racks on purpose, and the Dolly rack's covers section gives "Jolene" eight cards and "I Will Always Love You" five, so "distinct songs" has no honest single answer. Derived figures, if you need them: 226 distinct song+artist pairs, 193 distinct titles. **Don't put a songs number back on the page.** |
+| **Sound** | **medium** — audio | **8 racks, 268 cards** (re-derived 2026-09-14; this row said *7 racks, 230 song cards* and the collection page's own prose was right all along — the inverse of the usual direction. Derive it: `for f in …-playlist.html; do grep -o 'class="lp-card' $f | wc -l; done`) — and the collection page deliberately prints *no* distinct-song total, which is the right call: five Bowie songs sit in two racks on purpose, and the Dolly rack's covers section gives "Jolene" eight cards and "I Will Always Love You" five, so "distinct songs" has no honest single answer. Derived figures, if you need them: 226 distinct song+artist pairs, 193 distinct titles. **Don't put a songs number back on the page.** |
 
 - **Why the chains exist — reclaim science from the things that wear its clothes.** Ryan's framing,
   2026-08-12, and it is the collection's motive rather than a theme: **eugenics and behaviorism took
@@ -1141,6 +1185,12 @@ node tools/build-markdown.mjs about.html # one page, to stdout
 - **Content negotiation is deliberately NOT done.** It needs Netlify Edge Functions, and *static
   files, no build step* is worth more than the second delivery mode. The spec says ship the suffix
   at minimum; that is the honest stopping point.
+- **A `lastmod` bump makes the `.md` siblings stale, so bump the sitemap BEFORE building them.**
+  Each sibling's frontmatter carries `updated:` read from that page's `sitemap.xml` row, so
+  editing a date after `build-markdown.mjs` has run leaves four or five files disagreeing with
+  the sitemap — `check-derived.mjs` catches it, which is how this was found, but the fix is an
+  ordering rather than a second run. Order for the ship routine: edit → bump `lastmod` →
+  `build-derived` → `build-markdown` → `build-search-index` → `check-derived`.
 - **`tools/serve.mjs` knows `.md`** so a local render check sees `text/markdown` rather than
   `application/octet-stream` — the first mistake the spec's page lists.
 

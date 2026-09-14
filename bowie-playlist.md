@@ -100,7 +100,7 @@ That is what we mean by star stuff, said as plainly as we can say it. Not the di
 - **Not weird as a phase.** Difference is not a stage on the way to normal.
 - **Not a correction offered as debunking.** We are not scoring points off people who said heterochromia; nearly everyone did, including publications with fact-checkers. The point is how a flattering claim travels, not that anyone was foolish.
 
-One — The capsule · 1969–1971
+## One — The capsule · 1969–1971
 
 Untethering, read both ways at once: as loss, and as the only available exit.
 
@@ -154,7 +154,7 @@ A girl with mousy hair at the pictures, watching a world she has no part in. The
 
 [▶ David Bowie — Life On Mars?](https://www.youtube-nocookie.com/embed/AZKcl4-tcuo)
 
-Two — Selves, worn in public · 1972–1974
+## Two — Selves, worn in public · 1972–1974
 
 The personae, made in the open and set down in the open. Authorship, not concealment.
 
@@ -228,7 +228,7 @@ Four bars of guitar and a flat statement that your mother's inability to tell wh
 
 [▶ David Bowie — Rebel Rebel, live](https://www.youtube-nocookie.com/embed/eF551z9KlA8)
 
-Three — Plastic soul, then Berlin · 1975–1979
+## Three — Plastic soul, then Berlin · 1975–1979
 
 The stretch where he was least well and made some of the best of it. Not a redemption arc.
 
@@ -292,7 +292,7 @@ A song listing the privileges of being a boy, sung so archly that the list colla
 
 [▶ David Bowie — Boys Keep Swinging](https://www.youtube-nocookie.com/embed/2KcOs70dZAw)
 
-Four — Ashes, and the years of being enormous · 1980–1986
+## Four — Ashes, and the years of being enormous · 1980–1986
 
 Where he becomes a stadium, and the strangeness gets harder to find and is still in there.
 
@@ -356,7 +356,7 @@ A vast, unembarrassed love song from a period nobody rates, in which he admits h
 
 [▶ David Bowie — Absolute Beginners](https://www.youtube-nocookie.com/embed/iCJLOXqnT2I)
 
-Five — The long way back · 1996–2013
+## Five — The long way back · 1996–2013
 
 Including ten years of saying nothing at all, which turned out to be a decision rather than an ending.
 
@@ -390,7 +390,7 @@ Stars as predators who need to be watched to stay alive. Coming from him, at tha
 
 [▶ David Bowie — The Stars (Are Out Tonight)](https://www.youtube-nocookie.com/embed/6ceScy_OVmU)
 
-Six — ★ · 2016
+## Six — ★ · 2016
 
 Released on his sixty-ninth birthday. He died two days later. Nearly nobody knew.
 
@@ -434,7 +434,7 @@ The final song on the final record, and its title is a refusal — after a caree
 
 [▶ David Bowie — I Can't Give Everything Away](https://www.youtube-nocookie.com/embed/OZscv36UUHo)
 
-Where to go next
+## Where to go next
 
 This rack is the long version of the five Bowie cards that open the [L★S Playlist](https://starstuff.earth/ls-playlist.html), and the listening companion to [Turn and Face the Strange](https://starstuff.earth/bowie-zine.html), Zine No. 12.
 

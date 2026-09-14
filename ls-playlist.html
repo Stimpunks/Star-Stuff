@@ -31,9 +31,30 @@
 <style>
   html, body { margin: 0; padding: 0; }
 
+  /* Added 2026-09-14 with the essay. This page had NO :root at all and set its
+     body colours as literal hexes, alone among the eight racks — so it was the
+     one rack that did not get the print inversion for free, and any rule here
+     written against --star-white or --muted would have resolved to nothing and
+     silently inherited. Same trap as manifesto.html's self-referential aliases.
+     The screen values are identical to the hexes they replace; what changes is
+     that @media print can now reach them. */
+  :root {
+    --void: var(--sp-void);
+    --card: var(--sp-card);
+    --purple: var(--sp-purple);
+    --pink: var(--sp-pink);
+    --gold: var(--sp-gold);
+    --cyan: var(--sp-cyan);
+    --green: var(--sp-green);
+    --star-white: var(--sp-white);
+    --secondary: var(--sp-secondary);
+    --muted: var(--sp-muted);
+    --dim: var(--sp-dim-soft);
+  }
+
   body {
-    background: #0a0a14;
-    color: #f9fafb;
+    background: var(--void);
+    color: var(--star-white);
     font-family: 'Atkinson Hyperlegible Next', sans-serif;
     font-size: 1rem;
     line-height: 1.7;
@@ -74,6 +95,48 @@
     .pl-wrap { padding: 2.5rem 0.75rem 3rem; }
   }
 
+
+  /* ==========================================================================
+     Essay. The same widget the other seven racks carry, so the shelf reads as
+     one shape — this rack shipped without an essay and was the only one of the
+     eight that did. Accent roles differ per rack; ours run gold (the forge) and
+     cyan (the transmission), which are the two halves of the argument.
+     ========================================================================== */
+  .es { max-width: 43rem; margin: 0 auto; }
+  .es-hd { text-align: center; margin-bottom: 3rem; }
+  .es-brand { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.35em; text-transform: uppercase; color: var(--cyan); margin-bottom: 0.7rem; display: block; }
+  .es-title { font-size: clamp(2.1rem, 6vw, 3.5rem); font-weight: 800; line-height: 1.05; margin: 0 0 0.6rem; background: linear-gradient(135deg, var(--gold) 0%, var(--pink) 50%, var(--cyan) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .es-sub { font-size: 1.0625rem; color: var(--muted); line-height: 1.65; margin: 0 auto; max-width: 34rem; }
+  .es-kicker { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-top: 1.2rem; display: block; }
+
+  .es section { margin: 0 0 3.25rem; }
+  .es h2 { font-size: clamp(1.35rem, 3.4vw, 1.85rem); font-weight: 700; line-height: 1.25; color: var(--star-white); margin: 0 0 0.35rem; }
+  .es .es-num { display: block; font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.32em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem; }
+  .es h3 { font-size: 1.0625rem; font-weight: 700; color: var(--cyan); margin: 1.75rem 0 0.4rem; }
+  .es p { margin: 0 0 1rem; color: var(--star-white); }
+  .es p.es-lede { font-size: 1.125rem; color: var(--secondary); }
+  .es a { color: var(--cyan); }
+  .es strong { color: var(--star-white); font-weight: 700; }
+  .es em { color: var(--muted); }
+
+  .es-pull { border-left: 3px solid var(--gold); background: rgba(15,15,42,0.6); border-radius: 0 8px 8px 0; padding: 1rem 1.25rem; margin: 1.5rem 0; }
+  .es-pull p { margin: 0 0 0.4rem; font-size: 1.0625rem; }
+  .es-pull p:last-child { margin: 0; }
+  .es-cite { display: block; font-size: 0.8125rem; color: var(--muted); font-style: normal; }
+
+  .es-note { border-left: 3px solid var(--cyan); background: rgba(15,15,42,0.6); border-radius: 0 8px 8px 0; padding: 1rem 1.25rem; margin: 1.5rem 0; }
+  .es-note p { margin: 0 0 0.6rem; font-size: 0.9688rem; }
+  .es-note p:last-child { margin: 0; }
+  .es-note .es-note-hd { font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: var(--cyan); display: block; margin-bottom: 0.35rem; }
+
+  .es-fig { margin: 2rem 0; background: rgba(15,15,42,0.6); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 1.25rem 1rem 1rem; }
+  .es-fig svg { display: block; width: 100%; height: auto; }
+  .es-fig figcaption { font-size: 0.875rem; color: var(--muted); line-height: 1.6; margin-top: 0.85rem; }
+
+  .es-refuse { border-left: 3px solid var(--pink); background: rgba(15,15,42,0.6); border-radius: 0 8px 8px 0; padding: 1.1rem 1.25rem; margin: 1.5rem 0 0; }
+  .es-refuse ul { margin: 0; padding-left: 1.1rem; }
+  .es-refuse li { margin-bottom: 0.6rem; color: var(--star-white); }
+  .es-refuse li:last-child { margin-bottom: 0; }
   /* ==========================================================================
      L★S Playlist widget — originally authored for a WP custom HTML block.
      Scoped entirely under .lyss-playlist so it drops cleanly into the page.
@@ -107,10 +170,9 @@
   .lyss-playlist *{box-sizing:border-box;margin:0;padding:0}
 
   /* Header */
-  .lyss-playlist .lp-header{text-align:center;margin-bottom:2.5rem}
-  .lyss-playlist .lp-brand{font-family:var(--lp-font);font-size:0.75rem;font-weight:600;letter-spacing:0.35em;text-transform:uppercase;color:var(--lp-cyan-dim);margin-bottom:0.6rem;display:block}
-  .lyss-playlist .lp-title{font-family:var(--lp-font);font-size:clamp(2rem,5vw,3.25rem);font-weight:700;background:linear-gradient(135deg,var(--lp-gold-bright) 0%,var(--lp-pink) 50%,var(--lp-cyan) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.1;margin:0 0 0.5rem}
-  .lyss-playlist .lp-subtitle{font-family:var(--lp-font);font-size:1rem;color:var(--lp-dust);line-height:1.6}
+  /* The rack's own masthead rules (.lp-header/.lp-brand/.lp-title/.lp-subtitle)
+     were removed 2026-09-14 when the essay's .es-hd took over the masthead, as
+     on the other seven racks. check-dead-css.mjs named all four the same day. */
 
   /* Section labels */
   .lyss-playlist .lp-section{font-family:var(--lp-font);font-size:0.8125rem;font-weight:700;letter-spacing:0.3em;text-transform:uppercase;color:var(--lp-gold);margin:2rem 0 1rem;padding-bottom:0.5rem;border-bottom:1px solid rgba(212,160,23,0.3);display:block}
@@ -187,9 +249,7 @@
     .lyss-playlist .lp-row-artist { color: #333333 !important; }
     .lyss-playlist .lp-cat,
     .lyss-playlist .lp-section,
-    .lyss-playlist .lp-ls-section,
-    .lyss-playlist .lp-brand,
-    .lyss-playlist .lp-subtitle { color: #222222 !important; }
+    .lyss-playlist .lp-ls-section { color: #222222 !important; }
   }
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"L★S Playlist","description":"Songs in conversation with Love You Down To Your Star Stuff — cosmic, reclamatory, tender, and true.","image":"https://starstuff.earth/og-card.jpg","url":"https://starstuff.earth/ls-playlist.html","mainEntityOfPage":"https://starstuff.earth/ls-playlist.html","author":{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/"},"publisher":[{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/","logo":{"@type":"ImageObject","url":"https://starstuff.earth/og-card.jpg"}},{"@type":"Organization","name":"More Realms","url":"https://morerealms.com/"}],"isPartOf":{"@type":"WebSite","name":"Star Stuff","url":"https://starstuff.earth/"}}</script>
@@ -216,9 +276,144 @@
   </nav>
 <main id="main" tabindex="-1">
 
+  <section class="es-hd" id="masthead">
+    <span class="es-brand"><a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks Foundation</a> &times; <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a></span>
+    <h1 class="es-title">L★S Playlist</h1>
+    <p class="es-sub">Twenty-six songs in conversation with <a href="love-you-down-to-your-star-stuff.html">Love You Down To Your Star Stuff</a> &mdash; and the awkward fact underneath the whole rack: the sentence everybody credits to Carl Sagan was being sung to audiences three years before he published it.</p>
+    <span class="es-kicker">Playlist &amp; essay &middot; Sound</span>
+  </section>
+
+  <div class="es">
+
+    <!-- TABLE OF CONTENTS -->
+    <nav class="ss-toc" style="--toc-accent:#fbbf24;" aria-label="Table of contents">
+      <h2>Table of Contents</h2>
+      <ul>
+        <li><a href="#the-order-it-actually-happened-in">The order it actually happened in</a></li>
+        <li><a href="#they-are-not-the-same-sentence">They are not the same sentence</a></li>
+        <li><a href="#she-was-right-twice-about-two-different-catastrophes">She was right twice, about two different catastrophes</a></li>
+        <li><a href="#then-we-aimed-one-of-them-at-a-star">Then we aimed one of them at a star</a></li>
+        <li><a href="#what-the-rack-is-then">What the rack is, then</a></li>
+        <li><a href="#rack-david-bowie-the-whole-career-is-lydtyss">David Bowie — The Whole Career Is LYDTYSS</a></li>
+        <li><a href="#rack-cosmic-origin">Cosmic Origin</a></li>
+        <li><a href="#rack-tender-belonging-ethereal">Tender / Belonging / Ethereal</a></li>
+        <li><a href="#rack-reclamatory-affirming">Reclamatory / Affirming</a></li>
+      </ul>
+    </nav>
+
+    <section id="the-order">
+      <span class="es-num">One</span>
+      <h2 id="the-order-it-actually-happened-in">The order it actually happened in</h2>
+      <p class="es-lede">This rack is not a soundtrack we assembled for a phrase we own. Put the four dates in a line and the phrase turns out to have arrived from the other direction.</p>
+
+      <p><strong>1957.</strong> Margaret Burbidge, Geoffrey Burbidge, William Fowler and Fred Hoyle publish &ldquo;Synthesis of the Elements in Stars&rdquo; in <em>Reviews of Modern Physics</em> &mdash; the paper universally known by their initials, <strong>B&sup2;FH</strong>. It is the account of how the elements heavier than helium are built inside stars, and it is the settled science under every page on this site. Nobody set it to music.</p>
+
+      <p><strong>1969.</strong> Joni Mitchell writes &ldquo;Woodstock&rdquo; without going to Woodstock. She had a television booking that Monday and, by her own account from the stage that December, got stranded at a New York airport and watched the coverage from a hotel room instead. She was performing the song live by <strong>12 December 1969</strong>. It opens on a traveller meeting a stranger on the road and ends on a congregation: <em>we are stardust, we are golden, and we&rsquo;ve got to get ourselves back to the garden.</em></p>
+
+      <p><strong>April 1970.</strong> Her own recording arrives on <em>Ladies of the Canyon</em>. She had already given it away &mdash; &ldquo;I wrote a song for that group to sing,&rdquo; she told that December audience. &ldquo;Actually I wrote it for myself to sing.&rdquo; Both versions were in the world that spring.</p>
+
+      <p><strong>1973.</strong> Carl Sagan publishes <em>The Cosmic Connection: An Extraterrestrial Perspective</em>, and on pages 189&ndash;190 writes the sentence this entire collection is built on: <strong>we are made of star-stuff.</strong> <em>Cosmos</em> follows in 1980, and chapter nine &mdash; &ldquo;The Lives of the Stars&rdquo; &mdash; is where most people actually met it.</p>
+
+      <figure class="es-fig">
+        <svg viewBox="0 0 700 250" role="img" aria-labelledby="tl-t tl-d">
+          <title id="tl-t">Four dates: the physics, the song, the book, the series</title>
+          <desc id="tl-d">A horizontal timeline running from 1957 to 1980, drawn to scale, with four marked points. 1957, the B squared F H paper establishing stellar nucleosynthesis. 1969 to 1970, Joni Mitchell writes, performs and releases Woodstock. 1973, Carl Sagan publishes The Cosmic Connection. 1980, the Cosmos television series. The song sits between the physics and the book, roughly three years ahead of the book.</desc>
+          <line x1="40" y1="128" x2="660" y2="128" stroke="#8a86a0" stroke-width="2"></line>
+          <circle cx="60" cy="128" r="7" fill="#22d3ee"></circle>
+          <circle cx="375" cy="128" r="9" fill="#fbbf24"></circle>
+          <circle cx="464" cy="128" r="7" fill="#a78bfa"></circle>
+          <circle cx="640" cy="128" r="7" fill="#f472b6"></circle>
+          <text x="60" y="66" text-anchor="middle" fill="#f9fafb" font-family="'Atkinson Hyperlegible Next',sans-serif" font-size="17" font-weight="700">1957</text>
+          <text x="60" y="88" text-anchor="middle" fill="#c4b5d4" font-family="'Atkinson Hyperlegible Next',sans-serif" font-size="13">the physics</text>
+          <text x="60" y="106" text-anchor="middle" fill="#c4b5d4" font-family="'Atkinson Hyperlegible Next',sans-serif" font-size="13">B&sup2;FH</text>
+          <text x="375" y="176" text-anchor="middle" fill="#f9fafb" font-family="'Atkinson Hyperlegible Next',sans-serif" font-size="17" font-weight="700">1969&ndash;70</text>
+          <text x="375" y="198" text-anchor="middle" fill="#c4b5d4" font-family="'Atkinson Hyperlegible Next',sans-serif" font-size="13">the song</text>
+          <text x="375" y="216" text-anchor="middle" fill="#c4b5d4" font-family="'Atkinson Hyperlegible Next',sans-serif" font-size="13">&ldquo;Woodstock&rdquo;</text>
+          <text x="464" y="66" text-anchor="middle" fill="#f9fafb" font-family="'Atkinson Hyperlegible Next',sans-serif" font-size="17" font-weight="700">1973</text>
+          <text x="464" y="88" text-anchor="middle" fill="#c4b5d4" font-family="'Atkinson Hyperlegible Next',sans-serif" font-size="13">the book</text>
+          <text x="464" y="106" text-anchor="middle" fill="#c4b5d4" font-family="'Atkinson Hyperlegible Next',sans-serif" font-size="13">Cosmic Connection</text>
+          <text x="640" y="176" text-anchor="middle" fill="#f9fafb" font-family="'Atkinson Hyperlegible Next',sans-serif" font-size="17" font-weight="700">1980</text>
+          <text x="640" y="198" text-anchor="middle" fill="#c4b5d4" font-family="'Atkinson Hyperlegible Next',sans-serif" font-size="13">the series</text>
+          <text x="640" y="216" text-anchor="middle" fill="#c4b5d4" font-family="'Atkinson Hyperlegible Next',sans-serif" font-size="13">Cosmos</text>
+        </svg>
+        <figcaption>Drawn to scale: twelve years from the paper to the song, three from the record to the book, seven more to the television series that made it common property. The popular version of an idea does not arrive in the order that makes the neatest story.</figcaption>
+      </figure>
+    </section>
+
+    <section id="not-the-same-sentence">
+      <span class="es-num">Two</span>
+      <h2 id="they-are-not-the-same-sentence">They are not the same sentence</h2>
+      <p class="es-lede">It would be easy, and wrong, to say Mitchell said it first. She said something else.</p>
+
+      <p>Sagan&rsquo;s line is a <strong>claim about matter</strong>. It can be checked, and it has been: the calcium, the carbon, the iron. Mitchell&rsquo;s is not a claim about matter at all. <em>We are stardust</em> is the premise she opens with, not the thing she is arguing &mdash; the sentence she is actually building is an instruction about where to go next, and it lands on a garden rather than a supernova.</p>
+
+      <p>That difference is the reason this rack sits where it does. <a href="love-you-down-to-your-star-stuff.html">LYDTYSS</a> is closer to Mitchell&rsquo;s grammar than to Sagan&rsquo;s. The star stuff is not the <em>reason</em> anybody is owed anything; it is how far the loving <strong>reaches</strong>. <a href="a-promise-not-a-finding.html">Down to is not because of</a>, and a sentence that makes the matter into the warrant has quietly changed the subject from us to the universe.</p>
+
+      <div class="es-note">
+        <span class="es-note-hd">What we could not establish</span>
+        <p>Whether Mitchell got the line from the physics. It is the obvious question and it has an obvious flattering answer, which is exactly why we went looking. <strong>Her own archive records no statement from her about where <em>we are stardust</em> came from</strong> &mdash; not in the concert introductions, not in the song&rsquo;s own entry. So we are not going to tell you she read B&sup2;FH, or that she didn&rsquo;t. The dates are checkable; the influence is not, and a chain built across that gap would be a good story resting on nothing.</p>
+      </div>
+    </section>
+
+    <section id="two-catastrophes">
+      <span class="es-num">Three</span>
+      <h2 id="she-was-right-twice-about-two-different-catastrophes">She was right twice, about two different catastrophes</h2>
+      <p class="es-lede">Read the line literally &mdash; which is not how it was meant, and is where it gets interesting.</p>
+
+      <p><em>We are stardust, we are golden.</em> Those are not the same forge. The stardust half is ordinary stellar nucleosynthesis: carbon assembled in red giants, oxygen and calcium in massive stars, iron at the end of the line. Stars, doing what stars do.</p>
+
+      <p><strong>Gold is not made that way.</strong> An atom that heavy needs the r-process &mdash; a flood of free neutrons so intense it only happens in the most extreme places there are. Since the neutron-star merger observed in 2017, the best evidence points to <strong>colliding stellar corpses</strong> as the main forge. That is current best evidence rather than a closed question, and we say so here the same way <a href="elements-field-guide.html">our own field guide</a> does.</p>
+
+      <p>So a lyric written about a music festival names two entirely different kinds of catastrophe in four words, and is right about both. Not because she knew. Because the words were true.</p>
+
+      <div class="es-note">
+        <span class="es-note-hd">We got this wrong ourselves</span>
+        <p>The distinction between the two forges is not pedantry, and we know because we blurred it. <a href="lydtyss-zine.html">The LYDTYSS zine</a> once said the elements were &ldquo;forged in a <em>stellar interior</em>&rdquo; &mdash; which is wrong for exactly the r-process elements its own companion field guide credits to neutron-star mergers. It is corrected, and the correction is <a href="changelog.html">published</a>. A rack that makes a point of somebody else&rsquo;s line being more accurate than they needed it to be should say where its own was less.</p>
+      </div>
+    </section>
+
+    <section id="aimed-at-a-star">
+      <span class="es-num">Four</span>
+      <h2 id="then-we-aimed-one-of-them-at-a-star">Then we aimed one of them at a star</h2>
+      <p class="es-lede">On 4 February 2008, at four in the afternoon Pacific time, NASA stopped using its deep-space antennas to listen and used one to send.</p>
+
+      <p>The transmission was The Beatles&rsquo; <strong>&ldquo;Across the Universe,&rdquo;</strong> which is on this rack. It went out over the Deep Space Network from the Jet Propulsion Laboratory, aimed at <strong>Polaris</strong> &mdash; 431 light years away, by the figure NASA used at the time. It marked the fortieth anniversary of the day the song was recorded and the fiftieth of NASA itself.</p>
+
+      <div class="es-pull">
+        <p>&ldquo;Amazing! Well done, NASA! Send my love to the aliens. All the best, Paul.&rdquo;</p>
+        <span class="es-cite">Paul McCartney, in NASA&rsquo;s own announcement of the transmission</span>
+      </div>
+
+      <p>Yoko Ono, in the same release, called it <em>&ldquo;the beginning of the new age in which we will communicate with billions of planets across the universe.&rdquo;</em> That is a larger claim than the event supports, and it is hers rather than ours &mdash; but the plain version is strange enough. A song is pressure in air. It was turned into radio and pointed at a star whose light left before the song existed, and it will not arrive until the <strong>twenty-fifth century</strong>. Nobody who made it, sent it, or is reading this will be there when it lands.</p>
+
+      <p>That is the whole of LYDTYSS in one gesture, and it is why this section is the one the rack ends its argument on. <strong>The loving is aimed further than the lover can follow.</strong> You do not send something four hundred years out because you expect a reply. You send it because the reaching is the point.</p>
+    </section>
+
+    <section id="what-the-rack-is">
+      <span class="es-num">Five</span>
+      <h2 id="what-the-rack-is-then">What the rack is, then</h2>
+      <p class="es-lede">Twenty-six songs, four rooms, and a correction to the order we tend to tell it in.</p>
+
+      <p>It opens on Bowie because the whole career is the argument, then moves through cosmic origin, then tenderness, then the songs that take the word back. What it is <em>not</em> is a set of illustrations for a phrase we arrived at first. <strong>We are the last people to this idea, not the first.</strong> The physics was there in 1957, the singing started in 1969, the popular science caught up in 1973, and the phrase we built a collection out of came along half a century after the paper.</p>
+
+      <p>Which is the test this whole shelf is supposed to pass: take the audio away and the point goes with it. There is no version of this page that works as prose alone, because the argument is <em>when the singing happened</em>.</p>
+
+      <div class="es-refuse">
+        <p style="margin:0 0 0.7rem"><strong>Not:</strong></p>
+        <ul>
+          <li><strong>Not a claim that Joni Mitchell read the physics.</strong> We looked, in her own archive, and found nothing either way. The dates are the finding; the influence is not.</li>
+          <li><strong>Not a debunking of Sagan.</strong> He never claimed to have discovered it. He was the great populariser and said so, and being the one who made an idea common property is a real thing to have done.</li>
+          <li><strong>Not &ldquo;the artists knew all along.&rdquo;</strong> The mystic-ahead-of-the-scientists story flatters everyone and checks nothing. A true line is not evidence of hidden knowledge; sometimes the words are just true.</li>
+          <li><strong>Not the songs as decoration.</strong> If you read a note here and do not press play, we have wasted both our time.</li>
+          <li><strong>Not star stuff as the reason you are owed a place.</strong> The matter is the extent of the claim, never its warrant.</li>
+        </ul>
+      </div>
+    </section>
+
+  </div>
+
   <div class="lyss-playlist">
-    <div class="lp-header"><span class="lp-brand"><a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks Foundation</a> × <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a></span><h1 class="lp-title">L★S Playlist</h1><div class="lp-subtitle">Songs in conversation with “Love You Down To Your Star Stuff” — cosmic, reclamatory, tender, and true.</div></div>
-    <span class="lp-section">David Bowie — The Whole Career Is LYDTYSS</span>
+    <h2 class="lp-section" id="rack-david-bowie-the-whole-career-is-lydtyss">David Bowie — The Whole Career Is LYDTYSS</h2>
     <div class="lp-grid">
       <div class="lp-card c-purple"><div class="lp-meta"><span class="lp-cat">Cosmic / Alien</span><div class="lp-song">Space Oddity</div><span class="lp-artist">David Bowie · 1969</span><div class="lp-note">Alienation and the cosmos as both loss and liberation. The feeling of being untethered from Earth as a way of being free.</div></div><div class="lp-yt"><iframe src="https://www.youtube-nocookie.com/embed/iYYRH4apXDo" title="Space Oddity" allowfullscreen="" loading="lazy"></iframe></div><a class="lp-sp" href="https://open.spotify.com/track/72Z17vmmeQKAg8bptWvpVG" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"></path></svg>Spotify</a></div>
       <div class="lp-card c-gold"><div class="lp-meta"><span class="lp-cat">Alien Message / Hope</span><div class="lp-song">Starman</div><span class="lp-artist">David Bowie · 1972</span><div class="lp-note">An alien who loves you, waiting in the sky. A message of hope for the kids who don’t fit.</div></div><div class="lp-yt"><iframe src="https://www.youtube-nocookie.com/embed/rpO1U-nEgRU" title="Starman" allowfullscreen="" loading="lazy"></iframe></div><a class="lp-sp" href="https://open.spotify.com/track/0pQskrTITgmCMyr85tb9qq" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"></path></svg>Spotify</a></div>
@@ -226,7 +421,7 @@
       <div class="lp-card c-cyan"><div class="lp-meta"><span class="lp-cat">Stellar Transformation</span><div class="lp-song">★ (Blackstar)</div><span class="lp-artist">David Bowie · 2016</span><div class="lp-note">Bowie’s final album, recorded while dying. Not the bright burning kind. The collapsed kind. Still massive, still present.</div></div><div class="lp-yt"><iframe src="https://www.youtube-nocookie.com/embed/kszLwBaC4Sw" title="Blackstar" allowfullscreen="" loading="lazy"></iframe></div><a class="lp-sp" href="https://open.spotify.com/track/0Fao855T3klV3REFRFHRF3" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"></path></svg>Spotify</a></div>
       <div class="lp-card c-white"><div class="lp-meta"><span class="lp-cat">Farewell / Ascension</span><div class="lp-song">Lazarus</div><span class="lp-artist">David Bowie · 2016</span><div class="lp-note">Recorded in his final months. Bowie sings from a hospital bed, then backs into a wardrobe and out of sight. A goodbye staged as a rising, not an ending.</div></div><div class="lp-yt"><iframe src="https://www.youtube-nocookie.com/embed/y-JqH1M4Ya8" title="Lazarus" allowfullscreen="" loading="lazy"></iframe></div><a class="lp-sp" href="https://open.spotify.com/track/7rFN0DhIFPjAWG1EaHO2F0" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"></path></svg>Spotify</a></div>
     </div>
-    <span class="lp-section">Cosmic Origin</span>
+    <h2 class="lp-section" id="rack-cosmic-origin">Cosmic Origin</h2>
     <div class="lp-grid">
       <div class="lp-card c-gold"><div class="lp-meta"><span class="lp-cat">Countercultural Lineage</span><div class="lp-song">Woodstock</div><span class="lp-artist">Joni Mitchell · 1970</span><div class="lp-note">“We are stardust, we are golden.” Predates Sagan’s popularisation. A call to return to the garden — and to each other.</div></div><div class="lp-yt"><iframe src="https://www.youtube-nocookie.com/embed/ZzZTSfXcHYI" title="Woodstock" allowfullscreen="" loading="lazy"></iframe></div><a class="lp-sp" href="https://open.spotify.com/track/18o4mqgG9RmPAD8aItmvkO" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"></path></svg>Spotify</a></div>
       <div class="lp-card c-white"><div class="lp-meta"><span class="lp-cat">We Are All Made of Stars</span><div class="lp-song">We Are All Made of Stars</div><span class="lp-artist">Moby · 2002</span><div class="lp-note">The title says it directly. Moby as astronaut-outsider. Continuous with the Sagan tradition, set to electronica.</div></div><div class="lp-yt"><iframe src="https://www.youtube-nocookie.com/embed/x1rFAaAKpVc" title="We Are All Made of Stars" allowfullscreen="" loading="lazy"></iframe></div><a class="lp-sp" href="https://open.spotify.com/track/150IPC5JP6aTSp8QBVpqWv" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"></path></svg>Spotify</a></div>
@@ -236,7 +431,7 @@
       <div class="lp-card c-pink"><div class="lp-meta"><span class="lp-cat">Brain Damage / Eclipse</span><div class="lp-song">The Dark Side of the Moon</div><span class="lp-artist">Pink Floyd · 1973</span><div class="lp-note">An album about the pressures that make people mad, the moon as darkness and light at once, and the heartbeat that begins and ends it.</div></div><div class="lp-yt"><iframe src="https://www.youtube-nocookie.com/embed/k9ynZnEBtvw" title="Dark Side of the Moon" allowfullscreen="" loading="lazy"></iframe></div><a class="lp-sp" href="https://open.spotify.com/album/3cMpdE2Z4lKfVXJShcvBMW" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"></path></svg>Spotify</a></div>
       <div class="lp-card c-white"><div class="lp-meta"><span class="lp-cat">Meteor / Reckoning</span><div class="lp-song">Shooting Star</div><span class="lp-artist">Bob Dylan · 1989</span><div class="lp-note">A shooting star as the measure of a missed life and a last chance. Regret and grace crossing the sky in a single streak of light.</div></div><div class="lp-yt"><iframe src="https://www.youtube-nocookie.com/embed/bz2D5y8K87I" title="Shooting Star" allowfullscreen="" loading="lazy"></iframe></div><a class="lp-sp" href="https://open.spotify.com/track/0HiOtMrQAI9d8EWvehO8xM" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"></path></svg>Spotify</a></div>
     </div>
-    <span class="lp-section">Tender / Belonging / Ethereal</span>
+    <h2 class="lp-section" id="rack-tender-belonging-ethereal">Tender / Belonging / Ethereal</h2>
     <div class="lp-grid">
       <div class="lp-card c-pink"><div class="lp-meta"><span class="lp-cat">Longing / Return</span><div class="lp-song">Somewhere Over the Rainbow / What a Wonderful World</div><span class="lp-artist">Israel Kamakawiwoʻole · 1993</span><div class="lp-note">Longing for a place where you fit, rendered with extraordinary gentleness. Over 1.8 billion views. Longing and gratitude at the same time.</div></div><div class="lp-yt"><iframe src="https://www.youtube-nocookie.com/embed/V1bFr2SWP1I" title="Somewhere Over the Rainbow" allowfullscreen="" loading="lazy"></iframe></div><a class="lp-sp" href="https://open.spotify.com/track/4heCCxMwu4IH4bMaHLNRdg" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"></path></svg>Spotify</a></div>
       <div class="lp-card c-cyan"><div class="lp-meta"><span class="lp-cat">Dream / Fall Back Into Place</span><div class="lp-song">Space Song</div><span class="lp-artist">Beach House · 2015</span><div class="lp-note">“Fall back into place” as a belonging signal. Dreamy, cosmic, intimate. The LYSS register in music.</div></div><div class="lp-yt"><iframe src="https://www.youtube-nocookie.com/embed/RBtlPT23PTM" title="Space Song" allowfullscreen="" loading="lazy"></iframe></div><a class="lp-sp" href="https://open.spotify.com/track/7H0ya83CMmgFcOhw0UB6ow" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"></path></svg>Spotify</a></div>
@@ -249,7 +444,7 @@
       <div class="lp-card c-pink"><div class="lp-meta"><span class="lp-cat">Shoegaze / Elegy</span><div class="lp-song">Light From a Dead Star</div><span class="lp-artist">Lush · 1994</span><div class="lp-note">The title is the whole cosmology: you keep receiving the light long after its source is gone. Dream pop as persistence and loss at once.</div></div><div class="lp-yt"><iframe src="https://www.youtube-nocookie.com/embed/q3eMtIIf98U" title="Light From a Dead Star" allowfullscreen="" loading="lazy"></iframe></div><a class="lp-sp" href="https://open.spotify.com/track/1qAa04pjsqQTl2xGB3l2mw" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"></path></svg>Spotify</a></div>
       <div class="lp-card c-cyan"><div class="lp-meta"><span class="lp-cat">Ambient House / Wonder</span><div class="lp-song">Little Fluffy Clouds</div><span class="lp-artist">The Orb · 1990</span><div class="lp-note">A memory of an impossibly wide, colorful sky, looped into bliss. Awe at the ordinary heavens, stretched out and shimmering.</div></div><div class="lp-yt"><iframe src="https://www.youtube-nocookie.com/embed/8Ecdn5SGT1E" title="Little Fluffy Clouds" allowfullscreen="" loading="lazy"></iframe></div><a class="lp-sp" href="https://open.spotify.com/track/3dpCA7DiU1giuhNjlMfQDj" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"></path></svg>Spotify</a></div>
     </div>
-    <span class="lp-section">Reclamatory / Affirming</span>
+    <h2 class="lp-section" id="rack-reclamatory-affirming">Reclamatory / Affirming</h2>
     <div class="lp-grid">
       <div class="lp-card c-green"><div class="lp-meta"><span class="lp-cat">Queer / Neurodivergent Affirmation</span><div class="lp-song">Born This Way</div><span class="lp-artist">Lady Gaga · 2011</span><div class="lp-note">Explicit affirmation with cosmological framing. Unconditional love as a starting point, not a reward. LYDTYSS adjacent.</div></div><div class="lp-yt"><iframe src="https://www.youtube-nocookie.com/embed/wV1FrqwZyKw" title="Born This Way" allowfullscreen="" loading="lazy"></iframe></div><a class="lp-sp" href="https://open.spotify.com/track/6r2BECwMgEoRb5yLfp0Hca" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"></path></svg>Spotify</a></div>
       <div class="lp-card c-white"><div class="lp-meta"><span class="lp-cat">Comic / Genuinely Cosmological</span><div class="lp-song">Galaxy Song (feat. Stephen Hawking)</div><span class="lp-artist">Monty Python · 2015</span><div class="lp-note">The joke is that the universe is vast and you are small, but the effect is exhilarating. Hawking knocks Brian Cox over and sings it himself.</div></div><div class="lp-yt"><iframe src="https://www.youtube-nocookie.com/embed/XfcC6FYyL4U" title="Galaxy Song" allowfullscreen="" loading="lazy"></iframe></div><a class="lp-sp" href="https://open.spotify.com/track/6wecr3GXvi1e2Ky9eizcNt" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"></path></svg>Spotify</a></div>

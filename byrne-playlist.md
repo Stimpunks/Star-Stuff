@@ -99,7 +99,7 @@ Which is what the title of the film is, once you stop reading it as whimsy. **St
 - **Not a diagnosis.** We are not diagnosing him and we are not upgrading his hedge. He said what he said.
 - **Not celebrity as proof.** One person with a stage getting through is not evidence the system works. It is one data point about who it lets through.
 
-One — Nervous, and saying so · 1977–1979
+## One — Nervous, and saying so · 1977–1979
 
 The band as an outline of a band. Almost everything is subtracted, and what is left is legible enough to play.
 
@@ -163,7 +163,7 @@ No time for dancing or lovey-dovey: an inventory of what gets dropped when survi
 
 [▶ Talking Heads — Life During Wartime](https://www.youtube-nocookie.com/embed/jLwZvg46jms)
 
-Two — The loops · 1980–1981
+## Two — The loops · 1980–1981
 
 One figure each, held without developing, stacked. This is the section the argument rests on.
 
@@ -217,7 +217,7 @@ From *My Life in the Bush of Ghosts*, built on found recordings over loops. The 
 
 [▶ David Byrne and Brian Eno — America Is Waiting](https://www.youtube-nocookie.com/embed/fMTi73h5B_U)
 
-Three — The suit · 1983–1984
+## Three — The suit · 1983–1984
 
 The same subtraction, at scale, with the apparatus deliberately left showing.
 
@@ -261,7 +261,7 @@ The song the film's title comes from — *stop making sense* arrives inside it, 
 
 [▶ Talking Heads — Girlfriend Is Better, live](https://www.youtube-nocookie.com/embed/GMTAjgmJvYs)
 
-Four — After the band · 1985–1989
+## Four — After the band · 1985–1989
 
 The pop years, and then out into music that was never going to chart.
 
@@ -315,7 +315,7 @@ David Byrne · 1989
 
 [▶ David Byrne — Make Believe Mambo](https://www.youtube-nocookie.com/embed/wiruARgmQ34)
 
-Five — Collaborations, and the long groove · 2002–2012
+## Five — Collaborations, and the long groove · 2002–2012
 
 Two decades of working with other people, which is its own argument about how he operates.
 
@@ -349,7 +349,7 @@ David Byrne & St. Vincent · 2012
 
 [▶ David Byrne and St. Vincent — Who](https://www.youtube-nocookie.com/embed/hpPYKJAnwUo)
 
-Six — The room he ended up building · 2018–2025
+## Six — The room he ended up building · 2018–2025
 
 Twelve barefoot people, no cables, nothing hidden. Thirty-five years to arrive back at the same idea, larger.
 
@@ -373,7 +373,7 @@ From *Who Is the Sky?*, and the reason this rack does not end in the eighties. N
 
 [▶ David Byrne — Everybody Laughs](https://www.youtube-nocookie.com/embed/YM-BTJKIz0Q)
 
-Where to go next
+## Where to go next
 
 This rack is the listening companion to [The Body Understands It First](https://starstuff.earth/byrne-zine.html), Zine No. 66, which argues the entrainment case properly and spends a spread on what Byrne actually wrote about being Autistic.
 

@@ -115,7 +115,7 @@ What this rack is not saying
 - **Not** that every song here agrees with the others. “Over the Rainbow” wants somewhere else; “What a Wonderful World” wants this one; “Rainbow Stew” thinks you are being sold something. They are on the same rack because the argument is between them, not inside any one of them.
 - **Not** a claim on the Pride flag. It is a chosen set of colours, not the physical spectrum, and the Philly stripes were added precisely because a “natural” spectrum was being used to leave Black and brown queer people out. [No. 70](https://starstuff.earth/both-arcs-one-drop-zine.html) holds that line and this rack does not cross it.
 
-One — The song itself · eleven ways through it
+## One — The song itself · eleven ways through it
 
 Paul Williams and Kenneth Ascher, 1979. The verse is skeptical, the chorus is not, and nobody has ever resolved that — they just pick which half to lean on.
 
@@ -229,7 +229,7 @@ Blondie’s singer and a frog, on television. The Muppets’ standing method —
 
 [▶ Debbie Harry and Kermit the Frog - Rainbow Connection](https://www.youtube-nocookie.com/embed/h0Hd3uWKFKY)
 
-Two — The joke that agrees with the song
+## Two — The joke that agrees with the song
 
 One track, because it earns its own section: a comedy duo arriving at the essay’s thesis by the shortest possible route.
 
@@ -243,7 +243,7 @@ A song about the connections you make with people, hung on the rainbow of the ti
 
 [▶ Garfunkel and Oates - Rainbow Connections](https://www.youtube-nocookie.com/embed/MneRtx7x2vs)
 
-Three — Somewhere over · the wish, eleven times
+## Three — Somewhere over · the wish, eleven times
 
 Harold Arlen and E. Y. Harburg, 1939. The other great rainbow song, and it wants the opposite thing: not that rainbows have nothing to hide, but that there is somewhere on the far side worth reaching.
 
@@ -357,7 +357,7 @@ Another link with no artist in its text; oEmbed returned Fitzgerald. Her reading
 
 [▶ Ella Fitzgerald - Over The Rainbow](https://www.youtube-nocookie.com/embed/8WJszak4NAU)
 
-Four — The world as it is · the counterweight
+## Four — The world as it is · the counterweight
 
 The answer song, whether or not it was written as one. Not somewhere over anything — here, and already sufficient.
 
@@ -401,7 +401,7 @@ The same reading at scale — useful next to the previous track for what does an
 
 [▶ Jon Batiste - The Kennedy Center - What A Wonderful World w/ National Symphony Orchestra](https://www.youtube-nocookie.com/embed/2xypMhI6ECY)
 
-Five — Naming the colours
+## Five — Naming the colours
 
 Two songs that treat a rainbow as a thing with parts, which is what the skepticism half of this rack is for.
 
@@ -425,7 +425,7 @@ From *Here Comes Science* (2009), and the most literal track here: the spectrum 
 
 [▶ They Might Be Giants - Roy G Biv](https://www.youtube-nocookie.com/embed/Gf33ueRXMzQ)
 
-Six — I am a rainbow · the metaphor turned inward
+## Six — I am a rainbow · the metaphor turned inward
 
 At some point the rainbow stopped being in the sky and became a description of a person. These are the songs that made that move — and the reason a word in a song title can now get a first-grade concert cancelled.
 
@@ -519,7 +519,7 @@ A live splice of the cover with one of her own — worth having beside the studi
 
 [▶ Molly Tuttle - She's A Rainbow x Over The Line](https://www.youtube-nocookie.com/embed/8YLl2b4rOwY)
 
-Seven — Skepticism and wonder, back to back
+## Seven — Skepticism and wonder, back to back
 
 The two modes, one after the other, with no attempt to reconcile them. That is the method.
 

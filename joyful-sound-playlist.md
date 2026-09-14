@@ -140,7 +140,7 @@ And then the honest part, which we would rather say than have someone discover: 
 - **Not a golden age.** Punk was racist and sexist and ableist in plenty of rooms, from the start, and the people who fixed it were the ones being excluded. Telling it as a fable would erase exactly the labour that makes it worth citing.
 - **Not physics as permission.** Harmonics do not vote. The acoustics here are a rhyme with the argument, never a substitute for making it.
 
-One — The party gets its name
+## One — The party gets its name
 
 Two outsider musics told each other they were at the same party, and then behaved as if it were true.
 
@@ -194,7 +194,7 @@ From *London Calling* — a cover of a Jamaican record played by an English punk
 
 [▶ Revolution Rock — The Clash](https://www.youtube-nocookie.com/embed/07mvTzbIZok)
 
-Two — Everything brought to the front
+## Two — Everything brought to the front
 
 The gesture itself: what you were told to tuck away, moved to the outside where it can be seen.
 
@@ -258,7 +258,7 @@ The self-advocacy motto set to metal, including the part most songs leave out: w
 
 [▶ Nothing About Us Without Us — Tommy Concrete](https://www.youtube-nocookie.com/embed/x4dAWwoWbkw)
 
-Three — The door is the argument
+## Three — The door is the argument
 
 DIY is not a style. It is a claim about who is allowed to make the thing, tested at the entrance.
 
@@ -322,7 +322,7 @@ A catalogue of the conditions under which you would be liked better, followed by
 
 [▶ No Obligation — The Linda Lindas](https://www.youtube-nocookie.com/embed/hlEhXfh14Pc)
 
-Four — The body in the room
+## Four — The body in the room
 
 Where the sensory reality lives. Loud rooms are not free, and the songs about that are written from inside the overload.
 
@@ -386,7 +386,7 @@ Months stuck inside your own head, unable to connect, and the reframe at the end
 
 [▶ Roots — Grumpster](https://www.youtube-nocookie.com/embed/Omw4ST_gjfg)
 
-Five — Care is punk
+## Five — Care is punk
 
 The unglamorous half. Mutual aid, rest, and holding the door open are not the soft version of the politics; they are the politics.
 
@@ -450,7 +450,7 @@ Furman wrote it as a rallying cry, citing Abraham Joshua Heschel's line that pra
 
 [▶ Evening Prayer — Ezra Furman](https://www.youtube-nocookie.com/embed/nuUnAAUSgf0)
 
-Six — Keep on livin'
+## Six — Keep on livin'
 
 Survival, which is the floor and not the ceiling. The Stimpunks mission song sits in here.
 
@@ -524,7 +524,7 @@ One more song, one more life, one more cliff to climb. The right place to stop, 
 
 [▶ One More — Jimmy Cliff](https://www.youtube-nocookie.com/embed/bzUwsfIygA0)
 
-Listen — the whole playlist
+## Listen — the whole playlist
 
 These songs are drawn from the Stimpunks playlist *Chronic Neurodivergent Depressed Queer Punk*, which is placed in pieces across stimpunks.org and collected on the [PSA page](https://stimpunks.org/psa/). Content notes on the source playlist cover suicidal ideation, addiction, mania, depression, dysphoria, chronic illness, anxiety, overwhelm, panic, meltdown, masking, burnout and rejection sensitive dysphoria.
 
