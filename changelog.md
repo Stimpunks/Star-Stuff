@@ -32,6 +32,24 @@ New piece Revised Fact-check Site
 
 2026 · September 13
 
+## Twenty-four long essays here had no table of contents, and eight of them run past five thousand words
+
+A reader arriving from a search result landed in the middle of a document with no way to see its shape. One page on the site had a contents list; it has been made into a house component and given to every essay that earns one.
+
+SiteA map at the top of every essay, and two pages whose headings could not be linked to at all
+
+**[The page about the phrase this whole collection is named for](https://starstuff.earth/love-you-down-to-your-star-stuff.html) has carried a contents list since it shipped, and no other page here had one.** That was not a decision, it was an accident of where the page came from — and it left **twenty-four** other essays with nothing at the top saying what was inside. Measured rather than eyeballed, with the navigation and the contents list itself taken out of the count: **19 of the 25** run past three thousand words, **8** past five thousand, and the longest is **9,274**. A reader who arrives from a search result lands mid-document; a reader who wants one section has to scroll for it. The contents list is now a shared component, sitting on all **25** of them — **214** entries in all — placed after the opening passage and before the first section, where the page stops introducing itself and starts arguing.
+
+**Two pages could not have been given one without a repair first: not one of their headings carried an address.** [The difference-first frame](https://starstuff.earth/difference-first-frame.html) and [the print specification](https://starstuff.earth/print-design.html) between them had **15** headings and **zero** ids, so nothing on either page could be linked to directly. Our own search had been papering over it — every result on those two pages pointed at a guess built from the heading’s text rather than at the heading, which is a fragile thing that breaks the moment a word changes. They have real addresses now, and the search index was rebuilt to use them.
+
+**The contents list is deliberately kept out of the search index, and the page that already had one shows why.** Every line in it is a heading that is already indexed on the passage it points at, so indexing the list too produces a record made of nothing but the names of a page’s other sections — and, because it sits at the top, that record wins the position belonging to the opening of the page. The original list had never been stripped and had exactly that record. It does not any more. Nothing else in the index moved: **202** of the 205 pages are unchanged, and the three that moved are the three named here.
+
+**It very nearly shipped looking wrong, in the way this site’s shared stylesheet always goes wrong.** That sheet loads *before* each page’s own styling, so a rule written at ordinary strength loses to any page rule of equal strength — and every essay here styles its prose links and its lists. The first render drew the contents of [the design system](https://starstuff.earth/design.html) as twelve underlined gold prose links, indented by that page’s paragraph list margin: a wall of links rather than a map. The component is now written to outrank a page on purpose, like the two other shared pieces that have to, and every one of the 25 pages was rendered and measured afterwards rather than sampled — at desktop width, at phone width, and under print emulation, where the list keeps its border and goes to black ink on white.
+
+**Collection pages, the galleries and the manifesto did not get one**, and that is a judgement rather than an omission: a grid of cards is already its own contents, and a declaration read straight through is not a document you navigate.
+
+2026 · September 13
+
 ## The tool that writes our security policy could be fooled by a sentence about itself, and the reason was a Turkish letter
 
 Logged a few hours ago as a known weakness we had failed twice to repair. It is repaired now, and the cause turned out to be something this site had already written down in its own search code.

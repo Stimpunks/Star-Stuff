@@ -161,6 +161,16 @@ const EXTRACT = String.raw`(() => {
        The container class is deliberately page-specific rather than a generic
        ".entries", so this cannot start stripping a future page by accident. */
     '.whats-new-list',
+    /* The shared table of contents on the 24 essay pages (2026-09-13) is a list
+       of that page's own heading text, and every one of those headings is
+       already indexed as the heading of the record it points at — .masthead-toc
+       exactly, one page-kind over. Indexing it too would put a document's whole
+       outline into a second record made of nothing but the other sections'
+       names, and that record would sit at the TOP of the page, so it would win
+       the first-chunk position for text belonging further down. love-you-down-
+       to-your-star-stuff.html's hand-made .toc was NOT stripped before this and
+       should have been; its records change on this run for that reason. */
+    '.ss-toc',
   ].join(',');
 
   /* Blocks that sit flush against each other in the source concatenate under

@@ -303,6 +303,51 @@ The central phrase compresses through registers, each with a use:
   `check-overlap.mjs` will correctly report it as clipped unless the element is in that tool's
   `OFFSCREEN` list, which it is. Verify by keyboard, not by reading the sheet: one Tab from a
   fresh load must reveal it, and Enter must land focus on `main#main`.
+- **Every essay page with two or more section headings carries a `.ss-toc`, after the lede and
+  before the first heading (2026-09-13).** 25 pages, 214 entries. The one definition is in
+  `starstuff.css`; **don't write a page-local `.toc`** — `love-you-down-to-your-star-stuff.html` had
+  the only contents list on the site from the day it shipped, and its own rules were deleted rather
+  than kept and overridden when it became the shared component.
+
+  ```html
+  <nav class="ss-toc" style="--toc-accent:#4ade80;" aria-label="Table of contents">
+    <h2>Table of Contents</h2>
+    <ul>
+      <li><a href="#first">First section</a>
+        <ul><li><a href="#a-sub">A sub-heading</a></li></ul>
+      </li>
+    </ul>
+  </nav>
+  ```
+
+  `--toc-accent` is the page's **own `--nav-accent`** — the two pieces of furniture agree, the way
+  `--sec-accent` and `--card-color` are tinted per section elsewhere. `h2.section` entries are
+  top-level, `h3.sub` nest under the `h2` above them, and the text is the heading's with tags
+  stripped and entities kept.
+  - **The rule is deliberately over-specific (`.ss-toc.ss-toc`), for the `.ss-cobrand` reason.**
+    The shared sheet loads *before* each page's inline `<style>`, and **every essay page here
+    styles `.body-text a` and `.body-text ul` at 0-1-1** — the TOC sits inside `.body-text` on most
+    of them, so an equal-specificity shared rule loses on later-wins. Measured, not reasoned:
+    the first render of `design.html` drew all twelve entries as **underlined gold prose links**
+    indented by the page's list margin. Don't simplify it back.
+  - **It is stripped from the search index as chrome (`.ss-toc` is in `CHROME_SEL`)**, the
+    `.masthead-toc` argument one page-kind over: every line is a heading already indexed on the
+    passage it points at, and the record would sit at the *top* of the page, taking the opening's
+    chunk position. The page that already had a TOC had never been stripped and carried exactly
+    that record.
+  - **Paper keeps it** — a contents list is an outline of the document, unlike `index.html`'s
+    `.masthead-toc`, which is jump pills and means nothing on a sheet. The print block restores a
+    real `#999` border, since the translucent accent lands near-white on white.
+  - **`<nav>` is in `build-markdown.mjs`'s `DROP`**, so the 57 Markdown siblings never gained a
+    duplicate outline. That was already true; it was checked, not assumed.
+  - **A page with headings and no `id`s cannot have one**, and two did: `difference-first-frame.html`
+    and `print-design.html` had **15 headings and zero ids** between them, so every search result on
+    either was a `#:~:text=` guess. Check before writing a TOC — the ids are the deliverable, the
+    list is the easy half.
+  - **Collection pages, the five galleries/eggs (`hatchery`, `quillery`, `glimmery`, `bow-ery`,
+    `watching-animals-field-guide`) and `manifesto.html` deliberately have none.** A card grid is
+    already its own contents, and a declaration read straight through is not a document you
+    navigate. **No gate can see any of this** — nothing counts TOCs or notices a missing one.
 - **Use real headings, with ids.** A section label must be an `<h1>`/`<h2>`, not a styled `<span>`
   — a screen reader's headings rotor *is* the table of contents, and `index.html` shipped with
   **zero heading elements** until 2026-08-12, so that list came back empty on the landing page of

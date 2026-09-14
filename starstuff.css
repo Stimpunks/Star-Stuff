@@ -1091,3 +1091,53 @@ a.ss-cobrand.ss-cobrand:focus-visible { text-decoration-color: currentColor; }
 .notes-body p:last-child { margin-bottom: 0; }
 .body-text .dim { color: var(--dim); }
 .notes-body p { margin-bottom: 1em; }
+
+
+/* ── Table of contents, shared ──
+   Added 2026-09-13. love-you-down-to-your-star-stuff.html had carried a hand-made
+   .toc since it shipped and no other essay page had one, so a reader landing
+   mid-collection on a 10-heading document got no map of it.
+
+   THIS IS THE ONE DEFINITION. It is written against the --sp-* tokens rather than
+   a page's inline aliases, because those aliases differ per page and do not all
+   exist: love-you-down-to-your-star-stuff.html has --card/--border/--secondary,
+   design.html has --card but no --border and calls the same neutral --stardust.
+   A rule quoting --border would have rendered borderless on most of the pages it
+   was written for. Reading --sp-* also means the print block inverts it for free,
+   with everything else.
+
+   --toc-accent is the per-page knob, set inline on the element the way .ss-nav
+   takes --nav-accent, and it is the SAME value as that page's nav accent so the
+   two pieces of furniture agree. The plain rgba is declared first and the
+   color-mix() second on purpose: a browser that does not parse color-mix keeps
+   the fallback and gets the house violet rather than no border at all.
+
+   DELIBERATELY OVER-SPECIFIC, like .ss-cobrand and .cover-motif.cover-motif and
+   for the same reason: this sheet loads BEFORE each page's inline <style>, and
+   every essay page here styles its prose links and lists. The TOC sits inside
+   .body-text on most of them, so `.body-text a` (0-1-1) and `.body-text ul`
+   (0-1-1) both beat an equal-specificity shared rule on later-wins. Measured
+   before this was doubled: design.html drew all twelve entries as underlined
+   gold prose links, indented by the page's list margin. The doubled class takes
+   the container to 0-2-0 and its descendants to 0-2-1, which clears every
+   .body-text rule on the pages carrying a TOC. Don't "simplify" it back. */
+.ss-toc.ss-toc { background: var(--sp-card); border: 1px solid rgba(167,139,250,0.15); border-color: color-mix(in srgb, var(--toc-accent, #a78bfa) 20%, transparent); border-radius: 16px; padding: 1.5rem 1.75rem; margin: 2rem 0 2.5rem; }
+.ss-toc.ss-toc h2 { font-size: 0.8125rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--sp-muted); margin: 0 0 1rem; font-weight: 700; font-family: inherit; line-height: 1.3; }
+.ss-toc.ss-toc ul { list-style: none; margin: 0; padding: 0; }
+.ss-toc.ss-toc > ul > li { margin: 0 0 0.45rem; }
+.ss-toc.ss-toc > ul > li:last-child { margin-bottom: 0; }
+.ss-toc.ss-toc ul ul { padding-left: 1.25rem; margin: 0.35rem 0 0.6rem; }
+.ss-toc.ss-toc li { line-height: 1.5; font-size: 0.95rem; }
+.ss-toc.ss-toc a { color: var(--sp-secondary); text-decoration: none; border-bottom: 1px solid transparent; }
+.ss-toc.ss-toc a:hover, .ss-toc.ss-toc a:focus-visible { color: var(--sp-white); border-bottom-color: var(--toc-accent, #a78bfa); }
+
+/* Paper keeps the contents list — it is an outline of the document, which is
+   exactly the thing a printed long-form page wants, unlike index.html's
+   .masthead-toc (hidden in print, because a strip of jump pills means nothing
+   on a sheet). The tokens have already inverted by here, and the blunt
+   `a { color: #111 !important }` above has the link colour; what neither
+   reaches is the border, whose translucent violet lands near-white on white. */
+@media print {
+  .ss-toc.ss-toc { border: 1px solid #999999; border-radius: 0; padding: 1rem 1.2rem; }
+  .ss-toc.ss-toc a { border-bottom: 0; }
+}

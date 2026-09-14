@@ -170,7 +170,24 @@
 
     <p>Backing material for the <a href="collection-print.html">Print collection</a>, which argues <em>what</em> earns a sheet. This one covers <em>how</em> a sheet is made, and is deliberately outside the reading chain — it is reference, not a stop on the tour. For the site-wide visual language, see <a href="design.html">The Design System</a>; this page is only about the artifacts made for paper.</p>
 
-    <h2 class="section">The format</h2>
+    <!-- TABLE OF CONTENTS -->
+    <nav class="ss-toc" style="--toc-accent:#fbbf24;" aria-label="Table of contents">
+      <h2>Table of Contents</h2>
+      <ul>
+        <li><a href="#the-format">The format</a></li>
+        <li><a href="#ink-on-white-in-both-media">Ink on white, in both media</a>
+          <ul>
+            <li><a href="#borders-not-backgrounds">Borders, not backgrounds</a></li>
+          </ul>
+        </li>
+        <li><a href="#type">Type</a></li>
+        <li><a href="#two-spot-inks">Two spot inks</a></li>
+        <li><a href="#what-we-check-and-how">What we check, and how</a></li>
+        <li><a href="#take-it-and-reuse-it">Take it and reuse it</a></li>
+      </ul>
+    </nav>
+
+    <h2 class="section" id="the-format">The format</h2>
     <p>One fixed specification for every sheet. The point of a fixed format is that eight different arguments come off the printer as the same object — a rack, not a pile — and that a reader in any country gets the same artifact from the same file.</p>
 
     <div class="spec-wrap">
@@ -195,19 +212,19 @@
     </table>
     </div>
 
-    <h2 class="section">Ink on white, in both media</h2>
+    <h2 class="section" id="ink-on-white-in-both-media">Ink on white, in both media</h2>
     <p>The rest of the site is light on dark, and <code>starstuff.css</code> inverts it inside <code>@media print</code> so a zine survives being printed. The broadsides never enter that machinery: they are drawn as ink on white on screen <em>and</em> on paper, so what you see in a browser is a preview of the sheet rather than a different design that will be converted later.</p>
     <p>The reason is blunt. <strong>Browsers leave <em>Background graphics</em> off by default</strong>, so a light-on-dark page reaches paper blank — which is exactly what happened to 44 of the 46 pages on this site until somebody measured it. A broadside cannot depend on a reader finding a checkbox in a print dialog, because the whole premise is that it gets handed to people and photocopied by people who never saw the web page at all.</p>
 
-    <h3 class="sub">Borders, not backgrounds</h3>
+    <h3 class="sub" id="borders-not-backgrounds">Borders, not backgrounds</h3>
     <p>Same constraint, one level down. The registration bar across the top of each sheet is a <code>border-top</code>, not a background — because borders survive that checkbox and background colours do not. An earlier design put the cream stock in a <code>background-color</code> and a halftone in a <code>background-image</code>, and neither ever reached paper. What <em>did</em> print was the gold misregistration shadow, because it happened to be text: at 1.84:1 on white, a faint smudge. The reader got the flaw of the effect and none of its charm.</p>
 
-    <h2 class="section">Type</h2>
+    <h2 class="section" id="type">Type</h2>
     <p><strong>Atkinson Hyperlegible Next throughout</strong>, with Space Mono for labels and chrome. Atkinson was drawn by the Braille Institute for letterform distinction at exactly the small sizes a hand-out uses — the 6–9 pt range where a broadside does most of its work.</p>
     <p><strong>No display serif.</strong> Fraunces was inherited from the earlier risograph costume and went with it. It is <em>Bone Song</em>'s editorial voice, not a broadside's, and more to the point it is a high-contrast serif whose hairlines are the first thing to drop out of a photocopy or a tired laser printer — which is most of a broadside's life. Worth recording that before this was fixed, the sheets <em>loaded</em> Atkinson and rendered 0% of their characters in it.</p>
     <p><strong>The star is drawn, not typed.</strong> Atkinson has no <code>U+2605</code>, so a typed ★ silently comes from whatever font the reader's system happens to supply — measurably so: the character rendered at exactly the generic-serif advance width. For a logotype on a sheet meant to print identically everywhere, that is not good enough, so the L★S mark is an SVG path with an inner radius 0.382 of the outer, filled <code>currentColor</code> so it inherits the surrounding ink.</p>
 
-    <h2 class="section">Two spot inks</h2>
+    <h2 class="section" id="two-spot-inks">Two spot inks</h2>
     <p>An explicit exception to a house rule. <code>starstuff.css</code> flattens all five accents to near-black inside <code>@media print</code> <em>on purpose</em> — print is monochrome by default here. The broadsides keep two colours each, declared as literal hex rather than aliased to the <code>--sp-*</code> tokens, and forced through with <code>print-color-adjust: exact</code>.</p>
     <p>They have to be declared literally because <strong>the screen accents measure 1.6–2.7:1 on white</strong> and are unusable as paper ink. So each is the house hue darkened until it clears WCAG AA on white, and each sheet takes a different pair — which means the bar across the top tells you which sheet you are holding when five of them are face-down in a stack. That is the registration bar's real job.</p>
 
@@ -219,7 +236,7 @@
       <div class="ink"><span class="ink-chip" style="background:#164e63;"></span><span class="ink-meta"><b>Cyan &middot; #164e63</b>9.1:1 &middot; Water &amp; Air faces, BGUTI verso</span></div>
     </div>
 
-    <h2 class="section">What we check, and how</h2>
+    <h2 class="section" id="what-we-check-and-how">What we check, and how</h2>
     <p>For about a year, both of the original broadsides said &ldquo;two-sided single sheet&rdquo; in their own copy, and both were lying. Measured by printing to PDF and counting pages: <strong>the L★S sheet came out as three sides on US Letter and two on A4</strong> — a different physical object depending on the reader's country — and <em>Six Ways</em> came out as four sides on both. Nothing in the repository could see it, because the checks that existed measured whether ink was legible, not whether it landed on the page.</p>
     <p>Three committed tools now run before a sheet ships. Each exists because something shipped broken in a way the others could not detect.</p>
 
@@ -247,7 +264,7 @@
       <p>The rule this leaves us with: <strong>run the gates, then look at the thing.</strong> The gates catch what they were built to catch, and the next fault will be of a kind nobody has written a gate for yet.</p>
     </div>
 
-    <h2 class="section">Take it and reuse it</h2>
+    <h2 class="section" id="take-it-and-reuse-it">Take it and reuse it</h2>
     <p>The whole specification is four numbers and two rules: <strong>190 × 259 mm at 9 mm margins</strong>, ink on white in both media, borders rather than backgrounds for anything that must survive to paper, and two inks darkened until they clear AA on white. Everything else is editorial.</p>
     <p>The sheets are <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>, the tools are in <code>tools/</code>, and the whole repository is public. If you make broadsides for your own community with this, that is the intended outcome, not a tolerated one — and you will not need our colours, only the method.</p>
 
