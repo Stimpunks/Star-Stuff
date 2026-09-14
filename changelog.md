@@ -32,6 +32,22 @@ New piece Revised Fact-check Site
 
 2026 · September 13
 
+## Our design page said this site depends on Google’s font servers. Our privacy page said it doesn’t. The privacy page was right.
+
+A sentence that stopped being true on 9 September and stayed up for four days, plus four more places carrying the same dead claim — two of them as instructions telling the next person to put the dependency back.
+
+Fact-checkTwo pages on one site disagreeing about whether it phones Google
+
+**[The design system](https://starstuff.earth/design.html) opened by saying every artifact here is one self-contained file *“with no dependencies beyond Google web fonts”*.** On 9 September the four typefaces were moved onto this domain, precisely because that dependency was handing every reader’s address to Google before a word appeared — and [the privacy page written that same day](https://starstuff.earth/privacy.html) says so at length. The design page was not updated with it. For four days the site told readers two different things about itself, and **the page still claiming the dependency is the page whose whole subject is how the thing is built**.
+
+**It was swept rather than patched, because fixing only the instance somebody noticed is how a correction inherits the original defect.** Four more copies of the claim were live: the repository README and the working notes both still specified what *“the Google Fonts request must be”*, down to the weight range — **instructions for reintroducing the exact third-party request the privacy page says is gone** — a decision-log entry still listing Google fonts as the one permitted dependency, and a comment in one of the checking tools naming the Google stylesheet as an expected cross-origin fetch. All five corrected. The lesson each carried was kept: the old font request asked for a weight range the typeface does not publish, so it returned an error and no font at all, and *nobody noticed for weeks because the font was installed on the machine doing the checking*. That is about verification, not about Google, and it outlives the mechanism.
+
+**The replacement claim was checked against Google rather than against our own notes.** Saying the self-hosted files are the same set Google used to serve is a provenance claim, and our working notes asserting it are not evidence for it. The site’s own font request URLs were recovered from the commit before the move, fetched from Google as they stood, and compared face by face against what this site now ships: **20 against 20, identical** in family, style, weight range and character subset, with nothing added and nothing lost. The four families are [OFL 1.1](https://openfontlicense.org/) and unmodified, each licence shipped beside the files.
+
+**What was deliberately left alone is the other half of this.** The privacy page’s *“until 9 September 2026, every page loaded its typefaces from…”*, the migration account further down the design page, and every earlier entry on this page are all correctly in the past tense. They are dated records of what was true when written, and editing them backwards would be tidying away the evidence — which is the opposite of what this page is for. Only claims still written in the present tense were touched.
+
+2026 · September 13
+
 ## Twenty-four long essays here had no table of contents, and eight of them run past five thousand words
 
 A reader arriving from a search result landed in the middle of a document with no way to see its shape. One page on the site had a contents list; it has been made into a house component and given to every essay that earns one.

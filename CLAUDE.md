@@ -2079,9 +2079,12 @@ node tools/check-classes.mjs --verbose           # every finding, not the first 
   `.cssRules` — the rules themselves — and a `file://` page treats its own linked stylesheet as
   cross-origin and throws `SecurityError`; `--allow-file-access-from-files` does not lift it. So
   `tools/serve.mjs` is spawned on its own port and the pages are read over `http://127.0.0.1`.
-  A **same-origin** sheet that still will not open is `UNREAD`; the Google Fonts sheet is expected
-  to be unreadable and is counted separately, because treating it as fatal would make every page
-  UNREAD and treating a blocked local sheet as fine would report every class on the page as dead.
+  A **same-origin** sheet that still will not open is `UNREAD`; a genuinely cross-origin one is
+  expected to be unreadable and is counted separately, because treating it as fatal would make
+  every page UNREAD and treating a blocked local sheet as fine would report every class on the
+  page as dead. That counter existed for the Google Fonts sheet and **now reports 0 on every
+  page**, since the fonts are self-hosted — so a non-zero value means a page has taken on a
+  third-party stylesheet, which is why it is still there.
 - **The baseline is 0, and getting there found 25 real defects across 12 pages — no false
   positives.** Eleven vestigial `col-text`/`col-diagram` on a zine that stacks by single-column grid
   rather than the house flex block; a `.card-moment` on **`index.html`**, copied from a collection
@@ -2297,14 +2300,18 @@ node tools/check-forced-colors.mjs --verbose       # every finding, not the firs
 
 ## Design system
 
-- **Font URLs must be verified, not assumed.** Atkinson Hyperlegible Next publishes weights
-  **200–800** on Google Fonts. The correct request is
-  `family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800`. Asking for `200..900`
-  returns **HTTP 400 with zero `@font-face` rules**, so every visitor silently falls back to
-  `system-ui` — and you will not notice locally if the font is installed on your machine, which is
-  exactly how it shipped unnoticed. After changing any Google Fonts URL, `curl` it and confirm
-  `@font-face` blocks come back; better, load the page and check the woff2 actually downloads.
-  (Fraunces legitimately uses `200..900` — the range is per-family.)
+- **There is no Google Fonts URL any more, and this bullet is the reason it must not come back.**
+  All four families are self-hosted in `fonts/`, declared once in `starstuff.css`, since
+  2026-09-09; a page carries no font `<link>` and no preconnect. **The historical fault, kept
+  because the lesson outlives the mechanism:** Atkinson Hyperlegible Next publishes weights
+  **200–800**, the site requested `200..900`, and Google returned **HTTP 400 with zero
+  `@font-face` rules** — so every visitor silently fell back to `system-ui`, on a typeface chosen
+  precisely because it was drawn for readers the standard face fails. It shipped unnoticed for
+  weeks because **the font was installed on the machine doing the checking**. (Fraunces
+  legitimately uses `200..900`; the range is per-family, which is what made the wrong one look
+  right.) **The transferable rule: verify a face is reaching readers by watching the woff2
+  download on a loaded page, never by reading the declaration** — self-hosting changed where the
+  file comes from and not one thing about that.
 - **Typeface:** Atkinson Hyperlegible Next (max legibility). *Bone Song* also uses Fraunces and
   Space Mono for editorial voice; the injected footer nav uses Space Mono.
 - **Palette** — the canonical tokens live in `starstuff.css` as `:root { --sp-* }` (single source

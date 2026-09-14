@@ -162,8 +162,11 @@ const COLLECT = String.raw`((cfg) => {
      scan that missed @media would report the entire print block as dead. */
   const selectors = [];
   let blocked = 0;   // same-origin sheet we should have been able to read — fatal
-  let foreign = 0;   // genuinely cross-origin (Google Fonts) — expected, and carries
-                     // only @font-face, so it has no class selectors to contribute
+  let foreign = 0;   // genuinely cross-origin — expected, and carries no class
+                     // selectors to contribute. This counted the Google Fonts
+                     // sheet until 2026-09-09; the fonts are self-hosted now, so
+                     // it reports 0, and a non-zero value means a page has taken
+                     // on a third-party stylesheet. Kept for exactly that.
   const walk = (rules) => {
     for (const r of rules) {
       if (r.selectorText) selectors.push(r.selectorText);

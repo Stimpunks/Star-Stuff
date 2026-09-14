@@ -816,7 +816,9 @@ commit evidence, not necessarily when the call was made.
 - **(pre-log) — Git repo is the source of truth; deploy by push to `main` via Netlify.** No
   build step, static files served as-is. The stale Netlify/Drive folder is ignored.
 - **(pre-log) — Every artifact is one self-contained HTML file.** No dependencies beyond
-  Google fonts; each reachable at its own path.
+  Google fonts; each reachable at its own path. **Superseded in part, 2026-09-09:** the fonts
+  were the dependency, and they are self-hosted now — no third-party request before a page
+  draws, video embeds excepted. The one-file rule itself is unchanged.
 - **(pre-log) — The register table is canonical.** LYDTYSS / LYSS / LUSS / L★S / ★stuff, each
   with a fixed register and use (see CLAUDE.md).
 - **(pre-log) — Keep the two Cavendish senses distinct.** The banana is the monoculture

@@ -20,7 +20,7 @@ One typeface chosen for legibility, five accents held at near-uniform lightness,
 
 ---
 
-Every artifact here is a **single self-contained HTML file** with no dependencies beyond Google web fonts — no build step, no framework, no JavaScript required to read a word. That constraint is the first design decision, and most of the others follow from it. A zine should be one file you can save, print, fork, or hand to someone.
+Every artifact here is a **single self-contained HTML file** with **no third-party dependency** — no build step, no framework, no JavaScript required to read a word, and nothing fetched from anybody else’s server before a page draws. That last clause is newer than the rest: until 9 September 2026 this said *no dependencies beyond Google web fonts*, and the fonts were the dependency — every reader’s address went to Google before a word appeared. The four families are served from this domain now. The pages carrying video embeds remain an exception, and [the privacy page](https://starstuff.earth/privacy.html) states it rather than rounding it down. That constraint is the first design decision, and most of the others follow from it. A zine should be one file you can save, print, fork, or hand to someone.
 
 Accessibility isn't a layer applied at the end. It is the thing that decides the palette.
 
@@ -48,7 +48,9 @@ STIMPUNKS FOUNDATION · ZINE NO. 1 · SPREAD 3 / 7
 
 Two other faces earn their place. **Space Mono** carries every eyebrow, label, page counter, and colophon — a monospace voice for the machinery around the text, deliberately unlike the prose so it never competes with it. **Fraunces** appears where a piece needs an editorial register rather than a documentary one; *Bone Song*, *Underground*, and *You Were Never One Thing* are set in it with Space Mono, and use no Atkinson at all.
 
-The migration, and the bug it uncovered
+**All four families are self-hosted**, twenty woff2 files in `fonts/`, declared once in `starstuff.css` — the exact set Google was serving, with the same subsets and the same `unicode-range` values, because hand-picking subsets is how a self-hosting pass loses a glyph nobody meets until a reader does. All four are OFL 1.1 and unmodified, each licence shipped beside the files. No page carries a font `<link>` or a preconnect; adding one back would restore the third-party request the privacy page says is gone.
+
+The migration, and the bug it uncovered — both from when the fonts still came from Google
 
 The collection ran on two versions of the face for a while: 18 pages on **Atkinson Hyperlegible Next** (the 2025 release, which adds five weights, a variable format, and support for over 150 languages), 26 still on the original, and 3 — the Fraunces-set trio above — on neither. All 44 Atkinson pages now load Next. Switching cost nothing in layout: the same measuring string set at 16px came out 286.97px before and 286.78px after, and across 126 measured text blocks not one changed height, width, or line count.
 

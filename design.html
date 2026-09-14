@@ -317,7 +317,7 @@
 
   <div class="body-text">
 
-    <p>Every artifact here is a <strong>single self-contained HTML file</strong> with no dependencies beyond Google web fonts — no build step, no framework, no JavaScript required to read a word. That constraint is the first design decision, and most of the others follow from it. A zine should be one file you can save, print, fork, or hand to someone.</p>
+    <p>Every artifact here is a <strong>single self-contained HTML file</strong> with <strong>no third-party dependency</strong> — no build step, no framework, no JavaScript required to read a word, and nothing fetched from anybody else&rsquo;s server before a page draws. That last clause is newer than the rest: until 9 September 2026 this said <em>no dependencies beyond Google web fonts</em>, and the fonts were the dependency &mdash; every reader&rsquo;s address went to Google before a word appeared. The four families are served from this domain now. The pages carrying video embeds remain an exception, and <a href="privacy.html">the privacy page</a> states it rather than rounding it down. That constraint is the first design decision, and most of the others follow from it. A zine should be one file you can save, print, fork, or hand to someone.</p>
 
     <p class="claim">Accessibility isn't a layer applied at the end. It is the thing that decides the palette.</p>
 
@@ -374,8 +374,10 @@
 
     <p>Two other faces earn their place. <strong>Space Mono</strong> carries every eyebrow, label, page counter, and colophon — a monospace voice for the machinery around the text, deliberately unlike the prose so it never competes with it. <strong>Fraunces</strong> appears where a piece needs an editorial register rather than a documentary one; <em>Bone Song</em>, <em>Underground</em>, and <em>You Were Never One Thing</em> are set in it with Space Mono, and use no Atkinson at all.</p>
 
+    <p><strong>All four families are self-hosted</strong>, twenty woff2 files in <code>fonts/</code>, declared once in <code>starstuff.css</code> &mdash; the exact set Google was serving, with the same subsets and the same <code>unicode-range</code> values, because hand-picking subsets is how a self-hosting pass loses a glyph nobody meets until a reader does. All four are OFL 1.1 and unmodified, each licence shipped beside the files. No page carries a font <code>&lt;link&gt;</code> or a preconnect; adding one back would restore the third-party request the privacy page says is gone.</p>
+
     <div class="callout callout--gold">
-      <div class="callout-label">The migration, and the bug it uncovered</div>
+      <div class="callout-label">The migration, and the bug it uncovered &mdash; both from when the fonts still came from Google</div>
       <p>The collection ran on two versions of the face for a while: 18 pages on <strong>Atkinson Hyperlegible Next</strong> (the 2025 release, which adds five weights, a variable format, and support for over 150 languages), 26 still on the original, and 3 — the Fraunces-set trio above — on neither. All 44 Atkinson pages now load Next. Switching cost nothing in layout: the same measuring string set at 16px came out 286.97px before and 286.78px after, and across 126 measured text blocks not one changed height, width, or line count.</p>
       <p>The sweep turned up something worse than a split. Every page requesting Next asked Google Fonts for a <code>200..900</code> weight range — but Next only publishes <strong>200–800</strong>, so the request returned <strong>HTTP 400</strong> and no <code>@font-face</code> rule at all. Those pages had been quietly falling back to <code>system-ui</code> for every visitor who didn't happen to have the font installed locally, which is to say almost all of them. A typeface picked specifically because it was drawn for readers the standard face fails was not reaching those readers. Corrected to <code>200..800</code>; the woff2 now actually downloads.</p>
     </div>
