@@ -240,6 +240,26 @@
   Cache-Control: public, max-age=604800
   Content-Type: text/plain; charset=utf-8
 
+# edit.js (2026-09-13). NOT SHIPPED TO READERS, and it is listed here precisely because
+# that is the easy thing to forget: no page on this site loads it, it arrives from a
+# bookmark, and an asset with no cache policy on a file that states one for every other
+# asset reads as an oversight rather than as a decision.
+#
+# max-age=0 with must-revalidate, like the markup and the .md siblings rather than like
+# the fonts. Only the handful of people holding the bookmark ever fetch it, once per
+# editing session, so the saving from caching it is nil — and the cost is not. The
+# refusals ARE the file: which quotations, citations, epistemic grades and cards it
+# declines to touch. A week-old copy is a copy whose refusals are last week's, and the
+# failure mode is a contributor rewording something the current version would have
+# stopped. That is the wrong side to be stale on.
+#
+# Content-Type stated for the reason it is stated on the fonts: Netlify infers .js
+# correctly today, and a script served as octet-stream is refused by script-src with
+# nothing useful in the console.
+/edit.js
+  Content-Type: text/javascript; charset=utf-8
+  Cache-Control: public, max-age=0, must-revalidate
+
 # The RSS feed. Netlify serves .xml as application/xml, which every reader accepts,
 # but application/rss+xml is what a feed actually is — and it is what makes a browser
 # offer to subscribe rather than dump the markup on screen. Charset stated explicitly:

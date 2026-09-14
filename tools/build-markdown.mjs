@@ -185,7 +185,13 @@ const BLOCK = new Set(['p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ul', 'ol', 'li'
 const esc = (s) => s.replace(/([\\`*_[\]<>])/g, '\\$1');
 const abs = (href) => {
   if (!href) return '';
-  if (/^(https?:|mailto:|tel:|#)/.test(href)) return href;
+  /* Anything already carrying a scheme is left alone. `javascript:` joined the list on
+     2026-09-13, when design.html gained the editor bookmarklet: without it the origin
+     was prefixed onto the scheme and the .md published
+     `https://starstuff.earth/javascript:(function()…`, which is not a link to anything.
+     A generated file an agent is meant to trust cannot carry an address that does not
+     resolve. Same shape of gap as any scheme not on this list — add it here. */
+  if (/^(https?:|mailto:|tel:|javascript:|#)/.test(href)) return href;
   return SITE + href.replace(/^\.?\//, '');
 };
 

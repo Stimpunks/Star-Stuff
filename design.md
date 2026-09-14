@@ -1,7 +1,7 @@
 ---
 title: "Design System"
 url: "https://starstuff.earth/design.html"
-updated: "2026-09-10"
+updated: "2026-09-13"
 description: "The Star Stuff design system: Atkinson Hyperlegible, a five-accent palette on a violet-cast near-black, full-opacity body text at 18.84:1, and a starfield in pure CSS. Built accessibility-first, printable, and credited — including what it borrowed from Solarized and what it deliberately threw out."
 collection: "Notes & Rationale"
 licence: "CC-BY-SA-4.0"
@@ -267,6 +267,40 @@ Only the [changelog](https://starstuff.earth/changelog.html) was correct. The [L
 | **og-card.jpg** | The 1200×630 link-unfurl card shared by every page. |
 
 Everything is linked by relative URL, which is what lets any page be saved, moved, or served from a subdirectory without breaking. Each page tints the shared nav by setting one custom property — `--nav-accent` — on the nav element, which is the whole theming API.
+
+## Changing the words, without editing HTML
+
+There is no content management system here and there is not going to be one. The three that would otherwise fit — Decap, Sveltia, TinaCMS — are all editors over a *content model*: collections of files with named fields. This site has none. A zine is one self-contained file carrying its own starfield, its own cover composition measured at two viewports, its own palette aliases, and, if it is a field guide, its entries as JavaScript objects. There are no fields to put in a schema — which is the same reason every collection here is a page that argues rather than a folder that sorts.
+
+What a contributor actually needs is much smaller: change some words without editing raw HTML. That is `edit.js`, and **nothing on this site loads it.** A normal visit fetches it never. It arrives from a bookmark you make yourself, which is why it costs a reader nothing on a site that self-hosts twenty font files to avoid a single third-party request.
+
+[★ Edit this page](javascript:(function()%7Bvar%20s=document.createElement('script');s.src=location.origin+'/edit.js';document.body.appendChild(s);%7D)();) **Drag this to your bookmarks bar.** Do not press it — on this site it will not run, and that is the security policy working rather than failing. Our `script-src` carries a hash for every inline script on the site, and CSP Level 3 makes a browser discard `'unsafe-inline'` the moment a hash is present. A `javascript:` URL needs precisely that keyword, so pressing this logs a refusal and does nothing. Dragging it is not running it, so dragging still works.
+
+Then open any page here and press the bookmark. If your browser refuses to run bookmarklets on a page carrying a content policy — some have, and **nobody has yet tested this site in Safari** — paste this one line into the browser console instead. It needs no exemption from anything, because loading a script from this same origin is something the policy allows outright:
+
+`(function(){var s=document.createElement('script');s.src=location.origin+'/edit.js';document.body.appendChild(s);})()`
+
+Change what you like, press **Copy my edits**, and paste the result to Ryan or Helen, or into a Claude session. **It cannot save, and that is the design rather than a shortfall** — saving from a browser needs a token sitting in the page, which is the account problem the CMS question was trying to avoid. What you get instead is a patch: the exact text before and after, block by block, which either matches the file or fails loudly.
+
+**It writes nothing to your device, and that is a deliberate difference from our sister site.** Queering Earth's editor keeps a key in local storage so a half-finished edit survives a reload. This one does not, because [our privacy page](https://starstuff.earth/privacy.html#nothing-on-your-device) makes an absolute claim and then invites you to check it — and one storage call in this file would make that page false by the exact test it proposes. So edits live in memory and your browser warns you before you lose them. A policy you can check is worth more than a convenience.
+
+What it refuses to edit, and why that is the point of it
+
+**Quotations, and every attribution attached to one.** Pull-quotes, citations, source lines, the line beneath a quotation that names who said it. The failure this site is organised against is not an invented source — it is a *tightened* one, a sentence trimmed to fit with the attribution left attached. A tool that let anybody reword a mounted quotation in two clicks would be a machine for producing exactly that. Every quotation here is traced to a primary and logged in `FACTCHECK.md`; a wording changed in a browser has no such trace behind it.
+
+**Colophons.** They hold the sources and the credits, which is why the search index keeps them and strips almost everything else that repeats on every page.
+
+**Every epistemic grade.** *Documented*, *contested* and *leap* on a chain; *verified* and *contested* on the Wire; the five readiness tiers on a Trigger. A convenience tool that promotes a contested joint to a documented one in a single keystroke is a laundering machine, and that notation is the whole reason the chains are worth reading.
+
+**Cards.** A card's words are read by `build-derived.mjs` to write [What's New](https://starstuff.earth/whats-new.html), the feed and `llms.txt`, and indexed by the search builder. Editing one goes stale in two generators at once — more than a per-block patch can honestly carry.
+
+**Field-guide entries.** Those guides build their entries from JavaScript objects, so the words live inside a quoted string rather than in any block of HTML. A patch could not say where they are, and one apostrophe in the wrong place would close the quote and take the whole guide down.
+
+**Covers, tables and the masthead.** A cover is a measured composition, and changing the words moves the title wrap underneath the ornaments. A table here is a ledger — a contrast floor, a palette, a set of readiness grades — and a ledger you can edit in a browser is not a ledger, so no cell of one is editable at all. The Stimpunks × More Realms pairing reads the same on every page, so it is not changed on one.
+
+Each of these says why where you try it, and every refused block carries a dotted outline so you can see what is off-limits before you press it. **It also flags any edit that touches a figure**, because every count in our prose is a lead rather than a fact, and no check we run can read one.
+
+Measured rather than assumed, the way everything else on this page is. `tools/check-edit-ui.mjs` injects the editor under the real security policy on ten pages, one for each shape this site takes, then checks the contrast of every surface it draws against the lightest ground here, that no control is under 44×44 or overlapping another, that the refusals actually fire, and that a page which armed nothing says so rather than passing quietly. It found two faults in the first draft that no amount of reading would have: every readiness grade on a Trigger was editable, because the refusal looked upward for a container and this site puts its grades *inside* paragraphs — and on the card pages a refused block never explained itself at all, because a card is a link and pressing one navigated away.
 
 Reuse it
 

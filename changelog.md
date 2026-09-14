@@ -1,7 +1,7 @@
 ---
 title: "Changelog"
 url: "https://starstuff.earth/changelog.html"
-updated: "2026-09-11"
+updated: "2026-09-13"
 description: "What changed and when in the Star Stuff collection — every zine and field guide as it was added, every substantial revision, and every fact-check and attribution audit, including the errors we found in our own work and how we fixed them."
 collection: "Notes & Rationale"
 licence: "CC-BY-SA-4.0"
@@ -29,6 +29,24 @@ We braid real science with ideas credited to named thinkers, so the facts and th
 The working guidelines and the full per-piece ledger live in [FACTCHECK.md](https://github.com/Stimpunks/Star-Stuff/blob/main/FACTCHECK.md). If you spot an error, [open an issue](https://github.com/Stimpunks/Star-Stuff/issues) or reach us at [stimpunks.org](https://stimpunks.org). **Corrections are mutual aid.**
 
 New piece Revised Fact-check Site
+
+2026 · September 13
+
+## You can now change the words on a page without editing HTML — and there is a list of what it will not let you change
+
+A bookmark that makes a page editable and copies out a patch for somebody to apply. It cannot save, nothing on the site loads it, and the most important part of it is the list of things it refuses to touch.
+
+SiteAn editor that cannot save, and will not touch a quotation
+
+**There is no content management system here and there is not going to be one.** The three that would otherwise fit are all editors over a set of files with named fields, and nothing here has fields: a zine is one file carrying its own starfield, its own cover composition, and — if it is a field guide — its entries as JavaScript objects. What a contributor actually needs is much smaller, so that is what was built. [The colophon explains how to install it](https://starstuff.earth/design.html#changing-the-words), and publishes in the same breath what it declines to edit, so that a reader wondering whether this site lets people quietly reword a quotation gets the answer without having to ask.
+
+**It refuses quotations, every attribution attached to one, and every colophon**, because the failure this collection is organised against is not an invented source but a tightened one — a sentence trimmed to fit with the attribution left attached. It also refuses **every epistemic grade**: the *documented*, *contested* and *leap* markers on a chain, the verification grades on the Wire, the readiness tiers on a Trigger. A convenience tool that promoted a contested joint to a documented one in a single keystroke would be a machine for producing exactly the thing the notation exists to prevent. Each refusal says why, where you try it.
+
+**It writes nothing to your device, and that is a departure from the tool this one is modelled on.** The equivalent on our sister site keeps a key in local storage so a half-finished edit survives a reload. Ours does not, because [our privacy page](https://starstuff.earth/privacy.html#nothing-on-your-device) says that nothing at all is written to your device and then invites you to check that claim against the source. One line in this file would have made that page false by the exact test it proposes, so the editor holds your edits in memory and your browser warns you before you lose them.
+
+**Two faults were caught by measuring it rather than by reading it, and both were the same mistake.** Every readiness grade on a Trigger was editable, because the refusal looked upward for a container and this site writes its grades *inside* paragraphs. And on the pages built from cards, a refused block never explained itself at all — a card is a link, so pressing one navigated away instead. A design borrowed from another site does not arrive already fitted to this one.
+
+**And writing about it broke something.** A note in the new stylesheet used the words for an opening script tag, as prose, inside a comment — and the tool that generates this site's security policy read those words as a real script, hashed a stretch of the page that is not one, and lost the real one inside it. That is this repository's oldest recurring fault, committed while documenting a defence against it. The prose was rewritten; the underlying weakness in the tool is written down, unfixed, because the two obvious repairs each broke a live page when they were tried.
 
 2026 · September 13
 
