@@ -346,6 +346,17 @@ See *Co-branding* below.
   all**, so the added caption would have rendered as centred browser default mid-page; check for a
   *bare* `caption` selector before adding one, and note that grepping `caption` matches
   `.diagram-caption`, which is how that check went wrong the first time.
+- **THE UPPERCASE TRAP IS BIGGER THAN CAPTIONS, AND IT COST A FACTOR OF 1,000 ON A LIVE PAGE.**
+  `text-transform: uppercase` on `&micro;` yields **Greek capital Mu (U+039C)**, which in Space
+  Mono is indistinguishable from a Latin M — so No. 83's two measurement cells read
+  **"0–70 MM FROM ROOT"** where the source said µm, on the one number the zine turned on. **All
+  eight gates passed it twice and none was wrong to:** it is a *glyph substitution performed by
+  CSS at paint time over correct source text*, so the markup is well formed, the class is live,
+  nothing collides, and a wrong character has exactly the same contrast as a right one. Grep the
+  source and it looks perfect. **The house's uppercase micro-type classes are `.measure-label`,
+  `.eyebrow`, `.diagram-caption`, `.cover-issue`, `.spread-footer-left`, `.series-num` and
+  `.colophon-h`** — any cased symbol dropped into one is silently rewritten. Spell the unit out
+  (*microns*), or take the value out of the uppercase class.
 - **Every page carries a skip link, and it is the first thing in `<body>`** (added 2026-09-09,
   from a specification.website audit). WCAG 2.4.1 Bypass Blocks, Level A, and we had **zero of
   197 pages** carrying one, from the first page on 2026-07-17 to 2026-09-09: the `.ss-nav` cluster is six controls — home,
@@ -564,6 +575,13 @@ and it is one external script, so the CSP hash list is untouched.
   **`check-markup.mjs` passes it clean, exit 0** (measured 2026-08-18: the nesting check matches `<a>`/`<button>`
   by name, and `details` only counts as a block element, which fires only inside a `<p>`). Nothing gates this;
   it is on you.
+- **NEVER PUT AN `<a>` INSIDE A `.card-desc`.** Write the reference as `<em>Field Guide No. 12</em>`
+  or as plain text. Anchors cannot nest, so the parser closes the card's own anchor at the inner
+  one and everything after it falls out of the wrapper — the `collection-print.html` fault that
+  `check-markup.mjs` exists for, and the only gate that can see it, because by the time a DOM
+  exists the parser has repaired it and `document.querySelectorAll('a a')` returns **zero**. It
+  was hit twice in one session on 2026-08-14, which is what retired "something I'll remember" as
+  a control.
 - **Seven collection pages already had a lead line — `.card-moment` — and the tagline must not
   restate it.** Easter Eggs, Field Guides, Foundations, Notes, Print, Sound and Start Here carry one
   on 62 cards, and it was doing the tagline's job before the tagline existed. Deriving both from the
@@ -646,6 +664,87 @@ and it is one external script, so the CSP hash list is untouched.
   the wrong tool rather than a failure). Count the sheets by hand, and read the characters-per-page
   spread, not just the total.
   Reasoning and the rejected shared-sheet option are in `DECISIONS.md`.
+
+### Spread layout, and the column nobody measures
+
+- **Don't default every spread to `.spread-2col`.** The two-column grid earns its keep only when
+  both columns carry comparable weight. When the prose runs long the half-width text column grows
+  to 1,200–1,500px against a facing diagram of ~300px of art, vertically centred in that tall
+  cell — so the figure lands well off the first screen under a wall of white. Use
+  `.spread-1col` with the figure below (`bone-song`, `eternal-sunshine`, `lydtyss`,
+  `neurodiversity-field-guide`, `underground`, `you-were-never-one-thing`; `.threads-full` in
+  `wyrd-and-weird`). Ryan's call on No. 30, and the collection was already doing it elsewhere.
+- **Measure the rag, don't eyeball it.** Column rag is how far apart the two columns' content
+  ends. Adding ~100 words to one column of a No. 58 spread took it from **139px to 578px**, where
+  that zine's other spreads run 15–410px; tightening the new paragraph to two sentences landed it
+  at 409px. **No gate can see this** — the grid stretches both cells to equal height, so the
+  shortfall is content rather than layout, and `check-overlap.mjs` measures collision, not
+  imbalance. The columns are independent flows, so prose added to one side never rebalances.
+  **Fix by tightening the new copy, never by padding the other column.**
+
+### Drawing: no gate can see what a picture means
+
+There are **1,021 inline `<svg>` holding 4,851 labels** here, and every automated check is
+structurally blind to whether a drawing depicts the thing it claims to. `check-contrast`
+measures colour, `check-overlap` measures position, `check-classes` measures the cascade — all
+three will pass a technically perfect picture of the wrong animal. **A screenshot at render size
+is the only instrument**, and it is not optional.
+
+- **Diagrams paint at roughly 1:1.** `.diagram { max-width: 280px }` (360px when `.stacked`)
+  against a typical `viewBox="0 0 260 200"`, so every shape is tiny and **a literal silhouette
+  below ~40px reads as a generic blob.** Nine decapod outlines meant to say *crab and non-crab,
+  none ranked* all read as **fish**; a stroked crab with appendages splayed evenly reads as a
+  starburst. Fill the body rather than stroking it, or drop literal depiction and put the
+  argument in the **arrangement** — a struck-through ladder beside a flat one-level row beat all
+  nine silhouettes.
+- **NAME THE DIAGNOSTIC FEATURE BEFORE YOU DRAW AN ANIMAL, AND PICK THE VIEW THAT SHOWS IT.**
+  No. 89's whale motif took five attempts and **four of them shipped a fish**: in side view a
+  horizontal cetacean fluke and a vertical fish caudal fin project identically, so the
+  silhouette collapses to the nearest common animal in the reader's head. A **plan view, from
+  above** fixed it — the notched fluke spread *crosswise* to travel, pectorals about a third of
+  the body long. Side profile is the reflexive choice and it is usually the wrong one.
+- **Read the arrows against the spread's own verb.** A basin diagram for decarcinization drew
+  its "climb out" arrows pointing *downward*. The picture contradicted the prose beside it and
+  every gate passed.
+- **LOOK AT THE PAGE OVER HTTP, NOT IN THE DESKTOP PREVIEW PANE.** Opening a page there with a
+  `file://` path renders it as a `data:` URL snapshot, and a `data:` document has no base
+  directory — so the relative `<link rel="stylesheet" href="starstuff.css">` **silently fails to
+  load**. The symptoms all read as real defects: a gradient-clipped heading renders completely
+  invisible (`-webkit-text-fill-color` computes `rgba(0,0,0,0)` with `background-image: none`,
+  because the gradient chains to `--sp-*` tokens defined only in the shared sheet), and every
+  `--sp-*`-derived variable probes as empty. **The tell is that a variable defined as a *literal*
+  still resolves.** Serve it (`node tools/serve.mjs`) instead. A screenshot taken immediately
+  after a `scroll` can also come back as bare starfield, captured mid-repaint — measure with
+  `getBoundingClientRect` before believing a gap is real.
+- **A motif is measured by the union of its painted children, never by its `<svg>` box.** A
+  motif inks a **median 30%** of its own frame, so a bounding-box probe lands on paragraphs every
+  visible mark clears — the error that published wrong artwork-overlap figures on 2026-09-12, and
+  the same one the overlap gate's own header records about its prototype.
+
+### Print, and the two blind spots in the shared inversion
+
+`starstuff.css`'s print block inverts SVG **fills** from a **hardcoded list of light literals**
+(`#f4f2fb`, `#f9fafb`, `#ffffff`, `#fff`, `#fbbf24` → `#333333`) and flattens **every stroke** to
+`#444444`. Two shapes of figure fall outside that, and **`check-contrast.mjs` passes both, rightly
+— it measures *text* against its background, and a shape fill carries no text.**
+
+- **A dark fill prints as an ink block.** A shape filled `#12122c` to read against the void
+  matches nothing in the list, so on paper it stays dark navy while the lines inside it go
+  mid-grey. *Which Distortion* passed contrast 0/206 screen and 0/196 print with the fault
+  present.
+- **A one-off accent fill does not invert, and can reverse a figure's meaning.** No. 96's sepia,
+  No. 99's rhinarium, No. 100's vortex `#8fb3f5` are not on the list and cannot be — No. 100's
+  hundred-dot figure would have printed its 92 hollow dots dark and its 8 filled dots faint,
+  saying the opposite of its own caption.
+
+The fix is a small page-level `@media print` rule, which this file already sanctions for pages
+that hardcode colours. **Tag-qualify the selectors** — `svg circle[fill="…"]`, never the bare
+`svg [fill="…"]`, which is (0,1,1) and loses a specificity race to the shared sheet's own rules
+while also reaching `<text>`:
+
+```css
+@media print { .fig svg .panel { fill: #ffffff !important; } }
+```
 
 ### Collections (seventeen pages, in five kinds plus one exception)
 
@@ -902,6 +1001,12 @@ never candidates for a register. Don't try to fold these into either table:
   format difference is the argument.* Standing rule: a subject that cannot take the apparatus gets
   a different card, not a smaller one.
 
+- **VERIFY A ZINE NUMBER AT THE FILE'S OWN `<title>`, never from a membership list.** The rows
+  in this file give a correct set of numbers in ascending order and say nothing about which file
+  carries which — and a filename gives no clue. *The Elimination of Waste* was cited as **No. 50**
+  in four places (series list, hand-off callout, colophon, both cards) while building No. 74; it
+  is **No. 43**, and No. 50 is *The Sky Was Not Regular Enough*. Before writing "No. N" for any
+  piece: `grep -o '<title>[^<]*' <file>.html`.
 - **The number says *when*. The collection says *what*. Never renumber.** Numbers are chronological
   and load-bearing elsewhere: `changelog.html` has dated public entries naming them, `FACTCHECK.md`
   is keyed by number *and* cross-references by number, and prose references have no redirect.
@@ -958,6 +1063,15 @@ never candidates for a register. Don't try to fold these into either table:
   edition, all three off the chain, with the editions carrying prev/next to *each other* instead.
   That local order through an archive is **not** a link in the site's chain, and the chain-walk
   below will not reach it, which is correct.)
+  **CHAIN POSITION COMES FROM THE NAV, NEVER FROM CARD ORDER.** To find where a new piece slots
+  in, read the `.ss-nav-next` links and find the page whose `next` leaves the collection — not the
+  last `<a class="card">` in document order. On 2026-08-27 that last card on
+  `collection-star-stuff.html` was No. 62, so No. 62 looked like the tail; No. 63's card sits out
+  of numeric order (between Nos. 45 and 46), **identically on `index.html` and the collection
+  page**, and the chain actually ran 62 → 63 → `collection-how-we-got-here.html`. Wiring from card
+  order would have inserted No. 69 into the middle of the collection and broken two links. The
+  membership map is a **set**, so `check-markup.mjs` is satisfied by a card existing anywhere on
+  the page; card order and chain order are two independent facts that only look like one.
   **Don't trust that number — measure it**, and check `prev` and `next` agree in both directions;
   inserting a page means editing its two neighbours, and a one-sided edit leaves a chain that walks
   forward correctly and breaks going back:
@@ -1065,6 +1179,35 @@ folders at all", "Field Guides waited until there were eleven of them", "44 of 4
 blank", "90 elements across 45 pages", the "66 pages" of the badge pass, "40 numerals that existed
 then" — these record a past state and are the evidence for a rule. Read the sentence's tense, and
 check the creating commit, before you touch a number in it.
+
+**AN INCREMENTED COUNT IS NOT A DERIVED COUNT, AND IT IS WORSE THAN A STALE ONE.** Adding a member,
+the temptation is to bump each prose figure by one. That inherits whatever the previous number got
+wrong with a fresher date on it, and because the edit *looks* like maintenance it buys false
+confidence. Adding No. 102, *Young Readers*' "six of the eight pieces hand the child something to
+do" was bumped to "six of the nine" by arithmetic; deriving the set from the read-aloud layers of
+all nine gives **seven**. **Derive the set, not the total** — and cross-check it against a
+*differently worded* sentence on the same page, because that page also named exactly two pieces
+with nothing, which is what proved seven and falsified six. Then sweep the neighbours: the same
+pass found two more lists on the same page out of date. **And verify the count on the page after
+the edit rather than asserting its consequence** — a `changelog.html` entry once closed *"that
+page's worked-correction count goes from seventeen to eighteen"* while the table stayed at 17 rows
+and its caption still said *Seventeen*; nothing checks a changelog claim against the page it
+describes, so it stood as a public assertion the site disagreed with. Note which *container* you
+added to: on `too-good-to-check.html` the prose worked examples and the receipts-table rows are
+counted separately, and only a table row moves the caption.
+
+**EDITING A PIECE FALSIFIES EVERY DESCRIPTION OF IT, AND THAT IS A WORSE ROT THAN A COUNT.**
+Revising *Bone Song*'s poem removed the "the universe doesn't pathologize / storms are not
+disorders" stanzas — after which **No. 1's own refusals still said "the poem says the universe does
+not pathologise its own variation,"** and No. 95 described that removed argument as No. 1's in four
+places, including its own refusals and its numbering note. **All nine gates pass a reference like
+this**: the sentence stays grammatical, the link resolves, the markup is valid, the words are
+indexed. The claim is simply no longer true — and unlike a stale number, a prose description of
+another page's argument gives no signal at all that it needs re-reading. **After changing what a
+piece *argues* — not merely how it is worded — grep the site for the removed claim's distinctive
+phrases and for the piece's own name, and re-read every hit.** Start with the edited page itself:
+its refusals, colophon and cross-spread references all describe the version that existed before you
+touched it.
 
 ### Co-branding (Stimpunks Foundation × More Realms)
 
@@ -2234,6 +2377,17 @@ node tools/check-overlap.mjs --verbose           # every finding, not the first 
   how a real clip disappears by acquiring a `position`. **And read the report as per-element, not
   per-page:** it did *not* fire on `index.html` or `ls-broadside.html` among those seven, so the
   same fault looked like a problem with five particular pages.
+- **A KNOWN, UNFIXED BLIND SPOT: the clip walk starts one element too high.** `check-overlap.mjs`
+  begins the clip-ancestor walk at `el.parentElement`, where `el` is already the text node's own
+  parent element — so **the element the text actually lives in is never asked about its own
+  `overflow`.** Put `overflow-x: auto` on a text-bearing element and the walk skips past it to
+  `<body>`: 417px of text a reader can simply scroll to reports as `clipped`, and the escape
+  counter does not rise. Found 2026-09-13 adding a `<code class="ss-console">` to `design.html`.
+  **It has never fired on a live page**, because nothing here puts `overflow` on a text-bearing
+  element — the wide tables all use a `.tbl-wrap` div several levels above the `<td>`, which the
+  walk reaches correctly. `el.parentElement` → `el` looks like the whole fix and looks right for
+  the *hidden* case too; it was not shipped because **a gate change on this repo owes the
+  before/after sweep**, and the same day showed what a casual one costs.
 - 205 pages × 2 viewports in ~5 min. Chrome and Node 22+; local dev tool, Netlify does not run it.
 
 
@@ -2582,6 +2736,39 @@ node tools/check-forced-colors.mjs --verbose       # every finding, not the firs
   (Damian Milton), and ethodiversity (Ombre Tarragnat).
 - Many zines carry a **"Not:" refusals set** — explicitly naming the traps the piece refuses
   (e.g. the superpower/inspiration and extraction framings). Preserve this convention.
+- **A BROADSIDE CARRIES NO HEDGES AND NO NEGATIONS.** Ryan's ruling, over two passes: panels
+  reading *"It answers to being twisted, not merely pressed — measured in 1957, far too quietly
+  to feel"* came back **"so hedged they have no power or poetry,"** and then **"I'd rather avoid
+  any negations on the broadside."** A poster is read at three metres off a wall; one that says
+  what it is *not* has spent its few square inches arguing with an opponent who is not in the
+  room. The hedge belongs in the sources block, the zine, `FACTCHECK.md` and `changelog.html` —
+  never in 20-point type. **Make the claim *stronger* until it is both accurate and unhedged**,
+  by two moves that work: pick a harder verifiable fact instead of qualifying a soft one, and
+  **give a value claim a subject** — *we call it beautiful* cannot be read as a derivation from
+  nature the way *it is the beauty of star stuff* can, and so it needs no disclaimer. One
+  exception: a negation carrying *meaning* rather than caution stays (`not deficit`).
+- **A YOUNG READERS DEMONSTRATION IS DESIGNED AFTER READING THE PRIMARY, NEVER FROM THE INTUITION
+  THAT MADE THE PIECE SOUND GOOD.** No. 100 was proposed with *drop a same-size paper circle and
+  watch the solid one fall faster*; Cummins et al. (*Nature* 562, 2018) killed it — a solid disc
+  giving the same drag at the same speed is **38% smaller** than the pappus, so a same-size
+  circle has *more* drag and at ~20× the mass lands first regardless. The real observable
+  difference is **steadiness, not speed**, which is also the paper's actual finding. The
+  collection's own rule is that an imperative a child follows and gets nothing from teaches them
+  the book was wrong, so a demonstration that quietly proves something else is worse than none —
+  and it is the one defect whose only reviewer is five years old. No gate can see it.
+
+### A word to keep out of currency
+
+**Do not write *drapetomania* on any page, including to correct it.** It circulates on
+"beautiful untranslatable words" lists glossed as a wistful urge to run away. It is not a mood
+word: it was coined in 1851 as a fabricated medical diagnosis for enslaved people who escaped,
+with beating prescribed as the cure. **Ryan's instruction, 2026-08-29 — keep it out of
+currency**, because repeating it even to correct it is what keeps it circulating; Helen removed
+it from the *Words* booklet once it was flagged, so the source is clean and a Star Stuff page
+naming it would put it back into a channel that no longer carries it. **The *How We Got Here*
+option was considered and is closed.** The repo greps to **zero** occurrences of the word and of
+the physician's name; keep it that way, and re-check with a repo-wide grep after any build
+drawing on an aesthetic-word source.
 
 ### The "Cavendish" naming trap (do not conflate)
 
@@ -2675,6 +2862,62 @@ a colophon on one zine, and the sentence had already corrected itself.
   essay quotes it in full as the sentence that got it wrong, and deleting the evidence would be the
   opposite of what `changelog.html` is for. Full argument: `a-promise-not-a-finding.html`.
 
+## Before you propose a piece
+
+The `propose-zine` skill runs the process; these are the four things that have actually gone
+wrong doing it.
+
+- **GREP THE ARGUMENT, NOT THE TOPIC — two pieces can share a claim with disjoint nouns.**
+  Building No. 61 (dinosaurs, taxonomy) every topic search came back clean: `dinosaur`, `fossil`,
+  `paleontolog`, `sauropod`, `neoteny` hit almost nothing. **No. 40 *Five Sigma*** already owned
+  *"a threshold is a number somebody chose"*, Fisher's `p = 0.05` and his word *convenient*, "the
+  threshold is not one number" and "run the dials on a child" — most of the proposed spine, with
+  **not one word overlapping the dinosaur vocabulary**. Search in the words the *argument* would
+  use (`threshold`, `cut-off`, `somebody chose`, `arbitrary`), and read colophon series-lists,
+  which are the site's index of claims.
+- **A draft handed over is a starting point, not a checked artifact.** Proposals arrive as
+  finished spread-by-spread outlines written in a collaborator's own Claude session — Helen
+  Edgar's, and David Gray-Hammond's (NeuroHub Community). **Verify the founding fact before
+  building:** the *Companion Stars* (No. 46) draft opened on "most stars aren't solitary, they're
+  in binary or multiple systems," which is the smoothed popular retelling and is false — Lada
+  (2006) titled his paper *Most Stars Are Single*. Building it as written would have shipped the
+  exact failure the collection exists to argue against; the correction became the opening spread,
+  and the same error was sitting in our own Field Guide No. 5. **And the territory a draft
+  re-runs can be the proposer's own** — one 2026-08-30 pitch's entire spine was No. 28
+  *Wyrd & Weird*, the proposer's own guest zine.
+- **An essay's citations do not transfer; re-trace them.** Any of us writing an essay cites the
+  normal way — through the route we actually read. *Mossy Minds & Monotropism* credits Kimmerer's
+  *Gathering Moss* but cites **The Marginalian** as the route, and links two books to Goodreads;
+  its Mary Oliver epigraph appears in two renderings, neither matching the original (*"Attention
+  without feeling, I began to learn, is only a report."* — the three dropped words turn something
+  learned into a rule pronounced). None of that is sloppiness; it is normal essay practice. But
+  this site's standard is primary-only, so **a zine built on one of our own essays inherits that
+  chain unless somebody re-traces it** — quoting Kimmerer via Popova via an essay is three
+  removes, the same shape as the Baldwin/King misattribution this site already shipped once.
+- **Four standing seedbeds, all of which have already grown pieces.** Grep them before proposing
+  anything in their territory, and check whether a recent zine has already **spent** the idea:
+  - **`monotropic-galaxy-field-guide.html`** — twenty constellations Helen named for parts of her
+    Autistic self, each with a `brief` in *her* words and a `sky` note that is **ours**. Two have
+    become zines (Emergence Point → No. 45; Gravity Well → No. 71) and **eighteen are unspent**;
+    Gravity Well's sky note contained the whole of No. 71's brief from the day the guide shipped.
+    Both took a *new* title rather than reusing hers. `grep -n "sky:" monotropic-galaxy-field-guide.html`.
+  - **The Pattern Language of Neurodivergent Life** (`stimpunks.org/glossary/…`) — *Lone Wolfing*,
+    *Dolphining*, *Penguin Pebbling*, *Parallel Play*, *Samefood*, *Aloneness*. Animal-named,
+    already in the house voice, each inviting a real-biology companion; FG 14 came straight out of
+    *Lone Wolfing*. Read the source page's **own** citations before searching outward.
+  - **The *Words* booklet** (Helen Edgar, Marion McLaughlin, Felicity Goodhall, 2025) — credit all
+    three. It is a Canva export with **no text layer**, so `pdftotext` returns zero bytes and
+    looks like a successful read; render and OCR it. Its ~48 words sort into four kinds and the
+    difference decides whether a word is usable: traceable to a person, a real word carrying an
+    aesthetic-list gloss, coined online and unattested, or a living Indigenous concept rather than
+    a mood word. See *A word to keep out of currency* above.
+  - **Tsing, *The Mushroom at the End of the World*** (2015; the full PDF is in SKS, read it
+    there). The division of labour is already set: Helen's *Mossy Minds* takes the **hope**
+    reading, No. 8 argues monoculture is **fragile** — and Tsing's harder inverse, that
+    monoculture *worked* and alienation was an engineered input rather than a bug, is **unspent**.
+    Her Hiroshima matsutake opening is `PLAUSIBLE, unverified at source`: her own endnote says
+    *"I have not yet found it."*
+
 ## Fact-checking & attribution
 
 Every piece makes factual claims — scientific findings and attributed quotes/ideas. Getting
@@ -2710,6 +2953,130 @@ them right matters more than shipping fast, and you must record that you checked
   and typo or styling passes don't. **Name corrections plainly:** what we got wrong, what's
   right, who caught it. Publishing our own errors is the point of the page, not an embarrassment
   to bury. The `ship-zine` skill holds the markup conventions.
+
+### Reaching the primary — six routes that work when the obvious one doesn't
+
+*Aggregators are leads, not citations* is the rule; this is how the rule is actually satisfied.
+**Going to the primary is not only risk management** — on 2026-08-29 every reachable secondary
+paraphrased Tsing's Mintz citation as the plantation being "a synthesis of field and factory,"
+and the page itself (p. 47) makes a **priority** claim rather than a transmission one, which is
+a harder and better claim than the gloss. **Check primaries offensively, not just defensively.**
+
+- **An out-of-copyright source: grep the scan yourself.** One `curl` of
+  `https://archive.org/download/<id>/<id>_djvu.txt`, seconds, nobody's help needed. On No. 51
+  every lead repeated the same nine words — *penumbra, coined by Kepler, 1604* — and one
+  "authoritative" source had the physics flatly wrong. The 778 KB OCR of *Ad Vitellionem
+  Paralipomena* held the coinage **in the act of happening**: `quod est inter KE, NM penumbra
+  dicatur`. **The secondary tells you the fact; the primary tells you why it matters.**
+- **A source that seems to dead-end: read the page that cites it, don't search around it.**
+  A secondary quoting a primary usually links it inside the blockquote. Building No. 54 the
+  colophon, `FACTCHECK.md` and the changelog all shipped "we have not linked Schaber's first
+  post" — and the 2022 Stimpunks page we were already citing quotes and links the original
+  tweet directly. **Declaring a source unreachable is itself a published claim.**
+- **A paywalled paper: metadata routes still answer.** `api.crossref.org/works/<DOI>` (authors
+  in order, online-vs-print dates, often a deposited abstract; and
+  `api.crossref.org/journals/<ISSN>/works?…` finds a paper from journal + date alone);
+  PubMed `efetch` with `rettype=abstract` (full author list, per-author affiliations, "Update
+  of <bioRxiv DOI>" cross-references, batchable); **Europe PMC** `resultType=core`, the one
+  place that reliably gives `firstPublicationDate`; arXiv and PMC for full text.
+- **An official's words: the institution publishes them.** `usun.usmission.gov` carries every
+  US Explanation of Vote in full, same day — it 403s to WebFetch and `curl` with a browser user
+  agent gets it. `documents.un.org/api/symbol/access?s=<SYMBOL>&l=en&t=pdf` returns the real
+  resolution PDF, while `docs.un.org` and `undocs.org` return a language-selection shell that
+  **looks like a fetch that worked**.
+- **A claim about what a document covers: download the PDF and count.** `pdftotext -layout` +
+  `grep -oiw`. On *Six Principles and a Room* this turned a soft claim into a hard one — in
+  6,825 words of the BACP Ethical Framework 2018, *client* appears 173 times, *environment*
+  once, *systemic/structural/institutional* zero. It also caught the thing the essay was about
+  to get wrong: a **2026** replacement had been published mid-draft, so the honest finding
+  became *where the step stopped* rather than *the code is blind*. Two WebFetch passes over the
+  same page mentioned neither. State the method and the word count on the page.
+- **A modern book behind an aggregator: ask.** Ryan and Helen own the books and will photograph
+  the page. On No. 49 the aggregator's *Hogfather* text had dropped Death's small capitals, the
+  italic on *become*, and the lines immediately above — which turned out to be the piece's
+  central braid. **Read the whole page image, not the highlighted span**: the facing column of
+  a Sagan spread carried his admission that he had *no* inspirational science teachers, which
+  reframed the quote the request was about.
+
+### Grading traps — five ways a check confirms the wrong thing
+
+- **A search run to *check* a claim can return the claim back, rewritten as findings.** Verifying
+  a viral horned-lizard video, a search summary produced prose about "reduction in fire ant
+  density in specific corridor zones" that **no paper says**, sourced to a content farm mirroring
+  the video's own script — which then 403'd, so the laundering was visible in the summary and
+  unreachable at the source. This is worse than an aggregator: an aggregator misattributes a real
+  quotation, this manufactures a finding in the register of research prose.
+- **A genus-level identification is not a species finding, and the trap is symmetric.** Heuring
+  et al. (*Sci. Rep.* 9, 2019) report *Solenopsis* at 1.2–8.5% of Texas Horned Lizard diet —
+  *Solenopsis* is the fire ant genus, but it also contains many native species, so the paper
+  claims no *S. invicta* and neither can we. The same number could have been spent in **either**
+  direction, and *a number that can be argued both ways from the same data supports neither*.
+  Fecal, gut-content, bait-station and camera-trap papers routinely stop at genus because that is
+  what the method bears. Say what the paper resolved, and stop.
+- **One review can carry both framings.** Carter et al., *Bioelectricity* 3(4) 2021, states bone
+  piezoelectricity correctly — shear, collagen fibres slipping past each other — and, four pages
+  earlier, the compression gloss that *Bone Song* carried for seven weeks and corrected. So
+  checking a claim against *a* secondary can confirm either answer, and a match proves nothing
+  about which one the primary said. When a correction comes out of a primary, grep the
+  secondaries you used for **both** framings; if one holds both, say so on the page — it is the
+  strongest available argument for reading primaries.
+- **Use of a term is not its provenance.** A study that uses and defines a phrase is not part of
+  that phrase's origin. The *spiky profile* was nearly re-credited to Doyle (2020) because hers
+  is the wording everyone quotes, it had a DOI, and her name appeared nowhere in the repo — the
+  site's existing attribution, **Damian Milton building on Francesca Happé**, was right. The
+  reasoning that produces this error looks *more* rigorous than the correct answer, because it
+  swaps a community attribution for a peer-reviewed citation. *This name is absent from our
+  pages* is evidence of nothing.
+- **Re-check the fact you most enjoy, in our own pages.** FG 11 had shipped `truth: 'tool use,
+  planning, self-recognition'` for corvids — the magpie mirror mark-test result **failed
+  replication** (Soler et al., *J. Comp. Psychol.* 134(4), 2020; the social and self-directed
+  differences reproduced, the mark test did not), and the original (Prior et al., 2008) was two
+  of five birds with the authors' own caution that the sample was too small.
+
+### Our own claims are the unchecked ones
+
+Both of these shipped on pieces where **every external source had been graded.**
+
+- **Verify the founding anecdote too.** No. 103 was built from Ryan's account of a Texas
+  schoolyard — *"some classmates and I took turns **looking** at a Horny Toad"* — and spread ten
+  shipped saying **"the thing those children did is now illegal."** The statute names three acts,
+  *pick up, touch, or possess*; looking is on none of them. Ten PDFs had been re-read, a
+  paywalled paper's numbers deliberately withheld and a genus-level count refused as evidence —
+  and the anecdote went onto the page and then got *embellished*, because it felt like ours to
+  paraphrase.
+- **The subject may have declined the grievance.** When a piece is built on *this person was
+  wronged*, check whether they have said so — and be ready for the opposite, at length, in the
+  primary you are already citing. No. 109 was commissioned as *Jocelyn Bell Burnell was robbed of
+  the Nobel*; in "Petit Four" (*Ann. N.Y. Acad. Sci.* 302(1), 1977) — the same speech supplying
+  every other fact in the zine — she gives **four reasons she should not have shared it**, ending
+  *"Finally, I am not myself upset about it."* Every fact was right and the **frame** was the
+  problem: advocacy written on someone's behalf against their stated position. On a site that
+  writes about people who were wronged, that is a standing hazard.
+- **And the error can be inside your own caveat.** On one Glimmer Wire amendment the two worst of
+  six errors were ours, both inside hedges whose whole job was catching someone else's overreach:
+  we convicted a press release of overclaiming by misreading a paper's title (the subject is
+  *restored clearance*, not the impairment), and we opened a Hall-effect entry describing the
+  **ordinary** Hall effect while the paper is about the **anomalous** one — reproducing the
+  release's conflation in the act of complaining about it. Parse the title's actual subject.
+- **Say what the *shipped page* could not reach, not what the session struggled with.** A 403 or
+  a missing PDF that was resolved before publication is a fact about the build; putting it on the
+  page inflates process into disclosure and quietly flatters us. Keep: a source still unread at
+  ship time, a figure confirmed only at an institution's release. Ryan, 2026-09-04 — *"a record of
+  refusal for something that never shipped reads like unnecessary noise."*
+
+### Every embed is resolved before it ships, and resolving is not the same as playing
+
+The Sound collection's rule. Never hand-write or guess a YouTube id.
+
+- **Resolve** by scraping the search page and pairing each `videoRenderer`'s `videoId` with the
+  `title` and `ownerText` **inside the same block** — a global regex over the page misaligns ids
+  and titles and silently gives you the first id for every song. A plausible guessed id once
+  resolved to Living Colour rather than Talking Heads, and no gate can see a wrong embed.
+- **oEmbed answers identity, NOT existence.** On 2026-09-05 two cards on a new rack read *Video
+  unavailable*; both had passed the oEmbed check the day they shipped and **both still passed
+  it** — it returns HTTP 200 with the correct title and channel for a video that no longer plays.
+  All the gates were blind and each was right to be; a reader found it. Check the property the
+  reader depends on: `yt-dlp --skip-download --print '%(playable_in_embed)s|%(age_limit)s'`.
 
 ## Reference material (`reference/`)
 
