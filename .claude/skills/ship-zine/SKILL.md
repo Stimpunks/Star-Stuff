@@ -1,11 +1,14 @@
 ---
 name: ship-zine
-description: Publish a Star-Stuff zine change end to end. Use when Ryan says "ship it", "ship it for me", "commit and push", or otherwise signals a change is ready to go live. Verifies the render, wires the zine into index.html / sitemap.xml / prev-next nav, updates FACTCHECK.md and changelog.html, then commits and pushes.
+description: Publish a Star-Stuff zine change end to end. Use when Ryan or Helen says "ship it", "ship it for me", "commit and push", or otherwise signals a change is ready to go live. Verifies the render, wires the zine into index.html / sitemap.xml / prev-next nav, updates FACTCHECK.md and changelog.html, then commits and pushes.
 ---
 
 # ship-zine
 
-Ryan's shorthand for "finish and publish." Scope depends on what changed.
+The house shorthand for "finish and publish." Scope depends on what changed.
+
+**Two people work in this repo now.** Read `CONTRIBUTING.md` before the first ship of a session:
+the pull-rebase-recheck order, the number claim, and what to do with a conflicted derived file.
 
 ## New or restructured zine (full pipeline)
 1. **Verify the render.** Serve locally (`python3 -m http.server <port>`) and open the zine
@@ -147,8 +150,36 @@ Ryan's shorthand for "finish and publish." Scope depends on what changed.
    ```bash
    node tools/build-icons.mjs
    ```
-14. **Commit & push.** `git add` the touched files; commit with a descriptive heredoc message;
-   `git push`.
+14. **Rebase, re-derive, then push.** Two people push to `main`, so the tree you built against
+   is not necessarily the tree you are pushing onto:
+
+   ```bash
+   git pull --rebase
+   node tools/check-derived.mjs --write   # all five, in dependency order
+   node tools/check-derived.mjs           # and confirm
+   ```
+
+   **A rebase silently invalidates every derived file** and produces no conflict doing it: your
+   `search-index.json` cannot find the zine that landed while you worked, `feed.xml` does not
+   list it, and `_headers` has no CSP hash for its inline script — which on a paged zine is a
+   dead pager on a live page. Re-derive after *every* rebase, not only after a conflicted one.
+
+   **Re-check the zine number here too**, before the commit:
+
+   ```bash
+   grep -ho 'Zine No\. [0-9]\+' *.html | sed 's/Zine No\. //' | sort -n | tail -1
+   ```
+
+   If yours is taken, renumber now — the cover `.cover-issue`, the `.cover-corner-num`, the
+   `<title>`, both cards, the `FACTCHECK.md` row and the changelog entry. After a push the URL
+   is live and the number is quoted where no redirect reaches. The **second** push renumbers.
+
+   **A conflicted derived file is never resolved by hand** — `git checkout --ours <file>`, then
+   `--write`. `search-index.json` is 6.1 MB on one line and `.gitattributes` makes git refuse
+   to merge it rather than splice two JSON documents into one that parses and is wrong.
+
+   Then `git add` the touched files, commit with a descriptive heredoc message, and `git push`.
+   See `CONTRIBUTING.md`.
 
 ## Small edit (fast path)
 Fact-check the touched claims → log it in `changelog.html` if it changes what a piece *claims*
@@ -165,7 +196,8 @@ dark forced palette, and one palette on its own proves nothing
 baseline is 0, so there is no reason to skip it on any edit that touched HTML
 → **always run `node tools/check-derived.mjs`** (or `--quick` for the three fast ones) — page text,
 a card tagline, an inline script or a heading all invalidate something generated
-→ `git add` → commit → `git push`. Don't re-propose or widen scope.
+→ `git pull --rebase` → `node tools/check-derived.mjs --write` → `git add` → commit → `git push`.
+Don't re-propose or widen scope.
 
 ## Changelog
 
@@ -199,8 +231,9 @@ passes do not.
   already do this, and the spec says to prefer them.
 - Never invent that something renders — actually open it in the browser first.
 - If a Netlify deploy later fails with `Permission denied (publickey)` / "Could not read from
-  remote", that's infra (Netlify can't clone the repo), **not** a code bug — flag it to Ryan
-  to reconnect the repo / deploy key rather than editing files.
+  remote", that's infra (Netlify can't clone the repo), **not** a code bug. Flag it to Ryan,
+  who holds the Netlify and GitHub settings, to reconnect the repo / deploy key — not a thing
+  to fix by editing files.
 - Keep the browser-paged view and the `@media print` / `@page` rules in `starstuff.css` in sync.
 - **Print before shipping.** Browsers omit background graphics by default, so a page that
   doesn't invert for print goes to paper blank. New pages get the inversion free *only* if they

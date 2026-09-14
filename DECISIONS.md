@@ -166,6 +166,45 @@ Decisions still to make. Move to **Settled** with a date once resolved.
 
 ## Settled
 
+- **Star Stuff becomes a two-contributor repo — settled 2026-09-14, by Ryan.** Helen Edgar gets
+  her own checkout and her own Claude session, and **both she and Ryan push directly to `main`**,
+  which deploys. Helen **runs the nine gates herself** rather than handing drafts over to be
+  shipped.
+  - **Why push-to-main rather than pull requests.** The alternative was Helen on branches with
+    Ryan merging, which buys Netlify deploy previews and a diff to read before anything is live,
+    and costs a review step on every piece — making Ryan a bottleneck on Helen's own work, in a
+    collaboration whose whole premise is that the two lineages carry equal weight. The
+    co-branding rule already says never shrink one collaborator to a courtesy mention; a merge
+    queue would have done exactly that in process form.
+  - **Why Helen runs the gates.** The nine gates all hold at 0 and a fault they catch is cheapest
+    the minute it is made. Handing drafts over would have put the derived files and all nine
+    checks in a queue behind one person, so a fault Helen introduced would be found by Ryan a day
+    later — which is the *unread page* failure this repo already records about tools, arriving in
+    the workflow instead. Her checkout needs Node 22+ and Chrome; `.claude/settings.json` is now
+    tracked and shared so her session is not stopped at a permission prompt for every `node
+    tools/…`.
+  - **What it cost, and what was built.** `CONTRIBUTING.md` (new) is the working agreement;
+    `CLAUDE.md` gained a *Two people work here* section; `.gitattributes` (new) stops git
+    normalising line endings — four generators byte-compare their own output, so a per-platform
+    rewrite would report STALE on a tree nobody had touched — and marks `search-index.json`
+    `-merge -diff`, because it is 6.1 MB on one line and a textual three-way merge of it either
+    conflicts unreadably or splices two JSON documents into one that parses and is wrong.
+  - **The real hazard is the rebase, not the conflict.** A `git pull --rebase` leaves every
+    derived file describing a site that no longer exists, **with no conflict and no warning**:
+    the search index cannot find the zine that landed while you worked, `feed.xml` does not list
+    it, and `_headers` carries no CSP hash for its inline script, which on a paged zine is a dead
+    pager on a live page. `check-derived.mjs` gained **`--write`** for this — it runs the same
+    five generators the gate already owns, in an explicit dependency order (page-writers first),
+    and then checks its own work. It is deliberately not a sixth `build-all.mjs`: a second list
+    of generators is a second description free to drift, which is the fault every one of those
+    generators exists to prevent.
+  - **Rejected: hand-resolving a conflicted derived file.** A copy and the thing it copies cannot
+    be reconciled by reading the copy. Take either side and regenerate.
+  - **Forward-looking instructions now say "Ryan or Helen"; dated attributions do not change.**
+    A source comment or a ledger row reading *"Ryan's call, 2026-09-10"* is a record of who
+    decided and was true when written. Editing those backwards would destroy the only record of
+    whose call a thing was — which matters *more* with two contributors, not less.
+
 - **Cover ornaments are placed per page on desktop and flowed by the shared sheet on the phone —
   settled 2026-09-12.** CLAUDE.md says cover geometry is deliberately per-page, and a rule in
   `starstuff.css` reaching 108 covers at once is a departure that needed an argument. The argument:

@@ -34,17 +34,58 @@ The central phrase compresses through registers, each with a use:
 
 ## Source of truth & deployment
 
-- **This git repo IS the source of truth.** It is cloned at `~/Documents/GitHub/Star-Stuff`.
+- **This git repo IS the source of truth.** Ryan's checkout is at
+  `~/Documents/GitHub/Star-Stuff`; Helen's is wherever she keeps repos. **Never write an
+  absolute path into a tool or a doc** — `tools/sks-search.sh`'s header records what that
+  costs, and every tool here resolves the repo root from its own location instead.
 - Pushing to `main` deploys to https://starstuff.earth/ via **Netlify**. Static files, **no build
   step** — Netlify serves them as-is.
 - There is a stale Netlify/Google Drive folder floating around. **Ignore it.** Edit here, push here.
 - **After editing files, always finish by giving the user the git commands** to ship the change:
 
   ```bash
+  git pull --rebase
+  node tools/check-derived.mjs --write
   git add <files>
   git commit -m "<message>"
   git push
   ```
+
+## Two people work here (2026-09-14)
+
+**Ryan Boren and Helen Edgar both have a checkout and both push to `main`.** Every instruction
+in this file that reads as *what Ryan wants* is now **what Ryan or Helen wants**, and a dated
+attribution — *"Ryan's call, 2026-09-10"* — is a **record of who decided**, not a claim about
+who is in the room. Don't edit those backwards; they were true when written.
+
+**[`CONTRIBUTING.md`](CONTRIBUTING.md) holds the working agreement** — setup, the push loop, and
+the three places two people collide. The parts that change what a session does:
+
+- **`git pull --rebase` before you build, and again before you push** — then
+  **`node tools/check-derived.mjs --write`.** A rebase is not a conflict and produces no
+  warning, and it still leaves every derived file describing a site that no longer exists:
+  your `search-index.json` cannot find the other person's new zine, `feed.xml` does not list
+  it, and `_headers` carries **no CSP hash for its inline script**, which on a paged zine is a
+  dead pager on a live page. `--write` (added 2026-09-14) regenerates all five in dependency
+  order and then checks its own work; it is a no-op on a current tree.
+- **Derive the zine number immediately before the commit, never when you start.** Two pieces
+  can be built as the same number on the same afternoon. If yours is taken, renumber **before
+  the push** — after it the URL is live and the number is quoted in places with no redirect.
+  The second push renumbers, not the first.
+- **A derived file that conflicts is never resolved by hand.** Take either side and regenerate.
+  `search-index.json` is 6.1 MB on one line and is marked `-merge -diff` in `.gitattributes`
+  so git refuses to splice two JSON documents into one that parses and is wrong.
+- **Walk the prev/next chain after every rebase.** Both of you adding at the tail of the same
+  collection edits the same `ss-nav-next`, and the result walks forward correctly and breaks
+  going back — the one-liner is under *the prev/next chain follows collection order*.
+- **Name who, going forward.** `DECISIONS.md` rows say *"settled 2026-08-26, by Ryan"*;
+  `changelog.html` says who caught a correction. With two contributors that is the only record
+  of whose call a thing was, so an entry without it is half an entry.
+- **`.claude/settings.json` is tracked and shared** (the gates, the generators, read-only git);
+  `.claude/settings.local.json` stays machine-local and ignored.
+
+**Per-piece credit is unchanged and stays exact** — the masthead is shared, authorship is not.
+See *Co-branding* below.
 
 ## Architecture
 
@@ -1606,7 +1647,8 @@ prove it. Second, and the real one: **it is an editorial question about the read
 experience.** A zine is paginated *reading*, not collapsed content — should Cmd+F teleport
 a reader from spread 2 to spread 14? Our own search already deep-links `#spread-N` and
 `starstuff.js` handles that, so the gap is specifically searching *within* a zine you are
-already in. That is Ryan's call, and it is recorded here rather than decided quietly.
+already in. That is a call for Ryan or Helen, and it is recorded here rather than decided
+quietly.
 
 ## Icons, the manifest, and the API catalogue (2026-09-10)
 

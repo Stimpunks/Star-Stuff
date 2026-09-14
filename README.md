@@ -342,6 +342,10 @@ To embed a piece elsewhere — such as the WordPress site — point an `<iframe>
         title="Bone Song — Stimpunks Zine No. 1"></iframe>
 ```
 
+## Working in this repo
+
+Two people build here — Ryan Boren (Stimpunks Foundation) and Helen Edgar (More Realms) — and both push to `main`, which publishes. [`CONTRIBUTING.md`](CONTRIBUTING.md) is the working agreement: setup, the pull-rebase-re-derive loop before every push, how a zine number is claimed, and the nine checks that gate a change. [`CLAUDE.md`](CLAUDE.md) holds the house conventions, [`FACTCHECK.md`](FACTCHECK.md) the attribution rules and per-piece ledger, and [`DECISIONS.md`](DECISIONS.md) what is settled and what is still open.
+
 ## Usage
 
 Open edition. **Print free. Share freely.** These artifacts are made to be reproduced, folded, and passed along. Licensed [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) — see [`LICENSE`](LICENSE).

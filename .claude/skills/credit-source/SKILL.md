@@ -1,6 +1,6 @@
 ---
 name: credit-source
-description: Attribute a concept, phrase, or coinage to its true originator across the repo. Use when Ryan says "credit X for Y", "add an attribution", "who coined this", "audit attributions", or wants to make sure someone's work isn't misattributed. Finds every occurrence, verifies the real source on the web, adds a house-style citation, and logs it in FACTCHECK.md.
+description: Attribute a concept, phrase, or coinage to its true originator across the repo. Use when Ryan or Helen says "credit X for Y", "add an attribution", "who coined this", "audit attributions", or wants to make sure someone's work isn't misattributed. Finds every occurrence, verifies the real source on the web, adds a house-style citation, and logs it in FACTCHECK.md.
 ---
 
 # credit-source
@@ -21,7 +21,7 @@ attributed to Helen.
    we have been repeating**, which is the thing you are actually auditing. It is a finding step:
    nothing it returns is a citation, and our own prior wording least of all.
 1. **Find every occurrence in this repo.** `grep -rni` the concept/phrase across Star Stuff —
-   not just the one spread Ryan pointed at. Coinages recur across zines and the ledger.
+   not just the one spread you were pointed at. Coinages recur across zines and the ledger.
 2. **Verify the real originator against the primary.** `WebSearch` + `WebFetch`, and go to the
    book/paper/essay itself. Check whether the named person actually coined it, or was themselves
    crediting someone earlier. When auditing a person (e.g. Helen Edgar), read their own writing

@@ -1,11 +1,12 @@
 ---
 name: propose-zine
-description: Propose a new Star-Stuff zine from a source link, PDF, or concept. Use when Ryan says "propose a star stuff zine based on…", "draft a zine about…", or hands over an essay/URL to turn into a zine. Grounds the concept in real sources plus the house voice and the ARLES framework, then offers a title and a spread-by-spread outline BEFORE building.
+description: Propose a new Star-Stuff zine from a source link, PDF, or concept. Use when Ryan or Helen says "propose a star stuff zine based on…", "draft a zine about…", or hands over an essay/URL to turn into a zine. Grounds the concept in real sources plus the house voice and the ARLES framework, then offers a title and a spread-by-spread outline BEFORE building.
 ---
 
 # propose-zine
 
-Ryan wants a grounded proposal and a choice of direction first — not an immediately-built zine.
+A grounded proposal and a choice of direction come first — never an immediately-built zine. That
+holds whoever is asking.
 
 ## Steps
 1. **Ground it.** Read the source thoroughly (`WebFetch` the URL/essay; read a handed-over PDF).
@@ -30,7 +31,7 @@ Ryan wants a grounded proposal and a choice of direction first — not an immedi
    (spreads, eyebrow/title, nav, colophon) and voice (neurodivergence-affirming, relational /
    solarpunk, poetic but precise).
 4. **Crosswalk if useful.** Where the source is an academic framework, map it rung-by-rung to
-   **ARLES** (the crosswalk method Ryan uses to incorporate external frameworks).
+   **ARLES** (the house crosswalk method for incorporating external frameworks).
 5. **Propose, don't build.** Present via `AskUserQuestion`:
    - 2–3 **title** options,
    - a **spread-by-spread outline** (what each spread says / shows),
@@ -38,7 +39,7 @@ Ryan wants a grounded proposal and a choice of direction first — not an immedi
      see the `credit-source` skill).
    Say plainly which claims are verified and which are still open, so the direction is chosen on
    solid ground rather than on a promising-sounding one.
-6. **Build only after Ryan picks a direction**, then hand off to `ship-zine`.
+6. **Build only after the person who asked picks a direction**, then hand off to `ship-zine`.
 
 ## Rules
 - Credit every concept to its originator from the start; don't attribute coinages unverified.

@@ -33,8 +33,22 @@
  * verbatim for detail, and its exit status decides.
  *
  * Usage
- *   node tools/check-derived.mjs           # all four
+ * --WRITE, AND WHY IT LIVES HERE RATHER THAN IN A SIXTH TOOL
+ * ---------------------------------------------------------
+ * Added 2026-09-14, when the repo gained a second contributor. After a `git pull
+ * --rebase` your working tree holds somebody else's pages beside your own derived
+ * files, and every one of those files is now a copy of something that has changed
+ * underneath it. The fix is to re-run all five, in order — and five commands is
+ * again five chances to run four. `--write` runs them, then runs the check.
+ *
+ * It is NOT a second list. The generators are the same array this file already
+ * owns; a build-all.mjs would be a sixth copy of the thing every one of these
+ * generators exists to prevent.
+ *
+ * Usage
+ *   node tools/check-derived.mjs           # all five
  *   node tools/check-derived.mjs --quick   # skip the search index (the only one needing Chrome)
+ *   node tools/check-derived.mjs --write   # regenerate all five, then check
  */
 
 import { spawnSync } from 'node:child_process';
@@ -44,6 +58,7 @@ import { fileURLToPath } from 'node:url';
 
 const REPO = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const QUICK = process.argv.includes('--quick');
+const WRITE = process.argv.includes('--write');
 
 /* Cheap first, so a stale listing is reported in a second rather than after a
    minute of headless Chrome. `chrome` marks the one that needs a browser. */
@@ -57,6 +72,72 @@ const GENERATORS = [
   { tool: 'build-markdown.mjs', writes: '57 Markdown siblings, and the rel=alternate that advertises each one' },
   { tool: 'build-search-index.mjs', writes: 'search-index.json', chrome: true },
 ];
+
+/* WRITING HAS A DIFFERENT ORDER FROM CHECKING, and the difference is load-bearing.
+   Checking is cheap-first, because the order of five independent questions does not
+   matter. Writing is not independent: two of these generators write *pages*, and two
+   others read every page.
+
+     build-derived    writes whats-new.html
+     build-changelog  writes changelog.html
+     build-csp        reads every page's inline <script> bodies -> _headers
+     build-markdown   reads every page (and sitemap.xml's lastmod) -> the .md siblings
+     build-search-index  renders every page -> search-index.json
+
+   So the two page-writers go first. Today both emit pages with no inline script and
+   no .md sibling of their own, so the cheap-first order would also happen to be
+   correct — which is exactly the kind of accident that stops being true quietly.
+   Name the dependency instead of inheriting it. */
+const WRITE_ORDER = [
+  'build-derived.mjs',
+  'build-changelog.mjs',
+  'build-csp.mjs',
+  'build-markdown.mjs',
+  'build-search-index.mjs',
+];
+
+/* A generator added to GENERATORS and forgotten here would be checked and never
+   written, which reads as a permanently stale file nobody can explain. Set equality,
+   both directions, before anything runs. */
+{
+  const declared = new Set(GENERATORS.map((g) => g.tool));
+  const ordered = new Set(WRITE_ORDER);
+  const missing = [...declared].filter((t) => !ordered.has(t));
+  const extra = [...ordered].filter((t) => !declared.has(t));
+  if (missing.length || extra.length) {
+    console.error('FAIL — WRITE_ORDER and GENERATORS disagree.'
+      + (missing.length ? `\n  in GENERATORS, not in WRITE_ORDER: ${missing.join(', ')}` : '')
+      + (extra.length ? `\n  in WRITE_ORDER, not in GENERATORS: ${extra.join(', ')}` : ''));
+    process.exit(1);
+  }
+}
+
+if (WRITE) {
+  console.log('Regenerating every derived file, in dependency order.\n');
+  for (const tool of WRITE_ORDER) {
+    const g = GENERATORS.find((x) => x.tool === tool);
+    if (QUICK && g.chrome) {
+      console.log(`  SKIP  ${tool.padEnd(24)} needs Chrome, and --quick was given`);
+      continue;
+    }
+    const started = Date.now();
+    const r = spawnSync('node', [path.join(REPO, 'tools', tool)], {
+      cwd: REPO, encoding: 'utf8', maxBuffer: 64 * 1024 * 1024,
+    });
+    const secs = ((Date.now() - started) / 1000).toFixed(1);
+    if (r.status !== 0) {
+      console.error(`  ERROR ${tool.padEnd(24)} ${String(secs).padStart(5)}s   exited ${r.status}`);
+      console.error(((r.stdout || '') + (r.stderr || '')).split('\n').filter(Boolean).slice(-14)
+        .map((l) => `  ${l}`).join('\n'));
+      console.error('\nFAIL — stopped at the first generator that could not write. The files after'
+        + '\nit in the order have not been written, so the tree is half-regenerated. Fix the'
+        + '\ncause and re-run; do not commit from here.');
+      process.exit(1);
+    }
+    console.log(`  wrote ${tool.padEnd(24)} ${String(secs).padStart(5)}s   ${g.writes}`);
+  }
+  console.log('\nNow checking what was written.\n');
+}
 
 const results = [];
 for (const g of GENERATORS) {
