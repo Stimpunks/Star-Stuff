@@ -898,6 +898,30 @@ last two were learned by breaking them.** The rules and the reasoning are in the
 - **Rules inside `@media` were not considered** — 353 of them. The same three conditions apply, plus
   the media query itself has to match, so that is a separate pass with its own verification.
 
+### Rules inside `@media` are NOT worth sharing, and that is measured (2026-09-13)
+
+The consolidation pass above deliberately skipped the 353 `@media` rules. They were then audited
+properly, and the answer is **leave them alone** — not from caution, from arithmetic.
+
+- **70% aren't duplicated at all.** Of 353 distinct (media query, selector) pairs, **248 appear on
+  exactly one page**. Only 17 reach 20 pages, and every one of those 17 is rejected. Dropping the
+  threshold to 10 pages yields **3 movable rules worth 2,379 bytes** — against a global change to
+  the shared sheet needing verification at two viewports across 207 pages. Not worth it.
+- **A FOURTH CONDITION applies here and it is the one that kills them: a media query adds NO
+  specificity.** A page's `@media` rule overrides that page's own top-level rule *only because it
+  comes later in the same stylesheet*. Move it to `starstuff.css`, which loads FIRST, and the
+  page's top-level rule now wins — the override is silently lost at exactly the width it existed
+  for. **36 of the 44 rules on ≥10 pages have their selector declared outside the media query
+  somewhere**, so this is the normal case, not an edge one.
+- **Measured, not reasoned.** A two-file fixture at 375px: with the override inline after the base
+  rule, `padding` computes to **16px**; with the identical override moved to a sheet that loads
+  first, **48px**. The base rule wins and the narrow-screen design is gone.
+- **The general lesson, which outlives this audit:** *a rule that exists to override something on
+  its own page cannot be shared, because sharing changes when it is read.* Top-level furniture is
+  shareable precisely because it is not overriding anything.
+- **If anyone reopens this:** verify at BOTH viewports. `cmp.mjs`-style computed-style diffing at
+  1280 only would call a lost 375px override clean, which is the whole failure mode.
+
 ## Search (`search.html` + `search-index.json`)
 
 Client-side search over the whole collection. No dependencies, no server, no
