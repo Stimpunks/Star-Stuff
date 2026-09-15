@@ -325,6 +325,13 @@ function buildHtml() {
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
+<!-- The icon set and the manifest, as every other page carries them. The 2026-09-10
+     icon pass swept the pages and missed this one, which is what a generated page
+     looks like from a sweep's side: a hand edit here would have reverted on the next
+     build anyway, the way the font links below did. Edit the TEMPLATE, never the page. -->
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
 <meta name="color-scheme" content="dark">
 <meta name="theme-color" content="#0a0a14">
 <link rel="canonical" href="${SITE}whats-new.html">

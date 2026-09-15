@@ -121,6 +121,12 @@ const html = `<!DOCTYPE html>
 <link rel="canonical" href="https://starstuff.earth/changelog.html">
 <meta name="description" content="${esc(desc)}">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
+<!-- The icon set and the manifest, as every other page carries them. This page had
+     them until it became a generated index on 2026-09-14; a GENERATED page reverts
+     rather than conflicts, so they belong here and not in changelog.html. -->
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
 <link rel="alternate" type="text/markdown" href="https://starstuff.earth/changelog.md">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Star Stuff · Stimpunks Foundation × More Realms">
