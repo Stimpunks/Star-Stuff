@@ -1,7 +1,7 @@
 ---
 title: "Glimmer Wire"
 url: "https://starstuff.earth/glimmer-wire-2026-09-11.html"
-updated: "2026-09-11"
+updated: "2026-09-18"
 description: "Edition three of Glimmer Wire, 11 September 2026 — the weekly graded scan behind Glimmers. Seven items filed, five held, three verified, median lag 14 days. A Jurassic soundscape of nine species each singing at its own frequency, a gut bacterium that is several ecologically separate populations wearing one name, and an American cheetah that was never a cheetah. Two papers in the same journal volume disagree about whether the universe is accelerating, and a 2022 mouse study came round again as this week’s discovery."
 collection: "Glimmer Wire"
 licence: "CC-BY-SA-4.0"

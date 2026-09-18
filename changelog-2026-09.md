@@ -29,6 +29,34 @@ The working guidelines and the full per-piece ledger live in [FACTCHECK.md](http
 
 New piece Revised Fact-check Site
 
+2026 · September 18
+
+## Glimmer Wire, edition four — four papers read end to end, and a median lag that tripled because of it
+
+Eight items filed, six held, four verified. The best reading week this scan has had, and the lag axis went the wrong way as a direct result — which is worth more than a flattering number and is explained on the page rather than smoothed.
+
+New[Glimmer Wire — edition of 18 September 2026](https://starstuff.earth/glimmer-wire-2026-09-18.html)
+
+**Four papers were read in full, all four in PubMed Central under a Creative Commons licence, which is the most this page has managed.** An experiment that builds the 2023 aperiodic monotile — a single tile shape that covers a plane and can only do it without ever repeating — into a silicon-nitride film of 372,100 holes and gets chiral diffraction off it, with a pinwheel tilt derived from the golden ratio rather than fitted. A reanalysis of ten nucleosynthetic isotope systems concluding that the Earth formed from inner Solar System material “on average, unlike that of any chondrite” — an endmember, outside the range of everything we have collected. A computational paper showing the inductive effect that every organic chemistry textbook draws as a chain of arrows reaches, in neutral molecules, about one bond. And a diffusion-MRI study of superficial white matter in 459 older adults in India, a cohort over half of whom are illiterate, in a literature whose reference range was built elsewhere.
+
+**Three more items rest on publisher-deposited abstracts** and are graded plausible for that reason: a pre-registered meta-analysis of gastrointestinal symptoms in ADHD across 23 studies, the first time anybody has pooled it; the first confirmed live mesophotic coral off Benin, presumed dead since 1964 and never revisited; and a desktop muon detector whose paper claims a component cost under $100. An eighth, satellite telemetry on saltwater crocodiles, is graded **contested** — five animals, two of the three categories holding exactly one, and a management recommendation drawn on that base.
+
+**The lag axis had its most useful week and its least flattering.** Eight items run 1 to 330 days with a median of 88.5, against 14 last week, 40.5 and 36 before that. The rise is this scan’s own doing: following the citations inside releases rather than the releases reaches papers that have been sitting in their journals for months. The 330-day item — an instrumentation paper from October 2025 — is the longest interval the axis has recorded, and it was public as an arXiv preprint 397 days ago.
+
+**One refusal is recorded because it looks like success.** PubMed Central served a reCAPTCHA challenge page at `HTTP 200` on roughly one request in three; a run that accepted the first response would have reported four unreadable papers and exited cleanly. Crossref answered its first request with `429` and served every record once the requests carried a contact address. Both are on the page by name, alongside the nineteen hosts that refused outright.
+
+Fact-checkSix held, two of them papers we wanted — and three sentences of our own cut before publishing
+
+**The hold that earns the section is a hundred-year correction whose evidence is nearly two years old.** *Textbooks may have misdrawn this basic brain structure for 100 years* rests on two papers from one laboratory: the headline finding, that unmyelinated axons are strung with 200-nanometre swellings rather than being smooth cylinders, was published in *Nature Neuroscience* on **2 December 2024** — 652 days before the release that carried it — and its companion in *Neuron* was registered 295 days ago. We read the 2024 paper in full and held the story anyway. A digest whose entire axis is *how long did that take to reach you* cannot file a two-year-old finding under a present-tense headline.
+
+**The second wanted hold is a physicists’ survey, and it was chased from this page’s own unchecked leads.** Last week’s edition listed a survey of researchers’ beliefs as “an epistemics item rather than a discovery, and possibly the most useful of the four” and did not open it. A sibling arrived this week and was traced — the release names no journal at all, and the source turns out to be an arXiv preprint found by reading the author’s own listing. Its finding is that several positions described publicly as field-wide consensus are held by narrow majorities or pluralities. Held, because a preprint read at its abstract is not a version of record, and that rule was written here last week; bending it in the first week it costs something would make it decorative.
+
+**Four more held, each for a nameable reason:** four separate semaglutide items on one feed in seven days, the loudest of which drops both words from its paper’s own title, *female mice*; a Venus moon that the paper’s title calls *hypothetical* and the headline calls swallowed — the same “parse the title’s subject” trap this page recorded against itself a fortnight ago; an exploratory crossover in 23 men whose mechanism, the fasted state, does not survive into the headline; and a genuinely extraordinary Cretaceous feather preserved in dinosaur dung, whose closing claim about which lineages survived the extinction rests on one specimen and would lose its hedge in a single retelling.
+
+**Three of our own sentences were cut before publishing rather than after, and are logged here because the ledger is where they belong.** A draft of the inductive-effect entry asserted a student count that nothing supports — an invented number, in a frame arguing against numbers fitted to expectations. A draft of the muon entry gave a flux figure without marking it as an approximate textbook value not taken from the paper. And a refusals line described the semaglutide result as “twenty female mice-months,” which is not a unit and not what the study did. None reached the site.
+
+**Where the coverage was right, said plainly:** ScienceDaily’s summary of the Earth-accretion paper — “less than two percent of Earth’s total mass, and possibly none at all” — checks out exactly against the paper’s own bound. Naming that is part of naming the misses fairly.
+
 2026 · September 17
 
 ## The Big Bang had no location, so it happened where you are sitting — and a geometry with no middle has no far end

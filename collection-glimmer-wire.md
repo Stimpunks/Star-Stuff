@@ -1,8 +1,8 @@
 ---
 title: "Glimmer Wire"
 url: "https://starstuff.earth/collection-glimmer-wire.html"
-updated: "2026-09-14"
-description: "The weekly graded scan behind Glimmers, one page per edition. Three editions so far, twenty items filed and twelve held — every one carrying its grade and, more usefully, what was actually read and what was not. The section that earns the page is Held, which lists what we declined and why. A fifth sorting axis on this site: these sort by issue."
+updated: "2026-09-18"
+description: "The weekly graded scan behind Glimmers, one page per edition. Four editions so far, twenty-eight items filed and eighteen held — every one carrying its grade and, more usefully, what was actually read and what was not. The section that earns the page is Held, which lists what we declined and why. A fifth sorting axis on this site: these sort by issue."
 licence: "CC-BY-SA-4.0"
 licence_url: "https://creativecommons.org/licenses/by-sa/4.0/"
 fact_check: "https://github.com/Stimpunks/Star-Stuff/blob/main/FACTCHECK.md"
@@ -15,7 +15,7 @@ generated_by: "tools/build-markdown.mjs, from the page's own <main> landmark"
 
 # *Glimmer Wire*
 
-A Star Stuff collection · 3 editions · weekly, Fridays · started 2 September 2026
+A Star Stuff collection · 4 editions · weekly, Fridays · started 2 September 2026
 
 A weekly read of what is going well in science and medicine, **graded before it is enjoyed**. This is the scan that sits behind [Glimmers](https://starstuff.earth/collection-glimmers.html), published with its grades showing rather than kept in a drafts folder. One page per edition, newest first, and nothing is ever deleted — including the thin weeks.
 
@@ -30,6 +30,18 @@ Nothing here is a source; it is a list of leads. What the grades mean, and why e
 ## The editions
 
 Newest first. Each card gives the tally and the median lag; the Details hold what the edition got wrong and what it could not open.
+
+### [Edition Four](https://starstuff.earth/glimmer-wire-2026-09-18.html)
+
+18 September 2026 · Glimmer Wire · 8 filed, 6 held
+
+*The week four papers opened end to end — and the longest lag the axis has recorded, 330 days.*
+
+A single tile shape that orders a plane without ever repeating, an Earth that matches no meteorite we have collected, a textbook arrow that was assumed before it was calculated, and five crocodiles that each answered the question of home differently.
+
+**Details**
+
+**The best reading week this page has had, and the median lag tripled because of it.** Four papers read end to end, all four in PubMed Central under a Creative Commons licence: the monotile diffraction experiment in *Nature Communications*, the Earth-accretion reanalysis in *Nature Astronomy*, the inductive-effect paper in the *Journal of Chemical Education*, and a superficial-white-matter study in *Alzheimer’s & Dementia* drawn from a community cohort in India. Three more rest on publisher-deposited abstracts at Crossref. **Eight items run 1 to 330 days, median 88.5**, against 14 last week — the jump is this scan following citations rather than releases, and the 330-day item was public as a preprint 397 days ago. **PubMed Central served a reCAPTCHA at `200` on about one request in three**, so a run that trusted the first response would have reported four unreadable papers and exited clean. **Six held**, two of them papers we wanted: a “hundred-year” textbook correction whose evidence is 652 and 295 days old, four semaglutide stories in seven days whose loudest is female mice, a Venus moon the paper’s own title calls hypothetical, and a physicists’ survey held only because it exists as a preprint with no version of record.
 
 ### [Edition Three](https://starstuff.earth/glimmer-wire-2026-09-11.html)
 
@@ -91,18 +103,18 @@ Splitting it costs something real and worth naming: an edition no longer sits in
 
 Four grades, and they are about *our evidence* rather than about the science. **Verified** means the primary source was read and confirmed, and the entry says so in as many words. **Plausible** means the finding is sound and the metadata confirmed, but the paper’s text was not read — and the entry names the exact refusal that stopped it, whether a paywall, a `403`, an authentication redirect or a reCAPTCHA. **Contested** means specialists disagree, or the claim outruns the method. **Held** means it could not be traced to a source that supports it, and it stays on the page anyway.
 
-That last one is why the page exists. A fact-check ledger records what we checked; a changelog records what we got wrong and fixed. Neither records *the story we decided not to tell you*, and that is usually the most interesting thing about a week — the first edition declines a hundred-whale humpback aggregation that the peer-reviewed survey of the same water contradicts, the second declines the item most on-frame for this entire site because its sourcing traces to a congress abstract, and the third holds a figure *this page itself corrected the week before*, still circulating unchanged on the wire we scan.
+That last one is why the page exists. A fact-check ledger records what we checked; a changelog records what we got wrong and fixed. Neither records *the story we decided not to tell you*, and that is usually the most interesting thing about a week — the first edition declines a hundred-whale humpback aggregation that the peer-reviewed survey of the same water contradicts, the second declines the item most on-frame for this entire site because its sourcing traces to a congress abstract, the third holds a figure *this page itself corrected the week before*, still circulating unchanged on the wire we scan, and the fourth holds two papers it wanted to file — one because its “hundred-year” correction rests on evidence 652 and 295 days old, the other because it exists only as a preprint.
 
 ## The standing refusal: this is not a citable source
 
 Nothing filed here may be promoted to a zine, a [Glimmers](https://starstuff.earth/collection-glimmers.html) entry or a card without the primary source first, a [changelog](https://starstuff.earth/changelog.html) entry and its row in the fact-check ledger. The digest is a set of *leads*. Lifting a figure out of it and printing it elsewhere would be laundering a search summary into a fact, which is the precise failure this collection was built to make visible — and which the second edition committed, then published about itself.
 
-Two of the three editions have been amended after publication, and the amendments are on the pages rather than in a footnote. The second edition’s is the instructive one: re-run against the primaries, it upgraded one item, corrected all six, and the two sharpest corrections turned out to be *ours* rather than the coverage’s — we had misread a paper’s title, and described a physics result using the wrong physics. [Too Good to Check](https://starstuff.earth/too-good-to-check.html) names the ways a fact goes wrong here; this collection is where you can watch it happen.
+Two of the four editions have been amended after publication, and the amendments are on the pages rather than in a footnote. The second edition’s is the instructive one: re-run against the primaries, it upgraded one item, corrected all six, and the two sharpest corrections turned out to be *ours* rather than the coverage’s — we had misread a paper’s title, and described a physics result using the wrong physics. [Too Good to Check](https://starstuff.earth/too-good-to-check.html) names the ways a fact goes wrong here; this collection is where you can watch it happen.
 
 ## Off the reading chain, on purpose
 
 Nearly every page on this site is linked into a single prev/next reading order, from [Start Here](https://starstuff.earth/collection-start-here.html) through to the last broadside. **This collection and every edition sit outside it**, for the same reason every [working paper](https://starstuff.earth/collection-notes.html) does: threading a weekly scan between two zines would drop a maintenance document into the middle of somebody’s reading. The editions carry prev/next to *each other* instead, which is a local order through the archive rather than a link in the site’s chain.
 
 [Stimpunks Foundation](https://stimpunks.org/) × [More Realms](https://morerealms.com/) · Glimmer Wire · L★S
- A collection, not a folder · 3 editions · one page each, nothing deleted · off the reading chain, on purpose
+ A collection, not a folder · 4 editions · one page each, nothing deleted · off the reading chain, on purpose
  stimpunks.org · morerealms.com · starstuff.earth · [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)

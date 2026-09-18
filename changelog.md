@@ -1,8 +1,8 @@
 ---
 title: "Changelog"
 url: "https://starstuff.earth/changelog.html"
-updated: "2026-09-17"
-description: "Everything that changed in the Star Stuff collection, month by month — 147 dated entries across 3 months: pieces added, pieces substantially revised, and every fact-check and attribution audit, including corrections to our own errors."
+updated: "2026-09-18"
+description: "Everything that changed in the Star Stuff collection, month by month — 148 dated entries across 3 months: pieces added, pieces substantially revised, and every fact-check and attribution audit, including corrections to our own errors."
 collection: "Notes & Rationale"
 licence: "CC-BY-SA-4.0"
 licence_url: "https://creativecommons.org/licenses/by-sa/4.0/"
@@ -22,7 +22,7 @@ Every piece as it arrived, every substantial revision, and every fact-check — 
 
 This log is backfilled from the collection's full commit history and kept up from here. It records three kinds of change: **pieces added**, **pieces substantially revised**, and **fact-check and attribution audits** — including the errors we found in our own work and exactly how we fixed them. Small typo passes and styling tweaks are left out; anything that changes what a piece *claims* is in.
 
-**147 dated entries across 3 months, one page each.** This was a single page until 14 September 2026, when it had reached 1.4 MB and was growing by about six entries a day — the same argument that split [the Glimmer Wire](https://starstuff.earth/collection-glimmer-wire.html) into one page per edition. **The cost is stated rather than hidden:** you can no longer search the whole history with your browser's find-in-page. [Site search](https://starstuff.earth/search.html) covers it, every entry keeps the address it always had, and a link to any of them still lands on the right entry.
+**148 dated entries across 3 months, one page each.** This was a single page until 14 September 2026, when it had reached 1.4 MB and was growing by about six entries a day — the same argument that split [the Glimmer Wire](https://starstuff.earth/collection-glimmer-wire.html) into one page per edition. **The cost is stated rather than hidden:** you can no longer search the whole history with your browser's find-in-page. [Site search](https://starstuff.earth/search.html) covers it, every entry keeps the address it always had, and a link to any of them still lands on the right entry.
 
 Why publish our corrections
 
@@ -32,8 +32,9 @@ The working guidelines and the full per-piece ledger live in [FACTCHECK.md](http
 
 ## [September 2026](https://starstuff.earth/changelog-2026-09.html)
 
-93 entries · 69 added · 34 revised · 115 fact-checks · 113 site — [read the month →](https://starstuff.earth/changelog-2026-09.html)
+94 entries · 70 added · 34 revised · 116 fact-checks · 113 site — [read the month →](https://starstuff.earth/changelog-2026-09.html)
 
+- [2026 · September 18 Glimmer Wire, edition four — four papers read end to end, and a median lag that tripled because of it](https://starstuff.earth/changelog-2026-09.html#2026-09-18-glimmer-wire-0918)
 - [2026 · September 17 The Big Bang had no location, so it happened where you are sitting — and a geometry with no middle has no far end](https://starstuff.earth/changelog-2026-09.html#2026-09-17-where-you-are-sitting)
 - [2026 · September 14 This page had grown to 1.4 megabytes, so it is now one page per month — and every old link still lands on the right entry](https://starstuff.earth/changelog-2026-09.html#2026-09-14-changelog-split)
 - [2026 · September 14 A second table of contents that lives in the margin, and gets out of the way when the page gets wide](https://starstuff.earth/changelog-2026-09.html#2026-09-14-rail)
