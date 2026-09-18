@@ -1,7 +1,7 @@
 ---
 title: "Changelog · September 2026"
 url: "https://starstuff.earth/changelog-2026-09.html"
-updated: "2026-09-14"
+updated: "2026-09-17"
 description: "Everything that changed in the Star Stuff collection during September 2026 — 91 dated entries: pieces added, pieces substantially revised, and every fact-check and attribution audit, corrections to our own errors included."
 licence: "CC-BY-SA-4.0"
 licence_url: "https://creativecommons.org/licenses/by-sa/4.0/"
@@ -28,6 +28,40 @@ We braid real science with ideas credited to named thinkers, so the facts and th
 The working guidelines and the full per-piece ledger live in [FACTCHECK.md](https://github.com/Stimpunks/Star-Stuff/blob/main/FACTCHECK.md). If you spot an error, [open an issue](https://github.com/Stimpunks/Star-Stuff/issues) or reach us at [stimpunks.org](https://stimpunks.org). **Corrections are mutual aid.**
 
 New piece Revised Fact-check Site
+
+2026 · September 17
+
+## The Big Bang had no location, so it happened where you are sitting — and a geometry with no middle has no far end
+
+Zine No. 111. Prompted by a Brian Cox episode and then built entirely from the papers, because the transcript turned out to be unusable. Two errors on one spread were caught before shipping, one of them by a reader, and both are recorded below rather than quietly fixed.
+
+New[It Happened Where You Are Sitting](https://starstuff.earth/it-happened-where-you-are-sitting-zine.html) — Zine No. 111
+
+**The settled fact is that the Big Bang was not an event at a place.** It was a condition of all of space at once, so every region that exists now existed then — not descended from it, not made of material that travelled from it, but *was* it, hotter. Including the region you are in. Which means no location is the origin, and so there is no distance-from-origin: **the geometry declines to tell you who is near the middle, because it has not got one.**
+
+**The honest exception is printed rather than skipped.** Your *observable* universe does have a centre, exactly, and it is you — a sphere of 13.797 billion years of light-travel in every direction. So does everyone else’s. *Every observer is at the centre of their own observable universe, and every one of them is right*, which is a flatter and harder sentence than the flattering one it resembles.
+
+**And a refusal sits early rather than at the back, because the rest of the zine leans on it:** no preferred place is not the same as no preferred frame. The microwave background supplies one, and the Sun’s speed against it is known to a fraction of a kilometre per second. No centre does not mean no ground.
+
+**The turn collects rather than introduces.** Three times over the zine describes the same structure — the raisin that sees itself as still while every other raisin leaves, the sphere generated fresh for each observer, and Helen Edgar’s *constellation of intensities*, whose stars *cohere into a figure only from where you happen to stand*. In all three the coherence is made at the vantage point and is not a property of the thing looked at. Which makes the target statable exactly: **high-functioning, mild, severe, the far end of the spectrum are distances, and none of them will say whose vantage point supplied the zero.**
+
+**The three are deliberately not equivalent.** The raisin and the sphere are physics — nobody chose them and nobody can un-install them. The constellation is a figure Autistic people *chose*, against one already installed in them. So the cosmology is not the argument; it is the existence proof that a complete, predictive, relentlessly tested description of everything there is loses nothing by having no centre. That answers *a middle is compulsory* and nothing else. **The geometry grants no permissions, and that is the first refusal on the page.**
+
+**What is deliberately absent:** multiverses, eternal inflation and fine-tuning — the most striking third of the source, which Cox marks as speculative every time he raises it. A register whose test is one settled fact followed honestly has no business building an argument about people on contested cosmology. [Why Difference Comes First](https://starstuff.earth/why-difference-comes-first-zine.html) (No. 11) is Helen’s and owns the microwave background’s unevenness, the strongest neurodiversity reading of the early universe; this piece takes the geometry instead and stays off it. [Not a Line](https://starstuff.earth/not-a-line-zine.html) (No. 21) owns the constellation and the functioning-label critique, and the new zine hands the argument over rather than repeating it.
+
+Fact-checkTwo errors on one spread, caught before shipping: a curvature sign that made the page contradict itself, and a dataset label that hid the mechanism
+
+**The first was found by reading the spread, not by any of our gates.** Ryan asked what “flat” meant on spread eight — a fair question, since the spread never said — and the answer turned up something worse. A draft paragraph read *“positive means the geometry closes on itself…so space is finite,”* while the figure directly beneath it labelled the **negative** side *closed, and finite*. **The page was arguing with itself, and not one of the eight checks that guard this site can see that.**
+
+**The figure was right.** The quantity is written Ω~K~ and it runs *opposite* to the curvature: Planck’s own paper says the pull is “towards negative values of Ω~K~” and that “closed models predict substantially higher lensing amplitudes.” So negative is closed and finite. The trap underneath is that two standard quantities carry opposite signs for the same universe — a paper reporting “positive curvature” and a table reporting a negative Ω~K~ describe the same thing. The spread now defines flatness in plain language first, then states the convention outright.
+
+**The second was found while checking the first.** The draft cited −0.0106 as the figure from Planck’s spectra alone. It is not: that equation already includes the lensing map, and the spectra-alone figure is −0.044. **That mattered more than a mislabel, because adding the lensing map is precisely the step the paper says pulls the answer back toward flat** — so the wrong label hid the mechanism. Correcting it replaced a two-number standoff with the three-step walk the paper actually describes: the spectra alone give −0.044 and put about one sample in ten thousand at flat or beyond, the lensing map moves it to −0.0106, and the oscillation data lands it on 0.0007. Each dataset added pulls it toward flat, and the figure now plots all three.
+
+**Neither error reached the public site**, so by this house’s own rule — a mistake corrected before shipping is a fact about the build, not disclosure — they are logged here and in the ledger rather than confessed on the zine itself. An earlier draft did confess them on the page, and those sentences were removed. What stays on the page is the part a reader can use: the sign convention is a real trap in the literature, stated as such.
+
+**Three more defects were caught by looking at the figures at the size they actually render**, which is the only instrument for this and is not optional: an arrow pair that drew contraction while the prose beside it said expansion, a panel showing five points against a caption claiming *the same people* where the facing panel had nine, and a label detached from the dot it named. **All eight gates passed all three**, and each was right to — a technically perfect picture of the wrong thing is still valid markup, legible, correctly coloured and in the right place.
+
+**And the source is a lead, not a citation, which this piece states on its own face.** The Brian Cox compilation that prompted it is an automatic transcript of clips of several vintages: it gives the age as 13.75 billion years in the older segments and 13.8 in the newer, renders *branes* as “brains” throughout, and turns “ten with 120 noughts after it” into “knots.” Nothing is quoted from it and no figure is sourced to it. Two limits are also printed: the *Nature Astronomy* paper arguing the other side of the curvature question is paywalled, so only its abstract phrases are attributed; and Friedmann and Lema&icirc;tre were confirmed at their bibliographic records rather than read in the original languages.
 
 2026 · September 14
 
