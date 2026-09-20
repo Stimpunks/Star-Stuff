@@ -31,6 +31,28 @@ New piece Revised Fact-check Site
 
 2026 · September 20
 
+## The feed was dating every entry by whoever generated it last, and told a different day than the page it came from
+
+A generator bug that only exists once a project has two people in two places. Found by a diff that rewrote all 102 dates in `feed.xml` and changed nothing else.
+
+SiteA generator may not read the machine it runs on — not the clock, not the timezone
+
+**What was happening.** `build-derived.mjs` formatted every `pubDate` and the `lastBuildDate` by putting the publication instant through `new Date()` and reading it back with local getters — `getDay`, `getDate`, `getHours`, `getTimezoneOffset`. The instant was never in doubt: it comes from git’s `%aI`, which is stored in the commit. **Only the rendering was local**, and it rendered as whatever timezone happened to run the generator.
+
+**Which made the file a record of who pushed last.** One publication, four machines, four answers: *Thu, 17 Sep 23:19:15 −0500* in Chicago, *Fri, 18 Sep 05:19:15 +0100* in London, *Fri, 18 Sep 13:19:15 +0900* in Tokyo, *Fri, 18 Sep 04:19:15 +0000* in UTC. Every push from one checkout rewrote all 102 dates written by the other, in both directions, with the actual change of the day buried underneath.
+
+**And it was quietly wrong as well as noisy.** [What’s New](https://starstuff.earth/whats-new.html) files a piece under `iso.slice(0, 10)` — the date in the *author’s* timezone. The feed was giving the date in the *generator’s*. A piece added at 23:19 on the 17th Central is 04:19 on the 18th in UTC, so for three of those four machines the two pages named **different days for the same publication**, and which one you got depended on nothing but who ran the build.
+
+**The fix reads the offset that is already in the string.** `%aI` carries the author’s own offset alongside the instant, and both are identical on every checkout. Rendering that — rather than normalising to UTC, which would have been equally stable and would still have disagreed with What’s New — is the only version where the feed and the day heading cannot drift apart, because both now come from the same characters of the same string. Day-of-week is arithmetic on three integers via `Date.UTC`, which touches no timezone at all.
+
+**Proved rather than reasoned about.** The generator was run under `TZ=America/Chicago`, `Europe/London`, `Asia/Tokyo`, `UTC` and `Pacific/Auckland` — eighteen hours of spread — and `feed.xml` came out **byte-identical every time**; so did `whats-new.html`. Under the old code the same five runs produce five different files.
+
+**A guard, because this passed every gate for five days.** `rfc822` now asserts a fixed input against a fixed expected string at load. Any implementation that reaches for the local clock fails it — *including on a UTC machine*, where the old code looked perfectly correct and was the reason nobody noticed. Restoring the old body and running it under London and under UTC was how the guard itself was checked; both threw.
+
+**Three dates actually moved** in this regeneration, not 102: the handful of entries authored in UTC, which this checkout had been silently shifting to Central. The other ninety-nine already matched by coincidence of geography. `CLAUDE.md` gains the general rule — a generator may not read the machine it runs on: not the clock, not the timezone, not the locale, not the username, not a path outside the repo.
+
+2026 · September 20
+
 ## We spent five weeks asking permission for a character we own, and the error survived because it looked like care
 
 A correction to [The Quillery](https://starstuff.earth/quillery.html) and the Easter Eggs collection card. Esmx the Porkypine was commissioned by the Stimpunks Foundation, who hold the rights; three sentences on this site said otherwise, and one of them said it inside a ledger row that recorded the commission two clauses later.

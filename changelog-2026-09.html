@@ -327,6 +327,24 @@
 
   </div>
 
+  <!-- ================= 2026-09-20b (site: the feed's dates read the clock) ================= -->
+  <section class="release" id="2026-09-20-feed-timezone" aria-labelledby="h-2026-09-20-feed-timezone">
+    <div class="release-date">2026 &middot; September 20</div>
+    <h2 class="release-title" id="h-2026-09-20-feed-timezone">The feed was dating every entry by whoever generated it last, and told a different day than the page it came from</h2>
+    <p class="release-note">A generator bug that only exists once a project has two people in two places. Found by a diff that rewrote all 102 dates in <code>feed.xml</code> and changed nothing else.</p>
+
+    <div class="entry entry--site">
+      <div class="entry-head"><span class="tag tag--site">Site</span><span class="entry-name">A generator may not read the machine it runs on &mdash; not the clock, not the timezone</span></div>
+      <div class="entry-body"><p><strong>What was happening.</strong> <code>build-derived.mjs</code> formatted every <code>pubDate</code> and the <code>lastBuildDate</code> by putting the publication instant through <code>new Date()</code> and reading it back with local getters &mdash; <code>getDay</code>, <code>getDate</code>, <code>getHours</code>, <code>getTimezoneOffset</code>. The instant was never in doubt: it comes from git&rsquo;s <code>%aI</code>, which is stored in the commit. <strong>Only the rendering was local</strong>, and it rendered as whatever timezone happened to run the generator.</p>
+      <p><strong>Which made the file a record of who pushed last.</strong> One publication, four machines, four answers: <em>Thu, 17 Sep 23:19:15 &minus;0500</em> in Chicago, <em>Fri, 18 Sep 05:19:15 +0100</em> in London, <em>Fri, 18 Sep 13:19:15 +0900</em> in Tokyo, <em>Fri, 18 Sep 04:19:15 +0000</em> in UTC. Every push from one checkout rewrote all 102 dates written by the other, in both directions, with the actual change of the day buried underneath.</p>
+      <p><strong>And it was quietly wrong as well as noisy.</strong> <a href="whats-new.html">What&rsquo;s New</a> files a piece under <code>iso.slice(0, 10)</code> &mdash; the date in the <em>author&rsquo;s</em> timezone. The feed was giving the date in the <em>generator&rsquo;s</em>. A piece added at 23:19 on the 17th Central is 04:19 on the 18th in UTC, so for three of those four machines the two pages named <strong>different days for the same publication</strong>, and which one you got depended on nothing but who ran the build.</p>
+      <p><strong>The fix reads the offset that is already in the string.</strong> <code>%aI</code> carries the author&rsquo;s own offset alongside the instant, and both are identical on every checkout. Rendering that &mdash; rather than normalising to UTC, which would have been equally stable and would still have disagreed with What&rsquo;s New &mdash; is the only version where the feed and the day heading cannot drift apart, because both now come from the same characters of the same string. Day-of-week is arithmetic on three integers via <code>Date.UTC</code>, which touches no timezone at all.</p>
+      <p><strong>Proved rather than reasoned about.</strong> The generator was run under <code>TZ=America/Chicago</code>, <code>Europe/London</code>, <code>Asia/Tokyo</code>, <code>UTC</code> and <code>Pacific/Auckland</code> &mdash; eighteen hours of spread &mdash; and <code>feed.xml</code> came out <strong>byte-identical every time</strong>; so did <code>whats-new.html</code>. Under the old code the same five runs produce five different files.</p>
+      <p><strong>A guard, because this passed every gate for five days.</strong> <code>rfc822</code> now asserts a fixed input against a fixed expected string at load. Any implementation that reaches for the local clock fails it &mdash; <em>including on a UTC machine</em>, where the old code looked perfectly correct and was the reason nobody noticed. Restoring the old body and running it under London and under UTC was how the guard itself was checked; both threw.</p>
+      <p><strong>Three dates actually moved</strong> in this regeneration, not 102: the handful of entries authored in UTC, which this checkout had been silently shifting to Central. The other ninety-nine already matched by coincidence of geography. <code>CLAUDE.md</code> gains the general rule &mdash; a generator may not read the machine it runs on: not the clock, not the timezone, not the locale, not the username, not a path outside the repo.</p></div>
+    </div>
+  </section>
+
   <!-- ================= 2026-09-20 (fact-check: the Quillery's ownership claim) ================= -->
   <section class="release" id="2026-09-20-quillery-ownership" aria-labelledby="h-2026-09-20-quillery-ownership">
     <div class="release-date">2026 &middot; September 20</div>

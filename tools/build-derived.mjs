@@ -233,16 +233,67 @@ function longDate(day) {
 }
 
 const DOW = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+/* RFC 822/5322 dates for the feed, rendered from the STRING and never through a
+   local-time Date.
+   -----------------------------------------------------------------------------
+   THIS FUNCTION USED TO READ THE MACHINE'S CLOCK, and with one checkout that was
+   invisible. It built the date out of `new Date(iso)` and local getters —
+   getDay, getDate, getHours, getTimezoneOffset — so the output was whatever
+   timezone happened to run it. Two contributors in two timezones means every
+   push rewrites all 102 dates in feed.xml, in both directions, forever, with
+   the real change buried underneath. Found 2026-09-20 when one regeneration
+   flipped the whole file from +0000 to -0500 and changed nothing else.
+
+   THE INSTANT WAS NEVER THE PROBLEM. `addedAt` returns git's `%aI`, which is a
+   fixed point in time AND carries the offset the author committed in. Both
+   halves are stored in the commit and are identical on every machine. Only the
+   rendering was local.
+
+   SO IT KEEPS THE AUTHOR'S OFFSET rather than normalising to UTC, which fixes a
+   second thing at the same time. `r.day` — the heading a piece files under in
+   whats-new.html — is `iso.slice(0, 10)`, the date in the author's own
+   timezone. Normalising the feed to UTC would have been stable and would still
+   have disagreed with that heading: the piece added at 23:19 on the 17th
+   Central is 04:19 on the 18th UTC, and the two pages would have named
+   different days for the same publication. Reading the offset out of the same
+   string both values come from is the only version where they cannot drift.
+
+   Day-of-week comes from Date.UTC on the wall-clock fields, which is arithmetic
+   on three integers and touches no timezone at all. */
 function rfc822(iso) {
-  const dt = new Date(iso);
-  const p = (n) => String(n).padStart(2, '0');
-  const off = -dt.getTimezoneOffset();
-  const sign = off < 0 ? '-' : '+';
-  const oh = p(Math.floor(Math.abs(off) / 60));
-  const om = p(Math.abs(off) % 60);
-  return `${DOW[dt.getDay()]}, ${p(dt.getDate())} ${MONTHS[dt.getMonth()].slice(0, 3)} `
-       + `${dt.getFullYear()} ${p(dt.getHours())}:${p(dt.getMinutes())}:${p(dt.getSeconds())} `
-       + `${sign}${oh}${om}`;
+  const m = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})(?:\.\d+)?(Z|[+-]\d{2}:?\d{2})$/.exec(iso);
+  if (!m) {
+    throw new Error(
+      `build-derived: cannot read a date out of ${JSON.stringify(iso)}.\n` +
+      '  Expected git\'s %aI. Refusing rather than falling back to `new Date()`,\n' +
+      '  which would silently reintroduce the machine-local rendering this\n' +
+      '  function exists to avoid.',
+    );
+  }
+  const [, y, mo, d, hh, mm, ss, off] = m;
+  const zone = off === 'Z' ? '+0000' : off.replace(':', '');
+  const dow = DOW[new Date(Date.UTC(Number(y), Number(mo) - 1, Number(d))).getUTCDay()];
+  return `${dow}, ${d} ${MONTHS[Number(mo) - 1].slice(0, 3)} ${y} ${hh}:${mm}:${ss} ${zone}`;
+}
+
+/* The guard, because the bug above passed every gate this repo has for five
+   days and was only caught by a diff nobody expected. A fixed input with a fixed
+   expected output: any implementation that reaches for the local clock produces
+   a different string on every machine but one, so this fires in CI, on Helen's
+   checkout and on Ryan's rather than only where it happens not to match. */
+{
+  const SAMPLE = '2026-09-17T23:19:15-05:00';
+  const WANT = 'Thu, 17 Sep 2026 23:19:15 -0500';
+  const got = rfc822(SAMPLE);
+  if (got !== WANT) {
+    throw new Error(
+      `build-derived: rfc822 is not machine-independent.\n  ${SAMPLE}\n  ` +
+      `wanted ${WANT}\n  got    ${got}\n` +
+      '  A feed date must render the same on every checkout, or two contributors\n' +
+      '  rewrite all of feed.xml past each other on every push.',
+    );
+  }
 }
 
 /* ── the accent a collection carries, so the list reads as the site does ──── */

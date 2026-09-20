@@ -78,6 +78,19 @@ the three places two people collide. The parts that change what a session does:
 - **A derived file that conflicts is never resolved by hand.** Take either side and regenerate.
   `search-index.json` is 6.1 MB on one line and is marked `-merge -diff` in `.gitattributes`
   so git refuses to splice two JSON documents into one that parses and is wrong.
+- **A generator may not read the machine it runs on.** Not the clock, not the timezone, not the
+  locale, not the username, not a path outside the repo. With one checkout this cost nothing and
+  was therefore invisible; with two it means every push rewrites files the other person just
+  wrote, in both directions, forever, with the real change buried under the churn. Found
+  2026-09-20: `build-derived.mjs`'s `rfc822()` built every `pubDate` out of `new Date(iso)` and
+  local getters, so **the same commit rendered as four different dates in four timezones** — and
+  in three of them a different *day* from the one `whats-new.html` files it under, because
+  `r.day` comes from the author's offset and the feed was coming from the reader's. It now
+  renders the offset carried in git's own `%aI`, which is stored in the commit and identical
+  everywhere. **The fix is testable and the test is the point:** run a generator under
+  `TZ=UTC`, `TZ=Asia/Tokyo` and `TZ=Pacific/Auckland` and byte-compare its output. `rfc822`
+  carries a fixed-input assertion that throws on any machine if somebody reaches for the local
+  clock again — including on a UTC machine, where the old code looked correct.
 - **Walk the prev/next chain after every rebase.** Both of you adding at the tail of the same
   collection edits the same `ss-nav-next`, and the result walks forward correctly and breaks
   going back — the one-liner is under *the prev/next chain follows collection order*.
