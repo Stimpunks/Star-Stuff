@@ -29,6 +29,26 @@ The working guidelines and the full per-piece ledger live in [FACTCHECK.md](http
 
 New piece Revised Fact-check Site
 
+2026 · September 20
+
+## We spent five weeks asking permission for a character we own, and the error survived because it looked like care
+
+A correction to [The Quillery](https://starstuff.earth/quillery.html) and the Easter Eggs collection card. Esmx the Porkypine was commissioned by the Stimpunks Foundation, who hold the rights; three sentences on this site said otherwise, and one of them said it inside a ledger row that recorded the commission two clauses later.
+
+Fact-check“Not ours to redraw stroke for stroke” — wrong about who holds the rights, and published for five weeks
+
+**What was wrong.** The Quillery’s *What this is, and what it is not* note, live since 2026-08-15, read that Kaya Oldaker’s artwork *“is not ours to redraw stroke for stroke.”* The [Easter Eggs](https://starstuff.earth/collection-easter-eggs.html) card called the sheet *“the first about somebody else’s character,”* twice. A CSS comment in the page’s own source said the palette was *“not ours to fold into our own.”* And the `FACTCHECK.md` row asserted *“Esmx the Porkypine is Kaya Oldaker’s”* — **in the same sentence that recorded the piece as commissioned by Stimpunks**.
+
+**What is right.** **Stimpunks commissioned Esmx and holds the rights.** Kaya Oldaker is the artist. The CC BY-SA 4.0 licence on the mascot is one we granted rather than one we are subject to, and the invitation attached to it — *feel free to customise! Make variants of Esmx to represent your community* — is ours as much as anybody’s. The eight drawings were rebuilt from scratch rather than traced, which was always a good decision and is now stated on its actual grounds: a pasted PNG would be the only drawing in the collection not in its own hand, and a variant is the thing the licence goes out of its way to ask for rather than merely allow.
+
+**The credit does not move, and that is the half that was doing the work.** Kaya’s name stays under every drawing, in the colophon, on the collection card and in the structured data. *Holding the rights to a commission is not a reason to stop naming the hand that drew it.* The one thing that changed in the structured data is an addition: `isBasedOn` named a `creator` and never a `copyrightHolder`, so the machine-readable version of the page had the same gap as the prose.
+
+**Why nothing caught it, which is the part worth keeping.** Every rule in `FACTCHECK.md` is tuned to catch a claim that *overreaches* — an attribution taken from a summary, a metaphor promoted to a proof, a number gone stale. **This claim under-reached.** Told that a drawing came from a named artist, the sentence reached for *somebody else’s, handle carefully* and never asked who had paid for it; and the result reads as scrupulousness, so no gate and no reader flagged it for five weeks. It is the mirror image of the failure [Too Good to Check](https://starstuff.earth/too-good-to-check.html) catalogues: not a story too good to verify, but a caution too flattering to question. **Being careful in the wrong direction is still being wrong**, and it is harder to see, because the tell that usually gives an error away — that it makes us look better — is present in exactly the same way.
+
+**Caught by Ryan Boren** on 2026-09-20, while [stimpunks.love](https://stimpunks.love/arcade.html) was building an arcade room around Esmx and copying this page’s framing into it. A wrong sentence had already travelled one site before anybody read it twice, which is the argument for correcting it here rather than only there. The Quillery now records the correction in its own *Notes*, beside the citation it nearly got wrong the first time.
+
+**Not affected, and checked rather than assumed:** *The Autism Infinity Dragon*, also Kaya’s and also on this site, is **her own work under her own public-domain release** — not a commission, and the open item about stimpunks.org over-restricting its licence stands unchanged. The ledger drew that distinction correctly for the dragon on the same day it got Esmx wrong.
+
 2026 · September 18
 
 ## Glimmer Wire, edition four — four papers read end to end, and a median lag that tripled because of it
