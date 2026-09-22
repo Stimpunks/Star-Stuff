@@ -68,7 +68,7 @@ const GENERATORS = [
   /* The changelog index over its monthly archive. Added 2026-09-14 with the split;
      it is a second description of every archive page's entry titles, which is
      exactly the shape that rots when it is hand-kept. */
-  { tool: 'build-changelog.mjs', writes: 'changelog.html, the index over the monthly archive' },
+  { tool: 'build-changelog.mjs', writes: 'changelog.html and changelog.xml, the index and feed over the monthly archive' },
   { tool: 'build-markdown.mjs', writes: '57 Markdown siblings, and the rel=alternate that advertises each one' },
   { tool: 'build-search-index.mjs', writes: 'search-index.json', chrome: true },
 ];
@@ -79,7 +79,7 @@ const GENERATORS = [
    others read every page.
 
      build-derived    writes whats-new.html
-     build-changelog  writes changelog.html
+     build-changelog  writes changelog.html and changelog.xml
      build-csp        reads every page's inline <script> bodies -> _headers
      build-markdown   reads every page (and sitemap.xml's lastmod) -> the .md siblings
      build-search-index  renders every page -> search-index.json

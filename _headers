@@ -79,7 +79,7 @@
   # >>> END GENERATED CSP <<<
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), midi=(), serial=(), bluetooth=(), display-capture=(), xr-spatial-tracking=()
-  Link: </llms.txt>; rel="describedby"; type="text/markdown"; title="Site index for language models", </feed.xml>; rel="alternate"; type="application/rss+xml"; title="Star Stuff", </.well-known/api-catalog>; rel="api-catalog"; type="application/linkset+json", <https://creativecommons.org/licenses/by-sa/4.0/>; rel="license"
+  Link: </llms.txt>; rel="describedby"; type="text/markdown"; title="Site index for language models", </feed.xml>; rel="alternate"; type="application/rss+xml"; title="Star Stuff", </changelog.xml>; rel="alternate"; type="application/rss+xml"; title="Star Stuff — Changelog", </.well-known/api-catalog>; rel="api-catalog"; type="application/linkset+json", <https://creativecommons.org/licenses/by-sa/4.0/>; rel="license"
 
 # security.txt (2026-09-09), RFC 9116. text/plain is required by the RFC and Netlify
 # infers it from the extension anyway; stated because a Content-Type is a claim and this
@@ -265,4 +265,10 @@
 # offer to subscribe rather than dump the markup on screen. Charset stated explicitly:
 # the document declares UTF-8 in its prolog, and a header that disagreed would win.
 /feed.xml
+  Content-Type: application/rss+xml; charset=utf-8
+
+# The changelog's own feed (2026-09-21). Same reasoning, separate document: feed.xml
+# carries the pieces and this one carries why they changed, which is the split
+# whats-new.html and changelog.html already make on the page side.
+/changelog.xml
   Content-Type: application/rss+xml; charset=utf-8

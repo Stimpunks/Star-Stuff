@@ -21,6 +21,21 @@
  *
  * Reads the archive pages, never a list kept in here, so there is no third answer
  * free to rot.
+ *
+ * AND changelog.xml, the changelog's own RSS feed (2026-09-21)
+ * ------------------------------------------------------------
+ * `feed.xml` answers "what came out"; this one answers "why it changed", which is
+ * the same split the two pages already make. They are deliberately separate feeds
+ * rather than one: a reader who wants the pieces does not necessarily want 643
+ * entries about generator internals, and a reader who wants the corrections should
+ * not have to watch a zine feed to find them. Nobody is subscribed to both by
+ * accident.
+ *
+ * It is generated HERE rather than in build-derived.mjs for the reason that file's
+ * own header gives about llms.txt: the feed needs the same parse of the same archive
+ * pages, and a second parser would be a second answer free to drift. The name of
+ * this tool now under-describes it, exactly as build-derived's does; a duplicated
+ * parser would under-describe the site, and only one of those gets a reader wrong.
  */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -28,6 +43,8 @@ import { fileURLToPath } from 'node:url';
 
 const REPO = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = path.join(REPO, 'changelog.html');
+const FEED = path.join(REPO, 'changelog.xml');
+const SITE = 'https://starstuff.earth/';
 const ARCHIVE = /^changelog-(\d{4})-(\d{2})\.html$/;
 const MONTH = ['', 'January', 'February', 'March', 'April', 'May', 'June',
   'July', 'August', 'September', 'October', 'November', 'December'];
@@ -54,6 +71,27 @@ const decode = (s) => s
   .replace(/&#(\d+);/g, (_, d) => String.fromCodePoint(+d))
   .replace(/&([a-z][a-z0-9]*);/gi, (m, n) => (n.toLowerCase() in NAMED ? NAMED[n.toLowerCase()] : m));
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+/* XML needs these three in element content; quotes matter in attributes. */
+const xesc = (s) => esc(s).replace(/"/g, '&quot;');
+
+/* An entry's prose keeps <em>, <strong> and <code> in the feed and loses every
+   other tag, text intact. Anchors go with them: a changelog note's links are
+   mostly relative, the item already links to the entry that holds them, and
+   absolutising hrefs here would be a second place that knows the site's URL shape.
+
+   The allowed tags are swapped for sentinels BEFORE decoding, not unescaped after
+   escaping, because this log quotes markup constantly — `&lt;code&gt;` appears in
+   prose about the CSP, and a round trip through escape/unescape would promote that
+   quotation into a live tag. The sentinels are control characters, which cannot
+   occur in the source. */
+const OPEN = '\u0001';
+const CLOSE = '\u0002';
+const keepInline = (s) => decode(
+  s.replace(/<(\/?)(em|strong|code)\b[^>]*>/gi, (_, sl, t) => `${OPEN}${sl}${t.toLowerCase()}${CLOSE}`)
+   .replace(/<[^>]+>/g, ''),
+).replace(/\s+/g, ' ').trim()
+  .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+  .split(OPEN).join('<').split(CLOSE).join('>');
 
 /* ---- read the archive ---------------------------------------------------- */
 const months = fs.readdirSync(REPO).filter((f) => ARCHIVE.test(f)).sort().reverse(); // newest first
@@ -63,10 +101,37 @@ const data = months.map((file) => {
   const src = fs.readFileSync(path.join(REPO, file), 'utf8');
   const [, y, m] = file.match(ARCHIVE);
   const entries = [];
-  const re = /<section class="release" id="([^"]+)"[\s\S]*?<div class="release-date">([\s\S]*?)<\/div>[\s\S]*?<h2 class="release-title"[^>]*>([\s\S]*?)<\/h2>/g;
+  /* The body is captured too, for the feed: a release's own note and the kind and
+     name of each item inside it. Releases do not nest, so the first </section>
+     after the title closes this one. */
+  const re = /<section class="release" id="([^"]+)"[\s\S]*?<div class="release-date">([\s\S]*?)<\/div>[\s\S]*?<h2 class="release-title"[^>]*>([\s\S]*?)<\/h2>([\s\S]*?)<\/section>/g;
   let x;
   while ((x = re.exec(src))) {
-    entries.push({ id: x[1], date: decode(strip(x[2])), title: decode(strip(x[3])) });
+    const body = x[4];
+    const note = body.match(/<p class="release-note">([\s\S]*?)<\/p>/);
+    const items = [...body.matchAll(
+      /<div class="entry entry--([a-z]+)">\s*<div class="entry-head"><span class="tag tag--[a-z]+">([^<]*)<\/span><span class="entry-name">([\s\S]*?)<\/span><\/div>/g,
+    )].map((m) => ({ kind: m[1], label: decode(strip(m[2])), name: keepInline(m[3]) }));
+    /* A release with no item is a parse that slipped, not a release: every one of
+       the 150 in the archive carries at least one. Same refusal as the zero-entry
+       month below — the UNREAD fault, one level down. */
+    if (!items.length) {
+      console.error(`${file}#${x[1]} yielded 0 items — refusing to write a feed entry that says nothing.`);
+      process.exit(1);
+    }
+    /* The date a release files under is the one in its own id, which every id in
+       the archive carries as its first ten characters (`2026-09-20`, or
+       `2026-09-20-slug`). Taking it from the id rather than from the rendered date
+       line means the feed and the deep link cannot name different days. */
+    if (!/^\d{4}-\d{2}-\d{2}(?:-|$)/.test(x[1])) {
+      console.error(`${file}#${x[1]}: a release id must begin with its date.`);
+      process.exit(1);
+    }
+    entries.push({
+      id: x[1], day: x[1].slice(0, 10),
+      date: decode(strip(x[2])), title: decode(strip(x[3])),
+      note: note ? keepInline(note[1]) : '', items,
+    });
   }
   /* A month page that parses to zero entries is a broken split, not an empty
      month — the UNREAD fault this repo's tools keep re-learning. */
@@ -128,6 +193,7 @@ const html = `<!DOCTYPE html>
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="manifest" href="site.webmanifest">
 <link rel="alternate" type="text/markdown" href="https://starstuff.earth/changelog.md">
+<link rel="alternate" type="application/rss+xml" title="Star Stuff — Changelog" href="changelog.xml">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Star Stuff · Stimpunks Foundation × More Realms">
 <meta property="og:title" content="Changelog — Star Stuff">
@@ -169,6 +235,20 @@ const html = `<!DOCTYPE html>
   .callout p { font-size: 0.95rem; line-height: 1.7; color: var(--stardust); }
   .callout p + p { margin-top: 0.7rem; }
   .callout a { color: var(--cyan); }
+
+  /* The subscribe strip, the same component whats-new.html carries and tinted to
+     this page's accent rather than that one's. The two pages answer different
+     questions and so do their feeds: feed.xml is the pieces, changelog.xml is why
+     they changed. */
+  .subscribe { display: flex; flex-wrap: wrap; align-items: center; gap: 0.7rem 1rem; margin: 2rem 0 0.5rem; padding: 1rem 1.15rem; background: var(--card); border: 1px solid rgba(34,211,238,0.28); border-left: 3px solid var(--accent); border-radius: 0 6px 6px 0; }
+  .subscribe-label { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); }
+  .subscribe-text { font-size: 0.94rem; line-height: 1.65; color: var(--stardust); flex: 1 1 16rem; min-width: 0; }
+  /* This strip sits OUTSIDE .body-text, so the page's own .body-text a rule does
+     not reach the cross-link inside it. Without this the browser default won, at
+     1.99:1 on the card ground, and check-contrast said so. */
+  .subscribe-text a { color: var(--cyan); text-decoration: none; border-bottom: 1px solid currentColor; }
+  .subscribe-link { display: inline-block; font-family: 'Space Mono', monospace; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); padding: 0.45rem 1.05rem; border: 1px solid rgba(34,211,238,0.5); border-radius: 999px; text-decoration: none; white-space: nowrap; }
+  .subscribe-link:hover, .subscribe-link:focus-visible { background: rgba(34,211,238,0.14); color: var(--star-white); border-color: var(--accent); }
 
   /* The month index. One block per archive page, each listing that month's own
      entries — generated by tools/build-changelog.mjs from the pages themselves,
@@ -234,6 +314,12 @@ const html = `<!DOCTYPE html>
     <hr class="spectrum-line hero-rule">
   </header>
 
+  <div class="subscribe">
+    <span class="subscribe-label">Subscribe</span>
+    <p class="subscribe-text">Corrections arrive by RSS, separately from the pieces. No account, no email, no tracking &mdash; your reader fetches a file. <a href="whats-new.html">What&rsquo;s New</a> has its own feed for new work.</p>
+    <a class="subscribe-link" href="changelog.xml">RSS feed</a>
+  </div>
+
   <div class="body-text">
 
     <p>This log is backfilled from the collection's full commit history and kept up from here. It records three kinds of change: <strong>pieces added</strong>, <strong>pieces substantially revised</strong>, and <strong>fact-check and attribution audits</strong> — including the errors we found in our own work and exactly how we fixed them. Small typo passes and styling tweaks are left out; anything that changes what a piece <em>claims</em> is in.</p>
@@ -268,16 +354,132 @@ ${monthBlocks}
 </html>
 `;
 
+/* ---- changelog.xml -------------------------------------------------------- */
+
+/* The four structural kinds, as <category>. These are the same four words the
+   month blocks' counts line uses eighty lines up; the entry LABELS are not used
+   here because the archive carries thirty distinct ones ("Held honestly",
+   "Refused as evidence", "Declared unread") — informative in the body, useless as
+   a filterable vocabulary. The labels are read off the page rather than kept in a
+   table for exactly that reason: a table would have had four. */
+const KIND = { new: 'Added', updated: 'Revised', factcheck: 'Fact-check', site: 'Site' };
+
+/* A CHANGELOG ENTRY IS DATED TO A DAY AND NOT TO AN INSTANT, so the feed says so:
+   midnight UTC, on every entry, on every machine. There is a real publication time
+   hiding in git — the commit that added the section — and it was deliberately not
+   used. The page's own date line and the id are what a reader sees and what a deep
+   link resolves to, and an entry written on the 20th and pushed after midnight
+   would then be filed on the 20th by the page and the 21st by the feed. That is the
+   fault the 20 September entry in this very archive is about, reintroduced one file
+   over.
+
+   The cost is that entries sharing a day share a pubDate, so a reader that sorts
+   strictly by date may shuffle them. They are emitted newest first and most readers
+   keep feed order; inventing descending seconds to force the order would be
+   inventing a time, which is the trade this repo takes the other way every time.
+
+   Rendered from the three integers of the date string, via Date.UTC, which touches
+   no timezone at all — never through a local Date. See build-derived.mjs's rfc822
+   for the five days that rule cost. */
+const DOW = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+function rfc822(day) {
+  const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(day);
+  if (!m) throw new Error(`build-changelog: not a YYYY-MM-DD day: ${JSON.stringify(day)}`);
+  const [, y, mo, d] = m;
+  const dow = DOW[new Date(Date.UTC(+y, +mo - 1, +d)).getUTCDay()];
+  return `${dow}, ${d} ${MONTH[+mo].slice(0, 3)} ${y} 00:00:00 +0000`;
+}
+{ /* The same fixed-input guard build-derived.mjs carries, and for the same reason:
+     any implementation that reaches for the local clock fails this on every machine
+     but one, rather than only where it happens not to match. */
+  const WANT = 'Sun, 20 Sep 2026 00:00:00 +0000';
+  const got = rfc822('2026-09-20');
+  if (got !== WANT) {
+    throw new Error(`build-changelog: rfc822 is not machine-independent.\n  wanted ${WANT}\n  got    ${got}`);
+  }
+}
+
+/* 50 items, as feed.xml carries. September ran 96 entries in 20 days — about five a
+   day — so fifty is roughly ten days of headroom and a once-daily poll cannot miss
+   one. Re-derive that before changing either number; the all-time rate is 2.3/day
+   and would flatter it. */
+const FEED_ITEMS = 50;
+const SY_PERIOD = 'daily';
+const SY_FREQUENCY = 1;
+
+const feedDesc = `Why the Star Stuff collection changed, newest first — pieces added, `
+  + `pieces substantially revised, and every fact-check and attribution audit, `
+  + `including corrections to our own errors. The companion feed to What's New, `
+  + `which carries the pieces themselves.`;
+
+function buildFeed() {
+  /* Months are newest first and each month's entries descend within it, so the
+     concatenation is already in order; the sort is here so that stays true if a
+     month page is ever written the other way up. Array.prototype.sort is stable,
+     so entries sharing a day keep the order the page puts them in. */
+  const flat = data.flatMap((d) => d.entries.map((e) => ({ ...e, file: d.file })))
+    .sort((a, b) => (a.day < b.day ? 1 : a.day > b.day ? -1 : 0));
+
+  const items = flat.slice(0, FEED_ITEMS).map((e) => {
+    const url = `${SITE}${e.file}#${e.id}`;
+    const cats = [...new Set(e.items.map((i) => KIND[i.kind]).filter(Boolean))];
+    const body = `<p><em>${esc(e.date)}</em></p>`
+      + (e.note ? `<p>${e.note}</p>` : '')
+      + `<ul>${e.items.map((i) => `<li><strong>${esc(i.label)}</strong> — ${i.name}</li>`).join('')}</ul>`;
+    return `    <item>
+      <title>${xesc(e.title)}</title>
+      <link>${xesc(url)}</link>
+      <guid isPermaLink="true">${xesc(url)}</guid>
+      <pubDate>${rfc822(e.day)}</pubDate>
+${cats.map((c) => `      <category>${xesc(c)}</category>`).join('\n')}
+      <description>${xesc(body)}</description>
+    </item>`;
+  }).join('\n');
+
+  /* lastBuildDate is the newest item's date, not the clock — a feed that changed on
+     every run would report STALE seconds after a clean write. */
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"
+     xmlns:sy="http://purl.org/rss/1.0/modules/syndication/">
+  <channel>
+    <title>Star Stuff — Changelog</title>
+    <link>${SITE}changelog.html</link>
+    <atom:link href="${SITE}changelog.xml" rel="self" type="application/rss+xml"/>
+    <description>${xesc(feedDesc)}</description>
+    <language>en</language>
+    <copyright>CC BY-SA 4.0 · Stimpunks Foundation × More Realms</copyright>
+    <lastBuildDate>${rfc822(flat[0].day)}</lastBuildDate>
+    <sy:updatePeriod>${SY_PERIOD}</sy:updatePeriod>
+    <sy:updateFrequency>${SY_FREQUENCY}</sy:updateFrequency>
+    <image>
+      <url>${SITE}og-card.jpg</url>
+      <title>Star Stuff — Changelog</title>
+      <link>${SITE}changelog.html</link>
+    </image>
+${items}
+  </channel>
+</rss>
+`;
+}
+
+const xml = buildFeed();
+
 if (checking) {
-  const have = fs.existsSync(OUT) ? fs.readFileSync(OUT, 'utf8') : '';
-  if (have === html) {
-    console.log(`changelog.html is up to date — ${data.length} months, ${totalEntries} entries, ${totalItems} items.`);
+  const stale = [
+    [OUT, 'changelog.html', html],
+    [FEED, 'changelog.xml', xml],
+  ].filter(([f, , want]) => (fs.existsSync(f) ? fs.readFileSync(f, 'utf8') : '') !== want);
+  if (!stale.length) {
+    console.log(`changelog.html and changelog.xml are up to date — ${data.length} months, ${totalEntries} entries, ${totalItems} items.`);
     process.exit(0);
   }
-  console.log('STALE  changelog.html — run: node tools/build-changelog.mjs');
+  for (const [, name] of stale) console.log(`STALE  ${name}`);
+  console.log('       run: node tools/build-changelog.mjs');
   process.exit(1);
 }
 
 fs.writeFileSync(OUT, html);
+fs.writeFileSync(FEED, xml);
 console.log(`wrote changelog.html — ${data.length} months, ${totalEntries} entries, ${totalItems} items`);
+console.log(`wrote changelog.xml  — ${Math.min(totalEntries, FEED_ITEMS)} of ${totalEntries} entries`);
 for (const d of data) console.log(`  ${d.file.padEnd(26)} ${String(d.entries.length).padStart(3)} entries`);

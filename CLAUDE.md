@@ -256,6 +256,38 @@ See *Co-branding* below.
   - **The stated cost, on the index's own face:** find-in-page no longer reaches the whole
     history. Site search does, and better, because a hit lands on a month rather than inside a
     megabyte.
+  - **`changelog.xml` is the changelog's own RSS feed, and it is a SECOND feed on purpose
+    (2026-09-21, Ryan's call).** `build-changelog.mjs` writes it from the same parse of the same
+    month pages that produces the index, so it is a third description of one read rather than a
+    second parser free to drift — the `llms.txt` argument, one tool over. Fifty most recent
+    entries, each linking to its own anchor in its month page, carrying the release note and the
+    list of what the entry did. **Don't merge it into `feed.xml`:** that feed is *what came out*
+    and this one is *why it changed*, the split the two pages already make, and folding them
+    pushes every item about generator internals at somebody who subscribed to hear about zines
+    while burying the corrections the log exists to publish.
+    - **An entry is dated to a DAY, so every `pubDate` is midnight UTC on the date in the entry's
+      own id.** There is a real instant available — the commit that added the section — and it is
+      deliberately unused: an entry written on the 20th and pushed after midnight would be filed
+      on the 20th by the page and the 21st by the feed, which is the 2026-09-20 `rfc822` fault
+      one file over. **The cost is on the tool's own face:** entries sharing a day share a
+      timestamp, so a reader sorting strictly by date may shuffle them; inventing descending
+      seconds to force the order would be inventing a time.
+    - **Entry prose keeps `<em>`, `<strong>` and `<code>` and loses every other tag, text
+      intact**, and the allowed tags are swapped for control-character sentinels *before*
+      decoding rather than unescaped after escaping. This log quotes markup constantly — there
+      are already three `&lt;em&gt;` in the September archive — and a round trip through
+      escape/unescape would promote a quotation into a live tag. Tested with a decoy release
+      carrying a quoted tag, a real emphasis, a link, a named entity and a bare ampersand.
+    - **Advertised in four places, because an unadvertised feed is found only by guessing:**
+      `<link rel="alternate">` on `changelog.html` and all three month pages, the site-wide
+      `Link` header in `_headers`, `/.well-known/api-catalog`, and `application/rss+xml` in
+      `_headers` and `tools/serve.mjs` so a browser offers to subscribe instead of dumping the
+      markup on screen. **It is not in `sitemap.xml`** — neither is `feed.xml`; that file lists
+      pages.
+    - **The subscribe strip sits OUTSIDE `.body-text`**, so the page's own `.body-text a` rule
+      does not reach the cross-link inside it and the browser default won at **1.99:1** on the
+      card ground. `check-contrast.mjs` caught it. A new block on a `.doc-shell` page owes its
+      own link colour.
 
 ### Page conventions (treat every page this way)
 
@@ -1449,12 +1481,14 @@ tracking — the query never leaves the reader's browser.
 
 ## Is every derived file current? (`tools/check-derived.mjs`)
 
-**One gate, and it is the one the ship routine names.** Four generators write copies of something
-else, and each grew its own `--check` as it was built; four commands is four chances to run three
-of them.
+**One gate, and it is the one the ship routine names.** Five generators write copies of something
+else — nine files between them — and each grew its own `--check` as it was built; five commands is
+five chances to run four of them. (This paragraph said *four* until 2026-09-21, and was already
+wrong by one before `changelog.xml` was added: **derive it** — the tool prints
+`N of N generators checked`.)
 
 ```bash
-node tools/check-derived.mjs           # all four
+node tools/check-derived.mjs           # all of them
 node tools/check-derived.mjs --quick   # skip the search index, the only one needing Chrome
 ```
 

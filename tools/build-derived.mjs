@@ -884,6 +884,13 @@ function buildApiCatalog() {
         ],
         alternate: [
           { href: `${SITE}feed.xml`, type: 'application/rss+xml', title: 'Star Stuff' },
+          /* The changelog's feed is written by build-changelog.mjs, which parses the
+             monthly archive; it is listed here because the catalogue is the site's
+             one answer to "what machine-readable views exist", and a catalogue that
+             names one of two feeds is a catalogue somebody trusts instead of reads.
+             Two entries, not a second sitemap — see the mistake list above. */
+          { href: `${SITE}changelog.xml`, type: 'application/rss+xml',
+            title: 'Star Stuff — Changelog' },
         ],
         license: [
           { href: 'https://creativecommons.org/licenses/by-sa/4.0/',

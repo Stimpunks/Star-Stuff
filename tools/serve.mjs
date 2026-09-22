@@ -46,6 +46,7 @@ const EXACT = {
      warns that a feed served as application/xml is ignored by some readers, and that
      is exactly the kind of thing a faithful local server should be able to show. */
   '/feed.xml': 'application/rss+xml; charset=utf-8',
+  '/changelog.xml': 'application/rss+xml; charset=utf-8',
   '/llms.txt': 'text/markdown; charset=utf-8',
   /* The SKILL.md is under a directory whose .md mapping is already right, so it needs
      no entry — but the index has no extension problem and every other agent-facing file
