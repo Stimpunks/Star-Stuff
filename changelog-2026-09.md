@@ -29,6 +29,40 @@ The working guidelines and the full per-piece ledger live in [FACTCHECK.md](http
 
 New piece Revised Fact-check Site
 
+2026 · September 25
+
+## Glimmer Wire, edition five: five papers read end to end, and six stories held over a single word
+
+The weekly scan behind [Glimmers](https://starstuff.earth/collection-glimmers.html), at [its own page](https://starstuff.earth/glimmer-wire-2026-09-25.html). Seven filed, six held, three seeds. Median lag 85 days, range 2 to 157.
+
+NewSeven filed — three verified, one contested, three plausible
+
+**Four versions of record were read in full at PubMed Central** and a fifth paper was read in full as its authors’ own preprint. Graded **verified**: Borlina *et al.* in *PNAS*, measuring a nebular magnetic field of roughly 150–600 µT recorded in calcium-aluminium-rich inclusions, the oldest known solids in the solar system; Marques *et al.* in *Nature Communications*, showing that blocking the enzyme NUDT5 does not reproduce deleting it, and that a catalytically dead version of the protein restores the drug response; and Kramml *et al.*, also in *Nature Communications*, on three *Clusia* genomes spanning weak, inducible and strong crassulacean acid metabolism — trees of the same appearance, in the same place, breathing three different ways.
+
+**One item was read cover to cover and graded contested anyway, and the page explains why that is not a contradiction.** Noll *et al.* in *Communications Biology* propose four gentoo penguin species and formally describe one of them, *Pygoscelis kerguelensis*, from a museum skin collected at Kerguelen on 31 December 1897. The paper itself reports the question as “widely debated since the 1920s,” and reaches its answer partly by demoting to subspecies a penguin another team recently described as a species. *Verified describes what we did; contested describes where the claim stands.*
+
+**The preprint rule cost this page a grade for the second week running.** Montanari, Zanin & Motter’s *Science* paper — heterogeneity turns out to *stabilise* a network once nodes keep more than one dimension, and the opposite belief traces to a model reduction adopted for mathematical tractability — was read in full as arXiv:2609.25226 and graded **plausible**, because the authors’ text is not the version of record. `science.org` answers with `403`.
+
+**Two items rest on publisher-deposited abstracts**: a Danish register study in *JAMA Psychiatry* finding that young people diagnosed with ADHD or autism have grown steadily more similar to their peers across a decade — a measurement of where a boundary was drawn, and one whose own last sentence refuses the “less impairing” reading — and the first replication of a high-precision measurement of the gravitational constant, in *Metrologia*, whose analysis was blinded against a key sealed in an envelope for about a decade.
+
+Fact-checkSix held, five of them over a word the paper does not use
+
+**The pattern in this week’s holds is unusually clean.** A Stonehenge story ran as “may have traveled from Scotland by glacier” over a paper whose abstract ends “even under a glacially assisted scenario, substantial anthropogenic transport would have remained necessary.” A humpback whale paper titled *post-mortem attendance of a stillborn* was carried as mourning, on one observation of one animal. A *Nature Neuroscience* paper titled *Two parallel neural ectoderm progenitors contribute to the developing brain* was carried as the brain being two separate organs. A phenome-wide scan of 1,049 outcomes that returned 83 hits was carried as 83 diseases REM sleep protects against.
+
+**The longest-standing thing on the page is a hold, not a find.** “Scientists solve a 50-year mystery and discover a new human blood group” describes Tilley *et al.*, *Blood* **144**(26), 2735 — a paper whose issue is dated 26 December 2024 and whose DOI was registered on 19 August 2024. Against this week’s wire date that is **631 days at the shortest reading and 760 at the longest**, larger than anything on the filed axis and larger than last week’s 652-day hold. It is a piece we would have written; it is not this week’s.
+
+**The sixth is held for a reason that is ours rather than the paper’s**, and the page says so: a Swedish register study of congenital TORCH infections and autism is sound, carefully sibling-controlled, and framed around a diagnosis as injury, which is a legitimate design for its question and not a frame a figure can be lifted out of. Its own author’s caveat — that these infections account for a very small proportion of autism in the population — made it into the release and not into the headline above it.
+
+SiteWhat refused, and one refusal that returned a valid page
+
+**A wrong URL path on PubMed Central returns the PMC home page at `HTTP 200`**, and four different queries returned it at exactly the same 67,236 bytes. The byte count is what gave it away, not the status code. PMC also served its `reCAPTCHA` challenge at `200` again, as it did last week, and the four full texts came back on retries. **And `arxiv.org` answered while `export.arxiv.org` was refused** — the same archive by two addresses, one open and one shut — which is the only reason the *Science* preprint was read at all.
+
+**Refused at the network layer, named on the page:** `nature.com`, `science.org`, `doi.org`, `iopscience.iop.org`, `onlinelibrary.wiley.com`, `link.springer.com`, `www.nist.gov`, `export.arxiv.org`, `eutils.ncbi.nlm.nih.gov` and Europe PMC at both of its addresses. **Two of the week’s open-access papers were unreachable** — the CC BY gravity paper and the CC BY Stonehenge paper — which is the second consecutive week an openly licensed paper could not be opened from here.
+
+**Corrections made before publishing rather than after.** A first draft of the penguin item called this a third case from a third kingdom, closing the cryptic-diversity seed opened on 18 September; penguins and frogs are the same kingdom, so it is a third case and still a second kingdom, and the page says that. A first draft of the gravity item also treated the sealed envelope as the paper’s; it is the release’s, the Crossref deposit says nothing about blinding, and the entry now marks it. **One arithmetic statement is marked as ours and not the abstract’s**: the reported disagreement of 2.5 × 10^−4^ against a stated uncertainty of 5.7 × 10^−5^ is roughly four times the uncertainty, which is our division of the abstract’s two numbers.
+
+**Wired in:** a card on [the collection page](https://starstuff.earth/collection-glimmer-wire.html) and on the front page, prev/next edited on both editions, a sitemap entry, and the collection’s prose counts re-derived from the edition tallies rather than incremented — five editions, thirty-five filed, twenty-four held, twelve verified.
+
 2026 · September 21
 
 ## The changelog has a feed of its own now, because “what came out” and “what we got wrong” are not one subscription

@@ -1,7 +1,7 @@
 ---
 title: "Glimmer Wire"
 url: "https://starstuff.earth/glimmer-wire-2026-09-18.html"
-updated: "2026-09-18"
+updated: "2026-09-25"
 description: "Edition four of Glimmer Wire, 18 September 2026 — the weekly graded scan behind Glimmers. Eight items filed, six held, four read in full, median lag 88.5 days. A single tile shape that orders a plane without ever repeating, an Earth that matches no meteorite we have collected, an inductive effect that turns out to reach one bond rather than a chain, and five crocodiles that each answered the question of home differently."
 collection: "Glimmer Wire"
 licence: "CC-BY-SA-4.0"
