@@ -1,8 +1,8 @@
 ---
 title: "Changelog"
 url: "https://starstuff.earth/changelog.html"
-updated: "2026-09-25"
-description: "Everything that changed in the Star Stuff collection, month by month — 152 dated entries across 3 months: pieces added, pieces substantially revised, and every fact-check and attribution audit, including corrections to our own errors."
+updated: "2026-10-02"
+description: "Everything that changed in the Star Stuff collection, month by month — 153 dated entries across 4 months: pieces added, pieces substantially revised, and every fact-check and attribution audit, including corrections to our own errors."
 collection: "Notes & Rationale"
 licence: "CC-BY-SA-4.0"
 licence_url: "https://creativecommons.org/licenses/by-sa/4.0/"
@@ -28,13 +28,19 @@ Corrections arrive by RSS, separately from the pieces. No account, no email, no 
 
 This log is backfilled from the collection's full commit history and kept up from here. It records three kinds of change: **pieces added**, **pieces substantially revised**, and **fact-check and attribution audits** — including the errors we found in our own work and exactly how we fixed them. Small typo passes and styling tweaks are left out; anything that changes what a piece *claims* is in.
 
-**152 dated entries across 3 months, one page each.** This was a single page until 14 September 2026, when it had reached 1.4 MB and was growing by about six entries a day — the same argument that split [the Glimmer Wire](https://starstuff.earth/collection-glimmer-wire.html) into one page per edition. **The cost is stated rather than hidden:** you can no longer search the whole history with your browser's find-in-page. [Site search](https://starstuff.earth/search.html) covers it, every entry keeps the address it always had, and a link to any of them still lands on the right entry.
+**153 dated entries across 4 months, one page each.** This was a single page until 14 September 2026, when it had reached 1.4 MB and was growing by about six entries a day — the same argument that split [the Glimmer Wire](https://starstuff.earth/collection-glimmer-wire.html) into one page per edition. **The cost is stated rather than hidden:** you can no longer search the whole history with your browser's find-in-page. [Site search](https://starstuff.earth/search.html) covers it, every entry keeps the address it always had, and a link to any of them still lands on the right entry.
 
 Why publish our corrections
 
 We braid real science with ideas credited to named thinkers, so the facts and the attributions have to be right. We're human, and we've gotten things wrong — a paraphrase dressed as a Sagan quote, a Martin Luther King Jr. line credited to Baldwin, a forest-wide fungal network asserted as settled fact because it rhymed so well with mutual aid. Naming those in public is part of the method, not an embarrassment to bury.
 
 The working guidelines and the full per-piece ledger live in [FACTCHECK.md](https://github.com/Stimpunks/Star-Stuff/blob/main/FACTCHECK.md). If you spot an error, [open an issue](https://github.com/Stimpunks/Star-Stuff/issues) or reach us at [stimpunks.org](https://stimpunks.org). **Corrections are mutual aid.**
+
+## [October 2026](https://starstuff.earth/changelog-2026-10.html)
+
+1 entry · 1 added · 1 fact-check · 1 site — [read the month →](https://starstuff.earth/changelog-2026-10.html)
+
+- [2026 · October 2 Glimmer Wire, edition six: six papers read end to end, and the first story held because its only summary was written by a machine](https://starstuff.earth/changelog-2026-10.html#2026-10-02-glimmer-wire-six)
 
 ## [September 2026](https://starstuff.earth/changelog-2026-09.html)
 

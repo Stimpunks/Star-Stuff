@@ -1,7 +1,7 @@
 ---
 title: "Changelog · September 2026"
 url: "https://starstuff.earth/changelog-2026-09.html"
-updated: "2026-09-21"
+updated: "2026-10-02"
 description: "Everything that changed in the Star Stuff collection during September 2026 — 91 dated entries: pieces added, pieces substantially revised, and every fact-check and attribution audit, corrections to our own errors included."
 licence: "CC-BY-SA-4.0"
 licence_url: "https://creativecommons.org/licenses/by-sa/4.0/"
