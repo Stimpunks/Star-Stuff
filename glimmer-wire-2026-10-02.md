@@ -1,7 +1,7 @@
 ---
 title: "Glimmer Wire"
 url: "https://starstuff.earth/glimmer-wire-2026-10-02.html"
-updated: "2026-10-02"
+updated: "2026-10-09"
 description: "Edition six of Glimmer Wire, 2 October 2026 — the weekly graded scan behind Glimmers. Eight items filed, six held, six papers read end to end, median lag 20 days. Sharks that hear far past the limit set for them by an organ they do not have, eleventh-century children buried with adults who were almost never their kin, a rare syndrome whose old prevalence figure was a measurement of who got tested, and a scroll built and burned on purpose so an algorithm could be marked against a known answer."
 collection: "Glimmer Wire"
 licence: "CC-BY-SA-4.0"

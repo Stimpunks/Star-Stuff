@@ -1,8 +1,8 @@
 ---
 title: "Glimmer Wire"
 url: "https://starstuff.earth/collection-glimmer-wire.html"
-updated: "2026-10-02"
-description: "The weekly graded scan behind Glimmers, one page per edition. Six editions so far, forty-three items filed and thirty held — every one carrying its grade and, more usefully, what was actually read and what was not. The section that earns the page is Held, which lists what we declined and why. A fifth sorting axis on this site: these sort by issue."
+updated: "2026-10-09"
+description: "The weekly graded scan behind Glimmers, one page per edition. Seven editions so far, forty-nine items filed and thirty-six held — every one carrying its grade and, more usefully, what was actually read and what was not. The section that earns the page is Held, which lists what we declined and why. A fifth sorting axis on this site: these sort by issue."
 licence: "CC-BY-SA-4.0"
 licence_url: "https://creativecommons.org/licenses/by-sa/4.0/"
 fact_check: "https://github.com/Stimpunks/Star-Stuff/blob/main/FACTCHECK.md"
@@ -15,7 +15,7 @@ generated_by: "tools/build-markdown.mjs, from the page's own <main> landmark"
 
 # *Glimmer Wire*
 
-A Star Stuff collection · 6 editions · weekly, Fridays · started 2 September 2026
+A Star Stuff collection · 7 editions · weekly, Fridays · started 2 September 2026
 
 A weekly read of what is going well in science and medicine, **graded before it is enjoyed**. This is the scan that sits behind [Glimmers](https://starstuff.earth/collection-glimmers.html), published with its grades showing rather than kept in a drafts folder. One page per edition, newest first, and nothing is ever deleted — including the thin weeks.
 
@@ -30,6 +30,18 @@ Nothing here is a source; it is a list of leads. What the grades mean, and why e
 ## The editions
 
 Newest first. Each card gives the tally and the median lag; the Details hold what the edition got wrong and what it could not open.
+
+### [Edition Seven](https://starstuff.earth/glimmer-wire-2026-10-09.html)
+
+9 October 2026 · Glimmer Wire · 6 filed, 6 held
+
+*Five papers read end to end, and every one of them from the same archive — because four of their publishers could not be reached at all.*
+
+A deep-sea coral that three genes placed in three different families while each reported near-maximal confidence, a date for the origin of animals pinned to a deposit where nobody found any, a solution Hans Bethe wrote down in 1931 assembled out of caesium atoms, and a hundred-species survey whose own conclusion refuses both halves of the question it was asked.
+
+**Details**
+
+**Every full text this week came through one host, and the reason is the interesting half.** Five versions of record were read end to end, all five at PubMed Central — and four of the five are openly licensed at publishers (Pensoft, PeerJ, Oxford, Nature) whose own sites refused the connection outright. An open licence is a permission; this week it was not a road. **Six items run 1 to 216 days, median 68.5**, and for the first time in four editions the lags are spread rather than clumped at the ends. **Four verified, one contested, one plausible.** The contested one is the metazoan calibration: the argument that a maximum age built on an absence proves nothing is well made, but the 800-to-700-million-year date it supports is a clock estimate specialists will argue over for a decade, and the headline’s “200 million years” is in no abstract. **Six held**, four of them because the headline is not the paper — a magnetofossil whose imaged specimen comes from the Palaeocene–Eocene Thermal Maximum rather than the 97 million years in the title, and which the paper attributes to unidentified *eukaryotes* rather than an animal; a genetic-code discovery published in October 2023 and carried in the present tense, lag 1,098 days; a synthetic ruthenium complex reported as photosynthesis; and a *Homo erectus* date from 2020 reported as this week’s. **And one measured finding of our own:** of the 76 science-news items scanned, 14 lead with an image credited to a machine and 37 more with a stock photograph. The credits are honest; the ratio is the point.
 
 ### [Edition Six](https://starstuff.earth/glimmer-wire-2026-10-02.html)
 
@@ -133,12 +145,12 @@ That last one is why the page exists. A fact-check ledger records what we checke
 
 Nothing filed here may be promoted to a zine, a [Glimmers](https://starstuff.earth/collection-glimmers.html) entry or a card without the primary source first, a [changelog](https://starstuff.earth/changelog.html) entry and its row in the fact-check ledger. The digest is a set of *leads*. Lifting a figure out of it and printing it elsewhere would be laundering a search summary into a fact, which is the precise failure this collection was built to make visible — and which the second edition committed, then published about itself.
 
-Two of the six editions have been amended after publication, and the amendments are on the pages rather than in a footnote. The second edition’s is the instructive one: re-run against the primaries, it upgraded one item, corrected all six, and the two sharpest corrections turned out to be *ours* rather than the coverage’s — we had misread a paper’s title, and described a physics result using the wrong physics. [Too Good to Check](https://starstuff.earth/too-good-to-check.html) names the ways a fact goes wrong here; this collection is where you can watch it happen.
+Two of the seven editions have been amended after publication, and the amendments are on the pages rather than in a footnote. The second edition’s is the instructive one: re-run against the primaries, it upgraded one item, corrected all six, and the two sharpest corrections turned out to be *ours* rather than the coverage’s — we had misread a paper’s title, and described a physics result using the wrong physics. [Too Good to Check](https://starstuff.earth/too-good-to-check.html) names the ways a fact goes wrong here; this collection is where you can watch it happen.
 
 ## Off the reading chain, on purpose
 
 Nearly every page on this site is linked into a single prev/next reading order, from [Start Here](https://starstuff.earth/collection-start-here.html) through to the last broadside. **This collection and every edition sit outside it**, for the same reason every [working paper](https://starstuff.earth/collection-notes.html) does: threading a weekly scan between two zines would drop a maintenance document into the middle of somebody’s reading. The editions carry prev/next to *each other* instead, which is a local order through the archive rather than a link in the site’s chain.
 
 [Stimpunks Foundation](https://stimpunks.org/) × [More Realms](https://morerealms.com/) · Glimmer Wire · L★S
- A collection, not a folder · 6 editions · one page each, nothing deleted · off the reading chain, on purpose
+ A collection, not a folder · 7 editions · one page each, nothing deleted · off the reading chain, on purpose
  stimpunks.org · morerealms.com · starstuff.earth · [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
