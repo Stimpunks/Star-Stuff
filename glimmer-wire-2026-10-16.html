@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0a0a14">
+<link rel="canonical" href="https://starstuff.earth/glimmer-wire-2026-10-16.html">
+<link rel="alternate" type="text/markdown" href="https://starstuff.earth/glimmer-wire-2026-10-16.md" title="Glimmer Wire &mdash; Markdown source">
+<meta name="description" content="Edition eight of Glimmer Wire, 16 October 2026 &mdash; the weekly graded scan behind Glimmers. Eight items filed, eight held, nine papers read end to end, median lag 19 days. A dinosaur that waited a hundred and two years in a museum drawer, an octopus genome whose own word for interdependence is entanglement, a mouse embryo that wrote down its own family tree, and an assumption underpinning how we read every planet&rsquo;s chemistry that had never once been tested.">
+<!-- Open Graph / link unfurl -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Star Stuff &middot; Stimpunks Foundation &times; More Realms">
+<meta property="og:url" content="https://starstuff.earth/glimmer-wire-2026-10-16.html">
+<meta property="og:title" content="Glimmer Wire &mdash; edition of 16 October 2026">
+<meta property="og:description" content="Eight filed, eight held, nine papers read end to end &mdash; and a headline that puts a word in quotation marks which nobody on the page is ever quoted as saying.">
+<meta property="og:image" content="https://starstuff.earth/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A rainbow-hued cosmic image &mdash; we are all made of star stuff.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Glimmer Wire &mdash; edition of 16 October 2026">
+<meta name="twitter:description" content="The week a fossil acquired in 1924 was finally described, and the week one science-news headline scare-quoted a word that appears nowhere in its own story.">
+<meta name="twitter:image" content="https://starstuff.earth/og-card.jpg">
+<title>Glimmer Wire — Edition of 16 October 2026 — Stimpunks × More Realms</title>
+<link rel="stylesheet" href="starstuff.css">
+<style>
+  :root {
+    --void:  var(--sp-void-deep);
+    --deep:  var(--sp-deep);
+    --page:  var(--sp-page);
+    --card:  var(--sp-card);
+    --violet:var(--sp-purple);
+    --pink:  var(--sp-pink);
+    --gold:  var(--sp-gold);
+    --cyan:  var(--sp-cyan);
+    --green: var(--sp-green);
+    --star-white: var(--sp-white-soft);
+    --stardust:   var(--sp-secondary-soft);
+    --secondary:  var(--sp-secondary);
+    --muted: var(--sp-muted);
+    --dim:   var(--sp-dim);
+    --dim2:  var(--sp-dim-soft);
+    /* Gold leads: it is the Glimmers collection accent, and this page is the
+       working scan behind that collection rather than a Notes house colour. */
+    --accent:var(--sp-gold);
+    --border: rgba(251,191,36,0.16);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  /* One unscoped rule: the first draft scoped it to .notice and .seed, and the
+     dead-class gate caught the .caveat use it therefore never reached. */
+  .mono { font-family: 'Space Mono', monospace; }
+
+  html, body {
+    background: var(--void);
+    font-family: 'Atkinson Hyperlegible Next', system-ui, sans-serif;
+    color: var(--star-white);
+    line-height: 1.7;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Starfield, tinted gold for Glimmers. Inline and per-page by design —
+     see starstuff.css on why the themed gradient art is not shared. */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background-image:
+      radial-gradient(1px 1px at 11% 14%, rgba(251,191,36,0.70) 0%, transparent 100%),
+      radial-gradient(1px 1px at 27% 41%, rgba(244,242,251,0.60) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 43% 9%, rgba(251,191,36,0.55) 0%, transparent 100%),
+      radial-gradient(1px 1px at 61% 68%, rgba(167,139,250,0.50) 0%, transparent 100%),
+      radial-gradient(2px 2px at 78% 25%, rgba(244,242,251,0.50) 0%, transparent 100%),
+      radial-gradient(1px 1px at 87% 57%, rgba(251,191,36,0.55) 0%, transparent 100%),
+      radial-gradient(1px 1px at 93% 80%, rgba(244,242,251,0.70) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 6% 62%, rgba(251,191,36,0.45) 0%, transparent 100%),
+      radial-gradient(1px 1px at 34% 87%, rgba(244,242,251,0.60) 0%, transparent 100%),
+      radial-gradient(1px 1px at 54% 47%, rgba(34,211,238,0.45) 0%, transparent 100%),
+      radial-gradient(2px 2px at 19% 83%, rgba(251,191,36,0.45) 0%, transparent 100%),
+      radial-gradient(1px 1px at 71% 7%, rgba(244,242,251,0.75) 0%, transparent 100%),
+      radial-gradient(1px 1px at 47% 64%, rgba(251,191,36,0.40) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 38% 23%, rgba(244,242,251,0.50) 0%, transparent 100%),
+      radial-gradient(1px 1px at 64% 92%, rgba(167,139,250,0.45) 0%, transparent 100%),
+      radial-gradient(1px 1px at 82% 44%, rgba(251,191,36,0.50) 0%, transparent 100%);
+    animation: twinkle-anim 9s ease-in-out infinite;
+  }
+
+  .doc-shell { position: relative; z-index: 1; max-width: 820px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+
+  .nav-brand { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--dim2); margin-bottom: 2rem; }
+  .nav-brand a { color: inherit; }
+
+  /* ---------- Hero ---------- */
+
+  .hero { margin-bottom: 2.5rem; }
+  .hero-eyebrow { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--secondary); margin-bottom: 1rem; }
+  .hero-eyebrow a { color: inherit; }
+  .hero-title { font-size: clamp(2.2rem, 7vw, 3.4rem); font-weight: 800; line-height: 1.05; letter-spacing: -0.02em; color: var(--star-white); text-wrap: balance; margin: 0 0 1rem; scroll-margin-top: 5rem; }
+  .hero-title .star { color: var(--gold); }
+  .hero-byline { font-size: 1.05rem; color: var(--muted); max-width: 44ch; margin-bottom: 0.9rem; }
+  .hero-sub { font-size: 0.95rem; color: var(--stardust); max-width: 62ch; }
+  .hero-rule { border: 0; height: 2px; background: var(--gold); opacity: 0.5; border-radius: 2px; margin: 1.5rem 0 1.1rem; }
+
+  .dateline { font-family: 'Space Mono', monospace; font-size: 0.68rem; letter-spacing: 0.1em; color: var(--secondary); display: flex; flex-wrap: wrap; gap: 0.4rem 1.1rem; font-variant-numeric: tabular-nums; }
+  .dateline i { font-style: normal; color: var(--dim); }
+  .dateline b { color: var(--gold); font-weight: 700; }
+
+  /* ---------- Standing notice ---------- */
+
+  .notice { background: var(--card); border-left: 3px solid var(--pink); border-radius: 8px; padding: 1.1rem 1.3rem; margin-bottom: 2.75rem; display: flex; flex-direction: column; gap: 0.6rem; }
+  .notice h2 { font-size: 0.62rem; font-family: 'Space Mono', monospace; letter-spacing: 0.18em; text-transform: uppercase; color: var(--pink); font-weight: 700; margin: 0; scroll-margin-top: 5rem; }
+  .notice p { font-size: 0.9rem; color: var(--stardust); }
+
+  /* ---------- Sections ---------- */
+
+  h2.section { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.01em; color: var(--sec-accent, var(--star-white)); margin: 0 0 0.4rem; scroll-margin-top: 5rem; text-wrap: balance; }
+  .section-rule { height: 2px; background: var(--sec-accent, var(--gold)); opacity: 0.5; margin-bottom: 0.9rem; border-radius: 2px; }
+  .section-intro { color: var(--muted); font-size: 0.95rem; margin-bottom: 1.6rem; max-width: 62ch; }
+  .section-block { margin-bottom: 3.25rem; }
+
+  /* ---------- Grading key ---------- */
+
+  .key { display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); gap: 0.75rem; margin-bottom: 1.6rem; }
+  .key div { border: 1px solid var(--border); border-radius: 8px; padding: 0.7rem 0.85rem; font-size: 0.8rem; color: var(--stardust); display: flex; flex-direction: column; gap: 0.3rem; }
+  .key span { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.14em; font-weight: 700; }
+  .key .k-verified  { color: var(--green); }
+  .key .k-plausible { color: var(--gold); }
+  .key .k-contested { color: var(--pink); }
+  .key .k-held      { color: var(--dim); }
+
+  /* ---------- Entries ---------- */
+
+  .wire-list { display: flex; flex-direction: column; gap: 1.5rem; }
+  .wire-item { background: var(--card); border: 1px solid var(--border); border-left: 3px solid var(--e-accent, var(--gold)); border-radius: 8px; padding: 1.4rem 1.5rem 1.5rem; display: flex; flex-direction: column; gap: 0.9rem; }
+
+  .meta { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.35rem 1rem; font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.1em; color: var(--dim); font-variant-numeric: tabular-nums; }
+  .meta i { font-style: normal; color: var(--secondary); }
+  .meta .grade { font-weight: 700; letter-spacing: 0.14em; color: var(--e-accent, var(--gold)); }
+  .meta .grade.contested { color: var(--pink); }
+  .meta .grade.verified  { color: var(--green); }
+
+  /* Lag: how long the finding had been public before a news wire carried it.
+     A real axis for a digest — several of these are months old, and the number
+     is what settled the weekly cadence. Bar plus figure, never the bar alone. */
+  .lag { display: flex; align-items: center; gap: 0.5rem; width: 100%; margin-top: 0.1rem; }
+  .lag-label { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.1em; color: var(--dim); white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .lag-track { flex: 1; height: 3px; background: rgba(184,174,208,0.16); border-radius: 2px; overflow: hidden; min-width: 3rem; }
+  .lag-fill { display: block; height: 100%; background: var(--e-accent, var(--gold)); opacity: 0.75; border-radius: 2px; }
+
+  .wire-item h3 { font-size: 1.28rem; font-weight: 800; line-height: 1.25; letter-spacing: -0.01em; color: var(--star-white); text-wrap: balance; scroll-margin-top: 5rem; }
+  .finding { color: var(--star-white); }
+
+  .frame, .placement, .caveat { border-radius: 6px; padding: 0.8rem 0.95rem; font-size: 0.92rem; }
+  .frame { background: rgba(10,10,20,0.55); border-left: 2px solid var(--e-accent, var(--gold)); color: var(--star-white); }
+  .placement { background: rgba(10,10,20,0.4); border-left: 2px solid var(--secondary); color: var(--stardust); }
+  .caveat { background: rgba(10,10,20,0.4); border-left: 2px solid var(--pink); color: var(--stardust); }
+  .frame b, .placement b, .caveat b { display: block; font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 0.35rem; font-weight: 700; }
+  .frame b     { color: var(--e-accent, var(--gold)); }
+  .placement b { color: var(--secondary); }
+  .caveat b    { color: var(--pink); }
+
+  .cite { font-family: 'Space Mono', monospace; font-size: 0.63rem; line-height: 1.75; color: var(--dim2); border-top: 1px solid var(--border); padding-top: 0.75rem; word-break: break-word; }
+  .cite b { color: var(--secondary); font-weight: 700; }
+  .cite a { color: var(--secondary); }
+
+  /* ---------- Held ---------- */
+
+  .held { display: flex; flex-direction: column; gap: 1rem; }
+  .held-item { border: 1px dashed rgba(184,174,208,0.3); border-radius: 8px; padding: 1.1rem 1.25rem; display: flex; flex-direction: column; gap: 0.5rem; }
+  .held-item h3 { font-size: 1.02rem; font-weight: 700; color: var(--stardust); line-height: 1.3; scroll-margin-top: 5rem; }
+  .held-item p { font-size: 0.9rem; color: var(--muted); }
+  .held-item .why { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--dim); font-weight: 700; }
+
+  /* ---------- Seedbed ---------- */
+
+  .seeds { display: flex; flex-direction: column; gap: 1.1rem; }
+  .seed { background: var(--card); border-radius: 8px; border-left: 3px solid var(--s-accent, var(--violet)); padding: 1.1rem 1.25rem; display: flex; flex-direction: column; gap: 0.5rem; }
+  .seed-kind { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; color: var(--s-accent, var(--violet)); }
+  .seed h3 { font-size: 1.08rem; font-weight: 800; color: var(--star-white); line-height: 1.3; scroll-margin-top: 5rem; }
+  .seed p { font-size: 0.92rem; color: var(--stardust); }
+  .seed .src { font-family: 'Space Mono', monospace; font-size: 0.62rem; color: var(--dim2); line-height: 1.7; word-break: break-word; }
+
+  /* ---------- Refusals ---------- */
+
+  .refusals { background: var(--card); border: 1px solid rgba(244,114,182,0.3); border-radius: 8px; padding: 1.4rem 1.5rem; display: flex; flex-direction: column; gap: 0.85rem; }
+  .refusals p { font-size: 0.94rem; color: var(--star-white); }
+  .refusals p strong { color: var(--pink); font-weight: 700; }
+
+  /* ---------- Edition ----------
+     ONE EDITION PER PAGE as of 2026-09-04. This used to be a single page with
+     every edition stacked newest-first, and this comment used to say new
+     editions are PREPENDED — they are not. A new edition is a NEW FILE,
+     `glimmer-wire-YYYY-MM-DD.html`, carded on collection-glimmer-wire.html;
+     see that page and CLAUDE.md for what else it owes. Nothing is ever deleted:
+     the Held list is the record this collection exists for, and an archive of
+     only the good weeks would assert a cadence that did not happen.
+     The `.edition + .edition` rule below is now inert here and is kept so the
+     two shipped editions stay byte-comparable with what they were. */
+  .edition + .edition { margin-top: 4rem; padding-top: 2.5rem; border-top: 1px solid var(--border); }
+  .edition-tally { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.12em; color: var(--dim); margin-bottom: 2rem; font-variant-numeric: tabular-nums; }
+  .colophon-footer { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--dim2); line-height: 2.2; margin-top: 3rem; padding-top: 1.4rem; border-top: 1px solid var(--border); }
+  .colophon-footer a { color: inherit; }
+
+  /* Page-specific print work. The --sp-* aliases above give the token inversion
+     for free; these are the hardcoded rgba surfaces and the lag bar, which the
+     shared sheet cannot reach. */
+  @media print {
+    body::before { display: none !important; }
+    .doc-shell { max-width: none; padding: 0 0 1rem; }
+    .wire-item, .notice, .seed, .refusals, .held-item, .key div {
+      background: transparent !important; border-color: #999999 !important; break-inside: avoid;
+    }
+    .wire-item, .notice, .seed { border-left-color: #333333 !important; }
+    .frame, .placement, .caveat { background: transparent !important; border-left-color: #666666 !important; }
+    .lag-track { background: #dddddd !important; }
+    .lag-fill { background: #555555 !important; opacity: 1; }
+    .hero-rule, .section-rule { background: #333333 !important; opacity: 1; }
+  }
+
+  @media (max-width: 600px) {
+    .doc-shell { padding: 2rem 1.3rem 3rem; }
+  }
+</style>
+
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Glimmer Wire — edition of 16 October 2026","description":"Edition eight of Glimmer Wire, 16 October 2026 — the weekly graded scan behind Glimmers. Eight items filed, eight held, nine papers read end to end, median lag 19 days. A dinosaur that waited a hundred and two years in a museum drawer, an octopus genome whose own word for interdependence is entanglement, a mouse embryo that wrote down its own family tree, and an assumption underpinning how we read every planet’s chemistry that had never once been tested.","image":"https://starstuff.earth/og-card.jpg","url":"https://starstuff.earth/glimmer-wire-2026-10-16.html","mainEntityOfPage":"https://starstuff.earth/glimmer-wire-2026-10-16.html","datePublished":"2026-10-16","dateModified":"2026-10-16","author":{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/"},"publisher":[{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/","logo":{"@type":"ImageObject","url":"https://starstuff.earth/og-card.jpg"}},{"@type":"Organization","name":"More Realms","url":"https://morerealms.com/"}],"isPartOf":{"@type":"WebSite","name":"Star Stuff","url":"https://starstuff.earth/"},"isPartOf_collection":"https://starstuff.earth/collection-glimmer-wire.html"}</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<div class="doc-shell">
+
+  <!-- prev/next here move between EDITIONS, not along the site's global reading
+       chain: Glimmer Wire sits outside that chain by decision, like every other
+       working paper. See collection-glimmer-wire.html and DECISIONS.md.
+       A NEW EDITION IS A NEW FILE, never a second .edition block on this one. -->
+  <nav class="ss-nav" style="--nav-accent:#fbbf24;" aria-label="Star Stuff collection">
+    <span class="ss-nav-home-group"><a class="ss-nav-home" href="index.html"><span class="ss-star" aria-hidden="true">&#9733;</span> stuff</a><a class="ss-nav-about" href="about.html">about</a>
+      <a class="ss-nav-search" href="search.html">search</a><a class="ss-nav-privacy" href="privacy.html">privacy</a></span>
+    <span class="ss-nav-links">
+      <a class="ss-nav-prev" href="glimmer-wire-2026-10-09.html"><span class="ss-nav-arrow" aria-hidden="true">&lsaquo;</span> <span class="ss-nav-label">9 October 2026</span></a>
+    </span>
+    <a class="ss-nav-collection" href="collection-glimmer-wire.html"><span class="ss-nav-collection-label">Collection</span> <span class="ss-nav-collection-name">Glimmer Wire</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
+  </nav>
+<main id="main" tabindex="-1">
+
+  <div class="nav-brand"><a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks</a> &times; <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a> &middot; Glimmer &#9733; Wire &middot; Edition Eight</div>
+
+  <header class="hero">
+    <div class="hero-eyebrow"><a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks Foundation</a> &times; <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a> &middot; Working Paper</div>
+    <h1 class="hero-title" id="masthead">Edition of 16 October 2026</h1>
+    <p class="hero-byline">A weekly read of what is going well in science and medicine, graded before it is enjoyed.</p>
+    <p class="hero-sub">The eighth edition of <a href="collection-glimmer-wire.html">Glimmer Wire</a>, the scan that sits behind <a href="collection-glimmers.html">Glimmers</a>. <strong>Nine papers were read end to end this week, the most in the eight editions of this page, and six of the nine are filed below.</strong> Items are sorted by <em>lag</em>, which runs from <strong>0 days to 236</strong>, median <strong>19</strong> &mdash; and the zero is real: a dinosaur was described and reported on the same day, after waiting <strong>a hundred and two years</strong> in a museum for somebody to look at it. <strong>Five are graded verified, one contested, two plausible.</strong> The section that matters most is <a href="#held-items-1016">Held</a>, and the sharpest of its eight is a headline that puts a word inside quotation marks which appears nowhere else on its own page. <strong>One filed item was public as a preprint seventy-three days before the journal carried it</strong>, which is the axis&rsquo;s standing blind spot showing itself rather than hiding.</p>
+    <hr class="hero-rule">
+    <p class="dateline">
+      <span><i>Edition</i> <b>Eight</b></span>
+      <span><i>Published</i> <b>16 October 2026</b></span>
+      <span><i>Amended</i> <b>&mdash;</b></span>
+      <span><i>Verified</i> <b>5 of 8</b></span>
+    </p>
+  </header>
+
+  <div class="edition" id="edition-2026-10-16">
+    <p class="edition-tally">8 filed &middot; 8 held &middot; 3 seeds &middot; 5 verified &middot; median lag 19 d</p>
+
+  <div class="notice" role="region" aria-labelledby="what-was-read-1016">
+    <h2 id="what-was-read-1016">What was actually read: nine papers of record in full, and the one host that made eight of them possible</h2>
+    <p><strong>Answered when tried, by name:</strong> <span class="mono">api.crossref.org</span>, <span class="mono">pmc.ncbi.nlm.nih.gov</span> (including its <span class="mono">idconv</span> identifier service, which resolved nine PubMed Central copies from bare DOIs in a single request), <span class="mono">api.semanticscholar.org</span>, <span class="mono">doi.org</span>, <span class="mono">www.sciencedaily.com</span> and <span class="mono">www.eurekalert.org</span>. <strong>Refused at the network layer &mdash; the gateway answered nothing at all to the connection, which is not a paywall and is recorded as what it was:</strong> <span class="mono">royalsocietypublishing.org</span>, <span class="mono">www.nature.com</span>, <span class="mono">academic.oup.com</span>, <span class="mono">www.tandfonline.com</span>, <span class="mono">export.arxiv.org</span>, <span class="mono">eutils.ncbi.nlm.nih.gov</span>, <span class="mono">europepmc.org</span>, <span class="mono">www.ebi.ac.uk</span>, <span class="mono">api.unpaywall.org</span> and <span class="mono">www.uea.ac.uk</span>. <strong>Refused by the publisher, with a real answer:</strong> <span class="mono">www.science.org</span>, <span class="mono">HTTP&nbsp;403</span> in a body of <strong>5,689 bytes</strong> &mdash; last week the same refusal measured 5,657, so the door is the same door and the notice on it has been edited. <strong>Rate-limited:</strong> <span class="mono">www.biorxiv.org</span> (<span class="mono">HTTP&nbsp;429</span> on every article path, a fourth week running) and <span class="mono">api.semanticscholar.org</span>, which answered three queries and then refused the next two.</p>
+    <p><strong>One correction to make before anything is built on that list: <span class="mono">doi.org</span> is not among the failures, and last week&rsquo;s method would have put it there.</strong> A request to <span class="mono">doi.org</span> with redirects followed returns nothing, which looks exactly like a dead resolver; with redirects switched off it returns <span class="mono">HTTP&nbsp;302</span> and a 305-byte body containing the correct target. <em>The resolver worked every time. What failed was the publisher it pointed at.</em> A probe that follows a redirect reports the health of the last host in the chain and files it under the name of the first, and this page came within one line of publishing that the DOI system was down.</p>
+    <p><strong>PubMed Central repeated both of its documented behaviours, and one number has now held for four consecutive weeks.</strong> A wrong search path still returns the PMC home page at <span class="mono">HTTP&nbsp;200</span> &mdash; <strong>67,236 bytes, the identical figure recorded on 25 September, 2 October and 9 October</strong>. That is a search path only: a genuine article path for a PMCID that does not exist answers a proper <span class="mono">404</span>, so the archive is not careless, it is inconsistent in one place. And one of the nine articles requested was met on the first attempt by Google&rsquo;s <span class="mono">reCAPTCHA</span>, served at <span class="mono">200</span> in a body of <strong>20,422 bytes</strong> &mdash; inside the 20,416-to-20,485 band logged last week. It cleared on the third try with a different user agent. <strong>Eight of the nine full texts on this page were read at PubMed Central and nowhere else was possible</strong>; the ninth, the blast-fungus paper, was also read there. <em>Four of those publishers&rsquo; own sites are openly licensed and unreachable, which is the same sentence this page wrote last week and would rather not write again.</em></p>
+    <p><strong>Two papers were filed on an abstract alone, and both are marked plausible rather than verified on their own faces.</strong> The <em>Royal Society Open Science</em> dinosaur and the <em>Science</em> lineage recorder are both openly licensed &mdash; the first CC&nbsp;BY outright, the second hybrid open access with a CC&nbsp;BY licence recorded at Semantic Scholar &mdash; and neither publisher would open. In both cases the abstract deposited at Crossref is complete and carries the claim this page makes; in neither case have the methods, the controls or the limitations been read. <strong>A complete abstract is a better source than a press release and a worse one than a paper, and the grade says so.</strong></p>
+    <p><strong>The preprint blind spot showed itself this week, so it is reported rather than inferred.</strong> The lag axis measures journal publication and cannot see a preprint. Searching Crossref for posted content under the lineage paper&rsquo;s own title returns <strong>bioRxiv DOI 10.64898/2026.07.29.741625, posted 30 July 2026</strong>, whose deposited abstract is the same text, sentence for sentence, as the one the journal deposited. So the bar below says 3 days and the work has in fact been public for <strong>73</strong>. <em>We could not read the preprint either</em> &mdash; bioRxiv answered <span class="mono">429</span> &mdash; so the comparison is between two deposited abstracts, which is what it is and not more. None of the other seven filed items returned a preprint on the same search.</p>
+    <p><strong>The picture census was run a second time, by a different method, and that is why it is not a trend.</strong> Last week this page counted 14 machine-credited images among 76 science-news items. This week&rsquo;s sweep deduplicated eight ScienceDaily topic feeds down to <strong>43 releases in the seven days to 16 October</strong> and fetched 42 of them; of those, <strong>6 carry an image credited <span class="mono">AI/ScienceDaily.com</span> and 22 more carry a Shutterstock photograph</strong> &mdash; <strong>28 of 42</strong>, two thirds, whose picture of a finding comes from neither the research nor the institution that did it. The two denominators were built differently and the two numbers must not be subtracted from one another. <em>One of the eight items filed below carries a machine-made picture.</em> We are not saying the illustrations deceive anyone; every credit line is honest. We are saying we counted, twice, and will keep counting by one method from here.</p>
+  </div>
+
+  <div class="section-block" role="region" style="--sec-accent: var(--gold);" aria-labelledby="filed-1016">
+    <!-- TABLE OF CONTENTS -->
+    <nav class="ss-toc" style="--toc-accent:#fbbf24;" aria-label="Table of contents">
+      <h2>Table of Contents</h2>
+      <ul>
+        <li><a href="#filed-1016">Filed</a></li>
+        <li><a href="#held-items-1016">Held</a></li>
+        <li><a href="#seedbed-1016">Seedbed</a></li>
+        <li><a href="#refusals-1016">Not</a></li>
+      </ul>
+    </nav>
+
+    <h2 class="section" id="filed-1016">Filed</h2>
+    <div class="section-rule" aria-hidden="true"></div>
+    <p class="section-intro">Sorted by lag, shortest first. Bars are scaled to the longest item, 236 days. <strong>Eight items at 0, 2, 3, 19, 19, 45, 162 and 236 days, median 19</strong> &mdash; a front-loaded distribution with a long tail, where last week&rsquo;s was evenly spread. <strong>Five verified, one contested, two plausible.</strong> Six were read end to end as versions of record; two rest on complete publisher-deposited abstracts and say so.</p>
+
+    <div class="key" role="list">
+      <div role="listitem"><span class="k-verified">Verified</span> Primary source read and confirmed.</div>
+      <div role="listitem"><span class="k-plausible">Plausible</span> Finding sound and metadata confirmed; version of record not read.</div>
+      <div role="listitem"><span class="k-contested">Contested</span> Specialists disagree, or the claim outruns the method.</div>
+      <div role="listitem"><span class="k-held">Held</span> Could not be traced to a source that supports it.</div>
+    </div>
+
+    <div class="wire-list">
+
+      <article class="wire-item" id="megaraptor-1016" style="--e-accent: var(--gold);" aria-labelledby="megaraptor-1016-title">
+        <p class="meta">
+          <span class="grade">Plausible</span>
+          <span><i>Published online</i> 2026-10-14</span>
+          <span><i>Journal</i> Royal Society Open Science</span>
+          <span><i>Read</i> the deposited abstract, in full</span>
+        </p>
+        <p class="lag"><span class="lag-label">Lag 0 d</span><span class="lag-track" aria-hidden="true"><span class="lag-fill" style="width:0.4%"></span></span></p>
+        <h3 id="megaraptor-1016-title">A hundred and two years in a drawer, and then a new branch of the family</h3>
+        <p class="finding">The Natural History Museum acquired a piece of the back of a skull from the Isle of Wight in <strong>1924</strong>. Nobody established what it was until this week. Described now as <em>Invictibellatrix amberina</em>, it is the first megaraptoran known from Europe &mdash; a group of narrow-skulled, long-armed, hook-clawed predators related to the tyrannosaurs and, until this fossil, absent from the continent entirely. <strong>The abstract&rsquo;s own methodological claim is the better half.</strong> Theropod braincases, it says, &ldquo;are often regarded as morphologically and phylogenetically conservative, but we demonstrate that neurocranial characters provide essential data that can help clarify the phylogenetic relationships of theropods.&rdquo; Three such characters &mdash; a sub-circular occipital condyle, a sub-oval foramen magnum, a sagittal nuchal crest &mdash; place the animal in Megaraptora as an early-diverging member. Folding it into a biogeographical analysis then shifts a second conclusion: non-megaraptorid megaraptorans &ldquo;likely had a cosmopolitan distribution in the Early Cretaceous,&rdquo; and their later absence from Laurasia &ldquo;is best explained by regional extinction.&rdquo;</p>
+        <div class="frame">
+          <b>The star stuff frame</b>
+          <strong>The part of the skeleton everybody agreed was uninformative turned out to be the part that answered.</strong> A character written off as conservative is one nobody scores, and a character nobody scores cannot contradict anybody &mdash; so the judgement protects itself. It took a hundred and two years and somebody willing to look at the dull bone. <em>And the second finding is last week&rsquo;s argument arriving from the far end:</em> an absence in the Late Cretaceous record of Laurasia, which could have been read as an absence of the animals, is read instead as an extinction that happened there. Same discipline, same week, the opposite sign &mdash; and in both cases what decides it is whether anyone checked that the method could have seen the thing.
+        </div>
+        <div class="caveat">
+          <b>What has not been read, and one number that is not the paper&rsquo;s</b>
+          <strong>This is a complete deposited abstract and nothing more.</strong> <span class="mono">royalsocietypublishing.org</span> refused the connection outright, three ways, and there is no PubMed Central copy, so the phylogenetic matrix, the comparative anatomy and the biogeographical analysis are all unread. The paper is CC&nbsp;BY. <strong>The animal&rsquo;s size is not in the abstract</strong> &mdash; the three-to-four metres quoted everywhere is the lead author speaking in University College London&rsquo;s release, and he frames it as inference, &ldquo;based on what we know about its closest relatives.&rdquo; It is not on this page as a measurement. <strong>The 1924 date is the release&rsquo;s too</strong>, not the abstract&rsquo;s. And a lag of zero is a real zero rather than a rounding: journal and wire carry the same date, 14 October.
+        </div>
+        <div class="placement">
+          <b>Where it goes</b>
+          <span class="mono">megaraptor</span>, <span class="mono">Isle of Wight</span> and <span class="mono">Invictibellatrix</span> return nothing across this site; <span class="mono">braincase</span> appears once, on <a href="nobody-knows-where-the-dog-came-from-zine.html">No.&nbsp;98</a>, about dogs. What is unspent is the thing the fossil did for a century, which is <strong>nothing, visibly, while being the evidence the whole time</strong>. Last week an item was held because a catalogue of eighteen hominin fossils undescribed since 1992 was reported as a dating result; this is the same labour on the front page instead. Two weeks is a pattern worth a piece rather than a line. See the <a href="#seed-drawer-1016">seedbed</a>.
+        </div>
+        <p class="cite"><b>Morrison, C., Scherer, C.&nbsp;R., Mannion, P., Porro, L.&nbsp;B., Clark, B., Folkes, D.&nbsp;D. &amp; Barrett, P.&nbsp;M.</b> &ldquo;A new megaraptoran dinosaur from the Lower Cretaceous Wessex Formation, UK, and its implications for theropod evolution and biogeography.&rdquo; <em>Royal Society Open Science</em> <strong>13</strong>(10), online 14 October 2026. <b>DOI</b> 10.1098/rsos.260937, CC&nbsp;BY. <b>Read:</b> the complete abstract as deposited by the publisher at Crossref; every quotation above is verbatim from it. <b>Not read:</b> the paper. <span class="mono">royalsocietypublishing.org</span> is refused at the network layer and no PMCID exists. <b>Wire:</b> ScienceDaily, 14 October 2026.</p>
+      </article>
+
+      <article class="wire-item" id="coleoid-1016" style="--e-accent: var(--cyan);" aria-labelledby="coleoid-1016-title">
+        <p class="meta">
+          <span class="grade verified">Verified</span>
+          <span><i>Published online</i> 2026-10-09</span>
+          <span><i>Journal</i> Nature Communications</span>
+          <span><i>Read</i> the paper, in full</span>
+        </p>
+        <p class="lag"><span class="lag-label">Lag 2 d</span><span class="lag-track" aria-hidden="true"><span class="lag-fill" style="width:0.8%"></span></span></p>
+        <h3 id="coleoid-1016-title">The octopus genome has a word for interdependence, and the word is entanglement</h3>
+        <p class="finding">Squid, cuttlefish and octopus share an ancestor in which the chromosomes were comprehensively shuffled, after which each lineage went on rearranging separately. This study asks what that did to <em>gene regulation</em> rather than to gene content, by mapping the physical folding of the genome &mdash; Micro-C, ATAC-seq and RNA-seq across three species, several tissues and several developmental stages. The answer has two layers that behave differently. <strong>The large chromatin domains are broadly conserved; the loops inside them are not</strong>, with hundreds species-, tissue- and stage-specific and enriched for dynamic regulatory signatures. Gene pairs held in contact across all three species are the most strongly co-expressed and the most housekeeping in function; pairs in no conserved contact are the least. A CRISPR&ndash;Cas9 knockout of one candidate regulatory sequence inside a conserved loop, in the squid <em>Euprymna berryi</em>, &ldquo;demonstrates the role of loops in neural development.&rdquo; <strong>The authors then name what they think they are looking at, and the name is the finding.</strong> <em>Regulatory entanglement:</em> &ldquo;the progressive accumulation of interdependencies among genomic elements, shaped by chromosomal rearrangement, spatial proximity, and regulatory interactions, such that regions brought into proximity become embedded within nested regulatory architectures.&rdquo;</p>
+        <div class="frame">
+          <b>The star stuff frame</b>
+          <strong>Things that end up near each other become things that depend on each other, and then neither can move.</strong> That is not a metaphor this page is laying over the data; it is the paper&rsquo;s own proposed mechanism, with its own coined term, measured in contact maps. <em>And it is interdependence with a cost stated out loud</em>, which is why it is worth more to us than a warmer version would be: the authors hypothesise that the more entangled octopus architecture &ldquo;imposes topological and regulatory constraints that limit the capacity for further genome expansion in this lineage,&rdquo; where the squid and cuttlefish, less entangled, expanded further. Relation is not free. It builds the thing and it closes doors behind it, and the paper says both halves in one sentence.
+        </div>
+        <div class="caveat">
+          <b>The word in the headline is in no part of the paper</b>
+          <strong><span class="mono">intelligence</span> appears zero times in this paper.</strong> The feed headline is &ldquo;a surprising genetic twist behind octopus intelligence&rdquo;; the abstract&rsquo;s phrase is &ldquo;large and elaborately structured nervous systems, novel organs, and complex behaviours,&rdquo; which is a description of anatomy and conduct and makes no claim about a faculty. The paper is careful in the other direction too: entanglement is proposed and the expansion limit is explicitly a hypothesis, the CRISPR work is one regulatory region in one species &mdash; and the authors note that the repetitive nature of these genomes made the guides hard to design. <strong>We have not converted &ldquo;hundreds of loops&rdquo; into a figure</strong>, because the paper reports loop counts per comparison rather than one total, and a single number here would be ours.
+        </div>
+        <div class="placement">
+          <b>Where it goes</b>
+          <span class="mono">coleoid</span> returns nothing; <span class="mono">cephalopod</span> appears on <a href="the-cuttlefish-that-cannot-see-colour-zine.html">No.&nbsp;96</a> and <a href="five-times-a-crab-zine.html">No.&nbsp;31</a>, neither about genomes. <span class="mono">interdependen</span> is all over this site and <span class="mono">entangl</span> appears on thirteen pages &mdash; but as a figure of speech, and never once as a mechanism with a measurement behind it. <strong>That gap is the opportunity.</strong> This site says interdependence constantly; here is a paper that says it in base pairs, coins a term for it, and reports what it costs. A <a href="collection-more-than-human.html">More Than Human</a> piece, and see the <a href="#seed-entangle-1016">seedbed</a>.
+        </div>
+        <p class="cite"><b>Rogers, T.&nbsp;F., Stock, J., Schulz, N.&nbsp;G., Yal&ccedil;in, G., Rencken, S., Weissenbacher, A., Clarence, T., Schultz, D.&nbsp;T., Ragsdale, C.&nbsp;W., Albertin, C.&nbsp;B. &amp; Simakov, O.</b> &ldquo;Genome reorganisation and expansion shape 3D genome architecture and define a distinct regulatory landscape in coleoid cephalopods.&rdquo; <em>Nature Communications</em> <strong>17</strong>: 10319, online 9 October 2026. <b>DOI</b> 10.1038/s41467-026-77625-7, CC&nbsp;BY. <b>Read:</b> the published article in full at PubMed Central (PMC13652810), including the results, the CRISPR experiment and the entanglement proposal; every quotation above is from it. <b>Not read:</b> the supplementary notes and data files holding the per-comparison loop inventories. <span class="mono">www.nature.com</span> is refused at the network layer. <b>Wire:</b> ScienceDaily, 11 October 2026.</p>
+      </article>
+
+      <article class="wire-item" id="typewriter-1016" style="--e-accent: var(--pink);" aria-labelledby="typewriter-1016-title">
+        <p class="meta">
+          <span class="grade">Plausible</span>
+          <span><i>Published online</i> 2026-10-08</span>
+          <span><i>Journal</i> Science</span>
+          <span><i>Read</i> two deposited abstracts, in full</span>
+        </p>
+        <p class="lag"><span class="lag-label">Lag 3 d</span><span class="lag-track" aria-hidden="true"><span class="lag-fill" style="width:1.3%"></span></span></p>
+        <h3 id="typewriter-1016-title">One mouse embryo wrote down its own family tree as it went</h3>
+        <p class="finding">A DNA Typewriter is a stretch of engineered sequence &mdash; the authors call it a tape &mdash; inserted into the genome of a fertilised egg, which records successive edits in order, so that a cell&rsquo;s ancestry is written in its own DNA rather than inferred afterwards. Applied here across nearly two weeks of mouse development, it yields, <em>from a single embryo</em>, &ldquo;a time-calibrated, parsimony-supported, zygote-rooted phylogeny of 1.28 million transcriptionally profiled cells.&rdquo; Several things fall out of having the tree and the cell types together. <strong>A burst of editing marks the daughters of the very first cleavage unambiguously</strong>, which gives the experiment two inline replicates it did not have to arrange. Clonal dominance arising during gastrulation is quantified. Siblings in the tree share cell type far above chance, and <strong>the siblings that do <em>not</em> match mark terminal differentiations</strong> &mdash; the disagreements are the signal. Sweeping clade co-occurrence through time recovers a dated hierarchy of cell-type couplings, and imputed labels for the tree&rsquo;s internal nodes recapitulate known state paths. The abstract&rsquo;s closing sentence is the claim: &ldquo;A lineage-anchored ontogeny of mammalian development, long out of reach, is coming into view.&rdquo;</p>
+        <div class="frame">
+          <b>The star stuff frame</b>
+          <strong>Every cell in that mouse is a descendant, and now there is a document saying of what.</strong> Development here is not a sequence of types a textbook names; it is one continuous family, 1.28 million deep, in which belonging is literal ancestry and the type is something that happens along the way. <em>The detail worth keeping is the one about mismatched siblings.</em> Two cells with the same parent that became different things are not noise in the tree &mdash; they are where differentiation is visible at all. A method that smoothed them out would see nothing. The thing that varies is the thing that tells you what happened.
+        </div>
+        <div class="caveat">
+          <b>Abstract only, and the lag below understates it by seventy days</b>
+          <strong>Every sentence above comes from the publisher&rsquo;s deposited abstract.</strong> <span class="mono">www.science.org</span> answers <span class="mono">HTTP&nbsp;403</span> and no PubMed Central copy exists, so the recorder&rsquo;s error rates, the tree&rsquo;s support values, the imputation and the stated limitations are all unread &mdash; and the paper is recorded as hybrid open access under CC&nbsp;BY, which makes the refusal a routing fact rather than a licensing one. <strong>The 1.28 million figure, the 13.5 days and the first-cleavage burst are the authors&rsquo; own words in that abstract; the comparison with full mouse gestation, 19 to 21 days, is the release&rsquo;s.</strong> And <strong>this work was posted as a bioRxiv preprint on 30 July 2026</strong>, so the bar reads 3 days and the real interval from public availability is <strong>73</strong>. The preprint could not be read either, bioRxiv answering <span class="mono">429</span>; what was compared was its deposited abstract against the journal&rsquo;s, and they are the same text.
+        </div>
+        <div class="placement">
+          <b>Where it goes</b>
+          <span class="mono">cell lineage</span> returns nothing on this site and <span class="mono">ontogen</span> only twice, on the <a href="unfinished-animals-field-guide.html">unfinished animals guide</a> and <a href="the-ick-is-a-border-zine.html">No.&nbsp;33</a>. The unspent argument is not the technology, it is <strong>the status of a developmental stage once you can see the actual descent</strong> &mdash; whether the named stages survive contact with a real tree, or turn out to be conveniences, which is a question this site has asked about diagnostic categories and never about embryology. Not ready: it rests on an abstract, and the honest next step is the paper.
+        </div>
+        <p class="cite"><b>Yu, Q., Kim, H., Seidel, S., Acosta-Clark, J.&nbsp;F., Martin, B.&nbsp;K., O&rsquo;Connor, K., Daza, R.&nbsp;M., Gasperini, M. <i>et al.</i>, Choi, J., Qiu, C. &amp; Shendure, J.</b> &ldquo;A DNA Typewriter records the cell lineage history of a mouse, from zygote to late organogenesis.&rdquo; <em>Science</em>, online 8 October 2026. <b>DOI</b> 10.1126/science.ael0508. <b>Read:</b> the complete abstract deposited by the publisher at Crossref, and the deposited abstract of the preprint; both quotations above are verbatim and identical between them. <b>Not read:</b> the paper, and the preprint. <span class="mono">www.science.org</span> returns <span class="mono">403</span>; no PMCID; <span class="mono">www.biorxiv.org</span> returns <span class="mono">429</span>. <b>Preprint:</b> bioRxiv, DOI 10.64898/2026.07.29.741625, posted 30 July 2026 &mdash; interval to wire 73 days. <b>Wire:</b> ScienceDaily, 11 October 2026.</p>
+      </article>
+
+      <article class="wire-item" id="lipizone-1016" style="--e-accent: var(--violet);" aria-labelledby="lipizone-1016-title">
+        <p class="meta">
+          <span class="grade verified">Verified</span>
+          <span><i>Published online</i> 2026-09-23</span>
+          <span><i>Journal</i> Nature</span>
+          <span><i>Read</i> the paper, in full</span>
+        </p>
+        <p class="lag"><span class="lag-label">Lag 19 d</span><span class="lag-track" aria-hidden="true"><span class="lag-fill" style="width:8.1%"></span></span></p>
+        <h3 id="lipizone-1016-title">Stain the brain for fat and a different map appears</h3>
+        <p class="finding">Lipids are most of a membrane and therefore most of the physical substance of a brain, and until now nobody had a spatial map of them: conventional imaging cannot tell one lipid molecule from another. This team ran mass spectrometry imaging across the whole adult mouse brain &mdash; a laser spot five microns across, sampling in the neighbourhood of one to four cells at a time &mdash; and clustered the result into <strong>539 territories they call <em>lipizones</em></strong>, structured into 8 classes, 31 subclasses and 222 finer groupings. <strong>The lipizones partly agree with the map anatomy already had and partly do not</strong>, and the disagreements are the point: they &ldquo;partially mirror cell-type territories, but also capture distal axon terminals,&rdquo; so a region can be defined by chemistry that belongs to cells living somewhere else. The atlas finds a previously unseen axis of oligodendrocyte variety in the white matter, and biochemical zonation in the choroid plexus and the ventricular walls. It is also not fixed: <strong>in pregnant mice the white matter is metabolically activated and the cortex remodels in a lipizone-specific way, most strongly in layer 4</strong>. The composition is distinctive enough that a tissue sample can be placed by its lipids alone.</p>
+        <div class="frame">
+          <b>The star stuff frame</b>
+          <strong>There was never one map. There was one stain.</strong> The brain&rsquo;s regions are not lying in it waiting to be found; they are what a particular way of looking produces, and a new way of looking produces a map that overlaps the old one and then departs from it in places that are real. Neither is the true one. <em>And the thing that makes the lipid map disagree is connection</em> &mdash; territories that take their chemistry from axon terminals reaching in from elsewhere, so a region is partly made of what arrives from outside it. A brain that reorganises its own biochemistry through a pregnancy, layer by layer, is doing the ordinary thing this site keeps pointing at: the structure is a process that has not stopped.
+        </div>
+        <div class="caveat">
+          <b>It is a mouse, and the headline does not say so</b>
+          <strong>Every measurement is in mice</strong> &mdash; 109 brain sections from 11 animals, 172 lipids. The feed headline is &ldquo;a hidden map of the brain,&rdquo; unqualified; the release names the mouse in its third sentence, so this is a headline problem rather than a release problem, and the paper&rsquo;s own title is &ldquo;The lipidomic architecture of the mouse brain.&rdquo; Human data appear once and modestly: single-cell lipidomics from adult rat and developing human cortex were mapped onto the atlas and aligned with lipizones, which the authors say &ldquo;raises the possibility&rdquo; of generality &mdash; a hedge we are keeping. <strong>Individual mice differ, and the paper measured that rather than averaging it away:</strong> across three male and three female animals, inter-individual variation accounts for a small fraction of subclass variance for 90% of lipids, which is what makes the shared map meaningful and is also a result in its own right. <em>Nothing here is a finding about any disease.</em> The release opens on depression and Alzheimer&rsquo;s; the paper is an atlas and says it is a resource.
+        </div>
+        <div class="placement">
+          <b>Where it goes</b>
+          <span class="mono">parcellat</span> returns nothing here and <span class="mono">lipid</span> exactly once. The unspent argument is <strong>the one about instruments making regions</strong>, and this site has the receiving end of it everywhere without ever having the clean case: a brain that comes out in 539 pieces when you ask it a chemical question and a different number when you ask it a cellular one is the cleanest possible statement that a boundary can be an artefact of the question and still be real. See the <a href="#seed-stain-1016">seedbed</a>. Lead image credited to EPFL under CC&nbsp;BY-SA 4.0, which is worth noting in a week when two thirds of the pictures came from a stock library or a model.
+        </div>
+        <p class="cite"><b>Fusar Bassini, L., Schede, H.&nbsp;H., Capolupo, L., Haj Abdullah Alieh, L., Kaysudu, I., Venturi, F. <i>et al.</i>, Sandi, C., Krymova, E., D&rsquo;Angelo, G. &amp; La Manno, G.</b> &ldquo;The lipidomic architecture of the mouse brain.&rdquo; <em>Nature</em> <strong>658</strong>(8134): 205&ndash;217, online 23 September 2026. <b>DOI</b> 10.1038/s41586-026-11050-0, CC&nbsp;BY. <b>Read:</b> the published article in full at PubMed Central (PMC13626954), including the pregnancy results and the inter-individual variance analysis; every quotation above is from it. <b>Not read:</b> the extended data figures as figures, and the online atlas resource. <span class="mono">www.nature.com</span> is refused at the network layer. <b>Wire:</b> ScienceDaily, 12 October 2026.</p>
+      </article>
+
+      <article class="wire-item" id="tandem-1016" style="--e-accent: var(--green);" aria-labelledby="tandem-1016-title">
+        <p class="meta">
+          <span class="grade verified">Verified</span>
+          <span><i>Published</i> 2026-09-25 (issue)</span>
+          <span><i>Journal</i> Science Advances</span>
+          <span><i>Read</i> the paper, in full</span>
+        </p>
+        <p class="lag"><span class="lag-label">Lag 19 d</span><span class="lag-track" aria-hidden="true"><span class="lag-fill" style="width:8.1%"></span></span></p>
+        <h3 id="tandem-1016-title">Teaching one receptor to recognise two strangers</h3>
+        <p class="finding">Blast fungus, <em>Magnaporthe oryzae</em>, attacks by injecting effector proteins into plant cells. Plants answer with immune receptors that recognise particular effectors &mdash; and a receptor that recognises one thing does not recognise the next thing, which is why resistance keeps running out. Tandem kinase proteins are a receptor family recently found in cereals, and how they recognise anything was, in the paper&rsquo;s words, &ldquo;essentially unknown.&rdquo; This work shows that barley&rsquo;s Rmo2 and wheat&rsquo;s Rwt7 each catch a different blast effector through an <strong>integrated heavy-metal-associated domain</strong>, binding at nanomolar affinity but <em>using different protein interfaces to do it</em>. Solving the structures located the residues that decide which effector fits &mdash; and that was enough to build receptors that do both. <strong>The engineered constructs are dual-specificity: one protein that answers to effectors its parent could not see.</strong> The conclusion the authors draw is about the part rather than the plant: integrated HMA domains are &ldquo;programmable modules&rdquo; for designing new specificities in plant immunity.</p>
+        <div class="frame">
+          <b>The star stuff frame</b>
+          <strong>The repair for a brittle system is more kinds of recognition, not a stronger wall.</strong> Barley and wheat already carry the same architecture pointed at different strangers; what the structures showed is that the pointing is a small, local, swappable thing, and that two answers can live in one receptor. <em>That is the opposite move from the one agriculture usually makes</em>, which is to find the single resistance gene that works and plant it everywhere until it stops working. This site has argued at length that uniformity is efficient and brittle. Here is the same argument one level down, inside a protein, with the fix being breadth.
+        </div>
+        <div class="caveat">
+          <b>Proteins and plant lines, not fields &mdash; and one large number that is not the paper&rsquo;s</b>
+          <strong>This is structural biology and cell assays.</strong> The dual-specificity receptors were built and shown to respond; nothing here is a crop in a field, a yield, or a deployed variety, and the paper does not claim otherwise &mdash; its own closing register is &ldquo;establish&hellip; programmable modules&hellip; for designing,&rdquo; which is a capability. <strong>The figure that rice blast destroys enough rice each year to feed about 60 million people is not in this paper.</strong> It is in the John Innes Centre release, and it is widely cited elsewhere; we have not traced it to its own primary and are not standing behind it, only recording where it came from. The &ldquo;worst fungal disease of cereals&rdquo; phrasing is a quoted researcher&rsquo;s, not the abstract&rsquo;s. <strong>The lag is a floor</strong> &mdash; Crossref deposits no online-first date for this paper, only the 25 September issue, so nineteen days is the shortest the true interval can be.
+        </div>
+        <div class="placement">
+          <b>Where it goes</b>
+          <strong>Careful here: this is adjacent to a claim this site has already spent, and it is not the same claim.</strong> <span class="mono">monocultur</span> appears on 41 pages and <span class="mono">Cavendish</span> on 29 &mdash; <a href="the-universe-runs-on-difference-zine.html">No.&nbsp;8</a> owns <em>uniformity is efficient and one blight from collapse</em>, and a piece restating it with a fungus instead of a banana would be a reprint. <span class="mono">blast fungus</span> returns nothing. What is unspent is the inverse: <strong>not that monoculture is fragile, but that resistance can be made plural on purpose</strong>, by editing the recognising part rather than by stacking more single genes. And remember which way round the house terms go: the banana is the problem, <em>Cavendish Space</em> is the answer.
+        </div>
+        <p class="cite"><b>Yu, D.&nbsp;S., Zdrzałek, R., Katayama, E., Akiyama, H., Daykin, L., Williams, N.&nbsp;J., Goodridge, I., Asuke, S. &amp; Banfield, M.&nbsp;J.</b> &ldquo;Engineering plant tandem kinase immune receptors expands effector recognition profiles.&rdquo; <em>Science Advances</em> <strong>12</strong>(39), issue of 25 September 2026. <b>DOI</b> 10.1126/sciadv.aef2426. <b>Read:</b> the published article in full at PubMed Central (PMC13600239), including the structures, the binding data and the engineered constructs; every quotation above is from it. <b>Not read:</b> the supplementary materials. <span class="mono">www.science.org</span> returns <span class="mono">403</span>. <b>Date note:</b> issue date only; the 19-day lag is a floor. <b>Wire:</b> ScienceDaily, 14 October 2026.</p>
+      </article>
+
+      <article class="wire-item" id="goe-1016" style="--e-accent: var(--cyan);" aria-labelledby="goe-1016-title">
+        <p class="meta">
+          <span class="grade verified">Verified</span>
+          <span><i>Published online</i> 2026-08-27</span>
+          <span><i>Journal</i> Nature Communications</span>
+          <span><i>Read</i> the paper, in full</span>
+        </p>
+        <p class="lag"><span class="lag-label">Lag 45 d</span><span class="lag-track" aria-hidden="true"><span class="lag-fill" style="width:19.1%"></span></span></p>
+        <h3 id="goe-1016-title">The sky did not fill with oxygen. It see-sawed for two hundred million years</h3>
+        <p class="finding">Earth&rsquo;s first lasting oxygen arrived across the Great Oxidation Episode, roughly 2.43 to 2.06 billion years ago, through a stretch of violent climate swings. This study tracks <strong>phosphorus</strong> &mdash; the nutrient that limits how much life an ocean can carry &mdash; across the final two glaciations of that interval, in the Transvaal Supergroup of South Africa, by partitioning the element into the mineral phases that hold it. The sequence it reconstructs is a loop. After a glaciation, heavy weathering delivers a pulse of phosphorus; productivity rises and oxygen with it; oxygen raises marine sulphate; sulphate-using microbes break down organic matter faster and release phosphorus back into the water; and how much phosphorus the sediment gives back depends on how oxidised the ocean is, which depends on where the loop was a moment ago. <strong>The authors&rsquo; conclusion is not that this stabilised anything.</strong> Their modelling finds the interplay &ldquo;drove major instability in atmospheric oxygen levels during Earth&rsquo;s protracted transition to a persistently oxygenated atmosphere,&rdquo; and the paper&rsquo;s own closing sentence puts a duration on it: dramatic variability in atmospheric and seawater oxygen, &ldquo;with this instability persisting for over 200 million years.&rdquo;</p>
+        <div class="frame">
+          <b>The star stuff frame</b>
+          <strong>The breathable sky was not an achievement unlocked. It was a two-hundred-million-year argument that kept nearly going the other way.</strong> Nothing was steering; a nutrient, a gas and an ice sheet were taking turns pushing each other, and the thing we now live inside is where that settled. <em>The tidiest version of this story &mdash; microbes invent photosynthesis, oxygen accumulates, the air becomes breathable &mdash; is the smoothed retelling this collection exists to resist</em>, and here the correction comes from the people who study it, with a 500-metre core and a phase-partitioning method behind it. A process that oscillates for longer than animals have existed is not a failed version of a smooth one.
+        </div>
+        <div class="caveat">
+          <b>The release inverts the paper&rsquo;s emphasis, and we nearly held this over it</b>
+          <strong>The feed headline is &ldquo;the 2.3-billion-year-old secret that helped keep Earth habitable,&rdquo; and the release speaks of oxygen being &ldquo;sustained.&rdquo;</strong> The paper&rsquo;s word, in the abstract and again in the last line, is <em>instability</em>. Both descriptions can be drawn from the same feedback loop &mdash; a loop that keeps returning oxygen to the system is also a loop that keeps overshooting &mdash; but the paper chose one and the release chose the other, and only one of them is the result. This item is filed rather than held because the finding is sound and read in full, and because the correction is the most interesting thing on offer. <strong>The modelling is modelling:</strong> the phosphorus phases are measured, the oxygen oscillation is a biogeochemical model fitted to them, and the paper flags its own complications &mdash; possible spatial heterogeneity in the sulphur signal, detrital contributions, post-depositional overprinting. <em>No figure for how far oxygen swung is given here</em>, because converting a modelled oscillation into a number is exactly what we would be criticising.
+        </div>
+        <div class="placement">
+          <b>Where it goes</b>
+          <strong>This one lands on our own page rather than on an empty shelf, which is the more useful kind of finding.</strong> <a href="there-have-been-so-many-earths-zine.html">No.&nbsp;84</a> opens its Great Oxidation spread with &ldquo;the moment the accounting flips: production finally exceeds consumption,&rdquo; and it does go on to treat the lag and the Archean whiffs honestly. But <em>moment</em> is now the wrong unit by two orders of magnitude, and this paper is the reason. <a href="shared-air-zine.html">No.&nbsp;24</a> carries the same event in one clause, &ldquo;slowly exhaled an entire breathable sky,&rdquo; which survives this better because <em>slowly</em> is doing the work. We are not correcting either page in this edition &mdash; a re-reading is owed first, against the paper rather than against this summary, and it will be logged where corrections are logged.
+        </div>
+        <p class="cite"><b>Alcott, L.&nbsp;J., Mills, B.&nbsp;J.&nbsp;W., Bekker, A., Peng, Z. &amp; Poulton, S.&nbsp;W.</b> &ldquo;A nutrient control on oxygenation dynamics during Earth&rsquo;s Great Oxidation Episode.&rdquo; <em>Nature Communications</em> <strong>17</strong>(1), online 27 August 2026. <b>DOI</b> 10.1038/s41467-026-76597-y, CC&nbsp;BY. <b>Read:</b> the published article in full at PubMed Central (PMC13620156), including the modelling and the stated complications; both quotations above are verbatim from it. <b>Not read:</b> the supplementary data and the model code. <span class="mono">www.nature.com</span> is refused at the network layer. <b>Wire:</b> ScienceDaily, 11 October 2026.</p>
+      </article>
+
+      <article class="wire-item" id="hippocampus-1016" style="--e-accent: var(--pink);" aria-labelledby="hippocampus-1016-title">
+        <p class="meta">
+          <span class="grade contested">Contested</span>
+          <span><i>Published online</i> 2026-05-06</span>
+          <span><i>Journal</i> Nature</span>
+          <span><i>Read</i> the paper, in full</span>
+        </p>
+        <p class="lag"><span class="lag-label">Lag 162 d</span><span class="lag-track" aria-hidden="true"><span class="lag-fill" style="width:68.6%"></span></span></p>
+        <h3 id="hippocampus-1016-title">Under anaesthesia, the hippocampus was still following the sentence</h3>
+        <p class="finding">Patients undergoing neurosurgery, anaesthetised with propofol, had high-density Neuropixels microelectrodes recording single units and local field potentials in the hippocampus while tones and then speech were played to them. <strong>The hippocampus kept working.</strong> It retained some detection of oddball tones &mdash; the deviant in a repeating series &mdash; and, in the finding that is hardest to explain away, <strong>that effect grew over roughly ten minutes</strong>, which the authors call representational plasticity: the unconscious brain was not merely responding, it was updating. A recurrent network model showed oddball representation emerging as a property of flexible tone discrimination rather than needing to be built in. Then, with language stimuli, single units and field potentials &ldquo;carried information about the semantic and grammatical features of natural speech, even predicting semantic information about upcoming words.&rdquo; The authors&rsquo; conclusion is placed carefully in the hippocampus, &ldquo;which is anatomically and functionally distant from primary sensory cortices&rdquo;: complex processing of sensory stimuli occurs there even in the unconscious state.</p>
+        <div class="frame">
+          <b>The star stuff frame</b>
+          <strong>A great deal was going on in someone who, by every measure available in the room, was not there.</strong> The theories this tests say that semantic interpretation and prediction need conscious access; this says the hippocampus was doing both while nobody was home, and getting better at it as it went. <em>The reason this belongs on a Star Stuff page is the inference it breaks</em>, which is the oldest and most damaging one made about people who do not respond: that an absent response means an absent process. This site has made that argument about unreliable speech, about shutdown, about the reader who cannot answer in the window they were given. Here it is in single units, in an operating theatre, in people under general anaesthetic.
+        </div>
+        <div class="caveat">
+          <b>Why contested: the measurement is solid and the word in the headline is the disputed part</b>
+          <strong>The paper&rsquo;s own first sentence declines to settle this:</strong> the degree to which higher-order pattern recognition relies on consciousness &ldquo;remains disputed.&rdquo; What is measured is neural activity under propofol; what is inferred is a claim about the unconscious state, and that inference rests on anaesthesia being the thing theories of consciousness mean, which is itself argued over by the specialists who would referee it. <strong>The authors state their own limits plainly:</strong> the results may not generalise to anaesthetics other than propofol, and the processes described may not be unique to the hippocampus. These are surgical patients with epilepsy, recorded during clinical procedures &mdash; the sample is what such work can get and is not a population. <strong>No count of patients or units is given on this page</strong>, because the per-protocol breakdown is in an extended data table we read as text rather than as a table, and a number we are not certain we parsed correctly is worse than none. <strong>And the lag is the second longest here, 162 days</strong> for a Nature paper online since 6 May: nothing in the paper explains that, and we are not going to invent a reason. Lead image credited <span class="mono">AI/ScienceDaily.com</span>.
+        </div>
+        <div class="placement">
+          <b>Where it goes</b>
+          <span class="mono">consciousn</span> appears on exactly one page here, <a href="only-in-relation-zine.html">No.&nbsp;29</a>, and <span class="mono">anaesthe</span> on one more, the <a href="turtle-field-guide.html">turtle guide</a>, in a different sense. The unspent argument is <strong>the absent response</strong> &mdash; not consciousness as a topic, which this site is right to stay out of, but the specific bad inference that nothing came back therefore nothing happened. That is a <a href="collection-star-stuff.html">Star Stuff</a> shape: one checkable fact, followed until the belonging claim is already inside it. <em>It would have to be built from the paper and not from this page</em>, and it would have to carry the contest rather than resolve it.
+        </div>
+        <p class="cite"><b>Katlowitz, K., Cole, E., Mickiewicz, E., Shah, S., Franch, M., Adkinson, J. <i>et al.</i></b> &ldquo;Plasticity and language in the anaesthetized human hippocampus.&rdquo; <em>Nature</em> <strong>654</strong>(8119): 714&ndash;723, online 6 May 2026, issue of 18 June 2026. <b>DOI</b> 10.1038/s41586-026-10448-0, CC&nbsp;BY-NC-ND. <b>Read:</b> the published article in full at PubMed Central (PMC13275293), including the limitations section; every quotation above is from it. <b>Not read:</b> the extended data tables as tables, and the supplementary information. <span class="mono">www.nature.com</span> is refused at the network layer. <b>Wire:</b> ScienceDaily, 15 October 2026.</p>
+      </article>
+
+      <article class="wire-item" id="wasp-1016" style="--e-accent: var(--gold);" aria-labelledby="wasp-1016-title">
+        <p class="meta">
+          <span class="grade verified">Verified</span>
+          <span><i>Published online</i> 2026-02-18</span>
+          <span><i>Journal</i> Nature Communications</span>
+          <span><i>Read</i> the paper, in full</span>
+        </p>
+        <p class="lag"><span class="lag-label">Lag 236 d</span><span class="lag-track" aria-hidden="true"><span class="lag-fill" style="width:100%"></span></span></p>
+        <h3 id="wasp-1016-title">Everyone had been assuming it. Nobody had measured it</h3>
+        <p class="finding">When astronomers work out what a planet is made of, they lean on a premise: that the rock-forming elements &mdash; magnesium, silicon, iron &mdash; are present in roughly the proportions found in the star the planet formed beside. Those ratios set a planet&rsquo;s interior mineralogy, so the premise is load-bearing for a large amount of published work. <strong>The paper&rsquo;s abstract says, in its own words, &ldquo;this assumption remains largely untested.&rdquo;</strong> Testing it needs a planet hot enough that rock is gas. WASP-189b is an ultra-hot Jupiter with an equilibrium temperature near 3,354 K, and high-resolution thermal emission spectroscopy with IGRINS on Gemini South detects neutral iron, magnesium, silicon, water, carbon monoxide and hydroxyl, each above signal-to-noise 4. <strong>The Mg/Si, Fe/Mg and Si/Fe ratios come out consistent with the star&rsquo;s</strong> &mdash; while the refractory-to-volatile ratio is enhanced by roughly a factor of two. The authors call the result &ldquo;an empirical validation of the stellar-proxy assumption that underpins planetary composition and formation models across exoplanet systems.&rdquo;</p>
+        <div class="frame">
+          <b>The star stuff frame</b>
+          <strong>This is the literal version of the sentence this whole site is named after, and it was an assumption until February.</strong> The magnesium and silicon in that planet are in the proportions the star made them in, because the planet and the star are the same material sorted two ways. <em>What earns the item is not the confirmation, it is the gap it closes.</em> A premise underneath a field's worth of papers had never been checked against an observation, not because anyone was careless but because no instrument could see rock as gas until recently. An assumption that turns out to be right is not the same object as an assumption that was tested; the first is a habit and the second is a finding, and this week one became the other.
+        </div>
+        <div class="caveat">
+          <b>One planet, and a habitability line that is in no part of the paper</b>
+          <strong>This is a single ultra-hot Jupiter.</strong> The abstract&rsquo;s own word for its contribution is that giant-planet atmospheres <em>can</em> preserve stellar-like ratios &mdash; one existence proof, in the one class of object where these elements are observable at all, and therefore not yet a general law about the planets nobody can measure this way. The refractory enhancement by a factor of about two is a real difference from the star and is reported as such, so &ldquo;matches its star&rdquo; is true of the rock ratios and false of the overall composition. <strong>The release says the result &ldquo;helps scientists investigate potentially habitable worlds.&rdquo;</strong> The word <em>habitable</em> occurs three times in this paper: twice inside an author&rsquo;s institutional affiliation, the Center for Exoplanets and Habitability at Warwick, and once in the title of a reference. <em>The paper makes no habitability claim at all.</em> <strong>And the lag is 236 days</strong> &mdash; online since 18 February, on the wire in October &mdash; which is the longest filed interval this page has recorded.
+        </div>
+        <div class="placement">
+          <b>Where it goes</b>
+          <span class="mono">stellar</span> appears on 52 pages here, which means the territory is thoroughly worked and the nouns are all spent. What is not spent is the shape: <strong>a claim everyone relies on, that nobody had put a measurement behind, finally getting one</strong> &mdash; and the honest observation that it could have come out the other way and a great deal of published work would have moved. <span class="mono">untested</span> appears on four pages, none in this sense. It pairs with the dinosaur braincase at the top of this list, which is the same animal: a thing the field was confident about without having looked.
+        </div>
+        <p class="cite"><b>Sanchez, J., Smith, P., Kanumalla, K., Welbanks, L., Line, M., Pelletier, S. <i>et al.</i></b> &ldquo;A Stellar magnesium to silicon ratio in the atmosphere of an exoplanet.&rdquo; <em>Nature Communications</em> <strong>17</strong>(1), online 18 February 2026. <b>DOI</b> 10.1038/s41467-026-69610-x, CC&nbsp;BY. <b>Read:</b> the published article in full at PubMed Central (PMC13031952), including the retrievals and the author affiliations; every quotation above is from it. <b>Not read:</b> the supplementary information and the data products. <span class="mono">www.nature.com</span> is refused at the network layer. <b>Wire:</b> ScienceDaily, 12 October 2026. <b>Distance note:</b> the 320 light-years in the headline is the release&rsquo;s figure and is not quoted here from the paper.</p>
+      </article>
+
+    </div>
+  </div>
+
+  <div class="section-block" role="region" style="--sec-accent: var(--pink);" aria-labelledby="held-items-1016">
+    <h2 class="section" id="held-items-1016">Held</h2>
+    <div class="section-rule" aria-hidden="true"></div>
+    <p class="section-intro">Eight this week. <strong>Three are held because the headline is not the paper</strong> &mdash; one of them so cleanly that the mismatch is a single grammatical subject. <strong>One is held because a word is in quotation marks and nobody said it.</strong> One is a finding from August 2023 carried in the present tense, lag 1,141 days. One is a fine result about chickens dressed as advice about children. One is two cats. And one is a serious piece of work we are declining on grounds of who we are rather than what it says. <strong>Three of the eight were read end to end</strong>, which is the part worth noticing: holding is not what happens when we cannot get the paper, it is what happens when we can.</p>
+
+    <div class="held">
+      <div class="held-item">
+        <p class="why">Held &mdash; the title&rsquo;s subject is the pharynx, the headline&rsquo;s subject is the brain, and the bridge between them is a quotation</p>
+        <h3 id="held-pharynx-1016">This tiny jurassic predator helped pave the way for the human brain</h3>
+        <p><strong>Parse the title and the hold writes itself.</strong> &ldquo;A Jurassic mammaliaform swimmer and transformation of the mammalian pharynx&rdquo; &mdash; the thing transformed is the <em>pharynx</em>. The fossil is a small Jurassic mammaliaform with evidence of a soft palate dividing mouth from pharynx, which lets an animal swallow and breathe at once, which lets an infant nurse without drowning. Every link in that is anatomy, and it is lovely anatomy: the release&rsquo;s illustration of the stakes is that a human can drink through a straw upside down and keep breathing, where a crocodile throws its head back and lets gravity do the work. <strong>The brain enters the story exactly once, in a quotation.</strong> &ldquo;It was this adaptation that made brain development, eventually leading to humans, possible,&rdquo; says one of the co-authors in the University of Bonn release. That is a researcher&rsquo;s inference offered in an interview, three evolutionary steps long, and it is the entire basis of the headline. <strong>We also cannot check any of it.</strong> The paper is closed &mdash; <span class="mono">www.nature.com</span> is refused at the network layer, there is no PubMed Central copy, Crossref holds no abstract, and Semantic Scholar records the paper with its abstract field elided by the publisher and <span class="mono">&quot;openAccessPdf&quot;: &quot;&quot;, &quot;status&quot;: &quot;CLOSED&quot;</span>. So the one thing we could verify is that the sentence in the headline is not the sentence in the title. <em>Li, Y., Li, P., Neander, A.&nbsp;I., Zhang, H., Zhou, C.-F., Martin, T. &amp; Luo, Z.-X., Nature, DOI 10.1038/s41586-026-11107-0, online 7 October 2026; wire ScienceDaily, 12 October 2026; lag 5 days.</em></p>
+      </div>
+      <div class="held-item">
+        <p class="why">Held &mdash; a word in quotation marks that appears nowhere on the page outside the headline</p>
+        <h3 id="held-astonishing-1016">Physicists discover &ldquo;astonishing&rdquo; property of light that defies expectations</h3>
+        <p><strong>This is the item we would least have predicted and the one we are most glad to have caught.</strong> The paper underneath it is real and we read all of it: higher-order Poincar&eacute; modes carrying a tunable Pancharatnam topological charge give deterministic control of spin-orbit interaction &ldquo;entirely in free space and within the paraxial regime,&rdquo; producing what the authors themselves call &ldquo;a free-space optical Hall effect arising from propagation-induced mechanisms alone.&rdquo; Effects of this kind are usually got by focusing hard or by bouncing light off something; here the beam develops the behaviour as it travels, with one tunable parameter. That is a decent result and the chirality angle &mdash; left and right hands, mirror images that will not superimpose, molecules whose two versions act differently in a body &mdash; is genuinely our register. <strong>What stops it is six characters.</strong> The word <em>astonishing</em> appears on that page six times: in the <span class="mono">&lt;title&gt;</span>, in <span class="mono">og:title</span>, in the <span class="mono">&lt;h1&gt;</span>, and three more times inside the auto-generated citation blocks that repeat the headline. <strong>It appears nowhere in the body, in no quoted sentence, and in no part of the paper.</strong> Quotation marks are a promise that somebody said the thing. Perhaps the University of East Anglia&rsquo;s own release does &mdash; <span class="mono">www.uea.ac.uk</span> is refused at the network layer and a EurekAlert search returned nothing, so we cannot say, and <em>not being able to say is the point</em>: a reader meeting that headline has been handed a quotation with no attainable source. We are not filing a page that does that, and we would rather be wrong about this one than let it pass. <strong>The lag is 170 days</strong>, online since 24 April. <em>Mkhumbuza, L., Ornelas, P., Dudley, A., Nape, I. &amp; Forbes, K.&nbsp;A., &ldquo;Topological control of chirality and spin with structured light,&rdquo; Light: Science &amp; Applications 15(1), DOI 10.1038/s41377-026-02278-6, CC&nbsp;BY, online 24 April 2026 &mdash; read in full at PubMed Central (PMC13109355); wire ScienceDaily, 11 October 2026.</em></p>
+      </div>
+      <div class="held-item">
+        <p class="why">Held &mdash; the primary is from August 2023, and the lag is 1,141 days</p>
+        <h3 id="held-life-exists-1016">Scientists make stunning discovery that could help explain why life exists</h3>
+        <p>The argument is a good one: that the values of the fundamental constants set the viscosity of liquids within a narrow band, and that this band is the one in which the diffusion processes life depends on can happen at all &mdash; so the constants are bio-friendly in a specific, calculable way rather than a mystical one. <strong>It was published on 25 August 2023.</strong> The two journal references the feed attaches are that paper, in <em>Science Advances</em>, and a 2025 follow-up in the <em>European Physical Journal E</em> on intrinsic and extrinsic contributions to viscosity. Neither is from this week, this month or this year, and the headline is in the present tense. This is the third consecutive edition to hold an item of exactly this shape &mdash; a ciliate genetic code from October 2023 last week at 1,098 days, a <em>Homo erectus</em> date from 2020 the same week &mdash; and at some point three instances stop being a run of bad luck and start being how the feed works. <em>We are not holding it because the science is stale</em>; a 2023 result about the constants is as true as it was. We are holding it because filing it would mean publishing a date we know to be wrong by three years. <em>Trachenko, K. et al., Science Advances, DOI 10.1126/sciadv.adh9024, issue of 25 August 2023, and European Physical Journal E, DOI 10.1140/epje/s10189-024-00467-y, online 3 January 2025 &mdash; Crossref metadata read for both, neither paper read; wire ScienceDaily, 9 October 2026; lag 1,141 days. Lead image credited <span class="mono">AI/ScienceDaily.com</span>.</em></p>
+      </div>
+      <div class="held-item">
+        <p class="why">Held &mdash; the paper is about chickens and the headline is about your childhood</p>
+        <h3 id="held-fowl-1016">The secret to easier exercise as an adult may start in childhood</h3>
+        <p><strong>The finding is a real one and we would have liked it.</strong> Growing fowl carried about 4% of their body mass on one leg for fourteen weeks; as mature animals they moved that same mass for <strong>22% less energy</strong> than controls, and the abstract records something stranger &mdash; &ldquo;the majority of LL animals had a lower cost of walking with the limb load compared to walking without it.&rdquo; An animal that was cheaper to run <em>carrying</em> the weight than not. That is development doing what this site keeps saying it does: the body built around the conditions it grew up in rather than against them, and the load stopped being a load. <strong>The headline turns fourteen weeks of limb loading in growing birds into advice about human children and adult exercise</strong>, which the abstract does not support and does not attempt &mdash; its own frame is &ldquo;the influence of life history on the energy cost of locomotion,&rdquo; a question about life history in general. <strong>And we could not read the paper.</strong> <span class="mono">royalsocietypublishing.org</span> is refused at the network layer by three different paths including the direct PDF, there is no PubMed Central copy, and <span class="mono">api.unpaywall.org</span> is unreachable &mdash; so the group sizes, the controls and the statistics behind a 22% figure are unread, and a number that striking from an abstract alone is a number to leave on the page it came from. <em>Johnson, T., Katugam-Dechene, K., Dechene, I., Castro Jr., R., Piazza, S. &amp; Rubenson, J., Proceedings of the Royal Society B 293(2074), DOI 10.1098/rspb.2026.0199, CC&nbsp;BY, online 1 July 2026 &mdash; complete deposited abstract read at Crossref, paper not read; wire ScienceDaily, 13 October 2026; lag 104 days.</em></p>
+      </div>
+      <div class="held-item">
+        <p class="why">Held &mdash; the paper proposes, the headline solves, and the paper&rsquo;s strongest result is the one the headline drops</p>
+        <h3 id="held-moon-1016">Scientists may have finally solved the mystery of the Moon&rsquo;s two faces</h3>
+        <p>Chang&rsquo;e-6 brought back the first samples from the lunar farside in 2024, and this is the geochemical comparison against nearside material from Apollo and Chang&rsquo;e-5. We read it in full. The measurements are clean: farside anorthosites are more magnesian, farside Mg-suite samples carry less potassium, rare earth and phosphorus, and the mantle source of the farside&rsquo;s 2.8-billion-year-old basalts resembles that of Apollo low-titanium basalts. <strong>From which the paper&rsquo;s sharpest sentence is a negative</strong> &mdash; the comparison &ldquo;indicates that the mantle displays no clear compositional dichotomy.&rdquo; The two faces are a crustal difference, not a difference that goes all the way down. <em>That null is more interesting than the explanation</em>, and the headline carries the explanation and leaves the null out. On the explanation itself the authors are explicit about what they are doing: &ldquo;we propose that the observed farside-nearside asymmetry originated from lateral thermal convection within a long-lived&rdquo; magma ocean. <strong>Propose is not solve.</strong> The release is better than the headline, listing the rival accounts &mdash; impact, tidal heating, uneven crustal development &mdash; and noting that none has gained general acceptance, which is still true after this paper. We are holding it because the sentence we would have to lead with is the headline&rsquo;s. <em>Gu, Y., Zhang, Y., Ouyang, W., Hui, H., Zhao, K., Xue, Y. et al., National Science Review 13(15), DOI 10.1093/nsr/nwag424, CC&nbsp;BY, online 13 July 2026 &mdash; read in full at PubMed Central (PMC13455602), on the third attempt after two reCAPTCHA challenges; wire ScienceDaily, 12 October 2026; lag 91 days.</em></p>
+      </div>
+      <div class="held-item">
+        <p class="why">Held &mdash; two cats, an unreadable paper, and a frame we would have to adopt to file it</p>
+        <h3 id="held-cats-1016">Cornell scientists identify rare human genetic disorder in two unusually long-legged cats</h3>
+        <p>Two brothers, Gary and Shaggy, long-limbed as kittens, later found to have eye abnormalities and an enlarged aorta; sequencing turns up a splice-region variant in <em>FBN1</em>, the fibrillin-1 gene, and they carry two copies where a human needs only one to show Marfan syndrome. The genuinely interesting part is in the title rather than the coverage: the variant is <strong>hypomorphic</strong>, a partial loss rather than a knockout, which is why two copies are needed and is a story about dosage rather than about a broken gene. <strong>Three things hold it.</strong> It is <em>n</em> = 2, littermates, so the variant and the phenotype travel together with no way to separate them. The paper cannot be read from here &mdash; <span class="mono">www.nature.com</span> is refused, there is no PubMed Central copy, Crossref deposits no abstract, and the licence recorded is CC&nbsp;BY-NC-ND &mdash; so everything above except the title and the author list is the Cornell release. And the third is ours: <em>the frame.</em> We would be writing about two animals as carriers of a disorder, for an audience that includes people who have spent their lives being described that way, on a site whose first commitment is that variation is not deficit. <strong>That is not a reason the paper is wrong</strong> &mdash; Marfan syndrome is a condition with an aorta in it and nobody is served by calling it a difference &mdash; it is a reason this page is the wrong place, and saying so is more honest than finding a methodological excuse. <em>Cook, S.&nbsp;R., Hayward, J.&nbsp;J., Cheong, S.&nbsp;H., Impe, L., Porter, I.&nbsp;R., Lamendola, B. et al., Scientific Reports, DOI 10.1038/s41598-026-70702-3, online 19 September 2026; wire ScienceDaily, 13 October 2026; lag 24 days.</em></p>
+      </div>
+      <div class="held-item">
+        <p class="why">Held &mdash; not a Glimmer, and not ours to summarise in a paragraph</p>
+        <h3 id="held-population-1016">Scientists reveal 93% of Australia&rsquo;s Indigenous population was lost in just 73 years</h3>
+        <p>A <em>Nature Human Behaviour</em> paper whose own title is about the first half of that sentence rather than the second: &ldquo;Large estimated size of the Australian Indigenous population before its extensive decline following colonial invasion.&rdquo; The subject is the pre-invasion population estimate; the 93% is what follows from it. <strong>We are holding this for two reasons and neither is a doubt about the work.</strong> The first is register. This collection is hopeful science news; a measurement of genocide is not that, and dropping it between a dinosaur and an exoplanet with a graded badge beside it would be an act of filing rather than of attention. If it belongs anywhere on this site it is <a href="collection-triggers.html">Triggers</a>, which exists for harms and the responses to them, and it would need its own page. The second is standing. <strong>A finding about Aboriginal and Torres Strait Islander peoples, summarised in two hundred words by a site with no relationship to those communities and no Indigenous authorship, is not improved by our having read the abstract.</strong> We have not read the paper &mdash; <span class="mono">www.nature.com</span> is refused and there is no PubMed Central copy &mdash; but we would be declining this even if we had. <em>Nature Human Behaviour, DOI 10.1038/s41562-026-02571-9, online 15 September 2026 &mdash; Crossref metadata only; wire ScienceDaily, 13 October 2026; lag 28 days.</em></p>
+      </div>
+      <div class="held-item">
+        <p class="why">Held &mdash; no text of the paper is reachable, and the publisher deposited no abstract either</p>
+        <h3 id="held-zimbabwe-1016">210-million-year-old dinosaur discovery reveals a lost world in Africa</h3>
+        <p>A new sauropodomorph from the Pebbly Arkose Formation at Kariba, Zimbabwe, Upper Triassic, with Paul Barrett and Darlington Munyikwa among the authors &mdash; a Zimbabwean formation described with Zimbabwean co-authorship, which is itself worth more than the headline&rsquo;s lost world. <strong>We have nothing to file.</strong> <span class="mono">www.tandfonline.com</span> is refused at the network layer, there is no PubMed Central copy, and Crossref holds <em>no deposited abstract at all</em> for this record &mdash; the title, the author list, the volume and the dates are the entire extent of what we can see. We will not write a paragraph about a dinosaur from a press release and put a grade on it. <strong>One oddity in the metadata, recorded because we cannot explain it:</strong> Crossref lists the print date as 3 July 2026 and the online date as 28 July, which is the wrong way round and means the lag below is computed from the later of two dates we do not fully trust. <em>Barrett, P., Botha, J., Sciscio, L., Stuart, B., Lovegrove, J., Munyikwa, D. et al., Journal of Systematic Palaeontology 24(2), DOI 10.1080/14772019.2026.2678610, online 28 July 2026; wire ScienceDaily, 12 October 2026; lag 76 days.</em></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-block" role="region" style="--sec-accent: var(--violet);" aria-labelledby="seedbed-1016">
+    <h2 class="section" id="seedbed-1016">Seedbed</h2>
+    <div class="section-rule" aria-hidden="true"></div>
+    <p class="section-intro">Three seeds, all three off papers read end to end this week. No lead list again, for the reason given on 9 October: a list that only grows is a way of looking thorough while deferring the work.</p>
+
+    <div class="seeds">
+
+      <div class="seed" style="--s-accent: var(--cyan);">
+        <p class="seed-kind">Zine &middot; More Than Human, and the term is the paper&rsquo;s own</p>
+        <h3 id="seed-entangle-1016">Interdependence, measured, with the bill attached</h3>
+        <p>This site says <em>interdependence</em> constantly and has never once had a measurement of it. The coleoid paper filed above supplies one and names it: <strong>regulatory entanglement</strong>, the progressive accumulation of interdependencies among genomic elements until regions brought near each other &ldquo;become embedded within nested regulatory architectures.&rdquo; Contact maps across three species; gene pairs held together across all of them being the most co-expressed and the most essential; a CRISPR knockout showing one such contact matters for building a nervous system. <strong>And then the sentence that makes it a zine rather than a nice fact:</strong> the authors hypothesise that the octopus lineage&rsquo;s deeper entanglement &ldquo;imposes topological and regulatory constraints that limit the capacity for further genome expansion.&rdquo; Relation built the animal and then shut a door behind it. <em>A piece that takes interdependence seriously has to carry that</em>, or it is a greetings card &mdash; and the standing house refusal applies at full strength here, because an octopus is not a lesson and its genome is not about us.</p>
+        <p class="src">From the <em>Nature Communications</em> coleoid paper filed above, read in full at PubMed Central. <b>Not obtained:</b> the supplementary notes holding the per-comparison loop inventories, and Albertin <em>et al.</em>&rsquo;s earlier octopus genome work, which the discussion leans on and which would have to be read before any claim about what is new here.</p>
+      </div>
+
+      <div class="seed" style="--s-accent: var(--gold);">
+        <p class="seed-kind">Zine &middot; How We Got Here, and it has two cases two weeks running</p>
+        <h3 id="seed-drawer-1016">The thing was in the cupboard the whole time</h3>
+        <p>The Natural History Museum took in a piece of skull in <strong>1924</strong>. This week it became the first megaraptoran known from Europe and moved a continent onto the map of a dinosaur group. <strong>Last week this page held a different item for the same substance in the opposite costume:</strong> eighteen hominin fossils dug at Drimolen between 1992 and 2019 and never described, finally catalogued &mdash; and reported as a dating result, with the century of drawer-work unmentioned. Two weeks, two cupboards. <em>The chain is already visible</em>: a specimen is collected, a label is written, a judgement is made that the material is uninformative &mdash; theropod braincases &ldquo;are often regarded as morphologically and phylogenetically conservative&rdquo; &mdash; and that judgement is self-sealing, because nobody scores a character they have agreed carries no signal. Joints marked <span class="mono">documented</span> for the acquisition and the description, <span class="mono">contested</span> for why the hundred years passed, <span class="mono">leap</span> for anything we say about how much else is sitting in drawers. <strong>The collection&rsquo;s own motive fits exactly:</strong> this is not an argument against the field, it is an argument for the part that was missing, and the field supplied both halves itself.</p>
+        <p class="src">From the <em>Royal Society Open Science</em> abstract filed above, and from the <em>Annals of Human Biology</em> item held on 9 October. <b>Not obtained:</b> either paper in full &mdash; Royal Society and Taylor &amp; Francis are both refused at the network layer &mdash; and no history of the 1924 acquisition beyond the single sentence in the UCL release. <em>A chain needs its joints documented, and at present this one has two abstracts and a press officer.</em></p>
+      </div>
+
+      <div class="seed" style="--s-accent: var(--violet);">
+        <p class="seed-kind">Zine &middot; Star Stuff, one fact, no human example needed</p>
+        <h3 id="seed-stain-1016">539 regions, and a different number if you ask a different question</h3>
+        <p>A mouse brain stained for its lipids comes apart into <strong>539 territories</strong> that partly agree with the regions anatomy already had and partly do not &mdash; and where they disagree it is often because a territory takes its chemistry from axon terminals belonging to cells somewhere else entirely. <strong>Neither map is the real one.</strong> Both are what a particular question produced, both are reproducible, and a tissue sample can be placed by either. <em>That is the whole argument, and it needs no analogy to a person to land</em>, which is exactly why it would work: a reader who has been told their boundaries are the real ones, by someone holding a different stain, does not need the parallel drawn. It pairs with the <a href="#seed-entangle-1016">entanglement</a> seed above as the two halves of one week &mdash; what a thing is made of, and where it stops. And it carries its own hedge for free: the paper measured how much mice differ from one another instead of averaging it out, and found the shared structure anyway.</p>
+        <p class="src">From the <em>Nature</em> lipid atlas filed above, read in full at PubMed Central. <b>Not obtained:</b> the extended data figures as figures, the online atlas resource, and the cell-type reference atlases the lipizones are compared against &mdash; which would have to be read before claiming anything about how far the two parcellations really disagree.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="section-block" role="region" style="--sec-accent: var(--pink);" aria-labelledby="refusals-1016">
+    <h2 class="section" id="refusals-1016">Not</h2>
+    <div class="section-rule" aria-hidden="true"></div>
+    <div class="refusals">
+      <p><strong>Not a citation.</strong> Nine papers were read end to end this week and the standing rule does not move. Nothing filed here may be promoted to a zine, a <a href="collection-glimmers.html">Glimmers</a> entry or a card without the primary source in hand, a <a href="changelog.html">changelog</a> entry and its row in the fact-check ledger. Two filed items rest on deposited abstracts and are graded accordingly; lifting a number out of either would be laundering a deposit into a fact, which is easy to do because a structured abstract looks exactly like a result.</p>
+      <p><strong>Not a quotation with nowhere to go.</strong> A word inside quotation marks is a promise that a person said it, and this week one headline made that promise about a word appearing nowhere else on its own page. We could not find the source and we could not rule one out, and the honest form of both of those is to say so rather than to file the story or to accuse anybody. <em>The same discipline runs the other way on this page:</em> every sentence above in quotation marks was copied from a text we opened, and where a striking figure came from a release instead &mdash; sixty million people, three hundred and twenty light-years, three to four metres, 1924 &mdash; it is marked as the release&rsquo;s in the line where it appears.</p>
+      <p><strong>Not a picture of a finding.</strong> Six of this week&rsquo;s forty-two scanned items lead with an image credited to a machine and twenty-two more with a stock photograph. Every credit line is honest and we are accusing nobody of deception. But two thirds of the pictures a reader meets before the research come from neither the research nor the institution that did it, and this page will not reproduce one or describe one as though it showed something. One item filed above carries such an image; it is named in its own entry rather than quietly left out.</p>
+      <p><strong>Not &ldquo;the brain does it anyway.&rdquo;</strong> A hippocampus under propofol kept following speech and got better at it over ten minutes, and the comfortable reading is close at hand: see, the person was in there. <em>We are not taking it.</em> The paper&rsquo;s own first sentence says the question is disputed, its authors name propofol and the hippocampus as limits on their own claim, and what is measured is neural activity and not presence. The argument this site actually needs from it is narrower and better: <strong>that no response is not the same as no process</strong>, which was true before this paper and does not depend on it.</p>
+      <p><strong>Not a deficit, and not a superpower either.</strong> An octopus genome too entangled to expand further, a brain that sorts into 539 chemical territories, a bird that grew around a weight until it was cheaper to carry than not: these are facts about <em>architecture, history and the conditions a thing grew up in</em>, never about merit. The octopus is not better than the squid; it is differently constrained, and the paper says which constraint. Flipping a deficit into a gift keeps the ranking and changes the sign.</p>
+      <p><strong>Not anti-science.</strong> Three corrections on this page are of positions a field held without testing them &mdash; that a theropod braincase carries no phylogenetic signal, that a planet&rsquo;s rock-forming ratios match its star&rsquo;s, that the sky filled with oxygen and stayed full. Every one was overturned or confirmed from the inside, with instruments built for the purpose: a hundred-year-old fossil finally scored, a spectrograph that can see rock as gas, a phosphorus phase partition through a 500-metre core. <em>None of those is an argument against evidence; each is an argument for the part that was missing.</em> If a draft off this digest starts reading as a case against the field, it has gone wrong.</p>
+      <p><strong>Not <em>because of</em>.</strong> The magnesium and silicon in a planet three hundred and twenty light-years away are in the proportions its star made them in, and somebody finally measured it instead of assuming it. That is a rhyme, not a proof. The universe declining to pathologize its own variation is why the phrase carries &mdash; <em>down to your star stuff</em> measures how far the loving reaches, never why it is owed.</p>
+    </div>
+  </div>
+
+  </div><!-- /edition 2026-10-16 -->
+
+  <div class="colophon-footer">
+    <a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks Foundation</a> &times; <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a> &middot; Glimmer Wire &middot; L&#9733;S<br>
+    Edition Eight of the weekly scan &middot; published 16 October 2026<br>
+    Every edition is kept on its own page &middot; nothing deleted, the Held list included<br>
+    A working scan, not a finding &middot; off the reading chain, on purpose<br>
+    <a href="collection-glimmer-wire.html">All editions</a> &middot; <a href="collection-glimmers.html">Glimmers</a> &middot; <a href="changelog.html">Changelog</a> &middot; <a href="too-good-to-check.html">Too Good to Check</a><br>
+    stimpunks.org &middot; morerealms.com &middot; starstuff.earth &middot; <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
+  </div>
+
+</div><!-- /doc-shell --></main>
+
+<script src="starstuff.js"></script>
+</body>
+</html>
