@@ -1,7 +1,7 @@
 ---
 title: "Glimmer Wire"
 url: "https://starstuff.earth/glimmer-wire-2026-10-09.html"
-updated: "2026-10-09"
+updated: "2026-10-16"
 description: "Edition seven of Glimmer Wire, 9 October 2026 — the weekly graded scan behind Glimmers. Six items filed, six held, five papers read end to end, median lag 68.5 days. A deep-sea coral given three different families by three genes that each said so confidently, a date for the origin of animals pinned to a place where nobody found any, a solution written in 1931 built out of caesium, and a hundred-species survey whose own conclusion refuses both halves of the question it was asked."
 collection: "Glimmer Wire"
 licence: "CC-BY-SA-4.0"
