@@ -1,7 +1,7 @@
 ---
 title: "Glimmer Wire"
 url: "https://starstuff.earth/glimmer-wire-2026-10-16.html"
-updated: "2026-10-16"
+updated: "2026-10-23"
 description: "Edition eight of Glimmer Wire, 16 October 2026 — the weekly graded scan behind Glimmers. Eight items filed, eight held, nine papers read end to end, median lag 19 days. A dinosaur that waited a hundred and two years in a museum drawer, an octopus genome whose own word for interdependence is entanglement, a mouse embryo that wrote down its own family tree, and an assumption underpinning how we read every planet’s chemistry that had never once been tested."
 collection: "Glimmer Wire"
 licence: "CC-BY-SA-4.0"
