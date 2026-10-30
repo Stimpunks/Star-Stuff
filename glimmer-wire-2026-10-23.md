@@ -1,7 +1,7 @@
 ---
 title: "Glimmer Wire"
 url: "https://starstuff.earth/glimmer-wire-2026-10-23.html"
-updated: "2026-10-23"
+updated: "2026-10-30"
 description: "Edition nine of Glimmer Wire, 23 October 2026 — the weekly graded scan behind Glimmers. Eight items filed, six held, four papers read end to end, median lag 32.5 days. A coral that cures a bleached clonemate by touch and attacks a stranger who touches it the same way, a white dwarf turned green by the rock it swallowed, a wing that is bad at flying because it is good at hovering, and a monkey brain that is smooth because its lineage went back down."
 collection: "Glimmer Wire"
 licence: "CC-BY-SA-4.0"
