@@ -306,7 +306,7 @@ Measured rather than assumed, the way everything else on this page is. `tools/ch
 
 Reuse it
 
-This system is [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/), like everything else here. Take the tokens, take the contrast floor, take the refusals. If you build something with it, the only ask is that you keep it free and pass it on. **Solidarity, not charity.**
+This system is [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/), like every word and picture here, and since 3 November 2026 the scripts and tools that measure it are [MIT](https://github.com/Stimpunks/Star-Stuff/blob/main/LICENSE), so you can take the code into anything. Take the tokens, take the contrast floor, take the refusals. If you build something with it, the only ask is that you keep it free and pass it on. **Solidarity, not charity.**
 
 Every correction to this page, and to every piece in the collection, gets published in the [changelog](https://starstuff.earth/changelog.html) — our own errors included.
 

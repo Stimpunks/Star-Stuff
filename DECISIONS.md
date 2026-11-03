@@ -166,6 +166,19 @@ Decisions still to make. Move to **Settled** with a date once resolved.
 
 ## Settled
 
+- **2026-11-03 — The code goes MIT; everything else stays CC BY-SA 4.0.** Ryan's call, with
+  Helen Edgar's agreement for the code she has written here, made across every Stimpunks
+  repository on the same day: Netlify's Open Source plan asks for a software licence, and
+  Creative Commons advises against its licences for software. **What is code:** everything in
+  `tools/`, and `starstuff.js` and `edit.js`. **What is not, even inside those files:** the words
+  and pictures a script carries (the chain spines, the L★S mark, the prose the build tools write
+  into derived pages), the inline scripts in pages, the stylesheets, the guest pieces under their
+  own notices, the fonts and anybody else's pictures. `LICENSE` now leads with the MIT section and
+  keeps the CC BY-SA 4.0 text word for word beneath it. Copies of the code taken before the day
+  may still be used under CC BY-SA. **Rejected: calling the whole repository MIT** — it would
+  release the collection, and Helen's and More Realms' work in it, under a licence nobody chose.
+  The 2026-07-21 entry below still holds for everything that is not code.
+
 - **A negative result is filed as a *Kin* piece with the animal as the spine, not as a debunk
   zine — settled 2026-09-08, by Ryan.** Ten papers went into the SKS inbox looking for support
   for a viral claim (horned lizards suppressing fire ants by "grazing pressure"). **None of them

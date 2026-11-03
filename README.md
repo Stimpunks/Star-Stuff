@@ -348,7 +348,7 @@ Two people build here — Ryan Boren (Stimpunks Foundation) and Helen Edgar (Mor
 
 ## Usage
 
-Open edition. **Print free. Share freely.** These artifacts are made to be reproduced, folded, and passed along. Licensed [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) — see [`LICENSE`](LICENSE).
+Open edition. **Print free. Share freely.** These artifacts are made to be reproduced, folded, and passed along. The pieces — their words, diagrams, markup and design — are licensed [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Since 2026-11-03 the code (`tools/`, `starstuff.js` and `edit.js`) is under the [MIT License](https://opensource.org/license/mit), with the words and pictures a script carries staying CC BY-SA. See [`LICENSE`](LICENSE) for what each covers.
 
 ## Lineage & credits
 

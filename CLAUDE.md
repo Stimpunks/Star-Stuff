@@ -3192,8 +3192,17 @@ in `reference/` in this repo — read them for content accuracy when writing or 
 
 ## Usage / licensing
 
-Open edition — print free, share freely. If making reuse terms explicit, a Creative Commons license
-(e.g. CC BY-NC-SA) fits the intent; there is no `LICENSE` file yet.
+Open edition — print free, share freely. **Two licences, and `LICENSE` says which covers what.**
+The pieces — words, diagrams, markup, stylesheets and design — are **CC BY-SA 4.0** (since
+2026-07-21; see `DECISIONS.md`). **The code is MIT from 2026-11-03** (Ryan's call, Helen's yes,
+for Netlify's Open Source plan and because Creative Commons advises against its licences for
+software): everything in `tools/`, and `starstuff.js` and `edit.js`. **The words and pictures a
+script carries stay CC BY-SA** — the chain spines `gen-chain-spine.mjs` draws, the L★S mark, the
+prose the build tools write into derived pages — and so do the inline scripts in pages (a field
+guide's entries are object literals) and the guest pieces under their own notices. **The friendly
+edit is calling the whole repository MIT "to keep it simple"**: that releases the collection, and
+Helen's and More Realms' work in it, under a licence nobody chose. A new script file is code; a new
+page, stylesheet or drawing is not.
 
 ---
 *Love you down to your star stuff.* **L★S**
