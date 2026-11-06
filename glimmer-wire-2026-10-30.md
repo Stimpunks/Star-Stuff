@@ -1,7 +1,7 @@
 ---
 title: "Glimmer Wire"
 url: "https://starstuff.earth/glimmer-wire-2026-10-30.html"
-updated: "2026-10-30"
+updated: "2026-11-06"
 description: "Edition ten of Glimmer Wire, 30 October 2026 — the weekly graded scan behind Glimmers. Eight items filed, six held, five papers read end to end, median lag 58 days. A spider with an REM-like sleep state, a snake that rolls four times faster than it crawls, crocodiles that came through the asteroid by never leaving the climate they already fit, and a framework for the meaning of words that sat in the open for 1,837 days before the news reached it."
 collection: "Glimmer Wire"
 licence: "CC-BY-SA-4.0"

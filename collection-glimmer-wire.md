@@ -1,8 +1,8 @@
 ---
 title: "Glimmer Wire"
 url: "https://starstuff.earth/collection-glimmer-wire.html"
-updated: "2026-10-30"
-description: "The weekly graded scan behind Glimmers, one page per edition. Ten editions so far, seventy-three items filed and fifty-six held — every one carrying its grade and, more usefully, what was actually read and what was not. The section that earns the page is Held, which lists what we declined and why. A fifth sorting axis on this site: these sort by issue."
+updated: "2026-11-06"
+description: "The weekly graded scan behind Glimmers, one page per edition. Eleven editions so far, eighty-one items filed and sixty-two held — every one carrying its grade and, more usefully, what was actually read and what was not. The section that earns the page is Held, which lists what we declined and why. A fifth sorting axis on this site: these sort by issue."
 licence: "CC-BY-SA-4.0"
 licence_url: "https://creativecommons.org/licenses/by-sa/4.0/"
 fact_check: "https://github.com/Stimpunks/Star-Stuff/blob/main/FACTCHECK.md"
@@ -15,7 +15,7 @@ generated_by: "tools/build-markdown.mjs, from the page's own <main> landmark"
 
 # *Glimmer Wire*
 
-A Star Stuff collection · 10 editions · weekly, Fridays · started 2 September 2026
+A Star Stuff collection · 11 editions · weekly, Fridays · started 2 September 2026
 
 A weekly read of what is going well in science and medicine, **graded before it is enjoyed**. This is the scan that sits behind [Glimmers](https://starstuff.earth/collection-glimmers.html), published with its grades showing rather than kept in a drafts folder. One page per edition, newest first, and nothing is ever deleted — including the thin weeks.
 
@@ -30,6 +30,18 @@ Nothing here is a source; it is a list of leads. What the grades mean, and why e
 ## The editions
 
 Newest first. Each card gives the tally and the median lag; the Details hold what the edition got wrong and what it could not open.
+
+### [Edition Eleven](https://starstuff.earth/glimmer-wire-2026-11-06.html)
+
+6 November 2026 · Glimmer Wire · 8 filed, 6 held
+
+*The week three papers were read in full and held anyway — because reading them is what showed the story on top was not the paper’s.*
+
+A bacterial immune system its own discoverers suspected was broken because the molecule used to detect such systems was missing, a poplar that straightens itself with gravity and light switched off, all five letters of DNA and RNA in asteroid dust, frogs whose disappearance was answered by 327 specimens in jars, and enamel proteins putting an extinct lineage inside the modern human genome.
+
+**Details**
+
+**Six versions of record were read end to end, the most in eleven editions — and three of the six are held items.** That is the section working as designed: holding is not what happens when we cannot get the paper, and this week it is mostly what happened when we could. A mouse study whose own title says *a mouse model of neurodevelopmental disorders* was carried as a clue to autism’s origins; a reading meta-analysis whose abstract says its findings were “generally consistent with previous research” was carried as a discovery **444 days** after publication; and a paper on how the fovea is built, in which the string *vitamin A* occurs zero times and *retinoic acid* eleven, was carried as a vitamin A discovery. **Eight filed at 4 to 232 days, median 29.5 — three verified, three plausible, two contested**, and both contested items turn on a single word: one paper calls its own material an altermagnetic *candidate* where the coverage says conclusive proof, and the other opens by stating that its whole field remains controversial. **The preprint record disagrees with the journal twice.** The altermagnon result was public on arXiv for **644 days** before the wire reached it, and peer review had removed its claim to be *first* and softened *new* to *discrete* — after which the headline asserted something stronger than either version. **PubMed Central’s bot check went from total to intermittent**, challenging four of seven requests, which is the worse condition: the papers read this week are partly the product of which requests happened to pass, and a reader repeating the work will get a different three. **And one item is held with nothing wrong with it:** a new genus of seahorse-lookalike fishes, known only from museum drawers, published in a journal whose site we could not reach and whose editorial process we therefore could not establish.
 
 ### [Edition Ten](https://starstuff.earth/glimmer-wire-2026-10-30.html)
 
@@ -181,12 +193,12 @@ That last one is why the page exists. A fact-check ledger records what we checke
 
 Nothing filed here may be promoted to a zine, a [Glimmers](https://starstuff.earth/collection-glimmers.html) entry or a card without the primary source first, a [changelog](https://starstuff.earth/changelog.html) entry and its row in the fact-check ledger. The digest is a set of *leads*. Lifting a figure out of it and printing it elsewhere would be laundering a search summary into a fact, which is the precise failure this collection was built to make visible — and which the second edition committed, then published about itself.
 
-Two of the ten editions have been amended after publication, and the amendments are on the pages rather than in a footnote. The second edition’s is the instructive one: re-run against the primaries, it upgraded one item, corrected all six, and the two sharpest corrections turned out to be *ours* rather than the coverage’s — we had misread a paper’s title, and described a physics result using the wrong physics. [Too Good to Check](https://starstuff.earth/too-good-to-check.html) names the ways a fact goes wrong here; this collection is where you can watch it happen.
+Two of the eleven editions have been amended after publication, and the amendments are on the pages rather than in a footnote. The second edition’s is the instructive one: re-run against the primaries, it upgraded one item, corrected all six, and the two sharpest corrections turned out to be *ours* rather than the coverage’s — we had misread a paper’s title, and described a physics result using the wrong physics. [Too Good to Check](https://starstuff.earth/too-good-to-check.html) names the ways a fact goes wrong here; this collection is where you can watch it happen.
 
 ## Off the reading chain, on purpose
 
 Nearly every page on this site is linked into a single prev/next reading order, from [Start Here](https://starstuff.earth/collection-start-here.html) through to the last broadside. **This collection and every edition sit outside it**, for the same reason every [working paper](https://starstuff.earth/collection-notes.html) does: threading a weekly scan between two zines would drop a maintenance document into the middle of somebody’s reading. The editions carry prev/next to *each other* instead, which is a local order through the archive rather than a link in the site’s chain.
 
 [Stimpunks Foundation](https://stimpunks.org/) × [More Realms](https://morerealms.com/) · Glimmer Wire · L★S
- A collection, not a folder · 10 editions · one page each, nothing deleted · off the reading chain, on purpose
+ A collection, not a folder · 11 editions · one page each, nothing deleted · off the reading chain, on purpose
  stimpunks.org · morerealms.com · starstuff.earth · [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
