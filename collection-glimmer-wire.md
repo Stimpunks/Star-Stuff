@@ -1,8 +1,8 @@
 ---
 title: "Glimmer Wire"
 url: "https://starstuff.earth/collection-glimmer-wire.html"
-updated: "2026-11-06"
-description: "The weekly graded scan behind Glimmers, one page per edition. Eleven editions so far, eighty-one items filed and sixty-two held — every one carrying its grade and, more usefully, what was actually read and what was not. The section that earns the page is Held, which lists what we declined and why. A fifth sorting axis on this site: these sort by issue."
+updated: "2026-11-13"
+description: "The weekly graded scan behind Glimmers, one page per edition. Twelve editions so far, eighty-nine items filed and sixty-eight held — every one carrying its grade and, more usefully, what was actually read and what was not. The section that earns the page is Held, which lists what we declined and why. A fifth sorting axis on this site: these sort by issue."
 licence: "CC-BY-SA-4.0"
 licence_url: "https://creativecommons.org/licenses/by-sa/4.0/"
 fact_check: "https://github.com/Stimpunks/Star-Stuff/blob/main/FACTCHECK.md"
@@ -15,7 +15,7 @@ generated_by: "tools/build-markdown.mjs, from the page's own <main> landmark"
 
 # *Glimmer Wire*
 
-A Star Stuff collection · 11 editions · weekly, Fridays · started 2 September 2026
+A Star Stuff collection · 12 editions · weekly, Fridays · started 2 September 2026
 
 A weekly read of what is going well in science and medicine, **graded before it is enjoyed**. This is the scan that sits behind [Glimmers](https://starstuff.earth/collection-glimmers.html), published with its grades showing rather than kept in a drafts folder. One page per edition, newest first, and nothing is ever deleted — including the thin weeks.
 
@@ -30,6 +30,18 @@ Nothing here is a source; it is a list of leads. What the grades mean, and why e
 ## The editions
 
 Newest first. Each card gives the tally and the median lag; the Details hold what the edition got wrong and what it could not open.
+
+### [Edition Twelve](https://starstuff.earth/glimmer-wire-2026-11-13.html)
+
+13 November 2026 · Glimmer Wire · 8 filed, 6 held
+
+*The week the archive stopped challenging us, eight papers were read end to end, and the animal everybody blames for Lyme disease turned out not to be in the equation.*
+
+Thirty years of counting acorns, mice and ticks across sixfold variation in deer numbers, three mosquito species ranking the same 119 people in three different orders, two coats that fall out of one rule at two settings, a hypothesis about why tetrapods have necks tested against ten sturgeon on a bending rig, and a butterfly that was two butterflies in a band of light we cannot see.
+
+**Details**
+
+**Eight versions of record were read end to end — the most in twelve editions and two more than the previous best — because PubMed Central challenged nothing this week.** That is the third distinct state in three weeks: total block on 30 October, four of seven challenged on 6 November, none now. *Which means this edition can report eight full texts and last week’s could report three, and the difference is luck rather than effort.* Six of the eight support filed items and two support held ones. **Eight filed at 13 to 192 days, median 57.5 — five verified, two plausible, one contested**, and one item is graded plausible *despite* a full text, because the paper read was the companion to the one carrying the claim. **The lead item removes a species from a public-health explanation.** Thirty years of monitoring in New York forest finds nymphal tick abundance “not correlated with the abundance of white-tailed deer” despite “sixfold variation in deer abundance across years”, and predicted instead by red oak acorns two years earlier by way of white-footed mice — the authors concluding that risk “arises from the dynamics of the ecological community, rather than from the dynamics of any single population”. **Six held, and two of those were read in full and held because of it.** A study of 65 children whose headline says “brain difference” where the paper says *deficit*, *impairment* and *atypical* throughout — the coverage gentler than the source, which is the inverse of the usual direction — and a bone meta-analysis that is almost entirely null, including no significant change in bone mineral density, whose single positive result rests on 193 people at certainty its own abstract and Results describe differently. **And the item we most wanted to file is held:** a palaeoecological review arguing Europe was an herbivory-maintained mosaic rather than closed forest, which we could not open at all — Elsevier does not resolve from this container, there is no deposited abstract, and the coverage does not mention that the closed-forest question has been argued since the 1990s.
 
 ### [Edition Eleven](https://starstuff.earth/glimmer-wire-2026-11-06.html)
 
@@ -193,12 +205,12 @@ That last one is why the page exists. A fact-check ledger records what we checke
 
 Nothing filed here may be promoted to a zine, a [Glimmers](https://starstuff.earth/collection-glimmers.html) entry or a card without the primary source first, a [changelog](https://starstuff.earth/changelog.html) entry and its row in the fact-check ledger. The digest is a set of *leads*. Lifting a figure out of it and printing it elsewhere would be laundering a search summary into a fact, which is the precise failure this collection was built to make visible — and which the second edition committed, then published about itself.
 
-Two of the eleven editions have been amended after publication, and the amendments are on the pages rather than in a footnote. The second edition’s is the instructive one: re-run against the primaries, it upgraded one item, corrected all six, and the two sharpest corrections turned out to be *ours* rather than the coverage’s — we had misread a paper’s title, and described a physics result using the wrong physics. [Too Good to Check](https://starstuff.earth/too-good-to-check.html) names the ways a fact goes wrong here; this collection is where you can watch it happen.
+Two of the twelve editions have been amended after publication, and the amendments are on the pages rather than in a footnote. The second edition’s is the instructive one: re-run against the primaries, it upgraded one item, corrected all six, and the two sharpest corrections turned out to be *ours* rather than the coverage’s — we had misread a paper’s title, and described a physics result using the wrong physics. [Too Good to Check](https://starstuff.earth/too-good-to-check.html) names the ways a fact goes wrong here; this collection is where you can watch it happen.
 
 ## Off the reading chain, on purpose
 
 Nearly every page on this site is linked into a single prev/next reading order, from [Start Here](https://starstuff.earth/collection-start-here.html) through to the last broadside. **This collection and every edition sit outside it**, for the same reason every [working paper](https://starstuff.earth/collection-notes.html) does: threading a weekly scan between two zines would drop a maintenance document into the middle of somebody’s reading. The editions carry prev/next to *each other* instead, which is a local order through the archive rather than a link in the site’s chain.
 
 [Stimpunks Foundation](https://stimpunks.org/) × [More Realms](https://morerealms.com/) · Glimmer Wire · L★S
- A collection, not a folder · 11 editions · one page each, nothing deleted · off the reading chain, on purpose
+ A collection, not a folder · 12 editions · one page each, nothing deleted · off the reading chain, on purpose
  stimpunks.org · morerealms.com · starstuff.earth · [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)

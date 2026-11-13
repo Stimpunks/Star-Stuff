@@ -1,7 +1,7 @@
 ---
 title: "Glimmer Wire"
 url: "https://starstuff.earth/glimmer-wire-2026-11-06.html"
-updated: "2026-11-06"
+updated: "2026-11-13"
 description: "Edition eleven of Glimmer Wire, 6 November 2026 — the weekly graded scan behind Glimmers. Eight items filed, six held, six papers read end to end, median lag 29.5 days. A bacterial defence that looked broken because its signature was missing, trees that sense their own curvature and build wood to correct it, all five letters of DNA and RNA in asteroid dust, and enamel proteins placing Homo erectus inside the modern human genome."
 collection: "Glimmer Wire"
 licence: "CC-BY-SA-4.0"

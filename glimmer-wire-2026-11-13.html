@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0a0a14">
+<link rel="canonical" href="https://starstuff.earth/glimmer-wire-2026-11-13.html">
+<link rel="alternate" type="text/markdown" href="https://starstuff.earth/glimmer-wire-2026-11-13.md" title="Glimmer Wire &mdash; Markdown source">
+<meta name="description" content="Edition twelve of Glimmer Wire, 13 November 2026 &mdash; the weekly graded scan behind Glimmers. Eight items filed, six held, eight papers read end to end, median lag 57.5 days. Thirty years of counting that removes deer from the Lyme equation, three mosquito species ranking the same 119 people differently, two coats built by one rule at different settings, and a hypothesis about why tetrapods have necks tested against a sturgeon.">
+<!-- Open Graph / link unfurl -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Star Stuff &middot; Stimpunks Foundation &times; More Realms">
+<meta property="og:url" content="https://starstuff.earth/glimmer-wire-2026-11-13.html">
+<meta property="og:title" content="Glimmer Wire &mdash; edition of 13 November 2026">
+<meta property="og:description" content="Eight filed, six held, eight versions of record read end to end &mdash; the most in twelve editions &mdash; and the bot check that has shaped three weeks of this page did not fire once.">
+<meta property="og:image" content="https://starstuff.earth/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A rainbow-hued cosmic image &mdash; we are all made of star stuff.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Glimmer Wire &mdash; edition of 13 November 2026">
+<meta name="twitter:description" content="The week the animal everyone blames for Lyme disease turned out not to be in the equation, and a headline was gentler than the paper under it.">
+<meta name="twitter:image" content="https://starstuff.earth/og-card.jpg">
+<title>Glimmer Wire — Edition of 13 November 2026 — Stimpunks × More Realms</title>
+<link rel="stylesheet" href="starstuff.css">
+<style>
+  :root {
+    --void:  var(--sp-void-deep);
+    --deep:  var(--sp-deep);
+    --page:  var(--sp-page);
+    --card:  var(--sp-card);
+    --violet:var(--sp-purple);
+    --pink:  var(--sp-pink);
+    --gold:  var(--sp-gold);
+    --cyan:  var(--sp-cyan);
+    --green: var(--sp-green);
+    --star-white: var(--sp-white-soft);
+    --stardust:   var(--sp-secondary-soft);
+    --secondary:  var(--sp-secondary);
+    --muted: var(--sp-muted);
+    --dim:   var(--sp-dim);
+    --dim2:  var(--sp-dim-soft);
+    /* Gold leads: it is the Glimmers collection accent, and this page is the
+       working scan behind that collection rather than a Notes house colour. */
+    --accent:var(--sp-gold);
+    --border: rgba(251,191,36,0.16);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  /* One unscoped rule: the first draft scoped it to .notice and .seed, and the
+     dead-class gate caught the .caveat use it therefore never reached. */
+  .mono { font-family: 'Space Mono', monospace; }
+
+  html, body {
+    background: var(--void);
+    font-family: 'Atkinson Hyperlegible Next', system-ui, sans-serif;
+    color: var(--star-white);
+    line-height: 1.7;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Starfield, tinted gold for Glimmers. Inline and per-page by design —
+     see starstuff.css on why the themed gradient art is not shared. */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background-image:
+      radial-gradient(1px 1px at 11% 14%, rgba(251,191,36,0.70) 0%, transparent 100%),
+      radial-gradient(1px 1px at 27% 41%, rgba(244,242,251,0.60) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 43% 9%, rgba(251,191,36,0.55) 0%, transparent 100%),
+      radial-gradient(1px 1px at 61% 68%, rgba(167,139,250,0.50) 0%, transparent 100%),
+      radial-gradient(2px 2px at 78% 25%, rgba(244,242,251,0.50) 0%, transparent 100%),
+      radial-gradient(1px 1px at 87% 57%, rgba(251,191,36,0.55) 0%, transparent 100%),
+      radial-gradient(1px 1px at 93% 80%, rgba(244,242,251,0.70) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 6% 62%, rgba(251,191,36,0.45) 0%, transparent 100%),
+      radial-gradient(1px 1px at 34% 87%, rgba(244,242,251,0.60) 0%, transparent 100%),
+      radial-gradient(1px 1px at 54% 47%, rgba(34,211,238,0.45) 0%, transparent 100%),
+      radial-gradient(2px 2px at 19% 83%, rgba(251,191,36,0.45) 0%, transparent 100%),
+      radial-gradient(1px 1px at 71% 7%, rgba(244,242,251,0.75) 0%, transparent 100%),
+      radial-gradient(1px 1px at 47% 64%, rgba(251,191,36,0.40) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 38% 23%, rgba(244,242,251,0.50) 0%, transparent 100%),
+      radial-gradient(1px 1px at 64% 92%, rgba(167,139,250,0.45) 0%, transparent 100%),
+      radial-gradient(1px 1px at 82% 44%, rgba(251,191,36,0.50) 0%, transparent 100%);
+    animation: twinkle-anim 9s ease-in-out infinite;
+  }
+
+  .doc-shell { position: relative; z-index: 1; max-width: 820px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+
+  .nav-brand { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--dim2); margin-bottom: 2rem; }
+  .nav-brand a { color: inherit; }
+
+  /* ---------- Hero ---------- */
+
+  .hero { margin-bottom: 2.5rem; }
+  .hero-eyebrow { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--secondary); margin-bottom: 1rem; }
+  .hero-eyebrow a { color: inherit; }
+  .hero-title { font-size: clamp(2.2rem, 7vw, 3.4rem); font-weight: 800; line-height: 1.05; letter-spacing: -0.02em; color: var(--star-white); text-wrap: balance; margin: 0 0 1rem; scroll-margin-top: 5rem; }
+  .hero-title .star { color: var(--gold); }
+  .hero-byline { font-size: 1.05rem; color: var(--muted); max-width: 44ch; margin-bottom: 0.9rem; }
+  .hero-sub { font-size: 0.95rem; color: var(--stardust); max-width: 62ch; }
+  .hero-rule { border: 0; height: 2px; background: var(--gold); opacity: 0.5; border-radius: 2px; margin: 1.5rem 0 1.1rem; }
+
+  .dateline { font-family: 'Space Mono', monospace; font-size: 0.68rem; letter-spacing: 0.1em; color: var(--secondary); display: flex; flex-wrap: wrap; gap: 0.4rem 1.1rem; font-variant-numeric: tabular-nums; }
+  .dateline i { font-style: normal; color: var(--dim); }
+  .dateline b { color: var(--gold); font-weight: 700; }
+
+  /* ---------- Standing notice ---------- */
+
+  .notice { background: var(--card); border-left: 3px solid var(--pink); border-radius: 8px; padding: 1.1rem 1.3rem; margin-bottom: 2.75rem; display: flex; flex-direction: column; gap: 0.6rem; }
+  .notice h2 { font-size: 0.62rem; font-family: 'Space Mono', monospace; letter-spacing: 0.18em; text-transform: uppercase; color: var(--pink); font-weight: 700; margin: 0; scroll-margin-top: 5rem; }
+  .notice p { font-size: 0.9rem; color: var(--stardust); }
+
+  /* ---------- Sections ---------- */
+
+  h2.section { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.01em; color: var(--sec-accent, var(--star-white)); margin: 0 0 0.4rem; scroll-margin-top: 5rem; text-wrap: balance; }
+  .section-rule { height: 2px; background: var(--sec-accent, var(--gold)); opacity: 0.5; margin-bottom: 0.9rem; border-radius: 2px; }
+  .section-intro { color: var(--muted); font-size: 0.95rem; margin-bottom: 1.6rem; max-width: 62ch; }
+  .section-block { margin-bottom: 3.25rem; }
+
+  /* ---------- Grading key ---------- */
+
+  .key { display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); gap: 0.75rem; margin-bottom: 1.6rem; }
+  .key div { border: 1px solid var(--border); border-radius: 8px; padding: 0.7rem 0.85rem; font-size: 0.8rem; color: var(--stardust); display: flex; flex-direction: column; gap: 0.3rem; }
+  .key span { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.14em; font-weight: 700; }
+  .key .k-verified  { color: var(--green); }
+  .key .k-plausible { color: var(--gold); }
+  .key .k-contested { color: var(--pink); }
+  .key .k-held      { color: var(--dim); }
+
+  /* ---------- Entries ---------- */
+
+  .wire-list { display: flex; flex-direction: column; gap: 1.5rem; }
+  .wire-item { background: var(--card); border: 1px solid var(--border); border-left: 3px solid var(--e-accent, var(--gold)); border-radius: 8px; padding: 1.4rem 1.5rem 1.5rem; display: flex; flex-direction: column; gap: 0.9rem; }
+
+  .meta { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.35rem 1rem; font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.1em; color: var(--dim); font-variant-numeric: tabular-nums; }
+  .meta i { font-style: normal; color: var(--secondary); }
+  .meta .grade { font-weight: 700; letter-spacing: 0.14em; color: var(--e-accent, var(--gold)); }
+  .meta .grade.contested { color: var(--pink); }
+  .meta .grade.verified  { color: var(--green); }
+
+  /* Lag: how long the finding had been public before a news wire carried it.
+     A real axis for a digest — several of these are months old, and the number
+     is what settled the weekly cadence. Bar plus figure, never the bar alone. */
+  .lag { display: flex; align-items: center; gap: 0.5rem; width: 100%; margin-top: 0.1rem; }
+  .lag-label { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.1em; color: var(--dim); white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .lag-track { flex: 1; height: 3px; background: rgba(184,174,208,0.16); border-radius: 2px; overflow: hidden; min-width: 3rem; }
+  .lag-fill { display: block; height: 100%; background: var(--e-accent, var(--gold)); opacity: 0.75; border-radius: 2px; }
+
+  .wire-item h3 { font-size: 1.28rem; font-weight: 800; line-height: 1.25; letter-spacing: -0.01em; color: var(--star-white); text-wrap: balance; scroll-margin-top: 5rem; }
+  .finding { color: var(--star-white); }
+
+  .frame, .placement, .caveat { border-radius: 6px; padding: 0.8rem 0.95rem; font-size: 0.92rem; }
+  .frame { background: rgba(10,10,20,0.55); border-left: 2px solid var(--e-accent, var(--gold)); color: var(--star-white); }
+  .placement { background: rgba(10,10,20,0.4); border-left: 2px solid var(--secondary); color: var(--stardust); }
+  .caveat { background: rgba(10,10,20,0.4); border-left: 2px solid var(--pink); color: var(--stardust); }
+  .frame b, .placement b, .caveat b { display: block; font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 0.35rem; font-weight: 700; }
+  .frame b     { color: var(--e-accent, var(--gold)); }
+  .placement b { color: var(--secondary); }
+  .caveat b    { color: var(--pink); }
+
+  .cite { font-family: 'Space Mono', monospace; font-size: 0.63rem; line-height: 1.75; color: var(--dim2); border-top: 1px solid var(--border); padding-top: 0.75rem; word-break: break-word; }
+  .cite b { color: var(--secondary); font-weight: 700; }
+  .cite a { color: var(--secondary); }
+
+  /* ---------- Held ---------- */
+
+  .held { display: flex; flex-direction: column; gap: 1rem; }
+  .held-item { border: 1px dashed rgba(184,174,208,0.3); border-radius: 8px; padding: 1.1rem 1.25rem; display: flex; flex-direction: column; gap: 0.5rem; }
+  .held-item h3 { font-size: 1.02rem; font-weight: 700; color: var(--stardust); line-height: 1.3; scroll-margin-top: 5rem; }
+  .held-item p { font-size: 0.9rem; color: var(--muted); }
+  .held-item .why { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--dim); font-weight: 700; }
+
+  /* ---------- Seedbed ---------- */
+
+  .seeds { display: flex; flex-direction: column; gap: 1.1rem; }
+  .seed { background: var(--card); border-radius: 8px; border-left: 3px solid var(--s-accent, var(--violet)); padding: 1.1rem 1.25rem; display: flex; flex-direction: column; gap: 0.5rem; }
+  .seed-kind { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; color: var(--s-accent, var(--violet)); }
+  .seed h3 { font-size: 1.08rem; font-weight: 800; color: var(--star-white); line-height: 1.3; scroll-margin-top: 5rem; }
+  .seed p { font-size: 0.92rem; color: var(--stardust); }
+  .seed .src { font-family: 'Space Mono', monospace; font-size: 0.62rem; color: var(--dim2); line-height: 1.7; word-break: break-word; }
+
+  /* ---------- Refusals ---------- */
+
+  .refusals { background: var(--card); border: 1px solid rgba(244,114,182,0.3); border-radius: 8px; padding: 1.4rem 1.5rem; display: flex; flex-direction: column; gap: 0.85rem; }
+  .refusals p { font-size: 0.94rem; color: var(--star-white); }
+  .refusals p strong { color: var(--pink); font-weight: 700; }
+
+  /* ---------- Edition ----------
+     ONE EDITION PER PAGE as of 2026-09-04. This used to be a single page with
+     every edition stacked newest-first, and this comment used to say new
+     editions are PREPENDED — they are not. A new edition is a NEW FILE,
+     `glimmer-wire-YYYY-MM-DD.html`, carded on collection-glimmer-wire.html;
+     see that page and CLAUDE.md for what else it owes. Nothing is ever deleted:
+     the Held list is the record this collection exists for, and an archive of
+     only the good weeks would assert a cadence that did not happen.
+     The `.edition + .edition` rule below is now inert here and is kept so the
+     two shipped editions stay byte-comparable with what they were. */
+  .edition + .edition { margin-top: 4rem; padding-top: 2.5rem; border-top: 1px solid var(--border); }
+  .edition-tally { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.12em; color: var(--dim); margin-bottom: 2rem; font-variant-numeric: tabular-nums; }
+  .colophon-footer { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--dim2); line-height: 2.2; margin-top: 3rem; padding-top: 1.4rem; border-top: 1px solid var(--border); }
+  .colophon-footer a { color: inherit; }
+
+  /* Page-specific print work. The --sp-* aliases above give the token inversion
+     for free; these are the hardcoded rgba surfaces and the lag bar, which the
+     shared sheet cannot reach. */
+  @media print {
+    body::before { display: none !important; }
+    .doc-shell { max-width: none; padding: 0 0 1rem; }
+    .wire-item, .notice, .seed, .refusals, .held-item, .key div {
+      background: transparent !important; border-color: #999999 !important; break-inside: avoid;
+    }
+    .wire-item, .notice, .seed { border-left-color: #333333 !important; }
+    .frame, .placement, .caveat { background: transparent !important; border-left-color: #666666 !important; }
+    .lag-track { background: #dddddd !important; }
+    .lag-fill { background: #555555 !important; opacity: 1; }
+    .hero-rule, .section-rule { background: #333333 !important; opacity: 1; }
+  }
+
+  @media (max-width: 600px) {
+    .doc-shell { padding: 2rem 1.3rem 3rem; }
+  }
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Glimmer Wire — edition of 13 November 2026","description":"Edition twelve of Glimmer Wire, 13 November 2026 — the weekly graded scan behind Glimmers. Eight items filed, six held, eight papers read end to end, median lag 57.5 days. Thirty years of counting that removes deer from the Lyme equation, three mosquito species ranking the same 119 people differently, two coats built by one rule at different settings, and a hypothesis about why tetrapods have necks tested against a sturgeon.","image":"https://starstuff.earth/og-card.jpg","url":"https://starstuff.earth/glimmer-wire-2026-11-13.html","mainEntityOfPage":"https://starstuff.earth/glimmer-wire-2026-11-13.html","datePublished":"2026-11-13","dateModified":"2026-11-13","author":{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/"},"publisher":[{"@type":"Organization","name":"Stimpunks Foundation","url":"https://stimpunks.org/","logo":{"@type":"ImageObject","url":"https://starstuff.earth/og-card.jpg"}},{"@type":"Organization","name":"More Realms","url":"https://morerealms.com/"}],"isPartOf":{"@type":"WebSite","name":"Star Stuff","url":"https://starstuff.earth/"},"isPartOf_collection":"https://starstuff.earth/collection-glimmer-wire.html"}</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<div class="doc-shell">
+
+  <!-- prev/next here move between EDITIONS, not along the site's global reading
+       chain: Glimmer Wire sits outside that chain by decision, like every other
+       working paper. See collection-glimmer-wire.html and DECISIONS.md.
+       A NEW EDITION IS A NEW FILE, never a second .edition block on this one. -->
+  <nav class="ss-nav" style="--nav-accent:#fbbf24;" aria-label="Star Stuff collection">
+    <span class="ss-nav-home-group"><a class="ss-nav-home" href="index.html"><span class="ss-star" aria-hidden="true">&#9733;</span> stuff</a><a class="ss-nav-about" href="about.html">about</a>
+      <a class="ss-nav-search" href="search.html">search</a><a class="ss-nav-privacy" href="privacy.html">privacy</a></span>
+    <span class="ss-nav-links">
+      <a class="ss-nav-prev" href="glimmer-wire-2026-11-06.html"><span class="ss-nav-arrow" aria-hidden="true">&lsaquo;</span> <span class="ss-nav-label">6 November 2026</span></a>
+    </span>
+    <a class="ss-nav-collection" href="collection-glimmer-wire.html"><span class="ss-nav-collection-label">Collection</span> <span class="ss-nav-collection-name">Glimmer Wire</span> <span class="ss-nav-arrow" aria-hidden="true">&rsaquo;</span></a>
+  </nav>
+<main id="main" tabindex="-1">
+
+  <div class="nav-brand"><a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks</a> &times; <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a> &middot; Glimmer &#9733; Wire &middot; Edition Twelve</div>
+
+  <header class="hero">
+    <div class="hero-eyebrow"><a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks Foundation</a> &times; <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a> &middot; Working Paper</div>
+    <h1 class="hero-title" id="masthead">Edition of 13 November 2026</h1>
+    <p class="hero-byline">A weekly read of what is going well in science and medicine, graded before it is enjoyed.</p>
+    <p class="hero-sub">The twelfth edition of <a href="collection-glimmer-wire.html">Glimmer Wire</a>, the scan that sits behind <a href="collection-glimmers.html">Glimmers</a>. <strong>Eight versions of record were read end to end &mdash; the most in twelve editions, and two more than the previous best</strong> &mdash; because the archive that has rationed this page for three weeks did not challenge a single request. Items are sorted by <em>lag</em>, which runs from <strong>13 days to 192</strong>, median <strong>57.5</strong>. <strong>Five are graded verified, two plausible, one contested.</strong> <strong>The lead item is thirty years of counting ticks, mice and acorns that takes the animal everybody blames out of the equation entirely</strong> &mdash; and replaces it with a two-year chain running from an oak. The section that matters most is <a href="#held-items-1113">Held</a>, which this week holds a study whose own vocabulary is harsher than the headline over it, and one we wanted to file and could not open.</p>
+    <hr class="hero-rule">
+    <p class="dateline">
+      <span><i>Edition</i> <b>Twelve</b></span>
+      <span><i>Published</i> <b>13 November 2026</b></span>
+      <span><i>Amended</i> <b>&mdash;</b></span>
+      <span><i>Verified</i> <b>5 of 8</b></span>
+    </p>
+  </header>
+
+  <div class="edition" id="edition-2026-11-13">
+    <p class="edition-tally">8 filed &middot; 6 held &middot; 3 seeds &middot; 5 verified &middot; median lag 57.5 d</p>
+
+  <div class="notice" role="region" aria-labelledby="what-was-read-1113">
+    <h2 id="what-was-read-1113">What was actually read &mdash; and a bot check that did not fire</h2>
+    <p><strong>Answered when tried, by name:</strong> <span class="mono">api.crossref.org</span>, <span class="mono">pmc.ncbi.nlm.nih.gov</span> (every request, see below), its identifier converter at <span class="mono">pmc.ncbi.nlm.nih.gov/tools/idconv</span>, <span class="mono">pubmed.ncbi.nlm.nih.gov</span>, <span class="mono">arxiv.org</span>, <span class="mono">doi.org</span> (<span class="mono">302</span>, correctly, to publishers that then refused) and <span class="mono">www.sciencedaily.com</span>. <strong>Refused at the network layer, which is this container&rsquo;s restriction rather than a publisher&rsquo;s and is recorded as what it is:</strong> <span class="mono">www.sciencedirect.com</span>, <span class="mono">www.thelancet.com</span>, <span class="mono">link.springer.com</span>, <span class="mono">www.frontiersin.org</span>, <span class="mono">www.mapress.com</span>, <span class="mono">export.arxiv.org</span>, <span class="mono">eutils.ncbi.nlm.nih.gov</span>, <span class="mono">europepmc.org</span>, <span class="mono">www.ebi.ac.uk</span> and <span class="mono">bc.iung.pl</span>. <strong>Refused with a real answer:</strong> <span class="mono">www.science.org</span> returned <span class="mono">HTTP&nbsp;403</span> to both article URLs asked of it and <span class="mono">www.pnas.org</span> returned <span class="mono">403</span>; <span class="mono">www.nature.com</span> answered with <span class="mono">HTTP&nbsp;303</span> to <span class="mono">idp.nature.com/authorize</span>, an authentication redirect where there is no page to read at all.</p>
+    <p><strong>PubMed Central challenged nothing this week.</strong> Eight article paths were requested and eight returned the full text; no reCAPTCHA interstitial appeared at any point. <em>That is the third distinct state in three weeks</em> &mdash; total block on 30 October, four of seven challenged on 6 November, none this week &mdash; and the sequence is the argument for recording it as a fact about the minute rather than a fact about the archive. <strong>It is also why this edition can report eight full texts and last week&rsquo;s could report three</strong>, which is a difference in luck rather than in effort, and saying so is the only way the two numbers can be read against each other honestly. We did not disguise the caller, which remains the rule whether or not anybody is checking.</p>
+    <p><strong>Eight versions of record were read end to end, the most in twelve editions, and the distribution matters: six support filed items and two support held ones.</strong> The neck, Lyme, comet, mosquito and placode papers are filed and graded verified. The marine-snow <em>methods</em> paper was read in full and its item is still graded <em>plausible</em>, because the carbon claim the coverage is about sits in a companion paper in <em>Science</em> that answered <span class="mono">403</span> &mdash; reading one paper of a pair does not verify the other. The remaining two full texts are both in <a href="#held-items-1113">Held</a>: a study of children and arithmetic, and a meta-analysis about bone, which is the fact this site is built around. <em>Holding is still not what happens when we cannot get the paper.</em></p>
+    <p><strong>An open licence bought something this week, for the first time in six.</strong> Five of the eight filed items are CC&nbsp;BY or CC&nbsp;BY-NC-ND, and six of the eight full texts arrived through PubMed Central rather than from a publisher &mdash; the neck paper (CC&nbsp;BY, <em>Nature</em>), the comet paper (CC&nbsp;BY, <em>Scientific Reports</em>), the marine-snow methods paper (CC&nbsp;BY, <em>Nature Communications</em>), the mosquito paper (CC&nbsp;BY, <em>iScience</em>), and both PNAS papers (CC&nbsp;BY-NC-ND). <em>The licence still did not open a publisher&rsquo;s door; a public archive did.</em> That is the same finding as the past five weeks with the sign reversed, and it is worth stating in the week it goes the right way.</p>
+    <p><strong>The picture census, by the method fixed five weeks ago &mdash; and the denominator moved for two reasons this time, one of them ours.</strong> Nine ScienceDaily topic feeds were requested; <span class="mono">strange_science</span> answered <span class="mono">404</span> again <em>and so did <span class="mono">top_science</span></em>, which carried content last week, so <strong>seven feeds carried content</strong> rather than eight. They deduplicate to <strong>83 unique releases in the seven days to 13 November</strong>, every one of which was fetched. <strong>5 carry an image credited <span class="mono">AI/ScienceDaily.com</span> and 39 more a Shutterstock photograph &mdash; 44 of 83.</strong> <strong>Last week was 40 of 66 and these numbers must not be subtracted:</strong> a feed dropped out, the denominator rose by a quarter, and a ratio over a different mix is a different measurement. <em>Of the eight items filed below, four lead with an image from the research or the institution that did it</em> &mdash; the neck item&rsquo;s is credited to one of its own co-authors, the butterfly item&rsquo;s to another, the marine-snow item&rsquo;s to its first author. Four lead with a stock photograph. <strong>None of the eight leads with an image credited to a machine</strong>, which has not been true of a filed set here before.</p>
+  </div>
+
+  <div class="section-block" role="region" style="--sec-accent: var(--gold);" aria-labelledby="filed-1113">
+    <!-- TABLE OF CONTENTS -->
+    <nav class="ss-toc" style="--toc-accent:#fbbf24;" aria-label="Table of contents">
+      <h2>Table of Contents</h2>
+      <ul>
+        <li><a href="#filed-1113">Filed</a></li>
+        <li><a href="#held-items-1113">Held</a></li>
+        <li><a href="#seedbed-1113">Seedbed</a></li>
+        <li><a href="#refusals-1113">Not</a></li>
+      </ul>
+    </nav>
+
+    <h2 class="section" id="filed-1113">Filed</h2>
+    <div class="section-rule" aria-hidden="true"></div>
+    <p class="section-intro">Sorted by lag, shortest first. Bars are scaled to the longest item, 192 days. <strong>Eight items at 13, 21, 28, 31, 84, 102, 132 and 192 days, median 57.5</strong> &mdash; a flatter spread than usual, with no item inside a fortnight and none older than seven months. <strong>Five verified, two plausible, one contested.</strong> Six were read end to end as versions of record; two rest on complete publisher-deposited abstracts and say so in their own grades. <em>Three of the eight retire an explanation rather than adding one</em>, which is the shape this scan looks for hardest and rarely gets three of in a week.</p>
+
+    <div class="key" role="list">
+      <div role="listitem"><span class="k-verified">Verified</span> Primary source read and confirmed.</div>
+      <div role="listitem"><span class="k-plausible">Plausible</span> Finding sound and metadata confirmed; version of record not read.</div>
+      <div role="listitem"><span class="k-contested">Contested</span> Specialists disagree, or the claim outruns the method.</div>
+      <div role="listitem"><span class="k-held">Held</span> Could not be traced to a source that supports it.</div>
+    </div>
+
+    <div class="wire-list">
+
+      <article class="wire-item" id="comets-1113" style="--e-accent: var(--cyan);" aria-labelledby="comets-1113-title">
+        <p class="meta">
+          <span class="grade verified">Verified</span>
+          <span><i>Published online</i> 2026-10-28</span>
+          <span><i>Journal</i> Scientific Reports</span>
+          <span><i>Read</i> the version of record, in full</span>
+        </p>
+        <p class="lag"><span class="lag-label">Lag 13 d</span><span class="lag-track" aria-hidden="true"><span class="lag-fill" style="width:6.8%"></span></span></p>
+        <h3 id="comets-1113-title">The courier is in doubt; the atoms never were</h3>
+        <p class="finding">Anslow, McDonald, Bonsor, Rimmer and Rae revisit whether comets could have delivered the feedstock molecules prebiotic chemistry needs, combining impact simulations, comet&ndash;atmosphere interaction and dynamical modelling of short-period comets. Their abstract&rsquo;s conclusion: &ldquo;the rapid decline in Earth&rsquo;s cometary impact bombardment and the efficient destruction of fragile cometary organics indicate that the successful delivery of prebiotic feedstock molecules was an exceedingly rare event.&rdquo; <strong>The numbers are the interesting part.</strong> Comets below roughly 100&nbsp;m &ldquo;catastrophically fragment in explosive airbursts at high altitude,&rdquo; so only kilometre-scale bodies arrive intact; hydrogen cyanide then survives only in low-velocity, highly oblique impacts, a very small region of parameter space. Across the Monte&nbsp;Carlo realisations <strong>the median number of successful deliveries to Earth is zero</strong>, with 54 per cent of runs recording none. And the comparison that does the work is planetary: <strong>&ldquo;Mars receives 744&plusmn;&nbsp;27 impacts delivering &gt;10&nbsp;mM HCN, compared with 87&plusmn;&nbsp;9 for Earth&rdquo;</strong> &mdash; with Earth&rsquo;s figure collapsing to a median of zero once the delivery is required to land on dry ground.</p>
+        <div class="frame">
+          <b>The star stuff frame</b>
+          <strong>This is a negative result about where we came from, and it is still a good week for it.</strong> Nothing here touches the claim this site is named for: the carbon, nitrogen and oxygen were made in stars and are in you, and no model of impact chemistry has an opinion about that. What is in doubt is the <em>courier</em> &mdash; the picture in which a comet arrives carrying the ingredients ready-made, which is the version that travels because it is a story with a delivery van in it. <em>The paper&rsquo;s own alternatives are quieter and more interesting:</em> endogenous synthesis of HCN in the early atmosphere, supplying exposed land steadily rather than dramatically, and cyanide stockpiled as ferrocyanide. <strong>Slow local chemistry over a spectacular arrival</strong> &mdash; and the authors are careful to say the slow route has its own problem, being limited by the atmosphere&rsquo;s oxidation state.
+        </div>
+        <div class="caveat">
+          <b>The headline reverses the subject of the sentence</b>
+          <strong>ScienceDaily ran this as &ldquo;Comets may have destroyed life&rsquo;s ingredients instead of delivering them to Earth,&rdquo; and the grammatical subject of that claim is wrong.</strong> The paper does not say comets destroyed ingredients that were already on Earth. It says <em>the comets&rsquo; own organics</em> are destroyed on arrival, in the very impact that would have delivered them &mdash; the destruction and the delivery are the same event, which is the whole difficulty. <strong>The authors hedge where they should:</strong> &ldquo;we cannot formally exclude the possibility that a single fortuitous cometary impact&rdquo; delivered a prebiotic concentration of HCN. <em>And every stated limitation pushes the same way.</em> The 1&nbsp;bar atmosphere is &ldquo;a best-case scenario&rdquo; for survival; the survival model includes one destruction pathway and &ldquo;neglect[s] comets&rsquo; internal strength and porosity&rdquo;; only short-period comets are modelled; the land-area model is &ldquo;probably an overestimate.&rdquo; Those make the result an <em>upper bound</em> on a thing already found to be rare, which strengthens the claim rather than weakening it &mdash; and is worth saying out loud, because a list of limitations usually reads as a list of doubts. <em>We did not read the Supplementary material</em>, which holds the survival-fraction-against-velocity curves, so the shape of that small parameter space is unseen here.
+        </div>
+        <div class="placement">
+          <b>Where it goes</b>
+          <span class="mono">panspermia</span> returns two pages &mdash; <a href="there-have-been-so-many-earths-zine.html"><em>There Have Been So Many Earths</em></a> and last week&rsquo;s edition &mdash; and neither argues this. <strong>What is unspent is the shape rather than the chemistry:</strong> a mechanism that is loved because it is vivid, tested properly, and found to be the rare case rather than the normal one, with the undramatic alternative left standing. That is a <a href="too-good-to-check.html">Too Good to Check</a> argument about <em>our</em> own favourite story, and the uncomfortable part is that the comet-delivery picture is the one a star-stuff site would reach for first.
+        </div>
+        <p class="cite"><b>Anslow, R.&nbsp;J., McDonald, C.&nbsp;H., Bonsor, A., Rimmer, P.&nbsp;B. &amp; Rae, A.&nbsp;S.&nbsp;P.</b> &ldquo;Cometary impacts an unlikely pathway towards the origins of life on Earth.&rdquo; <em>Scientific Reports</em> <strong>16</strong>, 31688, online 28 October 2026. <b>DOI</b> 10.1038/s41598-026-74214-y, CC&nbsp;BY&nbsp;4.0. <b>Read:</b> the version of record in full at PubMed Central (PMC13716819); every quotation above is verbatim from it. Received 3 April 2026, accepted 28 September 2026. <b>Not read:</b> the Supplementary material. <b>Wire:</b> ScienceDaily, 10 November 2026, from a University of Cambridge release. <b>Lead image:</b> Scarlett White.</p>
+      </article>
+
+      <article class="wire-item" id="crows-1113" style="--e-accent: var(--violet);" aria-labelledby="crows-1113-title">
+        <p class="meta">
+          <span class="grade contested">Contested</span>
+          <span><i>Published</i> 2026-10-22</span>
+          <span><i>Journal</i> Science</span>
+          <span><i>Read</i> the deposited abstract, in full</span>
+        </p>
+        <p class="lag"><span class="lag-label">Lag 21 d</span><span class="lag-track" aria-hidden="true"><span class="lag-fill" style="width:10.9%"></span></span></p>
+        <h3 id="crows-1113-title">The comparison is to the literature, not to somebody in the next room</h3>
+        <p class="finding">Schmidbauer and Nieder put carrion crows (<em>Corvus corone</em>) on a classic visual motion discrimination task and recorded from the pallial endbrain. The crows report choices &ldquo;in approximately 235 milliseconds on average, which is roughly twice as fast as has been observed in monkeys or humans and without sacrificing accuracy.&rdquo; <strong>The recordings are the better half of the result.</strong> Direction-selective neurons &ldquo;encode the upcoming choice as early as about 70 milliseconds after stimulus onset and about 170 milliseconds before the response, with ramping activity scaling with sensory evidence and converging at response onset&rdquo; &mdash; so the decision is not merely quick at the output. It is settled in the brain about a sixth of a second before the bird moves, by an accumulation process that looks like the one described in primates, running at a different speed.</p>
+        <div class="frame">
+          <b>The star stuff frame</b>
+          <strong>This site already has a shelf on bird cognition, and its argument is that the comparison axis is the problem.</strong> <a href="older-than-either-of-us-zine.html"><em>Older Than Either of Us</em></a> (No.&nbsp;86) and <a href="bird-minds-field-guide.html"><em>A Field Guide to Bird Minds</em></a> (FG&nbsp;23) between them record that a kea carries 1.28&nbsp;billion pallial neurons against a chimpanzee&rsquo;s 7.4&nbsp;billion and performs comparably &mdash; so whatever is doing the work, counting is not it. <em>Speed is a second axis, and on this one the bird is simply ahead.</em> <strong>Which is not a ranking either, and the paper declines to make it one:</strong> it reads the speed as &ldquo;possibly shaped by evolutionary pressures for rapid visuomotor control&rdquo; &mdash; an animal that has to decide while already in the air. A difference in what an arrangement is <em>for</em>, not a difference in how good it is.
+        </div>
+        <div class="caveat">
+          <b>&ldquo;As has been observed&rdquo; is doing load-bearing work</b>
+          <strong>The comparison is across studies, not head to head.</strong> The crows&rsquo; 235&nbsp;ms is set against published monkey and human reaction times from other laboratories, other apparatus, other stimulus parameters and other reward contingencies &mdash; and reaction time is exactly the quantity that moves when any of those move. <em>The authors write the sentence carefully</em>, with &ldquo;as has been observed&rdquo; marking it as a comparison to a literature; <strong>the wire headline drops the clause</strong> &mdash; &ldquo;Crows can make decisions twice as fast as humans&rdquo; &mdash; and what is left reads as a race that was run. Those are different claims, and only the first one was tested. <em>We did not read the paper.</em> <span class="mono">www.science.org</span> answered <span class="mono">HTTP&nbsp;403</span> and no PMCID exists, so the stimulus parameters, the task timing and whatever comparison the authors actually tabulate are unread. <strong>The contested grade is about what we could check, not about what they did</strong> &mdash; and it would move to plausible or verified on sight of the methods.
+        </div>
+        <div class="placement">
+          <b>Where it goes</b>
+          <span class="mono">carrion crow</span> returns nothing across this site and <span class="mono">Corvus</span> returns only the field guide. No.&nbsp;86 owns <em>where the circuit came from</em> and FG&nbsp;23 owns the thirteen birds and the arguments they were recruited into. <strong>Unspent: speed as a dimension nobody ranks on.</strong> Every popular comparison of bird and primate cognition is about capability, and this is a measurement on an axis where the answer has been sitting unremarked &mdash; which is a <em>companion note to an existing pair</em>, not a new piece. The guide&rsquo;s own closing line is that there is no standard bird; it would hold a sentence about there being no standard clock either.
+        </div>
+        <p class="cite"><b>Schmidbauer, P. &amp; Nieder, A.</b> &ldquo;Ultrarapid decision-making in an avian brain.&rdquo; <em>Science</em> <strong>394</strong>(6822), 445&ndash;449, 22 October 2026. <b>DOI</b> 10.1126/science.aed6459. <b>Read:</b> the complete publisher-deposited abstract at Crossref; every quotation above is verbatim from it. <b>Not read:</b> the paper. <span class="mono">www.science.org</span> answered <span class="mono">403</span> and no PMCID exists. <b>Wire:</b> ScienceDaily, 12 November 2026, from a University of T&uuml;bingen release. <b>Lead image:</b> Shutterstock.</p>
+      </article>
+
+      <article class="wire-item" id="necks-1113" style="--e-accent: var(--gold);" aria-labelledby="necks-1113-title">
+        <p class="meta">
+          <span class="grade verified">Verified</span>
+          <span><i>Published online</i> 2026-10-14</span>
+          <span><i>Journal</i> Nature</span>
+          <span><i>Read</i> the version of record, in full</span>
+        </p>
+        <p class="lag"><span class="lag-label">Lag 28 d</span><span class="lag-track" aria-hidden="true"><span class="lag-fill" style="width:14.6%"></span></span></p>
+        <h3 id="necks-1113-title">A story about why a thing is shaped like that, tested against a living fish</h3>
+        <p class="finding">When tetrapods arose, the skull separated from the shoulder girdle and a neck region appeared. The standing explanation is that neck mobility increased and made the move onto land workable &mdash; and it has been hard to test, because those early vertebral components are not fully co-ossified and so cannot be articulated the usual way. Korneisel and colleagues went round it by measuring a living animal with a similarly configured axial column: <strong>&ldquo;Ten <em>A. fulvescens</em> yearlings were partially dissected for material characterization&rdquo;</strong> &mdash; lake sturgeon &mdash; put through three-point lateral bending, dorsoventral bending and whole-column torsion, with the notochord tested separately. The model that falls out is unexpected: <strong>&ldquo;the soft tissue-dominated axial column was surprisingly rigid, despite lacking co-ossified vertebral components.&rdquo;</strong> Most stem tetrapods &ldquo;could move their heads less than 6&deg; laterally and less than 3&deg; dorsally but could not rotate them&rdquo; &mdash; a 5&deg; head rotation needed at least 200&nbsp;Nm of torque. <strong>And the mobility does not change where the hypothesis says it must:</strong> &ldquo;mobility did not shift in conjunction with the head&ndash;shoulder separation,&rdquo; so &ldquo;mobility in the tetrapod neck did not serve as a functional driver of head&ndash;shoulder separation.&rdquo;</p>
+        <div class="frame">
+          <b>The star stuff frame</b>
+          <strong>The replacement explanation is not about the head at all.</strong> The authors argue the separation &ldquo;is more consistent with the predicted origin of forelimb-driven locomotion&rdquo;: the shoulder girdle came under rising demand to support a limb doing the walking, and the skull was let go of as a consequence. <em>A structure can separate because of what is happening to its neighbour.</em> That is the part worth keeping, and it generalises well past fish &mdash; a feature is found, a function is proposed for it, the function is plausible <em>because the feature is right there</em>, and the actual cause turns out to be a demand on something adjacent that nobody was looking at. <strong>And there is an outlier worth naming:</strong> <em>Whatcheeria</em> models at up to 32&deg; lateral flexion and 12&deg; extension, against under 3&deg; and under 1.5&deg; for <em>Acanthostega</em>, <em>Greererpeton</em> and <em>Trimerorhachis</em>. The authors flag it as an outlier and do not explain it away. <em>One animal doing something ten times the group&rsquo;s range is precisely what a mean hides</em>, and leaving it visible in the results is the paper behaving well.
+        </div>
+        <div class="caveat">
+          <b>A narrower subject than the headline, and limitations that all push one way</b>
+          <strong>ScienceDaily ran &ldquo;Scientists discover that necks didn&rsquo;t evolve for the reason we thought,&rdquo; and the paper&rsquo;s claim has a smaller subject.</strong> It is not that necks did not evolve for a reason; it is that <em>neck mobility</em> was not the functional driver of the <em>head&ndash;shoulder separation</em>. The neck still happened, and the paper offers a reason it happened. <em>The stated limitations are unusually candid.</em> The method &ldquo;is inappropriate for estimating the range of mobility in taxa such as these, with restricted notochords,&rdquo; which puts embolomeres and amniotes outside it; evaluating animals with more developed zygapophyseal articulations &ldquo;will require a different approach&rdquo;; integument, muscle, osteoderms and ribs add stiffness the model omits; internal organs such as gills could restrict head motion further; and sturgeon differ from early tetrapods in vertebral details the authors list. <strong>Note the direction of every one of those:</strong> each would make the real animals <em>less</em> mobile, not more, so the limitations reinforce the central claim instead of threatening it. <em>We did not read the Supplementary Information or the Extended Data</em>, which hold the per-taxon modelling.
+        </div>
+        <div class="placement">
+          <b>Where it goes</b>
+          <span class="mono">Tiktaalik</span> returns one page &mdash; <a href="unfinished-animals-field-guide.html"><em>A Field Guide to Unfinished Animals</em></a>, where it appears inside an entry about <em>contested trackways</em> rather than about necks. <strong>What is unspent is the inference, not the fish:</strong> a correct observation with a functional story attached afterwards, repeated until the story is quoted as the observation. See the <a href="#seed-function-1113">seedbed</a>, where it meets a second case from a completely different field in the same week.
+        </div>
+        <p class="cite"><b>Korneisel, D.&nbsp;E., Donatelli, C.&nbsp;M., Han, L., Stewart, T.&nbsp;A., Traynor, A.&nbsp;L., Otoo, B.&nbsp;K.&nbsp;A., Martinez, M., Miyashita, T., Standen, E.&nbsp;M. &amp; Maddin, H.&nbsp;C.</b> &ldquo;Early tetrapod neck mobility modelled using an extant analogue.&rdquo; <em>Nature</em> <strong>659</strong>(8139), 128&ndash;132, online 14 October 2026. <b>DOI</b> 10.1038/s41586-026-11158-3, CC&nbsp;BY&nbsp;4.0. <b>Read:</b> the version of record in full at PubMed Central (PMC13736659); every quotation above is verbatim from it. Received 12 December 2025, accepted 11 September 2026. <b>Not read:</b> the Supplementary Information and Extended Data. <b>Wire:</b> ScienceDaily, 11 November 2026, from a Penn State release. <b>Lead image:</b> Tom Stewart, Penn State &mdash; one of the paper&rsquo;s own authors.</p>
+      </article>
+
+      <article class="wire-item" id="mucoscape-1113" style="--e-accent: var(--cyan);" aria-labelledby="mucoscape-1113-title">
+        <p class="meta">
+          <span class="grade">Plausible</span>
+          <span><i>Published</i> 2026-10-08</span>
+          <span><i>Journal</i> Science</span>
+          <span><i>Read</i> the deposited abstract, plus the companion methods paper in full</span>
+        </p>
+        <p class="lag"><span class="lag-label">Lag 31 d</span><span class="lag-track" aria-hidden="true"><span class="lag-fill" style="width:16.1%"></span></span></p>
+        <h3 id="mucoscape-1113-title">A habitat measured in how hard it is to swim through</h3>
+        <p class="finding">Marine snow &mdash; the drifting aggregate of mucus, faeces, silt and dead plankton &mdash; carries carbon out of the surface ocean, and how much reaches the deep depends on how fast bacteria take it apart on the way down. Inman, Humphries and Azam report in <em>Science</em> that aggregates &ldquo;are highly structured microhabitats with less-viscous regions that are accessible for colonization and more-viscous regions that correlate to a barrier to bacterial infiltration,&rdquo; and that &ldquo;more viscous aggregates take longer to degrade, sink farther, and contribute more to carbon sequestration, revealing a microscale physical constraint of the global ocean carbon pump.&rdquo; <strong>The instrument is the thing, and it is described in a companion paper we did read in full:</strong> molecular rotors &mdash; fluorescent molecules whose emission depends on how freely they can turn &mdash; imaged by confocal microscopy, which maps viscosity in three dimensions without destroying the material. The numbers, relative to seawater at 1: diatom aggregates sit at a most probable 1.55 and 1.45 with regions &ldquo;up to a factor of 16 greater than seawater&rdquo;; a jellyfish ephyra&rsquo;s mucus layer sits at 1.35 with granules reaching &ldquo;viscosities up to a factor of ~&nbsp;250 greater than seawater.&rdquo;</p>
+        <div class="frame">
+          <b>The star stuff frame</b>
+          <strong>This is an umwelt measured in a unit nobody thinks of as sensory.</strong> To a bacterium the difference between 1.35 and 250 is the difference between open water and a wall, and the paper&rsquo;s word for the resulting landscape is the right one: &ldquo;mapping the microscale viscous &lsquo;mucoscape&rsquo; provides an important physical context for microbial processes.&rdquo; <em>The best single sentence is about a jellyfish.</em> The mucus around a <em>Cassiopea xamachana</em> ephyra &ldquo;may maintain a local microbiome while preventing direct contact with the animal,&rdquo; and in the results &ldquo;the mucus layer prevents potentially harmful bacteria from reaching the surface of the ephyra.&rdquo; <strong>An animal keeping its bacteria at a measured distance, in a medium whose thickness it sets.</strong> <a href="symbioses-field-guide.html"><em>A Field Guide to Symbioses</em></a> reads partnership across the tree of life as mutual aid; what this adds is that a partnership has a <em>geometry</em>, and the geometry here is thickness. Two diatom cultures make the point without an animal: one aggregate &ldquo;small and consolidated,&rdquo; with bacteria &ldquo;only found around the exterior&rdquo;; the other &ldquo;larger, patchier, and held together by a lattice of pennate diatom cells,&rdquo; with bacteria &ldquo;found around the edges and throughout the interior.&rdquo; <em>Same relationship, two architectures, and the architecture decides who gets in.</em>
+        </div>
+        <div class="caveat">
+          <b>The six-times figure is the release&rsquo;s, and the n is one</b>
+          <strong>The headline number does not appear in anything we read.</strong> ScienceDaily ran &ldquo;Why some ocean &lsquo;snow&rsquo; carries six times more carbon,&rdquo; and the UC San Diego release says the stickiest particles &ldquo;can transport more than six times as much carbon to the deep ocean&rdquo;; the deposited <em>Science</em> abstract says only &ldquo;contribute more to carbon sequestration.&rdquo; <em>We have not seen that factor derived and are not repeating it as the paper&rsquo;s.</em> <span class="mono">www.science.org</span> answered <span class="mono">403</span> and there is no PMCID for it, so the <em>Science</em> paper is unread and this item is graded plausible even though its companion was read end to end &mdash; <strong>reading one paper of a pair does not verify the other.</strong> <em>And the methods paper is scrupulous about its own n.</em> &ldquo;We focus our analysis on two example aggregates,&rdquo; each reported as &ldquo;N = 1 aggregate&rdquo;; the bacteria&ndash;viscosity relationships are &ldquo;correlative&rdquo; in the authors&rsquo; word; other factors &ldquo;may influence bacterial colonization&rdquo;; and the measurement &ldquo;is not the same as hydrodynamic viscosity measured with a rheometer,&rdquo; which matters before anyone quotes 250&times; as a bulk property. <em>One small thing, recorded because transcription is where quotations go wrong:</em> the release quotes the first author calling it &ldquo;the muscoscape&rdquo;; both papers write <em>mucoscape</em>.
+        </div>
+        <div class="placement">
+          <b>Where it goes</b>
+          <span class="mono">marine snow</span> returns nothing across this site; <span class="mono">mucus</span> appears on <a href="rest-field-guide.html"><em>A Field Guide to Rest</em></a> and the symbioses guide, in both cases as a substance rather than as a place. <strong>The unspent idea is habitat-as-viscosity</strong>, which belongs beside <a href="impossible-places-field-guide.html"><em>A Field Guide to Life in Impossible Places</em></a> and its standing line that the <em>condition</em> gets called extreme and never the organism. <em>A guide entry needs the</em> Science <em>paper, not its abstract.</em>
+        </div>
+        <p class="cite"><b>Inman, B.&nbsp;G., Humphries, S. &amp; Azam, F.</b> &ldquo;Marine snow viscosity regulates microbial degradation and the ocean carbon sink.&rdquo; <em>Science</em> <strong>394</strong>(6820), 202&ndash;206, 8 October 2026. <b>DOI</b> 10.1126/science.adx4170. <b>Read:</b> the complete deposited abstract at Crossref. <b>Not read:</b> the paper (<span class="mono">www.science.org</span> answered <span class="mono">403</span>, no PMCID). <b>Companion, read in full:</b> Inman, B.&nbsp;G., Patel, N., Castro-Falc&oacute;n, G., Hernandez, T., McGorty, R.&nbsp;J., Ohdera, A.&nbsp;H., Gonzalez, L.&nbsp;M., Bidle, K.&nbsp;D., Azam, F. &amp; Humphries, S., &ldquo;Molecular rotors reveal the 3D viscous habitat of mucus-colonizing bacteria,&rdquo; <em>Nature Communications</em> <strong>17</strong>, DOI 10.1038/s41467-026-75892-y, 22 July 2026, CC&nbsp;BY&nbsp;4.0, read in full at PubMed Central (PMC13503797); all viscosity figures and quotations above come from that paper. <b>Wire:</b> ScienceDaily, 8 November 2026, from a UC San Diego release. <b>Lead image:</b> Bryce Inman &mdash; the first author of both papers.</p>
+      </article>
+
+      <article class="wire-item" id="lyme-1113" style="--e-accent: var(--green);" aria-labelledby="lyme-1113-title">
+        <p class="meta">
+          <span class="grade verified">Verified</span>
+          <span><i>Published online</i> 2026-08-17</span>
+          <span><i>Journal</i> PNAS</span>
+          <span><i>Read</i> the version of record, in full</span>
+        </p>
+        <p class="lag"><span class="lag-label">Lag 84 d</span><span class="lag-track" aria-hidden="true"><span class="lag-fill" style="width:43.8%"></span></span></p>
+        <h3 id="lyme-1113-title">Thirty years of counting, and the animal everybody blames is not in the equation</h3>
+        <p class="finding">Ostfeld, LaDeau, Oggenfuss, Canham, Fargione, Winchcombe and Keesing test a conceptual model of the Lyme system against more than three decades of monitoring &mdash; six 2.25-hectare plots in oak forest at the Cary Institute in Millbrook, New York, with data running from 1991. <strong>&ldquo;Contrary to conventional wisdom,&rdquo;</strong> they report, the abundance of nymphal black-legged ticks &ldquo;was not correlated with the abundance of white-tailed deer, the prior abundance of larval ticks, or seasonal temperature extremes.&rdquo; In the text: &ldquo;Despite sixfold variation in deer abundance across years,&rdquo; they &ldquo;observe no statistical relationship between deer abundance and subsequent&rdquo; nymph density. <strong>What does predict it is a chain with a two-year reach</strong> &mdash; red oak acorns in year <em>t</em>&minus;2, white-footed mice in year <em>t</em>&minus;1, nymphs in year <em>t</em> &mdash; with &ldquo;a strong mouse year increased nymphal abundance in the following year by approximately 40%.&rdquo; And infection prevalence is not a mouse story either: at these sites it &ldquo;appeared to arise from the distribution of larval ticks across the entire community of larval hosts,&rdquo; because &ldquo;high densities of mice strongly reduced the tick burdens on individual mice and chipmunks, suggesting intraguild competition for parasites.&rdquo; <strong>The abstract&rsquo;s own summary:</strong> &ldquo;Lyme disease risk arises from the dynamics of the ecological community, rather than from the dynamics of any single population of hosts or from extreme seasonal weather.&rdquo;</p>
+        <div class="frame">
+          <b>The star stuff frame</b>
+          <strong>This is the single-cause habit, caught by a measurement rather than by an argument.</strong> Everyone knows deer carry ticks, and the fact is true; the inference &mdash; fewer deer, less Lyme &mdash; is what thirty years of counting does not support at these sites. <em>The property we were attributing to one species turns out to be a property of a relationship among several</em>, and the species we blamed was simply the one large enough to see from a car. <strong>The hopeful part is not that the risk is smaller; it is that the risk is legible.</strong> The authors close with &ldquo;These dynamics are complex but predictable, such that understanding them can facilitate improvements in management and education aimed at protecting public health&rdquo; &mdash; which is the opposite of the fatalism that usually arrives attached to the word <em>complex</em>. Complexity here means the unit of description was wrong, not that there is nothing to describe. <em>An oak makes a decision two years before a person gets bitten, and nobody involved is thinking about anybody.</em>
+        </div>
+        <div class="caveat">
+          <b>Where it holds, in the authors&rsquo; own fencing</b>
+          <strong>The dilution result is specific to intact forest and they say so:</strong> &ldquo;Our long-term study plots are located within large tracts of eastern deciduous forest.&rdquo; The competition-for-parasites finding should not be carried into fragmented or suburban habitat without someone measuring it there. <em>One sentence in the paper does more extrapolating than we are willing to carry</em>: the authors say their results apply to oak-poor habitats, which they do not test here, so we are reading that as an expectation rather than a finding. <strong>And one of their central negatives is unexplained by them:</strong> &ldquo;The mechanisms underlying this surprising negative effect of warm years on DON remain to be fully evaluated.&rdquo; <em>The monitoring design has a limit they name and cannot fix</em> &mdash; it &ldquo;was not designed to monitor the abundances of mammals too large&rdquo; for their methods, and &ldquo;long-term studies such as ours are particularly difficult to replicate,&rdquo; which is the honest statement of a dataset that cannot be reproduced by anyone in under thirty years. <strong>And a transparency note about our own reading:</strong> the path coefficients sit in a figure rather than a table (standardised estimates from &minus;0.53 to 0.50; Fisher&rsquo;s <em>C</em> = 4.26, <em>P</em> = 0.64; fixed effects explaining 44 per cent of the variance in peak nymphal abundance and the full model 80), so those are read off a caption. <em>The SI Appendix tables holding the test statistics were not read.</em>
+        </div>
+        <div class="placement">
+          <b>Where it goes</b>
+          <span class="mono">lyme</span> as a whole word returns one page across this site, and <span class="mono">acorn</span> returns one &mdash; <a href="migrating-field-guide.html"><em>A Field Guide to the Ways of Migrating</em></a>, where oaks appear because a forest travels by relay, which is about what acorns <em>are</em> rather than what they feed. <strong>The unspent piece is a chain, and the collection for it already exists.</strong> See the <a href="#seed-chain-1113">seedbed</a>: this is a <a href="collection-how-we-got-here.html"><em>How We Got Here</em></a> sequence that arrives with its own joints already graded by thirty years of data, including one joint that is documented <em>absent</em> &mdash; a tag that collection does not yet have.
+        </div>
+        <p class="cite"><b>Ostfeld, R.&nbsp;S., LaDeau, S.&nbsp;L., Oggenfuss, K., Canham, C.&nbsp;D., Fargione, M., Winchcombe, R.&nbsp;J. &amp; Keesing, F.</b> &ldquo;The ecology of Lyme disease: Long-term data, surprises, and a synthesis.&rdquo; <em>Proceedings of the National Academy of Sciences</em> <strong>123</strong>(34), online 17 August 2026, issue 25 August 2026. <b>DOI</b> 10.1073/pnas.2610907123, CC&nbsp;BY-NC-ND&nbsp;4.0. <b>Read:</b> the version of record in full at PubMed Central (PMC13505984); every quotation above is verbatim from it. Received 10 April 2026, accepted 11 July 2026. <b>Not read:</b> the SI Appendix. <b>Wire:</b> ScienceDaily, 9 November 2026, from a Cary Institute of Ecosystem Studies release. <b>Lead image:</b> Shutterstock.</p>
+      </article>
+
+      <article class="wire-item" id="mosquito-1113" style="--e-accent: var(--pink);" aria-labelledby="mosquito-1113-title">
+        <p class="meta">
+          <span class="grade verified">Verified</span>
+          <span><i>Published</i> 2026-07-31</span>
+          <span><i>Journal</i> iScience</span>
+          <span><i>Read</i> the version of record, in full</span>
+        </p>
+        <p class="lag"><span class="lag-label">Lag 102 d</span><span class="lag-track" aria-hidden="true"><span class="lag-fill" style="width:53.1%"></span></span></p>
+        <h3 id="mosquito-1113-title">The paper&rsquo;s title puts the species first, and that is the entire finding</h3>
+        <p class="finding">Marrero and colleagues tested <strong>119 people in Miami</strong> against three mosquito species &mdash; <em>Aedes aegypti</em>, <em>Ae. albopictus</em> and <em>Culex quinquefasciatus</em>. The paper is called &ldquo;Individual humans are more attractive to <em>certain mosquito species</em>,&rdquo; and the grammatical weight of that title is the result: <strong>&ldquo;Each mosquito species exhibited distinct responses to individual humans,&rdquo;</strong> and &ldquo;Mosquito species can rank the attractiveness of individual humans differently.&rdquo; <em>The three rankings of the same 119 people barely agree.</em> Pearson correlations between species run <strong>0.3492</strong> (<em>aegypti</em> against <em>albopictus</em>), <strong>0.1431</strong> (<em>aegypti</em> against <em>quinquefasciatus</em>) and <strong>0.06034</strong> (<em>albopictus</em> against <em>quinquefasciatus</em>) &mdash; weak, negligible, and essentially nothing. The chemistry splits the same way: alpha-pinene and (E)-2-hexen-1-ol formate were higher in high-attraction participants for all three species, while ethyl 2-methylbutanoate mattered only to <em>Ae. aegypti</em>, which also had thirteen odours of its own. On skin bacteria, <em>Staphylococcus</em> was enriched in high-attraction <em>Ae. aegypti</em> participants and <em>Pseudomonas</em> in low-attraction ones. <strong>A sex effect appears for one species only:</strong> <em>Ae. aegypti</em> averaged 91.5 per cent attraction to male participants against 87.4 per cent to female (<em>p</em> = 0.0204), with no significant difference for the other two.</p>
+        <div class="frame">
+          <b>The star stuff frame</b>
+          <strong>&ldquo;Mosquito magnet&rdquo; is a property people are assigned, usually by other people at a barbecue, and this paper says the property does not exist until you name which animal is doing the ranking.</strong> Twelve field guides on this site arrive at some version of <em>there is no standard star, nest, egg, shark, way to rest, family</em>. This is the same sentence with the subject moved: not that there is no standard human, but that <strong>there is no standard observer</strong> &mdash; and here that claim comes with three correlation coefficients attached. <em>The ranking is not a fact about the person being ranked. It is a fact about a relationship, and there are at least three of them running at once over the same 119 bodies.</em> Nobody comes out of this measurement with a score. They come out of it with three scores that do not agree, which is a different kind of object entirely.
+        </div>
+        <div class="caveat">
+          <b>What it measures, and one discrepancy that is ours to report</b>
+          <strong>This is attraction in an apparatus, not choice in a room, and the authors say so first:</strong> &ldquo;we are not directly assessing whether a given mosquito will select an individual out of a group.&rdquo; The <em>Culex</em> arm used worn nylon sleeves, which &ldquo;are not a direct replacement for live hosts,&rdquo; and the authors note larger standard deviations and lower response rates for two of the three species that &ldquo;may or may not reflect biology.&rdquo; <em>The high- and low-attraction groups are the top and bottom tenth of the sample</em> &mdash; twelve or thirteen people a side &mdash; so the odour and microbiome comparisons rest on small contrasts even though the ranking rests on 119. <strong>One thing we noticed by reading both halves: the Discussion reports different odour counts from the Results.</strong> We have not worked out which is right, we have not asked the authors, and we are therefore not quoting either count as settled &mdash; the correlations above come from the Results. <em>And attraction itself was not tested for stability over time.</em> The stability claim in the introduction is about the skin microbiome, not about whether the same person would rank the same way next summer, which is the question most readers will take away.
+        </div>
+        <div class="placement">
+          <b>Where it goes</b>
+          <span class="mono">mosquito</span> returns four pages, and the substantial one is <a href="third-nature-field-guide.html"><em>A Field Guide to Third Nature</em></a>, where the London Underground mosquito appears as a habitat story with a genomic correction attached &mdash; a different argument entirely. <strong>Unspent: the ranking itself.</strong> See the <a href="#seed-mosquito-1113">seedbed</a>. The honest version is not an entry about mosquitoes; it is an entry about what happens to a comparative score when you discover there were three judges.
+        </div>
+        <p class="cite"><b>Marrero, K.&nbsp;M., Castillo, J.&nbsp;S., Lucas-Barbosa, D., Bellantuono, A.&nbsp;J., Marrero, M.&nbsp;A., Cid, D., Costa-da-Silva, A.&nbsp;L., Verhulst, N.&nbsp;O. &amp; DeGennaro, M.</b> &ldquo;Individual humans are more attractive to certain mosquito species.&rdquo; <em>iScience</em> <strong>29</strong>(8), 117006, 31 July 2026. <b>DOI</b> 10.1016/j.isci.2026.117006, CC&nbsp;BY. <b>Read:</b> the version of record in full at PubMed Central (PMC13453020); every quotation and figure above is verbatim from it. Received 22 February 2026, accepted 14 July 2026. <b>Not read:</b> the supplemental information. <b>Wire:</b> ScienceDaily, 10 November 2026, from a Florida International University release. <b>Lead image:</b> Shutterstock.</p>
+      </article>
+
+      <article class="wire-item" id="placode-1113" style="--e-accent: var(--violet);" aria-labelledby="placode-1113-title">
+        <p class="meta">
+          <span class="grade verified">Verified</span>
+          <span><i>Published online</i> 2026-07-02</span>
+          <span><i>Journal</i> PNAS</span>
+          <span><i>Read</i> the version of record, in full</span>
+        </p>
+        <p class="lag"><span class="lag-label">Lag 132 d</span><span class="lag-track" aria-hidden="true"><span class="lag-fill" style="width:68.8%"></span></span></p>
+        <h3 id="placode-1113-title">Two coats, one rule, and the difference is a setting</h3>
+        <p class="finding">The textbook account of how a mouse grows hair is &ldquo;expansion-induction&rdquo;: as embryonic skin stretches, new follicle precursors appear equidistant from the existing ones, in successive waves. It is a clean geometric rule and it fits the laboratory mouse. Ibrahimi, Jahanbakhsh, Tzika and Milinkovitch argue that the rule is a description rather than a mechanism &mdash; it &ldquo;is incompatible with more recent developmental data&rdquo; and &ldquo;does not fit well with the known self-organized, spontaneous cellular and molecular interactions&rdquo; that build placodes. <strong>Their replacement is motion, not spacing:</strong> a continuum model of motile dermal cells following an epidermal chemoattractant across an expanding sheet, in which &ldquo;the chemotactic component of this framework suffices to describe the dynamics of placode insertion&rdquo; &mdash; and which reproduces the equidistant rule as an <em>output</em>. <strong>The second half is the better half.</strong> The spiny mouse <em>Acomys dimidiatus</em> &ldquo;exhibits a strikingly regular and long-ranged pattern of placodes,&rdquo; elongated dorsoventrally with the lattice stretched head to tail; that pattern &ldquo;is not generated by an expansion-induction mechanism, but is recapitulated by an anisotropic chemotaxis model&rdquo; combined with the anisotropic growth actually measured in the embryo. Same system, different value of one component.</p>
+        <div class="frame">
+          <b>The star stuff frame</b>
+          <strong>Two animals, two coats anyone would describe as different kinds of thing, and the difference is not two mechanisms.</strong> The authors&rsquo; own sentence: &ldquo;variation in the chemotactic component of the corresponding self-organizational system might be a key determinant of interspecific differences in hair placode patterning dynamics and resulting spatial organizations.&rdquo; <em>Neither pattern is the default and neither is a deviation.</em> The laboratory mouse is not the baseline that the spiny mouse departs from &mdash; both fall out of one rule under different settings, and the only reason one of them looks canonical is that it is the animal the field happened to standardise on. <strong>That is what a paradigm of variation looks like when somebody writes it as a partial differential equation</strong>, and the thing that makes it worth having is that nobody involved was making a point about anybody. A model that produces two patterns from one mechanism is not an argument about difference. It is just what the mathematics did, which is why it is worth more than an argument.
+        </div>
+        <div class="caveat">
+          <b>What a model has shown when it reproduces a pattern</b>
+          <strong>Sufficiency is not identity, and the paper&rsquo;s verbs are careful about it.</strong> The authors write that chemotaxis <em>suffices</em>, that variation <em>might be</em> a key determinant, that the spiny mouse pattern <em>might be dominated by</em> a chemotaxis process. <em>Reproducing a pattern shows a mechanism could do it, not that it is the one in the animal</em> &mdash; and this is a continuum model, not a measurement of cells moving. <strong>Three concrete limits.</strong> It is two-dimensional: &ldquo;both chemotaxis and expansion-induction models are defined in 2D, and therefore neglect vertical cell movements,&rdquo; collapsing dermis and epidermis onto one surface. It does not identify the chemoattractant &mdash; a fibroblast growth factor is offered as an example, not a result. And the obvious rival is left standing: whether reaction&ndash;diffusion systems alone could reproduce mouse patterning &ldquo;remains an open question for future work.&rdquo; <em>Two species is also two species</em>, and the claim about interspecific variation is a proposal drawn from a pair.
+        </div>
+        <div class="placement">
+          <b>Where it goes</b>
+          <span class="mono">chemotaxis</span>, <span class="mono">chemotactic</span>, <span class="mono">reaction-diffusion</span>, <span class="mono">spiny mouse</span> and <span class="mono">Acomys</span> all return nothing across this site; <span class="mono">placode</span> returns two pages and neither is about patterning. <strong>The unspent argument is one rule and two outputs</strong>, which is <a href="difference-first-frame.html"><em>The Difference-First Frame</em></a> stated in somebody else&rsquo;s mathematics rather than in ours &mdash; and it is also the second half of the <a href="#seed-function-1113">seedbed</a> note, because the rule it retires was a correct description of an animal that got promoted to an explanation of a process.
+        </div>
+        <p class="cite"><b>Ibrahimi, M., Jahanbakhsh, E., Tzika, A.&nbsp;C. &amp; Milinkovitch, M.&nbsp;C.</b> &ldquo;Chemotactic self-organization captures the dynamics of mammalian hair follicle patterning.&rdquo; <em>Proceedings of the National Academy of Sciences</em> <strong>123</strong>(27), e2530407123, online 2 July 2026. <b>DOI</b> 10.1073/pnas.2530407123, CC&nbsp;BY-NC-ND&nbsp;4.0. <b>Read:</b> the version of record in full at PubMed Central (PMC13342850); every quotation above is verbatim from it. Received 23 October 2025, accepted 29 May 2026. <b>Not read:</b> the SI Appendix and the simulation code. <b>Wire:</b> ScienceDaily, 11 November 2026, from a Universit&eacute; de Gen&egrave;ve release. <b>Lead image:</b> Shutterstock.</p>
+      </article>
+
+      <article class="wire-item" id="colobura-1113" style="--e-accent: var(--gold);" aria-labelledby="colobura-1113-title">
+        <p class="meta">
+          <span class="grade">Plausible</span>
+          <span><i>Published online</i> 2026-05-04</span>
+          <span><i>Journal</i> Zootaxa</span>
+          <span><i>Read</i> the deposited abstract, in full</span>
+        </p>
+        <p class="lag"><span class="lag-label">Lag 192 d</span><span class="lag-track" aria-hidden="true"><span class="lag-fill" style="width:100%"></span></span></p>
+        <h3 id="colobura-1113-title">Two hundred years of looking, in the wrong part of the spectrum</h3>
+        <p class="finding"><em>Colobura</em> is a Neotropical nymphalid genus &ldquo;includ[ing] widespread, common and conspicuous species whose taxonomy one might expect to be well understood.&rdquo; Sapkota, Orellana, Grishin, Chac&oacute;n, Janzen, Hallwachs, Song, KC and Willmott combine genitalia, larval traits, adult wing pattern, UV reflectance, mitochondrial barcodes, complete mitogenomes, nuclear genomes and life-history data, and describe <em>Colobura cryptica</em> sp. nov., &ldquo;previously conflated with <em>Colobura annulata</em>.&rdquo; <strong>The diagnostic characters were always in plain sight:</strong> a shorter third submarginal line on the ventral forewing &ldquo;that does not reach the pale cream transverse band,&rdquo; and &ldquo;velvet-black larvae that lack yellow rings between segments or yellow spots at anterior edge of segments.&rdquo; The new species is &ldquo;broadly sympatric with its sister species&rdquo; &mdash; the two have been flying in the same forests the whole time. <strong>And there is a second result in a band we cannot see.</strong> <em>C. dirce</em> splits across the Andes, with <em>C. d. wolcotti</em> &mdash; long thought restricted to the Caribbean islands &mdash; turning up in Central America and west of the Andes, and the division &ldquo;corresponds with differences in ventral UV reflectance, which is strongly expressed in <em>C. d. wolcotti</em> but reduced in <em>C. d. dirce</em>.&rdquo;</p>
+        <div class="frame">
+          <b>The star stuff frame</b>
+          <strong>A common, conspicuous, much-collected animal was two animals, and nothing about the butterflies changed.</strong> What changed is the number of channels anybody was willing to look in &mdash; genitalia, caterpillars, mitogenomes, nuclear genomes, life history, and ultraviolet. <em>The last one is the one worth sitting with.</em> The authors raise &ldquo;the possibility of UV-mediated reproductive isolation that might have contributed to speciation,&rdquo; which would mean the boundary between two species is maintained in a signal the describing animal is blind to. <strong>A difference that is invisible to the observer is not a small difference.</strong> It is a difference the observer has no instrument for, and the history of this genus is two centuries of that distinction being collapsed into the first one. <em>Nobody was careless.</em> The character was outside the band, and the correction arrives the moment somebody brings a different kind of light.
+        </div>
+        <div class="caveat">
+          <b>An abstract, four hedges in one sentence, and 192 days</b>
+          <strong>The UV result is the part the authors flag hardest, and the flagging is dense:</strong> &ldquo;We conducted a preliminary investigation of UV-reflectance on the ventral wings and found evidence for differences across the four taxa, and we discuss the <em>possibility</em> of UV-mediated reproductive isolation that <em>might</em> have contributed to speciation.&rdquo; Preliminary, evidence for differences, possibility, might have contributed &mdash; four hedges around one idea, and the idea is the one the coverage leads with. <em>We did not read the paper.</em> <span class="mono">www.mapress.com</span> does not resolve from this container and there is no PMCID, so the sample sizes, the UV spectra, the genitalic figures and the phylogenomic support values are all unseen; the grade is plausible for that reason and not for any doubt about the description. <strong>And the lag is the longest on this page.</strong> Published 4 May 2026, carried on 12 November &mdash; 192 days, during which the species existed, was named, and was not news. <em>A new species is not a scoop that ages; it is a fact that was true the day it was published</em>, which is worth remembering before treating a long bar as a criticism.
+        </div>
+        <div class="placement">
+          <b>Where it goes</b>
+          <span class="mono">Colobura</span> and <span class="mono">cryptic species</span> both return nothing across this site. <strong>The unspent argument is the instrument, not the butterfly:</strong> that a category can be wrong for two hundred years because the evidence that would split it sits outside the senses of the people doing the splitting &mdash; which is a claim <a href="collection-field-guides.html">the field guides</a> make about animals and have never made about <em>the apparatus</em>. <em>A piece needs the paper</em>, and especially the UV plates, which are the whole of the argument and are exactly what an abstract cannot carry.
+        </div>
+        <p class="cite"><b>Sapkota, A., Orellana, A., Grishin, N.&nbsp;V., Chac&oacute;n, I., Janzen, D.&nbsp;H., Hallwachs, W., Song, L., KC, S. &amp; Willmott, K.&nbsp;R.</b> &ldquo;Revisiting <em>Colobura</em> (Lepidoptera: Nymphalidae): Using integrative taxonomy to identify a new species, <em>C. cryptica</em> sp. nov., and revise geographic boundaries.&rdquo; <em>Zootaxa</em> <strong>5802</strong>(2), 303&ndash;322, online 4 May 2026. <b>DOI</b> 10.11646/zootaxa.5802.2.4. <b>Read:</b> the complete publisher-deposited abstract at Crossref; every quotation above is verbatim from it. <b>Not read:</b> the paper. <span class="mono">www.mapress.com</span> does not resolve from this container and no PMCID exists. <b>Wire:</b> ScienceDaily, 12 November 2026, from a Florida Museum of Natural History release. <b>Lead image:</b> Andr&eacute;s Orellana &mdash; one of the paper&rsquo;s own authors.</p>
+      </article>
+
+    </div>
+  </div>
+
+  <div class="section-block" role="region" style="--sec-accent: var(--pink);" aria-labelledby="held-items-1113">
+    <h2 class="section" id="held-items-1113">Held</h2>
+    <div class="section-rule" aria-hidden="true"></div>
+    <p class="section-intro">Six this week. <strong>Two were read end to end as versions of record and held because of what reading them showed</strong>; two more are held because the claim in the headline is not in the paper the release is about; and <strong>two are held because we could not read the paper at all</strong> &mdash; one of which is the item we most wanted to file. The first two are about children and about bone, which are the two subjects this site is least willing to be casual with. <strong>One correction to our own habit:</strong> a held item is not a bad study. Four of these six are work we have no quarrel with.</p>
+
+    <div class="held">
+      <div class="held-item">
+        <p class="why">Held &mdash; the headline says <em>difference</em> and the paper says <em>deficit</em>, which is the inverse of the usual direction</p>
+        <h3 id="held-dyscalculia-1113">A surprising brain difference may explain why some kids struggle with math</h3>
+        <p><strong>We read this one in full, and the gap runs the other way from every other item on this page.</strong> The paper is titled &ldquo;Uncovering Latent Cognitive, Metacognitive, and Neural Bases of Problem-Solving <em>Deficits</em> in Children with Developmental Dyscalculia.&rdquo; Its abstract reports &ldquo;deficits across all problem-solving strategies,&rdquo; &ldquo;significant metacognitive impairments&rdquo; and &ldquo;an altered mapping&rdquo;; its introduction describes &ldquo;atypical functional activation&rdquo;; its discussion finds &ldquo;pervasive deficits in DD extending beyond accuracy or strategy preferences.&rdquo; <strong>The ScienceDaily headline says &ldquo;brain difference.&rdquo;</strong> <em>The coverage is gentler than the source</em>, and the gentleness is doing no work, because the vocabulary underneath it is unchanged. <strong>The most interesting result is the one the frame costs most.</strong> &ldquo;Brain&ndash;behavior relations reversed in direction between groups, positive in TA children but negative in DD,&rdquo; with &ldquo;the right hippocampus show[ing] the most pronounced group reversal across all three parameters&rdquo; &mdash; and, crucially, &ldquo;the groups differed not in how strongly individual regions activated.&rdquo; <em>That is two mappings, not one mapping and a shortfall.</em> The paper itself calls it &ldquo;an altered, often inverted, mapping,&rdquo; and <em>altered</em> requires a decision about which one is the standard &mdash; a decision made before the scanner is switched on. <strong>Held on three grounds.</strong> <em>The construct:</em> dyscalculia here is partly an administrative category &mdash; children &ldquo;identified by Singapore&rsquo;s Ministry of Education as having difficulty in math through screening&rdquo; and referred to intervention, <em>or</em> scoring in the bottom tenth percentile of the TEMA-3, against a comparison group above the 25th. <em>The arithmetic:</em> the Introduction reports &ldquo;65 children (30 DD, 35 TA)&rdquo; and the Methods give the analysed sample as 65 children, 28 DD and 37 TA. We read both and cannot reconcile them; that is our observation, we have not asked the authors, and it may be a simple slip. <strong>No limitations section appears in the text we read</strong>, while the Discussion calls the sample &ldquo;relatively large, affording greater statistical power than typical neuroimaging studies of DD&rdquo; &mdash; 65 children, one site, cross-sectional. <em>And the third ground is ours.</em> We are not filing an approving item whose vocabulary is the deficit paradigm applied to children who do arithmetic by a different route, and we are not repairing it into a gift either, because both moves keep the ranking and only argue about which end of it anybody sits at. <em>Lasnick, O.&nbsp;H.&nbsp;M., Park, Y., Mistry, P. &amp; Menon, V., The Journal of Neuroscience 46(41), e2200252026, DOI 10.1523/JNEUROSCI.2200-25.2026, online 21 September 2026, issue 14 October 2026, lag 52 days, CC BY 4.0 &mdash; version of record read in full at PubMed Central (PMC13673158); every quotation verbatim, and the count discrepancy is ours. Wire ScienceDaily, 12 November 2026, from a Society for Neuroscience release; lead image Shutterstock.</em></p>
+      </div>
+      <div class="held-item">
+        <p class="why">Held &mdash; a meta-analysis that is almost entirely null, under a headline that reads the nulls as a prescription</p>
+        <h3 id="held-bone-1113">Walking and weight training may not be enough to keep your bones strong</h3>
+        <p><strong>Bone is the fact this whole site is built around, so this one got read twice.</strong> The single positive result in the paper is &ldquo;High-intensity training significantly increased osteocalcin levels (MD = 6.88; 95% CI 0.37 to 13.38),&rdquo; drawn from &ldquo;Six articles, with 193 participants.&rdquo; <em>Everything else is a null:</em> &ldquo;Endurance training showed no significant effect on osteocalcin level&rdquo;; &ldquo;Power training showed no significant change in osteocalcin levels&rdquo;; &ldquo;Mixed training (endurance + power) did not significantly change osteocalcin levels&rdquo;; &ldquo;Bone alkaline phosphatase showed no significant change following endurance training&rdquo;; and the outcome anybody actually cares about, <strong>&ldquo;Bone Mineral Density showed no significant changes after endurance or power training.&rdquo;</strong> <strong>The paper disclaims the headline&rsquo;s inference in its own words:</strong> bone remodeling markers &ldquo;do not always imply that bone mineral balance has subsequently increased or decreased.&rdquo; <em>Two internal contradictions turned up in the reading.</em> The abstract says the &ldquo;GRADEpro assessment for osteocalcin in the high-intensity training group revealed moderate to low certainty&rdquo;; the Results say &ldquo;The assessment of osteocalcin in all subgroups resulted in high certainty.&rdquo; Those cannot both hold. And the endurance BMI result is reported as significant while the confidence interval printed in the Results crosses zero, where the abstract gives it as entirely below zero &mdash; one of the two is a typesetting error and the page does not say which. <strong>And the release&rsquo;s headline figure is not in the paper we read.</strong> Semmelweis says football and handball produced &ldquo;increases of up to 45-46 percent in blood markers associated with bone formation&rdquo;; the only effect size in the abstract is that pooled MD of 6.88. We did not find the percentage in the text available to us and we are not repeating it. <em>Held, and not because the work is bad.</em> A meta-analysis whose honest summary is <em>we do not yet know what exercise does to these markers, at moderate-to-low certainty, across 193 people</em> is a legitimate thing to publish and an illegitimate thing to headline as <em>what you are doing is not enough</em>. <strong>The ladder from a serum marker to bone strength to fracture risk is three inferences long, the paper climbs none of them, and the headline starts at the top.</strong> <em>Barna, V., Makolli, A., Beny&oacute;, Z.&nbsp;P., Engh, M.&nbsp;A., Zolcs&aacute;k, &Aacute;., Teutsch, B., Seymour, V., Hegyi, P., Papp, R., Syd&oacute;, N. &amp; Ferdinandy, P., Sports Medicine &ndash; Open 12(1), DOI 10.1186/s40798-026-00986-2, 2 June 2026, lag 162 days, CC BY 4.0 &mdash; version of record read in full at PubMed Central (PMC13230329); every quotation verbatim, and both contradictions are ours. Wire ScienceDaily, 11 November 2026; lead image Shutterstock.</em></p>
+      </div>
+      <div class="held-item">
+        <p class="why">Held &mdash; a position in a thirty-year dispute, reported as a discovery, in a paper we could not open</p>
+        <h3 id="held-forests-1113">Scientists discover Europe&rsquo;s ancient forests were nothing like we imagined</h3>
+        <p><strong>This is the item we most wanted to file.</strong> Czy&zdot;ewski and colleagues argue &mdash; from pollen, macrofossils, isotopes, dental ecometrics, microcharcoal and sedimentary ancient DNA &mdash; that humid-temperate Europe was a herbivory-maintained woodland&ndash;grassland mosaic for more than twenty million years, and that homogeneous closed-canopy forest is recent. If it holds, it lands directly on the <em>closed-forest paradigm</em> that European restoration policy is built on, and the senior author says exactly that in the release: current reforestation practice is &ldquo;on the wrong track.&rdquo; It is more-than-human, it retires a baseline, and large herbivores come out of it as architects rather than as damage. <strong>Two reasons it is held, and the second is the one that matters.</strong> <em>First, we could not read the paper or even its abstract.</em> <span class="mono">www.sciencedirect.com</span> does not resolve from this container; there is no PMCID; Crossref holds the title, the full author list, the volume and the article number for 10.1016/j.biocon.2026.111749 and <strong>no deposited abstract</strong>; and a repository record that carries a summary is at <span class="mono">bc.iung.pl</span>, which does not resolve either. What is left is a university release and a search result, both secondaries, and this page does not file on a secondary. <em>Second, the closed-forest question is a live argument, not an open space.</em> Frans Vera&rsquo;s half-open-landscape hypothesis has been contested in the palaeoecological literature since the 1990s, with pollen-based reconstructions read both ways by people who have spent careers on it. <strong>The coverage does not mention that the paper is an intervention in a dispute</strong>; it reports it as a finding about what Europe was. A review arguing a side in a long argument may well be right, and it is a different kind of object from a measurement. <em>And the date.</em> Crossref records the issue as April 2026 and the deposit as 23 February 2026; the wire carried it on 7 November, which is <strong>257 days</strong> on the deposit date and would have been the longest bar on this page by a third. We are giving that figure here rather than on the axis because no publisher-confirmed online-first date was obtainable. <em>Czy&zdot;ewski, S., S&oslash;ndergaard, S.&nbsp;A., Moln&aacute;r, &Aacute;.&nbsp;P., Kerr, M.&nbsp;R., Kristensen, J.&nbsp;A., Atkinson, J., Trepel, J., Sykut, M., Radzikowski, P., Termansen, S.&nbsp;S., Wa&lstrok;ach, K., Pearce, E.&nbsp;A., Pang, S.&nbsp;E.&nbsp;H., Zaj&aogon;c, B., Bergman, J. et al., &ldquo;Revisiting Europe&rsquo;s temperate forests: Palaeoecological evidence for an herbivory-driven woodland-grassland mosaic biome,&rdquo; Biological Conservation 316, 111749 &mdash; metadata read at Crossref, paper and abstract not read. Wire ScienceDaily, 7 November 2026, from an Aarhus University release; lead image M&aacute;rton Zsoldos.</em></p>
+      </div>
+      <div class="held-item">
+        <p class="why">Held &mdash; the headline&rsquo;s claim is not in the paper the release is about</p>
+        <h3 id="held-ccc-1113">A radical theory says the universe is twice as old as we thought</h3>
+        <p><strong>The release reports that the universe &ldquo;could be 26.7 billion years old&rdquo; and needs neither dark matter nor dark energy. The paper it names is a rotation-curve comparison, and 26.7 billion years is not in it.</strong> Gupta and Samaras test the Covarying Coupling Constants framework against &ldquo;the full Spitzer Photometry and Accurate Rotation Curves sample of 175 disc galaxies,&rdquo; against MOND and one- and two-parameter NFW haloes, on reduced &chi;&sup2;. Their conclusion, verbatim and modest: <strong>&ldquo;Though not designed for galactic dynamics, CCC describes rotation curves as well as galaxy-by-galaxy fitted MOND.&rdquo;</strong> The supporting numbers are stated with the same restraint &mdash; one-parameter smooth-CCC gives a lower &chi;&sup2; in &ldquo;56 per cent of galaxies, mean &chi;&sup2; of 2.58 versus 2.65; the difference is not significant.&rdquo; <em>The paper also contains the authors correcting their own earlier framework</em>, which is a good thing and is not what the headline is about: &ldquo;We show that the published sharp density turn-off is unphysical and replace it with a smooth transition,&rdquo; and the turn-off density &ldquo;is not universal (scatter 0.82 dex) and correlates with galaxy size.&rdquo; <strong>Held because the age claim comes from somewhere else.</strong> It belongs to earlier CCC+TL work, which this paper neither tests nor restates; importing it into coverage of this paper lets a careful fit-quality result carry a cosmological conclusion it does not contain, and the hedge the authors put on their own comparison &mdash; <em>not significant</em> &mdash; is gone by the time it reaches a headline. <em>Two further notes.</em> The release quotes Gupta citing &ldquo;the yet-to-be-published Cosmic Microwave Background challenge,&rdquo; which is a claim about work nobody can read; and the lead image is credited <span class="mono">AI/ScienceDaily.com</span>. <em>Gupta, R.&nbsp;P. &amp; Samaras, N., &ldquo;Testing Covarying Coupling Constants (CCC) against the full SPARC rotation-curve sample: a like-for-like comparison with MOND and NFW,&rdquo; Monthly Notices of the Royal Astronomical Society 552(4), DOI 10.1093/mnras/stag1777, online 12 October 2026, lag 30 days, CC BY 4.0 &mdash; complete publisher-deposited abstract read at Crossref, paper not read; every quotation verbatim from that abstract. Wire ScienceDaily, 11 November 2026, from a University of Ottawa release.</em></p>
+      </div>
+      <div class="held-item">
+        <p class="why">Held &mdash; a conference abstract, and a count of reports where a rate is implied</p>
+        <h3 id="held-energy-1113">Energy drinks linked to 11 times more reports of cardiac arrest</h3>
+        <p><strong>There is no paper.</strong> The release describes &ldquo;independent, preliminary research presented at the American Heart Association&rsquo;s Scientific Sessions 2026.&rdquo; No DOI appears on it and we found none: there is nothing peer-reviewed, nothing to open, and nothing whose methods can be checked. <strong>And the figure measures reporting, not risk.</strong> The numbers come from FDA adverse-event reports &mdash; a voluntary, self-selected database with no denominator anywhere in it. <em>&ldquo;Eleven times more reports&rdquo; is a disproportionality signal</em>: it says that among reports filed, cardiac arrest is over-represented for these products relative to others. It cannot say how often cardiac arrest follows a can, because nobody counts the cans, and a product that attracts public concern attracts reports for that reason alone. <em>The release is careful about causation</em> &mdash; &ldquo;the findings do not establish that energy drinks or stimulant supplements caused these medical emergencies&rdquo; &mdash; and the headline is the artefact that travels. <strong>This page has no quarrel with the underlying worry.</strong> The release notes that some energy drinks carry three times the caffeine per fluid ounce of brewed coffee and some pre-workout supplements more than twelve times, that the products are regulated as foods or supplements rather than medicines, and that young adults are a large share of the reports. Those are reasonable grounds for the closer examination the researchers ask for. <em>What we will not do is file a ratio taken from an unpublished conference abstract over a database that cannot produce a rate.</em> <em>American Heart Association Scientific Sessions 2026, preliminary research, no DOI located and no paper available. Wire ScienceDaily, 11 November 2026, from an American Heart Association release; lead image Shutterstock.</em></p>
+      </div>
+      <div class="held-item">
+        <p class="why">Held &mdash; a figure we could not trace, under a headline the release itself spends four paragraphs undoing</p>
+        <h3 id="held-metabolism-1113">Human bodies produce 2 billion metric tons of CO2 a year just by staying alive</h3>
+        <p><strong>The release is better than its headline, and that is precisely the problem.</strong> Gonzalez and colleagues are reported to estimate that carbon dioxide production from human metabolism rose 74 per cent between 1985 and 2015, from 1.18 to 2.05 billion metric tons, with more than 60 per cent of the rise attributable to population growth rather than to any change per person. <em>And the release then states plainly</em> that this carbon &ldquo;is fundamentally different from the emissions generated by burning fossil fuels,&rdquo; because it came out of the atmosphere recently by way of food and is already circulating &mdash; where fossil carbon has been underground for millions of years. <strong>That correction is right, it is prominent, and it is in paragraph five. The headline is &ldquo;just by staying alive.&rdquo;</strong> <em>We could not read the paper.</em> <span class="mono">www.thelancet.com</span> does not resolve from this container, there is no PMCID, and Crossref holds the title, the author list and the article number for 10.1016/j.lanplh.2026.101546 with <strong>no deposited abstract</strong>. Every figure in the paragraph above is the University of Bath&rsquo;s, not the paper&rsquo;s, and is marked as such rather than carried as a finding. <strong>Held on the shape as much as the sourcing.</strong> A per-body carbon quantity is the object <a href="collection-triggers.html">Triggers</a> exists to mark: it converts a question about energy systems into a number attached to each person&rsquo;s continued existence, and it does so in the one sentence most people will read and the only one most will remember. <em>The underlying work looks like useful carbon-cycle accounting and the researchers are not making this argument.</em> The headline is a different artefact, and it is the one with legs. <em>Gonzalez, J.&nbsp;T., Lolli, L., Spellanzon, B., Atkinson, G., Maunder, E., Moreno-Caba&ntilde;as, A., Buniam, J., Thompson, D., Betts, J., Ainslie, P.&nbsp;N. et al., &ldquo;Accounting for global carbon dioxide production from human metabolism between 1985 and 2015: a modelling study,&rdquo; The Lancet Planetary Health, article 101546, DOI 10.1016/j.lanplh.2026.101546, issue October 2026 &mdash; metadata read at Crossref, paper and abstract not read. Wire ScienceDaily, 7 November 2026, from a University of Bath release; lead image Shutterstock.</em></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-block" role="region" style="--sec-accent: var(--violet);" aria-labelledby="seedbed-1113">
+    <h2 class="section" id="seedbed-1113">Seedbed</h2>
+    <div class="section-rule" aria-hidden="true"></div>
+    <p class="section-intro">Three notes that a piece is <em>available</em>, which is not the same as a draft. Each says what would have to be obtained first. <strong>Two of the three came out of items read end to end</strong>, and the third is the kind this page keeps finding and keeps declining to make a claim about.</p>
+
+    <div class="seeds">
+
+      <div class="seed" style="--s-accent: var(--green);">
+        <p class="seed-kind">Zine &middot; How We Got Here &mdash; a chain whose joints somebody else already graded</p>
+        <h3 id="seed-chain-1113">Two years from an oak to a person</h3>
+        <p><strong><a href="collection-how-we-got-here.html"><em>How We Got Here</em></a> builds Burke chains and marks every joint <span class="mono">documented</span>, <span class="mono">contested</span> or <span class="mono">leap</span>, because a chain is built to feel inevitable and the notation is how the form carries its own epistemics.</strong> The Lyme paper filed above is a chain somebody else ran for thirty years, and it arrives with the grading already done. Red oak masts in year <em>t</em>&minus;2; white-footed mice in year <em>t</em>&minus;1; nymphal black-legged ticks in year <em>t</em>; a person in a wood. <em>Each link has a measured lag, which is the thing a chain usually has to assert.</em> <strong>And it would force the collection to invent a tag.</strong> The deer link is not <span class="mono">contested</span> and it is not a <span class="mono">leap</span> &mdash; it is <em>documented absent</em>, a connection everybody believes that thirty years of counting across sixfold variation in deer numbers does not support. <em>There is no mark for a joint that was measured and found not to be there</em>, and that is a better reason to build the piece than the acorns are. The warm-year effect would be <span class="mono">contested</span> in the authors&rsquo; own words; the final step from a nymph on a plot to a human case is a <span class="mono">leap</span> the paper declines to take and the zine would have to decline with it. <strong>The argument underneath is the one this house keeps meeting:</strong> a true fact about a large visible animal failing to predict an outcome, because the outcome was never a property of one population.</p>
+        <p class="src">From the <em>PNAS</em> Lyme paper filed above, <b>read in full</b> at PubMed Central. <b>Not obtained:</b> the SI Appendix tables holding the test statistics, and the thirty years of prior Cary Institute publications that a chain would have to walk link by link rather than compress out of one synthesis. <em>A chain needs the source behind each joint. This is a note that one is available, not a draft.</em></p>
+      </div>
+
+      <div class="seed" style="--s-accent: var(--pink);">
+        <p class="seed-kind">Field guide &middot; the house formula, arriving with the subject swapped</p>
+        <h3 id="seed-mosquito-1113">There is no standard nose</h3>
+        <p><strong>Twelve field guides here land on some version of <em>there is no standard star, nervous system, shark, nest, egg, way to rest, family</em>.</strong> The mosquito paper filed above is that sentence with the subject moved from the thing being described to the thing doing the describing &mdash; and it comes with three numbers. Three species ranked the same 119 people, and the rankings correlate at <strong>0.3492, 0.1431 and 0.06034</strong>: weak, negligible, nothing. <em>A comparative score survives only as long as there is one judge.</em> <strong>The entry would not be about mosquitoes.</strong> It would be about what happens to a ranking when a second assessor is added and disagrees &mdash; which is a thing this site argues constantly in the register of paradigm and almost never with a correlation coefficient. The attraction of the mosquito version is precisely that nobody involved is making a point: an olfactometer in Miami, three species, a hundred and nineteen volunteers and a set of skin bacteria, producing the structure of the argument by accident. <em>The risk is also plain</em> &mdash; the leap from &ldquo;three species rank people differently&rdquo; to anything about people ranking each other is a rhyme, and an entry that makes it has lost the thing that made the finding worth having.</p>
+        <p class="src">From the <em>iScience</em> paper filed above, <b>read in full</b> at PubMed Central. <b>Not obtained:</b> the discrepancy between the odour counts in that paper&rsquo;s Results and its Discussion, which we noticed and did not resolve; the supplemental information; and any study of whether an individual&rsquo;s attractiveness is stable across seasons, which this paper does not test and an entry would have to answer before it said anything about a person having a property.</p>
+      </div>
+
+      <div class="seed" style="--s-accent: var(--cyan);">
+        <p class="seed-kind">Working note &middot; Too Good to Check &mdash; a shape the page carries only glancingly</p>
+        <h3 id="seed-function-1113">The observation was right and the reason was supplied afterwards</h3>
+        <p><strong>Two items on this page do the same thing in different kingdoms, in the same week.</strong> A skull separates from a shoulder, and the explanation is that it was for turning the head &mdash; and the mobility turns out never to have changed at the transition where the separation happened, leaving a demand on the <em>forelimb</em> as the better account. A hair-follicle pattern follows a geometric rule that describes the laboratory mouse exactly &mdash; and the rule turns out to be the output of a different mechanism, one that also produces a spiny mouse pattern the rule cannot reach. <em>Neither is a case of a wrong measurement.</em> Both measurements were right; what was wrong was the <strong>function attached to them by inference, which was then quoted as though it had been established</strong>. <a href="too-good-to-check.html">Too Good to Check</a> collects the ways a fact goes wrong here &mdash; a figure that rots, a misattribution, a smoothed retelling, a hedge removed by an editor and never put back &mdash; and <em>a correct observation wearing a borrowed explanation</em> is a mechanism it has no row for. The tell is that there is nothing to correct in the original paper; the error lives in the sentence that was added next, usually by somebody else, usually in a textbook. <strong>What we do not have is a count.</strong> Two in a week is two in a week. <em>This is the second seed in two editions to end this way</em> &mdash; last week&rsquo;s preprint-versus-published note asked for the same thing and nobody has done it. The honest question is how often, and in which direction, and whether it is even countable without reading the history of every claim.</p>
+        <p class="src">From the <em>Nature</em> neck paper and the <em>PNAS</em> placode paper filed above, <b>both read in full</b> at PubMed Central. <b>Not obtained:</b> in either field, the prior literature that would establish when the functional story was first asserted and on what evidence &mdash; which is the entire work and none of it is done. <em>Two instances is not a pattern, and saying so is the whole content of this seed.</em></p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="section-block" role="region" style="--sec-accent: var(--pink);" aria-labelledby="refusals-1113">
+    <h2 class="section" id="refusals-1113">Not</h2>
+    <div class="section-rule" aria-hidden="true"></div>
+    <div class="refusals">
+      <p><strong>Not a citation.</strong> Eight papers were read end to end this week, the most this page has managed, and the standing rule does not move an inch for it. Nothing filed here may be promoted to a zine, a <a href="collection-glimmers.html">Glimmers</a> entry or a card without the primary source in hand, a <a href="changelog.html">changelog</a> entry and its row in the fact-check ledger. <strong>Two of the eight filed items rest on deposited abstracts</strong> and are graded accordingly &mdash; and one is graded plausible <em>despite</em> a full text, because the paper we read is the companion to the one the claim is in. <em>Reading a paper verifies that paper.</em></p>
+      <p><strong>Not a verdict on a child who does arithmetic by another route.</strong> A study of 65 children reports that brain&ndash;behaviour relations &ldquo;reversed in direction between groups&rdquo; while &ldquo;the groups differed not in how strongly individual regions activated&rdquo; &mdash; two mappings, measured. Its own vocabulary is <em>deficit</em>, <em>impairment</em>, <em>atypical</em>, <em>altered</em>, and <em>altered</em> is a word that requires somebody to have already decided which mapping is the standard. <em>We are not filing that approvingly, and we are not flipping it into a gift either</em>, because reading a difference as a shortfall and reading it as a superpower are the same move and only disagree about which end of the ranking to stand at. <strong>We write from inside this, which raises the bar here rather than lowering it.</strong></p>
+      <p><strong>Not a prescription from a serum marker.</strong> A meta-analysis found no significant change in bone mineral density after endurance or power training, no significant osteocalcin change for endurance, power or mixed training, and one positive result across 193 people at moderate-to-low certainty &mdash; and states in its own text that these markers &ldquo;do not always imply that bone mineral balance has subsequently increased or decreased.&rdquo; The headline made that into <em>what you are doing is not enough</em>. <strong>Bone is the fact this site is named around and we will not spend it on an exercise instruction.</strong> <em>Piezoelectric bone is a thing we are allowed to love; it is not a programme anybody owes anybody.</em></p>
+      <p><strong>Not a per-person carbon budget.</strong> Human metabolism is estimated to produce two billion tonnes of CO&#8322; a year, overwhelmingly because there are more humans, and that carbon came out of the air last season by way of food. The release says so clearly, four paragraphs after a headline that says <em>just by staying alive</em>. <em>A quantity attached to a person&rsquo;s continued existence is a different object from a quantity attached to an energy system</em>, and the failure mode <a href="collection-triggers.html">Triggers</a> exists to mark is the one where the first is substituted for the second and a family is handed responsibility for something they did not build.</p>
+      <p><strong>Not a metaphor, in either direction.</strong> Three mosquito species rank the same 119 people differently and the rankings barely correlate. The sentence this site is built to want is right there and it is about <em>Aedes aegypti</em> and a skin microbiome. <em>No person is being ranked by anybody in that experiment</em>, and the thing that makes the result worth having &mdash; that nobody involved was arguing about human worth &mdash; is exactly what carrying it across would destroy. The same applies to a jellyfish holding its microbiome at a measured viscosity, and to an oak that sets a tick population two years out.</p>
+      <p><strong>Not an animal cleared of a charge, either.</strong> Deer did not turn out to be innocent; deer turned out not to be the variable. <em>The correction is not that we blamed the wrong species but that the thing we were explaining was never a property of a species</em> &mdash; it is a property of a community, over a two-year lag, with oaks in it. Swapping deer for mice would keep the scheme and change only the defendant, which is why the paper puts <em>community</em> in the sentence instead of a name.</p>
+      <p><strong>Not a bot check we will argue with, even in a good week.</strong> PubMed Central challenged nothing this week and served eight full texts. That is a fact about this week. <em>We did not disguise the caller when the challenges were firing and we did not need to now</em>, and the three-week sequence &mdash; all blocked, four of seven, none &mdash; is on the page because it is the only way a reader can tell how much of what we read is method and how much is luck.</p>
+      <p><strong>Not anti-science.</strong> Three items here retire something standing &mdash; a functional story about why tetrapods have necks, a geometric rule for how a coat is laid out, and the deer at the centre of thirty years of Lyme advice &mdash; and a fourth retires a romantic account of where our own ingredients came from. <em>Every one was corrected from the inside</em>, by ten sturgeon on a bending rig, a chemotaxis model run against two species, three decades of plots counted by hand, and a Monte Carlo over cometary impacts. The Lyme authors fence their own result to intact forest in the same paper; the comet authors state that their own model is a best case. <strong>A field that marks the edge of its claim in the sentence after making it is working.</strong> If a draft off this digest starts reading as a case against the field, it has gone wrong.</p>
+      <p><strong>Not <em>because of</em>.</strong> A butterfly was two butterflies all along in a band of light we cannot see, two coats fall out of one rule at two settings, and the atoms were made in stars whatever the courier turns out to have been. None of it is an argument for how anybody should be treated. That is a rhyme, not a proof. The universe declining to pathologize its own variation is why the phrase carries &mdash; <em>down to your star stuff</em> measures how far the loving reaches, never why it is owed.</p>
+    </div>
+  </div>
+
+  </div><!-- /edition 2026-11-13 -->
+
+
+  <div class="colophon-footer">
+    <a class="ss-cobrand" href="https://stimpunks.org/">Stimpunks Foundation</a> &times; <a class="ss-cobrand" href="https://morerealms.com/">More Realms</a> &middot; Glimmer Wire &middot; L&#9733;S<br>
+    Edition Twelve of the weekly scan &middot; published 13 November 2026<br>
+    Every edition is kept on its own page &middot; nothing deleted, the Held list included<br>
+    A working scan, not a finding &middot; off the reading chain, on purpose<br>
+    <a href="collection-glimmer-wire.html">All editions</a> &middot; <a href="collection-glimmers.html">Glimmers</a> &middot; <a href="changelog.html">Changelog</a> &middot; <a href="too-good-to-check.html">Too Good to Check</a><br>
+    stimpunks.org &middot; morerealms.com &middot; starstuff.earth &middot; <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
+  </div>
+
+</div><!-- /doc-shell --></main>
+
+<script src="starstuff.js"></script>
+</body>
+</html>
