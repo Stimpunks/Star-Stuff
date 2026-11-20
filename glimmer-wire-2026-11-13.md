@@ -1,7 +1,7 @@
 ---
 title: "Glimmer Wire"
 url: "https://starstuff.earth/glimmer-wire-2026-11-13.html"
-updated: "2026-11-13"
+updated: "2026-11-20"
 description: "Edition twelve of Glimmer Wire, 13 November 2026 — the weekly graded scan behind Glimmers. Eight items filed, six held, eight papers read end to end, median lag 57.5 days. Thirty years of counting that removes deer from the Lyme equation, three mosquito species ranking the same 119 people differently, two coats built by one rule at different settings, and a hypothesis about why tetrapods have necks tested against a sturgeon."
 collection: "Glimmer Wire"
 licence: "CC-BY-SA-4.0"

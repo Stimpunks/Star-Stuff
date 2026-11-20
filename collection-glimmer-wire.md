@@ -1,8 +1,8 @@
 ---
 title: "Glimmer Wire"
 url: "https://starstuff.earth/collection-glimmer-wire.html"
-updated: "2026-11-13"
-description: "The weekly graded scan behind Glimmers, one page per edition. Twelve editions so far, eighty-nine items filed and sixty-eight held — every one carrying its grade and, more usefully, what was actually read and what was not. The section that earns the page is Held, which lists what we declined and why. A fifth sorting axis on this site: these sort by issue."
+updated: "2026-11-20"
+description: "The weekly graded scan behind Glimmers, one page per edition. Thirteen editions so far, ninety-seven items filed and seventy-four held — every one carrying its grade and, more usefully, what was actually read and what was not. The section that earns the page is Held, which lists what we declined and why. A fifth sorting axis on this site: these sort by issue."
 licence: "CC-BY-SA-4.0"
 licence_url: "https://creativecommons.org/licenses/by-sa/4.0/"
 fact_check: "https://github.com/Stimpunks/Star-Stuff/blob/main/FACTCHECK.md"
@@ -15,7 +15,7 @@ generated_by: "tools/build-markdown.mjs, from the page's own <main> landmark"
 
 # *Glimmer Wire*
 
-A Star Stuff collection · 12 editions · weekly, Fridays · started 2 September 2026
+A Star Stuff collection · 13 editions · weekly, Fridays · started 2 September 2026
 
 A weekly read of what is going well in science and medicine, **graded before it is enjoyed**. This is the scan that sits behind [Glimmers](https://starstuff.earth/collection-glimmers.html), published with its grades showing rather than kept in a drafts folder. One page per edition, newest first, and nothing is ever deleted — including the thin weeks.
 
@@ -30,6 +30,18 @@ Nothing here is a source; it is a list of leads. What the grades mean, and why e
 ## The editions
 
 Newest first. Each card gives the tally and the median lag; the Details hold what the edition got wrong and what it could not open.
+
+### [Edition Thirteen](https://starstuff.earth/glimmer-wire-2026-11-20.html)
+
+20 November 2026 · Glimmer Wire · 8 filed, 6 held
+
+*The week a team predicted that Autistic brains would be harder to predict, found they were not, and wrote the rejection of their own hypothesis into the discussion.*
+
+Forty-eight Autistic adults whose neural patterns sit closer to non-Autistic people’s than to each other’s, two penguin populations going opposite ways whose average describes neither, a retrovirus that infected chimpanzees and missed us, the most crooked face recorded in any mammal, and a brain wave that turns out to be a motor gate rather than a decision.
+
+**Details**
+
+**Two papers from unrelated fields arrived in the same week making the same methodological argument, and neither knows about the other.** In a scanner, Autistic adults’ encoding patterns were “(on average) more similar to those of neurotypical participants than to other autistic participants” — so the group mean describes no member of the group. On a rock in the Southern Ocean, two penguin populations moving in opposite directions “combine to improve the global threat category while effectively obscuring a severe and genuine population-level crisis.” **The lead item is also a deficit hypothesis dying in public:** the team predicted Autistic brain activity would be less accurately predicted and more variable, found neither across six videos and five spatial scales, and wrote “we consider the present work a robust rejection of our initial hypothesis.” *The brain–behaviour correlations that would have flattered us collapsed after correction and reversed direction between two clips of the same programme, and we are not using them.* **Eight filed at 2 to 233 days, median 12 — five verified, two plausible, one contested.** **Six held, and the composition is weaker than last week’s:** three rest on a deposited abstract, one on a paper whose title ends “in mice” above a headline about your brain, and two on papers we could not open at all. **Two corrections are ours.** arXiv has been reachable here the whole time at `arxiv.org` while we recorded it as refused because the API host is — the second time this year a failing route was written down as a closed source. And the free-will item’s 233-day lag is real but misleading: the wire piece is a syndicated explainer by one of the paper’s own authors, not a slow press release, and our axis cannot tell those apart. **PubMed Central served six of seven articles and refused the seventh ten times running** — a fourth distinct state in four weeks, and the one refused paper is the only one whose full text might have changed what we wrote.
 
 ### [Edition Twelve](https://starstuff.earth/glimmer-wire-2026-11-13.html)
 
@@ -212,5 +224,5 @@ Two of the twelve editions have been amended after publication, and the amendmen
 Nearly every page on this site is linked into a single prev/next reading order, from [Start Here](https://starstuff.earth/collection-start-here.html) through to the last broadside. **This collection and every edition sit outside it**, for the same reason every [working paper](https://starstuff.earth/collection-notes.html) does: threading a weekly scan between two zines would drop a maintenance document into the middle of somebody’s reading. The editions carry prev/next to *each other* instead, which is a local order through the archive rather than a link in the site’s chain.
 
 [Stimpunks Foundation](https://stimpunks.org/) × [More Realms](https://morerealms.com/) · Glimmer Wire · L★S
- A collection, not a folder · 12 editions · one page each, nothing deleted · off the reading chain, on purpose
+ A collection, not a folder · 13 editions · one page each, nothing deleted · off the reading chain, on purpose
  stimpunks.org · morerealms.com · starstuff.earth · [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
